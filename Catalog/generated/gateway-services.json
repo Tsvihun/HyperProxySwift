@@ -1,0 +1,329 @@
+{
+  "schemaVersion": 1,
+  "providerCatalogSHA256": "0cd83dd3238b9790e92f11ca16e918434dbaee1b5384bd84ae9fed830d058da7",
+  "providers": [
+    {
+      "id": "openai",
+      "name": "OpenAI",
+      "defaultBaseURL": "https://api.openai.com",
+      "origins": [
+        "https://api.openai.com"
+      ],
+      "auth": {
+        "scheme": "bearer"
+      },
+      "extraHeaders": {},
+      "defaultAllowedPaths": [
+        "v1/chat/completions",
+        "v1/responses",
+        "v1/images/",
+        "v1/audio/",
+        "v1/embeddings",
+        "v1/moderations"
+      ],
+      "routeCount": 289
+    },
+    {
+      "id": "anthropic",
+      "name": "Anthropic",
+      "defaultBaseURL": "https://api.anthropic.com",
+      "origins": [
+        "https://api.anthropic.com"
+      ],
+      "auth": {
+        "scheme": "header",
+        "header": "x-api-key"
+      },
+      "extraHeaders": {
+        "anthropic-version": "2023-06-01"
+      },
+      "defaultAllowedPaths": [
+        "v1/messages"
+      ],
+      "routeCount": 193
+    },
+    {
+      "id": "gemini",
+      "name": "Google Gemini",
+      "defaultBaseURL": "https://generativelanguage.googleapis.com",
+      "origins": [
+        "https://generativelanguage.googleapis.com"
+      ],
+      "auth": {
+        "scheme": "header",
+        "header": "x-goog-api-key"
+      },
+      "extraHeaders": {},
+      "defaultAllowedPaths": [
+        "v1beta/models/",
+        "v1/models/"
+      ],
+      "routeCount": 106
+    },
+    {
+      "id": "deepseek",
+      "name": "DeepSeek",
+      "defaultBaseURL": "https://api.deepseek.com",
+      "origins": [
+        "https://api.deepseek.com"
+      ],
+      "auth": {
+        "scheme": "bearer"
+      },
+      "extraHeaders": {},
+      "defaultAllowedPaths": [
+        "chat/completions",
+        "v1/chat/completions"
+      ],
+      "routeCount": 14
+    },
+    {
+      "id": "mistral",
+      "name": "Mistral AI",
+      "defaultBaseURL": "https://api.mistral.ai",
+      "origins": [
+        "https://api.mistral.ai"
+      ],
+      "auth": {
+        "scheme": "bearer"
+      },
+      "extraHeaders": {},
+      "defaultAllowedPaths": [
+        "v1/chat/completions",
+        "v1/embeddings",
+        "v1/fim/completions"
+      ],
+      "routeCount": 291
+    },
+    {
+      "id": "openrouter",
+      "name": "OpenRouter",
+      "defaultBaseURL": "https://openrouter.ai",
+      "origins": [
+        "https://openrouter.ai"
+      ],
+      "auth": {
+        "scheme": "bearer"
+      },
+      "extraHeaders": {},
+      "defaultAllowedPaths": [
+        "api/v1/"
+      ],
+      "routeCount": 102
+    },
+    {
+      "id": "perplexity",
+      "name": "Perplexity",
+      "defaultBaseURL": "https://api.perplexity.ai",
+      "origins": [
+        "https://api.perplexity.ai"
+      ],
+      "auth": {
+        "scheme": "bearer"
+      },
+      "extraHeaders": {},
+      "defaultAllowedPaths": [
+        "chat/completions",
+        "v1/agent"
+      ],
+      "routeCount": 17
+    },
+    {
+      "id": "groq",
+      "name": "Groq",
+      "defaultBaseURL": "https://api.groq.com",
+      "origins": [
+        "https://api.groq.com"
+      ],
+      "auth": {
+        "scheme": "bearer"
+      },
+      "extraHeaders": {},
+      "defaultAllowedPaths": [
+        "openai/v1/"
+      ],
+      "routeCount": 26
+    },
+    {
+      "id": "together",
+      "name": "Together AI",
+      "defaultBaseURL": "https://api.together.ai",
+      "origins": [
+        "https://api.together.ai"
+      ],
+      "auth": {
+        "scheme": "bearer"
+      },
+      "extraHeaders": {},
+      "defaultAllowedPaths": [
+        "v1/"
+      ],
+      "routeCount": 208
+    },
+    {
+      "id": "fireworks",
+      "name": "Fireworks AI",
+      "defaultBaseURL": "https://api.fireworks.ai",
+      "origins": [
+        "https://api.fireworks.ai"
+      ],
+      "auth": {
+        "scheme": "bearer"
+      },
+      "extraHeaders": {},
+      "defaultAllowedPaths": [
+        "inference/v1/",
+        "v1/"
+      ],
+      "routeCount": 229
+    },
+    {
+      "id": "stability",
+      "name": "Stability AI",
+      "defaultBaseURL": "https://api.stability.ai",
+      "origins": [
+        "https://api.stability.ai"
+      ],
+      "auth": {
+        "scheme": "bearer"
+      },
+      "extraHeaders": {},
+      "defaultAllowedPaths": [
+        "v2beta/",
+        "v1/generation/"
+      ],
+      "routeCount": 36
+    },
+    {
+      "id": "replicate",
+      "name": "Replicate",
+      "defaultBaseURL": "https://api.replicate.com",
+      "origins": [
+        "https://api.replicate.com"
+      ],
+      "auth": {
+        "scheme": "bearer"
+      },
+      "extraHeaders": {},
+      "defaultAllowedPaths": [
+        "v1/"
+      ],
+      "routeCount": 38
+    },
+    {
+      "id": "fal",
+      "name": "fal.ai",
+      "defaultBaseURL": "https://queue.fal.run",
+      "origins": [
+        "https://queue.fal.run",
+        "https://api.fal.ai",
+        "https://rest.fal.ai",
+        "https://rest.alpha.fal.ai"
+      ],
+      "auth": {
+        "scheme": "header",
+        "header": "Authorization",
+        "valuePrefix": "Key "
+      },
+      "extraHeaders": {},
+      "defaultAllowedPaths": [
+        "fal-ai/",
+        "workflows/",
+        "v1/"
+      ],
+      "routeCount": 92
+    },
+    {
+      "id": "bfl",
+      "name": "Black Forest Labs",
+      "defaultBaseURL": "https://api.bfl.ai",
+      "origins": [
+        "https://api.bfl.ai",
+        "https://api.eu.bfl.ai",
+        "https://api.us.bfl.ai",
+        "https://api.us1.bfl.ai"
+      ],
+      "auth": {
+        "scheme": "header",
+        "header": "x-key"
+      },
+      "extraHeaders": {},
+      "defaultAllowedPaths": [
+        "v1/"
+      ],
+      "routeCount": 35
+    },
+    {
+      "id": "elevenlabs",
+      "name": "ElevenLabs",
+      "defaultBaseURL": "https://api.elevenlabs.io",
+      "origins": [
+        "https://api.elevenlabs.io"
+      ],
+      "auth": {
+        "scheme": "header",
+        "header": "xi-api-key"
+      },
+      "extraHeaders": {},
+      "defaultAllowedPaths": [
+        "v1/"
+      ],
+      "routeCount": 388
+    },
+    {
+      "id": "eachai",
+      "name": "Each AI",
+      "defaultBaseURL": "https://api.eachlabs.ai",
+      "origins": [
+        "https://api.eachlabs.ai",
+        "https://workflows.eachlabs.run",
+        "https://eachsense-agent.core.eachlabs.run"
+      ],
+      "auth": {
+        "scheme": "bearer"
+      },
+      "extraHeaders": {},
+      "defaultAllowedPaths": [
+        "v1/"
+      ],
+      "routeCount": 37
+    },
+    {
+      "id": "brave",
+      "name": "Brave Search",
+      "defaultBaseURL": "https://api.search.brave.com",
+      "origins": [
+        "https://api.search.brave.com"
+      ],
+      "auth": {
+        "scheme": "header",
+        "header": "X-Subscription-Token"
+      },
+      "extraHeaders": {},
+      "defaultAllowedPaths": [
+        "res/v1/"
+      ],
+      "routeCount": 17
+    },
+    {
+      "id": "deepl",
+      "name": "DeepL",
+      "defaultBaseURL": "https://api.deepl.com",
+      "origins": [
+        "https://api.deepl.com",
+        "https://api-free.deepl.com"
+      ],
+      "auth": {
+        "scheme": "header",
+        "header": "Authorization",
+        "valuePrefix": "DeepL-Auth-Key "
+      },
+      "extraHeaders": {},
+      "defaultAllowedPaths": [
+        "v1/",
+        "v2/"
+      ],
+      "routeCount": 63
+    }
+  ]
+}

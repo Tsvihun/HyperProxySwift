@@ -1,0 +1,30 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+/.build
+/Packages
+Examples/**/.build/
+Examples/**/.swiftpm/
+xcuserdata/
+DerivedData/
+.swiftpm/configuration/registries.json
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+.netrc
+Pods/
+Podfile.lock
+
+# Maintainer-only provider catalog and code-generation pipeline. These files
+# stay available in the local checkout but are not part of the distributed SDK.
+# Exception: the language-neutral gateway contract stays public because the
+# HyperProxy backend vendors it from this repository.
+/Catalog/*
+!/Catalog/generated
+/Catalog/generated/*
+!/Catalog/generated/gateway-services.json
+/Scripts/sync_provider_catalog.py
+/Scripts/generate_provider_catalog.py
+/Scripts/generate_provider_modules.py
+/Scripts/generate_gateway_catalog.py
+/Scripts/requirements-provider-catalog.txt
+/Scripts/generate_device_security_probe_project.rb
+/.github/workflows/provider-catalog-drift.yml
