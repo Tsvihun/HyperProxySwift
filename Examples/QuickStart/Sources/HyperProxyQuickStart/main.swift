@@ -23,14 +23,17 @@ struct HyperProxyQuickStart {
       gatewayURL: gatewayURL,
       appKey: appKey
     )
-    let response: HyperProxyJSONValue = try await openAI.send(
-      .responsesCreate,
-      json: [
+    var call = openAI.call(.responsesCreate)
+      .trace(try HyperProxyTrace(sessionID: UUID().uuidString, properties: ["feature": "quick-start"]))
+    if let preset = environment["HYPERPROXY_PRESET"] {
+      call = call.prompt(try HyperProxyPrompt(preset, selection: .environment("production")))
+    }
+    let response = try await call.json([
         "model": "gpt-5",
         "input": "Reply with a five-word greeting.",
-      ] as HyperProxyJSONValue,
-      decoding: HyperProxyJSONValue.self
-    )
-    print(response)
+      ] as HyperProxyJSONValue)
+      .decodedWithMetadata(HyperProxyJSONValue.self)
+    print(response.body)
+    print("Request:", response.requestID ?? "unknown", "Preset revision:", response.presetVersion.map(String.init) ?? "none")
   }
 }

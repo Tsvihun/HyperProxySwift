@@ -42,6 +42,7 @@ extension HyperProxyRequest {
   /// Applies the named server-side preset to this request's JSON body.
   public func preset(_ slug: String) -> Self {
     var copy = self
+    copy.headers = copy.headers.filter { !Self.promptHeaders.contains($0.key.lowercased()) }
     copy.headers[HyperProxyGatewayHeader.preset] = slug
     return copy
   }

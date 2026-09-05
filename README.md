@@ -41,7 +41,7 @@ repository URL, and select one of:
 From another package:
 
 ```swift
-.package(url: "https://github.com/Tsvihun/HyperProxySwift.git", from: "0.2.0")
+.package(url: "https://github.com/Tsvihun/HyperProxySwift.git", from: "0.3.0")
 ```
 
 Then add only the product your target needs:
@@ -57,14 +57,14 @@ CocoaPods supports iOS 15+ and macOS 13+. Use SwiftPM for visionOS and watchOS.
 Install the complete SDK:
 
 ```ruby
-pod 'HyperProxy', '~> 0.2'
+pod 'HyperProxy', '~> 0.3'
 ```
 
 Or keep the application binary smaller by selecting only what it uses:
 
 ```ruby
-pod 'HyperProxyOpenAI', '~> 0.2'
-pod 'HyperProxyRealtimeAudio', '~> 0.2' # optional microphone/playback support
+pod 'HyperProxyOpenAI', '~> 0.3'
+pod 'HyperProxyRealtimeAudio', '~> 0.3' # optional microphone/playback support
 ```
 
 The aggregate pod and every component pod use the same module names as SwiftPM, so application
@@ -528,6 +528,7 @@ do not copy another SDK's service implementation or distribute the internal sour
 
 - [Provider recipes](Documentation/ProviderRecipes.md)
 - [Architecture](Documentation/Architecture.md)
+- [Prompt versions, session analytics, and external telemetry](Documentation/Observability.md)
 - [Testing and CI](Documentation/Testing.md)
 - [Provider coverage contract](PROVIDER_COVERAGE.md)
 - [Runnable Quick Start](Examples/QuickStart)

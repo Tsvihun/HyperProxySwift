@@ -137,7 +137,21 @@ public struct HyperProxyProviderCall<Operation: HyperProxyProviderOperation>:
   /// Applies the named server-side preset — the operator's bundle of body
   /// fields (model, parameters, …) merged over this call's JSON body.
   public func preset(_ slug: String) -> Self {
-    self.header(HyperProxyGatewayHeader.preset, slug)
+    var copy = self
+    copy.headerFields = copy.headerFields.filter { !HyperProxyRequest.promptHeaders.contains($0.key.lowercased()) }
+    return copy.header(HyperProxyGatewayHeader.preset, slug)
+  }
+
+  public func prompt(_ prompt: HyperProxyPrompt) -> Self {
+    var copy = self
+    copy.headerFields = copy.headerFields.filter { !HyperProxyRequest.promptHeaders.contains($0.key.lowercased()) }
+    return copy.headers(prompt.headers)
+  }
+
+  public func trace(_ trace: HyperProxyTrace) -> Self {
+    var copy = self
+    copy.headerFields = copy.headerFields.filter { !HyperProxyRequest.isTraceHeader($0.key) }
+    return copy.headers(trace.headers)
   }
 
   public func timeout(_ value: TimeInterval?) -> Self {

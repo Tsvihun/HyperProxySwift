@@ -4,7 +4,7 @@
 /// `HyperProxy.openAI(gatewayURL:appKey:)`.
 public enum HyperProxy {
   /// The SDK version sent with requests and exposed for diagnostics.
-  public static let sdkVersion = "0.2.0"
+  public static let sdkVersion = "0.3.0"
 
   static let runtimeStore = HyperProxyRuntimeStore()
 

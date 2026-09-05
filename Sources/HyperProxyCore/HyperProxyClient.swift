@@ -186,6 +186,16 @@ public struct HyperProxyClient: Sendable {
     for (field, value) in try self.gatewaySecurityHeaders(securityHeaders) {
       result.setValue(value, forHTTPHeaderField: field)
     }
+    if case .direct = self.configuration.wireProtocol {
+      // Strip after security injection too: reusing a gateway configuration
+      // must not leak app keys, attestation, prompt variables or trace metadata.
+      for field in (result.allHTTPHeaderFields ?? [:]).keys {
+        let name = field.lowercased()
+        if name.hasPrefix("x-hyperproxy-") || name.hasPrefix("aiproxy-") {
+          result.setValue(nil, forHTTPHeaderField: field)
+        }
+      }
+    }
     return result
   }
 

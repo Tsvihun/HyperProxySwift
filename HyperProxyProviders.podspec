@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'HyperProxyProviders'
-  s.version = '0.2.0'
+  s.version = '0.3.0'
   s.summary = 'Generated provider operation catalog for HyperProxySwift.'
   s.homepage = 'https://github.com/Tsvihun/HyperProxySwift'
   s.license = { :type => 'MIT' }
@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '15.0'
   s.osx.deployment_target = '13.0'
   s.source_files = 'Sources/HyperProxyProviders/**/*.swift'
-  s.dependency 'HyperProxyCore', '= 0.2.0'
+  s.dependency 'HyperProxyCore', '= 0.3.0'
   s.pod_target_xcconfig = {
     'DEFINES_MODULE' => 'YES',
     'SWIFT_STRICT_CONCURRENCY' => 'complete'
