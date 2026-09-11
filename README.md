@@ -43,12 +43,12 @@ https://github.com/Tsvihun/HyperProxySwift.git
 ```
 
 To evaluate the unreleased work described here, select the branch
-`codex/prelaunch-security-hardening`. In a `Package.swift` manifest:
+`prelaunch/security-hardening`. In a `Package.swift` manifest:
 
 ```swift
 .package(
   url: "https://github.com/Tsvihun/HyperProxySwift.git",
-  branch: "codex/prelaunch-security-hardening"
+  branch: "prelaunch/security-hardening"
 )
 ```
 
@@ -70,6 +70,7 @@ an existing pod version does not include this branch's unreleased changes.
 2. Copy the service's gateway URL and app key. Do not substitute the provider API key.
 3. Call the provider from an asynchronous context in your app:
 
+<!-- readme-check: quick-start -->
 ```swift
 import Foundation
 import HyperProxyOpenAI
@@ -83,6 +84,7 @@ let response: OpenAIResponse = try await openAI.responsesCreate(
   OpenAICreateResponse(input: "Say hello in one sentence.", model: .modelIdsShared("gpt-5"))
 )
 ```
+<!-- /readme-check: quick-start -->
 
 Use the exact URL supplied by your dashboard and a model available to your provider account.
 The placeholders above are not working credentials. Provider usage is billed by the provider;
@@ -90,6 +92,7 @@ a HyperProxy plan does not include OpenAI or other provider credits.
 
 ### Stream a response
 
+<!-- readme-check: streaming -->
 ```swift
 for try await chunk in try openAI.chatCompletionsCreateStream(
   OpenAICreateChatCompletionRequest(
@@ -100,6 +103,7 @@ for try await chunk in try openAI.chatCompletionsCreateStream(
   print(chunk.choices.first?.delta.content ?? "", terminator: "")
 }
 ```
+<!-- /readme-check: streaming -->
 
 The typed streaming method enables streaming in the request. See the
 [usage guide](Documentation/UsageGuide.md) for raw events, uploads, WebSockets,

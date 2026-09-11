@@ -1,0 +1,9 @@
+{
+  "description": "Swift SDK for OpenAI, Anthropic Claude, Google Gemini and other AI APIs. Streaming, async/await and HyperProxy gateway integration for iOS and macOS.",
+  "homepage": "https://hyperproxyai.com/docs/",
+  "topics": [
+    "swift", "swift-package-manager", "ios", "macos", "ai", "generative-ai",
+    "openai", "anthropic", "claude", "gemini", "ai-gateway", "api-proxy",
+    "streaming", "async-await", "app-attest", "devicecheck"
+  ]
+}

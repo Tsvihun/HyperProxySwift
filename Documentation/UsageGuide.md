@@ -60,7 +60,7 @@ From another package:
 ```swift
 .package(
   url: "https://github.com/Tsvihun/HyperProxySwift.git",
-  branch: "codex/prelaunch-security-hardening"
+  branch: "prelaunch/security-hardening"
 )
 ```
 
