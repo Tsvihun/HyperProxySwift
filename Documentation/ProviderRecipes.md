@@ -19,7 +19,7 @@ import HyperProxyOpenAI
 
 let response: OpenAIResponse = try await HyperProxy
   .openAI(serviceURL: serviceURL, partialKey: partialKey)
-  .createResponse(OpenAICreateResponse(input: "Hello", model: "gpt-5"))
+  .createResponse(OpenAICreateResponse(input: "Hello", model: .modelIdsShared("gpt-5")))
 ```
 
 `HyperProxyJSONValue` is the lossless escape hatch for open unions and fields released after the
