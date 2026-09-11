@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "modules": [
+    {
+      "module": "HyperProxyAnthropic",
+      "artifactSha256": "f844aae2917013a859e2db4ef06fa6a10cdeebe63bb57b5b27d174e26b9b3a7e",
+      "reviewStatus": "pending",
+      "sources": [],
+      "noticeFiles": []
+    },
+    {
+      "module": "HyperProxyBFL",
+      "artifactSha256": "d2d275eea72dd56dac7c40e7a1f6aff3dfccbe254dbb4ecb001c9d461e85186e",
+      "reviewStatus": "pending",
+      "sources": [],
+      "noticeFiles": []
+    },
+    {
+      "module": "HyperProxyBrave",
+      "artifactSha256": "12f3338b22314e81d769b4ecdf6fcfaec650aa11c5307b98b789ebc5e1a38493",
+      "reviewStatus": "pending",
+      "sources": [],
+      "noticeFiles": []
+    },
+    {
+      "module": "HyperProxyDeepL",
+      "artifactSha256": "443ea5bb1ec2714270bed02f9dd818f2eaf82e0a5f6938b79d7cfc7c677c2242",
+      "reviewStatus": "pending",
+      "sources": [],
+      "noticeFiles": []
+    },
+    {
+      "module": "HyperProxyDeepSeek",
+      "artifactSha256": "c5f3c96e22db3713f008bee599f61b3e5eea25d51b8d73bf65fec24990f7dd3b",
+      "reviewStatus": "pending",
+      "sources": [],
+      "noticeFiles": []
+    },
+    {
+      "module": "HyperProxyEachAI",
+      "artifactSha256": "9420e680a1dd597e59d583ba584de6a25994b4d3b83d8c95a99ecf06cbaca8a0",
+      "reviewStatus": "pending",
+      "sources": [],
+      "noticeFiles": []
+    },
+    {
+      "module": "HyperProxyElevenLabs",
+      "artifactSha256": "57680e4fc8b9da5a7f6ddcc56af59e3c78a618ca1b4b526520ac9a1442c67d24",
+      "reviewStatus": "pending",
+      "sources": [],
+      "noticeFiles": []
+    },
+    {
+      "module": "HyperProxyFal",
+      "artifactSha256": "81ab4ca46afb6f3141b115feb2ec42145d73c4f14b2e40b7143cd06fb2c56802",
+      "reviewStatus": "pending",
+      "sources": [],
+      "noticeFiles": []
+    },
+    {
+      "module": "HyperProxyFireworks",
+      "artifactSha256": "c9475c40c4e149fbb15e221ab0a834414a787c21bd079054bd8b7ee40e2c5010",
+      "reviewStatus": "pending",
+      "sources": [],
+      "noticeFiles": []
+    },
+    {
+      "module": "HyperProxyGemini",
+      "artifactSha256": "b94c5479146a4c0b9c93b5636dd466537b3bd0fec71c390d6e7a8ac7f7ccd022",
+      "reviewStatus": "pending",
+      "sources": [],
+      "noticeFiles": []
+    },
+    {
+      "module": "HyperProxyGroq",
+      "artifactSha256": "e55c0799de99532ee6fd620f56cee172cf4296a3ac2b97cee3e2d55dce9f0ce8",
+      "reviewStatus": "pending",
+      "sources": [],
+      "noticeFiles": []
+    },
+    {
+      "module": "HyperProxyMistral",
+      "artifactSha256": "a9f4e5c7bfa6165e82d3aed6bf094d78abd6dc4f058b9f79d8efb7034d79f940",
+      "reviewStatus": "pending",
+      "sources": [],
+      "noticeFiles": []
+    },
+    {
+      "module": "HyperProxyOpenAI",
+      "artifactSha256": "6c20e1a0694676052e5f7080f1f1f860346ff945884da1710094bed46ac2c618",
+      "reviewStatus": "pending",
+      "sources": [],
+      "noticeFiles": []
+    },
+    {
+      "module": "HyperProxyOpenRouter",
+      "artifactSha256": "af2cd12618f55ff887509a9afe8024c35e5ed1ff157bb6096ce6f2c194a6c0e9",
+      "reviewStatus": "pending",
+      "sources": [],
+      "noticeFiles": []
+    },
+    {
+      "module": "HyperProxyPerplexity",
+      "artifactSha256": "9c524ed1a574b2f8908f873a3e7ea1c7aef6e877ed93129a8c52540dd88879ad",
+      "reviewStatus": "pending",
+      "sources": [],
+      "noticeFiles": []
+    },
+    {
+      "module": "HyperProxyReplicate",
+      "artifactSha256": "0647e02771db18a0ab593e3b748cb88e88ca62c36c33fa056e96822e99a73475",
+      "reviewStatus": "pending",
+      "sources": [],
+      "noticeFiles": []
+    },
+    {
+      "module": "HyperProxyStability",
+      "artifactSha256": "33759b600f507019f91798f155f7a58cdc64c6ec97b0348d4c24833bc6ab5a07",
+      "reviewStatus": "pending",
+      "sources": [],
+      "noticeFiles": []
+    },
+    {
+      "module": "HyperProxyTogether",
+      "artifactSha256": "cb8fee56d1fa74d84bb01e8b385c226ecc56827b456b37eaff98e9a2ae8ea5fa",
+      "reviewStatus": "pending",
+      "sources": [],
+      "noticeFiles": []
+    }
+  ]
+}

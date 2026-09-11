@@ -160,6 +160,11 @@ public struct HyperProxyClient: Sendable {
   /// Builds the fully authenticated `URLRequest` without sending it —
   /// gateway headers, identity, and attestation proofs included.
   public func prepare(_ request: HyperProxyRequest) async throws -> URLRequest {
+    guard self.session.configuration.identifier == nil else {
+      throw HyperProxyError.incompatibleSecurity(
+        "Background URLSessions follow redirects without consulting the security delegate. Use a default or ephemeral session."
+      )
+    }
     let body = request.body?.data ?? Data()
     let url = try Self.makeURL(
       gatewayURL: self.configuration.gatewayURL,
@@ -274,7 +279,7 @@ public struct HyperProxyClient: Sendable {
       do {
         let (data, response) = try await self.session.data(
           for: prepared,
-          delegate: taskDelegate
+          delegate: taskDelegate ?? HyperProxyTransportDelegate()
         )
         guard let httpResponse = response as? HTTPURLResponse else {
           throw HyperProxyError.invalidResponse
@@ -388,7 +393,7 @@ public struct HyperProxyClient: Sendable {
             let prepared = try await self.prepare(request)
             let (bytes, response) = try await self.session.bytes(
               for: prepared,
-              delegate: nil
+              delegate: HyperProxyTransportDelegate()
             )
             guard let httpResponse = response as? HTTPURLResponse else {
               throw HyperProxyError.invalidResponse
@@ -459,7 +464,7 @@ public struct HyperProxyClient: Sendable {
             let prepared = try await self.prepare(request)
             let (bytes, response) = try await self.session.bytes(
               for: prepared,
-              delegate: nil
+              delegate: HyperProxyTransportDelegate()
             )
             guard let httpResponse = response as? HTTPURLResponse else {
               throw HyperProxyError.invalidResponse
@@ -505,7 +510,9 @@ public struct HyperProxyClient: Sendable {
   ) async throws -> HyperProxyWebSocket {
     var prepared = try await self.prepare(request)
     prepared.url = try Self.webSocketURL(from: prepared.url)
-    let socket = HyperProxyWebSocket(task: self.session.webSocketTask(with: prepared))
+    let task = self.session.webSocketTask(with: prepared)
+    task.delegate = HyperProxyTransportDelegate()
+    let socket = HyperProxyWebSocket(task: task)
     if automaticallyResumes {
       socket.resume()
     }

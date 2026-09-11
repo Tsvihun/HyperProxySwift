@@ -24,6 +24,21 @@ catalog, while the core transport keeps raw HTTP available for newly released fi
 
 ## Requirements
 
+### Transport security and release checks
+
+Requests, uploads, byte/SSE streams and WebSocket handshakes do not follow HTTP
+redirects. Configure the final endpoint; a redirect is returned as a failure,
+not replayed with credentials. This also applies to custom URLSessions and
+direct-to-provider mode. Background URLSessions are rejected because they do
+not honor the redirect delegate. Default/ephemeral sessions and session-level
+certificate pinning remain supported.
+
+The unreleased security changes are not included in the existing `0.3.0` tag.
+See [release provenance and privacy checks](Compliance/README.md) for remaining
+rights-review and app archive requirements before the next release.
+
+### Platforms
+
 - Swift 6.2+
 - iOS 15+, macOS 13+, visionOS 1+, or watchOS 9+
 
