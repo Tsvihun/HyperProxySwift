@@ -63,7 +63,7 @@ public actor HyperProxyAppAttest {
     self.session = session
     self.storage = storage
     self.appAttest = HyperProxySystemAppAttest()
-    self.storageKey = "com.hyperproxy.sdk.app-attest.\(projectID)"
+    self.storageKey = "com.hyperproxy.sdk.app-attest.v2.\(projectID)"
   }
 
   init(
@@ -78,11 +78,18 @@ public actor HyperProxyAppAttest {
     self.session = session
     self.storage = storage
     self.appAttest = appAttest
-    self.storageKey = "com.hyperproxy.sdk.app-attest.\(projectID)"
+    self.storageKey = "com.hyperproxy.sdk.app-attest.v2.\(projectID)"
   }
 
   public nonisolated func security(mode: HyperProxyAppAttestMode) -> HyperProxySecurity {
-    HyperProxySecurity(serializingRequests: mode == .assertion) { [self] body in
+    if mode == .assertion {
+      return HyperProxySecurity(serializingRequests: true, requestHeaderProvider: { [self] request in
+        let context = try HyperProxyRequestContext(request: request)
+        let proof = try await self.headers(for: context.signingData, mode: mode)
+        return context.headers.merging(proof, uniquingKeysWith: { _, new in new })
+      })
+    }
+    return HyperProxySecurity(serializingRequests: false) { [self] body in
       try await self.headers(for: body, mode: mode)
     }
   }
@@ -140,7 +147,7 @@ public actor HyperProxyAppAttest {
     }
 
     let keyID = try await self.ensureRegisteredKey()
-    let challenge = try await self.challenge()
+    let challenge = try await self.challenge(purpose: "token")
     let hash = Data(SHA256.hash(data: Data(challenge.challenge.utf8)))
     let assertion = try await self.appAttest.generateAssertion(
       keyID: keyID,
@@ -201,7 +208,7 @@ public actor HyperProxyAppAttest {
     }
 
     do {
-      let challenge = try await self.challenge()
+      let challenge = try await self.challenge(purpose: "register")
       let hash = Data(SHA256.hash(data: Data(challenge.challenge.utf8)))
       let attestation = try await self.appAttest.attestKey(
         keyID: keyID,
@@ -231,10 +238,10 @@ public actor HyperProxyAppAttest {
     }
   }
 
-  private func challenge() async throws -> ChallengeResponse {
+  private func challenge(purpose: String) async throws -> ChallengeResponse {
     try await self.post(
       path: "challenge",
-      body: ChallengeRequest(project: self.projectID)
+      body: ChallengeRequest(project: self.projectID, purpose: purpose)
     )
   }
 
@@ -339,6 +346,7 @@ extension HyperProxyAppAttest {
 
   fileprivate struct ChallengeRequest: Encodable, Sendable {
     let project: String
+    let purpose: String
   }
 
   fileprivate struct ChallengeResponse: Decodable, Sendable {

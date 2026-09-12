@@ -187,7 +187,7 @@ public struct HyperProxyClient: Sendable {
       result.setValue(value, forHTTPHeaderField: field)
     }
     try await self.applyGatewayHeaders(to: &result, bodySize: body.count)
-    let securityHeaders = try await self.configuration.security.headers(for: body)
+    let securityHeaders = try await self.configuration.security.headers(for: result)
     for (field, value) in try self.gatewaySecurityHeaders(securityHeaders) {
       result.setValue(value, forHTTPHeaderField: field)
     }
