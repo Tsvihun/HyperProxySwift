@@ -238,7 +238,7 @@ public struct HyperProxyClient: Sendable {
       } catch {
         guard
           let policy = self.configuration.retryPolicy,
-          let delay = policy.delayForRetry(after: error, attempt: attempt)
+          let delay = policy.delayForRetry(after: error, attempt: attempt, request: request)
         else {
           throw error
         }
@@ -541,6 +541,64 @@ public struct HyperProxyClient: Sendable {
     return webSocketURL
   }
 
+  /// `URLComponents.percentEncodedPath` traps with a Foundation fatal error on
+  /// any character that is not valid in an encoded path (a space, `{`, a stray
+  /// `%`, non-ASCII). Request paths come from callers and from route templates
+  /// filled with runtime values, so escape everything that is not already a
+  /// valid percent-escape instead of handing the setter raw input.
+  /// RFC 3986 `pchar` plus "/". A fixed set rather than `.urlPathAllowed`:
+  /// Foundation applies context rules to that set (escaping a ":" that could
+  /// read as a scheme), and each chunk between escapes is encoded separately,
+  /// which would rewrite routes like `models/a%20b:generateContent`.
+  private static let pathAllowedCharacters = CharacterSet(
+    charactersIn:
+      "!$&'()*+,-./0123456789:;=@ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz~"
+  )
+
+  static func percentEncodedPath(_ path: String) -> String? {
+    let bytes = Array(path.utf8)
+    var encoded = ""
+    var literal: [UInt8] = []
+
+    func flushLiteral() -> Bool {
+      guard !literal.isEmpty else { return true }
+      defer { literal.removeAll(keepingCapacity: true) }
+      guard
+        let escaped = String(decoding: literal, as: UTF8.self)
+          .addingPercentEncoding(withAllowedCharacters: Self.pathAllowedCharacters)
+      else {
+        return false
+      }
+      encoded += escaped
+      return true
+    }
+
+    func isHexDigit(_ byte: UInt8) -> Bool {
+      (48...57).contains(byte) || (65...70).contains(byte) || (97...102).contains(byte)
+    }
+
+    var index = 0
+    while index < bytes.count {
+      let byte = bytes[index]
+      // "%" is ASCII, so it never splits a multi-byte UTF-8 sequence.
+      if byte == UInt8(ascii: "%") {
+        guard flushLiteral() else { return nil }
+        if index + 2 < bytes.count, isHexDigit(bytes[index + 1]), isHexDigit(bytes[index + 2]) {
+          encoded += String(decoding: bytes[index...(index + 2)], as: UTF8.self)
+          index += 3
+        } else {
+          encoded += "%25"
+          index += 1
+        }
+        continue
+      }
+      literal.append(byte)
+      index += 1
+    }
+    guard flushLiteral() else { return nil }
+    return encoded
+  }
+
   static func makeURL(
     gatewayURL: URL,
     path: String,
@@ -553,18 +611,24 @@ public struct HyperProxyClient: Sendable {
       throw HyperProxyError.invalidGatewayURL
     }
 
+    // Match the gateway, which rejects any ".." after decoding: an encoded
+    // slash or backslash must not smuggle a traversal inside one segment.
+    let decodedPath = path.removingPercentEncoding ?? path
     guard !path.contains("://"),
-      !path.split(separator: "/").contains("..")
+      !decodedPath.split(whereSeparator: { $0 == "/" || $0 == "\\" }).contains("..")
     else {
       throw HyperProxyError.invalidPath(path)
     }
 
     let normalizedPath = path.hasPrefix("/") ? String(path.dropFirst()) : path
+    guard let encodedPath = Self.percentEncodedPath(normalizedPath) else {
+      throw HyperProxyError.invalidPath(path)
+    }
     var basePath = components.percentEncodedPath
     if !basePath.hasSuffix("/") {
       basePath.append("/")
     }
-    components.percentEncodedPath = basePath + normalizedPath
+    components.percentEncodedPath = basePath + encodedPath
     let mergedQuery = (components.queryItems ?? []) + query
     components.queryItems = mergedQuery.isEmpty ? nil : mergedQuery
 

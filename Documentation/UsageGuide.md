@@ -481,9 +481,13 @@ response's headers stay readable too: `error.requestID` for support tickets and
 `error.retryAfter` for rate-limit backoff.
 
 Automatic backoff is opt-in. A retry policy repeats plain sends on rate limits
-and overloaded upstreams (and, by default, on dropped connections), honoring
-`Retry-After` ahead of exponential backoff. Streaming and WebSocket calls are
-never retried automatically:
+and overloaded upstreams, honoring `Retry-After` ahead of exponential backoff.
+By default it also retries connection failures: DNS errors and refused
+connections for any request, but timeouts and dropped connections only for
+`GET`/`HEAD`/`OPTIONS` or requests that carry an `Idempotency-Key` header —
+the gateway may already be running a timed-out generation, and resending it
+would bill it twice. Streaming and WebSocket calls are never retried
+automatically:
 
 ```swift
 let client = HyperProxyClient(

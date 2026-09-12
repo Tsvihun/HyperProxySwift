@@ -636,6 +636,118 @@ struct HyperProxyTransportTests {
     return data
   }
 
+  @Test("Builds request URLs from paths that are not pre-encoded instead of trapping")
+  func makeURLEncodesUnsafePathCharacters() throws {
+    let gateway = URL(string: "https://gw.example.com/proj/svc")!
+
+    let unsafe = try HyperProxyClient.makeURL(
+      gatewayURL: gateway,
+      path: "/v1/files/my file{1}%zz/ü?x#y",
+      query: []
+    )
+    #expect(
+      unsafe.absoluteString
+        == "https://gw.example.com/proj/svc/v1/files/my%20file%7B1%7D%25zz/%C3%BC%3Fx%23y"
+    )
+
+    let preEncoded = try HyperProxyClient.makeURL(
+      gatewayURL: gateway,
+      path: "v1/voices/a%2Fb%20c",
+      query: [URLQueryItem(name: "limit", value: "10")]
+    )
+    #expect(preEncoded.absoluteString == "https://gw.example.com/proj/svc/v1/voices/a%2Fb%20c?limit=10")
+
+    #expect(throws: HyperProxyError.self) {
+      _ = try HyperProxyClient.makeURL(gatewayURL: gateway, path: "v1/%2e%2E/admin", query: [])
+    }
+    #expect(throws: HyperProxyError.self) {
+      _ = try HyperProxyClient.makeURL(gatewayURL: gateway, path: "v1/../admin", query: [])
+    }
+    for smuggled in ["v1/..%2Fadmin", "v1/%2e%2e%2fadmin", "v1/..%5Cadmin", "v1\\..\\admin"] {
+      #expect(throws: HyperProxyError.self) {
+        _ = try HyperProxyClient.makeURL(gatewayURL: gateway, path: smuggled, query: [])
+      }
+    }
+
+    // Colons are legal path characters and name provider methods; they must
+    // survive next to escapes and in the first segment.
+    let rendered = try HyperProxyClient.makeURL(
+      gatewayURL: gateway,
+      path: "v1beta/models/my%20model:generateContent",
+      query: []
+    )
+    #expect(rendered.absoluteString == "https://gw.example.com/proj/svc/v1beta/models/my%20model:generateContent")
+    let firstSegment = try HyperProxyClient.makeURL(gatewayURL: gateway, path: "models:list", query: [])
+    #expect(firstSegment.absoluteString == "https://gw.example.com/proj/svc/models:list")
+    let unencodedArgument = try HyperProxyClient.makeURL(
+      gatewayURL: gateway,
+      path: "v1beta/models/ü:embedContent",
+      query: []
+    )
+    #expect(unencodedArgument.absoluteString == "https://gw.example.com/proj/svc/v1beta/models/%C3%BC:embedContent")
+  }
+
+  @Test("Retries timeouts only for replay-safe requests, so a paid generation is never sent twice")
+  func retryPolicyDoesNotReplayNonIdempotentSends() async throws {
+    let stub = TransportURLProtocol.stub
+    stub.reset()
+    let counter = LockedRequestCounter()
+    let timeoutThenSuccess: @Sendable (URLRequest) throws -> TransportStubResponse = { _ in
+      if counter.increment() == 1 {
+        throw URLError(.timedOut)
+      }
+      return .init(
+        status: 200,
+        headers: ["Content-Type": "application/json"],
+        chunks: [Data(#"{"ok":true}"#.utf8)]
+      )
+    }
+    stub.handler = timeoutThenSuccess
+    let client = HyperProxyClient(
+      gatewayURL: self.gatewayURL,
+      appKey: "hp_live_test",
+      retryPolicy: .init(maximumAttempts: 3, initialDelay: 0),
+      session: Self.session()
+    )
+
+    await #expect(throws: (any Error).self) {
+      _ = try await client.send(
+        .init(method: .post, path: "v1/chat/completions", body: .text("{}"))
+      )
+    }
+    #expect(counter.value == 1)
+
+    counter.reset()
+    let keyed = try await client.send(
+      .init(
+        method: .post,
+        path: "v1/chat/completions",
+        headers: ["Idempotency-Key": "generation-1"],
+        body: .text("{}")
+      )
+    )
+    #expect(keyed.statusCode == 200)
+    #expect(counter.value == 2)
+
+    counter.reset()
+    let read = try await client.send(.init(method: .get, path: "v1/models"))
+    #expect(read.statusCode == 200)
+    #expect(counter.value == 2)
+
+    counter.reset()
+    stub.handler = { _ in
+      if counter.increment() == 1 {
+        throw URLError(.cannotConnectToHost)
+      }
+      return .init(status: 200, headers: [:], chunks: [Data()])
+    }
+    let neverSent = try await client.send(
+      .init(method: .post, path: "v1/chat/completions", body: .text("{}"))
+    )
+    #expect(neverSent.statusCode == 200)
+    #expect(counter.value == 2)
+  }
+
   private func client() -> HyperProxyClient {
     HyperProxyClient(
       gatewayURL: self.gatewayURL,

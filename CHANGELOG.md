@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased
+
+- `HyperProxyRetryPolicy` no longer resends a request after a timeout or a dropped
+  connection unless it is safe to replay (`GET`/`HEAD`/`OPTIONS`, or an `Idempotency-Key`
+  header), so a timed-out paid generation is not billed twice. DNS failures and refused
+  connections are still retried for any request.
+- Request paths with characters that are not pre-encoded (spaces, `{`, stray `%`, non-ASCII)
+  are escaped instead of crashing the app with a Foundation fatal error. Percent-encoded
+  `..` segments are rejected like literal ones.
+
 ## 0.3.0
 
 - Select a preset revision or environment and encode typed JSON prompt variables with
