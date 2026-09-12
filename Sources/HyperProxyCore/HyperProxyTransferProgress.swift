@@ -19,7 +19,7 @@ public struct HyperProxyTransferProgress: Sendable, Equatable {
   }
 }
 
-final class HyperProxyTransferObserver: NSObject, URLSessionTaskDelegate, @unchecked Sendable {
+final class HyperProxyTransferObserver: HyperProxyTransportDelegate, @unchecked Sendable {
   private let progress: @Sendable (HyperProxyTransferProgress) -> Void
 
   init(progress: @escaping @Sendable (HyperProxyTransferProgress) -> Void) {
