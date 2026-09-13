@@ -32,6 +32,12 @@ are conservatively marked linked, since metadata may be correlated by identity.
 No tracking purpose is declared. The optional UserDefaults attestation storage
 uses the declared required-reason API.
 
+`HyperProxyProviders` ships its own manifest declaring
+`NSPrivacyAccessedAPICategorySystemBootTime` (reason `35F9.1`):
+`ProcessInfo.systemUptime` measures elapsed time while polling a provider job,
+on device only. Each module that calls a required-reason API carries the manifest
+in its own SwiftPM target and podspec resource bundle; a test enforces this.
+
 The integrating app must disclose its own provider/content processing and any
 analytics it enables, and inspect the merged manifest in an archive before App
 Store submission. A plist validation or simulator build is not App Store approval.

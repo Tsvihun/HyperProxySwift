@@ -9,6 +9,12 @@
 - Request paths with characters that are not pre-encoded (spaces, `{`, stray `%`, non-ASCII)
   are escaped instead of crashing the app with a Foundation fatal error. Percent-encoded
   `..` segments are rejected like literal ones.
+- In App Attest assertion mode, a streaming or byte-stream call releases the request gate as
+  soon as the response head arrives, so one long stream no longer stalls every other call.
+  A plain `send` still holds the gate until its body is downloaded; use `byteStream` for
+  large media responses.
+- `HyperProxyProviders` ships its own privacy manifest declaring the system boot time API it
+  uses to time polling, as App Store Connect requires for each bundle.
 
 ## 0.3.0
 

@@ -11,6 +11,9 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '15.0'
   s.osx.deployment_target = '13.0'
   s.source_files = 'Sources/HyperProxyProviders/**/*.swift'
+  s.resource_bundles = {
+    'HyperProxyProviders_Privacy' => ['Sources/HyperProxyProviders/Resources/PrivacyInfo.xcprivacy']
+  }
   s.dependency 'HyperProxyCore', '= 0.3.0'
   s.pod_target_xcconfig = {
     'DEFINES_MODULE' => 'YES',

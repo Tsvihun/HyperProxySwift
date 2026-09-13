@@ -61,6 +61,9 @@ let package = Package(
     .target(
       name: "HyperProxyProviders",
       dependencies: ["HyperProxyCore"],
+      resources: [
+        .process("Resources/PrivacyInfo.xcprivacy")
+      ],
       swiftSettings: swiftSettings
     ),
     .target(

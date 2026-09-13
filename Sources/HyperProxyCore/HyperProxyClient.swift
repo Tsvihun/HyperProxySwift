@@ -389,55 +389,47 @@ public struct HyperProxyClient: Sendable {
     AsyncThrowingStream { continuation in
       let task = Task {
         do {
-          try await self.configuration.security.perform {
-            let prepared = try await self.prepare(request)
-            let (bytes, response) = try await self.session.bytes(
-              for: prepared,
-              delegate: HyperProxyTransportDelegate()
-            )
-            guard let httpResponse = response as? HTTPURLResponse else {
-              throw HyperProxyError.invalidResponse
-            }
-            guard (200..<300).contains(httpResponse.statusCode) else {
-              var data = Data()
-              for try await byte in bytes {
-                data.append(byte)
-              }
-              throw HyperProxyError.httpStatus(
-                code: httpResponse.statusCode,
-                body: data,
-                headers: httpResponse.hyperProxyHeaders
-              )
-            }
-            // A success response that is not an event stream would otherwise
-            // parse to zero events and end the loop silently — the classic
-            // symptom of a request body that never opted into streaming.
-            let contentType = httpResponse.value(
-              forHTTPHeaderField: "Content-Type"
-            )
-            if let contentType,
-              !contentType.lowercased().contains("text/event-stream")
-            {
-              var data = Data()
-              for try await byte in bytes {
-                data.append(byte)
-              }
-              throw HyperProxyError.notAnEventStream(
-                contentType: contentType,
-                body: data
-              )
-            }
-
-            var parser = HyperProxySSEByteParser()
+          let opened = try await self.openStream(request)
+          let bytes = opened.bytes
+          let httpResponse = opened.response
+          guard (200..<300).contains(httpResponse.statusCode) else {
+            var data = Data()
             for try await byte in bytes {
-              if let event = parser.consume(byte: byte) {
-                continuation.yield(event)
-              }
+              data.append(byte)
             }
-            if let event = parser.finish() {
+            throw HyperProxyError.httpStatus(
+              code: httpResponse.statusCode,
+              body: data,
+              headers: httpResponse.hyperProxyHeaders
+            )
+          }
+          // A success response that is not an event stream would otherwise
+          // parse to zero events and end the loop silently — the classic
+          // symptom of a request body that never opted into streaming.
+          let contentType = httpResponse.value(
+            forHTTPHeaderField: "Content-Type"
+          )
+          if let contentType,
+            !contentType.lowercased().contains("text/event-stream")
+          {
+            var data = Data()
+            for try await byte in bytes {
+              data.append(byte)
+            }
+            throw HyperProxyError.notAnEventStream(
+              contentType: contentType,
+              body: data
+            )
+          }
+
+          var parser = HyperProxySSEByteParser()
+          for try await byte in bytes {
+            if let event = parser.consume(byte: byte) {
               continuation.yield(event)
             }
-            return ()
+          }
+          if let event = parser.finish() {
+            continuation.yield(event)
           }
           continuation.finish()
         } catch {
@@ -460,40 +452,32 @@ public struct HyperProxyClient: Sendable {
           guard chunkSize > 0 else {
             throw HyperProxyError.invalidChunkSize(chunkSize)
           }
-          try await self.configuration.security.perform {
-            let prepared = try await self.prepare(request)
-            let (bytes, response) = try await self.session.bytes(
-              for: prepared,
-              delegate: HyperProxyTransportDelegate()
-            )
-            guard let httpResponse = response as? HTTPURLResponse else {
-              throw HyperProxyError.invalidResponse
-            }
-            guard (200..<300).contains(httpResponse.statusCode) else {
-              var data = Data()
-              for try await byte in bytes {
-                data.append(byte)
-              }
-              throw HyperProxyError.httpStatus(
-                code: httpResponse.statusCode,
-                body: data,
-                headers: httpResponse.hyperProxyHeaders
-              )
-            }
-
-            var chunk = Data()
-            chunk.reserveCapacity(chunkSize)
+          let opened = try await self.openStream(request)
+          let bytes = opened.bytes
+          let httpResponse = opened.response
+          guard (200..<300).contains(httpResponse.statusCode) else {
+            var data = Data()
             for try await byte in bytes {
-              chunk.append(byte)
-              if chunk.count == chunkSize {
-                continuation.yield(chunk)
-                chunk.removeAll(keepingCapacity: true)
-              }
+              data.append(byte)
             }
-            if !chunk.isEmpty {
+            throw HyperProxyError.httpStatus(
+              code: httpResponse.statusCode,
+              body: data,
+              headers: httpResponse.hyperProxyHeaders
+            )
+          }
+
+          var chunk = Data()
+          chunk.reserveCapacity(chunkSize)
+          for try await byte in bytes {
+            chunk.append(byte)
+            if chunk.count == chunkSize {
               continuation.yield(chunk)
+              chunk.removeAll(keepingCapacity: true)
             }
-            return ()
+          }
+          if !chunk.isEmpty {
+            continuation.yield(chunk)
           }
           continuation.finish()
         } catch {
@@ -501,6 +485,28 @@ public struct HyperProxyClient: Sendable {
         }
       }
       continuation.onTermination = { _ in task.cancel() }
+    }
+  }
+
+  /// Sends a streamed request and returns once the response head arrives.
+  ///
+  /// App Attest assertion mode serializes requests so the gateway sees
+  /// assertion counters in order. The gateway verifies and commits the counter
+  /// before it answers, so the gate is released at the response head: holding
+  /// it for the body would stall every other call behind one long stream.
+  /// (`send` downloads its body inside the gate; large bodies belong in
+  /// `byteStream`.)
+  private func openStream(_ request: HyperProxyRequest) async throws -> HyperProxyOpenedStream {
+    try await self.configuration.security.perform {
+      let prepared = try await self.prepare(request)
+      let (bytes, response) = try await self.session.bytes(
+        for: prepared,
+        delegate: HyperProxyTransportDelegate()
+      )
+      guard let httpResponse = response as? HTTPURLResponse else {
+        throw HyperProxyError.invalidResponse
+      }
+      return HyperProxyOpenedStream(bytes: bytes, response: httpResponse)
     }
   }
 
@@ -774,4 +780,11 @@ public struct HyperProxyClient: Sendable {
     }
     return components.string ?? url.absoluteString
   }
+}
+
+/// Carries an opened response body out of the security gate. The byte sequence
+/// is consumed only by the task that opened it, never concurrently.
+private struct HyperProxyOpenedStream: @unchecked Sendable {
+  let bytes: URLSession.AsyncBytes
+  let response: HTTPURLResponse
 }
