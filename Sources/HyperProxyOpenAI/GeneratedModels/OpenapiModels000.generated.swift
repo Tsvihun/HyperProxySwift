@@ -4,6 +4,20 @@
 import Foundation
 import HyperProxyCore
 
+public struct OpenAIAcceptLiveSessionParameters: Codable, Sendable {
+  public var sessionId: String
+
+  public init(
+    sessionId: String
+  ) {
+    self.sessionId = sessionId
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case sessionId = "session_id"
+  }
+}
+
 public struct OpenAIAcceptRealtimeCallParameters: Codable, Sendable {
   public var callId: String
 
@@ -452,6 +466,552 @@ public struct OpenAIAdminApiKeysListParametersOrder: RawRepresentable, Codable, 
 
   public static let asc = Self(rawValue: "asc")
   public static let desc = Self(rawValue: "desc")
+}
+
+public enum OpenAIAgentContentResource: Codable, Sendable {
+  case outputTextResource(OpenAIOutputTextResource)
+  case encryptedContentResource(OpenAIEncryptedContentResource)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(OpenAIOutputTextResource.self) {
+      self = .outputTextResource(value)
+      return
+    }
+    self = .encryptedContentResource(try container.decode(OpenAIEncryptedContentResource.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .outputTextResource(let value):
+      try container.encode(value)
+    case .encryptedContentResource(let value):
+      try container.encode(value)
+    }
+  }
+}
+
+public struct OpenAIAgentListResource: Codable, Sendable {
+  public var data: [OpenAIAgentResource]
+  public var firstId: String
+  public var hasMore: Bool
+  public var lastId: String
+  public var object: OpenAIAgentListResourceObject
+
+  public init(
+    data: [OpenAIAgentResource],
+    firstId: String,
+    hasMore: Bool,
+    lastId: String,
+    object: OpenAIAgentListResourceObject
+  ) {
+    self.data = data
+    self.firstId = firstId
+    self.hasMore = hasMore
+    self.lastId = lastId
+    self.object = object
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case data
+    case firstId = "first_id"
+    case hasMore = "has_more"
+    case lastId = "last_id"
+    case object
+  }
+}
+
+public struct OpenAIAgentListResourceObject: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let list = Self(rawValue: "list")
+}
+
+public struct OpenAIAgentMessageItemResource: Codable, Sendable {
+  public var content: [OpenAIAgentContentResource]
+  public var id: String
+  public var recipientAgentId: String
+  public var senderAgentId: String
+  public var turnId: String
+  public var typeModel: OpenAIAgentMessageItemResourceTypeModel
+
+  public init(
+    content: [OpenAIAgentContentResource],
+    id: String,
+    recipientAgentId: String,
+    senderAgentId: String,
+    turnId: String,
+    typeModel: OpenAIAgentMessageItemResourceTypeModel
+  ) {
+    self.content = content
+    self.id = id
+    self.recipientAgentId = recipientAgentId
+    self.senderAgentId = senderAgentId
+    self.turnId = turnId
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case content
+    case id
+    case recipientAgentId = "recipient_agent_id"
+    case senderAgentId = "sender_agent_id"
+    case turnId = "turn_id"
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIAgentMessageItemResourceTypeModel: RawRepresentable, Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let agentMessage = Self(rawValue: "agent_message")
+}
+
+public typealias OpenAIAgentOutputItemResource = HyperProxyJSONValue
+
+public struct OpenAIAgentResource: Codable, Sendable {
+  public var createdAt: Int64
+  public var id: String
+  public var instructions: String
+  public var metadata: [String: String]
+  public var model: String
+  public var multiAgent: OpenAIMultiAgentConfigResource
+  public var name: String
+  public var object: OpenAIAgentResourceObject
+  public var reasoning: OpenAIReasoningResource
+  public var serviceTier: OpenAIServiceTierResource
+  public var text: OpenAITextResource
+  public var tools: [OpenAIPersistedAgentToolResource]
+  public var updatedAt: Int64
+
+  public init(
+    createdAt: Int64,
+    id: String,
+    instructions: String,
+    metadata: [String: String],
+    model: String,
+    multiAgent: OpenAIMultiAgentConfigResource,
+    name: String,
+    object: OpenAIAgentResourceObject,
+    reasoning: OpenAIReasoningResource,
+    serviceTier: OpenAIServiceTierResource,
+    text: OpenAITextResource,
+    tools: [OpenAIPersistedAgentToolResource],
+    updatedAt: Int64
+  ) {
+    self.createdAt = createdAt
+    self.id = id
+    self.instructions = instructions
+    self.metadata = metadata
+    self.model = model
+    self.multiAgent = multiAgent
+    self.name = name
+    self.object = object
+    self.reasoning = reasoning
+    self.serviceTier = serviceTier
+    self.text = text
+    self.tools = tools
+    self.updatedAt = updatedAt
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case createdAt = "created_at"
+    case id
+    case instructions
+    case metadata
+    case model
+    case multiAgent = "multi_agent"
+    case name
+    case object
+    case reasoning
+    case serviceTier = "service_tier"
+    case text
+    case tools
+    case updatedAt = "updated_at"
+  }
+}
+
+public struct OpenAIAgentResourceObject: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let agent = Self(rawValue: "agent")
+}
+
+public typealias OpenAIAgentToolConfigParam = HyperProxyJSONValue
+
+public struct OpenAIAgentToolConfigParamFunction: Codable, Sendable {
+  public var deferLoading: Bool?
+  public var description: String
+  public var name: String
+  public var parameters: [String: HyperProxyJSONValue]
+  public var typeModel: OpenAIAgentToolConfigParamFunctionTypeModel
+
+  public init(
+    description: String,
+    name: String,
+    parameters: [String: HyperProxyJSONValue],
+    typeModel: OpenAIAgentToolConfigParamFunctionTypeModel,
+    deferLoading: Bool? = nil
+  ) {
+    self.deferLoading = deferLoading
+    self.description = description
+    self.name = name
+    self.parameters = parameters
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case deferLoading = "defer_loading"
+    case description
+    case name
+    case parameters
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIAgentToolConfigParamFunctionTypeModel: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let function = Self(rawValue: "function")
+}
+
+public struct OpenAIAgentToolConfigParamMcp: Codable, Sendable {
+  public var allowedTools: [String]?
+  public var connectionOrigin: OpenAIMcpConnectionOriginParam?
+  public var credentialId: String?
+  public var requestMetadata: [String: HyperProxyJSONValue]?
+  public var requiredValue: Bool?
+  public var serverLabel: String
+  public var transport: OpenAIMcpTransportConfigParam
+  public var typeModel: OpenAIAgentToolConfigParamMcpTypeModel
+
+  public init(
+    serverLabel: String,
+    transport: OpenAIMcpTransportConfigParam,
+    typeModel: OpenAIAgentToolConfigParamMcpTypeModel,
+    allowedTools: [String]? = nil,
+    connectionOrigin: OpenAIMcpConnectionOriginParam? = nil,
+    credentialId: String? = nil,
+    requestMetadata: [String: HyperProxyJSONValue]? = nil,
+    requiredValue: Bool? = nil
+  ) {
+    self.allowedTools = allowedTools
+    self.connectionOrigin = connectionOrigin
+    self.credentialId = credentialId
+    self.requestMetadata = requestMetadata
+    self.requiredValue = requiredValue
+    self.serverLabel = serverLabel
+    self.transport = transport
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case allowedTools = "allowed_tools"
+    case connectionOrigin = "connection_origin"
+    case credentialId = "credential_id"
+    case requestMetadata = "request_metadata"
+    case requiredValue = "required"
+    case serverLabel = "server_label"
+    case transport
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIAgentToolConfigParamMcpTypeModel: RawRepresentable, Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let mcp = Self(rawValue: "mcp")
+}
+
+public struct OpenAIAgentToolConfigParamProgrammaticToolCalling: Codable, Sendable {
+  public var enabled: Bool?
+  public var typeModel: OpenAIAgentToolConfigParamProgrammaticToolCallingTypeModel
+
+  public init(
+    typeModel: OpenAIAgentToolConfigParamProgrammaticToolCallingTypeModel,
+    enabled: Bool? = nil
+  ) {
+    self.enabled = enabled
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case enabled
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIAgentToolConfigParamProgrammaticToolCallingTypeModel: RawRepresentable, Codable,
+  Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let programmaticToolCalling = Self(rawValue: "programmatic_tool_calling")
+}
+
+public struct OpenAIAgentToolConfigParamToolSearch: Codable, Sendable {
+  public var typeModel: OpenAIAgentToolConfigParamToolSearchTypeModel
+
+  public init(
+    typeModel: OpenAIAgentToolConfigParamToolSearchTypeModel
+  ) {
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIAgentToolConfigParamToolSearchTypeModel: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let toolSearch = Self(rawValue: "tool_search")
+}
+
+public struct OpenAIAgentToolConfigParamWebSearch: Codable, Sendable {
+  public var allowedDomains: [String]?
+  public var contextSize: OpenAIWebSearchContextSizeParam?
+  public var location: OpenAIWebSearchLocationParam?
+  public var mode: OpenAIWebSearchModeParam?
+  public var typeModel: OpenAIAgentToolConfigParamWebSearchTypeModel
+
+  public init(
+    typeModel: OpenAIAgentToolConfigParamWebSearchTypeModel,
+    allowedDomains: [String]? = nil,
+    contextSize: OpenAIWebSearchContextSizeParam? = nil,
+    location: OpenAIWebSearchLocationParam? = nil,
+    mode: OpenAIWebSearchModeParam? = nil
+  ) {
+    self.allowedDomains = allowedDomains
+    self.contextSize = contextSize
+    self.location = location
+    self.mode = mode
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case allowedDomains = "allowed_domains"
+    case contextSize = "context_size"
+    case location
+    case mode
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIAgentToolConfigParamWebSearchTypeModel: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let webSearch = Self(rawValue: "web_search")
+}
+
+public typealias OpenAIAgentToolResource = HyperProxyJSONValue
+
+public struct OpenAIAgentToolResourceFunction: Codable, Sendable {
+  public var deferLoading: Bool
+  public var description: String
+  public var name: String
+  public var parameters: [String: HyperProxyJSONValue]
+  public var typeModel: OpenAIAgentToolResourceFunctionTypeModel
+
+  public init(
+    deferLoading: Bool,
+    description: String,
+    name: String,
+    parameters: [String: HyperProxyJSONValue],
+    typeModel: OpenAIAgentToolResourceFunctionTypeModel
+  ) {
+    self.deferLoading = deferLoading
+    self.description = description
+    self.name = name
+    self.parameters = parameters
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case deferLoading = "defer_loading"
+    case description
+    case name
+    case parameters
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIAgentToolResourceFunctionTypeModel: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let function = Self(rawValue: "function")
+}
+
+public struct OpenAIAgentToolResourceMcp: Codable, Sendable {
+  public var allowedTools: [String]
+  public var connectionOrigin: OpenAIMcpConnectionOriginResource
+  public var credentialId: String
+  public var requestMetadata: [String: HyperProxyJSONValue]
+  public var requiredValue: Bool
+  public var serverLabel: String
+  public var transport: OpenAIMcpTransportResource
+  public var typeModel: OpenAIAgentToolResourceMcpTypeModel
+
+  public init(
+    allowedTools: [String],
+    connectionOrigin: OpenAIMcpConnectionOriginResource,
+    credentialId: String,
+    requestMetadata: [String: HyperProxyJSONValue],
+    requiredValue: Bool,
+    serverLabel: String,
+    transport: OpenAIMcpTransportResource,
+    typeModel: OpenAIAgentToolResourceMcpTypeModel
+  ) {
+    self.allowedTools = allowedTools
+    self.connectionOrigin = connectionOrigin
+    self.credentialId = credentialId
+    self.requestMetadata = requestMetadata
+    self.requiredValue = requiredValue
+    self.serverLabel = serverLabel
+    self.transport = transport
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case allowedTools = "allowed_tools"
+    case connectionOrigin = "connection_origin"
+    case credentialId = "credential_id"
+    case requestMetadata = "request_metadata"
+    case requiredValue = "required"
+    case serverLabel = "server_label"
+    case transport
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIAgentToolResourceMcpTypeModel: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let mcp = Self(rawValue: "mcp")
+}
+
+public struct OpenAIAgentToolResourceProgrammaticToolCalling: Codable, Sendable {
+  public var enabled: Bool
+  public var typeModel: OpenAIAgentToolResourceProgrammaticToolCallingTypeModel
+
+  public init(
+    enabled: Bool,
+    typeModel: OpenAIAgentToolResourceProgrammaticToolCallingTypeModel
+  ) {
+    self.enabled = enabled
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case enabled
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIAgentToolResourceProgrammaticToolCallingTypeModel: RawRepresentable, Codable,
+  Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let programmaticToolCalling = Self(rawValue: "programmatic_tool_calling")
+}
+
+public struct OpenAIAgentToolResourceWebSearch: Codable, Sendable {
+  public var allowedDomains: [String]
+  public var contextSize: OpenAIWebSearchContextSizeResource
+  public var location: OpenAIWebSearchLocationResource?
+  public var mode: OpenAIWebSearchModeResource
+  public var typeModel: OpenAIAgentToolResourceWebSearchTypeModel
+
+  public init(
+    allowedDomains: [String],
+    contextSize: OpenAIWebSearchContextSizeResource,
+    location: OpenAIWebSearchLocationResource?,
+    mode: OpenAIWebSearchModeResource,
+    typeModel: OpenAIAgentToolResourceWebSearchTypeModel
+  ) {
+    self.allowedDomains = allowedDomains
+    self.contextSize = contextSize
+    self.location = location
+    self.mode = mode
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case allowedDomains = "allowed_domains"
+    case contextSize = "context_size"
+    case location
+    case mode
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIAgentToolResourceWebSearchTypeModel: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let webSearch = Self(rawValue: "web_search")
 }
 
 public typealias OpenAIAnnotation = HyperProxyJSONValue
@@ -1191,6 +1751,67 @@ public struct OpenAIAssistantMessageItemObject: RawRepresentable, Codable, Hasha
   }
 
   public static let chatkitThreadItem = Self(rawValue: "chatkit.thread_item")
+}
+
+public struct OpenAIAssistantMessageItemResource: Codable, Sendable {
+  public var content: [OpenAIOutputTextResource]
+  public var id: String
+  public var phase: OpenAIMessagePhaseResource?
+  public var role: OpenAIAssistantMessageItemResourceRole
+  public var status: OpenAIOutputItemStatusResource
+  public var turnId: String
+  public var typeModel: OpenAIAssistantMessageItemResourceTypeModel
+
+  public init(
+    content: [OpenAIOutputTextResource],
+    id: String,
+    phase: OpenAIMessagePhaseResource?,
+    role: OpenAIAssistantMessageItemResourceRole,
+    status: OpenAIOutputItemStatusResource,
+    turnId: String,
+    typeModel: OpenAIAssistantMessageItemResourceTypeModel
+  ) {
+    self.content = content
+    self.id = id
+    self.phase = phase
+    self.role = role
+    self.status = status
+    self.turnId = turnId
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case content
+    case id
+    case phase
+    case role
+    case status
+    case turnId = "turn_id"
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIAssistantMessageItemResourceRole: RawRepresentable, Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let assistant = Self(rawValue: "assistant")
+}
+
+public struct OpenAIAssistantMessageItemResourceTypeModel: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let message = Self(rawValue: "message")
 }
 
 public struct OpenAIAssistantMessageItemTypeModel: RawRepresentable, Codable, Hashable, Sendable {
@@ -2685,651 +3306,6 @@ public struct OpenAIAuditLogGroupUpdated: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case changesRequested = "changes_requested"
-    case id
-  }
-}
-
-public struct OpenAIAuditLogGroupUpdatedChangesRequested: Codable, Sendable {
-  public var groupName: String?
-
-  public init(
-    groupName: String? = nil
-  ) {
-    self.groupName = groupName
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case groupName = "group_name"
-  }
-}
-
-public struct OpenAIAuditLogInviteAccepted: Codable, Sendable {
-  public var id: String?
-
-  public init(
-    id: String? = nil
-  ) {
-    self.id = id
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case id
-  }
-}
-
-public struct OpenAIAuditLogInviteDeleted: Codable, Sendable {
-  public var id: String?
-
-  public init(
-    id: String? = nil
-  ) {
-    self.id = id
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case id
-  }
-}
-
-public struct OpenAIAuditLogInviteSent: Codable, Sendable {
-  public var data: OpenAIAuditLogInviteSentData?
-  public var id: String?
-
-  public init(
-    data: OpenAIAuditLogInviteSentData? = nil,
-    id: String? = nil
-  ) {
-    self.data = data
-    self.id = id
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case data
-    case id
-  }
-}
-
-public struct OpenAIAuditLogInviteSentData: Codable, Sendable {
-  public var email: String?
-  public var role: String?
-
-  public init(
-    email: String? = nil,
-    role: String? = nil
-  ) {
-    self.email = email
-    self.role = role
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case email
-    case role
-  }
-}
-
-public struct OpenAIAuditLogIpAllowlistConfigActivated: Codable, Sendable {
-  public var configs: [OpenAIAuditLogIpAllowlistConfigActivatedConfigsItem]?
-
-  public init(
-    configs: [OpenAIAuditLogIpAllowlistConfigActivatedConfigsItem]? = nil
-  ) {
-    self.configs = configs
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case configs
-  }
-}
-
-public struct OpenAIAuditLogIpAllowlistConfigActivatedConfigsItem: Codable, Sendable {
-  public var id: String?
-  public var name: String?
-
-  public init(
-    id: String? = nil,
-    name: String? = nil
-  ) {
-    self.id = id
-    self.name = name
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case id
-    case name
-  }
-}
-
-public struct OpenAIAuditLogIpAllowlistConfigDeactivated: Codable, Sendable {
-  public var configs: [OpenAIAuditLogIpAllowlistConfigDeactivatedConfigsItem]?
-
-  public init(
-    configs: [OpenAIAuditLogIpAllowlistConfigDeactivatedConfigsItem]? = nil
-  ) {
-    self.configs = configs
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case configs
-  }
-}
-
-public struct OpenAIAuditLogIpAllowlistConfigDeactivatedConfigsItem: Codable, Sendable {
-  public var id: String?
-  public var name: String?
-
-  public init(
-    id: String? = nil,
-    name: String? = nil
-  ) {
-    self.id = id
-    self.name = name
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case id
-    case name
-  }
-}
-
-public struct OpenAIAuditLogIpAllowlistCreated: Codable, Sendable {
-  public var allowedIps: [String]?
-  public var id: String?
-  public var name: String?
-
-  public init(
-    allowedIps: [String]? = nil,
-    id: String? = nil,
-    name: String? = nil
-  ) {
-    self.allowedIps = allowedIps
-    self.id = id
-    self.name = name
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case allowedIps = "allowed_ips"
-    case id
-    case name
-  }
-}
-
-public struct OpenAIAuditLogIpAllowlistDeleted: Codable, Sendable {
-  public var allowedIps: [String]?
-  public var id: String?
-  public var name: String?
-
-  public init(
-    allowedIps: [String]? = nil,
-    id: String? = nil,
-    name: String? = nil
-  ) {
-    self.allowedIps = allowedIps
-    self.id = id
-    self.name = name
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case allowedIps = "allowed_ips"
-    case id
-    case name
-  }
-}
-
-public struct OpenAIAuditLogIpAllowlistUpdated: Codable, Sendable {
-  public var allowedIps: [String]?
-  public var id: String?
-
-  public init(
-    allowedIps: [String]? = nil,
-    id: String? = nil
-  ) {
-    self.allowedIps = allowedIps
-    self.id = id
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case allowedIps = "allowed_ips"
-    case id
-  }
-}
-
-public struct OpenAIAuditLogLoginFailed: Codable, Sendable {
-  public var errorCode: String?
-  public var errorMessage: String?
-
-  public init(
-    errorCode: String? = nil,
-    errorMessage: String? = nil
-  ) {
-    self.errorCode = errorCode
-    self.errorMessage = errorMessage
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case errorCode = "error_code"
-    case errorMessage = "error_message"
-  }
-}
-
-public struct OpenAIAuditLogLogoutFailed: Codable, Sendable {
-  public var errorCode: String?
-  public var errorMessage: String?
-
-  public init(
-    errorCode: String? = nil,
-    errorMessage: String? = nil
-  ) {
-    self.errorCode = errorCode
-    self.errorMessage = errorMessage
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case errorCode = "error_code"
-    case errorMessage = "error_message"
-  }
-}
-
-public struct OpenAIAuditLogOrganizationUpdated: Codable, Sendable {
-  public var changesRequested: OpenAIAuditLogOrganizationUpdatedChangesRequested?
-  public var id: String?
-
-  public init(
-    changesRequested: OpenAIAuditLogOrganizationUpdatedChangesRequested? = nil,
-    id: String? = nil
-  ) {
-    self.changesRequested = changesRequested
-    self.id = id
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case changesRequested = "changes_requested"
-    case id
-  }
-}
-
-public struct OpenAIAuditLogOrganizationUpdatedChangesRequested: Codable, Sendable {
-  public var apiCallLogging: String?
-  public var apiCallLoggingProjectIds: String?
-  public var description: String?
-  public var name: String?
-  public var threadsUiVisibility: String?
-  public var title: String?
-  public var usageDashboardVisibility: String?
-
-  public init(
-    apiCallLogging: String? = nil,
-    apiCallLoggingProjectIds: String? = nil,
-    description: String? = nil,
-    name: String? = nil,
-    threadsUiVisibility: String? = nil,
-    title: String? = nil,
-    usageDashboardVisibility: String? = nil
-  ) {
-    self.apiCallLogging = apiCallLogging
-    self.apiCallLoggingProjectIds = apiCallLoggingProjectIds
-    self.description = description
-    self.name = name
-    self.threadsUiVisibility = threadsUiVisibility
-    self.title = title
-    self.usageDashboardVisibility = usageDashboardVisibility
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case apiCallLogging = "api_call_logging"
-    case apiCallLoggingProjectIds = "api_call_logging_project_ids"
-    case description
-    case name
-    case threadsUiVisibility = "threads_ui_visibility"
-    case title
-    case usageDashboardVisibility = "usage_dashboard_visibility"
-  }
-}
-
-public struct OpenAIAuditLogProject: Codable, Sendable {
-  public var id: String?
-  public var name: String?
-
-  public init(
-    id: String? = nil,
-    name: String? = nil
-  ) {
-    self.id = id
-    self.name = name
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case id
-    case name
-  }
-}
-
-public struct OpenAIAuditLogProjectArchived: Codable, Sendable {
-  public var id: String?
-
-  public init(
-    id: String? = nil
-  ) {
-    self.id = id
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case id
-  }
-}
-
-public struct OpenAIAuditLogProjectCreated: Codable, Sendable {
-  public var data: OpenAIAuditLogProjectCreatedData?
-  public var id: String?
-
-  public init(
-    data: OpenAIAuditLogProjectCreatedData? = nil,
-    id: String? = nil
-  ) {
-    self.data = data
-    self.id = id
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case data
-    case id
-  }
-}
-
-public struct OpenAIAuditLogProjectCreatedData: Codable, Sendable {
-  public var name: String?
-  public var title: String?
-
-  public init(
-    name: String? = nil,
-    title: String? = nil
-  ) {
-    self.name = name
-    self.title = title
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case name
-    case title
-  }
-}
-
-public struct OpenAIAuditLogProjectDeleted: Codable, Sendable {
-  public var id: String?
-
-  public init(
-    id: String? = nil
-  ) {
-    self.id = id
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case id
-  }
-}
-
-public struct OpenAIAuditLogProjectUpdated: Codable, Sendable {
-  public var changesRequested: OpenAIAuditLogProjectUpdatedChangesRequested?
-  public var id: String?
-
-  public init(
-    changesRequested: OpenAIAuditLogProjectUpdatedChangesRequested? = nil,
-    id: String? = nil
-  ) {
-    self.changesRequested = changesRequested
-    self.id = id
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case changesRequested = "changes_requested"
-    case id
-  }
-}
-
-public struct OpenAIAuditLogProjectUpdatedChangesRequested: Codable, Sendable {
-  public var title: String?
-
-  public init(
-    title: String? = nil
-  ) {
-    self.title = title
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case title
-  }
-}
-
-public struct OpenAIAuditLogRateLimitDeleted: Codable, Sendable {
-  public var id: String?
-
-  public init(
-    id: String? = nil
-  ) {
-    self.id = id
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case id
-  }
-}
-
-public struct OpenAIAuditLogRateLimitUpdated: Codable, Sendable {
-  public var changesRequested: OpenAIAuditLogRateLimitUpdatedChangesRequested?
-  public var id: String?
-
-  public init(
-    changesRequested: OpenAIAuditLogRateLimitUpdatedChangesRequested? = nil,
-    id: String? = nil
-  ) {
-    self.changesRequested = changesRequested
-    self.id = id
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case changesRequested = "changes_requested"
-    case id
-  }
-}
-
-public struct OpenAIAuditLogRateLimitUpdatedChangesRequested: Codable, Sendable {
-  public var batch1DayMaxInputTokens: Int?
-  public var maxAudioMegabytesPer1Minute: Int?
-  public var maxImagesPer1Minute: Int?
-  public var maxRequestsPer1Day: Int?
-  public var maxRequestsPer1Minute: Int?
-  public var maxTokensPer1Minute: Int?
-
-  public init(
-    batch1DayMaxInputTokens: Int? = nil,
-    maxAudioMegabytesPer1Minute: Int? = nil,
-    maxImagesPer1Minute: Int? = nil,
-    maxRequestsPer1Day: Int? = nil,
-    maxRequestsPer1Minute: Int? = nil,
-    maxTokensPer1Minute: Int? = nil
-  ) {
-    self.batch1DayMaxInputTokens = batch1DayMaxInputTokens
-    self.maxAudioMegabytesPer1Minute = maxAudioMegabytesPer1Minute
-    self.maxImagesPer1Minute = maxImagesPer1Minute
-    self.maxRequestsPer1Day = maxRequestsPer1Day
-    self.maxRequestsPer1Minute = maxRequestsPer1Minute
-    self.maxTokensPer1Minute = maxTokensPer1Minute
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case batch1DayMaxInputTokens = "batch_1_day_max_input_tokens"
-    case maxAudioMegabytesPer1Minute = "max_audio_megabytes_per_1_minute"
-    case maxImagesPer1Minute = "max_images_per_1_minute"
-    case maxRequestsPer1Day = "max_requests_per_1_day"
-    case maxRequestsPer1Minute = "max_requests_per_1_minute"
-    case maxTokensPer1Minute = "max_tokens_per_1_minute"
-  }
-}
-
-public struct OpenAIAuditLogRoleAssignmentCreated: Codable, Sendable {
-  public var id: String?
-  public var principalId: String?
-  public var principalType: String?
-  public var resourceId: String?
-  public var resourceType: String?
-
-  public init(
-    id: String? = nil,
-    principalId: String? = nil,
-    principalType: String? = nil,
-    resourceId: String? = nil,
-    resourceType: String? = nil
-  ) {
-    self.id = id
-    self.principalId = principalId
-    self.principalType = principalType
-    self.resourceId = resourceId
-    self.resourceType = resourceType
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case id
-    case principalId = "principal_id"
-    case principalType = "principal_type"
-    case resourceId = "resource_id"
-    case resourceType = "resource_type"
-  }
-}
-
-public struct OpenAIAuditLogRoleAssignmentDeleted: Codable, Sendable {
-  public var id: String?
-  public var principalId: String?
-  public var principalType: String?
-  public var resourceId: String?
-  public var resourceType: String?
-
-  public init(
-    id: String? = nil,
-    principalId: String? = nil,
-    principalType: String? = nil,
-    resourceId: String? = nil,
-    resourceType: String? = nil
-  ) {
-    self.id = id
-    self.principalId = principalId
-    self.principalType = principalType
-    self.resourceId = resourceId
-    self.resourceType = resourceType
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case id
-    case principalId = "principal_id"
-    case principalType = "principal_type"
-    case resourceId = "resource_id"
-    case resourceType = "resource_type"
-  }
-}
-
-public struct OpenAIAuditLogRoleBoundToResource: Codable, Sendable {
-  public var connectorId: String?
-  public var connectorName: String?
-  public var enabled: Bool?
-  public var id: String?
-  public var permissions: [String]?
-  public var resourceId: String?
-  public var resourceType: String?
-  public var roleId: String?
-  public var source: OpenAIAuditLogRoleBoundToResourceSource?
-  public var workspaceId: String?
-
-  public init(
-    connectorId: String? = nil,
-    connectorName: String? = nil,
-    enabled: Bool? = nil,
-    id: String? = nil,
-    permissions: [String]? = nil,
-    resourceId: String? = nil,
-    resourceType: String? = nil,
-    roleId: String? = nil,
-    source: OpenAIAuditLogRoleBoundToResourceSource? = nil,
-    workspaceId: String? = nil
-  ) {
-    self.connectorId = connectorId
-    self.connectorName = connectorName
-    self.enabled = enabled
-    self.id = id
-    self.permissions = permissions
-    self.resourceId = resourceId
-    self.resourceType = resourceType
-    self.roleId = roleId
-    self.source = source
-    self.workspaceId = workspaceId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case connectorId = "connector_id"
-    case connectorName = "connector_name"
-    case enabled
-    case id
-    case permissions
-    case resourceId = "resource_id"
-    case resourceType = "resource_type"
-    case roleId = "role_id"
-    case source
-    case workspaceId = "workspace_id"
-  }
-}
-
-public struct OpenAIAuditLogRoleBoundToResourceSource: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let roleToggle = Self(rawValue: "role_toggle")
-  public static let roleConnectorUpdate = Self(rawValue: "role_connector_update")
-  public static let roleDelete = Self(rawValue: "role_delete")
-  public static let workspacePermissions = Self(rawValue: "workspace_permissions")
-  public static let connectorPublish = Self(rawValue: "connector_publish")
-}
-
-public struct OpenAIAuditLogRoleCreated: Codable, Sendable {
-  public var id: String?
-  public var permissions: [String]?
-  public var resourceId: String?
-  public var resourceType: String?
-  public var roleName: String?
-
-  public init(
-    id: String? = nil,
-    permissions: [String]? = nil,
-    resourceId: String? = nil,
-    resourceType: String? = nil,
-    roleName: String? = nil
-  ) {
-    self.id = id
-    self.permissions = permissions
-    self.resourceId = resourceId
-    self.resourceType = resourceType
-    self.roleName = roleName
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case id
-    case permissions
-    case resourceId = "resource_id"
-    case resourceType = "resource_type"
-    case roleName = "role_name"
-  }
-}
-
-public struct OpenAIAuditLogRoleDeleted: Codable, Sendable {
-  public var id: String?
-
-  public init(
-    id: String? = nil
-  ) {
-    self.id = id
-  }
-
-  enum CodingKeys: String, CodingKey {
     case id
   }
 }

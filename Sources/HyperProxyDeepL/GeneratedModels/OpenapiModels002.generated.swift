@@ -4,6 +4,20 @@
 import Foundation
 import HyperProxyCore
 
+public typealias DeepLSourceLanguage = String
+
+public struct DeepLSplitSentencesOption: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let value0 = Self(rawValue: "0")
+  public static let value1 = Self(rawValue: "1")
+  public static let nonewlines = Self(rawValue: "nonewlines")
+}
+
 public typealias DeepLSplittingTagCommaSeparatedList = DeepLTagCommaSeparatedList
 
 public typealias DeepLSplittingTagList = DeepLTagList
@@ -1244,6 +1258,8 @@ public struct DeepLVoiceTargetLanguagesItem: RawRepresentable, Codable, Hashable
   public static let et = Self(rawValue: "et")
   public static let fi = Self(rawValue: "fi")
   public static let fr = Self(rawValue: "fr")
+  public static let frCA = Self(rawValue: "fr-CA")
+  public static let frFR = Self(rawValue: "fr-FR")
   public static let ga = Self(rawValue: "ga")
   public static let he = Self(rawValue: "he")
   public static let hi = Self(rawValue: "hi")
@@ -1329,7 +1345,10 @@ public struct DeepLVoiceTargetMediaLanguagesItem: RawRepresentable, Codable, Has
   public static let es = Self(rawValue: "es")
   public static let fi = Self(rawValue: "fi")
   public static let fr = Self(rawValue: "fr")
+  public static let frCA = Self(rawValue: "fr-CA")
+  public static let frFR = Self(rawValue: "fr-FR")
   public static let hi = Self(rawValue: "hi")
+  public static let hr = Self(rawValue: "hr")
   public static let hu = Self(rawValue: "hu")
   public static let id = Self(rawValue: "id")
   public static let it = Self(rawValue: "it")
@@ -1347,6 +1366,7 @@ public struct DeepLVoiceTargetMediaLanguagesItem: RawRepresentable, Codable, Has
   public static let sk = Self(rawValue: "sk")
   public static let sv = Self(rawValue: "sv")
   public static let ta = Self(rawValue: "ta")
+  public static let tl = Self(rawValue: "tl")
   public static let tr = Self(rawValue: "tr")
   public static let uk = Self(rawValue: "uk")
   public static let vi = Self(rawValue: "vi")
@@ -1364,6 +1384,7 @@ public struct DeepLVoiceTargetMediaVoice: RawRepresentable, Codable, Hashable, S
 
   public static let male = Self(rawValue: "male")
   public static let female = Self(rawValue: "female")
+  public static let match = Self(rawValue: "match")
 }
 
 public struct DeepLVoiceTranslateCreateJobRequest: Codable, Sendable {

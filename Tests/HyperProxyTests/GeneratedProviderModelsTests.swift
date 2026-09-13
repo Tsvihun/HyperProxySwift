@@ -21,6 +21,7 @@ struct GeneratedProviderModelsTests {
       outputFormat: .webp,
       safetyTolerance: 2,
       seed: 42,
+      user: "end-user-42",
       webhookSecret: "secret",
       webhookUrl: "https://example.com/bfl-webhook",
       width: 1_536
@@ -34,6 +35,7 @@ struct GeneratedProviderModelsTests {
     #expect(json["input_image_8"] as? String == "https://example.com/reference-8.png")
     #expect(json["output_format"] as? String == "webp")
     #expect(json["safety_tolerance"] as? Int == 2)
+    #expect(json["user"] as? String == "end-user-42")
     #expect(json["webhook_secret"] as? String == "secret")
     #expect(json["webhook_url"] as? String == "https://example.com/bfl-webhook")
   }
@@ -144,7 +146,7 @@ struct GeneratedProviderModelsTests {
       aspectRatio: "16:9",
       duration: 8,
       generateAudio: true,
-      resolution: .fhd,
+      resolution: .uhd,
       safetyTolerance: 2,
       version: "3.0"
     )
@@ -156,7 +158,7 @@ struct GeneratedProviderModelsTests {
     #expect(json["aspect_ratio"] as? String == "16:9")
     #expect(json["duration"] as? Int == 8)
     #expect(json["generate_audio"] as? Bool == true)
-    #expect(json["resolution"] as? String == "fhd")
+    #expect(json["resolution"] as? String == "uhd")
 
     let remainingModes: [BFLFlux3VideoRequest] = [
       .imageToVideo(

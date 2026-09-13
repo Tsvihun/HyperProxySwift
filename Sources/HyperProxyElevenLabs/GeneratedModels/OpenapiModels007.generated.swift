@@ -4,6 +4,190 @@
 import Foundation
 import HyperProxyCore
 
+public struct ElevenLabsGetMcpRouteParameters: Codable, Sendable {
+  public var mcpServerId: String
+  public var xiApiKey: String?
+
+  public init(
+    mcpServerId: String,
+    xiApiKey: String? = nil
+  ) {
+    self.mcpServerId = mcpServerId
+    self.xiApiKey = xiApiKey
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case mcpServerId = "mcp_server_id"
+    case xiApiKey = "xi-api-key"
+  }
+}
+
+public struct ElevenLabsGetMcpToolConfigOverrideRouteParameters: Codable, Sendable {
+  public var mcpServerId: String
+  public var toolName: String
+  public var xiApiKey: String?
+
+  public init(
+    mcpServerId: String,
+    toolName: String,
+    xiApiKey: String? = nil
+  ) {
+    self.mcpServerId = mcpServerId
+    self.toolName = toolName
+    self.xiApiKey = xiApiKey
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case mcpServerId = "mcp_server_id"
+    case toolName = "tool_name"
+    case xiApiKey = "xi-api-key"
+  }
+}
+
+public struct ElevenLabsGetModelsParameters: Codable, Sendable {
+  public var xiApiKey: String?
+
+  public init(
+    xiApiKey: String? = nil
+  ) {
+    self.xiApiKey = xiApiKey
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case xiApiKey = "xi-api-key"
+  }
+}
+
+public typealias ElevenLabsGetModelsResponse = [ElevenLabsModelResponseModel]
+
+public struct ElevenLabsGetOrCreateRAGIndexRequestModel: Codable, Sendable {
+  public var createIfMissing: Bool
+  public var documentId: String
+  public var model: ElevenLabsEmbeddingModelEnum
+
+  public init(
+    createIfMissing: Bool,
+    documentId: String,
+    model: ElevenLabsEmbeddingModelEnum
+  ) {
+    self.createIfMissing = createIfMissing
+    self.documentId = documentId
+    self.model = model
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case createIfMissing = "create_if_missing"
+    case documentId = "document_id"
+    case model
+  }
+}
+
+public struct ElevenLabsGetOrCreateRagIndexesParameters: Codable, Sendable {
+  public var xiApiKey: String?
+
+  public init(
+    xiApiKey: String? = nil
+  ) {
+    self.xiApiKey = xiApiKey
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case xiApiKey = "xi-api-key"
+  }
+}
+
+public typealias ElevenLabsGetOrCreateRagIndexesResponse = [String: HyperProxyJSONValue]
+
+public struct ElevenLabsGetOrderByConfirmationNumberParams: Codable, Sendable {
+  public var smbToolType: String?
+
+  public init(
+    smbToolType: String? = nil
+  ) {
+    self.smbToolType = smbToolType
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case smbToolType = "smb_tool_type"
+  }
+}
+
+public struct ElevenLabsGetPhoneNumberExotelResponseModel: Codable, Sendable {
+  public var assignedAgent: ElevenLabsPhoneNumberAgentInfo?
+  public var label: String
+  public var phoneNumber: String
+  public var phoneNumberId: String
+  public var provider: String?
+  public var supportsInbound: Bool?
+  public var supportsOutbound: Bool?
+
+  public init(
+    label: String,
+    phoneNumber: String,
+    phoneNumberId: String,
+    assignedAgent: ElevenLabsPhoneNumberAgentInfo? = nil,
+    provider: String? = nil,
+    supportsInbound: Bool? = nil,
+    supportsOutbound: Bool? = nil
+  ) {
+    self.assignedAgent = assignedAgent
+    self.label = label
+    self.phoneNumber = phoneNumber
+    self.phoneNumberId = phoneNumberId
+    self.provider = provider
+    self.supportsInbound = supportsInbound
+    self.supportsOutbound = supportsOutbound
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case assignedAgent = "assigned_agent"
+    case label
+    case phoneNumber = "phone_number"
+    case phoneNumberId = "phone_number_id"
+    case provider
+    case supportsInbound = "supports_inbound"
+    case supportsOutbound = "supports_outbound"
+  }
+}
+
+public struct ElevenLabsGetPhoneNumberInboundSIPTrunkConfigResponseModel: Codable, Sendable {
+  public var allowedAddresses: [String]
+  public var allowedNumbers: [String]?
+  public var attributesToHeaders: [String: String]?
+  public var hasAuthCredentials: Bool
+  public var mediaEncryption: ElevenLabsSIPMediaEncryptionEnum
+  public var remoteDomains: [String]?
+  public var username: String?
+
+  public init(
+    allowedAddresses: [String],
+    allowedNumbers: [String]?,
+    hasAuthCredentials: Bool,
+    mediaEncryption: ElevenLabsSIPMediaEncryptionEnum,
+    attributesToHeaders: [String: String]? = nil,
+    remoteDomains: [String]? = nil,
+    username: String? = nil
+  ) {
+    self.allowedAddresses = allowedAddresses
+    self.allowedNumbers = allowedNumbers
+    self.attributesToHeaders = attributesToHeaders
+    self.hasAuthCredentials = hasAuthCredentials
+    self.mediaEncryption = mediaEncryption
+    self.remoteDomains = remoteDomains
+    self.username = username
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case allowedAddresses = "allowed_addresses"
+    case allowedNumbers = "allowed_numbers"
+    case attributesToHeaders = "attributes_to_headers"
+    case hasAuthCredentials = "has_auth_credentials"
+    case mediaEncryption = "media_encryption"
+    case remoteDomains = "remote_domains"
+    case username
+  }
+}
+
 public struct ElevenLabsGetPhoneNumberOutboundSIPTrunkConfigResponseModel: Codable, Sendable {
   public var address: String
   public var attributesToHeaders: [String: String]?
@@ -945,6 +1129,7 @@ public struct ElevenLabsGetSignedUrlDeprecatedParameters: Codable, Sendable {
   public var debugEventsRequest: Bool?
   public var environment: String?
   public var includeConversationId: Bool?
+  public var versionId: String?
   public var xiApiKey: String?
 
   public init(
@@ -953,6 +1138,7 @@ public struct ElevenLabsGetSignedUrlDeprecatedParameters: Codable, Sendable {
     debugEventsRequest: Bool? = nil,
     environment: String? = nil,
     includeConversationId: Bool? = nil,
+    versionId: String? = nil,
     xiApiKey: String? = nil
   ) {
     self.agentId = agentId
@@ -960,6 +1146,7 @@ public struct ElevenLabsGetSignedUrlDeprecatedParameters: Codable, Sendable {
     self.debugEventsRequest = debugEventsRequest
     self.environment = environment
     self.includeConversationId = includeConversationId
+    self.versionId = versionId
     self.xiApiKey = xiApiKey
   }
 
@@ -969,6 +1156,7 @@ public struct ElevenLabsGetSignedUrlDeprecatedParameters: Codable, Sendable {
     case debugEventsRequest = "debug_events_request"
     case environment
     case includeConversationId = "include_conversation_id"
+    case versionId = "version_id"
     case xiApiKey = "xi-api-key"
   }
 }
@@ -1321,9 +1509,11 @@ public struct ElevenLabsGetTestSuiteInvocationResponseModel: Codable, Sendable {
   public var createdAt: Int?
   public var folderId: String?
   public var id: String
+  public var ranAgainstDraft: Bool?
   public var repeatCount: Int?
   public var resultGroups: [ElevenLabsTestRunResultSummary]?
   public var testRuns: [ElevenLabsUnitTestRunResponseModel]
+  public var versionId: String?
 
   public init(
     id: String,
@@ -1333,8 +1523,10 @@ public struct ElevenLabsGetTestSuiteInvocationResponseModel: Codable, Sendable {
     bucketingStatus: ElevenLabsBucketingStatus? = nil,
     createdAt: Int? = nil,
     folderId: String? = nil,
+    ranAgainstDraft: Bool? = nil,
     repeatCount: Int? = nil,
-    resultGroups: [ElevenLabsTestRunResultSummary]? = nil
+    resultGroups: [ElevenLabsTestRunResultSummary]? = nil,
+    versionId: String? = nil
   ) {
     self.agentId = agentId
     self.branchId = branchId
@@ -1342,9 +1534,11 @@ public struct ElevenLabsGetTestSuiteInvocationResponseModel: Codable, Sendable {
     self.createdAt = createdAt
     self.folderId = folderId
     self.id = id
+    self.ranAgainstDraft = ranAgainstDraft
     self.repeatCount = repeatCount
     self.resultGroups = resultGroups
     self.testRuns = testRuns
+    self.versionId = versionId
   }
 
   enum CodingKeys: String, CodingKey {
@@ -1354,9 +1548,11 @@ public struct ElevenLabsGetTestSuiteInvocationResponseModel: Codable, Sendable {
     case createdAt = "created_at"
     case folderId = "folder_id"
     case id
+    case ranAgainstDraft = "ran_against_draft"
     case repeatCount = "repeat_count"
     case resultGroups = "result_groups"
     case testRuns = "test_runs"
+    case versionId = "version_id"
   }
 }
 
@@ -1992,6 +2188,7 @@ public struct ElevenLabsGetVoicesV2ResponseModel: Codable, Sendable {
 }
 
 public struct ElevenLabsGetWhatsAppAccountResponse: Codable, Sendable {
+  public var accountType: ElevenLabsWhatsAppAccountType?
   public var assignedAgentId: String?
   public var assignedAgentName: String?
   public var businessAccountId: String
@@ -2011,12 +2208,14 @@ public struct ElevenLabsGetWhatsAppAccountResponse: Codable, Sendable {
     phoneNumber: String,
     phoneNumberId: String,
     phoneNumberName: String,
+    accountType: ElevenLabsWhatsAppAccountType? = nil,
     assignedAgentId: String? = nil,
     enableAudioMessageResponse: Bool? = nil,
     enableMessaging: Bool? = nil,
     enableTypingIndicator: Bool? = nil,
     isTokenExpired: Bool? = nil
   ) {
+    self.accountType = accountType
     self.assignedAgentId = assignedAgentId
     self.assignedAgentName = assignedAgentName
     self.businessAccountId = businessAccountId
@@ -2031,6 +2230,7 @@ public struct ElevenLabsGetWhatsAppAccountResponse: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case accountType = "account_type"
     case assignedAgentId = "assigned_agent_id"
     case assignedAgentName = "assigned_agent_name"
     case businessAccountId = "business_account_id"
@@ -2506,22 +2706,37 @@ public struct ElevenLabsIcon: Codable, Sendable {
   public var mimeType: String?
   public var sizes: [String]?
   public var src: String
+  public var theme: ElevenLabsIconThemeAnyOf1?
 
   public init(
     src: String,
     mimeType: String? = nil,
-    sizes: [String]? = nil
+    sizes: [String]? = nil,
+    theme: ElevenLabsIconThemeAnyOf1? = nil
   ) {
     self.mimeType = mimeType
     self.sizes = sizes
     self.src = src
+    self.theme = theme
   }
 
   enum CodingKeys: String, CodingKey {
     case mimeType
     case sizes
     case src
+    case theme
   }
+}
+
+public struct ElevenLabsIconThemeAnyOf1: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let light = Self(rawValue: "light")
+  public static let dark = Self(rawValue: "dark")
 }
 
 public struct ElevenLabsImageAnalysis: Codable, Sendable {
@@ -3396,371 +3611,4 @@ public struct ElevenLabsKnowledgeBaseToolInfo: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case enabledStrategies = "enabled_strategies"
   }
-}
-
-public struct ElevenLabsKnowledgeBaseToolResultModel: Codable, Sendable {
-  public var chunkCount: Int?
-  public var message: String?
-  public var resultType: String?
-  public var status: ElevenLabsKnowledgeBaseToolStatus?
-
-  public init(
-    chunkCount: Int? = nil,
-    message: String? = nil,
-    resultType: String? = nil,
-    status: ElevenLabsKnowledgeBaseToolStatus? = nil
-  ) {
-    self.chunkCount = chunkCount
-    self.message = message
-    self.resultType = resultType
-    self.status = status
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case chunkCount = "chunk_count"
-    case message
-    case resultType = "result_type"
-    case status
-  }
-}
-
-public struct ElevenLabsKnowledgeBaseToolStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let success = Self(rawValue: "success")
-  public static let noMatchingDocuments = Self(rawValue: "no_matching_documents")
-  public static let noResults = Self(rawValue: "no_results")
-}
-
-public struct ElevenLabsLLM: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let gpt4oMini = Self(rawValue: "gpt-4o-mini")
-  public static let gpt4o = Self(rawValue: "gpt-4o")
-  public static let gpt4 = Self(rawValue: "gpt-4")
-  public static let gpt4Turbo = Self(rawValue: "gpt-4-turbo")
-  public static let gpt41 = Self(rawValue: "gpt-4.1")
-  public static let gpt41Mini = Self(rawValue: "gpt-4.1-mini")
-  public static let gpt41Nano = Self(rawValue: "gpt-4.1-nano")
-  public static let gpt5 = Self(rawValue: "gpt-5")
-  public static let gpt51 = Self(rawValue: "gpt-5.1")
-  public static let gpt52 = Self(rawValue: "gpt-5.2")
-  public static let gpt52ChatLatest = Self(rawValue: "gpt-5.2-chat-latest")
-  public static let gpt54 = Self(rawValue: "gpt-5.4")
-  public static let gpt54Mini = Self(rawValue: "gpt-5.4-mini")
-  public static let gpt54Nano = Self(rawValue: "gpt-5.4-nano")
-  public static let gpt55 = Self(rawValue: "gpt-5.5")
-  public static let gpt56Sol = Self(rawValue: "gpt-5.6-sol")
-  public static let gpt56Terra = Self(rawValue: "gpt-5.6-terra")
-  public static let gpt56Luna = Self(rawValue: "gpt-5.6-luna")
-  public static let gpt5Mini = Self(rawValue: "gpt-5-mini")
-  public static let gpt5Nano = Self(rawValue: "gpt-5-nano")
-  public static let gpt35Turbo = Self(rawValue: "gpt-3.5-turbo")
-  public static let gemini15Pro = Self(rawValue: "gemini-1.5-pro")
-  public static let gemini15Flash = Self(rawValue: "gemini-1.5-flash")
-  public static let gemini20Flash = Self(rawValue: "gemini-2.0-flash")
-  public static let gemini20FlashLite = Self(rawValue: "gemini-2.0-flash-lite")
-  public static let gemini25FlashLite = Self(rawValue: "gemini-2.5-flash-lite")
-  public static let gemini25Flash = Self(rawValue: "gemini-2.5-flash")
-  public static let gemini3ProPreview = Self(rawValue: "gemini-3-pro-preview")
-  public static let gemini3FlashPreview = Self(rawValue: "gemini-3-flash-preview")
-  public static let gemini31ProPreview = Self(rawValue: "gemini-3.1-pro-preview")
-  public static let gemini31FlashLitePreview = Self(rawValue: "gemini-3.1-flash-lite-preview")
-  public static let gemini31FlashLite = Self(rawValue: "gemini-3.1-flash-lite")
-  public static let gemini35Flash = Self(rawValue: "gemini-3.5-flash")
-  public static let gemini35FlashLite = Self(rawValue: "gemini-3.5-flash-lite")
-  public static let gemini36Flash = Self(rawValue: "gemini-3.6-flash")
-  public static let gemini37Flash = Self(rawValue: "gemini-3.7-flash")
-  public static let claudeSonnet45 = Self(rawValue: "claude-sonnet-4-5")
-  public static let claudeOpus47 = Self(rawValue: "claude-opus-4-7")
-  public static let claudeOpus48 = Self(rawValue: "claude-opus-4-8")
-  public static let claudeSonnet46 = Self(rawValue: "claude-sonnet-4-6")
-  public static let claudeSonnet5 = Self(rawValue: "claude-sonnet-5")
-  public static let claudeSonnet4 = Self(rawValue: "claude-sonnet-4")
-  public static let claudeHaiku45 = Self(rawValue: "claude-haiku-4-5")
-  public static let claude37Sonnet = Self(rawValue: "claude-3-7-sonnet")
-  public static let claude35Sonnet = Self(rawValue: "claude-3-5-sonnet")
-  public static let claude35SonnetV1 = Self(rawValue: "claude-3-5-sonnet-v1")
-  public static let claude3Haiku = Self(rawValue: "claude-3-haiku")
-  public static let grokBeta = Self(rawValue: "grok-beta")
-  public static let customLlm = Self(rawValue: "custom-llm")
-  public static let qwen34b = Self(rawValue: "qwen3-4b")
-  public static let qwen330bA3b = Self(rawValue: "qwen3-30b-a3b")
-  public static let qwen3635bA3b = Self(rawValue: "qwen36-35b-a3b")
-  public static let qwen35397bA17b = Self(rawValue: "qwen35-397b-a17b")
-  public static let gptOss20b = Self(rawValue: "gpt-oss-20b")
-  public static let gptOss120b = Self(rawValue: "gpt-oss-120b")
-  public static let glm45AirFp8 = Self(rawValue: "glm-45-air-fp8")
-  public static let gemini25FlashPreview092025 = Self(rawValue: "gemini-2.5-flash-preview-09-2025")
-  public static let gemini25FlashLitePreview092025 = Self(
-    rawValue: "gemini-2.5-flash-lite-preview-09-2025")
-  public static let gemini25FlashPreview0520 = Self(rawValue: "gemini-2.5-flash-preview-05-20")
-  public static let gemini25FlashPreview0417 = Self(rawValue: "gemini-2.5-flash-preview-04-17")
-  public static let gemini25FlashLitePreview0617 = Self(
-    rawValue: "gemini-2.5-flash-lite-preview-06-17")
-  public static let gemini20FlashLite001 = Self(rawValue: "gemini-2.0-flash-lite-001")
-  public static let gemini20Flash001 = Self(rawValue: "gemini-2.0-flash-001")
-  public static let gemini15Flash002 = Self(rawValue: "gemini-1.5-flash-002")
-  public static let gemini15Flash001 = Self(rawValue: "gemini-1.5-flash-001")
-  public static let gemini15Pro002 = Self(rawValue: "gemini-1.5-pro-002")
-  public static let gemini15Pro001 = Self(rawValue: "gemini-1.5-pro-001")
-  public static let claudeSonnet420250514 = Self(rawValue: "claude-sonnet-4@20250514")
-  public static let claudeSonnet4520250929 = Self(rawValue: "claude-sonnet-4-5@20250929")
-  public static let claudeHaiku4520251001 = Self(rawValue: "claude-haiku-4-5@20251001")
-  public static let claude37Sonnet20250219 = Self(rawValue: "claude-3-7-sonnet@20250219")
-  public static let claude35Sonnet20240620 = Self(rawValue: "claude-3-5-sonnet@20240620")
-  public static let claude35SonnetV220241022 = Self(rawValue: "claude-3-5-sonnet-v2@20241022")
-  public static let claude3Haiku20240307 = Self(rawValue: "claude-3-haiku@20240307")
-  public static let gpt520250807 = Self(rawValue: "gpt-5-2025-08-07")
-  public static let gpt5120251113 = Self(rawValue: "gpt-5.1-2025-11-13")
-  public static let gpt5220251211 = Self(rawValue: "gpt-5.2-2025-12-11")
-  public static let gpt5420260305 = Self(rawValue: "gpt-5.4-2026-03-05")
-  public static let gpt54Mini20260317 = Self(rawValue: "gpt-5.4-mini-2026-03-17")
-  public static let gpt54Nano20260317 = Self(rawValue: "gpt-5.4-nano-2026-03-17")
-  public static let gpt5520260423 = Self(rawValue: "gpt-5.5-2026-04-23")
-  public static let gpt5Mini20250807 = Self(rawValue: "gpt-5-mini-2025-08-07")
-  public static let gpt5Nano20250807 = Self(rawValue: "gpt-5-nano-2025-08-07")
-  public static let gpt4120250414 = Self(rawValue: "gpt-4.1-2025-04-14")
-  public static let gpt41Mini20250414 = Self(rawValue: "gpt-4.1-mini-2025-04-14")
-  public static let gpt41Nano20250414 = Self(rawValue: "gpt-4.1-nano-2025-04-14")
-  public static let gpt4oMini20240718 = Self(rawValue: "gpt-4o-mini-2024-07-18")
-  public static let gpt4o20241120 = Self(rawValue: "gpt-4o-2024-11-20")
-  public static let gpt4o20240806 = Self(rawValue: "gpt-4o-2024-08-06")
-  public static let gpt4o20240513 = Self(rawValue: "gpt-4o-2024-05-13")
-  public static let gpt40613 = Self(rawValue: "gpt-4-0613")
-  public static let gpt40314 = Self(rawValue: "gpt-4-0314")
-  public static let gpt4Turbo20240409 = Self(rawValue: "gpt-4-turbo-2024-04-09")
-  public static let gpt35Turbo0125 = Self(rawValue: "gpt-3.5-turbo-0125")
-  public static let gpt35Turbo1106 = Self(rawValue: "gpt-3.5-turbo-1106")
-  public static let wattTool8b = Self(rawValue: "watt-tool-8b")
-  public static let wattTool70b = Self(rawValue: "watt-tool-70b")
-}
-
-public struct ElevenLabsLLMCategoryUsage: Codable, Sendable {
-  public var initiatedGeneration: ElevenLabsLLMUsageOutput?
-  public var irreversibleGeneration: ElevenLabsLLMUsageOutput?
-
-  public init(
-    initiatedGeneration: ElevenLabsLLMUsageOutput? = nil,
-    irreversibleGeneration: ElevenLabsLLMUsageOutput? = nil
-  ) {
-    self.initiatedGeneration = initiatedGeneration
-    self.irreversibleGeneration = irreversibleGeneration
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case initiatedGeneration = "initiated_generation"
-    case irreversibleGeneration = "irreversible_generation"
-  }
-}
-
-public struct ElevenLabsLLMDeprecationConfigModel: Codable, Sendable {
-  public var fallbackCompleteDays: Int
-  public var fallbackCompletePercentage: Int
-  public var fallbackStartDays: Int
-  public var fallbackStartPercentage: Int
-  public var warningStartDays: Int
-
-  public init(
-    fallbackCompleteDays: Int,
-    fallbackCompletePercentage: Int,
-    fallbackStartDays: Int,
-    fallbackStartPercentage: Int,
-    warningStartDays: Int
-  ) {
-    self.fallbackCompleteDays = fallbackCompleteDays
-    self.fallbackCompletePercentage = fallbackCompletePercentage
-    self.fallbackStartDays = fallbackStartDays
-    self.fallbackStartPercentage = fallbackStartPercentage
-    self.warningStartDays = warningStartDays
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case fallbackCompleteDays = "fallback_complete_days"
-    case fallbackCompletePercentage = "fallback_complete_percentage"
-    case fallbackStartDays = "fallback_start_days"
-    case fallbackStartPercentage = "fallback_start_percentage"
-    case warningStartDays = "warning_start_days"
-  }
-}
-
-public struct ElevenLabsLLMDeprecationInfoModel: Codable, Sendable {
-  public var deprecationConfig: ElevenLabsLLMDeprecationConfigModel?
-  public var fallbackPercentage: Int?
-  public var isDeprecated: Bool
-  public var isInFallbackPeriod: Bool?
-  public var isInWarningPeriod: Bool?
-  public var llm: ElevenLabsLLM
-  public var providerDeprecationDate: String?
-  public var replacementModel: ElevenLabsLLM?
-
-  public init(
-    isDeprecated: Bool,
-    llm: ElevenLabsLLM,
-    deprecationConfig: ElevenLabsLLMDeprecationConfigModel? = nil,
-    fallbackPercentage: Int? = nil,
-    isInFallbackPeriod: Bool? = nil,
-    isInWarningPeriod: Bool? = nil,
-    providerDeprecationDate: String? = nil,
-    replacementModel: ElevenLabsLLM? = nil
-  ) {
-    self.deprecationConfig = deprecationConfig
-    self.fallbackPercentage = fallbackPercentage
-    self.isDeprecated = isDeprecated
-    self.isInFallbackPeriod = isInFallbackPeriod
-    self.isInWarningPeriod = isInWarningPeriod
-    self.llm = llm
-    self.providerDeprecationDate = providerDeprecationDate
-    self.replacementModel = replacementModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case deprecationConfig = "deprecation_config"
-    case fallbackPercentage = "fallback_percentage"
-    case isDeprecated = "is_deprecated"
-    case isInFallbackPeriod = "is_in_fallback_period"
-    case isInWarningPeriod = "is_in_warning_period"
-    case llm
-    case providerDeprecationDate = "provider_deprecation_date"
-    case replacementModel = "replacement_model"
-  }
-}
-
-public struct ElevenLabsLLMInfoModel: Codable, Sendable {
-  public var availableReasoningEfforts: [ElevenLabsLLMReasoningEffort]?
-  public var deprecationInfo: ElevenLabsLLMDeprecationInfoModel?
-  public var isCheckpoint: Bool
-  public var llm: ElevenLabsLLM
-  public var maxContextLimit: Int
-  public var maxTokensLimit: Int
-  public var regionalProcessingSurcharge: ElevenLabsRegionalProcessingSurchargeInfo?
-  public var supportsDocumentInput: Bool
-  public var supportsImageInput: Bool
-  public var supportsParallelToolCalls: Bool
-
-  public init(
-    isCheckpoint: Bool,
-    llm: ElevenLabsLLM,
-    maxContextLimit: Int,
-    maxTokensLimit: Int,
-    supportsDocumentInput: Bool,
-    supportsImageInput: Bool,
-    supportsParallelToolCalls: Bool,
-    availableReasoningEfforts: [ElevenLabsLLMReasoningEffort]? = nil,
-    deprecationInfo: ElevenLabsLLMDeprecationInfoModel? = nil,
-    regionalProcessingSurcharge: ElevenLabsRegionalProcessingSurchargeInfo? = nil
-  ) {
-    self.availableReasoningEfforts = availableReasoningEfforts
-    self.deprecationInfo = deprecationInfo
-    self.isCheckpoint = isCheckpoint
-    self.llm = llm
-    self.maxContextLimit = maxContextLimit
-    self.maxTokensLimit = maxTokensLimit
-    self.regionalProcessingSurcharge = regionalProcessingSurcharge
-    self.supportsDocumentInput = supportsDocumentInput
-    self.supportsImageInput = supportsImageInput
-    self.supportsParallelToolCalls = supportsParallelToolCalls
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case availableReasoningEfforts = "available_reasoning_efforts"
-    case deprecationInfo = "deprecation_info"
-    case isCheckpoint = "is_checkpoint"
-    case llm
-    case maxContextLimit = "max_context_limit"
-    case maxTokensLimit = "max_tokens_limit"
-    case regionalProcessingSurcharge = "regional_processing_surcharge"
-    case supportsDocumentInput = "supports_document_input"
-    case supportsImageInput = "supports_image_input"
-    case supportsParallelToolCalls = "supports_parallel_tool_calls"
-  }
-}
-
-public struct ElevenLabsLLMInputOutputTokensUsage: Codable, Sendable {
-  public var input: ElevenLabsLLMTokensCategoryUsage?
-  public var inputCacheRead: ElevenLabsLLMTokensCategoryUsage?
-  public var inputCacheWrite: ElevenLabsLLMTokensCategoryUsage?
-  public var outputTotal: ElevenLabsLLMTokensCategoryUsage?
-
-  public init(
-    input: ElevenLabsLLMTokensCategoryUsage? = nil,
-    inputCacheRead: ElevenLabsLLMTokensCategoryUsage? = nil,
-    inputCacheWrite: ElevenLabsLLMTokensCategoryUsage? = nil,
-    outputTotal: ElevenLabsLLMTokensCategoryUsage? = nil
-  ) {
-    self.input = input
-    self.inputCacheRead = inputCacheRead
-    self.inputCacheWrite = inputCacheWrite
-    self.outputTotal = outputTotal
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case input
-    case inputCacheRead = "input_cache_read"
-    case inputCacheWrite = "input_cache_write"
-    case outputTotal = "output_total"
-  }
-}
-
-public struct ElevenLabsLLMListResponseModel: Codable, Sendable {
-  public var defaultDeprecationConfig: ElevenLabsLLMDeprecationConfigModel
-  public var llms: [ElevenLabsLLMInfoModel]
-
-  public init(
-    defaultDeprecationConfig: ElevenLabsLLMDeprecationConfigModel,
-    llms: [ElevenLabsLLMInfoModel]
-  ) {
-    self.defaultDeprecationConfig = defaultDeprecationConfig
-    self.llms = llms
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case defaultDeprecationConfig = "default_deprecation_config"
-    case llms
-  }
-}
-
-public struct ElevenLabsLLMLiteralJsonSchemaProperty: Codable, Sendable {
-  public var description: String
-  public var enumValue: [String]?
-  public var typeModel: HyperProxyJSONValue
-
-  public init(
-    description: String,
-    typeModel: HyperProxyJSONValue,
-    enumValue: [String]? = nil
-  ) {
-    self.description = description
-    self.enumValue = enumValue
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case description
-    case enumValue = "enum"
-    case typeModel = "type"
-  }
-}
-
-public struct ElevenLabsLLMLiteralJsonSchemaPropertyTypeModelAnyOf1: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let boolean = Self(rawValue: "boolean")
-  public static let string = Self(rawValue: "string")
-  public static let integer = Self(rawValue: "integer")
-  public static let number = Self(rawValue: "number")
 }

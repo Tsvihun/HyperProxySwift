@@ -4,6 +4,257 @@
 import Foundation
 import HyperProxyCore
 
+public struct ElevenLabsPublicCreateOrderParameters: Codable, Sendable {
+  public var xiApiKey: String?
+
+  public init(
+    xiApiKey: String? = nil
+  ) {
+    self.xiApiKey = xiApiKey
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case xiApiKey = "xi-api-key"
+  }
+}
+
+public typealias ElevenLabsPublicCreateOrderRequest = ElevenLabsCreateOrderRequest?
+
+public struct ElevenLabsPublicGetAvailableLanguagesParameters: Codable, Sendable {
+  public var orderItemKind: ElevenLabsOrderItemKind
+  public var xiApiKey: String?
+
+  public init(
+    orderItemKind: ElevenLabsOrderItemKind,
+    xiApiKey: String? = nil
+  ) {
+    self.orderItemKind = orderItemKind
+    self.xiApiKey = xiApiKey
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case orderItemKind = "order_item_kind"
+    case xiApiKey = "xi-api-key"
+  }
+}
+
+public struct ElevenLabsPublicGetMediaInfoParameters: Codable, Sendable {
+  public var mediaId: ElevenLabsMediaId
+  public var orderId: ElevenLabsOrderId
+  public var xiApiKey: String?
+
+  public init(
+    mediaId: ElevenLabsMediaId,
+    orderId: ElevenLabsOrderId,
+    xiApiKey: String? = nil
+  ) {
+    self.mediaId = mediaId
+    self.orderId = orderId
+    self.xiApiKey = xiApiKey
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case mediaId = "media_id"
+    case orderId = "order_id"
+    case xiApiKey = "xi-api-key"
+  }
+}
+
+public struct ElevenLabsPublicGetOrderDeliverablesParameters: Codable, Sendable {
+  public var orderId: ElevenLabsOrderId
+  public var xiApiKey: String?
+
+  public init(
+    orderId: ElevenLabsOrderId,
+    xiApiKey: String? = nil
+  ) {
+    self.orderId = orderId
+    self.xiApiKey = xiApiKey
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case orderId = "order_id"
+    case xiApiKey = "xi-api-key"
+  }
+}
+
+public struct ElevenLabsPublicGetOrderParameters: Codable, Sendable {
+  public var orderId: ElevenLabsOrderId
+  public var xiApiKey: String?
+
+  public init(
+    orderId: ElevenLabsOrderId,
+    xiApiKey: String? = nil
+  ) {
+    self.orderId = orderId
+    self.xiApiKey = xiApiKey
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case orderId = "order_id"
+    case xiApiKey = "xi-api-key"
+  }
+}
+
+public struct ElevenLabsPublicListOrdersParameters: Codable, Sendable {
+  public var endDate: String?
+  public var offset: Int?
+  public var pageSize: Int?
+  public var startDate: String?
+  public var status: [ElevenLabsOrderState]?
+  public var xiApiKey: String?
+
+  public init(
+    endDate: String? = nil,
+    offset: Int? = nil,
+    pageSize: Int? = nil,
+    startDate: String? = nil,
+    status: [ElevenLabsOrderState]? = nil,
+    xiApiKey: String? = nil
+  ) {
+    self.endDate = endDate
+    self.offset = offset
+    self.pageSize = pageSize
+    self.startDate = startDate
+    self.status = status
+    self.xiApiKey = xiApiKey
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case endDate = "end_date"
+    case offset
+    case pageSize = "page_size"
+    case startDate = "start_date"
+    case status
+    case xiApiKey = "xi-api-key"
+  }
+}
+
+public struct ElevenLabsPublicRegisterMediaParameters: Codable, Sendable {
+  public var orderId: ElevenLabsOrderId
+  public var xiApiKey: String?
+
+  public init(
+    orderId: ElevenLabsOrderId,
+    xiApiKey: String? = nil
+  ) {
+    self.orderId = orderId
+    self.xiApiKey = xiApiKey
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case orderId = "order_id"
+    case xiApiKey = "xi-api-key"
+  }
+}
+
+public struct ElevenLabsPublicRemoveOrderItemParameters: Codable, Sendable {
+  public var itemId: ElevenLabsItemId
+  public var orderId: ElevenLabsOrderId
+  public var xiApiKey: String?
+
+  public init(
+    itemId: ElevenLabsItemId,
+    orderId: ElevenLabsOrderId,
+    xiApiKey: String? = nil
+  ) {
+    self.itemId = itemId
+    self.orderId = orderId
+    self.xiApiKey = xiApiKey
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case itemId = "item_id"
+    case orderId = "order_id"
+    case xiApiKey = "xi-api-key"
+  }
+}
+
+public struct ElevenLabsPublicSubmitOrderParameters: Codable, Sendable {
+  public var orderId: ElevenLabsOrderId
+  public var xiApiKey: String?
+
+  public init(
+    orderId: ElevenLabsOrderId,
+    xiApiKey: String? = nil
+  ) {
+    self.orderId = orderId
+    self.xiApiKey = xiApiKey
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case orderId = "order_id"
+    case xiApiKey = "xi-api-key"
+  }
+}
+
+public struct ElevenLabsPublicUpdateOrderParameters: Codable, Sendable {
+  public var orderId: ElevenLabsOrderId
+  public var xiApiKey: String?
+
+  public init(
+    orderId: ElevenLabsOrderId,
+    xiApiKey: String? = nil
+  ) {
+    self.orderId = orderId
+    self.xiApiKey = xiApiKey
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case orderId = "order_id"
+    case xiApiKey = "xi-api-key"
+  }
+}
+
+public struct ElevenLabsPublicUpsertOrderItemParameters: Codable, Sendable {
+  public var orderId: ElevenLabsOrderId
+  public var xiApiKey: String?
+
+  public init(
+    orderId: ElevenLabsOrderId,
+    xiApiKey: String? = nil
+  ) {
+    self.orderId = orderId
+    self.xiApiKey = xiApiKey
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case orderId = "order_id"
+    case xiApiKey = "xi-api-key"
+  }
+}
+
+public struct ElevenLabsPydanticPronunciationDictionaryVersionLocator: Codable, Sendable {
+  public var pronunciationDictionaryId: String
+  public var versionId: String?
+
+  public init(
+    pronunciationDictionaryId: String,
+    versionId: String?
+  ) {
+    self.pronunciationDictionaryId = pronunciationDictionaryId
+    self.versionId = versionId
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case pronunciationDictionaryId = "pronunciation_dictionary_id"
+    case versionId = "version_id"
+  }
+}
+
+public struct ElevenLabsQualityPresetType: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let standard = Self(rawValue: "standard")
+  public static let high = Self(rawValue: "high")
+  public static let ultra = Self(rawValue: "ultra")
+  public static let ultraLossless = Self(rawValue: "ultra_lossless")
+}
+
 public struct ElevenLabsQueryAgentKnowledgeBaseRagRouteParameters: Codable, Sendable {
   public var agentId: String
   public var branchId: String?
@@ -26,7 +277,25 @@ public struct ElevenLabsQueryAgentKnowledgeBaseRagRouteParameters: Codable, Send
   }
 }
 
-public struct ElevenLabsQueryParamsJsonSchema: Codable, Sendable {
+public struct ElevenLabsQueryParamsJsonSchemaInput: Codable, Sendable {
+  public var properties: [String: ElevenLabsLiteralJsonSchemaProperty]
+  public var requiredValue: [String]?
+
+  public init(
+    properties: [String: ElevenLabsLiteralJsonSchemaProperty],
+    requiredValue: [String]? = nil
+  ) {
+    self.properties = properties
+    self.requiredValue = requiredValue
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case properties
+    case requiredValue = "required"
+  }
+}
+
+public struct ElevenLabsQueryParamsJsonSchemaOutput: Codable, Sendable {
   public var properties: [String: ElevenLabsLiteralJsonSchemaProperty]
   public var requiredValue: [String]?
 
@@ -230,6 +499,7 @@ public struct ElevenLabsRagChunkMetadata: Codable, Sendable {
 public struct ElevenLabsRagConfigInput: Codable, Sendable {
   public var embeddingModel: ElevenLabsEmbeddingModelEnum?
   public var enabled: Bool?
+  public var knowledgeBaseToolInfo: ElevenLabsKnowledgeBaseToolInfo?
   public var maxDocumentsLength: Int?
   public var maxRetrievedRagChunksCount: Int?
   public var maxVectorDistance: Double?
@@ -239,6 +509,7 @@ public struct ElevenLabsRagConfigInput: Codable, Sendable {
   public init(
     embeddingModel: ElevenLabsEmbeddingModelEnum? = nil,
     enabled: Bool? = nil,
+    knowledgeBaseToolInfo: ElevenLabsKnowledgeBaseToolInfo? = nil,
     maxDocumentsLength: Int? = nil,
     maxRetrievedRagChunksCount: Int? = nil,
     maxVectorDistance: Double? = nil,
@@ -247,6 +518,7 @@ public struct ElevenLabsRagConfigInput: Codable, Sendable {
   ) {
     self.embeddingModel = embeddingModel
     self.enabled = enabled
+    self.knowledgeBaseToolInfo = knowledgeBaseToolInfo
     self.maxDocumentsLength = maxDocumentsLength
     self.maxRetrievedRagChunksCount = maxRetrievedRagChunksCount
     self.maxVectorDistance = maxVectorDistance
@@ -257,6 +529,7 @@ public struct ElevenLabsRagConfigInput: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case embeddingModel = "embedding_model"
     case enabled
+    case knowledgeBaseToolInfo = "knowledge_base_tool_info"
     case maxDocumentsLength = "max_documents_length"
     case maxRetrievedRagChunksCount = "max_retrieved_rag_chunks_count"
     case maxVectorDistance = "max_vector_distance"
@@ -268,6 +541,7 @@ public struct ElevenLabsRagConfigInput: Codable, Sendable {
 public struct ElevenLabsRagConfigOutput: Codable, Sendable {
   public var embeddingModel: ElevenLabsEmbeddingModelEnum?
   public var enabled: Bool?
+  public var knowledgeBaseToolInfo: ElevenLabsKnowledgeBaseToolInfo?
   public var maxDocumentsLength: Int?
   public var maxRetrievedRagChunksCount: Int?
   public var maxVectorDistance: Double?
@@ -277,6 +551,7 @@ public struct ElevenLabsRagConfigOutput: Codable, Sendable {
   public init(
     embeddingModel: ElevenLabsEmbeddingModelEnum? = nil,
     enabled: Bool? = nil,
+    knowledgeBaseToolInfo: ElevenLabsKnowledgeBaseToolInfo? = nil,
     maxDocumentsLength: Int? = nil,
     maxRetrievedRagChunksCount: Int? = nil,
     maxVectorDistance: Double? = nil,
@@ -285,6 +560,7 @@ public struct ElevenLabsRagConfigOutput: Codable, Sendable {
   ) {
     self.embeddingModel = embeddingModel
     self.enabled = enabled
+    self.knowledgeBaseToolInfo = knowledgeBaseToolInfo
     self.maxDocumentsLength = maxDocumentsLength
     self.maxRetrievedRagChunksCount = maxRetrievedRagChunksCount
     self.maxVectorDistance = maxVectorDistance
@@ -295,6 +571,7 @@ public struct ElevenLabsRagConfigOutput: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case embeddingModel = "embedding_model"
     case enabled
+    case knowledgeBaseToolInfo = "knowledge_base_tool_info"
     case maxDocumentsLength = "max_documents_length"
     case maxRetrievedRagChunksCount = "max_retrieved_rag_chunks_count"
     case maxVectorDistance = "max_vector_distance"
@@ -306,6 +583,7 @@ public struct ElevenLabsRagConfigOutput: Codable, Sendable {
 public struct ElevenLabsRagConfigWorkflowOverrideInput: Codable, Sendable {
   public var embeddingModel: ElevenLabsEmbeddingModelEnum?
   public var enabled: Bool?
+  public var knowledgeBaseToolInfo: ElevenLabsKnowledgeBaseToolInfo?
   public var maxDocumentsLength: Int?
   public var maxRetrievedRagChunksCount: Int?
   public var maxVectorDistance: Double?
@@ -315,6 +593,7 @@ public struct ElevenLabsRagConfigWorkflowOverrideInput: Codable, Sendable {
   public init(
     embeddingModel: ElevenLabsEmbeddingModelEnum? = nil,
     enabled: Bool? = nil,
+    knowledgeBaseToolInfo: ElevenLabsKnowledgeBaseToolInfo? = nil,
     maxDocumentsLength: Int? = nil,
     maxRetrievedRagChunksCount: Int? = nil,
     maxVectorDistance: Double? = nil,
@@ -323,6 +602,7 @@ public struct ElevenLabsRagConfigWorkflowOverrideInput: Codable, Sendable {
   ) {
     self.embeddingModel = embeddingModel
     self.enabled = enabled
+    self.knowledgeBaseToolInfo = knowledgeBaseToolInfo
     self.maxDocumentsLength = maxDocumentsLength
     self.maxRetrievedRagChunksCount = maxRetrievedRagChunksCount
     self.maxVectorDistance = maxVectorDistance
@@ -333,6 +613,7 @@ public struct ElevenLabsRagConfigWorkflowOverrideInput: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case embeddingModel = "embedding_model"
     case enabled
+    case knowledgeBaseToolInfo = "knowledge_base_tool_info"
     case maxDocumentsLength = "max_documents_length"
     case maxRetrievedRagChunksCount = "max_retrieved_rag_chunks_count"
     case maxVectorDistance = "max_vector_distance"
@@ -344,6 +625,7 @@ public struct ElevenLabsRagConfigWorkflowOverrideInput: Codable, Sendable {
 public struct ElevenLabsRagConfigWorkflowOverrideOutput: Codable, Sendable {
   public var embeddingModel: ElevenLabsEmbeddingModelEnum?
   public var enabled: Bool?
+  public var knowledgeBaseToolInfo: ElevenLabsKnowledgeBaseToolInfo?
   public var maxDocumentsLength: Int?
   public var maxRetrievedRagChunksCount: Int?
   public var maxVectorDistance: Double?
@@ -353,6 +635,7 @@ public struct ElevenLabsRagConfigWorkflowOverrideOutput: Codable, Sendable {
   public init(
     embeddingModel: ElevenLabsEmbeddingModelEnum? = nil,
     enabled: Bool? = nil,
+    knowledgeBaseToolInfo: ElevenLabsKnowledgeBaseToolInfo? = nil,
     maxDocumentsLength: Int? = nil,
     maxRetrievedRagChunksCount: Int? = nil,
     maxVectorDistance: Double? = nil,
@@ -361,6 +644,7 @@ public struct ElevenLabsRagConfigWorkflowOverrideOutput: Codable, Sendable {
   ) {
     self.embeddingModel = embeddingModel
     self.enabled = enabled
+    self.knowledgeBaseToolInfo = knowledgeBaseToolInfo
     self.maxDocumentsLength = maxDocumentsLength
     self.maxRetrievedRagChunksCount = maxRetrievedRagChunksCount
     self.maxVectorDistance = maxVectorDistance
@@ -371,6 +655,7 @@ public struct ElevenLabsRagConfigWorkflowOverrideOutput: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case embeddingModel = "embedding_model"
     case enabled
+    case knowledgeBaseToolInfo = "knowledge_base_tool_info"
     case maxDocumentsLength = "max_documents_length"
     case maxRetrievedRagChunksCount = "max_retrieved_rag_chunks_count"
     case maxVectorDistance = "max_vector_distance"
@@ -611,13 +896,13 @@ public typealias ElevenLabsRedirectToMintlifyResponse = HyperProxyJSONValue
 public struct ElevenLabsReferenceVideo: Codable, Sendable {
   public var contentAssetId: String?
   public var generationId: String?
-  public var studioClip: ElevenLabsStudioClipReference?
+  public var studioClip: ElevenLabsStudioClipLocator?
   public var templateNodeId: String?
 
   public init(
     contentAssetId: String? = nil,
     generationId: String? = nil,
-    studioClip: ElevenLabsStudioClipReference? = nil,
+    studioClip: ElevenLabsStudioClipLocator? = nil,
     templateNodeId: String? = nil
   ) {
     self.contentAssetId = contentAssetId
@@ -1789,42 +2074,6 @@ public struct ElevenLabsRunPvcVoiceTrainingParameters: Codable, Sendable {
   }
 }
 
-public struct ElevenLabsRunSubagentToolConfigInput: Codable, Sendable {
-  public var agents: [ElevenLabsSubAgentInput]
-  public var systemToolType: String?
-
-  public init(
-    agents: [ElevenLabsSubAgentInput],
-    systemToolType: String? = nil
-  ) {
-    self.agents = agents
-    self.systemToolType = systemToolType
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case agents
-    case systemToolType = "system_tool_type"
-  }
-}
-
-public struct ElevenLabsRunSubagentToolConfigOutput: Codable, Sendable {
-  public var agents: [ElevenLabsSubAgentOutput]
-  public var systemToolType: String?
-
-  public init(
-    agents: [ElevenLabsSubAgentOutput],
-    systemToolType: String? = nil
-  ) {
-    self.agents = agents
-    self.systemToolType = systemToolType
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case agents
-    case systemToolType = "system_tool_type"
-  }
-}
-
 public struct ElevenLabsSFXModelId: RawRepresentable, Codable, Hashable, Sendable {
   public var rawValue: String
 
@@ -2864,6 +3113,20 @@ public struct ElevenLabsSegmentedJsonExportOptions: Codable, Sendable {
   }
 }
 
+public struct ElevenLabsSendCustomEmailParams: Codable, Sendable {
+  public var smbToolType: String?
+
+  public init(
+    smbToolType: String? = nil
+  ) {
+    self.smbToolType = smbToolType
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case smbToolType = "smb_tool_type"
+  }
+}
+
 public struct ElevenLabsSentimentAggregate: Codable, Sendable {
   public var averageFrustrationScore: Double?
   public var averageSentimentScore: Double?
@@ -2990,279 +3253,5 @@ public struct ElevenLabsSetBookingSlugParams: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case smbToolType = "smb_tool_type"
-  }
-}
-
-public struct ElevenLabsSetRulesParameters: Codable, Sendable {
-  public var pronunciationDictionaryId: String
-  public var xiApiKey: String?
-
-  public init(
-    pronunciationDictionaryId: String,
-    xiApiKey: String? = nil
-  ) {
-    self.pronunciationDictionaryId = pronunciationDictionaryId
-    self.xiApiKey = xiApiKey
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case pronunciationDictionaryId = "pronunciation_dictionary_id"
-    case xiApiKey = "xi-api-key"
-  }
-}
-
-public struct ElevenLabsSetThirdPartyDisablingPolicyParameters: Codable, Sendable {
-  public var xiApiKey: String?
-
-  public init(
-    xiApiKey: String? = nil
-  ) {
-    self.xiApiKey = xiApiKey
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case xiApiKey = "xi-api-key"
-  }
-}
-
-public typealias ElevenLabsSetThirdPartyDisablingPolicyResponse = HyperProxyJSONValue
-
-public struct ElevenLabsSeverityId: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: Int
-
-  public init(rawValue: Int) {
-    self.rawValue = rawValue
-  }
-
-  public static let value0 = Self(rawValue: 0)
-  public static let value1 = Self(rawValue: 1)
-  public static let value2 = Self(rawValue: 2)
-  public static let value3 = Self(rawValue: 3)
-  public static let value4 = Self(rawValue: 4)
-  public static let value5 = Self(rawValue: 5)
-  public static let value6 = Self(rawValue: 6)
-  public static let value99 = Self(rawValue: 99)
-}
-
-public struct ElevenLabsSfxSourceContext: Codable, Sendable {
-  public var generationConfig: [String: HyperProxyJSONValue]?
-  public var soundGenerationHistoryItemId: String?
-  public var sourceType: String?
-  public var text: String?
-
-  public init(
-    generationConfig: [String: HyperProxyJSONValue]? = nil,
-    soundGenerationHistoryItemId: String? = nil,
-    sourceType: String? = nil,
-    text: String? = nil
-  ) {
-    self.generationConfig = generationConfig
-    self.soundGenerationHistoryItemId = soundGenerationHistoryItemId
-    self.sourceType = sourceType
-    self.text = text
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case generationConfig = "generation_config"
-    case soundGenerationHistoryItemId = "sound_generation_history_item_id"
-    case sourceType = "source_type"
-    case text
-  }
-}
-
-public struct ElevenLabsShareOptionResponseModel: Codable, Sendable {
-  public var id: String
-  public var name: String
-  public var typeModel: ElevenLabsShareOptionResponseModelTypeModel
-
-  public init(
-    id: String,
-    name: String,
-    typeModel: ElevenLabsShareOptionResponseModelTypeModel
-  ) {
-    self.id = id
-    self.name = name
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case id
-    case name
-    case typeModel = "type"
-  }
-}
-
-public struct ElevenLabsShareOptionResponseModelTypeModel: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let user = Self(rawValue: "user")
-  public static let group = Self(rawValue: "group")
-  public static let key = Self(rawValue: "key")
-}
-
-public struct ElevenLabsShareResourceEndpointParameters: Codable, Sendable {
-  public var resourceId: String
-  public var xiApiKey: String?
-
-  public init(
-    resourceId: String,
-    xiApiKey: String? = nil
-  ) {
-    self.resourceId = resourceId
-    self.xiApiKey = xiApiKey
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case resourceId = "resource_id"
-    case xiApiKey = "xi-api-key"
-  }
-}
-
-public typealias ElevenLabsShareResourceEndpointResponse = HyperProxyJSONValue
-
-public struct ElevenLabsSimilarVoice: Codable, Sendable {
-  public var category: ElevenLabsVOICECATEGORY
-  public var description: String?
-  public var name: String
-  public var previewUrl: String?
-  public var voiceId: String
-
-  public init(
-    category: ElevenLabsVOICECATEGORY,
-    name: String,
-    voiceId: String,
-    description: String? = nil,
-    previewUrl: String? = nil
-  ) {
-    self.category = category
-    self.description = description
-    self.name = name
-    self.previewUrl = previewUrl
-    self.voiceId = voiceId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case category
-    case description
-    case name
-    case previewUrl = "preview_url"
-    case voiceId = "voice_id"
-  }
-}
-
-public struct ElevenLabsSimilarVoicesForSpeakerResponse: Codable, Sendable {
-  public var voices: [ElevenLabsSimilarVoice]
-
-  public init(
-    voices: [ElevenLabsSimilarVoice]
-  ) {
-    self.voices = voices
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case voices
-  }
-}
-
-public struct ElevenLabsSimulationLibrarySettings: Codable, Sendable {
-
-  public init() {}
-}
-
-public struct ElevenLabsSimulationTestModel: Codable, Sendable {
-  public var chatHistory: [ElevenLabsConversationHistoryTranscriptCommonModelOutput]?
-  public var conversationInitiationSource: ElevenLabsConversationInitiationSource?
-  public var dynamicVariables: [String: HyperProxyJSONValue]?
-  public var environment: String?
-  public var evaluationModel: ElevenLabsLLM?
-  public var fromConversationMetadata: ElevenLabsTestFromConversationMetadataOutput?
-  public var simulatedUserModel: ElevenLabsLLM?
-  public var simulationEnvironment: String?
-  public var simulationMaxTurns: Int?
-  public var simulationScenario: String?
-  public var successCondition: String?
-  public var successConditions: [String]?
-  public var toolMockConfig: ElevenLabsSimulationToolMockBehaviorConfig?
-  public var toolMockOverrides: [String: [ElevenLabsToolResponseMockConfigOutput]]?
-  public var typeModel: String?
-
-  public init(
-    chatHistory: [ElevenLabsConversationHistoryTranscriptCommonModelOutput]? = nil,
-    conversationInitiationSource: ElevenLabsConversationInitiationSource? = nil,
-    dynamicVariables: [String: HyperProxyJSONValue]? = nil,
-    environment: String? = nil,
-    evaluationModel: ElevenLabsLLM? = nil,
-    fromConversationMetadata: ElevenLabsTestFromConversationMetadataOutput? = nil,
-    simulatedUserModel: ElevenLabsLLM? = nil,
-    simulationEnvironment: String? = nil,
-    simulationMaxTurns: Int? = nil,
-    simulationScenario: String? = nil,
-    successCondition: String? = nil,
-    successConditions: [String]? = nil,
-    toolMockConfig: ElevenLabsSimulationToolMockBehaviorConfig? = nil,
-    toolMockOverrides: [String: [ElevenLabsToolResponseMockConfigOutput]]? = nil,
-    typeModel: String? = nil
-  ) {
-    self.chatHistory = chatHistory
-    self.conversationInitiationSource = conversationInitiationSource
-    self.dynamicVariables = dynamicVariables
-    self.environment = environment
-    self.evaluationModel = evaluationModel
-    self.fromConversationMetadata = fromConversationMetadata
-    self.simulatedUserModel = simulatedUserModel
-    self.simulationEnvironment = simulationEnvironment
-    self.simulationMaxTurns = simulationMaxTurns
-    self.simulationScenario = simulationScenario
-    self.successCondition = successCondition
-    self.successConditions = successConditions
-    self.toolMockConfig = toolMockConfig
-    self.toolMockOverrides = toolMockOverrides
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case chatHistory = "chat_history"
-    case conversationInitiationSource = "conversation_initiation_source"
-    case dynamicVariables = "dynamic_variables"
-    case environment
-    case evaluationModel = "evaluation_model"
-    case fromConversationMetadata = "from_conversation_metadata"
-    case simulatedUserModel = "simulated_user_model"
-    case simulationEnvironment = "simulation_environment"
-    case simulationMaxTurns = "simulation_max_turns"
-    case simulationScenario = "simulation_scenario"
-    case successCondition = "success_condition"
-    case successConditions = "success_conditions"
-    case toolMockConfig = "tool_mock_config"
-    case toolMockOverrides = "tool_mock_overrides"
-    case typeModel = "type"
-  }
-}
-
-public struct ElevenLabsSimulationToolMockBehaviorConfig: Codable, Sendable {
-  public var fallbackStrategy: ElevenLabsMockNoMatchBehavior?
-  public var mockedToolIds: [String]?
-  public var mockingStrategy: ElevenLabsMockingStrategy?
-
-  public init(
-    fallbackStrategy: ElevenLabsMockNoMatchBehavior? = nil,
-    mockedToolIds: [String]? = nil,
-    mockingStrategy: ElevenLabsMockingStrategy? = nil
-  ) {
-    self.fallbackStrategy = fallbackStrategy
-    self.mockedToolIds = mockedToolIds
-    self.mockingStrategy = mockingStrategy
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case fallbackStrategy = "fallback_strategy"
-    case mockedToolIds = "mocked_tool_ids"
-    case mockingStrategy = "mocking_strategy"
   }
 }

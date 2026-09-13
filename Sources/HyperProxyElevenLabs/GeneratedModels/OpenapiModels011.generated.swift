@@ -4,6 +4,280 @@
 import Foundation
 import HyperProxyCore
 
+public struct ElevenLabsSetRulesParameters: Codable, Sendable {
+  public var pronunciationDictionaryId: String
+  public var xiApiKey: String?
+
+  public init(
+    pronunciationDictionaryId: String,
+    xiApiKey: String? = nil
+  ) {
+    self.pronunciationDictionaryId = pronunciationDictionaryId
+    self.xiApiKey = xiApiKey
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case pronunciationDictionaryId = "pronunciation_dictionary_id"
+    case xiApiKey = "xi-api-key"
+  }
+}
+
+public struct ElevenLabsSetThirdPartyDisablingPolicyParameters: Codable, Sendable {
+  public var xiApiKey: String?
+
+  public init(
+    xiApiKey: String? = nil
+  ) {
+    self.xiApiKey = xiApiKey
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case xiApiKey = "xi-api-key"
+  }
+}
+
+public typealias ElevenLabsSetThirdPartyDisablingPolicyResponse = HyperProxyJSONValue
+
+public struct ElevenLabsSeverityId: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: Int
+
+  public init(rawValue: Int) {
+    self.rawValue = rawValue
+  }
+
+  public static let value0 = Self(rawValue: 0)
+  public static let value1 = Self(rawValue: 1)
+  public static let value2 = Self(rawValue: 2)
+  public static let value3 = Self(rawValue: 3)
+  public static let value4 = Self(rawValue: 4)
+  public static let value5 = Self(rawValue: 5)
+  public static let value6 = Self(rawValue: 6)
+  public static let value99 = Self(rawValue: 99)
+}
+
+public struct ElevenLabsSfxSourceContext: Codable, Sendable {
+  public var generationConfig: [String: HyperProxyJSONValue]?
+  public var soundGenerationHistoryItemId: String?
+  public var sourceType: String?
+  public var text: String?
+
+  public init(
+    generationConfig: [String: HyperProxyJSONValue]? = nil,
+    soundGenerationHistoryItemId: String? = nil,
+    sourceType: String? = nil,
+    text: String? = nil
+  ) {
+    self.generationConfig = generationConfig
+    self.soundGenerationHistoryItemId = soundGenerationHistoryItemId
+    self.sourceType = sourceType
+    self.text = text
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case generationConfig = "generation_config"
+    case soundGenerationHistoryItemId = "sound_generation_history_item_id"
+    case sourceType = "source_type"
+    case text
+  }
+}
+
+public struct ElevenLabsShareOptionResponseModel: Codable, Sendable {
+  public var id: String
+  public var name: String
+  public var typeModel: ElevenLabsShareOptionResponseModelTypeModel
+
+  public init(
+    id: String,
+    name: String,
+    typeModel: ElevenLabsShareOptionResponseModelTypeModel
+  ) {
+    self.id = id
+    self.name = name
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case id
+    case name
+    case typeModel = "type"
+  }
+}
+
+public struct ElevenLabsShareOptionResponseModelTypeModel: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let user = Self(rawValue: "user")
+  public static let group = Self(rawValue: "group")
+  public static let key = Self(rawValue: "key")
+}
+
+public struct ElevenLabsShareResourceEndpointParameters: Codable, Sendable {
+  public var resourceId: String
+  public var xiApiKey: String?
+
+  public init(
+    resourceId: String,
+    xiApiKey: String? = nil
+  ) {
+    self.resourceId = resourceId
+    self.xiApiKey = xiApiKey
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case resourceId = "resource_id"
+    case xiApiKey = "xi-api-key"
+  }
+}
+
+public typealias ElevenLabsShareResourceEndpointResponse = HyperProxyJSONValue
+
+public struct ElevenLabsSimilarVoice: Codable, Sendable {
+  public var category: ElevenLabsVOICECATEGORY
+  public var description: String?
+  public var name: String
+  public var previewUrl: String?
+  public var voiceId: String
+
+  public init(
+    category: ElevenLabsVOICECATEGORY,
+    name: String,
+    voiceId: String,
+    description: String? = nil,
+    previewUrl: String? = nil
+  ) {
+    self.category = category
+    self.description = description
+    self.name = name
+    self.previewUrl = previewUrl
+    self.voiceId = voiceId
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case category
+    case description
+    case name
+    case previewUrl = "preview_url"
+    case voiceId = "voice_id"
+  }
+}
+
+public struct ElevenLabsSimilarVoicesForSpeakerResponse: Codable, Sendable {
+  public var voices: [ElevenLabsSimilarVoice]
+
+  public init(
+    voices: [ElevenLabsSimilarVoice]
+  ) {
+    self.voices = voices
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case voices
+  }
+}
+
+public struct ElevenLabsSimulationLibrarySettings: Codable, Sendable {
+
+  public init() {}
+}
+
+public struct ElevenLabsSimulationTestModel: Codable, Sendable {
+  public var chatHistory: [ElevenLabsConversationHistoryTranscriptCommonModelOutput]?
+  public var conversationInitiationSource: ElevenLabsConversationInitiationSource?
+  public var dynamicVariables: [String: HyperProxyJSONValue]?
+  public var environment: String?
+  public var evaluationModel: ElevenLabsLLM?
+  public var fromConversationMetadata: ElevenLabsTestFromConversationMetadataOutput?
+  public var simulatedUserModel: ElevenLabsLLM?
+  public var simulationEnvironment: String?
+  public var simulationMaxTurns: Int?
+  public var simulationScenario: String?
+  public var successCondition: String?
+  public var successConditions: [String]?
+  public var toolMockConfig: ElevenLabsSimulationToolMockBehaviorConfig?
+  public var toolMockOverrides: [String: [ElevenLabsToolResponseMockConfigOutput]]?
+  public var typeModel: String?
+
+  public init(
+    chatHistory: [ElevenLabsConversationHistoryTranscriptCommonModelOutput]? = nil,
+    conversationInitiationSource: ElevenLabsConversationInitiationSource? = nil,
+    dynamicVariables: [String: HyperProxyJSONValue]? = nil,
+    environment: String? = nil,
+    evaluationModel: ElevenLabsLLM? = nil,
+    fromConversationMetadata: ElevenLabsTestFromConversationMetadataOutput? = nil,
+    simulatedUserModel: ElevenLabsLLM? = nil,
+    simulationEnvironment: String? = nil,
+    simulationMaxTurns: Int? = nil,
+    simulationScenario: String? = nil,
+    successCondition: String? = nil,
+    successConditions: [String]? = nil,
+    toolMockConfig: ElevenLabsSimulationToolMockBehaviorConfig? = nil,
+    toolMockOverrides: [String: [ElevenLabsToolResponseMockConfigOutput]]? = nil,
+    typeModel: String? = nil
+  ) {
+    self.chatHistory = chatHistory
+    self.conversationInitiationSource = conversationInitiationSource
+    self.dynamicVariables = dynamicVariables
+    self.environment = environment
+    self.evaluationModel = evaluationModel
+    self.fromConversationMetadata = fromConversationMetadata
+    self.simulatedUserModel = simulatedUserModel
+    self.simulationEnvironment = simulationEnvironment
+    self.simulationMaxTurns = simulationMaxTurns
+    self.simulationScenario = simulationScenario
+    self.successCondition = successCondition
+    self.successConditions = successConditions
+    self.toolMockConfig = toolMockConfig
+    self.toolMockOverrides = toolMockOverrides
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case chatHistory = "chat_history"
+    case conversationInitiationSource = "conversation_initiation_source"
+    case dynamicVariables = "dynamic_variables"
+    case environment
+    case evaluationModel = "evaluation_model"
+    case fromConversationMetadata = "from_conversation_metadata"
+    case simulatedUserModel = "simulated_user_model"
+    case simulationEnvironment = "simulation_environment"
+    case simulationMaxTurns = "simulation_max_turns"
+    case simulationScenario = "simulation_scenario"
+    case successCondition = "success_condition"
+    case successConditions = "success_conditions"
+    case toolMockConfig = "tool_mock_config"
+    case toolMockOverrides = "tool_mock_overrides"
+    case typeModel = "type"
+  }
+}
+
+public struct ElevenLabsSimulationToolMockBehaviorConfig: Codable, Sendable {
+  public var fallbackStrategy: ElevenLabsMockNoMatchBehavior?
+  public var mockedToolIds: [String]?
+  public var mockingStrategy: ElevenLabsMockingStrategy?
+
+  public init(
+    fallbackStrategy: ElevenLabsMockNoMatchBehavior? = nil,
+    mockedToolIds: [String]? = nil,
+    mockingStrategy: ElevenLabsMockingStrategy? = nil
+  ) {
+    self.fallbackStrategy = fallbackStrategy
+    self.mockedToolIds = mockedToolIds
+    self.mockingStrategy = mockingStrategy
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case fallbackStrategy = "fallback_strategy"
+    case mockedToolIds = "mocked_tool_ids"
+    case mockingStrategy = "mocking_strategy"
+  }
+}
+
 public struct ElevenLabsSingleLanguagesResponse: Codable, Sendable {
   public var kind: String?
   public var languages: [ElevenLabsLanguageInfo]
@@ -772,19 +1046,22 @@ public struct ElevenLabsSpeechEngineSummaryResponse: Codable, Sendable {
   public var name: String
   public var speechEngineId: String
   public var tags: [String]
+  public var voiceId: String
 
   public init(
     accessInfo: ElevenLabsResourceAccessInfo,
     createdAtUnixSecs: Int,
     name: String,
     speechEngineId: String,
-    tags: [String]
+    tags: [String],
+    voiceId: String
   ) {
     self.accessInfo = accessInfo
     self.createdAtUnixSecs = createdAtUnixSecs
     self.name = name
     self.speechEngineId = speechEngineId
     self.tags = tags
+    self.voiceId = voiceId
   }
 
   enum CodingKeys: String, CodingKey {
@@ -793,6 +1070,7 @@ public struct ElevenLabsSpeechEngineSummaryResponse: Codable, Sendable {
     case name
     case speechEngineId = "speech_engine_id"
     case tags
+    case voiceId = "voice_id"
   }
 }
 
@@ -1320,30 +1598,12 @@ public struct ElevenLabsStartPVCVoiceTrainingResponseModel: Codable, Sendable {
   }
 }
 
-public struct ElevenLabsStartProcedureToolConfigInput: Codable, Sendable {
-  public var procedures: [String: ElevenLabsProcedureAtVersionInput]?
+public struct ElevenLabsStartProcedureToolConfig: Codable, Sendable {
+  public var procedures: [String: HyperProxyJSONValue]?
   public var systemToolType: String?
 
   public init(
-    procedures: [String: ElevenLabsProcedureAtVersionInput]? = nil,
-    systemToolType: String? = nil
-  ) {
-    self.procedures = procedures
-    self.systemToolType = systemToolType
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case procedures
-    case systemToolType = "system_tool_type"
-  }
-}
-
-public struct ElevenLabsStartProcedureToolConfigOutput: Codable, Sendable {
-  public var procedures: [String: ElevenLabsProcedureAtVersionOutput]?
-  public var systemToolType: String?
-
-  public init(
-    procedures: [String: ElevenLabsProcedureAtVersionOutput]? = nil,
+    procedures: [String: HyperProxyJSONValue]? = nil,
     systemToolType: String? = nil
   ) {
     self.procedures = procedures
@@ -1367,6 +1627,70 @@ public struct ElevenLabsStartProcedureToolErrorStatus: RawRepresentable, Codable
   public static let notFound = Self(rawValue: "not_found")
   public static let invalidName = Self(rawValue: "invalid_name")
   public static let alreadyActive = Self(rawValue: "already_active")
+}
+
+public struct ElevenLabsStartProcedureToolResultErrorModel: Codable, Sendable {
+  public var message: String
+  public var procedureId: String?
+  public var resultType: String?
+  public var status: ElevenLabsStartProcedureToolErrorStatus
+
+  public init(
+    message: String,
+    status: ElevenLabsStartProcedureToolErrorStatus,
+    procedureId: String? = nil,
+    resultType: String? = nil
+  ) {
+    self.message = message
+    self.procedureId = procedureId
+    self.resultType = resultType
+    self.status = status
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case message
+    case procedureId = "procedure_id"
+    case resultType = "result_type"
+    case status
+  }
+}
+
+public struct ElevenLabsStartProcedureToolResultSuccessModel: Codable, Sendable {
+  public var message: String?
+  public var procedureEntryWorkflowNode: String?
+  public var procedureId: String
+  public var procedureName: String
+  public var procedureReturnWorkflowNode: String?
+  public var resultType: String?
+  public var status: String?
+
+  public init(
+    procedureId: String,
+    procedureName: String,
+    message: String? = nil,
+    procedureEntryWorkflowNode: String? = nil,
+    procedureReturnWorkflowNode: String? = nil,
+    resultType: String? = nil,
+    status: String? = nil
+  ) {
+    self.message = message
+    self.procedureEntryWorkflowNode = procedureEntryWorkflowNode
+    self.procedureId = procedureId
+    self.procedureName = procedureName
+    self.procedureReturnWorkflowNode = procedureReturnWorkflowNode
+    self.resultType = resultType
+    self.status = status
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case message
+    case procedureEntryWorkflowNode = "procedure_entry_workflow_node"
+    case procedureId = "procedure_id"
+    case procedureName = "procedure_name"
+    case procedureReturnWorkflowNode = "procedure_return_workflow_node"
+    case resultType = "result_type"
+    case status
+  }
 }
 
 public struct ElevenLabsStartSpeakerSeparationParameters: Codable, Sendable {
@@ -1434,6 +1758,24 @@ public struct ElevenLabsStatusId: RawRepresentable, Codable, Hashable, Sendable 
   public static let value1 = Self(rawValue: 1)
   public static let value2 = Self(rawValue: 2)
   public static let value99 = Self(rawValue: 99)
+}
+
+public struct ElevenLabsStoredUsagePlatformLimit: Codable, Sendable {
+  public var limit: Int?
+  public var usage: Int?
+
+  public init(
+    limit: Int? = nil,
+    usage: Int? = nil
+  ) {
+    self.limit = limit
+    self.usage = usage
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case limit
+    case usage
+  }
 }
 
 public struct ElevenLabsStreamChapterSnapshotAudioParameters: Codable, Sendable {
@@ -1645,18 +1987,18 @@ public struct ElevenLabsStudioAgentToolSettingsModel: Codable, Sendable {
   }
 }
 
-public struct ElevenLabsStudioClipReference: Codable, Sendable {
+public struct ElevenLabsStudioClipLocator: Codable, Sendable {
   public var blockId: String?
   public var chapterId: String
   public var clipId: String
-  public var clipType: ElevenLabsStudioClipReferenceClipType
+  public var clipType: ElevenLabsStudioClipLocatorClipType
   public var previewUrl: String?
   public var projectId: String
 
   public init(
     chapterId: String,
     clipId: String,
-    clipType: ElevenLabsStudioClipReferenceClipType,
+    clipType: ElevenLabsStudioClipLocatorClipType,
     projectId: String,
     blockId: String? = nil,
     previewUrl: String? = nil
@@ -1679,7 +2021,7 @@ public struct ElevenLabsStudioClipReference: Codable, Sendable {
   }
 }
 
-public struct ElevenLabsStudioClipReferenceClipType: RawRepresentable, Codable, Hashable, Sendable {
+public struct ElevenLabsStudioClipLocatorClipType: RawRepresentable, Codable, Hashable, Sendable {
   public var rawValue: String
 
   public init(rawValue: String) {
@@ -1749,76 +2091,6 @@ public struct ElevenLabsStudioTextStyleShadowModel: Codable, Sendable {
     case offsetX = "offset_x"
     case offsetY = "offset_y"
     case opacity
-  }
-}
-
-public struct ElevenLabsSubAgentInput: Codable, Sendable {
-  public var agentId: String
-  public var branchId: String?
-  public var description: String
-  public var parameters: ElevenLabsObjectJsonSchemaPropertyInput?
-
-  public init(
-    agentId: String,
-    description: String,
-    branchId: String? = nil,
-    parameters: ElevenLabsObjectJsonSchemaPropertyInput? = nil
-  ) {
-    self.agentId = agentId
-    self.branchId = branchId
-    self.description = description
-    self.parameters = parameters
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case agentId = "agent_id"
-    case branchId = "branch_id"
-    case description
-    case parameters
-  }
-}
-
-public struct ElevenLabsSubAgentOutput: Codable, Sendable {
-  public var agentId: String
-  public var branchId: String?
-  public var description: String
-  public var parameters: ElevenLabsObjectJsonSchemaPropertyOutput?
-
-  public init(
-    agentId: String,
-    description: String,
-    branchId: String? = nil,
-    parameters: ElevenLabsObjectJsonSchemaPropertyOutput? = nil
-  ) {
-    self.agentId = agentId
-    self.branchId = branchId
-    self.description = description
-    self.parameters = parameters
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case agentId = "agent_id"
-    case branchId = "branch_id"
-    case description
-    case parameters
-  }
-}
-
-public struct ElevenLabsSubagentRunResultDetails: Codable, Sendable {
-  public var agentId: String?
-  public var subConversationId: String?
-
-  public init(
-    agentId: String? = nil,
-    subConversationId: String? = nil
-  ) {
-    self.agentId = agentId
-    self.subConversationId = subConversationId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case agentId = "agent_id"
-    case subConversationId = "sub_conversation_id"
   }
 }
 
@@ -2344,6 +2616,7 @@ public struct ElevenLabsSystemToolConfigOutput: Codable, Sendable {
 
 public struct ElevenLabsTTSConversationalConfigInput: Codable, Sendable {
   public var agentOutputAudioFormat: ElevenLabsTTSOutputFormat?
+  public var audioEffects: ElevenLabsEffectsSpecInput?
   public var enablePhonemeTags: Bool?
   public var expressiveMode: Bool?
   public var modelId: ElevenLabsTTSConversationalModel?
@@ -2360,6 +2633,7 @@ public struct ElevenLabsTTSConversationalConfigInput: Codable, Sendable {
 
   public init(
     agentOutputAudioFormat: ElevenLabsTTSOutputFormat? = nil,
+    audioEffects: ElevenLabsEffectsSpecInput? = nil,
     enablePhonemeTags: Bool? = nil,
     expressiveMode: Bool? = nil,
     modelId: ElevenLabsTTSConversationalModel? = nil,
@@ -2375,6 +2649,7 @@ public struct ElevenLabsTTSConversationalConfigInput: Codable, Sendable {
     voiceId: String? = nil
   ) {
     self.agentOutputAudioFormat = agentOutputAudioFormat
+    self.audioEffects = audioEffects
     self.enablePhonemeTags = enablePhonemeTags
     self.expressiveMode = expressiveMode
     self.modelId = modelId
@@ -2391,6 +2666,7 @@ public struct ElevenLabsTTSConversationalConfigInput: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case agentOutputAudioFormat = "agent_output_audio_format"
+    case audioEffects = "audio_effects"
     case enablePhonemeTags = "enable_phoneme_tags"
     case expressiveMode = "expressive_mode"
     case modelId = "model_id"
@@ -2408,6 +2684,7 @@ public struct ElevenLabsTTSConversationalConfigInput: Codable, Sendable {
 
 public struct ElevenLabsTTSConversationalConfigOutput: Codable, Sendable {
   public var agentOutputAudioFormat: ElevenLabsTTSOutputFormat?
+  public var audioEffects: ElevenLabsEffectsSpecOutput?
   public var enablePhonemeTags: Bool?
   public var expressiveMode: Bool?
   public var modelId: ElevenLabsTTSConversationalModel?
@@ -2424,6 +2701,7 @@ public struct ElevenLabsTTSConversationalConfigOutput: Codable, Sendable {
 
   public init(
     agentOutputAudioFormat: ElevenLabsTTSOutputFormat? = nil,
+    audioEffects: ElevenLabsEffectsSpecOutput? = nil,
     enablePhonemeTags: Bool? = nil,
     expressiveMode: Bool? = nil,
     modelId: ElevenLabsTTSConversationalModel? = nil,
@@ -2439,6 +2717,7 @@ public struct ElevenLabsTTSConversationalConfigOutput: Codable, Sendable {
     voiceId: String? = nil
   ) {
     self.agentOutputAudioFormat = agentOutputAudioFormat
+    self.audioEffects = audioEffects
     self.enablePhonemeTags = enablePhonemeTags
     self.expressiveMode = expressiveMode
     self.modelId = modelId
@@ -2455,6 +2734,7 @@ public struct ElevenLabsTTSConversationalConfigOutput: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case agentOutputAudioFormat = "agent_output_audio_format"
+    case audioEffects = "audio_effects"
     case enablePhonemeTags = "enable_phoneme_tags"
     case expressiveMode = "expressive_mode"
     case modelId = "model_id"
@@ -2550,6 +2830,7 @@ public struct ElevenLabsTTSConversationalConfigOverrideConfig: Codable, Sendable
 
 public struct ElevenLabsTTSConversationalConfigWorkflowOverrideInput: Codable, Sendable {
   public var agentOutputAudioFormat: ElevenLabsTTSOutputFormat?
+  public var audioEffects: ElevenLabsEffectsSpecInput?
   public var enablePhonemeTags: Bool?
   public var expressiveMode: Bool?
   public var modelId: ElevenLabsTTSConversationalModel?
@@ -2566,6 +2847,7 @@ public struct ElevenLabsTTSConversationalConfigWorkflowOverrideInput: Codable, S
 
   public init(
     agentOutputAudioFormat: ElevenLabsTTSOutputFormat? = nil,
+    audioEffects: ElevenLabsEffectsSpecInput? = nil,
     enablePhonemeTags: Bool? = nil,
     expressiveMode: Bool? = nil,
     modelId: ElevenLabsTTSConversationalModel? = nil,
@@ -2581,6 +2863,7 @@ public struct ElevenLabsTTSConversationalConfigWorkflowOverrideInput: Codable, S
     voiceId: String? = nil
   ) {
     self.agentOutputAudioFormat = agentOutputAudioFormat
+    self.audioEffects = audioEffects
     self.enablePhonemeTags = enablePhonemeTags
     self.expressiveMode = expressiveMode
     self.modelId = modelId
@@ -2597,6 +2880,7 @@ public struct ElevenLabsTTSConversationalConfigWorkflowOverrideInput: Codable, S
 
   enum CodingKeys: String, CodingKey {
     case agentOutputAudioFormat = "agent_output_audio_format"
+    case audioEffects = "audio_effects"
     case enablePhonemeTags = "enable_phoneme_tags"
     case expressiveMode = "expressive_mode"
     case modelId = "model_id"
@@ -2614,6 +2898,7 @@ public struct ElevenLabsTTSConversationalConfigWorkflowOverrideInput: Codable, S
 
 public struct ElevenLabsTTSConversationalConfigWorkflowOverrideOutput: Codable, Sendable {
   public var agentOutputAudioFormat: ElevenLabsTTSOutputFormat?
+  public var audioEffects: ElevenLabsEffectsSpecOutput?
   public var enablePhonemeTags: Bool?
   public var expressiveMode: Bool?
   public var modelId: ElevenLabsTTSConversationalModel?
@@ -2630,6 +2915,7 @@ public struct ElevenLabsTTSConversationalConfigWorkflowOverrideOutput: Codable, 
 
   public init(
     agentOutputAudioFormat: ElevenLabsTTSOutputFormat? = nil,
+    audioEffects: ElevenLabsEffectsSpecOutput? = nil,
     enablePhonemeTags: Bool? = nil,
     expressiveMode: Bool? = nil,
     modelId: ElevenLabsTTSConversationalModel? = nil,
@@ -2645,6 +2931,7 @@ public struct ElevenLabsTTSConversationalConfigWorkflowOverrideOutput: Codable, 
     voiceId: String? = nil
   ) {
     self.agentOutputAudioFormat = agentOutputAudioFormat
+    self.audioEffects = audioEffects
     self.enablePhonemeTags = enablePhonemeTags
     self.expressiveMode = expressiveMode
     self.modelId = modelId
@@ -2661,6 +2948,7 @@ public struct ElevenLabsTTSConversationalConfigWorkflowOverrideOutput: Codable, 
 
   enum CodingKeys: String, CodingKey {
     case agentOutputAudioFormat = "agent_output_audio_format"
+    case audioEffects = "audio_effects"
     case enablePhonemeTags = "enable_phoneme_tags"
     case expressiveMode = "expressive_mode"
     case modelId = "model_id"
@@ -2734,21 +3022,47 @@ public struct ElevenLabsTTSOutputFormat: RawRepresentable, Codable, Hashable, Se
   public static let ulaw8000 = Self(rawValue: "ulaw_8000")
 }
 
-public struct ElevenLabsTelephonyCallConfig: Codable, Sendable {
+public struct ElevenLabsTelephonyCallConfigInput: Codable, Sendable {
   public var ringingTimeoutSecs: Int?
   public var twilioCallRecordingEnabled: Bool?
+  public var twilioMachineDetection: ElevenLabsTwilioMachineDetectionConfig?
 
   public init(
     ringingTimeoutSecs: Int? = nil,
-    twilioCallRecordingEnabled: Bool? = nil
+    twilioCallRecordingEnabled: Bool? = nil,
+    twilioMachineDetection: ElevenLabsTwilioMachineDetectionConfig? = nil
   ) {
     self.ringingTimeoutSecs = ringingTimeoutSecs
     self.twilioCallRecordingEnabled = twilioCallRecordingEnabled
+    self.twilioMachineDetection = twilioMachineDetection
   }
 
   enum CodingKeys: String, CodingKey {
     case ringingTimeoutSecs = "ringing_timeout_secs"
     case twilioCallRecordingEnabled = "twilio_call_recording_enabled"
+    case twilioMachineDetection = "twilio_machine_detection"
+  }
+}
+
+public struct ElevenLabsTelephonyCallConfigOutput: Codable, Sendable {
+  public var ringingTimeoutSecs: Int?
+  public var twilioCallRecordingEnabled: Bool?
+  public var twilioMachineDetection: ElevenLabsTwilioMachineDetectionConfig?
+
+  public init(
+    ringingTimeoutSecs: Int? = nil,
+    twilioCallRecordingEnabled: Bool? = nil,
+    twilioMachineDetection: ElevenLabsTwilioMachineDetectionConfig? = nil
+  ) {
+    self.ringingTimeoutSecs = ringingTimeoutSecs
+    self.twilioCallRecordingEnabled = twilioCallRecordingEnabled
+    self.twilioMachineDetection = twilioMachineDetection
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case ringingTimeoutSecs = "ringing_timeout_secs"
+    case twilioCallRecordingEnabled = "twilio_call_recording_enabled"
+    case twilioMachineDetection = "twilio_machine_detection"
   }
 }
 
@@ -2880,9 +3194,12 @@ public struct ElevenLabsTestInvocationSummaryResponseModel: Codable, Sendable {
   public var id: String
   public var passedCount: Int
   public var pendingCount: Int
+  public var ranAgainstDraft: Bool?
   public var repeatCount: Int?
+  public var runsDivergedFromVersion: Bool?
   public var testRunCount: Int
   public var title: String
+  public var versionId: String?
 
   public init(
     createdAtUnixSecs: Int,
@@ -2895,7 +3212,10 @@ public struct ElevenLabsTestInvocationSummaryResponseModel: Codable, Sendable {
     accessInfo: ElevenLabsResourceAccessInfo? = nil,
     agentId: String? = nil,
     branchId: String? = nil,
-    repeatCount: Int? = nil
+    ranAgainstDraft: Bool? = nil,
+    repeatCount: Int? = nil,
+    runsDivergedFromVersion: Bool? = nil,
+    versionId: String? = nil
   ) {
     self.accessInfo = accessInfo
     self.agentId = agentId
@@ -2905,9 +3225,12 @@ public struct ElevenLabsTestInvocationSummaryResponseModel: Codable, Sendable {
     self.id = id
     self.passedCount = passedCount
     self.pendingCount = pendingCount
+    self.ranAgainstDraft = ranAgainstDraft
     self.repeatCount = repeatCount
+    self.runsDivergedFromVersion = runsDivergedFromVersion
     self.testRunCount = testRunCount
     self.title = title
+    self.versionId = versionId
   }
 
   enum CodingKeys: String, CodingKey {
@@ -2919,9 +3242,12 @@ public struct ElevenLabsTestInvocationSummaryResponseModel: Codable, Sendable {
     case id
     case passedCount = "passed_count"
     case pendingCount = "pending_count"
+    case ranAgainstDraft = "ran_against_draft"
     case repeatCount = "repeat_count"
+    case runsDivergedFromVersion = "runs_diverged_from_version"
     case testRunCount = "test_run_count"
     case title
+    case versionId = "version_id"
   }
 }
 
@@ -3118,6 +3444,7 @@ public struct ElevenLabsTextSearchConversationMessagesRouteParameters: Codable, 
   public var conversationProductType: ElevenLabsConversationProduct?
   public var cursor: String?
   public var dataCollectionParams: [String]?
+  public var dynamicVariableParams: [String]?
   public var evaluationParams: [String]?
   public var excludeStatuses:
     [ElevenLabsTextSearchConversationMessagesRouteParametersExcludeStatusesAnyOf1Item]?
@@ -3156,6 +3483,7 @@ public struct ElevenLabsTextSearchConversationMessagesRouteParameters: Codable, 
     conversationProductType: ElevenLabsConversationProduct? = nil,
     cursor: String? = nil,
     dataCollectionParams: [String]? = nil,
+    dynamicVariableParams: [String]? = nil,
     evaluationParams: [String]? = nil,
     excludeStatuses:
       [ElevenLabsTextSearchConversationMessagesRouteParametersExcludeStatusesAnyOf1Item]? = nil,
@@ -3191,6 +3519,7 @@ public struct ElevenLabsTextSearchConversationMessagesRouteParameters: Codable, 
     self.conversationProductType = conversationProductType
     self.cursor = cursor
     self.dataCollectionParams = dataCollectionParams
+    self.dynamicVariableParams = dynamicVariableParams
     self.evaluationParams = evaluationParams
     self.excludeStatuses = excludeStatuses
     self.hasFeedbackComment = hasFeedbackComment
@@ -3228,6 +3557,7 @@ public struct ElevenLabsTextSearchConversationMessagesRouteParameters: Codable, 
     case conversationProductType = "conversation_product_type"
     case cursor
     case dataCollectionParams = "data_collection_params"
+    case dynamicVariableParams = "dynamic_variable_params"
     case evaluationParams = "evaluation_params"
     case excludeStatuses = "exclude_statuses"
     case hasFeedbackComment = "has_feedback_comment"
@@ -3901,310 +4231,4 @@ public struct ElevenLabsTextToVoicePreviewStreamParameters: Codable, Sendable {
     case generatedVoiceId = "generated_voice_id"
     case xiApiKey = "xi-api-key"
   }
-}
-
-public typealias ElevenLabsTextToVoicePreviewStreamResponse = String
-
-public struct ElevenLabsTextToVoiceRemixParameters: Codable, Sendable {
-  public var outputFormat: ElevenLabsTextToVoiceRemixParametersOutputFormat?
-  public var voiceId: String
-  public var xiApiKey: String?
-
-  public init(
-    voiceId: String,
-    outputFormat: ElevenLabsTextToVoiceRemixParametersOutputFormat? = nil,
-    xiApiKey: String? = nil
-  ) {
-    self.outputFormat = outputFormat
-    self.voiceId = voiceId
-    self.xiApiKey = xiApiKey
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case outputFormat = "output_format"
-    case voiceId = "voice_id"
-    case xiApiKey = "xi-api-key"
-  }
-}
-
-public struct ElevenLabsTextToVoiceRemixParametersOutputFormat: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mp32205032 = Self(rawValue: "mp3_22050_32")
-  public static let mp32400048 = Self(rawValue: "mp3_24000_48")
-  public static let mp34410032 = Self(rawValue: "mp3_44100_32")
-  public static let mp34410064 = Self(rawValue: "mp3_44100_64")
-  public static let mp34410096 = Self(rawValue: "mp3_44100_96")
-  public static let mp344100128 = Self(rawValue: "mp3_44100_128")
-  public static let mp344100192 = Self(rawValue: "mp3_44100_192")
-  public static let pcm8000 = Self(rawValue: "pcm_8000")
-  public static let pcm16000 = Self(rawValue: "pcm_16000")
-  public static let pcm22050 = Self(rawValue: "pcm_22050")
-  public static let pcm24000 = Self(rawValue: "pcm_24000")
-  public static let pcm32000 = Self(rawValue: "pcm_32000")
-  public static let pcm44100 = Self(rawValue: "pcm_44100")
-  public static let pcm48000 = Self(rawValue: "pcm_48000")
-  public static let ulaw8000 = Self(rawValue: "ulaw_8000")
-  public static let alaw8000 = Self(rawValue: "alaw_8000")
-  public static let opus4800032 = Self(rawValue: "opus_48000_32")
-  public static let opus4800064 = Self(rawValue: "opus_48000_64")
-  public static let opus4800096 = Self(rawValue: "opus_48000_96")
-  public static let opus48000128 = Self(rawValue: "opus_48000_128")
-  public static let opus48000192 = Self(rawValue: "opus_48000_192")
-}
-
-public struct ElevenLabsThresholdGuardrail: Codable, Sendable {
-  public var isEnabled: Bool?
-  public var threshold: Double?
-
-  public init(
-    isEnabled: Bool? = nil,
-    threshold: Double? = nil
-  ) {
-    self.isEnabled = isEnabled
-    self.threshold = threshold
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case isEnabled = "is_enabled"
-    case threshold
-  }
-}
-
-public struct ElevenLabsTicketCommentResponseModel: Codable, Sendable {
-  public var comment: String
-  public var createdAtUnixSecs: Int
-  public var ownerUserId: String?
-
-  public init(
-    comment: String,
-    createdAtUnixSecs: Int,
-    ownerUserId: String?
-  ) {
-    self.comment = comment
-    self.createdAtUnixSecs = createdAtUnixSecs
-    self.ownerUserId = ownerUserId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case comment
-    case createdAtUnixSecs = "created_at_unix_secs"
-    case ownerUserId = "owner_user_id"
-  }
-}
-
-public struct ElevenLabsTimeRange: Codable, Sendable {
-  public var endMs: Int
-  public var startMs: Int
-
-  public init(
-    endMs: Int,
-    startMs: Int
-  ) {
-    self.endMs = endMs
-    self.startMs = startMs
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case endMs = "end_ms"
-    case startMs = "start_ms"
-  }
-}
-
-public struct ElevenLabsToDialogueSettingsResponseModel: Codable, Sendable {
-  public var speed: Double?
-  public var stability: Double?
-
-  public init(
-    speed: Double? = nil,
-    stability: Double? = nil
-  ) {
-    self.speed = speed
-    self.stability = stability
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case speed
-    case stability
-  }
-}
-
-public struct ElevenLabsTokenResponseModel: Codable, Sendable {
-  public var conversationId: String
-  public var token: String
-
-  public init(
-    conversationId: String,
-    token: String
-  ) {
-    self.conversationId = conversationId
-    self.token = token
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case conversationId = "conversation_id"
-    case token
-  }
-}
-
-public struct ElevenLabsTool: Codable, Sendable {
-  public var meta: [String: HyperProxyJSONValue]?
-  public var annotations: ElevenLabsToolAnnotations?
-  public var description: String?
-  public var execution: ElevenLabsToolExecution?
-  public var icons: [ElevenLabsIcon]?
-  public var inputSchema: [String: HyperProxyJSONValue]
-  public var name: String
-  public var outputSchema: [String: HyperProxyJSONValue]?
-  public var title: String?
-
-  public init(
-    inputSchema: [String: HyperProxyJSONValue],
-    name: String,
-    meta: [String: HyperProxyJSONValue]? = nil,
-    annotations: ElevenLabsToolAnnotations? = nil,
-    description: String? = nil,
-    execution: ElevenLabsToolExecution? = nil,
-    icons: [ElevenLabsIcon]? = nil,
-    outputSchema: [String: HyperProxyJSONValue]? = nil,
-    title: String? = nil
-  ) {
-    self.meta = meta
-    self.annotations = annotations
-    self.description = description
-    self.execution = execution
-    self.icons = icons
-    self.inputSchema = inputSchema
-    self.name = name
-    self.outputSchema = outputSchema
-    self.title = title
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case meta = "_meta"
-    case annotations
-    case description
-    case execution
-    case icons
-    case inputSchema
-    case name
-    case outputSchema
-    case title
-  }
-}
-
-public struct ElevenLabsToolAnnotations: Codable, Sendable {
-  public var destructiveHint: Bool?
-  public var idempotentHint: Bool?
-  public var openWorldHint: Bool?
-  public var readOnlyHint: Bool?
-  public var title: String?
-
-  public init(
-    destructiveHint: Bool? = nil,
-    idempotentHint: Bool? = nil,
-    openWorldHint: Bool? = nil,
-    readOnlyHint: Bool? = nil,
-    title: String? = nil
-  ) {
-    self.destructiveHint = destructiveHint
-    self.idempotentHint = idempotentHint
-    self.openWorldHint = openWorldHint
-    self.readOnlyHint = readOnlyHint
-    self.title = title
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case destructiveHint
-    case idempotentHint
-    case openWorldHint
-    case readOnlyHint
-    case title
-  }
-}
-
-public struct ElevenLabsToolCallSoundBehavior: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
-  public static let always = Self(rawValue: "always")
-}
-
-public struct ElevenLabsToolCallSoundType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let typing = Self(rawValue: "typing")
-  public static let elevator1 = Self(rawValue: "elevator1")
-  public static let elevator2 = Self(rawValue: "elevator2")
-  public static let elevator3 = Self(rawValue: "elevator3")
-  public static let elevator4 = Self(rawValue: "elevator4")
-}
-
-public struct ElevenLabsToolCallUnitTestModel: Codable, Sendable {
-  public var chatHistory: [ElevenLabsConversationHistoryTranscriptCommonModelOutput]?
-  public var checkAnyToolMatches: Bool?
-  public var conversationInitiationSource: ElevenLabsConversationInitiationSource?
-  public var dynamicVariables: [String: HyperProxyJSONValue]?
-  public var environment: String?
-  public var fromConversationMetadata: ElevenLabsTestFromConversationMetadataOutput?
-  public var toolCallParameters: ElevenLabsUnitTestToolCallEvaluationModelOutput?
-  public var typeModel: String?
-
-  public init(
-    chatHistory: [ElevenLabsConversationHistoryTranscriptCommonModelOutput]? = nil,
-    checkAnyToolMatches: Bool? = nil,
-    conversationInitiationSource: ElevenLabsConversationInitiationSource? = nil,
-    dynamicVariables: [String: HyperProxyJSONValue]? = nil,
-    environment: String? = nil,
-    fromConversationMetadata: ElevenLabsTestFromConversationMetadataOutput? = nil,
-    toolCallParameters: ElevenLabsUnitTestToolCallEvaluationModelOutput? = nil,
-    typeModel: String? = nil
-  ) {
-    self.chatHistory = chatHistory
-    self.checkAnyToolMatches = checkAnyToolMatches
-    self.conversationInitiationSource = conversationInitiationSource
-    self.dynamicVariables = dynamicVariables
-    self.environment = environment
-    self.fromConversationMetadata = fromConversationMetadata
-    self.toolCallParameters = toolCallParameters
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case chatHistory = "chat_history"
-    case checkAnyToolMatches = "check_any_tool_matches"
-    case conversationInitiationSource = "conversation_initiation_source"
-    case dynamicVariables = "dynamic_variables"
-    case environment
-    case fromConversationMetadata = "from_conversation_metadata"
-    case toolCallParameters = "tool_call_parameters"
-    case typeModel = "type"
-  }
-}
-
-public struct ElevenLabsToolErrorHandlingMode: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
-  public static let summarized = Self(rawValue: "summarized")
-  public static let passthrough = Self(rawValue: "passthrough")
-  public static let hide = Self(rawValue: "hide")
 }

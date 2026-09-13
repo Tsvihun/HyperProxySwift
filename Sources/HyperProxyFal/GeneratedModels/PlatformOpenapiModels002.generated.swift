@@ -4,6 +4,166 @@
 import Foundation
 import HyperProxyCore
 
+public struct FalServerlessLogsHistoryParametersRunSource: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let grpcRun = Self(rawValue: "grpc-run")
+  public static let grpcRegister = Self(rawValue: "grpc-register")
+  public static let gateway = Self(rawValue: "gateway")
+  public static let cron = Self(rawValue: "cron")
+}
+
+public typealias FalServerlessLogsHistoryRequest = [FalServerlessLogsHistoryRequestItem]
+
+public struct FalServerlessLogsHistoryRequestItem: Codable, Sendable {
+  public var conditionType: FalServerlessLogsHistoryRequestItemConditionType?
+  public var key: String
+  public var value: HyperProxyJSONValue
+
+  public init(
+    key: String,
+    value: HyperProxyJSONValue,
+    conditionType: FalServerlessLogsHistoryRequestItemConditionType? = nil
+  ) {
+    self.conditionType = conditionType
+    self.key = key
+    self.value = value
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case conditionType = "condition_type"
+    case key
+    case value
+  }
+}
+
+public struct FalServerlessLogsHistoryRequestItemConditionType: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let equals = Self(rawValue: "equals")
+  public static let inValue = Self(rawValue: "in")
+  public static let notEquals = Self(rawValue: "not_equals")
+  public static let notIn = Self(rawValue: "not_in")
+}
+
+public struct FalServerlessLogsHistoryResponse: Codable, Sendable {
+  public var hasMore: Bool
+  public var items: [FalServerlessLogsHistoryResponseItemsItem]
+  public var nextCursor: String
+
+  public init(
+    hasMore: Bool,
+    items: [FalServerlessLogsHistoryResponseItemsItem],
+    nextCursor: String
+  ) {
+    self.hasMore = hasMore
+    self.items = items
+    self.nextCursor = nextCursor
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case hasMore = "has_more"
+    case items
+    case nextCursor = "next_cursor"
+  }
+}
+
+public struct FalServerlessLogsHistoryResponseItemsItem: Codable, Sendable {
+  public var app: String
+  public var labels: [String: String]?
+  public var level: String
+  public var message: String
+  public var revision: String
+  public var timestamp: String
+
+  public init(
+    app: String,
+    level: String,
+    message: String,
+    revision: String,
+    timestamp: String,
+    labels: [String: String]? = nil
+  ) {
+    self.app = app
+    self.labels = labels
+    self.level = level
+    self.message = message
+    self.revision = revision
+    self.timestamp = timestamp
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case app
+    case labels
+    case level
+    case message
+    case revision
+    case timestamp
+  }
+}
+
+public struct FalServerlessLogsStreamParameters: Codable, Sendable {
+  public var appId: HyperProxyJSONValue?
+  public var end: String?
+  public var jobId: String?
+  public var level: String?
+  public var requestId: String?
+  public var revision: String?
+  public var runSource: FalServerlessLogsStreamParametersRunSource?
+  public var search: String?
+  public var start: String?
+  public var traceback: Bool?
+
+  public init(
+    appId: HyperProxyJSONValue? = nil,
+    end: String? = nil,
+    jobId: String? = nil,
+    level: String? = nil,
+    requestId: String? = nil,
+    revision: String? = nil,
+    runSource: FalServerlessLogsStreamParametersRunSource? = nil,
+    search: String? = nil,
+    start: String? = nil,
+    traceback: Bool? = nil
+  ) {
+    self.appId = appId
+    self.end = end
+    self.jobId = jobId
+    self.level = level
+    self.requestId = requestId
+    self.revision = revision
+    self.runSource = runSource
+    self.search = search
+    self.start = start
+    self.traceback = traceback
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case appId = "app_id"
+    case end
+    case jobId = "job_id"
+    case level
+    case requestId = "request_id"
+    case revision
+    case runSource = "run_source"
+    case search
+    case start
+    case traceback
+  }
+}
+
 public struct FalServerlessLogsStreamParametersRunSource: RawRepresentable, Codable, Hashable,
   Sendable
 {
@@ -972,6 +1132,134 @@ public struct FalUpdateAssetCollectionResponseCollectionTypeModel: RawRepresenta
   public static let manual = Self(rawValue: "manual")
   public static let smart = Self(rawValue: "smart")
   public static let character = Self(rawValue: "character")
+}
+
+public struct FalUpdateAssetEntityParameters: Codable, Sendable {
+  public var idempotencyKey: String?
+  public var entityId: String
+
+  public init(
+    entityId: String,
+    idempotencyKey: String? = nil
+  ) {
+    self.idempotencyKey = idempotencyKey
+    self.entityId = entityId
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case idempotencyKey = "Idempotency-Key"
+    case entityId = "entity_id"
+  }
+}
+
+public struct FalUpdateAssetEntityRequest: Codable, Sendable {
+  public var coverImageUrl: String?
+  public var description: String?
+  public var handle: String?
+  public var name: String?
+  public var referenceImages: [String]?
+
+  public init(
+    coverImageUrl: String? = nil,
+    description: String? = nil,
+    handle: String? = nil,
+    name: String? = nil,
+    referenceImages: [String]? = nil
+  ) {
+    self.coverImageUrl = coverImageUrl
+    self.description = description
+    self.handle = handle
+    self.name = name
+    self.referenceImages = referenceImages
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case coverImageUrl = "cover_image_url"
+    case description
+    case handle
+    case name
+    case referenceImages = "reference_images"
+  }
+}
+
+public struct FalUpdateAssetEntityResponse: Codable, Sendable {
+  public var entity: FalUpdateAssetEntityResponseEntity
+
+  public init(
+    entity: FalUpdateAssetEntityResponseEntity
+  ) {
+    self.entity = entity
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case entity
+  }
+}
+
+public struct FalUpdateAssetEntityResponseEntity: Codable, Sendable {
+  public var coverImageUrl: String
+  public var createdAt: String
+  public var description: String
+  public var handle: String
+  public var id: String
+  public var isFavorited: Bool
+  public var name: String
+  public var referenceImages: [String]
+  public var typeModel: FalUpdateAssetEntityResponseEntityTypeModel
+  public var updatedAt: String
+
+  public init(
+    coverImageUrl: String,
+    createdAt: String,
+    description: String,
+    handle: String,
+    id: String,
+    isFavorited: Bool,
+    name: String,
+    referenceImages: [String],
+    typeModel: FalUpdateAssetEntityResponseEntityTypeModel,
+    updatedAt: String
+  ) {
+    self.coverImageUrl = coverImageUrl
+    self.createdAt = createdAt
+    self.description = description
+    self.handle = handle
+    self.id = id
+    self.isFavorited = isFavorited
+    self.name = name
+    self.referenceImages = referenceImages
+    self.typeModel = typeModel
+    self.updatedAt = updatedAt
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case coverImageUrl = "cover_image_url"
+    case createdAt = "created_at"
+    case description
+    case handle
+    case id
+    case isFavorited = "is_favorited"
+    case name
+    case referenceImages = "reference_images"
+    case typeModel = "type"
+    case updatedAt = "updated_at"
+  }
+}
+
+public struct FalUpdateAssetEntityResponseEntityTypeModel: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let character = Self(rawValue: "character")
+  public static let prop = Self(rawValue: "prop")
+  public static let environment = Self(rawValue: "environment")
+  public static let style = Self(rawValue: "style")
+  public static let scene = Self(rawValue: "scene")
 }
 
 public struct FalUpdateAssetTagParameters: Codable, Sendable {

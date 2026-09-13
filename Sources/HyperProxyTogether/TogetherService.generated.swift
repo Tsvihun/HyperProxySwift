@@ -222,6 +222,8 @@ public enum TogetherOperation: String, HyperProxyProviderOperation {
   case realtimeTranscription = "realtime.transcription"
   /// `POST v1/rerank`
   case rerankCreate = "rerank.create"
+  /// `GET v1/rl/checkpoints`
+  case listCheckpoints = "listCheckpoints"
   /// `GET v1/rl/checkpoints/{id}`
   case getCheckpoint = "getCheckpoint"
   /// `GET v1/rl/checkpoints/{id}/download`
@@ -250,14 +252,10 @@ public enum TogetherOperation: String, HyperProxyProviderOperation {
   case customForwardBackward = "customForwardBackward"
   /// `GET v1/rl/training-sessions/{session_id}/operations/custom-forward-backward/{operation_id}`
   case getCustomForwardBackwardOperation = "getCustomForwardBackwardOperation"
-  /// `POST v1/rl/training-sessions/{session_id}/operations/forward`
-  case forward = "forward"
   /// `POST v1/rl/training-sessions/{session_id}/operations/forward-backward`
   case forwardBackward = "forwardBackward"
   /// `GET v1/rl/training-sessions/{session_id}/operations/forward-backward/{operation_id}`
   case getForwardBackwardOperation = "getForwardBackwardOperation"
-  /// `GET v1/rl/training-sessions/{session_id}/operations/forward/{operation_id}`
-  case getForwardOperation = "getForwardOperation"
   /// `POST v1/rl/training-sessions/{session_id}/operations/inference-checkpoint`
   case createInferenceCheckpoint = "createInferenceCheckpoint"
   /// `GET v1/rl/training-sessions/{session_id}/operations/inference-checkpoint/{operation_id}`
@@ -863,6 +861,10 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
   public var rerankCreate: HyperProxyProviderCall<TogetherOperation> {
     self.call(.rerankCreate)
   }
+  /// `GET v1/rl/checkpoints`
+  public var listCheckpoints: HyperProxyProviderCall<TogetherOperation> {
+    self.call(.listCheckpoints)
+  }
   /// `GET v1/rl/checkpoints/{id}`
   public var getCheckpoint: HyperProxyProviderCall<TogetherOperation> {
     self.call(.getCheckpoint)
@@ -919,10 +921,6 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
   public var getCustomForwardBackwardOperation: HyperProxyProviderCall<TogetherOperation> {
     self.call(.getCustomForwardBackwardOperation)
   }
-  /// `POST v1/rl/training-sessions/{session_id}/operations/forward`
-  public var forward: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.forward)
-  }
   /// `POST v1/rl/training-sessions/{session_id}/operations/forward-backward`
   public var forwardBackward: HyperProxyProviderCall<TogetherOperation> {
     self.call(.forwardBackward)
@@ -930,10 +928,6 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
   /// `GET v1/rl/training-sessions/{session_id}/operations/forward-backward/{operation_id}`
   public var getForwardBackwardOperation: HyperProxyProviderCall<TogetherOperation> {
     self.call(.getForwardBackwardOperation)
-  }
-  /// `GET v1/rl/training-sessions/{session_id}/operations/forward/{operation_id}`
-  public var getForwardOperation: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.getForwardOperation)
   }
   /// `POST v1/rl/training-sessions/{session_id}/operations/inference-checkpoint`
   public var createInferenceCheckpoint: HyperProxyProviderCall<TogetherOperation> {

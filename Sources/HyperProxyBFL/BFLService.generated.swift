@@ -36,6 +36,9 @@ public enum BFLOperation: String, HyperProxyProviderOperation {
   case imagesFlux11Pro = "images.flux11Pro"
   /// `POST v1/flux-pro-1.1-ultra`
   case imagesFlux11Ultra = "images.flux11Ultra"
+  /// `POST v1/flux-tools/video-edit-v1`
+  case generateFluxToolsVideoEditV1V1FluxToolsVideoEditV1Post =
+    "generate.flux.tools.video.edit.v1.v1.flux.tools.video.edit.v1.post"
   /// `POST v1/flux-tools/video-upscale-v1`
   case generateFluxToolsVideoUpscaleV1V1FluxToolsVideoUpscaleV1Post =
     "generate.flux.tools.video.upscale.v1.v1.flux.tools.video.upscale.v1.post"
@@ -143,6 +146,12 @@ extension HyperProxyProviderService where Operation == BFLOperation {
   /// `POST v1/flux-pro-1.1-ultra`
   public var imagesFlux11Ultra: HyperProxyProviderCall<BFLOperation> {
     self.call(.imagesFlux11Ultra)
+  }
+  /// `POST v1/flux-tools/video-edit-v1`
+  public var generateFluxToolsVideoEditV1V1FluxToolsVideoEditV1Post:
+    HyperProxyProviderCall<BFLOperation>
+  {
+    self.call(.generateFluxToolsVideoEditV1V1FluxToolsVideoEditV1Post)
   }
   /// `POST v1/flux-tools/video-upscale-v1`
   public var generateFluxToolsVideoUpscaleV1V1FluxToolsVideoUpscaleV1Post:

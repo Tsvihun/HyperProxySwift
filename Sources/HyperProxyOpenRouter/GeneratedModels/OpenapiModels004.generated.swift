@@ -4,6 +4,257 @@
 import Foundation
 import HyperProxyCore
 
+public struct OpenRouterFileCitation: Codable, Sendable {
+  public var fileId: String
+  public var filename: String
+  public var index: Int
+  public var typeModel: OpenRouterFileCitationTypeModel
+
+  public init(
+    fileId: String,
+    filename: String,
+    index: Int,
+    typeModel: OpenRouterFileCitationTypeModel
+  ) {
+    self.fileId = fileId
+    self.filename = filename
+    self.index = index
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case fileId = "file_id"
+    case filename
+    case index
+    case typeModel = "type"
+  }
+}
+
+public struct OpenRouterFileCitationTypeModel: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let fileCitation = Self(rawValue: "file_citation")
+}
+
+public typealias OpenRouterFileDeleteResponse = HyperProxyJSONValue
+
+public typealias OpenRouterFileListResponse = HyperProxyJSONValue
+
+public struct OpenRouterFileParserPlugin: Codable, Sendable {
+  public var enabled: Bool?
+  public var id: OpenRouterFileParserPluginId
+  public var pdf: OpenRouterPDFParserOptions?
+
+  public init(
+    id: OpenRouterFileParserPluginId,
+    enabled: Bool? = nil,
+    pdf: OpenRouterPDFParserOptions? = nil
+  ) {
+    self.enabled = enabled
+    self.id = id
+    self.pdf = pdf
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case enabled
+    case id
+    case pdf
+  }
+}
+
+public struct OpenRouterFileParserPluginId: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let fileParser = Self(rawValue: "file-parser")
+}
+
+public struct OpenRouterFilePath: Codable, Sendable {
+  public var fileId: String
+  public var index: Int
+  public var typeModel: OpenRouterFilePathTypeModel
+
+  public init(
+    fileId: String,
+    index: Int,
+    typeModel: OpenRouterFilePathTypeModel
+  ) {
+    self.fileId = fileId
+    self.index = index
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case fileId = "file_id"
+    case index
+    case typeModel = "type"
+  }
+}
+
+public struct OpenRouterFilePathTypeModel: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let filePath = Self(rawValue: "file_path")
+}
+
+public struct OpenRouterFileProvider: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let openai = Self(rawValue: "openai")
+  public static let anthropic = Self(rawValue: "anthropic")
+}
+
+public typealias OpenRouterFileResponse = HyperProxyJSONValue
+
+public struct OpenRouterFileSearchServerTool: Codable, Sendable {
+  public var filters: HyperProxyJSONValue?
+  public var maxNumResults: Int?
+  public var rankingOptions: OpenRouterFileSearchServerToolRankingOptions?
+  public var typeModel: OpenRouterFileSearchServerToolTypeModel
+  public var vectorStoreIds: [String]
+
+  public init(
+    typeModel: OpenRouterFileSearchServerToolTypeModel,
+    vectorStoreIds: [String],
+    filters: HyperProxyJSONValue? = nil,
+    maxNumResults: Int? = nil,
+    rankingOptions: OpenRouterFileSearchServerToolRankingOptions? = nil
+  ) {
+    self.filters = filters
+    self.maxNumResults = maxNumResults
+    self.rankingOptions = rankingOptions
+    self.typeModel = typeModel
+    self.vectorStoreIds = vectorStoreIds
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case filters
+    case maxNumResults = "max_num_results"
+    case rankingOptions = "ranking_options"
+    case typeModel = "type"
+    case vectorStoreIds = "vector_store_ids"
+  }
+}
+
+public struct OpenRouterFileSearchServerToolFiltersAnyOf1: Codable, Sendable {
+  public var key: String
+  public var typeModel: OpenRouterFileSearchServerToolFiltersAnyOf1TypeModel
+  public var value: HyperProxyJSONValue
+
+  public init(
+    key: String,
+    typeModel: OpenRouterFileSearchServerToolFiltersAnyOf1TypeModel,
+    value: HyperProxyJSONValue
+  ) {
+    self.key = key
+    self.typeModel = typeModel
+    self.value = value
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case key
+    case typeModel = "type"
+    case value
+  }
+}
+
+public struct OpenRouterFileSearchServerToolFiltersAnyOf1TypeModel: RawRepresentable, Codable,
+  Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let eq = Self(rawValue: "eq")
+  public static let ne = Self(rawValue: "ne")
+  public static let gt = Self(rawValue: "gt")
+  public static let gte = Self(rawValue: "gte")
+  public static let lt = Self(rawValue: "lt")
+  public static let lte = Self(rawValue: "lte")
+}
+
+public struct OpenRouterFileSearchServerToolRankingOptions: Codable, Sendable {
+  public var ranker: OpenRouterFileSearchServerToolRankingOptionsRanker?
+  public var scoreThreshold: Double?
+
+  public init(
+    ranker: OpenRouterFileSearchServerToolRankingOptionsRanker? = nil,
+    scoreThreshold: Double? = nil
+  ) {
+    self.ranker = ranker
+    self.scoreThreshold = scoreThreshold
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case ranker
+    case scoreThreshold = "score_threshold"
+  }
+}
+
+public struct OpenRouterFileSearchServerToolRankingOptionsRanker: RawRepresentable, Codable,
+  Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let auto = Self(rawValue: "auto")
+  public static let default20241115 = Self(rawValue: "default-2024-11-15")
+}
+
+public struct OpenRouterFileSearchServerToolTypeModel: RawRepresentable, Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let fileSearch = Self(rawValue: "file_search")
+}
+
+public struct OpenRouterFilesServerTool: Codable, Sendable {
+  public var parameters: OpenRouterFilesServerToolConfig?
+  public var typeModel: OpenRouterFilesServerToolTypeModel
+
+  public init(
+    typeModel: OpenRouterFilesServerToolTypeModel,
+    parameters: OpenRouterFilesServerToolConfig? = nil
+  ) {
+    self.parameters = parameters
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case parameters
+    case typeModel = "type"
+  }
+}
+
+public struct OpenRouterFilesServerToolConfig: Codable, Sendable {
+
+  public init() {}
+}
+
 public struct OpenRouterFilesServerToolTypeModel: RawRepresentable, Codable, Hashable, Sendable {
   public var rawValue: String
 
@@ -2740,6 +2991,34 @@ public struct OpenRouterGetScimGroupMappingResponse: Codable, Sendable {
   }
 }
 
+public struct OpenRouterGetScimSyncJobParameters: Codable, Sendable {
+  public var id: String
+
+  public init(
+    id: String
+  ) {
+    self.id = id
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case id
+  }
+}
+
+public struct OpenRouterGetScimSyncJobResponse: Codable, Sendable {
+  public var data: OpenRouterScimSyncJob
+
+  public init(
+    data: OpenRouterScimSyncJob
+  ) {
+    self.data = data
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case data
+  }
+}
+
 public struct OpenRouterGetSessionCostParameters: Codable, Sendable {
   public var appSlug: String?
   public var limit: Int?
@@ -2976,6 +3255,7 @@ public struct OpenRouterGoneResponseErrorData: Codable, Sendable {
 }
 
 public struct OpenRouterGuardrail: Codable, Sendable {
+  public var allowedDataRegions: [OpenRouterGuardrailDataRegion]?
   public var allowedModels: [String]?
   public var allowedProviders: [String]?
   public var contentFilterBuiltins: [OpenRouterContentFilterBuiltinEntry]?
@@ -3007,6 +3287,7 @@ public struct OpenRouterGuardrail: Codable, Sendable {
     includeByokInBudgets: Bool,
     name: String,
     workspaceId: String,
+    allowedDataRegions: [OpenRouterGuardrailDataRegion]? = nil,
     allowedModels: [String]? = nil,
     allowedProviders: [String]? = nil,
     contentFilterBuiltins: [OpenRouterContentFilterBuiltinEntry]? = nil,
@@ -3027,6 +3308,7 @@ public struct OpenRouterGuardrail: Codable, Sendable {
     resetInterval: OpenRouterGuardrailInterval? = nil,
     updatedAt: String? = nil
   ) {
+    self.allowedDataRegions = allowedDataRegions
     self.allowedModels = allowedModels
     self.allowedProviders = allowedProviders
     self.contentFilterBuiltins = contentFilterBuiltins
@@ -3054,6 +3336,7 @@ public struct OpenRouterGuardrail: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case allowedDataRegions = "allowed_data_regions"
     case allowedModels = "allowed_models"
     case allowedProviders = "allowed_providers"
     case contentFilterBuiltins = "content_filter_builtins"
@@ -3079,6 +3362,18 @@ public struct OpenRouterGuardrail: Codable, Sendable {
     case updatedAt = "updated_at"
     case workspaceId = "workspace_id"
   }
+}
+
+public struct OpenRouterGuardrailDataRegion: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let global = Self(rawValue: "global")
+  public static let europe = Self(rawValue: "europe")
+  public static let us = Self(rawValue: "us")
 }
 
 public struct OpenRouterGuardrailInterval: RawRepresentable, Codable, Hashable, Sendable {
@@ -3131,489 +3426,4 @@ public struct OpenRouterImageEndpoint: Codable, Sendable {
     case supportedParameters = "supported_parameters"
     case supportsStreaming = "supports_streaming"
   }
-}
-
-public struct OpenRouterImageGenCallCompletedEvent: Codable, Sendable {
-  public var itemId: String
-  public var outputIndex: Int
-  public var sequenceNumber: Int
-  public var typeModel: OpenRouterOpenAIResponsesImageGenCallCompletedTypeModel
-
-  public init(
-    itemId: String,
-    outputIndex: Int,
-    sequenceNumber: Int,
-    typeModel: OpenRouterOpenAIResponsesImageGenCallCompletedTypeModel
-  ) {
-    self.itemId = itemId
-    self.outputIndex = outputIndex
-    self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case itemId = "item_id"
-    case outputIndex = "output_index"
-    case sequenceNumber = "sequence_number"
-    case typeModel = "type"
-  }
-}
-
-public struct OpenRouterImageGenCallGeneratingEvent: Codable, Sendable {
-  public var itemId: String
-  public var outputIndex: Int
-  public var sequenceNumber: Int
-  public var typeModel: OpenRouterOpenAIResponsesImageGenCallGeneratingTypeModel
-
-  public init(
-    itemId: String,
-    outputIndex: Int,
-    sequenceNumber: Int,
-    typeModel: OpenRouterOpenAIResponsesImageGenCallGeneratingTypeModel
-  ) {
-    self.itemId = itemId
-    self.outputIndex = outputIndex
-    self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case itemId = "item_id"
-    case outputIndex = "output_index"
-    case sequenceNumber = "sequence_number"
-    case typeModel = "type"
-  }
-}
-
-public struct OpenRouterImageGenCallInProgressEvent: Codable, Sendable {
-  public var itemId: String
-  public var outputIndex: Int
-  public var sequenceNumber: Int
-  public var typeModel: OpenRouterOpenAIResponsesImageGenCallInProgressTypeModel
-
-  public init(
-    itemId: String,
-    outputIndex: Int,
-    sequenceNumber: Int,
-    typeModel: OpenRouterOpenAIResponsesImageGenCallInProgressTypeModel
-  ) {
-    self.itemId = itemId
-    self.outputIndex = outputIndex
-    self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case itemId = "item_id"
-    case outputIndex = "output_index"
-    case sequenceNumber = "sequence_number"
-    case typeModel = "type"
-  }
-}
-
-public struct OpenRouterImageGenCallPartialImageEvent: Codable, Sendable {
-  public var itemId: String
-  public var outputIndex: Int
-  public var partialImageB64: String
-  public var partialImageIndex: Int
-  public var sequenceNumber: Int
-  public var typeModel: OpenRouterOpenAIResponsesImageGenCallPartialImageTypeModel
-
-  public init(
-    itemId: String,
-    outputIndex: Int,
-    partialImageB64: String,
-    partialImageIndex: Int,
-    sequenceNumber: Int,
-    typeModel: OpenRouterOpenAIResponsesImageGenCallPartialImageTypeModel
-  ) {
-    self.itemId = itemId
-    self.outputIndex = outputIndex
-    self.partialImageB64 = partialImageB64
-    self.partialImageIndex = partialImageIndex
-    self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case itemId = "item_id"
-    case outputIndex = "output_index"
-    case partialImageB64 = "partial_image_b64"
-    case partialImageIndex = "partial_image_index"
-    case sequenceNumber = "sequence_number"
-    case typeModel = "type"
-  }
-}
-
-public struct OpenRouterImageGenCompletedEvent: Codable, Sendable {
-  public var b64Json: String
-  public var created: Int
-  public var mediaType: String?
-  public var typeModel: OpenRouterImageGenCompletedEventTypeModel
-  public var usage: OpenRouterImageGenerationUsage?
-
-  public init(
-    b64Json: String,
-    created: Int,
-    typeModel: OpenRouterImageGenCompletedEventTypeModel,
-    mediaType: String? = nil,
-    usage: OpenRouterImageGenerationUsage? = nil
-  ) {
-    self.b64Json = b64Json
-    self.created = created
-    self.mediaType = mediaType
-    self.typeModel = typeModel
-    self.usage = usage
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case b64Json = "b64_json"
-    case created
-    case mediaType = "media_type"
-    case typeModel = "type"
-    case usage
-  }
-}
-
-public struct OpenRouterImageGenCompletedEventTypeModel: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let imageGenerationCompleted = Self(rawValue: "image_generation.completed")
-}
-
-public struct OpenRouterImageGenPartialImageEvent: Codable, Sendable {
-  public var b64Json: String
-  public var partialImageIndex: Int
-  public var typeModel: OpenRouterImageGenPartialImageEventTypeModel
-
-  public init(
-    b64Json: String,
-    partialImageIndex: Int,
-    typeModel: OpenRouterImageGenPartialImageEventTypeModel
-  ) {
-    self.b64Json = b64Json
-    self.partialImageIndex = partialImageIndex
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case b64Json = "b64_json"
-    case partialImageIndex = "partial_image_index"
-    case typeModel = "type"
-  }
-}
-
-public struct OpenRouterImageGenPartialImageEventTypeModel: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let imageGenerationPartialImage = Self(rawValue: "image_generation.partial_image")
-}
-
-public struct OpenRouterImageGenStreamErrorEvent: Codable, Sendable {
-  public var error: OpenRouterImageGenStreamErrorEventError
-  public var typeModel: OpenRouterImageGenStreamErrorEventTypeModel
-
-  public init(
-    error: OpenRouterImageGenStreamErrorEventError,
-    typeModel: OpenRouterImageGenStreamErrorEventTypeModel
-  ) {
-    self.error = error
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case error
-    case typeModel = "type"
-  }
-}
-
-public struct OpenRouterImageGenStreamErrorEventError: Codable, Sendable {
-  public var code: String?
-  public var message: String
-  public var param: String?
-  public var typeModel: String?
-
-  public init(
-    message: String,
-    code: String? = nil,
-    param: String? = nil,
-    typeModel: String? = nil
-  ) {
-    self.code = code
-    self.message = message
-    self.param = param
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case code
-    case message
-    case param
-    case typeModel = "type"
-  }
-}
-
-public struct OpenRouterImageGenStreamErrorEventTypeModel: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let error = Self(rawValue: "error")
-}
-
-public struct OpenRouterImageGenTextChunkEvent: Codable, Sendable {
-  public var phase: OpenRouterImageGenTextChunkEventPhase
-  public var text: String
-  public var typeModel: OpenRouterImageGenTextChunkEventTypeModel
-
-  public init(
-    phase: OpenRouterImageGenTextChunkEventPhase,
-    text: String,
-    typeModel: OpenRouterImageGenTextChunkEventTypeModel
-  ) {
-    self.phase = phase
-    self.text = text
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case phase
-    case text
-    case typeModel = "type"
-  }
-}
-
-public struct OpenRouterImageGenTextChunkEventPhase: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let content = Self(rawValue: "content")
-  public static let reasoning = Self(rawValue: "reasoning")
-  public static let draft = Self(rawValue: "draft")
-}
-
-public struct OpenRouterImageGenTextChunkEventTypeModel: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let imageGenerationTextChunk = Self(rawValue: "image_generation.text_chunk")
-}
-
-public struct OpenRouterImageGenerationProviderPreferences: Codable, Sendable {
-  public var allowFallbacks: Bool?
-  public var ignore: [HyperProxyJSONValue]?
-  public var only: [HyperProxyJSONValue]?
-  public var options: HyperProxyJSONValue?
-  public var order: [HyperProxyJSONValue]?
-  public var sort: HyperProxyJSONValue?
-
-  public init(
-    allowFallbacks: Bool? = nil,
-    ignore: [HyperProxyJSONValue]? = nil,
-    only: [HyperProxyJSONValue]? = nil,
-    options: HyperProxyJSONValue? = nil,
-    order: [HyperProxyJSONValue]? = nil,
-    sort: HyperProxyJSONValue? = nil
-  ) {
-    self.allowFallbacks = allowFallbacks
-    self.ignore = ignore
-    self.only = only
-    self.options = options
-    self.order = order
-    self.sort = sort
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case allowFallbacks = "allow_fallbacks"
-    case ignore
-    case only
-    case options
-    case order
-    case sort
-  }
-}
-
-public struct OpenRouterImageGenerationRequest: Codable, Sendable {
-  public var aspectRatio: OpenRouterImageGenerationRequestAspectRatio?
-  public var background: OpenRouterImageGenerationRequestBackground?
-  public var inputReferences: [OpenRouterContentPartImage]?
-  public var model: String
-  public var n: Int?
-  public var outputCompression: Int?
-  public var outputFormat: OpenRouterImageGenerationRequestOutputFormat?
-  public var prompt: String
-  public var provider: OpenRouterImageGenerationProviderPreferences?
-  public var quality: OpenRouterImageGenerationRequestQuality?
-  public var resolution: OpenRouterImageGenerationRequestResolution?
-  public var seed: Int?
-  public var size: String?
-  public var stream: Bool?
-  public var user: String?
-
-  public init(
-    model: String,
-    prompt: String,
-    aspectRatio: OpenRouterImageGenerationRequestAspectRatio? = nil,
-    background: OpenRouterImageGenerationRequestBackground? = nil,
-    inputReferences: [OpenRouterContentPartImage]? = nil,
-    n: Int? = nil,
-    outputCompression: Int? = nil,
-    outputFormat: OpenRouterImageGenerationRequestOutputFormat? = nil,
-    provider: OpenRouterImageGenerationProviderPreferences? = nil,
-    quality: OpenRouterImageGenerationRequestQuality? = nil,
-    resolution: OpenRouterImageGenerationRequestResolution? = nil,
-    seed: Int? = nil,
-    size: String? = nil,
-    stream: Bool? = nil,
-    user: String? = nil
-  ) {
-    self.aspectRatio = aspectRatio
-    self.background = background
-    self.inputReferences = inputReferences
-    self.model = model
-    self.n = n
-    self.outputCompression = outputCompression
-    self.outputFormat = outputFormat
-    self.prompt = prompt
-    self.provider = provider
-    self.quality = quality
-    self.resolution = resolution
-    self.seed = seed
-    self.size = size
-    self.stream = stream
-    self.user = user
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case aspectRatio = "aspect_ratio"
-    case background
-    case inputReferences = "input_references"
-    case model
-    case n
-    case outputCompression = "output_compression"
-    case outputFormat = "output_format"
-    case prompt
-    case provider
-    case quality
-    case resolution
-    case seed
-    case size
-    case stream
-    case user
-  }
-}
-
-public struct OpenRouterImageGenerationRequestAspectRatio: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let value11 = Self(rawValue: "1:1")
-  public static let value12 = Self(rawValue: "1:2")
-  public static let value14 = Self(rawValue: "1:4")
-  public static let value18 = Self(rawValue: "1:8")
-  public static let value21 = Self(rawValue: "2:1")
-  public static let value23 = Self(rawValue: "2:3")
-  public static let value32 = Self(rawValue: "3:2")
-  public static let value34 = Self(rawValue: "3:4")
-  public static let value41 = Self(rawValue: "4:1")
-  public static let value43 = Self(rawValue: "4:3")
-  public static let value45 = Self(rawValue: "4:5")
-  public static let value54 = Self(rawValue: "5:4")
-  public static let value81 = Self(rawValue: "8:1")
-  public static let value916 = Self(rawValue: "9:16")
-  public static let value169 = Self(rawValue: "16:9")
-  public static let value9195 = Self(rawValue: "9:19.5")
-  public static let value1959 = Self(rawValue: "19.5:9")
-  public static let value920 = Self(rawValue: "9:20")
-  public static let value209 = Self(rawValue: "20:9")
-  public static let value921 = Self(rawValue: "9:21")
-  public static let value219 = Self(rawValue: "21:9")
-  public static let auto = Self(rawValue: "auto")
-}
-
-public struct OpenRouterImageGenerationRequestBackground: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
-  public static let transparent = Self(rawValue: "transparent")
-  public static let opaque = Self(rawValue: "opaque")
-}
-
-public struct OpenRouterImageGenerationRequestOutputFormat: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let png = Self(rawValue: "png")
-  public static let jpeg = Self(rawValue: "jpeg")
-  public static let webp = Self(rawValue: "webp")
-  public static let svg = Self(rawValue: "svg")
-}
-
-public struct OpenRouterImageGenerationRequestQuality: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
-  public static let low = Self(rawValue: "low")
-  public static let medium = Self(rawValue: "medium")
-  public static let high = Self(rawValue: "high")
-}
-
-public struct OpenRouterImageGenerationRequestResolution: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let value512 = Self(rawValue: "512")
-  public static let value1K = Self(rawValue: "1K")
-  public static let value2K = Self(rawValue: "2K")
-  public static let value4K = Self(rawValue: "4K")
 }

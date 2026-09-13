@@ -116,7 +116,7 @@ struct HyperProxyProviderCatalogTests {
     )
     #expect(deepSeekMessages.surface == "anthropic-compatible")
 
-    #expect(HyperProxyProviders.bfl.routes.count == 35)
+    #expect(HyperProxyProviders.bfl.routes.count == 36)
     #expect(
       Set(HyperProxyProviders.bfl.routes.compactMap(\.upstreamBaseURL)) == [
         "https://api.bfl.ai"

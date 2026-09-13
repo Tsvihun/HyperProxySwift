@@ -4,6 +4,26 @@
 import Foundation
 import HyperProxyCore
 
+public struct ElevenLabsColumnUnit: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let ms = Self(rawValue: "ms")
+  public static let s = Self(rawValue: "s")
+  public static let min = Self(rawValue: "min")
+  public static let duration = Self(rawValue: "duration")
+  public static let credits = Self(rawValue: "credits")
+  public static let usd = Self(rawValue: "usd")
+  public static let eur = Self(rawValue: "eur")
+  public static let inr = Self(rawValue: "inr")
+  public static let pln = Self(rawValue: "pln")
+  public static let ratio = Self(rawValue: "ratio")
+  public static let rating = Self(rawValue: "rating")
+}
+
 public struct ElevenLabsCompactionSettingsWorkflowOverride: Codable, Sendable {
   public var enabled: Bool?
   public var minReclaimableTokens: Int?
@@ -243,6 +263,20 @@ public struct ElevenLabsCompositionPlan: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case chunks
+  }
+}
+
+public struct ElevenLabsComputedUsagePlatformLimit: Codable, Sendable {
+  public var limit: Int?
+
+  public init(
+    limit: Int? = nil
+  ) {
+    self.limit = limit
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case limit
   }
 }
 
@@ -1446,6 +1480,7 @@ public struct ElevenLabsConversationHistoryMetadataCommonModel: Codable, Sendabl
   public var initiatorId: String?
   public var mainLanguage: String?
   public var phoneCall: HyperProxyJSONValue?
+  public var queueWaitSecs: Double?
   public var ragUsage: ElevenLabsConversationHistoryRagUsageCommonModel?
   public var sms: ElevenLabsSMSConversationInfo?
   public var startTimeUnixSecs: Int
@@ -1478,6 +1513,7 @@ public struct ElevenLabsConversationHistoryMetadataCommonModel: Codable, Sendabl
     initiatorId: String? = nil,
     mainLanguage: String? = nil,
     phoneCall: HyperProxyJSONValue? = nil,
+    queueWaitSecs: Double? = nil,
     ragUsage: ElevenLabsConversationHistoryRagUsageCommonModel? = nil,
     sms: ElevenLabsSMSConversationInfo? = nil,
     terminationReason: String? = nil,
@@ -1507,6 +1543,7 @@ public struct ElevenLabsConversationHistoryMetadataCommonModel: Codable, Sendabl
     self.initiatorId = initiatorId
     self.mainLanguage = mainLanguage
     self.phoneCall = phoneCall
+    self.queueWaitSecs = queueWaitSecs
     self.ragUsage = ragUsage
     self.sms = sms
     self.startTimeUnixSecs = startTimeUnixSecs
@@ -1539,6 +1576,7 @@ public struct ElevenLabsConversationHistoryMetadataCommonModel: Codable, Sendabl
     case initiatorId = "initiator_id"
     case mainLanguage = "main_language"
     case phoneCall = "phone_call"
+    case queueWaitSecs = "queue_wait_secs"
     case ragUsage = "rag_usage"
     case sms
     case startTimeUnixSecs = "start_time_unix_secs"
@@ -2842,7 +2880,7 @@ public struct ElevenLabsConversationInitiationClientDataInternal: Codable, Senda
   public var branchId: String?
   public var conversationConfigOverride: ElevenLabsConversationConfigClientOverrideOutput?
   public var customLlmExtraBody: [String: HyperProxyJSONValue]?
-  public var dynamicVariables: [String: HyperProxyJSONValue]?
+  public var dynamicVariables: [String: ElevenLabsDynamicVariableInternalValueType]?
   public var environment: String?
   public var procedureIds: [String]?
   public var sourceInfo: ElevenLabsConversationInitiationSourceInfo?
@@ -2855,7 +2893,7 @@ public struct ElevenLabsConversationInitiationClientDataInternal: Codable, Senda
     branchId: String? = nil,
     conversationConfigOverride: ElevenLabsConversationConfigClientOverrideOutput? = nil,
     customLlmExtraBody: [String: HyperProxyJSONValue]? = nil,
-    dynamicVariables: [String: HyperProxyJSONValue]? = nil,
+    dynamicVariables: [String: ElevenLabsDynamicVariableInternalValueType]? = nil,
     environment: String? = nil,
     procedureIds: [String]? = nil,
     sourceInfo: ElevenLabsConversationInitiationSourceInfo? = nil,
@@ -4377,75 +4415,3 @@ public struct ElevenLabsCreateEnvironmentVariableParameters: Codable, Sendable {
 }
 
 public typealias ElevenLabsCreateEnvironmentVariableRequest = HyperProxyJSONValue
-
-public struct ElevenLabsCreateExotelPhoneNumberRequest: Codable, Sendable {
-  public var accountSid: String
-  public var agentId: String?
-  public var apiKey: String
-  public var apiSubdomain: ElevenLabsExotelApiSubdomain
-  public var apiToken: String
-  public var appId: String
-  public var appletUrl: String?
-  public var label: String
-  public var phoneNumber: String
-  public var provider: String?
-  public var supportsInbound: Bool?
-  public var supportsOutbound: Bool?
-
-  public init(
-    accountSid: String,
-    apiKey: String,
-    apiSubdomain: ElevenLabsExotelApiSubdomain,
-    apiToken: String,
-    appId: String,
-    label: String,
-    phoneNumber: String,
-    agentId: String? = nil,
-    appletUrl: String? = nil,
-    provider: String? = nil,
-    supportsInbound: Bool? = nil,
-    supportsOutbound: Bool? = nil
-  ) {
-    self.accountSid = accountSid
-    self.agentId = agentId
-    self.apiKey = apiKey
-    self.apiSubdomain = apiSubdomain
-    self.apiToken = apiToken
-    self.appId = appId
-    self.appletUrl = appletUrl
-    self.label = label
-    self.phoneNumber = phoneNumber
-    self.provider = provider
-    self.supportsInbound = supportsInbound
-    self.supportsOutbound = supportsOutbound
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case accountSid = "account_sid"
-    case agentId = "agent_id"
-    case apiKey = "api_key"
-    case apiSubdomain = "api_subdomain"
-    case apiToken = "api_token"
-    case appId = "app_id"
-    case appletUrl = "applet_url"
-    case label
-    case phoneNumber = "phone_number"
-    case provider
-    case supportsInbound = "supports_inbound"
-    case supportsOutbound = "supports_outbound"
-  }
-}
-
-public struct ElevenLabsCreateFileDocumentRouteParameters: Codable, Sendable {
-  public var xiApiKey: String?
-
-  public init(
-    xiApiKey: String? = nil
-  ) {
-    self.xiApiKey = xiApiKey
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case xiApiKey = "xi-api-key"
-  }
-}

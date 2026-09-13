@@ -4,6 +4,17 @@
 import Foundation
 import HyperProxyCore
 
+public struct ElevenLabsAnalysisType: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let evaluationCriteria = Self(rawValue: "evaluation_criteria")
+  public static let dataCollection = Self(rawValue: "data_collection")
+}
+
 public struct ElevenLabsApiIntegrationOAuth2AuthCodeResponse: Codable, Sendable {
   public var authType: String?
   public var credentialId: String
@@ -1710,7 +1721,7 @@ public struct ElevenLabsBatchCallDetailedResponse: Codable, Sendable {
   public var scheduledTimeUnix: Int
   public var status: ElevenLabsBatchCallStatus
   public var targetConcurrencyLimit: Int?
-  public var telephonyCallConfig: ElevenLabsTelephonyCallConfig
+  public var telephonyCallConfig: ElevenLabsTelephonyCallConfigOutput
   public var timezone: String?
   public var totalCallsDispatched: Int
   public var totalCallsFinished: Int
@@ -1734,7 +1745,7 @@ public struct ElevenLabsBatchCallDetailedResponse: Codable, Sendable {
     scheduledTimeUnix: Int,
     status: ElevenLabsBatchCallStatus,
     targetConcurrencyLimit: Int?,
-    telephonyCallConfig: ElevenLabsTelephonyCallConfig,
+    telephonyCallConfig: ElevenLabsTelephonyCallConfigOutput,
     timezone: String?,
     totalCallsDispatched: Int,
     totalCallsFinished: Int,
@@ -1824,7 +1835,7 @@ public struct ElevenLabsBatchCallResponse: Codable, Sendable {
   public var scheduledTimeUnix: Int
   public var status: ElevenLabsBatchCallStatus
   public var targetConcurrencyLimit: Int?
-  public var telephonyCallConfig: ElevenLabsTelephonyCallConfig
+  public var telephonyCallConfig: ElevenLabsTelephonyCallConfigOutput
   public var timezone: String?
   public var totalCallsDispatched: Int
   public var totalCallsFinished: Int
@@ -1847,7 +1858,7 @@ public struct ElevenLabsBatchCallResponse: Codable, Sendable {
     scheduledTimeUnix: Int,
     status: ElevenLabsBatchCallStatus,
     targetConcurrencyLimit: Int?,
-    telephonyCallConfig: ElevenLabsTelephonyCallConfig,
+    telephonyCallConfig: ElevenLabsTelephonyCallConfigOutput,
     timezone: String?,
     totalCallsDispatched: Int,
     totalCallsFinished: Int,
@@ -2428,19 +2439,6 @@ public struct ElevenLabsBodySpeechToTextV1SpeechToTextPostFileFormat: RawReprese
 
   public static let pcmS16le16 = Self(rawValue: "pcm_s16le_16")
   public static let other = Self(rawValue: "other")
-}
-
-public struct ElevenLabsBodySpeechToTextV1SpeechToTextPostModelId: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let scribeV1 = Self(rawValue: "scribe_v1")
-  public static let scribeV2 = Self(rawValue: "scribe_v2")
 }
 
 public struct ElevenLabsBodySpeechToTextV1SpeechToTextPostMultichannelOutputStyle: RawRepresentable,
@@ -3415,6 +3413,7 @@ public struct ElevenLabsBodyCreateURLDocumentV1ConvaiKnowledgeBaseUrlPost: Codab
 public struct ElevenLabsBodyCreateANewBranchV1ConvaiAgentsAgentIdBranchesPost: Codable, Sendable {
   public var conversationConfig: [String: HyperProxyJSONValue]?
   public var description: String
+  public var includeDraft: Bool?
   public var name: String
   public var parentVersionId: String
   public var platformSettings: [String: HyperProxyJSONValue]?
@@ -3425,11 +3424,13 @@ public struct ElevenLabsBodyCreateANewBranchV1ConvaiAgentsAgentIdBranchesPost: C
     name: String,
     parentVersionId: String,
     conversationConfig: [String: HyperProxyJSONValue]? = nil,
+    includeDraft: Bool? = nil,
     platformSettings: [String: HyperProxyJSONValue]? = nil,
     workflow: ElevenLabsAgentWorkflowRequestModel? = nil
   ) {
     self.conversationConfig = conversationConfig
     self.description = description
+    self.includeDraft = includeDraft
     self.name = name
     self.parentVersionId = parentVersionId
     self.platformSettings = platformSettings
@@ -3439,6 +3440,7 @@ public struct ElevenLabsBodyCreateANewBranchV1ConvaiAgentsAgentIdBranchesPost: C
   enum CodingKeys: String, CodingKey {
     case conversationConfig = "conversation_config"
     case description
+    case includeDraft = "include_draft"
     case name
     case parentVersionId = "parent_version_id"
     case platformSettings = "platform_settings"

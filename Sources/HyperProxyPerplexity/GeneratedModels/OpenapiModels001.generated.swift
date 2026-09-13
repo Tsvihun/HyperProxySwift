@@ -4,6 +4,88 @@
 import Foundation
 import HyperProxyCore
 
+public struct PerplexityResponseFormat: Codable, Sendable {
+  public var jsonSchema: PerplexityJSONSchemaFormat?
+  public var typeModel: PerplexityResponseFormatTypeModel
+
+  public init(
+    typeModel: PerplexityResponseFormatTypeModel,
+    jsonSchema: PerplexityJSONSchemaFormat? = nil
+  ) {
+    self.jsonSchema = jsonSchema
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case jsonSchema = "json_schema"
+    case typeModel = "type"
+  }
+}
+
+public struct PerplexityResponseFormatJSONSchema: Codable, Sendable {
+  public var jsonSchema: PerplexityJSONSchema
+  public var typeModel: String
+
+  public init(
+    jsonSchema: PerplexityJSONSchema,
+    typeModel: String
+  ) {
+    self.jsonSchema = jsonSchema
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case jsonSchema = "json_schema"
+    case typeModel = "type"
+  }
+}
+
+public struct PerplexityResponseFormatText: Codable, Sendable {
+  public var typeModel: String
+
+  public init(
+    typeModel: String
+  ) {
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case typeModel = "type"
+  }
+}
+
+public struct PerplexityResponseFormatTypeModel: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let jsonSchema = Self(rawValue: "json_schema")
+}
+
+public struct PerplexityResponseInProgressEvent: Codable, Sendable {
+  public var response: PerplexityResponsesResponse?
+  public var sequenceNumber: Int64
+  public var typeModel: PerplexityEventType
+
+  public init(
+    sequenceNumber: Int64,
+    typeModel: PerplexityEventType,
+    response: PerplexityResponsesResponse? = nil
+  ) {
+    self.response = response
+    self.sequenceNumber = sequenceNumber
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case response
+    case sequenceNumber = "sequence_number"
+    case typeModel = "type"
+  }
+}
+
 public typealias PerplexityResponseStreamEvent = HyperProxyJSONValue
 
 public struct PerplexityResponsesCost: Codable, Sendable {
@@ -65,6 +147,7 @@ public struct PerplexityResponsesRequest: Codable, Sendable {
   public var models: [String]?
   public var preset: String?
   public var previousResponseId: String?
+  public var profile: HyperProxyJSONValue?
   public var reasoning: PerplexityReasoningConfig?
   public var responseFormat: PerplexityResponseFormat?
   public var skills: [PerplexitySkill]?
@@ -85,6 +168,7 @@ public struct PerplexityResponsesRequest: Codable, Sendable {
     models: [String]? = nil,
     preset: String? = nil,
     previousResponseId: String? = nil,
+    profile: HyperProxyJSONValue? = nil,
     reasoning: PerplexityReasoningConfig? = nil,
     responseFormat: PerplexityResponseFormat? = nil,
     skills: [PerplexitySkill]? = nil,
@@ -104,6 +188,7 @@ public struct PerplexityResponsesRequest: Codable, Sendable {
     self.models = models
     self.preset = preset
     self.previousResponseId = previousResponseId
+    self.profile = profile
     self.reasoning = reasoning
     self.responseFormat = responseFormat
     self.skills = skills
@@ -125,6 +210,7 @@ public struct PerplexityResponsesRequest: Codable, Sendable {
     case models
     case preset
     case previousResponseId = "previous_response_id"
+    case profile
     case reasoning
     case responseFormat = "response_format"
     case skills
@@ -508,29 +594,7 @@ public struct PerplexitySearchSource: RawRepresentable, Codable, Hashable, Senda
   public static let web = Self(rawValue: "web")
 }
 
-public enum PerplexitySkill: Codable, Sendable {
-  case builtinSkill(PerplexityBuiltinSkill)
-  case inlineSkill(PerplexityInlineSkill)
-
-  public init(from decoder: any Decoder) throws {
-    let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(PerplexityBuiltinSkill.self) {
-      self = .builtinSkill(value)
-      return
-    }
-    self = .inlineSkill(try container.decode(PerplexityInlineSkill.self))
-  }
-
-  public func encode(to encoder: any Encoder) throws {
-    var container = encoder.singleValueContainer()
-    switch self {
-    case .builtinSkill(let value):
-      try container.encode(value)
-    case .inlineSkill(let value):
-      try container.encode(value)
-    }
-  }
-}
+public typealias PerplexitySkill = HyperProxyJSONValue
 
 public struct PerplexityStatus: RawRepresentable, Codable, Hashable, Sendable {
   public var rawValue: String

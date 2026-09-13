@@ -36,6 +36,8 @@ public enum EachAIOperation: String, HyperProxyProviderOperation {
   case webhooksList = "webhooks.list"
   /// `GET v1/webhooks/{execution_id}`
   case webhooksRetrieve = "webhooks.retrieve"
+  /// `GET v2/executions`
+  case listExecutionsV2 = "listExecutionsV2"
   /// `DELETE memory`
   case senseMemoryDelete = "sense.memory.delete"
   /// `GET memory`
@@ -146,6 +148,10 @@ extension HyperProxyProviderService where Operation == EachAIOperation {
   /// `GET v1/webhooks/{execution_id}`
   public var webhooksRetrieve: HyperProxyProviderCall<EachAIOperation> {
     self.call(.webhooksRetrieve)
+  }
+  /// `GET v2/executions`
+  public var listExecutionsV2: HyperProxyProviderCall<EachAIOperation> {
+    self.call(.listExecutionsV2)
   }
   /// `DELETE memory`
   public var senseMemoryDelete: HyperProxyProviderCall<EachAIOperation> {

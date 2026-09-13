@@ -4,6 +4,982 @@
 import Foundation
 import HyperProxyCore
 
+public struct OpenRouterOutputWebSearchServerToolItem: Codable, Sendable {
+  public var action: OpenRouterOutputWebSearchServerToolItemAction?
+  public var id: String?
+  public var status: OpenRouterToolCallStatus
+  public var typeModel: OpenRouterOutputWebSearchServerToolItemTypeModel
+
+  public init(
+    status: OpenRouterToolCallStatus,
+    typeModel: OpenRouterOutputWebSearchServerToolItemTypeModel,
+    action: OpenRouterOutputWebSearchServerToolItemAction? = nil,
+    id: String? = nil
+  ) {
+    self.action = action
+    self.id = id
+    self.status = status
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case action
+    case id
+    case status
+    case typeModel = "type"
+  }
+}
+
+public struct OpenRouterOutputWebSearchServerToolItemAction: Codable, Sendable {
+  public var query: String
+  public var sources: [OpenRouterOutputWebSearchServerToolItemActionSourcesItem]?
+  public var typeModel: OpenRouterOutputWebSearchServerToolItemActionTypeModel
+
+  public init(
+    query: String,
+    typeModel: OpenRouterOutputWebSearchServerToolItemActionTypeModel,
+    sources: [OpenRouterOutputWebSearchServerToolItemActionSourcesItem]? = nil
+  ) {
+    self.query = query
+    self.sources = sources
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case query
+    case sources
+    case typeModel = "type"
+  }
+}
+
+public struct OpenRouterOutputWebSearchServerToolItemActionSourcesItem: Codable, Sendable {
+  public var typeModel: OpenRouterOutputWebSearchServerToolItemActionSourcesItemTypeModel
+  public var url: String
+
+  public init(
+    typeModel: OpenRouterOutputWebSearchServerToolItemActionSourcesItemTypeModel,
+    url: String
+  ) {
+    self.typeModel = typeModel
+    self.url = url
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case typeModel = "type"
+    case url
+  }
+}
+
+public struct OpenRouterOutputWebSearchServerToolItemActionSourcesItemTypeModel: RawRepresentable,
+  Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let url = Self(rawValue: "url")
+}
+
+public struct OpenRouterOutputWebSearchServerToolItemActionTypeModel: RawRepresentable, Codable,
+  Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let search = Self(rawValue: "search")
+}
+
+public struct OpenRouterOutputWebSearchServerToolItemTypeModel: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let openrouterWebSearch = Self(rawValue: "openrouter:web_search")
+}
+
+public enum OpenRouterPDFParserEngine: Codable, Sendable {
+  case pDFParserEngineAnyOf1(OpenRouterPDFParserEngineAnyOf1)
+  case pDFParserEngineAnyOf2(OpenRouterPDFParserEngineAnyOf2)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(OpenRouterPDFParserEngineAnyOf1.self) {
+      self = .pDFParserEngineAnyOf1(value)
+      return
+    }
+    self = .pDFParserEngineAnyOf2(try container.decode(OpenRouterPDFParserEngineAnyOf2.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .pDFParserEngineAnyOf1(let value):
+      try container.encode(value)
+    case .pDFParserEngineAnyOf2(let value):
+      try container.encode(value)
+    }
+  }
+}
+
+public struct OpenRouterPDFParserEngineAnyOf1: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let mistralOcr = Self(rawValue: "mistral-ocr")
+  public static let native = Self(rawValue: "native")
+  public static let cloudflareAi = Self(rawValue: "cloudflare-ai")
+}
+
+public struct OpenRouterPDFParserEngineAnyOf2: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let pdfText = Self(rawValue: "pdf-text")
+}
+
+public struct OpenRouterPDFParserOptions: Codable, Sendable {
+  public var engine: OpenRouterPDFParserEngine?
+
+  public init(
+    engine: OpenRouterPDFParserEngine? = nil
+  ) {
+    self.engine = engine
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case engine
+  }
+}
+
+public struct OpenRouterParameter: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let temperature = Self(rawValue: "temperature")
+  public static let topP = Self(rawValue: "top_p")
+  public static let topK = Self(rawValue: "top_k")
+  public static let minP = Self(rawValue: "min_p")
+  public static let topA = Self(rawValue: "top_a")
+  public static let frequencyPenalty = Self(rawValue: "frequency_penalty")
+  public static let presencePenalty = Self(rawValue: "presence_penalty")
+  public static let repetitionPenalty = Self(rawValue: "repetition_penalty")
+  public static let maxTokens = Self(rawValue: "max_tokens")
+  public static let maxCompletionTokens = Self(rawValue: "max_completion_tokens")
+  public static let logitBias = Self(rawValue: "logit_bias")
+  public static let logprobs = Self(rawValue: "logprobs")
+  public static let topLogprobs = Self(rawValue: "top_logprobs")
+  public static let prediction = Self(rawValue: "prediction")
+  public static let seed = Self(rawValue: "seed")
+  public static let responseFormat = Self(rawValue: "response_format")
+  public static let structuredOutputs = Self(rawValue: "structured_outputs")
+  public static let stop = Self(rawValue: "stop")
+  public static let tools = Self(rawValue: "tools")
+  public static let toolChoice = Self(rawValue: "tool_choice")
+  public static let parallelToolCalls = Self(rawValue: "parallel_tool_calls")
+  public static let includeReasoning = Self(rawValue: "include_reasoning")
+  public static let reasoning = Self(rawValue: "reasoning")
+  public static let reasoningEffort = Self(rawValue: "reasoning_effort")
+  public static let webSearchOptions = Self(rawValue: "web_search_options")
+  public static let verbosity = Self(rawValue: "verbosity")
+}
+
+public struct OpenRouterParetoRouterPlugin: Codable, Sendable {
+  public var enabled: Bool?
+  public var id: OpenRouterParetoRouterPluginId
+  public var maxPrice: Double?
+  public var minCodingScore: Double?
+  public var priceSource: OpenRouterParetoRouterPluginPriceSource?
+
+  public init(
+    id: OpenRouterParetoRouterPluginId,
+    enabled: Bool? = nil,
+    maxPrice: Double? = nil,
+    minCodingScore: Double? = nil,
+    priceSource: OpenRouterParetoRouterPluginPriceSource? = nil
+  ) {
+    self.enabled = enabled
+    self.id = id
+    self.maxPrice = maxPrice
+    self.minCodingScore = minCodingScore
+    self.priceSource = priceSource
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case enabled
+    case id
+    case maxPrice = "max_price"
+    case minCodingScore = "min_coding_score"
+    case priceSource = "price_source"
+  }
+}
+
+public struct OpenRouterParetoRouterPluginId: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let paretoRouter = Self(rawValue: "pareto-router")
+}
+
+public struct OpenRouterParetoRouterPluginPriceSource: RawRepresentable, Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let prompt = Self(rawValue: "prompt")
+  public static let weightedAvg = Self(rawValue: "weighted_avg")
+}
+
+public struct OpenRouterPayloadTooLargeResponse: Codable, Sendable {
+  public var error: OpenRouterPayloadTooLargeResponseErrorData
+  public var openrouterMetadata: [String: HyperProxyJSONValue]?
+  public var userId: String?
+
+  public init(
+    error: OpenRouterPayloadTooLargeResponseErrorData,
+    openrouterMetadata: [String: HyperProxyJSONValue]? = nil,
+    userId: String? = nil
+  ) {
+    self.error = error
+    self.openrouterMetadata = openrouterMetadata
+    self.userId = userId
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case error
+    case openrouterMetadata = "openrouter_metadata"
+    case userId = "user_id"
+  }
+}
+
+public struct OpenRouterPayloadTooLargeResponseErrorData: Codable, Sendable {
+  public var code: Int
+  public var message: String
+  public var metadata: [String: HyperProxyJSONValue]?
+
+  public init(
+    code: Int,
+    message: String,
+    metadata: [String: HyperProxyJSONValue]? = nil
+  ) {
+    self.code = code
+    self.message = message
+    self.metadata = metadata
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case code
+    case message
+    case metadata
+  }
+}
+
+public struct OpenRouterPaymentRequiredResponse: Codable, Sendable {
+  public var error: OpenRouterPaymentRequiredResponseErrorData
+  public var openrouterMetadata: [String: HyperProxyJSONValue]?
+  public var userId: String?
+
+  public init(
+    error: OpenRouterPaymentRequiredResponseErrorData,
+    openrouterMetadata: [String: HyperProxyJSONValue]? = nil,
+    userId: String? = nil
+  ) {
+    self.error = error
+    self.openrouterMetadata = openrouterMetadata
+    self.userId = userId
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case error
+    case openrouterMetadata = "openrouter_metadata"
+    case userId = "user_id"
+  }
+}
+
+public struct OpenRouterPaymentRequiredResponseErrorData: Codable, Sendable {
+  public var code: Int
+  public var message: String
+  public var metadata: [String: HyperProxyJSONValue]?
+
+  public init(
+    code: Int,
+    message: String,
+    metadata: [String: HyperProxyJSONValue]? = nil
+  ) {
+    self.code = code
+    self.message = message
+    self.metadata = metadata
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case code
+    case message
+    case metadata
+  }
+}
+
+public struct OpenRouterPerRequestLimits: Codable, Sendable {
+  public var completionTokens: Double
+  public var promptTokens: Double
+
+  public init(
+    completionTokens: Double,
+    promptTokens: Double
+  ) {
+    self.completionTokens = completionTokens
+    self.promptTokens = promptTokens
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case completionTokens = "completion_tokens"
+    case promptTokens = "prompt_tokens"
+  }
+}
+
+public struct OpenRouterPercentileLatencyCutoffs: Codable, Sendable {
+  public var p50: Double?
+  public var p75: Double?
+  public var p90: Double?
+  public var p99: Double?
+
+  public init(
+    p50: Double? = nil,
+    p75: Double? = nil,
+    p90: Double? = nil,
+    p99: Double? = nil
+  ) {
+    self.p50 = p50
+    self.p75 = p75
+    self.p90 = p90
+    self.p99 = p99
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case p50
+    case p75
+    case p90
+    case p99
+  }
+}
+
+public struct OpenRouterPercentileStats: Codable, Sendable {
+  public var p50: Double
+  public var p75: Double
+  public var p90: Double
+  public var p99: Double
+
+  public init(
+    p50: Double,
+    p75: Double,
+    p90: Double,
+    p99: Double
+  ) {
+    self.p50 = p50
+    self.p75 = p75
+    self.p90 = p90
+    self.p99 = p99
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case p50
+    case p75
+    case p90
+    case p99
+  }
+}
+
+public struct OpenRouterPercentileThroughputCutoffs: Codable, Sendable {
+  public var p50: Double?
+  public var p75: Double?
+  public var p90: Double?
+  public var p99: Double?
+
+  public init(
+    p50: Double? = nil,
+    p75: Double? = nil,
+    p90: Double? = nil,
+    p99: Double? = nil
+  ) {
+    self.p50 = p50
+    self.p75 = p75
+    self.p90 = p90
+    self.p99 = p99
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case p50
+    case p75
+    case p90
+    case p99
+  }
+}
+
+public struct OpenRouterPipelineStage: Codable, Sendable {
+  public var costUsd: Double?
+  public var data: [String: HyperProxyJSONValue]?
+  public var guardrailId: String?
+  public var guardrailScope: String?
+  public var name: String
+  public var summary: String?
+  public var typeModel: OpenRouterPipelineStageType
+
+  public init(
+    name: String,
+    typeModel: OpenRouterPipelineStageType,
+    costUsd: Double? = nil,
+    data: [String: HyperProxyJSONValue]? = nil,
+    guardrailId: String? = nil,
+    guardrailScope: String? = nil,
+    summary: String? = nil
+  ) {
+    self.costUsd = costUsd
+    self.data = data
+    self.guardrailId = guardrailId
+    self.guardrailScope = guardrailScope
+    self.name = name
+    self.summary = summary
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case costUsd = "cost_usd"
+    case data
+    case guardrailId = "guardrail_id"
+    case guardrailScope = "guardrail_scope"
+    case name
+    case summary
+    case typeModel = "type"
+  }
+}
+
+public struct OpenRouterPipelineStageType: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let guardrail = Self(rawValue: "guardrail")
+  public static let plugin = Self(rawValue: "plugin")
+  public static let serverTools = Self(rawValue: "server_tools")
+  public static let responseHealing = Self(rawValue: "response_healing")
+  public static let contextCompression = Self(rawValue: "context_compression")
+}
+
+public struct OpenRouterPrediction: Codable, Sendable {
+  public var content: HyperProxyJSONValue
+  public var typeModel: OpenRouterPredictionTypeModel
+
+  public init(
+    content: HyperProxyJSONValue,
+    typeModel: OpenRouterPredictionTypeModel
+  ) {
+    self.content = content
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case content
+    case typeModel = "type"
+  }
+}
+
+public struct OpenRouterPredictionContentText: Codable, Sendable {
+  public var text: String
+  public var typeModel: OpenRouterPredictionContentTextTypeModel
+
+  public init(
+    text: String,
+    typeModel: OpenRouterPredictionContentTextTypeModel
+  ) {
+    self.text = text
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case text
+    case typeModel = "type"
+  }
+}
+
+public struct OpenRouterPredictionContentTextTypeModel: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let text = Self(rawValue: "text")
+}
+
+public struct OpenRouterPredictionTypeModel: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let content = Self(rawValue: "content")
+}
+
+public enum OpenRouterPreferredMaxLatency: Codable, Sendable {
+  case number(Double)
+  case percentileLatencyCutoffs(OpenRouterPercentileLatencyCutoffs)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(Double.self) {
+      self = .number(value)
+      return
+    }
+    self = .percentileLatencyCutoffs(try container.decode(OpenRouterPercentileLatencyCutoffs.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .number(let value):
+      try container.encode(value)
+    case .percentileLatencyCutoffs(let value):
+      try container.encode(value)
+    }
+  }
+}
+
+public enum OpenRouterPreferredMinThroughput: Codable, Sendable {
+  case number(Double)
+  case percentileThroughputCutoffs(OpenRouterPercentileThroughputCutoffs)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(Double.self) {
+      self = .number(value)
+      return
+    }
+    self = .percentileThroughputCutoffs(
+      try container.decode(OpenRouterPercentileThroughputCutoffs.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .number(let value):
+      try container.encode(value)
+    case .percentileThroughputCutoffs(let value):
+      try container.encode(value)
+    }
+  }
+}
+
+public struct OpenRouterPreset: Codable, Sendable {
+  public var createdAt: String
+  public var creatorUserId: String
+  public var description: String
+  public var designatedVersionId: String
+  public var id: String
+  public var name: String
+  public var slug: String
+  public var status: OpenRouterPresetStatus
+  public var statusUpdatedAt: String
+  public var updatedAt: String
+  public var workspaceId: String
+
+  public init(
+    createdAt: String,
+    creatorUserId: String,
+    description: String,
+    designatedVersionId: String,
+    id: String,
+    name: String,
+    slug: String,
+    status: OpenRouterPresetStatus,
+    statusUpdatedAt: String,
+    updatedAt: String,
+    workspaceId: String
+  ) {
+    self.createdAt = createdAt
+    self.creatorUserId = creatorUserId
+    self.description = description
+    self.designatedVersionId = designatedVersionId
+    self.id = id
+    self.name = name
+    self.slug = slug
+    self.status = status
+    self.statusUpdatedAt = statusUpdatedAt
+    self.updatedAt = updatedAt
+    self.workspaceId = workspaceId
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case createdAt = "created_at"
+    case creatorUserId = "creator_user_id"
+    case description
+    case designatedVersionId = "designated_version_id"
+    case id
+    case name
+    case slug
+    case status
+    case statusUpdatedAt = "status_updated_at"
+    case updatedAt = "updated_at"
+    case workspaceId = "workspace_id"
+  }
+}
+
+public struct OpenRouterPresetDesignatedVersion: Codable, Sendable {
+  public var config: [String: HyperProxyJSONValue]
+  public var createdAt: String
+  public var creatorId: String
+  public var id: String
+  public var presetId: String
+  public var systemPrompt: String
+  public var updatedAt: String
+  public var version: Int
+
+  public init(
+    config: [String: HyperProxyJSONValue],
+    createdAt: String,
+    creatorId: String,
+    id: String,
+    presetId: String,
+    systemPrompt: String,
+    updatedAt: String,
+    version: Int
+  ) {
+    self.config = config
+    self.createdAt = createdAt
+    self.creatorId = creatorId
+    self.id = id
+    self.presetId = presetId
+    self.systemPrompt = systemPrompt
+    self.updatedAt = updatedAt
+    self.version = version
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case config
+    case createdAt = "created_at"
+    case creatorId = "creator_id"
+    case id
+    case presetId = "preset_id"
+    case systemPrompt = "system_prompt"
+    case updatedAt = "updated_at"
+    case version
+  }
+}
+
+public struct OpenRouterPresetStatus: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let active = Self(rawValue: "active")
+  public static let disabled = Self(rawValue: "disabled")
+  public static let archived = Self(rawValue: "archived")
+}
+
+public struct OpenRouterPresetWithDesignatedVersion: Codable, Sendable {
+  public var createdAt: String
+  public var creatorUserId: String
+  public var description: String
+  public var designatedVersion: OpenRouterPresetDesignatedVersion
+  public var designatedVersionId: String
+  public var id: String
+  public var name: String
+  public var slug: String
+  public var status: OpenRouterPresetStatus
+  public var statusUpdatedAt: String
+  public var updatedAt: String
+  public var workspaceId: String
+
+  public init(
+    createdAt: String,
+    creatorUserId: String,
+    description: String,
+    designatedVersion: OpenRouterPresetDesignatedVersion,
+    designatedVersionId: String,
+    id: String,
+    name: String,
+    slug: String,
+    status: OpenRouterPresetStatus,
+    statusUpdatedAt: String,
+    updatedAt: String,
+    workspaceId: String
+  ) {
+    self.createdAt = createdAt
+    self.creatorUserId = creatorUserId
+    self.description = description
+    self.designatedVersion = designatedVersion
+    self.designatedVersionId = designatedVersionId
+    self.id = id
+    self.name = name
+    self.slug = slug
+    self.status = status
+    self.statusUpdatedAt = statusUpdatedAt
+    self.updatedAt = updatedAt
+    self.workspaceId = workspaceId
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case createdAt = "created_at"
+    case creatorUserId = "creator_user_id"
+    case description
+    case designatedVersion = "designated_version"
+    case designatedVersionId = "designated_version_id"
+    case id
+    case name
+    case slug
+    case status
+    case statusUpdatedAt = "status_updated_at"
+    case updatedAt = "updated_at"
+    case workspaceId = "workspace_id"
+  }
+}
+
+public struct OpenRouterPresetWithDesignatedVersionAllOf2: Codable, Sendable {
+  public var designatedVersion: OpenRouterPresetDesignatedVersion
+
+  public init(
+    designatedVersion: OpenRouterPresetDesignatedVersion
+  ) {
+    self.designatedVersion = designatedVersion
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case designatedVersion = "designated_version"
+  }
+}
+
+public struct OpenRouterPreview20250311WebSearchServerToolTypeModel: RawRepresentable, Codable,
+  Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let webSearchPreview20250311 = Self(rawValue: "web_search_preview_2025_03_11")
+}
+
+public struct OpenRouterPreviewWebSearchServerToolTypeModel: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let webSearchPreview = Self(rawValue: "web_search_preview")
+}
+
+public struct OpenRouterPreviewWebSearchUserLocationTypeModel: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let approximate = Self(rawValue: "approximate")
+}
+
+public struct OpenRouterPreview20250311WebSearchServerTool: Codable, Sendable {
+  public var engine: OpenRouterWebSearchEngineEnum?
+  public var filters: OpenRouterWebSearchDomainFilter?
+  public var maxResults: Int?
+  public var maxUses: Int?
+  public var mode: OpenRouterWebSearchMode?
+  public var searchContextSize: OpenRouterSearchContextSizeEnum?
+  public var typeModel: OpenRouterPreview20250311WebSearchServerToolTypeModel
+  public var userLocation: OpenRouterPreviewWebSearchUserLocation?
+
+  public init(
+    typeModel: OpenRouterPreview20250311WebSearchServerToolTypeModel,
+    engine: OpenRouterWebSearchEngineEnum? = nil,
+    filters: OpenRouterWebSearchDomainFilter? = nil,
+    maxResults: Int? = nil,
+    maxUses: Int? = nil,
+    mode: OpenRouterWebSearchMode? = nil,
+    searchContextSize: OpenRouterSearchContextSizeEnum? = nil,
+    userLocation: OpenRouterPreviewWebSearchUserLocation? = nil
+  ) {
+    self.engine = engine
+    self.filters = filters
+    self.maxResults = maxResults
+    self.maxUses = maxUses
+    self.mode = mode
+    self.searchContextSize = searchContextSize
+    self.typeModel = typeModel
+    self.userLocation = userLocation
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case engine
+    case filters
+    case maxResults = "max_results"
+    case maxUses = "max_uses"
+    case mode
+    case searchContextSize = "search_context_size"
+    case typeModel = "type"
+    case userLocation = "user_location"
+  }
+}
+
+public struct OpenRouterPreviewWebSearchServerTool: Codable, Sendable {
+  public var engine: OpenRouterWebSearchEngineEnum?
+  public var filters: OpenRouterWebSearchDomainFilter?
+  public var maxResults: Int?
+  public var maxUses: Int?
+  public var mode: OpenRouterWebSearchMode?
+  public var searchContextSize: OpenRouterSearchContextSizeEnum?
+  public var typeModel: OpenRouterPreviewWebSearchServerToolTypeModel
+  public var userLocation: OpenRouterPreviewWebSearchUserLocation?
+
+  public init(
+    typeModel: OpenRouterPreviewWebSearchServerToolTypeModel,
+    engine: OpenRouterWebSearchEngineEnum? = nil,
+    filters: OpenRouterWebSearchDomainFilter? = nil,
+    maxResults: Int? = nil,
+    maxUses: Int? = nil,
+    mode: OpenRouterWebSearchMode? = nil,
+    searchContextSize: OpenRouterSearchContextSizeEnum? = nil,
+    userLocation: OpenRouterPreviewWebSearchUserLocation? = nil
+  ) {
+    self.engine = engine
+    self.filters = filters
+    self.maxResults = maxResults
+    self.maxUses = maxUses
+    self.mode = mode
+    self.searchContextSize = searchContextSize
+    self.typeModel = typeModel
+    self.userLocation = userLocation
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case engine
+    case filters
+    case maxResults = "max_results"
+    case maxUses = "max_uses"
+    case mode
+    case searchContextSize = "search_context_size"
+    case typeModel = "type"
+    case userLocation = "user_location"
+  }
+}
+
+public struct OpenRouterPreviewWebSearchUserLocation: Codable, Sendable {
+  public var city: String?
+  public var country: String?
+  public var region: String?
+  public var timezone: String?
+  public var typeModel: OpenRouterPreviewWebSearchUserLocationTypeModel
+
+  public init(
+    typeModel: OpenRouterPreviewWebSearchUserLocationTypeModel,
+    city: String? = nil,
+    country: String? = nil,
+    region: String? = nil,
+    timezone: String? = nil
+  ) {
+    self.city = city
+    self.country = country
+    self.region = region
+    self.timezone = timezone
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case city
+    case country
+    case region
+    case timezone
+    case typeModel = "type"
+  }
+}
+
+public struct OpenRouterPricingOverride: Codable, Sendable {
+  public var audio: String?
+  public var completion: String?
+  public var inputAudioCache: String?
+  public var inputCacheRead: String?
+  public var inputCacheWrite: String?
+  public var inputCacheWrite1h: String?
+  public var minPromptTokens: Double?
+  public var prompt: String?
+  public var utcDays: [OpenRouterPricingOverrideUtcDaysItem]?
+  public var utcEnd: Double?
+  public var utcStart: Double?
+
+  public init(
+    audio: String? = nil,
+    completion: String? = nil,
+    inputAudioCache: String? = nil,
+    inputCacheRead: String? = nil,
+    inputCacheWrite: String? = nil,
+    inputCacheWrite1h: String? = nil,
+    minPromptTokens: Double? = nil,
+    prompt: String? = nil,
+    utcDays: [OpenRouterPricingOverrideUtcDaysItem]? = nil,
+    utcEnd: Double? = nil,
+    utcStart: Double? = nil
+  ) {
+    self.audio = audio
+    self.completion = completion
+    self.inputAudioCache = inputAudioCache
+    self.inputCacheRead = inputCacheRead
+    self.inputCacheWrite = inputCacheWrite
+    self.inputCacheWrite1h = inputCacheWrite1h
+    self.minPromptTokens = minPromptTokens
+    self.prompt = prompt
+    self.utcDays = utcDays
+    self.utcEnd = utcEnd
+    self.utcStart = utcStart
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case audio
+    case completion
+    case inputAudioCache = "input_audio_cache"
+    case inputCacheRead = "input_cache_read"
+    case inputCacheWrite = "input_cache_write"
+    case inputCacheWrite1h = "input_cache_write_1h"
+    case minPromptTokens = "min_prompt_tokens"
+    case prompt
+    case utcDays = "utc_days"
+    case utcEnd = "utc_end"
+    case utcStart = "utc_start"
+  }
+}
+
 public struct OpenRouterPricingOverrideUtcDaysItem: RawRepresentable, Codable, Hashable, Sendable {
   public var rawValue: String
 
@@ -173,7 +1149,7 @@ public struct OpenRouterProviderName: RawRepresentable, Codable, Hashable, Senda
   public static let moonshotAI = Self(rawValue: "Moonshot AI")
   public static let morph = Self(rawValue: "Morph")
   public static let voyageAIByMongoDB = Self(rawValue: "VoyageAI by MongoDB")
-  public static let nCompass = Self(rawValue: "NCompass")
+  public static let nearAI = Self(rawValue: "Near AI")
   public static let nebius = Self(rawValue: "Nebius")
   public static let nexAGI = Self(rawValue: "Nex AGI")
   public static let nextBit = Self(rawValue: "NextBit")
@@ -184,6 +1160,7 @@ public struct OpenRouterProviderName: RawRepresentable, Codable, Hashable, Senda
   public static let openInference = Self(rawValue: "OpenInference")
   public static let parasail = Self(rawValue: "Parasail")
   public static let poolside = Self(rawValue: "Poolside")
+  public static let primeIntellect = Self(rawValue: "PrimeIntellect")
   public static let perceptron = Self(rawValue: "Perceptron")
   public static let perplexity = Self(rawValue: "Perplexity")
   public static let phala = Self(rawValue: "Phala")
@@ -304,6 +1281,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
   public var moonshotai: [String: HyperProxyJSONValue]?
   public var morph: [String: HyperProxyJSONValue]?
   public var ncompass: [String: HyperProxyJSONValue]?
+  public var nearAi: [String: HyperProxyJSONValue]?
   public var nebius: [String: HyperProxyJSONValue]?
   public var nexAgi: [String: HyperProxyJSONValue]?
   public var nextbit: [String: HyperProxyJSONValue]?
@@ -319,6 +1297,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
   public var perplexity: [String: HyperProxyJSONValue]?
   public var phala: [String: HyperProxyJSONValue]?
   public var poolside: [String: HyperProxyJSONValue]?
+  public var primeintellect: [String: HyperProxyJSONValue]?
   public var quiver: [String: HyperProxyJSONValue]?
   public var recraft: [String: HyperProxyJSONValue]?
   public var recursal: [String: HyperProxyJSONValue]?
@@ -444,6 +1423,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     moonshotai: [String: HyperProxyJSONValue]? = nil,
     morph: [String: HyperProxyJSONValue]? = nil,
     ncompass: [String: HyperProxyJSONValue]? = nil,
+    nearAi: [String: HyperProxyJSONValue]? = nil,
     nebius: [String: HyperProxyJSONValue]? = nil,
     nexAgi: [String: HyperProxyJSONValue]? = nil,
     nextbit: [String: HyperProxyJSONValue]? = nil,
@@ -459,6 +1439,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     perplexity: [String: HyperProxyJSONValue]? = nil,
     phala: [String: HyperProxyJSONValue]? = nil,
     poolside: [String: HyperProxyJSONValue]? = nil,
+    primeintellect: [String: HyperProxyJSONValue]? = nil,
     quiver: [String: HyperProxyJSONValue]? = nil,
     recraft: [String: HyperProxyJSONValue]? = nil,
     recursal: [String: HyperProxyJSONValue]? = nil,
@@ -583,6 +1564,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     self.moonshotai = moonshotai
     self.morph = morph
     self.ncompass = ncompass
+    self.nearAi = nearAi
     self.nebius = nebius
     self.nexAgi = nexAgi
     self.nextbit = nextbit
@@ -598,6 +1580,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     self.perplexity = perplexity
     self.phala = phala
     self.poolside = poolside
+    self.primeintellect = primeintellect
     self.quiver = quiver
     self.recraft = recraft
     self.recursal = recursal
@@ -724,6 +1707,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     case moonshotai
     case morph
     case ncompass
+    case nearAi = "near-ai"
     case nebius
     case nexAgi = "nex-agi"
     case nextbit
@@ -739,6 +1723,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     case perplexity
     case phala
     case poolside
+    case primeintellect
     case quiver
     case recraft
     case recursal
@@ -995,6 +1980,7 @@ public struct OpenRouterProviderResponseProviderName: RawRepresentable, Codable,
   public static let lynn = Self(rawValue: "Lynn")
   public static let mancer = Self(rawValue: "Mancer")
   public static let modal = Self(rawValue: "Modal")
+  public static let nCompass = Self(rawValue: "NCompass")
   public static let nineteen = Self(rawValue: "Nineteen")
   public static let octoAI = Self(rawValue: "OctoAI")
   public static let recursal = Self(rawValue: "Recursal")
@@ -1070,7 +2056,7 @@ public struct OpenRouterProviderResponseProviderName: RawRepresentable, Codable,
   public static let moonshotAI = Self(rawValue: "Moonshot AI")
   public static let morph = Self(rawValue: "Morph")
   public static let voyageAIByMongoDB = Self(rawValue: "VoyageAI by MongoDB")
-  public static let nCompass = Self(rawValue: "NCompass")
+  public static let nearAI = Self(rawValue: "Near AI")
   public static let nebius = Self(rawValue: "Nebius")
   public static let nexAGI = Self(rawValue: "Nex AGI")
   public static let nextBit = Self(rawValue: "NextBit")
@@ -1081,6 +2067,7 @@ public struct OpenRouterProviderResponseProviderName: RawRepresentable, Codable,
   public static let openInference = Self(rawValue: "OpenInference")
   public static let parasail = Self(rawValue: "Parasail")
   public static let poolside = Self(rawValue: "Poolside")
+  public static let primeIntellect = Self(rawValue: "PrimeIntellect")
   public static let perceptron = Self(rawValue: "Perceptron")
   public static let perplexity = Self(rawValue: "Perplexity")
   public static let phala = Self(rawValue: "Phala")
@@ -1190,6 +2177,7 @@ public struct OpenRouterPublicEndpoint: Codable, Sendable {
   public var modelId: String
   public var modelName: String
   public var name: String
+  public var perfLast30mByWorkload: OpenRouterPublicEndpointPerfLast30mByWorkload?
   public var pricing: OpenRouterPublicEndpointPricing
   public var providerName: OpenRouterProviderName
   public var quantization: OpenRouterQuantization?
@@ -1223,6 +2211,7 @@ public struct OpenRouterPublicEndpoint: Codable, Sendable {
     uptimeLast1d: Double,
     uptimeLast30m: Double,
     uptimeLast5m: Double,
+    perfLast30mByWorkload: OpenRouterPublicEndpointPerfLast30mByWorkload? = nil,
     status: OpenRouterEndpointStatus? = nil,
     supportsVoiceCloning: Bool? = nil
   ) {
@@ -1233,6 +2222,7 @@ public struct OpenRouterPublicEndpoint: Codable, Sendable {
     self.modelId = modelId
     self.modelName = modelName
     self.name = name
+    self.perfLast30mByWorkload = perfLast30mByWorkload
     self.pricing = pricing
     self.providerName = providerName
     self.quantization = quantization
@@ -1256,6 +2246,7 @@ public struct OpenRouterPublicEndpoint: Codable, Sendable {
     case modelId = "model_id"
     case modelName = "model_name"
     case name
+    case perfLast30mByWorkload = "perf_last_30m_by_workload"
     case pricing
     case providerName = "provider_name"
     case quantization
@@ -1269,6 +2260,224 @@ public struct OpenRouterPublicEndpoint: Codable, Sendable {
     case uptimeLast1d = "uptime_last_1d"
     case uptimeLast30m = "uptime_last_30m"
     case uptimeLast5m = "uptime_last_5m"
+  }
+}
+
+public struct OpenRouterPublicEndpointPerfLast30mByWorkload: Codable, Sendable {
+  public var embeddings: OpenRouterPublicEndpointPerfLast30mByWorkloadEmbeddings?
+  public var imageGeneration: OpenRouterPublicEndpointPerfLast30mByWorkloadImageGeneration?
+  public var rerank: OpenRouterPublicEndpointPerfLast30mByWorkloadRerank?
+  public var stt: OpenRouterPublicEndpointPerfLast30mByWorkloadStt?
+  public var textGeneration: OpenRouterPublicEndpointPerfLast30mByWorkloadTextGeneration?
+  public var tts: OpenRouterPublicEndpointPerfLast30mByWorkloadTts?
+  public var unknown: OpenRouterPublicEndpointPerfLast30mByWorkloadUnknown?
+  public var videoGeneration: OpenRouterPublicEndpointPerfLast30mByWorkloadVideoGeneration?
+
+  public init(
+    embeddings: OpenRouterPublicEndpointPerfLast30mByWorkloadEmbeddings? = nil,
+    imageGeneration: OpenRouterPublicEndpointPerfLast30mByWorkloadImageGeneration? = nil,
+    rerank: OpenRouterPublicEndpointPerfLast30mByWorkloadRerank? = nil,
+    stt: OpenRouterPublicEndpointPerfLast30mByWorkloadStt? = nil,
+    textGeneration: OpenRouterPublicEndpointPerfLast30mByWorkloadTextGeneration? = nil,
+    tts: OpenRouterPublicEndpointPerfLast30mByWorkloadTts? = nil,
+    unknown: OpenRouterPublicEndpointPerfLast30mByWorkloadUnknown? = nil,
+    videoGeneration: OpenRouterPublicEndpointPerfLast30mByWorkloadVideoGeneration? = nil
+  ) {
+    self.embeddings = embeddings
+    self.imageGeneration = imageGeneration
+    self.rerank = rerank
+    self.stt = stt
+    self.textGeneration = textGeneration
+    self.tts = tts
+    self.unknown = unknown
+    self.videoGeneration = videoGeneration
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case embeddings
+    case imageGeneration = "image_generation"
+    case rerank
+    case stt
+    case textGeneration = "text_generation"
+    case tts
+    case unknown
+    case videoGeneration = "video_generation"
+  }
+}
+
+public struct OpenRouterPublicEndpointPerfLast30mByWorkloadEmbeddings: Codable, Sendable {
+  public var latency: HyperProxyJSONValue
+  public var requestCount: Int
+  public var throughput: HyperProxyJSONValue
+
+  public init(
+    latency: HyperProxyJSONValue,
+    requestCount: Int,
+    throughput: HyperProxyJSONValue
+  ) {
+    self.latency = latency
+    self.requestCount = requestCount
+    self.throughput = throughput
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case latency
+    case requestCount = "request_count"
+    case throughput
+  }
+}
+
+public struct OpenRouterPublicEndpointPerfLast30mByWorkloadImageGeneration: Codable, Sendable {
+  public var latency: HyperProxyJSONValue
+  public var requestCount: Int
+  public var throughput: HyperProxyJSONValue
+
+  public init(
+    latency: HyperProxyJSONValue,
+    requestCount: Int,
+    throughput: HyperProxyJSONValue
+  ) {
+    self.latency = latency
+    self.requestCount = requestCount
+    self.throughput = throughput
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case latency
+    case requestCount = "request_count"
+    case throughput
+  }
+}
+
+public struct OpenRouterPublicEndpointPerfLast30mByWorkloadRerank: Codable, Sendable {
+  public var latency: HyperProxyJSONValue
+  public var requestCount: Int
+  public var throughput: HyperProxyJSONValue
+
+  public init(
+    latency: HyperProxyJSONValue,
+    requestCount: Int,
+    throughput: HyperProxyJSONValue
+  ) {
+    self.latency = latency
+    self.requestCount = requestCount
+    self.throughput = throughput
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case latency
+    case requestCount = "request_count"
+    case throughput
+  }
+}
+
+public struct OpenRouterPublicEndpointPerfLast30mByWorkloadStt: Codable, Sendable {
+  public var latency: HyperProxyJSONValue
+  public var requestCount: Int
+  public var throughput: HyperProxyJSONValue
+
+  public init(
+    latency: HyperProxyJSONValue,
+    requestCount: Int,
+    throughput: HyperProxyJSONValue
+  ) {
+    self.latency = latency
+    self.requestCount = requestCount
+    self.throughput = throughput
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case latency
+    case requestCount = "request_count"
+    case throughput
+  }
+}
+
+public struct OpenRouterPublicEndpointPerfLast30mByWorkloadTextGeneration: Codable, Sendable {
+  public var latency: HyperProxyJSONValue
+  public var requestCount: Int
+  public var throughput: HyperProxyJSONValue
+
+  public init(
+    latency: HyperProxyJSONValue,
+    requestCount: Int,
+    throughput: HyperProxyJSONValue
+  ) {
+    self.latency = latency
+    self.requestCount = requestCount
+    self.throughput = throughput
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case latency
+    case requestCount = "request_count"
+    case throughput
+  }
+}
+
+public struct OpenRouterPublicEndpointPerfLast30mByWorkloadTts: Codable, Sendable {
+  public var latency: HyperProxyJSONValue
+  public var requestCount: Int
+  public var throughput: HyperProxyJSONValue
+
+  public init(
+    latency: HyperProxyJSONValue,
+    requestCount: Int,
+    throughput: HyperProxyJSONValue
+  ) {
+    self.latency = latency
+    self.requestCount = requestCount
+    self.throughput = throughput
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case latency
+    case requestCount = "request_count"
+    case throughput
+  }
+}
+
+public struct OpenRouterPublicEndpointPerfLast30mByWorkloadUnknown: Codable, Sendable {
+  public var latency: HyperProxyJSONValue
+  public var requestCount: Int
+  public var throughput: HyperProxyJSONValue
+
+  public init(
+    latency: HyperProxyJSONValue,
+    requestCount: Int,
+    throughput: HyperProxyJSONValue
+  ) {
+    self.latency = latency
+    self.requestCount = requestCount
+    self.throughput = throughput
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case latency
+    case requestCount = "request_count"
+    case throughput
+  }
+}
+
+public struct OpenRouterPublicEndpointPerfLast30mByWorkloadVideoGeneration: Codable, Sendable {
+  public var latency: HyperProxyJSONValue
+  public var requestCount: Int
+  public var throughput: HyperProxyJSONValue
+
+  public init(
+    latency: HyperProxyJSONValue,
+    requestCount: Int,
+    throughput: HyperProxyJSONValue
+  ) {
+    self.latency = latency
+    self.requestCount = requestCount
+    self.throughput = throughput
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case latency
+    case requestCount = "request_count"
+    case throughput
   }
 }
 
@@ -2683,6 +3892,7 @@ public struct OpenRouterResponsesErrorFieldCode: RawRepresentable, Codable, Hash
   public static let failedToDownloadImage = Self(rawValue: "failed_to_download_image")
   public static let imageFileNotFound = Self(rawValue: "image_file_not_found")
   public static let bioPolicy = Self(rawValue: "bio_policy")
+  public static let misalignmentPolicyViolation = Self(rawValue: "misalignment_policy_violation")
   public static let dataResidencyMismatch = Self(rawValue: "data_residency_mismatch")
 }
 
@@ -3201,8 +4411,6 @@ public struct OpenRouterSTTWord: Codable, Sendable {
   }
 }
 
-public typealias OpenRouterSandboxSleepAfterSeconds = Int
-
 public struct OpenRouterScimGroup: Codable, Sendable {
   public var createdAt: String
   public var displayName: String
@@ -3286,6 +4494,61 @@ public struct OpenRouterScimGroupMappingRole: RawRepresentable, Codable, Hashabl
   public static let member = Self(rawValue: "member")
 }
 
+public struct OpenRouterScimSyncJob: Codable, Sendable {
+  public var createdAt: String
+  public var deletedGroups: Int
+  public var errorMessage: String
+  public var finishedAt: String
+  public var id: String
+  public var startedAt: String
+  public var status: OpenRouterScimSyncJobStatus
+  public var syncedGroups: Int
+
+  public init(
+    createdAt: String,
+    deletedGroups: Int,
+    errorMessage: String,
+    finishedAt: String,
+    id: String,
+    startedAt: String,
+    status: OpenRouterScimSyncJobStatus,
+    syncedGroups: Int
+  ) {
+    self.createdAt = createdAt
+    self.deletedGroups = deletedGroups
+    self.errorMessage = errorMessage
+    self.finishedAt = finishedAt
+    self.id = id
+    self.startedAt = startedAt
+    self.status = status
+    self.syncedGroups = syncedGroups
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case createdAt = "created_at"
+    case deletedGroups = "deleted_groups"
+    case errorMessage = "error_message"
+    case finishedAt = "finished_at"
+    case id
+    case startedAt = "started_at"
+    case status
+    case syncedGroups = "synced_groups"
+  }
+}
+
+public struct OpenRouterScimSyncJobStatus: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let queued = Self(rawValue: "queued")
+  public static let running = Self(rawValue: "running")
+  public static let succeeded = Self(rawValue: "succeeded")
+  public static let failed = Self(rawValue: "failed")
+}
+
 public struct OpenRouterSearchContextSizeEnum: RawRepresentable, Codable, Hashable, Sendable {
   public var rawValue: String
 
@@ -3341,897 +4604,4 @@ public struct OpenRouterSearchModelsServerToolOpenRouter: Codable, Sendable {
     case parameters
     case typeModel = "type"
   }
-}
-
-public struct OpenRouterSearchQualityLevel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let low = Self(rawValue: "low")
-  public static let medium = Self(rawValue: "medium")
-  public static let high = Self(rawValue: "high")
-}
-
-public struct OpenRouterSendChatCompletionRequestParameters: Codable, Sendable {
-  public var xOpenRouterMetadata: OpenRouterMetadataLevel?
-
-  public init(
-    xOpenRouterMetadata: OpenRouterMetadataLevel? = nil
-  ) {
-    self.xOpenRouterMetadata = xOpenRouterMetadata
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case xOpenRouterMetadata = "X-OpenRouter-Metadata"
-  }
-}
-
-public struct OpenRouterServerToolUseDetails: Codable, Sendable {
-  public var toolCallsExecuted: Int?
-  public var toolCallsRequested: Int?
-  public var webSearchRequests: Int?
-
-  public init(
-    toolCallsExecuted: Int? = nil,
-    toolCallsRequested: Int? = nil,
-    webSearchRequests: Int? = nil
-  ) {
-    self.toolCallsExecuted = toolCallsExecuted
-    self.toolCallsRequested = toolCallsRequested
-    self.webSearchRequests = webSearchRequests
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case toolCallsExecuted = "tool_calls_executed"
-    case toolCallsRequested = "tool_calls_requested"
-    case webSearchRequests = "web_search_requests"
-  }
-}
-
-public struct OpenRouterServiceTier: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
-  public static let defaultValue = Self(rawValue: "default")
-  public static let flex = Self(rawValue: "flex")
-  public static let priority = Self(rawValue: "priority")
-  public static let scale = Self(rawValue: "scale")
-}
-
-public struct OpenRouterServiceUnavailableResponse: Codable, Sendable {
-  public var error: OpenRouterServiceUnavailableResponseErrorData
-  public var openrouterMetadata: [String: HyperProxyJSONValue]?
-  public var userId: String?
-
-  public init(
-    error: OpenRouterServiceUnavailableResponseErrorData,
-    openrouterMetadata: [String: HyperProxyJSONValue]? = nil,
-    userId: String? = nil
-  ) {
-    self.error = error
-    self.openrouterMetadata = openrouterMetadata
-    self.userId = userId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case error
-    case openrouterMetadata = "openrouter_metadata"
-    case userId = "user_id"
-  }
-}
-
-public struct OpenRouterServiceUnavailableResponseErrorData: Codable, Sendable {
-  public var code: Int
-  public var message: String
-  public var metadata: [String: HyperProxyJSONValue]?
-
-  public init(
-    code: Int,
-    message: String,
-    metadata: [String: HyperProxyJSONValue]? = nil
-  ) {
-    self.code = code
-    self.message = message
-    self.metadata = metadata
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case code
-    case message
-    case metadata
-  }
-}
-
-public struct OpenRouterSessionCostItem: Codable, Sendable {
-  public var appName: String
-  public var appSlug: String
-  public var medianSessionCostUsd: Double
-  public var modelPermaslug: String
-  public var turnRange: OpenRouterSessionCostItemTurnRange
-
-  public init(
-    appName: String,
-    appSlug: String,
-    medianSessionCostUsd: Double,
-    modelPermaslug: String,
-    turnRange: OpenRouterSessionCostItemTurnRange
-  ) {
-    self.appName = appName
-    self.appSlug = appSlug
-    self.medianSessionCostUsd = medianSessionCostUsd
-    self.modelPermaslug = modelPermaslug
-    self.turnRange = turnRange
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case appName = "app_name"
-    case appSlug = "app_slug"
-    case medianSessionCostUsd = "median_session_cost_usd"
-    case modelPermaslug = "model_permaslug"
-    case turnRange = "turn_range"
-  }
-}
-
-public struct OpenRouterSessionCostItemTurnRange: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let value1Turn = Self(rawValue: "1-turn")
-  public static let value29Turns = Self(rawValue: "2-9-turns")
-  public static let value1049Turns = Self(rawValue: "10-49-turns")
-  public static let value50PlusTurns = Self(rawValue: "50-plus-turns")
-}
-
-public struct OpenRouterSessionCostMeta: Codable, Sendable {
-  public var asOf: String
-  public var version: OpenRouterSessionCostMetaVersion
-  public var windowDays: Int
-  public var windowEndDate: String
-
-  public init(
-    asOf: String,
-    version: OpenRouterSessionCostMetaVersion,
-    windowDays: Int,
-    windowEndDate: String
-  ) {
-    self.asOf = asOf
-    self.version = version
-    self.windowDays = windowDays
-    self.windowEndDate = windowEndDate
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case asOf = "as_of"
-    case version
-    case windowDays = "window_days"
-    case windowEndDate = "window_end_date"
-  }
-}
-
-public struct OpenRouterSessionCostMetaVersion: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let v1 = Self(rawValue: "v1")
-}
-
-public struct OpenRouterSessionCostResponse: Codable, Sendable {
-  public var data: [OpenRouterSessionCostItem]
-  public var meta: OpenRouterSessionCostMeta
-
-  public init(
-    data: [OpenRouterSessionCostItem],
-    meta: OpenRouterSessionCostMeta
-  ) {
-    self.data = data
-    self.meta = meta
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case data
-    case meta
-  }
-}
-
-public struct OpenRouterShellCallItem: Codable, Sendable {
-  public var action: OpenRouterShellCallItemAction
-  public var arguments: String?
-  public var callId: String
-  public var environment: HyperProxyJSONValue?
-  public var id: String?
-  public var status: OpenRouterToolCallStatus?
-  public var typeModel: OpenRouterShellCallItemTypeModel
-
-  public init(
-    action: OpenRouterShellCallItemAction,
-    callId: String,
-    typeModel: OpenRouterShellCallItemTypeModel,
-    arguments: String? = nil,
-    environment: HyperProxyJSONValue? = nil,
-    id: String? = nil,
-    status: OpenRouterToolCallStatus? = nil
-  ) {
-    self.action = action
-    self.arguments = arguments
-    self.callId = callId
-    self.environment = environment
-    self.id = id
-    self.status = status
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case action
-    case arguments
-    case callId = "call_id"
-    case environment
-    case id
-    case status
-    case typeModel = "type"
-  }
-}
-
-public struct OpenRouterShellCallItemAction: Codable, Sendable {
-  public var commands: [String]
-  public var maxOutputLength: Int?
-  public var timeoutMs: Int?
-
-  public init(
-    commands: [String],
-    maxOutputLength: Int? = nil,
-    timeoutMs: Int? = nil
-  ) {
-    self.commands = commands
-    self.maxOutputLength = maxOutputLength
-    self.timeoutMs = timeoutMs
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case commands
-    case maxOutputLength = "max_output_length"
-    case timeoutMs = "timeout_ms"
-  }
-}
-
-public struct OpenRouterShellCallItemTypeModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let shellCall = Self(rawValue: "shell_call")
-}
-
-public struct OpenRouterShellCallOutputContent: Codable, Sendable {
-  public var outcome: HyperProxyJSONValue
-  public var stderr: String
-  public var stdout: String
-
-  public init(
-    outcome: HyperProxyJSONValue,
-    stderr: String,
-    stdout: String
-  ) {
-    self.outcome = outcome
-    self.stderr = stderr
-    self.stdout = stdout
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case outcome
-    case stderr
-    case stdout
-  }
-}
-
-public struct OpenRouterShellCallOutputContentOutcomeOneOf1: Codable, Sendable {
-  public var exitCode: Int
-  public var typeModel: OpenRouterShellCallOutputContentOutcomeOneOf1TypeModel
-
-  public init(
-    exitCode: Int,
-    typeModel: OpenRouterShellCallOutputContentOutcomeOneOf1TypeModel
-  ) {
-    self.exitCode = exitCode
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case exitCode = "exit_code"
-    case typeModel = "type"
-  }
-}
-
-public struct OpenRouterShellCallOutputContentOutcomeOneOf1TypeModel: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let exit = Self(rawValue: "exit")
-}
-
-public struct OpenRouterShellCallOutputContentOutcomeOneOf2: Codable, Sendable {
-  public var typeModel: OpenRouterShellCallOutputContentOutcomeOneOf2TypeModel
-
-  public init(
-    typeModel: OpenRouterShellCallOutputContentOutcomeOneOf2TypeModel
-  ) {
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
-  }
-}
-
-public struct OpenRouterShellCallOutputContentOutcomeOneOf2TypeModel: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let timeout = Self(rawValue: "timeout")
-}
-
-public struct OpenRouterShellCallOutputItem: Codable, Sendable {
-  public var callId: String
-  public var containerId: String?
-  public var files: [OpenRouterShellCallOutputItemFilesItem]?
-  public var id: String?
-  public var maxOutputLength: Int?
-  public var output: [OpenRouterShellCallOutputContent]
-  public var status: OpenRouterToolCallStatus?
-  public var typeModel: OpenRouterShellCallOutputItemTypeModel
-
-  public init(
-    callId: String,
-    output: [OpenRouterShellCallOutputContent],
-    typeModel: OpenRouterShellCallOutputItemTypeModel,
-    containerId: String? = nil,
-    files: [OpenRouterShellCallOutputItemFilesItem]? = nil,
-    id: String? = nil,
-    maxOutputLength: Int? = nil,
-    status: OpenRouterToolCallStatus? = nil
-  ) {
-    self.callId = callId
-    self.containerId = containerId
-    self.files = files
-    self.id = id
-    self.maxOutputLength = maxOutputLength
-    self.output = output
-    self.status = status
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case callId = "call_id"
-    case containerId = "container_id"
-    case files
-    case id
-    case maxOutputLength = "max_output_length"
-    case output
-    case status
-    case typeModel = "type"
-  }
-}
-
-public struct OpenRouterShellCallOutputItemFilesItem: Codable, Sendable {
-  public var containerId: String
-  public var endIndex: Int
-  public var fileId: String
-  public var filename: String
-  public var startIndex: Int
-  public var typeModel: OpenRouterShellCallOutputItemFilesItemTypeModel
-
-  public init(
-    containerId: String,
-    endIndex: Int,
-    fileId: String,
-    filename: String,
-    startIndex: Int,
-    typeModel: OpenRouterShellCallOutputItemFilesItemTypeModel
-  ) {
-    self.containerId = containerId
-    self.endIndex = endIndex
-    self.fileId = fileId
-    self.filename = filename
-    self.startIndex = startIndex
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case containerId = "container_id"
-    case endIndex = "end_index"
-    case fileId = "file_id"
-    case filename
-    case startIndex = "start_index"
-    case typeModel = "type"
-  }
-}
-
-public struct OpenRouterShellCallOutputItemFilesItemTypeModel: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let containerFileCitation = Self(rawValue: "container_file_citation")
-}
-
-public struct OpenRouterShellCallOutputItemTypeModel: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let shellCallOutput = Self(rawValue: "shell_call_output")
-}
-
-public struct OpenRouterShellCallStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let inProgress = Self(rawValue: "in_progress")
-  public static let completed = Self(rawValue: "completed")
-  public static let incomplete = Self(rawValue: "incomplete")
-}
-
-public struct OpenRouterShellServerTool: Codable, Sendable {
-  public var typeModel: OpenRouterShellServerToolTypeModel
-
-  public init(
-    typeModel: OpenRouterShellServerToolTypeModel
-  ) {
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
-  }
-}
-
-public struct OpenRouterShellServerToolConfig: Codable, Sendable {
-  public var engine: OpenRouterShellServerToolEngine?
-  public var environment: OpenRouterShellServerToolEnvironment?
-  public var sleepAfterSeconds: OpenRouterSandboxSleepAfterSeconds?
-
-  public init(
-    engine: OpenRouterShellServerToolEngine? = nil,
-    environment: OpenRouterShellServerToolEnvironment? = nil,
-    sleepAfterSeconds: OpenRouterSandboxSleepAfterSeconds? = nil
-  ) {
-    self.engine = engine
-    self.environment = environment
-    self.sleepAfterSeconds = sleepAfterSeconds
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case engine
-    case environment
-    case sleepAfterSeconds = "sleep_after_seconds"
-  }
-}
-
-public struct OpenRouterShellServerToolEngine: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
-  public static let openrouter = Self(rawValue: "openrouter")
-}
-
-public enum OpenRouterShellServerToolEnvironment: Codable, Sendable {
-  case containerAutoEnvironment(OpenRouterContainerAutoEnvironment)
-  case containerReferenceEnvironment(OpenRouterContainerReferenceEnvironment)
-
-  public init(from decoder: any Decoder) throws {
-    let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(OpenRouterContainerAutoEnvironment.self) {
-      self = .containerAutoEnvironment(value)
-      return
-    }
-    self = .containerReferenceEnvironment(
-      try container.decode(OpenRouterContainerReferenceEnvironment.self))
-  }
-
-  public func encode(to encoder: any Encoder) throws {
-    var container = encoder.singleValueContainer()
-    switch self {
-    case .containerAutoEnvironment(let value):
-      try container.encode(value)
-    case .containerReferenceEnvironment(let value):
-      try container.encode(value)
-    }
-  }
-}
-
-public struct OpenRouterShellServerToolOpenRouterTypeModel: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let openrouterShell = Self(rawValue: "openrouter:shell")
-}
-
-public struct OpenRouterShellServerToolTypeModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let shell = Self(rawValue: "shell")
-}
-
-public struct OpenRouterShellServerToolOpenRouter: Codable, Sendable {
-  public var parameters: OpenRouterShellServerToolConfig?
-  public var typeModel: OpenRouterShellServerToolOpenRouterTypeModel
-
-  public init(
-    typeModel: OpenRouterShellServerToolOpenRouterTypeModel,
-    parameters: OpenRouterShellServerToolConfig? = nil
-  ) {
-    self.parameters = parameters
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case parameters
-    case typeModel = "type"
-  }
-}
-
-public enum OpenRouterSpeechInputReference: Codable, Sendable {
-  case speechInputReferenceAudio(OpenRouterSpeechInputReferenceAudio)
-  case speechInputReferenceText(OpenRouterSpeechInputReferenceText)
-
-  public init(from decoder: any Decoder) throws {
-    let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(OpenRouterSpeechInputReferenceAudio.self) {
-      self = .speechInputReferenceAudio(value)
-      return
-    }
-    self = .speechInputReferenceText(try container.decode(OpenRouterSpeechInputReferenceText.self))
-  }
-
-  public func encode(to encoder: any Encoder) throws {
-    var container = encoder.singleValueContainer()
-    switch self {
-    case .speechInputReferenceAudio(let value):
-      try container.encode(value)
-    case .speechInputReferenceText(let value):
-      try container.encode(value)
-    }
-  }
-}
-
-public struct OpenRouterSpeechInputReferenceAudio: Codable, Sendable {
-  public var inputAudio: OpenRouterSpeechInputReferenceAudioInput
-  public var typeModel: OpenRouterSpeechInputReferenceAudioTypeModel
-
-  public init(
-    inputAudio: OpenRouterSpeechInputReferenceAudioInput,
-    typeModel: OpenRouterSpeechInputReferenceAudioTypeModel
-  ) {
-    self.inputAudio = inputAudio
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case inputAudio = "input_audio"
-    case typeModel = "type"
-  }
-}
-
-public struct OpenRouterSpeechInputReferenceAudioInput: Codable, Sendable {
-  public var data: String
-  public var format: String?
-
-  public init(
-    data: String,
-    format: String? = nil
-  ) {
-    self.data = data
-    self.format = format
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case data
-    case format
-  }
-}
-
-public struct OpenRouterSpeechInputReferenceAudioTypeModel: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let inputAudio = Self(rawValue: "input_audio")
-}
-
-public struct OpenRouterSpeechInputReferenceText: Codable, Sendable {
-  public var text: String
-  public var typeModel: OpenRouterSpeechInputReferenceTextTypeModel
-
-  public init(
-    text: String,
-    typeModel: OpenRouterSpeechInputReferenceTextTypeModel
-  ) {
-    self.text = text
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case text
-    case typeModel = "type"
-  }
-}
-
-public struct OpenRouterSpeechInputReferenceTextTypeModel: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let text = Self(rawValue: "text")
-}
-
-public struct OpenRouterSpeechRequest: Codable, Sendable {
-  public var input: String
-  public var inputReferences: [OpenRouterSpeechInputReference]?
-  public var model: String
-  public var provider: OpenRouterSpeechRequestProvider?
-  public var responseFormat: OpenRouterSpeechRequestResponseFormat?
-  public var speed: Double?
-  public var voice: String?
-
-  public init(
-    input: String,
-    model: String,
-    inputReferences: [OpenRouterSpeechInputReference]? = nil,
-    provider: OpenRouterSpeechRequestProvider? = nil,
-    responseFormat: OpenRouterSpeechRequestResponseFormat? = nil,
-    speed: Double? = nil,
-    voice: String? = nil
-  ) {
-    self.input = input
-    self.inputReferences = inputReferences
-    self.model = model
-    self.provider = provider
-    self.responseFormat = responseFormat
-    self.speed = speed
-    self.voice = voice
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case input
-    case inputReferences = "input_references"
-    case model
-    case provider
-    case responseFormat = "response_format"
-    case speed
-    case voice
-  }
-}
-
-public struct OpenRouterSpeechRequestProvider: Codable, Sendable {
-  public var options: OpenRouterProviderOptions?
-
-  public init(
-    options: OpenRouterProviderOptions? = nil
-  ) {
-    self.options = options
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case options
-  }
-}
-
-public struct OpenRouterSpeechRequestResponseFormat: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mp3 = Self(rawValue: "mp3")
-  public static let pcm = Self(rawValue: "pcm")
-}
-
-public typealias OpenRouterStopServerToolsWhen = [OpenRouterStopServerToolsWhenCondition]
-
-public typealias OpenRouterStopServerToolsWhenCondition = HyperProxyJSONValue
-
-public struct OpenRouterStopServerToolsWhenFinishReasonIs: Codable, Sendable {
-  public var reason: String
-  public var typeModel: OpenRouterStopServerToolsWhenFinishReasonIsTypeModel
-
-  public init(
-    reason: String,
-    typeModel: OpenRouterStopServerToolsWhenFinishReasonIsTypeModel
-  ) {
-    self.reason = reason
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case reason
-    case typeModel = "type"
-  }
-}
-
-public struct OpenRouterStopServerToolsWhenFinishReasonIsTypeModel: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let finishReasonIs = Self(rawValue: "finish_reason_is")
-}
-
-public struct OpenRouterStopServerToolsWhenHasToolCall: Codable, Sendable {
-  public var toolName: String
-  public var typeModel: OpenRouterStopServerToolsWhenHasToolCallTypeModel
-
-  public init(
-    toolName: String,
-    typeModel: OpenRouterStopServerToolsWhenHasToolCallTypeModel
-  ) {
-    self.toolName = toolName
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case toolName = "tool_name"
-    case typeModel = "type"
-  }
-}
-
-public struct OpenRouterStopServerToolsWhenHasToolCallTypeModel: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let hasToolCall = Self(rawValue: "has_tool_call")
-}
-
-public struct OpenRouterStopServerToolsWhenMaxCost: Codable, Sendable {
-  public var maxCostInDollars: Double
-  public var typeModel: OpenRouterStopServerToolsWhenMaxCostTypeModel
-
-  public init(
-    maxCostInDollars: Double,
-    typeModel: OpenRouterStopServerToolsWhenMaxCostTypeModel
-  ) {
-    self.maxCostInDollars = maxCostInDollars
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case maxCostInDollars = "max_cost_in_dollars"
-    case typeModel = "type"
-  }
-}
-
-public struct OpenRouterStopServerToolsWhenMaxCostTypeModel: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let maxCost = Self(rawValue: "max_cost")
-}
-
-public struct OpenRouterStopServerToolsWhenMaxTokensUsed: Codable, Sendable {
-  public var maxTokens: Int
-  public var typeModel: OpenRouterStopServerToolsWhenMaxTokensUsedTypeModel
-
-  public init(
-    maxTokens: Int,
-    typeModel: OpenRouterStopServerToolsWhenMaxTokensUsedTypeModel
-  ) {
-    self.maxTokens = maxTokens
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case maxTokens = "max_tokens"
-    case typeModel = "type"
-  }
-}
-
-public struct OpenRouterStopServerToolsWhenMaxTokensUsedTypeModel: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let maxTokensUsed = Self(rawValue: "max_tokens_used")
-}
-
-public struct OpenRouterStopServerToolsWhenStepCountIs: Codable, Sendable {
-  public var stepCount: Int
-  public var typeModel: OpenRouterStopServerToolsWhenStepCountIsTypeModel
-
-  public init(
-    stepCount: Int,
-    typeModel: OpenRouterStopServerToolsWhenStepCountIsTypeModel
-  ) {
-    self.stepCount = stepCount
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case stepCount = "step_count"
-    case typeModel = "type"
-  }
-}
-
-public struct OpenRouterStopServerToolsWhenStepCountIsTypeModel: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let stepCountIs = Self(rawValue: "step_count_is")
 }

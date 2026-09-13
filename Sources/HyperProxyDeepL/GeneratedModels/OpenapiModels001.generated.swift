@@ -1696,6 +1696,34 @@ public typealias DeepLIgnoreTagCommaSeparatedList = DeepLTagCommaSeparatedList
 
 public typealias DeepLIgnoreTagList = DeepLTagList
 
+public struct DeepLInfrastructureErrorResponse: Codable, Sendable {
+  public var error: DeepLInfrastructureErrorResponseError
+
+  public init(
+    error: DeepLInfrastructureErrorResponseError
+  ) {
+    self.error = error
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case error
+  }
+}
+
+public struct DeepLInfrastructureErrorResponseError: Codable, Sendable {
+  public var message: String
+
+  public init(
+    message: String
+  ) {
+    self.message = message
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case message
+  }
+}
+
 public struct DeepLJobSourceFileRequest: Codable, Sendable {
   public var contentLength: Int64
   public var contentType: DeepLVoiceTranslateJobSourceContentType
@@ -2064,6 +2092,7 @@ public struct DeepLOutlineDetectionOptionStr: RawRepresentable, Codable, Hashabl
   }
 
   public static let value0 = Self(rawValue: "0")
+  public static let value1 = Self(rawValue: "1")
 }
 
 public struct DeepLPatchMultilingualGlossaryParameters: Codable, Sendable {
@@ -2626,17 +2655,3 @@ public struct DeepLResultStatus: RawRepresentable, Codable, Hashable, Sendable {
 }
 
 public typealias DeepLShowBilledCharacters = Bool
-
-public typealias DeepLSourceLanguage = String
-
-public struct DeepLSplitSentencesOption: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let value0 = Self(rawValue: "0")
-  public static let value1 = Self(rawValue: "1")
-  public static let nonewlines = Self(rawValue: "nonewlines")
-}

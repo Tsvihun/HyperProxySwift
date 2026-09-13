@@ -812,6 +812,18 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
     return try await call.decoded(OpenRouterModelsListResponse.self)
   }
 
+  public func listOauthJwks(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterOAuthJwks {
+    let call = self.call(.listOauthJwks)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterOAuthJwks.self)
+  }
+
   public func listObservabilityDestinations(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -1106,6 +1118,32 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(OpenRouterListScimGroupsResponse.self)
+  }
+
+  public func createScimSyncJob(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterCreateScimSyncJobResponse {
+    let call = self.call(.createScimSyncJob)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterCreateScimSyncJobResponse.self)
+  }
+
+  public func getScimSyncJob(
+    id: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterGetScimSyncJobResponse {
+    let call = self.call(.getScimSyncJob)
+      .path("id", id)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterGetScimSyncJobResponse.self)
   }
 
   public func createVideos(

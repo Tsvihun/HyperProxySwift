@@ -346,6 +346,7 @@ public struct PerplexityApiSearchRequest: Codable, Sendable {
   public var searchDomainFilter: [String]?
   public var searchLanguageFilter: [String]?
   public var searchRecencyFilter: PerplexitySearchRecencyFilter?
+  public var searchType: PerplexityApiSearchRequestAllOf1SearchType?
 
   public init(
     query: HyperProxyJSONValue,
@@ -360,7 +361,8 @@ public struct PerplexityApiSearchRequest: Codable, Sendable {
     searchContextSize: String? = nil,
     searchDomainFilter: [String]? = nil,
     searchLanguageFilter: [String]? = nil,
-    searchRecencyFilter: PerplexitySearchRecencyFilter? = nil
+    searchRecencyFilter: PerplexitySearchRecencyFilter? = nil,
+    searchType: PerplexityApiSearchRequestAllOf1SearchType? = nil
   ) {
     self.country = country
     self.lastUpdatedAfterFilter = lastUpdatedAfterFilter
@@ -375,6 +377,7 @@ public struct PerplexityApiSearchRequest: Codable, Sendable {
     self.searchDomainFilter = searchDomainFilter
     self.searchLanguageFilter = searchLanguageFilter
     self.searchRecencyFilter = searchRecencyFilter
+    self.searchType = searchType
   }
 
   enum CodingKeys: String, CodingKey {
@@ -391,6 +394,7 @@ public struct PerplexityApiSearchRequest: Codable, Sendable {
     case searchDomainFilter = "search_domain_filter"
     case searchLanguageFilter = "search_language_filter"
     case searchRecencyFilter = "search_recency_filter"
+    case searchType = "search_type"
   }
 }
 
@@ -402,6 +406,7 @@ public struct PerplexityApiSearchRequestAllOf1: Codable, Sendable {
   public var query: HyperProxyJSONValue
   public var searchContextSize: String?
   public var searchLanguageFilter: [String]?
+  public var searchType: PerplexityApiSearchRequestAllOf1SearchType?
 
   public init(
     query: HyperProxyJSONValue,
@@ -410,7 +415,8 @@ public struct PerplexityApiSearchRequestAllOf1: Codable, Sendable {
     maxTokens: Int? = nil,
     maxTokensPerPage: Int? = nil,
     searchContextSize: String? = nil,
-    searchLanguageFilter: [String]? = nil
+    searchLanguageFilter: [String]? = nil,
+    searchType: PerplexityApiSearchRequestAllOf1SearchType? = nil
   ) {
     self.country = country
     self.maxResults = maxResults
@@ -419,6 +425,7 @@ public struct PerplexityApiSearchRequestAllOf1: Codable, Sendable {
     self.query = query
     self.searchContextSize = searchContextSize
     self.searchLanguageFilter = searchLanguageFilter
+    self.searchType = searchType
   }
 
   enum CodingKeys: String, CodingKey {
@@ -429,7 +436,21 @@ public struct PerplexityApiSearchRequestAllOf1: Codable, Sendable {
     case query
     case searchContextSize = "search_context_size"
     case searchLanguageFilter = "search_language_filter"
+    case searchType = "search_type"
   }
+}
+
+public struct PerplexityApiSearchRequestAllOf1SearchType: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let web = Self(rawValue: "web")
+  public static let people = Self(rawValue: "people")
 }
 
 public struct PerplexityApiSearchResponse: Codable, Sendable {
@@ -1266,6 +1287,38 @@ public struct PerplexityCurrency: RawRepresentable, Codable, Hashable, Sendable 
   }
 
   public static let uSD = Self(rawValue: "USD")
+}
+
+public struct PerplexityCustomSkill: Codable, Sendable {
+  public var id: String
+  public var typeModel: PerplexityCustomSkillTypeModel
+  public var version: String?
+
+  public init(
+    id: String,
+    typeModel: PerplexityCustomSkillTypeModel,
+    version: String? = nil
+  ) {
+    self.id = id
+    self.typeModel = typeModel
+    self.version = version
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case id
+    case typeModel = "type"
+    case version
+  }
+}
+
+public struct PerplexityCustomSkillTypeModel: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let custom = Self(rawValue: "custom")
 }
 
 public typealias PerplexityDate = String
@@ -2976,6 +3029,38 @@ public struct PerplexityPeopleSearchToolTypeModel: RawRepresentable, Codable, Ha
   public static let peopleSearch = Self(rawValue: "people_search")
 }
 
+public struct PerplexityProfileReference: Codable, Sendable {
+  public var id: String
+  public var typeModel: PerplexityProfileReferenceTypeModel
+  public var version: String?
+
+  public init(
+    id: String,
+    typeModel: PerplexityProfileReferenceTypeModel,
+    version: String? = nil
+  ) {
+    self.id = id
+    self.typeModel = typeModel
+    self.version = version
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case id
+    case typeModel = "type"
+    case version
+  }
+}
+
+public struct PerplexityProfileReferenceTypeModel: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let custom = Self(rawValue: "custom")
+}
+
 public struct PerplexityReasoningConfig: Codable, Sendable {
   public var effort: PerplexityReasoningConfigEffort?
 
@@ -3198,87 +3283,5 @@ public struct PerplexityResponseFileList: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case data
     case object
-  }
-}
-
-public struct PerplexityResponseFormat: Codable, Sendable {
-  public var jsonSchema: PerplexityJSONSchemaFormat?
-  public var typeModel: PerplexityResponseFormatTypeModel
-
-  public init(
-    typeModel: PerplexityResponseFormatTypeModel,
-    jsonSchema: PerplexityJSONSchemaFormat? = nil
-  ) {
-    self.jsonSchema = jsonSchema
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case jsonSchema = "json_schema"
-    case typeModel = "type"
-  }
-}
-
-public struct PerplexityResponseFormatJSONSchema: Codable, Sendable {
-  public var jsonSchema: PerplexityJSONSchema
-  public var typeModel: String
-
-  public init(
-    jsonSchema: PerplexityJSONSchema,
-    typeModel: String
-  ) {
-    self.jsonSchema = jsonSchema
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case jsonSchema = "json_schema"
-    case typeModel = "type"
-  }
-}
-
-public struct PerplexityResponseFormatText: Codable, Sendable {
-  public var typeModel: String
-
-  public init(
-    typeModel: String
-  ) {
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
-  }
-}
-
-public struct PerplexityResponseFormatTypeModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let jsonSchema = Self(rawValue: "json_schema")
-}
-
-public struct PerplexityResponseInProgressEvent: Codable, Sendable {
-  public var response: PerplexityResponsesResponse?
-  public var sequenceNumber: Int64
-  public var typeModel: PerplexityEventType
-
-  public init(
-    sequenceNumber: Int64,
-    typeModel: PerplexityEventType,
-    response: PerplexityResponsesResponse? = nil
-  ) {
-    self.response = response
-    self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case response
-    case sequenceNumber = "sequence_number"
-    case typeModel = "type"
   }
 }

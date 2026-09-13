@@ -80,6 +80,9 @@ public struct TogetherDERolloutStepStatusState: RawRepresentable, Codable, Hasha
   public static let rOLLOUTSTEPSTATERUNNING = Self(rawValue: "ROLLOUT_STEP_STATE_RUNNING")
   public static let rOLLOUTSTEPSTATEPASSED = Self(rawValue: "ROLLOUT_STEP_STATE_PASSED")
   public static let rOLLOUTSTEPSTATEFAILED = Self(rawValue: "ROLLOUT_STEP_STATE_FAILED")
+  public static let rOLLOUTSTEPSTATEPAUSED = Self(rawValue: "ROLLOUT_STEP_STATE_PAUSED")
+  public static let rOLLOUTSTEPSTATECANCELED = Self(rawValue: "ROLLOUT_STEP_STATE_CANCELED")
+  public static let rOLLOUTSTEPSTATESKIPPED = Self(rawValue: "ROLLOUT_STEP_STATE_SKIPPED")
 }
 
 public struct TogetherDERolloutStrategy: RawRepresentable, Codable, Hashable, Sendable {
@@ -93,6 +96,24 @@ public struct TogetherDERolloutStrategy: RawRepresentable, Codable, Hashable, Se
   public static let rOLLOUTSTRATEGYTYPECANARY = Self(rawValue: "ROLLOUT_STRATEGY_TYPE_CANARY")
   public static let rOLLOUTSTRATEGYTYPEBLUEGREEN = Self(
     rawValue: "ROLLOUT_STRATEGY_TYPE_BLUE_GREEN")
+}
+
+public struct TogetherDEScalingMetricName: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let activeSessions = Self(rawValue: "active_sessions")
+  public static let cacheHitRate = Self(rawValue: "cache_hit_rate")
+  public static let decodingSpeed = Self(rawValue: "decoding_speed")
+  public static let e2eLatency = Self(rawValue: "e2e_latency")
+  public static let gpuUtilization = Self(rawValue: "gpu_utilization")
+  public static let inflightRequests = Self(rawValue: "inflight_requests")
+  public static let throughputPerReplica = Self(rawValue: "throughput_per_replica")
+  public static let tokenUtilization = Self(rawValue: "token_utilization")
+  public static let ttft = Self(rawValue: "ttft")
 }
 
 public struct TogetherDEScalingMetricTypeModel: RawRepresentable, Codable, Hashable, Sendable {
@@ -3678,20 +3699,6 @@ public struct TogetherFinishReason: RawRepresentable, Codable, Hashable, Sendabl
 }
 
 public struct TogetherForwardBackwardParameters: Codable, Sendable {
-  public var sessionId: String
-
-  public init(
-    sessionId: String
-  ) {
-    self.sessionId = sessionId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case sessionId = "session_id"
-  }
-}
-
-public struct TogetherForwardParameters: Codable, Sendable {
   public var sessionId: String
 
   public init(

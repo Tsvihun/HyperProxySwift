@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+- Refresh the provider snapshot on 2026-09-13: 2,244 routes, 15,464 generated types,
+  and 1,955 typed operation bindings. BFL adds video editing, optional end-user
+  identifiers, and QHD/UHD video resolutions; other official schema updates include
+  OpenAI, OpenRouter, Together, fal, Fireworks, ElevenLabs, Each AI, DeepL,
+  Gemini, Mistral, and Perplexity.
+- Upstream removals: the generated fal `createComputeInstance` and Together
+  `forward` / `getForwardOperation` helpers are removed with their official
+  schema entries. Callers using these helpers must migrate; raw requests remain
+  available but do not imply continued upstream support.
+- Generated model shapes follow upstream schema changes as well: removed OpenAI
+  `compute_units` / function-argument event `name` fields and newly required
+  ElevenLabs voice/source fields, OpenRouter observability regions, and Together
+  RL fields may require caller updates.
+
 - `HyperProxyRetryPolicy` no longer resends a request after a timeout or a dropped
   connection unless it is safe to replay (`GET`/`HEAD`/`OPTIONS`, or an `Idempotency-Key`
   header), so a timed-out paid generation is not billed twice. DNS failures and refused

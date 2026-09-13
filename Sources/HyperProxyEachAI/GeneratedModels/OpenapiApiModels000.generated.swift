@@ -858,6 +858,99 @@ public struct EachAIAPIListExecutionsResponse: Codable, Sendable {
   }
 }
 
+public struct EachAIAPIListExecutionsV2Parameters: Codable, Sendable {
+  public var cursor: String?
+  public var errorClassification: [EachAIAPIListExecutionsV2ParametersErrorClassificationItem]?
+  public var from: String?
+  public var limit: Int?
+  public var model: String?
+  public var status: String?
+  public var to: String?
+  public var workflowExecutionId: String?
+  public var workflowId: String?
+
+  public init(
+    cursor: String? = nil,
+    errorClassification: [EachAIAPIListExecutionsV2ParametersErrorClassificationItem]? = nil,
+    from: String? = nil,
+    limit: Int? = nil,
+    model: String? = nil,
+    status: String? = nil,
+    to: String? = nil,
+    workflowExecutionId: String? = nil,
+    workflowId: String? = nil
+  ) {
+    self.cursor = cursor
+    self.errorClassification = errorClassification
+    self.from = from
+    self.limit = limit
+    self.model = model
+    self.status = status
+    self.to = to
+    self.workflowExecutionId = workflowExecutionId
+    self.workflowId = workflowId
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case cursor
+    case errorClassification = "error_classification"
+    case from
+    case limit
+    case model
+    case status
+    case to
+    case workflowExecutionId = "workflow_execution_id"
+    case workflowId = "workflow_id"
+  }
+}
+
+public struct EachAIAPIListExecutionsV2ParametersErrorClassificationItem: RawRepresentable, Codable,
+  Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let contentModeration = Self(rawValue: "content_moderation")
+  public static let executionTimeout = Self(rawValue: "execution_timeout")
+  public static let invalidUserInput = Self(rawValue: "invalid_user_input")
+  public static let invalidModelConfig = Self(rawValue: "invalid_model_config")
+  public static let providerAuth = Self(rawValue: "provider_auth")
+  public static let providerError = Self(rawValue: "provider_error")
+  public static let providerRateLimit = Self(rawValue: "provider_rate_limit")
+  public static let providerUnavailable = Self(rawValue: "provider_unavailable")
+  public static let internalError = Self(rawValue: "internal_error")
+  public static let unknown = Self(rawValue: "unknown")
+}
+
+public struct EachAIAPIListExecutionsV2Response: Codable, Sendable {
+  public var executions: [EachAIAPIExecutionSummary]
+  public var hasMore: Bool
+  public var limit: Int
+  public var nextCursor: String?
+
+  public init(
+    executions: [EachAIAPIExecutionSummary],
+    hasMore: Bool,
+    limit: Int,
+    nextCursor: String?
+  ) {
+    self.executions = executions
+    self.hasMore = hasMore
+    self.limit = limit
+    self.nextCursor = nextCursor
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case executions
+    case hasMore = "has_more"
+    case limit
+    case nextCursor = "next_cursor"
+  }
+}
+
 public struct EachAIAPIListModelsParameters: Codable, Sendable {
   public var limit: Int?
   public var name: String?
@@ -1019,23 +1112,35 @@ public struct EachAIAPIModelDetail: Codable, Sendable {
 public struct EachAIAPIModelDetailCost: Codable, Sendable {
   public var amount: Double?
   public var currency: EachAIAPIModelDetailCostCurrency
+  public var dependsOn: [String]
   public var description: EachAIAPIModelDetailCostDescription
   public var estimate: String
+  public var max: Double?
+  public var min: Double?
+  public var rows: [EachAIAPIModelDetailCostRowsItem]
   public var typeModel: EachAIAPIModelDetailCostTypeModel
   public var unit: EachAIAPIModelDetailCostUnit?
 
   public init(
     amount: Double?,
     currency: EachAIAPIModelDetailCostCurrency,
+    dependsOn: [String],
     description: EachAIAPIModelDetailCostDescription,
     estimate: String,
+    max: Double?,
+    min: Double?,
+    rows: [EachAIAPIModelDetailCostRowsItem],
     typeModel: EachAIAPIModelDetailCostTypeModel,
     unit: EachAIAPIModelDetailCostUnit?
   ) {
     self.amount = amount
     self.currency = currency
+    self.dependsOn = dependsOn
     self.description = description
     self.estimate = estimate
+    self.max = max
+    self.min = min
+    self.rows = rows
     self.typeModel = typeModel
     self.unit = unit
   }
@@ -1043,8 +1148,12 @@ public struct EachAIAPIModelDetailCost: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case amount
     case currency
+    case dependsOn = "depends_on"
     case description
     case estimate
+    case max
+    case min
+    case rows
     case typeModel = "type"
     case unit
   }
@@ -1071,6 +1180,24 @@ public struct EachAIAPIModelDetailCostDescription: RawRepresentable, Codable, Ha
     rawValue: "Pricing is an estimate and may change as rates are updated.")
 }
 
+public struct EachAIAPIModelDetailCostRowsItem: Codable, Sendable {
+  public var label: String
+  public var value: Double
+
+  public init(
+    label: String,
+    value: Double
+  ) {
+    self.label = label
+    self.value = value
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case label
+    case value
+  }
+}
+
 public struct EachAIAPIModelDetailCostTypeModel: RawRepresentable, Codable, Hashable, Sendable {
   public var rawValue: String
 
@@ -1090,6 +1217,16 @@ public struct EachAIAPIModelDetailCostUnit: RawRepresentable, Codable, Hashable,
   }
 
   public static let execution = Self(rawValue: "execution")
+  public static let second = Self(rawValue: "second")
+  public static let processingSecond = Self(rawValue: "processing_second")
+  public static let minute = Self(rawValue: "minute")
+  public static let hour = Self(rawValue: "hour")
+  public static let image = Self(rawValue: "image")
+  public static let megapixel = Self(rawValue: "megapixel")
+  public static let millionTokens = Self(rawValue: "million_tokens")
+  public static let character = Self(rawValue: "character")
+  public static let step = Self(rawValue: "step")
+  public static let generation = Self(rawValue: "generation")
 }
 
 public struct EachAIAPIOpenAIErrorResponse: Codable, Sendable {

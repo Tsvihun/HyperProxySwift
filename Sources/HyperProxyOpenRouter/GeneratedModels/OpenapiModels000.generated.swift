@@ -1660,19 +1660,58 @@ public struct OpenRouterAnthropicCompactionUsageIterationAllOf2TypeModel: RawRep
 public struct OpenRouterAnthropicContainer: Codable, Sendable {
   public var expiresAt: String
   public var id: String
+  public var skills: [OpenRouterAnthropicContainerSkill]?
 
   public init(
     expiresAt: String,
-    id: String
+    id: String,
+    skills: [OpenRouterAnthropicContainerSkill]? = nil
   ) {
     self.expiresAt = expiresAt
     self.id = id
+    self.skills = skills
   }
 
   enum CodingKeys: String, CodingKey {
     case expiresAt = "expires_at"
     case id
+    case skills
   }
+}
+
+public struct OpenRouterAnthropicContainerSkill: Codable, Sendable {
+  public var skillId: String
+  public var typeModel: OpenRouterAnthropicContainerSkillTypeModel
+  public var version: String
+
+  public init(
+    skillId: String,
+    typeModel: OpenRouterAnthropicContainerSkillTypeModel,
+    version: String
+  ) {
+    self.skillId = skillId
+    self.typeModel = typeModel
+    self.version = version
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case skillId = "skill_id"
+    case typeModel = "type"
+    case version
+  }
+}
+
+public struct OpenRouterAnthropicContainerSkillTypeModel: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let anthropic = Self(rawValue: "anthropic")
+  public static let custom = Self(rawValue: "custom")
 }
 
 public struct OpenRouterAnthropicContainerUpload: Codable, Sendable {
@@ -2183,6 +2222,28 @@ public struct OpenRouterAnthropicInputTokensTriggerTypeModel: RawRepresentable, 
   public static let inputTokens = Self(rawValue: "input_tokens")
 }
 
+public struct OpenRouterAnthropicInputTransformation: Codable, Sendable {
+  public var path: String?
+  public var reason: String?
+  public var typeModel: String
+
+  public init(
+    typeModel: String,
+    path: String? = nil,
+    reason: String? = nil
+  ) {
+    self.path = path
+    self.reason = reason
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case path
+    case reason
+    case typeModel = "type"
+  }
+}
+
 public struct OpenRouterAnthropicIterationCacheCreation: Codable, Sendable {
   public var ephemeral1hInputTokens: Int?
   public var ephemeral5mInputTokens: Int?
@@ -2198,6 +2259,20 @@ public struct OpenRouterAnthropicIterationCacheCreation: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case ephemeral1hInputTokens = "ephemeral_1h_input_tokens"
     case ephemeral5mInputTokens = "ephemeral_5m_input_tokens"
+  }
+}
+
+public struct OpenRouterAnthropicMessageOutputConfig: Codable, Sendable {
+  public var effort: OpenRouterAnthropicOutputEffort?
+
+  public init(
+    effort: OpenRouterAnthropicOutputEffort? = nil
+  ) {
+    self.effort = effort
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case effort
   }
 }
 
@@ -2351,6 +2426,20 @@ public struct OpenRouterAnthropicMessagesErrorResponseTypeModel: RawRepresentabl
   }
 
   public static let error = Self(rawValue: "error")
+}
+
+public struct OpenRouterAnthropicOutputEffort: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let low = Self(rawValue: "low")
+  public static let medium = Self(rawValue: "medium")
+  public static let high = Self(rawValue: "high")
+  public static let xhigh = Self(rawValue: "xhigh")
+  public static let max = Self(rawValue: "max")
 }
 
 public struct OpenRouterAnthropicOutputTokensDetails: Codable, Sendable {
@@ -2608,6 +2697,17 @@ public struct OpenRouterAnthropicSpeed: RawRepresentable, Codable, Hashable, Sen
   public static let standard = Self(rawValue: "standard")
 }
 
+public struct OpenRouterAnthropicSystemClearAt: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let nextUserMessage = Self(rawValue: "next_user_message")
+  public static let never = Self(rawValue: "never")
+}
+
 public struct OpenRouterAnthropicTextBlock: Codable, Sendable {
   public var citations: [OpenRouterAnthropicTextCitation]
   public var text: String
@@ -2818,113 +2918,4 @@ public struct OpenRouterAnthropicTextEditorCodeExecutionToolResultErrorErrorCode
   public static let tooManyRequests = Self(rawValue: "too_many_requests")
   public static let executionTimeExceeded = Self(rawValue: "execution_time_exceeded")
   public static let fileNotFound = Self(rawValue: "file_not_found")
-}
-
-public struct OpenRouterAnthropicTextEditorCodeExecutionToolResultErrorTypeModel: RawRepresentable,
-  Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let textEditorCodeExecutionToolResultError = Self(
-    rawValue: "text_editor_code_execution_tool_result_error")
-}
-
-public struct OpenRouterAnthropicTextEditorCodeExecutionToolResultTypeModel: RawRepresentable,
-  Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let textEditorCodeExecutionToolResult = Self(
-    rawValue: "text_editor_code_execution_tool_result")
-}
-
-public struct OpenRouterAnthropicTextEditorCodeExecutionViewResult: Codable, Sendable {
-  public var content: String
-  public var fileType: OpenRouterAnthropicTextEditorCodeExecutionViewResultFileType
-  public var numLines: Int
-  public var startLine: Int
-  public var totalLines: Int
-  public var typeModel: OpenRouterAnthropicTextEditorCodeExecutionViewResultTypeModel
-
-  public init(
-    content: String,
-    fileType: OpenRouterAnthropicTextEditorCodeExecutionViewResultFileType,
-    numLines: Int,
-    startLine: Int,
-    totalLines: Int,
-    typeModel: OpenRouterAnthropicTextEditorCodeExecutionViewResultTypeModel
-  ) {
-    self.content = content
-    self.fileType = fileType
-    self.numLines = numLines
-    self.startLine = startLine
-    self.totalLines = totalLines
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case content
-    case fileType = "file_type"
-    case numLines = "num_lines"
-    case startLine = "start_line"
-    case totalLines = "total_lines"
-    case typeModel = "type"
-  }
-}
-
-public struct OpenRouterAnthropicTextEditorCodeExecutionViewResultFileType: RawRepresentable,
-  Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let text = Self(rawValue: "text")
-  public static let image = Self(rawValue: "image")
-  public static let pdf = Self(rawValue: "pdf")
-}
-
-public struct OpenRouterAnthropicTextEditorCodeExecutionViewResultTypeModel: RawRepresentable,
-  Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let textEditorCodeExecutionViewResult = Self(
-    rawValue: "text_editor_code_execution_view_result")
-}
-
-public struct OpenRouterAnthropicThinkingBlock: Codable, Sendable {
-  public var signature: String
-  public var thinking: String
-  public var typeModel: OpenRouterAnthropicThinkingBlockTypeModel
-
-  public init(
-    signature: String,
-    thinking: String,
-    typeModel: OpenRouterAnthropicThinkingBlockTypeModel
-  ) {
-    self.signature = signature
-    self.thinking = thinking
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case signature
-    case thinking
-    case typeModel = "type"
-  }
 }

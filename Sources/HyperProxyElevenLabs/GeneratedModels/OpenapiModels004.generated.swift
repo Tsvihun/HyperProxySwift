@@ -4,6 +4,78 @@
 import Foundation
 import HyperProxyCore
 
+public struct ElevenLabsCreateExotelPhoneNumberRequest: Codable, Sendable {
+  public var accountSid: String
+  public var agentId: String?
+  public var apiKey: String
+  public var apiSubdomain: ElevenLabsExotelApiSubdomain
+  public var apiToken: String
+  public var appId: String
+  public var appletUrl: String?
+  public var label: String
+  public var phoneNumber: String
+  public var provider: String?
+  public var supportsInbound: Bool?
+  public var supportsOutbound: Bool?
+
+  public init(
+    accountSid: String,
+    apiKey: String,
+    apiSubdomain: ElevenLabsExotelApiSubdomain,
+    apiToken: String,
+    appId: String,
+    label: String,
+    phoneNumber: String,
+    agentId: String? = nil,
+    appletUrl: String? = nil,
+    provider: String? = nil,
+    supportsInbound: Bool? = nil,
+    supportsOutbound: Bool? = nil
+  ) {
+    self.accountSid = accountSid
+    self.agentId = agentId
+    self.apiKey = apiKey
+    self.apiSubdomain = apiSubdomain
+    self.apiToken = apiToken
+    self.appId = appId
+    self.appletUrl = appletUrl
+    self.label = label
+    self.phoneNumber = phoneNumber
+    self.provider = provider
+    self.supportsInbound = supportsInbound
+    self.supportsOutbound = supportsOutbound
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case accountSid = "account_sid"
+    case agentId = "agent_id"
+    case apiKey = "api_key"
+    case apiSubdomain = "api_subdomain"
+    case apiToken = "api_token"
+    case appId = "app_id"
+    case appletUrl = "applet_url"
+    case label
+    case phoneNumber = "phone_number"
+    case provider
+    case supportsInbound = "supports_inbound"
+    case supportsOutbound = "supports_outbound"
+  }
+}
+
+public struct ElevenLabsCreateFileDocumentRouteParameters: Codable, Sendable {
+  public var xiApiKey: String?
+
+  public init(
+    xiApiKey: String? = nil
+  ) {
+    self.xiApiKey = xiApiKey
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case xiApiKey = "xi-api-key"
+  }
+}
+
 public struct ElevenLabsCreateFinetuneParameters: Codable, Sendable {
   public var xiApiKey: String?
 
@@ -471,17 +543,20 @@ public struct ElevenLabsCreatePrivateKeyJWTRequestAlgorithm: RawRepresentable, C
 
 public struct ElevenLabsCreateProcedureRequestModel: Codable, Sendable {
   public var content: String?
+  public var folderParentId: String?
   public var name: String?
   public var trigger: String?
   public var typeModel: ElevenLabsProcedureType?
 
   public init(
     content: String? = nil,
+    folderParentId: String? = nil,
     name: String? = nil,
     trigger: String? = nil,
     typeModel: ElevenLabsProcedureType? = nil
   ) {
     self.content = content
+    self.folderParentId = folderParentId
     self.name = name
     self.trigger = trigger
     self.typeModel = typeModel
@@ -489,6 +564,7 @@ public struct ElevenLabsCreateProcedureRequestModel: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case content
+    case folderParentId = "folder_parent_id"
     case name
     case trigger
     case typeModel = "type"
@@ -534,6 +610,20 @@ public struct ElevenLabsCreateProcedureRouteParameters: Codable, Sendable {
 public typealias ElevenLabsCreateProcedureRouteRequest = ElevenLabsCreateProcedureRequestModel?
 
 public struct ElevenLabsCreateProductParams: Codable, Sendable {
+  public var smbToolType: String?
+
+  public init(
+    smbToolType: String? = nil
+  ) {
+    self.smbToolType = smbToolType
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case smbToolType = "smb_tool_type"
+  }
+}
+
+public struct ElevenLabsCreateProductQuoteRequestParams: Codable, Sendable {
   public var smbToolType: String?
 
   public init(
@@ -740,6 +830,20 @@ public struct ElevenLabsCreateServiceAccountParameters: Codable, Sendable {
 }
 
 public struct ElevenLabsCreateServiceParams: Codable, Sendable {
+  public var smbToolType: String?
+
+  public init(
+    smbToolType: String? = nil
+  ) {
+    self.smbToolType = smbToolType
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case smbToolType = "smb_tool_type"
+  }
+}
+
+public struct ElevenLabsCreateServiceQuoteRequestParams: Codable, Sendable {
   public var smbToolType: String?
 
   public init(
@@ -1054,6 +1158,7 @@ public struct ElevenLabsCreateTransferRuleParams: Codable, Sendable {
 }
 
 public struct ElevenLabsCreateTwilioPhoneNumberRequest: Codable, Sendable {
+  public var accountAuthToken: String?
   public var agentId: String?
   public var enableSms: Bool?
   public var label: String
@@ -1070,6 +1175,7 @@ public struct ElevenLabsCreateTwilioPhoneNumberRequest: Codable, Sendable {
     phoneNumber: String,
     sid: String,
     token: String,
+    accountAuthToken: String? = nil,
     agentId: String? = nil,
     enableSms: Bool? = nil,
     provider: String? = nil,
@@ -1077,6 +1183,7 @@ public struct ElevenLabsCreateTwilioPhoneNumberRequest: Codable, Sendable {
     supportsInbound: Bool? = nil,
     supportsOutbound: Bool? = nil
   ) {
+    self.accountAuthToken = accountAuthToken
     self.agentId = agentId
     self.enableSms = enableSms
     self.label = label
@@ -1090,6 +1197,7 @@ public struct ElevenLabsCreateTwilioPhoneNumberRequest: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case accountAuthToken = "account_auth_token"
     case agentId = "agent_id"
     case enableSms = "enable_sms"
     case label
@@ -1614,6 +1722,7 @@ public struct ElevenLabsDashboardDataCollectionChartModel: Codable, Sendable {
 public struct ElevenLabsDataCollectionResultCommonModel: Codable, Sendable {
   public var dataCollectionId: String
   public var jsonSchema: ElevenLabsLiteralJsonSchemaProperty?
+  public var name: String?
   public var rationale: String
   public var value: HyperProxyJSONValue?
 
@@ -1621,10 +1730,12 @@ public struct ElevenLabsDataCollectionResultCommonModel: Codable, Sendable {
     dataCollectionId: String,
     rationale: String,
     jsonSchema: ElevenLabsLiteralJsonSchemaProperty? = nil,
+    name: String? = nil,
     value: HyperProxyJSONValue? = nil
   ) {
     self.dataCollectionId = dataCollectionId
     self.jsonSchema = jsonSchema
+    self.name = name
     self.rationale = rationale
     self.value = value
   }
@@ -1632,6 +1743,7 @@ public struct ElevenLabsDataCollectionResultCommonModel: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case dataCollectionId = "data_collection_id"
     case jsonSchema = "json_schema"
+    case name
     case rationale
     case value
   }
@@ -1742,6 +1854,38 @@ public struct ElevenLabsDeleteAgentDraftRouteParameters: Codable, Sendable {
 }
 
 public typealias ElevenLabsDeleteAgentDraftRouteResponse = HyperProxyJSONValue
+
+public struct ElevenLabsDeleteAgentHoldAudioResponseModel: Codable, Sendable {
+  public var agentId: String
+
+  public init(
+    agentId: String
+  ) {
+    self.agentId = agentId
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case agentId = "agent_id"
+  }
+}
+
+public struct ElevenLabsDeleteAgentHoldAudioRouteParameters: Codable, Sendable {
+  public var agentId: String
+  public var xiApiKey: String?
+
+  public init(
+    agentId: String,
+    xiApiKey: String? = nil
+  ) {
+    self.agentId = agentId
+    self.xiApiKey = xiApiKey
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case agentId = "agent_id"
+    case xiApiKey = "xi-api-key"
+  }
+}
 
 public struct ElevenLabsDeleteAgentProcedureParams: Codable, Sendable {
   public var smbToolType: String?
@@ -2921,137 +3065,5 @@ public struct ElevenLabsDependentPhoneNumberIdentifier: Codable, Sendable {
     case phoneNumber = "phone_number"
     case phoneNumberId = "phone_number_id"
     case provider
-  }
-}
-
-public struct ElevenLabsDependentUnknownAgentIdentifier: Codable, Sendable {
-  public var id: String
-  public var referencedResourceIds: [String]?
-  public var typeModel: String?
-
-  public init(
-    id: String,
-    referencedResourceIds: [String]? = nil,
-    typeModel: String? = nil
-  ) {
-    self.id = id
-    self.referencedResourceIds = referencedResourceIds
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case id
-    case referencedResourceIds = "referenced_resource_ids"
-    case typeModel = "type"
-  }
-}
-
-public struct ElevenLabsDependentUnknownMCPServerIdentifier: Codable, Sendable {
-  public var id: String
-  public var typeModel: String?
-
-  public init(
-    id: String,
-    typeModel: String? = nil
-  ) {
-    self.id = id
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case id
-    case typeModel = "type"
-  }
-}
-
-public struct ElevenLabsDependentUnknownToolIdentifier: Codable, Sendable {
-  public var id: String
-  public var typeModel: String?
-
-  public init(
-    id: String,
-    typeModel: String? = nil
-  ) {
-    self.id = id
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case id
-    case typeModel = "type"
-  }
-}
-
-public struct ElevenLabsDetailedMusicResponse: Codable, Sendable {
-  public var compositionPlan: HyperProxyJSONValue
-  public var songMetadata: ElevenLabsSongMetadata
-  public var waveformVisual: [Int]?
-  public var wordsTimestamps: [ElevenLabsWordTimestamp]?
-
-  public init(
-    compositionPlan: HyperProxyJSONValue,
-    songMetadata: ElevenLabsSongMetadata,
-    wordsTimestamps: [ElevenLabsWordTimestamp]?,
-    waveformVisual: [Int]? = nil
-  ) {
-    self.compositionPlan = compositionPlan
-    self.songMetadata = songMetadata
-    self.waveformVisual = waveformVisual
-    self.wordsTimestamps = wordsTimestamps
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case compositionPlan = "composition_plan"
-    case songMetadata = "song_metadata"
-    case waveformVisual = "waveform_visual"
-    case wordsTimestamps = "words_timestamps"
-  }
-}
-
-public struct ElevenLabsDetectedEntity: Codable, Sendable {
-  public var endChar: Int
-  public var entityType: String
-  public var startChar: Int
-  public var text: String
-
-  public init(
-    endChar: Int,
-    entityType: String,
-    startChar: Int,
-    text: String
-  ) {
-    self.endChar = endChar
-    self.entityType = entityType
-    self.startChar = startChar
-    self.text = text
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case endChar = "end_char"
-    case entityType = "entity_type"
-    case startChar = "start_char"
-    case text
-  }
-}
-
-public struct ElevenLabsDeviceModel: Codable, Sendable {
-  public var hostname: String?
-  public var ip: String?
-  public var typeId: Int?
-
-  public init(
-    hostname: String? = nil,
-    ip: String? = nil,
-    typeId: Int? = nil
-  ) {
-    self.hostname = hostname
-    self.ip = ip
-    self.typeId = typeId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case hostname
-    case ip
-    case typeId = "type_id"
   }
 }

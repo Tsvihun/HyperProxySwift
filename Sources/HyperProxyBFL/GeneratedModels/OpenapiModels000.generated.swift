@@ -210,6 +210,7 @@ public struct BFLFinetuneFluxProFillInputs: Codable, Sendable {
   public var safetyTolerance: Int?
   public var seed: Int?
   public var steps: Int?
+  public var user: String?
   public var webhookSecret: String?
   public var webhookUrl: String?
 
@@ -225,6 +226,7 @@ public struct BFLFinetuneFluxProFillInputs: Codable, Sendable {
     safetyTolerance: Int? = nil,
     seed: Int? = nil,
     steps: Int? = nil,
+    user: String? = nil,
     webhookSecret: String? = nil,
     webhookUrl: String? = nil
   ) {
@@ -239,6 +241,7 @@ public struct BFLFinetuneFluxProFillInputs: Codable, Sendable {
     self.safetyTolerance = safetyTolerance
     self.seed = seed
     self.steps = steps
+    self.user = user
     self.webhookSecret = webhookSecret
     self.webhookUrl = webhookUrl
   }
@@ -255,6 +258,7 @@ public struct BFLFinetuneFluxProFillInputs: Codable, Sendable {
     case safetyTolerance = "safety_tolerance"
     case seed
     case steps
+    case user
     case webhookSecret = "webhook_secret"
     case webhookUrl = "webhook_url"
   }
@@ -323,6 +327,7 @@ public struct BFLFlux2DeblurInputs: Codable, Sendable {
   public var outputFormat: BFLOutputFormat?
   public var safetyTolerance: Int?
   public var seed: Int?
+  public var user: String?
   public var webhookSecret: String?
   public var webhookUrl: String?
 
@@ -331,6 +336,7 @@ public struct BFLFlux2DeblurInputs: Codable, Sendable {
     outputFormat: BFLOutputFormat? = nil,
     safetyTolerance: Int? = nil,
     seed: Int? = nil,
+    user: String? = nil,
     webhookSecret: String? = nil,
     webhookUrl: String? = nil
   ) {
@@ -338,6 +344,7 @@ public struct BFLFlux2DeblurInputs: Codable, Sendable {
     self.outputFormat = outputFormat
     self.safetyTolerance = safetyTolerance
     self.seed = seed
+    self.user = user
     self.webhookSecret = webhookSecret
     self.webhookUrl = webhookUrl
   }
@@ -347,6 +354,7 @@ public struct BFLFlux2DeblurInputs: Codable, Sendable {
     case outputFormat = "output_format"
     case safetyTolerance = "safety_tolerance"
     case seed
+    case user
     case webhookSecret = "webhook_secret"
     case webhookUrl = "webhook_url"
   }
@@ -359,6 +367,7 @@ public struct BFLFlux2EraseInputs: Codable, Sendable {
   public var outputFormat: BFLOutputFormat?
   public var safetyTolerance: Int?
   public var seed: Int?
+  public var user: String?
   public var webhookSecret: String?
   public var webhookUrl: String?
 
@@ -369,6 +378,7 @@ public struct BFLFlux2EraseInputs: Codable, Sendable {
     outputFormat: BFLOutputFormat? = nil,
     safetyTolerance: Int? = nil,
     seed: Int? = nil,
+    user: String? = nil,
     webhookSecret: String? = nil,
     webhookUrl: String? = nil
   ) {
@@ -378,6 +388,7 @@ public struct BFLFlux2EraseInputs: Codable, Sendable {
     self.outputFormat = outputFormat
     self.safetyTolerance = safetyTolerance
     self.seed = seed
+    self.user = user
     self.webhookSecret = webhookSecret
     self.webhookUrl = webhookUrl
   }
@@ -389,6 +400,7 @@ public struct BFLFlux2EraseInputs: Codable, Sendable {
     case outputFormat = "output_format"
     case safetyTolerance = "safety_tolerance"
     case seed
+    case user
     case webhookSecret = "webhook_secret"
     case webhookUrl = "webhook_url"
   }
@@ -412,6 +424,7 @@ public struct BFLFlux2FlexInputs: Codable, Sendable {
   public var safetyTolerance: Int?
   public var seed: Int?
   public var steps: Int?
+  public var user: String?
   public var webhookSecret: String?
   public var webhookUrl: String?
   public var width: Int?
@@ -434,6 +447,7 @@ public struct BFLFlux2FlexInputs: Codable, Sendable {
     safetyTolerance: Int? = nil,
     seed: Int? = nil,
     steps: Int? = nil,
+    user: String? = nil,
     webhookSecret: String? = nil,
     webhookUrl: String? = nil,
     width: Int? = nil
@@ -455,6 +469,7 @@ public struct BFLFlux2FlexInputs: Codable, Sendable {
     self.safetyTolerance = safetyTolerance
     self.seed = seed
     self.steps = steps
+    self.user = user
     self.webhookSecret = webhookSecret
     self.webhookUrl = webhookUrl
     self.width = width
@@ -478,6 +493,7 @@ public struct BFLFlux2FlexInputs: Codable, Sendable {
     case safetyTolerance = "safety_tolerance"
     case seed
     case steps
+    case user
     case webhookSecret = "webhook_secret"
     case webhookUrl = "webhook_url"
     case width
@@ -499,6 +515,7 @@ public struct BFLFlux2Inputs: Codable, Sendable {
   public var prompt: String
   public var safetyTolerance: Int?
   public var seed: Int?
+  public var user: String?
   public var webhookSecret: String?
   public var webhookUrl: String?
   public var width: Int?
@@ -518,6 +535,7 @@ public struct BFLFlux2Inputs: Codable, Sendable {
     outputFormat: BFLOutputFormat? = nil,
     safetyTolerance: Int? = nil,
     seed: Int? = nil,
+    user: String? = nil,
     webhookSecret: String? = nil,
     webhookUrl: String? = nil,
     width: Int? = nil
@@ -536,6 +554,7 @@ public struct BFLFlux2Inputs: Codable, Sendable {
     self.prompt = prompt
     self.safetyTolerance = safetyTolerance
     self.seed = seed
+    self.user = user
     self.webhookSecret = webhookSecret
     self.webhookUrl = webhookUrl
     self.width = width
@@ -556,6 +575,7 @@ public struct BFLFlux2Inputs: Codable, Sendable {
     case prompt
     case safetyTolerance = "safety_tolerance"
     case seed
+    case user
     case webhookSecret = "webhook_secret"
     case webhookUrl = "webhook_url"
     case width
@@ -572,6 +592,7 @@ public struct BFLFlux2KleinInputs: Codable, Sendable {
   public var prompt: String
   public var safetyTolerance: Int?
   public var seed: Int?
+  public var user: String?
   public var webhookSecret: String?
   public var webhookUrl: String?
   public var width: Int?
@@ -586,6 +607,7 @@ public struct BFLFlux2KleinInputs: Codable, Sendable {
     outputFormat: BFLOutputFormat? = nil,
     safetyTolerance: Int? = nil,
     seed: Int? = nil,
+    user: String? = nil,
     webhookSecret: String? = nil,
     webhookUrl: String? = nil,
     width: Int? = nil
@@ -599,6 +621,7 @@ public struct BFLFlux2KleinInputs: Codable, Sendable {
     self.prompt = prompt
     self.safetyTolerance = safetyTolerance
     self.seed = seed
+    self.user = user
     self.webhookSecret = webhookSecret
     self.webhookUrl = webhookUrl
     self.width = width
@@ -614,6 +637,7 @@ public struct BFLFlux2KleinInputs: Codable, Sendable {
     case prompt
     case safetyTolerance = "safety_tolerance"
     case seed
+    case user
     case webhookSecret = "webhook_secret"
     case webhookUrl = "webhook_url"
     case width
@@ -627,6 +651,7 @@ public struct BFLFlux2KleinTryonInputs: Codable, Sendable {
   public var prompt: String
   public var safetyTolerance: Int?
   public var seed: Int?
+  public var user: String?
   public var webhookSecret: String?
   public var webhookUrl: String?
 
@@ -637,6 +662,7 @@ public struct BFLFlux2KleinTryonInputs: Codable, Sendable {
     outputFormat: BFLOutputFormat? = nil,
     safetyTolerance: Int? = nil,
     seed: Int? = nil,
+    user: String? = nil,
     webhookSecret: String? = nil,
     webhookUrl: String? = nil
   ) {
@@ -646,6 +672,7 @@ public struct BFLFlux2KleinTryonInputs: Codable, Sendable {
     self.prompt = prompt
     self.safetyTolerance = safetyTolerance
     self.seed = seed
+    self.user = user
     self.webhookSecret = webhookSecret
     self.webhookUrl = webhookUrl
   }
@@ -657,6 +684,7 @@ public struct BFLFlux2KleinTryonInputs: Codable, Sendable {
     case prompt
     case safetyTolerance = "safety_tolerance"
     case seed
+    case user
     case webhookSecret = "webhook_secret"
     case webhookUrl = "webhook_url"
   }
@@ -667,17 +695,20 @@ public struct BFLFlux3VideoDraftEnhanceInputs: Codable, Sendable {
   public var mode: String
   public var resolution: BFLFlux3VideoDraftEnhanceInputsResolution?
   public var safetyTolerance: Int?
+  public var user: String?
 
   public init(
     draftCache: String,
     mode: String,
     resolution: BFLFlux3VideoDraftEnhanceInputsResolution? = nil,
-    safetyTolerance: Int? = nil
+    safetyTolerance: Int? = nil,
+    user: String? = nil
   ) {
     self.draftCache = draftCache
     self.mode = mode
     self.resolution = resolution
     self.safetyTolerance = safetyTolerance
+    self.user = user
   }
 
   enum CodingKeys: String, CodingKey {
@@ -685,6 +716,7 @@ public struct BFLFlux3VideoDraftEnhanceInputs: Codable, Sendable {
     case mode
     case resolution
     case safetyTolerance = "safety_tolerance"
+    case user
   }
 }
 
@@ -699,6 +731,8 @@ public struct BFLFlux3VideoDraftEnhanceInputsResolution: RawRepresentable, Codab
 
   public static let hd = Self(rawValue: "hd")
   public static let fhd = Self(rawValue: "fhd")
+  public static let qhd = Self(rawValue: "qhd")
+  public static let uhd = Self(rawValue: "uhd")
 }
 
 public struct BFLFlux3VideoI2VInputs: Codable, Sendable {
@@ -711,6 +745,7 @@ public struct BFLFlux3VideoI2VInputs: Codable, Sendable {
   public var prompt: String
   public var resolution: BFLFlux3VideoI2VInputsResolution?
   public var safetyTolerance: Int?
+  public var user: String?
   public var version: String?
 
   public init(
@@ -723,6 +758,7 @@ public struct BFLFlux3VideoI2VInputs: Codable, Sendable {
     generateAudio: Bool? = nil,
     resolution: BFLFlux3VideoI2VInputsResolution? = nil,
     safetyTolerance: Int? = nil,
+    user: String? = nil,
     version: String? = nil
   ) {
     self.aspectRatio = aspectRatio
@@ -734,6 +770,7 @@ public struct BFLFlux3VideoI2VInputs: Codable, Sendable {
     self.prompt = prompt
     self.resolution = resolution
     self.safetyTolerance = safetyTolerance
+    self.user = user
     self.version = version
   }
 
@@ -747,6 +784,7 @@ public struct BFLFlux3VideoI2VInputs: Codable, Sendable {
     case prompt
     case resolution
     case safetyTolerance = "safety_tolerance"
+    case user
     case version
   }
 }
@@ -777,6 +815,8 @@ public struct BFLFlux3VideoI2VInputsResolution: RawRepresentable, Codable, Hasha
 
   public static let hd = Self(rawValue: "hd")
   public static let fhd = Self(rawValue: "fhd")
+  public static let qhd = Self(rawValue: "qhd")
+  public static let uhd = Self(rawValue: "uhd")
 }
 
 public typealias BFLFlux3VideoInputsBody = HyperProxyJSONValue
@@ -790,6 +830,7 @@ public struct BFLFlux3VideoT2VInputs: Codable, Sendable {
   public var prompt: String
   public var resolution: BFLFlux3VideoT2VInputsResolution?
   public var safetyTolerance: Int?
+  public var user: String?
   public var version: String?
 
   public init(
@@ -801,6 +842,7 @@ public struct BFLFlux3VideoT2VInputs: Codable, Sendable {
     generateAudio: Bool? = nil,
     resolution: BFLFlux3VideoT2VInputsResolution? = nil,
     safetyTolerance: Int? = nil,
+    user: String? = nil,
     version: String? = nil
   ) {
     self.aspectRatio = aspectRatio
@@ -811,6 +853,7 @@ public struct BFLFlux3VideoT2VInputs: Codable, Sendable {
     self.prompt = prompt
     self.resolution = resolution
     self.safetyTolerance = safetyTolerance
+    self.user = user
     self.version = version
   }
 
@@ -823,6 +866,7 @@ public struct BFLFlux3VideoT2VInputs: Codable, Sendable {
     case prompt
     case resolution
     case safetyTolerance = "safety_tolerance"
+    case user
     case version
   }
 }
@@ -853,6 +897,8 @@ public struct BFLFlux3VideoT2VInputsResolution: RawRepresentable, Codable, Hasha
 
   public static let hd = Self(rawValue: "hd")
   public static let fhd = Self(rawValue: "fhd")
+  public static let qhd = Self(rawValue: "qhd")
+  public static let uhd = Self(rawValue: "uhd")
 }
 
 public struct BFLFlux3VideoUpscaleInputs: Codable, Sendable {
@@ -861,6 +907,7 @@ public struct BFLFlux3VideoUpscaleInputs: Codable, Sendable {
   public var prompt: String?
   public var safetyTolerance: Int?
   public var upscaleFactor: Double?
+  public var user: String?
   public var webhookSecret: String?
   public var webhookUrl: String?
 
@@ -870,6 +917,7 @@ public struct BFLFlux3VideoUpscaleInputs: Codable, Sendable {
     prompt: String? = nil,
     safetyTolerance: Int? = nil,
     upscaleFactor: Double? = nil,
+    user: String? = nil,
     webhookSecret: String? = nil,
     webhookUrl: String? = nil
   ) {
@@ -878,6 +926,7 @@ public struct BFLFlux3VideoUpscaleInputs: Codable, Sendable {
     self.prompt = prompt
     self.safetyTolerance = safetyTolerance
     self.upscaleFactor = upscaleFactor
+    self.user = user
     self.webhookSecret = webhookSecret
     self.webhookUrl = webhookUrl
   }
@@ -888,6 +937,7 @@ public struct BFLFlux3VideoUpscaleInputs: Codable, Sendable {
     case prompt
     case safetyTolerance = "safety_tolerance"
     case upscaleFactor = "upscale_factor"
+    case user
     case webhookSecret = "webhook_secret"
     case webhookUrl = "webhook_url"
   }
@@ -938,6 +988,7 @@ public struct BFLFlux3VideoV2VInputs: Codable, Sendable {
   public var resolution: BFLFlux3VideoV2VInputsResolution?
   public var safetyTolerance: Int?
   public var startVideo: String
+  public var user: String?
   public var version: String?
 
   public init(
@@ -950,6 +1001,7 @@ public struct BFLFlux3VideoV2VInputs: Codable, Sendable {
     generateAudio: Bool? = nil,
     resolution: BFLFlux3VideoV2VInputsResolution? = nil,
     safetyTolerance: Int? = nil,
+    user: String? = nil,
     version: String? = nil
   ) {
     self.aspectRatio = aspectRatio
@@ -961,6 +1013,7 @@ public struct BFLFlux3VideoV2VInputs: Codable, Sendable {
     self.resolution = resolution
     self.safetyTolerance = safetyTolerance
     self.startVideo = startVideo
+    self.user = user
     self.version = version
   }
 
@@ -974,6 +1027,7 @@ public struct BFLFlux3VideoV2VInputs: Codable, Sendable {
     case resolution
     case safetyTolerance = "safety_tolerance"
     case startVideo = "start_video"
+    case user
     case version
   }
 }
@@ -1004,6 +1058,30 @@ public struct BFLFlux3VideoV2VInputsResolution: RawRepresentable, Codable, Hasha
 
   public static let hd = Self(rawValue: "hd")
   public static let fhd = Self(rawValue: "fhd")
+  public static let qhd = Self(rawValue: "qhd")
+  public static let uhd = Self(rawValue: "uhd")
+}
+
+public struct BFLFlux3VideoVE2VNamedInputs: Codable, Sendable {
+  public var prompt: String
+  public var safetyTolerance: Int?
+  public var video: String
+
+  public init(
+    prompt: String,
+    video: String,
+    safetyTolerance: Int? = nil
+  ) {
+    self.prompt = prompt
+    self.safetyTolerance = safetyTolerance
+    self.video = video
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case prompt
+    case safetyTolerance = "safety_tolerance"
+    case video
+  }
 }
 
 public struct BFLFluxDevInputs: Codable, Sendable {
@@ -1016,6 +1094,7 @@ public struct BFLFluxDevInputs: Codable, Sendable {
   public var safetyTolerance: Int?
   public var seed: Int?
   public var steps: Int?
+  public var user: String?
   public var webhookSecret: String?
   public var webhookUrl: String?
   public var width: Int?
@@ -1030,6 +1109,7 @@ public struct BFLFluxDevInputs: Codable, Sendable {
     safetyTolerance: Int? = nil,
     seed: Int? = nil,
     steps: Int? = nil,
+    user: String? = nil,
     webhookSecret: String? = nil,
     webhookUrl: String? = nil,
     width: Int? = nil
@@ -1043,6 +1123,7 @@ public struct BFLFluxDevInputs: Codable, Sendable {
     self.safetyTolerance = safetyTolerance
     self.seed = seed
     self.steps = steps
+    self.user = user
     self.webhookSecret = webhookSecret
     self.webhookUrl = webhookUrl
     self.width = width
@@ -1058,6 +1139,7 @@ public struct BFLFluxDevInputs: Codable, Sendable {
     case safetyTolerance = "safety_tolerance"
     case seed
     case steps
+    case user
     case webhookSecret = "webhook_secret"
     case webhookUrl = "webhook_url"
     case width
@@ -1099,6 +1181,7 @@ public struct BFLFluxKontextProInputs: Codable, Sendable {
   public var promptUpsampling: Bool?
   public var safetyTolerance: Int?
   public var seed: Int?
+  public var user: String?
   public var webhookSecret: String?
   public var webhookUrl: String?
 
@@ -1113,6 +1196,7 @@ public struct BFLFluxKontextProInputs: Codable, Sendable {
     promptUpsampling: Bool? = nil,
     safetyTolerance: Int? = nil,
     seed: Int? = nil,
+    user: String? = nil,
     webhookSecret: String? = nil,
     webhookUrl: String? = nil
   ) {
@@ -1126,6 +1210,7 @@ public struct BFLFluxKontextProInputs: Codable, Sendable {
     self.promptUpsampling = promptUpsampling
     self.safetyTolerance = safetyTolerance
     self.seed = seed
+    self.user = user
     self.webhookSecret = webhookSecret
     self.webhookUrl = webhookUrl
   }
@@ -1141,6 +1226,7 @@ public struct BFLFluxKontextProInputs: Codable, Sendable {
     case promptUpsampling = "prompt_upsampling"
     case safetyTolerance = "safety_tolerance"
     case seed
+    case user
     case webhookSecret = "webhook_secret"
     case webhookUrl = "webhook_url"
   }
@@ -1157,6 +1243,7 @@ public struct BFLFluxOutpaintingInputs: Codable, Sendable {
   public var referenceOffsetX: Int?
   public var referenceOffsetY: Int?
   public var safetyTolerance: Int?
+  public var user: String?
   public var width: Int
 
   public init(
@@ -1170,7 +1257,8 @@ public struct BFLFluxOutpaintingInputs: Codable, Sendable {
     prompt: String? = nil,
     referenceOffsetX: Int? = nil,
     referenceOffsetY: Int? = nil,
-    safetyTolerance: Int? = nil
+    safetyTolerance: Int? = nil,
+    user: String? = nil
   ) {
     self.autoCrop = autoCrop
     self.disablePup = disablePup
@@ -1182,6 +1270,7 @@ public struct BFLFluxOutpaintingInputs: Codable, Sendable {
     self.referenceOffsetX = referenceOffsetX
     self.referenceOffsetY = referenceOffsetY
     self.safetyTolerance = safetyTolerance
+    self.user = user
     self.width = width
   }
 
@@ -1196,6 +1285,7 @@ public struct BFLFluxOutpaintingInputs: Codable, Sendable {
     case referenceOffsetX = "reference_offset_x"
     case referenceOffsetY = "reference_offset_y"
     case safetyTolerance = "safety_tolerance"
+    case user
     case width
   }
 }
@@ -1243,6 +1333,7 @@ public struct BFLFluxPro11Inputs: Codable, Sendable {
   public var promptUpsampling: Bool?
   public var safetyTolerance: Int?
   public var seed: Int?
+  public var user: String?
   public var webhookSecret: String?
   public var webhookUrl: String?
   public var width: Int?
@@ -1255,6 +1346,7 @@ public struct BFLFluxPro11Inputs: Codable, Sendable {
     promptUpsampling: Bool? = nil,
     safetyTolerance: Int? = nil,
     seed: Int? = nil,
+    user: String? = nil,
     webhookSecret: String? = nil,
     webhookUrl: String? = nil,
     width: Int? = nil
@@ -1266,6 +1358,7 @@ public struct BFLFluxPro11Inputs: Codable, Sendable {
     self.promptUpsampling = promptUpsampling
     self.safetyTolerance = safetyTolerance
     self.seed = seed
+    self.user = user
     self.webhookSecret = webhookSecret
     self.webhookUrl = webhookUrl
     self.width = width
@@ -1279,6 +1372,7 @@ public struct BFLFluxPro11Inputs: Codable, Sendable {
     case promptUpsampling = "prompt_upsampling"
     case safetyTolerance = "safety_tolerance"
     case seed
+    case user
     case webhookSecret = "webhook_secret"
     case webhookUrl = "webhook_url"
     case width
@@ -1322,6 +1416,7 @@ public struct BFLFluxProExpandInputs: Codable, Sendable {
   public var seed: Int?
   public var steps: Int?
   public var top: Int?
+  public var user: String?
   public var webhookSecret: String?
   public var webhookUrl: String?
 
@@ -1338,6 +1433,7 @@ public struct BFLFluxProExpandInputs: Codable, Sendable {
     seed: Int? = nil,
     steps: Int? = nil,
     top: Int? = nil,
+    user: String? = nil,
     webhookSecret: String? = nil,
     webhookUrl: String? = nil
   ) {
@@ -1353,6 +1449,7 @@ public struct BFLFluxProExpandInputs: Codable, Sendable {
     self.seed = seed
     self.steps = steps
     self.top = top
+    self.user = user
     self.webhookSecret = webhookSecret
     self.webhookUrl = webhookUrl
   }
@@ -1370,6 +1467,7 @@ public struct BFLFluxProExpandInputs: Codable, Sendable {
     case seed
     case steps
     case top
+    case user
     case webhookSecret = "webhook_secret"
     case webhookUrl = "webhook_url"
   }
@@ -1385,6 +1483,7 @@ public struct BFLFluxProFillInputs: Codable, Sendable {
   public var safetyTolerance: Int?
   public var seed: Int?
   public var steps: Int?
+  public var user: String?
   public var webhookSecret: String?
   public var webhookUrl: String?
 
@@ -1398,6 +1497,7 @@ public struct BFLFluxProFillInputs: Codable, Sendable {
     safetyTolerance: Int? = nil,
     seed: Int? = nil,
     steps: Int? = nil,
+    user: String? = nil,
     webhookSecret: String? = nil,
     webhookUrl: String? = nil
   ) {
@@ -1410,6 +1510,7 @@ public struct BFLFluxProFillInputs: Codable, Sendable {
     self.safetyTolerance = safetyTolerance
     self.seed = seed
     self.steps = steps
+    self.user = user
     self.webhookSecret = webhookSecret
     self.webhookUrl = webhookUrl
   }
@@ -1424,6 +1525,7 @@ public struct BFLFluxProFillInputs: Codable, Sendable {
     case safetyTolerance = "safety_tolerance"
     case seed
     case steps
+    case user
     case webhookSecret = "webhook_secret"
     case webhookUrl = "webhook_url"
   }
@@ -1439,6 +1541,7 @@ public struct BFLFluxUltraInput: Codable, Sendable {
   public var raw: Bool?
   public var safetyTolerance: Int?
   public var seed: Int?
+  public var user: String?
   public var webhookSecret: String?
   public var webhookUrl: String?
 
@@ -1452,6 +1555,7 @@ public struct BFLFluxUltraInput: Codable, Sendable {
     raw: Bool? = nil,
     safetyTolerance: Int? = nil,
     seed: Int? = nil,
+    user: String? = nil,
     webhookSecret: String? = nil,
     webhookUrl: String? = nil
   ) {
@@ -1464,6 +1568,7 @@ public struct BFLFluxUltraInput: Codable, Sendable {
     self.raw = raw
     self.safetyTolerance = safetyTolerance
     self.seed = seed
+    self.user = user
     self.webhookSecret = webhookSecret
     self.webhookUrl = webhookUrl
   }
@@ -1478,6 +1583,7 @@ public struct BFLFluxUltraInput: Codable, Sendable {
     case raw
     case safetyTolerance = "safety_tolerance"
     case seed
+    case user
     case webhookSecret = "webhook_secret"
     case webhookUrl = "webhook_url"
   }
@@ -1797,6 +1903,30 @@ public enum BFLGenerateFluxToolsEraseV1V1FluxToolsEraseV1PostResponse: Codable, 
 
 public enum BFLGenerateFluxToolsOutpaintingV1V1FluxToolsOutpaintingV1PostResponse: Codable, Sendable
 {
+  case asyncResponse(BFLAsyncResponse)
+  case asyncWebhookResponse(BFLAsyncWebhookResponse)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(BFLAsyncResponse.self) {
+      self = .asyncResponse(value)
+      return
+    }
+    self = .asyncWebhookResponse(try container.decode(BFLAsyncWebhookResponse.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .asyncResponse(let value):
+      try container.encode(value)
+    case .asyncWebhookResponse(let value):
+      try container.encode(value)
+    }
+  }
+}
+
+public enum BFLGenerateFluxToolsVideoEditV1V1FluxToolsVideoEditV1PostResponse: Codable, Sendable {
   case asyncResponse(BFLAsyncResponse)
   case asyncWebhookResponse(BFLAsyncWebhookResponse)
 

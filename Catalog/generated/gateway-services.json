@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "providerCatalogSHA256": "0cd83dd3238b9790e92f11ca16e918434dbaee1b5384bd84ae9fed830d058da7",
+  "providerCatalogSHA256": "9eb22a28c26f223eef56a2f613d9ab1d19b7da2871c9e5fcb407277d62cb0d14",
   "providers": [
     {
       "id": "openai",
@@ -21,7 +21,7 @@
         "v1/embeddings",
         "v1/moderations"
       ],
-      "routeCount": 289
+      "routeCount": 339
     },
     {
       "id": "anthropic",
@@ -109,7 +109,7 @@
       "defaultAllowedPaths": [
         "api/v1/"
       ],
-      "routeCount": 102
+      "routeCount": 106
     },
     {
       "id": "perplexity",
@@ -158,7 +158,7 @@
       "defaultAllowedPaths": [
         "v1/"
       ],
-      "routeCount": 208
+      "routeCount": 207
     },
     {
       "id": "fireworks",
@@ -175,7 +175,7 @@
         "inference/v1/",
         "v1/"
       ],
-      "routeCount": 229
+      "routeCount": 230
     },
     {
       "id": "stability",
@@ -231,7 +231,7 @@
         "workflows/",
         "v1/"
       ],
-      "routeCount": 92
+      "routeCount": 96
     },
     {
       "id": "bfl",
@@ -251,7 +251,7 @@
       "defaultAllowedPaths": [
         "v1/"
       ],
-      "routeCount": 35
+      "routeCount": 36
     },
     {
       "id": "elevenlabs",
@@ -268,7 +268,7 @@
       "defaultAllowedPaths": [
         "v1/"
       ],
-      "routeCount": 388
+      "routeCount": 391
     },
     {
       "id": "eachai",
@@ -286,7 +286,7 @@
       "defaultAllowedPaths": [
         "v1/"
       ],
-      "routeCount": 37
+      "routeCount": 38
     },
     {
       "id": "brave",

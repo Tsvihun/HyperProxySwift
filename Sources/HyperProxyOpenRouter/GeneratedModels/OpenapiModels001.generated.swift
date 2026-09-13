@@ -4,6 +4,159 @@
 import Foundation
 import HyperProxyCore
 
+public struct OpenRouterAnthropicTextEditorCodeExecutionToolResultErrorTypeModel: RawRepresentable,
+  Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let textEditorCodeExecutionToolResultError = Self(
+    rawValue: "text_editor_code_execution_tool_result_error")
+}
+
+public struct OpenRouterAnthropicTextEditorCodeExecutionToolResultTypeModel: RawRepresentable,
+  Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let textEditorCodeExecutionToolResult = Self(
+    rawValue: "text_editor_code_execution_tool_result")
+}
+
+public struct OpenRouterAnthropicTextEditorCodeExecutionViewResult: Codable, Sendable {
+  public var content: String
+  public var fileType: OpenRouterAnthropicTextEditorCodeExecutionViewResultFileType
+  public var numLines: Int
+  public var startLine: Int
+  public var totalLines: Int
+  public var typeModel: OpenRouterAnthropicTextEditorCodeExecutionViewResultTypeModel
+
+  public init(
+    content: String,
+    fileType: OpenRouterAnthropicTextEditorCodeExecutionViewResultFileType,
+    numLines: Int,
+    startLine: Int,
+    totalLines: Int,
+    typeModel: OpenRouterAnthropicTextEditorCodeExecutionViewResultTypeModel
+  ) {
+    self.content = content
+    self.fileType = fileType
+    self.numLines = numLines
+    self.startLine = startLine
+    self.totalLines = totalLines
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case content
+    case fileType = "file_type"
+    case numLines = "num_lines"
+    case startLine = "start_line"
+    case totalLines = "total_lines"
+    case typeModel = "type"
+  }
+}
+
+public struct OpenRouterAnthropicTextEditorCodeExecutionViewResultFileType: RawRepresentable,
+  Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let text = Self(rawValue: "text")
+  public static let image = Self(rawValue: "image")
+  public static let pdf = Self(rawValue: "pdf")
+}
+
+public struct OpenRouterAnthropicTextEditorCodeExecutionViewResultTypeModel: RawRepresentable,
+  Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let textEditorCodeExecutionViewResult = Self(
+    rawValue: "text_editor_code_execution_view_result")
+}
+
+public struct OpenRouterAnthropicThinkingBlock: Codable, Sendable {
+  public var signature: String
+  public var thinking: String
+  public var typeModel: OpenRouterAnthropicThinkingBlockTypeModel
+
+  public init(
+    signature: String,
+    thinking: String,
+    typeModel: OpenRouterAnthropicThinkingBlockTypeModel
+  ) {
+    self.signature = signature
+    self.thinking = thinking
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case signature
+    case thinking
+    case typeModel = "type"
+  }
+}
+
+public struct OpenRouterAnthropicThinkingBlockBinding: Codable, Sendable {
+  public var mismatchBehavior: OpenRouterAnthropicThinkingBlockBindingMismatchBehavior?
+  public var prefixMismatchBehavior: OpenRouterAnthropicThinkingBlockBindingPrefixMismatchBehavior?
+
+  public init(
+    mismatchBehavior: OpenRouterAnthropicThinkingBlockBindingMismatchBehavior? = nil,
+    prefixMismatchBehavior: OpenRouterAnthropicThinkingBlockBindingPrefixMismatchBehavior? = nil
+  ) {
+    self.mismatchBehavior = mismatchBehavior
+    self.prefixMismatchBehavior = prefixMismatchBehavior
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case mismatchBehavior = "mismatch_behavior"
+    case prefixMismatchBehavior = "prefix_mismatch_behavior"
+  }
+}
+
+public struct OpenRouterAnthropicThinkingBlockBindingMismatchBehavior: RawRepresentable, Codable,
+  Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let error = Self(rawValue: "error")
+  public static let dropBlock = Self(rawValue: "drop_block")
+}
+
+public struct OpenRouterAnthropicThinkingBlockBindingPrefixMismatchBehavior: RawRepresentable,
+  Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let error = Self(rawValue: "error")
+  public static let dropBlock = Self(rawValue: "drop_block")
+}
+
 public struct OpenRouterAnthropicThinkingBlockTypeModel: RawRepresentable, Codable, Hashable,
   Sendable
 {
@@ -25,6 +178,7 @@ public struct OpenRouterAnthropicThinkingDisplay: RawRepresentable, Codable, Has
 
   public static let summarized = Self(rawValue: "summarized")
   public static let omitted = Self(rawValue: "omitted")
+  public static let updates = Self(rawValue: "updates")
 }
 
 public struct OpenRouterAnthropicThinkingTurns: Codable, Sendable {
@@ -1531,7 +1685,9 @@ public struct OpenRouterBYOKKey: Codable, Sendable {
   public var createdAt: String
   public var disabled: Bool
   public var id: String
+  public var isByokOnly: Bool
   public var isFallback: Bool
+  public var isRequired: Bool
   public var label: String
   public var name: String?
   public var provider: OpenRouterBYOKProviderSlug
@@ -1545,7 +1701,9 @@ public struct OpenRouterBYOKKey: Codable, Sendable {
     createdAt: String,
     disabled: Bool,
     id: String,
+    isByokOnly: Bool,
     isFallback: Bool,
+    isRequired: Bool,
     label: String,
     provider: OpenRouterBYOKProviderSlug,
     sortOrder: Int,
@@ -1558,7 +1716,9 @@ public struct OpenRouterBYOKKey: Codable, Sendable {
     self.createdAt = createdAt
     self.disabled = disabled
     self.id = id
+    self.isByokOnly = isByokOnly
     self.isFallback = isFallback
+    self.isRequired = isRequired
     self.label = label
     self.name = name
     self.provider = provider
@@ -1573,7 +1733,9 @@ public struct OpenRouterBYOKKey: Codable, Sendable {
     case createdAt = "created_at"
     case disabled
     case id
+    case isByokOnly = "is_byok_only"
     case isFallback = "is_fallback"
+    case isRequired = "is_required"
     case label
     case name
     case provider
@@ -1594,9 +1756,11 @@ public struct OpenRouterBYOKProviderSlug: RawRepresentable, Codable, Hashable, S
   public static let akashml = Self(rawValue: "akashml")
   public static let alibaba = Self(rawValue: "alibaba")
   public static let amazonBedrock = Self(rawValue: "amazon-bedrock")
+  public static let amazonBedrockClaudeOnAws = Self(rawValue: "amazon-bedrock/claude-on-aws")
   public static let amazonNova = Self(rawValue: "amazon-nova")
   public static let ambient = Self(rawValue: "ambient")
   public static let anthropic = Self(rawValue: "anthropic")
+  public static let anthropic2 = Self(rawValue: "anthropic/2")
   public static let arceeAi = Self(rawValue: "arcee-ai")
   public static let atlasCloud = Self(rawValue: "atlas-cloud")
   public static let avian = Self(rawValue: "avian")
@@ -1609,6 +1773,7 @@ public struct OpenRouterBYOKProviderSlug: RawRepresentable, Codable, Hashable, S
   public static let chutes = Self(rawValue: "chutes")
   public static let cirrascale = Self(rawValue: "cirrascale")
   public static let clarifai = Self(rawValue: "clarifai")
+  public static let claudeOnAws = Self(rawValue: "claude-on-aws")
   public static let cloudflare = Self(rawValue: "cloudflare")
   public static let cohere = Self(rawValue: "cohere")
   public static let coreweave = Self(rawValue: "coreweave")
@@ -1652,7 +1817,7 @@ public struct OpenRouterBYOKProviderSlug: RawRepresentable, Codable, Hashable, S
   public static let modular = Self(rawValue: "modular")
   public static let moonshotai = Self(rawValue: "moonshotai")
   public static let morph = Self(rawValue: "morph")
-  public static let ncompass = Self(rawValue: "ncompass")
+  public static let nearAi = Self(rawValue: "near-ai")
   public static let nebius = Self(rawValue: "nebius")
   public static let nexAgi = Self(rawValue: "nex-agi")
   public static let nextbit = Self(rawValue: "nextbit")
@@ -1666,6 +1831,7 @@ public struct OpenRouterBYOKProviderSlug: RawRepresentable, Codable, Hashable, S
   public static let perplexity = Self(rawValue: "perplexity")
   public static let phala = Self(rawValue: "phala")
   public static let poolside = Self(rawValue: "poolside")
+  public static let primeintellect = Self(rawValue: "primeintellect")
   public static let quiver = Self(rawValue: "quiver")
   public static let recraft = Self(rawValue: "recraft")
   public static let reka = Self(rawValue: "reka")
@@ -1687,6 +1853,7 @@ public struct OpenRouterBYOKProviderSlug: RawRepresentable, Codable, Hashable, S
   public static let together = Self(rawValue: "together")
   public static let upstage = Self(rawValue: "upstage")
   public static let venice = Self(rawValue: "venice")
+  public static let voyageai = Self(rawValue: "voyageai")
   public static let wafer = Self(rawValue: "wafer")
   public static let wandb = Self(rawValue: "wandb")
   public static let wandbLegacy = Self(rawValue: "wandb-legacy")
@@ -2292,6 +2459,7 @@ public struct OpenRouterBaseMessagesResult: Codable, Sendable {
   public var container: OpenRouterAnthropicContainer
   public var content: [OpenRouterORAnthropicContentBlock]
   public var id: String
+  public var inputTransformations: [OpenRouterAnthropicInputTransformation]?
   public var model: String
   public var role: OpenRouterBaseMessagesResultRole
   public var stopDetails: OpenRouterAnthropicRefusalStopDetails
@@ -2310,11 +2478,13 @@ public struct OpenRouterBaseMessagesResult: Codable, Sendable {
     stopReason: OpenRouterORAnthropicStopReason,
     stopSequence: String,
     typeModel: OpenRouterBaseMessagesResultTypeModel,
-    usage: HyperProxyJSONValue
+    usage: HyperProxyJSONValue,
+    inputTransformations: [OpenRouterAnthropicInputTransformation]? = nil
   ) {
     self.container = container
     self.content = content
     self.id = id
+    self.inputTransformations = inputTransformations
     self.model = model
     self.role = role
     self.stopDetails = stopDetails
@@ -2328,6 +2498,7 @@ public struct OpenRouterBaseMessagesResult: Codable, Sendable {
     case container
     case content
     case id
+    case inputTransformations = "input_transformations"
     case model
     case role
     case stopDetails = "stop_details"
@@ -3064,22 +3235,18 @@ public struct OpenRouterBashServerTool: Codable, Sendable {
 public struct OpenRouterBashServerToolConfig: Codable, Sendable {
   public var engine: OpenRouterBashServerToolEngine?
   public var environment: OpenRouterBashServerToolEnvironment?
-  public var sleepAfterSeconds: OpenRouterSandboxSleepAfterSeconds?
 
   public init(
     engine: OpenRouterBashServerToolEngine? = nil,
-    environment: OpenRouterBashServerToolEnvironment? = nil,
-    sleepAfterSeconds: OpenRouterSandboxSleepAfterSeconds? = nil
+    environment: OpenRouterBashServerToolEnvironment? = nil
   ) {
     self.engine = engine
     self.environment = environment
-    self.sleepAfterSeconds = sleepAfterSeconds
   }
 
   enum CodingKeys: String, CodingKey {
     case engine
     case environment
-    case sleepAfterSeconds = "sleep_after_seconds"
   }
 }
 
@@ -3155,136 +3322,6 @@ public struct OpenRouterBooleanCapabilityTypeModel: RawRepresentable, Codable, H
 }
 
 public struct OpenRouterBulkAddWorkspaceMembersParameters: Codable, Sendable {
-  public var id: String
-
-  public init(
-    id: String
-  ) {
-    self.id = id
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case id
-  }
-}
-
-public struct OpenRouterBulkAddWorkspaceMembersRequest: Codable, Sendable {
-  public var userIds: [String]
-
-  public init(
-    userIds: [String]
-  ) {
-    self.userIds = userIds
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case userIds = "user_ids"
-  }
-}
-
-public struct OpenRouterBulkAddWorkspaceMembersResponse: Codable, Sendable {
-  public var addedCount: Int
-  public var data: [OpenRouterWorkspaceMember]
-
-  public init(
-    addedCount: Int,
-    data: [OpenRouterWorkspaceMember]
-  ) {
-    self.addedCount = addedCount
-    self.data = data
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case addedCount = "added_count"
-    case data
-  }
-}
-
-public struct OpenRouterBulkAssignKeysRequest: Codable, Sendable {
-  public var keyHashes: [String]
-
-  public init(
-    keyHashes: [String]
-  ) {
-    self.keyHashes = keyHashes
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case keyHashes = "key_hashes"
-  }
-}
-
-public struct OpenRouterBulkAssignKeysResponse: Codable, Sendable {
-  public var assignedCount: Int
-
-  public init(
-    assignedCount: Int
-  ) {
-    self.assignedCount = assignedCount
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case assignedCount = "assigned_count"
-  }
-}
-
-public struct OpenRouterBulkAssignKeysToGuardrailParameters: Codable, Sendable {
-  public var id: String
-
-  public init(
-    id: String
-  ) {
-    self.id = id
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case id
-  }
-}
-
-public struct OpenRouterBulkAssignMembersRequest: Codable, Sendable {
-  public var memberUserIds: [String]
-
-  public init(
-    memberUserIds: [String]
-  ) {
-    self.memberUserIds = memberUserIds
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case memberUserIds = "member_user_ids"
-  }
-}
-
-public struct OpenRouterBulkAssignMembersResponse: Codable, Sendable {
-  public var assignedCount: Int
-
-  public init(
-    assignedCount: Int
-  ) {
-    self.assignedCount = assignedCount
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case assignedCount = "assigned_count"
-  }
-}
-
-public struct OpenRouterBulkAssignMembersToGuardrailParameters: Codable, Sendable {
-  public var id: String
-
-  public init(
-    id: String
-  ) {
-    self.id = id
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case id
-  }
-}
-
-public struct OpenRouterBulkRemoveWorkspaceMembersParameters: Codable, Sendable {
   public var id: String
 
   public init(

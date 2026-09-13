@@ -4,6 +4,132 @@
 import Foundation
 import HyperProxyCore
 
+public struct FireworksGatewayLineItem: Codable, Sendable {
+  public var category: String?
+  public var groupingKey: String?
+  public var groupingValue: String?
+  public var quantity: Double?
+  public var secondaryGroupingKey: String?
+  public var secondaryGroupingValue: String?
+  public var series: FireworksGatewayGetAccountUsageRequestUsageType?
+  public var totalCost: FireworksTypeMoney?
+  public var unitAmount: FireworksTypeMoney?
+
+  public init(
+    category: String? = nil,
+    groupingKey: String? = nil,
+    groupingValue: String? = nil,
+    quantity: Double? = nil,
+    secondaryGroupingKey: String? = nil,
+    secondaryGroupingValue: String? = nil,
+    series: FireworksGatewayGetAccountUsageRequestUsageType? = nil,
+    totalCost: FireworksTypeMoney? = nil,
+    unitAmount: FireworksTypeMoney? = nil
+  ) {
+    self.category = category
+    self.groupingKey = groupingKey
+    self.groupingValue = groupingValue
+    self.quantity = quantity
+    self.secondaryGroupingKey = secondaryGroupingKey
+    self.secondaryGroupingValue = secondaryGroupingValue
+    self.series = series
+    self.totalCost = totalCost
+    self.unitAmount = unitAmount
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case category
+    case groupingKey
+    case groupingValue
+    case quantity
+    case secondaryGroupingKey
+    case secondaryGroupingValue
+    case series
+    case totalCost
+    case unitAmount
+  }
+}
+
+public struct FireworksGatewayLinearLRSchedule: Codable, Sendable {
+  public var decayRatio: Double?
+  public var minLrRatio: Double?
+
+  public init(
+    decayRatio: Double? = nil,
+    minLrRatio: Double? = nil
+  ) {
+    self.decayRatio = decayRatio
+    self.minLrRatio = minLrRatio
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case decayRatio
+    case minLrRatio
+  }
+}
+
+public struct FireworksGatewayListAccountServerlessRateLimitsResponse: Codable, Sendable {
+  public var rateLimits: [FireworksGatewayAccountRateLimit]?
+  public var series: [FireworksGatewayTimeSeries]?
+
+  public init(
+    rateLimits: [FireworksGatewayAccountRateLimit]? = nil,
+    series: [FireworksGatewayTimeSeries]? = nil
+  ) {
+    self.rateLimits = rateLimits
+    self.series = series
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case rateLimits
+    case series
+  }
+}
+
+public struct FireworksGatewayListAccountsResponse: Codable, Sendable {
+  public var accounts: [FireworksGatewayAccount]?
+  public var nextPageToken: String?
+  public var totalSize: Int?
+
+  public init(
+    accounts: [FireworksGatewayAccount]? = nil,
+    nextPageToken: String? = nil,
+    totalSize: Int? = nil
+  ) {
+    self.accounts = accounts
+    self.nextPageToken = nextPageToken
+    self.totalSize = totalSize
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case accounts
+    case nextPageToken
+    case totalSize
+  }
+}
+
+public struct FireworksGatewayListApiKeysResponse: Codable, Sendable {
+  public var apiKeys: [FireworksGatewayApiKey]?
+  public var nextPageToken: String?
+  public var totalSize: Int?
+
+  public init(
+    apiKeys: [FireworksGatewayApiKey]? = nil,
+    nextPageToken: String? = nil,
+    totalSize: Int? = nil
+  ) {
+    self.apiKeys = apiKeys
+    self.nextPageToken = nextPageToken
+    self.totalSize = totalSize
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case apiKeys
+    case nextPageToken
+    case totalSize
+  }
+}
+
 public struct FireworksGatewayListAuditLogsResponse: Codable, Sendable {
   public var auditLogs: [FireworksGatewayAuditLogEntry]?
   public var nextPageToken: String?
@@ -1972,6 +2098,7 @@ public struct FireworksGatewayRegion: RawRepresentable, Codable, Hashable, Senda
   public static let uSOREGON1 = Self(rawValue: "US_OREGON_1")
   public static let nABRITISHCOLUMBIA3 = Self(rawValue: "NA_BRITISHCOLUMBIA_3")
   public static let aPNEWSOUTHWALES1 = Self(rawValue: "AP_NEWSOUTHWALES_1")
+  public static let aPTAIWAN1 = Self(rawValue: "AP_TAIWAN_1")
 }
 
 public struct FireworksGatewayReinforcementFineTuningJob: Codable, Sendable {

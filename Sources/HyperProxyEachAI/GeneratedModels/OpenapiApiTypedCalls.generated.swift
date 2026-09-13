@@ -263,4 +263,16 @@ extension HyperProxyProviderService where Operation == EachAIOperation {
       .timeout(timeout)
     return try await call.decoded(EachAIAPIWorkflowExecutionsListResponse.self)
   }
+
+  public func listExecutionsV2(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> EachAIAPIListExecutionsV2Response {
+    let call = self.call(.listExecutionsV2)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(EachAIAPIListExecutionsV2Response.self)
+  }
 }

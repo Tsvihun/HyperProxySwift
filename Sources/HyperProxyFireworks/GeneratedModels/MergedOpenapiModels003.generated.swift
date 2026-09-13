@@ -4,6 +4,126 @@
 import Foundation
 import HyperProxyCore
 
+public struct FireworksGatewayAuditLogEntry: Codable, Sendable {
+  public var apiKeyId: String?
+  public var clientIp: String?
+  public var id: String?
+  public var isAdminAction: Bool?
+  public var message: String?
+  public var method: String?
+  public var payload: HyperProxyJSONValue?
+  public var principal: String?
+  public var resource: String?
+  public var status: FireworksGatewayStatus?
+  public var timestamp: String?
+  public var userAgent: String?
+
+  public init(
+    apiKeyId: String? = nil,
+    clientIp: String? = nil,
+    id: String? = nil,
+    isAdminAction: Bool? = nil,
+    message: String? = nil,
+    method: String? = nil,
+    payload: HyperProxyJSONValue? = nil,
+    principal: String? = nil,
+    resource: String? = nil,
+    status: FireworksGatewayStatus? = nil,
+    timestamp: String? = nil,
+    userAgent: String? = nil
+  ) {
+    self.apiKeyId = apiKeyId
+    self.clientIp = clientIp
+    self.id = id
+    self.isAdminAction = isAdminAction
+    self.message = message
+    self.method = method
+    self.payload = payload
+    self.principal = principal
+    self.resource = resource
+    self.status = status
+    self.timestamp = timestamp
+    self.userAgent = userAgent
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case apiKeyId
+    case clientIp
+    case id
+    case isAdminAction
+    case message
+    case method
+    case payload
+    case principal
+    case resource
+    case status
+    case timestamp
+    case userAgent
+  }
+}
+
+public struct FireworksGatewayAutoTune: Codable, Sendable {
+  public var longPrompt: Bool?
+
+  public init(
+    longPrompt: Bool? = nil
+  ) {
+    self.longPrompt = longPrompt
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case longPrompt
+  }
+}
+
+public struct FireworksGatewayAutoscalingPolicy: Codable, Sendable {
+  public var loadTargets: [String: Double]?
+  public var scaleDownWindow: String?
+  public var scaleToZeroWindow: String?
+  public var scaleUpWindow: String?
+  public var scalingSchedules: [String: FireworksGatewayScalingSchedule]?
+
+  public init(
+    loadTargets: [String: Double]? = nil,
+    scaleDownWindow: String? = nil,
+    scaleToZeroWindow: String? = nil,
+    scaleUpWindow: String? = nil,
+    scalingSchedules: [String: FireworksGatewayScalingSchedule]? = nil
+  ) {
+    self.loadTargets = loadTargets
+    self.scaleDownWindow = scaleDownWindow
+    self.scaleToZeroWindow = scaleToZeroWindow
+    self.scaleUpWindow = scaleUpWindow
+    self.scalingSchedules = scalingSchedules
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case loadTargets
+    case scaleDownWindow
+    case scaleToZeroWindow
+    case scaleUpWindow
+    case scalingSchedules
+  }
+}
+
+public struct FireworksGatewayAwsS3Config: Codable, Sendable {
+  public var credentialsSecret: String?
+  public var iamRoleArn: String?
+
+  public init(
+    credentialsSecret: String? = nil,
+    iamRoleArn: String? = nil
+  ) {
+    self.credentialsSecret = credentialsSecret
+    self.iamRoleArn = iamRoleArn
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case credentialsSecret
+    case iamRoleArn
+  }
+}
+
 public struct FireworksGatewayAwsS3ModelSource: Codable, Sendable {
   public var accessKeyId: String?
   public var accessSecret: String?
@@ -2883,6 +3003,22 @@ public struct FireworksGatewayGatewayLogTrainingSessionMetricsBody: Codable, Sen
   }
 }
 
+public struct FireworksGatewayGatewayMatchDeploymentShapeVersionsBody: Codable, Sendable {
+  public var createDeploymentRequest:
+    FireworksGatewayGatewayMatchDeploymentShapeVersionsBodyCreateDeploymentRequest
+
+  public init(
+    createDeploymentRequest:
+      FireworksGatewayGatewayMatchDeploymentShapeVersionsBodyCreateDeploymentRequest
+  ) {
+    self.createDeploymentRequest = createDeploymentRequest
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case createDeploymentRequest
+  }
+}
+
 public struct FireworksGatewayGatewayPrepareModelBody: Codable, Sendable {
   public var abort: Bool?
   public var acceleratorCount: Int?
@@ -3963,131 +4099,5 @@ public struct FireworksGatewayLedgerEntry: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case timestamp
     case value
-  }
-}
-
-public struct FireworksGatewayLineItem: Codable, Sendable {
-  public var category: String?
-  public var groupingKey: String?
-  public var groupingValue: String?
-  public var quantity: Double?
-  public var secondaryGroupingKey: String?
-  public var secondaryGroupingValue: String?
-  public var series: FireworksGatewayGetAccountUsageRequestUsageType?
-  public var totalCost: FireworksTypeMoney?
-  public var unitAmount: FireworksTypeMoney?
-
-  public init(
-    category: String? = nil,
-    groupingKey: String? = nil,
-    groupingValue: String? = nil,
-    quantity: Double? = nil,
-    secondaryGroupingKey: String? = nil,
-    secondaryGroupingValue: String? = nil,
-    series: FireworksGatewayGetAccountUsageRequestUsageType? = nil,
-    totalCost: FireworksTypeMoney? = nil,
-    unitAmount: FireworksTypeMoney? = nil
-  ) {
-    self.category = category
-    self.groupingKey = groupingKey
-    self.groupingValue = groupingValue
-    self.quantity = quantity
-    self.secondaryGroupingKey = secondaryGroupingKey
-    self.secondaryGroupingValue = secondaryGroupingValue
-    self.series = series
-    self.totalCost = totalCost
-    self.unitAmount = unitAmount
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case category
-    case groupingKey
-    case groupingValue
-    case quantity
-    case secondaryGroupingKey
-    case secondaryGroupingValue
-    case series
-    case totalCost
-    case unitAmount
-  }
-}
-
-public struct FireworksGatewayLinearLRSchedule: Codable, Sendable {
-  public var decayRatio: Double?
-  public var minLrRatio: Double?
-
-  public init(
-    decayRatio: Double? = nil,
-    minLrRatio: Double? = nil
-  ) {
-    self.decayRatio = decayRatio
-    self.minLrRatio = minLrRatio
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case decayRatio
-    case minLrRatio
-  }
-}
-
-public struct FireworksGatewayListAccountServerlessRateLimitsResponse: Codable, Sendable {
-  public var rateLimits: [FireworksGatewayAccountRateLimit]?
-  public var series: [FireworksGatewayTimeSeries]?
-
-  public init(
-    rateLimits: [FireworksGatewayAccountRateLimit]? = nil,
-    series: [FireworksGatewayTimeSeries]? = nil
-  ) {
-    self.rateLimits = rateLimits
-    self.series = series
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case rateLimits
-    case series
-  }
-}
-
-public struct FireworksGatewayListAccountsResponse: Codable, Sendable {
-  public var accounts: [FireworksGatewayAccount]?
-  public var nextPageToken: String?
-  public var totalSize: Int?
-
-  public init(
-    accounts: [FireworksGatewayAccount]? = nil,
-    nextPageToken: String? = nil,
-    totalSize: Int? = nil
-  ) {
-    self.accounts = accounts
-    self.nextPageToken = nextPageToken
-    self.totalSize = totalSize
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case accounts
-    case nextPageToken
-    case totalSize
-  }
-}
-
-public struct FireworksGatewayListApiKeysResponse: Codable, Sendable {
-  public var apiKeys: [FireworksGatewayApiKey]?
-  public var nextPageToken: String?
-  public var totalSize: Int?
-
-  public init(
-    apiKeys: [FireworksGatewayApiKey]? = nil,
-    nextPageToken: String? = nil,
-    totalSize: Int? = nil
-  ) {
-    self.apiKeys = apiKeys
-    self.nextPageToken = nextPageToken
-    self.totalSize = totalSize
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case apiKeys
-    case nextPageToken
-    case totalSize
   }
 }

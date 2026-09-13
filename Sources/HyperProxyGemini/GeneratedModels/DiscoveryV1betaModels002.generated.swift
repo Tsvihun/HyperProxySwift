@@ -4,6 +4,20 @@
 import Foundation
 import HyperProxyCore
 
+public struct GeminiTextPrompt: Codable, Sendable {
+  public var text: String?
+
+  public init(
+    text: String? = nil
+  ) {
+    self.text = text
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case text
+  }
+}
+
 public struct GeminiTextResponseFormat: Codable, Sendable {
   public var mimeType: GeminiTextResponseFormatMimeType?
   public var schema: HyperProxyJSONValue?
@@ -765,5 +779,27 @@ public struct GeminiWhiteSpaceConfig: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case maxOverlapTokens
     case maxTokensPerChunk
+  }
+}
+
+public struct GeminiWordInfo: Codable, Sendable {
+  public var endOffset: String?
+  public var startOffset: String?
+  public var word: String?
+
+  public init(
+    endOffset: String? = nil,
+    startOffset: String? = nil,
+    word: String? = nil
+  ) {
+    self.endOffset = endOffset
+    self.startOffset = startOffset
+    self.word = word
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case endOffset
+    case startOffset
+    case word
   }
 }

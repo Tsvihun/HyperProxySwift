@@ -140,6 +140,10 @@ public enum ElevenLabsOperation: String, HyperProxyProviderOperation {
   case createAgentDraftRoute = "create.agent.draft.route"
   /// `POST v1/convai/agents/{agent_id}/duplicate`
   case duplicateAgentRoute = "duplicate.agent.route"
+  /// `DELETE v1/convai/agents/{agent_id}/hold-audio`
+  case deleteAgentHoldAudioRoute = "delete.agent.hold.audio.route"
+  /// `POST v1/convai/agents/{agent_id}/hold-audio`
+  case postAgentHoldAudioRoute = "post.agent.hold.audio.route"
   /// `POST v1/convai/agents/{agent_id}/knowledge-base/rag-query`
   case queryAgentKnowledgeBaseRagRoute = "query.agent.knowledge.base.rag.route"
   /// `GET v1/convai/agents/{agent_id}/link`
@@ -384,6 +388,8 @@ public enum ElevenLabsOperation: String, HyperProxyProviderOperation {
   case getToolDependentAgentsRoute = "get.tool.dependent.agents.route"
   /// `GET v1/convai/tools/{tool_id}/executions`
   case getToolExecutionsRoute = "get.tool.executions.route"
+  /// `GET v1/convai/triage-tickets`
+  case listWorkspaceConversationTicketsRoute = "list.workspace.conversation.tickets.route"
   /// `POST v1/convai/triage-tickets`
   case createAgentConversationTicketRoute = "create.agent.conversation.ticket.route"
   /// `DELETE v1/convai/triage-tickets/{agentqa_ticket_id}`
@@ -1013,6 +1019,14 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
   public var duplicateAgentRoute: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.duplicateAgentRoute)
   }
+  /// `DELETE v1/convai/agents/{agent_id}/hold-audio`
+  public var deleteAgentHoldAudioRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.deleteAgentHoldAudioRoute)
+  }
+  /// `POST v1/convai/agents/{agent_id}/hold-audio`
+  public var postAgentHoldAudioRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.postAgentHoldAudioRoute)
+  }
   /// `POST v1/convai/agents/{agent_id}/knowledge-base/rag-query`
   public var queryAgentKnowledgeBaseRagRoute: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.queryAgentKnowledgeBaseRagRoute)
@@ -1500,6 +1514,10 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
   /// `GET v1/convai/tools/{tool_id}/executions`
   public var getToolExecutionsRoute: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.getToolExecutionsRoute)
+  }
+  /// `GET v1/convai/triage-tickets`
+  public var listWorkspaceConversationTicketsRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.listWorkspaceConversationTicketsRoute)
   }
   /// `POST v1/convai/triage-tickets`
   public var createAgentConversationTicketRoute: HyperProxyProviderCall<ElevenLabsOperation> {

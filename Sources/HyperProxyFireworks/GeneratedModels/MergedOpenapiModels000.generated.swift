@@ -3090,6 +3090,20 @@ public struct FireworksCompletionStreamResponse: Codable, Sendable {
   }
 }
 
+public struct FireworksCompletionTokensDetails: Codable, Sendable {
+  public var reasoningTokens: Int?
+
+  public init(
+    reasoningTokens: Int? = nil
+  ) {
+    self.reasoningTokens = reasoningTokens
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case reasoningTokens = "reasoning_tokens"
+  }
+}
+
 public struct FireworksCreateResponse: Codable, Sendable {
   public var input: HyperProxyJSONValue
   public var instructions: String?
@@ -3736,23 +3750,5 @@ public struct FireworksGatewayCreateDatasetParameters: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case accountId = "account_id"
-  }
-}
-
-public struct FireworksGatewayCreateDeployedModelParameters: Codable, Sendable {
-  public var accountId: String
-  public var replaceMergedAddon: Bool?
-
-  public init(
-    accountId: String,
-    replaceMergedAddon: Bool? = nil
-  ) {
-    self.accountId = accountId
-    self.replaceMergedAddon = replaceMergedAddon
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case accountId = "account_id"
-    case replaceMergedAddon
   }
 }

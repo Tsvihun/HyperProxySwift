@@ -50,7 +50,7 @@ public struct ElevenLabsBodyHandleAnOutboundCallViaExotelV1ConvaiExotelOutboundC
   public var agentPhoneNumberId: String
   public var conversationInitiationClientData:
     ElevenLabsConversationInitiationClientDataRequestInput?
-  public var telephonyCallConfig: ElevenLabsTelephonyCallConfig?
+  public var telephonyCallConfig: ElevenLabsTelephonyCallConfigInput?
   public var toNumber: String
 
   public init(
@@ -58,7 +58,7 @@ public struct ElevenLabsBodyHandleAnOutboundCallViaExotelV1ConvaiExotelOutboundC
     agentPhoneNumberId: String,
     toNumber: String,
     conversationInitiationClientData: ElevenLabsConversationInitiationClientDataRequestInput? = nil,
-    telephonyCallConfig: ElevenLabsTelephonyCallConfig? = nil
+    telephonyCallConfig: ElevenLabsTelephonyCallConfigInput? = nil
   ) {
     self.agentId = agentId
     self.agentPhoneNumberId = agentPhoneNumberId
@@ -83,7 +83,7 @@ public struct ElevenLabsBodyHandleAnOutboundCallViaSIPTrunkV1ConvaiSipTrunkOutbo
   public var agentPhoneNumberId: String
   public var conversationInitiationClientData:
     ElevenLabsConversationInitiationClientDataRequestInput?
-  public var telephonyCallConfig: ElevenLabsTelephonyCallConfig?
+  public var telephonyCallConfig: ElevenLabsTelephonyCallConfigInput?
   public var toNumber: String
 
   public init(
@@ -91,7 +91,7 @@ public struct ElevenLabsBodyHandleAnOutboundCallViaSIPTrunkV1ConvaiSipTrunkOutbo
     agentPhoneNumberId: String,
     toNumber: String,
     conversationInitiationClientData: ElevenLabsConversationInitiationClientDataRequestInput? = nil,
-    telephonyCallConfig: ElevenLabsTelephonyCallConfig? = nil
+    telephonyCallConfig: ElevenLabsTelephonyCallConfigInput? = nil
   ) {
     self.agentId = agentId
     self.agentPhoneNumberId = agentPhoneNumberId
@@ -117,7 +117,7 @@ public struct ElevenLabsBodyHandleAnOutboundCallViaTwilioV1ConvaiTwilioOutboundC
   public var callRecordingEnabled: Bool?
   public var conversationInitiationClientData:
     ElevenLabsConversationInitiationClientDataRequestInput?
-  public var telephonyCallConfig: ElevenLabsTelephonyCallConfig?
+  public var telephonyCallConfig: ElevenLabsTelephonyCallConfigInput?
   public var toNumber: String
 
   public init(
@@ -126,7 +126,7 @@ public struct ElevenLabsBodyHandleAnOutboundCallViaTwilioV1ConvaiTwilioOutboundC
     toNumber: String,
     callRecordingEnabled: Bool? = nil,
     conversationInitiationClientData: ElevenLabsConversationInitiationClientDataRequestInput? = nil,
-    telephonyCallConfig: ElevenLabsTelephonyCallConfig? = nil
+    telephonyCallConfig: ElevenLabsTelephonyCallConfigInput? = nil
   ) {
     self.agentId = agentId
     self.agentPhoneNumberId = agentPhoneNumberId
@@ -383,6 +383,21 @@ public struct ElevenLabsBodyPostAgentAvatarV1ConvaiAgentsAgentIdAvatarPost: Coda
 
   enum CodingKeys: String, CodingKey {
     case avatarFile = "avatar_file"
+  }
+}
+
+public struct ElevenLabsBodyPostAgentHoldAudioV1ConvaiAgentsAgentIdHoldAudioPost: Codable, Sendable
+{
+  public var holdAudioFile: String
+
+  public init(
+    holdAudioFile: String
+  ) {
+    self.holdAudioFile = holdAudioFile
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case holdAudioFile = "hold_audio_file"
   }
 }
 
@@ -792,7 +807,7 @@ public struct ElevenLabsBodySpeechToTextV1SpeechToTextPost: Codable, Sendable {
   public var fileFormat: ElevenLabsBodySpeechToTextV1SpeechToTextPostFileFormat?
   public var keyterms: [String]?
   public var languageCode: String?
-  public var modelId: ElevenLabsBodySpeechToTextV1SpeechToTextPostModelId
+  public var modelId: String
   public var multichannelOutputStyle:
     ElevenLabsBodySpeechToTextV1SpeechToTextPostMultichannelOutputStyle?
   public var noVerbatim: Bool?
@@ -810,7 +825,7 @@ public struct ElevenLabsBodySpeechToTextV1SpeechToTextPost: Codable, Sendable {
   public var webhookMetadata: HyperProxyJSONValue?
 
   public init(
-    modelId: ElevenLabsBodySpeechToTextV1SpeechToTextPostModelId,
+    modelId: String,
     additionalFormats: ElevenLabsAdditionalFormats? = nil,
     cloudStorageUrl: String? = nil,
     detectSpeakerRoles: Bool? = nil,
@@ -1096,7 +1111,7 @@ public struct ElevenLabsBodySubmitABatchCallRequestV1ConvaiBatchCallingSubmitPos
   public var recipients: [ElevenLabsOutboundCallRecipient]
   public var scheduledTimeUnix: Int?
   public var targetConcurrencyLimit: Int?
-  public var telephonyCallConfig: ElevenLabsTelephonyCallConfig?
+  public var telephonyCallConfig: ElevenLabsTelephonyCallConfigInput?
   public var timezone: String?
   public var whatsappParams: ElevenLabsBatchCallWhatsAppParams?
 
@@ -1109,7 +1124,7 @@ public struct ElevenLabsBodySubmitABatchCallRequestV1ConvaiBatchCallingSubmitPos
     environment: String? = nil,
     scheduledTimeUnix: Int? = nil,
     targetConcurrencyLimit: Int? = nil,
-    telephonyCallConfig: ElevenLabsTelephonyCallConfig? = nil,
+    telephonyCallConfig: ElevenLabsTelephonyCallConfigInput? = nil,
     timezone: String? = nil,
     whatsappParams: ElevenLabsBatchCallWhatsAppParams? = nil
   ) {
@@ -4430,24 +4445,4 @@ public struct ElevenLabsColumnFilterOperation: RawRepresentable, Codable, Hashab
   public static let gt = Self(rawValue: "gt")
   public static let eq = Self(rawValue: "eq")
   public static let neq = Self(rawValue: "neq")
-}
-
-public struct ElevenLabsColumnUnit: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let ms = Self(rawValue: "ms")
-  public static let s = Self(rawValue: "s")
-  public static let min = Self(rawValue: "min")
-  public static let duration = Self(rawValue: "duration")
-  public static let credits = Self(rawValue: "credits")
-  public static let usd = Self(rawValue: "usd")
-  public static let eur = Self(rawValue: "eur")
-  public static let inr = Self(rawValue: "inr")
-  public static let pln = Self(rawValue: "pln")
-  public static let ratio = Self(rawValue: "ratio")
-  public static let rating = Self(rawValue: "rating")
 }

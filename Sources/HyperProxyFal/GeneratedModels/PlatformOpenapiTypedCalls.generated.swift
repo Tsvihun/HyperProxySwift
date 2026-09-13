@@ -246,6 +246,62 @@ extension HyperProxyProviderService where Operation == FalOperation {
     return try await call.decoded(FalUnfavoriteAssetCollectionResponse.self)
   }
 
+  public func listAssetEntities(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> FalListAssetEntitiesResponse {
+    let call = self.call(.listAssetEntities)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(FalListAssetEntitiesResponse.self)
+  }
+
+  public func createAssetEntity(
+    _ body: FalCreateAssetEntityRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> FalCreateAssetEntityResponse {
+    let call = self.call(.createAssetEntity)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(FalCreateAssetEntityResponse.self)
+  }
+
+  public func getAssetEntity(
+    entityId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> FalGetAssetEntityResponse {
+    let call = self.call(.getAssetEntity)
+      .path("entity_id", entityId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(FalGetAssetEntityResponse.self)
+  }
+
+  public func updateAssetEntity(
+    _ body: FalUpdateAssetEntityRequest,
+    entityId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> FalUpdateAssetEntityResponse {
+    let call = self.call(.updateAssetEntity)
+      .path("entity_id", entityId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(FalUpdateAssetEntityResponse.self)
+  }
+
   public func favoriteAsset(
     _ body: FalFavoriteAssetRequest,
     query: [URLQueryItem] = [],
@@ -412,20 +468,6 @@ extension HyperProxyProviderService where Operation == FalOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(FalListComputeInstancesResponse.self)
-  }
-
-  public func createComputeInstance(
-    _ body: FalCreateComputeInstanceRequest,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> FalCreateComputeInstanceResponse {
-    let call = self.call(.createComputeInstance)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(FalCreateComputeInstanceResponse.self)
   }
 
   public func getComputeInstance(

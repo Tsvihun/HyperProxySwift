@@ -4,6 +4,189 @@
 import Foundation
 import HyperProxyCore
 
+public struct ElevenLabsFocusGuardrail: Codable, Sendable {
+  public var isEnabled: Bool?
+
+  public init(
+    isEnabled: Bool? = nil
+  ) {
+    self.isEnabled = isEnabled
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case isEnabled = "is_enabled"
+  }
+}
+
+public struct ElevenLabsForcedAlignmentCharacterResponseModel: Codable, Sendable {
+  public var end: Double
+  public var start: Double
+  public var text: String
+
+  public init(
+    end: Double,
+    start: Double,
+    text: String
+  ) {
+    self.end = end
+    self.start = start
+    self.text = text
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case end
+    case start
+    case text
+  }
+}
+
+public struct ElevenLabsForcedAlignmentParameters: Codable, Sendable {
+  public var xiApiKey: String?
+
+  public init(
+    xiApiKey: String? = nil
+  ) {
+    self.xiApiKey = xiApiKey
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case xiApiKey = "xi-api-key"
+  }
+}
+
+public struct ElevenLabsForcedAlignmentResponseModel: Codable, Sendable {
+  public var characters: [ElevenLabsForcedAlignmentCharacterResponseModel]
+  public var loss: Double
+  public var words: [ElevenLabsForcedAlignmentWordResponseModel]
+
+  public init(
+    characters: [ElevenLabsForcedAlignmentCharacterResponseModel],
+    loss: Double,
+    words: [ElevenLabsForcedAlignmentWordResponseModel]
+  ) {
+    self.characters = characters
+    self.loss = loss
+    self.words = words
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case characters
+    case loss
+    case words
+  }
+}
+
+public struct ElevenLabsForcedAlignmentWordResponseModel: Codable, Sendable {
+  public var end: Double
+  public var loss: Double
+  public var start: Double
+  public var text: String
+
+  public init(
+    end: Double,
+    loss: Double,
+    start: Double,
+    text: String
+  ) {
+    self.end = end
+    self.loss = loss
+    self.start = start
+    self.text = text
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case end
+    case loss
+    case start
+    case text
+  }
+}
+
+public struct ElevenLabsFrustratedConversationRef: Codable, Sendable {
+  public var agentId: String
+  public var conversationId: String
+  public var overallFrustrationScore: Double
+  public var overallLabel: ElevenLabsFrustratedConversationRefOverallLabel
+  public var overallSentimentScore: Double
+  public var startTimeUnixSecs: Int
+
+  public init(
+    agentId: String,
+    conversationId: String,
+    overallFrustrationScore: Double,
+    overallLabel: ElevenLabsFrustratedConversationRefOverallLabel,
+    overallSentimentScore: Double,
+    startTimeUnixSecs: Int
+  ) {
+    self.agentId = agentId
+    self.conversationId = conversationId
+    self.overallFrustrationScore = overallFrustrationScore
+    self.overallLabel = overallLabel
+    self.overallSentimentScore = overallSentimentScore
+    self.startTimeUnixSecs = startTimeUnixSecs
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case agentId = "agent_id"
+    case conversationId = "conversation_id"
+    case overallFrustrationScore = "overall_frustration_score"
+    case overallLabel = "overall_label"
+    case overallSentimentScore = "overall_sentiment_score"
+    case startTimeUnixSecs = "start_time_unix_secs"
+  }
+}
+
+public struct ElevenLabsFrustratedConversationRefOverallLabel: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let positive = Self(rawValue: "positive")
+  public static let neutral = Self(rawValue: "neutral")
+  public static let negative = Self(rawValue: "negative")
+}
+
+public struct ElevenLabsGPTImage15RequestAspectRatio: RawRepresentable, Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let value11 = Self(rawValue: "1:1")
+  public static let value32 = Self(rawValue: "3:2")
+  public static let value23 = Self(rawValue: "2:3")
+}
+
+public struct ElevenLabsGPTImage15RequestBackground: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let transparent = Self(rawValue: "transparent")
+  public static let opaque = Self(rawValue: "opaque")
+  public static let auto = Self(rawValue: "auto")
+}
+
+public struct ElevenLabsGPTImage15RequestQuality: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let low = Self(rawValue: "low")
+  public static let medium = Self(rawValue: "medium")
+  public static let high = Self(rawValue: "high")
+}
+
 public struct ElevenLabsGPTImage1Request: Codable, Sendable {
   public var aspectRatio: ElevenLabsGPTImage1RequestAspectRatio?
   public var background: ElevenLabsGPTImage1RequestBackground?
@@ -929,11 +1112,13 @@ public struct ElevenLabsGetAgentResponseModel: Codable, Sendable {
   public var agentId: String
   public var branchId: String?
   public var conversationConfig: ElevenLabsConversationalConfigAPIModelOutput
+  public var defaultHoldAudioUrl: String?
   public var mainBranchId: String?
   public var metadata: ElevenLabsAgentMetadataResponseModel
   public var name: String
   public var phoneNumbers: [HyperProxyJSONValue]?
   public var platformSettings: ElevenLabsAgentPlatformSettingsResponseModel?
+  public var procedures: [String: ElevenLabsProcedureRefResponseModel]?
   public var tags: [String]?
   public var versionId: String?
   public var whatsappAccounts: [ElevenLabsGetWhatsAppAccountResponse]?
@@ -946,9 +1131,11 @@ public struct ElevenLabsGetAgentResponseModel: Codable, Sendable {
     name: String,
     accessInfo: ElevenLabsResourceAccessInfo? = nil,
     branchId: String? = nil,
+    defaultHoldAudioUrl: String? = nil,
     mainBranchId: String? = nil,
     phoneNumbers: [HyperProxyJSONValue]? = nil,
     platformSettings: ElevenLabsAgentPlatformSettingsResponseModel? = nil,
+    procedures: [String: ElevenLabsProcedureRefResponseModel]? = nil,
     tags: [String]? = nil,
     versionId: String? = nil,
     whatsappAccounts: [ElevenLabsGetWhatsAppAccountResponse]? = nil,
@@ -958,11 +1145,13 @@ public struct ElevenLabsGetAgentResponseModel: Codable, Sendable {
     self.agentId = agentId
     self.branchId = branchId
     self.conversationConfig = conversationConfig
+    self.defaultHoldAudioUrl = defaultHoldAudioUrl
     self.mainBranchId = mainBranchId
     self.metadata = metadata
     self.name = name
     self.phoneNumbers = phoneNumbers
     self.platformSettings = platformSettings
+    self.procedures = procedures
     self.tags = tags
     self.versionId = versionId
     self.whatsappAccounts = whatsappAccounts
@@ -974,11 +1163,13 @@ public struct ElevenLabsGetAgentResponseModel: Codable, Sendable {
     case agentId = "agent_id"
     case branchId = "branch_id"
     case conversationConfig = "conversation_config"
+    case defaultHoldAudioUrl = "default_hold_audio_url"
     case mainBranchId = "main_branch_id"
     case metadata
     case name
     case phoneNumbers = "phone_numbers"
     case platformSettings = "platform_settings"
+    case procedures
     case tags
     case versionId = "version_id"
     case whatsappAccounts = "whatsapp_accounts"
@@ -1808,6 +1999,7 @@ public struct ElevenLabsGetConversationHistoriesRouteParameters: Codable, Sendab
   public var customGuardrailNames: [String]?
   public var dataCollectionIds: [String]?
   public var dataCollectionParams: [String]?
+  public var dynamicVariableParams: [String]?
   public var evaluationCriteriaIds: [String]?
   public var evaluationParams: [String]?
   public var excludeStatuses:
@@ -1852,6 +2044,7 @@ public struct ElevenLabsGetConversationHistoriesRouteParameters: Codable, Sendab
     customGuardrailNames: [String]? = nil,
     dataCollectionIds: [String]? = nil,
     dataCollectionParams: [String]? = nil,
+    dynamicVariableParams: [String]? = nil,
     evaluationCriteriaIds: [String]? = nil,
     evaluationParams: [String]? = nil,
     excludeStatuses: [ElevenLabsGetConversationHistoriesRouteParametersExcludeStatusesAnyOf1Item]? =
@@ -1895,6 +2088,7 @@ public struct ElevenLabsGetConversationHistoriesRouteParameters: Codable, Sendab
     self.customGuardrailNames = customGuardrailNames
     self.dataCollectionIds = dataCollectionIds
     self.dataCollectionParams = dataCollectionParams
+    self.dynamicVariableParams = dynamicVariableParams
     self.evaluationCriteriaIds = evaluationCriteriaIds
     self.evaluationParams = evaluationParams
     self.excludeStatuses = excludeStatuses
@@ -1939,6 +2133,7 @@ public struct ElevenLabsGetConversationHistoriesRouteParameters: Codable, Sendab
     case customGuardrailNames = "custom_guardrail_names"
     case dataCollectionIds = "data_collection_ids"
     case dataCollectionParams = "data_collection_params"
+    case dynamicVariableParams = "dynamic_variable_params"
     case evaluationCriteriaIds = "evaluation_criteria_ids"
     case evaluationParams = "evaluation_params"
     case excludeStatuses = "exclude_statuses"
@@ -2148,6 +2343,7 @@ public struct ElevenLabsGetConversationSignedLinkParameters: Codable, Sendable {
   public var debugEventsRequest: Bool?
   public var environment: String?
   public var includeConversationId: Bool?
+  public var versionId: String?
   public var xiApiKey: String?
 
   public init(
@@ -2156,6 +2352,7 @@ public struct ElevenLabsGetConversationSignedLinkParameters: Codable, Sendable {
     debugEventsRequest: Bool? = nil,
     environment: String? = nil,
     includeConversationId: Bool? = nil,
+    versionId: String? = nil,
     xiApiKey: String? = nil
   ) {
     self.agentId = agentId
@@ -2163,6 +2360,7 @@ public struct ElevenLabsGetConversationSignedLinkParameters: Codable, Sendable {
     self.debugEventsRequest = debugEventsRequest
     self.environment = environment
     self.includeConversationId = includeConversationId
+    self.versionId = versionId
     self.xiApiKey = xiApiKey
   }
 
@@ -2172,6 +2370,7 @@ public struct ElevenLabsGetConversationSignedLinkParameters: Codable, Sendable {
     case debugEventsRequest = "debug_events_request"
     case environment
     case includeConversationId = "include_conversation_id"
+    case versionId = "version_id"
     case xiApiKey = "xi-api-key"
   }
 }
@@ -3765,6 +3964,7 @@ public struct ElevenLabsGetLivekitTokenParameters: Codable, Sendable {
   public var debugEventsRequest: Bool?
   public var environment: String?
   public var participantName: String?
+  public var versionId: String?
   public var xiApiKey: String?
 
   public init(
@@ -3773,6 +3973,7 @@ public struct ElevenLabsGetLivekitTokenParameters: Codable, Sendable {
     debugEventsRequest: Bool? = nil,
     environment: String? = nil,
     participantName: String? = nil,
+    versionId: String? = nil,
     xiApiKey: String? = nil
   ) {
     self.agentId = agentId
@@ -3780,6 +3981,7 @@ public struct ElevenLabsGetLivekitTokenParameters: Codable, Sendable {
     self.debugEventsRequest = debugEventsRequest
     self.environment = environment
     self.participantName = participantName
+    self.versionId = versionId
     self.xiApiKey = xiApiKey
   }
 
@@ -3789,190 +3991,7 @@ public struct ElevenLabsGetLivekitTokenParameters: Codable, Sendable {
     case debugEventsRequest = "debug_events_request"
     case environment
     case participantName = "participant_name"
+    case versionId = "version_id"
     case xiApiKey = "xi-api-key"
-  }
-}
-
-public struct ElevenLabsGetMcpRouteParameters: Codable, Sendable {
-  public var mcpServerId: String
-  public var xiApiKey: String?
-
-  public init(
-    mcpServerId: String,
-    xiApiKey: String? = nil
-  ) {
-    self.mcpServerId = mcpServerId
-    self.xiApiKey = xiApiKey
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case mcpServerId = "mcp_server_id"
-    case xiApiKey = "xi-api-key"
-  }
-}
-
-public struct ElevenLabsGetMcpToolConfigOverrideRouteParameters: Codable, Sendable {
-  public var mcpServerId: String
-  public var toolName: String
-  public var xiApiKey: String?
-
-  public init(
-    mcpServerId: String,
-    toolName: String,
-    xiApiKey: String? = nil
-  ) {
-    self.mcpServerId = mcpServerId
-    self.toolName = toolName
-    self.xiApiKey = xiApiKey
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case mcpServerId = "mcp_server_id"
-    case toolName = "tool_name"
-    case xiApiKey = "xi-api-key"
-  }
-}
-
-public struct ElevenLabsGetModelsParameters: Codable, Sendable {
-  public var xiApiKey: String?
-
-  public init(
-    xiApiKey: String? = nil
-  ) {
-    self.xiApiKey = xiApiKey
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case xiApiKey = "xi-api-key"
-  }
-}
-
-public typealias ElevenLabsGetModelsResponse = [ElevenLabsModelResponseModel]
-
-public struct ElevenLabsGetOrCreateRAGIndexRequestModel: Codable, Sendable {
-  public var createIfMissing: Bool
-  public var documentId: String
-  public var model: ElevenLabsEmbeddingModelEnum
-
-  public init(
-    createIfMissing: Bool,
-    documentId: String,
-    model: ElevenLabsEmbeddingModelEnum
-  ) {
-    self.createIfMissing = createIfMissing
-    self.documentId = documentId
-    self.model = model
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case createIfMissing = "create_if_missing"
-    case documentId = "document_id"
-    case model
-  }
-}
-
-public struct ElevenLabsGetOrCreateRagIndexesParameters: Codable, Sendable {
-  public var xiApiKey: String?
-
-  public init(
-    xiApiKey: String? = nil
-  ) {
-    self.xiApiKey = xiApiKey
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case xiApiKey = "xi-api-key"
-  }
-}
-
-public typealias ElevenLabsGetOrCreateRagIndexesResponse = [String: HyperProxyJSONValue]
-
-public struct ElevenLabsGetOrderByConfirmationNumberParams: Codable, Sendable {
-  public var smbToolType: String?
-
-  public init(
-    smbToolType: String? = nil
-  ) {
-    self.smbToolType = smbToolType
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case smbToolType = "smb_tool_type"
-  }
-}
-
-public struct ElevenLabsGetPhoneNumberExotelResponseModel: Codable, Sendable {
-  public var assignedAgent: ElevenLabsPhoneNumberAgentInfo?
-  public var label: String
-  public var phoneNumber: String
-  public var phoneNumberId: String
-  public var provider: String?
-  public var supportsInbound: Bool?
-  public var supportsOutbound: Bool?
-
-  public init(
-    label: String,
-    phoneNumber: String,
-    phoneNumberId: String,
-    assignedAgent: ElevenLabsPhoneNumberAgentInfo? = nil,
-    provider: String? = nil,
-    supportsInbound: Bool? = nil,
-    supportsOutbound: Bool? = nil
-  ) {
-    self.assignedAgent = assignedAgent
-    self.label = label
-    self.phoneNumber = phoneNumber
-    self.phoneNumberId = phoneNumberId
-    self.provider = provider
-    self.supportsInbound = supportsInbound
-    self.supportsOutbound = supportsOutbound
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case assignedAgent = "assigned_agent"
-    case label
-    case phoneNumber = "phone_number"
-    case phoneNumberId = "phone_number_id"
-    case provider
-    case supportsInbound = "supports_inbound"
-    case supportsOutbound = "supports_outbound"
-  }
-}
-
-public struct ElevenLabsGetPhoneNumberInboundSIPTrunkConfigResponseModel: Codable, Sendable {
-  public var allowedAddresses: [String]
-  public var allowedNumbers: [String]?
-  public var attributesToHeaders: [String: String]?
-  public var hasAuthCredentials: Bool
-  public var mediaEncryption: ElevenLabsSIPMediaEncryptionEnum
-  public var remoteDomains: [String]?
-  public var username: String?
-
-  public init(
-    allowedAddresses: [String],
-    allowedNumbers: [String]?,
-    hasAuthCredentials: Bool,
-    mediaEncryption: ElevenLabsSIPMediaEncryptionEnum,
-    attributesToHeaders: [String: String]? = nil,
-    remoteDomains: [String]? = nil,
-    username: String? = nil
-  ) {
-    self.allowedAddresses = allowedAddresses
-    self.allowedNumbers = allowedNumbers
-    self.attributesToHeaders = attributesToHeaders
-    self.hasAuthCredentials = hasAuthCredentials
-    self.mediaEncryption = mediaEncryption
-    self.remoteDomains = remoteDomains
-    self.username = username
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case allowedAddresses = "allowed_addresses"
-    case allowedNumbers = "allowed_numbers"
-    case attributesToHeaders = "attributes_to_headers"
-    case hasAuthCredentials = "has_auth_credentials"
-    case mediaEncryption = "media_encryption"
-    case remoteDomains = "remote_domains"
-    case username
   }
 }

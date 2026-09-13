@@ -4,6 +4,24 @@
 import Foundation
 import HyperProxyCore
 
+public struct FireworksGatewayCreateDeployedModelParameters: Codable, Sendable {
+  public var accountId: String
+  public var replaceMergedAddon: Bool?
+
+  public init(
+    accountId: String,
+    replaceMergedAddon: Bool? = nil
+  ) {
+    self.accountId = accountId
+    self.replaceMergedAddon = replaceMergedAddon
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case accountId = "account_id"
+    case replaceMergedAddon
+  }
+}
+
 public struct FireworksGatewayCreateDeploymentParameters: Codable, Sendable {
   public var accountId: String
   public var deploymentId: String?
@@ -1042,6 +1060,46 @@ public struct FireworksGatewayFinalizeTrainingRunMaterializationParameters: Coda
   enum CodingKeys: String, CodingKey {
     case accountId = "account_id"
     case trainingRunId = "training_run_id"
+  }
+}
+
+public struct FireworksGatewayGatewayMatchDeploymentShapeVersionsBodyCreateDeploymentRequest:
+  Codable, Sendable
+{
+  public var deployment:
+    FireworksGatewayGatewayMatchDeploymentShapeVersionsBodyCreateDeploymentRequestDeployment?
+
+  public init(
+    deployment:
+      FireworksGatewayGatewayMatchDeploymentShapeVersionsBodyCreateDeploymentRequestDeployment? =
+      nil
+  ) {
+    self.deployment = deployment
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case deployment
+  }
+}
+
+public struct
+  FireworksGatewayGatewayMatchDeploymentShapeVersionsBodyCreateDeploymentRequestDeployment: Codable,
+    Sendable
+{
+  public var baseModel: String?
+  public var enableAddons: Bool?
+
+  public init(
+    baseModel: String? = nil,
+    enableAddons: Bool? = nil
+  ) {
+    self.baseModel = baseModel
+    self.enableAddons = enableAddons
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case baseModel
+    case enableAddons
   }
 }
 
@@ -3139,99 +3197,5 @@ public struct FireworksGatewayListPricingPlansParameters: Codable, Sendable {
     case pageSize
     case pageToken
     case readMask
-  }
-}
-
-public struct FireworksGatewayListQuotasParameters: Codable, Sendable {
-  public var accountId: String
-  public var filter: String?
-  public var orderBy: String?
-  public var pageSize: Int?
-  public var pageToken: String?
-  public var readMask: String?
-
-  public init(
-    accountId: String,
-    filter: String? = nil,
-    orderBy: String? = nil,
-    pageSize: Int? = nil,
-    pageToken: String? = nil,
-    readMask: String? = nil
-  ) {
-    self.accountId = accountId
-    self.filter = filter
-    self.orderBy = orderBy
-    self.pageSize = pageSize
-    self.pageToken = pageToken
-    self.readMask = readMask
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case accountId = "account_id"
-    case filter
-    case orderBy
-    case pageSize
-    case pageToken
-    case readMask
-  }
-}
-
-public struct FireworksGatewayListReinforcementFineTuningJobsParameters: Codable, Sendable {
-  public var accountId: String
-  public var filter: String?
-  public var orderBy: String?
-  public var pageSize: Int?
-  public var pageToken: String?
-  public var readMask: String?
-
-  public init(
-    accountId: String,
-    filter: String? = nil,
-    orderBy: String? = nil,
-    pageSize: Int? = nil,
-    pageToken: String? = nil,
-    readMask: String? = nil
-  ) {
-    self.accountId = accountId
-    self.filter = filter
-    self.orderBy = orderBy
-    self.pageSize = pageSize
-    self.pageToken = pageToken
-    self.readMask = readMask
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case accountId = "account_id"
-    case filter
-    case orderBy
-    case pageSize
-    case pageToken
-    case readMask
-  }
-}
-
-public struct FireworksGatewayListRlorTrainerJobCheckpointsParameters: Codable, Sendable {
-  public var accountId: String
-  public var pageSize: Int?
-  public var pageToken: String?
-  public var rlorTrainerJobId: String
-
-  public init(
-    accountId: String,
-    rlorTrainerJobId: String,
-    pageSize: Int? = nil,
-    pageToken: String? = nil
-  ) {
-    self.accountId = accountId
-    self.pageSize = pageSize
-    self.pageToken = pageToken
-    self.rlorTrainerJobId = rlorTrainerJobId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case accountId = "account_id"
-    case pageSize
-    case pageToken
-    case rlorTrainerJobId = "rlor_trainer_job_id"
   }
 }

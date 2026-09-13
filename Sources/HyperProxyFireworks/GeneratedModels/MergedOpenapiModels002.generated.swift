@@ -4,6 +4,100 @@
 import Foundation
 import HyperProxyCore
 
+public struct FireworksGatewayListQuotasParameters: Codable, Sendable {
+  public var accountId: String
+  public var filter: String?
+  public var orderBy: String?
+  public var pageSize: Int?
+  public var pageToken: String?
+  public var readMask: String?
+
+  public init(
+    accountId: String,
+    filter: String? = nil,
+    orderBy: String? = nil,
+    pageSize: Int? = nil,
+    pageToken: String? = nil,
+    readMask: String? = nil
+  ) {
+    self.accountId = accountId
+    self.filter = filter
+    self.orderBy = orderBy
+    self.pageSize = pageSize
+    self.pageToken = pageToken
+    self.readMask = readMask
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case accountId = "account_id"
+    case filter
+    case orderBy
+    case pageSize
+    case pageToken
+    case readMask
+  }
+}
+
+public struct FireworksGatewayListReinforcementFineTuningJobsParameters: Codable, Sendable {
+  public var accountId: String
+  public var filter: String?
+  public var orderBy: String?
+  public var pageSize: Int?
+  public var pageToken: String?
+  public var readMask: String?
+
+  public init(
+    accountId: String,
+    filter: String? = nil,
+    orderBy: String? = nil,
+    pageSize: Int? = nil,
+    pageToken: String? = nil,
+    readMask: String? = nil
+  ) {
+    self.accountId = accountId
+    self.filter = filter
+    self.orderBy = orderBy
+    self.pageSize = pageSize
+    self.pageToken = pageToken
+    self.readMask = readMask
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case accountId = "account_id"
+    case filter
+    case orderBy
+    case pageSize
+    case pageToken
+    case readMask
+  }
+}
+
+public struct FireworksGatewayListRlorTrainerJobCheckpointsParameters: Codable, Sendable {
+  public var accountId: String
+  public var pageSize: Int?
+  public var pageToken: String?
+  public var rlorTrainerJobId: String
+
+  public init(
+    accountId: String,
+    rlorTrainerJobId: String,
+    pageSize: Int? = nil,
+    pageToken: String? = nil
+  ) {
+    self.accountId = accountId
+    self.pageSize = pageSize
+    self.pageToken = pageToken
+    self.rlorTrainerJobId = rlorTrainerJobId
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case accountId = "account_id"
+    case pageSize
+    case pageToken
+    case rlorTrainerJobId = "rlor_trainer_job_id"
+  }
+}
+
 public struct FireworksGatewayListRlorTrainerJobsParameters: Codable, Sendable {
   public var accountId: String
   public var filter: String?
@@ -585,6 +679,20 @@ public struct FireworksGatewayLogTrainingSessionMetricsParameters: Codable, Send
   enum CodingKeys: String, CodingKey {
     case accountId = "account_id"
     case trainingSessionId = "training_session_id"
+  }
+}
+
+public struct FireworksGatewayMatchDeploymentShapeVersionsParameters: Codable, Sendable {
+  public var accountId: String
+
+  public init(
+    accountId: String
+  ) {
+    self.accountId = accountId
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case accountId = "account_id"
   }
 }
 
@@ -3052,16 +3160,16 @@ public struct FireworksHTTPValidationError: Codable, Sendable {
 }
 
 public struct FireworksInternalContent: Codable, Sendable {
-  public var tokenId: [Int]?
+  public var tokenIds: [Int]?
 
   public init(
-    tokenId: [Int]? = nil
+    tokenIds: [Int]? = nil
   ) {
-    self.tokenId = tokenId
+    self.tokenIds = tokenIds
   }
 
   enum CodingKeys: String, CodingKey {
-    case tokenId = "token_id"
+    case tokenIds = "token_ids"
   }
 }
 
@@ -4134,6 +4242,8 @@ public struct FireworksTrainingShapeTrainerMode: RawRepresentable, Codable, Hash
 
 public struct FireworksUsageInfo: Codable, Sendable {
   public var completionTokens: Int?
+  public var completionTokensDetails: FireworksCompletionTokensDetails?
+  public var outputTokensDetails: FireworksCompletionTokensDetails?
   public var promptTokens: Int
   public var promptTokensDetails: FireworksPromptTokensDetails?
   public var totalTokens: Int
@@ -4142,9 +4252,13 @@ public struct FireworksUsageInfo: Codable, Sendable {
     promptTokens: Int,
     totalTokens: Int,
     completionTokens: Int? = nil,
+    completionTokensDetails: FireworksCompletionTokensDetails? = nil,
+    outputTokensDetails: FireworksCompletionTokensDetails? = nil,
     promptTokensDetails: FireworksPromptTokensDetails? = nil
   ) {
     self.completionTokens = completionTokens
+    self.completionTokensDetails = completionTokensDetails
+    self.outputTokensDetails = outputTokensDetails
     self.promptTokens = promptTokens
     self.promptTokensDetails = promptTokensDetails
     self.totalTokens = totalTokens
@@ -4152,6 +4266,8 @@ public struct FireworksUsageInfo: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case completionTokens = "completion_tokens"
+    case completionTokensDetails = "completion_tokens_details"
+    case outputTokensDetails = "output_tokens_details"
     case promptTokens = "prompt_tokens"
     case promptTokensDetails = "prompt_tokens_details"
     case totalTokens = "total_tokens"
@@ -4474,125 +4590,5 @@ public struct FireworksGatewayAssertion: Codable, Sendable {
     case codeAssertion
     case llmAssertion
     case metricName
-  }
-}
-
-public struct FireworksGatewayAuditLogEntry: Codable, Sendable {
-  public var apiKeyId: String?
-  public var clientIp: String?
-  public var id: String?
-  public var isAdminAction: Bool?
-  public var message: String?
-  public var method: String?
-  public var payload: HyperProxyJSONValue?
-  public var principal: String?
-  public var resource: String?
-  public var status: FireworksGatewayStatus?
-  public var timestamp: String?
-  public var userAgent: String?
-
-  public init(
-    apiKeyId: String? = nil,
-    clientIp: String? = nil,
-    id: String? = nil,
-    isAdminAction: Bool? = nil,
-    message: String? = nil,
-    method: String? = nil,
-    payload: HyperProxyJSONValue? = nil,
-    principal: String? = nil,
-    resource: String? = nil,
-    status: FireworksGatewayStatus? = nil,
-    timestamp: String? = nil,
-    userAgent: String? = nil
-  ) {
-    self.apiKeyId = apiKeyId
-    self.clientIp = clientIp
-    self.id = id
-    self.isAdminAction = isAdminAction
-    self.message = message
-    self.method = method
-    self.payload = payload
-    self.principal = principal
-    self.resource = resource
-    self.status = status
-    self.timestamp = timestamp
-    self.userAgent = userAgent
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case apiKeyId
-    case clientIp
-    case id
-    case isAdminAction
-    case message
-    case method
-    case payload
-    case principal
-    case resource
-    case status
-    case timestamp
-    case userAgent
-  }
-}
-
-public struct FireworksGatewayAutoTune: Codable, Sendable {
-  public var longPrompt: Bool?
-
-  public init(
-    longPrompt: Bool? = nil
-  ) {
-    self.longPrompt = longPrompt
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case longPrompt
-  }
-}
-
-public struct FireworksGatewayAutoscalingPolicy: Codable, Sendable {
-  public var loadTargets: [String: Double]?
-  public var scaleDownWindow: String?
-  public var scaleToZeroWindow: String?
-  public var scaleUpWindow: String?
-  public var scalingSchedules: [String: FireworksGatewayScalingSchedule]?
-
-  public init(
-    loadTargets: [String: Double]? = nil,
-    scaleDownWindow: String? = nil,
-    scaleToZeroWindow: String? = nil,
-    scaleUpWindow: String? = nil,
-    scalingSchedules: [String: FireworksGatewayScalingSchedule]? = nil
-  ) {
-    self.loadTargets = loadTargets
-    self.scaleDownWindow = scaleDownWindow
-    self.scaleToZeroWindow = scaleToZeroWindow
-    self.scaleUpWindow = scaleUpWindow
-    self.scalingSchedules = scalingSchedules
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case loadTargets
-    case scaleDownWindow
-    case scaleToZeroWindow
-    case scaleUpWindow
-    case scalingSchedules
-  }
-}
-
-public struct FireworksGatewayAwsS3Config: Codable, Sendable {
-  public var credentialsSecret: String?
-  public var iamRoleArn: String?
-
-  public init(
-    credentialsSecret: String? = nil,
-    iamRoleArn: String? = nil
-  ) {
-    self.credentialsSecret = credentialsSecret
-    self.iamRoleArn = iamRoleArn
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case credentialsSecret
-    case iamRoleArn
   }
 }

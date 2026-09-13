@@ -4,6 +4,114 @@
 import Foundation
 import HyperProxyCore
 
+public struct TogetherRemoveAdapterResponse: Codable, Sendable {
+  public var deleted: Bool?
+  public var modelId: String?
+
+  public init(
+    deleted: Bool? = nil,
+    modelId: String? = nil
+  ) {
+    self.deleted = deleted
+    self.modelId = modelId
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case deleted
+    case modelId = "model_id"
+  }
+}
+
+public struct TogetherReplicaEvent: Codable, Sendable {
+  public var image: String?
+  public var replicaReadySince: String?
+  public var replicaStatus: String?
+  public var replicaStatusMessage: String?
+  public var replicaStatusReason: String?
+  public var revisionId: String?
+  public var volumePreloadCompletedAt: String?
+  public var volumePreloadStartedAt: String?
+  public var volumePreloadStatus: String?
+
+  public init(
+    image: String? = nil,
+    replicaReadySince: String? = nil,
+    replicaStatus: String? = nil,
+    replicaStatusMessage: String? = nil,
+    replicaStatusReason: String? = nil,
+    revisionId: String? = nil,
+    volumePreloadCompletedAt: String? = nil,
+    volumePreloadStartedAt: String? = nil,
+    volumePreloadStatus: String? = nil
+  ) {
+    self.image = image
+    self.replicaReadySince = replicaReadySince
+    self.replicaStatus = replicaStatus
+    self.replicaStatusMessage = replicaStatusMessage
+    self.replicaStatusReason = replicaStatusReason
+    self.revisionId = revisionId
+    self.volumePreloadCompletedAt = volumePreloadCompletedAt
+    self.volumePreloadStartedAt = volumePreloadStartedAt
+    self.volumePreloadStatus = volumePreloadStatus
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case image
+    case replicaReadySince = "replica_ready_since"
+    case replicaStatus = "replica_status"
+    case replicaStatusMessage = "replica_status_message"
+    case replicaStatusReason = "replica_status_reason"
+    case revisionId = "revision_id"
+    case volumePreloadCompletedAt = "volume_preload_completed_at"
+    case volumePreloadStartedAt = "volume_preload_started_at"
+    case volumePreloadStatus = "volume_preload_status"
+  }
+}
+
+public struct TogetherRerankRequest: Codable, Sendable {
+  public var documents: HyperProxyJSONValue
+  public var model: HyperProxyJSONValue
+  public var query: String
+  public var rankFields: [String]?
+  public var returnDocuments: Bool?
+  public var topN: Int?
+
+  public init(
+    documents: HyperProxyJSONValue,
+    model: HyperProxyJSONValue,
+    query: String,
+    rankFields: [String]? = nil,
+    returnDocuments: Bool? = nil,
+    topN: Int? = nil
+  ) {
+    self.documents = documents
+    self.model = model
+    self.query = query
+    self.rankFields = rankFields
+    self.returnDocuments = returnDocuments
+    self.topN = topN
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case documents
+    case model
+    case query
+    case rankFields = "rank_fields"
+    case returnDocuments = "return_documents"
+    case topN = "top_n"
+  }
+}
+
+public struct TogetherRerankRequestModelAnyOf1: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let salesforceLlamaRankV1 = Self(rawValue: "Salesforce/Llama-Rank-v1")
+}
+
 public struct TogetherRerankResponse: Codable, Sendable {
   public var id: String?
   public var model: String

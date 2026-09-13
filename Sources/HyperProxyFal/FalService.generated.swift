@@ -62,6 +62,16 @@ public enum FalOperation: String, HyperProxyProviderOperation {
   case moveAssetCollection = "moveAssetCollection"
   /// `POST v1/assets/collections/{collection_id}/unfavorite`
   case unfavoriteAssetCollection = "unfavoriteAssetCollection"
+  /// `GET v1/assets/entities`
+  case listAssetEntities = "listAssetEntities"
+  /// `POST v1/assets/entities`
+  case createAssetEntity = "createAssetEntity"
+  /// `DELETE v1/assets/entities/{entity_id}`
+  case deleteAssetEntity = "deleteAssetEntity"
+  /// `GET v1/assets/entities/{entity_id}`
+  case getAssetEntity = "getAssetEntity"
+  /// `PATCH v1/assets/entities/{entity_id}`
+  case updateAssetEntity = "updateAssetEntity"
   /// `POST v1/assets/favorite`
   case favoriteAsset = "favoriteAsset"
   /// `GET v1/assets/tags`
@@ -90,8 +100,6 @@ public enum FalOperation: String, HyperProxyProviderOperation {
   case listAssetTagsForAsset = "listAssetTagsForAsset"
   /// `GET v1/compute/instances`
   case listComputeInstances = "listComputeInstances"
-  /// `POST v1/compute/instances`
-  case createComputeInstance = "createComputeInstance"
   /// `DELETE v1/compute/instances/{id}`
   case deleteComputeInstance = "deleteComputeInstance"
   /// `GET v1/compute/instances/{id}`
@@ -285,6 +293,26 @@ extension HyperProxyProviderService where Operation == FalOperation {
   public var unfavoriteAssetCollection: HyperProxyProviderCall<FalOperation> {
     self.call(.unfavoriteAssetCollection)
   }
+  /// `GET v1/assets/entities`
+  public var listAssetEntities: HyperProxyProviderCall<FalOperation> {
+    self.call(.listAssetEntities)
+  }
+  /// `POST v1/assets/entities`
+  public var createAssetEntity: HyperProxyProviderCall<FalOperation> {
+    self.call(.createAssetEntity)
+  }
+  /// `DELETE v1/assets/entities/{entity_id}`
+  public var deleteAssetEntity: HyperProxyProviderCall<FalOperation> {
+    self.call(.deleteAssetEntity)
+  }
+  /// `GET v1/assets/entities/{entity_id}`
+  public var getAssetEntity: HyperProxyProviderCall<FalOperation> {
+    self.call(.getAssetEntity)
+  }
+  /// `PATCH v1/assets/entities/{entity_id}`
+  public var updateAssetEntity: HyperProxyProviderCall<FalOperation> {
+    self.call(.updateAssetEntity)
+  }
   /// `POST v1/assets/favorite`
   public var favoriteAsset: HyperProxyProviderCall<FalOperation> {
     self.call(.favoriteAsset)
@@ -340,10 +368,6 @@ extension HyperProxyProviderService where Operation == FalOperation {
   /// `GET v1/compute/instances`
   public var listComputeInstances: HyperProxyProviderCall<FalOperation> {
     self.call(.listComputeInstances)
-  }
-  /// `POST v1/compute/instances`
-  public var createComputeInstance: HyperProxyProviderCall<FalOperation> {
-    self.call(.createComputeInstance)
   }
   /// `DELETE v1/compute/instances/{id}`
   public var deleteComputeInstance: HyperProxyProviderCall<FalOperation> {

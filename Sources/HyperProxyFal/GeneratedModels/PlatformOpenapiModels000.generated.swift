@@ -430,6 +430,148 @@ public struct FalCreateAssetCollectionResponseCollectionTypeModel: RawRepresenta
   public static let character = Self(rawValue: "character")
 }
 
+public struct FalCreateAssetEntityParameters: Codable, Sendable {
+  public var idempotencyKey: String?
+
+  public init(
+    idempotencyKey: String? = nil
+  ) {
+    self.idempotencyKey = idempotencyKey
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case idempotencyKey = "Idempotency-Key"
+  }
+}
+
+public struct FalCreateAssetEntityRequest: Codable, Sendable {
+  public var coverImageUrl: String?
+  public var description: String?
+  public var handle: String?
+  public var name: String
+  public var referenceImages: [String]
+  public var typeModel: FalCreateAssetEntityRequestTypeModel
+
+  public init(
+    name: String,
+    referenceImages: [String],
+    typeModel: FalCreateAssetEntityRequestTypeModel,
+    coverImageUrl: String? = nil,
+    description: String? = nil,
+    handle: String? = nil
+  ) {
+    self.coverImageUrl = coverImageUrl
+    self.description = description
+    self.handle = handle
+    self.name = name
+    self.referenceImages = referenceImages
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case coverImageUrl = "cover_image_url"
+    case description
+    case handle
+    case name
+    case referenceImages = "reference_images"
+    case typeModel = "type"
+  }
+}
+
+public struct FalCreateAssetEntityRequestTypeModel: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let character = Self(rawValue: "character")
+  public static let prop = Self(rawValue: "prop")
+  public static let environment = Self(rawValue: "environment")
+  public static let style = Self(rawValue: "style")
+  public static let scene = Self(rawValue: "scene")
+}
+
+public struct FalCreateAssetEntityResponse: Codable, Sendable {
+  public var entity: FalCreateAssetEntityResponseEntity
+
+  public init(
+    entity: FalCreateAssetEntityResponseEntity
+  ) {
+    self.entity = entity
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case entity
+  }
+}
+
+public struct FalCreateAssetEntityResponseEntity: Codable, Sendable {
+  public var coverImageUrl: String
+  public var createdAt: String
+  public var description: String
+  public var handle: String
+  public var id: String
+  public var isFavorited: Bool
+  public var name: String
+  public var referenceImages: [String]
+  public var typeModel: FalCreateAssetEntityResponseEntityTypeModel
+  public var updatedAt: String
+
+  public init(
+    coverImageUrl: String,
+    createdAt: String,
+    description: String,
+    handle: String,
+    id: String,
+    isFavorited: Bool,
+    name: String,
+    referenceImages: [String],
+    typeModel: FalCreateAssetEntityResponseEntityTypeModel,
+    updatedAt: String
+  ) {
+    self.coverImageUrl = coverImageUrl
+    self.createdAt = createdAt
+    self.description = description
+    self.handle = handle
+    self.id = id
+    self.isFavorited = isFavorited
+    self.name = name
+    self.referenceImages = referenceImages
+    self.typeModel = typeModel
+    self.updatedAt = updatedAt
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case coverImageUrl = "cover_image_url"
+    case createdAt = "created_at"
+    case description
+    case handle
+    case id
+    case isFavorited = "is_favorited"
+    case name
+    case referenceImages = "reference_images"
+    case typeModel = "type"
+    case updatedAt = "updated_at"
+  }
+}
+
+public struct FalCreateAssetEntityResponseEntityTypeModel: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let character = Self(rawValue: "character")
+  public static let prop = Self(rawValue: "prop")
+  public static let environment = Self(rawValue: "environment")
+  public static let style = Self(rawValue: "style")
+  public static let scene = Self(rawValue: "scene")
+}
+
 public struct FalCreateAssetTagParameters: Codable, Sendable {
   public var idempotencyKey: String?
 
@@ -492,163 +634,6 @@ public struct FalCreateAssetTagResponseTag: Codable, Sendable {
     case id
     case name
   }
-}
-
-public struct FalCreateComputeInstanceParameters: Codable, Sendable {
-  public var idempotencyKey: String?
-
-  public init(
-    idempotencyKey: String? = nil
-  ) {
-    self.idempotencyKey = idempotencyKey
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case idempotencyKey = "Idempotency-Key"
-  }
-}
-
-public struct FalCreateComputeInstanceRequest: Codable, Sendable {
-  public var instanceType: FalCreateComputeInstanceRequestInstanceType
-  public var sector: FalCreateComputeInstanceRequestSector?
-  public var sshKey: String
-
-  public init(
-    instanceType: FalCreateComputeInstanceRequestInstanceType,
-    sshKey: String,
-    sector: FalCreateComputeInstanceRequestSector? = nil
-  ) {
-    self.instanceType = instanceType
-    self.sector = sector
-    self.sshKey = sshKey
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case instanceType = "instance_type"
-    case sector
-    case sshKey = "ssh_key"
-  }
-}
-
-public struct FalCreateComputeInstanceRequestInstanceType: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let gpu8xH100Sxm5 = Self(rawValue: "gpu_8x_h100_sxm5")
-  public static let gpu1xH100Sxm5 = Self(rawValue: "gpu_1x_h100_sxm5")
-}
-
-public struct FalCreateComputeInstanceRequestSector: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let sector1 = Self(rawValue: "sector_1")
-  public static let sector2 = Self(rawValue: "sector_2")
-  public static let sector3 = Self(rawValue: "sector_3")
-}
-
-public struct FalCreateComputeInstanceResponse: Codable, Sendable {
-  public var creatorUserNickname: String?
-  public var id: String
-  public var instanceType: FalCreateComputeInstanceResponseInstanceType
-  public var ip: String?
-  public var region: FalCreateComputeInstanceResponseRegion
-  public var sector: FalCreateComputeInstanceResponseSector?
-  public var status: FalCreateComputeInstanceResponseStatus
-
-  public init(
-    id: String,
-    instanceType: FalCreateComputeInstanceResponseInstanceType,
-    region: FalCreateComputeInstanceResponseRegion,
-    status: FalCreateComputeInstanceResponseStatus,
-    creatorUserNickname: String? = nil,
-    ip: String? = nil,
-    sector: FalCreateComputeInstanceResponseSector? = nil
-  ) {
-    self.creatorUserNickname = creatorUserNickname
-    self.id = id
-    self.instanceType = instanceType
-    self.ip = ip
-    self.region = region
-    self.sector = sector
-    self.status = status
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case creatorUserNickname = "creator_user_nickname"
-    case id
-    case instanceType = "instance_type"
-    case ip
-    case region
-    case sector
-    case status
-  }
-}
-
-public struct FalCreateComputeInstanceResponseInstanceType: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let gpu8xH100Sxm5 = Self(rawValue: "gpu_8x_h100_sxm5")
-  public static let gpu1xH100Sxm5 = Self(rawValue: "gpu_1x_h100_sxm5")
-}
-
-public struct FalCreateComputeInstanceResponseRegion: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let usWest = Self(rawValue: "us-west")
-  public static let usCentral = Self(rawValue: "us-central")
-  public static let usEast = Self(rawValue: "us-east")
-  public static let euNorth = Self(rawValue: "eu-north")
-  public static let euWest = Self(rawValue: "eu-west")
-  public static let other = Self(rawValue: "other")
-}
-
-public struct FalCreateComputeInstanceResponseSector: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let sector1 = Self(rawValue: "sector_1")
-  public static let sector2 = Self(rawValue: "sector_2")
-  public static let sector3 = Self(rawValue: "sector_3")
-}
-
-public struct FalCreateComputeInstanceResponseStatus: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let ready = Self(rawValue: "ready")
-  public static let initValue = Self(rawValue: "init")
-  public static let pending = Self(rawValue: "pending")
-  public static let provisioning = Self(rawValue: "provisioning")
-  public static let stopped = Self(rawValue: "stopped")
-  public static let unknown = Self(rawValue: "unknown")
 }
 
 public struct FalCreateWorkflowRequest: Codable, Sendable {
@@ -828,6 +813,24 @@ public struct FalDeleteAssetCollectionParameters: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case idempotencyKey = "Idempotency-Key"
     case collectionId = "collection_id"
+  }
+}
+
+public struct FalDeleteAssetEntityParameters: Codable, Sendable {
+  public var idempotencyKey: String?
+  public var entityId: String
+
+  public init(
+    entityId: String,
+    idempotencyKey: String? = nil
+  ) {
+    self.idempotencyKey = idempotencyKey
+    self.entityId = entityId
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case idempotencyKey = "Idempotency-Key"
+    case entityId = "entity_id"
   }
 }
 
@@ -2217,6 +2220,100 @@ public struct FalGetAssetCollectionResponseCollectionTypeModel: RawRepresentable
   public static let character = Self(rawValue: "character")
 }
 
+public struct FalGetAssetEntityParameters: Codable, Sendable {
+  public var entityId: String
+
+  public init(
+    entityId: String
+  ) {
+    self.entityId = entityId
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case entityId = "entity_id"
+  }
+}
+
+public struct FalGetAssetEntityResponse: Codable, Sendable {
+  public var entity: FalGetAssetEntityResponseEntity
+
+  public init(
+    entity: FalGetAssetEntityResponseEntity
+  ) {
+    self.entity = entity
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case entity
+  }
+}
+
+public struct FalGetAssetEntityResponseEntity: Codable, Sendable {
+  public var coverImageUrl: String
+  public var createdAt: String
+  public var description: String
+  public var handle: String
+  public var id: String
+  public var isFavorited: Bool
+  public var name: String
+  public var referenceImages: [String]
+  public var typeModel: FalGetAssetEntityResponseEntityTypeModel
+  public var updatedAt: String
+
+  public init(
+    coverImageUrl: String,
+    createdAt: String,
+    description: String,
+    handle: String,
+    id: String,
+    isFavorited: Bool,
+    name: String,
+    referenceImages: [String],
+    typeModel: FalGetAssetEntityResponseEntityTypeModel,
+    updatedAt: String
+  ) {
+    self.coverImageUrl = coverImageUrl
+    self.createdAt = createdAt
+    self.description = description
+    self.handle = handle
+    self.id = id
+    self.isFavorited = isFavorited
+    self.name = name
+    self.referenceImages = referenceImages
+    self.typeModel = typeModel
+    self.updatedAt = updatedAt
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case coverImageUrl = "cover_image_url"
+    case createdAt = "created_at"
+    case description
+    case handle
+    case id
+    case isFavorited = "is_favorited"
+    case name
+    case referenceImages = "reference_images"
+    case typeModel = "type"
+    case updatedAt = "updated_at"
+  }
+}
+
+public struct FalGetAssetEntityResponseEntityTypeModel: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let character = Self(rawValue: "character")
+  public static let prop = Self(rawValue: "prop")
+  public static let environment = Self(rawValue: "environment")
+  public static let style = Self(rawValue: "style")
+  public static let scene = Self(rawValue: "scene")
+}
+
 public struct FalGetAssetLineageParameters: Codable, Sendable {
   public var assetId: String
   public var depth: Int?
@@ -2337,6 +2434,10 @@ public struct FalGetAssetLineageResponseLineageEdgesItemEntitiesItemEntityType: 
   }
 
   public static let character = Self(rawValue: "character")
+  public static let prop = Self(rawValue: "prop")
+  public static let environment = Self(rawValue: "environment")
+  public static let style = Self(rawValue: "style")
+  public static let scene = Self(rawValue: "scene")
 }
 
 public struct FalGetAssetLineageResponseLineageEdgesItemKind: RawRepresentable, Codable, Hashable,
@@ -2570,6 +2671,10 @@ public struct FalGetAssetLineageResponseLineageNodesItemOneOf4EntityType: RawRep
   }
 
   public static let character = Self(rawValue: "character")
+  public static let prop = Self(rawValue: "prop")
+  public static let environment = Self(rawValue: "environment")
+  public static let style = Self(rawValue: "style")
+  public static let scene = Self(rawValue: "scene")
 }
 
 public struct FalGetAssetLineageResponseLineageNodesItemOneOf4Kind: RawRepresentable, Codable,
@@ -3058,6 +3163,7 @@ public struct FalGetFocusReportParametersSource: RawRepresentable, Codable, Hash
 
   public static let invoice = Self(rawValue: "invoice")
   public static let estimate = Self(rawValue: "estimate")
+  public static let taggedEstimate = Self(rawValue: "tagged-estimate")
 }
 
 public struct FalGetFocusReportParametersTimeframe: RawRepresentable, Codable, Hashable, Sendable {
@@ -3645,33 +3751,4 @@ public struct FalGetOrganizationFocusReportParametersBoundToTimeframe: RawRepres
 
   public static let trueValue = Self(rawValue: "true")
   public static let falseValue = Self(rawValue: "false")
-}
-
-public struct FalGetOrganizationFocusReportParametersSource: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let invoice = Self(rawValue: "invoice")
-  public static let estimate = Self(rawValue: "estimate")
-}
-
-public struct FalGetOrganizationFocusReportParametersTimeframe: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let minute = Self(rawValue: "minute")
-  public static let hour = Self(rawValue: "hour")
-  public static let day = Self(rawValue: "day")
-  public static let week = Self(rawValue: "week")
-  public static let month = Self(rawValue: "month")
 }

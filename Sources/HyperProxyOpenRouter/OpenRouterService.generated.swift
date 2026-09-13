@@ -136,6 +136,10 @@ public enum OpenRouterOperation: String, HyperProxyProviderOperation {
   case listModelsUser = "listModelsUser"
   /// `GET api/v1/models/{author}/{slug}/endpoints`
   case modelsEndpoints = "models.endpoints"
+  /// `GET api/v1/oauth/jwks`
+  case listOauthJwks = "listOauthJwks"
+  /// `POST api/v1/oauth/token`
+  case createOauthToken = "createOauthToken"
   /// `GET api/v1/observability/destinations`
   case listObservabilityDestinations = "listObservabilityDestinations"
   /// `POST api/v1/observability/destinations`
@@ -178,6 +182,10 @@ public enum OpenRouterOperation: String, HyperProxyProviderOperation {
   case updateScimGroupMapping = "updateScimGroupMapping"
   /// `GET api/v1/scim/groups`
   case listScimGroups = "listScimGroups"
+  /// `POST api/v1/scim/sync-jobs`
+  case createScimSyncJob = "createScimSyncJob"
+  /// `GET api/v1/scim/sync-jobs/{id}`
+  case getScimSyncJob = "getScimSyncJob"
   /// `POST api/v1/videos`
   case createVideos = "createVideos"
   /// `GET api/v1/videos/models`
@@ -473,6 +481,14 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
   public var modelsEndpoints: HyperProxyProviderCall<OpenRouterOperation> {
     self.call(.modelsEndpoints)
   }
+  /// `GET api/v1/oauth/jwks`
+  public var listOauthJwks: HyperProxyProviderCall<OpenRouterOperation> {
+    self.call(.listOauthJwks)
+  }
+  /// `POST api/v1/oauth/token`
+  public var createOauthToken: HyperProxyProviderCall<OpenRouterOperation> {
+    self.call(.createOauthToken)
+  }
   /// `GET api/v1/observability/destinations`
   public var listObservabilityDestinations: HyperProxyProviderCall<OpenRouterOperation> {
     self.call(.listObservabilityDestinations)
@@ -556,6 +572,14 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
   /// `GET api/v1/scim/groups`
   public var listScimGroups: HyperProxyProviderCall<OpenRouterOperation> {
     self.call(.listScimGroups)
+  }
+  /// `POST api/v1/scim/sync-jobs`
+  public var createScimSyncJob: HyperProxyProviderCall<OpenRouterOperation> {
+    self.call(.createScimSyncJob)
+  }
+  /// `GET api/v1/scim/sync-jobs/{id}`
+  public var getScimSyncJob: HyperProxyProviderCall<OpenRouterOperation> {
+    self.call(.getScimSyncJob)
   }
   /// `POST api/v1/videos`
   public var createVideos: HyperProxyProviderCall<OpenRouterOperation> {

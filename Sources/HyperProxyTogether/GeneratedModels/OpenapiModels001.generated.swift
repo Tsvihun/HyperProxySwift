@@ -1778,15 +1778,15 @@ public struct TogetherDEMetricRule: Codable, Sendable {
   public var name: TogetherDEMetricRuleName
   public var percentile: Int?
   public var regressionCheck: HyperProxyJSONValue?
-  public var stat: TogetherDEMetricRuleStat
+  public var stat: TogetherDEMetricRuleStat?
   public var thresholdCheck: HyperProxyJSONValue?
   public var window: String?
 
   public init(
     name: TogetherDEMetricRuleName,
-    stat: TogetherDEMetricRuleStat,
     percentile: Int? = nil,
     regressionCheck: HyperProxyJSONValue? = nil,
+    stat: TogetherDEMetricRuleStat? = nil,
     thresholdCheck: HyperProxyJSONValue? = nil,
     window: String? = nil
   ) {
@@ -2663,13 +2663,13 @@ public struct TogetherDERuntimeInfo: Codable, Sendable {
 }
 
 public struct TogetherDEScalingMetric: Codable, Sendable {
-  public var name: String
+  public var name: TogetherDEScalingMetricName
   public var percentile: String?
   public var target: Double
   public var typeModel: TogetherDEScalingMetricTypeModel
 
   public init(
-    name: String,
+    name: TogetherDEScalingMetricName,
     target: Double,
     typeModel: TogetherDEScalingMetricTypeModel,
     percentile: String? = nil

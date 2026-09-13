@@ -524,6 +524,22 @@ extension HyperProxyProviderService where Operation == FireworksOperation {
     return try await call.decoded(FireworksGatewayDeleteDeployedModelResponse.self)
   }
 
+  public func gatewayMatchDeploymentShapeVersions(
+    _ body: FireworksGatewayGatewayMatchDeploymentShapeVersionsBody,
+    accountId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> FireworksGatewayListDeploymentShapeVersionsResponse {
+    let call = self.call(.gatewayMatchDeploymentShapeVersions)
+      .path("account_id", accountId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(FireworksGatewayListDeploymentShapeVersionsResponse.self)
+  }
+
   public func gatewayListDeploymentShapes(
     accountId: String,
     query: [URLQueryItem] = [],

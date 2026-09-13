@@ -15,10 +15,10 @@ catalog, while the core transport keeps raw HTTP available for newly released fi
 - **Forward-compatible:** raw JSON, multipart, binary, SSE, and WebSocket APIs remain available.
 - **Two transport modes:** every typed or generic API can use HyperProxy's split-key gateway or
   connect directly with credentials owned by the host application.
-- **Generated from official sources:** 2,181 operations from 53 official specifications and
+- **Generated from official sources:** 2,244 operations from 53 official specifications and
   watched documentation sources across 18 provider families.
-- **Official provider models:** 14,564 request, response, event, enum, and parameter types plus
-  1,901 typed operation bindings — including typed `…Stream` variants — generated from official
+- **Official provider models:** 15,464 request, response, event, enum, and parameter types plus
+  1,955 typed operation bindings — including typed `…Stream` variants — generated from official
   machine-readable or reviewed schemas.
 - **Security-first:** split-key credentials, DeviceCheck, App Attest, and deployment-owned
   certificate pinning, with optional Firebase App Check.

@@ -1195,24 +1195,6 @@ public struct TogetherGetForwardBackwardOperationParameters: Codable, Sendable {
   }
 }
 
-public struct TogetherGetForwardOperationParameters: Codable, Sendable {
-  public var operationId: String
-  public var sessionId: String
-
-  public init(
-    operationId: String,
-    sessionId: String
-  ) {
-    self.operationId = operationId
-    self.sessionId = sessionId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case operationId = "operation_id"
-    case sessionId = "session_id"
-  }
-}
-
 public struct TogetherGetInferenceCheckpointOperationParameters: Codable, Sendable {
   public var operationId: String
   public var sessionId: String
@@ -2350,6 +2332,32 @@ public struct TogetherListAvailibilityZonesResponse: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case avzones
+  }
+}
+
+public struct TogetherListCheckpointsParameters: Codable, Sendable {
+  public var after: String?
+  public var baseModel: String?
+  public var limit: Int?
+  public var sessionId: String?
+
+  public init(
+    after: String? = nil,
+    baseModel: String? = nil,
+    limit: Int? = nil,
+    sessionId: String? = nil
+  ) {
+    self.after = after
+    self.baseModel = baseModel
+    self.limit = limit
+    self.sessionId = sessionId
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case after
+    case baseModel = "base_model"
+    case limit
+    case sessionId = "session_id"
   }
 }
 

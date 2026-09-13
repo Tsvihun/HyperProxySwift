@@ -102,6 +102,8 @@ public enum FireworksOperation: String, HyperProxyProviderOperation {
   case gatewayGetDeployedModel = "Gateway.GetDeployedModel"
   /// `PATCH v1/accounts/{account_id}/deployedModels/{deployed_model_id}`
   case gatewayUpdateDeployedModel = "Gateway.UpdateDeployedModel"
+  /// `POST v1/accounts/{account_id}/deploymentShapeVersions:match`
+  case gatewayMatchDeploymentShapeVersions = "Gateway.MatchDeploymentShapeVersions"
   /// `GET v1/accounts/{account_id}/deploymentShapes`
   case gatewayListDeploymentShapes = "Gateway.ListDeploymentShapes"
   /// `POST v1/accounts/{account_id}/deploymentShapes`
@@ -659,6 +661,10 @@ extension HyperProxyProviderService where Operation == FireworksOperation {
   /// `PATCH v1/accounts/{account_id}/deployedModels/{deployed_model_id}`
   public var gatewayUpdateDeployedModel: HyperProxyProviderCall<FireworksOperation> {
     self.call(.gatewayUpdateDeployedModel)
+  }
+  /// `POST v1/accounts/{account_id}/deploymentShapeVersions:match`
+  public var gatewayMatchDeploymentShapeVersions: HyperProxyProviderCall<FireworksOperation> {
+    self.call(.gatewayMatchDeploymentShapeVersions)
   }
   /// `GET v1/accounts/{account_id}/deploymentShapes`
   public var gatewayListDeploymentShapes: HyperProxyProviderCall<FireworksOperation> {

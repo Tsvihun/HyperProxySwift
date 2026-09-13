@@ -236,8 +236,72 @@ public enum OpenAIOperation: String, HyperProxyProviderOperation {
   case responsesCancel = "responses.cancel"
   /// `GET v1/responses/{response_id}/input_items`
   case responsesInputItems = "responses.inputItems"
-  /// `GET v1/videos/{video_id}/content`
-  case videosContent = "videos.content"
+  /// `GET v1/agents`
+  case listAgents = "listAgents"
+  /// `POST v1/agents`
+  case createAgent = "createAgent"
+  /// `GET v1/agents/environments/templates`
+  case listAgentEnvironmentTemplates = "listAgentEnvironmentTemplates"
+  /// `POST v1/agents/environments/templates`
+  case createAgentEnvironmentTemplate = "createAgentEnvironmentTemplate"
+  /// `DELETE v1/agents/environments/templates/{environment_template_id}`
+  case deleteAgentEnvironmentTemplate = "deleteAgentEnvironmentTemplate"
+  /// `GET v1/agents/environments/templates/{environment_template_id}`
+  case retrieveAgentEnvironmentTemplate = "retrieveAgentEnvironmentTemplate"
+  /// `POST v1/agents/environments/templates/{environment_template_id}`
+  case updateAgentEnvironmentTemplate = "updateAgentEnvironmentTemplate"
+  /// `GET v1/agents/environments/{environment_id}`
+  case retrieveAgentEnvironment = "retrieveAgentEnvironment"
+  /// `GET v1/agents/environments/{environment_id}/files`
+  case listAgentEnvironmentFiles = "listAgentEnvironmentFiles"
+  /// `POST v1/agents/environments/{environment_id}/files`
+  case createAgentEnvironmentFile = "createAgentEnvironmentFile"
+  /// `GET v1/agents/sessions`
+  case listAgentSessions = "listAgentSessions"
+  /// `POST v1/agents/sessions`
+  case createAgentSession = "createAgentSession"
+  /// `DELETE v1/agents/sessions/{session_id}`
+  case deleteAgentSession = "deleteAgentSession"
+  /// `GET v1/agents/sessions/{session_id}`
+  case retrieveAgentSession = "retrieveAgentSession"
+  /// `POST v1/agents/sessions/{session_id}`
+  case updateAgentSession = "updateAgentSession"
+  /// `GET v1/agents/sessions/{session_id}/artifacts`
+  case listAgentSessionArtifacts = "listAgentSessionArtifacts"
+  /// `DELETE v1/agents/sessions/{session_id}/artifacts/{artifact_id}`
+  case deleteAgentSessionArtifact = "deleteAgentSessionArtifact"
+  /// `GET v1/agents/sessions/{session_id}/artifacts/{artifact_id}`
+  case retrieveAgentSessionArtifact = "retrieveAgentSessionArtifact"
+  /// `GET v1/agents/sessions/{session_id}/artifacts/{artifact_id}/content`
+  case retrieveAgentSessionArtifactContent = "retrieveAgentSessionArtifactContent"
+  /// `GET v1/agents/sessions/{session_id}/events`
+  case listAgentSessionEvents = "listAgentSessionEvents"
+  /// `POST v1/agents/sessions/{session_id}/events`
+  case createAgentSessionEvents = "createAgentSessionEvents"
+  /// `GET v1/agents/sessions/{session_id}/items`
+  case listAgentSessionItems = "listAgentSessionItems"
+  /// `GET v1/agents/sessions/{session_id}/subagents`
+  case listAgentSessionSubagents = "listAgentSessionSubagents"
+  /// `GET v1/agents/sessions/{session_id}/subagents/{subagent_id}`
+  case retrieveAgentSessionSubagent = "retrieveAgentSessionSubagent"
+  /// `GET v1/agents/sessions/{session_id}/subagents/{subagent_id}/items`
+  case listAgentSessionSubagentItems = "listAgentSessionSubagentItems"
+  /// `GET v1/agents/sessions/{session_id}/subagents/{subagent_id}/turns`
+  case listAgentSessionSubagentTurns = "listAgentSessionSubagentTurns"
+  /// `GET v1/agents/sessions/{session_id}/subagents/{subagent_id}/turns/{turn_id}`
+  case retrieveAgentSessionSubagentTurn = "retrieveAgentSessionSubagentTurn"
+  /// `GET v1/agents/sessions/{session_id}/subagents/{subagent_id}/turns/{turn_id}/items`
+  case listAgentSessionSubagentTurnItems = "listAgentSessionSubagentTurnItems"
+  /// `GET v1/agents/sessions/{session_id}/turns`
+  case listAgentSessionTurns = "listAgentSessionTurns"
+  /// `GET v1/agents/sessions/{session_id}/turns/{turn_id}`
+  case retrieveAgentSessionTurn = "retrieveAgentSessionTurn"
+  /// `DELETE v1/agents/{agent_id}`
+  case deleteAgent = "deleteAgent"
+  /// `GET v1/agents/{agent_id}`
+  case retrieveAgent = "retrieveAgent"
+  /// `POST v1/agents/{agent_id}`
+  case updateAgent = "updateAgent"
   /// `GET v1/assistants`
   case listAssistants = "listAssistants"
   /// `POST v1/assistants`
@@ -408,6 +472,20 @@ public enum OpenAIOperation: String, HyperProxyProviderOperation {
   case imagesGenerate = "images.generate"
   /// `POST v1/images/variations`
   case imagesVariations = "images.variations"
+  /// `POST v1/live/sessions`
+  case createLive = "create.live"
+  /// `POST v1/live/sessions/{session_id}/accept`
+  case acceptLiveSession = "accept.live.session"
+  /// `GET v1/live/sessions/{session_id}/content`
+  case downloadLiveRecording = "download.live.recording"
+  /// `POST v1/live/sessions/{session_id}/fork`
+  case forkLiveSession = "fork.live.session"
+  /// `POST v1/live/sessions/{session_id}/hangup`
+  case hangupLiveSession = "hangup.live.session"
+  /// `POST v1/live/sessions/{session_id}/refer`
+  case referLiveSession = "refer.live.session"
+  /// `POST v1/live/sessions/{session_id}/reject`
+  case rejectLiveSession = "reject.live.session"
   /// `GET v1/models`
   case modelsList = "models.list"
   /// `GET v1/models/{model_id}`
@@ -464,6 +542,8 @@ public enum OpenAIOperation: String, HyperProxyProviderOperation {
   case createRealtimeTranscriptionSession = "create.realtime.transcription.session"
   /// `POST v1/realtime/translations/client_secrets`
   case createRealtimeTranslationClientSecret = "create.realtime.translation.client.secret"
+  /// `GET v1/safety/alerts/{id}`
+  case getprojectsafetyalert = "Getprojectsafetyalert"
   /// `GET v1/skills`
   case listSkills = "ListSkills"
   /// `POST v1/skills`
@@ -530,6 +610,24 @@ public enum OpenAIOperation: String, HyperProxyProviderOperation {
   case completeUpload = "completeUpload"
   /// `POST v1/uploads/{upload_id}/parts`
   case addUploadPart = "addUploadPart"
+  /// `GET v1/vaults`
+  case listVaults = "listVaults"
+  /// `POST v1/vaults`
+  case createVault = "createVault"
+  /// `DELETE v1/vaults/{vault_id}`
+  case deleteVault = "deleteVault"
+  /// `GET v1/vaults/{vault_id}`
+  case retrieveVault = "retrieveVault"
+  /// `GET v1/vaults/{vault_id}/credentials`
+  case listVaultCredentials = "listVaultCredentials"
+  /// `POST v1/vaults/{vault_id}/credentials`
+  case createVaultCredential = "createVaultCredential"
+  /// `DELETE v1/vaults/{vault_id}/credentials/{credential_id}`
+  case deleteVaultCredential = "deleteVaultCredential"
+  /// `GET v1/vaults/{vault_id}/credentials/{credential_id}`
+  case retrieveVaultCredential = "retrieveVaultCredential"
+  /// `POST v1/vaults/{vault_id}/credentials/{credential_id}`
+  case rotateVaultCredential = "rotateVaultCredential"
   /// `GET v1/vector_stores`
   case vectorStoresList = "vectorStores.list"
   /// `POST v1/vector_stores`
@@ -578,6 +676,8 @@ public enum OpenAIOperation: String, HyperProxyProviderOperation {
   case videosDelete = "videos.delete"
   /// `GET v1/videos/{video_id}`
   case videosRetrieve = "videos.retrieve"
+  /// `GET v1/videos/{video_id}/content`
+  case videosContent = "videos.content"
   /// `POST v1/videos/{video_id}/edits`
   case videosEdit = "videos.edit"
   /// `POST v1/videos/{video_id}/extensions`
@@ -646,9 +746,137 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
   public var responsesInputItems: HyperProxyProviderCall<OpenAIOperation> {
     self.call(.responsesInputItems)
   }
-  /// `GET v1/videos/{video_id}/content`
-  public var videosContent: HyperProxyProviderCall<OpenAIOperation> {
-    self.call(.videosContent)
+  /// `GET v1/agents`
+  public var listAgents: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.listAgents)
+  }
+  /// `POST v1/agents`
+  public var createAgent: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.createAgent)
+  }
+  /// `GET v1/agents/environments/templates`
+  public var listAgentEnvironmentTemplates: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.listAgentEnvironmentTemplates)
+  }
+  /// `POST v1/agents/environments/templates`
+  public var createAgentEnvironmentTemplate: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.createAgentEnvironmentTemplate)
+  }
+  /// `DELETE v1/agents/environments/templates/{environment_template_id}`
+  public var deleteAgentEnvironmentTemplate: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.deleteAgentEnvironmentTemplate)
+  }
+  /// `GET v1/agents/environments/templates/{environment_template_id}`
+  public var retrieveAgentEnvironmentTemplate: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.retrieveAgentEnvironmentTemplate)
+  }
+  /// `POST v1/agents/environments/templates/{environment_template_id}`
+  public var updateAgentEnvironmentTemplate: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.updateAgentEnvironmentTemplate)
+  }
+  /// `GET v1/agents/environments/{environment_id}`
+  public var retrieveAgentEnvironment: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.retrieveAgentEnvironment)
+  }
+  /// `GET v1/agents/environments/{environment_id}/files`
+  public var listAgentEnvironmentFiles: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.listAgentEnvironmentFiles)
+  }
+  /// `POST v1/agents/environments/{environment_id}/files`
+  public var createAgentEnvironmentFile: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.createAgentEnvironmentFile)
+  }
+  /// `GET v1/agents/sessions`
+  public var listAgentSessions: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.listAgentSessions)
+  }
+  /// `POST v1/agents/sessions`
+  public var createAgentSession: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.createAgentSession)
+  }
+  /// `DELETE v1/agents/sessions/{session_id}`
+  public var deleteAgentSession: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.deleteAgentSession)
+  }
+  /// `GET v1/agents/sessions/{session_id}`
+  public var retrieveAgentSession: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.retrieveAgentSession)
+  }
+  /// `POST v1/agents/sessions/{session_id}`
+  public var updateAgentSession: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.updateAgentSession)
+  }
+  /// `GET v1/agents/sessions/{session_id}/artifacts`
+  public var listAgentSessionArtifacts: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.listAgentSessionArtifacts)
+  }
+  /// `DELETE v1/agents/sessions/{session_id}/artifacts/{artifact_id}`
+  public var deleteAgentSessionArtifact: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.deleteAgentSessionArtifact)
+  }
+  /// `GET v1/agents/sessions/{session_id}/artifacts/{artifact_id}`
+  public var retrieveAgentSessionArtifact: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.retrieveAgentSessionArtifact)
+  }
+  /// `GET v1/agents/sessions/{session_id}/artifacts/{artifact_id}/content`
+  public var retrieveAgentSessionArtifactContent: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.retrieveAgentSessionArtifactContent)
+  }
+  /// `GET v1/agents/sessions/{session_id}/events`
+  public var listAgentSessionEvents: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.listAgentSessionEvents)
+  }
+  /// `POST v1/agents/sessions/{session_id}/events`
+  public var createAgentSessionEvents: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.createAgentSessionEvents)
+  }
+  /// `GET v1/agents/sessions/{session_id}/items`
+  public var listAgentSessionItems: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.listAgentSessionItems)
+  }
+  /// `GET v1/agents/sessions/{session_id}/subagents`
+  public var listAgentSessionSubagents: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.listAgentSessionSubagents)
+  }
+  /// `GET v1/agents/sessions/{session_id}/subagents/{subagent_id}`
+  public var retrieveAgentSessionSubagent: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.retrieveAgentSessionSubagent)
+  }
+  /// `GET v1/agents/sessions/{session_id}/subagents/{subagent_id}/items`
+  public var listAgentSessionSubagentItems: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.listAgentSessionSubagentItems)
+  }
+  /// `GET v1/agents/sessions/{session_id}/subagents/{subagent_id}/turns`
+  public var listAgentSessionSubagentTurns: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.listAgentSessionSubagentTurns)
+  }
+  /// `GET v1/agents/sessions/{session_id}/subagents/{subagent_id}/turns/{turn_id}`
+  public var retrieveAgentSessionSubagentTurn: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.retrieveAgentSessionSubagentTurn)
+  }
+  /// `GET v1/agents/sessions/{session_id}/subagents/{subagent_id}/turns/{turn_id}/items`
+  public var listAgentSessionSubagentTurnItems: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.listAgentSessionSubagentTurnItems)
+  }
+  /// `GET v1/agents/sessions/{session_id}/turns`
+  public var listAgentSessionTurns: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.listAgentSessionTurns)
+  }
+  /// `GET v1/agents/sessions/{session_id}/turns/{turn_id}`
+  public var retrieveAgentSessionTurn: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.retrieveAgentSessionTurn)
+  }
+  /// `DELETE v1/agents/{agent_id}`
+  public var deleteAgent: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.deleteAgent)
+  }
+  /// `GET v1/agents/{agent_id}`
+  public var retrieveAgent: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.retrieveAgent)
+  }
+  /// `POST v1/agents/{agent_id}`
+  public var updateAgent: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.updateAgent)
   }
   /// `GET v1/assistants`
   public var listAssistants: HyperProxyProviderCall<OpenAIOperation> {
@@ -990,6 +1218,34 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
   public var imagesVariations: HyperProxyProviderCall<OpenAIOperation> {
     self.call(.imagesVariations)
   }
+  /// `POST v1/live/sessions`
+  public var createLive: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.createLive)
+  }
+  /// `POST v1/live/sessions/{session_id}/accept`
+  public var acceptLiveSession: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.acceptLiveSession)
+  }
+  /// `GET v1/live/sessions/{session_id}/content`
+  public var downloadLiveRecording: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.downloadLiveRecording)
+  }
+  /// `POST v1/live/sessions/{session_id}/fork`
+  public var forkLiveSession: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.forkLiveSession)
+  }
+  /// `POST v1/live/sessions/{session_id}/hangup`
+  public var hangupLiveSession: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.hangupLiveSession)
+  }
+  /// `POST v1/live/sessions/{session_id}/refer`
+  public var referLiveSession: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.referLiveSession)
+  }
+  /// `POST v1/live/sessions/{session_id}/reject`
+  public var rejectLiveSession: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.rejectLiveSession)
+  }
   /// `GET v1/models`
   public var modelsList: HyperProxyProviderCall<OpenAIOperation> {
     self.call(.modelsList)
@@ -1101,6 +1357,10 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
   /// `POST v1/realtime/translations/client_secrets`
   public var createRealtimeTranslationClientSecret: HyperProxyProviderCall<OpenAIOperation> {
     self.call(.createRealtimeTranslationClientSecret)
+  }
+  /// `GET v1/safety/alerts/{id}`
+  public var getprojectsafetyalert: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.getprojectsafetyalert)
   }
   /// `GET v1/skills`
   public var listSkills: HyperProxyProviderCall<OpenAIOperation> {
@@ -1234,6 +1494,42 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
   public var addUploadPart: HyperProxyProviderCall<OpenAIOperation> {
     self.call(.addUploadPart)
   }
+  /// `GET v1/vaults`
+  public var listVaults: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.listVaults)
+  }
+  /// `POST v1/vaults`
+  public var createVault: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.createVault)
+  }
+  /// `DELETE v1/vaults/{vault_id}`
+  public var deleteVault: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.deleteVault)
+  }
+  /// `GET v1/vaults/{vault_id}`
+  public var retrieveVault: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.retrieveVault)
+  }
+  /// `GET v1/vaults/{vault_id}/credentials`
+  public var listVaultCredentials: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.listVaultCredentials)
+  }
+  /// `POST v1/vaults/{vault_id}/credentials`
+  public var createVaultCredential: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.createVaultCredential)
+  }
+  /// `DELETE v1/vaults/{vault_id}/credentials/{credential_id}`
+  public var deleteVaultCredential: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.deleteVaultCredential)
+  }
+  /// `GET v1/vaults/{vault_id}/credentials/{credential_id}`
+  public var retrieveVaultCredential: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.retrieveVaultCredential)
+  }
+  /// `POST v1/vaults/{vault_id}/credentials/{credential_id}`
+  public var rotateVaultCredential: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.rotateVaultCredential)
+  }
   /// `GET v1/vector_stores`
   public var vectorStoresList: HyperProxyProviderCall<OpenAIOperation> {
     self.call(.vectorStoresList)
@@ -1329,6 +1625,10 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
   /// `GET v1/videos/{video_id}`
   public var videosRetrieve: HyperProxyProviderCall<OpenAIOperation> {
     self.call(.videosRetrieve)
+  }
+  /// `GET v1/videos/{video_id}/content`
+  public var videosContent: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.videosContent)
   }
   /// `POST v1/videos/{video_id}/edits`
   public var videosEdit: HyperProxyProviderCall<OpenAIOperation> {

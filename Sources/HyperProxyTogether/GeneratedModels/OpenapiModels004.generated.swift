@@ -1154,30 +1154,56 @@ public struct TogetherRLCheckpointVariant: RawRepresentable, Codable, Hashable, 
   public static let cHECKPOINTVARIANTADAPTER = Self(rawValue: "CHECKPOINT_VARIANT_ADAPTER")
 }
 
+public struct TogetherRLCheckpointsListResponse: Codable, Sendable {
+  public var data: [TogetherRLCheckpoint]
+  public var meta: TogetherRLListMeta
+
+  public init(
+    data: [TogetherRLCheckpoint],
+    meta: TogetherRLListMeta
+  ) {
+    self.data = data
+    self.meta = meta
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case data
+    case meta
+  }
+}
+
 public struct TogetherRLComputeConfig: Codable, Sendable {
+  public var gpuType: TogetherRLComputeConfigGpuType?
   public var numGeneratorReplicas: Int
 
   public init(
-    numGeneratorReplicas: Int
+    numGeneratorReplicas: Int,
+    gpuType: TogetherRLComputeConfigGpuType? = nil
   ) {
+    self.gpuType = gpuType
     self.numGeneratorReplicas = numGeneratorReplicas
   }
 
   enum CodingKeys: String, CodingKey {
+    case gpuType = "gpu_type"
     case numGeneratorReplicas = "num_generator_replicas"
   }
 }
 
 public struct TogetherRLComputeConfigCreateRequest: Codable, Sendable {
+  public var gpuType: TogetherRLComputeConfigCreateRequestGpuType?
   public var numGeneratorReplicas: Int?
 
   public init(
+    gpuType: TogetherRLComputeConfigCreateRequestGpuType? = nil,
     numGeneratorReplicas: Int? = nil
   ) {
+    self.gpuType = gpuType
     self.numGeneratorReplicas = numGeneratorReplicas
   }
 
   enum CodingKeys: String, CodingKey {
+    case gpuType = "gpu_type"
     case numGeneratorReplicas = "num_generator_replicas"
   }
 }
@@ -1304,19 +1330,27 @@ public struct TogetherRLEncodedTextChunk: Codable, Sendable {
 }
 
 public struct TogetherRLForwardBackwardBody: Codable, Sendable {
+  public var forwardOnly: Bool?
   public var loss: TogetherRLLossConfig
+  public var returnLossFnOutputs: Bool?
   public var samples: [TogetherRLTrainingSample]
 
   public init(
     loss: TogetherRLLossConfig,
-    samples: [TogetherRLTrainingSample]
+    samples: [TogetherRLTrainingSample],
+    forwardOnly: Bool? = nil,
+    returnLossFnOutputs: Bool? = nil
   ) {
+    self.forwardOnly = forwardOnly
     self.loss = loss
+    self.returnLossFnOutputs = returnLossFnOutputs
     self.samples = samples
   }
 
   enum CodingKeys: String, CodingKey {
+    case forwardOnly = "forward_only"
     case loss
+    case returnLossFnOutputs = "return_loss_fn_outputs"
     case samples
   }
 }
@@ -1349,73 +1383,23 @@ public struct TogetherRLForwardBackwardOperation: Codable, Sendable {
 
 public struct TogetherRLForwardBackwardResult: Codable, Sendable {
   public var loss: Double
+  public var lossFnOutputs: [TogetherRLLossFnOutput]?
   public var metrics: [String: Double]?
 
   public init(
     loss: Double,
+    lossFnOutputs: [TogetherRLLossFnOutput]? = nil,
     metrics: [String: Double]? = nil
   ) {
     self.loss = loss
+    self.lossFnOutputs = lossFnOutputs
     self.metrics = metrics
   }
 
   enum CodingKeys: String, CodingKey {
     case loss
+    case lossFnOutputs = "loss_fn_outputs"
     case metrics
-  }
-}
-
-public struct TogetherRLForwardBody: Codable, Sendable {
-  public var samples: [TogetherRLTrainingSample]
-
-  public init(
-    samples: [TogetherRLTrainingSample]
-  ) {
-    self.samples = samples
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case samples
-  }
-}
-
-public struct TogetherRLForwardOperation: Codable, Sendable {
-  public var error: TogetherRLTrainingOperationError?
-  public var id: String
-  public var output: TogetherRLForwardResult?
-  public var status: TogetherRLTrainingOperationStatus
-
-  public init(
-    id: String,
-    status: TogetherRLTrainingOperationStatus,
-    error: TogetherRLTrainingOperationError? = nil,
-    output: TogetherRLForwardResult? = nil
-  ) {
-    self.error = error
-    self.id = id
-    self.output = output
-    self.status = status
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case error
-    case id
-    case output
-    case status
-  }
-}
-
-public struct TogetherRLForwardResult: Codable, Sendable {
-  public var logprobs: [TogetherRLTargetLogprobs]
-
-  public init(
-    logprobs: [TogetherRLTargetLogprobs]
-  ) {
-    self.logprobs = logprobs
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case logprobs
   }
 }
 
@@ -1660,6 +1644,20 @@ public struct TogetherRLLossConfig: Codable, Sendable {
     case grpoParams = "grpo_params"
     case ppoParams = "ppo_params"
     case typeModel = "type"
+  }
+}
+
+public struct TogetherRLLossFnOutput: Codable, Sendable {
+  public var tensors: [String: TogetherRLTensorData]
+
+  public init(
+    tensors: [String: TogetherRLTensorData]
+  ) {
+    self.tensors = tensors
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case tensors
   }
 }
 
@@ -2327,6 +2325,32 @@ public struct TogetherRLSamplingParams: Codable, Sendable {
   }
 }
 
+public struct TogetherRLSessionPolicyState: Codable, Sendable {
+  public var appliedWeightsVersion: HyperProxyJSONValue
+  public var pendingPublish: Bool
+  public var targetWeightsVersion: HyperProxyJSONValue
+  public var trainerStep: HyperProxyJSONValue
+
+  public init(
+    appliedWeightsVersion: HyperProxyJSONValue,
+    pendingPublish: Bool,
+    targetWeightsVersion: HyperProxyJSONValue,
+    trainerStep: HyperProxyJSONValue
+  ) {
+    self.appliedWeightsVersion = appliedWeightsVersion
+    self.pendingPublish = pendingPublish
+    self.targetWeightsVersion = targetWeightsVersion
+    self.trainerStep = trainerStep
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case appliedWeightsVersion = "applied_weights_version"
+    case pendingPublish = "pending_publish"
+    case targetWeightsVersion = "target_weights_version"
+    case trainerStep = "trainer_step"
+  }
+}
+
 public struct TogetherRLStartTrainingSessionRequest: Codable, Sendable {
   public var displayName: String?
   public var loadOptimizer: Bool?
@@ -2378,22 +2402,44 @@ public struct TogetherRLStopReason: RawRepresentable, Codable, Hashable, Sendabl
 
 public struct TogetherRLSupportedModel: Codable, Sendable {
   public var baseModel: String
-  public var generatorConfig: TogetherRLModelGeneratorConfig?
-  public var trainerConfig: TogetherRLModelTrainerConfig?
+  public var computeConfigs: [TogetherRLSupportedModelComputeConfig]?
+  public var defaultGpuType: TogetherRLSupportedModelDefaultGpuType
 
   public init(
     baseModel: String,
-    generatorConfig: TogetherRLModelGeneratorConfig? = nil,
-    trainerConfig: TogetherRLModelTrainerConfig? = nil
+    defaultGpuType: TogetherRLSupportedModelDefaultGpuType,
+    computeConfigs: [TogetherRLSupportedModelComputeConfig]? = nil
   ) {
     self.baseModel = baseModel
-    self.generatorConfig = generatorConfig
-    self.trainerConfig = trainerConfig
+    self.computeConfigs = computeConfigs
+    self.defaultGpuType = defaultGpuType
   }
 
   enum CodingKeys: String, CodingKey {
     case baseModel = "base_model"
+    case computeConfigs = "compute_configs"
+    case defaultGpuType = "default_gpu_type"
+  }
+}
+
+public struct TogetherRLSupportedModelComputeConfig: Codable, Sendable {
+  public var generatorConfig: TogetherRLModelGeneratorConfig?
+  public var gpuType: TogetherRLSupportedModelComputeConfigGpuType
+  public var trainerConfig: TogetherRLModelTrainerConfig?
+
+  public init(
+    gpuType: TogetherRLSupportedModelComputeConfigGpuType,
+    generatorConfig: TogetherRLModelGeneratorConfig? = nil,
+    trainerConfig: TogetherRLModelTrainerConfig? = nil
+  ) {
+    self.generatorConfig = generatorConfig
+    self.gpuType = gpuType
+    self.trainerConfig = trainerConfig
+  }
+
+  enum CodingKeys: String, CodingKey {
     case generatorConfig = "generator_config"
+    case gpuType = "gpu_type"
     case trainerConfig = "trainer_config"
   }
 }
@@ -2427,20 +2473,6 @@ public struct TogetherRLTargetLogprobGradients: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case data
     case dtype
-  }
-}
-
-public struct TogetherRLTargetLogprobs: Codable, Sendable {
-  public var data: [Double]
-
-  public init(
-    data: [Double]
-  ) {
-    self.data = data
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case data
   }
 }
 
@@ -2651,6 +2683,7 @@ public struct TogetherRLTrainingSession: Codable, Sendable {
   public var loraConfig: TogetherRLLoraConfig?
   public var metadata: TogetherRLTrainingSessionMetadata
   public var modelResourcesId: String
+  public var policyState: TogetherRLSessionPolicyState
   public var resumeFromCheckpointId: String?
   public var status: TogetherRLTrainingSessionStatus
   public var step: HyperProxyJSONValue
@@ -2665,6 +2698,7 @@ public struct TogetherRLTrainingSession: Codable, Sendable {
     inferenceCheckpoints: [TogetherRLInferenceCheckpoint],
     metadata: TogetherRLTrainingSessionMetadata,
     modelResourcesId: String,
+    policyState: TogetherRLSessionPolicyState,
     status: TogetherRLTrainingSessionStatus,
     step: HyperProxyJSONValue,
     trainingCheckpoints: [TogetherRLTrainingCheckpoint],
@@ -2684,6 +2718,7 @@ public struct TogetherRLTrainingSession: Codable, Sendable {
     self.loraConfig = loraConfig
     self.metadata = metadata
     self.modelResourcesId = modelResourcesId
+    self.policyState = policyState
     self.resumeFromCheckpointId = resumeFromCheckpointId
     self.status = status
     self.step = step
@@ -2702,6 +2737,7 @@ public struct TogetherRLTrainingSession: Codable, Sendable {
     case loraConfig = "lora_config"
     case metadata
     case modelResourcesId = "model_resources_id"
+    case policyState = "policy_state"
     case resumeFromCheckpointId = "resume_from_checkpoint_id"
     case status
     case step
@@ -2917,6 +2953,55 @@ public struct TogetherRLWeightsSyncResult: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case weightsVersion = "weights_version"
   }
+}
+
+public struct TogetherRLComputeConfigCreateRequestGpuType: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let h10080GB = Self(rawValue: "H100-80GB")
+  public static let b200SXM = Self(rawValue: "B200-SXM")
+}
+
+public struct TogetherRLComputeConfigGpuType: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let h10080GB = Self(rawValue: "H100-80GB")
+  public static let b200SXM = Self(rawValue: "B200-SXM")
+}
+
+public struct TogetherRLSupportedModelComputeConfigGpuType: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let h10080GB = Self(rawValue: "H100-80GB")
+  public static let b200SXM = Self(rawValue: "B200-SXM")
+}
+
+public struct TogetherRLSupportedModelDefaultGpuType: RawRepresentable, Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let h10080GB = Self(rawValue: "H100-80GB")
+  public static let b200SXM = Self(rawValue: "B200-SXM")
 }
 
 public struct TogetherRLTensorDataDtype: RawRepresentable, Codable, Hashable, Sendable {
@@ -3397,112 +3482,4 @@ public struct TogetherRemoveAdapterRequest: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case modelId = "model_id"
   }
-}
-
-public struct TogetherRemoveAdapterResponse: Codable, Sendable {
-  public var deleted: Bool?
-  public var modelId: String?
-
-  public init(
-    deleted: Bool? = nil,
-    modelId: String? = nil
-  ) {
-    self.deleted = deleted
-    self.modelId = modelId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case deleted
-    case modelId = "model_id"
-  }
-}
-
-public struct TogetherReplicaEvent: Codable, Sendable {
-  public var image: String?
-  public var replicaReadySince: String?
-  public var replicaStatus: String?
-  public var replicaStatusMessage: String?
-  public var replicaStatusReason: String?
-  public var revisionId: String?
-  public var volumePreloadCompletedAt: String?
-  public var volumePreloadStartedAt: String?
-  public var volumePreloadStatus: String?
-
-  public init(
-    image: String? = nil,
-    replicaReadySince: String? = nil,
-    replicaStatus: String? = nil,
-    replicaStatusMessage: String? = nil,
-    replicaStatusReason: String? = nil,
-    revisionId: String? = nil,
-    volumePreloadCompletedAt: String? = nil,
-    volumePreloadStartedAt: String? = nil,
-    volumePreloadStatus: String? = nil
-  ) {
-    self.image = image
-    self.replicaReadySince = replicaReadySince
-    self.replicaStatus = replicaStatus
-    self.replicaStatusMessage = replicaStatusMessage
-    self.replicaStatusReason = replicaStatusReason
-    self.revisionId = revisionId
-    self.volumePreloadCompletedAt = volumePreloadCompletedAt
-    self.volumePreloadStartedAt = volumePreloadStartedAt
-    self.volumePreloadStatus = volumePreloadStatus
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case image
-    case replicaReadySince = "replica_ready_since"
-    case replicaStatus = "replica_status"
-    case replicaStatusMessage = "replica_status_message"
-    case replicaStatusReason = "replica_status_reason"
-    case revisionId = "revision_id"
-    case volumePreloadCompletedAt = "volume_preload_completed_at"
-    case volumePreloadStartedAt = "volume_preload_started_at"
-    case volumePreloadStatus = "volume_preload_status"
-  }
-}
-
-public struct TogetherRerankRequest: Codable, Sendable {
-  public var documents: HyperProxyJSONValue
-  public var model: HyperProxyJSONValue
-  public var query: String
-  public var rankFields: [String]?
-  public var returnDocuments: Bool?
-  public var topN: Int?
-
-  public init(
-    documents: HyperProxyJSONValue,
-    model: HyperProxyJSONValue,
-    query: String,
-    rankFields: [String]? = nil,
-    returnDocuments: Bool? = nil,
-    topN: Int? = nil
-  ) {
-    self.documents = documents
-    self.model = model
-    self.query = query
-    self.rankFields = rankFields
-    self.returnDocuments = returnDocuments
-    self.topN = topN
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case documents
-    case model
-    case query
-    case rankFields = "rank_fields"
-    case returnDocuments = "return_documents"
-    case topN = "top_n"
-  }
-}
-
-public struct TogetherRerankRequestModelAnyOf1: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let salesforceLlamaRankV1 = Self(rawValue: "Salesforce/Llama-Rank-v1")
 }

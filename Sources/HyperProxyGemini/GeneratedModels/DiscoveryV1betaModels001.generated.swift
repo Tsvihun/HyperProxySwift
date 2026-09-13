@@ -4,6 +4,24 @@
 import Foundation
 import HyperProxyCore
 
+public struct GeminiGenerativelanguageFileSearchStoresListParameters: Codable, Sendable {
+  public var pageSize: Int?
+  public var pageToken: String?
+
+  public init(
+    pageSize: Int? = nil,
+    pageToken: String? = nil
+  ) {
+    self.pageSize = pageSize
+    self.pageToken = pageToken
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case pageSize
+    case pageToken
+  }
+}
+
 public struct GeminiGenerativelanguageFileSearchStoresOperationsGetParameters: Codable, Sendable {
   public var name: String
 
@@ -2042,6 +2060,7 @@ public struct GeminiOperationModel: Codable, Sendable {
 }
 
 public struct GeminiPart: Codable, Sendable {
+  public var audioTranscription: HyperProxyJSONValue?
   public var codeExecutionResult: HyperProxyJSONValue?
   public var executableCode: HyperProxyJSONValue?
   public var fileData: HyperProxyJSONValue?
@@ -2059,6 +2078,7 @@ public struct GeminiPart: Codable, Sendable {
   public var videoMetadata: HyperProxyJSONValue?
 
   public init(
+    audioTranscription: HyperProxyJSONValue? = nil,
     codeExecutionResult: HyperProxyJSONValue? = nil,
     executableCode: HyperProxyJSONValue? = nil,
     fileData: HyperProxyJSONValue? = nil,
@@ -2075,6 +2095,7 @@ public struct GeminiPart: Codable, Sendable {
     toolResponse: HyperProxyJSONValue? = nil,
     videoMetadata: HyperProxyJSONValue? = nil
   ) {
+    self.audioTranscription = audioTranscription
     self.codeExecutionResult = codeExecutionResult
     self.executableCode = executableCode
     self.fileData = fileData
@@ -2093,6 +2114,7 @@ public struct GeminiPart: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case audioTranscription
     case codeExecutionResult
     case executableCode
     case fileData
@@ -3005,19 +3027,5 @@ public struct GeminiTextCompletion: Codable, Sendable {
     case citationMetadata
     case output
     case safetyRatings
-  }
-}
-
-public struct GeminiTextPrompt: Codable, Sendable {
-  public var text: String?
-
-  public init(
-    text: String? = nil
-  ) {
-    self.text = text
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case text
   }
 }

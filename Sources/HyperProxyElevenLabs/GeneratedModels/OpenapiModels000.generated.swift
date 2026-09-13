@@ -1668,7 +1668,9 @@ public struct ElevenLabsAgentBranchSummary: Codable, Sendable {
   public var createdAt: Int
   public var currentLivePercentage: Double?
   public var description: String
+  public var draftCreatedAt: Int?
   public var draftExists: Bool?
+  public var draftIsBehindTip: Bool?
   public var id: String
   public var isArchived: Bool
   public var lastCommittedAt: Int
@@ -1690,7 +1692,9 @@ public struct ElevenLabsAgentBranchSummary: Codable, Sendable {
     commitsAhead: Int? = nil,
     commitsBehind: Int? = nil,
     currentLivePercentage: Double? = nil,
+    draftCreatedAt: Int? = nil,
     draftExists: Bool? = nil,
+    draftIsBehindTip: Bool? = nil,
     mergedIntoBranchId: String? = nil,
     parentBranchId: String? = nil,
     protectionStatus: ElevenLabsBranchProtectionStatus? = nil
@@ -1703,7 +1707,9 @@ public struct ElevenLabsAgentBranchSummary: Codable, Sendable {
     self.createdAt = createdAt
     self.currentLivePercentage = currentLivePercentage
     self.description = description
+    self.draftCreatedAt = draftCreatedAt
     self.draftExists = draftExists
+    self.draftIsBehindTip = draftIsBehindTip
     self.id = id
     self.isArchived = isArchived
     self.lastCommittedAt = lastCommittedAt
@@ -1722,7 +1728,9 @@ public struct ElevenLabsAgentBranchSummary: Codable, Sendable {
     case createdAt = "created_at"
     case currentLivePercentage = "current_live_percentage"
     case description
+    case draftCreatedAt = "draft_created_at"
     case draftExists = "draft_exists"
+    case draftIsBehindTip = "draft_is_behind_tip"
     case id
     case isArchived = "is_archived"
     case lastCommittedAt = "last_committed_at"
@@ -2011,10 +2019,14 @@ public struct ElevenLabsAgentConversationTicketIssueType: RawRepresentable, Coda
   }
 
   public static let knowledgeGap = Self(rawValue: "knowledge_gap")
+  public static let incorrectInformation = Self(rawValue: "incorrect_information")
+  public static let documentationGap = Self(rawValue: "documentation_gap")
   public static let productFeedback = Self(rawValue: "product_feedback")
+  public static let platformBug = Self(rawValue: "platform_bug")
   public static let toolIssue = Self(rawValue: "tool_issue")
   public static let missingTool = Self(rawValue: "missing_tool")
   public static let unnecessaryEscalation = Self(rawValue: "unnecessary_escalation")
+  public static let wrongAction = Self(rawValue: "wrong_action")
 }
 
 public struct ElevenLabsAgentConversationTicketResponseModel: Codable, Sendable {
@@ -2258,6 +2270,7 @@ public struct ElevenLabsAgentKnowledgeBaseRagChunkResponseModel: Codable, Sendab
   public var documentId: String
   public var documentName: String
   public var documentType: ElevenLabsKnowledgeBaseDocumentType
+  public var sourceUrl: String?
   public var text: String
   public var vectorDistance: Double?
 
@@ -2267,6 +2280,7 @@ public struct ElevenLabsAgentKnowledgeBaseRagChunkResponseModel: Codable, Sendab
     documentId: String,
     documentName: String,
     documentType: ElevenLabsKnowledgeBaseDocumentType,
+    sourceUrl: String?,
     text: String,
     vectorDistance: Double?
   ) {
@@ -2275,6 +2289,7 @@ public struct ElevenLabsAgentKnowledgeBaseRagChunkResponseModel: Codable, Sendab
     self.documentId = documentId
     self.documentName = documentName
     self.documentType = documentType
+    self.sourceUrl = sourceUrl
     self.text = text
     self.vectorDistance = vectorDistance
   }
@@ -2285,24 +2300,33 @@ public struct ElevenLabsAgentKnowledgeBaseRagChunkResponseModel: Codable, Sendab
     case documentId = "document_id"
     case documentName = "document_name"
     case documentType = "document_type"
+    case sourceUrl = "source_url"
     case text
     case vectorDistance = "vector_distance"
   }
 }
 
 public struct ElevenLabsAgentKnowledgeBaseRagQueryRequestModel: Codable, Sendable {
+  public var maxDocumentsLength: Int?
+  public var maxRetrievedRagChunksCount: Int?
   public var query: String
   public var useAgentDefaults: Bool?
 
   public init(
     query: String,
+    maxDocumentsLength: Int? = nil,
+    maxRetrievedRagChunksCount: Int? = nil,
     useAgentDefaults: Bool? = nil
   ) {
+    self.maxDocumentsLength = maxDocumentsLength
+    self.maxRetrievedRagChunksCount = maxRetrievedRagChunksCount
     self.query = query
     self.useAgentDefaults = useAgentDefaults
   }
 
   enum CodingKeys: String, CodingKey {
+    case maxDocumentsLength = "max_documents_length"
+    case maxRetrievedRagChunksCount = "max_retrieved_rag_chunks_count"
     case query
     case useAgentDefaults = "use_agent_defaults"
   }
@@ -2410,6 +2434,7 @@ public struct ElevenLabsAgentPlatformSettingsRequestModel: Codable, Sendable {
   public var guardrails: ElevenLabsGuardrailsV1Input?
   public var overrides: ElevenLabsConversationInitiationClientDataConfigInput?
   public var privacy: ElevenLabsPrivacyConfigInput?
+  public var queueingConfig: ElevenLabsAgentQueueingConfig?
   public var sentimentAnalysis: ElevenLabsSentimentAnalysisSettings?
   public var summaryLanguage: String?
   public var testing: ElevenLabsAgentTestingSettings?
@@ -2432,6 +2457,7 @@ public struct ElevenLabsAgentPlatformSettingsRequestModel: Codable, Sendable {
     guardrails: ElevenLabsGuardrailsV1Input? = nil,
     overrides: ElevenLabsConversationInitiationClientDataConfigInput? = nil,
     privacy: ElevenLabsPrivacyConfigInput? = nil,
+    queueingConfig: ElevenLabsAgentQueueingConfig? = nil,
     sentimentAnalysis: ElevenLabsSentimentAnalysisSettings? = nil,
     summaryLanguage: String? = nil,
     testing: ElevenLabsAgentTestingSettings? = nil,
@@ -2453,6 +2479,7 @@ public struct ElevenLabsAgentPlatformSettingsRequestModel: Codable, Sendable {
     self.guardrails = guardrails
     self.overrides = overrides
     self.privacy = privacy
+    self.queueingConfig = queueingConfig
     self.sentimentAnalysis = sentimentAnalysis
     self.summaryLanguage = summaryLanguage
     self.testing = testing
@@ -2476,6 +2503,7 @@ public struct ElevenLabsAgentPlatformSettingsRequestModel: Codable, Sendable {
     case guardrails
     case overrides
     case privacy
+    case queueingConfig = "queueing_config"
     case sentimentAnalysis = "sentiment_analysis"
     case summaryLanguage = "summary_language"
     case testing
@@ -2500,6 +2528,7 @@ public struct ElevenLabsAgentPlatformSettingsResponseModel: Codable, Sendable {
   public var guardrails: ElevenLabsGuardrailsV1Output?
   public var overrides: ElevenLabsConversationInitiationClientDataConfigOutput?
   public var privacy: ElevenLabsPrivacyConfigOutput?
+  public var queueingConfig: ElevenLabsAgentQueueingConfig?
   public var safety: ElevenLabsSafetyResponseModel?
   public var sentimentAnalysis: ElevenLabsSentimentAnalysisSettings?
   public var summaryLanguage: String?
@@ -2523,6 +2552,7 @@ public struct ElevenLabsAgentPlatformSettingsResponseModel: Codable, Sendable {
     guardrails: ElevenLabsGuardrailsV1Output? = nil,
     overrides: ElevenLabsConversationInitiationClientDataConfigOutput? = nil,
     privacy: ElevenLabsPrivacyConfigOutput? = nil,
+    queueingConfig: ElevenLabsAgentQueueingConfig? = nil,
     safety: ElevenLabsSafetyResponseModel? = nil,
     sentimentAnalysis: ElevenLabsSentimentAnalysisSettings? = nil,
     summaryLanguage: String? = nil,
@@ -2545,6 +2575,7 @@ public struct ElevenLabsAgentPlatformSettingsResponseModel: Codable, Sendable {
     self.guardrails = guardrails
     self.overrides = overrides
     self.privacy = privacy
+    self.queueingConfig = queueingConfig
     self.safety = safety
     self.sentimentAnalysis = sentimentAnalysis
     self.summaryLanguage = summaryLanguage
@@ -2569,6 +2600,7 @@ public struct ElevenLabsAgentPlatformSettingsResponseModel: Codable, Sendable {
     case guardrails
     case overrides
     case privacy
+    case queueingConfig = "queueing_config"
     case safety
     case sentimentAnalysis = "sentiment_analysis"
     case summaryLanguage = "summary_language"
@@ -2698,6 +2730,7 @@ public struct ElevenLabsAgentSummaryResponseModel: Codable, Sendable {
   public var lastCallTimeUnixSecs: Int?
   public var name: String
   public var tags: [String]
+  public var voiceId: String
 
   public init(
     accessInfo: ElevenLabsResourceAccessInfo,
@@ -2705,6 +2738,7 @@ public struct ElevenLabsAgentSummaryResponseModel: Codable, Sendable {
     createdAtUnixSecs: Int,
     name: String,
     tags: [String],
+    voiceId: String,
     archived: Bool? = nil,
     lastCallTimeUnixSecs: Int? = nil
   ) {
@@ -2715,6 +2749,7 @@ public struct ElevenLabsAgentSummaryResponseModel: Codable, Sendable {
     self.lastCallTimeUnixSecs = lastCallTimeUnixSecs
     self.name = name
     self.tags = tags
+    self.voiceId = voiceId
   }
 
   enum CodingKeys: String, CodingKey {
@@ -2725,6 +2760,7 @@ public struct ElevenLabsAgentSummaryResponseModel: Codable, Sendable {
     case lastCallTimeUnixSecs = "last_call_time_unix_secs"
     case name
     case tags
+    case voiceId = "voice_id"
   }
 }
 
@@ -3372,6 +3408,20 @@ public struct ElevenLabsAllowedOutputFormats: RawRepresentable, Codable, Hashabl
   public static let opus48000192 = Self(rawValue: "opus_48000_192")
 }
 
+public struct ElevenLabsAllowedValues: Codable, Sendable {
+  public var dynamicVariable: String
+
+  public init(
+    dynamicVariable: String
+  ) {
+    self.dynamicVariable = dynamicVariable
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case dynamicVariable = "dynamic_variable"
+  }
+}
+
 public struct ElevenLabsAllowlistItem: Codable, Sendable {
   public var hostname: String
 
@@ -3405,6 +3455,7 @@ public struct ElevenLabsAnalysisCharging: Codable, Sendable {
 }
 
 public struct ElevenLabsAnalysisProperty: Codable, Sendable {
+  public var allowedValues: ElevenLabsAllowedValues?
   public var allowedValuesDynamicVariable: String?
   public var constantValue: HyperProxyJSONValue?
   public var description: String?
@@ -3413,10 +3464,12 @@ public struct ElevenLabsAnalysisProperty: Codable, Sendable {
   public var isOmitted: Bool?
   public var isSystemProvided: Bool?
   public var llm: ElevenLabsLLM?
+  public var name: String?
   public var typeModel: ElevenLabsAnalysisPropertyTypeModel
 
   public init(
     typeModel: ElevenLabsAnalysisPropertyTypeModel,
+    allowedValues: ElevenLabsAllowedValues? = nil,
     allowedValuesDynamicVariable: String? = nil,
     constantValue: HyperProxyJSONValue? = nil,
     description: String? = nil,
@@ -3424,8 +3477,10 @@ public struct ElevenLabsAnalysisProperty: Codable, Sendable {
     enumValue: [String]? = nil,
     isOmitted: Bool? = nil,
     isSystemProvided: Bool? = nil,
-    llm: ElevenLabsLLM? = nil
+    llm: ElevenLabsLLM? = nil,
+    name: String? = nil
   ) {
+    self.allowedValues = allowedValues
     self.allowedValuesDynamicVariable = allowedValuesDynamicVariable
     self.constantValue = constantValue
     self.description = description
@@ -3434,10 +3489,12 @@ public struct ElevenLabsAnalysisProperty: Codable, Sendable {
     self.isOmitted = isOmitted
     self.isSystemProvided = isSystemProvided
     self.llm = llm
+    self.name = name
     self.typeModel = typeModel
   }
 
   enum CodingKeys: String, CodingKey {
+    case allowedValues = "allowed_values"
     case allowedValuesDynamicVariable = "allowed_values_dynamic_variable"
     case constantValue = "constant_value"
     case description
@@ -3446,6 +3503,7 @@ public struct ElevenLabsAnalysisProperty: Codable, Sendable {
     case isOmitted = "is_omitted"
     case isSystemProvided = "is_system_provided"
     case llm
+    case name
     case typeModel = "type"
   }
 }
@@ -3528,15 +3586,4 @@ public struct ElevenLabsAnalysisScope: RawRepresentable, Codable, Hashable, Send
 
   public static let conversation = Self(rawValue: "conversation")
   public static let agent = Self(rawValue: "agent")
-}
-
-public struct ElevenLabsAnalysisType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let evaluationCriteria = Self(rawValue: "evaluation_criteria")
-  public static let dataCollection = Self(rawValue: "data_collection")
 }

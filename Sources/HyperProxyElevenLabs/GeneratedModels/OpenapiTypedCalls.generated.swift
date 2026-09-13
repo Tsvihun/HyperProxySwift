@@ -659,6 +659,20 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
     return try await prepared.decoded(ElevenLabsCreateAgentResponseModel.self)
   }
 
+  public func deleteAgentHoldAudioRoute(
+    agentId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsDeleteAgentHoldAudioResponseModel {
+    let call = self.call(.deleteAgentHoldAudioRoute)
+      .path("agent_id", agentId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsDeleteAgentHoldAudioResponseModel.self)
+  }
+
   public func queryAgentKnowledgeBaseRagRoute(
     _ body: ElevenLabsAgentKnowledgeBaseRagQueryRequestModel,
     agentId: String,
@@ -2150,6 +2164,18 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(ElevenLabsGetToolExecutionsPageResponseModel.self)
+  }
+
+  public func listWorkspaceConversationTicketsRoute(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsGetAgentConversationTicketsPageResponseModel {
+    let call = self.call(.listWorkspaceConversationTicketsRoute)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsGetAgentConversationTicketsPageResponseModel.self)
   }
 
   public func createAgentConversationTicketRoute(

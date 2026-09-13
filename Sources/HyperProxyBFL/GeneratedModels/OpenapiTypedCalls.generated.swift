@@ -330,6 +330,21 @@ extension HyperProxyProviderService where Operation == BFLOperation {
       BFLGenerateFluxToolsOutpaintingV1V1FluxToolsOutpaintingV1PostResponse.self)
   }
 
+  public func generateFluxToolsVideoEditV1V1FluxToolsVideoEditV1Post(
+    _ body: BFLFlux3VideoVE2VNamedInputs,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> BFLGenerateFluxToolsVideoEditV1V1FluxToolsVideoEditV1PostResponse {
+    let call = self.call(.generateFluxToolsVideoEditV1V1FluxToolsVideoEditV1Post)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(
+      BFLGenerateFluxToolsVideoEditV1V1FluxToolsVideoEditV1PostResponse.self)
+  }
+
   public func generateFluxToolsVideoUpscaleV1V1FluxToolsVideoUpscaleV1Post(
     _ body: BFLFlux3VideoUpscaleInputs,
     query: [URLQueryItem] = [],

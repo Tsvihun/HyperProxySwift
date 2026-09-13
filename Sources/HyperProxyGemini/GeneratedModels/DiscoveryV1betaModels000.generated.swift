@@ -90,6 +90,28 @@ public struct GeminiAudioResponseFormatMimeType: RawRepresentable, Codable, Hash
   public static let aUDIOMULAW = Self(rawValue: "AUDIO_MULAW")
 }
 
+public struct GeminiAudioTranscription: Codable, Sendable {
+  public var speakerLabel: String?
+  public var text: String?
+  public var words: [HyperProxyJSONValue]?
+
+  public init(
+    speakerLabel: String? = nil,
+    text: String? = nil,
+    words: [HyperProxyJSONValue]? = nil
+  ) {
+    self.speakerLabel = speakerLabel
+    self.text = text
+    self.words = words
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case speakerLabel
+    case text
+    case words
+  }
+}
+
 public struct GeminiAudioTranscriptionConfig: Codable, Sendable {
   public var adaptationPhrases: [String]?
   public var customVocabulary: [String]?
@@ -392,18 +414,22 @@ public struct GeminiBidiGenerateContentSetup: Codable, Sendable {
 
 public struct GeminiBlob: Codable, Sendable {
   public var data: String?
+  public var displayName: String?
   public var mimeType: String?
 
   public init(
     data: String? = nil,
+    displayName: String? = nil,
     mimeType: String? = nil
   ) {
     self.data = data
+    self.displayName = displayName
     self.mimeType = mimeType
   }
 
   enum CodingKeys: String, CodingKey {
     case data
+    case displayName
     case mimeType
   }
 }
@@ -604,6 +630,7 @@ public struct GeminiCandidateFinishReason: RawRepresentable, Codable, Hashable, 
   public static let mISSINGTHOUGHTSIGNATURE = Self(rawValue: "MISSING_THOUGHT_SIGNATURE")
   public static let mALFORMEDRESPONSE = Self(rawValue: "MALFORMED_RESPONSE")
   public static let eSCALATION = Self(rawValue: "ESCALATION")
+  public static let pUPLIMITEDDISABLED = Self(rawValue: "PUP_LIMITED_DISABLED")
 }
 
 public struct GeminiChunkingConfig: Codable, Sendable {
@@ -2048,18 +2075,22 @@ public struct GeminiFile: Codable, Sendable {
 }
 
 public struct GeminiFileData: Codable, Sendable {
+  public var displayName: String?
   public var fileUri: String?
   public var mimeType: String?
 
   public init(
+    displayName: String? = nil,
     fileUri: String? = nil,
     mimeType: String? = nil
   ) {
+    self.displayName = displayName
     self.fileUri = fileUri
     self.mimeType = mimeType
   }
 
   enum CodingKeys: String, CodingKey {
+    case displayName
     case fileUri
     case mimeType
   }
@@ -3567,23 +3598,5 @@ public struct GeminiGenerativelanguageFileSearchStoresImportFileParameters: Coda
 
   enum CodingKeys: String, CodingKey {
     case fileSearchStoreName
-  }
-}
-
-public struct GeminiGenerativelanguageFileSearchStoresListParameters: Codable, Sendable {
-  public var pageSize: Int?
-  public var pageToken: String?
-
-  public init(
-    pageSize: Int? = nil,
-    pageToken: String? = nil
-  ) {
-    self.pageSize = pageSize
-    self.pageToken = pageToken
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case pageSize
-    case pageToken
   }
 }

@@ -4,242 +4,183 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAISkillVersionListResourceObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
+public struct OpenAIRealtimeSessionCreateResponseAudioOutput: Codable, Sendable {
+  public var format: OpenAIRealtimeAudioFormats?
+  public var speed: Double?
+  public var voice: OpenAIVoiceIdsShared?
 
-  public init(rawValue: String) {
-    self.rawValue = rawValue
+  public init(
+    format: OpenAIRealtimeAudioFormats? = nil,
+    speed: Double? = nil,
+    voice: OpenAIVoiceIdsShared? = nil
+  ) {
+    self.format = format
+    self.speed = speed
+    self.voice = voice
   }
 
-  public static let list = Self(rawValue: "list")
+  enum CodingKeys: String, CodingKey {
+    case format
+    case speed
+    case voice
+  }
 }
 
-public struct OpenAISkillVersionResource: Codable, Sendable {
-  public var createdAt: Int
-  public var description: String
+public struct OpenAIRealtimeSessionCreateResponseGA: Codable, Sendable {
+  public var audio: OpenAIRealtimeSessionCreateResponseGAAudio?
+  public var expiresAt: Int?
   public var id: String
-  public var name: String
-  public var object: OpenAISkillVersionResourceObject
-  public var skillId: String
-  public var version: String
+  public var include: [OpenAIRealtimeSessionCreateResponseGAIncludeItem]?
+  public var instructions: String?
+  public var maxOutputTokens: HyperProxyJSONValue?
+  public var model: HyperProxyJSONValue?
+  public var object: OpenAIRealtimeSessionCreateResponseGAObject
+  public var outputModalities: [OpenAIRealtimeSessionCreateResponseGAOutputModalitiesItem]?
+  public var prompt: OpenAIPrompt?
+  public var reasoning: OpenAIRealtimeReasoning?
+  public var toolChoice: HyperProxyJSONValue?
+  public var tools: [HyperProxyJSONValue]?
+  public var tracing: HyperProxyJSONValue?
+  public var truncation: OpenAIRealtimeTruncation?
+  public var typeModel: OpenAIRealtimeSessionCreateResponseGATypeModel
 
   public init(
-    createdAt: Int,
-    description: String,
     id: String,
-    name: String,
-    object: OpenAISkillVersionResourceObject,
-    skillId: String,
-    version: String
-  ) {
-    self.createdAt = createdAt
-    self.description = description
-    self.id = id
-    self.name = name
-    self.object = object
-    self.skillId = skillId
-    self.version = version
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case createdAt = "created_at"
-    case description
-    case id
-    case name
-    case object
-    case skillId = "skill_id"
-    case version
-  }
-}
-
-public struct OpenAISkillVersionResourceObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let skillVersion = Self(rawValue: "skill.version")
-}
-
-public struct OpenAISpecificApplyPatchParam: Codable, Sendable {
-  public var typeModel: OpenAISpecificApplyPatchParamTypeModel
-
-  public init(
-    typeModel: OpenAISpecificApplyPatchParamTypeModel
-  ) {
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAISpecificApplyPatchParamTypeModel: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let applyPatch = Self(rawValue: "apply_patch")
-}
-
-public struct OpenAISpecificFunctionShellParam: Codable, Sendable {
-  public var typeModel: OpenAISpecificFunctionShellParamTypeModel
-
-  public init(
-    typeModel: OpenAISpecificFunctionShellParamTypeModel
-  ) {
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAISpecificFunctionShellParamTypeModel: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let shell = Self(rawValue: "shell")
-}
-
-public struct OpenAISpecificProgrammaticToolCallingParam: Codable, Sendable {
-  public var typeModel: OpenAISpecificProgrammaticToolCallingParamTypeModel
-
-  public init(
-    typeModel: OpenAISpecificProgrammaticToolCallingParamTypeModel
-  ) {
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAISpecificProgrammaticToolCallingParamTypeModel: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let programmaticToolCalling = Self(rawValue: "programmatic_tool_calling")
-}
-
-public struct OpenAISpeechAudioDeltaEvent: Codable, Sendable {
-  public var audio: String
-  public var typeModel: OpenAISpeechAudioDeltaEventTypeModel
-
-  public init(
-    audio: String,
-    typeModel: OpenAISpeechAudioDeltaEventTypeModel
+    object: OpenAIRealtimeSessionCreateResponseGAObject,
+    typeModel: OpenAIRealtimeSessionCreateResponseGATypeModel,
+    audio: OpenAIRealtimeSessionCreateResponseGAAudio? = nil,
+    expiresAt: Int? = nil,
+    include: [OpenAIRealtimeSessionCreateResponseGAIncludeItem]? = nil,
+    instructions: String? = nil,
+    maxOutputTokens: HyperProxyJSONValue? = nil,
+    model: HyperProxyJSONValue? = nil,
+    outputModalities: [OpenAIRealtimeSessionCreateResponseGAOutputModalitiesItem]? = nil,
+    prompt: OpenAIPrompt? = nil,
+    reasoning: OpenAIRealtimeReasoning? = nil,
+    toolChoice: HyperProxyJSONValue? = nil,
+    tools: [HyperProxyJSONValue]? = nil,
+    tracing: HyperProxyJSONValue? = nil,
+    truncation: OpenAIRealtimeTruncation? = nil
   ) {
     self.audio = audio
+    self.expiresAt = expiresAt
+    self.id = id
+    self.include = include
+    self.instructions = instructions
+    self.maxOutputTokens = maxOutputTokens
+    self.model = model
+    self.object = object
+    self.outputModalities = outputModalities
+    self.prompt = prompt
+    self.reasoning = reasoning
+    self.toolChoice = toolChoice
+    self.tools = tools
+    self.tracing = tracing
+    self.truncation = truncation
     self.typeModel = typeModel
   }
 
   enum CodingKeys: String, CodingKey {
     case audio
+    case expiresAt = "expires_at"
+    case id
+    case include
+    case instructions
+    case maxOutputTokens = "max_output_tokens"
+    case model
+    case object
+    case outputModalities = "output_modalities"
+    case prompt
+    case reasoning
+    case toolChoice = "tool_choice"
+    case tools
+    case tracing
+    case truncation
     case typeModel = "type"
   }
 }
 
-public struct OpenAISpeechAudioDeltaEventTypeModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let speechAudioDelta = Self(rawValue: "speech.audio.delta")
-}
-
-public struct OpenAISpeechAudioDoneEvent: Codable, Sendable {
-  public var typeModel: OpenAISpeechAudioDoneEventTypeModel
-  public var usage: OpenAISpeechAudioDoneEventUsage
+public struct OpenAIRealtimeSessionCreateResponseGAAudio: Codable, Sendable {
+  public var input: OpenAIRealtimeSessionCreateResponseGAAudioInput?
+  public var output: OpenAIRealtimeSessionCreateResponseGAAudioOutput?
 
   public init(
-    typeModel: OpenAISpeechAudioDoneEventTypeModel,
-    usage: OpenAISpeechAudioDoneEventUsage
+    input: OpenAIRealtimeSessionCreateResponseGAAudioInput? = nil,
+    output: OpenAIRealtimeSessionCreateResponseGAAudioOutput? = nil
+  ) {
+    self.input = input
+    self.output = output
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case input
+    case output
+  }
+}
+
+public struct OpenAIRealtimeSessionCreateResponseGAAudioInput: Codable, Sendable {
+  public var format: OpenAIRealtimeAudioFormats?
+  public var noiseReduction: OpenAIRealtimeSessionCreateResponseGAAudioInputNoiseReduction?
+  public var transcription: OpenAIAudioTranscriptionResponse?
+  public var turnDetection: OpenAIRealtimeTurnDetection?
+
+  public init(
+    format: OpenAIRealtimeAudioFormats? = nil,
+    noiseReduction: OpenAIRealtimeSessionCreateResponseGAAudioInputNoiseReduction? = nil,
+    transcription: OpenAIAudioTranscriptionResponse? = nil,
+    turnDetection: OpenAIRealtimeTurnDetection? = nil
+  ) {
+    self.format = format
+    self.noiseReduction = noiseReduction
+    self.transcription = transcription
+    self.turnDetection = turnDetection
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case format
+    case noiseReduction = "noise_reduction"
+    case transcription
+    case turnDetection = "turn_detection"
+  }
+}
+
+public struct OpenAIRealtimeSessionCreateResponseGAAudioInputNoiseReduction: Codable, Sendable {
+  public var typeModel: OpenAINoiseReductionType?
+
+  public init(
+    typeModel: OpenAINoiseReductionType? = nil
   ) {
     self.typeModel = typeModel
-    self.usage = usage
   }
 
   enum CodingKeys: String, CodingKey {
     case typeModel = "type"
-    case usage
   }
 }
 
-public struct OpenAISpeechAudioDoneEventTypeModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let speechAudioDone = Self(rawValue: "speech.audio.done")
-}
-
-public struct OpenAISpeechAudioDoneEventUsage: Codable, Sendable {
-  public var inputTokens: Int
-  public var outputTokens: Int
-  public var totalTokens: Int
+public struct OpenAIRealtimeSessionCreateResponseGAAudioOutput: Codable, Sendable {
+  public var format: OpenAIRealtimeAudioFormats?
+  public var speed: Double?
+  public var voice: OpenAIVoiceIdsShared?
 
   public init(
-    inputTokens: Int,
-    outputTokens: Int,
-    totalTokens: Int
+    format: OpenAIRealtimeAudioFormats? = nil,
+    speed: Double? = nil,
+    voice: OpenAIVoiceIdsShared? = nil
   ) {
-    self.inputTokens = inputTokens
-    self.outputTokens = outputTokens
-    self.totalTokens = totalTokens
+    self.format = format
+    self.speed = speed
+    self.voice = voice
   }
 
   enum CodingKeys: String, CodingKey {
-    case inputTokens = "input_tokens"
-    case outputTokens = "output_tokens"
-    case totalTokens = "total_tokens"
+    case format
+    case speed
+    case voice
   }
 }
 
-public struct OpenAISpendAlertNotificationChannel: Codable, Sendable {
-  public var recipients: [String]
-  public var subjectPrefix: String?
-  public var typeModel: OpenAISpendAlertNotificationChannelTypeModel
-
-  public init(
-    recipients: [String],
-    typeModel: OpenAISpendAlertNotificationChannelTypeModel,
-    subjectPrefix: String? = nil
-  ) {
-    self.recipients = recipients
-    self.subjectPrefix = subjectPrefix
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case recipients
-    case subjectPrefix = "subject_prefix"
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAISpendAlertNotificationChannelTypeModel: RawRepresentable, Codable, Hashable,
+public struct OpenAIRealtimeSessionCreateResponseGAIncludeItem: RawRepresentable, Codable, Hashable,
   Sendable
 {
   public var rawValue: String
@@ -248,183 +189,11 @@ public struct OpenAISpendAlertNotificationChannelTypeModel: RawRepresentable, Co
     self.rawValue = rawValue
   }
 
-  public static let email = Self(rawValue: "email")
+  public static let itemInputAudioTranscriptionLogprobs = Self(
+    rawValue: "item.input_audio_transcription.logprobs")
 }
 
-public enum OpenAISpendLimitCurrency: Codable, Sendable {
-  case string(String)
-  case spendLimitCurrencyAnyOf2(OpenAISpendLimitCurrencyAnyOf2)
-
-  public init(from decoder: any Decoder) throws {
-    let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(String.self) {
-      self = .string(value)
-      return
-    }
-    self = .spendLimitCurrencyAnyOf2(try container.decode(OpenAISpendLimitCurrencyAnyOf2.self))
-  }
-
-  public func encode(to encoder: any Encoder) throws {
-    var container = encoder.singleValueContainer()
-    switch self {
-    case .string(let value):
-      try container.encode(value)
-    case .spendLimitCurrencyAnyOf2(let value):
-      try container.encode(value)
-    }
-  }
-}
-
-extension OpenAISpendLimitCurrency: ExpressibleByStringLiteral {
-  public init(stringLiteral value: String) {
-    self = .string(value)
-  }
-}
-
-public struct OpenAISpendLimitCurrencyAnyOf2: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let uSD = Self(rawValue: "USD")
-}
-
-public struct OpenAISpendLimitEnforcement: Codable, Sendable {
-  public var status: OpenAISpendLimitEnforcementStatus
-
-  public init(
-    status: OpenAISpendLimitEnforcementStatus
-  ) {
-    self.status = status
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case status
-  }
-}
-
-public enum OpenAISpendLimitEnforcementStatus: Codable, Sendable {
-  case string(String)
-  case spendLimitEnforcementStatusAnyOf2(OpenAISpendLimitEnforcementStatusAnyOf2)
-
-  public init(from decoder: any Decoder) throws {
-    let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(String.self) {
-      self = .string(value)
-      return
-    }
-    self = .spendLimitEnforcementStatusAnyOf2(
-      try container.decode(OpenAISpendLimitEnforcementStatusAnyOf2.self))
-  }
-
-  public func encode(to encoder: any Encoder) throws {
-    var container = encoder.singleValueContainer()
-    switch self {
-    case .string(let value):
-      try container.encode(value)
-    case .spendLimitEnforcementStatusAnyOf2(let value):
-      try container.encode(value)
-    }
-  }
-}
-
-extension OpenAISpendLimitEnforcementStatus: ExpressibleByStringLiteral {
-  public init(stringLiteral value: String) {
-    self = .string(value)
-  }
-}
-
-public struct OpenAISpendLimitEnforcementStatusAnyOf2: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let inactive = Self(rawValue: "inactive")
-  public static let enforcing = Self(rawValue: "enforcing")
-}
-
-public enum OpenAISpendLimitInterval: Codable, Sendable {
-  case string(String)
-  case spendLimitIntervalAnyOf2(OpenAISpendLimitIntervalAnyOf2)
-
-  public init(from decoder: any Decoder) throws {
-    let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(String.self) {
-      self = .string(value)
-      return
-    }
-    self = .spendLimitIntervalAnyOf2(try container.decode(OpenAISpendLimitIntervalAnyOf2.self))
-  }
-
-  public func encode(to encoder: any Encoder) throws {
-    var container = encoder.singleValueContainer()
-    switch self {
-    case .string(let value):
-      try container.encode(value)
-    case .spendLimitIntervalAnyOf2(let value):
-      try container.encode(value)
-    }
-  }
-}
-
-extension OpenAISpendLimitInterval: ExpressibleByStringLiteral {
-  public init(stringLiteral value: String) {
-    self = .string(value)
-  }
-}
-
-public struct OpenAISpendLimitIntervalAnyOf2: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let month = Self(rawValue: "month")
-}
-
-public struct OpenAIStaticChunkingStrategy: Codable, Sendable {
-  public var chunkOverlapTokens: Int
-  public var maxChunkSizeTokens: Int
-
-  public init(
-    chunkOverlapTokens: Int,
-    maxChunkSizeTokens: Int
-  ) {
-    self.chunkOverlapTokens = chunkOverlapTokens
-    self.maxChunkSizeTokens = maxChunkSizeTokens
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case chunkOverlapTokens = "chunk_overlap_tokens"
-    case maxChunkSizeTokens = "max_chunk_size_tokens"
-  }
-}
-
-public struct OpenAIStaticChunkingStrategyRequestParam: Codable, Sendable {
-  public var staticValue: OpenAIStaticChunkingStrategy
-  public var typeModel: OpenAIStaticChunkingStrategyRequestParamTypeModel
-
-  public init(
-    staticValue: OpenAIStaticChunkingStrategy,
-    typeModel: OpenAIStaticChunkingStrategyRequestParamTypeModel
-  ) {
-    self.staticValue = staticValue
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case staticValue = "static"
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAIStaticChunkingStrategyRequestParamTypeModel: RawRepresentable, Codable,
+public struct OpenAIRealtimeSessionCreateResponseGAMaxOutputTokensOneOf2: RawRepresentable, Codable,
   Hashable, Sendable
 {
   public var rawValue: String
@@ -433,328 +202,58 @@ public struct OpenAIStaticChunkingStrategyRequestParamTypeModel: RawRepresentabl
     self.rawValue = rawValue
   }
 
-  public static let staticValue = Self(rawValue: "static")
+  public static let inf = Self(rawValue: "inf")
 }
 
-public struct OpenAIStaticChunkingStrategyResponseParam: Codable, Sendable {
-  public var staticValue: OpenAIStaticChunkingStrategy
-  public var typeModel: OpenAIStaticChunkingStrategyResponseParamTypeModel
+public struct OpenAIRealtimeSessionCreateResponseGAModelAnyOf2: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
 
-  public init(
-    staticValue: OpenAIStaticChunkingStrategy,
-    typeModel: OpenAIStaticChunkingStrategyResponseParamTypeModel
-  ) {
-    self.staticValue = staticValue
-    self.typeModel = typeModel
+  public init(rawValue: String) {
+    self.rawValue = rawValue
   }
 
-  enum CodingKeys: String, CodingKey {
-    case staticValue = "static"
-    case typeModel = "type"
-  }
+  public static let gptRealtime = Self(rawValue: "gpt-realtime")
+  public static let gptRealtime15 = Self(rawValue: "gpt-realtime-1.5")
+  public static let gptRealtime2 = Self(rawValue: "gpt-realtime-2")
+  public static let gptRealtime21 = Self(rawValue: "gpt-realtime-2.1")
+  public static let gptRealtime21Mini = Self(rawValue: "gpt-realtime-2.1-mini")
+  public static let gptRealtime20250828 = Self(rawValue: "gpt-realtime-2025-08-28")
+  public static let gpt4oRealtimePreview = Self(rawValue: "gpt-4o-realtime-preview")
+  public static let gpt4oRealtimePreview20241001 = Self(
+    rawValue: "gpt-4o-realtime-preview-2024-10-01")
+  public static let gpt4oRealtimePreview20241217 = Self(
+    rawValue: "gpt-4o-realtime-preview-2024-12-17")
+  public static let gpt4oRealtimePreview20250603 = Self(
+    rawValue: "gpt-4o-realtime-preview-2025-06-03")
+  public static let gpt4oMiniRealtimePreview = Self(rawValue: "gpt-4o-mini-realtime-preview")
+  public static let gpt4oMiniRealtimePreview20241217 = Self(
+    rawValue: "gpt-4o-mini-realtime-preview-2024-12-17")
+  public static let gptRealtimeMini = Self(rawValue: "gpt-realtime-mini")
+  public static let gptRealtimeMini20251006 = Self(rawValue: "gpt-realtime-mini-2025-10-06")
+  public static let gptRealtimeMini20251215 = Self(rawValue: "gpt-realtime-mini-2025-12-15")
+  public static let gptAudio15 = Self(rawValue: "gpt-audio-1.5")
+  public static let gptAudioMini = Self(rawValue: "gpt-audio-mini")
+  public static let gptAudioMini20251006 = Self(rawValue: "gpt-audio-mini-2025-10-06")
+  public static let gptAudioMini20251215 = Self(rawValue: "gpt-audio-mini-2025-12-15")
 }
 
-public struct OpenAIStaticChunkingStrategyResponseParamTypeModel: RawRepresentable, Codable,
+public struct OpenAIRealtimeSessionCreateResponseGAObject: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let realtimeSession = Self(rawValue: "realtime.session")
+}
+
+public struct OpenAIRealtimeSessionCreateResponseGAOutputModalitiesItem: RawRepresentable, Codable,
   Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let staticValue = Self(rawValue: "static")
-}
-
-public typealias OpenAIStopConfiguration = HyperProxyJSONValue?
-
-public struct OpenAISubmitToolOuputsToRunParameters: Codable, Sendable {
-  public var runId: String
-  public var threadId: String
-
-  public init(
-    runId: String,
-    threadId: String
-  ) {
-    self.runId = runId
-    self.threadId = threadId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case runId = "run_id"
-    case threadId = "thread_id"
-  }
-}
-
-public struct OpenAISubmitToolOutputsRunRequest: Codable, Sendable {
-  public var stream: Bool?
-  public var toolOutputs: [OpenAISubmitToolOutputsRunRequestToolOutputsItem]
-
-  public init(
-    toolOutputs: [OpenAISubmitToolOutputsRunRequestToolOutputsItem],
-    stream: Bool? = nil
-  ) {
-    self.stream = stream
-    self.toolOutputs = toolOutputs
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case stream
-    case toolOutputs = "tool_outputs"
-  }
-}
-
-public struct OpenAISubmitToolOutputsRunRequestToolOutputsItem: Codable, Sendable {
-  public var output: String?
-  public var toolCallId: String?
-
-  public init(
-    output: String? = nil,
-    toolCallId: String? = nil
-  ) {
-    self.output = output
-    self.toolCallId = toolCallId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case output
-    case toolCallId = "tool_call_id"
-  }
-}
-
-public struct OpenAISummaryTextContent: Codable, Sendable {
-  public var text: String
-  public var typeModel: OpenAISummaryTextContentTypeModel
-
-  public init(
-    text: String,
-    typeModel: OpenAISummaryTextContentTypeModel
-  ) {
-    self.text = text
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case text
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAISummaryTextContentTypeModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let summaryText = Self(rawValue: "summary_text")
-}
-
-public struct OpenAISynthIDProvenanceResult: Codable, Sendable {
-  public var generatedAt: String?
-  public var model: String?
-  public var outcome: OpenAIProvenanceDetectionResultApi
-  public var typeModel: OpenAISynthIDProvenanceResultTypeModel
-
-  public init(
-    generatedAt: String?,
-    model: String?,
-    outcome: OpenAIProvenanceDetectionResultApi,
-    typeModel: OpenAISynthIDProvenanceResultTypeModel
-  ) {
-    self.generatedAt = generatedAt
-    self.model = model
-    self.outcome = outcome
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case generatedAt = "generated_at"
-    case model
-    case outcome
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAISynthIDProvenanceResultTypeModel: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let synthid = Self(rawValue: "synthid")
-}
-
-public struct OpenAITaskGroupItem: Codable, Sendable {
-  public var createdAt: Int
-  public var id: String
-  public var object: OpenAITaskGroupItemObject
-  public var tasks: [OpenAITaskGroupTask]
-  public var threadId: String
-  public var typeModel: OpenAITaskGroupItemTypeModel
-
-  public init(
-    createdAt: Int,
-    id: String,
-    object: OpenAITaskGroupItemObject,
-    tasks: [OpenAITaskGroupTask],
-    threadId: String,
-    typeModel: OpenAITaskGroupItemTypeModel
-  ) {
-    self.createdAt = createdAt
-    self.id = id
-    self.object = object
-    self.tasks = tasks
-    self.threadId = threadId
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case createdAt = "created_at"
-    case id
-    case object
-    case tasks
-    case threadId = "thread_id"
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAITaskGroupItemObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let chatkitThreadItem = Self(rawValue: "chatkit.thread_item")
-}
-
-public struct OpenAITaskGroupItemTypeModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let chatkitTaskGroup = Self(rawValue: "chatkit.task_group")
-}
-
-public struct OpenAITaskGroupTask: Codable, Sendable {
-  public var heading: String?
-  public var summary: String?
-  public var typeModel: OpenAITaskType
-
-  public init(
-    heading: String?,
-    summary: String?,
-    typeModel: OpenAITaskType
-  ) {
-    self.heading = heading
-    self.summary = summary
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case heading
-    case summary
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAITaskItem: Codable, Sendable {
-  public var createdAt: Int
-  public var heading: String?
-  public var id: String
-  public var object: OpenAITaskItemObject
-  public var summary: String?
-  public var taskType: OpenAITaskType
-  public var threadId: String
-  public var typeModel: OpenAITaskItemTypeModel
-
-  public init(
-    createdAt: Int,
-    heading: String?,
-    id: String,
-    object: OpenAITaskItemObject,
-    summary: String?,
-    taskType: OpenAITaskType,
-    threadId: String,
-    typeModel: OpenAITaskItemTypeModel
-  ) {
-    self.createdAt = createdAt
-    self.heading = heading
-    self.id = id
-    self.object = object
-    self.summary = summary
-    self.taskType = taskType
-    self.threadId = threadId
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case createdAt = "created_at"
-    case heading
-    case id
-    case object
-    case summary
-    case taskType = "task_type"
-    case threadId = "thread_id"
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAITaskItemObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let chatkitThreadItem = Self(rawValue: "chatkit.thread_item")
-}
-
-public struct OpenAITaskItemTypeModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let chatkitTask = Self(rawValue: "chatkit.task")
-}
-
-public struct OpenAITaskType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let custom = Self(rawValue: "custom")
-  public static let thought = Self(rawValue: "thought")
-}
-
-public struct OpenAITextContent: Codable, Sendable {
-  public var text: String
-  public var typeModel: OpenAITextContentTypeModel
-
-  public init(
-    text: String,
-    typeModel: OpenAITextContentTypeModel
-  ) {
-    self.text = text
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case text
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAITextContentTypeModel: RawRepresentable, Codable, Hashable, Sendable {
   public var rawValue: String
 
   public init(rawValue: String) {
@@ -762,42 +261,11 @@ public struct OpenAITextContentTypeModel: RawRepresentable, Codable, Hashable, S
   }
 
   public static let text = Self(rawValue: "text")
+  public static let audio = Self(rawValue: "audio")
 }
 
-public typealias OpenAITextResponseFormatConfiguration = HyperProxyJSONValue
-
-public struct OpenAITextResponseFormatJsonSchema: Codable, Sendable {
-  public var description: String?
-  public var name: String
-  public var schema: OpenAIResponseFormatJsonSchemaSchema
-  public var strict: Bool?
-  public var typeModel: OpenAITextResponseFormatJsonSchemaTypeModel
-
-  public init(
-    name: String,
-    schema: OpenAIResponseFormatJsonSchemaSchema,
-    typeModel: OpenAITextResponseFormatJsonSchemaTypeModel,
-    description: String? = nil,
-    strict: Bool? = nil
-  ) {
-    self.description = description
-    self.name = name
-    self.schema = schema
-    self.strict = strict
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case description
-    case name
-    case schema
-    case strict
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAITextResponseFormatJsonSchemaTypeModel: RawRepresentable, Codable, Hashable,
-  Sendable
+public struct OpenAIRealtimeSessionCreateResponseGATracingAnyOf1OneOf1: RawRepresentable, Codable,
+  Hashable, Sendable
 {
   public var rawValue: String
 
@@ -805,772 +273,32 @@ public struct OpenAITextResponseFormatJsonSchemaTypeModel: RawRepresentable, Cod
     self.rawValue = rawValue
   }
 
-  public static let jsonSchema = Self(rawValue: "json_schema")
+  public static let auto = Self(rawValue: "auto")
 }
 
-public typealias OpenAIThreadItem = HyperProxyJSONValue
-
-public struct OpenAIThreadItemListResource: Codable, Sendable {
-  public var data: [OpenAIThreadItem]
-  public var firstId: String?
-  public var hasMore: Bool
-  public var lastId: String?
-  public var object: OpenAIThreadItemListResourceObject
+public struct OpenAIRealtimeSessionCreateResponseGATracingAnyOf1OneOf2: Codable, Sendable {
+  public var groupId: String?
+  public var metadata: HyperProxyJSONValue?
+  public var workflowName: String?
 
   public init(
-    data: [OpenAIThreadItem],
-    firstId: String?,
-    hasMore: Bool,
-    lastId: String?,
-    object: OpenAIThreadItemListResourceObject
+    groupId: String? = nil,
+    metadata: HyperProxyJSONValue? = nil,
+    workflowName: String? = nil
   ) {
-    self.data = data
-    self.firstId = firstId
-    self.hasMore = hasMore
-    self.lastId = lastId
-    self.object = object
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case data
-    case firstId = "first_id"
-    case hasMore = "has_more"
-    case lastId = "last_id"
-    case object
-  }
-}
-
-public struct OpenAIThreadItemListResourceObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let list = Self(rawValue: "list")
-}
-
-public struct OpenAIThreadListResource: Codable, Sendable {
-  public var data: [OpenAIThreadResource]
-  public var firstId: String?
-  public var hasMore: Bool
-  public var lastId: String?
-  public var object: OpenAIThreadListResourceObject
-
-  public init(
-    data: [OpenAIThreadResource],
-    firstId: String?,
-    hasMore: Bool,
-    lastId: String?,
-    object: OpenAIThreadListResourceObject
-  ) {
-    self.data = data
-    self.firstId = firstId
-    self.hasMore = hasMore
-    self.lastId = lastId
-    self.object = object
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case data
-    case firstId = "first_id"
-    case hasMore = "has_more"
-    case lastId = "last_id"
-    case object
-  }
-}
-
-public struct OpenAIThreadListResourceObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let list = Self(rawValue: "list")
-}
-
-public struct OpenAIThreadObject: Codable, Sendable {
-  public var createdAt: Int
-  public var id: String
-  public var metadata: OpenAIMetadata
-  public var object: OpenAIThreadObjectObject
-  public var toolResources: OpenAIThreadObjectToolResourcesAnyOf1?
-
-  public init(
-    createdAt: Int,
-    id: String,
-    metadata: OpenAIMetadata,
-    object: OpenAIThreadObjectObject,
-    toolResources: OpenAIThreadObjectToolResourcesAnyOf1?
-  ) {
-    self.createdAt = createdAt
-    self.id = id
+    self.groupId = groupId
     self.metadata = metadata
-    self.object = object
-    self.toolResources = toolResources
+    self.workflowName = workflowName
   }
 
   enum CodingKeys: String, CodingKey {
-    case createdAt = "created_at"
-    case id
+    case groupId = "group_id"
     case metadata
-    case object
-    case toolResources = "tool_resources"
+    case workflowName = "workflow_name"
   }
 }
 
-public struct OpenAIThreadObjectObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let thread = Self(rawValue: "thread")
-}
-
-public struct OpenAIThreadObjectToolResourcesAnyOf1: Codable, Sendable {
-  public var codeInterpreter: OpenAIThreadObjectToolResourcesAnyOf1CodeInterpreter?
-  public var fileSearch: OpenAIThreadObjectToolResourcesAnyOf1FileSearch?
-
-  public init(
-    codeInterpreter: OpenAIThreadObjectToolResourcesAnyOf1CodeInterpreter? = nil,
-    fileSearch: OpenAIThreadObjectToolResourcesAnyOf1FileSearch? = nil
-  ) {
-    self.codeInterpreter = codeInterpreter
-    self.fileSearch = fileSearch
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case codeInterpreter = "code_interpreter"
-    case fileSearch = "file_search"
-  }
-}
-
-public struct OpenAIThreadObjectToolResourcesAnyOf1CodeInterpreter: Codable, Sendable {
-  public var fileIds: [String]?
-
-  public init(
-    fileIds: [String]? = nil
-  ) {
-    self.fileIds = fileIds
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case fileIds = "file_ids"
-  }
-}
-
-public struct OpenAIThreadObjectToolResourcesAnyOf1FileSearch: Codable, Sendable {
-  public var vectorStoreIds: [String]?
-
-  public init(
-    vectorStoreIds: [String]? = nil
-  ) {
-    self.vectorStoreIds = vectorStoreIds
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case vectorStoreIds = "vector_store_ids"
-  }
-}
-
-public struct OpenAIThreadResource: Codable, Sendable {
-  public var createdAt: Int
-  public var id: String
-  public var object: OpenAIThreadResourceObject
-  public var status: HyperProxyJSONValue
-  public var title: String?
-  public var user: String
-
-  public init(
-    createdAt: Int,
-    id: String,
-    object: OpenAIThreadResourceObject,
-    status: HyperProxyJSONValue,
-    title: String?,
-    user: String
-  ) {
-    self.createdAt = createdAt
-    self.id = id
-    self.object = object
-    self.status = status
-    self.title = title
-    self.user = user
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case createdAt = "created_at"
-    case id
-    case object
-    case status
-    case title
-    case user
-  }
-}
-
-public struct OpenAIThreadResourceObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let chatkitThread = Self(rawValue: "chatkit.thread")
-}
-
-public typealias OpenAIThreadStreamEvent = OpenAIThreadStreamEventOneOf1
-
-public struct OpenAIThreadStreamEventOneOf1: Codable, Sendable {
-  public var data: OpenAIThreadObject
-  public var enabled: Bool?
-  public var event: OpenAIThreadStreamEventOneOf1Event
-
-  public init(
-    data: OpenAIThreadObject,
-    event: OpenAIThreadStreamEventOneOf1Event,
-    enabled: Bool? = nil
-  ) {
-    self.data = data
-    self.enabled = enabled
-    self.event = event
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case data
-    case enabled
-    case event
-  }
-}
-
-public struct OpenAIThreadStreamEventOneOf1Event: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let threadCreated = Self(rawValue: "thread.created")
-}
-
-public struct OpenAIToggleCertificatesRequest: Codable, Sendable {
-  public var certificateIds: [String]
-
-  public init(
-    certificateIds: [String]
-  ) {
-    self.certificateIds = certificateIds
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case certificateIds = "certificate_ids"
-  }
-}
-
-public struct OpenAITokenCountsBody: Codable, Sendable {
-  public var conversation: OpenAIConversationParam?
-  public var input: HyperProxyJSONValue?
-  public var instructions: String?
-  public var model: String?
-  public var parallelToolCalls: Bool?
-  public var personality: OpenAIPersonalityEnum?
-  public var previousResponseId: String?
-  public var reasoning: OpenAIReasoning?
-  public var text: OpenAIResponseTextParam?
-  public var toolChoice: OpenAIToolChoiceParam?
-  public var tools: [OpenAITool]?
-  public var truncation: OpenAITruncationEnum?
-
-  public init(
-    conversation: OpenAIConversationParam? = nil,
-    input: HyperProxyJSONValue? = nil,
-    instructions: String? = nil,
-    model: String? = nil,
-    parallelToolCalls: Bool? = nil,
-    personality: OpenAIPersonalityEnum? = nil,
-    previousResponseId: String? = nil,
-    reasoning: OpenAIReasoning? = nil,
-    text: OpenAIResponseTextParam? = nil,
-    toolChoice: OpenAIToolChoiceParam? = nil,
-    tools: [OpenAITool]? = nil,
-    truncation: OpenAITruncationEnum? = nil
-  ) {
-    self.conversation = conversation
-    self.input = input
-    self.instructions = instructions
-    self.model = model
-    self.parallelToolCalls = parallelToolCalls
-    self.personality = personality
-    self.previousResponseId = previousResponseId
-    self.reasoning = reasoning
-    self.text = text
-    self.toolChoice = toolChoice
-    self.tools = tools
-    self.truncation = truncation
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case conversation
-    case input
-    case instructions
-    case model
-    case parallelToolCalls = "parallel_tool_calls"
-    case personality
-    case previousResponseId = "previous_response_id"
-    case reasoning
-    case text
-    case toolChoice = "tool_choice"
-    case tools
-    case truncation
-  }
-}
-
-public struct OpenAITokenCountsResource: Codable, Sendable {
-  public var inputTokens: Int
-  public var object: OpenAITokenCountsResourceObject
-
-  public init(
-    inputTokens: Int,
-    object: OpenAITokenCountsResourceObject
-  ) {
-    self.inputTokens = inputTokens
-    self.object = object
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case inputTokens = "input_tokens"
-    case object
-  }
-}
-
-public struct OpenAITokenCountsResourceObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let responseInputTokens = Self(rawValue: "response.input_tokens")
-}
-
-public typealias OpenAITool = HyperProxyJSONValue
-
-public enum OpenAIToolCallCaller: Codable, Sendable {
-  case directToolCallCaller(OpenAIDirectToolCallCaller)
-  case programToolCallCaller(OpenAIProgramToolCallCaller)
-
-  public init(from decoder: any Decoder) throws {
-    let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(OpenAIDirectToolCallCaller.self) {
-      self = .directToolCallCaller(value)
-      return
-    }
-    self = .programToolCallCaller(try container.decode(OpenAIProgramToolCallCaller.self))
-  }
-
-  public func encode(to encoder: any Encoder) throws {
-    var container = encoder.singleValueContainer()
-    switch self {
-    case .directToolCallCaller(let value):
-      try container.encode(value)
-    case .programToolCallCaller(let value):
-      try container.encode(value)
-    }
-  }
-}
-
-public enum OpenAIToolCallCallerParam: Codable, Sendable {
-  case directToolCallCallerParam(OpenAIDirectToolCallCallerParam)
-  case programToolCallCallerParam(OpenAIProgramToolCallCallerParam)
-
-  public init(from decoder: any Decoder) throws {
-    let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(OpenAIDirectToolCallCallerParam.self) {
-      self = .directToolCallCallerParam(value)
-      return
-    }
-    self = .programToolCallCallerParam(try container.decode(OpenAIProgramToolCallCallerParam.self))
-  }
-
-  public func encode(to encoder: any Encoder) throws {
-    var container = encoder.singleValueContainer()
-    switch self {
-    case .directToolCallCallerParam(let value):
-      try container.encode(value)
-    case .programToolCallCallerParam(let value):
-      try container.encode(value)
-    }
-  }
-}
-
-public struct OpenAIToolChoice: Codable, Sendable {
-  public var id: String
-
-  public init(
-    id: String
-  ) {
-    self.id = id
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case id
-  }
-}
-
-public struct OpenAIToolChoiceAllowed: Codable, Sendable {
-  public var mode: OpenAIToolChoiceAllowedMode
-  public var tools: [[String: HyperProxyJSONValue]]
-  public var typeModel: OpenAIToolChoiceAllowedTypeModel
-
-  public init(
-    mode: OpenAIToolChoiceAllowedMode,
-    tools: [[String: HyperProxyJSONValue]],
-    typeModel: OpenAIToolChoiceAllowedTypeModel
-  ) {
-    self.mode = mode
-    self.tools = tools
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case mode
-    case tools
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAIToolChoiceAllowedMode: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
-  public static let requiredValue = Self(rawValue: "required")
-}
-
-public struct OpenAIToolChoiceAllowedTypeModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let allowedTools = Self(rawValue: "allowed_tools")
-}
-
-public struct OpenAIToolChoiceCustom: Codable, Sendable {
-  public var name: String
-  public var typeModel: OpenAIToolChoiceCustomTypeModel
-
-  public init(
-    name: String,
-    typeModel: OpenAIToolChoiceCustomTypeModel
-  ) {
-    self.name = name
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case name
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAIToolChoiceCustomTypeModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let custom = Self(rawValue: "custom")
-}
-
-public struct OpenAIToolChoiceFunction: Codable, Sendable {
-  public var name: String
-  public var typeModel: OpenAIToolChoiceFunctionTypeModel
-
-  public init(
-    name: String,
-    typeModel: OpenAIToolChoiceFunctionTypeModel
-  ) {
-    self.name = name
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case name
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAIToolChoiceFunctionTypeModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let function = Self(rawValue: "function")
-}
-
-public struct OpenAIToolChoiceMCP: Codable, Sendable {
-  public var name: String?
-  public var serverLabel: String
-  public var typeModel: OpenAIToolChoiceMCPTypeModel
-
-  public init(
-    serverLabel: String,
-    typeModel: OpenAIToolChoiceMCPTypeModel,
-    name: String? = nil
-  ) {
-    self.name = name
-    self.serverLabel = serverLabel
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case name
-    case serverLabel = "server_label"
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAIToolChoiceMCPTypeModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mcp = Self(rawValue: "mcp")
-}
-
-public struct OpenAIToolChoiceOptions: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let none = Self(rawValue: "none")
-  public static let auto = Self(rawValue: "auto")
-  public static let requiredValue = Self(rawValue: "required")
-}
-
-public typealias OpenAIToolChoiceParam = HyperProxyJSONValue
-
-public struct OpenAIToolChoiceTypes: Codable, Sendable {
-  public var typeModel: OpenAIToolChoiceTypesTypeModel
-
-  public init(
-    typeModel: OpenAIToolChoiceTypesTypeModel
-  ) {
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAIToolChoiceTypesTypeModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let fileSearch = Self(rawValue: "file_search")
-  public static let webSearchPreview = Self(rawValue: "web_search_preview")
-  public static let computer = Self(rawValue: "computer")
-  public static let computerUsePreview = Self(rawValue: "computer_use_preview")
-  public static let computerUse = Self(rawValue: "computer_use")
-  public static let webSearchPreview20250311 = Self(rawValue: "web_search_preview_2025_03_11")
-  public static let imageGeneration = Self(rawValue: "image_generation")
-  public static let codeInterpreter = Self(rawValue: "code_interpreter")
-}
-
-public struct OpenAIToolSearchCall: Codable, Sendable {
-  public var arguments: HyperProxyJSONValue
-  public var callId: String?
-  public var createdBy: String?
-  public var execution: OpenAIToolSearchExecutionType
-  public var id: String
-  public var status: OpenAIFunctionCallStatus
-  public var typeModel: OpenAIToolSearchCallTypeModel
-
-  public init(
-    arguments: HyperProxyJSONValue,
-    callId: String?,
-    execution: OpenAIToolSearchExecutionType,
-    id: String,
-    status: OpenAIFunctionCallStatus,
-    typeModel: OpenAIToolSearchCallTypeModel,
-    createdBy: String? = nil
-  ) {
-    self.arguments = arguments
-    self.callId = callId
-    self.createdBy = createdBy
-    self.execution = execution
-    self.id = id
-    self.status = status
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case arguments
-    case callId = "call_id"
-    case createdBy = "created_by"
-    case execution
-    case id
-    case status
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAIToolSearchCallItemParam: Codable, Sendable {
-  public var arguments: OpenAIEmptyModelParam
-  public var callId: String?
-  public var execution: OpenAIToolSearchExecutionType?
-  public var id: String?
-  public var status: OpenAIFunctionCallItemStatus?
-  public var typeModel: OpenAIToolSearchCallItemParamTypeModel
-
-  public init(
-    arguments: OpenAIEmptyModelParam,
-    typeModel: OpenAIToolSearchCallItemParamTypeModel,
-    callId: String? = nil,
-    execution: OpenAIToolSearchExecutionType? = nil,
-    id: String? = nil,
-    status: OpenAIFunctionCallItemStatus? = nil
-  ) {
-    self.arguments = arguments
-    self.callId = callId
-    self.execution = execution
-    self.id = id
-    self.status = status
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case arguments
-    case callId = "call_id"
-    case execution
-    case id
-    case status
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAIToolSearchCallItemParamTypeModel: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let toolSearchCall = Self(rawValue: "tool_search_call")
-}
-
-public struct OpenAIToolSearchCallTypeModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let toolSearchCall = Self(rawValue: "tool_search_call")
-}
-
-public struct OpenAIToolSearchExecutionType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let server = Self(rawValue: "server")
-  public static let client = Self(rawValue: "client")
-}
-
-public struct OpenAIToolSearchOutput: Codable, Sendable {
-  public var callId: String?
-  public var createdBy: String?
-  public var execution: OpenAIToolSearchExecutionType
-  public var id: String
-  public var status: OpenAIFunctionCallOutputStatusEnum
-  public var tools: [OpenAITool]
-  public var typeModel: OpenAIToolSearchOutputTypeModel
-
-  public init(
-    callId: String?,
-    execution: OpenAIToolSearchExecutionType,
-    id: String,
-    status: OpenAIFunctionCallOutputStatusEnum,
-    tools: [OpenAITool],
-    typeModel: OpenAIToolSearchOutputTypeModel,
-    createdBy: String? = nil
-  ) {
-    self.callId = callId
-    self.createdBy = createdBy
-    self.execution = execution
-    self.id = id
-    self.status = status
-    self.tools = tools
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case callId = "call_id"
-    case createdBy = "created_by"
-    case execution
-    case id
-    case status
-    case tools
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAIToolSearchOutputItemParam: Codable, Sendable {
-  public var callId: String?
-  public var execution: OpenAIToolSearchExecutionType?
-  public var id: String?
-  public var status: OpenAIFunctionCallItemStatus?
-  public var tools: [OpenAITool]
-  public var typeModel: OpenAIToolSearchOutputItemParamTypeModel
-
-  public init(
-    tools: [OpenAITool],
-    typeModel: OpenAIToolSearchOutputItemParamTypeModel,
-    callId: String? = nil,
-    execution: OpenAIToolSearchExecutionType? = nil,
-    id: String? = nil,
-    status: OpenAIFunctionCallItemStatus? = nil
-  ) {
-    self.callId = callId
-    self.execution = execution
-    self.id = id
-    self.status = status
-    self.tools = tools
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case callId = "call_id"
-    case execution
-    case id
-    case status
-    case tools
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAIToolSearchOutputItemParamTypeModel: RawRepresentable, Codable, Hashable,
+public struct OpenAIRealtimeSessionCreateResponseGATypeModel: RawRepresentable, Codable, Hashable,
   Sendable
 {
   public var rawValue: String
@@ -1579,128 +307,971 @@ public struct OpenAIToolSearchOutputItemParamTypeModel: RawRepresentable, Codabl
     self.rawValue = rawValue
   }
 
-  public static let toolSearchOutput = Self(rawValue: "tool_search_output")
+  public static let realtime = Self(rawValue: "realtime")
 }
 
-public struct OpenAIToolSearchOutputTypeModel: RawRepresentable, Codable, Hashable, Sendable {
+public struct OpenAIRealtimeSessionCreateResponseIncludeItem: RawRepresentable, Codable, Hashable,
+  Sendable
+{
   public var rawValue: String
 
   public init(rawValue: String) {
     self.rawValue = rawValue
   }
 
-  public static let toolSearchOutput = Self(rawValue: "tool_search_output")
+  public static let itemInputAudioTranscriptionLogprobs = Self(
+    rawValue: "item.input_audio_transcription.logprobs")
 }
 
-public struct OpenAIToolSearchToolParam: Codable, Sendable {
-  public var description: String?
-  public var execution: OpenAIToolSearchExecutionType?
-  public var parameters: OpenAIEmptyModelParam?
-  public var typeModel: OpenAIToolSearchToolParamTypeModel
+public struct OpenAIRealtimeSessionCreateResponseMaxOutputTokensOneOf2: RawRepresentable, Codable,
+  Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let inf = Self(rawValue: "inf")
+}
+
+public struct OpenAIRealtimeSessionCreateResponseOutputModalitiesItem: RawRepresentable, Codable,
+  Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let text = Self(rawValue: "text")
+  public static let audio = Self(rawValue: "audio")
+}
+
+public struct OpenAIRealtimeSessionCreateResponseTracingOneOf1: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let auto = Self(rawValue: "auto")
+}
+
+public struct OpenAIRealtimeSessionCreateResponseTracingOneOf2: Codable, Sendable {
+  public var groupId: String?
+  public var metadata: HyperProxyJSONValue?
+  public var workflowName: String?
 
   public init(
-    typeModel: OpenAIToolSearchToolParamTypeModel,
-    description: String? = nil,
-    execution: OpenAIToolSearchExecutionType? = nil,
-    parameters: OpenAIEmptyModelParam? = nil
+    groupId: String? = nil,
+    metadata: HyperProxyJSONValue? = nil,
+    workflowName: String? = nil
   ) {
-    self.description = description
-    self.execution = execution
-    self.parameters = parameters
+    self.groupId = groupId
+    self.metadata = metadata
+    self.workflowName = workflowName
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case groupId = "group_id"
+    case metadata
+    case workflowName = "workflow_name"
+  }
+}
+
+public struct OpenAIRealtimeSessionCreateResponseTurnDetection: Codable, Sendable {
+  public var prefixPaddingMs: Int?
+  public var silenceDurationMs: Int?
+  public var threshold: Double?
+  public var typeModel: String?
+
+  public init(
+    prefixPaddingMs: Int? = nil,
+    silenceDurationMs: Int? = nil,
+    threshold: Double? = nil,
+    typeModel: String? = nil
+  ) {
+    self.prefixPaddingMs = prefixPaddingMs
+    self.silenceDurationMs = silenceDurationMs
+    self.threshold = threshold
     self.typeModel = typeModel
   }
 
   enum CodingKeys: String, CodingKey {
-    case description
-    case execution
-    case parameters
+    case prefixPaddingMs = "prefix_padding_ms"
+    case silenceDurationMs = "silence_duration_ms"
+    case threshold
     case typeModel = "type"
   }
 }
 
-public struct OpenAIToolSearchToolParamTypeModel: RawRepresentable, Codable, Hashable, Sendable {
+public struct OpenAIRealtimeSessionIncludeAnyOf1Item: RawRepresentable, Codable, Hashable, Sendable
+{
   public var rawValue: String
 
   public init(rawValue: String) {
     self.rawValue = rawValue
   }
 
-  public static let toolSearch = Self(rawValue: "tool_search")
+  public static let itemInputAudioTranscriptionLogprobs = Self(
+    rawValue: "item.input_audio_transcription.logprobs")
 }
 
-public typealias OpenAIToolsArray = [OpenAITool]
+public struct OpenAIRealtimeSessionInputAudioFormat: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
 
-public struct OpenAITopLogProb: Codable, Sendable {
-  public var bytes: [Int]
-  public var logprob: Double
-  public var token: String
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let pcm16 = Self(rawValue: "pcm16")
+  public static let g711Ulaw = Self(rawValue: "g711_ulaw")
+  public static let g711Alaw = Self(rawValue: "g711_alaw")
+}
+
+public struct OpenAIRealtimeSessionInputAudioNoiseReduction: Codable, Sendable {
+  public var typeModel: OpenAINoiseReductionType?
 
   public init(
-    bytes: [Int],
-    logprob: Double,
-    token: String
+    typeModel: OpenAINoiseReductionType? = nil
   ) {
-    self.bytes = bytes
-    self.logprob = logprob
-    self.token = token
+    self.typeModel = typeModel
   }
 
   enum CodingKeys: String, CodingKey {
-    case bytes
-    case logprob
-    case token
+    case typeModel = "type"
   }
 }
 
-public struct OpenAITranscriptTextDeltaEvent: Codable, Sendable {
+public struct OpenAIRealtimeSessionMaxResponseOutputTokensOneOf2: RawRepresentable, Codable,
+  Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let inf = Self(rawValue: "inf")
+}
+
+public struct OpenAIRealtimeSessionModalitiesItem: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let text = Self(rawValue: "text")
+  public static let audio = Self(rawValue: "audio")
+}
+
+public struct OpenAIRealtimeSessionModelAnyOf2: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let gptRealtime = Self(rawValue: "gpt-realtime")
+  public static let gptRealtime15 = Self(rawValue: "gpt-realtime-1.5")
+  public static let gptRealtime20250828 = Self(rawValue: "gpt-realtime-2025-08-28")
+  public static let gpt4oRealtimePreview = Self(rawValue: "gpt-4o-realtime-preview")
+  public static let gpt4oRealtimePreview20241001 = Self(
+    rawValue: "gpt-4o-realtime-preview-2024-10-01")
+  public static let gpt4oRealtimePreview20241217 = Self(
+    rawValue: "gpt-4o-realtime-preview-2024-12-17")
+  public static let gpt4oRealtimePreview20250603 = Self(
+    rawValue: "gpt-4o-realtime-preview-2025-06-03")
+  public static let gpt4oMiniRealtimePreview = Self(rawValue: "gpt-4o-mini-realtime-preview")
+  public static let gpt4oMiniRealtimePreview20241217 = Self(
+    rawValue: "gpt-4o-mini-realtime-preview-2024-12-17")
+  public static let gptRealtimeMini = Self(rawValue: "gpt-realtime-mini")
+  public static let gptRealtimeMini20251006 = Self(rawValue: "gpt-realtime-mini-2025-10-06")
+  public static let gptRealtimeMini20251215 = Self(rawValue: "gpt-realtime-mini-2025-12-15")
+  public static let gptAudio15 = Self(rawValue: "gpt-audio-1.5")
+  public static let gptAudioMini = Self(rawValue: "gpt-audio-mini")
+  public static let gptAudioMini20251006 = Self(rawValue: "gpt-audio-mini-2025-10-06")
+  public static let gptAudioMini20251215 = Self(rawValue: "gpt-audio-mini-2025-12-15")
+}
+
+public struct OpenAIRealtimeSessionObject: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let realtimeSession = Self(rawValue: "realtime.session")
+}
+
+public struct OpenAIRealtimeSessionOutputAudioFormat: RawRepresentable, Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let pcm16 = Self(rawValue: "pcm16")
+  public static let g711Ulaw = Self(rawValue: "g711_ulaw")
+  public static let g711Alaw = Self(rawValue: "g711_alaw")
+}
+
+public struct OpenAIRealtimeSessionTracingAnyOf1OneOf1: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let auto = Self(rawValue: "auto")
+}
+
+public struct OpenAIRealtimeSessionTracingAnyOf1OneOf2: Codable, Sendable {
+  public var groupId: String?
+  public var metadata: HyperProxyJSONValue?
+  public var workflowName: String?
+
+  public init(
+    groupId: String? = nil,
+    metadata: HyperProxyJSONValue? = nil,
+    workflowName: String? = nil
+  ) {
+    self.groupId = groupId
+    self.metadata = metadata
+    self.workflowName = workflowName
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case groupId = "group_id"
+    case metadata
+    case workflowName = "workflow_name"
+  }
+}
+
+public struct OpenAIRealtimeTranscriptionSessionCreateRequest: Codable, Sendable {
+  public var include: [OpenAIRealtimeTranscriptionSessionCreateRequestIncludeItem]?
+  public var inputAudioFormat: OpenAIRealtimeTranscriptionSessionCreateRequestInputAudioFormat?
+  public var inputAudioNoiseReduction:
+    OpenAIRealtimeTranscriptionSessionCreateRequestInputAudioNoiseReduction?
+  public var inputAudioTranscription: OpenAIAudioTranscription?
+  public var turnDetection: OpenAIRealtimeTranscriptionSessionCreateRequestTurnDetection?
+
+  public init(
+    include: [OpenAIRealtimeTranscriptionSessionCreateRequestIncludeItem]? = nil,
+    inputAudioFormat: OpenAIRealtimeTranscriptionSessionCreateRequestInputAudioFormat? = nil,
+    inputAudioNoiseReduction:
+      OpenAIRealtimeTranscriptionSessionCreateRequestInputAudioNoiseReduction? = nil,
+    inputAudioTranscription: OpenAIAudioTranscription? = nil,
+    turnDetection: OpenAIRealtimeTranscriptionSessionCreateRequestTurnDetection? = nil
+  ) {
+    self.include = include
+    self.inputAudioFormat = inputAudioFormat
+    self.inputAudioNoiseReduction = inputAudioNoiseReduction
+    self.inputAudioTranscription = inputAudioTranscription
+    self.turnDetection = turnDetection
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case include
+    case inputAudioFormat = "input_audio_format"
+    case inputAudioNoiseReduction = "input_audio_noise_reduction"
+    case inputAudioTranscription = "input_audio_transcription"
+    case turnDetection = "turn_detection"
+  }
+}
+
+public struct OpenAIRealtimeTranscriptionSessionCreateRequestGA: Codable, Sendable {
+  public var audio: OpenAIRealtimeTranscriptionSessionCreateRequestGAAudio?
+  public var include: [OpenAIRealtimeTranscriptionSessionCreateRequestGAIncludeItem]?
+  public var typeModel: OpenAIRealtimeTranscriptionSessionCreateRequestGATypeModel
+
+  public init(
+    typeModel: OpenAIRealtimeTranscriptionSessionCreateRequestGATypeModel,
+    audio: OpenAIRealtimeTranscriptionSessionCreateRequestGAAudio? = nil,
+    include: [OpenAIRealtimeTranscriptionSessionCreateRequestGAIncludeItem]? = nil
+  ) {
+    self.audio = audio
+    self.include = include
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case audio
+    case include
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIRealtimeTranscriptionSessionCreateRequestGAAudio: Codable, Sendable {
+  public var input: OpenAIRealtimeTranscriptionSessionCreateRequestGAAudioInput?
+
+  public init(
+    input: OpenAIRealtimeTranscriptionSessionCreateRequestGAAudioInput? = nil
+  ) {
+    self.input = input
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case input
+  }
+}
+
+public struct OpenAIRealtimeTranscriptionSessionCreateRequestGAAudioInput: Codable, Sendable {
+  public var format: OpenAIRealtimeAudioFormats?
+  public var noiseReduction:
+    OpenAIRealtimeTranscriptionSessionCreateRequestGAAudioInputNoiseReduction?
+  public var transcription: OpenAIAudioTranscription?
+  public var turnDetection: OpenAIRealtimeTurnDetection?
+
+  public init(
+    format: OpenAIRealtimeAudioFormats? = nil,
+    noiseReduction: OpenAIRealtimeTranscriptionSessionCreateRequestGAAudioInputNoiseReduction? =
+      nil,
+    transcription: OpenAIAudioTranscription? = nil,
+    turnDetection: OpenAIRealtimeTurnDetection? = nil
+  ) {
+    self.format = format
+    self.noiseReduction = noiseReduction
+    self.transcription = transcription
+    self.turnDetection = turnDetection
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case format
+    case noiseReduction = "noise_reduction"
+    case transcription
+    case turnDetection = "turn_detection"
+  }
+}
+
+public struct OpenAIRealtimeTranscriptionSessionCreateRequestGAAudioInputNoiseReduction: Codable,
+  Sendable
+{
+  public var typeModel: OpenAINoiseReductionType?
+
+  public init(
+    typeModel: OpenAINoiseReductionType? = nil
+  ) {
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIRealtimeTranscriptionSessionCreateRequestGAIncludeItem: RawRepresentable,
+  Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let itemInputAudioTranscriptionLogprobs = Self(
+    rawValue: "item.input_audio_transcription.logprobs")
+}
+
+public struct OpenAIRealtimeTranscriptionSessionCreateRequestGATypeModel: RawRepresentable, Codable,
+  Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let transcription = Self(rawValue: "transcription")
+}
+
+public struct OpenAIRealtimeTranscriptionSessionCreateRequestIncludeItem: RawRepresentable, Codable,
+  Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let itemInputAudioTranscriptionLogprobs = Self(
+    rawValue: "item.input_audio_transcription.logprobs")
+}
+
+public struct OpenAIRealtimeTranscriptionSessionCreateRequestInputAudioFormat: RawRepresentable,
+  Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let pcm16 = Self(rawValue: "pcm16")
+  public static let g711Ulaw = Self(rawValue: "g711_ulaw")
+  public static let g711Alaw = Self(rawValue: "g711_alaw")
+}
+
+public struct OpenAIRealtimeTranscriptionSessionCreateRequestInputAudioNoiseReduction: Codable,
+  Sendable
+{
+  public var typeModel: OpenAINoiseReductionType?
+
+  public init(
+    typeModel: OpenAINoiseReductionType? = nil
+  ) {
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIRealtimeTranscriptionSessionCreateRequestTurnDetection: Codable, Sendable {
+  public var prefixPaddingMs: Int?
+  public var silenceDurationMs: Int?
+  public var threshold: Double?
+  public var typeModel: OpenAIRealtimeTranscriptionSessionCreateRequestTurnDetectionTypeModel?
+
+  public init(
+    prefixPaddingMs: Int? = nil,
+    silenceDurationMs: Int? = nil,
+    threshold: Double? = nil,
+    typeModel: OpenAIRealtimeTranscriptionSessionCreateRequestTurnDetectionTypeModel? = nil
+  ) {
+    self.prefixPaddingMs = prefixPaddingMs
+    self.silenceDurationMs = silenceDurationMs
+    self.threshold = threshold
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case prefixPaddingMs = "prefix_padding_ms"
+    case silenceDurationMs = "silence_duration_ms"
+    case threshold
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIRealtimeTranscriptionSessionCreateRequestTurnDetectionTypeModel:
+  RawRepresentable, Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let serverVad = Self(rawValue: "server_vad")
+}
+
+public struct OpenAIRealtimeTranscriptionSessionCreateResponse: Codable, Sendable {
+  public var clientSecret: OpenAIRealtimeTranscriptionSessionCreateResponseClientSecret
+  public var inputAudioFormat: String?
+  public var inputAudioTranscription: OpenAIAudioTranscriptionResponse?
+  public var modalities: HyperProxyJSONValue?
+  public var turnDetection: OpenAIRealtimeTranscriptionSessionCreateResponseTurnDetection?
+
+  public init(
+    clientSecret: OpenAIRealtimeTranscriptionSessionCreateResponseClientSecret,
+    inputAudioFormat: String? = nil,
+    inputAudioTranscription: OpenAIAudioTranscriptionResponse? = nil,
+    modalities: HyperProxyJSONValue? = nil,
+    turnDetection: OpenAIRealtimeTranscriptionSessionCreateResponseTurnDetection? = nil
+  ) {
+    self.clientSecret = clientSecret
+    self.inputAudioFormat = inputAudioFormat
+    self.inputAudioTranscription = inputAudioTranscription
+    self.modalities = modalities
+    self.turnDetection = turnDetection
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case clientSecret = "client_secret"
+    case inputAudioFormat = "input_audio_format"
+    case inputAudioTranscription = "input_audio_transcription"
+    case modalities
+    case turnDetection = "turn_detection"
+  }
+}
+
+public struct OpenAIRealtimeTranscriptionSessionCreateResponseClientSecret: Codable, Sendable {
+  public var expiresAt: Int
+  public var value: String
+
+  public init(
+    expiresAt: Int,
+    value: String
+  ) {
+    self.expiresAt = expiresAt
+    self.value = value
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case expiresAt = "expires_at"
+    case value
+  }
+}
+
+public struct OpenAIRealtimeTranscriptionSessionCreateResponseGA: Codable, Sendable {
+  public var audio: OpenAIRealtimeTranscriptionSessionCreateResponseGAAudio?
+  public var expiresAt: Int?
+  public var id: String
+  public var include: [OpenAIRealtimeTranscriptionSessionCreateResponseGAIncludeItem]?
+  public var object: String
+  public var typeModel: OpenAIRealtimeTranscriptionSessionCreateResponseGATypeModel
+
+  public init(
+    id: String,
+    object: String,
+    typeModel: OpenAIRealtimeTranscriptionSessionCreateResponseGATypeModel,
+    audio: OpenAIRealtimeTranscriptionSessionCreateResponseGAAudio? = nil,
+    expiresAt: Int? = nil,
+    include: [OpenAIRealtimeTranscriptionSessionCreateResponseGAIncludeItem]? = nil
+  ) {
+    self.audio = audio
+    self.expiresAt = expiresAt
+    self.id = id
+    self.include = include
+    self.object = object
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case audio
+    case expiresAt = "expires_at"
+    case id
+    case include
+    case object
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIRealtimeTranscriptionSessionCreateResponseGAAudio: Codable, Sendable {
+  public var input: OpenAIRealtimeTranscriptionSessionCreateResponseGAAudioInput?
+
+  public init(
+    input: OpenAIRealtimeTranscriptionSessionCreateResponseGAAudioInput? = nil
+  ) {
+    self.input = input
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case input
+  }
+}
+
+public struct OpenAIRealtimeTranscriptionSessionCreateResponseGAAudioInput: Codable, Sendable {
+  public var format: OpenAIRealtimeAudioFormats?
+  public var noiseReduction:
+    OpenAIRealtimeTranscriptionSessionCreateResponseGAAudioInputNoiseReduction?
+  public var transcription: OpenAIAudioTranscriptionResponse?
+  public var turnDetection:
+    OpenAIRealtimeTranscriptionSessionCreateResponseGAAudioInputTurnDetectionAnyOf1?
+
+  public init(
+    format: OpenAIRealtimeAudioFormats? = nil,
+    noiseReduction: OpenAIRealtimeTranscriptionSessionCreateResponseGAAudioInputNoiseReduction? =
+      nil,
+    transcription: OpenAIAudioTranscriptionResponse? = nil,
+    turnDetection:
+      OpenAIRealtimeTranscriptionSessionCreateResponseGAAudioInputTurnDetectionAnyOf1? = nil
+  ) {
+    self.format = format
+    self.noiseReduction = noiseReduction
+    self.transcription = transcription
+    self.turnDetection = turnDetection
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case format
+    case noiseReduction = "noise_reduction"
+    case transcription
+    case turnDetection = "turn_detection"
+  }
+}
+
+public struct OpenAIRealtimeTranscriptionSessionCreateResponseGAAudioInputNoiseReduction: Codable,
+  Sendable
+{
+  public var typeModel: OpenAINoiseReductionType?
+
+  public init(
+    typeModel: OpenAINoiseReductionType? = nil
+  ) {
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIRealtimeTranscriptionSessionCreateResponseGAAudioInputTurnDetectionAnyOf1:
+  Codable, Sendable
+{
+  public var prefixPaddingMs: Int?
+  public var silenceDurationMs: Int?
+  public var threshold: Double?
+  public var typeModel: String?
+
+  public init(
+    prefixPaddingMs: Int? = nil,
+    silenceDurationMs: Int? = nil,
+    threshold: Double? = nil,
+    typeModel: String? = nil
+  ) {
+    self.prefixPaddingMs = prefixPaddingMs
+    self.silenceDurationMs = silenceDurationMs
+    self.threshold = threshold
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case prefixPaddingMs = "prefix_padding_ms"
+    case silenceDurationMs = "silence_duration_ms"
+    case threshold
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIRealtimeTranscriptionSessionCreateResponseGAIncludeItem: RawRepresentable,
+  Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let itemInputAudioTranscriptionLogprobs = Self(
+    rawValue: "item.input_audio_transcription.logprobs")
+}
+
+public struct OpenAIRealtimeTranscriptionSessionCreateResponseGATypeModel: RawRepresentable,
+  Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let transcription = Self(rawValue: "transcription")
+}
+
+public struct OpenAIRealtimeTranscriptionSessionCreateResponseModalitiesItem: RawRepresentable,
+  Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let text = Self(rawValue: "text")
+  public static let audio = Self(rawValue: "audio")
+}
+
+public struct OpenAIRealtimeTranscriptionSessionCreateResponseTurnDetection: Codable, Sendable {
+  public var prefixPaddingMs: Int?
+  public var silenceDurationMs: Int?
+  public var threshold: Double?
+  public var typeModel: String?
+
+  public init(
+    prefixPaddingMs: Int? = nil,
+    silenceDurationMs: Int? = nil,
+    threshold: Double? = nil,
+    typeModel: String? = nil
+  ) {
+    self.prefixPaddingMs = prefixPaddingMs
+    self.silenceDurationMs = silenceDurationMs
+    self.threshold = threshold
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case prefixPaddingMs = "prefix_padding_ms"
+    case silenceDurationMs = "silence_duration_ms"
+    case threshold
+    case typeModel = "type"
+  }
+}
+
+public typealias OpenAIRealtimeTranslationClientEvent = HyperProxyJSONValue
+
+public struct OpenAIRealtimeTranslationClientEventInputAudioBufferAppend: Codable, Sendable {
+  public var audio: String
+  public var eventId: String?
+  public var typeModel: OpenAIRealtimeTranslationClientEventInputAudioBufferAppendTypeModel
+
+  public init(
+    audio: String,
+    typeModel: OpenAIRealtimeTranslationClientEventInputAudioBufferAppendTypeModel,
+    eventId: String? = nil
+  ) {
+    self.audio = audio
+    self.eventId = eventId
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case audio
+    case eventId = "event_id"
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIRealtimeTranslationClientEventInputAudioBufferAppendTypeModel: RawRepresentable,
+  Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let sessionInputAudioBufferAppend = Self(
+    rawValue: "session.input_audio_buffer.append")
+}
+
+public struct OpenAIRealtimeTranslationClientEventSessionClose: Codable, Sendable {
+  public var eventId: String?
+  public var typeModel: OpenAIRealtimeTranslationClientEventSessionCloseTypeModel
+
+  public init(
+    typeModel: OpenAIRealtimeTranslationClientEventSessionCloseTypeModel,
+    eventId: String? = nil
+  ) {
+    self.eventId = eventId
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case eventId = "event_id"
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIRealtimeTranslationClientEventSessionCloseTypeModel: RawRepresentable, Codable,
+  Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let sessionClose = Self(rawValue: "session.close")
+}
+
+public struct OpenAIRealtimeTranslationClientEventSessionUpdate: Codable, Sendable {
+  public var eventId: String?
+  public var session: OpenAIRealtimeTranslationSessionUpdateRequest
+  public var typeModel: OpenAIRealtimeTranslationClientEventSessionUpdateTypeModel
+
+  public init(
+    session: OpenAIRealtimeTranslationSessionUpdateRequest,
+    typeModel: OpenAIRealtimeTranslationClientEventSessionUpdateTypeModel,
+    eventId: String? = nil
+  ) {
+    self.eventId = eventId
+    self.session = session
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case eventId = "event_id"
+    case session
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIRealtimeTranslationClientEventSessionUpdateTypeModel: RawRepresentable, Codable,
+  Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let sessionUpdate = Self(rawValue: "session.update")
+}
+
+public struct OpenAIRealtimeTranslationClientSecretCreateRequest: Codable, Sendable {
+  public var expiresAfter: OpenAIRealtimeTranslationClientSecretCreateRequestExpiresAfter?
+  public var session: OpenAIRealtimeTranslationSessionCreateRequest
+
+  public init(
+    session: OpenAIRealtimeTranslationSessionCreateRequest,
+    expiresAfter: OpenAIRealtimeTranslationClientSecretCreateRequestExpiresAfter? = nil
+  ) {
+    self.expiresAfter = expiresAfter
+    self.session = session
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case expiresAfter = "expires_after"
+    case session
+  }
+}
+
+public struct OpenAIRealtimeTranslationClientSecretCreateRequestExpiresAfter: Codable, Sendable {
+  public var anchor: OpenAIRealtimeTranslationClientSecretCreateRequestExpiresAfterAnchor?
+  public var seconds: Int64?
+
+  public init(
+    anchor: OpenAIRealtimeTranslationClientSecretCreateRequestExpiresAfterAnchor? = nil,
+    seconds: Int64? = nil
+  ) {
+    self.anchor = anchor
+    self.seconds = seconds
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case anchor
+    case seconds
+  }
+}
+
+public struct OpenAIRealtimeTranslationClientSecretCreateRequestExpiresAfterAnchor:
+  RawRepresentable, Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let createdAt = Self(rawValue: "created_at")
+}
+
+public struct OpenAIRealtimeTranslationClientSecretCreateResponse: Codable, Sendable {
+  public var expiresAt: Int
+  public var session: OpenAIRealtimeTranslationSession
+  public var value: String
+
+  public init(
+    expiresAt: Int,
+    session: OpenAIRealtimeTranslationSession,
+    value: String
+  ) {
+    self.expiresAt = expiresAt
+    self.session = session
+    self.value = value
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case expiresAt = "expires_at"
+    case session
+    case value
+  }
+}
+
+public typealias OpenAIRealtimeTranslationServerEvent = HyperProxyJSONValue
+
+public struct OpenAIRealtimeTranslationServerEventSessionClosed: Codable, Sendable {
+  public var eventId: String
+  public var typeModel: OpenAIRealtimeTranslationServerEventSessionClosedTypeModel
+
+  public init(
+    eventId: String,
+    typeModel: OpenAIRealtimeTranslationServerEventSessionClosedTypeModel
+  ) {
+    self.eventId = eventId
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case eventId = "event_id"
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIRealtimeTranslationServerEventSessionClosedTypeModel: RawRepresentable, Codable,
+  Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let sessionClosed = Self(rawValue: "session.closed")
+}
+
+public struct OpenAIRealtimeTranslationServerEventSessionCreated: Codable, Sendable {
+  public var eventId: String
+  public var session: OpenAIRealtimeTranslationSession
+  public var typeModel: OpenAIRealtimeTranslationServerEventSessionCreatedTypeModel
+
+  public init(
+    eventId: String,
+    session: OpenAIRealtimeTranslationSession,
+    typeModel: OpenAIRealtimeTranslationServerEventSessionCreatedTypeModel
+  ) {
+    self.eventId = eventId
+    self.session = session
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case eventId = "event_id"
+    case session
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIRealtimeTranslationServerEventSessionCreatedTypeModel: RawRepresentable,
+  Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let sessionCreated = Self(rawValue: "session.created")
+}
+
+public struct OpenAIRealtimeTranslationServerEventSessionInputTranscriptDelta: Codable, Sendable {
   public var delta: String
-  public var logprobs: [OpenAITranscriptTextDeltaEventLogprobsItem]?
-  public var segmentId: String?
-  public var typeModel: OpenAITranscriptTextDeltaEventTypeModel
+  public var elapsedMs: Int?
+  public var eventId: String
+  public var typeModel: OpenAIRealtimeTranslationServerEventSessionInputTranscriptDeltaTypeModel
 
   public init(
     delta: String,
-    typeModel: OpenAITranscriptTextDeltaEventTypeModel,
-    logprobs: [OpenAITranscriptTextDeltaEventLogprobsItem]? = nil,
-    segmentId: String? = nil
+    eventId: String,
+    typeModel: OpenAIRealtimeTranslationServerEventSessionInputTranscriptDeltaTypeModel,
+    elapsedMs: Int? = nil
   ) {
     self.delta = delta
-    self.logprobs = logprobs
-    self.segmentId = segmentId
+    self.elapsedMs = elapsedMs
+    self.eventId = eventId
     self.typeModel = typeModel
   }
 
   enum CodingKeys: String, CodingKey {
     case delta
-    case logprobs
-    case segmentId = "segment_id"
+    case elapsedMs = "elapsed_ms"
+    case eventId = "event_id"
     case typeModel = "type"
   }
 }
 
-public struct OpenAITranscriptTextDeltaEventLogprobsItem: Codable, Sendable {
-  public var bytes: [Int]?
-  public var logprob: Double?
-  public var token: String?
-
-  public init(
-    bytes: [Int]? = nil,
-    logprob: Double? = nil,
-    token: String? = nil
-  ) {
-    self.bytes = bytes
-    self.logprob = logprob
-    self.token = token
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case bytes
-    case logprob
-    case token
-  }
-}
-
-public struct OpenAITranscriptTextDeltaEventTypeModel: RawRepresentable, Codable, Hashable, Sendable
+public struct OpenAIRealtimeTranslationServerEventSessionInputTranscriptDeltaTypeModel:
+  RawRepresentable, Codable, Hashable, Sendable
 {
   public var rawValue: String
 
@@ -1708,62 +1279,49 @@ public struct OpenAITranscriptTextDeltaEventTypeModel: RawRepresentable, Codable
     self.rawValue = rawValue
   }
 
-  public static let transcriptTextDelta = Self(rawValue: "transcript.text.delta")
+  public static let sessionInputTranscriptDelta = Self(rawValue: "session.input_transcript.delta")
 }
 
-public struct OpenAITranscriptTextDoneEvent: Codable, Sendable {
-  public var languages: [OpenAITranscriptionLanguage]?
-  public var logprobs: [OpenAITranscriptTextDoneEventLogprobsItem]?
-  public var text: String
-  public var typeModel: OpenAITranscriptTextDoneEventTypeModel
-  public var usage: OpenAITranscriptTextUsageTokens?
+public struct OpenAIRealtimeTranslationServerEventSessionOutputAudioDelta: Codable, Sendable {
+  public var channels: Int?
+  public var delta: String
+  public var elapsedMs: Int?
+  public var eventId: String
+  public var format: OpenAIRealtimeTranslationServerEventSessionOutputAudioDeltaFormat?
+  public var sampleRate: Int?
+  public var typeModel: OpenAIRealtimeTranslationServerEventSessionOutputAudioDeltaTypeModel
 
   public init(
-    text: String,
-    typeModel: OpenAITranscriptTextDoneEventTypeModel,
-    languages: [OpenAITranscriptionLanguage]? = nil,
-    logprobs: [OpenAITranscriptTextDoneEventLogprobsItem]? = nil,
-    usage: OpenAITranscriptTextUsageTokens? = nil
+    delta: String,
+    eventId: String,
+    typeModel: OpenAIRealtimeTranslationServerEventSessionOutputAudioDeltaTypeModel,
+    channels: Int? = nil,
+    elapsedMs: Int? = nil,
+    format: OpenAIRealtimeTranslationServerEventSessionOutputAudioDeltaFormat? = nil,
+    sampleRate: Int? = nil
   ) {
-    self.languages = languages
-    self.logprobs = logprobs
-    self.text = text
+    self.channels = channels
+    self.delta = delta
+    self.elapsedMs = elapsedMs
+    self.eventId = eventId
+    self.format = format
+    self.sampleRate = sampleRate
     self.typeModel = typeModel
-    self.usage = usage
   }
 
   enum CodingKeys: String, CodingKey {
-    case languages
-    case logprobs
-    case text
+    case channels
+    case delta
+    case elapsedMs = "elapsed_ms"
+    case eventId = "event_id"
+    case format
+    case sampleRate = "sample_rate"
     case typeModel = "type"
-    case usage
   }
 }
 
-public struct OpenAITranscriptTextDoneEventLogprobsItem: Codable, Sendable {
-  public var bytes: [Int]?
-  public var logprob: Double?
-  public var token: String?
-
-  public init(
-    bytes: [Int]? = nil,
-    logprob: Double? = nil,
-    token: String? = nil
-  ) {
-    self.bytes = bytes
-    self.logprob = logprob
-    self.token = token
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case bytes
-    case logprob
-    case token
-  }
-}
-
-public struct OpenAITranscriptTextDoneEventTypeModel: RawRepresentable, Codable, Hashable, Sendable
+public struct OpenAIRealtimeTranslationServerEventSessionOutputAudioDeltaFormat: RawRepresentable,
+  Codable, Hashable, Sendable
 {
   public var rawValue: String
 
@@ -1771,134 +1329,305 @@ public struct OpenAITranscriptTextDoneEventTypeModel: RawRepresentable, Codable,
     self.rawValue = rawValue
   }
 
-  public static let transcriptTextDone = Self(rawValue: "transcript.text.done")
+  public static let pcm16 = Self(rawValue: "pcm16")
 }
 
-public struct OpenAITranscriptTextSegmentEvent: Codable, Sendable {
-  public var end: Double
+public struct OpenAIRealtimeTranslationServerEventSessionOutputAudioDeltaTypeModel:
+  RawRepresentable, Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let sessionOutputAudioDelta = Self(rawValue: "session.output_audio.delta")
+}
+
+public struct OpenAIRealtimeTranslationServerEventSessionOutputTranscriptDelta: Codable, Sendable {
+  public var delta: String
+  public var elapsedMs: Int?
+  public var eventId: String
+  public var typeModel: OpenAIRealtimeTranslationServerEventSessionOutputTranscriptDeltaTypeModel
+
+  public init(
+    delta: String,
+    eventId: String,
+    typeModel: OpenAIRealtimeTranslationServerEventSessionOutputTranscriptDeltaTypeModel,
+    elapsedMs: Int? = nil
+  ) {
+    self.delta = delta
+    self.elapsedMs = elapsedMs
+    self.eventId = eventId
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case delta
+    case elapsedMs = "elapsed_ms"
+    case eventId = "event_id"
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIRealtimeTranslationServerEventSessionOutputTranscriptDeltaTypeModel:
+  RawRepresentable, Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let sessionOutputTranscriptDelta = Self(rawValue: "session.output_transcript.delta")
+}
+
+public struct OpenAIRealtimeTranslationServerEventSessionUpdated: Codable, Sendable {
+  public var eventId: String
+  public var session: OpenAIRealtimeTranslationSession
+  public var typeModel: OpenAIRealtimeTranslationServerEventSessionUpdatedTypeModel
+
+  public init(
+    eventId: String,
+    session: OpenAIRealtimeTranslationSession,
+    typeModel: OpenAIRealtimeTranslationServerEventSessionUpdatedTypeModel
+  ) {
+    self.eventId = eventId
+    self.session = session
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case eventId = "event_id"
+    case session
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIRealtimeTranslationServerEventSessionUpdatedTypeModel: RawRepresentable,
+  Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let sessionUpdated = Self(rawValue: "session.updated")
+}
+
+public struct OpenAIRealtimeTranslationSession: Codable, Sendable {
+  public var audio: OpenAIRealtimeTranslationSessionAudio
+  public var expiresAt: Int
   public var id: String
-  public var speaker: String
-  public var start: Double
-  public var text: String
-  public var typeModel: OpenAITranscriptTextSegmentEventTypeModel
+  public var model: String
+  public var typeModel: OpenAIRealtimeTranslationSessionTypeModel
 
   public init(
-    end: Double,
+    audio: OpenAIRealtimeTranslationSessionAudio,
+    expiresAt: Int,
     id: String,
-    speaker: String,
-    start: Double,
-    text: String,
-    typeModel: OpenAITranscriptTextSegmentEventTypeModel
+    model: String,
+    typeModel: OpenAIRealtimeTranslationSessionTypeModel
   ) {
-    self.end = end
+    self.audio = audio
+    self.expiresAt = expiresAt
     self.id = id
-    self.speaker = speaker
-    self.start = start
-    self.text = text
+    self.model = model
     self.typeModel = typeModel
   }
 
   enum CodingKeys: String, CodingKey {
-    case end
+    case audio
+    case expiresAt = "expires_at"
     case id
-    case speaker
-    case start
-    case text
+    case model
     case typeModel = "type"
   }
 }
 
-public struct OpenAITranscriptTextSegmentEventTypeModel: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let transcriptTextSegment = Self(rawValue: "transcript.text.segment")
-}
-
-public struct OpenAITranscriptTextUsageDuration: Codable, Sendable {
-  public var seconds: Double
-  public var typeModel: OpenAITranscriptTextUsageDurationTypeModel
+public struct OpenAIRealtimeTranslationSessionAudio: Codable, Sendable {
+  public var input: OpenAIRealtimeTranslationSessionAudioInput?
+  public var output: OpenAIRealtimeTranslationSessionAudioOutput?
 
   public init(
-    seconds: Double,
-    typeModel: OpenAITranscriptTextUsageDurationTypeModel
+    input: OpenAIRealtimeTranslationSessionAudioInput? = nil,
+    output: OpenAIRealtimeTranslationSessionAudioOutput? = nil
   ) {
-    self.seconds = seconds
+    self.input = input
+    self.output = output
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case input
+    case output
+  }
+}
+
+public struct OpenAIRealtimeTranslationSessionAudioInput: Codable, Sendable {
+  public var noiseReduction: OpenAIRealtimeTranslationSessionAudioInputNoiseReductionAnyOf1?
+  public var transcription: OpenAIRealtimeTranslationSessionAudioInputTranscriptionAnyOf1?
+
+  public init(
+    noiseReduction: OpenAIRealtimeTranslationSessionAudioInputNoiseReductionAnyOf1? = nil,
+    transcription: OpenAIRealtimeTranslationSessionAudioInputTranscriptionAnyOf1? = nil
+  ) {
+    self.noiseReduction = noiseReduction
+    self.transcription = transcription
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case noiseReduction = "noise_reduction"
+    case transcription
+  }
+}
+
+public struct OpenAIRealtimeTranslationSessionAudioInputNoiseReductionAnyOf1: Codable, Sendable {
+  public var typeModel: OpenAINoiseReductionType
+
+  public init(
+    typeModel: OpenAINoiseReductionType
+  ) {
     self.typeModel = typeModel
   }
 
   enum CodingKeys: String, CodingKey {
-    case seconds
     case typeModel = "type"
   }
 }
 
-public struct OpenAITranscriptTextUsageDurationTypeModel: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let duration = Self(rawValue: "duration")
-}
-
-public struct OpenAITranscriptTextUsageTokens: Codable, Sendable {
-  public var inputTokenDetails: OpenAITranscriptTextUsageTokensInputTokenDetails?
-  public var inputTokens: Int
-  public var outputTokens: Int
-  public var totalTokens: Int
-  public var typeModel: OpenAITranscriptTextUsageTokensTypeModel
+public struct OpenAIRealtimeTranslationSessionAudioInputTranscriptionAnyOf1: Codable, Sendable {
+  public var model: String
 
   public init(
-    inputTokens: Int,
-    outputTokens: Int,
-    totalTokens: Int,
-    typeModel: OpenAITranscriptTextUsageTokensTypeModel,
-    inputTokenDetails: OpenAITranscriptTextUsageTokensInputTokenDetails? = nil
+    model: String
   ) {
-    self.inputTokenDetails = inputTokenDetails
-    self.inputTokens = inputTokens
-    self.outputTokens = outputTokens
-    self.totalTokens = totalTokens
+    self.model = model
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case model
+  }
+}
+
+public struct OpenAIRealtimeTranslationSessionAudioOutput: Codable, Sendable {
+  public var language: String?
+
+  public init(
+    language: String? = nil
+  ) {
+    self.language = language
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case language
+  }
+}
+
+public struct OpenAIRealtimeTranslationSessionCreateRequest: Codable, Sendable {
+  public var audio: OpenAIRealtimeTranslationSessionCreateRequestAudio?
+  public var model: String
+
+  public init(
+    model: String,
+    audio: OpenAIRealtimeTranslationSessionCreateRequestAudio? = nil
+  ) {
+    self.audio = audio
+    self.model = model
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case audio
+    case model
+  }
+}
+
+public struct OpenAIRealtimeTranslationSessionCreateRequestAudio: Codable, Sendable {
+  public var input: OpenAIRealtimeTranslationSessionCreateRequestAudioInput?
+  public var output: OpenAIRealtimeTranslationSessionCreateRequestAudioOutput?
+
+  public init(
+    input: OpenAIRealtimeTranslationSessionCreateRequestAudioInput? = nil,
+    output: OpenAIRealtimeTranslationSessionCreateRequestAudioOutput? = nil
+  ) {
+    self.input = input
+    self.output = output
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case input
+    case output
+  }
+}
+
+public struct OpenAIRealtimeTranslationSessionCreateRequestAudioInput: Codable, Sendable {
+  public var noiseReduction:
+    OpenAIRealtimeTranslationSessionCreateRequestAudioInputNoiseReductionAnyOf1?
+  public var transcription:
+    OpenAIRealtimeTranslationSessionCreateRequestAudioInputTranscriptionAnyOf1?
+
+  public init(
+    noiseReduction: OpenAIRealtimeTranslationSessionCreateRequestAudioInputNoiseReductionAnyOf1? =
+      nil,
+    transcription: OpenAIRealtimeTranslationSessionCreateRequestAudioInputTranscriptionAnyOf1? = nil
+  ) {
+    self.noiseReduction = noiseReduction
+    self.transcription = transcription
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case noiseReduction = "noise_reduction"
+    case transcription
+  }
+}
+
+public struct OpenAIRealtimeTranslationSessionCreateRequestAudioInputNoiseReductionAnyOf1: Codable,
+  Sendable
+{
+  public var typeModel: OpenAINoiseReductionType
+
+  public init(
+    typeModel: OpenAINoiseReductionType
+  ) {
     self.typeModel = typeModel
   }
 
   enum CodingKeys: String, CodingKey {
-    case inputTokenDetails = "input_token_details"
-    case inputTokens = "input_tokens"
-    case outputTokens = "output_tokens"
-    case totalTokens = "total_tokens"
     case typeModel = "type"
   }
 }
 
-public struct OpenAITranscriptTextUsageTokensInputTokenDetails: Codable, Sendable {
-  public var audioTokens: Int?
-  public var textTokens: Int?
+public struct OpenAIRealtimeTranslationSessionCreateRequestAudioInputTranscriptionAnyOf1: Codable,
+  Sendable
+{
+  public var model: String
 
   public init(
-    audioTokens: Int? = nil,
-    textTokens: Int? = nil
+    model: String
   ) {
-    self.audioTokens = audioTokens
-    self.textTokens = textTokens
+    self.model = model
   }
 
   enum CodingKeys: String, CodingKey {
-    case audioTokens = "audio_tokens"
-    case textTokens = "text_tokens"
+    case model
   }
 }
 
-public struct OpenAITranscriptTextUsageTokensTypeModel: RawRepresentable, Codable, Hashable,
+public struct OpenAIRealtimeTranslationSessionCreateRequestAudioOutput: Codable, Sendable {
+  public var language: String?
+
+  public init(
+    language: String? = nil
+  ) {
+    self.language = language
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case language
+  }
+}
+
+public struct OpenAIRealtimeTranslationSessionTypeModel: RawRepresentable, Codable, Hashable,
   Sendable
 {
   public var rawValue: String
@@ -1907,188 +1636,133 @@ public struct OpenAITranscriptTextUsageTokensTypeModel: RawRepresentable, Codabl
     self.rawValue = rawValue
   }
 
-  public static let tokens = Self(rawValue: "tokens")
+  public static let translation = Self(rawValue: "translation")
 }
 
-public enum OpenAITranscriptionChunkingStrategy: Codable, Sendable {
-  case transcriptionChunkingStrategyOneOf1(OpenAITranscriptionChunkingStrategyOneOf1)
-  case vadConfig(OpenAIVadConfig)
+public struct OpenAIRealtimeTranslationSessionUpdateRequest: Codable, Sendable {
+  public var audio: OpenAIRealtimeTranslationSessionUpdateRequestAudio?
+
+  public init(
+    audio: OpenAIRealtimeTranslationSessionUpdateRequestAudio? = nil
+  ) {
+    self.audio = audio
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case audio
+  }
+}
+
+public struct OpenAIRealtimeTranslationSessionUpdateRequestAudio: Codable, Sendable {
+  public var input: OpenAIRealtimeTranslationSessionUpdateRequestAudioInput?
+  public var output: OpenAIRealtimeTranslationSessionUpdateRequestAudioOutput?
+
+  public init(
+    input: OpenAIRealtimeTranslationSessionUpdateRequestAudioInput? = nil,
+    output: OpenAIRealtimeTranslationSessionUpdateRequestAudioOutput? = nil
+  ) {
+    self.input = input
+    self.output = output
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case input
+    case output
+  }
+}
+
+public struct OpenAIRealtimeTranslationSessionUpdateRequestAudioInput: Codable, Sendable {
+  public var noiseReduction:
+    OpenAIRealtimeTranslationSessionUpdateRequestAudioInputNoiseReductionAnyOf1?
+  public var transcription:
+    OpenAIRealtimeTranslationSessionUpdateRequestAudioInputTranscriptionAnyOf1?
+
+  public init(
+    noiseReduction: OpenAIRealtimeTranslationSessionUpdateRequestAudioInputNoiseReductionAnyOf1? =
+      nil,
+    transcription: OpenAIRealtimeTranslationSessionUpdateRequestAudioInputTranscriptionAnyOf1? = nil
+  ) {
+    self.noiseReduction = noiseReduction
+    self.transcription = transcription
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case noiseReduction = "noise_reduction"
+    case transcription
+  }
+}
+
+public struct OpenAIRealtimeTranslationSessionUpdateRequestAudioInputNoiseReductionAnyOf1: Codable,
+  Sendable
+{
+  public var typeModel: OpenAINoiseReductionType
+
+  public init(
+    typeModel: OpenAINoiseReductionType
+  ) {
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIRealtimeTranslationSessionUpdateRequestAudioInputTranscriptionAnyOf1: Codable,
+  Sendable
+{
+  public var model: String
+
+  public init(
+    model: String
+  ) {
+    self.model = model
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case model
+  }
+}
+
+public struct OpenAIRealtimeTranslationSessionUpdateRequestAudioOutput: Codable, Sendable {
+  public var language: String?
+
+  public init(
+    language: String? = nil
+  ) {
+    self.language = language
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case language
+  }
+}
+
+public enum OpenAIRealtimeTruncation: Codable, Sendable {
+  case realtimeTruncationOneOf1(OpenAIRealtimeTruncationOneOf1)
+  case realtimeTruncationOneOf2(OpenAIRealtimeTruncationOneOf2)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(OpenAITranscriptionChunkingStrategyOneOf1.self) {
-      self = .transcriptionChunkingStrategyOneOf1(value)
+    if let value = try? container.decode(OpenAIRealtimeTruncationOneOf1.self) {
+      self = .realtimeTruncationOneOf1(value)
       return
     }
-    self = .vadConfig(try container.decode(OpenAIVadConfig.self))
+    self = .realtimeTruncationOneOf2(try container.decode(OpenAIRealtimeTruncationOneOf2.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .transcriptionChunkingStrategyOneOf1(let value):
+    case .realtimeTruncationOneOf1(let value):
       try container.encode(value)
-    case .vadConfig(let value):
+    case .realtimeTruncationOneOf2(let value):
       try container.encode(value)
     }
   }
 }
 
-public struct OpenAITranscriptionChunkingStrategyOneOf1: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
-}
-
-public struct OpenAITranscriptionDiarizedSegment: Codable, Sendable {
-  public var end: Double
-  public var id: String
-  public var speaker: String
-  public var start: Double
-  public var text: String
-  public var typeModel: OpenAITranscriptionDiarizedSegmentTypeModel
-
-  public init(
-    end: Double,
-    id: String,
-    speaker: String,
-    start: Double,
-    text: String,
-    typeModel: OpenAITranscriptionDiarizedSegmentTypeModel
-  ) {
-    self.end = end
-    self.id = id
-    self.speaker = speaker
-    self.start = start
-    self.text = text
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case end
-    case id
-    case speaker
-    case start
-    case text
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAITranscriptionDiarizedSegmentTypeModel: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let transcriptTextSegment = Self(rawValue: "transcript.text.segment")
-}
-
-public struct OpenAITranscriptionInclude: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let logprobs = Self(rawValue: "logprobs")
-}
-
-public struct OpenAITranscriptionLanguage: Codable, Sendable {
-  public var code: String
-
-  public init(
-    code: String
-  ) {
-    self.code = code
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case code
-  }
-}
-
-public struct OpenAITranscriptionSegment: Codable, Sendable {
-  public var avgLogprob: Double
-  public var compressionRatio: Double
-  public var end: Double
-  public var id: Int
-  public var noSpeechProb: Double
-  public var seek: Int
-  public var start: Double
-  public var temperature: Double
-  public var text: String
-  public var tokens: [Int]
-
-  public init(
-    avgLogprob: Double,
-    compressionRatio: Double,
-    end: Double,
-    id: Int,
-    noSpeechProb: Double,
-    seek: Int,
-    start: Double,
-    temperature: Double,
-    text: String,
-    tokens: [Int]
-  ) {
-    self.avgLogprob = avgLogprob
-    self.compressionRatio = compressionRatio
-    self.end = end
-    self.id = id
-    self.noSpeechProb = noSpeechProb
-    self.seek = seek
-    self.start = start
-    self.temperature = temperature
-    self.text = text
-    self.tokens = tokens
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case avgLogprob = "avg_logprob"
-    case compressionRatio = "compression_ratio"
-    case end
-    case id
-    case noSpeechProb = "no_speech_prob"
-    case seek
-    case start
-    case temperature
-    case text
-    case tokens
-  }
-}
-
-public struct OpenAITranscriptionWord: Codable, Sendable {
-  public var end: Double
-  public var start: Double
-  public var word: String
-
-  public init(
-    end: Double,
-    start: Double,
-    word: String
-  ) {
-    self.end = end
-    self.start = start
-    self.word = word
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case end
-    case start
-    case word
-  }
-}
-
-public struct OpenAITruncationEnum: RawRepresentable, Codable, Hashable, Sendable {
+public struct OpenAIRealtimeTruncationOneOf1: RawRepresentable, Codable, Hashable, Sendable {
   public var rawValue: String
 
   public init(rawValue: String) {
@@ -2099,25 +1773,165 @@ public struct OpenAITruncationEnum: RawRepresentable, Codable, Hashable, Sendabl
   public static let disabled = Self(rawValue: "disabled")
 }
 
-public struct OpenAITruncationObject: Codable, Sendable {
-  public var lastMessages: Int?
-  public var typeModel: OpenAITruncationObjectTypeModel
+public struct OpenAIRealtimeTruncationOneOf2: Codable, Sendable {
+  public var retentionRatio: Double
+  public var tokenLimits: OpenAIRealtimeTruncationOneOf2TokenLimits?
+  public var typeModel: OpenAIRealtimeTruncationOneOf2TypeModel
 
   public init(
-    typeModel: OpenAITruncationObjectTypeModel,
-    lastMessages: Int? = nil
+    retentionRatio: Double,
+    typeModel: OpenAIRealtimeTruncationOneOf2TypeModel,
+    tokenLimits: OpenAIRealtimeTruncationOneOf2TokenLimits? = nil
   ) {
-    self.lastMessages = lastMessages
+    self.retentionRatio = retentionRatio
+    self.tokenLimits = tokenLimits
     self.typeModel = typeModel
   }
 
   enum CodingKeys: String, CodingKey {
-    case lastMessages = "last_messages"
+    case retentionRatio = "retention_ratio"
+    case tokenLimits = "token_limits"
     case typeModel = "type"
   }
 }
 
-public struct OpenAITruncationObjectTypeModel: RawRepresentable, Codable, Hashable, Sendable {
+public struct OpenAIRealtimeTruncationOneOf2TokenLimits: Codable, Sendable {
+  public var postInstructions: Int?
+
+  public init(
+    postInstructions: Int? = nil
+  ) {
+    self.postInstructions = postInstructions
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case postInstructions = "post_instructions"
+  }
+}
+
+public struct OpenAIRealtimeTruncationOneOf2TypeModel: RawRepresentable, Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let retentionRatio = Self(rawValue: "retention_ratio")
+}
+
+public typealias OpenAIRealtimeTurnDetection = HyperProxyJSONValue?
+
+public struct OpenAIRealtimeTurnDetectionAnyOf1OneOf1: Codable, Sendable {
+  public var createResponse: Bool?
+  public var idleTimeoutMs: Int?
+  public var interruptResponse: Bool?
+  public var prefixPaddingMs: Int?
+  public var silenceDurationMs: Int?
+  public var threshold: Double?
+  public var typeModel: String
+
+  public init(
+    typeModel: String,
+    createResponse: Bool? = nil,
+    idleTimeoutMs: Int? = nil,
+    interruptResponse: Bool? = nil,
+    prefixPaddingMs: Int? = nil,
+    silenceDurationMs: Int? = nil,
+    threshold: Double? = nil
+  ) {
+    self.createResponse = createResponse
+    self.idleTimeoutMs = idleTimeoutMs
+    self.interruptResponse = interruptResponse
+    self.prefixPaddingMs = prefixPaddingMs
+    self.silenceDurationMs = silenceDurationMs
+    self.threshold = threshold
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case createResponse = "create_response"
+    case idleTimeoutMs = "idle_timeout_ms"
+    case interruptResponse = "interrupt_response"
+    case prefixPaddingMs = "prefix_padding_ms"
+    case silenceDurationMs = "silence_duration_ms"
+    case threshold
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIRealtimeTurnDetectionAnyOf1OneOf2: Codable, Sendable {
+  public var createResponse: Bool?
+  public var eagerness: OpenAIRealtimeTurnDetectionAnyOf1OneOf2Eagerness?
+  public var interruptResponse: Bool?
+  public var typeModel: String
+
+  public init(
+    typeModel: String,
+    createResponse: Bool? = nil,
+    eagerness: OpenAIRealtimeTurnDetectionAnyOf1OneOf2Eagerness? = nil,
+    interruptResponse: Bool? = nil
+  ) {
+    self.createResponse = createResponse
+    self.eagerness = eagerness
+    self.interruptResponse = interruptResponse
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case createResponse = "create_response"
+    case eagerness
+    case interruptResponse = "interrupt_response"
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIRealtimeTurnDetectionAnyOf1OneOf2Eagerness: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let low = Self(rawValue: "low")
+  public static let medium = Self(rawValue: "medium")
+  public static let high = Self(rawValue: "high")
+  public static let auto = Self(rawValue: "auto")
+}
+
+public struct OpenAIReasoning: Codable, Sendable {
+  public var context: OpenAIReasoningContextAnyOf1?
+  public var effort: OpenAIReasoningEffort?
+  public var generateSummary: OpenAIReasoningGenerateSummaryAnyOf1?
+  public var mode: OpenAIReasoningModeEnum?
+  public var summary: OpenAIReasoningSummaryAnyOf1?
+
+  public init(
+    context: OpenAIReasoningContextAnyOf1? = nil,
+    effort: OpenAIReasoningEffort? = nil,
+    generateSummary: OpenAIReasoningGenerateSummaryAnyOf1? = nil,
+    mode: OpenAIReasoningModeEnum? = nil,
+    summary: OpenAIReasoningSummaryAnyOf1? = nil
+  ) {
+    self.context = context
+    self.effort = effort
+    self.generateSummary = generateSummary
+    self.mode = mode
+    self.summary = summary
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case context
+    case effort
+    case generateSummary = "generate_summary"
+    case mode
+    case summary
+  }
+}
+
+public struct OpenAIReasoningContextAnyOf1: RawRepresentable, Codable, Hashable, Sendable {
   public var rawValue: String
 
   public init(rawValue: String) {
@@ -2125,16 +1939,288 @@ public struct OpenAITruncationObjectTypeModel: RawRepresentable, Codable, Hashab
   }
 
   public static let auto = Self(rawValue: "auto")
-  public static let lastMessages = Self(rawValue: "last_messages")
+  public static let currentTurn = Self(rawValue: "current_turn")
+  public static let allTurns = Self(rawValue: "all_turns")
 }
 
-public struct OpenAITypeParam: Codable, Sendable {
+public typealias OpenAIReasoningEffort = OpenAIReasoningEffortAnyOf1?
+
+public struct OpenAIReasoningEffortAnyOf1: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let none = Self(rawValue: "none")
+  public static let minimal = Self(rawValue: "minimal")
+  public static let low = Self(rawValue: "low")
+  public static let medium = Self(rawValue: "medium")
+  public static let high = Self(rawValue: "high")
+  public static let xhigh = Self(rawValue: "xhigh")
+  public static let max = Self(rawValue: "max")
+}
+
+public struct OpenAIReasoningEffortParam: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let none = Self(rawValue: "none")
+  public static let minimal = Self(rawValue: "minimal")
+  public static let low = Self(rawValue: "low")
+  public static let medium = Self(rawValue: "medium")
+  public static let high = Self(rawValue: "high")
+  public static let xhigh = Self(rawValue: "xhigh")
+  public static let max = Self(rawValue: "max")
+}
+
+public struct OpenAIReasoningEffortResource: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let none = Self(rawValue: "none")
+  public static let minimal = Self(rawValue: "minimal")
+  public static let low = Self(rawValue: "low")
+  public static let medium = Self(rawValue: "medium")
+  public static let high = Self(rawValue: "high")
+  public static let xhigh = Self(rawValue: "xhigh")
+  public static let max = Self(rawValue: "max")
+}
+
+public struct OpenAIReasoningGenerateSummaryAnyOf1: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let auto = Self(rawValue: "auto")
+  public static let concise = Self(rawValue: "concise")
+  public static let detailed = Self(rawValue: "detailed")
+}
+
+public struct OpenAIReasoningItem: Codable, Sendable {
+  public var content: [OpenAIReasoningTextContent]?
+  public var encryptedContent: String?
+  public var id: String
+  public var status: OpenAIReasoningItemStatus?
+  public var summary: [OpenAISummaryTextContent]
+  public var typeModel: OpenAIReasoningItemTypeModel
+
+  public init(
+    id: String,
+    summary: [OpenAISummaryTextContent],
+    typeModel: OpenAIReasoningItemTypeModel,
+    content: [OpenAIReasoningTextContent]? = nil,
+    encryptedContent: String? = nil,
+    status: OpenAIReasoningItemStatus? = nil
+  ) {
+    self.content = content
+    self.encryptedContent = encryptedContent
+    self.id = id
+    self.status = status
+    self.summary = summary
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case content
+    case encryptedContent = "encrypted_content"
+    case id
+    case status
+    case summary
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIReasoningItemResource: Codable, Sendable {
+  public var id: String
+  public var status: OpenAIOutputItemStatusResource?
+  public var summary: [OpenAISummaryTextResource]
+  public var turnId: String
+  public var typeModel: OpenAIReasoningItemResourceTypeModel
+
+  public init(
+    id: String,
+    status: OpenAIOutputItemStatusResource?,
+    summary: [OpenAISummaryTextResource],
+    turnId: String,
+    typeModel: OpenAIReasoningItemResourceTypeModel
+  ) {
+    self.id = id
+    self.status = status
+    self.summary = summary
+    self.turnId = turnId
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case id
+    case status
+    case summary
+    case turnId = "turn_id"
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIReasoningItemResourceTypeModel: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let reasoning = Self(rawValue: "reasoning")
+}
+
+public struct OpenAIReasoningItemStatus: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let inProgress = Self(rawValue: "in_progress")
+  public static let completed = Self(rawValue: "completed")
+  public static let incomplete = Self(rawValue: "incomplete")
+}
+
+public struct OpenAIReasoningItemTypeModel: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let reasoning = Self(rawValue: "reasoning")
+}
+
+public enum OpenAIReasoningModeEnum: Codable, Sendable {
+  case string(String)
+  case reasoningModeEnumAnyOf2(OpenAIReasoningModeEnumAnyOf2)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(String.self) {
+      self = .string(value)
+      return
+    }
+    self = .reasoningModeEnumAnyOf2(try container.decode(OpenAIReasoningModeEnumAnyOf2.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .string(let value):
+      try container.encode(value)
+    case .reasoningModeEnumAnyOf2(let value):
+      try container.encode(value)
+    }
+  }
+}
+
+extension OpenAIReasoningModeEnum: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+public struct OpenAIReasoningModeEnumAnyOf2: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let standard = Self(rawValue: "standard")
+  public static let pro = Self(rawValue: "pro")
+}
+
+public struct OpenAIReasoningParam: Codable, Sendable {
+  public var effort: OpenAIReasoningEffortParam?
+  public var summary: OpenAIReasoningSummaryParam?
+
+  public init(
+    effort: OpenAIReasoningEffortParam? = nil,
+    summary: OpenAIReasoningSummaryParam? = nil
+  ) {
+    self.effort = effort
+    self.summary = summary
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case effort
+    case summary
+  }
+}
+
+public struct OpenAIReasoningResource: Codable, Sendable {
+  public var effort: OpenAIReasoningEffortResource?
+  public var summary: OpenAIReasoningSummaryResource?
+
+  public init(
+    effort: OpenAIReasoningEffortResource?,
+    summary: OpenAIReasoningSummaryResource?
+  ) {
+    self.effort = effort
+    self.summary = summary
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case effort
+    case summary
+  }
+}
+
+public struct OpenAIReasoningSummaryAnyOf1: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let auto = Self(rawValue: "auto")
+  public static let concise = Self(rawValue: "concise")
+  public static let detailed = Self(rawValue: "detailed")
+}
+
+public struct OpenAIReasoningSummaryParam: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let concise = Self(rawValue: "concise")
+  public static let detailed = Self(rawValue: "detailed")
+  public static let auto = Self(rawValue: "auto")
+}
+
+public struct OpenAIReasoningSummaryResource: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let concise = Self(rawValue: "concise")
+  public static let detailed = Self(rawValue: "detailed")
+  public static let auto = Self(rawValue: "auto")
+}
+
+public struct OpenAIReasoningTextContent: Codable, Sendable {
   public var text: String
-  public var typeModel: OpenAITypeParamTypeModel
+  public var typeModel: OpenAIReasoningTextContentTypeModel
 
   public init(
     text: String,
-    typeModel: OpenAITypeParamTypeModel
+    typeModel: OpenAIReasoningTextContentTypeModel
   ) {
     self.text = text
     self.typeModel = typeModel
@@ -2146,227 +2232,395 @@ public struct OpenAITypeParam: Codable, Sendable {
   }
 }
 
-public struct OpenAITypeParamTypeModel: RawRepresentable, Codable, Hashable, Sendable {
+public struct OpenAIReasoningTextContentTypeModel: RawRepresentable, Codable, Hashable, Sendable {
   public var rawValue: String
 
   public init(rawValue: String) {
     self.rawValue = rawValue
   }
 
-  public static let typeModel = Self(rawValue: "type")
+  public static let reasoningText = Self(rawValue: "reasoning_text")
 }
 
-public struct OpenAIUnassignGroupRoleParameters: Codable, Sendable {
+public struct OpenAIReferLiveSessionParameters: Codable, Sendable {
+  public var sessionId: String
+
+  public init(
+    sessionId: String
+  ) {
+    self.sessionId = sessionId
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case sessionId = "session_id"
+  }
+}
+
+public struct OpenAIReferRealtimeCallParameters: Codable, Sendable {
+  public var callId: String
+
+  public init(
+    callId: String
+  ) {
+    self.callId = callId
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case callId = "call_id"
+  }
+}
+
+public struct OpenAIRefusalContent: Codable, Sendable {
+  public var refusal: String
+  public var typeModel: OpenAIRefusalContentTypeModel
+
+  public init(
+    refusal: String,
+    typeModel: OpenAIRefusalContentTypeModel
+  ) {
+    self.refusal = refusal
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case refusal
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIRefusalContentTypeModel: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let refusal = Self(rawValue: "refusal")
+}
+
+public struct OpenAIRejectLiveSessionParameters: Codable, Sendable {
+  public var sessionId: String
+
+  public init(
+    sessionId: String
+  ) {
+    self.sessionId = sessionId
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case sessionId = "session_id"
+  }
+}
+
+public struct OpenAIRejectRealtimeCallParameters: Codable, Sendable {
+  public var callId: String
+
+  public init(
+    callId: String
+  ) {
+    self.callId = callId
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case callId = "call_id"
+  }
+}
+
+public struct OpenAIRemoveGroupUserParameters: Codable, Sendable {
   public var groupId: String
-  public var roleId: String
+  public var userId: String
 
   public init(
     groupId: String,
-    roleId: String
+    userId: String
   ) {
     self.groupId = groupId
-    self.roleId = roleId
+    self.userId = userId
   }
 
   enum CodingKeys: String, CodingKey {
     case groupId = "group_id"
-    case roleId = "role_id"
+    case userId = "user_id"
   }
 }
 
-public struct OpenAIUnassignProjectGroupRoleParameters: Codable, Sendable {
+public struct OpenAIRemoveProjectGroupParameters: Codable, Sendable {
   public var groupId: String
   public var projectId: String
-  public var roleId: String
 
   public init(
     groupId: String,
-    projectId: String,
-    roleId: String
+    projectId: String
   ) {
     self.groupId = groupId
     self.projectId = projectId
-    self.roleId = roleId
   }
 
   enum CodingKeys: String, CodingKey {
     case groupId = "group_id"
     case projectId = "project_id"
-    case roleId = "role_id"
   }
 }
 
-public struct OpenAIUnassignProjectUserRoleParameters: Codable, Sendable {
-  public var projectId: String
-  public var roleId: String
-  public var userId: String
-
-  public init(
-    projectId: String,
-    roleId: String,
-    userId: String
-  ) {
-    self.projectId = projectId
-    self.roleId = roleId
-    self.userId = userId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case projectId = "project_id"
-    case roleId = "role_id"
-    case userId = "user_id"
-  }
-}
-
-public struct OpenAIUnassignUserRoleParameters: Codable, Sendable {
-  public var roleId: String
-  public var userId: String
-
-  public init(
-    roleId: String,
-    userId: String
-  ) {
-    self.roleId = roleId
-    self.userId = userId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case roleId = "role_id"
-    case userId = "user_id"
-  }
-}
-
-public struct OpenAIUpdateChatCompletionParameters: Codable, Sendable {
-  public var completionId: String
-
-  public init(
-    completionId: String
-  ) {
-    self.completionId = completionId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case completionId = "completion_id"
-  }
-}
-
-public struct OpenAIUpdateChatCompletionRequest: Codable, Sendable {
+public struct OpenAIResponse: Codable, Sendable {
+  public var background: Bool?
+  public var completedAt: Double?
+  public var conversation: OpenAIResponseConversation?
+  public var createdAt: Double
+  public var error: OpenAIResponseError
+  public var id: String
+  public var incompleteDetails: OpenAIResponseAllOf3IncompleteDetailsAnyOf1?
+  public var instructions: HyperProxyJSONValue?
+  public var maxOutputTokens: Int?
+  public var maxToolCalls: Int?
   public var metadata: OpenAIMetadata
+  public var model: OpenAIModelIdsResponses
+  public var moderation: OpenAIModeration?
+  public var object: OpenAIResponseAllOf3Object
+  public var output: [OpenAIOutputItem]
+  public var outputText: String?
+  public var parallelToolCalls: Bool
+  public var previousResponseId: String?
+  public var prompt: OpenAIPrompt?
+  public var promptCacheDiagnostics: OpenAIPromptCacheDiagnostics?
+  public var promptCacheKey: String?
+  public var promptCacheOptions: OpenAIPromptCacheOptions?
+  public var promptCacheRetention: OpenAIModelResponsePropertiesPromptCacheRetentionAnyOf1?
+  public var reasoning: OpenAIReasoning?
+  public var safetyIdentifier: String?
+  public var serviceTier: OpenAIServiceTierResponses?
+  public var status: OpenAIResponseAllOf3Status?
+  public var temperature: Double?
+  public var text: OpenAIResponseTextParam?
+  public var toolChoice: OpenAIToolChoiceParam
+  public var tools: OpenAIToolsArray
+  public var topLogprobs: Int?
+  public var topP: Double?
+  public var truncation: OpenAIResponseAllOf3TruncationAnyOf1?
+  public var usage: OpenAIResponseUsage?
+  public var user: String?
 
   public init(
-    metadata: OpenAIMetadata
+    createdAt: Double,
+    error: OpenAIResponseError,
+    id: String,
+    incompleteDetails: OpenAIResponseAllOf3IncompleteDetailsAnyOf1?,
+    instructions: HyperProxyJSONValue?,
+    metadata: OpenAIMetadata,
+    model: OpenAIModelIdsResponses,
+    object: OpenAIResponseAllOf3Object,
+    output: [OpenAIOutputItem],
+    parallelToolCalls: Bool,
+    temperature: Double?,
+    toolChoice: OpenAIToolChoiceParam,
+    tools: OpenAIToolsArray,
+    topP: Double?,
+    background: Bool? = nil,
+    completedAt: Double? = nil,
+    conversation: OpenAIResponseConversation? = nil,
+    maxOutputTokens: Int? = nil,
+    maxToolCalls: Int? = nil,
+    moderation: OpenAIModeration? = nil,
+    outputText: String? = nil,
+    previousResponseId: String? = nil,
+    prompt: OpenAIPrompt? = nil,
+    promptCacheDiagnostics: OpenAIPromptCacheDiagnostics? = nil,
+    promptCacheKey: String? = nil,
+    promptCacheOptions: OpenAIPromptCacheOptions? = nil,
+    promptCacheRetention: OpenAIModelResponsePropertiesPromptCacheRetentionAnyOf1? = nil,
+    reasoning: OpenAIReasoning? = nil,
+    safetyIdentifier: String? = nil,
+    serviceTier: OpenAIServiceTierResponses? = nil,
+    status: OpenAIResponseAllOf3Status? = nil,
+    text: OpenAIResponseTextParam? = nil,
+    topLogprobs: Int? = nil,
+    truncation: OpenAIResponseAllOf3TruncationAnyOf1? = nil,
+    usage: OpenAIResponseUsage? = nil,
+    user: String? = nil
   ) {
+    self.background = background
+    self.completedAt = completedAt
+    self.conversation = conversation
+    self.createdAt = createdAt
+    self.error = error
+    self.id = id
+    self.incompleteDetails = incompleteDetails
+    self.instructions = instructions
+    self.maxOutputTokens = maxOutputTokens
+    self.maxToolCalls = maxToolCalls
     self.metadata = metadata
+    self.model = model
+    self.moderation = moderation
+    self.object = object
+    self.output = output
+    self.outputText = outputText
+    self.parallelToolCalls = parallelToolCalls
+    self.previousResponseId = previousResponseId
+    self.prompt = prompt
+    self.promptCacheDiagnostics = promptCacheDiagnostics
+    self.promptCacheKey = promptCacheKey
+    self.promptCacheOptions = promptCacheOptions
+    self.promptCacheRetention = promptCacheRetention
+    self.reasoning = reasoning
+    self.safetyIdentifier = safetyIdentifier
+    self.serviceTier = serviceTier
+    self.status = status
+    self.temperature = temperature
+    self.text = text
+    self.toolChoice = toolChoice
+    self.tools = tools
+    self.topLogprobs = topLogprobs
+    self.topP = topP
+    self.truncation = truncation
+    self.usage = usage
+    self.user = user
   }
 
   enum CodingKeys: String, CodingKey {
+    case background
+    case completedAt = "completed_at"
+    case conversation
+    case createdAt = "created_at"
+    case error
+    case id
+    case incompleteDetails = "incomplete_details"
+    case instructions
+    case maxOutputTokens = "max_output_tokens"
+    case maxToolCalls = "max_tool_calls"
     case metadata
+    case model
+    case moderation
+    case object
+    case output
+    case outputText = "output_text"
+    case parallelToolCalls = "parallel_tool_calls"
+    case previousResponseId = "previous_response_id"
+    case prompt
+    case promptCacheDiagnostics = "prompt_cache_diagnostics"
+    case promptCacheKey = "prompt_cache_key"
+    case promptCacheOptions = "prompt_cache_options"
+    case promptCacheRetention = "prompt_cache_retention"
+    case reasoning
+    case safetyIdentifier = "safety_identifier"
+    case serviceTier = "service_tier"
+    case status
+    case temperature
+    case text
+    case toolChoice = "tool_choice"
+    case tools
+    case topLogprobs = "top_logprobs"
+    case topP = "top_p"
+    case truncation
+    case usage
+    case user
   }
 }
 
-public struct OpenAIUpdateConversationBody: Codable, Sendable {
-  public var metadata: OpenAIMetadata
+public struct OpenAIResponseAllOf3: Codable, Sendable {
+  public var completedAt: Double?
+  public var conversation: OpenAIResponseConversation?
+  public var createdAt: Double
+  public var error: OpenAIResponseError
+  public var id: String
+  public var incompleteDetails: OpenAIResponseAllOf3IncompleteDetailsAnyOf1?
+  public var instructions: HyperProxyJSONValue?
+  public var maxOutputTokens: Int?
+  public var moderation: OpenAIModeration?
+  public var object: OpenAIResponseAllOf3Object
+  public var output: [OpenAIOutputItem]
+  public var outputText: String?
+  public var parallelToolCalls: Bool
+  public var promptCacheDiagnostics: OpenAIPromptCacheDiagnostics?
+  public var promptCacheOptions: OpenAIPromptCacheOptions?
+  public var reasoning: OpenAIReasoning?
+  public var serviceTier: OpenAIServiceTierResponses?
+  public var status: OpenAIResponseAllOf3Status?
+  public var truncation: OpenAIResponseAllOf3TruncationAnyOf1?
+  public var usage: OpenAIResponseUsage?
 
   public init(
-    metadata: OpenAIMetadata
+    createdAt: Double,
+    error: OpenAIResponseError,
+    id: String,
+    incompleteDetails: OpenAIResponseAllOf3IncompleteDetailsAnyOf1?,
+    instructions: HyperProxyJSONValue?,
+    object: OpenAIResponseAllOf3Object,
+    output: [OpenAIOutputItem],
+    parallelToolCalls: Bool,
+    completedAt: Double? = nil,
+    conversation: OpenAIResponseConversation? = nil,
+    maxOutputTokens: Int? = nil,
+    moderation: OpenAIModeration? = nil,
+    outputText: String? = nil,
+    promptCacheDiagnostics: OpenAIPromptCacheDiagnostics? = nil,
+    promptCacheOptions: OpenAIPromptCacheOptions? = nil,
+    reasoning: OpenAIReasoning? = nil,
+    serviceTier: OpenAIServiceTierResponses? = nil,
+    status: OpenAIResponseAllOf3Status? = nil,
+    truncation: OpenAIResponseAllOf3TruncationAnyOf1? = nil,
+    usage: OpenAIResponseUsage? = nil
   ) {
-    self.metadata = metadata
+    self.completedAt = completedAt
+    self.conversation = conversation
+    self.createdAt = createdAt
+    self.error = error
+    self.id = id
+    self.incompleteDetails = incompleteDetails
+    self.instructions = instructions
+    self.maxOutputTokens = maxOutputTokens
+    self.moderation = moderation
+    self.object = object
+    self.output = output
+    self.outputText = outputText
+    self.parallelToolCalls = parallelToolCalls
+    self.promptCacheDiagnostics = promptCacheDiagnostics
+    self.promptCacheOptions = promptCacheOptions
+    self.reasoning = reasoning
+    self.serviceTier = serviceTier
+    self.status = status
+    self.truncation = truncation
+    self.usage = usage
   }
 
   enum CodingKeys: String, CodingKey {
-    case metadata
+    case completedAt = "completed_at"
+    case conversation
+    case createdAt = "created_at"
+    case error
+    case id
+    case incompleteDetails = "incomplete_details"
+    case instructions
+    case maxOutputTokens = "max_output_tokens"
+    case moderation
+    case object
+    case output
+    case outputText = "output_text"
+    case parallelToolCalls = "parallel_tool_calls"
+    case promptCacheDiagnostics = "prompt_cache_diagnostics"
+    case promptCacheOptions = "prompt_cache_options"
+    case reasoning
+    case serviceTier = "service_tier"
+    case status
+    case truncation
+    case usage
   }
 }
 
-public struct OpenAIUpdateConversationParameters: Codable, Sendable {
-  public var conversationId: String
+public struct OpenAIResponseAllOf3IncompleteDetailsAnyOf1: Codable, Sendable {
+  public var reason: OpenAIResponseAllOf3IncompleteDetailsAnyOf1Reason?
 
   public init(
-    conversationId: String
+    reason: OpenAIResponseAllOf3IncompleteDetailsAnyOf1Reason? = nil
   ) {
-    self.conversationId = conversationId
+    self.reason = reason
   }
 
   enum CodingKeys: String, CodingKey {
-    case conversationId = "conversation_id"
+    case reason
   }
 }
 
-public struct OpenAIUpdateEvalParameters: Codable, Sendable {
-  public var evalId: String
-
-  public init(
-    evalId: String
-  ) {
-    self.evalId = evalId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case evalId = "eval_id"
-  }
-}
-
-public struct OpenAIUpdateEvalRequest: Codable, Sendable {
-  public var metadata: OpenAIMetadata?
-  public var name: String?
-
-  public init(
-    metadata: OpenAIMetadata? = nil,
-    name: String? = nil
-  ) {
-    self.metadata = metadata
-    self.name = name
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case metadata
-    case name
-  }
-}
-
-public struct OpenAIUpdateGroupBody: Codable, Sendable {
-  public var name: String
-
-  public init(
-    name: String
-  ) {
-    self.name = name
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case name
-  }
-}
-
-public struct OpenAIUpdateGroupParameters: Codable, Sendable {
-  public var groupId: String
-
-  public init(
-    groupId: String
-  ) {
-    self.groupId = groupId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case groupId = "group_id"
-  }
-}
-
-public struct OpenAIUpdateOrganizationDataRetentionBody: Codable, Sendable {
-  public var retentionType: OpenAIUpdateOrganizationDataRetentionBodyRetentionType
-
-  public init(
-    retentionType: OpenAIUpdateOrganizationDataRetentionBodyRetentionType
-  ) {
-    self.retentionType = retentionType
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case retentionType = "retention_type"
-  }
-}
-
-public struct OpenAIUpdateOrganizationDataRetentionBodyRetentionType: RawRepresentable, Codable,
+public struct OpenAIResponseAllOf3IncompleteDetailsAnyOf1Reason: RawRepresentable, Codable,
   Hashable, Sendable
 {
   public var rawValue: String
@@ -2375,50 +2629,132 @@ public struct OpenAIUpdateOrganizationDataRetentionBodyRetentionType: RawReprese
     self.rawValue = rawValue
   }
 
-  public static let zeroDataRetention = Self(rawValue: "zero_data_retention")
-  public static let modifiedAbuseMonitoring = Self(rawValue: "modified_abuse_monitoring")
-  public static let enhancedZeroDataRetention = Self(rawValue: "enhanced_zero_data_retention")
-  public static let enhancedModifiedAbuseMonitoring = Self(
-    rawValue: "enhanced_modified_abuse_monitoring")
+  public static let maxOutputTokens = Self(rawValue: "max_output_tokens")
+  public static let maxMessages = Self(rawValue: "max_messages")
+  public static let contentFilter = Self(rawValue: "content_filter")
+  public static let steered = Self(rawValue: "steered")
 }
 
-public struct OpenAIUpdateOrganizationSpendAlertParameters: Codable, Sendable {
-  public var alertId: String
+public struct OpenAIResponseAllOf3Object: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let response = Self(rawValue: "response")
+}
+
+public struct OpenAIResponseAllOf3Status: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let completed = Self(rawValue: "completed")
+  public static let failed = Self(rawValue: "failed")
+  public static let inProgress = Self(rawValue: "in_progress")
+  public static let cancelled = Self(rawValue: "cancelled")
+  public static let queued = Self(rawValue: "queued")
+  public static let incomplete = Self(rawValue: "incomplete")
+}
+
+public struct OpenAIResponseAllOf3TruncationAnyOf1: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let auto = Self(rawValue: "auto")
+  public static let disabled = Self(rawValue: "disabled")
+}
+
+public struct OpenAIResponseAudioDeltaEvent: Codable, Sendable {
+  public var delta: String
+  public var sequenceNumber: Int
+  public var typeModel: OpenAIResponseAudioDeltaEventTypeModel
 
   public init(
-    alertId: String
+    delta: String,
+    sequenceNumber: Int,
+    typeModel: OpenAIResponseAudioDeltaEventTypeModel
   ) {
-    self.alertId = alertId
+    self.delta = delta
+    self.sequenceNumber = sequenceNumber
+    self.typeModel = typeModel
   }
 
   enum CodingKeys: String, CodingKey {
-    case alertId = "alert_id"
+    case delta
+    case sequenceNumber = "sequence_number"
+    case typeModel = "type"
   }
 }
 
-public struct OpenAIUpdateOrganizationSpendLimitBody: Codable, Sendable {
-  public var currency: OpenAIUpdateOrganizationSpendLimitBodyCurrency
-  public var interval: OpenAIUpdateOrganizationSpendLimitBodyInterval
-  public var thresholdAmount: Int
+public struct OpenAIResponseAudioDeltaEventTypeModel: RawRepresentable, Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let responseAudioDelta = Self(rawValue: "response.audio.delta")
+}
+
+public struct OpenAIResponseAudioDoneEvent: Codable, Sendable {
+  public var sequenceNumber: Int
+  public var typeModel: OpenAIResponseAudioDoneEventTypeModel
 
   public init(
-    currency: OpenAIUpdateOrganizationSpendLimitBodyCurrency,
-    interval: OpenAIUpdateOrganizationSpendLimitBodyInterval,
-    thresholdAmount: Int
+    sequenceNumber: Int,
+    typeModel: OpenAIResponseAudioDoneEventTypeModel
   ) {
-    self.currency = currency
-    self.interval = interval
-    self.thresholdAmount = thresholdAmount
+    self.sequenceNumber = sequenceNumber
+    self.typeModel = typeModel
   }
 
   enum CodingKeys: String, CodingKey {
-    case currency
-    case interval
-    case thresholdAmount = "threshold_amount"
+    case sequenceNumber = "sequence_number"
+    case typeModel = "type"
   }
 }
 
-public struct OpenAIUpdateOrganizationSpendLimitBodyCurrency: RawRepresentable, Codable, Hashable,
+public struct OpenAIResponseAudioDoneEventTypeModel: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let responseAudioDone = Self(rawValue: "response.audio.done")
+}
+
+public struct OpenAIResponseAudioTranscriptDeltaEvent: Codable, Sendable {
+  public var delta: String
+  public var sequenceNumber: Int
+  public var typeModel: OpenAIResponseAudioTranscriptDeltaEventTypeModel
+
+  public init(
+    delta: String,
+    sequenceNumber: Int,
+    typeModel: OpenAIResponseAudioTranscriptDeltaEventTypeModel
+  ) {
+    self.delta = delta
+    self.sequenceNumber = sequenceNumber
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case delta
+    case sequenceNumber = "sequence_number"
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIResponseAudioTranscriptDeltaEventTypeModel: RawRepresentable, Codable, Hashable,
   Sendable
 {
   public var rawValue: String
@@ -2427,10 +2763,28 @@ public struct OpenAIUpdateOrganizationSpendLimitBodyCurrency: RawRepresentable, 
     self.rawValue = rawValue
   }
 
-  public static let uSD = Self(rawValue: "USD")
+  public static let responseAudioTranscriptDelta = Self(rawValue: "response.audio.transcript.delta")
 }
 
-public struct OpenAIUpdateOrganizationSpendLimitBodyInterval: RawRepresentable, Codable, Hashable,
+public struct OpenAIResponseAudioTranscriptDoneEvent: Codable, Sendable {
+  public var sequenceNumber: Int
+  public var typeModel: OpenAIResponseAudioTranscriptDoneEventTypeModel
+
+  public init(
+    sequenceNumber: Int,
+    typeModel: OpenAIResponseAudioTranscriptDoneEventTypeModel
+  ) {
+    self.sequenceNumber = sequenceNumber
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case sequenceNumber = "sequence_number"
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIResponseAudioTranscriptDoneEventTypeModel: RawRepresentable, Codable, Hashable,
   Sendable
 {
   public var rawValue: String
@@ -2439,24 +2793,40 @@ public struct OpenAIUpdateOrganizationSpendLimitBodyInterval: RawRepresentable, 
     self.rawValue = rawValue
   }
 
-  public static let month = Self(rawValue: "month")
+  public static let responseAudioTranscriptDone = Self(rawValue: "response.audio.transcript.done")
 }
 
-public struct OpenAIUpdateProjectDataRetentionBody: Codable, Sendable {
-  public var retentionType: OpenAIUpdateProjectDataRetentionBodyRetentionType
+public struct OpenAIResponseCodeInterpreterCallCodeDeltaEvent: Codable, Sendable {
+  public var delta: String
+  public var itemId: String
+  public var outputIndex: Int
+  public var sequenceNumber: Int
+  public var typeModel: OpenAIResponseCodeInterpreterCallCodeDeltaEventTypeModel
 
   public init(
-    retentionType: OpenAIUpdateProjectDataRetentionBodyRetentionType
+    delta: String,
+    itemId: String,
+    outputIndex: Int,
+    sequenceNumber: Int,
+    typeModel: OpenAIResponseCodeInterpreterCallCodeDeltaEventTypeModel
   ) {
-    self.retentionType = retentionType
+    self.delta = delta
+    self.itemId = itemId
+    self.outputIndex = outputIndex
+    self.sequenceNumber = sequenceNumber
+    self.typeModel = typeModel
   }
 
   enum CodingKeys: String, CodingKey {
-    case retentionType = "retention_type"
+    case delta
+    case itemId = "item_id"
+    case outputIndex = "output_index"
+    case sequenceNumber = "sequence_number"
+    case typeModel = "type"
   }
 }
 
-public struct OpenAIUpdateProjectDataRetentionBodyRetentionType: RawRepresentable, Codable,
+public struct OpenAIResponseCodeInterpreterCallCodeDeltaEventTypeModel: RawRepresentable, Codable,
   Hashable, Sendable
 {
   public var rawValue: String
@@ -2465,113 +2835,42 @@ public struct OpenAIUpdateProjectDataRetentionBodyRetentionType: RawRepresentabl
     self.rawValue = rawValue
   }
 
-  public static let organizationDefault = Self(rawValue: "organization_default")
-  public static let none = Self(rawValue: "none")
-  public static let zeroDataRetention = Self(rawValue: "zero_data_retention")
-  public static let modifiedAbuseMonitoring = Self(rawValue: "modified_abuse_monitoring")
-  public static let enhancedZeroDataRetention = Self(rawValue: "enhanced_zero_data_retention")
-  public static let enhancedModifiedAbuseMonitoring = Self(
-    rawValue: "enhanced_modified_abuse_monitoring")
+  public static let responseCodeInterpreterCallCodeDelta = Self(
+    rawValue: "response.code_interpreter_call_code.delta")
 }
 
-public struct OpenAIUpdateProjectDataRetentionParameters: Codable, Sendable {
-  public var projectId: String
+public struct OpenAIResponseCodeInterpreterCallCodeDoneEvent: Codable, Sendable {
+  public var code: String
+  public var itemId: String
+  public var outputIndex: Int
+  public var sequenceNumber: Int
+  public var typeModel: OpenAIResponseCodeInterpreterCallCodeDoneEventTypeModel
 
   public init(
-    projectId: String
+    code: String,
+    itemId: String,
+    outputIndex: Int,
+    sequenceNumber: Int,
+    typeModel: OpenAIResponseCodeInterpreterCallCodeDoneEventTypeModel
   ) {
-    self.projectId = projectId
+    self.code = code
+    self.itemId = itemId
+    self.outputIndex = outputIndex
+    self.sequenceNumber = sequenceNumber
+    self.typeModel = typeModel
   }
 
   enum CodingKeys: String, CodingKey {
-    case projectId = "project_id"
+    case code
+    case itemId = "item_id"
+    case outputIndex = "output_index"
+    case sequenceNumber = "sequence_number"
+    case typeModel = "type"
   }
 }
 
-public struct OpenAIUpdateProjectHostedToolPermissionsParameters: Codable, Sendable {
-  public var projectId: String
-
-  public init(
-    projectId: String
-  ) {
-    self.projectId = projectId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case projectId = "project_id"
-  }
-}
-
-public struct OpenAIUpdateProjectModelPermissionsParameters: Codable, Sendable {
-  public var projectId: String
-
-  public init(
-    projectId: String
-  ) {
-    self.projectId = projectId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case projectId = "project_id"
-  }
-}
-
-public struct OpenAIUpdateProjectRateLimitsParameters: Codable, Sendable {
-  public var projectId: String
-  public var rateLimitId: String
-
-  public init(
-    projectId: String,
-    rateLimitId: String
-  ) {
-    self.projectId = projectId
-    self.rateLimitId = rateLimitId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case projectId = "project_id"
-    case rateLimitId = "rate_limit_id"
-  }
-}
-
-public struct OpenAIUpdateProjectRoleParameters: Codable, Sendable {
-  public var projectId: String
-  public var roleId: String
-
-  public init(
-    projectId: String,
-    roleId: String
-  ) {
-    self.projectId = projectId
-    self.roleId = roleId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case projectId = "project_id"
-    case roleId = "role_id"
-  }
-}
-
-public struct OpenAIUpdateProjectServiceAccountBody: Codable, Sendable {
-  public var name: String?
-  public var role: OpenAIUpdateProjectServiceAccountBodyRole?
-
-  public init(
-    name: String? = nil,
-    role: OpenAIUpdateProjectServiceAccountBodyRole? = nil
-  ) {
-    self.name = name
-    self.role = role
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case name
-    case role
-  }
-}
-
-public struct OpenAIUpdateProjectServiceAccountBodyRole: RawRepresentable, Codable, Hashable,
-  Sendable
+public struct OpenAIResponseCodeInterpreterCallCodeDoneEventTypeModel: RawRepresentable, Codable,
+  Hashable, Sendable
 {
   public var rawValue: String
 
@@ -2579,70 +2878,38 @@ public struct OpenAIUpdateProjectServiceAccountBodyRole: RawRepresentable, Codab
     self.rawValue = rawValue
   }
 
-  public static let member = Self(rawValue: "member")
-  public static let owner = Self(rawValue: "owner")
+  public static let responseCodeInterpreterCallCodeDone = Self(
+    rawValue: "response.code_interpreter_call_code.done")
 }
 
-public struct OpenAIUpdateProjectServiceAccountParameters: Codable, Sendable {
-  public var projectId: String
-  public var serviceAccountId: String
+public struct OpenAIResponseCodeInterpreterCallCompletedEvent: Codable, Sendable {
+  public var itemId: String
+  public var outputIndex: Int
+  public var sequenceNumber: Int
+  public var typeModel: OpenAIResponseCodeInterpreterCallCompletedEventTypeModel
 
   public init(
-    projectId: String,
-    serviceAccountId: String
+    itemId: String,
+    outputIndex: Int,
+    sequenceNumber: Int,
+    typeModel: OpenAIResponseCodeInterpreterCallCompletedEventTypeModel
   ) {
-    self.projectId = projectId
-    self.serviceAccountId = serviceAccountId
+    self.itemId = itemId
+    self.outputIndex = outputIndex
+    self.sequenceNumber = sequenceNumber
+    self.typeModel = typeModel
   }
 
   enum CodingKeys: String, CodingKey {
-    case projectId = "project_id"
-    case serviceAccountId = "service_account_id"
+    case itemId = "item_id"
+    case outputIndex = "output_index"
+    case sequenceNumber = "sequence_number"
+    case typeModel = "type"
   }
 }
 
-public struct OpenAIUpdateProjectSpendAlertParameters: Codable, Sendable {
-  public var alertId: String
-  public var projectId: String
-
-  public init(
-    alertId: String,
-    projectId: String
-  ) {
-    self.alertId = alertId
-    self.projectId = projectId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case alertId = "alert_id"
-    case projectId = "project_id"
-  }
-}
-
-public struct OpenAIUpdateProjectSpendLimitBody: Codable, Sendable {
-  public var currency: OpenAIUpdateProjectSpendLimitBodyCurrency
-  public var interval: OpenAIUpdateProjectSpendLimitBodyInterval
-  public var thresholdAmount: Int
-
-  public init(
-    currency: OpenAIUpdateProjectSpendLimitBodyCurrency,
-    interval: OpenAIUpdateProjectSpendLimitBodyInterval,
-    thresholdAmount: Int
-  ) {
-    self.currency = currency
-    self.interval = interval
-    self.thresholdAmount = thresholdAmount
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case currency
-    case interval
-    case thresholdAmount = "threshold_amount"
-  }
-}
-
-public struct OpenAIUpdateProjectSpendLimitBodyCurrency: RawRepresentable, Codable, Hashable,
-  Sendable
+public struct OpenAIResponseCodeInterpreterCallCompletedEventTypeModel: RawRepresentable, Codable,
+  Hashable, Sendable
 {
   public var rawValue: String
 
@@ -2650,11 +2917,38 @@ public struct OpenAIUpdateProjectSpendLimitBodyCurrency: RawRepresentable, Codab
     self.rawValue = rawValue
   }
 
-  public static let uSD = Self(rawValue: "USD")
+  public static let responseCodeInterpreterCallCompleted = Self(
+    rawValue: "response.code_interpreter_call.completed")
 }
 
-public struct OpenAIUpdateProjectSpendLimitBodyInterval: RawRepresentable, Codable, Hashable,
-  Sendable
+public struct OpenAIResponseCodeInterpreterCallInProgressEvent: Codable, Sendable {
+  public var itemId: String
+  public var outputIndex: Int
+  public var sequenceNumber: Int
+  public var typeModel: OpenAIResponseCodeInterpreterCallInProgressEventTypeModel
+
+  public init(
+    itemId: String,
+    outputIndex: Int,
+    sequenceNumber: Int,
+    typeModel: OpenAIResponseCodeInterpreterCallInProgressEventTypeModel
+  ) {
+    self.itemId = itemId
+    self.outputIndex = outputIndex
+    self.sequenceNumber = sequenceNumber
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case itemId = "item_id"
+    case outputIndex = "output_index"
+    case sequenceNumber = "sequence_number"
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIResponseCodeInterpreterCallInProgressEventTypeModel: RawRepresentable, Codable,
+  Hashable, Sendable
 {
   public var rawValue: String
 
@@ -2662,65 +2956,45 @@ public struct OpenAIUpdateProjectSpendLimitBodyInterval: RawRepresentable, Codab
     self.rawValue = rawValue
   }
 
-  public static let month = Self(rawValue: "month")
+  public static let responseCodeInterpreterCallInProgress = Self(
+    rawValue: "response.code_interpreter_call.in_progress")
 }
 
-public struct OpenAIUpdateRoleParameters: Codable, Sendable {
-  public var roleId: String
+public struct OpenAIResponseCodeInterpreterCallInterpretingEvent: Codable, Sendable {
+  public var itemId: String
+  public var outputIndex: Int
+  public var sequenceNumber: Int
+  public var typeModel: OpenAIResponseCodeInterpreterCallInterpretingEventTypeModel
 
   public init(
-    roleId: String
+    itemId: String,
+    outputIndex: Int,
+    sequenceNumber: Int,
+    typeModel: OpenAIResponseCodeInterpreterCallInterpretingEventTypeModel
   ) {
-    self.roleId = roleId
+    self.itemId = itemId
+    self.outputIndex = outputIndex
+    self.sequenceNumber = sequenceNumber
+    self.typeModel = typeModel
   }
 
   enum CodingKeys: String, CodingKey {
-    case roleId = "role_id"
+    case itemId = "item_id"
+    case outputIndex = "output_index"
+    case sequenceNumber = "sequence_number"
+    case typeModel = "type"
   }
 }
 
-public struct OpenAIUpdateSkillDefaultVersionParameters: Codable, Sendable {
-  public var skillId: String
+public struct OpenAIResponseCodeInterpreterCallInterpretingEventTypeModel: RawRepresentable,
+  Codable, Hashable, Sendable
+{
+  public var rawValue: String
 
-  public init(
-    skillId: String
-  ) {
-    self.skillId = skillId
+  public init(rawValue: String) {
+    self.rawValue = rawValue
   }
 
-  enum CodingKeys: String, CodingKey {
-    case skillId = "skill_id"
-  }
-}
-
-public struct OpenAIUpdateVectorStoreFileAttributesParameters: Codable, Sendable {
-  public var fileId: String
-  public var vectorStoreId: String
-
-  public init(
-    fileId: String,
-    vectorStoreId: String
-  ) {
-    self.fileId = fileId
-    self.vectorStoreId = vectorStoreId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case fileId = "file_id"
-    case vectorStoreId = "vector_store_id"
-  }
-}
-
-public struct OpenAIUpdateVectorStoreFileAttributesRequest: Codable, Sendable {
-  public var attributes: OpenAIVectorStoreFileAttributes
-
-  public init(
-    attributes: OpenAIVectorStoreFileAttributes
-  ) {
-    self.attributes = attributes
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case attributes
-  }
+  public static let responseCodeInterpreterCallInterpreting = Self(
+    rawValue: "response.code_interpreter_call.interpreting")
 }

@@ -4,155 +4,95 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIListModelsResponse: Codable, Sendable {
-  public var data: [OpenAIModel]
-  public var object: OpenAIListModelsResponseObject
+public struct OpenAIGroup: Codable, Sendable {
+  public var createdAt: Int
+  public var id: String
+  public var name: String
+  public var object: OpenAIGroupObject
+  public var scimManaged: Bool
 
   public init(
-    data: [OpenAIModel],
-    object: OpenAIListModelsResponseObject
+    createdAt: Int,
+    id: String,
+    name: String,
+    object: OpenAIGroupObject,
+    scimManaged: Bool
   ) {
-    self.data = data
+    self.createdAt = createdAt
+    self.id = id
+    self.name = name
+    self.object = object
+    self.scimManaged = scimManaged
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case createdAt = "created_at"
+    case id
+    case name
+    case object
+    case scimManaged = "scim_managed"
+  }
+}
+
+public struct OpenAIGroupDeletedResource: Codable, Sendable {
+  public var deleted: Bool
+  public var id: String
+  public var object: OpenAIGroupDeletedResourceObject
+
+  public init(
+    deleted: Bool,
+    id: String,
+    object: OpenAIGroupDeletedResourceObject
+  ) {
+    self.deleted = deleted
+    self.id = id
     self.object = object
   }
 
   enum CodingKeys: String, CodingKey {
-    case data
+    case deleted
+    case id
     case object
   }
 }
 
-public struct OpenAIListModelsResponseObject: RawRepresentable, Codable, Hashable, Sendable {
+public struct OpenAIGroupDeletedResourceObject: RawRepresentable, Codable, Hashable, Sendable {
   public var rawValue: String
 
   public init(rawValue: String) {
     self.rawValue = rawValue
   }
 
-  public static let list = Self(rawValue: "list")
+  public static let groupDeleted = Self(rawValue: "group.deleted")
 }
 
-public struct OpenAIListOrganizationCertificatesParameters: Codable, Sendable {
-  public var after: String?
-  public var limit: Int?
-  public var order: OpenAIListOrganizationCertificatesParametersOrder?
-
-  public init(
-    after: String? = nil,
-    limit: Int? = nil,
-    order: OpenAIListOrganizationCertificatesParametersOrder? = nil
-  ) {
-    self.after = after
-    self.limit = limit
-    self.order = order
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case after
-    case limit
-    case order
-  }
-}
-
-public struct OpenAIListOrganizationCertificatesParametersOrder: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let asc = Self(rawValue: "asc")
-  public static let desc = Self(rawValue: "desc")
-}
-
-public struct OpenAIListOrganizationSpendAlertsParameters: Codable, Sendable {
-  public var after: String?
-  public var before: String?
-  public var limit: Int?
-  public var order: OpenAIListOrganizationSpendAlertsParametersOrder?
-
-  public init(
-    after: String? = nil,
-    before: String? = nil,
-    limit: Int? = nil,
-    order: OpenAIListOrganizationSpendAlertsParametersOrder? = nil
-  ) {
-    self.after = after
-    self.before = before
-    self.limit = limit
-    self.order = order
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case after
-    case before
-    case limit
-    case order
-  }
-}
-
-public struct OpenAIListOrganizationSpendAlertsParametersOrder: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let asc = Self(rawValue: "asc")
-  public static let desc = Self(rawValue: "desc")
-}
-
-public struct OpenAIListPaginatedFineTuningJobsParameters: Codable, Sendable {
-  public var after: String?
-  public var limit: Int?
-  public var metadata: [String: String]?
-
-  public init(
-    after: String? = nil,
-    limit: Int? = nil,
-    metadata: [String: String]? = nil
-  ) {
-    self.after = after
-    self.limit = limit
-    self.metadata = metadata
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case after
-    case limit
-    case metadata
-  }
-}
-
-public struct OpenAIListPaginatedFineTuningJobsResponse: Codable, Sendable {
-  public var data: [OpenAIFineTuningJob]
+public struct OpenAIGroupListResource: Codable, Sendable {
+  public var data: [OpenAIGroupResponse]
   public var hasMore: Bool
-  public var object: OpenAIListPaginatedFineTuningJobsResponseObject
+  public var next: String?
+  public var object: OpenAIGroupListResourceObject
 
   public init(
-    data: [OpenAIFineTuningJob],
+    data: [OpenAIGroupResponse],
     hasMore: Bool,
-    object: OpenAIListPaginatedFineTuningJobsResponseObject
+    next: String?,
+    object: OpenAIGroupListResourceObject
   ) {
     self.data = data
     self.hasMore = hasMore
+    self.next = next
     self.object = object
   }
 
   enum CodingKeys: String, CodingKey {
     case data
     case hasMore = "has_more"
+    case next
     case object
   }
 }
 
-public struct OpenAIListPaginatedFineTuningJobsResponseObject: RawRepresentable, Codable, Hashable,
-  Sendable
-{
+public struct OpenAIGroupListResourceObject: RawRepresentable, Codable, Hashable, Sendable {
   public var rawValue: String
 
   public init(rawValue: String) {
@@ -162,1505 +102,251 @@ public struct OpenAIListPaginatedFineTuningJobsResponseObject: RawRepresentable,
   public static let list = Self(rawValue: "list")
 }
 
-public struct OpenAIListProjectApiKeysParameters: Codable, Sendable {
-  public var after: String?
-  public var limit: Int?
-  public var ownerProjectAccess: OpenAIListProjectApiKeysParametersOwnerProjectAccess?
-  public var projectId: String
+public struct OpenAIGroupMemberUser: Codable, Sendable {
+  public var email: String?
+  public var id: String
+  public var isServiceAccount: Bool?
+  public var name: String
+  public var picture: String?
+  public var userType: OpenAIGroupMemberUserUserType
 
   public init(
-    projectId: String,
-    after: String? = nil,
-    limit: Int? = nil,
-    ownerProjectAccess: OpenAIListProjectApiKeysParametersOwnerProjectAccess? = nil
+    email: String?,
+    id: String,
+    isServiceAccount: Bool?,
+    name: String,
+    picture: String?,
+    userType: OpenAIGroupMemberUserUserType
   ) {
-    self.after = after
-    self.limit = limit
-    self.ownerProjectAccess = ownerProjectAccess
-    self.projectId = projectId
+    self.email = email
+    self.id = id
+    self.isServiceAccount = isServiceAccount
+    self.name = name
+    self.picture = picture
+    self.userType = userType
   }
 
   enum CodingKeys: String, CodingKey {
-    case after
-    case limit
-    case ownerProjectAccess = "owner_project_access"
-    case projectId = "project_id"
+    case email
+    case id
+    case isServiceAccount = "is_service_account"
+    case name
+    case picture
+    case userType = "user_type"
   }
 }
 
-public struct OpenAIListProjectApiKeysParametersOwnerProjectAccess: RawRepresentable, Codable,
-  Hashable, Sendable
-{
+public struct OpenAIGroupMemberUserUserType: RawRepresentable, Codable, Hashable, Sendable {
   public var rawValue: String
 
   public init(rawValue: String) {
     self.rawValue = rawValue
   }
 
-  public static let active = Self(rawValue: "active")
-  public static let inactive = Self(rawValue: "inactive")
-  public static let anyModel = Self(rawValue: "any")
+  public static let user = Self(rawValue: "user")
+  public static let tenantUser = Self(rawValue: "tenant_user")
 }
 
-public struct OpenAIListProjectCertificatesParameters: Codable, Sendable {
-  public var after: String?
-  public var limit: Int?
-  public var order: OpenAIListProjectCertificatesParametersOrder?
-  public var projectId: String
-
-  public init(
-    projectId: String,
-    after: String? = nil,
-    limit: Int? = nil,
-    order: OpenAIListProjectCertificatesParametersOrder? = nil
-  ) {
-    self.after = after
-    self.limit = limit
-    self.order = order
-    self.projectId = projectId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case after
-    case limit
-    case order
-    case projectId = "project_id"
-  }
-}
-
-public struct OpenAIListProjectCertificatesParametersOrder: RawRepresentable, Codable, Hashable,
-  Sendable
-{
+public struct OpenAIGroupObject: RawRepresentable, Codable, Hashable, Sendable {
   public var rawValue: String
 
   public init(rawValue: String) {
     self.rawValue = rawValue
   }
 
-  public static let asc = Self(rawValue: "asc")
-  public static let desc = Self(rawValue: "desc")
+  public static let group = Self(rawValue: "group")
 }
 
-public struct OpenAIListProjectCertificatesResponse: Codable, Sendable {
-  public var data: [OpenAIOrganizationProjectCertificate]
-  public var firstId: String?
-  public var hasMore: Bool
-  public var lastId: String?
-  public var object: OpenAIListProjectCertificatesResponseObject
+public struct OpenAIGroupResourceWithSuccess: Codable, Sendable {
+  public var createdAt: Int
+  public var id: String
+  public var isScimManaged: Bool
+  public var name: String
 
   public init(
-    data: [OpenAIOrganizationProjectCertificate],
-    firstId: String?,
-    hasMore: Bool,
-    lastId: String?,
-    object: OpenAIListProjectCertificatesResponseObject
+    createdAt: Int,
+    id: String,
+    isScimManaged: Bool,
+    name: String
   ) {
-    self.data = data
-    self.firstId = firstId
-    self.hasMore = hasMore
-    self.lastId = lastId
+    self.createdAt = createdAt
+    self.id = id
+    self.isScimManaged = isScimManaged
+    self.name = name
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case createdAt = "created_at"
+    case id
+    case isScimManaged = "is_scim_managed"
+    case name
+  }
+}
+
+public struct OpenAIGroupResponse: Codable, Sendable {
+  public var createdAt: Int
+  public var groupType: OpenAIGroupResponseGroupType
+  public var id: String
+  public var isScimManaged: Bool
+  public var name: String
+
+  public init(
+    createdAt: Int,
+    groupType: OpenAIGroupResponseGroupType,
+    id: String,
+    isScimManaged: Bool,
+    name: String
+  ) {
+    self.createdAt = createdAt
+    self.groupType = groupType
+    self.id = id
+    self.isScimManaged = isScimManaged
+    self.name = name
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case createdAt = "created_at"
+    case groupType = "group_type"
+    case id
+    case isScimManaged = "is_scim_managed"
+    case name
+  }
+}
+
+public struct OpenAIGroupResponseGroupType: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let group = Self(rawValue: "group")
+  public static let tenantGroup = Self(rawValue: "tenant_group")
+}
+
+public struct OpenAIGroupRoleAssignment: Codable, Sendable {
+  public var group: OpenAIGroup
+  public var object: OpenAIGroupRoleAssignmentObject
+  public var role: OpenAIRole
+
+  public init(
+    group: OpenAIGroup,
+    object: OpenAIGroupRoleAssignmentObject,
+    role: OpenAIRole
+  ) {
+    self.group = group
     self.object = object
+    self.role = role
   }
 
   enum CodingKeys: String, CodingKey {
-    case data
-    case firstId = "first_id"
-    case hasMore = "has_more"
-    case lastId = "last_id"
+    case group
     case object
+    case role
   }
 }
 
-public struct OpenAIListProjectCertificatesResponseObject: RawRepresentable, Codable, Hashable,
-  Sendable
-{
+public struct OpenAIGroupRoleAssignmentObject: RawRepresentable, Codable, Hashable, Sendable {
   public var rawValue: String
 
   public init(rawValue: String) {
     self.rawValue = rawValue
   }
 
-  public static let list = Self(rawValue: "list")
+  public static let groupRole = Self(rawValue: "group.role")
 }
 
-public struct OpenAIListProjectGroupRoleAssignmentsParameters: Codable, Sendable {
-  public var after: String?
+public struct OpenAIGroupUser: Codable, Sendable {
+  public var email: String?
+  public var id: String
+  public var name: String
+
+  public init(
+    email: String?,
+    id: String,
+    name: String
+  ) {
+    self.email = email
+    self.id = id
+    self.name = name
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case email
+    case id
+    case name
+  }
+}
+
+public struct OpenAIGroupUserAssignment: Codable, Sendable {
   public var groupId: String
-  public var limit: Int?
-  public var order: OpenAIListProjectGroupRoleAssignmentsParametersOrder?
-  public var projectId: String
+  public var object: OpenAIGroupUserAssignmentObject
+  public var userId: String
 
   public init(
     groupId: String,
-    projectId: String,
-    after: String? = nil,
-    limit: Int? = nil,
-    order: OpenAIListProjectGroupRoleAssignmentsParametersOrder? = nil
+    object: OpenAIGroupUserAssignmentObject,
+    userId: String
   ) {
-    self.after = after
     self.groupId = groupId
-    self.limit = limit
-    self.order = order
-    self.projectId = projectId
+    self.object = object
+    self.userId = userId
   }
 
   enum CodingKeys: String, CodingKey {
-    case after
     case groupId = "group_id"
-    case limit
-    case order
-    case projectId = "project_id"
-  }
-}
-
-public struct OpenAIListProjectGroupRoleAssignmentsParametersOrder: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let asc = Self(rawValue: "asc")
-  public static let desc = Self(rawValue: "desc")
-}
-
-public struct OpenAIListProjectGroupsParameters: Codable, Sendable {
-  public var after: String?
-  public var limit: Int?
-  public var order: OpenAIListProjectGroupsParametersOrder?
-  public var projectId: String
-
-  public init(
-    projectId: String,
-    after: String? = nil,
-    limit: Int? = nil,
-    order: OpenAIListProjectGroupsParametersOrder? = nil
-  ) {
-    self.after = after
-    self.limit = limit
-    self.order = order
-    self.projectId = projectId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case after
-    case limit
-    case order
-    case projectId = "project_id"
-  }
-}
-
-public struct OpenAIListProjectGroupsParametersOrder: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let asc = Self(rawValue: "asc")
-  public static let desc = Self(rawValue: "desc")
-}
-
-public struct OpenAIListProjectRateLimitsParameters: Codable, Sendable {
-  public var after: String?
-  public var before: String?
-  public var limit: Int?
-  public var projectId: String
-
-  public init(
-    projectId: String,
-    after: String? = nil,
-    before: String? = nil,
-    limit: Int? = nil
-  ) {
-    self.after = after
-    self.before = before
-    self.limit = limit
-    self.projectId = projectId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case after
-    case before
-    case limit
-    case projectId = "project_id"
-  }
-}
-
-public struct OpenAIListProjectRolesParameters: Codable, Sendable {
-  public var after: String?
-  public var limit: Int?
-  public var order: OpenAIListProjectRolesParametersOrder?
-  public var projectId: String
-
-  public init(
-    projectId: String,
-    after: String? = nil,
-    limit: Int? = nil,
-    order: OpenAIListProjectRolesParametersOrder? = nil
-  ) {
-    self.after = after
-    self.limit = limit
-    self.order = order
-    self.projectId = projectId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case after
-    case limit
-    case order
-    case projectId = "project_id"
-  }
-}
-
-public struct OpenAIListProjectRolesParametersOrder: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let asc = Self(rawValue: "asc")
-  public static let desc = Self(rawValue: "desc")
-}
-
-public struct OpenAIListProjectServiceAccountsParameters: Codable, Sendable {
-  public var after: String?
-  public var limit: Int?
-  public var projectId: String
-
-  public init(
-    projectId: String,
-    after: String? = nil,
-    limit: Int? = nil
-  ) {
-    self.after = after
-    self.limit = limit
-    self.projectId = projectId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case after
-    case limit
-    case projectId = "project_id"
-  }
-}
-
-public struct OpenAIListProjectSpendAlertsParameters: Codable, Sendable {
-  public var after: String?
-  public var before: String?
-  public var limit: Int?
-  public var order: OpenAIListProjectSpendAlertsParametersOrder?
-  public var projectId: String
-
-  public init(
-    projectId: String,
-    after: String? = nil,
-    before: String? = nil,
-    limit: Int? = nil,
-    order: OpenAIListProjectSpendAlertsParametersOrder? = nil
-  ) {
-    self.after = after
-    self.before = before
-    self.limit = limit
-    self.order = order
-    self.projectId = projectId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case after
-    case before
-    case limit
-    case order
-    case projectId = "project_id"
-  }
-}
-
-public struct OpenAIListProjectSpendAlertsParametersOrder: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let asc = Self(rawValue: "asc")
-  public static let desc = Self(rawValue: "desc")
-}
-
-public struct OpenAIListProjectUserRoleAssignmentsParameters: Codable, Sendable {
-  public var after: String?
-  public var limit: Int?
-  public var order: OpenAIListProjectUserRoleAssignmentsParametersOrder?
-  public var projectId: String
-  public var userId: String
-
-  public init(
-    projectId: String,
-    userId: String,
-    after: String? = nil,
-    limit: Int? = nil,
-    order: OpenAIListProjectUserRoleAssignmentsParametersOrder? = nil
-  ) {
-    self.after = after
-    self.limit = limit
-    self.order = order
-    self.projectId = projectId
-    self.userId = userId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case after
-    case limit
-    case order
-    case projectId = "project_id"
+    case object
     case userId = "user_id"
   }
 }
 
-public struct OpenAIListProjectUserRoleAssignmentsParametersOrder: RawRepresentable, Codable,
-  Hashable, Sendable
-{
+public struct OpenAIGroupUserAssignmentObject: RawRepresentable, Codable, Hashable, Sendable {
   public var rawValue: String
 
   public init(rawValue: String) {
     self.rawValue = rawValue
   }
 
-  public static let asc = Self(rawValue: "asc")
-  public static let desc = Self(rawValue: "desc")
+  public static let groupUser = Self(rawValue: "group.user")
 }
 
-public struct OpenAIListProjectUsersParameters: Codable, Sendable {
-  public var after: String?
-  public var limit: Int?
-  public var projectId: String
+public struct OpenAIGroupUserDeletedResource: Codable, Sendable {
+  public var deleted: Bool
+  public var object: OpenAIGroupUserDeletedResourceObject
 
   public init(
-    projectId: String,
-    after: String? = nil,
-    limit: Int? = nil
+    deleted: Bool,
+    object: OpenAIGroupUserDeletedResourceObject
   ) {
-    self.after = after
-    self.limit = limit
-    self.projectId = projectId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case after
-    case limit
-    case projectId = "project_id"
-  }
-}
-
-public struct OpenAIListProjectsParameters: Codable, Sendable {
-  public var after: String?
-  public var includeArchived: Bool?
-  public var limit: Int?
-
-  public init(
-    after: String? = nil,
-    includeArchived: Bool? = nil,
-    limit: Int? = nil
-  ) {
-    self.after = after
-    self.includeArchived = includeArchived
-    self.limit = limit
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case after
-    case includeArchived = "include_archived"
-    case limit
-  }
-}
-
-public struct OpenAIListRolesParameters: Codable, Sendable {
-  public var after: String?
-  public var limit: Int?
-  public var order: OpenAIListRolesParametersOrder?
-
-  public init(
-    after: String? = nil,
-    limit: Int? = nil,
-    order: OpenAIListRolesParametersOrder? = nil
-  ) {
-    self.after = after
-    self.limit = limit
-    self.order = order
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case after
-    case limit
-    case order
-  }
-}
-
-public struct OpenAIListRolesParametersOrder: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let asc = Self(rawValue: "asc")
-  public static let desc = Self(rawValue: "desc")
-}
-
-public struct OpenAIListRunStepsParameters: Codable, Sendable {
-  public var after: String?
-  public var before: String?
-  public var include: [OpenAIListRunStepsParametersIncludeItem]?
-  public var limit: Int?
-  public var order: OpenAIListRunStepsParametersOrder?
-  public var runId: String
-  public var threadId: String
-
-  public init(
-    runId: String,
-    threadId: String,
-    after: String? = nil,
-    before: String? = nil,
-    include: [OpenAIListRunStepsParametersIncludeItem]? = nil,
-    limit: Int? = nil,
-    order: OpenAIListRunStepsParametersOrder? = nil
-  ) {
-    self.after = after
-    self.before = before
-    self.include = include
-    self.limit = limit
-    self.order = order
-    self.runId = runId
-    self.threadId = threadId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case after
-    case before
-    case include = "include[]"
-    case limit
-    case order
-    case runId = "run_id"
-    case threadId = "thread_id"
-  }
-}
-
-public struct OpenAIListRunStepsParametersIncludeItem: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let stepDetailsToolCallsFileSearchResultsContent = Self(
-    rawValue: "step_details.tool_calls[*].file_search.results[*].content")
-}
-
-public struct OpenAIListRunStepsParametersOrder: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let asc = Self(rawValue: "asc")
-  public static let desc = Self(rawValue: "desc")
-}
-
-public struct OpenAIListRunStepsResponse: Codable, Sendable {
-  public var data: [OpenAIRunStepObject]
-  public var firstId: String
-  public var hasMore: Bool
-  public var lastId: String
-  public var object: String
-
-  public init(
-    data: [OpenAIRunStepObject],
-    firstId: String,
-    hasMore: Bool,
-    lastId: String,
-    object: String
-  ) {
-    self.data = data
-    self.firstId = firstId
-    self.hasMore = hasMore
-    self.lastId = lastId
+    self.deleted = deleted
     self.object = object
   }
 
   enum CodingKeys: String, CodingKey {
-    case data
-    case firstId = "first_id"
-    case hasMore = "has_more"
-    case lastId = "last_id"
+    case deleted
     case object
   }
 }
 
-public struct OpenAIListRunsParameters: Codable, Sendable {
-  public var after: String?
-  public var before: String?
-  public var limit: Int?
-  public var order: OpenAIListRunsParametersOrder?
-  public var threadId: String
-
-  public init(
-    threadId: String,
-    after: String? = nil,
-    before: String? = nil,
-    limit: Int? = nil,
-    order: OpenAIListRunsParametersOrder? = nil
-  ) {
-    self.after = after
-    self.before = before
-    self.limit = limit
-    self.order = order
-    self.threadId = threadId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case after
-    case before
-    case limit
-    case order
-    case threadId = "thread_id"
-  }
-}
-
-public struct OpenAIListRunsParametersOrder: RawRepresentable, Codable, Hashable, Sendable {
+public struct OpenAIGroupUserDeletedResourceObject: RawRepresentable, Codable, Hashable, Sendable {
   public var rawValue: String
 
   public init(rawValue: String) {
     self.rawValue = rawValue
   }
 
-  public static let asc = Self(rawValue: "asc")
-  public static let desc = Self(rawValue: "desc")
+  public static let groupUserDeleted = Self(rawValue: "group.user.deleted")
 }
 
-public struct OpenAIListRunsResponse: Codable, Sendable {
-  public var data: [OpenAIRunObject]
-  public var firstId: String
-  public var hasMore: Bool
-  public var lastId: String
-  public var object: String
-
-  public init(
-    data: [OpenAIRunObject],
-    firstId: String,
-    hasMore: Bool,
-    lastId: String,
-    object: String
-  ) {
-    self.data = data
-    self.firstId = firstId
-    self.hasMore = hasMore
-    self.lastId = lastId
-    self.object = object
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case data
-    case firstId = "first_id"
-    case hasMore = "has_more"
-    case lastId = "last_id"
-    case object
-  }
-}
-
-public struct OpenAIListSkillVersionsParameters: Codable, Sendable {
-  public var after: String?
-  public var limit: Int?
-  public var order: OpenAIOrderEnum?
-  public var skillId: String
-
-  public init(
-    skillId: String,
-    after: String? = nil,
-    limit: Int? = nil,
-    order: OpenAIOrderEnum? = nil
-  ) {
-    self.after = after
-    self.limit = limit
-    self.order = order
-    self.skillId = skillId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case after
-    case limit
-    case order
-    case skillId = "skill_id"
-  }
-}
-
-public struct OpenAIListSkillsParameters: Codable, Sendable {
-  public var after: String?
-  public var limit: Int?
-  public var order: OpenAIOrderEnum?
-
-  public init(
-    after: String? = nil,
-    limit: Int? = nil,
-    order: OpenAIOrderEnum? = nil
-  ) {
-    self.after = after
-    self.limit = limit
-    self.order = order
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case after
-    case limit
-    case order
-  }
-}
-
-public struct OpenAIListThreadItemsMethodParameters: Codable, Sendable {
-  public var after: String?
-  public var before: String?
-  public var limit: Int?
-  public var order: OpenAIOrderEnum?
-  public var threadId: String
-
-  public init(
-    threadId: String,
-    after: String? = nil,
-    before: String? = nil,
-    limit: Int? = nil,
-    order: OpenAIOrderEnum? = nil
-  ) {
-    self.after = after
-    self.before = before
-    self.limit = limit
-    self.order = order
-    self.threadId = threadId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case after
-    case before
-    case limit
-    case order
-    case threadId = "thread_id"
-  }
-}
-
-public struct OpenAIListThreadsMethodParameters: Codable, Sendable {
-  public var after: String?
-  public var before: String?
-  public var limit: Int?
-  public var order: OpenAIOrderEnum?
-  public var user: String?
-
-  public init(
-    after: String? = nil,
-    before: String? = nil,
-    limit: Int? = nil,
-    order: OpenAIOrderEnum? = nil,
-    user: String? = nil
-  ) {
-    self.after = after
-    self.before = before
-    self.limit = limit
-    self.order = order
-    self.user = user
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case after
-    case before
-    case limit
-    case order
-    case user
-  }
-}
-
-public struct OpenAIListUserRoleAssignmentsParameters: Codable, Sendable {
-  public var after: String?
-  public var limit: Int?
-  public var order: OpenAIListUserRoleAssignmentsParametersOrder?
-  public var userId: String
-
-  public init(
-    userId: String,
-    after: String? = nil,
-    limit: Int? = nil,
-    order: OpenAIListUserRoleAssignmentsParametersOrder? = nil
-  ) {
-    self.after = after
-    self.limit = limit
-    self.order = order
-    self.userId = userId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case after
-    case limit
-    case order
-    case userId = "user_id"
-  }
-}
-
-public struct OpenAIListUserRoleAssignmentsParametersOrder: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let asc = Self(rawValue: "asc")
-  public static let desc = Self(rawValue: "desc")
-}
-
-public struct OpenAIListUsersParameters: Codable, Sendable {
-  public var after: String?
-  public var emails: [String]?
-  public var limit: Int?
-
-  public init(
-    after: String? = nil,
-    emails: [String]? = nil,
-    limit: Int? = nil
-  ) {
-    self.after = after
-    self.emails = emails
-    self.limit = limit
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case after
-    case emails
-    case limit
-  }
-}
-
-public struct OpenAIListVectorStoreFilesParameters: Codable, Sendable {
-  public var after: String?
-  public var before: String?
-  public var filter: OpenAIListVectorStoreFilesParametersFilter?
-  public var limit: Int?
-  public var order: OpenAIListVectorStoreFilesParametersOrder?
-  public var vectorStoreId: String
-
-  public init(
-    vectorStoreId: String,
-    after: String? = nil,
-    before: String? = nil,
-    filter: OpenAIListVectorStoreFilesParametersFilter? = nil,
-    limit: Int? = nil,
-    order: OpenAIListVectorStoreFilesParametersOrder? = nil
-  ) {
-    self.after = after
-    self.before = before
-    self.filter = filter
-    self.limit = limit
-    self.order = order
-    self.vectorStoreId = vectorStoreId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case after
-    case before
-    case filter
-    case limit
-    case order
-    case vectorStoreId = "vector_store_id"
-  }
-}
-
-public struct OpenAIListVectorStoreFilesParametersFilter: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let inProgress = Self(rawValue: "in_progress")
-  public static let completed = Self(rawValue: "completed")
-  public static let failed = Self(rawValue: "failed")
-  public static let cancelled = Self(rawValue: "cancelled")
-}
-
-public struct OpenAIListVectorStoreFilesParametersOrder: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let asc = Self(rawValue: "asc")
-  public static let desc = Self(rawValue: "desc")
-}
-
-public struct OpenAIListVectorStoreFilesResponse: Codable, Sendable {
-  public var data: [OpenAIVectorStoreFileObject]
-  public var firstId: String
-  public var hasMore: Bool
-  public var lastId: String
-  public var object: String
-
-  public init(
-    data: [OpenAIVectorStoreFileObject],
-    firstId: String,
-    hasMore: Bool,
-    lastId: String,
-    object: String
-  ) {
-    self.data = data
-    self.firstId = firstId
-    self.hasMore = hasMore
-    self.lastId = lastId
-    self.object = object
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case data
-    case firstId = "first_id"
-    case hasMore = "has_more"
-    case lastId = "last_id"
-    case object
-  }
-}
-
-public struct OpenAIListVectorStoresParameters: Codable, Sendable {
-  public var after: String?
-  public var before: String?
-  public var limit: Int?
-  public var order: OpenAIListVectorStoresParametersOrder?
-
-  public init(
-    after: String? = nil,
-    before: String? = nil,
-    limit: Int? = nil,
-    order: OpenAIListVectorStoresParametersOrder? = nil
-  ) {
-    self.after = after
-    self.before = before
-    self.limit = limit
-    self.order = order
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case after
-    case before
-    case limit
-    case order
-  }
-}
-
-public struct OpenAIListVectorStoresParametersOrder: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let asc = Self(rawValue: "asc")
-  public static let desc = Self(rawValue: "desc")
-}
-
-public struct OpenAIListVectorStoresResponse: Codable, Sendable {
-  public var data: [OpenAIVectorStoreObject]
-  public var firstId: String
-  public var hasMore: Bool
-  public var lastId: String
-  public var object: String
-
-  public init(
-    data: [OpenAIVectorStoreObject],
-    firstId: String,
-    hasMore: Bool,
-    lastId: String,
-    object: String
-  ) {
-    self.data = data
-    self.firstId = firstId
-    self.hasMore = hasMore
-    self.lastId = lastId
-    self.object = object
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case data
-    case firstId = "first_id"
-    case hasMore = "has_more"
-    case lastId = "last_id"
-    case object
-  }
-}
-
-public struct OpenAIListVideosParameters: Codable, Sendable {
-  public var after: String?
-  public var limit: Int?
-  public var order: OpenAIOrderEnum?
-
-  public init(
-    after: String? = nil,
-    limit: Int? = nil,
-    order: OpenAIOrderEnum? = nil
-  ) {
-    self.after = after
-    self.limit = limit
-    self.order = order
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case after
-    case limit
-    case order
-  }
-}
-
-public struct OpenAIListVoiceConsentsParameters: Codable, Sendable {
-  public var after: String?
-  public var limit: Int?
-
-  public init(
-    after: String? = nil,
-    limit: Int? = nil
-  ) {
-    self.after = after
-    self.limit = limit
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case after
-    case limit
-  }
-}
-
-public struct OpenAILocalEnvironmentParam: Codable, Sendable {
-  public var skills: [OpenAILocalSkillParam]?
-  public var typeModel: OpenAILocalEnvironmentParamTypeModel
-
-  public init(
-    typeModel: OpenAILocalEnvironmentParamTypeModel,
-    skills: [OpenAILocalSkillParam]? = nil
-  ) {
-    self.skills = skills
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case skills
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAILocalEnvironmentParamTypeModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let local = Self(rawValue: "local")
-}
-
-public struct OpenAILocalEnvironmentResource: Codable, Sendable {
-  public var typeModel: OpenAILocalEnvironmentResourceTypeModel
-
-  public init(
-    typeModel: OpenAILocalEnvironmentResourceTypeModel
-  ) {
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAILocalEnvironmentResourceTypeModel: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let local = Self(rawValue: "local")
-}
-
-public struct OpenAILocalShellExecAction: Codable, Sendable {
-  public var command: [String]
-  public var env: [String: String]
-  public var timeoutMs: Int?
-  public var typeModel: OpenAILocalShellExecActionTypeModel
-  public var user: String?
-  public var workingDirectory: String?
-
-  public init(
-    command: [String],
-    env: [String: String],
-    typeModel: OpenAILocalShellExecActionTypeModel,
-    timeoutMs: Int? = nil,
-    user: String? = nil,
-    workingDirectory: String? = nil
-  ) {
-    self.command = command
-    self.env = env
-    self.timeoutMs = timeoutMs
-    self.typeModel = typeModel
-    self.user = user
-    self.workingDirectory = workingDirectory
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case command
-    case env
-    case timeoutMs = "timeout_ms"
-    case typeModel = "type"
-    case user
-    case workingDirectory = "working_directory"
-  }
-}
-
-public struct OpenAILocalShellExecActionTypeModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let exec = Self(rawValue: "exec")
-}
-
-public struct OpenAILocalShellToolCall: Codable, Sendable {
-  public var action: OpenAILocalShellExecAction
-  public var callId: String
-  public var id: String
-  public var status: OpenAILocalShellToolCallStatus
-  public var typeModel: OpenAILocalShellToolCallTypeModel
-
-  public init(
-    action: OpenAILocalShellExecAction,
-    callId: String,
-    id: String,
-    status: OpenAILocalShellToolCallStatus,
-    typeModel: OpenAILocalShellToolCallTypeModel
-  ) {
-    self.action = action
-    self.callId = callId
-    self.id = id
-    self.status = status
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case action
-    case callId = "call_id"
-    case id
-    case status
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAILocalShellToolCallOutput: Codable, Sendable {
-  public var id: String
-  public var output: String
-  public var status: OpenAILocalShellToolCallOutputStatusAnyOf1?
-  public var typeModel: OpenAILocalShellToolCallOutputTypeModel
-
-  public init(
-    id: String,
-    output: String,
-    typeModel: OpenAILocalShellToolCallOutputTypeModel,
-    status: OpenAILocalShellToolCallOutputStatusAnyOf1? = nil
-  ) {
-    self.id = id
-    self.output = output
-    self.status = status
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case id
-    case output
-    case status
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAILocalShellToolCallOutputStatusAnyOf1: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let inProgress = Self(rawValue: "in_progress")
-  public static let completed = Self(rawValue: "completed")
-  public static let incomplete = Self(rawValue: "incomplete")
-}
-
-public struct OpenAILocalShellToolCallOutputTypeModel: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let localShellCallOutput = Self(rawValue: "local_shell_call_output")
-}
-
-public struct OpenAILocalShellToolCallStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let inProgress = Self(rawValue: "in_progress")
-  public static let completed = Self(rawValue: "completed")
-  public static let incomplete = Self(rawValue: "incomplete")
-}
-
-public struct OpenAILocalShellToolCallTypeModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let localShellCall = Self(rawValue: "local_shell_call")
-}
-
-public struct OpenAILocalShellToolParam: Codable, Sendable {
-  public var typeModel: OpenAILocalShellToolParamTypeModel
-
-  public init(
-    typeModel: OpenAILocalShellToolParamTypeModel
-  ) {
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAILocalShellToolParamTypeModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let localShell = Self(rawValue: "local_shell")
-}
-
-public struct OpenAILocalSkillParam: Codable, Sendable {
-  public var description: String
-  public var name: String
-  public var path: String
-
-  public init(
-    description: String,
-    name: String,
-    path: String
-  ) {
-    self.description = description
-    self.name = name
-    self.path = path
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case description
-    case name
-    case path
-  }
-}
-
-public struct OpenAILockedStatus: Codable, Sendable {
-  public var reason: String?
-  public var typeModel: OpenAILockedStatusTypeModel
-
-  public init(
-    reason: String?,
-    typeModel: OpenAILockedStatusTypeModel
-  ) {
-    self.reason = reason
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case reason
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAILockedStatusTypeModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let locked = Self(rawValue: "locked")
-}
-
-public struct OpenAILogProb: Codable, Sendable {
-  public var bytes: [Int]
-  public var logprob: Double
-  public var token: String
-  public var topLogprobs: [OpenAITopLogProb]
-
-  public init(
-    bytes: [Int],
-    logprob: Double,
-    token: String,
-    topLogprobs: [OpenAITopLogProb]
-  ) {
-    self.bytes = bytes
-    self.logprob = logprob
-    self.token = token
-    self.topLogprobs = topLogprobs
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case bytes
-    case logprob
-    case token
-    case topLogprobs = "top_logprobs"
-  }
-}
-
-public struct OpenAILogProbProperties: Codable, Sendable {
-  public var bytes: [Int]
-  public var logprob: Double
-  public var token: String
-
-  public init(
-    bytes: [Int],
-    logprob: Double,
-    token: String
-  ) {
-    self.bytes = bytes
-    self.logprob = logprob
-    self.token = token
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case bytes
-    case logprob
-    case token
-  }
-}
-
-public struct OpenAIMCPApprovalRequest: Codable, Sendable {
-  public var arguments: String
-  public var id: String
-  public var name: String
-  public var serverLabel: String
-  public var typeModel: OpenAIMCPApprovalRequestTypeModel
-
-  public init(
-    arguments: String,
-    id: String,
-    name: String,
-    serverLabel: String,
-    typeModel: OpenAIMCPApprovalRequestTypeModel
-  ) {
-    self.arguments = arguments
-    self.id = id
-    self.name = name
-    self.serverLabel = serverLabel
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case arguments
-    case id
-    case name
-    case serverLabel = "server_label"
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAIMCPApprovalRequestTypeModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mcpApprovalRequest = Self(rawValue: "mcp_approval_request")
-}
-
-public struct OpenAIMCPApprovalResponse: Codable, Sendable {
-  public var approvalRequestId: String
-  public var approve: Bool
-  public var id: String?
-  public var reason: String?
-  public var typeModel: OpenAIMCPApprovalResponseTypeModel
-
-  public init(
-    approvalRequestId: String,
-    approve: Bool,
-    typeModel: OpenAIMCPApprovalResponseTypeModel,
-    id: String? = nil,
-    reason: String? = nil
-  ) {
-    self.approvalRequestId = approvalRequestId
-    self.approve = approve
-    self.id = id
-    self.reason = reason
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case approvalRequestId = "approval_request_id"
-    case approve
-    case id
-    case reason
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAIMCPApprovalResponseResource: Codable, Sendable {
-  public var approvalRequestId: String
-  public var approve: Bool
-  public var id: String
-  public var reason: String?
-  public var typeModel: OpenAIMCPApprovalResponseResourceTypeModel
-
-  public init(
-    approvalRequestId: String,
-    approve: Bool,
-    id: String,
-    typeModel: OpenAIMCPApprovalResponseResourceTypeModel,
-    reason: String? = nil
-  ) {
-    self.approvalRequestId = approvalRequestId
-    self.approve = approve
-    self.id = id
-    self.reason = reason
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case approvalRequestId = "approval_request_id"
-    case approve
-    case id
-    case reason
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAIMCPApprovalResponseResourceTypeModel: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mcpApprovalResponse = Self(rawValue: "mcp_approval_response")
-}
-
-public struct OpenAIMCPApprovalResponseTypeModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mcpApprovalResponse = Self(rawValue: "mcp_approval_response")
-}
-
-public struct OpenAIMCPListTools: Codable, Sendable {
-  public var error: String?
-  public var id: String
-  public var serverLabel: String
-  public var tools: [OpenAIMCPListToolsTool]
-  public var typeModel: OpenAIMCPListToolsTypeModel
-
-  public init(
-    id: String,
-    serverLabel: String,
-    tools: [OpenAIMCPListToolsTool],
-    typeModel: OpenAIMCPListToolsTypeModel,
-    error: String? = nil
-  ) {
-    self.error = error
-    self.id = id
-    self.serverLabel = serverLabel
-    self.tools = tools
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case error
-    case id
-    case serverLabel = "server_label"
-    case tools
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAIMCPListToolsTool: Codable, Sendable {
-  public var annotations: HyperProxyJSONValue?
-  public var description: String?
-  public var inputSchema: HyperProxyJSONValue
-  public var name: String
-
-  public init(
-    inputSchema: HyperProxyJSONValue,
-    name: String,
-    annotations: HyperProxyJSONValue? = nil,
-    description: String? = nil
-  ) {
-    self.annotations = annotations
-    self.description = description
-    self.inputSchema = inputSchema
-    self.name = name
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case annotations
-    case description
-    case inputSchema = "input_schema"
-    case name
-  }
-}
-
-public struct OpenAIMCPListToolsTypeModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mcpListTools = Self(rawValue: "mcp_list_tools")
-}
-
-public struct OpenAIMCPProtocolError: Codable, Sendable {
+public struct OpenAIHTTPError: Codable, Sendable {
   public var code: Int
   public var message: String
-  public var typeModel: OpenAIMCPProtocolErrorTypeModel
+  public var typeModel: OpenAIHTTPErrorTypeModel
 
   public init(
     code: Int,
     message: String,
-    typeModel: OpenAIMCPProtocolErrorTypeModel
+    typeModel: OpenAIHTTPErrorTypeModel
   ) {
     self.code = code
     self.message = message
@@ -1674,383 +360,110 @@ public struct OpenAIMCPProtocolError: Codable, Sendable {
   }
 }
 
-public struct OpenAIMCPProtocolErrorTypeModel: RawRepresentable, Codable, Hashable, Sendable {
+public struct OpenAIHTTPErrorTypeModel: RawRepresentable, Codable, Hashable, Sendable {
   public var rawValue: String
 
   public init(rawValue: String) {
     self.rawValue = rawValue
   }
 
-  public static let mcpProtocolError = Self(rawValue: "mcp_protocol_error")
+  public static let httpError = Self(rawValue: "http_error")
 }
 
-public struct OpenAIMCPTool: Codable, Sendable {
-  public var allowedCallers: [OpenAICallableToolAllowedCaller]?
-  public var allowedTools: HyperProxyJSONValue?
-  public var authorization: String?
-  public var connectorId: OpenAIMCPToolConnectorId?
-  public var deferLoading: Bool?
-  public var headers: [String: String]?
-  public var requireApproval: HyperProxyJSONValue?
-  public var serverDescription: String?
-  public var serverLabel: String
-  public var serverUrl: String?
-  public var tunnelId: String?
-  public var typeModel: OpenAIMCPToolTypeModel
+public struct OpenAIHangupLiveSessionParameters: Codable, Sendable {
+  public var sessionId: String
 
   public init(
-    serverLabel: String,
-    typeModel: OpenAIMCPToolTypeModel,
-    allowedCallers: [OpenAICallableToolAllowedCaller]? = nil,
-    allowedTools: HyperProxyJSONValue? = nil,
-    authorization: String? = nil,
-    connectorId: OpenAIMCPToolConnectorId? = nil,
-    deferLoading: Bool? = nil,
-    headers: [String: String]? = nil,
-    requireApproval: HyperProxyJSONValue? = nil,
-    serverDescription: String? = nil,
-    serverUrl: String? = nil,
-    tunnelId: String? = nil
+    sessionId: String
   ) {
-    self.allowedCallers = allowedCallers
-    self.allowedTools = allowedTools
-    self.authorization = authorization
-    self.connectorId = connectorId
-    self.deferLoading = deferLoading
-    self.headers = headers
-    self.requireApproval = requireApproval
-    self.serverDescription = serverDescription
-    self.serverLabel = serverLabel
-    self.serverUrl = serverUrl
-    self.tunnelId = tunnelId
-    self.typeModel = typeModel
+    self.sessionId = sessionId
   }
 
   enum CodingKeys: String, CodingKey {
-    case allowedCallers = "allowed_callers"
-    case allowedTools = "allowed_tools"
-    case authorization
-    case connectorId = "connector_id"
-    case deferLoading = "defer_loading"
-    case headers
-    case requireApproval = "require_approval"
-    case serverDescription = "server_description"
-    case serverLabel = "server_label"
-    case serverUrl = "server_url"
-    case tunnelId = "tunnel_id"
-    case typeModel = "type"
+    case sessionId = "session_id"
   }
 }
 
-public struct OpenAIMCPToolCall: Codable, Sendable {
-  public var approvalRequestId: String?
-  public var arguments: String
-  public var error: OpenAIMCPToolCallError?
-  public var id: String
-  public var name: String
-  public var output: String?
-  public var serverLabel: String
-  public var status: OpenAIMCPToolCallStatus?
-  public var typeModel: OpenAIMCPToolCallTypeModel
+public struct OpenAIHangupRealtimeCallParameters: Codable, Sendable {
+  public var callId: String
 
   public init(
-    arguments: String,
-    id: String,
-    name: String,
-    serverLabel: String,
-    typeModel: OpenAIMCPToolCallTypeModel,
-    approvalRequestId: String? = nil,
-    error: OpenAIMCPToolCallError? = nil,
-    output: String? = nil,
-    status: OpenAIMCPToolCallStatus? = nil
+    callId: String
   ) {
-    self.approvalRequestId = approvalRequestId
-    self.arguments = arguments
-    self.error = error
-    self.id = id
-    self.name = name
-    self.output = output
-    self.serverLabel = serverLabel
-    self.status = status
-    self.typeModel = typeModel
+    self.callId = callId
   }
 
   enum CodingKeys: String, CodingKey {
-    case approvalRequestId = "approval_request_id"
-    case arguments
-    case error
-    case id
-    case name
-    case output
-    case serverLabel = "server_label"
-    case status
-    case typeModel = "type"
+    case callId = "call_id"
   }
 }
 
-public typealias OpenAIMCPToolCallError = HyperProxyJSONValue
-
-public struct OpenAIMCPToolCallStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let inProgress = Self(rawValue: "in_progress")
-  public static let completed = Self(rawValue: "completed")
-  public static let incomplete = Self(rawValue: "incomplete")
-  public static let calling = Self(rawValue: "calling")
-  public static let failed = Self(rawValue: "failed")
-}
-
-public struct OpenAIMCPToolCallTypeModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mcpCall = Self(rawValue: "mcp_call")
-}
-
-public struct OpenAIMCPToolConnectorId: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let connectorDropbox = Self(rawValue: "connector_dropbox")
-  public static let connectorGmail = Self(rawValue: "connector_gmail")
-  public static let connectorGooglecalendar = Self(rawValue: "connector_googlecalendar")
-  public static let connectorGoogledrive = Self(rawValue: "connector_googledrive")
-  public static let connectorMicrosoftteams = Self(rawValue: "connector_microsoftteams")
-  public static let connectorOutlookcalendar = Self(rawValue: "connector_outlookcalendar")
-  public static let connectorOutlookemail = Self(rawValue: "connector_outlookemail")
-  public static let connectorSharepoint = Self(rawValue: "connector_sharepoint")
-}
-
-public struct OpenAIMCPToolExecutionError: Codable, Sendable {
-  public var content: HyperProxyJSONValue
-  public var typeModel: OpenAIMCPToolExecutionErrorTypeModel
+public struct OpenAIHistoryParam: Codable, Sendable {
+  public var enabled: Bool?
+  public var recentThreads: Int?
 
   public init(
-    content: HyperProxyJSONValue,
-    typeModel: OpenAIMCPToolExecutionErrorTypeModel
+    enabled: Bool? = nil,
+    recentThreads: Int? = nil
   ) {
-    self.content = content
-    self.typeModel = typeModel
+    self.enabled = enabled
+    self.recentThreads = recentThreads
   }
 
   enum CodingKeys: String, CodingKey {
-    case content
-    case typeModel = "type"
+    case enabled
+    case recentThreads = "recent_threads"
   }
 }
 
-public struct OpenAIMCPToolExecutionErrorTypeModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
+public enum OpenAIHostedEnvironmentFileParam: Codable, Sendable {
+  case hostedEnvironmentFileParamFileId(OpenAIHostedEnvironmentFileParamFileId)
+  case hostedEnvironmentFileParamInline(OpenAIHostedEnvironmentFileParamInline)
 
-  public init(rawValue: String) {
-    self.rawValue = rawValue
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(OpenAIHostedEnvironmentFileParamFileId.self) {
+      self = .hostedEnvironmentFileParamFileId(value)
+      return
+    }
+    self = .hostedEnvironmentFileParamInline(
+      try container.decode(OpenAIHostedEnvironmentFileParamInline.self))
   }
 
-  public static let mcpToolExecutionError = Self(rawValue: "mcp_tool_execution_error")
-}
-
-public struct OpenAIMCPToolFilter: Codable, Sendable {
-  public var readOnly: Bool?
-  public var toolNames: [String]?
-
-  public init(
-    readOnly: Bool? = nil,
-    toolNames: [String]? = nil
-  ) {
-    self.readOnly = readOnly
-    self.toolNames = toolNames
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case readOnly = "read_only"
-    case toolNames = "tool_names"
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .hostedEnvironmentFileParamFileId(let value):
+      try container.encode(value)
+    case .hostedEnvironmentFileParamInline(let value):
+      try container.encode(value)
+    }
   }
 }
 
-public struct OpenAIMCPToolRequireApprovalAnyOf1OneOf1: Codable, Sendable {
-  public var always: OpenAIMCPToolFilter?
-  public var never: OpenAIMCPToolFilter?
-
-  public init(
-    always: OpenAIMCPToolFilter? = nil,
-    never: OpenAIMCPToolFilter? = nil
-  ) {
-    self.always = always
-    self.never = never
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case always
-    case never
-  }
-}
-
-public struct OpenAIMCPToolRequireApprovalAnyOf1OneOf2: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let always = Self(rawValue: "always")
-  public static let never = Self(rawValue: "never")
-}
-
-public struct OpenAIMCPToolTypeModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mcp = Self(rawValue: "mcp")
-}
-
-public struct OpenAIMessage: Codable, Sendable {
-  public var content: [HyperProxyJSONValue]
-  public var id: String
-  public var phase: OpenAIMessagePhase2?
-  public var role: OpenAIMessageRole
-  public var status: OpenAIMessageStatus
-  public var typeModel: OpenAIMessageTypeModel
-
-  public init(
-    content: [HyperProxyJSONValue],
-    id: String,
-    role: OpenAIMessageRole,
-    status: OpenAIMessageStatus,
-    typeModel: OpenAIMessageTypeModel,
-    phase: OpenAIMessagePhase2? = nil
-  ) {
-    self.content = content
-    self.id = id
-    self.phase = phase
-    self.role = role
-    self.status = status
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case content
-    case id
-    case phase
-    case role
-    case status
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAIMessageContentImageFileObject: Codable, Sendable {
-  public var imageFile: OpenAIMessageContentImageFileObjectImageFile
-  public var typeModel: OpenAIMessageContentImageFileObjectTypeModel
-
-  public init(
-    imageFile: OpenAIMessageContentImageFileObjectImageFile,
-    typeModel: OpenAIMessageContentImageFileObjectTypeModel
-  ) {
-    self.imageFile = imageFile
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case imageFile = "image_file"
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAIMessageContentImageFileObjectImageFile: Codable, Sendable {
-  public var detail: OpenAIMessageContentImageFileObjectImageFileDetail?
+public struct OpenAIHostedEnvironmentFileParamFileId: Codable, Sendable {
   public var fileId: String
+  public var path: String
+  public var typeModel: OpenAIHostedEnvironmentFileParamFileIdTypeModel
 
   public init(
     fileId: String,
-    detail: OpenAIMessageContentImageFileObjectImageFileDetail? = nil
+    path: String,
+    typeModel: OpenAIHostedEnvironmentFileParamFileIdTypeModel
   ) {
-    self.detail = detail
     self.fileId = fileId
+    self.path = path
+    self.typeModel = typeModel
   }
 
   enum CodingKeys: String, CodingKey {
-    case detail
     case fileId = "file_id"
-  }
-}
-
-public struct OpenAIMessageContentImageFileObjectImageFileDetail: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
-  public static let low = Self(rawValue: "low")
-  public static let high = Self(rawValue: "high")
-}
-
-public struct OpenAIMessageContentImageFileObjectTypeModel: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let imageFile = Self(rawValue: "image_file")
-}
-
-public struct OpenAIMessageContentImageUrlObject: Codable, Sendable {
-  public var imageUrl: OpenAIMessageContentImageUrlObjectImageUrl
-  public var typeModel: OpenAIMessageContentImageUrlObjectTypeModel
-
-  public init(
-    imageUrl: OpenAIMessageContentImageUrlObjectImageUrl,
-    typeModel: OpenAIMessageContentImageUrlObjectTypeModel
-  ) {
-    self.imageUrl = imageUrl
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case imageUrl = "image_url"
+    case path
     case typeModel = "type"
   }
 }
 
-public struct OpenAIMessageContentImageUrlObjectImageUrl: Codable, Sendable {
-  public var detail: OpenAIMessageContentImageUrlObjectImageUrlDetail?
-  public var url: String
-
-  public init(
-    url: String,
-    detail: OpenAIMessageContentImageUrlObjectImageUrlDetail? = nil
-  ) {
-    self.detail = detail
-    self.url = url
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case detail
-    case url
-  }
-}
-
-public struct OpenAIMessageContentImageUrlObjectImageUrlDetail: RawRepresentable, Codable, Hashable,
+public struct OpenAIHostedEnvironmentFileParamFileIdTypeModel: RawRepresentable, Codable, Hashable,
   Sendable
 {
   public var rawValue: String
@@ -2059,42 +472,32 @@ public struct OpenAIMessageContentImageUrlObjectImageUrlDetail: RawRepresentable
     self.rawValue = rawValue
   }
 
-  public static let auto = Self(rawValue: "auto")
-  public static let low = Self(rawValue: "low")
-  public static let high = Self(rawValue: "high")
+  public static let fileId = Self(rawValue: "file_id")
 }
 
-public struct OpenAIMessageContentImageUrlObjectTypeModel: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let imageUrl = Self(rawValue: "image_url")
-}
-
-public struct OpenAIMessageContentRefusalObject: Codable, Sendable {
-  public var refusal: String
-  public var typeModel: OpenAIMessageContentRefusalObjectTypeModel
+public struct OpenAIHostedEnvironmentFileParamInline: Codable, Sendable {
+  public var data: String
+  public var path: String
+  public var typeModel: OpenAIHostedEnvironmentFileParamInlineTypeModel
 
   public init(
-    refusal: String,
-    typeModel: OpenAIMessageContentRefusalObjectTypeModel
+    data: String,
+    path: String,
+    typeModel: OpenAIHostedEnvironmentFileParamInlineTypeModel
   ) {
-    self.refusal = refusal
+    self.data = data
+    self.path = path
     self.typeModel = typeModel
   }
 
   enum CodingKeys: String, CodingKey {
-    case refusal
+    case data
+    case path
     case typeModel = "type"
   }
 }
 
-public struct OpenAIMessageContentRefusalObjectTypeModel: RawRepresentable, Codable, Hashable,
+public struct OpenAIHostedEnvironmentFileParamInlineTypeModel: RawRepresentable, Codable, Hashable,
   Sendable
 {
   public var rawValue: String
@@ -2103,55 +506,66 @@ public struct OpenAIMessageContentRefusalObjectTypeModel: RawRepresentable, Coda
     self.rawValue = rawValue
   }
 
-  public static let refusal = Self(rawValue: "refusal")
+  public static let inline = Self(rawValue: "inline")
 }
 
-public struct OpenAIMessageContentTextAnnotationsFileCitationObject: Codable, Sendable {
-  public var endIndex: Int
-  public var fileCitation: OpenAIMessageContentTextAnnotationsFileCitationObjectFileCitation
-  public var startIndex: Int
-  public var text: String
-  public var typeModel: OpenAIMessageContentTextAnnotationsFileCitationObjectTypeModel
+public enum OpenAIHostedEnvironmentFileResource: Codable, Sendable {
+  case hostedEnvironmentFileResourceFileId(OpenAIHostedEnvironmentFileResourceFileId)
+  case hostedEnvironmentFileResourceInline(OpenAIHostedEnvironmentFileResourceInline)
 
-  public init(
-    endIndex: Int,
-    fileCitation: OpenAIMessageContentTextAnnotationsFileCitationObjectFileCitation,
-    startIndex: Int,
-    text: String,
-    typeModel: OpenAIMessageContentTextAnnotationsFileCitationObjectTypeModel
-  ) {
-    self.endIndex = endIndex
-    self.fileCitation = fileCitation
-    self.startIndex = startIndex
-    self.text = text
-    self.typeModel = typeModel
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(OpenAIHostedEnvironmentFileResourceFileId.self) {
+      self = .hostedEnvironmentFileResourceFileId(value)
+      return
+    }
+    self = .hostedEnvironmentFileResourceInline(
+      try container.decode(OpenAIHostedEnvironmentFileResourceInline.self))
   }
 
-  enum CodingKeys: String, CodingKey {
-    case endIndex = "end_index"
-    case fileCitation = "file_citation"
-    case startIndex = "start_index"
-    case text
-    case typeModel = "type"
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .hostedEnvironmentFileResourceFileId(let value):
+      try container.encode(value)
+    case .hostedEnvironmentFileResourceInline(let value):
+      try container.encode(value)
+    }
   }
 }
 
-public struct OpenAIMessageContentTextAnnotationsFileCitationObjectFileCitation: Codable, Sendable {
+public struct OpenAIHostedEnvironmentFileResourceFileId: Codable, Sendable {
   public var fileId: String
+  public var id: String
+  public var path: String
+  public var sizeBytes: Int64
+  public var typeModel: OpenAIHostedEnvironmentFileResourceFileIdTypeModel
 
   public init(
-    fileId: String
+    fileId: String,
+    id: String,
+    path: String,
+    sizeBytes: Int64,
+    typeModel: OpenAIHostedEnvironmentFileResourceFileIdTypeModel
   ) {
     self.fileId = fileId
+    self.id = id
+    self.path = path
+    self.sizeBytes = sizeBytes
+    self.typeModel = typeModel
   }
 
   enum CodingKeys: String, CodingKey {
     case fileId = "file_id"
+    case id
+    case path
+    case sizeBytes = "size_bytes"
+    case typeModel = "type"
   }
 }
 
-public struct OpenAIMessageContentTextAnnotationsFileCitationObjectTypeModel: RawRepresentable,
-  Codable, Hashable, Sendable
+public struct OpenAIHostedEnvironmentFileResourceFileIdTypeModel: RawRepresentable, Codable,
+  Hashable, Sendable
 {
   public var rawValue: String
 
@@ -2159,54 +573,491 @@ public struct OpenAIMessageContentTextAnnotationsFileCitationObjectTypeModel: Ra
     self.rawValue = rawValue
   }
 
-  public static let fileCitation = Self(rawValue: "file_citation")
+  public static let fileId = Self(rawValue: "file_id")
 }
 
-public struct OpenAIMessageContentTextAnnotationsFilePathObject: Codable, Sendable {
-  public var endIndex: Int
-  public var filePath: OpenAIMessageContentTextAnnotationsFilePathObjectFilePath
-  public var startIndex: Int
-  public var text: String
-  public var typeModel: OpenAIMessageContentTextAnnotationsFilePathObjectTypeModel
+public struct OpenAIHostedEnvironmentFileResourceInline: Codable, Sendable {
+  public var id: String
+  public var path: String
+  public var sizeBytes: Int64
+  public var typeModel: OpenAIHostedEnvironmentFileResourceInlineTypeModel
 
   public init(
-    endIndex: Int,
-    filePath: OpenAIMessageContentTextAnnotationsFilePathObjectFilePath,
-    startIndex: Int,
-    text: String,
-    typeModel: OpenAIMessageContentTextAnnotationsFilePathObjectTypeModel
+    id: String,
+    path: String,
+    sizeBytes: Int64,
+    typeModel: OpenAIHostedEnvironmentFileResourceInlineTypeModel
   ) {
-    self.endIndex = endIndex
-    self.filePath = filePath
-    self.startIndex = startIndex
-    self.text = text
+    self.id = id
+    self.path = path
+    self.sizeBytes = sizeBytes
     self.typeModel = typeModel
   }
 
   enum CodingKeys: String, CodingKey {
-    case endIndex = "end_index"
-    case filePath = "file_path"
-    case startIndex = "start_index"
-    case text
+    case id
+    case path
+    case sizeBytes = "size_bytes"
     case typeModel = "type"
   }
 }
 
-public struct OpenAIMessageContentTextAnnotationsFilePathObjectFilePath: Codable, Sendable {
+public struct OpenAIHostedEnvironmentFileResourceInlineTypeModel: RawRepresentable, Codable,
+  Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let inline = Self(rawValue: "inline")
+}
+
+public typealias OpenAIHostedPluginParam = OpenAIHostedPluginParamInline
+
+public struct OpenAIHostedPluginParamInline: Codable, Sendable {
+  public var description: String
+  public var name: String
+  public var source: OpenAIInlineCapabilitySourceParam
+  public var typeModel: OpenAIHostedPluginParamInlineTypeModel
+
+  public init(
+    description: String,
+    name: String,
+    source: OpenAIInlineCapabilitySourceParam,
+    typeModel: OpenAIHostedPluginParamInlineTypeModel
+  ) {
+    self.description = description
+    self.name = name
+    self.source = source
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case description
+    case name
+    case source
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIHostedPluginParamInlineTypeModel: RawRepresentable, Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let inline = Self(rawValue: "inline")
+}
+
+public typealias OpenAIHostedPluginResource = OpenAIHostedPluginResourceInline
+
+public struct OpenAIHostedPluginResourceInline: Codable, Sendable {
+  public var description: String
+  public var name: String
+  public var typeModel: OpenAIHostedPluginResourceInlineTypeModel
+
+  public init(
+    description: String,
+    name: String,
+    typeModel: OpenAIHostedPluginResourceInlineTypeModel
+  ) {
+    self.description = description
+    self.name = name
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case description
+    case name
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIHostedPluginResourceInlineTypeModel: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let inline = Self(rawValue: "inline")
+}
+
+public enum OpenAIHostedSkillParam: Codable, Sendable {
+  case hostedSkillParamSkillReference(OpenAIHostedSkillParamSkillReference)
+  case hostedSkillParamInline(OpenAIHostedSkillParamInline)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(OpenAIHostedSkillParamSkillReference.self) {
+      self = .hostedSkillParamSkillReference(value)
+      return
+    }
+    self = .hostedSkillParamInline(try container.decode(OpenAIHostedSkillParamInline.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .hostedSkillParamSkillReference(let value):
+      try container.encode(value)
+    case .hostedSkillParamInline(let value):
+      try container.encode(value)
+    }
+  }
+}
+
+public struct OpenAIHostedSkillParamInline: Codable, Sendable {
+  public var description: String
+  public var name: String
+  public var source: OpenAIInlineCapabilitySourceParam
+  public var typeModel: OpenAIHostedSkillParamInlineTypeModel
+
+  public init(
+    description: String,
+    name: String,
+    source: OpenAIInlineCapabilitySourceParam,
+    typeModel: OpenAIHostedSkillParamInlineTypeModel
+  ) {
+    self.description = description
+    self.name = name
+    self.source = source
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case description
+    case name
+    case source
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIHostedSkillParamInlineTypeModel: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let inline = Self(rawValue: "inline")
+}
+
+public struct OpenAIHostedSkillParamSkillReference: Codable, Sendable {
+  public var skillId: String
+  public var typeModel: OpenAIHostedSkillParamSkillReferenceTypeModel
+  public var version: String?
+
+  public init(
+    skillId: String,
+    typeModel: OpenAIHostedSkillParamSkillReferenceTypeModel,
+    version: String? = nil
+  ) {
+    self.skillId = skillId
+    self.typeModel = typeModel
+    self.version = version
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case skillId = "skill_id"
+    case typeModel = "type"
+    case version
+  }
+}
+
+public struct OpenAIHostedSkillParamSkillReferenceTypeModel: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let skillReference = Self(rawValue: "skill_reference")
+}
+
+public enum OpenAIHostedSkillResource: Codable, Sendable {
+  case hostedSkillResourceSkillReference(OpenAIHostedSkillResourceSkillReference)
+  case hostedSkillResourceInline(OpenAIHostedSkillResourceInline)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(OpenAIHostedSkillResourceSkillReference.self) {
+      self = .hostedSkillResourceSkillReference(value)
+      return
+    }
+    self = .hostedSkillResourceInline(try container.decode(OpenAIHostedSkillResourceInline.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .hostedSkillResourceSkillReference(let value):
+      try container.encode(value)
+    case .hostedSkillResourceInline(let value):
+      try container.encode(value)
+    }
+  }
+}
+
+public struct OpenAIHostedSkillResourceInline: Codable, Sendable {
+  public var description: String
+  public var name: String
+  public var typeModel: OpenAIHostedSkillResourceInlineTypeModel
+
+  public init(
+    description: String,
+    name: String,
+    typeModel: OpenAIHostedSkillResourceInlineTypeModel
+  ) {
+    self.description = description
+    self.name = name
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case description
+    case name
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIHostedSkillResourceInlineTypeModel: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let inline = Self(rawValue: "inline")
+}
+
+public struct OpenAIHostedSkillResourceSkillReference: Codable, Sendable {
+  public var description: String
+  public var name: String
+  public var skillId: String
+  public var typeModel: OpenAIHostedSkillResourceSkillReferenceTypeModel
+  public var version: String
+
+  public init(
+    description: String,
+    name: String,
+    skillId: String,
+    typeModel: OpenAIHostedSkillResourceSkillReferenceTypeModel,
+    version: String
+  ) {
+    self.description = description
+    self.name = name
+    self.skillId = skillId
+    self.typeModel = typeModel
+    self.version = version
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case description
+    case name
+    case skillId = "skill_id"
+    case typeModel = "type"
+    case version
+  }
+}
+
+public struct OpenAIHostedSkillResourceSkillReferenceTypeModel: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let skillReference = Self(rawValue: "skill_reference")
+}
+
+public enum OpenAIHostedTemplateFileResource: Codable, Sendable {
+  case hostedTemplateFileResourceFileId(OpenAIHostedTemplateFileResourceFileId)
+  case hostedTemplateFileResourceInline(OpenAIHostedTemplateFileResourceInline)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(OpenAIHostedTemplateFileResourceFileId.self) {
+      self = .hostedTemplateFileResourceFileId(value)
+      return
+    }
+    self = .hostedTemplateFileResourceInline(
+      try container.decode(OpenAIHostedTemplateFileResourceInline.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .hostedTemplateFileResourceFileId(let value):
+      try container.encode(value)
+    case .hostedTemplateFileResourceInline(let value):
+      try container.encode(value)
+    }
+  }
+}
+
+public struct OpenAIHostedTemplateFileResourceFileId: Codable, Sendable {
   public var fileId: String
+  public var path: String
+  public var typeModel: OpenAIHostedTemplateFileResourceFileIdTypeModel
 
   public init(
-    fileId: String
+    fileId: String,
+    path: String,
+    typeModel: OpenAIHostedTemplateFileResourceFileIdTypeModel
   ) {
     self.fileId = fileId
+    self.path = path
+    self.typeModel = typeModel
   }
 
   enum CodingKeys: String, CodingKey {
     case fileId = "file_id"
+    case path
+    case typeModel = "type"
   }
 }
 
-public struct OpenAIMessageContentTextAnnotationsFilePathObjectTypeModel: RawRepresentable, Codable,
+public struct OpenAIHostedTemplateFileResourceFileIdTypeModel: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let fileId = Self(rawValue: "file_id")
+}
+
+public struct OpenAIHostedTemplateFileResourceInline: Codable, Sendable {
+  public var path: String
+  public var sizeBytes: Int64
+  public var typeModel: OpenAIHostedTemplateFileResourceInlineTypeModel
+
+  public init(
+    path: String,
+    sizeBytes: Int64,
+    typeModel: OpenAIHostedTemplateFileResourceInlineTypeModel
+  ) {
+    self.path = path
+    self.sizeBytes = sizeBytes
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case path
+    case sizeBytes = "size_bytes"
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIHostedTemplateFileResourceInlineTypeModel: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let inline = Self(rawValue: "inline")
+}
+
+public enum OpenAIHostedTemplateSkillResource: Codable, Sendable {
+  case hostedTemplateSkillResourceSkillReference(OpenAIHostedTemplateSkillResourceSkillReference)
+  case hostedTemplateSkillResourceInline(OpenAIHostedTemplateSkillResourceInline)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(OpenAIHostedTemplateSkillResourceSkillReference.self) {
+      self = .hostedTemplateSkillResourceSkillReference(value)
+      return
+    }
+    self = .hostedTemplateSkillResourceInline(
+      try container.decode(OpenAIHostedTemplateSkillResourceInline.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .hostedTemplateSkillResourceSkillReference(let value):
+      try container.encode(value)
+    case .hostedTemplateSkillResourceInline(let value):
+      try container.encode(value)
+    }
+  }
+}
+
+public struct OpenAIHostedTemplateSkillResourceInline: Codable, Sendable {
+  public var description: String
+  public var name: String
+  public var typeModel: OpenAIHostedTemplateSkillResourceInlineTypeModel
+
+  public init(
+    description: String,
+    name: String,
+    typeModel: OpenAIHostedTemplateSkillResourceInlineTypeModel
+  ) {
+    self.description = description
+    self.name = name
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case description
+    case name
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIHostedTemplateSkillResourceInlineTypeModel: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let inline = Self(rawValue: "inline")
+}
+
+public struct OpenAIHostedTemplateSkillResourceSkillReference: Codable, Sendable {
+  public var skillId: String
+  public var typeModel: OpenAIHostedTemplateSkillResourceSkillReferenceTypeModel
+  public var version: String
+
+  public init(
+    skillId: String,
+    typeModel: OpenAIHostedTemplateSkillResourceSkillReferenceTypeModel,
+    version: String
+  ) {
+    self.skillId = skillId
+    self.typeModel = typeModel
+    self.version = version
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case skillId = "skill_id"
+    case typeModel = "type"
+    case version
+  }
+}
+
+public struct OpenAIHostedTemplateSkillResourceSkillReferenceTypeModel: RawRepresentable, Codable,
   Hashable, Sendable
 {
   public var rawValue: String
@@ -2215,165 +1066,849 @@ public struct OpenAIMessageContentTextAnnotationsFilePathObjectTypeModel: RawRep
     self.rawValue = rawValue
   }
 
-  public static let filePath = Self(rawValue: "file_path")
+  public static let skillReference = Self(rawValue: "skill_reference")
 }
 
-public struct OpenAIMessageContentTextObject: Codable, Sendable {
-  public var text: OpenAIMessageContentTextObjectText
-  public var typeModel: OpenAIMessageContentTextObjectTypeModel
+public struct OpenAIHostedToolPermission: Codable, Sendable {
+  public var enabled: Bool
 
   public init(
-    text: OpenAIMessageContentTextObjectText,
-    typeModel: OpenAIMessageContentTextObjectTypeModel
+    enabled: Bool
   ) {
-    self.text = text
-    self.typeModel = typeModel
+    self.enabled = enabled
   }
 
   enum CodingKeys: String, CodingKey {
-    case text
-    case typeModel = "type"
+    case enabled
   }
 }
 
-public struct OpenAIMessageContentTextObjectText: Codable, Sendable {
-  public var annotations: [HyperProxyJSONValue]
-  public var value: String
+public struct OpenAIHostedToolPermissionUpdate: Codable, Sendable {
+  public var enabled: Bool
 
   public init(
-    annotations: [HyperProxyJSONValue],
-    value: String
+    enabled: Bool
   ) {
-    self.annotations = annotations
-    self.value = value
+    self.enabled = enabled
   }
 
   enum CodingKeys: String, CodingKey {
-    case annotations
-    case value
+    case enabled
   }
 }
 
-public struct OpenAIMessageContentTextObjectTypeModel: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let text = Self(rawValue: "text")
-}
-
-public struct OpenAIMessageDeltaContentImageFileObject: Codable, Sendable {
-  public var imageFile: OpenAIMessageDeltaContentImageFileObjectImageFile?
-  public var index: Int
-  public var typeModel: OpenAIMessageDeltaContentImageFileObjectTypeModel
+public struct OpenAIHybridSearchOptions: Codable, Sendable {
+  public var embeddingWeight: Double
+  public var textWeight: Double
 
   public init(
-    index: Int,
-    typeModel: OpenAIMessageDeltaContentImageFileObjectTypeModel,
-    imageFile: OpenAIMessageDeltaContentImageFileObjectImageFile? = nil
+    embeddingWeight: Double,
+    textWeight: Double
   ) {
-    self.imageFile = imageFile
-    self.index = index
-    self.typeModel = typeModel
+    self.embeddingWeight = embeddingWeight
+    self.textWeight = textWeight
   }
 
   enum CodingKeys: String, CodingKey {
-    case imageFile = "image_file"
-    case index
-    case typeModel = "type"
+    case embeddingWeight = "embedding_weight"
+    case textWeight = "text_weight"
   }
 }
 
-public struct OpenAIMessageDeltaContentImageFileObjectImageFile: Codable, Sendable {
-  public var detail: OpenAIMessageDeltaContentImageFileObjectImageFileDetail?
-  public var fileId: String?
-
-  public init(
-    detail: OpenAIMessageDeltaContentImageFileObjectImageFileDetail? = nil,
-    fileId: String? = nil
-  ) {
-    self.detail = detail
-    self.fileId = fileId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case detail
-    case fileId = "file_id"
-  }
-}
-
-public struct OpenAIMessageDeltaContentImageFileObjectImageFileDetail: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
-  public static let low = Self(rawValue: "low")
-  public static let high = Self(rawValue: "high")
-}
-
-public struct OpenAIMessageDeltaContentImageFileObjectTypeModel: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let imageFile = Self(rawValue: "image_file")
-}
-
-public struct OpenAIMessageDeltaContentImageUrlObject: Codable, Sendable {
-  public var imageUrl: OpenAIMessageDeltaContentImageUrlObjectImageUrl?
-  public var index: Int
-  public var typeModel: OpenAIMessageDeltaContentImageUrlObjectTypeModel
-
-  public init(
-    index: Int,
-    typeModel: OpenAIMessageDeltaContentImageUrlObjectTypeModel,
-    imageUrl: OpenAIMessageDeltaContentImageUrlObjectImageUrl? = nil
-  ) {
-    self.imageUrl = imageUrl
-    self.index = index
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case imageUrl = "image_url"
-    case index
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAIMessageDeltaContentImageUrlObjectImageUrl: Codable, Sendable {
-  public var detail: OpenAIMessageDeltaContentImageUrlObjectImageUrlDetail?
+public struct OpenAIImage: Codable, Sendable {
+  public var b64Json: String?
+  public var revisedPrompt: String?
   public var url: String?
 
   public init(
-    detail: OpenAIMessageDeltaContentImageUrlObjectImageUrlDetail? = nil,
+    b64Json: String? = nil,
+    revisedPrompt: String? = nil,
     url: String? = nil
   ) {
-    self.detail = detail
+    self.b64Json = b64Json
+    self.revisedPrompt = revisedPrompt
     self.url = url
   }
 
   enum CodingKeys: String, CodingKey {
-    case detail
+    case b64Json = "b64_json"
+    case revisedPrompt = "revised_prompt"
     case url
   }
 }
 
-public struct OpenAIMessageDeltaContentImageUrlObjectImageUrlDetail: RawRepresentable, Codable,
-  Hashable, Sendable
+public struct OpenAIImageBackground: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let transparent = Self(rawValue: "transparent")
+  public static let opaque = Self(rawValue: "opaque")
+  public static let auto = Self(rawValue: "auto")
+}
+
+public struct OpenAIImageDetail: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let low = Self(rawValue: "low")
+  public static let high = Self(rawValue: "high")
+  public static let auto = Self(rawValue: "auto")
+  public static let original = Self(rawValue: "original")
+}
+
+public struct OpenAIImageEditCompletedEvent: Codable, Sendable {
+  public var b64Json: String
+  public var background: OpenAIImageEditCompletedEventBackground
+  public var createdAt: Int
+  public var outputFormat: OpenAIImageEditCompletedEventOutputFormat
+  public var quality: OpenAIImageEditCompletedEventQuality
+  public var size: HyperProxyJSONValue
+  public var typeModel: OpenAIImageEditCompletedEventTypeModel
+  public var usage: OpenAIImagesUsage
+
+  public init(
+    b64Json: String,
+    background: OpenAIImageEditCompletedEventBackground,
+    createdAt: Int,
+    outputFormat: OpenAIImageEditCompletedEventOutputFormat,
+    quality: OpenAIImageEditCompletedEventQuality,
+    size: HyperProxyJSONValue,
+    typeModel: OpenAIImageEditCompletedEventTypeModel,
+    usage: OpenAIImagesUsage
+  ) {
+    self.b64Json = b64Json
+    self.background = background
+    self.createdAt = createdAt
+    self.outputFormat = outputFormat
+    self.quality = quality
+    self.size = size
+    self.typeModel = typeModel
+    self.usage = usage
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case b64Json = "b64_json"
+    case background
+    case createdAt = "created_at"
+    case outputFormat = "output_format"
+    case quality
+    case size
+    case typeModel = "type"
+    case usage
+  }
+}
+
+public struct OpenAIImageEditCompletedEventBackground: RawRepresentable, Codable, Hashable, Sendable
 {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let transparent = Self(rawValue: "transparent")
+  public static let opaque = Self(rawValue: "opaque")
+  public static let auto = Self(rawValue: "auto")
+}
+
+public struct OpenAIImageEditCompletedEventOutputFormat: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let png = Self(rawValue: "png")
+  public static let webp = Self(rawValue: "webp")
+  public static let jpeg = Self(rawValue: "jpeg")
+}
+
+public struct OpenAIImageEditCompletedEventQuality: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let low = Self(rawValue: "low")
+  public static let medium = Self(rawValue: "medium")
+  public static let high = Self(rawValue: "high")
+  public static let xhigh = Self(rawValue: "xhigh")
+  public static let max = Self(rawValue: "max")
+  public static let auto = Self(rawValue: "auto")
+}
+
+public struct OpenAIImageEditCompletedEventSizeAnyOf2: RawRepresentable, Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let value1024x1024 = Self(rawValue: "1024x1024")
+  public static let value1024x1536 = Self(rawValue: "1024x1536")
+  public static let value1536x1024 = Self(rawValue: "1536x1024")
+  public static let auto = Self(rawValue: "auto")
+}
+
+public struct OpenAIImageEditCompletedEventTypeModel: RawRepresentable, Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let imageEditCompleted = Self(rawValue: "image_edit.completed")
+}
+
+public struct OpenAIImageEditPartialImageEvent: Codable, Sendable {
+  public var b64Json: String
+  public var background: OpenAIImageEditPartialImageEventBackground
+  public var createdAt: Int
+  public var outputFormat: OpenAIImageEditPartialImageEventOutputFormat
+  public var partialImageIndex: Int
+  public var quality: OpenAIImageEditPartialImageEventQuality
+  public var size: HyperProxyJSONValue
+  public var typeModel: OpenAIImageEditPartialImageEventTypeModel
+
+  public init(
+    b64Json: String,
+    background: OpenAIImageEditPartialImageEventBackground,
+    createdAt: Int,
+    outputFormat: OpenAIImageEditPartialImageEventOutputFormat,
+    partialImageIndex: Int,
+    quality: OpenAIImageEditPartialImageEventQuality,
+    size: HyperProxyJSONValue,
+    typeModel: OpenAIImageEditPartialImageEventTypeModel
+  ) {
+    self.b64Json = b64Json
+    self.background = background
+    self.createdAt = createdAt
+    self.outputFormat = outputFormat
+    self.partialImageIndex = partialImageIndex
+    self.quality = quality
+    self.size = size
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case b64Json = "b64_json"
+    case background
+    case createdAt = "created_at"
+    case outputFormat = "output_format"
+    case partialImageIndex = "partial_image_index"
+    case quality
+    case size
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIImageEditPartialImageEventBackground: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let transparent = Self(rawValue: "transparent")
+  public static let opaque = Self(rawValue: "opaque")
+  public static let auto = Self(rawValue: "auto")
+}
+
+public struct OpenAIImageEditPartialImageEventOutputFormat: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let png = Self(rawValue: "png")
+  public static let webp = Self(rawValue: "webp")
+  public static let jpeg = Self(rawValue: "jpeg")
+}
+
+public struct OpenAIImageEditPartialImageEventQuality: RawRepresentable, Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let low = Self(rawValue: "low")
+  public static let medium = Self(rawValue: "medium")
+  public static let high = Self(rawValue: "high")
+  public static let xhigh = Self(rawValue: "xhigh")
+  public static let max = Self(rawValue: "max")
+  public static let auto = Self(rawValue: "auto")
+}
+
+public struct OpenAIImageEditPartialImageEventSizeAnyOf2: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let value1024x1024 = Self(rawValue: "1024x1024")
+  public static let value1024x1536 = Self(rawValue: "1024x1536")
+  public static let value1536x1024 = Self(rawValue: "1536x1024")
+  public static let auto = Self(rawValue: "auto")
+}
+
+public struct OpenAIImageEditPartialImageEventTypeModel: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let imageEditPartialImage = Self(rawValue: "image_edit.partial_image")
+}
+
+public enum OpenAIImageEditStreamEvent: Codable, Sendable {
+  case imageEditPartialImageEvent(OpenAIImageEditPartialImageEvent)
+  case imageEditCompletedEvent(OpenAIImageEditCompletedEvent)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(OpenAIImageEditPartialImageEvent.self) {
+      self = .imageEditPartialImageEvent(value)
+      return
+    }
+    self = .imageEditCompletedEvent(try container.decode(OpenAIImageEditCompletedEvent.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .imageEditPartialImageEvent(let value):
+      try container.encode(value)
+    case .imageEditCompletedEvent(let value):
+      try container.encode(value)
+    }
+  }
+}
+
+public struct OpenAIImageGenActionEnum: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let generate = Self(rawValue: "generate")
+  public static let edit = Self(rawValue: "edit")
+  public static let auto = Self(rawValue: "auto")
+}
+
+public struct OpenAIImageGenCompletedEvent: Codable, Sendable {
+  public var b64Json: String
+  public var background: OpenAIImageGenCompletedEventBackground
+  public var createdAt: Int
+  public var outputFormat: OpenAIImageGenCompletedEventOutputFormat
+  public var quality: OpenAIImageGenCompletedEventQuality
+  public var size: HyperProxyJSONValue
+  public var typeModel: OpenAIImageGenCompletedEventTypeModel
+  public var usage: OpenAIImagesUsage
+
+  public init(
+    b64Json: String,
+    background: OpenAIImageGenCompletedEventBackground,
+    createdAt: Int,
+    outputFormat: OpenAIImageGenCompletedEventOutputFormat,
+    quality: OpenAIImageGenCompletedEventQuality,
+    size: HyperProxyJSONValue,
+    typeModel: OpenAIImageGenCompletedEventTypeModel,
+    usage: OpenAIImagesUsage
+  ) {
+    self.b64Json = b64Json
+    self.background = background
+    self.createdAt = createdAt
+    self.outputFormat = outputFormat
+    self.quality = quality
+    self.size = size
+    self.typeModel = typeModel
+    self.usage = usage
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case b64Json = "b64_json"
+    case background
+    case createdAt = "created_at"
+    case outputFormat = "output_format"
+    case quality
+    case size
+    case typeModel = "type"
+    case usage
+  }
+}
+
+public struct OpenAIImageGenCompletedEventBackground: RawRepresentable, Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let transparent = Self(rawValue: "transparent")
+  public static let opaque = Self(rawValue: "opaque")
+  public static let auto = Self(rawValue: "auto")
+}
+
+public struct OpenAIImageGenCompletedEventOutputFormat: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let png = Self(rawValue: "png")
+  public static let webp = Self(rawValue: "webp")
+  public static let jpeg = Self(rawValue: "jpeg")
+}
+
+public struct OpenAIImageGenCompletedEventQuality: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let low = Self(rawValue: "low")
+  public static let medium = Self(rawValue: "medium")
+  public static let high = Self(rawValue: "high")
+  public static let xhigh = Self(rawValue: "xhigh")
+  public static let max = Self(rawValue: "max")
+  public static let auto = Self(rawValue: "auto")
+}
+
+public struct OpenAIImageGenCompletedEventSizeAnyOf2: RawRepresentable, Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let value1024x1024 = Self(rawValue: "1024x1024")
+  public static let value1024x1536 = Self(rawValue: "1024x1536")
+  public static let value1536x1024 = Self(rawValue: "1536x1024")
+  public static let auto = Self(rawValue: "auto")
+}
+
+public struct OpenAIImageGenCompletedEventTypeModel: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let imageGenerationCompleted = Self(rawValue: "image_generation.completed")
+}
+
+public struct OpenAIImageGenInputUsageDetails: Codable, Sendable {
+  public var imageTokens: Int
+  public var textTokens: Int
+
+  public init(
+    imageTokens: Int,
+    textTokens: Int
+  ) {
+    self.imageTokens = imageTokens
+    self.textTokens = textTokens
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case imageTokens = "image_tokens"
+    case textTokens = "text_tokens"
+  }
+}
+
+public struct OpenAIImageGenOutputTokensDetails: Codable, Sendable {
+  public var imageTokens: Int
+  public var textTokens: Int
+
+  public init(
+    imageTokens: Int,
+    textTokens: Int
+  ) {
+    self.imageTokens = imageTokens
+    self.textTokens = textTokens
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case imageTokens = "image_tokens"
+    case textTokens = "text_tokens"
+  }
+}
+
+public struct OpenAIImageGenPartialImageEvent: Codable, Sendable {
+  public var b64Json: String
+  public var background: OpenAIImageGenPartialImageEventBackground
+  public var createdAt: Int
+  public var outputFormat: OpenAIImageGenPartialImageEventOutputFormat
+  public var partialImageIndex: Int
+  public var quality: OpenAIImageGenPartialImageEventQuality
+  public var size: HyperProxyJSONValue
+  public var typeModel: OpenAIImageGenPartialImageEventTypeModel
+
+  public init(
+    b64Json: String,
+    background: OpenAIImageGenPartialImageEventBackground,
+    createdAt: Int,
+    outputFormat: OpenAIImageGenPartialImageEventOutputFormat,
+    partialImageIndex: Int,
+    quality: OpenAIImageGenPartialImageEventQuality,
+    size: HyperProxyJSONValue,
+    typeModel: OpenAIImageGenPartialImageEventTypeModel
+  ) {
+    self.b64Json = b64Json
+    self.background = background
+    self.createdAt = createdAt
+    self.outputFormat = outputFormat
+    self.partialImageIndex = partialImageIndex
+    self.quality = quality
+    self.size = size
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case b64Json = "b64_json"
+    case background
+    case createdAt = "created_at"
+    case outputFormat = "output_format"
+    case partialImageIndex = "partial_image_index"
+    case quality
+    case size
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIImageGenPartialImageEventBackground: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let transparent = Self(rawValue: "transparent")
+  public static let opaque = Self(rawValue: "opaque")
+  public static let auto = Self(rawValue: "auto")
+}
+
+public struct OpenAIImageGenPartialImageEventOutputFormat: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let png = Self(rawValue: "png")
+  public static let webp = Self(rawValue: "webp")
+  public static let jpeg = Self(rawValue: "jpeg")
+}
+
+public struct OpenAIImageGenPartialImageEventQuality: RawRepresentable, Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let low = Self(rawValue: "low")
+  public static let medium = Self(rawValue: "medium")
+  public static let high = Self(rawValue: "high")
+  public static let xhigh = Self(rawValue: "xhigh")
+  public static let max = Self(rawValue: "max")
+  public static let auto = Self(rawValue: "auto")
+}
+
+public struct OpenAIImageGenPartialImageEventSizeAnyOf2: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let value1024x1024 = Self(rawValue: "1024x1024")
+  public static let value1024x1536 = Self(rawValue: "1024x1536")
+  public static let value1536x1024 = Self(rawValue: "1536x1024")
+  public static let auto = Self(rawValue: "auto")
+}
+
+public struct OpenAIImageGenPartialImageEventTypeModel: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let imageGenerationPartialImage = Self(rawValue: "image_generation.partial_image")
+}
+
+public enum OpenAIImageGenStreamEvent: Codable, Sendable {
+  case imageGenPartialImageEvent(OpenAIImageGenPartialImageEvent)
+  case imageGenCompletedEvent(OpenAIImageGenCompletedEvent)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(OpenAIImageGenPartialImageEvent.self) {
+      self = .imageGenPartialImageEvent(value)
+      return
+    }
+    self = .imageGenCompletedEvent(try container.decode(OpenAIImageGenCompletedEvent.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .imageGenPartialImageEvent(let value):
+      try container.encode(value)
+    case .imageGenCompletedEvent(let value):
+      try container.encode(value)
+    }
+  }
+}
+
+public struct OpenAIImageGenTool: Codable, Sendable {
+  public var action: OpenAIImageGenActionEnum?
+  public var background: OpenAIImageGenToolBackground?
+  public var inputFidelity: OpenAIInputFidelity?
+  public var inputImageMask: OpenAIImageGenToolInputImageMask?
+  public var model: HyperProxyJSONValue?
+  public var moderation: OpenAIImageGenToolModeration?
+  public var outputCompression: Int?
+  public var outputFormat: OpenAIImageGenToolOutputFormat?
+  public var partialImages: Int?
+  public var quality: OpenAIImageGenToolQuality?
+  public var size: HyperProxyJSONValue?
+  public var typeModel: OpenAIImageGenToolTypeModel
+
+  public init(
+    typeModel: OpenAIImageGenToolTypeModel,
+    action: OpenAIImageGenActionEnum? = nil,
+    background: OpenAIImageGenToolBackground? = nil,
+    inputFidelity: OpenAIInputFidelity? = nil,
+    inputImageMask: OpenAIImageGenToolInputImageMask? = nil,
+    model: HyperProxyJSONValue? = nil,
+    moderation: OpenAIImageGenToolModeration? = nil,
+    outputCompression: Int? = nil,
+    outputFormat: OpenAIImageGenToolOutputFormat? = nil,
+    partialImages: Int? = nil,
+    quality: OpenAIImageGenToolQuality? = nil,
+    size: HyperProxyJSONValue? = nil
+  ) {
+    self.action = action
+    self.background = background
+    self.inputFidelity = inputFidelity
+    self.inputImageMask = inputImageMask
+    self.model = model
+    self.moderation = moderation
+    self.outputCompression = outputCompression
+    self.outputFormat = outputFormat
+    self.partialImages = partialImages
+    self.quality = quality
+    self.size = size
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case action
+    case background
+    case inputFidelity = "input_fidelity"
+    case inputImageMask = "input_image_mask"
+    case model
+    case moderation
+    case outputCompression = "output_compression"
+    case outputFormat = "output_format"
+    case partialImages = "partial_images"
+    case quality
+    case size
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIImageGenToolBackground: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let transparent = Self(rawValue: "transparent")
+  public static let opaque = Self(rawValue: "opaque")
+  public static let auto = Self(rawValue: "auto")
+}
+
+public struct OpenAIImageGenToolCall: Codable, Sendable {
+  public var action: OpenAIImageGenActionEnum?
+  public var background: OpenAIImageBackground?
+  public var id: String
+  public var outputFormat: OpenAIImageOutputFormat?
+  public var quality: OpenAIImageGenToolCallQualityAnyOf1?
+  public var result: String?
+  public var revisedPrompt: String?
+  public var size: HyperProxyJSONValue?
+  public var status: OpenAIImageGenToolCallStatus
+  public var typeModel: OpenAIImageGenToolCallTypeModel
+
+  public init(
+    id: String,
+    result: String?,
+    status: OpenAIImageGenToolCallStatus,
+    typeModel: OpenAIImageGenToolCallTypeModel,
+    action: OpenAIImageGenActionEnum? = nil,
+    background: OpenAIImageBackground? = nil,
+    outputFormat: OpenAIImageOutputFormat? = nil,
+    quality: OpenAIImageGenToolCallQualityAnyOf1? = nil,
+    revisedPrompt: String? = nil,
+    size: HyperProxyJSONValue? = nil
+  ) {
+    self.action = action
+    self.background = background
+    self.id = id
+    self.outputFormat = outputFormat
+    self.quality = quality
+    self.result = result
+    self.revisedPrompt = revisedPrompt
+    self.size = size
+    self.status = status
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case action
+    case background
+    case id
+    case outputFormat = "output_format"
+    case quality
+    case result
+    case revisedPrompt = "revised_prompt"
+    case size
+    case status
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIImageGenToolCallQualityAnyOf1: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let low = Self(rawValue: "low")
+  public static let medium = Self(rawValue: "medium")
+  public static let high = Self(rawValue: "high")
+  public static let xhigh = Self(rawValue: "xhigh")
+  public static let max = Self(rawValue: "max")
+  public static let auto = Self(rawValue: "auto")
+}
+
+public struct OpenAIImageGenToolCallSizeAnyOf1AnyOf2: RawRepresentable, Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let value1024x1024 = Self(rawValue: "1024x1024")
+  public static let value1024x1536 = Self(rawValue: "1024x1536")
+  public static let value1536x1024 = Self(rawValue: "1536x1024")
+}
+
+public struct OpenAIImageGenToolCallStatus: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let inProgress = Self(rawValue: "in_progress")
+  public static let completed = Self(rawValue: "completed")
+  public static let generating = Self(rawValue: "generating")
+  public static let failed = Self(rawValue: "failed")
+}
+
+public struct OpenAIImageGenToolCallTypeModel: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let imageGenerationCall = Self(rawValue: "image_generation_call")
+}
+
+public struct OpenAIImageGenToolInputImageMask: Codable, Sendable {
+  public var fileId: String?
+  public var imageUrl: String?
+
+  public init(
+    fileId: String? = nil,
+    imageUrl: String? = nil
+  ) {
+    self.fileId = fileId
+    self.imageUrl = imageUrl
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case fileId = "file_id"
+    case imageUrl = "image_url"
+  }
+}
+
+public struct OpenAIImageGenToolModelAnyOf2: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let gptImage1 = Self(rawValue: "gpt-image-1")
+  public static let gptImage1Mini = Self(rawValue: "gpt-image-1-mini")
+  public static let gptImage15 = Self(rawValue: "gpt-image-1.5")
+  public static let gptImage2 = Self(rawValue: "gpt-image-2")
+  public static let gptImage220260421 = Self(rawValue: "gpt-image-2-2026-04-21")
+  public static let gptImage25Sunburst = Self(rawValue: "gpt-image-2.5-sunburst")
+  public static let gptImage25Sunburst20260908 = Self(rawValue: "gpt-image-2.5-sunburst-2026-09-08")
+  public static let gptImage25Flare = Self(rawValue: "gpt-image-2.5-flare")
+  public static let gptImage25Flare20260908 = Self(rawValue: "gpt-image-2.5-flare-2026-09-08")
+}
+
+public struct OpenAIImageGenToolModeration: RawRepresentable, Codable, Hashable, Sendable {
   public var rawValue: String
 
   public init(rawValue: String) {
@@ -2382,393 +1917,328 @@ public struct OpenAIMessageDeltaContentImageUrlObjectImageUrlDetail: RawRepresen
 
   public static let auto = Self(rawValue: "auto")
   public static let low = Self(rawValue: "low")
+}
+
+public struct OpenAIImageGenToolOutputFormat: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let png = Self(rawValue: "png")
+  public static let webp = Self(rawValue: "webp")
+  public static let jpeg = Self(rawValue: "jpeg")
+}
+
+public struct OpenAIImageGenToolQuality: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let low = Self(rawValue: "low")
+  public static let medium = Self(rawValue: "medium")
   public static let high = Self(rawValue: "high")
+  public static let xhigh = Self(rawValue: "xhigh")
+  public static let max = Self(rawValue: "max")
+  public static let auto = Self(rawValue: "auto")
 }
 
-public struct OpenAIMessageDeltaContentImageUrlObjectTypeModel: RawRepresentable, Codable, Hashable,
-  Sendable
-{
+public struct OpenAIImageGenToolSizeAnyOf2: RawRepresentable, Codable, Hashable, Sendable {
   public var rawValue: String
 
   public init(rawValue: String) {
     self.rawValue = rawValue
   }
 
-  public static let imageUrl = Self(rawValue: "image_url")
+  public static let value1024x1024 = Self(rawValue: "1024x1024")
+  public static let value1024x1536 = Self(rawValue: "1024x1536")
+  public static let value1536x1024 = Self(rawValue: "1536x1024")
+  public static let auto = Self(rawValue: "auto")
 }
 
-public struct OpenAIMessageDeltaContentRefusalObject: Codable, Sendable {
-  public var index: Int
-  public var refusal: String?
-  public var typeModel: OpenAIMessageDeltaContentRefusalObjectTypeModel
-
-  public init(
-    index: Int,
-    typeModel: OpenAIMessageDeltaContentRefusalObjectTypeModel,
-    refusal: String? = nil
-  ) {
-    self.index = index
-    self.refusal = refusal
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case index
-    case refusal
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAIMessageDeltaContentRefusalObjectTypeModel: RawRepresentable, Codable, Hashable,
-  Sendable
-{
+public struct OpenAIImageGenToolTypeModel: RawRepresentable, Codable, Hashable, Sendable {
   public var rawValue: String
 
   public init(rawValue: String) {
     self.rawValue = rawValue
   }
 
-  public static let refusal = Self(rawValue: "refusal")
+  public static let imageGeneration = Self(rawValue: "image_generation")
 }
 
-public struct OpenAIMessageDeltaContentTextAnnotationsFileCitationObject: Codable, Sendable {
-  public var endIndex: Int?
-  public var fileCitation: OpenAIMessageDeltaContentTextAnnotationsFileCitationObjectFileCitation?
-  public var index: Int
-  public var startIndex: Int?
-  public var text: String?
-  public var typeModel: OpenAIMessageDeltaContentTextAnnotationsFileCitationObjectTypeModel
+public struct OpenAIImageGenUsage: Codable, Sendable {
+  public var inputTokens: Int
+  public var inputTokensDetails: OpenAIImageGenInputUsageDetails
+  public var outputTokens: Int
+  public var outputTokensDetails: OpenAIImageGenOutputTokensDetails?
+  public var totalTokens: Int
 
   public init(
-    index: Int,
-    typeModel: OpenAIMessageDeltaContentTextAnnotationsFileCitationObjectTypeModel,
-    endIndex: Int? = nil,
-    fileCitation: OpenAIMessageDeltaContentTextAnnotationsFileCitationObjectFileCitation? = nil,
-    startIndex: Int? = nil,
-    text: String? = nil
+    inputTokens: Int,
+    inputTokensDetails: OpenAIImageGenInputUsageDetails,
+    outputTokens: Int,
+    totalTokens: Int,
+    outputTokensDetails: OpenAIImageGenOutputTokensDetails? = nil
   ) {
-    self.endIndex = endIndex
-    self.fileCitation = fileCitation
-    self.index = index
-    self.startIndex = startIndex
-    self.text = text
-    self.typeModel = typeModel
+    self.inputTokens = inputTokens
+    self.inputTokensDetails = inputTokensDetails
+    self.outputTokens = outputTokens
+    self.outputTokensDetails = outputTokensDetails
+    self.totalTokens = totalTokens
   }
 
   enum CodingKeys: String, CodingKey {
-    case endIndex = "end_index"
-    case fileCitation = "file_citation"
-    case index
-    case startIndex = "start_index"
-    case text
-    case typeModel = "type"
+    case inputTokens = "input_tokens"
+    case inputTokensDetails = "input_tokens_details"
+    case outputTokens = "output_tokens"
+    case outputTokensDetails = "output_tokens_details"
+    case totalTokens = "total_tokens"
   }
 }
 
-public struct OpenAIMessageDeltaContentTextAnnotationsFileCitationObjectFileCitation: Codable,
-  Sendable
-{
+public struct OpenAIImageOutputFormat: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let png = Self(rawValue: "png")
+  public static let webp = Self(rawValue: "webp")
+  public static let jpeg = Self(rawValue: "jpeg")
+}
+
+public struct OpenAIImageRefParam: Codable, Sendable {
   public var fileId: String?
-  public var quote: String?
+  public var imageUrl: String?
 
   public init(
     fileId: String? = nil,
-    quote: String? = nil
+    imageUrl: String? = nil
   ) {
     self.fileId = fileId
-    self.quote = quote
+    self.imageUrl = imageUrl
   }
 
   enum CodingKeys: String, CodingKey {
     case fileId = "file_id"
-    case quote
+    case imageUrl = "image_url"
   }
 }
 
-public struct OpenAIMessageDeltaContentTextAnnotationsFileCitationObjectTypeModel: RawRepresentable,
-  Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let fileCitation = Self(rawValue: "file_citation")
-}
-
-public struct OpenAIMessageDeltaContentTextAnnotationsFilePathObject: Codable, Sendable {
-  public var endIndex: Int?
-  public var filePath: OpenAIMessageDeltaContentTextAnnotationsFilePathObjectFilePath?
-  public var index: Int
-  public var startIndex: Int?
-  public var text: String?
-  public var typeModel: OpenAIMessageDeltaContentTextAnnotationsFilePathObjectTypeModel
-
-  public init(
-    index: Int,
-    typeModel: OpenAIMessageDeltaContentTextAnnotationsFilePathObjectTypeModel,
-    endIndex: Int? = nil,
-    filePath: OpenAIMessageDeltaContentTextAnnotationsFilePathObjectFilePath? = nil,
-    startIndex: Int? = nil,
-    text: String? = nil
-  ) {
-    self.endIndex = endIndex
-    self.filePath = filePath
-    self.index = index
-    self.startIndex = startIndex
-    self.text = text
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case endIndex = "end_index"
-    case filePath = "file_path"
-    case index
-    case startIndex = "start_index"
-    case text
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAIMessageDeltaContentTextAnnotationsFilePathObjectFilePath: Codable, Sendable {
+public struct OpenAIImageRefParam2: Codable, Sendable {
   public var fileId: String?
-
-  public init(
-    fileId: String? = nil
-  ) {
-    self.fileId = fileId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case fileId = "file_id"
-  }
-}
-
-public struct OpenAIMessageDeltaContentTextAnnotationsFilePathObjectTypeModel: RawRepresentable,
-  Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let filePath = Self(rawValue: "file_path")
-}
-
-public struct OpenAIMessageDeltaContentTextObject: Codable, Sendable {
-  public var index: Int
-  public var text: OpenAIMessageDeltaContentTextObjectText?
-  public var typeModel: OpenAIMessageDeltaContentTextObjectTypeModel
-
-  public init(
-    index: Int,
-    typeModel: OpenAIMessageDeltaContentTextObjectTypeModel,
-    text: OpenAIMessageDeltaContentTextObjectText? = nil
-  ) {
-    self.index = index
-    self.text = text
-    self.typeModel = typeModel
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case index
-    case text
-    case typeModel = "type"
-  }
-}
-
-public struct OpenAIMessageDeltaContentTextObjectText: Codable, Sendable {
-  public var annotations: [HyperProxyJSONValue]?
-  public var value: String?
-
-  public init(
-    annotations: [HyperProxyJSONValue]? = nil,
-    value: String? = nil
-  ) {
-    self.annotations = annotations
-    self.value = value
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case annotations
-    case value
-  }
-}
-
-public struct OpenAIMessageDeltaContentTextObjectTypeModel: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let text = Self(rawValue: "text")
-}
-
-public struct OpenAIMessageDeltaObject: Codable, Sendable {
-  public var delta: OpenAIMessageDeltaObjectDelta
-  public var id: String
-  public var object: OpenAIMessageDeltaObjectObject
-
-  public init(
-    delta: OpenAIMessageDeltaObjectDelta,
-    id: String,
-    object: OpenAIMessageDeltaObjectObject
-  ) {
-    self.delta = delta
-    self.id = id
-    self.object = object
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case delta
-    case id
-    case object
-  }
-}
-
-public struct OpenAIMessageDeltaObjectDelta: Codable, Sendable {
-  public var content: [HyperProxyJSONValue]?
-  public var role: OpenAIMessageDeltaObjectDeltaRole?
-
-  public init(
-    content: [HyperProxyJSONValue]? = nil,
-    role: OpenAIMessageDeltaObjectDeltaRole? = nil
-  ) {
-    self.content = content
-    self.role = role
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case content
-    case role
-  }
-}
-
-public struct OpenAIMessageDeltaObjectDeltaRole: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let user = Self(rawValue: "user")
-  public static let assistant = Self(rawValue: "assistant")
-}
-
-public struct OpenAIMessageDeltaObjectObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let threadMessageDelta = Self(rawValue: "thread.message.delta")
-}
-
-public struct OpenAIMessageObject: Codable, Sendable {
-  public var assistantId: String?
-  public var attachments: [OpenAIMessageObjectAttachmentsAnyOf1Item]?
-  public var completedAt: Int?
-  public var content: [HyperProxyJSONValue]
-  public var createdAt: Int
-  public var id: String
-  public var incompleteAt: Int?
-  public var incompleteDetails: OpenAIMessageObjectIncompleteDetailsAnyOf1?
-  public var metadata: OpenAIMetadata
-  public var object: OpenAIMessageObjectObject
-  public var role: OpenAIMessageObjectRole
-  public var runId: String?
-  public var status: OpenAIMessageObjectStatus
-  public var threadId: String
-
-  public init(
-    assistantId: String?,
-    attachments: [OpenAIMessageObjectAttachmentsAnyOf1Item]?,
-    completedAt: Int?,
-    content: [HyperProxyJSONValue],
-    createdAt: Int,
-    id: String,
-    incompleteAt: Int?,
-    incompleteDetails: OpenAIMessageObjectIncompleteDetailsAnyOf1?,
-    metadata: OpenAIMetadata,
-    object: OpenAIMessageObjectObject,
-    role: OpenAIMessageObjectRole,
-    runId: String?,
-    status: OpenAIMessageObjectStatus,
-    threadId: String
-  ) {
-    self.assistantId = assistantId
-    self.attachments = attachments
-    self.completedAt = completedAt
-    self.content = content
-    self.createdAt = createdAt
-    self.id = id
-    self.incompleteAt = incompleteAt
-    self.incompleteDetails = incompleteDetails
-    self.metadata = metadata
-    self.object = object
-    self.role = role
-    self.runId = runId
-    self.status = status
-    self.threadId = threadId
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case assistantId = "assistant_id"
-    case attachments
-    case completedAt = "completed_at"
-    case content
-    case createdAt = "created_at"
-    case id
-    case incompleteAt = "incomplete_at"
-    case incompleteDetails = "incomplete_details"
-    case metadata
-    case object
-    case role
-    case runId = "run_id"
-    case status
-    case threadId = "thread_id"
-  }
-}
-
-public struct OpenAIMessageObjectAttachmentsAnyOf1Item: Codable, Sendable {
-  public var fileId: String?
-  public var tools: [HyperProxyJSONValue]?
+  public var imageUrl: String?
 
   public init(
     fileId: String? = nil,
-    tools: [HyperProxyJSONValue]? = nil
+    imageUrl: String? = nil
   ) {
     self.fileId = fileId
-    self.tools = tools
+    self.imageUrl = imageUrl
   }
 
   enum CodingKeys: String, CodingKey {
     case fileId = "file_id"
-    case tools
+    case imageUrl = "image_url"
   }
 }
 
-public struct OpenAIMessageObjectIncompleteDetailsAnyOf1: Codable, Sendable {
-  public var reason: OpenAIMessageObjectIncompleteDetailsAnyOf1Reason
+public struct OpenAIImagesResponse: Codable, Sendable {
+  public var background: OpenAIImagesResponseBackground?
+  public var created: Int
+  public var data: [OpenAIImage]?
+  public var outputFormat: OpenAIImagesResponseOutputFormat?
+  public var quality: OpenAIImagesResponseQuality?
+  public var size: HyperProxyJSONValue?
+  public var usage: OpenAIImageGenUsage?
 
   public init(
-    reason: OpenAIMessageObjectIncompleteDetailsAnyOf1Reason
+    created: Int,
+    background: OpenAIImagesResponseBackground? = nil,
+    data: [OpenAIImage]? = nil,
+    outputFormat: OpenAIImagesResponseOutputFormat? = nil,
+    quality: OpenAIImagesResponseQuality? = nil,
+    size: HyperProxyJSONValue? = nil,
+    usage: OpenAIImageGenUsage? = nil
   ) {
-    self.reason = reason
+    self.background = background
+    self.created = created
+    self.data = data
+    self.outputFormat = outputFormat
+    self.quality = quality
+    self.size = size
+    self.usage = usage
   }
 
   enum CodingKeys: String, CodingKey {
-    case reason
+    case background
+    case created
+    case data
+    case outputFormat = "output_format"
+    case quality
+    case size
+    case usage
   }
 }
 
-public struct OpenAIMessageObjectIncompleteDetailsAnyOf1Reason: RawRepresentable, Codable, Hashable,
+public struct OpenAIImagesResponseBackground: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let transparent = Self(rawValue: "transparent")
+  public static let opaque = Self(rawValue: "opaque")
+}
+
+public struct OpenAIImagesResponseOutputFormat: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let png = Self(rawValue: "png")
+  public static let webp = Self(rawValue: "webp")
+  public static let jpeg = Self(rawValue: "jpeg")
+}
+
+public struct OpenAIImagesResponseQuality: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let low = Self(rawValue: "low")
+  public static let medium = Self(rawValue: "medium")
+  public static let high = Self(rawValue: "high")
+  public static let xhigh = Self(rawValue: "xhigh")
+  public static let max = Self(rawValue: "max")
+}
+
+public struct OpenAIImagesResponseSizeAnyOf2: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let value1024x1024 = Self(rawValue: "1024x1024")
+  public static let value1024x1536 = Self(rawValue: "1024x1536")
+  public static let value1536x1024 = Self(rawValue: "1536x1024")
+}
+
+public struct OpenAIImagesUsage: Codable, Sendable {
+  public var inputTokens: Int
+  public var inputTokensDetails: OpenAIImagesUsageInputTokensDetails
+  public var outputTokens: Int
+  public var totalTokens: Int
+
+  public init(
+    inputTokens: Int,
+    inputTokensDetails: OpenAIImagesUsageInputTokensDetails,
+    outputTokens: Int,
+    totalTokens: Int
+  ) {
+    self.inputTokens = inputTokens
+    self.inputTokensDetails = inputTokensDetails
+    self.outputTokens = outputTokens
+    self.totalTokens = totalTokens
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case inputTokens = "input_tokens"
+    case inputTokensDetails = "input_tokens_details"
+    case outputTokens = "output_tokens"
+    case totalTokens = "total_tokens"
+  }
+}
+
+public struct OpenAIImagesUsageInputTokensDetails: Codable, Sendable {
+  public var imageTokens: Int
+  public var textTokens: Int
+
+  public init(
+    imageTokens: Int,
+    textTokens: Int
+  ) {
+    self.imageTokens = imageTokens
+    self.textTokens = textTokens
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case imageTokens = "image_tokens"
+    case textTokens = "text_tokens"
+  }
+}
+
+public struct OpenAIIncludeEnum: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let fileSearchCallResults = Self(rawValue: "file_search_call.results")
+  public static let webSearchCallResults = Self(rawValue: "web_search_call.results")
+  public static let webSearchCallActionSources = Self(rawValue: "web_search_call.action.sources")
+  public static let messageInputImageImageUrl = Self(rawValue: "message.input_image.image_url")
+  public static let computerCallOutputOutputImageUrl = Self(
+    rawValue: "computer_call_output.output.image_url")
+  public static let codeInterpreterCallOutputs = Self(rawValue: "code_interpreter_call.outputs")
+  public static let reasoningEncryptedContent = Self(rawValue: "reasoning.encrypted_content")
+  public static let messageOutputTextLogprobs = Self(rawValue: "message.output_text.logprobs")
+}
+
+public struct OpenAIInferenceOptions: Codable, Sendable {
+  public var model: String?
+  public var toolChoice: OpenAIToolChoice?
+
+  public init(
+    model: String?,
+    toolChoice: OpenAIToolChoice?
+  ) {
+    self.model = model
+    self.toolChoice = toolChoice
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case model
+    case toolChoice = "tool_choice"
+  }
+}
+
+public typealias OpenAIInlineCapabilitySourceParam = OpenAIInlineCapabilitySourceParamBase64
+
+public struct OpenAIInlineCapabilitySourceParamBase64: Codable, Sendable {
+  public var data: String
+  public var mediaType: OpenAIInlineCapabilitySourceParamBase64MediaType
+  public var typeModel: OpenAIInlineCapabilitySourceParamBase64TypeModel
+
+  public init(
+    data: String,
+    mediaType: OpenAIInlineCapabilitySourceParamBase64MediaType,
+    typeModel: OpenAIInlineCapabilitySourceParamBase64TypeModel
+  ) {
+    self.data = data
+    self.mediaType = mediaType
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case data
+    case mediaType = "media_type"
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIInlineCapabilitySourceParamBase64MediaType: RawRepresentable, Codable, Hashable,
   Sendable
 {
   public var rawValue: String
@@ -2777,75 +2247,220 @@ public struct OpenAIMessageObjectIncompleteDetailsAnyOf1Reason: RawRepresentable
     self.rawValue = rawValue
   }
 
-  public static let contentFilter = Self(rawValue: "content_filter")
-  public static let maxTokens = Self(rawValue: "max_tokens")
-  public static let runCancelled = Self(rawValue: "run_cancelled")
-  public static let runExpired = Self(rawValue: "run_expired")
-  public static let runFailed = Self(rawValue: "run_failed")
+  public static let applicationZip = Self(rawValue: "application/zip")
 }
 
-public struct OpenAIMessageObjectObject: RawRepresentable, Codable, Hashable, Sendable {
+public struct OpenAIInlineCapabilitySourceParamBase64TypeModel: RawRepresentable, Codable, Hashable,
+  Sendable
+{
   public var rawValue: String
 
   public init(rawValue: String) {
     self.rawValue = rawValue
   }
 
-  public static let threadMessage = Self(rawValue: "thread.message")
+  public static let base64 = Self(rawValue: "base64")
 }
 
-public struct OpenAIMessageObjectRole: RawRepresentable, Codable, Hashable, Sendable {
+public struct OpenAIInlineSkillParam: Codable, Sendable {
+  public var description: String
+  public var name: String
+  public var source: OpenAIInlineSkillSourceParam
+  public var typeModel: OpenAIInlineSkillParamTypeModel
+
+  public init(
+    description: String,
+    name: String,
+    source: OpenAIInlineSkillSourceParam,
+    typeModel: OpenAIInlineSkillParamTypeModel
+  ) {
+    self.description = description
+    self.name = name
+    self.source = source
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case description
+    case name
+    case source
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIInlineSkillParamTypeModel: RawRepresentable, Codable, Hashable, Sendable {
   public var rawValue: String
 
   public init(rawValue: String) {
     self.rawValue = rawValue
   }
 
-  public static let user = Self(rawValue: "user")
-  public static let assistant = Self(rawValue: "assistant")
+  public static let inline = Self(rawValue: "inline")
 }
 
-public struct OpenAIMessageObjectStatus: RawRepresentable, Codable, Hashable, Sendable {
+public struct OpenAIInlineSkillSourceParam: Codable, Sendable {
+  public var data: String
+  public var mediaType: OpenAIInlineSkillSourceParamMediaType
+  public var typeModel: OpenAIInlineSkillSourceParamTypeModel
+
+  public init(
+    data: String,
+    mediaType: OpenAIInlineSkillSourceParamMediaType,
+    typeModel: OpenAIInlineSkillSourceParamTypeModel
+  ) {
+    self.data = data
+    self.mediaType = mediaType
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case data
+    case mediaType = "media_type"
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIInlineSkillSourceParamMediaType: RawRepresentable, Codable, Hashable, Sendable {
   public var rawValue: String
 
   public init(rawValue: String) {
     self.rawValue = rawValue
   }
 
-  public static let inProgress = Self(rawValue: "in_progress")
-  public static let incomplete = Self(rawValue: "incomplete")
-  public static let completed = Self(rawValue: "completed")
+  public static let applicationZip = Self(rawValue: "application/zip")
 }
 
-public struct OpenAIMessagePhase: RawRepresentable, Codable, Hashable, Sendable {
+public struct OpenAIInlineSkillSourceParamTypeModel: RawRepresentable, Codable, Hashable, Sendable {
   public var rawValue: String
 
   public init(rawValue: String) {
     self.rawValue = rawValue
   }
 
-  public static let commentary = Self(rawValue: "commentary")
-  public static let finalAnswer = Self(rawValue: "final_answer")
+  public static let base64 = Self(rawValue: "base64")
 }
 
-public struct OpenAIMessagePhase2: RawRepresentable, Codable, Hashable, Sendable {
+public struct OpenAIInputAudio: Codable, Sendable {
+  public var inputAudio: OpenAIInputAudioInputAudio
+  public var typeModel: OpenAIInputAudioTypeModel
+
+  public init(
+    inputAudio: OpenAIInputAudioInputAudio,
+    typeModel: OpenAIInputAudioTypeModel
+  ) {
+    self.inputAudio = inputAudio
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case inputAudio = "input_audio"
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIInputAudioInputAudio: Codable, Sendable {
+  public var data: String
+  public var format: OpenAIInputAudioInputAudioFormat
+
+  public init(
+    data: String,
+    format: OpenAIInputAudioInputAudioFormat
+  ) {
+    self.data = data
+    self.format = format
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case data
+    case format
+  }
+}
+
+public struct OpenAIInputAudioInputAudioFormat: RawRepresentable, Codable, Hashable, Sendable {
   public var rawValue: String
 
   public init(rawValue: String) {
     self.rawValue = rawValue
   }
 
-  public static let commentary = Self(rawValue: "commentary")
-  public static let finalAnswer = Self(rawValue: "final_answer")
+  public static let mp3 = Self(rawValue: "mp3")
+  public static let wav = Self(rawValue: "wav")
 }
 
-public struct OpenAIMessageRequestContentTextObject: Codable, Sendable {
+public struct OpenAIInputAudioTypeModel: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let inputAudio = Self(rawValue: "input_audio")
+}
+
+public typealias OpenAIInputContent = HyperProxyJSONValue
+
+public enum OpenAIInputContentParam: Codable, Sendable {
+  case inputContentParamInputText(OpenAIInputContentParamInputText)
+  case inputContentParamInputImage(OpenAIInputContentParamInputImage)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(OpenAIInputContentParamInputText.self) {
+      self = .inputContentParamInputText(value)
+      return
+    }
+    self = .inputContentParamInputImage(
+      try container.decode(OpenAIInputContentParamInputImage.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .inputContentParamInputText(let value):
+      try container.encode(value)
+    case .inputContentParamInputImage(let value):
+      try container.encode(value)
+    }
+  }
+}
+
+public struct OpenAIInputContentParamInputImage: Codable, Sendable {
+  public var imageUrl: String
+  public var typeModel: OpenAIInputContentParamInputImageTypeModel
+
+  public init(
+    imageUrl: String,
+    typeModel: OpenAIInputContentParamInputImageTypeModel
+  ) {
+    self.imageUrl = imageUrl
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case imageUrl = "image_url"
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIInputContentParamInputImageTypeModel: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let inputImage = Self(rawValue: "input_image")
+}
+
+public struct OpenAIInputContentParamInputText: Codable, Sendable {
   public var text: String
-  public var typeModel: OpenAIMessageRequestContentTextObjectTypeModel
+  public var typeModel: OpenAIInputContentParamInputTextTypeModel
 
   public init(
     text: String,
-    typeModel: OpenAIMessageRequestContentTextObjectTypeModel
+    typeModel: OpenAIInputContentParamInputTextTypeModel
   ) {
     self.text = text
     self.typeModel = typeModel
@@ -2857,7 +2472,7 @@ public struct OpenAIMessageRequestContentTextObject: Codable, Sendable {
   }
 }
 
-public struct OpenAIMessageRequestContentTextObjectTypeModel: RawRepresentable, Codable, Hashable,
+public struct OpenAIInputContentParamInputTextTypeModel: RawRepresentable, Codable, Hashable,
   Sendable
 {
   public var rawValue: String
@@ -2866,138 +2481,351 @@ public struct OpenAIMessageRequestContentTextObjectTypeModel: RawRepresentable, 
     self.rawValue = rawValue
   }
 
-  public static let text = Self(rawValue: "text")
+  public static let inputText = Self(rawValue: "input_text")
 }
 
-public struct OpenAIMessageRole: RawRepresentable, Codable, Hashable, Sendable {
+public enum OpenAIInputContentResource: Codable, Sendable {
+  case inputContentResourceInputText(OpenAIInputContentResourceInputText)
+  case inputContentResourceInputImage(OpenAIInputContentResourceInputImage)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(OpenAIInputContentResourceInputText.self) {
+      self = .inputContentResourceInputText(value)
+      return
+    }
+    self = .inputContentResourceInputImage(
+      try container.decode(OpenAIInputContentResourceInputImage.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .inputContentResourceInputText(let value):
+      try container.encode(value)
+    case .inputContentResourceInputImage(let value):
+      try container.encode(value)
+    }
+  }
+}
+
+public struct OpenAIInputContentResourceInputImage: Codable, Sendable {
+  public var imageUrl: String
+  public var typeModel: OpenAIInputContentResourceInputImageTypeModel
+
+  public init(
+    imageUrl: String,
+    typeModel: OpenAIInputContentResourceInputImageTypeModel
+  ) {
+    self.imageUrl = imageUrl
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case imageUrl = "image_url"
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIInputContentResourceInputImageTypeModel: RawRepresentable, Codable, Hashable,
+  Sendable
+{
   public var rawValue: String
 
   public init(rawValue: String) {
     self.rawValue = rawValue
   }
 
-  public static let unknown = Self(rawValue: "unknown")
+  public static let inputImage = Self(rawValue: "input_image")
+}
+
+public struct OpenAIInputContentResourceInputText: Codable, Sendable {
+  public var text: String
+  public var typeModel: OpenAIInputContentResourceInputTextTypeModel
+
+  public init(
+    text: String,
+    typeModel: OpenAIInputContentResourceInputTextTypeModel
+  ) {
+    self.text = text
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case text
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIInputContentResourceInputTextTypeModel: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let inputText = Self(rawValue: "input_text")
+}
+
+public struct OpenAIInputFidelity: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let high = Self(rawValue: "high")
+  public static let low = Self(rawValue: "low")
+}
+
+public struct OpenAIInputFileContent: Codable, Sendable {
+  public var detail: OpenAIFileInputDetail?
+  public var fileData: String?
+  public var fileId: String?
+  public var fileUrl: String?
+  public var filename: String?
+  public var promptCacheBreakpoint: OpenAIPromptCacheBreakpointConfig?
+  public var typeModel: OpenAIInputFileContentTypeModel
+
+  public init(
+    typeModel: OpenAIInputFileContentTypeModel,
+    detail: OpenAIFileInputDetail? = nil,
+    fileData: String? = nil,
+    fileId: String? = nil,
+    fileUrl: String? = nil,
+    filename: String? = nil,
+    promptCacheBreakpoint: OpenAIPromptCacheBreakpointConfig? = nil
+  ) {
+    self.detail = detail
+    self.fileData = fileData
+    self.fileId = fileId
+    self.fileUrl = fileUrl
+    self.filename = filename
+    self.promptCacheBreakpoint = promptCacheBreakpoint
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case detail
+    case fileData = "file_data"
+    case fileId = "file_id"
+    case fileUrl = "file_url"
+    case filename
+    case promptCacheBreakpoint = "prompt_cache_breakpoint"
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIInputFileContentParam: Codable, Sendable {
+  public var detail: OpenAIFileDetailEnum?
+  public var fileData: String?
+  public var fileId: String?
+  public var fileUrl: String?
+  public var filename: String?
+  public var promptCacheBreakpoint: OpenAIPromptCacheBreakpointParam?
+  public var typeModel: OpenAIInputFileContentParamTypeModel
+
+  public init(
+    typeModel: OpenAIInputFileContentParamTypeModel,
+    detail: OpenAIFileDetailEnum? = nil,
+    fileData: String? = nil,
+    fileId: String? = nil,
+    fileUrl: String? = nil,
+    filename: String? = nil,
+    promptCacheBreakpoint: OpenAIPromptCacheBreakpointParam? = nil
+  ) {
+    self.detail = detail
+    self.fileData = fileData
+    self.fileId = fileId
+    self.fileUrl = fileUrl
+    self.filename = filename
+    self.promptCacheBreakpoint = promptCacheBreakpoint
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case detail
+    case fileData = "file_data"
+    case fileId = "file_id"
+    case fileUrl = "file_url"
+    case filename
+    case promptCacheBreakpoint = "prompt_cache_breakpoint"
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIInputFileContentParamTypeModel: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let inputFile = Self(rawValue: "input_file")
+}
+
+public struct OpenAIInputFileContentTypeModel: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let inputFile = Self(rawValue: "input_file")
+}
+
+public struct OpenAIInputImageContent: Codable, Sendable {
+  public var detail: OpenAIImageDetail
+  public var fileId: String?
+  public var imageUrl: String?
+  public var promptCacheBreakpoint: OpenAIPromptCacheBreakpointConfig?
+  public var typeModel: OpenAIInputImageContentTypeModel
+
+  public init(
+    detail: OpenAIImageDetail,
+    typeModel: OpenAIInputImageContentTypeModel,
+    fileId: String? = nil,
+    imageUrl: String? = nil,
+    promptCacheBreakpoint: OpenAIPromptCacheBreakpointConfig? = nil
+  ) {
+    self.detail = detail
+    self.fileId = fileId
+    self.imageUrl = imageUrl
+    self.promptCacheBreakpoint = promptCacheBreakpoint
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case detail
+    case fileId = "file_id"
+    case imageUrl = "image_url"
+    case promptCacheBreakpoint = "prompt_cache_breakpoint"
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIInputImageContentParamAutoParam: Codable, Sendable {
+  public var detail: OpenAIDetailEnum?
+  public var fileId: String?
+  public var imageUrl: String?
+  public var promptCacheBreakpoint: OpenAIPromptCacheBreakpointParam?
+  public var typeModel: OpenAIInputImageContentParamAutoParamTypeModel
+
+  public init(
+    typeModel: OpenAIInputImageContentParamAutoParamTypeModel,
+    detail: OpenAIDetailEnum? = nil,
+    fileId: String? = nil,
+    imageUrl: String? = nil,
+    promptCacheBreakpoint: OpenAIPromptCacheBreakpointParam? = nil
+  ) {
+    self.detail = detail
+    self.fileId = fileId
+    self.imageUrl = imageUrl
+    self.promptCacheBreakpoint = promptCacheBreakpoint
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case detail
+    case fileId = "file_id"
+    case imageUrl = "image_url"
+    case promptCacheBreakpoint = "prompt_cache_breakpoint"
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIInputImageContentParamAutoParamTypeModel: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let inputImage = Self(rawValue: "input_image")
+}
+
+public struct OpenAIInputImageContentTypeModel: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let inputImage = Self(rawValue: "input_image")
+}
+
+public typealias OpenAIInputItem = HyperProxyJSONValue
+
+public struct OpenAIInputMessage: Codable, Sendable {
+  public var content: OpenAIInputMessageContentList
+  public var role: OpenAIInputMessageRole
+  public var status: OpenAIInputMessageStatus?
+  public var typeModel: OpenAIInputMessageTypeModel?
+
+  public init(
+    content: OpenAIInputMessageContentList,
+    role: OpenAIInputMessageRole,
+    status: OpenAIInputMessageStatus? = nil,
+    typeModel: OpenAIInputMessageTypeModel? = nil
+  ) {
+    self.content = content
+    self.role = role
+    self.status = status
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case content
+    case role
+    case status
+    case typeModel = "type"
+  }
+}
+
+public typealias OpenAIInputMessageContentList = [OpenAIInputContent]
+
+public struct OpenAIInputMessageParam: Codable, Sendable {
+  public var content: [OpenAIInputContentParam]
+  public var role: OpenAIInputMessageParamRole
+  public var typeModel: OpenAIInputMessageParamTypeModel?
+
+  public init(
+    content: [OpenAIInputContentParam],
+    role: OpenAIInputMessageParamRole,
+    typeModel: OpenAIInputMessageParamTypeModel? = nil
+  ) {
+    self.content = content
+    self.role = role
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case content
+    case role
+    case typeModel = "type"
+  }
+}
+
+public struct OpenAIInputMessageParamRole: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
   public static let user = Self(rawValue: "user")
-  public static let assistant = Self(rawValue: "assistant")
-  public static let system = Self(rawValue: "system")
-  public static let critic = Self(rawValue: "critic")
-  public static let discriminator = Self(rawValue: "discriminator")
-  public static let developer = Self(rawValue: "developer")
-  public static let tool = Self(rawValue: "tool")
 }
 
-public struct OpenAIMessageStatus: RawRepresentable, Codable, Hashable, Sendable {
+public struct OpenAIInputMessageParamTypeModel: RawRepresentable, Codable, Hashable, Sendable {
   public var rawValue: String
 
   public init(rawValue: String) {
     self.rawValue = rawValue
   }
 
-  public static let inProgress = Self(rawValue: "in_progress")
-  public static let completed = Self(rawValue: "completed")
-  public static let incomplete = Self(rawValue: "incomplete")
-}
-
-public typealias OpenAIMessageStreamEvent = HyperProxyJSONValue
-
-public struct OpenAIMessageStreamEventOneOf1: Codable, Sendable {
-  public var data: OpenAIMessageObject
-  public var event: OpenAIMessageStreamEventOneOf1Event
-
-  public init(
-    data: OpenAIMessageObject,
-    event: OpenAIMessageStreamEventOneOf1Event
-  ) {
-    self.data = data
-    self.event = event
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case data
-    case event
-  }
-}
-
-public struct OpenAIMessageStreamEventOneOf1Event: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let threadMessageCreated = Self(rawValue: "thread.message.created")
-}
-
-public struct OpenAIMessageStreamEventOneOf2: Codable, Sendable {
-  public var data: OpenAIMessageObject
-  public var event: OpenAIMessageStreamEventOneOf2Event
-
-  public init(
-    data: OpenAIMessageObject,
-    event: OpenAIMessageStreamEventOneOf2Event
-  ) {
-    self.data = data
-    self.event = event
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case data
-    case event
-  }
-}
-
-public struct OpenAIMessageStreamEventOneOf2Event: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let threadMessageInProgress = Self(rawValue: "thread.message.in_progress")
-}
-
-public struct OpenAIMessageStreamEventOneOf3: Codable, Sendable {
-  public var data: OpenAIMessageDeltaObject
-  public var event: OpenAIMessageStreamEventOneOf3Event
-
-  public init(
-    data: OpenAIMessageDeltaObject,
-    event: OpenAIMessageStreamEventOneOf3Event
-  ) {
-    self.data = data
-    self.event = event
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case data
-    case event
-  }
-}
-
-public struct OpenAIMessageStreamEventOneOf3Event: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let threadMessageDelta = Self(rawValue: "thread.message.delta")
-}
-
-public struct OpenAIMessageStreamEventOneOf4: Codable, Sendable {
-  public var data: OpenAIMessageObject
-  public var event: OpenAIMessageStreamEventOneOf4Event
-
-  public init(
-    data: OpenAIMessageObject,
-    event: OpenAIMessageStreamEventOneOf4Event
-  ) {
-    self.data = data
-    self.event = event
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case data
-    case event
-  }
+  public static let message = Self(rawValue: "message")
 }

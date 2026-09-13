@@ -2260,6 +2260,18 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     return try await prepared.decoded(TogetherRerankResponse.self)
   }
 
+  public func listCheckpoints(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRLCheckpointsListResponse {
+    let call = self.call(.listCheckpoints)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherRLCheckpointsListResponse.self)
+  }
+
   public func getCheckpoint(
     id: String,
     query: [URLQueryItem] = [],
@@ -2456,22 +2468,6 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     return try await call.decoded(TogetherRLCustomForwardBackwardOperation.self)
   }
 
-  public func forward(
-    _ body: TogetherRLForwardBody,
-    sessionId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRLForwardOperation {
-    let call = self.call(.forward)
-      .path("session_id", sessionId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(TogetherRLForwardOperation.self)
-  }
-
   public func forwardBackward(
     _ body: TogetherRLForwardBackwardBody,
     sessionId: String,
@@ -2502,22 +2498,6 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(TogetherRLForwardBackwardOperation.self)
-  }
-
-  public func getForwardOperation(
-    sessionId: String,
-    operationId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRLForwardOperation {
-    let call = self.call(.getForwardOperation)
-      .path("session_id", sessionId)
-      .path("operation_id", operationId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherRLForwardOperation.self)
   }
 
   public func createInferenceCheckpoint(

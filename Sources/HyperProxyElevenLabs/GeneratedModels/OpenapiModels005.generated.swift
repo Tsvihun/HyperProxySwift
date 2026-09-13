@@ -4,6 +4,138 @@
 import Foundation
 import HyperProxyCore
 
+public struct ElevenLabsDependentUnknownAgentIdentifier: Codable, Sendable {
+  public var id: String
+  public var referencedResourceIds: [String]?
+  public var typeModel: String?
+
+  public init(
+    id: String,
+    referencedResourceIds: [String]? = nil,
+    typeModel: String? = nil
+  ) {
+    self.id = id
+    self.referencedResourceIds = referencedResourceIds
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case id
+    case referencedResourceIds = "referenced_resource_ids"
+    case typeModel = "type"
+  }
+}
+
+public struct ElevenLabsDependentUnknownMCPServerIdentifier: Codable, Sendable {
+  public var id: String
+  public var typeModel: String?
+
+  public init(
+    id: String,
+    typeModel: String? = nil
+  ) {
+    self.id = id
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case id
+    case typeModel = "type"
+  }
+}
+
+public struct ElevenLabsDependentUnknownToolIdentifier: Codable, Sendable {
+  public var id: String
+  public var typeModel: String?
+
+  public init(
+    id: String,
+    typeModel: String? = nil
+  ) {
+    self.id = id
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case id
+    case typeModel = "type"
+  }
+}
+
+public struct ElevenLabsDetailedMusicResponse: Codable, Sendable {
+  public var compositionPlan: HyperProxyJSONValue
+  public var songMetadata: ElevenLabsSongMetadata
+  public var waveformVisual: [Int]?
+  public var wordsTimestamps: [ElevenLabsWordTimestamp]?
+
+  public init(
+    compositionPlan: HyperProxyJSONValue,
+    songMetadata: ElevenLabsSongMetadata,
+    wordsTimestamps: [ElevenLabsWordTimestamp]?,
+    waveformVisual: [Int]? = nil
+  ) {
+    self.compositionPlan = compositionPlan
+    self.songMetadata = songMetadata
+    self.waveformVisual = waveformVisual
+    self.wordsTimestamps = wordsTimestamps
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case compositionPlan = "composition_plan"
+    case songMetadata = "song_metadata"
+    case waveformVisual = "waveform_visual"
+    case wordsTimestamps = "words_timestamps"
+  }
+}
+
+public struct ElevenLabsDetectedEntity: Codable, Sendable {
+  public var endChar: Int
+  public var entityType: String
+  public var startChar: Int
+  public var text: String
+
+  public init(
+    endChar: Int,
+    entityType: String,
+    startChar: Int,
+    text: String
+  ) {
+    self.endChar = endChar
+    self.entityType = entityType
+    self.startChar = startChar
+    self.text = text
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case endChar = "end_char"
+    case entityType = "entity_type"
+    case startChar = "start_char"
+    case text
+  }
+}
+
+public struct ElevenLabsDeviceModel: Codable, Sendable {
+  public var hostname: String?
+  public var ip: String?
+  public var typeId: Int?
+
+  public init(
+    hostname: String? = nil,
+    ip: String? = nil,
+    typeId: Int? = nil
+  ) {
+    self.hostname = hostname
+    self.ip = ip
+    self.typeId = typeId
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case hostname
+    case ip
+    case typeId = "type_id"
+  }
+}
+
 public struct ElevenLabsDialogueInput: Codable, Sendable {
   public var text: String
   public var voiceId: String
@@ -1936,6 +2068,8 @@ public struct ElevenLabsDynamicVariableAssignment: Codable, Sendable {
   }
 }
 
+public typealias ElevenLabsDynamicVariableInternalValueType = HyperProxyJSONValue
+
 public struct ElevenLabsDynamicVariableSchemaOverride: Codable, Sendable {
   public var dynamicVariable: String
   public var source: String?
@@ -2248,6 +2382,74 @@ public struct ElevenLabsEditWorkspaceWebhookRouteParameters: Codable, Sendable {
   }
 }
 
+public struct ElevenLabsEffectsSpecInput: Codable, Sendable {
+  public var backgroundNoiseId: String?
+  public var distance: Double?
+  public var environmentId: String?
+  public var filterPresetId: String?
+  public var seed: Int?
+  public var sendLevel: Double?
+
+  public init(
+    backgroundNoiseId: String? = nil,
+    distance: Double? = nil,
+    environmentId: String? = nil,
+    filterPresetId: String? = nil,
+    seed: Int? = nil,
+    sendLevel: Double? = nil
+  ) {
+    self.backgroundNoiseId = backgroundNoiseId
+    self.distance = distance
+    self.environmentId = environmentId
+    self.filterPresetId = filterPresetId
+    self.seed = seed
+    self.sendLevel = sendLevel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case backgroundNoiseId = "background_noise_id"
+    case distance
+    case environmentId = "environment_id"
+    case filterPresetId = "filter_preset_id"
+    case seed
+    case sendLevel = "send_level"
+  }
+}
+
+public struct ElevenLabsEffectsSpecOutput: Codable, Sendable {
+  public var backgroundNoiseId: String?
+  public var distance: Double
+  public var environmentId: String?
+  public var filterPresetId: String?
+  public var seed: Int?
+  public var sendLevel: Double
+
+  public init(
+    backgroundNoiseId: String?,
+    distance: Double,
+    environmentId: String?,
+    filterPresetId: String?,
+    seed: Int?,
+    sendLevel: Double
+  ) {
+    self.backgroundNoiseId = backgroundNoiseId
+    self.distance = distance
+    self.environmentId = environmentId
+    self.filterPresetId = filterPresetId
+    self.seed = seed
+    self.sendLevel = sendLevel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case backgroundNoiseId = "background_noise_id"
+    case distance
+    case environmentId = "environment_id"
+    case filterPresetId = "filter_preset_id"
+    case seed
+    case sendLevel = "send_level"
+  }
+}
+
 public struct ElevenLabsElevenFlashV25RequestOutputFormat: RawRepresentable, Codable, Hashable,
   Sendable
 {
@@ -2536,30 +2738,12 @@ public struct ElevenLabsEndCallTriggerAction: Codable, Sendable {
   }
 }
 
-public struct ElevenLabsEndProcedureToolConfigInput: Codable, Sendable {
-  public var procedures: [String: ElevenLabsProcedureAtVersionInput]?
+public struct ElevenLabsEndProcedureToolConfig: Codable, Sendable {
+  public var procedures: [String: HyperProxyJSONValue]?
   public var systemToolType: String?
 
   public init(
-    procedures: [String: ElevenLabsProcedureAtVersionInput]? = nil,
-    systemToolType: String? = nil
-  ) {
-    self.procedures = procedures
-    self.systemToolType = systemToolType
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case procedures
-    case systemToolType = "system_tool_type"
-  }
-}
-
-public struct ElevenLabsEndProcedureToolConfigOutput: Codable, Sendable {
-  public var procedures: [String: ElevenLabsProcedureAtVersionOutput]?
-  public var systemToolType: String?
-
-  public init(
-    procedures: [String: ElevenLabsProcedureAtVersionOutput]? = nil,
+    procedures: [String: HyperProxyJSONValue]? = nil,
     systemToolType: String? = nil
   ) {
     self.procedures = procedures
@@ -2581,6 +2765,62 @@ public struct ElevenLabsEndProcedureToolErrorStatus: RawRepresentable, Codable, 
 
   public static let notFound = Self(rawValue: "not_found")
   public static let invalidId = Self(rawValue: "invalid_id")
+}
+
+public struct ElevenLabsEndProcedureToolResultErrorModel: Codable, Sendable {
+  public var message: String
+  public var procedureId: String?
+  public var resultType: String?
+  public var status: ElevenLabsEndProcedureToolErrorStatus
+
+  public init(
+    message: String,
+    status: ElevenLabsEndProcedureToolErrorStatus,
+    procedureId: String? = nil,
+    resultType: String? = nil
+  ) {
+    self.message = message
+    self.procedureId = procedureId
+    self.resultType = resultType
+    self.status = status
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case message
+    case procedureId = "procedure_id"
+    case resultType = "result_type"
+    case status
+  }
+}
+
+public struct ElevenLabsEndProcedureToolResultSuccessModel: Codable, Sendable {
+  public var message: String?
+  public var procedureId: String
+  public var procedureName: String
+  public var resultType: String?
+  public var status: String?
+
+  public init(
+    procedureId: String,
+    procedureName: String,
+    message: String? = nil,
+    resultType: String? = nil,
+    status: String? = nil
+  ) {
+    self.message = message
+    self.procedureId = procedureId
+    self.procedureName = procedureName
+    self.resultType = resultType
+    self.status = status
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case message
+    case procedureId = "procedure_id"
+    case procedureName = "procedure_name"
+    case resultType = "result_type"
+    case status
+  }
 }
 
 public struct ElevenLabsEntityManagementActivityId: RawRepresentable, Codable, Hashable, Sendable {
@@ -3211,11 +3451,13 @@ public struct ElevenLabsFeaturesUsageCommonModel: Codable, Sendable {
   public var dtmfTones: ElevenLabsFeatureStatusCommonModel?
   public var externalMcpServers: ElevenLabsFeatureStatusCommonModel?
   public var fileInput: ElevenLabsFeatureStatusCommonModel?
+  public var freeformProcedure: ElevenLabsFeatureStatusCommonModel?
   public var isLivekit: Bool?
   public var languageDetection: ElevenLabsFeatureStatusCommonModel?
   public var multivoice: ElevenLabsFeatureStatusCommonModel?
   public var piiZrmAgent: Bool?
   public var piiZrmWorkspace: Bool?
+  public var structuredProcedure: ElevenLabsFeatureStatusCommonModel?
   public var toolDynamicVariableUpdates: ElevenLabsFeatureStatusCommonModel?
   public var transferToAgent: ElevenLabsFeatureStatusCommonModel?
   public var transferToNumber: ElevenLabsFeatureStatusCommonModel?
@@ -3229,11 +3471,13 @@ public struct ElevenLabsFeaturesUsageCommonModel: Codable, Sendable {
     dtmfTones: ElevenLabsFeatureStatusCommonModel? = nil,
     externalMcpServers: ElevenLabsFeatureStatusCommonModel? = nil,
     fileInput: ElevenLabsFeatureStatusCommonModel? = nil,
+    freeformProcedure: ElevenLabsFeatureStatusCommonModel? = nil,
     isLivekit: Bool? = nil,
     languageDetection: ElevenLabsFeatureStatusCommonModel? = nil,
     multivoice: ElevenLabsFeatureStatusCommonModel? = nil,
     piiZrmAgent: Bool? = nil,
     piiZrmWorkspace: Bool? = nil,
+    structuredProcedure: ElevenLabsFeatureStatusCommonModel? = nil,
     toolDynamicVariableUpdates: ElevenLabsFeatureStatusCommonModel? = nil,
     transferToAgent: ElevenLabsFeatureStatusCommonModel? = nil,
     transferToNumber: ElevenLabsFeatureStatusCommonModel? = nil,
@@ -3246,11 +3490,13 @@ public struct ElevenLabsFeaturesUsageCommonModel: Codable, Sendable {
     self.dtmfTones = dtmfTones
     self.externalMcpServers = externalMcpServers
     self.fileInput = fileInput
+    self.freeformProcedure = freeformProcedure
     self.isLivekit = isLivekit
     self.languageDetection = languageDetection
     self.multivoice = multivoice
     self.piiZrmAgent = piiZrmAgent
     self.piiZrmWorkspace = piiZrmWorkspace
+    self.structuredProcedure = structuredProcedure
     self.toolDynamicVariableUpdates = toolDynamicVariableUpdates
     self.transferToAgent = transferToAgent
     self.transferToNumber = transferToNumber
@@ -3265,11 +3511,13 @@ public struct ElevenLabsFeaturesUsageCommonModel: Codable, Sendable {
     case dtmfTones = "dtmf_tones"
     case externalMcpServers = "external_mcp_servers"
     case fileInput = "file_input"
+    case freeformProcedure = "freeform_procedure"
     case isLivekit = "is_livekit"
     case languageDetection = "language_detection"
     case multivoice
     case piiZrmAgent = "pii_zrm_agent"
     case piiZrmWorkspace = "pii_zrm_workspace"
+    case structuredProcedure = "structured_procedure"
     case toolDynamicVariableUpdates = "tool_dynamic_variable_updates"
     case transferToAgent = "transfer_to_agent"
     case transferToNumber = "transfer_to_number"
@@ -3492,187 +3740,4 @@ public struct ElevenLabsFinetuneVisibility: RawRepresentable, Codable, Hashable,
   public static let privateValue = Self(rawValue: "private")
   public static let workspace = Self(rawValue: "workspace")
   public static let publicValue = Self(rawValue: "public")
-}
-
-public struct ElevenLabsFocusGuardrail: Codable, Sendable {
-  public var isEnabled: Bool?
-
-  public init(
-    isEnabled: Bool? = nil
-  ) {
-    self.isEnabled = isEnabled
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case isEnabled = "is_enabled"
-  }
-}
-
-public struct ElevenLabsForcedAlignmentCharacterResponseModel: Codable, Sendable {
-  public var end: Double
-  public var start: Double
-  public var text: String
-
-  public init(
-    end: Double,
-    start: Double,
-    text: String
-  ) {
-    self.end = end
-    self.start = start
-    self.text = text
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case end
-    case start
-    case text
-  }
-}
-
-public struct ElevenLabsForcedAlignmentParameters: Codable, Sendable {
-  public var xiApiKey: String?
-
-  public init(
-    xiApiKey: String? = nil
-  ) {
-    self.xiApiKey = xiApiKey
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case xiApiKey = "xi-api-key"
-  }
-}
-
-public struct ElevenLabsForcedAlignmentResponseModel: Codable, Sendable {
-  public var characters: [ElevenLabsForcedAlignmentCharacterResponseModel]
-  public var loss: Double
-  public var words: [ElevenLabsForcedAlignmentWordResponseModel]
-
-  public init(
-    characters: [ElevenLabsForcedAlignmentCharacterResponseModel],
-    loss: Double,
-    words: [ElevenLabsForcedAlignmentWordResponseModel]
-  ) {
-    self.characters = characters
-    self.loss = loss
-    self.words = words
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case characters
-    case loss
-    case words
-  }
-}
-
-public struct ElevenLabsForcedAlignmentWordResponseModel: Codable, Sendable {
-  public var end: Double
-  public var loss: Double
-  public var start: Double
-  public var text: String
-
-  public init(
-    end: Double,
-    loss: Double,
-    start: Double,
-    text: String
-  ) {
-    self.end = end
-    self.loss = loss
-    self.start = start
-    self.text = text
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case end
-    case loss
-    case start
-    case text
-  }
-}
-
-public struct ElevenLabsFrustratedConversationRef: Codable, Sendable {
-  public var agentId: String
-  public var conversationId: String
-  public var overallFrustrationScore: Double
-  public var overallLabel: ElevenLabsFrustratedConversationRefOverallLabel
-  public var overallSentimentScore: Double
-  public var startTimeUnixSecs: Int
-
-  public init(
-    agentId: String,
-    conversationId: String,
-    overallFrustrationScore: Double,
-    overallLabel: ElevenLabsFrustratedConversationRefOverallLabel,
-    overallSentimentScore: Double,
-    startTimeUnixSecs: Int
-  ) {
-    self.agentId = agentId
-    self.conversationId = conversationId
-    self.overallFrustrationScore = overallFrustrationScore
-    self.overallLabel = overallLabel
-    self.overallSentimentScore = overallSentimentScore
-    self.startTimeUnixSecs = startTimeUnixSecs
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case agentId = "agent_id"
-    case conversationId = "conversation_id"
-    case overallFrustrationScore = "overall_frustration_score"
-    case overallLabel = "overall_label"
-    case overallSentimentScore = "overall_sentiment_score"
-    case startTimeUnixSecs = "start_time_unix_secs"
-  }
-}
-
-public struct ElevenLabsFrustratedConversationRefOverallLabel: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let positive = Self(rawValue: "positive")
-  public static let neutral = Self(rawValue: "neutral")
-  public static let negative = Self(rawValue: "negative")
-}
-
-public struct ElevenLabsGPTImage15RequestAspectRatio: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let value11 = Self(rawValue: "1:1")
-  public static let value32 = Self(rawValue: "3:2")
-  public static let value23 = Self(rawValue: "2:3")
-}
-
-public struct ElevenLabsGPTImage15RequestBackground: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let transparent = Self(rawValue: "transparent")
-  public static let opaque = Self(rawValue: "opaque")
-  public static let auto = Self(rawValue: "auto")
-}
-
-public struct ElevenLabsGPTImage15RequestQuality: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let low = Self(rawValue: "low")
-  public static let medium = Self(rawValue: "medium")
-  public static let high = Self(rawValue: "high")
 }
