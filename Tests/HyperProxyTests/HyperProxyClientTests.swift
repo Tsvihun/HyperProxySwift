@@ -349,6 +349,43 @@ struct HyperProxyClientTests {
     }
   }
 
+  @Test("A pinned client invalidates the session it built once its last copy is released")
+  func pinnedSessionIsInvalidatedWithTheClient() async throws {
+    let configuration = HyperProxyConfiguration(gatewayURL: self.gatewayURL, appKey: "hp_test")
+    let pin = try HyperProxyCertificatePin(certificateSHA256: Data(repeating: 0xAB, count: 32))
+    let callerSession = URLSession(
+      configuration: .ephemeral, delegate: CallerSessionDelegate(), delegateQueue: nil
+    )
+    defer { callerSession.invalidateAndCancel() }
+    // A URLSession holds its delegate until it is invalidated, so a released
+    // delegate is the observable sign of invalidation.
+    weak var pinningDelegate: (any URLSessionDelegate)?
+    weak var callerDelegate: (any URLSessionDelegate)?
+    var copy: HyperProxyClient?
+    autoreleasepool {
+      let client = HyperProxyClient(
+        configuration: configuration, pins: ["api.hyperproxyai.com": [pin]]
+      )
+      pinningDelegate = client.session.delegate
+      callerDelegate = callerSession.delegate
+      copy = client
+      _ = HyperProxyClient(configuration: configuration, session: callerSession)
+    }
+
+    try await Task.sleep(nanoseconds: 100_000_000)
+    #expect(pinningDelegate != nil, "A remaining copy must keep the shared session usable")
+    #expect(autoreleasepool { copy?.session.delegate != nil })
+
+    copy = nil
+    var waited = 0
+    while pinningDelegate != nil, waited < 100 {
+      try await Task.sleep(nanoseconds: 20_000_000)
+      waited += 1
+    }
+    #expect(pinningDelegate == nil, "The pinned session must be invalidated with its last client")
+    #expect(callerDelegate != nil, "A caller-supplied session must never be invalidated")
+  }
+
   @Test("JSON values support index access and render as JSON text")
   func jsonValueIndexingAndDescription() {
     let value: HyperProxyJSONValue = [
@@ -369,3 +406,5 @@ struct HyperProxyClientTests {
     #expect(HyperProxyJSONValue.null.description == "null")
   }
 }
+
+private final class CallerSessionDelegate: NSObject, URLSessionDelegate, @unchecked Sendable {}

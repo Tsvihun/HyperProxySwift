@@ -42,6 +42,7 @@ not use an email address or another personal identifier.
 Certificate pinning is deployment-owned. Configure current and backup certificate SHA-256 pins
 via `HyperProxyClient.init(configuration:pins:)`, and rotate them before the current certificate
 expires. The pinned session fails closed: hosts without configured pins are refused, so keep the
-pinned session dedicated to HyperProxy traffic.
+pinned session dedicated to HyperProxy traffic. Build the pinned client once and reuse it; its
+session is invalidated after the last copy of the client is released.
 
 The complete provider credential is never part of an SDK request.

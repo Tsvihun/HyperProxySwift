@@ -7,15 +7,21 @@ import Foundation
 /// for raw `HyperProxyRequest`s or custom providers.
 public struct HyperProxyClient: Sendable {
   public let configuration: HyperProxyConfiguration
-  private let session: URLSession
+  private let sessionHandle: HyperProxySessionHandle
+
+  // Read through the handle, so a session this client owns cannot be
+  // invalidated before the task that uses it has been created.
+  var session: URLSession { self.sessionHandle.session }
 
   /// Creates a client over an existing session.
+  ///
+  /// The caller keeps ownership: the client never invalidates `session`.
   public init(
     configuration: HyperProxyConfiguration,
     session: URLSession = .shared
   ) {
     self.configuration = configuration
-    self.session = session
+    self.sessionHandle = HyperProxySessionHandle(session: session, ownsSession: false)
   }
 
   /// Creates a client whose session pins TLS connections to the given
@@ -24,17 +30,22 @@ public struct HyperProxyClient: Sendable {
   /// The built session is dedicated to this client: pinning **fails closed**,
   /// so any host missing from `pins` is refused. Include every host this
   /// client will reach — at minimum the HyperProxy service host.
+  ///
+  /// Copies of the client share the session. Once the last copy is released,
+  /// the session finishes its in-flight tasks and open WebSockets, then is
+  /// invalidated. Build the client once and reuse it rather than per request.
   public init(
     configuration: HyperProxyConfiguration,
     pins: [String: Set<HyperProxyCertificatePin>]
   ) {
-    self.init(
-      configuration: configuration,
+    self.configuration = configuration
+    self.sessionHandle = HyperProxySessionHandle(
       session: URLSession(
         configuration: .default,
         delegate: HyperProxyCertificatePinningDelegate(pinsByHost: pins),
         delegateQueue: nil
-      )
+      ),
+      ownsSession: true
     )
   }
 
@@ -787,4 +798,24 @@ public struct HyperProxyClient: Sendable {
 private struct HyperProxyOpenedStream: @unchecked Sendable {
   let bytes: URLSession.AsyncBytes
   let response: HTTPURLResponse
+}
+
+/// Shared by every copy of a `HyperProxyClient`. A session the client built
+/// itself would otherwise retain its delegate and queue for the life of the
+/// process; a caller-supplied session (such as `URLSession.shared`) is left
+/// untouched.
+private final class HyperProxySessionHandle: Sendable {
+  let session: URLSession
+  private let ownsSession: Bool
+
+  init(session: URLSession, ownsSession: Bool) {
+    self.session = session
+    self.ownsSession = ownsSession
+  }
+
+  deinit {
+    if self.ownsSession {
+      self.session.finishTasksAndInvalidate()
+    }
+  }
 }

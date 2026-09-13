@@ -15,6 +15,13 @@
   large media responses.
 - `HyperProxyProviders` ships its own privacy manifest declaring the system boot time API it
   uses to time polling, as App Store Connect requires for each bundle.
+- A client created with `HyperProxyClient(configuration:pins:)` invalidates its pinned
+  `URLSession` once the last copy of the client is released, after in-flight requests and open
+  WebSockets finish. It previously leaked the session and its delegate. Caller-supplied
+  sessions are never invalidated.
+- Releasing the last reference to a `HyperProxyWebSocket` now closes the socket with
+  `.goingAway`, so an abandoned realtime session no longer stays connected. An explicit
+  `cancel(with:reason:)` keeps its close code.
 
 ## 0.3.0
 
