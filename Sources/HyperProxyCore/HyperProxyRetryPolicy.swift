@@ -5,9 +5,13 @@ import Foundation
 /// Assign a policy to `HyperProxyConfiguration.retryPolicy` to retry plain
 /// sends whose failure is safe to repeat: rate limits and overloaded-upstream
 /// statuses (the request was rejected, not processed), and — optionally —
-/// connection-level errors. A provider `Retry-After` header is honored ahead
-/// of the computed backoff. Streaming, WebSocket, and byte-stream calls are
-/// never retried automatically.
+/// connection-level errors. A timeout or dropped connection may strike after
+/// the server started processing, so those only retry requests that are safe
+/// to replay: `GET`/`HEAD`/`OPTIONS`, or any request carrying an
+/// `Idempotency-Key` header — the same rule the gateway applies to failover.
+/// A provider `Retry-After` header is honored ahead of the computed backoff.
+/// Streaming, WebSocket, and byte-stream calls are never retried
+/// automatically.
 public struct HyperProxyRetryPolicy: Sendable, Equatable {
   /// Total attempts including the first one.
   public var maximumAttempts: Int
@@ -15,7 +19,9 @@ public struct HyperProxyRetryPolicy: Sendable, Equatable {
   /// for "try again later"; extend with 502/504 when the upstream is known to
   /// reject rather than partially process such requests.
   public var retryableStatusCodes: Set<Int>
-  /// Also retry timeouts, DNS failures, and dropped connections.
+  /// Also retry connection-level failures: DNS failures and refused
+  /// connections for any request, timeouts and dropped connections only for
+  /// requests that are safe to replay (see the type documentation).
   public var retriesConnectionErrors: Bool
   /// Delay before the second attempt.
   public var initialDelay: TimeInterval
@@ -53,7 +59,8 @@ public struct HyperProxyRetryPolicy: Sendable, Equatable {
   /// retryable under this policy.
   func delayForRetry(
     after error: Error,
-    attempt: Int
+    attempt: Int,
+    request: HyperProxyRequest
   ) -> TimeInterval? {
     guard self.isValid, attempt < self.maximumAttempts else {
       return nil
@@ -75,13 +82,30 @@ public struct HyperProxyRetryPolicy: Sendable, Equatable {
     }
     if self.retriesConnectionErrors, let urlError = error as? URLError {
       switch urlError.code {
-      case .timedOut, .networkConnectionLost, .cannotConnectToHost,
-        .cannotFindHost, .dnsLookupFailed:
+      case .cannotConnectToHost, .cannotFindHost, .dnsLookupFailed:
+        // The request never reached a server, so any method may be resent.
         return backoff
+      case .timedOut, .networkConnectionLost:
+        // The gateway may already be running this request. Resending a paid
+        // generation would bill it twice.
+        return Self.isReplaySafe(request) ? backoff : nil
       default:
         return nil
       }
     }
     return nil
+  }
+
+  static func isReplaySafe(_ request: HyperProxyRequest) -> Bool {
+    switch request.method {
+    case .get, .head, .options:
+      return true
+    case .post, .put, .patch, .delete:
+      return request.headers.contains { name, value in
+        let header = name.lowercased()
+        return (header == "idempotency-key" || header == "x-idempotency-key")
+          && !value.trimmingCharacters(in: .whitespaces).isEmpty
+      }
+    }
   }
 }

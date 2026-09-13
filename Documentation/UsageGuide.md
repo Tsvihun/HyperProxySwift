@@ -243,6 +243,10 @@ for try await message in socket.messages() {
 }
 ```
 
+`cancel(with:reason:)` closes the socket. Releasing the last reference to a socket also closes it,
+so an abandoned realtime session does not stay connected; an active `messages()` loop keeps the
+socket open until the loop ends.
+
 Speech and realtime providers commonly exchange signed 16-bit little-endian PCM as base64.
 `HyperProxyAudio.pcm16Base64(from:)` and `pcm16Samples(fromBase64:)` provide low-level wire
 conversion. Applications that want the SDK to own capture and playback can use the optional
@@ -481,9 +485,13 @@ response's headers stay readable too: `error.requestID` for support tickets and
 `error.retryAfter` for rate-limit backoff.
 
 Automatic backoff is opt-in. A retry policy repeats plain sends on rate limits
-and overloaded upstreams (and, by default, on dropped connections), honoring
-`Retry-After` ahead of exponential backoff. Streaming and WebSocket calls are
-never retried automatically:
+and overloaded upstreams, honoring `Retry-After` ahead of exponential backoff.
+By default it also retries connection failures: DNS errors and refused
+connections for any request, but timeouts and dropped connections only for
+`GET`/`HEAD`/`OPTIONS` or requests that carry an `Idempotency-Key` header —
+the gateway may already be running a timed-out generation, and resending it
+would bill it twice. Streaming and WebSocket calls are never retried
+automatically:
 
 ```swift
 let client = HyperProxyClient(
@@ -515,7 +523,8 @@ Pinning **fails closed**: the built session refuses TLS for any host that has no
 configured pins, so it must stay dedicated to HyperProxy traffic — never install
 `HyperProxyCertificatePinningDelegate` on a session shared with other requests.
 Always ship a current and a backup pin, and rotate before the current certificate
-expires.
+expires. Build the pinned client once and reuse it: copies share its session, which is
+invalidated after the last copy is released and its open requests and sockets finish.
 
 ## Products and architecture
 

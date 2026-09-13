@@ -7,15 +7,21 @@ import Foundation
 /// for raw `HyperProxyRequest`s or custom providers.
 public struct HyperProxyClient: Sendable {
   public let configuration: HyperProxyConfiguration
-  private let session: URLSession
+  private let sessionHandle: HyperProxySessionHandle
+
+  // Read through the handle, so a session this client owns cannot be
+  // invalidated before the task that uses it has been created.
+  var session: URLSession { self.sessionHandle.session }
 
   /// Creates a client over an existing session.
+  ///
+  /// The caller keeps ownership: the client never invalidates `session`.
   public init(
     configuration: HyperProxyConfiguration,
     session: URLSession = .shared
   ) {
     self.configuration = configuration
-    self.session = session
+    self.sessionHandle = HyperProxySessionHandle(session: session, ownsSession: false)
   }
 
   /// Creates a client whose session pins TLS connections to the given
@@ -24,17 +30,22 @@ public struct HyperProxyClient: Sendable {
   /// The built session is dedicated to this client: pinning **fails closed**,
   /// so any host missing from `pins` is refused. Include every host this
   /// client will reach — at minimum the HyperProxy service host.
+  ///
+  /// Copies of the client share the session. Once the last copy is released,
+  /// the session finishes its in-flight tasks and open WebSockets, then is
+  /// invalidated. Build the client once and reuse it rather than per request.
   public init(
     configuration: HyperProxyConfiguration,
     pins: [String: Set<HyperProxyCertificatePin>]
   ) {
-    self.init(
-      configuration: configuration,
+    self.configuration = configuration
+    self.sessionHandle = HyperProxySessionHandle(
       session: URLSession(
         configuration: .default,
         delegate: HyperProxyCertificatePinningDelegate(pinsByHost: pins),
         delegateQueue: nil
-      )
+      ),
+      ownsSession: true
     )
   }
 
@@ -187,7 +198,7 @@ public struct HyperProxyClient: Sendable {
       result.setValue(value, forHTTPHeaderField: field)
     }
     try await self.applyGatewayHeaders(to: &result, bodySize: body.count)
-    let securityHeaders = try await self.configuration.security.headers(for: body)
+    let securityHeaders = try await self.configuration.security.headers(for: result)
     for (field, value) in try self.gatewaySecurityHeaders(securityHeaders) {
       result.setValue(value, forHTTPHeaderField: field)
     }
@@ -238,7 +249,7 @@ public struct HyperProxyClient: Sendable {
       } catch {
         guard
           let policy = self.configuration.retryPolicy,
-          let delay = policy.delayForRetry(after: error, attempt: attempt)
+          let delay = policy.delayForRetry(after: error, attempt: attempt, request: request)
         else {
           throw error
         }
@@ -389,55 +400,47 @@ public struct HyperProxyClient: Sendable {
     AsyncThrowingStream { continuation in
       let task = Task {
         do {
-          try await self.configuration.security.perform {
-            let prepared = try await self.prepare(request)
-            let (bytes, response) = try await self.session.bytes(
-              for: prepared,
-              delegate: HyperProxyTransportDelegate()
-            )
-            guard let httpResponse = response as? HTTPURLResponse else {
-              throw HyperProxyError.invalidResponse
-            }
-            guard (200..<300).contains(httpResponse.statusCode) else {
-              var data = Data()
-              for try await byte in bytes {
-                data.append(byte)
-              }
-              throw HyperProxyError.httpStatus(
-                code: httpResponse.statusCode,
-                body: data,
-                headers: httpResponse.hyperProxyHeaders
-              )
-            }
-            // A success response that is not an event stream would otherwise
-            // parse to zero events and end the loop silently — the classic
-            // symptom of a request body that never opted into streaming.
-            let contentType = httpResponse.value(
-              forHTTPHeaderField: "Content-Type"
-            )
-            if let contentType,
-              !contentType.lowercased().contains("text/event-stream")
-            {
-              var data = Data()
-              for try await byte in bytes {
-                data.append(byte)
-              }
-              throw HyperProxyError.notAnEventStream(
-                contentType: contentType,
-                body: data
-              )
-            }
-
-            var parser = HyperProxySSEByteParser()
+          let opened = try await self.openStream(request)
+          let bytes = opened.bytes
+          let httpResponse = opened.response
+          guard (200..<300).contains(httpResponse.statusCode) else {
+            var data = Data()
             for try await byte in bytes {
-              if let event = parser.consume(byte: byte) {
-                continuation.yield(event)
-              }
+              data.append(byte)
             }
-            if let event = parser.finish() {
+            throw HyperProxyError.httpStatus(
+              code: httpResponse.statusCode,
+              body: data,
+              headers: httpResponse.hyperProxyHeaders
+            )
+          }
+          // A success response that is not an event stream would otherwise
+          // parse to zero events and end the loop silently — the classic
+          // symptom of a request body that never opted into streaming.
+          let contentType = httpResponse.value(
+            forHTTPHeaderField: "Content-Type"
+          )
+          if let contentType,
+            !contentType.lowercased().contains("text/event-stream")
+          {
+            var data = Data()
+            for try await byte in bytes {
+              data.append(byte)
+            }
+            throw HyperProxyError.notAnEventStream(
+              contentType: contentType,
+              body: data
+            )
+          }
+
+          var parser = HyperProxySSEByteParser()
+          for try await byte in bytes {
+            if let event = parser.consume(byte: byte) {
               continuation.yield(event)
             }
-            return ()
+          }
+          if let event = parser.finish() {
+            continuation.yield(event)
           }
           continuation.finish()
         } catch {
@@ -460,40 +463,32 @@ public struct HyperProxyClient: Sendable {
           guard chunkSize > 0 else {
             throw HyperProxyError.invalidChunkSize(chunkSize)
           }
-          try await self.configuration.security.perform {
-            let prepared = try await self.prepare(request)
-            let (bytes, response) = try await self.session.bytes(
-              for: prepared,
-              delegate: HyperProxyTransportDelegate()
-            )
-            guard let httpResponse = response as? HTTPURLResponse else {
-              throw HyperProxyError.invalidResponse
-            }
-            guard (200..<300).contains(httpResponse.statusCode) else {
-              var data = Data()
-              for try await byte in bytes {
-                data.append(byte)
-              }
-              throw HyperProxyError.httpStatus(
-                code: httpResponse.statusCode,
-                body: data,
-                headers: httpResponse.hyperProxyHeaders
-              )
-            }
-
-            var chunk = Data()
-            chunk.reserveCapacity(chunkSize)
+          let opened = try await self.openStream(request)
+          let bytes = opened.bytes
+          let httpResponse = opened.response
+          guard (200..<300).contains(httpResponse.statusCode) else {
+            var data = Data()
             for try await byte in bytes {
-              chunk.append(byte)
-              if chunk.count == chunkSize {
-                continuation.yield(chunk)
-                chunk.removeAll(keepingCapacity: true)
-              }
+              data.append(byte)
             }
-            if !chunk.isEmpty {
+            throw HyperProxyError.httpStatus(
+              code: httpResponse.statusCode,
+              body: data,
+              headers: httpResponse.hyperProxyHeaders
+            )
+          }
+
+          var chunk = Data()
+          chunk.reserveCapacity(chunkSize)
+          for try await byte in bytes {
+            chunk.append(byte)
+            if chunk.count == chunkSize {
               continuation.yield(chunk)
+              chunk.removeAll(keepingCapacity: true)
             }
-            return ()
+          }
+          if !chunk.isEmpty {
+            continuation.yield(chunk)
           }
           continuation.finish()
         } catch {
@@ -501,6 +496,28 @@ public struct HyperProxyClient: Sendable {
         }
       }
       continuation.onTermination = { _ in task.cancel() }
+    }
+  }
+
+  /// Sends a streamed request and returns once the response head arrives.
+  ///
+  /// App Attest assertion mode serializes requests so the gateway sees
+  /// assertion counters in order. The gateway verifies and commits the counter
+  /// before it answers, so the gate is released at the response head: holding
+  /// it for the body would stall every other call behind one long stream.
+  /// (`send` downloads its body inside the gate; large bodies belong in
+  /// `byteStream`.)
+  private func openStream(_ request: HyperProxyRequest) async throws -> HyperProxyOpenedStream {
+    try await self.configuration.security.perform {
+      let prepared = try await self.prepare(request)
+      let (bytes, response) = try await self.session.bytes(
+        for: prepared,
+        delegate: HyperProxyTransportDelegate()
+      )
+      guard let httpResponse = response as? HTTPURLResponse else {
+        throw HyperProxyError.invalidResponse
+      }
+      return HyperProxyOpenedStream(bytes: bytes, response: httpResponse)
     }
   }
 
@@ -541,6 +558,64 @@ public struct HyperProxyClient: Sendable {
     return webSocketURL
   }
 
+  /// `URLComponents.percentEncodedPath` traps with a Foundation fatal error on
+  /// any character that is not valid in an encoded path (a space, `{`, a stray
+  /// `%`, non-ASCII). Request paths come from callers and from route templates
+  /// filled with runtime values, so escape everything that is not already a
+  /// valid percent-escape instead of handing the setter raw input.
+  /// RFC 3986 `pchar` plus "/". A fixed set rather than `.urlPathAllowed`:
+  /// Foundation applies context rules to that set (escaping a ":" that could
+  /// read as a scheme), and each chunk between escapes is encoded separately,
+  /// which would rewrite routes like `models/a%20b:generateContent`.
+  private static let pathAllowedCharacters = CharacterSet(
+    charactersIn:
+      "!$&'()*+,-./0123456789:;=@ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz~"
+  )
+
+  static func percentEncodedPath(_ path: String) -> String? {
+    let bytes = Array(path.utf8)
+    var encoded = ""
+    var literal: [UInt8] = []
+
+    func flushLiteral() -> Bool {
+      guard !literal.isEmpty else { return true }
+      defer { literal.removeAll(keepingCapacity: true) }
+      guard
+        let escaped = String(decoding: literal, as: UTF8.self)
+          .addingPercentEncoding(withAllowedCharacters: Self.pathAllowedCharacters)
+      else {
+        return false
+      }
+      encoded += escaped
+      return true
+    }
+
+    func isHexDigit(_ byte: UInt8) -> Bool {
+      (48...57).contains(byte) || (65...70).contains(byte) || (97...102).contains(byte)
+    }
+
+    var index = 0
+    while index < bytes.count {
+      let byte = bytes[index]
+      // "%" is ASCII, so it never splits a multi-byte UTF-8 sequence.
+      if byte == UInt8(ascii: "%") {
+        guard flushLiteral() else { return nil }
+        if index + 2 < bytes.count, isHexDigit(bytes[index + 1]), isHexDigit(bytes[index + 2]) {
+          encoded += String(decoding: bytes[index...(index + 2)], as: UTF8.self)
+          index += 3
+        } else {
+          encoded += "%25"
+          index += 1
+        }
+        continue
+      }
+      literal.append(byte)
+      index += 1
+    }
+    guard flushLiteral() else { return nil }
+    return encoded
+  }
+
   static func makeURL(
     gatewayURL: URL,
     path: String,
@@ -553,18 +628,24 @@ public struct HyperProxyClient: Sendable {
       throw HyperProxyError.invalidGatewayURL
     }
 
+    // Match the gateway, which rejects any ".." after decoding: an encoded
+    // slash or backslash must not smuggle a traversal inside one segment.
+    let decodedPath = path.removingPercentEncoding ?? path
     guard !path.contains("://"),
-      !path.split(separator: "/").contains("..")
+      !decodedPath.split(whereSeparator: { $0 == "/" || $0 == "\\" }).contains("..")
     else {
       throw HyperProxyError.invalidPath(path)
     }
 
     let normalizedPath = path.hasPrefix("/") ? String(path.dropFirst()) : path
+    guard let encodedPath = Self.percentEncodedPath(normalizedPath) else {
+      throw HyperProxyError.invalidPath(path)
+    }
     var basePath = components.percentEncodedPath
     if !basePath.hasSuffix("/") {
       basePath.append("/")
     }
-    components.percentEncodedPath = basePath + normalizedPath
+    components.percentEncodedPath = basePath + encodedPath
     let mergedQuery = (components.queryItems ?? []) + query
     components.queryItems = mergedQuery.isEmpty ? nil : mergedQuery
 
@@ -709,5 +790,32 @@ public struct HyperProxyClient: Sendable {
       return item
     }
     return components.string ?? url.absoluteString
+  }
+}
+
+/// Carries an opened response body out of the security gate. The byte sequence
+/// is consumed only by the task that opened it, never concurrently.
+private struct HyperProxyOpenedStream: @unchecked Sendable {
+  let bytes: URLSession.AsyncBytes
+  let response: HTTPURLResponse
+}
+
+/// Shared by every copy of a `HyperProxyClient`. A session the client built
+/// itself would otherwise retain its delegate and queue for the life of the
+/// process; a caller-supplied session (such as `URLSession.shared`) is left
+/// untouched.
+private final class HyperProxySessionHandle: Sendable {
+  let session: URLSession
+  private let ownsSession: Bool
+
+  init(session: URLSession, ownsSession: Bool) {
+    self.session = session
+    self.ownsSession = ownsSession
+  }
+
+  deinit {
+    if self.ownsSession {
+      self.session.finishTasksAndInvalidate()
+    }
   }
 }

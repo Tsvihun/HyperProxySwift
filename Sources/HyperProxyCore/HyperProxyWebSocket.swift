@@ -6,6 +6,9 @@ public enum HyperProxyWebSocketError: Error, Sendable, Equatable {
   case messagesAlreadyStreaming
 }
 
+/// A provider-native WebSocket. Close it with `cancel(with:reason:)`; releasing
+/// the last reference also closes it, with `.goingAway`. An active `messages()`
+/// stream keeps the socket alive until that stream ends.
 public final class HyperProxyWebSocket: @unchecked Sendable {
   private let task: URLSessionWebSocketTask
   private let lock = NSLock()
@@ -13,6 +16,13 @@ public final class HyperProxyWebSocket: @unchecked Sendable {
 
   init(task: URLSessionWebSocketTask) {
     self.task = task
+  }
+
+  // The session retains a running task, so without this an abandoned wrapper
+  // would leave its socket, and the provider's realtime session, open.
+  // Cancelling an already closed task is a no-op.
+  deinit {
+    self.task.cancel(with: .goingAway, reason: nil)
   }
 
   public func resume() {
@@ -80,14 +90,21 @@ public final class HyperProxyWebSocket: @unchecked Sendable {
         )
       }
     }
+    let task = self.task
     return AsyncThrowingStream { continuation in
-      let receiver = Task {
+      // The receiver must not own the wrapper: `URLSessionWebSocketTask.receive`
+      // ignores task cancellation, so a receiver parked on an idle socket
+      // would keep the wrapper — and the socket — alive after its consumer
+      // stopped iterating.
+      let receiver = Task { [weak self] in
         defer {
-          self.lock.withLock { self.isStreamingMessages = false }
+          if let self {
+            self.lock.withLock { self.isStreamingMessages = false }
+          }
         }
         do {
           while !Task.isCancelled {
-            continuation.yield(try await self.receive())
+            continuation.yield(try await task.receive())
           }
           continuation.finish()
         } catch {
@@ -98,7 +115,13 @@ public final class HyperProxyWebSocket: @unchecked Sendable {
           }
         }
       }
-      continuation.onTermination = { _ in receiver.cancel() }
+      // The stream keeps the wrapper alive while it is consumed. When iteration
+      // ends or is cancelled the wrapper can go; its deinit closes the socket,
+      // which also wakes the parked receiver.
+      continuation.onTermination = { [self] _ in
+        receiver.cancel()
+        withExtendedLifetime(self) {}
+      }
     }
   }
 

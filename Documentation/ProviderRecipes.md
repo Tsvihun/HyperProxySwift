@@ -5,11 +5,12 @@ provider-prefixed request, response, event, enum, and parameter types. Prefer th
 methods when available. The raw examples below remain useful for dynamic payloads, heterogeneous
 events, and providers that do not publish a complete machine-readable schema.
 
+<!-- docs-check: prelude -->
 ```swift
-let serviceURL = URL(
+let gatewayURL = URL(
   string: "https://api.hyperproxyai.com/<project>/<service>"
 )!
-let partialKey = "<partial-key>"
+let appKey = "<app-key>"
 ```
 
 For example, OpenAI Responses has an official-schema request and response binding:
@@ -18,8 +19,8 @@ For example, OpenAI Responses has an official-schema request and response bindin
 import HyperProxyOpenAI
 
 let response: OpenAIResponse = try await HyperProxy
-  .openAI(serviceURL: serviceURL, partialKey: partialKey)
-  .createResponse(OpenAICreateResponse(input: "Hello", model: .modelIdsShared("gpt-5")))
+  .openAI(gatewayURL: gatewayURL, appKey: appKey)
+  .responsesCreate(OpenAICreateResponse(input: "Hello", model: .modelIdsShared("gpt-5")))
 ```
 
 `HyperProxyJSONValue` is the lossless escape hatch for open unions and fields released after the
@@ -28,6 +29,7 @@ checked-in snapshot. You may also supply your own `Codable & Sendable` types to 
 Every provider service also exposes an immutable fluent call. Use it when an endpoint needs several
 path/query/header values or one of the reusable list/job primitives:
 
+<!-- docs-check: skip -->
 ```swift
 let call = try service
   .someGeneratedOperation
@@ -47,7 +49,7 @@ runtime.
 inventing a shared provider schema:
 
 ```swift
-let custom = HyperProxy.generic(serviceURL: serviceURL, partialKey: partialKey)
+let custom = HyperProxy.generic(gatewayURL: gatewayURL, appKey: appKey)
 let value: HyperProxyJSONValue = try await custom.send(
   .post,
   path: "v1/generate",
@@ -58,6 +60,7 @@ let value: HyperProxyJSONValue = try await custom.send(
 
 To use the provider key directly, keep the API calls unchanged and replace the transport:
 
+<!-- docs-check: assumes let providerKey = "<provider-key>" -->
 ```swift
 let custom = HyperProxy.generic(
   client: .direct(
@@ -73,6 +76,7 @@ intentionally owns the credential.
 
 Cursor envelopes remain provider-native; only cursor traversal is shared:
 
+<!-- docs-check: skip -->
 ```swift
 for try await page in try call.pages(
   cursorQueryName: "page_token",
@@ -86,6 +90,7 @@ for try await page in try call.pages(
 For provider jobs, polling respects `Retry-After`, preserves response headers, supports backoff and
 timeout limits, and stops according to the provider's own status model:
 
+<!-- docs-check: skip -->
 ```swift
 let completed = try await jobCall.poll(decoding: MyJob.self) {
   ["completed", "failed", "cancelled"].contains($0.status)
@@ -101,7 +106,7 @@ passes only that approved origin and request id through HyperProxy.
 ```swift
 import HyperProxyBFL
 
-let bfl = HyperProxy.bfl(serviceURL: serviceURL, partialKey: partialKey)
+let bfl = HyperProxy.bfl(gatewayURL: gatewayURL, appKey: appKey)
 let submission = try await bfl.submit(
   .imagesFlux2Pro,
   body: BFLFlux2Inputs(
@@ -129,6 +134,7 @@ let (temporaryFile, _) = try await URLSession.shared.download(from: sampleURL)
 For FLUX 3 Video, wrap the appropriate official input model in `BFLFlux3VideoRequest`. The wrapper
 enforces BFL's `t2v`, `i2v`, `v2v`, or `draft_enhance` discriminator before encoding:
 
+<!-- docs-check: continues -->
 ```swift
 let videoSubmission = try await bfl.submit(
   .videosFlux3,
@@ -147,6 +153,7 @@ let videoSubmission = try await bfl.submit(
 BFL's six public-beta FLUX.2 Klein LoRA variants use the same `submit` and `poll` helpers. Choose
 the endpoint that matches the base model and precision selected when the finetune was uploaded:
 
+<!-- docs-check: continues -->
 ```swift
 let loraSubmission = try await bfl.submit(
   .fineTuningFlux2Klein9BKVGenerate,
@@ -160,6 +167,7 @@ let loraSubmission = try await bfl.submit(
 
 Self-hosted licensed model usage is a separate BFL API surface:
 
+<!-- docs-check: continues -->
 ```swift
 let usageReceipt = try await bfl.reportModelUsage(
   modelSlug: "flux-2-klein-4b",
@@ -172,7 +180,7 @@ let usageReceipt = try await bfl.reportModelUsage(
 ```swift
 import HyperProxyOpenAI
 
-let service = HyperProxy.openAI(serviceURL: serviceURL, partialKey: partialKey)
+let service = HyperProxy.openAI(gatewayURL: gatewayURL, appKey: appKey)
 let response: HyperProxyJSONValue = try await service.send(
   .responsesCreate,
   json: ["model": "gpt-5", "input": "Hello"] as HyperProxyJSONValue,
@@ -185,7 +193,7 @@ let response: HyperProxyJSONValue = try await service.send(
 ```swift
 import HyperProxyAnthropic
 
-let service = HyperProxy.anthropic(serviceURL: serviceURL, partialKey: partialKey)
+let service = HyperProxy.anthropic(gatewayURL: gatewayURL, appKey: appKey)
 let response: HyperProxyJSONValue = try await service.send(
   .messagesCreate,
   json: [
@@ -202,7 +210,7 @@ let response: HyperProxyJSONValue = try await service.send(
 ```swift
 import HyperProxyGemini
 
-let service = HyperProxy.gemini(serviceURL: serviceURL, partialKey: partialKey)
+let service = HyperProxy.gemini(gatewayURL: gatewayURL, appKey: appKey)
 let response: HyperProxyJSONValue = try await service.send(
   .modelsGenerateContent,
   parameters: ["model": "gemini-2.5-flash"],
@@ -216,7 +224,7 @@ let response: HyperProxyJSONValue = try await service.send(
 ```swift
 import HyperProxyDeepSeek
 
-let service = HyperProxy.deepSeek(serviceURL: serviceURL, partialKey: partialKey)
+let service = HyperProxy.deepSeek(gatewayURL: gatewayURL, appKey: appKey)
 let response: HyperProxyJSONValue = try await service.send(
   .chatCompletionsCreate,
   json: ["model": "deepseek-chat", "messages": [["role": "user", "content": "Hello"]]]
@@ -230,7 +238,7 @@ let response: HyperProxyJSONValue = try await service.send(
 ```swift
 import HyperProxyMistral
 
-let service = HyperProxy.mistral(serviceURL: serviceURL, partialKey: partialKey)
+let service = HyperProxy.mistral(gatewayURL: gatewayURL, appKey: appKey)
 let response: HyperProxyJSONValue = try await service.send(
   .chatCompletionsCreate,
   json: ["model": "mistral-large-latest", "messages": [["role": "user", "content": "Hello"]]]
@@ -244,7 +252,7 @@ let response: HyperProxyJSONValue = try await service.send(
 ```swift
 import HyperProxyOpenRouter
 
-let service = HyperProxy.openRouter(serviceURL: serviceURL, partialKey: partialKey)
+let service = HyperProxy.openRouter(gatewayURL: gatewayURL, appKey: appKey)
 let response: HyperProxyJSONValue = try await service.send(
   .chatCompletionsCreate,
   json: ["model": "openai/gpt-5", "messages": [["role": "user", "content": "Hello"]]]
@@ -258,7 +266,7 @@ let response: HyperProxyJSONValue = try await service.send(
 ```swift
 import HyperProxyPerplexity
 
-let service = HyperProxy.perplexity(serviceURL: serviceURL, partialKey: partialKey)
+let service = HyperProxy.perplexity(gatewayURL: gatewayURL, appKey: appKey)
 let response: HyperProxyJSONValue = try await service.send(
   .searchSearchPost,
   json: ["query": "Latest Swift concurrency guidance"] as HyperProxyJSONValue,
@@ -271,7 +279,7 @@ let response: HyperProxyJSONValue = try await service.send(
 ```swift
 import HyperProxyGroq
 
-let service = HyperProxy.groq(serviceURL: serviceURL, partialKey: partialKey)
+let service = HyperProxy.groq(gatewayURL: gatewayURL, appKey: appKey)
 let response: HyperProxyJSONValue = try await service.send(
   .chatCompletionsCreate,
   json: ["model": "llama-3.3-70b-versatile", "messages": [["role": "user", "content": "Hello"]]]
@@ -285,7 +293,7 @@ let response: HyperProxyJSONValue = try await service.send(
 ```swift
 import HyperProxyTogether
 
-let service = HyperProxy.together(serviceURL: serviceURL, partialKey: partialKey)
+let service = HyperProxy.together(gatewayURL: gatewayURL, appKey: appKey)
 let response: HyperProxyJSONValue = try await service.send(
   .chatCompletionsCreate,
   json: [
@@ -301,7 +309,7 @@ let response: HyperProxyJSONValue = try await service.send(
 ```swift
 import HyperProxyFireworks
 
-let service = HyperProxy.fireworks(serviceURL: serviceURL, partialKey: partialKey)
+let service = HyperProxy.fireworks(gatewayURL: gatewayURL, appKey: appKey)
 let response: HyperProxyJSONValue = try await service.send(
   .chatCompletionsCreate,
   json: [
@@ -317,7 +325,7 @@ let response: HyperProxyJSONValue = try await service.send(
 ```swift
 import HyperProxyStability
 
-let service = HyperProxy.stability(serviceURL: serviceURL, partialKey: partialKey)
+let service = HyperProxy.stability(gatewayURL: gatewayURL, appKey: appKey)
 let body = HyperProxyMultipart(parts: [
   .text(name: "prompt", value: "A secure mint-green vault"),
   .text(name: "output_format", value: "png"),
@@ -330,7 +338,7 @@ let image = try await service.send(.imagesUltra, body: body).data
 ```swift
 import HyperProxyReplicate
 
-let service = HyperProxy.replicate(serviceURL: serviceURL, partialKey: partialKey)
+let service = HyperProxy.replicate(gatewayURL: gatewayURL, appKey: appKey)
 let prediction: HyperProxyJSONValue = try await service.send(
   .predictionsCreate,
   json: ["version": "<model-version>", "input": ["prompt": "A moonlit city"]]
@@ -344,7 +352,7 @@ let prediction: HyperProxyJSONValue = try await service.send(
 ```swift
 import HyperProxyFal
 
-let service = HyperProxy.fal(serviceURL: serviceURL, partialKey: partialKey)
+let service = HyperProxy.fal(gatewayURL: gatewayURL, appKey: appKey)
 let result: HyperProxyJSONValue = try await service.send(
   .modelsRun,
   parameters: ["model_path": "fal-ai/flux/schnell"],
@@ -358,7 +366,7 @@ let result: HyperProxyJSONValue = try await service.send(
 ```swift
 import HyperProxyElevenLabs
 
-let service = HyperProxy.elevenLabs(serviceURL: serviceURL, partialKey: partialKey)
+let service = HyperProxy.elevenLabs(gatewayURL: gatewayURL, appKey: appKey)
 let body = try HyperProxyBody.json([
   "text": "Hello from HyperProxy",
   "model_id": "eleven_multilingual_v2",
@@ -375,7 +383,7 @@ let audio = try await service.send(
 ```swift
 import HyperProxyEachAI
 
-let service = HyperProxy.eachAI(serviceURL: serviceURL, partialKey: partialKey)
+let service = HyperProxy.eachAI(gatewayURL: gatewayURL, appKey: appKey)
 let prediction = try await service.predictionsCreate(
   EachAIAPICreatePredictionRequest(
     input: ["prompt": "Hello"],
@@ -389,7 +397,7 @@ let prediction = try await service.predictionsCreate(
 ```swift
 import HyperProxyBrave
 
-let service = HyperProxy.brave(serviceURL: serviceURL, partialKey: partialKey)
+let service = HyperProxy.brave(gatewayURL: gatewayURL, appKey: appKey)
 let results = try await service.searchWebCreate(
   BraveWebSearchRequest(
     q: "Swift 6.2",
@@ -404,7 +412,7 @@ let results = try await service.searchWebCreate(
 ```swift
 import HyperProxyDeepL
 
-let service = HyperProxy.deepL(serviceURL: serviceURL, partialKey: partialKey)
+let service = HyperProxy.deepL(gatewayURL: gatewayURL, appKey: appKey)
 let translation: HyperProxyJSONValue = try await service.send(
   .translateText,
   json: ["text": ["Hello"], "target_lang": "DE"] as HyperProxyJSONValue,
@@ -416,8 +424,9 @@ let translation: HyperProxyJSONValue = try await service.send(
 
 Route metadata is available before sending:
 
+<!-- docs-check: assumes let service = HyperProxy.openAI(gatewayURL: gatewayURL, appKey: appKey) -->
 ```swift
-let route = try service.route(.adminApiKeysList)
+let route = service.route(.adminApiKeysList)
 guard route.access == .admin else { return }
 print(route.lifecycle, route.surface, route.catalogSource)
 ```

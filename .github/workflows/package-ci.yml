@@ -29,7 +29,7 @@ jobs:
         run: node Scripts/check_release_provenance.mjs --release
       - name: Test package
         run: swift test
-      - name: Typecheck public README examples
+      - name: Typecheck public README and provider recipe examples
         run: node Scripts/check_readme_examples.mjs
       - name: Compile Quick Start example
         run: swift build --package-path Examples/QuickStart

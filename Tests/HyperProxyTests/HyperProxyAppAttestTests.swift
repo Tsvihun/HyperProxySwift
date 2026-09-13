@@ -34,13 +34,18 @@ struct HyperProxyAppAttestTests {
       appAttest: platform
     )
     let body = Data(#"{"model":"gpt-5"}"#.utf8)
-    let headers = try await appAttest.security(mode: .assertion).headers(for: body)
+    var request = URLRequest(url: URL(string: "https://example.com/project123/service/v1/chat")!)
+    request.httpMethod = "POST"
+    request.httpBody = body
+    let headers = try await appAttest.security(mode: .assertion).headers(for: request)
+    let context = try HyperProxyRequestContext(request: request, timestamp: Int(headers["X-HyperProxy-Assertion-Time"]!)!)
     let hashes = await platform.hashes
 
     #expect(headers["X-HyperProxy-Key-Id"] == "device-key")
     #expect(headers["X-HyperProxy-Assertion"] == Data("assertion".utf8).base64EncodedString())
     #expect(hashes.attestation == Data(SHA256.hash(data: Data("fresh-nonce".utf8))))
-    #expect(hashes.assertions == [Data(SHA256.hash(data: body))])
+    #expect(headers["X-HyperProxy-Assertion-Version"] == "2")
+    #expect(hashes.assertions == [Data(SHA256.hash(data: context.signingData))])
     #expect(transport.paths == ["/api/v1/attest/challenge", "/api/v1/attest/register"])
   }
 
