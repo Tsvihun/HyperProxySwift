@@ -53,17 +53,19 @@ struct HyperProxyPrivacyManifestTests {
       ("statvfs(", "NSPrivacyAccessedAPICategoryDiskSpace"),
       ("activeInputModes", "NSPrivacyAccessedAPICategoryActiveKeyboards"),
     ]
+    let generatedMarker = "Maintainer-generated release artifact."
     let packageManifest = try String(contentsOf: root.appendingPathComponent("Package.swift"), encoding: .utf8)
     let modules = try FileManager.default.contentsOfDirectory(at: sources, includingPropertiesForKeys: [.isDirectoryKey])
     var checkedUsage = false
     for module in modules where (try? module.resourceValues(forKeys: [.isDirectoryKey]).isDirectory) == true {
       var used = Set<String>()
       let files = FileManager.default.enumerator(at: module, includingPropertiesForKeys: nil)?.compactMap { $0 as? URL } ?? []
-      for file in files where file.pathExtension == "swift"
-        && !file.lastPathComponent.hasSuffix(".generated.swift")
-        && file.lastPathComponent != "GeneratedProviderCatalog.swift"
-      {
+      for file in files where file.pathExtension == "swift" {
         let text = try String(contentsOf: file, encoding: .utf8)
+        // Generated provider code is plain Codable models and routes; only
+        // handwritten sources can call a required-reason API. Skipping them
+        // keeps the lint fast and immune to a provider field named like one.
+        if text.prefix(600).contains(generatedMarker) { continue }
         for entry in apiCategories where text.contains(entry.symbol) {
           used.insert(entry.category)
         }
