@@ -1,0 +1,29 @@
+//
+//  AnthropicBetaGcpExternalKeyConfig.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+// Maintainer-generated release artifact. Do not edit by hand.
+
+import Foundation
+import HyperProxyCore
+
+public struct AnthropicBetaGcpExternalKeyConfig: Codable, Sendable {
+  public var keyName: String
+  public var typeModel: String
+
+  public init(
+    keyName: String,
+    typeModel: String
+  ) {
+    self.keyName = keyName
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case keyName = "key_name"
+    case typeModel = "type"
+  }
+}

@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- Organize every SDK source around one primary type per file, named after that type;
+  replace numbered generated model batches with individual files under `Models/`.
+- Keep nested types with their owner and name separate extensions `Type+Purpose.swift`.
+- Add consistent filename, project, creation-date, and copyright headers and enforce
+  the layout in CI. Public API names and behavior are unchanged by this reorganization.
+
 - Refresh the provider snapshot on 2026-09-13: 2,244 routes, 15,464 generated types,
   and 1,955 typed operation bindings. BFL adds video editing, optional end-user
   identifiers, and QHD/UHD video resolutions; other official schema updates include

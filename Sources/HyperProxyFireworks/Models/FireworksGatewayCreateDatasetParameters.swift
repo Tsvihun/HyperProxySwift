@@ -1,0 +1,25 @@
+//
+//  FireworksGatewayCreateDatasetParameters.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+// Maintainer-generated release artifact. Do not edit by hand.
+
+import Foundation
+import HyperProxyCore
+
+public struct FireworksGatewayCreateDatasetParameters: Codable, Sendable {
+  public var accountId: String
+
+  public init(
+    accountId: String
+  ) {
+    self.accountId = accountId
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case accountId = "account_id"
+  }
+}

@@ -1,0 +1,45 @@
+//
+//  AnthropicBetaStreamSessionThreadEventsParameters.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+// Maintainer-generated release artifact. Do not edit by hand.
+
+import Foundation
+import HyperProxyCore
+
+public struct AnthropicBetaStreamSessionThreadEventsParameters: Codable, Sendable {
+  public var anthropicBeta: String?
+  public var anthropicVersion: String?
+  public var eventDeltas: [AnthropicBetaManagedAgentsEventDeltaType]?
+  public var sessionId: String
+  public var threadId: String
+  public var xApiKey: String?
+
+  public init(
+    sessionId: String,
+    threadId: String,
+    anthropicBeta: String? = nil,
+    anthropicVersion: String? = nil,
+    eventDeltas: [AnthropicBetaManagedAgentsEventDeltaType]? = nil,
+    xApiKey: String? = nil
+  ) {
+    self.anthropicBeta = anthropicBeta
+    self.anthropicVersion = anthropicVersion
+    self.eventDeltas = eventDeltas
+    self.sessionId = sessionId
+    self.threadId = threadId
+    self.xApiKey = xApiKey
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case anthropicBeta = "anthropic-beta"
+    case anthropicVersion = "anthropic-version"
+    case eventDeltas = "event_deltas[]"
+    case sessionId = "session_id"
+    case threadId = "thread_id"
+    case xApiKey = "x-api-key"
+  }
+}

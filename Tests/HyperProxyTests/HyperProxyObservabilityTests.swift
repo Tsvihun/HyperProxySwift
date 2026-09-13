@@ -1,3 +1,11 @@
+//
+//  HyperProxyObservabilityTests.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+
 import Foundation
 import Testing
 import HyperProxyProviders
@@ -88,61 +96,3 @@ struct HyperProxyObservabilityTests {
     }
   }
 }
-
-#if os(macOS)
-@Suite("Server telemetry transport")
-struct HyperProxyTelemetryTransportTests {
-  @Test("Accepted and duplicate receipts keep the same event ID on retry", arguments: [201, 200, 429, 401])
-  func submit(status: Int) async throws {
-    let config = URLSessionConfiguration.ephemeral
-    config.protocolClasses = [TelemetryProtocol.self]
-    let client = try HyperProxyTelemetryClient(projectID: "status\(status)", ingestToken: "hp_obs_test", configuration: config)
-    let event = try HyperProxyTelemetryEvent(provider: "openai", model: "test", statusCode: 200, durationMS: 1)
-    if status < 300 {
-      let receipt = try await client.submit(event)
-      #expect(receipt.eventID == event.eventID)
-      #expect(receipt.status == (status == 201 ? .accepted : .duplicate))
-    } else {
-      do {
-        _ = try await client.submit(event)
-        Issue.record("Expected an HTTP error")
-      } catch HyperProxyError.httpStatus(let code, _, let headers) {
-        #expect(code == status)
-        #expect(headers["Retry-After"] == "60")
-      }
-    }
-  }
-}
-
-private final class TelemetryProtocol: URLProtocol, @unchecked Sendable {
-  override class func canInit(with request: URLRequest) -> Bool { true }
-  override class func canonicalRequest(for request: URLRequest) -> URLRequest { request }
-  override func startLoading() {
-    do {
-      #expect(request.httpMethod == "POST")
-      #expect(request.value(forHTTPHeaderField: "Authorization") == "Bearer hp_obs_test")
-      #expect(request.value(forHTTPHeaderField: "User-Agent") == "HyperProxySwift-Telemetry/1.0")
-      var data = request.httpBody ?? Data()
-      if let stream = request.httpBodyStream {
-        stream.open()
-        defer { stream.close() }
-        var buffer = [UInt8](repeating: 0, count: 4096)
-        while stream.hasBytesAvailable {
-          let count = stream.read(&buffer, maxLength: buffer.count)
-          if count <= 0 { break }
-          data.append(contentsOf: buffer.prefix(count))
-        }
-      }
-      let body = try #require(JSONSerialization.jsonObject(with: data) as? [String: Any])
-      let path = try #require(request.url).path
-      let status = Int(path.split(separator: "/")[4].dropFirst(6))!
-      let receipt: [String: Any] = ["event_id": try #require(body["event_id"]), "request_id": UUID().uuidString, "status": status == 201 ? "accepted" : "duplicate"]
-      let response = HTTPURLResponse(url: request.url!, statusCode: status, httpVersion: "HTTP/1.1", headerFields: ["Retry-After": "60"])!
-      client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
-      client?.urlProtocol(self, didLoad: try JSONSerialization.data(withJSONObject: receipt))
-      client?.urlProtocolDidFinishLoading(self)
-    } catch { client?.urlProtocol(self, didFailWithError: error) }
-  }
-  override func stopLoading() {}
-}
-#endif

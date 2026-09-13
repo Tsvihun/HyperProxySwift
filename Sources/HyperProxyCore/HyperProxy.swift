@@ -1,7 +1,13 @@
-/// Namespace for constructing provider services.
-///
-/// Provider modules extend this type with factories such as
-/// `HyperProxy.openAI(gatewayURL:appKey:)`.
+//
+//  HyperProxy.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+
+
+
 public enum HyperProxy {
   /// The SDK version sent with requests and exposed for diagnostics.
   public static let sdkVersion = "0.3.0"

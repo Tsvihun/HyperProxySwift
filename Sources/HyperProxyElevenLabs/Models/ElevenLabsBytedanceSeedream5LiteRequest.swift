@@ -1,0 +1,49 @@
+//
+//  ElevenLabsBytedanceSeedream5LiteRequest.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+// Maintainer-generated release artifact. Do not edit by hand.
+
+import Foundation
+import HyperProxyCore
+
+public struct ElevenLabsBytedanceSeedream5LiteRequest: Codable, Sendable {
+  public var aspectRatio: ElevenLabsBytedanceSeedream5LiteRequestAspectRatio?
+  public var images: [ElevenLabsImageReference]?
+  public var modelId: String
+  public var prompt: String
+  public var resolution: ElevenLabsBytedanceSeedream5LiteRequestResolution?
+  public var seed: Int?
+  public var webhook: ElevenLabsWebhookTarget?
+
+  public init(
+    modelId: String,
+    prompt: String,
+    aspectRatio: ElevenLabsBytedanceSeedream5LiteRequestAspectRatio? = nil,
+    images: [ElevenLabsImageReference]? = nil,
+    resolution: ElevenLabsBytedanceSeedream5LiteRequestResolution? = nil,
+    seed: Int? = nil,
+    webhook: ElevenLabsWebhookTarget? = nil
+  ) {
+    self.aspectRatio = aspectRatio
+    self.images = images
+    self.modelId = modelId
+    self.prompt = prompt
+    self.resolution = resolution
+    self.seed = seed
+    self.webhook = webhook
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case aspectRatio = "aspect_ratio"
+    case images
+    case modelId = "model_id"
+    case prompt
+    case resolution
+    case seed
+    case webhook
+  }
+}

@@ -1,43 +1,16 @@
+//
+//  HyperProxyAppAttest.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+
 import CryptoKit
 import Foundation
-
 #if canImport(DeviceCheck) && (os(iOS) || os(macOS) || os(visionOS))
-  import DeviceCheck
+import DeviceCheck
 #endif
-
-public enum HyperProxyAppAttestMode: Sendable {
-  case assertion
-  case deviceToken
-}
-
-public protocol HyperProxyAttestationStorage: Sendable {
-  func data(forKey key: String) async throws -> Data?
-  func set(_ data: Data?, forKey key: String) async throws
-}
-
-public actor HyperProxyUserDefaultsAttestationStorage: HyperProxyAttestationStorage {
-  private let defaults: UserDefaults
-
-  public init(suiteName: String? = nil) {
-    if let suiteName, let defaults = UserDefaults(suiteName: suiteName) {
-      self.defaults = defaults
-    } else {
-      self.defaults = .standard
-    }
-  }
-
-  public func data(forKey key: String) -> Data? {
-    self.defaults.data(forKey: key)
-  }
-
-  public func set(_ data: Data?, forKey key: String) {
-    if let data {
-      self.defaults.set(data, forKey: key)
-    } else {
-      self.defaults.removeObject(forKey: key)
-    }
-  }
-}
 
 public actor HyperProxyAppAttest {
   public let projectID: String
@@ -401,50 +374,3 @@ extension HyperProxyAppAttest {
     }
   }
 }
-
-protocol HyperProxyPlatformAppAttest: Sendable {
-  func isSupported() async -> Bool
-  func generateKey() async throws -> String
-  func attestKey(keyID: String, clientDataHash: Data) async throws -> Data
-  func generateAssertion(keyID: String, clientDataHash: Data) async throws -> Data
-}
-
-#if canImport(DeviceCheck) && (os(iOS) || os(macOS) || os(visionOS))
-  private actor HyperProxySystemAppAttest: HyperProxyPlatformAppAttest {
-    private let service = DCAppAttestService.shared
-
-    func isSupported() -> Bool {
-      self.service.isSupported
-    }
-
-    func generateKey() async throws -> String {
-      try await self.service.generateKey()
-    }
-
-    func attestKey(keyID: String, clientDataHash: Data) async throws -> Data {
-      try await self.service.attestKey(keyID, clientDataHash: clientDataHash)
-    }
-
-    func generateAssertion(keyID: String, clientDataHash: Data) async throws -> Data {
-      try await self.service.generateAssertion(keyID, clientDataHash: clientDataHash)
-    }
-  }
-#else
-  private struct HyperProxySystemAppAttest: HyperProxyPlatformAppAttest {
-    func isSupported() async -> Bool {
-      false
-    }
-
-    func generateKey() async throws -> String {
-      throw HyperProxyError.unsupportedPlatform("Apple App Attest")
-    }
-
-    func attestKey(keyID: String, clientDataHash: Data) async throws -> Data {
-      throw HyperProxyError.unsupportedPlatform("Apple App Attest")
-    }
-
-    func generateAssertion(keyID: String, clientDataHash: Data) async throws -> Data {
-      throw HyperProxyError.unsupportedPlatform("Apple App Attest")
-    }
-  }
-#endif

@@ -1,0 +1,24 @@
+//
+//  StabilityPostV2betaAudioStableAudio2TextToAudioRequestModel.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+// Maintainer-generated release artifact. Do not edit by hand.
+
+import Foundation
+import HyperProxyCore
+
+public struct StabilityPostV2betaAudioStableAudio2TextToAudioRequestModel: RawRepresentable,
+  Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let stableAudio25 = Self(rawValue: "stable-audio-2.5")
+  public static let stableAudio2 = Self(rawValue: "stable-audio-2")
+}

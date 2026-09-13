@@ -1,0 +1,45 @@
+//
+//  OpenRouterReasoningSummaryTextDoneEvent.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+// Maintainer-generated release artifact. Do not edit by hand.
+
+import Foundation
+import HyperProxyCore
+
+public struct OpenRouterReasoningSummaryTextDoneEvent: Codable, Sendable {
+  public var itemId: String
+  public var outputIndex: Int
+  public var sequenceNumber: Int
+  public var summaryIndex: Int
+  public var text: String
+  public var typeModel: OpenRouterBaseReasoningSummaryTextDoneEventTypeModel
+
+  public init(
+    itemId: String,
+    outputIndex: Int,
+    sequenceNumber: Int,
+    summaryIndex: Int,
+    text: String,
+    typeModel: OpenRouterBaseReasoningSummaryTextDoneEventTypeModel
+  ) {
+    self.itemId = itemId
+    self.outputIndex = outputIndex
+    self.sequenceNumber = sequenceNumber
+    self.summaryIndex = summaryIndex
+    self.text = text
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case itemId = "item_id"
+    case outputIndex = "output_index"
+    case sequenceNumber = "sequence_number"
+    case summaryIndex = "summary_index"
+    case text
+    case typeModel = "type"
+  }
+}

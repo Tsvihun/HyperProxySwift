@@ -1,0 +1,33 @@
+//
+//  OpenAIWebhookLiveTransportIncomingData.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+// Maintainer-generated release artifact. Do not edit by hand.
+
+import Foundation
+import HyperProxyCore
+
+public struct OpenAIWebhookLiveTransportIncomingData: Codable, Sendable {
+  public var sessionId: String
+  public var sipHeaders: [OpenAIWebhookLiveTransportIncomingDataSipHeadersItem]
+  public var typeModel: OpenAIWebhookLiveTransportIncomingDataTypeModel
+
+  public init(
+    sessionId: String,
+    sipHeaders: [OpenAIWebhookLiveTransportIncomingDataSipHeadersItem],
+    typeModel: OpenAIWebhookLiveTransportIncomingDataTypeModel
+  ) {
+    self.sessionId = sessionId
+    self.sipHeaders = sipHeaders
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case sessionId = "session_id"
+    case sipHeaders = "sip_headers"
+    case typeModel = "type"
+  }
+}

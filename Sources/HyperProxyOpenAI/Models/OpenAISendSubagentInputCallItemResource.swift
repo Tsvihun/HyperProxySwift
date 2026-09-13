@@ -1,0 +1,49 @@
+//
+//  OpenAISendSubagentInputCallItemResource.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+// Maintainer-generated release artifact. Do not edit by hand.
+
+import Foundation
+import HyperProxyCore
+
+public struct OpenAISendSubagentInputCallItemResource: Codable, Sendable {
+  public var content: [OpenAIAgentContentResource]
+  public var id: String
+  public var recipientAgentId: String
+  public var senderAgentId: String
+  public var status: OpenAIFunctionCallStatusResource
+  public var turnId: String
+  public var typeModel: OpenAISendSubagentInputCallItemResourceTypeModel
+
+  public init(
+    content: [OpenAIAgentContentResource],
+    id: String,
+    recipientAgentId: String,
+    senderAgentId: String,
+    status: OpenAIFunctionCallStatusResource,
+    turnId: String,
+    typeModel: OpenAISendSubagentInputCallItemResourceTypeModel
+  ) {
+    self.content = content
+    self.id = id
+    self.recipientAgentId = recipientAgentId
+    self.senderAgentId = senderAgentId
+    self.status = status
+    self.turnId = turnId
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case content
+    case id
+    case recipientAgentId = "recipient_agent_id"
+    case senderAgentId = "sender_agent_id"
+    case status
+    case turnId = "turn_id"
+    case typeModel = "type"
+  }
+}

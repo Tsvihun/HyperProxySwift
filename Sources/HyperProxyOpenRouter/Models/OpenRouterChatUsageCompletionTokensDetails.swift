@@ -1,0 +1,37 @@
+//
+//  OpenRouterChatUsageCompletionTokensDetails.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+// Maintainer-generated release artifact. Do not edit by hand.
+
+import Foundation
+import HyperProxyCore
+
+public struct OpenRouterChatUsageCompletionTokensDetails: Codable, Sendable {
+  public var acceptedPredictionTokens: Int?
+  public var audioTokens: Int?
+  public var reasoningTokens: Int?
+  public var rejectedPredictionTokens: Int?
+
+  public init(
+    acceptedPredictionTokens: Int? = nil,
+    audioTokens: Int? = nil,
+    reasoningTokens: Int? = nil,
+    rejectedPredictionTokens: Int? = nil
+  ) {
+    self.acceptedPredictionTokens = acceptedPredictionTokens
+    self.audioTokens = audioTokens
+    self.reasoningTokens = reasoningTokens
+    self.rejectedPredictionTokens = rejectedPredictionTokens
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case acceptedPredictionTokens = "accepted_prediction_tokens"
+    case audioTokens = "audio_tokens"
+    case reasoningTokens = "reasoning_tokens"
+    case rejectedPredictionTokens = "rejected_prediction_tokens"
+  }
+}

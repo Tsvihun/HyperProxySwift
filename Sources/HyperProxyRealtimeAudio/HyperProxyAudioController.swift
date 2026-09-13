@@ -1,41 +1,14 @@
+//
+//  HyperProxyAudioController.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+
 @preconcurrency import AVFoundation
 import Foundation
 @_exported import HyperProxyCore
-
-public enum HyperProxyAudioControllerError: Error, LocalizedError, Sendable, Equatable {
-  case noModesSelected
-  case invalidSampleRate(Double)
-  case alreadyStopped
-  case microphoneModeDisabled
-  case playbackModeDisabled
-  case controllerNotRunning
-  case echoCancellationUnavailable(String)
-  case audioConversionFailed(String)
-  case audioBufferAllocationFailed
-
-  public var errorDescription: String? {
-    switch self {
-    case .noModesSelected:
-      "Select recording, playback, or both."
-    case .invalidSampleRate(let sampleRate):
-      "The PCM sample rate must be greater than zero; received \(sampleRate)."
-    case .alreadyStopped:
-      "A stopped audio controller cannot be restarted. Create a new controller."
-    case .microphoneModeDisabled:
-      "Recording is not enabled for this audio controller."
-    case .playbackModeDisabled:
-      "Playback is not enabled for this audio controller."
-    case .controllerNotRunning:
-      "Start the audio controller before using it."
-    case .echoCancellationUnavailable(let reason):
-      "Voice-processing echo cancellation is unavailable: \(reason)"
-    case .audioConversionFailed(let reason):
-      "PCM audio conversion failed: \(reason)"
-    case .audioBufferAllocationFailed:
-      "AVFoundation could not allocate an audio buffer."
-    }
-  }
-}
 
 /// Owns microphone capture and PCM16 playback for realtime provider APIs.
 ///
@@ -364,119 +337,5 @@ public actor HyperProxyAudioController {
     #elseif os(watchOS)
       await AVAudioSession.sharedInstance().deactivate(options: [])
     #endif
-  }
-}
-
-struct HyperProxyPCM16ChunkAccumulator: Sendable {
-  private var pendingByte: UInt8?
-
-  mutating func append(_ data: Data) -> Data {
-    guard !data.isEmpty else { return Data() }
-    var complete = Data()
-    complete.reserveCapacity(data.count + (self.pendingByte == nil ? 0 : 1))
-    if let pendingByte = self.pendingByte {
-      complete.append(pendingByte)
-      self.pendingByte = nil
-    }
-    complete.append(data)
-    if !complete.count.isMultiple(of: MemoryLayout<Int16>.size) {
-      self.pendingByte = complete.removeLast()
-    }
-    return complete
-  }
-}
-
-private final class HyperProxyAudioCapturePipeline: @unchecked Sendable {
-  private let converter: AVAudioConverter
-  private let outputFormat: AVAudioFormat
-  private let continuation: AsyncThrowingStream<Data, any Error>.Continuation
-  private var didFinish = false
-
-  init(
-    inputFormat: AVAudioFormat,
-    outputFormat: AVAudioFormat,
-    continuation: AsyncThrowingStream<Data, any Error>.Continuation
-  ) throws {
-    guard let converter = AVAudioConverter(from: inputFormat, to: outputFormat) else {
-      throw HyperProxyAudioControllerError.audioConversionFailed(
-        "AVAudioConverter rejected the input and output formats."
-      )
-    }
-    self.converter = converter
-    self.outputFormat = outputFormat
-    self.continuation = continuation
-  }
-
-  func consume(_ input: AVAudioPCMBuffer) {
-    guard !self.didFinish, input.frameLength > 0 else { return }
-    let ratio = self.outputFormat.sampleRate / input.format.sampleRate
-    let capacity = AVAudioFrameCount(
-      max(1, ceil(Double(input.frameLength) * ratio) + 1)
-    )
-    guard let output = AVAudioPCMBuffer(
-      pcmFormat: self.outputFormat,
-      frameCapacity: capacity
-    ) else {
-      self.finish(HyperProxyAudioControllerError.audioBufferAllocationFailed)
-      return
-    }
-
-    let inputProvider = HyperProxyOneShotAudioInput(input)
-    var conversionError: NSError?
-    let status = self.converter.convert(
-      to: output,
-      error: &conversionError
-    ) { _, inputStatus in
-      inputProvider.next(status: inputStatus)
-    }
-
-    if let conversionError {
-      self.finish(
-        HyperProxyAudioControllerError.audioConversionFailed(
-          conversionError.localizedDescription
-        )
-      )
-      return
-    }
-    guard (status == .haveData || status == .inputRanDry), output.frameLength > 0,
-      let samples = output.int16ChannelData?[0]
-    else { return }
-    let byteCount = Int(output.frameLength) * MemoryLayout<Int16>.size
-    self.continuation.yield(Data(bytes: samples, count: byteCount))
-  }
-
-  private func finish(_ error: any Error) {
-    guard !self.didFinish else { return }
-    self.didFinish = true
-    self.continuation.finish(throwing: error)
-  }
-}
-
-
-/// Short compatibility name for existing call sites.
-@available(*, deprecated, renamed: "HyperProxyAudioController")
-public typealias AudioController = HyperProxyAudioController
-
-private final class HyperProxyOneShotAudioInput: @unchecked Sendable {
-  private let buffer: AVAudioPCMBuffer
-  private let lock = NSLock()
-  private var didSupply = false
-
-  init(_ buffer: AVAudioPCMBuffer) {
-    self.buffer = buffer
-  }
-
-  func next(
-    status: UnsafeMutablePointer<AVAudioConverterInputStatus>
-  ) -> AVAudioBuffer? {
-    self.lock.lock()
-    defer { self.lock.unlock() }
-    guard !self.didSupply else {
-      status.pointee = .noDataNow
-      return nil
-    }
-    self.didSupply = true
-    status.pointee = .haveData
-    return self.buffer
   }
 }

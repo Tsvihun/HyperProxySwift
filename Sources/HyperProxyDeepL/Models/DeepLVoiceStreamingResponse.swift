@@ -1,0 +1,33 @@
+//
+//  DeepLVoiceStreamingResponse.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+// Maintainer-generated release artifact. Do not edit by hand.
+
+import Foundation
+import HyperProxyCore
+
+public struct DeepLVoiceStreamingResponse: Codable, Sendable {
+  public var sessionId: String?
+  public var streamingUrl: String
+  public var token: String
+
+  public init(
+    streamingUrl: String,
+    token: String,
+    sessionId: String? = nil
+  ) {
+    self.sessionId = sessionId
+    self.streamingUrl = streamingUrl
+    self.token = token
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case sessionId = "session_id"
+    case streamingUrl = "streaming_url"
+    case token
+  }
+}

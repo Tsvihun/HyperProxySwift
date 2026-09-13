@@ -2,6 +2,23 @@
 
 HyperProxySwift separates concerns that tend to become entangled in provider SDKs.
 
+## Source layout
+
+Each Swift file contains one primary type and is named exactly after that type,
+including protocols and type aliases. Nested implementation types such as `CodingKeys`
+stay with their owning type. Extensions may stay with their type; separate extension
+files use `Type+Purpose.swift`.
+
+Provider models live in each module's `Models/` directory, and typed operation
+extensions live in `Extensions/`. Generated declarations follow the same rules as
+handwritten code; numbered model batches are never published. Every Swift source
+has a filename, project name, fixed creation date, and copyright header. A generated
+artifact marker records which files are maintained by the private pipeline.
+
+Run `python3 Scripts/check_swift_layout.py` to validate declarations with the active
+Xcode toolchain's Swift parser. CI checks this convention together with regeneration
+and artifact hashes. The layout refactor preserves public type names and API behavior.
+
 ## Layers
 
 ### HyperProxyCore

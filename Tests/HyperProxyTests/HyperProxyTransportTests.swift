@@ -1,7 +1,14 @@
+//
+//  HyperProxyTransportTests.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+
 import Foundation
 import HyperProxyOpenAI
 import Testing
-
 @testable import HyperProxyCore
 
 @Suite("HyperProxy transport", .serialized)
@@ -760,95 +767,5 @@ struct HyperProxyTransportTests {
     let configuration = URLSessionConfiguration.ephemeral
     configuration.protocolClasses = [TransportURLProtocol.self]
     return URLSession(configuration: configuration)
-  }
-}
-
-private final class LockedRequestCounter: @unchecked Sendable {
-  private let lock = NSLock()
-  private var count = 0
-
-  var value: Int {
-    self.lock.withLock { self.count }
-  }
-
-  func increment() -> Int {
-    self.lock.withLock {
-      self.count += 1
-      return self.count
-    }
-  }
-
-  func reset() {
-    self.lock.withLock { self.count = 0 }
-  }
-}
-
-private struct TransportStubResponse: Sendable {
-  let status: Int
-  let headers: [String: String]
-  let chunks: [Data]
-}
-
-private final class TransportURLProtocol: URLProtocol, @unchecked Sendable {
-  static let stub = TransportURLProtocolStub()
-
-  override class func canInit(with request: URLRequest) -> Bool {
-    true
-  }
-
-  override class func canonicalRequest(for request: URLRequest) -> URLRequest {
-    request
-  }
-
-  override func startLoading() {
-    do {
-      let stub = try Self.stub.response(for: self.request)
-      let response = HTTPURLResponse(
-        url: self.request.url!,
-        statusCode: stub.status,
-        httpVersion: "HTTP/1.1",
-        headerFields: stub.headers
-      )!
-      self.client?.urlProtocol(
-        self,
-        didReceive: response,
-        cacheStoragePolicy: .notAllowed
-      )
-      for chunk in stub.chunks {
-        self.client?.urlProtocol(self, didLoad: chunk)
-      }
-      self.client?.urlProtocolDidFinishLoading(self)
-    } catch {
-      self.client?.urlProtocol(self, didFailWithError: error)
-    }
-  }
-
-  override func stopLoading() {}
-}
-
-private final class TransportURLProtocolStub: @unchecked Sendable {
-  typealias Handler = @Sendable (URLRequest) throws -> TransportStubResponse
-
-  private let lock = NSLock()
-  private var requestHandler: Handler?
-
-  var handler: Handler? {
-    get {
-      self.lock.withLock { self.requestHandler }
-    }
-    set {
-      self.lock.withLock { self.requestHandler = newValue }
-    }
-  }
-
-  func reset() {
-    self.handler = nil
-  }
-
-  func response(for request: URLRequest) throws -> TransportStubResponse {
-    guard let handler else {
-      throw HyperProxyError.invalidResponse
-    }
-    return try handler(request)
   }
 }

@@ -9,7 +9,7 @@ function walk(dir) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     const file = path.join(dir, entry.name);
     if (entry.isDirectory()) walk(file);
-    else if (file.endsWith('.generated.swift')) {
+    else if (file.endsWith('.swift') && fs.readFileSync(file, 'utf8').slice(0, 600).includes('Maintainer-generated release artifact.')) {
       const module = file.split(path.sep)[1];
       if (!groups.has(module)) groups.set(module, []);
       groups.get(module).push(file);

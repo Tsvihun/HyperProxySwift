@@ -1,58 +1,13 @@
+//
+//  HyperProxyProviderRoute.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+
 import Foundation
 import HyperProxyCore
-
-public enum HyperProxyProviderBodyKind: String, Sendable, Codable {
-  case none
-  case json
-  case multipart
-  case binary
-  case text
-  case formURLEncoded
-  /// The operation accepts more than one request media type.
-  case mixed
-}
-
-public enum HyperProxyProviderResponseKind: String, Sendable, Codable {
-  case json
-  case serverSentEvents
-  case binary
-  case text
-  case webSocket
-  case empty
-  case mixed
-}
-
-public enum HyperProxyProviderAPILifecycle: String, Sendable, Codable {
-  case stable
-  case beta
-  case deprecated
-}
-
-public enum HyperProxyProviderAPIAccess: String, Sendable, Codable {
-  case `public`
-  case admin
-}
-
-public enum HyperProxyProviderRouteError: Error, Sendable, Equatable {
-  case unknownOperation(provider: String, operation: String)
-  case missingPathParameter(String)
-  case unexpectedJSONBody(operation: String)
-  case unexpectedBodyKind(
-    operation: String,
-    expected: HyperProxyProviderBodyKind,
-    actual: HyperProxyProviderBodyKind
-  )
-  case invalidUpstreamBaseURL(String)
-  case unexpectedResponseKind(
-    operation: String,
-    expected: HyperProxyProviderResponseKind,
-    actual: HyperProxyProviderResponseKind
-  )
-  /// A JSON-decoding typed call received a body whose stream flag is on. The
-  /// provider would answer with server-sent events that a single-object decode
-  /// cannot parse — call the named streaming variant instead.
-  case streamingBodyOnJSONCall(operation: String, streamingVariant: String)
-}
 
 public struct HyperProxyProviderRoute: Sendable {
   public let operation: String
@@ -219,59 +174,5 @@ public struct HyperProxyProviderRoute: Sendable {
       .split(separator: "/", omittingEmptySubsequences: false)
       .map { Self.encodePathComponent(String($0)) }
       .joined(separator: "/")
-  }
-}
-
-public struct HyperProxyProviderDefinition: Sendable {
-  public let id: String
-  public let displayName: String
-  public let documentationURL: URL
-  public let routes: [HyperProxyProviderRoute]
-
-  private let routesByOperation: [String: HyperProxyProviderRoute]
-
-  public init(
-    id: String,
-    displayName: String,
-    documentationURL: URL,
-    routes: [HyperProxyProviderRoute]
-  ) {
-    self.id = id
-    self.displayName = displayName
-    self.documentationURL = documentationURL
-    self.routes = routes
-    self.routesByOperation = Dictionary(
-      uniqueKeysWithValues: routes.map { ($0.operation, $0) }
-    )
-  }
-
-  public func routeIfKnown(_ operation: String) -> HyperProxyProviderRoute? {
-    self.routesByOperation[operation]
-  }
-
-  public func route(_ operation: String) throws -> HyperProxyProviderRoute {
-    guard let route = self.routesByOperation[operation] else {
-      throw HyperProxyProviderRouteError.unknownOperation(
-        provider: self.id,
-        operation: operation
-      )
-    }
-    return route
-  }
-
-  public var surfaces: [String] {
-    Array(Set(self.routes.map(\.surface))).sorted()
-  }
-
-  public func routes(
-    surface: String? = nil,
-    lifecycle: HyperProxyProviderAPILifecycle? = nil,
-    access: HyperProxyProviderAPIAccess? = nil
-  ) -> [HyperProxyProviderRoute] {
-    self.routes.filter { route in
-      (surface == nil || route.surface == surface)
-        && (lifecycle == nil || route.lifecycle == lifecycle)
-        && (access == nil || route.access == access)
-    }
   }
 }

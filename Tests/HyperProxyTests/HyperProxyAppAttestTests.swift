@@ -1,7 +1,14 @@
+//
+//  HyperProxyAppAttestTests.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+
 import CryptoKit
 import Foundation
 import Testing
-
 @testable import HyperProxyCore
 
 @Suite("HyperProxy App Attest", .serialized)
@@ -112,108 +119,5 @@ struct HyperProxyAppAttestTests {
       )!,
       Data(json.utf8)
     )
-  }
-}
-
-private actor MemoryAttestationStorage: HyperProxyAttestationStorage {
-  private var values: [String: Data] = [:]
-
-  func data(forKey key: String) -> Data? {
-    self.values[key]
-  }
-
-  func set(_ data: Data?, forKey key: String) {
-    self.values[key] = data
-  }
-}
-
-private actor MockPlatformAppAttest: HyperProxyPlatformAppAttest {
-  private(set) var attestationHash: Data?
-  private(set) var assertionHashes: [Data] = []
-
-  var hashes: (attestation: Data?, assertions: [Data]) {
-    (self.attestationHash, self.assertionHashes)
-  }
-
-  func isSupported() -> Bool {
-    true
-  }
-
-  func generateKey() -> String {
-    "device-key"
-  }
-
-  func attestKey(keyID: String, clientDataHash: Data) -> Data {
-    self.attestationHash = clientDataHash
-    return Data("attestation".utf8)
-  }
-
-  func generateAssertion(keyID: String, clientDataHash: Data) -> Data {
-    self.assertionHashes.append(clientDataHash)
-    return Data("assertion".utf8)
-  }
-}
-
-private final class AttestationURLProtocol: URLProtocol, @unchecked Sendable {
-  static let stub = LockedURLProtocolStub()
-
-  override class func canInit(with request: URLRequest) -> Bool {
-    true
-  }
-
-  override class func canonicalRequest(for request: URLRequest) -> URLRequest {
-    request
-  }
-
-  override func startLoading() {
-    do {
-      let (response, data) = try Self.stub.response(for: self.request)
-      self.client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
-      self.client?.urlProtocol(self, didLoad: data)
-      self.client?.urlProtocolDidFinishLoading(self)
-    } catch {
-      self.client?.urlProtocol(self, didFailWithError: error)
-    }
-  }
-
-  override func stopLoading() {}
-}
-
-private final class LockedURLProtocolStub: @unchecked Sendable {
-  typealias Handler = @Sendable (URLRequest) throws -> (HTTPURLResponse, Data)
-
-  private let lock = NSLock()
-  private var recordedPaths: [String] = []
-  private var requestHandler: Handler?
-
-  var handler: Handler? {
-    get {
-      self.lock.withLock { self.requestHandler }
-    }
-    set {
-      self.lock.withLock { self.requestHandler = newValue }
-    }
-  }
-
-  var paths: [String] {
-    self.lock.withLock { self.recordedPaths }
-  }
-
-  func reset() {
-    self.lock.withLock {
-      self.recordedPaths = []
-      self.requestHandler = nil
-    }
-  }
-
-  func response(for request: URLRequest) throws -> (HTTPURLResponse, Data) {
-    let handler = self.lock.withLock {
-      self.recordedPaths.append(request.url?.path ?? "")
-      return self.requestHandler
-    }
-    guard let handler else {
-      throw HyperProxyError.invalidResponse
-    }
-    return try handler(request)
   }
 }

@@ -1,0 +1,29 @@
+//
+//  OpenAILiveResponsesDelegationUpdateParam.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+// Maintainer-generated release artifact. Do not edit by hand.
+
+import Foundation
+import HyperProxyCore
+
+public struct OpenAILiveResponsesDelegationUpdateParam: Codable, Sendable {
+  public var responses: OpenAILiveResponsesDelegationSettingsUpdateInputParam?
+  public var typeModel: OpenAILiveResponsesDelegationUpdateParamTypeModel
+
+  public init(
+    typeModel: OpenAILiveResponsesDelegationUpdateParamTypeModel,
+    responses: OpenAILiveResponsesDelegationSettingsUpdateInputParam? = nil
+  ) {
+    self.responses = responses
+    self.typeModel = typeModel
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case responses
+    case typeModel = "type"
+  }
+}

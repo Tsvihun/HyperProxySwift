@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		697B5C6B791DE15D6F05779F /* ProbeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6498BD8116A798967CD3BA03 /* ProbeModel.swift */; };
 		171B73DC77BB6F97800A3D73 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB3F1C87A09EC57E959F47E /* ContentView.swift */; };
 		4D5F2300C9455C8C3D30543F /* HyperProxyOpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = FFAAF19CF6C986FBA12D64DE /* HyperProxyOpenAI */; };
 		501EFD3357A88338DD24172C /* DeviceSecurityProbeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14BE90E133F2198F1DB16DA /* DeviceSecurityProbeApp.swift */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6498BD8116A798967CD3BA03 /* ProbeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProbeModel.swift; sourceTree = "<group>"; };
 		35FC36707120BFCDA54FE950 /* DeviceSecurityProbe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeviceSecurityProbe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87A89F6518ED5C0940DFC4AC /* DeviceSecurityProbe.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = DeviceSecurityProbe.entitlements; sourceTree = "<group>"; };
 		8D0B01B31036C32E69488FB8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -72,6 +74,7 @@
 			children = (
 				B14BE90E133F2198F1DB16DA /* DeviceSecurityProbeApp.swift */,
 				CEB3F1C87A09EC57E959F47E /* ContentView.swift */,
+				6498BD8116A798967CD3BA03 /* ProbeModel.swift */,
 				87A89F6518ED5C0940DFC4AC /* DeviceSecurityProbe.entitlements */,
 			);
 			name = DeviceSecurityProbe;
@@ -150,6 +153,7 @@
 			files = (
 				501EFD3357A88338DD24172C /* DeviceSecurityProbeApp.swift in Sources */,
 				171B73DC77BB6F97800A3D73 /* ContentView.swift in Sources */,
+				697B5C6B791DE15D6F05779F /* ProbeModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

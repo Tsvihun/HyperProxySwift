@@ -1,0 +1,23 @@
+//
+//  DeepSeekInputContentPartType.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+// Maintainer-generated release artifact. Do not edit by hand.
+
+import Foundation
+import HyperProxyCore
+
+public struct DeepSeekInputContentPartType: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+  public static let inputText = Self(rawValue: "input_text")
+  public static let outputText = Self(rawValue: "output_text")
+  public static let reasoningText = Self(rawValue: "reasoning_text")
+}

@@ -1,47 +1,13 @@
+//
+//  HyperProxyProviderCall.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+
 import Foundation
 import HyperProxyCore
-
-public enum HyperProxyProviderCallError: Error, Sendable, Equatable {
-  case invalidPollingPolicy
-  case paginationCursorRepeated(String)
-  case pollingAttemptLimitReached(Int)
-  case pollingTimedOut(TimeInterval)
-}
-
-/// Retry policy for asynchronous provider jobs such as batches, fine-tunes,
-/// dubbing, video generation, and prediction queues.
-public struct HyperProxyPollingPolicy: Sendable, Equatable {
-  public var interval: TimeInterval
-  public var backoffMultiplier: Double
-  public var maximumInterval: TimeInterval
-  public var maximumAttempts: Int?
-  public var timeout: TimeInterval?
-  public var respectsRetryAfterHeader: Bool
-
-  public init(
-    interval: TimeInterval = 1,
-    backoffMultiplier: Double = 1.5,
-    maximumInterval: TimeInterval = 30,
-    maximumAttempts: Int? = nil,
-    timeout: TimeInterval? = 300,
-    respectsRetryAfterHeader: Bool = true
-  ) {
-    self.interval = interval
-    self.backoffMultiplier = backoffMultiplier
-    self.maximumInterval = maximumInterval
-    self.maximumAttempts = maximumAttempts
-    self.timeout = timeout
-    self.respectsRetryAfterHeader = respectsRetryAfterHeader
-  }
-
-  fileprivate var isValid: Bool {
-    self.interval.isFinite && self.interval >= 0
-      && self.backoffMultiplier.isFinite && self.backoffMultiplier >= 1
-      && self.maximumInterval.isFinite && self.maximumInterval >= self.interval
-      && (self.maximumAttempts == nil || self.maximumAttempts! > 0)
-      && (self.timeout == nil || (self.timeout!.isFinite && self.timeout! >= 0))
-  }
-}
 
 /// A fluent, provider-scoped call available for every generated operation.
 ///
@@ -477,18 +443,5 @@ public struct HyperProxyProviderCall<Operation: HyperProxyProviderOperation>:
         actual: self.route.responseKind
       )
     }
-  }
-}
-
-extension HyperProxyProviderService {
-  /// Creates a fluent call for any generated operation in this provider.
-  public func call(
-    _ operation: Operation
-  ) -> HyperProxyProviderCall<Operation> {
-    HyperProxyProviderCall(
-      operation: operation,
-      route: self.route(operation),
-      client: self.client
-    )
   }
 }

@@ -1,0 +1,29 @@
+//
+//  FireworksGatewayCancelSupervisedFineTuningJobParameters.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+// Maintainer-generated release artifact. Do not edit by hand.
+
+import Foundation
+import HyperProxyCore
+
+public struct FireworksGatewayCancelSupervisedFineTuningJobParameters: Codable, Sendable {
+  public var accountId: String
+  public var supervisedFineTuningJobId: String
+
+  public init(
+    accountId: String,
+    supervisedFineTuningJobId: String
+  ) {
+    self.accountId = accountId
+    self.supervisedFineTuningJobId = supervisedFineTuningJobId
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case accountId = "account_id"
+    case supervisedFineTuningJobId = "supervised_fine_tuning_job_id"
+  }
+}

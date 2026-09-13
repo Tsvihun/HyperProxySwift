@@ -24,6 +24,10 @@ jobs:
           node-version: '22'
       - name: Validate generated artifact inventory
         run: node Scripts/check_release_provenance.mjs
+      - name: Validate Swift filenames, declarations, and headers
+        run: |
+          python3 -m unittest discover -s Scripts -p 'test_swift_layout.py'
+          python3 Scripts/check_swift_layout.py
       - name: Require redistribution review before a tagged release
         if: startsWith(github.ref, 'refs/tags/')
         run: node Scripts/check_release_provenance.mjs --release
