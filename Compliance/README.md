@@ -1,18 +1,29 @@
 # Release provenance and privacy
 
 Generated API interfaces are not automatically covered by the SDK's MIT license
-merely because an upstream schema is publicly accessible. The 18 generated
-provider modules currently require a documented rights review before another
-tagged release. This is an unresolved release gate, not an allegation of copying.
+merely because an upstream schema is publicly accessible. The manifest records
+every source snapshot used by the 18 provider modules and the aggregate module.
+Each tagged release requires every referenced source to have documented
+redistribution rights. This is a release gate, not an allegation of copying.
 
-For each module in `provenance.json`, a reviewer must supply:
+For each source in `provenance.json`, a reviewer must supply:
 
-- Exact upstream source URLs and SHA-256 hashes of the schema/document snapshots used.
+- Exact upstream source URLs and SHA-256 hashes of the schema snapshots used. A
+  Stainless pointer records both the pointer and resolved schema; a
+  `reviewedOpenAPI` hash identifies the maintainer-reviewed schema derived from
+  the cited documentation.
 - `rightsBasis` (license and conditions, permission, or counsel's documented analysis)
-  and `evidenceURL` for each source. Do not assume provider documentation is MIT.
+  and `rightsEvidenceURL`. Do not assume provider documentation is MIT.
 - Required copyright/license notices under `Compliance/notices/`, with their paths
   in `noticeFiles`. Use an empty list only when the documented rights basis needs none.
-- `reviewedBy`, `reviewedAt` (ISO date), and `reviewStatus: approved`.
+- `reviewedBy`, `reviewedAt` (ISO date), and `rightsStatus: approved`.
+
+Each module references source IDs. Its `reviewStatus` must be `approved` only when
+all referenced sources are approved. The current manifest includes completed
+evidence reviews for the MIT-licensed OpenAI OpenAPI and Brave Search Skills
+sources, with their required notices preserved. All other sources stay explicitly
+pending until equivalent evidence, provider permission, or counsel analysis is
+recorded.
 
 The artifact hash binds that approval to the actual generated Swift sources.
 Changes invalidate approval. `node Scripts/check_release_provenance.mjs` checks
