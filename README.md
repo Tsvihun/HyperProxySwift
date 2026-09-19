@@ -57,8 +57,9 @@ Add the product your target needs:
 ```
 
 Choose a provider product for a focused dependency, `HyperProxyCore` for raw transport,
-or `HyperProxy` to import all providers. [CocoaPods instructions](CocoaPods/README.md)
-are also available.
+or `HyperProxy` to import all providers. CocoaPods trunk currently publishes the `0.3.x`
+line; use Swift Package Manager for `0.4.0` until the rights review and pod publication
+are complete. See the [CocoaPods instructions](CocoaPods/README.md).
 
 ## Quick start: OpenAI in Swift
 
