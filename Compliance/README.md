@@ -3,8 +3,9 @@
 Generated API interfaces are not automatically covered by the SDK's MIT license
 merely because an upstream schema is publicly accessible. The manifest records
 every source snapshot used by the 18 provider modules and the aggregate module.
-Each tagged release requires every referenced source to have documented
-redistribution rights. This is a release gate, not an allegation of copying.
+Each tagged release requires every referenced source to have either documented
+redistribution rights or an explicit maintainer risk acceptance. This is a release
+decision gate, not an allegation of copying or a claim that an upstream license exists.
 
 For each source in `provenance.json`, a reviewer must supply:
 
@@ -16,14 +17,18 @@ For each source in `provenance.json`, a reviewer must supply:
   and `rightsEvidenceURL`. Do not assume provider documentation is MIT.
 - Required copyright/license notices under `Compliance/notices/`, with their paths
   in `noticeFiles`. Use an empty list only when the documented rights basis needs none.
-- `reviewedBy`, `reviewedAt` (ISO date), and `rightsStatus: approved`.
+- For documented rights: `reviewedBy`, `reviewedAt` (ISO date), and
+  `rightsStatus: approved`.
+- If the maintainer elects to release without an explicit upstream grant:
+  `rightsStatus: riskAccepted`, `riskDecision`, `acceptedBy`, and `acceptedAt`.
+  This records the decision without relabeling the source as permissively licensed.
 
-Each module references source IDs. Its `reviewStatus` must be `approved` only when
-all referenced sources are approved. The current manifest includes completed
-evidence reviews for the MIT-licensed OpenAI OpenAPI and Brave Search Skills
-sources, with their required notices preserved. All other sources stay explicitly
-pending until equivalent evidence, provider permission, or counsel analysis is
-recorded.
+Each module references source IDs. Its `reviewStatus` may be `approved` only when
+every referenced source is either rights-approved or explicitly risk-accepted. The
+manifest includes completed evidence reviews for the MIT-licensed OpenAI OpenAPI
+and Brave Search Skills sources, with their required notices preserved. The
+maintainer accepted the remaining source-provenance risk for the 0.4.1 release;
+those entries remain distinguishable as `riskAccepted`.
 
 The artifact hash binds that approval to the actual generated Swift sources.
 Changes invalidate approval. `node Scripts/check_release_provenance.mjs` checks

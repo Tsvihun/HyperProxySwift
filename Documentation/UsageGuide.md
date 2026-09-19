@@ -35,8 +35,8 @@ direct-to-provider mode. Background URLSessions are rejected because they do
 not honor the redirect delegate. Default/ephemeral sessions and session-level
 certificate pinning remain supported.
 
-`0.4.0` is the current release. See
-[release provenance and privacy checks](../Compliance/README.md) for the open rights review
+`0.4.1` is the current release. See
+[release provenance and privacy checks](../Compliance/README.md) for recorded source decisions
 and the app archive requirements that remain the integrator's responsibility.
 
 ### Platforms
@@ -60,7 +60,7 @@ From another package:
 ```swift
 .package(
   url: "https://github.com/Tsvihun/HyperProxySwift.git",
-  .upToNextMinor(from: "0.4.0")
+  .upToNextMinor(from: "0.4.1")
 )
 ```
 
@@ -72,25 +72,24 @@ Then add only the product your target needs:
 
 ### CocoaPods
 
-CocoaPods supports iOS 15+ and macOS 13+. CocoaPods trunk currently publishes the `0.3.x`
-SDK line; use Swift Package Manager for `0.4.0`, and use SwiftPM for visionOS and watchOS.
+CocoaPods supports iOS 15+ and macOS 13+. CocoaPods trunk publishes the `0.4.1`
+SDK line; use SwiftPM for visionOS and watchOS.
 
 Install the complete SDK:
 
 ```ruby
-pod 'HyperProxy', '~> 0.3'
+pod 'HyperProxy', '~> 0.4'
 ```
 
 Or keep the application binary smaller by selecting only what it uses:
 
 ```ruby
-pod 'HyperProxyOpenAI', '~> 0.3'
-pod 'HyperProxyRealtimeAudio', '~> 0.3' # optional microphone/playback support
+pod 'HyperProxyOpenAI', '~> 0.4'
+pod 'HyperProxyRealtimeAudio', '~> 0.4' # optional microphone/playback support
 ```
 
 The aggregate pod and every component pod use the same module names as SwiftPM, so application
-imports remain unchanged when switching package managers. Do not select a `0.4` pod constraint
-until the rights review is complete and matching specifications are visible on CocoaPods trunk.
+imports remain unchanged when switching package managers.
 
 ## Five-minute OpenAI integration
 

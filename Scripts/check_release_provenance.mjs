@@ -26,6 +26,7 @@ if (manifest.schemaVersion !== 2) failures.push('Unsupported provenance schema')
 
 const sources = new Map(Object.entries(manifest.sources ?? {}));
 const referencedSources = new Set();
+const acceptedRisks = [];
 for (const [sourceID, source] of sources) {
   if (!source.kind || !httpsURL(source.sourceURL) || !hexDigest(source.snapshotSha256)) {
     failures.push(`${sourceID}: source needs kind, HTTPS URL and snapshot hash`);
@@ -35,12 +36,18 @@ for (const [sourceID, source] of sources) {
       failures.push(`${sourceID}: source pointer needs HTTPS URL and snapshot hash`);
     }
   }
-  if (!['approved', 'pending'].includes(source.rightsStatus) || !source.rightsBasis ||
+  if (!['approved', 'riskAccepted', 'pending'].includes(source.rightsStatus) || !source.rightsBasis ||
       !httpsURL(source.rightsEvidenceURL)) {
     failures.push(`${sourceID}: source needs rights status, basis and HTTPS evidence URL`);
   }
   if (source.rightsStatus === 'approved' && (!source.reviewedBy || !/^\d{4}-\d{2}-\d{2}$/.test(source.reviewedAt ?? ''))) {
     failures.push(`${sourceID}: approved source needs reviewer and ISO review date`);
+  }
+  if (source.rightsStatus === 'riskAccepted') {
+    if (!source.riskDecision || !source.acceptedBy || !/^\d{4}-\d{2}-\d{2}$/.test(source.acceptedAt ?? '')) {
+      failures.push(`${sourceID}: accepted risk needs decision, maintainer and ISO acceptance date`);
+    }
+    acceptedRisks.push(sourceID);
   }
   for (const file of source.noticeFiles ?? []) {
     if (!file.startsWith('Compliance/notices/') || file.includes('..') || !fs.existsSync(file)) {
@@ -64,7 +71,7 @@ for (const [module, files] of groups) {
     referencedSources.add(sourceID);
     const source = sources.get(sourceID);
     if (!source) failures.push(`${module}: unknown source ${sourceID}`);
-    else if (source.rightsStatus !== 'approved') unresolved.push(sourceID);
+    else if (source.rightsStatus === 'pending') unresolved.push(sourceID);
   }
   const expectedStatus = unresolved.length ? 'pending' : 'approved';
   if (record.reviewStatus !== expectedStatus) {
@@ -82,4 +89,4 @@ if (process.argv.includes('--release') && pending.length) {
   failures.push(`Rights review still pending:\n${details}`);
 }
 if (failures.length) { console.error(failures.join('\n')); process.exit(1); }
-console.log(`Inventory verified: ${groups.size} modules, ${sources.size} source snapshots. Rights approvals pending: ${pending.length}.`);
+console.log(`Inventory verified: ${groups.size} modules, ${sources.size} source snapshots. Rights approvals pending: ${pending.length}. Maintainer risk acceptances: ${acceptedRisks.length}.`);

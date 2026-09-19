@@ -9,8 +9,8 @@ transport in a trusted environment.
 · [Usage guide](Documentation/UsageGuide.md) · [Examples](Examples/QuickStart)
 · [Issues](https://github.com/Tsvihun/HyperProxySwift/issues)
 
-> **Release status:** `0.4.0` is the current release. Source-rights review remains open,
-> and integrators must still perform app-archive privacy checks. See
+> **Release status:** `0.4.1` is the current release. Source provenance is recorded with
+> explicit maintainer decisions, and integrators must still perform app-archive privacy checks. See
 > [release checks](Compliance/README.md).
 
 ## What you can build
@@ -46,7 +46,7 @@ In a `Package.swift` manifest, select the `0.4.x` release line:
 ```swift
 .package(
   url: "https://github.com/Tsvihun/HyperProxySwift.git",
-  .upToNextMinor(from: "0.4.0")
+  .upToNextMinor(from: "0.4.1")
 )
 ```
 
@@ -57,9 +57,8 @@ Add the product your target needs:
 ```
 
 Choose a provider product for a focused dependency, `HyperProxyCore` for raw transport,
-or `HyperProxy` to import all providers. CocoaPods trunk currently publishes the `0.3.x`
-line; use Swift Package Manager for `0.4.0` until the rights review and pod publication
-are complete. See the [CocoaPods instructions](CocoaPods/README.md).
+or `HyperProxy` to import all providers. The `0.4.1` release is available through Swift
+Package Manager and CocoaPods. See the [CocoaPods instructions](CocoaPods/README.md).
 
 ## Quick start: OpenAI in Swift
 

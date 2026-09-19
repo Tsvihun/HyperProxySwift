@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'HyperProxyCore'
-  s.version = '0.4.0'
+  s.version = '0.4.1'
   s.summary = 'Provider-neutral secure AI API transport for Swift.'
   s.homepage = 'https://github.com/Tsvihun/HyperProxySwift'
   s.license = { :type => 'MIT' }

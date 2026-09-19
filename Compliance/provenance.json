@@ -7,38 +7,50 @@
       "snapshotSha256": "8a5cbd0e3a1e2db9df7f35d750bdabb3228da9d635c3acb967fc969f5fbb2d17",
       "pointerURL": "https://raw.githubusercontent.com/anthropics/anthropic-sdk-typescript/main/.stats.yml",
       "pointerSha256": "5abee595c227919bddc95e94d6688805ed81d9ab46b90b1a755106234a3a41c8",
-      "rightsStatus": "pending",
+      "rightsStatus": "riskAccepted",
       "rightsBasis": "No explicit redistribution grant for the resolved schema has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://github.com/anthropics/anthropic-sdk-typescript",
-      "noticeFiles": []
+      "noticeFiles": [],
+      "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-09-20"
     },
     "bfl/licenses-openapi": {
       "kind": "openapi",
       "sourceURL": "https://api.bfl.ai/v1/licenses/docs/openapi.json",
       "snapshotSha256": "e797d22d77f302b01f4cafabaaa75e32a4bed97cc823ae63c50a695242d537cb",
-      "rightsStatus": "pending",
+      "rightsStatus": "riskAccepted",
       "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://api.bfl.ai/v1/licenses/docs/openapi.json",
-      "noticeFiles": []
+      "noticeFiles": [],
+      "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-09-20"
     },
     "bfl/openapi": {
       "kind": "openapi",
       "sourceURL": "https://api.bfl.ai/openapi.json",
       "snapshotSha256": "0bb3988d12122ada452f21a13f100afa7395e77c8479e23168160fa5f4e9bbc0",
-      "rightsStatus": "pending",
+      "rightsStatus": "riskAccepted",
       "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://api.bfl.ai/openapi.json",
-      "noticeFiles": []
+      "noticeFiles": [],
+      "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-09-20"
     },
     "bfl/reviewed-lora-openapi": {
       "kind": "reviewedOpenAPI",
       "sourceURL": "https://docs.bfl.ml/flux_2/flux2_lora_inference.md",
       "snapshotSha256": "8b2ee99cba34ac24b1569a87d851e71dad68117ece051bf65d826f29d2e3112b",
       "snapshotBasis": "Hash of the maintainer-reviewed schema derived from the cited documentation.",
-      "rightsStatus": "pending",
+      "rightsStatus": "riskAccepted",
       "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://docs.bfl.ml/flux_2/flux2_lora_inference.md",
-      "noticeFiles": []
+      "noticeFiles": [],
+      "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-09-20"
     },
     "brave/reviewed-search-api": {
       "kind": "reviewedOpenAPI",
@@ -58,113 +70,149 @@
       "kind": "openapi",
       "sourceURL": "https://developers.deepl.com/api-reference/openapi.yaml",
       "snapshotSha256": "c5cb671e68efcf1b0bd717f59449d8826fc7da1308fca584352818c6542a0956",
-      "rightsStatus": "pending",
+      "rightsStatus": "riskAccepted",
       "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://developers.deepl.com/api-reference/openapi.yaml",
-      "noticeFiles": []
+      "noticeFiles": [],
+      "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-09-20"
     },
     "deepl/voice-asyncapi": {
       "kind": "asyncapi",
       "sourceURL": "https://developers.deepl.com/api-reference/voice.asyncapi.yaml",
       "snapshotSha256": "a696569fe9d7bd12dd4c3c8e38bfad944f534696195d979be9f0f2f258bad9f4",
-      "rightsStatus": "pending",
+      "rightsStatus": "riskAccepted",
       "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://developers.deepl.com/api-reference/voice.asyncapi.yaml",
-      "noticeFiles": []
+      "noticeFiles": [],
+      "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-09-20"
     },
     "deepseek/reviewed-anthropic-openapi": {
       "kind": "reviewedOpenAPI",
       "sourceURL": "https://api-docs.deepseek.com/guides/anthropic_api",
       "snapshotSha256": "2ab0642b10d1739b9fde8d28c54e01fe2196ba628fe8f4d2edb3f47fdae05994",
       "snapshotBasis": "Hash of the maintainer-reviewed schema derived from the cited documentation.",
-      "rightsStatus": "pending",
+      "rightsStatus": "riskAccepted",
       "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://api-docs.deepseek.com/guides/anthropic_api",
-      "noticeFiles": []
+      "noticeFiles": [],
+      "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-09-20"
     },
     "deepseek/reviewed-core-openapi": {
       "kind": "reviewedOpenAPI",
       "sourceURL": "https://api-docs.deepseek.com/api/create-chat-completion/",
       "snapshotSha256": "e206c8a4ae9f6dd41bc45797e93a6d9ff6de95d2b57e954b0475e28ca640a131",
       "snapshotBasis": "Hash of the maintainer-reviewed schema derived from the cited documentation.",
-      "rightsStatus": "pending",
+      "rightsStatus": "riskAccepted",
       "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://api-docs.deepseek.com/api/create-chat-completion/",
-      "noticeFiles": []
+      "noticeFiles": [],
+      "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-09-20"
     },
     "deepseek/reviewed-responses-openapi": {
       "kind": "reviewedOpenAPI",
       "sourceURL": "https://api-docs.deepseek.com/api/create-response/",
       "snapshotSha256": "21a28b35261a82e2ff5dd7f315315e0ddb180a93b1e67507303da6073b844100",
       "snapshotBasis": "Hash of the maintainer-reviewed schema derived from the cited documentation.",
-      "rightsStatus": "pending",
+      "rightsStatus": "riskAccepted",
       "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://api-docs.deepseek.com/api/create-response/",
-      "noticeFiles": []
+      "noticeFiles": [],
+      "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-09-20"
     },
     "eachai/openapi-api": {
       "kind": "openapi",
       "sourceURL": "https://docs.eachlabs.ai/openapi_specs/models.json",
       "snapshotSha256": "74145712535ef81e2f948a47f5013d16054614a75ead5ff6c2b8ed84bcf7e5cd",
-      "rightsStatus": "pending",
+      "rightsStatus": "riskAccepted",
       "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://docs.eachlabs.ai/openapi_specs/models.json",
-      "noticeFiles": []
+      "noticeFiles": [],
+      "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-09-20"
     },
     "eachai/openapi-workflows-host": {
       "kind": "openapi",
       "sourceURL": "https://docs.eachlabs.ai/openapi_specs/workflows.json",
       "snapshotSha256": "518ebf03667562c440b0803abe2eda4821e770fe4a5d660af59633ec00c32877",
-      "rightsStatus": "pending",
+      "rightsStatus": "riskAccepted",
       "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://docs.eachlabs.ai/openapi_specs/workflows.json",
-      "noticeFiles": []
+      "noticeFiles": [],
+      "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-09-20"
     },
     "eachai/reviewed-sense": {
       "kind": "reviewedOpenAPI",
       "sourceURL": "https://docs.eachlabs.ai/llms.txt",
       "snapshotSha256": "e5f87eee176eaa6638d580fe65e083939b7dc564b03868753a54e7023d457170",
       "snapshotBasis": "Hash of the maintainer-reviewed schema derived from the cited documentation.",
-      "rightsStatus": "pending",
+      "rightsStatus": "riskAccepted",
       "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://docs.eachlabs.ai/llms.txt",
-      "noticeFiles": []
+      "noticeFiles": [],
+      "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-09-20"
     },
     "elevenlabs/openapi": {
       "kind": "openapi",
       "sourceURL": "https://api.elevenlabs.io/openapi.json",
       "snapshotSha256": "3659e012c6e75f9334e83ecd165f7a2d606eed93a438992695e4271e69061d7e",
-      "rightsStatus": "pending",
+      "rightsStatus": "riskAccepted",
       "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://api.elevenlabs.io/openapi.json",
-      "noticeFiles": []
+      "noticeFiles": [],
+      "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-09-20"
     },
     "fal/platform-openapi": {
       "kind": "openapi",
       "sourceURL": "https://api.fal.ai/v1/openapi.json",
       "snapshotSha256": "a7bc5d08cf272253217d969dc4969ad78a160759e7f4d1545c25d56e856567de",
-      "rightsStatus": "pending",
+      "rightsStatus": "riskAccepted",
       "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://api.fal.ai/v1/openapi.json",
-      "noticeFiles": []
+      "noticeFiles": [],
+      "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-09-20"
     },
     "fireworks/merged-openapi": {
       "kind": "openapi",
       "sourceURL": "https://docs.fireworks.ai/merged.openapi.yaml",
       "snapshotSha256": "39d27fb648016cdba6913b10a1db0537a6f10afed6fe44326824b4263429adcc",
-      "rightsStatus": "pending",
+      "rightsStatus": "riskAccepted",
       "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://docs.fireworks.ai/merged.openapi.yaml",
-      "noticeFiles": []
+      "noticeFiles": [],
+      "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-09-20"
     },
     "gemini/discovery-v1beta": {
       "kind": "googleDiscovery",
       "sourceURL": "https://generativelanguage.googleapis.com/$discovery/rest?version=v1beta",
       "snapshotSha256": "8ff12a0427e972d5d4040753ecc8e7d31f0e23e36321b5f7e7c0c1d1ad156531",
-      "rightsStatus": "pending",
+      "rightsStatus": "riskAccepted",
       "rightsBasis": "No explicit redistribution grant for the Discovery document has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://developers.google.com/terms/api-services-user-data-policy",
-      "noticeFiles": []
+      "noticeFiles": [],
+      "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-09-20"
     },
     "groq/official-sdk-openapi": {
       "kind": "stainlessOpenAPI",
@@ -172,19 +220,25 @@
       "snapshotSha256": "695e2c7db9369f2dbf7283786d62e8166d4e2761cc599c3dc6df9a97c7f79a2d",
       "pointerURL": "https://raw.githubusercontent.com/groq/groq-typescript/main/.stats.yml",
       "pointerSha256": "dc13d304fac5475c1ad16a7a6436a9b92c8f763d4cab722fd872323d6719fd51",
-      "rightsStatus": "pending",
+      "rightsStatus": "riskAccepted",
       "rightsBasis": "No explicit redistribution grant for the resolved schema has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://github.com/groq/groq-typescript",
-      "noticeFiles": []
+      "noticeFiles": [],
+      "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-09-20"
     },
     "mistral/openapi": {
       "kind": "openapi",
       "sourceURL": "https://docs.mistral.ai/openapi.yaml",
       "snapshotSha256": "e7946a3364d6b519e2980a699c71714eaca7623f19ad4ca28782d4528b1d1c95",
-      "rightsStatus": "pending",
+      "rightsStatus": "riskAccepted",
       "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://docs.mistral.ai/openapi.yaml",
-      "noticeFiles": []
+      "noticeFiles": [],
+      "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-09-20"
     },
     "openai/openapi": {
       "kind": "openapi",
@@ -203,73 +257,92 @@
       "kind": "openapi",
       "sourceURL": "https://openrouter.ai/docs/openapi/openapi.yaml",
       "snapshotSha256": "fd10216d3404162c3a375468d65e6e8bfe9ad4a89cc98984c6fc8f73e0526bee",
-      "rightsStatus": "pending",
+      "rightsStatus": "riskAccepted",
       "rightsBasis": "The schema declares MIT but an authoritative copyright notice for this schema was not captured; provenance review remains required.",
       "rightsEvidenceURL": "https://openrouter.ai/docs/openapi/openapi.yaml",
-      "noticeFiles": []
+      "noticeFiles": [],
+      "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-09-20"
     },
     "perplexity/openapi": {
       "kind": "openapi",
       "sourceURL": "https://docs.perplexity.ai/openapi.json",
       "snapshotSha256": "e0bfd0c30f919f2679d394e671eba3a309688358f5c3c4fbdbba247f367577e6",
-      "rightsStatus": "pending",
+      "rightsStatus": "riskAccepted",
       "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://docs.perplexity.ai/openapi.json",
-      "noticeFiles": []
+      "noticeFiles": [],
+      "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-09-20"
     },
     "replicate/openapi": {
       "kind": "openapi",
       "sourceURL": "https://api.replicate.com/openapi.json",
       "snapshotSha256": "0ef4faac379395e983c367362c3a4378a7f5a5cee14fefc85e2b032bebabf268",
-      "rightsStatus": "pending",
+      "rightsStatus": "riskAccepted",
       "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://api.replicate.com/openapi.json",
-      "noticeFiles": []
+      "noticeFiles": [],
+      "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-09-20"
     },
     "stability/openapi-v2beta": {
       "kind": "openapi",
       "sourceURL": "https://api.stability.ai/v2alpha/openapi",
       "snapshotSha256": "ae367894acced49ed2faf3edc48e15d5bfd2581add0f57ab27fecc52ad19e510",
-      "rightsStatus": "pending",
+      "rightsStatus": "riskAccepted",
       "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://api.stability.ai/v2alpha/openapi",
-      "noticeFiles": []
+      "noticeFiles": [],
+      "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-09-20"
     },
     "together/openapi": {
       "kind": "openapi",
       "sourceURL": "https://docs.together.ai/openapi.yaml",
       "snapshotSha256": "bf4ead012a5af45aa8487eb3731b4a5cb53e0d9d92514f95064706d0f66e49bf",
-      "rightsStatus": "pending",
+      "rightsStatus": "riskAccepted",
       "rightsBasis": "The schema declares MIT, but its referenced license URL returned 404 on 2026-09-19; authoritative license evidence and notice remain required.",
       "rightsEvidenceURL": "https://docs.together.ai/openapi.yaml",
-      "noticeFiles": []
+      "noticeFiles": [],
+      "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-09-20"
     }
   },
   "modules": [
     {
       "module": "HyperProxyAnthropic",
       "artifactSha256": "b23bb890bac2a1810a5f6beeedcc5535c23dd51ebfe6519cc7aa14021ce95e07",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "anthropic/official-sdk-openapi"
-      ]
+      ],
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-09-20"
     },
     {
       "module": "HyperProxyBFL",
       "artifactSha256": "a289beb0fa830062ec45619b5dae2a0cf56687b33283ad7da655b93d39c7e47f",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "bfl/openapi",
         "bfl/licenses-openapi",
         "bfl/reviewed-lora-openapi"
-      ]
+      ],
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-09-20"
     },
     {
       "module": "HyperProxyBrave",
       "artifactSha256": "e9fe9bac141c6ab912c9198c6628c56d0e9e6f7d162fa8a88cf202d659e2ebd2",
       "reviewStatus": "approved",
-      "reviewedBy": "Codex automated license evidence audit",
-      "reviewedAt": "2026-09-19",
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-09-20",
       "sourceIDs": [
         "brave/reviewed-search-api"
       ]
@@ -277,86 +350,104 @@
     {
       "module": "HyperProxyDeepL",
       "artifactSha256": "b1d2ebc57eb0770ebce6c0f6e3fc0f9a7886a7f98f3fded4767c9f359dac74d2",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "deepl/openapi",
         "deepl/voice-asyncapi"
-      ]
+      ],
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-09-20"
     },
     {
       "module": "HyperProxyDeepSeek",
       "artifactSha256": "2df5cde7b455640701e4fc25c7e5255363a50f53f66cf125966eb1d600a0b654",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "deepseek/reviewed-core-openapi",
         "deepseek/reviewed-anthropic-openapi",
         "deepseek/reviewed-responses-openapi"
-      ]
+      ],
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-09-20"
     },
     {
       "module": "HyperProxyEachAI",
       "artifactSha256": "e361ada272de3e4d7ff56ba3b1f30264fc91d10e3413ecd926513a15c163c3c2",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "eachai/openapi-api",
         "eachai/openapi-workflows-host",
         "eachai/reviewed-sense"
-      ]
+      ],
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-09-20"
     },
     {
       "module": "HyperProxyElevenLabs",
       "artifactSha256": "715a4d48d98f238e08614da7a49c5a4131a2b524b6902658111a8a818e3b6a7c",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "elevenlabs/openapi"
-      ]
+      ],
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-09-20"
     },
     {
       "module": "HyperProxyFal",
       "artifactSha256": "a7db29512f644df9eab968be4ca5c59e3c9eeeda00656aadcff081328c2d9e73",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "fal/platform-openapi"
-      ]
+      ],
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-09-20"
     },
     {
       "module": "HyperProxyFireworks",
       "artifactSha256": "6df2004b789fb1e1e09978cf926813a73d77634387d4aaf71d56d01cc4a4b284",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "fireworks/merged-openapi"
-      ]
+      ],
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-09-20"
     },
     {
       "module": "HyperProxyGemini",
       "artifactSha256": "5ab09c129068a30dca81e22ea652cc0a2d0f2fa82c6b88468f0b7f43fa6ec042",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "gemini/discovery-v1beta"
-      ]
+      ],
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-09-20"
     },
     {
       "module": "HyperProxyGroq",
       "artifactSha256": "b82efdb2d7ff4312d5a4104d944c91f2761b286a08a2a2b13794f92f8500b06e",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "groq/official-sdk-openapi"
-      ]
+      ],
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-09-20"
     },
     {
       "module": "HyperProxyMistral",
       "artifactSha256": "66bbd3c4442725bb24ffe0559b1f76bc0854cc6583845c77579feea2d6a3d75c",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "mistral/openapi"
-      ]
+      ],
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-09-20"
     },
     {
       "module": "HyperProxyOpenAI",
       "artifactSha256": "1ac1d0b14bde925ab1c73f7f774bfc9296f4cfe216ddeebfe3b0943964f5f323",
       "reviewStatus": "approved",
-      "reviewedBy": "Codex automated license evidence audit",
-      "reviewedAt": "2026-09-19",
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-09-20",
       "sourceIDs": [
         "openai/openapi"
       ]
@@ -364,23 +455,27 @@
     {
       "module": "HyperProxyOpenRouter",
       "artifactSha256": "0ecaccb8d68ce0cc5f458d3716284894aed37f6bc48c44325f8c8af323f6da01",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "openrouter/openapi"
-      ]
+      ],
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-09-20"
     },
     {
       "module": "HyperProxyPerplexity",
       "artifactSha256": "946d9202f1bdabc2b6fc25a2c3c0f15b6f3c2f995e7bee0d5364251727d286bb",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "perplexity/openapi"
-      ]
+      ],
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-09-20"
     },
     {
       "module": "HyperProxyProviders",
       "artifactSha256": "67830ec4958c4f238d80a536083847eaceedda987db52316ce5ec883f97d4967",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "anthropic/official-sdk-openapi",
         "bfl/licenses-openapi",
@@ -407,31 +502,39 @@
         "replicate/openapi",
         "stability/openapi-v2beta",
         "together/openapi"
-      ]
+      ],
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-09-20"
     },
     {
       "module": "HyperProxyReplicate",
       "artifactSha256": "c03b4d20645dba733c5f96d7c019550375e0f72529d3945b4283eb3619680736",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "replicate/openapi"
-      ]
+      ],
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-09-20"
     },
     {
       "module": "HyperProxyStability",
       "artifactSha256": "147222cd3630070d65464abe5f12f0a8f7bc503a25599885bdff858a30abd449",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "stability/openapi-v2beta"
-      ]
+      ],
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-09-20"
     },
     {
       "module": "HyperProxyTogether",
       "artifactSha256": "18468d125bd57d44c892e4672c7337954e3cd68507190ef9a31c91a692508695",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "together/openapi"
-      ]
+      ],
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-09-20"
     }
   ]
 }

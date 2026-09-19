@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+## 0.4.1
+
+- Record the exact URL and SHA-256 provenance of all 25 generated provider source
+  snapshots, including resolved Stainless schemas and maintainer-reviewed schemas.
+- Preserve the OpenAI and Brave MIT notices and distinguish evidence-backed approvals
+  from explicit maintainer risk acceptances without claiming unverified upstream licenses.
+- Publish the complete `0.4.x` CocoaPods graph alongside the Swift Package Manager tag.
+- Clarify release availability and installation guidance. Runtime and public Swift APIs
+  are unchanged from `0.4.0`.
+
 ## 0.4.0
 
 - Add `HyperProxyGatewayRejection`, decoded from gateway HTTP error bodies

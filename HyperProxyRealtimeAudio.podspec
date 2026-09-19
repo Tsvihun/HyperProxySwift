@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'HyperProxyRealtimeAudio'
-  s.version = '0.4.0'
+  s.version = '0.4.1'
   s.summary = 'Duplex PCM16 capture, playback, and echo cancellation for realtime AI.'
   s.homepage = 'https://github.com/Tsvihun/HyperProxySwift'
   s.license = { :type => 'MIT' }
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '13.0'
   s.source_files = 'Sources/HyperProxyRealtimeAudio/**/*.swift'
   s.framework = 'AVFoundation'
-  s.dependency 'HyperProxyCore', '= 0.4.0'
+  s.dependency 'HyperProxyCore', '= 0.4.1'
   s.pod_target_xcconfig = {
     'DEFINES_MODULE' => 'YES',
     'SWIFT_STRICT_CONCURRENCY' => 'complete'

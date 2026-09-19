@@ -2,9 +2,8 @@
 
 CocoaPods supports iOS 15+ and macOS 13+. SwiftPM additionally supports visionOS and watchOS.
 
-> **Published version:** CocoaPods trunk currently provides the `0.3.x` SDK line. Use Swift
-> Package Manager for `0.4.0` until the generated-source rights review is complete and matching
-> pod specifications have been published.
+> **Published version:** CocoaPods trunk provides the `0.4.1` SDK line. SwiftPM and CocoaPods
+> use the same source tag and module boundaries.
 
 HyperProxySwift preserves its SwiftPM module boundaries in CocoaPods:
 

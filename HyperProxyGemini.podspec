@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'HyperProxyGemini'
-  s.version = '0.4.0'
+  s.version = '0.4.1'
   s.summary = 'Complete Google Gemini API module for HyperProxySwift.'
   s.homepage = 'https://github.com/Tsvihun/HyperProxySwift'
   s.license = { :type => 'MIT' }
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.swift_version = '6.0'; s.cocoapods_version = '>= 1.16.0'
   s.ios.deployment_target = '15.0'; s.osx.deployment_target = '13.0'
   s.source_files = 'Sources/HyperProxyGemini/**/*.swift'
-  s.dependency 'HyperProxyCore', '= 0.4.0'; s.dependency 'HyperProxyProviders', '= 0.4.0'
+  s.dependency 'HyperProxyCore', '= 0.4.1'; s.dependency 'HyperProxyProviders', '= 0.4.1'
   s.pod_target_xcconfig = {
     'DEFINES_MODULE' => 'YES',
     'SWIFT_STRICT_CONCURRENCY' => 'complete'
