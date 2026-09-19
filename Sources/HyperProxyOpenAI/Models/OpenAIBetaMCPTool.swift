@@ -12,28 +12,28 @@ import HyperProxyCore
 
 public struct OpenAIBetaMCPTool: Codable, Sendable {
   public var allowedCallers: [OpenAIBetaCallableToolAllowedCaller]?
-  public var allowedTools: HyperProxyJSONValue?
+  public var allowedTools: OpenAIBetaMCPToolAllowedToolsAnyOf1?
   public var authorization: String?
   public var connectorId: OpenAIBetaMCPToolConnectorId?
   public var deferLoading: Bool?
   public var headers: [String: String]?
-  public var requireApproval: HyperProxyJSONValue?
+  public var requireApproval: OpenAIBetaMCPToolRequireApprovalAnyOf1?
   public var serverDescription: String?
   public var serverLabel: String
   public var serverUrl: String?
   public var tunnelId: String?
-  public var typeModel: OpenAIBetaMCPToolTypeModel
+  public var kind: OpenAIBetaMCPToolKind
 
   public init(
     serverLabel: String,
-    typeModel: OpenAIBetaMCPToolTypeModel,
+    kind: OpenAIBetaMCPToolKind,
     allowedCallers: [OpenAIBetaCallableToolAllowedCaller]? = nil,
-    allowedTools: HyperProxyJSONValue? = nil,
+    allowedTools: OpenAIBetaMCPToolAllowedToolsAnyOf1? = nil,
     authorization: String? = nil,
     connectorId: OpenAIBetaMCPToolConnectorId? = nil,
     deferLoading: Bool? = nil,
     headers: [String: String]? = nil,
-    requireApproval: HyperProxyJSONValue? = nil,
+    requireApproval: OpenAIBetaMCPToolRequireApprovalAnyOf1? = nil,
     serverDescription: String? = nil,
     serverUrl: String? = nil,
     tunnelId: String? = nil
@@ -49,7 +49,7 @@ public struct OpenAIBetaMCPTool: Codable, Sendable {
     self.serverLabel = serverLabel
     self.serverUrl = serverUrl
     self.tunnelId = tunnelId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -64,6 +64,6 @@ public struct OpenAIBetaMCPTool: Codable, Sendable {
     case serverLabel = "server_label"
     case serverUrl = "server_url"
     case tunnelId = "tunnel_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

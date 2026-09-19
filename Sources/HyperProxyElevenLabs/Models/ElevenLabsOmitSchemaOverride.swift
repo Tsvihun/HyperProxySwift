@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsOmitSchemaOverride: Codable, Sendable {
-  public var source: String?
+  public var source: ElevenLabsOmitSource?
 
   public init(
-    source: String? = nil
+    source: ElevenLabsOmitSource? = nil
   ) {
     self.source = source
   }

@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherDERemoteUploadStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let rEMOTEUPLOADSTATUSPENDING = Self(rawValue: "REMOTE_UPLOAD_STATUS_PENDING")
-  public static let rEMOTEUPLOADSTATUSRUNNING = Self(rawValue: "REMOTE_UPLOAD_STATUS_RUNNING")
-  public static let rEMOTEUPLOADSTATUSERROR = Self(rawValue: "REMOTE_UPLOAD_STATUS_ERROR")
-  public static let rEMOTEUPLOADSTATUSSUCCEEDED = Self(rawValue: "REMOTE_UPLOAD_STATUS_SUCCEEDED")
-  public static let rEMOTEUPLOADSTATUSFAILED = Self(rawValue: "REMOTE_UPLOAD_STATUS_FAILED")
+public enum TogetherDERemoteUploadStatus: String, Codable, Hashable, Sendable {
+  case rEMOTEUPLOADSTATUSPENDING = "REMOTE_UPLOAD_STATUS_PENDING"
+  case rEMOTEUPLOADSTATUSRUNNING = "REMOTE_UPLOAD_STATUS_RUNNING"
+  case rEMOTEUPLOADSTATUSERROR = "REMOTE_UPLOAD_STATUS_ERROR"
+  case rEMOTEUPLOADSTATUSSUCCEEDED = "REMOTE_UPLOAD_STATUS_SUCCEEDED"
+  case rEMOTEUPLOADSTATUSFAILED = "REMOTE_UPLOAD_STATUS_FAILED"
 }

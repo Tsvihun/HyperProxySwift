@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsUUITransferConfigProtocolDiscriminatorMode: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum ElevenLabsUUITransferConfigProtocolDiscriminatorMode: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let prefixValue = Self(rawValue: "prefix")
-  public static let pdParameter = Self(rawValue: "pd_parameter")
+  case prefixValue = "prefix"
+  case pdParameter = "pd_parameter"
 }

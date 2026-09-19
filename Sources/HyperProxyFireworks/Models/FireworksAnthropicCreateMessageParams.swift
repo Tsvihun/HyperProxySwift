@@ -14,12 +14,12 @@ public struct FireworksAnthropicCreateMessageParams: Codable, Sendable {
   public var maxTokens: Int?
   public var messages: [FireworksAnthropicInputMessage]
   public var metadata: FireworksAnthropicMetadata?
-  public var model: FireworksAnthropicModel
+  public var model: String
   public var outputConfig: FireworksAnthropicOutputConfig?
   public var rawOutput: Bool?
   public var stopSequences: [String]?
   public var stream: Bool?
-  public var system: HyperProxyJSONValue?
+  public var system: FireworksAnthropicCreateMessageParamsSystem?
   public var temperature: Double?
   public var thinking: FireworksAnthropicThinkingConfigParam?
   public var toolChoice: FireworksAnthropicToolChoice?
@@ -29,14 +29,14 @@ public struct FireworksAnthropicCreateMessageParams: Codable, Sendable {
 
   public init(
     messages: [FireworksAnthropicInputMessage],
-    model: FireworksAnthropicModel,
+    model: String,
     maxTokens: Int? = nil,
     metadata: FireworksAnthropicMetadata? = nil,
     outputConfig: FireworksAnthropicOutputConfig? = nil,
     rawOutput: Bool? = nil,
     stopSequences: [String]? = nil,
     stream: Bool? = nil,
-    system: HyperProxyJSONValue? = nil,
+    system: FireworksAnthropicCreateMessageParamsSystem? = nil,
     temperature: Double? = nil,
     thinking: FireworksAnthropicThinkingConfigParam? = nil,
     toolChoice: FireworksAnthropicToolChoice? = nil,

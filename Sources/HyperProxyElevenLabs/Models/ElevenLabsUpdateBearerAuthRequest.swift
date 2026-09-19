@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsUpdateBearerAuthRequest: Codable, Sendable {
-  public var authType: String?
+  public var authType: ElevenLabsBearerAuthAuthType?
   public var provider: String?
   public var token: String?
 
   public init(
-    authType: String? = nil,
+    authType: ElevenLabsBearerAuthAuthType? = nil,
     provider: String? = nil,
     token: String? = nil
   ) {

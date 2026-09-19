@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherRLModelResourcesStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mODELRESOURCESSTATUSPENDING = Self(rawValue: "MODEL_RESOURCES_STATUS_PENDING")
-  public static let mODELRESOURCESSTATUSCREATING = Self(rawValue: "MODEL_RESOURCES_STATUS_CREATING")
-  public static let mODELRESOURCESSTATUSREADY = Self(rawValue: "MODEL_RESOURCES_STATUS_READY")
-  public static let mODELRESOURCESSTATUSERROR = Self(rawValue: "MODEL_RESOURCES_STATUS_ERROR")
-  public static let mODELRESOURCESSTATUSSTOPPED = Self(rawValue: "MODEL_RESOURCES_STATUS_STOPPED")
-  public static let mODELRESOURCESSTATUSSTOPPING = Self(rawValue: "MODEL_RESOURCES_STATUS_STOPPING")
+public enum TogetherRLModelResourcesStatus: String, Codable, Hashable, Sendable {
+  case mODELRESOURCESSTATUSPENDING = "MODEL_RESOURCES_STATUS_PENDING"
+  case mODELRESOURCESSTATUSCREATING = "MODEL_RESOURCES_STATUS_CREATING"
+  case mODELRESOURCESSTATUSREADY = "MODEL_RESOURCES_STATUS_READY"
+  case mODELRESOURCESSTATUSERROR = "MODEL_RESOURCES_STATUS_ERROR"
+  case mODELRESOURCESSTATUSSTOPPED = "MODEL_RESOURCES_STATUS_STOPPED"
+  case mODELRESOURCESSTATUSSTOPPING = "MODEL_RESOURCES_STATUS_STOPPING"
 }

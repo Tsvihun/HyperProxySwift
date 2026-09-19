@@ -14,12 +14,12 @@ public struct OpenAIMessageObject: Codable, Sendable {
   public var assistantId: String?
   public var attachments: [OpenAIMessageObjectAttachmentsAnyOf1Item]?
   public var completedAt: Int?
-  public var content: [HyperProxyJSONValue]
+  public var content: [OpenAIMessageObjectContentItem]
   public var createdAt: Int
   public var id: String
   public var incompleteAt: Int?
   public var incompleteDetails: OpenAIMessageObjectIncompleteDetailsAnyOf1?
-  public var metadata: OpenAIMetadata
+  public var metadata: OpenAIMetadata?
   public var object: OpenAIMessageObjectObject
   public var role: OpenAIMessageObjectRole
   public var runId: String?
@@ -30,12 +30,12 @@ public struct OpenAIMessageObject: Codable, Sendable {
     assistantId: String?,
     attachments: [OpenAIMessageObjectAttachmentsAnyOf1Item]?,
     completedAt: Int?,
-    content: [HyperProxyJSONValue],
+    content: [OpenAIMessageObjectContentItem],
     createdAt: Int,
     id: String,
     incompleteAt: Int?,
     incompleteDetails: OpenAIMessageObjectIncompleteDetailsAnyOf1?,
-    metadata: OpenAIMetadata,
+    metadata: OpenAIMetadata?,
     object: OpenAIMessageObjectObject,
     role: OpenAIMessageObjectRole,
     runId: String?,

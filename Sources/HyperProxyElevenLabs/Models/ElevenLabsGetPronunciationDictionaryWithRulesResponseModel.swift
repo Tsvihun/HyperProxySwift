@@ -21,7 +21,7 @@ public struct ElevenLabsGetPronunciationDictionaryWithRulesResponseModel: Codabl
   public var name: String
   public var permissionOnResource:
     ElevenLabsGetPronunciationDictionaryWithRulesResponseModelPermissionOnResourceAnyOf1?
-  public var rules: [HyperProxyJSONValue]
+  public var rules: [ElevenLabsGetPronunciationDictionaryWithRulesResponseModelRulesItem]
 
   public init(
     createdBy: String,
@@ -32,7 +32,7 @@ public struct ElevenLabsGetPronunciationDictionaryWithRulesResponseModel: Codabl
     name: String,
     permissionOnResource:
       ElevenLabsGetPronunciationDictionaryWithRulesResponseModelPermissionOnResourceAnyOf1?,
-    rules: [HyperProxyJSONValue],
+    rules: [ElevenLabsGetPronunciationDictionaryWithRulesResponseModelRulesItem],
     archivedTimeUnix: Int? = nil,
     description: String? = nil
   ) {

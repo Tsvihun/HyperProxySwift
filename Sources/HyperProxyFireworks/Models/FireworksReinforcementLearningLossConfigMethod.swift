@@ -10,19 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksReinforcementLearningLossConfigMethod: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mETHODUNSPECIFIED = Self(rawValue: "METHOD_UNSPECIFIED")
-  public static let gRPO = Self(rawValue: "GRPO")
-  public static let dAPO = Self(rawValue: "DAPO")
-  public static let dPO = Self(rawValue: "DPO")
-  public static let oRPO = Self(rawValue: "ORPO")
-  public static let gSPOTOKEN = Self(rawValue: "GSPO_TOKEN")
+public enum FireworksReinforcementLearningLossConfigMethod: String, Codable, Hashable, Sendable {
+  case mETHODUNSPECIFIED = "METHOD_UNSPECIFIED"
+  case gRPO = "GRPO"
+  case dAPO = "DAPO"
+  case dPO = "DPO"
+  case oRPO = "ORPO"
+  case gSPOTOKEN = "GSPO_TOKEN"
 }

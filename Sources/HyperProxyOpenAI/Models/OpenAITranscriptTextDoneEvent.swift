@@ -14,12 +14,12 @@ public struct OpenAITranscriptTextDoneEvent: Codable, Sendable {
   public var languages: [OpenAITranscriptionLanguage]?
   public var logprobs: [OpenAITranscriptTextDoneEventLogprobsItem]?
   public var text: String
-  public var typeModel: OpenAITranscriptTextDoneEventTypeModel
+  public var kind: OpenAITranscriptTextDoneEventKind
   public var usage: OpenAITranscriptTextUsageTokens?
 
   public init(
     text: String,
-    typeModel: OpenAITranscriptTextDoneEventTypeModel,
+    kind: OpenAITranscriptTextDoneEventKind,
     languages: [OpenAITranscriptionLanguage]? = nil,
     logprobs: [OpenAITranscriptTextDoneEventLogprobsItem]? = nil,
     usage: OpenAITranscriptTextUsageTokens? = nil
@@ -27,7 +27,7 @@ public struct OpenAITranscriptTextDoneEvent: Codable, Sendable {
     self.languages = languages
     self.logprobs = logprobs
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
     self.usage = usage
   }
 
@@ -35,7 +35,7 @@ public struct OpenAITranscriptTextDoneEvent: Codable, Sendable {
     case languages
     case logprobs
     case text
-    case typeModel = "type"
+    case kind = "type"
     case usage
   }
 }

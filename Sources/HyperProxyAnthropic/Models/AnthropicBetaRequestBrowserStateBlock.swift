@@ -12,26 +12,26 @@ import HyperProxyCore
 
 public struct AnthropicBetaRequestBrowserStateBlock: Codable, Sendable {
   public var cacheControl: AnthropicBetaCacheControlEphemeral?
-  public var stateChanges: [HyperProxyJSONValue]?
+  public var stateChanges: [AnthropicBetaRequestBrowserStateBlockStateChangesAnyOf1Item]?
   public var tabs: [AnthropicBetaBrowserStateTabEntry]
-  public var typeModel: String
+  public var kind: AnthropicBrowserStateKind
 
   public init(
     tabs: [AnthropicBetaBrowserStateTabEntry],
-    typeModel: String,
+    kind: AnthropicBrowserStateKind = .browserState,
     cacheControl: AnthropicBetaCacheControlEphemeral? = nil,
-    stateChanges: [HyperProxyJSONValue]? = nil
+    stateChanges: [AnthropicBetaRequestBrowserStateBlockStateChangesAnyOf1Item]? = nil
   ) {
     self.cacheControl = cacheControl
     self.stateChanges = stateChanges
     self.tabs = tabs
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case cacheControl = "cache_control"
     case stateChanges = "state_changes"
     case tabs
-    case typeModel = "type"
+    case kind = "type"
   }
 }

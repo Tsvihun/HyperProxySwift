@@ -10,7 +10,41 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaManagedAgentsToolResultContentBlock: Codable, Sendable {
+public enum AnthropicBetaManagedAgentsToolResultContentBlock: Codable, Sendable {
+  case betaManagedAgentsTextBlock(AnthropicBetaManagedAgentsTextBlock)
+  case betaManagedAgentsImageBlock(AnthropicBetaManagedAgentsImageBlock)
+  case betaManagedAgentsDocumentBlock(AnthropicBetaManagedAgentsDocumentBlock)
+  case betaManagedAgentsSearchResultBlock(AnthropicBetaManagedAgentsSearchResultBlock)
 
-  public init() {}
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(AnthropicBetaManagedAgentsTextBlock.self) {
+      self = .betaManagedAgentsTextBlock(value)
+      return
+    }
+    if let value = try? container.decode(AnthropicBetaManagedAgentsImageBlock.self) {
+      self = .betaManagedAgentsImageBlock(value)
+      return
+    }
+    if let value = try? container.decode(AnthropicBetaManagedAgentsDocumentBlock.self) {
+      self = .betaManagedAgentsDocumentBlock(value)
+      return
+    }
+    self = .betaManagedAgentsSearchResultBlock(
+      try container.decode(AnthropicBetaManagedAgentsSearchResultBlock.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .betaManagedAgentsTextBlock(let value):
+      try container.encode(value)
+    case .betaManagedAgentsImageBlock(let value):
+      try container.encode(value)
+    case .betaManagedAgentsDocumentBlock(let value):
+      try container.encode(value)
+    case .betaManagedAgentsSearchResultBlock(let value):
+      try container.encode(value)
+    }
+  }
 }

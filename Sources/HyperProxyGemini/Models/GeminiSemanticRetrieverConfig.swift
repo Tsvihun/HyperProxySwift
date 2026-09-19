@@ -12,16 +12,16 @@ import HyperProxyCore
 
 public struct GeminiSemanticRetrieverConfig: Codable, Sendable {
   public var maxChunksCount: Int?
-  public var metadataFilters: [HyperProxyJSONValue]?
+  public var metadataFilters: [GeminiMetadataFilter]?
   public var minimumRelevanceScore: Double?
-  public var query: HyperProxyJSONValue?
+  public var query: GeminiContent?
   public var source: String?
 
   public init(
     maxChunksCount: Int? = nil,
-    metadataFilters: [HyperProxyJSONValue]? = nil,
+    metadataFilters: [GeminiMetadataFilter]? = nil,
     minimumRelevanceScore: Double? = nil,
-    query: HyperProxyJSONValue? = nil,
+    query: GeminiContent? = nil,
     source: String? = nil
   ) {
     self.maxChunksCount = maxChunksCount

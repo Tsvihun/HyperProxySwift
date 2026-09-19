@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIBetaPromptCacheTTLEnum: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let value30m = Self(rawValue: "30m")
+public enum OpenAIBetaPromptCacheTTLEnum: String, Codable, Hashable, Sendable {
+  case value30m = "30m"
 }

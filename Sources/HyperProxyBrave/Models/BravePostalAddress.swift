@@ -17,7 +17,7 @@ public struct BravePostalAddress: Codable, Sendable {
   public var displayAddress: String?
   public var postalCode: String?
   public var streetAddress: String?
-  public var typeModel: String?
+  public var kind: String?
 
   public init(
     addressLocality: String? = nil,
@@ -26,7 +26,7 @@ public struct BravePostalAddress: Codable, Sendable {
     displayAddress: String? = nil,
     postalCode: String? = nil,
     streetAddress: String? = nil,
-    typeModel: String? = nil
+    kind: String? = nil
   ) {
     self.addressLocality = addressLocality
     self.addressRegion = addressRegion
@@ -34,7 +34,7 @@ public struct BravePostalAddress: Codable, Sendable {
     self.displayAddress = displayAddress
     self.postalCode = postalCode
     self.streetAddress = streetAddress
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct BravePostalAddress: Codable, Sendable {
     case displayAddress
     case postalCode
     case streetAddress
-    case typeModel = "type"
+    case kind = "type"
   }
 }

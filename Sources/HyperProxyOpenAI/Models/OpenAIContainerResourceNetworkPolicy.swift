@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIContainerResourceNetworkPolicy: Codable, Sendable {
   public var allowedDomains: [String]?
-  public var typeModel: OpenAIContainerResourceNetworkPolicyTypeModel
+  public var kind: OpenAIContainerResourceNetworkPolicyKind
 
   public init(
-    typeModel: OpenAIContainerResourceNetworkPolicyTypeModel,
+    kind: OpenAIContainerResourceNetworkPolicyKind,
     allowedDomains: [String]? = nil
   ) {
     self.allowedDomains = allowedDomains
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case allowedDomains = "allowed_domains"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

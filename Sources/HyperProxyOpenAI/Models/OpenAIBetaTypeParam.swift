@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIBetaTypeParam: Codable, Sendable {
   public var text: String
-  public var typeModel: OpenAIBetaTypeParamTypeModel
+  public var kind: OpenAIBetaTypeParamKind
 
   public init(
     text: String,
-    typeModel: OpenAIBetaTypeParamTypeModel
+    kind: OpenAIBetaTypeParamKind
   ) {
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -23,7 +23,7 @@ public struct FalCreateAssetCollectionResponseCollection: Codable, Sendable {
   public var isFavorited: Bool
   public var name: String
   public var parentCollectionId: String
-  public var typeModel: FalCreateAssetCollectionResponseCollectionTypeModel
+  public var kind: FalCreateAssetCollectionResponseCollectionKind
   public var updatedAt: String
 
   public init(
@@ -37,7 +37,7 @@ public struct FalCreateAssetCollectionResponseCollection: Codable, Sendable {
     isFavorited: Bool,
     name: String,
     parentCollectionId: String,
-    typeModel: FalCreateAssetCollectionResponseCollectionTypeModel,
+    kind: FalCreateAssetCollectionResponseCollectionKind,
     updatedAt: String,
     assetCount: Double? = nil,
     filters: HyperProxyJSONValue? = nil
@@ -54,7 +54,7 @@ public struct FalCreateAssetCollectionResponseCollection: Codable, Sendable {
     self.isFavorited = isFavorited
     self.name = name
     self.parentCollectionId = parentCollectionId
-    self.typeModel = typeModel
+    self.kind = kind
     self.updatedAt = updatedAt
   }
 
@@ -71,7 +71,7 @@ public struct FalCreateAssetCollectionResponseCollection: Codable, Sendable {
     case isFavorited = "is_favorited"
     case name
     case parentCollectionId = "parent_collection_id"
-    case typeModel = "type"
+    case kind = "type"
     case updatedAt = "updated_at"
   }
 }

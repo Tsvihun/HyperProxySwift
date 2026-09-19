@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralGetStreamEventsV1WorkflowsEventsStreamGetParametersScope: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum MistralGetStreamEventsV1WorkflowsEventsStreamGetParametersScope: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let activity = Self(rawValue: "activity")
-  public static let workflow = Self(rawValue: "workflow")
-  public static let value = Self(rawValue: "*")
+  case activity = "activity"
+  case workflow = "workflow"
+  case value = "*"
 }

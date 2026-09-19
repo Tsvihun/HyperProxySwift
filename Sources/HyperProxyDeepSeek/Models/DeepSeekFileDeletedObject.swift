@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepSeekFileDeletedObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let file = Self(rawValue: "file")
+public enum DeepSeekFileDeletedObject: String, Codable, Hashable, Sendable {
+  case file = "file"
 }

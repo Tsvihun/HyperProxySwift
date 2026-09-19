@@ -16,16 +16,16 @@ public struct OpenAIBetaApplyPatchToolCall: Codable, Sendable {
   public var caller: OpenAIBetaToolCallCaller?
   public var createdBy: String?
   public var id: String
-  public var operation: HyperProxyJSONValue
+  public var operation: OpenAIBetaApplyPatchToolCallOperation
   public var status: OpenAIBetaApplyPatchCallStatus
-  public var typeModel: OpenAIBetaApplyPatchToolCallTypeModel
+  public var kind: OpenAIBetaApplyPatchToolCallKind
 
   public init(
     callId: String,
     id: String,
-    operation: HyperProxyJSONValue,
+    operation: OpenAIBetaApplyPatchToolCallOperation,
     status: OpenAIBetaApplyPatchCallStatus,
-    typeModel: OpenAIBetaApplyPatchToolCallTypeModel,
+    kind: OpenAIBetaApplyPatchToolCallKind,
     agent: OpenAIBetaAgentTag? = nil,
     caller: OpenAIBetaToolCallCaller? = nil,
     createdBy: String? = nil
@@ -37,7 +37,7 @@ public struct OpenAIBetaApplyPatchToolCall: Codable, Sendable {
     self.id = id
     self.operation = operation
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct OpenAIBetaApplyPatchToolCall: Codable, Sendable {
     case id
     case operation
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

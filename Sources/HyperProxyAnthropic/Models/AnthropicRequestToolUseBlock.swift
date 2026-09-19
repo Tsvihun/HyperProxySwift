@@ -12,20 +12,20 @@ import HyperProxyCore
 
 public struct AnthropicRequestToolUseBlock: Codable, Sendable {
   public var cacheControl: AnthropicCacheControlEphemeral?
-  public var caller: HyperProxyJSONValue?
+  public var caller: AnthropicRequestToolUseBlockCaller?
   public var id: String
   public var input: [String: HyperProxyJSONValue]
   public var name: String
   public var toolsetName: String?
-  public var typeModel: String
+  public var kind: AnthropicToolUseKind
 
   public init(
     id: String,
     input: [String: HyperProxyJSONValue],
     name: String,
-    typeModel: String,
+    kind: AnthropicToolUseKind = .toolUse,
     cacheControl: AnthropicCacheControlEphemeral? = nil,
-    caller: HyperProxyJSONValue? = nil,
+    caller: AnthropicRequestToolUseBlockCaller? = nil,
     toolsetName: String? = nil
   ) {
     self.cacheControl = cacheControl
@@ -34,7 +34,7 @@ public struct AnthropicRequestToolUseBlock: Codable, Sendable {
     self.input = input
     self.name = name
     self.toolsetName = toolsetName
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct AnthropicRequestToolUseBlock: Codable, Sendable {
     case input
     case name
     case toolsetName = "toolset_name"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -14,20 +14,20 @@ public struct AnthropicBrowserStateChangeDownloadCompleted: Codable, Sendable {
   public var downloadId: String
   public var path: String?
   public var sizeBytes: Int?
-  public var typeModel: String
+  public var kind: AnthropicDownloadCompletedKind
   public var url: String
 
   public init(
     downloadId: String,
-    typeModel: String,
     url: String,
+    kind: AnthropicDownloadCompletedKind = .downloadCompleted,
     path: String? = nil,
     sizeBytes: Int? = nil
   ) {
     self.downloadId = downloadId
     self.path = path
     self.sizeBytes = sizeBytes
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
@@ -35,7 +35,7 @@ public struct AnthropicBrowserStateChangeDownloadCompleted: Codable, Sendable {
     case downloadId = "download_id"
     case path
     case sizeBytes = "size_bytes"
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

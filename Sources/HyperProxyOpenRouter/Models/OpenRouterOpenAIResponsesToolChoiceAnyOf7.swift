@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterOpenAIResponsesToolChoiceAnyOf7: Codable, Sendable {
-  public var typeModel: OpenRouterOpenAIResponsesToolChoiceAnyOf7TypeModel
+  public var kind: OpenRouterOpenAIResponsesToolChoiceAnyOf7Kind
 
   public init(
-    typeModel: OpenRouterOpenAIResponsesToolChoiceAnyOf7TypeModel
+    kind: OpenRouterOpenAIResponsesToolChoiceAnyOf7Kind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

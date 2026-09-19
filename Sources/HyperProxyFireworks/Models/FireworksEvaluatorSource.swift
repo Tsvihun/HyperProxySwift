@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct FireworksEvaluatorSource: Codable, Sendable {
   public var githubRepositoryName: String?
-  public var typeModel: FireworksEvaluatorSourceType?
+  public var kind: FireworksEvaluatorSourceType?
 
   public init(
     githubRepositoryName: String? = nil,
-    typeModel: FireworksEvaluatorSourceType? = nil
+    kind: FireworksEvaluatorSourceType? = nil
   ) {
     self.githubRepositoryName = githubRepositoryName
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case githubRepositoryName
-    case typeModel = "type"
+    case kind = "type"
   }
 }

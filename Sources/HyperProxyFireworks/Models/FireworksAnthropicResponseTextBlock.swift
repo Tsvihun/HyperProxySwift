@@ -11,23 +11,23 @@ import Foundation
 import HyperProxyCore
 
 public struct FireworksAnthropicResponseTextBlock: Codable, Sendable {
-  public var citations: [HyperProxyJSONValue]?
+  public var citations: [FireworksAnthropicResponseTextBlockCitationsAnyOf1Item]?
   public var text: String
-  public var typeModel: String
+  public var kind: FireworksTextKind
 
   public init(
-    citations: [HyperProxyJSONValue]?,
+    citations: [FireworksAnthropicResponseTextBlockCitationsAnyOf1Item]?,
     text: String,
-    typeModel: String
+    kind: FireworksTextKind = .text
   ) {
     self.citations = citations
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case citations
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

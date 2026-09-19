@@ -16,7 +16,7 @@ public struct AnthropicBetaCompactionIterationUsage: Codable, Sendable {
   public var cacheReadInputTokens: Int
   public var inputTokens: Int
   public var outputTokens: Int
-  public var typeModel: String
+  public var kind: AnthropicCompactionKind
 
   public init(
     cacheCreation: AnthropicBetaCacheCreation?,
@@ -24,14 +24,14 @@ public struct AnthropicBetaCompactionIterationUsage: Codable, Sendable {
     cacheReadInputTokens: Int,
     inputTokens: Int,
     outputTokens: Int,
-    typeModel: String
+    kind: AnthropicCompactionKind = .compaction
   ) {
     self.cacheCreation = cacheCreation
     self.cacheCreationInputTokens = cacheCreationInputTokens
     self.cacheReadInputTokens = cacheReadInputTokens
     self.inputTokens = inputTokens
     self.outputTokens = outputTokens
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct AnthropicBetaCompactionIterationUsage: Codable, Sendable {
     case cacheReadInputTokens = "cache_read_input_tokens"
     case inputTokens = "input_tokens"
     case outputTokens = "output_tokens"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

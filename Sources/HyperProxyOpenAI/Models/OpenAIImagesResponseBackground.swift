@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIImagesResponseBackground: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let transparent = Self(rawValue: "transparent")
-  public static let opaque = Self(rawValue: "opaque")
+public enum OpenAIImagesResponseBackground: String, Codable, Hashable, Sendable {
+  case transparent = "transparent"
+  case opaque = "opaque"
 }

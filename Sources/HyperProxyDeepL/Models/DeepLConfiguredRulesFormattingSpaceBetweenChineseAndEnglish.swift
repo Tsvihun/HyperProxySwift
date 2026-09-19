@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesFormattingSpaceBetweenChineseAndEnglish: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum DeepLConfiguredRulesFormattingSpaceBetweenChineseAndEnglish: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let doNotUse = Self(rawValue: "do_not_use")
+  case doNotUse = "do_not_use"
 }

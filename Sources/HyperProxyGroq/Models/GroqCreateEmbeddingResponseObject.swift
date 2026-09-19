@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct GroqCreateEmbeddingResponseObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let list = Self(rawValue: "list")
+public enum GroqCreateEmbeddingResponseObject: String, Codable, Hashable, Sendable {
+  case list = "list"
 }

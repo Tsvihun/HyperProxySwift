@@ -16,10 +16,10 @@ public struct MistralPublicExecutionConnectionConfig: Codable, Sendable {
   public var name: String?
   public var server: String?
   public var toolConfiguration: MistralToolExecutionConfiguration?
-  public var typeModel: MistralConnectionConfigType
+  public var kind: MistralConnectionConfigType
 
   public init(
-    typeModel: MistralConnectionConfigType,
+    kind: MistralConnectionConfigType,
     hostedInternally: Bool? = nil,
     id: String? = nil,
     name: String? = nil,
@@ -31,7 +31,7 @@ public struct MistralPublicExecutionConnectionConfig: Codable, Sendable {
     self.name = name
     self.server = server
     self.toolConfiguration = toolConfiguration
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct MistralPublicExecutionConnectionConfig: Codable, Sendable {
     case name
     case server
     case toolConfiguration = "tool_configuration"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

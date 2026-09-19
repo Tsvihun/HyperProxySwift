@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIMCPToolExecutionError: Codable, Sendable {
   public var content: HyperProxyJSONValue
-  public var typeModel: OpenAIMCPToolExecutionErrorTypeModel
+  public var kind: OpenAIMCPToolExecutionErrorKind
 
   public init(
     content: HyperProxyJSONValue,
-    typeModel: OpenAIMCPToolExecutionErrorTypeModel
+    kind: OpenAIMCPToolExecutionErrorKind
   ) {
     self.content = content
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case content
-    case typeModel = "type"
+    case kind = "type"
   }
 }

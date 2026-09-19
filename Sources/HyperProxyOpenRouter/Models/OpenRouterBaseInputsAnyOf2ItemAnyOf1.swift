@@ -11,27 +11,27 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterBaseInputsAnyOf2ItemAnyOf1: Codable, Sendable {
-  public var content: HyperProxyJSONValue
-  public var phase: HyperProxyJSONValue?
-  public var role: HyperProxyJSONValue
-  public var typeModel: OpenRouterBaseInputsAnyOf2ItemAnyOf1TypeModel?
+  public var content: OpenRouterBaseInputsAnyOf2ItemAnyOf1Content
+  public var phase: OpenRouterBaseInputsAnyOf2ItemAnyOf1Phase?
+  public var role: OpenRouterBaseInputsAnyOf2ItemAnyOf1Role
+  public var kind: OpenRouterBaseInputsAnyOf2ItemAnyOf1Kind?
 
   public init(
-    content: HyperProxyJSONValue,
-    role: HyperProxyJSONValue,
-    phase: HyperProxyJSONValue? = nil,
-    typeModel: OpenRouterBaseInputsAnyOf2ItemAnyOf1TypeModel? = nil
+    content: OpenRouterBaseInputsAnyOf2ItemAnyOf1Content,
+    role: OpenRouterBaseInputsAnyOf2ItemAnyOf1Role,
+    phase: OpenRouterBaseInputsAnyOf2ItemAnyOf1Phase? = nil,
+    kind: OpenRouterBaseInputsAnyOf2ItemAnyOf1Kind? = nil
   ) {
     self.content = content
     self.phase = phase
     self.role = role
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case content
     case phase
     case role
-    case typeModel = "type"
+    case kind = "type"
   }
 }

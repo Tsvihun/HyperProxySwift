@@ -15,12 +15,12 @@ public struct OpenAIBetaLocalShellToolCallOutput: Codable, Sendable {
   public var id: String
   public var output: String
   public var status: OpenAIBetaLocalShellToolCallOutputStatusAnyOf1?
-  public var typeModel: OpenAIBetaLocalShellToolCallOutputTypeModel
+  public var kind: OpenAIBetaLocalShellToolCallOutputKind
 
   public init(
     id: String,
     output: String,
-    typeModel: OpenAIBetaLocalShellToolCallOutputTypeModel,
+    kind: OpenAIBetaLocalShellToolCallOutputKind,
     agent: OpenAIBetaAgentTag? = nil,
     status: OpenAIBetaLocalShellToolCallOutputStatusAnyOf1? = nil
   ) {
@@ -28,7 +28,7 @@ public struct OpenAIBetaLocalShellToolCallOutput: Codable, Sendable {
     self.id = id
     self.output = output
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIBetaLocalShellToolCallOutput: Codable, Sendable {
     case id
     case output
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

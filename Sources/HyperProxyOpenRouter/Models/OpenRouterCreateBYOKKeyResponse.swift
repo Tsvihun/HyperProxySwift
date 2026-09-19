@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterCreateBYOKKeyResponse: Codable, Sendable {
-  public var data: HyperProxyJSONValue
+  public var data: OpenRouterBYOKKey
 
   public init(
-    data: HyperProxyJSONValue
+    data: OpenRouterBYOKKey
   ) {
     self.data = data
   }

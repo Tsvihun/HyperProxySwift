@@ -21,7 +21,7 @@ public struct ElevenLabsDirectPublishingReadResponseModel: Codable, Sendable {
   public var contributors: [ElevenLabsContributor]?
   public var copyright: String?
   public var createdAtUnix: Int
-  public var currency: String?
+  public var currency: ElevenLabsDirectPublishingReadResponseModelCurrencyAnyOf1?
   public var description: String?
   public var displayMode: ElevenLabsDirectPublishingReadResponseModelDisplayModeAnyOf1?
   public var distributionTerritories: [String]?
@@ -79,7 +79,7 @@ public struct ElevenLabsDirectPublishingReadResponseModel: Codable, Sendable {
     contentType: String? = nil,
     contributors: [ElevenLabsContributor]? = nil,
     copyright: String? = nil,
-    currency: String? = nil,
+    currency: ElevenLabsDirectPublishingReadResponseModelCurrencyAnyOf1? = nil,
     description: String? = nil,
     displayMode: ElevenLabsDirectPublishingReadResponseModelDisplayModeAnyOf1? = nil,
     distributionTerritories: [String]? = nil,

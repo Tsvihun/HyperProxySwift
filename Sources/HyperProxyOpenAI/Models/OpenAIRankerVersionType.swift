@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIRankerVersionType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
-  public static let default20241115 = Self(rawValue: "default-2024-11-15")
+public enum OpenAIRankerVersionType: String, Codable, Hashable, Sendable {
+  case auto = "auto"
+  case default20241115 = "default-2024-11-15"
 }

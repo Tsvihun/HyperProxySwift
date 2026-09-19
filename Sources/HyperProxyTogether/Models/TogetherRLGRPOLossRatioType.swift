@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherRLGRPOLossRatioType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let gRPOLOSSRATIOTYPETOKEN = Self(rawValue: "GRPO_LOSS_RATIO_TYPE_TOKEN")
-  public static let gRPOLOSSRATIOTYPESEQUENCE = Self(rawValue: "GRPO_LOSS_RATIO_TYPE_SEQUENCE")
+public enum TogetherRLGRPOLossRatioType: String, Codable, Hashable, Sendable {
+  case gRPOLOSSRATIOTYPETOKEN = "GRPO_LOSS_RATIO_TYPE_TOKEN"
+  case gRPOLOSSRATIOTYPESEQUENCE = "GRPO_LOSS_RATIO_TYPE_SEQUENCE"
 }

@@ -12,20 +12,20 @@ import HyperProxyCore
 
 public struct GeminiGroundingMetadata: Codable, Sendable {
   public var googleMapsWidgetContextToken: String?
-  public var groundingChunks: [HyperProxyJSONValue]?
-  public var groundingSupports: [HyperProxyJSONValue]?
+  public var groundingChunks: [GeminiGroundingChunk]?
+  public var groundingSupports: [GeminiGoogleAiGenerativelanguageV1betaGroundingSupport]?
   public var imageSearchQueries: [String]?
-  public var retrievalMetadata: HyperProxyJSONValue?
-  public var searchEntryPoint: HyperProxyJSONValue?
+  public var retrievalMetadata: GeminiRetrievalMetadata?
+  public var searchEntryPoint: GeminiSearchEntryPoint?
   public var webSearchQueries: [String]?
 
   public init(
     googleMapsWidgetContextToken: String? = nil,
-    groundingChunks: [HyperProxyJSONValue]? = nil,
-    groundingSupports: [HyperProxyJSONValue]? = nil,
+    groundingChunks: [GeminiGroundingChunk]? = nil,
+    groundingSupports: [GeminiGoogleAiGenerativelanguageV1betaGroundingSupport]? = nil,
     imageSearchQueries: [String]? = nil,
-    retrievalMetadata: HyperProxyJSONValue? = nil,
-    searchEntryPoint: HyperProxyJSONValue? = nil,
+    retrievalMetadata: GeminiRetrievalMetadata? = nil,
+    searchEntryPoint: GeminiSearchEntryPoint? = nil,
     webSearchQueries: [String]? = nil
   ) {
     self.googleMapsWidgetContextToken = googleMapsWidgetContextToken

@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLModelType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let qualityOptimized = Self(rawValue: "quality_optimized")
-  public static let preferQualityOptimized = Self(rawValue: "prefer_quality_optimized")
-  public static let latencyOptimized = Self(rawValue: "latency_optimized")
+public enum DeepLModelType: String, Codable, Hashable, Sendable {
+  case qualityOptimized = "quality_optimized"
+  case preferQualityOptimized = "prefer_quality_optimized"
+  case latencyOptimized = "latency_optimized"
 }

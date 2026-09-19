@@ -15,12 +15,12 @@ public struct PerplexityConnectorTool: Codable, Sendable {
   public var id: String
   public var serverDescription: String?
   public var serverLabel: String
-  public var typeModel: PerplexityConnectorToolTypeModel
+  public var kind: PerplexityConnectorToolKind
 
   public init(
     id: String,
     serverLabel: String,
-    typeModel: PerplexityConnectorToolTypeModel,
+    kind: PerplexityConnectorToolKind,
     allowedTools: [String]? = nil,
     serverDescription: String? = nil
   ) {
@@ -28,7 +28,7 @@ public struct PerplexityConnectorTool: Codable, Sendable {
     self.id = id
     self.serverDescription = serverDescription
     self.serverLabel = serverLabel
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct PerplexityConnectorTool: Codable, Sendable {
     case id
     case serverDescription = "server_description"
     case serverLabel = "server_label"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

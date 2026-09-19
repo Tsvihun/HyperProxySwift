@@ -10,18 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIMisalignmentErrorTypeAnyOf2: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let potentiallyUnintendedDataTransfer = Self(
-    rawValue: "potentially_unintended_data_transfer")
-  public static let potentiallyUnintendedDataAccess = Self(
-    rawValue: "potentially_unintended_data_access")
-  public static let potentiallyUnintendedDestructiveActivity = Self(
-    rawValue: "potentially_unintended_destructive_activity")
-  public static let other = Self(rawValue: "other")
+public enum OpenAIMisalignmentErrorTypeAnyOf2: String, Codable, Hashable, Sendable {
+  case potentiallyUnintendedDataTransfer = "potentially_unintended_data_transfer"
+  case potentiallyUnintendedDataAccess = "potentially_unintended_data_access"
+  case potentiallyUnintendedDestructiveActivity = "potentially_unintended_destructive_activity"
+  case other = "other"
 }

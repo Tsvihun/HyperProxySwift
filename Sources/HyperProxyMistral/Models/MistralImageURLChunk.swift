@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralImageURLChunk: Codable, Sendable {
-  public var imageUrl: HyperProxyJSONValue
-  public var typeModel: String?
+  public var imageUrl: MistralImageURLChunkImageUrl
+  public var kind: MistralImageUrlKind?
 
   public init(
-    imageUrl: HyperProxyJSONValue,
-    typeModel: String? = nil
+    imageUrl: MistralImageURLChunkImageUrl,
+    kind: MistralImageUrlKind? = nil
   ) {
     self.imageUrl = imageUrl
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case imageUrl = "image_url"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

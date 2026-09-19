@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherDERolloutStatus: Codable, Sendable {
-  public var condition: HyperProxyJSONValue?
+  public var condition: TogetherDERolloutCondition?
   public var conditions: [TogetherDERolloutCondition]?
   public var steps: [TogetherDERolloutStepStatus]
   public var totalSteps: Int
@@ -20,7 +20,7 @@ public struct TogetherDERolloutStatus: Codable, Sendable {
   public init(
     steps: [TogetherDERolloutStepStatus],
     totalSteps: Int,
-    condition: HyperProxyJSONValue? = nil,
+    condition: TogetherDERolloutCondition? = nil,
     conditions: [TogetherDERolloutCondition]? = nil,
     updatedAt: String? = nil
   ) {

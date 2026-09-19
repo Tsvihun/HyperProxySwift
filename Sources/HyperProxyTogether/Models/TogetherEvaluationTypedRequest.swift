@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherEvaluationTypedRequest: Codable, Sendable {
-  public var parameters: HyperProxyJSONValue
-  public var typeModel: TogetherEvaluationTypedRequestTypeModel
+  public var parameters: TogetherEvaluationTypedRequestParameters
+  public var kind: TogetherEvaluationTypedRequestKind
 
   public init(
-    parameters: HyperProxyJSONValue,
-    typeModel: TogetherEvaluationTypedRequestTypeModel
+    parameters: TogetherEvaluationTypedRequestParameters,
+    kind: TogetherEvaluationTypedRequestKind
   ) {
     self.parameters = parameters
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case parameters
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,15 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesStyleAndToneReferringToNonBinaryPeople: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesStyleAndToneReferringToNonBinaryPeople: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useTheSingularAndPluralSchwa = Self(
-    rawValue: "use_the_singular_and_plural_schwa")
+  case useTheSingularAndPluralSchwa = "use_the_singular_and_plural_schwa"
 }

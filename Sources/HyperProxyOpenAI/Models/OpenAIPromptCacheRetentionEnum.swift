@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIPromptCacheRetentionEnum: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let inMemory = Self(rawValue: "in_memory")
-  public static let value24h = Self(rawValue: "24h")
+public enum OpenAIPromptCacheRetentionEnum: String, Codable, Hashable, Sendable {
+  case inMemory = "in_memory"
+  case value24h = "24h"
 }

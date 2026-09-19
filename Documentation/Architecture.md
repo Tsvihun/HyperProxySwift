@@ -81,7 +81,7 @@ Every operation also generates a discoverable call property; for example,
 dynamic spelling. Both return the same fluent, immutable call type, which handles provider-native
 path/query/header values, every catalog body mode, response metadata, SSE, JSONL, binary streams,
 WebSockets, cursor pagination, and asynchronous job polling. This is a shared capability rather
-than 2,244 hand-written implementations, so a transport fix applies to every provider consistently.
+than 2,292 hand-written implementations, so a transport fix applies to every provider consistently.
 
 Where a provider publishes OpenAPI, AsyncAPI, or Google Discovery, its module also contains
 provider-prefixed request, response, event, enum, and parameter models plus typed service methods.

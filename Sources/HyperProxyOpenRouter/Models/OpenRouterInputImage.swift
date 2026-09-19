@@ -12,22 +12,26 @@ import HyperProxyCore
 
 public struct OpenRouterInputImage: Codable, Sendable {
   public var detail: OpenRouterInputImageDetail
+  public var fileId: String?
   public var imageUrl: String?
-  public var typeModel: OpenRouterInputImageTypeModel
+  public var kind: OpenRouterInputImageKind
 
   public init(
     detail: OpenRouterInputImageDetail,
-    typeModel: OpenRouterInputImageTypeModel,
+    kind: OpenRouterInputImageKind,
+    fileId: String? = nil,
     imageUrl: String? = nil
   ) {
     self.detail = detail
+    self.fileId = fileId
     self.imageUrl = imageUrl
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case detail
+    case fileId = "file_id"
     case imageUrl = "image_url"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

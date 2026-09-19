@@ -11,30 +11,30 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIRealtimeBetaResponseCreateParams: Codable, Sendable {
-  public var conversation: HyperProxyJSONValue?
+  public var conversation: OpenAIRealtimeBetaResponseCreateParamsConversation?
   public var input: [OpenAIRealtimeConversationItem]?
   public var instructions: String?
-  public var maxOutputTokens: HyperProxyJSONValue?
+  public var maxOutputTokens: OpenAIRealtimeBetaResponseCreateParamsMaxOutputTokens?
   public var metadata: OpenAIMetadata?
   public var modalities: [OpenAIRealtimeBetaResponseCreateParamsModalitiesItem]?
   public var outputAudioFormat: OpenAIRealtimeBetaResponseCreateParamsOutputAudioFormat?
   public var prompt: OpenAIPrompt?
   public var temperature: Double?
-  public var toolChoice: HyperProxyJSONValue?
+  public var toolChoice: OpenAIRealtimeBetaResponseCreateParamsToolChoice?
   public var tools: [OpenAIRealtimeBetaResponseCreateParamsToolsItem]?
   public var voice: OpenAIVoiceIdsOrCustomVoice?
 
   public init(
-    conversation: HyperProxyJSONValue? = nil,
+    conversation: OpenAIRealtimeBetaResponseCreateParamsConversation? = nil,
     input: [OpenAIRealtimeConversationItem]? = nil,
     instructions: String? = nil,
-    maxOutputTokens: HyperProxyJSONValue? = nil,
+    maxOutputTokens: OpenAIRealtimeBetaResponseCreateParamsMaxOutputTokens? = nil,
     metadata: OpenAIMetadata? = nil,
     modalities: [OpenAIRealtimeBetaResponseCreateParamsModalitiesItem]? = nil,
     outputAudioFormat: OpenAIRealtimeBetaResponseCreateParamsOutputAudioFormat? = nil,
     prompt: OpenAIPrompt? = nil,
     temperature: Double? = nil,
-    toolChoice: HyperProxyJSONValue? = nil,
+    toolChoice: OpenAIRealtimeBetaResponseCreateParamsToolChoice? = nil,
     tools: [OpenAIRealtimeBetaResponseCreateParamsToolsItem]? = nil,
     voice: OpenAIVoiceIdsOrCustomVoice? = nil
   ) {

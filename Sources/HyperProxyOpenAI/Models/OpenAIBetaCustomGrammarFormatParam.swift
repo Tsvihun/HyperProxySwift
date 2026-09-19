@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenAIBetaCustomGrammarFormatParam: Codable, Sendable {
   public var definition: String
   public var syntax: OpenAIBetaGrammarSyntax1
-  public var typeModel: OpenAIBetaCustomGrammarFormatParamTypeModel
+  public var kind: OpenAIBetaCustomGrammarFormatParamKind
 
   public init(
     definition: String,
     syntax: OpenAIBetaGrammarSyntax1,
-    typeModel: OpenAIBetaCustomGrammarFormatParamTypeModel
+    kind: OpenAIBetaCustomGrammarFormatParamKind
   ) {
     self.definition = definition
     self.syntax = syntax
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case definition
     case syntax
-    case typeModel = "type"
+    case kind = "type"
   }
 }

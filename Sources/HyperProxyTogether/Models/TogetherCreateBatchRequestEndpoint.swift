@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherCreateBatchRequestEndpoint: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let v1ChatCompletions = Self(rawValue: "/v1/chat/completions")
-  public static let v1AudioTranscriptions = Self(rawValue: "/v1/audio/transcriptions")
-  public static let v1AudioTranslations = Self(rawValue: "/v1/audio/translations")
+public enum TogetherCreateBatchRequestEndpoint: String, Codable, Hashable, Sendable {
+  case v1ChatCompletions = "/v1/chat/completions"
+  case v1AudioTranscriptions = "/v1/audio/transcriptions"
+  case v1AudioTranslations = "/v1/audio/translations"
 }

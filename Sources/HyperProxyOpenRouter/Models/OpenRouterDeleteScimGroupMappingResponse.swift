@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterDeleteScimGroupMappingResponse: Codable, Sendable {
-  public var deleted: Bool
+  public var deleted: OpenRouterDeleteScimGroupMappingResponseDeleted
 
   public init(
-    deleted: Bool
+    deleted: OpenRouterDeleteScimGroupMappingResponseDeleted = .booleanTrue
   ) {
     self.deleted = deleted
   }

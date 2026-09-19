@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct TogetherAudioTranscriptionRequest: Codable, Sendable {
   public var diarize: Bool?
-  public var file: HyperProxyJSONValue
+  public var file: TogetherAudioTranscriptionRequestFile
   public var language: String?
   public var maxSpeakers: Int?
   public var minSpeakers: Int?
@@ -20,10 +20,10 @@ public struct TogetherAudioTranscriptionRequest: Codable, Sendable {
   public var prompt: String?
   public var responseFormat: TogetherAudioTranscriptionRequestResponseFormat?
   public var temperature: Double?
-  public var timestampGranularities: HyperProxyJSONValue?
+  public var timestampGranularities: TogetherAudioTranscriptionRequestTimestampGranularities?
 
   public init(
-    file: HyperProxyJSONValue,
+    file: TogetherAudioTranscriptionRequestFile,
     diarize: Bool? = nil,
     language: String? = nil,
     maxSpeakers: Int? = nil,
@@ -32,7 +32,7 @@ public struct TogetherAudioTranscriptionRequest: Codable, Sendable {
     prompt: String? = nil,
     responseFormat: TogetherAudioTranscriptionRequestResponseFormat? = nil,
     temperature: Double? = nil,
-    timestampGranularities: HyperProxyJSONValue? = nil
+    timestampGranularities: TogetherAudioTranscriptionRequestTimestampGranularities? = nil
   ) {
     self.diarize = diarize
     self.file = file

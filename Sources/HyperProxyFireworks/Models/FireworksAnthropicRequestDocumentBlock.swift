@@ -14,13 +14,13 @@ public struct FireworksAnthropicRequestDocumentBlock: Codable, Sendable {
   public var cacheControl: FireworksAnthropicCacheControlEphemeral?
   public var citations: FireworksAnthropicRequestCitationsConfig?
   public var context: String?
-  public var source: HyperProxyJSONValue
+  public var source: FireworksAnthropicRequestDocumentBlockSource
   public var title: String?
-  public var typeModel: String
+  public var kind: FireworksDocumentKind
 
   public init(
-    source: HyperProxyJSONValue,
-    typeModel: String,
+    source: FireworksAnthropicRequestDocumentBlockSource,
+    kind: FireworksDocumentKind = .document,
     cacheControl: FireworksAnthropicCacheControlEphemeral? = nil,
     citations: FireworksAnthropicRequestCitationsConfig? = nil,
     context: String? = nil,
@@ -31,7 +31,7 @@ public struct FireworksAnthropicRequestDocumentBlock: Codable, Sendable {
     self.context = context
     self.source = source
     self.title = title
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct FireworksAnthropicRequestDocumentBlock: Codable, Sendable {
     case context
     case source
     case title
-    case typeModel = "type"
+    case kind = "type"
   }
 }

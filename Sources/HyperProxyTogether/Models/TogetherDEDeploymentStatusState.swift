@@ -10,18 +10,12 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherDEDeploymentStatusState: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let dEPLOYMENTSTATEPROVISIONING = Self(rawValue: "DEPLOYMENT_STATE_PROVISIONING")
-  public static let dEPLOYMENTSTATEREADY = Self(rawValue: "DEPLOYMENT_STATE_READY")
-  public static let dEPLOYMENTSTATESCALING = Self(rawValue: "DEPLOYMENT_STATE_SCALING")
-  public static let dEPLOYMENTSTATEDEGRADED = Self(rawValue: "DEPLOYMENT_STATE_DEGRADED")
-  public static let dEPLOYMENTSTATEFAILED = Self(rawValue: "DEPLOYMENT_STATE_FAILED")
-  public static let dEPLOYMENTSTATESTOPPED = Self(rawValue: "DEPLOYMENT_STATE_STOPPED")
-  public static let dEPLOYMENTSTATESTOPPING = Self(rawValue: "DEPLOYMENT_STATE_STOPPING")
+public enum TogetherDEDeploymentStatusState: String, Codable, Hashable, Sendable {
+  case dEPLOYMENTSTATEPROVISIONING = "DEPLOYMENT_STATE_PROVISIONING"
+  case dEPLOYMENTSTATEREADY = "DEPLOYMENT_STATE_READY"
+  case dEPLOYMENTSTATESCALING = "DEPLOYMENT_STATE_SCALING"
+  case dEPLOYMENTSTATEDEGRADED = "DEPLOYMENT_STATE_DEGRADED"
+  case dEPLOYMENTSTATEFAILED = "DEPLOYMENT_STATE_FAILED"
+  case dEPLOYMENTSTATESTOPPED = "DEPLOYMENT_STATE_STOPPED"
+  case dEPLOYMENTSTATESTOPPING = "DEPLOYMENT_STATE_STOPPING"
 }

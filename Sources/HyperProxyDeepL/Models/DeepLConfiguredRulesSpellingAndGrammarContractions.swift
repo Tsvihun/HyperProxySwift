@@ -10,17 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesSpellingAndGrammarContractions: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesSpellingAndGrammarContractions: String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let doNotUseContractions = Self(rawValue: "do_not_use_contractions")
-  public static let useContractions = Self(rawValue: "use_contractions")
-  public static let useContractionsButAvoidNegativeContractions = Self(
-    rawValue: "use_contractions_but_avoid_negative_contractions")
+  case doNotUseContractions = "do_not_use_contractions"
+  case useContractions = "use_contractions"
+  case useContractionsButAvoidNegativeContractions =
+    "use_contractions_but_avoid_negative_contractions"
 }

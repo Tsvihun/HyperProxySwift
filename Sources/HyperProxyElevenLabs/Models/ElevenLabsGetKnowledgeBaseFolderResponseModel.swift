@@ -24,7 +24,7 @@ public struct ElevenLabsGetKnowledgeBaseFolderResponseModel: Codable, Sendable {
   public var metadata: ElevenLabsKnowledgeBaseDocumentMetadataResponseModel
   public var name: String
   public var supportedUsages: [ElevenLabsDocumentUsageModeEnum]
-  public var typeModel: String
+  public var kind: ElevenLabsFolderKind
 
   public init(
     accessInfo: ElevenLabsResourceAccessInfo,
@@ -34,7 +34,7 @@ public struct ElevenLabsGetKnowledgeBaseFolderResponseModel: Codable, Sendable {
     metadata: ElevenLabsKnowledgeBaseDocumentMetadataResponseModel,
     name: String,
     supportedUsages: [ElevenLabsDocumentUsageModeEnum],
-    typeModel: String,
+    kind: ElevenLabsFolderKind = .folder,
     activeSyncJob: ElevenLabsKbExternalSyncJob? = nil,
     autoSyncInfo: ElevenLabsAutoSyncInfo? = nil,
     externalSyncInfo: ElevenLabsExternalFolderSyncInfo? = nil,
@@ -55,7 +55,7 @@ public struct ElevenLabsGetKnowledgeBaseFolderResponseModel: Codable, Sendable {
     self.metadata = metadata
     self.name = name
     self.supportedUsages = supportedUsages
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -72,6 +72,6 @@ public struct ElevenLabsGetKnowledgeBaseFolderResponseModel: Codable, Sendable {
     case metadata
     case name
     case supportedUsages = "supported_usages"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

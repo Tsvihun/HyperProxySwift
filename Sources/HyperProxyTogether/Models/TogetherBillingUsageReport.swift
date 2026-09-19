@@ -12,23 +12,23 @@ import HyperProxyCore
 
 public struct TogetherBillingUsageReport: Codable, Sendable {
   public var billingPeriod: String
-  public var currency: String
+  public var currency: TogetherUSDCurrency
   public var data: [TogetherBillingUsageWindow]
   public var earliestWindowStart: String?
   public var latestWindowEnd: String?
   public var nextCursor: String?
-  public var object: String
+  public var object: TogetherListObject
   public var organizationId: String
 
   public init(
     billingPeriod: String,
-    currency: String,
     data: [TogetherBillingUsageWindow],
     earliestWindowStart: String?,
     latestWindowEnd: String?,
     nextCursor: String?,
-    object: String,
-    organizationId: String
+    organizationId: String,
+    currency: TogetherUSDCurrency = .uSD,
+    object: TogetherListObject = .list
   ) {
     self.billingPeriod = billingPeriod
     self.currency = currency

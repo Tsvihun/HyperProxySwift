@@ -15,13 +15,13 @@ public struct OpenAIResponse: Codable, Sendable {
   public var completedAt: Double?
   public var conversation: OpenAIResponseConversation?
   public var createdAt: Double
-  public var error: OpenAIResponseError
+  public var error: OpenAIResponseError?
   public var id: String
   public var incompleteDetails: OpenAIResponseAllOf3IncompleteDetailsAnyOf1?
-  public var instructions: HyperProxyJSONValue?
+  public var instructions: OpenAIResponseAllOf3InstructionsAnyOf1?
   public var maxOutputTokens: Int?
   public var maxToolCalls: Int?
-  public var metadata: OpenAIMetadata
+  public var metadata: OpenAIMetadata?
   public var model: OpenAIModelIdsResponses
   public var moderation: OpenAIModeration?
   public var object: OpenAIResponseAllOf3Object
@@ -50,11 +50,11 @@ public struct OpenAIResponse: Codable, Sendable {
 
   public init(
     createdAt: Double,
-    error: OpenAIResponseError,
+    error: OpenAIResponseError?,
     id: String,
     incompleteDetails: OpenAIResponseAllOf3IncompleteDetailsAnyOf1?,
-    instructions: HyperProxyJSONValue?,
-    metadata: OpenAIMetadata,
+    instructions: OpenAIResponseAllOf3InstructionsAnyOf1?,
+    metadata: OpenAIMetadata?,
     model: OpenAIModelIdsResponses,
     object: OpenAIResponseAllOf3Object,
     output: [OpenAIOutputItem],

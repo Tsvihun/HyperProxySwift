@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsDubbingReleaseChannel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let stable = Self(rawValue: "stable")
-  public static let release = Self(rawValue: "release")
-  public static let experimental = Self(rawValue: "experimental")
+public enum ElevenLabsDubbingReleaseChannel: String, Codable, Hashable, Sendable {
+  case stable = "stable"
+  case release = "release"
+  case experimental = "experimental"
 }

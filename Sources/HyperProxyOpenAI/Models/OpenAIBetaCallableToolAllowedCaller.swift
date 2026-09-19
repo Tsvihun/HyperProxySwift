@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIBetaCallableToolAllowedCaller: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let direct = Self(rawValue: "direct")
-  public static let programmatic = Self(rawValue: "programmatic")
+public enum OpenAIBetaCallableToolAllowedCaller: String, Codable, Hashable, Sendable {
+  case direct = "direct"
+  case programmatic = "programmatic"
 }

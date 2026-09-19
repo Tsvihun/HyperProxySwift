@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct ElevenLabsAgentDeploymentPercentageStrategy: Codable, Sendable {
   public var trafficPercentage: Double
-  public var typeModel: String?
+  public var kind: ElevenLabsPercentageKind?
 
   public init(
     trafficPercentage: Double,
-    typeModel: String? = nil
+    kind: ElevenLabsPercentageKind? = nil
   ) {
     self.trafficPercentage = trafficPercentage
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case trafficPercentage = "traffic_percentage"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

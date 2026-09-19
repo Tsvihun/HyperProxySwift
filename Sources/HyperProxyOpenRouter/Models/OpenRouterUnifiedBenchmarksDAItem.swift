@@ -17,7 +17,7 @@ public struct OpenRouterUnifiedBenchmarksDAItem: Codable, Sendable {
   public var displayName: String
   public var elo: Double
   public var modelPermaslug: String
-  public var pricing: OpenRouterUnifiedBenchmarkPricing
+  public var pricing: OpenRouterUnifiedBenchmarkPricing?
   public var source: OpenRouterUnifiedBenchmarksDAItemSource
   public var tournamentStats: OpenRouterUnifiedBenchmarksDAItemTournamentStats
   public var winRate: Double
@@ -29,7 +29,7 @@ public struct OpenRouterUnifiedBenchmarksDAItem: Codable, Sendable {
     displayName: String,
     elo: Double,
     modelPermaslug: String,
-    pricing: OpenRouterUnifiedBenchmarkPricing,
+    pricing: OpenRouterUnifiedBenchmarkPricing?,
     source: OpenRouterUnifiedBenchmarksDAItemSource,
     tournamentStats: OpenRouterUnifiedBenchmarksDAItemTournamentStats,
     winRate: Double

@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct MistralWebSearchPremiumTool: Codable, Sendable {
   public var toolConfiguration: MistralToolConfiguration?
-  public var typeModel: MistralWebSearchPremiumToolTypeModel?
+  public var kind: MistralWebSearchPremiumToolKind?
 
   public init(
     toolConfiguration: MistralToolConfiguration? = nil,
-    typeModel: MistralWebSearchPremiumToolTypeModel? = nil
+    kind: MistralWebSearchPremiumToolKind? = nil
   ) {
     self.toolConfiguration = toolConfiguration
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case toolConfiguration = "tool_configuration"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

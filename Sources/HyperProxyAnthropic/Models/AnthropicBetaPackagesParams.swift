@@ -17,7 +17,7 @@ public struct AnthropicBetaPackagesParams: Codable, Sendable {
   public var go: [String]?
   public var npm: [String]?
   public var pip: [String]?
-  public var typeModel: String?
+  public var kind: AnthropicPackagesKind?
 
   public init(
     apt: [String]? = nil,
@@ -26,7 +26,7 @@ public struct AnthropicBetaPackagesParams: Codable, Sendable {
     go: [String]? = nil,
     npm: [String]? = nil,
     pip: [String]? = nil,
-    typeModel: String? = nil
+    kind: AnthropicPackagesKind? = nil
   ) {
     self.apt = apt
     self.cargo = cargo
@@ -34,7 +34,7 @@ public struct AnthropicBetaPackagesParams: Codable, Sendable {
     self.go = go
     self.npm = npm
     self.pip = pip
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct AnthropicBetaPackagesParams: Codable, Sendable {
     case go
     case npm
     case pip
-    case typeModel = "type"
+    case kind = "type"
   }
 }

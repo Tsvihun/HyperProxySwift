@@ -10,20 +10,14 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLWritingStyle: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let academic = Self(rawValue: "academic")
-  public static let business = Self(rawValue: "business")
-  public static let casual = Self(rawValue: "casual")
-  public static let defaultValue = Self(rawValue: "default")
-  public static let simple = Self(rawValue: "simple")
-  public static let preferAcademic = Self(rawValue: "prefer_academic")
-  public static let preferBusiness = Self(rawValue: "prefer_business")
-  public static let preferCasual = Self(rawValue: "prefer_casual")
-  public static let preferSimple = Self(rawValue: "prefer_simple")
+public enum DeepLWritingStyle: String, Codable, Hashable, Sendable {
+  case academic = "academic"
+  case business = "business"
+  case casual = "casual"
+  case defaultValue = "default"
+  case simple = "simple"
+  case preferAcademic = "prefer_academic"
+  case preferBusiness = "prefer_business"
+  case preferCasual = "prefer_casual"
+  case preferSimple = "prefer_simple"
 }

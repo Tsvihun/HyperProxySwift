@@ -18,14 +18,14 @@ public struct AnthropicBetaAdvisorTool20260301: Codable, Sendable {
   public var maxTokens: Int?
   public var maxUses: Int?
   public var model: AnthropicModel
-  public var name: String
+  public var name: AnthropicAdvisorName
   public var strict: Bool?
-  public var typeModel: String
+  public var kind: AnthropicAdvisor20260301Kind
 
   public init(
     model: AnthropicModel,
-    name: String,
-    typeModel: String,
+    name: AnthropicAdvisorName = .advisor,
+    kind: AnthropicAdvisor20260301Kind = .advisor20260301,
     allowedCallers: [AnthropicBetaAllowedCaller]? = nil,
     cacheControl: AnthropicBetaCacheControlEphemeral? = nil,
     caching: AnthropicBetaCacheControlEphemeral? = nil,
@@ -43,7 +43,7 @@ public struct AnthropicBetaAdvisorTool20260301: Codable, Sendable {
     self.model = model
     self.name = name
     self.strict = strict
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -56,6 +56,6 @@ public struct AnthropicBetaAdvisorTool20260301: Codable, Sendable {
     case model
     case name
     case strict
-    case typeModel = "type"
+    case kind = "type"
   }
 }

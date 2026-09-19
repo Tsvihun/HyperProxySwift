@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesSpellingAndGrammarAllCaps: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let doNotUseAllCapsExceptForAcronymsInitialismsOrProperNouns = Self(
-    rawValue: "do_not_use_all_caps_except_for_acronyms_initialisms_or_proper_nouns")
-  public static let doNotUseAllCapsExceptForAcronymsOrBrandNames = Self(
-    rawValue: "do_not_use_all_caps_except_for_acronyms_or_brand_names")
+public enum DeepLConfiguredRulesSpellingAndGrammarAllCaps: String, Codable, Hashable, Sendable {
+  case doNotUseAllCapsExceptForAcronymsInitialismsOrProperNouns =
+    "do_not_use_all_caps_except_for_acronyms_initialisms_or_proper_nouns"
+  case doNotUseAllCapsExceptForAcronymsOrBrandNames =
+    "do_not_use_all_caps_except_for_acronyms_or_brand_names"
 }

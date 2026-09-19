@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public enum MistralChatClassificationRequestInputs: Codable, Sendable {
-  case array([MistralInstructRequest])
+  case instructRequestArray([MistralInstructRequest])
   case instructRequest(MistralInstructRequest)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
     if let value = try? container.decode([MistralInstructRequest].self) {
-      self = .array(value)
+      self = .instructRequestArray(value)
       return
     }
     self = .instructRequest(try container.decode(MistralInstructRequest.self))
@@ -26,7 +26,7 @@ public enum MistralChatClassificationRequestInputs: Codable, Sendable {
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .array(let value):
+    case .instructRequestArray(let value):
       try container.encode(value)
     case .instructRequest(let value):
       try container.encode(value)
@@ -36,6 +36,6 @@ public enum MistralChatClassificationRequestInputs: Codable, Sendable {
 
 extension MistralChatClassificationRequestInputs: ExpressibleByArrayLiteral {
   public init(arrayLiteral elements: MistralInstructRequest...) {
-    self = .array(elements)
+    self = .instructRequestArray(elements)
   }
 }

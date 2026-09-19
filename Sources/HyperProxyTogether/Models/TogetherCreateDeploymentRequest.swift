@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct TogetherCreateDeploymentRequest: Codable, Sendable {
   public var args: [String]?
-  public var autoscaling: HyperProxyJSONValue?
+  public var autoscaling: TogetherCreateDeploymentRequestAutoscaling?
   public var command: [String]?
   public var cpu: Double?
   public var description: String?
@@ -35,7 +35,7 @@ public struct TogetherCreateDeploymentRequest: Codable, Sendable {
     image: String,
     name: String,
     args: [String]? = nil,
-    autoscaling: HyperProxyJSONValue? = nil,
+    autoscaling: TogetherCreateDeploymentRequestAutoscaling? = nil,
     command: [String]? = nil,
     cpu: Double? = nil,
     description: String? = nil,

@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct GroqCreateSpeechRequest: Codable, Sendable {
   public var input: String
-  public var model: HyperProxyJSONValue
+  public var model: GroqCreateSpeechRequestModel
   public var responseFormat: GroqCreateSpeechRequestResponseFormat?
   public var sampleRate: GroqCreateSpeechRequestSampleRate?
   public var speed: Double?
@@ -20,7 +20,7 @@ public struct GroqCreateSpeechRequest: Codable, Sendable {
 
   public init(
     input: String,
-    model: HyperProxyJSONValue,
+    model: GroqCreateSpeechRequestModel,
     voice: String,
     responseFormat: GroqCreateSpeechRequestResponseFormat? = nil,
     sampleRate: GroqCreateSpeechRequestSampleRate? = nil,

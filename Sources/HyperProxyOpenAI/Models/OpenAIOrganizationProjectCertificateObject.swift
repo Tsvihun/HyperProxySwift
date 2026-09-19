@@ -10,15 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIOrganizationProjectCertificateObject: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let organizationProjectCertificate = Self(
-    rawValue: "organization.project.certificate")
+public enum OpenAIOrganizationProjectCertificateObject: String, Codable, Hashable, Sendable {
+  case organizationProjectCertificate = "organization.project.certificate"
 }

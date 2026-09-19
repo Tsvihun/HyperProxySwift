@@ -17,12 +17,34 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.audioSpeech)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    if body.stream == true {
+      throw HyperProxyProviderRouteError.streamingBodyOnJSONCall(
+        operation: "audioSpeech",
+        streamingVariant: "audioSpeechStream"
+      )
+    }
+    let prepared = try call.json(body)
+    return try prepared.bytes()
+  }
+
+  public func audioSpeechStream(
+    _ body: TogetherAudioSpeechRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
   ) throws -> AsyncThrowingStream<TogetherAudioSpeechStreamResponse, Error> {
     let call = self.call(.audioSpeech)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    let prepared = try call.json(body)
+    var streamingBody = body
+    streamingBody.stream = true
+    let prepared = try call.json(streamingBody)
     return try prepared.events(decoding: TogetherAudioSpeechStreamResponse.self)
   }
 
@@ -858,6 +880,20 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     return try await call.decoded(TogetherFileDeleteResponse.self)
   }
 
+  public func v1FilesIdContentGet(
+    id: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> String {
+    let call = self.call(.v1FilesIdContentGet)
+      .path("id", id)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.text()
+  }
+
   public func fineTuningList(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -1032,6 +1068,18 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(TogetherGetFineTunesIdMetricsResponse.self)
+  }
+
+  public func v1FinetuneDownloadGet(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.v1FinetuneDownloadGet)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try call.bytes()
   }
 
   public func listHardware(

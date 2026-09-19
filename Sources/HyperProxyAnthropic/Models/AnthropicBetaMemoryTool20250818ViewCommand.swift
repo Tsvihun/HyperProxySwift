@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaMemoryTool20250818ViewCommand: Codable, Sendable {
-  public var command: AnthropicBetaMemoryTool20250818ViewCommandCommand
+  public var command: AnthropicViewCommand
   public var path: String
   public var viewRange: [Int]?
 
   public init(
-    command: AnthropicBetaMemoryTool20250818ViewCommandCommand,
     path: String,
+    command: AnthropicViewCommand = .view,
     viewRange: [Int]? = nil
   ) {
     self.command = command

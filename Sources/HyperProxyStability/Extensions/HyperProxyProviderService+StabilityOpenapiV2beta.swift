@@ -17,14 +17,13 @@ extension HyperProxyProviderService where Operation == StabilityOperation {
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> StabilityGetV2alphaGenerationStableImageUpscaleResultIdResponse200JSON {
+  ) async throws -> StabilityImageJSONResponse {
     let call = self.call(.v2alphaGenerationStableImageUpscaleResultIdGet)
       .path("id", id)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(
-      StabilityGetV2alphaGenerationStableImageUpscaleResultIdResponse200JSON.self)
+    return try await call.decoded(StabilityImageJSONResponse.self)
   }
 
   public func fetchAudioResult(
@@ -32,13 +31,13 @@ extension HyperProxyProviderService where Operation == StabilityOperation {
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> StabilityFetchAudioResultResponse200JSON {
+  ) async throws -> StabilityFetchAudioResultResponse {
     let call = self.call(.fetchAudioResult)
       .path("id", id)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(StabilityFetchAudioResultResponse200JSON.self)
+    return try await call.decoded(StabilityFetchAudioResultResponse.self)
   }
 
   public func v2betaResultsIdGet(
@@ -46,13 +45,13 @@ extension HyperProxyProviderService where Operation == StabilityOperation {
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> StabilityGetV2betaResultsIdResponse200JSON {
+  ) async throws -> StabilityImageJSONResponse {
     let call = self.call(.v2betaResultsIdGet)
       .path("id", id)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(StabilityGetV2betaResultsIdResponse200JSON.self)
+    return try await call.decoded(StabilityImageJSONResponse.self)
   }
 
   public func v2betaStableImageUpscaleCreativeResultIdGet(
@@ -60,13 +59,12 @@ extension HyperProxyProviderService where Operation == StabilityOperation {
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> StabilityGetV2betaStableImageUpscaleCreativeResultIdResponse200JSON {
+  ) async throws -> StabilityImageJSONResponse {
     let call = self.call(.v2betaStableImageUpscaleCreativeResultIdGet)
       .path("id", id)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(
-      StabilityGetV2betaStableImageUpscaleCreativeResultIdResponse200JSON.self)
+    return try await call.decoded(StabilityImageJSONResponse.self)
   }
 }

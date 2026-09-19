@@ -10,4 +10,21 @@
 import Foundation
 import HyperProxyCore
 
-public typealias MistralGetVoiceSampleAudioV1AudioVoicesVoiceIdSampleGetResponse = String
+public struct MistralGetVoiceSampleAudioV1AudioVoicesVoiceIdSampleGetResponse: RawRepresentable,
+  Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+}
+
+extension MistralGetVoiceSampleAudioV1AudioVoicesVoiceIdSampleGetResponse:
+  ExpressibleByStringLiteral
+{
+  public init(stringLiteral value: String) {
+    self.init(rawValue: value)
+  }
+}

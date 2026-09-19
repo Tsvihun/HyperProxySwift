@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherDEHeadroomRelation: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let rELATIONEQ = Self(rawValue: "RELATION_EQ")
-  public static let rELATIONGTE = Self(rawValue: "RELATION_GTE")
+public enum TogetherDEHeadroomRelation: String, Codable, Hashable, Sendable {
+  case rELATIONEQ = "RELATION_EQ"
+  case rELATIONGTE = "RELATION_GTE"
 }

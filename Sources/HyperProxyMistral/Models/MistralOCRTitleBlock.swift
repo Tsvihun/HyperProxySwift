@@ -17,7 +17,7 @@ public struct MistralOCRTitleBlock: Codable, Sendable {
   public var content: String
   public var topLeftX: Int
   public var topLeftY: Int
-  public var typeModel: String?
+  public var kind: MistralTitleKind?
 
   public init(
     bottomRightX: Int,
@@ -26,7 +26,7 @@ public struct MistralOCRTitleBlock: Codable, Sendable {
     topLeftX: Int,
     topLeftY: Int,
     confidenceScores: MistralOCRBlockConfidenceScores? = nil,
-    typeModel: String? = nil
+    kind: MistralTitleKind? = nil
   ) {
     self.bottomRightX = bottomRightX
     self.bottomRightY = bottomRightY
@@ -34,7 +34,7 @@ public struct MistralOCRTitleBlock: Codable, Sendable {
     self.content = content
     self.topLeftX = topLeftX
     self.topLeftY = topLeftY
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct MistralOCRTitleBlock: Codable, Sendable {
     case content
     case topLeftX = "top_left_x"
     case topLeftY = "top_left_y"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

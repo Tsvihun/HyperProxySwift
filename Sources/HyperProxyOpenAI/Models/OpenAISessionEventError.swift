@@ -14,24 +14,24 @@ public struct OpenAISessionEventError: Codable, Sendable {
   public var error: OpenAISessionErrorResource
   public var eventId: String
   public var sessionId: String
-  public var typeModel: OpenAISessionEventErrorTypeModel
+  public var kind: OpenAISessionEventErrorKind
 
   public init(
     error: OpenAISessionErrorResource,
     eventId: String,
     sessionId: String,
-    typeModel: OpenAISessionEventErrorTypeModel
+    kind: OpenAISessionEventErrorKind
   ) {
     self.error = error
     self.eventId = eventId
     self.sessionId = sessionId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case error
     case eventId = "event_id"
     case sessionId = "session_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

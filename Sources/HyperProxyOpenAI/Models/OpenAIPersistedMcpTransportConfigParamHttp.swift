@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenAIPersistedMcpTransportConfigParamHttp: Codable, Sendable {
   public var headers: [String: String]?
   public var serverUrl: String
-  public var typeModel: OpenAIPersistedMcpTransportConfigParamHttpTypeModel
+  public var kind: OpenAIPersistedMcpTransportConfigParamHttpKind
 
   public init(
     serverUrl: String,
-    typeModel: OpenAIPersistedMcpTransportConfigParamHttpTypeModel,
+    kind: OpenAIPersistedMcpTransportConfigParamHttpKind,
     headers: [String: String]? = nil
   ) {
     self.headers = headers
     self.serverUrl = serverUrl
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case headers
     case serverUrl = "server_url"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

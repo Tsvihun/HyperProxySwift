@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct StabilityPostV2betaAudioStableAudioAudioToAudioRequestModel: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum StabilityPostV2betaAudioStableAudioAudioToAudioRequestModel: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let stableAudio3 = Self(rawValue: "stable-audio-3")
+  case stableAudio3 = "stable-audio-3"
 }

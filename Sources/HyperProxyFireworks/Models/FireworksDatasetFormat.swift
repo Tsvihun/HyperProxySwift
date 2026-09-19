@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksDatasetFormat: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let fORMATUNSPECIFIED = Self(rawValue: "FORMAT_UNSPECIFIED")
-  public static let cHAT = Self(rawValue: "CHAT")
-  public static let cOMPLETION = Self(rawValue: "COMPLETION")
-  public static let rL = Self(rawValue: "RL")
+public enum FireworksDatasetFormat: String, Codable, Hashable, Sendable {
+  case fORMATUNSPECIFIED = "FORMAT_UNSPECIFIED"
+  case cHAT = "CHAT"
+  case cOMPLETION = "COMPLETION"
+  case rL = "RL"
 }

@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiDiffUploadRequest: Codable, Sendable {
-  public var checksumsInfo: HyperProxyJSONValue?
-  public var objectInfo: HyperProxyJSONValue?
+  public var checksumsInfo: GeminiCompositeMedia?
+  public var objectInfo: GeminiCompositeMedia?
   public var objectVersion: String?
 
   public init(
-    checksumsInfo: HyperProxyJSONValue? = nil,
-    objectInfo: HyperProxyJSONValue? = nil,
+    checksumsInfo: GeminiCompositeMedia? = nil,
+    objectInfo: GeminiCompositeMedia? = nil,
     objectVersion: String? = nil
   ) {
     self.checksumsInfo = checksumsInfo

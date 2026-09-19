@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct EachAIAPIModelDetailCostDescription: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let pricingIsAnEstimateAndMayChangeAsRatesAreUpdated = Self(
-    rawValue: "Pricing is an estimate and may change as rates are updated.")
+public enum EachAIAPIModelDetailCostDescription: String, Codable, Hashable, Sendable {
+  case pricingIsAnEstimateAndMayChangeAsRatesAreUpdated =
+    "Pricing is an estimate and may change as rates are updated."
 }

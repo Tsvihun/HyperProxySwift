@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAILiveAllowedServerEventParam: Codable, Sendable {
   public var responseEvent: String?
-  public var typeModel: String
+  public var kind: String
 
   public init(
-    typeModel: String,
+    kind: String,
     responseEvent: String? = nil
   ) {
     self.responseEvent = responseEvent
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case responseEvent = "response_event"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

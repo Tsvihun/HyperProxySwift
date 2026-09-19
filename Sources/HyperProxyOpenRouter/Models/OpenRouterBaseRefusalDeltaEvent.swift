@@ -16,7 +16,7 @@ public struct OpenRouterBaseRefusalDeltaEvent: Codable, Sendable {
   public var itemId: String
   public var outputIndex: Int
   public var sequenceNumber: Int
-  public var typeModel: OpenRouterBaseRefusalDeltaEventTypeModel
+  public var kind: OpenRouterBaseRefusalDeltaEventKind
 
   public init(
     contentIndex: Int,
@@ -24,14 +24,14 @@ public struct OpenRouterBaseRefusalDeltaEvent: Codable, Sendable {
     itemId: String,
     outputIndex: Int,
     sequenceNumber: Int,
-    typeModel: OpenRouterBaseRefusalDeltaEventTypeModel
+    kind: OpenRouterBaseRefusalDeltaEventKind
   ) {
     self.contentIndex = contentIndex
     self.delta = delta
     self.itemId = itemId
     self.outputIndex = outputIndex
     self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenRouterBaseRefusalDeltaEvent: Codable, Sendable {
     case itemId = "item_id"
     case outputIndex = "output_index"
     case sequenceNumber = "sequence_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

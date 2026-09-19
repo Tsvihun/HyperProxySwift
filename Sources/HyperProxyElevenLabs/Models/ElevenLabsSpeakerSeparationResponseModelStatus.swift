@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsSpeakerSeparationResponseModelStatus: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let notStarted = Self(rawValue: "not_started")
-  public static let pending = Self(rawValue: "pending")
-  public static let completed = Self(rawValue: "completed")
-  public static let failed = Self(rawValue: "failed")
+public enum ElevenLabsSpeakerSeparationResponseModelStatus: String, Codable, Hashable, Sendable {
+  case notStarted = "not_started"
+  case pending = "pending"
+  case completed = "completed"
+  case failed = "failed"
 }

@@ -16,7 +16,7 @@ public struct OpenAIAdminApiKeyOwner: Codable, Sendable {
   public var name: String?
   public var object: String?
   public var role: String?
-  public var typeModel: String?
+  public var kind: String?
 
   public init(
     createdAt: Int? = nil,
@@ -24,14 +24,14 @@ public struct OpenAIAdminApiKeyOwner: Codable, Sendable {
     name: String? = nil,
     object: String? = nil,
     role: String? = nil,
-    typeModel: String? = nil
+    kind: String? = nil
   ) {
     self.createdAt = createdAt
     self.id = id
     self.name = name
     self.object = object
     self.role = role
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIAdminApiKeyOwner: Codable, Sendable {
     case name
     case object
     case role
-    case typeModel = "type"
+    case kind = "type"
   }
 }

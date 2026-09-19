@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenAIRealtimeMCPToolCall: Codable, Sendable {
   public var approvalRequestId: String?
   public var arguments: String
-  public var error: HyperProxyJSONValue?
+  public var error: OpenAIRealtimeMCPToolCallErrorAnyOf1?
   public var id: String
   public var name: String
   public var output: String?
   public var serverLabel: String
-  public var typeModel: OpenAIRealtimeMCPToolCallTypeModel
+  public var kind: OpenAIRealtimeMCPToolCallKind
 
   public init(
     arguments: String,
     id: String,
     name: String,
     serverLabel: String,
-    typeModel: OpenAIRealtimeMCPToolCallTypeModel,
+    kind: OpenAIRealtimeMCPToolCallKind,
     approvalRequestId: String? = nil,
-    error: HyperProxyJSONValue? = nil,
+    error: OpenAIRealtimeMCPToolCallErrorAnyOf1? = nil,
     output: String? = nil
   ) {
     self.approvalRequestId = approvalRequestId
@@ -37,7 +37,7 @@ public struct OpenAIRealtimeMCPToolCall: Codable, Sendable {
     self.name = name
     self.output = output
     self.serverLabel = serverLabel
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct OpenAIRealtimeMCPToolCall: Codable, Sendable {
     case name
     case output
     case serverLabel = "server_label"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLOutlineDetectionOptionStr: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let value0 = Self(rawValue: "0")
-  public static let value1 = Self(rawValue: "1")
+public enum DeepLOutlineDetectionOptionStr: String, Codable, Hashable, Sendable {
+  case value0 = "0"
+  case value1 = "1"
 }

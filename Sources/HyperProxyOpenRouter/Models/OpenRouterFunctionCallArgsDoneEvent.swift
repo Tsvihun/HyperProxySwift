@@ -16,7 +16,7 @@ public struct OpenRouterFunctionCallArgsDoneEvent: Codable, Sendable {
   public var name: String
   public var outputIndex: Int
   public var sequenceNumber: Int
-  public var typeModel: OpenRouterBaseFunctionCallArgsDoneEventTypeModel
+  public var kind: OpenRouterBaseFunctionCallArgsDoneEventKind
 
   public init(
     arguments: String,
@@ -24,14 +24,14 @@ public struct OpenRouterFunctionCallArgsDoneEvent: Codable, Sendable {
     name: String,
     outputIndex: Int,
     sequenceNumber: Int,
-    typeModel: OpenRouterBaseFunctionCallArgsDoneEventTypeModel
+    kind: OpenRouterBaseFunctionCallArgsDoneEventKind
   ) {
     self.arguments = arguments
     self.itemId = itemId
     self.name = name
     self.outputIndex = outputIndex
     self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenRouterFunctionCallArgsDoneEvent: Codable, Sendable {
     case name
     case outputIndex = "output_index"
     case sequenceNumber = "sequence_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

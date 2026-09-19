@@ -18,7 +18,7 @@ public struct OpenAIBetaResponseReasoningSummaryPartDoneEvent: Codable, Sendable
   public var sequenceNumber: Int
   public var status: OpenAIBetaResponseReasoningSummaryPartDoneEventStatus?
   public var summaryIndex: Int
-  public var typeModel: OpenAIBetaResponseReasoningSummaryPartDoneEventTypeModel
+  public var kind: OpenAIBetaResponseReasoningSummaryPartDoneEventKind
 
   public init(
     itemId: String,
@@ -26,7 +26,7 @@ public struct OpenAIBetaResponseReasoningSummaryPartDoneEvent: Codable, Sendable
     part: OpenAIBetaResponseReasoningSummaryPartDoneEventPart,
     sequenceNumber: Int,
     summaryIndex: Int,
-    typeModel: OpenAIBetaResponseReasoningSummaryPartDoneEventTypeModel,
+    kind: OpenAIBetaResponseReasoningSummaryPartDoneEventKind,
     agent: OpenAIBetaAgentTag? = nil,
     status: OpenAIBetaResponseReasoningSummaryPartDoneEventStatus? = nil
   ) {
@@ -37,7 +37,7 @@ public struct OpenAIBetaResponseReasoningSummaryPartDoneEvent: Codable, Sendable
     self.sequenceNumber = sequenceNumber
     self.status = status
     self.summaryIndex = summaryIndex
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct OpenAIBetaResponseReasoningSummaryPartDoneEvent: Codable, Sendable
     case sequenceNumber = "sequence_number"
     case status
     case summaryIndex = "summary_index"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

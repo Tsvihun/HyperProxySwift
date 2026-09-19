@@ -16,11 +16,11 @@ public struct OpenAIMessageDeltaContentTextAnnotationsFilePathObject: Codable, S
   public var index: Int
   public var startIndex: Int?
   public var text: String?
-  public var typeModel: OpenAIMessageDeltaContentTextAnnotationsFilePathObjectTypeModel
+  public var kind: OpenAIMessageDeltaContentTextAnnotationsFilePathObjectKind
 
   public init(
     index: Int,
-    typeModel: OpenAIMessageDeltaContentTextAnnotationsFilePathObjectTypeModel,
+    kind: OpenAIMessageDeltaContentTextAnnotationsFilePathObjectKind,
     endIndex: Int? = nil,
     filePath: OpenAIMessageDeltaContentTextAnnotationsFilePathObjectFilePath? = nil,
     startIndex: Int? = nil,
@@ -31,7 +31,7 @@ public struct OpenAIMessageDeltaContentTextAnnotationsFilePathObject: Codable, S
     self.index = index
     self.startIndex = startIndex
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIMessageDeltaContentTextAnnotationsFilePathObject: Codable, S
     case index
     case startIndex = "start_index"
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

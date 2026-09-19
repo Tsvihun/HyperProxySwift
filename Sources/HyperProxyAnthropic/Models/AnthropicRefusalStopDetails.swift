@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct AnthropicRefusalStopDetails: Codable, Sendable {
   public var category: AnthropicRefusalCategory?
   public var explanation: String?
-  public var typeModel: String
+  public var kind: AnthropicRefusalKind
 
   public init(
     category: AnthropicRefusalCategory?,
     explanation: String?,
-    typeModel: String
+    kind: AnthropicRefusalKind = .refusal
   ) {
     self.category = category
     self.explanation = explanation
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case category
     case explanation
-    case typeModel = "type"
+    case kind = "type"
   }
 }

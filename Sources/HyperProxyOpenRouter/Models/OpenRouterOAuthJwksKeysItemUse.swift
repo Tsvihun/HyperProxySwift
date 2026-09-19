@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterOAuthJwksKeysItemUse: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let sig = Self(rawValue: "sig")
+public enum OpenRouterOAuthJwksKeysItemUse: String, Codable, Hashable, Sendable {
+  case sig = "sig"
 }

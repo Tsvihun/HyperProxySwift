@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIVaultStatusParam: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let active = Self(rawValue: "active")
-  public static let archived = Self(rawValue: "archived")
+public enum OpenAIVaultStatusParam: String, Codable, Hashable, Sendable {
+  case active = "active"
+  case archived = "archived"
 }

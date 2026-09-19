@@ -10,18 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksGatewayCheckpointType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let cHECKPOINTTYPEUNSPECIFIED = Self(rawValue: "CHECKPOINT_TYPE_UNSPECIFIED")
-  public static let cHECKPOINTTYPEINFERENCEBASE = Self(rawValue: "CHECKPOINT_TYPE_INFERENCE_BASE")
-  public static let cHECKPOINTTYPEINFERENCEARCV2 = Self(
-    rawValue: "CHECKPOINT_TYPE_INFERENCE_ARC_V2")
-  public static let cHECKPOINTTYPEINFERENCELORA = Self(rawValue: "CHECKPOINT_TYPE_INFERENCE_LORA")
-  public static let cHECKPOINTTYPETRAINING = Self(rawValue: "CHECKPOINT_TYPE_TRAINING")
-  public static let cHECKPOINTTYPETRAININGLORA = Self(rawValue: "CHECKPOINT_TYPE_TRAINING_LORA")
+public enum FireworksGatewayCheckpointType: String, Codable, Hashable, Sendable {
+  case cHECKPOINTTYPEUNSPECIFIED = "CHECKPOINT_TYPE_UNSPECIFIED"
+  case cHECKPOINTTYPEINFERENCEBASE = "CHECKPOINT_TYPE_INFERENCE_BASE"
+  case cHECKPOINTTYPEINFERENCEARCV2 = "CHECKPOINT_TYPE_INFERENCE_ARC_V2"
+  case cHECKPOINTTYPEINFERENCELORA = "CHECKPOINT_TYPE_INFERENCE_LORA"
+  case cHECKPOINTTYPETRAINING = "CHECKPOINT_TYPE_TRAINING"
+  case cHECKPOINTTYPETRAININGLORA = "CHECKPOINT_TYPE_TRAINING_LORA"
 }

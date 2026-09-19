@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIScreenshotParam: Codable, Sendable {
-  public var typeModel: OpenAIScreenshotParamTypeModel
+  public var kind: OpenAIScreenshotParamKind
 
   public init(
-    typeModel: OpenAIScreenshotParamTypeModel
+    kind: OpenAIScreenshotParamKind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

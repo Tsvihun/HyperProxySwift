@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenRouterContainerAutoEnvironment: Codable, Sendable {
   public var fileIds: OpenRouterContainerFileIds?
   public var networkPolicy: OpenRouterContainerNetworkPolicy?
-  public var typeModel: OpenRouterContainerAutoEnvironmentTypeModel
+  public var kind: OpenRouterContainerAutoEnvironmentKind
 
   public init(
-    typeModel: OpenRouterContainerAutoEnvironmentTypeModel,
+    kind: OpenRouterContainerAutoEnvironmentKind,
     fileIds: OpenRouterContainerFileIds? = nil,
     networkPolicy: OpenRouterContainerNetworkPolicy? = nil
   ) {
     self.fileIds = fileIds
     self.networkPolicy = networkPolicy
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case fileIds = "file_ids"
     case networkPolicy = "network_policy"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

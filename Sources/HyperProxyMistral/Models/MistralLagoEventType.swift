@@ -10,27 +10,21 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralLagoEventType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let apiTokens = Self(rawValue: "api_tokens")
-  public static let apiPages = Self(rawValue: "api_pages")
-  public static let apiAudioSeconds = Self(rawValue: "api_audio_seconds")
-  public static let apiAudioCharacters = Self(rawValue: "api_audio_characters")
-  public static let apiConnectors = Self(rawValue: "api_connectors")
-  public static let apiLibrariesTokens = Self(rawValue: "api_libraries_tokens")
-  public static let apiLibrariesPages = Self(rawValue: "api_libraries_pages")
-  public static let apiLibrariesAudio = Self(rawValue: "api_libraries_audio")
-  public static let deploymentTokens = Self(rawValue: "deployment_tokens")
-  public static let gpuHour = Self(rawValue: "gpu_hour")
-  public static let reservedInstance = Self(rawValue: "reserved_instance")
-  public static let vibeTokens = Self(rawValue: "vibe_tokens")
-  public static let vibeConnectors = Self(rawValue: "vibe_connectors")
-  public static let vibePages = Self(rawValue: "vibe_pages")
-  public static let vibeAudioSeconds = Self(rawValue: "vibe_audio_seconds")
-  public static let vibeAudioCharacters = Self(rawValue: "vibe_audio_characters")
+public enum MistralLagoEventType: String, Codable, Hashable, Sendable {
+  case apiTokens = "api_tokens"
+  case apiPages = "api_pages"
+  case apiAudioSeconds = "api_audio_seconds"
+  case apiAudioCharacters = "api_audio_characters"
+  case apiConnectors = "api_connectors"
+  case apiLibrariesTokens = "api_libraries_tokens"
+  case apiLibrariesPages = "api_libraries_pages"
+  case apiLibrariesAudio = "api_libraries_audio"
+  case deploymentTokens = "deployment_tokens"
+  case gpuHour = "gpu_hour"
+  case reservedInstance = "reserved_instance"
+  case vibeTokens = "vibe_tokens"
+  case vibeConnectors = "vibe_connectors"
+  case vibePages = "vibe_pages"
+  case vibeAudioSeconds = "vibe_audio_seconds"
+  case vibeAudioCharacters = "vibe_audio_characters"
 }

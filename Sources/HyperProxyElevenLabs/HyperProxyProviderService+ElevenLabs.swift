@@ -773,6 +773,10 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
   public var getConversationUsersRoute: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.getConversationUsersRoute)
   }
+  /// `GET v1/convai/v2/phone-numbers`
+  public var listPhoneNumbersPageRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.listPhoneNumbersPageRoute)
+  }
   /// `GET v1/convai/whatsapp-accounts`
   public var listWhatsappAccounts: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.listWhatsappAccounts)

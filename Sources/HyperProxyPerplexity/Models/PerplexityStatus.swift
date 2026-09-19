@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct PerplexityStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let completed = Self(rawValue: "completed")
-  public static let failed = Self(rawValue: "failed")
-  public static let incomplete = Self(rawValue: "incomplete")
-  public static let inProgress = Self(rawValue: "in_progress")
-  public static let queued = Self(rawValue: "queued")
-  public static let cancelled = Self(rawValue: "cancelled")
+public enum PerplexityStatus: String, Codable, Hashable, Sendable {
+  case completed = "completed"
+  case failed = "failed"
+  case incomplete = "incomplete"
+  case inProgress = "in_progress"
+  case queued = "queued"
+  case cancelled = "cancelled"
 }

@@ -16,10 +16,10 @@ public struct TogetherRLLossConfig: Codable, Sendable {
   public var droParams: TogetherRLDROLossParams?
   public var grpoParams: TogetherRLGRPOLossParams?
   public var ppoParams: TogetherRLPPOLossParams?
-  public var typeModel: TogetherRLLossType
+  public var kind: TogetherRLLossType
 
   public init(
-    typeModel: TogetherRLLossType,
+    kind: TogetherRLLossType,
     cispoParams: TogetherRLCISPOLossParams? = nil,
     crossEntropyParams: TogetherRLCrossEntropyLossParams? = nil,
     droParams: TogetherRLDROLossParams? = nil,
@@ -31,7 +31,7 @@ public struct TogetherRLLossConfig: Codable, Sendable {
     self.droParams = droParams
     self.grpoParams = grpoParams
     self.ppoParams = ppoParams
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct TogetherRLLossConfig: Codable, Sendable {
     case droParams = "dro_params"
     case grpoParams = "grpo_params"
     case ppoParams = "ppo_params"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

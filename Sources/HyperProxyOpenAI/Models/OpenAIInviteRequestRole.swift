@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIInviteRequestRole: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let reader = Self(rawValue: "reader")
-  public static let owner = Self(rawValue: "owner")
+public enum OpenAIInviteRequestRole: String, Codable, Hashable, Sendable {
+  case reader = "reader"
+  case owner = "owner"
 }

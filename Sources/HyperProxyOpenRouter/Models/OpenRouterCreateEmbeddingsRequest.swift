@@ -13,19 +13,23 @@ import HyperProxyCore
 public struct OpenRouterCreateEmbeddingsRequest: Codable, Sendable {
   public var dimensions: Int?
   public var encodingFormat: OpenRouterCreateEmbeddingsRequestEncodingFormat?
-  public var input: HyperProxyJSONValue
+  public var input: OpenRouterCreateEmbeddingsRequestInput
   public var inputType: String?
   public var model: String
-  public var provider: HyperProxyJSONValue?
+  public var provider: OpenRouterProviderPreferences?
+  public var sessionId: String?
+  public var trace: OpenRouterTraceConfig?
   public var user: String?
 
   public init(
-    input: HyperProxyJSONValue,
+    input: OpenRouterCreateEmbeddingsRequestInput,
     model: String,
     dimensions: Int? = nil,
     encodingFormat: OpenRouterCreateEmbeddingsRequestEncodingFormat? = nil,
     inputType: String? = nil,
-    provider: HyperProxyJSONValue? = nil,
+    provider: OpenRouterProviderPreferences? = nil,
+    sessionId: String? = nil,
+    trace: OpenRouterTraceConfig? = nil,
     user: String? = nil
   ) {
     self.dimensions = dimensions
@@ -34,6 +38,8 @@ public struct OpenRouterCreateEmbeddingsRequest: Codable, Sendable {
     self.inputType = inputType
     self.model = model
     self.provider = provider
+    self.sessionId = sessionId
+    self.trace = trace
     self.user = user
   }
 
@@ -44,6 +50,8 @@ public struct OpenRouterCreateEmbeddingsRequest: Codable, Sendable {
     case inputType = "input_type"
     case model
     case provider
+    case sessionId = "session_id"
+    case trace
     case user
   }
 }

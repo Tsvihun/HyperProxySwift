@@ -16,19 +16,19 @@ public struct ElevenLabsDubOrderItemRequest: Codable, Sendable {
   public var includeCaptions: Bool
   public var includeSourceCaptions: Bool
   public var instructions: String?
-  public var kind: String?
-  public var mediaId: ElevenLabsMediaId
+  public var kind: ElevenLabsDubKind?
+  public var mediaId: String
   public var sourceLanguage: String
 
   public init(
     destinationLanguages: [String],
     includeCaptions: Bool,
     includeSourceCaptions: Bool,
-    mediaId: ElevenLabsMediaId,
+    mediaId: String,
     sourceLanguage: String,
     captionsSdh: Bool? = nil,
     instructions: String? = nil,
-    kind: String? = nil
+    kind: ElevenLabsDubKind? = nil
   ) {
     self.captionsSdh = captionsSdh
     self.destinationLanguages = destinationLanguages

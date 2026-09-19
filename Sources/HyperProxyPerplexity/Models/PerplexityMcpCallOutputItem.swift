@@ -18,14 +18,14 @@ public struct PerplexityMcpCallOutputItem: Codable, Sendable {
   public var name: String
   public var output: String?
   public var serverLabel: String
-  public var typeModel: PerplexityMcpCallOutputItemTypeModel
+  public var kind: PerplexityMcpCallOutputItemKind
 
   public init(
     arguments: String,
     id: String,
     name: String,
     serverLabel: String,
-    typeModel: PerplexityMcpCallOutputItemTypeModel,
+    kind: PerplexityMcpCallOutputItemKind,
     connectorId: String? = nil,
     error: String? = nil,
     output: String? = nil
@@ -37,7 +37,7 @@ public struct PerplexityMcpCallOutputItem: Codable, Sendable {
     self.name = name
     self.output = output
     self.serverLabel = serverLabel
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct PerplexityMcpCallOutputItem: Codable, Sendable {
     case name
     case output
     case serverLabel = "server_label"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

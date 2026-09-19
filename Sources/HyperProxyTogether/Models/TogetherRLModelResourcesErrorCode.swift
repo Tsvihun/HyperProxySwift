@@ -10,15 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherRLModelResourcesErrorCode: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mODELRESOURCESERRORCODECAPACITYWAITTIMEOUT = Self(
-    rawValue: "MODEL_RESOURCES_ERROR_CODE_CAPACITY_WAIT_TIMEOUT")
-  public static let mODELRESOURCESERRORCODEPROVISIONINGFAILED = Self(
-    rawValue: "MODEL_RESOURCES_ERROR_CODE_PROVISIONING_FAILED")
+public enum TogetherRLModelResourcesErrorCode: String, Codable, Hashable, Sendable {
+  case mODELRESOURCESERRORCODECAPACITYWAITTIMEOUT =
+    "MODEL_RESOURCES_ERROR_CODE_CAPACITY_WAIT_TIMEOUT"
+  case mODELRESOURCESERRORCODEPROVISIONINGFAILED = "MODEL_RESOURCES_ERROR_CODE_PROVISIONING_FAILED"
 }

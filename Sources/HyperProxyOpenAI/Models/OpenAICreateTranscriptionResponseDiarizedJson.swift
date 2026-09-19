@@ -15,14 +15,14 @@ public struct OpenAICreateTranscriptionResponseDiarizedJson: Codable, Sendable {
   public var segments: [OpenAITranscriptionDiarizedSegment]
   public var task: OpenAICreateTranscriptionResponseDiarizedJsonTask
   public var text: String
-  public var usage: HyperProxyJSONValue?
+  public var usage: OpenAICreateTranscriptionResponseDiarizedJsonUsage?
 
   public init(
     duration: Double,
     segments: [OpenAITranscriptionDiarizedSegment],
     task: OpenAICreateTranscriptionResponseDiarizedJsonTask,
     text: String,
-    usage: HyperProxyJSONValue? = nil
+    usage: OpenAICreateTranscriptionResponseDiarizedJsonUsage? = nil
   ) {
     self.duration = duration
     self.segments = segments

@@ -16,7 +16,7 @@ public struct OpenAIResponseContentPartAddedEvent: Codable, Sendable {
   public var outputIndex: Int
   public var part: OpenAIOutputContent
   public var sequenceNumber: Int
-  public var typeModel: OpenAIResponseContentPartAddedEventTypeModel
+  public var kind: OpenAIResponseContentPartAddedEventKind
 
   public init(
     contentIndex: Int,
@@ -24,14 +24,14 @@ public struct OpenAIResponseContentPartAddedEvent: Codable, Sendable {
     outputIndex: Int,
     part: OpenAIOutputContent,
     sequenceNumber: Int,
-    typeModel: OpenAIResponseContentPartAddedEventTypeModel
+    kind: OpenAIResponseContentPartAddedEventKind
   ) {
     self.contentIndex = contentIndex
     self.itemId = itemId
     self.outputIndex = outputIndex
     self.part = part
     self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIResponseContentPartAddedEvent: Codable, Sendable {
     case outputIndex = "output_index"
     case part
     case sequenceNumber = "sequence_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

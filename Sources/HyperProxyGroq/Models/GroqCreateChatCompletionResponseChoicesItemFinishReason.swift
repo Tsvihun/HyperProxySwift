@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct GroqCreateChatCompletionResponseChoicesItemFinishReason: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum GroqCreateChatCompletionResponseChoicesItemFinishReason: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let stop = Self(rawValue: "stop")
-  public static let length = Self(rawValue: "length")
-  public static let toolCalls = Self(rawValue: "tool_calls")
-  public static let functionCall = Self(rawValue: "function_call")
+  case stop = "stop"
+  case length = "length"
+  case toolCalls = "tool_calls"
+  case functionCall = "function_call"
 }

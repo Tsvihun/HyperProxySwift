@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsAgentTrustContext: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let unknown = Self(rawValue: "unknown")
-  public static let low = Self(rawValue: "low")
-  public static let high = Self(rawValue: "high")
+public enum ElevenLabsAgentTrustContext: String, Codable, Hashable, Sendable {
+  case unknown = "unknown"
+  case low = "low"
+  case high = "high"
 }

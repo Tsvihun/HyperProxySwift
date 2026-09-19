@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct StabilityGetV2betaResultsIdResponse202JSON: Codable, Sendable {
-  public var id: StabilityGenerationID
+  public var id: String
   public var status: StabilityGetV2betaResultsIdResponse202JSONStatus
 
   public init(
-    id: StabilityGenerationID,
+    id: String,
     status: StabilityGetV2betaResultsIdResponse202JSONStatus
   ) {
     self.id = id

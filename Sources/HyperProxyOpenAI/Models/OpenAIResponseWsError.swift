@@ -15,11 +15,11 @@ public struct OpenAIResponseWsError: Codable, Sendable {
   public var sequenceNumber: Int?
   public var status: Int?
   public var streamId: String?
-  public var typeModel: OpenAIResponseWsErrorTypeModel
+  public var kind: OpenAIResponseWsErrorKind
 
   public init(
     error: OpenAIErrorPayload,
-    typeModel: OpenAIResponseWsErrorTypeModel,
+    kind: OpenAIResponseWsErrorKind,
     sequenceNumber: Int? = nil,
     status: Int? = nil,
     streamId: String? = nil
@@ -28,7 +28,7 @@ public struct OpenAIResponseWsError: Codable, Sendable {
     self.sequenceNumber = sequenceNumber
     self.status = status
     self.streamId = streamId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIResponseWsError: Codable, Sendable {
     case sequenceNumber = "sequence_number"
     case status
     case streamId = "stream_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterDeprecatedRoute: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let fallback = Self(rawValue: "fallback")
-  public static let sort = Self(rawValue: "sort")
+public enum OpenRouterDeprecatedRoute: String, Codable, Hashable, Sendable {
+  case fallback = "fallback"
+  case sort = "sort"
 }

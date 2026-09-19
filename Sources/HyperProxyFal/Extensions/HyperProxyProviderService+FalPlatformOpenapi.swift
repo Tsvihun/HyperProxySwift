@@ -12,6 +12,30 @@ import HyperProxyCore
 import HyperProxyProviders
 
 extension HyperProxyProviderService where Operation == FalOperation {
+  public func getFocusReport(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> String {
+    let call = self.call(.getFocusReport)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.text()
+  }
+
+  public func getModelAccessControls(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> String {
+    let call = self.call(.getModelAccessControls)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.text()
+  }
+
   public func listAssets(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -552,6 +576,18 @@ extension HyperProxyProviderService where Operation == FalOperation {
     return try await call.decoded(FalGetAnalyticsResponse.self)
   }
 
+  public func getModelInsights(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> FalGetModelInsightsResponse {
+    let call = self.call(.getModelInsights)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(FalGetModelInsightsResponse.self)
+  }
+
   public func getPricing(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -722,14 +758,28 @@ extension HyperProxyProviderService where Operation == FalOperation {
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> FalServerlessUploadFromUrlResponse {
+  ) async throws -> Bool {
     let call = self.call(.serverlessUploadFromUrl)
       .path("file", file)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     let prepared = try call.json(body)
-    return try await prepared.decoded(FalServerlessUploadFromUrlResponse.self)
+    return try await prepared.decoded(Bool.self)
+  }
+
+  public func serverlessDownloadFile(
+    file: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.serverlessDownloadFile)
+      .path("file", file)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try call.bytes()
   }
 
   public func serverlessListRoot(
@@ -784,6 +834,18 @@ extension HyperProxyProviderService where Operation == FalOperation {
       .timeout(timeout)
     let prepared = try call.json(body)
     return try prepared.events(decoding: FalServerlessLogsStreamResponse.self)
+  }
+
+  public func serverlessGetMetrics(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> String {
+    let call = self.call(.serverlessGetMetrics)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.text()
   }
 
   public func serverlessListRequestsByEndpoint(

@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct GroqXGroqNonStreaming: Codable, Sendable {
-  public var debug: HyperProxyJSONValue?
+  public var debug: GroqDebugData?
   public var id: String
   public var seed: Int?
   public var usage: GroqXGroqNonStreamingUsage?
 
   public init(
     id: String,
-    debug: HyperProxyJSONValue? = nil,
+    debug: GroqDebugData? = nil,
     seed: Int? = nil,
     usage: GroqXGroqNonStreamingUsage? = nil
   ) {

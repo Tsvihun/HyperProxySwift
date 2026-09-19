@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralResourceVisibility: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let sharedGlobal = Self(rawValue: "shared_global")
-  public static let sharedOrg = Self(rawValue: "shared_org")
-  public static let sharedWorkspace = Self(rawValue: "shared_workspace")
-  public static let privateValue = Self(rawValue: "private")
+public enum MistralResourceVisibility: String, Codable, Hashable, Sendable {
+  case sharedGlobal = "shared_global"
+  case sharedOrg = "shared_org"
+  case sharedWorkspace = "shared_workspace"
+  case privateValue = "private"
 }

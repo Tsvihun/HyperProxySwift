@@ -14,7 +14,7 @@ public struct GeminiFile: Codable, Sendable {
   public var createTime: String?
   public var displayName: String?
   public var downloadUri: String?
-  public var error: HyperProxyJSONValue?
+  public var error: GeminiStatus?
   public var expirationTime: String?
   public var mimeType: String?
   public var name: String?
@@ -24,13 +24,13 @@ public struct GeminiFile: Codable, Sendable {
   public var state: GeminiFileState?
   public var updateTime: String?
   public var uri: String?
-  public var videoMetadata: HyperProxyJSONValue?
+  public var videoMetadata: GeminiVideoFileMetadata?
 
   public init(
     createTime: String? = nil,
     displayName: String? = nil,
     downloadUri: String? = nil,
-    error: HyperProxyJSONValue? = nil,
+    error: GeminiStatus? = nil,
     expirationTime: String? = nil,
     mimeType: String? = nil,
     name: String? = nil,
@@ -40,7 +40,7 @@ public struct GeminiFile: Codable, Sendable {
     state: GeminiFileState? = nil,
     updateTime: String? = nil,
     uri: String? = nil,
-    videoMetadata: HyperProxyJSONValue? = nil
+    videoMetadata: GeminiVideoFileMetadata? = nil
   ) {
     self.createTime = createTime
     self.displayName = displayName

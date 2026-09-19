@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralChatPlan: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let iNDIVIDUAL = Self(rawValue: "INDIVIDUAL")
-  public static let eDU = Self(rawValue: "EDU")
-  public static let tEAM = Self(rawValue: "TEAM")
+public enum MistralChatPlan: String, Codable, Hashable, Sendable {
+  case iNDIVIDUAL = "INDIVIDUAL"
+  case eDU = "EDU"
+  case tEAM = "TEAM"
 }

@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherRemediationServiceListRemediationsParametersTriggerItem: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum TogetherRemediationServiceListRemediationsParametersTriggerItem: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let rEMEDIATIONTRIGGERMANUAL = Self(rawValue: "REMEDIATION_TRIGGER_MANUAL")
-  public static let rEMEDIATIONTRIGGERAUTOMATED = Self(rawValue: "REMEDIATION_TRIGGER_AUTOMATED")
+  case rEMEDIATIONTRIGGERMANUAL = "REMEDIATION_TRIGGER_MANUAL"
+  case rEMEDIATIONTRIGGERAUTOMATED = "REMEDIATION_TRIGGER_AUTOMATED"
 }

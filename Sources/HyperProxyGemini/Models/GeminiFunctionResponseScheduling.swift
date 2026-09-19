@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiFunctionResponseScheduling: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let sCHEDULINGUNSPECIFIED = Self(rawValue: "SCHEDULING_UNSPECIFIED")
-  public static let sILENT = Self(rawValue: "SILENT")
-  public static let wHENIDLE = Self(rawValue: "WHEN_IDLE")
-  public static let iNTERRUPT = Self(rawValue: "INTERRUPT")
+public enum GeminiFunctionResponseScheduling: String, Codable, Hashable, Sendable {
+  case sCHEDULINGUNSPECIFIED = "SCHEDULING_UNSPECIFIED"
+  case sILENT = "SILENT"
+  case wHENIDLE = "WHEN_IDLE"
+  case iNTERRUPT = "INTERRUPT"
 }

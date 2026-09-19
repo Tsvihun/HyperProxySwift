@@ -11,11 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsConversationInitiationClientDataWebhook: Codable, Sendable {
-  public var requestHeaders: [String: HyperProxyJSONValue]
+  public var requestHeaders:
+    [String: ElevenLabsConversationInitiationClientDataWebhookRequestHeadersValue]
   public var url: String
 
   public init(
-    requestHeaders: [String: HyperProxyJSONValue],
+    requestHeaders: [String: ElevenLabsConversationInitiationClientDataWebhookRequestHeadersValue],
     url: String
   ) {
     self.requestHeaders = requestHeaders

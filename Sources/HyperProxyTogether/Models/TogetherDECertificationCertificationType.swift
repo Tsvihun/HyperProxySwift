@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherDECertificationCertificationType: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let cERTIFICATIONTYPECERTIFIED = Self(rawValue: "CERTIFICATION_TYPE_CERTIFIED")
-  public static let cERTIFICATIONTYPEUNCERTIFIED = Self(rawValue: "CERTIFICATION_TYPE_UNCERTIFIED")
+public enum TogetherDECertificationCertificationType: String, Codable, Hashable, Sendable {
+  case cERTIFICATIONTYPECERTIFIED = "CERTIFICATION_TYPE_CERTIFIED"
+  case cERTIFICATIONTYPEUNCERTIFIED = "CERTIFICATION_TYPE_UNCERTIFIED"
 }

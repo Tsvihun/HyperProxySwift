@@ -16,8 +16,8 @@ public struct OpenAIImageEditCompletedEvent: Codable, Sendable {
   public var createdAt: Int
   public var outputFormat: OpenAIImageEditCompletedEventOutputFormat
   public var quality: OpenAIImageEditCompletedEventQuality
-  public var size: HyperProxyJSONValue
-  public var typeModel: OpenAIImageEditCompletedEventTypeModel
+  public var size: OpenAIImageEditCompletedEventSize
+  public var kind: OpenAIImageEditCompletedEventKind
   public var usage: OpenAIImagesUsage
 
   public init(
@@ -26,8 +26,8 @@ public struct OpenAIImageEditCompletedEvent: Codable, Sendable {
     createdAt: Int,
     outputFormat: OpenAIImageEditCompletedEventOutputFormat,
     quality: OpenAIImageEditCompletedEventQuality,
-    size: HyperProxyJSONValue,
-    typeModel: OpenAIImageEditCompletedEventTypeModel,
+    size: OpenAIImageEditCompletedEventSize,
+    kind: OpenAIImageEditCompletedEventKind,
     usage: OpenAIImagesUsage
   ) {
     self.b64Json = b64Json
@@ -36,7 +36,7 @@ public struct OpenAIImageEditCompletedEvent: Codable, Sendable {
     self.outputFormat = outputFormat
     self.quality = quality
     self.size = size
-    self.typeModel = typeModel
+    self.kind = kind
     self.usage = usage
   }
 
@@ -47,7 +47,7 @@ public struct OpenAIImageEditCompletedEvent: Codable, Sendable {
     case outputFormat = "output_format"
     case quality
     case size
-    case typeModel = "type"
+    case kind = "type"
     case usage
   }
 }

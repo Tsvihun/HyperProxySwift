@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct FireworksChatCompletionMessageToolCallFunction: Codable, Sendable {
-  public var arguments: HyperProxyJSONValue?
+  public var arguments: FireworksChatCompletionMessageToolCallFunctionArguments?
   public var name: String?
 
   public init(
-    arguments: HyperProxyJSONValue? = nil,
+    arguments: FireworksChatCompletionMessageToolCallFunctionArguments? = nil,
     name: String? = nil
   ) {
     self.arguments = arguments

@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct DeepSeekChatFilePart: Codable, Sendable {
   public var fileId: String
-  public var typeModel: DeepSeekChatFilePartTypeModel
+  public var kind: DeepSeekChatFilePartKind
 
   public init(
     fileId: String,
-    typeModel: DeepSeekChatFilePartTypeModel
+    kind: DeepSeekChatFilePartKind
   ) {
     self.fileId = fileId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case fileId = "file_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -14,13 +14,13 @@ public struct ElevenLabsMediaGenerationCompletedResponse: Codable, Sendable {
   public var contentMimeType: String
   public var contentUrl: String
   public var id: String
-  public var status: String
+  public var status: ElevenLabsCompletedStatus
 
   public init(
     contentMimeType: String,
     contentUrl: String,
     id: String,
-    status: String
+    status: ElevenLabsCompletedStatus = .completed
   ) {
     self.contentMimeType = contentMimeType
     self.contentUrl = contentUrl

@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct FalGetModelsResponseModelsItemMetadataStatus: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let active = Self(rawValue: "active")
-  public static let deprecated = Self(rawValue: "deprecated")
+public enum FalGetModelsResponseModelsItemMetadataStatus: String, Codable, Hashable, Sendable {
+  case active = "active"
+  case deprecated = "deprecated"
 }

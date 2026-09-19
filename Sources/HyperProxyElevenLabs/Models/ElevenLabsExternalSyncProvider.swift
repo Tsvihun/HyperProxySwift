@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsExternalSyncProvider: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let googleDrive = Self(rawValue: "google_drive")
+public enum ElevenLabsExternalSyncProvider: String, Codable, Hashable, Sendable {
+  case googleDrive = "google_drive"
 }

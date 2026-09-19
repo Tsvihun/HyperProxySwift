@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIFineTuneChatCompletionRequestAssistantMessageAllOf1Weight: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum OpenAIFineTuneChatCompletionRequestAssistantMessageAllOf1Weight: Int, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: Int
-
-  public init(rawValue: Int) {
-    self.rawValue = rawValue
-  }
-
-  public static let value0 = Self(rawValue: 0)
-  public static let value1 = Self(rawValue: 1)
+  case value0 = 0
+  case value1 = 1
 }

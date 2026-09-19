@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsExternalSyncJobTrigger: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let onDemand = Self(rawValue: "on_demand")
-  public static let onConnect = Self(rawValue: "on_connect")
-  public static let auto = Self(rawValue: "auto")
+public enum ElevenLabsExternalSyncJobTrigger: String, Codable, Hashable, Sendable {
+  case onDemand = "on_demand"
+  case onConnect = "on_connect"
+  case auto = "auto"
 }

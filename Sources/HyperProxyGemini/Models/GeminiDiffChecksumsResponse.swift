@@ -11,16 +11,16 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiDiffChecksumsResponse: Codable, Sendable {
-  public var checksumsLocation: HyperProxyJSONValue?
+  public var checksumsLocation: GeminiCompositeMedia?
   public var chunkSizeBytes: String?
-  public var objectLocation: HyperProxyJSONValue?
+  public var objectLocation: GeminiCompositeMedia?
   public var objectSizeBytes: String?
   public var objectVersion: String?
 
   public init(
-    checksumsLocation: HyperProxyJSONValue? = nil,
+    checksumsLocation: GeminiCompositeMedia? = nil,
     chunkSizeBytes: String? = nil,
-    objectLocation: HyperProxyJSONValue? = nil,
+    objectLocation: GeminiCompositeMedia? = nil,
     objectSizeBytes: String? = nil,
     objectVersion: String? = nil
   ) {

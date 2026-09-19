@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralReasoningEffort: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let none = Self(rawValue: "none")
-  public static let minimal = Self(rawValue: "minimal")
-  public static let low = Self(rawValue: "low")
-  public static let medium = Self(rawValue: "medium")
-  public static let high = Self(rawValue: "high")
-  public static let xhigh = Self(rawValue: "xhigh")
+public enum MistralReasoningEffort: String, Codable, Hashable, Sendable {
+  case none = "none"
+  case minimal = "minimal"
+  case low = "low"
+  case medium = "medium"
+  case high = "high"
+  case xhigh = "xhigh"
 }

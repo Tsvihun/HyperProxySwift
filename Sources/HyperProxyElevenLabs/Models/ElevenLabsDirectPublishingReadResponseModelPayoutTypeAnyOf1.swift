@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsDirectPublishingReadResponseModelPayoutTypeAnyOf1: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum ElevenLabsDirectPublishingReadResponseModelPayoutTypeAnyOf1: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let none = Self(rawValue: "none")
-  public static let engagementBased = Self(rawValue: "engagement_based")
-  public static let fixedPayout = Self(rawValue: "fixed_payout")
+  case none = "none"
+  case engagementBased = "engagement_based"
+  case fixedPayout = "fixed_payout"
 }

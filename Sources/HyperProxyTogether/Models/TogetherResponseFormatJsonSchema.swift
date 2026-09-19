@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct TogetherResponseFormatJsonSchema: Codable, Sendable {
   public var jsonSchema: TogetherResponseFormatJsonSchemaJsonSchema
-  public var typeModel: TogetherResponseFormatJsonSchemaTypeModel
+  public var kind: TogetherResponseFormatJsonSchemaKind
 
   public init(
     jsonSchema: TogetherResponseFormatJsonSchemaJsonSchema,
-    typeModel: TogetherResponseFormatJsonSchemaTypeModel
+    kind: TogetherResponseFormatJsonSchemaKind
   ) {
     self.jsonSchema = jsonSchema
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case jsonSchema = "json_schema"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

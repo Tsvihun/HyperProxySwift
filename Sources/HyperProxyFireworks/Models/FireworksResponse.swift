@@ -21,7 +21,7 @@ public struct FireworksResponse: Codable, Sendable {
   public var metadata: [String: HyperProxyJSONValue]?
   public var model: String
   public var object: String?
-  public var output: [HyperProxyJSONValue]
+  public var output: [FireworksResponseOutputItem]
   public var parallelToolCalls: Bool?
   public var previousResponseId: String?
   public var reasoning: [String: HyperProxyJSONValue]?
@@ -29,7 +29,7 @@ public struct FireworksResponse: Codable, Sendable {
   public var store: Bool?
   public var temperature: Double?
   public var text: [String: HyperProxyJSONValue]?
-  public var toolChoice: HyperProxyJSONValue?
+  public var toolChoice: FireworksResponseToolChoice?
   public var tools: [[String: HyperProxyJSONValue]]?
   public var topP: Double?
   public var truncation: String?
@@ -39,7 +39,7 @@ public struct FireworksResponse: Codable, Sendable {
   public init(
     createdAt: Int,
     model: String,
-    output: [HyperProxyJSONValue],
+    output: [FireworksResponseOutputItem],
     status: String,
     error: [String: HyperProxyJSONValue]? = nil,
     id: String? = nil,
@@ -55,7 +55,7 @@ public struct FireworksResponse: Codable, Sendable {
     store: Bool? = nil,
     temperature: Double? = nil,
     text: [String: HyperProxyJSONValue]? = nil,
-    toolChoice: HyperProxyJSONValue? = nil,
+    toolChoice: FireworksResponseToolChoice? = nil,
     tools: [[String: HyperProxyJSONValue]]? = nil,
     topP: Double? = nil,
     truncation: String? = nil,

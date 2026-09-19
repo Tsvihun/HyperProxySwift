@@ -19,15 +19,15 @@ public struct AnthropicWebFetchTool20260318: Codable, Sendable {
   public var deferLoading: Bool?
   public var maxContentTokens: Int?
   public var maxUses: Int?
-  public var name: String
+  public var name: AnthropicWebFetchName
   public var responseInclusion: AnthropicWebFetchTool20260318ResponseInclusion?
   public var strict: Bool?
-  public var typeModel: String
+  public var kind: AnthropicWebFetch20260318Kind
   public var useCache: Bool?
 
   public init(
-    name: String,
-    typeModel: String,
+    name: AnthropicWebFetchName = .webFetch,
+    kind: AnthropicWebFetch20260318Kind = .webFetch20260318,
     allowedCallers: [AnthropicAllowedCaller]? = nil,
     allowedDomains: [String]? = nil,
     blockedDomains: [String]? = nil,
@@ -51,7 +51,7 @@ public struct AnthropicWebFetchTool20260318: Codable, Sendable {
     self.name = name
     self.responseInclusion = responseInclusion
     self.strict = strict
-    self.typeModel = typeModel
+    self.kind = kind
     self.useCache = useCache
   }
 
@@ -67,7 +67,7 @@ public struct AnthropicWebFetchTool20260318: Codable, Sendable {
     case name
     case responseInclusion = "response_inclusion"
     case strict
-    case typeModel = "type"
+    case kind = "type"
     case useCache = "use_cache"
   }
 }

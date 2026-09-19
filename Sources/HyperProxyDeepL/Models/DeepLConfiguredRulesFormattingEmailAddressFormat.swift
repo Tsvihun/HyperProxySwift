@@ -10,27 +10,15 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesFormattingEmailAddressFormat: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let placeDomainInParentheses = Self(rawValue: "place_domain_in_parentheses")
-  public static
-    let replaceAtSymbolWithEnglishWordAtInBracketsAndReplacePeriodsWithEnglishWordDotInBrackets =
-    Self(
-      rawValue:
-        "replace_at_symbol_with_english_word_at_in_brackets_and_replace_periods_with_english_word_dot_in_brackets"
-    )
-  public static let replaceAtSymbolWithEnglishWordAtInBracketsWithSpaceOnEitherSide = Self(
-    rawValue: "replace_at_symbol_with_english_word_at_in_brackets_with_space_on_either_side")
-  public static let replaceAtSymbolWithEnglishWordAtInParenthesesWithSpaceOnEitherSide = Self(
-    rawValue: "replace_at_symbol_with_english_word_at_in_parentheses_with_space_on_either_side")
-  public static let replaceAtSymbolWithEnglishWordAtWithSpaceOnEitherSide = Self(
-    rawValue: "replace_at_symbol_with_english_word_at_with_space_on_either_side")
-  public static let useStandardFormat = Self(rawValue: "use_standard_format")
+public enum DeepLConfiguredRulesFormattingEmailAddressFormat: String, Codable, Hashable, Sendable {
+  case placeDomainInParentheses = "place_domain_in_parentheses"
+  case replaceAtSymbolWithEnglishWordAtInBracketsAndReplacePeriodsWithEnglishWordDotInBrackets =
+    "replace_at_symbol_with_english_word_at_in_brackets_and_replace_periods_with_english_word_dot_in_brackets"
+  case replaceAtSymbolWithEnglishWordAtInBracketsWithSpaceOnEitherSide =
+    "replace_at_symbol_with_english_word_at_in_brackets_with_space_on_either_side"
+  case replaceAtSymbolWithEnglishWordAtInParenthesesWithSpaceOnEitherSide =
+    "replace_at_symbol_with_english_word_at_in_parentheses_with_space_on_either_side"
+  case replaceAtSymbolWithEnglishWordAtWithSpaceOnEitherSide =
+    "replace_at_symbol_with_english_word_at_with_space_on_either_side"
+  case useStandardFormat = "use_standard_format"
 }

@@ -14,7 +14,8 @@ public struct ElevenLabsGetKnowledgeBaseSummaryFolderResponseModel: Codable, Sen
   public var accessInfo: ElevenLabsResourceAccessInfo
   public var autoSyncInfo: ElevenLabsAutoSyncInfo?
   public var childrenCount: Int
-  public var dependentAgents: [HyperProxyJSONValue]
+  public var dependentAgents:
+    [ElevenLabsGetKnowledgeBaseSummaryFolderResponseModelDependentAgentsItem]
   public var documentCount: Int
   public var externalSyncInfo: ElevenLabsExternalFolderSyncInfo?
   public var folderParentId: String?
@@ -24,18 +25,18 @@ public struct ElevenLabsGetKnowledgeBaseSummaryFolderResponseModel: Codable, Sen
   public var metadata: ElevenLabsKnowledgeBaseDocumentMetadataResponseModel
   public var name: String
   public var supportedUsages: [ElevenLabsDocumentUsageModeEnum]
-  public var typeModel: String
+  public var kind: ElevenLabsFolderKind
 
   public init(
     accessInfo: ElevenLabsResourceAccessInfo,
     childrenCount: Int,
-    dependentAgents: [HyperProxyJSONValue],
+    dependentAgents: [ElevenLabsGetKnowledgeBaseSummaryFolderResponseModelDependentAgentsItem],
     documentCount: Int,
     id: String,
     metadata: ElevenLabsKnowledgeBaseDocumentMetadataResponseModel,
     name: String,
     supportedUsages: [ElevenLabsDocumentUsageModeEnum],
-    typeModel: String,
+    kind: ElevenLabsFolderKind = .folder,
     autoSyncInfo: ElevenLabsAutoSyncInfo? = nil,
     externalSyncInfo: ElevenLabsExternalFolderSyncInfo? = nil,
     folderParentId: String? = nil,
@@ -55,7 +56,7 @@ public struct ElevenLabsGetKnowledgeBaseSummaryFolderResponseModel: Codable, Sen
     self.metadata = metadata
     self.name = name
     self.supportedUsages = supportedUsages
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -72,6 +73,6 @@ public struct ElevenLabsGetKnowledgeBaseSummaryFolderResponseModel: Codable, Sen
     case metadata
     case name
     case supportedUsages = "supported_usages"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

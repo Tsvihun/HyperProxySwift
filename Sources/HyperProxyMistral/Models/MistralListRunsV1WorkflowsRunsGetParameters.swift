@@ -24,7 +24,7 @@ public struct MistralListRunsV1WorkflowsRunsGetParameters: Codable, Sendable {
   public var sortBy: MistralListRunsV1WorkflowsRunsGetParametersSortByAnyOf1?
   public var startTimeAfter: String?
   public var startTimeBefore: String?
-  public var status: HyperProxyJSONValue?
+  public var status: MistralListRunsV1WorkflowsRunsGetParametersStatus?
   public var userId: String?
   public var workflowIdentifier: String?
   public var workflowTags: [String]?
@@ -43,7 +43,7 @@ public struct MistralListRunsV1WorkflowsRunsGetParameters: Codable, Sendable {
     sortBy: MistralListRunsV1WorkflowsRunsGetParametersSortByAnyOf1? = nil,
     startTimeAfter: String? = nil,
     startTimeBefore: String? = nil,
-    status: HyperProxyJSONValue? = nil,
+    status: MistralListRunsV1WorkflowsRunsGetParametersStatus? = nil,
     userId: String? = nil,
     workflowIdentifier: String? = nil,
     workflowTags: [String]? = nil

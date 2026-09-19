@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIRealtimeTranslationClientSecretCreateRequestExpiresAfterAnchor:
-  RawRepresentable, Codable, Hashable, Sendable
+public enum OpenAIRealtimeTranslationClientSecretCreateRequestExpiresAfterAnchor: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let createdAt = Self(rawValue: "created_at")
+  case createdAt = "created_at"
 }

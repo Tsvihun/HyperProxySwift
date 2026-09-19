@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepSeekChatThinkingConfig: Codable, Sendable {
-  public var typeModel: DeepSeekChatThinkingType?
+  public var kind: DeepSeekChatThinkingType?
 
   public init(
-    typeModel: DeepSeekChatThinkingType? = nil
+    kind: DeepSeekChatThinkingType? = nil
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

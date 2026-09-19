@@ -20,7 +20,7 @@ public struct ElevenLabsUpdateToolCallUnitTestRequest: Codable, Sendable {
   public var name: String
   public var parentFolderId: String?
   public var toolCallParameters: ElevenLabsUnitTestToolCallEvaluationModelInput?
-  public var typeModel: String?
+  public var kind: ElevenLabsToolKind?
 
   public init(
     name: String,
@@ -32,7 +32,7 @@ public struct ElevenLabsUpdateToolCallUnitTestRequest: Codable, Sendable {
     fromConversationMetadata: ElevenLabsTestFromConversationMetadataInput? = nil,
     parentFolderId: String? = nil,
     toolCallParameters: ElevenLabsUnitTestToolCallEvaluationModelInput? = nil,
-    typeModel: String? = nil
+    kind: ElevenLabsToolKind? = nil
   ) {
     self.chatHistory = chatHistory
     self.checkAnyToolMatches = checkAnyToolMatches
@@ -43,7 +43,7 @@ public struct ElevenLabsUpdateToolCallUnitTestRequest: Codable, Sendable {
     self.name = name
     self.parentFolderId = parentFolderId
     self.toolCallParameters = toolCallParameters
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -56,6 +56,6 @@ public struct ElevenLabsUpdateToolCallUnitTestRequest: Codable, Sendable {
     case name
     case parentFolderId = "parent_folder_id"
     case toolCallParameters = "tool_call_parameters"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

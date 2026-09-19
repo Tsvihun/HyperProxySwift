@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct OpenAIWorkflowParam: Codable, Sendable {
   public var id: String
-  public var stateVariables: [String: HyperProxyJSONValue]?
+  public var stateVariables: [String: OpenAIWorkflowParamStateVariablesValue]?
   public var tracing: OpenAIWorkflowTracingParam?
   public var version: String?
 
   public init(
     id: String,
-    stateVariables: [String: HyperProxyJSONValue]? = nil,
+    stateVariables: [String: OpenAIWorkflowParamStateVariablesValue]? = nil,
     tracing: OpenAIWorkflowTracingParam? = nil,
     version: String? = nil
   ) {

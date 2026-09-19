@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterImagePricingEntryBillable: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let outputImage = Self(rawValue: "output_image")
-  public static let inputImage = Self(rawValue: "input_image")
-  public static let inputFont = Self(rawValue: "input_font")
-  public static let inputReference = Self(rawValue: "input_reference")
-  public static let inputText = Self(rawValue: "input_text")
+public enum OpenRouterImagePricingEntryBillable: String, Codable, Hashable, Sendable {
+  case outputImage = "output_image"
+  case inputImage = "input_image"
+  case inputFont = "input_font"
+  case inputReference = "input_reference"
+  case inputText = "input_text"
 }

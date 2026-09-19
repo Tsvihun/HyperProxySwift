@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsWebhookHMACSettings: Codable, Sendable {
-  public var authType: String
+  public var authType: ElevenLabsHmacAuthType
   public var name: String
   public var requestHeaders: [String: String]?
   public var webhookUrl: String
 
   public init(
-    authType: String,
     name: String,
     webhookUrl: String,
+    authType: ElevenLabsHmacAuthType = .hmac,
     requestHeaders: [String: String]? = nil
   ) {
     self.authType = authType

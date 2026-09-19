@@ -14,10 +14,10 @@ public struct OpenAIFineTuneMethod: Codable, Sendable {
   public var dpo: OpenAIFineTuneDPOMethod?
   public var reinforcement: OpenAIFineTuneReinforcementMethod?
   public var supervised: OpenAIFineTuneSupervisedMethod?
-  public var typeModel: OpenAIFineTuneMethodTypeModel
+  public var kind: OpenAIFineTuneMethodKind
 
   public init(
-    typeModel: OpenAIFineTuneMethodTypeModel,
+    kind: OpenAIFineTuneMethodKind,
     dpo: OpenAIFineTuneDPOMethod? = nil,
     reinforcement: OpenAIFineTuneReinforcementMethod? = nil,
     supervised: OpenAIFineTuneSupervisedMethod? = nil
@@ -25,13 +25,13 @@ public struct OpenAIFineTuneMethod: Codable, Sendable {
     self.dpo = dpo
     self.reinforcement = reinforcement
     self.supervised = supervised
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case dpo
     case reinforcement
     case supervised
-    case typeModel = "type"
+    case kind = "type"
   }
 }

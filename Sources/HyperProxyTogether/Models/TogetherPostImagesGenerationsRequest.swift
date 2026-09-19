@@ -16,7 +16,7 @@ public struct TogetherPostImagesGenerationsRequest: Codable, Sendable {
   public var height: Int?
   public var imageLoras: [TogetherPostImagesGenerationsRequestImageLorasItem]?
   public var imageUrl: String?
-  public var model: HyperProxyJSONValue
+  public var model: TogetherPostImagesGenerationsRequestModel
   public var n: Int?
   public var negativePrompt: String?
   public var outputFormat: TogetherPostImagesGenerationsRequestOutputFormat?
@@ -28,7 +28,7 @@ public struct TogetherPostImagesGenerationsRequest: Codable, Sendable {
   public var width: Int?
 
   public init(
-    model: HyperProxyJSONValue,
+    model: TogetherPostImagesGenerationsRequestModel,
     prompt: String,
     disableSafetyChecker: Bool? = nil,
     guidanceScale: Double? = nil,

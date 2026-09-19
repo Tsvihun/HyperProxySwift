@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralLocationType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let local = Self(rawValue: "local")
-  public static let k8s = Self(rawValue: "k8s")
-  public static let managed = Self(rawValue: "managed")
+public enum MistralLocationType: String, Codable, Hashable, Sendable {
+  case local = "local"
+  case k8s = "k8s"
+  case managed = "managed"
 }

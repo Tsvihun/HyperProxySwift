@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterGetRankingsDailyParametersLanguageType: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let natural = Self(rawValue: "natural")
-  public static let programming = Self(rawValue: "programming")
+public enum OpenRouterGetRankingsDailyParametersLanguageType: String, Codable, Hashable, Sendable {
+  case natural = "natural"
+  case programming = "programming"
 }

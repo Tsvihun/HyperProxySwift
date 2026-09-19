@@ -10,14 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicCreateMessageParamsServiceTier: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
-  public static let standardOnly = Self(rawValue: "standard_only")
+public enum AnthropicCreateMessageParamsServiceTier: String, Codable, Hashable, Sendable {
+  case auto = "auto"
+  case standardOnly = "standard_only"
 }

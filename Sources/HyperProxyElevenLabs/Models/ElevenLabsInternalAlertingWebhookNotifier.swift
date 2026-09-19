@@ -13,25 +13,25 @@ import HyperProxyCore
 public struct ElevenLabsInternalAlertingWebhookNotifier: Codable, Sendable {
   public var headers: [ElevenLabsAlertingWebhookHeader]?
   public var method: ElevenLabsAlertingWebhookMethod?
-  public var typeModel: String?
+  public var kind: ElevenLabsWebhookKind?
   public var url: String
 
   public init(
     url: String,
     headers: [ElevenLabsAlertingWebhookHeader]? = nil,
     method: ElevenLabsAlertingWebhookMethod? = nil,
-    typeModel: String? = nil
+    kind: ElevenLabsWebhookKind? = nil
   ) {
     self.headers = headers
     self.method = method
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
   enum CodingKeys: String, CodingKey {
     case headers
     case method
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

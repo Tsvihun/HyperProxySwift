@@ -15,20 +15,20 @@ public struct OpenAIWebSearchCallItemResource: Codable, Sendable {
   public var id: String
   public var status: OpenAIOutputItemStatusResource
   public var turnId: String
-  public var typeModel: OpenAIWebSearchCallItemResourceTypeModel
+  public var kind: OpenAIWebSearchCallItemResourceKind
 
   public init(
     action: OpenAIWebSearchActionResource?,
     id: String,
     status: OpenAIOutputItemStatusResource,
     turnId: String,
-    typeModel: OpenAIWebSearchCallItemResourceTypeModel
+    kind: OpenAIWebSearchCallItemResourceKind
   ) {
     self.action = action
     self.id = id
     self.status = status
     self.turnId = turnId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIWebSearchCallItemResource: Codable, Sendable {
     case id
     case status
     case turnId = "turn_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

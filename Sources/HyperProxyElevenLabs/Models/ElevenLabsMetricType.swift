@@ -10,20 +10,14 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsMetricType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let credits = Self(rawValue: "credits")
-  public static let ttsCharacters = Self(rawValue: "tts_characters")
-  public static let minutesUsed = Self(rawValue: "minutes_used")
-  public static let requestCount = Self(rawValue: "request_count")
-  public static let ttfbAvg = Self(rawValue: "ttfb_avg")
-  public static let ttfbP95 = Self(rawValue: "ttfb_p95")
-  public static let fiatUnitsSpent = Self(rawValue: "fiat_units_spent")
-  public static let concurrency = Self(rawValue: "concurrency")
-  public static let concurrencyAverage = Self(rawValue: "concurrency_average")
+public enum ElevenLabsMetricType: String, Codable, Hashable, Sendable {
+  case credits = "credits"
+  case ttsCharacters = "tts_characters"
+  case minutesUsed = "minutes_used"
+  case requestCount = "request_count"
+  case ttfbAvg = "ttfb_avg"
+  case ttfbP95 = "ttfb_p95"
+  case fiatUnitsSpent = "fiat_units_spent"
+  case concurrency = "concurrency"
+  case concurrencyAverage = "concurrency_average"
 }

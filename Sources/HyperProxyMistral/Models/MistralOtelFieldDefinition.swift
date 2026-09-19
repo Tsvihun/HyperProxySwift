@@ -16,14 +16,14 @@ public struct MistralOtelFieldDefinition: Codable, Sendable {
   public var name: String
   public var supportedAggregations: [MistralMetricAggregation]
   public var supportedOperators: [MistralOtelFieldDefinitionSupportedOperatorsItem]
-  public var typeModel: MistralOtelFieldDefinitionTypeModel
+  public var kind: MistralOtelFieldDefinitionKind
 
   public init(
     label: String,
     name: String,
     supportedAggregations: [MistralMetricAggregation],
     supportedOperators: [MistralOtelFieldDefinitionSupportedOperatorsItem],
-    typeModel: MistralOtelFieldDefinitionTypeModel,
+    kind: MistralOtelFieldDefinitionKind,
     group: String? = nil
   ) {
     self.group = group
@@ -31,7 +31,7 @@ public struct MistralOtelFieldDefinition: Codable, Sendable {
     self.name = name
     self.supportedAggregations = supportedAggregations
     self.supportedOperators = supportedOperators
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct MistralOtelFieldDefinition: Codable, Sendable {
     case name
     case supportedAggregations = "supported_aggregations"
     case supportedOperators = "supported_operators"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

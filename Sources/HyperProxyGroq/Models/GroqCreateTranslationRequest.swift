@@ -12,14 +12,14 @@ import HyperProxyCore
 
 public struct GroqCreateTranslationRequest: Codable, Sendable {
   public var file: String?
-  public var model: HyperProxyJSONValue
+  public var model: GroqCreateTranslationRequestModel
   public var prompt: String?
   public var responseFormat: GroqCreateTranslationRequestResponseFormat?
   public var temperature: Double?
   public var url: String?
 
   public init(
-    model: HyperProxyJSONValue,
+    model: GroqCreateTranslationRequestModel,
     file: String? = nil,
     prompt: String? = nil,
     responseFormat: GroqCreateTranslationRequestResponseFormat? = nil,

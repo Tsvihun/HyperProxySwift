@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiAsyncBatchEmbedContentRequest: Codable, Sendable {
-  public var batch: HyperProxyJSONValue?
+  public var batch: GeminiEmbedContentBatch?
 
   public init(
-    batch: HyperProxyJSONValue? = nil
+    batch: GeminiEmbedContentBatch? = nil
   ) {
     self.batch = batch
   }

@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaClaudeCodeUsageReportItem: Codable, Sendable {
-  public var actor: HyperProxyJSONValue
+  public var actor: AnthropicBetaClaudeCodeUsageReportItemActor
   public var coreMetrics: AnthropicBetaCoreMetrics
   public var customerType: AnthropicBetaCustomerType
   public var date: String
@@ -23,7 +23,7 @@ public struct AnthropicBetaClaudeCodeUsageReportItem: Codable, Sendable {
   public var toolActions: [String: AnthropicBetaApprovalMetrics]
 
   public init(
-    actor: HyperProxyJSONValue,
+    actor: AnthropicBetaClaudeCodeUsageReportItemActor,
     coreMetrics: AnthropicBetaCoreMetrics,
     customerType: AnthropicBetaCustomerType,
     date: String,

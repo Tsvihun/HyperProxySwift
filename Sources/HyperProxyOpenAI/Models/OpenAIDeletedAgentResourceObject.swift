@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIDeletedAgentResourceObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let agentDeleted = Self(rawValue: "agent.deleted")
+public enum OpenAIDeletedAgentResourceObject: String, Codable, Hashable, Sendable {
+  case agentDeleted = "agent.deleted"
 }

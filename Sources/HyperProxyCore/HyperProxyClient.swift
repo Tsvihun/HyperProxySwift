@@ -83,11 +83,11 @@ public struct HyperProxyClient: Sendable {
     )
   }
 
-  /// A HyperProxy transport configured for an existing AIProxy service.
+  /// A HyperProxy transport configured for a protocol-compatible legacy service.
   ///
   /// Provider modules stay unchanged: pass the returned client to
   /// `HyperProxy.openAI(client:)`, `HyperProxy.anthropic(client:)`, and so on.
-  public static func aiProxy(
+  public static func legacyGateway(
     gatewayURL: URL,
     appKey: String,
     clientID: String? = nil,
@@ -104,7 +104,7 @@ public struct HyperProxyClient: Sendable {
       defaultHeaders: defaultHeaders,
       timeout: timeout,
       security: security,
-      wireProtocol: .aiProxy(clientID: clientID, anonymousID: anonymousID),
+      wireProtocol: .legacyGateway(clientID: clientID, anonymousID: anonymousID),
       identityProvider: identityProvider,
       session: session
     )
@@ -112,7 +112,7 @@ public struct HyperProxyClient: Sendable {
 
   /// Creates an explicit direct-to-provider transport. Provider credentials are
   /// supplied by the host application in `defaultHeaders` and never transformed
-  /// into HyperProxy or AIProxy gateway headers.
+  /// into HyperProxy or legacy gateway headers.
   public static func direct(
     baseURL: URL,
     defaultHeaders: [String: String] = [:],
@@ -131,11 +131,11 @@ public struct HyperProxyClient: Sendable {
     )
   }
 
-  /// Builds the authentication and routing metadata expected by an AIProxy
-  /// gRPC service without taking a dependency on a particular gRPC library.
+  /// Builds authentication and routing metadata for a protocol-compatible
+  /// legacy gRPC service without depending on a particular gRPC library.
   ///
   /// The caller remains responsible for protobuf serialization and transport.
-  public static func aiProxyGRPCMetadata(
+  public static func legacyGatewayGRPCMetadata(
     gatewayURL: URL,
     appKey: String,
     clientID: String,
@@ -154,7 +154,7 @@ public struct HyperProxyClient: Sendable {
       throw HyperProxyError.invalidGatewayURL
     }
 
-    let client = Self.aiProxy(
+    let client = Self.legacyGateway(
       gatewayURL: gatewayURL,
       appKey: appKey,
       clientID: clientID,
@@ -691,12 +691,12 @@ public struct HyperProxyClient: Sendable {
       // contract. A direct transport talks to the real provider, which must
       // never see gateway-internal headers.
       request.setValue(nil, forHTTPHeaderField: "X-HyperProxy-Upstream-Origin")
-    case .aiProxy(let configuredClientID, let configuredAnonymousID):
+    case .legacyGateway(let configuredClientID, let configuredAnonymousID):
       let identity = try await
         (self.configuration.identityProvider
         ?? HyperProxy.runtimeConfiguration.identityProvider)?.identity()
       // HyperProxy's catalog may attach a reviewed multi-origin routing hint.
-      // AIProxy has no equivalent contract and pins routing server-side.
+      // The legacy protocol has no equivalent contract and pins routing server-side.
       request.setValue(nil, forHTTPHeaderField: "X-HyperProxy-Upstream-Origin")
       request.setValue(
         self.configuration.appKey,
@@ -710,7 +710,7 @@ public struct HyperProxyClient: Sendable {
         request.setValue(anonymousID, forHTTPHeaderField: "aiproxy-anonymous-id")
       }
       request.setValue(
-        Self.aiProxyMetadata(bodySize: bodySize),
+        Self.legacyGatewayMetadata(bodySize: bodySize),
         forHTTPHeaderField: "aiproxy-metadata"
       )
     }
@@ -719,7 +719,7 @@ public struct HyperProxyClient: Sendable {
   private func gatewaySecurityHeaders(
     _ headers: [String: String]
   ) throws -> [String: String] {
-    guard case .aiProxy = self.configuration.wireProtocol else {
+    guard case .legacyGateway = self.configuration.wireProtocol else {
       return headers
     }
 
@@ -736,7 +736,7 @@ public struct HyperProxyClient: Sendable {
         "x-hyperproxy-device-token",
         "x-firebase-appcheck":
         throw HyperProxyError.incompatibleSecurity(
-          "AIProxy services accept DeviceCheck, not App Attest or Firebase App Check."
+          "Legacy gateway services accept DeviceCheck, not App Attest or Firebase App Check."
         )
       default:
         result[field] = value
@@ -745,7 +745,7 @@ public struct HyperProxyClient: Sendable {
     return result
   }
 
-  private static func aiProxyMetadata(bodySize: Int) -> String {
+  private static func legacyGatewayMetadata(bodySize: Int) -> String {
     let bundle = Bundle.main
     let bundleID = bundle.bundleIdentifier ?? "unknown"
     let appVersion =

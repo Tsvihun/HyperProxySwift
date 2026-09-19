@@ -10,19 +10,13 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralBaseTaskStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let rUNNING = Self(rawValue: "RUNNING")
-  public static let cOMPLETED = Self(rawValue: "COMPLETED")
-  public static let fAILED = Self(rawValue: "FAILED")
-  public static let cANCELED = Self(rawValue: "CANCELED")
-  public static let tERMINATED = Self(rawValue: "TERMINATED")
-  public static let cONTINUEDASNEW = Self(rawValue: "CONTINUED_AS_NEW")
-  public static let tIMEDOUT = Self(rawValue: "TIMED_OUT")
-  public static let uNKNOWN = Self(rawValue: "UNKNOWN")
+public enum MistralBaseTaskStatus: String, Codable, Hashable, Sendable {
+  case rUNNING = "RUNNING"
+  case cOMPLETED = "COMPLETED"
+  case fAILED = "FAILED"
+  case cANCELED = "CANCELED"
+  case tERMINATED = "TERMINATED"
+  case cONTINUEDASNEW = "CONTINUED_AS_NEW"
+  case tIMEDOUT = "TIMED_OUT"
+  case uNKNOWN = "UNKNOWN"
 }

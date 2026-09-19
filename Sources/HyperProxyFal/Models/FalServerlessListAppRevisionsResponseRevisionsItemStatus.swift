@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct FalServerlessListAppRevisionsResponseRevisionsItemStatus: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum FalServerlessListAppRevisionsResponseRevisionsItemStatus: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let deployed = Self(rawValue: "deployed")
-  public static let failed = Self(rawValue: "failed")
-  public static let deploying = Self(rawValue: "deploying")
+  case deployed = "deployed"
+  case failed = "failed"
+  case deploying = "deploying"
 }

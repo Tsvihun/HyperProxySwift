@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIMessageObjectStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let inProgress = Self(rawValue: "in_progress")
-  public static let incomplete = Self(rawValue: "incomplete")
-  public static let completed = Self(rawValue: "completed")
+public enum OpenAIMessageObjectStatus: String, Codable, Hashable, Sendable {
+  case inProgress = "in_progress"
+  case incomplete = "incomplete"
+  case completed = "completed"
 }

@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct FireworksAnthropicRequestRedactedThinkingBlock: Codable, Sendable {
   public var data: String
-  public var typeModel: String
+  public var kind: FireworksRedactedThinkingKind
 
   public init(
     data: String,
-    typeModel: String
+    kind: FireworksRedactedThinkingKind = .redactedThinking
   ) {
     self.data = data
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case data
-    case typeModel = "type"
+    case kind = "type"
   }
 }

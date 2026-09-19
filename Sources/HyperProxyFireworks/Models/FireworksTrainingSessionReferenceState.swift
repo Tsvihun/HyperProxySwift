@@ -10,16 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksTrainingSessionReferenceState: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let tRAININGSESSIONREFERENCESTATEUNSPECIFIED = Self(
-    rawValue: "TRAINING_SESSION_REFERENCE_STATE_UNSPECIFIED")
-  public static let bASE = Self(rawValue: "BASE")
-  public static let aDAPTER = Self(rawValue: "ADAPTER")
+public enum FireworksTrainingSessionReferenceState: String, Codable, Hashable, Sendable {
+  case tRAININGSESSIONREFERENCESTATEUNSPECIFIED = "TRAINING_SESSION_REFERENCE_STATE_UNSPECIFIED"
+  case bASE = "BASE"
+  case aDAPTER = "ADAPTER"
 }

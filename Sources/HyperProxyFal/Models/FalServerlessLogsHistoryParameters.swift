@@ -11,9 +11,9 @@ import Foundation
 import HyperProxyCore
 
 public struct FalServerlessLogsHistoryParameters: Codable, Sendable {
-  public var appId: HyperProxyJSONValue?
+  public var appId: FalServerlessLogsHistoryParametersAppId?
   public var cursor: String?
-  public var end: String?
+  public var end: FalServerlessLogsHistoryParametersEnd?
   public var jobId: String?
   public var level: String?
   public var limit: Int?
@@ -21,13 +21,13 @@ public struct FalServerlessLogsHistoryParameters: Codable, Sendable {
   public var revision: String?
   public var runSource: FalServerlessLogsHistoryParametersRunSource?
   public var search: String?
-  public var start: String?
+  public var start: FalServerlessLogsHistoryParametersStart?
   public var traceback: Bool?
 
   public init(
-    appId: HyperProxyJSONValue? = nil,
+    appId: FalServerlessLogsHistoryParametersAppId? = nil,
     cursor: String? = nil,
-    end: String? = nil,
+    end: FalServerlessLogsHistoryParametersEnd? = nil,
     jobId: String? = nil,
     level: String? = nil,
     limit: Int? = nil,
@@ -35,7 +35,7 @@ public struct FalServerlessLogsHistoryParameters: Codable, Sendable {
     revision: String? = nil,
     runSource: FalServerlessLogsHistoryParametersRunSource? = nil,
     search: String? = nil,
-    start: String? = nil,
+    start: FalServerlessLogsHistoryParametersStart? = nil,
     traceback: Bool? = nil
   ) {
     self.appId = appId

@@ -10,21 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesPunctuationSlash: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let doNotUseSpacesBeforeAndAfterSlashes = Self(
-    rawValue: "do_not_use_spaces_before_and_after_slashes")
-  public static let useSpacesBeforeAndAfterSlashes = Self(
-    rawValue: "use_spaces_before_and_after_slashes")
-  public static let useSpacesBeforeAndAfterSlashesIfThereAreMultipleWordsBeforeAndAfterSlash = Self(
-    rawValue:
-      "use_spaces_before_and_after_slashes_if_there_are_multiple_words_before_and_after_slash")
-  public static let useSpacesBeforeAndAfterSlashesIfThereAreMultipleWordsBeforeOrAfterSlash = Self(
-    rawValue:
-      "use_spaces_before_and_after_slashes_if_there_are_multiple_words_before_or_after_slash")
+public enum DeepLConfiguredRulesPunctuationSlash: String, Codable, Hashable, Sendable {
+  case doNotUseSpacesBeforeAndAfterSlashes = "do_not_use_spaces_before_and_after_slashes"
+  case useSpacesBeforeAndAfterSlashes = "use_spaces_before_and_after_slashes"
+  case useSpacesBeforeAndAfterSlashesIfThereAreMultipleWordsBeforeAndAfterSlash =
+    "use_spaces_before_and_after_slashes_if_there_are_multiple_words_before_and_after_slash"
+  case useSpacesBeforeAndAfterSlashesIfThereAreMultipleWordsBeforeOrAfterSlash =
+    "use_spaces_before_and_after_slashes_if_there_are_multiple_words_before_or_after_slash"
 }

@@ -16,14 +16,14 @@ public struct AnthropicBetaManagedAgentsAgentThreadMessageSentEvent: Codable, Se
   public var processedAt: AnthropicBetaTimestamp
   public var toAgentName: String?
   public var toSessionThreadId: String
-  public var typeModel: AnthropicBetaManagedAgentsAgentThreadMessageSentEventTypeModel
+  public var kind: AnthropicBetaManagedAgentsAgentThreadMessageSentEventKind
 
   public init(
     content: [AnthropicBetaManagedAgentsUserContentBlock],
     id: String,
     processedAt: AnthropicBetaTimestamp,
     toSessionThreadId: String,
-    typeModel: AnthropicBetaManagedAgentsAgentThreadMessageSentEventTypeModel,
+    kind: AnthropicBetaManagedAgentsAgentThreadMessageSentEventKind,
     toAgentName: String? = nil
   ) {
     self.content = content
@@ -31,7 +31,7 @@ public struct AnthropicBetaManagedAgentsAgentThreadMessageSentEvent: Codable, Se
     self.processedAt = processedAt
     self.toAgentName = toAgentName
     self.toSessionThreadId = toSessionThreadId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct AnthropicBetaManagedAgentsAgentThreadMessageSentEvent: Codable, Se
     case processedAt = "processed_at"
     case toAgentName = "to_agent_name"
     case toSessionThreadId = "to_session_thread_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

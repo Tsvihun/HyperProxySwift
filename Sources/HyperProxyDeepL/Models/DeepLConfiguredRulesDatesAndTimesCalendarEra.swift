@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesDatesAndTimesCalendarEra: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useBcAndAd = Self(rawValue: "use_bc_and_ad")
-  public static let useBceAndCe = Self(rawValue: "use_bce_and_ce")
+public enum DeepLConfiguredRulesDatesAndTimesCalendarEra: String, Codable, Hashable, Sendable {
+  case useBcAndAd = "use_bc_and_ad"
+  case useBceAndCe = "use_bce_and_ce"
 }

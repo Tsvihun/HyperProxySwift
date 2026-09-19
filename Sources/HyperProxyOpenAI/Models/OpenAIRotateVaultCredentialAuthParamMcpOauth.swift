@@ -14,10 +14,10 @@ public struct OpenAIRotateVaultCredentialAuthParamMcpOauth: Codable, Sendable {
   public var accessToken: String?
   public var expiresAt: String?
   public var refresh: OpenAIRotateMcpOauthRefreshParam?
-  public var typeModel: OpenAIRotateVaultCredentialAuthParamMcpOauthTypeModel
+  public var kind: OpenAIRotateVaultCredentialAuthParamMcpOauthKind
 
   public init(
-    typeModel: OpenAIRotateVaultCredentialAuthParamMcpOauthTypeModel,
+    kind: OpenAIRotateVaultCredentialAuthParamMcpOauthKind,
     accessToken: String? = nil,
     expiresAt: String? = nil,
     refresh: OpenAIRotateMcpOauthRefreshParam? = nil
@@ -25,13 +25,13 @@ public struct OpenAIRotateVaultCredentialAuthParamMcpOauth: Codable, Sendable {
     self.accessToken = accessToken
     self.expiresAt = expiresAt
     self.refresh = refresh
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case accessToken = "access_token"
     case expiresAt = "expires_at"
     case refresh
-    case typeModel = "type"
+    case kind = "type"
   }
 }

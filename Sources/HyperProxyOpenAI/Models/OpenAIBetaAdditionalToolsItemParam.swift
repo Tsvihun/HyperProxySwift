@@ -15,12 +15,12 @@ public struct OpenAIBetaAdditionalToolsItemParam: Codable, Sendable {
   public var id: String?
   public var role: OpenAIBetaAdditionalToolsItemParamRole
   public var tools: [OpenAIBetaTool]
-  public var typeModel: OpenAIBetaAdditionalToolsItemParamTypeModel
+  public var kind: OpenAIBetaAdditionalToolsItemParamKind
 
   public init(
     role: OpenAIBetaAdditionalToolsItemParamRole,
     tools: [OpenAIBetaTool],
-    typeModel: OpenAIBetaAdditionalToolsItemParamTypeModel,
+    kind: OpenAIBetaAdditionalToolsItemParamKind,
     agent: OpenAIBetaAgentTagParam? = nil,
     id: String? = nil
   ) {
@@ -28,7 +28,7 @@ public struct OpenAIBetaAdditionalToolsItemParam: Codable, Sendable {
     self.id = id
     self.role = role
     self.tools = tools
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIBetaAdditionalToolsItemParam: Codable, Sendable {
     case id
     case role
     case tools
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsImageAvatar: Codable, Sendable {
-  public var typeModel: String?
+  public var kind: ElevenLabsImageKind?
   public var url: String?
 
   public init(
-    typeModel: String? = nil,
+    kind: ElevenLabsImageKind? = nil,
     url: String? = nil
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

@@ -15,20 +15,20 @@ public struct OpenAIAgentToolResourceFunction: Codable, Sendable {
   public var description: String
   public var name: String
   public var parameters: [String: HyperProxyJSONValue]
-  public var typeModel: OpenAIAgentToolResourceFunctionTypeModel
+  public var kind: OpenAIAgentToolResourceFunctionKind
 
   public init(
     deferLoading: Bool,
     description: String,
     name: String,
     parameters: [String: HyperProxyJSONValue],
-    typeModel: OpenAIAgentToolResourceFunctionTypeModel
+    kind: OpenAIAgentToolResourceFunctionKind
   ) {
     self.deferLoading = deferLoading
     self.description = description
     self.name = name
     self.parameters = parameters
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIAgentToolResourceFunction: Codable, Sendable {
     case description
     case name
     case parameters
-    case typeModel = "type"
+    case kind = "type"
   }
 }

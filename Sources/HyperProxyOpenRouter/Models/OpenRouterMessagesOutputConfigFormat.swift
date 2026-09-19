@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterMessagesOutputConfigFormat: Codable, Sendable {
   public var schema: [String: HyperProxyJSONValue]
-  public var typeModel: OpenRouterMessagesOutputConfigFormatTypeModel
+  public var kind: OpenRouterMessagesOutputConfigFormatKind
 
   public init(
     schema: [String: HyperProxyJSONValue],
-    typeModel: OpenRouterMessagesOutputConfigFormatTypeModel
+    kind: OpenRouterMessagesOutputConfigFormatKind
   ) {
     self.schema = schema
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case schema
-    case typeModel = "type"
+    case kind = "type"
   }
 }

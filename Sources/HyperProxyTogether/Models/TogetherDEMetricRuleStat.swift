@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherDEMetricRuleStat: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mETRICSTATTYPEAVG = Self(rawValue: "METRIC_STAT_TYPE_AVG")
-  public static let mETRICSTATTYPEMIN = Self(rawValue: "METRIC_STAT_TYPE_MIN")
-  public static let mETRICSTATTYPEMAX = Self(rawValue: "METRIC_STAT_TYPE_MAX")
-  public static let mETRICSTATTYPEPERCENTILE = Self(rawValue: "METRIC_STAT_TYPE_PERCENTILE")
+public enum TogetherDEMetricRuleStat: String, Codable, Hashable, Sendable {
+  case mETRICSTATTYPEAVG = "METRIC_STAT_TYPE_AVG"
+  case mETRICSTATTYPEPERCENTILE = "METRIC_STAT_TYPE_PERCENTILE"
 }

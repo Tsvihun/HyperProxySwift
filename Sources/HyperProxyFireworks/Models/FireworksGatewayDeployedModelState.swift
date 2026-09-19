@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksGatewayDeployedModelState: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let sTATEUNSPECIFIED = Self(rawValue: "STATE_UNSPECIFIED")
-  public static let uNDEPLOYING = Self(rawValue: "UNDEPLOYING")
-  public static let dEPLOYING = Self(rawValue: "DEPLOYING")
-  public static let dEPLOYED = Self(rawValue: "DEPLOYED")
-  public static let uPDATING = Self(rawValue: "UPDATING")
+public enum FireworksGatewayDeployedModelState: String, Codable, Hashable, Sendable {
+  case sTATEUNSPECIFIED = "STATE_UNSPECIFIED"
+  case uNDEPLOYING = "UNDEPLOYING"
+  case dEPLOYING = "DEPLOYING"
+  case dEPLOYED = "DEPLOYED"
+  case uPDATING = "UPDATING"
 }

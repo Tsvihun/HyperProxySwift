@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIImagesResponseSizeAnyOf2: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let value1024x1024 = Self(rawValue: "1024x1024")
-  public static let value1024x1536 = Self(rawValue: "1024x1536")
-  public static let value1536x1024 = Self(rawValue: "1536x1024")
+public enum OpenAIImagesResponseSizeAnyOf2: String, Codable, Hashable, Sendable {
+  case value1024x1024 = "1024x1024"
+  case value1024x1536 = "1024x1536"
+  case value1536x1024 = "1536x1024"
 }

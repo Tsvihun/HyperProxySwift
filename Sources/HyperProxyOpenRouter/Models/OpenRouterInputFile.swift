@@ -15,10 +15,10 @@ public struct OpenRouterInputFile: Codable, Sendable {
   public var fileId: String?
   public var fileUrl: String?
   public var filename: String?
-  public var typeModel: OpenRouterInputFileTypeModel
+  public var kind: OpenRouterInputFileKind
 
   public init(
-    typeModel: OpenRouterInputFileTypeModel,
+    kind: OpenRouterInputFileKind,
     fileData: String? = nil,
     fileId: String? = nil,
     fileUrl: String? = nil,
@@ -28,7 +28,7 @@ public struct OpenRouterInputFile: Codable, Sendable {
     self.fileId = fileId
     self.fileUrl = fileUrl
     self.filename = filename
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenRouterInputFile: Codable, Sendable {
     case fileId = "file_id"
     case fileUrl = "file_url"
     case filename
-    case typeModel = "type"
+    case kind = "type"
   }
 }

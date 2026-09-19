@@ -10,19 +10,13 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepSeekAnthropicContentBlockType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let text = Self(rawValue: "text")
-  public static let thinking = Self(rawValue: "thinking")
-  public static let toolUse = Self(rawValue: "tool_use")
-  public static let toolResult = Self(rawValue: "tool_result")
-  public static let serverToolUse = Self(rawValue: "server_tool_use")
-  public static let webSearchToolResult = Self(rawValue: "web_search_tool_result")
-  public static let image = Self(rawValue: "image")
-  public static let file = Self(rawValue: "file")
+public enum DeepSeekAnthropicContentBlockType: String, Codable, Hashable, Sendable {
+  case text = "text"
+  case thinking = "thinking"
+  case toolUse = "tool_use"
+  case toolResult = "tool_result"
+  case serverToolUse = "server_tool_use"
+  case webSearchToolResult = "web_search_tool_result"
+  case image = "image"
+  case file = "file"
 }

@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterCustomToolCallOutputItemAllOf2: Codable, Sendable {
-  public var output: HyperProxyJSONValue?
+  public var output: OpenRouterCustomToolCallOutputItemAllOf2Output?
 
   public init(
-    output: HyperProxyJSONValue? = nil
+    output: OpenRouterCustomToolCallOutputItemAllOf2Output? = nil
   ) {
     self.output = output
   }

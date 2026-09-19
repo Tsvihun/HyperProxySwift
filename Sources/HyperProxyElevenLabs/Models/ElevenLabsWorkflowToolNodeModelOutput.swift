@@ -14,24 +14,24 @@ public struct ElevenLabsWorkflowToolNodeModelOutput: Codable, Sendable {
   public var edgeOrder: [String]
   public var position: ElevenLabsPositionOutput
   public var tools: [ElevenLabsWorkflowToolLocator]
-  public var typeModel: String
+  public var kind: ElevenLabsToolKind
 
   public init(
     edgeOrder: [String],
     position: ElevenLabsPositionOutput,
     tools: [ElevenLabsWorkflowToolLocator],
-    typeModel: String
+    kind: ElevenLabsToolKind = .tool
   ) {
     self.edgeOrder = edgeOrder
     self.position = position
     self.tools = tools
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case edgeOrder = "edge_order"
     case position
     case tools
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIRealtimeAudioFormatsAnyOf3: Codable, Sendable {
-  public var typeModel: OpenAIRealtimeAudioFormatsAnyOf3TypeModel?
+  public var kind: OpenAIRealtimeAudioFormatsAnyOf3Kind?
 
   public init(
-    typeModel: OpenAIRealtimeAudioFormatsAnyOf3TypeModel? = nil
+    kind: OpenAIRealtimeAudioFormatsAnyOf3Kind? = nil
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

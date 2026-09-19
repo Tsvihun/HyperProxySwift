@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterWebFetchPluginId: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let webFetch = Self(rawValue: "web-fetch")
+public enum OpenRouterWebFetchPluginId: String, Codable, Hashable, Sendable {
+  case webFetch = "web-fetch"
 }

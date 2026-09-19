@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiCompositeMediaReferenceType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let pATH = Self(rawValue: "PATH")
-  public static let bLOBREF = Self(rawValue: "BLOB_REF")
-  public static let iNLINE = Self(rawValue: "INLINE")
-  public static let bIGSTOREREF = Self(rawValue: "BIGSTORE_REF")
-  public static let cOSMOBINARYREFERENCE = Self(rawValue: "COSMO_BINARY_REFERENCE")
+public enum GeminiCompositeMediaReferenceType: String, Codable, Hashable, Sendable {
+  case pATH = "PATH"
+  case bLOBREF = "BLOB_REF"
+  case iNLINE = "INLINE"
+  case bIGSTOREREF = "BIGSTORE_REF"
+  case cOSMOBINARYREFERENCE = "COSMO_BINARY_REFERENCE"
 }

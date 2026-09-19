@@ -10,13 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIDeletedConversationResourceObject: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let conversationDeleted = Self(rawValue: "conversation.deleted")
+public enum OpenAIDeletedConversationResourceObject: String, Codable, Hashable, Sendable {
+  case conversationDeleted = "conversation.deleted"
 }

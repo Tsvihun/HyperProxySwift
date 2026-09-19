@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct MistralTranscriptionStreamTextDelta: Codable, Sendable {
   public var text: String
-  public var typeModel: String?
+  public var kind: MistralTranscriptionTextDeltaKind?
 
   public init(
     text: String,
-    typeModel: String? = nil
+    kind: MistralTranscriptionTextDeltaKind? = nil
   ) {
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

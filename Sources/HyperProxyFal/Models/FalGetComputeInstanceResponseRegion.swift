@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct FalGetComputeInstanceResponseRegion: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let usWest = Self(rawValue: "us-west")
-  public static let usCentral = Self(rawValue: "us-central")
-  public static let usEast = Self(rawValue: "us-east")
-  public static let euNorth = Self(rawValue: "eu-north")
-  public static let euWest = Self(rawValue: "eu-west")
-  public static let other = Self(rawValue: "other")
+public enum FalGetComputeInstanceResponseRegion: String, Codable, Hashable, Sendable {
+  case usWest = "us-west"
+  case usCentral = "us-central"
+  case usEast = "us-east"
+  case euNorth = "eu-north"
+  case euWest = "eu-west"
+  case other = "other"
 }

@@ -10,19 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesPunctuationSentenceBreakIndicator: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesPunctuationSentenceBreakIndicator: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useEmDashWithSpaceOnEitherSide = Self(
-    rawValue: "use_em_dash_with_space_on_either_side")
-  public static let useEmDashWithoutSpaceOnEitherSide = Self(
-    rawValue: "use_em_dash_without_space_on_either_side")
-  public static let useEnDashWithSpaceOnEitherSide = Self(
-    rawValue: "use_en_dash_with_space_on_either_side")
+  case useEmDashWithSpaceOnEitherSide = "use_em_dash_with_space_on_either_side"
+  case useEmDashWithoutSpaceOnEitherSide = "use_em_dash_without_space_on_either_side"
+  case useEnDashWithSpaceOnEitherSide = "use_en_dash_with_space_on_either_side"
 }

@@ -16,11 +16,11 @@ public struct OpenRouterAnthropicToolSearchToolBm25: Codable, Sendable {
   public var deferLoading: Bool?
   public var name: OpenRouterAnthropicToolSearchToolBm25Name
   public var strict: Bool?
-  public var typeModel: OpenRouterAnthropicToolSearchToolBm25TypeModel
+  public var kind: OpenRouterAnthropicToolSearchToolBm25Kind
 
   public init(
     name: OpenRouterAnthropicToolSearchToolBm25Name,
-    typeModel: OpenRouterAnthropicToolSearchToolBm25TypeModel,
+    kind: OpenRouterAnthropicToolSearchToolBm25Kind,
     allowedCallers: OpenRouterAnthropicAllowedCallers? = nil,
     cacheControl: OpenRouterAnthropicCacheControlDirective? = nil,
     deferLoading: Bool? = nil,
@@ -31,7 +31,7 @@ public struct OpenRouterAnthropicToolSearchToolBm25: Codable, Sendable {
     self.deferLoading = deferLoading
     self.name = name
     self.strict = strict
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenRouterAnthropicToolSearchToolBm25: Codable, Sendable {
     case deferLoading = "defer_loading"
     case name
     case strict
-    case typeModel = "type"
+    case kind = "type"
   }
 }

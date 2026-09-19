@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIReasoningTextContent: Codable, Sendable {
   public var text: String
-  public var typeModel: OpenAIReasoningTextContentTypeModel
+  public var kind: OpenAIReasoningTextContentKind
 
   public init(
     text: String,
-    typeModel: OpenAIReasoningTextContentTypeModel
+    kind: OpenAIReasoningTextContentKind
   ) {
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -14,24 +14,24 @@ public struct OpenAIRealtimeBetaServerEventResponseContentPartAddedPart: Codable
   public var audio: String?
   public var text: String?
   public var transcript: String?
-  public var typeModel: OpenAIRealtimeBetaServerEventResponseContentPartAddedPartTypeModel?
+  public var kind: OpenAIRealtimeBetaServerEventResponseContentPartAddedPartKind?
 
   public init(
     audio: String? = nil,
     text: String? = nil,
     transcript: String? = nil,
-    typeModel: OpenAIRealtimeBetaServerEventResponseContentPartAddedPartTypeModel? = nil
+    kind: OpenAIRealtimeBetaServerEventResponseContentPartAddedPartKind? = nil
   ) {
     self.audio = audio
     self.text = text
     self.transcript = transcript
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case audio
     case text
     case transcript
-    case typeModel = "type"
+    case kind = "type"
   }
 }

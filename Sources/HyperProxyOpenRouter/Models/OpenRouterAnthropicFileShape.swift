@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterAnthropicFileShape: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let anthropic = Self(rawValue: "anthropic")
+public enum OpenRouterAnthropicFileShape: String, Codable, Hashable, Sendable {
+  case anthropic = "anthropic"
 }

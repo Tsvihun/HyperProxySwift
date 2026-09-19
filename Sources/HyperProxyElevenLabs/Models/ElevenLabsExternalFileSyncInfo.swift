@@ -17,7 +17,7 @@ public struct ElevenLabsExternalFileSyncInfo: Codable, Sendable {
   public var sourceMimeType: String
   public var sourceModifiedTime: String
   public var sourceParentEntityId: String
-  public var typeModel: ElevenLabsExternalSyncProvider
+  public var kind: ElevenLabsExternalSyncProvider
 
   public init(
     integrationConnectionId: String,
@@ -25,7 +25,7 @@ public struct ElevenLabsExternalFileSyncInfo: Codable, Sendable {
     sourceMimeType: String,
     sourceModifiedTime: String,
     sourceParentEntityId: String,
-    typeModel: ElevenLabsExternalSyncProvider,
+    kind: ElevenLabsExternalSyncProvider,
     rootFolderId: String? = nil
   ) {
     self.integrationConnectionId = integrationConnectionId
@@ -34,7 +34,7 @@ public struct ElevenLabsExternalFileSyncInfo: Codable, Sendable {
     self.sourceMimeType = sourceMimeType
     self.sourceModifiedTime = sourceModifiedTime
     self.sourceParentEntityId = sourceParentEntityId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct ElevenLabsExternalFileSyncInfo: Codable, Sendable {
     case sourceMimeType = "source_mime_type"
     case sourceModifiedTime = "source_modified_time"
     case sourceParentEntityId = "source_parent_entity_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -104,6 +104,22 @@ extension HyperProxyProviderService where Operation == PerplexityOperation {
     return try await call.decoded(PerplexityResponseFileList.self)
   }
 
+  public func downloadAgentFile(
+    id: String,
+    fileId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.downloadAgentFile)
+      .path("id", id)
+      .path("file_id", fileId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try call.bytes()
+  }
+
   public func getComputerUsageAnalytics(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -194,6 +210,86 @@ extension HyperProxyProviderService where Operation == PerplexityOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(PerplexityListModelsResponse.self)
+  }
+
+  public func listSkills(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> PerplexitySkillList {
+    let call = self.call(.listSkills)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(PerplexitySkillList.self)
+  }
+
+  public func createSkill(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> PerplexityManagedSkill {
+    let call = self.call(.createSkill)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(PerplexityManagedSkill.self)
+  }
+
+  public func getSkill(
+    skillId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> PerplexityManagedSkill {
+    let call = self.call(.getSkill)
+      .path("skill_id", skillId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(PerplexityManagedSkill.self)
+  }
+
+  public func updateSkill(
+    skillId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> PerplexityManagedSkill {
+    let call = self.call(.updateSkill)
+      .path("skill_id", skillId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(PerplexityManagedSkill.self)
+  }
+
+  public func downloadSkill(
+    skillId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> PerplexitySkillDownload {
+    let call = self.call(.downloadSkill)
+      .path("skill_id", skillId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(PerplexitySkillDownload.self)
+  }
+
+  public func listSkillRevisions(
+    skillId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> PerplexitySkillRevisionList {
+    let call = self.call(.listSkillRevisions)
+      .path("skill_id", skillId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(PerplexitySkillRevisionList.self)
   }
 
   public func sonarCreate(

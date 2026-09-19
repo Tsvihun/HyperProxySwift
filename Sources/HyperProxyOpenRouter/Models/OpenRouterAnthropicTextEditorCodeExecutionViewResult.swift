@@ -16,7 +16,7 @@ public struct OpenRouterAnthropicTextEditorCodeExecutionViewResult: Codable, Sen
   public var numLines: Int
   public var startLine: Int
   public var totalLines: Int
-  public var typeModel: OpenRouterAnthropicTextEditorCodeExecutionViewResultTypeModel
+  public var kind: OpenRouterAnthropicTextEditorCodeExecutionViewResultKind
 
   public init(
     content: String,
@@ -24,14 +24,14 @@ public struct OpenRouterAnthropicTextEditorCodeExecutionViewResult: Codable, Sen
     numLines: Int,
     startLine: Int,
     totalLines: Int,
-    typeModel: OpenRouterAnthropicTextEditorCodeExecutionViewResultTypeModel
+    kind: OpenRouterAnthropicTextEditorCodeExecutionViewResultKind
   ) {
     self.content = content
     self.fileType = fileType
     self.numLines = numLines
     self.startLine = startLine
     self.totalLines = totalLines
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenRouterAnthropicTextEditorCodeExecutionViewResult: Codable, Sen
     case numLines = "num_lines"
     case startLine = "start_line"
     case totalLines = "total_lines"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

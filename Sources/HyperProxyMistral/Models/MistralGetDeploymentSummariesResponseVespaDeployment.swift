@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct MistralGetDeploymentSummariesResponseVespaDeployment: Codable, Sendable {
   public var indexes: [MistralGetDeploymentSummariesResponseVespaIndex]
-  public var typeModel: String?
+  public var kind: MistralVespaKind?
 
   public init(
     indexes: [MistralGetDeploymentSummariesResponseVespaIndex],
-    typeModel: String? = nil
+    kind: MistralVespaKind? = nil
   ) {
     self.indexes = indexes
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case indexes
-    case typeModel = "type"
+    case kind = "type"
   }
 }

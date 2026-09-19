@@ -13,17 +13,16 @@ import HyperProxyCore
 public struct AnthropicBetaManagedAgentsSelfHostedResourcesUnsupportedDeploymentPausedReasonError:
   Codable, Sendable
 {
-  public var typeModel:
-    AnthropicBetaManagedAgentsSelfHostedResourcesUnsupportedDeploymentPausedReasonErrorTypeModel
+  public var kind:
+    AnthropicBetaManagedAgentsSelfHostedResourcesUnsupportedDeploymentPausedReasonErrorKind
 
   public init(
-    typeModel:
-      AnthropicBetaManagedAgentsSelfHostedResourcesUnsupportedDeploymentPausedReasonErrorTypeModel
+    kind: AnthropicBetaManagedAgentsSelfHostedResourcesUnsupportedDeploymentPausedReasonErrorKind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

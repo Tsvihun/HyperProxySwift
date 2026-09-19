@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralReferenceChunk: Codable, Sendable {
-  public var referenceIds: [HyperProxyJSONValue]
-  public var typeModel: String?
+  public var referenceIds: [MistralReferenceChunkReferenceIdsItem]
+  public var kind: MistralReferenceKind?
 
   public init(
-    referenceIds: [HyperProxyJSONValue],
-    typeModel: String? = nil
+    referenceIds: [MistralReferenceChunkReferenceIdsItem],
+    kind: MistralReferenceKind? = nil
   ) {
     self.referenceIds = referenceIds
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case referenceIds = "reference_ids"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

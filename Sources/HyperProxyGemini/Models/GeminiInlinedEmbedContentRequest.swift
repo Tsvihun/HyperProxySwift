@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct GeminiInlinedEmbedContentRequest: Codable, Sendable {
   public var metadata: [String: HyperProxyJSONValue]?
-  public var request: HyperProxyJSONValue?
+  public var request: GeminiEmbedContentRequest?
 
   public init(
     metadata: [String: HyperProxyJSONValue]? = nil,
-    request: HyperProxyJSONValue? = nil
+    request: GeminiEmbedContentRequest? = nil
   ) {
     self.metadata = metadata
     self.request = request

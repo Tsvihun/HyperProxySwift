@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterChatNamedToolChoice: Codable, Sendable {
   public var function: OpenRouterChatNamedToolChoiceFunction
-  public var typeModel: OpenRouterChatNamedToolChoiceTypeModel
+  public var kind: OpenRouterChatNamedToolChoiceKind
 
   public init(
     function: OpenRouterChatNamedToolChoiceFunction,
-    typeModel: OpenRouterChatNamedToolChoiceTypeModel
+    kind: OpenRouterChatNamedToolChoiceKind
   ) {
     self.function = function
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case function
-    case typeModel = "type"
+    case kind = "type"
   }
 }

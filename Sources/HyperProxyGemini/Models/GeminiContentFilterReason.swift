@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiContentFilterReason: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let bLOCKEDREASONUNSPECIFIED = Self(rawValue: "BLOCKED_REASON_UNSPECIFIED")
-  public static let sAFETY = Self(rawValue: "SAFETY")
-  public static let oTHER = Self(rawValue: "OTHER")
+public enum GeminiContentFilterReason: String, Codable, Hashable, Sendable {
+  case bLOCKEDREASONUNSPECIFIED = "BLOCKED_REASON_UNSPECIFIED"
+  case sAFETY = "SAFETY"
+  case oTHER = "OTHER"
 }

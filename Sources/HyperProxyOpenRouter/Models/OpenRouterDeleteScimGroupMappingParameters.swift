@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenRouterDeleteScimGroupMappingParameters: Codable, Sendable {
   public var id: String
-  public var keepMembers: HyperProxyJSONValue
+  public var keepMembers: OpenRouterDeleteScimGroupMappingParametersKeepMembers
 
   public init(
     id: String,
-    keepMembers: HyperProxyJSONValue
+    keepMembers: OpenRouterDeleteScimGroupMappingParametersKeepMembers
   ) {
     self.id = id
     self.keepMembers = keepMembers

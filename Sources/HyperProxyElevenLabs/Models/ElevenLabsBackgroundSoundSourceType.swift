@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsBackgroundSoundSourceType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let preset = Self(rawValue: "preset")
+public enum ElevenLabsBackgroundSoundSourceType: String, Codable, Hashable, Sendable {
+  case preset = "preset"
 }

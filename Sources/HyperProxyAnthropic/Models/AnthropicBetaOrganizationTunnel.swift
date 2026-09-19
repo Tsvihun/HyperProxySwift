@@ -16,7 +16,7 @@ public struct AnthropicBetaOrganizationTunnel: Codable, Sendable {
   public var displayName: String?
   public var domain: String
   public var id: String
-  public var typeModel: String
+  public var kind: AnthropicTunnelKind
   public var workspaceId: String?
 
   public init(
@@ -25,15 +25,15 @@ public struct AnthropicBetaOrganizationTunnel: Codable, Sendable {
     displayName: String?,
     domain: String,
     id: String,
-    typeModel: String,
-    workspaceId: String?
+    workspaceId: String?,
+    kind: AnthropicTunnelKind = .tunnel
   ) {
     self.archivedAt = archivedAt
     self.createdAt = createdAt
     self.displayName = displayName
     self.domain = domain
     self.id = id
-    self.typeModel = typeModel
+    self.kind = kind
     self.workspaceId = workspaceId
   }
 
@@ -43,7 +43,7 @@ public struct AnthropicBetaOrganizationTunnel: Codable, Sendable {
     case displayName = "display_name"
     case domain
     case id
-    case typeModel = "type"
+    case kind = "type"
     case workspaceId = "workspace_id"
   }
 }

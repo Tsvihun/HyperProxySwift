@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterBaseInputsAnyOf2ItemAnyOf1RoleAnyOf2: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let system = Self(rawValue: "system")
+public enum OpenRouterBaseInputsAnyOf2ItemAnyOf1RoleAnyOf2: String, Codable, Hashable, Sendable {
+  case system = "system"
 }

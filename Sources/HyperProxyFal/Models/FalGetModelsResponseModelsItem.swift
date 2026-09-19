@@ -12,15 +12,15 @@ import HyperProxyCore
 
 public struct FalGetModelsResponseModelsItem: Codable, Sendable {
   public var endpointId: String
-  public var enterpriseStatus: HyperProxyJSONValue?
+  public var enterpriseStatus: FalGetModelsResponseModelsItemEnterpriseStatus?
   public var metadata: FalGetModelsResponseModelsItemMetadata?
-  public var openapi: HyperProxyJSONValue?
+  public var openapi: FalGetModelsResponseModelsItemOpenapi?
 
   public init(
     endpointId: String,
-    enterpriseStatus: HyperProxyJSONValue? = nil,
+    enterpriseStatus: FalGetModelsResponseModelsItemEnterpriseStatus? = nil,
     metadata: FalGetModelsResponseModelsItemMetadata? = nil,
-    openapi: HyperProxyJSONValue? = nil
+    openapi: FalGetModelsResponseModelsItemOpenapi? = nil
   ) {
     self.endpointId = endpointId
     self.enterpriseStatus = enterpriseStatus

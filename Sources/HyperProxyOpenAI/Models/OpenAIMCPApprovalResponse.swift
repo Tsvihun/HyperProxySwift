@@ -15,12 +15,12 @@ public struct OpenAIMCPApprovalResponse: Codable, Sendable {
   public var approve: Bool
   public var id: String?
   public var reason: String?
-  public var typeModel: OpenAIMCPApprovalResponseTypeModel
+  public var kind: OpenAIMCPApprovalResponseKind
 
   public init(
     approvalRequestId: String,
     approve: Bool,
-    typeModel: OpenAIMCPApprovalResponseTypeModel,
+    kind: OpenAIMCPApprovalResponseKind,
     id: String? = nil,
     reason: String? = nil
   ) {
@@ -28,7 +28,7 @@ public struct OpenAIMCPApprovalResponse: Codable, Sendable {
     self.approve = approve
     self.id = id
     self.reason = reason
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIMCPApprovalResponse: Codable, Sendable {
     case approve
     case id
     case reason
-    case typeModel = "type"
+    case kind = "type"
   }
 }

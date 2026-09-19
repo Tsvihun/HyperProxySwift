@@ -10,18 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLVoiceTranslateJobSourceContentType: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let audioMpeg = Self(rawValue: "audio/mpeg")
-  public static let audioWav = Self(rawValue: "audio/wav")
-  public static let audioOgg = Self(rawValue: "audio/ogg")
-  public static let audioFlac = Self(rawValue: "audio/flac")
-  public static let audioMp4 = Self(rawValue: "audio/mp4")
-  public static let audioWebm = Self(rawValue: "audio/webm")
+public enum DeepLVoiceTranslateJobSourceContentType: String, Codable, Hashable, Sendable {
+  case audioMpeg = "audio/mpeg"
+  case audioWav = "audio/wav"
+  case audioOgg = "audio/ogg"
+  case audioFlac = "audio/flac"
+  case audioMp4 = "audio/mp4"
+  case audioWebm = "audio/webm"
 }

@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLResultStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let pending = Self(rawValue: "pending")
-  public static let uploaded = Self(rawValue: "uploaded")
-  public static let processing = Self(rawValue: "processing")
-  public static let complete = Self(rawValue: "complete")
-  public static let downloaded = Self(rawValue: "downloaded")
-  public static let failed = Self(rawValue: "failed")
+public enum DeepLResultStatus: String, Codable, Hashable, Sendable {
+  case pending = "pending"
+  case uploaded = "uploaded"
+  case processing = "processing"
+  case complete = "complete"
+  case downloaded = "downloaded"
+  case failed = "failed"
 }

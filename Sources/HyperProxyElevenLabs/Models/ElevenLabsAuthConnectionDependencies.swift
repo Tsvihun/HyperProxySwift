@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct ElevenLabsAuthConnectionDependencies: Codable, Sendable {
   public var integrationConnections: [ElevenLabsDependentIntegrationConnectionIdentifier]?
-  public var mcpServers: [HyperProxyJSONValue]?
-  public var tools: [HyperProxyJSONValue]?
+  public var mcpServers: [ElevenLabsAuthConnectionDependenciesMcpServersItem]?
+  public var tools: [ElevenLabsAuthConnectionDependenciesToolsItem]?
 
   public init(
     integrationConnections: [ElevenLabsDependentIntegrationConnectionIdentifier]? = nil,
-    mcpServers: [HyperProxyJSONValue]? = nil,
-    tools: [HyperProxyJSONValue]? = nil
+    mcpServers: [ElevenLabsAuthConnectionDependenciesMcpServersItem]? = nil,
+    tools: [ElevenLabsAuthConnectionDependenciesToolsItem]? = nil
   ) {
     self.integrationConnections = integrationConnections
     self.mcpServers = mcpServers

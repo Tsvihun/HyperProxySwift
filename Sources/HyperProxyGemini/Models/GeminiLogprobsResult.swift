@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiLogprobsResult: Codable, Sendable {
-  public var chosenCandidates: [HyperProxyJSONValue]?
+  public var chosenCandidates: [GeminiLogprobsResultCandidate]?
   public var logProbabilitySum: Double?
-  public var topCandidates: [HyperProxyJSONValue]?
+  public var topCandidates: [GeminiTopCandidates]?
 
   public init(
-    chosenCandidates: [HyperProxyJSONValue]? = nil,
+    chosenCandidates: [GeminiLogprobsResultCandidate]? = nil,
     logProbabilitySum: Double? = nil,
-    topCandidates: [HyperProxyJSONValue]? = nil
+    topCandidates: [GeminiTopCandidates]? = nil
   ) {
     self.chosenCandidates = chosenCandidates
     self.logProbabilitySum = logProbabilitySum

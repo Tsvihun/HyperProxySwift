@@ -18,16 +18,16 @@ public struct OpenAICreateRunRequest: Codable, Sendable {
   public var maxCompletionTokens: Int?
   public var maxPromptTokens: Int?
   public var metadata: OpenAIMetadata?
-  public var model: HyperProxyJSONValue?
-  public var parallelToolCalls: OpenAIParallelToolCalls?
+  public var model: OpenAICreateRunRequestModel?
+  public var parallelToolCalls: Bool?
   public var reasoningEffort: OpenAIReasoningEffort?
   public var responseFormat: OpenAIAssistantsApiResponseFormatOption?
   public var stream: Bool?
   public var temperature: Double?
-  public var toolChoice: HyperProxyJSONValue?
-  public var tools: [HyperProxyJSONValue]?
+  public var toolChoice: OpenAIAssistantsApiToolChoiceOption?
+  public var tools: [OpenAICreateRunRequestToolsItem]?
   public var topP: Double?
-  public var truncationStrategy: HyperProxyJSONValue?
+  public var truncationStrategy: OpenAITruncationObject?
 
   public init(
     assistantId: String,
@@ -37,16 +37,16 @@ public struct OpenAICreateRunRequest: Codable, Sendable {
     maxCompletionTokens: Int? = nil,
     maxPromptTokens: Int? = nil,
     metadata: OpenAIMetadata? = nil,
-    model: HyperProxyJSONValue? = nil,
-    parallelToolCalls: OpenAIParallelToolCalls? = nil,
+    model: OpenAICreateRunRequestModel? = nil,
+    parallelToolCalls: Bool? = nil,
     reasoningEffort: OpenAIReasoningEffort? = nil,
     responseFormat: OpenAIAssistantsApiResponseFormatOption? = nil,
     stream: Bool? = nil,
     temperature: Double? = nil,
-    toolChoice: HyperProxyJSONValue? = nil,
-    tools: [HyperProxyJSONValue]? = nil,
+    toolChoice: OpenAIAssistantsApiToolChoiceOption? = nil,
+    tools: [OpenAICreateRunRequestToolsItem]? = nil,
     topP: Double? = nil,
-    truncationStrategy: HyperProxyJSONValue? = nil
+    truncationStrategy: OpenAITruncationObject? = nil
   ) {
     self.additionalInstructions = additionalInstructions
     self.additionalMessages = additionalMessages

@@ -16,7 +16,7 @@ public struct FireworksNewLogProbsContent: Codable, Sendable {
   public var logprob: Double
   public var routingMatrix: String?
   public var samplingLogprob: Double?
-  public var samplingMask: HyperProxyJSONValue?
+  public var samplingMask: FireworksNewLogProbsContentSamplingMask?
   public var samplingMaskCount: Int?
   public var textOffset: Int
   public var token: String
@@ -32,7 +32,7 @@ public struct FireworksNewLogProbsContent: Codable, Sendable {
     tokenId: Int,
     lastActivation: String? = nil,
     routingMatrix: String? = nil,
-    samplingMask: HyperProxyJSONValue? = nil,
+    samplingMask: FireworksNewLogProbsContentSamplingMask? = nil,
     samplingMaskCount: Int? = nil,
     topLogprobs: [FireworksNewLogProbsContentTopLogProbs]? = nil
   ) {

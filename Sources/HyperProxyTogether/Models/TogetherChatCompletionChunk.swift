@@ -15,9 +15,9 @@ public struct TogetherChatCompletionChunk: Codable, Sendable {
   public var created: Int
   public var id: String
   public var model: String
-  public var object: HyperProxyJSONValue
+  public var object: TogetherChatCompletionChunkObject
   public var systemFingerprint: String?
-  public var usage: HyperProxyJSONValue?
+  public var usage: TogetherUsageData?
   public var warnings: [TogetherInferenceWarning]?
 
   public init(
@@ -25,9 +25,9 @@ public struct TogetherChatCompletionChunk: Codable, Sendable {
     created: Int,
     id: String,
     model: String,
-    object: HyperProxyJSONValue,
+    object: TogetherChatCompletionChunkObject = .chatCompletionChunk,
     systemFingerprint: String? = nil,
-    usage: HyperProxyJSONValue? = nil,
+    usage: TogetherUsageData? = nil,
     warnings: [TogetherInferenceWarning]? = nil
   ) {
     self.choices = choices

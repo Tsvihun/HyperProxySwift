@@ -12,26 +12,26 @@ import HyperProxyCore
 
 public struct AnthropicBetaEnvironment: Codable, Sendable {
   public var archivedAt: String?
-  public var config: HyperProxyJSONValue
+  public var config: AnthropicBetaEnvironmentConfig
   public var createdAt: String
   public var description: String?
   public var id: String
   public var metadata: [String: String]
   public var name: String
   public var scope: AnthropicBetaEnvironmentScope?
-  public var typeModel: String
+  public var kind: AnthropicEnvironmentKind
   public var updatedAt: String
 
   public init(
     archivedAt: String?,
-    config: HyperProxyJSONValue,
+    config: AnthropicBetaEnvironmentConfig,
     createdAt: String,
     description: String?,
     id: String,
     metadata: [String: String],
     name: String,
-    typeModel: String,
     updatedAt: String,
+    kind: AnthropicEnvironmentKind = .environment,
     scope: AnthropicBetaEnvironmentScope? = nil
   ) {
     self.archivedAt = archivedAt
@@ -42,7 +42,7 @@ public struct AnthropicBetaEnvironment: Codable, Sendable {
     self.metadata = metadata
     self.name = name
     self.scope = scope
-    self.typeModel = typeModel
+    self.kind = kind
     self.updatedAt = updatedAt
   }
 
@@ -55,7 +55,7 @@ public struct AnthropicBetaEnvironment: Codable, Sendable {
     case metadata
     case name
     case scope
-    case typeModel = "type"
+    case kind = "type"
     case updatedAt = "updated_at"
   }
 }

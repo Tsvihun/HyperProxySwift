@@ -17,8 +17,8 @@ public struct OpenAIImageEditPartialImageEvent: Codable, Sendable {
   public var outputFormat: OpenAIImageEditPartialImageEventOutputFormat
   public var partialImageIndex: Int
   public var quality: OpenAIImageEditPartialImageEventQuality
-  public var size: HyperProxyJSONValue
-  public var typeModel: OpenAIImageEditPartialImageEventTypeModel
+  public var size: OpenAIImageEditPartialImageEventSize
+  public var kind: OpenAIImageEditPartialImageEventKind
 
   public init(
     b64Json: String,
@@ -27,8 +27,8 @@ public struct OpenAIImageEditPartialImageEvent: Codable, Sendable {
     outputFormat: OpenAIImageEditPartialImageEventOutputFormat,
     partialImageIndex: Int,
     quality: OpenAIImageEditPartialImageEventQuality,
-    size: HyperProxyJSONValue,
-    typeModel: OpenAIImageEditPartialImageEventTypeModel
+    size: OpenAIImageEditPartialImageEventSize,
+    kind: OpenAIImageEditPartialImageEventKind
   ) {
     self.b64Json = b64Json
     self.background = background
@@ -37,7 +37,7 @@ public struct OpenAIImageEditPartialImageEvent: Codable, Sendable {
     self.partialImageIndex = partialImageIndex
     self.quality = quality
     self.size = size
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct OpenAIImageEditPartialImageEvent: Codable, Sendable {
     case partialImageIndex = "partial_image_index"
     case quality
     case size
-    case typeModel = "type"
+    case kind = "type"
   }
 }

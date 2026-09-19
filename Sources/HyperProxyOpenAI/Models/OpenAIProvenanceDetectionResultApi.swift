@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIProvenanceDetectionResultApi: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let detected = Self(rawValue: "detected")
-  public static let notDetected = Self(rawValue: "not_detected")
+public enum OpenAIProvenanceDetectionResultApi: String, Codable, Hashable, Sendable {
+  case detected = "detected"
+  case notDetected = "not_detected"
 }

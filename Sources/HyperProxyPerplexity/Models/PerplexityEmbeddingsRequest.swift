@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct PerplexityEmbeddingsRequest: Codable, Sendable {
   public var dimensions: Int?
   public var encodingFormat: PerplexityEmbeddingsRequestEncodingFormat?
-  public var input: HyperProxyJSONValue
+  public var input: PerplexityEmbeddingsRequestInput
   public var model: PerplexityEmbeddingsRequestModel
 
   public init(
-    input: HyperProxyJSONValue,
+    input: PerplexityEmbeddingsRequestInput,
     model: PerplexityEmbeddingsRequestModel,
     dimensions: Int? = nil,
     encodingFormat: PerplexityEmbeddingsRequestEncodingFormat? = nil

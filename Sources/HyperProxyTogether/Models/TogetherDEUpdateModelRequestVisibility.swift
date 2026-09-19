@@ -10,14 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherDEUpdateModelRequestVisibility: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let vISIBILITYPRIVATE = Self(rawValue: "VISIBILITY_PRIVATE")
-  public static let vISIBILITYINTERNAL = Self(rawValue: "VISIBILITY_INTERNAL")
+public enum TogetherDEUpdateModelRequestVisibility: String, Codable, Hashable, Sendable {
+  case vISIBILITYPRIVATE = "VISIBILITY_PRIVATE"
+  case vISIBILITYINTERNAL = "VISIBILITY_INTERNAL"
 }

@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIApplyPatchCallStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let inProgress = Self(rawValue: "in_progress")
-  public static let completed = Self(rawValue: "completed")
+public enum OpenAIApplyPatchCallStatus: String, Codable, Hashable, Sendable {
+  case inProgress = "in_progress"
+  case completed = "completed"
 }

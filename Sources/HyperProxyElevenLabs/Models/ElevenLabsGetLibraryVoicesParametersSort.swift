@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsGetLibraryVoicesParametersSort: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let createdDate = Self(rawValue: "created_date")
-  public static let usageCharacterCount1y = Self(rawValue: "usage_character_count_1y")
-  public static let trending = Self(rawValue: "trending")
-  public static let clonedByCount = Self(rawValue: "cloned_by_count")
+public enum ElevenLabsGetLibraryVoicesParametersSort: String, Codable, Hashable, Sendable {
+  case createdDate = "created_date"
+  case usageCharacterCount1y = "usage_character_count_1y"
+  case trending = "trending"
+  case clonedByCount = "cloned_by_count"
 }

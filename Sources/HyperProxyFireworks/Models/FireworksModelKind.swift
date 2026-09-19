@@ -10,22 +10,16 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksModelKind: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let kINDUNSPECIFIED = Self(rawValue: "KIND_UNSPECIFIED")
-  public static let hFBASEMODEL = Self(rawValue: "HF_BASE_MODEL")
-  public static let hFPEFTADDON = Self(rawValue: "HF_PEFT_ADDON")
-  public static let hFTEFTADDON = Self(rawValue: "HF_TEFT_ADDON")
-  public static let fLUMINABASEMODEL = Self(rawValue: "FLUMINA_BASE_MODEL")
-  public static let fLUMINAADDON = Self(rawValue: "FLUMINA_ADDON")
-  public static let dRAFTADDON = Self(rawValue: "DRAFT_ADDON")
-  public static let lIVEMERGE = Self(rawValue: "LIVE_MERGE")
-  public static let cUSTOMMODEL = Self(rawValue: "CUSTOM_MODEL")
-  public static let eMBEDDINGMODEL = Self(rawValue: "EMBEDDING_MODEL")
-  public static let sNAPSHOTMODEL = Self(rawValue: "SNAPSHOT_MODEL")
+public enum FireworksModelKind: String, Codable, Hashable, Sendable {
+  case kINDUNSPECIFIED = "KIND_UNSPECIFIED"
+  case hFBASEMODEL = "HF_BASE_MODEL"
+  case hFPEFTADDON = "HF_PEFT_ADDON"
+  case hFTEFTADDON = "HF_TEFT_ADDON"
+  case fLUMINABASEMODEL = "FLUMINA_BASE_MODEL"
+  case fLUMINAADDON = "FLUMINA_ADDON"
+  case dRAFTADDON = "DRAFT_ADDON"
+  case lIVEMERGE = "LIVE_MERGE"
+  case cUSTOMMODEL = "CUSTOM_MODEL"
+  case eMBEDDINGMODEL = "EMBEDDING_MODEL"
+  case sNAPSHOTMODEL = "SNAPSHOT_MODEL"
 }

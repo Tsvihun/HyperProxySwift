@@ -10,17 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsDubbingProjectResponseStatus: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let queued = Self(rawValue: "queued")
-  public static let preparing = Self(rawValue: "preparing")
-  public static let processing = Self(rawValue: "processing")
-  public static let ready = Self(rawValue: "ready")
-  public static let failed = Self(rawValue: "failed")
+public enum ElevenLabsDubbingProjectResponseStatus: String, Codable, Hashable, Sendable {
+  case queued = "queued"
+  case preparing = "preparing"
+  case processing = "processing"
+  case ready = "ready"
+  case failed = "failed"
 }

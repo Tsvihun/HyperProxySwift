@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherFineTuneCheckpointCheckpoint: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let model = Self(rawValue: "model")
-  public static let adapter = Self(rawValue: "adapter")
+public enum TogetherFineTuneCheckpointCheckpoint: String, Codable, Hashable, Sendable {
+  case model = "model"
+  case adapter = "adapter"
 }

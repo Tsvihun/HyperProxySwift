@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherVideoFrameImageInput: Codable, Sendable {
-  public var frame: HyperProxyJSONValue?
+  public var frame: TogetherVideoFrameImageInputFrame?
   public var inputImage: String
 
   public init(
     inputImage: String,
-    frame: HyperProxyJSONValue? = nil
+    frame: TogetherVideoFrameImageInputFrame? = nil
   ) {
     self.frame = frame
     self.inputImage = inputImage

@@ -17,7 +17,7 @@ public struct OpenAIPublicEnvironmentResource: Codable, Sendable {
   public var plugins: [OpenAIHostedPluginResource]
   public var skills: [OpenAIHostedSkillResource]
   public var status: OpenAIEnvironmentStatusResource
-  public var typeModel: OpenAIEnvironmentTypeResource
+  public var kind: OpenAIEnvironmentTypeResource
 
   public init(
     files: [OpenAIHostedEnvironmentFileResource],
@@ -26,7 +26,7 @@ public struct OpenAIPublicEnvironmentResource: Codable, Sendable {
     plugins: [OpenAIHostedPluginResource],
     skills: [OpenAIHostedSkillResource],
     status: OpenAIEnvironmentStatusResource,
-    typeModel: OpenAIEnvironmentTypeResource
+    kind: OpenAIEnvironmentTypeResource
   ) {
     self.files = files
     self.id = id
@@ -34,7 +34,7 @@ public struct OpenAIPublicEnvironmentResource: Codable, Sendable {
     self.plugins = plugins
     self.skills = skills
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenAIPublicEnvironmentResource: Codable, Sendable {
     case plugins
     case skills
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

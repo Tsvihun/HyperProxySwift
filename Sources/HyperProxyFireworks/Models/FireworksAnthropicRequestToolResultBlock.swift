@@ -12,23 +12,23 @@ import HyperProxyCore
 
 public struct FireworksAnthropicRequestToolResultBlock: Codable, Sendable {
   public var cacheControl: FireworksAnthropicCacheControlEphemeral?
-  public var content: HyperProxyJSONValue?
+  public var content: FireworksAnthropicRequestToolResultBlockContent?
   public var isError: Bool?
   public var toolUseId: String
-  public var typeModel: String
+  public var kind: FireworksToolResultKind
 
   public init(
     toolUseId: String,
-    typeModel: String,
+    kind: FireworksToolResultKind = .toolResult,
     cacheControl: FireworksAnthropicCacheControlEphemeral? = nil,
-    content: HyperProxyJSONValue? = nil,
+    content: FireworksAnthropicRequestToolResultBlockContent? = nil,
     isError: Bool? = nil
   ) {
     self.cacheControl = cacheControl
     self.content = content
     self.isError = isError
     self.toolUseId = toolUseId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct FireworksAnthropicRequestToolResultBlock: Codable, Sendable {
     case content
     case isError = "is_error"
     case toolUseId = "tool_use_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

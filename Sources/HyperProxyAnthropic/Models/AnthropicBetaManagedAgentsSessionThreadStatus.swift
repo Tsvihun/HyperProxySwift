@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaManagedAgentsSessionThreadStatus: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let running = Self(rawValue: "running")
-  public static let idle = Self(rawValue: "idle")
-  public static let rescheduling = Self(rawValue: "rescheduling")
-  public static let terminated = Self(rawValue: "terminated")
+public enum AnthropicBetaManagedAgentsSessionThreadStatus: String, Codable, Hashable, Sendable {
+  case running = "running"
+  case idle = "idle"
+  case rescheduling = "rescheduling"
+  case terminated = "terminated"
 }

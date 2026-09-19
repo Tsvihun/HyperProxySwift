@@ -16,7 +16,7 @@ public struct ElevenLabsConversationHistoryTranscriptToolCallApiIntegrationWebho
   public var credentialId: String?
   public var integrationConnectionId: String?
   public var integrationId: String?
-  public var typeModel: String?
+  public var kind: ElevenLabsApiIntegrationWebhookKind?
   public var webhookDetails: ElevenLabsConversationHistoryTranscriptToolCallWebhookDetails
 
   public init(
@@ -24,12 +24,12 @@ public struct ElevenLabsConversationHistoryTranscriptToolCallApiIntegrationWebho
     credentialId: String? = nil,
     integrationConnectionId: String? = nil,
     integrationId: String? = nil,
-    typeModel: String? = nil
+    kind: ElevenLabsApiIntegrationWebhookKind? = nil
   ) {
     self.credentialId = credentialId
     self.integrationConnectionId = integrationConnectionId
     self.integrationId = integrationId
-    self.typeModel = typeModel
+    self.kind = kind
     self.webhookDetails = webhookDetails
   }
 
@@ -37,7 +37,7 @@ public struct ElevenLabsConversationHistoryTranscriptToolCallApiIntegrationWebho
     case credentialId = "credential_id"
     case integrationConnectionId = "integration_connection_id"
     case integrationId = "integration_id"
-    case typeModel = "type"
+    case kind = "type"
     case webhookDetails = "webhook_details"
   }
 }

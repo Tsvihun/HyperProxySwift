@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralEncodedPayloadOptions: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let offloaded = Self(rawValue: "offloaded")
-  public static let encrypted = Self(rawValue: "encrypted")
-  public static let encryptedPartial = Self(rawValue: "encrypted-partial")
-  public static let compressed = Self(rawValue: "compressed")
+public enum MistralEncodedPayloadOptions: String, Codable, Hashable, Sendable {
+  case offloaded = "offloaded"
+  case encrypted = "encrypted"
+  case encryptedPartial = "encrypted-partial"
+  case compressed = "compressed"
 }

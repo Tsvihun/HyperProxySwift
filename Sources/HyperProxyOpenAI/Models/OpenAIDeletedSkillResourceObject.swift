@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIDeletedSkillResourceObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let skillDeleted = Self(rawValue: "skill.deleted")
+public enum OpenAIDeletedSkillResourceObject: String, Codable, Hashable, Sendable {
+  case skillDeleted = "skill.deleted"
 }

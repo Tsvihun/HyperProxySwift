@@ -16,14 +16,14 @@ public struct OpenAIOutputMessage: Codable, Sendable {
   public var phase: OpenAIMessagePhase?
   public var role: OpenAIOutputMessageRole
   public var status: OpenAIOutputMessageStatus
-  public var typeModel: OpenAIOutputMessageTypeModel
+  public var kind: OpenAIOutputMessageKind
 
   public init(
     content: [OpenAIOutputMessageContent],
     id: String,
     role: OpenAIOutputMessageRole,
     status: OpenAIOutputMessageStatus,
-    typeModel: OpenAIOutputMessageTypeModel,
+    kind: OpenAIOutputMessageKind,
     phase: OpenAIMessagePhase? = nil
   ) {
     self.content = content
@@ -31,7 +31,7 @@ public struct OpenAIOutputMessage: Codable, Sendable {
     self.phase = phase
     self.role = role
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIOutputMessage: Codable, Sendable {
     case phase
     case role
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

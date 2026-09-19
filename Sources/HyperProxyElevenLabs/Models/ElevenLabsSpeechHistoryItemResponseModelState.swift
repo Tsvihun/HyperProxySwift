@@ -10,16 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsSpeechHistoryItemResponseModelState: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let created = Self(rawValue: "created")
-  public static let deleted = Self(rawValue: "deleted")
-  public static let processing = Self(rawValue: "processing")
+public enum ElevenLabsSpeechHistoryItemResponseModelState: String, Codable, Hashable, Sendable {
+  case created = "created"
+  case deleted = "deleted"
+  case processing = "processing"
 }

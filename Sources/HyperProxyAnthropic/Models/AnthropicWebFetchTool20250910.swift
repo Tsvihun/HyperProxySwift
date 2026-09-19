@@ -19,13 +19,13 @@ public struct AnthropicWebFetchTool20250910: Codable, Sendable {
   public var deferLoading: Bool?
   public var maxContentTokens: Int?
   public var maxUses: Int?
-  public var name: String
+  public var name: AnthropicWebFetchName
   public var strict: Bool?
-  public var typeModel: String
+  public var kind: AnthropicWebFetch20250910Kind
 
   public init(
-    name: String,
-    typeModel: String,
+    name: AnthropicWebFetchName = .webFetch,
+    kind: AnthropicWebFetch20250910Kind = .webFetch20250910,
     allowedCallers: [AnthropicAllowedCaller]? = nil,
     allowedDomains: [String]? = nil,
     blockedDomains: [String]? = nil,
@@ -46,7 +46,7 @@ public struct AnthropicWebFetchTool20250910: Codable, Sendable {
     self.maxUses = maxUses
     self.name = name
     self.strict = strict
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -60,6 +60,6 @@ public struct AnthropicWebFetchTool20250910: Codable, Sendable {
     case maxUses = "max_uses"
     case name
     case strict
-    case typeModel = "type"
+    case kind = "type"
   }
 }

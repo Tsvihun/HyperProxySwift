@@ -15,20 +15,20 @@ public struct OpenRouterLocalShellCallItem: Codable, Sendable {
   public var callId: String
   public var id: String
   public var status: OpenRouterToolCallStatus
-  public var typeModel: OpenRouterLocalShellCallItemTypeModel
+  public var kind: OpenRouterLocalShellCallItemKind
 
   public init(
     action: OpenRouterLocalShellCallItemAction,
     callId: String,
     id: String,
     status: OpenRouterToolCallStatus,
-    typeModel: OpenRouterLocalShellCallItemTypeModel
+    kind: OpenRouterLocalShellCallItemKind
   ) {
     self.action = action
     self.callId = callId
     self.id = id
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenRouterLocalShellCallItem: Codable, Sendable {
     case callId = "call_id"
     case id
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

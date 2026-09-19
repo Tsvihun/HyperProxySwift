@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepLAdminDeactivateDeveloperKeyRequest: Codable, Sendable {
-  public var keyId: DeepLApiKeyId
+  public var keyId: String
 
   public init(
-    keyId: DeepLApiKeyId
+    keyId: String
   ) {
     self.keyId = keyId
   }

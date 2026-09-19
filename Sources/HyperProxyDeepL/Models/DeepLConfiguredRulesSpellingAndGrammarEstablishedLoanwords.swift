@@ -10,16 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesSpellingAndGrammarEstablishedLoanwords: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesSpellingAndGrammarEstablishedLoanwords: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useAsIs = Self(rawValue: "use_as_is")
-  public static let useNativeOrSinoKoreanEquivalents = Self(
-    rawValue: "use_native_or_sino_korean_equivalents")
+  case useAsIs = "use_as_is"
+  case useNativeOrSinoKoreanEquivalents = "use_native_or_sino_korean_equivalents"
 }

@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesStyleAndToneCountryNames: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useLongForm = Self(rawValue: "use_long_form")
-  public static let useShortForm = Self(rawValue: "use_short_form")
+public enum DeepLConfiguredRulesStyleAndToneCountryNames: String, Codable, Hashable, Sendable {
+  case useLongForm = "use_long_form"
+  case useShortForm = "use_short_form"
 }

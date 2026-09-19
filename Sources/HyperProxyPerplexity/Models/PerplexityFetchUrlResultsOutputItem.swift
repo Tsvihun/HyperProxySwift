@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct PerplexityFetchUrlResultsOutputItem: Codable, Sendable {
   public var contents: [PerplexityUrlContent]
-  public var typeModel: PerplexityFetchUrlResultsOutputItemTypeModel
+  public var kind: PerplexityFetchUrlResultsOutputItemKind
 
   public init(
     contents: [PerplexityUrlContent],
-    typeModel: PerplexityFetchUrlResultsOutputItemTypeModel
+    kind: PerplexityFetchUrlResultsOutputItemKind
   ) {
     self.contents = contents
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case contents
-    case typeModel = "type"
+    case kind = "type"
   }
 }

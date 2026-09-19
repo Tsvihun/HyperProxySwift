@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaManagedAgentsEventDeltaType: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let agentMessage = Self(rawValue: "agent.message")
-  public static let agentThinking = Self(rawValue: "agent.thinking")
+public enum AnthropicBetaManagedAgentsEventDeltaType: String, Codable, Hashable, Sendable {
+  case agentMessage = "agent.message"
+  case agentThinking = "agent.thinking"
 }

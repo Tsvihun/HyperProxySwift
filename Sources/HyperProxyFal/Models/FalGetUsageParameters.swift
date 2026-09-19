@@ -11,28 +11,28 @@ import Foundation
 import HyperProxyCore
 
 public struct FalGetUsageParameters: Codable, Sendable {
-  public var apiKeyId: HyperProxyJSONValue?
+  public var apiKeyId: FalGetUsageParametersApiKeyId?
   public var boundToTimeframe: FalGetUsageParametersBoundToTimeframe?
   public var cursor: String?
-  public var end: String?
-  public var endpointId: HyperProxyJSONValue?
-  public var expand: HyperProxyJSONValue?
+  public var end: FalGetUsageParametersEnd?
+  public var endpointId: FalGetUsageParametersEndpointId?
+  public var expand: FalGetUsageParametersExpand?
   public var limit: Int?
-  public var loginUsername: HyperProxyJSONValue?
-  public var start: String?
+  public var loginUsername: FalGetUsageParametersLoginUsername?
+  public var start: FalGetUsageParametersStart?
   public var timeframe: FalGetUsageParametersTimeframe?
   public var timezone: String?
 
   public init(
-    apiKeyId: HyperProxyJSONValue? = nil,
+    apiKeyId: FalGetUsageParametersApiKeyId? = nil,
     boundToTimeframe: FalGetUsageParametersBoundToTimeframe? = nil,
     cursor: String? = nil,
-    end: String? = nil,
-    endpointId: HyperProxyJSONValue? = nil,
-    expand: HyperProxyJSONValue? = nil,
+    end: FalGetUsageParametersEnd? = nil,
+    endpointId: FalGetUsageParametersEndpointId? = nil,
+    expand: FalGetUsageParametersExpand? = nil,
     limit: Int? = nil,
-    loginUsername: HyperProxyJSONValue? = nil,
-    start: String? = nil,
+    loginUsername: FalGetUsageParametersLoginUsername? = nil,
+    start: FalGetUsageParametersStart? = nil,
     timeframe: FalGetUsageParametersTimeframe? = nil,
     timezone: String? = nil
   ) {

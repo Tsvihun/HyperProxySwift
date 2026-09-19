@@ -11,23 +11,23 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterFileSearchServerTool: Codable, Sendable {
-  public var filters: HyperProxyJSONValue?
+  public var filters: OpenRouterFileSearchServerToolFilters?
   public var maxNumResults: Int?
   public var rankingOptions: OpenRouterFileSearchServerToolRankingOptions?
-  public var typeModel: OpenRouterFileSearchServerToolTypeModel
+  public var kind: OpenRouterFileSearchServerToolKind
   public var vectorStoreIds: [String]
 
   public init(
-    typeModel: OpenRouterFileSearchServerToolTypeModel,
+    kind: OpenRouterFileSearchServerToolKind,
     vectorStoreIds: [String],
-    filters: HyperProxyJSONValue? = nil,
+    filters: OpenRouterFileSearchServerToolFilters? = nil,
     maxNumResults: Int? = nil,
     rankingOptions: OpenRouterFileSearchServerToolRankingOptions? = nil
   ) {
     self.filters = filters
     self.maxNumResults = maxNumResults
     self.rankingOptions = rankingOptions
-    self.typeModel = typeModel
+    self.kind = kind
     self.vectorStoreIds = vectorStoreIds
   }
 
@@ -35,7 +35,7 @@ public struct OpenRouterFileSearchServerTool: Codable, Sendable {
     case filters
     case maxNumResults = "max_num_results"
     case rankingOptions = "ranking_options"
-    case typeModel = "type"
+    case kind = "type"
     case vectorStoreIds = "vector_store_ids"
   }
 }

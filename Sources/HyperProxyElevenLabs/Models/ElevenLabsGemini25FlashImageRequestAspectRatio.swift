@@ -10,24 +10,16 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsGemini25FlashImageRequestAspectRatio: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
-  public static let value11 = Self(rawValue: "1:1")
-  public static let value23 = Self(rawValue: "2:3")
-  public static let value32 = Self(rawValue: "3:2")
-  public static let value34 = Self(rawValue: "3:4")
-  public static let value43 = Self(rawValue: "4:3")
-  public static let value45 = Self(rawValue: "4:5")
-  public static let value54 = Self(rawValue: "5:4")
-  public static let value916 = Self(rawValue: "9:16")
-  public static let value169 = Self(rawValue: "16:9")
-  public static let value219 = Self(rawValue: "21:9")
+public enum ElevenLabsGemini25FlashImageRequestAspectRatio: String, Codable, Hashable, Sendable {
+  case auto = "auto"
+  case value11 = "1:1"
+  case value23 = "2:3"
+  case value32 = "3:2"
+  case value34 = "3:4"
+  case value43 = "4:3"
+  case value45 = "4:5"
+  case value54 = "5:4"
+  case value916 = "9:16"
+  case value169 = "16:9"
+  case value219 = "21:9"
 }

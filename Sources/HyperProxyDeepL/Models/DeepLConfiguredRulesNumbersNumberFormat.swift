@@ -10,18 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesNumbersNumberFormat: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static
-    let useHalfWidthCommaToSeparateLargeNumbersIntoUnitsOfThreeExceptForCalendarYearsAndUseHalfWidthPeriodAsDecimalSeparator =
-    Self(
-      rawValue:
-        "use_half_width_comma_to_separate_large_numbers_into_units_of_three_except_for_calendar_years_and_use_half_width_period_as_decimal_separator"
-    )
+public enum DeepLConfiguredRulesNumbersNumberFormat: String, Codable, Hashable, Sendable {
+  case
+    useHalfWidthCommaToSeparateLargeNumbersIntoUnitsOfThreeExceptForCalendarYearsAndUseHalfWidthPeriodAsDecimalSeparator =
+    "use_half_width_comma_to_separate_large_numbers_into_units_of_three_except_for_calendar_years_and_use_half_width_period_as_decimal_separator"
 }

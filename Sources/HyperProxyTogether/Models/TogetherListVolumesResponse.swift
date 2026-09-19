@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct TogetherListVolumesResponse: Codable, Sendable {
   public var data: [TogetherVolumeResponseItem]?
-  public var object: HyperProxyJSONValue?
+  public var object: TogetherListObject1dee9a01?
 
   public init(
     data: [TogetherVolumeResponseItem]? = nil,
-    object: HyperProxyJSONValue? = nil
+    object: TogetherListObject1dee9a01? = nil
   ) {
     self.data = data
     self.object = object

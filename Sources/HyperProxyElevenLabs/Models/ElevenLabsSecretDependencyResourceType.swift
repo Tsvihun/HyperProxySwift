@@ -10,15 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsSecretDependencyResourceType: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let tools = Self(rawValue: "tools")
-  public static let agents = Self(rawValue: "agents")
-  public static let phoneNumbers = Self(rawValue: "phone_numbers")
+public enum ElevenLabsSecretDependencyResourceType: String, Codable, Hashable, Sendable {
+  case tools = "tools"
+  case agents = "agents"
+  case phoneNumbers = "phone_numbers"
 }

@@ -10,4 +10,17 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIDownloadLiveRecordingResponse = String
+public struct OpenAIDownloadLiveRecordingResponse: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+}
+
+extension OpenAIDownloadLiveRecordingResponse: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self.init(rawValue: value)
+  }
+}

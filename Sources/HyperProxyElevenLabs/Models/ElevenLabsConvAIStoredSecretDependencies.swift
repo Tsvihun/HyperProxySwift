@@ -11,21 +11,21 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsConvAIStoredSecretDependencies: Codable, Sendable {
-  public var agents: [HyperProxyJSONValue]
+  public var agents: [ElevenLabsConvAIStoredSecretDependenciesAgentsItem]
   public var agentsHasMore: Bool?
-  public var mcpServers: [HyperProxyJSONValue]?
+  public var mcpServers: [ElevenLabsConvAIStoredSecretDependenciesMcpServersItem]?
   public var others: [ElevenLabsSecretDependencyType]
   public var phoneNumbers: [ElevenLabsDependentPhoneNumberIdentifier]?
   public var phoneNumbersHasMore: Bool?
-  public var tools: [HyperProxyJSONValue]
+  public var tools: [ElevenLabsConvAIStoredSecretDependenciesToolsItem]
   public var toolsHasMore: Bool?
 
   public init(
-    agents: [HyperProxyJSONValue],
+    agents: [ElevenLabsConvAIStoredSecretDependenciesAgentsItem],
     others: [ElevenLabsSecretDependencyType],
-    tools: [HyperProxyJSONValue],
+    tools: [ElevenLabsConvAIStoredSecretDependenciesToolsItem],
     agentsHasMore: Bool? = nil,
-    mcpServers: [HyperProxyJSONValue]? = nil,
+    mcpServers: [ElevenLabsConvAIStoredSecretDependenciesMcpServersItem]? = nil,
     phoneNumbers: [ElevenLabsDependentPhoneNumberIdentifier]? = nil,
     phoneNumbersHasMore: Bool? = nil,
     toolsHasMore: Bool? = nil

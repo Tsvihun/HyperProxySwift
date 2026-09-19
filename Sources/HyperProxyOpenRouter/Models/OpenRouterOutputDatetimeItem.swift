@@ -15,20 +15,20 @@ public struct OpenRouterOutputDatetimeItem: Codable, Sendable {
   public var id: String?
   public var status: OpenRouterToolCallStatus
   public var timezone: String
-  public var typeModel: OpenRouterOutputDatetimeItemTypeModel
+  public var kind: OpenRouterOutputDatetimeItemKind
 
   public init(
     datetime: String,
     status: OpenRouterToolCallStatus,
     timezone: String,
-    typeModel: OpenRouterOutputDatetimeItemTypeModel,
+    kind: OpenRouterOutputDatetimeItemKind,
     id: String? = nil
   ) {
     self.datetime = datetime
     self.id = id
     self.status = status
     self.timezone = timezone
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenRouterOutputDatetimeItem: Codable, Sendable {
     case id
     case status
     case timezone
-    case typeModel = "type"
+    case kind = "type"
   }
 }

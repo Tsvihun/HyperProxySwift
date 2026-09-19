@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIChatSessionResourceObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let chatkitSession = Self(rawValue: "chatkit.session")
+public enum OpenAIChatSessionResourceObject: String, Codable, Hashable, Sendable {
+  case chatkitSession = "chatkit.session"
 }

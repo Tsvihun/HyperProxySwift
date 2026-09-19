@@ -14,24 +14,24 @@ public struct AnthropicBetaManagedAgentsCustomTool: Codable, Sendable {
   public var description: String
   public var inputSchema: AnthropicBetaManagedAgentsCustomToolInputSchema
   public var name: String
-  public var typeModel: AnthropicBetaManagedAgentsCustomToolTypeModel
+  public var kind: AnthropicBetaManagedAgentsCustomToolKind
 
   public init(
     description: String,
     inputSchema: AnthropicBetaManagedAgentsCustomToolInputSchema,
     name: String,
-    typeModel: AnthropicBetaManagedAgentsCustomToolTypeModel
+    kind: AnthropicBetaManagedAgentsCustomToolKind
   ) {
     self.description = description
     self.inputSchema = inputSchema
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case description
     case inputSchema = "input_schema"
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

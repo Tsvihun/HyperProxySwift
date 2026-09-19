@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterUnifiedBenchmarksResponse: Codable, Sendable {
-  public var data: [HyperProxyJSONValue]
+  public var data: [OpenRouterUnifiedBenchmarksResponseDataItem]
   public var meta: OpenRouterUnifiedBenchmarksMeta
 
   public init(
-    data: [HyperProxyJSONValue],
+    data: [OpenRouterUnifiedBenchmarksResponseDataItem],
     meta: OpenRouterUnifiedBenchmarksMeta
   ) {
     self.data = data

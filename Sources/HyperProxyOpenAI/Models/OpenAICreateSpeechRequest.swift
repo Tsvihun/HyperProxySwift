@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct OpenAICreateSpeechRequest: Codable, Sendable {
   public var input: String
   public var instructions: String?
-  public var model: HyperProxyJSONValue
+  public var model: OpenAICreateSpeechRequestModel
   public var responseFormat: OpenAICreateSpeechRequestResponseFormat?
   public var speed: Double?
   public var streamFormat: OpenAICreateSpeechRequestStreamFormat?
@@ -21,7 +21,7 @@ public struct OpenAICreateSpeechRequest: Codable, Sendable {
 
   public init(
     input: String,
-    model: HyperProxyJSONValue,
+    model: OpenAICreateSpeechRequestModel,
     voice: OpenAIVoiceIdsOrCustomVoice,
     instructions: String? = nil,
     responseFormat: OpenAICreateSpeechRequestResponseFormat? = nil,

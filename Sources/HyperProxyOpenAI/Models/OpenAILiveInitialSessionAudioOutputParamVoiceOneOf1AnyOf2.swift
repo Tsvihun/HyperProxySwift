@@ -10,35 +10,29 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAILiveInitialSessionAudioOutputParamVoiceOneOf1AnyOf2: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum OpenAILiveInitialSessionAudioOutputParamVoiceOneOf1AnyOf2: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let alloy = Self(rawValue: "alloy")
-  public static let ash = Self(rawValue: "ash")
-  public static let ballad = Self(rawValue: "ballad")
-  public static let beacon = Self(rawValue: "beacon")
-  public static let bossa = Self(rawValue: "bossa")
-  public static let cedar = Self(rawValue: "cedar")
-  public static let cinder = Self(rawValue: "cinder")
-  public static let coral = Self(rawValue: "coral")
-  public static let delta = Self(rawValue: "delta")
-  public static let echo = Self(rawValue: "echo")
-  public static let gleam = Self(rawValue: "gleam")
-  public static let marin = Self(rawValue: "marin")
-  public static let meridian = Self(rawValue: "meridian")
-  public static let quartz = Self(rawValue: "quartz")
-  public static let ripple = Self(rawValue: "ripple")
-  public static let sage = Self(rawValue: "sage")
-  public static let shimmer = Self(rawValue: "shimmer")
-  public static let stone = Self(rawValue: "stone")
-  public static let tempo = Self(rawValue: "tempo")
-  public static let verse = Self(rawValue: "verse")
-  public static let vesper = Self(rawValue: "vesper")
-  public static let willow = Self(rawValue: "willow")
+  case alloy = "alloy"
+  case ash = "ash"
+  case ballad = "ballad"
+  case beacon = "beacon"
+  case bossa = "bossa"
+  case cedar = "cedar"
+  case cinder = "cinder"
+  case coral = "coral"
+  case delta = "delta"
+  case echo = "echo"
+  case gleam = "gleam"
+  case marin = "marin"
+  case meridian = "meridian"
+  case quartz = "quartz"
+  case ripple = "ripple"
+  case sage = "sage"
+  case shimmer = "shimmer"
+  case stone = "stone"
+  case tempo = "tempo"
+  case verse = "verse"
+  case vesper = "vesper"
+  case willow = "willow"
 }

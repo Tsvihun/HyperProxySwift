@@ -18,12 +18,12 @@ public struct AnthropicBetaFederationIssuer: Codable, Sendable {
   public var createdByActorId: String?
   public var id: String
   public var issuerUrl: String
-  public var jwks: HyperProxyJSONValue
+  public var jwks: AnthropicBetaFederationIssuerJwks
   public var jwksPollingDisabledAt: String?
   public var maxJwtLifetimeSeconds: Int
   public var name: String
   public var pollStatus: AnthropicBetaIssuerPollStatus?
-  public var typeModel: String
+  public var kind: AnthropicFederationIssuerKind
   public var updatedAt: String
   public var updatedByActorId: String?
 
@@ -35,14 +35,14 @@ public struct AnthropicBetaFederationIssuer: Codable, Sendable {
     createdByActorId: String?,
     id: String,
     issuerUrl: String,
-    jwks: HyperProxyJSONValue,
+    jwks: AnthropicBetaFederationIssuerJwks,
     jwksPollingDisabledAt: String?,
     maxJwtLifetimeSeconds: Int,
     name: String,
     pollStatus: AnthropicBetaIssuerPollStatus?,
-    typeModel: String,
     updatedAt: String,
-    updatedByActorId: String?
+    updatedByActorId: String?,
+    kind: AnthropicFederationIssuerKind = .federationIssuer
   ) {
     self.archivedAt = archivedAt
     self.archivedByActorId = archivedByActorId
@@ -56,7 +56,7 @@ public struct AnthropicBetaFederationIssuer: Codable, Sendable {
     self.maxJwtLifetimeSeconds = maxJwtLifetimeSeconds
     self.name = name
     self.pollStatus = pollStatus
-    self.typeModel = typeModel
+    self.kind = kind
     self.updatedAt = updatedAt
     self.updatedByActorId = updatedByActorId
   }
@@ -74,7 +74,7 @@ public struct AnthropicBetaFederationIssuer: Codable, Sendable {
     case maxJwtLifetimeSeconds = "max_jwt_lifetime_seconds"
     case name
     case pollStatus = "poll_status"
-    case typeModel = "type"
+    case kind = "type"
     case updatedAt = "updated_at"
     case updatedByActorId = "updated_by_actor_id"
   }

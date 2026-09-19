@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterObservabilityWebhookDestinationConfigMethod: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum OpenRouterObservabilityWebhookDestinationConfigMethod: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let pOST = Self(rawValue: "POST")
-  public static let pUT = Self(rawValue: "PUT")
+  case pOST = "POST"
+  case pUT = "PUT"
 }

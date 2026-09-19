@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct StabilityGetV2betaResultsIdResponse202JSONStatus: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let inProgress = Self(rawValue: "in-progress")
+public enum StabilityGetV2betaResultsIdResponse202JSONStatus: String, Codable, Hashable, Sendable {
+  case inProgress = "in-progress"
 }

@@ -11,22 +11,22 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaDeleteWorkspaceMemberResponse: Codable, Sendable {
-  public var typeModel: String
+  public var kind: AnthropicWorkspaceMemberDeletedKind
   public var userId: String
   public var workspaceId: String
 
   public init(
-    typeModel: String,
     userId: String,
-    workspaceId: String
+    workspaceId: String,
+    kind: AnthropicWorkspaceMemberDeletedKind = .workspaceMemberDeleted
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
     self.userId = userId
     self.workspaceId = workspaceId
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
     case userId = "user_id"
     case workspaceId = "workspace_id"
   }

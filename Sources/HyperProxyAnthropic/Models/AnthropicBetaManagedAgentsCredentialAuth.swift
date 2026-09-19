@@ -10,7 +10,35 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaManagedAgentsCredentialAuth: Codable, Sendable {
+public enum AnthropicBetaManagedAgentsCredentialAuth: Codable, Sendable {
+  case betaManagedAgentsMcpOauthAuthResponse(AnthropicBetaManagedAgentsMcpOauthAuthResponse)
+  case betaManagedAgentsStaticBearerAuthResponse(AnthropicBetaManagedAgentsStaticBearerAuthResponse)
+  case betaManagedAgentsEnvironmentVariableAuthResponse(
+    AnthropicBetaManagedAgentsEnvironmentVariableAuthResponse)
 
-  public init() {}
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(AnthropicBetaManagedAgentsMcpOauthAuthResponse.self) {
+      self = .betaManagedAgentsMcpOauthAuthResponse(value)
+      return
+    }
+    if let value = try? container.decode(AnthropicBetaManagedAgentsStaticBearerAuthResponse.self) {
+      self = .betaManagedAgentsStaticBearerAuthResponse(value)
+      return
+    }
+    self = .betaManagedAgentsEnvironmentVariableAuthResponse(
+      try container.decode(AnthropicBetaManagedAgentsEnvironmentVariableAuthResponse.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .betaManagedAgentsMcpOauthAuthResponse(let value):
+      try container.encode(value)
+    case .betaManagedAgentsStaticBearerAuthResponse(let value):
+      try container.encode(value)
+    case .betaManagedAgentsEnvironmentVariableAuthResponse(let value):
+      try container.encode(value)
+    }
+  }
 }

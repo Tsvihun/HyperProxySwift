@@ -10,16 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksGatewaySchedulingEntitlementState: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let sTATEUNSPECIFIED = Self(rawValue: "STATE_UNSPECIFIED")
-  public static let aCTIVE = Self(rawValue: "ACTIVE")
-  public static let cANCELLED = Self(rawValue: "CANCELLED")
+public enum FireworksGatewaySchedulingEntitlementState: String, Codable, Hashable, Sendable {
+  case sTATEUNSPECIFIED = "STATE_UNSPECIFIED"
+  case aCTIVE = "ACTIVE"
+  case cANCELLED = "CANCELLED"
 }

@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIResponseFormatTextGrammar: Codable, Sendable {
   public var grammar: String
-  public var typeModel: OpenAIResponseFormatTextGrammarTypeModel
+  public var kind: OpenAIResponseFormatTextGrammarKind
 
   public init(
     grammar: String,
-    typeModel: OpenAIResponseFormatTextGrammarTypeModel
+    kind: OpenAIResponseFormatTextGrammarKind
   ) {
     self.grammar = grammar
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case grammar
-    case typeModel = "type"
+    case kind = "type"
   }
 }

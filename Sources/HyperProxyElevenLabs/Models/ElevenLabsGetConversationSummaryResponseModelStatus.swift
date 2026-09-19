@@ -10,18 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsGetConversationSummaryResponseModelStatus: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum ElevenLabsGetConversationSummaryResponseModelStatus: String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let initiated = Self(rawValue: "initiated")
-  public static let inProgress = Self(rawValue: "in-progress")
-  public static let processing = Self(rawValue: "processing")
-  public static let done = Self(rawValue: "done")
-  public static let failed = Self(rawValue: "failed")
+  case initiated = "initiated"
+  case inProgress = "in-progress"
+  case processing = "processing"
+  case done = "done"
+  case failed = "failed"
 }

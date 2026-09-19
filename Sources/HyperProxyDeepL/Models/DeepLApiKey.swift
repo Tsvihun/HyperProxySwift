@@ -14,16 +14,16 @@ public struct DeepLApiKey: Codable, Sendable {
   public var creationTime: String?
   public var deactivatedTime: String?
   public var isDeactivated: Bool?
-  public var keyId: DeepLApiKeyId?
-  public var label: DeepLApiKeyLabel?
+  public var keyId: String?
+  public var label: String?
   public var usageLimits: DeepLApiKeyUsageLimits?
 
   public init(
     creationTime: String? = nil,
     deactivatedTime: String? = nil,
     isDeactivated: Bool? = nil,
-    keyId: DeepLApiKeyId? = nil,
-    label: DeepLApiKeyLabel? = nil,
+    keyId: String? = nil,
+    label: String? = nil,
     usageLimits: DeepLApiKeyUsageLimits? = nil
   ) {
     self.creationTime = creationTime

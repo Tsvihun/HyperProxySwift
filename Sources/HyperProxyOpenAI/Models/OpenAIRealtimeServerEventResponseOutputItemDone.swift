@@ -15,20 +15,20 @@ public struct OpenAIRealtimeServerEventResponseOutputItemDone: Codable, Sendable
   public var item: OpenAIRealtimeConversationItem
   public var outputIndex: Int
   public var responseId: String
-  public var typeModel: OpenAIRealtimeServerEventResponseOutputItemDoneTypeModel
+  public var kind: OpenAIRealtimeServerEventResponseOutputItemDoneKind
 
   public init(
     eventId: String,
     item: OpenAIRealtimeConversationItem,
     outputIndex: Int,
     responseId: String,
-    typeModel: OpenAIRealtimeServerEventResponseOutputItemDoneTypeModel
+    kind: OpenAIRealtimeServerEventResponseOutputItemDoneKind
   ) {
     self.eventId = eventId
     self.item = item
     self.outputIndex = outputIndex
     self.responseId = responseId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIRealtimeServerEventResponseOutputItemDone: Codable, Sendable
     case item
     case outputIndex = "output_index"
     case responseId = "response_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

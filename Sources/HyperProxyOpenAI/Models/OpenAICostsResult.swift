@@ -17,7 +17,7 @@ public struct OpenAICostsResult: Codable, Sendable {
   public var object: OpenAICostsResultObject
   public var projectId: String?
   public var quantity: Double?
-  public var quantityUnit: HyperProxyJSONValue?
+  public var quantityUnit: OpenAICostsResultQuantityUnit?
 
   public init(
     object: OpenAICostsResultObject,
@@ -26,7 +26,7 @@ public struct OpenAICostsResult: Codable, Sendable {
     lineItem: String? = nil,
     projectId: String? = nil,
     quantity: Double? = nil,
-    quantityUnit: HyperProxyJSONValue? = nil
+    quantityUnit: OpenAICostsResultQuantityUnit? = nil
   ) {
     self.amount = amount
     self.apiKeyId = apiKeyId

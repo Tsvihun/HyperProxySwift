@@ -17,14 +17,14 @@ public struct AnthropicBetaManagedAgentsMemoryStore: Codable, Sendable {
   public var id: String
   public var metadata: [String: String]?
   public var name: String
-  public var typeModel: AnthropicBetaManagedAgentsMemoryStoreTypeModel
+  public var kind: AnthropicBetaManagedAgentsMemoryStoreKind
   public var updatedAt: AnthropicBetaTimestamp
 
   public init(
     createdAt: AnthropicBetaTimestamp,
     id: String,
     name: String,
-    typeModel: AnthropicBetaManagedAgentsMemoryStoreTypeModel,
+    kind: AnthropicBetaManagedAgentsMemoryStoreKind,
     updatedAt: AnthropicBetaTimestamp,
     archivedAt: AnthropicBetaTimestamp? = nil,
     description: String? = nil,
@@ -36,7 +36,7 @@ public struct AnthropicBetaManagedAgentsMemoryStore: Codable, Sendable {
     self.id = id
     self.metadata = metadata
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
     self.updatedAt = updatedAt
   }
 
@@ -47,7 +47,7 @@ public struct AnthropicBetaManagedAgentsMemoryStore: Codable, Sendable {
     case id
     case metadata
     case name
-    case typeModel = "type"
+    case kind = "type"
     case updatedAt = "updated_at"
   }
 }

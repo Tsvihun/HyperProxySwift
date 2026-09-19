@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct MistralJudgeClassificationOutput: Codable, Sendable {
   public var options: [MistralJudgeClassificationOutputOption]
-  public var typeModel: String?
+  public var kind: MistralCLASSIFICATIONKind?
 
   public init(
     options: [MistralJudgeClassificationOutputOption],
-    typeModel: String? = nil
+    kind: MistralCLASSIFICATIONKind? = nil
   ) {
     self.options = options
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case options
-    case typeModel = "type"
+    case kind = "type"
   }
 }

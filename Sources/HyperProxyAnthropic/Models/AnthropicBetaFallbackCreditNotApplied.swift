@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct AnthropicBetaFallbackCreditNotApplied: Codable, Sendable {
   public var reason: AnthropicBetaFallbackCreditNotAppliedReason
   public var removeToRedeem: [String]?
-  public var typeModel: String
+  public var kind: AnthropicNotAppliedKind
 
   public init(
     reason: AnthropicBetaFallbackCreditNotAppliedReason,
-    typeModel: String,
+    kind: AnthropicNotAppliedKind = .notApplied,
     removeToRedeem: [String]? = nil
   ) {
     self.reason = reason
     self.removeToRedeem = removeToRedeem
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case reason
     case removeToRedeem = "remove_to_redeem"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

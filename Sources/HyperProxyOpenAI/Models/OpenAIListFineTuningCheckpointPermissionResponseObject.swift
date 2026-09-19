@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIListFineTuningCheckpointPermissionResponseObject: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum OpenAIListFineTuningCheckpointPermissionResponseObject: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let list = Self(rawValue: "list")
+  case list = "list"
 }

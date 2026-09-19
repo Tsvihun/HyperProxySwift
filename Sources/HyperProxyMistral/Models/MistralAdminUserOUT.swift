@@ -18,8 +18,8 @@ public struct MistralAdminUserOUT: Codable, Sendable {
   public var lastName: String?
   public var name: String?
   public var oidId: String?
-  public var rawRole: HyperProxyJSONValue
-  public var rawRoles: HyperProxyJSONValue
+  public var rawRole: MistralAdminUserOUTRawRole
+  public var rawRoles: MistralAdminUserOUTRawRoles
   public var subscriptionTypes: [MistralAdminUserOUTSubscriptionTypesAnyOf1Item]?
   public var subscriptions: [MistralMemberSubscriptionOUT]?
   public var uuid: String
@@ -32,8 +32,8 @@ public struct MistralAdminUserOUT: Codable, Sendable {
     lastName: String?,
     name: String?,
     oidId: String?,
-    rawRole: HyperProxyJSONValue,
-    rawRoles: HyperProxyJSONValue,
+    rawRole: MistralAdminUserOUTRawRole,
+    rawRoles: MistralAdminUserOUTRawRoles,
     uuid: String,
     isSsoOutsider: Bool? = nil,
     subscriptionTypes: [MistralAdminUserOUTSubscriptionTypesAnyOf1Item]? = nil,

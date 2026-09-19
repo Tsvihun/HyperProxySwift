@@ -12,15 +12,15 @@ import HyperProxyCore
 
 public struct OpenRouterMessagesRequestContextManagementEditsItemOneOf2KeepAnyOf2: Codable, Sendable
 {
-  public var typeModel: OpenRouterMessagesRequestContextManagementEditsItemOneOf2KeepAnyOf2TypeModel
+  public var kind: OpenRouterMessagesRequestContextManagementEditsItemOneOf2KeepAnyOf2Kind
 
   public init(
-    typeModel: OpenRouterMessagesRequestContextManagementEditsItemOneOf2KeepAnyOf2TypeModel
+    kind: OpenRouterMessagesRequestContextManagementEditsItemOneOf2KeepAnyOf2Kind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

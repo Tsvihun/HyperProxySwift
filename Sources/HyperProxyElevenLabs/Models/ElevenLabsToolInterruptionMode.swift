@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsToolInterruptionMode: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let allow = Self(rawValue: "allow")
-  public static let disableDuringTool = Self(rawValue: "disable_during_tool")
-  public static let disableDuringToolAndTurn = Self(rawValue: "disable_during_tool_and_turn")
+public enum ElevenLabsToolInterruptionMode: String, Codable, Hashable, Sendable {
+  case allow = "allow"
+  case disableDuringTool = "disable_during_tool"
+  case disableDuringToolAndTurn = "disable_during_tool_and_turn"
 }

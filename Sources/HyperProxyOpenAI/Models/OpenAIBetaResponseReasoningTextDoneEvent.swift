@@ -17,7 +17,7 @@ public struct OpenAIBetaResponseReasoningTextDoneEvent: Codable, Sendable {
   public var outputIndex: Int
   public var sequenceNumber: Int
   public var text: String
-  public var typeModel: OpenAIBetaResponseReasoningTextDoneEventTypeModel
+  public var kind: OpenAIBetaResponseReasoningTextDoneEventKind
 
   public init(
     contentIndex: Int,
@@ -25,7 +25,7 @@ public struct OpenAIBetaResponseReasoningTextDoneEvent: Codable, Sendable {
     outputIndex: Int,
     sequenceNumber: Int,
     text: String,
-    typeModel: OpenAIBetaResponseReasoningTextDoneEventTypeModel,
+    kind: OpenAIBetaResponseReasoningTextDoneEventKind,
     agent: OpenAIBetaAgentTag? = nil
   ) {
     self.agent = agent
@@ -34,7 +34,7 @@ public struct OpenAIBetaResponseReasoningTextDoneEvent: Codable, Sendable {
     self.outputIndex = outputIndex
     self.sequenceNumber = sequenceNumber
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenAIBetaResponseReasoningTextDoneEvent: Codable, Sendable {
     case outputIndex = "output_index"
     case sequenceNumber = "sequence_number"
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

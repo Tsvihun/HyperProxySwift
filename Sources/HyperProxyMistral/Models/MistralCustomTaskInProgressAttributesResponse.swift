@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct MistralCustomTaskInProgressAttributesResponse: Codable, Sendable {
   public var customTaskId: String
   public var customTaskType: String
-  public var payload: HyperProxyJSONValue
+  public var payload: MistralCustomTaskInProgressAttributesResponsePayload
 
   public init(
     customTaskId: String,
     customTaskType: String,
-    payload: HyperProxyJSONValue
+    payload: MistralCustomTaskInProgressAttributesResponsePayload
   ) {
     self.customTaskId = customTaskId
     self.customTaskType = customTaskType

@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterMessagesPingEvent: Codable, Sendable {
-  public var typeModel: OpenRouterMessagesPingEventTypeModel
+  public var kind: OpenRouterMessagesPingEventKind
 
   public init(
-    typeModel: OpenRouterMessagesPingEventTypeModel
+    kind: OpenRouterMessagesPingEventKind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

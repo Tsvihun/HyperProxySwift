@@ -14,7 +14,7 @@ public struct FireworksChatCompletionResponseStreamChoice: Codable, Sendable {
   public var delta: FireworksDeltaMessage
   public var finishReason: FireworksChatCompletionResponseStreamChoiceFinishReasonAnyOf1?
   public var index: Int
-  public var logprobs: HyperProxyJSONValue?
+  public var logprobs: FireworksChatCompletionResponseStreamChoiceLogprobs?
   public var promptTokenIds: [Int]?
   public var rawOutput: FireworksRawOutput?
   public var tokenIds: [Int]?
@@ -24,7 +24,7 @@ public struct FireworksChatCompletionResponseStreamChoice: Codable, Sendable {
     delta: FireworksDeltaMessage,
     index: Int,
     finishReason: FireworksChatCompletionResponseStreamChoiceFinishReasonAnyOf1? = nil,
-    logprobs: HyperProxyJSONValue? = nil,
+    logprobs: FireworksChatCompletionResponseStreamChoiceLogprobs? = nil,
     promptTokenIds: [Int]? = nil,
     rawOutput: FireworksRawOutput? = nil,
     tokenIds: [Int]? = nil,

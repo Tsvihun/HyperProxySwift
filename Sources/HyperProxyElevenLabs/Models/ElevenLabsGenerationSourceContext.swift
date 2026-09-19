@@ -19,7 +19,7 @@ public struct ElevenLabsGenerationSourceContext: Codable, Sendable {
   public var modelProvider: String?
   public var prompt: String?
   public var sessionIterationId: String?
-  public var sourceType: String?
+  public var sourceType: ElevenLabsGenerationSourceType?
 
   public init(
     generationId: String,
@@ -30,7 +30,7 @@ public struct ElevenLabsGenerationSourceContext: Codable, Sendable {
     modelProvider: String? = nil,
     prompt: String? = nil,
     sessionIterationId: String? = nil,
-    sourceType: String? = nil
+    sourceType: ElevenLabsGenerationSourceType? = nil
   ) {
     self.extendVideo = extendVideo
     self.generationId = generationId

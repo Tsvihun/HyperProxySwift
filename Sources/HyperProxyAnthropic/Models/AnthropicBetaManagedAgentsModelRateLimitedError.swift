@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct AnthropicBetaManagedAgentsModelRateLimitedError: Codable, Sendable {
   public var message: String
   public var retryStatus: AnthropicBetaManagedAgentsRetryStatus
-  public var typeModel: AnthropicBetaManagedAgentsModelRateLimitedErrorTypeModel
+  public var kind: AnthropicBetaManagedAgentsModelRateLimitedErrorKind
 
   public init(
     message: String,
     retryStatus: AnthropicBetaManagedAgentsRetryStatus,
-    typeModel: AnthropicBetaManagedAgentsModelRateLimitedErrorTypeModel
+    kind: AnthropicBetaManagedAgentsModelRateLimitedErrorKind
   ) {
     self.message = message
     self.retryStatus = retryStatus
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case message
     case retryStatus = "retry_status"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

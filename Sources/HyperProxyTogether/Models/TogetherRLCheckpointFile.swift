@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct TogetherRLCheckpointFile: Codable, Sendable {
   public var filename: String
-  public var size: HyperProxyJSONValue
+  public var size: TogetherRLCheckpointFileSize
   public var url: String
 
   public init(
     filename: String,
-    size: HyperProxyJSONValue,
+    size: TogetherRLCheckpointFileSize,
     url: String
   ) {
     self.filename = filename

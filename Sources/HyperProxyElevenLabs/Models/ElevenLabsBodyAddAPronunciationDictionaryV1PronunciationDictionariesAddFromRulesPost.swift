@@ -15,13 +15,15 @@ public struct ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionari
 {
   public var description: String?
   public var name: String
-  public var rules: [HyperProxyJSONValue]
+  public var rules:
+    [ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionariesAddFromRulesPostRulesItem]
   public var workspaceAccess:
     ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionariesAddFromRulesPostWorkspaceAccessAnyOf1?
 
   public init(
     name: String,
-    rules: [HyperProxyJSONValue],
+    rules:
+      [ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionariesAddFromRulesPostRulesItem],
     description: String? = nil,
     workspaceAccess:
       ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionariesAddFromRulesPostWorkspaceAccessAnyOf1? =

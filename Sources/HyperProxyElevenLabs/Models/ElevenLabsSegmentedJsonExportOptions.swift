@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsSegmentedJsonExportOptions: Codable, Sendable {
-  public var format: String
+  public var format: ElevenLabsSegmentedJsonFormat
   public var includeSpeakers: Bool?
   public var includeTimestamps: Bool?
   public var maxSegmentChars: Int?
@@ -19,7 +19,7 @@ public struct ElevenLabsSegmentedJsonExportOptions: Codable, Sendable {
   public var segmentOnSilenceLongerThanS: Double?
 
   public init(
-    format: String,
+    format: ElevenLabsSegmentedJsonFormat = .segmentedJson,
     includeSpeakers: Bool? = nil,
     includeTimestamps: Bool? = nil,
     maxSegmentChars: Int? = nil,

@@ -17,7 +17,7 @@ public struct AnthropicBetaUsage: Codable, Sendable {
   public var fallbackCredit: AnthropicBetaFallbackCreditUsage?
   public var inferenceGeo: String?
   public var inputTokens: Int
-  public var iterations: AnthropicBetaIterationsUsage
+  public var iterations: AnthropicBetaIterationsUsage?
   public var outputTokens: Int
   public var outputTokensDetails: AnthropicBetaOutputTokensDetails?
   public var serverToolUse: AnthropicBetaServerToolUsage?
@@ -31,7 +31,7 @@ public struct AnthropicBetaUsage: Codable, Sendable {
     fallbackCredit: AnthropicBetaFallbackCreditUsage?,
     inferenceGeo: String?,
     inputTokens: Int,
-    iterations: AnthropicBetaIterationsUsage,
+    iterations: AnthropicBetaIterationsUsage?,
     outputTokens: Int,
     outputTokensDetails: AnthropicBetaOutputTokensDetails?,
     serverToolUse: AnthropicBetaServerToolUsage?,

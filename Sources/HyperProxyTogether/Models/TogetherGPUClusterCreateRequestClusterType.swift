@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherGPUClusterCreateRequestClusterType: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let kUBERNETES = Self(rawValue: "KUBERNETES")
-  public static let sLURM = Self(rawValue: "SLURM")
+public enum TogetherGPUClusterCreateRequestClusterType: String, Codable, Hashable, Sendable {
+  case kUBERNETES = "KUBERNETES"
+  case sLURM = "SLURM"
 }

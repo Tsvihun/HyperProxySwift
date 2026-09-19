@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIVectorStoreSearchRequest: Codable, Sendable {
-  public var filters: HyperProxyJSONValue?
+  public var filters: OpenAIVectorStoreSearchRequestFilters?
   public var maxNumResults: Int?
-  public var query: HyperProxyJSONValue
+  public var query: OpenAIVectorStoreSearchRequestQuery
   public var rankingOptions: OpenAIVectorStoreSearchRequestRankingOptions?
   public var rewriteQuery: Bool?
 
   public init(
-    query: HyperProxyJSONValue,
-    filters: HyperProxyJSONValue? = nil,
+    query: OpenAIVectorStoreSearchRequestQuery,
+    filters: OpenAIVectorStoreSearchRequestFilters? = nil,
     maxNumResults: Int? = nil,
     rankingOptions: OpenAIVectorStoreSearchRequestRankingOptions? = nil,
     rewriteQuery: Bool? = nil

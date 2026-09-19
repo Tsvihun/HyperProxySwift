@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsAuthConnectionStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let active = Self(rawValue: "active")
-  public static let refreshFailed = Self(rawValue: "refresh_failed")
-  public static let revoked = Self(rawValue: "revoked")
-  public static let credentialInvalid = Self(rawValue: "credential_invalid")
+public enum ElevenLabsAuthConnectionStatus: String, Codable, Hashable, Sendable {
+  case active = "active"
+  case refreshFailed = "refresh_failed"
+  case revoked = "revoked"
+  case credentialInvalid = "credential_invalid"
 }

@@ -17,12 +17,12 @@ public struct TogetherCompletionRequest: Codable, Sendable {
   public var logprobs: Int?
   public var maxTokens: Int?
   public var minP: Double?
-  public var model: HyperProxyJSONValue
+  public var model: TogetherCompletionRequestModel
   public var n: Int?
   public var presencePenalty: Double?
   public var prompt: String
   public var repetitionPenalty: Double?
-  public var safetyModel: HyperProxyJSONValue?
+  public var safetyModel: TogetherCompletionRequestSafetyModel?
   public var seed: Int?
   public var stop: [String]?
   public var stream: Bool?
@@ -31,7 +31,7 @@ public struct TogetherCompletionRequest: Codable, Sendable {
   public var topP: Double?
 
   public init(
-    model: HyperProxyJSONValue,
+    model: TogetherCompletionRequestModel,
     prompt: String,
     echo: Bool? = nil,
     frequencyPenalty: Double? = nil,
@@ -42,7 +42,7 @@ public struct TogetherCompletionRequest: Codable, Sendable {
     n: Int? = nil,
     presencePenalty: Double? = nil,
     repetitionPenalty: Double? = nil,
-    safetyModel: HyperProxyJSONValue? = nil,
+    safetyModel: TogetherCompletionRequestSafetyModel? = nil,
     seed: Int? = nil,
     stop: [String]? = nil,
     stream: Bool? = nil,

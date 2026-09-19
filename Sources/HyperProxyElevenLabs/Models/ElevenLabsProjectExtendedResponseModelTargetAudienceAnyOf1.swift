@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsProjectExtendedResponseModelTargetAudienceAnyOf1: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum ElevenLabsProjectExtendedResponseModelTargetAudienceAnyOf1: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let children = Self(rawValue: "children")
-  public static let youngAdult = Self(rawValue: "young adult")
-  public static let adult = Self(rawValue: "adult")
-  public static let allAges = Self(rawValue: "all ages")
+  case children = "children"
+  case youngAdult = "young adult"
+  case adult = "adult"
+  case allAges = "all ages"
 }

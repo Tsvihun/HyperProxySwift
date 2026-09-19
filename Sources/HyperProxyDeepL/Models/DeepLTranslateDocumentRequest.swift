@@ -19,15 +19,15 @@ public struct DeepLTranslateDocumentRequest: Codable, Sendable {
   public var glossaryId: String?
   public var glossaryIds: [String]?
   public var outputFormat: String?
-  public var sourceLang: DeepLSourceLanguage?
+  public var sourceLang: String?
   public var styleId: String?
-  public var targetLang: DeepLTargetLanguage
+  public var targetLang: String
   public var translationMemoryId: DeepLTranslationMemoryId?
-  public var translationMemoryThreshold: DeepLTranslationMemoryThreshold?
+  public var translationMemoryThreshold: Int?
 
   public init(
     file: String,
-    targetLang: DeepLTargetLanguage,
+    targetLang: String,
     enableBetaLanguages: Bool? = nil,
     enableWatermark: Bool? = nil,
     filename: String? = nil,
@@ -35,10 +35,10 @@ public struct DeepLTranslateDocumentRequest: Codable, Sendable {
     glossaryId: String? = nil,
     glossaryIds: [String]? = nil,
     outputFormat: String? = nil,
-    sourceLang: DeepLSourceLanguage? = nil,
+    sourceLang: String? = nil,
     styleId: String? = nil,
     translationMemoryId: DeepLTranslationMemoryId? = nil,
-    translationMemoryThreshold: DeepLTranslationMemoryThreshold? = nil
+    translationMemoryThreshold: Int? = nil
   ) {
     self.enableBetaLanguages = enableBetaLanguages
     self.enableWatermark = enableWatermark

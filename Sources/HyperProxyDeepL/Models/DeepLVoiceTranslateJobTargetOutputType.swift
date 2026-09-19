@@ -10,36 +10,23 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLVoiceTranslateJobTargetOutputType: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let textPlain = Self(rawValue: "text/plain")
-  public static let applicationXSubrip = Self(rawValue: "application/x-subrip")
-  public static let audioOpus = Self(rawValue: "audio/opus")
-  public static let audioFlac = Self(rawValue: "audio/flac")
-  public static let audioPcmEncodingS16leRate16000 = Self(
-    rawValue: "audio/pcm;encoding=s16le;rate=16000")
-  public static let audioPcmEncodingS16leRate24000 = Self(
-    rawValue: "audio/pcm;encoding=s16le;rate=24000")
-  public static let audioPcmEncodingUlawRate8000 = Self(
-    rawValue: "audio/pcm;encoding=ulaw;rate=8000")
-  public static let audioPcmEncodingAlawRate8000 = Self(
-    rawValue: "audio/pcm;encoding=alaw;rate=8000")
-  public static let audioXMatroskaCodecsAac = Self(rawValue: "audio/x-matroska;codecs=aac")
-  public static let audioXMatroskaCodecsFlac = Self(rawValue: "audio/x-matroska;codecs=flac")
-  public static let audioXMatroskaCodecsOpus = Self(rawValue: "audio/x-matroska;codecs=opus")
-  public static let audioXMatroskaCodecsPcmS16leRate16000 = Self(
-    rawValue: "audio/x-matroska;codecs=pcm_s16le;rate=16000")
-  public static let audioXMatroskaCodecsPcmS16leRate24000 = Self(
-    rawValue: "audio/x-matroska;codecs=pcm_s16le;rate=24000")
-  public static let videoMp2tCodecsAac = Self(rawValue: "video/mp2t;codecs=aac")
-  public static let videoMp2tCodecsOpus = Self(rawValue: "video/mp2t;codecs=opus")
-  public static let audioOggCodecsFlac = Self(rawValue: "audio/ogg;codecs=flac")
-  public static let audioOggCodecsOpus = Self(rawValue: "audio/ogg;codecs=opus")
-  public static let audioWebmCodecsOpus = Self(rawValue: "audio/webm;codecs=opus")
+public enum DeepLVoiceTranslateJobTargetOutputType: String, Codable, Hashable, Sendable {
+  case textPlain = "text/plain"
+  case applicationXSubrip = "application/x-subrip"
+  case audioOpus = "audio/opus"
+  case audioFlac = "audio/flac"
+  case audioPcmEncodingS16leRate16000 = "audio/pcm;encoding=s16le;rate=16000"
+  case audioPcmEncodingS16leRate24000 = "audio/pcm;encoding=s16le;rate=24000"
+  case audioPcmEncodingUlawRate8000 = "audio/pcm;encoding=ulaw;rate=8000"
+  case audioPcmEncodingAlawRate8000 = "audio/pcm;encoding=alaw;rate=8000"
+  case audioXMatroskaCodecsAac = "audio/x-matroska;codecs=aac"
+  case audioXMatroskaCodecsFlac = "audio/x-matroska;codecs=flac"
+  case audioXMatroskaCodecsOpus = "audio/x-matroska;codecs=opus"
+  case audioXMatroskaCodecsPcmS16leRate16000 = "audio/x-matroska;codecs=pcm_s16le;rate=16000"
+  case audioXMatroskaCodecsPcmS16leRate24000 = "audio/x-matroska;codecs=pcm_s16le;rate=24000"
+  case videoMp2tCodecsAac = "video/mp2t;codecs=aac"
+  case videoMp2tCodecsOpus = "video/mp2t;codecs=opus"
+  case audioOggCodecsFlac = "audio/ogg;codecs=flac"
+  case audioOggCodecsOpus = "audio/ogg;codecs=opus"
+  case audioWebmCodecsOpus = "audio/webm;codecs=opus"
 }

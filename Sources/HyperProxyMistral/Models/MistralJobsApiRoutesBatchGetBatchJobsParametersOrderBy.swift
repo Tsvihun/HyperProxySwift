@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralJobsApiRoutesBatchGetBatchJobsParametersOrderBy: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum MistralJobsApiRoutesBatchGetBatchJobsParametersOrderBy: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let created = Self(rawValue: "created")
-  public static let created4b398c38 = Self(rawValue: "-created")
+  case created = "created"
+  case created4b398c38 = "-created"
 }

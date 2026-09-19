@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct FalListAssetCollectionAssetsParametersSourceItem: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let upload = Self(rawValue: "upload")
-  public static let response = Self(rawValue: "response")
+public enum FalListAssetCollectionAssetsParametersSourceItem: String, Codable, Hashable, Sendable {
+  case upload = "upload"
+  case response = "response"
 }

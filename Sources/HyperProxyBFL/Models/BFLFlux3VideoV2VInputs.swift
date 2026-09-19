@@ -11,30 +11,30 @@ import Foundation
 import HyperProxyCore
 
 public struct BFLFlux3VideoV2VInputs: Codable, Sendable {
-  public var aspectRatio: HyperProxyJSONValue?
+  public var aspectRatio: BFLFlux3VideoV2VInputsAspectRatio?
   public var draft: Bool?
-  public var duration: HyperProxyJSONValue?
+  public var duration: BFLFlux3VideoV2VInputsDuration?
   public var generateAudio: Bool?
-  public var mode: String
+  public var mode: BFLV2vMode
   public var prompt: String
   public var resolution: BFLFlux3VideoV2VInputsResolution?
   public var safetyTolerance: Int?
   public var startVideo: String
   public var user: String?
-  public var version: String?
+  public var version: BFLLatestVersion?
 
   public init(
-    mode: String,
     prompt: String,
     startVideo: String,
-    aspectRatio: HyperProxyJSONValue? = nil,
+    mode: BFLV2vMode = .v2v,
+    aspectRatio: BFLFlux3VideoV2VInputsAspectRatio? = nil,
     draft: Bool? = nil,
-    duration: HyperProxyJSONValue? = nil,
+    duration: BFLFlux3VideoV2VInputsDuration? = nil,
     generateAudio: Bool? = nil,
     resolution: BFLFlux3VideoV2VInputsResolution? = nil,
     safetyTolerance: Int? = nil,
     user: String? = nil,
-    version: String? = nil
+    version: BFLLatestVersion? = nil
   ) {
     self.aspectRatio = aspectRatio
     self.draft = draft

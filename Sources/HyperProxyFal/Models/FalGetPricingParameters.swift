@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct FalGetPricingParameters: Codable, Sendable {
-  public var endpointId: HyperProxyJSONValue
+  public var endpointId: FalGetPricingParametersEndpointId
 
   public init(
-    endpointId: HyperProxyJSONValue
+    endpointId: FalGetPricingParametersEndpointId
   ) {
     self.endpointId = endpointId
   }

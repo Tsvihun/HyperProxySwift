@@ -15,7 +15,7 @@ public struct MistralPriceData: Codable, Sendable {
   public var billingGroup: String
   public var billingMetric: String
   public var eventType: MistralLagoEventType?
-  public var price: HyperProxyJSONValue
+  public var price: MistralPriceDataPrice
   public var serviceTier: MistralServiceTier
 
   public init(
@@ -23,7 +23,7 @@ public struct MistralPriceData: Codable, Sendable {
     billingGroup: String,
     billingMetric: String,
     eventType: MistralLagoEventType?,
-    price: HyperProxyJSONValue,
+    price: MistralPriceDataPrice,
     serviceTier: MistralServiceTier
   ) {
     self.apiZone = apiZone

@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct EachAIAPIRunPredictionResponse: Codable, Sendable {
   public var error: String?
   public var message: String?
-  public var output: HyperProxyJSONValue?
+  public var output: EachAIAPIRunPredictionResponseOutput?
   public var predictionID: String?
   public var status: EachAIAPIRunPredictionResponseStatus?
 
   public init(
     error: String? = nil,
     message: String? = nil,
-    output: HyperProxyJSONValue? = nil,
+    output: EachAIAPIRunPredictionResponseOutput? = nil,
     predictionID: String? = nil,
     status: EachAIAPIRunPredictionResponseStatus? = nil
   ) {

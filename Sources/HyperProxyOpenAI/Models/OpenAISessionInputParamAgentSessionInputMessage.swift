@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAISessionInputParamAgentSessionInputMessage: Codable, Sendable {
   public var input: [OpenAIInputMessageParam]
-  public var typeModel: OpenAISessionInputParamAgentSessionInputMessageTypeModel
+  public var kind: OpenAISessionInputParamAgentSessionInputMessageKind
 
   public init(
     input: [OpenAIInputMessageParam],
-    typeModel: OpenAISessionInputParamAgentSessionInputMessageTypeModel
+    kind: OpenAISessionInputParamAgentSessionInputMessageKind
   ) {
     self.input = input
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case input
-    case typeModel = "type"
+    case kind = "type"
   }
 }

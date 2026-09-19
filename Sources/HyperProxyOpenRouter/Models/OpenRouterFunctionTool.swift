@@ -15,12 +15,12 @@ public struct OpenRouterFunctionTool: Codable, Sendable {
   public var name: String
   public var parameters: [String: HyperProxyJSONValue]
   public var strict: Bool?
-  public var typeModel: OpenRouterFunctionToolTypeModel
+  public var kind: OpenRouterFunctionToolKind
 
   public init(
     name: String,
     parameters: [String: HyperProxyJSONValue],
-    typeModel: OpenRouterFunctionToolTypeModel,
+    kind: OpenRouterFunctionToolKind,
     description: String? = nil,
     strict: Bool? = nil
   ) {
@@ -28,7 +28,7 @@ public struct OpenRouterFunctionTool: Codable, Sendable {
     self.name = name
     self.parameters = parameters
     self.strict = strict
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenRouterFunctionTool: Codable, Sendable {
     case name
     case parameters
     case strict
-    case typeModel = "type"
+    case kind = "type"
   }
 }

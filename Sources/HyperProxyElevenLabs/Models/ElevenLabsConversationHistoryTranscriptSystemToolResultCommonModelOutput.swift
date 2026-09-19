@@ -19,12 +19,13 @@ public struct ElevenLabsConversationHistoryTranscriptSystemToolResultCommonModel
   public var isError: Bool
   public var rawErrorMessage: String?
   public var requestId: String
-  public var result: HyperProxyJSONValue?
+  public var result:
+    ElevenLabsConversationHistoryTranscriptSystemToolResultCommonModelOutputResultAnyOf1?
   public var resultValue: String
   public var toolHasBeenCalled: Bool
   public var toolLatencySecs: Double?
   public var toolName: String
-  public var typeModel: String
+  public var kind: ElevenLabsSystemKind
 
   public init(
     isError: Bool,
@@ -32,12 +33,13 @@ public struct ElevenLabsConversationHistoryTranscriptSystemToolResultCommonModel
     resultValue: String,
     toolHasBeenCalled: Bool,
     toolName: String,
-    typeModel: String,
+    kind: ElevenLabsSystemKind = .system,
     dynamicVariableUpdates: [ElevenLabsDynamicVariableUpdateCommonModel]? = nil,
     errorType: String? = nil,
     isBlocked: Bool? = nil,
     rawErrorMessage: String? = nil,
-    result: HyperProxyJSONValue? = nil,
+    result: ElevenLabsConversationHistoryTranscriptSystemToolResultCommonModelOutputResultAnyOf1? =
+      nil,
     toolLatencySecs: Double? = nil
   ) {
     self.dynamicVariableUpdates = dynamicVariableUpdates
@@ -51,7 +53,7 @@ public struct ElevenLabsConversationHistoryTranscriptSystemToolResultCommonModel
     self.toolHasBeenCalled = toolHasBeenCalled
     self.toolLatencySecs = toolLatencySecs
     self.toolName = toolName
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -66,6 +68,6 @@ public struct ElevenLabsConversationHistoryTranscriptSystemToolResultCommonModel
     case toolHasBeenCalled = "tool_has_been_called"
     case toolLatencySecs = "tool_latency_secs"
     case toolName = "tool_name"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

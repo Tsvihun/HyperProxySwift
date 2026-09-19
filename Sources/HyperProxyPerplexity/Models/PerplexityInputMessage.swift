@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct PerplexityInputMessage: Codable, Sendable {
   public var content: PerplexityInputContent
   public var role: PerplexityInputMessageRole
-  public var typeModel: PerplexityInputMessageTypeModel
+  public var kind: PerplexityInputMessageKind
 
   public init(
     content: PerplexityInputContent,
     role: PerplexityInputMessageRole,
-    typeModel: PerplexityInputMessageTypeModel
+    kind: PerplexityInputMessageKind
   ) {
     self.content = content
     self.role = role
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case content
     case role
-    case typeModel = "type"
+    case kind = "type"
   }
 }

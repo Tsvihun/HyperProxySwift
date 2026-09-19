@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterProviderPreferencesDataCollection: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let deny = Self(rawValue: "deny")
-  public static let allow = Self(rawValue: "allow")
+public enum OpenRouterProviderPreferencesDataCollection: String, Codable, Hashable, Sendable {
+  case deny = "deny"
+  case allow = "allow"
 }

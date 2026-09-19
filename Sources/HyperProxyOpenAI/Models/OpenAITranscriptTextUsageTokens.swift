@@ -15,20 +15,20 @@ public struct OpenAITranscriptTextUsageTokens: Codable, Sendable {
   public var inputTokens: Int
   public var outputTokens: Int
   public var totalTokens: Int
-  public var typeModel: OpenAITranscriptTextUsageTokensTypeModel
+  public var kind: OpenAITranscriptTextUsageTokensKind
 
   public init(
     inputTokens: Int,
     outputTokens: Int,
     totalTokens: Int,
-    typeModel: OpenAITranscriptTextUsageTokensTypeModel,
+    kind: OpenAITranscriptTextUsageTokensKind,
     inputTokenDetails: OpenAITranscriptTextUsageTokensInputTokenDetails? = nil
   ) {
     self.inputTokenDetails = inputTokenDetails
     self.inputTokens = inputTokens
     self.outputTokens = outputTokens
     self.totalTokens = totalTokens
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAITranscriptTextUsageTokens: Codable, Sendable {
     case inputTokens = "input_tokens"
     case outputTokens = "output_tokens"
     case totalTokens = "total_tokens"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

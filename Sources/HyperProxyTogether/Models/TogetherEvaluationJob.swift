@@ -14,10 +14,10 @@ public struct TogetherEvaluationJob: Codable, Sendable {
   public var createdAt: String?
   public var ownerId: String?
   public var parameters: [String: HyperProxyJSONValue]?
-  public var results: HyperProxyJSONValue?
+  public var results: TogetherEvaluationJobResults?
   public var status: TogetherEvaluationJobStatus?
   public var statusUpdates: [TogetherEvaluationJobStatusUpdate]?
-  public var typeModel: TogetherEvaluationJobTypeModel?
+  public var kind: TogetherEvaluationJobKind?
   public var updatedAt: String?
   public var workflowId: String?
 
@@ -25,10 +25,10 @@ public struct TogetherEvaluationJob: Codable, Sendable {
     createdAt: String? = nil,
     ownerId: String? = nil,
     parameters: [String: HyperProxyJSONValue]? = nil,
-    results: HyperProxyJSONValue? = nil,
+    results: TogetherEvaluationJobResults? = nil,
     status: TogetherEvaluationJobStatus? = nil,
     statusUpdates: [TogetherEvaluationJobStatusUpdate]? = nil,
-    typeModel: TogetherEvaluationJobTypeModel? = nil,
+    kind: TogetherEvaluationJobKind? = nil,
     updatedAt: String? = nil,
     workflowId: String? = nil
   ) {
@@ -38,7 +38,7 @@ public struct TogetherEvaluationJob: Codable, Sendable {
     self.results = results
     self.status = status
     self.statusUpdates = statusUpdates
-    self.typeModel = typeModel
+    self.kind = kind
     self.updatedAt = updatedAt
     self.workflowId = workflowId
   }
@@ -50,7 +50,7 @@ public struct TogetherEvaluationJob: Codable, Sendable {
     case results
     case status
     case statusUpdates = "status_updates"
-    case typeModel = "type"
+    case kind = "type"
     case updatedAt = "updated_at"
     case workflowId = "workflow_id"
   }

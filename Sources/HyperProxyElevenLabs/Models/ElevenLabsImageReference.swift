@@ -10,4 +10,33 @@
 import Foundation
 import HyperProxyCore
 
-public typealias ElevenLabsImageReference = HyperProxyJSONValue
+public enum ElevenLabsImageReference: Codable, Sendable {
+  case generationReference(ElevenLabsGenerationReference)
+  case staticAssetReference(ElevenLabsStaticAssetReference)
+  case inlineImageReference(ElevenLabsInlineImageReference)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(ElevenLabsGenerationReference.self) {
+      self = .generationReference(value)
+      return
+    }
+    if let value = try? container.decode(ElevenLabsStaticAssetReference.self) {
+      self = .staticAssetReference(value)
+      return
+    }
+    self = .inlineImageReference(try container.decode(ElevenLabsInlineImageReference.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .generationReference(let value):
+      try container.encode(value)
+    case .staticAssetReference(let value):
+      try container.encode(value)
+    case .inlineImageReference(let value):
+      try container.encode(value)
+    }
+  }
+}

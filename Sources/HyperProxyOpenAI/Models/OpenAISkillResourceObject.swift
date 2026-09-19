@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAISkillResourceObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let skill = Self(rawValue: "skill")
+public enum OpenAISkillResourceObject: String, Codable, Hashable, Sendable {
+  case skill = "skill"
 }

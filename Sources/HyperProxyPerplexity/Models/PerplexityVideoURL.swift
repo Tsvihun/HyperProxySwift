@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct PerplexityVideoURL: Codable, Sendable {
-  public var frameInterval: HyperProxyJSONValue?
+  public var frameInterval: PerplexityVideoURLFrameInterval?
   public var url: String
 
   public init(
     url: String,
-    frameInterval: HyperProxyJSONValue? = nil
+    frameInterval: PerplexityVideoURLFrameInterval? = nil
   ) {
     self.frameInterval = frameInterval
     self.url = url

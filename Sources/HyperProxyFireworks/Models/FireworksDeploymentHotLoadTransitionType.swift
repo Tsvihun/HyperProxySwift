@@ -10,17 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksDeploymentHotLoadTransitionType: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let hOTLOADTRANSITIONTYPEUNSPECIFIED = Self(
-    rawValue: "HOT_LOAD_TRANSITION_TYPE_UNSPECIFIED")
-  public static let aSYNC = Self(rawValue: "ASYNC")
-  public static let sYNC = Self(rawValue: "SYNC")
+public enum FireworksDeploymentHotLoadTransitionType: String, Codable, Hashable, Sendable {
+  case hOTLOADTRANSITIONTYPEUNSPECIFIED = "HOT_LOAD_TRANSITION_TYPE_UNSPECIFIED"
+  case aSYNC = "ASYNC"
+  case sYNC = "SYNC"
 }

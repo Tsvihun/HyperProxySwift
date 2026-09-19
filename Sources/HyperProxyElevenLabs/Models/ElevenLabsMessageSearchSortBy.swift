@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsMessageSearchSortBy: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let searchScore = Self(rawValue: "search_score")
-  public static let createdAt = Self(rawValue: "created_at")
+public enum ElevenLabsMessageSearchSortBy: String, Codable, Hashable, Sendable {
+  case searchScore = "search_score"
+  case createdAt = "created_at"
 }

@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherDeploymentStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let updating = Self(rawValue: "Updating")
-  public static let scaling = Self(rawValue: "Scaling")
-  public static let ready = Self(rawValue: "Ready")
-  public static let failed = Self(rawValue: "Failed")
-  public static let scaledToZero = Self(rawValue: "ScaledToZero")
+public enum TogetherDeploymentStatus: String, Codable, Hashable, Sendable {
+  case updating = "Updating"
+  case scaling = "Scaling"
+  case ready = "Ready"
+  case failed = "Failed"
+  case scaledToZero = "ScaledToZero"
 }

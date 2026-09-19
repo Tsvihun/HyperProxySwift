@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterFusionPluginPreset: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let generalHigh = Self(rawValue: "general-high")
-  public static let generalBudget = Self(rawValue: "general-budget")
-  public static let generalFast = Self(rawValue: "general-fast")
+public enum OpenRouterFusionPluginPreset: String, Codable, Hashable, Sendable {
+  case generalHigh = "general-high"
+  case generalBudget = "general-budget"
+  case generalFast = "general-fast"
 }

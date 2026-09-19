@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIGetCertificateParametersIncludeItem: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let content = Self(rawValue: "content")
+public enum OpenAIGetCertificateParametersIncludeItem: String, Codable, Hashable, Sendable {
+  case content = "content"
 }

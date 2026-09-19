@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksPricingPlanBillingType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let bILLINGTYPEUNSPECIFIED = Self(rawValue: "BILLING_TYPE_UNSPECIFIED")
-  public static let tOKENUSAGE = Self(rawValue: "TOKEN_USAGE")
-  public static let aCCELERATORHOURS = Self(rawValue: "ACCELERATOR_HOURS")
+public enum FireworksPricingPlanBillingType: String, Codable, Hashable, Sendable {
+  case bILLINGTYPEUNSPECIFIED = "BILLING_TYPE_UNSPECIFIED"
+  case tOKENUSAGE = "TOKEN_USAGE"
+  case aCCELERATORHOURS = "ACCELERATOR_HOURS"
 }

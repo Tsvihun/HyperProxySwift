@@ -15,7 +15,7 @@ public struct MistralUpdateConnectorRequest: Codable, Sendable {
   public var description: String?
   public var iconUrl: String?
   public var name: String?
-  public var protocolModel: String?
+  public var protocolModel: MistralMcpProtocolModel?
   public var server: String?
   public var systemPrompt: String?
   public var title: String?
@@ -25,7 +25,7 @@ public struct MistralUpdateConnectorRequest: Codable, Sendable {
     description: String? = nil,
     iconUrl: String? = nil,
     name: String? = nil,
-    protocolModel: String? = nil,
+    protocolModel: MistralMcpProtocolModel? = nil,
     server: String? = nil,
     systemPrompt: String? = nil,
     title: String? = nil

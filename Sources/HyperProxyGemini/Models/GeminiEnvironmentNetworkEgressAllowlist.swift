@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiEnvironmentNetworkEgressAllowlist: Codable, Sendable {
-  public var allowlist: [HyperProxyJSONValue]?
+  public var allowlist: [GeminiEgressRule]?
 
   public init(
-    allowlist: [HyperProxyJSONValue]? = nil
+    allowlist: [GeminiEgressRule]? = nil
   ) {
     self.allowlist = allowlist
   }

@@ -21,7 +21,7 @@ public struct PerplexityResponsesRequest: Codable, Sendable {
   public var models: [String]?
   public var preset: String?
   public var previousResponseId: String?
-  public var profile: HyperProxyJSONValue?
+  public var profile: PerplexityProfileReference?
   public var reasoning: PerplexityReasoningConfig?
   public var responseFormat: PerplexityResponseFormat?
   public var skills: [PerplexitySkill]?
@@ -42,7 +42,7 @@ public struct PerplexityResponsesRequest: Codable, Sendable {
     models: [String]? = nil,
     preset: String? = nil,
     previousResponseId: String? = nil,
-    profile: HyperProxyJSONValue? = nil,
+    profile: PerplexityProfileReference? = nil,
     reasoning: PerplexityReasoningConfig? = nil,
     responseFormat: PerplexityResponseFormat? = nil,
     skills: [PerplexitySkill]? = nil,

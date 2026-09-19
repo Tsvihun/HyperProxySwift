@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenAIRealtimeTranscriptionSessionCreateRequestGA: Codable, Sendable {
   public var audio: OpenAIRealtimeTranscriptionSessionCreateRequestGAAudio?
   public var include: [OpenAIRealtimeTranscriptionSessionCreateRequestGAIncludeItem]?
-  public var typeModel: OpenAIRealtimeTranscriptionSessionCreateRequestGATypeModel
+  public var kind: OpenAIRealtimeTranscriptionSessionCreateRequestGAKind
 
   public init(
-    typeModel: OpenAIRealtimeTranscriptionSessionCreateRequestGATypeModel,
+    kind: OpenAIRealtimeTranscriptionSessionCreateRequestGAKind,
     audio: OpenAIRealtimeTranscriptionSessionCreateRequestGAAudio? = nil,
     include: [OpenAIRealtimeTranscriptionSessionCreateRequestGAIncludeItem]? = nil
   ) {
     self.audio = audio
     self.include = include
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case audio
     case include
-    case typeModel = "type"
+    case kind = "type"
   }
 }

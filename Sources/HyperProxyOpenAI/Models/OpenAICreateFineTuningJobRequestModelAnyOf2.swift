@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAICreateFineTuningJobRequestModelAnyOf2: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let babbage002 = Self(rawValue: "babbage-002")
-  public static let davinci002 = Self(rawValue: "davinci-002")
-  public static let gpt35Turbo = Self(rawValue: "gpt-3.5-turbo")
-  public static let gpt4oMini = Self(rawValue: "gpt-4o-mini")
+public enum OpenAICreateFineTuningJobRequestModelAnyOf2: String, Codable, Hashable, Sendable {
+  case babbage002 = "babbage-002"
+  case davinci002 = "davinci-002"
+  case gpt35Turbo = "gpt-3.5-turbo"
+  case gpt4oMini = "gpt-4o-mini"
 }

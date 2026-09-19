@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesVocabularyAbbreviations: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let writeOriginalTermThenAbbreviationAndExplanation = Self(
-    rawValue: "write_original_term_then_abbreviation_and_explanation")
+public enum DeepLConfiguredRulesVocabularyAbbreviations: String, Codable, Hashable, Sendable {
+  case writeOriginalTermThenAbbreviationAndExplanation =
+    "write_original_term_then_abbreviation_and_explanation"
 }

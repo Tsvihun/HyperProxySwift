@@ -14,24 +14,24 @@ public struct AnthropicBetaManagedAgentsUserMessageEvent: Codable, Sendable {
   public var content: [AnthropicBetaManagedAgentsUserContentBlock]
   public var id: String
   public var processedAt: AnthropicBetaTimestamp?
-  public var typeModel: AnthropicBetaManagedAgentsUserMessageEventTypeModel
+  public var kind: AnthropicBetaManagedAgentsUserMessageEventKind
 
   public init(
     content: [AnthropicBetaManagedAgentsUserContentBlock],
     id: String,
-    typeModel: AnthropicBetaManagedAgentsUserMessageEventTypeModel,
+    kind: AnthropicBetaManagedAgentsUserMessageEventKind,
     processedAt: AnthropicBetaTimestamp? = nil
   ) {
     self.content = content
     self.id = id
     self.processedAt = processedAt
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case content
     case id
     case processedAt = "processed_at"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

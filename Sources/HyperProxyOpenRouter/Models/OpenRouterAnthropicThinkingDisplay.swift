@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterAnthropicThinkingDisplay: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let summarized = Self(rawValue: "summarized")
-  public static let omitted = Self(rawValue: "omitted")
-  public static let updates = Self(rawValue: "updates")
+public enum OpenRouterAnthropicThinkingDisplay: String, Codable, Hashable, Sendable {
+  case summarized = "summarized"
+  case omitted = "omitted"
+  case updates = "updates"
 }

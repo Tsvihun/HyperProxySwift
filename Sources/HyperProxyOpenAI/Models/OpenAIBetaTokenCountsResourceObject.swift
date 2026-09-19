@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIBetaTokenCountsResourceObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let responseInputTokens = Self(rawValue: "response.input_tokens")
+public enum OpenAIBetaTokenCountsResourceObject: String, Codable, Hashable, Sendable {
+  case responseInputTokens = "response.input_tokens"
 }

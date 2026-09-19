@@ -15,18 +15,18 @@ public struct AnthropicBetaManagedAgentsWebFetchToolConfigParams: Codable, Senda
   public var blockedDomains: [String]?
   public var enabled: Bool?
   public var maxContentTokens: Int?
-  public var name: String
+  public var name: AnthropicWebFetchName
   public var permissionPolicy: AnthropicBetaManagedAgentsPermissionPolicy?
-  public var typeModel: String?
+  public var kind: AnthropicWebFetchKind?
 
   public init(
-    name: String,
+    name: AnthropicWebFetchName = .webFetch,
     allowedDomains: [String]? = nil,
     blockedDomains: [String]? = nil,
     enabled: Bool? = nil,
     maxContentTokens: Int? = nil,
     permissionPolicy: AnthropicBetaManagedAgentsPermissionPolicy? = nil,
-    typeModel: String? = nil
+    kind: AnthropicWebFetchKind? = nil
   ) {
     self.allowedDomains = allowedDomains
     self.blockedDomains = blockedDomains
@@ -34,7 +34,7 @@ public struct AnthropicBetaManagedAgentsWebFetchToolConfigParams: Codable, Senda
     self.maxContentTokens = maxContentTokens
     self.name = name
     self.permissionPolicy = permissionPolicy
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct AnthropicBetaManagedAgentsWebFetchToolConfigParams: Codable, Senda
     case maxContentTokens = "max_content_tokens"
     case name
     case permissionPolicy = "permission_policy"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

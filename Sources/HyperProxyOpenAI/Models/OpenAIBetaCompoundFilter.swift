@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIBetaCompoundFilter: Codable, Sendable {
-  public var filters: [HyperProxyJSONValue]
-  public var typeModel: OpenAIBetaCompoundFilterTypeModel
+  public var filters: [OpenAIBetaCompoundFilterFiltersItem]
+  public var kind: OpenAIBetaCompoundFilterKind
 
   public init(
-    filters: [HyperProxyJSONValue],
-    typeModel: OpenAIBetaCompoundFilterTypeModel
+    filters: [OpenAIBetaCompoundFilterFiltersItem],
+    kind: OpenAIBetaCompoundFilterKind
   ) {
     self.filters = filters
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case filters
-    case typeModel = "type"
+    case kind = "type"
   }
 }

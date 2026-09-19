@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct DeepSeekNamedToolChoice: Codable, Sendable {
   public var name: String?
-  public var typeModel: DeepSeekToolType
+  public var kind: DeepSeekToolType
 
   public init(
-    typeModel: DeepSeekToolType,
+    kind: DeepSeekToolType,
     name: String? = nil
   ) {
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

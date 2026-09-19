@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIOutputTextResource: Codable, Sendable {
   public var text: String
-  public var typeModel: OpenAIOutputTextResourceTypeModel
+  public var kind: OpenAIOutputTextResourceKind
 
   public init(
     text: String,
-    typeModel: OpenAIOutputTextResourceTypeModel
+    kind: OpenAIOutputTextResourceKind
   ) {
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

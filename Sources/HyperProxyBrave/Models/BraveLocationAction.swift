@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct BraveLocationAction: Codable, Sendable {
-  public var typeModel: String?
+  public var kind: String?
   public var url: String?
 
   public init(
-    typeModel: String? = nil,
+    kind: String? = nil,
     url: String? = nil
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

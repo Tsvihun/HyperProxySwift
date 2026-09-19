@@ -10,16 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaManagedAgentsMemoryVersionOperation: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let created = Self(rawValue: "created")
-  public static let modified = Self(rawValue: "modified")
-  public static let deleted = Self(rawValue: "deleted")
+public enum AnthropicBetaManagedAgentsMemoryVersionOperation: String, Codable, Hashable, Sendable {
+  case created = "created"
+  case modified = "modified"
+  case deleted = "deleted"
 }

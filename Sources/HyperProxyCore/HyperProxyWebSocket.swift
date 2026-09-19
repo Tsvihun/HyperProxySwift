@@ -51,7 +51,42 @@ public final class HyperProxyWebSocket: @unchecked Sendable {
   }
 
   public func receive() async throws -> URLSessionWebSocketTask.Message {
-    try await self.task.receive()
+    do {
+      return try await self.task.receive()
+    } catch {
+      throw Self.translate(error, task: self.task)
+    }
+  }
+
+  /// The close code the socket ended with, `.invalid` while it is open.
+  public var closeCode: URLSessionWebSocketTask.CloseCode {
+    self.task.closeCode
+  }
+
+  /// The close reason as text, when the peer sent one.
+  public var closeReason: String? {
+    self.task.closeReason.flatMap { String(data: $0, encoding: .utf8) }
+  }
+
+  /// The gateway's refusal when it closed this socket with one of its own
+  /// close codes (for example 4029 `plan_quota_exceeded`); nil otherwise.
+  public var gatewayRejection: HyperProxyGatewayRejection? {
+    HyperProxyGatewayRejection(closeCode: self.task.closeCode.rawValue, reason: self.closeReason)
+  }
+
+  // URLSession reports a peer close as a generic transport error. When the
+  // task's close code is an application code, surface the gateway's reason
+  // instead so callers can react to quota, budget, and key problems.
+  static func translate(_ error: Error, task: URLSessionWebSocketTask) -> Error {
+    let code = task.closeCode.rawValue
+    guard (4000..<5000).contains(code) else {
+      return error
+    }
+    let reason = task.closeReason.flatMap { String(data: $0, encoding: .utf8) }
+    if let rejection = HyperProxyGatewayRejection(closeCode: code, reason: reason) {
+      return HyperProxyWebSocketError.gatewayRejected(rejection)
+    }
+    return HyperProxyWebSocketError.closed(code: code, reason: reason)
   }
 
   public func receiveJSON<Value: Decodable & Sendable>(
@@ -113,7 +148,7 @@ public final class HyperProxyWebSocket: @unchecked Sendable {
           if Task.isCancelled {
             continuation.finish()
           } else {
-            continuation.finish(throwing: error)
+            continuation.finish(throwing: Self.translate(error, task: task))
           }
         }
       }

@@ -20,7 +20,7 @@ public struct OpenRouterWebSearchPlugin: Codable, Sendable {
   public var maxUses: Int?
   public var mode: OpenRouterWebSearchMode?
   public var searchPrompt: String?
-  public var userLocation: HyperProxyJSONValue?
+  public var userLocation: OpenRouterWebSearchUserLocation?
 
   public init(
     id: OpenRouterWebSearchPluginId,
@@ -32,7 +32,7 @@ public struct OpenRouterWebSearchPlugin: Codable, Sendable {
     maxUses: Int? = nil,
     mode: OpenRouterWebSearchMode? = nil,
     searchPrompt: String? = nil,
-    userLocation: HyperProxyJSONValue? = nil
+    userLocation: OpenRouterWebSearchUserLocation? = nil
   ) {
     self.enabled = enabled
     self.engine = engine

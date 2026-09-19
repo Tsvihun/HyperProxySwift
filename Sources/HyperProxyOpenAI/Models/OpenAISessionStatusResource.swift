@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAISessionStatusResource: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let idle = Self(rawValue: "idle")
-  public static let inProgress = Self(rawValue: "in_progress")
-  public static let requiresAction = Self(rawValue: "requires_action")
-  public static let failed = Self(rawValue: "failed")
+public enum OpenAISessionStatusResource: String, Codable, Hashable, Sendable {
+  case idle = "idle"
+  case inProgress = "in_progress"
+  case requiresAction = "requires_action"
+  case failed = "failed"
 }

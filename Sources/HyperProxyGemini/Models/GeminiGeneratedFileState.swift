@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiGeneratedFileState: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let sTATEUNSPECIFIED = Self(rawValue: "STATE_UNSPECIFIED")
-  public static let gENERATING = Self(rawValue: "GENERATING")
-  public static let gENERATED = Self(rawValue: "GENERATED")
-  public static let fAILED = Self(rawValue: "FAILED")
+public enum GeminiGeneratedFileState: String, Codable, Hashable, Sendable {
+  case sTATEUNSPECIFIED = "STATE_UNSPECIFIED"
+  case gENERATING = "GENERATING"
+  case gENERATED = "GENERATED"
+  case fAILED = "FAILED"
 }

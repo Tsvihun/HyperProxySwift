@@ -24,6 +24,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
   public var anthropic2: [String: HyperProxyJSONValue]?
   public var anyscale: [String: HyperProxyJSONValue]?
   public var arceeAi: [String: HyperProxyJSONValue]?
+  public var assemblyai: [String: HyperProxyJSONValue]?
   public var atlasCloud: [String: HyperProxyJSONValue]?
   public var atoma: [String: HyperProxyJSONValue]?
   public var avian: [String: HyperProxyJSONValue]?
@@ -141,7 +142,9 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
   public var thinkingmachines: [String: HyperProxyJSONValue]?
   public var together: [String: HyperProxyJSONValue]?
   public var togetherLite: [String: HyperProxyJSONValue]?
+  public var typesafe: [String: HyperProxyJSONValue]?
   public var ubicloud: [String: HyperProxyJSONValue]?
+  public var unbiased: [String: HyperProxyJSONValue]?
   public var upstage: [String: HyperProxyJSONValue]?
   public var venice: [String: HyperProxyJSONValue]?
   public var voyageai: [String: HyperProxyJSONValue]?
@@ -166,6 +169,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     anthropic2: [String: HyperProxyJSONValue]? = nil,
     anyscale: [String: HyperProxyJSONValue]? = nil,
     arceeAi: [String: HyperProxyJSONValue]? = nil,
+    assemblyai: [String: HyperProxyJSONValue]? = nil,
     atlasCloud: [String: HyperProxyJSONValue]? = nil,
     atoma: [String: HyperProxyJSONValue]? = nil,
     avian: [String: HyperProxyJSONValue]? = nil,
@@ -283,7 +287,9 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     thinkingmachines: [String: HyperProxyJSONValue]? = nil,
     together: [String: HyperProxyJSONValue]? = nil,
     togetherLite: [String: HyperProxyJSONValue]? = nil,
+    typesafe: [String: HyperProxyJSONValue]? = nil,
     ubicloud: [String: HyperProxyJSONValue]? = nil,
+    unbiased: [String: HyperProxyJSONValue]? = nil,
     upstage: [String: HyperProxyJSONValue]? = nil,
     venice: [String: HyperProxyJSONValue]? = nil,
     voyageai: [String: HyperProxyJSONValue]? = nil,
@@ -307,6 +313,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     self.anthropic2 = anthropic2
     self.anyscale = anyscale
     self.arceeAi = arceeAi
+    self.assemblyai = assemblyai
     self.atlasCloud = atlasCloud
     self.atoma = atoma
     self.avian = avian
@@ -424,7 +431,9 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     self.thinkingmachines = thinkingmachines
     self.together = together
     self.togetherLite = togetherLite
+    self.typesafe = typesafe
     self.ubicloud = ubicloud
+    self.unbiased = unbiased
     self.upstage = upstage
     self.venice = venice
     self.voyageai = voyageai
@@ -450,6 +459,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     case anthropic2 = "anthropic/2"
     case anyscale
     case arceeAi = "arcee-ai"
+    case assemblyai
     case atlasCloud = "atlas-cloud"
     case atoma
     case avian
@@ -567,7 +577,9 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     case thinkingmachines
     case together
     case togetherLite = "together-lite"
+    case typesafe
     case ubicloud
+    case unbiased
     case upstage
     case venice
     case voyageai

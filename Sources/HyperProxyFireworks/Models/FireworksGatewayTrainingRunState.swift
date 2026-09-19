@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksGatewayTrainingRunState: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let sTATEUNSPECIFIED = Self(rawValue: "STATE_UNSPECIFIED")
-  public static let pENDINGMATERIALIZATION = Self(rawValue: "PENDING_MATERIALIZATION")
-  public static let rEADY = Self(rawValue: "READY")
-  public static let fAILED = Self(rawValue: "FAILED")
-  public static let eXPIRED = Self(rawValue: "EXPIRED")
+public enum FireworksGatewayTrainingRunState: String, Codable, Hashable, Sendable {
+  case sTATEUNSPECIFIED = "STATE_UNSPECIFIED"
+  case pENDINGMATERIALIZATION = "PENDING_MATERIALIZATION"
+  case rEADY = "READY"
+  case fAILED = "FAILED"
+  case eXPIRED = "EXPIRED"
 }

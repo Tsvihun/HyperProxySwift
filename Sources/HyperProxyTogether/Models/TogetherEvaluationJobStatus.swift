@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherEvaluationJobStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let pending = Self(rawValue: "pending")
-  public static let queued = Self(rawValue: "queued")
-  public static let running = Self(rawValue: "running")
-  public static let completed = Self(rawValue: "completed")
-  public static let error = Self(rawValue: "error")
-  public static let userError = Self(rawValue: "user_error")
+public enum TogetherEvaluationJobStatus: String, Codable, Hashable, Sendable {
+  case pending = "pending"
+  case queued = "queued"
+  case running = "running"
+  case completed = "completed"
+  case error = "error"
+  case userError = "user_error"
 }

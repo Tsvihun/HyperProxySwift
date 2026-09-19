@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsKnowledgeBaseToolConfig: Codable, Sendable {
   public var enabledStrategies: [ElevenLabsSearchStrategy]?
-  public var systemToolType: String?
+  public var systemToolType: ElevenLabsKnowledgeBaseSystemToolType?
 
   public init(
     enabledStrategies: [ElevenLabsSearchStrategy]? = nil,
-    systemToolType: String? = nil
+    systemToolType: ElevenLabsKnowledgeBaseSystemToolType? = nil
   ) {
     self.enabledStrategies = enabledStrategies
     self.systemToolType = systemToolType

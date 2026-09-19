@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaMessagesUsageReportContextWindow: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let value0200k = Self(rawValue: "0-200k")
-  public static let value200k1M = Self(rawValue: "200k-1M")
+public enum AnthropicBetaMessagesUsageReportContextWindow: String, Codable, Hashable, Sendable {
+  case value0200k = "0-200k"
+  case value200k1M = "200k-1M"
 }

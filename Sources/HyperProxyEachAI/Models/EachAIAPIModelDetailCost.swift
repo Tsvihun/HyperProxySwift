@@ -19,7 +19,7 @@ public struct EachAIAPIModelDetailCost: Codable, Sendable {
   public var max: Double?
   public var min: Double?
   public var rows: [EachAIAPIModelDetailCostRowsItem]
-  public var typeModel: EachAIAPIModelDetailCostTypeModel
+  public var kind: EachAIAPIModelDetailCostKind
   public var unit: EachAIAPIModelDetailCostUnit?
 
   public init(
@@ -31,7 +31,7 @@ public struct EachAIAPIModelDetailCost: Codable, Sendable {
     max: Double?,
     min: Double?,
     rows: [EachAIAPIModelDetailCostRowsItem],
-    typeModel: EachAIAPIModelDetailCostTypeModel,
+    kind: EachAIAPIModelDetailCostKind,
     unit: EachAIAPIModelDetailCostUnit?
   ) {
     self.amount = amount
@@ -42,7 +42,7 @@ public struct EachAIAPIModelDetailCost: Codable, Sendable {
     self.max = max
     self.min = min
     self.rows = rows
-    self.typeModel = typeModel
+    self.kind = kind
     self.unit = unit
   }
 
@@ -55,7 +55,7 @@ public struct EachAIAPIModelDetailCost: Codable, Sendable {
     case max
     case min
     case rows
-    case typeModel = "type"
+    case kind = "type"
     case unit
   }
 }

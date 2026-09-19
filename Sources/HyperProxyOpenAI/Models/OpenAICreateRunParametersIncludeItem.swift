@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAICreateRunParametersIncludeItem: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let stepDetailsToolCallsFileSearchResultsContent = Self(
-    rawValue: "step_details.tool_calls[*].file_search.results[*].content")
+public enum OpenAICreateRunParametersIncludeItem: String, Codable, Hashable, Sendable {
+  case stepDetailsToolCallsFileSearchResultsContent =
+    "step_details.tool_calls[*].file_search.results[*].content"
 }

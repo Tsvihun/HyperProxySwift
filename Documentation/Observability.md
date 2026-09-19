@@ -39,8 +39,8 @@ secrets or user content in trace labels. Calling `.prompt` or `.trace` again rep
 previous group of headers, including differently cased names. `.preset("slug")` clears
 previous version, environment and variable controls.
 
-Direct provider mode strips all `X-HyperProxy-*` and `aiproxy-*` headers, including
-caller-supplied headers and security proofs. Gateway presets and fallbacks need the gateway;
+Direct provider mode strips all HyperProxy and compatible legacy gateway headers,
+including caller-supplied headers and security proofs. Gateway presets and fallbacks need the gateway;
 they do not execute locally when the transport is direct. Provider authorization is preserved.
 
 ## Direct provider calls: external metrics

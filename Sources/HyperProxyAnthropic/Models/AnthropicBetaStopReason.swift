@@ -10,19 +10,13 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaStopReason: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let endTurn = Self(rawValue: "end_turn")
-  public static let maxTokens = Self(rawValue: "max_tokens")
-  public static let stopSequence = Self(rawValue: "stop_sequence")
-  public static let toolUse = Self(rawValue: "tool_use")
-  public static let pauseTurn = Self(rawValue: "pause_turn")
-  public static let compaction = Self(rawValue: "compaction")
-  public static let refusal = Self(rawValue: "refusal")
-  public static let modelContextWindowExceeded = Self(rawValue: "model_context_window_exceeded")
+public enum AnthropicBetaStopReason: String, Codable, Hashable, Sendable {
+  case endTurn = "end_turn"
+  case maxTokens = "max_tokens"
+  case stopSequence = "stop_sequence"
+  case toolUse = "tool_use"
+  case pauseTurn = "pause_turn"
+  case compaction = "compaction"
+  case refusal = "refusal"
+  case modelContextWindowExceeded = "model_context_window_exceeded"
 }

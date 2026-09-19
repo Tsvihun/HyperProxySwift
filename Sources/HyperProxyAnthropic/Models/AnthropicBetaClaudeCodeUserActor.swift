@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicBetaClaudeCodeUserActor: Codable, Sendable {
   public var emailAddress: String
-  public var typeModel: String
+  public var kind: AnthropicUserActorKind
 
   public init(
     emailAddress: String,
-    typeModel: String
+    kind: AnthropicUserActorKind = .userActor
   ) {
     self.emailAddress = emailAddress
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case emailAddress = "email_address"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -17,7 +17,7 @@ public struct OpenAIFineTuningJobEvent: Codable, Sendable {
   public var level: OpenAIFineTuningJobEventLevel
   public var message: String
   public var object: OpenAIFineTuningJobEventObject
-  public var typeModel: OpenAIFineTuningJobEventTypeModel?
+  public var kind: OpenAIFineTuningJobEventKind?
 
   public init(
     createdAt: Int,
@@ -26,7 +26,7 @@ public struct OpenAIFineTuningJobEvent: Codable, Sendable {
     message: String,
     object: OpenAIFineTuningJobEventObject,
     data: HyperProxyJSONValue? = nil,
-    typeModel: OpenAIFineTuningJobEventTypeModel? = nil
+    kind: OpenAIFineTuningJobEventKind? = nil
   ) {
     self.createdAt = createdAt
     self.data = data
@@ -34,7 +34,7 @@ public struct OpenAIFineTuningJobEvent: Codable, Sendable {
     self.level = level
     self.message = message
     self.object = object
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenAIFineTuningJobEvent: Codable, Sendable {
     case level
     case message
     case object
-    case typeModel = "type"
+    case kind = "type"
   }
 }

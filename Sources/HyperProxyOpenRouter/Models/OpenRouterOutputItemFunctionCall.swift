@@ -12,38 +12,42 @@ import HyperProxyCore
 
 public struct OpenRouterOutputItemFunctionCall: Codable, Sendable {
   public var arguments: String
+  public var async: Bool?
   public var callId: String
   public var id: String?
   public var name: String
   public var namespace: String?
-  public var status: HyperProxyJSONValue?
-  public var typeModel: OpenRouterOutputItemFunctionCallTypeModel
+  public var status: OpenRouterOutputItemFunctionCallStatus?
+  public var kind: OpenRouterOutputItemFunctionCallKind
 
   public init(
     arguments: String,
     callId: String,
     name: String,
-    typeModel: OpenRouterOutputItemFunctionCallTypeModel,
+    kind: OpenRouterOutputItemFunctionCallKind,
+    async: Bool? = nil,
     id: String? = nil,
     namespace: String? = nil,
-    status: HyperProxyJSONValue? = nil
+    status: OpenRouterOutputItemFunctionCallStatus? = nil
   ) {
     self.arguments = arguments
+    self.async = async
     self.callId = callId
     self.id = id
     self.name = name
     self.namespace = namespace
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case arguments
+    case async
     case callId = "call_id"
     case id
     case name
     case namespace
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

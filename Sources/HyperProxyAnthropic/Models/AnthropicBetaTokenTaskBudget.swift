@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct AnthropicBetaTokenTaskBudget: Codable, Sendable {
   public var remaining: Int?
   public var total: Int
-  public var typeModel: String
+  public var kind: AnthropicTokensKind
 
   public init(
     total: Int,
-    typeModel: String,
+    kind: AnthropicTokensKind = .tokens,
     remaining: Int? = nil
   ) {
     self.remaining = remaining
     self.total = total
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case remaining
     case total
-    case typeModel = "type"
+    case kind = "type"
   }
 }

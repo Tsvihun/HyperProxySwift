@@ -10,4 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public typealias TogetherChatCompletionUserMessageContentMultimodal = [HyperProxyJSONValue]
+public typealias TogetherChatCompletionUserMessageContentMultimodal =
+  [TogetherChatCompletionUserMessageContentMultimodalItem]

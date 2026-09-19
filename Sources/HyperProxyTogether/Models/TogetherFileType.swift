@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherFileType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let csv = Self(rawValue: "csv")
-  public static let jsonl = Self(rawValue: "jsonl")
-  public static let parquet = Self(rawValue: "parquet")
+public enum TogetherFileType: String, Codable, Hashable, Sendable {
+  case csv = "csv"
+  case jsonl = "jsonl"
+  case parquet = "parquet"
 }

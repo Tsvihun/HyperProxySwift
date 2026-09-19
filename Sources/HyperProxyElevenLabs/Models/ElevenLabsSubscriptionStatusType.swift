@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsSubscriptionStatusType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let trialing = Self(rawValue: "trialing")
-  public static let active = Self(rawValue: "active")
-  public static let incomplete = Self(rawValue: "incomplete")
-  public static let pastDue = Self(rawValue: "past_due")
-  public static let free = Self(rawValue: "free")
-  public static let freeDisabled = Self(rawValue: "free_disabled")
+public enum ElevenLabsSubscriptionStatusType: String, Codable, Hashable, Sendable {
+  case trialing = "trialing"
+  case active = "active"
+  case incomplete = "incomplete"
+  case pastDue = "past_due"
+  case free = "free"
+  case freeDisabled = "free_disabled"
 }

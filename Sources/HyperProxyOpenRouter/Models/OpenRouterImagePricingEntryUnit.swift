@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterImagePricingEntryUnit: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let request = Self(rawValue: "request")
-  public static let image = Self(rawValue: "image")
-  public static let megapixel = Self(rawValue: "megapixel")
-  public static let token = Self(rawValue: "token")
+public enum OpenRouterImagePricingEntryUnit: String, Codable, Hashable, Sendable {
+  case request = "request"
+  case image = "image"
+  case megapixel = "megapixel"
+  case token = "token"
 }

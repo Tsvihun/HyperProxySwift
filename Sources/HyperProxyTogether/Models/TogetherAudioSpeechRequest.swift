@@ -15,7 +15,7 @@ public struct TogetherAudioSpeechRequest: Codable, Sendable {
   public var extraParams: TogetherAudioSpeechRequestExtraParams?
   public var input: String
   public var language: String?
-  public var model: HyperProxyJSONValue
+  public var model: TogetherAudioSpeechRequestModel
   public var responseEncoding: TogetherAudioSpeechRequestResponseEncoding?
   public var responseFormat: TogetherAudioSpeechRequestResponseFormat?
   public var sampleRate: Int?
@@ -24,7 +24,7 @@ public struct TogetherAudioSpeechRequest: Codable, Sendable {
 
   public init(
     input: String,
-    model: HyperProxyJSONValue,
+    model: TogetherAudioSpeechRequestModel,
     voice: String,
     bitRate: TogetherAudioSpeechRequestBitRate? = nil,
     extraParams: TogetherAudioSpeechRequestExtraParams? = nil,

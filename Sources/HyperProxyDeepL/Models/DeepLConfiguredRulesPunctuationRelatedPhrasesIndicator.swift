@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesPunctuationRelatedPhrasesIndicator: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesPunctuationRelatedPhrasesIndicator: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useComma = Self(rawValue: "use_comma")
-  public static let useHyphen = Self(rawValue: "use_hyphen")
-  public static let useMiddleDot = Self(rawValue: "use_middle_dot")
+  case useComma = "use_comma"
+  case useHyphen = "use_hyphen"
+  case useMiddleDot = "use_middle_dot"
 }

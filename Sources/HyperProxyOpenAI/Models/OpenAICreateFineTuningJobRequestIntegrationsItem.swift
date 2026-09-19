@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAICreateFineTuningJobRequestIntegrationsItem: Codable, Sendable {
-  public var typeModel: OpenAICreateFineTuningJobRequestIntegrationsItemTypeModelOneOf1
+  public var kind: OpenAICreateFineTuningJobRequestIntegrationsItemKindOneOf1
   public var wandb: OpenAICreateFineTuningJobRequestIntegrationsItemWandb
 
   public init(
-    typeModel: OpenAICreateFineTuningJobRequestIntegrationsItemTypeModelOneOf1,
+    kind: OpenAICreateFineTuningJobRequestIntegrationsItemKindOneOf1,
     wandb: OpenAICreateFineTuningJobRequestIntegrationsItemWandb
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
     self.wandb = wandb
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
     case wandb
   }
 }

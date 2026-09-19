@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralTempoTraceScopeKind: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let sPANKINDINTERNAL = Self(rawValue: "SPAN_KIND_INTERNAL")
-  public static let sPANKINDSERVER = Self(rawValue: "SPAN_KIND_SERVER")
-  public static let sPANKINDCLIENT = Self(rawValue: "SPAN_KIND_CLIENT")
+public enum MistralTempoTraceScopeKind: String, Codable, Hashable, Sendable {
+  case sPANKINDINTERNAL = "SPAN_KIND_INTERNAL"
+  case sPANKINDSERVER = "SPAN_KIND_SERVER"
+  case sPANKINDCLIENT = "SPAN_KIND_CLIENT"
 }

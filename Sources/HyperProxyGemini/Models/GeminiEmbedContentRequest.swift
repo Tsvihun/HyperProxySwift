@@ -11,16 +11,16 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiEmbedContentRequest: Codable, Sendable {
-  public var content: HyperProxyJSONValue?
-  public var embedContentConfig: HyperProxyJSONValue?
+  public var content: GeminiContent?
+  public var embedContentConfig: GeminiEmbedContentConfig?
   public var model: String?
   public var outputDimensionality: Int?
   public var taskType: GeminiEmbedContentRequestTaskType?
   public var title: String?
 
   public init(
-    content: HyperProxyJSONValue? = nil,
-    embedContentConfig: HyperProxyJSONValue? = nil,
+    content: GeminiContent? = nil,
+    embedContentConfig: GeminiEmbedContentConfig? = nil,
     model: String? = nil,
     outputDimensionality: Int? = nil,
     taskType: GeminiEmbedContentRequestTaskType? = nil,

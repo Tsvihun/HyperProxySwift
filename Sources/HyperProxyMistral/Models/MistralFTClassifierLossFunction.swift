@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralFTClassifierLossFunction: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let singleClass = Self(rawValue: "single_class")
-  public static let multiClass = Self(rawValue: "multi_class")
+public enum MistralFTClassifierLossFunction: String, Codable, Hashable, Sendable {
+  case singleClass = "single_class"
+  case multiClass = "multi_class"
 }

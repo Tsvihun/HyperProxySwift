@@ -14,24 +14,24 @@ public struct ElevenLabsWhatsAppTemplateButtonComponentParams: Codable, Sendable
   public var index: Int
   public var parameters: [ElevenLabsWhatsAppTemplateTextParam]
   public var subType: String
-  public var typeModel: String?
+  public var kind: ElevenLabsButtonKind?
 
   public init(
     index: Int,
     parameters: [ElevenLabsWhatsAppTemplateTextParam],
     subType: String,
-    typeModel: String? = nil
+    kind: ElevenLabsButtonKind? = nil
   ) {
     self.index = index
     self.parameters = parameters
     self.subType = subType
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case index
     case parameters
     case subType = "sub_type"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

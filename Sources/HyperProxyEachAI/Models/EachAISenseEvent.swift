@@ -48,14 +48,14 @@ public struct EachAISenseEvent: Codable, Sendable {
   public var total: Int?
   public var totalSteps: Int?
   public var totalTimeMs: Int64?
-  public var typeModel: EachAISenseEventType
+  public var kind: EachAISenseEventType
   public var url: String?
   public var versionId: String?
   public var workflowId: String?
   public var workflowName: String?
 
   public init(
-    typeModel: EachAISenseEventType,
+    kind: EachAISenseEventType,
     allOutputs: EachAISenseJSONObject? = nil,
     citations: [EachAISenseCitation]? = nil,
     completedSteps: Int? = nil,
@@ -135,7 +135,7 @@ public struct EachAISenseEvent: Codable, Sendable {
     self.total = total
     self.totalSteps = totalSteps
     self.totalTimeMs = totalTimeMs
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
     self.versionId = versionId
     self.workflowId = workflowId
@@ -180,7 +180,7 @@ public struct EachAISenseEvent: Codable, Sendable {
     case total
     case totalSteps = "total_steps"
     case totalTimeMs = "total_time_ms"
-    case typeModel = "type"
+    case kind = "type"
     case url
     case versionId = "version_id"
     case workflowId = "workflow_id"

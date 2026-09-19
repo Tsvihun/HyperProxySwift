@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIRunObjectRequiredAction: Codable, Sendable {
   public var submitToolOutputs: OpenAIRunObjectRequiredActionSubmitToolOutputs
-  public var typeModel: OpenAIRunObjectRequiredActionTypeModel
+  public var kind: OpenAIRunObjectRequiredActionKind
 
   public init(
     submitToolOutputs: OpenAIRunObjectRequiredActionSubmitToolOutputs,
-    typeModel: OpenAIRunObjectRequiredActionTypeModel
+    kind: OpenAIRunObjectRequiredActionKind
   ) {
     self.submitToolOutputs = submitToolOutputs
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case submitToolOutputs = "submit_tool_outputs"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

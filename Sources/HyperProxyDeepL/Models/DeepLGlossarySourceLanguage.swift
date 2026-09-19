@@ -10,44 +10,38 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLGlossarySourceLanguage: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let ar = Self(rawValue: "ar")
-  public static let bg = Self(rawValue: "bg")
-  public static let cs = Self(rawValue: "cs")
-  public static let da = Self(rawValue: "da")
-  public static let de = Self(rawValue: "de")
-  public static let el = Self(rawValue: "el")
-  public static let en = Self(rawValue: "en")
-  public static let es = Self(rawValue: "es")
-  public static let et = Self(rawValue: "et")
-  public static let fi = Self(rawValue: "fi")
-  public static let fr = Self(rawValue: "fr")
-  public static let he = Self(rawValue: "he")
-  public static let hu = Self(rawValue: "hu")
-  public static let id = Self(rawValue: "id")
-  public static let it = Self(rawValue: "it")
-  public static let ja = Self(rawValue: "ja")
-  public static let ko = Self(rawValue: "ko")
-  public static let lt = Self(rawValue: "lt")
-  public static let lv = Self(rawValue: "lv")
-  public static let nb = Self(rawValue: "nb")
-  public static let nl = Self(rawValue: "nl")
-  public static let pl = Self(rawValue: "pl")
-  public static let pt = Self(rawValue: "pt")
-  public static let ro = Self(rawValue: "ro")
-  public static let ru = Self(rawValue: "ru")
-  public static let sk = Self(rawValue: "sk")
-  public static let sl = Self(rawValue: "sl")
-  public static let sv = Self(rawValue: "sv")
-  public static let th = Self(rawValue: "th")
-  public static let tr = Self(rawValue: "tr")
-  public static let uk = Self(rawValue: "uk")
-  public static let vi = Self(rawValue: "vi")
-  public static let zh = Self(rawValue: "zh")
+public enum DeepLGlossarySourceLanguage: String, Codable, Hashable, Sendable {
+  case ar = "ar"
+  case bg = "bg"
+  case cs = "cs"
+  case da = "da"
+  case de = "de"
+  case el = "el"
+  case en = "en"
+  case es = "es"
+  case et = "et"
+  case fi = "fi"
+  case fr = "fr"
+  case he = "he"
+  case hu = "hu"
+  case id = "id"
+  case it = "it"
+  case ja = "ja"
+  case ko = "ko"
+  case lt = "lt"
+  case lv = "lv"
+  case nb = "nb"
+  case nl = "nl"
+  case pl = "pl"
+  case pt = "pt"
+  case ro = "ro"
+  case ru = "ru"
+  case sk = "sk"
+  case sl = "sl"
+  case sv = "sv"
+  case th = "th"
+  case tr = "tr"
+  case uk = "uk"
+  case vi = "vi"
+  case zh = "zh"
 }

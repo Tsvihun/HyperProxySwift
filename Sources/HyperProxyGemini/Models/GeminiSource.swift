@@ -15,20 +15,20 @@ public struct GeminiSource: Codable, Sendable {
   public var encoding: String?
   public var source: String?
   public var target: String?
-  public var typeModel: GeminiSourceTypeModel?
+  public var kind: GeminiSourceKind?
 
   public init(
     content: String? = nil,
     encoding: String? = nil,
     source: String? = nil,
     target: String? = nil,
-    typeModel: GeminiSourceTypeModel? = nil
+    kind: GeminiSourceKind? = nil
   ) {
     self.content = content
     self.encoding = encoding
     self.source = source
     self.target = target
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct GeminiSource: Codable, Sendable {
     case encoding
     case source
     case target
-    case typeModel = "type"
+    case kind = "type"
   }
 }

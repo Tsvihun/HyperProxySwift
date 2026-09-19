@@ -14,8 +14,8 @@ public struct ElevenLabsTransferToNumberResultExotelSuccessModel: Codable, Senda
   public var agentMessage: String?
   public var note: String?
   public var reason: String?
-  public var resultType: String?
-  public var status: String?
+  public var resultType: ElevenLabsTransferToNumberExotelSuccessResultType?
+  public var status: ElevenLabsSuccessStatus?
   public var transferNumber: String
 
   public init(
@@ -23,8 +23,8 @@ public struct ElevenLabsTransferToNumberResultExotelSuccessModel: Codable, Senda
     agentMessage: String? = nil,
     note: String? = nil,
     reason: String? = nil,
-    resultType: String? = nil,
-    status: String? = nil
+    resultType: ElevenLabsTransferToNumberExotelSuccessResultType? = nil,
+    status: ElevenLabsSuccessStatus? = nil
   ) {
     self.agentMessage = agentMessage
     self.note = note

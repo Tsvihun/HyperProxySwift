@@ -22,13 +22,13 @@ public struct OpenRouterCreateObservabilityDestinationRequest: Codable, Sendable
   public var privacyMode: Bool?
   public var regions: [OpenRouterObservabilityDataRegionInput]?
   public var samplingRate: Double?
-  public var typeModel: OpenRouterCreateObservabilityDestinationRequestTypeModel
+  public var kind: OpenRouterCreateObservabilityDestinationRequestKind
   public var workspaceId: String?
 
   public init(
     config: [String: HyperProxyJSONValue],
     name: String,
-    typeModel: OpenRouterCreateObservabilityDestinationRequestTypeModel,
+    kind: OpenRouterCreateObservabilityDestinationRequestKind,
     apiKeyHashes: [String]? = nil,
     broadcastGenerationCost: Bool? = nil,
     broadcastGenerationIdentity: Bool? = nil,
@@ -51,7 +51,7 @@ public struct OpenRouterCreateObservabilityDestinationRequest: Codable, Sendable
     self.privacyMode = privacyMode
     self.regions = regions
     self.samplingRate = samplingRate
-    self.typeModel = typeModel
+    self.kind = kind
     self.workspaceId = workspaceId
   }
 
@@ -67,7 +67,7 @@ public struct OpenRouterCreateObservabilityDestinationRequest: Codable, Sendable
     case privacyMode = "privacy_mode"
     case regions
     case samplingRate = "sampling_rate"
-    case typeModel = "type"
+    case kind = "type"
     case workspaceId = "workspace_id"
   }
 }

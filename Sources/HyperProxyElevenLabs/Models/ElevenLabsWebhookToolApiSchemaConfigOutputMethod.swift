@@ -10,18 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsWebhookToolApiSchemaConfigOutputMethod: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let gET = Self(rawValue: "GET")
-  public static let pOST = Self(rawValue: "POST")
-  public static let pUT = Self(rawValue: "PUT")
-  public static let pATCH = Self(rawValue: "PATCH")
-  public static let dELETE = Self(rawValue: "DELETE")
+public enum ElevenLabsWebhookToolApiSchemaConfigOutputMethod: String, Codable, Hashable, Sendable {
+  case gET = "GET"
+  case pOST = "POST"
+  case pUT = "PUT"
+  case pATCH = "PATCH"
+  case dELETE = "DELETE"
 }

@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAILiveDelegationItemTargetOneOf2: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let responses = Self(rawValue: "responses")
+public enum OpenAILiveDelegationItemTargetOneOf2: String, Codable, Hashable, Sendable {
+  case responses = "responses"
 }

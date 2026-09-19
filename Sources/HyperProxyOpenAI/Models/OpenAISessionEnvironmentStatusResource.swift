@@ -10,17 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAISessionEnvironmentStatusResource: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let pending = Self(rawValue: "pending")
-  public static let ready = Self(rawValue: "ready")
-  public static let connected = Self(rawValue: "connected")
-  public static let disconnected = Self(rawValue: "disconnected")
-  public static let failed = Self(rawValue: "failed")
+public enum OpenAISessionEnvironmentStatusResource: String, Codable, Hashable, Sendable {
+  case pending = "pending"
+  case ready = "ready"
+  case connected = "connected"
+  case disconnected = "disconnected"
+  case failed = "failed"
 }

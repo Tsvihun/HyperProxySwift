@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct GroqResponseOutputReasoning: Codable, Sendable {
   public var id: String
   public var summary: [HyperProxyJSONValue]
-  public var typeModel: GroqResponseOutputReasoningTypeModel
+  public var kind: GroqResponseOutputReasoningKind
 
   public init(
     id: String,
     summary: [HyperProxyJSONValue],
-    typeModel: GroqResponseOutputReasoningTypeModel
+    kind: GroqResponseOutputReasoningKind
   ) {
     self.id = id
     self.summary = summary
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case id
     case summary
-    case typeModel = "type"
+    case kind = "type"
   }
 }

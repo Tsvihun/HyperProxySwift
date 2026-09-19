@@ -14,30 +14,30 @@ public struct OpenRouterProviderPreferences: Codable, Sendable {
   public var allowFallbacks: Bool?
   public var dataCollection: OpenRouterProviderPreferencesDataCollection?
   public var enforceDistillableText: Bool?
-  public var ignore: [HyperProxyJSONValue]?
+  public var ignore: [OpenRouterProviderPreferencesIgnoreItem]?
   public var maxPrice: OpenRouterProviderPreferencesMaxPrice?
-  public var only: [HyperProxyJSONValue]?
-  public var order: [HyperProxyJSONValue]?
+  public var only: [OpenRouterProviderPreferencesOnlyItem]?
+  public var order: [OpenRouterProviderPreferencesOrderItem]?
   public var preferredMaxLatency: OpenRouterPreferredMaxLatency?
   public var preferredMinThroughput: OpenRouterPreferredMinThroughput?
   public var quantizations: [OpenRouterQuantization]?
   public var requireParameters: Bool?
-  public var sort: HyperProxyJSONValue?
+  public var sort: OpenRouterProviderPreferencesSort?
   public var zdr: Bool?
 
   public init(
     allowFallbacks: Bool? = nil,
     dataCollection: OpenRouterProviderPreferencesDataCollection? = nil,
     enforceDistillableText: Bool? = nil,
-    ignore: [HyperProxyJSONValue]? = nil,
+    ignore: [OpenRouterProviderPreferencesIgnoreItem]? = nil,
     maxPrice: OpenRouterProviderPreferencesMaxPrice? = nil,
-    only: [HyperProxyJSONValue]? = nil,
-    order: [HyperProxyJSONValue]? = nil,
+    only: [OpenRouterProviderPreferencesOnlyItem]? = nil,
+    order: [OpenRouterProviderPreferencesOrderItem]? = nil,
     preferredMaxLatency: OpenRouterPreferredMaxLatency? = nil,
     preferredMinThroughput: OpenRouterPreferredMinThroughput? = nil,
     quantizations: [OpenRouterQuantization]? = nil,
     requireParameters: Bool? = nil,
-    sort: HyperProxyJSONValue? = nil,
+    sort: OpenRouterProviderPreferencesSort? = nil,
     zdr: Bool? = nil
   ) {
     self.allowFallbacks = allowFallbacks

@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicAllowedCaller: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let direct = Self(rawValue: "direct")
-  public static let codeExecution20250825 = Self(rawValue: "code_execution_20250825")
-  public static let codeExecution20260120 = Self(rawValue: "code_execution_20260120")
-  public static let codeExecution20260521 = Self(rawValue: "code_execution_20260521")
+public enum AnthropicAllowedCaller: String, Codable, Hashable, Sendable {
+  case direct = "direct"
+  case codeExecution20250825 = "code_execution_20250825"
+  case codeExecution20260120 = "code_execution_20260120"
+  case codeExecution20260521 = "code_execution_20260521"
 }

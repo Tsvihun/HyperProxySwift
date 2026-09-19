@@ -17,7 +17,7 @@ public struct ElevenLabsConversationHistoryExotelPhoneCallModel: Codable, Sendab
   public var externalNumber: String
   public var phoneNumberId: String
   public var streamSid: String
-  public var typeModel: String?
+  public var kind: ElevenLabsExotelKind?
 
   public init(
     agentNumber: String,
@@ -26,7 +26,7 @@ public struct ElevenLabsConversationHistoryExotelPhoneCallModel: Codable, Sendab
     externalNumber: String,
     phoneNumberId: String,
     streamSid: String,
-    typeModel: String? = nil
+    kind: ElevenLabsExotelKind? = nil
   ) {
     self.agentNumber = agentNumber
     self.callSid = callSid
@@ -34,7 +34,7 @@ public struct ElevenLabsConversationHistoryExotelPhoneCallModel: Codable, Sendab
     self.externalNumber = externalNumber
     self.phoneNumberId = phoneNumberId
     self.streamSid = streamSid
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct ElevenLabsConversationHistoryExotelPhoneCallModel: Codable, Sendab
     case externalNumber = "external_number"
     case phoneNumberId = "phone_number_id"
     case streamSid = "stream_sid"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

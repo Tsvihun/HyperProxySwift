@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIUpdateVectorStoreRequest: Codable, Sendable {
-  public var expiresAfter: HyperProxyJSONValue?
+  public var expiresAfter: OpenAIVectorStoreExpirationAfter?
   public var metadata: OpenAIMetadata?
   public var name: String?
 
   public init(
-    expiresAfter: HyperProxyJSONValue? = nil,
+    expiresAfter: OpenAIVectorStoreExpirationAfter? = nil,
     metadata: OpenAIMetadata? = nil,
     name: String? = nil
   ) {

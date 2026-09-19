@@ -11,17 +11,17 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralAdminOrganizationMemberUpdate: Codable, Sendable {
-  public var role: HyperProxyJSONValue?
+  public var role: MistralAdminOrganizationMemberUpdateRole?
   public var roleName: MistralAdminOrganizationMemberUpdateRoleNameAnyOf1?
   public var roleNames: [MistralAdminOrganizationMemberUpdateRoleNamesAnyOf1Item]?
-  public var roles: HyperProxyJSONValue?
+  public var roles: MistralAdminOrganizationMemberUpdateRoles?
   public var subscriptionTypes: [MistralAdminOrganizationMemberUpdateSubscriptionTypesAnyOf1Item]?
 
   public init(
-    role: HyperProxyJSONValue? = nil,
+    role: MistralAdminOrganizationMemberUpdateRole? = nil,
     roleName: MistralAdminOrganizationMemberUpdateRoleNameAnyOf1? = nil,
     roleNames: [MistralAdminOrganizationMemberUpdateRoleNamesAnyOf1Item]? = nil,
-    roles: HyperProxyJSONValue? = nil,
+    roles: MistralAdminOrganizationMemberUpdateRoles? = nil,
     subscriptionTypes: [MistralAdminOrganizationMemberUpdateSubscriptionTypesAnyOf1Item]? = nil
   ) {
     self.role = role

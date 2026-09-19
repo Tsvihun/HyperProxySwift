@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherRerankRequestModelAnyOf1: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let salesforceLlamaRankV1 = Self(rawValue: "Salesforce/Llama-Rank-v1")
+public enum TogetherRerankRequestModelAnyOf1: String, Codable, Hashable, Sendable {
+  case salesforceLlamaRankV1 = "Salesforce/Llama-Rank-v1"
 }

@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIRealtimeCallCreateRequest: Codable, Sendable {
   public var sdp: String
-  public var session: HyperProxyJSONValue?
+  public var session: OpenAIRealtimeSessionCreateRequestGA?
 
   public init(
     sdp: String,
-    session: HyperProxyJSONValue? = nil
+    session: OpenAIRealtimeSessionCreateRequestGA? = nil
   ) {
     self.sdp = sdp
     self.session = session

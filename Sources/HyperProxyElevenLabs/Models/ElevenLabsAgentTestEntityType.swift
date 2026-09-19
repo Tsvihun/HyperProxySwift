@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsAgentTestEntityType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let test = Self(rawValue: "test")
-  public static let folder = Self(rawValue: "folder")
+public enum ElevenLabsAgentTestEntityType: String, Codable, Hashable, Sendable {
+  case test = "test"
+  case folder = "folder"
 }

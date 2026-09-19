@@ -13,18 +13,20 @@ import HyperProxyCore
 public struct OpenRouterShellCallOutputItem: Codable, Sendable {
   public var callId: String
   public var containerId: String?
+  public var error: String?
   public var files: [OpenRouterShellCallOutputItemFilesItem]?
   public var id: String?
   public var maxOutputLength: Int?
   public var output: [OpenRouterShellCallOutputContent]
   public var status: OpenRouterToolCallStatus?
-  public var typeModel: OpenRouterShellCallOutputItemTypeModel
+  public var kind: OpenRouterShellCallOutputItemKind
 
   public init(
     callId: String,
     output: [OpenRouterShellCallOutputContent],
-    typeModel: OpenRouterShellCallOutputItemTypeModel,
+    kind: OpenRouterShellCallOutputItemKind,
     containerId: String? = nil,
+    error: String? = nil,
     files: [OpenRouterShellCallOutputItemFilesItem]? = nil,
     id: String? = nil,
     maxOutputLength: Int? = nil,
@@ -32,22 +34,24 @@ public struct OpenRouterShellCallOutputItem: Codable, Sendable {
   ) {
     self.callId = callId
     self.containerId = containerId
+    self.error = error
     self.files = files
     self.id = id
     self.maxOutputLength = maxOutputLength
     self.output = output
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case callId = "call_id"
     case containerId = "container_id"
+    case error
     case files
     case id
     case maxOutputLength = "max_output_length"
     case output
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

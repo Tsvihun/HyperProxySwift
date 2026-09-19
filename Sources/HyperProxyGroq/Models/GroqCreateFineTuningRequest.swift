@@ -14,24 +14,24 @@ public struct GroqCreateFineTuningRequest: Codable, Sendable {
   public var baseModel: String?
   public var inputFileId: String?
   public var name: String?
-  public var typeModel: String?
+  public var kind: String?
 
   public init(
     baseModel: String? = nil,
     inputFileId: String? = nil,
     name: String? = nil,
-    typeModel: String? = nil
+    kind: String? = nil
   ) {
     self.baseModel = baseModel
     self.inputFileId = inputFileId
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case baseModel = "base_model"
     case inputFileId = "input_file_id"
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

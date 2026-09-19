@@ -10,16 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherFineTunePreviewResponseDatasetFormat: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let general = Self(rawValue: "general")
-  public static let conversation = Self(rawValue: "conversation")
-  public static let instruction = Self(rawValue: "instruction")
+public enum TogetherFineTunePreviewResponseDatasetFormat: String, Codable, Hashable, Sendable {
+  case general = "general"
+  case conversation = "conversation"
+  case instruction = "instruction"
 }

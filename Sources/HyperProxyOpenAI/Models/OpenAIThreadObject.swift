@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct OpenAIThreadObject: Codable, Sendable {
   public var createdAt: Int
   public var id: String
-  public var metadata: OpenAIMetadata
+  public var metadata: OpenAIMetadata?
   public var object: OpenAIThreadObjectObject
   public var toolResources: OpenAIThreadObjectToolResourcesAnyOf1?
 
   public init(
     createdAt: Int,
     id: String,
-    metadata: OpenAIMetadata,
+    metadata: OpenAIMetadata?,
     object: OpenAIThreadObjectObject,
     toolResources: OpenAIThreadObjectToolResourcesAnyOf1?
   ) {

@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct GroqBatchRequestInputMethod: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let pOST = Self(rawValue: "POST")
+public enum GroqBatchRequestInputMethod: String, Codable, Hashable, Sendable {
+  case pOST = "POST"
 }

@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIOrganizationDataRetentionObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let organizationDataRetention = Self(rawValue: "organization.data_retention")
+public enum OpenAIOrganizationDataRetentionObject: String, Codable, Hashable, Sendable {
+  case organizationDataRetention = "organization.data_retention"
 }

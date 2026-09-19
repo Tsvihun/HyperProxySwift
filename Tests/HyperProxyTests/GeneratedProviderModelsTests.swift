@@ -10,6 +10,7 @@ import Foundation
 import HyperProxyAnthropic
 import HyperProxyBFL
 import HyperProxyBrave
+import HyperProxyCore
 import HyperProxyDeepSeek
 import HyperProxyEachAI
 import HyperProxyOpenAI
@@ -17,6 +18,65 @@ import Testing
 
 @Suite("Generated provider models")
 struct GeneratedProviderModelsTests {
+  @Test("JSON null schemas reject non-null values")
+  func jsonNullModel() throws {
+    _ = try JSONDecoder().decode(HyperProxyJSONNull.self, from: Data("null".utf8))
+    #expect(throws: DecodingError.self) {
+      try JSONDecoder().decode(HyperProxyJSONNull.self, from: Data(#""value""#.utf8))
+    }
+  }
+
+  @Test("OpenAI image edits expose every typed multipart field")
+  func openAIImageEditMultipartRequest() throws {
+    let request = OpenAIImageEditMultipartRequest(
+      images: [
+        .png(Data([0x01]), filename: "first.png"),
+        .webp(Data([0x02]), filename: "second.webp"),
+      ],
+      prompt: "Combine both references",
+      background: .transparent,
+      inputFidelity: .high,
+      mask: .png(Data([0x03]), filename: "mask.png"),
+      model: .gptImage15,
+      n: 2,
+      outputCompression: 90,
+      outputFormat: .webp,
+      partialImages: 3,
+      quality: .high,
+      responseFormat: .b64Json,
+      size: .value1024x1024,
+      stream: true,
+      user: "end-user-42"
+    )
+
+    let parts = try request.multipart().parts
+    let text: [String: String] = Dictionary(
+      uniqueKeysWithValues: parts.compactMap { part -> (String, String)? in
+        guard part.filename == nil, let value = String(data: part.data, encoding: .utf8) else {
+          return nil
+        }
+        return (part.name, value)
+      }
+    )
+
+    let imageFilenames = parts.filter { $0.name == "image[]" }.map(\.filename)
+    #expect(imageFilenames == ["first.png", "second.webp"])
+    #expect(parts.first { $0.name == "mask" }?.filename == "mask.png")
+    #expect(text["prompt"] == "Combine both references")
+    #expect(text["background"] == "transparent")
+    #expect(text["input_fidelity"] == "high")
+    #expect(text["model"] == "gpt-image-1.5")
+    #expect(text["n"] == "2")
+    #expect(text["output_compression"] == "90")
+    #expect(text["output_format"] == "webp")
+    #expect(text["partial_images"] == "3")
+    #expect(text["quality"] == "high")
+    #expect(text["response_format"] == "b64_json")
+    #expect(text["size"] == "1024x1024")
+    #expect(text["stream"] == "true")
+    #expect(text["user"] == "end-user-42")
+  }
+
   @Test("BFL FLUX 2 preserves references and webhook fields")
   func bflFlux2Request() throws {
     let request = BFLFlux2Inputs(
@@ -140,7 +200,7 @@ struct GeneratedProviderModelsTests {
 
     let failed = BFLGenerationResult(
       id: "request-2",
-      status: BFLStatusResponse(rawValue: "Failed")
+      status: .error
     )
     #expect(failed.isTerminal)
     #expect(!failed.isSuccessful)
@@ -149,14 +209,13 @@ struct GeneratedProviderModelsTests {
   @Test("BFL FLUX 3 request union enforces the provider mode")
   func bflFlux3VideoRequest() throws {
     let generated = BFLFlux3VideoT2VInputs(
-      mode: "incorrect-user-value",
       prompt: "A slow orbit around a glass sculpture",
-      aspectRatio: "16:9",
+      aspectRatio: .flux3VideoT2VInputsAspectRatioAnyOf1(.value169),
       duration: 8,
       generateAudio: true,
       resolution: .uhd,
       safetyTolerance: 2,
-      version: "3.0"
+      version: .latest
     )
     let request = BFLFlux3VideoRequest.textToVideo(generated)
     let data = try JSONEncoder().encode(request)
@@ -171,7 +230,7 @@ struct GeneratedProviderModelsTests {
     let remainingModes: [BFLFlux3VideoRequest] = [
       .imageToVideo(
         BFLFlux3VideoI2VInputs(
-          keyframes: ["frame_0": "https://example.com/start.png"],
+          keyframes: "https://example.com/start.png",
           prompt: "Continue the motion"
         )
       ),
@@ -197,7 +256,7 @@ struct GeneratedProviderModelsTests {
 
   @Test("Provider wire names round-trip through CodingKeys")
   func codingKeysPreserveOfficialFieldNames() throws {
-    let value = OpenAIAutoChunkingStrategyRequestParam(typeModel: .auto)
+    let value = OpenAIAutoChunkingStrategyRequestParam(kind: .auto)
 
     let data = try JSONEncoder().encode(value)
     let json = try #require(JSONSerialization.jsonObject(with: data) as? [String: String])
@@ -207,14 +266,14 @@ struct GeneratedProviderModelsTests {
       OpenAIAutoChunkingStrategyRequestParam.self,
       from: Data(#"{"type":"auto"}"#.utf8)
     )
-    #expect(decoded.typeModel == .auto)
+    #expect(decoded.kind == .auto)
   }
 
   @Test("Generated enums preserve provider values released after the snapshot")
   func forwardCompatibleEnumValues() throws {
     let futureValue = "future_stop_reason"
     let decoded = try JSONDecoder().decode(
-      AnthropicStopReason.self,
+      OpenAICreateImageEditRequestModel.self,
       from: Data(#""future_stop_reason""#.utf8)
     )
 
@@ -231,7 +290,7 @@ struct GeneratedProviderModelsTests {
       reasoning: DeepSeekReasoningConfig(effort: .high),
       stream: true,
       text: DeepSeekTextConfig(
-        format: DeepSeekTextFormat(typeModel: .jsonObject)
+        format: DeepSeekTextFormat(kind: .jsonObject)
       )
     )
 
@@ -279,7 +338,7 @@ struct GeneratedProviderModelsTests {
     )
     let event = try JSONDecoder().decode(EachAISenseEvent.self, from: data)
 
-    #expect(event.typeModel == .executionProgress)
+    #expect(event.kind == .executionProgress)
     #expect(event.stepId == "render")
     #expect(event.completedSteps == 2)
     #expect(event.totalSteps == 4)
@@ -326,7 +385,7 @@ struct GeneratedProviderModelsTests {
       goggles: ["https://example.com/first.goggle", "https://example.com/second.goggle"],
       includeFetchMetadata: true,
       resultFilter: "web,videos",
-      safesearch: "strict",
+      safesearch: .strict,
       units: .metric
     )
 
@@ -350,7 +409,7 @@ struct GeneratedProviderModelsTests {
     )
     let response = try JSONDecoder().decode(BraveVideoSearchResponse.self, from: data)
 
-    #expect(response.typeModel == "videos")
+    #expect(response.kind == "videos")
     #expect(response.results.first?.video?.duration == "12:34")
     #expect(response.results.first?.video?.views == 42)
     #expect(response.results.first?.video?.requiresSubscription == false)

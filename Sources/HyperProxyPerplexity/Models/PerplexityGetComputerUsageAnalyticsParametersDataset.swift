@@ -10,22 +10,16 @@
 import Foundation
 import HyperProxyCore
 
-public struct PerplexityGetComputerUsageAnalyticsParametersDataset: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum PerplexityGetComputerUsageAnalyticsParametersDataset: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let creditUsage = Self(rawValue: "credit_usage")
-  public static let connectors = Self(rawValue: "connectors")
-  public static let artifacts = Self(rawValue: "artifacts")
-  public static let skills = Self(rawValue: "skills")
-  public static let spaces = Self(rawValue: "spaces")
-  public static let workflows = Self(rawValue: "workflows")
-  public static let taskDurations = Self(rawValue: "task_durations")
-  public static let queryVolume = Self(rawValue: "query_volume")
-  public static let dailyActiveUsers = Self(rawValue: "daily_active_users")
+  case creditUsage = "credit_usage"
+  case connectors = "connectors"
+  case artifacts = "artifacts"
+  case skills = "skills"
+  case spaces = "spaces"
+  case workflows = "workflows"
+  case taskDurations = "task_durations"
+  case queryVolume = "query_volume"
+  case dailyActiveUsers = "daily_active_users"
 }

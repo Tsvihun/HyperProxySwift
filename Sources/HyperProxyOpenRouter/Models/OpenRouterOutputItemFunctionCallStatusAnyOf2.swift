@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterOutputItemFunctionCallStatusAnyOf2: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let incomplete = Self(rawValue: "incomplete")
+public enum OpenRouterOutputItemFunctionCallStatusAnyOf2: String, Codable, Hashable, Sendable {
+  case incomplete = "incomplete"
 }

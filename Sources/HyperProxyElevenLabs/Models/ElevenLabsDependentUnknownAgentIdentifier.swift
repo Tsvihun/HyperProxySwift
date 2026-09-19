@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct ElevenLabsDependentUnknownAgentIdentifier: Codable, Sendable {
   public var id: String
   public var referencedResourceIds: [String]?
-  public var typeModel: String?
+  public var kind: ElevenLabsUnknownKind?
 
   public init(
     id: String,
     referencedResourceIds: [String]? = nil,
-    typeModel: String? = nil
+    kind: ElevenLabsUnknownKind? = nil
   ) {
     self.id = id
     self.referencedResourceIds = referencedResourceIds
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case id
     case referencedResourceIds = "referenced_resource_ids"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -640,6 +640,10 @@ extension HyperProxyProviderService where Operation == MistralOperation {
   {
     self.call(.updateRunInfoV1RagIngestionPipelineConfigurationsIdRunInfoPut)
   }
+  /// `GET v1/service-accounts`
+  public var listServiceAccountsV1ServiceAccountsGet: HyperProxyProviderCall<MistralOperation> {
+    self.call(.listServiceAccountsV1ServiceAccountsGet)
+  }
   /// `GET v1/users/me`
   public var usersApiGetIdentity: HyperProxyProviderCall<MistralOperation> {
     self.call(.usersApiGetIdentity)

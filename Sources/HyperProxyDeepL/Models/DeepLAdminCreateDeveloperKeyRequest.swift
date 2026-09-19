@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepLAdminCreateDeveloperKeyRequest: Codable, Sendable {
-  public var label: DeepLApiKeyLabel?
+  public var label: String?
 
   public init(
-    label: DeepLApiKeyLabel? = nil
+    label: String? = nil
   ) {
     self.label = label
   }

@@ -12,27 +12,30 @@ import HyperProxyCore
 
 public struct OpenRouterOutputFunctionCallItem: Codable, Sendable {
   public var arguments: String
+  public var async: Bool?
   public var callId: String
   public var id: String?
   public var name: String
   public var namespace: String?
-  public var status: HyperProxyJSONValue?
+  public var status: OpenRouterOutputItemFunctionCallStatus?
   public var subagentId: String?
   public var subagentItems: [OpenRouterOutputFunctionCallItemAllOf2SubagentItemsItem]?
-  public var typeModel: OpenRouterOutputItemFunctionCallTypeModel
+  public var kind: OpenRouterOutputItemFunctionCallKind
 
   public init(
     arguments: String,
     callId: String,
     name: String,
-    typeModel: OpenRouterOutputItemFunctionCallTypeModel,
+    kind: OpenRouterOutputItemFunctionCallKind,
+    async: Bool? = nil,
     id: String? = nil,
     namespace: String? = nil,
-    status: HyperProxyJSONValue? = nil,
+    status: OpenRouterOutputItemFunctionCallStatus? = nil,
     subagentId: String? = nil,
     subagentItems: [OpenRouterOutputFunctionCallItemAllOf2SubagentItemsItem]? = nil
   ) {
     self.arguments = arguments
+    self.async = async
     self.callId = callId
     self.id = id
     self.name = name
@@ -40,11 +43,12 @@ public struct OpenRouterOutputFunctionCallItem: Codable, Sendable {
     self.status = status
     self.subagentId = subagentId
     self.subagentItems = subagentItems
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case arguments
+    case async
     case callId = "call_id"
     case id
     case name
@@ -52,6 +56,6 @@ public struct OpenRouterOutputFunctionCallItem: Codable, Sendable {
     case status
     case subagentId = "subagent_id"
     case subagentItems = "subagent_items"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

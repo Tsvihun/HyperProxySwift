@@ -10,14 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesStyleAndToneDirectionalLanguage: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesStyleAndToneDirectionalLanguage: String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let doNotUseDirectionalLanguage = Self(rawValue: "do_not_use_directional_language")
+  case doNotUseDirectionalLanguage = "do_not_use_directional_language"
 }

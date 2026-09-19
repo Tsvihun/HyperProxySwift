@@ -12,26 +12,26 @@ import HyperProxyCore
 
 public struct AnthropicRequestTextEditorCodeExecutionToolResultBlock: Codable, Sendable {
   public var cacheControl: AnthropicCacheControlEphemeral?
-  public var content: HyperProxyJSONValue
+  public var content: AnthropicRequestTextEditorCodeExecutionToolResultBlockContent
   public var toolUseId: String
-  public var typeModel: String
+  public var kind: AnthropicTextEditorCodeExecutionToolResultKind
 
   public init(
-    content: HyperProxyJSONValue,
+    content: AnthropicRequestTextEditorCodeExecutionToolResultBlockContent,
     toolUseId: String,
-    typeModel: String,
+    kind: AnthropicTextEditorCodeExecutionToolResultKind = .textEditorCodeExecutionToolResult,
     cacheControl: AnthropicCacheControlEphemeral? = nil
   ) {
     self.cacheControl = cacheControl
     self.content = content
     self.toolUseId = toolUseId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case cacheControl = "cache_control"
     case content
     case toolUseId = "tool_use_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

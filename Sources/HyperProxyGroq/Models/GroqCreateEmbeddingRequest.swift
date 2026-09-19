@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct GroqCreateEmbeddingRequest: Codable, Sendable {
   public var encodingFormat: GroqCreateEmbeddingRequestEncodingFormat?
-  public var input: HyperProxyJSONValue
-  public var model: HyperProxyJSONValue
+  public var input: GroqCreateEmbeddingRequestInput
+  public var model: GroqCreateEmbeddingRequestModel
   public var user: String?
 
   public init(
-    input: HyperProxyJSONValue,
-    model: HyperProxyJSONValue,
+    input: GroqCreateEmbeddingRequestInput,
+    model: GroqCreateEmbeddingRequestModel,
     encodingFormat: GroqCreateEmbeddingRequestEncodingFormat? = nil,
     user: String? = nil
   ) {

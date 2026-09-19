@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsOptInSmsReminderParams: Codable, Sendable {
-  public var smbToolType: String?
+  public var smbToolType: ElevenLabsOptInSmsReminderSmbToolType?
 
   public init(
-    smbToolType: String? = nil
+    smbToolType: ElevenLabsOptInSmsReminderSmbToolType? = nil
   ) {
     self.smbToolType = smbToolType
   }

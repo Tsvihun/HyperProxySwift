@@ -15,12 +15,13 @@ public struct ElevenLabsMCPToolConfigOverrideCreateRequestModel: Codable, Sendab
   public var disableInterruptions: Bool?
   public var executionMode: ElevenLabsToolExecutionMode?
   public var forcePreToolSpeech: Bool?
-  public var inputOverrides: [String: HyperProxyJSONValue]?
+  public var inputOverrides:
+    [String: ElevenLabsMCPToolConfigOverrideCreateRequestModelInputOverridesAnyOf1Value]?
   public var interruptionMode: ElevenLabsToolInterruptionMode?
   public var preToolSpeech: ElevenLabsPreToolSpeechMode?
   public var responseMocks: [ElevenLabsToolResponseMockConfigInput]?
   public var responseTimeoutSecs: Int?
-  public var toolCallSound: HyperProxyJSONValue?
+  public var toolCallSound: ElevenLabsMCPToolConfigOverrideCreateRequestModelToolCallSound?
   public var toolCallSoundBehavior: ElevenLabsToolCallSoundBehavior?
   public var toolName: String
 
@@ -30,12 +31,13 @@ public struct ElevenLabsMCPToolConfigOverrideCreateRequestModel: Codable, Sendab
     disableInterruptions: Bool? = nil,
     executionMode: ElevenLabsToolExecutionMode? = nil,
     forcePreToolSpeech: Bool? = nil,
-    inputOverrides: [String: HyperProxyJSONValue]? = nil,
+    inputOverrides: [String:
+      ElevenLabsMCPToolConfigOverrideCreateRequestModelInputOverridesAnyOf1Value]? = nil,
     interruptionMode: ElevenLabsToolInterruptionMode? = nil,
     preToolSpeech: ElevenLabsPreToolSpeechMode? = nil,
     responseMocks: [ElevenLabsToolResponseMockConfigInput]? = nil,
     responseTimeoutSecs: Int? = nil,
-    toolCallSound: HyperProxyJSONValue? = nil,
+    toolCallSound: ElevenLabsMCPToolConfigOverrideCreateRequestModelToolCallSound? = nil,
     toolCallSoundBehavior: ElevenLabsToolCallSoundBehavior? = nil
   ) {
     self.assignments = assignments

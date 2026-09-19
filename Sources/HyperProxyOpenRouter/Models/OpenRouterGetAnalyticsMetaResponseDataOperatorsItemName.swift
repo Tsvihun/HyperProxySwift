@@ -10,21 +10,15 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterGetAnalyticsMetaResponseDataOperatorsItemName: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum OpenRouterGetAnalyticsMetaResponseDataOperatorsItemName: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let eq = Self(rawValue: "eq")
-  public static let neq = Self(rawValue: "neq")
-  public static let inValue = Self(rawValue: "in")
-  public static let notIn = Self(rawValue: "not_in")
-  public static let gt = Self(rawValue: "gt")
-  public static let gte = Self(rawValue: "gte")
-  public static let lt = Self(rawValue: "lt")
-  public static let lte = Self(rawValue: "lte")
+  case eq = "eq"
+  case neq = "neq"
+  case inValue = "in"
+  case notIn = "not_in"
+  case gt = "gt"
+  case gte = "gte"
+  case lt = "lt"
+  case lte = "lte"
 }

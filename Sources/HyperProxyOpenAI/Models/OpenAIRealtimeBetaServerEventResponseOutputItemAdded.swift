@@ -15,20 +15,20 @@ public struct OpenAIRealtimeBetaServerEventResponseOutputItemAdded: Codable, Sen
   public var item: OpenAIRealtimeConversationItem
   public var outputIndex: Int
   public var responseId: String
-  public var typeModel: OpenAIRealtimeBetaServerEventResponseOutputItemAddedTypeModel
+  public var kind: OpenAIRealtimeBetaServerEventResponseOutputItemAddedKind
 
   public init(
     eventId: String,
     item: OpenAIRealtimeConversationItem,
     outputIndex: Int,
     responseId: String,
-    typeModel: OpenAIRealtimeBetaServerEventResponseOutputItemAddedTypeModel
+    kind: OpenAIRealtimeBetaServerEventResponseOutputItemAddedKind
   ) {
     self.eventId = eventId
     self.item = item
     self.outputIndex = outputIndex
     self.responseId = responseId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIRealtimeBetaServerEventResponseOutputItemAdded: Codable, Sen
     case item
     case outputIndex = "output_index"
     case responseId = "response_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

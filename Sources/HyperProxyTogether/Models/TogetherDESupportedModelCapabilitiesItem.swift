@@ -10,18 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherDESupportedModelCapabilitiesItem: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let cAPABILITYCHAT = Self(rawValue: "CAPABILITY_CHAT")
-  public static let cAPABILITYEMBEDDING = Self(rawValue: "CAPABILITY_EMBEDDING")
-  public static let cAPABILITYRERANKING = Self(rawValue: "CAPABILITY_RERANKING")
-  public static let cAPABILITYIMAGEGENERATION = Self(rawValue: "CAPABILITY_IMAGE_GENERATION")
-  public static let cAPABILITYVIDEOGENERATION = Self(rawValue: "CAPABILITY_VIDEO_GENERATION")
+public enum TogetherDESupportedModelCapabilitiesItem: String, Codable, Hashable, Sendable {
+  case cAPABILITYCHAT = "CAPABILITY_CHAT"
+  case cAPABILITYEMBEDDING = "CAPABILITY_EMBEDDING"
+  case cAPABILITYRERANKING = "CAPABILITY_RERANKING"
+  case cAPABILITYIMAGEGENERATION = "CAPABILITY_IMAGE_GENERATION"
+  case cAPABILITYVIDEOGENERATION = "CAPABILITY_VIDEO_GENERATION"
 }

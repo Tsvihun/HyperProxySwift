@@ -14,24 +14,24 @@ public struct ReplicateFilesCreateRequest: Codable, Sendable {
   public var content: String
   public var filename: String?
   public var metadata: HyperProxyJSONValue?
-  public var typeModel: String?
+  public var kind: String?
 
   public init(
     content: String,
     filename: String? = nil,
     metadata: HyperProxyJSONValue? = nil,
-    typeModel: String? = nil
+    kind: String? = nil
   ) {
     self.content = content
     self.filename = filename
     self.metadata = metadata
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case content
     case filename
     case metadata
-    case typeModel = "type"
+    case kind = "type"
   }
 }

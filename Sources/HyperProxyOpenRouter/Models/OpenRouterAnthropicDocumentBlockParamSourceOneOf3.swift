@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterAnthropicDocumentBlockParamSourceOneOf3: Codable, Sendable {
-  public var content: HyperProxyJSONValue
-  public var typeModel: OpenRouterAnthropicDocumentBlockParamSourceOneOf3TypeModel
+  public var content: OpenRouterAnthropicDocumentBlockParamSourceOneOf3Content
+  public var kind: OpenRouterAnthropicDocumentBlockParamSourceOneOf3Kind
 
   public init(
-    content: HyperProxyJSONValue,
-    typeModel: OpenRouterAnthropicDocumentBlockParamSourceOneOf3TypeModel
+    content: OpenRouterAnthropicDocumentBlockParamSourceOneOf3Content,
+    kind: OpenRouterAnthropicDocumentBlockParamSourceOneOf3Kind
   ) {
     self.content = content
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case content
-    case typeModel = "type"
+    case kind = "type"
   }
 }

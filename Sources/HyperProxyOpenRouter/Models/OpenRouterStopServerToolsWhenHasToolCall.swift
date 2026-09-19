@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterStopServerToolsWhenHasToolCall: Codable, Sendable {
   public var toolName: String
-  public var typeModel: OpenRouterStopServerToolsWhenHasToolCallTypeModel
+  public var kind: OpenRouterStopServerToolsWhenHasToolCallKind
 
   public init(
     toolName: String,
-    typeModel: OpenRouterStopServerToolsWhenHasToolCallTypeModel
+    kind: OpenRouterStopServerToolsWhenHasToolCallKind
   ) {
     self.toolName = toolName
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case toolName = "tool_name"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

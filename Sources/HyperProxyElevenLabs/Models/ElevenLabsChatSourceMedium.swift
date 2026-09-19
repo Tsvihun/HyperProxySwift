@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsChatSourceMedium: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let audio = Self(rawValue: "audio")
-  public static let dtmf = Self(rawValue: "dtmf")
-  public static let text = Self(rawValue: "text")
-  public static let image = Self(rawValue: "image")
-  public static let file = Self(rawValue: "file")
+public enum ElevenLabsChatSourceMedium: String, Codable, Hashable, Sendable {
+  case audio = "audio"
+  case dtmf = "dtmf"
+  case text = "text"
+  case image = "image"
+  case file = "file"
 }

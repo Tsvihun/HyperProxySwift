@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsChapterWithContentResponseModelState: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let defaultValue = Self(rawValue: "default")
-  public static let converting = Self(rawValue: "converting")
+public enum ElevenLabsChapterWithContentResponseModelState: String, Codable, Hashable, Sendable {
+  case defaultValue = "default"
+  case converting = "converting"
 }

@@ -16,8 +16,8 @@ public struct ElevenLabsBodySpeechToTextV1SpeechToTextPost: Codable, Sendable {
   public var detectSpeakerRoles: Bool?
   public var diarizationThreshold: Double?
   public var diarize: Bool?
-  public var entityDetection: HyperProxyJSONValue?
-  public var entityRedaction: HyperProxyJSONValue?
+  public var entityDetection: ElevenLabsBodySpeechToTextV1SpeechToTextPostEntityDetection?
+  public var entityRedaction: ElevenLabsBodySpeechToTextV1SpeechToTextPostEntityRedaction?
   public var entityRedactionMode: String?
   public var file: String?
   public var fileFormat: ElevenLabsBodySpeechToTextV1SpeechToTextPostFileFormat?
@@ -38,7 +38,7 @@ public struct ElevenLabsBodySpeechToTextV1SpeechToTextPost: Codable, Sendable {
   public var useSpeakerLibrary: Bool?
   public var webhook: Bool?
   public var webhookId: String?
-  public var webhookMetadata: HyperProxyJSONValue?
+  public var webhookMetadata: ElevenLabsBodySpeechToTextV1SpeechToTextPostWebhookMetadata?
 
   public init(
     modelId: String,
@@ -47,8 +47,8 @@ public struct ElevenLabsBodySpeechToTextV1SpeechToTextPost: Codable, Sendable {
     detectSpeakerRoles: Bool? = nil,
     diarizationThreshold: Double? = nil,
     diarize: Bool? = nil,
-    entityDetection: HyperProxyJSONValue? = nil,
-    entityRedaction: HyperProxyJSONValue? = nil,
+    entityDetection: ElevenLabsBodySpeechToTextV1SpeechToTextPostEntityDetection? = nil,
+    entityRedaction: ElevenLabsBodySpeechToTextV1SpeechToTextPostEntityRedaction? = nil,
     entityRedactionMode: String? = nil,
     file: String? = nil,
     fileFormat: ElevenLabsBodySpeechToTextV1SpeechToTextPostFileFormat? = nil,
@@ -67,7 +67,7 @@ public struct ElevenLabsBodySpeechToTextV1SpeechToTextPost: Codable, Sendable {
     useSpeakerLibrary: Bool? = nil,
     webhook: Bool? = nil,
     webhookId: String? = nil,
-    webhookMetadata: HyperProxyJSONValue? = nil
+    webhookMetadata: ElevenLabsBodySpeechToTextV1SpeechToTextPostWebhookMetadata? = nil
   ) {
     self.additionalFormats = additionalFormats
     self.cloudStorageUrl = cloudStorageUrl

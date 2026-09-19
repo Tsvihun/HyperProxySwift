@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralJudgeOutputType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let rEGRESSION = Self(rawValue: "REGRESSION")
-  public static let cLASSIFICATION = Self(rawValue: "CLASSIFICATION")
+public enum MistralJudgeOutputType: String, Codable, Hashable, Sendable {
+  case rEGRESSION = "REGRESSION"
+  case cLASSIFICATION = "CLASSIFICATION"
 }

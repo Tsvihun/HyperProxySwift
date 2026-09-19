@@ -12,17 +12,17 @@ import HyperProxyCore
 
 public struct AnthropicBetaRequestToolResultBlock: Codable, Sendable {
   public var cacheControl: AnthropicBetaCacheControlEphemeral?
-  public var content: HyperProxyJSONValue?
+  public var content: AnthropicBetaRequestToolResultBlockContent?
   public var isError: Bool?
   public var toolUseId: String
   public var toolsetName: String?
-  public var typeModel: String
+  public var kind: AnthropicToolResultKind
 
   public init(
     toolUseId: String,
-    typeModel: String,
+    kind: AnthropicToolResultKind = .toolResult,
     cacheControl: AnthropicBetaCacheControlEphemeral? = nil,
-    content: HyperProxyJSONValue? = nil,
+    content: AnthropicBetaRequestToolResultBlockContent? = nil,
     isError: Bool? = nil,
     toolsetName: String? = nil
   ) {
@@ -31,7 +31,7 @@ public struct AnthropicBetaRequestToolResultBlock: Codable, Sendable {
     self.isError = isError
     self.toolUseId = toolUseId
     self.toolsetName = toolsetName
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct AnthropicBetaRequestToolResultBlock: Codable, Sendable {
     case isError = "is_error"
     case toolUseId = "tool_use_id"
     case toolsetName = "toolset_name"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

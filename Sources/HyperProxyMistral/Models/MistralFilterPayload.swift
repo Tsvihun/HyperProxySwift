@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralFilterPayload: Codable, Sendable {
-  public var filters: HyperProxyJSONValue?
+  public var filters: MistralFilterPayloadFilters?
 
   public init(
-    filters: HyperProxyJSONValue?
+    filters: MistralFilterPayloadFilters?
   ) {
     self.filters = filters
   }

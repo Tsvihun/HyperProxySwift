@@ -10,20 +10,13 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaManagedAgentsAgentToolName: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let bash = Self(rawValue: "bash")
-  public static let edit = Self(rawValue: "edit")
-  public static let read = Self(rawValue: "read")
-  public static let write = Self(rawValue: "write")
-  public static let glob = Self(rawValue: "glob")
-  public static let grep = Self(rawValue: "grep")
-  public static let webFetch = Self(rawValue: "web_fetch")
-  public static let webSearch = Self(rawValue: "web_search")
+public enum AnthropicBetaManagedAgentsAgentToolName: String, Codable, Hashable, Sendable {
+  case bash = "bash"
+  case edit = "edit"
+  case read = "read"
+  case write = "write"
+  case glob = "glob"
+  case grep = "grep"
+  case webFetch = "web_fetch"
+  case webSearch = "web_search"
 }

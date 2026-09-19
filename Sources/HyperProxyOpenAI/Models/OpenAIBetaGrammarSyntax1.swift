@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIBetaGrammarSyntax1: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let lark = Self(rawValue: "lark")
-  public static let regex = Self(rawValue: "regex")
+public enum OpenAIBetaGrammarSyntax1: String, Codable, Hashable, Sendable {
+  case lark = "lark"
+  case regex = "regex"
 }

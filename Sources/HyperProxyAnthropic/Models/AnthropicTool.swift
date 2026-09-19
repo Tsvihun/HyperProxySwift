@@ -20,7 +20,7 @@ public struct AnthropicTool: Codable, Sendable {
   public var inputSchema: AnthropicInputSchema
   public var name: String
   public var strict: Bool?
-  public var typeModel: String?
+  public var kind: AnthropicToolKindAnyOf2?
 
   public init(
     inputSchema: AnthropicInputSchema,
@@ -32,7 +32,7 @@ public struct AnthropicTool: Codable, Sendable {
     eagerInputStreaming: Bool? = nil,
     inputExamples: [[String: AnthropicJsonValue]]? = nil,
     strict: Bool? = nil,
-    typeModel: String? = nil
+    kind: AnthropicToolKindAnyOf2? = nil
   ) {
     self.allowedCallers = allowedCallers
     self.cacheControl = cacheControl
@@ -43,7 +43,7 @@ public struct AnthropicTool: Codable, Sendable {
     self.inputSchema = inputSchema
     self.name = name
     self.strict = strict
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -56,6 +56,6 @@ public struct AnthropicTool: Codable, Sendable {
     case inputSchema = "input_schema"
     case name
     case strict
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct GroqChatCompletionRequestAssistantMessage: Codable, Sendable {
-  public var content: HyperProxyJSONValue?
+  public var content: GroqChatCompletionRequestAssistantMessageContent?
   public var functionCall: GroqChatCompletionRequestAssistantMessageFunctionCall?
   public var name: String?
   public var reasoning: String?
@@ -20,7 +20,7 @@ public struct GroqChatCompletionRequestAssistantMessage: Codable, Sendable {
 
   public init(
     role: GroqChatCompletionRequestAssistantMessageRole,
-    content: HyperProxyJSONValue? = nil,
+    content: GroqChatCompletionRequestAssistantMessageContent? = nil,
     functionCall: GroqChatCompletionRequestAssistantMessageFunctionCall? = nil,
     name: String? = nil,
     reasoning: String? = nil,

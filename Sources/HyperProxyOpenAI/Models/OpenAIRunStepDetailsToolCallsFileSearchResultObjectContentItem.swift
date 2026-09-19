@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIRunStepDetailsToolCallsFileSearchResultObjectContentItem: Codable, Sendable {
   public var text: String?
-  public var typeModel: OpenAIRunStepDetailsToolCallsFileSearchResultObjectContentItemTypeModel?
+  public var kind: OpenAIRunStepDetailsToolCallsFileSearchResultObjectContentItemKind?
 
   public init(
     text: String? = nil,
-    typeModel: OpenAIRunStepDetailsToolCallsFileSearchResultObjectContentItemTypeModel? = nil
+    kind: OpenAIRunStepDetailsToolCallsFileSearchResultObjectContentItemKind? = nil
   ) {
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

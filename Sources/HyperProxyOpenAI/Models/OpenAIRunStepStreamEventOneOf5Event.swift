@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIRunStepStreamEventOneOf5Event: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let threadRunStepFailed = Self(rawValue: "thread.run.step.failed")
+public enum OpenAIRunStepStreamEventOneOf5Event: String, Codable, Hashable, Sendable {
+  case threadRunStepFailed = "thread.run.step.failed"
 }

@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenAIBetaInlineSkillSourceParam: Codable, Sendable {
   public var data: String
   public var mediaType: OpenAIBetaInlineSkillSourceParamMediaType
-  public var typeModel: OpenAIBetaInlineSkillSourceParamTypeModel
+  public var kind: OpenAIBetaInlineSkillSourceParamKind
 
   public init(
     data: String,
     mediaType: OpenAIBetaInlineSkillSourceParamMediaType,
-    typeModel: OpenAIBetaInlineSkillSourceParamTypeModel
+    kind: OpenAIBetaInlineSkillSourceParamKind
   ) {
     self.data = data
     self.mediaType = mediaType
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case data
     case mediaType = "media_type"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

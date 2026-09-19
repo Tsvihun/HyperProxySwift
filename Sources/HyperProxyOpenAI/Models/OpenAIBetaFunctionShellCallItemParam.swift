@@ -15,18 +15,18 @@ public struct OpenAIBetaFunctionShellCallItemParam: Codable, Sendable {
   public var agent: OpenAIBetaAgentTagParam?
   public var callId: String
   public var caller: OpenAIBetaToolCallCallerParam?
-  public var environment: HyperProxyJSONValue?
+  public var environment: OpenAIBetaFunctionShellCallItemParamEnvironmentAnyOf1?
   public var id: String?
   public var status: OpenAIBetaFunctionShellCallItemStatus?
-  public var typeModel: OpenAIBetaFunctionShellCallItemParamTypeModel
+  public var kind: OpenAIBetaFunctionShellCallItemParamKind
 
   public init(
     action: OpenAIBetaFunctionShellActionParam,
     callId: String,
-    typeModel: OpenAIBetaFunctionShellCallItemParamTypeModel,
+    kind: OpenAIBetaFunctionShellCallItemParamKind,
     agent: OpenAIBetaAgentTagParam? = nil,
     caller: OpenAIBetaToolCallCallerParam? = nil,
-    environment: HyperProxyJSONValue? = nil,
+    environment: OpenAIBetaFunctionShellCallItemParamEnvironmentAnyOf1? = nil,
     id: String? = nil,
     status: OpenAIBetaFunctionShellCallItemStatus? = nil
   ) {
@@ -37,7 +37,7 @@ public struct OpenAIBetaFunctionShellCallItemParam: Codable, Sendable {
     self.environment = environment
     self.id = id
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct OpenAIBetaFunctionShellCallItemParam: Codable, Sendable {
     case environment
     case id
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

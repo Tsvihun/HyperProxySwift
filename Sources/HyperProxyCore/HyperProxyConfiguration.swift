@@ -21,7 +21,7 @@ public struct HyperProxyConfiguration: Sendable {
   /// Device attestation attached to requests (DeviceCheck, App Attest,
   /// Firebase App Check, or none).
   public var security: HyperProxySecurity
-  /// The gateway header contract: HyperProxy, AIProxy-compatible, or direct.
+  /// The gateway header contract: HyperProxy, a compatible legacy gateway, or direct.
   public var wireProtocol: HyperProxyWireProtocol
   /// Supplies the stable client/anonymous identifiers sent with requests.
   public var identityProvider: HyperProxyIdentityProvider?

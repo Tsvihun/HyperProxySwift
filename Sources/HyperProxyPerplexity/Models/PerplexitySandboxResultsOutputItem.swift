@@ -17,11 +17,11 @@ public struct PerplexitySandboxResultsOutputItem: Codable, Sendable {
   public var status: PerplexitySandboxResultsOutputItemStatus
   public var stderr: String?
   public var stdout: String?
-  public var typeModel: PerplexitySandboxResultsOutputItemTypeModel
+  public var kind: PerplexitySandboxResultsOutputItemKind
 
   public init(
     status: PerplexitySandboxResultsOutputItemStatus,
-    typeModel: PerplexitySandboxResultsOutputItemTypeModel,
+    kind: PerplexitySandboxResultsOutputItemKind,
     code: String? = nil,
     durationMs: Int64? = nil,
     exitCode: Int? = nil,
@@ -34,7 +34,7 @@ public struct PerplexitySandboxResultsOutputItem: Codable, Sendable {
     self.status = status
     self.stderr = stderr
     self.stdout = stdout
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct PerplexitySandboxResultsOutputItem: Codable, Sendable {
     case status
     case stderr
     case stdout
-    case typeModel = "type"
+    case kind = "type"
   }
 }

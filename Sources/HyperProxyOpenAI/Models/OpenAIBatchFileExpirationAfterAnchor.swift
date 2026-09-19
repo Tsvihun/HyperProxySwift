@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIBatchFileExpirationAfterAnchor: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let createdAt = Self(rawValue: "created_at")
+public enum OpenAIBatchFileExpirationAfterAnchor: String, Codable, Hashable, Sendable {
+  case createdAt = "created_at"
 }

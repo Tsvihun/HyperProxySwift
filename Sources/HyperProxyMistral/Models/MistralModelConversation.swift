@@ -20,8 +20,8 @@ public struct MistralModelConversation: Codable, Sendable {
   public var metadata: MistralMetadataDict?
   public var model: String
   public var name: String?
-  public var object: String?
-  public var tools: [HyperProxyJSONValue]?
+  public var object: MistralConversationObject?
+  public var tools: [MistralModelConversationToolsItem]?
   public var updatedAt: String
 
   public init(
@@ -35,8 +35,8 @@ public struct MistralModelConversation: Codable, Sendable {
     instructions: String? = nil,
     metadata: MistralMetadataDict? = nil,
     name: String? = nil,
-    object: String? = nil,
-    tools: [HyperProxyJSONValue]? = nil
+    object: MistralConversationObject? = nil,
+    tools: [MistralModelConversationToolsItem]? = nil
   ) {
     self.completionArgs = completionArgs
     self.createdAt = createdAt

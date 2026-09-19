@@ -10,17 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesStyleAndToneAddressingTheReader: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesStyleAndToneAddressingTheReader: String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useFormalFrenchWordVous = Self(rawValue: "use_formal_french_word_vous")
-  public static let useFormalItalianWordLei = Self(rawValue: "use_formal_italian_word_lei")
-  public static let useInformalFrenchWordTu = Self(rawValue: "use_informal_french_word_tu")
-  public static let useInformalItalianWordTu = Self(rawValue: "use_informal_italian_word_tu")
+  case useFormalFrenchWordVous = "use_formal_french_word_vous"
+  case useFormalItalianWordLei = "use_formal_italian_word_lei"
+  case useInformalFrenchWordTu = "use_informal_french_word_tu"
+  case useInformalItalianWordTu = "use_informal_italian_word_tu"
 }

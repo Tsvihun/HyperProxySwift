@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIMessageObjectAttachmentsAnyOf1Item: Codable, Sendable {
   public var fileId: String?
-  public var tools: [HyperProxyJSONValue]?
+  public var tools: [OpenAIMessageObjectAttachmentsAnyOf1ItemToolsItem]?
 
   public init(
     fileId: String? = nil,
-    tools: [HyperProxyJSONValue]? = nil
+    tools: [OpenAIMessageObjectAttachmentsAnyOf1ItemToolsItem]? = nil
   ) {
     self.fileId = fileId
     self.tools = tools

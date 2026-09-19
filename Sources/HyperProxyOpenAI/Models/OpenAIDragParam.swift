@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenAIDragParam: Codable, Sendable {
   public var keys: [String]?
   public var path: [OpenAICoordParam]
-  public var typeModel: OpenAIDragParamTypeModel
+  public var kind: OpenAIDragParamKind
 
   public init(
     path: [OpenAICoordParam],
-    typeModel: OpenAIDragParamTypeModel,
+    kind: OpenAIDragParamKind,
     keys: [String]? = nil
   ) {
     self.keys = keys
     self.path = path
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case keys
     case path
-    case typeModel = "type"
+    case kind = "type"
   }
 }

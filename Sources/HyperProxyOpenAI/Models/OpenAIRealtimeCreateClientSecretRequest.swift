@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIRealtimeCreateClientSecretRequest: Codable, Sendable {
   public var expiresAfter: OpenAIRealtimeCreateClientSecretRequestExpiresAfter?
-  public var session: HyperProxyJSONValue?
+  public var session: OpenAIRealtimeCreateClientSecretRequestSession?
 
   public init(
     expiresAfter: OpenAIRealtimeCreateClientSecretRequestExpiresAfter? = nil,
-    session: HyperProxyJSONValue? = nil
+    session: OpenAIRealtimeCreateClientSecretRequestSession? = nil
   ) {
     self.expiresAfter = expiresAfter
     self.session = session

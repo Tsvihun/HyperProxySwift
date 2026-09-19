@@ -16,12 +16,12 @@ public struct AnthropicRequestTextEditorCodeExecutionViewResultBlock: Codable, S
   public var numLines: Int?
   public var startLine: Int?
   public var totalLines: Int?
-  public var typeModel: String
+  public var kind: AnthropicTextEditorCodeExecutionViewResultKind
 
   public init(
     content: String,
     fileType: AnthropicRequestTextEditorCodeExecutionViewResultBlockFileType,
-    typeModel: String,
+    kind: AnthropicTextEditorCodeExecutionViewResultKind = .textEditorCodeExecutionViewResult,
     numLines: Int? = nil,
     startLine: Int? = nil,
     totalLines: Int? = nil
@@ -31,7 +31,7 @@ public struct AnthropicRequestTextEditorCodeExecutionViewResultBlock: Codable, S
     self.numLines = numLines
     self.startLine = startLine
     self.totalLines = totalLines
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct AnthropicRequestTextEditorCodeExecutionViewResultBlock: Codable, S
     case numLines = "num_lines"
     case startLine = "start_line"
     case totalLines = "total_lines"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

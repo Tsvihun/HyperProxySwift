@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct ElevenLabsManualSource: Codable, Sendable {
   public var createdByUserId: String
   public var notes: String?
-  public var typeModel: String?
+  public var kind: ElevenLabsManualKind?
 
   public init(
     createdByUserId: String,
     notes: String? = nil,
-    typeModel: String? = nil
+    kind: ElevenLabsManualKind? = nil
   ) {
     self.createdByUserId = createdByUserId
     self.notes = notes
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case createdByUserId = "created_by_user_id"
     case notes
-    case typeModel = "type"
+    case kind = "type"
   }
 }

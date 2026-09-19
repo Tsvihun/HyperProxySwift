@@ -47,10 +47,10 @@ public struct ElevenLabsProjectVideoResponseModel: Codable, Sendable {
   public var startTimeMs: Int
   public var thumbnailIntervalSeconds: Double
   public var thumbnailSheets: [ElevenLabsProjectVideoThumbnailSheetResponseModel]
-  public var thumbnailSize: [Int]
+  public var thumbnailSize: ElevenLabsProjectVideoResponseModelThumbnailSize
   public var trackId: String?
   public var transcription: ElevenLabsAssetTranscription?
-  public var typeModel: String?
+  public var kind: ElevenLabsVideoKind?
   public var updatedAtMs: Int
   public var videoId: String
   public var volumeGainDb: Double
@@ -73,7 +73,7 @@ public struct ElevenLabsProjectVideoResponseModel: Codable, Sendable {
     startTimeMs: Int,
     thumbnailIntervalSeconds: Double,
     thumbnailSheets: [ElevenLabsProjectVideoThumbnailSheetResponseModel],
-    thumbnailSize: [Int],
+    thumbnailSize: ElevenLabsProjectVideoResponseModelThumbnailSize,
     updatedAtMs: Int,
     videoId: String,
     volumeGainDb: Double,
@@ -100,7 +100,7 @@ public struct ElevenLabsProjectVideoResponseModel: Codable, Sendable {
     speechImported: Bool? = nil,
     trackId: String? = nil,
     transcription: ElevenLabsAssetTranscription? = nil,
-    typeModel: String? = nil
+    kind: ElevenLabsVideoKind? = nil
   ) {
     self.analysis = analysis
     self.animation = animation
@@ -141,7 +141,7 @@ public struct ElevenLabsProjectVideoResponseModel: Codable, Sendable {
     self.thumbnailSize = thumbnailSize
     self.trackId = trackId
     self.transcription = transcription
-    self.typeModel = typeModel
+    self.kind = kind
     self.updatedAtMs = updatedAtMs
     self.videoId = videoId
     self.volumeGainDb = volumeGainDb
@@ -188,7 +188,7 @@ public struct ElevenLabsProjectVideoResponseModel: Codable, Sendable {
     case thumbnailSize = "thumbnail_size"
     case trackId = "track_id"
     case transcription
-    case typeModel = "type"
+    case kind = "type"
     case updatedAtMs = "updated_at_ms"
     case videoId = "video_id"
     case volumeGainDb = "volume_gain_db"

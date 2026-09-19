@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct MistralConversationMessages: Codable, Sendable {
   public var conversationId: String
   public var messages: MistralMessageEntries
-  public var object: String?
+  public var object: MistralConversationMessagesObject?
 
   public init(
     conversationId: String,
     messages: MistralMessageEntries,
-    object: String? = nil
+    object: MistralConversationMessagesObject? = nil
   ) {
     self.conversationId = conversationId
     self.messages = messages

@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIBetaEncryptedContentParam: Codable, Sendable {
   public var encryptedContent: String
-  public var typeModel: OpenAIBetaEncryptedContentParamTypeModel
+  public var kind: OpenAIBetaEncryptedContentParamKind
 
   public init(
     encryptedContent: String,
-    typeModel: OpenAIBetaEncryptedContentParamTypeModel
+    kind: OpenAIBetaEncryptedContentParamKind
   ) {
     self.encryptedContent = encryptedContent
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case encryptedContent = "encrypted_content"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

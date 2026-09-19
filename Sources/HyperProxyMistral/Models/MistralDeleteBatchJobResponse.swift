@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct MistralDeleteBatchJobResponse: Codable, Sendable {
   public var deleted: Bool?
   public var id: String
-  public var object: String?
+  public var object: MistralBatchObject?
 
   public init(
     id: String,
     deleted: Bool? = nil,
-    object: String? = nil
+    object: MistralBatchObject? = nil
   ) {
     self.deleted = deleted
     self.id = id

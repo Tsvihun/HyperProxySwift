@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiAudioResponseFormatDelivery: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let dELIVERYUNSPECIFIED = Self(rawValue: "DELIVERY_UNSPECIFIED")
-  public static let iNLINE = Self(rawValue: "INLINE")
-  public static let uRI = Self(rawValue: "URI")
+public enum GeminiAudioResponseFormatDelivery: String, Codable, Hashable, Sendable {
+  case dELIVERYUNSPECIFIED = "DELIVERY_UNSPECIFIED"
+  case iNLINE = "INLINE"
+  case uRI = "URI"
 }

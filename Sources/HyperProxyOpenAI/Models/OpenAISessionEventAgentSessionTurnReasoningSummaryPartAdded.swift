@@ -18,7 +18,7 @@ public struct OpenAISessionEventAgentSessionTurnReasoningSummaryPartAdded: Codab
   public var sessionId: String
   public var summaryIndex: Int64
   public var turnId: String
-  public var typeModel: OpenAISessionEventAgentSessionTurnReasoningSummaryPartAddedTypeModel
+  public var kind: OpenAISessionEventAgentSessionTurnReasoningSummaryPartAddedKind
 
   public init(
     eventId: String,
@@ -28,7 +28,7 @@ public struct OpenAISessionEventAgentSessionTurnReasoningSummaryPartAdded: Codab
     sessionId: String,
     summaryIndex: Int64,
     turnId: String,
-    typeModel: OpenAISessionEventAgentSessionTurnReasoningSummaryPartAddedTypeModel
+    kind: OpenAISessionEventAgentSessionTurnReasoningSummaryPartAddedKind
   ) {
     self.eventId = eventId
     self.itemId = itemId
@@ -37,7 +37,7 @@ public struct OpenAISessionEventAgentSessionTurnReasoningSummaryPartAdded: Codab
     self.sessionId = sessionId
     self.summaryIndex = summaryIndex
     self.turnId = turnId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct OpenAISessionEventAgentSessionTurnReasoningSummaryPartAdded: Codab
     case sessionId = "session_id"
     case summaryIndex = "summary_index"
     case turnId = "turn_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

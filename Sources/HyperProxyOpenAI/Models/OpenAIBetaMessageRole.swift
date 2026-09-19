@@ -10,19 +10,13 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIBetaMessageRole: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let unknown = Self(rawValue: "unknown")
-  public static let user = Self(rawValue: "user")
-  public static let assistant = Self(rawValue: "assistant")
-  public static let system = Self(rawValue: "system")
-  public static let critic = Self(rawValue: "critic")
-  public static let discriminator = Self(rawValue: "discriminator")
-  public static let developer = Self(rawValue: "developer")
-  public static let tool = Self(rawValue: "tool")
+public enum OpenAIBetaMessageRole: String, Codable, Hashable, Sendable {
+  case unknown = "unknown"
+  case user = "user"
+  case assistant = "assistant"
+  case system = "system"
+  case critic = "critic"
+  case discriminator = "discriminator"
+  case developer = "developer"
+  case tool = "tool"
 }

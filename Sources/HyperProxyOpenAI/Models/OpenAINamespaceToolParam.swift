@@ -13,25 +13,25 @@ import HyperProxyCore
 public struct OpenAINamespaceToolParam: Codable, Sendable {
   public var description: String
   public var name: String
-  public var tools: [HyperProxyJSONValue]
-  public var typeModel: OpenAINamespaceToolParamTypeModel
+  public var tools: [OpenAINamespaceToolParamToolsItem]
+  public var kind: OpenAINamespaceToolParamKind
 
   public init(
     description: String,
     name: String,
-    tools: [HyperProxyJSONValue],
-    typeModel: OpenAINamespaceToolParamTypeModel
+    tools: [OpenAINamespaceToolParamToolsItem],
+    kind: OpenAINamespaceToolParamKind
   ) {
     self.description = description
     self.name = name
     self.tools = tools
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case description
     case name
     case tools
-    case typeModel = "type"
+    case kind = "type"
   }
 }

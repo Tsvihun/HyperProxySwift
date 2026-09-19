@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsUsersSortBy: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let lastContactUnixSecs = Self(rawValue: "last_contact_unix_secs")
-  public static let conversationCount = Self(rawValue: "conversation_count")
-  public static let averageSentimentScore = Self(rawValue: "average_sentiment_score")
+public enum ElevenLabsUsersSortBy: String, Codable, Hashable, Sendable {
+  case lastContactUnixSecs = "last_contact_unix_secs"
+  case conversationCount = "conversation_count"
+  case averageSentimentScore = "average_sentiment_score"
 }

@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsCaptionStyleModelTextTransformAnyOf1: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let none = Self(rawValue: "none")
-  public static let uppercase = Self(rawValue: "uppercase")
+public enum ElevenLabsCaptionStyleModelTextTransformAnyOf1: String, Codable, Hashable, Sendable {
+  case none = "none"
+  case uppercase = "uppercase"
 }

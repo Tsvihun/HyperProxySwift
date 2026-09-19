@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct FalGetFocusReportParametersExpand: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let organization = Self(rawValue: "organization")
+public enum FalGetFocusReportParametersExpand: String, Codable, Hashable, Sendable {
+  case organization = "organization"
 }

@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct DeepSeekAnthropicImageSource: Codable, Sendable {
   public var data: String?
   public var mediaType: String?
-  public var typeModel: DeepSeekAnthropicImageSourceTypeModel
+  public var kind: DeepSeekAnthropicImageSourceKind
 
   public init(
-    typeModel: DeepSeekAnthropicImageSourceTypeModel,
+    kind: DeepSeekAnthropicImageSourceKind,
     data: String? = nil,
     mediaType: String? = nil
   ) {
     self.data = data
     self.mediaType = mediaType
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case data
     case mediaType = "media_type"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

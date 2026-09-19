@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralAudioChunk: Codable, Sendable {
-  public var inputAudio: String
-  public var typeModel: String?
+  public var inputAudio: MistralAudioChunkInputAudio
+  public var kind: MistralInputAudioKind?
 
   public init(
-    inputAudio: String,
-    typeModel: String? = nil
+    inputAudio: MistralAudioChunkInputAudio,
+    kind: MistralInputAudioKind? = nil
   ) {
     self.inputAudio = inputAudio
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case inputAudio = "input_audio"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

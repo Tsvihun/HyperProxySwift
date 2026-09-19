@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksGatewayInvoiceState: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let sTATEUNSPECIFIED = Self(rawValue: "STATE_UNSPECIFIED")
-  public static let dRAFT = Self(rawValue: "DRAFT")
-  public static let iSSUED = Self(rawValue: "ISSUED")
-  public static let pAID = Self(rawValue: "PAID")
-  public static let vOID = Self(rawValue: "VOID")
-  public static let fAILED = Self(rawValue: "FAILED")
+public enum FireworksGatewayInvoiceState: String, Codable, Hashable, Sendable {
+  case sTATEUNSPECIFIED = "STATE_UNSPECIFIED"
+  case dRAFT = "DRAFT"
+  case iSSUED = "ISSUED"
+  case pAID = "PAID"
+  case vOID = "VOID"
+  case fAILED = "FAILED"
 }

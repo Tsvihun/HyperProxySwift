@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct ElevenLabsTransferBranchInfoTrafficSplit: Codable, Sendable {
   public var branchId: String
-  public var branchReason: String
+  public var branchReason: ElevenLabsTrafficSplitBranchReason
   public var trafficPercentage: Double
 
   public init(
     branchId: String,
-    branchReason: String,
-    trafficPercentage: Double
+    trafficPercentage: Double,
+    branchReason: ElevenLabsTrafficSplitBranchReason = .trafficSplit
   ) {
     self.branchId = branchId
     self.branchReason = branchReason

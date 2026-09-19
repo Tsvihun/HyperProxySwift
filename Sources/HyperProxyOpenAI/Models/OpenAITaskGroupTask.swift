@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenAITaskGroupTask: Codable, Sendable {
   public var heading: String?
   public var summary: String?
-  public var typeModel: OpenAITaskType
+  public var kind: OpenAITaskType
 
   public init(
     heading: String?,
     summary: String?,
-    typeModel: OpenAITaskType
+    kind: OpenAITaskType
   ) {
     self.heading = heading
     self.summary = summary
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case heading
     case summary
-    case typeModel = "type"
+    case kind = "type"
   }
 }

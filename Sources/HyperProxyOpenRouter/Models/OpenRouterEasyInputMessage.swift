@@ -11,27 +11,27 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterEasyInputMessage: Codable, Sendable {
-  public var content: HyperProxyJSONValue?
-  public var phase: HyperProxyJSONValue?
-  public var role: HyperProxyJSONValue
-  public var typeModel: OpenRouterEasyInputMessageTypeModel?
+  public var content: OpenRouterEasyInputMessageContent?
+  public var phase: OpenRouterEasyInputMessagePhase?
+  public var role: OpenRouterEasyInputMessageRole
+  public var kind: OpenRouterEasyInputMessageKind?
 
   public init(
-    role: HyperProxyJSONValue,
-    content: HyperProxyJSONValue? = nil,
-    phase: HyperProxyJSONValue? = nil,
-    typeModel: OpenRouterEasyInputMessageTypeModel? = nil
+    role: OpenRouterEasyInputMessageRole,
+    content: OpenRouterEasyInputMessageContent? = nil,
+    phase: OpenRouterEasyInputMessagePhase? = nil,
+    kind: OpenRouterEasyInputMessageKind? = nil
   ) {
     self.content = content
     self.phase = phase
     self.role = role
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case content
     case phase
     case role
-    case typeModel = "type"
+    case kind = "type"
   }
 }

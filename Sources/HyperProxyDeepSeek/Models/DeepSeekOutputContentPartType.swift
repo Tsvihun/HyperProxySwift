@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepSeekOutputContentPartType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let outputText = Self(rawValue: "output_text")
-  public static let reasoningText = Self(rawValue: "reasoning_text")
+public enum DeepSeekOutputContentPartType: String, Codable, Hashable, Sendable {
+  case outputText = "output_text"
+  case reasoningText = "reasoning_text"
 }

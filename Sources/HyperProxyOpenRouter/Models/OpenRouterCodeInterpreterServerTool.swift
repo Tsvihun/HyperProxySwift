@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterCodeInterpreterServerTool: Codable, Sendable {
-  public var container: HyperProxyJSONValue
-  public var typeModel: OpenRouterCodeInterpreterServerToolTypeModel
+  public var container: OpenRouterCodeInterpreterServerToolContainer
+  public var kind: OpenRouterCodeInterpreterServerToolKind
 
   public init(
-    container: HyperProxyJSONValue,
-    typeModel: OpenRouterCodeInterpreterServerToolTypeModel
+    container: OpenRouterCodeInterpreterServerToolContainer,
+    kind: OpenRouterCodeInterpreterServerToolKind
   ) {
     self.container = container
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case container
-    case typeModel = "type"
+    case kind = "type"
   }
 }

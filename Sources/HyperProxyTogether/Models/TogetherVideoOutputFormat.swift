@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherVideoOutputFormat: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mP4 = Self(rawValue: "MP4")
-  public static let wEBM = Self(rawValue: "WEBM")
+public enum TogetherVideoOutputFormat: String, Codable, Hashable, Sendable {
+  case mP4 = "MP4"
+  case wEBM = "WEBM"
 }

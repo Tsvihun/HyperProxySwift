@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksAssertionAssertionType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let aSSERTIONTYPEUNSPECIFIED = Self(rawValue: "ASSERTION_TYPE_UNSPECIFIED")
-  public static let aSSERTIONTYPELLM = Self(rawValue: "ASSERTION_TYPE_LLM")
-  public static let aSSERTIONTYPECODE = Self(rawValue: "ASSERTION_TYPE_CODE")
+public enum FireworksAssertionAssertionType: String, Codable, Hashable, Sendable {
+  case aSSERTIONTYPEUNSPECIFIED = "ASSERTION_TYPE_UNSPECIFIED"
+  case aSSERTIONTYPELLM = "ASSERTION_TYPE_LLM"
+  case aSSERTIONTYPECODE = "ASSERTION_TYPE_CODE"
 }

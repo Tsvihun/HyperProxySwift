@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct FalGetAccountBillingParameters: Codable, Sendable {
-  public var expand: HyperProxyJSONValue?
+  public var expand: FalGetAccountBillingParametersExpand?
 
   public init(
-    expand: HyperProxyJSONValue? = nil
+    expand: FalGetAccountBillingParametersExpand? = nil
   ) {
     self.expand = expand
   }

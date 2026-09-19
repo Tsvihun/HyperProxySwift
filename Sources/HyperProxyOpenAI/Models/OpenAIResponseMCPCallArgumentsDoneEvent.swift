@@ -15,20 +15,20 @@ public struct OpenAIResponseMCPCallArgumentsDoneEvent: Codable, Sendable {
   public var itemId: String
   public var outputIndex: Int
   public var sequenceNumber: Int
-  public var typeModel: OpenAIResponseMCPCallArgumentsDoneEventTypeModel
+  public var kind: OpenAIResponseMCPCallArgumentsDoneEventKind
 
   public init(
     arguments: String,
     itemId: String,
     outputIndex: Int,
     sequenceNumber: Int,
-    typeModel: OpenAIResponseMCPCallArgumentsDoneEventTypeModel
+    kind: OpenAIResponseMCPCallArgumentsDoneEventKind
   ) {
     self.arguments = arguments
     self.itemId = itemId
     self.outputIndex = outputIndex
     self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIResponseMCPCallArgumentsDoneEvent: Codable, Sendable {
     case itemId = "item_id"
     case outputIndex = "output_index"
     case sequenceNumber = "sequence_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

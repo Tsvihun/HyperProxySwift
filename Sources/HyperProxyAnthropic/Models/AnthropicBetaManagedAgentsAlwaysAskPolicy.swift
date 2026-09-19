@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsAlwaysAskPolicy: Codable, Sendable {
-  public var typeModel: AnthropicBetaManagedAgentsAlwaysAskPolicyTypeModel
+  public var kind: AnthropicBetaManagedAgentsAlwaysAskPolicyKind
 
   public init(
-    typeModel: AnthropicBetaManagedAgentsAlwaysAskPolicyTypeModel
+    kind: AnthropicBetaManagedAgentsAlwaysAskPolicyKind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

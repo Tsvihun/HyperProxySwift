@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepSeekChatRole: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let system = Self(rawValue: "system")
-  public static let user = Self(rawValue: "user")
-  public static let assistant = Self(rawValue: "assistant")
-  public static let tool = Self(rawValue: "tool")
+public enum DeepSeekChatRole: String, Codable, Hashable, Sendable {
+  case system = "system"
+  case user = "user"
+  case assistant = "assistant"
+  case tool = "tool"
 }

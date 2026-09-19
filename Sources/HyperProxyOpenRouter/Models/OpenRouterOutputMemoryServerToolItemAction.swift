@@ -10,16 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterOutputMemoryServerToolItemAction: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let read = Self(rawValue: "read")
-  public static let write = Self(rawValue: "write")
-  public static let delete = Self(rawValue: "delete")
+public enum OpenRouterOutputMemoryServerToolItemAction: String, Codable, Hashable, Sendable {
+  case read = "read"
+  case write = "write"
+  case delete = "delete"
 }

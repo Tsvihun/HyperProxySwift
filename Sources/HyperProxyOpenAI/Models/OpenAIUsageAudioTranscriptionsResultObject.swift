@@ -10,15 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIUsageAudioTranscriptionsResultObject: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let organizationUsageAudioTranscriptionsResult = Self(
-    rawValue: "organization.usage.audio_transcriptions.result")
+public enum OpenAIUsageAudioTranscriptionsResultObject: String, Codable, Hashable, Sendable {
+  case organizationUsageAudioTranscriptionsResult = "organization.usage.audio_transcriptions.result"
 }

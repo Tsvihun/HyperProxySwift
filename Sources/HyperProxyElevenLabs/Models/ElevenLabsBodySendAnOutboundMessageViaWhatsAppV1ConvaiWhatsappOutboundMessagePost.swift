@@ -18,7 +18,8 @@ public struct ElevenLabsBodySendAnOutboundMessageViaWhatsAppV1ConvaiWhatsappOutb
     ElevenLabsConversationInitiationClientDataRequestInput?
   public var templateLanguageCode: String
   public var templateName: String
-  public var templateParams: [HyperProxyJSONValue]
+  public var templateParams:
+    [ElevenLabsBodySendAnOutboundMessageViaWhatsAppV1ConvaiWhatsappOutboundMessagePostTemplateParamsItem]
   public var whatsappPhoneNumberId: String
   public var whatsappUserId: String
 
@@ -26,7 +27,8 @@ public struct ElevenLabsBodySendAnOutboundMessageViaWhatsAppV1ConvaiWhatsappOutb
     agentId: String,
     templateLanguageCode: String,
     templateName: String,
-    templateParams: [HyperProxyJSONValue],
+    templateParams:
+      [ElevenLabsBodySendAnOutboundMessageViaWhatsAppV1ConvaiWhatsappOutboundMessagePostTemplateParamsItem],
     whatsappPhoneNumberId: String,
     whatsappUserId: String,
     conversationInitiationClientData: ElevenLabsConversationInitiationClientDataRequestInput? = nil

@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIComputerEnvironment: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let windows = Self(rawValue: "windows")
-  public static let mac = Self(rawValue: "mac")
-  public static let linux = Self(rawValue: "linux")
-  public static let ubuntu = Self(rawValue: "ubuntu")
-  public static let browser = Self(rawValue: "browser")
+public enum OpenAIComputerEnvironment: String, Codable, Hashable, Sendable {
+  case windows = "windows"
+  case mac = "mac"
+  case linux = "linux"
+  case ubuntu = "ubuntu"
+  case browser = "browser"
 }

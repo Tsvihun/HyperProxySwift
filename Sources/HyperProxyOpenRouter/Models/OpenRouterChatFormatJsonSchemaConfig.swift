@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterChatFormatJsonSchemaConfig: Codable, Sendable {
   public var jsonSchema: OpenRouterChatJsonSchemaConfig
-  public var typeModel: OpenRouterChatFormatJsonSchemaConfigTypeModel
+  public var kind: OpenRouterChatFormatJsonSchemaConfigKind
 
   public init(
     jsonSchema: OpenRouterChatJsonSchemaConfig,
-    typeModel: OpenRouterChatFormatJsonSchemaConfigTypeModel
+    kind: OpenRouterChatFormatJsonSchemaConfigKind
   ) {
     self.jsonSchema = jsonSchema
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case jsonSchema = "json_schema"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

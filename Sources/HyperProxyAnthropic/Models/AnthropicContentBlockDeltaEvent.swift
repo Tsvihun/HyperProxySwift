@@ -11,23 +11,23 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicContentBlockDeltaEvent: Codable, Sendable {
-  public var delta: HyperProxyJSONValue
+  public var delta: AnthropicContentBlockDeltaEventDelta
   public var index: Int
-  public var typeModel: String
+  public var kind: AnthropicContentBlockDeltaKind
 
   public init(
-    delta: HyperProxyJSONValue,
+    delta: AnthropicContentBlockDeltaEventDelta,
     index: Int,
-    typeModel: String
+    kind: AnthropicContentBlockDeltaKind = .contentBlockDelta
   ) {
     self.delta = delta
     self.index = index
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case delta
     case index
-    case typeModel = "type"
+    case kind = "type"
   }
 }

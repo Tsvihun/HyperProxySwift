@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAICreateVideoEditMultipartBody: Codable, Sendable {
   public var prompt: String
-  public var video: HyperProxyJSONValue
+  public var video: OpenAICreateVideoEditMultipartBodyVideo
 
   public init(
     prompt: String,
-    video: HyperProxyJSONValue
+    video: OpenAICreateVideoEditMultipartBodyVideo
   ) {
     self.prompt = prompt
     self.video = video

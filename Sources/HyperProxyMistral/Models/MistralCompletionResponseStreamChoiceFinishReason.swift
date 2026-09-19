@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralCompletionResponseStreamChoiceFinishReason: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let stop = Self(rawValue: "stop")
-  public static let length = Self(rawValue: "length")
-  public static let error = Self(rawValue: "error")
-  public static let toolCalls = Self(rawValue: "tool_calls")
+public enum MistralCompletionResponseStreamChoiceFinishReason: String, Codable, Hashable, Sendable {
+  case stop = "stop"
+  case length = "length"
+  case error = "error"
+  case toolCalls = "tool_calls"
 }

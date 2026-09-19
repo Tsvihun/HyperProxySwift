@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct AnthropicThinkingConfigEnabled: Codable, Sendable {
   public var budgetTokens: Int
   public var display: AnthropicThinkingDisplayMode?
-  public var typeModel: String
+  public var kind: AnthropicEnabledKind
 
   public init(
     budgetTokens: Int,
-    typeModel: String,
+    kind: AnthropicEnabledKind = .enabled,
     display: AnthropicThinkingDisplayMode? = nil
   ) {
     self.budgetTokens = budgetTokens
     self.display = display
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case budgetTokens = "budget_tokens"
     case display
-    case typeModel = "type"
+    case kind = "type"
   }
 }

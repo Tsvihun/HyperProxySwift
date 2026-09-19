@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiGoogleSearchRetrieval: Codable, Sendable {
-  public var dynamicRetrievalConfig: HyperProxyJSONValue?
+  public var dynamicRetrievalConfig: GeminiDynamicRetrievalConfig?
 
   public init(
-    dynamicRetrievalConfig: HyperProxyJSONValue? = nil
+    dynamicRetrievalConfig: GeminiDynamicRetrievalConfig? = nil
   ) {
     self.dynamicRetrievalConfig = dynamicRetrievalConfig
   }

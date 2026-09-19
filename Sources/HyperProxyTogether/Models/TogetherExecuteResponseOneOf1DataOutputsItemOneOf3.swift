@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct TogetherExecuteResponseOneOf1DataOutputsItemOneOf3: Codable, Sendable {
   public var data: TogetherExecuteResponseOneOf1DataOutputsItemOneOf3Data
-  public var typeModel: TogetherExecuteResponseOneOf1DataOutputsItemOneOf3TypeModel
+  public var kind: TogetherExecuteResponseOneOf1DataOutputsItemOneOf3Kind
 
   public init(
     data: TogetherExecuteResponseOneOf1DataOutputsItemOneOf3Data,
-    typeModel: TogetherExecuteResponseOneOf1DataOutputsItemOneOf3TypeModel
+    kind: TogetherExecuteResponseOneOf1DataOutputsItemOneOf3Kind
   ) {
     self.data = data
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case data
-    case typeModel = "type"
+    case kind = "type"
   }
 }

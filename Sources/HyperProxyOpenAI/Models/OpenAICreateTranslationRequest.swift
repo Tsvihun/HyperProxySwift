@@ -12,14 +12,14 @@ import HyperProxyCore
 
 public struct OpenAICreateTranslationRequest: Codable, Sendable {
   public var file: String
-  public var model: HyperProxyJSONValue
+  public var model: OpenAICreateTranslationRequestModel
   public var prompt: String?
   public var responseFormat: OpenAICreateTranslationRequestResponseFormat?
   public var temperature: Double?
 
   public init(
     file: String,
-    model: HyperProxyJSONValue,
+    model: OpenAICreateTranslationRequestModel,
     prompt: String? = nil,
     responseFormat: OpenAICreateTranslationRequestResponseFormat? = nil,
     temperature: Double? = nil

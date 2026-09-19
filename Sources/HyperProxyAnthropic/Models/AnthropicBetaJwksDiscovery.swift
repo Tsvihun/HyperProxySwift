@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct AnthropicBetaJwksDiscovery: Codable, Sendable {
   public var caCertPem: String?
   public var discoveryBase: String?
-  public var typeModel: String
+  public var kind: AnthropicDiscoveryKind
 
   public init(
-    typeModel: String,
+    kind: AnthropicDiscoveryKind = .discovery,
     caCertPem: String? = nil,
     discoveryBase: String? = nil
   ) {
     self.caCertPem = caCertPem
     self.discoveryBase = discoveryBase
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case caCertPem = "ca_cert_pem"
     case discoveryBase = "discovery_base"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

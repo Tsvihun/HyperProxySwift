@@ -15,7 +15,7 @@ public struct MistralActivityTaskStartedResponse: Codable, Sendable {
   public var continuedRunId: String?
   public var eventId: String
   public var eventTimestamp: Int
-  public var eventType: String
+  public var eventType: MistralACTIVITYTASKSTARTEDEventType
   public var firstExecutionRunId: String?
   public var parentWorkflowExecId: String?
   public var rootWorkflowExecId: String
@@ -29,14 +29,14 @@ public struct MistralActivityTaskStartedResponse: Codable, Sendable {
     continuedRunId: String?,
     eventId: String,
     eventTimestamp: Int,
-    eventType: String,
     firstExecutionRunId: String?,
     parentWorkflowExecId: String?,
     rootWorkflowExecId: String,
     scheduleId: String?,
     workflowExecId: String,
     workflowName: String,
-    workflowRunId: String
+    workflowRunId: String,
+    eventType: MistralACTIVITYTASKSTARTEDEventType = .aCTIVITYTASKSTARTED
   ) {
     self.attributes = attributes
     self.continuedRunId = continuedRunId

@@ -14,10 +14,10 @@ public struct AnthropicBetaCompact20260112: Codable, Sendable {
   public var instructions: String?
   public var pauseAfterCompaction: Bool?
   public var trigger: AnthropicBetaInputTokensTrigger?
-  public var typeModel: String
+  public var kind: AnthropicCompact20260112Kind
 
   public init(
-    typeModel: String,
+    kind: AnthropicCompact20260112Kind = .compact20260112,
     instructions: String? = nil,
     pauseAfterCompaction: Bool? = nil,
     trigger: AnthropicBetaInputTokensTrigger? = nil
@@ -25,13 +25,13 @@ public struct AnthropicBetaCompact20260112: Codable, Sendable {
     self.instructions = instructions
     self.pauseAfterCompaction = pauseAfterCompaction
     self.trigger = trigger
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case instructions
     case pauseAfterCompaction = "pause_after_compaction"
     case trigger
-    case typeModel = "type"
+    case kind = "type"
   }
 }

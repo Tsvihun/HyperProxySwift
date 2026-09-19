@@ -17,7 +17,7 @@ public struct DeepSeekAnthropicMessageResponse: Codable, Sendable {
   public var role: DeepSeekAnthropicMessageResponseRole
   public var stopReason: DeepSeekAnthropicStopReason?
   public var stopSequence: String?
-  public var typeModel: DeepSeekAnthropicMessageResponseTypeModel
+  public var kind: DeepSeekAnthropicMessageResponseKind
   public var usage: DeepSeekAnthropicUsage
 
   public init(
@@ -26,7 +26,7 @@ public struct DeepSeekAnthropicMessageResponse: Codable, Sendable {
     model: String,
     role: DeepSeekAnthropicMessageResponseRole,
     stopReason: DeepSeekAnthropicStopReason?,
-    typeModel: DeepSeekAnthropicMessageResponseTypeModel,
+    kind: DeepSeekAnthropicMessageResponseKind,
     usage: DeepSeekAnthropicUsage,
     stopSequence: String? = nil
   ) {
@@ -36,7 +36,7 @@ public struct DeepSeekAnthropicMessageResponse: Codable, Sendable {
     self.role = role
     self.stopReason = stopReason
     self.stopSequence = stopSequence
-    self.typeModel = typeModel
+    self.kind = kind
     self.usage = usage
   }
 
@@ -47,7 +47,7 @@ public struct DeepSeekAnthropicMessageResponse: Codable, Sendable {
     case role
     case stopReason = "stop_reason"
     case stopSequence = "stop_sequence"
-    case typeModel = "type"
+    case kind = "type"
     case usage
   }
 }

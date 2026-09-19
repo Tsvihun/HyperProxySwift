@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksAccountRateLimitMetric: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mETRICUNSPECIFIED = Self(rawValue: "METRIC_UNSPECIFIED")
-  public static let tOKENSGENERATED = Self(rawValue: "TOKENS_GENERATED")
-  public static let tOKENSPROMPT = Self(rawValue: "TOKENS_PROMPT")
-  public static let tOKENSCACHEADJUSTEDPROMPT = Self(rawValue: "TOKENS_CACHE_ADJUSTED_PROMPT")
-  public static let tOKENSCACHEDPROMPT = Self(rawValue: "TOKENS_CACHED_PROMPT")
-  public static let tOKENSUNCACHEDPROMPT = Self(rawValue: "TOKENS_UNCACHED_PROMPT")
+public enum FireworksAccountRateLimitMetric: String, Codable, Hashable, Sendable {
+  case mETRICUNSPECIFIED = "METRIC_UNSPECIFIED"
+  case tOKENSGENERATED = "TOKENS_GENERATED"
+  case tOKENSPROMPT = "TOKENS_PROMPT"
+  case tOKENSCACHEADJUSTEDPROMPT = "TOKENS_CACHE_ADJUSTED_PROMPT"
+  case tOKENSCACHEDPROMPT = "TOKENS_CACHED_PROMPT"
+  case tOKENSUNCACHEDPROMPT = "TOKENS_UNCACHED_PROMPT"
 }

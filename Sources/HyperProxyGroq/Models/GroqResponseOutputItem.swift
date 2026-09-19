@@ -10,4 +10,33 @@
 import Foundation
 import HyperProxyCore
 
-public typealias GroqResponseOutputItem = HyperProxyJSONValue
+public enum GroqResponseOutputItem: Codable, Sendable {
+  case responseOutputMessage(GroqResponseOutputMessage)
+  case responseOutputFunctionCall(GroqResponseOutputFunctionCall)
+  case responseOutputReasoning(GroqResponseOutputReasoning)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(GroqResponseOutputMessage.self) {
+      self = .responseOutputMessage(value)
+      return
+    }
+    if let value = try? container.decode(GroqResponseOutputFunctionCall.self) {
+      self = .responseOutputFunctionCall(value)
+      return
+    }
+    self = .responseOutputReasoning(try container.decode(GroqResponseOutputReasoning.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .responseOutputMessage(let value):
+      try container.encode(value)
+    case .responseOutputFunctionCall(let value):
+      try container.encode(value)
+    case .responseOutputReasoning(let value):
+      try container.encode(value)
+    }
+  }
+}

@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenAIContainerNetworkPolicyAllowlistParam: Codable, Sendable {
   public var allowedDomains: [String]
   public var domainSecrets: [OpenAIContainerNetworkPolicyDomainSecretParam]?
-  public var typeModel: OpenAIContainerNetworkPolicyAllowlistParamTypeModel
+  public var kind: OpenAIContainerNetworkPolicyAllowlistParamKind
 
   public init(
     allowedDomains: [String],
-    typeModel: OpenAIContainerNetworkPolicyAllowlistParamTypeModel,
+    kind: OpenAIContainerNetworkPolicyAllowlistParamKind,
     domainSecrets: [OpenAIContainerNetworkPolicyDomainSecretParam]? = nil
   ) {
     self.allowedDomains = allowedDomains
     self.domainSecrets = domainSecrets
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case allowedDomains = "allowed_domains"
     case domainSecrets = "domain_secrets"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,15 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAICreateEmbeddingRequestModelAnyOf2: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let textEmbeddingAda002 = Self(rawValue: "text-embedding-ada-002")
-  public static let textEmbedding3Small = Self(rawValue: "text-embedding-3-small")
-  public static let textEmbedding3Large = Self(rawValue: "text-embedding-3-large")
+public enum OpenAICreateEmbeddingRequestModelAnyOf2: String, Codable, Hashable, Sendable {
+  case textEmbeddingAda002 = "text-embedding-ada-002"
+  case textEmbedding3Small = "text-embedding-3-small"
+  case textEmbedding3Large = "text-embedding-3-large"
 }

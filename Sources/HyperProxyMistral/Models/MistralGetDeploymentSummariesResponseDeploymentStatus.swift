@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralGetDeploymentSummariesResponseDeploymentStatus: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum MistralGetDeploymentSummariesResponseDeploymentStatus: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let online = Self(rawValue: "online")
-  public static let offline = Self(rawValue: "offline")
+  case online = "online"
+  case offline = "offline"
 }

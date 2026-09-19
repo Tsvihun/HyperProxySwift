@@ -19,13 +19,13 @@ public struct BraveWebSearchResponse: Codable, Sendable {
   public var news: BraveNewsSection?
   public var query: BraveQuery
   public var rich: BraveRichResult?
-  public var typeModel: String
+  public var kind: String
   public var videos: BraveVideoSection?
   public var web: BraveWebSection?
 
   public init(
     query: BraveQuery,
-    typeModel: String,
+    kind: String,
     discussions: BraveGenericResultSection? = nil,
     faq: BraveGenericResultSection? = nil,
     infobox: BraveGenericResultSection? = nil,
@@ -44,7 +44,7 @@ public struct BraveWebSearchResponse: Codable, Sendable {
     self.news = news
     self.query = query
     self.rich = rich
-    self.typeModel = typeModel
+    self.kind = kind
     self.videos = videos
     self.web = web
   }
@@ -58,7 +58,7 @@ public struct BraveWebSearchResponse: Codable, Sendable {
     case news
     case query
     case rich
-    case typeModel = "type"
+    case kind = "type"
     case videos
     case web
   }

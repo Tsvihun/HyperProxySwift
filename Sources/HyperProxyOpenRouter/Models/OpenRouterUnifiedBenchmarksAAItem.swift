@@ -16,7 +16,7 @@ public struct OpenRouterUnifiedBenchmarksAAItem: Codable, Sendable {
   public var displayName: String
   public var intelligenceIndex: Double
   public var modelPermaslug: String
-  public var pricing: OpenRouterUnifiedBenchmarkPricing
+  public var pricing: OpenRouterUnifiedBenchmarkPricing?
   public var source: OpenRouterUnifiedBenchmarksAAItemSource
 
   public init(
@@ -25,7 +25,7 @@ public struct OpenRouterUnifiedBenchmarksAAItem: Codable, Sendable {
     displayName: String,
     intelligenceIndex: Double,
     modelPermaslug: String,
-    pricing: OpenRouterUnifiedBenchmarkPricing,
+    pricing: OpenRouterUnifiedBenchmarkPricing?,
     source: OpenRouterUnifiedBenchmarksAAItemSource
   ) {
     self.agenticIndex = agenticIndex

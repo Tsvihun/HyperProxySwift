@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct TogetherDEAnalyticsData: Codable, Sendable {
   public var deploymentAnalytics: [TogetherDEDeploymentAnalyticsData]?
   public var endpointId: String?
-  public var metrics: HyperProxyJSONValue?
+  public var metrics: TogetherDEEndpointMetrics?
   public var timeRange: TogetherDEMetricsTimeRange?
   public var timeSeries: [TogetherDETimeSeriesDataPoint]?
 
   public init(
     deploymentAnalytics: [TogetherDEDeploymentAnalyticsData]? = nil,
     endpointId: String? = nil,
-    metrics: HyperProxyJSONValue? = nil,
+    metrics: TogetherDEEndpointMetrics? = nil,
     timeRange: TogetherDEMetricsTimeRange? = nil,
     timeSeries: [TogetherDETimeSeriesDataPoint]? = nil
   ) {

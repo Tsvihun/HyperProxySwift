@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct ReplicateSchemasPredictionRequestWebhookEventsFilterItem: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum ReplicateSchemasPredictionRequestWebhookEventsFilterItem: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let start = Self(rawValue: "start")
-  public static let output = Self(rawValue: "output")
-  public static let logs = Self(rawValue: "logs")
-  public static let completed = Self(rawValue: "completed")
+  case start = "start"
+  case output = "output"
+  case logs = "logs"
+  case completed = "completed"
 }

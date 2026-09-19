@@ -16,7 +16,7 @@ public struct ElevenLabsConversationHistoryTranscriptToolCallWebhookDetails: Cod
   public var method: String
   public var pathParams: [String: String]?
   public var queryParams: [String: String]?
-  public var typeModel: String?
+  public var kind: ElevenLabsWebhookKind?
   public var url: String
 
   public init(
@@ -26,14 +26,14 @@ public struct ElevenLabsConversationHistoryTranscriptToolCallWebhookDetails: Cod
     headers: [String: String]? = nil,
     pathParams: [String: String]? = nil,
     queryParams: [String: String]? = nil,
-    typeModel: String? = nil
+    kind: ElevenLabsWebhookKind? = nil
   ) {
     self.body = body
     self.headers = headers
     self.method = method
     self.pathParams = pathParams
     self.queryParams = queryParams
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
@@ -43,7 +43,7 @@ public struct ElevenLabsConversationHistoryTranscriptToolCallWebhookDetails: Cod
     case method
     case pathParams = "path_params"
     case queryParams = "query_params"
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

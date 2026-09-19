@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralPlanType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let aPI = Self(rawValue: "API")
-  public static let cHAT = Self(rawValue: "CHAT")
-  public static let oNPREMISE = Self(rawValue: "ON_PREMISE")
-  public static let lICENSE = Self(rawValue: "LICENSE")
-  public static let mISTRALCODE = Self(rawValue: "MISTRAL_CODE")
+public enum MistralPlanType: String, Codable, Hashable, Sendable {
+  case aPI = "API"
+  case cHAT = "CHAT"
+  case oNPREMISE = "ON_PREMISE"
+  case lICENSE = "LICENSE"
+  case mISTRALCODE = "MISTRAL_CODE"
 }

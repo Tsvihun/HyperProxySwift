@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct PerplexityFetchUrlTool: Codable, Sendable {
   public var maxUrls: Int?
-  public var typeModel: PerplexityFetchUrlToolTypeModel
+  public var kind: PerplexityFetchUrlToolKind
 
   public init(
-    typeModel: PerplexityFetchUrlToolTypeModel,
+    kind: PerplexityFetchUrlToolKind,
     maxUrls: Int? = nil
   ) {
     self.maxUrls = maxUrls
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case maxUrls = "max_urls"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

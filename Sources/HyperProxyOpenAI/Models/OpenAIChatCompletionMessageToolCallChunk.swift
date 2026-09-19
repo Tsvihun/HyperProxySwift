@@ -14,24 +14,24 @@ public struct OpenAIChatCompletionMessageToolCallChunk: Codable, Sendable {
   public var function: OpenAIChatCompletionMessageToolCallChunkFunction?
   public var id: String?
   public var index: Int
-  public var typeModel: OpenAIChatCompletionMessageToolCallChunkTypeModel?
+  public var kind: OpenAIChatCompletionMessageToolCallChunkKind?
 
   public init(
     index: Int,
     function: OpenAIChatCompletionMessageToolCallChunkFunction? = nil,
     id: String? = nil,
-    typeModel: OpenAIChatCompletionMessageToolCallChunkTypeModel? = nil
+    kind: OpenAIChatCompletionMessageToolCallChunkKind? = nil
   ) {
     self.function = function
     self.id = id
     self.index = index
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case function
     case id
     case index
-    case typeModel = "type"
+    case kind = "type"
   }
 }

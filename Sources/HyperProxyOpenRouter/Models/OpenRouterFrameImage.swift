@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenRouterFrameImage: Codable, Sendable {
   public var frameType: OpenRouterFrameImageAllOf2FrameType
   public var imageUrl: OpenRouterContentPartImageImageUrl
-  public var typeModel: OpenRouterContentPartImageTypeModel
+  public var kind: OpenRouterContentPartImageKind
 
   public init(
     frameType: OpenRouterFrameImageAllOf2FrameType,
     imageUrl: OpenRouterContentPartImageImageUrl,
-    typeModel: OpenRouterContentPartImageTypeModel
+    kind: OpenRouterContentPartImageKind
   ) {
     self.frameType = frameType
     self.imageUrl = imageUrl
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case frameType = "frame_type"
     case imageUrl = "image_url"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

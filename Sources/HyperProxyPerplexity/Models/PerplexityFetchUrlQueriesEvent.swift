@@ -13,25 +13,25 @@ import HyperProxyCore
 public struct PerplexityFetchUrlQueriesEvent: Codable, Sendable {
   public var sequenceNumber: Int64
   public var thought: String?
-  public var typeModel: PerplexityEventType
+  public var kind: PerplexityEventType
   public var urls: [String]
 
   public init(
     sequenceNumber: Int64,
-    typeModel: PerplexityEventType,
+    kind: PerplexityEventType,
     urls: [String],
     thought: String? = nil
   ) {
     self.sequenceNumber = sequenceNumber
     self.thought = thought
-    self.typeModel = typeModel
+    self.kind = kind
     self.urls = urls
   }
 
   enum CodingKeys: String, CodingKey {
     case sequenceNumber = "sequence_number"
     case thought
-    case typeModel = "type"
+    case kind = "type"
     case urls
   }
 }

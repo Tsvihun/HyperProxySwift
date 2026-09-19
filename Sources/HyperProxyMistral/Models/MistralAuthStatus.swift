@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralAuthStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let valid = Self(rawValue: "valid")
-  public static let invalid = Self(rawValue: "invalid")
-  public static let error = Self(rawValue: "error")
+public enum MistralAuthStatus: String, Codable, Hashable, Sendable {
+  case valid = "valid"
+  case invalid = "invalid"
+  case error = "error"
 }

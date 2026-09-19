@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsCommitCheckout: Codable, Sendable {
   public var sha: String
-  public var typeModel: AnthropicBetaManagedAgentsCommitCheckoutTypeModel
+  public var kind: AnthropicBetaManagedAgentsCommitCheckoutKind
 
   public init(
     sha: String,
-    typeModel: AnthropicBetaManagedAgentsCommitCheckoutTypeModel
+    kind: AnthropicBetaManagedAgentsCommitCheckoutKind
   ) {
     self.sha = sha
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case sha
-    case typeModel = "type"
+    case kind = "type"
   }
 }

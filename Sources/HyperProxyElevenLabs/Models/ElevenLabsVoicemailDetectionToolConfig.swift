@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsVoicemailDetectionToolConfig: Codable, Sendable {
-  public var systemToolType: String?
+  public var systemToolType: ElevenLabsVoicemailDetectionSystemToolType?
   public var voicemailMessage: String?
 
   public init(
-    systemToolType: String? = nil,
+    systemToolType: ElevenLabsVoicemailDetectionSystemToolType? = nil,
     voicemailMessage: String? = nil
   ) {
     self.systemToolType = systemToolType

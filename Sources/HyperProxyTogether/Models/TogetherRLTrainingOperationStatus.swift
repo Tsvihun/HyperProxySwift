@@ -10,21 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherRLTrainingOperationStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let tRAININGOPERATIONSTATUSUNSPECIFIED = Self(
-    rawValue: "TRAINING_OPERATION_STATUS_UNSPECIFIED")
-  public static let tRAININGOPERATIONSTATUSPENDING = Self(
-    rawValue: "TRAINING_OPERATION_STATUS_PENDING")
-  public static let tRAININGOPERATIONSTATUSRUNNING = Self(
-    rawValue: "TRAINING_OPERATION_STATUS_RUNNING")
-  public static let tRAININGOPERATIONSTATUSCOMPLETED = Self(
-    rawValue: "TRAINING_OPERATION_STATUS_COMPLETED")
-  public static let tRAININGOPERATIONSTATUSFAILED = Self(
-    rawValue: "TRAINING_OPERATION_STATUS_FAILED")
+public enum TogetherRLTrainingOperationStatus: String, Codable, Hashable, Sendable {
+  case tRAININGOPERATIONSTATUSUNSPECIFIED = "TRAINING_OPERATION_STATUS_UNSPECIFIED"
+  case tRAININGOPERATIONSTATUSPENDING = "TRAINING_OPERATION_STATUS_PENDING"
+  case tRAININGOPERATIONSTATUSRUNNING = "TRAINING_OPERATION_STATUS_RUNNING"
+  case tRAININGOPERATIONSTATUSCOMPLETED = "TRAINING_OPERATION_STATUS_COMPLETED"
+  case tRAININGOPERATIONSTATUSFAILED = "TRAINING_OPERATION_STATUS_FAILED"
 }

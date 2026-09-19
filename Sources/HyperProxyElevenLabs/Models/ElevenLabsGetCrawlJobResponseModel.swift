@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsGetCrawlJobResponseModel: Codable, Sendable {
   public var createdAt: Int
   public var id: String
-  public var maxDepth: Int
+  public var maxDepth: Int?
   public var maxPages: Int
   public var pagesFailed: Int?
   public var pagesIdentified: Int?
@@ -23,24 +23,24 @@ public struct ElevenLabsGetCrawlJobResponseModel: Codable, Sendable {
   public var rootFolderId: String
   public var seedUrl: String
   public var status: ElevenLabsCrawlStatus?
-  public var typeModel: ElevenLabsCrawlType?
+  public var kind: ElevenLabsCrawlType?
   public var updatedAt: Int
 
   public init(
     createdAt: Int,
     id: String,
-    maxDepth: Int,
     maxPages: Int,
     rootFolderId: String,
     seedUrl: String,
     updatedAt: Int,
+    maxDepth: Int? = nil,
     pagesFailed: Int? = nil,
     pagesIdentified: Int? = nil,
     pagesScraped: Int? = nil,
     pagesSkipped: Int? = nil,
     pattern: String? = nil,
     status: ElevenLabsCrawlStatus? = nil,
-    typeModel: ElevenLabsCrawlType? = nil
+    kind: ElevenLabsCrawlType? = nil
   ) {
     self.createdAt = createdAt
     self.id = id
@@ -54,7 +54,7 @@ public struct ElevenLabsGetCrawlJobResponseModel: Codable, Sendable {
     self.rootFolderId = rootFolderId
     self.seedUrl = seedUrl
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
     self.updatedAt = updatedAt
   }
 
@@ -71,7 +71,7 @@ public struct ElevenLabsGetCrawlJobResponseModel: Codable, Sendable {
     case rootFolderId = "root_folder_id"
     case seedUrl = "seed_url"
     case status
-    case typeModel = "type"
+    case kind = "type"
     case updatedAt = "updated_at"
   }
 }

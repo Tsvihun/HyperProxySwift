@@ -15,11 +15,11 @@ public struct AnthropicBetaMCPToolset: Codable, Sendable {
   public var configs: [String: AnthropicBetaMCPToolConfig]?
   public var defaultConfig: AnthropicBetaMCPToolDefaultConfig?
   public var mcpServerName: String
-  public var typeModel: String
+  public var kind: AnthropicMcpToolsetKind
 
   public init(
     mcpServerName: String,
-    typeModel: String,
+    kind: AnthropicMcpToolsetKind = .mcpToolset,
     cacheControl: AnthropicBetaCacheControlEphemeral? = nil,
     configs: [String: AnthropicBetaMCPToolConfig]? = nil,
     defaultConfig: AnthropicBetaMCPToolDefaultConfig? = nil
@@ -28,7 +28,7 @@ public struct AnthropicBetaMCPToolset: Codable, Sendable {
     self.configs = configs
     self.defaultConfig = defaultConfig
     self.mcpServerName = mcpServerName
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct AnthropicBetaMCPToolset: Codable, Sendable {
     case configs
     case defaultConfig = "default_config"
     case mcpServerName = "mcp_server_name"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

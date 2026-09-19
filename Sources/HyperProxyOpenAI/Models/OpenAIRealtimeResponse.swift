@@ -14,7 +14,7 @@ public struct OpenAIRealtimeResponse: Codable, Sendable {
   public var audio: OpenAIRealtimeResponseAudio?
   public var conversationId: String?
   public var id: String?
-  public var maxOutputTokens: HyperProxyJSONValue?
+  public var maxOutputTokens: OpenAIRealtimeResponseMaxOutputTokens?
   public var metadata: OpenAIMetadata?
   public var object: OpenAIRealtimeResponseObject?
   public var output: [OpenAIRealtimeConversationItem]?
@@ -27,7 +27,7 @@ public struct OpenAIRealtimeResponse: Codable, Sendable {
     audio: OpenAIRealtimeResponseAudio? = nil,
     conversationId: String? = nil,
     id: String? = nil,
-    maxOutputTokens: HyperProxyJSONValue? = nil,
+    maxOutputTokens: OpenAIRealtimeResponseMaxOutputTokens? = nil,
     metadata: OpenAIMetadata? = nil,
     object: OpenAIRealtimeResponseObject? = nil,
     output: [OpenAIRealtimeConversationItem]? = nil,

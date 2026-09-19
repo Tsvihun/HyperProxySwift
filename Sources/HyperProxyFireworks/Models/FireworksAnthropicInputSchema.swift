@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct FireworksAnthropicInputSchema: Codable, Sendable {
   public var properties: [String: HyperProxyJSONValue]?
   public var requiredValue: [String]?
-  public var typeModel: String
+  public var kind: FireworksObjectKind
 
   public init(
-    typeModel: String,
+    kind: FireworksObjectKind = .object,
     properties: [String: HyperProxyJSONValue]? = nil,
     requiredValue: [String]? = nil
   ) {
     self.properties = properties
     self.requiredValue = requiredValue
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case properties
     case requiredValue = "required"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

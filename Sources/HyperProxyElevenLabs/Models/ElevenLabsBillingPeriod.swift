@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsBillingPeriod: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let monthlyPeriod = Self(rawValue: "monthly_period")
-  public static let value3MonthPeriod = Self(rawValue: "3_month_period")
-  public static let value6MonthPeriod = Self(rawValue: "6_month_period")
-  public static let annualPeriod = Self(rawValue: "annual_period")
+public enum ElevenLabsBillingPeriod: String, Codable, Hashable, Sendable {
+  case monthlyPeriod = "monthly_period"
+  case value3MonthPeriod = "3_month_period"
+  case value6MonthPeriod = "6_month_period"
+  case annualPeriod = "annual_period"
 }

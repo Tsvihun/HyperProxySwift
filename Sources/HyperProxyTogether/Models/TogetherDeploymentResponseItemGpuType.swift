@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherDeploymentResponseItemGpuType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let h10080gb = Self(rawValue: "h100-80gb")
-  public static let h10040gbMig = Self(rawValue: "h100-40gb-mig")
-  public static let h200140gb = Self(rawValue: "h200-140gb")
-  public static let b200192gb = Self(rawValue: "b200-192gb")
+public enum TogetherDeploymentResponseItemGpuType: String, Codable, Hashable, Sendable {
+  case h10080gb = "h100-80gb"
+  case h10040gbMig = "h100-40gb-mig"
+  case h200140gb = "h200-140gb"
+  case b200192gb = "b200-192gb"
 }

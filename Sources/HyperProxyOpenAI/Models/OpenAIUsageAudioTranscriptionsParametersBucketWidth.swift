@@ -10,16 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIUsageAudioTranscriptionsParametersBucketWidth: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum OpenAIUsageAudioTranscriptionsParametersBucketWidth: String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let value1m = Self(rawValue: "1m")
-  public static let value1h = Self(rawValue: "1h")
-  public static let value1d = Self(rawValue: "1d")
+  case value1m = "1m"
+  case value1h = "1h"
+  case value1d = "1d"
 }

@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIReasoningModeEnumAnyOf2: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let standard = Self(rawValue: "standard")
-  public static let pro = Self(rawValue: "pro")
+public enum OpenAIReasoningModeEnumAnyOf2: String, Codable, Hashable, Sendable {
+  case standard = "standard"
+  case pro = "pro"
 }

@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIMessageContentImageFileObject: Codable, Sendable {
   public var imageFile: OpenAIMessageContentImageFileObjectImageFile
-  public var typeModel: OpenAIMessageContentImageFileObjectTypeModel
+  public var kind: OpenAIMessageContentImageFileObjectKind
 
   public init(
     imageFile: OpenAIMessageContentImageFileObjectImageFile,
-    typeModel: OpenAIMessageContentImageFileObjectTypeModel
+    kind: OpenAIMessageContentImageFileObjectKind
   ) {
     self.imageFile = imageFile
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case imageFile = "image_file"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

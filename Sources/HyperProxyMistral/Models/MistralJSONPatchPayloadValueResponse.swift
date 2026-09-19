@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public enum MistralJSONPatchPayloadValueResponse: Codable, Sendable {
   case string(String)
-  case array([MistralJSONPatch])
+  case jSONPatchArray([MistralJSONPatch])
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -20,7 +20,7 @@ public enum MistralJSONPatchPayloadValueResponse: Codable, Sendable {
       self = .string(value)
       return
     }
-    self = .array(try container.decode([MistralJSONPatch].self))
+    self = .jSONPatchArray(try container.decode([MistralJSONPatch].self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -28,7 +28,7 @@ public enum MistralJSONPatchPayloadValueResponse: Codable, Sendable {
     switch self {
     case .string(let value):
       try container.encode(value)
-    case .array(let value):
+    case .jSONPatchArray(let value):
       try container.encode(value)
     }
   }
@@ -42,6 +42,6 @@ extension MistralJSONPatchPayloadValueResponse: ExpressibleByStringLiteral {
 
 extension MistralJSONPatchPayloadValueResponse: ExpressibleByArrayLiteral {
   public init(arrayLiteral elements: MistralJSONPatch...) {
-    self = .array(elements)
+    self = .jSONPatchArray(elements)
   }
 }

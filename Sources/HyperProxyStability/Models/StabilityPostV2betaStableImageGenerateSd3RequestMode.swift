@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct StabilityPostV2betaStableImageGenerateSd3RequestMode: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum StabilityPostV2betaStableImageGenerateSd3RequestMode: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let textToImage = Self(rawValue: "text-to-image")
-  public static let imageToImage = Self(rawValue: "image-to-image")
+  case textToImage = "text-to-image"
+  case imageToImage = "image-to-image"
 }

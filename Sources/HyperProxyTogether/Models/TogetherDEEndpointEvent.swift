@@ -32,7 +32,7 @@ public struct TogetherDEEndpointEvent: Codable, Sendable {
   public var sourceKind: TogetherDEEndpointEventSourceKind
   public var status: String?
   public var subjectId: String?
-  public var typeModel: String
+  public var kind: String
   public var version: Int?
 
   public init(
@@ -42,7 +42,7 @@ public struct TogetherDEEndpointEvent: Codable, Sendable {
     level: TogetherDEEndpointEventLevel,
     source: String,
     sourceKind: TogetherDEEndpointEventSourceKind,
-    typeModel: String,
+    kind: String,
     clusterId: String? = nil,
     containerName: String? = nil,
     deploymentId: String? = nil,
@@ -81,7 +81,7 @@ public struct TogetherDEEndpointEvent: Codable, Sendable {
     self.sourceKind = sourceKind
     self.status = status
     self.subjectId = subjectId
-    self.typeModel = typeModel
+    self.kind = kind
     self.version = version
   }
 
@@ -107,7 +107,7 @@ public struct TogetherDEEndpointEvent: Codable, Sendable {
     case sourceKind
     case status
     case subjectId
-    case typeModel = "type"
+    case kind = "type"
     case version
   }
 }

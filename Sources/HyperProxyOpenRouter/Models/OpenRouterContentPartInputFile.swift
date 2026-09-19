@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterContentPartInputFile: Codable, Sendable {
   public var inputFile: OpenRouterMultimodalMedia
-  public var typeModel: OpenRouterContentPartInputFileTypeModel
+  public var kind: OpenRouterContentPartInputFileKind
 
   public init(
     inputFile: OpenRouterMultimodalMedia,
-    typeModel: OpenRouterContentPartInputFileTypeModel
+    kind: OpenRouterContentPartInputFileKind
   ) {
     self.inputFile = inputFile
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case inputFile = "input_file"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterPublicEndpointPerfLast30mByWorkload: Codable, Sendable {
+  public var decisions: OpenRouterPublicEndpointPerfLast30mByWorkloadDecisions?
   public var embeddings: OpenRouterPublicEndpointPerfLast30mByWorkloadEmbeddings?
   public var imageGeneration: OpenRouterPublicEndpointPerfLast30mByWorkloadImageGeneration?
   public var rerank: OpenRouterPublicEndpointPerfLast30mByWorkloadRerank?
@@ -21,6 +22,7 @@ public struct OpenRouterPublicEndpointPerfLast30mByWorkload: Codable, Sendable {
   public var videoGeneration: OpenRouterPublicEndpointPerfLast30mByWorkloadVideoGeneration?
 
   public init(
+    decisions: OpenRouterPublicEndpointPerfLast30mByWorkloadDecisions? = nil,
     embeddings: OpenRouterPublicEndpointPerfLast30mByWorkloadEmbeddings? = nil,
     imageGeneration: OpenRouterPublicEndpointPerfLast30mByWorkloadImageGeneration? = nil,
     rerank: OpenRouterPublicEndpointPerfLast30mByWorkloadRerank? = nil,
@@ -30,6 +32,7 @@ public struct OpenRouterPublicEndpointPerfLast30mByWorkload: Codable, Sendable {
     unknown: OpenRouterPublicEndpointPerfLast30mByWorkloadUnknown? = nil,
     videoGeneration: OpenRouterPublicEndpointPerfLast30mByWorkloadVideoGeneration? = nil
   ) {
+    self.decisions = decisions
     self.embeddings = embeddings
     self.imageGeneration = imageGeneration
     self.rerank = rerank
@@ -41,6 +44,7 @@ public struct OpenRouterPublicEndpointPerfLast30mByWorkload: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case decisions
     case embeddings
     case imageGeneration = "image_generation"
     case rerank

@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLSplitSentencesOption: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let value0 = Self(rawValue: "0")
-  public static let value1 = Self(rawValue: "1")
-  public static let nonewlines = Self(rawValue: "nonewlines")
+public enum DeepLSplitSentencesOption: String, Codable, Hashable, Sendable {
+  case value0 = "0"
+  case value1 = "1"
+  case nonewlines = "nonewlines"
 }

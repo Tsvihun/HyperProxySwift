@@ -14,10 +14,10 @@ public struct MistralFunctionResultEntry: Codable, Sendable {
   public var completedAt: String?
   public var createdAt: String?
   public var id: String?
-  public var object: String?
+  public var object: MistralEntryObject?
   public var result: String
   public var toolCallId: String
-  public var typeModel: String?
+  public var kind: MistralFunctionResultKind?
 
   public init(
     result: String,
@@ -25,8 +25,8 @@ public struct MistralFunctionResultEntry: Codable, Sendable {
     completedAt: String? = nil,
     createdAt: String? = nil,
     id: String? = nil,
-    object: String? = nil,
-    typeModel: String? = nil
+    object: MistralEntryObject? = nil,
+    kind: MistralFunctionResultKind? = nil
   ) {
     self.completedAt = completedAt
     self.createdAt = createdAt
@@ -34,7 +34,7 @@ public struct MistralFunctionResultEntry: Codable, Sendable {
     self.object = object
     self.result = result
     self.toolCallId = toolCallId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct MistralFunctionResultEntry: Codable, Sendable {
     case object
     case result
     case toolCallId = "tool_call_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

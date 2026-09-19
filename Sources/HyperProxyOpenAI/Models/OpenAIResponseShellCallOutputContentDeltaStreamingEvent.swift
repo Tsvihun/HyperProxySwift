@@ -16,7 +16,7 @@ public struct OpenAIResponseShellCallOutputContentDeltaStreamingEvent: Codable, 
   public var itemId: String
   public var outputIndex: Int
   public var sequenceNumber: Int
-  public var typeModel: OpenAIResponseShellCallOutputContentDeltaStreamingEventTypeModel
+  public var kind: OpenAIResponseShellCallOutputContentDeltaStreamingEventKind
 
   public init(
     commandIndex: Int,
@@ -24,14 +24,14 @@ public struct OpenAIResponseShellCallOutputContentDeltaStreamingEvent: Codable, 
     itemId: String,
     outputIndex: Int,
     sequenceNumber: Int,
-    typeModel: OpenAIResponseShellCallOutputContentDeltaStreamingEventTypeModel
+    kind: OpenAIResponseShellCallOutputContentDeltaStreamingEventKind
   ) {
     self.commandIndex = commandIndex
     self.delta = delta
     self.itemId = itemId
     self.outputIndex = outputIndex
     self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIResponseShellCallOutputContentDeltaStreamingEvent: Codable, 
     case itemId = "item_id"
     case outputIndex = "output_index"
     case sequenceNumber = "sequence_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

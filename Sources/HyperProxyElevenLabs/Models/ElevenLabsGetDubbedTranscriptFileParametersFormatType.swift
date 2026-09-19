@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsGetDubbedTranscriptFileParametersFormatType: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum ElevenLabsGetDubbedTranscriptFileParametersFormatType: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let srt = Self(rawValue: "srt")
-  public static let webvtt = Self(rawValue: "webvtt")
-  public static let json = Self(rawValue: "json")
+  case srt = "srt"
+  case webvtt = "webvtt"
+  case json = "json"
 }

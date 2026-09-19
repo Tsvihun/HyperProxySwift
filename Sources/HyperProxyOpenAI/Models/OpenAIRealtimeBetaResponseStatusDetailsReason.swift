@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIRealtimeBetaResponseStatusDetailsReason: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let turnDetected = Self(rawValue: "turn_detected")
-  public static let clientCancelled = Self(rawValue: "client_cancelled")
-  public static let maxOutputTokens = Self(rawValue: "max_output_tokens")
-  public static let contentFilter = Self(rawValue: "content_filter")
+public enum OpenAIRealtimeBetaResponseStatusDetailsReason: String, Codable, Hashable, Sendable {
+  case turnDetected = "turn_detected"
+  case clientCancelled = "client_cancelled"
+  case maxOutputTokens = "max_output_tokens"
+  case contentFilter = "content_filter"
 }

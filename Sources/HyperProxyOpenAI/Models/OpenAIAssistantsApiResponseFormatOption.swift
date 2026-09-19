@@ -10,4 +10,40 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIAssistantsApiResponseFormatOption = HyperProxyJSONValue
+public enum OpenAIAssistantsApiResponseFormatOption: Codable, Sendable {
+  case assistantsApiResponseFormatOptionOneOf1(OpenAIAssistantsApiResponseFormatOptionOneOf1)
+  case responseFormatText(OpenAIResponseFormatText)
+  case responseFormatJsonObject(OpenAIResponseFormatJsonObject)
+  case responseFormatJsonSchema(OpenAIResponseFormatJsonSchema)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(OpenAIAssistantsApiResponseFormatOptionOneOf1.self) {
+      self = .assistantsApiResponseFormatOptionOneOf1(value)
+      return
+    }
+    if let value = try? container.decode(OpenAIResponseFormatText.self) {
+      self = .responseFormatText(value)
+      return
+    }
+    if let value = try? container.decode(OpenAIResponseFormatJsonObject.self) {
+      self = .responseFormatJsonObject(value)
+      return
+    }
+    self = .responseFormatJsonSchema(try container.decode(OpenAIResponseFormatJsonSchema.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .assistantsApiResponseFormatOptionOneOf1(let value):
+      try container.encode(value)
+    case .responseFormatText(let value):
+      try container.encode(value)
+    case .responseFormatJsonObject(let value):
+      try container.encode(value)
+    case .responseFormatJsonSchema(let value):
+      try container.encode(value)
+    }
+  }
+}

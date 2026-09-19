@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsModerationStatusResponseModelSafetyStatusAnyOf1: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum ElevenLabsModerationStatusResponseModelSafetyStatusAnyOf1: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let appealApproved = Self(rawValue: "appeal_approved")
-  public static let appealDenied = Self(rawValue: "appeal_denied")
-  public static let falsePositive = Self(rawValue: "false_positive")
+  case appealApproved = "appeal_approved"
+  case appealDenied = "appeal_denied"
+  case falsePositive = "false_positive"
 }

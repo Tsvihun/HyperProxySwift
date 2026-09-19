@@ -15,20 +15,20 @@ public struct AnthropicBetaManagedAgentsSessionThreadStatusRunningEvent: Codable
   public var id: String
   public var processedAt: AnthropicBetaTimestamp
   public var sessionThreadId: String
-  public var typeModel: AnthropicBetaManagedAgentsSessionThreadStatusRunningEventTypeModel
+  public var kind: AnthropicBetaManagedAgentsSessionThreadStatusRunningEventKind
 
   public init(
     agentName: String,
     id: String,
     processedAt: AnthropicBetaTimestamp,
     sessionThreadId: String,
-    typeModel: AnthropicBetaManagedAgentsSessionThreadStatusRunningEventTypeModel
+    kind: AnthropicBetaManagedAgentsSessionThreadStatusRunningEventKind
   ) {
     self.agentName = agentName
     self.id = id
     self.processedAt = processedAt
     self.sessionThreadId = sessionThreadId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct AnthropicBetaManagedAgentsSessionThreadStatusRunningEvent: Codable
     case id
     case processedAt = "processed_at"
     case sessionThreadId = "session_thread_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

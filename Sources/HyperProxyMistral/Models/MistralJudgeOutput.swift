@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct MistralJudgeOutput: Codable, Sendable {
   public var analysis: String
-  public var answer: HyperProxyJSONValue
+  public var answer: MistralJudgeOutputAnswer
 
   public init(
     analysis: String,
-    answer: HyperProxyJSONValue
+    answer: MistralJudgeOutputAnswer
   ) {
     self.analysis = analysis
     self.answer = answer

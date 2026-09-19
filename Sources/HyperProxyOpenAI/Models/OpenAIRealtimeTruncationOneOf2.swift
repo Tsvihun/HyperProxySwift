@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenAIRealtimeTruncationOneOf2: Codable, Sendable {
   public var retentionRatio: Double
   public var tokenLimits: OpenAIRealtimeTruncationOneOf2TokenLimits?
-  public var typeModel: OpenAIRealtimeTruncationOneOf2TypeModel
+  public var kind: OpenAIRealtimeTruncationOneOf2Kind
 
   public init(
     retentionRatio: Double,
-    typeModel: OpenAIRealtimeTruncationOneOf2TypeModel,
+    kind: OpenAIRealtimeTruncationOneOf2Kind,
     tokenLimits: OpenAIRealtimeTruncationOneOf2TokenLimits? = nil
   ) {
     self.retentionRatio = retentionRatio
     self.tokenLimits = tokenLimits
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case retentionRatio = "retention_ratio"
     case tokenLimits = "token_limits"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

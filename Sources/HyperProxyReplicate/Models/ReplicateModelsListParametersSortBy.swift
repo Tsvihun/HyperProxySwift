@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ReplicateModelsListParametersSortBy: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let modelCreatedAt = Self(rawValue: "model_created_at")
-  public static let latestVersionCreatedAt = Self(rawValue: "latest_version_created_at")
+public enum ReplicateModelsListParametersSortBy: String, Codable, Hashable, Sendable {
+  case modelCreatedAt = "model_created_at"
+  case latestVersionCreatedAt = "latest_version_created_at"
 }

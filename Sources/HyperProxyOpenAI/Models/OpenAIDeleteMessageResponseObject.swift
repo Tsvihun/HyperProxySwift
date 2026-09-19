@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIDeleteMessageResponseObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let threadMessageDeleted = Self(rawValue: "thread.message.deleted")
+public enum OpenAIDeleteMessageResponseObject: String, Codable, Hashable, Sendable {
+  case threadMessageDeleted = "thread.message.deleted"
 }

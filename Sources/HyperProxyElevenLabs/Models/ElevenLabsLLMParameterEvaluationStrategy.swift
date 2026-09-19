@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct ElevenLabsLLMParameterEvaluationStrategy: Codable, Sendable {
   public var description: String
-  public var typeModel: String
+  public var kind: ElevenLabsLlmKind
 
   public init(
     description: String,
-    typeModel: String
+    kind: ElevenLabsLlmKind = .llm
   ) {
     self.description = description
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case description
-    case typeModel = "type"
+    case kind = "type"
   }
 }

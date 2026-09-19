@@ -19,17 +19,17 @@ public struct ElevenLabsSMBToolConfig: Codable, Sendable {
   public var humanDescription: String?
   public var interruptionMode: ElevenLabsToolInterruptionMode?
   public var name: String
-  public var params: HyperProxyJSONValue
+  public var params: ElevenLabsSMBToolConfigParams
   public var preToolSpeech: ElevenLabsPreToolSpeechMode?
   public var responseTimeoutSecs: Int?
   public var toolCallSound: ElevenLabsToolCallSoundType?
   public var toolCallSoundBehavior: ElevenLabsToolCallSoundBehavior?
   public var toolErrorHandlingMode: ElevenLabsToolErrorHandlingMode?
-  public var typeModel: String?
+  public var kind: ElevenLabsSmbKind?
 
   public init(
     name: String,
-    params: HyperProxyJSONValue,
+    params: ElevenLabsSMBToolConfigParams,
     assignments: [ElevenLabsDynamicVariableAssignment]? = nil,
     description: String? = nil,
     disableInterruptions: Bool? = nil,
@@ -42,7 +42,7 @@ public struct ElevenLabsSMBToolConfig: Codable, Sendable {
     toolCallSound: ElevenLabsToolCallSoundType? = nil,
     toolCallSoundBehavior: ElevenLabsToolCallSoundBehavior? = nil,
     toolErrorHandlingMode: ElevenLabsToolErrorHandlingMode? = nil,
-    typeModel: String? = nil
+    kind: ElevenLabsSmbKind? = nil
   ) {
     self.assignments = assignments
     self.description = description
@@ -58,7 +58,7 @@ public struct ElevenLabsSMBToolConfig: Codable, Sendable {
     self.toolCallSound = toolCallSound
     self.toolCallSoundBehavior = toolCallSoundBehavior
     self.toolErrorHandlingMode = toolErrorHandlingMode
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -76,6 +76,6 @@ public struct ElevenLabsSMBToolConfig: Codable, Sendable {
     case toolCallSound = "tool_call_sound"
     case toolCallSoundBehavior = "tool_call_sound_behavior"
     case toolErrorHandlingMode = "tool_error_handling_mode"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

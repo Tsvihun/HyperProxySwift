@@ -16,10 +16,10 @@ public struct MistralAgentHandoffEntry: Codable, Sendable {
   public var id: String?
   public var nextAgentId: String
   public var nextAgentName: String
-  public var object: String?
+  public var object: MistralEntryObject?
   public var previousAgentId: String
   public var previousAgentName: String
-  public var typeModel: String?
+  public var kind: MistralAgentHandoffKind?
 
   public init(
     nextAgentId: String,
@@ -29,8 +29,8 @@ public struct MistralAgentHandoffEntry: Codable, Sendable {
     completedAt: String? = nil,
     createdAt: String? = nil,
     id: String? = nil,
-    object: String? = nil,
-    typeModel: String? = nil
+    object: MistralEntryObject? = nil,
+    kind: MistralAgentHandoffKind? = nil
   ) {
     self.completedAt = completedAt
     self.createdAt = createdAt
@@ -40,7 +40,7 @@ public struct MistralAgentHandoffEntry: Codable, Sendable {
     self.object = object
     self.previousAgentId = previousAgentId
     self.previousAgentName = previousAgentName
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -52,6 +52,6 @@ public struct MistralAgentHandoffEntry: Codable, Sendable {
     case object
     case previousAgentId = "previous_agent_id"
     case previousAgentName = "previous_agent_name"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

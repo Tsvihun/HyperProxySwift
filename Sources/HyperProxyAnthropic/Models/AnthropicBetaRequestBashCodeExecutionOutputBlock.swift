@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicBetaRequestBashCodeExecutionOutputBlock: Codable, Sendable {
   public var fileId: String
-  public var typeModel: String
+  public var kind: AnthropicBashCodeExecutionOutputKind
 
   public init(
     fileId: String,
-    typeModel: String
+    kind: AnthropicBashCodeExecutionOutputKind = .bashCodeExecutionOutput
   ) {
     self.fileId = fileId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case fileId = "file_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

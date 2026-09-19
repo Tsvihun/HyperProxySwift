@@ -10,20 +10,12 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsElevenFlashV25RequestOutputFormat: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mp32205032 = Self(rawValue: "mp3_22050_32")
-  public static let mp32400048 = Self(rawValue: "mp3_24000_48")
-  public static let mp34410032 = Self(rawValue: "mp3_44100_32")
-  public static let mp34410064 = Self(rawValue: "mp3_44100_64")
-  public static let mp34410096 = Self(rawValue: "mp3_44100_96")
-  public static let mp344100128 = Self(rawValue: "mp3_44100_128")
-  public static let mp344100192 = Self(rawValue: "mp3_44100_192")
+public enum ElevenLabsElevenFlashV25RequestOutputFormat: String, Codable, Hashable, Sendable {
+  case mp32205032 = "mp3_22050_32"
+  case mp32400048 = "mp3_24000_48"
+  case mp34410032 = "mp3_44100_32"
+  case mp34410064 = "mp3_44100_64"
+  case mp34410096 = "mp3_44100_96"
+  case mp344100128 = "mp3_44100_128"
+  case mp344100192 = "mp3_44100_192"
 }

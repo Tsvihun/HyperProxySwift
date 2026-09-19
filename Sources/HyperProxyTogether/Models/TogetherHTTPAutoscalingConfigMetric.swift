@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherHTTPAutoscalingConfigMetric: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let hTTPTotalRequests = Self(rawValue: "HTTPTotalRequests")
-  public static let hTTPAvgRequestDuration = Self(rawValue: "HTTPAvgRequestDuration")
+public enum TogetherHTTPAutoscalingConfigMetric: String, Codable, Hashable, Sendable {
+  case hTTPTotalRequests = "HTTPTotalRequests"
+  case hTTPAvgRequestDuration = "HTTPAvgRequestDuration"
 }

@@ -19,7 +19,7 @@ public struct OpenAICommandExecutionItemResource: Codable, Sendable {
   public var output: String
   public var status: OpenAIFunctionCallStatusResource
   public var turnId: String
-  public var typeModel: OpenAICommandExecutionItemResourceTypeModel
+  public var kind: OpenAICommandExecutionItemResourceKind
 
   public init(
     command: String,
@@ -30,7 +30,7 @@ public struct OpenAICommandExecutionItemResource: Codable, Sendable {
     output: String,
     status: OpenAIFunctionCallStatusResource,
     turnId: String,
-    typeModel: OpenAICommandExecutionItemResourceTypeModel
+    kind: OpenAICommandExecutionItemResourceKind
   ) {
     self.command = command
     self.cwd = cwd
@@ -40,7 +40,7 @@ public struct OpenAICommandExecutionItemResource: Codable, Sendable {
     self.output = output
     self.status = status
     self.turnId = turnId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -52,6 +52,6 @@ public struct OpenAICommandExecutionItemResource: Codable, Sendable {
     case output
     case status
     case turnId = "turn_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

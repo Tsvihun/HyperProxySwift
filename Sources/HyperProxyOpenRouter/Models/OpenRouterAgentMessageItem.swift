@@ -13,16 +13,16 @@ import HyperProxyCore
 public struct OpenRouterAgentMessageItem: Codable, Sendable {
   public var agent: OpenRouterAgentMessageItemAgent?
   public var author: String
-  public var content: [HyperProxyJSONValue]
+  public var content: [OpenRouterAgentMessageItemContentItem]
   public var id: String?
   public var recipient: String
-  public var typeModel: OpenRouterAgentMessageItemTypeModel
+  public var kind: OpenRouterAgentMessageItemKind
 
   public init(
     author: String,
-    content: [HyperProxyJSONValue],
+    content: [OpenRouterAgentMessageItemContentItem],
     recipient: String,
-    typeModel: OpenRouterAgentMessageItemTypeModel,
+    kind: OpenRouterAgentMessageItemKind,
     agent: OpenRouterAgentMessageItemAgent? = nil,
     id: String? = nil
   ) {
@@ -31,7 +31,7 @@ public struct OpenRouterAgentMessageItem: Codable, Sendable {
     self.content = content
     self.id = id
     self.recipient = recipient
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenRouterAgentMessageItem: Codable, Sendable {
     case content
     case id
     case recipient
-    case typeModel = "type"
+    case kind = "type"
   }
 }

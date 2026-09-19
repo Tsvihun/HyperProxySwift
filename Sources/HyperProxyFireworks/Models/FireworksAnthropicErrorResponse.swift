@@ -11,23 +11,23 @@ import Foundation
 import HyperProxyCore
 
 public struct FireworksAnthropicErrorResponse: Codable, Sendable {
-  public var error: HyperProxyJSONValue
+  public var error: FireworksAnthropicErrorResponseError
   public var requestId: String?
-  public var typeModel: String
+  public var kind: FireworksErrorKind
 
   public init(
-    error: HyperProxyJSONValue,
+    error: FireworksAnthropicErrorResponseError,
     requestId: String?,
-    typeModel: String
+    kind: FireworksErrorKind = .error
   ) {
     self.error = error
     self.requestId = requestId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case error
     case requestId = "request_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

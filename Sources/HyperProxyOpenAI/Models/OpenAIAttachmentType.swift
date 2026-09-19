@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIAttachmentType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let image = Self(rawValue: "image")
-  public static let file = Self(rawValue: "file")
+public enum OpenAIAttachmentType: String, Codable, Hashable, Sendable {
+  case image = "image"
+  case file = "file"
 }

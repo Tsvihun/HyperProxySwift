@@ -13,8 +13,8 @@ import HyperProxyCore
 public struct GeminiGenerateTextRequest: Codable, Sendable {
   public var candidateCount: Int?
   public var maxOutputTokens: Int?
-  public var prompt: HyperProxyJSONValue?
-  public var safetySettings: [HyperProxyJSONValue]?
+  public var prompt: GeminiTextPrompt?
+  public var safetySettings: [GeminiSafetySetting]?
   public var stopSequences: [String]?
   public var temperature: Double?
   public var topK: Int?
@@ -23,8 +23,8 @@ public struct GeminiGenerateTextRequest: Codable, Sendable {
   public init(
     candidateCount: Int? = nil,
     maxOutputTokens: Int? = nil,
-    prompt: HyperProxyJSONValue? = nil,
-    safetySettings: [HyperProxyJSONValue]? = nil,
+    prompt: GeminiTextPrompt? = nil,
+    safetySettings: [GeminiSafetySetting]? = nil,
     stopSequences: [String]? = nil,
     temperature: Double? = nil,
     topK: Int? = nil,

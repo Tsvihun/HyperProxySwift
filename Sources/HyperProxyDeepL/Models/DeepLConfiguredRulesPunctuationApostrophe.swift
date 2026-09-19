@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesPunctuationApostrophe: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useCurlyApostrophes = Self(rawValue: "use_curly_apostrophes")
-  public static let useStraightApostrophes = Self(rawValue: "use_straight_apostrophes")
+public enum DeepLConfiguredRulesPunctuationApostrophe: String, Codable, Hashable, Sendable {
+  case useCurlyApostrophes = "use_curly_apostrophes"
+  case useStraightApostrophes = "use_straight_apostrophes"
 }

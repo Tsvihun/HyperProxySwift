@@ -17,11 +17,11 @@ public struct OpenRouterPipelineStage: Codable, Sendable {
   public var guardrailScope: String?
   public var name: String
   public var summary: String?
-  public var typeModel: OpenRouterPipelineStageType
+  public var kind: OpenRouterPipelineStageType
 
   public init(
     name: String,
-    typeModel: OpenRouterPipelineStageType,
+    kind: OpenRouterPipelineStageType,
     costUsd: Double? = nil,
     data: [String: HyperProxyJSONValue]? = nil,
     guardrailId: String? = nil,
@@ -34,7 +34,7 @@ public struct OpenRouterPipelineStage: Codable, Sendable {
     self.guardrailScope = guardrailScope
     self.name = name
     self.summary = summary
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenRouterPipelineStage: Codable, Sendable {
     case guardrailScope = "guardrail_scope"
     case name
     case summary
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -21,8 +21,7 @@ public struct OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionSe
   public var speaker: String
   public var start: Double
   public var text: String
-  public var typeModel:
-    OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionSegmentTypeModel
+  public var kind: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionSegmentKind
 
   public init(
     contentIndex: Int,
@@ -33,7 +32,7 @@ public struct OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionSe
     speaker: String,
     start: Double,
     text: String,
-    typeModel: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionSegmentTypeModel
+    kind: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionSegmentKind
   ) {
     self.contentIndex = contentIndex
     self.end = end
@@ -43,7 +42,7 @@ public struct OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionSe
     self.speaker = speaker
     self.start = start
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -55,6 +54,6 @@ public struct OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionSe
     case speaker
     case start
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

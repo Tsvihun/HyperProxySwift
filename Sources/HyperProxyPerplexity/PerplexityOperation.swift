@@ -45,6 +45,20 @@ public enum PerplexityOperation: String, HyperProxyProviderOperation {
   case modelsList = "models.list"
   /// `POST v1/search`
   case searchCreate = "search.create"
+  /// `GET v1/skills`
+  case listSkills = "listSkills"
+  /// `POST v1/skills`
+  case createSkill = "createSkill"
+  /// `DELETE v1/skills/{skill_id}`
+  case deleteSkill = "deleteSkill"
+  /// `GET v1/skills/{skill_id}`
+  case getSkill = "getSkill"
+  /// `PUT v1/skills/{skill_id}`
+  case updateSkill = "updateSkill"
+  /// `GET v1/skills/{skill_id}/download`
+  case downloadSkill = "downloadSkill"
+  /// `GET v1/skills/{skill_id}/revisions`
+  case listSkillRevisions = "listSkillRevisions"
   /// `POST v1/sonar`
   case sonarCreate = "sonar.create"
   /// `GET v2/analytics/computer/usage`

@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterLegacyChatContentVideo: Codable, Sendable {
-  public var typeModel: OpenRouterLegacyChatContentVideoTypeModel
+  public var kind: OpenRouterLegacyChatContentVideoKind
   public var videoUrl: OpenRouterLegacyChatContentVideoInput
 
   public init(
-    typeModel: OpenRouterLegacyChatContentVideoTypeModel,
+    kind: OpenRouterLegacyChatContentVideoKind,
     videoUrl: OpenRouterLegacyChatContentVideoInput
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
     self.videoUrl = videoUrl
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
     case videoUrl = "video_url"
   }
 }

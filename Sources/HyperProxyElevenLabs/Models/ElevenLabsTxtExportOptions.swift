@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsTxtExportOptions: Codable, Sendable {
-  public var format: String
+  public var format: ElevenLabsTxtFormat
   public var includeSpeakers: Bool?
   public var includeTimestamps: Bool?
   public var maxCharactersPerLine: Int?
@@ -20,7 +20,7 @@ public struct ElevenLabsTxtExportOptions: Codable, Sendable {
   public var segmentOnSilenceLongerThanS: Double?
 
   public init(
-    format: String,
+    format: ElevenLabsTxtFormat = .txt,
     includeSpeakers: Bool? = nil,
     includeTimestamps: Bool? = nil,
     maxCharactersPerLine: Int? = nil,

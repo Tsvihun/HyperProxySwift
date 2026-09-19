@@ -20,14 +20,14 @@ public struct OpenAIBetaMCPToolCall: Codable, Sendable {
   public var output: String?
   public var serverLabel: String
   public var status: OpenAIBetaMCPToolCallStatus?
-  public var typeModel: OpenAIBetaMCPToolCallTypeModel
+  public var kind: OpenAIBetaMCPToolCallKind
 
   public init(
     arguments: String,
     id: String,
     name: String,
     serverLabel: String,
-    typeModel: OpenAIBetaMCPToolCallTypeModel,
+    kind: OpenAIBetaMCPToolCallKind,
     agent: OpenAIBetaAgentTag? = nil,
     approvalRequestId: String? = nil,
     error: OpenAIBetaMCPToolCallError? = nil,
@@ -43,7 +43,7 @@ public struct OpenAIBetaMCPToolCall: Codable, Sendable {
     self.output = output
     self.serverLabel = serverLabel
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -56,6 +56,6 @@ public struct OpenAIBetaMCPToolCall: Codable, Sendable {
     case output
     case serverLabel = "server_label"
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

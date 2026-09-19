@@ -10,18 +10,12 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherPostFineTunesEstimatePriceResponseOneOf2UnavailableReason: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum TogetherPostFineTunesEstimatePriceResponseOneOf2UnavailableReason: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let multimodalDataset = Self(rawValue: "multimodal_dataset")
-  public static let trainFileNotValidated = Self(rawValue: "train_file_not_validated")
-  public static let evalFileNotValidated = Self(rawValue: "eval_file_not_validated")
-  public static let trainFileInvalid = Self(rawValue: "train_file_invalid")
-  public static let evalFileInvalid = Self(rawValue: "eval_file_invalid")
+  case multimodalDataset = "multimodal_dataset"
+  case trainFileNotValidated = "train_file_not_validated"
+  case evalFileNotValidated = "eval_file_not_validated"
+  case trainFileInvalid = "train_file_invalid"
+  case evalFileInvalid = "eval_file_invalid"
 }

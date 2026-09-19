@@ -10,4 +10,19 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAICreateSpeechResponse200ApplicationOctetStream = String
+public struct OpenAICreateSpeechResponse200ApplicationOctetStream: RawRepresentable, Codable,
+  Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+}
+
+extension OpenAICreateSpeechResponse200ApplicationOctetStream: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self.init(rawValue: value)
+  }
+}

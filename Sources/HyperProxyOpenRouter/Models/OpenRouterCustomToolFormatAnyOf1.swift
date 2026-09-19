@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterCustomToolFormatAnyOf1: Codable, Sendable {
-  public var typeModel: OpenRouterCustomToolFormatAnyOf1TypeModel
+  public var kind: OpenRouterCustomToolFormatAnyOf1Kind
 
   public init(
-    typeModel: OpenRouterCustomToolFormatAnyOf1TypeModel
+    kind: OpenRouterCustomToolFormatAnyOf1Kind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

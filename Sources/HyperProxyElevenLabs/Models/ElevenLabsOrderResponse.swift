@@ -17,7 +17,7 @@ public struct ElevenLabsOrderResponse: Codable, Sendable {
   public var createdAt: String
   public var items: [ElevenLabsOrderItemInfo]
   public var name: String
-  public var orderId: ElevenLabsOrderId
+  public var orderId: String
   public var paidAt: String?
   public var sandbox: Bool?
   public var state: ElevenLabsOrderState
@@ -28,7 +28,7 @@ public struct ElevenLabsOrderResponse: Codable, Sendable {
     createdAt: String,
     items: [ElevenLabsOrderItemInfo],
     name: String,
-    orderId: ElevenLabsOrderId,
+    orderId: String,
     state: ElevenLabsOrderState,
     acceptedAt: String? = nil,
     cancelReason: String? = nil,

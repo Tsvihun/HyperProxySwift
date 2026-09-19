@@ -10,20 +10,14 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsSafetyRule: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let sexualMinors = Self(rawValue: "sexual_minors")
-  public static let forgetModeration = Self(rawValue: "forget_moderation")
-  public static let extremism = Self(rawValue: "extremism")
-  public static let scamFraud = Self(rawValue: "scam_fraud")
-  public static let political = Self(rawValue: "political")
-  public static let selfHarm = Self(rawValue: "self_harm")
-  public static let illegalDistributionMedical = Self(rawValue: "illegal_distribution_medical")
-  public static let sexualAdults = Self(rawValue: "sexual_adults")
-  public static let unknown = Self(rawValue: "unknown")
+public enum ElevenLabsSafetyRule: String, Codable, Hashable, Sendable {
+  case sexualMinors = "sexual_minors"
+  case forgetModeration = "forget_moderation"
+  case extremism = "extremism"
+  case scamFraud = "scam_fraud"
+  case political = "political"
+  case selfHarm = "self_harm"
+  case illegalDistributionMedical = "illegal_distribution_medical"
+  case sexualAdults = "sexual_adults"
+  case unknown = "unknown"
 }

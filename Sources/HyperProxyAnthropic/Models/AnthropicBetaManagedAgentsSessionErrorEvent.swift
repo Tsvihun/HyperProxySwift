@@ -11,27 +11,27 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsSessionErrorEvent: Codable, Sendable {
-  public var error: HyperProxyJSONValue
+  public var error: AnthropicBetaManagedAgentsSessionErrorEventError
   public var id: String
   public var processedAt: AnthropicBetaTimestamp
-  public var typeModel: AnthropicBetaManagedAgentsSessionErrorEventTypeModel
+  public var kind: AnthropicBetaManagedAgentsSessionErrorEventKind
 
   public init(
-    error: HyperProxyJSONValue,
+    error: AnthropicBetaManagedAgentsSessionErrorEventError,
     id: String,
     processedAt: AnthropicBetaTimestamp,
-    typeModel: AnthropicBetaManagedAgentsSessionErrorEventTypeModel
+    kind: AnthropicBetaManagedAgentsSessionErrorEventKind
   ) {
     self.error = error
     self.id = id
     self.processedAt = processedAt
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case error
     case id
     case processedAt = "processed_at"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

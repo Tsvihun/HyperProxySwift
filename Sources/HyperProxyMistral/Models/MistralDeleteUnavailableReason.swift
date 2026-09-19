@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralDeleteUnavailableReason: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let notAllowed = Self(rawValue: "not_allowed")
+public enum MistralDeleteUnavailableReason: String, Codable, Hashable, Sendable {
+  case notAllowed = "not_allowed"
 }

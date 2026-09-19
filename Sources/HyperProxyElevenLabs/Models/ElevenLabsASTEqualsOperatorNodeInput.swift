@@ -10,24 +10,24 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsASTEqualsOperatorNodeInput: Codable, Sendable {
+public final class ElevenLabsASTEqualsOperatorNodeInput: Codable, @unchecked Sendable {
   public var left: ElevenLabsASTNodeInput
   public var right: ElevenLabsASTNodeInput
-  public var typeModel: String?
+  public var kind: ElevenLabsEqOperatorKind?
 
   public init(
     left: ElevenLabsASTNodeInput,
     right: ElevenLabsASTNodeInput,
-    typeModel: String? = nil
+    kind: ElevenLabsEqOperatorKind? = nil
   ) {
     self.left = left
     self.right = right
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case left
     case right
-    case typeModel = "type"
+    case kind = "type"
   }
 }

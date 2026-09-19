@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct OpenAIRealtimeBetaResponse: Codable, Sendable {
   public var conversationId: String?
   public var id: String?
-  public var maxOutputTokens: HyperProxyJSONValue?
+  public var maxOutputTokens: OpenAIRealtimeBetaResponseMaxOutputTokens?
   public var metadata: OpenAIMetadata?
   public var modalities: [OpenAIRealtimeBetaResponseModalitiesItem]?
   public var object: OpenAIRealtimeBetaResponseObject?
@@ -28,7 +28,7 @@ public struct OpenAIRealtimeBetaResponse: Codable, Sendable {
   public init(
     conversationId: String? = nil,
     id: String? = nil,
-    maxOutputTokens: HyperProxyJSONValue? = nil,
+    maxOutputTokens: OpenAIRealtimeBetaResponseMaxOutputTokens? = nil,
     metadata: OpenAIMetadata? = nil,
     modalities: [OpenAIRealtimeBetaResponseModalitiesItem]? = nil,
     object: OpenAIRealtimeBetaResponseObject? = nil,

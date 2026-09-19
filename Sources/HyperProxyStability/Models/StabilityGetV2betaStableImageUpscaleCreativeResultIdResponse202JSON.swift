@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct StabilityGetV2betaStableImageUpscaleCreativeResultIdResponse202JSON: Codable, Sendable
 {
-  public var id: StabilityGenerationID
+  public var id: String
   public var status: StabilityGetV2betaStableImageUpscaleCreativeResultIdResponse202JSONStatus
 
   public init(
-    id: StabilityGenerationID,
+    id: String,
     status: StabilityGetV2betaStableImageUpscaleCreativeResultIdResponse202JSONStatus
   ) {
     self.id = id

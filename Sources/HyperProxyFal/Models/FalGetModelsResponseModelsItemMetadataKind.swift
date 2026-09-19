@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct FalGetModelsResponseModelsItemMetadataKind: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let inference = Self(rawValue: "inference")
-  public static let training = Self(rawValue: "training")
+public enum FalGetModelsResponseModelsItemMetadataKind: String, Codable, Hashable, Sendable {
+  case inference = "inference"
+  case training = "training"
 }

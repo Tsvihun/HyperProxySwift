@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAICreateImageRequestStyle: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let vivid = Self(rawValue: "vivid")
-  public static let natural = Self(rawValue: "natural")
+public enum OpenAICreateImageRequestStyle: String, Codable, Hashable, Sendable {
+  case vivid = "vivid"
+  case natural = "natural"
 }

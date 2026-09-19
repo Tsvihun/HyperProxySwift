@@ -17,7 +17,7 @@ public struct AnthropicBetaManagedAgentsCredential: Codable, Sendable {
   public var displayName: String?
   public var id: String
   public var metadata: [String: String]
-  public var typeModel: AnthropicBetaManagedAgentsCredentialTypeModel
+  public var kind: AnthropicBetaManagedAgentsCredentialKind
   public var updatedAt: AnthropicBetaTimestamp
   public var vaultId: String
 
@@ -27,7 +27,7 @@ public struct AnthropicBetaManagedAgentsCredential: Codable, Sendable {
     createdAt: AnthropicBetaTimestamp,
     id: String,
     metadata: [String: String],
-    typeModel: AnthropicBetaManagedAgentsCredentialTypeModel,
+    kind: AnthropicBetaManagedAgentsCredentialKind,
     updatedAt: AnthropicBetaTimestamp,
     vaultId: String,
     displayName: String? = nil
@@ -38,7 +38,7 @@ public struct AnthropicBetaManagedAgentsCredential: Codable, Sendable {
     self.displayName = displayName
     self.id = id
     self.metadata = metadata
-    self.typeModel = typeModel
+    self.kind = kind
     self.updatedAt = updatedAt
     self.vaultId = vaultId
   }
@@ -50,7 +50,7 @@ public struct AnthropicBetaManagedAgentsCredential: Codable, Sendable {
     case displayName = "display_name"
     case id
     case metadata
-    case typeModel = "type"
+    case kind = "type"
     case updatedAt = "updated_at"
     case vaultId = "vault_id"
   }

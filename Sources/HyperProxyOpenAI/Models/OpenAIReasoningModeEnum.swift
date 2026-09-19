@@ -10,32 +10,40 @@
 import Foundation
 import HyperProxyCore
 
-public enum OpenAIReasoningModeEnum: Codable, Sendable {
-  case string(String)
-  case reasoningModeEnumAnyOf2(OpenAIReasoningModeEnumAnyOf2)
+public enum OpenAIReasoningModeEnum: RawRepresentable, Codable, Hashable, Sendable {
+  case standard
+  case pro
+  case custom(String)
+
+  public init(rawValue: String) {
+    switch rawValue {
+    case "standard":
+      self = .standard
+    case "pro":
+      self = .pro
+    default:
+      self = .custom(rawValue)
+    }
+  }
+
+  public var rawValue: String {
+    switch self {
+    case .standard:
+      return "standard"
+    case .pro:
+      return "pro"
+    case .custom(let value):
+      return value
+    }
+  }
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(String.self) {
-      self = .string(value)
-      return
-    }
-    self = .reasoningModeEnumAnyOf2(try container.decode(OpenAIReasoningModeEnumAnyOf2.self))
+    self.init(rawValue: try container.decode(String.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
-    switch self {
-    case .string(let value):
-      try container.encode(value)
-    case .reasoningModeEnumAnyOf2(let value):
-      try container.encode(value)
-    }
-  }
-}
-
-extension OpenAIReasoningModeEnum: ExpressibleByStringLiteral {
-  public init(stringLiteral value: String) {
-    self = .string(value)
+    try container.encode(rawValue)
   }
 }

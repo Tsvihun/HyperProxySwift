@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct TogetherDERegressionCheck: Codable, Sendable {
   public var direction: TogetherDERegressionCheckDirection
-  public var maxRegressionPercent: Double
+  public var maxRegressionPercent: Double?
 
   public init(
     direction: TogetherDERegressionCheckDirection,
-    maxRegressionPercent: Double
+    maxRegressionPercent: Double? = nil
   ) {
     self.direction = direction
     self.maxRegressionPercent = maxRegressionPercent

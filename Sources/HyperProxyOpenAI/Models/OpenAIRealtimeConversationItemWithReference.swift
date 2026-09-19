@@ -20,7 +20,7 @@ public struct OpenAIRealtimeConversationItemWithReference: Codable, Sendable {
   public var output: String?
   public var role: OpenAIRealtimeConversationItemWithReferenceRole?
   public var status: OpenAIRealtimeConversationItemWithReferenceStatus?
-  public var typeModel: OpenAIRealtimeConversationItemWithReferenceTypeModel?
+  public var kind: OpenAIRealtimeConversationItemWithReferenceKind?
 
   public init(
     arguments: String? = nil,
@@ -32,7 +32,7 @@ public struct OpenAIRealtimeConversationItemWithReference: Codable, Sendable {
     output: String? = nil,
     role: OpenAIRealtimeConversationItemWithReferenceRole? = nil,
     status: OpenAIRealtimeConversationItemWithReferenceStatus? = nil,
-    typeModel: OpenAIRealtimeConversationItemWithReferenceTypeModel? = nil
+    kind: OpenAIRealtimeConversationItemWithReferenceKind? = nil
   ) {
     self.arguments = arguments
     self.callId = callId
@@ -43,7 +43,7 @@ public struct OpenAIRealtimeConversationItemWithReference: Codable, Sendable {
     self.output = output
     self.role = role
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -56,6 +56,6 @@ public struct OpenAIRealtimeConversationItemWithReference: Codable, Sendable {
     case output
     case role
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

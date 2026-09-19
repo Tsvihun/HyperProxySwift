@@ -14,24 +14,24 @@ public struct OpenAIBetaCompactionSummaryItemParam: Codable, Sendable {
   public var agent: OpenAIBetaAgentTagParam?
   public var encryptedContent: String
   public var id: String?
-  public var typeModel: OpenAIBetaCompactionSummaryItemParamTypeModel
+  public var kind: OpenAIBetaCompactionSummaryItemParamKind
 
   public init(
     encryptedContent: String,
-    typeModel: OpenAIBetaCompactionSummaryItemParamTypeModel,
+    kind: OpenAIBetaCompactionSummaryItemParamKind,
     agent: OpenAIBetaAgentTagParam? = nil,
     id: String? = nil
   ) {
     self.agent = agent
     self.encryptedContent = encryptedContent
     self.id = id
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case agent
     case encryptedContent = "encrypted_content"
     case id
-    case typeModel = "type"
+    case kind = "type"
   }
 }

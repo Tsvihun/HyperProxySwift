@@ -18,11 +18,11 @@ public struct OpenRouterOutputAdvisorServerToolItem: Codable, Sendable {
   public var model: String?
   public var prompt: String?
   public var status: OpenRouterFailableToolCallStatus
-  public var typeModel: OpenRouterOutputAdvisorServerToolItemTypeModel
+  public var kind: OpenRouterOutputAdvisorServerToolItemKind
 
   public init(
     status: OpenRouterFailableToolCallStatus,
-    typeModel: OpenRouterOutputAdvisorServerToolItemTypeModel,
+    kind: OpenRouterOutputAdvisorServerToolItemKind,
     advice: String? = nil,
     error: String? = nil,
     id: String? = nil,
@@ -37,7 +37,7 @@ public struct OpenRouterOutputAdvisorServerToolItem: Codable, Sendable {
     self.model = model
     self.prompt = prompt
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct OpenRouterOutputAdvisorServerToolItem: Codable, Sendable {
     case model
     case prompt
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

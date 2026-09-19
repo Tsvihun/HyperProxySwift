@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsValidateUserVerificationCodeParams: Codable, Sendable {
-  public var smbToolType: String?
+  public var smbToolType: ElevenLabsValidateUserVerificationCodeSmbToolType?
 
   public init(
-    smbToolType: String? = nil
+    smbToolType: ElevenLabsValidateUserVerificationCodeSmbToolType? = nil
   ) {
     self.smbToolType = smbToolType
   }

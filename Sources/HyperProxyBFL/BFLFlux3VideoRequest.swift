@@ -20,16 +20,16 @@ public enum BFLFlux3VideoRequest: Encodable, Sendable {
   public func encode(to encoder: Encoder) throws {
     switch self {
     case .textToVideo(var value):
-      value.mode = "t2v"
+      value.mode = .t2v
       try value.encode(to: encoder)
     case .imageToVideo(var value):
-      value.mode = "i2v"
+      value.mode = .i2v
       try value.encode(to: encoder)
     case .videoToVideo(var value):
-      value.mode = "v2v"
+      value.mode = .v2v
       try value.encode(to: encoder)
     case .draftEnhance(var value):
-      value.mode = "draft_enhance"
+      value.mode = .draftEnhance
       try value.encode(to: encoder)
     }
   }

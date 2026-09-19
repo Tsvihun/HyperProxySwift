@@ -12,26 +12,26 @@ import HyperProxyCore
 
 public struct OpenRouterAnthropicWebSearchToolResult: Codable, Sendable {
   public var caller: OpenRouterAnthropicCaller
-  public var content: HyperProxyJSONValue
+  public var content: OpenRouterAnthropicWebSearchToolResultContent
   public var toolUseId: String
-  public var typeModel: OpenRouterAnthropicWebSearchToolResultTypeModel
+  public var kind: OpenRouterAnthropicWebSearchToolResultKind
 
   public init(
     caller: OpenRouterAnthropicCaller,
-    content: HyperProxyJSONValue,
+    content: OpenRouterAnthropicWebSearchToolResultContent,
     toolUseId: String,
-    typeModel: OpenRouterAnthropicWebSearchToolResultTypeModel
+    kind: OpenRouterAnthropicWebSearchToolResultKind
   ) {
     self.caller = caller
     self.content = content
     self.toolUseId = toolUseId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case caller
     case content
     case toolUseId = "tool_use_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

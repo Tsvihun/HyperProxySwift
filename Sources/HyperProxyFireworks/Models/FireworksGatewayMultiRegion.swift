@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksGatewayMultiRegion: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mULTIREGIONUNSPECIFIED = Self(rawValue: "MULTI_REGION_UNSPECIFIED")
-  public static let gLOBAL = Self(rawValue: "GLOBAL")
-  public static let uS = Self(rawValue: "US")
-  public static let eUROPE = Self(rawValue: "EUROPE")
-  public static let aPAC = Self(rawValue: "APAC")
+public enum FireworksGatewayMultiRegion: String, Codable, Hashable, Sendable {
+  case mULTIREGIONUNSPECIFIED = "MULTI_REGION_UNSPECIFIED"
+  case gLOBAL = "GLOBAL"
+  case uS = "US"
+  case eUROPE = "EUROPE"
+  case aPAC = "APAC"
 }

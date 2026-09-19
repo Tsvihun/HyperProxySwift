@@ -16,7 +16,7 @@ public struct OpenAIRealtimeServerEventResponseMCPCallArgumentsDone: Codable, Se
   public var itemId: String
   public var outputIndex: Int
   public var responseId: String
-  public var typeModel: OpenAIRealtimeServerEventResponseMCPCallArgumentsDoneTypeModel
+  public var kind: OpenAIRealtimeServerEventResponseMCPCallArgumentsDoneKind
 
   public init(
     arguments: String,
@@ -24,14 +24,14 @@ public struct OpenAIRealtimeServerEventResponseMCPCallArgumentsDone: Codable, Se
     itemId: String,
     outputIndex: Int,
     responseId: String,
-    typeModel: OpenAIRealtimeServerEventResponseMCPCallArgumentsDoneTypeModel
+    kind: OpenAIRealtimeServerEventResponseMCPCallArgumentsDoneKind
   ) {
     self.arguments = arguments
     self.eventId = eventId
     self.itemId = itemId
     self.outputIndex = outputIndex
     self.responseId = responseId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIRealtimeServerEventResponseMCPCallArgumentsDone: Codable, Se
     case itemId = "item_id"
     case outputIndex = "output_index"
     case responseId = "response_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

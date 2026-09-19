@@ -10,16 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterObservabilityDataRegionInput: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let global = Self(rawValue: "global")
-  public static let europe = Self(rawValue: "europe")
-  public static let us = Self(rawValue: "us")
-  public static let eu = Self(rawValue: "eu")
+public enum OpenRouterObservabilityDataRegionInput: String, Codable, Hashable, Sendable {
+  case global = "global"
+  case europe = "europe"
+  case us = "us"
+  case eu = "eu"
 }

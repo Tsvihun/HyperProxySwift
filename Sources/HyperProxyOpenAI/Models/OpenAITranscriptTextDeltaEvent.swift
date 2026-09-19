@@ -14,24 +14,24 @@ public struct OpenAITranscriptTextDeltaEvent: Codable, Sendable {
   public var delta: String
   public var logprobs: [OpenAITranscriptTextDeltaEventLogprobsItem]?
   public var segmentId: String?
-  public var typeModel: OpenAITranscriptTextDeltaEventTypeModel
+  public var kind: OpenAITranscriptTextDeltaEventKind
 
   public init(
     delta: String,
-    typeModel: OpenAITranscriptTextDeltaEventTypeModel,
+    kind: OpenAITranscriptTextDeltaEventKind,
     logprobs: [OpenAITranscriptTextDeltaEventLogprobsItem]? = nil,
     segmentId: String? = nil
   ) {
     self.delta = delta
     self.logprobs = logprobs
     self.segmentId = segmentId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case delta
     case logprobs
     case segmentId = "segment_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

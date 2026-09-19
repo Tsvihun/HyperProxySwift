@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksCompletionRequestContextLengthExceededBehavior: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum FireworksCompletionRequestContextLengthExceededBehavior: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let error = Self(rawValue: "error")
-  public static let truncate = Self(rawValue: "truncate")
+  case error = "error"
+  case truncate = "truncate"
 }

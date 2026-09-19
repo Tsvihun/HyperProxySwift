@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsEmbedVariant: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let tiny = Self(rawValue: "tiny")
-  public static let compact = Self(rawValue: "compact")
-  public static let full = Self(rawValue: "full")
-  public static let expandable = Self(rawValue: "expandable")
+public enum ElevenLabsEmbedVariant: String, Codable, Hashable, Sendable {
+  case tiny = "tiny"
+  case compact = "compact"
+  case full = "full"
+  case expandable = "expandable"
 }

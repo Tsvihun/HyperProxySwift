@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAILiveDataChannelConfigParam: Codable, Sendable {
-  public var allowedClientEvents: HyperProxyJSONValue?
-  public var allowedServerEvents: HyperProxyJSONValue?
+  public var allowedClientEvents: OpenAILiveDataChannelConfigParamAllowedClientEvents?
+  public var allowedServerEvents: OpenAILiveDataChannelConfigParamAllowedServerEvents?
 
   public init(
-    allowedClientEvents: HyperProxyJSONValue? = nil,
-    allowedServerEvents: HyperProxyJSONValue? = nil
+    allowedClientEvents: OpenAILiveDataChannelConfigParamAllowedClientEvents? = nil,
+    allowedServerEvents: OpenAILiveDataChannelConfigParamAllowedServerEvents? = nil
   ) {
     self.allowedClientEvents = allowedClientEvents
     self.allowedServerEvents = allowedServerEvents

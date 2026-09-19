@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsListDubsParametersCreationSourcesAnyOf1Item: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum ElevenLabsListDubsParametersCreationSourcesAnyOf1Item: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let flowNode = Self(rawValue: "flow_node")
-  public static let dubbingUi = Self(rawValue: "dubbing_ui")
-  public static let dubbingApi = Self(rawValue: "dubbing_api")
+  case flowNode = "flow_node"
+  case dubbingUi = "dubbing_ui"
+  case dubbingApi = "dubbing_api"
 }

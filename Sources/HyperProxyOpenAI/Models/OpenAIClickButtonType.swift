@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIClickButtonType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let left = Self(rawValue: "left")
-  public static let right = Self(rawValue: "right")
-  public static let wheel = Self(rawValue: "wheel")
-  public static let back = Self(rawValue: "back")
-  public static let forward = Self(rawValue: "forward")
+public enum OpenAIClickButtonType: String, Codable, Hashable, Sendable {
+  case left = "left"
+  case right = "right"
+  case wheel = "wheel"
+  case back = "back"
+  case forward = "forward"
 }

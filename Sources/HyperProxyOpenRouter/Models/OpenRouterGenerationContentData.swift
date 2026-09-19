@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterGenerationContentData: Codable, Sendable {
-  public var error: OpenRouterGenerationContentError
-  public var input: HyperProxyJSONValue
+  public var error: OpenRouterGenerationContentError?
+  public var input: OpenRouterGenerationContentDataInput
   public var output: OpenRouterGenerationContentDataOutput
 
   public init(
-    error: OpenRouterGenerationContentError,
-    input: HyperProxyJSONValue,
+    error: OpenRouterGenerationContentError?,
+    input: OpenRouterGenerationContentDataInput,
     output: OpenRouterGenerationContentDataOutput
   ) {
     self.error = error

@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAICreateEvalRunRequest: Codable, Sendable {
-  public var dataSource: HyperProxyJSONValue
+  public var dataSource: OpenAICreateEvalRunRequestDataSource
   public var metadata: OpenAIMetadata?
   public var name: String?
 
   public init(
-    dataSource: HyperProxyJSONValue,
+    dataSource: OpenAICreateEvalRunRequestDataSource,
     metadata: OpenAIMetadata? = nil,
     name: String? = nil
   ) {

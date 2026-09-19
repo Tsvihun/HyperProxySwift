@@ -15,28 +15,28 @@ public struct OpenAIBetaImageGenTool: Codable, Sendable {
   public var background: OpenAIBetaImageGenToolBackground?
   public var inputFidelity: OpenAIBetaInputFidelity?
   public var inputImageMask: OpenAIBetaImageGenToolInputImageMask?
-  public var model: HyperProxyJSONValue?
+  public var model: OpenAIBetaImageGenToolModel?
   public var moderation: OpenAIBetaImageGenToolModeration?
   public var outputCompression: Int?
   public var outputFormat: OpenAIBetaImageGenToolOutputFormat?
   public var partialImages: Int?
   public var quality: OpenAIBetaImageGenToolQuality?
-  public var size: HyperProxyJSONValue?
-  public var typeModel: OpenAIBetaImageGenToolTypeModel
+  public var size: OpenAIBetaImageGenToolSize?
+  public var kind: OpenAIBetaImageGenToolKind
 
   public init(
-    typeModel: OpenAIBetaImageGenToolTypeModel,
+    kind: OpenAIBetaImageGenToolKind,
     action: OpenAIBetaImageGenActionEnum? = nil,
     background: OpenAIBetaImageGenToolBackground? = nil,
     inputFidelity: OpenAIBetaInputFidelity? = nil,
     inputImageMask: OpenAIBetaImageGenToolInputImageMask? = nil,
-    model: HyperProxyJSONValue? = nil,
+    model: OpenAIBetaImageGenToolModel? = nil,
     moderation: OpenAIBetaImageGenToolModeration? = nil,
     outputCompression: Int? = nil,
     outputFormat: OpenAIBetaImageGenToolOutputFormat? = nil,
     partialImages: Int? = nil,
     quality: OpenAIBetaImageGenToolQuality? = nil,
-    size: HyperProxyJSONValue? = nil
+    size: OpenAIBetaImageGenToolSize? = nil
   ) {
     self.action = action
     self.background = background
@@ -49,7 +49,7 @@ public struct OpenAIBetaImageGenTool: Codable, Sendable {
     self.partialImages = partialImages
     self.quality = quality
     self.size = size
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -64,6 +64,6 @@ public struct OpenAIBetaImageGenTool: Codable, Sendable {
     case partialImages = "partial_images"
     case quality
     case size
-    case typeModel = "type"
+    case kind = "type"
   }
 }

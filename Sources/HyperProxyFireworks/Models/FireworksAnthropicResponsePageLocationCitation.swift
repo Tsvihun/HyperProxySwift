@@ -17,7 +17,7 @@ public struct FireworksAnthropicResponsePageLocationCitation: Codable, Sendable 
   public var endPageNumber: Int
   public var fileId: String?
   public var startPageNumber: Int
-  public var typeModel: String
+  public var kind: FireworksPageLocationKind
 
   public init(
     citedText: String,
@@ -26,7 +26,7 @@ public struct FireworksAnthropicResponsePageLocationCitation: Codable, Sendable 
     endPageNumber: Int,
     fileId: String?,
     startPageNumber: Int,
-    typeModel: String
+    kind: FireworksPageLocationKind = .pageLocation
   ) {
     self.citedText = citedText
     self.documentIndex = documentIndex
@@ -34,7 +34,7 @@ public struct FireworksAnthropicResponsePageLocationCitation: Codable, Sendable 
     self.endPageNumber = endPageNumber
     self.fileId = fileId
     self.startPageNumber = startPageNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct FireworksAnthropicResponsePageLocationCitation: Codable, Sendable 
     case endPageNumber = "end_page_number"
     case fileId = "file_id"
     case startPageNumber = "start_page_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

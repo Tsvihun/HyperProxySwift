@@ -14,15 +14,15 @@ public struct ElevenLabsEndProcedureToolResultSuccessModel: Codable, Sendable {
   public var message: String?
   public var procedureId: String
   public var procedureName: String
-  public var resultType: String?
-  public var status: String?
+  public var resultType: ElevenLabsEndProcedureSuccessResultType?
+  public var status: ElevenLabsSuccessStatus?
 
   public init(
     procedureId: String,
     procedureName: String,
     message: String? = nil,
-    resultType: String? = nil,
-    status: String? = nil
+    resultType: ElevenLabsEndProcedureSuccessResultType? = nil,
+    status: ElevenLabsSuccessStatus? = nil
   ) {
     self.message = message
     self.procedureId = procedureId

@@ -16,7 +16,7 @@ public struct OpenRouterOutputShellCallOutputItemFilesItem: Codable, Sendable {
   public var fileId: String
   public var filename: String
   public var startIndex: Int
-  public var typeModel: OpenRouterOutputShellCallOutputItemFilesItemTypeModel
+  public var kind: OpenRouterOutputShellCallOutputItemFilesItemKind
 
   public init(
     containerId: String,
@@ -24,14 +24,14 @@ public struct OpenRouterOutputShellCallOutputItemFilesItem: Codable, Sendable {
     fileId: String,
     filename: String,
     startIndex: Int,
-    typeModel: OpenRouterOutputShellCallOutputItemFilesItemTypeModel
+    kind: OpenRouterOutputShellCallOutputItemFilesItemKind
   ) {
     self.containerId = containerId
     self.endIndex = endIndex
     self.fileId = fileId
     self.filename = filename
     self.startIndex = startIndex
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenRouterOutputShellCallOutputItemFilesItem: Codable, Sendable {
     case fileId = "file_id"
     case filename
     case startIndex = "start_index"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

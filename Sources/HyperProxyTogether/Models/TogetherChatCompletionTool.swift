@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct TogetherChatCompletionTool: Codable, Sendable {
   public var function: TogetherChatCompletionToolFunction
-  public var typeModel: TogetherChatCompletionToolTypeModel
+  public var kind: TogetherChatCompletionToolKind
 
   public init(
     function: TogetherChatCompletionToolFunction,
-    typeModel: TogetherChatCompletionToolTypeModel
+    kind: TogetherChatCompletionToolKind
   ) {
     self.function = function
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case function
-    case typeModel = "type"
+    case kind = "type"
   }
 }

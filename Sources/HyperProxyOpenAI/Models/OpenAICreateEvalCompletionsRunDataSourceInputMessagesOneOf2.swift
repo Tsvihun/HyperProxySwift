@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAICreateEvalCompletionsRunDataSourceInputMessagesOneOf2: Codable, Sendable {
   public var itemReference: String
-  public var typeModel: OpenAICreateEvalCompletionsRunDataSourceInputMessagesOneOf2TypeModel
+  public var kind: OpenAICreateEvalCompletionsRunDataSourceInputMessagesOneOf2Kind
 
   public init(
     itemReference: String,
-    typeModel: OpenAICreateEvalCompletionsRunDataSourceInputMessagesOneOf2TypeModel
+    kind: OpenAICreateEvalCompletionsRunDataSourceInputMessagesOneOf2Kind
   ) {
     self.itemReference = itemReference
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case itemReference = "item_reference"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIApplyPatchToolParam: Codable, Sendable {
   public var allowedCallers: [OpenAICallableToolAllowedCaller]?
-  public var typeModel: OpenAIApplyPatchToolParamTypeModel
+  public var kind: OpenAIApplyPatchToolParamKind
 
   public init(
-    typeModel: OpenAIApplyPatchToolParamTypeModel,
+    kind: OpenAIApplyPatchToolParamKind,
     allowedCallers: [OpenAICallableToolAllowedCaller]? = nil
   ) {
     self.allowedCallers = allowedCallers
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case allowedCallers = "allowed_callers"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

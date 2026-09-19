@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct TogetherPassiveHealthCheckAlert: Codable, Sendable {
   public var alertName: String
-  public var annotation: HyperProxyJSONValue
+  public var annotation: TogetherPHCAnnotation
   public var annotations: [String: String]
   public var clusterId: String
   public var instanceId: String?
@@ -25,7 +25,7 @@ public struct TogetherPassiveHealthCheckAlert: Codable, Sendable {
 
   public init(
     alertName: String,
-    annotation: HyperProxyJSONValue,
+    annotation: TogetherPHCAnnotation,
     annotations: [String: String],
     clusterId: String,
     passiveHealthCheckAlertId: String,

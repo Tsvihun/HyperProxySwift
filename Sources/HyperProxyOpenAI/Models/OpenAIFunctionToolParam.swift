@@ -19,11 +19,11 @@ public struct OpenAIFunctionToolParam: Codable, Sendable {
   public var outputSchema: [String: HyperProxyJSONValue]?
   public var parameters: OpenAIEmptyModelParam?
   public var strict: Bool?
-  public var typeModel: OpenAIFunctionToolParamTypeModel
+  public var kind: OpenAIFunctionToolParamKind
 
   public init(
     name: String,
-    typeModel: OpenAIFunctionToolParamTypeModel,
+    kind: OpenAIFunctionToolParamKind,
     allowedCallers: [OpenAICallableToolAllowedCaller]? = nil,
     async: Bool? = nil,
     deferLoading: Bool? = nil,
@@ -40,7 +40,7 @@ public struct OpenAIFunctionToolParam: Codable, Sendable {
     self.outputSchema = outputSchema
     self.parameters = parameters
     self.strict = strict
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -52,6 +52,6 @@ public struct OpenAIFunctionToolParam: Codable, Sendable {
     case outputSchema = "output_schema"
     case parameters
     case strict
-    case typeModel = "type"
+    case kind = "type"
   }
 }

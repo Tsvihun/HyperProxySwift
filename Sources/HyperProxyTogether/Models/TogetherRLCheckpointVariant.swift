@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherRLCheckpointVariant: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let cHECKPOINTVARIANTUNSPECIFIED = Self(rawValue: "CHECKPOINT_VARIANT_UNSPECIFIED")
-  public static let cHECKPOINTVARIANTMERGED = Self(rawValue: "CHECKPOINT_VARIANT_MERGED")
-  public static let cHECKPOINTVARIANTADAPTER = Self(rawValue: "CHECKPOINT_VARIANT_ADAPTER")
+public enum TogetherRLCheckpointVariant: String, Codable, Hashable, Sendable {
+  case cHECKPOINTVARIANTUNSPECIFIED = "CHECKPOINT_VARIANT_UNSPECIFIED"
+  case cHECKPOINTVARIANTMERGED = "CHECKPOINT_VARIANT_MERGED"
+  case cHECKPOINTVARIANTADAPTER = "CHECKPOINT_VARIANT_ADAPTER"
 }

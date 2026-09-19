@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralStreamDeploymentLogsResponse: Codable, Sendable {
-  public var data: HyperProxyJSONValue?
+  public var data: MistralStreamDeploymentLogsResponseData?
   public var event: MistralStreamDeploymentLogsResponseEvent?
   public var id: String?
 
   public init(
-    data: HyperProxyJSONValue? = nil,
+    data: MistralStreamDeploymentLogsResponseData? = nil,
     event: MistralStreamDeploymentLogsResponseEvent? = nil,
     id: String? = nil
   ) {

@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct MistralListBatchJobsResponse: Codable, Sendable {
   public var data: [MistralBatchJob]?
-  public var object: String?
+  public var object: MistralListObject?
   public var total: Int
 
   public init(
     total: Int,
     data: [MistralBatchJob]? = nil,
-    object: String? = nil
+    object: MistralListObject? = nil
   ) {
     self.data = data
     self.object = object

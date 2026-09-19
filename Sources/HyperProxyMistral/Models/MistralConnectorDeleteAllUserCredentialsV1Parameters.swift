@@ -11,10 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralConnectorDeleteAllUserCredentialsV1Parameters: Codable, Sendable {
-  public var connectorIdOrName: String
+  public var connectorIdOrName:
+    MistralConnectorDeleteAllUserCredentialsV1ParametersConnectorIdOrName
 
   public init(
-    connectorIdOrName: String
+    connectorIdOrName: MistralConnectorDeleteAllUserCredentialsV1ParametersConnectorIdOrName
   ) {
     self.connectorIdOrName = connectorIdOrName
   }

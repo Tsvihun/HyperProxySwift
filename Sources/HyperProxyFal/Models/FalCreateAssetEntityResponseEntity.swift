@@ -19,7 +19,7 @@ public struct FalCreateAssetEntityResponseEntity: Codable, Sendable {
   public var isFavorited: Bool
   public var name: String
   public var referenceImages: [String]
-  public var typeModel: FalCreateAssetEntityResponseEntityTypeModel
+  public var kind: FalCreateAssetEntityResponseEntityKind
   public var updatedAt: String
 
   public init(
@@ -31,7 +31,7 @@ public struct FalCreateAssetEntityResponseEntity: Codable, Sendable {
     isFavorited: Bool,
     name: String,
     referenceImages: [String],
-    typeModel: FalCreateAssetEntityResponseEntityTypeModel,
+    kind: FalCreateAssetEntityResponseEntityKind,
     updatedAt: String
   ) {
     self.coverImageUrl = coverImageUrl
@@ -42,7 +42,7 @@ public struct FalCreateAssetEntityResponseEntity: Codable, Sendable {
     self.isFavorited = isFavorited
     self.name = name
     self.referenceImages = referenceImages
-    self.typeModel = typeModel
+    self.kind = kind
     self.updatedAt = updatedAt
   }
 
@@ -55,7 +55,7 @@ public struct FalCreateAssetEntityResponseEntity: Codable, Sendable {
     case isFavorited = "is_favorited"
     case name
     case referenceImages = "reference_images"
-    case typeModel = "type"
+    case kind = "type"
     case updatedAt = "updated_at"
   }
 }

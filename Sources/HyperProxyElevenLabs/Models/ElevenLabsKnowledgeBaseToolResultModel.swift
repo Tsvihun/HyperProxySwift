@@ -13,13 +13,13 @@ import HyperProxyCore
 public struct ElevenLabsKnowledgeBaseToolResultModel: Codable, Sendable {
   public var chunkCount: Int?
   public var message: String?
-  public var resultType: String?
+  public var resultType: ElevenLabsKnowledgeBaseSuccessResultType?
   public var status: ElevenLabsKnowledgeBaseToolStatus?
 
   public init(
     chunkCount: Int? = nil,
     message: String? = nil,
-    resultType: String? = nil,
+    resultType: ElevenLabsKnowledgeBaseSuccessResultType? = nil,
     status: ElevenLabsKnowledgeBaseToolStatus? = nil
   ) {
     self.chunkCount = chunkCount

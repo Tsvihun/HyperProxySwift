@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherRLDType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let dTYPEUNSPECIFIED = Self(rawValue: "D_TYPE_UNSPECIFIED")
-  public static let dTYPEINT64 = Self(rawValue: "D_TYPE_INT64")
-  public static let dTYPEFLOAT32 = Self(rawValue: "D_TYPE_FLOAT32")
-  public static let dTYPEBFLOAT16 = Self(rawValue: "D_TYPE_BFLOAT16")
+public enum TogetherRLDType: String, Codable, Hashable, Sendable {
+  case dTYPEUNSPECIFIED = "D_TYPE_UNSPECIFIED"
+  case dTYPEINT64 = "D_TYPE_INT64"
+  case dTYPEFLOAT32 = "D_TYPE_FLOAT32"
+  case dTYPEBFLOAT16 = "D_TYPE_BFLOAT16"
 }

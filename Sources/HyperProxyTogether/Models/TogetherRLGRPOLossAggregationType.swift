@@ -10,19 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherRLGRPOLossAggregationType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let gRPOLOSSAGGREGATIONTYPEUNSPECIFIED = Self(
-    rawValue: "GRPO_LOSS_AGGREGATION_TYPE_UNSPECIFIED")
-  public static let gRPOLOSSAGGREGATIONTYPEFIXEDHORIZON = Self(
-    rawValue: "GRPO_LOSS_AGGREGATION_TYPE_FIXED_HORIZON")
-  public static let gRPOLOSSAGGREGATIONTYPETOKENMEAN = Self(
-    rawValue: "GRPO_LOSS_AGGREGATION_TYPE_TOKEN_MEAN")
-  public static let gRPOLOSSAGGREGATIONTYPESEQUENCEMEAN = Self(
-    rawValue: "GRPO_LOSS_AGGREGATION_TYPE_SEQUENCE_MEAN")
+public enum TogetherRLGRPOLossAggregationType: String, Codable, Hashable, Sendable {
+  case gRPOLOSSAGGREGATIONTYPEUNSPECIFIED = "GRPO_LOSS_AGGREGATION_TYPE_UNSPECIFIED"
+  case gRPOLOSSAGGREGATIONTYPEFIXEDHORIZON = "GRPO_LOSS_AGGREGATION_TYPE_FIXED_HORIZON"
+  case gRPOLOSSAGGREGATIONTYPETOKENMEAN = "GRPO_LOSS_AGGREGATION_TYPE_TOKEN_MEAN"
+  case gRPOLOSSAGGREGATIONTYPESEQUENCEMEAN = "GRPO_LOSS_AGGREGATION_TYPE_SEQUENCE_MEAN"
 }

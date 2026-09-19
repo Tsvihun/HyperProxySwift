@@ -13,25 +13,25 @@ import HyperProxyCore
 public struct OpenAIWebSearchPreviewTool: Codable, Sendable {
   public var searchContentTypes: [OpenAISearchContentType]?
   public var searchContextSize: OpenAISearchContextSize?
-  public var typeModel: OpenAIWebSearchPreviewToolTypeModel
+  public var kind: OpenAIWebSearchPreviewToolKind
   public var userLocation: OpenAIApproximateLocation?
 
   public init(
-    typeModel: OpenAIWebSearchPreviewToolTypeModel,
+    kind: OpenAIWebSearchPreviewToolKind,
     searchContentTypes: [OpenAISearchContentType]? = nil,
     searchContextSize: OpenAISearchContextSize? = nil,
     userLocation: OpenAIApproximateLocation? = nil
   ) {
     self.searchContentTypes = searchContentTypes
     self.searchContextSize = searchContextSize
-    self.typeModel = typeModel
+    self.kind = kind
     self.userLocation = userLocation
   }
 
   enum CodingKeys: String, CodingKey {
     case searchContentTypes = "search_content_types"
     case searchContextSize = "search_context_size"
-    case typeModel = "type"
+    case kind = "type"
     case userLocation = "user_location"
   }
 }

@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherRealtimeTranscriptionParametersInputAudioFormat: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum TogetherRealtimeTranscriptionParametersInputAudioFormat: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let pcmS16le16000 = Self(rawValue: "pcm_s16le_16000")
+  case pcmS16le16000 = "pcm_s16le_16000"
 }

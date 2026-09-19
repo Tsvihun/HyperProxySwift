@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct ElevenLabsMemoryEntrySearchResult: Codable, Sendable {
   public var entryId: String
-  public var source: HyperProxyJSONValue?
+  public var source: ElevenLabsMemoryEntrySearchResultSource?
   public var summary: String?
   public var text: String?
   public var version: Int
@@ -20,7 +20,7 @@ public struct ElevenLabsMemoryEntrySearchResult: Codable, Sendable {
   public init(
     entryId: String,
     version: Int,
-    source: HyperProxyJSONValue? = nil,
+    source: ElevenLabsMemoryEntrySearchResultSource? = nil,
     summary: String? = nil,
     text: String? = nil
   ) {

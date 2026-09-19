@@ -23,7 +23,7 @@ public struct AnthropicBetaDream: Codable, Sendable {
   public var outputs: [AnthropicBetaDreamOutput]
   public var sessionId: String?
   public var status: AnthropicBetaDreamStatus
-  public var typeModel: AnthropicBetaDreamTypeModel
+  public var kind: AnthropicBetaDreamKind
   public var usage: AnthropicBetaDreamUsage
 
   public init(
@@ -39,7 +39,7 @@ public struct AnthropicBetaDream: Codable, Sendable {
     outputs: [AnthropicBetaDreamOutput],
     sessionId: String?,
     status: AnthropicBetaDreamStatus,
-    typeModel: AnthropicBetaDreamTypeModel,
+    kind: AnthropicBetaDreamKind,
     usage: AnthropicBetaDreamUsage
   ) {
     self.archivedAt = archivedAt
@@ -54,7 +54,7 @@ public struct AnthropicBetaDream: Codable, Sendable {
     self.outputs = outputs
     self.sessionId = sessionId
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
     self.usage = usage
   }
 
@@ -71,7 +71,7 @@ public struct AnthropicBetaDream: Codable, Sendable {
     case outputs
     case sessionId = "session_id"
     case status
-    case typeModel = "type"
+    case kind = "type"
     case usage
   }
 }

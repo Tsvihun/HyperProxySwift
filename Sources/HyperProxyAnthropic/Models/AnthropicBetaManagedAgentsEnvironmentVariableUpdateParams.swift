@@ -11,27 +11,27 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsEnvironmentVariableUpdateParams: Codable, Sendable {
-  public var injectionLocation: HyperProxyJSONValue?
+  public var injectionLocation: AnthropicBetaManagedAgentsInjectionLocationUpdateParams?
   public var networking: AnthropicBetaManagedAgentsCredentialNetworkingParams?
   public var secretValue: String?
-  public var typeModel: AnthropicBetaManagedAgentsEnvironmentVariableUpdateParamsTypeModel
+  public var kind: AnthropicBetaManagedAgentsEnvironmentVariableUpdateParamsKind
 
   public init(
-    typeModel: AnthropicBetaManagedAgentsEnvironmentVariableUpdateParamsTypeModel,
-    injectionLocation: HyperProxyJSONValue? = nil,
+    kind: AnthropicBetaManagedAgentsEnvironmentVariableUpdateParamsKind,
+    injectionLocation: AnthropicBetaManagedAgentsInjectionLocationUpdateParams? = nil,
     networking: AnthropicBetaManagedAgentsCredentialNetworkingParams? = nil,
     secretValue: String? = nil
   ) {
     self.injectionLocation = injectionLocation
     self.networking = networking
     self.secretValue = secretValue
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case injectionLocation = "injection_location"
     case networking
     case secretValue = "secret_value"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

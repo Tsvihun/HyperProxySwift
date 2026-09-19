@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterMessagesSearchModelsServerTool: Codable, Sendable {
   public var parameters: OpenRouterSearchModelsServerToolConfig?
-  public var typeModel: OpenRouterMessagesSearchModelsServerToolTypeModel
+  public var kind: OpenRouterMessagesSearchModelsServerToolKind
 
   public init(
-    typeModel: OpenRouterMessagesSearchModelsServerToolTypeModel,
+    kind: OpenRouterMessagesSearchModelsServerToolKind,
     parameters: OpenRouterSearchModelsServerToolConfig? = nil
   ) {
     self.parameters = parameters
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case parameters
-    case typeModel = "type"
+    case kind = "type"
   }
 }

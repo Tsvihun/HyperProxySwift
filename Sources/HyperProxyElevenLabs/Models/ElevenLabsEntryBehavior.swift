@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsEntryBehavior: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let generateImmediately = Self(rawValue: "generate_immediately")
-  public static let waitForUser = Self(rawValue: "wait_for_user")
-  public static let auto = Self(rawValue: "auto")
+public enum ElevenLabsEntryBehavior: String, Codable, Hashable, Sendable {
+  case generateImmediately = "generate_immediately"
+  case waitForUser = "wait_for_user"
+  case auto = "auto"
 }

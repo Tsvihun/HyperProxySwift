@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterContentPartVideo: Codable, Sendable {
-  public var typeModel: OpenRouterContentPartVideoTypeModel
+  public var kind: OpenRouterContentPartVideoKind
   public var videoUrl: OpenRouterContentPartVideoVideoUrl
 
   public init(
-    typeModel: OpenRouterContentPartVideoTypeModel,
+    kind: OpenRouterContentPartVideoKind,
     videoUrl: OpenRouterContentPartVideoVideoUrl
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
     self.videoUrl = videoUrl
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
     case videoUrl = "video_url"
   }
 }

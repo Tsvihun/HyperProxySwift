@@ -10,55 +10,45 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesNumbersCurrencyFormat: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let spellOut = Self(rawValue: "spell_out")
-  public static let spellOutCurrencyNameFollowedByAmountInArabicNumeralsWithoutSpace = Self(
-    rawValue: "spell_out_currency_name_followed_by_amount_in_arabic_numerals_without_space")
-  public static let spellOutCurrencyNameFollowedByAmountInChinese = Self(
-    rawValue: "spell_out_currency_name_followed_by_amount_in_chinese")
-  public static let useAmountFollowedByCurrencySymbolWithoutSpace = Self(
-    rawValue: "use_amount_followed_by_currency_symbol_without_space")
-  public static let useAmountFollowedBySpaceThenCurrencySymbol = Self(
-    rawValue: "use_amount_followed_by_space_then_currency_symbol")
-  public static let useAmountFollowedBySpaceThenIsoCode = Self(
-    rawValue: "use_amount_followed_by_space_then_iso_code")
-  public static let useAmountFollowedBySpaceThenSpellOutCurrencyName = Self(
-    rawValue: "use_amount_followed_by_space_then_spell_out_currency_name")
-  public static let useAmountFollowedBySpaceThenSpellOutCurrencyNameInLowercase = Self(
-    rawValue: "use_amount_followed_by_space_then_spell_out_currency_name_in_lowercase")
-  public static let useAmountFollowedBySpelledOutCurrencyNameInJapaneseWithoutSpace = Self(
-    rawValue: "use_amount_followed_by_spelled_out_currency_name_in_japanese_without_space")
-  public static let useAmountFollowedBySpelledOutCurrencyNameWithoutSpace = Self(
-    rawValue: "use_amount_followed_by_spelled_out_currency_name_without_space")
-  public static let useCurrencySymbolButSpellOutIfNoSymbolExists = Self(
-    rawValue: "use_currency_symbol_but_spell_out_if_no_symbol_exists")
-  public static let useCurrencySymbolButUseIsoCodeIfNoSymbolExists = Self(
-    rawValue: "use_currency_symbol_but_use_iso_code_if_no_symbol_exists")
-  public static let useCurrencySymbolFollowedByAmountInArabicNumeralsWithoutSpace = Self(
-    rawValue: "use_currency_symbol_followed_by_amount_in_arabic_numerals_without_space")
-  public static let useCurrencySymbolFollowedByAmountWithoutSpace = Self(
-    rawValue: "use_currency_symbol_followed_by_amount_without_space")
-  public static let useCurrencySymbolFollowedBySpaceThenAmount = Self(
-    rawValue: "use_currency_symbol_followed_by_space_then_amount")
-  public static let useCurrencySymbolFollowedBySpaceThenAmountInArabicNumerals = Self(
-    rawValue: "use_currency_symbol_followed_by_space_then_amount_in_arabic_numerals")
-  public static let useFullWidthCurrencySymbolFollowedByAmountWithoutSpace = Self(
-    rawValue: "use_full_width_currency_symbol_followed_by_amount_without_space")
-  public static let useHalfWidthCurrencySymbolFollowedByAmountWithoutSpace = Self(
-    rawValue: "use_half_width_currency_symbol_followed_by_amount_without_space")
-  public static let useHalfWidthCurrencySymbolFollowedBySpaceThenAmount = Self(
-    rawValue: "use_half_width_currency_symbol_followed_by_space_then_amount")
-  public static let useIsoCode = Self(rawValue: "use_iso_code")
-  public static let useIsoCodeFollowedBySpaceThenAmount = Self(
-    rawValue: "use_iso_code_followed_by_space_then_amount")
-  public static let useIsoCodeFollowedBySpaceThenAmountInArabicNumerals = Self(
-    rawValue: "use_iso_code_followed_by_space_then_amount_in_arabic_numerals")
+public enum DeepLConfiguredRulesNumbersCurrencyFormat: String, Codable, Hashable, Sendable {
+  case spellOut = "spell_out"
+  case spellOutCurrencyNameFollowedByAmountInArabicNumeralsWithoutSpace =
+    "spell_out_currency_name_followed_by_amount_in_arabic_numerals_without_space"
+  case spellOutCurrencyNameFollowedByAmountInChinese =
+    "spell_out_currency_name_followed_by_amount_in_chinese"
+  case useAmountFollowedByCurrencySymbolWithoutSpace =
+    "use_amount_followed_by_currency_symbol_without_space"
+  case useAmountFollowedBySpaceThenCurrencySymbol =
+    "use_amount_followed_by_space_then_currency_symbol"
+  case useAmountFollowedBySpaceThenIsoCode = "use_amount_followed_by_space_then_iso_code"
+  case useAmountFollowedBySpaceThenSpellOutCurrencyName =
+    "use_amount_followed_by_space_then_spell_out_currency_name"
+  case useAmountFollowedBySpaceThenSpellOutCurrencyNameInLowercase =
+    "use_amount_followed_by_space_then_spell_out_currency_name_in_lowercase"
+  case useAmountFollowedBySpelledOutCurrencyNameInJapaneseWithoutSpace =
+    "use_amount_followed_by_spelled_out_currency_name_in_japanese_without_space"
+  case useAmountFollowedBySpelledOutCurrencyNameWithoutSpace =
+    "use_amount_followed_by_spelled_out_currency_name_without_space"
+  case useCurrencySymbolButSpellOutIfNoSymbolExists =
+    "use_currency_symbol_but_spell_out_if_no_symbol_exists"
+  case useCurrencySymbolButUseIsoCodeIfNoSymbolExists =
+    "use_currency_symbol_but_use_iso_code_if_no_symbol_exists"
+  case useCurrencySymbolFollowedByAmountInArabicNumeralsWithoutSpace =
+    "use_currency_symbol_followed_by_amount_in_arabic_numerals_without_space"
+  case useCurrencySymbolFollowedByAmountWithoutSpace =
+    "use_currency_symbol_followed_by_amount_without_space"
+  case useCurrencySymbolFollowedBySpaceThenAmount =
+    "use_currency_symbol_followed_by_space_then_amount"
+  case useCurrencySymbolFollowedBySpaceThenAmountInArabicNumerals =
+    "use_currency_symbol_followed_by_space_then_amount_in_arabic_numerals"
+  case useFullWidthCurrencySymbolFollowedByAmountWithoutSpace =
+    "use_full_width_currency_symbol_followed_by_amount_without_space"
+  case useHalfWidthCurrencySymbolFollowedByAmountWithoutSpace =
+    "use_half_width_currency_symbol_followed_by_amount_without_space"
+  case useHalfWidthCurrencySymbolFollowedBySpaceThenAmount =
+    "use_half_width_currency_symbol_followed_by_space_then_amount"
+  case useIsoCode = "use_iso_code"
+  case useIsoCodeFollowedBySpaceThenAmount = "use_iso_code_followed_by_space_then_amount"
+  case useIsoCodeFollowedBySpaceThenAmountInArabicNumerals =
+    "use_iso_code_followed_by_space_then_amount_in_arabic_numerals"
 }

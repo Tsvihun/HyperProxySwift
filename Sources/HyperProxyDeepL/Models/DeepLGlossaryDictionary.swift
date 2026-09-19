@@ -11,16 +11,16 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepLGlossaryDictionary: Codable, Sendable {
-  public var entries: DeepLGlossaryEntries?
+  public var entries: String?
   public var entriesFormat: DeepLGlossaryEntriesFormat?
-  public var entryCount: DeepLGlossaryEntryCount?
+  public var entryCount: Int?
   public var sourceLang: DeepLGlossarySourceLanguage?
   public var targetLang: DeepLGlossaryTargetLanguage?
 
   public init(
-    entries: DeepLGlossaryEntries? = nil,
+    entries: String? = nil,
     entriesFormat: DeepLGlossaryEntriesFormat? = nil,
-    entryCount: DeepLGlossaryEntryCount? = nil,
+    entryCount: Int? = nil,
     sourceLang: DeepLGlossarySourceLanguage? = nil,
     targetLang: DeepLGlossaryTargetLanguage? = nil
   ) {

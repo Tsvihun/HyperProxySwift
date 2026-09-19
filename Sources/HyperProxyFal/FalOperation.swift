@@ -122,6 +122,8 @@ public enum FalOperation: String, HyperProxyProviderOperation {
   case getModels = "getModels"
   /// `GET v1/models/analytics`
   case getAnalytics = "getAnalytics"
+  /// `GET v1/models/insights`
+  case getModelInsights = "getModelInsights"
   /// `GET v1/models/pricing`
   case getPricing = "getPricing"
   /// `POST v1/models/pricing/estimate`

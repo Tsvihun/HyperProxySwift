@@ -14,24 +14,24 @@ public struct AnthropicBetaManagedAgentsUserToolResultEventParams: Codable, Send
   public var content: [AnthropicBetaManagedAgentsToolResultContentBlock]?
   public var isError: Bool?
   public var toolUseId: String
-  public var typeModel: AnthropicBetaManagedAgentsUserToolResultEventParamsTypeModel
+  public var kind: AnthropicBetaManagedAgentsUserToolResultEventParamsKind
 
   public init(
     toolUseId: String,
-    typeModel: AnthropicBetaManagedAgentsUserToolResultEventParamsTypeModel,
+    kind: AnthropicBetaManagedAgentsUserToolResultEventParamsKind,
     content: [AnthropicBetaManagedAgentsToolResultContentBlock]? = nil,
     isError: Bool? = nil
   ) {
     self.content = content
     self.isError = isError
     self.toolUseId = toolUseId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case content
     case isError = "is_error"
     case toolUseId = "tool_use_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

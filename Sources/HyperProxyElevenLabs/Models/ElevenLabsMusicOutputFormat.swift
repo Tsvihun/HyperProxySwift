@@ -11,32 +11,25 @@ import Foundation
 import HyperProxyCore
 
 public enum ElevenLabsMusicOutputFormat: Codable, Sendable {
-  case string(String)
   case musicAllowedOutputFormats(ElevenLabsMusicAllowedOutputFormats)
+  case musicOutputFormatAnyOf2(ElevenLabsMusicOutputFormatAnyOf2)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(String.self) {
-      self = .string(value)
+    if let value = try? container.decode(ElevenLabsMusicAllowedOutputFormats.self) {
+      self = .musicAllowedOutputFormats(value)
       return
     }
-    self = .musicAllowedOutputFormats(
-      try container.decode(ElevenLabsMusicAllowedOutputFormats.self))
+    self = .musicOutputFormatAnyOf2(try container.decode(ElevenLabsMusicOutputFormatAnyOf2.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .string(let value):
-      try container.encode(value)
     case .musicAllowedOutputFormats(let value):
       try container.encode(value)
+    case .musicOutputFormatAnyOf2(let value):
+      try container.encode(value)
     }
-  }
-}
-
-extension ElevenLabsMusicOutputFormat: ExpressibleByStringLiteral {
-  public init(stringLiteral value: String) {
-    self = .string(value)
   }
 }

@@ -14,13 +14,15 @@ public struct ElevenLabsBodyGenerateCompositionPlanV1MusicPlanPost: Codable, Sen
   public var modelId: ElevenLabsMusicModelID?
   public var musicLengthMs: Int?
   public var prompt: String
-  public var sourceCompositionPlan: HyperProxyJSONValue?
+  public var sourceCompositionPlan:
+    ElevenLabsBodyGenerateCompositionPlanV1MusicPlanPostSourceCompositionPlan?
 
   public init(
     prompt: String,
     modelId: ElevenLabsMusicModelID? = nil,
     musicLengthMs: Int? = nil,
-    sourceCompositionPlan: HyperProxyJSONValue? = nil
+    sourceCompositionPlan:
+      ElevenLabsBodyGenerateCompositionPlanV1MusicPlanPostSourceCompositionPlan? = nil
   ) {
     self.modelId = modelId
     self.musicLengthMs = musicLengthMs

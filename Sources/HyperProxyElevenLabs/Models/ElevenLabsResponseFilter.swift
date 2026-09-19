@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsResponseFilter: Codable, Sendable {
-  public var contentType: String?
+  public var contentType: ElevenLabsApplicationJsonContentType?
   public var filters: [String]?
   public var mode: ElevenLabsResponseFilterMode?
 
   public init(
-    contentType: String? = nil,
+    contentType: ElevenLabsApplicationJsonContentType? = nil,
     filters: [String]? = nil,
     mode: ElevenLabsResponseFilterMode? = nil
   ) {

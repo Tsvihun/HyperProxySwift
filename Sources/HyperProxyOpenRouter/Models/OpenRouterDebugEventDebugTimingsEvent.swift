@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterDebugEventDebugTimingsEvent: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let adapterRequest = Self(rawValue: "adapter_request")
-  public static let upstreamHeadersReceived = Self(rawValue: "upstream_headers_received")
-  public static let firstTokenReceived = Self(rawValue: "first_token_received")
-  public static let upstreamBodyEnded = Self(rawValue: "upstream_body_ended")
+public enum OpenRouterDebugEventDebugTimingsEvent: String, Codable, Hashable, Sendable {
+  case adapterRequest = "adapter_request"
+  case upstreamHeadersReceived = "upstream_headers_received"
+  case firstTokenReceived = "first_token_received"
+  case upstreamBodyEnded = "upstream_body_ended"
 }

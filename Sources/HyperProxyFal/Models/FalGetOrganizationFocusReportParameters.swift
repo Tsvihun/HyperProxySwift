@@ -14,9 +14,9 @@ public struct FalGetOrganizationFocusReportParameters: Codable, Sendable {
   public var billingMonth: String?
   public var boundToTimeframe: FalGetOrganizationFocusReportParametersBoundToTimeframe?
   public var chargeMonth: String?
-  public var end: String?
+  public var end: FalGetOrganizationFocusReportParametersEnd?
   public var source: FalGetOrganizationFocusReportParametersSource
-  public var start: String?
+  public var start: FalGetOrganizationFocusReportParametersStart?
   public var teamUsername: String?
   public var timeframe: FalGetOrganizationFocusReportParametersTimeframe?
   public var timezone: String?
@@ -26,8 +26,8 @@ public struct FalGetOrganizationFocusReportParameters: Codable, Sendable {
     billingMonth: String? = nil,
     boundToTimeframe: FalGetOrganizationFocusReportParametersBoundToTimeframe? = nil,
     chargeMonth: String? = nil,
-    end: String? = nil,
-    start: String? = nil,
+    end: FalGetOrganizationFocusReportParametersEnd? = nil,
+    start: FalGetOrganizationFocusReportParametersStart? = nil,
     teamUsername: String? = nil,
     timeframe: FalGetOrganizationFocusReportParametersTimeframe? = nil,
     timezone: String? = nil

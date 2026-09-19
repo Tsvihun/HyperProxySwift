@@ -10,16 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct FalGetOrganizationUsageResponseSummaryItemProduct: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let modelApis = Self(rawValue: "model_apis")
-  public static let serverless = Self(rawValue: "serverless")
-  public static let compute = Self(rawValue: "compute")
+public enum FalGetOrganizationUsageResponseSummaryItemProduct: String, Codable, Hashable, Sendable {
+  case modelApis = "model_apis"
+  case serverless = "serverless"
+  case compute = "compute"
 }

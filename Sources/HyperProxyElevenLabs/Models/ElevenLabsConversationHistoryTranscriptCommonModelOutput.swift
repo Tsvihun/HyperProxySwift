@@ -30,7 +30,7 @@ public struct ElevenLabsConversationHistoryTranscriptCommonModelOutput: Codable,
   public var sourceMedium: ElevenLabsChatSourceMedium?
   public var timeInCallSecs: Int
   public var toolCalls: [ElevenLabsConversationHistoryTranscriptToolCallCommonModelOutput]?
-  public var toolResults: [HyperProxyJSONValue]?
+  public var toolResults: [ElevenLabsConversationHistoryTranscriptCommonModelOutputToolResultsItem]?
   public var triggeredGuardrails: [ElevenLabsTriggeredGuardrailCommonModel]?
   public var usedStaticKbDocumentIds: [String]?
   public var userIdentifier: String?
@@ -55,7 +55,7 @@ public struct ElevenLabsConversationHistoryTranscriptCommonModelOutput: Codable,
     sourceEventId: Int? = nil,
     sourceMedium: ElevenLabsChatSourceMedium? = nil,
     toolCalls: [ElevenLabsConversationHistoryTranscriptToolCallCommonModelOutput]? = nil,
-    toolResults: [HyperProxyJSONValue]? = nil,
+    toolResults: [ElevenLabsConversationHistoryTranscriptCommonModelOutputToolResultsItem]? = nil,
     triggeredGuardrails: [ElevenLabsTriggeredGuardrailCommonModel]? = nil,
     usedStaticKbDocumentIds: [String]? = nil,
     userIdentifier: String? = nil

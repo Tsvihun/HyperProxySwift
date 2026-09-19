@@ -10,30 +10,17 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesNumbersNumbersUpTo4Digits: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useCommaAsDecimalSeparatorAndPeriodAsThousandsSeparator = Self(
-    rawValue: "use_comma_as_decimal_separator_and_period_as_thousands_separator")
-  public static let useCommaAsDecimalSeparatorAndSpaceAsThousandsSeparator = Self(
-    rawValue: "use_comma_as_decimal_separator_and_space_as_thousands_separator")
-  public static let useCommaAsDecimalSeparatorPeriodAsThousandsSeparatorAndPeriodForRadioStations =
-    Self(
-      rawValue:
-        "use_comma_as_decimal_separator_period_as_thousands_separator_and_period_for_radio_stations"
-    )
-  public static let useCommaAsDecimalSeparatorSpaceAsThousandsSeparatorAndPeriodForRadioStations =
-    Self(
-      rawValue:
-        "use_comma_as_decimal_separator_space_as_thousands_separator_and_period_for_radio_stations")
-  public static let usePeriodAsDecimalSeparatorAndCommaAsThousandsSeparator = Self(
-    rawValue: "use_period_as_decimal_separator_and_comma_as_thousands_separator")
-  public static let usePeriodAsDecimalSeparatorAndSpaceAsThousandsSeparator = Self(
-    rawValue: "use_period_as_decimal_separator_and_space_as_thousands_separator")
+public enum DeepLConfiguredRulesNumbersNumbersUpTo4Digits: String, Codable, Hashable, Sendable {
+  case useCommaAsDecimalSeparatorAndPeriodAsThousandsSeparator =
+    "use_comma_as_decimal_separator_and_period_as_thousands_separator"
+  case useCommaAsDecimalSeparatorAndSpaceAsThousandsSeparator =
+    "use_comma_as_decimal_separator_and_space_as_thousands_separator"
+  case useCommaAsDecimalSeparatorPeriodAsThousandsSeparatorAndPeriodForRadioStations =
+    "use_comma_as_decimal_separator_period_as_thousands_separator_and_period_for_radio_stations"
+  case useCommaAsDecimalSeparatorSpaceAsThousandsSeparatorAndPeriodForRadioStations =
+    "use_comma_as_decimal_separator_space_as_thousands_separator_and_period_for_radio_stations"
+  case usePeriodAsDecimalSeparatorAndCommaAsThousandsSeparator =
+    "use_period_as_decimal_separator_and_comma_as_thousands_separator"
+  case usePeriodAsDecimalSeparatorAndSpaceAsThousandsSeparator =
+    "use_period_as_decimal_separator_and_space_as_thousands_separator"
 }

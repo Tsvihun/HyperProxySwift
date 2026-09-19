@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsCancelCalendarEventParams: Codable, Sendable {
-  public var smbToolType: String?
+  public var smbToolType: ElevenLabsCancelCalendarEventSmbToolType?
 
   public init(
-    smbToolType: String? = nil
+    smbToolType: ElevenLabsCancelCalendarEventSmbToolType? = nil
   ) {
     self.smbToolType = smbToolType
   }

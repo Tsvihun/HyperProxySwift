@@ -15,7 +15,7 @@ public struct ElevenLabsUserModel: Codable, Sendable {
   public var emailAddr: String?
   public var fullName: String?
   public var name: String?
-  public var typeModel: String?
+  public var kind: String?
   public var typeId: ElevenLabsUserTypeId?
   public var uid: String?
 
@@ -24,7 +24,7 @@ public struct ElevenLabsUserModel: Codable, Sendable {
     emailAddr: String? = nil,
     fullName: String? = nil,
     name: String? = nil,
-    typeModel: String? = nil,
+    kind: String? = nil,
     typeId: ElevenLabsUserTypeId? = nil,
     uid: String? = nil
   ) {
@@ -32,7 +32,7 @@ public struct ElevenLabsUserModel: Codable, Sendable {
     self.emailAddr = emailAddr
     self.fullName = fullName
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
     self.typeId = typeId
     self.uid = uid
   }
@@ -42,7 +42,7 @@ public struct ElevenLabsUserModel: Codable, Sendable {
     case emailAddr = "email_addr"
     case fullName = "full_name"
     case name
-    case typeModel = "type"
+    case kind = "type"
     case typeId = "type_id"
     case uid
   }

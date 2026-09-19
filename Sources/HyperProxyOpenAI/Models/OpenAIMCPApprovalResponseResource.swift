@@ -15,20 +15,20 @@ public struct OpenAIMCPApprovalResponseResource: Codable, Sendable {
   public var approve: Bool
   public var id: String
   public var reason: String?
-  public var typeModel: OpenAIMCPApprovalResponseResourceTypeModel
+  public var kind: OpenAIMCPApprovalResponseResourceKind
 
   public init(
     approvalRequestId: String,
     approve: Bool,
     id: String,
-    typeModel: OpenAIMCPApprovalResponseResourceTypeModel,
+    kind: OpenAIMCPApprovalResponseResourceKind,
     reason: String? = nil
   ) {
     self.approvalRequestId = approvalRequestId
     self.approve = approve
     self.id = id
     self.reason = reason
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIMCPApprovalResponseResource: Codable, Sendable {
     case approve
     case id
     case reason
-    case typeModel = "type"
+    case kind = "type"
   }
 }

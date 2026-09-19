@@ -15,11 +15,11 @@ public struct AnthropicMessage: Codable, Sendable {
   public var content: [AnthropicContentBlock]
   public var id: String
   public var model: AnthropicModel
-  public var role: String
+  public var role: AnthropicAssistantRole
   public var stopDetails: AnthropicRefusalStopDetails?
   public var stopReason: AnthropicStopReason?
   public var stopSequence: String?
-  public var typeModel: String
+  public var kind: AnthropicMessageKind
   public var usage: AnthropicUsage
 
   public init(
@@ -27,12 +27,12 @@ public struct AnthropicMessage: Codable, Sendable {
     content: [AnthropicContentBlock],
     id: String,
     model: AnthropicModel,
-    role: String,
     stopDetails: AnthropicRefusalStopDetails?,
     stopReason: AnthropicStopReason?,
     stopSequence: String?,
-    typeModel: String,
-    usage: AnthropicUsage
+    usage: AnthropicUsage,
+    role: AnthropicAssistantRole = .assistant,
+    kind: AnthropicMessageKind = .message
   ) {
     self.container = container
     self.content = content
@@ -42,7 +42,7 @@ public struct AnthropicMessage: Codable, Sendable {
     self.stopDetails = stopDetails
     self.stopReason = stopReason
     self.stopSequence = stopSequence
-    self.typeModel = typeModel
+    self.kind = kind
     self.usage = usage
   }
 
@@ -55,7 +55,7 @@ public struct AnthropicMessage: Codable, Sendable {
     case stopDetails = "stop_details"
     case stopReason = "stop_reason"
     case stopSequence = "stop_sequence"
-    case typeModel = "type"
+    case kind = "type"
     case usage
   }
 }

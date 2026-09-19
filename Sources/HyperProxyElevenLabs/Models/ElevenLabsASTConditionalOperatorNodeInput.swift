@@ -10,28 +10,28 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsASTConditionalOperatorNodeInput: Codable, Sendable {
+public final class ElevenLabsASTConditionalOperatorNodeInput: Codable, @unchecked Sendable {
   public var condition: ElevenLabsASTNodeInput
   public var falseExpression: ElevenLabsASTNodeInput
   public var trueExpression: ElevenLabsASTNodeInput
-  public var typeModel: String?
+  public var kind: ElevenLabsConditionalOperatorKind?
 
   public init(
     condition: ElevenLabsASTNodeInput,
     falseExpression: ElevenLabsASTNodeInput,
     trueExpression: ElevenLabsASTNodeInput,
-    typeModel: String? = nil
+    kind: ElevenLabsConditionalOperatorKind? = nil
   ) {
     self.condition = condition
     self.falseExpression = falseExpression
     self.trueExpression = trueExpression
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case condition
     case falseExpression
     case trueExpression
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -209,6 +209,10 @@ extension HyperProxyProviderService where Operation == FalOperation {
   public var getAnalytics: HyperProxyProviderCall<FalOperation> {
     self.call(.getAnalytics)
   }
+  /// `GET v1/models/insights`
+  public var getModelInsights: HyperProxyProviderCall<FalOperation> {
+    self.call(.getModelInsights)
+  }
   /// `GET v1/models/pricing`
   public var getPricing: HyperProxyProviderCall<FalOperation> {
     self.call(.getPricing)

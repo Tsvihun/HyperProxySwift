@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIFineTuningJobEventObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let fineTuningJobEvent = Self(rawValue: "fine_tuning.job.event")
+public enum OpenAIFineTuningJobEventObject: String, Codable, Hashable, Sendable {
+  case fineTuningJobEvent = "fine_tuning.job.event"
 }

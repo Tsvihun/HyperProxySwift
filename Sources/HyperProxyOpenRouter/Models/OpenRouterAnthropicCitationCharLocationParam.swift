@@ -16,7 +16,7 @@ public struct OpenRouterAnthropicCitationCharLocationParam: Codable, Sendable {
   public var documentTitle: String
   public var endCharIndex: Int
   public var startCharIndex: Int
-  public var typeModel: OpenRouterAnthropicCitationCharLocationParamTypeModel
+  public var kind: OpenRouterAnthropicCitationCharLocationParamKind
 
   public init(
     citedText: String,
@@ -24,14 +24,14 @@ public struct OpenRouterAnthropicCitationCharLocationParam: Codable, Sendable {
     documentTitle: String,
     endCharIndex: Int,
     startCharIndex: Int,
-    typeModel: OpenRouterAnthropicCitationCharLocationParamTypeModel
+    kind: OpenRouterAnthropicCitationCharLocationParamKind
   ) {
     self.citedText = citedText
     self.documentIndex = documentIndex
     self.documentTitle = documentTitle
     self.endCharIndex = endCharIndex
     self.startCharIndex = startCharIndex
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenRouterAnthropicCitationCharLocationParam: Codable, Sendable {
     case documentTitle = "document_title"
     case endCharIndex = "end_char_index"
     case startCharIndex = "start_char_index"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

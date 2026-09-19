@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralConnectionConfigType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mcp = Self(rawValue: "mcp")
-  public static let turbine = Self(rawValue: "turbine")
-  public static let eolienne = Self(rawValue: "eolienne")
+public enum MistralConnectionConfigType: String, Codable, Hashable, Sendable {
+  case mcp = "mcp"
+  case turbine = "turbine"
+  case eolienne = "eolienne"
 }

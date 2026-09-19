@@ -11,27 +11,27 @@ import Foundation
 import HyperProxyCore
 
 public struct FalServerlessLogsStreamParameters: Codable, Sendable {
-  public var appId: HyperProxyJSONValue?
-  public var end: String?
+  public var appId: FalServerlessLogsStreamParametersAppId?
+  public var end: FalServerlessLogsStreamParametersEnd?
   public var jobId: String?
   public var level: String?
   public var requestId: String?
   public var revision: String?
   public var runSource: FalServerlessLogsStreamParametersRunSource?
   public var search: String?
-  public var start: String?
+  public var start: FalServerlessLogsStreamParametersStart?
   public var traceback: Bool?
 
   public init(
-    appId: HyperProxyJSONValue? = nil,
-    end: String? = nil,
+    appId: FalServerlessLogsStreamParametersAppId? = nil,
+    end: FalServerlessLogsStreamParametersEnd? = nil,
     jobId: String? = nil,
     level: String? = nil,
     requestId: String? = nil,
     revision: String? = nil,
     runSource: FalServerlessLogsStreamParametersRunSource? = nil,
     search: String? = nil,
-    start: String? = nil,
+    start: FalServerlessLogsStreamParametersStart? = nil,
     traceback: Bool? = nil
   ) {
     self.appId = appId

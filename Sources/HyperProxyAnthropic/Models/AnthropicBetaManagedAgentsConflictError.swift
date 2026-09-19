@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsConflictError: Codable, Sendable {
   public var message: String?
-  public var typeModel: AnthropicBetaManagedAgentsConflictErrorTypeModel
+  public var kind: AnthropicBetaManagedAgentsConflictErrorKind
 
   public init(
-    typeModel: AnthropicBetaManagedAgentsConflictErrorTypeModel,
+    kind: AnthropicBetaManagedAgentsConflictErrorKind,
     message: String? = nil
   ) {
     self.message = message
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case message
-    case typeModel = "type"
+    case kind = "type"
   }
 }

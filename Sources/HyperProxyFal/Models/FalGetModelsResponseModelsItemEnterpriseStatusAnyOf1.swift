@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct FalGetModelsResponseModelsItemEnterpriseStatusAnyOf1: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum FalGetModelsResponseModelsItemEnterpriseStatusAnyOf1: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let ready = Self(rawValue: "ready")
-  public static let pending = Self(rawValue: "pending")
+  case ready = "ready"
+  case pending = "pending"
 }

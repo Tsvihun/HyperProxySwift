@@ -39,7 +39,7 @@ public struct BraveWebResult: Codable, Sendable {
   public var software: BraveJSONObject?
   public var thumbnail: BraveThumbnail?
   public var title: String
-  public var typeModel: String?
+  public var kind: String?
   public var url: String
   public var video: BraveVideoData?
 
@@ -73,7 +73,7 @@ public struct BraveWebResult: Codable, Sendable {
     schemas: [HyperProxyJSONValue]? = nil,
     software: BraveJSONObject? = nil,
     thumbnail: BraveThumbnail? = nil,
-    typeModel: String? = nil,
+    kind: String? = nil,
     video: BraveVideoData? = nil
   ) {
     self.age = age
@@ -104,7 +104,7 @@ public struct BraveWebResult: Codable, Sendable {
     self.software = software
     self.thumbnail = thumbnail
     self.title = title
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
     self.video = video
   }
@@ -138,7 +138,7 @@ public struct BraveWebResult: Codable, Sendable {
     case software
     case thumbnail
     case title
-    case typeModel = "type"
+    case kind = "type"
     case url
     case video
   }

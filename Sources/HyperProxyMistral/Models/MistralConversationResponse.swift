@@ -13,16 +13,16 @@ import HyperProxyCore
 public struct MistralConversationResponse: Codable, Sendable {
   public var conversationId: String
   public var guardrails: [[String: HyperProxyJSONValue]]?
-  public var object: String?
-  public var outputs: [HyperProxyJSONValue]
+  public var object: MistralConversationResponseObject?
+  public var outputs: [MistralConversationResponseOutputsItem]
   public var usage: MistralConversationUsageInfo
 
   public init(
     conversationId: String,
-    outputs: [HyperProxyJSONValue],
+    outputs: [MistralConversationResponseOutputsItem],
     usage: MistralConversationUsageInfo,
     guardrails: [[String: HyperProxyJSONValue]]? = nil,
-    object: String? = nil
+    object: MistralConversationResponseObject? = nil
   ) {
     self.conversationId = conversationId
     self.guardrails = guardrails

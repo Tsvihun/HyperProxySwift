@@ -17,7 +17,7 @@ public struct OpenAIFunctionCallItemResource: Codable, Sendable {
   public var name: String
   public var status: OpenAIFunctionCallStatusResource
   public var turnId: String
-  public var typeModel: OpenAIFunctionCallItemResourceTypeModel
+  public var kind: OpenAIFunctionCallItemResourceKind
 
   public init(
     arguments: HyperProxyJSONValue,
@@ -26,7 +26,7 @@ public struct OpenAIFunctionCallItemResource: Codable, Sendable {
     name: String,
     status: OpenAIFunctionCallStatusResource,
     turnId: String,
-    typeModel: OpenAIFunctionCallItemResourceTypeModel
+    kind: OpenAIFunctionCallItemResourceKind
   ) {
     self.arguments = arguments
     self.callId = callId
@@ -34,7 +34,7 @@ public struct OpenAIFunctionCallItemResource: Codable, Sendable {
     self.name = name
     self.status = status
     self.turnId = turnId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenAIFunctionCallItemResource: Codable, Sendable {
     case name
     case status
     case turnId = "turn_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterFileParserPluginId: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let fileParser = Self(rawValue: "file-parser")
+public enum OpenRouterFileParserPluginId: String, Codable, Hashable, Sendable {
+  case fileParser = "file-parser"
 }

@@ -15,22 +15,22 @@ public struct ElevenLabsObjectJsonSchemaPropertyInput: Codable, Sendable {
   public var description: String?
   public var dynamicVariable: String?
   public var isOmitted: Bool?
-  public var properties: [String: HyperProxyJSONValue]?
+  public var properties: [String: ElevenLabsObjectJsonSchemaPropertyInputPropertiesValue]?
   public var propertyKind: ElevenLabsObjectJsonSchemaPropertyInputPropertyKind?
   public var requiredValue: [String]?
   public var requiredConstraints: ElevenLabsRequiredConstraints?
-  public var typeModel: String?
+  public var kind: ElevenLabsObjectKind?
 
   public init(
     constantValue: [String: HyperProxyJSONValue]? = nil,
     description: String? = nil,
     dynamicVariable: String? = nil,
     isOmitted: Bool? = nil,
-    properties: [String: HyperProxyJSONValue]? = nil,
+    properties: [String: ElevenLabsObjectJsonSchemaPropertyInputPropertiesValue]? = nil,
     propertyKind: ElevenLabsObjectJsonSchemaPropertyInputPropertyKind? = nil,
     requiredValue: [String]? = nil,
     requiredConstraints: ElevenLabsRequiredConstraints? = nil,
-    typeModel: String? = nil
+    kind: ElevenLabsObjectKind? = nil
   ) {
     self.constantValue = constantValue
     self.description = description
@@ -40,7 +40,7 @@ public struct ElevenLabsObjectJsonSchemaPropertyInput: Codable, Sendable {
     self.propertyKind = propertyKind
     self.requiredValue = requiredValue
     self.requiredConstraints = requiredConstraints
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -52,6 +52,6 @@ public struct ElevenLabsObjectJsonSchemaPropertyInput: Codable, Sendable {
     case propertyKind = "property_kind"
     case requiredValue = "required"
     case requiredConstraints = "required_constraints"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAICreateEvalLogsDataSourceConfig: Codable, Sendable {
   public var metadata: [String: HyperProxyJSONValue]?
-  public var typeModel: OpenAICreateEvalLogsDataSourceConfigTypeModel
+  public var kind: OpenAICreateEvalLogsDataSourceConfigKind
 
   public init(
-    typeModel: OpenAICreateEvalLogsDataSourceConfigTypeModel,
+    kind: OpenAICreateEvalLogsDataSourceConfigKind,
     metadata: [String: HyperProxyJSONValue]? = nil
   ) {
     self.metadata = metadata
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case metadata
-    case typeModel = "type"
+    case kind = "type"
   }
 }

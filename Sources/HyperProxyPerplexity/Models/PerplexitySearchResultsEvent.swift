@@ -14,20 +14,20 @@ public struct PerplexitySearchResultsEvent: Codable, Sendable {
   public var results: [PerplexitySearchResult]
   public var sequenceNumber: Int64
   public var thought: String?
-  public var typeModel: PerplexityEventType
+  public var kind: PerplexityEventType
   public var usage: PerplexityResponsesUsage?
 
   public init(
     results: [PerplexitySearchResult],
     sequenceNumber: Int64,
-    typeModel: PerplexityEventType,
+    kind: PerplexityEventType,
     thought: String? = nil,
     usage: PerplexityResponsesUsage? = nil
   ) {
     self.results = results
     self.sequenceNumber = sequenceNumber
     self.thought = thought
-    self.typeModel = typeModel
+    self.kind = kind
     self.usage = usage
   }
 
@@ -35,7 +35,7 @@ public struct PerplexitySearchResultsEvent: Codable, Sendable {
     case results
     case sequenceNumber = "sequence_number"
     case thought
-    case typeModel = "type"
+    case kind = "type"
     case usage
   }
 }

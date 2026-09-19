@@ -12,15 +12,15 @@ import HyperProxyCore
 
 public struct OpenRouterOpenAIFileDeleted: Codable, Sendable {
   public var shape: OpenRouterOpenAIFileDeletedShape
-  public var deleted: Bool
+  public var deleted: OpenRouterOpenAIFileDeletedDeleted
   public var id: String
   public var object: OpenRouterOpenAIFileDeletedObject
 
   public init(
     shape: OpenRouterOpenAIFileDeletedShape,
-    deleted: Bool,
     id: String,
-    object: OpenRouterOpenAIFileDeletedObject
+    object: OpenRouterOpenAIFileDeletedObject,
+    deleted: OpenRouterOpenAIFileDeletedDeleted = .booleanTrue
   ) {
     self.shape = shape
     self.deleted = deleted

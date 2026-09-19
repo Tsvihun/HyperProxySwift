@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct TogetherListEndpointsResponse: Codable, Sendable {
   public var data: [TogetherListEndpoint]
-  public var object: HyperProxyJSONValue
+  public var object: TogetherListObject1dee9a01
 
   public init(
     data: [TogetherListEndpoint],
-    object: HyperProxyJSONValue
+    object: TogetherListObject1dee9a01 = .list
   ) {
     self.data = data
     self.object = object

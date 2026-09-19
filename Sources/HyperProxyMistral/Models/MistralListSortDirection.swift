@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralListSortDirection: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let listSortDirectionUnspecified = Self(rawValue: "list_sort_direction_unspecified")
-  public static let listSortDirectionAsc = Self(rawValue: "list_sort_direction_asc")
-  public static let listSortDirectionDesc = Self(rawValue: "list_sort_direction_desc")
+public enum MistralListSortDirection: String, Codable, Hashable, Sendable {
+  case listSortDirectionUnspecified = "list_sort_direction_unspecified"
+  case listSortDirectionAsc = "list_sort_direction_asc"
+  case listSortDirectionDesc = "list_sort_direction_desc"
 }

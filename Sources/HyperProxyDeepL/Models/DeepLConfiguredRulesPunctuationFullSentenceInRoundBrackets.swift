@@ -10,15 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesPunctuationFullSentenceInRoundBrackets: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesPunctuationFullSentenceInRoundBrackets: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let addPeriodBeforeClosingRoundBracket = Self(
-    rawValue: "add_period_before_closing_round_bracket")
+  case addPeriodBeforeClosingRoundBracket = "add_period_before_closing_round_bracket"
 }

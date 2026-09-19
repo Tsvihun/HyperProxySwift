@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct MistralDocumentLibraryTool: Codable, Sendable {
   public var libraryIds: [String]
   public var toolConfiguration: MistralToolConfiguration?
-  public var typeModel: MistralDocumentLibraryToolTypeModel?
+  public var kind: MistralDocumentLibraryToolKind?
 
   public init(
     libraryIds: [String],
     toolConfiguration: MistralToolConfiguration? = nil,
-    typeModel: MistralDocumentLibraryToolTypeModel? = nil
+    kind: MistralDocumentLibraryToolKind? = nil
   ) {
     self.libraryIds = libraryIds
     self.toolConfiguration = toolConfiguration
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case libraryIds = "library_ids"
     case toolConfiguration = "tool_configuration"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

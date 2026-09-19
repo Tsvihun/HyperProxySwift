@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct TogetherRLSamplingParams: Codable, Sendable {
   public var maxTokens: Int?
-  public var seed: HyperProxyJSONValue?
+  public var seed: TogetherRLSamplingParamsSeed?
   public var stop: [String]?
   public var temperature: Double?
   public var topK: Int?
@@ -20,7 +20,7 @@ public struct TogetherRLSamplingParams: Codable, Sendable {
 
   public init(
     maxTokens: Int? = nil,
-    seed: HyperProxyJSONValue? = nil,
+    seed: TogetherRLSamplingParamsSeed? = nil,
     stop: [String]? = nil,
     temperature: Double? = nil,
     topK: Int? = nil,

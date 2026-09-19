@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct ElevenLabsWorkflowLLMConditionModelInput: Codable, Sendable {
   public var condition: String
   public var label: String?
-  public var typeModel: String?
+  public var kind: ElevenLabsLlmKind?
 
   public init(
     condition: String,
     label: String? = nil,
-    typeModel: String? = nil
+    kind: ElevenLabsLlmKind? = nil
   ) {
     self.condition = condition
     self.label = label
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case condition
     case label
-    case typeModel = "type"
+    case kind = "type"
   }
 }

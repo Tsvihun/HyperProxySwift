@@ -10,4 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public typealias ElevenLabsGetAgentSummariesRouteResponse = [String: HyperProxyJSONValue]
+public typealias ElevenLabsGetAgentSummariesRouteResponse = [String:
+  ElevenLabsGetAgentSummariesRouteResponseValue]

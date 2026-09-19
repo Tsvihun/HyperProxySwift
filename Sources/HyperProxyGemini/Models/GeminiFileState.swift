@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiFileState: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let sTATEUNSPECIFIED = Self(rawValue: "STATE_UNSPECIFIED")
-  public static let pROCESSING = Self(rawValue: "PROCESSING")
-  public static let aCTIVE = Self(rawValue: "ACTIVE")
-  public static let fAILED = Self(rawValue: "FAILED")
+public enum GeminiFileState: String, Codable, Hashable, Sendable {
+  case sTATEUNSPECIFIED = "STATE_UNSPECIFIED"
+  case pROCESSING = "PROCESSING"
+  case aCTIVE = "ACTIVE"
+  case fAILED = "FAILED"
 }

@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct MistralTranscriptionStreamLanguage: Codable, Sendable {
   public var audioLanguage: String
-  public var typeModel: String?
+  public var kind: MistralTranscriptionLanguageKind?
 
   public init(
     audioLanguage: String,
-    typeModel: String? = nil
+    kind: MistralTranscriptionLanguageKind? = nil
   ) {
     self.audioLanguage = audioLanguage
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case audioLanguage = "audio_language"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

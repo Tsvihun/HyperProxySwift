@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAISearchContentType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let text = Self(rawValue: "text")
-  public static let image = Self(rawValue: "image")
+public enum OpenAISearchContentType: String, Codable, Hashable, Sendable {
+  case text = "text"
+  case image = "image"
 }

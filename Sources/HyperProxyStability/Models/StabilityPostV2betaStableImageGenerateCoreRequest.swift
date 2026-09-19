@@ -11,20 +11,20 @@ import Foundation
 import HyperProxyCore
 
 public struct StabilityPostV2betaStableImageGenerateCoreRequest: Codable, Sendable {
-  public var aspectRatio: StabilityPostV2betaStableImageGenerateCoreRequestAspectRatio?
+  public var aspectRatio: StabilityAspectRatio?
   public var negativePrompt: String?
   public var outputFormat: StabilityPostV2betaStableImageGenerateCoreRequestOutputFormat?
   public var prompt: String
   public var seed: Double?
-  public var stylePreset: StabilityPostV2betaStableImageGenerateCoreRequestStylePreset?
+  public var stylePreset: StabilityStylePreset?
 
   public init(
     prompt: String,
-    aspectRatio: StabilityPostV2betaStableImageGenerateCoreRequestAspectRatio? = nil,
+    aspectRatio: StabilityAspectRatio? = nil,
     negativePrompt: String? = nil,
     outputFormat: StabilityPostV2betaStableImageGenerateCoreRequestOutputFormat? = nil,
     seed: Double? = nil,
-    stylePreset: StabilityPostV2betaStableImageGenerateCoreRequestStylePreset? = nil
+    stylePreset: StabilityStylePreset? = nil
   ) {
     self.aspectRatio = aspectRatio
     self.negativePrompt = negativePrompt

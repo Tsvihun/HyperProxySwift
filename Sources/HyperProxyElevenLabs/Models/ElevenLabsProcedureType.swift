@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsProcedureType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let freeForm = Self(rawValue: "free_form")
-  public static let deterministic = Self(rawValue: "deterministic")
-  public static let folder = Self(rawValue: "folder")
+public enum ElevenLabsProcedureType: String, Codable, Hashable, Sendable {
+  case freeForm = "free_form"
+  case deterministic = "deterministic"
+  case folder = "folder"
 }

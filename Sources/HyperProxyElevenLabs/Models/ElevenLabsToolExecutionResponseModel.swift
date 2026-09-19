@@ -22,7 +22,7 @@ public struct ElevenLabsToolExecutionResponseModel: Codable, Sendable {
   public var requestPayload: String?
   public var responsePayload: String?
   public var timestamp: Double
-  public var toolCallDetails: HyperProxyJSONValue?
+  public var toolCallDetails: ElevenLabsToolExecutionResponseModelToolCallDetailsAnyOf1?
   public var toolId: String
   public var toolRequestId: String
 
@@ -40,7 +40,7 @@ public struct ElevenLabsToolExecutionResponseModel: Codable, Sendable {
     isError: Bool? = nil,
     requestPayload: String? = nil,
     responsePayload: String? = nil,
-    toolCallDetails: HyperProxyJSONValue? = nil
+    toolCallDetails: ElevenLabsToolExecutionResponseModelToolCallDetailsAnyOf1? = nil
   ) {
     self.agentId = agentId
     self.branchId = branchId

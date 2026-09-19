@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsAgentTransferOpPop: Codable, Sendable {
-  public var typeModel: String?
+  public var kind: ElevenLabsPopKind?
 
   public init(
-    typeModel: String? = nil
+    kind: ElevenLabsPopKind? = nil
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

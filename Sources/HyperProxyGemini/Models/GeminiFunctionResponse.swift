@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct GeminiFunctionResponse: Codable, Sendable {
   public var id: String?
   public var name: String?
-  public var parts: [HyperProxyJSONValue]?
+  public var parts: [GeminiFunctionResponsePart]?
   public var response: [String: HyperProxyJSONValue]?
   public var scheduling: GeminiFunctionResponseScheduling?
   public var willContinue: Bool?
@@ -21,7 +21,7 @@ public struct GeminiFunctionResponse: Codable, Sendable {
   public init(
     id: String? = nil,
     name: String? = nil,
-    parts: [HyperProxyJSONValue]? = nil,
+    parts: [GeminiFunctionResponsePart]? = nil,
     response: [String: HyperProxyJSONValue]? = nil,
     scheduling: GeminiFunctionResponseScheduling? = nil,
     willContinue: Bool? = nil

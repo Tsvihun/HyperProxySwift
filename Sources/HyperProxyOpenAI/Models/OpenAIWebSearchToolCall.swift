@@ -11,27 +11,27 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIWebSearchToolCall: Codable, Sendable {
-  public var action: HyperProxyJSONValue
+  public var action: OpenAIWebSearchToolCallAction
   public var id: String
   public var status: OpenAIWebSearchCallStatus
-  public var typeModel: OpenAIWebSearchToolCallTypeModel
+  public var kind: OpenAIWebSearchToolCallKind
 
   public init(
-    action: HyperProxyJSONValue,
+    action: OpenAIWebSearchToolCallAction,
     id: String,
     status: OpenAIWebSearchCallStatus,
-    typeModel: OpenAIWebSearchToolCallTypeModel
+    kind: OpenAIWebSearchToolCallKind
   ) {
     self.action = action
     self.id = id
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case action
     case id
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

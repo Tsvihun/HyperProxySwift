@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIResponsesClientEventResponseCreateAllOf1: Codable, Sendable {
   public var streamId: String?
-  public var typeModel: OpenAIResponsesClientEventResponseCreateAllOf1TypeModel
+  public var kind: OpenAIResponsesClientEventResponseCreateAllOf1Kind
 
   public init(
-    typeModel: OpenAIResponsesClientEventResponseCreateAllOf1TypeModel,
+    kind: OpenAIResponsesClientEventResponseCreateAllOf1Kind,
     streamId: String? = nil
   ) {
     self.streamId = streamId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case streamId = "stream_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsBranchCheckout: Codable, Sendable {
   public var name: String
-  public var typeModel: AnthropicBetaManagedAgentsBranchCheckoutTypeModel
+  public var kind: AnthropicBetaManagedAgentsBranchCheckoutKind
 
   public init(
     name: String,
-    typeModel: AnthropicBetaManagedAgentsBranchCheckoutTypeModel
+    kind: AnthropicBetaManagedAgentsBranchCheckoutKind
   ) {
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

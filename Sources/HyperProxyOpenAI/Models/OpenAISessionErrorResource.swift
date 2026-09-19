@@ -14,24 +14,24 @@ public struct OpenAISessionErrorResource: Codable, Sendable {
   public var code: String
   public var message: String
   public var param: String
-  public var typeModel: String
+  public var kind: String
 
   public init(
     code: String,
     message: String,
     param: String,
-    typeModel: String
+    kind: String
   ) {
     self.code = code
     self.message = message
     self.param = param
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case code
     case message
     case param
-    case typeModel = "type"
+    case kind = "type"
   }
 }

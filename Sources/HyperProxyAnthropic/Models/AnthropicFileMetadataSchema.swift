@@ -18,7 +18,7 @@ public struct AnthropicFileMetadataSchema: Codable, Sendable {
   public var id: String
   public var mimeType: String
   public var sizeBytes: Int
-  public var typeModel: String
+  public var kind: AnthropicFileKind
 
   public init(
     createdAt: String,
@@ -26,7 +26,7 @@ public struct AnthropicFileMetadataSchema: Codable, Sendable {
     id: String,
     mimeType: String,
     sizeBytes: Int,
-    typeModel: String,
+    kind: AnthropicFileKind = .file,
     downloadable: Bool? = nil,
     expiresAt: String? = nil
   ) {
@@ -37,7 +37,7 @@ public struct AnthropicFileMetadataSchema: Codable, Sendable {
     self.id = id
     self.mimeType = mimeType
     self.sizeBytes = sizeBytes
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct AnthropicFileMetadataSchema: Codable, Sendable {
     case id
     case mimeType = "mime_type"
     case sizeBytes = "size_bytes"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterAnthropicUrlPdfSource: Codable, Sendable {
-  public var typeModel: OpenRouterAnthropicUrlPdfSourceTypeModel
+  public var kind: OpenRouterAnthropicUrlPdfSourceKind
   public var url: String
 
   public init(
-    typeModel: OpenRouterAnthropicUrlPdfSourceTypeModel,
+    kind: OpenRouterAnthropicUrlPdfSourceKind,
     url: String
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

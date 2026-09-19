@@ -15,14 +15,14 @@ public struct OpenAICreateFineTuningJobRequest: Codable, Sendable {
   public var integrations: [OpenAICreateFineTuningJobRequestIntegrationsItem]?
   public var metadata: OpenAIMetadata?
   public var method: OpenAIFineTuneMethod?
-  public var model: HyperProxyJSONValue
+  public var model: OpenAICreateFineTuningJobRequestModel
   public var seed: Int?
   public var suffix: String?
   public var trainingFile: String
   public var validationFile: String?
 
   public init(
-    model: HyperProxyJSONValue,
+    model: OpenAICreateFineTuningJobRequestModel,
     trainingFile: String,
     hyperparameters: OpenAICreateFineTuningJobRequestHyperparameters? = nil,
     integrations: [OpenAICreateFineTuningJobRequestIntegrationsItem]? = nil,

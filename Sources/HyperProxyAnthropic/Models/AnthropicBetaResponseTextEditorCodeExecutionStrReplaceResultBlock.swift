@@ -16,7 +16,7 @@ public struct AnthropicBetaResponseTextEditorCodeExecutionStrReplaceResultBlock:
   public var newStart: Int?
   public var oldLines: Int?
   public var oldStart: Int?
-  public var typeModel: String
+  public var kind: AnthropicTextEditorCodeExecutionStrReplaceResultKind
 
   public init(
     lines: [String]?,
@@ -24,14 +24,15 @@ public struct AnthropicBetaResponseTextEditorCodeExecutionStrReplaceResultBlock:
     newStart: Int?,
     oldLines: Int?,
     oldStart: Int?,
-    typeModel: String
+    kind: AnthropicTextEditorCodeExecutionStrReplaceResultKind =
+      .textEditorCodeExecutionStrReplaceResult
   ) {
     self.lines = lines
     self.newLines = newLines
     self.newStart = newStart
     self.oldLines = oldLines
     self.oldStart = oldStart
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +41,6 @@ public struct AnthropicBetaResponseTextEditorCodeExecutionStrReplaceResultBlock:
     case newStart = "new_start"
     case oldLines = "old_lines"
     case oldStart = "old_start"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

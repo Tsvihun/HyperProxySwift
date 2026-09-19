@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiEmbedContentResponse: Codable, Sendable {
-  public var embedding: HyperProxyJSONValue?
-  public var usageMetadata: HyperProxyJSONValue?
+  public var embedding: GeminiContentEmbedding?
+  public var usageMetadata: GeminiEmbeddingUsageMetadata?
 
   public init(
-    embedding: HyperProxyJSONValue? = nil,
-    usageMetadata: HyperProxyJSONValue? = nil
+    embedding: GeminiContentEmbedding? = nil,
+    usageMetadata: GeminiEmbeddingUsageMetadata? = nil
   ) {
     self.embedding = embedding
     self.usageMetadata = usageMetadata

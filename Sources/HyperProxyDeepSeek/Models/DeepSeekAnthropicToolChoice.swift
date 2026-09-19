@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct DeepSeekAnthropicToolChoice: Codable, Sendable {
   public var disableParallelToolUse: Bool?
   public var name: String?
-  public var typeModel: DeepSeekAnthropicToolChoiceType
+  public var kind: DeepSeekAnthropicToolChoiceType
 
   public init(
-    typeModel: DeepSeekAnthropicToolChoiceType,
+    kind: DeepSeekAnthropicToolChoiceType,
     disableParallelToolUse: Bool? = nil,
     name: String? = nil
   ) {
     self.disableParallelToolUse = disableParallelToolUse
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case disableParallelToolUse = "disable_parallel_tool_use"
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

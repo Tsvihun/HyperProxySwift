@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct GroqChatCompletionRequestMessageContentPartText: Codable, Sendable {
   public var text: String
-  public var typeModel: GroqChatCompletionRequestMessageContentPartTextTypeModel
+  public var kind: GroqChatCompletionRequestMessageContentPartTextKind
 
   public init(
     text: String,
-    typeModel: GroqChatCompletionRequestMessageContentPartTextTypeModel
+    kind: GroqChatCompletionRequestMessageContentPartTextKind
   ) {
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsWhatsAppAccountType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let cloudApi = Self(rawValue: "cloud_api")
-  public static let coexistence = Self(rawValue: "coexistence")
+public enum ElevenLabsWhatsAppAccountType: String, Codable, Hashable, Sendable {
+  case cloudApi = "cloud_api"
+  case coexistence = "coexistence"
 }

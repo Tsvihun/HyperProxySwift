@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIClosedStatus: Codable, Sendable {
   public var reason: String?
-  public var typeModel: OpenAIClosedStatusTypeModel
+  public var kind: OpenAIClosedStatusKind
 
   public init(
     reason: String?,
-    typeModel: OpenAIClosedStatusTypeModel
+    kind: OpenAIClosedStatusKind
   ) {
     self.reason = reason
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case reason
-    case typeModel = "type"
+    case kind = "type"
   }
 }

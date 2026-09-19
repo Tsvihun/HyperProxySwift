@@ -10,16 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIChatCompletionToolChoiceOptionOneOf1: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let none = Self(rawValue: "none")
-  public static let auto = Self(rawValue: "auto")
-  public static let requiredValue = Self(rawValue: "required")
+public enum OpenAIChatCompletionToolChoiceOptionOneOf1: String, Codable, Hashable, Sendable {
+  case none = "none"
+  case auto = "auto"
+  case requiredValue = "required"
 }

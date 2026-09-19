@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct ElevenLabsPodcastConversationMode: Codable, Sendable {
   public var conversation: ElevenLabsPodcastConversationModeData
-  public var typeModel: String
+  public var kind: ElevenLabsConversationKind
 
   public init(
     conversation: ElevenLabsPodcastConversationModeData,
-    typeModel: String
+    kind: ElevenLabsConversationKind = .conversation
   ) {
     self.conversation = conversation
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case conversation
-    case typeModel = "type"
+    case kind = "type"
   }
 }

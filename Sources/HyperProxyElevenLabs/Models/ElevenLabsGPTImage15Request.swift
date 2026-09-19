@@ -15,14 +15,14 @@ public struct ElevenLabsGPTImage15Request: Codable, Sendable {
   public var background: ElevenLabsGPTImage15RequestBackground?
   public var images: [ElevenLabsImageReference]?
   public var mask: ElevenLabsImageReference?
-  public var modelId: String
+  public var modelId: ElevenLabsGptImage15ModelId
   public var prompt: String
   public var quality: ElevenLabsGPTImage15RequestQuality?
   public var webhook: ElevenLabsWebhookTarget?
 
   public init(
-    modelId: String,
     prompt: String,
+    modelId: ElevenLabsGptImage15ModelId = .gptImage15,
     aspectRatio: ElevenLabsGPTImage15RequestAspectRatio? = nil,
     background: ElevenLabsGPTImage15RequestBackground? = nil,
     images: [ElevenLabsImageReference]? = nil,

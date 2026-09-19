@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIEnvironmentStatusResource: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let pending = Self(rawValue: "pending")
-  public static let connected = Self(rawValue: "connected")
-  public static let disconnected = Self(rawValue: "disconnected")
-  public static let expired = Self(rawValue: "expired")
-  public static let failed = Self(rawValue: "failed")
+public enum OpenAIEnvironmentStatusResource: String, Codable, Hashable, Sendable {
+  case pending = "pending"
+  case connected = "connected"
+  case disconnected = "disconnected"
+  case expired = "expired"
+  case failed = "failed"
 }

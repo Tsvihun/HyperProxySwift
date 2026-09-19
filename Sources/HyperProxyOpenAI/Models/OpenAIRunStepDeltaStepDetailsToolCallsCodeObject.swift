@@ -14,24 +14,24 @@ public struct OpenAIRunStepDeltaStepDetailsToolCallsCodeObject: Codable, Sendabl
   public var codeInterpreter: OpenAIRunStepDeltaStepDetailsToolCallsCodeObjectCodeInterpreter?
   public var id: String?
   public var index: Int
-  public var typeModel: OpenAIRunStepDeltaStepDetailsToolCallsCodeObjectTypeModel
+  public var kind: OpenAIRunStepDeltaStepDetailsToolCallsCodeObjectKind
 
   public init(
     index: Int,
-    typeModel: OpenAIRunStepDeltaStepDetailsToolCallsCodeObjectTypeModel,
+    kind: OpenAIRunStepDeltaStepDetailsToolCallsCodeObjectKind,
     codeInterpreter: OpenAIRunStepDeltaStepDetailsToolCallsCodeObjectCodeInterpreter? = nil,
     id: String? = nil
   ) {
     self.codeInterpreter = codeInterpreter
     self.id = id
     self.index = index
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case codeInterpreter = "code_interpreter"
     case id
     case index
-    case typeModel = "type"
+    case kind = "type"
   }
 }

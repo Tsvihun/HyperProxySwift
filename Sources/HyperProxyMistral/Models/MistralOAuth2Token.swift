@@ -16,7 +16,7 @@ public struct MistralOAuth2Token: Codable, Sendable {
   public var expiresIn: Int?
   public var refreshToken: String?
   public var scope: String?
-  public var tokenType: String?
+  public var tokenType: MistralBearerTokenType?
 
   public init(
     accessToken: String,
@@ -24,7 +24,7 @@ public struct MistralOAuth2Token: Codable, Sendable {
     expiresIn: Int? = nil,
     refreshToken: String? = nil,
     scope: String? = nil,
-    tokenType: String? = nil
+    tokenType: MistralBearerTokenType? = nil
   ) {
     self.accessToken = accessToken
     self.expiresAt = expiresAt

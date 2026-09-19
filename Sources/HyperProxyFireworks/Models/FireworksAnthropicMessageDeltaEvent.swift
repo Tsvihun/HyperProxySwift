@@ -12,22 +12,22 @@ import HyperProxyCore
 
 public struct FireworksAnthropicMessageDeltaEvent: Codable, Sendable {
   public var delta: FireworksAnthropicMessageDeltaEventDelta
-  public var typeModel: String
+  public var kind: FireworksMessageDeltaKind
   public var usage: FireworksAnthropicMessageDeltaEventUsage
 
   public init(
     delta: FireworksAnthropicMessageDeltaEventDelta,
-    typeModel: String,
-    usage: FireworksAnthropicMessageDeltaEventUsage
+    usage: FireworksAnthropicMessageDeltaEventUsage,
+    kind: FireworksMessageDeltaKind = .messageDelta
   ) {
     self.delta = delta
-    self.typeModel = typeModel
+    self.kind = kind
     self.usage = usage
   }
 
   enum CodingKeys: String, CodingKey {
     case delta
-    case typeModel = "type"
+    case kind = "type"
     case usage
   }
 }

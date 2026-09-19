@@ -14,6 +14,7 @@ public struct ElevenLabsSpeechEngineResponse: Codable, Sendable {
   public var accessInfo: ElevenLabsResourceAccessInfo?
   public var asr: ElevenLabsASRConversationalConfig
   public var callLimits: ElevenLabsAgentCallLimits
+  public var cascadeTimeoutSeconds: Double
   public var conversation: ElevenLabsConversationConfigOutput
   public var language: String
   public var metadata: ElevenLabsAgentMetadataDBModel
@@ -30,6 +31,7 @@ public struct ElevenLabsSpeechEngineResponse: Codable, Sendable {
   public init(
     asr: ElevenLabsASRConversationalConfig,
     callLimits: ElevenLabsAgentCallLimits,
+    cascadeTimeoutSeconds: Double,
     conversation: ElevenLabsConversationConfigOutput,
     language: String,
     metadata: ElevenLabsAgentMetadataDBModel,
@@ -47,6 +49,7 @@ public struct ElevenLabsSpeechEngineResponse: Codable, Sendable {
     self.accessInfo = accessInfo
     self.asr = asr
     self.callLimits = callLimits
+    self.cascadeTimeoutSeconds = cascadeTimeoutSeconds
     self.conversation = conversation
     self.language = language
     self.metadata = metadata
@@ -65,6 +68,7 @@ public struct ElevenLabsSpeechEngineResponse: Codable, Sendable {
     case accessInfo = "access_info"
     case asr
     case callLimits = "call_limits"
+    case cascadeTimeoutSeconds = "cascade_timeout_seconds"
     case conversation
     case language
     case metadata

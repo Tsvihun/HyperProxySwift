@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct TogetherChatCompletionUserMessageContentMultimodalItemOneOf2: Codable, Sendable {
   public var imageUrl: TogetherChatCompletionUserMessageContentMultimodalItemOneOf2ImageUrl?
-  public var typeModel: TogetherChatCompletionUserMessageContentMultimodalItemOneOf2TypeModel?
+  public var kind: TogetherChatCompletionUserMessageContentMultimodalItemOneOf2Kind?
 
   public init(
     imageUrl: TogetherChatCompletionUserMessageContentMultimodalItemOneOf2ImageUrl? = nil,
-    typeModel: TogetherChatCompletionUserMessageContentMultimodalItemOneOf2TypeModel? = nil
+    kind: TogetherChatCompletionUserMessageContentMultimodalItemOneOf2Kind? = nil
   ) {
     self.imageUrl = imageUrl
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case imageUrl = "image_url"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

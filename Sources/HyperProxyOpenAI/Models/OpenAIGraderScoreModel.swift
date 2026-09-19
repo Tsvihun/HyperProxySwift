@@ -16,13 +16,13 @@ public struct OpenAIGraderScoreModel: Codable, Sendable {
   public var name: String
   public var range: [Double]?
   public var samplingParams: OpenAIGraderScoreModelSamplingParams?
-  public var typeModel: OpenAIGraderScoreModelTypeModel
+  public var kind: OpenAIGraderScoreModelKind
 
   public init(
     input: [OpenAIEvalItem],
     model: String,
     name: String,
-    typeModel: OpenAIGraderScoreModelTypeModel,
+    kind: OpenAIGraderScoreModelKind,
     range: [Double]? = nil,
     samplingParams: OpenAIGraderScoreModelSamplingParams? = nil
   ) {
@@ -31,7 +31,7 @@ public struct OpenAIGraderScoreModel: Codable, Sendable {
     self.name = name
     self.range = range
     self.samplingParams = samplingParams
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIGraderScoreModel: Codable, Sendable {
     case name
     case range
     case samplingParams = "sampling_params"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

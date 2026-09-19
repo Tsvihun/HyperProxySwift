@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsSFXModelId: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let elevenTextToSoundV2 = Self(rawValue: "eleven_text_to_sound_v2")
+public enum ElevenLabsSFXModelId: String, Codable, Hashable, Sendable {
+  case elevenTextToSoundV2 = "eleven_text_to_sound_v2"
 }

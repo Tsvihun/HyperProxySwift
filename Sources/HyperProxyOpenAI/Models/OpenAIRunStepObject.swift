@@ -19,14 +19,14 @@ public struct OpenAIRunStepObject: Codable, Sendable {
   public var failedAt: Int?
   public var id: String
   public var lastError: OpenAIRunStepObjectLastErrorAnyOf1?
-  public var metadata: OpenAIMetadata
+  public var metadata: OpenAIMetadata?
   public var object: OpenAIRunStepObjectObject
   public var runId: String
   public var status: OpenAIRunStepObjectStatus
-  public var stepDetails: HyperProxyJSONValue
+  public var stepDetails: OpenAIRunStepObjectStepDetails
   public var threadId: String
-  public var typeModel: OpenAIRunStepObjectTypeModel
-  public var usage: OpenAIRunStepCompletionUsage
+  public var kind: OpenAIRunStepObjectKind
+  public var usage: OpenAIRunStepCompletionUsage?
 
   public init(
     assistantId: String,
@@ -37,14 +37,14 @@ public struct OpenAIRunStepObject: Codable, Sendable {
     failedAt: Int?,
     id: String,
     lastError: OpenAIRunStepObjectLastErrorAnyOf1?,
-    metadata: OpenAIMetadata,
+    metadata: OpenAIMetadata?,
     object: OpenAIRunStepObjectObject,
     runId: String,
     status: OpenAIRunStepObjectStatus,
-    stepDetails: HyperProxyJSONValue,
+    stepDetails: OpenAIRunStepObjectStepDetails,
     threadId: String,
-    typeModel: OpenAIRunStepObjectTypeModel,
-    usage: OpenAIRunStepCompletionUsage
+    kind: OpenAIRunStepObjectKind,
+    usage: OpenAIRunStepCompletionUsage?
   ) {
     self.assistantId = assistantId
     self.cancelledAt = cancelledAt
@@ -60,7 +60,7 @@ public struct OpenAIRunStepObject: Codable, Sendable {
     self.status = status
     self.stepDetails = stepDetails
     self.threadId = threadId
-    self.typeModel = typeModel
+    self.kind = kind
     self.usage = usage
   }
 
@@ -79,7 +79,7 @@ public struct OpenAIRunStepObject: Codable, Sendable {
     case status
     case stepDetails = "step_details"
     case threadId = "thread_id"
-    case typeModel = "type"
+    case kind = "type"
     case usage
   }
 }

@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaManagedAgentsSpeed: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let standard = Self(rawValue: "standard")
-  public static let fast = Self(rawValue: "fast")
+public enum AnthropicBetaManagedAgentsSpeed: String, Codable, Hashable, Sendable {
+  case standard = "standard"
+  case fast = "fast"
 }

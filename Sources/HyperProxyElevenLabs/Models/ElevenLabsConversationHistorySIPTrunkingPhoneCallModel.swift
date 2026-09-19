@@ -18,7 +18,7 @@ public struct ElevenLabsConversationHistorySIPTrunkingPhoneCallModel: Codable, S
   public var externalNumber: String
   public var phoneNumberId: String
   public var sipHeaderDynamicVariables: [String: String]?
-  public var typeModel: String
+  public var kind: ElevenLabsSipTrunkingKind
 
   public init(
     agentNumber: String,
@@ -26,7 +26,7 @@ public struct ElevenLabsConversationHistorySIPTrunkingPhoneCallModel: Codable, S
     direction: ElevenLabsTelephonyDirection,
     externalNumber: String,
     phoneNumberId: String,
-    typeModel: String,
+    kind: ElevenLabsSipTrunkingKind = .sipTrunking,
     callId: String? = nil,
     sipHeaderDynamicVariables: [String: String]? = nil
   ) {
@@ -37,7 +37,7 @@ public struct ElevenLabsConversationHistorySIPTrunkingPhoneCallModel: Codable, S
     self.externalNumber = externalNumber
     self.phoneNumberId = phoneNumberId
     self.sipHeaderDynamicVariables = sipHeaderDynamicVariables
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct ElevenLabsConversationHistorySIPTrunkingPhoneCallModel: Codable, S
     case externalNumber = "external_number"
     case phoneNumberId = "phone_number_id"
     case sipHeaderDynamicVariables = "sip_header_dynamic_variables"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

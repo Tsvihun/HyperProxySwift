@@ -10,15 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIUsageImagesParametersSourcesItem: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let imageGeneration = Self(rawValue: "image.generation")
-  public static let imageEdit = Self(rawValue: "image.edit")
-  public static let imageVariation = Self(rawValue: "image.variation")
+public enum OpenAIUsageImagesParametersSourcesItem: String, Codable, Hashable, Sendable {
+  case imageGeneration = "image.generation"
+  case imageEdit = "image.edit"
+  case imageVariation = "image.variation"
 }

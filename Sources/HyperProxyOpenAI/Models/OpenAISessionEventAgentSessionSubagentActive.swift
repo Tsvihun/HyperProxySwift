@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenAISessionEventAgentSessionSubagentActive: Codable, Sendable {
   public var eventId: String
   public var subagent: OpenAISubagentResource
-  public var typeModel: OpenAISessionEventAgentSessionSubagentActiveTypeModel
+  public var kind: OpenAISessionEventAgentSessionSubagentActiveKind
 
   public init(
     eventId: String,
     subagent: OpenAISubagentResource,
-    typeModel: OpenAISessionEventAgentSessionSubagentActiveTypeModel
+    kind: OpenAISessionEventAgentSessionSubagentActiveKind
   ) {
     self.eventId = eventId
     self.subagent = subagent
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case eventId = "event_id"
     case subagent
-    case typeModel = "type"
+    case kind = "type"
   }
 }

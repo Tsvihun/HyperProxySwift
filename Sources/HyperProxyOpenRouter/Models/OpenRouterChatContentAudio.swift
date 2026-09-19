@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterChatContentAudio: Codable, Sendable {
   public var inputAudio: OpenRouterChatContentAudioInputAudio
-  public var typeModel: OpenRouterChatContentAudioTypeModel
+  public var kind: OpenRouterChatContentAudioKind
 
   public init(
     inputAudio: OpenRouterChatContentAudioInputAudio,
-    typeModel: OpenRouterChatContentAudioTypeModel
+    kind: OpenRouterChatContentAudioKind
   ) {
     self.inputAudio = inputAudio
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case inputAudio = "input_audio"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

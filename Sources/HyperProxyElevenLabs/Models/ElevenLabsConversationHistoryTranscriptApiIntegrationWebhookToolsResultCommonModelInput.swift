@@ -27,7 +27,7 @@ public struct
   public var toolHasBeenCalled: Bool
   public var toolLatencySecs: Double?
   public var toolName: String
-  public var typeModel: String
+  public var kind: ElevenLabsApiIntegrationWebhookKind
 
   public init(
     isError: Bool,
@@ -35,7 +35,7 @@ public struct
     resultValue: String,
     toolHasBeenCalled: Bool,
     toolName: String,
-    typeModel: String,
+    kind: ElevenLabsApiIntegrationWebhookKind = .apiIntegrationWebhook,
     credentialId: String? = nil,
     dynamicVariableUpdates: [ElevenLabsDynamicVariableUpdateCommonModel]? = nil,
     errorType: String? = nil,
@@ -58,7 +58,7 @@ public struct
     self.toolHasBeenCalled = toolHasBeenCalled
     self.toolLatencySecs = toolLatencySecs
     self.toolName = toolName
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -75,6 +75,6 @@ public struct
     case toolHasBeenCalled = "tool_has_been_called"
     case toolLatencySecs = "tool_latency_secs"
     case toolName = "tool_name"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

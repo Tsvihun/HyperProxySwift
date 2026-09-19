@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct ElevenLabsTestToolResultModel: Codable, Sendable {
   public var reason: String?
-  public var resultType: String?
-  public var status: String?
+  public var resultType: ElevenLabsTestingToolResultResultType?
+  public var status: ElevenLabsSuccessStatus?
 
   public init(
     reason: String? = nil,
-    resultType: String? = nil,
-    status: String? = nil
+    resultType: ElevenLabsTestingToolResultResultType? = nil,
+    status: ElevenLabsSuccessStatus? = nil
   ) {
     self.reason = reason
     self.resultType = resultType

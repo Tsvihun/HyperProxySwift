@@ -10,19 +10,13 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsRenderType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mp4 = Self(rawValue: "mp4")
-  public static let aac = Self(rawValue: "aac")
-  public static let mp3 = Self(rawValue: "mp3")
-  public static let wav = Self(rawValue: "wav")
-  public static let aaf = Self(rawValue: "aaf")
-  public static let tracksZip = Self(rawValue: "tracks_zip")
-  public static let clipsZip = Self(rawValue: "clips_zip")
-  public static let zip = Self(rawValue: "zip")
+public enum ElevenLabsRenderType: String, Codable, Hashable, Sendable {
+  case mp4 = "mp4"
+  case aac = "aac"
+  case mp3 = "mp3"
+  case wav = "wav"
+  case aaf = "aaf"
+  case tracksZip = "tracks_zip"
+  case clipsZip = "clips_zip"
+  case zip = "zip"
 }

@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct GeminiV1mainCreateTunedModelMetadata: Codable, Sendable {
   public var completedPercent: Double?
   public var completedSteps: Int?
-  public var snapshots: [HyperProxyJSONValue]?
+  public var snapshots: [GeminiV1mainTuningSnapshot]?
   public var totalSteps: Int?
   public var tunedModel: String?
 
   public init(
     completedPercent: Double? = nil,
     completedSteps: Int? = nil,
-    snapshots: [HyperProxyJSONValue]? = nil,
+    snapshots: [GeminiV1mainTuningSnapshot]? = nil,
     totalSteps: Int? = nil,
     tunedModel: String? = nil
   ) {

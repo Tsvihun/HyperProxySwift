@@ -15,18 +15,18 @@ public struct TogetherCompletionResponse: Codable, Sendable {
   public var created: Int
   public var id: String
   public var model: String
-  public var object: HyperProxyJSONValue
+  public var object: TogetherTextCompletionObject
   public var prompt: TogetherPromptPart
-  public var usage: TogetherUsageData
+  public var usage: TogetherUsageData?
 
   public init(
     choices: TogetherCompletionChoicesData,
     created: Int,
     id: String,
     model: String,
-    object: HyperProxyJSONValue,
     prompt: TogetherPromptPart,
-    usage: TogetherUsageData
+    usage: TogetherUsageData?,
+    object: TogetherTextCompletionObject = .textCompletion
   ) {
     self.choices = choices
     self.created = created

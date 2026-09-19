@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIMCPToolRequireApprovalAnyOf1OneOf2: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let always = Self(rawValue: "always")
-  public static let never = Self(rawValue: "never")
+public enum OpenAIMCPToolRequireApprovalAnyOf1OneOf2: String, Codable, Hashable, Sendable {
+  case always = "always"
+  case never = "never"
 }

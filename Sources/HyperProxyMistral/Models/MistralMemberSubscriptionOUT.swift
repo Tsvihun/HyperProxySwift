@@ -12,16 +12,16 @@ import HyperProxyCore
 
 public struct MistralMemberSubscriptionOUT: Codable, Sendable {
   public var memberHasAccess: Bool?
-  public var plan: HyperProxyJSONValue?
+  public var plan: MistralMemberSubscriptionOUTPlan?
   public var selfService: Bool?
   public var status: MistralSubscriptionStatus?
-  public var typeModel: MistralPlanType
+  public var kind: MistralPlanType
   public var user: String?
 
   public init(
-    typeModel: MistralPlanType,
+    kind: MistralPlanType,
     memberHasAccess: Bool? = nil,
-    plan: HyperProxyJSONValue? = nil,
+    plan: MistralMemberSubscriptionOUTPlan? = nil,
     selfService: Bool? = nil,
     status: MistralSubscriptionStatus? = nil,
     user: String? = nil
@@ -30,7 +30,7 @@ public struct MistralMemberSubscriptionOUT: Codable, Sendable {
     self.plan = plan
     self.selfService = selfService
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
     self.user = user
   }
 
@@ -39,7 +39,7 @@ public struct MistralMemberSubscriptionOUT: Codable, Sendable {
     case plan
     case selfService = "self_service"
     case status
-    case typeModel = "type"
+    case kind = "type"
     case user
   }
 }

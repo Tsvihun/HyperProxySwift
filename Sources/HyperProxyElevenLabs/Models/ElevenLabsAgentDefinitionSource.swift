@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsAgentDefinitionSource: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let cli = Self(rawValue: "cli")
-  public static let ui = Self(rawValue: "ui")
-  public static let api = Self(rawValue: "api")
-  public static let template = Self(rawValue: "template")
-  public static let unknown = Self(rawValue: "unknown")
+public enum ElevenLabsAgentDefinitionSource: String, Codable, Hashable, Sendable {
+  case cli = "cli"
+  case ui = "ui"
+  case api = "api"
+  case template = "template"
+  case unknown = "unknown"
 }

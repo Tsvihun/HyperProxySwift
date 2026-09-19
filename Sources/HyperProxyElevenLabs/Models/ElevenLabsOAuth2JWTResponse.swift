@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsOAuth2JWTResponse: Codable, Sendable {
   public var algorithm: ElevenLabsOAuth2JWTResponseAlgorithm?
   public var audience: String
-  public var authType: String?
+  public var authType: ElevenLabsOauth2JwtAuthType?
   public var expirationSeconds: Int?
   public var extraParams: [String: String]?
   public var id: String
@@ -39,7 +39,7 @@ public struct ElevenLabsOAuth2JWTResponse: Codable, Sendable {
     subject: String,
     tokenUrl: String,
     algorithm: ElevenLabsOAuth2JWTResponseAlgorithm? = nil,
-    authType: String? = nil,
+    authType: ElevenLabsOauth2JwtAuthType? = nil,
     expirationSeconds: Int? = nil,
     extraParams: [String: String]? = nil,
     keyId: String? = nil,

@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiEnvironmentStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let sTATUSUNSPECIFIED = Self(rawValue: "STATUS_UNSPECIFIED")
-  public static let aCTIVE = Self(rawValue: "ACTIVE")
-  public static let eXPIRED = Self(rawValue: "EXPIRED")
+public enum GeminiEnvironmentStatus: String, Codable, Hashable, Sendable {
+  case sTATUSUNSPECIFIED = "STATUS_UNSPECIFIED"
+  case aCTIVE = "ACTIVE"
+  case eXPIRED = "EXPIRED"
 }

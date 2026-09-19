@@ -13,12 +13,13 @@ import HyperProxyCore
 public struct AnthropicBetaManagedAgentsMcpOauthRefreshUpdateParams: Codable, Sendable {
   public var refreshToken: String?
   public var scope: String?
-  public var tokenEndpointAuth: HyperProxyJSONValue?
+  public var tokenEndpointAuth:
+    AnthropicBetaManagedAgentsMcpOauthRefreshUpdateParamsTokenEndpointAuth?
 
   public init(
     refreshToken: String? = nil,
     scope: String? = nil,
-    tokenEndpointAuth: HyperProxyJSONValue? = nil
+    tokenEndpointAuth: AnthropicBetaManagedAgentsMcpOauthRefreshUpdateParamsTokenEndpointAuth? = nil
   ) {
     self.refreshToken = refreshToken
     self.scope = scope

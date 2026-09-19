@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterChatContentImageImageUrlDetail: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
-  public static let low = Self(rawValue: "low")
-  public static let high = Self(rawValue: "high")
-  public static let original = Self(rawValue: "original")
+public enum OpenRouterChatContentImageImageUrlDetail: String, Codable, Hashable, Sendable {
+  case auto = "auto"
+  case low = "low"
+  case high = "high"
+  case original = "original"
 }

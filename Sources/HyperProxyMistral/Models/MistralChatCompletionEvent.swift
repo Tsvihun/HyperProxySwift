@@ -16,7 +16,7 @@ public struct MistralChatCompletionEvent: Codable, Sendable {
   public var createdAt: String
   public var enabledTools: [[String: HyperProxyJSONValue]]
   public var eventId: String
-  public var extraFields: [String: HyperProxyJSONValue?]
+  public var extraFields: [String: MistralChatCompletionEventExtraFieldsValue?]
   public var nbInputTokens: Int
   public var nbMessages: Int
   public var nbOutputTokens: Int
@@ -29,7 +29,7 @@ public struct MistralChatCompletionEvent: Codable, Sendable {
     createdAt: String,
     enabledTools: [[String: HyperProxyJSONValue]],
     eventId: String,
-    extraFields: [String: HyperProxyJSONValue?],
+    extraFields: [String: MistralChatCompletionEventExtraFieldsValue?],
     nbInputTokens: Int,
     nbMessages: Int,
     nbOutputTokens: Int,

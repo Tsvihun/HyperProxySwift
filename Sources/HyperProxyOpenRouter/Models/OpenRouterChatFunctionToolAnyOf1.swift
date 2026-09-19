@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenRouterChatFunctionToolAnyOf1: Codable, Sendable {
   public var cacheControl: OpenRouterChatContentCacheControl?
   public var function: OpenRouterChatFunctionToolAnyOf1Function
-  public var typeModel: OpenRouterChatFunctionToolAnyOf1TypeModel
+  public var kind: OpenRouterChatFunctionToolAnyOf1Kind
 
   public init(
     function: OpenRouterChatFunctionToolAnyOf1Function,
-    typeModel: OpenRouterChatFunctionToolAnyOf1TypeModel,
+    kind: OpenRouterChatFunctionToolAnyOf1Kind,
     cacheControl: OpenRouterChatContentCacheControl? = nil
   ) {
     self.cacheControl = cacheControl
     self.function = function
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case cacheControl = "cache_control"
     case function
-    case typeModel = "type"
+    case kind = "type"
   }
 }

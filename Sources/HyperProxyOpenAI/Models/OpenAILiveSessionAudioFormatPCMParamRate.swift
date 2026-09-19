@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAILiveSessionAudioFormatPCMParamRate: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: Int
-
-  public init(rawValue: Int) {
-    self.rawValue = rawValue
-  }
-
-  public static let value16000 = Self(rawValue: 16000)
-  public static let value24000 = Self(rawValue: 24000)
+public enum OpenAILiveSessionAudioFormatPCMParamRate: Int, Codable, Hashable, Sendable {
+  case value16000 = 16000
+  case value24000 = 24000
 }

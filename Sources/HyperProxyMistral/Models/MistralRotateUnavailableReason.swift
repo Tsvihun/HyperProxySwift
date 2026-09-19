@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralRotateUnavailableReason: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let unsupportedScope = Self(rawValue: "unsupported_scope")
-  public static let keyExpired = Self(rawValue: "key_expired")
-  public static let notAllowed = Self(rawValue: "not_allowed")
+public enum MistralRotateUnavailableReason: String, Codable, Hashable, Sendable {
+  case unsupportedScope = "unsupported_scope"
+  case keyExpired = "key_expired"
+  case notAllowed = "not_allowed"
 }

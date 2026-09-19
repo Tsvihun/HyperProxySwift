@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksGatewayWeightPrecision: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let wEIGHTPRECISIONUNSPECIFIED = Self(rawValue: "WEIGHT_PRECISION_UNSPECIFIED")
-  public static let bFLOAT16 = Self(rawValue: "BFLOAT16")
-  public static let iNT8 = Self(rawValue: "INT8")
-  public static let nF4 = Self(rawValue: "NF4")
-  public static let fP8 = Self(rawValue: "FP8")
-  public static let fP4FP8 = Self(rawValue: "FP4_FP8")
+public enum FireworksGatewayWeightPrecision: String, Codable, Hashable, Sendable {
+  case wEIGHTPRECISIONUNSPECIFIED = "WEIGHT_PRECISION_UNSPECIFIED"
+  case bFLOAT16 = "BFLOAT16"
+  case iNT8 = "INT8"
+  case nF4 = "NF4"
+  case fP8 = "FP8"
+  case fP4FP8 = "FP4_FP8"
 }

@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsSpeechEngineConfig: Codable, Sendable {
-  public var requestHeaders: [String: HyperProxyJSONValue]?
+  public var requestHeaders: [String: ElevenLabsSpeechEngineConfigRequestHeadersValue]?
   public var wsUrl: String
 
   public init(
     wsUrl: String,
-    requestHeaders: [String: HyperProxyJSONValue]? = nil
+    requestHeaders: [String: ElevenLabsSpeechEngineConfigRequestHeadersValue]? = nil
   ) {
     self.requestHeaders = requestHeaders
     self.wsUrl = wsUrl

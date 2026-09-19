@@ -23,24 +23,24 @@ public struct OpenRouterChatRequest: Codable, Sendable {
   public var metadata: [String: String]?
   public var minP: Double?
   public var modalities: [OpenRouterChatRequestModalitiesItem]?
-  public var model: OpenRouterModelName?
+  public var model: String?
   public var models: OpenRouterChatModelNames?
   public var parallelToolCalls: Bool?
-  public var plugins: [HyperProxyJSONValue]?
+  public var plugins: [OpenRouterChatRequestPluginsItem]?
   public var prediction: OpenRouterPrediction?
   public var presencePenalty: Double?
   public var promptCacheKey: String?
   public var promptCacheOptions: OpenRouterPromptCacheOptions?
   public var provider: OpenRouterProviderPreferences?
   public var reasoning: OpenRouterChatRequestReasoning?
-  public var reasoningEffort: OpenRouterChatRequestReasoningEfforta846b819?
+  public var reasoningEffort: OpenRouterChatRequestReasoningEffort83f7f0cc?
   public var repetitionPenalty: Double?
-  public var responseFormat: HyperProxyJSONValue?
+  public var responseFormat: OpenRouterChatRequestResponseFormat?
   public var route: OpenRouterDeprecatedRoute?
   public var seed: Int?
   public var serviceTier: OpenRouterChatRequestServiceTier?
   public var sessionId: String?
-  public var stop: HyperProxyJSONValue?
+  public var stop: OpenRouterChatRequestStop?
   public var stopServerToolsWhen: OpenRouterStopServerToolsWhen?
   public var stream: Bool?
   public var streamOptions: OpenRouterChatStreamOptions?
@@ -67,24 +67,24 @@ public struct OpenRouterChatRequest: Codable, Sendable {
     metadata: [String: String]? = nil,
     minP: Double? = nil,
     modalities: [OpenRouterChatRequestModalitiesItem]? = nil,
-    model: OpenRouterModelName? = nil,
+    model: String? = nil,
     models: OpenRouterChatModelNames? = nil,
     parallelToolCalls: Bool? = nil,
-    plugins: [HyperProxyJSONValue]? = nil,
+    plugins: [OpenRouterChatRequestPluginsItem]? = nil,
     prediction: OpenRouterPrediction? = nil,
     presencePenalty: Double? = nil,
     promptCacheKey: String? = nil,
     promptCacheOptions: OpenRouterPromptCacheOptions? = nil,
     provider: OpenRouterProviderPreferences? = nil,
     reasoning: OpenRouterChatRequestReasoning? = nil,
-    reasoningEffort: OpenRouterChatRequestReasoningEfforta846b819? = nil,
+    reasoningEffort: OpenRouterChatRequestReasoningEffort83f7f0cc? = nil,
     repetitionPenalty: Double? = nil,
-    responseFormat: HyperProxyJSONValue? = nil,
+    responseFormat: OpenRouterChatRequestResponseFormat? = nil,
     route: OpenRouterDeprecatedRoute? = nil,
     seed: Int? = nil,
     serviceTier: OpenRouterChatRequestServiceTier? = nil,
     sessionId: String? = nil,
-    stop: HyperProxyJSONValue? = nil,
+    stop: OpenRouterChatRequestStop? = nil,
     stopServerToolsWhen: OpenRouterStopServerToolsWhen? = nil,
     stream: Bool? = nil,
     streamOptions: OpenRouterChatStreamOptions? = nil,

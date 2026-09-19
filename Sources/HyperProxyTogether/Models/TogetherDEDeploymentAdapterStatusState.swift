@@ -10,17 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherDEDeploymentAdapterStatusState: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let aDAPTERLOADSTATEPENDING = Self(rawValue: "ADAPTER_LOAD_STATE_PENDING")
-  public static let aDAPTERLOADSTATELOADING = Self(rawValue: "ADAPTER_LOAD_STATE_LOADING")
-  public static let aDAPTERLOADSTATEREADY = Self(rawValue: "ADAPTER_LOAD_STATE_READY")
-  public static let aDAPTERLOADSTATEREMOVING = Self(rawValue: "ADAPTER_LOAD_STATE_REMOVING")
-  public static let aDAPTERLOADSTATEFAILED = Self(rawValue: "ADAPTER_LOAD_STATE_FAILED")
+public enum TogetherDEDeploymentAdapterStatusState: String, Codable, Hashable, Sendable {
+  case aDAPTERLOADSTATEPENDING = "ADAPTER_LOAD_STATE_PENDING"
+  case aDAPTERLOADSTATELOADING = "ADAPTER_LOAD_STATE_LOADING"
+  case aDAPTERLOADSTATEREADY = "ADAPTER_LOAD_STATE_READY"
+  case aDAPTERLOADSTATEREMOVING = "ADAPTER_LOAD_STATE_REMOVING"
+  case aDAPTERLOADSTATEFAILED = "ADAPTER_LOAD_STATE_FAILED"
 }

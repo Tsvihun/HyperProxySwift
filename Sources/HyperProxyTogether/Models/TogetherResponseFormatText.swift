@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherResponseFormatText: Codable, Sendable {
-  public var typeModel: TogetherResponseFormatTextTypeModel
+  public var kind: TogetherResponseFormatTextKind
 
   public init(
-    typeModel: TogetherResponseFormatTextTypeModel
+    kind: TogetherResponseFormatTextKind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

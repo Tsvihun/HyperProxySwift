@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct PerplexityFunctionCallOutputTextPart: Codable, Sendable {
   public var text: String
-  public var typeModel: PerplexityFunctionCallOutputTextPartTypeModel
+  public var kind: PerplexityFunctionCallOutputTextPartKind
 
   public init(
     text: String,
-    typeModel: PerplexityFunctionCallOutputTextPartTypeModel
+    kind: PerplexityFunctionCallOutputTextPartKind
   ) {
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

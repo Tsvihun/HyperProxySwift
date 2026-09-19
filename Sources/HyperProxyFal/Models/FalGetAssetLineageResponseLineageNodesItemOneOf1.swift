@@ -17,7 +17,7 @@ public struct FalGetAssetLineageResponseLineageNodesItemOneOf1: Codable, Sendabl
   public var outputKey: String
   public var requestId: String
   public var tombstone: Bool
-  public var typeModel: FalGetAssetLineageResponseLineageNodesItemOneOf1TypeModel
+  public var kind1303c06b: FalGetAssetLineageResponseLineageNodesItemOneOf1Kind0fa00d2c
   public var url: String
 
   public init(
@@ -27,7 +27,7 @@ public struct FalGetAssetLineageResponseLineageNodesItemOneOf1: Codable, Sendabl
     outputKey: String,
     requestId: String,
     tombstone: Bool,
-    typeModel: FalGetAssetLineageResponseLineageNodesItemOneOf1TypeModel,
+    kind1303c06b: FalGetAssetLineageResponseLineageNodesItemOneOf1Kind0fa00d2c,
     url: String
   ) {
     self.assetId = assetId
@@ -36,7 +36,7 @@ public struct FalGetAssetLineageResponseLineageNodesItemOneOf1: Codable, Sendabl
     self.outputKey = outputKey
     self.requestId = requestId
     self.tombstone = tombstone
-    self.typeModel = typeModel
+    self.kind1303c06b = kind1303c06b
     self.url = url
   }
 
@@ -47,7 +47,7 @@ public struct FalGetAssetLineageResponseLineageNodesItemOneOf1: Codable, Sendabl
     case outputKey = "output_key"
     case requestId = "request_id"
     case tombstone
-    case typeModel = "type"
+    case kind1303c06b = "type"
     case url
   }
 }

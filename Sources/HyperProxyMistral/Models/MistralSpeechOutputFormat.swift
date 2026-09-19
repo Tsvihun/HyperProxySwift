@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralSpeechOutputFormat: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let pcm = Self(rawValue: "pcm")
-  public static let wav = Self(rawValue: "wav")
-  public static let mp3 = Self(rawValue: "mp3")
-  public static let flac = Self(rawValue: "flac")
-  public static let opus = Self(rawValue: "opus")
+public enum MistralSpeechOutputFormat: String, Codable, Hashable, Sendable {
+  case pcm = "pcm"
+  case wav = "wav"
+  case mp3 = "mp3"
+  case flac = "flac"
+  case opus = "opus"
 }

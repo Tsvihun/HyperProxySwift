@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct MistralAgentConversation: Codable, Sendable {
   public var agentId: String
-  public var agentVersion: HyperProxyJSONValue?
+  public var agentVersion: MistralAgentConversationAgentVersion?
   public var createdAt: String
   public var description: String?
   public var id: String
   public var metadata: MistralMetadataDict?
   public var name: String?
-  public var object: String?
+  public var object: MistralConversationObject?
   public var updatedAt: String
 
   public init(
@@ -26,11 +26,11 @@ public struct MistralAgentConversation: Codable, Sendable {
     createdAt: String,
     id: String,
     updatedAt: String,
-    agentVersion: HyperProxyJSONValue? = nil,
+    agentVersion: MistralAgentConversationAgentVersion? = nil,
     description: String? = nil,
     metadata: MistralMetadataDict? = nil,
     name: String? = nil,
-    object: String? = nil
+    object: MistralConversationObject? = nil
   ) {
     self.agentId = agentId
     self.agentVersion = agentVersion

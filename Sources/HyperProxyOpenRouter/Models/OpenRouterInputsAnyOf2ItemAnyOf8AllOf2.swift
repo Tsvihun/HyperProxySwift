@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterInputsAnyOf2ItemAnyOf8AllOf2: Codable, Sendable {
-  public var content: HyperProxyJSONValue?
-  public var typeModel: OpenRouterInputsAnyOf2ItemAnyOf8AllOf2TypeModel?
+  public var content: OpenRouterInputsAnyOf2ItemAnyOf8AllOf2Content?
+  public var kind: OpenRouterInputsAnyOf2ItemAnyOf8AllOf2Kind?
 
   public init(
-    content: HyperProxyJSONValue? = nil,
-    typeModel: OpenRouterInputsAnyOf2ItemAnyOf8AllOf2TypeModel? = nil
+    content: OpenRouterInputsAnyOf2ItemAnyOf8AllOf2Content? = nil,
+    kind: OpenRouterInputsAnyOf2ItemAnyOf8AllOf2Kind? = nil
   ) {
     self.content = content
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case content
-    case typeModel = "type"
+    case kind = "type"
   }
 }

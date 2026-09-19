@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsHtmlExportOptions: Codable, Sendable {
-  public var format: String
+  public var format: ElevenLabsHtmlFormat
   public var includeSpeakers: Bool?
   public var includeTimestamps: Bool?
   public var maxSegmentChars: Int?
@@ -19,7 +19,7 @@ public struct ElevenLabsHtmlExportOptions: Codable, Sendable {
   public var segmentOnSilenceLongerThanS: Double?
 
   public init(
-    format: String,
+    format: ElevenLabsHtmlFormat = .html,
     includeSpeakers: Bool? = nil,
     includeTimestamps: Bool? = nil,
     maxSegmentChars: Int? = nil,

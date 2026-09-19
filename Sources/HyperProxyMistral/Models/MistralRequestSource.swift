@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralRequestSource: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let api = Self(rawValue: "api")
-  public static let playground = Self(rawValue: "playground")
-  public static let agentBuilderV1 = Self(rawValue: "agent_builder_v1")
+public enum MistralRequestSource: String, Codable, Hashable, Sendable {
+  case api = "api"
+  case playground = "playground"
+  case agentBuilderV1 = "agent_builder_v1"
 }

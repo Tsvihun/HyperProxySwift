@@ -17,16 +17,16 @@ public struct TogetherModelInfo: Codable, Sendable {
   public var id: String
   public var license: String?
   public var link: String?
-  public var object: HyperProxyJSONValue
+  public var object: TogetherModelObject
   public var organization: String?
   public var pricing: TogetherPricing?
-  public var typeModel: TogetherModelInfoTypeModel
+  public var kind: TogetherModelInfoKind
 
   public init(
     created: Int,
     id: String,
-    object: HyperProxyJSONValue,
-    typeModel: TogetherModelInfoTypeModel,
+    kind: TogetherModelInfoKind,
+    object: TogetherModelObject = .model,
     contextLength: Int? = nil,
     displayName: String? = nil,
     license: String? = nil,
@@ -43,7 +43,7 @@ public struct TogetherModelInfo: Codable, Sendable {
     self.object = object
     self.organization = organization
     self.pricing = pricing
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -56,6 +56,6 @@ public struct TogetherModelInfo: Codable, Sendable {
     case object
     case organization
     case pricing
-    case typeModel = "type"
+    case kind = "type"
   }
 }

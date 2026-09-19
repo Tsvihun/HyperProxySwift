@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenAIRealtimeResponseStatusDetails: Codable, Sendable {
   public var error: OpenAIRealtimeResponseStatusDetailsError?
   public var reason: OpenAIRealtimeResponseStatusDetailsReason?
-  public var typeModel: OpenAIRealtimeResponseStatusDetailsTypeModel?
+  public var kind: OpenAIRealtimeResponseStatusDetailsKind?
 
   public init(
     error: OpenAIRealtimeResponseStatusDetailsError? = nil,
     reason: OpenAIRealtimeResponseStatusDetailsReason? = nil,
-    typeModel: OpenAIRealtimeResponseStatusDetailsTypeModel? = nil
+    kind: OpenAIRealtimeResponseStatusDetailsKind? = nil
   ) {
     self.error = error
     self.reason = reason
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case error
     case reason
-    case typeModel = "type"
+    case kind = "type"
   }
 }

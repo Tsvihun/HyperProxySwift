@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIImageGenActionEnum: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let generate = Self(rawValue: "generate")
-  public static let edit = Self(rawValue: "edit")
-  public static let auto = Self(rawValue: "auto")
+public enum OpenAIImageGenActionEnum: String, Codable, Hashable, Sendable {
+  case generate = "generate"
+  case edit = "edit"
+  case auto = "auto"
 }

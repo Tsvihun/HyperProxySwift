@@ -15,20 +15,20 @@ public struct OpenRouterAnthropicBashCodeExecutionResult: Codable, Sendable {
   public var returnCode: Int
   public var stderr: String
   public var stdout: String
-  public var typeModel: OpenRouterAnthropicBashCodeExecutionResultTypeModel
+  public var kind: OpenRouterAnthropicBashCodeExecutionResultKind
 
   public init(
     content: [OpenRouterAnthropicBashCodeExecutionOutput],
     returnCode: Int,
     stderr: String,
     stdout: String,
-    typeModel: OpenRouterAnthropicBashCodeExecutionResultTypeModel
+    kind: OpenRouterAnthropicBashCodeExecutionResultKind
   ) {
     self.content = content
     self.returnCode = returnCode
     self.stderr = stderr
     self.stdout = stdout
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenRouterAnthropicBashCodeExecutionResult: Codable, Sendable {
     case returnCode = "return_code"
     case stderr
     case stdout
-    case typeModel = "type"
+    case kind = "type"
   }
 }

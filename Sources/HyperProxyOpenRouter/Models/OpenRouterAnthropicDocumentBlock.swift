@@ -12,26 +12,26 @@ import HyperProxyCore
 
 public struct OpenRouterAnthropicDocumentBlock: Codable, Sendable {
   public var citations: OpenRouterAnthropicCitationsConfig?
-  public var source: HyperProxyJSONValue
+  public var source: OpenRouterAnthropicDocumentBlockSource
   public var title: String
-  public var typeModel: OpenRouterAnthropicDocumentBlockTypeModel
+  public var kind: OpenRouterAnthropicDocumentBlockKind
 
   public init(
-    source: HyperProxyJSONValue,
+    source: OpenRouterAnthropicDocumentBlockSource,
     title: String,
-    typeModel: OpenRouterAnthropicDocumentBlockTypeModel,
+    kind: OpenRouterAnthropicDocumentBlockKind,
     citations: OpenRouterAnthropicCitationsConfig? = nil
   ) {
     self.citations = citations
     self.source = source
     self.title = title
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case citations
     case source
     case title
-    case typeModel = "type"
+    case kind = "type"
   }
 }

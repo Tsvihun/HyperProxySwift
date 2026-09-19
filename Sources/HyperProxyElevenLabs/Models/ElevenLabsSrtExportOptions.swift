@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsSrtExportOptions: Codable, Sendable {
-  public var format: String
+  public var format: ElevenLabsSrtFormat
   public var includeSpeakers: Bool?
   public var includeTimestamps: Bool?
   public var maxCharactersPerLine: Int?
@@ -20,7 +20,7 @@ public struct ElevenLabsSrtExportOptions: Codable, Sendable {
   public var segmentOnSilenceLongerThanS: Double?
 
   public init(
-    format: String,
+    format: ElevenLabsSrtFormat = .srt,
     includeSpeakers: Bool? = nil,
     includeTimestamps: Bool? = nil,
     maxCharactersPerLine: Int? = nil,

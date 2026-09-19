@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaApiKeyUserActor: Codable, Sendable {
-  public var typeModel: String
+  public var kind: AnthropicUserActorKind
   public var userId: String
 
   public init(
-    typeModel: String,
-    userId: String
+    userId: String,
+    kind: AnthropicUserActorKind = .userActor
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
     self.userId = userId
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
     case userId = "user_id"
   }
 }

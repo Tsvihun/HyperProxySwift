@@ -15,12 +15,12 @@ public struct OpenRouterApplyPatchCallOutputItem: Codable, Sendable {
   public var id: String?
   public var output: String?
   public var status: OpenRouterApplyPatchCallOutputItemStatus
-  public var typeModel: OpenRouterApplyPatchCallOutputItemTypeModel
+  public var kind: OpenRouterApplyPatchCallOutputItemKind
 
   public init(
     callId: String,
     status: OpenRouterApplyPatchCallOutputItemStatus,
-    typeModel: OpenRouterApplyPatchCallOutputItemTypeModel,
+    kind: OpenRouterApplyPatchCallOutputItemKind,
     id: String? = nil,
     output: String? = nil
   ) {
@@ -28,7 +28,7 @@ public struct OpenRouterApplyPatchCallOutputItem: Codable, Sendable {
     self.id = id
     self.output = output
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenRouterApplyPatchCallOutputItem: Codable, Sendable {
     case id
     case output
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiCitationMetadata: Codable, Sendable {
-  public var citationSources: [HyperProxyJSONValue]?
+  public var citationSources: [GeminiCitationSource]?
 
   public init(
-    citationSources: [HyperProxyJSONValue]? = nil
+    citationSources: [GeminiCitationSource]? = nil
   ) {
     self.citationSources = citationSources
   }

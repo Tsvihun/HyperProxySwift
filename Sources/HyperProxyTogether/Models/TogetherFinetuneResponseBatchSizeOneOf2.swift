@@ -10,13 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherFinetuneResponseBatchSizeOneOf2: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let max = Self(rawValue: "max")
+public enum TogetherFinetuneResponseBatchSizeOneOf2: String, Codable, Hashable, Sendable {
+  case max = "max"
 }

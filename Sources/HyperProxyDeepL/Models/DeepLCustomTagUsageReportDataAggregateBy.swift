@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLCustomTagUsageReportDataAggregateBy: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let period = Self(rawValue: "period")
-  public static let day = Self(rawValue: "day")
+public enum DeepLCustomTagUsageReportDataAggregateBy: String, Codable, Hashable, Sendable {
+  case period = "period"
+  case day = "day"
 }

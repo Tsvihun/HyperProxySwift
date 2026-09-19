@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksChoiceFinishReasonAnyOf1: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let stop = Self(rawValue: "stop")
-  public static let length = Self(rawValue: "length")
-  public static let error = Self(rawValue: "error")
+public enum FireworksChoiceFinishReasonAnyOf1: String, Codable, Hashable, Sendable {
+  case stop = "stop"
+  case length = "length"
+  case error = "error"
 }

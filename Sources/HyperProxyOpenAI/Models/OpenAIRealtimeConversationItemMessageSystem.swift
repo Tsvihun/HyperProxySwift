@@ -16,12 +16,12 @@ public struct OpenAIRealtimeConversationItemMessageSystem: Codable, Sendable {
   public var object: OpenAIRealtimeConversationItemMessageSystemObject?
   public var role: OpenAIRealtimeConversationItemMessageSystemRole
   public var status: OpenAIRealtimeConversationItemMessageSystemStatus?
-  public var typeModel: OpenAIRealtimeConversationItemMessageSystemTypeModel
+  public var kind: OpenAIRealtimeConversationItemMessageSystemKind
 
   public init(
     content: [OpenAIRealtimeConversationItemMessageSystemContentItem],
     role: OpenAIRealtimeConversationItemMessageSystemRole,
-    typeModel: OpenAIRealtimeConversationItemMessageSystemTypeModel,
+    kind: OpenAIRealtimeConversationItemMessageSystemKind,
     id: String? = nil,
     object: OpenAIRealtimeConversationItemMessageSystemObject? = nil,
     status: OpenAIRealtimeConversationItemMessageSystemStatus? = nil
@@ -31,7 +31,7 @@ public struct OpenAIRealtimeConversationItemMessageSystem: Codable, Sendable {
     self.object = object
     self.role = role
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIRealtimeConversationItemMessageSystem: Codable, Sendable {
     case object
     case role
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

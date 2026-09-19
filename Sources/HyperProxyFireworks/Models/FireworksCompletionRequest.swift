@@ -16,9 +16,9 @@ public struct FireworksCompletionRequest: Codable, Sendable {
   public var echoLast: Int?
   public var frequencyPenalty: Double?
   public var ignoreEos: Bool?
-  public var images: HyperProxyJSONValue?
+  public var images: FireworksCompletionRequestImages?
   public var logitBias: [String: Double]?
-  public var logprobs: HyperProxyJSONValue?
+  public var logprobs: FireworksCompletionRequestLogprobs?
   public var maxCompletionTokens: Int?
   public var maxTokens: Int?
   public var metadata: [String: String]?
@@ -28,13 +28,13 @@ public struct FireworksCompletionRequest: Codable, Sendable {
   public var model: String
   public var n: Int?
   public var perfMetricsInResponse: Bool?
-  public var prediction: HyperProxyJSONValue?
+  public var prediction: FireworksCompletionRequestPrediction?
   public var presencePenalty: Double?
-  public var prompt: HyperProxyJSONValue
+  public var prompt: FireworksCompletionRequestPrompt
   public var promptCacheIsolationKey: String?
   public var promptCacheKey: String?
   public var rawOutput: Bool?
-  public var reasoningEffort: HyperProxyJSONValue?
+  public var reasoningEffort: FireworksCompletionRequestReasoningEffort?
   public var reasoningHistory: FireworksCompletionRequestReasoningHistoryAnyOf1?
   public var repetitionPenalty: Double?
   public var responseFormat: FireworksResponseFormat?
@@ -42,12 +42,12 @@ public struct FireworksCompletionRequest: Codable, Sendable {
   public var samplingMask: FireworksCompletionRequestSamplingMaskAnyOf1?
   public var seed: Int?
   public var serviceTier: FireworksCompletionRequestServiceTier?
-  public var speculation: HyperProxyJSONValue?
-  public var stop: HyperProxyJSONValue?
+  public var speculation: FireworksCompletionRequestSpeculation?
+  public var stop: FireworksCompletionRequestStop?
   public var stream: Bool?
   public var streamOptions: FireworksStreamOptions?
   public var temperature: Double?
-  public var thinking: HyperProxyJSONValue?
+  public var thinking: FireworksCompletionRequestThinking?
   public var topK: Int?
   public var topLogprobs: Int?
   public var topP: Double?
@@ -56,15 +56,15 @@ public struct FireworksCompletionRequest: Codable, Sendable {
 
   public init(
     model: String,
-    prompt: HyperProxyJSONValue,
+    prompt: FireworksCompletionRequestPrompt,
     contextLengthExceededBehavior: FireworksCompletionRequestContextLengthExceededBehavior? = nil,
     echo: Bool? = nil,
     echoLast: Int? = nil,
     frequencyPenalty: Double? = nil,
     ignoreEos: Bool? = nil,
-    images: HyperProxyJSONValue? = nil,
+    images: FireworksCompletionRequestImages? = nil,
     logitBias: [String: Double]? = nil,
-    logprobs: HyperProxyJSONValue? = nil,
+    logprobs: FireworksCompletionRequestLogprobs? = nil,
     maxCompletionTokens: Int? = nil,
     maxTokens: Int? = nil,
     metadata: [String: String]? = nil,
@@ -73,12 +73,12 @@ public struct FireworksCompletionRequest: Codable, Sendable {
     mirostatTarget: Double? = nil,
     n: Int? = nil,
     perfMetricsInResponse: Bool? = nil,
-    prediction: HyperProxyJSONValue? = nil,
+    prediction: FireworksCompletionRequestPrediction? = nil,
     presencePenalty: Double? = nil,
     promptCacheIsolationKey: String? = nil,
     promptCacheKey: String? = nil,
     rawOutput: Bool? = nil,
-    reasoningEffort: HyperProxyJSONValue? = nil,
+    reasoningEffort: FireworksCompletionRequestReasoningEffort? = nil,
     reasoningHistory: FireworksCompletionRequestReasoningHistoryAnyOf1? = nil,
     repetitionPenalty: Double? = nil,
     responseFormat: FireworksResponseFormat? = nil,
@@ -86,12 +86,12 @@ public struct FireworksCompletionRequest: Codable, Sendable {
     samplingMask: FireworksCompletionRequestSamplingMaskAnyOf1? = nil,
     seed: Int? = nil,
     serviceTier: FireworksCompletionRequestServiceTier? = nil,
-    speculation: HyperProxyJSONValue? = nil,
-    stop: HyperProxyJSONValue? = nil,
+    speculation: FireworksCompletionRequestSpeculation? = nil,
+    stop: FireworksCompletionRequestStop? = nil,
     stream: Bool? = nil,
     streamOptions: FireworksStreamOptions? = nil,
     temperature: Double? = nil,
-    thinking: HyperProxyJSONValue? = nil,
+    thinking: FireworksCompletionRequestThinking? = nil,
     topK: Int? = nil,
     topLogprobs: Int? = nil,
     topP: Double? = nil,

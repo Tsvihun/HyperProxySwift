@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherDEShadowExperimentSamplingOneOf1: Codable, Sendable {
-  public var uniform: HyperProxyJSONValue
+  public var uniform: TogetherDEShadowExperimentUniformSampling
 
   public init(
-    uniform: HyperProxyJSONValue
+    uniform: TogetherDEShadowExperimentUniformSampling
   ) {
     self.uniform = uniform
   }

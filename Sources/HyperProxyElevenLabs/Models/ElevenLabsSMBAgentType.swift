@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsSMBAgentType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let customerFacing = Self(rawValue: "customer_facing")
-  public static let assistant = Self(rawValue: "assistant")
+public enum ElevenLabsSMBAgentType: String, Codable, Hashable, Sendable {
+  case customerFacing = "customer_facing"
+  case assistant = "assistant"
 }

@@ -18,12 +18,12 @@ public struct OpenAIAgentToolConfigParamMcp: Codable, Sendable {
   public var requiredValue: Bool?
   public var serverLabel: String
   public var transport: OpenAIMcpTransportConfigParam
-  public var typeModel: OpenAIAgentToolConfigParamMcpTypeModel
+  public var kind: OpenAIAgentToolConfigParamMcpKind
 
   public init(
     serverLabel: String,
     transport: OpenAIMcpTransportConfigParam,
-    typeModel: OpenAIAgentToolConfigParamMcpTypeModel,
+    kind: OpenAIAgentToolConfigParamMcpKind,
     allowedTools: [String]? = nil,
     connectionOrigin: OpenAIMcpConnectionOriginParam? = nil,
     credentialId: String? = nil,
@@ -37,7 +37,7 @@ public struct OpenAIAgentToolConfigParamMcp: Codable, Sendable {
     self.requiredValue = requiredValue
     self.serverLabel = serverLabel
     self.transport = transport
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct OpenAIAgentToolConfigParamMcp: Codable, Sendable {
     case requiredValue = "required"
     case serverLabel = "server_label"
     case transport
-    case typeModel = "type"
+    case kind = "type"
   }
 }

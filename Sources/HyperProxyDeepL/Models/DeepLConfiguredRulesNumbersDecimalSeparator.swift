@@ -10,21 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesNumbersDecimalSeparator: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useCommaAndDoNotUseThousandsSeparator = Self(
-    rawValue: "use_comma_and_do_not_use_thousands_separator")
-  public static let useCommaAsDecimalSeparator = Self(rawValue: "use_comma_as_decimal_separator")
-  public static let useCommaDoNotUseThousandsSeparatorAndUsePeriodOnlyForRadioStations = Self(
-    rawValue: "use_comma_do_not_use_thousands_separator_and_use_period_only_for_radio_stations")
-  public static let usePeriodAndDoNotUseThousandsSeparator = Self(
-    rawValue: "use_period_and_do_not_use_thousands_separator")
-  public static let usePeriodAsDecimalSeparator = Self(rawValue: "use_period_as_decimal_separator")
+public enum DeepLConfiguredRulesNumbersDecimalSeparator: String, Codable, Hashable, Sendable {
+  case useCommaAndDoNotUseThousandsSeparator = "use_comma_and_do_not_use_thousands_separator"
+  case useCommaAsDecimalSeparator = "use_comma_as_decimal_separator"
+  case useCommaDoNotUseThousandsSeparatorAndUsePeriodOnlyForRadioStations =
+    "use_comma_do_not_use_thousands_separator_and_use_period_only_for_radio_stations"
+  case usePeriodAndDoNotUseThousandsSeparator = "use_period_and_do_not_use_thousands_separator"
+  case usePeriodAsDecimalSeparator = "use_period_as_decimal_separator"
 }

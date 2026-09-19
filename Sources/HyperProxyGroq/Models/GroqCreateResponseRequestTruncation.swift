@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct GroqCreateResponseRequestTruncation: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
-  public static let disabled = Self(rawValue: "disabled")
+public enum GroqCreateResponseRequestTruncation: String, Codable, Hashable, Sendable {
+  case auto = "auto"
+  case disabled = "disabled"
 }

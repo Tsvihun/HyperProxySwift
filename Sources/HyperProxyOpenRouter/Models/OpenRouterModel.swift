@@ -17,7 +17,7 @@ public struct OpenRouterModel: Codable, Sendable {
   public var canonicalSlug: String
   public var contextLength: Int
   public var created: Int
-  public var defaultParameters: OpenRouterDefaultParameters
+  public var defaultParameters: OpenRouterDefaultParameters?
   public var description: String?
   public var expirationDate: String?
   public var huggingFaceId: String?
@@ -25,7 +25,7 @@ public struct OpenRouterModel: Codable, Sendable {
   public var knowledgeCutoff: String?
   public var links: OpenRouterModelLinks
   public var name: String
-  public var perRequestLimits: OpenRouterPerRequestLimits
+  public var perRequestLimits: OpenRouterPerRequestLimits?
   public var pricing: OpenRouterPublicPricing
   public var reasoning: OpenRouterModelReasoning?
   public var supportedParameters: [OpenRouterParameter]
@@ -37,11 +37,11 @@ public struct OpenRouterModel: Codable, Sendable {
     canonicalSlug: String,
     contextLength: Int,
     created: Int,
-    defaultParameters: OpenRouterDefaultParameters,
+    defaultParameters: OpenRouterDefaultParameters?,
     id: String,
     links: OpenRouterModelLinks,
     name: String,
-    perRequestLimits: OpenRouterPerRequestLimits,
+    perRequestLimits: OpenRouterPerRequestLimits?,
     pricing: OpenRouterPublicPricing,
     supportedParameters: [OpenRouterParameter],
     supportedVoices: [String],

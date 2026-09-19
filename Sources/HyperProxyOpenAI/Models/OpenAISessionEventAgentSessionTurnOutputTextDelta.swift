@@ -18,7 +18,7 @@ public struct OpenAISessionEventAgentSessionTurnOutputTextDelta: Codable, Sendab
   public var outputIndex: Int64
   public var sessionId: String
   public var turnId: String
-  public var typeModel: OpenAISessionEventAgentSessionTurnOutputTextDeltaTypeModel
+  public var kind: OpenAISessionEventAgentSessionTurnOutputTextDeltaKind
 
   public init(
     contentIndex: Int64,
@@ -28,7 +28,7 @@ public struct OpenAISessionEventAgentSessionTurnOutputTextDelta: Codable, Sendab
     outputIndex: Int64,
     sessionId: String,
     turnId: String,
-    typeModel: OpenAISessionEventAgentSessionTurnOutputTextDeltaTypeModel
+    kind: OpenAISessionEventAgentSessionTurnOutputTextDeltaKind
   ) {
     self.contentIndex = contentIndex
     self.delta = delta
@@ -37,7 +37,7 @@ public struct OpenAISessionEventAgentSessionTurnOutputTextDelta: Codable, Sendab
     self.outputIndex = outputIndex
     self.sessionId = sessionId
     self.turnId = turnId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct OpenAISessionEventAgentSessionTurnOutputTextDelta: Codable, Sendab
     case outputIndex = "output_index"
     case sessionId = "session_id"
     case turnId = "turn_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -11,33 +11,36 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiBidiGenerateContentSetup: Codable, Sendable {
-  public var contextWindowCompression: HyperProxyJSONValue?
-  public var generationConfig: HyperProxyJSONValue?
-  public var historyConfig: HyperProxyJSONValue?
-  public var inputAudioTranscription: HyperProxyJSONValue?
+  public var contextWindowCompression: GeminiContextWindowCompressionConfig?
+  public var generationConfig: GeminiGenerationConfig?
+  public var historyConfig: GeminiHistoryConfig?
+  public var inputAudioTranscription: GeminiAudioTranscriptionConfig?
+  public var labels: [String: String]?
   public var model: String?
-  public var outputAudioTranscription: HyperProxyJSONValue?
-  public var realtimeInputConfig: HyperProxyJSONValue?
-  public var sessionResumption: HyperProxyJSONValue?
-  public var systemInstruction: HyperProxyJSONValue?
-  public var tools: [HyperProxyJSONValue]?
+  public var outputAudioTranscription: GeminiAudioTranscriptionConfig?
+  public var realtimeInputConfig: GeminiRealtimeInputConfig?
+  public var sessionResumption: GeminiSessionResumptionConfig?
+  public var systemInstruction: GeminiContent?
+  public var tools: [GeminiTool]?
 
   public init(
-    contextWindowCompression: HyperProxyJSONValue? = nil,
-    generationConfig: HyperProxyJSONValue? = nil,
-    historyConfig: HyperProxyJSONValue? = nil,
-    inputAudioTranscription: HyperProxyJSONValue? = nil,
+    contextWindowCompression: GeminiContextWindowCompressionConfig? = nil,
+    generationConfig: GeminiGenerationConfig? = nil,
+    historyConfig: GeminiHistoryConfig? = nil,
+    inputAudioTranscription: GeminiAudioTranscriptionConfig? = nil,
+    labels: [String: String]? = nil,
     model: String? = nil,
-    outputAudioTranscription: HyperProxyJSONValue? = nil,
-    realtimeInputConfig: HyperProxyJSONValue? = nil,
-    sessionResumption: HyperProxyJSONValue? = nil,
-    systemInstruction: HyperProxyJSONValue? = nil,
-    tools: [HyperProxyJSONValue]? = nil
+    outputAudioTranscription: GeminiAudioTranscriptionConfig? = nil,
+    realtimeInputConfig: GeminiRealtimeInputConfig? = nil,
+    sessionResumption: GeminiSessionResumptionConfig? = nil,
+    systemInstruction: GeminiContent? = nil,
+    tools: [GeminiTool]? = nil
   ) {
     self.contextWindowCompression = contextWindowCompression
     self.generationConfig = generationConfig
     self.historyConfig = historyConfig
     self.inputAudioTranscription = inputAudioTranscription
+    self.labels = labels
     self.model = model
     self.outputAudioTranscription = outputAudioTranscription
     self.realtimeInputConfig = realtimeInputConfig
@@ -51,6 +54,7 @@ public struct GeminiBidiGenerateContentSetup: Codable, Sendable {
     case generationConfig
     case historyConfig
     case inputAudioTranscription
+    case labels
     case model
     case outputAudioTranscription
     case realtimeInputConfig

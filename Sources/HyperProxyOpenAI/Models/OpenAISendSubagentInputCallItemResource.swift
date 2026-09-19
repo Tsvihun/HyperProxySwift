@@ -17,7 +17,7 @@ public struct OpenAISendSubagentInputCallItemResource: Codable, Sendable {
   public var senderAgentId: String
   public var status: OpenAIFunctionCallStatusResource
   public var turnId: String
-  public var typeModel: OpenAISendSubagentInputCallItemResourceTypeModel
+  public var kind: OpenAISendSubagentInputCallItemResourceKind
 
   public init(
     content: [OpenAIAgentContentResource],
@@ -26,7 +26,7 @@ public struct OpenAISendSubagentInputCallItemResource: Codable, Sendable {
     senderAgentId: String,
     status: OpenAIFunctionCallStatusResource,
     turnId: String,
-    typeModel: OpenAISendSubagentInputCallItemResourceTypeModel
+    kind: OpenAISendSubagentInputCallItemResourceKind
   ) {
     self.content = content
     self.id = id
@@ -34,7 +34,7 @@ public struct OpenAISendSubagentInputCallItemResource: Codable, Sendable {
     self.senderAgentId = senderAgentId
     self.status = status
     self.turnId = turnId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenAISendSubagentInputCallItemResource: Codable, Sendable {
     case senderAgentId = "sender_agent_id"
     case status
     case turnId = "turn_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public enum OpenAIVaultStatusFilterParam: Codable, Sendable {
-  case array([OpenAIVaultStatusParam])
+  case vaultStatusParamArray([OpenAIVaultStatusParam])
   case vaultStatusParam(OpenAIVaultStatusParam)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
     if let value = try? container.decode([OpenAIVaultStatusParam].self) {
-      self = .array(value)
+      self = .vaultStatusParamArray(value)
       return
     }
     self = .vaultStatusParam(try container.decode(OpenAIVaultStatusParam.self))
@@ -26,7 +26,7 @@ public enum OpenAIVaultStatusFilterParam: Codable, Sendable {
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .array(let value):
+    case .vaultStatusParamArray(let value):
       try container.encode(value)
     case .vaultStatusParam(let value):
       try container.encode(value)
@@ -36,6 +36,6 @@ public enum OpenAIVaultStatusFilterParam: Codable, Sendable {
 
 extension OpenAIVaultStatusFilterParam: ExpressibleByArrayLiteral {
   public init(arrayLiteral elements: OpenAIVaultStatusParam...) {
-    self = .array(elements)
+    self = .vaultStatusParamArray(elements)
   }
 }

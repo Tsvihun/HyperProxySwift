@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiPartMediaProcessing: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mEDIAPROCESSINGUNSPECIFIED = Self(rawValue: "MEDIA_PROCESSING_UNSPECIFIED")
-  public static let sTATIC = Self(rawValue: "STATIC")
-  public static let aGENTIC = Self(rawValue: "AGENTIC")
+public enum GeminiPartMediaProcessing: String, Codable, Hashable, Sendable {
+  case mEDIAPROCESSINGUNSPECIFIED = "MEDIA_PROCESSING_UNSPECIFIED"
+  case sTATIC = "STATIC"
+  case aGENTIC = "AGENTIC"
 }

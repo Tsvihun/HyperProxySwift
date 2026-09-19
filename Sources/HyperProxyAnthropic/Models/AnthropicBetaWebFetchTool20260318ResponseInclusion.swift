@@ -10,15 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaWebFetchTool20260318ResponseInclusion: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum AnthropicBetaWebFetchTool20260318ResponseInclusion: String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let full = Self(rawValue: "full")
-  public static let excluded = Self(rawValue: "excluded")
+  case full = "full"
+  case excluded = "excluded"
 }

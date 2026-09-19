@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct GeminiDocument: Codable, Sendable {
   public var createTime: String?
-  public var customMetadata: [HyperProxyJSONValue]?
+  public var customMetadata: [GeminiCustomMetadata]?
   public var displayName: String?
   public var mimeType: String?
   public var name: String?
@@ -22,7 +22,7 @@ public struct GeminiDocument: Codable, Sendable {
 
   public init(
     createTime: String? = nil,
-    customMetadata: [HyperProxyJSONValue]? = nil,
+    customMetadata: [GeminiCustomMetadata]? = nil,
     displayName: String? = nil,
     mimeType: String? = nil,
     name: String? = nil,

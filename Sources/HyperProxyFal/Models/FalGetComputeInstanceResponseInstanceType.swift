@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct FalGetComputeInstanceResponseInstanceType: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let gpu8xH100Sxm5 = Self(rawValue: "gpu_8x_h100_sxm5")
-  public static let gpu1xH100Sxm5 = Self(rawValue: "gpu_1x_h100_sxm5")
+public enum FalGetComputeInstanceResponseInstanceType: String, Codable, Hashable, Sendable {
+  case gpu8xH100Sxm5 = "gpu_8x_h100_sxm5"
+  case gpu1xH100Sxm5 = "gpu_1x_h100_sxm5"
 }

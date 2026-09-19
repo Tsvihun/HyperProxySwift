@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsKnowledgeBaseDocumentType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let file = Self(rawValue: "file")
-  public static let url = Self(rawValue: "url")
-  public static let text = Self(rawValue: "text")
-  public static let folder = Self(rawValue: "folder")
+public enum ElevenLabsKnowledgeBaseDocumentType: String, Codable, Hashable, Sendable {
+  case file = "file"
+  case url = "url"
+  case text = "text"
+  case folder = "folder"
 }

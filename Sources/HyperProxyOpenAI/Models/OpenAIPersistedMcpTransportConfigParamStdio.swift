@@ -15,12 +15,12 @@ public struct OpenAIPersistedMcpTransportConfigParamStdio: Codable, Sendable {
   public var command: String
   public var cwd: String
   public var envVars: [String]?
-  public var typeModel: OpenAIPersistedMcpTransportConfigParamStdioTypeModel
+  public var kind: OpenAIPersistedMcpTransportConfigParamStdioKind
 
   public init(
     command: String,
     cwd: String,
-    typeModel: OpenAIPersistedMcpTransportConfigParamStdioTypeModel,
+    kind: OpenAIPersistedMcpTransportConfigParamStdioKind,
     args: [String]? = nil,
     envVars: [String]? = nil
   ) {
@@ -28,7 +28,7 @@ public struct OpenAIPersistedMcpTransportConfigParamStdio: Codable, Sendable {
     self.command = command
     self.cwd = cwd
     self.envVars = envVars
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIPersistedMcpTransportConfigParamStdio: Codable, Sendable {
     case command
     case cwd
     case envVars = "env_vars"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenRouterCustomToolFormatAnyOf2: Codable, Sendable {
   public var definition: String
   public var syntax: OpenRouterCustomToolFormatAnyOf2Syntax
-  public var typeModel: OpenRouterCustomToolFormatAnyOf2TypeModel
+  public var kind: OpenRouterCustomToolFormatAnyOf2Kind
 
   public init(
     definition: String,
     syntax: OpenRouterCustomToolFormatAnyOf2Syntax,
-    typeModel: OpenRouterCustomToolFormatAnyOf2TypeModel
+    kind: OpenRouterCustomToolFormatAnyOf2Kind
   ) {
     self.definition = definition
     self.syntax = syntax
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case definition
     case syntax
-    case typeModel = "type"
+    case kind = "type"
   }
 }

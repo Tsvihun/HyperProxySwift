@@ -10,4 +10,19 @@
 import Foundation
 import HyperProxyCore
 
-public typealias EachAIAPICreateAudioSpeechResponse200AudioPcm = String
+public struct EachAIAPICreateAudioSpeechResponse200AudioPcm: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+}
+
+extension EachAIAPICreateAudioSpeechResponse200AudioPcm: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self.init(rawValue: value)
+  }
+}

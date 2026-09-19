@@ -13,25 +13,25 @@ import HyperProxyCore
 public struct OpenRouterMessagesRequestContextManagementEditsItemOneOf3: Codable, Sendable {
   public var instructions: String?
   public var pauseAfterCompaction: Bool?
-  public var trigger: HyperProxyJSONValue?
-  public var typeModel: OpenRouterMessagesRequestContextManagementEditsItemOneOf3TypeModel
+  public var trigger: OpenRouterMessagesRequestContextManagementEditsItemOneOf3TriggerAnyOf1?
+  public var kind: OpenRouterMessagesRequestContextManagementEditsItemOneOf3Kind
 
   public init(
-    typeModel: OpenRouterMessagesRequestContextManagementEditsItemOneOf3TypeModel,
+    kind: OpenRouterMessagesRequestContextManagementEditsItemOneOf3Kind,
     instructions: String? = nil,
     pauseAfterCompaction: Bool? = nil,
-    trigger: HyperProxyJSONValue? = nil
+    trigger: OpenRouterMessagesRequestContextManagementEditsItemOneOf3TriggerAnyOf1? = nil
   ) {
     self.instructions = instructions
     self.pauseAfterCompaction = pauseAfterCompaction
     self.trigger = trigger
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case instructions
     case pauseAfterCompaction = "pause_after_compaction"
     case trigger
-    case typeModel = "type"
+    case kind = "type"
   }
 }

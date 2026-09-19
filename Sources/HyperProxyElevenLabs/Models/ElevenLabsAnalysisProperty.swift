@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsAnalysisProperty: Codable, Sendable {
   public var allowedValues: ElevenLabsAllowedValues?
   public var allowedValuesDynamicVariable: String?
-  public var constantValue: HyperProxyJSONValue?
+  public var constantValue: ElevenLabsAnalysisPropertyConstantValue?
   public var description: String?
   public var dynamicVariable: String?
   public var enumValue: [String]?
@@ -21,13 +21,13 @@ public struct ElevenLabsAnalysisProperty: Codable, Sendable {
   public var isSystemProvided: Bool?
   public var llm: ElevenLabsLLM?
   public var name: String?
-  public var typeModel: ElevenLabsAnalysisPropertyTypeModel
+  public var kind: ElevenLabsAnalysisPropertyKind
 
   public init(
-    typeModel: ElevenLabsAnalysisPropertyTypeModel,
+    kind: ElevenLabsAnalysisPropertyKind,
     allowedValues: ElevenLabsAllowedValues? = nil,
     allowedValuesDynamicVariable: String? = nil,
-    constantValue: HyperProxyJSONValue? = nil,
+    constantValue: ElevenLabsAnalysisPropertyConstantValue? = nil,
     description: String? = nil,
     dynamicVariable: String? = nil,
     enumValue: [String]? = nil,
@@ -46,7 +46,7 @@ public struct ElevenLabsAnalysisProperty: Codable, Sendable {
     self.isSystemProvided = isSystemProvided
     self.llm = llm
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -60,6 +60,6 @@ public struct ElevenLabsAnalysisProperty: Codable, Sendable {
     case isSystemProvided = "is_system_provided"
     case llm
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

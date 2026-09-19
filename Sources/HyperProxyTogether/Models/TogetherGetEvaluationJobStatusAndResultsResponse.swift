@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherGetEvaluationJobStatusAndResultsResponse: Codable, Sendable {
-  public var results: HyperProxyJSONValue?
+  public var results: TogetherGetEvaluationJobStatusAndResultsResponseResults?
   public var status: TogetherGetEvaluationJobStatusAndResultsResponseStatus?
 
   public init(
-    results: HyperProxyJSONValue? = nil,
+    results: TogetherGetEvaluationJobStatusAndResultsResponseResults? = nil,
     status: TogetherGetEvaluationJobStatusAndResultsResponseStatus? = nil
   ) {
     self.results = results

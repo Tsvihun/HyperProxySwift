@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherDESupportedModelFeaturesItem: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let fEATURETOOLCALLING = Self(rawValue: "FEATURE_TOOL_CALLING")
-  public static let fEATURESTRUCTUREDOUTPUT = Self(rawValue: "FEATURE_STRUCTURED_OUTPUT")
-  public static let fEATUREREASONING = Self(rawValue: "FEATURE_REASONING")
+public enum TogetherDESupportedModelFeaturesItem: String, Codable, Hashable, Sendable {
+  case fEATURETOOLCALLING = "FEATURE_TOOL_CALLING"
+  case fEATURESTRUCTUREDOUTPUT = "FEATURE_STRUCTURED_OUTPUT"
+  case fEATUREREASONING = "FEATURE_REASONING"
 }

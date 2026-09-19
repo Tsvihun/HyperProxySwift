@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaWorkspaceRoleSchema: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let workspaceAdmin = Self(rawValue: "workspace_admin")
-  public static let workspaceBilling = Self(rawValue: "workspace_billing")
-  public static let workspaceDeveloper = Self(rawValue: "workspace_developer")
-  public static let workspaceRestrictedDeveloper = Self(rawValue: "workspace_restricted_developer")
-  public static let workspaceUser = Self(rawValue: "workspace_user")
+public enum AnthropicBetaWorkspaceRoleSchema: String, Codable, Hashable, Sendable {
+  case workspaceAdmin = "workspace_admin"
+  case workspaceBilling = "workspace_billing"
+  case workspaceDeveloper = "workspace_developer"
+  case workspaceRestrictedDeveloper = "workspace_restricted_developer"
+  case workspaceUser = "workspace_user"
 }

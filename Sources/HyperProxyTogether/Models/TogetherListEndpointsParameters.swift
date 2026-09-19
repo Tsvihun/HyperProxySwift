@@ -12,22 +12,22 @@ import HyperProxyCore
 
 public struct TogetherListEndpointsParameters: Codable, Sendable {
   public var mine: Bool?
-  public var typeModel: TogetherListEndpointsParametersTypeModel?
+  public var kind: TogetherListEndpointsParametersKind?
   public var usageType: TogetherListEndpointsParametersUsageType?
 
   public init(
     mine: Bool? = nil,
-    typeModel: TogetherListEndpointsParametersTypeModel? = nil,
+    kind: TogetherListEndpointsParametersKind? = nil,
     usageType: TogetherListEndpointsParametersUsageType? = nil
   ) {
     self.mine = mine
-    self.typeModel = typeModel
+    self.kind = kind
     self.usageType = usageType
   }
 
   enum CodingKeys: String, CodingKey {
     case mine
-    case typeModel = "type"
+    case kind = "type"
     case usageType = "usage_type"
   }
 }

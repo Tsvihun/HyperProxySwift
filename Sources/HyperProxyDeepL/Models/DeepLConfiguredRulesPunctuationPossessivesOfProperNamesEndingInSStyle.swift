@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesPunctuationPossessivesOfProperNamesEndingInSStyle:
-  RawRepresentable, Codable, Hashable, Sendable
+public enum DeepLConfiguredRulesPunctuationPossessivesOfProperNamesEndingInSStyle: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let addApostropheOnly = Self(rawValue: "add_apostrophe_only")
-  public static let addApostropheS = Self(rawValue: "add_apostrophe_s")
+  case addApostropheOnly = "add_apostrophe_only"
+  case addApostropheS = "add_apostrophe_s"
 }

@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicThinkingConfigAdaptive: Codable, Sendable {
   public var display: AnthropicThinkingDisplayMode?
-  public var typeModel: String
+  public var kind: AnthropicAdaptiveKind
 
   public init(
-    typeModel: String,
+    kind: AnthropicAdaptiveKind = .adaptive,
     display: AnthropicThinkingDisplayMode? = nil
   ) {
     self.display = display
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case display
-    case typeModel = "type"
+    case kind = "type"
   }
 }

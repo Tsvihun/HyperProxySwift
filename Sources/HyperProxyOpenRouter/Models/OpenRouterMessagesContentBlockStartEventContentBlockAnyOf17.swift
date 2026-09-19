@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenRouterMessagesContentBlockStartEventContentBlockAnyOf17: Codable, Sendable {
   public var content: String
   public var encryptedContent: String?
-  public var typeModel: OpenRouterMessagesContentBlockStartEventContentBlockAnyOf17TypeModel
+  public var kind: OpenRouterMessagesContentBlockStartEventContentBlockAnyOf17Kind
 
   public init(
     content: String,
-    typeModel: OpenRouterMessagesContentBlockStartEventContentBlockAnyOf17TypeModel,
+    kind: OpenRouterMessagesContentBlockStartEventContentBlockAnyOf17Kind,
     encryptedContent: String? = nil
   ) {
     self.content = content
     self.encryptedContent = encryptedContent
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case content
     case encryptedContent = "encrypted_content"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

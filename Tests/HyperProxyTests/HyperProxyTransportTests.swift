@@ -8,6 +8,7 @@
 
 import Foundation
 import HyperProxyOpenAI
+import HyperProxyTogether
 import Testing
 @testable import HyperProxyCore
 
@@ -292,9 +293,9 @@ struct HyperProxyTransportTests {
       let id: String
     }
 
-    let stream = try HyperProxy.openAI(client: self.client())
-      .call(.filesContent)
-      .path("file_id", "file_123")
+    let stream = try HyperProxy.together(client: self.client())
+      .call(.v1FilesIdContentGet)
+      .path("id", "file_123")
       .jsonLines(decoding: Line.self, chunkSize: 5)
     var values: [String] = []
     for try await line in stream {

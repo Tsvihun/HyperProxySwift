@@ -14,24 +14,24 @@ public struct ElevenLabsWorkflowToolNestedToolsStepModelInput: Codable, Sendable
   public var isSuccessful: Bool
   public var nodeId: String
   public var requests: [ElevenLabsConversationHistoryTranscriptToolCallCommonModelInput]
-  public var results: [HyperProxyJSONValue]
+  public var results: [ElevenLabsWorkflowToolNestedToolsStepModelInputResultsItem]
   public var stepLatencySecs: Double
-  public var typeModel: String?
+  public var kind: ElevenLabsNestedToolsKind?
 
   public init(
     isSuccessful: Bool,
     nodeId: String,
     requests: [ElevenLabsConversationHistoryTranscriptToolCallCommonModelInput],
-    results: [HyperProxyJSONValue],
+    results: [ElevenLabsWorkflowToolNestedToolsStepModelInputResultsItem],
     stepLatencySecs: Double,
-    typeModel: String? = nil
+    kind: ElevenLabsNestedToolsKind? = nil
   ) {
     self.isSuccessful = isSuccessful
     self.nodeId = nodeId
     self.requests = requests
     self.results = results
     self.stepLatencySecs = stepLatencySecs
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct ElevenLabsWorkflowToolNestedToolsStepModelInput: Codable, Sendable
     case requests
     case results
     case stepLatencySecs = "step_latency_secs"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

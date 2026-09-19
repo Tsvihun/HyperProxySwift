@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIBetaMessagePhase: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let commentary = Self(rawValue: "commentary")
-  public static let finalAnswer = Self(rawValue: "final_answer")
+public enum OpenAIBetaMessagePhase: String, Codable, Hashable, Sendable {
+  case commentary = "commentary"
+  case finalAnswer = "final_answer"
 }

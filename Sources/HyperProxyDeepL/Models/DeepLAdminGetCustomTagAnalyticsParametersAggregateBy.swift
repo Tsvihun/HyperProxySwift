@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLAdminGetCustomTagAnalyticsParametersAggregateBy: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLAdminGetCustomTagAnalyticsParametersAggregateBy: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let period = Self(rawValue: "period")
-  public static let day = Self(rawValue: "day")
+  case period = "period"
+  case day = "day"
 }

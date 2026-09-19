@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsProjectExtendedResponseModelAspectRatioAnyOf1: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum ElevenLabsProjectExtendedResponseModelAspectRatioAnyOf1: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let value169 = Self(rawValue: "16:9")
-  public static let value916 = Self(rawValue: "9:16")
-  public static let value45 = Self(rawValue: "4:5")
-  public static let value11 = Self(rawValue: "1:1")
+  case value169 = "16:9"
+  case value916 = "9:16"
+  case value45 = "4:5"
+  case value11 = "1:1"
 }

@@ -12,8 +12,8 @@ import HyperProxyCore
 
 public struct ElevenLabsWorkspaceGroupResponseModel: Codable, Sendable {
   public var characterCount: Int?
-  public var groupPvcLimit: HyperProxyJSONValue?
-  public var groupUsageLimit: HyperProxyJSONValue?
+  public var groupPvcLimit: ElevenLabsWorkspaceGroupResponseModelGroupPvcLimit?
+  public var groupUsageLimit: ElevenLabsWorkspaceGroupResponseModelGroupUsageLimit?
   public var id: String
   public var isScimSynced: Bool?
   public var members: [String]
@@ -28,8 +28,8 @@ public struct ElevenLabsWorkspaceGroupResponseModel: Codable, Sendable {
     name: String,
     permissions: [ElevenLabsWorkspaceGroupPermission]?,
     characterCount: Int? = nil,
-    groupPvcLimit: HyperProxyJSONValue? = nil,
-    groupUsageLimit: HyperProxyJSONValue? = nil,
+    groupPvcLimit: ElevenLabsWorkspaceGroupResponseModelGroupPvcLimit? = nil,
+    groupUsageLimit: ElevenLabsWorkspaceGroupResponseModelGroupUsageLimit? = nil,
     isScimSynced: Bool? = nil,
     scimFrozen: Bool? = nil,
     scimGroup: ElevenLabsScimGroupResponseModel? = nil

@@ -10,7 +10,34 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaManagedAgentsUpdateSessionResource: Codable, Sendable {
+public enum AnthropicBetaManagedAgentsUpdateSessionResource: Codable, Sendable {
+  case betaManagedAgentsGitHubRepositoryResource(AnthropicBetaManagedAgentsGitHubRepositoryResource)
+  case betaManagedAgentsFileResource(AnthropicBetaManagedAgentsFileResource)
+  case betaManagedAgentsMemoryStoreResource(AnthropicBetaManagedAgentsMemoryStoreResource)
 
-  public init() {}
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(AnthropicBetaManagedAgentsGitHubRepositoryResource.self) {
+      self = .betaManagedAgentsGitHubRepositoryResource(value)
+      return
+    }
+    if let value = try? container.decode(AnthropicBetaManagedAgentsFileResource.self) {
+      self = .betaManagedAgentsFileResource(value)
+      return
+    }
+    self = .betaManagedAgentsMemoryStoreResource(
+      try container.decode(AnthropicBetaManagedAgentsMemoryStoreResource.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .betaManagedAgentsGitHubRepositoryResource(let value):
+      try container.encode(value)
+    case .betaManagedAgentsFileResource(let value):
+      try container.encode(value)
+    case .betaManagedAgentsMemoryStoreResource(let value):
+      try container.encode(value)
+    }
+  }
 }

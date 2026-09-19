@@ -12,22 +12,22 @@ import HyperProxyCore
 
 public struct ElevenLabsCustomSIPHeader: Codable, Sendable {
   public var key: String
-  public var typeModel: String?
+  public var kind: ElevenLabsStaticKind?
   public var value: String
 
   public init(
     key: String,
     value: String,
-    typeModel: String? = nil
+    kind: ElevenLabsStaticKind? = nil
   ) {
     self.key = key
-    self.typeModel = typeModel
+    self.kind = kind
     self.value = value
   }
 
   enum CodingKeys: String, CodingKey {
     case key
-    case typeModel = "type"
+    case kind = "type"
     case value
   }
 }

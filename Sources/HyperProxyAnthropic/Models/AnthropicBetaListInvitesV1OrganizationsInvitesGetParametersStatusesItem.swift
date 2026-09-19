@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaListInvitesV1OrganizationsInvitesGetParametersStatusesItem:
-  RawRepresentable, Codable, Hashable, Sendable
+public enum AnthropicBetaListInvitesV1OrganizationsInvitesGetParametersStatusesItem: String,
+  Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let accepted = Self(rawValue: "accepted")
-  public static let expired = Self(rawValue: "expired")
-  public static let pending = Self(rawValue: "pending")
+  case accepted = "accepted"
+  case expired = "expired"
+  case pending = "pending"
 }

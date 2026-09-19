@@ -10,15 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesPunctuationParenthesesForSupplementaryInformation:
-  RawRepresentable, Codable, Hashable, Sendable
+public enum DeepLConfiguredRulesPunctuationParenthesesForSupplementaryInformation: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useParenthesesWithoutSpaceOnEitherSide = Self(
-    rawValue: "use_parentheses_without_space_on_either_side")
+  case useParenthesesWithoutSpaceOnEitherSide = "use_parentheses_without_space_on_either_side"
 }

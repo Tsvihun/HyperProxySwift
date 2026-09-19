@@ -11,25 +11,25 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaWorkspaceMemberSchema: Codable, Sendable {
-  public var typeModel: String
+  public var kind: AnthropicWorkspaceMemberKind
   public var userId: String
   public var workspaceId: String
   public var workspaceRole: AnthropicBetaWorkspaceRoleSchema
 
   public init(
-    typeModel: String,
     userId: String,
     workspaceId: String,
-    workspaceRole: AnthropicBetaWorkspaceRoleSchema
+    workspaceRole: AnthropicBetaWorkspaceRoleSchema,
+    kind: AnthropicWorkspaceMemberKind = .workspaceMember
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
     self.userId = userId
     self.workspaceId = workspaceId
     self.workspaceRole = workspaceRole
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
     case userId = "user_id"
     case workspaceId = "workspace_id"
     case workspaceRole = "workspace_role"

@@ -18,11 +18,11 @@ public struct OpenRouterOutputImageGenerationServerToolItem: Codable, Sendable {
   public var result: String?
   public var revisedPrompt: String?
   public var status: OpenRouterToolCallStatus
-  public var typeModel: OpenRouterOutputImageGenerationServerToolItemTypeModel
+  public var kind: OpenRouterOutputImageGenerationServerToolItemKind
 
   public init(
     status: OpenRouterToolCallStatus,
-    typeModel: OpenRouterOutputImageGenerationServerToolItemTypeModel,
+    kind: OpenRouterOutputImageGenerationServerToolItemKind,
     id: String? = nil,
     imageB64: String? = nil,
     imageUrl: String? = nil,
@@ -37,7 +37,7 @@ public struct OpenRouterOutputImageGenerationServerToolItem: Codable, Sendable {
     self.result = result
     self.revisedPrompt = revisedPrompt
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct OpenRouterOutputImageGenerationServerToolItem: Codable, Sendable {
     case result
     case revisedPrompt
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

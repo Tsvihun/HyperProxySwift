@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIGroupObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let group = Self(rawValue: "group")
+public enum OpenAIGroupObject: String, Codable, Hashable, Sendable {
+  case group = "group"
 }

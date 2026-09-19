@@ -14,18 +14,18 @@ public struct ElevenLabsSubtitleOrderItemRequest: Codable, Sendable {
   public var cueOptions: ElevenLabsCueOptionsRequest?
   public var destinationLanguages: [String]
   public var instructions: String?
-  public var kind: String?
-  public var mediaIds: [ElevenLabsMediaId]
+  public var kind: ElevenLabsSubtitlesKind?
+  public var mediaIds: [String]
   public var sdh: Bool?
   public var sourceLanguage: String
 
   public init(
     destinationLanguages: [String],
-    mediaIds: [ElevenLabsMediaId],
+    mediaIds: [String],
     sourceLanguage: String,
     cueOptions: ElevenLabsCueOptionsRequest? = nil,
     instructions: String? = nil,
-    kind: String? = nil,
+    kind: ElevenLabsSubtitlesKind? = nil,
     sdh: Bool? = nil
   ) {
     self.cueOptions = cueOptions

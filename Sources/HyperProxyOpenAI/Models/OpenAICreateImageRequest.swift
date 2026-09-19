@@ -12,16 +12,16 @@ import HyperProxyCore
 
 public struct OpenAICreateImageRequest: Codable, Sendable {
   public var background: OpenAICreateImageRequestBackground?
-  public var model: HyperProxyJSONValue?
+  public var model: OpenAICreateImageRequestModel?
   public var moderation: OpenAICreateImageRequestModeration?
   public var n: Int?
   public var outputCompression: Int?
   public var outputFormat: OpenAICreateImageRequestOutputFormat?
-  public var partialImages: OpenAIPartialImages?
+  public var partialImages: Int?
   public var prompt: String
   public var quality: OpenAICreateImageRequestQuality?
   public var responseFormat: OpenAICreateImageRequestResponseFormat?
-  public var size: HyperProxyJSONValue?
+  public var size: OpenAICreateImageRequestSize?
   public var stream: Bool?
   public var style: OpenAICreateImageRequestStyle?
   public var user: String?
@@ -29,15 +29,15 @@ public struct OpenAICreateImageRequest: Codable, Sendable {
   public init(
     prompt: String,
     background: OpenAICreateImageRequestBackground? = nil,
-    model: HyperProxyJSONValue? = nil,
+    model: OpenAICreateImageRequestModel? = nil,
     moderation: OpenAICreateImageRequestModeration? = nil,
     n: Int? = nil,
     outputCompression: Int? = nil,
     outputFormat: OpenAICreateImageRequestOutputFormat? = nil,
-    partialImages: OpenAIPartialImages? = nil,
+    partialImages: Int? = nil,
     quality: OpenAICreateImageRequestQuality? = nil,
     responseFormat: OpenAICreateImageRequestResponseFormat? = nil,
-    size: HyperProxyJSONValue? = nil,
+    size: OpenAICreateImageRequestSize? = nil,
     stream: Bool? = nil,
     style: OpenAICreateImageRequestStyle? = nil,
     user: String? = nil

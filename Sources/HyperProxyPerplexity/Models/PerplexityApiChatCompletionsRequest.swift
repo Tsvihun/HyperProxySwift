@@ -22,7 +22,7 @@ public struct PerplexityApiChatCompletionsRequest: Codable, Sendable {
   public var messages: [PerplexityChatMessageInput]
   public var model: PerplexityApiChatCompletionsRequestModel
   public var reasoningEffort: PerplexityApiChatCompletionsRequestReasoningEffortAnyOf1?
-  public var responseFormat: HyperProxyJSONValue?
+  public var responseFormat: PerplexityApiChatCompletionsRequestResponseFormat?
   public var returnImages: Bool?
   public var returnRelatedQuestions: Bool?
   public var searchAfterDateFilter: String?
@@ -31,7 +31,7 @@ public struct PerplexityApiChatCompletionsRequest: Codable, Sendable {
   public var searchLanguageFilter: [String]?
   public var searchMode: PerplexityApiChatCompletionsRequestSearchModeAnyOf1?
   public var searchRecencyFilter: PerplexityApiChatCompletionsRequestSearchRecencyFilterAnyOf1?
-  public var stop: HyperProxyJSONValue?
+  public var stop: PerplexityApiChatCompletionsRequestStop?
   public var stream: Bool?
   public var streamMode: PerplexityApiChatCompletionsRequestStreamMode?
   public var temperature: Double?
@@ -50,7 +50,7 @@ public struct PerplexityApiChatCompletionsRequest: Codable, Sendable {
     lastUpdatedBeforeFilter: String? = nil,
     maxTokens: Int? = nil,
     reasoningEffort: PerplexityApiChatCompletionsRequestReasoningEffortAnyOf1? = nil,
-    responseFormat: HyperProxyJSONValue? = nil,
+    responseFormat: PerplexityApiChatCompletionsRequestResponseFormat? = nil,
     returnImages: Bool? = nil,
     returnRelatedQuestions: Bool? = nil,
     searchAfterDateFilter: String? = nil,
@@ -59,7 +59,7 @@ public struct PerplexityApiChatCompletionsRequest: Codable, Sendable {
     searchLanguageFilter: [String]? = nil,
     searchMode: PerplexityApiChatCompletionsRequestSearchModeAnyOf1? = nil,
     searchRecencyFilter: PerplexityApiChatCompletionsRequestSearchRecencyFilterAnyOf1? = nil,
-    stop: HyperProxyJSONValue? = nil,
+    stop: PerplexityApiChatCompletionsRequestStop? = nil,
     stream: Bool? = nil,
     streamMode: PerplexityApiChatCompletionsRequestStreamMode? = nil,
     temperature: Double? = nil,

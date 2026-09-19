@@ -11,17 +11,17 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterModelReasoning: Codable, Sendable {
-  public var defaultEffort: HyperProxyJSONValue?
+  public var defaultEffort: OpenRouterReasoningEffort?
   public var defaultEnabled: Bool?
   public var mandatory: Bool
-  public var supportedEfforts: [OpenRouterReasoningEffort]?
+  public var supportedEfforts: [OpenRouterReasoningEffort?]?
   public var supportsMaxTokens: Bool?
 
   public init(
     mandatory: Bool,
-    defaultEffort: HyperProxyJSONValue? = nil,
+    defaultEffort: OpenRouterReasoningEffort? = nil,
     defaultEnabled: Bool? = nil,
-    supportedEfforts: [OpenRouterReasoningEffort]? = nil,
+    supportedEfforts: [OpenRouterReasoningEffort?]? = nil,
     supportsMaxTokens: Bool? = nil
   ) {
     self.defaultEffort = defaultEffort

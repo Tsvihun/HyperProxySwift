@@ -17,7 +17,7 @@ public struct OpenAIRealtimeServerEventResponseMCPCallArgumentsDelta: Codable, S
   public var obfuscation: String?
   public var outputIndex: Int
   public var responseId: String
-  public var typeModel: OpenAIRealtimeServerEventResponseMCPCallArgumentsDeltaTypeModel
+  public var kind: OpenAIRealtimeServerEventResponseMCPCallArgumentsDeltaKind
 
   public init(
     delta: String,
@@ -25,7 +25,7 @@ public struct OpenAIRealtimeServerEventResponseMCPCallArgumentsDelta: Codable, S
     itemId: String,
     outputIndex: Int,
     responseId: String,
-    typeModel: OpenAIRealtimeServerEventResponseMCPCallArgumentsDeltaTypeModel,
+    kind: OpenAIRealtimeServerEventResponseMCPCallArgumentsDeltaKind,
     obfuscation: String? = nil
   ) {
     self.delta = delta
@@ -34,7 +34,7 @@ public struct OpenAIRealtimeServerEventResponseMCPCallArgumentsDelta: Codable, S
     self.obfuscation = obfuscation
     self.outputIndex = outputIndex
     self.responseId = responseId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenAIRealtimeServerEventResponseMCPCallArgumentsDelta: Codable, S
     case obfuscation
     case outputIndex = "output_index"
     case responseId = "response_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

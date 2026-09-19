@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsBytedanceSeedream5LiteRequestResolution: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let value2K = Self(rawValue: "2K")
-  public static let value3K = Self(rawValue: "3K")
+public enum ElevenLabsBytedanceSeedream5LiteRequestResolution: String, Codable, Hashable, Sendable {
+  case value2K = "2K"
+  case value3K = "3K"
 }

@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterMetadataLevel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let disabled = Self(rawValue: "disabled")
-  public static let enabled = Self(rawValue: "enabled")
+public enum OpenRouterMetadataLevel: String, Codable, Hashable, Sendable {
+  case disabled = "disabled"
+  case enabled = "enabled"
 }

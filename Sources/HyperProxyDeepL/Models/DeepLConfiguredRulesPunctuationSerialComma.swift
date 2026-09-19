@@ -10,19 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesPunctuationSerialComma: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let doNotUse = Self(rawValue: "do_not_use")
-  public static let doNotUseSerialCommaWhenUsingChineseComma = Self(
-    rawValue: "do_not_use_serial_comma_when_using_chinese_comma")
-  public static let use = Self(rawValue: "use")
-  public static let useSerialCommaWhenUsingComma = Self(
-    rawValue: "use_serial_comma_when_using_comma")
+public enum DeepLConfiguredRulesPunctuationSerialComma: String, Codable, Hashable, Sendable {
+  case doNotUse = "do_not_use"
+  case doNotUseSerialCommaWhenUsingChineseComma = "do_not_use_serial_comma_when_using_chinese_comma"
+  case use = "use"
+  case useSerialCommaWhenUsingComma = "use_serial_comma_when_using_comma"
 }

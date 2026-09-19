@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepSeekResponseCreateRequest: Codable, Sendable {
-  public var input: HyperProxyJSONValue?
+  public var input: DeepSeekResponseCreateRequestInput?
   public var instructions: String?
   public var maxOutputTokens: Int?
   public var model: DeepSeekResponseModel
@@ -19,7 +19,7 @@ public struct DeepSeekResponseCreateRequest: Codable, Sendable {
   public var stream: Bool?
   public var temperature: Double?
   public var text: DeepSeekTextConfig?
-  public var toolChoice: HyperProxyJSONValue?
+  public var toolChoice: DeepSeekResponseCreateRequestToolChoice?
   public var tools: [DeepSeekTool]?
   public var topLogprobs: Int?
   public var topP: Double?
@@ -27,14 +27,14 @@ public struct DeepSeekResponseCreateRequest: Codable, Sendable {
 
   public init(
     model: DeepSeekResponseModel,
-    input: HyperProxyJSONValue? = nil,
+    input: DeepSeekResponseCreateRequestInput? = nil,
     instructions: String? = nil,
     maxOutputTokens: Int? = nil,
     reasoning: DeepSeekReasoningConfig? = nil,
     stream: Bool? = nil,
     temperature: Double? = nil,
     text: DeepSeekTextConfig? = nil,
-    toolChoice: HyperProxyJSONValue? = nil,
+    toolChoice: DeepSeekResponseCreateRequestToolChoice? = nil,
     tools: [DeepSeekTool]? = nil,
     topLogprobs: Int? = nil,
     topP: Double? = nil,

@@ -14,18 +14,18 @@ public struct GeminiFunctionDeclaration: Codable, Sendable {
   public var behavior: GeminiFunctionDeclarationBehavior?
   public var description: String?
   public var name: String?
-  public var parameters: HyperProxyJSONValue?
+  public var parameters: GeminiSchema?
   public var parametersJsonSchema: HyperProxyJSONValue?
-  public var response: HyperProxyJSONValue?
+  public var response: GeminiSchema?
   public var responseJsonSchema: HyperProxyJSONValue?
 
   public init(
     behavior: GeminiFunctionDeclarationBehavior? = nil,
     description: String? = nil,
     name: String? = nil,
-    parameters: HyperProxyJSONValue? = nil,
+    parameters: GeminiSchema? = nil,
     parametersJsonSchema: HyperProxyJSONValue? = nil,
-    response: HyperProxyJSONValue? = nil,
+    response: GeminiSchema? = nil,
     responseJsonSchema: HyperProxyJSONValue? = nil
   ) {
     self.behavior = behavior

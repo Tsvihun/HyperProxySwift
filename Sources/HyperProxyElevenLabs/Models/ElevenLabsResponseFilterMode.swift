@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsResponseFilterMode: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let all = Self(rawValue: "all")
-  public static let allow = Self(rawValue: "allow")
-  public static let hideAll = Self(rawValue: "hide_all")
+public enum ElevenLabsResponseFilterMode: String, Codable, Hashable, Sendable {
+  case all = "all"
+  case allow = "allow"
+  case hideAll = "hide_all"
 }

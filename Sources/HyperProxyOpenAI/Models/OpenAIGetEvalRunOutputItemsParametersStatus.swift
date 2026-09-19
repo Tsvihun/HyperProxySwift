@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIGetEvalRunOutputItemsParametersStatus: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let fail = Self(rawValue: "fail")
-  public static let pass = Self(rawValue: "pass")
+public enum OpenAIGetEvalRunOutputItemsParametersStatus: String, Codable, Hashable, Sendable {
+  case fail = "fail"
+  case pass = "pass"
 }

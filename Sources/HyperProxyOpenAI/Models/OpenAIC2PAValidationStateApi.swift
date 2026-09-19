@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIC2PAValidationStateApi: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let trusted = Self(rawValue: "trusted")
-  public static let valid = Self(rawValue: "valid")
-  public static let invalid = Self(rawValue: "invalid")
-  public static let notPresent = Self(rawValue: "not_present")
+public enum OpenAIC2PAValidationStateApi: String, Codable, Hashable, Sendable {
+  case trusted = "trusted"
+  case valid = "valid"
+  case invalid = "invalid"
+  case notPresent = "not_present"
 }

@@ -12,31 +12,34 @@ import HyperProxyCore
 
 public struct GeminiGenerateContentRequest: Codable, Sendable {
   public var cachedContent: String?
-  public var contents: [HyperProxyJSONValue]?
-  public var generationConfig: HyperProxyJSONValue?
+  public var contents: [GeminiContent]?
+  public var generationConfig: GeminiGenerationConfig?
+  public var labels: [String: String]?
   public var model: String?
-  public var safetySettings: [HyperProxyJSONValue]?
+  public var safetySettings: [GeminiSafetySetting]?
   public var serviceTier: GeminiGenerateContentRequestServiceTier?
   public var store: Bool?
-  public var systemInstruction: HyperProxyJSONValue?
-  public var toolConfig: HyperProxyJSONValue?
-  public var tools: [HyperProxyJSONValue]?
+  public var systemInstruction: GeminiContent?
+  public var toolConfig: GeminiToolConfig?
+  public var tools: [GeminiTool]?
 
   public init(
     cachedContent: String? = nil,
-    contents: [HyperProxyJSONValue]? = nil,
-    generationConfig: HyperProxyJSONValue? = nil,
+    contents: [GeminiContent]? = nil,
+    generationConfig: GeminiGenerationConfig? = nil,
+    labels: [String: String]? = nil,
     model: String? = nil,
-    safetySettings: [HyperProxyJSONValue]? = nil,
+    safetySettings: [GeminiSafetySetting]? = nil,
     serviceTier: GeminiGenerateContentRequestServiceTier? = nil,
     store: Bool? = nil,
-    systemInstruction: HyperProxyJSONValue? = nil,
-    toolConfig: HyperProxyJSONValue? = nil,
-    tools: [HyperProxyJSONValue]? = nil
+    systemInstruction: GeminiContent? = nil,
+    toolConfig: GeminiToolConfig? = nil,
+    tools: [GeminiTool]? = nil
   ) {
     self.cachedContent = cachedContent
     self.contents = contents
     self.generationConfig = generationConfig
+    self.labels = labels
     self.model = model
     self.safetySettings = safetySettings
     self.serviceTier = serviceTier
@@ -50,6 +53,7 @@ public struct GeminiGenerateContentRequest: Codable, Sendable {
     case cachedContent
     case contents
     case generationConfig
+    case labels
     case model
     case safetySettings
     case serviceTier

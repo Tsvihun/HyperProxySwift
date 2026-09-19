@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAICreateTranscriptionRequest: Codable, Sendable {
-  public var chunkingStrategy: HyperProxyJSONValue?
+  public var chunkingStrategy: OpenAICreateTranscriptionRequestChunkingStrategyAnyOf1?
   public var file: String
   public var include: [OpenAITranscriptionInclude]?
   public var keywords: [String]?
@@ -19,7 +19,7 @@ public struct OpenAICreateTranscriptionRequest: Codable, Sendable {
   public var knownSpeakerReferences: [String]?
   public var language: String?
   public var languages: [String]?
-  public var model: HyperProxyJSONValue
+  public var model: OpenAICreateTranscriptionRequestModel
   public var prompt: String?
   public var responseFormat: OpenAIAudioResponseFormat?
   public var stream: Bool?
@@ -28,8 +28,8 @@ public struct OpenAICreateTranscriptionRequest: Codable, Sendable {
 
   public init(
     file: String,
-    model: HyperProxyJSONValue,
-    chunkingStrategy: HyperProxyJSONValue? = nil,
+    model: OpenAICreateTranscriptionRequestModel,
+    chunkingStrategy: OpenAICreateTranscriptionRequestChunkingStrategyAnyOf1? = nil,
     include: [OpenAITranscriptionInclude]? = nil,
     keywords: [String]? = nil,
     knownSpeakerNames: [String]? = nil,

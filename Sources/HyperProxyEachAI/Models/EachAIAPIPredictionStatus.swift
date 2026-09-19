@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct EachAIAPIPredictionStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let starting = Self(rawValue: "starting")
-  public static let processing = Self(rawValue: "processing")
-  public static let success = Self(rawValue: "success")
-  public static let failed = Self(rawValue: "failed")
-  public static let cancelled = Self(rawValue: "cancelled")
+public enum EachAIAPIPredictionStatus: String, Codable, Hashable, Sendable {
+  case starting = "starting"
+  case processing = "processing"
+  case success = "success"
+  case failed = "failed"
+  case cancelled = "cancelled"
 }

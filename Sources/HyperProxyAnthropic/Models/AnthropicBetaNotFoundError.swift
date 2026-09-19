@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicBetaNotFoundError: Codable, Sendable {
   public var message: String
-  public var typeModel: String
+  public var kind: AnthropicNotFoundErrorKind
 
   public init(
     message: String,
-    typeModel: String
+    kind: AnthropicNotFoundErrorKind = .notFoundError
   ) {
     self.message = message
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case message
-    case typeModel = "type"
+    case kind = "type"
   }
 }

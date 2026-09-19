@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenRouterAnthropicRefusalStopDetails: Codable, Sendable {
   public var category: OpenRouterAnthropicRefusalStopDetailsCategory?
   public var explanation: String
-  public var typeModel: OpenRouterAnthropicRefusalStopDetailsTypeModel
+  public var kind: OpenRouterAnthropicRefusalStopDetailsKind
 
   public init(
     category: OpenRouterAnthropicRefusalStopDetailsCategory?,
     explanation: String,
-    typeModel: OpenRouterAnthropicRefusalStopDetailsTypeModel
+    kind: OpenRouterAnthropicRefusalStopDetailsKind
   ) {
     self.category = category
     self.explanation = explanation
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case category
     case explanation
-    case typeModel = "type"
+    case kind = "type"
   }
 }

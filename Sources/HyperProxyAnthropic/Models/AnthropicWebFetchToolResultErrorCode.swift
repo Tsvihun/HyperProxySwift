@@ -10,20 +10,14 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicWebFetchToolResultErrorCode: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let invalidToolInput = Self(rawValue: "invalid_tool_input")
-  public static let urlTooLong = Self(rawValue: "url_too_long")
-  public static let urlNotAllowed = Self(rawValue: "url_not_allowed")
-  public static let urlNotInPriorContext = Self(rawValue: "url_not_in_prior_context")
-  public static let urlNotAccessible = Self(rawValue: "url_not_accessible")
-  public static let unsupportedContentType = Self(rawValue: "unsupported_content_type")
-  public static let tooManyRequests = Self(rawValue: "too_many_requests")
-  public static let maxUsesExceeded = Self(rawValue: "max_uses_exceeded")
-  public static let unavailable = Self(rawValue: "unavailable")
+public enum AnthropicWebFetchToolResultErrorCode: String, Codable, Hashable, Sendable {
+  case invalidToolInput = "invalid_tool_input"
+  case urlTooLong = "url_too_long"
+  case urlNotAllowed = "url_not_allowed"
+  case urlNotInPriorContext = "url_not_in_prior_context"
+  case urlNotAccessible = "url_not_accessible"
+  case unsupportedContentType = "unsupported_content_type"
+  case tooManyRequests = "too_many_requests"
+  case maxUsesExceeded = "max_uses_exceeded"
+  case unavailable = "unavailable"
 }

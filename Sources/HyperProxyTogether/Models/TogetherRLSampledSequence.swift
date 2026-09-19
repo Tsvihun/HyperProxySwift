@@ -15,12 +15,12 @@ public struct TogetherRLSampledSequence: Codable, Sendable {
   public var promptCacheHitTokens: Int
   public var routedExperts: TogetherRLRoutedExperts?
   public var stopReason: TogetherRLStopReason
-  public var tokens: [HyperProxyJSONValue]
+  public var tokens: [TogetherRLSampledSequenceTokensItem]
 
   public init(
     promptCacheHitTokens: Int,
     stopReason: TogetherRLStopReason,
-    tokens: [HyperProxyJSONValue],
+    tokens: [TogetherRLSampledSequenceTokensItem],
     logprobs: [Double]? = nil,
     routedExperts: TogetherRLRoutedExperts? = nil
   ) {

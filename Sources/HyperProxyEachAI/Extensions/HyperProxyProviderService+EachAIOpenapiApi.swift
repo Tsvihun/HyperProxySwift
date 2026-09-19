@@ -12,6 +12,20 @@ import HyperProxyCore
 import HyperProxyProviders
 
 extension HyperProxyProviderService where Operation == EachAIOperation {
+  public func audioSpeechCreate(
+    _ body: EachAIAPIAudioSpeechRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.audioSpeechCreate)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try prepared.bytes()
+  }
+
   public func chatCompletionsCreate(
     _ body: EachAIAPIChatCompletionRequest,
     query: [URLQueryItem] = [],
@@ -37,7 +51,7 @@ extension HyperProxyProviderService where Operation == EachAIOperation {
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) throws -> AsyncThrowingStream<EachAIAPICreateChatCompletionResponse200Text, Error> {
+  ) throws -> AsyncThrowingStream<String, Error> {
     let call = self.call(.chatCompletionsCreate)
       .query(query)
       .headers(headers)
@@ -45,7 +59,7 @@ extension HyperProxyProviderService where Operation == EachAIOperation {
     var streamingBody = body
     streamingBody.stream = true
     let prepared = try call.json(streamingBody)
-    return try prepared.events(decoding: EachAIAPICreateChatCompletionResponse200Text.self)
+    return try prepared.events(decoding: String.self)
   }
 
   public func executionsList(
@@ -72,18 +86,6 @@ extension HyperProxyProviderService where Operation == EachAIOperation {
     return try await call.decoded(EachAIAPILLMRouterModelCatalog.self)
   }
 
-  public func modelsRetrieve(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> EachAIAPIModelDetail {
-    let call = self.call(.modelsRetrieve)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(EachAIAPIModelDetail.self)
-  }
-
   public func modelsList(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -94,6 +96,20 @@ extension HyperProxyProviderService where Operation == EachAIOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(EachAIAPIListModelsResponse.self)
+  }
+
+  public func getModelBySlug(
+    slug: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> EachAIAPIModelDetail {
+    let call = self.call(.getModelBySlug)
+      .path("slug", slug)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(EachAIAPIModelDetail.self)
   }
 
   public func predictionsCreate(

@@ -14,24 +14,24 @@ public struct OpenAIRealtimeConversationItemMessageAssistantContentItem: Codable
   public var audio: String?
   public var text: String?
   public var transcript: String?
-  public var typeModel: OpenAIRealtimeConversationItemMessageAssistantContentItemTypeModel?
+  public var kind: OpenAIRealtimeConversationItemMessageAssistantContentItemKind?
 
   public init(
     audio: String? = nil,
     text: String? = nil,
     transcript: String? = nil,
-    typeModel: OpenAIRealtimeConversationItemMessageAssistantContentItemTypeModel? = nil
+    kind: OpenAIRealtimeConversationItemMessageAssistantContentItemKind? = nil
   ) {
     self.audio = audio
     self.text = text
     self.transcript = transcript
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case audio
     case text
     case transcript
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,16 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepSeekChatImageURLPartImageUrlDetail: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let low = Self(rawValue: "low")
-  public static let high = Self(rawValue: "high")
-  public static let original = Self(rawValue: "original")
-  public static let auto = Self(rawValue: "auto")
+public enum DeepSeekChatImageURLPartImageUrlDetail: String, Codable, Hashable, Sendable {
+  case low = "low"
+  case high = "high"
+  case original = "original"
+  case auto = "auto"
 }

@@ -16,7 +16,10 @@ public struct OpenRouterSpeechRequest: Codable, Sendable {
   public var model: String
   public var provider: OpenRouterSpeechRequestProvider?
   public var responseFormat: OpenRouterSpeechRequestResponseFormat?
+  public var sessionId: String?
   public var speed: Double?
+  public var trace: OpenRouterTraceConfig?
+  public var user: String?
   public var voice: String?
 
   public init(
@@ -25,7 +28,10 @@ public struct OpenRouterSpeechRequest: Codable, Sendable {
     inputReferences: [OpenRouterSpeechInputReference]? = nil,
     provider: OpenRouterSpeechRequestProvider? = nil,
     responseFormat: OpenRouterSpeechRequestResponseFormat? = nil,
+    sessionId: String? = nil,
     speed: Double? = nil,
+    trace: OpenRouterTraceConfig? = nil,
+    user: String? = nil,
     voice: String? = nil
   ) {
     self.input = input
@@ -33,7 +39,10 @@ public struct OpenRouterSpeechRequest: Codable, Sendable {
     self.model = model
     self.provider = provider
     self.responseFormat = responseFormat
+    self.sessionId = sessionId
     self.speed = speed
+    self.trace = trace
+    self.user = user
     self.voice = voice
   }
 
@@ -43,7 +52,10 @@ public struct OpenRouterSpeechRequest: Codable, Sendable {
     case model
     case provider
     case responseFormat = "response_format"
+    case sessionId = "session_id"
     case speed
+    case trace
+    case user
     case voice
   }
 }

@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsCharacterRole: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let narrator = Self(rawValue: "narrator")
-  public static let main = Self(rawValue: "main")
-  public static let supporting = Self(rawValue: "supporting")
-  public static let minor = Self(rawValue: "minor")
+public enum ElevenLabsCharacterRole: String, Codable, Hashable, Sendable {
+  case narrator = "narrator"
+  case main = "main"
+  case supporting = "supporting"
+  case minor = "minor"
 }

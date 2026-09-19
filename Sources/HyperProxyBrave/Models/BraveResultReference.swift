@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct BraveResultReference: Codable, Sendable {
   public var all: Bool?
   public var index: Int?
-  public var typeModel: String
+  public var kind: String
 
   public init(
-    typeModel: String,
+    kind: String,
     all: Bool? = nil,
     index: Int? = nil
   ) {
     self.all = all
     self.index = index
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case all
     case index
-    case typeModel = "type"
+    case kind = "type"
   }
 }

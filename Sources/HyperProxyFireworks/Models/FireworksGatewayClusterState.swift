@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksGatewayClusterState: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let sTATEUNSPECIFIED = Self(rawValue: "STATE_UNSPECIFIED")
-  public static let cREATING = Self(rawValue: "CREATING")
-  public static let rEADY = Self(rawValue: "READY")
-  public static let dELETING = Self(rawValue: "DELETING")
-  public static let fAILED = Self(rawValue: "FAILED")
+public enum FireworksGatewayClusterState: String, Codable, Hashable, Sendable {
+  case sTATEUNSPECIFIED = "STATE_UNSPECIFIED"
+  case cREATING = "CREATING"
+  case rEADY = "READY"
+  case dELETING = "DELETING"
+  case fAILED = "FAILED"
 }

@@ -13,25 +13,25 @@ import HyperProxyCore
 public struct OpenRouterOpenAIResponseCustomToolCallOutput: Codable, Sendable {
   public var callId: String
   public var id: String?
-  public var output: HyperProxyJSONValue
-  public var typeModel: OpenRouterOpenAIResponseCustomToolCallOutputTypeModel
+  public var output: OpenRouterOpenAIResponseCustomToolCallOutputOutput
+  public var kind: OpenRouterOpenAIResponseCustomToolCallOutputKind
 
   public init(
     callId: String,
-    output: HyperProxyJSONValue,
-    typeModel: OpenRouterOpenAIResponseCustomToolCallOutputTypeModel,
+    output: OpenRouterOpenAIResponseCustomToolCallOutputOutput,
+    kind: OpenRouterOpenAIResponseCustomToolCallOutputKind,
     id: String? = nil
   ) {
     self.callId = callId
     self.id = id
     self.output = output
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case callId = "call_id"
     case id
     case output
-    case typeModel = "type"
+    case kind = "type"
   }
 }

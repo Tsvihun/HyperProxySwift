@@ -10,28 +10,17 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesNumbersThousandsSeparator: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let doNotUse = Self(rawValue: "do_not_use")
-  public static let doNotUseThousandsSeparator = Self(rawValue: "do_not_use_thousands_separator")
-  public static let useComma = Self(rawValue: "use_comma")
-  public static let useCommaToSeparateLargeNumbersIntoUnitsOfThree = Self(
-    rawValue: "use_comma_to_separate_large_numbers_into_units_of_three")
-  public static let usePeriod = Self(rawValue: "use_period")
-  public static let usePeriodAsThousandsSeparator = Self(
-    rawValue: "use_period_as_thousands_separator")
-  public static let useSpace = Self(rawValue: "use_space")
-  public static let useSpaceAsThousandsSeparator = Self(
-    rawValue: "use_space_as_thousands_separator")
-  public static let useSpaceToSeparateLargeNumbersIntoUnitsOfThree = Self(
-    rawValue: "use_space_to_separate_large_numbers_into_units_of_three")
-  public static let useStraightApostropheAsThousandsSeparator = Self(
-    rawValue: "use_straight_apostrophe_as_thousands_separator")
+public enum DeepLConfiguredRulesNumbersThousandsSeparator: String, Codable, Hashable, Sendable {
+  case doNotUse = "do_not_use"
+  case doNotUseThousandsSeparator = "do_not_use_thousands_separator"
+  case useComma = "use_comma"
+  case useCommaToSeparateLargeNumbersIntoUnitsOfThree =
+    "use_comma_to_separate_large_numbers_into_units_of_three"
+  case usePeriod = "use_period"
+  case usePeriodAsThousandsSeparator = "use_period_as_thousands_separator"
+  case useSpace = "use_space"
+  case useSpaceAsThousandsSeparator = "use_space_as_thousands_separator"
+  case useSpaceToSeparateLargeNumbersIntoUnitsOfThree =
+    "use_space_to_separate_large_numbers_into_units_of_three"
+  case useStraightApostropheAsThousandsSeparator = "use_straight_apostrophe_as_thousands_separator"
 }

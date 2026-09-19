@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIBetaMCPToolRequireApprovalAnyOf1OneOf2: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let always = Self(rawValue: "always")
-  public static let never = Self(rawValue: "never")
+public enum OpenAIBetaMCPToolRequireApprovalAnyOf1OneOf2: String, Codable, Hashable, Sendable {
+  case always = "always"
+  case never = "never"
 }

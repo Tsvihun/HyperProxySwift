@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct PerplexityBuiltinSkill: Codable, Sendable {
   public var name: PerplexityBuiltinSkillName
-  public var typeModel: PerplexityBuiltinSkillTypeModel
+  public var kind: PerplexityBuiltinSkillKind
 
   public init(
     name: PerplexityBuiltinSkillName,
-    typeModel: PerplexityBuiltinSkillTypeModel
+    kind: PerplexityBuiltinSkillKind
   ) {
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

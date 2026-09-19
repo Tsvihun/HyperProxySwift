@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterSTTResponse: Codable, Sendable {
+  public var confidence: Double?
   public var duration: Double?
   public var language: String?
   public var segments: [OpenRouterSTTSegment]?
@@ -21,6 +22,7 @@ public struct OpenRouterSTTResponse: Codable, Sendable {
 
   public init(
     text: String,
+    confidence: Double? = nil,
     duration: Double? = nil,
     language: String? = nil,
     segments: [OpenRouterSTTSegment]? = nil,
@@ -28,6 +30,7 @@ public struct OpenRouterSTTResponse: Codable, Sendable {
     usage: OpenRouterSTTUsage? = nil,
     words: [OpenRouterSTTWord]? = nil
   ) {
+    self.confidence = confidence
     self.duration = duration
     self.language = language
     self.segments = segments
@@ -38,6 +41,7 @@ public struct OpenRouterSTTResponse: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case confidence
     case duration
     case language
     case segments

@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterWebFetchEngineEnum: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
-  public static let native = Self(rawValue: "native")
-  public static let openrouter = Self(rawValue: "openrouter")
-  public static let exa = Self(rawValue: "exa")
-  public static let parallel = Self(rawValue: "parallel")
-  public static let firecrawl = Self(rawValue: "firecrawl")
+public enum OpenRouterWebFetchEngineEnum: String, Codable, Hashable, Sendable {
+  case auto = "auto"
+  case native = "native"
+  case openrouter = "openrouter"
+  case exa = "exa"
+  case parallel = "parallel"
+  case firecrawl = "firecrawl"
 }

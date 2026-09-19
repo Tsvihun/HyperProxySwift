@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterTokenExchangeResponseTokenType: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let bearer = Self(rawValue: "Bearer")
+public enum OpenRouterTokenExchangeResponseTokenType: String, Codable, Hashable, Sendable {
+  case bearer = "Bearer"
 }

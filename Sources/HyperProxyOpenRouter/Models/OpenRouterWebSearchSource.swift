@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterWebSearchSource: Codable, Sendable {
-  public var typeModel: OpenRouterWebSearchSourceTypeModel
+  public var kind: OpenRouterWebSearchSourceKind
   public var url: String
 
   public init(
-    typeModel: OpenRouterWebSearchSourceTypeModel,
+    kind: OpenRouterWebSearchSourceKind,
     url: String
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

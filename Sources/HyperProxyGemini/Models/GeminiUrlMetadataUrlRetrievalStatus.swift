@@ -10,17 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiUrlMetadataUrlRetrievalStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let uRLRETRIEVALSTATUSUNSPECIFIED = Self(
-    rawValue: "URL_RETRIEVAL_STATUS_UNSPECIFIED")
-  public static let uRLRETRIEVALSTATUSSUCCESS = Self(rawValue: "URL_RETRIEVAL_STATUS_SUCCESS")
-  public static let uRLRETRIEVALSTATUSERROR = Self(rawValue: "URL_RETRIEVAL_STATUS_ERROR")
-  public static let uRLRETRIEVALSTATUSPAYWALL = Self(rawValue: "URL_RETRIEVAL_STATUS_PAYWALL")
-  public static let uRLRETRIEVALSTATUSUNSAFE = Self(rawValue: "URL_RETRIEVAL_STATUS_UNSAFE")
+public enum GeminiUrlMetadataUrlRetrievalStatus: String, Codable, Hashable, Sendable {
+  case uRLRETRIEVALSTATUSUNSPECIFIED = "URL_RETRIEVAL_STATUS_UNSPECIFIED"
+  case uRLRETRIEVALSTATUSSUCCESS = "URL_RETRIEVAL_STATUS_SUCCESS"
+  case uRLRETRIEVALSTATUSERROR = "URL_RETRIEVAL_STATUS_ERROR"
+  case uRLRETRIEVALSTATUSPAYWALL = "URL_RETRIEVAL_STATUS_PAYWALL"
+  case uRLRETRIEVALSTATUSUNSAFE = "URL_RETRIEVAL_STATUS_UNSAFE"
 }

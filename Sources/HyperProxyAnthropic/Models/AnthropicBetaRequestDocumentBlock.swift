@@ -14,13 +14,13 @@ public struct AnthropicBetaRequestDocumentBlock: Codable, Sendable {
   public var cacheControl: AnthropicBetaCacheControlEphemeral?
   public var citations: AnthropicBetaRequestCitationsConfig?
   public var context: String?
-  public var source: HyperProxyJSONValue
+  public var source: AnthropicBetaRequestDocumentBlockSource
   public var title: String?
-  public var typeModel: String
+  public var kind: AnthropicDocumentKind
 
   public init(
-    source: HyperProxyJSONValue,
-    typeModel: String,
+    source: AnthropicBetaRequestDocumentBlockSource,
+    kind: AnthropicDocumentKind = .document,
     cacheControl: AnthropicBetaCacheControlEphemeral? = nil,
     citations: AnthropicBetaRequestCitationsConfig? = nil,
     context: String? = nil,
@@ -31,7 +31,7 @@ public struct AnthropicBetaRequestDocumentBlock: Codable, Sendable {
     self.context = context
     self.source = source
     self.title = title
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct AnthropicBetaRequestDocumentBlock: Codable, Sendable {
     case context
     case source
     case title
-    case typeModel = "type"
+    case kind = "type"
   }
 }

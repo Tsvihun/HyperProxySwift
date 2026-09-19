@@ -16,7 +16,7 @@ public struct OpenRouterAnthropicTextEditorCodeExecutionStrReplaceResult: Codabl
   public var newStart: Int
   public var oldLines: Int
   public var oldStart: Int
-  public var typeModel: OpenRouterAnthropicTextEditorCodeExecutionStrReplaceResultTypeModel
+  public var kind: OpenRouterAnthropicTextEditorCodeExecutionStrReplaceResultKind
 
   public init(
     lines: [String],
@@ -24,14 +24,14 @@ public struct OpenRouterAnthropicTextEditorCodeExecutionStrReplaceResult: Codabl
     newStart: Int,
     oldLines: Int,
     oldStart: Int,
-    typeModel: OpenRouterAnthropicTextEditorCodeExecutionStrReplaceResultTypeModel
+    kind: OpenRouterAnthropicTextEditorCodeExecutionStrReplaceResultKind
   ) {
     self.lines = lines
     self.newLines = newLines
     self.newStart = newStart
     self.oldLines = oldLines
     self.oldStart = oldStart
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenRouterAnthropicTextEditorCodeExecutionStrReplaceResult: Codabl
     case newStart = "new_start"
     case oldLines = "old_lines"
     case oldStart = "old_start"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

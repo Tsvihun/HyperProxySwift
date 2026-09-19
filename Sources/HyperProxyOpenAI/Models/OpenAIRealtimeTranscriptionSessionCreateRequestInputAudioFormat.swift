@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIRealtimeTranscriptionSessionCreateRequestInputAudioFormat: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum OpenAIRealtimeTranscriptionSessionCreateRequestInputAudioFormat: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let pcm16 = Self(rawValue: "pcm16")
-  public static let g711Ulaw = Self(rawValue: "g711_ulaw")
-  public static let g711Alaw = Self(rawValue: "g711_alaw")
+  case pcm16 = "pcm16"
+  case g711Ulaw = "g711_ulaw"
+  case g711Alaw = "g711_alaw"
 }

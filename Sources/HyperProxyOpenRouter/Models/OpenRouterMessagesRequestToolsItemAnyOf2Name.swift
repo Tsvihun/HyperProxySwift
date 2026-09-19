@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterMessagesRequestToolsItemAnyOf2Name: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let bash = Self(rawValue: "bash")
+public enum OpenRouterMessagesRequestToolsItemAnyOf2Name: String, Codable, Hashable, Sendable {
+  case bash = "bash"
 }

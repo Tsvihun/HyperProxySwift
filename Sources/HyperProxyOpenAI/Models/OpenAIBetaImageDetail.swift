@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIBetaImageDetail: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let low = Self(rawValue: "low")
-  public static let high = Self(rawValue: "high")
-  public static let auto = Self(rawValue: "auto")
-  public static let original = Self(rawValue: "original")
+public enum OpenAIBetaImageDetail: String, Codable, Hashable, Sendable {
+  case low = "low"
+  case high = "high"
+  case auto = "auto"
+  case original = "original"
 }

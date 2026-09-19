@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepSeekAnthropicToolChoiceType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let none = Self(rawValue: "none")
-  public static let auto = Self(rawValue: "auto")
-  public static let anyModel = Self(rawValue: "any")
-  public static let tool = Self(rawValue: "tool")
+public enum DeepSeekAnthropicToolChoiceType: String, Codable, Hashable, Sendable {
+  case none = "none"
+  case auto = "auto"
+  case anyModel = "any"
+  case tool = "tool"
 }

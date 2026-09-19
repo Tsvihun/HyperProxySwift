@@ -15,20 +15,20 @@ public struct OpenRouterFusionCallPanelAddedEvent: Codable, Sendable {
   public var model: String
   public var outputIndex: Int
   public var sequenceNumber: Int
-  public var typeModel: OpenRouterFusionCallPanelAddedEventTypeModel
+  public var kind: OpenRouterFusionCallPanelAddedEventKind
 
   public init(
     itemId: String,
     model: String,
     outputIndex: Int,
     sequenceNumber: Int,
-    typeModel: OpenRouterFusionCallPanelAddedEventTypeModel
+    kind: OpenRouterFusionCallPanelAddedEventKind
   ) {
     self.itemId = itemId
     self.model = model
     self.outputIndex = outputIndex
     self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenRouterFusionCallPanelAddedEvent: Codable, Sendable {
     case model
     case outputIndex = "output_index"
     case sequenceNumber = "sequence_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

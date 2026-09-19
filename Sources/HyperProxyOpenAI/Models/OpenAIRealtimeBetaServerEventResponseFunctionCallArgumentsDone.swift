@@ -18,7 +18,7 @@ public struct OpenAIRealtimeBetaServerEventResponseFunctionCallArgumentsDone: Co
   public var name: String
   public var outputIndex: Int
   public var responseId: String
-  public var typeModel: OpenAIRealtimeBetaServerEventResponseFunctionCallArgumentsDoneTypeModel
+  public var kind: OpenAIRealtimeBetaServerEventResponseFunctionCallArgumentsDoneKind
 
   public init(
     arguments: String,
@@ -28,7 +28,7 @@ public struct OpenAIRealtimeBetaServerEventResponseFunctionCallArgumentsDone: Co
     name: String,
     outputIndex: Int,
     responseId: String,
-    typeModel: OpenAIRealtimeBetaServerEventResponseFunctionCallArgumentsDoneTypeModel
+    kind: OpenAIRealtimeBetaServerEventResponseFunctionCallArgumentsDoneKind
   ) {
     self.arguments = arguments
     self.callId = callId
@@ -37,7 +37,7 @@ public struct OpenAIRealtimeBetaServerEventResponseFunctionCallArgumentsDone: Co
     self.name = name
     self.outputIndex = outputIndex
     self.responseId = responseId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct OpenAIRealtimeBetaServerEventResponseFunctionCallArgumentsDone: Co
     case name
     case outputIndex = "output_index"
     case responseId = "response_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

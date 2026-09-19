@@ -14,14 +14,14 @@ public struct OpenAILocalShellExecAction: Codable, Sendable {
   public var command: [String]
   public var env: [String: String]
   public var timeoutMs: Int?
-  public var typeModel: OpenAILocalShellExecActionTypeModel
+  public var kind: OpenAILocalShellExecActionKind
   public var user: String?
   public var workingDirectory: String?
 
   public init(
     command: [String],
     env: [String: String],
-    typeModel: OpenAILocalShellExecActionTypeModel,
+    kind: OpenAILocalShellExecActionKind,
     timeoutMs: Int? = nil,
     user: String? = nil,
     workingDirectory: String? = nil
@@ -29,7 +29,7 @@ public struct OpenAILocalShellExecAction: Codable, Sendable {
     self.command = command
     self.env = env
     self.timeoutMs = timeoutMs
-    self.typeModel = typeModel
+    self.kind = kind
     self.user = user
     self.workingDirectory = workingDirectory
   }
@@ -38,7 +38,7 @@ public struct OpenAILocalShellExecAction: Codable, Sendable {
     case command
     case env
     case timeoutMs = "timeout_ms"
-    case typeModel = "type"
+    case kind = "type"
     case user
     case workingDirectory = "working_directory"
   }

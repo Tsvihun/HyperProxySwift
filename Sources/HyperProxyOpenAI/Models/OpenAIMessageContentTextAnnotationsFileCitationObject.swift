@@ -15,20 +15,20 @@ public struct OpenAIMessageContentTextAnnotationsFileCitationObject: Codable, Se
   public var fileCitation: OpenAIMessageContentTextAnnotationsFileCitationObjectFileCitation
   public var startIndex: Int
   public var text: String
-  public var typeModel: OpenAIMessageContentTextAnnotationsFileCitationObjectTypeModel
+  public var kind: OpenAIMessageContentTextAnnotationsFileCitationObjectKind
 
   public init(
     endIndex: Int,
     fileCitation: OpenAIMessageContentTextAnnotationsFileCitationObjectFileCitation,
     startIndex: Int,
     text: String,
-    typeModel: OpenAIMessageContentTextAnnotationsFileCitationObjectTypeModel
+    kind: OpenAIMessageContentTextAnnotationsFileCitationObjectKind
   ) {
     self.endIndex = endIndex
     self.fileCitation = fileCitation
     self.startIndex = startIndex
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIMessageContentTextAnnotationsFileCitationObject: Codable, Se
     case fileCitation = "file_citation"
     case startIndex = "start_index"
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

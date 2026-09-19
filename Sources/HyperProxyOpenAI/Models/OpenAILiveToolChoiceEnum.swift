@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAILiveToolChoiceEnum: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
-  public static let none = Self(rawValue: "none")
-  public static let requiredValue = Self(rawValue: "required")
+public enum OpenAILiveToolChoiceEnum: String, Codable, Hashable, Sendable {
+  case auto = "auto"
+  case none = "none"
+  case requiredValue = "required"
 }

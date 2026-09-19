@@ -10,16 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct PerplexityWebSearchOptionsSearchTypeAnyOf1: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let fast = Self(rawValue: "fast")
-  public static let pro = Self(rawValue: "pro")
-  public static let auto = Self(rawValue: "auto")
+public enum PerplexityWebSearchOptionsSearchTypeAnyOf1: String, Codable, Hashable, Sendable {
+  case fast = "fast"
+  case pro = "pro"
+  case auto = "auto"
 }

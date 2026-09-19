@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct OpenAIChatkitWorkflow: Codable, Sendable {
   public var id: String
-  public var stateVariables: [String: HyperProxyJSONValue]?
+  public var stateVariables: [String: OpenAIChatkitWorkflowStateVariablesAnyOf1Value]?
   public var tracing: OpenAIChatkitWorkflowTracing
   public var version: String?
 
   public init(
     id: String,
-    stateVariables: [String: HyperProxyJSONValue]?,
+    stateVariables: [String: OpenAIChatkitWorkflowStateVariablesAnyOf1Value]?,
     tracing: OpenAIChatkitWorkflowTracing,
     version: String?
   ) {

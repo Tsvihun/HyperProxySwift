@@ -20,6 +20,7 @@ public struct FalServerlessGetUsageResponseSummaryItem: Codable, Sendable {
   public var environment: String
   public var isSurge: Bool
   public var machineType: String
+  public var netUnitPrice: Double
   public var percentDiscount: Double
   public var quantity: Double
   public var unit: String
@@ -35,6 +36,7 @@ public struct FalServerlessGetUsageResponseSummaryItem: Codable, Sendable {
     environment: String,
     isSurge: Bool,
     machineType: String,
+    netUnitPrice: Double,
     percentDiscount: Double,
     quantity: Double,
     unit: String,
@@ -49,6 +51,7 @@ public struct FalServerlessGetUsageResponseSummaryItem: Codable, Sendable {
     self.environment = environment
     self.isSurge = isSurge
     self.machineType = machineType
+    self.netUnitPrice = netUnitPrice
     self.percentDiscount = percentDiscount
     self.quantity = quantity
     self.unit = unit
@@ -65,6 +68,7 @@ public struct FalServerlessGetUsageResponseSummaryItem: Codable, Sendable {
     case environment
     case isSurge = "is_surge"
     case machineType = "machine_type"
+    case netUnitPrice = "net_unit_price"
     case percentDiscount = "percent_discount"
     case quantity
     case unit

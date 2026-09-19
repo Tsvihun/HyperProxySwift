@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsContentThresholdGuardrail: Codable, Sendable {
   public var isEnabled: Bool?
-  public var threshold: HyperProxyJSONValue?
+  public var threshold: ElevenLabsContentThresholdGuardrailThreshold?
 
   public init(
     isEnabled: Bool? = nil,
-    threshold: HyperProxyJSONValue? = nil
+    threshold: ElevenLabsContentThresholdGuardrailThreshold? = nil
   ) {
     self.isEnabled = isEnabled
     self.threshold = threshold

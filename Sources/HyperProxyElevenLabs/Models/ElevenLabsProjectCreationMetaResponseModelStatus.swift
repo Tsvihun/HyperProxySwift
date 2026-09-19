@@ -10,18 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsProjectCreationMetaResponseModelStatus: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let draft = Self(rawValue: "draft")
-  public static let pending = Self(rawValue: "pending")
-  public static let creating = Self(rawValue: "creating")
-  public static let finished = Self(rawValue: "finished")
-  public static let failed = Self(rawValue: "failed")
+public enum ElevenLabsProjectCreationMetaResponseModelStatus: String, Codable, Hashable, Sendable {
+  case draft = "draft"
+  case pending = "pending"
+  case creating = "creating"
+  case finished = "finished"
+  case failed = "failed"
 }

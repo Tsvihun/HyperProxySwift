@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsBudgetLimit: Codable, Sendable {
-  public var maxListCost: HyperProxyJSONValue
-  public var typeModel: AnthropicBetaManagedAgentsBudgetLimitTypeModel
+  public var maxListCost: AnthropicBetaMonetaryAmount
+  public var kind: AnthropicBetaManagedAgentsBudgetLimitKind
 
   public init(
-    maxListCost: HyperProxyJSONValue,
-    typeModel: AnthropicBetaManagedAgentsBudgetLimitTypeModel
+    maxListCost: AnthropicBetaMonetaryAmount,
+    kind: AnthropicBetaManagedAgentsBudgetLimitKind
   ) {
     self.maxListCost = maxListCost
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case maxListCost = "max_list_cost"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

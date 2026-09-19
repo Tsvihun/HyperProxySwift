@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public enum TogetherError: Codable, Sendable {
   case string(String)
-  case object([String: HyperProxyJSONValue])
+  case objectDictionary([String: HyperProxyJSONValue])
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -20,7 +20,7 @@ public enum TogetherError: Codable, Sendable {
       self = .string(value)
       return
     }
-    self = .object(try container.decode([String: HyperProxyJSONValue].self))
+    self = .objectDictionary(try container.decode([String: HyperProxyJSONValue].self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -28,7 +28,7 @@ public enum TogetherError: Codable, Sendable {
     switch self {
     case .string(let value):
       try container.encode(value)
-    case .object(let value):
+    case .objectDictionary(let value):
       try container.encode(value)
     }
   }

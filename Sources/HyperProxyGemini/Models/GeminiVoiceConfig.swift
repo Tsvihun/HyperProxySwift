@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiVoiceConfig: Codable, Sendable {
-  public var prebuiltVoiceConfig: HyperProxyJSONValue?
+  public var prebuiltVoiceConfig: GeminiPrebuiltVoiceConfig?
 
   public init(
-    prebuiltVoiceConfig: HyperProxyJSONValue? = nil
+    prebuiltVoiceConfig: GeminiPrebuiltVoiceConfig? = nil
   ) {
     self.prebuiltVoiceConfig = prebuiltVoiceConfig
   }

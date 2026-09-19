@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIChatCompletionRequestDeveloperMessage: Codable, Sendable {
-  public var content: HyperProxyJSONValue
+  public var content: OpenAIChatCompletionRequestDeveloperMessageContent
   public var name: String?
   public var role: OpenAIChatCompletionRequestDeveloperMessageRole
 
   public init(
-    content: HyperProxyJSONValue,
+    content: OpenAIChatCompletionRequestDeveloperMessageContent,
     role: OpenAIChatCompletionRequestDeveloperMessageRole,
     name: String? = nil
   ) {

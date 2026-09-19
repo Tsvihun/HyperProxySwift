@@ -16,10 +16,10 @@ public struct OpenAIEvalStoredCompletionsSource: Codable, Sendable {
   public var limit: Int?
   public var metadata: OpenAIMetadata?
   public var model: String?
-  public var typeModel: OpenAIEvalStoredCompletionsSourceTypeModel
+  public var kind: OpenAIEvalStoredCompletionsSourceKind
 
   public init(
-    typeModel: OpenAIEvalStoredCompletionsSourceTypeModel,
+    kind: OpenAIEvalStoredCompletionsSourceKind,
     createdAfter: Int? = nil,
     createdBefore: Int? = nil,
     limit: Int? = nil,
@@ -31,7 +31,7 @@ public struct OpenAIEvalStoredCompletionsSource: Codable, Sendable {
     self.limit = limit
     self.metadata = metadata
     self.model = model
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIEvalStoredCompletionsSource: Codable, Sendable {
     case limit
     case metadata
     case model
-    case typeModel = "type"
+    case kind = "type"
   }
 }

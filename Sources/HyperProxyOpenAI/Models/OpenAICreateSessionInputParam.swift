@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public enum OpenAICreateSessionInputParam: Codable, Sendable {
   case string(String)
-  case array([OpenAIInputMessageParam])
+  case inputMessageParamArray([OpenAIInputMessageParam])
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -20,7 +20,7 @@ public enum OpenAICreateSessionInputParam: Codable, Sendable {
       self = .string(value)
       return
     }
-    self = .array(try container.decode([OpenAIInputMessageParam].self))
+    self = .inputMessageParamArray(try container.decode([OpenAIInputMessageParam].self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -28,7 +28,7 @@ public enum OpenAICreateSessionInputParam: Codable, Sendable {
     switch self {
     case .string(let value):
       try container.encode(value)
-    case .array(let value):
+    case .inputMessageParamArray(let value):
       try container.encode(value)
     }
   }
@@ -42,6 +42,6 @@ extension OpenAICreateSessionInputParam: ExpressibleByStringLiteral {
 
 extension OpenAICreateSessionInputParam: ExpressibleByArrayLiteral {
   public init(arrayLiteral elements: OpenAIInputMessageParam...) {
-    self = .array(elements)
+    self = .inputMessageParamArray(elements)
   }
 }

@@ -16,7 +16,7 @@ public struct AnthropicBetaRefusalStopDetails: Codable, Sendable {
   public var fallbackCreditToken: String?
   public var fallbackHasPrefillClaim: Bool?
   public var recommendedModel: String?
-  public var typeModel: String
+  public var kind: AnthropicRefusalKind
 
   public init(
     category: AnthropicBetaRefusalCategory?,
@@ -24,14 +24,14 @@ public struct AnthropicBetaRefusalStopDetails: Codable, Sendable {
     fallbackCreditToken: String?,
     fallbackHasPrefillClaim: Bool?,
     recommendedModel: String?,
-    typeModel: String
+    kind: AnthropicRefusalKind = .refusal
   ) {
     self.category = category
     self.explanation = explanation
     self.fallbackCreditToken = fallbackCreditToken
     self.fallbackHasPrefillClaim = fallbackHasPrefillClaim
     self.recommendedModel = recommendedModel
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct AnthropicBetaRefusalStopDetails: Codable, Sendable {
     case fallbackCreditToken = "fallback_credit_token"
     case fallbackHasPrefillClaim = "fallback_has_prefill_claim"
     case recommendedModel = "recommended_model"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

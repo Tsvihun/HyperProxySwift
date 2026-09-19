@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsUnitTestToolCallParameter: Codable, Sendable {
-  public var eval: HyperProxyJSONValue
+  public var eval: ElevenLabsUnitTestToolCallParameterEval
   public var path: String
 
   public init(
-    eval: HyperProxyJSONValue,
+    eval: ElevenLabsUnitTestToolCallParameterEval,
     path: String
   ) {
     self.eval = eval

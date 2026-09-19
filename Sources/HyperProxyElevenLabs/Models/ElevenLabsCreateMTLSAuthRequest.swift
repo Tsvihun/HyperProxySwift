@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsCreateMTLSAuthRequest: Codable, Sendable {
-  public var authType: String?
+  public var authType: ElevenLabsMtlsAuthType?
   public var caCertificate: String?
   public var clientCertificate: String
   public var clientKey: String
@@ -24,7 +24,7 @@ public struct ElevenLabsCreateMTLSAuthRequest: Codable, Sendable {
     clientKey: String,
     name: String,
     provider: String,
-    authType: String? = nil,
+    authType: ElevenLabsMtlsAuthType? = nil,
     caCertificate: String? = nil,
     keyPassphrase: String? = nil
   ) {

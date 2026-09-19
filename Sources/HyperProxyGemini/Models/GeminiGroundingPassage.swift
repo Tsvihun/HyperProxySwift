@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiGroundingPassage: Codable, Sendable {
-  public var content: HyperProxyJSONValue?
+  public var content: GeminiContent?
   public var id: String?
 
   public init(
-    content: HyperProxyJSONValue? = nil,
+    content: GeminiContent? = nil,
     id: String? = nil
   ) {
     self.content = content

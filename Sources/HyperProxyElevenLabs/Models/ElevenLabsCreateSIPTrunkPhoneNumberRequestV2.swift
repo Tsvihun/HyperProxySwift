@@ -16,7 +16,7 @@ public struct ElevenLabsCreateSIPTrunkPhoneNumberRequestV2: Codable, Sendable {
   public var label: String
   public var outboundTrunkConfig: ElevenLabsOutboundSIPTrunkConfigRequestModel?
   public var phoneNumber: String
-  public var provider: String?
+  public var provider: ElevenLabsSipTrunkProvider?
   public var supportsInbound: Bool?
   public var supportsOutbound: Bool?
 
@@ -26,7 +26,7 @@ public struct ElevenLabsCreateSIPTrunkPhoneNumberRequestV2: Codable, Sendable {
     agentId: String? = nil,
     inboundTrunkConfig: ElevenLabsInboundSIPTrunkConfigRequestModel? = nil,
     outboundTrunkConfig: ElevenLabsOutboundSIPTrunkConfigRequestModel? = nil,
-    provider: String? = nil,
+    provider: ElevenLabsSipTrunkProvider? = nil,
     supportsInbound: Bool? = nil,
     supportsOutbound: Bool? = nil
   ) {

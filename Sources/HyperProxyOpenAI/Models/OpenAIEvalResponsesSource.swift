@@ -20,11 +20,11 @@ public struct OpenAIEvalResponsesSource: Codable, Sendable {
   public var temperature: Double?
   public var tools: [String]?
   public var topP: Double?
-  public var typeModel: OpenAIEvalResponsesSourceTypeModel
+  public var kind: OpenAIEvalResponsesSourceKind
   public var users: [String]?
 
   public init(
-    typeModel: OpenAIEvalResponsesSourceTypeModel,
+    kind: OpenAIEvalResponsesSourceKind,
     createdAfter: Int? = nil,
     createdBefore: Int? = nil,
     instructionsSearch: String? = nil,
@@ -45,7 +45,7 @@ public struct OpenAIEvalResponsesSource: Codable, Sendable {
     self.temperature = temperature
     self.tools = tools
     self.topP = topP
-    self.typeModel = typeModel
+    self.kind = kind
     self.users = users
   }
 
@@ -59,7 +59,7 @@ public struct OpenAIEvalResponsesSource: Codable, Sendable {
     case temperature
     case tools
     case topP = "top_p"
-    case typeModel = "type"
+    case kind = "type"
     case users
   }
 }

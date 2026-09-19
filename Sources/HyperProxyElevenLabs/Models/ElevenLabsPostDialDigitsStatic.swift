@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsPostDialDigitsStatic: Codable, Sendable {
-  public var typeModel: String?
+  public var kind: ElevenLabsStaticKind?
   public var value: String
 
   public init(
     value: String,
-    typeModel: String? = nil
+    kind: ElevenLabsStaticKind? = nil
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
     self.value = value
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
     case value
   }
 }

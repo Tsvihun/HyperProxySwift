@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct TogetherDECreateRolloutRequest: Codable, Sendable {
   public var blueGreen: TogetherDEBlueGreenConfig?
-  public var canary: HyperProxyJSONValue?
+  public var canary: TogetherDECanaryConfig?
   public var finalSourceReplicas: Int?
   public var finalTargetReplicas: Int?
   public var metrics: [TogetherDEMetricRule]?
@@ -24,7 +24,7 @@ public struct TogetherDECreateRolloutRequest: Codable, Sendable {
     sourceDeploymentId: String,
     targetDeploymentId: String,
     blueGreen: TogetherDEBlueGreenConfig? = nil,
-    canary: HyperProxyJSONValue? = nil,
+    canary: TogetherDECanaryConfig? = nil,
     finalSourceReplicas: Int? = nil,
     finalTargetReplicas: Int? = nil,
     metrics: [TogetherDEMetricRule]? = nil,

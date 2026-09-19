@@ -10,16 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralAdminOrganizationMemberUpdateRoleNameAnyOf1: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum MistralAdminOrganizationMemberUpdateRoleNameAnyOf1: String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let member = Self(rawValue: "member")
-  public static let billingManager = Self(rawValue: "billing_manager")
-  public static let organizationAdmin = Self(rawValue: "organization_admin")
+  case member = "member"
+  case billingManager = "billing_manager"
+  case organizationAdmin = "organization_admin"
 }

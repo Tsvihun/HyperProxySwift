@@ -15,7 +15,7 @@ public struct MistralCreateJudgeRequest: Codable, Sendable {
   public var instructions: String
   public var modelName: String
   public var name: String
-  public var output: HyperProxyJSONValue
+  public var output: MistralCreateJudgeRequestOutput
   public var tools: [String]
 
   public init(
@@ -23,7 +23,7 @@ public struct MistralCreateJudgeRequest: Codable, Sendable {
     instructions: String,
     modelName: String,
     name: String,
-    output: HyperProxyJSONValue,
+    output: MistralCreateJudgeRequestOutput,
     tools: [String]
   ) {
     self.description = description

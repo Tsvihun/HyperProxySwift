@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIRunStreamEventOneOf4Event: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let threadRunRequiresAction = Self(rawValue: "thread.run.requires_action")
+public enum OpenAIRunStreamEventOneOf4Event: String, Codable, Hashable, Sendable {
+  case threadRunRequiresAction = "thread.run.requires_action"
 }

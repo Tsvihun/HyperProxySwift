@@ -15,16 +15,16 @@ public struct OpenAICustomToolCallOutputResource: Codable, Sendable {
   public var caller: OpenAIToolCallCallerParam?
   public var createdBy: String?
   public var id: String
-  public var output: HyperProxyJSONValue
+  public var output: OpenAICustomToolCallOutputOutput
   public var status: OpenAIFunctionCallOutputStatusEnum
-  public var typeModel: OpenAICustomToolCallOutputTypeModel
+  public var kind: OpenAICustomToolCallOutputKind
 
   public init(
     callId: String,
     id: String,
-    output: HyperProxyJSONValue,
+    output: OpenAICustomToolCallOutputOutput,
     status: OpenAIFunctionCallOutputStatusEnum,
-    typeModel: OpenAICustomToolCallOutputTypeModel,
+    kind: OpenAICustomToolCallOutputKind,
     caller: OpenAIToolCallCallerParam? = nil,
     createdBy: String? = nil
   ) {
@@ -34,7 +34,7 @@ public struct OpenAICustomToolCallOutputResource: Codable, Sendable {
     self.id = id
     self.output = output
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenAICustomToolCallOutputResource: Codable, Sendable {
     case id
     case output
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

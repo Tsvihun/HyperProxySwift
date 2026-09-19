@@ -14,24 +14,24 @@ public struct OpenAIRealtimeBetaServerEventConversationItemCreated: Codable, Sen
   public var eventId: String
   public var item: OpenAIRealtimeConversationItem
   public var previousItemId: String?
-  public var typeModel: OpenAIRealtimeBetaServerEventConversationItemCreatedTypeModel
+  public var kind: OpenAIRealtimeBetaServerEventConversationItemCreatedKind
 
   public init(
     eventId: String,
     item: OpenAIRealtimeConversationItem,
-    typeModel: OpenAIRealtimeBetaServerEventConversationItemCreatedTypeModel,
+    kind: OpenAIRealtimeBetaServerEventConversationItemCreatedKind,
     previousItemId: String? = nil
   ) {
     self.eventId = eventId
     self.item = item
     self.previousItemId = previousItemId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case eventId = "event_id"
     case item
     case previousItemId = "previous_item_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

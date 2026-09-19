@@ -19,7 +19,7 @@ public struct ElevenLabsCustomGuardrailConfig: Codable, Sendable {
   public var model: ElevenLabsCustomGuardrailConfigModel?
   public var name: String
   public var prompt: String
-  public var triggerAction: HyperProxyJSONValue?
+  public var triggerAction: ElevenLabsCustomGuardrailConfigTriggerAction?
 
   public init(
     name: String,
@@ -30,7 +30,7 @@ public struct ElevenLabsCustomGuardrailConfig: Codable, Sendable {
     historyMessageCount: Int? = nil,
     isEnabled: Bool? = nil,
     model: ElevenLabsCustomGuardrailConfigModel? = nil,
-    triggerAction: HyperProxyJSONValue? = nil
+    triggerAction: ElevenLabsCustomGuardrailConfigTriggerAction? = nil
   ) {
     self.evaluateFullResponseOnly = evaluateFullResponseOnly
     self.executionMode = executionMode

@@ -13,25 +13,25 @@ import HyperProxyCore
 public struct MistralThinkChunk: Codable, Sendable {
   public var closed: Bool?
   public var signature: String?
-  public var thinking: [HyperProxyJSONValue]
-  public var typeModel: String?
+  public var thinking: [MistralThinkChunkThinkingItem]
+  public var kind: MistralThinkingKind?
 
   public init(
-    thinking: [HyperProxyJSONValue],
+    thinking: [MistralThinkChunkThinkingItem],
     closed: Bool? = nil,
     signature: String? = nil,
-    typeModel: String? = nil
+    kind: MistralThinkingKind? = nil
   ) {
     self.closed = closed
     self.signature = signature
     self.thinking = thinking
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case closed
     case signature
     case thinking
-    case typeModel = "type"
+    case kind = "type"
   }
 }

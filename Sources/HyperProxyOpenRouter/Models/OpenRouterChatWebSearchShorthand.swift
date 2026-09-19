@@ -21,11 +21,11 @@ public struct OpenRouterChatWebSearchShorthand: Codable, Sendable {
   public var mode: OpenRouterWebSearchMode?
   public var parameters: OpenRouterWebSearchConfig?
   public var searchContextSize: OpenRouterSearchQualityLevel?
-  public var typeModel: OpenRouterChatWebSearchShorthandTypeModel
+  public var kind: OpenRouterChatWebSearchShorthandKind
   public var userLocation: OpenRouterWebSearchUserLocationServerTool?
 
   public init(
-    typeModel: OpenRouterChatWebSearchShorthandTypeModel,
+    kind: OpenRouterChatWebSearchShorthandKind,
     allowedDomains: [String]? = nil,
     engine: OpenRouterWebSearchEngineEnum? = nil,
     excludedDomains: [String]? = nil,
@@ -48,7 +48,7 @@ public struct OpenRouterChatWebSearchShorthand: Codable, Sendable {
     self.mode = mode
     self.parameters = parameters
     self.searchContextSize = searchContextSize
-    self.typeModel = typeModel
+    self.kind = kind
     self.userLocation = userLocation
   }
 
@@ -63,7 +63,7 @@ public struct OpenRouterChatWebSearchShorthand: Codable, Sendable {
     case mode
     case parameters
     case searchContextSize = "search_context_size"
-    case typeModel = "type"
+    case kind = "type"
     case userLocation = "user_location"
   }
 }

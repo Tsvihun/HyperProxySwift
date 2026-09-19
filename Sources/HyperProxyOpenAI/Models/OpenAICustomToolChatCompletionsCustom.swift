@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct OpenAICustomToolChatCompletionsCustom: Codable, Sendable {
   public var description: String?
-  public var format: HyperProxyJSONValue?
+  public var format: OpenAICustomToolChatCompletionsCustomFormat?
   public var name: String
 
   public init(
     name: String,
     description: String? = nil,
-    format: HyperProxyJSONValue? = nil
+    format: OpenAICustomToolChatCompletionsCustomFormat? = nil
   ) {
     self.description = description
     self.format = format

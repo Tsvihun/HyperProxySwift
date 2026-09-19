@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsToolErrorHandlingMode: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
-  public static let summarized = Self(rawValue: "summarized")
-  public static let passthrough = Self(rawValue: "passthrough")
-  public static let hide = Self(rawValue: "hide")
+public enum ElevenLabsToolErrorHandlingMode: String, Codable, Hashable, Sendable {
+  case auto = "auto"
+  case summarized = "summarized"
+  case passthrough = "passthrough"
+  case hide = "hide"
 }

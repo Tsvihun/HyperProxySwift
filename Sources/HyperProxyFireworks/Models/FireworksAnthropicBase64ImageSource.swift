@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct FireworksAnthropicBase64ImageSource: Codable, Sendable {
   public var data: String
   public var mediaType: FireworksAnthropicBase64ImageSourceMediaType
-  public var typeModel: String
+  public var kind: FireworksBase64Kind
 
   public init(
     data: String,
     mediaType: FireworksAnthropicBase64ImageSourceMediaType,
-    typeModel: String
+    kind: FireworksBase64Kind = .base64
   ) {
     self.data = data
     self.mediaType = mediaType
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case data
     case mediaType = "media_type"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

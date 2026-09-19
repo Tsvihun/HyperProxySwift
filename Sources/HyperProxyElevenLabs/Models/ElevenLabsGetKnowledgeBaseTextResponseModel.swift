@@ -20,7 +20,7 @@ public struct ElevenLabsGetKnowledgeBaseTextResponseModel: Codable, Sendable {
   public var metadata: ElevenLabsKnowledgeBaseDocumentMetadataResponseModel
   public var name: String
   public var supportedUsages: [ElevenLabsDocumentUsageModeEnum]
-  public var typeModel: String
+  public var kind: ElevenLabsTextKind
 
   public init(
     accessInfo: ElevenLabsResourceAccessInfo,
@@ -29,7 +29,7 @@ public struct ElevenLabsGetKnowledgeBaseTextResponseModel: Codable, Sendable {
     metadata: ElevenLabsKnowledgeBaseDocumentMetadataResponseModel,
     name: String,
     supportedUsages: [ElevenLabsDocumentUsageModeEnum],
-    typeModel: String,
+    kind: ElevenLabsTextKind = .text,
     contentFormat: ElevenLabsContentFormat? = nil,
     folderParentId: String? = nil,
     folderPath: [ElevenLabsKnowledgeBaseFolderPathSegmentResponseModel]? = nil
@@ -43,7 +43,7 @@ public struct ElevenLabsGetKnowledgeBaseTextResponseModel: Codable, Sendable {
     self.metadata = metadata
     self.name = name
     self.supportedUsages = supportedUsages
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -56,6 +56,6 @@ public struct ElevenLabsGetKnowledgeBaseTextResponseModel: Codable, Sendable {
     case metadata
     case name
     case supportedUsages = "supported_usages"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

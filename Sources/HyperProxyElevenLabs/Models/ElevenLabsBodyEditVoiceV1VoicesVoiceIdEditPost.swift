@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsBodyEditVoiceV1VoicesVoiceIdEditPost: Codable, Sendable {
   public var description: String?
   public var files: [String]?
-  public var labels: HyperProxyJSONValue?
+  public var labels: ElevenLabsBodyEditVoiceV1VoicesVoiceIdEditPostLabels?
   public var moderateMetadata: Bool?
   public var name: String
   public var removeBackgroundNoise: Bool?
@@ -22,7 +22,7 @@ public struct ElevenLabsBodyEditVoiceV1VoicesVoiceIdEditPost: Codable, Sendable 
     name: String,
     description: String? = nil,
     files: [String]? = nil,
-    labels: HyperProxyJSONValue? = nil,
+    labels: ElevenLabsBodyEditVoiceV1VoicesVoiceIdEditPostLabels? = nil,
     moderateMetadata: Bool? = nil,
     removeBackgroundNoise: Bool? = nil
   ) {

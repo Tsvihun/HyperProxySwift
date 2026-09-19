@@ -14,10 +14,10 @@ public struct OpenAIBetaResponseAllOf3: Codable, Sendable {
   public var completedAt: Double?
   public var conversation: OpenAIBetaResponseConversation?
   public var createdAt: Double
-  public var error: OpenAIBetaResponseError
+  public var error: OpenAIBetaResponseError?
   public var id: String
   public var incompleteDetails: OpenAIBetaResponseAllOf3IncompleteDetailsAnyOf1?
-  public var instructions: HyperProxyJSONValue?
+  public var instructions: OpenAIBetaResponseAllOf3InstructionsAnyOf1?
   public var maxOutputTokens: Int?
   public var moderation: OpenAIBetaModeration?
   public var object: OpenAIBetaResponseAllOf3Object
@@ -34,10 +34,10 @@ public struct OpenAIBetaResponseAllOf3: Codable, Sendable {
 
   public init(
     createdAt: Double,
-    error: OpenAIBetaResponseError,
+    error: OpenAIBetaResponseError?,
     id: String,
     incompleteDetails: OpenAIBetaResponseAllOf3IncompleteDetailsAnyOf1?,
-    instructions: HyperProxyJSONValue?,
+    instructions: OpenAIBetaResponseAllOf3InstructionsAnyOf1?,
     object: OpenAIBetaResponseAllOf3Object,
     output: [OpenAIBetaOutputItem],
     parallelToolCalls: Bool,

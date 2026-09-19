@@ -12,15 +12,17 @@ import HyperProxyCore
 
 public struct ElevenLabsMCPServerConfigUpdateRequestModel: Codable, Sendable {
   public var approvalPolicy: ElevenLabsMCPApprovalPolicy?
-  public var authConnection: HyperProxyJSONValue?
+  public var authConnection: ElevenLabsMCPServerConfigUpdateRequestModelAuthConnection?
   public var disableCompression: Bool?
   public var disableInterruptions: Bool?
   public var executionMode: ElevenLabsToolExecutionMode?
   public var forcePreToolSpeech: Bool?
   public var interruptionMode: ElevenLabsToolInterruptionMode?
   public var preToolSpeech: ElevenLabsPreToolSpeechMode?
-  public var requestHeaders: [String: HyperProxyJSONValue]?
-  public var requestMeta: [String: HyperProxyJSONValue]?
+  public var requestHeaders:
+    [String: ElevenLabsMCPServerConfigUpdateRequestModelRequestHeadersAnyOf1Value]?
+  public var requestMeta:
+    [String: ElevenLabsMCPServerConfigUpdateRequestModelRequestMetaAnyOf1Value]?
   public var responseTimeoutSecs: Int?
   public var secretToken: ElevenLabsConvAISecretLocator?
   public var toolCallSound: ElevenLabsToolCallSoundType?
@@ -28,15 +30,16 @@ public struct ElevenLabsMCPServerConfigUpdateRequestModel: Codable, Sendable {
 
   public init(
     approvalPolicy: ElevenLabsMCPApprovalPolicy? = nil,
-    authConnection: HyperProxyJSONValue? = nil,
+    authConnection: ElevenLabsMCPServerConfigUpdateRequestModelAuthConnection? = nil,
     disableCompression: Bool? = nil,
     disableInterruptions: Bool? = nil,
     executionMode: ElevenLabsToolExecutionMode? = nil,
     forcePreToolSpeech: Bool? = nil,
     interruptionMode: ElevenLabsToolInterruptionMode? = nil,
     preToolSpeech: ElevenLabsPreToolSpeechMode? = nil,
-    requestHeaders: [String: HyperProxyJSONValue]? = nil,
-    requestMeta: [String: HyperProxyJSONValue]? = nil,
+    requestHeaders: [String:
+      ElevenLabsMCPServerConfigUpdateRequestModelRequestHeadersAnyOf1Value]? = nil,
+    requestMeta: [String: ElevenLabsMCPServerConfigUpdateRequestModelRequestMetaAnyOf1Value]? = nil,
     responseTimeoutSecs: Int? = nil,
     secretToken: ElevenLabsConvAISecretLocator? = nil,
     toolCallSound: ElevenLabsToolCallSoundType? = nil,

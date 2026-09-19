@@ -12,31 +12,31 @@ import HyperProxyCore
 
 public struct GeminiCandidate: Codable, Sendable {
   public var avgLogprobs: Double?
-  public var citationMetadata: HyperProxyJSONValue?
-  public var content: HyperProxyJSONValue?
+  public var citationMetadata: GeminiCitationMetadata?
+  public var content: GeminiContent?
   public var finishMessage: String?
   public var finishReason: GeminiCandidateFinishReason?
-  public var groundingAttributions: [HyperProxyJSONValue]?
-  public var groundingMetadata: HyperProxyJSONValue?
+  public var groundingAttributions: [GeminiGroundingAttribution]?
+  public var groundingMetadata: GeminiGroundingMetadata?
   public var index: Int?
-  public var logprobsResult: HyperProxyJSONValue?
-  public var safetyRatings: [HyperProxyJSONValue]?
+  public var logprobsResult: GeminiLogprobsResult?
+  public var safetyRatings: [GeminiSafetyRating]?
   public var tokenCount: Int?
-  public var urlContextMetadata: HyperProxyJSONValue?
+  public var urlContextMetadata: GeminiUrlContextMetadata?
 
   public init(
     avgLogprobs: Double? = nil,
-    citationMetadata: HyperProxyJSONValue? = nil,
-    content: HyperProxyJSONValue? = nil,
+    citationMetadata: GeminiCitationMetadata? = nil,
+    content: GeminiContent? = nil,
     finishMessage: String? = nil,
     finishReason: GeminiCandidateFinishReason? = nil,
-    groundingAttributions: [HyperProxyJSONValue]? = nil,
-    groundingMetadata: HyperProxyJSONValue? = nil,
+    groundingAttributions: [GeminiGroundingAttribution]? = nil,
+    groundingMetadata: GeminiGroundingMetadata? = nil,
     index: Int? = nil,
-    logprobsResult: HyperProxyJSONValue? = nil,
-    safetyRatings: [HyperProxyJSONValue]? = nil,
+    logprobsResult: GeminiLogprobsResult? = nil,
+    safetyRatings: [GeminiSafetyRating]? = nil,
     tokenCount: Int? = nil,
-    urlContextMetadata: HyperProxyJSONValue? = nil
+    urlContextMetadata: GeminiUrlContextMetadata? = nil
   ) {
     self.avgLogprobs = avgLogprobs
     self.citationMetadata = citationMetadata

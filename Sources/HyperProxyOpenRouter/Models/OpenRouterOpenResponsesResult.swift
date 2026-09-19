@@ -14,19 +14,19 @@ public struct OpenRouterOpenResponsesResult: Codable, Sendable {
   public var background: Bool?
   public var completedAt: Int
   public var createdAt: Int
-  public var error: OpenRouterResponsesErrorField
+  public var error: OpenRouterResponsesErrorField?
   public var errorType: OpenRouterApiErrorType?
   public var frequencyPenalty: Double
   public var id: String
-  public var incompleteDetails: OpenRouterIncompleteDetails
-  public var instructions: OpenRouterBaseInputs
+  public var incompleteDetails: OpenRouterIncompleteDetails?
+  public var instructions: OpenRouterBaseInputs?
   public var maxOutputTokens: Int?
   public var maxToolCalls: Int?
-  public var metadata: OpenRouterRequestMetadata
+  public var metadata: OpenRouterRequestMetadata?
   public var model: String
   public var object: OpenRouterBaseResponsesResultObject
   public var openrouterMetadata: OpenRouterMetadata?
-  public var output: [HyperProxyJSONValue]
+  public var output: [OpenRouterBaseResponsesResultOutputItem]
   public var outputText: String?
   public var parallelToolCalls: Bool
   public var presencePenalty: Double
@@ -42,7 +42,7 @@ public struct OpenRouterOpenResponsesResult: Codable, Sendable {
   public var temperature: Double
   public var text: OpenRouterTextConfig?
   public var toolChoice: OpenRouterOpenAIResponsesToolChoice
-  public var tools: [HyperProxyJSONValue]
+  public var tools: [OpenRouterBaseResponsesResultToolsItem]
   public var topLogprobs: Int?
   public var topP: Double
   public var truncation: OpenRouterTruncation?
@@ -52,21 +52,21 @@ public struct OpenRouterOpenResponsesResult: Codable, Sendable {
   public init(
     completedAt: Int,
     createdAt: Int,
-    error: OpenRouterResponsesErrorField,
+    error: OpenRouterResponsesErrorField?,
     frequencyPenalty: Double,
     id: String,
-    incompleteDetails: OpenRouterIncompleteDetails,
-    instructions: OpenRouterBaseInputs,
-    metadata: OpenRouterRequestMetadata,
+    incompleteDetails: OpenRouterIncompleteDetails?,
+    instructions: OpenRouterBaseInputs?,
+    metadata: OpenRouterRequestMetadata?,
     model: String,
     object: OpenRouterBaseResponsesResultObject,
-    output: [HyperProxyJSONValue],
+    output: [OpenRouterBaseResponsesResultOutputItem],
     parallelToolCalls: Bool,
     presencePenalty: Double,
     status: OpenRouterOpenAIResponsesResponseStatus,
     temperature: Double,
     toolChoice: OpenRouterOpenAIResponsesToolChoice,
-    tools: [HyperProxyJSONValue],
+    tools: [OpenRouterBaseResponsesResultToolsItem],
     topP: Double,
     background: Bool? = nil,
     errorType: OpenRouterApiErrorType? = nil,

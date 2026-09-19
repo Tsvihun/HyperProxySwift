@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherExecuteRequestLanguage: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let python = Self(rawValue: "python")
+public enum TogetherExecuteRequestLanguage: String, Codable, Hashable, Sendable {
+  case python = "python"
 }

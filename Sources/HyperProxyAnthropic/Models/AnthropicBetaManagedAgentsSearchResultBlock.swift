@@ -11,24 +11,24 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsSearchResultBlock: Codable, Sendable {
-  public var citations: HyperProxyJSONValue
+  public var citations: AnthropicBetaManagedAgentsSearchResultCitations
   public var content: [AnthropicBetaManagedAgentsSearchResultContent]
   public var source: String
   public var title: String
-  public var typeModel: AnthropicBetaManagedAgentsSearchResultBlockTypeModel
+  public var kind: AnthropicBetaManagedAgentsSearchResultBlockKind
 
   public init(
-    citations: HyperProxyJSONValue,
+    citations: AnthropicBetaManagedAgentsSearchResultCitations,
     content: [AnthropicBetaManagedAgentsSearchResultContent],
     source: String,
     title: String,
-    typeModel: AnthropicBetaManagedAgentsSearchResultBlockTypeModel
+    kind: AnthropicBetaManagedAgentsSearchResultBlockKind
   ) {
     self.citations = citations
     self.content = content
     self.source = source
     self.title = title
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct AnthropicBetaManagedAgentsSearchResultBlock: Codable, Sendable {
     case content
     case source
     case title
-    case typeModel = "type"
+    case kind = "type"
   }
 }

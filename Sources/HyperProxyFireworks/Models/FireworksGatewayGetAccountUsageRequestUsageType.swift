@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksGatewayGetAccountUsageRequestUsageType: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let uSAGETYPEUNSPECIFIED = Self(rawValue: "USAGE_TYPE_UNSPECIFIED")
-  public static let sERVERLESS = Self(rawValue: "SERVERLESS")
-  public static let dEDICATEDDEPLOYMENT = Self(rawValue: "DEDICATED_DEPLOYMENT")
-  public static let tRAINING = Self(rawValue: "TRAINING")
+public enum FireworksGatewayGetAccountUsageRequestUsageType: String, Codable, Hashable, Sendable {
+  case uSAGETYPEUNSPECIFIED = "USAGE_TYPE_UNSPECIFIED"
+  case sERVERLESS = "SERVERLESS"
+  case dEDICATEDDEPLOYMENT = "DEDICATED_DEPLOYMENT"
+  case tRAINING = "TRAINING"
 }

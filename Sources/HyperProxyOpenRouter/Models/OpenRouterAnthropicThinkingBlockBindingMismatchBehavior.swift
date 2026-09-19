@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterAnthropicThinkingBlockBindingMismatchBehavior: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum OpenRouterAnthropicThinkingBlockBindingMismatchBehavior: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let error = Self(rawValue: "error")
-  public static let dropBlock = Self(rawValue: "drop_block")
+  case error = "error"
+  case dropBlock = "drop_block"
 }

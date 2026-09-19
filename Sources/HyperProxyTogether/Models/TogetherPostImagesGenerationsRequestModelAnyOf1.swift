@@ -10,17 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherPostImagesGenerationsRequestModelAnyOf1: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let blackForestLabsFLUX1SchnellFree = Self(
-    rawValue: "black-forest-labs/FLUX.1-schnell-Free")
-  public static let blackForestLabsFLUX1Schnell = Self(rawValue: "black-forest-labs/FLUX.1-schnell")
-  public static let blackForestLabsFLUX11Pro = Self(rawValue: "black-forest-labs/FLUX.1.1-pro")
+public enum TogetherPostImagesGenerationsRequestModelAnyOf1: String, Codable, Hashable, Sendable {
+  case blackForestLabsFLUX1SchnellFree = "black-forest-labs/FLUX.1-schnell-Free"
+  case blackForestLabsFLUX1Schnell = "black-forest-labs/FLUX.1-schnell"
+  case blackForestLabsFLUX11Pro = "black-forest-labs/FLUX.1.1-pro"
 }

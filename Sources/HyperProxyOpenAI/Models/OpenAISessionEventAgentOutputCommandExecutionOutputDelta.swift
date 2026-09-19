@@ -17,7 +17,7 @@ public struct OpenAISessionEventAgentOutputCommandExecutionOutputDelta: Codable,
   public var outputIndex: Int64
   public var sessionId: String
   public var turnId: String
-  public var typeModel: OpenAISessionEventAgentOutputCommandExecutionOutputDeltaTypeModel
+  public var kind: OpenAISessionEventAgentOutputCommandExecutionOutputDeltaKind
 
   public init(
     delta: String,
@@ -26,7 +26,7 @@ public struct OpenAISessionEventAgentOutputCommandExecutionOutputDelta: Codable,
     outputIndex: Int64,
     sessionId: String,
     turnId: String,
-    typeModel: OpenAISessionEventAgentOutputCommandExecutionOutputDeltaTypeModel
+    kind: OpenAISessionEventAgentOutputCommandExecutionOutputDeltaKind
   ) {
     self.delta = delta
     self.eventId = eventId
@@ -34,7 +34,7 @@ public struct OpenAISessionEventAgentOutputCommandExecutionOutputDelta: Codable,
     self.outputIndex = outputIndex
     self.sessionId = sessionId
     self.turnId = turnId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenAISessionEventAgentOutputCommandExecutionOutputDelta: Codable,
     case outputIndex = "output_index"
     case sessionId = "session_id"
     case turnId = "turn_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

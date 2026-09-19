@@ -16,7 +16,7 @@ public struct MistralWorkflowExecutionRequest: Codable, Sendable {
   public var executionId: String?
   public var extensions: [String: HyperProxyJSONValue]?
   public var forceNewTrace: Bool?
-  public var input: HyperProxyJSONValue?
+  public var input: MistralWorkflowExecutionRequestInput?
   public var taskQueue: String?
   public var timeoutSeconds: Double?
   public var waitForResult: Bool?
@@ -27,7 +27,7 @@ public struct MistralWorkflowExecutionRequest: Codable, Sendable {
     executionId: String? = nil,
     extensions: [String: HyperProxyJSONValue]? = nil,
     forceNewTrace: Bool? = nil,
-    input: HyperProxyJSONValue? = nil,
+    input: MistralWorkflowExecutionRequestInput? = nil,
     taskQueue: String? = nil,
     timeoutSeconds: Double? = nil,
     waitForResult: Bool? = nil

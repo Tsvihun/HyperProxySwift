@@ -10,15 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherRolloutServiceListRolloutsParametersFilter: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum TogetherRolloutServiceListRolloutsParametersFilter: String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let rOLLOUTFILTERACTIVE = Self(rawValue: "ROLLOUT_FILTER_ACTIVE")
-  public static let rOLLOUTFILTERTERMINAL = Self(rawValue: "ROLLOUT_FILTER_TERMINAL")
+  case rOLLOUTFILTERACTIVE = "ROLLOUT_FILTER_ACTIVE"
+  case rOLLOUTFILTERTERMINAL = "ROLLOUT_FILTER_TERMINAL"
 }

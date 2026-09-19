@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAISessionArtifactResourceObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let agentSessionArtifact = Self(rawValue: "agent.session.artifact")
+public enum OpenAISessionArtifactResourceObject: String, Codable, Hashable, Sendable {
+  case agentSessionArtifact = "agent.session.artifact"
 }

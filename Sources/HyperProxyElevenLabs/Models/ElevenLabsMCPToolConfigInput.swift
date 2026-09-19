@@ -17,7 +17,7 @@ public struct ElevenLabsMCPToolConfigInput: Codable, Sendable {
   public var disableInterruptions: Bool?
   public var executionMode: ElevenLabsToolExecutionMode?
   public var forcePreToolSpeech: Bool?
-  public var inputOverrides: [String: HyperProxyJSONValue]?
+  public var inputOverrides: [String: ElevenLabsMCPToolConfigInputInputOverridesAnyOf1Value]?
   public var integrationType: ElevenLabsIntegrationType
   public var interruptionMode: ElevenLabsToolInterruptionMode?
   public var mcpInputSchema: [String: HyperProxyJSONValue]?
@@ -32,7 +32,7 @@ public struct ElevenLabsMCPToolConfigInput: Codable, Sendable {
   public var toolCallSound: ElevenLabsToolCallSoundType?
   public var toolCallSoundBehavior: ElevenLabsToolCallSoundBehavior?
   public var toolErrorHandlingMode: ElevenLabsToolErrorHandlingMode?
-  public var typeModel: String?
+  public var kind: ElevenLabsMcpKind?
 
   public init(
     description: String,
@@ -47,7 +47,7 @@ public struct ElevenLabsMCPToolConfigInput: Codable, Sendable {
     disableInterruptions: Bool? = nil,
     executionMode: ElevenLabsToolExecutionMode? = nil,
     forcePreToolSpeech: Bool? = nil,
-    inputOverrides: [String: HyperProxyJSONValue]? = nil,
+    inputOverrides: [String: ElevenLabsMCPToolConfigInputInputOverridesAnyOf1Value]? = nil,
     interruptionMode: ElevenLabsToolInterruptionMode? = nil,
     mcpInputSchema: [String: HyperProxyJSONValue]? = nil,
     parameters: ElevenLabsObjectJsonSchemaPropertyInput? = nil,
@@ -56,7 +56,7 @@ public struct ElevenLabsMCPToolConfigInput: Codable, Sendable {
     toolCallSound: ElevenLabsToolCallSoundType? = nil,
     toolCallSoundBehavior: ElevenLabsToolCallSoundBehavior? = nil,
     toolErrorHandlingMode: ElevenLabsToolErrorHandlingMode? = nil,
-    typeModel: String? = nil
+    kind: ElevenLabsMcpKind? = nil
   ) {
     self.approvalPolicy = approvalPolicy
     self.assignments = assignments
@@ -79,7 +79,7 @@ public struct ElevenLabsMCPToolConfigInput: Codable, Sendable {
     self.toolCallSound = toolCallSound
     self.toolCallSoundBehavior = toolCallSoundBehavior
     self.toolErrorHandlingMode = toolErrorHandlingMode
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -104,6 +104,6 @@ public struct ElevenLabsMCPToolConfigInput: Codable, Sendable {
     case toolCallSound = "tool_call_sound"
     case toolCallSoundBehavior = "tool_call_sound_behavior"
     case toolErrorHandlingMode = "tool_error_handling_mode"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

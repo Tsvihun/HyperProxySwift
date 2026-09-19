@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaMemoryTool20250818CreateCommand: Codable, Sendable {
-  public var command: AnthropicBetaMemoryTool20250818CreateCommandCommand
+  public var command: AnthropicCreateCommand
   public var fileText: String
   public var path: String
 
   public init(
-    command: AnthropicBetaMemoryTool20250818CreateCommandCommand,
     fileText: String,
-    path: String
+    path: String,
+    command: AnthropicCreateCommand = .create
   ) {
     self.command = command
     self.fileText = fileText

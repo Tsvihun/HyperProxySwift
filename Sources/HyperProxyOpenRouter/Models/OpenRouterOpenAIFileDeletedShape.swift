@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterOpenAIFileDeletedShape: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let openai = Self(rawValue: "openai")
+public enum OpenRouterOpenAIFileDeletedShape: String, Codable, Hashable, Sendable {
+  case openai = "openai"
 }

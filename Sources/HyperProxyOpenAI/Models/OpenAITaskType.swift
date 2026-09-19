@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAITaskType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let custom = Self(rawValue: "custom")
-  public static let thought = Self(rawValue: "thought")
+public enum OpenAITaskType: String, Codable, Hashable, Sendable {
+  case custom = "custom"
+  case thought = "thought"
 }

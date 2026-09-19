@@ -11,16 +11,16 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaMemoryTool20250818InsertCommand: Codable, Sendable {
-  public var command: AnthropicBetaMemoryTool20250818InsertCommandCommand
+  public var command: AnthropicInsertCommand
   public var insertLine: Int
   public var insertText: String
   public var path: String
 
   public init(
-    command: AnthropicBetaMemoryTool20250818InsertCommandCommand,
     insertLine: Int,
     insertText: String,
-    path: String
+    path: String,
+    command: AnthropicInsertCommand = .insert
   ) {
     self.command = command
     self.insertLine = insertLine

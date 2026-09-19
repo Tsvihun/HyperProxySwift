@@ -15,17 +15,17 @@ public struct OpenAIBetaCodeInterpreterToolCall: Codable, Sendable {
   public var code: String?
   public var containerId: String
   public var id: String
-  public var outputs: [HyperProxyJSONValue]?
+  public var outputs: [OpenAIBetaCodeInterpreterToolCallOutputsAnyOf1Item]?
   public var status: OpenAIBetaCodeInterpreterToolCallStatus
-  public var typeModel: OpenAIBetaCodeInterpreterToolCallTypeModel
+  public var kind: OpenAIBetaCodeInterpreterToolCallKind
 
   public init(
     code: String?,
     containerId: String,
     id: String,
-    outputs: [HyperProxyJSONValue]?,
+    outputs: [OpenAIBetaCodeInterpreterToolCallOutputsAnyOf1Item]?,
     status: OpenAIBetaCodeInterpreterToolCallStatus,
-    typeModel: OpenAIBetaCodeInterpreterToolCallTypeModel,
+    kind: OpenAIBetaCodeInterpreterToolCallKind,
     agent: OpenAIBetaAgentTag? = nil
   ) {
     self.agent = agent
@@ -34,7 +34,7 @@ public struct OpenAIBetaCodeInterpreterToolCall: Codable, Sendable {
     self.id = id
     self.outputs = outputs
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenAIBetaCodeInterpreterToolCall: Codable, Sendable {
     case id
     case outputs
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAILocalEnvironmentResource: Codable, Sendable {
-  public var typeModel: OpenAILocalEnvironmentResourceTypeModel
+  public var kind: OpenAILocalEnvironmentResourceKind
 
   public init(
-    typeModel: OpenAILocalEnvironmentResourceTypeModel
+    kind: OpenAILocalEnvironmentResourceKind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

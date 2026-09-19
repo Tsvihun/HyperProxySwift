@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesNumbersApproximateNumbers: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useKanjiNumbers = Self(rawValue: "use_kanji_numbers")
+public enum DeepLConfiguredRulesNumbersApproximateNumbers: String, Codable, Hashable, Sendable {
+  case useKanjiNumbers = "use_kanji_numbers"
 }

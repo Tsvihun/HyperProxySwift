@@ -16,7 +16,7 @@ public struct OpenAIEvalGraderTextSimilarity: Codable, Sendable {
   public var name: String
   public var passThreshold: Double
   public var reference: String
-  public var typeModel: OpenAIGraderTextSimilarityTypeModel
+  public var kind: OpenAIGraderTextSimilarityKind
 
   public init(
     evaluationMetric: OpenAIGraderTextSimilarityEvaluationMetric,
@@ -24,14 +24,14 @@ public struct OpenAIEvalGraderTextSimilarity: Codable, Sendable {
     name: String,
     passThreshold: Double,
     reference: String,
-    typeModel: OpenAIGraderTextSimilarityTypeModel
+    kind: OpenAIGraderTextSimilarityKind
   ) {
     self.evaluationMetric = evaluationMetric
     self.input = input
     self.name = name
     self.passThreshold = passThreshold
     self.reference = reference
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIEvalGraderTextSimilarity: Codable, Sendable {
     case name
     case passThreshold = "pass_threshold"
     case reference
-    case typeModel = "type"
+    case kind = "type"
   }
 }

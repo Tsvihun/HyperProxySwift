@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsProcedureDraftRef: Codable, Sendable {
   public var procedureId: String
-  public var versionId: HyperProxyJSONValue?
+  public var versionId: HyperProxyJSONNull?
 
   public init(
     procedureId: String,
-    versionId: HyperProxyJSONValue? = nil
+    versionId: HyperProxyJSONNull? = nil
   ) {
     self.procedureId = procedureId
     self.versionId = versionId

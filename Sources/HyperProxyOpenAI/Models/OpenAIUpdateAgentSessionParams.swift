@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIUpdateAgentSessionParams: Codable, Sendable {
+  public var agent: OpenAIUpdateSessionAgentParam?
   public var metadata: [String: String]?
 
   public init(
+    agent: OpenAIUpdateSessionAgentParam? = nil,
     metadata: [String: String]? = nil
   ) {
+    self.agent = agent
     self.metadata = metadata
   }
 
   enum CodingKeys: String, CodingKey {
+    case agent
     case metadata
   }
 }

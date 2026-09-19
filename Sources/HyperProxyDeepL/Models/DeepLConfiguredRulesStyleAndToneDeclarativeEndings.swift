@@ -10,18 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesStyleAndToneDeclarativeEndings: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesStyleAndToneDeclarativeEndings: String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mixHapshoAndHaeyoStyles = Self(rawValue: "mix_hapsho_and_haeyo_styles")
-  public static let useHaeStyle = Self(rawValue: "use_hae_style")
-  public static let useHaeyoStyle = Self(rawValue: "use_haeyo_style")
-  public static let useHapshoStyle = Self(rawValue: "use_hapsho_style")
-  public static let useHaraStyle = Self(rawValue: "use_hara_style")
+  case mixHapshoAndHaeyoStyles = "mix_hapsho_and_haeyo_styles"
+  case useHaeStyle = "use_hae_style"
+  case useHaeyoStyle = "use_haeyo_style"
+  case useHapshoStyle = "use_hapsho_style"
+  case useHaraStyle = "use_hara_style"
 }

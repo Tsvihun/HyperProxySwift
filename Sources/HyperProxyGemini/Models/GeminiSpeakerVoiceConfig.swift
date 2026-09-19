@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct GeminiSpeakerVoiceConfig: Codable, Sendable {
   public var speaker: String?
-  public var voiceConfig: HyperProxyJSONValue?
+  public var voiceConfig: GeminiVoiceConfig?
 
   public init(
     speaker: String? = nil,
-    voiceConfig: HyperProxyJSONValue? = nil
+    voiceConfig: GeminiVoiceConfig? = nil
   ) {
     self.speaker = speaker
     self.voiceConfig = voiceConfig

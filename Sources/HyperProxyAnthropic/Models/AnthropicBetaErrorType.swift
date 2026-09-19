@@ -10,20 +10,14 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaErrorType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let invalidRequestError = Self(rawValue: "invalid_request_error")
-  public static let authenticationError = Self(rawValue: "authentication_error")
-  public static let permissionError = Self(rawValue: "permission_error")
-  public static let notFoundError = Self(rawValue: "not_found_error")
-  public static let rateLimitError = Self(rawValue: "rate_limit_error")
-  public static let timeoutError = Self(rawValue: "timeout_error")
-  public static let overloadedError = Self(rawValue: "overloaded_error")
-  public static let apiError = Self(rawValue: "api_error")
-  public static let billingError = Self(rawValue: "billing_error")
+public enum AnthropicBetaErrorType: String, Codable, Hashable, Sendable {
+  case invalidRequestError = "invalid_request_error"
+  case authenticationError = "authentication_error"
+  case permissionError = "permission_error"
+  case notFoundError = "not_found_error"
+  case rateLimitError = "rate_limit_error"
+  case timeoutError = "timeout_error"
+  case overloadedError = "overloaded_error"
+  case apiError = "api_error"
+  case billingError = "billing_error"
 }

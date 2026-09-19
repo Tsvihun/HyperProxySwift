@@ -21,7 +21,7 @@ public struct ElevenLabsMergePreviewResponseModel: Codable, Sendable {
   public var metadata: ElevenLabsAgentMetadataResponseModel
   public var name: String
   public var overriddenFields: [String]?
-  public var phoneNumbers: [HyperProxyJSONValue]?
+  public var phoneNumbers: [ElevenLabsMergePreviewResponseModelPhoneNumbersItem]?
   public var platformSettings: ElevenLabsAgentPlatformSettingsResponseModel?
   public var procedures: [String: ElevenLabsProcedureRefResponseModel]?
   public var sourceIdenticalToTarget: Bool?
@@ -41,7 +41,7 @@ public struct ElevenLabsMergePreviewResponseModel: Codable, Sendable {
     defaultHoldAudioUrl: String? = nil,
     mainBranchId: String? = nil,
     overriddenFields: [String]? = nil,
-    phoneNumbers: [HyperProxyJSONValue]? = nil,
+    phoneNumbers: [ElevenLabsMergePreviewResponseModelPhoneNumbersItem]? = nil,
     platformSettings: ElevenLabsAgentPlatformSettingsResponseModel? = nil,
     procedures: [String: ElevenLabsProcedureRefResponseModel]? = nil,
     sourceIdenticalToTarget: Bool? = nil,

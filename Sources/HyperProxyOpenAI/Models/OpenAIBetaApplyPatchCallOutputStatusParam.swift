@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIBetaApplyPatchCallOutputStatusParam: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let completed = Self(rawValue: "completed")
-  public static let failed = Self(rawValue: "failed")
+public enum OpenAIBetaApplyPatchCallOutputStatusParam: String, Codable, Hashable, Sendable {
+  case completed = "completed"
+  case failed = "failed"
 }

@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIRealtimeSessionObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let realtimeSession = Self(rawValue: "realtime.session")
+public enum OpenAIRealtimeSessionObject: String, Codable, Hashable, Sendable {
+  case realtimeSession = "realtime.session"
 }

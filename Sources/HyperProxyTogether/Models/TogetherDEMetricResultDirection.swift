@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherDEMetricResultDirection: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let rEGRESSIONDIRECTIONHIGHERISWORSE = Self(
-    rawValue: "REGRESSION_DIRECTION_HIGHER_IS_WORSE")
-  public static let rEGRESSIONDIRECTIONLOWERISWORSE = Self(
-    rawValue: "REGRESSION_DIRECTION_LOWER_IS_WORSE")
+public enum TogetherDEMetricResultDirection: String, Codable, Hashable, Sendable {
+  case rEGRESSIONDIRECTIONHIGHERISWORSE = "REGRESSION_DIRECTION_HIGHER_IS_WORSE"
+  case rEGRESSIONDIRECTIONLOWERISWORSE = "REGRESSION_DIRECTION_LOWER_IS_WORSE"
 }

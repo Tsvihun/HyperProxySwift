@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIRealtimeTranslationServerEventSessionOutputAudioDeltaFormat: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum OpenAIRealtimeTranslationServerEventSessionOutputAudioDeltaFormat: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let pcm16 = Self(rawValue: "pcm16")
+  case pcm16 = "pcm16"
 }

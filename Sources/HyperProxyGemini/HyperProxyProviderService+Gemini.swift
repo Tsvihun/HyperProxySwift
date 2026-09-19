@@ -140,6 +140,11 @@ extension HyperProxyProviderService where Operation == GeminiOperation {
   {
     self.call(.generativelanguageEnvironmentsFilesMediaDownload)
   }
+  /// `PUT v1beta/environments/{environmentsId}/files/{filesId}`
+  public var generativelanguageEnvironmentsFilesMediaUpload: HyperProxyProviderCall<GeminiOperation>
+  {
+    self.call(.generativelanguageEnvironmentsFilesMediaUpload)
+  }
   /// `DELETE v1beta/environments/{id}:delete`
   public var generativelanguageEnvironmentsDelete: HyperProxyProviderCall<GeminiOperation> {
     self.call(.generativelanguageEnvironmentsDelete)

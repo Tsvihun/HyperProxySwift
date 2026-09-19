@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherHardwareAvailabilityStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let available = Self(rawValue: "available")
-  public static let unavailable = Self(rawValue: "unavailable")
-  public static let insufficient = Self(rawValue: "insufficient")
+public enum TogetherHardwareAvailabilityStatus: String, Codable, Hashable, Sendable {
+  case available = "available"
+  case unavailable = "unavailable"
+  case insufficient = "insufficient"
 }

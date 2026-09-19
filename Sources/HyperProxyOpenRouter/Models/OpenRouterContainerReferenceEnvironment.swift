@@ -14,24 +14,24 @@ public struct OpenRouterContainerReferenceEnvironment: Codable, Sendable {
   public var containerId: String
   public var fileIds: OpenRouterContainerFileIds?
   public var networkPolicy: OpenRouterContainerNetworkPolicy?
-  public var typeModel: OpenRouterContainerReferenceEnvironmentTypeModel
+  public var kind: OpenRouterContainerReferenceEnvironmentKind
 
   public init(
     containerId: String,
-    typeModel: OpenRouterContainerReferenceEnvironmentTypeModel,
+    kind: OpenRouterContainerReferenceEnvironmentKind,
     fileIds: OpenRouterContainerFileIds? = nil,
     networkPolicy: OpenRouterContainerNetworkPolicy? = nil
   ) {
     self.containerId = containerId
     self.fileIds = fileIds
     self.networkPolicy = networkPolicy
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case containerId = "container_id"
     case fileIds = "file_ids"
     case networkPolicy = "network_policy"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -18,7 +18,7 @@ public struct StabilityPostV2betaStableImageEditInpaintRequest: Codable, Sendabl
   public var outputFormat: StabilityPostV2betaStableImageEditInpaintRequestOutputFormat?
   public var prompt: String
   public var seed: Double?
-  public var stylePreset: StabilityPostV2betaStableImageEditInpaintRequestStylePreset?
+  public var stylePreset: StabilityStylePreset?
 
   public init(
     image: String,
@@ -28,7 +28,7 @@ public struct StabilityPostV2betaStableImageEditInpaintRequest: Codable, Sendabl
     negativePrompt: String? = nil,
     outputFormat: StabilityPostV2betaStableImageEditInpaintRequestOutputFormat? = nil,
     seed: Double? = nil,
-    stylePreset: StabilityPostV2betaStableImageEditInpaintRequestStylePreset? = nil
+    stylePreset: StabilityStylePreset? = nil
   ) {
     self.growMask = growMask
     self.image = image

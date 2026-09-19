@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaManagedAgentsMemoryView: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let basic = Self(rawValue: "basic")
-  public static let full = Self(rawValue: "full")
+public enum AnthropicBetaManagedAgentsMemoryView: String, Codable, Hashable, Sendable {
+  case basic = "basic"
+  case full = "full"
 }

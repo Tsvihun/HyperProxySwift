@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAILiveReasoningSummary: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let concise = Self(rawValue: "concise")
-  public static let detailed = Self(rawValue: "detailed")
-  public static let auto = Self(rawValue: "auto")
+public enum OpenAILiveReasoningSummary: String, Codable, Hashable, Sendable {
+  case concise = "concise"
+  case detailed = "detailed"
+  case auto = "auto"
 }

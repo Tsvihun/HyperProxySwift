@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicMessageStartEvent: Codable, Sendable {
   public var message: AnthropicMessage
-  public var typeModel: String
+  public var kind: AnthropicMessageStartKind
 
   public init(
     message: AnthropicMessage,
-    typeModel: String
+    kind: AnthropicMessageStartKind = .messageStart
   ) {
     self.message = message
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case message
-    case typeModel = "type"
+    case kind = "type"
   }
 }

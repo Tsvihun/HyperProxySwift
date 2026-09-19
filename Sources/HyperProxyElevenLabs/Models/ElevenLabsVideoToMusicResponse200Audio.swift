@@ -10,4 +10,18 @@
 import Foundation
 import HyperProxyCore
 
-public typealias ElevenLabsVideoToMusicResponse200Audio = String
+public struct ElevenLabsVideoToMusicResponse200Audio: RawRepresentable, Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+}
+
+extension ElevenLabsVideoToMusicResponse200Audio: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self.init(rawValue: value)
+  }
+}

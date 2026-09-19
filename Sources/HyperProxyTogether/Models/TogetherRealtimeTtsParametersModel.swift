@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherRealtimeTtsParametersModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let hexgradKokoro82M = Self(rawValue: "hexgrad/Kokoro-82M")
-  public static let cartesiaSonicEnglish = Self(rawValue: "cartesia/sonic-english")
+public enum TogetherRealtimeTtsParametersModel: String, Codable, Hashable, Sendable {
+  case hexgradKokoro82M = "hexgrad/Kokoro-82M"
+  case cartesiaSonicEnglish = "cartesia/sonic-english"
 }

@@ -14,24 +14,24 @@ public struct TogetherErrorDataError: Codable, Sendable {
   public var code: String?
   public var message: String
   public var param: String?
-  public var typeModel: String
+  public var kind: String
 
   public init(
     message: String,
-    typeModel: String,
+    kind: String,
     code: String? = nil,
     param: String? = nil
   ) {
     self.code = code
     self.message = message
     self.param = param
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case code
     case message
     case param
-    case typeModel = "type"
+    case kind = "type"
   }
 }

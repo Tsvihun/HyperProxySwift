@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterPresetStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let active = Self(rawValue: "active")
-  public static let disabled = Self(rawValue: "disabled")
-  public static let archived = Self(rawValue: "archived")
+public enum OpenRouterPresetStatus: String, Codable, Hashable, Sendable {
+  case active = "active"
+  case disabled = "disabled"
+  case archived = "archived"
 }

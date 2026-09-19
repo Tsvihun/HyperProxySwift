@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksGatewayAccountUsageLimitsEnforcementMode: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let eNFORCEMENTMODEUNSPECIFIED = Self(rawValue: "ENFORCEMENT_MODE_UNSPECIFIED")
-  public static let dISABLED = Self(rawValue: "DISABLED")
-  public static let wARN = Self(rawValue: "WARN")
-  public static let bLOCK = Self(rawValue: "BLOCK")
+public enum FireworksGatewayAccountUsageLimitsEnforcementMode: String, Codable, Hashable, Sendable {
+  case eNFORCEMENTMODEUNSPECIFIED = "ENFORCEMENT_MODE_UNSPECIFIED"
+  case dISABLED = "DISABLED"
+  case wARN = "WARN"
+  case bLOCK = "BLOCK"
 }

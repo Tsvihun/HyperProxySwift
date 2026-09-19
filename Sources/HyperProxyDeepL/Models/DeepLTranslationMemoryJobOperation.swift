@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLTranslationMemoryJobOperation: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let importValue = Self(rawValue: "import")
-  public static let export = Self(rawValue: "export")
+public enum DeepLTranslationMemoryJobOperation: String, Codable, Hashable, Sendable {
+  case importValue = "import"
+  case export = "export"
 }

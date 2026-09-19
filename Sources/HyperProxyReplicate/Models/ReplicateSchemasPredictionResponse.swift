@@ -27,7 +27,7 @@ public struct ReplicateSchemasPredictionResponse: Codable, Sendable {
   public var startedAt: String?
   public var status: ReplicateSchemasPredictionResponseStatus
   public var urls: ReplicateSchemasPredictionResponseUrls
-  public var version: HyperProxyJSONValue
+  public var version: ReplicateSchemasPredictionResponseVersion
 
   public init(
     createdAt: String,
@@ -39,7 +39,7 @@ public struct ReplicateSchemasPredictionResponse: Codable, Sendable {
     output: HyperProxyJSONValue,
     status: ReplicateSchemasPredictionResponseStatus,
     urls: ReplicateSchemasPredictionResponseUrls,
-    version: HyperProxyJSONValue,
+    version: ReplicateSchemasPredictionResponseVersion,
     completedAt: String? = nil,
     deadline: String? = nil,
     deployment: String? = nil,

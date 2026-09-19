@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct PerplexityChatMessageContentVideoChunk: Codable, Sendable {
-  public var typeModel: String
-  public var videoUrl: HyperProxyJSONValue
+  public var kind: PerplexityVideoUrlKind
+  public var videoUrl: PerplexityChatMessageContentVideoChunkVideoUrl
 
   public init(
-    typeModel: String,
-    videoUrl: HyperProxyJSONValue
+    videoUrl: PerplexityChatMessageContentVideoChunkVideoUrl,
+    kind: PerplexityVideoUrlKind = .videoUrl
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
     self.videoUrl = videoUrl
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
     case videoUrl = "video_url"
   }
 }

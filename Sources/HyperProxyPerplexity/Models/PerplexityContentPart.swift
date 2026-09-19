@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct PerplexityContentPart: Codable, Sendable {
   public var annotations: [PerplexityAnnotation]?
   public var text: String
-  public var typeModel: PerplexityContentPartType
+  public var kind: PerplexityContentPartType
 
   public init(
     text: String,
-    typeModel: PerplexityContentPartType,
+    kind: PerplexityContentPartType,
     annotations: [PerplexityAnnotation]? = nil
   ) {
     self.annotations = annotations
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case annotations
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

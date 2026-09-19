@@ -14,24 +14,24 @@ public struct OpenAIResponseOutputItemDoneEvent: Codable, Sendable {
   public var item: OpenAIOutputItem
   public var outputIndex: Int
   public var sequenceNumber: Int
-  public var typeModel: OpenAIResponseOutputItemDoneEventTypeModel
+  public var kind: OpenAIResponseOutputItemDoneEventKind
 
   public init(
     item: OpenAIOutputItem,
     outputIndex: Int,
     sequenceNumber: Int,
-    typeModel: OpenAIResponseOutputItemDoneEventTypeModel
+    kind: OpenAIResponseOutputItemDoneEventKind
   ) {
     self.item = item
     self.outputIndex = outputIndex
     self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case item
     case outputIndex = "output_index"
     case sequenceNumber = "sequence_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

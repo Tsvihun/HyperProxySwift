@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiCountMessageTokensRequest: Codable, Sendable {
-  public var prompt: HyperProxyJSONValue?
+  public var prompt: GeminiMessagePrompt?
 
   public init(
-    prompt: HyperProxyJSONValue? = nil
+    prompt: GeminiMessagePrompt? = nil
   ) {
     self.prompt = prompt
   }

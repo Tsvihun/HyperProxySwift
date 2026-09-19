@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiContextWindowCompressionConfig: Codable, Sendable {
-  public var slidingWindow: HyperProxyJSONValue?
+  public var slidingWindow: GeminiSlidingWindow?
   public var triggerTokens: String?
 
   public init(
-    slidingWindow: HyperProxyJSONValue? = nil,
+    slidingWindow: GeminiSlidingWindow? = nil,
     triggerTokens: String? = nil
   ) {
     self.slidingWindow = slidingWindow

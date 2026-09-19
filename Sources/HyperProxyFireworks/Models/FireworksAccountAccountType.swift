@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksAccountAccountType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let aCCOUNTTYPEUNSPECIFIED = Self(rawValue: "ACCOUNT_TYPE_UNSPECIFIED")
-  public static let eNTERPRISE = Self(rawValue: "ENTERPRISE")
+public enum FireworksAccountAccountType: String, Codable, Hashable, Sendable {
+  case aCCOUNTTYPEUNSPECIFIED = "ACCOUNT_TYPE_UNSPECIFIED"
+  case eNTERPRISE = "ENTERPRISE"
 }

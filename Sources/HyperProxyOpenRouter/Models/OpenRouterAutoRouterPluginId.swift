@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterAutoRouterPluginId: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let autoRouter = Self(rawValue: "auto-router")
+public enum OpenRouterAutoRouterPluginId: String, Codable, Hashable, Sendable {
+  case autoRouter = "auto-router"
 }

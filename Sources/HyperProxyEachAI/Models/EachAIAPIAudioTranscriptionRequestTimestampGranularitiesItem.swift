@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct EachAIAPIAudioTranscriptionRequestTimestampGranularitiesItem: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum EachAIAPIAudioTranscriptionRequestTimestampGranularitiesItem: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let word = Self(rawValue: "word")
-  public static let segment = Self(rawValue: "segment")
+  case word = "word"
+  case segment = "segment"
 }

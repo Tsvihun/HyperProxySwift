@@ -12,22 +12,22 @@ import HyperProxyCore
 
 public struct FireworksAnthropicPlainTextSource: Codable, Sendable {
   public var data: String
-  public var mediaType: String
-  public var typeModel: String
+  public var mediaType: FireworksTextPlainMediaType
+  public var kind: FireworksTextKind
 
   public init(
     data: String,
-    mediaType: String,
-    typeModel: String
+    mediaType: FireworksTextPlainMediaType = .textPlain,
+    kind: FireworksTextKind = .text
   ) {
     self.data = data
     self.mediaType = mediaType
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case data
     case mediaType = "media_type"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

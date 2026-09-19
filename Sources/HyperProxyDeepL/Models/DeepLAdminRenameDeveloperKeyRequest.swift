@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepLAdminRenameDeveloperKeyRequest: Codable, Sendable {
-  public var keyId: DeepLApiKeyId
+  public var keyId: String
   public var label: String
 
   public init(
-    keyId: DeepLApiKeyId,
+    keyId: String,
     label: String
   ) {
     self.keyId = keyId

@@ -31,7 +31,7 @@ public struct GroqCreateResponseResponse: Codable, Sendable {
   public var store: Bool
   public var temperature: Double
   public var text: GroqCreateResponseResponseText?
-  public var toolChoice: GroqResponseToolChoiceOption
+  public var toolChoice: GroqResponseToolChoiceOption?
   public var tools: [GroqResponseTool]
   public var topLogprobs: Int?
   public var topP: Double
@@ -53,7 +53,7 @@ public struct GroqCreateResponseResponse: Codable, Sendable {
     status: GroqCreateResponseResponseStatus,
     store: Bool,
     temperature: Double,
-    toolChoice: GroqResponseToolChoiceOption,
+    toolChoice: GroqResponseToolChoiceOption?,
     tools: [GroqResponseTool],
     topP: Double,
     truncation: GroqCreateResponseResponseTruncation,

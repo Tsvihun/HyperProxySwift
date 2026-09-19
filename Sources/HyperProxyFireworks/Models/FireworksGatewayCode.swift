@@ -10,28 +10,22 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksGatewayCode: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let oK = Self(rawValue: "OK")
-  public static let cANCELLED = Self(rawValue: "CANCELLED")
-  public static let uNKNOWN = Self(rawValue: "UNKNOWN")
-  public static let iNVALIDARGUMENT = Self(rawValue: "INVALID_ARGUMENT")
-  public static let dEADLINEEXCEEDED = Self(rawValue: "DEADLINE_EXCEEDED")
-  public static let nOTFOUND = Self(rawValue: "NOT_FOUND")
-  public static let aLREADYEXISTS = Self(rawValue: "ALREADY_EXISTS")
-  public static let pERMISSIONDENIED = Self(rawValue: "PERMISSION_DENIED")
-  public static let uNAUTHENTICATED = Self(rawValue: "UNAUTHENTICATED")
-  public static let rESOURCEEXHAUSTED = Self(rawValue: "RESOURCE_EXHAUSTED")
-  public static let fAILEDPRECONDITION = Self(rawValue: "FAILED_PRECONDITION")
-  public static let aBORTED = Self(rawValue: "ABORTED")
-  public static let oUTOFRANGE = Self(rawValue: "OUT_OF_RANGE")
-  public static let uNIMPLEMENTED = Self(rawValue: "UNIMPLEMENTED")
-  public static let iNTERNAL = Self(rawValue: "INTERNAL")
-  public static let uNAVAILABLE = Self(rawValue: "UNAVAILABLE")
-  public static let dATALOSS = Self(rawValue: "DATA_LOSS")
+public enum FireworksGatewayCode: String, Codable, Hashable, Sendable {
+  case oK = "OK"
+  case cANCELLED = "CANCELLED"
+  case uNKNOWN = "UNKNOWN"
+  case iNVALIDARGUMENT = "INVALID_ARGUMENT"
+  case dEADLINEEXCEEDED = "DEADLINE_EXCEEDED"
+  case nOTFOUND = "NOT_FOUND"
+  case aLREADYEXISTS = "ALREADY_EXISTS"
+  case pERMISSIONDENIED = "PERMISSION_DENIED"
+  case uNAUTHENTICATED = "UNAUTHENTICATED"
+  case rESOURCEEXHAUSTED = "RESOURCE_EXHAUSTED"
+  case fAILEDPRECONDITION = "FAILED_PRECONDITION"
+  case aBORTED = "ABORTED"
+  case oUTOFRANGE = "OUT_OF_RANGE"
+  case uNIMPLEMENTED = "UNIMPLEMENTED"
+  case iNTERNAL = "INTERNAL"
+  case uNAVAILABLE = "UNAVAILABLE"
+  case dATALOSS = "DATA_LOSS"
 }

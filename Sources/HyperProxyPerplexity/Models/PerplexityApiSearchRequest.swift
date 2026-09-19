@@ -12,14 +12,14 @@ import HyperProxyCore
 
 public struct PerplexityApiSearchRequest: Codable, Sendable {
   public var country: String?
-  public var lastUpdatedAfterFilter: PerplexityDate?
-  public var lastUpdatedBeforeFilter: PerplexityDate?
+  public var lastUpdatedAfterFilter: String?
+  public var lastUpdatedBeforeFilter: String?
   public var maxResults: Int?
   public var maxTokens: Int?
   public var maxTokensPerPage: Int?
-  public var query: HyperProxyJSONValue
-  public var searchAfterDateFilter: PerplexityDate?
-  public var searchBeforeDateFilter: PerplexityDate?
+  public var query: PerplexityApiSearchRequestAllOf1Query
+  public var searchAfterDateFilter: String?
+  public var searchBeforeDateFilter: String?
   public var searchContextSize: String?
   public var searchDomainFilter: [String]?
   public var searchLanguageFilter: [String]?
@@ -27,15 +27,15 @@ public struct PerplexityApiSearchRequest: Codable, Sendable {
   public var searchType: PerplexityApiSearchRequestAllOf1SearchType?
 
   public init(
-    query: HyperProxyJSONValue,
+    query: PerplexityApiSearchRequestAllOf1Query,
     country: String? = nil,
-    lastUpdatedAfterFilter: PerplexityDate? = nil,
-    lastUpdatedBeforeFilter: PerplexityDate? = nil,
+    lastUpdatedAfterFilter: String? = nil,
+    lastUpdatedBeforeFilter: String? = nil,
     maxResults: Int? = nil,
     maxTokens: Int? = nil,
     maxTokensPerPage: Int? = nil,
-    searchAfterDateFilter: PerplexityDate? = nil,
-    searchBeforeDateFilter: PerplexityDate? = nil,
+    searchAfterDateFilter: String? = nil,
+    searchBeforeDateFilter: String? = nil,
     searchContextSize: String? = nil,
     searchDomainFilter: [String]? = nil,
     searchLanguageFilter: [String]? = nil,

@@ -14,24 +14,24 @@ public struct OpenAIBetaResponseSteerAcceptedEvent: Codable, Sendable {
   public var sequenceNumber: Int
   public var steer: OpenAIBetaResponseSteerAcceptedEventSteer
   public var streamId: String?
-  public var typeModel: OpenAIBetaResponseSteerAcceptedEventTypeModel
+  public var kind: OpenAIBetaResponseSteerAcceptedEventKind
 
   public init(
     sequenceNumber: Int,
     steer: OpenAIBetaResponseSteerAcceptedEventSteer,
-    typeModel: OpenAIBetaResponseSteerAcceptedEventTypeModel,
+    kind: OpenAIBetaResponseSteerAcceptedEventKind,
     streamId: String? = nil
   ) {
     self.sequenceNumber = sequenceNumber
     self.steer = steer
     self.streamId = streamId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case sequenceNumber = "sequence_number"
     case steer
     case streamId = "stream_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

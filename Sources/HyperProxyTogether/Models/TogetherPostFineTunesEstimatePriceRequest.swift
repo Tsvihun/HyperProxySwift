@@ -16,8 +16,8 @@ public struct TogetherPostFineTunesEstimatePriceRequest: Codable, Sendable {
   public var nEpochs: Int?
   public var nEvals: Int?
   public var trainingFile: String
-  public var trainingMethod: HyperProxyJSONValue?
-  public var trainingType: HyperProxyJSONValue?
+  public var trainingMethod: TogetherPostFineTunesEstimatePriceRequestTrainingMethod?
+  public var trainingType: TogetherPostFineTunesEstimatePriceRequestTrainingType?
   public var validationFile: String?
 
   public init(
@@ -26,8 +26,8 @@ public struct TogetherPostFineTunesEstimatePriceRequest: Codable, Sendable {
     model: String? = nil,
     nEpochs: Int? = nil,
     nEvals: Int? = nil,
-    trainingMethod: HyperProxyJSONValue? = nil,
-    trainingType: HyperProxyJSONValue? = nil,
+    trainingMethod: TogetherPostFineTunesEstimatePriceRequestTrainingMethod? = nil,
+    trainingType: TogetherPostFineTunesEstimatePriceRequestTrainingType? = nil,
     validationFile: String? = nil
   ) {
     self.fromCheckpoint = fromCheckpoint

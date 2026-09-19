@@ -15,7 +15,7 @@ public struct ElevenLabsProjectExtendedResponseModel: Codable, Sendable {
   public var agentSettings: ElevenLabsStudioAgentSettingsModel?
   public var applyTextNormalization: ElevenLabsProjectExtendedResponseModelApplyTextNormalization
   public var aspectRatio: ElevenLabsProjectExtendedResponseModelAspectRatioAnyOf1?
-  public var assets: [HyperProxyJSONValue]
+  public var assets: [ElevenLabsProjectExtendedResponseModelAssetsItem]
   public var author: String?
   public var baseVoices: [ElevenLabsVoiceResponseModel]?
   public var canBeDownloaded: Bool
@@ -64,7 +64,7 @@ public struct ElevenLabsProjectExtendedResponseModel: Codable, Sendable {
   public init(
     accessLevel: ElevenLabsProjectExtendedResponseModelAccessLevel,
     applyTextNormalization: ElevenLabsProjectExtendedResponseModelApplyTextNormalization,
-    assets: [HyperProxyJSONValue],
+    assets: [ElevenLabsProjectExtendedResponseModelAssetsItem],
     canBeDownloaded: Bool,
     chapters: [ElevenLabsChapterResponseModel],
     createDateUnix: Int,

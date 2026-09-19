@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicMessageBatchProcessingStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let inProgress = Self(rawValue: "in_progress")
-  public static let canceling = Self(rawValue: "canceling")
-  public static let ended = Self(rawValue: "ended")
+public enum AnthropicMessageBatchProcessingStatus: String, Codable, Hashable, Sendable {
+  case inProgress = "in_progress"
+  case canceling = "canceling"
+  case ended = "ended"
 }

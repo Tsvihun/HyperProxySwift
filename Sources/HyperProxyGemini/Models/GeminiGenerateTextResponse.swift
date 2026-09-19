@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiGenerateTextResponse: Codable, Sendable {
-  public var candidates: [HyperProxyJSONValue]?
-  public var filters: [HyperProxyJSONValue]?
-  public var safetyFeedback: [HyperProxyJSONValue]?
+  public var candidates: [GeminiTextCompletion]?
+  public var filters: [GeminiContentFilter]?
+  public var safetyFeedback: [GeminiSafetyFeedback]?
 
   public init(
-    candidates: [HyperProxyJSONValue]? = nil,
-    filters: [HyperProxyJSONValue]? = nil,
-    safetyFeedback: [HyperProxyJSONValue]? = nil
+    candidates: [GeminiTextCompletion]? = nil,
+    filters: [GeminiContentFilter]? = nil,
+    safetyFeedback: [GeminiSafetyFeedback]? = nil
   ) {
     self.candidates = candidates
     self.filters = filters

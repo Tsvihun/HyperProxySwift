@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesStyleAndToneDefaultFirstPersonPronoun: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesStyleAndToneDefaultFirstPersonPronoun: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let doNotUseFirstPersonPronouns = Self(rawValue: "do_not_use_first_person_pronouns")
-  public static let omitFirstPersonSubjectWhenClearFromContext = Self(
-    rawValue: "omit_first_person_subject_when_clear_from_context")
-  public static let useFirstPersonPronouns = Self(rawValue: "use_first_person_pronouns")
+  case doNotUseFirstPersonPronouns = "do_not_use_first_person_pronouns"
+  case omitFirstPersonSubjectWhenClearFromContext =
+    "omit_first_person_subject_when_clear_from_context"
+  case useFirstPersonPronouns = "use_first_person_pronouns"
 }

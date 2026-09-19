@@ -14,24 +14,24 @@ public struct AnthropicBetaAwsExternalKeyConfig: Codable, Sendable {
   public var kmsArn: String
   public var region: String?
   public var roleArn: String?
-  public var typeModel: String
+  public var kind: AnthropicAwsKind
 
   public init(
     kmsArn: String,
-    typeModel: String,
+    kind: AnthropicAwsKind = .aws,
     region: String? = nil,
     roleArn: String? = nil
   ) {
     self.kmsArn = kmsArn
     self.region = region
     self.roleArn = roleArn
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kmsArn = "kms_arn"
     case region
     case roleArn = "role_arn"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

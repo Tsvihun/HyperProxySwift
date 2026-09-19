@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesPunctuationSettingOffNonQuotedPhrases: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesPunctuationSettingOffNonQuotedPhrases: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useFullWidthQuotationMarks = Self(rawValue: "use_full_width_quotation_marks")
-  public static let useHalfWidthQuotationMarks = Self(rawValue: "use_half_width_quotation_marks")
+  case useFullWidthQuotationMarks = "use_full_width_quotation_marks"
+  case useHalfWidthQuotationMarks = "use_half_width_quotation_marks"
 }

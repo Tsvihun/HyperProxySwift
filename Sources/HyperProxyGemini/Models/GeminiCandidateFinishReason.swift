@@ -10,33 +10,27 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiCandidateFinishReason: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let fINISHREASONUNSPECIFIED = Self(rawValue: "FINISH_REASON_UNSPECIFIED")
-  public static let sTOP = Self(rawValue: "STOP")
-  public static let mAXTOKENS = Self(rawValue: "MAX_TOKENS")
-  public static let sAFETY = Self(rawValue: "SAFETY")
-  public static let rECITATION = Self(rawValue: "RECITATION")
-  public static let lANGUAGE = Self(rawValue: "LANGUAGE")
-  public static let oTHER = Self(rawValue: "OTHER")
-  public static let bLOCKLIST = Self(rawValue: "BLOCKLIST")
-  public static let pROHIBITEDCONTENT = Self(rawValue: "PROHIBITED_CONTENT")
-  public static let sPII = Self(rawValue: "SPII")
-  public static let mALFORMEDFUNCTIONCALL = Self(rawValue: "MALFORMED_FUNCTION_CALL")
-  public static let iMAGESAFETY = Self(rawValue: "IMAGE_SAFETY")
-  public static let iMAGEPROHIBITEDCONTENT = Self(rawValue: "IMAGE_PROHIBITED_CONTENT")
-  public static let iMAGEOTHER = Self(rawValue: "IMAGE_OTHER")
-  public static let nOIMAGE = Self(rawValue: "NO_IMAGE")
-  public static let iMAGERECITATION = Self(rawValue: "IMAGE_RECITATION")
-  public static let uNEXPECTEDTOOLCALL = Self(rawValue: "UNEXPECTED_TOOL_CALL")
-  public static let tOOMANYTOOLCALLS = Self(rawValue: "TOO_MANY_TOOL_CALLS")
-  public static let mISSINGTHOUGHTSIGNATURE = Self(rawValue: "MISSING_THOUGHT_SIGNATURE")
-  public static let mALFORMEDRESPONSE = Self(rawValue: "MALFORMED_RESPONSE")
-  public static let eSCALATION = Self(rawValue: "ESCALATION")
-  public static let pUPLIMITEDDISABLED = Self(rawValue: "PUP_LIMITED_DISABLED")
+public enum GeminiCandidateFinishReason: String, Codable, Hashable, Sendable {
+  case fINISHREASONUNSPECIFIED = "FINISH_REASON_UNSPECIFIED"
+  case sTOP = "STOP"
+  case mAXTOKENS = "MAX_TOKENS"
+  case sAFETY = "SAFETY"
+  case rECITATION = "RECITATION"
+  case lANGUAGE = "LANGUAGE"
+  case oTHER = "OTHER"
+  case bLOCKLIST = "BLOCKLIST"
+  case pROHIBITEDCONTENT = "PROHIBITED_CONTENT"
+  case sPII = "SPII"
+  case mALFORMEDFUNCTIONCALL = "MALFORMED_FUNCTION_CALL"
+  case iMAGESAFETY = "IMAGE_SAFETY"
+  case iMAGEPROHIBITEDCONTENT = "IMAGE_PROHIBITED_CONTENT"
+  case iMAGEOTHER = "IMAGE_OTHER"
+  case nOIMAGE = "NO_IMAGE"
+  case iMAGERECITATION = "IMAGE_RECITATION"
+  case uNEXPECTEDTOOLCALL = "UNEXPECTED_TOOL_CALL"
+  case tOOMANYTOOLCALLS = "TOO_MANY_TOOL_CALLS"
+  case mISSINGTHOUGHTSIGNATURE = "MISSING_THOUGHT_SIGNATURE"
+  case mALFORMEDRESPONSE = "MALFORMED_RESPONSE"
+  case eSCALATION = "ESCALATION"
+  case pUPLIMITEDDISABLED = "PUP_LIMITED_DISABLED"
 }

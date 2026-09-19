@@ -14,20 +14,20 @@ public struct AnthropicBetaRequestMCPServerURLDefinition: Codable, Sendable {
   public var authorizationToken: String?
   public var name: String
   public var toolConfiguration: AnthropicBetaRequestMCPServerToolConfiguration?
-  public var typeModel: String
+  public var kind: AnthropicUrlKind
   public var url: String
 
   public init(
     name: String,
-    typeModel: String,
     url: String,
+    kind: AnthropicUrlKind = .url,
     authorizationToken: String? = nil,
     toolConfiguration: AnthropicBetaRequestMCPServerToolConfiguration? = nil
   ) {
     self.authorizationToken = authorizationToken
     self.name = name
     self.toolConfiguration = toolConfiguration
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
@@ -35,7 +35,7 @@ public struct AnthropicBetaRequestMCPServerURLDefinition: Codable, Sendable {
     case authorizationToken = "authorization_token"
     case name
     case toolConfiguration = "tool_configuration"
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

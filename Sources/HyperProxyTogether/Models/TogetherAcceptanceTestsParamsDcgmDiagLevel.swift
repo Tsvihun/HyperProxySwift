@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherAcceptanceTestsParamsDcgmDiagLevel: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let dCGMDIAGLEVELSHORT = Self(rawValue: "DCGM_DIAG_LEVEL_SHORT")
-  public static let dCGMDIAGLEVELMEDIUM = Self(rawValue: "DCGM_DIAG_LEVEL_MEDIUM")
-  public static let dCGMDIAGLEVELLONG = Self(rawValue: "DCGM_DIAG_LEVEL_LONG")
-  public static let dCGMDIAGLEVELEXTENDED = Self(rawValue: "DCGM_DIAG_LEVEL_EXTENDED")
+public enum TogetherAcceptanceTestsParamsDcgmDiagLevel: String, Codable, Hashable, Sendable {
+  case dCGMDIAGLEVELSHORT = "DCGM_DIAG_LEVEL_SHORT"
+  case dCGMDIAGLEVELMEDIUM = "DCGM_DIAG_LEVEL_MEDIUM"
+  case dCGMDIAGLEVELLONG = "DCGM_DIAG_LEVEL_LONG"
+  case dCGMDIAGLEVELEXTENDED = "DCGM_DIAG_LEVEL_EXTENDED"
 }

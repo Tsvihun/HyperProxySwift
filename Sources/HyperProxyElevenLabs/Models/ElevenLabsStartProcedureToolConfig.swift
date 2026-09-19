@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsStartProcedureToolConfig: Codable, Sendable {
-  public var procedures: [String: HyperProxyJSONValue]?
-  public var systemToolType: String?
+  public var procedures: [String: ElevenLabsStartProcedureToolConfigProceduresValue]?
+  public var systemToolType: ElevenLabsStartProcedureSystemToolType?
 
   public init(
-    procedures: [String: HyperProxyJSONValue]? = nil,
-    systemToolType: String? = nil
+    procedures: [String: ElevenLabsStartProcedureToolConfigProceduresValue]? = nil,
+    systemToolType: ElevenLabsStartProcedureSystemToolType? = nil
   ) {
     self.procedures = procedures
     self.systemToolType = systemToolType

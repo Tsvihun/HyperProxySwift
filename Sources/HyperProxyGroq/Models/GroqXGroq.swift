@@ -11,20 +11,20 @@ import Foundation
 import HyperProxyCore
 
 public struct GroqXGroq: Codable, Sendable {
-  public var debug: HyperProxyJSONValue?
+  public var debug: GroqDebugData?
   public var error: String?
   public var id: String?
   public var seed: Int?
-  public var usage: HyperProxyJSONValue?
-  public var usageBreakdown: HyperProxyJSONValue?
+  public var usage: GroqCompletionUsage?
+  public var usageBreakdown: GroqChatCompletionUsageBreakdown?
 
   public init(
-    debug: HyperProxyJSONValue? = nil,
+    debug: GroqDebugData? = nil,
     error: String? = nil,
     id: String? = nil,
     seed: Int? = nil,
-    usage: HyperProxyJSONValue? = nil,
-    usageBreakdown: HyperProxyJSONValue? = nil
+    usage: GroqCompletionUsage? = nil,
+    usageBreakdown: GroqChatCompletionUsageBreakdown? = nil
   ) {
     self.debug = debug
     self.error = error

@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsBodyCreateDubbingProjectV1DubbingProjectPost: Codable, Sendable {
   public var file: String?
   public var keyterms: [String]?
-  public var modelId: HyperProxyJSONValue?
+  public var modelId: ElevenLabsBodyCreateDubbingProjectV1DubbingProjectPostModelId?
   public var reference: String?
   public var sourceLanguage: String?
   public var sourceUrl: String?
@@ -24,7 +24,7 @@ public struct ElevenLabsBodyCreateDubbingProjectV1DubbingProjectPost: Codable, S
   public init(
     file: String? = nil,
     keyterms: [String]? = nil,
-    modelId: HyperProxyJSONValue? = nil,
+    modelId: ElevenLabsBodyCreateDubbingProjectV1DubbingProjectPostModelId? = nil,
     reference: String? = nil,
     sourceLanguage: String? = nil,
     sourceUrl: String? = nil,

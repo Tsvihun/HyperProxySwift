@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherAudioSpeechRequestBitRate: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: Int
-
-  public init(rawValue: Int) {
-    self.rawValue = rawValue
-  }
-
-  public static let value32000 = Self(rawValue: 32000)
-  public static let value64000 = Self(rawValue: 64000)
-  public static let value96000 = Self(rawValue: 96000)
-  public static let value128000 = Self(rawValue: 128000)
-  public static let value192000 = Self(rawValue: 192000)
+public enum TogetherAudioSpeechRequestBitRate: Int, Codable, Hashable, Sendable {
+  case value32000 = 32000
+  case value64000 = 64000
+  case value96000 = 96000
+  case value128000 = 128000
+  case value192000 = 192000
 }

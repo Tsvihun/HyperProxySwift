@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct ElevenLabsAttachedUserDataCollectionRef: Codable, Sendable {
   public var analysisItemId: String
   public var scope: ElevenLabsAnalysisScope?
-  public var source: String
+  public var source: ElevenLabsUserSource
   public var versionId: String?
 
   public init(
     analysisItemId: String,
-    source: String,
+    source: ElevenLabsUserSource = .user,
     scope: ElevenLabsAnalysisScope? = nil,
     versionId: String? = nil
   ) {

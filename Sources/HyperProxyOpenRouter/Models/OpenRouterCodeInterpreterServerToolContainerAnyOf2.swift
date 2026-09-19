@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenRouterCodeInterpreterServerToolContainerAnyOf2: Codable, Sendable {
   public var fileIds: [String]?
   public var memoryLimit: OpenRouterCodeInterpreterServerToolContainerAnyOf2MemoryLimit?
-  public var typeModel: OpenRouterCodeInterpreterServerToolContainerAnyOf2TypeModel
+  public var kind: OpenRouterCodeInterpreterServerToolContainerAnyOf2Kind
 
   public init(
-    typeModel: OpenRouterCodeInterpreterServerToolContainerAnyOf2TypeModel,
+    kind: OpenRouterCodeInterpreterServerToolContainerAnyOf2Kind,
     fileIds: [String]? = nil,
     memoryLimit: OpenRouterCodeInterpreterServerToolContainerAnyOf2MemoryLimit? = nil
   ) {
     self.fileIds = fileIds
     self.memoryLimit = memoryLimit
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case fileIds = "file_ids"
     case memoryLimit = "memory_limit"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -14,7 +14,7 @@ public struct MistralChatCompletionEventPreview: Codable, Sendable {
   public var correlationId: String
   public var createdAt: String
   public var eventId: String
-  public var extraFields: [String: HyperProxyJSONValue?]
+  public var extraFields: [String: MistralChatCompletionEventPreviewExtraFieldsValue?]
   public var nbInputTokens: Int
   public var nbOutputTokens: Int
 
@@ -22,7 +22,7 @@ public struct MistralChatCompletionEventPreview: Codable, Sendable {
     correlationId: String,
     createdAt: String,
     eventId: String,
-    extraFields: [String: HyperProxyJSONValue?],
+    extraFields: [String: MistralChatCompletionEventPreviewExtraFieldsValue?],
     nbInputTokens: Int,
     nbOutputTokens: Int
   ) {

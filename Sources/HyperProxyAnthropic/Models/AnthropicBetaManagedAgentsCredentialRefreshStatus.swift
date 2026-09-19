@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaManagedAgentsCredentialRefreshStatus: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let succeeded = Self(rawValue: "succeeded")
-  public static let failed = Self(rawValue: "failed")
-  public static let connectError = Self(rawValue: "connect_error")
-  public static let noRefreshToken = Self(rawValue: "no_refresh_token")
+public enum AnthropicBetaManagedAgentsCredentialRefreshStatus: String, Codable, Hashable, Sendable {
+  case succeeded = "succeeded"
+  case failed = "failed"
+  case connectError = "connect_error"
+  case noRefreshToken = "no_refresh_token"
 }

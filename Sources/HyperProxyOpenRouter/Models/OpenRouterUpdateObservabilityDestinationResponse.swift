@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterUpdateObservabilityDestinationResponse: Codable, Sendable {
-  public var data: HyperProxyJSONValue
+  public var data: OpenRouterObservabilityDestination
 
   public init(
-    data: HyperProxyJSONValue
+    data: OpenRouterObservabilityDestination
   ) {
     self.data = data
   }

@@ -11,23 +11,23 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterToolChoiceAllowed: Codable, Sendable {
-  public var mode: HyperProxyJSONValue
+  public var mode: OpenRouterToolChoiceAllowedMode
   public var tools: [[String: HyperProxyJSONValue]]
-  public var typeModel: OpenRouterToolChoiceAllowedTypeModel
+  public var kind: OpenRouterToolChoiceAllowedKind
 
   public init(
-    mode: HyperProxyJSONValue,
+    mode: OpenRouterToolChoiceAllowedMode,
     tools: [[String: HyperProxyJSONValue]],
-    typeModel: OpenRouterToolChoiceAllowedTypeModel
+    kind: OpenRouterToolChoiceAllowedKind
   ) {
     self.mode = mode
     self.tools = tools
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case mode
     case tools
-    case typeModel = "type"
+    case kind = "type"
   }
 }

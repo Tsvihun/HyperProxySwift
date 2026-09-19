@@ -12,26 +12,26 @@ import HyperProxyCore
 
 public struct AnthropicBetaRequestTextBlock: Codable, Sendable {
   public var cacheControl: AnthropicBetaCacheControlEphemeral?
-  public var citations: [HyperProxyJSONValue]?
+  public var citations: [AnthropicBetaRequestTextBlockCitationsAnyOf1Item]?
   public var text: String
-  public var typeModel: String
+  public var kind: AnthropicTextKind
 
   public init(
     text: String,
-    typeModel: String,
+    kind: AnthropicTextKind = .text,
     cacheControl: AnthropicBetaCacheControlEphemeral? = nil,
-    citations: [HyperProxyJSONValue]? = nil
+    citations: [AnthropicBetaRequestTextBlockCitationsAnyOf1Item]? = nil
   ) {
     self.cacheControl = cacheControl
     self.citations = citations
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case cacheControl = "cache_control"
     case citations
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

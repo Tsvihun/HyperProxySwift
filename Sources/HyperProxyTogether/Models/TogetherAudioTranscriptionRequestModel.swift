@@ -10,13 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherAudioTranscriptionRequestModel: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let openaiWhisperLargeV3 = Self(rawValue: "openai/whisper-large-v3")
+public enum TogetherAudioTranscriptionRequestModel: String, Codable, Hashable, Sendable {
+  case openaiWhisperLargeV3 = "openai/whisper-large-v3"
 }

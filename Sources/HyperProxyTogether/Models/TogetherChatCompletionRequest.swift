@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct TogetherChatCompletionRequest: Codable, Sendable {
   public var chatTemplateKwargs: HyperProxyJSONValue?
-  public var compliance: HyperProxyJSONValue?
+  public var compliance: TogetherHipaaCompliance?
   public var contextLengthExceededBehavior:
     TogetherChatCompletionRequestContextLengthExceededBehavior?
   public var echo: Bool?
   public var frequencyPenalty: Double?
-  public var functionCall: HyperProxyJSONValue?
+  public var functionCall: TogetherChatCompletionRequestFunctionCall?
   public var logitBias: [String: Double]?
   public var logprobs: Int?
   public var maxTokens: Int?
@@ -29,13 +29,13 @@ public struct TogetherChatCompletionRequest: Codable, Sendable {
   public var reasoning: TogetherChatCompletionRequestReasoning?
   public var reasoningEffort: TogetherChatCompletionRequestReasoningEffort?
   public var repetitionPenalty: Double?
-  public var responseFormat: HyperProxyJSONValue?
+  public var responseFormat: TogetherChatCompletionRequestResponseFormat?
   public var safetyModel: String?
   public var seed: Int?
   public var stop: [String]?
   public var stream: Bool?
   public var temperature: Double?
-  public var toolChoice: HyperProxyJSONValue?
+  public var toolChoice: TogetherChatCompletionRequestToolChoice?
   public var tools: [TogetherToolsPart]?
   public var topK: Int?
   public var topP: Double?
@@ -44,12 +44,12 @@ public struct TogetherChatCompletionRequest: Codable, Sendable {
     messages: [TogetherChatCompletionMessageParam],
     model: String,
     chatTemplateKwargs: HyperProxyJSONValue? = nil,
-    compliance: HyperProxyJSONValue? = nil,
+    compliance: TogetherHipaaCompliance? = nil,
     contextLengthExceededBehavior: TogetherChatCompletionRequestContextLengthExceededBehavior? =
       nil,
     echo: Bool? = nil,
     frequencyPenalty: Double? = nil,
-    functionCall: HyperProxyJSONValue? = nil,
+    functionCall: TogetherChatCompletionRequestFunctionCall? = nil,
     logitBias: [String: Double]? = nil,
     logprobs: Int? = nil,
     maxTokens: Int? = nil,
@@ -59,13 +59,13 @@ public struct TogetherChatCompletionRequest: Codable, Sendable {
     reasoning: TogetherChatCompletionRequestReasoning? = nil,
     reasoningEffort: TogetherChatCompletionRequestReasoningEffort? = nil,
     repetitionPenalty: Double? = nil,
-    responseFormat: HyperProxyJSONValue? = nil,
+    responseFormat: TogetherChatCompletionRequestResponseFormat? = nil,
     safetyModel: String? = nil,
     seed: Int? = nil,
     stop: [String]? = nil,
     stream: Bool? = nil,
     temperature: Double? = nil,
-    toolChoice: HyperProxyJSONValue? = nil,
+    toolChoice: TogetherChatCompletionRequestToolChoice? = nil,
     tools: [TogetherToolsPart]? = nil,
     topK: Int? = nil,
     topP: Double? = nil

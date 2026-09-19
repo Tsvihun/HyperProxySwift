@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct AnthropicBetaValidateExternalKeyResponse: Codable, Sendable {
   public var error: String?
   public var status: AnthropicBetaValidateExternalKeyResponseStatus
-  public var typeModel: String
+  public var kind: AnthropicExternalKeyValidationKind
 
   public init(
     error: String?,
     status: AnthropicBetaValidateExternalKeyResponseStatus,
-    typeModel: String
+    kind: AnthropicExternalKeyValidationKind = .externalKeyValidation
   ) {
     self.error = error
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case error
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -15,7 +15,7 @@ public struct AnthropicBetaWorkspaceRateLimit: Codable, Sendable {
   public var limits: [AnthropicBetaWorkspaceRateLimitValue]
   public var models: [String]?
   public var rateLimitId: String
-  public var typeModel: String
+  public var kind: AnthropicWorkspaceRateLimitKind
   public var workspaceId: String
 
   public init(
@@ -23,14 +23,14 @@ public struct AnthropicBetaWorkspaceRateLimit: Codable, Sendable {
     limits: [AnthropicBetaWorkspaceRateLimitValue],
     models: [String]?,
     rateLimitId: String,
-    typeModel: String,
-    workspaceId: String
+    workspaceId: String,
+    kind: AnthropicWorkspaceRateLimitKind = .workspaceRateLimit
   ) {
     self.groupType = groupType
     self.limits = limits
     self.models = models
     self.rateLimitId = rateLimitId
-    self.typeModel = typeModel
+    self.kind = kind
     self.workspaceId = workspaceId
   }
 
@@ -39,7 +39,7 @@ public struct AnthropicBetaWorkspaceRateLimit: Codable, Sendable {
     case limits
     case models
     case rateLimitId = "rate_limit_id"
-    case typeModel = "type"
+    case kind = "type"
     case workspaceId = "workspace_id"
   }
 }

@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiInlinedResponse: Codable, Sendable {
-  public var error: HyperProxyJSONValue?
+  public var error: GeminiStatus?
   public var metadata: [String: HyperProxyJSONValue]?
-  public var response: HyperProxyJSONValue?
+  public var response: GeminiGenerateContentResponse?
 
   public init(
-    error: HyperProxyJSONValue? = nil,
+    error: GeminiStatus? = nil,
     metadata: [String: HyperProxyJSONValue]? = nil,
-    response: HyperProxyJSONValue? = nil
+    response: GeminiGenerateContentResponse? = nil
   ) {
     self.error = error
     self.metadata = metadata

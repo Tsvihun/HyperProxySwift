@@ -12,22 +12,22 @@ import HyperProxyCore
 
 public struct OpenAIBetaFunctionShellToolParam: Codable, Sendable {
   public var allowedCallers: [OpenAIBetaCallableToolAllowedCaller]?
-  public var environment: HyperProxyJSONValue?
-  public var typeModel: OpenAIBetaFunctionShellToolParamTypeModel
+  public var environment: OpenAIBetaFunctionShellToolParamEnvironmentAnyOf1?
+  public var kind: OpenAIBetaFunctionShellToolParamKind
 
   public init(
-    typeModel: OpenAIBetaFunctionShellToolParamTypeModel,
+    kind: OpenAIBetaFunctionShellToolParamKind,
     allowedCallers: [OpenAIBetaCallableToolAllowedCaller]? = nil,
-    environment: HyperProxyJSONValue? = nil
+    environment: OpenAIBetaFunctionShellToolParamEnvironmentAnyOf1? = nil
   ) {
     self.allowedCallers = allowedCallers
     self.environment = environment
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case allowedCallers = "allowed_callers"
     case environment
-    case typeModel = "type"
+    case kind = "type"
   }
 }

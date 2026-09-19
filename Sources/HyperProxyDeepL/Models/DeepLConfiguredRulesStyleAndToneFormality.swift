@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesStyleAndToneFormality: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useCasualTone = Self(rawValue: "use_casual_tone")
-  public static let useFormalTone = Self(rawValue: "use_formal_tone")
+public enum DeepLConfiguredRulesStyleAndToneFormality: String, Codable, Hashable, Sendable {
+  case useCasualTone = "use_casual_tone"
+  case useFormalTone = "use_formal_tone"
 }

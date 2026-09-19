@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct ElevenLabsReferencedToolCommonModel: Codable, Sendable {
   public var id: String
-  public var typeModel: ElevenLabsReferencedToolCommonModelTypeModel
+  public var kind: ElevenLabsReferencedToolCommonModelKind
 
   public init(
     id: String,
-    typeModel: ElevenLabsReferencedToolCommonModelTypeModel
+    kind: ElevenLabsReferencedToolCommonModelKind
   ) {
     self.id = id
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case id
-    case typeModel = "type"
+    case kind = "type"
   }
 }

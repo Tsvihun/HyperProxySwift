@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLTranslateTextResponseTranslationsItemTagHandlingVersion: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum DeepLTranslateTextResponseTranslationsItemTagHandlingVersion: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let v2 = Self(rawValue: "v2")
-  public static let v1 = Self(rawValue: "v1")
+  case v2 = "v2"
+  case v1 = "v1"
 }

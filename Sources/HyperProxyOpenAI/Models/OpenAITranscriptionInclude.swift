@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAITranscriptionInclude: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let logprobs = Self(rawValue: "logprobs")
+public enum OpenAITranscriptionInclude: String, Codable, Hashable, Sendable {
+  case logprobs = "logprobs"
 }

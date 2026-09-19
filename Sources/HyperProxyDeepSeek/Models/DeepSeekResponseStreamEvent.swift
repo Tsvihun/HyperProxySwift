@@ -18,11 +18,11 @@ public struct DeepSeekResponseStreamEvent: Codable, Sendable {
   public var outputIndex: Int?
   public var response: DeepSeekResponse?
   public var sequenceNumber: Int
-  public var typeModel: String
+  public var kind: String
 
   public init(
     sequenceNumber: Int,
-    typeModel: String,
+    kind: String,
     contentIndex: Int? = nil,
     delta: String? = nil,
     item: DeepSeekOutputItem? = nil,
@@ -37,7 +37,7 @@ public struct DeepSeekResponseStreamEvent: Codable, Sendable {
     self.outputIndex = outputIndex
     self.response = response
     self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct DeepSeekResponseStreamEvent: Codable, Sendable {
     case outputIndex = "output_index"
     case response
     case sequenceNumber = "sequence_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,15 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesStyleAndToneComplexSentences: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let avoidUnnecessarilyComplexSentences = Self(
-    rawValue: "avoid_unnecessarily_complex_sentences")
+public enum DeepLConfiguredRulesStyleAndToneComplexSentences: String, Codable, Hashable, Sendable {
+  case avoidUnnecessarilyComplexSentences = "avoid_unnecessarily_complex_sentences"
 }

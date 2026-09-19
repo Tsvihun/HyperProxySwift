@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenRouterAnthropicInputTransformation: Codable, Sendable {
   public var path: String?
   public var reason: String?
-  public var typeModel: String
+  public var kind: String
 
   public init(
-    typeModel: String,
+    kind: String,
     path: String? = nil,
     reason: String? = nil
   ) {
     self.path = path
     self.reason = reason
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case path
     case reason
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIRunStreamEventOneOf5Event: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let threadRunCompleted = Self(rawValue: "thread.run.completed")
+public enum OpenAIRunStreamEventOneOf5Event: String, Codable, Hashable, Sendable {
+  case threadRunCompleted = "thread.run.completed"
 }

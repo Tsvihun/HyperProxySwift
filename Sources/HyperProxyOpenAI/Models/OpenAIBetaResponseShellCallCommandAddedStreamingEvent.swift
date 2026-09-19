@@ -16,14 +16,14 @@ public struct OpenAIBetaResponseShellCallCommandAddedStreamingEvent: Codable, Se
   public var commandIndex: Int
   public var outputIndex: Int
   public var sequenceNumber: Int
-  public var typeModel: OpenAIBetaResponseShellCallCommandAddedStreamingEventTypeModel
+  public var kind: OpenAIBetaResponseShellCallCommandAddedStreamingEventKind
 
   public init(
     command: String,
     commandIndex: Int,
     outputIndex: Int,
     sequenceNumber: Int,
-    typeModel: OpenAIBetaResponseShellCallCommandAddedStreamingEventTypeModel,
+    kind: OpenAIBetaResponseShellCallCommandAddedStreamingEventKind,
     agent: OpenAIBetaAgentTag? = nil
   ) {
     self.agent = agent
@@ -31,7 +31,7 @@ public struct OpenAIBetaResponseShellCallCommandAddedStreamingEvent: Codable, Se
     self.commandIndex = commandIndex
     self.outputIndex = outputIndex
     self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIBetaResponseShellCallCommandAddedStreamingEvent: Codable, Se
     case commandIndex = "command_index"
     case outputIndex = "output_index"
     case sequenceNumber = "sequence_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

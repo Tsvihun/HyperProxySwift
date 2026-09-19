@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherDEEndpointEndpointType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let eNDPOINTTYPEDEDICATED = Self(rawValue: "ENDPOINT_TYPE_DEDICATED")
-  public static let eNDPOINTTYPESERVERLESS = Self(rawValue: "ENDPOINT_TYPE_SERVERLESS")
-  public static let eNDPOINTTYPERESERVED = Self(rawValue: "ENDPOINT_TYPE_RESERVED")
+public enum TogetherDEEndpointEndpointType: String, Codable, Hashable, Sendable {
+  case eNDPOINTTYPEDEDICATED = "ENDPOINT_TYPE_DEDICATED"
+  case eNDPOINTTYPESERVERLESS = "ENDPOINT_TYPE_SERVERLESS"
+  case eNDPOINTTYPERESERVED = "ENDPOINT_TYPE_RESERVED"
 }

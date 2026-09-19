@@ -10,20 +10,14 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksDeploymentShapePresetType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let pRESETTYPEUNSPECIFIED = Self(rawValue: "PRESET_TYPE_UNSPECIFIED")
-  public static let mINIMAL = Self(rawValue: "MINIMAL")
-  public static let fAST = Self(rawValue: "FAST")
-  public static let tHROUGHPUT = Self(rawValue: "THROUGHPUT")
-  public static let fULLPRECISION = Self(rawValue: "FULL_PRECISION")
-  public static let aGENTICCODING = Self(rawValue: "AGENTIC_CODING")
-  public static let cHAT = Self(rawValue: "CHAT")
-  public static let sUMMARIZATION = Self(rawValue: "SUMMARIZATION")
-  public static let mULTILORA = Self(rawValue: "MULTI_LORA")
+public enum FireworksDeploymentShapePresetType: String, Codable, Hashable, Sendable {
+  case pRESETTYPEUNSPECIFIED = "PRESET_TYPE_UNSPECIFIED"
+  case mINIMAL = "MINIMAL"
+  case fAST = "FAST"
+  case tHROUGHPUT = "THROUGHPUT"
+  case fULLPRECISION = "FULL_PRECISION"
+  case aGENTICCODING = "AGENTIC_CODING"
+  case cHAT = "CHAT"
+  case sUMMARIZATION = "SUMMARIZATION"
+  case mULTILORA = "MULTI_LORA"
 }

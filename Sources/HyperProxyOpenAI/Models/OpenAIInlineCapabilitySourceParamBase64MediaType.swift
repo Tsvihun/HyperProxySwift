@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIInlineCapabilitySourceParamBase64MediaType: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let applicationZip = Self(rawValue: "application/zip")
+public enum OpenAIInlineCapabilitySourceParamBase64MediaType: String, Codable, Hashable, Sendable {
+  case applicationZip = "application/zip"
 }

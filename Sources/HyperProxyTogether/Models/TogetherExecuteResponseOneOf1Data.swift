@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherExecuteResponseOneOf1Data: Codable, Sendable {
-  public var outputs: [HyperProxyJSONValue]
+  public var outputs: [TogetherExecuteResponseOneOf1DataOutputsItem]
   public var sessionId: String
   public var status: TogetherExecuteResponseOneOf1DataStatus?
 
   public init(
-    outputs: [HyperProxyJSONValue],
+    outputs: [TogetherExecuteResponseOneOf1DataOutputsItem],
     sessionId: String,
     status: TogetherExecuteResponseOneOf1DataStatus? = nil
   ) {

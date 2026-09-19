@@ -14,6 +14,8 @@ import Foundation
 public enum OpenRouterOperation: String, HyperProxyProviderOperation {
   /// `GET api/v1/organization/members`
   case listOrganizationMembers = "listOrganizationMembers"
+  /// `POST api/alpha/decisions`
+  case createApiAlphaDecisions = "createApiAlphaDecisions"
   /// `GET api/v1/endpoints/zdr`
   case listEndpointsZdr = "listEndpointsZdr"
   /// `GET api/v1/activity`
@@ -118,6 +120,22 @@ public enum OpenRouterOperation: String, HyperProxyProviderOperation {
   case listImageModels = "listImageModels"
   /// `GET api/v1/images/models/{author}/{slug}/endpoints`
   case listImageModelEndpoints = "listImageModelEndpoints"
+  /// `GET api/v1/interns`
+  case listInterns = "listInterns"
+  /// `POST api/v1/interns`
+  case createIntern = "createIntern"
+  /// `DELETE api/v1/interns/{internId}`
+  case deleteIntern = "deleteIntern"
+  /// `GET api/v1/interns/{internId}`
+  case getIntern = "getIntern"
+  /// `PATCH api/v1/interns/{internId}`
+  case updateIntern = "updateIntern"
+  /// `POST api/v1/interns/{internId}/chat/completions`
+  case createInternChatCompletion = "createInternChatCompletion"
+  /// `POST api/v1/interns/{internId}/provision`
+  case provisionIntern = "provisionIntern"
+  /// `POST api/v1/interns/{internId}/suspend`
+  case suspendIntern = "suspendIntern"
   /// `GET api/v1/key`
   case keyRetrieve = "key.retrieve"
   /// `GET api/v1/keys`
@@ -192,6 +210,20 @@ public enum OpenRouterOperation: String, HyperProxyProviderOperation {
   case createScimSyncJob = "createScimSyncJob"
   /// `GET api/v1/scim/sync-jobs/{id}`
   case getScimSyncJob = "getScimSyncJob"
+  /// `GET api/v1/vault/interns/{internId}/secrets`
+  case listInternVaultSecrets = "listInternVaultSecrets"
+  /// `POST api/v1/vault/interns/{internId}/secrets/copy`
+  case copyVaultSecretsToIntern = "copyVaultSecretsToIntern"
+  /// `DELETE api/v1/vault/interns/{internId}/secrets/{name}`
+  case deleteInternVaultSecret = "deleteInternVaultSecret"
+  /// `PUT api/v1/vault/interns/{internId}/secrets/{name}`
+  case storeInternVaultSecret = "storeInternVaultSecret"
+  /// `GET api/v1/vault/secrets`
+  case listVaultSecrets = "listVaultSecrets"
+  /// `DELETE api/v1/vault/secrets/{name}`
+  case deleteVaultSecret = "deleteVaultSecret"
+  /// `PUT api/v1/vault/secrets/{name}`
+  case storeVaultSecret = "storeVaultSecret"
   /// `POST api/v1/videos`
   case createVideos = "createVideos"
   /// `GET api/v1/videos/models`
@@ -210,18 +242,18 @@ public enum OpenRouterOperation: String, HyperProxyProviderOperation {
   case getWorkspace = "getWorkspace"
   /// `PATCH api/v1/workspaces/{id}`
   case updateWorkspace = "updateWorkspace"
-  /// `GET api/v1/workspaces/{id}/budgets`
-  case listWorkspaceBudgets = "listWorkspaceBudgets"
-  /// `DELETE api/v1/workspaces/{id}/budgets/{interval}`
-  case deleteWorkspaceBudget = "deleteWorkspaceBudget"
-  /// `GET api/v1/workspaces/{id}/budgets/{interval}`
-  case getWorkspaceBudget = "getWorkspaceBudget"
-  /// `PUT api/v1/workspaces/{id}/budgets/{interval}`
-  case upsertWorkspaceBudget = "upsertWorkspaceBudget"
   /// `GET api/v1/workspaces/{id}/members`
   case listWorkspaceMembers = "listWorkspaceMembers"
   /// `POST api/v1/workspaces/{id}/members/add`
   case bulkAddWorkspaceMembers = "bulkAddWorkspaceMembers"
   /// `POST api/v1/workspaces/{id}/members/remove`
   case bulkRemoveWorkspaceMembers = "bulkRemoveWorkspaceMembers"
+  /// `GET api/v1/workspaces/{workspace_ref}/budgets`
+  case listWorkspaceBudgets = "listWorkspaceBudgets"
+  /// `DELETE api/v1/workspaces/{workspace_ref}/budgets/{interval}`
+  case deleteWorkspaceBudget = "deleteWorkspaceBudget"
+  /// `GET api/v1/workspaces/{workspace_ref}/budgets/{interval}`
+  case getWorkspaceBudget = "getWorkspaceBudget"
+  /// `PUT api/v1/workspaces/{workspace_ref}/budgets/{interval}`
+  case upsertWorkspaceBudget = "upsertWorkspaceBudget"
 }

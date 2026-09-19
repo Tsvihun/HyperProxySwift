@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIVaultCredentialResourceObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let vaultCredential = Self(rawValue: "vault.credential")
+public enum OpenAIVaultCredentialResourceObject: String, Codable, Hashable, Sendable {
+  case vaultCredential = "vault.credential"
 }

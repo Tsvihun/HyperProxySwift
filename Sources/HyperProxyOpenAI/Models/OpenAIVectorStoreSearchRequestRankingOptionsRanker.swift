@@ -10,16 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIVectorStoreSearchRequestRankingOptionsRanker: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum OpenAIVectorStoreSearchRequestRankingOptionsRanker: String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let none = Self(rawValue: "none")
-  public static let auto = Self(rawValue: "auto")
-  public static let default20241115 = Self(rawValue: "default-2024-11-15")
+  case none = "none"
+  case auto = "auto"
+  case default20241115 = "default-2024-11-15"
 }

@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterOutputMessagePhaseAnyOf1: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let commentary = Self(rawValue: "commentary")
+public enum OpenRouterOutputMessagePhaseAnyOf1: String, Codable, Hashable, Sendable {
+  case commentary = "commentary"
 }

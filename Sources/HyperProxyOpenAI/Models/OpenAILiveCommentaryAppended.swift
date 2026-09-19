@@ -15,20 +15,20 @@ public struct OpenAILiveCommentaryAppended: Codable, Sendable {
   public var endMs: Int
   public var eventId: String
   public var startMs: Int
-  public var typeModel: OpenAILiveCommentaryAppendedTypeModel
+  public var kind: OpenAILiveCommentaryAppendedKind
 
   public init(
     endMs: Int,
     eventId: String,
     startMs: Int,
-    typeModel: OpenAILiveCommentaryAppendedTypeModel,
+    kind: OpenAILiveCommentaryAppendedKind,
     clientEventId: String? = nil
   ) {
     self.clientEventId = clientEventId
     self.endMs = endMs
     self.eventId = eventId
     self.startMs = startMs
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAILiveCommentaryAppended: Codable, Sendable {
     case endMs = "end_ms"
     case eventId = "event_id"
     case startMs = "start_ms"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

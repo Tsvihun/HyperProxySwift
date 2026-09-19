@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct ElevenLabsAgentWorkflowRequestModel: Codable, Sendable {
   public var edges: [String: ElevenLabsWorkflowEdgeModelInput]?
-  public var nodes: [String: HyperProxyJSONValue]?
+  public var nodes: [String: ElevenLabsAgentWorkflowRequestModelNodesValue]?
   public var preventSubagentLoops: Bool?
 
   public init(
     edges: [String: ElevenLabsWorkflowEdgeModelInput]? = nil,
-    nodes: [String: HyperProxyJSONValue]? = nil,
+    nodes: [String: ElevenLabsAgentWorkflowRequestModelNodesValue]? = nil,
     preventSubagentLoops: Bool? = nil
   ) {
     self.edges = edges

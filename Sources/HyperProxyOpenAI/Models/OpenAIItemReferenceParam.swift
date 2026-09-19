@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIItemReferenceParam: Codable, Sendable {
   public var id: String
-  public var typeModel: OpenAIItemReferenceParamTypeModelAnyOf1?
+  public var kind: OpenAIItemReferenceParamKindAnyOf1?
 
   public init(
     id: String,
-    typeModel: OpenAIItemReferenceParamTypeModelAnyOf1? = nil
+    kind: OpenAIItemReferenceParamKindAnyOf1? = nil
   ) {
     self.id = id
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case id
-    case typeModel = "type"
+    case kind = "type"
   }
 }

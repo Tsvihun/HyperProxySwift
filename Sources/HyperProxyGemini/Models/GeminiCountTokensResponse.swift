@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiCountTokensResponse: Codable, Sendable {
-  public var cacheTokensDetails: [HyperProxyJSONValue]?
+  public var cacheTokensDetails: [GeminiModalityTokenCount]?
   public var cachedContentTokenCount: Int?
-  public var promptTokensDetails: [HyperProxyJSONValue]?
+  public var promptTokensDetails: [GeminiModalityTokenCount]?
   public var totalTokens: Int?
 
   public init(
-    cacheTokensDetails: [HyperProxyJSONValue]? = nil,
+    cacheTokensDetails: [GeminiModalityTokenCount]? = nil,
     cachedContentTokenCount: Int? = nil,
-    promptTokensDetails: [HyperProxyJSONValue]? = nil,
+    promptTokensDetails: [GeminiModalityTokenCount]? = nil,
     totalTokens: Int? = nil
   ) {
     self.cacheTokensDetails = cacheTokensDetails

@@ -15,12 +15,12 @@ public struct FireworksAnthropicRawOutput: Codable, Sendable {
   public var completionTokenIds: [Int]?
   public var grammar: String?
   public var images: [String]?
-  public var promptFragments: [HyperProxyJSONValue]
+  public var promptFragments: [FireworksAnthropicRawOutputPromptFragmentsItem]
   public var promptTokenIds: [Int]
 
   public init(
     completion: String,
-    promptFragments: [HyperProxyJSONValue],
+    promptFragments: [FireworksAnthropicRawOutputPromptFragmentsItem],
     promptTokenIds: [Int],
     completionTokenIds: [Int]? = nil,
     grammar: String? = nil,

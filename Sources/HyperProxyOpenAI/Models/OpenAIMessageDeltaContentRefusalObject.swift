@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenAIMessageDeltaContentRefusalObject: Codable, Sendable {
   public var index: Int
   public var refusal: String?
-  public var typeModel: OpenAIMessageDeltaContentRefusalObjectTypeModel
+  public var kind: OpenAIMessageDeltaContentRefusalObjectKind
 
   public init(
     index: Int,
-    typeModel: OpenAIMessageDeltaContentRefusalObjectTypeModel,
+    kind: OpenAIMessageDeltaContentRefusalObjectKind,
     refusal: String? = nil
   ) {
     self.index = index
     self.refusal = refusal
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case index
     case refusal
-    case typeModel = "type"
+    case kind = "type"
   }
 }

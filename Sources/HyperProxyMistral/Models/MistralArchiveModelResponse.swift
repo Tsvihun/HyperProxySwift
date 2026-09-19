@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct MistralArchiveModelResponse: Codable, Sendable {
   public var archived: Bool?
   public var id: String
-  public var object: String?
+  public var object: MistralModelObject?
 
   public init(
     id: String,
     archived: Bool? = nil,
-    object: String? = nil
+    object: MistralModelObject? = nil
   ) {
     self.archived = archived
     self.id = id

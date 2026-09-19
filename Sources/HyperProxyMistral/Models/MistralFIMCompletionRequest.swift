@@ -18,7 +18,7 @@ public struct MistralFIMCompletionRequest: Codable, Sendable {
   public var prompt: String
   public var promptCacheKey: String?
   public var randomSeed: Int?
-  public var stop: HyperProxyJSONValue?
+  public var stop: MistralFIMCompletionRequestStop?
   public var stream: Bool?
   public var suffix: String?
   public var temperature: Double?
@@ -32,7 +32,7 @@ public struct MistralFIMCompletionRequest: Codable, Sendable {
     minTokens: Int? = nil,
     promptCacheKey: String? = nil,
     randomSeed: Int? = nil,
-    stop: HyperProxyJSONValue? = nil,
+    stop: MistralFIMCompletionRequestStop? = nil,
     stream: Bool? = nil,
     suffix: String? = nil,
     temperature: Double? = nil,

@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterOpenAIFileStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let processed = Self(rawValue: "processed")
+public enum OpenRouterOpenAIFileStatus: String, Codable, Hashable, Sendable {
+  case processed = "processed"
 }

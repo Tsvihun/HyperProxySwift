@@ -13,7 +13,8 @@ import HyperProxyCore
 public struct ElevenLabsGetKnowledgeBaseSummaryFileResponseModel: Codable, Sendable {
   public var accessInfo: ElevenLabsResourceAccessInfo
   public var autoSyncInfo: ElevenLabsAutoSyncInfo?
-  public var dependentAgents: [HyperProxyJSONValue]
+  public var dependentAgents:
+    [ElevenLabsGetKnowledgeBaseSummaryFileResponseModelDependentAgentsItem]
   public var externalSyncInfo: ElevenLabsExternalFileSyncInfo?
   public var folderParentId: String?
   public var folderPath: [ElevenLabsKnowledgeBaseFolderPathSegmentSummaryResponseModel]?
@@ -23,16 +24,16 @@ public struct ElevenLabsGetKnowledgeBaseSummaryFileResponseModel: Codable, Senda
   public var name: String
   public var refreshStatus: ElevenLabsFileRefreshStatus?
   public var supportedUsages: [ElevenLabsDocumentUsageModeEnum]
-  public var typeModel: String
+  public var kind: ElevenLabsFileKind
 
   public init(
     accessInfo: ElevenLabsResourceAccessInfo,
-    dependentAgents: [HyperProxyJSONValue],
+    dependentAgents: [ElevenLabsGetKnowledgeBaseSummaryFileResponseModelDependentAgentsItem],
     id: String,
     metadata: ElevenLabsKnowledgeBaseDocumentMetadataResponseModel,
     name: String,
     supportedUsages: [ElevenLabsDocumentUsageModeEnum],
-    typeModel: String,
+    kind: ElevenLabsFileKind = .file,
     autoSyncInfo: ElevenLabsAutoSyncInfo? = nil,
     externalSyncInfo: ElevenLabsExternalFileSyncInfo? = nil,
     folderParentId: String? = nil,
@@ -52,7 +53,7 @@ public struct ElevenLabsGetKnowledgeBaseSummaryFileResponseModel: Codable, Senda
     self.name = name
     self.refreshStatus = refreshStatus
     self.supportedUsages = supportedUsages
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -68,6 +69,6 @@ public struct ElevenLabsGetKnowledgeBaseSummaryFileResponseModel: Codable, Senda
     case name
     case refreshStatus = "refresh_status"
     case supportedUsages = "supported_usages"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

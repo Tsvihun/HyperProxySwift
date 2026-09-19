@@ -10,22 +10,16 @@
 import Foundation
 import HyperProxyCore
 
-public struct EachAIAPIModelDetailCostUnit: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let execution = Self(rawValue: "execution")
-  public static let second = Self(rawValue: "second")
-  public static let processingSecond = Self(rawValue: "processing_second")
-  public static let minute = Self(rawValue: "minute")
-  public static let hour = Self(rawValue: "hour")
-  public static let image = Self(rawValue: "image")
-  public static let megapixel = Self(rawValue: "megapixel")
-  public static let millionTokens = Self(rawValue: "million_tokens")
-  public static let character = Self(rawValue: "character")
-  public static let step = Self(rawValue: "step")
-  public static let generation = Self(rawValue: "generation")
+public enum EachAIAPIModelDetailCostUnit: String, Codable, Hashable, Sendable {
+  case execution = "execution"
+  case second = "second"
+  case processingSecond = "processing_second"
+  case minute = "minute"
+  case hour = "hour"
+  case image = "image"
+  case megapixel = "megapixel"
+  case millionTokens = "million_tokens"
+  case character = "character"
+  case step = "step"
+  case generation = "generation"
 }

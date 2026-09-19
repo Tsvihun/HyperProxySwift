@@ -15,16 +15,16 @@ public struct DeepLStyleRuleList: Codable, Sendable {
   public var creationTime: String
   public var customInstructions: [DeepLCustomInstruction]?
   public var language: DeepLStyleRuleLanguage
-  public var name: DeepLStyleRuleName
-  public var styleId: DeepLStyleId
+  public var name: String
+  public var styleId: String
   public var updatedTime: String
   public var version: Int
 
   public init(
     creationTime: String,
     language: DeepLStyleRuleLanguage,
-    name: DeepLStyleRuleName,
-    styleId: DeepLStyleId,
+    name: String,
+    styleId: String,
     updatedTime: String,
     version: Int,
     configuredRules: DeepLConfiguredRules? = nil,

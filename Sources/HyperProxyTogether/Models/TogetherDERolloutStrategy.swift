@@ -10,15 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherDERolloutStrategy: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let rOLLOUTSTRATEGYTYPEROLLING = Self(rawValue: "ROLLOUT_STRATEGY_TYPE_ROLLING")
-  public static let rOLLOUTSTRATEGYTYPECANARY = Self(rawValue: "ROLLOUT_STRATEGY_TYPE_CANARY")
-  public static let rOLLOUTSTRATEGYTYPEBLUEGREEN = Self(
-    rawValue: "ROLLOUT_STRATEGY_TYPE_BLUE_GREEN")
+public enum TogetherDERolloutStrategy: String, Codable, Hashable, Sendable {
+  case rOLLOUTSTRATEGYTYPEROLLING = "ROLLOUT_STRATEGY_TYPE_ROLLING"
+  case rOLLOUTSTRATEGYTYPECANARY = "ROLLOUT_STRATEGY_TYPE_CANARY"
+  case rOLLOUTSTRATEGYTYPEBLUEGREEN = "ROLLOUT_STRATEGY_TYPE_BLUE_GREEN"
 }

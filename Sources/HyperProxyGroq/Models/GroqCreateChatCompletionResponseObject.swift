@@ -10,13 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct GroqCreateChatCompletionResponseObject: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let chatCompletion = Self(rawValue: "chat.completion")
+public enum GroqCreateChatCompletionResponseObject: String, Codable, Hashable, Sendable {
+  case chatCompletion = "chat.completion"
 }

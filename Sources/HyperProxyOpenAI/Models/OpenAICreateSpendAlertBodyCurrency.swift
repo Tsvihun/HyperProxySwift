@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAICreateSpendAlertBodyCurrency: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let uSD = Self(rawValue: "USD")
+public enum OpenAICreateSpendAlertBodyCurrency: String, Codable, Hashable, Sendable {
+  case uSD = "USD"
 }

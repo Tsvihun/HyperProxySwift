@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct ElevenLabsStaticAssetReference: Codable, Sendable {
   public var assetId: String
-  public var typeModel: String
+  public var kind: ElevenLabsAssetKind
 
   public init(
     assetId: String,
-    typeModel: String
+    kind: ElevenLabsAssetKind = .asset
   ) {
     self.assetId = assetId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case assetId = "asset_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

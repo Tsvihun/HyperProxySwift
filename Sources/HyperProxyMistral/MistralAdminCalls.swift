@@ -241,4 +241,44 @@ public struct MistralAdminCalls: Sendable {
   public var connectorDeleteOrganizationCredentialsV1: HyperProxyProviderCall<MistralOperation> {
     self.service.call(.connectorDeleteOrganizationCredentialsV1)
   }
+  /// `POST v1/service-accounts`
+  public var createServiceAccountV1ServiceAccountsPost: HyperProxyProviderCall<MistralOperation> {
+    self.service.call(.createServiceAccountV1ServiceAccountsPost)
+  }
+  /// `GET v1/service-accounts/assignable-roles`
+  public var listAssignableServiceAccountRolesV1ServiceAccountsAssignableRolesGet:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.service.call(.listAssignableServiceAccountRolesV1ServiceAccountsAssignableRolesGet)
+  }
+  /// `DELETE v1/service-accounts/{service_account_id}`
+  public var deleteServiceAccountV1ServiceAccountsServiceAccountIdDelete:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.service.call(.deleteServiceAccountV1ServiceAccountsServiceAccountIdDelete)
+  }
+  /// `GET v1/service-accounts/{service_account_id}`
+  public var getServiceAccountV1ServiceAccountsServiceAccountIdGet:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.service.call(.getServiceAccountV1ServiceAccountsServiceAccountIdGet)
+  }
+  /// `PATCH v1/service-accounts/{service_account_id}`
+  public var updateServiceAccountV1ServiceAccountsServiceAccountIdPatch:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.service.call(.updateServiceAccountV1ServiceAccountsServiceAccountIdPatch)
+  }
+  /// `GET v1/service-accounts/{service_account_id}/roles`
+  public var listServiceAccountRolesV1ServiceAccountsServiceAccountIdRolesGet:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.service.call(.listServiceAccountRolesV1ServiceAccountsServiceAccountIdRolesGet)
+  }
+  /// `PUT v1/service-accounts/{service_account_id}/roles`
+  public var setServiceAccountRolesV1ServiceAccountsServiceAccountIdRolesPut:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.service.call(.setServiceAccountRolesV1ServiceAccountsServiceAccountIdRolesPut)
+  }
 }

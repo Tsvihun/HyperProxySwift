@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIFileSearchRanker: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
-  public static let default20240821 = Self(rawValue: "default_2024_08_21")
+public enum OpenAIFileSearchRanker: String, Codable, Hashable, Sendable {
+  case auto = "auto"
+  case default20240821 = "default_2024_08_21"
 }

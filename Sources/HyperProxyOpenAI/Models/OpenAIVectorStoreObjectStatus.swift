@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIVectorStoreObjectStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let expired = Self(rawValue: "expired")
-  public static let inProgress = Self(rawValue: "in_progress")
-  public static let completed = Self(rawValue: "completed")
+public enum OpenAIVectorStoreObjectStatus: String, Codable, Hashable, Sendable {
+  case expired = "expired"
+  case inProgress = "in_progress"
+  case completed = "completed"
 }

@@ -15,7 +15,7 @@ public enum HyperProxyWireProtocol: Sendable {
   /// Direct-to-provider transport. The caller supplies provider authorization
   /// in `defaultHeaders`; no gateway credential is attached.
   case direct
-  /// AIProxy-compatible headers. Use this when a HyperProxy provider service
-  /// should send requests through an existing AIProxy service.
-  case aiProxy(clientID: String?, anonymousID: String? = nil)
+  /// Headers for a protocol-compatible legacy gateway. Use this while moving
+  /// an existing service to HyperProxy without changing provider payloads.
+  case legacyGateway(clientID: String?, anonymousID: String? = nil)
 }

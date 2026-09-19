@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsMemoryPrefix: Codable, Sendable {
   public var path: String
-  public var typeModel: AnthropicBetaManagedAgentsMemoryPrefixTypeModel
+  public var kind: AnthropicBetaManagedAgentsMemoryPrefixKind
 
   public init(
     path: String,
-    typeModel: AnthropicBetaManagedAgentsMemoryPrefixTypeModel
+    kind: AnthropicBetaManagedAgentsMemoryPrefixKind
   ) {
     self.path = path
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case path
-    case typeModel = "type"
+    case kind = "type"
   }
 }

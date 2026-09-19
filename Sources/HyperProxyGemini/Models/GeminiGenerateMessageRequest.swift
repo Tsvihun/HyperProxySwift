@@ -12,14 +12,14 @@ import HyperProxyCore
 
 public struct GeminiGenerateMessageRequest: Codable, Sendable {
   public var candidateCount: Int?
-  public var prompt: HyperProxyJSONValue?
+  public var prompt: GeminiMessagePrompt?
   public var temperature: Double?
   public var topK: Int?
   public var topP: Double?
 
   public init(
     candidateCount: Int? = nil,
-    prompt: HyperProxyJSONValue? = nil,
+    prompt: GeminiMessagePrompt? = nil,
     temperature: Double? = nil,
     topK: Int? = nil,
     topP: Double? = nil

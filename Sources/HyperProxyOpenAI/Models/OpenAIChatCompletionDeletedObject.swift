@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIChatCompletionDeletedObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let chatCompletionDeleted = Self(rawValue: "chat.completion.deleted")
+public enum OpenAIChatCompletionDeletedObject: String, Codable, Hashable, Sendable {
+  case chatCompletionDeleted = "chat.completion.deleted"
 }

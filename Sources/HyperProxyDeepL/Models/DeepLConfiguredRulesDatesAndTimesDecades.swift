@@ -10,19 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesDatesAndTimesDecades: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let spellOut = Self(rawValue: "spell_out")
-  public static let useApostropheYy = Self(rawValue: "use_apostrophe_yy")
-  public static let useYyFor20thCenturyButYyyyForOtherCenturies = Self(
-    rawValue: "use_yy_for_20th_century_but_yyyy_for_other_centuries")
-  public static let useYyWithoutApostrophe = Self(rawValue: "use_yy_without_apostrophe")
-  public static let useYyyy = Self(rawValue: "use_yyyy")
+public enum DeepLConfiguredRulesDatesAndTimesDecades: String, Codable, Hashable, Sendable {
+  case spellOut = "spell_out"
+  case useApostropheYy = "use_apostrophe_yy"
+  case useYyFor20thCenturyButYyyyForOtherCenturies =
+    "use_yy_for_20th_century_but_yyyy_for_other_centuries"
+  case useYyWithoutApostrophe = "use_yy_without_apostrophe"
+  case useYyyy = "use_yyyy"
 }

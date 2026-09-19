@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiUploadToFileSearchStoreRequest: Codable, Sendable {
-  public var chunkingConfig: HyperProxyJSONValue?
-  public var customMetadata: [HyperProxyJSONValue]?
+  public var chunkingConfig: GeminiChunkingConfig?
+  public var customMetadata: [GeminiCustomMetadata]?
   public var displayName: String?
   public var mimeType: String?
 
   public init(
-    chunkingConfig: HyperProxyJSONValue? = nil,
-    customMetadata: [HyperProxyJSONValue]? = nil,
+    chunkingConfig: GeminiChunkingConfig? = nil,
+    customMetadata: [GeminiCustomMetadata]? = nil,
     displayName: String? = nil,
     mimeType: String? = nil
   ) {

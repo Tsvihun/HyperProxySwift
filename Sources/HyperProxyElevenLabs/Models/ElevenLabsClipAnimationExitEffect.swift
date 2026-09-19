@@ -10,25 +10,19 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsClipAnimationExitEffect: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let none = Self(rawValue: "none")
-  public static let fade = Self(rawValue: "fade")
-  public static let float = Self(rawValue: "float")
-  public static let gentleFloat = Self(rawValue: "gentle_float")
-  public static let zoomIn = Self(rawValue: "zoom_in")
-  public static let drop = Self(rawValue: "drop")
-  public static let slideLeft = Self(rawValue: "slide_left")
-  public static let slideRight = Self(rawValue: "slide_right")
-  public static let slideUp = Self(rawValue: "slide_up")
-  public static let slideDown = Self(rawValue: "slide_down")
-  public static let pop = Self(rawValue: "pop")
-  public static let bounce = Self(rawValue: "bounce")
-  public static let spin = Self(rawValue: "spin")
-  public static let slideBounce = Self(rawValue: "slide_bounce")
+public enum ElevenLabsClipAnimationExitEffect: String, Codable, Hashable, Sendable {
+  case none = "none"
+  case fade = "fade"
+  case float = "float"
+  case gentleFloat = "gentle_float"
+  case zoomIn = "zoom_in"
+  case drop = "drop"
+  case slideLeft = "slide_left"
+  case slideRight = "slide_right"
+  case slideUp = "slide_up"
+  case slideDown = "slide_down"
+  case pop = "pop"
+  case bounce = "bounce"
+  case spin = "spin"
+  case slideBounce = "slide_bounce"
 }

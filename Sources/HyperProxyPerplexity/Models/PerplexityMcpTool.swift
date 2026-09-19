@@ -17,12 +17,12 @@ public struct PerplexityMcpTool: Codable, Sendable {
   public var headers: [String: String]?
   public var serverLabel: String
   public var serverUrl: String
-  public var typeModel: PerplexityMcpToolTypeModel
+  public var kind: PerplexityMcpToolKind
 
   public init(
     serverLabel: String,
     serverUrl: String,
-    typeModel: PerplexityMcpToolTypeModel,
+    kind: PerplexityMcpToolKind,
     allowedTools: [String]? = nil,
     authorization: String? = nil,
     deferLoading: Bool? = nil,
@@ -34,7 +34,7 @@ public struct PerplexityMcpTool: Codable, Sendable {
     self.headers = headers
     self.serverLabel = serverLabel
     self.serverUrl = serverUrl
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct PerplexityMcpTool: Codable, Sendable {
     case headers
     case serverLabel = "server_label"
     case serverUrl = "server_url"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -26,6 +26,10 @@ public enum HyperProxyGatewayHeader {
   /// Response header naming the model that actually served the request when a
   /// fallback or alias changed it.
   public static let servedModel = "X-HyperProxy-Served-Model"
+  /// Response header on services with the response cache enabled: `HIT` when
+  /// the gateway answered from its cache without calling the provider,
+  /// `MISS` otherwise. Send `bypass` in the request to skip the cache.
+  public static let cache = "X-HyperProxy-Cache"
   /// Response header carrying the gateway's audit handle for this request —
   /// pass it to the dashboard's generation audit to see tokens, metered cost,
   /// and latency after the fact.

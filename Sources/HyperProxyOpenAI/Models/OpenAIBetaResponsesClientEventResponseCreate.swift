@@ -43,11 +43,11 @@ public struct OpenAIBetaResponsesClientEventResponseCreate: Codable, Sendable {
   public var topLogprobs: Int?
   public var topP: Double?
   public var truncation: OpenAIBetaCreateResponseAllOf3TruncationAnyOf1?
-  public var typeModel: OpenAIBetaResponsesClientEventResponseCreateAllOf1TypeModel
+  public var kind: OpenAIBetaResponsesClientEventResponseCreateAllOf1Kind
   public var user: String?
 
   public init(
-    typeModel: OpenAIBetaResponsesClientEventResponseCreateAllOf1TypeModel,
+    kind: OpenAIBetaResponsesClientEventResponseCreateAllOf1Kind,
     background: Bool? = nil,
     contextManagement: [OpenAIBetaContextManagementParam]? = nil,
     conversation: OpenAIBetaConversationParam? = nil,
@@ -114,7 +114,7 @@ public struct OpenAIBetaResponsesClientEventResponseCreate: Codable, Sendable {
     self.topLogprobs = topLogprobs
     self.topP = topP
     self.truncation = truncation
-    self.typeModel = typeModel
+    self.kind = kind
     self.user = user
   }
 
@@ -151,7 +151,7 @@ public struct OpenAIBetaResponsesClientEventResponseCreate: Codable, Sendable {
     case topLogprobs = "top_logprobs"
     case topP = "top_p"
     case truncation
-    case typeModel = "type"
+    case kind = "type"
     case user
   }
 }

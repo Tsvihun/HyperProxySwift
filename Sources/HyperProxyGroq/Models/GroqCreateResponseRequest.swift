@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct GroqCreateResponseRequest: Codable, Sendable {
-  public var input: HyperProxyJSONValue
+  public var input: GroqCreateResponseRequestInput
   public var instructions: String?
   public var maxOutputTokens: Int?
   public var metadata: [String: String]?
-  public var model: HyperProxyJSONValue
+  public var model: GroqCreateResponseRequestModel
   public var parallelToolCalls: Bool?
   public var reasoning: GroqCreateResponseRequestReasoning?
   public var serviceTier: GroqCreateResponseRequestServiceTier?
@@ -30,8 +30,8 @@ public struct GroqCreateResponseRequest: Codable, Sendable {
   public var user: String?
 
   public init(
-    input: HyperProxyJSONValue,
-    model: HyperProxyJSONValue,
+    input: GroqCreateResponseRequestInput,
+    model: GroqCreateResponseRequestModel,
     instructions: String? = nil,
     maxOutputTokens: Int? = nil,
     metadata: [String: String]? = nil,

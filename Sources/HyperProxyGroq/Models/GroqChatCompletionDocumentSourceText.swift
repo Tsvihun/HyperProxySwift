@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct GroqChatCompletionDocumentSourceText: Codable, Sendable {
   public var text: String
-  public var typeModel: GroqChatCompletionDocumentSourceTextTypeModel
+  public var kind: GroqChatCompletionDocumentSourceTextKind
 
   public init(
     text: String,
-    typeModel: GroqChatCompletionDocumentSourceTextTypeModel
+    kind: GroqChatCompletionDocumentSourceTextKind
   ) {
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

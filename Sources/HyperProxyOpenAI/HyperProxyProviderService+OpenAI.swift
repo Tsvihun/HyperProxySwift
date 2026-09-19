@@ -665,6 +665,10 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
   public var getprojectsafetyalert: HyperProxyProviderCall<OpenAIOperation> {
     self.call(.getprojectsafetyalert)
   }
+  /// `GET v1/safety/cases/{id}`
+  public var getsafetycase: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.getsafetycase)
+  }
   /// `GET v1/skills`
   public var listSkills: HyperProxyProviderCall<OpenAIOperation> {
     self.call(.listSkills)
@@ -944,6 +948,38 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
   /// `POST v1/videos/{video_id}/remix`
   public var videosRemix: HyperProxyProviderCall<OpenAIOperation> {
     self.call(.videosRemix)
+  }
+  /// `GET v1/webhook_endpoints`
+  public var listWebhookEndpoints: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.listWebhookEndpoints)
+  }
+  /// `POST v1/webhook_endpoints`
+  public var createWebhookEndpoint: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.createWebhookEndpoint)
+  }
+  /// `DELETE v1/webhook_endpoints/{webhook_endpoint_id}`
+  public var deleteWebhookEndpoint: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.deleteWebhookEndpoint)
+  }
+  /// `GET v1/webhook_endpoints/{webhook_endpoint_id}`
+  public var retrieveWebhookEndpoint: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.retrieveWebhookEndpoint)
+  }
+  /// `POST v1/webhook_endpoints/{webhook_endpoint_id}`
+  public var updateWebhookEndpoint: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.updateWebhookEndpoint)
+  }
+  /// `POST v1/webhook_endpoints/{webhook_endpoint_id}/rotate_secret`
+  public var rotateWebhookEndpointSigningSecret: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.rotateWebhookEndpointSigningSecret)
+  }
+  /// `POST v1/webhook_endpoints/{webhook_endpoint_id}/test`
+  public var testWebhookEndpoint: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.testWebhookEndpoint)
+  }
+  /// `GET v1/webhook_event_types`
+  public var listWebhookEventTypes: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.listWebhookEventTypes)
   }
   @available(*, deprecated, renamed: "responsesCreate")
   public var createResponse: HyperProxyProviderCall<OpenAIOperation> {

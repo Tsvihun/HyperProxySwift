@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiMetadataFilter: Codable, Sendable {
-  public var conditions: [HyperProxyJSONValue]?
+  public var conditions: [GeminiCondition]?
   public var key: String?
 
   public init(
-    conditions: [HyperProxyJSONValue]? = nil,
+    conditions: [GeminiCondition]? = nil,
     key: String? = nil
   ) {
     self.conditions = conditions

@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesSpellingAndGrammarSpecialCharacters: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesSpellingAndGrammarSpecialCharacters: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let neverUseSymbols = Self(rawValue: "never_use_symbols")
+  case neverUseSymbols = "never_use_symbols"
 }

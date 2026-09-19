@@ -15,12 +15,12 @@ public struct OpenRouterOutputMemoryServerToolItem: Codable, Sendable {
   public var id: String?
   public var key: String?
   public var status: OpenRouterToolCallStatus
-  public var typeModel: OpenRouterOutputMemoryServerToolItemTypeModel
+  public var kind: OpenRouterOutputMemoryServerToolItemKind
   public var value: HyperProxyJSONValue?
 
   public init(
     status: OpenRouterToolCallStatus,
-    typeModel: OpenRouterOutputMemoryServerToolItemTypeModel,
+    kind: OpenRouterOutputMemoryServerToolItemKind,
     action: OpenRouterOutputMemoryServerToolItemAction? = nil,
     id: String? = nil,
     key: String? = nil,
@@ -30,7 +30,7 @@ public struct OpenRouterOutputMemoryServerToolItem: Codable, Sendable {
     self.id = id
     self.key = key
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
     self.value = value
   }
 
@@ -39,7 +39,7 @@ public struct OpenRouterOutputMemoryServerToolItem: Codable, Sendable {
     case id
     case key
     case status
-    case typeModel = "type"
+    case kind = "type"
     case value
   }
 }

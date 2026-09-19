@@ -13,17 +13,17 @@ import HyperProxyCore
 public struct TogetherHardwareWithStatus: Codable, Sendable {
   public var availability: TogetherHardwareAvailability?
   public var id: String
-  public var object: HyperProxyJSONValue
+  public var object: TogetherHardwareObject
   public var pricing: TogetherEndpointPricing
   public var specs: TogetherHardwareSpec
   public var updatedAt: String
 
   public init(
     id: String,
-    object: HyperProxyJSONValue,
     pricing: TogetherEndpointPricing,
     specs: TogetherHardwareSpec,
     updatedAt: String,
+    object: TogetherHardwareObject = .hardware,
     availability: TogetherHardwareAvailability? = nil
   ) {
     self.availability = availability

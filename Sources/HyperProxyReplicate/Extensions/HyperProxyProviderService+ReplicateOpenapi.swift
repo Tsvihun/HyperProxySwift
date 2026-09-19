@@ -154,6 +154,20 @@ extension HyperProxyProviderService where Operation == ReplicateOperation {
     return try await call.decoded(ReplicateSchemasFileResponse.self)
   }
 
+  public func filesDownload(
+    fileId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.filesDownload)
+      .path("file_id", fileId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try call.bytes()
+  }
+
   public func hardwareList(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -258,6 +272,22 @@ extension HyperProxyProviderService where Operation == ReplicateOperation {
       .timeout(timeout)
     let prepared = try call.json(body)
     return try await prepared.decoded(ReplicateSchemasPredictionResponse.self)
+  }
+
+  public func modelsReadmeGet(
+    modelOwner: String,
+    modelName: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> String {
+    let call = self.call(.modelsReadmeGet)
+      .path("model_owner", modelOwner)
+      .path("model_name", modelName)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.text()
   }
 
   public func modelsVersionsList(

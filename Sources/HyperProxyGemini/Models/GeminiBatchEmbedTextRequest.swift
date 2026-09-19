@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiBatchEmbedTextRequest: Codable, Sendable {
-  public var requests: [HyperProxyJSONValue]?
+  public var requests: [GeminiEmbedTextRequest]?
   public var texts: [String]?
 
   public init(
-    requests: [HyperProxyJSONValue]? = nil,
+    requests: [GeminiEmbedTextRequest]? = nil,
     texts: [String]? = nil
   ) {
     self.requests = requests

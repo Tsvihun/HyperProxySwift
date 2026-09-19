@@ -15,20 +15,20 @@ public struct OpenAIProgramOutput: Codable, Sendable {
   public var id: String
   public var result: String
   public var status: OpenAIProgramOutputStatus
-  public var typeModel: OpenAIProgramOutputTypeModel
+  public var kind: OpenAIProgramOutputKind
 
   public init(
     callId: String,
     id: String,
     result: String,
     status: OpenAIProgramOutputStatus,
-    typeModel: OpenAIProgramOutputTypeModel
+    kind: OpenAIProgramOutputKind
   ) {
     self.callId = callId
     self.id = id
     self.result = result
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIProgramOutput: Codable, Sendable {
     case id
     case result
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct StabilityPostV2betaStableImageUpscaleCreativeResponse: Codable, Sendable {
-  public var id: StabilityGenerationID
+  public var id: String
 
   public init(
-    id: StabilityGenerationID
+    id: String
   ) {
     self.id = id
   }

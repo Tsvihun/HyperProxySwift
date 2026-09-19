@@ -17,7 +17,7 @@ public struct OpenAIRealtimeBetaServerEventResponseContentPartAdded: Codable, Se
   public var outputIndex: Int
   public var part: OpenAIRealtimeBetaServerEventResponseContentPartAddedPart
   public var responseId: String
-  public var typeModel: OpenAIRealtimeBetaServerEventResponseContentPartAddedTypeModel
+  public var kind: OpenAIRealtimeBetaServerEventResponseContentPartAddedKind
 
   public init(
     contentIndex: Int,
@@ -26,7 +26,7 @@ public struct OpenAIRealtimeBetaServerEventResponseContentPartAdded: Codable, Se
     outputIndex: Int,
     part: OpenAIRealtimeBetaServerEventResponseContentPartAddedPart,
     responseId: String,
-    typeModel: OpenAIRealtimeBetaServerEventResponseContentPartAddedTypeModel
+    kind: OpenAIRealtimeBetaServerEventResponseContentPartAddedKind
   ) {
     self.contentIndex = contentIndex
     self.eventId = eventId
@@ -34,7 +34,7 @@ public struct OpenAIRealtimeBetaServerEventResponseContentPartAdded: Codable, Se
     self.outputIndex = outputIndex
     self.part = part
     self.responseId = responseId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenAIRealtimeBetaServerEventResponseContentPartAdded: Codable, Se
     case outputIndex = "output_index"
     case part
     case responseId = "response_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -14,24 +14,24 @@ public struct GroqChatCompletionMessageToolCallChunk: Codable, Sendable {
   public var function: GroqChatCompletionMessageToolCallChunkFunction?
   public var id: String?
   public var index: Int
-  public var typeModel: GroqChatCompletionMessageToolCallChunkTypeModel?
+  public var kind: GroqChatCompletionMessageToolCallChunkKind?
 
   public init(
     index: Int,
     function: GroqChatCompletionMessageToolCallChunkFunction? = nil,
     id: String? = nil,
-    typeModel: GroqChatCompletionMessageToolCallChunkTypeModel? = nil
+    kind: GroqChatCompletionMessageToolCallChunkKind? = nil
   ) {
     self.function = function
     self.id = id
     self.index = index
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case function
     case id
     case index
-    case typeModel = "type"
+    case kind = "type"
   }
 }

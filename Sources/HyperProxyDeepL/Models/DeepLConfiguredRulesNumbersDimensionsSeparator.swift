@@ -10,21 +10,13 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesNumbersDimensionsSeparator: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useMultiplicationSignBetweenDimensionsWithSpaceOnEitherSide = Self(
-    rawValue: "use_multiplication_sign_between_dimensions_with_space_on_either_side")
-  public static let useMultiplicationSignBetweenDimensionsWithoutSpaceOnEitherSide = Self(
-    rawValue: "use_multiplication_sign_between_dimensions_without_space_on_either_side")
-  public static let useXBetweenDimensionsWithSpaceOnEitherSide = Self(
-    rawValue: "use_x_between_dimensions_with_space_on_either_side")
-  public static let useXBetweenDimensionsWithoutSpaceOnEitherSide = Self(
-    rawValue: "use_x_between_dimensions_without_space_on_either_side")
+public enum DeepLConfiguredRulesNumbersDimensionsSeparator: String, Codable, Hashable, Sendable {
+  case useMultiplicationSignBetweenDimensionsWithSpaceOnEitherSide =
+    "use_multiplication_sign_between_dimensions_with_space_on_either_side"
+  case useMultiplicationSignBetweenDimensionsWithoutSpaceOnEitherSide =
+    "use_multiplication_sign_between_dimensions_without_space_on_either_side"
+  case useXBetweenDimensionsWithSpaceOnEitherSide =
+    "use_x_between_dimensions_with_space_on_either_side"
+  case useXBetweenDimensionsWithoutSpaceOnEitherSide =
+    "use_x_between_dimensions_without_space_on_either_side"
 }

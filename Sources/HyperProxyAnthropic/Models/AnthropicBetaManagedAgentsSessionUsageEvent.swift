@@ -14,20 +14,20 @@ public struct AnthropicBetaManagedAgentsSessionUsageEvent: Codable, Sendable {
   public var budget: AnthropicBetaManagedAgentsBudget?
   public var id: String
   public var processedAt: AnthropicBetaTimestamp
-  public var typeModel: AnthropicBetaManagedAgentsSessionUsageEventTypeModel
-  public var usage: HyperProxyJSONValue
+  public var kind: AnthropicBetaManagedAgentsSessionUsageEventKind
+  public var usage: AnthropicBetaManagedAgentsSessionUsageSnapshot
 
   public init(
     id: String,
     processedAt: AnthropicBetaTimestamp,
-    typeModel: AnthropicBetaManagedAgentsSessionUsageEventTypeModel,
-    usage: HyperProxyJSONValue,
+    kind: AnthropicBetaManagedAgentsSessionUsageEventKind,
+    usage: AnthropicBetaManagedAgentsSessionUsageSnapshot,
     budget: AnthropicBetaManagedAgentsBudget? = nil
   ) {
     self.budget = budget
     self.id = id
     self.processedAt = processedAt
-    self.typeModel = typeModel
+    self.kind = kind
     self.usage = usage
   }
 
@@ -35,7 +35,7 @@ public struct AnthropicBetaManagedAgentsSessionUsageEvent: Codable, Sendable {
     case budget
     case id
     case processedAt = "processed_at"
-    case typeModel = "type"
+    case kind = "type"
     case usage
   }
 }

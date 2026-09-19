@@ -20,7 +20,7 @@ public struct MistralUpdateAgentRequest: Codable, Sendable {
   public var metadata: MistralMetadataDict?
   public var model: String?
   public var name: String?
-  public var tools: [HyperProxyJSONValue]?
+  public var tools: [MistralUpdateAgentRequestToolsItem]?
   public var versionMessage: String?
 
   public init(
@@ -33,7 +33,7 @@ public struct MistralUpdateAgentRequest: Codable, Sendable {
     metadata: MistralMetadataDict? = nil,
     model: String? = nil,
     name: String? = nil,
-    tools: [HyperProxyJSONValue]? = nil,
+    tools: [MistralUpdateAgentRequestToolsItem]? = nil,
     versionMessage: String? = nil
   ) {
     self.completionArgs = completionArgs

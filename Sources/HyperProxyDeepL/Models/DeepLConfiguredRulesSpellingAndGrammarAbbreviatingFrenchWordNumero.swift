@@ -10,18 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesSpellingAndGrammarAbbreviatingFrenchWordNumero: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum DeepLConfiguredRulesSpellingAndGrammarAbbreviatingFrenchWordNumero: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let abbreviateAsNThenDegreeSymbol = Self(
-    rawValue: "abbreviate_as_n_then_degree_symbol")
-  public static let abbreviateAsNThenOInSuperscript = Self(
-    rawValue: "abbreviate_as_n_then_o_in_superscript")
-  public static let abbreviateAsNo = Self(rawValue: "abbreviate_as_no")
+  case abbreviateAsNThenDegreeSymbol = "abbreviate_as_n_then_degree_symbol"
+  case abbreviateAsNThenOInSuperscript = "abbreviate_as_n_then_o_in_superscript"
+  case abbreviateAsNo = "abbreviate_as_no"
 }

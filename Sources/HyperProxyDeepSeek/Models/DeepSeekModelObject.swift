@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepSeekModelObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let model = Self(rawValue: "model")
+public enum DeepSeekModelObject: String, Codable, Hashable, Sendable {
+  case model = "model"
 }

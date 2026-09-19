@@ -14,12 +14,12 @@ public struct AnthropicBetaManagedAgentsGitHubRepositoryResourceParams: Codable,
   public var authorizationToken: String
   public var checkout: AnthropicBetaManagedAgentsRepositoryCheckout?
   public var mountPath: String?
-  public var typeModel: AnthropicBetaManagedAgentsGitHubRepositoryResourceParamsTypeModel
+  public var kind: AnthropicBetaManagedAgentsGitHubRepositoryResourceParamsKind
   public var url: String
 
   public init(
     authorizationToken: String,
-    typeModel: AnthropicBetaManagedAgentsGitHubRepositoryResourceParamsTypeModel,
+    kind: AnthropicBetaManagedAgentsGitHubRepositoryResourceParamsKind,
     url: String,
     checkout: AnthropicBetaManagedAgentsRepositoryCheckout? = nil,
     mountPath: String? = nil
@@ -27,7 +27,7 @@ public struct AnthropicBetaManagedAgentsGitHubRepositoryResourceParams: Codable,
     self.authorizationToken = authorizationToken
     self.checkout = checkout
     self.mountPath = mountPath
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
@@ -35,7 +35,7 @@ public struct AnthropicBetaManagedAgentsGitHubRepositoryResourceParams: Codable,
     case authorizationToken = "authorization_token"
     case checkout
     case mountPath = "mount_path"
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

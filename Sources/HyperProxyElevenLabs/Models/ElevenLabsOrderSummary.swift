@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsOrderSummary: Codable, Sendable {
   public var cancelReason: String?
   public var name: String
-  public var orderId: ElevenLabsOrderId
+  public var orderId: String
   public var sandbox: Bool?
   public var state: ElevenLabsOrderState
   public var submittedAt: String?
@@ -22,7 +22,7 @@ public struct ElevenLabsOrderSummary: Codable, Sendable {
 
   public init(
     name: String,
-    orderId: ElevenLabsOrderId,
+    orderId: String,
     state: ElevenLabsOrderState,
     cancelReason: String? = nil,
     sandbox: Bool? = nil,

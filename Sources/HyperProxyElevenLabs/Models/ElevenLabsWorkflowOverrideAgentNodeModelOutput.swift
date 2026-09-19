@@ -19,7 +19,7 @@ public struct ElevenLabsWorkflowOverrideAgentNodeModelOutput: Codable, Sendable 
   public var entryBehavior: ElevenLabsEntryBehavior
   public var label: String
   public var position: ElevenLabsPositionOutput
-  public var typeModel: String
+  public var kind: ElevenLabsOverrideAgentKind
 
   public init(
     additionalKnowledgeBase: [ElevenLabsKnowledgeBaseLocator],
@@ -30,7 +30,7 @@ public struct ElevenLabsWorkflowOverrideAgentNodeModelOutput: Codable, Sendable 
     entryBehavior: ElevenLabsEntryBehavior,
     label: String,
     position: ElevenLabsPositionOutput,
-    typeModel: String
+    kind: ElevenLabsOverrideAgentKind = .overrideAgent
   ) {
     self.additionalKnowledgeBase = additionalKnowledgeBase
     self.additionalPrompt = additionalPrompt
@@ -40,7 +40,7 @@ public struct ElevenLabsWorkflowOverrideAgentNodeModelOutput: Codable, Sendable 
     self.entryBehavior = entryBehavior
     self.label = label
     self.position = position
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -52,6 +52,6 @@ public struct ElevenLabsWorkflowOverrideAgentNodeModelOutput: Codable, Sendable 
     case entryBehavior = "entry_behavior"
     case label
     case position
-    case typeModel = "type"
+    case kind = "type"
   }
 }

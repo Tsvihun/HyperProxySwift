@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct ElevenLabsWorkflowExpressionConditionModelOutput: Codable, Sendable {
   public var expression: ElevenLabsASTNodeOutput
   public var label: String?
-  public var typeModel: String
+  public var kind: ElevenLabsExpressionKind
 
   public init(
     expression: ElevenLabsASTNodeOutput,
     label: String?,
-    typeModel: String
+    kind: ElevenLabsExpressionKind = .expression
   ) {
     self.expression = expression
     self.label = label
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case expression
     case label
-    case typeModel = "type"
+    case kind = "type"
   }
 }

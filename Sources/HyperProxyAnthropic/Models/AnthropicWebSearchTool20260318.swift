@@ -17,15 +17,15 @@ public struct AnthropicWebSearchTool20260318: Codable, Sendable {
   public var cacheControl: AnthropicCacheControlEphemeral?
   public var deferLoading: Bool?
   public var maxUses: Int?
-  public var name: String
+  public var name: AnthropicWebSearchName
   public var responseInclusion: AnthropicWebSearchTool20260318ResponseInclusion?
   public var strict: Bool?
-  public var typeModel: String
+  public var kind: AnthropicWebSearch20260318Kind
   public var userLocation: AnthropicUserLocation?
 
   public init(
-    name: String,
-    typeModel: String,
+    name: AnthropicWebSearchName = .webSearch,
+    kind: AnthropicWebSearch20260318Kind = .webSearch20260318,
     allowedCallers: [AnthropicAllowedCaller]? = nil,
     allowedDomains: [String]? = nil,
     blockedDomains: [String]? = nil,
@@ -45,7 +45,7 @@ public struct AnthropicWebSearchTool20260318: Codable, Sendable {
     self.name = name
     self.responseInclusion = responseInclusion
     self.strict = strict
-    self.typeModel = typeModel
+    self.kind = kind
     self.userLocation = userLocation
   }
 
@@ -59,7 +59,7 @@ public struct AnthropicWebSearchTool20260318: Codable, Sendable {
     case name
     case responseInclusion = "response_inclusion"
     case strict
-    case typeModel = "type"
+    case kind = "type"
     case userLocation = "user_location"
   }
 }

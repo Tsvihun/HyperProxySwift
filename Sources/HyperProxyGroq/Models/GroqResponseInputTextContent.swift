@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct GroqResponseInputTextContent: Codable, Sendable {
   public var text: String
-  public var typeModel: GroqResponseInputTextContentTypeModel
+  public var kind: GroqResponseInputTextContentKind
 
   public init(
     text: String,
-    typeModel: GroqResponseInputTextContentTypeModel
+    kind: GroqResponseInputTextContentKind
   ) {
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

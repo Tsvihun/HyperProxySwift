@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsSIPTrunkTransportEnum: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
-  public static let udp = Self(rawValue: "udp")
-  public static let tcp = Self(rawValue: "tcp")
-  public static let tls = Self(rawValue: "tls")
+public enum ElevenLabsSIPTrunkTransportEnum: String, Codable, Hashable, Sendable {
+  case auto = "auto"
+  case udp = "udp"
+  case tcp = "tcp"
+  case tls = "tls"
 }

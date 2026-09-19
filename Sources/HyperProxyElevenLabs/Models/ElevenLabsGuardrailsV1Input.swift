@@ -16,7 +16,7 @@ public struct ElevenLabsGuardrailsV1Input: Codable, Sendable {
   public var focus: ElevenLabsFocusGuardrail?
   public var moderation: ElevenLabsModerationGuardrailInput?
   public var promptInjection: ElevenLabsPromptInjectionGuardrail?
-  public var version: String?
+  public var version: ElevenLabsModel1Version?
 
   public init(
     content: ElevenLabsContentGuardrailInput? = nil,
@@ -24,7 +24,7 @@ public struct ElevenLabsGuardrailsV1Input: Codable, Sendable {
     focus: ElevenLabsFocusGuardrail? = nil,
     moderation: ElevenLabsModerationGuardrailInput? = nil,
     promptInjection: ElevenLabsPromptInjectionGuardrail? = nil,
-    version: String? = nil
+    version: ElevenLabsModel1Version? = nil
   ) {
     self.content = content
     self.custom = custom

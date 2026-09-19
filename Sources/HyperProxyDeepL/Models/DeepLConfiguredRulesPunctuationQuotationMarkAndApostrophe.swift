@@ -10,25 +10,15 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesPunctuationQuotationMarkAndApostrophe: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesPunctuationQuotationMarkAndApostrophe: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useCurlyQuotationMarksAndApostrophes = Self(
-    rawValue: "use_curly_quotation_marks_and_apostrophes")
-  public static let useDoubleAndSingleCurlyQuotationMarksAndCurlyApostrophes = Self(
-    rawValue: "use_double_and_single_curly_quotation_marks_and_curly_apostrophes")
-  public static let useDoubleAndSingleStraightQuotationMarksAndStraightApostrophes = Self(
-    rawValue: "use_double_and_single_straight_quotation_marks_and_straight_apostrophes")
-  public static let useGuillemetsAndCurlyApostrophes = Self(
-    rawValue: "use_guillemets_and_curly_apostrophes")
-  public static let useGuillemetsAndStraightApostrophes = Self(
-    rawValue: "use_guillemets_and_straight_apostrophes")
-  public static let useStraightQuotationMarksAndApostrophes = Self(
-    rawValue: "use_straight_quotation_marks_and_apostrophes")
+  case useCurlyQuotationMarksAndApostrophes = "use_curly_quotation_marks_and_apostrophes"
+  case useDoubleAndSingleCurlyQuotationMarksAndCurlyApostrophes =
+    "use_double_and_single_curly_quotation_marks_and_curly_apostrophes"
+  case useDoubleAndSingleStraightQuotationMarksAndStraightApostrophes =
+    "use_double_and_single_straight_quotation_marks_and_straight_apostrophes"
+  case useGuillemetsAndCurlyApostrophes = "use_guillemets_and_curly_apostrophes"
+  case useGuillemetsAndStraightApostrophes = "use_guillemets_and_straight_apostrophes"
+  case useStraightQuotationMarksAndApostrophes = "use_straight_quotation_marks_and_apostrophes"
 }

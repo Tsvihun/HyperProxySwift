@@ -10,4 +10,34 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIBetaApplyPatchOperationParam = HyperProxyJSONValue
+public enum OpenAIBetaApplyPatchOperationParam: Codable, Sendable {
+  case betaApplyPatchCreateFileOperationParam(OpenAIBetaApplyPatchCreateFileOperationParam)
+  case betaApplyPatchDeleteFileOperationParam(OpenAIBetaApplyPatchDeleteFileOperationParam)
+  case betaApplyPatchUpdateFileOperationParam(OpenAIBetaApplyPatchUpdateFileOperationParam)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(OpenAIBetaApplyPatchCreateFileOperationParam.self) {
+      self = .betaApplyPatchCreateFileOperationParam(value)
+      return
+    }
+    if let value = try? container.decode(OpenAIBetaApplyPatchDeleteFileOperationParam.self) {
+      self = .betaApplyPatchDeleteFileOperationParam(value)
+      return
+    }
+    self = .betaApplyPatchUpdateFileOperationParam(
+      try container.decode(OpenAIBetaApplyPatchUpdateFileOperationParam.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .betaApplyPatchCreateFileOperationParam(let value):
+      try container.encode(value)
+    case .betaApplyPatchDeleteFileOperationParam(let value):
+      try container.encode(value)
+    case .betaApplyPatchUpdateFileOperationParam(let value):
+      try container.encode(value)
+    }
+  }
+}

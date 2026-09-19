@@ -11,24 +11,24 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaExternalKey: Codable, Sendable {
-  public var attachment: HyperProxyJSONValue
+  public var attachment: AnthropicBetaExternalKeyAttachment
   public var createdAt: String
   public var displayName: String?
   public var geo: String
   public var id: String
-  public var providerConfig: HyperProxyJSONValue
-  public var typeModel: String
+  public var providerConfig: AnthropicBetaExternalKeyProviderConfig
+  public var kind: AnthropicExternalKeyKind
   public var updatedAt: String
 
   public init(
-    attachment: HyperProxyJSONValue,
+    attachment: AnthropicBetaExternalKeyAttachment,
     createdAt: String,
     displayName: String?,
     geo: String,
     id: String,
-    providerConfig: HyperProxyJSONValue,
-    typeModel: String,
-    updatedAt: String
+    providerConfig: AnthropicBetaExternalKeyProviderConfig,
+    updatedAt: String,
+    kind: AnthropicExternalKeyKind = .externalKey
   ) {
     self.attachment = attachment
     self.createdAt = createdAt
@@ -36,7 +36,7 @@ public struct AnthropicBetaExternalKey: Codable, Sendable {
     self.geo = geo
     self.id = id
     self.providerConfig = providerConfig
-    self.typeModel = typeModel
+    self.kind = kind
     self.updatedAt = updatedAt
   }
 
@@ -47,7 +47,7 @@ public struct AnthropicBetaExternalKey: Codable, Sendable {
     case geo
     case id
     case providerConfig = "provider_config"
-    case typeModel = "type"
+    case kind = "type"
     case updatedAt = "updated_at"
   }
 }

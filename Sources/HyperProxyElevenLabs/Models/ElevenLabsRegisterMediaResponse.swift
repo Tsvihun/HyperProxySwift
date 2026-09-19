@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsRegisterMediaResponse: Codable, Sendable {
-  public var mediaId: ElevenLabsMediaId
+  public var mediaId: String
 
   public init(
-    mediaId: ElevenLabsMediaId
+    mediaId: String
   ) {
     self.mediaId = mediaId
   }

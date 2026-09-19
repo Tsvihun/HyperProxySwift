@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIAdminApiKeysDeleteResponseObject: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let organizationAdminApiKeyDeleted = Self(
-    rawValue: "organization.admin_api_key.deleted")
+public enum OpenAIAdminApiKeysDeleteResponseObject: String, Codable, Hashable, Sendable {
+  case organizationAdminApiKeyDeleted = "organization.admin_api_key.deleted"
 }

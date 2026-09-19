@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAISpeechAudioDoneEvent: Codable, Sendable {
-  public var typeModel: OpenAISpeechAudioDoneEventTypeModel
+  public var kind: OpenAISpeechAudioDoneEventKind
   public var usage: OpenAISpeechAudioDoneEventUsage
 
   public init(
-    typeModel: OpenAISpeechAudioDoneEventTypeModel,
+    kind: OpenAISpeechAudioDoneEventKind,
     usage: OpenAISpeechAudioDoneEventUsage
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
     self.usage = usage
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
     case usage
   }
 }

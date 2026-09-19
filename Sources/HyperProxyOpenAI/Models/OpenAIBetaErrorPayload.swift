@@ -16,13 +16,13 @@ public struct OpenAIBetaErrorPayload: Codable, Sendable {
   public var message: String
   public var misalignment: OpenAIBetaMisalignmentErrorDetailsResource?
   public var param: String?
-  public var typeModel: String
+  public var kind: String
 
   public init(
     code: String?,
     message: String,
     param: String?,
-    typeModel: String,
+    kind: String,
     headers: [String: String]? = nil,
     misalignment: OpenAIBetaMisalignmentErrorDetailsResource? = nil
   ) {
@@ -31,7 +31,7 @@ public struct OpenAIBetaErrorPayload: Codable, Sendable {
     self.message = message
     self.misalignment = misalignment
     self.param = param
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIBetaErrorPayload: Codable, Sendable {
     case message
     case misalignment
     case param
-    case typeModel = "type"
+    case kind = "type"
   }
 }

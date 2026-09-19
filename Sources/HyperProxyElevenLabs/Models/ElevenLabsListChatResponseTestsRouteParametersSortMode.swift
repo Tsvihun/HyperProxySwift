@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsListChatResponseTestsRouteParametersSortMode: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum ElevenLabsListChatResponseTestsRouteParametersSortMode: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let defaultValue = Self(rawValue: "default")
-  public static let foldersFirst = Self(rawValue: "folders_first")
+  case defaultValue = "default"
+  case foldersFirst = "folders_first"
 }

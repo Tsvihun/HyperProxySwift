@@ -16,14 +16,14 @@ public struct OpenAIBetaResponseFunctionCallArgumentsDeltaEvent: Codable, Sendab
   public var itemId: String
   public var outputIndex: Int
   public var sequenceNumber: Int
-  public var typeModel: OpenAIBetaResponseFunctionCallArgumentsDeltaEventTypeModel
+  public var kind: OpenAIBetaResponseFunctionCallArgumentsDeltaEventKind
 
   public init(
     delta: String,
     itemId: String,
     outputIndex: Int,
     sequenceNumber: Int,
-    typeModel: OpenAIBetaResponseFunctionCallArgumentsDeltaEventTypeModel,
+    kind: OpenAIBetaResponseFunctionCallArgumentsDeltaEventKind,
     agent: OpenAIBetaAgentTag? = nil
   ) {
     self.agent = agent
@@ -31,7 +31,7 @@ public struct OpenAIBetaResponseFunctionCallArgumentsDeltaEvent: Codable, Sendab
     self.itemId = itemId
     self.outputIndex = outputIndex
     self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIBetaResponseFunctionCallArgumentsDeltaEvent: Codable, Sendab
     case itemId = "item_id"
     case outputIndex = "output_index"
     case sequenceNumber = "sequence_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsAudioNativeProjectSettingsResponseModelStatus: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum ElevenLabsAudioNativeProjectSettingsResponseModelStatus: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let processing = Self(rawValue: "processing")
-  public static let ready = Self(rawValue: "ready")
+  case processing = "processing"
+  case ready = "ready"
 }

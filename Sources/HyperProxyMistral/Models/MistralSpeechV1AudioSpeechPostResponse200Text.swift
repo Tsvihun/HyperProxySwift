@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralSpeechV1AudioSpeechPostResponse200Text: Codable, Sendable {
-  public var data: HyperProxyJSONValue
+  public var data: MistralSpeechV1AudioSpeechPostResponse200TextData
   public var event: HyperProxyJSONValue
 
   public init(
-    data: HyperProxyJSONValue,
+    data: MistralSpeechV1AudioSpeechPostResponse200TextData,
     event: HyperProxyJSONValue
   ) {
     self.data = data

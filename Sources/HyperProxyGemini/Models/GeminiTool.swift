@@ -11,26 +11,26 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiTool: Codable, Sendable {
-  public var codeExecution: HyperProxyJSONValue?
-  public var computerUse: HyperProxyJSONValue?
-  public var fileSearch: HyperProxyJSONValue?
-  public var functionDeclarations: [HyperProxyJSONValue]?
-  public var googleMaps: HyperProxyJSONValue?
-  public var googleSearch: HyperProxyJSONValue?
-  public var googleSearchRetrieval: HyperProxyJSONValue?
-  public var mcpServers: [HyperProxyJSONValue]?
-  public var urlContext: HyperProxyJSONValue?
+  public var codeExecution: GeminiCodeExecution?
+  public var computerUse: GeminiComputerUse?
+  public var fileSearch: GeminiFileSearch?
+  public var functionDeclarations: [GeminiFunctionDeclaration]?
+  public var googleMaps: GeminiGoogleMaps?
+  public var googleSearch: GeminiGoogleSearch?
+  public var googleSearchRetrieval: GeminiGoogleSearchRetrieval?
+  public var mcpServers: [GeminiMcpServer]?
+  public var urlContext: GeminiUrlContext?
 
   public init(
-    codeExecution: HyperProxyJSONValue? = nil,
-    computerUse: HyperProxyJSONValue? = nil,
-    fileSearch: HyperProxyJSONValue? = nil,
-    functionDeclarations: [HyperProxyJSONValue]? = nil,
-    googleMaps: HyperProxyJSONValue? = nil,
-    googleSearch: HyperProxyJSONValue? = nil,
-    googleSearchRetrieval: HyperProxyJSONValue? = nil,
-    mcpServers: [HyperProxyJSONValue]? = nil,
-    urlContext: HyperProxyJSONValue? = nil
+    codeExecution: GeminiCodeExecution? = nil,
+    computerUse: GeminiComputerUse? = nil,
+    fileSearch: GeminiFileSearch? = nil,
+    functionDeclarations: [GeminiFunctionDeclaration]? = nil,
+    googleMaps: GeminiGoogleMaps? = nil,
+    googleSearch: GeminiGoogleSearch? = nil,
+    googleSearchRetrieval: GeminiGoogleSearchRetrieval? = nil,
+    mcpServers: [GeminiMcpServer]? = nil,
+    urlContext: GeminiUrlContext? = nil
   ) {
     self.codeExecution = codeExecution
     self.computerUse = computerUse

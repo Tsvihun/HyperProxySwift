@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct FalListAssetsParametersMediaTypeItem: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let image = Self(rawValue: "image")
-  public static let video = Self(rawValue: "video")
-  public static let audio = Self(rawValue: "audio")
-  public static let value3d = Self(rawValue: "3d")
+public enum FalListAssetsParametersMediaTypeItem: String, Codable, Hashable, Sendable {
+  case image = "image"
+  case video = "video"
+  case audio = "audio"
+  case value3d = "3d"
 }

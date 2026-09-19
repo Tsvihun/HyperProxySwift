@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksEvaluatorSourceType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let tYPEUNSPECIFIED = Self(rawValue: "TYPE_UNSPECIFIED")
-  public static let tYPEUPLOAD = Self(rawValue: "TYPE_UPLOAD")
-  public static let tYPEGITHUB = Self(rawValue: "TYPE_GITHUB")
-  public static let tYPETEMPORARY = Self(rawValue: "TYPE_TEMPORARY")
+public enum FireworksEvaluatorSourceType: String, Codable, Hashable, Sendable {
+  case tYPEUNSPECIFIED = "TYPE_UNSPECIFIED"
+  case tYPEUPLOAD = "TYPE_UPLOAD"
+  case tYPEGITHUB = "TYPE_GITHUB"
+  case tYPETEMPORARY = "TYPE_TEMPORARY"
 }

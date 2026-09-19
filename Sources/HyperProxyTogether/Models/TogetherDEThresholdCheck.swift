@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct TogetherDEThresholdCheck: Codable, Sendable {
   public var operatorValue: TogetherDEThresholdCheckOperator
-  public var value: Double
+  public var value: Double?
 
   public init(
     operatorValue: TogetherDEThresholdCheckOperator,
-    value: Double
+    value: Double? = nil
   ) {
     self.operatorValue = operatorValue
     self.value = value

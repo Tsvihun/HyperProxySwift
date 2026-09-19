@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiRetrievedContext: Codable, Sendable {
-  public var customMetadata: [HyperProxyJSONValue]?
+  public var customMetadata: [GeminiGroundingChunkCustomMetadata]?
   public var fileSearchStore: String?
   public var mediaId: String?
   public var pageNumber: Int?
@@ -20,7 +20,7 @@ public struct GeminiRetrievedContext: Codable, Sendable {
   public var uri: String?
 
   public init(
-    customMetadata: [HyperProxyJSONValue]? = nil,
+    customMetadata: [GeminiGroundingChunkCustomMetadata]? = nil,
     fileSearchStore: String? = nil,
     mediaId: String? = nil,
     pageNumber: Int? = nil,

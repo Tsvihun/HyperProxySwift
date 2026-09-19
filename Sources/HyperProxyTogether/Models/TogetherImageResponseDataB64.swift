@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct TogetherImageResponseDataB64: Codable, Sendable {
   public var b64Json: String
   public var index: Int
-  public var typeModel: TogetherImageResponseDataB64TypeModel
+  public var kind: TogetherImageResponseDataB64Kind
 
   public init(
     b64Json: String,
     index: Int,
-    typeModel: TogetherImageResponseDataB64TypeModel
+    kind: TogetherImageResponseDataB64Kind
   ) {
     self.b64Json = b64Json
     self.index = index
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case b64Json = "b64_json"
     case index
-    case typeModel = "type"
+    case kind = "type"
   }
 }

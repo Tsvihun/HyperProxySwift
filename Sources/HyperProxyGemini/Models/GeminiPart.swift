@@ -11,40 +11,40 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiPart: Codable, Sendable {
-  public var audioTranscription: HyperProxyJSONValue?
-  public var codeExecutionResult: HyperProxyJSONValue?
-  public var executableCode: HyperProxyJSONValue?
-  public var fileData: HyperProxyJSONValue?
-  public var functionCall: HyperProxyJSONValue?
-  public var functionResponse: HyperProxyJSONValue?
-  public var inlineData: HyperProxyJSONValue?
+  public var audioTranscription: GeminiAudioTranscription?
+  public var codeExecutionResult: GeminiCodeExecutionResult?
+  public var executableCode: GeminiExecutableCode?
+  public var fileData: GeminiFileData?
+  public var functionCall: GeminiFunctionCall?
+  public var functionResponse: GeminiFunctionResponse?
+  public var inlineData: GeminiBlob?
   public var mediaProcessing: GeminiPartMediaProcessing?
-  public var mediaResolution: HyperProxyJSONValue?
+  public var mediaResolution: GeminiV1mainMediaResolution?
   public var partMetadata: [String: HyperProxyJSONValue]?
   public var text: String?
   public var thought: Bool?
   public var thoughtSignature: String?
-  public var toolCall: HyperProxyJSONValue?
-  public var toolResponse: HyperProxyJSONValue?
-  public var videoMetadata: HyperProxyJSONValue?
+  public var toolCall: GeminiToolCall?
+  public var toolResponse: GeminiToolResponse?
+  public var videoMetadata: GeminiVideoMetadata?
 
   public init(
-    audioTranscription: HyperProxyJSONValue? = nil,
-    codeExecutionResult: HyperProxyJSONValue? = nil,
-    executableCode: HyperProxyJSONValue? = nil,
-    fileData: HyperProxyJSONValue? = nil,
-    functionCall: HyperProxyJSONValue? = nil,
-    functionResponse: HyperProxyJSONValue? = nil,
-    inlineData: HyperProxyJSONValue? = nil,
+    audioTranscription: GeminiAudioTranscription? = nil,
+    codeExecutionResult: GeminiCodeExecutionResult? = nil,
+    executableCode: GeminiExecutableCode? = nil,
+    fileData: GeminiFileData? = nil,
+    functionCall: GeminiFunctionCall? = nil,
+    functionResponse: GeminiFunctionResponse? = nil,
+    inlineData: GeminiBlob? = nil,
     mediaProcessing: GeminiPartMediaProcessing? = nil,
-    mediaResolution: HyperProxyJSONValue? = nil,
+    mediaResolution: GeminiV1mainMediaResolution? = nil,
     partMetadata: [String: HyperProxyJSONValue]? = nil,
     text: String? = nil,
     thought: Bool? = nil,
     thoughtSignature: String? = nil,
-    toolCall: HyperProxyJSONValue? = nil,
-    toolResponse: HyperProxyJSONValue? = nil,
-    videoMetadata: HyperProxyJSONValue? = nil
+    toolCall: GeminiToolCall? = nil,
+    toolResponse: GeminiToolResponse? = nil,
+    videoMetadata: GeminiVideoMetadata? = nil
   ) {
     self.audioTranscription = audioTranscription
     self.codeExecutionResult = codeExecutionResult

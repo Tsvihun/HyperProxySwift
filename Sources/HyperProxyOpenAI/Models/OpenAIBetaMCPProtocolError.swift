@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenAIBetaMCPProtocolError: Codable, Sendable {
   public var code: Int
   public var message: String
-  public var typeModel: OpenAIBetaMCPProtocolErrorTypeModel
+  public var kind: OpenAIBetaMCPProtocolErrorKind
 
   public init(
     code: Int,
     message: String,
-    typeModel: OpenAIBetaMCPProtocolErrorTypeModel
+    kind: OpenAIBetaMCPProtocolErrorKind
   ) {
     self.code = code
     self.message = message
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case code
     case message
-    case typeModel = "type"
+    case kind = "type"
   }
 }

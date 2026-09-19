@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAINoiseReductionType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let nearField = Self(rawValue: "near_field")
-  public static let farField = Self(rawValue: "far_field")
+public enum OpenAINoiseReductionType: String, Codable, Hashable, Sendable {
+  case nearField = "near_field"
+  case farField = "far_field"
 }

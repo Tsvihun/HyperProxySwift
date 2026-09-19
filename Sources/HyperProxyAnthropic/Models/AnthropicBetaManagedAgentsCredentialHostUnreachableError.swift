@@ -14,20 +14,20 @@ public struct AnthropicBetaManagedAgentsCredentialHostUnreachableError: Codable,
   public var credentialId: String
   public var message: String
   public var retryStatus: AnthropicBetaManagedAgentsRetryStatus
-  public var typeModel: AnthropicBetaManagedAgentsCredentialHostUnreachableErrorTypeModel
+  public var kind: AnthropicBetaManagedAgentsCredentialHostUnreachableErrorKind
   public var vaultId: String
 
   public init(
     credentialId: String,
     message: String,
     retryStatus: AnthropicBetaManagedAgentsRetryStatus,
-    typeModel: AnthropicBetaManagedAgentsCredentialHostUnreachableErrorTypeModel,
+    kind: AnthropicBetaManagedAgentsCredentialHostUnreachableErrorKind,
     vaultId: String
   ) {
     self.credentialId = credentialId
     self.message = message
     self.retryStatus = retryStatus
-    self.typeModel = typeModel
+    self.kind = kind
     self.vaultId = vaultId
   }
 
@@ -35,7 +35,7 @@ public struct AnthropicBetaManagedAgentsCredentialHostUnreachableError: Codable,
     case credentialId = "credential_id"
     case message
     case retryStatus = "retry_status"
-    case typeModel = "type"
+    case kind = "type"
     case vaultId = "vault_id"
   }
 }

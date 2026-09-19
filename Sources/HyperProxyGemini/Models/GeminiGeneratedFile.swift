@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiGeneratedFile: Codable, Sendable {
-  public var error: HyperProxyJSONValue?
+  public var error: GeminiStatus?
   public var mimeType: String?
   public var name: String?
   public var state: GeminiGeneratedFileState?
 
   public init(
-    error: HyperProxyJSONValue? = nil,
+    error: GeminiStatus? = nil,
     mimeType: String? = nil,
     name: String? = nil,
     state: GeminiGeneratedFileState? = nil

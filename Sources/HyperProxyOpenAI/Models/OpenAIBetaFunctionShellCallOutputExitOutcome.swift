@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIBetaFunctionShellCallOutputExitOutcome: Codable, Sendable {
   public var exitCode: Int
-  public var typeModel: OpenAIBetaFunctionShellCallOutputExitOutcomeTypeModel
+  public var kind: OpenAIBetaFunctionShellCallOutputExitOutcomeKind
 
   public init(
     exitCode: Int,
-    typeModel: OpenAIBetaFunctionShellCallOutputExitOutcomeTypeModel
+    kind: OpenAIBetaFunctionShellCallOutputExitOutcomeKind
   ) {
     self.exitCode = exitCode
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case exitCode = "exit_code"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

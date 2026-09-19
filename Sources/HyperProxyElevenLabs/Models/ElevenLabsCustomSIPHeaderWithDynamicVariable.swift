@@ -12,22 +12,22 @@ import HyperProxyCore
 
 public struct ElevenLabsCustomSIPHeaderWithDynamicVariable: Codable, Sendable {
   public var key: String
-  public var typeModel: String
+  public var kind: ElevenLabsDynamicKind
   public var value: String
 
   public init(
     key: String,
-    typeModel: String,
-    value: String
+    value: String,
+    kind: ElevenLabsDynamicKind = .dynamicValue
   ) {
     self.key = key
-    self.typeModel = typeModel
+    self.kind = kind
     self.value = value
   }
 
   enum CodingKeys: String, CodingKey {
     case key
-    case typeModel = "type"
+    case kind = "type"
     case value
   }
 }

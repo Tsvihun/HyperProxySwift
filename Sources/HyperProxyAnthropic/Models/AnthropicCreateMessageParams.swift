@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct AnthropicCreateMessageParams: Codable, Sendable {
   public var cacheControl: AnthropicCacheControlEphemeral?
-  public var container: HyperProxyJSONValue?
+  public var container: AnthropicCreateMessageParamsContainer?
   public var inferenceGeo: String?
   public var maxTokens: Int
   public var messages: [AnthropicInputMessage]
@@ -22,11 +22,11 @@ public struct AnthropicCreateMessageParams: Codable, Sendable {
   public var serviceTier: AnthropicCreateMessageParamsServiceTier?
   public var stopSequences: [String]?
   public var stream: Bool?
-  public var system: HyperProxyJSONValue?
+  public var system: AnthropicCreateMessageParamsSystem?
   public var temperature: Double?
   public var thinking: AnthropicThinkingConfigParam?
   public var toolChoice: AnthropicToolChoice?
-  public var tools: [HyperProxyJSONValue]?
+  public var tools: [AnthropicCreateMessageParamsToolsItem]?
   public var topK: Int?
   public var topP: Double?
 
@@ -35,18 +35,18 @@ public struct AnthropicCreateMessageParams: Codable, Sendable {
     messages: [AnthropicInputMessage],
     model: AnthropicModel,
     cacheControl: AnthropicCacheControlEphemeral? = nil,
-    container: HyperProxyJSONValue? = nil,
+    container: AnthropicCreateMessageParamsContainer? = nil,
     inferenceGeo: String? = nil,
     metadata: AnthropicMetadata? = nil,
     outputConfig: AnthropicOutputConfig? = nil,
     serviceTier: AnthropicCreateMessageParamsServiceTier? = nil,
     stopSequences: [String]? = nil,
     stream: Bool? = nil,
-    system: HyperProxyJSONValue? = nil,
+    system: AnthropicCreateMessageParamsSystem? = nil,
     temperature: Double? = nil,
     thinking: AnthropicThinkingConfigParam? = nil,
     toolChoice: AnthropicToolChoice? = nil,
-    tools: [HyperProxyJSONValue]? = nil,
+    tools: [AnthropicCreateMessageParamsToolsItem]? = nil,
     topK: Int? = nil,
     topP: Double? = nil
   ) {

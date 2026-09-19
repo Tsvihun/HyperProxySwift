@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterChatStreamDelta: Codable, Sendable {
-  public var audio: HyperProxyJSONValue?
+  public var audio: OpenRouterChatAudioOutput?
   public var content: String?
   public var reasoning: String?
   public var reasoningDetails: OpenRouterChatStreamReasoningDetails?
@@ -20,7 +20,7 @@ public struct OpenRouterChatStreamDelta: Codable, Sendable {
   public var toolCalls: [OpenRouterChatStreamToolCall]?
 
   public init(
-    audio: HyperProxyJSONValue? = nil,
+    audio: OpenRouterChatAudioOutput? = nil,
     content: String? = nil,
     reasoning: String? = nil,
     reasoningDetails: OpenRouterChatStreamReasoningDetails? = nil,

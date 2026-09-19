@@ -14,13 +14,13 @@ public struct AnthropicToolSearchToolRegex20251119: Codable, Sendable {
   public var allowedCallers: [AnthropicAllowedCaller]?
   public var cacheControl: AnthropicCacheControlEphemeral?
   public var deferLoading: Bool?
-  public var name: String
+  public var name: AnthropicToolSearchToolRegexName
   public var strict: Bool?
-  public var typeModel: AnthropicToolSearchToolRegex20251119TypeModel
+  public var kind: AnthropicToolSearchToolRegex20251119Kind
 
   public init(
-    name: String,
-    typeModel: AnthropicToolSearchToolRegex20251119TypeModel,
+    kind: AnthropicToolSearchToolRegex20251119Kind,
+    name: AnthropicToolSearchToolRegexName = .toolSearchToolRegex,
     allowedCallers: [AnthropicAllowedCaller]? = nil,
     cacheControl: AnthropicCacheControlEphemeral? = nil,
     deferLoading: Bool? = nil,
@@ -31,7 +31,7 @@ public struct AnthropicToolSearchToolRegex20251119: Codable, Sendable {
     self.deferLoading = deferLoading
     self.name = name
     self.strict = strict
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct AnthropicToolSearchToolRegex20251119: Codable, Sendable {
     case deferLoading = "defer_loading"
     case name
     case strict
-    case typeModel = "type"
+    case kind = "type"
   }
 }

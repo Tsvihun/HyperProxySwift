@@ -12,22 +12,22 @@ import HyperProxyCore
 
 public struct OpenRouterAnthropicImageBlockParam: Codable, Sendable {
   public var cacheControl: OpenRouterAnthropicCacheControlDirective?
-  public var source: HyperProxyJSONValue
-  public var typeModel: OpenRouterAnthropicImageBlockParamTypeModel
+  public var source: OpenRouterAnthropicImageBlockParamSource
+  public var kind: OpenRouterAnthropicImageBlockParamKind
 
   public init(
-    source: HyperProxyJSONValue,
-    typeModel: OpenRouterAnthropicImageBlockParamTypeModel,
+    source: OpenRouterAnthropicImageBlockParamSource,
+    kind: OpenRouterAnthropicImageBlockParamKind,
     cacheControl: OpenRouterAnthropicCacheControlDirective? = nil
   ) {
     self.cacheControl = cacheControl
     self.source = source
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case cacheControl = "cache_control"
     case source
-    case typeModel = "type"
+    case kind = "type"
   }
 }

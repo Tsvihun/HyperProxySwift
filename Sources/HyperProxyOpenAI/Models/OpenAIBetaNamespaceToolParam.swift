@@ -13,25 +13,25 @@ import HyperProxyCore
 public struct OpenAIBetaNamespaceToolParam: Codable, Sendable {
   public var description: String
   public var name: String
-  public var tools: [HyperProxyJSONValue]
-  public var typeModel: OpenAIBetaNamespaceToolParamTypeModel
+  public var tools: [OpenAIBetaNamespaceToolParamToolsItem]
+  public var kind: OpenAIBetaNamespaceToolParamKind
 
   public init(
     description: String,
     name: String,
-    tools: [HyperProxyJSONValue],
-    typeModel: OpenAIBetaNamespaceToolParamTypeModel
+    tools: [OpenAIBetaNamespaceToolParamToolsItem],
+    kind: OpenAIBetaNamespaceToolParamKind
   ) {
     self.description = description
     self.name = name
     self.tools = tools
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case description
     case name
     case tools
-    case typeModel = "type"
+    case kind = "type"
   }
 }

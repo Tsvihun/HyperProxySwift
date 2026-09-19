@@ -15,10 +15,10 @@ catalog, while the core transport keeps raw HTTP available for newly released fi
 - **Forward-compatible:** raw JSON, multipart, binary, SSE, and WebSocket APIs remain available.
 - **Two transport modes:** every typed or generic API can use HyperProxy's split-key gateway or
   connect directly with credentials owned by the host application.
-- **Generated from official sources:** 2,244 operations from 53 official specifications and
+- **Generated from official sources:** 2,292 operations from 53 official specifications and
   watched documentation sources across 18 provider families.
-- **Official provider models:** 15,464 request, response, event, enum, and parameter types plus
-  1,955 typed operation bindings — including typed `…Stream` variants — generated from official
+- **Official provider models:** 17,559 request, response, event, enum, and parameter models plus
+  2,036 typed operation bindings — including typed `…Stream` variants — generated from official
   machine-readable or reviewed schemas.
 - **Security-first:** split-key credentials, DeviceCheck, App Attest, and deployment-owned
   certificate pinning, with optional Firebase App Check.
@@ -35,9 +35,9 @@ direct-to-provider mode. Background URLSessions are rejected because they do
 not honor the redirect delegate. Default/ephemeral sessions and session-level
 certificate pinning remain supported.
 
-The unreleased security changes are not included in the existing `0.3.0` tag.
-See [release provenance and privacy checks](../Compliance/README.md) for remaining
-rights-review and app archive requirements before the next release.
+The `0.4.0` release candidate is prepared on `main` but is not tagged yet. See
+[release provenance and privacy checks](../Compliance/README.md) for remaining rights-review
+and app archive requirements before the release.
 
 ### Platforms
 
@@ -60,7 +60,7 @@ From another package:
 ```swift
 .package(
   url: "https://github.com/Tsvihun/HyperProxySwift.git",
-  branch: "prelaunch/security-hardening"
+  branch: "main"
 )
 ```
 
@@ -77,14 +77,14 @@ CocoaPods supports iOS 15+ and macOS 13+. Use SwiftPM for visionOS and watchOS.
 Install the complete SDK:
 
 ```ruby
-pod 'HyperProxy', '~> 0.3'
+pod 'HyperProxy', '~> 0.4'
 ```
 
 Or keep the application binary smaller by selecting only what it uses:
 
 ```ruby
-pod 'HyperProxyOpenAI', '~> 0.3'
-pod 'HyperProxyRealtimeAudio', '~> 0.3' # optional microphone/playback support
+pod 'HyperProxyOpenAI', '~> 0.4'
+pod 'HyperProxyRealtimeAudio', '~> 0.4' # optional microphone/playback support
 ```
 
 The aggregate pod and every component pod use the same module names as SwiftPM, so application
@@ -105,7 +105,7 @@ let openAI = HyperProxy.openAI(
 let response: OpenAIResponse = try await openAI.responsesCreate(
   OpenAICreateResponse(
     input: "Hello",
-    model: .modelIdsShared("gpt-5")
+    model: .modelIdsShared(.gpt5)
   )
 )
 ```
@@ -139,8 +139,9 @@ users, usage, certificates), keeping app-facing autocomplete focused on inferenc
 are available on every provider module. They support JSON,
 form, multipart, text and binary request bodies; JSON, text, empty, binary, SSE, JSONL and WebSocket
 responses; response metadata; cursor pagination; polling; upload progress; and raw-body escape
-hatches. Generated string enums are forward-compatible wrappers rather than closed Swift enums,
-so newly released raw values survive decoding. `HyperProxyJSONValue` keeps unknown beta/admin
+hatches. Closed provider enums are generated as real Swift enums with exhaustive cases. Schemas
+that explicitly allow additional values also expose `custom(...)`, so newly released raw values
+survive decoding. `HyperProxyJSONValue` keeps unknown beta/admin
 fields lossless when an official API adds a field between SDK releases and supports dynamic reads
 such as `response.usage?.total_tokens?.integerValue`.
 
@@ -154,7 +155,7 @@ model, so forgetting `"stream": true` is impossible:
 for try await chunk in try openAI.chatCompletionsCreateStream(
   OpenAICreateChatCompletionRequest(
     messages: [["role": "user", "content": "Write one sentence"]],
-    model: "gpt-5"
+    model: .gpt5
   )
 ) {
   print(chunk.choices.first?.delta.content ?? "")
@@ -581,3 +582,27 @@ Provider metadata and provider modules are versioned release artifacts. Their ma
 generation pipeline is intentionally not distributed with the SDK.
 
 CI verifies package tests, examples, and the iOS Simulator build.
+
+## Gateway refusals and error codes
+
+The gateway answers its own refusals with a small JSON body:
+`{"detail": {"error": "<code>", …}}` or `{"detail": "<code>"}`. `HyperProxyError.httpStatus`
+keeps the body, and `gatewayRejection` decodes it:
+
+| Reason | Code(s) | HTTP | WebSocket | What to do |
+|---|---|---|---|---|
+| `planQuotaExceeded` | `plan_quota_exceeded` | 429 | 4029 | Wait for `periodResetsAt`; paid plans also report `limit` and the overage `cap`. |
+| `budgetExceeded` | `budget_exceeded` | 429 | 4029 | The project's enforced monthly budget is used up; `monthlyBudgetUSD`, `periodResetsAt`. |
+| `budgetAccountingIncomplete` | `budget_accounting_incomplete` | 429 | 4029 | Retry later; the gateway is finalising recent costs. |
+| `budgetPricingUnavailable` | `budget_pricing_unavailable` | 429 | 4029 | The requested model has no price the hard budget can use; `detail` names it. |
+| `rateLimited` | `rate_limited` | 429 | 4429 | Back off; `scope` is `key`, `ip`, or `device`; honour `Retry-After`. |
+| `invalidAppKey` | `missing_or_invalid_app_key`, `invalid_app_key` | 401 | 4001 | The build's app key is malformed or its envelope does not open. |
+| `unknownOrRevokedKey` | `unknown_or_revoked_key` | 401 | 4001 | Revoked in the dashboard; ship a build with a new key. |
+| `expiredKey` | `expired_key` | 401 | 4001 | Retired after a rotation grace period; ship the replacement key. |
+| `unknownOrInactiveProject` | `unknown_or_inactive_project` | 401 | 4001 | The project is gone or paused. |
+| `accountSuspended` | `account_suspended` | 403 | 4003 | Contact HyperProxy support. |
+| `unknownService` / `keyServiceMismatch` / `forbiddenPath` | as named | 404 / 403 | 4004 / 4003 | The URL, key, and endpoint allowlist disagree; fix the integration. |
+| `upstreamUnavailable` | `all_channels_unavailable`, `upstream_unreachable` | 502/503 | 4502/4503 | Transient; retry with backoff. |
+
+`isTransient` is true only for rate limits and upstream outages. Provider errors (an OpenAI
+`{"error": …}` body, for instance) pass through unchanged and leave `gatewayRejection` nil.

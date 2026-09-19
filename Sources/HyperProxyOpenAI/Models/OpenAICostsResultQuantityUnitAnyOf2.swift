@@ -10,19 +10,13 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAICostsResultQuantityUnitAnyOf2: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let tokens = Self(rawValue: "tokens")
-  public static let value1000Tokens = Self(rawValue: "1000_tokens")
-  public static let durationSeconds = Self(rawValue: "duration_seconds")
-  public static let durationMinutes = Self(rawValue: "duration_minutes")
-  public static let durationHours = Self(rawValue: "duration_hours")
-  public static let gibibyteHours = Self(rawValue: "gibibyte_hours")
-  public static let images = Self(rawValue: "images")
-  public static let characters = Self(rawValue: "characters")
+public enum OpenAICostsResultQuantityUnitAnyOf2: String, Codable, Hashable, Sendable {
+  case tokens = "tokens"
+  case value1000Tokens = "1000_tokens"
+  case durationSeconds = "duration_seconds"
+  case durationMinutes = "duration_minutes"
+  case durationHours = "duration_hours"
+  case gibibyteHours = "gibibyte_hours"
+  case images = "images"
+  case characters = "characters"
 }

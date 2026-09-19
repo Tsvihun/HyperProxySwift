@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct TogetherChatCompletionChoicesDataItem: Codable, Sendable {
   public var finishReason: TogetherFinishReason?
   public var index: Int?
-  public var logprobs: HyperProxyJSONValue?
+  public var logprobs: TogetherLogprobsPart?
   public var message: TogetherChatCompletionMessage?
   public var seed: Int?
   public var text: String?
@@ -22,7 +22,7 @@ public struct TogetherChatCompletionChoicesDataItem: Codable, Sendable {
   public init(
     finishReason: TogetherFinishReason? = nil,
     index: Int? = nil,
-    logprobs: HyperProxyJSONValue? = nil,
+    logprobs: TogetherLogprobsPart? = nil,
     message: TogetherChatCompletionMessage? = nil,
     seed: Int? = nil,
     text: String? = nil,

@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesPunctuationHighlightingSpecificExpressions: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum DeepLConfiguredRulesPunctuationHighlightingSpecificExpressions: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useSingleCurlyQuotationMarks = Self(
-    rawValue: "use_single_curly_quotation_marks")
-  public static let useSingleStraightQuotationMarks = Self(
-    rawValue: "use_single_straight_quotation_marks")
+  case useSingleCurlyQuotationMarks = "use_single_curly_quotation_marks"
+  case useSingleStraightQuotationMarks = "use_single_straight_quotation_marks"
 }

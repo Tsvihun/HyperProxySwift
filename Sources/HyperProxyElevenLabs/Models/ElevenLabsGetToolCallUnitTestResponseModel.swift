@@ -20,7 +20,7 @@ public struct ElevenLabsGetToolCallUnitTestResponseModel: Codable, Sendable {
   public var id: String
   public var name: String
   public var toolCallParameters: ElevenLabsUnitTestToolCallEvaluationModelOutput?
-  public var typeModel: String?
+  public var kind: ElevenLabsToolKind?
 
   public init(
     id: String,
@@ -32,7 +32,7 @@ public struct ElevenLabsGetToolCallUnitTestResponseModel: Codable, Sendable {
     environment: String? = nil,
     fromConversationMetadata: ElevenLabsTestFromConversationMetadataOutput? = nil,
     toolCallParameters: ElevenLabsUnitTestToolCallEvaluationModelOutput? = nil,
-    typeModel: String? = nil
+    kind: ElevenLabsToolKind? = nil
   ) {
     self.chatHistory = chatHistory
     self.checkAnyToolMatches = checkAnyToolMatches
@@ -43,7 +43,7 @@ public struct ElevenLabsGetToolCallUnitTestResponseModel: Codable, Sendable {
     self.id = id
     self.name = name
     self.toolCallParameters = toolCallParameters
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -56,6 +56,6 @@ public struct ElevenLabsGetToolCallUnitTestResponseModel: Codable, Sendable {
     case id
     case name
     case toolCallParameters = "tool_call_parameters"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

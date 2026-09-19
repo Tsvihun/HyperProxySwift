@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralConversationRestartStreamRequest: Codable, Sendable {
-  public var agentVersion: HyperProxyJSONValue?
+  public var agentVersion: MistralRestartConversationRequestAgentVersion?
   public var completionArgs: MistralCompletionArgs?
   public var fromEntryId: String
   public var guardrails: [MistralGuardrailConfig]?
@@ -23,7 +23,7 @@ public struct MistralConversationRestartStreamRequest: Codable, Sendable {
 
   public init(
     fromEntryId: String,
-    agentVersion: HyperProxyJSONValue? = nil,
+    agentVersion: MistralRestartConversationRequestAgentVersion? = nil,
     completionArgs: MistralCompletionArgs? = nil,
     guardrails: [MistralGuardrailConfig]? = nil,
     handoffExecution: MistralRestartConversationRequestHandoffExecution? = nil,

@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct FalListApiKeysParameters: Codable, Sendable {
   public var cursor: String?
-  public var expand: HyperProxyJSONValue?
+  public var expand: FalListApiKeysParametersExpand?
   public var limit: Int?
 
   public init(
     cursor: String? = nil,
-    expand: HyperProxyJSONValue? = nil,
+    expand: FalListApiKeysParametersExpand? = nil,
     limit: Int? = nil
   ) {
     self.cursor = cursor

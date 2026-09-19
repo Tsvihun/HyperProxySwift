@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct ElevenLabsContentGuardrailInput: Codable, Sendable {
   public var config: ElevenLabsContentConfig?
   public var executionMode: ElevenLabsGuardrailExecutionMode?
-  public var triggerAction: HyperProxyJSONValue?
+  public var triggerAction: ElevenLabsContentGuardrailInputTriggerAction?
 
   public init(
     config: ElevenLabsContentConfig? = nil,
     executionMode: ElevenLabsGuardrailExecutionMode? = nil,
-    triggerAction: HyperProxyJSONValue? = nil
+    triggerAction: ElevenLabsContentGuardrailInputTriggerAction? = nil
   ) {
     self.config = config
     self.executionMode = executionMode

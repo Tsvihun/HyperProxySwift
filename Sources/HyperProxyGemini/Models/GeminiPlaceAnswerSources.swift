@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiPlaceAnswerSources: Codable, Sendable {
-  public var reviewSnippets: [HyperProxyJSONValue]?
+  public var reviewSnippets: [GeminiReviewSnippet]?
 
   public init(
-    reviewSnippets: [HyperProxyJSONValue]? = nil
+    reviewSnippets: [GeminiReviewSnippet]? = nil
   ) {
     self.reviewSnippets = reviewSnippets
   }

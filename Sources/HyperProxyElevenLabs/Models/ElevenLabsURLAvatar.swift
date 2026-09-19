@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct ElevenLabsURLAvatar: Codable, Sendable {
   public var customUrl: String?
-  public var typeModel: String?
+  public var kind: ElevenLabsUrlKind?
 
   public init(
     customUrl: String? = nil,
-    typeModel: String? = nil
+    kind: ElevenLabsUrlKind? = nil
   ) {
     self.customUrl = customUrl
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case customUrl = "custom_url"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

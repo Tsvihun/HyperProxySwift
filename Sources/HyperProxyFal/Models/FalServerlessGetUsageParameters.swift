@@ -11,26 +11,26 @@ import Foundation
 import HyperProxyCore
 
 public struct FalServerlessGetUsageParameters: Codable, Sendable {
-  public var app: HyperProxyJSONValue?
+  public var app: FalServerlessGetUsageParametersApp?
   public var boundToTimeframe: FalServerlessGetUsageParametersBoundToTimeframe?
   public var cursor: String?
-  public var end: String?
-  public var expand: HyperProxyJSONValue?
+  public var end: FalServerlessGetUsageParametersEnd?
+  public var expand: FalServerlessGetUsageParametersExpand?
   public var limit: Int?
   public var search: String?
-  public var start: String?
+  public var start: FalServerlessGetUsageParametersStart?
   public var timeframe: FalServerlessGetUsageParametersTimeframe?
   public var timezone: String?
 
   public init(
-    app: HyperProxyJSONValue? = nil,
+    app: FalServerlessGetUsageParametersApp? = nil,
     boundToTimeframe: FalServerlessGetUsageParametersBoundToTimeframe? = nil,
     cursor: String? = nil,
-    end: String? = nil,
-    expand: HyperProxyJSONValue? = nil,
+    end: FalServerlessGetUsageParametersEnd? = nil,
+    expand: FalServerlessGetUsageParametersExpand? = nil,
     limit: Int? = nil,
     search: String? = nil,
-    start: String? = nil,
+    start: FalServerlessGetUsageParametersStart? = nil,
     timeframe: FalServerlessGetUsageParametersTimeframe? = nil,
     timezone: String? = nil
   ) {

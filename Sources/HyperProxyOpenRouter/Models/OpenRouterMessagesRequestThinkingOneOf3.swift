@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenRouterMessagesRequestThinkingOneOf3: Codable, Sendable {
   public var blockBinding: OpenRouterAnthropicThinkingBlockBinding?
   public var display: OpenRouterAnthropicThinkingDisplay?
-  public var typeModel: OpenRouterMessagesRequestThinkingOneOf3TypeModel
+  public var kind: OpenRouterMessagesRequestThinkingOneOf3Kind
 
   public init(
-    typeModel: OpenRouterMessagesRequestThinkingOneOf3TypeModel,
+    kind: OpenRouterMessagesRequestThinkingOneOf3Kind,
     blockBinding: OpenRouterAnthropicThinkingBlockBinding? = nil,
     display: OpenRouterAnthropicThinkingDisplay? = nil
   ) {
     self.blockBinding = blockBinding
     self.display = display
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case blockBinding = "block_binding"
     case display
-    case typeModel = "type"
+    case kind = "type"
   }
 }

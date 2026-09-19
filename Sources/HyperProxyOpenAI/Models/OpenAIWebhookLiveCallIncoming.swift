@@ -15,20 +15,20 @@ public struct OpenAIWebhookLiveCallIncoming: Codable, Sendable {
   public var data: OpenAIWebhookLiveCallIncomingData
   public var id: String
   public var object: OpenAIWebhookLiveCallIncomingObject?
-  public var typeModel: OpenAIWebhookLiveCallIncomingTypeModel
+  public var kind: OpenAIWebhookLiveCallIncomingKind
 
   public init(
     createdAt: Int,
     data: OpenAIWebhookLiveCallIncomingData,
     id: String,
-    typeModel: OpenAIWebhookLiveCallIncomingTypeModel,
+    kind: OpenAIWebhookLiveCallIncomingKind,
     object: OpenAIWebhookLiveCallIncomingObject? = nil
   ) {
     self.createdAt = createdAt
     self.data = data
     self.id = id
     self.object = object
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIWebhookLiveCallIncoming: Codable, Sendable {
     case data
     case id
     case object
-    case typeModel = "type"
+    case kind = "type"
   }
 }

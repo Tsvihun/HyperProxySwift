@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIResponseFormatJsonSchema: Codable, Sendable {
   public var jsonSchema: OpenAIResponseFormatJsonSchemaJsonSchema
-  public var typeModel: OpenAIResponseFormatJsonSchemaTypeModel
+  public var kind: OpenAIResponseFormatJsonSchemaKind
 
   public init(
     jsonSchema: OpenAIResponseFormatJsonSchemaJsonSchema,
-    typeModel: OpenAIResponseFormatJsonSchemaTypeModel
+    kind: OpenAIResponseFormatJsonSchemaKind
   ) {
     self.jsonSchema = jsonSchema
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case jsonSchema = "json_schema"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

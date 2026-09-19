@@ -19,9 +19,9 @@ public struct MistralFunctionCallEntry: Codable, Sendable {
   public var id: String?
   public var model: String?
   public var name: String
-  public var object: String?
+  public var object: MistralEntryObject?
   public var toolCallId: String
-  public var typeModel: String?
+  public var kind: MistralFunctionCallKind?
 
   public init(
     arguments: MistralFunctionCallEntryArguments,
@@ -33,8 +33,8 @@ public struct MistralFunctionCallEntry: Codable, Sendable {
     createdAt: String? = nil,
     id: String? = nil,
     model: String? = nil,
-    object: String? = nil,
-    typeModel: String? = nil
+    object: MistralEntryObject? = nil,
+    kind: MistralFunctionCallKind? = nil
   ) {
     self.agentId = agentId
     self.arguments = arguments
@@ -46,7 +46,7 @@ public struct MistralFunctionCallEntry: Codable, Sendable {
     self.name = name
     self.object = object
     self.toolCallId = toolCallId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -60,6 +60,6 @@ public struct MistralFunctionCallEntry: Codable, Sendable {
     case name
     case object
     case toolCallId = "tool_call_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

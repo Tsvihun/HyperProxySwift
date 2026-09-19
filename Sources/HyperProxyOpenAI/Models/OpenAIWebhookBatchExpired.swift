@@ -15,20 +15,20 @@ public struct OpenAIWebhookBatchExpired: Codable, Sendable {
   public var data: OpenAIWebhookBatchExpiredData
   public var id: String
   public var object: OpenAIWebhookBatchExpiredObject?
-  public var typeModel: OpenAIWebhookBatchExpiredTypeModel
+  public var kind: OpenAIWebhookBatchExpiredKind
 
   public init(
     createdAt: Int,
     data: OpenAIWebhookBatchExpiredData,
     id: String,
-    typeModel: OpenAIWebhookBatchExpiredTypeModel,
+    kind: OpenAIWebhookBatchExpiredKind,
     object: OpenAIWebhookBatchExpiredObject? = nil
   ) {
     self.createdAt = createdAt
     self.data = data
     self.id = id
     self.object = object
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIWebhookBatchExpired: Codable, Sendable {
     case data
     case id
     case object
-    case typeModel = "type"
+    case kind = "type"
   }
 }

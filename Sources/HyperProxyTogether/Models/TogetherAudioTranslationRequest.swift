@@ -11,22 +11,22 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherAudioTranslationRequest: Codable, Sendable {
-  public var file: String
+  public var file: TogetherAudioTranslationRequestFile
   public var language: String?
   public var model: TogetherAudioTranslationRequestModel?
   public var prompt: String?
   public var responseFormat: TogetherAudioTranslationRequestResponseFormat?
   public var temperature: Double?
-  public var timestampGranularities: HyperProxyJSONValue?
+  public var timestampGranularities: TogetherAudioTranslationRequestTimestampGranularities?
 
   public init(
-    file: String,
+    file: TogetherAudioTranslationRequestFile,
     language: String? = nil,
     model: TogetherAudioTranslationRequestModel? = nil,
     prompt: String? = nil,
     responseFormat: TogetherAudioTranslationRequestResponseFormat? = nil,
     temperature: Double? = nil,
-    timestampGranularities: HyperProxyJSONValue? = nil
+    timestampGranularities: TogetherAudioTranslationRequestTimestampGranularities? = nil
   ) {
     self.file = file
     self.language = language

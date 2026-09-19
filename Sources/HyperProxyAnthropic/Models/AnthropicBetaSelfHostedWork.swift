@@ -23,7 +23,7 @@ public struct AnthropicBetaSelfHostedWork: Codable, Sendable {
   public var state: AnthropicBetaSelfHostedWorkState
   public var stopRequestedAt: String?
   public var stoppedAt: String?
-  public var typeModel: String
+  public var kind: AnthropicWorkKind
 
   public init(
     acknowledgedAt: String?,
@@ -38,7 +38,7 @@ public struct AnthropicBetaSelfHostedWork: Codable, Sendable {
     state: AnthropicBetaSelfHostedWorkState,
     stopRequestedAt: String?,
     stoppedAt: String?,
-    typeModel: String
+    kind: AnthropicWorkKind = .work
   ) {
     self.acknowledgedAt = acknowledgedAt
     self.createdAt = createdAt
@@ -52,7 +52,7 @@ public struct AnthropicBetaSelfHostedWork: Codable, Sendable {
     self.state = state
     self.stopRequestedAt = stopRequestedAt
     self.stoppedAt = stoppedAt
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -68,6 +68,6 @@ public struct AnthropicBetaSelfHostedWork: Codable, Sendable {
     case state
     case stopRequestedAt = "stop_requested_at"
     case stoppedAt = "stopped_at"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

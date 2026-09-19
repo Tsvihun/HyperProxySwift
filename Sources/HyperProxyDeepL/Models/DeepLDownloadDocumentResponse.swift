@@ -10,4 +10,17 @@
 import Foundation
 import HyperProxyCore
 
-public typealias DeepLDownloadDocumentResponse = String
+public struct DeepLDownloadDocumentResponse: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+}
+
+extension DeepLDownloadDocumentResponse: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self.init(rawValue: value)
+  }
+}

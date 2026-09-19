@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksChatCompletionRequestServiceTier: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
-  public static let defaultValue = Self(rawValue: "default")
-  public static let flex = Self(rawValue: "flex")
-  public static let priority = Self(rawValue: "priority")
+public enum FireworksChatCompletionRequestServiceTier: String, Codable, Hashable, Sendable {
+  case auto = "auto"
+  case defaultValue = "default"
+  case flex = "flex"
+  case priority = "priority"
 }

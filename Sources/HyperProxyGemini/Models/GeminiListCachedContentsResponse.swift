@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiListCachedContentsResponse: Codable, Sendable {
-  public var cachedContents: [HyperProxyJSONValue]?
+  public var cachedContents: [GeminiCachedContent]?
   public var nextPageToken: String?
 
   public init(
-    cachedContents: [HyperProxyJSONValue]? = nil,
+    cachedContents: [GeminiCachedContent]? = nil,
     nextPageToken: String? = nil
   ) {
     self.cachedContents = cachedContents

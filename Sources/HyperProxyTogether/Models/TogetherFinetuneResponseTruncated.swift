@@ -40,8 +40,8 @@ public struct TogetherFinetuneResponseTruncated: Codable, Sendable {
   public var tokenCount: Int?
   public var totalPrice: Int?
   public var trainingFile: String?
-  public var trainingMethod: HyperProxyJSONValue?
-  public var trainingType: HyperProxyJSONValue?
+  public var trainingMethod: TogetherFinetuneResponseTruncatedTrainingMethod?
+  public var trainingType: TogetherFinetuneResponseTruncatedTrainingType?
   public var updatedAt: String
   public var userId: String
   public var validationFile: String?
@@ -82,8 +82,8 @@ public struct TogetherFinetuneResponseTruncated: Codable, Sendable {
     tokenCount: Int? = nil,
     totalPrice: Int? = nil,
     trainingFile: String? = nil,
-    trainingMethod: HyperProxyJSONValue? = nil,
-    trainingType: HyperProxyJSONValue? = nil,
+    trainingMethod: TogetherFinetuneResponseTruncatedTrainingMethod? = nil,
+    trainingType: TogetherFinetuneResponseTruncatedTrainingType? = nil,
     validationFile: String? = nil,
     wandbName: String? = nil,
     wandbProjectName: String? = nil,

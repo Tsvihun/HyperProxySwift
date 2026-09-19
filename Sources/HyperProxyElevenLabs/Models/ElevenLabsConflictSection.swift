@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsConflictSection: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let conversationConfig = Self(rawValue: "conversation_config")
-  public static let platformSettings = Self(rawValue: "platform_settings")
-  public static let procedures = Self(rawValue: "procedures")
-  public static let workflow = Self(rawValue: "workflow")
+public enum ElevenLabsConflictSection: String, Codable, Hashable, Sendable {
+  case conversationConfig = "conversation_config"
+  case platformSettings = "platform_settings"
+  case procedures = "procedures"
+  case workflow = "workflow"
 }

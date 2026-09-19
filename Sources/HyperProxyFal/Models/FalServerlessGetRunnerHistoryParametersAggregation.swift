@@ -10,15 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct FalServerlessGetRunnerHistoryParametersAggregation: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum FalServerlessGetRunnerHistoryParametersAggregation: String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let max = Self(rawValue: "max")
-  public static let avg = Self(rawValue: "avg")
+  case max = "max"
+  case avg = "avg"
 }

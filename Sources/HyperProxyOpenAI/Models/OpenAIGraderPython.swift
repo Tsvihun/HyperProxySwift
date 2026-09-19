@@ -14,24 +14,24 @@ public struct OpenAIGraderPython: Codable, Sendable {
   public var imageTag: String?
   public var name: String
   public var source: String
-  public var typeModel: OpenAIGraderPythonTypeModel
+  public var kind: OpenAIGraderPythonKind
 
   public init(
     name: String,
     source: String,
-    typeModel: OpenAIGraderPythonTypeModel,
+    kind: OpenAIGraderPythonKind,
     imageTag: String? = nil
   ) {
     self.imageTag = imageTag
     self.name = name
     self.source = source
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case imageTag = "image_tag"
     case name
     case source
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralModerationLLMAction: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let none = Self(rawValue: "none")
-  public static let block = Self(rawValue: "block")
+public enum MistralModerationLLMAction: String, Codable, Hashable, Sendable {
+  case none = "none"
+  case block = "block"
 }

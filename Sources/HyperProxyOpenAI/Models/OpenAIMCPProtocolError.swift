@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenAIMCPProtocolError: Codable, Sendable {
   public var code: Int
   public var message: String
-  public var typeModel: OpenAIMCPProtocolErrorTypeModel
+  public var kind: OpenAIMCPProtocolErrorKind
 
   public init(
     code: Int,
     message: String,
-    typeModel: OpenAIMCPProtocolErrorTypeModel
+    kind: OpenAIMCPProtocolErrorKind
   ) {
     self.code = code
     self.message = message
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case code
     case message
-    case typeModel = "type"
+    case kind = "type"
   }
 }

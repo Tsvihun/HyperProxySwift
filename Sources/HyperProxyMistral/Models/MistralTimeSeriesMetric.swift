@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralTimeSeriesMetric: Codable, Sendable {
-  public var value: [[HyperProxyJSONValue]]
+  public var value: [MistralTimeSeriesMetricValueItem]
 
   public init(
-    value: [[HyperProxyJSONValue]]
+    value: [MistralTimeSeriesMetricValueItem]
   ) {
     self.value = value
   }

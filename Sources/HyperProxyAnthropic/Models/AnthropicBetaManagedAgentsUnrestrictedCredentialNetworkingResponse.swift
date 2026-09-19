@@ -12,15 +12,15 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsUnrestrictedCredentialNetworkingResponse: Codable, Sendable
 {
-  public var typeModel: AnthropicBetaManagedAgentsUnrestrictedCredentialNetworkingResponseTypeModel
+  public var kind: AnthropicBetaManagedAgentsUnrestrictedCredentialNetworkingResponseKind
 
   public init(
-    typeModel: AnthropicBetaManagedAgentsUnrestrictedCredentialNetworkingResponseTypeModel
+    kind: AnthropicBetaManagedAgentsUnrestrictedCredentialNetworkingResponseKind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicBetaSignatureContentBlockDelta: Codable, Sendable {
   public var signature: String
-  public var typeModel: String
+  public var kind: AnthropicSignatureDeltaKind
 
   public init(
     signature: String,
-    typeModel: String
+    kind: AnthropicSignatureDeltaKind = .signatureDelta
   ) {
     self.signature = signature
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case signature
-    case typeModel = "type"
+    case kind = "type"
   }
 }

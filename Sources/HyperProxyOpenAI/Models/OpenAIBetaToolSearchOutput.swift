@@ -18,7 +18,7 @@ public struct OpenAIBetaToolSearchOutput: Codable, Sendable {
   public var id: String
   public var status: OpenAIBetaFunctionCallOutputStatusEnum
   public var tools: [OpenAIBetaTool]
-  public var typeModel: OpenAIBetaToolSearchOutputTypeModel
+  public var kind: OpenAIBetaToolSearchOutputKind
 
   public init(
     callId: String?,
@@ -26,7 +26,7 @@ public struct OpenAIBetaToolSearchOutput: Codable, Sendable {
     id: String,
     status: OpenAIBetaFunctionCallOutputStatusEnum,
     tools: [OpenAIBetaTool],
-    typeModel: OpenAIBetaToolSearchOutputTypeModel,
+    kind: OpenAIBetaToolSearchOutputKind,
     agent: OpenAIBetaAgentTag? = nil,
     createdBy: String? = nil
   ) {
@@ -37,7 +37,7 @@ public struct OpenAIBetaToolSearchOutput: Codable, Sendable {
     self.id = id
     self.status = status
     self.tools = tools
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct OpenAIBetaToolSearchOutput: Codable, Sendable {
     case id
     case status
     case tools
-    case typeModel = "type"
+    case kind = "type"
   }
 }

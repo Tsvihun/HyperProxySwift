@@ -15,10 +15,10 @@ public struct FireworksAnthropicContentBlockDeltaEventDelta: Codable, Sendable {
   public var signature: String?
   public var text: String?
   public var thinking: String?
-  public var typeModel: FireworksAnthropicContentBlockDeltaEventDeltaTypeModel
+  public var kind: FireworksAnthropicContentBlockDeltaEventDeltaKind
 
   public init(
-    typeModel: FireworksAnthropicContentBlockDeltaEventDeltaTypeModel,
+    kind: FireworksAnthropicContentBlockDeltaEventDeltaKind,
     partialJson: String? = nil,
     signature: String? = nil,
     text: String? = nil,
@@ -28,7 +28,7 @@ public struct FireworksAnthropicContentBlockDeltaEventDelta: Codable, Sendable {
     self.signature = signature
     self.text = text
     self.thinking = thinking
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct FireworksAnthropicContentBlockDeltaEventDelta: Codable, Sendable {
     case signature
     case text
     case thinking
-    case typeModel = "type"
+    case kind = "type"
   }
 }

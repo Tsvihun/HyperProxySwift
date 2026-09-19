@@ -17,7 +17,7 @@ public struct OpenAIResponseOutputTextAnnotationAddedEvent: Codable, Sendable {
   public var itemId: String
   public var outputIndex: Int
   public var sequenceNumber: Int
-  public var typeModel: OpenAIResponseOutputTextAnnotationAddedEventTypeModel
+  public var kind: OpenAIResponseOutputTextAnnotationAddedEventKind
 
   public init(
     annotation: OpenAIAnnotation?,
@@ -26,7 +26,7 @@ public struct OpenAIResponseOutputTextAnnotationAddedEvent: Codable, Sendable {
     itemId: String,
     outputIndex: Int,
     sequenceNumber: Int,
-    typeModel: OpenAIResponseOutputTextAnnotationAddedEventTypeModel
+    kind: OpenAIResponseOutputTextAnnotationAddedEventKind
   ) {
     self.annotation = annotation
     self.annotationIndex = annotationIndex
@@ -34,7 +34,7 @@ public struct OpenAIResponseOutputTextAnnotationAddedEvent: Codable, Sendable {
     self.itemId = itemId
     self.outputIndex = outputIndex
     self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenAIResponseOutputTextAnnotationAddedEvent: Codable, Sendable {
     case itemId = "item_id"
     case outputIndex = "output_index"
     case sequenceNumber = "sequence_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

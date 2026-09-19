@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIRunStepObjectObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let threadRunStep = Self(rawValue: "thread.run.step")
+public enum OpenAIRunStepObjectObject: String, Codable, Hashable, Sendable {
+  case threadRunStep = "thread.run.step"
 }

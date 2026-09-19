@@ -14,7 +14,7 @@ public struct OpenAIUpload: Codable, Sendable {
   public var bytes: Int
   public var createdAt: Int
   public var expiresAt: Int
-  public var file: HyperProxyJSONValue?
+  public var file: OpenAIFile?
   public var filename: String
   public var id: String
   public var object: OpenAIUploadObject?
@@ -29,7 +29,7 @@ public struct OpenAIUpload: Codable, Sendable {
     id: String,
     purpose: String,
     status: OpenAIUploadStatus,
-    file: HyperProxyJSONValue? = nil,
+    file: OpenAIFile? = nil,
     object: OpenAIUploadObject? = nil
   ) {
     self.bytes = bytes

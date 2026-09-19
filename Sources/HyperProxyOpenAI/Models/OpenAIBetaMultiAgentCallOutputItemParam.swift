@@ -16,13 +16,13 @@ public struct OpenAIBetaMultiAgentCallOutputItemParam: Codable, Sendable {
   public var callId: String
   public var id: String?
   public var output: [OpenAIBetaOutputTextContentParam]
-  public var typeModel: OpenAIBetaMultiAgentCallOutputItemParamTypeModel
+  public var kind: OpenAIBetaMultiAgentCallOutputItemParamKind
 
   public init(
     action: OpenAIBetaMultiAgentAction1,
     callId: String,
     output: [OpenAIBetaOutputTextContentParam],
-    typeModel: OpenAIBetaMultiAgentCallOutputItemParamTypeModel,
+    kind: OpenAIBetaMultiAgentCallOutputItemParamKind,
     agent: OpenAIBetaAgentTagParam? = nil,
     id: String? = nil
   ) {
@@ -31,7 +31,7 @@ public struct OpenAIBetaMultiAgentCallOutputItemParam: Codable, Sendable {
     self.callId = callId
     self.id = id
     self.output = output
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIBetaMultiAgentCallOutputItemParam: Codable, Sendable {
     case callId = "call_id"
     case id
     case output
-    case typeModel = "type"
+    case kind = "type"
   }
 }

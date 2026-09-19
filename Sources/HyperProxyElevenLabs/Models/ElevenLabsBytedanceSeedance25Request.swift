@@ -17,7 +17,7 @@ public struct ElevenLabsBytedanceSeedance25Request: Codable, Sendable {
   public var endFrame: ElevenLabsImageReference?
   public var generateAudio: Bool?
   public var images: [ElevenLabsImageReference]?
-  public var modelId: String
+  public var modelId: ElevenLabsBytedanceSeedanceV25ModelId
   public var prompt: String
   public var resolution: ElevenLabsBytedanceSeedance25RequestResolution?
   public var startFrame: ElevenLabsImageReference?
@@ -25,8 +25,8 @@ public struct ElevenLabsBytedanceSeedance25Request: Codable, Sendable {
   public var webhook: ElevenLabsWebhookTarget?
 
   public init(
-    modelId: String,
     prompt: String,
+    modelId: ElevenLabsBytedanceSeedanceV25ModelId = .bytedanceSeedanceV25,
     aspectRatio: ElevenLabsBytedanceSeedance25RequestAspectRatio? = nil,
     audios: [ElevenLabsAudioReference]? = nil,
     durationSecs: Int? = nil,

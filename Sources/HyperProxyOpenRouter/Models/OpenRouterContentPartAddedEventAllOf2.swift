@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterContentPartAddedEventAllOf2: Codable, Sendable {
-  public var part: HyperProxyJSONValue?
+  public var part: OpenRouterContentPartAddedEventAllOf2Part?
 
   public init(
-    part: HyperProxyJSONValue? = nil
+    part: OpenRouterContentPartAddedEventAllOf2Part? = nil
   ) {
     self.part = part
   }

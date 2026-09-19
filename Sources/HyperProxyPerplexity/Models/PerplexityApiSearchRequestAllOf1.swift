@@ -15,13 +15,13 @@ public struct PerplexityApiSearchRequestAllOf1: Codable, Sendable {
   public var maxResults: Int?
   public var maxTokens: Int?
   public var maxTokensPerPage: Int?
-  public var query: HyperProxyJSONValue
+  public var query: PerplexityApiSearchRequestAllOf1Query
   public var searchContextSize: String?
   public var searchLanguageFilter: [String]?
   public var searchType: PerplexityApiSearchRequestAllOf1SearchType?
 
   public init(
-    query: HyperProxyJSONValue,
+    query: PerplexityApiSearchRequestAllOf1Query,
     country: String? = nil,
     maxResults: Int? = nil,
     maxTokens: Int? = nil,

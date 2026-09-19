@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsVeo31RequestDurationSecs: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: Int
-
-  public init(rawValue: Int) {
-    self.rawValue = rawValue
-  }
-
-  public static let value4 = Self(rawValue: 4)
-  public static let value6 = Self(rawValue: 6)
-  public static let value8 = Self(rawValue: 8)
+public enum ElevenLabsVeo31RequestDurationSecs: Int, Codable, Hashable, Sendable {
+  case value4 = 4
+  case value6 = 6
+  case value8 = 8
 }

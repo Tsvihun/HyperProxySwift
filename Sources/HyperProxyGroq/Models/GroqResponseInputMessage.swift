@@ -14,24 +14,24 @@ public struct GroqResponseInputMessage: Codable, Sendable {
   public var content: [GroqResponseInputContent]
   public var role: GroqResponseInputMessageRole
   public var status: GroqResponseInputMessageStatus?
-  public var typeModel: GroqResponseInputMessageTypeModel
+  public var kind: GroqResponseInputMessageKind
 
   public init(
     content: [GroqResponseInputContent],
     role: GroqResponseInputMessageRole,
-    typeModel: GroqResponseInputMessageTypeModel,
+    kind: GroqResponseInputMessageKind,
     status: GroqResponseInputMessageStatus? = nil
   ) {
     self.content = content
     self.role = role
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case content
     case role
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -20,11 +20,11 @@ public struct GroqError: Codable, Sendable {
   public var schemaKind: String?
   public var schemaPath: String?
   public var schemaPathSegments: [String]?
-  public var typeModel: String
+  public var kind: String
 
   public init(
     message: String,
-    typeModel: String,
+    kind: String,
     code: String? = nil,
     debug: GroqDebugData? = nil,
     failedGeneration: String? = nil,
@@ -43,7 +43,7 @@ public struct GroqError: Codable, Sendable {
     self.schemaKind = schemaKind
     self.schemaPath = schemaPath
     self.schemaPathSegments = schemaPathSegments
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -56,6 +56,6 @@ public struct GroqError: Codable, Sendable {
     case schemaKind = "schema_kind"
     case schemaPath = "schema_path"
     case schemaPathSegments = "schema_path_segments"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

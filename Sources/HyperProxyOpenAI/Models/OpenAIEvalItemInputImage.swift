@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenAIEvalItemInputImage: Codable, Sendable {
   public var detail: String?
   public var imageUrl: String
-  public var typeModel: OpenAIEvalItemInputImageTypeModel
+  public var kind: OpenAIEvalItemInputImageKind
 
   public init(
     imageUrl: String,
-    typeModel: OpenAIEvalItemInputImageTypeModel,
+    kind: OpenAIEvalItemInputImageKind,
     detail: String? = nil
   ) {
     self.detail = detail
     self.imageUrl = imageUrl
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case detail
     case imageUrl = "image_url"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

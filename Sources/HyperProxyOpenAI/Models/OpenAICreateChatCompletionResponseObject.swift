@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAICreateChatCompletionResponseObject: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let chatCompletion = Self(rawValue: "chat.completion")
+public enum OpenAICreateChatCompletionResponseObject: String, Codable, Hashable, Sendable {
+  case chatCompletion = "chat.completion"
 }

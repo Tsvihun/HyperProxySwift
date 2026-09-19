@@ -14,24 +14,24 @@ public struct OpenAIRealtimeTranslationServerEventSessionInputTranscriptDelta: C
   public var delta: String
   public var elapsedMs: Int?
   public var eventId: String
-  public var typeModel: OpenAIRealtimeTranslationServerEventSessionInputTranscriptDeltaTypeModel
+  public var kind: OpenAIRealtimeTranslationServerEventSessionInputTranscriptDeltaKind
 
   public init(
     delta: String,
     eventId: String,
-    typeModel: OpenAIRealtimeTranslationServerEventSessionInputTranscriptDeltaTypeModel,
+    kind: OpenAIRealtimeTranslationServerEventSessionInputTranscriptDeltaKind,
     elapsedMs: Int? = nil
   ) {
     self.delta = delta
     self.elapsedMs = elapsedMs
     self.eventId = eventId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case delta
     case elapsedMs = "elapsed_ms"
     case eventId = "event_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

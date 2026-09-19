@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIEvalRun: Codable, Sendable {
   public var createdAt: Int
-  public var dataSource: HyperProxyJSONValue
+  public var dataSource: OpenAIEvalRunDataSource
   public var error: OpenAIEvalApiError
   public var evalId: String
   public var id: String
-  public var metadata: OpenAIMetadata
+  public var metadata: OpenAIMetadata?
   public var model: String
   public var name: String
   public var object: OpenAIEvalRunObject
@@ -28,11 +28,11 @@ public struct OpenAIEvalRun: Codable, Sendable {
 
   public init(
     createdAt: Int,
-    dataSource: HyperProxyJSONValue,
+    dataSource: OpenAIEvalRunDataSource,
     error: OpenAIEvalApiError,
     evalId: String,
     id: String,
-    metadata: OpenAIMetadata,
+    metadata: OpenAIMetadata?,
     model: String,
     name: String,
     object: OpenAIEvalRunObject,

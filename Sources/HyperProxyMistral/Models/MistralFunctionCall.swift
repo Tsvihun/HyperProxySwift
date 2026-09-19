@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralFunctionCall: Codable, Sendable {
-  public var arguments: HyperProxyJSONValue
+  public var arguments: MistralFunctionCallArguments
   public var name: String
 
   public init(
-    arguments: HyperProxyJSONValue,
+    arguments: MistralFunctionCallArguments,
     name: String
   ) {
     self.arguments = arguments

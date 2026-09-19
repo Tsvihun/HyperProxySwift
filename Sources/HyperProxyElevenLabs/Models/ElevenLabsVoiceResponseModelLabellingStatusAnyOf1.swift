@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsVoiceResponseModelLabellingStatusAnyOf1: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let inReview = Self(rawValue: "in_review")
-  public static let reviewComplete = Self(rawValue: "review_complete")
+public enum ElevenLabsVoiceResponseModelLabellingStatusAnyOf1: String, Codable, Hashable, Sendable {
+  case inReview = "in_review"
+  case reviewComplete = "review_complete"
 }

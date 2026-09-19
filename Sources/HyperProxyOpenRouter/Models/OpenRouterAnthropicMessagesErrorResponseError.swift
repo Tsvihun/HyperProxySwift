@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenRouterAnthropicMessagesErrorResponseError: Codable, Sendable {
   public var errorType: OpenRouterApiErrorType?
   public var message: String
-  public var typeModel: OpenRouterAnthropicMessagesErrorResponseErrorTypeModel
+  public var kind: OpenRouterAnthropicMessagesErrorResponseErrorKind
 
   public init(
     message: String,
-    typeModel: OpenRouterAnthropicMessagesErrorResponseErrorTypeModel,
+    kind: OpenRouterAnthropicMessagesErrorResponseErrorKind,
     errorType: OpenRouterApiErrorType? = nil
   ) {
     self.errorType = errorType
     self.message = message
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case errorType = "error_type"
     case message
-    case typeModel = "type"
+    case kind = "type"
   }
 }

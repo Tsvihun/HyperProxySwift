@@ -36,7 +36,7 @@ public actor HyperProxyDeviceCheck {
     self.simulatorBypassToken = simulatorBypassToken
   }
 
-  /// Security profile for HyperProxy or AIProxy-compatible wire protocols.
+  /// Security profile for HyperProxy or a compatible legacy wire protocol.
   public nonisolated func security() -> HyperProxySecurity {
     HyperProxySecurity { [self] _ in
       try await self.headers()

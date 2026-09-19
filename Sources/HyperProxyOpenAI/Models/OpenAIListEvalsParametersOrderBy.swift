@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIListEvalsParametersOrderBy: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let createdAt = Self(rawValue: "created_at")
-  public static let updatedAt = Self(rawValue: "updated_at")
+public enum OpenAIListEvalsParametersOrderBy: String, Codable, Hashable, Sendable {
+  case createdAt = "created_at"
+  case updatedAt = "updated_at"
 }

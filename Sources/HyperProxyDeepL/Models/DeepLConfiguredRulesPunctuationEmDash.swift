@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesPunctuationEmDash: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useDoubleEmDash = Self(rawValue: "use_double_em_dash")
+public enum DeepLConfiguredRulesPunctuationEmDash: String, Codable, Hashable, Sendable {
+  case useDoubleEmDash = "use_double_em_dash"
 }

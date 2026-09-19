@@ -10,15 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherVolumeServiceListModelsParametersVisibility: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum TogetherVolumeServiceListModelsParametersVisibility: String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let vISIBILITYPRIVATE = Self(rawValue: "VISIBILITY_PRIVATE")
-  public static let vISIBILITYINTERNAL = Self(rawValue: "VISIBILITY_INTERNAL")
+  case vISIBILITYPRIVATE = "VISIBILITY_PRIVATE"
+  case vISIBILITYINTERNAL = "VISIBILITY_INTERNAL"
 }

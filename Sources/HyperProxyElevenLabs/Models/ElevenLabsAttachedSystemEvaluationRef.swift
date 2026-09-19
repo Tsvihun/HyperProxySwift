@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct ElevenLabsAttachedSystemEvaluationRef: Codable, Sendable {
   public var analysisItemId: ElevenLabsAttachedSystemEvaluationRefAnalysisItemId
   public var scope: ElevenLabsAnalysisScope?
-  public var source: String
+  public var source: ElevenLabsSystemSource
   public var weight: Double?
 
   public init(
     analysisItemId: ElevenLabsAttachedSystemEvaluationRefAnalysisItemId,
-    source: String,
+    source: ElevenLabsSystemSource = .system,
     scope: ElevenLabsAnalysisScope? = nil,
     weight: Double? = nil
   ) {

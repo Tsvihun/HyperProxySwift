@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIProgramOutputItemStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let completed = Self(rawValue: "completed")
-  public static let incomplete = Self(rawValue: "incomplete")
+public enum OpenAIProgramOutputItemStatus: String, Codable, Hashable, Sendable {
+  case completed = "completed"
+  case incomplete = "incomplete"
 }

@@ -20,7 +20,7 @@ public struct AnthropicBetaManagedAgentsSessionAgent: Codable, Sendable {
   public var skills: [AnthropicBetaManagedAgentsSkill]
   public var system: String?
   public var tools: [AnthropicBetaManagedAgentsAgentTool]
-  public var typeModel: AnthropicBetaManagedAgentsSessionAgentTypeModel
+  public var kind: AnthropicBetaManagedAgentsSessionAgentKind
   public var version: Int
 
   public init(
@@ -33,7 +33,7 @@ public struct AnthropicBetaManagedAgentsSessionAgent: Codable, Sendable {
     skills: [AnthropicBetaManagedAgentsSkill],
     system: String?,
     tools: [AnthropicBetaManagedAgentsAgentTool],
-    typeModel: AnthropicBetaManagedAgentsSessionAgentTypeModel,
+    kind: AnthropicBetaManagedAgentsSessionAgentKind,
     version: Int
   ) {
     self.description = description
@@ -45,7 +45,7 @@ public struct AnthropicBetaManagedAgentsSessionAgent: Codable, Sendable {
     self.skills = skills
     self.system = system
     self.tools = tools
-    self.typeModel = typeModel
+    self.kind = kind
     self.version = version
   }
 
@@ -59,7 +59,7 @@ public struct AnthropicBetaManagedAgentsSessionAgent: Codable, Sendable {
     case skills
     case system
     case tools
-    case typeModel = "type"
+    case kind = "type"
     case version
   }
 }

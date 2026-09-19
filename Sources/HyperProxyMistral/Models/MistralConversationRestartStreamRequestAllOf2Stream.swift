@@ -10,4 +10,32 @@
 import Foundation
 import HyperProxyCore
 
-public typealias MistralConversationRestartStreamRequestAllOf2Stream = Bool
+public enum MistralConversationRestartStreamRequestAllOf2Stream: Codable, Sendable {
+  case booleanTrue
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(Bool.self) {
+      switch value {
+      case true:
+        self = .booleanTrue
+        return
+      default:
+        break
+      }
+    }
+    throw DecodingError.dataCorruptedError(
+      in: container,
+      debugDescription:
+        "Expected a documented MistralConversationRestartStreamRequestAllOf2Stream value."
+    )
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .booleanTrue:
+      try container.encode(true)
+    }
+  }
+}

@@ -12,22 +12,22 @@ import HyperProxyCore
 
 public struct ElevenLabsChapterContentParagraphTtsNodeInputModel: Codable, Sendable {
   public var text: String
-  public var typeModel: String
+  public var kind: ElevenLabsTtsNodeKind
   public var voiceId: String
 
   public init(
     text: String,
-    typeModel: String,
-    voiceId: String
+    voiceId: String,
+    kind: ElevenLabsTtsNodeKind = .ttsNode
   ) {
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
     self.voiceId = voiceId
   }
 
   enum CodingKeys: String, CodingKey {
     case text
-    case typeModel = "type"
+    case kind = "type"
     case voiceId = "voice_id"
   }
 }

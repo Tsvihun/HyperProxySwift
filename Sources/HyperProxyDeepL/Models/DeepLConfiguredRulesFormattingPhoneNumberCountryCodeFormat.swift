@@ -10,16 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesFormattingPhoneNumberCountryCodeFormat: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesFormattingPhoneNumberCountryCodeFormat: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let use00BeforeCountryCode = Self(rawValue: "use_00_before_country_code")
-  public static let usePlusSignBeforeCountryCode = Self(
-    rawValue: "use_plus_sign_before_country_code")
+  case use00BeforeCountryCode = "use_00_before_country_code"
+  case usePlusSignBeforeCountryCode = "use_plus_sign_before_country_code"
 }

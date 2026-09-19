@@ -12,26 +12,26 @@ import HyperProxyCore
 
 public struct FireworksResponseFormat: Codable, Sendable {
   public var grammar: String?
-  public var jsonSchema: HyperProxyJSONValue?
-  public var schema: HyperProxyJSONValue?
-  public var typeModel: FireworksResponseFormatTypeModel
+  public var jsonSchema: FireworksResponseFormatJsonSchema?
+  public var schema: FireworksResponseFormatSchema?
+  public var kind: FireworksResponseFormatKind
 
   public init(
-    typeModel: FireworksResponseFormatTypeModel,
+    kind: FireworksResponseFormatKind,
     grammar: String? = nil,
-    jsonSchema: HyperProxyJSONValue? = nil,
-    schema: HyperProxyJSONValue? = nil
+    jsonSchema: FireworksResponseFormatJsonSchema? = nil,
+    schema: FireworksResponseFormatSchema? = nil
   ) {
     self.grammar = grammar
     self.jsonSchema = jsonSchema
     self.schema = schema
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case grammar
     case jsonSchema = "json_schema"
     case schema
-    case typeModel = "type"
+    case kind = "type"
   }
 }

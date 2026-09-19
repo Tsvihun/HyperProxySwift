@@ -596,6 +596,30 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     try await self.filesDelete(fileId: fileId, query: query, headers: headers, timeout: timeout)
   }
 
+  public func filesDownload(
+    fileId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.filesDownload)
+      .path("file_id", fileId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try call.bytes()
+  }
+
+  @available(*, deprecated, renamed: "filesDownload")
+  public func downloadFileV1FilesFileIdContentGet(
+    fileId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    try self.filesDownload(fileId: fileId, query: query, headers: headers, timeout: timeout)
+  }
+
   public func betaArchiveMemoryStore(
     memoryStoreId: String,
     query: [URLQueryItem] = [],

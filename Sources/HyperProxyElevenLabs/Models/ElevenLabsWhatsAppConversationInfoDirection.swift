@@ -10,16 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsWhatsAppConversationInfoDirection: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let inbound = Self(rawValue: "inbound")
-  public static let outbound = Self(rawValue: "outbound")
-  public static let unknown = Self(rawValue: "unknown")
+public enum ElevenLabsWhatsAppConversationInfoDirection: String, Codable, Hashable, Sendable {
+  case inbound = "inbound"
+  case outbound = "outbound"
+  case unknown = "unknown"
 }

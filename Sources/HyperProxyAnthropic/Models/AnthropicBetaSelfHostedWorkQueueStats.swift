@@ -14,20 +14,20 @@ public struct AnthropicBetaSelfHostedWorkQueueStats: Codable, Sendable {
   public var depth: Int
   public var oldestQueuedAt: String?
   public var pending: Int
-  public var typeModel: String
+  public var kind: AnthropicWorkQueueStatsKind
   public var workersPolling: Int?
 
   public init(
     depth: Int,
     oldestQueuedAt: String?,
     pending: Int,
-    typeModel: String,
-    workersPolling: Int?
+    workersPolling: Int?,
+    kind: AnthropicWorkQueueStatsKind = .workQueueStats
   ) {
     self.depth = depth
     self.oldestQueuedAt = oldestQueuedAt
     self.pending = pending
-    self.typeModel = typeModel
+    self.kind = kind
     self.workersPolling = workersPolling
   }
 
@@ -35,7 +35,7 @@ public struct AnthropicBetaSelfHostedWorkQueueStats: Codable, Sendable {
     case depth
     case oldestQueuedAt = "oldest_queued_at"
     case pending
-    case typeModel = "type"
+    case kind = "type"
     case workersPolling = "workers_polling"
   }
 }

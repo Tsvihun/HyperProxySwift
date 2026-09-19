@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct AnthropicBetaCreateMessageParams: Codable, Sendable {
   public var cacheControl: AnthropicBetaCacheControlEphemeral?
-  public var container: HyperProxyJSONValue?
+  public var container: AnthropicBetaCreateMessageParamsContainer?
   public var contextManagement: AnthropicBetaContextManagementConfig?
   public var diagnostics: AnthropicBetaDiagnosticsParam?
-  public var fallbackCreditToken: HyperProxyJSONValue?
-  public var fallbacks: HyperProxyJSONValue?
+  public var fallbackCreditToken: AnthropicBetaCreateMessageParamsFallbackCreditToken?
+  public var fallbacks: AnthropicBetaCreateMessageParamsFallbacks?
   public var inferenceGeo: String?
   public var maxTokens: Int
   public var mcpServers: [AnthropicBetaRequestMCPServerURLDefinition]?
@@ -29,11 +29,11 @@ public struct AnthropicBetaCreateMessageParams: Codable, Sendable {
   public var speed: AnthropicBetaSpeed?
   public var stopSequences: [String]?
   public var stream: Bool?
-  public var system: HyperProxyJSONValue?
+  public var system: AnthropicBetaCreateMessageParamsSystem?
   public var temperature: Double?
   public var thinking: AnthropicBetaThinkingConfigParam?
   public var toolChoice: AnthropicBetaToolChoice?
-  public var tools: [HyperProxyJSONValue]?
+  public var tools: [AnthropicBetaCreateMessageParamsToolsItem]?
   public var topK: Int?
   public var topP: Double?
 
@@ -42,11 +42,11 @@ public struct AnthropicBetaCreateMessageParams: Codable, Sendable {
     messages: [AnthropicBetaInputMessage],
     model: AnthropicModel,
     cacheControl: AnthropicBetaCacheControlEphemeral? = nil,
-    container: HyperProxyJSONValue? = nil,
+    container: AnthropicBetaCreateMessageParamsContainer? = nil,
     contextManagement: AnthropicBetaContextManagementConfig? = nil,
     diagnostics: AnthropicBetaDiagnosticsParam? = nil,
-    fallbackCreditToken: HyperProxyJSONValue? = nil,
-    fallbacks: HyperProxyJSONValue? = nil,
+    fallbackCreditToken: AnthropicBetaCreateMessageParamsFallbackCreditToken? = nil,
+    fallbacks: AnthropicBetaCreateMessageParamsFallbacks? = nil,
     inferenceGeo: String? = nil,
     mcpServers: [AnthropicBetaRequestMCPServerURLDefinition]? = nil,
     metadata: AnthropicBetaMetadata? = nil,
@@ -56,11 +56,11 @@ public struct AnthropicBetaCreateMessageParams: Codable, Sendable {
     speed: AnthropicBetaSpeed? = nil,
     stopSequences: [String]? = nil,
     stream: Bool? = nil,
-    system: HyperProxyJSONValue? = nil,
+    system: AnthropicBetaCreateMessageParamsSystem? = nil,
     temperature: Double? = nil,
     thinking: AnthropicBetaThinkingConfigParam? = nil,
     toolChoice: AnthropicBetaToolChoice? = nil,
-    tools: [HyperProxyJSONValue]? = nil,
+    tools: [AnthropicBetaCreateMessageParamsToolsItem]? = nil,
     topK: Int? = nil,
     topP: Double? = nil
   ) {

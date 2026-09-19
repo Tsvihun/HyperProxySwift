@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicBetaRequestWebSearchToolResultError: Codable, Sendable {
   public var errorCode: AnthropicBetaWebSearchToolResultErrorCode
-  public var typeModel: String
+  public var kind: AnthropicWebSearchToolResultErrorKind
 
   public init(
     errorCode: AnthropicBetaWebSearchToolResultErrorCode,
-    typeModel: String
+    kind: AnthropicWebSearchToolResultErrorKind = .webSearchToolResultError
   ) {
     self.errorCode = errorCode
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case errorCode = "error_code"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

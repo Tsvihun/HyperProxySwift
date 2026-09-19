@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct PerplexityChatMessageOutput: Codable, Sendable {
-  public var content: HyperProxyJSONValue?
+  public var content: PerplexityChatMessageOutputContent?
   public var role: PerplexityChatMessageRole
 
   public init(
-    content: HyperProxyJSONValue?,
+    content: PerplexityChatMessageOutputContent?,
     role: PerplexityChatMessageRole
   ) {
     self.content = content

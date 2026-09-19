@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct MistralStreamEventSsePayload: Codable, Sendable {
   public var brokerSequence: Int
-  public var data: HyperProxyJSONValue
+  public var data: MistralStreamEventSsePayloadData
   public var metadata: [String: HyperProxyJSONValue]?
   public var stream: String
   public var timestamp: String?
@@ -20,7 +20,7 @@ public struct MistralStreamEventSsePayload: Codable, Sendable {
 
   public init(
     brokerSequence: Int,
-    data: HyperProxyJSONValue,
+    data: MistralStreamEventSsePayloadData,
     stream: String,
     workflowContext: MistralStreamEventWorkflowContext,
     metadata: [String: HyperProxyJSONValue]? = nil,

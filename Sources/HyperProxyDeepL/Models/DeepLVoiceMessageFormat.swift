@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLVoiceMessageFormat: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let json = Self(rawValue: "json")
-  public static let msgpack = Self(rawValue: "msgpack")
+public enum DeepLVoiceMessageFormat: String, Codable, Hashable, Sendable {
+  case json = "json"
+  case msgpack = "msgpack"
 }

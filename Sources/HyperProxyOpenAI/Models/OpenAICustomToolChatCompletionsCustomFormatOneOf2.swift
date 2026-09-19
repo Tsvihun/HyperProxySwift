@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAICustomToolChatCompletionsCustomFormatOneOf2: Codable, Sendable {
   public var grammar: OpenAICustomToolChatCompletionsCustomFormatOneOf2Grammar
-  public var typeModel: OpenAICustomToolChatCompletionsCustomFormatOneOf2TypeModel
+  public var kind: OpenAICustomToolChatCompletionsCustomFormatOneOf2Kind
 
   public init(
     grammar: OpenAICustomToolChatCompletionsCustomFormatOneOf2Grammar,
-    typeModel: OpenAICustomToolChatCompletionsCustomFormatOneOf2TypeModel
+    kind: OpenAICustomToolChatCompletionsCustomFormatOneOf2Kind
   ) {
     self.grammar = grammar
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case grammar
-    case typeModel = "type"
+    case kind = "type"
   }
 }

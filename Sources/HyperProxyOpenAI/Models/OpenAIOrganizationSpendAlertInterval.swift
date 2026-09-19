@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIOrganizationSpendAlertInterval: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let month = Self(rawValue: "month")
+public enum OpenAIOrganizationSpendAlertInterval: String, Codable, Hashable, Sendable {
+  case month = "month"
 }

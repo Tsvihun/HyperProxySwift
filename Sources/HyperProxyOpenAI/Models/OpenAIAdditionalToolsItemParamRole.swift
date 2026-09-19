@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIAdditionalToolsItemParamRole: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let developer = Self(rawValue: "developer")
+public enum OpenAIAdditionalToolsItemParamRole: String, Codable, Hashable, Sendable {
+  case developer = "developer"
 }

@@ -13,15 +13,15 @@ import HyperProxyCore
 public struct OpenAIRealtimeTranslationSessionCreateRequestAudioInputNoiseReductionAnyOf1: Codable,
   Sendable
 {
-  public var typeModel: OpenAINoiseReductionType
+  public var kind: OpenAINoiseReductionType
 
   public init(
-    typeModel: OpenAINoiseReductionType
+    kind: OpenAINoiseReductionType
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

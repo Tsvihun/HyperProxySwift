@@ -22,7 +22,7 @@ public struct MistralWorkflowWithWorkerStatus: Codable, Sendable {
   public var name: String
   public var sharedNamespace: String?
   public var tags: [String]?
-  public var typeModel: MistralWorkflowType
+  public var kind: MistralWorkflowType
   public var workspaceId: String
 
   public init(
@@ -31,7 +31,7 @@ public struct MistralWorkflowWithWorkerStatus: Codable, Sendable {
     displayName: String,
     id: String,
     name: String,
-    typeModel: MistralWorkflowType,
+    kind: MistralWorkflowType,
     workspaceId: String,
     archived: Bool? = nil,
     availableInChatAssistant: Bool? = nil,
@@ -51,7 +51,7 @@ public struct MistralWorkflowWithWorkerStatus: Codable, Sendable {
     self.name = name
     self.sharedNamespace = sharedNamespace
     self.tags = tags
-    self.typeModel = typeModel
+    self.kind = kind
     self.workspaceId = workspaceId
   }
 
@@ -67,7 +67,7 @@ public struct MistralWorkflowWithWorkerStatus: Codable, Sendable {
     case name
     case sharedNamespace = "shared_namespace"
     case tags
-    case typeModel = "type"
+    case kind = "type"
     case workspaceId = "workspace_id"
   }
 }

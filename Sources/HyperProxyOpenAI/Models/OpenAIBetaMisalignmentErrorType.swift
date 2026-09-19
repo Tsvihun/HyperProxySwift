@@ -10,33 +10,50 @@
 import Foundation
 import HyperProxyCore
 
-public enum OpenAIBetaMisalignmentErrorType: Codable, Sendable {
-  case string(String)
-  case betaMisalignmentErrorTypeAnyOf2(OpenAIBetaMisalignmentErrorTypeAnyOf2)
+public enum OpenAIBetaMisalignmentErrorType: RawRepresentable, Codable, Hashable, Sendable {
+  case potentiallyUnintendedDataTransfer
+  case potentiallyUnintendedDataAccess
+  case potentiallyUnintendedDestructiveActivity
+  case other
+  case custom(String)
+
+  public init(rawValue: String) {
+    switch rawValue {
+    case "potentially_unintended_data_transfer":
+      self = .potentiallyUnintendedDataTransfer
+    case "potentially_unintended_data_access":
+      self = .potentiallyUnintendedDataAccess
+    case "potentially_unintended_destructive_activity":
+      self = .potentiallyUnintendedDestructiveActivity
+    case "other":
+      self = .other
+    default:
+      self = .custom(rawValue)
+    }
+  }
+
+  public var rawValue: String {
+    switch self {
+    case .potentiallyUnintendedDataTransfer:
+      return "potentially_unintended_data_transfer"
+    case .potentiallyUnintendedDataAccess:
+      return "potentially_unintended_data_access"
+    case .potentiallyUnintendedDestructiveActivity:
+      return "potentially_unintended_destructive_activity"
+    case .other:
+      return "other"
+    case .custom(let value):
+      return value
+    }
+  }
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(String.self) {
-      self = .string(value)
-      return
-    }
-    self = .betaMisalignmentErrorTypeAnyOf2(
-      try container.decode(OpenAIBetaMisalignmentErrorTypeAnyOf2.self))
+    self.init(rawValue: try container.decode(String.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
-    switch self {
-    case .string(let value):
-      try container.encode(value)
-    case .betaMisalignmentErrorTypeAnyOf2(let value):
-      try container.encode(value)
-    }
-  }
-}
-
-extension OpenAIBetaMisalignmentErrorType: ExpressibleByStringLiteral {
-  public init(stringLiteral value: String) {
-    self = .string(value)
+    try container.encode(rawValue)
   }
 }

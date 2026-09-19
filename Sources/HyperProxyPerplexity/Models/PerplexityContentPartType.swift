@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct PerplexityContentPartType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let outputText = Self(rawValue: "output_text")
+public enum PerplexityContentPartType: String, Codable, Hashable, Sendable {
+  case outputText = "output_text"
 }

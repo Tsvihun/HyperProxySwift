@@ -10,33 +10,40 @@
 import Foundation
 import HyperProxyCore
 
-public enum OpenAISpendLimitEnforcementStatus: Codable, Sendable {
-  case string(String)
-  case spendLimitEnforcementStatusAnyOf2(OpenAISpendLimitEnforcementStatusAnyOf2)
+public enum OpenAISpendLimitEnforcementStatus: RawRepresentable, Codable, Hashable, Sendable {
+  case inactive
+  case enforcing
+  case custom(String)
+
+  public init(rawValue: String) {
+    switch rawValue {
+    case "inactive":
+      self = .inactive
+    case "enforcing":
+      self = .enforcing
+    default:
+      self = .custom(rawValue)
+    }
+  }
+
+  public var rawValue: String {
+    switch self {
+    case .inactive:
+      return "inactive"
+    case .enforcing:
+      return "enforcing"
+    case .custom(let value):
+      return value
+    }
+  }
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(String.self) {
-      self = .string(value)
-      return
-    }
-    self = .spendLimitEnforcementStatusAnyOf2(
-      try container.decode(OpenAISpendLimitEnforcementStatusAnyOf2.self))
+    self.init(rawValue: try container.decode(String.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
-    switch self {
-    case .string(let value):
-      try container.encode(value)
-    case .spendLimitEnforcementStatusAnyOf2(let value):
-      try container.encode(value)
-    }
-  }
-}
-
-extension OpenAISpendLimitEnforcementStatus: ExpressibleByStringLiteral {
-  public init(stringLiteral value: String) {
-    self = .string(value)
+    try container.encode(rawValue)
   }
 }

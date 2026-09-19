@@ -10,14 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherExecuteRequestFilesItemEncoding: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let string = Self(rawValue: "string")
-  public static let base64 = Self(rawValue: "base64")
+public enum TogetherExecuteRequestFilesItemEncoding: String, Codable, Hashable, Sendable {
+  case string = "string"
+  case base64 = "base64"
 }

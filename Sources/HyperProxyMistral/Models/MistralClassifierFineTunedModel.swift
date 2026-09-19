@@ -20,9 +20,9 @@ public struct MistralClassifierFineTunedModel: Codable, Sendable {
   public var id: String
   public var job: String?
   public var maxContextLength: Int?
-  public var modelType: String?
+  public var modelType: MistralClassifierModelType?
   public var name: String?
-  public var object: String?
+  public var object: MistralModelObject?
   public var ownedBy: String
   public var root: String
   public var rootVersion: String
@@ -42,9 +42,9 @@ public struct MistralClassifierFineTunedModel: Codable, Sendable {
     description: String? = nil,
     job: String? = nil,
     maxContextLength: Int? = nil,
-    modelType: String? = nil,
+    modelType: MistralClassifierModelType? = nil,
     name: String? = nil,
-    object: String? = nil
+    object: MistralModelObject? = nil
   ) {
     self.aliases = aliases
     self.archived = archived

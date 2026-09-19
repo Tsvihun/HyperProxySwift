@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterImageInputModality: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let text = Self(rawValue: "text")
-  public static let image = Self(rawValue: "image")
-  public static let file = Self(rawValue: "file")
-  public static let audio = Self(rawValue: "audio")
-  public static let video = Self(rawValue: "video")
+public enum OpenRouterImageInputModality: String, Codable, Hashable, Sendable {
+  case text = "text"
+  case image = "image"
+  case file = "file"
+  case audio = "audio"
+  case video = "video"
 }

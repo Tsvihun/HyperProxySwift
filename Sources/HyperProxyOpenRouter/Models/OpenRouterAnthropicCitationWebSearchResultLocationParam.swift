@@ -14,20 +14,20 @@ public struct OpenRouterAnthropicCitationWebSearchResultLocationParam: Codable, 
   public var citedText: String
   public var encryptedIndex: String
   public var title: String
-  public var typeModel: OpenRouterAnthropicCitationWebSearchResultLocationParamTypeModel
+  public var kind: OpenRouterAnthropicCitationWebSearchResultLocationParamKind
   public var url: String
 
   public init(
     citedText: String,
     encryptedIndex: String,
     title: String,
-    typeModel: OpenRouterAnthropicCitationWebSearchResultLocationParamTypeModel,
+    kind: OpenRouterAnthropicCitationWebSearchResultLocationParamKind,
     url: String
   ) {
     self.citedText = citedText
     self.encryptedIndex = encryptedIndex
     self.title = title
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
@@ -35,7 +35,7 @@ public struct OpenRouterAnthropicCitationWebSearchResultLocationParam: Codable, 
     case citedText = "cited_text"
     case encryptedIndex = "encrypted_index"
     case title
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

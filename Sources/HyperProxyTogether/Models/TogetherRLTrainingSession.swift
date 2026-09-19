@@ -24,7 +24,7 @@ public struct TogetherRLTrainingSession: Codable, Sendable {
   public var policyState: TogetherRLSessionPolicyState
   public var resumeFromCheckpointId: String?
   public var status: TogetherRLTrainingSessionStatus
-  public var step: HyperProxyJSONValue
+  public var step: TogetherRLTrainingSessionStep
   public var trainingCheckpoints: [TogetherRLTrainingCheckpoint]
   public var updatedAt: String
 
@@ -38,7 +38,7 @@ public struct TogetherRLTrainingSession: Codable, Sendable {
     modelResourcesId: String,
     policyState: TogetherRLSessionPolicyState,
     status: TogetherRLTrainingSessionStatus,
-    step: HyperProxyJSONValue,
+    step: TogetherRLTrainingSessionStep,
     trainingCheckpoints: [TogetherRLTrainingCheckpoint],
     updatedAt: String,
     displayName: String? = nil,

@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenRouterStoredPromptTemplate: Codable, Sendable {
   public var id: String
-  public var variables: [String: HyperProxyJSONValue]?
+  public var variables: [String: OpenRouterStoredPromptTemplateVariablesValue]?
 
   public init(
     id: String,
-    variables: [String: HyperProxyJSONValue]? = nil
+    variables: [String: OpenRouterStoredPromptTemplateVariablesValue]? = nil
   ) {
     self.id = id
     self.variables = variables

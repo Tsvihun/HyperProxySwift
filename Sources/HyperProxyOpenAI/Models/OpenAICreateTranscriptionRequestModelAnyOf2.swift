@@ -10,20 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAICreateTranscriptionRequestModelAnyOf2: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let whisper1 = Self(rawValue: "whisper-1")
-  public static let gptTranscribe = Self(rawValue: "gpt-transcribe")
-  public static let gpt4oTranscribe = Self(rawValue: "gpt-4o-transcribe")
-  public static let gpt4oMiniTranscribe = Self(rawValue: "gpt-4o-mini-transcribe")
-  public static let gpt4oMiniTranscribe20251215 = Self(
-    rawValue: "gpt-4o-mini-transcribe-2025-12-15")
-  public static let gpt4oTranscribeDiarize = Self(rawValue: "gpt-4o-transcribe-diarize")
+public enum OpenAICreateTranscriptionRequestModelAnyOf2: String, Codable, Hashable, Sendable {
+  case whisper1 = "whisper-1"
+  case gptTranscribe = "gpt-transcribe"
+  case gpt4oTranscribe = "gpt-4o-transcribe"
+  case gpt4oMiniTranscribe = "gpt-4o-mini-transcribe"
+  case gpt4oMiniTranscribe20251215 = "gpt-4o-mini-transcribe-2025-12-15"
+  case gpt4oTranscribeDiarize = "gpt-4o-transcribe-diarize"
 }

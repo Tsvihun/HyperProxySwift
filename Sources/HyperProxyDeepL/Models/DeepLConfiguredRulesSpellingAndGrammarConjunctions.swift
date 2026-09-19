@@ -10,15 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesSpellingAndGrammarConjunctions: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesSpellingAndGrammarConjunctions: String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let neverStartSentenceWithCoordinatingConjunction = Self(
-    rawValue: "never_start_sentence_with_coordinating_conjunction")
+  case neverStartSentenceWithCoordinatingConjunction =
+    "never_start_sentence_with_coordinating_conjunction"
 }

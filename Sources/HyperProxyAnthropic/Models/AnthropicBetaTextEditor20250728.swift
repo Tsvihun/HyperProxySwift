@@ -16,13 +16,13 @@ public struct AnthropicBetaTextEditor20250728: Codable, Sendable {
   public var deferLoading: Bool?
   public var inputExamples: [[String: AnthropicBetaJsonValue]]?
   public var maxCharacters: Int?
-  public var name: String
+  public var name: AnthropicStrReplaceBasedEditToolName
   public var strict: Bool?
-  public var typeModel: String
+  public var kind: AnthropicTextEditor20250728Kind
 
   public init(
-    name: String,
-    typeModel: String,
+    name: AnthropicStrReplaceBasedEditToolName = .strReplaceBasedEditTool,
+    kind: AnthropicTextEditor20250728Kind = .textEditor20250728,
     allowedCallers: [AnthropicBetaAllowedCaller]? = nil,
     cacheControl: AnthropicBetaCacheControlEphemeral? = nil,
     deferLoading: Bool? = nil,
@@ -37,7 +37,7 @@ public struct AnthropicBetaTextEditor20250728: Codable, Sendable {
     self.maxCharacters = maxCharacters
     self.name = name
     self.strict = strict
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct AnthropicBetaTextEditor20250728: Codable, Sendable {
     case maxCharacters = "max_characters"
     case name
     case strict
-    case typeModel = "type"
+    case kind = "type"
   }
 }

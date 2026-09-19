@@ -14,14 +14,14 @@ public struct OpenAIBetaScrollParam: Codable, Sendable {
   public var keys: [String]?
   public var scrollX: Int
   public var scrollY: Int
-  public var typeModel: OpenAIBetaScrollParamTypeModel
+  public var kind: OpenAIBetaScrollParamKind
   public var x: Int
   public var y: Int
 
   public init(
     scrollX: Int,
     scrollY: Int,
-    typeModel: OpenAIBetaScrollParamTypeModel,
+    kind: OpenAIBetaScrollParamKind,
     x: Int,
     y: Int,
     keys: [String]? = nil
@@ -29,7 +29,7 @@ public struct OpenAIBetaScrollParam: Codable, Sendable {
     self.keys = keys
     self.scrollX = scrollX
     self.scrollY = scrollY
-    self.typeModel = typeModel
+    self.kind = kind
     self.x = x
     self.y = y
   }
@@ -38,7 +38,7 @@ public struct OpenAIBetaScrollParam: Codable, Sendable {
     case keys
     case scrollX = "scroll_x"
     case scrollY = "scroll_y"
-    case typeModel = "type"
+    case kind = "type"
     case x
     case y
   }

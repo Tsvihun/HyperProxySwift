@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct AnthropicBetaFederationIssuerUpdateParams: Codable, Sendable {
   public var checkJti: Bool?
   public var issuerUrl: String?
-  public var jwks: HyperProxyJSONValue?
+  public var jwks: AnthropicBetaFederationIssuerUpdateParamsJwksAnyOf1?
   public var jwksPollingDisabled: Bool?
   public var maxJwtLifetimeSeconds: Int?
   public var name: String?
@@ -21,7 +21,7 @@ public struct AnthropicBetaFederationIssuerUpdateParams: Codable, Sendable {
   public init(
     checkJti: Bool? = nil,
     issuerUrl: String? = nil,
-    jwks: HyperProxyJSONValue? = nil,
+    jwks: AnthropicBetaFederationIssuerUpdateParamsJwksAnyOf1? = nil,
     jwksPollingDisabled: Bool? = nil,
     maxJwtLifetimeSeconds: Int? = nil,
     name: String? = nil

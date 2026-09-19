@@ -15,12 +15,12 @@ public struct OpenAIEvalGraderPython: Codable, Sendable {
   public var name: String
   public var passThreshold: Double?
   public var source: String
-  public var typeModel: OpenAIGraderPythonTypeModel
+  public var kind: OpenAIGraderPythonKind
 
   public init(
     name: String,
     source: String,
-    typeModel: OpenAIGraderPythonTypeModel,
+    kind: OpenAIGraderPythonKind,
     imageTag: String? = nil,
     passThreshold: Double? = nil
   ) {
@@ -28,7 +28,7 @@ public struct OpenAIEvalGraderPython: Codable, Sendable {
     self.name = name
     self.passThreshold = passThreshold
     self.source = source
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIEvalGraderPython: Codable, Sendable {
     case name
     case passThreshold = "pass_threshold"
     case source
-    case typeModel = "type"
+    case kind = "type"
   }
 }

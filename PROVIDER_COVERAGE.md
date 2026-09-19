@@ -55,11 +55,11 @@ checked-in snapshot is built from official OpenAPI, AsyncAPI, and Google Discove
 where providers publish them. Reviewed manual definitions remain only for providers whose public
 documentation does not expose a complete machine-readable schema.
 
-The current snapshot contains 2,244 routes from 53 official specifications or watched
+The current snapshot contains 2,292 routes from 53 official specifications or watched
 documentation sources. The number is evidence for this release, not a permanent completeness
 claim: scheduled CI is the mechanism that detects when providers move it.
 
-As of the 2026-08-11 snapshot, the maintainer audit has no known route-level gap in the published
+As of the 2026-09-19 snapshot, the maintainer audit has no known route-level gap in the published
 API surfaces of those 18 provider families. This is a dated audit result, not a claim that
 an upstream cannot publish a new endpoint immediately after the snapshot.
 
@@ -78,8 +78,8 @@ generation tooling as part of the public package.
 Typed layers should be generated from official machine-readable schemas when available and
 hand-refined only where Swift ergonomics require it.
 
-The current release artifact contains 15,464 generated provider types with 41,158 named fields and
-1,955 typed operation bindings from official machine-readable or reviewed schemas spanning all 18
+The current release artifact contains 17,559 generated provider models with 42,316 named fields and
+2,036 typed operation bindings from official machine-readable or reviewed schemas spanning all 18
 provider families. DeepSeek's Responses, Chat/FIM, Models, Balance, and Anthropic-compatible
 surfaces are modeled from reviewed official documentation. Each AI uses both of its official
 OpenAPI documents plus a reviewed each::sense schema, including its documented SSE event fields.

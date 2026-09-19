@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsUserInterruptEventParams: Codable, Sendable {
   public var sessionThreadId: String?
-  public var typeModel: AnthropicBetaManagedAgentsUserInterruptEventParamsTypeModel
+  public var kind: AnthropicBetaManagedAgentsUserInterruptEventParamsKind
 
   public init(
-    typeModel: AnthropicBetaManagedAgentsUserInterruptEventParamsTypeModel,
+    kind: AnthropicBetaManagedAgentsUserInterruptEventParamsKind,
     sessionThreadId: String? = nil
   ) {
     self.sessionThreadId = sessionThreadId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case sessionThreadId = "session_thread_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAITurnObjectResource: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let agentSessionTurn = Self(rawValue: "agent.session.turn")
+public enum OpenAITurnObjectResource: String, Codable, Hashable, Sendable {
+  case agentSessionTurn = "agent.session.turn"
 }

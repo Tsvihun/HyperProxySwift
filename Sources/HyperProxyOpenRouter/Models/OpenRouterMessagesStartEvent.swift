@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterMessagesStartEvent: Codable, Sendable {
   public var message: OpenRouterMessagesStartEventMessage
-  public var typeModel: OpenRouterMessagesStartEventTypeModel
+  public var kind: OpenRouterMessagesStartEventKind
 
   public init(
     message: OpenRouterMessagesStartEventMessage,
-    typeModel: OpenRouterMessagesStartEventTypeModel
+    kind: OpenRouterMessagesStartEventKind
   ) {
     self.message = message
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case message
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -18,7 +18,7 @@ public struct OpenAISessionEventAgentSessionTurnReasoningSummaryTextDone: Codabl
   public var summaryIndex: Int64
   public var text: String
   public var turnId: String
-  public var typeModel: OpenAISessionEventAgentSessionTurnReasoningSummaryTextDoneTypeModel
+  public var kind: OpenAISessionEventAgentSessionTurnReasoningSummaryTextDoneKind
 
   public init(
     eventId: String,
@@ -28,7 +28,7 @@ public struct OpenAISessionEventAgentSessionTurnReasoningSummaryTextDone: Codabl
     summaryIndex: Int64,
     text: String,
     turnId: String,
-    typeModel: OpenAISessionEventAgentSessionTurnReasoningSummaryTextDoneTypeModel
+    kind: OpenAISessionEventAgentSessionTurnReasoningSummaryTextDoneKind
   ) {
     self.eventId = eventId
     self.itemId = itemId
@@ -37,7 +37,7 @@ public struct OpenAISessionEventAgentSessionTurnReasoningSummaryTextDone: Codabl
     self.summaryIndex = summaryIndex
     self.text = text
     self.turnId = turnId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct OpenAISessionEventAgentSessionTurnReasoningSummaryTextDone: Codabl
     case summaryIndex = "summary_index"
     case text
     case turnId = "turn_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

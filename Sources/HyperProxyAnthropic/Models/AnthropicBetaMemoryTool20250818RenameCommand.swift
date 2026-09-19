@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaMemoryTool20250818RenameCommand: Codable, Sendable {
-  public var command: AnthropicBetaMemoryTool20250818RenameCommandCommand
+  public var command: AnthropicRenameCommand
   public var newPath: String
   public var oldPath: String
 
   public init(
-    command: AnthropicBetaMemoryTool20250818RenameCommandCommand,
     newPath: String,
-    oldPath: String
+    oldPath: String,
+    command: AnthropicRenameCommand = .rename
   ) {
     self.command = command
     self.newPath = newPath

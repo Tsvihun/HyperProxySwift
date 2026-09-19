@@ -10,4 +10,19 @@
 import Foundation
 import HyperProxyCore
 
-public typealias ElevenLabsTextToVoicePreviewStreamResponse = String
+public struct ElevenLabsTextToVoicePreviewStreamResponse: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+}
+
+extension ElevenLabsTextToVoicePreviewStreamResponse: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self.init(rawValue: value)
+  }
+}

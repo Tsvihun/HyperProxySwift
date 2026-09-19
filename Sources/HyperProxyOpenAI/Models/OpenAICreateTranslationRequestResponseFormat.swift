@@ -10,18 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAICreateTranslationRequestResponseFormat: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let json = Self(rawValue: "json")
-  public static let text = Self(rawValue: "text")
-  public static let srt = Self(rawValue: "srt")
-  public static let verboseJson = Self(rawValue: "verbose_json")
-  public static let vtt = Self(rawValue: "vtt")
+public enum OpenAICreateTranslationRequestResponseFormat: String, Codable, Hashable, Sendable {
+  case json = "json"
+  case text = "text"
+  case srt = "srt"
+  case verboseJson = "verbose_json"
+  case vtt = "vtt"
 }

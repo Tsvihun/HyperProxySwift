@@ -16,12 +16,12 @@ public struct OpenAIRealtimeTranscriptionSessionCreateResponseGA: Codable, Senda
   public var id: String
   public var include: [OpenAIRealtimeTranscriptionSessionCreateResponseGAIncludeItem]?
   public var object: String
-  public var typeModel: OpenAIRealtimeTranscriptionSessionCreateResponseGATypeModel
+  public var kind: OpenAIRealtimeTranscriptionSessionCreateResponseGAKind
 
   public init(
     id: String,
     object: String,
-    typeModel: OpenAIRealtimeTranscriptionSessionCreateResponseGATypeModel,
+    kind: OpenAIRealtimeTranscriptionSessionCreateResponseGAKind,
     audio: OpenAIRealtimeTranscriptionSessionCreateResponseGAAudio? = nil,
     expiresAt: Int? = nil,
     include: [OpenAIRealtimeTranscriptionSessionCreateResponseGAIncludeItem]? = nil
@@ -31,7 +31,7 @@ public struct OpenAIRealtimeTranscriptionSessionCreateResponseGA: Codable, Senda
     self.id = id
     self.include = include
     self.object = object
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIRealtimeTranscriptionSessionCreateResponseGA: Codable, Senda
     case id
     case include
     case object
-    case typeModel = "type"
+    case kind = "type"
   }
 }

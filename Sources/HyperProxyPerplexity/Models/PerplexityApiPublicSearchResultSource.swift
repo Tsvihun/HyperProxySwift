@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct PerplexityApiPublicSearchResultSource: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let web = Self(rawValue: "web")
-  public static let attachment = Self(rawValue: "attachment")
+public enum PerplexityApiPublicSearchResultSource: String, Codable, Hashable, Sendable {
+  case web = "web"
+  case attachment = "attachment"
 }

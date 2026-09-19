@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralListWorkflowEventResponse: Codable, Sendable {
-  public var events: [HyperProxyJSONValue]
+  public var events: [MistralListWorkflowEventResponseEventsItem]
   public var nextCursor: String?
 
   public init(
-    events: [HyperProxyJSONValue],
+    events: [MistralListWorkflowEventResponseEventsItem],
     nextCursor: String? = nil
   ) {
     self.events = events

@@ -10,19 +10,13 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsColumnFilterOperation: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let inValue = Self(rawValue: "in")
-  public static let notIn = Self(rawValue: "not_in")
-  public static let le = Self(rawValue: "le")
-  public static let ge = Self(rawValue: "ge")
-  public static let lt = Self(rawValue: "lt")
-  public static let gt = Self(rawValue: "gt")
-  public static let eq = Self(rawValue: "eq")
-  public static let neq = Self(rawValue: "neq")
+public enum ElevenLabsColumnFilterOperation: String, Codable, Hashable, Sendable {
+  case inValue = "in"
+  case notIn = "not_in"
+  case le = "le"
+  case ge = "ge"
+  case lt = "lt"
+  case gt = "gt"
+  case eq = "eq"
+  case neq = "neq"
 }

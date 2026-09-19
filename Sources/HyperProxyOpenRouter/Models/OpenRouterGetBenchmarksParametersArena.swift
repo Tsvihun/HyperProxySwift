@@ -10,15 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterGetBenchmarksParametersArena: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let models = Self(rawValue: "models")
-  public static let builders = Self(rawValue: "builders")
-  public static let agents = Self(rawValue: "agents")
+public enum OpenRouterGetBenchmarksParametersArena: String, Codable, Hashable, Sendable {
+  case models = "models"
+  case builders = "builders"
+  case agents = "agents"
 }

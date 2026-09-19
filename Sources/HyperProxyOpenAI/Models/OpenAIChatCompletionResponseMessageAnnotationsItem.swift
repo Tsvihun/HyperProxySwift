@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIChatCompletionResponseMessageAnnotationsItem: Codable, Sendable {
-  public var typeModel: OpenAIChatCompletionResponseMessageAnnotationsItemTypeModel
+  public var kind: OpenAIChatCompletionResponseMessageAnnotationsItemKind
   public var urlCitation: OpenAIChatCompletionResponseMessageAnnotationsItemUrlCitation
 
   public init(
-    typeModel: OpenAIChatCompletionResponseMessageAnnotationsItemTypeModel,
+    kind: OpenAIChatCompletionResponseMessageAnnotationsItemKind,
     urlCitation: OpenAIChatCompletionResponseMessageAnnotationsItemUrlCitation
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
     self.urlCitation = urlCitation
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
     case urlCitation = "url_citation"
   }
 }

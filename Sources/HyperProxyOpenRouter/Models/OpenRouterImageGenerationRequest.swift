@@ -23,8 +23,10 @@ public struct OpenRouterImageGenerationRequest: Codable, Sendable {
   public var quality: OpenRouterImageGenerationRequestQuality?
   public var resolution: OpenRouterImageGenerationRequestResolution?
   public var seed: Int?
+  public var sessionId: String?
   public var size: String?
   public var stream: Bool?
+  public var trace: OpenRouterTraceConfig?
   public var user: String?
 
   public init(
@@ -40,8 +42,10 @@ public struct OpenRouterImageGenerationRequest: Codable, Sendable {
     quality: OpenRouterImageGenerationRequestQuality? = nil,
     resolution: OpenRouterImageGenerationRequestResolution? = nil,
     seed: Int? = nil,
+    sessionId: String? = nil,
     size: String? = nil,
     stream: Bool? = nil,
+    trace: OpenRouterTraceConfig? = nil,
     user: String? = nil
   ) {
     self.aspectRatio = aspectRatio
@@ -56,8 +60,10 @@ public struct OpenRouterImageGenerationRequest: Codable, Sendable {
     self.quality = quality
     self.resolution = resolution
     self.seed = seed
+    self.sessionId = sessionId
     self.size = size
     self.stream = stream
+    self.trace = trace
     self.user = user
   }
 
@@ -74,8 +80,10 @@ public struct OpenRouterImageGenerationRequest: Codable, Sendable {
     case quality
     case resolution
     case seed
+    case sessionId = "session_id"
     case size
     case stream
+    case trace
     case user
   }
 }

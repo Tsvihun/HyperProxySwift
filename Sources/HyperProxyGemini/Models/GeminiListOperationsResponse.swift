@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct GeminiListOperationsResponse: Codable, Sendable {
   public var nextPageToken: String?
-  public var operations: [HyperProxyJSONValue]?
+  public var operations: [GeminiOperationModel]?
   public var unreachable: [String]?
 
   public init(
     nextPageToken: String? = nil,
-    operations: [HyperProxyJSONValue]? = nil,
+    operations: [GeminiOperationModel]? = nil,
     unreachable: [String]? = nil
   ) {
     self.nextPageToken = nextPageToken

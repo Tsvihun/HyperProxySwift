@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct GroqChatCompletionRequestUserMessage: Codable, Sendable {
-  public var content: HyperProxyJSONValue
+  public var content: GroqChatCompletionRequestUserMessageContent
   public var name: String?
   public var role: GroqChatCompletionRequestUserMessageRole
 
   public init(
-    content: HyperProxyJSONValue,
+    content: GroqChatCompletionRequestUserMessageContent,
     role: GroqChatCompletionRequestUserMessageRole,
     name: String? = nil
   ) {

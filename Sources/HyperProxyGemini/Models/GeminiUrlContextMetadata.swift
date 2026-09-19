@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiUrlContextMetadata: Codable, Sendable {
-  public var urlMetadata: [HyperProxyJSONValue]?
+  public var urlMetadata: [GeminiUrlMetadata]?
 
   public init(
-    urlMetadata: [HyperProxyJSONValue]? = nil
+    urlMetadata: [GeminiUrlMetadata]? = nil
   ) {
     self.urlMetadata = urlMetadata
   }

@@ -14,9 +14,9 @@ public struct GeminiAudioTranscriptionConfig: Codable, Sendable {
   public var adaptationPhrases: [String]?
   public var customVocabulary: [String]?
   public var diarization: Bool?
-  public var languageAuto: HyperProxyJSONValue?
+  public var languageAuto: GeminiLanguageAuto?
   public var languageCodes: [String]?
-  public var languageHints: HyperProxyJSONValue?
+  public var languageHints: GeminiLanguageHints?
   public var mode: GeminiAudioTranscriptionConfigMode?
   public var wordTimestamp: Bool?
 
@@ -24,9 +24,9 @@ public struct GeminiAudioTranscriptionConfig: Codable, Sendable {
     adaptationPhrases: [String]? = nil,
     customVocabulary: [String]? = nil,
     diarization: Bool? = nil,
-    languageAuto: HyperProxyJSONValue? = nil,
+    languageAuto: GeminiLanguageAuto? = nil,
     languageCodes: [String]? = nil,
-    languageHints: HyperProxyJSONValue? = nil,
+    languageHints: GeminiLanguageHints? = nil,
     mode: GeminiAudioTranscriptionConfigMode? = nil,
     wordTimestamp: Bool? = nil
   ) {

@@ -23,7 +23,7 @@ public struct ElevenLabsSubscriptionResponseModel: Codable, Sendable {
   public var currency: ElevenLabsCurrency?
   public var currentOverage: ElevenLabsPrice
   public var maxCharacterLimitExtension: Int?
-  public var maxCreditLimitExtension: HyperProxyJSONValue
+  public var maxCreditLimitExtension: ElevenLabsSubscriptionResponseModelMaxCreditLimitExtension
   public var maxVoiceAddEdits: Int?
   public var nextCharacterCountResetUnix: Int?
   public var professionalVoiceLimit: Int
@@ -45,7 +45,7 @@ public struct ElevenLabsSubscriptionResponseModel: Codable, Sendable {
     characterLimit: Int,
     currentOverage: ElevenLabsPrice,
     maxCharacterLimitExtension: Int?,
-    maxCreditLimitExtension: HyperProxyJSONValue,
+    maxCreditLimitExtension: ElevenLabsSubscriptionResponseModelMaxCreditLimitExtension,
     professionalVoiceLimit: Int,
     professionalVoiceSlotsUsed: Int,
     professionalVoiceSlotsUsedInWorkspace: Int,

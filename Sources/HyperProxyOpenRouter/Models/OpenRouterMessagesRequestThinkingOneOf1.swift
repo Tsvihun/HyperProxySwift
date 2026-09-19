@@ -14,24 +14,24 @@ public struct OpenRouterMessagesRequestThinkingOneOf1: Codable, Sendable {
   public var blockBinding: OpenRouterAnthropicThinkingBlockBinding?
   public var budgetTokens: Int
   public var display: OpenRouterAnthropicThinkingDisplay?
-  public var typeModel: OpenRouterMessagesRequestThinkingOneOf1TypeModel
+  public var kind: OpenRouterMessagesRequestThinkingOneOf1Kind
 
   public init(
     budgetTokens: Int,
-    typeModel: OpenRouterMessagesRequestThinkingOneOf1TypeModel,
+    kind: OpenRouterMessagesRequestThinkingOneOf1Kind,
     blockBinding: OpenRouterAnthropicThinkingBlockBinding? = nil,
     display: OpenRouterAnthropicThinkingDisplay? = nil
   ) {
     self.blockBinding = blockBinding
     self.budgetTokens = budgetTokens
     self.display = display
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case blockBinding = "block_binding"
     case budgetTokens = "budget_tokens"
     case display
-    case typeModel = "type"
+    case kind = "type"
   }
 }

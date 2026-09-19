@@ -17,7 +17,7 @@ public struct GroqListFineTuningsResponseDataItem: Codable, Sendable {
   public var id: String?
   public var inputFileId: String?
   public var name: String?
-  public var typeModel: String?
+  public var kind: String?
 
   public init(
     baseModel: String? = nil,
@@ -26,7 +26,7 @@ public struct GroqListFineTuningsResponseDataItem: Codable, Sendable {
     id: String? = nil,
     inputFileId: String? = nil,
     name: String? = nil,
-    typeModel: String? = nil
+    kind: String? = nil
   ) {
     self.baseModel = baseModel
     self.createdAt = createdAt
@@ -34,7 +34,7 @@ public struct GroqListFineTuningsResponseDataItem: Codable, Sendable {
     self.id = id
     self.inputFileId = inputFileId
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct GroqListFineTuningsResponseDataItem: Codable, Sendable {
     case id
     case inputFileId = "input_file_id"
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

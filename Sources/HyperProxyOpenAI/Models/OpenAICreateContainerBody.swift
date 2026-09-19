@@ -15,16 +15,16 @@ public struct OpenAICreateContainerBody: Codable, Sendable {
   public var fileIds: [String]?
   public var memoryLimit: OpenAICreateContainerBodyMemoryLimit?
   public var name: String
-  public var networkPolicy: HyperProxyJSONValue?
-  public var skills: [HyperProxyJSONValue]?
+  public var networkPolicy: OpenAICreateContainerBodyNetworkPolicy?
+  public var skills: [OpenAICreateContainerBodySkillsItem]?
 
   public init(
     name: String,
     expiresAfter: OpenAICreateContainerBodyExpiresAfter? = nil,
     fileIds: [String]? = nil,
     memoryLimit: OpenAICreateContainerBodyMemoryLimit? = nil,
-    networkPolicy: HyperProxyJSONValue? = nil,
-    skills: [HyperProxyJSONValue]? = nil
+    networkPolicy: OpenAICreateContainerBodyNetworkPolicy? = nil,
+    skills: [OpenAICreateContainerBodySkillsItem]? = nil
   ) {
     self.expiresAfter = expiresAfter
     self.fileIds = fileIds

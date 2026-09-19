@@ -16,7 +16,7 @@ public struct OpenRouterImageGenCallPartialImageEvent: Codable, Sendable {
   public var partialImageB64: String
   public var partialImageIndex: Int
   public var sequenceNumber: Int
-  public var typeModel: OpenRouterOpenAIResponsesImageGenCallPartialImageTypeModel
+  public var kind: OpenRouterOpenAIResponsesImageGenCallPartialImageKind
 
   public init(
     itemId: String,
@@ -24,14 +24,14 @@ public struct OpenRouterImageGenCallPartialImageEvent: Codable, Sendable {
     partialImageB64: String,
     partialImageIndex: Int,
     sequenceNumber: Int,
-    typeModel: OpenRouterOpenAIResponsesImageGenCallPartialImageTypeModel
+    kind: OpenRouterOpenAIResponsesImageGenCallPartialImageKind
   ) {
     self.itemId = itemId
     self.outputIndex = outputIndex
     self.partialImageB64 = partialImageB64
     self.partialImageIndex = partialImageIndex
     self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenRouterImageGenCallPartialImageEvent: Codable, Sendable {
     case partialImageB64 = "partial_image_b64"
     case partialImageIndex = "partial_image_index"
     case sequenceNumber = "sequence_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

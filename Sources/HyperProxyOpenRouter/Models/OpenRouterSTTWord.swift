@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterSTTWord: Codable, Sendable {
+  public var confidence: Double?
   public var end: Double
   public var speaker: Int?
   public var start: Double
@@ -20,8 +21,10 @@ public struct OpenRouterSTTWord: Codable, Sendable {
     end: Double,
     start: Double,
     word: String,
+    confidence: Double? = nil,
     speaker: Int? = nil
   ) {
+    self.confidence = confidence
     self.end = end
     self.speaker = speaker
     self.start = start
@@ -29,6 +32,7 @@ public struct OpenRouterSTTWord: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case confidence
     case end
     case speaker
     case start

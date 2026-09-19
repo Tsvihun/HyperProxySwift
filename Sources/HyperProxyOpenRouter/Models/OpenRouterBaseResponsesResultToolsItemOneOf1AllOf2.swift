@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterBaseResponsesResultToolsItemOneOf1AllOf2: Codable, Sendable {
+  public var async: Bool?
   public var deferLoading: Bool?
 
   public init(
+    async: Bool? = nil,
     deferLoading: Bool? = nil
   ) {
+    self.async = async
     self.deferLoading = deferLoading
   }
 
   enum CodingKeys: String, CodingKey {
+    case async
     case deferLoading = "defer_loading"
   }
 }

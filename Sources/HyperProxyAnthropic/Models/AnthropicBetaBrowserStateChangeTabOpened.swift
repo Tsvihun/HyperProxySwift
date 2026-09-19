@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicBetaBrowserStateChangeTabOpened: Codable, Sendable {
   public var tabId: String
-  public var typeModel: String
+  public var kind: AnthropicTabOpenedKind
 
   public init(
     tabId: String,
-    typeModel: String
+    kind: AnthropicTabOpenedKind = .tabOpened
   ) {
     self.tabId = tabId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case tabId = "tab_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

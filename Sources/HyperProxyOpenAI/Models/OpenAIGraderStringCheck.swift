@@ -15,20 +15,20 @@ public struct OpenAIGraderStringCheck: Codable, Sendable {
   public var name: String
   public var operation: OpenAIGraderStringCheckOperation
   public var reference: String
-  public var typeModel: OpenAIGraderStringCheckTypeModel
+  public var kind: OpenAIGraderStringCheckKind
 
   public init(
     input: String,
     name: String,
     operation: OpenAIGraderStringCheckOperation,
     reference: String,
-    typeModel: OpenAIGraderStringCheckTypeModel
+    kind: OpenAIGraderStringCheckKind
   ) {
     self.input = input
     self.name = name
     self.operation = operation
     self.reference = reference
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIGraderStringCheck: Codable, Sendable {
     case name
     case operation
     case reference
-    case typeModel = "type"
+    case kind = "type"
   }
 }

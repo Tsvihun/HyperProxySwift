@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicBetaOutputBehaviorUpdateExisting: Codable, Sendable {
   public var memoryStoreId: String
-  public var typeModel: AnthropicBetaOutputBehaviorUpdateExistingTypeModel
+  public var kind: AnthropicBetaOutputBehaviorUpdateExistingKind
 
   public init(
     memoryStoreId: String,
-    typeModel: AnthropicBetaOutputBehaviorUpdateExistingTypeModel
+    kind: AnthropicBetaOutputBehaviorUpdateExistingKind
   ) {
     self.memoryStoreId = memoryStoreId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case memoryStoreId = "memory_store_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

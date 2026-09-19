@@ -17,11 +17,11 @@ public struct AnthropicBetaMessage: Codable, Sendable {
   public var diagnostics: AnthropicBetaDiagnostics?
   public var id: String
   public var model: AnthropicModel
-  public var role: String
+  public var role: AnthropicAssistantRole
   public var stopDetails: AnthropicBetaRefusalStopDetails?
   public var stopReason: AnthropicBetaStopReason?
   public var stopSequence: String?
-  public var typeModel: String
+  public var kind: AnthropicMessageKind
   public var usage: AnthropicBetaUsage
 
   public init(
@@ -31,12 +31,12 @@ public struct AnthropicBetaMessage: Codable, Sendable {
     diagnostics: AnthropicBetaDiagnostics?,
     id: String,
     model: AnthropicModel,
-    role: String,
     stopDetails: AnthropicBetaRefusalStopDetails?,
     stopReason: AnthropicBetaStopReason?,
     stopSequence: String?,
-    typeModel: String,
-    usage: AnthropicBetaUsage
+    usage: AnthropicBetaUsage,
+    role: AnthropicAssistantRole = .assistant,
+    kind: AnthropicMessageKind = .message
   ) {
     self.container = container
     self.content = content
@@ -48,7 +48,7 @@ public struct AnthropicBetaMessage: Codable, Sendable {
     self.stopDetails = stopDetails
     self.stopReason = stopReason
     self.stopSequence = stopSequence
-    self.typeModel = typeModel
+    self.kind = kind
     self.usage = usage
   }
 
@@ -63,7 +63,7 @@ public struct AnthropicBetaMessage: Codable, Sendable {
     case stopDetails = "stop_details"
     case stopReason = "stop_reason"
     case stopSequence = "stop_sequence"
-    case typeModel = "type"
+    case kind = "type"
     case usage
   }
 }

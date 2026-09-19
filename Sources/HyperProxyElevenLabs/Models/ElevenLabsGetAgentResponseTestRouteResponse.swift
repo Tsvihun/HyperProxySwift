@@ -10,4 +10,34 @@
 import Foundation
 import HyperProxyCore
 
-public typealias ElevenLabsGetAgentResponseTestRouteResponse = HyperProxyJSONValue
+public enum ElevenLabsGetAgentResponseTestRouteResponse: Codable, Sendable {
+  case getResponseUnitTestResponseModel(ElevenLabsGetResponseUnitTestResponseModel)
+  case getToolCallUnitTestResponseModel(ElevenLabsGetToolCallUnitTestResponseModel)
+  case getSimulationTestResponseModel(ElevenLabsGetSimulationTestResponseModel)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(ElevenLabsGetResponseUnitTestResponseModel.self) {
+      self = .getResponseUnitTestResponseModel(value)
+      return
+    }
+    if let value = try? container.decode(ElevenLabsGetToolCallUnitTestResponseModel.self) {
+      self = .getToolCallUnitTestResponseModel(value)
+      return
+    }
+    self = .getSimulationTestResponseModel(
+      try container.decode(ElevenLabsGetSimulationTestResponseModel.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .getResponseUnitTestResponseModel(let value):
+      try container.encode(value)
+    case .getToolCallUnitTestResponseModel(let value):
+      try container.encode(value)
+    case .getSimulationTestResponseModel(let value):
+      try container.encode(value)
+    }
+  }
+}

@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAISessionInputParamAgentSessionInputCancel: Codable, Sendable {
-  public var typeModel: OpenAISessionInputParamAgentSessionInputCancelTypeModel
+  public var kind: OpenAISessionInputParamAgentSessionInputCancelKind
 
   public init(
-    typeModel: OpenAISessionInputParamAgentSessionInputCancelTypeModel
+    kind: OpenAISessionInputParamAgentSessionInputCancelKind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

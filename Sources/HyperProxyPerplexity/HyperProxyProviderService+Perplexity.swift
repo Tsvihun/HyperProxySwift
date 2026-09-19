@@ -79,6 +79,34 @@ extension HyperProxyProviderService where Operation == PerplexityOperation {
   public var searchCreate: HyperProxyProviderCall<PerplexityOperation> {
     self.call(.searchCreate)
   }
+  /// `GET v1/skills`
+  public var listSkills: HyperProxyProviderCall<PerplexityOperation> {
+    self.call(.listSkills)
+  }
+  /// `POST v1/skills`
+  public var createSkill: HyperProxyProviderCall<PerplexityOperation> {
+    self.call(.createSkill)
+  }
+  /// `DELETE v1/skills/{skill_id}`
+  public var deleteSkill: HyperProxyProviderCall<PerplexityOperation> {
+    self.call(.deleteSkill)
+  }
+  /// `GET v1/skills/{skill_id}`
+  public var getSkill: HyperProxyProviderCall<PerplexityOperation> {
+    self.call(.getSkill)
+  }
+  /// `PUT v1/skills/{skill_id}`
+  public var updateSkill: HyperProxyProviderCall<PerplexityOperation> {
+    self.call(.updateSkill)
+  }
+  /// `GET v1/skills/{skill_id}/download`
+  public var downloadSkill: HyperProxyProviderCall<PerplexityOperation> {
+    self.call(.downloadSkill)
+  }
+  /// `GET v1/skills/{skill_id}/revisions`
+  public var listSkillRevisions: HyperProxyProviderCall<PerplexityOperation> {
+    self.call(.listSkillRevisions)
+  }
   /// `POST v1/sonar`
   public var sonarCreate: HyperProxyProviderCall<PerplexityOperation> {
     self.call(.sonarCreate)

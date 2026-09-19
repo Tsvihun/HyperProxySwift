@@ -10,13 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIUsageEmbeddingsResultObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let organizationUsageEmbeddingsResult = Self(
-    rawValue: "organization.usage.embeddings.result")
+public enum OpenAIUsageEmbeddingsResultObject: String, Codable, Hashable, Sendable {
+  case organizationUsageEmbeddingsResult = "organization.usage.embeddings.result"
 }

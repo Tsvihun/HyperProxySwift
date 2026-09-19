@@ -12,26 +12,26 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsEditToolConfig: Codable, Sendable {
   public var enabled: Bool
-  public var name: String
+  public var name: AnthropicEditName
   public var permissionPolicy: AnthropicBetaManagedAgentsPermissionPolicy
-  public var typeModel: String
+  public var kind: AnthropicEditKind
 
   public init(
     enabled: Bool,
-    name: String,
     permissionPolicy: AnthropicBetaManagedAgentsPermissionPolicy,
-    typeModel: String
+    name: AnthropicEditName = .edit,
+    kind: AnthropicEditKind = .edit
   ) {
     self.enabled = enabled
     self.name = name
     self.permissionPolicy = permissionPolicy
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case enabled
     case name
     case permissionPolicy = "permission_policy"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

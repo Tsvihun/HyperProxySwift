@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct FireworksAnthropicAPIError: Codable, Sendable {
   public var message: String
-  public var typeModel: String
+  public var kind: FireworksApiErrorKind
 
   public init(
     message: String,
-    typeModel: String
+    kind: FireworksApiErrorKind = .apiError
   ) {
     self.message = message
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case message
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,21 +10,13 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesPunctuationPeriodsAndCommas: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useFullWidthJapanesePeriodsAndFullWidthJapaneseCommas = Self(
-    rawValue: "use_full_width_japanese_periods_and_full_width_japanese_commas")
-  public static let useFullWidthJapanesePeriodsAndFullWidthNonJapaneseCommas = Self(
-    rawValue: "use_full_width_japanese_periods_and_full_width_non_japanese_commas")
-  public static let useFullWidthNonJapanesePeriodsAndFullWidthJapaneseCommas = Self(
-    rawValue: "use_full_width_non_japanese_periods_and_full_width_japanese_commas")
-  public static let useFullWidthNonJapanesePeriodsAndFullWidthNonJapaneseCommas = Self(
-    rawValue: "use_full_width_non_japanese_periods_and_full_width_non_japanese_commas")
+public enum DeepLConfiguredRulesPunctuationPeriodsAndCommas: String, Codable, Hashable, Sendable {
+  case useFullWidthJapanesePeriodsAndFullWidthJapaneseCommas =
+    "use_full_width_japanese_periods_and_full_width_japanese_commas"
+  case useFullWidthJapanesePeriodsAndFullWidthNonJapaneseCommas =
+    "use_full_width_japanese_periods_and_full_width_non_japanese_commas"
+  case useFullWidthNonJapanesePeriodsAndFullWidthJapaneseCommas =
+    "use_full_width_non_japanese_periods_and_full_width_japanese_commas"
+  case useFullWidthNonJapanesePeriodsAndFullWidthNonJapaneseCommas =
+    "use_full_width_non_japanese_periods_and_full_width_non_japanese_commas"
 }

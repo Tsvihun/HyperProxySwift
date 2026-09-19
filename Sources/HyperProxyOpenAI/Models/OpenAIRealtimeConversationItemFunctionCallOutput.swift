@@ -16,12 +16,12 @@ public struct OpenAIRealtimeConversationItemFunctionCallOutput: Codable, Sendabl
   public var object: OpenAIRealtimeConversationItemFunctionCallOutputObject?
   public var output: String
   public var status: OpenAIRealtimeConversationItemFunctionCallOutputStatus?
-  public var typeModel: OpenAIRealtimeConversationItemFunctionCallOutputTypeModel
+  public var kind: OpenAIRealtimeConversationItemFunctionCallOutputKind
 
   public init(
     callId: String,
     output: String,
-    typeModel: OpenAIRealtimeConversationItemFunctionCallOutputTypeModel,
+    kind: OpenAIRealtimeConversationItemFunctionCallOutputKind,
     id: String? = nil,
     object: OpenAIRealtimeConversationItemFunctionCallOutputObject? = nil,
     status: OpenAIRealtimeConversationItemFunctionCallOutputStatus? = nil
@@ -31,7 +31,7 @@ public struct OpenAIRealtimeConversationItemFunctionCallOutput: Codable, Sendabl
     self.object = object
     self.output = output
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIRealtimeConversationItemFunctionCallOutput: Codable, Sendabl
     case object
     case output
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

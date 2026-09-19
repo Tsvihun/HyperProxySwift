@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct FireworksPredictedOutput: Codable, Sendable {
-  public var content: HyperProxyJSONValue
-  public var typeModel: String?
+  public var content: FireworksPredictedOutputContent
+  public var kind: FireworksContentKind?
 
   public init(
-    content: HyperProxyJSONValue,
-    typeModel: String? = nil
+    content: FireworksPredictedOutputContent,
+    kind: FireworksContentKind? = nil
   ) {
     self.content = content
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case content
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -14,24 +14,24 @@ public struct OpenAIRunStepDeltaStepDetailsToolCallsFunctionObject: Codable, Sen
   public var function: OpenAIRunStepDeltaStepDetailsToolCallsFunctionObjectFunction?
   public var id: String?
   public var index: Int
-  public var typeModel: OpenAIRunStepDeltaStepDetailsToolCallsFunctionObjectTypeModel
+  public var kind: OpenAIRunStepDeltaStepDetailsToolCallsFunctionObjectKind
 
   public init(
     index: Int,
-    typeModel: OpenAIRunStepDeltaStepDetailsToolCallsFunctionObjectTypeModel,
+    kind: OpenAIRunStepDeltaStepDetailsToolCallsFunctionObjectKind,
     function: OpenAIRunStepDeltaStepDetailsToolCallsFunctionObjectFunction? = nil,
     id: String? = nil
   ) {
     self.function = function
     self.id = id
     self.index = index
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case function
     case id
     case index
-    case typeModel = "type"
+    case kind = "type"
   }
 }

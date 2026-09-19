@@ -10,19 +10,12 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIBetaResponseSteerErrorCodeAnyOf1: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let responseNotFound = Self(rawValue: "response_not_found")
-  public static let invalidInput = Self(rawValue: "invalid_input")
-  public static let steeringNotSupported = Self(rawValue: "steering_not_supported")
-  public static let tooManyPendingSteers = Self(rawValue: "too_many_pending_steers")
-  public static let responseAlreadyCompleted = Self(rawValue: "response_already_completed")
-  public static let responseNotActive = Self(rawValue: "response_not_active")
-  public static let successorCreationFailed = Self(rawValue: "successor_creation_failed")
+public enum OpenAIBetaResponseSteerErrorCodeAnyOf1: String, Codable, Hashable, Sendable {
+  case responseNotFound = "response_not_found"
+  case invalidInput = "invalid_input"
+  case steeringNotSupported = "steering_not_supported"
+  case tooManyPendingSteers = "too_many_pending_steers"
+  case responseAlreadyCompleted = "response_already_completed"
+  case responseNotActive = "response_not_active"
+  case successorCreationFailed = "successor_creation_failed"
 }

@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterPresetWithDesignatedVersionAllOf2: Codable, Sendable {
-  public var designatedVersion: OpenRouterPresetDesignatedVersion
+  public var designatedVersion: OpenRouterPresetDesignatedVersion?
 
   public init(
-    designatedVersion: OpenRouterPresetDesignatedVersion
+    designatedVersion: OpenRouterPresetDesignatedVersion?
   ) {
     self.designatedVersion = designatedVersion
   }

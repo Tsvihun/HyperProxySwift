@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAICompactionTriggerItemParam: Codable, Sendable {
   public var id: String?
-  public var typeModel: OpenAICompactionTriggerItemParamTypeModel
+  public var kind: OpenAICompactionTriggerItemParamKind
 
   public init(
-    typeModel: OpenAICompactionTriggerItemParamTypeModel,
+    kind: OpenAICompactionTriggerItemParamKind,
     id: String? = nil
   ) {
     self.id = id
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case id
-    case typeModel = "type"
+    case kind = "type"
   }
 }

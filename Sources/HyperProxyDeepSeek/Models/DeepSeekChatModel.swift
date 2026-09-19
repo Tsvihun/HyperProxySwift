@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepSeekChatModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let deepseekV4Flash = Self(rawValue: "deepseek-v4-flash")
-  public static let deepseekV4Pro = Self(rawValue: "deepseek-v4-pro")
-  public static let deepseekV4FlashVisionExp = Self(rawValue: "deepseek-v4-flash-vision-exp")
+public enum DeepSeekChatModel: String, Codable, Hashable, Sendable {
+  case deepseekV4Flash = "deepseek-v4-flash"
+  case deepseekV4Pro = "deepseek-v4-pro"
+  case deepseekV4FlashVisionExp = "deepseek-v4-flash-vision-exp"
 }

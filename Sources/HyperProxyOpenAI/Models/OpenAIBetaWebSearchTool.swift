@@ -14,11 +14,11 @@ public struct OpenAIBetaWebSearchTool: Codable, Sendable {
   public var externalWebAccess: Bool?
   public var filters: OpenAIBetaWebSearchToolFiltersAnyOf1?
   public var searchContextSize: OpenAIBetaWebSearchToolSearchContextSize?
-  public var typeModel: OpenAIBetaWebSearchToolTypeModel
+  public var kind: OpenAIBetaWebSearchToolKind
   public var userLocation: OpenAIBetaWebSearchApproximateLocation?
 
   public init(
-    typeModel: OpenAIBetaWebSearchToolTypeModel,
+    kind: OpenAIBetaWebSearchToolKind,
     externalWebAccess: Bool? = nil,
     filters: OpenAIBetaWebSearchToolFiltersAnyOf1? = nil,
     searchContextSize: OpenAIBetaWebSearchToolSearchContextSize? = nil,
@@ -27,7 +27,7 @@ public struct OpenAIBetaWebSearchTool: Codable, Sendable {
     self.externalWebAccess = externalWebAccess
     self.filters = filters
     self.searchContextSize = searchContextSize
-    self.typeModel = typeModel
+    self.kind = kind
     self.userLocation = userLocation
   }
 
@@ -35,7 +35,7 @@ public struct OpenAIBetaWebSearchTool: Codable, Sendable {
     case externalWebAccess = "external_web_access"
     case filters
     case searchContextSize = "search_context_size"
-    case typeModel = "type"
+    case kind = "type"
     case userLocation = "user_location"
   }
 }

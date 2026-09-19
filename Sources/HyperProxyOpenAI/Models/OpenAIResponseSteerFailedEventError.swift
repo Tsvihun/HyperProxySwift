@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenAIResponseSteerFailedEventError: Codable, Sendable {
   public var code: OpenAIResponseSteerErrorCode
   public var message: String
-  public var typeModel: OpenAIResponseSteerFailedEventErrorTypeModel
+  public var kind: OpenAIResponseSteerFailedEventErrorKind
 
   public init(
     code: OpenAIResponseSteerErrorCode,
     message: String,
-    typeModel: OpenAIResponseSteerFailedEventErrorTypeModel
+    kind: OpenAIResponseSteerFailedEventErrorKind
   ) {
     self.code = code
     self.message = message
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case code
     case message
-    case typeModel = "type"
+    case kind = "type"
   }
 }

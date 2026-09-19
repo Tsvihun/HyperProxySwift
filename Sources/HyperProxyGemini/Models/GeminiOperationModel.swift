@@ -12,14 +12,14 @@ import HyperProxyCore
 
 public struct GeminiOperationModel: Codable, Sendable {
   public var done: Bool?
-  public var error: HyperProxyJSONValue?
+  public var error: GeminiStatus?
   public var metadata: [String: HyperProxyJSONValue]?
   public var name: String?
   public var response: [String: HyperProxyJSONValue]?
 
   public init(
     done: Bool? = nil,
-    error: HyperProxyJSONValue? = nil,
+    error: GeminiStatus? = nil,
     metadata: [String: HyperProxyJSONValue]? = nil,
     name: String? = nil,
     response: [String: HyperProxyJSONValue]? = nil

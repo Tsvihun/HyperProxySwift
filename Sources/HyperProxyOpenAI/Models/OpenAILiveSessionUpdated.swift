@@ -14,24 +14,24 @@ public struct OpenAILiveSessionUpdated: Codable, Sendable {
   public var clientEventId: String?
   public var eventId: String
   public var session: OpenAILiveSessionResourceParam
-  public var typeModel: OpenAILiveSessionUpdatedTypeModel
+  public var kind: OpenAILiveSessionUpdatedKind
 
   public init(
     eventId: String,
     session: OpenAILiveSessionResourceParam,
-    typeModel: OpenAILiveSessionUpdatedTypeModel,
+    kind: OpenAILiveSessionUpdatedKind,
     clientEventId: String? = nil
   ) {
     self.clientEventId = clientEventId
     self.eventId = eventId
     self.session = session
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case clientEventId = "client_event_id"
     case eventId = "event_id"
     case session
-    case typeModel = "type"
+    case kind = "type"
   }
 }

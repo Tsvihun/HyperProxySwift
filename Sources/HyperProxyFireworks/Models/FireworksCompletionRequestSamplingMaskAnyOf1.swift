@@ -10,16 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksCompletionRequestSamplingMaskAnyOf1: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let count = Self(rawValue: "count")
-  public static let nonZeroList = Self(rawValue: "non_zero_list")
-  public static let nonZeroBuffer = Self(rawValue: "non_zero_buffer")
+public enum FireworksCompletionRequestSamplingMaskAnyOf1: String, Codable, Hashable, Sendable {
+  case count = "count"
+  case nonZeroList = "non_zero_list"
+  case nonZeroBuffer = "non_zero_buffer"
 }

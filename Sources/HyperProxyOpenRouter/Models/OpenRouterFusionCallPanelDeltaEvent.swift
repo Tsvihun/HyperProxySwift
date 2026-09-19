@@ -16,7 +16,7 @@ public struct OpenRouterFusionCallPanelDeltaEvent: Codable, Sendable {
   public var model: String
   public var outputIndex: Int
   public var sequenceNumber: Int
-  public var typeModel: OpenRouterFusionCallPanelDeltaEventTypeModel
+  public var kind: OpenRouterFusionCallPanelDeltaEventKind
 
   public init(
     delta: String,
@@ -24,14 +24,14 @@ public struct OpenRouterFusionCallPanelDeltaEvent: Codable, Sendable {
     model: String,
     outputIndex: Int,
     sequenceNumber: Int,
-    typeModel: OpenRouterFusionCallPanelDeltaEventTypeModel
+    kind: OpenRouterFusionCallPanelDeltaEventKind
   ) {
     self.delta = delta
     self.itemId = itemId
     self.model = model
     self.outputIndex = outputIndex
     self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenRouterFusionCallPanelDeltaEvent: Codable, Sendable {
     case model
     case outputIndex = "output_index"
     case sequenceNumber = "sequence_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

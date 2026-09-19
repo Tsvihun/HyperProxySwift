@@ -14,24 +14,24 @@ public struct PerplexityInlineSkill: Codable, Sendable {
   public var description: String
   public var instructions: String
   public var name: String
-  public var typeModel: PerplexityInlineSkillTypeModel
+  public var kind: PerplexityInlineSkillKind
 
   public init(
     description: String,
     instructions: String,
     name: String,
-    typeModel: PerplexityInlineSkillTypeModel
+    kind: PerplexityInlineSkillKind
   ) {
     self.description = description
     self.instructions = instructions
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case description
     case instructions
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

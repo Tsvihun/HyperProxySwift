@@ -434,6 +434,24 @@ extension HyperProxyProviderService where Operation == GeminiOperation {
     return try await call.decoded(GeminiGetEnvironmentFilesResponse.self)
   }
 
+  public func generativelanguageEnvironmentsFilesMediaUpload(
+    _ body: GeminiUploadEnvironmentFileRequest,
+    environmentsId: String,
+    filesId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> GeminiUploadEnvironmentFileResponse {
+    let call = self.call(.generativelanguageEnvironmentsFilesMediaUpload)
+      .path("environmentsId", environmentsId)
+      .path("filesId", filesId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(GeminiUploadEnvironmentFileResponse.self)
+  }
+
   public func fileSearchStoresCreate(
     _ body: GeminiFileSearchStore,
     query: [URLQueryItem] = [],

@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralWorkflowExecutionProgressTraceEvent: Codable, Sendable {
-  public var attributes: [String: MistralWorkflowExecutionTraceSummaryAttributesValues]
+  public var attributes: [String: MistralWorkflowExecutionTraceSummaryAttributesValues?]
   public var endTimeUnixMs: Int?
   public var error: String?
   public var id: String
@@ -20,10 +20,10 @@ public struct MistralWorkflowExecutionProgressTraceEvent: Codable, Sendable {
   public var startTimeUnixMs: Int
   public var status: MistralEventProgressStatus?
   public var timestampUnixNano: Int
-  public var typeModel: MistralEventType?
+  public var kind: MistralEventType?
 
   public init(
-    attributes: [String: MistralWorkflowExecutionTraceSummaryAttributesValues],
+    attributes: [String: MistralWorkflowExecutionTraceSummaryAttributesValues?],
     id: String,
     name: String,
     startTimeUnixMs: Int,
@@ -32,7 +32,7 @@ public struct MistralWorkflowExecutionProgressTraceEvent: Codable, Sendable {
     error: String? = nil,
     internalValue: Bool? = nil,
     status: MistralEventProgressStatus? = nil,
-    typeModel: MistralEventType? = nil
+    kind: MistralEventType? = nil
   ) {
     self.attributes = attributes
     self.endTimeUnixMs = endTimeUnixMs
@@ -43,7 +43,7 @@ public struct MistralWorkflowExecutionProgressTraceEvent: Codable, Sendable {
     self.startTimeUnixMs = startTimeUnixMs
     self.status = status
     self.timestampUnixNano = timestampUnixNano
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -56,6 +56,6 @@ public struct MistralWorkflowExecutionProgressTraceEvent: Codable, Sendable {
     case startTimeUnixMs = "start_time_unix_ms"
     case status
     case timestampUnixNano = "timestamp_unix_nano"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

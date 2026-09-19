@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterContextCompressionPluginId: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let contextCompression = Self(rawValue: "context-compression")
+public enum OpenRouterContextCompressionPluginId: String, Codable, Hashable, Sendable {
+  case contextCompression = "context-compression"
 }

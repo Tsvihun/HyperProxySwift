@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct BraveNewsSearchResponse: Codable, Sendable {
   public var query: BraveQuery
   public var results: [BraveNewsResult]
-  public var typeModel: String
+  public var kind: String
 
   public init(
     query: BraveQuery,
     results: [BraveNewsResult],
-    typeModel: String
+    kind: String
   ) {
     self.query = query
     self.results = results
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case query
     case results
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -14,24 +14,24 @@ public struct OpenAILiveTransportFailed: Codable, Sendable {
   public var error: OpenAILiveTransportCallError
   public var eventId: String
   public var sessionId: String
-  public var typeModel: OpenAILiveTransportFailedTypeModel
+  public var kind: OpenAILiveTransportFailedKind
 
   public init(
     error: OpenAILiveTransportCallError,
     eventId: String,
     sessionId: String,
-    typeModel: OpenAILiveTransportFailedTypeModel
+    kind: OpenAILiveTransportFailedKind
   ) {
     self.error = error
     self.eventId = eventId
     self.sessionId = sessionId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case error
     case eventId = "event_id"
     case sessionId = "session_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

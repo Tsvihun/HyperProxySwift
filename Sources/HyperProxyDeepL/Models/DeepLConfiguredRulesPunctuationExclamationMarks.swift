@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesPunctuationExclamationMarks: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let doNotUse = Self(rawValue: "do_not_use")
+public enum DeepLConfiguredRulesPunctuationExclamationMarks: String, Codable, Hashable, Sendable {
+  case doNotUse = "do_not_use"
 }

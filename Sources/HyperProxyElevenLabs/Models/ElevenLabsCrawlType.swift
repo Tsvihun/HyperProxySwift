@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsCrawlType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let discovery = Self(rawValue: "discovery")
-  public static let sitemap = Self(rawValue: "sitemap")
+public enum ElevenLabsCrawlType: String, Codable, Hashable, Sendable {
+  case discovery = "discovery"
+  case sitemap = "sitemap"
 }

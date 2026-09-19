@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsMusicFinetuneFailureReason: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let audioProcessingFailed = Self(rawValue: "audio_processing_failed")
-  public static let copyrightViolation = Self(rawValue: "copyright_violation")
-  public static let trainingFailed = Self(rawValue: "training_failed")
+public enum ElevenLabsMusicFinetuneFailureReason: String, Codable, Hashable, Sendable {
+  case audioProcessingFailed = "audio_processing_failed"
+  case copyrightViolation = "copyright_violation"
+  case trainingFailed = "training_failed"
 }

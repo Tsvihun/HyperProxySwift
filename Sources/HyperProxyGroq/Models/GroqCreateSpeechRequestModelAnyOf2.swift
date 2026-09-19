@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct GroqCreateSpeechRequestModelAnyOf2: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let playaiTts = Self(rawValue: "playai-tts")
-  public static let playaiTtsArabic = Self(rawValue: "playai-tts-arabic")
+public enum GroqCreateSpeechRequestModelAnyOf2: String, Codable, Hashable, Sendable {
+  case playaiTts = "playai-tts"
+  case playaiTtsArabic = "playai-tts-arabic"
 }

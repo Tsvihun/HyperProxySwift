@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesStyleAndToneVerbalVsNominalStyle: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesStyleAndToneVerbalVsNominalStyle: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useNominalStyle = Self(rawValue: "use_nominal_style")
-  public static let useVerbalStyle = Self(rawValue: "use_verbal_style")
+  case useNominalStyle = "use_nominal_style"
+  case useVerbalStyle = "use_verbal_style"
 }

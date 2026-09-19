@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterMessagesResult: Codable, Sendable {
-  public var container: OpenRouterAnthropicContainer
+  public var container: OpenRouterAnthropicContainer?
   public var content: [OpenRouterORAnthropicContentBlock]
   public var contextManagement: OpenRouterMessagesResultAllOf2ContextManagement?
   public var id: String
@@ -20,23 +20,23 @@ public struct OpenRouterMessagesResult: Codable, Sendable {
   public var openrouterMetadata: OpenRouterMetadata?
   public var provider: OpenRouterProviderName?
   public var role: OpenRouterBaseMessagesResultRole
-  public var stopDetails: OpenRouterAnthropicRefusalStopDetails
-  public var stopReason: OpenRouterORAnthropicStopReason
+  public var stopDetails: OpenRouterAnthropicRefusalStopDetails?
+  public var stopReason: OpenRouterORAnthropicStopReason?
   public var stopSequence: String
-  public var typeModel: OpenRouterBaseMessagesResultTypeModel
-  public var usage: HyperProxyJSONValue
+  public var kind: OpenRouterBaseMessagesResultKind
+  public var usage: OpenRouterBaseMessagesResultUsage
 
   public init(
-    container: OpenRouterAnthropicContainer,
+    container: OpenRouterAnthropicContainer?,
     content: [OpenRouterORAnthropicContentBlock],
     id: String,
     model: String,
     role: OpenRouterBaseMessagesResultRole,
-    stopDetails: OpenRouterAnthropicRefusalStopDetails,
-    stopReason: OpenRouterORAnthropicStopReason,
+    stopDetails: OpenRouterAnthropicRefusalStopDetails?,
+    stopReason: OpenRouterORAnthropicStopReason?,
     stopSequence: String,
-    typeModel: OpenRouterBaseMessagesResultTypeModel,
-    usage: HyperProxyJSONValue,
+    kind: OpenRouterBaseMessagesResultKind,
+    usage: OpenRouterBaseMessagesResultUsage,
     contextManagement: OpenRouterMessagesResultAllOf2ContextManagement? = nil,
     inputTransformations: [OpenRouterAnthropicInputTransformation]? = nil,
     openrouterMetadata: OpenRouterMetadata? = nil,
@@ -54,7 +54,7 @@ public struct OpenRouterMessagesResult: Codable, Sendable {
     self.stopDetails = stopDetails
     self.stopReason = stopReason
     self.stopSequence = stopSequence
-    self.typeModel = typeModel
+    self.kind = kind
     self.usage = usage
   }
 
@@ -71,7 +71,7 @@ public struct OpenRouterMessagesResult: Codable, Sendable {
     case stopDetails = "stop_details"
     case stopReason = "stop_reason"
     case stopSequence = "stop_sequence"
-    case typeModel = "type"
+    case kind = "type"
     case usage
   }
 }

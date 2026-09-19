@@ -14,10 +14,10 @@ public struct AnthropicBetaRequestCompactionBlock: Codable, Sendable {
   public var cacheControl: AnthropicBetaCacheControlEphemeral?
   public var content: String?
   public var encryptedContent: String?
-  public var typeModel: String
+  public var kind: AnthropicCompactionKind
 
   public init(
-    typeModel: String,
+    kind: AnthropicCompactionKind = .compaction,
     cacheControl: AnthropicBetaCacheControlEphemeral? = nil,
     content: String? = nil,
     encryptedContent: String? = nil
@@ -25,13 +25,13 @@ public struct AnthropicBetaRequestCompactionBlock: Codable, Sendable {
     self.cacheControl = cacheControl
     self.content = content
     self.encryptedContent = encryptedContent
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case cacheControl = "cache_control"
     case content
     case encryptedContent = "encrypted_content"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

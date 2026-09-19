@@ -10,20 +10,14 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLWritingTone: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let confident = Self(rawValue: "confident")
-  public static let defaultValue = Self(rawValue: "default")
-  public static let diplomatic = Self(rawValue: "diplomatic")
-  public static let enthusiastic = Self(rawValue: "enthusiastic")
-  public static let friendly = Self(rawValue: "friendly")
-  public static let preferConfident = Self(rawValue: "prefer_confident")
-  public static let preferDiplomatic = Self(rawValue: "prefer_diplomatic")
-  public static let preferEnthusiastic = Self(rawValue: "prefer_enthusiastic")
-  public static let preferFriendly = Self(rawValue: "prefer_friendly")
+public enum DeepLWritingTone: String, Codable, Hashable, Sendable {
+  case confident = "confident"
+  case defaultValue = "default"
+  case diplomatic = "diplomatic"
+  case enthusiastic = "enthusiastic"
+  case friendly = "friendly"
+  case preferConfident = "prefer_confident"
+  case preferDiplomatic = "prefer_diplomatic"
+  case preferEnthusiastic = "prefer_enthusiastic"
+  case preferFriendly = "prefer_friendly"
 }

@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsTestSharingMode: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let all = Self(rawValue: "all")
-  public static let sharedWithMe = Self(rawValue: "shared_with_me")
+public enum ElevenLabsTestSharingMode: String, Codable, Hashable, Sendable {
+  case all = "all"
+  case sharedWithMe = "shared_with_me"
 }

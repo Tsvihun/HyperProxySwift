@@ -12,14 +12,14 @@ import HyperProxyCore
 
 public struct BFLFlux3VideoDraftEnhanceInputs: Codable, Sendable {
   public var draftCache: String
-  public var mode: String
+  public var mode: BFLDraftEnhanceMode
   public var resolution: BFLFlux3VideoDraftEnhanceInputsResolution?
   public var safetyTolerance: Int?
   public var user: String?
 
   public init(
     draftCache: String,
-    mode: String,
+    mode: BFLDraftEnhanceMode = .draftEnhance,
     resolution: BFLFlux3VideoDraftEnhanceInputsResolution? = nil,
     safetyTolerance: Int? = nil,
     user: String? = nil

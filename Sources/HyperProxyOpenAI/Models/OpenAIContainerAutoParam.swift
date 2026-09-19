@@ -13,22 +13,22 @@ import HyperProxyCore
 public struct OpenAIContainerAutoParam: Codable, Sendable {
   public var fileIds: [String]?
   public var memoryLimit: OpenAIContainerMemoryLimit?
-  public var networkPolicy: HyperProxyJSONValue?
-  public var skills: [HyperProxyJSONValue]?
-  public var typeModel: OpenAIContainerAutoParamTypeModel
+  public var networkPolicy: OpenAIContainerAutoParamNetworkPolicy?
+  public var skills: [OpenAIContainerAutoParamSkillsItem]?
+  public var kind: OpenAIContainerAutoParamKind
 
   public init(
-    typeModel: OpenAIContainerAutoParamTypeModel,
+    kind: OpenAIContainerAutoParamKind,
     fileIds: [String]? = nil,
     memoryLimit: OpenAIContainerMemoryLimit? = nil,
-    networkPolicy: HyperProxyJSONValue? = nil,
-    skills: [HyperProxyJSONValue]? = nil
+    networkPolicy: OpenAIContainerAutoParamNetworkPolicy? = nil,
+    skills: [OpenAIContainerAutoParamSkillsItem]? = nil
   ) {
     self.fileIds = fileIds
     self.memoryLimit = memoryLimit
     self.networkPolicy = networkPolicy
     self.skills = skills
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIContainerAutoParam: Codable, Sendable {
     case memoryLimit = "memory_limit"
     case networkPolicy = "network_policy"
     case skills
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct FalServerlessLogsStreamParametersRunSource: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let grpcRun = Self(rawValue: "grpc-run")
-  public static let grpcRegister = Self(rawValue: "grpc-register")
-  public static let gateway = Self(rawValue: "gateway")
-  public static let cron = Self(rawValue: "cron")
+public enum FalServerlessLogsStreamParametersRunSource: String, Codable, Hashable, Sendable {
+  case grpcRun = "grpc-run"
+  case grpcRegister = "grpc-register"
+  case gateway = "gateway"
+  case cron = "cron"
 }

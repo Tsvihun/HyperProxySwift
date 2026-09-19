@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIMessageDeltaObjectDelta: Codable, Sendable {
-  public var content: [HyperProxyJSONValue]?
+  public var content: [OpenAIMessageDeltaObjectDeltaContentItem]?
   public var role: OpenAIMessageDeltaObjectDeltaRole?
 
   public init(
-    content: [HyperProxyJSONValue]? = nil,
+    content: [OpenAIMessageDeltaObjectDeltaContentItem]? = nil,
     role: OpenAIMessageDeltaObjectDeltaRole? = nil
   ) {
     self.content = content

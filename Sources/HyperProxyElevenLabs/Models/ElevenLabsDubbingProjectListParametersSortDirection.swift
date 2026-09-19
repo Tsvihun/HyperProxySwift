@@ -10,15 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsDubbingProjectListParametersSortDirection: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum ElevenLabsDubbingProjectListParametersSortDirection: String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let aSCENDING = Self(rawValue: "ASCENDING")
-  public static let dESCENDING = Self(rawValue: "DESCENDING")
+  case aSCENDING = "ASCENDING"
+  case dESCENDING = "DESCENDING"
 }

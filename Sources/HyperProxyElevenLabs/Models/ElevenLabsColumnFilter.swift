@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct ElevenLabsColumnFilter: Codable, Sendable {
   public var column: String
   public var operation: ElevenLabsColumnFilterOperation
-  public var values: [HyperProxyJSONValue?]
+  public var values: [ElevenLabsColumnFilterValuesItem?]
 
   public init(
     column: String,
     operation: ElevenLabsColumnFilterOperation,
-    values: [HyperProxyJSONValue?]
+    values: [ElevenLabsColumnFilterValuesItem?]
   ) {
     self.column = column
     self.operation = operation

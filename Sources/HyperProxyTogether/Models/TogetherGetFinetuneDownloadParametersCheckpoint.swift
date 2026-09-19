@@ -10,16 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherGetFinetuneDownloadParametersCheckpoint: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let merged = Self(rawValue: "merged")
-  public static let adapter = Self(rawValue: "adapter")
-  public static let modelOutputPath = Self(rawValue: "model_output_path")
+public enum TogetherGetFinetuneDownloadParametersCheckpoint: String, Codable, Hashable, Sendable {
+  case merged = "merged"
+  case adapter = "adapter"
+  case modelOutputPath = "model_output_path"
 }

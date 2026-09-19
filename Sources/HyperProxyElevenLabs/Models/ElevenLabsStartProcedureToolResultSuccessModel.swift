@@ -16,8 +16,8 @@ public struct ElevenLabsStartProcedureToolResultSuccessModel: Codable, Sendable 
   public var procedureId: String
   public var procedureName: String
   public var procedureReturnWorkflowNode: String?
-  public var resultType: String?
-  public var status: String?
+  public var resultType: ElevenLabsStartProcedureSuccessResultType?
+  public var status: ElevenLabsSuccessStatus?
 
   public init(
     procedureId: String,
@@ -25,8 +25,8 @@ public struct ElevenLabsStartProcedureToolResultSuccessModel: Codable, Sendable 
     message: String? = nil,
     procedureEntryWorkflowNode: String? = nil,
     procedureReturnWorkflowNode: String? = nil,
-    resultType: String? = nil,
-    status: String? = nil
+    resultType: ElevenLabsStartProcedureSuccessResultType? = nil,
+    status: ElevenLabsSuccessStatus? = nil
   ) {
     self.message = message
     self.procedureEntryWorkflowNode = procedureEntryWorkflowNode

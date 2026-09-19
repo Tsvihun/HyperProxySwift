@@ -16,13 +16,13 @@ public struct OpenRouterAnthropicSearchResultBlockParam: Codable, Sendable {
   public var content: [OpenRouterAnthropicTextBlockParam]
   public var source: String
   public var title: String
-  public var typeModel: OpenRouterAnthropicSearchResultBlockParamTypeModel
+  public var kind: OpenRouterAnthropicSearchResultBlockParamKind
 
   public init(
     content: [OpenRouterAnthropicTextBlockParam],
     source: String,
     title: String,
-    typeModel: OpenRouterAnthropicSearchResultBlockParamTypeModel,
+    kind: OpenRouterAnthropicSearchResultBlockParamKind,
     cacheControl: OpenRouterAnthropicCacheControlDirective? = nil,
     citations: OpenRouterAnthropicSearchResultBlockParamCitations? = nil
   ) {
@@ -31,7 +31,7 @@ public struct OpenRouterAnthropicSearchResultBlockParam: Codable, Sendable {
     self.content = content
     self.source = source
     self.title = title
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenRouterAnthropicSearchResultBlockParam: Codable, Sendable {
     case content
     case source
     case title
-    case typeModel = "type"
+    case kind = "type"
   }
 }

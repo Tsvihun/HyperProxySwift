@@ -10,19 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesNumbersLargeSumsOfMoneyFormat: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useAmountFollowedByAbbreviationForMillionOrBillionWithoutSpace = Self(
-    rawValue: "use_amount_followed_by_abbreviation_for_million_or_billion_without_space")
-  public static let useAmountFollowedBySpaceThenAbbreviationForMillionOrBillion = Self(
-    rawValue: "use_amount_followed_by_space_then_abbreviation_for_million_or_billion")
-  public static let useAmountFollowedBySpaceThenEnglishWordMillionOrBillion = Self(
-    rawValue: "use_amount_followed_by_space_then_english_word_million_or_billion")
+public enum DeepLConfiguredRulesNumbersLargeSumsOfMoneyFormat: String, Codable, Hashable, Sendable {
+  case useAmountFollowedByAbbreviationForMillionOrBillionWithoutSpace =
+    "use_amount_followed_by_abbreviation_for_million_or_billion_without_space"
+  case useAmountFollowedBySpaceThenAbbreviationForMillionOrBillion =
+    "use_amount_followed_by_space_then_abbreviation_for_million_or_billion"
+  case useAmountFollowedBySpaceThenEnglishWordMillionOrBillion =
+    "use_amount_followed_by_space_then_english_word_million_or_billion"
 }

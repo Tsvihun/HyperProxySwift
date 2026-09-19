@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct OpenRouterChatSystemMessage: Codable, Sendable {
   public var configurationUpdate: OpenRouterChatSystemMessageConfigurationUpdate?
-  public var content: HyperProxyJSONValue
+  public var content: OpenRouterChatSystemMessageContent
   public var name: String?
   public var role: OpenRouterChatSystemMessageRole
 
   public init(
-    content: HyperProxyJSONValue,
+    content: OpenRouterChatSystemMessageContent,
     role: OpenRouterChatSystemMessageRole,
     configurationUpdate: OpenRouterChatSystemMessageConfigurationUpdate? = nil,
     name: String? = nil

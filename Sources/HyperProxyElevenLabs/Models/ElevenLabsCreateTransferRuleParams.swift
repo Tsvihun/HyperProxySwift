@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsCreateTransferRuleParams: Codable, Sendable {
   public var postDialDigitsEnabled: Bool?
-  public var smbToolType: String?
+  public var smbToolType: ElevenLabsCreateTransferRuleSmbToolType?
 
   public init(
     postDialDigitsEnabled: Bool? = nil,
-    smbToolType: String? = nil
+    smbToolType: ElevenLabsCreateTransferRuleSmbToolType? = nil
   ) {
     self.postDialDigitsEnabled = postDialDigitsEnabled
     self.smbToolType = smbToolType

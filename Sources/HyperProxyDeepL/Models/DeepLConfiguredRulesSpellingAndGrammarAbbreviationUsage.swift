@@ -10,18 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesSpellingAndGrammarAbbreviationUsage: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesSpellingAndGrammarAbbreviationUsage: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let doNotUseAbbreviations = Self(rawValue: "do_not_use_abbreviations")
-  public static let doNotUseAbbreviationsUnlessNecessary = Self(
-    rawValue: "do_not_use_abbreviations_unless_necessary")
-  public static let useAbbreviations = Self(rawValue: "use_abbreviations")
-  public static let useAbbreviationsAsNeeded = Self(rawValue: "use_abbreviations_as_needed")
+  case doNotUseAbbreviations = "do_not_use_abbreviations"
+  case doNotUseAbbreviationsUnlessNecessary = "do_not_use_abbreviations_unless_necessary"
+  case useAbbreviations = "use_abbreviations"
+  case useAbbreviationsAsNeeded = "use_abbreviations_as_needed"
 }

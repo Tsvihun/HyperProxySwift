@@ -16,7 +16,7 @@ public struct ElevenLabsConversationHistoryFeedbackCommonModel: Codable, Sendabl
   public var likes: Int?
   public var overallScore: ElevenLabsUserFeedbackScore?
   public var rating: Int?
-  public var typeModel: ElevenLabsConversationFeedbackType?
+  public var kind: ElevenLabsConversationFeedbackType?
 
   public init(
     comment: String? = nil,
@@ -24,14 +24,14 @@ public struct ElevenLabsConversationHistoryFeedbackCommonModel: Codable, Sendabl
     likes: Int? = nil,
     overallScore: ElevenLabsUserFeedbackScore? = nil,
     rating: Int? = nil,
-    typeModel: ElevenLabsConversationFeedbackType? = nil
+    kind: ElevenLabsConversationFeedbackType? = nil
   ) {
     self.comment = comment
     self.dislikes = dislikes
     self.likes = likes
     self.overallScore = overallScore
     self.rating = rating
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct ElevenLabsConversationHistoryFeedbackCommonModel: Codable, Sendabl
     case likes
     case overallScore = "overall_score"
     case rating
-    case typeModel = "type"
+    case kind = "type"
   }
 }

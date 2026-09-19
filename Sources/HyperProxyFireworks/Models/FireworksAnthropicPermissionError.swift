@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct FireworksAnthropicPermissionError: Codable, Sendable {
   public var message: String
-  public var typeModel: String
+  public var kind: FireworksPermissionErrorKind
 
   public init(
     message: String,
-    typeModel: String
+    kind: FireworksPermissionErrorKind = .permissionError
   ) {
     self.message = message
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case message
-    case typeModel = "type"
+    case kind = "type"
   }
 }

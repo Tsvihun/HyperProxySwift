@@ -15,15 +15,15 @@ public struct OpenAIEditImageBodyJsonParam: Codable, Sendable {
   public var images: [OpenAIImageRefParam]
   public var inputFidelity: OpenAIEditImageBodyJsonParamInputFidelityAnyOf1?
   public var mask: OpenAIImageRefParam?
-  public var model: HyperProxyJSONValue?
+  public var model: OpenAIEditImageBodyJsonParamModel?
   public var moderation: OpenAIEditImageBodyJsonParamModerationAnyOf1?
   public var n: Int?
   public var outputCompression: Int?
   public var outputFormat: OpenAIEditImageBodyJsonParamOutputFormatAnyOf1?
-  public var partialImages: OpenAIPartialImages?
+  public var partialImages: Int?
   public var prompt: String
   public var quality: OpenAIEditImageBodyJsonParamQualityAnyOf1?
-  public var size: HyperProxyJSONValue?
+  public var size: OpenAIEditImageBodyJsonParamSize?
   public var stream: Bool?
   public var user: String?
 
@@ -33,14 +33,14 @@ public struct OpenAIEditImageBodyJsonParam: Codable, Sendable {
     background: OpenAIEditImageBodyJsonParamBackgroundAnyOf1? = nil,
     inputFidelity: OpenAIEditImageBodyJsonParamInputFidelityAnyOf1? = nil,
     mask: OpenAIImageRefParam? = nil,
-    model: HyperProxyJSONValue? = nil,
+    model: OpenAIEditImageBodyJsonParamModel? = nil,
     moderation: OpenAIEditImageBodyJsonParamModerationAnyOf1? = nil,
     n: Int? = nil,
     outputCompression: Int? = nil,
     outputFormat: OpenAIEditImageBodyJsonParamOutputFormatAnyOf1? = nil,
-    partialImages: OpenAIPartialImages? = nil,
+    partialImages: Int? = nil,
     quality: OpenAIEditImageBodyJsonParamQualityAnyOf1? = nil,
-    size: HyperProxyJSONValue? = nil,
+    size: OpenAIEditImageBodyJsonParamSize? = nil,
     stream: Bool? = nil,
     user: String? = nil
   ) {

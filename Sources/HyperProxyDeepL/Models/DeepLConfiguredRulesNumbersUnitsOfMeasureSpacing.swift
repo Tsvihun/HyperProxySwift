@@ -10,17 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesNumbersUnitsOfMeasureSpacing: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let doNotUseSpaceBetweenNumeralAndUnitOfMeasure = Self(
-    rawValue: "do_not_use_space_between_numeral_and_unit_of_measure")
-  public static let useSpaceBetweenNumeralAndUnitOfMeasure = Self(
-    rawValue: "use_space_between_numeral_and_unit_of_measure")
+public enum DeepLConfiguredRulesNumbersUnitsOfMeasureSpacing: String, Codable, Hashable, Sendable {
+  case doNotUseSpaceBetweenNumeralAndUnitOfMeasure =
+    "do_not_use_space_between_numeral_and_unit_of_measure"
+  case useSpaceBetweenNumeralAndUnitOfMeasure = "use_space_between_numeral_and_unit_of_measure"
 }

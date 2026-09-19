@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLVoiceFormality: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let defaultValue = Self(rawValue: "default")
-  public static let formal = Self(rawValue: "formal")
-  public static let more = Self(rawValue: "more")
-  public static let informal = Self(rawValue: "informal")
-  public static let less = Self(rawValue: "less")
+public enum DeepLVoiceFormality: String, Codable, Hashable, Sendable {
+  case defaultValue = "default"
+  case formal = "formal"
+  case more = "more"
+  case informal = "informal"
+  case less = "less"
 }

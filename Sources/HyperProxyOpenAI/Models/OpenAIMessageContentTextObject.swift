@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIMessageContentTextObject: Codable, Sendable {
   public var text: OpenAIMessageContentTextObjectText
-  public var typeModel: OpenAIMessageContentTextObjectTypeModel
+  public var kind: OpenAIMessageContentTextObjectKind
 
   public init(
     text: OpenAIMessageContentTextObjectText,
-    typeModel: OpenAIMessageContentTextObjectTypeModel
+    kind: OpenAIMessageContentTextObjectKind
   ) {
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

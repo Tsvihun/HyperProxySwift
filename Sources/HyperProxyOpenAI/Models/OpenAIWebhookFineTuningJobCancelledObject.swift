@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIWebhookFineTuningJobCancelledObject: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let event = Self(rawValue: "event")
+public enum OpenAIWebhookFineTuningJobCancelledObject: String, Codable, Hashable, Sendable {
+  case event = "event"
 }

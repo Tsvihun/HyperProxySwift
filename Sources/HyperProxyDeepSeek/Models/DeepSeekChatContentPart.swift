@@ -10,4 +10,33 @@
 import Foundation
 import HyperProxyCore
 
-public typealias DeepSeekChatContentPart = HyperProxyJSONValue
+public enum DeepSeekChatContentPart: Codable, Sendable {
+  case chatTextPart(DeepSeekChatTextPart)
+  case chatImageURLPart(DeepSeekChatImageURLPart)
+  case chatFilePart(DeepSeekChatFilePart)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(DeepSeekChatTextPart.self) {
+      self = .chatTextPart(value)
+      return
+    }
+    if let value = try? container.decode(DeepSeekChatImageURLPart.self) {
+      self = .chatImageURLPart(value)
+      return
+    }
+    self = .chatFilePart(try container.decode(DeepSeekChatFilePart.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .chatTextPart(let value):
+      try container.encode(value)
+    case .chatImageURLPart(let value):
+      try container.encode(value)
+    case .chatFilePart(let value):
+      try container.encode(value)
+    }
+  }
+}

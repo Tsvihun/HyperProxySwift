@@ -15,14 +15,14 @@ public struct OpenRouterURLCitation: Codable, Sendable {
   public var endIndex: Int
   public var startIndex: Int
   public var title: String
-  public var typeModel: OpenRouterURLCitationTypeModel
+  public var kind: OpenRouterURLCitationKind
   public var url: String
 
   public init(
     endIndex: Int,
     startIndex: Int,
     title: String,
-    typeModel: OpenRouterURLCitationTypeModel,
+    kind: OpenRouterURLCitationKind,
     url: String,
     content: String? = nil
   ) {
@@ -30,7 +30,7 @@ public struct OpenRouterURLCitation: Codable, Sendable {
     self.endIndex = endIndex
     self.startIndex = startIndex
     self.title = title
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
@@ -39,7 +39,7 @@ public struct OpenRouterURLCitation: Codable, Sendable {
     case endIndex = "end_index"
     case startIndex = "start_index"
     case title
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

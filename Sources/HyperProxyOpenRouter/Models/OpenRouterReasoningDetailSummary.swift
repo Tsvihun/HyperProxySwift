@@ -15,11 +15,11 @@ public struct OpenRouterReasoningDetailSummary: Codable, Sendable {
   public var id: String?
   public var index: Int?
   public var summary: String
-  public var typeModel: OpenRouterReasoningDetailSummaryTypeModel
+  public var kind: OpenRouterReasoningDetailSummaryKind
 
   public init(
     summary: String,
-    typeModel: OpenRouterReasoningDetailSummaryTypeModel,
+    kind: OpenRouterReasoningDetailSummaryKind,
     format: OpenRouterReasoningFormat? = nil,
     id: String? = nil,
     index: Int? = nil
@@ -28,7 +28,7 @@ public struct OpenRouterReasoningDetailSummary: Codable, Sendable {
     self.id = id
     self.index = index
     self.summary = summary
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenRouterReasoningDetailSummary: Codable, Sendable {
     case id
     case index
     case summary
-    case typeModel = "type"
+    case kind = "type"
   }
 }

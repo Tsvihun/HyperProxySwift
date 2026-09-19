@@ -20,7 +20,7 @@ public struct OpenAIResponseImageGenCallPartialImageEvent: Codable, Sendable {
   public var quality: String?
   public var sequenceNumber: Int
   public var size: String?
-  public var typeModel: OpenAIResponseImageGenCallPartialImageEventTypeModel
+  public var kind: OpenAIResponseImageGenCallPartialImageEventKind
 
   public init(
     itemId: String,
@@ -28,7 +28,7 @@ public struct OpenAIResponseImageGenCallPartialImageEvent: Codable, Sendable {
     partialImageB64: String,
     partialImageIndex: Int,
     sequenceNumber: Int,
-    typeModel: OpenAIResponseImageGenCallPartialImageEventTypeModel,
+    kind: OpenAIResponseImageGenCallPartialImageEventKind,
     background: String? = nil,
     outputFormat: String? = nil,
     quality: String? = nil,
@@ -43,7 +43,7 @@ public struct OpenAIResponseImageGenCallPartialImageEvent: Codable, Sendable {
     self.quality = quality
     self.sequenceNumber = sequenceNumber
     self.size = size
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -56,6 +56,6 @@ public struct OpenAIResponseImageGenCallPartialImageEvent: Codable, Sendable {
     case quality
     case sequenceNumber = "sequence_number"
     case size
-    case typeModel = "type"
+    case kind = "type"
   }
 }

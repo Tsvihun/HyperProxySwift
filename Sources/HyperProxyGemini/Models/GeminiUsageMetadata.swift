@@ -11,29 +11,29 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiUsageMetadata: Codable, Sendable {
-  public var cacheTokensDetails: [HyperProxyJSONValue]?
+  public var cacheTokensDetails: [GeminiModalityTokenCount]?
   public var cachedContentTokenCount: Int?
   public var candidatesTokenCount: Int?
-  public var candidatesTokensDetails: [HyperProxyJSONValue]?
+  public var candidatesTokensDetails: [GeminiModalityTokenCount]?
   public var promptTokenCount: Int?
-  public var promptTokensDetails: [HyperProxyJSONValue]?
+  public var promptTokensDetails: [GeminiModalityTokenCount]?
   public var serviceTier: GeminiUsageMetadataServiceTier?
   public var thoughtsTokenCount: Int?
   public var toolUsePromptTokenCount: Int?
-  public var toolUsePromptTokensDetails: [HyperProxyJSONValue]?
+  public var toolUsePromptTokensDetails: [GeminiModalityTokenCount]?
   public var totalTokenCount: Int?
 
   public init(
-    cacheTokensDetails: [HyperProxyJSONValue]? = nil,
+    cacheTokensDetails: [GeminiModalityTokenCount]? = nil,
     cachedContentTokenCount: Int? = nil,
     candidatesTokenCount: Int? = nil,
-    candidatesTokensDetails: [HyperProxyJSONValue]? = nil,
+    candidatesTokensDetails: [GeminiModalityTokenCount]? = nil,
     promptTokenCount: Int? = nil,
-    promptTokensDetails: [HyperProxyJSONValue]? = nil,
+    promptTokensDetails: [GeminiModalityTokenCount]? = nil,
     serviceTier: GeminiUsageMetadataServiceTier? = nil,
     thoughtsTokenCount: Int? = nil,
     toolUsePromptTokenCount: Int? = nil,
-    toolUsePromptTokensDetails: [HyperProxyJSONValue]? = nil,
+    toolUsePromptTokensDetails: [GeminiModalityTokenCount]? = nil,
     totalTokenCount: Int? = nil
   ) {
     self.cacheTokensDetails = cacheTokensDetails

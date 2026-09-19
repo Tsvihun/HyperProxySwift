@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaAttachedAttachment: Codable, Sendable {
-  public var typeModel: String
+  public var kind: AnthropicAttachedKind
 
   public init(
-    typeModel: String
+    kind: AnthropicAttachedKind = .attached
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

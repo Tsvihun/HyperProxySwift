@@ -10,20 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIUpdateProjectDataRetentionBodyRetentionType: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let organizationDefault = Self(rawValue: "organization_default")
-  public static let none = Self(rawValue: "none")
-  public static let zeroDataRetention = Self(rawValue: "zero_data_retention")
-  public static let modifiedAbuseMonitoring = Self(rawValue: "modified_abuse_monitoring")
-  public static let enhancedZeroDataRetention = Self(rawValue: "enhanced_zero_data_retention")
-  public static let enhancedModifiedAbuseMonitoring = Self(
-    rawValue: "enhanced_modified_abuse_monitoring")
+public enum OpenAIUpdateProjectDataRetentionBodyRetentionType: String, Codable, Hashable, Sendable {
+  case organizationDefault = "organization_default"
+  case none = "none"
+  case zeroDataRetention = "zero_data_retention"
+  case modifiedAbuseMonitoring = "modified_abuse_monitoring"
+  case enhancedZeroDataRetention = "enhanced_zero_data_retention"
+  case enhancedModifiedAbuseMonitoring = "enhanced_modified_abuse_monitoring"
 }

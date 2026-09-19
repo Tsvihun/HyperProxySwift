@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIAgentResourceObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let agent = Self(rawValue: "agent")
+public enum OpenAIAgentResourceObject: String, Codable, Hashable, Sendable {
+  case agent = "agent"
 }

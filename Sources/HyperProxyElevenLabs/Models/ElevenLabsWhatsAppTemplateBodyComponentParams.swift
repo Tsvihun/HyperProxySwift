@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct ElevenLabsWhatsAppTemplateBodyComponentParams: Codable, Sendable {
   public var parameters: [ElevenLabsWhatsAppTemplateTextParam]
-  public var typeModel: String?
+  public var kind: ElevenLabsBodyKind?
 
   public init(
     parameters: [ElevenLabsWhatsAppTemplateTextParam],
-    typeModel: String? = nil
+    kind: ElevenLabsBodyKind? = nil
   ) {
     self.parameters = parameters
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case parameters
-    case typeModel = "type"
+    case kind = "type"
   }
 }

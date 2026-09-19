@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterLegacyChatContentVideoInputProcessing: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let agentic = Self(rawValue: "agentic")
-  public static let staticValue = Self(rawValue: "static")
+public enum OpenRouterLegacyChatContentVideoInputProcessing: String, Codable, Hashable, Sendable {
+  case agentic = "agentic"
+  case staticValue = "static"
 }

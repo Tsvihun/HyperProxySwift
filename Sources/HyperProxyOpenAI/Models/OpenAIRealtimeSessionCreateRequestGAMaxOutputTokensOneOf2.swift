@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIRealtimeSessionCreateRequestGAMaxOutputTokensOneOf2: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum OpenAIRealtimeSessionCreateRequestGAMaxOutputTokensOneOf2: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let inf = Self(rawValue: "inf")
+  case inf = "inf"
 }

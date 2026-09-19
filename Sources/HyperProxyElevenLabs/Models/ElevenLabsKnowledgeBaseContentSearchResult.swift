@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsKnowledgeBaseContentSearchResult: Codable, Sendable {
-  public var document: HyperProxyJSONValue
+  public var document: ElevenLabsKnowledgeBaseContentSearchResultDocument
   public var score: Double
   public var searchSnippet: [ElevenLabsSearchHighlightSegment]?
 
   public init(
-    document: HyperProxyJSONValue,
+    document: ElevenLabsKnowledgeBaseContentSearchResultDocument,
     score: Double,
     searchSnippet: [ElevenLabsSearchHighlightSegment]? = nil
   ) {

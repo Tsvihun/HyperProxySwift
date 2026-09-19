@@ -20,7 +20,7 @@ import HyperProxyOpenAI
 
 let response: OpenAIResponse = try await HyperProxy
   .openAI(gatewayURL: gatewayURL, appKey: appKey)
-  .responsesCreate(OpenAICreateResponse(input: "Hello", model: .modelIdsShared("gpt-5")))
+  .responsesCreate(OpenAICreateResponse(input: "Hello", model: .modelIdsShared(.gpt5)))
 ```
 
 `HyperProxyJSONValue` is the lossless escape hatch for open unions and fields released after the
@@ -141,7 +141,7 @@ let videoSubmission = try await bfl.submit(
   body: BFLFlux3VideoRequest.textToVideo(
     BFLFlux3VideoT2VInputs(
       prompt: "A slow orbit around a glass sculpture",
-      aspectRatio: "16:9",
+      aspectRatio: .flux3VideoT2VInputsAspectRatioAnyOf1(.value169),
       duration: 8,
       generateAudio: true,
       resolution: .fhd

@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct EachAIAPIAudioTranscriptionRequestResponseFormat: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let json = Self(rawValue: "json")
-  public static let verboseJson = Self(rawValue: "verbose_json")
+public enum EachAIAPIAudioTranscriptionRequestResponseFormat: String, Codable, Hashable, Sendable {
+  case json = "json"
+  case verboseJson = "verbose_json"
 }

@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAILiveSessionClosedReasonOneOf1: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let closeRequested = Self(rawValue: "close_requested")
+public enum OpenAILiveSessionClosedReasonOneOf1: String, Codable, Hashable, Sendable {
+  case closeRequested = "close_requested"
 }

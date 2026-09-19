@@ -895,6 +895,20 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
     return try await call.decoded(ElevenLabsBatchCallResponse.self)
   }
 
+  public func exportBatchCall(
+    batchId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> String {
+    let call = self.call(.exportBatchCall)
+      .path("batch_id", batchId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.text()
+  }
+
   public func retryBatchCall(
     batchId: String,
     query: [URLQueryItem] = [],
@@ -1440,6 +1454,20 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(ElevenLabsKnowledgeBaseDocumentChunksResponseModel.self)
+  }
+
+  public func getKnowledgeBaseContent(
+    documentationId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> String {
+    let call = self.call(.getKnowledgeBaseContent)
+      .path("documentation_id", documentationId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.text()
   }
 
   public func getKnowledgeBaseDependentAgents(
@@ -2274,6 +2302,20 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
     return try await prepared.decoded(ElevenLabsTwilioOutboundCallResponse.self)
   }
 
+  public func registerTwilioCall(
+    _ body: ElevenLabsBodyRegisterATwilioCallAndReturnTwiMLV1ConvaiTwilioRegisterCallPost,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> String {
+    let call = self.call(.registerTwilioCall)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.text()
+  }
+
   public func getConversationUsersRoute(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -2284,6 +2326,18 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(ElevenLabsGetConversationUsersPageResponseModel.self)
+  }
+
+  public func listPhoneNumbersPageRoute(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsGetPhoneNumbersPageResponseModel {
+    let call = self.call(.listPhoneNumbersPageRoute)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsGetPhoneNumbersPageResponseModel.self)
   }
 
   public func listWhatsappAccounts(
@@ -2850,6 +2904,22 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
     return try await call.decoded(ElevenLabsDeleteDubbingResponseModel.self)
   }
 
+  public func dubbingAudio(
+    dubbingId: String,
+    languageCode: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.dubbingAudio)
+      .path("dubbing_id", dubbingId)
+      .path("language_code", languageCode)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try call.bytes()
+  }
+
   public func getDubbedTranscriptFile(
     dubbingId: String,
     languageCode: String,
@@ -3044,6 +3114,20 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
     return try await call.decoded(ElevenLabsDeleteHistoryItemResponse.self)
   }
 
+  public func historyRetrieveAudio(
+    historyItemId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.historyRetrieveAudio)
+      .path("history_item_id", historyItemId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try call.bytes()
+  }
+
   public func modelsList(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -3056,18 +3140,32 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
     return try await call.decoded(ElevenLabsGetModelsResponse.self)
   }
 
+  public func musicCreate(
+    _ body: ElevenLabsBodyComposeMusicV1MusicPost,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.musicCreate)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try prepared.bytes()
+  }
+
   public func composeDetailedStream(
     _ body: ElevenLabsBodyStreamComposedMusicWithADetailedResponseV1MusicDetailedStreamPost,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) throws -> AsyncThrowingStream<ElevenLabsComposeDetailedStreamResponse, Error> {
+  ) throws -> AsyncThrowingStream<String, Error> {
     let call = self.call(.composeDetailedStream)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     let prepared = try call.json(body)
-    return try prepared.events(decoding: ElevenLabsComposeDetailedStreamResponse.self)
+    return try prepared.events(decoding: String.self)
   }
 
   public func getFinetunes(
@@ -3138,6 +3236,20 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
       .timeout(timeout)
     let prepared = try call.json(body)
     return try await prepared.decoded(ElevenLabsComposePlanResponse.self)
+  }
+
+  public func streamCompose(
+    _ body: ElevenLabsBodyStreamComposedMusicV1MusicStreamPost,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.streamCompose)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try prepared.bytes()
   }
 
   public func publicListOrders(
@@ -3312,6 +3424,22 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
     return try await prepared.decoded(ElevenLabsAddPronunciationDictionaryResponseModel.self)
   }
 
+  public func getPronunciationDictionaryVersionPls(
+    dictionaryId: String,
+    versionId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> String {
+    let call = self.call(.getPronunciationDictionaryVersionPls)
+      .path("dictionary_id", dictionaryId)
+      .path("version_id", versionId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.text()
+  }
+
   public func getPronunciationDictionaryMetadata(
     pronunciationDictionaryId: String,
     query: [URLQueryItem] = [],
@@ -3431,6 +3559,20 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(ElevenLabsSingleUseTokenResponseModel.self)
+  }
+
+  public func soundGenerationCreate(
+    _ body: ElevenLabsBodySoundGenerationV1SoundGenerationPost,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.soundGenerationCreate)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try prepared.bytes()
   }
 
   public func listSpeechEngines(
@@ -3717,6 +3859,27 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
     return try await call.decoded(ElevenLabsChapterSnapshotExtendedResponseModel.self)
   }
 
+  public func streamChapterSnapshotAudio(
+    _ body:
+      ElevenLabsBodyStreamChapterAudioV1StudioProjectsProjectIdChaptersChapterIdSnapshotsChapterSnapshotIdStreamPost,
+    projectId: String,
+    chapterId: String,
+    chapterSnapshotId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.streamChapterSnapshotAudio)
+      .path("project_id", projectId)
+      .path("chapter_id", chapterId)
+      .path("chapter_snapshot_id", chapterSnapshotId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try prepared.bytes()
+  }
+
   public func convertProjectEndpoint(
     projectId: String,
     query: [URLQueryItem] = [],
@@ -3792,6 +3955,34 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
     return try await call.decoded(ElevenLabsProjectSnapshotExtendedResponseModel.self)
   }
 
+  public func textToDialogue(
+    _ body: ElevenLabsBodyTextToDialogueMultiVoiceV1TextToDialoguePost,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.textToDialogue)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try prepared.bytes()
+  }
+
+  public func textToDialogueStream(
+    _ body: ElevenLabsBodyTextToDialogueMultiVoiceStreamingV1TextToDialogueStreamPost,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.textToDialogueStream)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try prepared.bytes()
+  }
+
   public func textToDialogueStreamWithTimestamps(
     _ body: ElevenLabsBodyTextToDialogueStreamWithTimestamps,
     query: [URLQueryItem] = [],
@@ -3820,6 +4011,38 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
     let prepared = try call.json(body)
     return try await prepared.decoded(
       ElevenLabsAudioWithTimestampsAndVoiceSegmentsResponseModel.self)
+  }
+
+  public func textToSpeechCreate(
+    _ body: ElevenLabsBodyTextToSpeechFull,
+    voiceId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.textToSpeechCreate)
+      .path("voice_id", voiceId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try prepared.bytes()
+  }
+
+  public func textToSpeechStream(
+    _ body: ElevenLabsBodyTextToSpeechStream,
+    voiceId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.textToSpeechStream)
+      .path("voice_id", voiceId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try prepared.bytes()
   }
 
   public func textToSpeechStreamWithTimestamps(
@@ -3894,6 +4117,20 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
       .timeout(timeout)
     let prepared = try call.json(body)
     return try await prepared.decoded(ElevenLabsVoicePreviewsResponseModel.self)
+  }
+
+  public func textToVoicePreviewStream(
+    generatedVoiceId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.textToVoicePreviewStream)
+      .path("generated_voice_id", generatedVoiceId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try call.bytes()
   }
 
   public func textToVoiceRemix(

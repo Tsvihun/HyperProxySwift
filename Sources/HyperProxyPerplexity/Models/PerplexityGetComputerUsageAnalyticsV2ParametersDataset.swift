@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct PerplexityGetComputerUsageAnalyticsV2ParametersDataset: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum PerplexityGetComputerUsageAnalyticsV2ParametersDataset: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let creditUsage = Self(rawValue: "credit_usage")
-  public static let queryVolume = Self(rawValue: "query_volume")
+  case creditUsage = "credit_usage"
+  case queryVolume = "query_volume"
 }

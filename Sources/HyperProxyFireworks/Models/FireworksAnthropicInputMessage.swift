@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct FireworksAnthropicInputMessage: Codable, Sendable {
-  public var content: HyperProxyJSONValue
+  public var content: FireworksAnthropicInputMessageContent
   public var role: FireworksAnthropicInputMessageRole
 
   public init(
-    content: HyperProxyJSONValue,
+    content: FireworksAnthropicInputMessageContent,
     role: FireworksAnthropicInputMessageRole
   ) {
     self.content = content

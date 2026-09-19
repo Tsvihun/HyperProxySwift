@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterScimGroupMappingRole: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let admin = Self(rawValue: "admin")
-  public static let member = Self(rawValue: "member")
+public enum OpenRouterScimGroupMappingRole: String, Codable, Hashable, Sendable {
+  case admin = "admin"
+  case member = "member"
 }

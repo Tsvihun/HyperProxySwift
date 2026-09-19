@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherDEDeployment: Codable, Sendable {
-  public var autoscaling: HyperProxyJSONValue
+  public var autoscaling: TogetherDEAutoscalingResponse
   public var config: String
   public var configId: String
   public var createdAt: String
@@ -28,16 +28,16 @@ public struct TogetherDEDeployment: Codable, Sendable {
   public var name: String
   public var placement: TogetherDEPlacement?
   public var projectId: String
-  public var runtimeInfo: HyperProxyJSONValue?
+  public var runtimeInfo: TogetherDERuntimeInfo?
   public var speculator: String?
   public var speculatorId: String?
   public var speculatorRevisionId: String?
-  public var status: HyperProxyJSONValue
+  public var status: TogetherDEDeploymentStatus
   public var trafficMode: TogetherDEDeploymentTrafficMode
   public var updatedAt: String
 
   public init(
-    autoscaling: HyperProxyJSONValue,
+    autoscaling: TogetherDEAutoscalingResponse,
     config: String,
     configId: String,
     createdAt: String,
@@ -50,14 +50,14 @@ public struct TogetherDEDeployment: Codable, Sendable {
     modelRevisionId: String,
     name: String,
     projectId: String,
-    status: HyperProxyJSONValue,
+    status: TogetherDEDeploymentStatus,
     trafficMode: TogetherDEDeploymentTrafficMode,
     updatedAt: String,
     desiredReplicas: Int? = nil,
     enableLora: Bool? = nil,
     estimatedEffectiveTrafficShare: Double? = nil,
     placement: TogetherDEPlacement? = nil,
-    runtimeInfo: HyperProxyJSONValue? = nil,
+    runtimeInfo: TogetherDERuntimeInfo? = nil,
     speculator: String? = nil,
     speculatorId: String? = nil,
     speculatorRevisionId: String? = nil

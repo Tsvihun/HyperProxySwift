@@ -15,20 +15,20 @@ public struct AnthropicCompletionResponse: Codable, Sendable {
   public var id: String
   public var model: AnthropicModel
   public var stopReason: String?
-  public var typeModel: String
+  public var kind: AnthropicCompletionKind
 
   public init(
     completion: String,
     id: String,
     model: AnthropicModel,
     stopReason: String?,
-    typeModel: String
+    kind: AnthropicCompletionKind = .completion
   ) {
     self.completion = completion
     self.id = id
     self.model = model
     self.stopReason = stopReason
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct AnthropicCompletionResponse: Codable, Sendable {
     case id
     case model
     case stopReason = "stop_reason"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

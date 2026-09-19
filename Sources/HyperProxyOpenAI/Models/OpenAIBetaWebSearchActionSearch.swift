@@ -14,10 +14,10 @@ public struct OpenAIBetaWebSearchActionSearch: Codable, Sendable {
   public var queries: [String]?
   public var query: String?
   public var sources: [OpenAIBetaWebSearchActionSearchSourcesItem]?
-  public var typeModel: OpenAIBetaWebSearchActionSearchTypeModel
+  public var kind: OpenAIBetaWebSearchActionSearchKind
 
   public init(
-    typeModel: OpenAIBetaWebSearchActionSearchTypeModel,
+    kind: OpenAIBetaWebSearchActionSearchKind,
     queries: [String]? = nil,
     query: String? = nil,
     sources: [OpenAIBetaWebSearchActionSearchSourcesItem]? = nil
@@ -25,13 +25,13 @@ public struct OpenAIBetaWebSearchActionSearch: Codable, Sendable {
     self.queries = queries
     self.query = query
     self.sources = sources
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case queries
     case query
     case sources
-    case typeModel = "type"
+    case kind = "type"
   }
 }

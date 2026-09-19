@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct AnthropicMessageBatchIndividualResponse: Codable, Sendable {
   public var customId: String
-  public var result: HyperProxyJSONValue
+  public var result: AnthropicMessageBatchIndividualResponseResult
 
   public init(
     customId: String,
-    result: HyperProxyJSONValue
+    result: AnthropicMessageBatchIndividualResponseResult
   ) {
     self.customId = customId
     self.result = result

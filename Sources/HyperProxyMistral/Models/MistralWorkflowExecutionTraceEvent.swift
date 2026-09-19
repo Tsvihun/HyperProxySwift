@@ -11,27 +11,27 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralWorkflowExecutionTraceEvent: Codable, Sendable {
-  public var attributes: [String: MistralWorkflowExecutionTraceSummaryAttributesValues]
+  public var attributes: [String: MistralWorkflowExecutionTraceSummaryAttributesValues?]
   public var id: String
   public var internalValue: Bool?
   public var name: String
   public var timestampUnixNano: Int
-  public var typeModel: MistralEventType?
+  public var kind: MistralEventType?
 
   public init(
-    attributes: [String: MistralWorkflowExecutionTraceSummaryAttributesValues],
+    attributes: [String: MistralWorkflowExecutionTraceSummaryAttributesValues?],
     id: String,
     name: String,
     timestampUnixNano: Int,
     internalValue: Bool? = nil,
-    typeModel: MistralEventType? = nil
+    kind: MistralEventType? = nil
   ) {
     self.attributes = attributes
     self.id = id
     self.internalValue = internalValue
     self.name = name
     self.timestampUnixNano = timestampUnixNano
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct MistralWorkflowExecutionTraceEvent: Codable, Sendable {
     case internalValue = "internal"
     case name
     case timestampUnixNano = "timestamp_unix_nano"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

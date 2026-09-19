@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct TogetherToolsPart: Codable, Sendable {
   public var function: TogetherToolsPartFunction?
-  public var typeModel: String?
+  public var kind: String?
 
   public init(
     function: TogetherToolsPartFunction? = nil,
-    typeModel: String? = nil
+    kind: String? = nil
   ) {
     self.function = function
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case function
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -14,24 +14,24 @@ public struct OpenAIRealtimeTranscriptionSessionCreateRequestTurnDetection: Coda
   public var prefixPaddingMs: Int?
   public var silenceDurationMs: Int?
   public var threshold: Double?
-  public var typeModel: OpenAIRealtimeTranscriptionSessionCreateRequestTurnDetectionTypeModel?
+  public var kind: OpenAIRealtimeTranscriptionSessionCreateRequestTurnDetectionKind?
 
   public init(
     prefixPaddingMs: Int? = nil,
     silenceDurationMs: Int? = nil,
     threshold: Double? = nil,
-    typeModel: OpenAIRealtimeTranscriptionSessionCreateRequestTurnDetectionTypeModel? = nil
+    kind: OpenAIRealtimeTranscriptionSessionCreateRequestTurnDetectionKind? = nil
   ) {
     self.prefixPaddingMs = prefixPaddingMs
     self.silenceDurationMs = silenceDurationMs
     self.threshold = threshold
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case prefixPaddingMs = "prefix_padding_ms"
     case silenceDurationMs = "silence_duration_ms"
     case threshold
-    case typeModel = "type"
+    case kind = "type"
   }
 }

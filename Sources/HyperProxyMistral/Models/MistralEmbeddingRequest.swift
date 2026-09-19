@@ -12,14 +12,14 @@ import HyperProxyCore
 
 public struct MistralEmbeddingRequest: Codable, Sendable {
   public var encodingFormat: MistralEncodingFormat?
-  public var input: HyperProxyJSONValue
+  public var input: MistralEmbeddingRequestInput
   public var metadata: [String: HyperProxyJSONValue]?
   public var model: String
   public var outputDimension: Int?
   public var outputDtype: MistralEmbeddingDtype?
 
   public init(
-    input: HyperProxyJSONValue,
+    input: MistralEmbeddingRequestInput,
     model: String,
     encodingFormat: MistralEncodingFormat? = nil,
     metadata: [String: HyperProxyJSONValue]? = nil,

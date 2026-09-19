@@ -14,13 +14,13 @@ public struct ElevenLabsBatchFailureResponseModel: Codable, Sendable {
   public var errorCode: Int
   public var errorMessage: String
   public var errorStatus: String
-  public var status: String
+  public var status: ElevenLabsFailureStatus
 
   public init(
     errorCode: Int,
     errorMessage: String,
     errorStatus: String,
-    status: String
+    status: ElevenLabsFailureStatus = .failure
   ) {
     self.errorCode = errorCode
     self.errorMessage = errorMessage

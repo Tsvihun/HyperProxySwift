@@ -10,39 +10,32 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsConversationInitiationSource: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let unknown = Self(rawValue: "unknown")
-  public static let androidSdk = Self(rawValue: "android_sdk")
-  public static let nodeJsSdk = Self(rawValue: "node_js_sdk")
-  public static let reactNativeSdk = Self(rawValue: "react_native_sdk")
-  public static let reactSdk = Self(rawValue: "react_sdk")
-  public static let jsSdk = Self(rawValue: "js_sdk")
-  public static let pythonSdk = Self(rawValue: "python_sdk")
-  public static let widget = Self(rawValue: "widget")
-  public static let sipTrunk = Self(rawValue: "sip_trunk")
-  public static let twilio = Self(rawValue: "twilio")
-  public static let exotel = Self(rawValue: "exotel")
-  public static let genesys = Self(rawValue: "genesys")
-  public static let avaya = Self(rawValue: "avaya")
-  public static let audiocodes = Self(rawValue: "audiocodes")
-  public static let swiftSdk = Self(rawValue: "swift_sdk")
-  public static let whatsapp = Self(rawValue: "whatsapp")
-  public static let twilioSms = Self(rawValue: "twilio_sms")
-  public static let flutterSdk = Self(rawValue: "flutter_sdk")
-  public static let zendeskIntegration = Self(rawValue: "zendesk_integration")
-  public static let slackIntegration = Self(rawValue: "slack_integration")
-  public static let telegramIntegration = Self(rawValue: "telegram_integration")
-  public static let intercomIntegration = Self(rawValue: "intercom_integration")
-  public static let freshdeskIntegration = Self(rawValue: "freshdesk_integration")
-  public static let salesforceIntegration = Self(rawValue: "salesforce_integration")
-  public static let templatePreview = Self(rawValue: "template_preview")
-  public static let genesysBotConnector = Self(rawValue: "genesys_bot_connector")
-  public static let subagentTool = Self(rawValue: "subagent_tool")
+public enum ElevenLabsConversationInitiationSource: String, Codable, Hashable, Sendable {
+  case unknown = "unknown"
+  case androidSdk = "android_sdk"
+  case nodeJsSdk = "node_js_sdk"
+  case reactNativeSdk = "react_native_sdk"
+  case reactSdk = "react_sdk"
+  case jsSdk = "js_sdk"
+  case pythonSdk = "python_sdk"
+  case widget = "widget"
+  case sipTrunk = "sip_trunk"
+  case twilio = "twilio"
+  case exotel = "exotel"
+  case genesys = "genesys"
+  case avaya = "avaya"
+  case audiocodes = "audiocodes"
+  case swiftSdk = "swift_sdk"
+  case whatsapp = "whatsapp"
+  case twilioSms = "twilio_sms"
+  case flutterSdk = "flutter_sdk"
+  case zendeskIntegration = "zendesk_integration"
+  case slackIntegration = "slack_integration"
+  case telegramIntegration = "telegram_integration"
+  case intercomIntegration = "intercom_integration"
+  case freshdeskIntegration = "freshdesk_integration"
+  case salesforceIntegration = "salesforce_integration"
+  case templatePreview = "template_preview"
+  case genesysBotConnector = "genesys_bot_connector"
+  case subagentTool = "subagent_tool"
 }

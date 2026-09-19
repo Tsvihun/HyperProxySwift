@@ -11,9 +11,9 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIBetaCompactResponseMethodPublicBody: Codable, Sendable {
-  public var input: HyperProxyJSONValue?
+  public var input: OpenAIBetaCompactResponseMethodPublicBodyInputAnyOf1?
   public var instructions: String?
-  public var model: OpenAIBetaModelIdsCompaction
+  public var model: OpenAIBetaModelIdsCompaction?
   public var previousResponseId: String?
   public var promptCacheKey: String?
   public var promptCacheOptions: OpenAIBetaPromptCacheOptionsParam?
@@ -21,8 +21,8 @@ public struct OpenAIBetaCompactResponseMethodPublicBody: Codable, Sendable {
   public var serviceTier: OpenAIBetaServiceTierEnum?
 
   public init(
-    model: OpenAIBetaModelIdsCompaction,
-    input: HyperProxyJSONValue? = nil,
+    model: OpenAIBetaModelIdsCompaction?,
+    input: OpenAIBetaCompactResponseMethodPublicBodyInputAnyOf1? = nil,
     instructions: String? = nil,
     previousResponseId: String? = nil,
     promptCacheKey: String? = nil,

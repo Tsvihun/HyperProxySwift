@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct GeminiDiffUploadResponse: Codable, Sendable {
   public var objectVersion: String?
-  public var originalObject: HyperProxyJSONValue?
+  public var originalObject: GeminiCompositeMedia?
 
   public init(
     objectVersion: String? = nil,
-    originalObject: HyperProxyJSONValue? = nil
+    originalObject: GeminiCompositeMedia? = nil
   ) {
     self.objectVersion = objectVersion
     self.originalObject = originalObject

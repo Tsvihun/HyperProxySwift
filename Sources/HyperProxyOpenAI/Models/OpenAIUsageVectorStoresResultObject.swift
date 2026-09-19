@@ -10,13 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIUsageVectorStoresResultObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let organizationUsageVectorStoresResult = Self(
-    rawValue: "organization.usage.vector_stores.result")
+public enum OpenAIUsageVectorStoresResultObject: String, Codable, Hashable, Sendable {
+  case organizationUsageVectorStoresResult = "organization.usage.vector_stores.result"
 }

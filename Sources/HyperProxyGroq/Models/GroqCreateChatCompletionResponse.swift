@@ -20,7 +20,7 @@ public struct GroqCreateChatCompletionResponse: Codable, Sendable {
   public var serviceTier: GroqCreateChatCompletionResponseServiceTier?
   public var systemFingerprint: String?
   public var usage: GroqCompletionUsage?
-  public var usageBreakdown: HyperProxyJSONValue?
+  public var usageBreakdown: GroqChatCompletionUsageBreakdown?
   public var xGroq: GroqXGroqNonStreaming?
 
   public init(
@@ -33,7 +33,7 @@ public struct GroqCreateChatCompletionResponse: Codable, Sendable {
     serviceTier: GroqCreateChatCompletionResponseServiceTier? = nil,
     systemFingerprint: String? = nil,
     usage: GroqCompletionUsage? = nil,
-    usageBreakdown: HyperProxyJSONValue? = nil,
+    usageBreakdown: GroqChatCompletionUsageBreakdown? = nil,
     xGroq: GroqXGroqNonStreaming? = nil
   ) {
     self.choices = choices

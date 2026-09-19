@@ -10,7 +10,37 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaManagedAgentsDeploymentInitialEventParams: Codable, Sendable {
+public enum AnthropicBetaManagedAgentsDeploymentInitialEventParams: Codable, Sendable {
+  case betaManagedAgentsUserMessageEventParams(AnthropicBetaManagedAgentsUserMessageEventParams)
+  case betaManagedAgentsUserDefineOutcomeEventParams(
+    AnthropicBetaManagedAgentsUserDefineOutcomeEventParams)
+  case betaManagedAgentsSystemMessageEventParams(AnthropicBetaManagedAgentsSystemMessageEventParams)
 
-  public init() {}
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(AnthropicBetaManagedAgentsUserMessageEventParams.self) {
+      self = .betaManagedAgentsUserMessageEventParams(value)
+      return
+    }
+    if let value = try? container.decode(
+      AnthropicBetaManagedAgentsUserDefineOutcomeEventParams.self)
+    {
+      self = .betaManagedAgentsUserDefineOutcomeEventParams(value)
+      return
+    }
+    self = .betaManagedAgentsSystemMessageEventParams(
+      try container.decode(AnthropicBetaManagedAgentsSystemMessageEventParams.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .betaManagedAgentsUserMessageEventParams(let value):
+      try container.encode(value)
+    case .betaManagedAgentsUserDefineOutcomeEventParams(let value):
+      try container.encode(value)
+    case .betaManagedAgentsSystemMessageEventParams(let value):
+      try container.encode(value)
+    }
+  }
 }

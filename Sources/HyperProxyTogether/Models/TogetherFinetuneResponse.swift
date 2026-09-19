@@ -14,7 +14,7 @@ public struct TogetherFinetuneResponse: Codable, Sendable {
   public var adapterObjectId: String?
   public var adapterObjectName: String?
   public var adapterObjectRevisionId: String?
-  public var batchSize: HyperProxyJSONValue?
+  public var batchSize: TogetherFinetuneResponseBatchSize?
   public var createdAt: String?
   public var earlyStopped: Bool?
   public var earlyStoppingBestMetric: Double?
@@ -49,10 +49,10 @@ public struct TogetherFinetuneResponse: Codable, Sendable {
   public var tokenizedDatasetPath: String?
   public var tokenizedDatasetUploadedAt: String?
   public var totalPrice: Int?
-  public var trainOnInputs: HyperProxyJSONValue?
+  public var trainOnInputs: TogetherFinetuneResponseTrainOnInputs?
   public var trainingFile: String?
-  public var trainingMethod: HyperProxyJSONValue?
-  public var trainingType: HyperProxyJSONValue?
+  public var trainingMethod: TogetherFinetuneResponseTrainingMethod?
+  public var trainingType: TogetherFinetuneResponseTrainingType?
   public var trainingfileNumlines: Int?
   public var trainingfileSize: Int?
   public var updatedAt: String?
@@ -70,7 +70,7 @@ public struct TogetherFinetuneResponse: Codable, Sendable {
     adapterObjectId: String? = nil,
     adapterObjectName: String? = nil,
     adapterObjectRevisionId: String? = nil,
-    batchSize: HyperProxyJSONValue? = nil,
+    batchSize: TogetherFinetuneResponseBatchSize? = nil,
     createdAt: String? = nil,
     earlyStopped: Bool? = nil,
     earlyStoppingBestMetric: Double? = nil,
@@ -103,10 +103,10 @@ public struct TogetherFinetuneResponse: Codable, Sendable {
     tokenizedDatasetPath: String? = nil,
     tokenizedDatasetUploadedAt: String? = nil,
     totalPrice: Int? = nil,
-    trainOnInputs: HyperProxyJSONValue? = nil,
+    trainOnInputs: TogetherFinetuneResponseTrainOnInputs? = nil,
     trainingFile: String? = nil,
-    trainingMethod: HyperProxyJSONValue? = nil,
-    trainingType: HyperProxyJSONValue? = nil,
+    trainingMethod: TogetherFinetuneResponseTrainingMethod? = nil,
+    trainingType: TogetherFinetuneResponseTrainingType? = nil,
     trainingfileNumlines: Int? = nil,
     trainingfileSize: Int? = nil,
     updatedAt: String? = nil,

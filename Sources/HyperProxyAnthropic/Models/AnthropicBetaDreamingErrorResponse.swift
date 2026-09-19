@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicBetaDreamingErrorResponse: Codable, Sendable {
   public var error: AnthropicBetaTargetStoreHeldError
-  public var typeModel: String
+  public var kind: AnthropicErrorKind
 
   public init(
     error: AnthropicBetaTargetStoreHeldError,
-    typeModel: String
+    kind: AnthropicErrorKind = .error
   ) {
     self.error = error
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case error
-    case typeModel = "type"
+    case kind = "type"
   }
 }

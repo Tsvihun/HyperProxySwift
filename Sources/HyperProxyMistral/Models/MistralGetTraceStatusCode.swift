@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralGetTraceStatusCode: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let error = Self(rawValue: "Error")
-  public static let unset = Self(rawValue: "Unset")
+public enum MistralGetTraceStatusCode: String, Codable, Hashable, Sendable {
+  case error = "Error"
+  case unset = "Unset"
 }

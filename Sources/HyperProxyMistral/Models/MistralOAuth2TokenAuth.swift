@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralOAuth2TokenAuth: Codable, Sendable {
-  public var typeModel: MistralOAuth2TokenAuthTypeModel?
+  public var kind: MistralOAuth2TokenAuthKind?
   public var value: String
 
   public init(
     value: String,
-    typeModel: MistralOAuth2TokenAuthTypeModel? = nil
+    kind: MistralOAuth2TokenAuthKind? = nil
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
     self.value = value
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
     case value
   }
 }

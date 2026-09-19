@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterDeleteObservabilityDestinationResponse: Codable, Sendable {
-  public var deleted: Bool
+  public var deleted: OpenRouterDeleteObservabilityDestinationResponseDeleted
 
   public init(
-    deleted: Bool
+    deleted: OpenRouterDeleteObservabilityDestinationResponseDeleted = .booleanTrue
   ) {
     self.deleted = deleted
   }

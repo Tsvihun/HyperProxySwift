@@ -17,12 +17,12 @@ public struct OpenAIRealtimeTranslationServerEventSessionOutputAudioDelta: Codab
   public var eventId: String
   public var format: OpenAIRealtimeTranslationServerEventSessionOutputAudioDeltaFormat?
   public var sampleRate: Int?
-  public var typeModel: OpenAIRealtimeTranslationServerEventSessionOutputAudioDeltaTypeModel
+  public var kind: OpenAIRealtimeTranslationServerEventSessionOutputAudioDeltaKind
 
   public init(
     delta: String,
     eventId: String,
-    typeModel: OpenAIRealtimeTranslationServerEventSessionOutputAudioDeltaTypeModel,
+    kind: OpenAIRealtimeTranslationServerEventSessionOutputAudioDeltaKind,
     channels: Int? = nil,
     elapsedMs: Int? = nil,
     format: OpenAIRealtimeTranslationServerEventSessionOutputAudioDeltaFormat? = nil,
@@ -34,7 +34,7 @@ public struct OpenAIRealtimeTranslationServerEventSessionOutputAudioDelta: Codab
     self.eventId = eventId
     self.format = format
     self.sampleRate = sampleRate
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenAIRealtimeTranslationServerEventSessionOutputAudioDelta: Codab
     case eventId = "event_id"
     case format
     case sampleRate = "sample_rate"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

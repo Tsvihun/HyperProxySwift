@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct StabilityInpaintingMaskingModeRequestBodyMode: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mask = Self(rawValue: "mask")
+public enum StabilityInpaintingMaskingModeRequestBodyMode: String, Codable, Hashable, Sendable {
+  case mask = "mask"
 }

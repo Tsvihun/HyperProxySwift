@@ -10,17 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesStyleAndToneRedundantIntroductoryPhrases: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum DeepLConfiguredRulesStyleAndToneRedundantIntroductoryPhrases: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let avoidRedundantIntroductoryPhrases = Self(
-    rawValue: "avoid_redundant_introductory_phrases")
-  public static let doNotUseRedundantPhrasesThatReferToCurrentText = Self(
-    rawValue: "do_not_use_redundant_phrases_that_refer_to_current_text")
+  case avoidRedundantIntroductoryPhrases = "avoid_redundant_introductory_phrases"
+  case doNotUseRedundantPhrasesThatReferToCurrentText =
+    "do_not_use_redundant_phrases_that_refer_to_current_text"
 }

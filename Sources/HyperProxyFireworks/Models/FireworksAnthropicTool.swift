@@ -15,20 +15,20 @@ public struct FireworksAnthropicTool: Codable, Sendable {
   public var inputSchema: FireworksAnthropicInputSchema
   public var name: String
   public var strict: Bool?
-  public var typeModel: String?
+  public var kind: FireworksAnthropicToolKindAnyOf2?
 
   public init(
     inputSchema: FireworksAnthropicInputSchema,
     name: String,
     description: String? = nil,
     strict: Bool? = nil,
-    typeModel: String? = nil
+    kind: FireworksAnthropicToolKindAnyOf2? = nil
   ) {
     self.description = description
     self.inputSchema = inputSchema
     self.name = name
     self.strict = strict
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct FireworksAnthropicTool: Codable, Sendable {
     case inputSchema = "input_schema"
     case name
     case strict
-    case typeModel = "type"
+    case kind = "type"
   }
 }

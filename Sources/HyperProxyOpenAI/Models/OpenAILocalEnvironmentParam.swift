@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAILocalEnvironmentParam: Codable, Sendable {
   public var skills: [OpenAILocalSkillParam]?
-  public var typeModel: OpenAILocalEnvironmentParamTypeModel
+  public var kind: OpenAILocalEnvironmentParamKind
 
   public init(
-    typeModel: OpenAILocalEnvironmentParamTypeModel,
+    kind: OpenAILocalEnvironmentParamKind,
     skills: [OpenAILocalSkillParam]? = nil
   ) {
     self.skills = skills
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case skills
-    case typeModel = "type"
+    case kind = "type"
   }
 }

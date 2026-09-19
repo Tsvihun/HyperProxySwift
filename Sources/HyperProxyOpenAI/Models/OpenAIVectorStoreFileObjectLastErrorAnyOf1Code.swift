@@ -10,16 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIVectorStoreFileObjectLastErrorAnyOf1Code: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let serverError = Self(rawValue: "server_error")
-  public static let unsupportedFile = Self(rawValue: "unsupported_file")
-  public static let invalidFile = Self(rawValue: "invalid_file")
+public enum OpenAIVectorStoreFileObjectLastErrorAnyOf1Code: String, Codable, Hashable, Sendable {
+  case serverError = "server_error"
+  case unsupportedFile = "unsupported_file"
+  case invalidFile = "invalid_file"
 }

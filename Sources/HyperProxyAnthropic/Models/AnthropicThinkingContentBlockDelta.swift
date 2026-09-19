@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicThinkingContentBlockDelta: Codable, Sendable {
   public var thinking: String
-  public var typeModel: String
+  public var kind: AnthropicThinkingDeltaKind
 
   public init(
     thinking: String,
-    typeModel: String
+    kind: AnthropicThinkingDeltaKind = .thinkingDelta
   ) {
     self.thinking = thinking
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case thinking
-    case typeModel = "type"
+    case kind = "type"
   }
 }

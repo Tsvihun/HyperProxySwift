@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksGatewayPurpose: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let pURPOSEUNSPECIFIED = Self(rawValue: "PURPOSE_UNSPECIFIED")
-  public static let pURPOSEPILOT = Self(rawValue: "PURPOSE_PILOT")
+public enum FireworksGatewayPurpose: String, Codable, Hashable, Sendable {
+  case pURPOSEUNSPECIFIED = "PURPOSE_UNSPECIFIED"
+  case pURPOSEPILOT = "PURPOSE_PILOT"
 }

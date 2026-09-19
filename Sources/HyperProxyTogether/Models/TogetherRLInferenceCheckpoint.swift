@@ -14,12 +14,12 @@ public struct TogetherRLInferenceCheckpoint: Codable, Sendable {
   public var createdAt: String
   public var id: String
   public var registration: TogetherRLInferenceCheckpointRegistration?
-  public var step: HyperProxyJSONValue
+  public var step: TogetherRLInferenceCheckpointStep
 
   public init(
     createdAt: String,
     id: String,
-    step: HyperProxyJSONValue,
+    step: TogetherRLInferenceCheckpointStep,
     registration: TogetherRLInferenceCheckpointRegistration? = nil
   ) {
     self.createdAt = createdAt

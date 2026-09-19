@@ -12,14 +12,14 @@ import HyperProxyCore
 
 public struct MistralAdminProvisionGroupToWorkspaceIn: Codable, Sendable {
   public var userGroupUuid: String
-  public var workspaceRole: HyperProxyJSONValue?
+  public var workspaceRole: MistralAdminProvisionGroupToWorkspaceInWorkspaceRole?
   public var workspaceRoleName: MistralAdminProvisionGroupToWorkspaceInWorkspaceRoleNameAnyOf1?
   public var workspaceUuid: String
 
   public init(
     userGroupUuid: String,
     workspaceUuid: String,
-    workspaceRole: HyperProxyJSONValue? = nil,
+    workspaceRole: MistralAdminProvisionGroupToWorkspaceInWorkspaceRole? = nil,
     workspaceRoleName: MistralAdminProvisionGroupToWorkspaceInWorkspaceRoleNameAnyOf1? = nil
   ) {
     self.userGroupUuid = userGroupUuid

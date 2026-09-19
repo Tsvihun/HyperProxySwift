@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiTopCandidates: Codable, Sendable {
-  public var candidates: [HyperProxyJSONValue]?
+  public var candidates: [GeminiLogprobsResultCandidate]?
 
   public init(
-    candidates: [HyperProxyJSONValue]? = nil
+    candidates: [GeminiLogprobsResultCandidate]? = nil
   ) {
     self.candidates = candidates
   }

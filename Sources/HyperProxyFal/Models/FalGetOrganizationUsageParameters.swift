@@ -11,30 +11,30 @@ import Foundation
 import HyperProxyCore
 
 public struct FalGetOrganizationUsageParameters: Codable, Sendable {
-  public var apiKeyId: HyperProxyJSONValue?
+  public var apiKeyId: FalGetOrganizationUsageParametersApiKeyId?
   public var boundToTimeframe: FalGetOrganizationUsageParametersBoundToTimeframe?
   public var cursor: String?
-  public var end: String?
-  public var endpointId: HyperProxyJSONValue?
-  public var expand: HyperProxyJSONValue?
+  public var end: FalGetOrganizationUsageParametersEnd?
+  public var endpointId: FalGetOrganizationUsageParametersEndpointId?
+  public var expand: FalGetOrganizationUsageParametersExpand?
   public var limit: Int?
-  public var product: HyperProxyJSONValue?
-  public var start: String?
-  public var teamUsername: HyperProxyJSONValue?
+  public var product: FalGetOrganizationUsageParametersProduct?
+  public var start: FalGetOrganizationUsageParametersStart?
+  public var teamUsername: FalGetOrganizationUsageParametersTeamUsername?
   public var timeframe: FalGetOrganizationUsageParametersTimeframe?
   public var timezone: String?
 
   public init(
-    apiKeyId: HyperProxyJSONValue? = nil,
+    apiKeyId: FalGetOrganizationUsageParametersApiKeyId? = nil,
     boundToTimeframe: FalGetOrganizationUsageParametersBoundToTimeframe? = nil,
     cursor: String? = nil,
-    end: String? = nil,
-    endpointId: HyperProxyJSONValue? = nil,
-    expand: HyperProxyJSONValue? = nil,
+    end: FalGetOrganizationUsageParametersEnd? = nil,
+    endpointId: FalGetOrganizationUsageParametersEndpointId? = nil,
+    expand: FalGetOrganizationUsageParametersExpand? = nil,
     limit: Int? = nil,
-    product: HyperProxyJSONValue? = nil,
-    start: String? = nil,
-    teamUsername: HyperProxyJSONValue? = nil,
+    product: FalGetOrganizationUsageParametersProduct? = nil,
+    start: FalGetOrganizationUsageParametersStart? = nil,
+    teamUsername: FalGetOrganizationUsageParametersTeamUsername? = nil,
     timeframe: FalGetOrganizationUsageParametersTimeframe? = nil,
     timezone: String? = nil
   ) {

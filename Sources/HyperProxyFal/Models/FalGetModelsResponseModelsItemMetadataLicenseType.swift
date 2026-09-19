@@ -10,16 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct FalGetModelsResponseModelsItemMetadataLicenseType: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let commercial = Self(rawValue: "commercial")
-  public static let research = Self(rawValue: "research")
-  public static let privateValue = Self(rawValue: "private")
+public enum FalGetModelsResponseModelsItemMetadataLicenseType: String, Codable, Hashable, Sendable {
+  case commercial = "commercial"
+  case research = "research"
+  case privateValue = "private"
 }

@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralListDeploymentsV1WorkflowsDeploymentsGetParametersOrderByAnyOf1:
-  RawRepresentable, Codable, Hashable, Sendable
+public enum MistralListDeploymentsV1WorkflowsDeploymentsGetParametersOrderByAnyOf1: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let updatedAt = Self(rawValue: "updated_at")
-  public static let createdAt = Self(rawValue: "created_at")
+  case updatedAt = "updated_at"
+  case createdAt = "created_at"
 }

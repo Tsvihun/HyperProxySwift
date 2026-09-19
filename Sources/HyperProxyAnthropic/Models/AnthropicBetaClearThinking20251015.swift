@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaClearThinking20251015: Codable, Sendable {
-  public var keep: HyperProxyJSONValue?
-  public var typeModel: String
+  public var keep: AnthropicBetaClearThinking20251015Keep?
+  public var kind: AnthropicClearThinking20251015Kind
 
   public init(
-    typeModel: String,
-    keep: HyperProxyJSONValue? = nil
+    kind: AnthropicClearThinking20251015Kind = .clearThinking20251015,
+    keep: AnthropicBetaClearThinking20251015Keep? = nil
   ) {
     self.keep = keep
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case keep
-    case typeModel = "type"
+    case kind = "type"
   }
 }

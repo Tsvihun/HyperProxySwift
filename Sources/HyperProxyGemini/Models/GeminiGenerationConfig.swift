@@ -12,57 +12,57 @@ import HyperProxyCore
 
 public struct GeminiGenerationConfig: Codable, Sendable {
   public var responseJsonSchema: HyperProxyJSONValue?
-  public var audioTranscriptionConfig: HyperProxyJSONValue?
+  public var audioTranscriptionConfig: GeminiAudioTranscriptionConfig?
   public var candidateCount: Int?
   public var enableAffectiveDialog: Bool?
   public var enableEnhancedCivicAnswers: Bool?
   public var frequencyPenalty: Double?
-  public var imageConfig: HyperProxyJSONValue?
+  public var imageConfig: GeminiImageConfig?
   public var logprobs: Int?
   public var maxOutputTokens: Int?
   public var mediaResolution: GeminiGenerationConfigMediaResolution?
   public var presencePenalty: Double?
-  public var responseFormat: HyperProxyJSONValue?
+  public var responseFormat: GeminiResponseFormatConfig?
   public var responseJsonSchemac2dcc47d: HyperProxyJSONValue?
   public var responseLogprobs: Bool?
   public var responseMimeType: String?
   public var responseModalities: [GeminiGenerationConfigResponseModalitiesItem]?
-  public var responseSchema: HyperProxyJSONValue?
+  public var responseSchema: GeminiSchema?
   public var seed: Int?
-  public var speechConfig: HyperProxyJSONValue?
+  public var speechConfig: GeminiSpeechConfig?
   public var stopSequences: [String]?
   public var temperature: Double?
-  public var thinkingConfig: HyperProxyJSONValue?
+  public var thinkingConfig: GeminiThinkingConfig?
   public var topK: Int?
   public var topP: Double?
-  public var translationConfig: HyperProxyJSONValue?
+  public var translationConfig: GeminiTranslationConfig?
 
   public init(
     responseJsonSchema: HyperProxyJSONValue? = nil,
-    audioTranscriptionConfig: HyperProxyJSONValue? = nil,
+    audioTranscriptionConfig: GeminiAudioTranscriptionConfig? = nil,
     candidateCount: Int? = nil,
     enableAffectiveDialog: Bool? = nil,
     enableEnhancedCivicAnswers: Bool? = nil,
     frequencyPenalty: Double? = nil,
-    imageConfig: HyperProxyJSONValue? = nil,
+    imageConfig: GeminiImageConfig? = nil,
     logprobs: Int? = nil,
     maxOutputTokens: Int? = nil,
     mediaResolution: GeminiGenerationConfigMediaResolution? = nil,
     presencePenalty: Double? = nil,
-    responseFormat: HyperProxyJSONValue? = nil,
+    responseFormat: GeminiResponseFormatConfig? = nil,
     responseJsonSchemac2dcc47d: HyperProxyJSONValue? = nil,
     responseLogprobs: Bool? = nil,
     responseMimeType: String? = nil,
     responseModalities: [GeminiGenerationConfigResponseModalitiesItem]? = nil,
-    responseSchema: HyperProxyJSONValue? = nil,
+    responseSchema: GeminiSchema? = nil,
     seed: Int? = nil,
-    speechConfig: HyperProxyJSONValue? = nil,
+    speechConfig: GeminiSpeechConfig? = nil,
     stopSequences: [String]? = nil,
     temperature: Double? = nil,
-    thinkingConfig: HyperProxyJSONValue? = nil,
+    thinkingConfig: GeminiThinkingConfig? = nil,
     topK: Int? = nil,
     topP: Double? = nil,
-    translationConfig: HyperProxyJSONValue? = nil
+    translationConfig: GeminiTranslationConfig? = nil
   ) {
     self.responseJsonSchema = responseJsonSchema
     self.audioTranscriptionConfig = audioTranscriptionConfig

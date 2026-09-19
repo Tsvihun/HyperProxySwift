@@ -12,14 +12,14 @@ import HyperProxyCore
 
 public struct ElevenLabsVoiceMailDetectionResultSuccessModel: Codable, Sendable {
   public var reason: String?
-  public var resultType: String?
-  public var status: String?
+  public var resultType: ElevenLabsVoicemailDetectionSuccessResultType?
+  public var status: ElevenLabsSuccessStatus?
   public var voicemailMessage: String?
 
   public init(
     reason: String? = nil,
-    resultType: String? = nil,
-    status: String? = nil,
+    resultType: ElevenLabsVoicemailDetectionSuccessResultType? = nil,
+    status: ElevenLabsSuccessStatus? = nil,
     voicemailMessage: String? = nil
   ) {
     self.reason = reason

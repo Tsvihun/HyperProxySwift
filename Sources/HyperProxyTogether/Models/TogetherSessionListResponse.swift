@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct TogetherSessionListResponse: Codable, Sendable {
   public var data: TogetherSessionListResponseAllOf2Data?
-  public var errors: [HyperProxyJSONValue]?
+  public var errors: [TogetherSessionListResponseAllOf1ErrorsItem]?
 
   public init(
     data: TogetherSessionListResponseAllOf2Data? = nil,
-    errors: [HyperProxyJSONValue]? = nil
+    errors: [TogetherSessionListResponseAllOf1ErrorsItem]? = nil
   ) {
     self.data = data
     self.errors = errors

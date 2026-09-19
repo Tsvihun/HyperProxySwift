@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct GroqChatCompletionRequestMessageContentPartImage: Codable, Sendable {
   public var imageUrl: GroqChatCompletionRequestMessageContentPartImageImageUrl
-  public var typeModel: GroqChatCompletionRequestMessageContentPartImageTypeModel
+  public var kind: GroqChatCompletionRequestMessageContentPartImageKind
 
   public init(
     imageUrl: GroqChatCompletionRequestMessageContentPartImageImageUrl,
-    typeModel: GroqChatCompletionRequestMessageContentPartImageTypeModel
+    kind: GroqChatCompletionRequestMessageContentPartImageKind
   ) {
     self.imageUrl = imageUrl
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case imageUrl = "image_url"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

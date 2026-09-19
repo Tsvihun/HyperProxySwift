@@ -10,30 +10,24 @@
 import Foundation
 import HyperProxyCore
 
-public struct EachAISenseEventType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let thinkingDelta = Self(rawValue: "thinking_delta")
-  public static let textResponse = Self(rawValue: "text_response")
-  public static let status = Self(rawValue: "status")
-  public static let toolCall = Self(rawValue: "tool_call")
-  public static let message = Self(rawValue: "message")
-  public static let progress = Self(rawValue: "progress")
-  public static let generationResponse = Self(rawValue: "generation_response")
-  public static let clarificationNeeded = Self(rawValue: "clarification_needed")
-  public static let webSearchQuery = Self(rawValue: "web_search_query")
-  public static let webSearchCitations = Self(rawValue: "web_search_citations")
-  public static let workflowCreated = Self(rawValue: "workflow_created")
-  public static let workflowFetched = Self(rawValue: "workflow_fetched")
-  public static let workflowBuilt = Self(rawValue: "workflow_built")
-  public static let workflowUpdated = Self(rawValue: "workflow_updated")
-  public static let executionStarted = Self(rawValue: "execution_started")
-  public static let executionProgress = Self(rawValue: "execution_progress")
-  public static let executionCompleted = Self(rawValue: "execution_completed")
-  public static let complete = Self(rawValue: "complete")
-  public static let error = Self(rawValue: "error")
+public enum EachAISenseEventType: String, Codable, Hashable, Sendable {
+  case thinkingDelta = "thinking_delta"
+  case textResponse = "text_response"
+  case status = "status"
+  case toolCall = "tool_call"
+  case message = "message"
+  case progress = "progress"
+  case generationResponse = "generation_response"
+  case clarificationNeeded = "clarification_needed"
+  case webSearchQuery = "web_search_query"
+  case webSearchCitations = "web_search_citations"
+  case workflowCreated = "workflow_created"
+  case workflowFetched = "workflow_fetched"
+  case workflowBuilt = "workflow_built"
+  case workflowUpdated = "workflow_updated"
+  case executionStarted = "execution_started"
+  case executionProgress = "execution_progress"
+  case executionCompleted = "execution_completed"
+  case complete = "complete"
+  case error = "error"
 }

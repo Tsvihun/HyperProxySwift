@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIDeleteCertificateResponseObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let certificateDeleted = Self(rawValue: "certificate.deleted")
+public enum OpenAIDeleteCertificateResponseObject: String, Codable, Hashable, Sendable {
+  case certificateDeleted = "certificate.deleted"
 }

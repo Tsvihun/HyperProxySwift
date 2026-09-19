@@ -14,10 +14,10 @@ public struct DeepSeekTool: Codable, Sendable {
   public var description: String?
   public var name: String?
   public var parameters: [String: HyperProxyJSONValue]?
-  public var typeModel: DeepSeekToolType
+  public var kind: DeepSeekToolType
 
   public init(
-    typeModel: DeepSeekToolType,
+    kind: DeepSeekToolType,
     description: String? = nil,
     name: String? = nil,
     parameters: [String: HyperProxyJSONValue]? = nil
@@ -25,13 +25,13 @@ public struct DeepSeekTool: Codable, Sendable {
     self.description = description
     self.name = name
     self.parameters = parameters
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case description
     case name
     case parameters
-    case typeModel = "type"
+    case kind = "type"
   }
 }

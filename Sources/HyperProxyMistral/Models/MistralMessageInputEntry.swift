@@ -12,23 +12,23 @@ import HyperProxyCore
 
 public struct MistralMessageInputEntry: Codable, Sendable {
   public var completedAt: String?
-  public var content: HyperProxyJSONValue
+  public var content: MistralMessageInputEntryContent
   public var createdAt: String?
   public var id: String?
-  public var object: String?
+  public var object: MistralEntryObject?
   public var prefixValue: Bool?
   public var role: MistralMessageInputEntryRole
-  public var typeModel: String?
+  public var kind: MistralMessageInputKind?
 
   public init(
-    content: HyperProxyJSONValue,
+    content: MistralMessageInputEntryContent,
     role: MistralMessageInputEntryRole,
     completedAt: String? = nil,
     createdAt: String? = nil,
     id: String? = nil,
-    object: String? = nil,
+    object: MistralEntryObject? = nil,
     prefixValue: Bool? = nil,
-    typeModel: String? = nil
+    kind: MistralMessageInputKind? = nil
   ) {
     self.completedAt = completedAt
     self.content = content
@@ -37,7 +37,7 @@ public struct MistralMessageInputEntry: Codable, Sendable {
     self.object = object
     self.prefixValue = prefixValue
     self.role = role
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct MistralMessageInputEntry: Codable, Sendable {
     case object
     case prefixValue = "prefix"
     case role
-    case typeModel = "type"
+    case kind = "type"
   }
 }

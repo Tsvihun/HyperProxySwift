@@ -14,20 +14,20 @@ public struct AnthropicBetaWebhookSessionThreadCreatedEventData: Codable, Sendab
   public var id: String
   public var organizationId: String
   public var sessionThreadId: String
-  public var typeModel: String
+  public var kind: AnthropicSessionThreadCreatedKind
   public var workspaceId: String
 
   public init(
     id: String,
     organizationId: String,
     sessionThreadId: String,
-    typeModel: String,
-    workspaceId: String
+    workspaceId: String,
+    kind: AnthropicSessionThreadCreatedKind = .sessionThreadCreated
   ) {
     self.id = id
     self.organizationId = organizationId
     self.sessionThreadId = sessionThreadId
-    self.typeModel = typeModel
+    self.kind = kind
     self.workspaceId = workspaceId
   }
 
@@ -35,7 +35,7 @@ public struct AnthropicBetaWebhookSessionThreadCreatedEventData: Codable, Sendab
     case id
     case organizationId = "organization_id"
     case sessionThreadId = "session_thread_id"
-    case typeModel = "type"
+    case kind = "type"
     case workspaceId = "workspace_id"
   }
 }

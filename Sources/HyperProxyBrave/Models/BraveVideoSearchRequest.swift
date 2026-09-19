@@ -16,7 +16,7 @@ public struct BraveVideoSearchRequest: Codable, Sendable {
   public var enableRichCallback: Bool?
   public var extraSnippets: Bool?
   public var freshness: String?
-  public var goggles: HyperProxyJSONValue?
+  public var goggles: BraveWebSearchRequestGoggles?
   public var includeFetchMetadata: Bool?
   public var offset: Int?
   public var operators: Bool?
@@ -36,7 +36,7 @@ public struct BraveVideoSearchRequest: Codable, Sendable {
     enableRichCallback: Bool? = nil,
     extraSnippets: Bool? = nil,
     freshness: String? = nil,
-    goggles: HyperProxyJSONValue? = nil,
+    goggles: BraveWebSearchRequestGoggles? = nil,
     includeFetchMetadata: Bool? = nil,
     offset: Int? = nil,
     operators: Bool? = nil,

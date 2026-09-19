@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterListWorkspaceBudgetsParameters: Codable, Sendable {
-  public var id: String
+  public var workspaceRef: String
 
   public init(
-    id: String
+    workspaceRef: String
   ) {
-    self.id = id
+    self.workspaceRef = workspaceRef
   }
 
   enum CodingKeys: String, CodingKey {
-    case id
+    case workspaceRef = "workspace_ref"
   }
 }

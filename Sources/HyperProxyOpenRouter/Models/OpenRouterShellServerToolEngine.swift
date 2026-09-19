@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterShellServerToolEngine: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
-  public static let openrouter = Self(rawValue: "openrouter")
+public enum OpenRouterShellServerToolEngine: String, Codable, Hashable, Sendable {
+  case auto = "auto"
+  case openrouter = "openrouter"
 }

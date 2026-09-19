@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct DeepSeekAnthropicThinkingConfig: Codable, Sendable {
   public var budgetTokens: Int?
-  public var typeModel: DeepSeekAnthropicThinkingType
+  public var kind: DeepSeekAnthropicThinkingType
 
   public init(
-    typeModel: DeepSeekAnthropicThinkingType,
+    kind: DeepSeekAnthropicThinkingType,
     budgetTokens: Int? = nil
   ) {
     self.budgetTokens = budgetTokens
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case budgetTokens = "budget_tokens"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

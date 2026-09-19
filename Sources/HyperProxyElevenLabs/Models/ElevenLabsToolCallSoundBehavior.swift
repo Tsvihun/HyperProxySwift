@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsToolCallSoundBehavior: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
-  public static let always = Self(rawValue: "always")
+public enum ElevenLabsToolCallSoundBehavior: String, Codable, Hashable, Sendable {
+  case auto = "auto"
+  case always = "always"
 }

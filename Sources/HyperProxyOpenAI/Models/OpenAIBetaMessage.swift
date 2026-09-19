@@ -12,19 +12,19 @@ import HyperProxyCore
 
 public struct OpenAIBetaMessage: Codable, Sendable {
   public var agent: OpenAIBetaAgentTag?
-  public var content: [HyperProxyJSONValue]
+  public var content: [OpenAIBetaMessageContentItem]
   public var id: String
   public var phase: OpenAIBetaMessagePhase2?
   public var role: OpenAIBetaMessageRole
   public var status: OpenAIBetaMessageStatus
-  public var typeModel: OpenAIBetaMessageTypeModel
+  public var kind: OpenAIBetaMessageKind
 
   public init(
-    content: [HyperProxyJSONValue],
+    content: [OpenAIBetaMessageContentItem],
     id: String,
     role: OpenAIBetaMessageRole,
     status: OpenAIBetaMessageStatus,
-    typeModel: OpenAIBetaMessageTypeModel,
+    kind: OpenAIBetaMessageKind,
     agent: OpenAIBetaAgentTag? = nil,
     phase: OpenAIBetaMessagePhase2? = nil
   ) {
@@ -34,7 +34,7 @@ public struct OpenAIBetaMessage: Codable, Sendable {
     self.phase = phase
     self.role = role
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenAIBetaMessage: Codable, Sendable {
     case phase
     case role
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -290,6 +290,22 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
     return try await call.decoded(OpenAIDeletedSessionArtifactResource.self)
   }
 
+  public func retrieveAgentSessionArtifactContent(
+    sessionId: String,
+    artifactId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.retrieveAgentSessionArtifactContent)
+      .path("session_id", sessionId)
+      .path("artifact_id", artifactId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try call.bytes()
+  }
+
   public func listAgentSessionEvents(
     sessionId: String,
     query: [URLQueryItem] = [],
@@ -565,12 +581,34 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.audioSpeech)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    if body.streamFormat == .sse {
+      throw HyperProxyProviderRouteError.streamingBodyOnJSONCall(
+        operation: "audioSpeech",
+        streamingVariant: "audioSpeechStream"
+      )
+    }
+    let prepared = try call.json(body)
+    return try prepared.bytes()
+  }
+
+  public func audioSpeechStream(
+    _ body: OpenAICreateSpeechRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
   ) throws -> AsyncThrowingStream<OpenAICreateSpeechResponseStreamEvent, Error> {
     let call = self.call(.audioSpeech)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    let prepared = try call.json(body)
+    var streamingBody = body
+    streamingBody.streamFormat = .sse
+    let prepared = try call.json(streamingBody)
     return try prepared.events(decoding: OpenAICreateSpeechResponseStreamEvent.self)
   }
 
@@ -1472,6 +1510,42 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
     return try await call.decoded(OpenAIFineTuningJob.self)
   }
 
+  public func imagesEdit(
+    _ body: OpenAIEditImageBodyJsonParam,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIImagesResponse {
+    let call = self.call(.imagesEdit)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    if body.stream == true {
+      throw HyperProxyProviderRouteError.streamingBodyOnJSONCall(
+        operation: "imagesEdit",
+        streamingVariant: "imagesEditStream"
+      )
+    }
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenAIImagesResponse.self)
+  }
+
+  public func imagesEditStream(
+    _ body: OpenAIEditImageBodyJsonParam,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<OpenAIImageEditStreamEvent, Error> {
+    let call = self.call(.imagesEdit)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    var streamingBody = body
+    streamingBody.stream = true
+    let prepared = try call.json(streamingBody)
+    return try prepared.events(decoding: OpenAIImageEditStreamEvent.self)
+  }
+
   public func imagesGenerate(
     _ body: OpenAICreateImageRequest,
     query: [URLQueryItem] = [],
@@ -1520,6 +1594,20 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
       .timeout(timeout)
     let prepared = try call.json(body)
     return try await prepared.decoded(OpenAILiveCreateResponse.self)
+  }
+
+  public func downloadLiveRecording(
+    sessionId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.downloadLiveRecording)
+      .path("session_id", sessionId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try call.bytes()
   }
 
   public func forkLiveSession(
@@ -1878,6 +1966,12 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
       .query(query)
       .headers(headers)
       .timeout(timeout)
+    if body.stream == true {
+      throw HyperProxyProviderRouteError.streamingBodyOnJSONCall(
+        operation: "responsesCreate",
+        streamingVariant: "responsesCreateStream"
+      )
+    }
     let prepared = try call.json(body)
     return try await prepared.decoded(OpenAIResponse.self)
   }
@@ -1892,7 +1986,9 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    let prepared = try call.json(body)
+    var streamingBody = body
+    streamingBody.stream = true
+    let prepared = try call.json(streamingBody)
     return try prepared.events(decoding: OpenAIResponseStreamEvent.self)
   }
 
@@ -2053,6 +2149,20 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
     return try await call.decoded(OpenAISafetyAlertResource.self)
   }
 
+  public func getsafetycase(
+    id: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAISafetyCaseResource {
+    let call = self.call(.getsafetycase)
+      .path("id", id)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAISafetyCaseResource.self)
+  }
+
   public func listSkills(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -2128,13 +2238,13 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> OpenAIGetSkillContentResponse200JSON {
+  ) async throws -> String {
     let call = self.call(.getSkillContent)
       .path("skill_id", skillId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(OpenAIGetSkillContentResponse200JSON.self)
+    return try await call.decoded(String.self)
   }
 
   public func listSkillVersions(
@@ -2205,14 +2315,14 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> OpenAIGetSkillVersionContentResponse200JSON {
+  ) async throws -> String {
     let call = self.call(.getSkillVersionContent)
       .path("skill_id", skillId)
       .path("version", version)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(OpenAIGetSkillVersionContentResponse200JSON.self)
+    return try await call.decoded(String.self)
   }
 
   public func createThread(
@@ -2923,6 +3033,20 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
     return try await call.decoded(OpenAIVideoListResource.self)
   }
 
+  public func videosCreate(
+    _ body: OpenAICreateVideoJsonBody,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIVideoResource {
+    let call = self.call(.videosCreate)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenAIVideoResource.self)
+  }
+
   public func getVideoCharacter(
     characterId: String,
     query: [URLQueryItem] = [],
@@ -2998,13 +3122,13 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> OpenAIRetrieveVideoContentResponse200JSON {
+  ) async throws -> String {
     let call = self.call(.videosContent)
       .path("video_id", videoId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(OpenAIRetrieveVideoContentResponse200JSON.self)
+    return try await call.decoded(String.self)
   }
 
   public func videosRemix(
@@ -3021,5 +3145,119 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
       .timeout(timeout)
     let prepared = try call.json(body)
     return try await prepared.decoded(OpenAIVideoResource.self)
+  }
+
+  public func listWebhookEndpoints(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIWebhookEndpointListResource {
+    let call = self.call(.listWebhookEndpoints)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIWebhookEndpointListResource.self)
+  }
+
+  public func createWebhookEndpoint(
+    _ body: OpenAIPublicCreateEndpointBody,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIWebhookEndpointWithSecretResource {
+    let call = self.call(.createWebhookEndpoint)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenAIWebhookEndpointWithSecretResource.self)
+  }
+
+  public func retrieveWebhookEndpoint(
+    webhookEndpointId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIWebhookEndpointBody {
+    let call = self.call(.retrieveWebhookEndpoint)
+      .path("webhook_endpoint_id", webhookEndpointId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIWebhookEndpointBody.self)
+  }
+
+  public func updateWebhookEndpoint(
+    _ body: OpenAIPublicUpdateEndpointBody,
+    webhookEndpointId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIWebhookEndpointBody {
+    let call = self.call(.updateWebhookEndpoint)
+      .path("webhook_endpoint_id", webhookEndpointId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenAIWebhookEndpointBody.self)
+  }
+
+  public func deleteWebhookEndpoint(
+    webhookEndpointId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIDeletedWebhookEndpointResource {
+    let call = self.call(.deleteWebhookEndpoint)
+      .path("webhook_endpoint_id", webhookEndpointId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIDeletedWebhookEndpointResource.self)
+  }
+
+  public func rotateWebhookEndpointSigningSecret(
+    _ body: OpenAIPublicRotateSecretBody,
+    webhookEndpointId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIWebhookEndpointWithSecretResource {
+    let call = self.call(.rotateWebhookEndpointSigningSecret)
+      .path("webhook_endpoint_id", webhookEndpointId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenAIWebhookEndpointWithSecretResource.self)
+  }
+
+  public func testWebhookEndpoint(
+    _ body: OpenAIPublicTestEndpointBody,
+    webhookEndpointId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIWebhookEndpointTestResultResource {
+    let call = self.call(.testWebhookEndpoint)
+      .path("webhook_endpoint_id", webhookEndpointId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenAIWebhookEndpointTestResultResource.self)
+  }
+
+  public func listWebhookEventTypes(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIWebhookEventTypeListResource {
+    let call = self.call(.listWebhookEventTypes)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIWebhookEventTypeListResource.self)
   }
 }

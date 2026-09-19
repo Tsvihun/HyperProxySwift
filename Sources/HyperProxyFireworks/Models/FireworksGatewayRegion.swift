@@ -10,49 +10,43 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksGatewayRegion: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let rEGIONUNSPECIFIED = Self(rawValue: "REGION_UNSPECIFIED")
-  public static let uSIOWA1 = Self(rawValue: "US_IOWA_1")
-  public static let uSVIRGINIA1 = Self(rawValue: "US_VIRGINIA_1")
-  public static let uSVIRGINIA2 = Self(rawValue: "US_VIRGINIA_2")
-  public static let uSILLINOIS1 = Self(rawValue: "US_ILLINOIS_1")
-  public static let aPTOKYO1 = Self(rawValue: "AP_TOKYO_1")
-  public static let uSARIZONA1 = Self(rawValue: "US_ARIZONA_1")
-  public static let uSTEXAS1 = Self(rawValue: "US_TEXAS_1")
-  public static let uSILLINOIS2 = Self(rawValue: "US_ILLINOIS_2")
-  public static let eUFRANKFURT1 = Self(rawValue: "EU_FRANKFURT_1")
-  public static let uSTEXAS2 = Self(rawValue: "US_TEXAS_2")
-  public static let eUICELAND1 = Self(rawValue: "EU_ICELAND_1")
-  public static let eUICELAND2 = Self(rawValue: "EU_ICELAND_2")
-  public static let uSWASHINGTON1 = Self(rawValue: "US_WASHINGTON_1")
-  public static let uSWASHINGTON2 = Self(rawValue: "US_WASHINGTON_2")
-  public static let uSWASHINGTON3 = Self(rawValue: "US_WASHINGTON_3")
-  public static let aPTOKYO2 = Self(rawValue: "AP_TOKYO_2")
-  public static let uSCALIFORNIA1 = Self(rawValue: "US_CALIFORNIA_1")
-  public static let uSUTAH1 = Self(rawValue: "US_UTAH_1")
-  public static let uSARIZONA3 = Self(rawValue: "US_ARIZONA_3")
-  public static let uSGEORGIA1 = Self(rawValue: "US_GEORGIA_1")
-  public static let uSGEORGIA2 = Self(rawValue: "US_GEORGIA_2")
-  public static let uSWASHINGTON4 = Self(rawValue: "US_WASHINGTON_4")
-  public static let uSGEORGIA3 = Self(rawValue: "US_GEORGIA_3")
-  public static let nABRITISHCOLUMBIA1 = Self(rawValue: "NA_BRITISHCOLUMBIA_1")
-  public static let uSGEORGIA4 = Self(rawValue: "US_GEORGIA_4")
-  public static let uSOHIO1 = Self(rawValue: "US_OHIO_1")
-  public static let uSNEWYORK1 = Self(rawValue: "US_NEWYORK_1")
-  public static let eUNETHERLANDS1 = Self(rawValue: "EU_NETHERLANDS_1")
-  public static let uSWASHINGTON5 = Self(rawValue: "US_WASHINGTON_5")
-  public static let uSMINNESOTA1 = Self(rawValue: "US_MINNESOTA_1")
-  public static let uSCALIFORNIA2 = Self(rawValue: "US_CALIFORNIA_2")
-  public static let nABRITISHCOLUMBIA2 = Self(rawValue: "NA_BRITISHCOLUMBIA_2")
-  public static let aPMALAYSIA2 = Self(rawValue: "AP_MALAYSIA_2")
-  public static let uSOREGON1 = Self(rawValue: "US_OREGON_1")
-  public static let nABRITISHCOLUMBIA3 = Self(rawValue: "NA_BRITISHCOLUMBIA_3")
-  public static let aPNEWSOUTHWALES1 = Self(rawValue: "AP_NEWSOUTHWALES_1")
-  public static let aPTAIWAN1 = Self(rawValue: "AP_TAIWAN_1")
+public enum FireworksGatewayRegion: String, Codable, Hashable, Sendable {
+  case rEGIONUNSPECIFIED = "REGION_UNSPECIFIED"
+  case uSIOWA1 = "US_IOWA_1"
+  case uSVIRGINIA1 = "US_VIRGINIA_1"
+  case uSVIRGINIA2 = "US_VIRGINIA_2"
+  case uSILLINOIS1 = "US_ILLINOIS_1"
+  case aPTOKYO1 = "AP_TOKYO_1"
+  case uSARIZONA1 = "US_ARIZONA_1"
+  case uSTEXAS1 = "US_TEXAS_1"
+  case uSILLINOIS2 = "US_ILLINOIS_2"
+  case eUFRANKFURT1 = "EU_FRANKFURT_1"
+  case uSTEXAS2 = "US_TEXAS_2"
+  case eUICELAND1 = "EU_ICELAND_1"
+  case eUICELAND2 = "EU_ICELAND_2"
+  case uSWASHINGTON1 = "US_WASHINGTON_1"
+  case uSWASHINGTON2 = "US_WASHINGTON_2"
+  case uSWASHINGTON3 = "US_WASHINGTON_3"
+  case aPTOKYO2 = "AP_TOKYO_2"
+  case uSCALIFORNIA1 = "US_CALIFORNIA_1"
+  case uSUTAH1 = "US_UTAH_1"
+  case uSARIZONA3 = "US_ARIZONA_3"
+  case uSGEORGIA1 = "US_GEORGIA_1"
+  case uSGEORGIA2 = "US_GEORGIA_2"
+  case uSWASHINGTON4 = "US_WASHINGTON_4"
+  case uSGEORGIA3 = "US_GEORGIA_3"
+  case nABRITISHCOLUMBIA1 = "NA_BRITISHCOLUMBIA_1"
+  case uSGEORGIA4 = "US_GEORGIA_4"
+  case uSOHIO1 = "US_OHIO_1"
+  case uSNEWYORK1 = "US_NEWYORK_1"
+  case eUNETHERLANDS1 = "EU_NETHERLANDS_1"
+  case uSWASHINGTON5 = "US_WASHINGTON_5"
+  case uSMINNESOTA1 = "US_MINNESOTA_1"
+  case uSCALIFORNIA2 = "US_CALIFORNIA_2"
+  case nABRITISHCOLUMBIA2 = "NA_BRITISHCOLUMBIA_2"
+  case aPMALAYSIA2 = "AP_MALAYSIA_2"
+  case uSOREGON1 = "US_OREGON_1"
+  case nABRITISHCOLUMBIA3 = "NA_BRITISHCOLUMBIA_3"
+  case aPNEWSOUTHWALES1 = "AP_NEWSOUTHWALES_1"
+  case aPTAIWAN1 = "AP_TAIWAN_1"
 }

@@ -14,24 +14,24 @@ public struct OpenAICompactionBody: Codable, Sendable {
   public var createdBy: String?
   public var encryptedContent: String
   public var id: String
-  public var typeModel: OpenAICompactionBodyTypeModel
+  public var kind: OpenAICompactionBodyKind
 
   public init(
     encryptedContent: String,
     id: String,
-    typeModel: OpenAICompactionBodyTypeModel,
+    kind: OpenAICompactionBodyKind,
     createdBy: String? = nil
   ) {
     self.createdBy = createdBy
     self.encryptedContent = encryptedContent
     self.id = id
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case createdBy = "created_by"
     case encryptedContent = "encrypted_content"
     case id
-    case typeModel = "type"
+    case kind = "type"
   }
 }

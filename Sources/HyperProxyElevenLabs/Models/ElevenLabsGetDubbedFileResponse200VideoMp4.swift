@@ -10,4 +10,19 @@
 import Foundation
 import HyperProxyCore
 
-public typealias ElevenLabsGetDubbedFileResponse200VideoMp4 = String
+public struct ElevenLabsGetDubbedFileResponse200VideoMp4: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+}
+
+extension ElevenLabsGetDubbedFileResponse200VideoMp4: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self.init(rawValue: value)
+  }
+}

@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralSystemMessage: Codable, Sendable {
-  public var content: HyperProxyJSONValue
-  public var role: String?
+  public var content: MistralSystemMessageContent
+  public var role: MistralSystemRole?
 
   public init(
-    content: HyperProxyJSONValue,
-    role: String? = nil
+    content: MistralSystemMessageContent,
+    role: MistralSystemRole? = nil
   ) {
     self.content = content
     self.role = role

@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiUsageMetadataServiceTier: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let unspecified = Self(rawValue: "unspecified")
-  public static let standard = Self(rawValue: "standard")
-  public static let flex = Self(rawValue: "flex")
-  public static let priority = Self(rawValue: "priority")
+public enum GeminiUsageMetadataServiceTier: String, Codable, Hashable, Sendable {
+  case unspecified = "unspecified"
+  case standard = "standard"
+  case flex = "flex"
+  case priority = "priority"
 }

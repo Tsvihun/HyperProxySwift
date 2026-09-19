@@ -14,24 +14,24 @@ public struct PerplexityFinanceResultsOutputItem: Codable, Sendable {
   public var categories: [String]?
   public var results: [PerplexityFinanceResult]
   public var tickers: [String]?
-  public var typeModel: PerplexityFinanceResultsOutputItemTypeModel
+  public var kind: PerplexityFinanceResultsOutputItemKind
 
   public init(
     results: [PerplexityFinanceResult],
-    typeModel: PerplexityFinanceResultsOutputItemTypeModel,
+    kind: PerplexityFinanceResultsOutputItemKind,
     categories: [String]? = nil,
     tickers: [String]? = nil
   ) {
     self.categories = categories
     self.results = results
     self.tickers = tickers
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case categories
     case results
     case tickers
-    case typeModel = "type"
+    case kind = "type"
   }
 }

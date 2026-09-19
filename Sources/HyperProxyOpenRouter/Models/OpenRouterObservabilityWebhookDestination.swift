@@ -18,13 +18,13 @@ public struct OpenRouterObservabilityWebhookDestination: Codable, Sendable {
   public var config: OpenRouterObservabilityWebhookDestinationConfig
   public var createdAt: String
   public var enabled: Bool
-  public var filterRules: OpenRouterObservabilityFilterRulesConfig
+  public var filterRules: OpenRouterObservabilityFilterRulesConfig?
   public var id: String
   public var name: String
   public var privacyMode: Bool
   public var regions: [OpenRouterObservabilityDataRegion]
   public var samplingRate: Double
-  public var typeModel: OpenRouterObservabilityWebhookDestinationTypeModel
+  public var kind: OpenRouterObservabilityWebhookDestinationKind
   public var updatedAt: String
   public var workspaceId: String
 
@@ -36,13 +36,13 @@ public struct OpenRouterObservabilityWebhookDestination: Codable, Sendable {
     config: OpenRouterObservabilityWebhookDestinationConfig,
     createdAt: String,
     enabled: Bool,
-    filterRules: OpenRouterObservabilityFilterRulesConfig,
+    filterRules: OpenRouterObservabilityFilterRulesConfig?,
     id: String,
     name: String,
     privacyMode: Bool,
     regions: [OpenRouterObservabilityDataRegion],
     samplingRate: Double,
-    typeModel: OpenRouterObservabilityWebhookDestinationTypeModel,
+    kind: OpenRouterObservabilityWebhookDestinationKind,
     updatedAt: String,
     workspaceId: String
   ) {
@@ -59,7 +59,7 @@ public struct OpenRouterObservabilityWebhookDestination: Codable, Sendable {
     self.privacyMode = privacyMode
     self.regions = regions
     self.samplingRate = samplingRate
-    self.typeModel = typeModel
+    self.kind = kind
     self.updatedAt = updatedAt
     self.workspaceId = workspaceId
   }
@@ -78,7 +78,7 @@ public struct OpenRouterObservabilityWebhookDestination: Codable, Sendable {
     case privacyMode = "privacy_mode"
     case regions
     case samplingRate = "sampling_rate"
-    case typeModel = "type"
+    case kind = "type"
     case updatedAt = "updated_at"
     case workspaceId = "workspace_id"
   }

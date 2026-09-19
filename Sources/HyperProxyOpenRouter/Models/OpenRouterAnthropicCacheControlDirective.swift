@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterAnthropicCacheControlDirective: Codable, Sendable {
   public var ttl: OpenRouterAnthropicCacheControlTtl?
-  public var typeModel: OpenRouterAnthropicCacheControlDirectiveTypeModel
+  public var kind: OpenRouterAnthropicCacheControlDirectiveKind
 
   public init(
-    typeModel: OpenRouterAnthropicCacheControlDirectiveTypeModel,
+    kind: OpenRouterAnthropicCacheControlDirectiveKind,
     ttl: OpenRouterAnthropicCacheControlTtl? = nil
   ) {
     self.ttl = ttl
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case ttl
-    case typeModel = "type"
+    case kind = "type"
   }
 }

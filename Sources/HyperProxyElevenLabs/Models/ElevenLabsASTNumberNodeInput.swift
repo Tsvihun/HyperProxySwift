@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsASTNumberNodeInput: Codable, Sendable {
-  public var typeModel: String?
-  public var value: HyperProxyJSONValue
+  public var kind: ElevenLabsNumberLiteralKind?
+  public var value: ElevenLabsASTNumberNodeInputValue
 
   public init(
-    value: HyperProxyJSONValue,
-    typeModel: String? = nil
+    value: ElevenLabsASTNumberNodeInputValue,
+    kind: ElevenLabsNumberLiteralKind? = nil
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
     self.value = value
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
     case value
   }
 }

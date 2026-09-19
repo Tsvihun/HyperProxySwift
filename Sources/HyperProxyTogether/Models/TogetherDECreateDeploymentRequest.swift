@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherDECreateDeploymentRequest: Codable, Sendable {
-  public var autoscaling: HyperProxyJSONValue
+  public var autoscaling: TogetherDEAutoscaling
   public var config: String?
   public var configId: String?
   public var enableLora: Bool?
@@ -22,7 +22,7 @@ public struct TogetherDECreateDeploymentRequest: Codable, Sendable {
   public var placement: TogetherDEPlacement?
 
   public init(
-    autoscaling: HyperProxyJSONValue,
+    autoscaling: TogetherDEAutoscaling,
     name: String,
     config: String? = nil,
     configId: String? = nil,

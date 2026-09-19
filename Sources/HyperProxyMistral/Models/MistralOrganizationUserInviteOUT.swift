@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct MistralOrganizationUserInviteOUT: Codable, Sendable {
   public var email: String?
   public var inviteUuid: String
-  public var role: HyperProxyJSONValue
-  public var roles: HyperProxyJSONValue
+  public var role: MistralOrganizationUserInviteOUTRole
+  public var roles: MistralOrganizationUserInviteOUTRoles
 
   public init(
     email: String?,
     inviteUuid: String,
-    role: HyperProxyJSONValue,
-    roles: HyperProxyJSONValue
+    role: MistralOrganizationUserInviteOUTRole,
+    roles: MistralOrganizationUserInviteOUTRoles
   ) {
     self.email = email
     self.inviteUuid = inviteUuid

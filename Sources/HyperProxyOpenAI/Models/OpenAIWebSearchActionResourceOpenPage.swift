@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIWebSearchActionResourceOpenPage: Codable, Sendable {
-  public var typeModel: OpenAIWebSearchActionResourceOpenPageTypeModel
+  public var kind: OpenAIWebSearchActionResourceOpenPageKind
   public var url: String
 
   public init(
-    typeModel: OpenAIWebSearchActionResourceOpenPageTypeModel,
+    kind: OpenAIWebSearchActionResourceOpenPageKind,
     url: String
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

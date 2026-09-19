@@ -15,12 +15,12 @@ public struct AnthropicBetaManagedAgentsMcpOauthCreateParams: Codable, Sendable 
   public var expiresAt: AnthropicBetaTimestamp?
   public var mcpServerUrl: String
   public var refresh: AnthropicBetaManagedAgentsMcpOauthRefreshParams?
-  public var typeModel: AnthropicBetaManagedAgentsMcpOauthCreateParamsTypeModel
+  public var kind: AnthropicBetaManagedAgentsMcpOauthCreateParamsKind
 
   public init(
     accessToken: String,
     mcpServerUrl: String,
-    typeModel: AnthropicBetaManagedAgentsMcpOauthCreateParamsTypeModel,
+    kind: AnthropicBetaManagedAgentsMcpOauthCreateParamsKind,
     expiresAt: AnthropicBetaTimestamp? = nil,
     refresh: AnthropicBetaManagedAgentsMcpOauthRefreshParams? = nil
   ) {
@@ -28,7 +28,7 @@ public struct AnthropicBetaManagedAgentsMcpOauthCreateParams: Codable, Sendable 
     self.expiresAt = expiresAt
     self.mcpServerUrl = mcpServerUrl
     self.refresh = refresh
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct AnthropicBetaManagedAgentsMcpOauthCreateParams: Codable, Sendable 
     case expiresAt = "expires_at"
     case mcpServerUrl = "mcp_server_url"
     case refresh
-    case typeModel = "type"
+    case kind = "type"
   }
 }

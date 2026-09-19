@@ -11,23 +11,23 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsEventDeltaEventContentDelta: Codable, Sendable {
-  public var content: HyperProxyJSONValue
+  public var content: AnthropicBetaManagedAgentsTextBlock
   public var index: Int?
-  public var typeModel: AnthropicBetaManagedAgentsEventDeltaEventContentDeltaTypeModel
+  public var kind: AnthropicBetaManagedAgentsEventDeltaEventContentDeltaKind
 
   public init(
-    content: HyperProxyJSONValue,
-    typeModel: AnthropicBetaManagedAgentsEventDeltaEventContentDeltaTypeModel,
+    content: AnthropicBetaManagedAgentsTextBlock,
+    kind: AnthropicBetaManagedAgentsEventDeltaEventContentDeltaKind,
     index: Int? = nil
   ) {
     self.content = content
     self.index = index
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case content
     case index
-    case typeModel = "type"
+    case kind = "type"
   }
 }

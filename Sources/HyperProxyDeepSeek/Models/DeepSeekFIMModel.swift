@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepSeekFIMModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let deepseekV4Pro = Self(rawValue: "deepseek-v4-pro")
+public enum DeepSeekFIMModel: String, Codable, Hashable, Sendable {
+  case deepseekV4Pro = "deepseek-v4-pro"
 }

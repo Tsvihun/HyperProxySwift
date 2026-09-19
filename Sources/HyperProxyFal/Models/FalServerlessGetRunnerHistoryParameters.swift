@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct FalServerlessGetRunnerHistoryParameters: Codable, Sendable {
   public var aggregation: FalServerlessGetRunnerHistoryParametersAggregation?
-  public var end: String?
+  public var end: FalServerlessGetRunnerHistoryParametersEnd?
   public var name: String
   public var owner: String
-  public var start: String?
+  public var start: FalServerlessGetRunnerHistoryParametersStart?
   public var timeframe: FalServerlessGetRunnerHistoryParametersTimeframe?
 
   public init(
     name: String,
     owner: String,
     aggregation: FalServerlessGetRunnerHistoryParametersAggregation? = nil,
-    end: String? = nil,
-    start: String? = nil,
+    end: FalServerlessGetRunnerHistoryParametersEnd? = nil,
+    start: FalServerlessGetRunnerHistoryParametersStart? = nil,
     timeframe: FalServerlessGetRunnerHistoryParametersTimeframe? = nil
   ) {
     self.aggregation = aggregation

@@ -10,16 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct PerplexitySandboxResultsOutputItemStatus: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let completed = Self(rawValue: "completed")
-  public static let timedOut = Self(rawValue: "timed_out")
-  public static let failed = Self(rawValue: "failed")
+public enum PerplexitySandboxResultsOutputItemStatus: String, Codable, Hashable, Sendable {
+  case completed = "completed"
+  case timedOut = "timed_out"
+  case failed = "failed"
 }

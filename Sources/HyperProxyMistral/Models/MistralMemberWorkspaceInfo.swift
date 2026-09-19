@@ -13,15 +13,15 @@ import HyperProxyCore
 public struct MistralMemberWorkspaceInfo: Codable, Sendable {
   public var isDefault: Bool
   public var name: String
-  public var rawRole: HyperProxyJSONValue
-  public var rawRoles: HyperProxyJSONValue
+  public var rawRole: MistralMemberWorkspaceInfoRawRole
+  public var rawRoles: MistralMemberWorkspaceInfoRawRoles
   public var uuid: String
 
   public init(
     isDefault: Bool,
     name: String,
-    rawRole: HyperProxyJSONValue,
-    rawRoles: HyperProxyJSONValue,
+    rawRole: MistralMemberWorkspaceInfoRawRole,
+    rawRoles: MistralMemberWorkspaceInfoRawRoles,
     uuid: String
   ) {
     self.isDefault = isDefault

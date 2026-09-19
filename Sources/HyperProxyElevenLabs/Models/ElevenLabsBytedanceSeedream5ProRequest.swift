@@ -13,15 +13,15 @@ import HyperProxyCore
 public struct ElevenLabsBytedanceSeedream5ProRequest: Codable, Sendable {
   public var aspectRatio: ElevenLabsBytedanceSeedream5ProRequestAspectRatio?
   public var images: [ElevenLabsImageReference]?
-  public var modelId: String
+  public var modelId: ElevenLabsBytedanceSeedream5ProModelId
   public var prompt: String
   public var resolution: ElevenLabsBytedanceSeedream5ProRequestResolution?
   public var seed: Int?
   public var webhook: ElevenLabsWebhookTarget?
 
   public init(
-    modelId: String,
     prompt: String,
+    modelId: ElevenLabsBytedanceSeedream5ProModelId = .bytedanceSeedream5Pro,
     aspectRatio: ElevenLabsBytedanceSeedream5ProRequestAspectRatio? = nil,
     images: [ElevenLabsImageReference]? = nil,
     resolution: ElevenLabsBytedanceSeedream5ProRequestResolution? = nil,

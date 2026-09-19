@@ -15,20 +15,20 @@ public struct OpenRouterBaseErrorEvent: Codable, Sendable {
   public var message: String
   public var param: String
   public var sequenceNumber: Int
-  public var typeModel: OpenRouterBaseErrorEventTypeModel
+  public var kind: OpenRouterBaseErrorEventKind
 
   public init(
     code: String,
     message: String,
     param: String,
     sequenceNumber: Int,
-    typeModel: OpenRouterBaseErrorEventTypeModel
+    kind: OpenRouterBaseErrorEventKind
   ) {
     self.code = code
     self.message = message
     self.param = param
     self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenRouterBaseErrorEvent: Codable, Sendable {
     case message
     case param
     case sequenceNumber = "sequence_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

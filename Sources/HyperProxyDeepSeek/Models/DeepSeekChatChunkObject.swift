@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepSeekChatChunkObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let chatCompletionChunk = Self(rawValue: "chat.completion.chunk")
+public enum DeepSeekChatChunkObject: String, Codable, Hashable, Sendable {
+  case chatCompletionChunk = "chat.completion.chunk"
 }

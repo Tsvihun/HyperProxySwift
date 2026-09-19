@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiListDocumentsResponse: Codable, Sendable {
-  public var documents: [HyperProxyJSONValue]?
+  public var documents: [GeminiDocument]?
   public var nextPageToken: String?
 
   public init(
-    documents: [HyperProxyJSONValue]? = nil,
+    documents: [GeminiDocument]? = nil,
     nextPageToken: String? = nil
   ) {
     self.documents = documents

@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIContextManagementParam: Codable, Sendable {
   public var compactThreshold: Int?
-  public var typeModel: String
+  public var kind: String
 
   public init(
-    typeModel: String,
+    kind: String,
     compactThreshold: Int? = nil
   ) {
     self.compactThreshold = compactThreshold
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case compactThreshold = "compact_threshold"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

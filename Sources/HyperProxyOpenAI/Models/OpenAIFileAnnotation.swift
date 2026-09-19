@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIFileAnnotation: Codable, Sendable {
   public var source: OpenAIFileAnnotationSource
-  public var typeModel: OpenAIFileAnnotationTypeModel
+  public var kind: OpenAIFileAnnotationKind
 
   public init(
     source: OpenAIFileAnnotationSource,
-    typeModel: OpenAIFileAnnotationTypeModel
+    kind: OpenAIFileAnnotationKind
   ) {
     self.source = source
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case source
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,13 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIEnvironmentTemplateResourceObject: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let agentEnvironmentTemplate = Self(rawValue: "agent.environment.template")
+public enum OpenAIEnvironmentTemplateResourceObject: String, Codable, Hashable, Sendable {
+  case agentEnvironmentTemplate = "agent.environment.template"
 }

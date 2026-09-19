@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterShellCallOutputContentOutcomeOneOf2: Codable, Sendable {
-  public var typeModel: OpenRouterShellCallOutputContentOutcomeOneOf2TypeModel
+  public var kind: OpenRouterShellCallOutputContentOutcomeOneOf2Kind
 
   public init(
-    typeModel: OpenRouterShellCallOutputContentOutcomeOneOf2TypeModel
+    kind: OpenRouterShellCallOutputContentOutcomeOneOf2Kind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

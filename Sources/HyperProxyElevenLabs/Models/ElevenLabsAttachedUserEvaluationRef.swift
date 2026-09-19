@@ -14,13 +14,13 @@ public struct ElevenLabsAttachedUserEvaluationRef: Codable, Sendable {
   public var additionalVersionIds: [String]?
   public var analysisItemId: String
   public var scope: ElevenLabsAnalysisScope?
-  public var source: String
+  public var source: ElevenLabsUserSource
   public var versionId: String?
   public var weight: Double?
 
   public init(
     analysisItemId: String,
-    source: String,
+    source: ElevenLabsUserSource = .user,
     additionalVersionIds: [String]? = nil,
     scope: ElevenLabsAnalysisScope? = nil,
     versionId: String? = nil,

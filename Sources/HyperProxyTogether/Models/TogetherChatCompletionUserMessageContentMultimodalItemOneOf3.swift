@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherChatCompletionUserMessageContentMultimodalItemOneOf3: Codable, Sendable {
-  public var typeModel: TogetherChatCompletionUserMessageContentMultimodalItemOneOf3TypeModel
+  public var kind: TogetherChatCompletionUserMessageContentMultimodalItemOneOf3Kind
   public var videoUrl: TogetherChatCompletionUserMessageContentMultimodalItemOneOf3VideoUrl
 
   public init(
-    typeModel: TogetherChatCompletionUserMessageContentMultimodalItemOneOf3TypeModel,
+    kind: TogetherChatCompletionUserMessageContentMultimodalItemOneOf3Kind,
     videoUrl: TogetherChatCompletionUserMessageContentMultimodalItemOneOf3VideoUrl
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
     self.videoUrl = videoUrl
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
     case videoUrl = "video_url"
   }
 }

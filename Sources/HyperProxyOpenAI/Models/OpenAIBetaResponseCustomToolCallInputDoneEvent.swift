@@ -16,14 +16,14 @@ public struct OpenAIBetaResponseCustomToolCallInputDoneEvent: Codable, Sendable 
   public var itemId: String
   public var outputIndex: Int
   public var sequenceNumber: Int
-  public var typeModel: OpenAIBetaResponseCustomToolCallInputDoneEventTypeModel
+  public var kind: OpenAIBetaResponseCustomToolCallInputDoneEventKind
 
   public init(
     input: String,
     itemId: String,
     outputIndex: Int,
     sequenceNumber: Int,
-    typeModel: OpenAIBetaResponseCustomToolCallInputDoneEventTypeModel,
+    kind: OpenAIBetaResponseCustomToolCallInputDoneEventKind,
     agent: OpenAIBetaAgentTag? = nil
   ) {
     self.agent = agent
@@ -31,7 +31,7 @@ public struct OpenAIBetaResponseCustomToolCallInputDoneEvent: Codable, Sendable 
     self.itemId = itemId
     self.outputIndex = outputIndex
     self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIBetaResponseCustomToolCallInputDoneEvent: Codable, Sendable 
     case itemId = "item_id"
     case outputIndex = "output_index"
     case sequenceNumber = "sequence_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

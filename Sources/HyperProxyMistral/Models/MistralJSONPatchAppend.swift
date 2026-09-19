@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralJSONPatchAppend: Codable, Sendable {
-  public var op: String
+  public var op: MistralAppendOp
   public var path: String
-  public var value: HyperProxyJSONValue
+  public var value: MistralJSONPatchAppendValue
 
   public init(
-    op: String,
     path: String,
-    value: HyperProxyJSONValue
+    value: MistralJSONPatchAppendValue,
+    op: MistralAppendOp = .append
   ) {
     self.op = op
     self.path = path

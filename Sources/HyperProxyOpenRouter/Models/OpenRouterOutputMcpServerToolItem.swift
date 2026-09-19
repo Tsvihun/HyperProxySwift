@@ -15,11 +15,11 @@ public struct OpenRouterOutputMcpServerToolItem: Codable, Sendable {
   public var serverLabel: String?
   public var status: OpenRouterToolCallStatus
   public var toolName: String?
-  public var typeModel: OpenRouterOutputMcpServerToolItemTypeModel
+  public var kind: OpenRouterOutputMcpServerToolItemKind
 
   public init(
     status: OpenRouterToolCallStatus,
-    typeModel: OpenRouterOutputMcpServerToolItemTypeModel,
+    kind: OpenRouterOutputMcpServerToolItemKind,
     id: String? = nil,
     serverLabel: String? = nil,
     toolName: String? = nil
@@ -28,7 +28,7 @@ public struct OpenRouterOutputMcpServerToolItem: Codable, Sendable {
     self.serverLabel = serverLabel
     self.status = status
     self.toolName = toolName
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenRouterOutputMcpServerToolItem: Codable, Sendable {
     case serverLabel
     case status
     case toolName
-    case typeModel = "type"
+    case kind = "type"
   }
 }

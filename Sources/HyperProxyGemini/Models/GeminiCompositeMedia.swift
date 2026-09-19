@@ -12,26 +12,26 @@ import HyperProxyCore
 
 public struct GeminiCompositeMedia: Codable, Sendable {
   public var blobRef: String?
-  public var blobstore2Info: HyperProxyJSONValue?
+  public var blobstore2Info: GeminiBlobstore2Info?
   public var cosmoBinaryReference: String?
   public var crc32cHash: Int?
   public var inline: String?
   public var length: String?
   public var md5Hash: String?
-  public var objectId: HyperProxyJSONValue?
+  public var objectId: GeminiObjectId?
   public var path: String?
   public var referenceType: GeminiCompositeMediaReferenceType?
   public var sha1Hash: String?
 
   public init(
     blobRef: String? = nil,
-    blobstore2Info: HyperProxyJSONValue? = nil,
+    blobstore2Info: GeminiBlobstore2Info? = nil,
     cosmoBinaryReference: String? = nil,
     crc32cHash: Int? = nil,
     inline: String? = nil,
     length: String? = nil,
     md5Hash: String? = nil,
-    objectId: HyperProxyJSONValue? = nil,
+    objectId: GeminiObjectId? = nil,
     path: String? = nil,
     referenceType: GeminiCompositeMediaReferenceType? = nil,
     sha1Hash: String? = nil

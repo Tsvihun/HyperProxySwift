@@ -15,12 +15,12 @@ public struct GroqTextResponseFormatJsonSchema: Codable, Sendable {
   public var name: String
   public var schema: [String: HyperProxyJSONValue]
   public var strict: Bool?
-  public var typeModel: GroqTextResponseFormatJsonSchemaTypeModel
+  public var kind: GroqTextResponseFormatJsonSchemaKind
 
   public init(
     name: String,
     schema: [String: HyperProxyJSONValue],
-    typeModel: GroqTextResponseFormatJsonSchemaTypeModel,
+    kind: GroqTextResponseFormatJsonSchemaKind,
     description: String? = nil,
     strict: Bool? = nil
   ) {
@@ -28,7 +28,7 @@ public struct GroqTextResponseFormatJsonSchema: Codable, Sendable {
     self.name = name
     self.schema = schema
     self.strict = strict
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct GroqTextResponseFormatJsonSchema: Codable, Sendable {
     case name
     case schema
     case strict
-    case typeModel = "type"
+    case kind = "type"
   }
 }

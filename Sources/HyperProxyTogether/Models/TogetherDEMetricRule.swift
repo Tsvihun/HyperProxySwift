@@ -13,17 +13,17 @@ import HyperProxyCore
 public struct TogetherDEMetricRule: Codable, Sendable {
   public var name: TogetherDEMetricRuleName
   public var percentile: Int?
-  public var regressionCheck: HyperProxyJSONValue?
+  public var regressionCheck: TogetherDERegressionCheck?
   public var stat: TogetherDEMetricRuleStat?
-  public var thresholdCheck: HyperProxyJSONValue?
+  public var thresholdCheck: TogetherDEThresholdCheck?
   public var window: String?
 
   public init(
     name: TogetherDEMetricRuleName,
     percentile: Int? = nil,
-    regressionCheck: HyperProxyJSONValue? = nil,
+    regressionCheck: TogetherDERegressionCheck? = nil,
     stat: TogetherDEMetricRuleStat? = nil,
-    thresholdCheck: HyperProxyJSONValue? = nil,
+    thresholdCheck: TogetherDEThresholdCheck? = nil,
     window: String? = nil
   ) {
     self.name = name

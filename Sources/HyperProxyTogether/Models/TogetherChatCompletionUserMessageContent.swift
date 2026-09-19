@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public enum TogetherChatCompletionUserMessageContent: Codable, Sendable {
-  case chatCompletionUserMessageContentString(TogetherChatCompletionUserMessageContentString)
+  case string(String)
   case chatCompletionUserMessageContentMultimodal(
     TogetherChatCompletionUserMessageContentMultimodal)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(TogetherChatCompletionUserMessageContentString.self) {
-      self = .chatCompletionUserMessageContentString(value)
+    if let value = try? container.decode(String.self) {
+      self = .string(value)
       return
     }
     self = .chatCompletionUserMessageContentMultimodal(
@@ -28,10 +28,16 @@ public enum TogetherChatCompletionUserMessageContent: Codable, Sendable {
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .chatCompletionUserMessageContentString(let value):
+    case .string(let value):
       try container.encode(value)
     case .chatCompletionUserMessageContentMultimodal(let value):
       try container.encode(value)
     }
+  }
+}
+
+extension TogetherChatCompletionUserMessageContent: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

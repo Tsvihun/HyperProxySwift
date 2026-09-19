@@ -10,15 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsInlineVideoReferenceMimeType: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let videoMp4 = Self(rawValue: "video/mp4")
-  public static let videoQuicktime = Self(rawValue: "video/quicktime")
-  public static let videoWebm = Self(rawValue: "video/webm")
+public enum ElevenLabsInlineVideoReferenceMimeType: String, Codable, Hashable, Sendable {
+  case videoMp4 = "video/mp4"
+  case videoQuicktime = "video/quicktime"
+  case videoWebm = "video/webm"
 }

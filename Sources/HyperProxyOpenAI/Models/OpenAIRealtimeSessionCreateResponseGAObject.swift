@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIRealtimeSessionCreateResponseGAObject: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let realtimeSession = Self(rawValue: "realtime.session")
+public enum OpenAIRealtimeSessionCreateResponseGAObject: String, Codable, Hashable, Sendable {
+  case realtimeSession = "realtime.session"
 }

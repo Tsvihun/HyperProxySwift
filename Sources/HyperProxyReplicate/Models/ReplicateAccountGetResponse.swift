@@ -14,11 +14,11 @@ public struct ReplicateAccountGetResponse: Codable, Sendable {
   public var avatarUrl: String?
   public var githubUrl: String?
   public var name: String?
-  public var typeModel: ReplicateAccountGetResponseTypeModel
+  public var kind: ReplicateAccountGetResponseKind
   public var username: String
 
   public init(
-    typeModel: ReplicateAccountGetResponseTypeModel,
+    kind: ReplicateAccountGetResponseKind,
     username: String,
     avatarUrl: String? = nil,
     githubUrl: String? = nil,
@@ -27,7 +27,7 @@ public struct ReplicateAccountGetResponse: Codable, Sendable {
     self.avatarUrl = avatarUrl
     self.githubUrl = githubUrl
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
     self.username = username
   }
 
@@ -35,7 +35,7 @@ public struct ReplicateAccountGetResponse: Codable, Sendable {
     case avatarUrl = "avatar_url"
     case githubUrl = "github_url"
     case name
-    case typeModel = "type"
+    case kind = "type"
     case username
   }
 }

@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterEnumCapability: Codable, Sendable {
-  public var typeModel: OpenRouterEnumCapabilityTypeModel
+  public var kind: OpenRouterEnumCapabilityKind
   public var values: [String]
 
   public init(
-    typeModel: OpenRouterEnumCapabilityTypeModel,
+    kind: OpenRouterEnumCapabilityKind,
     values: [String]
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
     self.values = values
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
     case values
   }
 }

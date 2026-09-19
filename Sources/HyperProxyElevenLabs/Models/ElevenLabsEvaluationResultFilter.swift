@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsEvaluationResultFilter: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let success = Self(rawValue: "success")
-  public static let failure = Self(rawValue: "failure")
-  public static let unknown = Self(rawValue: "unknown")
-  public static let error = Self(rawValue: "error")
+public enum ElevenLabsEvaluationResultFilter: String, Codable, Hashable, Sendable {
+  case success = "success"
+  case failure = "failure"
+  case unknown = "unknown"
+  case error = "error"
 }

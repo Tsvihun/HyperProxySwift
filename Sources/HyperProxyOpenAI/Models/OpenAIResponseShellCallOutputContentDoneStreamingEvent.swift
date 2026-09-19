@@ -16,7 +16,7 @@ public struct OpenAIResponseShellCallOutputContentDoneStreamingEvent: Codable, S
   public var output: [OpenAIFunctionShellCallOutputContent]
   public var outputIndex: Int
   public var sequenceNumber: Int
-  public var typeModel: OpenAIResponseShellCallOutputContentDoneStreamingEventTypeModel
+  public var kind: OpenAIResponseShellCallOutputContentDoneStreamingEventKind
 
   public init(
     commandIndex: Int,
@@ -24,14 +24,14 @@ public struct OpenAIResponseShellCallOutputContentDoneStreamingEvent: Codable, S
     output: [OpenAIFunctionShellCallOutputContent],
     outputIndex: Int,
     sequenceNumber: Int,
-    typeModel: OpenAIResponseShellCallOutputContentDoneStreamingEventTypeModel
+    kind: OpenAIResponseShellCallOutputContentDoneStreamingEventKind
   ) {
     self.commandIndex = commandIndex
     self.itemId = itemId
     self.output = output
     self.outputIndex = outputIndex
     self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIResponseShellCallOutputContentDoneStreamingEvent: Codable, S
     case output
     case outputIndex = "output_index"
     case sequenceNumber = "sequence_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

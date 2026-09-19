@@ -12,22 +12,22 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsURLMCPServerParams: Codable, Sendable {
   public var name: String
-  public var typeModel: AnthropicBetaManagedAgentsURLMCPServerParamsTypeModel
+  public var kind: AnthropicBetaManagedAgentsURLMCPServerParamsKind
   public var url: String
 
   public init(
     name: String,
-    typeModel: AnthropicBetaManagedAgentsURLMCPServerParamsTypeModel,
+    kind: AnthropicBetaManagedAgentsURLMCPServerParamsKind,
     url: String
   ) {
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
   enum CodingKeys: String, CodingKey {
     case name
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

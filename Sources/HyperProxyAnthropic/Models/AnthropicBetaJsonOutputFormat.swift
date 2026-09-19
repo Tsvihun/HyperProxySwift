@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicBetaJsonOutputFormat: Codable, Sendable {
   public var schema: [String: HyperProxyJSONValue]
-  public var typeModel: String
+  public var kind: AnthropicJsonSchemaKind
 
   public init(
     schema: [String: HyperProxyJSONValue],
-    typeModel: String
+    kind: AnthropicJsonSchemaKind = .jsonSchema
   ) {
     self.schema = schema
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case schema
-    case typeModel = "type"
+    case kind = "type"
   }
 }

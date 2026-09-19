@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicBetaGcpExternalKeyConfig: Codable, Sendable {
   public var keyName: String
-  public var typeModel: String
+  public var kind: AnthropicGcpKind
 
   public init(
     keyName: String,
-    typeModel: String
+    kind: AnthropicGcpKind = .gcp
   ) {
     self.keyName = keyName
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case keyName = "key_name"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

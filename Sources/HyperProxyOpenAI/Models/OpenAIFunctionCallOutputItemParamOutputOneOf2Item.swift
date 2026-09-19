@@ -1,0 +1,42 @@
+//
+//  OpenAIFunctionCallOutputItemParamOutputOneOf2Item.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+// Maintainer-generated release artifact. Do not edit by hand.
+
+import Foundation
+import HyperProxyCore
+
+public enum OpenAIFunctionCallOutputItemParamOutputOneOf2Item: Codable, Sendable {
+  case inputTextContentParam(OpenAIInputTextContentParam)
+  case inputImageContentParamAutoParam(OpenAIInputImageContentParamAutoParam)
+  case inputFileContentParam(OpenAIInputFileContentParam)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(OpenAIInputTextContentParam.self) {
+      self = .inputTextContentParam(value)
+      return
+    }
+    if let value = try? container.decode(OpenAIInputImageContentParamAutoParam.self) {
+      self = .inputImageContentParamAutoParam(value)
+      return
+    }
+    self = .inputFileContentParam(try container.decode(OpenAIInputFileContentParam.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .inputTextContentParam(let value):
+      try container.encode(value)
+    case .inputImageContentParamAutoParam(let value):
+      try container.encode(value)
+    case .inputFileContentParam(let value):
+      try container.encode(value)
+    }
+  }
+}

@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAICreateModerationResponseResultsItemCategoryAppliedInputTypesSelfHarmItem:
-  RawRepresentable, Codable, Hashable, Sendable
+public enum OpenAICreateModerationResponseResultsItemCategoryAppliedInputTypesSelfHarmItem: String,
+  Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let text = Self(rawValue: "text")
-  public static let image = Self(rawValue: "image")
+  case text = "text"
+  case image = "image"
 }

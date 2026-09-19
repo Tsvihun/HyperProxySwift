@@ -18,14 +18,14 @@ public struct OpenAIBetaComputerToolCall: Codable, Sendable {
   public var id: String
   public var pendingSafetyChecks: [OpenAIBetaComputerCallSafetyCheckParam]
   public var status: OpenAIBetaComputerToolCallStatus
-  public var typeModel: OpenAIBetaComputerToolCallTypeModel
+  public var kind: OpenAIBetaComputerToolCallKind
 
   public init(
     callId: String,
     id: String,
     pendingSafetyChecks: [OpenAIBetaComputerCallSafetyCheckParam],
     status: OpenAIBetaComputerToolCallStatus,
-    typeModel: OpenAIBetaComputerToolCallTypeModel,
+    kind: OpenAIBetaComputerToolCallKind,
     action: OpenAIBetaComputerAction? = nil,
     actions: OpenAIBetaComputerActionList? = nil,
     agent: OpenAIBetaAgentTag? = nil
@@ -37,7 +37,7 @@ public struct OpenAIBetaComputerToolCall: Codable, Sendable {
     self.id = id
     self.pendingSafetyChecks = pendingSafetyChecks
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct OpenAIBetaComputerToolCall: Codable, Sendable {
     case id
     case pendingSafetyChecks = "pending_safety_checks"
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

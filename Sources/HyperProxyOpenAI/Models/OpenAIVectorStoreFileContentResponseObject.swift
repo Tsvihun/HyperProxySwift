@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIVectorStoreFileContentResponseObject: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let vectorStoreFileContentPage = Self(rawValue: "vector_store.file_content.page")
+public enum OpenAIVectorStoreFileContentResponseObject: String, Codable, Hashable, Sendable {
+  case vectorStoreFileContentPage = "vector_store.file_content.page"
 }

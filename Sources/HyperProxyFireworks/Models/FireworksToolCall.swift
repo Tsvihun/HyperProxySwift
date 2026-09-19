@@ -18,11 +18,11 @@ public struct FireworksToolCall: Codable, Sendable {
   public var mcp: [String: HyperProxyJSONValue]?
   public var name: String?
   public var status: String?
-  public var typeModel: String
+  public var kind: String
 
   public init(
     id: String,
-    typeModel: String,
+    kind: String,
     arguments: String? = nil,
     callId: String? = nil,
     function: [String: HyperProxyJSONValue]? = nil,
@@ -37,7 +37,7 @@ public struct FireworksToolCall: Codable, Sendable {
     self.mcp = mcp
     self.name = name
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct FireworksToolCall: Codable, Sendable {
     case mcp
     case name
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

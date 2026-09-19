@@ -16,13 +16,13 @@ public struct OpenRouterOutputShellCallItem: Codable, Sendable {
   public var callId: String
   public var id: String
   public var status: OpenRouterShellCallStatus
-  public var typeModel: OpenRouterOutputShellCallItemTypeModel
+  public var kind: OpenRouterOutputShellCallItemKind
 
   public init(
     callId: String,
     id: String,
     status: OpenRouterShellCallStatus,
-    typeModel: OpenRouterOutputShellCallItemTypeModel,
+    kind: OpenRouterOutputShellCallItemKind,
     action: OpenRouterOutputShellCallItemAction? = nil,
     arguments: String? = nil
   ) {
@@ -31,7 +31,7 @@ public struct OpenRouterOutputShellCallItem: Codable, Sendable {
     self.callId = callId
     self.id = id
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenRouterOutputShellCallItem: Codable, Sendable {
     case callId = "call_id"
     case id
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

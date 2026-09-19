@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterAnthropicThinkingTurns: Codable, Sendable {
-  public var typeModel: OpenRouterAnthropicThinkingTurnsTypeModel
+  public var kind: OpenRouterAnthropicThinkingTurnsKind
   public var value: Int
 
   public init(
-    typeModel: OpenRouterAnthropicThinkingTurnsTypeModel,
+    kind: OpenRouterAnthropicThinkingTurnsKind,
     value: Int
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
     self.value = value
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
     case value
   }
 }

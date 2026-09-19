@@ -12,26 +12,26 @@ import HyperProxyCore
 
 public struct AnthropicBetaClearToolUses20250919: Codable, Sendable {
   public var clearAtLeast: AnthropicBetaInputTokensClearAtLeast?
-  public var clearToolInputs: HyperProxyJSONValue?
+  public var clearToolInputs: AnthropicBetaClearToolUses20250919ClearToolInputs?
   public var excludeTools: [String]?
   public var keep: AnthropicBetaToolUsesKeep?
-  public var trigger: HyperProxyJSONValue?
-  public var typeModel: String
+  public var trigger: AnthropicBetaClearToolUses20250919Trigger?
+  public var kind: AnthropicClearToolUses20250919Kind
 
   public init(
-    typeModel: String,
+    kind: AnthropicClearToolUses20250919Kind = .clearToolUses20250919,
     clearAtLeast: AnthropicBetaInputTokensClearAtLeast? = nil,
-    clearToolInputs: HyperProxyJSONValue? = nil,
+    clearToolInputs: AnthropicBetaClearToolUses20250919ClearToolInputs? = nil,
     excludeTools: [String]? = nil,
     keep: AnthropicBetaToolUsesKeep? = nil,
-    trigger: HyperProxyJSONValue? = nil
+    trigger: AnthropicBetaClearToolUses20250919Trigger? = nil
   ) {
     self.clearAtLeast = clearAtLeast
     self.clearToolInputs = clearToolInputs
     self.excludeTools = excludeTools
     self.keep = keep
     self.trigger = trigger
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct AnthropicBetaClearToolUses20250919: Codable, Sendable {
     case excludeTools = "exclude_tools"
     case keep
     case trigger
-    case typeModel = "type"
+    case kind = "type"
   }
 }

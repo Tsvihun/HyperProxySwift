@@ -14,7 +14,7 @@ public struct OpenAIThreadResource: Codable, Sendable {
   public var createdAt: Int
   public var id: String
   public var object: OpenAIThreadResourceObject
-  public var status: HyperProxyJSONValue
+  public var status: OpenAIThreadResourceStatus
   public var title: String?
   public var user: String
 
@@ -22,7 +22,7 @@ public struct OpenAIThreadResource: Codable, Sendable {
     createdAt: Int,
     id: String,
     object: OpenAIThreadResourceObject,
-    status: HyperProxyJSONValue,
+    status: OpenAIThreadResourceStatus,
     title: String?,
     user: String
   ) {

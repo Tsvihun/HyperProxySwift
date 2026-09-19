@@ -15,11 +15,11 @@ public struct OpenAILiveFunctionToolInputParam: Codable, Sendable {
   public var name: String
   public var parameters: [String: HyperProxyJSONValue]?
   public var strict: Bool?
-  public var typeModel: OpenAILiveFunctionToolInputParamTypeModel
+  public var kind: OpenAILiveFunctionToolInputParamKind
 
   public init(
     name: String,
-    typeModel: OpenAILiveFunctionToolInputParamTypeModel,
+    kind: OpenAILiveFunctionToolInputParamKind,
     description: String? = nil,
     parameters: [String: HyperProxyJSONValue]? = nil,
     strict: Bool? = nil
@@ -28,7 +28,7 @@ public struct OpenAILiveFunctionToolInputParam: Codable, Sendable {
     self.name = name
     self.parameters = parameters
     self.strict = strict
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAILiveFunctionToolInputParam: Codable, Sendable {
     case name
     case parameters
     case strict
-    case typeModel = "type"
+    case kind = "type"
   }
 }

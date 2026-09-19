@@ -16,7 +16,7 @@ public struct ElevenLabsProcedureAtVersionResponseModel: Codable, Sendable {
   public var name: String
   public var procedureId: String
   public var trigger: String?
-  public var typeModel: ElevenLabsProcedureType?
+  public var kind: ElevenLabsProcedureType?
   public var versionId: String?
 
   public init(
@@ -25,7 +25,7 @@ public struct ElevenLabsProcedureAtVersionResponseModel: Codable, Sendable {
     procedureId: String,
     folderParentId: String? = nil,
     trigger: String? = nil,
-    typeModel: ElevenLabsProcedureType? = nil,
+    kind: ElevenLabsProcedureType? = nil,
     versionId: String? = nil
   ) {
     self.content = content
@@ -33,7 +33,7 @@ public struct ElevenLabsProcedureAtVersionResponseModel: Codable, Sendable {
     self.name = name
     self.procedureId = procedureId
     self.trigger = trigger
-    self.typeModel = typeModel
+    self.kind = kind
     self.versionId = versionId
   }
 
@@ -43,7 +43,7 @@ public struct ElevenLabsProcedureAtVersionResponseModel: Codable, Sendable {
     case name
     case procedureId = "procedure_id"
     case trigger
-    case typeModel = "type"
+    case kind = "type"
     case versionId = "version_id"
   }
 }

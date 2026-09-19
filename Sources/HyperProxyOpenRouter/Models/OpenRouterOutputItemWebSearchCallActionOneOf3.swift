@@ -12,22 +12,22 @@ import HyperProxyCore
 
 public struct OpenRouterOutputItemWebSearchCallActionOneOf3: Codable, Sendable {
   public var pattern: String
-  public var typeModel: OpenRouterOutputItemWebSearchCallActionOneOf3TypeModel
+  public var kind: OpenRouterOutputItemWebSearchCallActionOneOf3Kind
   public var url: String
 
   public init(
     pattern: String,
-    typeModel: OpenRouterOutputItemWebSearchCallActionOneOf3TypeModel,
+    kind: OpenRouterOutputItemWebSearchCallActionOneOf3Kind,
     url: String
   ) {
     self.pattern = pattern
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
   enum CodingKeys: String, CodingKey {
     case pattern
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

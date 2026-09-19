@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiGoogleSearch: Codable, Sendable {
-  public var searchTypes: HyperProxyJSONValue?
-  public var timeRangeFilter: HyperProxyJSONValue?
+  public var searchTypes: GeminiSearchTypes?
+  public var timeRangeFilter: GeminiInterval?
 
   public init(
-    searchTypes: HyperProxyJSONValue? = nil,
-    timeRangeFilter: HyperProxyJSONValue? = nil
+    searchTypes: GeminiSearchTypes? = nil,
+    timeRangeFilter: GeminiInterval? = nil
   ) {
     self.searchTypes = searchTypes
     self.timeRangeFilter = timeRangeFilter

@@ -16,7 +16,7 @@ public struct AnthropicBetaSkillVersion: Codable, Sendable {
   public var id: String
   public var name: String
   public var skillId: String
-  public var typeModel: String
+  public var kind: AnthropicSkillVersionKind
 
   public init(
     createdAt: String,
@@ -24,14 +24,14 @@ public struct AnthropicBetaSkillVersion: Codable, Sendable {
     id: String,
     name: String,
     skillId: String,
-    typeModel: String
+    kind: AnthropicSkillVersionKind = .skillVersion
   ) {
     self.createdAt = createdAt
     self.description = description
     self.id = id
     self.name = name
     self.skillId = skillId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct AnthropicBetaSkillVersion: Codable, Sendable {
     case id
     case name
     case skillId = "skill_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

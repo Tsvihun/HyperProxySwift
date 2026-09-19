@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct ElevenLabsWorkflowResultConditionModelOutput: Codable, Sendable {
   public var label: String?
   public var successful: Bool
-  public var typeModel: String
+  public var kind: ElevenLabsResultKind
 
   public init(
     label: String?,
     successful: Bool,
-    typeModel: String
+    kind: ElevenLabsResultKind = .result
   ) {
     self.label = label
     self.successful = successful
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case label
     case successful
-    case typeModel = "type"
+    case kind = "type"
   }
 }

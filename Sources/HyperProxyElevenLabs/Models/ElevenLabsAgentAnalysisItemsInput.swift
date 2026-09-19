@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsAgentAnalysisItemsInput: Codable, Sendable {
-  public var dataCollection: [HyperProxyJSONValue]?
-  public var evaluationCriteria: [HyperProxyJSONValue]?
+  public var dataCollection: [ElevenLabsAgentAnalysisItemsInputDataCollectionItem]?
+  public var evaluationCriteria: [ElevenLabsAgentAnalysisItemsInputEvaluationCriteriaItem]?
 
   public init(
-    dataCollection: [HyperProxyJSONValue]? = nil,
-    evaluationCriteria: [HyperProxyJSONValue]? = nil
+    dataCollection: [ElevenLabsAgentAnalysisItemsInputDataCollectionItem]? = nil,
+    evaluationCriteria: [ElevenLabsAgentAnalysisItemsInputEvaluationCriteriaItem]? = nil
   ) {
     self.dataCollection = dataCollection
     self.evaluationCriteria = evaluationCriteria

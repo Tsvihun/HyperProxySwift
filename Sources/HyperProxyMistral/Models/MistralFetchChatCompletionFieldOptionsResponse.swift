@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralFetchChatCompletionFieldOptionsResponse: Codable, Sendable {
-  public var options: [HyperProxyJSONValue?]?
+  public var options: [MistralFetchChatCompletionFieldOptionsResponseOptionsAnyOf1Item?]?
 
   public init(
-    options: [HyperProxyJSONValue?]? = nil
+    options: [MistralFetchChatCompletionFieldOptionsResponseOptionsAnyOf1Item?]? = nil
   ) {
     self.options = options
   }

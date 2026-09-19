@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsPublicRemoveOrderItemParameters: Codable, Sendable {
-  public var itemId: ElevenLabsItemId
-  public var orderId: ElevenLabsOrderId
+  public var itemId: String
+  public var orderId: String
   public var xiApiKey: String?
 
   public init(
-    itemId: ElevenLabsItemId,
-    orderId: ElevenLabsOrderId,
+    itemId: String,
+    orderId: String,
     xiApiKey: String? = nil
   ) {
     self.itemId = itemId

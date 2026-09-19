@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIMessageStreamEventOneOf5Event: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let threadMessageIncomplete = Self(rawValue: "thread.message.incomplete")
+public enum OpenAIMessageStreamEventOneOf5Event: String, Codable, Hashable, Sendable {
+  case threadMessageIncomplete = "thread.message.incomplete"
 }

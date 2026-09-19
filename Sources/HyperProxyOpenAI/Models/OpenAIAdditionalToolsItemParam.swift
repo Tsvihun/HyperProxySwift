@@ -14,24 +14,24 @@ public struct OpenAIAdditionalToolsItemParam: Codable, Sendable {
   public var id: String?
   public var role: OpenAIAdditionalToolsItemParamRole
   public var tools: [OpenAITool]
-  public var typeModel: OpenAIAdditionalToolsItemParamTypeModel
+  public var kind: OpenAIAdditionalToolsItemParamKind
 
   public init(
     role: OpenAIAdditionalToolsItemParamRole,
     tools: [OpenAITool],
-    typeModel: OpenAIAdditionalToolsItemParamTypeModel,
+    kind: OpenAIAdditionalToolsItemParamKind,
     id: String? = nil
   ) {
     self.id = id
     self.role = role
     self.tools = tools
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case id
     case role
     case tools
-    case typeModel = "type"
+    case kind = "type"
   }
 }

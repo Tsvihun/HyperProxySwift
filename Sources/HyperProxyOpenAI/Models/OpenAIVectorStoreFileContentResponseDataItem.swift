@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIVectorStoreFileContentResponseDataItem: Codable, Sendable {
   public var text: String?
-  public var typeModel: String?
+  public var kind: String?
 
   public init(
     text: String? = nil,
-    typeModel: String? = nil
+    kind: String? = nil
   ) {
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterPublicEndpointPerfLast30mByWorkloadEmbeddings: Codable, Sendable {
-  public var latency: HyperProxyJSONValue
+  public var latency: OpenRouterPercentileStats?
   public var requestCount: Int
-  public var throughput: HyperProxyJSONValue
+  public var throughput: OpenRouterPercentileStats?
 
   public init(
-    latency: HyperProxyJSONValue,
+    latency: OpenRouterPercentileStats?,
     requestCount: Int,
-    throughput: HyperProxyJSONValue
+    throughput: OpenRouterPercentileStats?
   ) {
     self.latency = latency
     self.requestCount = requestCount

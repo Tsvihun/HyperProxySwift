@@ -14,24 +14,24 @@ public struct AnthropicBetaManagedAgentsDocumentBlock: Codable, Sendable {
   public var context: String?
   public var source: AnthropicBetaManagedAgentsDocumentSource
   public var title: String?
-  public var typeModel: AnthropicBetaManagedAgentsDocumentBlockTypeModel
+  public var kind: AnthropicBetaManagedAgentsDocumentBlockKind
 
   public init(
     source: AnthropicBetaManagedAgentsDocumentSource,
-    typeModel: AnthropicBetaManagedAgentsDocumentBlockTypeModel,
+    kind: AnthropicBetaManagedAgentsDocumentBlockKind,
     context: String? = nil,
     title: String? = nil
   ) {
     self.context = context
     self.source = source
     self.title = title
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case context
     case source
     case title
-    case typeModel = "type"
+    case kind = "type"
   }
 }

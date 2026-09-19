@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterResponseHealingPluginId: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let responseHealing = Self(rawValue: "response-healing")
+public enum OpenRouterResponseHealingPluginId: String, Codable, Hashable, Sendable {
+  case responseHealing = "response-healing"
 }

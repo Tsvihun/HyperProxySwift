@@ -10,13 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIVoiceConsentDeletedResourceObject: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let audioVoiceConsent = Self(rawValue: "audio.voice_consent")
+public enum OpenAIVoiceConsentDeletedResourceObject: String, Codable, Hashable, Sendable {
+  case audioVoiceConsent = "audio.voice_consent"
 }

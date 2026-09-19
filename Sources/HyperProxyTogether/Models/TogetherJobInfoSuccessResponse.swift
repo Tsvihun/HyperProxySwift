@@ -16,7 +16,7 @@ public struct TogetherJobInfoSuccessResponse: Codable, Sendable {
   public var jobId: String
   public var status: TogetherJobInfoSuccessResponseStatus
   public var statusUpdates: [TogetherJobInfoSuccessResponseStatusUpdatesItem]
-  public var typeModel: String
+  public var kind: String
   public var updatedAt: String
 
   public init(
@@ -25,7 +25,7 @@ public struct TogetherJobInfoSuccessResponse: Codable, Sendable {
     jobId: String,
     status: TogetherJobInfoSuccessResponseStatus,
     statusUpdates: [TogetherJobInfoSuccessResponseStatusUpdatesItem],
-    typeModel: String,
+    kind: String,
     updatedAt: String
   ) {
     self.args = args
@@ -33,7 +33,7 @@ public struct TogetherJobInfoSuccessResponse: Codable, Sendable {
     self.jobId = jobId
     self.status = status
     self.statusUpdates = statusUpdates
-    self.typeModel = typeModel
+    self.kind = kind
     self.updatedAt = updatedAt
   }
 
@@ -43,7 +43,7 @@ public struct TogetherJobInfoSuccessResponse: Codable, Sendable {
     case jobId = "job_id"
     case status
     case statusUpdates = "status_updates"
-    case typeModel = "type"
+    case kind = "type"
     case updatedAt = "updated_at"
   }
 }

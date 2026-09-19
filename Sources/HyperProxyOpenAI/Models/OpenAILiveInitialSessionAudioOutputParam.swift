@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAILiveInitialSessionAudioOutputParam: Codable, Sendable {
-  public var voice: HyperProxyJSONValue?
+  public var voice: OpenAILiveInitialSessionAudioOutputParamVoice?
 
   public init(
-    voice: HyperProxyJSONValue? = nil
+    voice: OpenAILiveInitialSessionAudioOutputParamVoice? = nil
   ) {
     self.voice = voice
   }

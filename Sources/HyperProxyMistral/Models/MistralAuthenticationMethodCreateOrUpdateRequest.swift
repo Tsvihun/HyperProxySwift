@@ -14,12 +14,12 @@ public struct MistralAuthenticationMethodCreateOrUpdateRequest: Codable, Sendabl
   public var authDirection: MistralAuthDirection?
   public var globalHeaders: [String: MistralGlobalHeaderValue]?
   public var headers: [MistralConnectorAuthenticationHeader]?
-  public var methodType: HyperProxyJSONValue
+  public var methodType: MistralAuthenticationMethodCreateOrUpdateRequestMethodType
   public var oauth2MetadataSecrets: MistralOauth2MetadataSecrets?
   public var oauth2ServerMetadata: MistralExtendedOAuthServerMetadata?
 
   public init(
-    methodType: HyperProxyJSONValue,
+    methodType: MistralAuthenticationMethodCreateOrUpdateRequestMethodType,
     authDirection: MistralAuthDirection? = nil,
     globalHeaders: [String: MistralGlobalHeaderValue]? = nil,
     headers: [MistralConnectorAuthenticationHeader]? = nil,

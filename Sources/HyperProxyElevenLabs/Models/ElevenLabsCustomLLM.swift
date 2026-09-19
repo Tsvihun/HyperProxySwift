@@ -11,22 +11,22 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsCustomLLM: Codable, Sendable {
-  public var apiKey: HyperProxyJSONValue?
+  public var apiKey: ElevenLabsCustomLLMApiKey?
   public var apiType: ElevenLabsCustomLLMAPIType?
   public var apiVersion: String?
-  public var authConnection: HyperProxyJSONValue?
+  public var authConnection: ElevenLabsCustomLLMAuthConnection?
   public var modelId: String?
-  public var requestHeaders: [String: HyperProxyJSONValue]?
+  public var requestHeaders: [String: ElevenLabsCustomLLMRequestHeadersValue]?
   public var url: String
 
   public init(
     url: String,
-    apiKey: HyperProxyJSONValue? = nil,
+    apiKey: ElevenLabsCustomLLMApiKey? = nil,
     apiType: ElevenLabsCustomLLMAPIType? = nil,
     apiVersion: String? = nil,
-    authConnection: HyperProxyJSONValue? = nil,
+    authConnection: ElevenLabsCustomLLMAuthConnection? = nil,
     modelId: String? = nil,
-    requestHeaders: [String: HyperProxyJSONValue]? = nil
+    requestHeaders: [String: ElevenLabsCustomLLMRequestHeadersValue]? = nil
   ) {
     self.apiKey = apiKey
     self.apiType = apiType

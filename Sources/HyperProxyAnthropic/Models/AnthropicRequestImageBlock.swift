@@ -12,26 +12,26 @@ import HyperProxyCore
 
 public struct AnthropicRequestImageBlock: Codable, Sendable {
   public var cacheControl: AnthropicCacheControlEphemeral?
-  public var source: HyperProxyJSONValue
+  public var source: AnthropicRequestImageBlockSource
   public var transformations: AnthropicRequestImageTransformations?
-  public var typeModel: String
+  public var kind: AnthropicImageKind
 
   public init(
-    source: HyperProxyJSONValue,
-    typeModel: String,
+    source: AnthropicRequestImageBlockSource,
+    kind: AnthropicImageKind = .image,
     cacheControl: AnthropicCacheControlEphemeral? = nil,
     transformations: AnthropicRequestImageTransformations? = nil
   ) {
     self.cacheControl = cacheControl
     self.source = source
     self.transformations = transformations
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case cacheControl = "cache_control"
     case source
     case transformations
-    case typeModel = "type"
+    case kind = "type"
   }
 }

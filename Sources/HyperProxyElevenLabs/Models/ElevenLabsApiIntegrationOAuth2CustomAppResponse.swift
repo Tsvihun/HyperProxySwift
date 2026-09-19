@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsApiIntegrationOAuth2CustomAppResponse: Codable, Sendable {
-  public var authType: String?
+  public var authType: ElevenLabsApiIntegrationOauth2CustomAppAuthType?
   public var clientId: String
   public var credentialId: String
   public var expiresAt: String
@@ -36,7 +36,7 @@ public struct ElevenLabsApiIntegrationOAuth2CustomAppResponse: Codable, Sendable
     name: String,
     provider: String,
     tokenUrl: String,
-    authType: String? = nil,
+    authType: ElevenLabsApiIntegrationOauth2CustomAppAuthType? = nil,
     scopeSeparator: ElevenLabsApiIntegrationOAuth2CustomAppResponseScopeSeparator? = nil,
     scopes: [String]? = nil,
     status: ElevenLabsAuthConnectionStatus? = nil,

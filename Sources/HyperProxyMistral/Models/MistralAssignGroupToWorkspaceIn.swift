@@ -11,16 +11,16 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralAssignGroupToWorkspaceIn: Codable, Sendable {
-  public var role: HyperProxyJSONValue?
+  public var role: MistralAssignGroupToWorkspaceInRole?
   public var roleNames: [MistralAssignGroupToWorkspaceInRoleNamesAnyOf1Item]?
-  public var roles: [HyperProxyJSONValue]?
+  public var roles: [MistralAssignGroupToWorkspaceInRolesAnyOf1Item]?
   public var workspaceUuid: String
 
   public init(
     workspaceUuid: String,
-    role: HyperProxyJSONValue? = nil,
+    role: MistralAssignGroupToWorkspaceInRole? = nil,
     roleNames: [MistralAssignGroupToWorkspaceInRoleNamesAnyOf1Item]? = nil,
-    roles: [HyperProxyJSONValue]? = nil
+    roles: [MistralAssignGroupToWorkspaceInRolesAnyOf1Item]? = nil
   ) {
     self.role = role
     self.roleNames = roleNames

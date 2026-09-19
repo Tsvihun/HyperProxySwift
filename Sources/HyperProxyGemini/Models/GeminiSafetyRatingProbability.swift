@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiSafetyRatingProbability: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let hARMPROBABILITYUNSPECIFIED = Self(rawValue: "HARM_PROBABILITY_UNSPECIFIED")
-  public static let nEGLIGIBLE = Self(rawValue: "NEGLIGIBLE")
-  public static let lOW = Self(rawValue: "LOW")
-  public static let mEDIUM = Self(rawValue: "MEDIUM")
-  public static let hIGH = Self(rawValue: "HIGH")
+public enum GeminiSafetyRatingProbability: String, Codable, Hashable, Sendable {
+  case hARMPROBABILITYUNSPECIFIED = "HARM_PROBABILITY_UNSPECIFIED"
+  case nEGLIGIBLE = "NEGLIGIBLE"
+  case lOW = "LOW"
+  case mEDIUM = "MEDIUM"
+  case hIGH = "HIGH"
 }

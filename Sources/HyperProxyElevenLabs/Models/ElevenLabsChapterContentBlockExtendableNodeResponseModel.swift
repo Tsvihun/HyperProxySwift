@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsChapterContentBlockExtendableNodeResponseModel: Codable, Sendable {
-  public var typeModel: String
+  public var kind: ElevenLabsOtherKind
 
   public init(
-    typeModel: String
+    kind: ElevenLabsOtherKind = .other
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

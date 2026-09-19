@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterAnthropicSpeed: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let fast = Self(rawValue: "fast")
-  public static let standard = Self(rawValue: "standard")
+public enum OpenRouterAnthropicSpeed: String, Codable, Hashable, Sendable {
+  case fast = "fast"
+  case standard = "standard"
 }

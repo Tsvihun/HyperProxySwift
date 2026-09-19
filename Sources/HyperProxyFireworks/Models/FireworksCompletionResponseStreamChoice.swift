@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct FireworksCompletionResponseStreamChoice: Codable, Sendable {
   public var finishReason: FireworksCompletionResponseStreamChoiceFinishReasonAnyOf1?
   public var index: Int
-  public var logprobs: HyperProxyJSONValue?
+  public var logprobs: FireworksCompletionResponseStreamChoiceLogprobs?
   public var promptTokenIds: [Int]?
   public var rawOutput: FireworksRawOutput?
   public var text: String
@@ -23,7 +23,7 @@ public struct FireworksCompletionResponseStreamChoice: Codable, Sendable {
     index: Int,
     text: String,
     finishReason: FireworksCompletionResponseStreamChoiceFinishReasonAnyOf1? = nil,
-    logprobs: HyperProxyJSONValue? = nil,
+    logprobs: FireworksCompletionResponseStreamChoiceLogprobs? = nil,
     promptTokenIds: [Int]? = nil,
     rawOutput: FireworksRawOutput? = nil,
     tokenIds: [Int]? = nil

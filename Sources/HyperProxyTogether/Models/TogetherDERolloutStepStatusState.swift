@@ -10,18 +10,12 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherDERolloutStepStatusState: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let rOLLOUTSTEPSTATEPENDING = Self(rawValue: "ROLLOUT_STEP_STATE_PENDING")
-  public static let rOLLOUTSTEPSTATERUNNING = Self(rawValue: "ROLLOUT_STEP_STATE_RUNNING")
-  public static let rOLLOUTSTEPSTATEPASSED = Self(rawValue: "ROLLOUT_STEP_STATE_PASSED")
-  public static let rOLLOUTSTEPSTATEFAILED = Self(rawValue: "ROLLOUT_STEP_STATE_FAILED")
-  public static let rOLLOUTSTEPSTATEPAUSED = Self(rawValue: "ROLLOUT_STEP_STATE_PAUSED")
-  public static let rOLLOUTSTEPSTATECANCELED = Self(rawValue: "ROLLOUT_STEP_STATE_CANCELED")
-  public static let rOLLOUTSTEPSTATESKIPPED = Self(rawValue: "ROLLOUT_STEP_STATE_SKIPPED")
+public enum TogetherDERolloutStepStatusState: String, Codable, Hashable, Sendable {
+  case rOLLOUTSTEPSTATEPENDING = "ROLLOUT_STEP_STATE_PENDING"
+  case rOLLOUTSTEPSTATERUNNING = "ROLLOUT_STEP_STATE_RUNNING"
+  case rOLLOUTSTEPSTATEPASSED = "ROLLOUT_STEP_STATE_PASSED"
+  case rOLLOUTSTEPSTATEFAILED = "ROLLOUT_STEP_STATE_FAILED"
+  case rOLLOUTSTEPSTATEPAUSED = "ROLLOUT_STEP_STATE_PAUSED"
+  case rOLLOUTSTEPSTATECANCELED = "ROLLOUT_STEP_STATE_CANCELED"
+  case rOLLOUTSTEPSTATESKIPPED = "ROLLOUT_STEP_STATE_SKIPPED"
 }

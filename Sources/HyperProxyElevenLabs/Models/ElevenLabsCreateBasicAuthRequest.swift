@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsCreateBasicAuthRequest: Codable, Sendable {
-  public var authType: String?
+  public var authType: ElevenLabsBasicAuthAuthType?
   public var name: String
   public var password: String
   public var provider: String
@@ -22,7 +22,7 @@ public struct ElevenLabsCreateBasicAuthRequest: Codable, Sendable {
     password: String,
     provider: String,
     username: String,
-    authType: String? = nil
+    authType: ElevenLabsBasicAuthAuthType? = nil
   ) {
     self.authType = authType
     self.name = name

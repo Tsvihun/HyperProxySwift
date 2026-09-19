@@ -19,7 +19,7 @@ public struct ElevenLabsConversationHistoryTranscriptToolCallMCPDetails: Codable
   public var mcpToolName: String?
   public var parameters: [String: String]?
   public var requiresApproval: Bool?
-  public var typeModel: String?
+  public var kind: ElevenLabsMcpKind?
 
   public init(
     approvalPolicy: String,
@@ -30,7 +30,7 @@ public struct ElevenLabsConversationHistoryTranscriptToolCallMCPDetails: Codable
     mcpToolName: String? = nil,
     parameters: [String: String]? = nil,
     requiresApproval: Bool? = nil,
-    typeModel: String? = nil
+    kind: ElevenLabsMcpKind? = nil
   ) {
     self.approvalPolicy = approvalPolicy
     self.integrationType = integrationType
@@ -40,7 +40,7 @@ public struct ElevenLabsConversationHistoryTranscriptToolCallMCPDetails: Codable
     self.mcpToolName = mcpToolName
     self.parameters = parameters
     self.requiresApproval = requiresApproval
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -52,6 +52,6 @@ public struct ElevenLabsConversationHistoryTranscriptToolCallMCPDetails: Codable
     case mcpToolName = "mcp_tool_name"
     case parameters
     case requiresApproval = "requires_approval"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

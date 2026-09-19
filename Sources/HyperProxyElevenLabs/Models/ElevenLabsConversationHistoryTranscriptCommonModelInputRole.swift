@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsConversationHistoryTranscriptCommonModelInputRole: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum ElevenLabsConversationHistoryTranscriptCommonModelInputRole: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let user = Self(rawValue: "user")
-  public static let agent = Self(rawValue: "agent")
+  case user = "user"
+  case agent = "agent"
 }

@@ -10,19 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsUpdateOAuth2JWTRequestAlgorithmAnyOf1: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let hS256 = Self(rawValue: "HS256")
-  public static let hS384 = Self(rawValue: "HS384")
-  public static let hS512 = Self(rawValue: "HS512")
-  public static let rS256 = Self(rawValue: "RS256")
-  public static let rS384 = Self(rawValue: "RS384")
-  public static let rS512 = Self(rawValue: "RS512")
+public enum ElevenLabsUpdateOAuth2JWTRequestAlgorithmAnyOf1: String, Codable, Hashable, Sendable {
+  case hS256 = "HS256"
+  case hS384 = "HS384"
+  case hS512 = "HS512"
+  case rS256 = "RS256"
+  case rS384 = "RS384"
+  case rS512 = "RS512"
 }

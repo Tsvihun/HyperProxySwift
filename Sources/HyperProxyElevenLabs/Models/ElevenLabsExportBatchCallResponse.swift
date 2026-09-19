@@ -10,4 +10,17 @@
 import Foundation
 import HyperProxyCore
 
-public typealias ElevenLabsExportBatchCallResponse = String
+public struct ElevenLabsExportBatchCallResponse: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+}
+
+extension ElevenLabsExportBatchCallResponse: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self.init(rawValue: value)
+  }
+}

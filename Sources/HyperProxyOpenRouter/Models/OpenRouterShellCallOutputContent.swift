@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterShellCallOutputContent: Codable, Sendable {
-  public var outcome: HyperProxyJSONValue
+  public var outcome: OpenRouterShellCallOutputContentOutcome
   public var stderr: String
   public var stdout: String
 
   public init(
-    outcome: HyperProxyJSONValue,
+    outcome: OpenRouterShellCallOutputContentOutcome,
     stderr: String,
     stdout: String
   ) {

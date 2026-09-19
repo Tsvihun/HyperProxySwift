@@ -16,7 +16,7 @@ public struct AnthropicBetaResponseTextEditorCodeExecutionViewResultBlock: Codab
   public var numLines: Int?
   public var startLine: Int?
   public var totalLines: Int?
-  public var typeModel: String
+  public var kind: AnthropicTextEditorCodeExecutionViewResultKind
 
   public init(
     content: String,
@@ -24,14 +24,14 @@ public struct AnthropicBetaResponseTextEditorCodeExecutionViewResultBlock: Codab
     numLines: Int?,
     startLine: Int?,
     totalLines: Int?,
-    typeModel: String
+    kind: AnthropicTextEditorCodeExecutionViewResultKind = .textEditorCodeExecutionViewResult
   ) {
     self.content = content
     self.fileType = fileType
     self.numLines = numLines
     self.startLine = startLine
     self.totalLines = totalLines
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct AnthropicBetaResponseTextEditorCodeExecutionViewResultBlock: Codab
     case numLines = "num_lines"
     case startLine = "start_line"
     case totalLines = "total_lines"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

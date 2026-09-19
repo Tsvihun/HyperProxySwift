@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIRunStepDetailsToolCallsCodeObjectCodeInterpreter: Codable, Sendable {
   public var input: String
-  public var outputs: [HyperProxyJSONValue]
+  public var outputs: [OpenAIRunStepDetailsToolCallsCodeObjectCodeInterpreterOutputsItem]
 
   public init(
     input: String,
-    outputs: [HyperProxyJSONValue]
+    outputs: [OpenAIRunStepDetailsToolCallsCodeObjectCodeInterpreterOutputsItem]
   ) {
     self.input = input
     self.outputs = outputs

@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsCriteriaScoringMode: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let binary = Self(rawValue: "binary")
-  public static let numericUniform = Self(rawValue: "numeric_uniform")
+public enum ElevenLabsCriteriaScoringMode: String, Codable, Hashable, Sendable {
+  case binary = "binary"
+  case numericUniform = "numeric_uniform"
 }

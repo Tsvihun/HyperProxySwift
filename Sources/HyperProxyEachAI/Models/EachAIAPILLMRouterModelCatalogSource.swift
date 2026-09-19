@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct EachAIAPILLMRouterModelCatalogSource: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let catalog = Self(rawValue: "catalog")
-  public static let odooFallback = Self(rawValue: "odoo_fallback")
+public enum EachAIAPILLMRouterModelCatalogSource: String, Codable, Hashable, Sendable {
+  case catalog = "catalog"
+  case odooFallback = "odoo_fallback"
 }

@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsScheduleTriggerContext: Codable, Sendable {
   public var scheduledAt: AnthropicBetaTimestamp
-  public var typeModel: AnthropicBetaManagedAgentsScheduleTriggerContextTypeModel
+  public var kind: AnthropicBetaManagedAgentsScheduleTriggerContextKind
 
   public init(
     scheduledAt: AnthropicBetaTimestamp,
-    typeModel: AnthropicBetaManagedAgentsScheduleTriggerContextTypeModel
+    kind: AnthropicBetaManagedAgentsScheduleTriggerContextKind
   ) {
     self.scheduledAt = scheduledAt
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case scheduledAt = "scheduled_at"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

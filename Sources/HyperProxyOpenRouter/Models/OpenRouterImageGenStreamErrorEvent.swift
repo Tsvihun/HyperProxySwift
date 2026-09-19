@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterImageGenStreamErrorEvent: Codable, Sendable {
   public var error: OpenRouterImageGenStreamErrorEventError
-  public var typeModel: OpenRouterImageGenStreamErrorEventTypeModel
+  public var kind: OpenRouterImageGenStreamErrorEventKind
 
   public init(
     error: OpenRouterImageGenStreamErrorEventError,
-    typeModel: OpenRouterImageGenStreamErrorEventTypeModel
+    kind: OpenRouterImageGenStreamErrorEventKind
   ) {
     self.error = error
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case error
-    case typeModel = "type"
+    case kind = "type"
   }
 }

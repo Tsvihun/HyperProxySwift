@@ -10,15 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct FalServerlessListRequestsByEndpointParametersSortBy: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum FalServerlessListRequestsByEndpointParametersSortBy: String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let endedAt = Self(rawValue: "ended_at")
-  public static let duration = Self(rawValue: "duration")
+  case endedAt = "ended_at"
+  case duration = "duration"
 }

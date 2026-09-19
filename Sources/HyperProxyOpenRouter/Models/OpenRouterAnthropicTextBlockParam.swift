@@ -12,26 +12,26 @@ import HyperProxyCore
 
 public struct OpenRouterAnthropicTextBlockParam: Codable, Sendable {
   public var cacheControl: OpenRouterAnthropicCacheControlDirective?
-  public var citations: [HyperProxyJSONValue]?
+  public var citations: [OpenRouterAnthropicTextBlockParamCitationsItem]?
   public var text: String
-  public var typeModel: OpenRouterAnthropicTextBlockParamTypeModel
+  public var kind: OpenRouterAnthropicTextBlockParamKind
 
   public init(
     text: String,
-    typeModel: OpenRouterAnthropicTextBlockParamTypeModel,
+    kind: OpenRouterAnthropicTextBlockParamKind,
     cacheControl: OpenRouterAnthropicCacheControlDirective? = nil,
-    citations: [HyperProxyJSONValue]? = nil
+    citations: [OpenRouterAnthropicTextBlockParamCitationsItem]? = nil
   ) {
     self.cacheControl = cacheControl
     self.citations = citations
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case cacheControl = "cache_control"
     case citations
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

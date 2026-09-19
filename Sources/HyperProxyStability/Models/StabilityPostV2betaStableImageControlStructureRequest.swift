@@ -17,7 +17,7 @@ public struct StabilityPostV2betaStableImageControlStructureRequest: Codable, Se
   public var outputFormat: StabilityPostV2betaStableImageControlStructureRequestOutputFormat?
   public var prompt: String
   public var seed: Double?
-  public var stylePreset: StabilityPostV2betaStableImageControlStructureRequestStylePreset?
+  public var stylePreset: StabilityStylePreset?
 
   public init(
     image: String,
@@ -26,7 +26,7 @@ public struct StabilityPostV2betaStableImageControlStructureRequest: Codable, Se
     negativePrompt: String? = nil,
     outputFormat: StabilityPostV2betaStableImageControlStructureRequestOutputFormat? = nil,
     seed: Double? = nil,
-    stylePreset: StabilityPostV2betaStableImageControlStructureRequestStylePreset? = nil
+    stylePreset: StabilityStylePreset? = nil
   ) {
     self.controlStrength = controlStrength
     self.image = image

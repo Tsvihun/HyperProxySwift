@@ -18,7 +18,7 @@ public struct MistralAudioTranscriptionRequestStream: Codable, Sendable {
   public var fileUrl: String?
   public var language: String?
   public var model: String
-  public var stream: Bool?
+  public var stream: MistralAudioTranscriptionRequestStreamStream?
   public var temperature: Double?
   public var timestampGranularities: [MistralTimestampGranularity]?
 
@@ -30,7 +30,7 @@ public struct MistralAudioTranscriptionRequestStream: Codable, Sendable {
     fileId: String? = nil,
     fileUrl: String? = nil,
     language: String? = nil,
-    stream: Bool? = nil,
+    stream: MistralAudioTranscriptionRequestStreamStream? = nil,
     temperature: Double? = nil,
     timestampGranularities: [MistralTimestampGranularity]? = nil
   ) {

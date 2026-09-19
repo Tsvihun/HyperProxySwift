@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct MistralTempoTraceAttribute: Codable, Sendable {
   public var key: String
-  public var value: HyperProxyJSONValue
+  public var value: MistralTempoTraceAttributeValue
 
   public init(
     key: String,
-    value: HyperProxyJSONValue
+    value: MistralTempoTraceAttributeValue
   ) {
     self.key = key
     self.value = value

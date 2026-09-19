@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherVolumeType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let readOnly = Self(rawValue: "readOnly")
+public enum TogetherVolumeType: String, Codable, Hashable, Sendable {
+  case readOnly = "readOnly"
 }

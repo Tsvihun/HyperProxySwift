@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsMusicModelID: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let musicV1 = Self(rawValue: "music_v1")
-  public static let musicV2 = Self(rawValue: "music_v2")
-  public static let musicV25 = Self(rawValue: "music_v2_5")
+public enum ElevenLabsMusicModelID: String, Codable, Hashable, Sendable {
+  case musicV1 = "music_v1"
+  case musicV2 = "music_v2"
+  case musicV25 = "music_v2_5"
 }

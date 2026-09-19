@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct ElevenLabsWorkflowStartNodeModelInput: Codable, Sendable {
   public var edgeOrder: [String]?
   public var position: ElevenLabsPositionInput?
-  public var typeModel: String?
+  public var kind: ElevenLabsStartKind?
 
   public init(
     edgeOrder: [String]? = nil,
     position: ElevenLabsPositionInput? = nil,
-    typeModel: String? = nil
+    kind: ElevenLabsStartKind? = nil
   ) {
     self.edgeOrder = edgeOrder
     self.position = position
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case edgeOrder = "edge_order"
     case position
-    case typeModel = "type"
+    case kind = "type"
   }
 }

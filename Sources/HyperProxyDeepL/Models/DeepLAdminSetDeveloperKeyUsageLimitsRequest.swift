@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepLAdminSetDeveloperKeyUsageLimitsRequest: Codable, Sendable {
-  public var characters: DeepLApiKeyUsageCharacters?
-  public var keyId: DeepLApiKeyId
-  public var speechToTextMilliseconds: DeepLApiKeyUsageSpeechToTextMilliseconds?
+  public var characters: Double?
+  public var keyId: String
+  public var speechToTextMilliseconds: Double?
 
   public init(
-    keyId: DeepLApiKeyId,
-    characters: DeepLApiKeyUsageCharacters? = nil,
-    speechToTextMilliseconds: DeepLApiKeyUsageSpeechToTextMilliseconds? = nil
+    keyId: String,
+    characters: Double? = nil,
+    speechToTextMilliseconds: Double? = nil
   ) {
     self.characters = characters
     self.keyId = keyId

@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIDeletedVideoResourceObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let videoDeleted = Self(rawValue: "video.deleted")
+public enum OpenAIDeletedVideoResourceObject: String, Codable, Hashable, Sendable {
+  case videoDeleted = "video.deleted"
 }

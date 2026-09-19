@@ -16,7 +16,7 @@ public struct OpenAITaskGroupItem: Codable, Sendable {
   public var object: OpenAITaskGroupItemObject
   public var tasks: [OpenAITaskGroupTask]
   public var threadId: String
-  public var typeModel: OpenAITaskGroupItemTypeModel
+  public var kind: OpenAITaskGroupItemKind
 
   public init(
     createdAt: Int,
@@ -24,14 +24,14 @@ public struct OpenAITaskGroupItem: Codable, Sendable {
     object: OpenAITaskGroupItemObject,
     tasks: [OpenAITaskGroupTask],
     threadId: String,
-    typeModel: OpenAITaskGroupItemTypeModel
+    kind: OpenAITaskGroupItemKind
   ) {
     self.createdAt = createdAt
     self.id = id
     self.object = object
     self.tasks = tasks
     self.threadId = threadId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAITaskGroupItem: Codable, Sendable {
     case object
     case tasks
     case threadId = "thread_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

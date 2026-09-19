@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsWidgetConfigResponseModel: Codable, Sendable {
   public var actionText: String?
   public var alwaysExpanded: Bool?
-  public var avatar: HyperProxyJSONValue?
+  public var avatar: ElevenLabsWidgetConfigResponseModelAvatar?
   public var bgColor: String?
   public var borderColor: String?
   public var borderRadius: Int?
@@ -69,7 +69,7 @@ public struct ElevenLabsWidgetConfigResponseModel: Codable, Sendable {
     language: String,
     actionText: String? = nil,
     alwaysExpanded: Bool? = nil,
-    avatar: HyperProxyJSONValue? = nil,
+    avatar: ElevenLabsWidgetConfigResponseModelAvatar? = nil,
     bgColor: String? = nil,
     borderColor: String? = nil,
     borderRadius: Int? = nil,

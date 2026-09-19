@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct GroqResponseFormatJsonSchema: Codable, Sendable {
   public var jsonSchema: GroqResponseFormatJsonSchemaJsonSchema
-  public var typeModel: GroqResponseFormatJsonSchemaTypeModel
+  public var kind: GroqResponseFormatJsonSchemaKind
 
   public init(
     jsonSchema: GroqResponseFormatJsonSchemaJsonSchema,
-    typeModel: GroqResponseFormatJsonSchemaTypeModel
+    kind: GroqResponseFormatJsonSchemaKind
   ) {
     self.jsonSchema = jsonSchema
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case jsonSchema = "json_schema"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

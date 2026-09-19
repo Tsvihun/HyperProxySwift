@@ -10,15 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherPostImagesGenerationsRequestResponseFormat: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum TogetherPostImagesGenerationsRequestResponseFormat: String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let base64 = Self(rawValue: "base64")
-  public static let url = Self(rawValue: "url")
+  case base64 = "base64"
+  case url = "url"
 }

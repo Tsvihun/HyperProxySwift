@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralShareEnum: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let viewer = Self(rawValue: "Viewer")
-  public static let editor = Self(rawValue: "Editor")
+public enum MistralShareEnum: String, Codable, Hashable, Sendable {
+  case viewer = "Viewer"
+  case editor = "Editor"
 }

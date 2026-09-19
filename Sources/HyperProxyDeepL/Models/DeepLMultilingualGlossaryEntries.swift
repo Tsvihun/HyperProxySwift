@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepLMultilingualGlossaryEntries: Codable, Sendable {
-  public var entries: DeepLGlossaryEntries?
+  public var entries: String?
   public var entriesFormat: DeepLGlossaryEntriesFormat?
   public var sourceLang: DeepLGlossarySourceLanguage?
   public var targetLang: DeepLGlossaryTargetLanguage?
 
   public init(
-    entries: DeepLGlossaryEntries? = nil,
+    entries: String? = nil,
     entriesFormat: DeepLGlossaryEntriesFormat? = nil,
     sourceLang: DeepLGlossarySourceLanguage? = nil,
     targetLang: DeepLGlossaryTargetLanguage? = nil

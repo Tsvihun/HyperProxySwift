@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherTrainingMethodSFTMethod: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let sft = Self(rawValue: "sft")
+public enum TogetherTrainingMethodSFTMethod: String, Codable, Hashable, Sendable {
+  case sft = "sft"
 }

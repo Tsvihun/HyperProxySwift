@@ -20,7 +20,7 @@ public struct BravePlaceSearchResponse: Codable, Sendable {
   public var regions: [BraveJSONObject]?
   public var results: [BraveLocationResult]?
   public var streets: [BraveJSONObject]?
-  public var typeModel: String?
+  public var kind: String?
 
   public init(
     addresses: [BraveJSONObject]? = nil,
@@ -32,7 +32,7 @@ public struct BravePlaceSearchResponse: Codable, Sendable {
     regions: [BraveJSONObject]? = nil,
     results: [BraveLocationResult]? = nil,
     streets: [BraveJSONObject]? = nil,
-    typeModel: String? = nil
+    kind: String? = nil
   ) {
     self.addresses = addresses
     self.cities = cities
@@ -43,7 +43,7 @@ public struct BravePlaceSearchResponse: Codable, Sendable {
     self.regions = regions
     self.results = results
     self.streets = streets
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -56,6 +56,6 @@ public struct BravePlaceSearchResponse: Codable, Sendable {
     case regions
     case results
     case streets
-    case typeModel = "type"
+    case kind = "type"
   }
 }

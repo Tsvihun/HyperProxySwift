@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralUsersApiAdminAuditLogsGetAuditLogsParametersSortAllOf1: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum MistralUsersApiAdminAuditLogsGetAuditLogsParametersSortAllOf1: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let ascending = Self(rawValue: "ascending")
-  public static let descending = Self(rawValue: "descending")
+  case ascending = "ascending"
+  case descending = "descending"
 }

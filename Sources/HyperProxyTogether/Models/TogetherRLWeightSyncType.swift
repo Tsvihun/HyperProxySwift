@@ -10,15 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherRLWeightSyncType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let wEIGHTSYNCTYPESYNCHRONOUS = Self(rawValue: "WEIGHT_SYNC_TYPE_SYNCHRONOUS")
-  public static let wEIGHTSYNCTYPEBACKGROUNDPUBLISH = Self(
-    rawValue: "WEIGHT_SYNC_TYPE_BACKGROUND_PUBLISH")
-  public static let wEIGHTSYNCTYPEPIPELINE = Self(rawValue: "WEIGHT_SYNC_TYPE_PIPELINE")
+public enum TogetherRLWeightSyncType: String, Codable, Hashable, Sendable {
+  case wEIGHTSYNCTYPESYNCHRONOUS = "WEIGHT_SYNC_TYPE_SYNCHRONOUS"
+  case wEIGHTSYNCTYPEBACKGROUNDPUBLISH = "WEIGHT_SYNC_TYPE_BACKGROUND_PUBLISH"
+  case wEIGHTSYNCTYPEPIPELINE = "WEIGHT_SYNC_TYPE_PIPELINE"
 }

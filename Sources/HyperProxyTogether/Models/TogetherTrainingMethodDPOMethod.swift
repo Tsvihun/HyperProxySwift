@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherTrainingMethodDPOMethod: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let dpo = Self(rawValue: "dpo")
+public enum TogetherTrainingMethodDPOMethod: String, Codable, Hashable, Sendable {
+  case dpo = "dpo"
 }

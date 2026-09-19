@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIRunStepDeltaStepDetailsMessageCreationObject: Codable, Sendable {
   public var messageCreation: OpenAIRunStepDeltaStepDetailsMessageCreationObjectMessageCreation?
-  public var typeModel: OpenAIRunStepDeltaStepDetailsMessageCreationObjectTypeModel
+  public var kind: OpenAIRunStepDeltaStepDetailsMessageCreationObjectKind
 
   public init(
-    typeModel: OpenAIRunStepDeltaStepDetailsMessageCreationObjectTypeModel,
+    kind: OpenAIRunStepDeltaStepDetailsMessageCreationObjectKind,
     messageCreation: OpenAIRunStepDeltaStepDetailsMessageCreationObjectMessageCreation? = nil
   ) {
     self.messageCreation = messageCreation
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case messageCreation = "message_creation"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

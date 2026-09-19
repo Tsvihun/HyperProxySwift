@@ -14,11 +14,11 @@ public struct MistralMCPServerRemote: Codable, Sendable {
   public var authentication: MistralMCPServerAuthenticationRequirement?
   public var headers: [MistralMCPServerRemoteHeader]?
   public var supportedProtocolVersions: [String]?
-  public var typeModel: MistralMCPServerRemoteTypeModel
+  public var kind: MistralMCPServerRemoteKind
   public var url: String
 
   public init(
-    typeModel: MistralMCPServerRemoteTypeModel,
+    kind: MistralMCPServerRemoteKind,
     url: String,
     authentication: MistralMCPServerAuthenticationRequirement? = nil,
     headers: [MistralMCPServerRemoteHeader]? = nil,
@@ -27,7 +27,7 @@ public struct MistralMCPServerRemote: Codable, Sendable {
     self.authentication = authentication
     self.headers = headers
     self.supportedProtocolVersions = supportedProtocolVersions
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
@@ -35,7 +35,7 @@ public struct MistralMCPServerRemote: Codable, Sendable {
     case authentication
     case headers
     case supportedProtocolVersions
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

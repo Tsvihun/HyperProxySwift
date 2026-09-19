@@ -16,17 +16,17 @@ public struct OpenAICreateThreadAndRunRequest: Codable, Sendable {
   public var maxCompletionTokens: Int?
   public var maxPromptTokens: Int?
   public var metadata: OpenAIMetadata?
-  public var model: HyperProxyJSONValue?
-  public var parallelToolCalls: OpenAIParallelToolCalls?
+  public var model: OpenAICreateThreadAndRunRequestModel?
+  public var parallelToolCalls: Bool?
   public var responseFormat: OpenAIAssistantsApiResponseFormatOption?
   public var stream: Bool?
   public var temperature: Double?
   public var thread: OpenAICreateThreadRequest?
-  public var toolChoice: HyperProxyJSONValue?
+  public var toolChoice: OpenAIAssistantsApiToolChoiceOption?
   public var toolResources: OpenAICreateThreadAndRunRequestToolResources?
-  public var tools: [HyperProxyJSONValue]?
+  public var tools: [OpenAICreateThreadAndRunRequestToolsItem]?
   public var topP: Double?
-  public var truncationStrategy: HyperProxyJSONValue?
+  public var truncationStrategy: OpenAITruncationObject?
 
   public init(
     assistantId: String,
@@ -34,17 +34,17 @@ public struct OpenAICreateThreadAndRunRequest: Codable, Sendable {
     maxCompletionTokens: Int? = nil,
     maxPromptTokens: Int? = nil,
     metadata: OpenAIMetadata? = nil,
-    model: HyperProxyJSONValue? = nil,
-    parallelToolCalls: OpenAIParallelToolCalls? = nil,
+    model: OpenAICreateThreadAndRunRequestModel? = nil,
+    parallelToolCalls: Bool? = nil,
     responseFormat: OpenAIAssistantsApiResponseFormatOption? = nil,
     stream: Bool? = nil,
     temperature: Double? = nil,
     thread: OpenAICreateThreadRequest? = nil,
-    toolChoice: HyperProxyJSONValue? = nil,
+    toolChoice: OpenAIAssistantsApiToolChoiceOption? = nil,
     toolResources: OpenAICreateThreadAndRunRequestToolResources? = nil,
-    tools: [HyperProxyJSONValue]? = nil,
+    tools: [OpenAICreateThreadAndRunRequestToolsItem]? = nil,
     topP: Double? = nil,
-    truncationStrategy: HyperProxyJSONValue? = nil
+    truncationStrategy: OpenAITruncationObject? = nil
   ) {
     self.assistantId = assistantId
     self.instructions = instructions

@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsASTBooleanNodeOutput: Codable, Sendable {
-  public var typeModel: String
+  public var kind: ElevenLabsBooleanLiteralKind
   public var value: Bool
 
   public init(
-    typeModel: String,
-    value: Bool
+    value: Bool,
+    kind: ElevenLabsBooleanLiteralKind = .booleanLiteral
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
     self.value = value
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
     case value
   }
 }

@@ -17,10 +17,10 @@ public struct OpenAIRealtimeTurnDetectionAnyOf1OneOf1: Codable, Sendable {
   public var prefixPaddingMs: Int?
   public var silenceDurationMs: Int?
   public var threshold: Double?
-  public var typeModel: String
+  public var kind: OpenAIServerVadKind
 
   public init(
-    typeModel: String,
+    kind: OpenAIServerVadKind = .serverVad,
     createResponse: Bool? = nil,
     idleTimeoutMs: Int? = nil,
     interruptResponse: Bool? = nil,
@@ -34,7 +34,7 @@ public struct OpenAIRealtimeTurnDetectionAnyOf1OneOf1: Codable, Sendable {
     self.prefixPaddingMs = prefixPaddingMs
     self.silenceDurationMs = silenceDurationMs
     self.threshold = threshold
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenAIRealtimeTurnDetectionAnyOf1OneOf1: Codable, Sendable {
     case prefixPaddingMs = "prefix_padding_ms"
     case silenceDurationMs = "silence_duration_ms"
     case threshold
-    case typeModel = "type"
+    case kind = "type"
   }
 }

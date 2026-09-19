@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesPunctuationColonInHeading: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useSpaceAfterColonNotBefore = Self(rawValue: "use_space_after_colon_not_before")
+public enum DeepLConfiguredRulesPunctuationColonInHeading: String, Codable, Hashable, Sendable {
+  case useSpaceAfterColonNotBefore = "use_space_after_colon_not_before"
 }

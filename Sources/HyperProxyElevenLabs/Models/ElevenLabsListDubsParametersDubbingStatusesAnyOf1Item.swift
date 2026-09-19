@@ -10,18 +10,12 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsListDubsParametersDubbingStatusesAnyOf1Item: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum ElevenLabsListDubsParametersDubbingStatusesAnyOf1Item: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let queued = Self(rawValue: "queued")
-  public static let preparing = Self(rawValue: "preparing")
-  public static let dubbing = Self(rawValue: "dubbing")
-  public static let dubbed = Self(rawValue: "dubbed")
-  public static let failed = Self(rawValue: "failed")
+  case queued = "queued"
+  case preparing = "preparing"
+  case dubbing = "dubbing"
+  case dubbed = "dubbed"
+  case failed = "failed"
 }

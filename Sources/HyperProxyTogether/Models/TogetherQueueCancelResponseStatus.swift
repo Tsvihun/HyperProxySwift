@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherQueueCancelResponseStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let canceled = Self(rawValue: "canceled")
-  public static let running = Self(rawValue: "running")
-  public static let done = Self(rawValue: "done")
-  public static let failed = Self(rawValue: "failed")
+public enum TogetherQueueCancelResponseStatus: String, Codable, Hashable, Sendable {
+  case canceled = "canceled"
+  case running = "running"
+  case done = "done"
+  case failed = "failed"
 }

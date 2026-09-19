@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherHealthCheckServiceListPassiveHealthCheckAlertsParametersSeverityFilterItem:
-  RawRepresentable, Codable, Hashable, Sendable
+public enum TogetherHealthCheckServiceListPassiveHealthCheckAlertsParametersSeverityFilterItem:
+  String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let pHCSEVERITYINFO = Self(rawValue: "PHC_SEVERITY_INFO")
-  public static let pHCSEVERITYWARNING = Self(rawValue: "PHC_SEVERITY_WARNING")
-  public static let pHCSEVERITYCRITICAL = Self(rawValue: "PHC_SEVERITY_CRITICAL")
+  case pHCSEVERITYINFO = "PHC_SEVERITY_INFO"
+  case pHCSEVERITYWARNING = "PHC_SEVERITY_WARNING"
+  case pHCSEVERITYCRITICAL = "PHC_SEVERITY_CRITICAL"
 }

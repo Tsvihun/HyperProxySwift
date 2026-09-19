@@ -15,20 +15,20 @@ public struct OpenAIEvalRunOutputItemResult: Codable, Sendable {
   public var passed: Bool
   public var sample: [String: HyperProxyJSONValue]?
   public var score: Double
-  public var typeModel: String?
+  public var kind: String?
 
   public init(
     name: String,
     passed: Bool,
     score: Double,
     sample: [String: HyperProxyJSONValue]? = nil,
-    typeModel: String? = nil
+    kind: String? = nil
   ) {
     self.name = name
     self.passed = passed
     self.sample = sample
     self.score = score
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIEvalRunOutputItemResult: Codable, Sendable {
     case passed
     case sample
     case score
-    case typeModel = "type"
+    case kind = "type"
   }
 }

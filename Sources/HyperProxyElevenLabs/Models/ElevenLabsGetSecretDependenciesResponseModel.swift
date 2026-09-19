@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsGetSecretDependenciesResponseModel: Codable, Sendable {
-  public var dependencies: HyperProxyJSONValue
+  public var dependencies: ElevenLabsGetSecretDependenciesResponseModelDependencies
   public var nextCursor: String?
 
   public init(
-    dependencies: HyperProxyJSONValue,
+    dependencies: ElevenLabsGetSecretDependenciesResponseModelDependencies,
     nextCursor: String? = nil
   ) {
     self.dependencies = dependencies

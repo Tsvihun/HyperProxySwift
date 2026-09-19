@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsUpdateSessionParams: Codable, Sendable {
-  public var agent: HyperProxyJSONValue?
+  public var agent: AnthropicBetaManagedAgentsSessionAgentUpdate?
   public var budget: AnthropicBetaManagedAgentsBudget?
   public var metadata: [String: String?]?
   public var title: String?
   public var vaultIds: [String]?
 
   public init(
-    agent: HyperProxyJSONValue? = nil,
+    agent: AnthropicBetaManagedAgentsSessionAgentUpdate? = nil,
     budget: AnthropicBetaManagedAgentsBudget? = nil,
     metadata: [String: String?]? = nil,
     title: String? = nil,

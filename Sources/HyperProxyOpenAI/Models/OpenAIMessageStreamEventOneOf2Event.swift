@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIMessageStreamEventOneOf2Event: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let threadMessageInProgress = Self(rawValue: "thread.message.in_progress")
+public enum OpenAIMessageStreamEventOneOf2Event: String, Codable, Hashable, Sendable {
+  case threadMessageInProgress = "thread.message.in_progress"
 }

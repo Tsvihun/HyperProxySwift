@@ -14,10 +14,10 @@ public struct AnthropicBetaBrowserToolset20260801: Codable, Sendable {
   public var allowedCallers: [AnthropicBetaAllowedCaller]?
   public var cacheControl: AnthropicBetaCacheControlEphemeral?
   public var configs: AnthropicBetaBrowserToolsetConfigs?
-  public var typeModel: String
+  public var kind: AnthropicBrowserToolset20260801Kind
 
   public init(
-    typeModel: String,
+    kind: AnthropicBrowserToolset20260801Kind = .browserToolset20260801,
     allowedCallers: [AnthropicBetaAllowedCaller]? = nil,
     cacheControl: AnthropicBetaCacheControlEphemeral? = nil,
     configs: AnthropicBetaBrowserToolsetConfigs? = nil
@@ -25,13 +25,13 @@ public struct AnthropicBetaBrowserToolset20260801: Codable, Sendable {
     self.allowedCallers = allowedCallers
     self.cacheControl = cacheControl
     self.configs = configs
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case allowedCallers = "allowed_callers"
     case cacheControl = "cache_control"
     case configs
-    case typeModel = "type"
+    case kind = "type"
   }
 }

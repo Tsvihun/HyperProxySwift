@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenRouterMessagesAdvisorToolResultBlock: Codable, Sendable {
   public var content: [String: HyperProxyJSONValue]
   public var toolUseId: String
-  public var typeModel: OpenRouterMessagesAdvisorToolResultBlockTypeModel
+  public var kind: OpenRouterMessagesAdvisorToolResultBlockKind
 
   public init(
     content: [String: HyperProxyJSONValue],
     toolUseId: String,
-    typeModel: OpenRouterMessagesAdvisorToolResultBlockTypeModel
+    kind: OpenRouterMessagesAdvisorToolResultBlockKind
   ) {
     self.content = content
     self.toolUseId = toolUseId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case content
     case toolUseId = "tool_use_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

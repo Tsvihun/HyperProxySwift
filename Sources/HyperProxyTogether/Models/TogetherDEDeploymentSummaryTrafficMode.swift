@@ -10,14 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherDEDeploymentSummaryTrafficMode: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let tRAFFICMODELIVE = Self(rawValue: "TRAFFIC_MODE_LIVE")
-  public static let tRAFFICMODESHADOW = Self(rawValue: "TRAFFIC_MODE_SHADOW")
+public enum TogetherDEDeploymentSummaryTrafficMode: String, Codable, Hashable, Sendable {
+  case tRAFFICMODELIVE = "TRAFFIC_MODE_LIVE"
+  case tRAFFICMODESHADOW = "TRAFFIC_MODE_SHADOW"
 }

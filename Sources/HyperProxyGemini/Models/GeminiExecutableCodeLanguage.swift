@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiExecutableCodeLanguage: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let lANGUAGEUNSPECIFIED = Self(rawValue: "LANGUAGE_UNSPECIFIED")
-  public static let pYTHON = Self(rawValue: "PYTHON")
+public enum GeminiExecutableCodeLanguage: String, Codable, Hashable, Sendable {
+  case lANGUAGEUNSPECIFIED = "LANGUAGE_UNSPECIFIED"
+  case pYTHON = "PYTHON"
 }

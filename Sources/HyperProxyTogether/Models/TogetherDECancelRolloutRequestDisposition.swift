@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherDECancelRolloutRequestDisposition: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let cANCELDISPOSITIONFREEZE = Self(rawValue: "CANCEL_DISPOSITION_FREEZE")
-  public static let cANCELDISPOSITIONREVERT = Self(rawValue: "CANCEL_DISPOSITION_REVERT")
+public enum TogetherDECancelRolloutRequestDisposition: String, Codable, Hashable, Sendable {
+  case cANCELDISPOSITIONFREEZE = "CANCEL_DISPOSITION_FREEZE"
+  case cANCELDISPOSITIONREVERT = "CANCEL_DISPOSITION_REVERT"
 }

@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesSpellingAndGrammarIAndUWithCircumflexAccents: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum DeepLConfiguredRulesSpellingAndGrammarIAndUWithCircumflexAccents: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let doNotUseCircumflexAccentsExceptInVerbsAndToDistinguishHomophones = Self(
-    rawValue: "do_not_use_circumflex_accents_except_in_verbs_and_to_distinguish_homophones")
-  public static let useCircumflexAccents = Self(rawValue: "use_circumflex_accents")
+  case doNotUseCircumflexAccentsExceptInVerbsAndToDistinguishHomophones =
+    "do_not_use_circumflex_accents_except_in_verbs_and_to_distinguish_homophones"
+  case useCircumflexAccents = "use_circumflex_accents"
 }

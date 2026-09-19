@@ -15,12 +15,12 @@ public struct AnthropicBetaManagedAgentsMcpOauthRefreshResponse: Codable, Sendab
   public var resource: String?
   public var scope: String?
   public var tokenEndpoint: String
-  public var tokenEndpointAuth: HyperProxyJSONValue
+  public var tokenEndpointAuth: AnthropicBetaManagedAgentsMcpOauthRefreshResponseTokenEndpointAuth
 
   public init(
     clientId: String,
     tokenEndpoint: String,
-    tokenEndpointAuth: HyperProxyJSONValue,
+    tokenEndpointAuth: AnthropicBetaManagedAgentsMcpOauthRefreshResponseTokenEndpointAuth,
     resource: String? = nil,
     scope: String? = nil
   ) {

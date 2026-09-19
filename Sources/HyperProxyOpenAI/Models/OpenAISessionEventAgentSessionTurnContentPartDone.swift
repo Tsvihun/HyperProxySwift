@@ -18,7 +18,7 @@ public struct OpenAISessionEventAgentSessionTurnContentPartDone: Codable, Sendab
   public var part: OpenAIOutputTextResource
   public var sessionId: String
   public var turnId: String
-  public var typeModel: OpenAISessionEventAgentSessionTurnContentPartDoneTypeModel
+  public var kind: OpenAISessionEventAgentSessionTurnContentPartDoneKind
 
   public init(
     contentIndex: Int64,
@@ -28,7 +28,7 @@ public struct OpenAISessionEventAgentSessionTurnContentPartDone: Codable, Sendab
     part: OpenAIOutputTextResource,
     sessionId: String,
     turnId: String,
-    typeModel: OpenAISessionEventAgentSessionTurnContentPartDoneTypeModel
+    kind: OpenAISessionEventAgentSessionTurnContentPartDoneKind
   ) {
     self.contentIndex = contentIndex
     self.eventId = eventId
@@ -37,7 +37,7 @@ public struct OpenAISessionEventAgentSessionTurnContentPartDone: Codable, Sendab
     self.part = part
     self.sessionId = sessionId
     self.turnId = turnId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct OpenAISessionEventAgentSessionTurnContentPartDone: Codable, Sendab
     case part
     case sessionId = "session_id"
     case turnId = "turn_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

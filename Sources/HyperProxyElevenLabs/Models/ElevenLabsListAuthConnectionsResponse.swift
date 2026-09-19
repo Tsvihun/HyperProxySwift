@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsListAuthConnectionsResponse: Codable, Sendable {
-  public var authConnections: [HyperProxyJSONValue]
+  public var authConnections: [ElevenLabsListAuthConnectionsResponseAuthConnectionsItem]
 
   public init(
-    authConnections: [HyperProxyJSONValue]
+    authConnections: [ElevenLabsListAuthConnectionsResponseAuthConnectionsItem]
   ) {
     self.authConnections = authConnections
   }

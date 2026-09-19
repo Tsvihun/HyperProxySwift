@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherSupportedModelsServiceListSupportedModelsParametersProduct: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum TogetherSupportedModelsServiceListSupportedModelsParametersProduct: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let pRODUCTSERVERLESS = Self(rawValue: "PRODUCT_SERVERLESS")
-  public static let pRODUCTDEDICATED = Self(rawValue: "PRODUCT_DEDICATED")
-  public static let pRODUCTFINETUNING = Self(rawValue: "PRODUCT_FINE_TUNING")
+  case pRODUCTSERVERLESS = "PRODUCT_SERVERLESS"
+  case pRODUCTDEDICATED = "PRODUCT_DEDICATED"
+  case pRODUCTFINETUNING = "PRODUCT_FINE_TUNING"
 }

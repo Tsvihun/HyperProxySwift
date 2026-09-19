@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepSeekBalanceCurrency: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let cNY = Self(rawValue: "CNY")
-  public static let uSD = Self(rawValue: "USD")
+public enum DeepSeekBalanceCurrency: String, Codable, Hashable, Sendable {
+  case cNY = "CNY"
+  case uSD = "USD"
 }

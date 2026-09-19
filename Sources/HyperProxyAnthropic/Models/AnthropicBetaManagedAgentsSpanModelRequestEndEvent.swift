@@ -14,24 +14,24 @@ public struct AnthropicBetaManagedAgentsSpanModelRequestEndEvent: Codable, Senda
   public var id: String
   public var isError: Bool?
   public var modelRequestStartId: String
-  public var modelUsage: HyperProxyJSONValue
+  public var modelUsage: AnthropicBetaManagedAgentsSpanModelUsage
   public var processedAt: AnthropicBetaTimestamp
-  public var typeModel: AnthropicBetaManagedAgentsSpanModelRequestEndEventTypeModel
+  public var kind: AnthropicBetaManagedAgentsSpanModelRequestEndEventKind
 
   public init(
     id: String,
     isError: Bool?,
     modelRequestStartId: String,
-    modelUsage: HyperProxyJSONValue,
+    modelUsage: AnthropicBetaManagedAgentsSpanModelUsage,
     processedAt: AnthropicBetaTimestamp,
-    typeModel: AnthropicBetaManagedAgentsSpanModelRequestEndEventTypeModel
+    kind: AnthropicBetaManagedAgentsSpanModelRequestEndEventKind
   ) {
     self.id = id
     self.isError = isError
     self.modelRequestStartId = modelRequestStartId
     self.modelUsage = modelUsage
     self.processedAt = processedAt
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct AnthropicBetaManagedAgentsSpanModelRequestEndEvent: Codable, Senda
     case modelRequestStartId = "model_request_start_id"
     case modelUsage = "model_usage"
     case processedAt = "processed_at"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

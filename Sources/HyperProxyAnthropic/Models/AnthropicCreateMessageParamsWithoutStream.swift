@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct AnthropicCreateMessageParamsWithoutStream: Codable, Sendable {
   public var cacheControl: AnthropicCacheControlEphemeral?
-  public var container: HyperProxyJSONValue?
+  public var container: AnthropicCreateMessageParamsWithoutStreamContainer?
   public var inferenceGeo: String?
   public var maxTokens: Int
   public var messages: [AnthropicInputMessage]
@@ -21,11 +21,11 @@ public struct AnthropicCreateMessageParamsWithoutStream: Codable, Sendable {
   public var outputConfig: AnthropicOutputConfig?
   public var serviceTier: AnthropicCreateMessageParamsWithoutStreamServiceTier?
   public var stopSequences: [String]?
-  public var system: HyperProxyJSONValue?
+  public var system: AnthropicCreateMessageParamsWithoutStreamSystem?
   public var temperature: Double?
   public var thinking: AnthropicThinkingConfigParam?
   public var toolChoice: AnthropicToolChoice?
-  public var tools: [HyperProxyJSONValue]?
+  public var tools: [AnthropicCreateMessageParamsWithoutStreamToolsItem]?
   public var topK: Int?
   public var topP: Double?
 
@@ -34,17 +34,17 @@ public struct AnthropicCreateMessageParamsWithoutStream: Codable, Sendable {
     messages: [AnthropicInputMessage],
     model: String,
     cacheControl: AnthropicCacheControlEphemeral? = nil,
-    container: HyperProxyJSONValue? = nil,
+    container: AnthropicCreateMessageParamsWithoutStreamContainer? = nil,
     inferenceGeo: String? = nil,
     metadata: AnthropicMetadata? = nil,
     outputConfig: AnthropicOutputConfig? = nil,
     serviceTier: AnthropicCreateMessageParamsWithoutStreamServiceTier? = nil,
     stopSequences: [String]? = nil,
-    system: HyperProxyJSONValue? = nil,
+    system: AnthropicCreateMessageParamsWithoutStreamSystem? = nil,
     temperature: Double? = nil,
     thinking: AnthropicThinkingConfigParam? = nil,
     toolChoice: AnthropicToolChoice? = nil,
-    tools: [HyperProxyJSONValue]? = nil,
+    tools: [AnthropicCreateMessageParamsWithoutStreamToolsItem]? = nil,
     topK: Int? = nil,
     topP: Double? = nil
   ) {

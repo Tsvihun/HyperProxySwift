@@ -23,7 +23,7 @@ public struct ElevenLabsKbExternalSyncJob: Codable, Sendable {
   public var status: ElevenLabsCrawlStatus?
   public var syncType: ElevenLabsExternalSyncJobType?
   public var triggeredBy: ElevenLabsExternalSyncJobTrigger
-  public var typeModel: ElevenLabsExternalSyncProvider
+  public var kind: ElevenLabsExternalSyncProvider
   public var updatedAt: Int
 
   public init(
@@ -32,7 +32,7 @@ public struct ElevenLabsKbExternalSyncJob: Codable, Sendable {
     id: String,
     integrationConnectionId: String,
     triggeredBy: ElevenLabsExternalSyncJobTrigger,
-    typeModel: ElevenLabsExternalSyncProvider,
+    kind: ElevenLabsExternalSyncProvider,
     updatedAt: Int,
     completedAt: Int? = nil,
     errorMessage: String? = nil,
@@ -54,7 +54,7 @@ public struct ElevenLabsKbExternalSyncJob: Codable, Sendable {
     self.status = status
     self.syncType = syncType
     self.triggeredBy = triggeredBy
-    self.typeModel = typeModel
+    self.kind = kind
     self.updatedAt = updatedAt
   }
 
@@ -71,7 +71,7 @@ public struct ElevenLabsKbExternalSyncJob: Codable, Sendable {
     case status
     case syncType = "sync_type"
     case triggeredBy = "triggered_by"
-    case typeModel = "type"
+    case kind = "type"
     case updatedAt = "updated_at"
   }
 }

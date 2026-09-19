@@ -11,24 +11,24 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterMcpServerTool: Codable, Sendable {
-  public var allowedTools: HyperProxyJSONValue?
+  public var allowedTools: OpenRouterMcpServerToolAllowedTools?
   public var authorization: String?
   public var connectorId: OpenRouterMcpServerToolConnectorId?
   public var headers: [String: String]?
-  public var requireApproval: HyperProxyJSONValue?
+  public var requireApproval: OpenRouterMcpServerToolRequireApproval?
   public var serverDescription: String?
   public var serverLabel: String
   public var serverUrl: String?
-  public var typeModel: OpenRouterMcpServerToolTypeModel
+  public var kind: OpenRouterMcpServerToolKind
 
   public init(
     serverLabel: String,
-    typeModel: OpenRouterMcpServerToolTypeModel,
-    allowedTools: HyperProxyJSONValue? = nil,
+    kind: OpenRouterMcpServerToolKind,
+    allowedTools: OpenRouterMcpServerToolAllowedTools? = nil,
     authorization: String? = nil,
     connectorId: OpenRouterMcpServerToolConnectorId? = nil,
     headers: [String: String]? = nil,
-    requireApproval: HyperProxyJSONValue? = nil,
+    requireApproval: OpenRouterMcpServerToolRequireApproval? = nil,
     serverDescription: String? = nil,
     serverUrl: String? = nil
   ) {
@@ -40,7 +40,7 @@ public struct OpenRouterMcpServerTool: Codable, Sendable {
     self.serverDescription = serverDescription
     self.serverLabel = serverLabel
     self.serverUrl = serverUrl
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -52,6 +52,6 @@ public struct OpenRouterMcpServerTool: Codable, Sendable {
     case serverDescription = "server_description"
     case serverLabel = "server_label"
     case serverUrl = "server_url"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

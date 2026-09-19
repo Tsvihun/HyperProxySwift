@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicBetaJwksInline: Codable, Sendable {
   public var keys: [[String: HyperProxyJSONValue]]
-  public var typeModel: String
+  public var kind: AnthropicInlineKind
 
   public init(
     keys: [[String: HyperProxyJSONValue]],
-    typeModel: String
+    kind: AnthropicInlineKind = .inline
   ) {
     self.keys = keys
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case keys
-    case typeModel = "type"
+    case kind = "type"
   }
 }

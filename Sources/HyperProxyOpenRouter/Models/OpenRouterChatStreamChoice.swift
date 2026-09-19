@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct OpenRouterChatStreamChoice: Codable, Sendable {
   public var delta: OpenRouterChatStreamDelta
-  public var finishReason: OpenRouterChatFinishReasonEnum
+  public var finishReason: OpenRouterChatFinishReasonEnum?
   public var index: Int
   public var logprobs: OpenRouterChatTokenLogprobs?
 
   public init(
     delta: OpenRouterChatStreamDelta,
-    finishReason: OpenRouterChatFinishReasonEnum,
+    finishReason: OpenRouterChatFinishReasonEnum?,
     index: Int,
     logprobs: OpenRouterChatTokenLogprobs? = nil
   ) {

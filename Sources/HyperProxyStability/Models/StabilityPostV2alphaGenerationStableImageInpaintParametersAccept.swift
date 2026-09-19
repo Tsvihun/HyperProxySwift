@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct StabilityPostV2alphaGenerationStableImageInpaintParametersAccept: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum StabilityPostV2alphaGenerationStableImageInpaintParametersAccept: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let image = Self(rawValue: "image/*")
-  public static let applicationJson = Self(rawValue: "application/json")
+  case image = "image/*"
+  case applicationJson = "application/json"
 }

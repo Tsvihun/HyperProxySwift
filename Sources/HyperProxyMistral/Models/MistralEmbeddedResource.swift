@@ -13,25 +13,25 @@ import HyperProxyCore
 public struct MistralEmbeddedResource: Codable, Sendable {
   public var meta: [String: HyperProxyJSONValue]?
   public var annotations: MistralAnnotations?
-  public var resource: HyperProxyJSONValue
-  public var typeModel: String
+  public var resource: MistralEmbeddedResourceResource
+  public var kind: MistralResourceKind
 
   public init(
-    resource: HyperProxyJSONValue,
-    typeModel: String,
+    resource: MistralEmbeddedResourceResource,
+    kind: MistralResourceKind = .resource,
     meta: [String: HyperProxyJSONValue]? = nil,
     annotations: MistralAnnotations? = nil
   ) {
     self.meta = meta
     self.annotations = annotations
     self.resource = resource
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case meta = "_meta"
     case annotations
     case resource
-    case typeModel = "type"
+    case kind = "type"
   }
 }

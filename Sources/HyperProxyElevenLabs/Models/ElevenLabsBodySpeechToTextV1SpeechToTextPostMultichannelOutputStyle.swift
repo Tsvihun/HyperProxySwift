@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsBodySpeechToTextV1SpeechToTextPostMultichannelOutputStyle: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum ElevenLabsBodySpeechToTextV1SpeechToTextPostMultichannelOutputStyle: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let separate = Self(rawValue: "separate")
-  public static let combined = Self(rawValue: "combined")
+  case separate = "separate"
+  case combined = "combined"
 }

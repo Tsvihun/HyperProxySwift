@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesStyleAndToneGenderNeutralLanguageReadability: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum DeepLConfiguredRulesStyleAndToneGenderNeutralLanguageReadability: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useGenericMasculineForCommonCompoundNounsIfItIncreasesReadability = Self(
-    rawValue: "use_generic_masculine_for_common_compound_nouns_if_it_increases_readability")
+  case useGenericMasculineForCommonCompoundNounsIfItIncreasesReadability =
+    "use_generic_masculine_for_common_compound_nouns_if_it_increases_readability"
 }

@@ -15,10 +15,10 @@ public struct GeminiEnvironment: Codable, Sendable {
   public var fileCount: String?
   public var id: String?
   public var lastAccessed: String?
-  public var networkAllowlist: HyperProxyJSONValue?
+  public var networkAllowlist: GeminiEnvironmentNetworkEgressAllowlist?
   public var networkMode: GeminiEnvironmentNetworkMode?
   public var sizeBytes: String?
-  public var sources: [HyperProxyJSONValue]?
+  public var sources: [GeminiSource]?
   public var status: GeminiEnvironmentStatus?
   public var updated: String?
 
@@ -27,10 +27,10 @@ public struct GeminiEnvironment: Codable, Sendable {
     fileCount: String? = nil,
     id: String? = nil,
     lastAccessed: String? = nil,
-    networkAllowlist: HyperProxyJSONValue? = nil,
+    networkAllowlist: GeminiEnvironmentNetworkEgressAllowlist? = nil,
     networkMode: GeminiEnvironmentNetworkMode? = nil,
     sizeBytes: String? = nil,
-    sources: [HyperProxyJSONValue]? = nil,
+    sources: [GeminiSource]? = nil,
     status: GeminiEnvironmentStatus? = nil,
     updated: String? = nil
   ) {

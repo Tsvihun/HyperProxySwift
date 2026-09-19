@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct GeminiListTunedModelsResponse: Codable, Sendable {
   public var nextPageToken: String?
-  public var tunedModels: [HyperProxyJSONValue]?
+  public var tunedModels: [GeminiTunedModel]?
 
   public init(
     nextPageToken: String? = nil,
-    tunedModels: [HyperProxyJSONValue]? = nil
+    tunedModels: [GeminiTunedModel]? = nil
   ) {
     self.nextPageToken = nextPageToken
     self.tunedModels = tunedModels

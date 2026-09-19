@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenRouterQueryAnalyticsRequestClassifierFiltersFiltersItem: Codable, Sendable {
   public var field: String
   public var operatorValue: String
-  public var value: HyperProxyJSONValue
+  public var value: OpenRouterQueryAnalyticsRequestClassifierFiltersFiltersItemValue
 
   public init(
     field: String,
     operatorValue: String,
-    value: HyperProxyJSONValue
+    value: OpenRouterQueryAnalyticsRequestClassifierFiltersFiltersItemValue
   ) {
     self.field = field
     self.operatorValue = operatorValue

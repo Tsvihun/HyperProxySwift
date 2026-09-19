@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesDatesAndTimesHoursMinutesSecondsSeparator: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum DeepLConfiguredRulesDatesAndTimesHoursMinutesSecondsSeparator: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useColon = Self(rawValue: "use_colon")
-  public static let usePeriod = Self(rawValue: "use_period")
+  case useColon = "use_colon"
+  case usePeriod = "use_period"
 }

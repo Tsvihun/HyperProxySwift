@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterUnifiedBenchmarksORItemBenchmarkType: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let gpqaDiamond = Self(rawValue: "gpqa_diamond")
-  public static let tauBenchVerifiedAirline = Self(rawValue: "tau_bench_verified_airline")
+public enum OpenRouterUnifiedBenchmarksORItemBenchmarkType: String, Codable, Hashable, Sendable {
+  case gpqaDiamond = "gpqa_diamond"
+  case tauBenchVerifiedAirline = "tau_bench_verified_airline"
 }

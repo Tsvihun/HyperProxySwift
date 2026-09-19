@@ -14,13 +14,13 @@ public struct FalListWorkflowsParameters: Codable, Sendable {
   public var cursor: String?
   public var limit: Int?
   public var search: String?
-  public var usedEndpointIds: HyperProxyJSONValue?
+  public var usedEndpointIds: FalListWorkflowsParametersUsedEndpointIds?
 
   public init(
     cursor: String? = nil,
     limit: Int? = nil,
     search: String? = nil,
-    usedEndpointIds: HyperProxyJSONValue? = nil
+    usedEndpointIds: FalListWorkflowsParametersUsedEndpointIds? = nil
   ) {
     self.cursor = cursor
     self.limit = limit

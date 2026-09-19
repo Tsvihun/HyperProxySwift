@@ -12,22 +12,22 @@ import HyperProxyCore
 
 public struct OpenRouterMessagesToolAdditionBlock: Codable, Sendable {
   public var cacheControl: OpenRouterAnthropicCacheControlDirective?
-  public var tool: HyperProxyJSONValue
-  public var typeModel: OpenRouterMessagesToolAdditionBlockTypeModel
+  public var tool: OpenRouterMessagesToolAdditionBlockTool
+  public var kind: OpenRouterMessagesToolAdditionBlockKind
 
   public init(
-    tool: HyperProxyJSONValue,
-    typeModel: OpenRouterMessagesToolAdditionBlockTypeModel,
+    tool: OpenRouterMessagesToolAdditionBlockTool,
+    kind: OpenRouterMessagesToolAdditionBlockKind,
     cacheControl: OpenRouterAnthropicCacheControlDirective? = nil
   ) {
     self.cacheControl = cacheControl
     self.tool = tool
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case cacheControl = "cache_control"
     case tool
-    case typeModel = "type"
+    case kind = "type"
   }
 }

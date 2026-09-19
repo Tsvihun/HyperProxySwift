@@ -16,14 +16,14 @@ public struct OpenAIBetaProgramItemParam: Codable, Sendable {
   public var code: String
   public var fingerprint: String
   public var id: String
-  public var typeModel: OpenAIBetaProgramItemParamTypeModel
+  public var kind: OpenAIBetaProgramItemParamKind
 
   public init(
     callId: String,
     code: String,
     fingerprint: String,
     id: String,
-    typeModel: OpenAIBetaProgramItemParamTypeModel,
+    kind: OpenAIBetaProgramItemParamKind,
     agent: OpenAIBetaAgentTagParam? = nil
   ) {
     self.agent = agent
@@ -31,7 +31,7 @@ public struct OpenAIBetaProgramItemParam: Codable, Sendable {
     self.code = code
     self.fingerprint = fingerprint
     self.id = id
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIBetaProgramItemParam: Codable, Sendable {
     case code
     case fingerprint
     case id
-    case typeModel = "type"
+    case kind = "type"
   }
 }

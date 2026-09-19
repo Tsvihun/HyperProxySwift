@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct ElevenLabsASTOrOperatorNodeInput: Codable, Sendable {
   public var children: [ElevenLabsASTNodeInput]
-  public var typeModel: String?
+  public var kind: ElevenLabsOrOperatorKind?
 
   public init(
     children: [ElevenLabsASTNodeInput],
-    typeModel: String? = nil
+    kind: ElevenLabsOrOperatorKind? = nil
   ) {
     self.children = children
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case children
-    case typeModel = "type"
+    case kind = "type"
   }
 }

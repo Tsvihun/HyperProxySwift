@@ -14,14 +14,14 @@ public struct TogetherRLLoraConfig: Codable, Sendable {
   public var alpha: Int?
   public var dropout: Double?
   public var rank: Int?
-  public var seed: HyperProxyJSONValue?
+  public var seed: TogetherRLLoraConfigSeed?
   public var trainUnembed: Bool?
 
   public init(
     alpha: Int? = nil,
     dropout: Double? = nil,
     rank: Int? = nil,
-    seed: HyperProxyJSONValue? = nil,
+    seed: TogetherRLLoraConfigSeed? = nil,
     trainUnembed: Bool? = nil
   ) {
     self.alpha = alpha

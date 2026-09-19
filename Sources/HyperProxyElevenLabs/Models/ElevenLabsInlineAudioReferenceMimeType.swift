@@ -10,14 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsInlineAudioReferenceMimeType: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let audioMpeg = Self(rawValue: "audio/mpeg")
-  public static let audioWav = Self(rawValue: "audio/wav")
+public enum ElevenLabsInlineAudioReferenceMimeType: String, Codable, Hashable, Sendable {
+  case audioMpeg = "audio/mpeg"
+  case audioWav = "audio/wav"
 }

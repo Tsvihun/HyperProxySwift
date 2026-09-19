@@ -10,33 +10,35 @@
 import Foundation
 import HyperProxyCore
 
-public enum OpenAIBetaResponseSteerPendingReason: Codable, Sendable {
-  case string(String)
-  case betaResponseSteerPendingReasonAnyOf1(OpenAIBetaResponseSteerPendingReasonAnyOf1)
+public enum OpenAIBetaResponseSteerPendingReason: RawRepresentable, Codable, Hashable, Sendable {
+  case waitingForRequiredInput
+  case custom(String)
+
+  public init(rawValue: String) {
+    switch rawValue {
+    case "waiting_for_required_input":
+      self = .waitingForRequiredInput
+    default:
+      self = .custom(rawValue)
+    }
+  }
+
+  public var rawValue: String {
+    switch self {
+    case .waitingForRequiredInput:
+      return "waiting_for_required_input"
+    case .custom(let value):
+      return value
+    }
+  }
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(String.self) {
-      self = .string(value)
-      return
-    }
-    self = .betaResponseSteerPendingReasonAnyOf1(
-      try container.decode(OpenAIBetaResponseSteerPendingReasonAnyOf1.self))
+    self.init(rawValue: try container.decode(String.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
-    switch self {
-    case .string(let value):
-      try container.encode(value)
-    case .betaResponseSteerPendingReasonAnyOf1(let value):
-      try container.encode(value)
-    }
-  }
-}
-
-extension OpenAIBetaResponseSteerPendingReason: ExpressibleByStringLiteral {
-  public init(stringLiteral value: String) {
-    self = .string(value)
+    try container.encode(rawValue)
   }
 }

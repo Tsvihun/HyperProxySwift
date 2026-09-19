@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct TogetherVolumeContentRequest: Codable, Sendable {
   public var sourcePrefix: String?
-  public var typeModel: TogetherVolumeContentRequestTypeModel?
+  public var kind: TogetherVolumeContentRequestKind?
 
   public init(
     sourcePrefix: String? = nil,
-    typeModel: TogetherVolumeContentRequestTypeModel? = nil
+    kind: TogetherVolumeContentRequestKind? = nil
   ) {
     self.sourcePrefix = sourcePrefix
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case sourcePrefix = "source_prefix"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

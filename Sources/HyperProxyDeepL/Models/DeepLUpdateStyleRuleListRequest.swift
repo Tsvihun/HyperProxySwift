@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepLUpdateStyleRuleListRequest: Codable, Sendable {
-  public var name: DeepLStyleRuleName?
+  public var name: String?
 
   public init(
-    name: DeepLStyleRuleName? = nil
+    name: String? = nil
   ) {
     self.name = name
   }

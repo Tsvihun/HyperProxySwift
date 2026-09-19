@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaUserProfileRelationship: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let external = Self(rawValue: "external")
-  public static let resold = Self(rawValue: "resold")
-  public static let internalValue = Self(rawValue: "internal")
+public enum AnthropicBetaUserProfileRelationship: String, Codable, Hashable, Sendable {
+  case external = "external"
+  case resold = "resold"
+  case internalValue = "internal"
 }

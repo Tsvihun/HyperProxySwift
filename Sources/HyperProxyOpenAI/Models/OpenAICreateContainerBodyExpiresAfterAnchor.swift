@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAICreateContainerBodyExpiresAfterAnchor: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let lastActiveAt = Self(rawValue: "last_active_at")
+public enum OpenAICreateContainerBodyExpiresAfterAnchor: String, Codable, Hashable, Sendable {
+  case lastActiveAt = "last_active_at"
 }

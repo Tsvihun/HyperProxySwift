@@ -13,6 +13,8 @@ import HyperProxyCore
 public enum OpenAIVaultCredentialAuthResource: Codable, Sendable {
   case vaultCredentialAuthResourceMcpOauth(OpenAIVaultCredentialAuthResourceMcpOauth)
   case vaultCredentialAuthResourceStaticBearer(OpenAIVaultCredentialAuthResourceStaticBearer)
+  case vaultCredentialAuthResourceEnvironmentVariable(
+    OpenAIVaultCredentialAuthResourceEnvironmentVariable)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -20,8 +22,12 @@ public enum OpenAIVaultCredentialAuthResource: Codable, Sendable {
       self = .vaultCredentialAuthResourceMcpOauth(value)
       return
     }
-    self = .vaultCredentialAuthResourceStaticBearer(
-      try container.decode(OpenAIVaultCredentialAuthResourceStaticBearer.self))
+    if let value = try? container.decode(OpenAIVaultCredentialAuthResourceStaticBearer.self) {
+      self = .vaultCredentialAuthResourceStaticBearer(value)
+      return
+    }
+    self = .vaultCredentialAuthResourceEnvironmentVariable(
+      try container.decode(OpenAIVaultCredentialAuthResourceEnvironmentVariable.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -30,6 +36,8 @@ public enum OpenAIVaultCredentialAuthResource: Codable, Sendable {
     case .vaultCredentialAuthResourceMcpOauth(let value):
       try container.encode(value)
     case .vaultCredentialAuthResourceStaticBearer(let value):
+      try container.encode(value)
+    case .vaultCredentialAuthResourceEnvironmentVariable(let value):
       try container.encode(value)
     }
   }

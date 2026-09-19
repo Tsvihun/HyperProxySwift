@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct OpenRouterPublicEndpoint: Codable, Sendable {
   public var contextLength: Int
-  public var latencyLast30m: OpenRouterPercentileStats
+  public var latencyLast30m: OpenRouterPercentileStats?
   public var maxCompletionTokens: Int
   public var maxPromptTokens: Int
   public var modelId: String
@@ -28,14 +28,14 @@ public struct OpenRouterPublicEndpoint: Codable, Sendable {
   public var supportsToolChoice: OpenRouterToolChoiceSupport
   public var supportsVoiceCloning: Bool?
   public var tag: String
-  public var throughputLast30m: HyperProxyJSONValue
+  public var throughputLast30m: OpenRouterPercentileStats?
   public var uptimeLast1d: Double
   public var uptimeLast30m: Double
   public var uptimeLast5m: Double
 
   public init(
     contextLength: Int,
-    latencyLast30m: OpenRouterPercentileStats,
+    latencyLast30m: OpenRouterPercentileStats?,
     maxCompletionTokens: Int,
     maxPromptTokens: Int,
     modelId: String,
@@ -48,7 +48,7 @@ public struct OpenRouterPublicEndpoint: Codable, Sendable {
     supportsImplicitCaching: Bool,
     supportsToolChoice: OpenRouterToolChoiceSupport,
     tag: String,
-    throughputLast30m: HyperProxyJSONValue,
+    throughputLast30m: OpenRouterPercentileStats?,
     uptimeLast1d: Double,
     uptimeLast30m: Double,
     uptimeLast5m: Double,

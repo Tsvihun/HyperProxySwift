@@ -10,19 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsProjectResponseModelSourceTypeAnyOf1: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let blank = Self(rawValue: "blank")
-  public static let book = Self(rawValue: "book")
-  public static let article = Self(rawValue: "article")
-  public static let genfm = Self(rawValue: "genfm")
-  public static let video = Self(rawValue: "video")
-  public static let screenplay = Self(rawValue: "screenplay")
+public enum ElevenLabsProjectResponseModelSourceTypeAnyOf1: String, Codable, Hashable, Sendable {
+  case blank = "blank"
+  case book = "book"
+  case article = "article"
+  case genfm = "genfm"
+  case video = "video"
+  case screenplay = "screenplay"
 }

@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesStyleAndToneAddressingNonBinaryPeople: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesStyleAndToneAddressingNonBinaryPeople: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useSpanishWordElle = Self(rawValue: "use_spanish_word_elle")
-  public static let useSpanishWordEllx = Self(rawValue: "use_spanish_word_ellx")
+  case useSpanishWordElle = "use_spanish_word_elle"
+  case useSpanishWordEllx = "use_spanish_word_ellx"
 }

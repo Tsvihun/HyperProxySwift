@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct OpenAITokenCountsBody: Codable, Sendable {
   public var conversation: OpenAIConversationParam?
-  public var input: HyperProxyJSONValue?
+  public var input: OpenAITokenCountsBodyInputAnyOf1?
   public var instructions: String?
   public var model: String?
   public var parallelToolCalls: Bool?
@@ -26,7 +26,7 @@ public struct OpenAITokenCountsBody: Codable, Sendable {
 
   public init(
     conversation: OpenAIConversationParam? = nil,
-    input: HyperProxyJSONValue? = nil,
+    input: OpenAITokenCountsBodyInputAnyOf1? = nil,
     instructions: String? = nil,
     model: String? = nil,
     parallelToolCalls: Bool? = nil,

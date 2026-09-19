@@ -15,7 +15,7 @@ public struct ElevenLabsListEnvironmentVariablesParameters: Codable, Sendable {
   public var environment: String?
   public var label: String?
   public var pageSize: Int?
-  public var typeModel: ElevenLabsListEnvironmentVariablesParametersTypeModelAnyOf1?
+  public var kind: ElevenLabsListEnvironmentVariablesParametersKindAnyOf1?
   public var xiApiKey: String?
 
   public init(
@@ -23,14 +23,14 @@ public struct ElevenLabsListEnvironmentVariablesParameters: Codable, Sendable {
     environment: String? = nil,
     label: String? = nil,
     pageSize: Int? = nil,
-    typeModel: ElevenLabsListEnvironmentVariablesParametersTypeModelAnyOf1? = nil,
+    kind: ElevenLabsListEnvironmentVariablesParametersKindAnyOf1? = nil,
     xiApiKey: String? = nil
   ) {
     self.cursor = cursor
     self.environment = environment
     self.label = label
     self.pageSize = pageSize
-    self.typeModel = typeModel
+    self.kind = kind
     self.xiApiKey = xiApiKey
   }
 
@@ -39,7 +39,7 @@ public struct ElevenLabsListEnvironmentVariablesParameters: Codable, Sendable {
     case environment
     case label
     case pageSize = "page_size"
-    case typeModel = "type"
+    case kind = "type"
     case xiApiKey = "xi-api-key"
   }
 }

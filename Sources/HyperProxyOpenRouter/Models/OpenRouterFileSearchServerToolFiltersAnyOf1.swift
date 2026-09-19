@@ -12,22 +12,22 @@ import HyperProxyCore
 
 public struct OpenRouterFileSearchServerToolFiltersAnyOf1: Codable, Sendable {
   public var key: String
-  public var typeModel: OpenRouterFileSearchServerToolFiltersAnyOf1TypeModel
-  public var value: HyperProxyJSONValue
+  public var kind: OpenRouterFileSearchServerToolFiltersAnyOf1Kind
+  public var value: OpenRouterFileSearchServerToolFiltersAnyOf1Value
 
   public init(
     key: String,
-    typeModel: OpenRouterFileSearchServerToolFiltersAnyOf1TypeModel,
-    value: HyperProxyJSONValue
+    kind: OpenRouterFileSearchServerToolFiltersAnyOf1Kind,
+    value: OpenRouterFileSearchServerToolFiltersAnyOf1Value
   ) {
     self.key = key
-    self.typeModel = typeModel
+    self.kind = kind
     self.value = value
   }
 
   enum CodingKeys: String, CodingKey {
     case key
-    case typeModel = "type"
+    case kind = "type"
     case value
   }
 }

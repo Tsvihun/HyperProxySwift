@@ -10,18 +10,12 @@
 import Foundation
 import HyperProxyCore
 
-public struct
+public enum
   ElevenLabsBodyCreatesAudioNativeEnabledProjectV1AudioNativePostApplyTextNormalizationAnyOf1:
-    RawRepresentable, Codable, Hashable, Sendable
+    String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
-  public static let on = Self(rawValue: "on")
-  public static let off = Self(rawValue: "off")
-  public static let applyEnglish = Self(rawValue: "apply_english")
+  case auto = "auto"
+  case on = "on"
+  case off = "off"
+  case applyEnglish = "apply_english"
 }

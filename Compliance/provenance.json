@@ -3,105 +3,105 @@
   "modules": [
     {
       "module": "HyperProxyAnthropic",
-      "artifactSha256": "84b3da7a9869f42a69af57bd6a2547b99f0e12b4ea0b68d042bd0d7c8a6aac74",
+      "artifactSha256": "b23bb890bac2a1810a5f6beeedcc5535c23dd51ebfe6519cc7aa14021ce95e07",
       "reviewStatus": "pending",
       "sources": [],
       "noticeFiles": []
     },
     {
       "module": "HyperProxyBFL",
-      "artifactSha256": "c3c4d1eb6b009fd4403da9d261299b3ab04da473e2a21ab5ff4be79e402e76f9",
+      "artifactSha256": "a289beb0fa830062ec45619b5dae2a0cf56687b33283ad7da655b93d39c7e47f",
       "reviewStatus": "pending",
       "sources": [],
       "noticeFiles": []
     },
     {
       "module": "HyperProxyBrave",
-      "artifactSha256": "d317cd479dcf5271b4c0f9332e9bcb8cc66835ae1b02abd506483283308367c9",
+      "artifactSha256": "e9fe9bac141c6ab912c9198c6628c56d0e9e6f7d162fa8a88cf202d659e2ebd2",
       "reviewStatus": "pending",
       "sources": [],
       "noticeFiles": []
     },
     {
       "module": "HyperProxyDeepL",
-      "artifactSha256": "96b7424795caa168478c41ec3198680722faa8f20aa978bd59becae215f18e05",
+      "artifactSha256": "b1d2ebc57eb0770ebce6c0f6e3fc0f9a7886a7f98f3fded4767c9f359dac74d2",
       "reviewStatus": "pending",
       "sources": [],
       "noticeFiles": []
     },
     {
       "module": "HyperProxyDeepSeek",
-      "artifactSha256": "4c7255965c71503d7d36cf28373f45c7b9440f1e991c738676fd8b04397a373d",
+      "artifactSha256": "2df5cde7b455640701e4fc25c7e5255363a50f53f66cf125966eb1d600a0b654",
       "reviewStatus": "pending",
       "sources": [],
       "noticeFiles": []
     },
     {
       "module": "HyperProxyEachAI",
-      "artifactSha256": "46635a8c937eae7f578b0d5268239f9d85de35d5bb98e089e63b86aa7d6c6a30",
+      "artifactSha256": "e361ada272de3e4d7ff56ba3b1f30264fc91d10e3413ecd926513a15c163c3c2",
       "reviewStatus": "pending",
       "sources": [],
       "noticeFiles": []
     },
     {
       "module": "HyperProxyElevenLabs",
-      "artifactSha256": "bf4236801ce43c292e6da40d46cce1cfa2239891748600a603a2fa95a940fe5b",
+      "artifactSha256": "715a4d48d98f238e08614da7a49c5a4131a2b524b6902658111a8a818e3b6a7c",
       "reviewStatus": "pending",
       "sources": [],
       "noticeFiles": []
     },
     {
       "module": "HyperProxyFal",
-      "artifactSha256": "c5457a14a39aea71b2d6b7bab6c4061ddc3d0356ac98ef8e138d19cbf1266adf",
+      "artifactSha256": "a7db29512f644df9eab968be4ca5c59e3c9eeeda00656aadcff081328c2d9e73",
       "reviewStatus": "pending",
       "sources": [],
       "noticeFiles": []
     },
     {
       "module": "HyperProxyFireworks",
-      "artifactSha256": "dbac387dc74d238ac24ead6feaecea3f632f1dee19f531e03b847ddc24c4bccd",
+      "artifactSha256": "6df2004b789fb1e1e09978cf926813a73d77634387d4aaf71d56d01cc4a4b284",
       "reviewStatus": "pending",
       "sources": [],
       "noticeFiles": []
     },
     {
       "module": "HyperProxyGemini",
-      "artifactSha256": "ac54df8a219d490bda52d7f217201339142b086332fbe24a3d5a05a76a0c4ea9",
+      "artifactSha256": "5ab09c129068a30dca81e22ea652cc0a2d0f2fa82c6b88468f0b7f43fa6ec042",
       "reviewStatus": "pending",
       "sources": [],
       "noticeFiles": []
     },
     {
       "module": "HyperProxyGroq",
-      "artifactSha256": "d47f6d9ad448b28efea0e7c00217c4519d0d229467eea85fb3aac147442df78b",
+      "artifactSha256": "b82efdb2d7ff4312d5a4104d944c91f2761b286a08a2a2b13794f92f8500b06e",
       "reviewStatus": "pending",
       "sources": [],
       "noticeFiles": []
     },
     {
       "module": "HyperProxyMistral",
-      "artifactSha256": "139a523be1c9cd1c9bd778c03105bc21b3d05f342e6acf61527674f171766271",
+      "artifactSha256": "66bbd3c4442725bb24ffe0559b1f76bc0854cc6583845c77579feea2d6a3d75c",
       "reviewStatus": "pending",
       "sources": [],
       "noticeFiles": []
     },
     {
       "module": "HyperProxyOpenAI",
-      "artifactSha256": "c354c3be75c9bfa9c816f73000bfdb792444b79087cfc18d1b8c5980ab65eef5",
+      "artifactSha256": "1ac1d0b14bde925ab1c73f7f774bfc9296f4cfe216ddeebfe3b0943964f5f323",
       "reviewStatus": "pending",
       "sources": [],
       "noticeFiles": []
     },
     {
       "module": "HyperProxyOpenRouter",
-      "artifactSha256": "7df597d3dd70c0fb1045835dc6f9a1f7346161c9f5f3ef35dd5a35867b48628f",
+      "artifactSha256": "0ecaccb8d68ce0cc5f458d3716284894aed37f6bc48c44325f8c8af323f6da01",
       "reviewStatus": "pending",
       "sources": [],
       "noticeFiles": []
     },
     {
       "module": "HyperProxyPerplexity",
-      "artifactSha256": "29db1c7265a23d5c18cdb961207ab5fc3d3d32687ca589696f522fa8dd99dee2",
+      "artifactSha256": "946d9202f1bdabc2b6fc25a2c3c0f15b6f3c2f995e7bee0d5364251727d286bb",
       "reviewStatus": "pending",
       "sources": [],
       "noticeFiles": []
@@ -111,25 +111,25 @@
       "reviewStatus": "pending",
       "sources": [],
       "noticeFiles": [],
-      "artifactSha256": "3b190a05dbc655b73d4fdbad9bbe49ac2a954a9c522aadf9e31e96d5c3892a63"
+      "artifactSha256": "67830ec4958c4f238d80a536083847eaceedda987db52316ce5ec883f97d4967"
     },
     {
       "module": "HyperProxyReplicate",
-      "artifactSha256": "d779b2eec1a587dd9b471bd4a1691b5473c20c24ab32594b287fb1964d880b7f",
+      "artifactSha256": "c03b4d20645dba733c5f96d7c019550375e0f72529d3945b4283eb3619680736",
       "reviewStatus": "pending",
       "sources": [],
       "noticeFiles": []
     },
     {
       "module": "HyperProxyStability",
-      "artifactSha256": "4e18ea70662bb2e1e95e4c7fbd7345528cbc2da88c32d39b28a0b2247d51285a",
+      "artifactSha256": "147222cd3630070d65464abe5f12f0a8f7bc503a25599885bdff858a30abd449",
       "reviewStatus": "pending",
       "sources": [],
       "noticeFiles": []
     },
     {
       "module": "HyperProxyTogether",
-      "artifactSha256": "61afd01edd916f304b780699843dc55923b6a84ff4ffc30b80e71c567102c4ca",
+      "artifactSha256": "18468d125bd57d44c892e4672c7337954e3cd68507190ef9a31c91a692508695",
       "reviewStatus": "pending",
       "sources": [],
       "noticeFiles": []

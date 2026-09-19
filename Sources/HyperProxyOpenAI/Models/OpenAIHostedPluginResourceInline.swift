@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenAIHostedPluginResourceInline: Codable, Sendable {
   public var description: String
   public var name: String
-  public var typeModel: OpenAIHostedPluginResourceInlineTypeModel
+  public var kind: OpenAIHostedPluginResourceInlineKind
 
   public init(
     description: String,
     name: String,
-    typeModel: OpenAIHostedPluginResourceInlineTypeModel
+    kind: OpenAIHostedPluginResourceInlineKind
   ) {
     self.description = description
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case description
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

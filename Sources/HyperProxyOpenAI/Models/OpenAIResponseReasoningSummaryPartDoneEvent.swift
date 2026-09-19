@@ -17,7 +17,7 @@ public struct OpenAIResponseReasoningSummaryPartDoneEvent: Codable, Sendable {
   public var sequenceNumber: Int
   public var status: OpenAIResponseReasoningSummaryPartDoneEventStatus?
   public var summaryIndex: Int
-  public var typeModel: OpenAIResponseReasoningSummaryPartDoneEventTypeModel
+  public var kind: OpenAIResponseReasoningSummaryPartDoneEventKind
 
   public init(
     itemId: String,
@@ -25,7 +25,7 @@ public struct OpenAIResponseReasoningSummaryPartDoneEvent: Codable, Sendable {
     part: OpenAIResponseReasoningSummaryPartDoneEventPart,
     sequenceNumber: Int,
     summaryIndex: Int,
-    typeModel: OpenAIResponseReasoningSummaryPartDoneEventTypeModel,
+    kind: OpenAIResponseReasoningSummaryPartDoneEventKind,
     status: OpenAIResponseReasoningSummaryPartDoneEventStatus? = nil
   ) {
     self.itemId = itemId
@@ -34,7 +34,7 @@ public struct OpenAIResponseReasoningSummaryPartDoneEvent: Codable, Sendable {
     self.sequenceNumber = sequenceNumber
     self.status = status
     self.summaryIndex = summaryIndex
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenAIResponseReasoningSummaryPartDoneEvent: Codable, Sendable {
     case sequenceNumber = "sequence_number"
     case status
     case summaryIndex = "summary_index"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

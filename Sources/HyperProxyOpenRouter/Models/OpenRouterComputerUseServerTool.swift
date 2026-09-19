@@ -14,24 +14,24 @@ public struct OpenRouterComputerUseServerTool: Codable, Sendable {
   public var displayHeight: Int
   public var displayWidth: Int
   public var environment: OpenRouterComputerUseServerToolEnvironment
-  public var typeModel: OpenRouterComputerUseServerToolTypeModel
+  public var kind: OpenRouterComputerUseServerToolKind
 
   public init(
     displayHeight: Int,
     displayWidth: Int,
     environment: OpenRouterComputerUseServerToolEnvironment,
-    typeModel: OpenRouterComputerUseServerToolTypeModel
+    kind: OpenRouterComputerUseServerToolKind
   ) {
     self.displayHeight = displayHeight
     self.displayWidth = displayWidth
     self.environment = environment
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case displayHeight = "display_height"
     case displayWidth = "display_width"
     case environment
-    case typeModel = "type"
+    case kind = "type"
   }
 }

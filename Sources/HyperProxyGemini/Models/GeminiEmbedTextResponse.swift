@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiEmbedTextResponse: Codable, Sendable {
-  public var embedding: HyperProxyJSONValue?
+  public var embedding: GeminiEmbedding?
 
   public init(
-    embedding: HyperProxyJSONValue? = nil
+    embedding: GeminiEmbedding? = nil
   ) {
     self.embedding = embedding
   }

@@ -12,24 +12,24 @@ import HyperProxyCore
 
 public struct FalServerlessListRequestsByEndpointParameters: Codable, Sendable {
   public var cursor: String?
-  public var end: String?
-  public var endpointId: HyperProxyJSONValue
-  public var expand: HyperProxyJSONValue?
+  public var end: FalServerlessListRequestsByEndpointParametersEnd?
+  public var endpointId: FalServerlessListRequestsByEndpointParametersEndpointId
+  public var expand: FalServerlessListRequestsByEndpointParametersExpand?
   public var limit: Int?
   public var requestId: String?
   public var sortBy: FalServerlessListRequestsByEndpointParametersSortBy?
-  public var start: String?
+  public var start: FalServerlessListRequestsByEndpointParametersStart?
   public var status: FalServerlessListRequestsByEndpointParametersStatus?
 
   public init(
-    endpointId: HyperProxyJSONValue,
+    endpointId: FalServerlessListRequestsByEndpointParametersEndpointId,
     cursor: String? = nil,
-    end: String? = nil,
-    expand: HyperProxyJSONValue? = nil,
+    end: FalServerlessListRequestsByEndpointParametersEnd? = nil,
+    expand: FalServerlessListRequestsByEndpointParametersExpand? = nil,
     limit: Int? = nil,
     requestId: String? = nil,
     sortBy: FalServerlessListRequestsByEndpointParametersSortBy? = nil,
-    start: String? = nil,
+    start: FalServerlessListRequestsByEndpointParametersStart? = nil,
     status: FalServerlessListRequestsByEndpointParametersStatus? = nil
   ) {
     self.cursor = cursor

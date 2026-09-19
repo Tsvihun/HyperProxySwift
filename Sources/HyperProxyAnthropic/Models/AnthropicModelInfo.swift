@@ -17,7 +17,7 @@ public struct AnthropicModelInfo: Codable, Sendable {
   public var id: String
   public var maxInputTokens: Int?
   public var maxTokens: Int?
-  public var typeModel: String
+  public var kind: AnthropicModelKind
 
   public init(
     capabilities: AnthropicModelCapabilities?,
@@ -26,7 +26,7 @@ public struct AnthropicModelInfo: Codable, Sendable {
     id: String,
     maxInputTokens: Int?,
     maxTokens: Int?,
-    typeModel: String
+    kind: AnthropicModelKind = .model
   ) {
     self.capabilities = capabilities
     self.createdAt = createdAt
@@ -34,7 +34,7 @@ public struct AnthropicModelInfo: Codable, Sendable {
     self.id = id
     self.maxInputTokens = maxInputTokens
     self.maxTokens = maxTokens
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct AnthropicModelInfo: Codable, Sendable {
     case id
     case maxInputTokens = "max_input_tokens"
     case maxTokens = "max_tokens"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

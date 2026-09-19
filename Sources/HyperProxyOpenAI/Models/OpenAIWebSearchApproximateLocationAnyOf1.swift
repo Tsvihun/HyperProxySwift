@@ -15,20 +15,20 @@ public struct OpenAIWebSearchApproximateLocationAnyOf1: Codable, Sendable {
   public var country: String?
   public var region: String?
   public var timezone: String?
-  public var typeModel: OpenAIWebSearchApproximateLocationAnyOf1TypeModel?
+  public var kind: OpenAIWebSearchApproximateLocationAnyOf1Kind?
 
   public init(
     city: String? = nil,
     country: String? = nil,
     region: String? = nil,
     timezone: String? = nil,
-    typeModel: OpenAIWebSearchApproximateLocationAnyOf1TypeModel? = nil
+    kind: OpenAIWebSearchApproximateLocationAnyOf1Kind? = nil
   ) {
     self.city = city
     self.country = country
     self.region = region
     self.timezone = timezone
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIWebSearchApproximateLocationAnyOf1: Codable, Sendable {
     case country
     case region
     case timezone
-    case typeModel = "type"
+    case kind = "type"
   }
 }

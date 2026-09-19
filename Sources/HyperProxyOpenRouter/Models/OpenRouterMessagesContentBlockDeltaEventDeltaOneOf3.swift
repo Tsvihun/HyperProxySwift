@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterMessagesContentBlockDeltaEventDeltaOneOf3: Codable, Sendable {
   public var thinking: String
-  public var typeModel: OpenRouterMessagesContentBlockDeltaEventDeltaOneOf3TypeModel
+  public var kind: OpenRouterMessagesContentBlockDeltaEventDeltaOneOf3Kind
 
   public init(
     thinking: String,
-    typeModel: OpenRouterMessagesContentBlockDeltaEventDeltaOneOf3TypeModel
+    kind: OpenRouterMessagesContentBlockDeltaEventDeltaOneOf3Kind
   ) {
     self.thinking = thinking
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case thinking
-    case typeModel = "type"
+    case kind = "type"
   }
 }

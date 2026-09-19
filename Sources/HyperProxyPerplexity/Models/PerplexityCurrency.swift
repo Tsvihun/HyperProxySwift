@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct PerplexityCurrency: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let uSD = Self(rawValue: "USD")
+public enum PerplexityCurrency: String, Codable, Hashable, Sendable {
+  case uSD = "USD"
 }

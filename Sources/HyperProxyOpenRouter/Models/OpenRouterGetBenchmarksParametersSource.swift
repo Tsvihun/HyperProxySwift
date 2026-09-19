@@ -10,15 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterGetBenchmarksParametersSource: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let artificialAnalysis = Self(rawValue: "artificial-analysis")
-  public static let designArena = Self(rawValue: "design-arena")
-  public static let openrouter = Self(rawValue: "openrouter")
+public enum OpenRouterGetBenchmarksParametersSource: String, Codable, Hashable, Sendable {
+  case artificialAnalysis = "artificial-analysis"
+  case designArena = "design-arena"
+  case openrouter = "openrouter"
 }

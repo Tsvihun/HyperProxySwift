@@ -18,6 +18,9 @@ import Foundation
 /// to replay: `GET`/`HEAD`/`OPTIONS`, or any request carrying an
 /// `Idempotency-Key` header — the same rule the gateway applies to failover.
 /// A provider `Retry-After` header is honored ahead of the computed backoff.
+/// Gateway refusals that cannot clear on their own — an exhausted plan quota
+/// or spend budget, a revoked key — are never retried even when their status
+/// is listed; see ``HyperProxyGatewayRejection/isTransient``.
 /// Streaming, WebSocket, and byte-stream calls are never retried
 /// automatically.
 public struct HyperProxyRetryPolicy: Sendable, Equatable {
@@ -81,6 +84,12 @@ public struct HyperProxyRetryPolicy: Sendable, Equatable {
       let status = transportError.statusCode
     {
       guard self.retryableStatusCodes.contains(status) else {
+        return nil
+      }
+      // A 429 for an exhausted plan quota or spend budget is not "try again
+      // in a second": it holds until the period resets or the developer
+      // changes the plan. Only transient gateway refusals are retried.
+      if let rejection = transportError.gatewayRejection, !rejection.isTransient {
         return nil
       }
       if self.respectsRetryAfterHeader, let retryAfter = transportError.retryAfter {

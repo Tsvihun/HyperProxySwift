@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterStopServerToolsWhenMaxCost: Codable, Sendable {
   public var maxCostInDollars: Double
-  public var typeModel: OpenRouterStopServerToolsWhenMaxCostTypeModel
+  public var kind: OpenRouterStopServerToolsWhenMaxCostKind
 
   public init(
     maxCostInDollars: Double,
-    typeModel: OpenRouterStopServerToolsWhenMaxCostTypeModel
+    kind: OpenRouterStopServerToolsWhenMaxCostKind
   ) {
     self.maxCostInDollars = maxCostInDollars
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case maxCostInDollars = "max_cost_in_dollars"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

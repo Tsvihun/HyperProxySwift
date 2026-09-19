@@ -20,7 +20,7 @@ public struct AnthropicBetaMessageBatch: Codable, Sendable {
   public var processingStatus: AnthropicBetaMessageBatchProcessingStatus
   public var requestCounts: AnthropicBetaRequestCounts
   public var resultsUrl: String?
-  public var typeModel: String
+  public var kind: AnthropicMessageBatchKind
 
   public init(
     archivedAt: String?,
@@ -32,7 +32,7 @@ public struct AnthropicBetaMessageBatch: Codable, Sendable {
     processingStatus: AnthropicBetaMessageBatchProcessingStatus,
     requestCounts: AnthropicBetaRequestCounts,
     resultsUrl: String?,
-    typeModel: String
+    kind: AnthropicMessageBatchKind = .messageBatch
   ) {
     self.archivedAt = archivedAt
     self.cancelInitiatedAt = cancelInitiatedAt
@@ -43,7 +43,7 @@ public struct AnthropicBetaMessageBatch: Codable, Sendable {
     self.processingStatus = processingStatus
     self.requestCounts = requestCounts
     self.resultsUrl = resultsUrl
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -56,6 +56,6 @@ public struct AnthropicBetaMessageBatch: Codable, Sendable {
     case processingStatus = "processing_status"
     case requestCounts = "request_counts"
     case resultsUrl = "results_url"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

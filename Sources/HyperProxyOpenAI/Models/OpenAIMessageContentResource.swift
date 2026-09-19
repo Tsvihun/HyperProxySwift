@@ -10,4 +10,34 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIMessageContentResource = HyperProxyJSONValue
+public enum OpenAIMessageContentResource: Codable, Sendable {
+  case messageContentResourceInputText(OpenAIMessageContentResourceInputText)
+  case messageContentResourceInputImage(OpenAIMessageContentResourceInputImage)
+  case messageContentResourceOutputText(OpenAIMessageContentResourceOutputText)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(OpenAIMessageContentResourceInputText.self) {
+      self = .messageContentResourceInputText(value)
+      return
+    }
+    if let value = try? container.decode(OpenAIMessageContentResourceInputImage.self) {
+      self = .messageContentResourceInputImage(value)
+      return
+    }
+    self = .messageContentResourceOutputText(
+      try container.decode(OpenAIMessageContentResourceOutputText.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .messageContentResourceInputText(let value):
+      try container.encode(value)
+    case .messageContentResourceInputImage(let value):
+      try container.encode(value)
+    case .messageContentResourceOutputText(let value):
+      try container.encode(value)
+    }
+  }
+}

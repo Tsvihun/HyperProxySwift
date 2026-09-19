@@ -10,4 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIChatCompletionMessageToolCalls = [HyperProxyJSONValue]
+public typealias OpenAIChatCompletionMessageToolCalls = [OpenAIChatCompletionMessageToolCallsItem]

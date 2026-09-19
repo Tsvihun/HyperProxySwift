@@ -10,18 +10,12 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherRLLossType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let lOSSTYPEUNSPECIFIED = Self(rawValue: "LOSS_TYPE_UNSPECIFIED")
-  public static let lOSSTYPECROSSENTROPY = Self(rawValue: "LOSS_TYPE_CROSS_ENTROPY")
-  public static let lOSSTYPEGRPO = Self(rawValue: "LOSS_TYPE_GRPO")
-  public static let lOSSTYPEIMPORTANCESAMPLING = Self(rawValue: "LOSS_TYPE_IMPORTANCE_SAMPLING")
-  public static let lOSSTYPEPPO = Self(rawValue: "LOSS_TYPE_PPO")
-  public static let lOSSTYPECISPO = Self(rawValue: "LOSS_TYPE_CISPO")
-  public static let lOSSTYPEDRO = Self(rawValue: "LOSS_TYPE_DRO")
+public enum TogetherRLLossType: String, Codable, Hashable, Sendable {
+  case lOSSTYPEUNSPECIFIED = "LOSS_TYPE_UNSPECIFIED"
+  case lOSSTYPECROSSENTROPY = "LOSS_TYPE_CROSS_ENTROPY"
+  case lOSSTYPEGRPO = "LOSS_TYPE_GRPO"
+  case lOSSTYPEIMPORTANCESAMPLING = "LOSS_TYPE_IMPORTANCE_SAMPLING"
+  case lOSSTYPEPPO = "LOSS_TYPE_PPO"
+  case lOSSTYPECISPO = "LOSS_TYPE_CISPO"
+  case lOSSTYPEDRO = "LOSS_TYPE_DRO"
 }

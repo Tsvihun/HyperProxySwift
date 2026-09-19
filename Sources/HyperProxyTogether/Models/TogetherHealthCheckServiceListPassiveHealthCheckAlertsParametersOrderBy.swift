@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherHealthCheckServiceListPassiveHealthCheckAlertsParametersOrderBy:
-  RawRepresentable, Codable, Hashable, Sendable
+public enum TogetherHealthCheckServiceListPassiveHealthCheckAlertsParametersOrderBy: String,
+  Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let pHCALERTORDERSTARTEDATASC = Self(rawValue: "PHC_ALERT_ORDER_STARTED_AT_ASC")
-  public static let pHCALERTORDERSTARTEDATDESC = Self(rawValue: "PHC_ALERT_ORDER_STARTED_AT_DESC")
+  case pHCALERTORDERSTARTEDATASC = "PHC_ALERT_ORDER_STARTED_AT_ASC"
+  case pHCALERTORDERSTARTEDATDESC = "PHC_ALERT_ORDER_STARTED_AT_DESC"
 }

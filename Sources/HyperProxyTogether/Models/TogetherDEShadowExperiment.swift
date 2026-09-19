@@ -19,7 +19,7 @@ public struct TogetherDEShadowExperiment: Codable, Sendable {
   public var id: String
   public var name: String
   public var projectId: String
-  public var source: HyperProxyJSONValue
+  public var source: TogetherDEShadowExperimentSourceResponse
   public var state: TogetherDEShadowExperimentState
   public var targets: [TogetherDEShadowExperimentTarget]
   public var updatedAt: String
@@ -32,7 +32,7 @@ public struct TogetherDEShadowExperiment: Codable, Sendable {
     id: String,
     name: String,
     projectId: String,
-    source: HyperProxyJSONValue,
+    source: TogetherDEShadowExperimentSourceResponse,
     state: TogetherDEShadowExperimentState,
     targets: [TogetherDEShadowExperimentTarget],
     updatedAt: String,

@@ -10,19 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsFineTuningResponseModelStateValue: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let notStarted = Self(rawValue: "not_started")
-  public static let queued = Self(rawValue: "queued")
-  public static let fineTuning = Self(rawValue: "fine_tuning")
-  public static let fineTuned = Self(rawValue: "fine_tuned")
-  public static let failed = Self(rawValue: "failed")
-  public static let delayed = Self(rawValue: "delayed")
+public enum ElevenLabsFineTuningResponseModelStateValue: String, Codable, Hashable, Sendable {
+  case notStarted = "not_started"
+  case queued = "queued"
+  case fineTuning = "fine_tuning"
+  case fineTuned = "fine_tuned"
+  case failed = "failed"
+  case delayed = "delayed"
 }

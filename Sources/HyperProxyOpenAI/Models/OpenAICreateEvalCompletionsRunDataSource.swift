@@ -11,16 +11,16 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAICreateEvalCompletionsRunDataSource: Codable, Sendable {
-  public var inputMessages: HyperProxyJSONValue?
+  public var inputMessages: OpenAICreateEvalCompletionsRunDataSourceInputMessages?
   public var model: String?
   public var samplingParams: OpenAICreateEvalCompletionsRunDataSourceSamplingParams?
-  public var source: HyperProxyJSONValue
-  public var typeModel: OpenAICreateEvalCompletionsRunDataSourceTypeModel
+  public var source: OpenAICreateEvalCompletionsRunDataSourceSource
+  public var kind: OpenAICreateEvalCompletionsRunDataSourceKind
 
   public init(
-    source: HyperProxyJSONValue,
-    typeModel: OpenAICreateEvalCompletionsRunDataSourceTypeModel,
-    inputMessages: HyperProxyJSONValue? = nil,
+    source: OpenAICreateEvalCompletionsRunDataSourceSource,
+    kind: OpenAICreateEvalCompletionsRunDataSourceKind,
+    inputMessages: OpenAICreateEvalCompletionsRunDataSourceInputMessages? = nil,
     model: String? = nil,
     samplingParams: OpenAICreateEvalCompletionsRunDataSourceSamplingParams? = nil
   ) {
@@ -28,7 +28,7 @@ public struct OpenAICreateEvalCompletionsRunDataSource: Codable, Sendable {
     self.model = model
     self.samplingParams = samplingParams
     self.source = source
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAICreateEvalCompletionsRunDataSource: Codable, Sendable {
     case model
     case samplingParams = "sampling_params"
     case source
-    case typeModel = "type"
+    case kind = "type"
   }
 }

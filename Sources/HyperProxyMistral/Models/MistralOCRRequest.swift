@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct MistralOCRRequest: Codable, Sendable {
   public var bboxAnnotationFormat: MistralResponseFormat?
   public var confidenceScoresGranularity: MistralOCRRequestConfidenceScoresGranularityAnyOf1?
-  public var document: HyperProxyJSONValue
+  public var document: MistralOCRRequestDocument
   public var documentAnnotationFormat: MistralResponseFormat?
   public var documentAnnotationPrompt: String?
   public var extractFooter: Bool?
@@ -23,11 +23,11 @@ public struct MistralOCRRequest: Codable, Sendable {
   public var includeBlocks: Bool?
   public var includeImageBase64: Bool?
   public var model: String?
-  public var pages: HyperProxyJSONValue?
+  public var pages: MistralOCRRequestPages?
   public var tableFormat: MistralOCRRequestTableFormatAnyOf1?
 
   public init(
-    document: HyperProxyJSONValue,
+    document: MistralOCRRequestDocument,
     model: String?,
     bboxAnnotationFormat: MistralResponseFormat? = nil,
     confidenceScoresGranularity: MistralOCRRequestConfidenceScoresGranularityAnyOf1? = nil,
@@ -39,7 +39,7 @@ public struct MistralOCRRequest: Codable, Sendable {
     imageMinSize: Int? = nil,
     includeBlocks: Bool? = nil,
     includeImageBase64: Bool? = nil,
-    pages: HyperProxyJSONValue? = nil,
+    pages: MistralOCRRequestPages? = nil,
     tableFormat: MistralOCRRequestTableFormatAnyOf1? = nil
   ) {
     self.bboxAnnotationFormat = bboxAnnotationFormat

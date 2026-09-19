@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesPunctuationColon: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useFullWidthColon = Self(rawValue: "use_full_width_colon")
-  public static let useHalfWidthColon = Self(rawValue: "use_half_width_colon")
+public enum DeepLConfiguredRulesPunctuationColon: String, Codable, Hashable, Sendable {
+  case useFullWidthColon = "use_full_width_colon"
+  case useHalfWidthColon = "use_half_width_colon"
 }

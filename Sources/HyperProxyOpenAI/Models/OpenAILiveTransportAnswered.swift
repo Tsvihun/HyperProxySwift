@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenAILiveTransportAnswered: Codable, Sendable {
   public var eventId: String
   public var sessionId: String
-  public var typeModel: OpenAILiveTransportAnsweredTypeModel
+  public var kind: OpenAILiveTransportAnsweredKind
 
   public init(
     eventId: String,
     sessionId: String,
-    typeModel: OpenAILiveTransportAnsweredTypeModel
+    kind: OpenAILiveTransportAnsweredKind
   ) {
     self.eventId = eventId
     self.sessionId = sessionId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case eventId = "event_id"
     case sessionId = "session_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

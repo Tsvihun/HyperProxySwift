@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiListEnvironmentsResponse: Codable, Sendable {
-  public var environments: [HyperProxyJSONValue]?
+  public var environments: [GeminiEnvironment]?
   public var nextPageToken: String?
 
   public init(
-    environments: [HyperProxyJSONValue]? = nil,
+    environments: [GeminiEnvironment]? = nil,
     nextPageToken: String? = nil
   ) {
     self.environments = environments

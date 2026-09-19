@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct StabilityInpaintingSearchModeRequestBodyMode: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let search = Self(rawValue: "search")
+public enum StabilityInpaintingSearchModeRequestBodyMode: String, Codable, Hashable, Sendable {
+  case search = "search"
 }

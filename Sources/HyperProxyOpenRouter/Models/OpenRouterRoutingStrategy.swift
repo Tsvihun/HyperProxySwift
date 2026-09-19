@@ -10,20 +10,14 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterRoutingStrategy: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let direct = Self(rawValue: "direct")
-  public static let auto = Self(rawValue: "auto")
-  public static let free = Self(rawValue: "free")
-  public static let latest = Self(rawValue: "latest")
-  public static let alias = Self(rawValue: "alias")
-  public static let fallback = Self(rawValue: "fallback")
-  public static let pareto = Self(rawValue: "pareto")
-  public static let bodybuilder = Self(rawValue: "bodybuilder")
-  public static let fusion = Self(rawValue: "fusion")
+public enum OpenRouterRoutingStrategy: String, Codable, Hashable, Sendable {
+  case direct = "direct"
+  case auto = "auto"
+  case free = "free"
+  case latest = "latest"
+  case alias = "alias"
+  case fallback = "fallback"
+  case pareto = "pareto"
+  case bodybuilder = "bodybuilder"
+  case fusion = "fusion"
 }

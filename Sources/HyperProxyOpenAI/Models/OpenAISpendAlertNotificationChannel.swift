@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenAISpendAlertNotificationChannel: Codable, Sendable {
   public var recipients: [String]
   public var subjectPrefix: String?
-  public var typeModel: OpenAISpendAlertNotificationChannelTypeModel
+  public var kind: OpenAISpendAlertNotificationChannelKind
 
   public init(
     recipients: [String],
-    typeModel: OpenAISpendAlertNotificationChannelTypeModel,
+    kind: OpenAISpendAlertNotificationChannelKind,
     subjectPrefix: String? = nil
   ) {
     self.recipients = recipients
     self.subjectPrefix = subjectPrefix
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case recipients
     case subjectPrefix = "subject_prefix"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

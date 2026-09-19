@@ -10,16 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct PerplexityApiChatCompletionsRequestSearchModeAnyOf1: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum PerplexityApiChatCompletionsRequestSearchModeAnyOf1: String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let web = Self(rawValue: "web")
-  public static let academic = Self(rawValue: "academic")
-  public static let sec = Self(rawValue: "sec")
+  case web = "web"
+  case academic = "academic"
+  case sec = "sec"
 }

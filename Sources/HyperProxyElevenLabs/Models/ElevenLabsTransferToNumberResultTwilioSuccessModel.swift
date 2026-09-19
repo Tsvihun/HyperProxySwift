@@ -17,8 +17,8 @@ public struct ElevenLabsTransferToNumberResultTwilioSuccessModel: Codable, Senda
   public var note: String?
   public var postDialDigits: String?
   public var reason: String?
-  public var resultType: String?
-  public var status: String?
+  public var resultType: ElevenLabsTransferToNumberTwilioSuccessResultType?
+  public var status: ElevenLabsSuccessStatus?
   public var transferNumber: String
 
   public init(
@@ -29,8 +29,8 @@ public struct ElevenLabsTransferToNumberResultTwilioSuccessModel: Codable, Senda
     note: String? = nil,
     postDialDigits: String? = nil,
     reason: String? = nil,
-    resultType: String? = nil,
-    status: String? = nil
+    resultType: ElevenLabsTransferToNumberTwilioSuccessResultType? = nil,
+    status: ElevenLabsSuccessStatus? = nil
   ) {
     self.agentMessage = agentMessage
     self.clientMessage = clientMessage

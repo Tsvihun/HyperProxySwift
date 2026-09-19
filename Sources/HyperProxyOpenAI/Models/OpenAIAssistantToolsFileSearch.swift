@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIAssistantToolsFileSearch: Codable, Sendable {
   public var fileSearch: OpenAIAssistantToolsFileSearchFileSearch?
-  public var typeModel: OpenAIAssistantToolsFileSearchTypeModel
+  public var kind: OpenAIAssistantToolsFileSearchKind
 
   public init(
-    typeModel: OpenAIAssistantToolsFileSearchTypeModel,
+    kind: OpenAIAssistantToolsFileSearchKind,
     fileSearch: OpenAIAssistantToolsFileSearchFileSearch? = nil
   ) {
     self.fileSearch = fileSearch
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case fileSearch = "file_search"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

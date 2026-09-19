@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIFineTuneReinforcementHyperparametersReasoningEffort: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum OpenAIFineTuneReinforcementHyperparametersReasoningEffort: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let defaultValue = Self(rawValue: "default")
-  public static let low = Self(rawValue: "low")
-  public static let medium = Self(rawValue: "medium")
-  public static let high = Self(rawValue: "high")
+  case defaultValue = "default"
+  case low = "low"
+  case medium = "medium"
+  case high = "high"
 }

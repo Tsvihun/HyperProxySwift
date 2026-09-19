@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIMcpOauthTokenEndpointAuthResourceClientSecretPost: Codable, Sendable {
-  public var typeModel: OpenAIMcpOauthTokenEndpointAuthResourceClientSecretPostTypeModel
+  public var kind: OpenAIMcpOauthTokenEndpointAuthResourceClientSecretPostKind
 
   public init(
-    typeModel: OpenAIMcpOauthTokenEndpointAuthResourceClientSecretPostTypeModel
+    kind: OpenAIMcpOauthTokenEndpointAuthResourceClientSecretPostKind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

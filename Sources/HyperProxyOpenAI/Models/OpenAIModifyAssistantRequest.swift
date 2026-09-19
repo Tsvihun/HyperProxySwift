@@ -14,26 +14,26 @@ public struct OpenAIModifyAssistantRequest: Codable, Sendable {
   public var description: String?
   public var instructions: String?
   public var metadata: OpenAIMetadata?
-  public var model: HyperProxyJSONValue?
+  public var model: OpenAIModifyAssistantRequestModel?
   public var name: String?
   public var reasoningEffort: OpenAIReasoningEffort?
   public var responseFormat: OpenAIAssistantsApiResponseFormatOption?
   public var temperature: Double?
   public var toolResources: OpenAIModifyAssistantRequestToolResourcesAnyOf1?
-  public var tools: [HyperProxyJSONValue]?
+  public var tools: [OpenAIModifyAssistantRequestToolsItem]?
   public var topP: Double?
 
   public init(
     description: String? = nil,
     instructions: String? = nil,
     metadata: OpenAIMetadata? = nil,
-    model: HyperProxyJSONValue? = nil,
+    model: OpenAIModifyAssistantRequestModel? = nil,
     name: String? = nil,
     reasoningEffort: OpenAIReasoningEffort? = nil,
     responseFormat: OpenAIAssistantsApiResponseFormatOption? = nil,
     temperature: Double? = nil,
     toolResources: OpenAIModifyAssistantRequestToolResourcesAnyOf1? = nil,
-    tools: [HyperProxyJSONValue]? = nil,
+    tools: [OpenAIModifyAssistantRequestToolsItem]? = nil,
     topP: Double? = nil
   ) {
     self.description = description

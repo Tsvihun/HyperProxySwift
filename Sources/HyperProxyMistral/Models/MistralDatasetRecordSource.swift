@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralDatasetRecordSource: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let eXPLORER = Self(rawValue: "EXPLORER")
-  public static let uPLOADEDFILE = Self(rawValue: "UPLOADED_FILE")
-  public static let dIRECTINPUT = Self(rawValue: "DIRECT_INPUT")
-  public static let pLAYGROUND = Self(rawValue: "PLAYGROUND")
+public enum MistralDatasetRecordSource: String, Codable, Hashable, Sendable {
+  case eXPLORER = "EXPLORER"
+  case uPLOADEDFILE = "UPLOADED_FILE"
+  case dIRECTINPUT = "DIRECT_INPUT"
+  case pLAYGROUND = "PLAYGROUND"
 }

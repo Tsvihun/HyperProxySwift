@@ -15,20 +15,20 @@ public struct OpenAIWebhookBatchFailed: Codable, Sendable {
   public var data: OpenAIWebhookBatchFailedData
   public var id: String
   public var object: OpenAIWebhookBatchFailedObject?
-  public var typeModel: OpenAIWebhookBatchFailedTypeModel
+  public var kind: OpenAIWebhookBatchFailedKind
 
   public init(
     createdAt: Int,
     data: OpenAIWebhookBatchFailedData,
     id: String,
-    typeModel: OpenAIWebhookBatchFailedTypeModel,
+    kind: OpenAIWebhookBatchFailedKind,
     object: OpenAIWebhookBatchFailedObject? = nil
   ) {
     self.createdAt = createdAt
     self.data = data
     self.id = id
     self.object = object
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIWebhookBatchFailed: Codable, Sendable {
     case data
     case id
     case object
-    case typeModel = "type"
+    case kind = "type"
   }
 }

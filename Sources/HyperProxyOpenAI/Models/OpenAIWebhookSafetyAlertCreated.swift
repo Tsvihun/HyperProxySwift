@@ -15,20 +15,20 @@ public struct OpenAIWebhookSafetyAlertCreated: Codable, Sendable {
   public var data: OpenAIWebhookSafetyAlertCreatedData
   public var id: String
   public var object: OpenAIWebhookSafetyAlertCreatedObject
-  public var typeModel: OpenAIWebhookSafetyAlertCreatedTypeModel
+  public var kind: OpenAIWebhookSafetyAlertCreatedKind
 
   public init(
     createdAt: Int,
     data: OpenAIWebhookSafetyAlertCreatedData,
     id: String,
     object: OpenAIWebhookSafetyAlertCreatedObject,
-    typeModel: OpenAIWebhookSafetyAlertCreatedTypeModel
+    kind: OpenAIWebhookSafetyAlertCreatedKind
   ) {
     self.createdAt = createdAt
     self.data = data
     self.id = id
     self.object = object
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIWebhookSafetyAlertCreated: Codable, Sendable {
     case data
     case id
     case object
-    case typeModel = "type"
+    case kind = "type"
   }
 }

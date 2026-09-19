@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksAnthropicBase64ImageSourceMediaType: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let imageJpeg = Self(rawValue: "image/jpeg")
-  public static let imagePng = Self(rawValue: "image/png")
-  public static let imageGif = Self(rawValue: "image/gif")
-  public static let imageWebp = Self(rawValue: "image/webp")
+public enum FireworksAnthropicBase64ImageSourceMediaType: String, Codable, Hashable, Sendable {
+  case imageJpeg = "image/jpeg"
+  case imagePng = "image/png"
+  case imageGif = "image/gif"
+  case imageWebp = "image/webp"
 }

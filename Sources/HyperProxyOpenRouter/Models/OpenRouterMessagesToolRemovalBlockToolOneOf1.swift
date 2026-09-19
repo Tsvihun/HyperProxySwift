@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterMessagesToolRemovalBlockToolOneOf1: Codable, Sendable {
   public var name: String
-  public var typeModel: OpenRouterMessagesToolRemovalBlockToolOneOf1TypeModel
+  public var kind: OpenRouterMessagesToolRemovalBlockToolOneOf1Kind
 
   public init(
     name: String,
-    typeModel: OpenRouterMessagesToolRemovalBlockToolOneOf1TypeModel
+    kind: OpenRouterMessagesToolRemovalBlockToolOneOf1Kind
   ) {
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

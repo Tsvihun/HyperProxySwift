@@ -10,15 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIDeletedEnvironmentTemplateResourceObject: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let agentEnvironmentTemplateDeleted = Self(
-    rawValue: "agent.environment.template.deleted")
+public enum OpenAIDeletedEnvironmentTemplateResourceObject: String, Codable, Hashable, Sendable {
+  case agentEnvironmentTemplateDeleted = "agent.environment.template.deleted"
 }

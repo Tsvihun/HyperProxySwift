@@ -10,18 +10,12 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiGenerateContentBatchState: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let bATCHSTATEUNSPECIFIED = Self(rawValue: "BATCH_STATE_UNSPECIFIED")
-  public static let bATCHSTATEPENDING = Self(rawValue: "BATCH_STATE_PENDING")
-  public static let bATCHSTATERUNNING = Self(rawValue: "BATCH_STATE_RUNNING")
-  public static let bATCHSTATESUCCEEDED = Self(rawValue: "BATCH_STATE_SUCCEEDED")
-  public static let bATCHSTATEFAILED = Self(rawValue: "BATCH_STATE_FAILED")
-  public static let bATCHSTATECANCELLED = Self(rawValue: "BATCH_STATE_CANCELLED")
-  public static let bATCHSTATEEXPIRED = Self(rawValue: "BATCH_STATE_EXPIRED")
+public enum GeminiGenerateContentBatchState: String, Codable, Hashable, Sendable {
+  case bATCHSTATEUNSPECIFIED = "BATCH_STATE_UNSPECIFIED"
+  case bATCHSTATEPENDING = "BATCH_STATE_PENDING"
+  case bATCHSTATERUNNING = "BATCH_STATE_RUNNING"
+  case bATCHSTATESUCCEEDED = "BATCH_STATE_SUCCEEDED"
+  case bATCHSTATEFAILED = "BATCH_STATE_FAILED"
+  case bATCHSTATECANCELLED = "BATCH_STATE_CANCELLED"
+  case bATCHSTATEEXPIRED = "BATCH_STATE_EXPIRED"
 }

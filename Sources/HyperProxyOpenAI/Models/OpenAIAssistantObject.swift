@@ -15,14 +15,14 @@ public struct OpenAIAssistantObject: Codable, Sendable {
   public var description: String?
   public var id: String
   public var instructions: String?
-  public var metadata: OpenAIMetadata
+  public var metadata: OpenAIMetadata?
   public var model: String
   public var name: String?
   public var object: OpenAIAssistantObjectObject
   public var responseFormat: OpenAIAssistantsApiResponseFormatOption?
   public var temperature: Double?
   public var toolResources: OpenAIAssistantObjectToolResourcesAnyOf1?
-  public var tools: [HyperProxyJSONValue]
+  public var tools: [OpenAIAssistantObjectToolsItem]
   public var topP: Double?
 
   public init(
@@ -30,11 +30,11 @@ public struct OpenAIAssistantObject: Codable, Sendable {
     description: String?,
     id: String,
     instructions: String?,
-    metadata: OpenAIMetadata,
+    metadata: OpenAIMetadata?,
     model: String,
     name: String?,
     object: OpenAIAssistantObjectObject,
-    tools: [HyperProxyJSONValue],
+    tools: [OpenAIAssistantObjectToolsItem],
     responseFormat: OpenAIAssistantsApiResponseFormatOption? = nil,
     temperature: Double? = nil,
     toolResources: OpenAIAssistantObjectToolResourcesAnyOf1? = nil,

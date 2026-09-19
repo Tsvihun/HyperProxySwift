@@ -10,16 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralFunctionCallEventConfirmationStatusAnyOf1: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let pending = Self(rawValue: "pending")
-  public static let allowed = Self(rawValue: "allowed")
-  public static let denied = Self(rawValue: "denied")
+public enum MistralFunctionCallEventConfirmationStatusAnyOf1: String, Codable, Hashable, Sendable {
+  case pending = "pending"
+  case allowed = "allowed"
+  case denied = "denied"
 }

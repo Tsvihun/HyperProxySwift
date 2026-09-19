@@ -15,20 +15,20 @@ public struct OpenAIRealtimeConversationItemWithReferenceContentItem: Codable, S
   public var id: String?
   public var text: String?
   public var transcript: String?
-  public var typeModel: OpenAIRealtimeConversationItemWithReferenceContentItemTypeModel?
+  public var kind: OpenAIRealtimeConversationItemWithReferenceContentItemKind?
 
   public init(
     audio: String? = nil,
     id: String? = nil,
     text: String? = nil,
     transcript: String? = nil,
-    typeModel: OpenAIRealtimeConversationItemWithReferenceContentItemTypeModel? = nil
+    kind: OpenAIRealtimeConversationItemWithReferenceContentItemKind? = nil
   ) {
     self.audio = audio
     self.id = id
     self.text = text
     self.transcript = transcript
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIRealtimeConversationItemWithReferenceContentItem: Codable, S
     case id
     case text
     case transcript
-    case typeModel = "type"
+    case kind = "type"
   }
 }

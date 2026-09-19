@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsWorkspaceWebhookEventType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let voiceLibraryRemovalNotice = Self(rawValue: "voice_library_removal_notice")
-  public static let speechToText = Self(rawValue: "speech_to_text")
-  public static let agentQa = Self(rawValue: "agent_qa")
-  public static let flows = Self(rawValue: "flows")
+public enum ElevenLabsWorkspaceWebhookEventType: String, Codable, Hashable, Sendable {
+  case voiceLibraryRemovalNotice = "voice_library_removal_notice"
+  case speechToText = "speech_to_text"
+  case agentQa = "agent_qa"
+  case flows = "flows"
 }

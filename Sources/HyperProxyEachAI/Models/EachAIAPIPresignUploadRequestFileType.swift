@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct EachAIAPIPresignUploadRequestFileType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let image = Self(rawValue: "image")
-  public static let video = Self(rawValue: "video")
-  public static let audio = Self(rawValue: "audio")
-  public static let other = Self(rawValue: "other")
+public enum EachAIAPIPresignUploadRequestFileType: String, Codable, Hashable, Sendable {
+  case image = "image"
+  case video = "video"
+  case audio = "audio"
+  case other = "other"
 }

@@ -19,12 +19,12 @@ public struct DeepSeekChatCompletionRequest: Codable, Sendable {
   public var presencePenalty: Double?
   public var reasoningEffort: DeepSeekChatReasoningEffort?
   public var responseFormat: DeepSeekChatResponseFormat?
-  public var stop: HyperProxyJSONValue?
+  public var stop: DeepSeekChatCompletionRequestStop?
   public var stream: Bool?
   public var streamOptions: DeepSeekChatStreamOptions?
   public var temperature: Double?
   public var thinking: DeepSeekChatThinkingConfig?
-  public var toolChoice: HyperProxyJSONValue?
+  public var toolChoice: DeepSeekChatCompletionRequestToolChoice?
   public var tools: [DeepSeekChatTool]?
   public var topLogprobs: Int?
   public var topP: Double?
@@ -39,12 +39,12 @@ public struct DeepSeekChatCompletionRequest: Codable, Sendable {
     presencePenalty: Double? = nil,
     reasoningEffort: DeepSeekChatReasoningEffort? = nil,
     responseFormat: DeepSeekChatResponseFormat? = nil,
-    stop: HyperProxyJSONValue? = nil,
+    stop: DeepSeekChatCompletionRequestStop? = nil,
     stream: Bool? = nil,
     streamOptions: DeepSeekChatStreamOptions? = nil,
     temperature: Double? = nil,
     thinking: DeepSeekChatThinkingConfig? = nil,
-    toolChoice: HyperProxyJSONValue? = nil,
+    toolChoice: DeepSeekChatCompletionRequestToolChoice? = nil,
     tools: [DeepSeekChatTool]? = nil,
     topLogprobs: Int? = nil,
     topP: Double? = nil,

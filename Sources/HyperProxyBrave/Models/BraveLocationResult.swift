@@ -32,14 +32,14 @@ public struct BraveLocationResult: Codable, Sendable {
   public var timezone: String?
   public var timezoneOffset: Int?
   public var title: String
-  public var typeModel: String
+  public var kind: String
   public var url: String
 
   public init(
     id: String,
     providerUrl: String,
     title: String,
-    typeModel: String,
+    kind: String,
     url: String,
     action: BraveLocationAction? = nil,
     categories: [String]? = nil,
@@ -81,7 +81,7 @@ public struct BraveLocationResult: Codable, Sendable {
     self.timezone = timezone
     self.timezoneOffset = timezoneOffset
     self.title = title
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
@@ -107,7 +107,7 @@ public struct BraveLocationResult: Codable, Sendable {
     case timezone
     case timezoneOffset = "timezone_offset"
     case title
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

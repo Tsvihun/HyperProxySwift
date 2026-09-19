@@ -15,9 +15,9 @@ public struct OpenAILiveMediaSessionCreateParams: Codable, Sendable {
   public var client: OpenAILiveClientConfigParam?
   public var delegation: OpenAIDelegation?
   public var input: OpenAIInput?
-  public var instructions: OpenAIInstructions?
+  public var instructions: String?
   public var model: OpenAIModelIdsLive
-  public var store: OpenAIStore?
+  public var store: Bool?
 
   public init(
     model: OpenAIModelIdsLive,
@@ -25,8 +25,8 @@ public struct OpenAILiveMediaSessionCreateParams: Codable, Sendable {
     client: OpenAILiveClientConfigParam? = nil,
     delegation: OpenAIDelegation? = nil,
     input: OpenAIInput? = nil,
-    instructions: OpenAIInstructions? = nil,
-    store: OpenAIStore? = nil
+    instructions: String? = nil,
+    store: Bool? = nil
   ) {
     self.audio = audio
     self.client = client

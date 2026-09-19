@@ -14,24 +14,24 @@ public struct OpenAIRealtimeFunctionTool: Codable, Sendable {
   public var description: String?
   public var name: String?
   public var parameters: HyperProxyJSONValue?
-  public var typeModel: OpenAIRealtimeFunctionToolTypeModel?
+  public var kind: OpenAIRealtimeFunctionToolKind?
 
   public init(
     description: String? = nil,
     name: String? = nil,
     parameters: HyperProxyJSONValue? = nil,
-    typeModel: OpenAIRealtimeFunctionToolTypeModel? = nil
+    kind: OpenAIRealtimeFunctionToolKind? = nil
   ) {
     self.description = description
     self.name = name
     self.parameters = parameters
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case description
     case name
     case parameters
-    case typeModel = "type"
+    case kind = "type"
   }
 }

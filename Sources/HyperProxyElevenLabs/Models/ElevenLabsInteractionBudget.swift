@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsInteractionBudget: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let realtime = Self(rawValue: "realtime")
-  public static let value5Minutes = Self(rawValue: "5_minutes")
-  public static let value10Minutes = Self(rawValue: "10_minutes")
-  public static let value1Hour = Self(rawValue: "1_hour")
+public enum ElevenLabsInteractionBudget: String, Codable, Hashable, Sendable {
+  case realtime = "realtime"
+  case value5Minutes = "5_minutes"
+  case value10Minutes = "10_minutes"
+  case value1Hour = "1_hour"
 }

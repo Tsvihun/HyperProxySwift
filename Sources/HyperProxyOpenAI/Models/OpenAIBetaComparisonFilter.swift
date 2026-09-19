@@ -12,22 +12,22 @@ import HyperProxyCore
 
 public struct OpenAIBetaComparisonFilter: Codable, Sendable {
   public var key: String
-  public var typeModel: OpenAIBetaComparisonFilterTypeModel
-  public var value: HyperProxyJSONValue
+  public var kind: OpenAIBetaComparisonFilterKind
+  public var value: OpenAIBetaComparisonFilterValue
 
   public init(
     key: String,
-    typeModel: OpenAIBetaComparisonFilterTypeModel,
-    value: HyperProxyJSONValue
+    kind: OpenAIBetaComparisonFilterKind,
+    value: OpenAIBetaComparisonFilterValue
   ) {
     self.key = key
-    self.typeModel = typeModel
+    self.kind = kind
     self.value = value
   }
 
   enum CodingKeys: String, CodingKey {
     case key
-    case typeModel = "type"
+    case kind = "type"
     case value
   }
 }

@@ -13,12 +13,14 @@ import HyperProxyCore
 public struct OpenAICreateThreadRequestToolResourcesAnyOf1FileSearchVectorStoresItem: Codable,
   Sendable
 {
-  public var chunkingStrategy: HyperProxyJSONValue?
+  public var chunkingStrategy:
+    OpenAICreateThreadRequestToolResourcesAnyOf1FileSearchVectorStoresItemChunkingStrategy?
   public var fileIds: [String]?
   public var metadata: OpenAIMetadata?
 
   public init(
-    chunkingStrategy: HyperProxyJSONValue? = nil,
+    chunkingStrategy:
+      OpenAICreateThreadRequestToolResourcesAnyOf1FileSearchVectorStoresItemChunkingStrategy? = nil,
     fileIds: [String]? = nil,
     metadata: OpenAIMetadata? = nil
   ) {

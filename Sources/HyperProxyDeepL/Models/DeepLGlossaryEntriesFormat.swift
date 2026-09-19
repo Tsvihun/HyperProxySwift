@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLGlossaryEntriesFormat: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let tsv = Self(rawValue: "tsv")
-  public static let csv = Self(rawValue: "csv")
+public enum DeepLGlossaryEntriesFormat: String, Codable, Hashable, Sendable {
+  case tsv = "tsv"
+  case csv = "csv"
 }

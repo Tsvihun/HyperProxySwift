@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIRealtimeResponseCreateParamsConversationOneOf2: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum OpenAIRealtimeResponseCreateParamsConversationOneOf2: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
-  public static let none = Self(rawValue: "none")
+  case auto = "auto"
+  case none = "none"
 }

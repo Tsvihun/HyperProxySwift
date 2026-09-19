@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherRLOptimizerConfig: Codable, Sendable {
-  public var adamw: TogetherRLAdamWOptimizerConfig?
-  public var muon: TogetherRLMuonOptimizerConfig?
+  public var adam: TogetherRLAdamConfig?
+  public var muon: TogetherRLMuonConfig?
 
   public init(
-    adamw: TogetherRLAdamWOptimizerConfig? = nil,
-    muon: TogetherRLMuonOptimizerConfig? = nil
+    adam: TogetherRLAdamConfig? = nil,
+    muon: TogetherRLMuonConfig? = nil
   ) {
-    self.adamw = adamw
+    self.adam = adam
     self.muon = muon
   }
 
   enum CodingKeys: String, CodingKey {
-    case adamw
+    case adam
     case muon
   }
 }

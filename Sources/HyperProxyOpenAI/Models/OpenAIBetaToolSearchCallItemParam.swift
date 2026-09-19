@@ -17,11 +17,11 @@ public struct OpenAIBetaToolSearchCallItemParam: Codable, Sendable {
   public var execution: OpenAIBetaToolSearchExecutionType?
   public var id: String?
   public var status: OpenAIBetaFunctionCallItemStatus?
-  public var typeModel: OpenAIBetaToolSearchCallItemParamTypeModel
+  public var kind: OpenAIBetaToolSearchCallItemParamKind
 
   public init(
     arguments: OpenAIBetaEmptyModelParam,
-    typeModel: OpenAIBetaToolSearchCallItemParamTypeModel,
+    kind: OpenAIBetaToolSearchCallItemParamKind,
     agent: OpenAIBetaAgentTagParam? = nil,
     callId: String? = nil,
     execution: OpenAIBetaToolSearchExecutionType? = nil,
@@ -34,7 +34,7 @@ public struct OpenAIBetaToolSearchCallItemParam: Codable, Sendable {
     self.execution = execution
     self.id = id
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenAIBetaToolSearchCallItemParam: Codable, Sendable {
     case execution
     case id
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

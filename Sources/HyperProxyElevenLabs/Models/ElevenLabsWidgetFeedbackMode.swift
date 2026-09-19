@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsWidgetFeedbackMode: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let none = Self(rawValue: "none")
-  public static let during = Self(rawValue: "during")
-  public static let end = Self(rawValue: "end")
+public enum ElevenLabsWidgetFeedbackMode: String, Codable, Hashable, Sendable {
+  case none = "none"
+  case during = "during"
+  case end = "end"
 }

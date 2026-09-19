@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIBetaDirectToolCallCaller: Codable, Sendable {
-  public var typeModel: OpenAIBetaDirectToolCallCallerTypeModel
+  public var kind: OpenAIBetaDirectToolCallCallerKind
 
   public init(
-    typeModel: OpenAIBetaDirectToolCallCallerTypeModel
+    kind: OpenAIBetaDirectToolCallCallerKind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

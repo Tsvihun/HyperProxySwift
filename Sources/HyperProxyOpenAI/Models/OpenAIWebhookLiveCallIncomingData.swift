@@ -13,17 +13,21 @@ import HyperProxyCore
 public struct OpenAIWebhookLiveCallIncomingData: Codable, Sendable {
   public var sessionId: String
   public var sipHeaders: [OpenAIWebhookLiveCallIncomingDataSipHeadersItem]
+  public var sipMediaSecurity: OpenAIWebhookLiveCallIncomingDataSipMediaSecurity?
 
   public init(
     sessionId: String,
-    sipHeaders: [OpenAIWebhookLiveCallIncomingDataSipHeadersItem]
+    sipHeaders: [OpenAIWebhookLiveCallIncomingDataSipHeadersItem],
+    sipMediaSecurity: OpenAIWebhookLiveCallIncomingDataSipMediaSecurity? = nil
   ) {
     self.sessionId = sessionId
     self.sipHeaders = sipHeaders
+    self.sipMediaSecurity = sipMediaSecurity
   }
 
   enum CodingKeys: String, CodingKey {
     case sessionId = "session_id"
     case sipHeaders = "sip_headers"
+    case sipMediaSecurity = "sip_media_security"
   }
 }

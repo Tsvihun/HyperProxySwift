@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct AnthropicInputSchema: Codable, Sendable {
   public var properties: [String: HyperProxyJSONValue]?
   public var requiredValue: [String]?
-  public var typeModel: String
+  public var kind: AnthropicObjectKind
 
   public init(
-    typeModel: String,
+    kind: AnthropicObjectKind = .object,
     properties: [String: HyperProxyJSONValue]? = nil,
     requiredValue: [String]? = nil
   ) {
     self.properties = properties
     self.requiredValue = requiredValue
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case properties
     case requiredValue = "required"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

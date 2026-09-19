@@ -15,19 +15,21 @@ public struct OpenRouterOutputShellServerToolItem: Codable, Sendable {
   public var arguments: String?
   public var callId: String?
   public var containerId: String?
+  public var error: String?
   public var files: [OpenRouterOutputShellServerToolItemFilesItem]?
   public var id: String?
   public var output: [OpenRouterShellCallOutputContent]?
-  public var status: OpenRouterToolCallStatus
-  public var typeModel: OpenRouterOutputShellServerToolItemTypeModel
+  public var status: OpenRouterFailableToolCallStatus
+  public var kind: OpenRouterOutputShellServerToolItemKind
 
   public init(
-    status: OpenRouterToolCallStatus,
-    typeModel: OpenRouterOutputShellServerToolItemTypeModel,
+    status: OpenRouterFailableToolCallStatus,
+    kind: OpenRouterOutputShellServerToolItemKind,
     action: OpenRouterOutputShellServerToolItemAction? = nil,
     arguments: String? = nil,
     callId: String? = nil,
     containerId: String? = nil,
+    error: String? = nil,
     files: [OpenRouterOutputShellServerToolItemFilesItem]? = nil,
     id: String? = nil,
     output: [OpenRouterShellCallOutputContent]? = nil
@@ -36,11 +38,12 @@ public struct OpenRouterOutputShellServerToolItem: Codable, Sendable {
     self.arguments = arguments
     self.callId = callId
     self.containerId = containerId
+    self.error = error
     self.files = files
     self.id = id
     self.output = output
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,10 +51,11 @@ public struct OpenRouterOutputShellServerToolItem: Codable, Sendable {
     case arguments
     case callId = "call_id"
     case containerId = "container_id"
+    case error
     case files
     case id
     case output
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

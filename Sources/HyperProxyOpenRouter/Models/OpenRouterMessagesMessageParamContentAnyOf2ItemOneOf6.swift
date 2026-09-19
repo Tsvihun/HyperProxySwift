@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenRouterMessagesMessageParamContentAnyOf2ItemOneOf6: Codable, Sendable {
   public var signature: String
   public var thinking: String
-  public var typeModel: OpenRouterMessagesMessageParamContentAnyOf2ItemOneOf6TypeModel
+  public var kind: OpenRouterMessagesMessageParamContentAnyOf2ItemOneOf6Kind
 
   public init(
     signature: String,
     thinking: String,
-    typeModel: OpenRouterMessagesMessageParamContentAnyOf2ItemOneOf6TypeModel
+    kind: OpenRouterMessagesMessageParamContentAnyOf2ItemOneOf6Kind
   ) {
     self.signature = signature
     self.thinking = thinking
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case signature
     case thinking
-    case typeModel = "type"
+    case kind = "type"
   }
 }

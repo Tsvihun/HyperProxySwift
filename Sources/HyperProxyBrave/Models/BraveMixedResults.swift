@@ -14,24 +14,24 @@ public struct BraveMixedResults: Codable, Sendable {
   public var main: [BraveResultReference]?
   public var side: [BraveResultReference]?
   public var top: [BraveResultReference]?
-  public var typeModel: String?
+  public var kind: String?
 
   public init(
     main: [BraveResultReference]? = nil,
     side: [BraveResultReference]? = nil,
     top: [BraveResultReference]? = nil,
-    typeModel: String? = nil
+    kind: String? = nil
   ) {
     self.main = main
     self.side = side
     self.top = top
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case main
     case side
     case top
-    case typeModel = "type"
+    case kind = "type"
   }
 }

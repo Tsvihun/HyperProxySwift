@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaCostType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let codeExecution = Self(rawValue: "code_execution")
-  public static let sessionUsage = Self(rawValue: "session_usage")
-  public static let tokens = Self(rawValue: "tokens")
-  public static let webSearch = Self(rawValue: "web_search")
+public enum AnthropicBetaCostType: String, Codable, Hashable, Sendable {
+  case codeExecution = "code_execution"
+  case sessionUsage = "session_usage"
+  case tokens = "tokens"
+  case webSearch = "web_search"
 }

@@ -14,24 +14,24 @@ public struct TogetherToolChoice: Codable, Sendable {
   public var function: TogetherToolChoiceFunction
   public var id: String
   public var index: Double
-  public var typeModel: TogetherToolChoiceTypeModel
+  public var kind: TogetherToolChoiceKind
 
   public init(
     function: TogetherToolChoiceFunction,
     id: String,
     index: Double,
-    typeModel: TogetherToolChoiceTypeModel
+    kind: TogetherToolChoiceKind
   ) {
     self.function = function
     self.id = id
     self.index = index
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case function
     case id
     case index
-    case typeModel = "type"
+    case kind = "type"
   }
 }

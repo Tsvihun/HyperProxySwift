@@ -16,7 +16,7 @@ public struct OpenAIAssistantMessageItem: Codable, Sendable {
   public var id: String
   public var object: OpenAIAssistantMessageItemObject
   public var threadId: String
-  public var typeModel: OpenAIAssistantMessageItemTypeModel
+  public var kind: OpenAIAssistantMessageItemKind
 
   public init(
     content: [OpenAIResponseOutputText],
@@ -24,14 +24,14 @@ public struct OpenAIAssistantMessageItem: Codable, Sendable {
     id: String,
     object: OpenAIAssistantMessageItemObject,
     threadId: String,
-    typeModel: OpenAIAssistantMessageItemTypeModel
+    kind: OpenAIAssistantMessageItemKind
   ) {
     self.content = content
     self.createdAt = createdAt
     self.id = id
     self.object = object
     self.threadId = threadId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIAssistantMessageItem: Codable, Sendable {
     case id
     case object
     case threadId = "thread_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

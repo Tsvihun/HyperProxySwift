@@ -10,13 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIResponseSteerPendingReasonAnyOf1: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let waitingForRequiredInput = Self(rawValue: "waiting_for_required_input")
+public enum OpenAIResponseSteerPendingReasonAnyOf1: String, Codable, Hashable, Sendable {
+  case waitingForRequiredInput = "waiting_for_required_input"
 }

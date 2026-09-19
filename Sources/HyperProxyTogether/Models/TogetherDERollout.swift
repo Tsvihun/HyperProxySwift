@@ -18,11 +18,11 @@ public struct TogetherDERollout: Codable, Sendable {
   public var endpointId: String
   public var etag: String?
   public var id: String
-  public var pauseInfo: HyperProxyJSONValue?
+  public var pauseInfo: TogetherDEPauseInfo?
   public var sourceDeploymentId: String
   public var startedAt: String?
   public var state: TogetherDERolloutState
-  public var status: HyperProxyJSONValue
+  public var status: TogetherDERolloutStatus
   public var strategy: TogetherDERolloutStrategy
   public var targetDeploymentId: String
 
@@ -32,14 +32,14 @@ public struct TogetherDERollout: Codable, Sendable {
     id: String,
     sourceDeploymentId: String,
     state: TogetherDERolloutState,
-    status: HyperProxyJSONValue,
+    status: TogetherDERolloutStatus,
     strategy: TogetherDERolloutStrategy,
     targetDeploymentId: String,
     completedAt: String? = nil,
     currentStep: Int? = nil,
     currentTrafficPercent: Int? = nil,
     etag: String? = nil,
-    pauseInfo: HyperProxyJSONValue? = nil,
+    pauseInfo: TogetherDEPauseInfo? = nil,
     startedAt: String? = nil
   ) {
     self.completedAt = completedAt

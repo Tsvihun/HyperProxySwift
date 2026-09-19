@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIRunStepDetailsToolCallsCodeOutputLogsObject: Codable, Sendable {
   public var logs: String
-  public var typeModel: OpenAIRunStepDetailsToolCallsCodeOutputLogsObjectTypeModel
+  public var kind: OpenAIRunStepDetailsToolCallsCodeOutputLogsObjectKind
 
   public init(
     logs: String,
-    typeModel: OpenAIRunStepDetailsToolCallsCodeOutputLogsObjectTypeModel
+    kind: OpenAIRunStepDetailsToolCallsCodeOutputLogsObjectKind
   ) {
     self.logs = logs
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case logs
-    case typeModel = "type"
+    case kind = "type"
   }
 }

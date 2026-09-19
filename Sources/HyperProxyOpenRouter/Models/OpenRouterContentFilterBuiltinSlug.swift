@@ -10,20 +10,14 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterContentFilterBuiltinSlug: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let email = Self(rawValue: "email")
-  public static let phone = Self(rawValue: "phone")
-  public static let ssn = Self(rawValue: "ssn")
-  public static let creditCard = Self(rawValue: "credit-card")
-  public static let ipAddress = Self(rawValue: "ip-address")
-  public static let secrets = Self(rawValue: "secrets")
-  public static let personName = Self(rawValue: "person-name")
-  public static let address = Self(rawValue: "address")
-  public static let regexPromptInjection = Self(rawValue: "regex-prompt-injection")
+public enum OpenRouterContentFilterBuiltinSlug: String, Codable, Hashable, Sendable {
+  case email = "email"
+  case phone = "phone"
+  case ssn = "ssn"
+  case creditCard = "credit-card"
+  case ipAddress = "ip-address"
+  case secrets = "secrets"
+  case personName = "person-name"
+  case address = "address"
+  case regexPromptInjection = "regex-prompt-injection"
 }

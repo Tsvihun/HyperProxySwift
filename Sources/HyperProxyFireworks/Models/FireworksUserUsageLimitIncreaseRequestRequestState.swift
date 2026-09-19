@@ -10,17 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksUserUsageLimitIncreaseRequestRequestState: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum FireworksUserUsageLimitIncreaseRequestRequestState: String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let rEQUESTSTATEUNSPECIFIED = Self(rawValue: "REQUEST_STATE_UNSPECIFIED")
-  public static let pENDING = Self(rawValue: "PENDING")
-  public static let aPPROVED = Self(rawValue: "APPROVED")
-  public static let rEJECTED = Self(rawValue: "REJECTED")
+  case rEQUESTSTATEUNSPECIFIED = "REQUEST_STATE_UNSPECIFIED"
+  case pENDING = "PENDING"
+  case aPPROVED = "APPROVED"
+  case rEJECTED = "REJECTED"
 }

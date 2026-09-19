@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsGetKnowledgeBaseDependentAgentsResponseModel: Codable, Sendable {
-  public var agents: [HyperProxyJSONValue]
+  public var agents: [ElevenLabsGetKnowledgeBaseDependentAgentsResponseModelAgentsItem]
   public var branches: [ElevenLabsDependentBranchInfo]?
   public var hasMore: Bool
   public var nextCursor: String?
 
   public init(
-    agents: [HyperProxyJSONValue],
+    agents: [ElevenLabsGetKnowledgeBaseDependentAgentsResponseModelAgentsItem],
     hasMore: Bool,
     branches: [ElevenLabsDependentBranchInfo]? = nil,
     nextCursor: String? = nil

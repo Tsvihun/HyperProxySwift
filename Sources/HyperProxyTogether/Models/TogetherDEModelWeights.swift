@@ -16,7 +16,7 @@ public struct TogetherDEModelWeights: Codable, Sendable {
   public var draftSpeculatorType: TogetherDEModelWeightsDraftSpeculatorType?
   public var parameters: TogetherDEModelParameters?
   public var speculatorMechanism: TogetherDEModelWeightsSpeculatorMechanism?
-  public var typeModel: TogetherDEModelWeightsTypeModel?
+  public var kind: TogetherDEModelWeightsKind?
 
   public init(
     architecture: String? = nil,
@@ -24,14 +24,14 @@ public struct TogetherDEModelWeights: Codable, Sendable {
     draftSpeculatorType: TogetherDEModelWeightsDraftSpeculatorType? = nil,
     parameters: TogetherDEModelParameters? = nil,
     speculatorMechanism: TogetherDEModelWeightsSpeculatorMechanism? = nil,
-    typeModel: TogetherDEModelWeightsTypeModel? = nil
+    kind: TogetherDEModelWeightsKind? = nil
   ) {
     self.architecture = architecture
     self.contextLength = contextLength
     self.draftSpeculatorType = draftSpeculatorType
     self.parameters = parameters
     self.speculatorMechanism = speculatorMechanism
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct TogetherDEModelWeights: Codable, Sendable {
     case draftSpeculatorType
     case parameters
     case speculatorMechanism
-    case typeModel = "type"
+    case kind = "type"
   }
 }

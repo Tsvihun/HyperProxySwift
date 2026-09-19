@@ -16,7 +16,7 @@ public struct AnthropicBetaManagedAgentsVault: Codable, Sendable {
   public var displayName: String
   public var id: String
   public var metadata: [String: String]
-  public var typeModel: AnthropicBetaManagedAgentsVaultTypeModel
+  public var kind: AnthropicBetaManagedAgentsVaultKind
   public var updatedAt: AnthropicBetaTimestamp
 
   public init(
@@ -25,7 +25,7 @@ public struct AnthropicBetaManagedAgentsVault: Codable, Sendable {
     displayName: String,
     id: String,
     metadata: [String: String],
-    typeModel: AnthropicBetaManagedAgentsVaultTypeModel,
+    kind: AnthropicBetaManagedAgentsVaultKind,
     updatedAt: AnthropicBetaTimestamp
   ) {
     self.archivedAt = archivedAt
@@ -33,7 +33,7 @@ public struct AnthropicBetaManagedAgentsVault: Codable, Sendable {
     self.displayName = displayName
     self.id = id
     self.metadata = metadata
-    self.typeModel = typeModel
+    self.kind = kind
     self.updatedAt = updatedAt
   }
 
@@ -43,7 +43,7 @@ public struct AnthropicBetaManagedAgentsVault: Codable, Sendable {
     case displayName = "display_name"
     case id
     case metadata
-    case typeModel = "type"
+    case kind = "type"
     case updatedAt = "updated_at"
   }
 }

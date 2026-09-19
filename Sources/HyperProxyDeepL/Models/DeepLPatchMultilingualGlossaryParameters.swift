@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct DeepLPatchMultilingualGlossaryParameters: Codable, Sendable {
   public var dictionaries: [DeepLGlossaryDictionary]?
-  public var name: DeepLGlossaryId?
+  public var name: String?
 
   public init(
     dictionaries: [DeepLGlossaryDictionary]? = nil,
-    name: DeepLGlossaryId? = nil
+    name: String? = nil
   ) {
     self.dictionaries = dictionaries
     self.name = name

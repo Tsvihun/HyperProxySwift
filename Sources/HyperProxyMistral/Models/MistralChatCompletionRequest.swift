@@ -14,7 +14,7 @@ public struct MistralChatCompletionRequest: Codable, Sendable {
   public var frequencyPenalty: Double?
   public var guardrails: [MistralGuardrailConfig]?
   public var maxTokens: Int?
-  public var messages: [HyperProxyJSONValue]
+  public var messages: [MistralChatCompletionRequestMessagesItem]
   public var metadata: [String: HyperProxyJSONValue]?
   public var model: String
   public var n: Int?
@@ -28,15 +28,15 @@ public struct MistralChatCompletionRequest: Codable, Sendable {
   public var responseFormat: MistralResponseFormat?
   public var safePrompt: Bool?
   public var serviceTier: MistralRequestedServiceTier?
-  public var stop: HyperProxyJSONValue?
+  public var stop: MistralChatCompletionRequestStop?
   public var stream: Bool?
   public var temperature: Double?
-  public var toolChoice: HyperProxyJSONValue?
-  public var tools: [HyperProxyJSONValue]?
+  public var toolChoice: MistralChatCompletionRequestToolChoice?
+  public var tools: [MistralChatCompletionRequestToolsAnyOf1Item]?
   public var topP: Double?
 
   public init(
-    messages: [HyperProxyJSONValue],
+    messages: [MistralChatCompletionRequestMessagesItem],
     model: String,
     frequencyPenalty: Double? = nil,
     guardrails: [MistralGuardrailConfig]? = nil,
@@ -53,11 +53,11 @@ public struct MistralChatCompletionRequest: Codable, Sendable {
     responseFormat: MistralResponseFormat? = nil,
     safePrompt: Bool? = nil,
     serviceTier: MistralRequestedServiceTier? = nil,
-    stop: HyperProxyJSONValue? = nil,
+    stop: MistralChatCompletionRequestStop? = nil,
     stream: Bool? = nil,
     temperature: Double? = nil,
-    toolChoice: HyperProxyJSONValue? = nil,
-    tools: [HyperProxyJSONValue]? = nil,
+    toolChoice: MistralChatCompletionRequestToolChoice? = nil,
+    tools: [MistralChatCompletionRequestToolsAnyOf1Item]? = nil,
     topP: Double? = nil
   ) {
     self.frequencyPenalty = frequencyPenalty

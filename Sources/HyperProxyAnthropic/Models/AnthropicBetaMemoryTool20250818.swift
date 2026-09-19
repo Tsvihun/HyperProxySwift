@@ -15,13 +15,13 @@ public struct AnthropicBetaMemoryTool20250818: Codable, Sendable {
   public var cacheControl: AnthropicBetaCacheControlEphemeral?
   public var deferLoading: Bool?
   public var inputExamples: [[String: AnthropicBetaJsonValue]]?
-  public var name: String
+  public var name: AnthropicMemoryName
   public var strict: Bool?
-  public var typeModel: String
+  public var kind: AnthropicMemory20250818Kind
 
   public init(
-    name: String,
-    typeModel: String,
+    name: AnthropicMemoryName = .memory,
+    kind: AnthropicMemory20250818Kind = .memory20250818,
     allowedCallers: [AnthropicBetaAllowedCaller]? = nil,
     cacheControl: AnthropicBetaCacheControlEphemeral? = nil,
     deferLoading: Bool? = nil,
@@ -34,7 +34,7 @@ public struct AnthropicBetaMemoryTool20250818: Codable, Sendable {
     self.inputExamples = inputExamples
     self.name = name
     self.strict = strict
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct AnthropicBetaMemoryTool20250818: Codable, Sendable {
     case inputExamples = "input_examples"
     case name
     case strict
-    case typeModel = "type"
+    case kind = "type"
   }
 }

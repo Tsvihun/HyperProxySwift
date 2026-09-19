@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiGenerationConfigResponseModalitiesItem: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mODALITYUNSPECIFIED = Self(rawValue: "MODALITY_UNSPECIFIED")
-  public static let tEXT = Self(rawValue: "TEXT")
-  public static let iMAGE = Self(rawValue: "IMAGE")
-  public static let aUDIO = Self(rawValue: "AUDIO")
+public enum GeminiGenerationConfigResponseModalitiesItem: String, Codable, Hashable, Sendable {
+  case mODALITYUNSPECIFIED = "MODALITY_UNSPECIFIED"
+  case tEXT = "TEXT"
+  case iMAGE = "IMAGE"
+  case aUDIO = "AUDIO"
 }

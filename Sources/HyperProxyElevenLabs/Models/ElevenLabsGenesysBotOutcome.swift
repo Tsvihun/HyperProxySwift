@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsGenesysBotOutcome: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let success = Self(rawValue: "success")
-  public static let escalate = Self(rawValue: "escalate")
+public enum ElevenLabsGenesysBotOutcome: String, Codable, Hashable, Sendable {
+  case success = "success"
+  case escalate = "escalate"
 }

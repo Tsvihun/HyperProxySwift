@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterOutputTextEditorServerToolItemCommand: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let view = Self(rawValue: "view")
-  public static let create = Self(rawValue: "create")
-  public static let strReplace = Self(rawValue: "str_replace")
-  public static let insert = Self(rawValue: "insert")
+public enum OpenRouterOutputTextEditorServerToolItemCommand: String, Codable, Hashable, Sendable {
+  case view = "view"
+  case create = "create"
+  case strReplace = "str_replace"
+  case insert = "insert"
 }

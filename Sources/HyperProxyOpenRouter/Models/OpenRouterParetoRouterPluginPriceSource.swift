@@ -10,14 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterParetoRouterPluginPriceSource: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let prompt = Self(rawValue: "prompt")
-  public static let weightedAvg = Self(rawValue: "weighted_avg")
+public enum OpenRouterParetoRouterPluginPriceSource: String, Codable, Hashable, Sendable {
+  case prompt = "prompt"
+  case weightedAvg = "weighted_avg"
 }

@@ -16,12 +16,12 @@ public struct OpenAIReasoningItem: Codable, Sendable {
   public var id: String
   public var status: OpenAIReasoningItemStatus?
   public var summary: [OpenAISummaryTextContent]
-  public var typeModel: OpenAIReasoningItemTypeModel
+  public var kind: OpenAIReasoningItemKind
 
   public init(
     id: String,
     summary: [OpenAISummaryTextContent],
-    typeModel: OpenAIReasoningItemTypeModel,
+    kind: OpenAIReasoningItemKind,
     content: [OpenAIReasoningTextContent]? = nil,
     encryptedContent: String? = nil,
     status: OpenAIReasoningItemStatus? = nil
@@ -31,7 +31,7 @@ public struct OpenAIReasoningItem: Codable, Sendable {
     self.id = id
     self.status = status
     self.summary = summary
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIReasoningItem: Codable, Sendable {
     case id
     case status
     case summary
-    case typeModel = "type"
+    case kind = "type"
   }
 }

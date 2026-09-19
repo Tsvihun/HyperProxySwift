@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAILiveMediaSessionForkParams: Codable, Sendable {
   public var client: OpenAILiveClientConfigParam?
   public var delegation: OpenAILiveResponsesDelegationUpdateParam?
-  public var store: OpenAIPropertiesStore?
+  public var store: Bool?
 
   public init(
     client: OpenAILiveClientConfigParam? = nil,
     delegation: OpenAILiveResponsesDelegationUpdateParam? = nil,
-    store: OpenAIPropertiesStore? = nil
+    store: Bool? = nil
   ) {
     self.client = client
     self.delegation = delegation

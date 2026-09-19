@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct StabilityPostV2betaStableImageEditOutpaintRequest: Codable, Sendable {
-  public var creativity: HyperProxyJSONValue?
+  public var creativity: Double?
   public var down: Int?
   public var image: String
   public var left: Int?
@@ -19,19 +19,19 @@ public struct StabilityPostV2betaStableImageEditOutpaintRequest: Codable, Sendab
   public var prompt: String?
   public var right: Int?
   public var seed: Double?
-  public var stylePreset: StabilityPostV2betaStableImageEditOutpaintRequestStylePreset?
+  public var stylePreset: StabilityStylePreset?
   public var up: Int?
 
   public init(
     image: String,
-    creativity: HyperProxyJSONValue? = nil,
+    creativity: Double? = nil,
     down: Int? = nil,
     left: Int? = nil,
     outputFormat: StabilityPostV2betaStableImageEditOutpaintRequestOutputFormat? = nil,
     prompt: String? = nil,
     right: Int? = nil,
     seed: Double? = nil,
-    stylePreset: StabilityPostV2betaStableImageEditOutpaintRequestStylePreset? = nil,
+    stylePreset: StabilityStylePreset? = nil,
     up: Int? = nil
   ) {
     self.creativity = creativity

@@ -13,13 +13,13 @@ import HyperProxyCore
 public struct ElevenLabsOrderMediaResponse: Codable, Sendable {
   public var contentType: String
   public var language: String?
-  public var mediaId: ElevenLabsMediaId
+  public var mediaId: String
   public var name: String
   public var signedUrl: String
 
   public init(
     contentType: String,
-    mediaId: ElevenLabsMediaId,
+    mediaId: String,
     name: String,
     signedUrl: String,
     language: String? = nil

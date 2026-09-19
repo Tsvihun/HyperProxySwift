@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherDEMetricResultVerdict: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mETRICVERDICTPASS = Self(rawValue: "METRIC_VERDICT_PASS")
-  public static let mETRICVERDICTBREACHED = Self(rawValue: "METRIC_VERDICT_BREACHED")
-  public static let mETRICVERDICTUNAVAILABLE = Self(rawValue: "METRIC_VERDICT_UNAVAILABLE")
+public enum TogetherDEMetricResultVerdict: String, Codable, Hashable, Sendable {
+  case mETRICVERDICTPASS = "METRIC_VERDICT_PASS"
+  case mETRICVERDICTBREACHED = "METRIC_VERDICT_BREACHED"
+  case mETRICVERDICTUNAVAILABLE = "METRIC_VERDICT_UNAVAILABLE"
 }

@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsCrawlStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let queued = Self(rawValue: "queued")
-  public static let processing = Self(rawValue: "processing")
-  public static let succeeded = Self(rawValue: "succeeded")
-  public static let failed = Self(rawValue: "failed")
-  public static let skipped = Self(rawValue: "skipped")
-  public static let cancelled = Self(rawValue: "cancelled")
+public enum ElevenLabsCrawlStatus: String, Codable, Hashable, Sendable {
+  case queued = "queued"
+  case processing = "processing"
+  case succeeded = "succeeded"
+  case failed = "failed"
+  case skipped = "skipped"
+  case cancelled = "cancelled"
 }

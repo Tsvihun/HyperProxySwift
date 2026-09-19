@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiSafetyFeedback: Codable, Sendable {
-  public var rating: HyperProxyJSONValue?
-  public var setting: HyperProxyJSONValue?
+  public var rating: GeminiSafetyRating?
+  public var setting: GeminiSafetySetting?
 
   public init(
-    rating: HyperProxyJSONValue? = nil,
-    setting: HyperProxyJSONValue? = nil
+    rating: GeminiSafetyRating? = nil,
+    setting: GeminiSafetySetting? = nil
   ) {
     self.rating = rating
     self.setting = setting

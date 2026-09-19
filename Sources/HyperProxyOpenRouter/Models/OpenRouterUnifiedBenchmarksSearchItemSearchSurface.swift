@@ -10,15 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterUnifiedBenchmarksSearchItemSearchSurface: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum OpenRouterUnifiedBenchmarksSearchItemSearchSurface: String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let serverTool = Self(rawValue: "server-tool")
-  public static let plugin = Self(rawValue: "plugin")
+  case serverTool = "server-tool"
+  case plugin = "plugin"
 }

@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct AnthropicBetaManagedAgentsAgentToolset20260401: Codable, Sendable {
   public var configs: [AnthropicBetaManagedAgentsAgentToolConfigUnion]
   public var defaultConfig: AnthropicBetaManagedAgentsAgentToolsetDefaultConfig
-  public var typeModel: AnthropicBetaManagedAgentsAgentToolset20260401TypeModel
+  public var kind: AnthropicBetaManagedAgentsAgentToolset20260401Kind
 
   public init(
     configs: [AnthropicBetaManagedAgentsAgentToolConfigUnion],
     defaultConfig: AnthropicBetaManagedAgentsAgentToolsetDefaultConfig,
-    typeModel: AnthropicBetaManagedAgentsAgentToolset20260401TypeModel
+    kind: AnthropicBetaManagedAgentsAgentToolset20260401Kind
   ) {
     self.configs = configs
     self.defaultConfig = defaultConfig
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case configs
     case defaultConfig = "default_config"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

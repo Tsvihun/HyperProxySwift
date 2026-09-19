@@ -14,24 +14,24 @@ public struct OpenRouterOpenAIResponsesSearchCompleted: Codable, Sendable {
   public var itemId: String
   public var outputIndex: Int
   public var sequenceNumber: Int
-  public var typeModel: OpenRouterOpenAIResponsesSearchCompletedTypeModel
+  public var kind: OpenRouterOpenAIResponsesSearchCompletedKind
 
   public init(
     itemId: String,
     outputIndex: Int,
     sequenceNumber: Int,
-    typeModel: OpenRouterOpenAIResponsesSearchCompletedTypeModel
+    kind: OpenRouterOpenAIResponsesSearchCompletedKind
   ) {
     self.itemId = itemId
     self.outputIndex = outputIndex
     self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case itemId = "item_id"
     case outputIndex = "output_index"
     case sequenceNumber = "sequence_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

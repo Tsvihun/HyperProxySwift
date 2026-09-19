@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterImageGenTextChunkEventPhase: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let content = Self(rawValue: "content")
-  public static let reasoning = Self(rawValue: "reasoning")
-  public static let draft = Self(rawValue: "draft")
+public enum OpenRouterImageGenTextChunkEventPhase: String, Codable, Hashable, Sendable {
+  case content = "content"
+  case reasoning = "reasoning"
+  case draft = "draft"
 }

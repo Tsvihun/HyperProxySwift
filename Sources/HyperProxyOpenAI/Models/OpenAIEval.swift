@@ -12,21 +12,21 @@ import HyperProxyCore
 
 public struct OpenAIEval: Codable, Sendable {
   public var createdAt: Int
-  public var dataSourceConfig: HyperProxyJSONValue
+  public var dataSourceConfig: OpenAIEvalDataSourceConfig
   public var id: String
-  public var metadata: OpenAIMetadata
+  public var metadata: OpenAIMetadata?
   public var name: String
   public var object: OpenAIEvalObject
-  public var testingCriteria: [HyperProxyJSONValue]
+  public var testingCriteria: [OpenAIEvalTestingCriteriaItem]
 
   public init(
     createdAt: Int,
-    dataSourceConfig: HyperProxyJSONValue,
+    dataSourceConfig: OpenAIEvalDataSourceConfig,
     id: String,
-    metadata: OpenAIMetadata,
+    metadata: OpenAIMetadata?,
     name: String,
     object: OpenAIEvalObject,
-    testingCriteria: [HyperProxyJSONValue]
+    testingCriteria: [OpenAIEvalTestingCriteriaItem]
   ) {
     self.createdAt = createdAt
     self.dataSourceConfig = dataSourceConfig

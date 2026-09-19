@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIChatCompletionMessageList: Codable, Sendable {
-  public var data: [HyperProxyJSONValue]
+  public var data: [OpenAIChatCompletionMessageListDataItem]
   public var firstId: String
   public var hasMore: Bool
   public var lastId: String
   public var object: OpenAIChatCompletionMessageListObject
 
   public init(
-    data: [HyperProxyJSONValue],
+    data: [OpenAIChatCompletionMessageListDataItem],
     firstId: String,
     hasMore: Bool,
     lastId: String,

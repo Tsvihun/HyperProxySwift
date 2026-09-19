@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsPendingSubscriptionSwitchResponseModel: Codable, Sendable {
-  public var kind: String?
+  public var kind: ElevenLabsChangeKind?
   public var nextBillingPeriod: ElevenLabsBillingPeriod
   public var nextTier: ElevenLabsPendingSubscriptionSwitchResponseModelNextTier
   public var timestampSeconds: Int
@@ -20,7 +20,7 @@ public struct ElevenLabsPendingSubscriptionSwitchResponseModel: Codable, Sendabl
     nextBillingPeriod: ElevenLabsBillingPeriod,
     nextTier: ElevenLabsPendingSubscriptionSwitchResponseModelNextTier,
     timestampSeconds: Int,
-    kind: String? = nil
+    kind: ElevenLabsChangeKind? = nil
   ) {
     self.kind = kind
     self.nextBillingPeriod = nextBillingPeriod

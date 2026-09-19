@@ -14,11 +14,11 @@ public struct DeepLCreateStyleRuleListRequest: Codable, Sendable {
   public var configuredRules: DeepLConfiguredRules?
   public var customInstructions: [DeepLCreateStyleRuleListRequestCustomInstructionsItem]?
   public var language: DeepLStyleRuleLanguage
-  public var name: DeepLStyleRuleName
+  public var name: String
 
   public init(
     language: DeepLStyleRuleLanguage,
-    name: DeepLStyleRuleName,
+    name: String,
     configuredRules: DeepLConfiguredRules? = nil,
     customInstructions: [DeepLCreateStyleRuleListRequestCustomInstructionsItem]? = nil
   ) {

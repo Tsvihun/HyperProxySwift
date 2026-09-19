@@ -14,7 +14,7 @@ public struct OpenRouterPresetWithDesignatedVersion: Codable, Sendable {
   public var createdAt: String
   public var creatorUserId: String
   public var description: String
-  public var designatedVersion: OpenRouterPresetDesignatedVersion
+  public var designatedVersion: OpenRouterPresetDesignatedVersion?
   public var designatedVersionId: String
   public var id: String
   public var name: String
@@ -28,7 +28,7 @@ public struct OpenRouterPresetWithDesignatedVersion: Codable, Sendable {
     createdAt: String,
     creatorUserId: String,
     description: String,
-    designatedVersion: OpenRouterPresetDesignatedVersion,
+    designatedVersion: OpenRouterPresetDesignatedVersion?,
     designatedVersionId: String,
     id: String,
     name: String,

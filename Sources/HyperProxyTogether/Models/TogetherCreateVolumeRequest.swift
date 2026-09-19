@@ -11,23 +11,23 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherCreateVolumeRequest: Codable, Sendable {
-  public var content: HyperProxyJSONValue
+  public var content: TogetherVolumeContentRequest
   public var name: String
-  public var typeModel: TogetherVolumeType
+  public var kind: TogetherVolumeType
 
   public init(
-    content: HyperProxyJSONValue,
+    content: TogetherVolumeContentRequest,
     name: String,
-    typeModel: TogetherVolumeType
+    kind: TogetherVolumeType
   ) {
     self.content = content
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case content
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

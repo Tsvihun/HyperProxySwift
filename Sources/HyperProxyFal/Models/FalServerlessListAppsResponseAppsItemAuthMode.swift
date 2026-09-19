@@ -10,16 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct FalServerlessListAppsResponseAppsItemAuthMode: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let privateValue = Self(rawValue: "private")
-  public static let publicValue = Self(rawValue: "public")
-  public static let shared = Self(rawValue: "shared")
+public enum FalServerlessListAppsResponseAppsItemAuthMode: String, Codable, Hashable, Sendable {
+  case privateValue = "private"
+  case publicValue = "public"
+  case shared = "shared"
 }

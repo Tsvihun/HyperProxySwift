@@ -14,14 +14,14 @@ public struct OpenAIRealtimeTranscriptionSessionCreateResponse: Codable, Sendabl
   public var clientSecret: OpenAIRealtimeTranscriptionSessionCreateResponseClientSecret
   public var inputAudioFormat: String?
   public var inputAudioTranscription: OpenAIAudioTranscriptionResponse?
-  public var modalities: HyperProxyJSONValue?
+  public var modalities: [OpenAIRealtimeTranscriptionSessionCreateResponseModalitiesItem]?
   public var turnDetection: OpenAIRealtimeTranscriptionSessionCreateResponseTurnDetection?
 
   public init(
     clientSecret: OpenAIRealtimeTranscriptionSessionCreateResponseClientSecret,
     inputAudioFormat: String? = nil,
     inputAudioTranscription: OpenAIAudioTranscriptionResponse? = nil,
-    modalities: HyperProxyJSONValue? = nil,
+    modalities: [OpenAIRealtimeTranscriptionSessionCreateResponseModalitiesItem]? = nil,
     turnDetection: OpenAIRealtimeTranscriptionSessionCreateResponseTurnDetection? = nil
   ) {
     self.clientSecret = clientSecret

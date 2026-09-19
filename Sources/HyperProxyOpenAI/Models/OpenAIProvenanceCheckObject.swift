@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIProvenanceCheckObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let contentProvenanceCheck = Self(rawValue: "content_provenance_check")
+public enum OpenAIProvenanceCheckObject: String, Codable, Hashable, Sendable {
+  case contentProvenanceCheck = "content_provenance_check"
 }

@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesNumbersMathematicalExpressionSpacing: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesNumbersMathematicalExpressionSpacing: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useSpaceBetweenElementsOfMathematicalExpressionOrEquation = Self(
-    rawValue: "use_space_between_elements_of_mathematical_expression_or_equation")
+  case useSpaceBetweenElementsOfMathematicalExpressionOrEquation =
+    "use_space_between_elements_of_mathematical_expression_or_equation"
 }

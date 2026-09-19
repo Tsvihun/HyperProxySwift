@@ -10,20 +10,13 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIIncludeEnum: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let fileSearchCallResults = Self(rawValue: "file_search_call.results")
-  public static let webSearchCallResults = Self(rawValue: "web_search_call.results")
-  public static let webSearchCallActionSources = Self(rawValue: "web_search_call.action.sources")
-  public static let messageInputImageImageUrl = Self(rawValue: "message.input_image.image_url")
-  public static let computerCallOutputOutputImageUrl = Self(
-    rawValue: "computer_call_output.output.image_url")
-  public static let codeInterpreterCallOutputs = Self(rawValue: "code_interpreter_call.outputs")
-  public static let reasoningEncryptedContent = Self(rawValue: "reasoning.encrypted_content")
-  public static let messageOutputTextLogprobs = Self(rawValue: "message.output_text.logprobs")
+public enum OpenAIIncludeEnum: String, Codable, Hashable, Sendable {
+  case fileSearchCallResults = "file_search_call.results"
+  case webSearchCallResults = "web_search_call.results"
+  case webSearchCallActionSources = "web_search_call.action.sources"
+  case messageInputImageImageUrl = "message.input_image.image_url"
+  case computerCallOutputOutputImageUrl = "computer_call_output.output.image_url"
+  case codeInterpreterCallOutputs = "code_interpreter_call.outputs"
+  case reasoningEncryptedContent = "reasoning.encrypted_content"
+  case messageOutputTextLogprobs = "message.output_text.logprobs"
 }

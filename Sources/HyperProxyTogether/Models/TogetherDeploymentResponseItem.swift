@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct TogetherDeploymentResponseItem: Codable, Sendable {
   public var args: [String]?
-  public var autoscaling: HyperProxyJSONValue?
+  public var autoscaling: TogetherDeploymentResponseItemAutoscaling?
   public var command: [String]?
   public var cpu: Double?
   public var createdAt: String?
@@ -28,7 +28,7 @@ public struct TogetherDeploymentResponseItem: Codable, Sendable {
   public var memory: Double?
   public var minReplicas: Int?
   public var name: String?
-  public var object: HyperProxyJSONValue?
+  public var object: TogetherDeploymentObject?
   public var port: Int?
   public var readyReplicas: Int?
   public var replicaEvents: [String: TogetherReplicaEvent]?
@@ -40,7 +40,7 @@ public struct TogetherDeploymentResponseItem: Codable, Sendable {
 
   public init(
     args: [String]? = nil,
-    autoscaling: HyperProxyJSONValue? = nil,
+    autoscaling: TogetherDeploymentResponseItemAutoscaling? = nil,
     command: [String]? = nil,
     cpu: Double? = nil,
     createdAt: String? = nil,
@@ -56,7 +56,7 @@ public struct TogetherDeploymentResponseItem: Codable, Sendable {
     memory: Double? = nil,
     minReplicas: Int? = nil,
     name: String? = nil,
-    object: HyperProxyJSONValue? = nil,
+    object: TogetherDeploymentObject? = nil,
     port: Int? = nil,
     readyReplicas: Int? = nil,
     replicaEvents: [String: TogetherReplicaEvent]? = nil,

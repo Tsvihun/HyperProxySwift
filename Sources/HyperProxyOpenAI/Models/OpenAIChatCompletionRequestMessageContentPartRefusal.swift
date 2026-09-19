@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIChatCompletionRequestMessageContentPartRefusal: Codable, Sendable {
   public var refusal: String
-  public var typeModel: OpenAIChatCompletionRequestMessageContentPartRefusalTypeModel
+  public var kind: OpenAIChatCompletionRequestMessageContentPartRefusalKind
 
   public init(
     refusal: String,
-    typeModel: OpenAIChatCompletionRequestMessageContentPartRefusalTypeModel
+    kind: OpenAIChatCompletionRequestMessageContentPartRefusalKind
   ) {
     self.refusal = refusal
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case refusal
-    case typeModel = "type"
+    case kind = "type"
   }
 }

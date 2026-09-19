@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsVeo31FastRequestAspectRatio: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let value169 = Self(rawValue: "16:9")
-  public static let value916 = Self(rawValue: "9:16")
+public enum ElevenLabsVeo31FastRequestAspectRatio: String, Codable, Hashable, Sendable {
+  case value169 = "16:9"
+  case value916 = "9:16"
 }

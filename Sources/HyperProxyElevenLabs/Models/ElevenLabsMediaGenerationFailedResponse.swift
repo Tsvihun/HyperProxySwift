@@ -14,13 +14,13 @@ public struct ElevenLabsMediaGenerationFailedResponse: Codable, Sendable {
   public var errorMessage: String
   public var failureReason: ElevenLabsMediaGenerationFailedResponseFailureReason
   public var id: String
-  public var status: String
+  public var status: ElevenLabsFailedStatus
 
   public init(
     errorMessage: String,
     failureReason: ElevenLabsMediaGenerationFailedResponseFailureReason,
     id: String,
-    status: String
+    status: ElevenLabsFailedStatus = .failed
   ) {
     self.errorMessage = errorMessage
     self.failureReason = failureReason

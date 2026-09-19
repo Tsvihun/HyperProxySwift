@@ -10,20 +10,14 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralMCPSupportedLanguage: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let en = Self(rawValue: "en")
-  public static let fr = Self(rawValue: "fr")
-  public static let de = Self(rawValue: "de")
-  public static let es = Self(rawValue: "es")
-  public static let pl = Self(rawValue: "pl")
-  public static let it = Self(rawValue: "it")
-  public static let ar = Self(rawValue: "ar")
-  public static let ptBR = Self(rawValue: "pt-BR")
-  public static let nl = Self(rawValue: "nl")
+public enum MistralMCPSupportedLanguage: String, Codable, Hashable, Sendable {
+  case en = "en"
+  case fr = "fr"
+  case de = "de"
+  case es = "es"
+  case pl = "pl"
+  case it = "it"
+  case ar = "ar"
+  case ptBR = "pt-BR"
+  case nl = "nl"
 }

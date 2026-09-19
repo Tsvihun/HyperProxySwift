@@ -15,20 +15,20 @@ public struct AnthropicResponseBashCodeExecutionResultBlock: Codable, Sendable {
   public var returnCode: Int
   public var stderr: String
   public var stdout: String
-  public var typeModel: String
+  public var kind: AnthropicBashCodeExecutionResultKind
 
   public init(
     content: [AnthropicResponseBashCodeExecutionOutputBlock],
     returnCode: Int,
     stderr: String,
     stdout: String,
-    typeModel: String
+    kind: AnthropicBashCodeExecutionResultKind = .bashCodeExecutionResult
   ) {
     self.content = content
     self.returnCode = returnCode
     self.stderr = stderr
     self.stdout = stdout
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct AnthropicResponseBashCodeExecutionResultBlock: Codable, Sendable {
     case returnCode = "return_code"
     case stderr
     case stdout
-    case typeModel = "type"
+    case kind = "type"
   }
 }

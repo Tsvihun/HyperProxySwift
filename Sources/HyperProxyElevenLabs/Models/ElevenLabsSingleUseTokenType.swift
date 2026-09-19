@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsSingleUseTokenType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let realtimeScribe = Self(rawValue: "realtime_scribe")
-  public static let batchScribe = Self(rawValue: "batch_scribe")
-  public static let ttsWebsocket = Self(rawValue: "tts_websocket")
+public enum ElevenLabsSingleUseTokenType: String, Codable, Hashable, Sendable {
+  case realtimeScribe = "realtime_scribe"
+  case batchScribe = "batch_scribe"
+  case ttsWebsocket = "tts_websocket"
 }

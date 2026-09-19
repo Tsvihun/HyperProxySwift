@@ -10,16 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesSpellingAndGrammarSpanishWordSolo: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesSpellingAndGrammarSpanishWordSolo: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let neverUseAcuteAccent = Self(rawValue: "never_use_acute_accent")
-  public static let useAcuteAccentWhenUsedAsAdverb = Self(
-    rawValue: "use_acute_accent_when_used_as_adverb")
+  case neverUseAcuteAccent = "never_use_acute_accent"
+  case useAcuteAccentWhenUsedAsAdverb = "use_acute_accent_when_used_as_adverb"
 }

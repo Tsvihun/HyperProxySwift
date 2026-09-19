@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct MistralDocumentURLChunk: Codable, Sendable {
   public var documentName: String?
   public var documentUrl: String
-  public var typeModel: String?
+  public var kind: MistralDocumentUrlKind?
 
   public init(
     documentUrl: String,
     documentName: String? = nil,
-    typeModel: String? = nil
+    kind: MistralDocumentUrlKind? = nil
   ) {
     self.documentName = documentName
     self.documentUrl = documentUrl
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case documentName = "document_name"
     case documentUrl = "document_url"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

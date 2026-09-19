@@ -10,18 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsVoiceResponseModelSafetyControlAnyOf1: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let nONE = Self(rawValue: "NONE")
-  public static let bAN = Self(rawValue: "BAN")
-  public static let cAPTCHA = Self(rawValue: "CAPTCHA")
-  public static let eNTERPRISEBAN = Self(rawValue: "ENTERPRISE_BAN")
-  public static let eNTERPRISECAPTCHA = Self(rawValue: "ENTERPRISE_CAPTCHA")
+public enum ElevenLabsVoiceResponseModelSafetyControlAnyOf1: String, Codable, Hashable, Sendable {
+  case nONE = "NONE"
+  case bAN = "BAN"
+  case cAPTCHA = "CAPTCHA"
+  case eNTERPRISEBAN = "ENTERPRISE_BAN"
+  case eNTERPRISECAPTCHA = "ENTERPRISE_CAPTCHA"
 }

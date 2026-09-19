@@ -17,7 +17,7 @@ public struct OpenAIRunGraderResponseMetadata: Codable, Sendable {
   public var sampledModelName: String?
   public var scores: [String: HyperProxyJSONValue]
   public var tokenUsage: Int?
-  public var typeModel: String
+  public var kind: String
 
   public init(
     errors: OpenAIRunGraderResponseMetadataErrors,
@@ -26,7 +26,7 @@ public struct OpenAIRunGraderResponseMetadata: Codable, Sendable {
     sampledModelName: String?,
     scores: [String: HyperProxyJSONValue],
     tokenUsage: Int?,
-    typeModel: String
+    kind: String
   ) {
     self.errors = errors
     self.executionTime = executionTime
@@ -34,7 +34,7 @@ public struct OpenAIRunGraderResponseMetadata: Codable, Sendable {
     self.sampledModelName = sampledModelName
     self.scores = scores
     self.tokenUsage = tokenUsage
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenAIRunGraderResponseMetadata: Codable, Sendable {
     case sampledModelName = "sampled_model_name"
     case scores
     case tokenUsage = "token_usage"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

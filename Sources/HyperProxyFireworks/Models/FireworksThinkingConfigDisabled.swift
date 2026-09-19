@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct FireworksThinkingConfigDisabled: Codable, Sendable {
-  public var typeModel: String
+  public var kind: FireworksDisabledKind
 
   public init(
-    typeModel: String
+    kind: FireworksDisabledKind = .disabled
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaContextManagementConfig: Codable, Sendable {
-  public var edits: [HyperProxyJSONValue]?
+  public var edits: [AnthropicBetaContextManagementConfigEditsItem]?
 
   public init(
-    edits: [HyperProxyJSONValue]? = nil
+    edits: [AnthropicBetaContextManagementConfigEditsItem]? = nil
   ) {
     self.edits = edits
   }

@@ -11,23 +11,23 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterMessagesContentBlockStartEvent: Codable, Sendable {
-  public var contentBlock: HyperProxyJSONValue
+  public var contentBlock: OpenRouterMessagesContentBlockStartEventContentBlock
   public var index: Int
-  public var typeModel: OpenRouterMessagesContentBlockStartEventTypeModel
+  public var kind: OpenRouterMessagesContentBlockStartEventKind
 
   public init(
-    contentBlock: HyperProxyJSONValue,
+    contentBlock: OpenRouterMessagesContentBlockStartEventContentBlock,
     index: Int,
-    typeModel: OpenRouterMessagesContentBlockStartEventTypeModel
+    kind: OpenRouterMessagesContentBlockStartEventKind
   ) {
     self.contentBlock = contentBlock
     self.index = index
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case contentBlock = "content_block"
     case index
-    case typeModel = "type"
+    case kind = "type"
   }
 }

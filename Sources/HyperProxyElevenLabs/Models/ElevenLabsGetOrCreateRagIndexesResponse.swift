@@ -10,4 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public typealias ElevenLabsGetOrCreateRagIndexesResponse = [String: HyperProxyJSONValue]
+public typealias ElevenLabsGetOrCreateRagIndexesResponse = [String:
+  ElevenLabsGetOrCreateRagIndexesResponseValue]

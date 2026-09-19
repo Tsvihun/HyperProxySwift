@@ -15,20 +15,20 @@ public struct OpenAIRealtimeTranslationSession: Codable, Sendable {
   public var expiresAt: Int
   public var id: String
   public var model: String
-  public var typeModel: OpenAIRealtimeTranslationSessionTypeModel
+  public var kind: OpenAIRealtimeTranslationSessionKind
 
   public init(
     audio: OpenAIRealtimeTranslationSessionAudio,
     expiresAt: Int,
     id: String,
     model: String,
-    typeModel: OpenAIRealtimeTranslationSessionTypeModel
+    kind: OpenAIRealtimeTranslationSessionKind
   ) {
     self.audio = audio
     self.expiresAt = expiresAt
     self.id = id
     self.model = model
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIRealtimeTranslationSession: Codable, Sendable {
     case expiresAt = "expires_at"
     case id
     case model
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIInputContentParamInputImage: Codable, Sendable {
   public var imageUrl: String
-  public var typeModel: OpenAIInputContentParamInputImageTypeModel
+  public var kind: OpenAIInputContentParamInputImageKind
 
   public init(
     imageUrl: String,
-    typeModel: OpenAIInputContentParamInputImageTypeModel
+    kind: OpenAIInputContentParamInputImageKind
   ) {
     self.imageUrl = imageUrl
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case imageUrl = "image_url"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

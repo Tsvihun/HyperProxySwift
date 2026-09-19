@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsKnowledgeBaseDependentType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let direct = Self(rawValue: "direct")
-  public static let transitive = Self(rawValue: "transitive")
-  public static let all = Self(rawValue: "all")
+public enum ElevenLabsKnowledgeBaseDependentType: String, Codable, Hashable, Sendable {
+  case direct = "direct"
+  case transitive = "transitive"
+  case all = "all"
 }

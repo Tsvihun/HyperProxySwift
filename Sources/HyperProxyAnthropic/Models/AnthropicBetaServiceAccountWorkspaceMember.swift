@@ -14,7 +14,7 @@ public struct AnthropicBetaServiceAccountWorkspaceMember: Codable, Sendable {
   public var createdByActorId: String?
   public var implicit: Bool?
   public var serviceAccountId: String
-  public var typeModel: String
+  public var kind: AnthropicServiceAccountWorkspaceMemberKind
   public var workspaceId: String
   public var workspaceRole: AnthropicBetaWorkspaceRoleSchema
 
@@ -22,14 +22,14 @@ public struct AnthropicBetaServiceAccountWorkspaceMember: Codable, Sendable {
     createdByActorId: String?,
     implicit: Bool?,
     serviceAccountId: String,
-    typeModel: String,
     workspaceId: String,
-    workspaceRole: AnthropicBetaWorkspaceRoleSchema
+    workspaceRole: AnthropicBetaWorkspaceRoleSchema,
+    kind: AnthropicServiceAccountWorkspaceMemberKind = .serviceAccountWorkspaceMember
   ) {
     self.createdByActorId = createdByActorId
     self.implicit = implicit
     self.serviceAccountId = serviceAccountId
-    self.typeModel = typeModel
+    self.kind = kind
     self.workspaceId = workspaceId
     self.workspaceRole = workspaceRole
   }
@@ -38,7 +38,7 @@ public struct AnthropicBetaServiceAccountWorkspaceMember: Codable, Sendable {
     case createdByActorId = "created_by_actor_id"
     case implicit
     case serviceAccountId = "service_account_id"
-    case typeModel = "type"
+    case kind = "type"
     case workspaceId = "workspace_id"
     case workspaceRole = "workspace_role"
   }

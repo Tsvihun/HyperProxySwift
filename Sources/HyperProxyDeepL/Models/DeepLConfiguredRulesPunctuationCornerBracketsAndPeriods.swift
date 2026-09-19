@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesPunctuationCornerBracketsAndPeriods: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesPunctuationCornerBracketsAndPeriods: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let doNotAddPeriodBeforeClosingCornerBracketWhenSentenceContinues = Self(
-    rawValue: "do_not_add_period_before_closing_corner_bracket_when_sentence_continues")
+  case doNotAddPeriodBeforeClosingCornerBracketWhenSentenceContinues =
+    "do_not_add_period_before_closing_corner_bracket_when_sentence_continues"
 }

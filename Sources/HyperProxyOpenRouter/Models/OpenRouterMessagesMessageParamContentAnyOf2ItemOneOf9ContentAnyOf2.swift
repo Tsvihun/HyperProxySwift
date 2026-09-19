@@ -13,18 +13,18 @@ import HyperProxyCore
 public struct OpenRouterMessagesMessageParamContentAnyOf2ItemOneOf9ContentAnyOf2: Codable, Sendable
 {
   public var errorCode: OpenRouterMessagesMessageParamContentAnyOf2ItemOneOf9ContentAnyOf2ErrorCode
-  public var typeModel: OpenRouterMessagesMessageParamContentAnyOf2ItemOneOf9ContentAnyOf2TypeModel
+  public var kind: OpenRouterMessagesMessageParamContentAnyOf2ItemOneOf9ContentAnyOf2Kind
 
   public init(
     errorCode: OpenRouterMessagesMessageParamContentAnyOf2ItemOneOf9ContentAnyOf2ErrorCode,
-    typeModel: OpenRouterMessagesMessageParamContentAnyOf2ItemOneOf9ContentAnyOf2TypeModel
+    kind: OpenRouterMessagesMessageParamContentAnyOf2ItemOneOf9ContentAnyOf2Kind
   ) {
     self.errorCode = errorCode
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case errorCode = "error_code"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

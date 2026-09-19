@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepSeekFileUploadRequestExpiresAfterAnchor: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let createdAt = Self(rawValue: "created_at")
+public enum DeepSeekFileUploadRequestExpiresAfterAnchor: String, Codable, Hashable, Sendable {
+  case createdAt = "created_at"
 }

@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct FalSearchRequestsParameters: Codable, Sendable {
   public var cursor: String?
   public var endpoint: String?
-  public var endpointId: HyperProxyJSONValue?
+  public var endpointId: FalSearchRequestsParametersEndpointId?
   public var excludeApiRequests: Bool?
   public var imageUrl: String?
   public var limit: Int?
@@ -25,7 +25,7 @@ public struct FalSearchRequestsParameters: Codable, Sendable {
   public init(
     cursor: String? = nil,
     endpoint: String? = nil,
-    endpointId: HyperProxyJSONValue? = nil,
+    endpointId: FalSearchRequestsParametersEndpointId? = nil,
     excludeApiRequests: Bool? = nil,
     imageUrl: String? = nil,
     limit: Int? = nil,

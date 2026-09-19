@@ -14,19 +14,19 @@ public struct OpenAILiveCallAcceptSession: Codable, Sendable {
   public var audio: OpenAILiveMediaSessionAudioParam?
   public var delegation: OpenAIDelegation?
   public var input: OpenAIInput?
-  public var instructions: OpenAIInstructions?
+  public var instructions: String?
   public var model: OpenAIModelIdsLive
-  public var store: OpenAIStore?
-  public var typeModel: OpenAILiveCallAcceptSessionTypeModel
+  public var store: Bool?
+  public var kind: OpenAILiveCallAcceptSessionKind
 
   public init(
     model: OpenAIModelIdsLive,
-    typeModel: OpenAILiveCallAcceptSessionTypeModel,
+    kind: OpenAILiveCallAcceptSessionKind,
     audio: OpenAILiveMediaSessionAudioParam? = nil,
     delegation: OpenAIDelegation? = nil,
     input: OpenAIInput? = nil,
-    instructions: OpenAIInstructions? = nil,
-    store: OpenAIStore? = nil
+    instructions: String? = nil,
+    store: Bool? = nil
   ) {
     self.audio = audio
     self.delegation = delegation
@@ -34,7 +34,7 @@ public struct OpenAILiveCallAcceptSession: Codable, Sendable {
     self.instructions = instructions
     self.model = model
     self.store = store
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenAILiveCallAcceptSession: Codable, Sendable {
     case instructions
     case model
     case store
-    case typeModel = "type"
+    case kind = "type"
   }
 }

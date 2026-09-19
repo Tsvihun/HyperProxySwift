@@ -10,16 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsAsyncConversationMetadataDeliveryStatus: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let pending = Self(rawValue: "pending")
-  public static let success = Self(rawValue: "success")
-  public static let failed = Self(rawValue: "failed")
+public enum ElevenLabsAsyncConversationMetadataDeliveryStatus: String, Codable, Hashable, Sendable {
+  case pending = "pending"
+  case success = "success"
+  case failed = "failed"
 }

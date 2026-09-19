@@ -18,8 +18,8 @@ public struct AnthropicBetaManagedAgentsSpanOutcomeEvaluationEndEvent: Codable, 
   public var outcomeId: String
   public var processedAt: AnthropicBetaTimestamp
   public var result: String
-  public var typeModel: AnthropicBetaManagedAgentsSpanOutcomeEvaluationEndEventTypeModel
-  public var usage: HyperProxyJSONValue
+  public var kind: AnthropicBetaManagedAgentsSpanOutcomeEvaluationEndEventKind
+  public var usage: AnthropicBetaManagedAgentsSpanModelUsage
 
   public init(
     explanation: String,
@@ -29,8 +29,8 @@ public struct AnthropicBetaManagedAgentsSpanOutcomeEvaluationEndEvent: Codable, 
     outcomeId: String,
     processedAt: AnthropicBetaTimestamp,
     result: String,
-    typeModel: AnthropicBetaManagedAgentsSpanOutcomeEvaluationEndEventTypeModel,
-    usage: HyperProxyJSONValue
+    kind: AnthropicBetaManagedAgentsSpanOutcomeEvaluationEndEventKind,
+    usage: AnthropicBetaManagedAgentsSpanModelUsage
   ) {
     self.explanation = explanation
     self.id = id
@@ -39,7 +39,7 @@ public struct AnthropicBetaManagedAgentsSpanOutcomeEvaluationEndEvent: Codable, 
     self.outcomeId = outcomeId
     self.processedAt = processedAt
     self.result = result
-    self.typeModel = typeModel
+    self.kind = kind
     self.usage = usage
   }
 
@@ -51,7 +51,7 @@ public struct AnthropicBetaManagedAgentsSpanOutcomeEvaluationEndEvent: Codable, 
     case outcomeId = "outcome_id"
     case processedAt = "processed_at"
     case result
-    case typeModel = "type"
+    case kind = "type"
     case usage
   }
 }

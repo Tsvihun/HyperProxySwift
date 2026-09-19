@@ -16,14 +16,14 @@ public struct ElevenLabsCreateCrawlJobResponseModel: Codable, Sendable {
   public var id: String
   public var rootFolderId: String
   public var status: String
-  public var typeModel: ElevenLabsCrawlType
+  public var kind: ElevenLabsCrawlType
 
   public init(
     createdAt: Int,
     id: String,
     rootFolderId: String,
     status: String,
-    typeModel: ElevenLabsCrawlType,
+    kind: ElevenLabsCrawlType,
     folderPath: [ElevenLabsKnowledgeBaseFolderPathSegmentSummaryResponseModel]? = nil
   ) {
     self.createdAt = createdAt
@@ -31,7 +31,7 @@ public struct ElevenLabsCreateCrawlJobResponseModel: Codable, Sendable {
     self.id = id
     self.rootFolderId = rootFolderId
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct ElevenLabsCreateCrawlJobResponseModel: Codable, Sendable {
     case id
     case rootFolderId = "root_folder_id"
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

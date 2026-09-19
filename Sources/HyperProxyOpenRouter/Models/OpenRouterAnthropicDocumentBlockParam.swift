@@ -14,13 +14,13 @@ public struct OpenRouterAnthropicDocumentBlockParam: Codable, Sendable {
   public var cacheControl: OpenRouterAnthropicCacheControlDirective?
   public var citations: OpenRouterAnthropicDocumentBlockParamCitations?
   public var context: String?
-  public var source: HyperProxyJSONValue
+  public var source: OpenRouterAnthropicDocumentBlockParamSource
   public var title: String?
-  public var typeModel: OpenRouterAnthropicDocumentBlockParamTypeModel
+  public var kind: OpenRouterAnthropicDocumentBlockParamKind
 
   public init(
-    source: HyperProxyJSONValue,
-    typeModel: OpenRouterAnthropicDocumentBlockParamTypeModel,
+    source: OpenRouterAnthropicDocumentBlockParamSource,
+    kind: OpenRouterAnthropicDocumentBlockParamKind,
     cacheControl: OpenRouterAnthropicCacheControlDirective? = nil,
     citations: OpenRouterAnthropicDocumentBlockParamCitations? = nil,
     context: String? = nil,
@@ -31,7 +31,7 @@ public struct OpenRouterAnthropicDocumentBlockParam: Codable, Sendable {
     self.context = context
     self.source = source
     self.title = title
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenRouterAnthropicDocumentBlockParam: Codable, Sendable {
     case context
     case source
     case title
-    case typeModel = "type"
+    case kind = "type"
   }
 }

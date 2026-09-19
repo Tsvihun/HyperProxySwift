@@ -17,7 +17,7 @@ public struct ElevenLabsVeo31FastRequest: Codable, Sendable {
   public var enhancePrompt: Bool?
   public var generateAudio: Bool?
   public var images: [ElevenLabsVeoImageReference]?
-  public var modelId: String
+  public var modelId: ElevenLabsVeo31FastGenerate001ModelId
   public var negativePrompt: String?
   public var prompt: String
   public var resolution: ElevenLabsVeo31FastRequestResolution?
@@ -26,8 +26,8 @@ public struct ElevenLabsVeo31FastRequest: Codable, Sendable {
   public var webhook: ElevenLabsWebhookTarget?
 
   public init(
-    modelId: String,
     prompt: String,
+    modelId: ElevenLabsVeo31FastGenerate001ModelId = .veo31FastGenerate001,
     aspectRatio: ElevenLabsVeo31FastRequestAspectRatio? = nil,
     durationSecs: ElevenLabsVeo31FastRequestDurationSecs? = nil,
     endFrame: ElevenLabsImageReference? = nil,

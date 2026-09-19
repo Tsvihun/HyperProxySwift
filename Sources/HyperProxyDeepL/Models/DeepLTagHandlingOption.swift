@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLTagHandlingOption: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let xml = Self(rawValue: "xml")
-  public static let html = Self(rawValue: "html")
+public enum DeepLTagHandlingOption: String, Codable, Hashable, Sendable {
+  case xml = "xml"
+  case html = "html"
 }

@@ -10,32 +10,40 @@
 import Foundation
 import HyperProxyCore
 
-public enum OpenAIBetaPersonalityEnum: Codable, Sendable {
-  case string(String)
-  case betaPersonalityEnumAnyOf2(OpenAIBetaPersonalityEnumAnyOf2)
+public enum OpenAIBetaPersonalityEnum: RawRepresentable, Codable, Hashable, Sendable {
+  case friendly
+  case pragmatic
+  case custom(String)
+
+  public init(rawValue: String) {
+    switch rawValue {
+    case "friendly":
+      self = .friendly
+    case "pragmatic":
+      self = .pragmatic
+    default:
+      self = .custom(rawValue)
+    }
+  }
+
+  public var rawValue: String {
+    switch self {
+    case .friendly:
+      return "friendly"
+    case .pragmatic:
+      return "pragmatic"
+    case .custom(let value):
+      return value
+    }
+  }
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(String.self) {
-      self = .string(value)
-      return
-    }
-    self = .betaPersonalityEnumAnyOf2(try container.decode(OpenAIBetaPersonalityEnumAnyOf2.self))
+    self.init(rawValue: try container.decode(String.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
-    switch self {
-    case .string(let value):
-      try container.encode(value)
-    case .betaPersonalityEnumAnyOf2(let value):
-      try container.encode(value)
-    }
-  }
-}
-
-extension OpenAIBetaPersonalityEnum: ExpressibleByStringLiteral {
-  public init(stringLiteral value: String) {
-    self = .string(value)
+    try container.encode(rawValue)
   }
 }

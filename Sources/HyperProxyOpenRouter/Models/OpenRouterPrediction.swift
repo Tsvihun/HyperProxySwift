@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterPrediction: Codable, Sendable {
-  public var content: HyperProxyJSONValue
-  public var typeModel: OpenRouterPredictionTypeModel
+  public var content: OpenRouterPredictionContent
+  public var kind: OpenRouterPredictionKind
 
   public init(
-    content: HyperProxyJSONValue,
-    typeModel: OpenRouterPredictionTypeModel
+    content: OpenRouterPredictionContent,
+    kind: OpenRouterPredictionKind
   ) {
     self.content = content
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case content
-    case typeModel = "type"
+    case kind = "type"
   }
 }

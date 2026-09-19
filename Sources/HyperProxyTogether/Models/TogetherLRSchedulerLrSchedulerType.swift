@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherLRSchedulerLrSchedulerType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let linear = Self(rawValue: "linear")
-  public static let cosine = Self(rawValue: "cosine")
+public enum TogetherLRSchedulerLrSchedulerType: String, Codable, Hashable, Sendable {
+  case linear = "linear"
+  case cosine = "cosine"
 }

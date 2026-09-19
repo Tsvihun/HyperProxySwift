@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct PerplexityPeopleSearchTool: Codable, Sendable {
-  public var typeModel: PerplexityPeopleSearchToolTypeModel
+  public var kind: PerplexityPeopleSearchToolKind
 
   public init(
-    typeModel: PerplexityPeopleSearchToolTypeModel
+    kind: PerplexityPeopleSearchToolKind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

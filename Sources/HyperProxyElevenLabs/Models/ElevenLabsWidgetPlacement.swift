@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsWidgetPlacement: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let topLeft = Self(rawValue: "top-left")
-  public static let top = Self(rawValue: "top")
-  public static let topRight = Self(rawValue: "top-right")
-  public static let bottomLeft = Self(rawValue: "bottom-left")
-  public static let bottom = Self(rawValue: "bottom")
-  public static let bottomRight = Self(rawValue: "bottom-right")
+public enum ElevenLabsWidgetPlacement: String, Codable, Hashable, Sendable {
+  case topLeft = "top-left"
+  case top = "top"
+  case topRight = "top-right"
+  case bottomLeft = "bottom-left"
+  case bottom = "bottom"
+  case bottomRight = "bottom-right"
 }

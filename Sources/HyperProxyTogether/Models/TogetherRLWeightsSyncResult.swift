@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherRLWeightsSyncResult: Codable, Sendable {
-  public var weightsVersion: HyperProxyJSONValue
+  public var weightsVersion: TogetherRLWeightsSyncResultWeightsVersion
 
   public init(
-    weightsVersion: HyperProxyJSONValue
+    weightsVersion: TogetherRLWeightsSyncResultWeightsVersion
   ) {
     self.weightsVersion = weightsVersion
   }

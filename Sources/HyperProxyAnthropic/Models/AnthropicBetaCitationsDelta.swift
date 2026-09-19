@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaCitationsDelta: Codable, Sendable {
-  public var citation: HyperProxyJSONValue
-  public var typeModel: String
+  public var citation: AnthropicBetaCitationsDeltaCitation
+  public var kind: AnthropicCitationsDeltaKind
 
   public init(
-    citation: HyperProxyJSONValue,
-    typeModel: String
+    citation: AnthropicBetaCitationsDeltaCitation,
+    kind: AnthropicCitationsDeltaKind = .citationsDelta
   ) {
     self.citation = citation
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case citation
-    case typeModel = "type"
+    case kind = "type"
   }
 }

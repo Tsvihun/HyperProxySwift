@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct
+public enum
   MistralListDeploymentWorkersV1WorkflowsDeploymentsNameWorkersGetParametersWorkerStatusAnyOf1:
-    RawRepresentable, Codable, Hashable, Sendable
+    String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let active = Self(rawValue: "active")
-  public static let inactive = Self(rawValue: "inactive")
+  case active = "active"
+  case inactive = "inactive"
 }

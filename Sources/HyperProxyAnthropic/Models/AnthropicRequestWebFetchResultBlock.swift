@@ -13,25 +13,25 @@ import HyperProxyCore
 public struct AnthropicRequestWebFetchResultBlock: Codable, Sendable {
   public var content: AnthropicRequestDocumentBlock
   public var retrievedAt: String?
-  public var typeModel: String
+  public var kind: AnthropicWebFetchResultKind
   public var url: String
 
   public init(
     content: AnthropicRequestDocumentBlock,
-    typeModel: String,
     url: String,
+    kind: AnthropicWebFetchResultKind = .webFetchResult,
     retrievedAt: String? = nil
   ) {
     self.content = content
     self.retrievedAt = retrievedAt
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
   enum CodingKeys: String, CodingKey {
     case content
     case retrievedAt = "retrieved_at"
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

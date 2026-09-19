@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsPublicUpdateOrderParameters: Codable, Sendable {
-  public var orderId: ElevenLabsOrderId
+  public var orderId: String
   public var xiApiKey: String?
 
   public init(
-    orderId: ElevenLabsOrderId,
+    orderId: String,
     xiApiKey: String? = nil
   ) {
     self.orderId = orderId

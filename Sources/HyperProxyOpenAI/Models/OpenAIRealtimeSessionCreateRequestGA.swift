@@ -14,32 +14,32 @@ public struct OpenAIRealtimeSessionCreateRequestGA: Codable, Sendable {
   public var audio: OpenAIRealtimeSessionCreateRequestGAAudio?
   public var include: [OpenAIRealtimeSessionCreateRequestGAIncludeItem]?
   public var instructions: String?
-  public var maxOutputTokens: HyperProxyJSONValue?
-  public var model: HyperProxyJSONValue?
+  public var maxOutputTokens: OpenAIRealtimeSessionCreateRequestGAMaxOutputTokens?
+  public var model: OpenAIRealtimeSessionCreateRequestGAModel?
   public var outputModalities: [OpenAIRealtimeSessionCreateRequestGAOutputModalitiesItem]?
   public var parallelToolCalls: Bool?
   public var prompt: OpenAIPrompt?
   public var reasoning: OpenAIRealtimeReasoning?
-  public var toolChoice: HyperProxyJSONValue?
-  public var tools: [HyperProxyJSONValue]?
-  public var tracing: HyperProxyJSONValue?
+  public var toolChoice: OpenAIRealtimeSessionCreateRequestGAToolChoice?
+  public var tools: [OpenAIRealtimeSessionCreateRequestGAToolsItem]?
+  public var tracing: OpenAIRealtimeSessionCreateRequestGATracing?
   public var truncation: OpenAIRealtimeTruncation?
-  public var typeModel: OpenAIRealtimeSessionCreateRequestGATypeModel
+  public var kind: OpenAIRealtimeSessionCreateRequestGAKind
 
   public init(
-    typeModel: OpenAIRealtimeSessionCreateRequestGATypeModel,
+    kind: OpenAIRealtimeSessionCreateRequestGAKind,
     audio: OpenAIRealtimeSessionCreateRequestGAAudio? = nil,
     include: [OpenAIRealtimeSessionCreateRequestGAIncludeItem]? = nil,
     instructions: String? = nil,
-    maxOutputTokens: HyperProxyJSONValue? = nil,
-    model: HyperProxyJSONValue? = nil,
+    maxOutputTokens: OpenAIRealtimeSessionCreateRequestGAMaxOutputTokens? = nil,
+    model: OpenAIRealtimeSessionCreateRequestGAModel? = nil,
     outputModalities: [OpenAIRealtimeSessionCreateRequestGAOutputModalitiesItem]? = nil,
     parallelToolCalls: Bool? = nil,
     prompt: OpenAIPrompt? = nil,
     reasoning: OpenAIRealtimeReasoning? = nil,
-    toolChoice: HyperProxyJSONValue? = nil,
-    tools: [HyperProxyJSONValue]? = nil,
-    tracing: HyperProxyJSONValue? = nil,
+    toolChoice: OpenAIRealtimeSessionCreateRequestGAToolChoice? = nil,
+    tools: [OpenAIRealtimeSessionCreateRequestGAToolsItem]? = nil,
+    tracing: OpenAIRealtimeSessionCreateRequestGATracing? = nil,
     truncation: OpenAIRealtimeTruncation? = nil
   ) {
     self.audio = audio
@@ -55,7 +55,7 @@ public struct OpenAIRealtimeSessionCreateRequestGA: Codable, Sendable {
     self.tools = tools
     self.tracing = tracing
     self.truncation = truncation
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -72,6 +72,6 @@ public struct OpenAIRealtimeSessionCreateRequestGA: Codable, Sendable {
     case tools
     case tracing
     case truncation
-    case typeModel = "type"
+    case kind = "type"
   }
 }

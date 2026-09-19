@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralModelList: Codable, Sendable {
-  public var data: [HyperProxyJSONValue]?
+  public var data: [MistralModelListDataItem]?
   public var object: String?
 
   public init(
-    data: [HyperProxyJSONValue]? = nil,
+    data: [MistralModelListDataItem]? = nil,
     object: String? = nil
   ) {
     self.data = data

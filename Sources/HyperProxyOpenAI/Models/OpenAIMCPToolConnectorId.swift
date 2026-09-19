@@ -10,19 +10,13 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIMCPToolConnectorId: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let connectorDropbox = Self(rawValue: "connector_dropbox")
-  public static let connectorGmail = Self(rawValue: "connector_gmail")
-  public static let connectorGooglecalendar = Self(rawValue: "connector_googlecalendar")
-  public static let connectorGoogledrive = Self(rawValue: "connector_googledrive")
-  public static let connectorMicrosoftteams = Self(rawValue: "connector_microsoftteams")
-  public static let connectorOutlookcalendar = Self(rawValue: "connector_outlookcalendar")
-  public static let connectorOutlookemail = Self(rawValue: "connector_outlookemail")
-  public static let connectorSharepoint = Self(rawValue: "connector_sharepoint")
+public enum OpenAIMCPToolConnectorId: String, Codable, Hashable, Sendable {
+  case connectorDropbox = "connector_dropbox"
+  case connectorGmail = "connector_gmail"
+  case connectorGooglecalendar = "connector_googlecalendar"
+  case connectorGoogledrive = "connector_googledrive"
+  case connectorMicrosoftteams = "connector_microsoftteams"
+  case connectorOutlookcalendar = "connector_outlookcalendar"
+  case connectorOutlookemail = "connector_outlookemail"
+  case connectorSharepoint = "connector_sharepoint"
 }

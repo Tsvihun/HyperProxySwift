@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsASRProvider: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let elevenlabs = Self(rawValue: "elevenlabs")
-  public static let scribeRealtime = Self(rawValue: "scribe_realtime")
+public enum ElevenLabsASRProvider: String, Codable, Hashable, Sendable {
+  case elevenlabs = "elevenlabs"
+  case scribeRealtime = "scribe_realtime"
 }

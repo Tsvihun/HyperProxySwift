@@ -18,13 +18,13 @@ public struct OpenAICustomToolCall: Codable, Sendable {
   public var input: String
   public var name: String
   public var namespace: String?
-  public var typeModel: OpenAICustomToolCallTypeModel
+  public var kind: OpenAICustomToolCallKind
 
   public init(
     callId: String,
     input: String,
     name: String,
-    typeModel: OpenAICustomToolCallTypeModel,
+    kind: OpenAICustomToolCallKind,
     async: Bool? = nil,
     caller: OpenAIToolCallCaller? = nil,
     id: String? = nil,
@@ -37,7 +37,7 @@ public struct OpenAICustomToolCall: Codable, Sendable {
     self.input = input
     self.name = name
     self.namespace = namespace
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct OpenAICustomToolCall: Codable, Sendable {
     case input
     case name
     case namespace
-    case typeModel = "type"
+    case kind = "type"
   }
 }

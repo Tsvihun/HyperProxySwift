@@ -12,22 +12,22 @@ import HyperProxyCore
 
 public struct AnthropicBetaServiceAccountWorkspaceMemberDeleteResponse: Codable, Sendable {
   public var serviceAccountId: String
-  public var typeModel: String
+  public var kind: AnthropicServiceAccountWorkspaceMemberDeletedKind
   public var workspaceId: String
 
   public init(
     serviceAccountId: String,
-    typeModel: String,
-    workspaceId: String
+    workspaceId: String,
+    kind: AnthropicServiceAccountWorkspaceMemberDeletedKind = .serviceAccountWorkspaceMemberDeleted
   ) {
     self.serviceAccountId = serviceAccountId
-    self.typeModel = typeModel
+    self.kind = kind
     self.workspaceId = workspaceId
   }
 
   enum CodingKeys: String, CodingKey {
     case serviceAccountId = "service_account_id"
-    case typeModel = "type"
+    case kind = "type"
     case workspaceId = "workspace_id"
   }
 }

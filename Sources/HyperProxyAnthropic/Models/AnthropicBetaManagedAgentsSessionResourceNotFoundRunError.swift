@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsSessionResourceNotFoundRunError: Codable, Sendable {
   public var message: String
-  public var typeModel: AnthropicBetaManagedAgentsSessionResourceNotFoundRunErrorTypeModel
+  public var kind: AnthropicBetaManagedAgentsSessionResourceNotFoundRunErrorKind
 
   public init(
     message: String,
-    typeModel: AnthropicBetaManagedAgentsSessionResourceNotFoundRunErrorTypeModel
+    kind: AnthropicBetaManagedAgentsSessionResourceNotFoundRunErrorKind
   ) {
     self.message = message
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case message
-    case typeModel = "type"
+    case kind = "type"
   }
 }

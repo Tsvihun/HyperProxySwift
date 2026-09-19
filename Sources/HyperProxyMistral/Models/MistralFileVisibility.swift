@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralFileVisibility: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let workspace = Self(rawValue: "workspace")
-  public static let user = Self(rawValue: "user")
+public enum MistralFileVisibility: String, Codable, Hashable, Sendable {
+  case workspace = "workspace"
+  case user = "user"
 }

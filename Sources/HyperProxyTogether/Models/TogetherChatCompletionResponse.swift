@@ -15,7 +15,7 @@ public struct TogetherChatCompletionResponse: Codable, Sendable {
   public var created: Int
   public var id: String
   public var model: String
-  public var object: HyperProxyJSONValue
+  public var object: TogetherChatCompletionObject
   public var prompt: TogetherPromptPart
   public var usage: TogetherUsageData?
   public var warnings: [TogetherInferenceWarning]?
@@ -25,8 +25,8 @@ public struct TogetherChatCompletionResponse: Codable, Sendable {
     created: Int,
     id: String,
     model: String,
-    object: HyperProxyJSONValue,
     prompt: TogetherPromptPart,
+    object: TogetherChatCompletionObject = .chatCompletion,
     usage: TogetherUsageData? = nil,
     warnings: [TogetherInferenceWarning]? = nil
   ) {

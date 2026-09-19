@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiFunctionResponsePart: Codable, Sendable {
-  public var inlineData: HyperProxyJSONValue?
+  public var inlineData: GeminiFunctionResponseBlob?
 
   public init(
-    inlineData: HyperProxyJSONValue? = nil
+    inlineData: GeminiFunctionResponseBlob? = nil
   ) {
     self.inlineData = inlineData
   }

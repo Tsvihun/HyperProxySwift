@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct FireworksAnthropicMessage: Codable, Sendable {
   public var content: [FireworksAnthropicContentBlock]
   public var id: String
-  public var model: FireworksAnthropicModel
+  public var model: String
   public var rawOutput: FireworksAnthropicRawOutput?
-  public var role: String
+  public var role: FireworksAssistantRole
   public var stopReason: FireworksAnthropicStopReason?
   public var stopSequence: String?
-  public var typeModel: String
+  public var kind: FireworksMessageKind
 
   public init(
     content: [FireworksAnthropicContentBlock],
     id: String,
-    model: FireworksAnthropicModel,
-    role: String,
+    model: String,
     stopReason: FireworksAnthropicStopReason?,
     stopSequence: String?,
-    typeModel: String,
+    role: FireworksAssistantRole = .assistant,
+    kind: FireworksMessageKind = .message,
     rawOutput: FireworksAnthropicRawOutput? = nil
   ) {
     self.content = content
@@ -37,7 +37,7 @@ public struct FireworksAnthropicMessage: Codable, Sendable {
     self.role = role
     self.stopReason = stopReason
     self.stopSequence = stopSequence
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct FireworksAnthropicMessage: Codable, Sendable {
     case role
     case stopReason = "stop_reason"
     case stopSequence = "stop_sequence"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

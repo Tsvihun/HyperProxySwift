@@ -10,7 +10,37 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaManagedAgentsSessionResourceParams: Codable, Sendable {
+public enum AnthropicBetaManagedAgentsSessionResourceParams: Codable, Sendable {
+  case betaManagedAgentsGitHubRepositoryResourceParams(
+    AnthropicBetaManagedAgentsGitHubRepositoryResourceParams)
+  case betaManagedAgentsFileResourceParams(AnthropicBetaManagedAgentsFileResourceParams)
+  case betaManagedAgentsMemoryStoreResourceParam(AnthropicBetaManagedAgentsMemoryStoreResourceParam)
 
-  public init() {}
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(
+      AnthropicBetaManagedAgentsGitHubRepositoryResourceParams.self)
+    {
+      self = .betaManagedAgentsGitHubRepositoryResourceParams(value)
+      return
+    }
+    if let value = try? container.decode(AnthropicBetaManagedAgentsFileResourceParams.self) {
+      self = .betaManagedAgentsFileResourceParams(value)
+      return
+    }
+    self = .betaManagedAgentsMemoryStoreResourceParam(
+      try container.decode(AnthropicBetaManagedAgentsMemoryStoreResourceParam.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .betaManagedAgentsGitHubRepositoryResourceParams(let value):
+      try container.encode(value)
+    case .betaManagedAgentsFileResourceParams(let value):
+      try container.encode(value)
+    case .betaManagedAgentsMemoryStoreResourceParam(let value):
+      try container.encode(value)
+    }
+  }
 }

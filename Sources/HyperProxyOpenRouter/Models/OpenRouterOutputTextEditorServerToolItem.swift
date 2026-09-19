@@ -15,11 +15,11 @@ public struct OpenRouterOutputTextEditorServerToolItem: Codable, Sendable {
   public var filePath: String?
   public var id: String?
   public var status: OpenRouterToolCallStatus
-  public var typeModel: OpenRouterOutputTextEditorServerToolItemTypeModel
+  public var kind: OpenRouterOutputTextEditorServerToolItemKind
 
   public init(
     status: OpenRouterToolCallStatus,
-    typeModel: OpenRouterOutputTextEditorServerToolItemTypeModel,
+    kind: OpenRouterOutputTextEditorServerToolItemKind,
     command: OpenRouterOutputTextEditorServerToolItemCommand? = nil,
     filePath: String? = nil,
     id: String? = nil
@@ -28,7 +28,7 @@ public struct OpenRouterOutputTextEditorServerToolItem: Codable, Sendable {
     self.filePath = filePath
     self.id = id
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenRouterOutputTextEditorServerToolItem: Codable, Sendable {
     case filePath
     case id
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

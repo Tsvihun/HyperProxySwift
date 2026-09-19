@@ -15,20 +15,20 @@ public struct OpenAIResponseCustomToolCallInputDeltaEvent: Codable, Sendable {
   public var itemId: String
   public var outputIndex: Int
   public var sequenceNumber: Int
-  public var typeModel: OpenAIResponseCustomToolCallInputDeltaEventTypeModel
+  public var kind: OpenAIResponseCustomToolCallInputDeltaEventKind
 
   public init(
     delta: String,
     itemId: String,
     outputIndex: Int,
     sequenceNumber: Int,
-    typeModel: OpenAIResponseCustomToolCallInputDeltaEventTypeModel
+    kind: OpenAIResponseCustomToolCallInputDeltaEventKind
   ) {
     self.delta = delta
     self.itemId = itemId
     self.outputIndex = outputIndex
     self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIResponseCustomToolCallInputDeltaEvent: Codable, Sendable {
     case itemId = "item_id"
     case outputIndex = "output_index"
     case sequenceNumber = "sequence_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

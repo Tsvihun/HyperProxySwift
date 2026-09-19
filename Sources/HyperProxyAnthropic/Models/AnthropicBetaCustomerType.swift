@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaCustomerType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let api = Self(rawValue: "api")
-  public static let subscription = Self(rawValue: "subscription")
+public enum AnthropicBetaCustomerType: String, Codable, Hashable, Sendable {
+  case api = "api"
+  case subscription = "subscription"
 }

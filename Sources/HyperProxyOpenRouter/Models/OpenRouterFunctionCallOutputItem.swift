@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct OpenRouterFunctionCallOutputItem: Codable, Sendable {
   public var callId: String
   public var id: String?
-  public var output: HyperProxyJSONValue
+  public var output: OpenRouterOpenAIResponseFunctionToolCallOutputOutput
   public var status: OpenRouterToolCallStatus?
-  public var typeModel: OpenRouterOpenAIResponseFunctionToolCallOutputTypeModel
+  public var kind: OpenRouterOpenAIResponseFunctionToolCallOutputKind
 
   public init(
     callId: String,
-    output: HyperProxyJSONValue,
-    typeModel: OpenRouterOpenAIResponseFunctionToolCallOutputTypeModel,
+    output: OpenRouterOpenAIResponseFunctionToolCallOutputOutput,
+    kind: OpenRouterOpenAIResponseFunctionToolCallOutputKind,
     id: String? = nil,
     status: OpenRouterToolCallStatus? = nil
   ) {
@@ -28,7 +28,7 @@ public struct OpenRouterFunctionCallOutputItem: Codable, Sendable {
     self.id = id
     self.output = output
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenRouterFunctionCallOutputItem: Codable, Sendable {
     case id
     case output
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,18 +10,12 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiAudioResponseFormatMimeType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mIMETYPEUNSPECIFIED = Self(rawValue: "MIME_TYPE_UNSPECIFIED")
-  public static let aUDIOMP3 = Self(rawValue: "AUDIO_MP3")
-  public static let aUDIOOGGOPUS = Self(rawValue: "AUDIO_OGG_OPUS")
-  public static let aUDIOL16 = Self(rawValue: "AUDIO_L16")
-  public static let aUDIOWAV = Self(rawValue: "AUDIO_WAV")
-  public static let aUDIOALAW = Self(rawValue: "AUDIO_ALAW")
-  public static let aUDIOMULAW = Self(rawValue: "AUDIO_MULAW")
+public enum GeminiAudioResponseFormatMimeType: String, Codable, Hashable, Sendable {
+  case mIMETYPEUNSPECIFIED = "MIME_TYPE_UNSPECIFIED"
+  case aUDIOMP3 = "AUDIO_MP3"
+  case aUDIOOGGOPUS = "AUDIO_OGG_OPUS"
+  case aUDIOL16 = "AUDIO_L16"
+  case aUDIOWAV = "AUDIO_WAV"
+  case aUDIOALAW = "AUDIO_ALAW"
+  case aUDIOMULAW = "AUDIO_MULAW"
 }

@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsBodyCreatePodcastV1StudioPodcastsPostDurationScale: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum ElevenLabsBodyCreatePodcastV1StudioPodcastsPostDurationScale: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let short = Self(rawValue: "short")
-  public static let defaultValue = Self(rawValue: "default")
-  public static let long = Self(rawValue: "long")
+  case short = "short"
+  case defaultValue = "default"
+  case long = "long"
 }

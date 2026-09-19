@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterMessagesRequestThinkingOneOf2: Codable, Sendable {
-  public var typeModel: OpenRouterMessagesRequestThinkingOneOf2TypeModel
+  public var kind: OpenRouterMessagesRequestThinkingOneOf2Kind
 
   public init(
-    typeModel: OpenRouterMessagesRequestThinkingOneOf2TypeModel
+    kind: OpenRouterMessagesRequestThinkingOneOf2Kind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

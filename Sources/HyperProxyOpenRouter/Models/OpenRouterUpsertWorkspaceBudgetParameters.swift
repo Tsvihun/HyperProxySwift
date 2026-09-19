@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterUpsertWorkspaceBudgetParameters: Codable, Sendable {
-  public var id: String
   public var interval: OpenRouterWorkspaceBudgetInterval
+  public var workspaceRef: String
 
   public init(
-    id: String,
-    interval: OpenRouterWorkspaceBudgetInterval
+    interval: OpenRouterWorkspaceBudgetInterval,
+    workspaceRef: String
   ) {
-    self.id = id
     self.interval = interval
+    self.workspaceRef = workspaceRef
   }
 
   enum CodingKeys: String, CodingKey {
-    case id
     case interval
+    case workspaceRef = "workspace_ref"
   }
 }

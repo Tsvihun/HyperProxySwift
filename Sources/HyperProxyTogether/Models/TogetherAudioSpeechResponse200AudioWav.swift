@@ -10,4 +10,18 @@
 import Foundation
 import HyperProxyCore
 
-public typealias TogetherAudioSpeechResponse200AudioWav = String
+public struct TogetherAudioSpeechResponse200AudioWav: RawRepresentable, Codable, Hashable, Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+}
+
+extension TogetherAudioSpeechResponse200AudioWav: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self.init(rawValue: value)
+  }
+}

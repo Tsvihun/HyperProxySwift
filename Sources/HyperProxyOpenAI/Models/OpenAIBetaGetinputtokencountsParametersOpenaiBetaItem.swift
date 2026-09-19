@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIBetaGetinputtokencountsParametersOpenaiBetaItem: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum OpenAIBetaGetinputtokencountsParametersOpenaiBetaItem: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let responsesMultiAgentV1 = Self(rawValue: "responses_multi_agent=v1")
+  case responsesMultiAgentV1 = "responses_multi_agent=v1"
 }

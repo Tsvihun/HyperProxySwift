@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct BraveUnits: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let metric = Self(rawValue: "metric")
-  public static let imperial = Self(rawValue: "imperial")
+public enum BraveUnits: String, Codable, Hashable, Sendable {
+  case metric = "metric"
+  case imperial = "imperial"
 }

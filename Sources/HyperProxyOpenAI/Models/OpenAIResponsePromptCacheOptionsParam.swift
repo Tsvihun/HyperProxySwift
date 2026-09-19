@@ -13,21 +13,25 @@ import HyperProxyCore
 public struct OpenAIResponsePromptCacheOptionsParam: Codable, Sendable {
   public var comparisonResponseId: String?
   public var mode: OpenAIPromptCacheModeEnum?
+  public var prewarm: Bool?
   public var ttl: OpenAIPromptCacheTTLEnum?
 
   public init(
     comparisonResponseId: String? = nil,
     mode: OpenAIPromptCacheModeEnum? = nil,
+    prewarm: Bool? = nil,
     ttl: OpenAIPromptCacheTTLEnum? = nil
   ) {
     self.comparisonResponseId = comparisonResponseId
     self.mode = mode
+    self.prewarm = prewarm
     self.ttl = ttl
   }
 
   enum CodingKeys: String, CodingKey {
     case comparisonResponseId = "comparison_response_id"
     case mode
+    case prewarm
     case ttl
   }
 }

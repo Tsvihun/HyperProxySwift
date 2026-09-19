@@ -16,16 +16,16 @@ public struct TogetherRLCheckpoint: Codable, Sendable {
   public var id: String
   public var loraRank: Int?
   public var sessionId: String
-  public var step: HyperProxyJSONValue
-  public var typeModel: TogetherRLCheckpointType
+  public var step: TogetherRLCheckpointStep
+  public var kind: TogetherRLCheckpointType
 
   public init(
     baseModel: String,
     createdAt: String,
     id: String,
     sessionId: String,
-    step: HyperProxyJSONValue,
-    typeModel: TogetherRLCheckpointType,
+    step: TogetherRLCheckpointStep,
+    kind: TogetherRLCheckpointType,
     loraRank: Int? = nil
   ) {
     self.baseModel = baseModel
@@ -34,7 +34,7 @@ public struct TogetherRLCheckpoint: Codable, Sendable {
     self.loraRank = loraRank
     self.sessionId = sessionId
     self.step = step
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct TogetherRLCheckpoint: Codable, Sendable {
     case loraRank = "lora_rank"
     case sessionId = "session_id"
     case step
-    case typeModel = "type"
+    case kind = "type"
   }
 }

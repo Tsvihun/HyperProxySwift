@@ -11,27 +11,27 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicResponseWebSearchToolResultBlock: Codable, Sendable {
-  public var caller: HyperProxyJSONValue
-  public var content: HyperProxyJSONValue
+  public var caller: AnthropicResponseWebSearchToolResultBlockCaller
+  public var content: AnthropicResponseWebSearchToolResultBlockContent
   public var toolUseId: String
-  public var typeModel: String
+  public var kind: AnthropicWebSearchToolResultKind
 
   public init(
-    caller: HyperProxyJSONValue,
-    content: HyperProxyJSONValue,
+    caller: AnthropicResponseWebSearchToolResultBlockCaller,
+    content: AnthropicResponseWebSearchToolResultBlockContent,
     toolUseId: String,
-    typeModel: String
+    kind: AnthropicWebSearchToolResultKind = .webSearchToolResult
   ) {
     self.caller = caller
     self.content = content
     self.toolUseId = toolUseId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case caller
     case content
     case toolUseId = "tool_use_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

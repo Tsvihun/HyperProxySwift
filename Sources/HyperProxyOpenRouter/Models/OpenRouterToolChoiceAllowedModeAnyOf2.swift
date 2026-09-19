@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterToolChoiceAllowedModeAnyOf2: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let requiredValue = Self(rawValue: "required")
+public enum OpenRouterToolChoiceAllowedModeAnyOf2: String, Codable, Hashable, Sendable {
+  case requiredValue = "required"
 }

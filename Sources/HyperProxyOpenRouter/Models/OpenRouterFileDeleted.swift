@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenRouterFileDeleted: Codable, Sendable {
   public var shape: OpenRouterFileDeletedShape
   public var id: String
-  public var typeModel: OpenRouterFileDeletedTypeModel
+  public var kind: OpenRouterFileDeletedKind
 
   public init(
     shape: OpenRouterFileDeletedShape,
     id: String,
-    typeModel: OpenRouterFileDeletedTypeModel
+    kind: OpenRouterFileDeletedKind
   ) {
     self.shape = shape
     self.id = id
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case shape = "_shape"
     case id
-    case typeModel = "type"
+    case kind = "type"
   }
 }

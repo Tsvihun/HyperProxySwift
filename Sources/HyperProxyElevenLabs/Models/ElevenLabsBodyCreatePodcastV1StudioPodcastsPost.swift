@@ -19,16 +19,16 @@ public struct ElevenLabsBodyCreatePodcastV1StudioPodcastsPost: Codable, Sendable
   public var instructionsPrompt: String?
   public var intro: String?
   public var language: String?
-  public var mode: HyperProxyJSONValue
+  public var mode: ElevenLabsBodyCreatePodcastV1StudioPodcastsPostMode
   public var modelId: String
   public var outro: String?
   public var qualityPreset: ElevenLabsQualityPresetType?
-  public var source: HyperProxyJSONValue
+  public var source: ElevenLabsBodyCreatePodcastV1StudioPodcastsPostSource
 
   public init(
-    mode: HyperProxyJSONValue,
+    mode: ElevenLabsBodyCreatePodcastV1StudioPodcastsPostMode,
     modelId: String,
-    source: HyperProxyJSONValue,
+    source: ElevenLabsBodyCreatePodcastV1StudioPodcastsPostSource,
     applyTextNormalization:
       ElevenLabsBodyCreatePodcastV1StudioPodcastsPostApplyTextNormalizationAnyOf1? = nil,
     callbackUrl: String? = nil,

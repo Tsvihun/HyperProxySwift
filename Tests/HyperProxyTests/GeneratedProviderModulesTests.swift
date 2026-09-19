@@ -122,7 +122,8 @@ struct GeneratedProviderModulesTests {
       service.route(.listOrganizationMembers).operation
         == OpenRouterOperation.listOrganizationMembers.rawValue)
     #expect(
-      service.listEndpointsZdr.operation.rawValue == OpenRouterOperation.listEndpointsZdr.rawValue)
+      service.createApiAlphaDecisions.operation.rawValue
+        == OpenRouterOperation.createApiAlphaDecisions.rawValue)
     #expect(
       service.admin.listOrganizationMembers.operation.rawValue
         == OpenRouterOperation.listOrganizationMembers.rawValue)

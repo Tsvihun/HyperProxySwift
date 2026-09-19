@@ -11,26 +11,26 @@ import Foundation
 import HyperProxyCore
 
 public struct FalGetOrganizationBillingEventsParameters: Codable, Sendable {
-  public var apiKeyId: HyperProxyJSONValue?
+  public var apiKeyId: FalGetOrganizationBillingEventsParametersApiKeyId?
   public var cursor: String?
-  public var end: String?
-  public var endpointId: HyperProxyJSONValue?
-  public var expand: HyperProxyJSONValue?
+  public var end: FalGetOrganizationBillingEventsParametersEnd?
+  public var endpointId: FalGetOrganizationBillingEventsParametersEndpointId?
+  public var expand: FalGetOrganizationBillingEventsParametersExpand?
   public var limit: Int?
-  public var requestId: HyperProxyJSONValue?
-  public var start: String?
-  public var teamUsername: HyperProxyJSONValue?
+  public var requestId: FalGetOrganizationBillingEventsParametersRequestId?
+  public var start: FalGetOrganizationBillingEventsParametersStart?
+  public var teamUsername: FalGetOrganizationBillingEventsParametersTeamUsername?
 
   public init(
-    apiKeyId: HyperProxyJSONValue? = nil,
+    apiKeyId: FalGetOrganizationBillingEventsParametersApiKeyId? = nil,
     cursor: String? = nil,
-    end: String? = nil,
-    endpointId: HyperProxyJSONValue? = nil,
-    expand: HyperProxyJSONValue? = nil,
+    end: FalGetOrganizationBillingEventsParametersEnd? = nil,
+    endpointId: FalGetOrganizationBillingEventsParametersEndpointId? = nil,
+    expand: FalGetOrganizationBillingEventsParametersExpand? = nil,
     limit: Int? = nil,
-    requestId: HyperProxyJSONValue? = nil,
-    start: String? = nil,
-    teamUsername: HyperProxyJSONValue? = nil
+    requestId: FalGetOrganizationBillingEventsParametersRequestId? = nil,
+    start: FalGetOrganizationBillingEventsParametersStart? = nil,
+    teamUsername: FalGetOrganizationBillingEventsParametersTeamUsername? = nil
   ) {
     self.apiKeyId = apiKeyId
     self.cursor = cursor

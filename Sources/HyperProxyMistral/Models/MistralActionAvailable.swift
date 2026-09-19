@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralActionAvailable: Codable, Sendable {
-  public var status: String?
+  public var status: MistralAvailableStatus?
 
   public init(
-    status: String? = nil
+    status: MistralAvailableStatus? = nil
   ) {
     self.status = status
   }

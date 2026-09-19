@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAICreateVectorStoreRequest: Codable, Sendable {
-  public var chunkingStrategy: HyperProxyJSONValue?
+  public var chunkingStrategy: OpenAICreateVectorStoreRequestChunkingStrategy?
   public var description: String?
   public var expiresAfter: OpenAIVectorStoreExpirationAfter?
   public var fileIds: [String]?
@@ -19,7 +19,7 @@ public struct OpenAICreateVectorStoreRequest: Codable, Sendable {
   public var name: String?
 
   public init(
-    chunkingStrategy: HyperProxyJSONValue? = nil,
+    chunkingStrategy: OpenAICreateVectorStoreRequestChunkingStrategy? = nil,
     description: String? = nil,
     expiresAfter: OpenAIVectorStoreExpirationAfter? = nil,
     fileIds: [String]? = nil,

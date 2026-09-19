@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIRotateMcpOauthTokenEndpointAuthParamClientSecretBasic: Codable, Sendable {
   public var clientSecret: String?
-  public var typeModel: OpenAIRotateMcpOauthTokenEndpointAuthParamClientSecretBasicTypeModel
+  public var kind: OpenAIRotateMcpOauthTokenEndpointAuthParamClientSecretBasicKind
 
   public init(
-    typeModel: OpenAIRotateMcpOauthTokenEndpointAuthParamClientSecretBasicTypeModel,
+    kind: OpenAIRotateMcpOauthTokenEndpointAuthParamClientSecretBasicKind,
     clientSecret: String? = nil
   ) {
     self.clientSecret = clientSecret
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case clientSecret = "client_secret"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

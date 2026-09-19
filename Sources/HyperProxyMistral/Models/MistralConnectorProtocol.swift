@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralConnectorProtocol: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mcp = Self(rawValue: "mcp")
-  public static let http = Self(rawValue: "http")
-  public static let turbine = Self(rawValue: "turbine")
+public enum MistralConnectorProtocol: String, Codable, Hashable, Sendable {
+  case mcp = "mcp"
+  case http = "http"
+  case turbine = "turbine"
 }

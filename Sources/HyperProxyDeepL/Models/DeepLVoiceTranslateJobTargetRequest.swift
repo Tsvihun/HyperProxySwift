@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepLVoiceTranslateJobTargetRequest: Codable, Sendable {
-  public var language: DeepLTargetLanguage
-  public var typeModel: DeepLVoiceTranslateJobTargetOutputType
+  public var language: String
+  public var kind: DeepLVoiceTranslateJobTargetOutputType
 
   public init(
-    language: DeepLTargetLanguage,
-    typeModel: DeepLVoiceTranslateJobTargetOutputType
+    language: String,
+    kind: DeepLVoiceTranslateJobTargetOutputType
   ) {
     self.language = language
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case language
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -11,21 +11,25 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiCreateEnvironmentRequest: Codable, Sendable {
-  public var networkAllowlist: HyperProxyJSONValue?
+  public var fromEnvironment: String?
+  public var networkAllowlist: GeminiEnvironmentNetworkEgressAllowlist?
   public var networkMode: GeminiCreateEnvironmentRequestNetworkMode?
-  public var sources: [HyperProxyJSONValue]?
+  public var sources: [GeminiSource]?
 
   public init(
-    networkAllowlist: HyperProxyJSONValue? = nil,
+    fromEnvironment: String? = nil,
+    networkAllowlist: GeminiEnvironmentNetworkEgressAllowlist? = nil,
     networkMode: GeminiCreateEnvironmentRequestNetworkMode? = nil,
-    sources: [HyperProxyJSONValue]? = nil
+    sources: [GeminiSource]? = nil
   ) {
+    self.fromEnvironment = fromEnvironment
     self.networkAllowlist = networkAllowlist
     self.networkMode = networkMode
     self.sources = sources
   }
 
   enum CodingKeys: String, CodingKey {
+    case fromEnvironment
     case networkAllowlist
     case networkMode
     case sources

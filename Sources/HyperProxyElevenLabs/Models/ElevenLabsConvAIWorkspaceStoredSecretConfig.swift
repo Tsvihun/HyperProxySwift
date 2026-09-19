@@ -13,25 +13,25 @@ import HyperProxyCore
 public struct ElevenLabsConvAIWorkspaceStoredSecretConfig: Codable, Sendable {
   public var name: String
   public var secretId: String
-  public var typeModel: String
+  public var kind: ElevenLabsStoredKind
   public var usedBy: ElevenLabsConvAIStoredSecretDependencies
 
   public init(
     name: String,
     secretId: String,
-    typeModel: String,
-    usedBy: ElevenLabsConvAIStoredSecretDependencies
+    usedBy: ElevenLabsConvAIStoredSecretDependencies,
+    kind: ElevenLabsStoredKind = .stored
   ) {
     self.name = name
     self.secretId = secretId
-    self.typeModel = typeModel
+    self.kind = kind
     self.usedBy = usedBy
   }
 
   enum CodingKeys: String, CodingKey {
     case name
     case secretId = "secret_id"
-    case typeModel = "type"
+    case kind = "type"
     case usedBy = "used_by"
   }
 }

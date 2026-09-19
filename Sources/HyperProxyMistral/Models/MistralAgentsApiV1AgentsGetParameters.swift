@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct MistralAgentsApiV1AgentsGetParameters: Codable, Sendable {
   public var agentId: String
-  public var agentVersion: HyperProxyJSONValue?
+  public var agentVersion: MistralAgentsApiV1AgentsGetParametersAgentVersion?
 
   public init(
     agentId: String,
-    agentVersion: HyperProxyJSONValue? = nil
+    agentVersion: MistralAgentsApiV1AgentsGetParametersAgentVersion? = nil
   ) {
     self.agentId = agentId
     self.agentVersion = agentVersion

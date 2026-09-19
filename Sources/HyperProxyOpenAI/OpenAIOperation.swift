@@ -42,6 +42,16 @@ public enum OpenAIOperation: String, HyperProxyProviderOperation {
   case retrieveOrganizationDataRetention = "retrieve.organization.data.retention"
   /// `POST v1/organization/data_retention`
   case updateOrganizationDataRetention = "update.organization.data.retention"
+  /// `GET v1/organization/external_storage`
+  case listexternalstorageconfigurations = "Listexternalstorageconfigurations"
+  /// `POST v1/organization/external_storage`
+  case createanexternalstorageconfiguration = "Createanexternalstorageconfiguration"
+  /// `DELETE v1/organization/external_storage/{external_storage_id}`
+  case deleteanexternalstorageconfiguration = "Deleteanexternalstorageconfiguration"
+  /// `GET v1/organization/external_storage/{external_storage_id}`
+  case getanexternalstorageconfiguration = "Getanexternalstorageconfiguration"
+  /// `POST v1/organization/external_storage/{external_storage_id}/validate`
+  case validateanexternalstorageconfiguration = "Validateanexternalstorageconfiguration"
   /// `GET v1/organization/groups`
   case listGroups = "list.groups"
   /// `POST v1/organization/groups`
@@ -550,6 +560,8 @@ public enum OpenAIOperation: String, HyperProxyProviderOperation {
   case createRealtimeTranslationClientSecret = "create.realtime.translation.client.secret"
   /// `GET v1/safety/alerts/{id}`
   case getprojectsafetyalert = "Getprojectsafetyalert"
+  /// `GET v1/safety/cases/{id}`
+  case getsafetycase = "Getsafetycase"
   /// `GET v1/skills`
   case listSkills = "ListSkills"
   /// `POST v1/skills`
@@ -690,6 +702,22 @@ public enum OpenAIOperation: String, HyperProxyProviderOperation {
   case videosExtend = "videos.extend"
   /// `POST v1/videos/{video_id}/remix`
   case videosRemix = "videos.remix"
+  /// `GET v1/webhook_endpoints`
+  case listWebhookEndpoints = "ListWebhookEndpoints"
+  /// `POST v1/webhook_endpoints`
+  case createWebhookEndpoint = "CreateWebhookEndpoint"
+  /// `DELETE v1/webhook_endpoints/{webhook_endpoint_id}`
+  case deleteWebhookEndpoint = "DeleteWebhookEndpoint"
+  /// `GET v1/webhook_endpoints/{webhook_endpoint_id}`
+  case retrieveWebhookEndpoint = "RetrieveWebhookEndpoint"
+  /// `POST v1/webhook_endpoints/{webhook_endpoint_id}`
+  case updateWebhookEndpoint = "UpdateWebhookEndpoint"
+  /// `POST v1/webhook_endpoints/{webhook_endpoint_id}/rotate_secret`
+  case rotateWebhookEndpointSigningSecret = "RotateWebhookEndpointSigningSecret"
+  /// `POST v1/webhook_endpoints/{webhook_endpoint_id}/test`
+  case testWebhookEndpoint = "TestWebhookEndpoint"
+  /// `GET v1/webhook_event_types`
+  case listWebhookEventTypes = "ListWebhookEventTypes"
 }
 
 /// Earlier snapshots published these operations under different

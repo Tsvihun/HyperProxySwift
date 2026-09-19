@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterMessagesContentBlockDeltaEventDeltaOneOf5: Codable, Sendable {
-  public var citation: HyperProxyJSONValue
-  public var typeModel: OpenRouterMessagesContentBlockDeltaEventDeltaOneOf5TypeModel
+  public var citation: OpenRouterMessagesContentBlockDeltaEventDeltaOneOf5Citation
+  public var kind: OpenRouterMessagesContentBlockDeltaEventDeltaOneOf5Kind
 
   public init(
-    citation: HyperProxyJSONValue,
-    typeModel: OpenRouterMessagesContentBlockDeltaEventDeltaOneOf5TypeModel
+    citation: OpenRouterMessagesContentBlockDeltaEventDeltaOneOf5Citation,
+    kind: OpenRouterMessagesContentBlockDeltaEventDeltaOneOf5Kind
   ) {
     self.citation = citation
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case citation
-    case typeModel = "type"
+    case kind = "type"
   }
 }

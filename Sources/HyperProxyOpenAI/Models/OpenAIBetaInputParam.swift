@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public enum OpenAIBetaInputParam: Codable, Sendable {
   case string(String)
-  case array([OpenAIBetaInputItem])
+  case betaInputItemArray([OpenAIBetaInputItem])
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -20,7 +20,7 @@ public enum OpenAIBetaInputParam: Codable, Sendable {
       self = .string(value)
       return
     }
-    self = .array(try container.decode([OpenAIBetaInputItem].self))
+    self = .betaInputItemArray(try container.decode([OpenAIBetaInputItem].self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -28,7 +28,7 @@ public enum OpenAIBetaInputParam: Codable, Sendable {
     switch self {
     case .string(let value):
       try container.encode(value)
-    case .array(let value):
+    case .betaInputItemArray(let value):
       try container.encode(value)
     }
   }
@@ -42,6 +42,6 @@ extension OpenAIBetaInputParam: ExpressibleByStringLiteral {
 
 extension OpenAIBetaInputParam: ExpressibleByArrayLiteral {
   public init(arrayLiteral elements: OpenAIBetaInputItem...) {
-    self = .array(elements)
+    self = .betaInputItemArray(elements)
   }
 }

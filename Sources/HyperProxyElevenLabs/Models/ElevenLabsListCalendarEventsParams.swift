@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsListCalendarEventsParams: Codable, Sendable {
   public var includeCancelled: Bool?
-  public var smbToolType: String?
+  public var smbToolType: ElevenLabsListCalendarEventsSmbToolType?
 
   public init(
     includeCancelled: Bool? = nil,
-    smbToolType: String? = nil
+    smbToolType: ElevenLabsListCalendarEventsSmbToolType? = nil
   ) {
     self.includeCancelled = includeCancelled
     self.smbToolType = smbToolType

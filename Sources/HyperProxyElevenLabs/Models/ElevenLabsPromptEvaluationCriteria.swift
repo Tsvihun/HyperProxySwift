@@ -19,7 +19,7 @@ public struct ElevenLabsPromptEvaluationCriteria: Codable, Sendable {
   public var scope: ElevenLabsAnalysisScope?
   public var scoreInstructions: String?
   public var scoringMode: ElevenLabsCriteriaScoringMode?
-  public var typeModel: String?
+  public var kind: ElevenLabsPromptKind?
   public var useKnowledgeBase: Bool?
 
   public init(
@@ -31,7 +31,7 @@ public struct ElevenLabsPromptEvaluationCriteria: Codable, Sendable {
     scope: ElevenLabsAnalysisScope? = nil,
     scoreInstructions: String? = nil,
     scoringMode: ElevenLabsCriteriaScoringMode? = nil,
-    typeModel: String? = nil,
+    kind: ElevenLabsPromptKind? = nil,
     useKnowledgeBase: Bool? = nil
   ) {
     self.conversationGoalPrompt = conversationGoalPrompt
@@ -42,7 +42,7 @@ public struct ElevenLabsPromptEvaluationCriteria: Codable, Sendable {
     self.scope = scope
     self.scoreInstructions = scoreInstructions
     self.scoringMode = scoringMode
-    self.typeModel = typeModel
+    self.kind = kind
     self.useKnowledgeBase = useKnowledgeBase
   }
 
@@ -55,7 +55,7 @@ public struct ElevenLabsPromptEvaluationCriteria: Codable, Sendable {
     case scope
     case scoreInstructions = "score_instructions"
     case scoringMode = "scoring_mode"
-    case typeModel = "type"
+    case kind = "type"
     case useKnowledgeBase = "use_knowledge_base"
   }
 }

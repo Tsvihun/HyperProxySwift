@@ -10,27 +10,13 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesPunctuationAmpersandUsage: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static
-    let useEnglishWordAndExceptInCompanyNamesCommonAbbreviationsTitlesSoftwareCodeAndMathematicalEquations =
-    Self(
-      rawValue:
-        "use_english_word_and_except_in_company_names_common_abbreviations_titles_software_code_and_mathematical_equations"
-    )
-  public static let useFullWidthAmpersand = Self(rawValue: "use_full_width_ampersand")
-  public static
-    let useGermanWordUndExceptInCompanyNamesCommonAbbreviationsTitlesSoftwareCodeAndMathematicalEquations =
-    Self(
-      rawValue:
-        "use_german_word_und_except_in_company_names_common_abbreviations_titles_software_code_and_mathematical_equations"
-    )
-  public static let useHalfWidthAmpersand = Self(rawValue: "use_half_width_ampersand")
+public enum DeepLConfiguredRulesPunctuationAmpersandUsage: String, Codable, Hashable, Sendable {
+  case
+    useEnglishWordAndExceptInCompanyNamesCommonAbbreviationsTitlesSoftwareCodeAndMathematicalEquations =
+    "use_english_word_and_except_in_company_names_common_abbreviations_titles_software_code_and_mathematical_equations"
+  case useFullWidthAmpersand = "use_full_width_ampersand"
+  case
+    useGermanWordUndExceptInCompanyNamesCommonAbbreviationsTitlesSoftwareCodeAndMathematicalEquations =
+    "use_german_word_und_except_in_company_names_common_abbreviations_titles_software_code_and_mathematical_equations"
+  case useHalfWidthAmpersand = "use_half_width_ampersand"
 }

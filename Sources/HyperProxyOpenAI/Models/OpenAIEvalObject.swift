@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIEvalObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let eval = Self(rawValue: "eval")
+public enum OpenAIEvalObject: String, Codable, Hashable, Sendable {
+  case eval = "eval"
 }

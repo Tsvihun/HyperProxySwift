@@ -15,20 +15,20 @@ public struct OpenAIMessageContentTextAnnotationsFilePathObject: Codable, Sendab
   public var filePath: OpenAIMessageContentTextAnnotationsFilePathObjectFilePath
   public var startIndex: Int
   public var text: String
-  public var typeModel: OpenAIMessageContentTextAnnotationsFilePathObjectTypeModel
+  public var kind: OpenAIMessageContentTextAnnotationsFilePathObjectKind
 
   public init(
     endIndex: Int,
     filePath: OpenAIMessageContentTextAnnotationsFilePathObjectFilePath,
     startIndex: Int,
     text: String,
-    typeModel: OpenAIMessageContentTextAnnotationsFilePathObjectTypeModel
+    kind: OpenAIMessageContentTextAnnotationsFilePathObjectKind
   ) {
     self.endIndex = endIndex
     self.filePath = filePath
     self.startIndex = startIndex
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIMessageContentTextAnnotationsFilePathObject: Codable, Sendab
     case filePath = "file_path"
     case startIndex = "start_index"
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

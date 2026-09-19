@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsStudioClipLocatorClipType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let video = Self(rawValue: "video")
-  public static let image = Self(rawValue: "image")
-  public static let externalAudio = Self(rawValue: "external_audio")
-  public static let ttsNode = Self(rawValue: "tts_node")
+public enum ElevenLabsStudioClipLocatorClipType: String, Codable, Hashable, Sendable {
+  case video = "video"
+  case image = "image"
+  case externalAudio = "external_audio"
+  case ttsNode = "tts_node"
 }

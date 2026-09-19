@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiToolCallToolType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let tOOLTYPEUNSPECIFIED = Self(rawValue: "TOOL_TYPE_UNSPECIFIED")
-  public static let gOOGLESEARCHWEB = Self(rawValue: "GOOGLE_SEARCH_WEB")
-  public static let gOOGLESEARCHIMAGE = Self(rawValue: "GOOGLE_SEARCH_IMAGE")
-  public static let uRLCONTEXT = Self(rawValue: "URL_CONTEXT")
-  public static let gOOGLEMAPS = Self(rawValue: "GOOGLE_MAPS")
-  public static let fILESEARCH = Self(rawValue: "FILE_SEARCH")
+public enum GeminiToolCallToolType: String, Codable, Hashable, Sendable {
+  case tOOLTYPEUNSPECIFIED = "TOOL_TYPE_UNSPECIFIED"
+  case gOOGLESEARCHWEB = "GOOGLE_SEARCH_WEB"
+  case gOOGLESEARCHIMAGE = "GOOGLE_SEARCH_IMAGE"
+  case uRLCONTEXT = "URL_CONTEXT"
+  case gOOGLEMAPS = "GOOGLE_MAPS"
+  case fILESEARCH = "FILE_SEARCH"
 }

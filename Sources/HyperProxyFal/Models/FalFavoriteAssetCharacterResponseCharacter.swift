@@ -23,7 +23,7 @@ public struct FalFavoriteAssetCharacterResponseCharacter: Codable, Sendable {
   public var name: String
   public var parentCollectionId: String
   public var referenceImages: [String]
-  public var typeModel: FalFavoriteAssetCharacterResponseCharacterTypeModel
+  public var kind: FalFavoriteAssetCharacterResponseCharacterKind
   public var updatedAt: String
 
   public init(
@@ -38,7 +38,7 @@ public struct FalFavoriteAssetCharacterResponseCharacter: Codable, Sendable {
     name: String,
     parentCollectionId: String,
     referenceImages: [String],
-    typeModel: FalFavoriteAssetCharacterResponseCharacterTypeModel,
+    kind: FalFavoriteAssetCharacterResponseCharacterKind,
     updatedAt: String,
     assetCount: Double? = nil
   ) {
@@ -54,7 +54,7 @@ public struct FalFavoriteAssetCharacterResponseCharacter: Codable, Sendable {
     self.name = name
     self.parentCollectionId = parentCollectionId
     self.referenceImages = referenceImages
-    self.typeModel = typeModel
+    self.kind = kind
     self.updatedAt = updatedAt
   }
 
@@ -71,7 +71,7 @@ public struct FalFavoriteAssetCharacterResponseCharacter: Codable, Sendable {
     case name
     case parentCollectionId = "parent_collection_id"
     case referenceImages = "reference_images"
-    case typeModel = "type"
+    case kind = "type"
     case updatedAt = "updated_at"
   }
 }

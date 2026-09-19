@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct OpenRouterChatAssistantMessage: Codable, Sendable {
   public var audio: OpenRouterChatAudioOutput?
-  public var content: HyperProxyJSONValue?
+  public var content: OpenRouterChatAssistantMessageContent?
   public var images: OpenRouterChatAssistantImages?
   public var model: String?
   public var name: String?
@@ -25,7 +25,7 @@ public struct OpenRouterChatAssistantMessage: Codable, Sendable {
   public init(
     role: OpenRouterChatAssistantMessageRole,
     audio: OpenRouterChatAudioOutput? = nil,
-    content: HyperProxyJSONValue? = nil,
+    content: OpenRouterChatAssistantMessageContent? = nil,
     images: OpenRouterChatAssistantImages? = nil,
     model: String? = nil,
     name: String? = nil,

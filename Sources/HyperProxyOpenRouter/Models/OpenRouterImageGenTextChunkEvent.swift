@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenRouterImageGenTextChunkEvent: Codable, Sendable {
   public var phase: OpenRouterImageGenTextChunkEventPhase
   public var text: String
-  public var typeModel: OpenRouterImageGenTextChunkEventTypeModel
+  public var kind: OpenRouterImageGenTextChunkEventKind
 
   public init(
     phase: OpenRouterImageGenTextChunkEventPhase,
     text: String,
-    typeModel: OpenRouterImageGenTextChunkEventTypeModel
+    kind: OpenRouterImageGenTextChunkEventKind
   ) {
     self.phase = phase
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case phase
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

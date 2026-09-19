@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIPredictionContent: Codable, Sendable {
-  public var content: HyperProxyJSONValue
-  public var typeModel: OpenAIPredictionContentTypeModel
+  public var content: OpenAIPredictionContentContent
+  public var kind: OpenAIPredictionContentKind
 
   public init(
-    content: HyperProxyJSONValue,
-    typeModel: OpenAIPredictionContentTypeModel
+    content: OpenAIPredictionContentContent,
+    kind: OpenAIPredictionContentKind
   ) {
     self.content = content
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case content
-    case typeModel = "type"
+    case kind = "type"
   }
 }

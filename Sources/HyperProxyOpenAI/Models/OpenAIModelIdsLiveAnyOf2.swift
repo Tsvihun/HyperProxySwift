@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIModelIdsLiveAnyOf2: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let gptLive1 = Self(rawValue: "gpt-live-1")
+public enum OpenAIModelIdsLiveAnyOf2: String, Codable, Hashable, Sendable {
+  case gptLive1 = "gpt-live-1"
 }

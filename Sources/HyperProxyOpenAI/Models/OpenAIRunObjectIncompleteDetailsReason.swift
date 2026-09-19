@@ -10,14 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIRunObjectIncompleteDetailsReason: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let maxCompletionTokens = Self(rawValue: "max_completion_tokens")
-  public static let maxPromptTokens = Self(rawValue: "max_prompt_tokens")
+public enum OpenAIRunObjectIncompleteDetailsReason: String, Codable, Hashable, Sendable {
+  case maxCompletionTokens = "max_completion_tokens"
+  case maxPromptTokens = "max_prompt_tokens"
 }

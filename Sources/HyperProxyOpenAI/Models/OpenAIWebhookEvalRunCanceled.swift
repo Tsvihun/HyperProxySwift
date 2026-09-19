@@ -15,20 +15,20 @@ public struct OpenAIWebhookEvalRunCanceled: Codable, Sendable {
   public var data: OpenAIWebhookEvalRunCanceledData
   public var id: String
   public var object: OpenAIWebhookEvalRunCanceledObject?
-  public var typeModel: OpenAIWebhookEvalRunCanceledTypeModel
+  public var kind: OpenAIWebhookEvalRunCanceledKind
 
   public init(
     createdAt: Int,
     data: OpenAIWebhookEvalRunCanceledData,
     id: String,
-    typeModel: OpenAIWebhookEvalRunCanceledTypeModel,
+    kind: OpenAIWebhookEvalRunCanceledKind,
     object: OpenAIWebhookEvalRunCanceledObject? = nil
   ) {
     self.createdAt = createdAt
     self.data = data
     self.id = id
     self.object = object
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIWebhookEvalRunCanceled: Codable, Sendable {
     case data
     case id
     case object
-    case typeModel = "type"
+    case kind = "type"
   }
 }

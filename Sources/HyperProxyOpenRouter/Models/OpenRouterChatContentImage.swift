@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterChatContentImage: Codable, Sendable {
   public var imageUrl: OpenRouterChatContentImageImageUrl
-  public var typeModel: OpenRouterChatContentImageTypeModel
+  public var kind: OpenRouterChatContentImageKind
 
   public init(
     imageUrl: OpenRouterChatContentImageImageUrl,
-    typeModel: OpenRouterChatContentImageTypeModel
+    kind: OpenRouterChatContentImageKind
   ) {
     self.imageUrl = imageUrl
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case imageUrl = "image_url"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

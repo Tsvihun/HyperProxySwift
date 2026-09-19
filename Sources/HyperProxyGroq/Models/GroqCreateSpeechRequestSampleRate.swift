@@ -10,18 +10,12 @@
 import Foundation
 import HyperProxyCore
 
-public struct GroqCreateSpeechRequestSampleRate: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: Int
-
-  public init(rawValue: Int) {
-    self.rawValue = rawValue
-  }
-
-  public static let value8000 = Self(rawValue: 8000)
-  public static let value16000 = Self(rawValue: 16000)
-  public static let value22050 = Self(rawValue: 22050)
-  public static let value24000 = Self(rawValue: 24000)
-  public static let value32000 = Self(rawValue: 32000)
-  public static let value44100 = Self(rawValue: 44100)
-  public static let value48000 = Self(rawValue: 48000)
+public enum GroqCreateSpeechRequestSampleRate: Int, Codable, Hashable, Sendable {
+  case value8000 = 8000
+  case value16000 = 16000
+  case value22050 = 22050
+  case value24000 = 24000
+  case value32000 = 32000
+  case value44100 = 44100
+  case value48000 = 48000
 }

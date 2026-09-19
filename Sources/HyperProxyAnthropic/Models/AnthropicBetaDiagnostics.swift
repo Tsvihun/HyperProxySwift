@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaDiagnostics: Codable, Sendable {
-  public var cacheMissReason: HyperProxyJSONValue?
+  public var cacheMissReason: AnthropicBetaDiagnosticsCacheMissReasonAnyOf1?
 
   public init(
-    cacheMissReason: HyperProxyJSONValue?
+    cacheMissReason: AnthropicBetaDiagnosticsCacheMissReasonAnyOf1?
   ) {
     self.cacheMissReason = cacheMissReason
   }

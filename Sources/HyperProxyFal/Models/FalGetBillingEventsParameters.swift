@@ -11,26 +11,26 @@ import Foundation
 import HyperProxyCore
 
 public struct FalGetBillingEventsParameters: Codable, Sendable {
-  public var apiKeyId: HyperProxyJSONValue?
+  public var apiKeyId: FalGetBillingEventsParametersApiKeyId?
   public var cursor: String?
-  public var end: String?
-  public var endpointId: HyperProxyJSONValue?
-  public var expand: HyperProxyJSONValue?
+  public var end: FalGetBillingEventsParametersEnd?
+  public var endpointId: FalGetBillingEventsParametersEndpointId?
+  public var expand: FalGetBillingEventsParametersExpand?
   public var limit: Int?
-  public var loginUsername: HyperProxyJSONValue?
-  public var requestId: HyperProxyJSONValue?
-  public var start: String?
+  public var loginUsername: FalGetBillingEventsParametersLoginUsername?
+  public var requestId: FalGetBillingEventsParametersRequestId?
+  public var start: FalGetBillingEventsParametersStart?
 
   public init(
-    apiKeyId: HyperProxyJSONValue? = nil,
+    apiKeyId: FalGetBillingEventsParametersApiKeyId? = nil,
     cursor: String? = nil,
-    end: String? = nil,
-    endpointId: HyperProxyJSONValue? = nil,
-    expand: HyperProxyJSONValue? = nil,
+    end: FalGetBillingEventsParametersEnd? = nil,
+    endpointId: FalGetBillingEventsParametersEndpointId? = nil,
+    expand: FalGetBillingEventsParametersExpand? = nil,
     limit: Int? = nil,
-    loginUsername: HyperProxyJSONValue? = nil,
-    requestId: HyperProxyJSONValue? = nil,
-    start: String? = nil
+    loginUsername: FalGetBillingEventsParametersLoginUsername? = nil,
+    requestId: FalGetBillingEventsParametersRequestId? = nil,
+    start: FalGetBillingEventsParametersStart? = nil
   ) {
     self.apiKeyId = apiKeyId
     self.cursor = cursor

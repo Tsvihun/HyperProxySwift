@@ -10,20 +10,14 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherDEScalingMetricName: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let activeSessions = Self(rawValue: "active_sessions")
-  public static let cacheHitRate = Self(rawValue: "cache_hit_rate")
-  public static let decodingSpeed = Self(rawValue: "decoding_speed")
-  public static let e2eLatency = Self(rawValue: "e2e_latency")
-  public static let gpuUtilization = Self(rawValue: "gpu_utilization")
-  public static let inflightRequests = Self(rawValue: "inflight_requests")
-  public static let throughputPerReplica = Self(rawValue: "throughput_per_replica")
-  public static let tokenUtilization = Self(rawValue: "token_utilization")
-  public static let ttft = Self(rawValue: "ttft")
+public enum TogetherDEScalingMetricName: String, Codable, Hashable, Sendable {
+  case activeSessions = "active_sessions"
+  case cacheHitRate = "cache_hit_rate"
+  case decodingSpeed = "decoding_speed"
+  case e2eLatency = "e2e_latency"
+  case gpuUtilization = "gpu_utilization"
+  case inflightRequests = "inflight_requests"
+  case throughputPerReplica = "throughput_per_replica"
+  case tokenUtilization = "token_utilization"
+  case ttft = "ttft"
 }

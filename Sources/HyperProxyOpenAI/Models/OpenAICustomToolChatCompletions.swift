@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAICustomToolChatCompletions: Codable, Sendable {
   public var custom: OpenAICustomToolChatCompletionsCustom
-  public var typeModel: OpenAICustomToolChatCompletionsTypeModel
+  public var kind: OpenAICustomToolChatCompletionsKind
 
   public init(
     custom: OpenAICustomToolChatCompletionsCustom,
-    typeModel: OpenAICustomToolChatCompletionsTypeModel
+    kind: OpenAICustomToolChatCompletionsKind
   ) {
     self.custom = custom
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case custom
-    case typeModel = "type"
+    case kind = "type"
   }
 }

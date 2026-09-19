@@ -16,7 +16,7 @@ public struct ElevenLabsProcedureDraftResponseModel: Codable, Sendable {
   public var name: String
   public var procedureId: String
   public var trigger: String?
-  public var typeModel: ElevenLabsProcedureType?
+  public var kind: ElevenLabsProcedureType?
 
   public init(
     content: String,
@@ -24,14 +24,14 @@ public struct ElevenLabsProcedureDraftResponseModel: Codable, Sendable {
     procedureId: String,
     folderParentId: String? = nil,
     trigger: String? = nil,
-    typeModel: ElevenLabsProcedureType? = nil
+    kind: ElevenLabsProcedureType? = nil
   ) {
     self.content = content
     self.folderParentId = folderParentId
     self.name = name
     self.procedureId = procedureId
     self.trigger = trigger
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct ElevenLabsProcedureDraftResponseModel: Codable, Sendable {
     case name
     case procedureId = "procedure_id"
     case trigger
-    case typeModel = "type"
+    case kind = "type"
   }
 }

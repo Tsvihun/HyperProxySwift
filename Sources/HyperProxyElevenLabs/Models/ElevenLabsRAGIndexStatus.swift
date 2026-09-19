@@ -10,19 +10,13 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsRAGIndexStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let new = Self(rawValue: "new")
-  public static let created = Self(rawValue: "created")
-  public static let processing = Self(rawValue: "processing")
-  public static let failed = Self(rawValue: "failed")
-  public static let succeeded = Self(rawValue: "succeeded")
-  public static let ragLimitExceeded = Self(rawValue: "rag_limit_exceeded")
-  public static let documentTooSmall = Self(rawValue: "document_too_small")
-  public static let cannotIndexFolder = Self(rawValue: "cannot_index_folder")
+public enum ElevenLabsRAGIndexStatus: String, Codable, Hashable, Sendable {
+  case new = "new"
+  case created = "created"
+  case processing = "processing"
+  case failed = "failed"
+  case succeeded = "succeeded"
+  case ragLimitExceeded = "rag_limit_exceeded"
+  case documentTooSmall = "document_too_small"
+  case cannotIndexFolder = "cannot_index_folder"
 }

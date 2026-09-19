@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterMessagesContentBlockStopEvent: Codable, Sendable {
   public var index: Int
-  public var typeModel: OpenRouterMessagesContentBlockStopEventTypeModel
+  public var kind: OpenRouterMessagesContentBlockStopEventKind
 
   public init(
     index: Int,
-    typeModel: OpenRouterMessagesContentBlockStopEventTypeModel
+    kind: OpenRouterMessagesContentBlockStopEventKind
   ) {
     self.index = index
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case index
-    case typeModel = "type"
+    case kind = "type"
   }
 }

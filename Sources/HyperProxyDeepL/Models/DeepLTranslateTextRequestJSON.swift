@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepLTranslateTextRequestJSON: Codable, Sendable {
-  public var context: DeepLContext?
+  public var context: String?
   public var customInstructions: [String]?
   public var enableBetaLanguages: Bool?
   public var formality: DeepLFormality?
@@ -20,24 +20,24 @@ public struct DeepLTranslateTextRequestJSON: Codable, Sendable {
   public var ignoreTags: [String]?
   public var modelType: DeepLModelType?
   public var nonSplittingTags: [String]?
-  public var outlineDetection: DeepLOutlineDetectionOption?
-  public var preserveFormatting: DeepLPreserveFormattingOption?
-  public var showBilledCharacters: DeepLShowBilledCharacters?
-  public var sourceLang: DeepLSourceLanguage?
+  public var outlineDetection: Bool?
+  public var preserveFormatting: Bool?
+  public var showBilledCharacters: Bool?
+  public var sourceLang: String?
   public var splitSentences: DeepLSplitSentencesOption?
   public var splittingTags: [String]?
   public var styleId: String?
   public var tagHandling: DeepLTagHandlingOption?
   public var tagHandlingVersion: DeepLTagHandlingVersionOption?
-  public var targetLang: DeepLTargetLanguage
+  public var targetLang: String
   public var text: [String]
   public var translationMemoryId: DeepLTranslationMemoryId?
-  public var translationMemoryThreshold: DeepLTranslationMemoryThreshold?
+  public var translationMemoryThreshold: Int?
 
   public init(
-    targetLang: DeepLTargetLanguage,
+    targetLang: String,
     text: [String],
-    context: DeepLContext? = nil,
+    context: String? = nil,
     customInstructions: [String]? = nil,
     enableBetaLanguages: Bool? = nil,
     formality: DeepLFormality? = nil,
@@ -46,17 +46,17 @@ public struct DeepLTranslateTextRequestJSON: Codable, Sendable {
     ignoreTags: [String]? = nil,
     modelType: DeepLModelType? = nil,
     nonSplittingTags: [String]? = nil,
-    outlineDetection: DeepLOutlineDetectionOption? = nil,
-    preserveFormatting: DeepLPreserveFormattingOption? = nil,
-    showBilledCharacters: DeepLShowBilledCharacters? = nil,
-    sourceLang: DeepLSourceLanguage? = nil,
+    outlineDetection: Bool? = nil,
+    preserveFormatting: Bool? = nil,
+    showBilledCharacters: Bool? = nil,
+    sourceLang: String? = nil,
     splitSentences: DeepLSplitSentencesOption? = nil,
     splittingTags: [String]? = nil,
     styleId: String? = nil,
     tagHandling: DeepLTagHandlingOption? = nil,
     tagHandlingVersion: DeepLTagHandlingVersionOption? = nil,
     translationMemoryId: DeepLTranslationMemoryId? = nil,
-    translationMemoryThreshold: DeepLTranslationMemoryThreshold? = nil
+    translationMemoryThreshold: Int? = nil
   ) {
     self.context = context
     self.customInstructions = customInstructions

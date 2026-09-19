@@ -10,4 +10,34 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIBetaTextResponseFormatConfiguration = HyperProxyJSONValue
+public enum OpenAIBetaTextResponseFormatConfiguration: Codable, Sendable {
+  case betaResponseFormatText(OpenAIBetaResponseFormatText)
+  case betaTextResponseFormatJsonSchema(OpenAIBetaTextResponseFormatJsonSchema)
+  case betaResponseFormatJsonObject(OpenAIBetaResponseFormatJsonObject)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(OpenAIBetaResponseFormatText.self) {
+      self = .betaResponseFormatText(value)
+      return
+    }
+    if let value = try? container.decode(OpenAIBetaTextResponseFormatJsonSchema.self) {
+      self = .betaTextResponseFormatJsonSchema(value)
+      return
+    }
+    self = .betaResponseFormatJsonObject(
+      try container.decode(OpenAIBetaResponseFormatJsonObject.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .betaResponseFormatText(let value):
+      try container.encode(value)
+    case .betaTextResponseFormatJsonSchema(let value):
+      try container.encode(value)
+    case .betaResponseFormatJsonObject(let value):
+      try container.encode(value)
+    }
+  }
+}

@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct MistralFunctionTool: Codable, Sendable {
   public var function: MistralFunction
-  public var typeModel: MistralFunctionToolTypeModel?
+  public var kind: MistralFunctionToolKind?
 
   public init(
     function: MistralFunction,
-    typeModel: MistralFunctionToolTypeModel? = nil
+    kind: MistralFunctionToolKind? = nil
   ) {
     self.function = function
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case function
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -12,17 +12,17 @@ import HyperProxyCore
 
 public struct GeminiTuningTask: Codable, Sendable {
   public var completeTime: String?
-  public var hyperparameters: HyperProxyJSONValue?
-  public var snapshots: [HyperProxyJSONValue]?
+  public var hyperparameters: GeminiHyperparameters?
+  public var snapshots: [GeminiTuningSnapshot]?
   public var startTime: String?
-  public var trainingData: HyperProxyJSONValue?
+  public var trainingData: GeminiDataset?
 
   public init(
     completeTime: String? = nil,
-    hyperparameters: HyperProxyJSONValue? = nil,
-    snapshots: [HyperProxyJSONValue]? = nil,
+    hyperparameters: GeminiHyperparameters? = nil,
+    snapshots: [GeminiTuningSnapshot]? = nil,
     startTime: String? = nil,
-    trainingData: HyperProxyJSONValue? = nil
+    trainingData: GeminiDataset? = nil
   ) {
     self.completeTime = completeTime
     self.hyperparameters = hyperparameters

@@ -14,24 +14,24 @@ public struct PerplexitySearchQueriesEvent: Codable, Sendable {
   public var queries: [String]
   public var sequenceNumber: Int64
   public var thought: String?
-  public var typeModel: PerplexityEventType
+  public var kind: PerplexityEventType
 
   public init(
     queries: [String],
     sequenceNumber: Int64,
-    typeModel: PerplexityEventType,
+    kind: PerplexityEventType,
     thought: String? = nil
   ) {
     self.queries = queries
     self.sequenceNumber = sequenceNumber
     self.thought = thought
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case queries
     case sequenceNumber = "sequence_number"
     case thought
-    case typeModel = "type"
+    case kind = "type"
   }
 }

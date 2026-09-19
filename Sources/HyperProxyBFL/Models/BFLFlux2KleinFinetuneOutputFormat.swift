@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct BFLFlux2KleinFinetuneOutputFormat: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let jpeg = Self(rawValue: "jpeg")
-  public static let png = Self(rawValue: "png")
-  public static let webp = Self(rawValue: "webp")
+public enum BFLFlux2KleinFinetuneOutputFormat: String, Codable, Hashable, Sendable {
+  case jpeg = "jpeg"
+  case png = "png"
+  case webp = "webp"
 }

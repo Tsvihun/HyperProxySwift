@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralOutboundAuthenticationType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let oauth2 = Self(rawValue: "oauth2")
-  public static let bearer = Self(rawValue: "bearer")
-  public static let none = Self(rawValue: "none")
-  public static let githubApp = Self(rawValue: "github_app")
-  public static let slackApp = Self(rawValue: "slack_app")
+public enum MistralOutboundAuthenticationType: String, Codable, Hashable, Sendable {
+  case oauth2 = "oauth2"
+  case bearer = "bearer"
+  case none = "none"
+  case githubApp = "github_app"
+  case slackApp = "slack_app"
 }

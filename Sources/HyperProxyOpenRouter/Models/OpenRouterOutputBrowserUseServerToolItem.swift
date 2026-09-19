@@ -15,11 +15,11 @@ public struct OpenRouterOutputBrowserUseServerToolItem: Codable, Sendable {
   public var id: String?
   public var screenshotB64: String?
   public var status: OpenRouterToolCallStatus
-  public var typeModel: OpenRouterOutputBrowserUseServerToolItemTypeModel
+  public var kind: OpenRouterOutputBrowserUseServerToolItemKind
 
   public init(
     status: OpenRouterToolCallStatus,
-    typeModel: OpenRouterOutputBrowserUseServerToolItemTypeModel,
+    kind: OpenRouterOutputBrowserUseServerToolItemKind,
     action: String? = nil,
     id: String? = nil,
     screenshotB64: String? = nil
@@ -28,7 +28,7 @@ public struct OpenRouterOutputBrowserUseServerToolItem: Codable, Sendable {
     self.id = id
     self.screenshotB64 = screenshotB64
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenRouterOutputBrowserUseServerToolItem: Codable, Sendable {
     case id
     case screenshotB64
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

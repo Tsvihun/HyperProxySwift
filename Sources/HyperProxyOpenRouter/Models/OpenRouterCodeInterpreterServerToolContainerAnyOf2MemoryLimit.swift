@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterCodeInterpreterServerToolContainerAnyOf2MemoryLimit: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum OpenRouterCodeInterpreterServerToolContainerAnyOf2MemoryLimit: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let value1g = Self(rawValue: "1g")
-  public static let value4g = Self(rawValue: "4g")
-  public static let value16g = Self(rawValue: "16g")
-  public static let value64g = Self(rawValue: "64g")
+  case value1g = "1g"
+  case value4g = "4g"
+  case value16g = "16g"
+  case value64g = "64g"
 }

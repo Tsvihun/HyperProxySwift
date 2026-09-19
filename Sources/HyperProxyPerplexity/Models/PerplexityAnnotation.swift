@@ -14,20 +14,20 @@ public struct PerplexityAnnotation: Codable, Sendable {
   public var endIndex: Int?
   public var startIndex: Int?
   public var title: String?
-  public var typeModel: String?
+  public var kind: String?
   public var url: String?
 
   public init(
     endIndex: Int? = nil,
     startIndex: Int? = nil,
     title: String? = nil,
-    typeModel: String? = nil,
+    kind: String? = nil,
     url: String? = nil
   ) {
     self.endIndex = endIndex
     self.startIndex = startIndex
     self.title = title
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
@@ -35,7 +35,7 @@ public struct PerplexityAnnotation: Codable, Sendable {
     case endIndex = "end_index"
     case startIndex = "start_index"
     case title
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

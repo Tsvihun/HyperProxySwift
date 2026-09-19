@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiPromptFeedbackBlockReason: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let bLOCKREASONUNSPECIFIED = Self(rawValue: "BLOCK_REASON_UNSPECIFIED")
-  public static let sAFETY = Self(rawValue: "SAFETY")
-  public static let oTHER = Self(rawValue: "OTHER")
-  public static let bLOCKLIST = Self(rawValue: "BLOCKLIST")
-  public static let pROHIBITEDCONTENT = Self(rawValue: "PROHIBITED_CONTENT")
-  public static let iMAGESAFETY = Self(rawValue: "IMAGE_SAFETY")
+public enum GeminiPromptFeedbackBlockReason: String, Codable, Hashable, Sendable {
+  case bLOCKREASONUNSPECIFIED = "BLOCK_REASON_UNSPECIFIED"
+  case sAFETY = "SAFETY"
+  case oTHER = "OTHER"
+  case bLOCKLIST = "BLOCKLIST"
+  case pROHIBITEDCONTENT = "PROHIBITED_CONTENT"
+  case iMAGESAFETY = "IMAGE_SAFETY"
 }

@@ -10,4 +10,34 @@
 import Foundation
 import HyperProxyCore
 
-public typealias ElevenLabsMediaGenerationResponse = HyperProxyJSONValue
+public enum ElevenLabsMediaGenerationResponse: Codable, Sendable {
+  case mediaGenerationInProgressResponse(ElevenLabsMediaGenerationInProgressResponse)
+  case mediaGenerationCompletedResponse(ElevenLabsMediaGenerationCompletedResponse)
+  case mediaGenerationFailedResponse(ElevenLabsMediaGenerationFailedResponse)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(ElevenLabsMediaGenerationInProgressResponse.self) {
+      self = .mediaGenerationInProgressResponse(value)
+      return
+    }
+    if let value = try? container.decode(ElevenLabsMediaGenerationCompletedResponse.self) {
+      self = .mediaGenerationCompletedResponse(value)
+      return
+    }
+    self = .mediaGenerationFailedResponse(
+      try container.decode(ElevenLabsMediaGenerationFailedResponse.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .mediaGenerationInProgressResponse(let value):
+      try container.encode(value)
+    case .mediaGenerationCompletedResponse(let value):
+      try container.encode(value)
+    case .mediaGenerationFailedResponse(let value):
+      try container.encode(value)
+    }
+  }
+}

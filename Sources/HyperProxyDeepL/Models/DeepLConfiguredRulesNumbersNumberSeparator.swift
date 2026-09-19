@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesNumbersNumberSeparator: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let doNotUseChineseCommaToSeparateNumbersIndicatingApproximateValue = Self(
-    rawValue: "do_not_use_chinese_comma_to_separate_numbers_indicating_approximate_value")
-  public static let useChineseCommaToSeparateNumbersInAbbreviations = Self(
-    rawValue: "use_chinese_comma_to_separate_numbers_in_abbreviations")
+public enum DeepLConfiguredRulesNumbersNumberSeparator: String, Codable, Hashable, Sendable {
+  case doNotUseChineseCommaToSeparateNumbersIndicatingApproximateValue =
+    "do_not_use_chinese_comma_to_separate_numbers_indicating_approximate_value"
+  case useChineseCommaToSeparateNumbersInAbbreviations =
+    "use_chinese_comma_to_separate_numbers_in_abbreviations"
 }

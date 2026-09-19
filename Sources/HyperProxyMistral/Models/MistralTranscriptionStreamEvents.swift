@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralTranscriptionStreamEvents: Codable, Sendable {
-  public var data: HyperProxyJSONValue
+  public var data: MistralTranscriptionStreamEventsData
   public var event: MistralTranscriptionStreamEventTypes
 
   public init(
-    data: HyperProxyJSONValue,
+    data: MistralTranscriptionStreamEventsData,
     event: MistralTranscriptionStreamEventTypes
   ) {
     self.data = data

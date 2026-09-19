@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherDEThresholdCheckOperator: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let tHRESHOLDOPERATORGT = Self(rawValue: "THRESHOLD_OPERATOR_GT")
-  public static let tHRESHOLDOPERATORGTE = Self(rawValue: "THRESHOLD_OPERATOR_GTE")
-  public static let tHRESHOLDOPERATORLT = Self(rawValue: "THRESHOLD_OPERATOR_LT")
-  public static let tHRESHOLDOPERATORLTE = Self(rawValue: "THRESHOLD_OPERATOR_LTE")
+public enum TogetherDEThresholdCheckOperator: String, Codable, Hashable, Sendable {
+  case tHRESHOLDOPERATORGT = "THRESHOLD_OPERATOR_GT"
+  case tHRESHOLDOPERATORGTE = "THRESHOLD_OPERATOR_GTE"
+  case tHRESHOLDOPERATORLT = "THRESHOLD_OPERATOR_LT"
+  case tHRESHOLDOPERATORLTE = "THRESHOLD_OPERATOR_LTE"
 }

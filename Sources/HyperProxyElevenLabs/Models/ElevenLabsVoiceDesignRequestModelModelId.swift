@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsVoiceDesignRequestModelModelId: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let elevenMultilingualTtvV2 = Self(rawValue: "eleven_multilingual_ttv_v2")
-  public static let elevenTtvV3 = Self(rawValue: "eleven_ttv_v3")
+public enum ElevenLabsVoiceDesignRequestModelModelId: String, Codable, Hashable, Sendable {
+  case elevenMultilingualTtvV2 = "eleven_multilingual_ttv_v2"
+  case elevenTtvV3 = "eleven_ttv_v3"
 }

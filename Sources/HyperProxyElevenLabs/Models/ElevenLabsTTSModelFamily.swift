@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsTTSModelFamily: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let turbo = Self(rawValue: "turbo")
-  public static let flash = Self(rawValue: "flash")
-  public static let multilingual = Self(rawValue: "multilingual")
-  public static let v3Conversational = Self(rawValue: "v3_conversational")
+public enum ElevenLabsTTSModelFamily: String, Codable, Hashable, Sendable {
+  case turbo = "turbo"
+  case flash = "flash"
+  case multilingual = "multilingual"
+  case v3Conversational = "v3_conversational"
 }

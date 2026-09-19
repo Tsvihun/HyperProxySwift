@@ -10,20 +10,26 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsAlertingIntegrationNotifier: Codable, Sendable {
-  public var connectionId: String
-  public var typeModel: String?
+public enum ElevenLabsAlertingIntegrationNotifier: Codable, Sendable {
+  case alertingPagerDutyNotifier(ElevenLabsAlertingPagerDutyNotifier)
+  case alertingSlackNotifier(ElevenLabsAlertingSlackNotifier)
 
-  public init(
-    connectionId: String,
-    typeModel: String? = nil
-  ) {
-    self.connectionId = connectionId
-    self.typeModel = typeModel
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(ElevenLabsAlertingPagerDutyNotifier.self) {
+      self = .alertingPagerDutyNotifier(value)
+      return
+    }
+    self = .alertingSlackNotifier(try container.decode(ElevenLabsAlertingSlackNotifier.self))
   }
 
-  enum CodingKeys: String, CodingKey {
-    case connectionId = "connection_id"
-    case typeModel = "type"
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .alertingPagerDutyNotifier(let value):
+      try container.encode(value)
+    case .alertingSlackNotifier(let value):
+      try container.encode(value)
+    }
   }
 }

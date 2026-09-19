@@ -14,16 +14,16 @@ public struct AnthropicBetaManagedAgentsWebSearchToolConfig: Codable, Sendable {
   public var allowedDomains: [String]?
   public var blockedDomains: [String]?
   public var enabled: Bool
-  public var name: String
+  public var name: AnthropicWebSearchName
   public var permissionPolicy: AnthropicBetaManagedAgentsPermissionPolicy
-  public var typeModel: String
+  public var kind: AnthropicWebSearchKind
   public var userLocation: AnthropicBetaManagedAgentsUserLocation?
 
   public init(
     enabled: Bool,
-    name: String,
     permissionPolicy: AnthropicBetaManagedAgentsPermissionPolicy,
-    typeModel: String,
+    name: AnthropicWebSearchName = .webSearch,
+    kind: AnthropicWebSearchKind = .webSearch,
     allowedDomains: [String]? = nil,
     blockedDomains: [String]? = nil,
     userLocation: AnthropicBetaManagedAgentsUserLocation? = nil
@@ -33,7 +33,7 @@ public struct AnthropicBetaManagedAgentsWebSearchToolConfig: Codable, Sendable {
     self.enabled = enabled
     self.name = name
     self.permissionPolicy = permissionPolicy
-    self.typeModel = typeModel
+    self.kind = kind
     self.userLocation = userLocation
   }
 
@@ -43,7 +43,7 @@ public struct AnthropicBetaManagedAgentsWebSearchToolConfig: Codable, Sendable {
     case enabled
     case name
     case permissionPolicy = "permission_policy"
-    case typeModel = "type"
+    case kind = "type"
     case userLocation = "user_location"
   }
 }

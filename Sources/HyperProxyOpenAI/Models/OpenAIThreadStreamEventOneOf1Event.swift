@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIThreadStreamEventOneOf1Event: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let threadCreated = Self(rawValue: "thread.created")
+public enum OpenAIThreadStreamEventOneOf1Event: String, Codable, Hashable, Sendable {
+  case threadCreated = "thread.created"
 }

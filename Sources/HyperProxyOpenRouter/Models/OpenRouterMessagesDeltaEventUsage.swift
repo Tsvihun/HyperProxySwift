@@ -17,16 +17,16 @@ public struct OpenRouterMessagesDeltaEventUsage: Codable, Sendable {
   public var inputTokens: Int
   public var iterations: [OpenRouterAnthropicUsageIteration]?
   public var outputTokens: Int
-  public var outputTokensDetails: OpenRouterAnthropicOutputTokensDetails
-  public var serverToolUse: OpenRouterORAnthropicServerToolUsage
+  public var outputTokensDetails: OpenRouterAnthropicOutputTokensDetails?
+  public var serverToolUse: OpenRouterORAnthropicServerToolUsage?
 
   public init(
     cacheCreationInputTokens: Int,
     cacheReadInputTokens: Int,
     inputTokens: Int,
     outputTokens: Int,
-    outputTokensDetails: OpenRouterAnthropicOutputTokensDetails,
-    serverToolUse: OpenRouterORAnthropicServerToolUsage,
+    outputTokensDetails: OpenRouterAnthropicOutputTokensDetails?,
+    serverToolUse: OpenRouterORAnthropicServerToolUsage?,
     cacheCreation: OpenRouterAnthropicCacheCreation? = nil,
     iterations: [OpenRouterAnthropicUsageIteration]? = nil
   ) {

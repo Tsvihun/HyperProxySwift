@@ -10,25 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesNumbersWritingNumbers: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let alwaysUseKanjiNumbers = Self(rawValue: "always_use_kanji_numbers")
-  public static let useArabicNumerals = Self(rawValue: "use_arabic_numerals")
-  public static
-    let useFullWidthArabicNumeralsAndOnlyUseKanjiNumbersWhereItWouldOtherwiseSoundUnnatural = Self(
-      rawValue:
-        "use_full_width_arabic_numerals_and_only_use_kanji_numbers_where_it_would_otherwise_sound_unnatural"
-    )
-  public static
-    let useHalfWidthArabicNumeralsAndOnlyUseKanjiNumbersWhereItWouldOtherwiseSoundUnnatural = Self(
-      rawValue:
-        "use_half_width_arabic_numerals_and_only_use_kanji_numbers_where_it_would_otherwise_sound_unnatural"
-    )
+public enum DeepLConfiguredRulesNumbersWritingNumbers: String, Codable, Hashable, Sendable {
+  case alwaysUseKanjiNumbers = "always_use_kanji_numbers"
+  case useArabicNumerals = "use_arabic_numerals"
+  case useFullWidthArabicNumeralsAndOnlyUseKanjiNumbersWhereItWouldOtherwiseSoundUnnatural =
+    "use_full_width_arabic_numerals_and_only_use_kanji_numbers_where_it_would_otherwise_sound_unnatural"
+  case useHalfWidthArabicNumeralsAndOnlyUseKanjiNumbersWhereItWouldOtherwiseSoundUnnatural =
+    "use_half_width_arabic_numerals_and_only_use_kanji_numbers_where_it_would_otherwise_sound_unnatural"
 }

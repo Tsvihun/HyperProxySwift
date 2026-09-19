@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherCreateEndpointRequestState: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let sTARTED = Self(rawValue: "STARTED")
-  public static let sTOPPED = Self(rawValue: "STOPPED")
+public enum TogetherCreateEndpointRequestState: String, Codable, Hashable, Sendable {
+  case sTARTED = "STARTED"
+  case sTOPPED = "STOPPED"
 }

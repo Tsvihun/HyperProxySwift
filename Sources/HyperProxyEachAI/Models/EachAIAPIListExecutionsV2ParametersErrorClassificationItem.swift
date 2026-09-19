@@ -10,23 +10,17 @@
 import Foundation
 import HyperProxyCore
 
-public struct EachAIAPIListExecutionsV2ParametersErrorClassificationItem: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum EachAIAPIListExecutionsV2ParametersErrorClassificationItem: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let contentModeration = Self(rawValue: "content_moderation")
-  public static let executionTimeout = Self(rawValue: "execution_timeout")
-  public static let invalidUserInput = Self(rawValue: "invalid_user_input")
-  public static let invalidModelConfig = Self(rawValue: "invalid_model_config")
-  public static let providerAuth = Self(rawValue: "provider_auth")
-  public static let providerError = Self(rawValue: "provider_error")
-  public static let providerRateLimit = Self(rawValue: "provider_rate_limit")
-  public static let providerUnavailable = Self(rawValue: "provider_unavailable")
-  public static let internalError = Self(rawValue: "internal_error")
-  public static let unknown = Self(rawValue: "unknown")
+  case contentModeration = "content_moderation"
+  case executionTimeout = "execution_timeout"
+  case invalidUserInput = "invalid_user_input"
+  case invalidModelConfig = "invalid_model_config"
+  case providerAuth = "provider_auth"
+  case providerError = "provider_error"
+  case providerRateLimit = "provider_rate_limit"
+  case providerUnavailable = "provider_unavailable"
+  case internalError = "internal_error"
+  case unknown = "unknown"
 }

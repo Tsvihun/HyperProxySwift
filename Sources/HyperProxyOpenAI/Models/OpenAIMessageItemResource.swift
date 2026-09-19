@@ -17,7 +17,7 @@ public struct OpenAIMessageItemResource: Codable, Sendable {
   public var role: OpenAISessionMessageRoleResource
   public var status: OpenAIOutputItemStatusResource
   public var turnId: String
-  public var typeModel: OpenAIMessageItemResourceTypeModel
+  public var kind: OpenAIMessageItemResourceKind
 
   public init(
     content: [OpenAIMessageContentResource],
@@ -26,7 +26,7 @@ public struct OpenAIMessageItemResource: Codable, Sendable {
     role: OpenAISessionMessageRoleResource,
     status: OpenAIOutputItemStatusResource,
     turnId: String,
-    typeModel: OpenAIMessageItemResourceTypeModel
+    kind: OpenAIMessageItemResourceKind
   ) {
     self.content = content
     self.id = id
@@ -34,7 +34,7 @@ public struct OpenAIMessageItemResource: Codable, Sendable {
     self.role = role
     self.status = status
     self.turnId = turnId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenAIMessageItemResource: Codable, Sendable {
     case role
     case status
     case turnId = "turn_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaFallbackCreditTokenParamMode: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let strict = Self(rawValue: "strict")
-  public static let bestEffort = Self(rawValue: "best_effort")
+public enum AnthropicBetaFallbackCreditTokenParamMode: String, Codable, Hashable, Sendable {
+  case strict = "strict"
+  case bestEffort = "best_effort"
 }

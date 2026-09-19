@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIUsageCostsParametersBucketWidth: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let value1d = Self(rawValue: "1d")
+public enum OpenAIUsageCostsParametersBucketWidth: String, Codable, Hashable, Sendable {
+  case value1d = "1d"
 }

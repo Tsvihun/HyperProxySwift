@@ -15,7 +15,7 @@ public struct OpenAISessionEventAgentSessionTurnCompleted: Codable, Sendable {
   public var sessionId: String
   public var turn: OpenAITurnResource
   public var turnId: String
-  public var typeModel: OpenAISessionEventAgentSessionTurnCompletedTypeModel
+  public var kind: OpenAISessionEventAgentSessionTurnCompletedKind
   public var usage: OpenAITokenUsageResource?
 
   public init(
@@ -23,14 +23,14 @@ public struct OpenAISessionEventAgentSessionTurnCompleted: Codable, Sendable {
     sessionId: String,
     turn: OpenAITurnResource,
     turnId: String,
-    typeModel: OpenAISessionEventAgentSessionTurnCompletedTypeModel,
+    kind: OpenAISessionEventAgentSessionTurnCompletedKind,
     usage: OpenAITokenUsageResource?
   ) {
     self.eventId = eventId
     self.sessionId = sessionId
     self.turn = turn
     self.turnId = turnId
-    self.typeModel = typeModel
+    self.kind = kind
     self.usage = usage
   }
 
@@ -39,7 +39,7 @@ public struct OpenAISessionEventAgentSessionTurnCompleted: Codable, Sendable {
     case sessionId = "session_id"
     case turn
     case turnId = "turn_id"
-    case typeModel = "type"
+    case kind = "type"
     case usage
   }
 }

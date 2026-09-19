@@ -22,9 +22,9 @@ public struct MistralAgent: Codable, Sendable {
   public var metadata: MistralMetadataDict?
   public var model: String
   public var name: String
-  public var object: String?
+  public var object: MistralAgentObject?
   public var source: String
-  public var tools: [HyperProxyJSONValue]?
+  public var tools: [MistralAgentToolsItem]?
   public var updatedAt: String
   public var version: Int
   public var versionMessage: String?
@@ -46,8 +46,8 @@ public struct MistralAgent: Codable, Sendable {
     handoffs: [String]? = nil,
     instructions: String? = nil,
     metadata: MistralMetadataDict? = nil,
-    object: String? = nil,
-    tools: [HyperProxyJSONValue]? = nil,
+    object: MistralAgentObject? = nil,
+    tools: [MistralAgentToolsItem]? = nil,
     versionMessage: String? = nil
   ) {
     self.completionArgs = completionArgs

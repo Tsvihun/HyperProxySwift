@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralListRunsV1WorkflowsRunsGetParametersSortByAnyOf1: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum MistralListRunsV1WorkflowsRunsGetParametersSortByAnyOf1: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let startTime = Self(rawValue: "start_time")
-  public static let endTime = Self(rawValue: "end_time")
+  case startTime = "start_time"
+  case endTime = "end_time"
 }

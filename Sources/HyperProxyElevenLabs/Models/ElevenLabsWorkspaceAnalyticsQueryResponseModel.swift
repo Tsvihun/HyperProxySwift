@@ -14,13 +14,13 @@ public struct ElevenLabsWorkspaceAnalyticsQueryResponseModel: Codable, Sendable 
   public var columnTypes: [ElevenLabsWorkspaceAnalyticsQueryResponseModelColumnTypesItem]
   public var columnUnits: [ElevenLabsColumnUnit?]
   public var columns: [String]
-  public var rows: [[HyperProxyJSONValue?]]
+  public var rows: [[ElevenLabsWorkspaceAnalyticsQueryResponseModelRowsItemItem?]]
 
   public init(
     columnTypes: [ElevenLabsWorkspaceAnalyticsQueryResponseModelColumnTypesItem],
     columnUnits: [ElevenLabsColumnUnit?],
     columns: [String],
-    rows: [[HyperProxyJSONValue?]]
+    rows: [[ElevenLabsWorkspaceAnalyticsQueryResponseModelRowsItemItem?]]
   ) {
     self.columnTypes = columnTypes
     self.columnUnits = columnUnits

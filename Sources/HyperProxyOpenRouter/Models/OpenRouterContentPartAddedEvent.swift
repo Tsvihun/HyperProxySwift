@@ -14,24 +14,24 @@ public struct OpenRouterContentPartAddedEvent: Codable, Sendable {
   public var contentIndex: Int
   public var itemId: String
   public var outputIndex: Int
-  public var part: HyperProxyJSONValue
+  public var part: OpenRouterBaseContentPartAddedEventPart
   public var sequenceNumber: Int
-  public var typeModel: OpenRouterBaseContentPartAddedEventTypeModel
+  public var kind: OpenRouterBaseContentPartAddedEventKind
 
   public init(
     contentIndex: Int,
     itemId: String,
     outputIndex: Int,
-    part: HyperProxyJSONValue,
+    part: OpenRouterBaseContentPartAddedEventPart,
     sequenceNumber: Int,
-    typeModel: OpenRouterBaseContentPartAddedEventTypeModel
+    kind: OpenRouterBaseContentPartAddedEventKind
   ) {
     self.contentIndex = contentIndex
     self.itemId = itemId
     self.outputIndex = outputIndex
     self.part = part
     self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenRouterContentPartAddedEvent: Codable, Sendable {
     case outputIndex = "output_index"
     case part
     case sequenceNumber = "sequence_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

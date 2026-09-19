@@ -17,7 +17,7 @@ public struct OpenAIVectorStoreObject: Codable, Sendable {
   public var fileCounts: OpenAIVectorStoreObjectFileCounts
   public var id: String
   public var lastActiveAt: Int?
-  public var metadata: OpenAIMetadata
+  public var metadata: OpenAIMetadata?
   public var name: String
   public var object: OpenAIVectorStoreObjectObject
   public var status: OpenAIVectorStoreObjectStatus
@@ -28,7 +28,7 @@ public struct OpenAIVectorStoreObject: Codable, Sendable {
     fileCounts: OpenAIVectorStoreObjectFileCounts,
     id: String,
     lastActiveAt: Int?,
-    metadata: OpenAIMetadata,
+    metadata: OpenAIMetadata?,
     name: String,
     object: OpenAIVectorStoreObjectObject,
     status: OpenAIVectorStoreObjectStatus,

@@ -14,24 +14,24 @@ public struct OpenAISessionEnvironmentStateResource: Codable, Sendable {
   public var error: OpenAISessionEnvironmentErrorResource?
   public var id: String
   public var status: OpenAISessionEnvironmentStatusResource
-  public var typeModel: String
+  public var kind: String
 
   public init(
     error: OpenAISessionEnvironmentErrorResource?,
     id: String,
     status: OpenAISessionEnvironmentStatusResource,
-    typeModel: String
+    kind: String
   ) {
     self.error = error
     self.id = id
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case error
     case id
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

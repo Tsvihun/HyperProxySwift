@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct StabilityPostV2betaStableImageUpscaleConservativeRequest: Codable, Sendable {
-  public var creativity: StabilityCreativity?
+  public var creativity: Double?
   public var image: String
   public var negativePrompt: String?
   public var outputFormat: StabilityPostV2betaStableImageUpscaleConservativeRequestOutputFormat?
@@ -21,7 +21,7 @@ public struct StabilityPostV2betaStableImageUpscaleConservativeRequest: Codable,
   public init(
     image: String,
     prompt: String,
-    creativity: StabilityCreativity? = nil,
+    creativity: Double? = nil,
     negativePrompt: String? = nil,
     outputFormat: StabilityPostV2betaStableImageUpscaleConservativeRequestOutputFormat? = nil,
     seed: Double? = nil

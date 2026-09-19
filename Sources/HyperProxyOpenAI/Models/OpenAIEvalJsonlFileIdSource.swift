@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIEvalJsonlFileIdSource: Codable, Sendable {
   public var id: String
-  public var typeModel: OpenAIEvalJsonlFileIdSourceTypeModel
+  public var kind: OpenAIEvalJsonlFileIdSourceKind
 
   public init(
     id: String,
-    typeModel: OpenAIEvalJsonlFileIdSourceTypeModel
+    kind: OpenAIEvalJsonlFileIdSourceKind
   ) {
     self.id = id
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case id
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -15,23 +15,23 @@ public struct AnthropicBetaManagedAgentsSessionThreadStatusIdleEvent: Codable, S
   public var id: String
   public var processedAt: AnthropicBetaTimestamp
   public var sessionThreadId: String
-  public var stopReason: HyperProxyJSONValue
-  public var typeModel: AnthropicBetaManagedAgentsSessionThreadStatusIdleEventTypeModel
+  public var stopReason: AnthropicBetaManagedAgentsSessionThreadStatusIdleEventStopReason
+  public var kind: AnthropicBetaManagedAgentsSessionThreadStatusIdleEventKind
 
   public init(
     agentName: String,
     id: String,
     processedAt: AnthropicBetaTimestamp,
     sessionThreadId: String,
-    stopReason: HyperProxyJSONValue,
-    typeModel: AnthropicBetaManagedAgentsSessionThreadStatusIdleEventTypeModel
+    stopReason: AnthropicBetaManagedAgentsSessionThreadStatusIdleEventStopReason,
+    kind: AnthropicBetaManagedAgentsSessionThreadStatusIdleEventKind
   ) {
     self.agentName = agentName
     self.id = id
     self.processedAt = processedAt
     self.sessionThreadId = sessionThreadId
     self.stopReason = stopReason
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct AnthropicBetaManagedAgentsSessionThreadStatusIdleEvent: Codable, S
     case processedAt = "processed_at"
     case sessionThreadId = "session_thread_id"
     case stopReason = "stop_reason"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

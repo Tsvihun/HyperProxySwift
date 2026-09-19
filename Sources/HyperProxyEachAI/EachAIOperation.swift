@@ -24,10 +24,10 @@ public enum EachAIOperation: String, HyperProxyProviderOperation {
   case filesDelete = "files.delete"
   /// `GET v1/llm-router/model-catalog`
   case llmRouterModelCatalog = "llmRouter.modelCatalog"
-  /// `GET v1/model`
-  case modelsRetrieve = "models.retrieve"
   /// `GET v1/models`
   case modelsList = "models.list"
+  /// `GET v1/models/{slug}`
+  case getModelBySlug = "getModelBySlug"
   /// `POST v1/prediction`
   case predictionsCreate = "predictions.create"
   /// `POST v1/prediction/run`

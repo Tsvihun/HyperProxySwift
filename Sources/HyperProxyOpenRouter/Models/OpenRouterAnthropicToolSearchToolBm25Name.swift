@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterAnthropicToolSearchToolBm25Name: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let toolSearchToolBm25 = Self(rawValue: "tool_search_tool_bm25")
+public enum OpenRouterAnthropicToolSearchToolBm25Name: String, Codable, Hashable, Sendable {
+  case toolSearchToolBm25 = "tool_search_tool_bm25"
 }

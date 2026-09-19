@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksDeploymentShapeVersionCapability: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let cAPABILITYUNSPECIFIED = Self(rawValue: "CAPABILITY_UNSPECIFIED")
-  public static let mULTILORA = Self(rawValue: "MULTI_LORA")
+public enum FireworksDeploymentShapeVersionCapability: String, Codable, Hashable, Sendable {
+  case cAPABILITYUNSPECIFIED = "CAPABILITY_UNSPECIFIED"
+  case mULTILORA = "MULTI_LORA"
 }

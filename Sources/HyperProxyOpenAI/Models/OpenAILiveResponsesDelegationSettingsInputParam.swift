@@ -18,8 +18,8 @@ public struct OpenAILiveResponsesDelegationSettingsInputParam: Codable, Sendable
   public var reasoning: OpenAILiveDelegationReasoningInputParam?
   public var serviceTier: OpenAILiveResponsesServiceTier?
   public var text: OpenAILiveDelegationTextInputParam?
-  public var toolChoice: HyperProxyJSONValue?
-  public var tools: [HyperProxyJSONValue]?
+  public var toolChoice: OpenAILiveResponsesDelegationSettingsInputParamToolChoice?
+  public var tools: [OpenAILiveResponsesDelegationSettingsInputParamToolsItem]?
 
   public init(
     model: String,
@@ -29,8 +29,8 @@ public struct OpenAILiveResponsesDelegationSettingsInputParam: Codable, Sendable
     reasoning: OpenAILiveDelegationReasoningInputParam? = nil,
     serviceTier: OpenAILiveResponsesServiceTier? = nil,
     text: OpenAILiveDelegationTextInputParam? = nil,
-    toolChoice: HyperProxyJSONValue? = nil,
-    tools: [HyperProxyJSONValue]? = nil
+    toolChoice: OpenAILiveResponsesDelegationSettingsInputParamToolChoice? = nil,
+    tools: [OpenAILiveResponsesDelegationSettingsInputParamToolsItem]? = nil
   ) {
     self.instructions = instructions
     self.maxOutputTokens = maxOutputTokens

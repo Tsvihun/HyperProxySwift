@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenAIHostedEnvironmentFileParamFileId: Codable, Sendable {
   public var fileId: String
   public var path: String
-  public var typeModel: OpenAIHostedEnvironmentFileParamFileIdTypeModel
+  public var kind: OpenAIHostedEnvironmentFileParamFileIdKind
 
   public init(
     fileId: String,
     path: String,
-    typeModel: OpenAIHostedEnvironmentFileParamFileIdTypeModel
+    kind: OpenAIHostedEnvironmentFileParamFileIdKind
   ) {
     self.fileId = fileId
     self.path = path
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case fileId = "file_id"
     case path
-    case typeModel = "type"
+    case kind = "type"
   }
 }

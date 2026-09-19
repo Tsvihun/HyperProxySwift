@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIImageGenToolOutputFormat: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let png = Self(rawValue: "png")
-  public static let webp = Self(rawValue: "webp")
-  public static let jpeg = Self(rawValue: "jpeg")
+public enum OpenAIImageGenToolOutputFormat: String, Codable, Hashable, Sendable {
+  case png = "png"
+  case webp = "webp"
+  case jpeg = "jpeg"
 }

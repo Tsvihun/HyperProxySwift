@@ -3452,6 +3452,12 @@ extension HyperProxyProviderService where Operation == FireworksOperation {
       .query(query)
       .headers(headers)
       .timeout(timeout)
+    if body.stream == true {
+      throw HyperProxyProviderRouteError.streamingBodyOnJSONCall(
+        operation: "chatCompletionsCreate",
+        streamingVariant: "chatCompletionsCreateStream"
+      )
+    }
     let prepared = try call.json(body)
     return try await prepared.decoded(FireworksChatCompletionResponse.self)
   }
@@ -3466,7 +3472,9 @@ extension HyperProxyProviderService where Operation == FireworksOperation {
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    let prepared = try call.json(body)
+    var streamingBody = body
+    streamingBody.stream = true
+    let prepared = try call.json(streamingBody)
     return try prepared.events(decoding: FireworksChatCompletionStreamResponse.self)
   }
 
@@ -3480,6 +3488,12 @@ extension HyperProxyProviderService where Operation == FireworksOperation {
       .query(query)
       .headers(headers)
       .timeout(timeout)
+    if body.stream == true {
+      throw HyperProxyProviderRouteError.streamingBodyOnJSONCall(
+        operation: "completionsCreate",
+        streamingVariant: "completionsCreateStream"
+      )
+    }
     let prepared = try call.json(body)
     return try await prepared.decoded(FireworksCompletionResponse.self)
   }
@@ -3494,7 +3508,9 @@ extension HyperProxyProviderService where Operation == FireworksOperation {
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    let prepared = try call.json(body)
+    var streamingBody = body
+    streamingBody.stream = true
+    let prepared = try call.json(streamingBody)
     return try prepared.events(decoding: FireworksCompletionStreamResponse.self)
   }
 

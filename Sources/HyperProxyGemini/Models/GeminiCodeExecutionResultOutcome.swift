@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiCodeExecutionResultOutcome: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let oUTCOMEUNSPECIFIED = Self(rawValue: "OUTCOME_UNSPECIFIED")
-  public static let oUTCOMEOK = Self(rawValue: "OUTCOME_OK")
-  public static let oUTCOMEFAILED = Self(rawValue: "OUTCOME_FAILED")
-  public static let oUTCOMEDEADLINEEXCEEDED = Self(rawValue: "OUTCOME_DEADLINE_EXCEEDED")
+public enum GeminiCodeExecutionResultOutcome: String, Codable, Hashable, Sendable {
+  case oUTCOMEUNSPECIFIED = "OUTCOME_UNSPECIFIED"
+  case oUTCOMEOK = "OUTCOME_OK"
+  case oUTCOMEFAILED = "OUTCOME_FAILED"
+  case oUTCOMEDEADLINEEXCEEDED = "OUTCOME_DEADLINE_EXCEEDED"
 }

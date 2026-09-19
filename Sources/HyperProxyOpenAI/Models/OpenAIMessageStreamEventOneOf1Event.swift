@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIMessageStreamEventOneOf1Event: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let threadMessageCreated = Self(rawValue: "thread.message.created")
+public enum OpenAIMessageStreamEventOneOf1Event: String, Codable, Hashable, Sendable {
+  case threadMessageCreated = "thread.message.created"
 }

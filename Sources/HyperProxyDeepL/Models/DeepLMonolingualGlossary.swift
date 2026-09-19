@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct DeepLMonolingualGlossary: Codable, Sendable {
   public var creationTime: String?
   public var entryCount: Int?
-  public var glossaryId: DeepLGlossaryId?
+  public var glossaryId: String?
   public var name: String?
   public var ready: Bool?
   public var sourceLang: DeepLGlossarySourceLanguage?
@@ -22,7 +22,7 @@ public struct DeepLMonolingualGlossary: Codable, Sendable {
   public init(
     creationTime: String? = nil,
     entryCount: Int? = nil,
-    glossaryId: DeepLGlossaryId? = nil,
+    glossaryId: String? = nil,
     name: String? = nil,
     ready: Bool? = nil,
     sourceLang: DeepLGlossarySourceLanguage? = nil,

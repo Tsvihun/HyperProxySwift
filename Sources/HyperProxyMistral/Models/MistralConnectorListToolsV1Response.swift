@@ -10,4 +10,26 @@
 import Foundation
 import HyperProxyCore
 
-public typealias MistralConnectorListToolsV1Response = HyperProxyJSONValue
+public enum MistralConnectorListToolsV1Response: Codable, Sendable {
+  case mCPToolArray([MistralMCPTool])
+  case objectArray([[String: HyperProxyJSONValue]])
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode([MistralMCPTool].self) {
+      self = .mCPToolArray(value)
+      return
+    }
+    self = .objectArray(try container.decode([[String: HyperProxyJSONValue]].self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .mCPToolArray(let value):
+      try container.encode(value)
+    case .objectArray(let value):
+      try container.encode(value)
+    }
+  }
+}

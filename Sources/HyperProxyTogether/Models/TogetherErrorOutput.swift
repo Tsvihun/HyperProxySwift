@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct TogetherErrorOutput: Codable, Sendable {
   public var data: String
-  public var typeModel: TogetherErrorOutputTypeModel
+  public var kind: TogetherErrorOutputKind
 
   public init(
     data: String,
-    typeModel: TogetherErrorOutputTypeModel
+    kind: TogetherErrorOutputKind
   ) {
     self.data = data
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case data
-    case typeModel = "type"
+    case kind = "type"
   }
 }

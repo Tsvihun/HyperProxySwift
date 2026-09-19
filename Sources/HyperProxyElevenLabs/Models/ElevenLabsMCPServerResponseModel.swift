@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsMCPServerResponseModel: Codable, Sendable {
   public var accessInfo: ElevenLabsResourceAccessInfo?
   public var config: ElevenLabsMCPServerConfigOutput
-  public var dependentAgents: [HyperProxyJSONValue]?
+  public var dependentAgents: [ElevenLabsMCPServerResponseModelDependentAgentsItem]?
   public var id: String
   public var metadata: ElevenLabsMCPServerMetadataResponseModel
 
@@ -22,7 +22,7 @@ public struct ElevenLabsMCPServerResponseModel: Codable, Sendable {
     id: String,
     metadata: ElevenLabsMCPServerMetadataResponseModel,
     accessInfo: ElevenLabsResourceAccessInfo? = nil,
-    dependentAgents: [HyperProxyJSONValue]? = nil
+    dependentAgents: [ElevenLabsMCPServerResponseModelDependentAgentsItem]? = nil
   ) {
     self.accessInfo = accessInfo
     self.config = config

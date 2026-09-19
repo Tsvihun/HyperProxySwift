@@ -15,20 +15,20 @@ public struct OpenAIAttachment: Codable, Sendable {
   public var mimeType: String
   public var name: String
   public var previewUrl: String?
-  public var typeModel: OpenAIAttachmentType
+  public var kind: OpenAIAttachmentType
 
   public init(
     id: String,
     mimeType: String,
     name: String,
     previewUrl: String?,
-    typeModel: OpenAIAttachmentType
+    kind: OpenAIAttachmentType
   ) {
     self.id = id
     self.mimeType = mimeType
     self.name = name
     self.previewUrl = previewUrl
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIAttachment: Codable, Sendable {
     case mimeType = "mime_type"
     case name
     case previewUrl = "preview_url"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,4 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public typealias MistralMessageOutputContentChunks = [HyperProxyJSONValue]
+public typealias MistralMessageOutputContentChunks = [MistralMessageOutputContentChunksItem]

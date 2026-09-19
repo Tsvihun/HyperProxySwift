@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsResourceAccessInfoAnonymousAccessLevelOverrideAnyOf1: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum ElevenLabsResourceAccessInfoAnonymousAccessLevelOverrideAnyOf1: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let admin = Self(rawValue: "admin")
-  public static let editor = Self(rawValue: "editor")
-  public static let commenter = Self(rawValue: "commenter")
-  public static let viewer = Self(rawValue: "viewer")
+  case admin = "admin"
+  case editor = "editor"
+  case commenter = "commenter"
+  case viewer = "viewer"
 }

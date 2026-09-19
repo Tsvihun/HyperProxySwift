@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAICreateModerationRequestInputOneOf3ItemOneOf1: Codable, Sendable {
   public var imageUrl: OpenAICreateModerationRequestInputOneOf3ItemOneOf1ImageUrl
-  public var typeModel: OpenAICreateModerationRequestInputOneOf3ItemOneOf1TypeModel
+  public var kind: OpenAICreateModerationRequestInputOneOf3ItemOneOf1Kind
 
   public init(
     imageUrl: OpenAICreateModerationRequestInputOneOf3ItemOneOf1ImageUrl,
-    typeModel: OpenAICreateModerationRequestInputOneOf3ItemOneOf1TypeModel
+    kind: OpenAICreateModerationRequestInputOneOf3ItemOneOf1Kind
   ) {
     self.imageUrl = imageUrl
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case imageUrl = "image_url"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

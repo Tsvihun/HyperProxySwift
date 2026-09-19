@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIEmbeddingObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let embedding = Self(rawValue: "embedding")
+public enum OpenAIEmbeddingObject: String, Codable, Hashable, Sendable {
+  case embedding = "embedding"
 }

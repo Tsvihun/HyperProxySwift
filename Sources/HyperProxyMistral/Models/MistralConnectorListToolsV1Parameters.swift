@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralConnectorListToolsV1Parameters: Codable, Sendable {
-  public var connectorIdOrName: String
+  public var connectorIdOrName: MistralConnectorListToolsV1ParametersConnectorIdOrName
   public var credentialsName: String?
   public var page: Int?
   public var pageSize: Int?
@@ -19,7 +19,7 @@ public struct MistralConnectorListToolsV1Parameters: Codable, Sendable {
   public var refresh: Bool?
 
   public init(
-    connectorIdOrName: String,
+    connectorIdOrName: MistralConnectorListToolsV1ParametersConnectorIdOrName,
     credentialsName: String? = nil,
     page: Int? = nil,
     pageSize: Int? = nil,

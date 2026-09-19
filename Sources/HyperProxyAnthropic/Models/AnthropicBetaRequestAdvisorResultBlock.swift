@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct AnthropicBetaRequestAdvisorResultBlock: Codable, Sendable {
   public var stopReason: String?
   public var text: String
-  public var typeModel: String
+  public var kind: AnthropicAdvisorResultKind
 
   public init(
     text: String,
-    typeModel: String,
+    kind: AnthropicAdvisorResultKind = .advisorResult,
     stopReason: String? = nil
   ) {
     self.stopReason = stopReason
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case stopReason = "stop_reason"
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

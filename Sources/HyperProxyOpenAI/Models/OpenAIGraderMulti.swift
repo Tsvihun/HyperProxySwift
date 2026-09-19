@@ -12,26 +12,26 @@ import HyperProxyCore
 
 public struct OpenAIGraderMulti: Codable, Sendable {
   public var calculateOutput: String
-  public var graders: HyperProxyJSONValue
+  public var graders: OpenAIGraderMultiGraders
   public var name: String
-  public var typeModel: OpenAIGraderMultiTypeModel
+  public var kind: OpenAIGraderMultiKind
 
   public init(
     calculateOutput: String,
-    graders: HyperProxyJSONValue,
+    graders: OpenAIGraderMultiGraders,
     name: String,
-    typeModel: OpenAIGraderMultiTypeModel
+    kind: OpenAIGraderMultiKind
   ) {
     self.calculateOutput = calculateOutput
     self.graders = graders
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case calculateOutput = "calculate_output"
     case graders
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

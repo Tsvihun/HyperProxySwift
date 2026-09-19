@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct DeepLMultilingualGlossary: Codable, Sendable {
   public var creationTime: String?
   public var dictionaries: [DeepLGlossaryDictionary]?
-  public var glossaryId: DeepLGlossaryId?
-  public var name: DeepLGlossaryName?
+  public var glossaryId: String?
+  public var name: String?
 
   public init(
     creationTime: String? = nil,
     dictionaries: [DeepLGlossaryDictionary]? = nil,
-    glossaryId: DeepLGlossaryId? = nil,
-    name: DeepLGlossaryName? = nil
+    glossaryId: String? = nil,
+    name: String? = nil
   ) {
     self.creationTime = creationTime
     self.dictionaries = dictionaries

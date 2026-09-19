@@ -10,4 +10,100 @@
 import Foundation
 import HyperProxyCore
 
-public typealias AnthropicBetaManagedAgentsError = HyperProxyJSONValue
+public enum AnthropicBetaManagedAgentsError: Codable, Sendable {
+  case betaInvalidRequestError(AnthropicBetaInvalidRequestError)
+  case betaAuthenticationError(AnthropicBetaAuthenticationError)
+  case betaBillingError(AnthropicBetaBillingError)
+  case betaPermissionError(AnthropicBetaPermissionError)
+  case betaNotFoundError(AnthropicBetaNotFoundError)
+  case betaRateLimitError(AnthropicBetaRateLimitError)
+  case betaGatewayTimeoutError(AnthropicBetaGatewayTimeoutError)
+  case betaAPIError(AnthropicBetaAPIError)
+  case betaOverloadedError(AnthropicBetaOverloadedError)
+  case betaManagedAgentsMemoryPreconditionFailedError(
+    AnthropicBetaManagedAgentsMemoryPreconditionFailedError)
+  case betaManagedAgentsMemoryPathConflictError(AnthropicBetaManagedAgentsMemoryPathConflictError)
+  case betaManagedAgentsConflictError(AnthropicBetaManagedAgentsConflictError)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(AnthropicBetaInvalidRequestError.self) {
+      self = .betaInvalidRequestError(value)
+      return
+    }
+    if let value = try? container.decode(AnthropicBetaAuthenticationError.self) {
+      self = .betaAuthenticationError(value)
+      return
+    }
+    if let value = try? container.decode(AnthropicBetaBillingError.self) {
+      self = .betaBillingError(value)
+      return
+    }
+    if let value = try? container.decode(AnthropicBetaPermissionError.self) {
+      self = .betaPermissionError(value)
+      return
+    }
+    if let value = try? container.decode(AnthropicBetaNotFoundError.self) {
+      self = .betaNotFoundError(value)
+      return
+    }
+    if let value = try? container.decode(AnthropicBetaRateLimitError.self) {
+      self = .betaRateLimitError(value)
+      return
+    }
+    if let value = try? container.decode(AnthropicBetaGatewayTimeoutError.self) {
+      self = .betaGatewayTimeoutError(value)
+      return
+    }
+    if let value = try? container.decode(AnthropicBetaAPIError.self) {
+      self = .betaAPIError(value)
+      return
+    }
+    if let value = try? container.decode(AnthropicBetaOverloadedError.self) {
+      self = .betaOverloadedError(value)
+      return
+    }
+    if let value = try? container.decode(
+      AnthropicBetaManagedAgentsMemoryPreconditionFailedError.self)
+    {
+      self = .betaManagedAgentsMemoryPreconditionFailedError(value)
+      return
+    }
+    if let value = try? container.decode(AnthropicBetaManagedAgentsMemoryPathConflictError.self) {
+      self = .betaManagedAgentsMemoryPathConflictError(value)
+      return
+    }
+    self = .betaManagedAgentsConflictError(
+      try container.decode(AnthropicBetaManagedAgentsConflictError.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .betaInvalidRequestError(let value):
+      try container.encode(value)
+    case .betaAuthenticationError(let value):
+      try container.encode(value)
+    case .betaBillingError(let value):
+      try container.encode(value)
+    case .betaPermissionError(let value):
+      try container.encode(value)
+    case .betaNotFoundError(let value):
+      try container.encode(value)
+    case .betaRateLimitError(let value):
+      try container.encode(value)
+    case .betaGatewayTimeoutError(let value):
+      try container.encode(value)
+    case .betaAPIError(let value):
+      try container.encode(value)
+    case .betaOverloadedError(let value):
+      try container.encode(value)
+    case .betaManagedAgentsMemoryPreconditionFailedError(let value):
+      try container.encode(value)
+    case .betaManagedAgentsMemoryPathConflictError(let value):
+      try container.encode(value)
+    case .betaManagedAgentsConflictError(let value):
+      try container.encode(value)
+    }
+  }
+}

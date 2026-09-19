@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralDeltaMessage: Codable, Sendable {
-  public var content: HyperProxyJSONValue?
+  public var content: MistralDeltaMessageContent?
   public var index: Int?
   public var metadata: [String: HyperProxyJSONValue]?
   public var role: String?
@@ -19,7 +19,7 @@ public struct MistralDeltaMessage: Codable, Sendable {
   public var toolCalls: [MistralToolCall]?
 
   public init(
-    content: HyperProxyJSONValue? = nil,
+    content: MistralDeltaMessageContent? = nil,
     index: Int? = nil,
     metadata: [String: HyperProxyJSONValue]? = nil,
     role: String? = nil,

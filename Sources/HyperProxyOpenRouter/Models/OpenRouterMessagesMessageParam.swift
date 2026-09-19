@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct OpenRouterMessagesMessageParam: Codable, Sendable {
   public var clearAt: OpenRouterAnthropicSystemClearAt?
-  public var content: HyperProxyJSONValue
+  public var content: OpenRouterMessagesMessageParamContent
   public var outputConfig: OpenRouterAnthropicMessageOutputConfig?
   public var role: OpenRouterMessagesMessageParamRole
 
   public init(
-    content: HyperProxyJSONValue,
+    content: OpenRouterMessagesMessageParamContent,
     role: OpenRouterMessagesMessageParamRole,
     clearAt: OpenRouterAnthropicSystemClearAt? = nil,
     outputConfig: OpenRouterAnthropicMessageOutputConfig? = nil

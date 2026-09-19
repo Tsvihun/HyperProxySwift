@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterAgentMessageItemContentItemOneOf3: Codable, Sendable {
   public var encryptedContent: String
-  public var typeModel: OpenRouterAgentMessageItemContentItemOneOf3TypeModel
+  public var kind: OpenRouterAgentMessageItemContentItemOneOf3Kind
 
   public init(
     encryptedContent: String,
-    typeModel: OpenRouterAgentMessageItemContentItemOneOf3TypeModel
+    kind: OpenRouterAgentMessageItemContentItemOneOf3Kind
   ) {
     self.encryptedContent = encryptedContent
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case encryptedContent = "encrypted_content"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

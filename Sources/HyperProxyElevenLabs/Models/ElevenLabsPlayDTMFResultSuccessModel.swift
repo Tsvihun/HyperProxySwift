@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct ElevenLabsPlayDTMFResultSuccessModel: Codable, Sendable {
   public var dtmfTones: String
   public var reason: String?
-  public var resultType: String?
-  public var status: String?
+  public var resultType: ElevenLabsPlayDtmfSuccessResultType?
+  public var status: ElevenLabsSuccessStatus?
 
   public init(
     dtmfTones: String,
     reason: String? = nil,
-    resultType: String? = nil,
-    status: String? = nil
+    resultType: ElevenLabsPlayDtmfSuccessResultType? = nil,
+    status: ElevenLabsSuccessStatus? = nil
   ) {
     self.dtmfTones = dtmfTones
     self.reason = reason

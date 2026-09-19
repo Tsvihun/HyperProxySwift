@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterMessagesStopEvent: Codable, Sendable {
   public var openrouterMetadata: OpenRouterMetadata?
-  public var typeModel: OpenRouterMessagesStopEventTypeModel
+  public var kind: OpenRouterMessagesStopEventKind
 
   public init(
-    typeModel: OpenRouterMessagesStopEventTypeModel,
+    kind: OpenRouterMessagesStopEventKind,
     openrouterMetadata: OpenRouterMetadata? = nil
   ) {
     self.openrouterMetadata = openrouterMetadata
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case openrouterMetadata = "openrouter_metadata"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

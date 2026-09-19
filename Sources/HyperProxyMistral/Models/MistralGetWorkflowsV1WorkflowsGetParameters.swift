@@ -21,8 +21,8 @@ public struct MistralGetWorkflowsV1WorkflowsGetParameters: Codable, Sendable {
   public var limit: Int?
   public var order: MistralGetWorkflowsV1WorkflowsGetParametersOrder?
   public var search: String?
-  public var sortBy: String?
-  public var status: HyperProxyJSONValue?
+  public var sortBy: MistralGetWorkflowsV1WorkflowsGetParametersSortByAnyOf1?
+  public var status: MistralGetWorkflowsV1WorkflowsGetParametersStatus?
   public var tags: [String]?
 
   public init(
@@ -36,8 +36,8 @@ public struct MistralGetWorkflowsV1WorkflowsGetParameters: Codable, Sendable {
     limit: Int? = nil,
     order: MistralGetWorkflowsV1WorkflowsGetParametersOrder? = nil,
     search: String? = nil,
-    sortBy: String? = nil,
-    status: HyperProxyJSONValue? = nil,
+    sortBy: MistralGetWorkflowsV1WorkflowsGetParametersSortByAnyOf1? = nil,
+    status: MistralGetWorkflowsV1WorkflowsGetParametersStatus? = nil,
     tags: [String]? = nil
   ) {
     self.activeOnly = activeOnly

@@ -10,19 +10,12 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAICreateChatCompletionRequestAllOf2AudioFormat: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum OpenAICreateChatCompletionRequestAllOf2AudioFormat: String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let wav = Self(rawValue: "wav")
-  public static let aac = Self(rawValue: "aac")
-  public static let mp3 = Self(rawValue: "mp3")
-  public static let flac = Self(rawValue: "flac")
-  public static let opus = Self(rawValue: "opus")
-  public static let pcm16 = Self(rawValue: "pcm16")
+  case wav = "wav"
+  case aac = "aac"
+  case mp3 = "mp3"
+  case flac = "flac"
+  case opus = "opus"
+  case pcm16 = "pcm16"
 }

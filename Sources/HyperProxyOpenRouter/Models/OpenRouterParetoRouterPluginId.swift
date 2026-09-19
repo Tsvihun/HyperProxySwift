@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterParetoRouterPluginId: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let paretoRouter = Self(rawValue: "pareto-router")
+public enum OpenRouterParetoRouterPluginId: String, Codable, Hashable, Sendable {
+  case paretoRouter = "pareto-router"
 }

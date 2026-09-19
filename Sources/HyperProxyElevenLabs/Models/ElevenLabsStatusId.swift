@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsStatusId: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: Int
-
-  public init(rawValue: Int) {
-    self.rawValue = rawValue
-  }
-
-  public static let value0 = Self(rawValue: 0)
-  public static let value1 = Self(rawValue: 1)
-  public static let value2 = Self(rawValue: 2)
-  public static let value99 = Self(rawValue: 99)
+public enum ElevenLabsStatusId: Int, Codable, Hashable, Sendable {
+  case value0 = 0
+  case value1 = 1
+  case value2 = 2
+  case value99 = 99
 }

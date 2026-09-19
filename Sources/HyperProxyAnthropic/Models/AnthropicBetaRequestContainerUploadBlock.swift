@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct AnthropicBetaRequestContainerUploadBlock: Codable, Sendable {
   public var cacheControl: AnthropicBetaCacheControlEphemeral?
   public var fileId: String
-  public var typeModel: String
+  public var kind: AnthropicContainerUploadKind
 
   public init(
     fileId: String,
-    typeModel: String,
+    kind: AnthropicContainerUploadKind = .containerUpload,
     cacheControl: AnthropicBetaCacheControlEphemeral? = nil
   ) {
     self.cacheControl = cacheControl
     self.fileId = fileId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case cacheControl = "cache_control"
     case fileId = "file_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

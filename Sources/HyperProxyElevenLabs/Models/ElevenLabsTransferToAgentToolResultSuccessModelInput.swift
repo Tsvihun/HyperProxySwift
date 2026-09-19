@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsTransferToAgentToolResultSuccessModelInput: Codable, Sendable {
-  public var branchInfo: HyperProxyJSONValue?
+  public var branchInfo: ElevenLabsTransferToAgentToolResultSuccessModelInputBranchInfoAnyOf1?
   public var condition: String
   public var delayMs: Int?
   public var enableTransferredAgentFirstMessage: Bool?
   public var fromAgent: String
   public var preserveClientTtsOverrides: Bool?
-  public var resultType: String?
-  public var status: String?
+  public var resultType: ElevenLabsTransferToAgentSuccessResultType?
+  public var status: ElevenLabsSuccessStatus?
   public var toAgent: String
   public var toNode: String?
   public var transferMessage: String?
@@ -27,12 +27,12 @@ public struct ElevenLabsTransferToAgentToolResultSuccessModelInput: Codable, Sen
     condition: String,
     fromAgent: String,
     toAgent: String,
-    branchInfo: HyperProxyJSONValue? = nil,
+    branchInfo: ElevenLabsTransferToAgentToolResultSuccessModelInputBranchInfoAnyOf1? = nil,
     delayMs: Int? = nil,
     enableTransferredAgentFirstMessage: Bool? = nil,
     preserveClientTtsOverrides: Bool? = nil,
-    resultType: String? = nil,
-    status: String? = nil,
+    resultType: ElevenLabsTransferToAgentSuccessResultType? = nil,
+    status: ElevenLabsSuccessStatus? = nil,
     toNode: String? = nil,
     transferMessage: String? = nil
   ) {

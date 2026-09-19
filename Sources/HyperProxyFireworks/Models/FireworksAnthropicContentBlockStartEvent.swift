@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct FireworksAnthropicContentBlockStartEvent: Codable, Sendable {
   public var contentBlock: FireworksAnthropicContentBlock
   public var index: Int
-  public var typeModel: String
+  public var kind: FireworksContentBlockStartKind
 
   public init(
     contentBlock: FireworksAnthropicContentBlock,
     index: Int,
-    typeModel: String
+    kind: FireworksContentBlockStartKind = .contentBlockStart
   ) {
     self.contentBlock = contentBlock
     self.index = index
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case contentBlock = "content_block"
     case index
-    case typeModel = "type"
+    case kind = "type"
   }
 }

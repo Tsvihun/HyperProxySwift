@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct FalServerlessLogsStreamRequestItem: Codable, Sendable {
   public var conditionType: FalServerlessLogsStreamRequestItemConditionType?
   public var key: String
-  public var value: HyperProxyJSONValue
+  public var value: FalServerlessLogsStreamRequestItemValue
 
   public init(
     key: String,
-    value: HyperProxyJSONValue,
+    value: FalServerlessLogsStreamRequestItemValue,
     conditionType: FalServerlessLogsStreamRequestItemConditionType? = nil
   ) {
     self.conditionType = conditionType

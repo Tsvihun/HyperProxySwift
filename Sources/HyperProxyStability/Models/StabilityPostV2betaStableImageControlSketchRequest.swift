@@ -17,7 +17,7 @@ public struct StabilityPostV2betaStableImageControlSketchRequest: Codable, Senda
   public var outputFormat: StabilityPostV2betaStableImageControlSketchRequestOutputFormat?
   public var prompt: String
   public var seed: Double?
-  public var stylePreset: StabilityPostV2betaStableImageControlSketchRequestStylePreset?
+  public var stylePreset: StabilityStylePreset?
 
   public init(
     image: String,
@@ -26,7 +26,7 @@ public struct StabilityPostV2betaStableImageControlSketchRequest: Codable, Senda
     negativePrompt: String? = nil,
     outputFormat: StabilityPostV2betaStableImageControlSketchRequestOutputFormat? = nil,
     seed: Double? = nil,
-    stylePreset: StabilityPostV2betaStableImageControlSketchRequestStylePreset? = nil
+    stylePreset: StabilityStylePreset? = nil
   ) {
     self.controlStrength = controlStrength
     self.image = image

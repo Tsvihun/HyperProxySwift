@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAICreateSkillBody: Codable, Sendable {
-  public var files: HyperProxyJSONValue
+  public var files: OpenAICreateSkillBodyFiles
 
   public init(
-    files: HyperProxyJSONValue
+    files: OpenAICreateSkillBodyFiles
   ) {
     self.files = files
   }

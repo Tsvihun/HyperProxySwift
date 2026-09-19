@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct GroqResponseEasyInputMessage: Codable, Sendable {
-  public var content: HyperProxyJSONValue
+  public var content: GroqResponseEasyInputMessageContent
   public var role: GroqResponseEasyInputMessageRole
 
   public init(
-    content: HyperProxyJSONValue,
+    content: GroqResponseEasyInputMessageContent,
     role: GroqResponseEasyInputMessageRole
   ) {
     self.content = content

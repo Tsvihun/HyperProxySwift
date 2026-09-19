@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct BraveRichResult: Codable, Sendable {
   public var hint: BraveRichHint?
-  public var typeModel: String?
+  public var kind: String?
 
   public init(
     hint: BraveRichHint? = nil,
-    typeModel: String? = nil
+    kind: String? = nil
   ) {
     self.hint = hint
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case hint
-    case typeModel = "type"
+    case kind = "type"
   }
 }

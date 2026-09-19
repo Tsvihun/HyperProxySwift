@@ -25,7 +25,7 @@ public struct ElevenLabsGetKnowledgeBaseFileResponseModel: Codable, Sendable {
   public var name: String
   public var refreshStatus: ElevenLabsFileRefreshStatus?
   public var supportedUsages: [ElevenLabsDocumentUsageModeEnum]
-  public var typeModel: String
+  public var kind: ElevenLabsFileKind
 
   public init(
     accessInfo: ElevenLabsResourceAccessInfo,
@@ -35,7 +35,7 @@ public struct ElevenLabsGetKnowledgeBaseFileResponseModel: Codable, Sendable {
     metadata: ElevenLabsKnowledgeBaseDocumentMetadataResponseModel,
     name: String,
     supportedUsages: [ElevenLabsDocumentUsageModeEnum],
-    typeModel: String,
+    kind: ElevenLabsFileKind = .file,
     autoSyncInfo: ElevenLabsAutoSyncInfo? = nil,
     contentFormat: ElevenLabsContentFormat? = nil,
     externalSyncInfo: ElevenLabsExternalFileSyncInfo? = nil,
@@ -58,7 +58,7 @@ public struct ElevenLabsGetKnowledgeBaseFileResponseModel: Codable, Sendable {
     self.name = name
     self.refreshStatus = refreshStatus
     self.supportedUsages = supportedUsages
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -76,6 +76,6 @@ public struct ElevenLabsGetKnowledgeBaseFileResponseModel: Codable, Sendable {
     case name
     case refreshStatus = "refresh_status"
     case supportedUsages = "supported_usages"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

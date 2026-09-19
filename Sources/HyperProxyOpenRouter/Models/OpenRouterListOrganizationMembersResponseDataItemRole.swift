@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterListOrganizationMembersResponseDataItemRole: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum OpenRouterListOrganizationMembersResponseDataItemRole: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let orgAdmin = Self(rawValue: "org:admin")
-  public static let orgMember = Self(rawValue: "org:member")
+  case orgAdmin = "org:admin"
+  case orgMember = "org:member"
 }

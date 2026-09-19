@@ -12,22 +12,22 @@ import HyperProxyCore
 
 public struct AnthropicBetaBrowserStateChangeDownloadStarted: Codable, Sendable {
   public var downloadId: String
-  public var typeModel: String
+  public var kind: AnthropicDownloadStartedKind
   public var url: String
 
   public init(
     downloadId: String,
-    typeModel: String,
-    url: String
+    url: String,
+    kind: AnthropicDownloadStartedKind = .downloadStarted
   ) {
     self.downloadId = downloadId
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
   enum CodingKeys: String, CodingKey {
     case downloadId = "download_id"
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

@@ -11,27 +11,27 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterOutputItemWebSearchCall: Codable, Sendable {
-  public var action: HyperProxyJSONValue?
+  public var action: OpenRouterOutputItemWebSearchCallAction?
   public var id: String
   public var status: OpenRouterWebSearchStatus
-  public var typeModel: OpenRouterOutputItemWebSearchCallTypeModel
+  public var kind: OpenRouterOutputItemWebSearchCallKind
 
   public init(
     id: String,
     status: OpenRouterWebSearchStatus,
-    typeModel: OpenRouterOutputItemWebSearchCallTypeModel,
-    action: HyperProxyJSONValue? = nil
+    kind: OpenRouterOutputItemWebSearchCallKind,
+    action: OpenRouterOutputItemWebSearchCallAction? = nil
   ) {
     self.action = action
     self.id = id
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case action
     case id
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

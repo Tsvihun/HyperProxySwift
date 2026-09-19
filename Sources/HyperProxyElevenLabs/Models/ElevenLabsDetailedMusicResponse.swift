@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsDetailedMusicResponse: Codable, Sendable {
-  public var compositionPlan: HyperProxyJSONValue
+  public var compositionPlan: ElevenLabsDetailedMusicResponseCompositionPlan
   public var songMetadata: ElevenLabsSongMetadata
   public var waveformVisual: [Int]?
   public var wordsTimestamps: [ElevenLabsWordTimestamp]?
 
   public init(
-    compositionPlan: HyperProxyJSONValue,
+    compositionPlan: ElevenLabsDetailedMusicResponseCompositionPlan,
     songMetadata: ElevenLabsSongMetadata,
     wordsTimestamps: [ElevenLabsWordTimestamp]?,
     waveformVisual: [Int]? = nil

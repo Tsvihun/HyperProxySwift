@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterPDFParserEngineAnyOf1: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mistralOcr = Self(rawValue: "mistral-ocr")
-  public static let native = Self(rawValue: "native")
-  public static let cloudflareAi = Self(rawValue: "cloudflare-ai")
+public enum OpenRouterPDFParserEngineAnyOf1: String, Codable, Hashable, Sendable {
+  case mistralOcr = "mistral-ocr"
+  case native = "native"
+  case cloudflareAi = "cloudflare-ai"
 }

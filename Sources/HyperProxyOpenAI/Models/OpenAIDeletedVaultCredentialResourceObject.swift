@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIDeletedVaultCredentialResourceObject: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let vaultCredentialDeleted = Self(rawValue: "vault.credential.deleted")
+public enum OpenAIDeletedVaultCredentialResourceObject: String, Codable, Hashable, Sendable {
+  case vaultCredentialDeleted = "vault.credential.deleted"
 }

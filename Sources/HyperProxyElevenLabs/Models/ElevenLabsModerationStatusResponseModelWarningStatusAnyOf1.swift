@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsModerationStatusResponseModelWarningStatusAnyOf1: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum ElevenLabsModerationStatusResponseModelWarningStatusAnyOf1: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let warning = Self(rawValue: "warning")
-  public static let warningCleared = Self(rawValue: "warning_cleared")
+  case warning = "warning"
+  case warningCleared = "warning_cleared"
 }

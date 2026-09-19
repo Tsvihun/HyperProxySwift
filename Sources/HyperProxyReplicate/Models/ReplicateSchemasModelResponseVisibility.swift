@@ -10,14 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ReplicateSchemasModelResponseVisibility: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let publicValue = Self(rawValue: "public")
-  public static let privateValue = Self(rawValue: "private")
+public enum ReplicateSchemasModelResponseVisibility: String, Codable, Hashable, Sendable {
+  case publicValue = "public"
+  case privateValue = "private"
 }

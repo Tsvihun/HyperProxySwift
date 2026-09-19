@@ -13,25 +13,25 @@ import HyperProxyCore
 public struct MistralRegisterDeploymentRequestVespaDeployment: Codable, Sendable {
   public var indexes: [MistralRegisterDeploymentRequestVespaIndex]
   public var queryUrl: String
-  public var typeModel: String?
+  public var kind: MistralVespaKind?
   public var vespaVersion: String
 
   public init(
     indexes: [MistralRegisterDeploymentRequestVespaIndex],
     queryUrl: String,
     vespaVersion: String,
-    typeModel: String? = nil
+    kind: MistralVespaKind? = nil
   ) {
     self.indexes = indexes
     self.queryUrl = queryUrl
-    self.typeModel = typeModel
+    self.kind = kind
     self.vespaVersion = vespaVersion
   }
 
   enum CodingKeys: String, CodingKey {
     case indexes
     case queryUrl = "query_url"
-    case typeModel = "type"
+    case kind = "type"
     case vespaVersion = "vespa_version"
   }
 }

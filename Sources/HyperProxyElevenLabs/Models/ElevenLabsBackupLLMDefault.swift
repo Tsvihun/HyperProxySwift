@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsBackupLLMDefault: Codable, Sendable {
-  public var preference: String?
+  public var preference: ElevenLabsDefaultPreference?
 
   public init(
-    preference: String? = nil
+    preference: ElevenLabsDefaultPreference? = nil
   ) {
     self.preference = preference
   }

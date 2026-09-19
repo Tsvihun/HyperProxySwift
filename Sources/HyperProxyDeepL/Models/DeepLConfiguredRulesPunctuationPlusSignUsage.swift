@@ -10,16 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesPunctuationPlusSignUsage: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let doNotUsePlusSignToSymbolizeEnglishWordAndUnlessItIsPartOfAProperNoun = Self(
-    rawValue:
-      "do_not_use_plus_sign_to_symbolize_english_word_and_unless_it_is_part_of_a_proper_noun")
+public enum DeepLConfiguredRulesPunctuationPlusSignUsage: String, Codable, Hashable, Sendable {
+  case doNotUsePlusSignToSymbolizeEnglishWordAndUnlessItIsPartOfAProperNoun =
+    "do_not_use_plus_sign_to_symbolize_english_word_and_unless_it_is_part_of_a_proper_noun"
 }

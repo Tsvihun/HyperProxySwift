@@ -10,24 +10,16 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesPunctuationEllipsis: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useEllipsisCharacter = Self(rawValue: "use_ellipsis_character")
-  public static let useOneEllipsisCharacter = Self(rawValue: "use_one_ellipsis_character")
-  public static let useSixDotsAtTheBottom = Self(rawValue: "use_six_dots_at_the_bottom")
-  public static let useSixDotsInTheCenter = Self(rawValue: "use_six_dots_in_the_center")
-  public static let useThreeDotsAtTheBottom = Self(rawValue: "use_three_dots_at_the_bottom")
-  public static let useThreeDotsInTheCenter = Self(rawValue: "use_three_dots_in_the_center")
-  public static let useThreeEllipsisCharacters = Self(rawValue: "use_three_ellipsis_characters")
-  public static let useThreePeriods = Self(rawValue: "use_three_periods")
-  public static let useThreePeriodsWithoutSpaces = Self(
-    rawValue: "use_three_periods_without_spaces")
-  public static let useThreeSpacedPeriods = Self(rawValue: "use_three_spaced_periods")
-  public static let useTwoEllipsisCharacters = Self(rawValue: "use_two_ellipsis_characters")
+public enum DeepLConfiguredRulesPunctuationEllipsis: String, Codable, Hashable, Sendable {
+  case useEllipsisCharacter = "use_ellipsis_character"
+  case useOneEllipsisCharacter = "use_one_ellipsis_character"
+  case useSixDotsAtTheBottom = "use_six_dots_at_the_bottom"
+  case useSixDotsInTheCenter = "use_six_dots_in_the_center"
+  case useThreeDotsAtTheBottom = "use_three_dots_at_the_bottom"
+  case useThreeDotsInTheCenter = "use_three_dots_in_the_center"
+  case useThreeEllipsisCharacters = "use_three_ellipsis_characters"
+  case useThreePeriods = "use_three_periods"
+  case useThreePeriodsWithoutSpaces = "use_three_periods_without_spaces"
+  case useThreeSpacedPeriods = "use_three_spaced_periods"
+  case useTwoEllipsisCharacters = "use_two_ellipsis_characters"
 }

@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesSpellingAndGrammarAccentsAndCedillas: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesSpellingAndGrammarAccentsAndCedillas: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let doNotUseOnCapitalLetters = Self(rawValue: "do_not_use_on_capital_letters")
-  public static let neverUse = Self(rawValue: "never_use")
-  public static let useEvenOnCapitalLetters = Self(rawValue: "use_even_on_capital_letters")
+  case doNotUseOnCapitalLetters = "do_not_use_on_capital_letters"
+  case neverUse = "never_use"
+  case useEvenOnCapitalLetters = "use_even_on_capital_letters"
 }

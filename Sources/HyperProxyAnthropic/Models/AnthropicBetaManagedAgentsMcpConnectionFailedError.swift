@@ -14,24 +14,24 @@ public struct AnthropicBetaManagedAgentsMcpConnectionFailedError: Codable, Senda
   public var mcpServerName: String
   public var message: String
   public var retryStatus: AnthropicBetaManagedAgentsRetryStatus
-  public var typeModel: AnthropicBetaManagedAgentsMcpConnectionFailedErrorTypeModel
+  public var kind: AnthropicBetaManagedAgentsMcpConnectionFailedErrorKind
 
   public init(
     mcpServerName: String,
     message: String,
     retryStatus: AnthropicBetaManagedAgentsRetryStatus,
-    typeModel: AnthropicBetaManagedAgentsMcpConnectionFailedErrorTypeModel
+    kind: AnthropicBetaManagedAgentsMcpConnectionFailedErrorKind
   ) {
     self.mcpServerName = mcpServerName
     self.message = message
     self.retryStatus = retryStatus
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case mcpServerName = "mcp_server_name"
     case message
     case retryStatus = "retry_status"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

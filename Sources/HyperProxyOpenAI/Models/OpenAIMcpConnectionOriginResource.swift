@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIMcpConnectionOriginResource: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let service = Self(rawValue: "service")
-  public static let environment = Self(rawValue: "environment")
+public enum OpenAIMcpConnectionOriginResource: String, Codable, Hashable, Sendable {
+  case service = "service"
+  case environment = "environment"
 }

@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIProjectModelPermissionsObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let projectModelPermissions = Self(rawValue: "project.model_permissions")
+public enum OpenAIProjectModelPermissionsObject: String, Codable, Hashable, Sendable {
+  case projectModelPermissions = "project.model_permissions"
 }

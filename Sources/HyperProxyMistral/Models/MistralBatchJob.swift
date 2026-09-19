@@ -23,7 +23,7 @@ public struct MistralBatchJob: Codable, Sendable {
   public var inputFiles: [String]
   public var metadata: [String: HyperProxyJSONValue]?
   public var model: String?
-  public var object: String?
+  public var object: MistralBatchObject?
   public var outputFile: String?
   public var outputs: [[String: HyperProxyJSONValue]]?
   public var startedAt: Int?
@@ -47,7 +47,7 @@ public struct MistralBatchJob: Codable, Sendable {
     errorFile: String? = nil,
     metadata: [String: HyperProxyJSONValue]? = nil,
     model: String? = nil,
-    object: String? = nil,
+    object: MistralBatchObject? = nil,
     outputFile: String? = nil,
     outputs: [[String: HyperProxyJSONValue]]? = nil,
     startedAt: Int? = nil

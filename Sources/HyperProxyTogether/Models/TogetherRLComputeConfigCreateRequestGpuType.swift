@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherRLComputeConfigCreateRequestGpuType: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let h10080GB = Self(rawValue: "H100-80GB")
-  public static let b200SXM = Self(rawValue: "B200-SXM")
+public enum TogetherRLComputeConfigCreateRequestGpuType: String, Codable, Hashable, Sendable {
+  case h10080GB = "H100-80GB"
+  case b200SXM = "B200-SXM"
 }

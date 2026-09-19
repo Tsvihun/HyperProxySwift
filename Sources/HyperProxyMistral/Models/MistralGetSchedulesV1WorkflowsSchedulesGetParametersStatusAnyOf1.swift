@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralGetSchedulesV1WorkflowsSchedulesGetParametersStatusAnyOf1: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum MistralGetSchedulesV1WorkflowsSchedulesGetParametersStatusAnyOf1: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let active = Self(rawValue: "active")
-  public static let paused = Self(rawValue: "paused")
+  case active = "active"
+  case paused = "paused"
 }

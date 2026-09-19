@@ -14,15 +14,15 @@ public struct TogetherEvaluationCompareParameters: Codable, Sendable {
   public var disablePositionBiasCorrection: Bool?
   public var inputDataFilePath: String
   public var judge: TogetherEvaluationJudgeModelConfig
-  public var modelA: HyperProxyJSONValue?
-  public var modelB: HyperProxyJSONValue?
+  public var modelA: TogetherEvaluationCompareParametersModelA?
+  public var modelB: TogetherEvaluationCompareParametersModelB?
 
   public init(
     inputDataFilePath: String,
     judge: TogetherEvaluationJudgeModelConfig,
     disablePositionBiasCorrection: Bool? = nil,
-    modelA: HyperProxyJSONValue? = nil,
-    modelB: HyperProxyJSONValue? = nil
+    modelA: TogetherEvaluationCompareParametersModelA? = nil,
+    modelB: TogetherEvaluationCompareParametersModelB? = nil
   ) {
     self.disablePositionBiasCorrection = disablePositionBiasCorrection
     self.inputDataFilePath = inputDataFilePath

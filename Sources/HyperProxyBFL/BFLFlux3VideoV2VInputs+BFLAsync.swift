@@ -15,18 +15,18 @@ extension BFLFlux3VideoV2VInputs {
   public init(
     prompt: String,
     startVideo: String,
-    aspectRatio: HyperProxyJSONValue? = nil,
+    aspectRatio: BFLFlux3VideoV2VInputsAspectRatio? = nil,
     draft: Bool? = nil,
-    duration: HyperProxyJSONValue? = nil,
+    duration: BFLFlux3VideoV2VInputsDuration? = nil,
     generateAudio: Bool? = nil,
     resolution: BFLFlux3VideoV2VInputsResolution? = nil,
     safetyTolerance: Int? = nil,
-    version: String? = nil
+    version: BFLLatestVersion? = nil
   ) {
     self.init(
-      mode: "v2v",
       prompt: prompt,
       startVideo: startVideo,
+      mode: .v2v,
       aspectRatio: aspectRatio,
       draft: draft,
       duration: duration,

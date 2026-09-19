@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct GroqChart: Codable, Sendable {
   public var elements: [GroqChartElement]
   public var title: String?
-  public var typeModel: GroqChartTypeModel
+  public var kind: GroqChartKind
   public var xLabel: String?
   public var xScale: String?
   public var xTickLabels: [String]?
@@ -27,7 +27,7 @@ public struct GroqChart: Codable, Sendable {
 
   public init(
     elements: [GroqChartElement],
-    typeModel: GroqChartTypeModel,
+    kind: GroqChartKind,
     title: String? = nil,
     xLabel: String? = nil,
     xScale: String? = nil,
@@ -42,7 +42,7 @@ public struct GroqChart: Codable, Sendable {
   ) {
     self.elements = elements
     self.title = title
-    self.typeModel = typeModel
+    self.kind = kind
     self.xLabel = xLabel
     self.xScale = xScale
     self.xTickLabels = xTickLabels
@@ -58,7 +58,7 @@ public struct GroqChart: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case elements
     case title
-    case typeModel = "type"
+    case kind = "type"
     case xLabel = "x_label"
     case xScale = "x_scale"
     case xTickLabels = "x_tick_labels"

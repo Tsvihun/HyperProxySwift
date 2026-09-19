@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIRunStepDetailsToolCallsCodeOutputImageObject: Codable, Sendable {
   public var image: OpenAIRunStepDetailsToolCallsCodeOutputImageObjectImage
-  public var typeModel: OpenAIRunStepDetailsToolCallsCodeOutputImageObjectTypeModel
+  public var kind: OpenAIRunStepDetailsToolCallsCodeOutputImageObjectKind
 
   public init(
     image: OpenAIRunStepDetailsToolCallsCodeOutputImageObjectImage,
-    typeModel: OpenAIRunStepDetailsToolCallsCodeOutputImageObjectTypeModel
+    kind: OpenAIRunStepDetailsToolCallsCodeOutputImageObjectKind
   ) {
     self.image = image
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case image
-    case typeModel = "type"
+    case kind = "type"
   }
 }

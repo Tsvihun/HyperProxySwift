@@ -10,19 +10,13 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherNodePhaseTransitionPhase: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let nODEPHASEPENDING = Self(rawValue: "NODE_PHASE_PENDING")
-  public static let nODEPHASESCHEDULING = Self(rawValue: "NODE_PHASE_SCHEDULING")
-  public static let nODEPHASEBOOTING = Self(rawValue: "NODE_PHASE_BOOTING")
-  public static let nODEPHASEBOOTSTRAPPING = Self(rawValue: "NODE_PHASE_BOOTSTRAPPING")
-  public static let nODEPHASERUNNING = Self(rawValue: "NODE_PHASE_RUNNING")
-  public static let nODEPHASESUCCEEDED = Self(rawValue: "NODE_PHASE_SUCCEEDED")
-  public static let nODEPHASEFAILED = Self(rawValue: "NODE_PHASE_FAILED")
-  public static let nODEPHASEPAUSED = Self(rawValue: "NODE_PHASE_PAUSED")
+public enum TogetherNodePhaseTransitionPhase: String, Codable, Hashable, Sendable {
+  case nODEPHASEPENDING = "NODE_PHASE_PENDING"
+  case nODEPHASESCHEDULING = "NODE_PHASE_SCHEDULING"
+  case nODEPHASEBOOTING = "NODE_PHASE_BOOTING"
+  case nODEPHASEBOOTSTRAPPING = "NODE_PHASE_BOOTSTRAPPING"
+  case nODEPHASERUNNING = "NODE_PHASE_RUNNING"
+  case nODEPHASESUCCEEDED = "NODE_PHASE_SUCCEEDED"
+  case nODEPHASEFAILED = "NODE_PHASE_FAILED"
+  case nODEPHASEPAUSED = "NODE_PHASE_PAUSED"
 }

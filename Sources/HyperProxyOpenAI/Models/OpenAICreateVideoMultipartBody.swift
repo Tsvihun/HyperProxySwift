@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAICreateVideoMultipartBody: Codable, Sendable {
-  public var inputReference: HyperProxyJSONValue?
+  public var inputReference: OpenAICreateVideoMultipartBodyInputReference?
   public var model: OpenAIVideoModel?
   public var prompt: String
   public var seconds: OpenAIVideoSeconds?
@@ -19,7 +19,7 @@ public struct OpenAICreateVideoMultipartBody: Codable, Sendable {
 
   public init(
     prompt: String,
-    inputReference: HyperProxyJSONValue? = nil,
+    inputReference: OpenAICreateVideoMultipartBodyInputReference? = nil,
     model: OpenAIVideoModel? = nil,
     seconds: OpenAIVideoSeconds? = nil,
     size: OpenAIVideoSize? = nil

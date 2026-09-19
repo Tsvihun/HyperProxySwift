@@ -12,22 +12,22 @@ import HyperProxyCore
 
 public struct ElevenLabsASTLLMNodeOutput: Codable, Sendable {
   public var prompt: String
-  public var typeModel: String
+  public var kind: ElevenLabsLlmKind
   public var valueSchema: ElevenLabsLLMLiteralJsonSchemaProperty
 
   public init(
     prompt: String,
-    typeModel: String,
-    valueSchema: ElevenLabsLLMLiteralJsonSchemaProperty
+    valueSchema: ElevenLabsLLMLiteralJsonSchemaProperty,
+    kind: ElevenLabsLlmKind = .llm
   ) {
     self.prompt = prompt
-    self.typeModel = typeModel
+    self.kind = kind
     self.valueSchema = valueSchema
   }
 
   enum CodingKeys: String, CodingKey {
     case prompt
-    case typeModel = "type"
+    case kind = "type"
     case valueSchema = "value_schema"
   }
 }

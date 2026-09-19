@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralEncryptedPatchValue: Codable, Sendable {
-  public var typeModel: String
+  public var kind: MistralEncryptedKind
   public var value: String
 
   public init(
-    typeModel: String,
-    value: String
+    value: String,
+    kind: MistralEncryptedKind = .encrypted
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
     self.value = value
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
     case value
   }
 }

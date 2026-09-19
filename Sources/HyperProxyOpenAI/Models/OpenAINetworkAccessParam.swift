@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAINetworkAccessParam: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let enabled = Self(rawValue: "enabled")
-  public static let disabled = Self(rawValue: "disabled")
-  public static let restricted = Self(rawValue: "restricted")
+public enum OpenAINetworkAccessParam: String, Codable, Hashable, Sendable {
+  case enabled = "enabled"
+  case disabled = "disabled"
+  case restricted = "restricted"
 }

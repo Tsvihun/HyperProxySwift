@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIProjectSpendLimitResourceObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let projectSpendLimit = Self(rawValue: "project.spend_limit")
+public enum OpenAIProjectSpendLimitResourceObject: String, Codable, Hashable, Sendable {
+  case projectSpendLimit = "project.spend_limit"
 }

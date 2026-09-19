@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct FalListApiKeysResponseKeysItemScope: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let aPI = Self(rawValue: "API")
+public enum FalListApiKeysResponseKeysItemScope: String, Codable, Hashable, Sendable {
+  case aPI = "API"
 }

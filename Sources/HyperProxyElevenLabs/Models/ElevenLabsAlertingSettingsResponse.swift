@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct ElevenLabsAlertingSettingsResponse: Codable, Sendable {
   public var autoResolveAfterInactiveMinutes: Int?
   public var monitorConfigs: [String: ElevenLabsAlertingMonitorConfig]?
-  public var notifiers: [HyperProxyJSONValue]?
+  public var notifiers: [ElevenLabsAlertingSettingsResponseNotifiersItem]?
 
   public init(
     autoResolveAfterInactiveMinutes: Int? = nil,
     monitorConfigs: [String: ElevenLabsAlertingMonitorConfig]? = nil,
-    notifiers: [HyperProxyJSONValue]? = nil
+    notifiers: [ElevenLabsAlertingSettingsResponseNotifiersItem]? = nil
   ) {
     self.autoResolveAfterInactiveMinutes = autoResolveAfterInactiveMinutes
     self.monitorConfigs = monitorConfigs

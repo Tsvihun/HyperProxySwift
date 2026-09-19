@@ -15,12 +15,12 @@ public struct MistralImageContent: Codable, Sendable {
   public var annotations: MistralAnnotations?
   public var data: String
   public var mimeType: String
-  public var typeModel: String
+  public var kind: MistralImageKind
 
   public init(
     data: String,
     mimeType: String,
-    typeModel: String,
+    kind: MistralImageKind = .image,
     meta: [String: HyperProxyJSONValue]? = nil,
     annotations: MistralAnnotations? = nil
   ) {
@@ -28,7 +28,7 @@ public struct MistralImageContent: Codable, Sendable {
     self.annotations = annotations
     self.data = data
     self.mimeType = mimeType
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct MistralImageContent: Codable, Sendable {
     case annotations
     case data
     case mimeType
-    case typeModel = "type"
+    case kind = "type"
   }
 }

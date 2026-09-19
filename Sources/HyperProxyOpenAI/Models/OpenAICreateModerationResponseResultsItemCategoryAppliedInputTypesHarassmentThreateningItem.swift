@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct
+public enum
   OpenAICreateModerationResponseResultsItemCategoryAppliedInputTypesHarassmentThreateningItem:
-    RawRepresentable, Codable, Hashable, Sendable
+    String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let text = Self(rawValue: "text")
+  case text = "text"
 }

@@ -16,7 +16,7 @@ public struct PerplexityReasoningStepOutput: Codable, Sendable {
   public var financeSearch: PerplexityFinanceSearchStepDetails?
   public var peopleSearch: PerplexityPeopleSearchStepDetails?
   public var thought: String
-  public var typeModel: String?
+  public var kind: String?
   public var webSearch: PerplexityWebSearchStepDetails?
 
   public init(
@@ -25,7 +25,7 @@ public struct PerplexityReasoningStepOutput: Codable, Sendable {
     fetchUrlContent: PerplexityFetchUrlContentStepDetails? = nil,
     financeSearch: PerplexityFinanceSearchStepDetails? = nil,
     peopleSearch: PerplexityPeopleSearchStepDetails? = nil,
-    typeModel: String? = nil,
+    kind: String? = nil,
     webSearch: PerplexityWebSearchStepDetails? = nil
   ) {
     self.executePython = executePython
@@ -33,7 +33,7 @@ public struct PerplexityReasoningStepOutput: Codable, Sendable {
     self.financeSearch = financeSearch
     self.peopleSearch = peopleSearch
     self.thought = thought
-    self.typeModel = typeModel
+    self.kind = kind
     self.webSearch = webSearch
   }
 
@@ -43,7 +43,7 @@ public struct PerplexityReasoningStepOutput: Codable, Sendable {
     case financeSearch = "finance_search"
     case peopleSearch = "people_search"
     case thought
-    case typeModel = "type"
+    case kind = "type"
     case webSearch = "web_search"
   }
 }

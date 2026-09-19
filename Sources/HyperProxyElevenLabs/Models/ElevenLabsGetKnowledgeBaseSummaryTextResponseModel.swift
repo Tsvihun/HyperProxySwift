@@ -12,23 +12,24 @@ import HyperProxyCore
 
 public struct ElevenLabsGetKnowledgeBaseSummaryTextResponseModel: Codable, Sendable {
   public var accessInfo: ElevenLabsResourceAccessInfo
-  public var dependentAgents: [HyperProxyJSONValue]
+  public var dependentAgents:
+    [ElevenLabsGetKnowledgeBaseSummaryTextResponseModelDependentAgentsItem]
   public var folderParentId: String?
   public var folderPath: [ElevenLabsKnowledgeBaseFolderPathSegmentSummaryResponseModel]?
   public var id: String
   public var metadata: ElevenLabsKnowledgeBaseDocumentMetadataResponseModel
   public var name: String
   public var supportedUsages: [ElevenLabsDocumentUsageModeEnum]
-  public var typeModel: String
+  public var kind: ElevenLabsTextKind
 
   public init(
     accessInfo: ElevenLabsResourceAccessInfo,
-    dependentAgents: [HyperProxyJSONValue],
+    dependentAgents: [ElevenLabsGetKnowledgeBaseSummaryTextResponseModelDependentAgentsItem],
     id: String,
     metadata: ElevenLabsKnowledgeBaseDocumentMetadataResponseModel,
     name: String,
     supportedUsages: [ElevenLabsDocumentUsageModeEnum],
-    typeModel: String,
+    kind: ElevenLabsTextKind = .text,
     folderParentId: String? = nil,
     folderPath: [ElevenLabsKnowledgeBaseFolderPathSegmentSummaryResponseModel]? = nil
   ) {
@@ -40,7 +41,7 @@ public struct ElevenLabsGetKnowledgeBaseSummaryTextResponseModel: Codable, Senda
     self.metadata = metadata
     self.name = name
     self.supportedUsages = supportedUsages
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -52,6 +53,6 @@ public struct ElevenLabsGetKnowledgeBaseSummaryTextResponseModel: Codable, Senda
     case metadata
     case name
     case supportedUsages = "supported_usages"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

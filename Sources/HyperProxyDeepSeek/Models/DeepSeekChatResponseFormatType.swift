@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepSeekChatResponseFormatType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let text = Self(rawValue: "text")
-  public static let jsonObject = Self(rawValue: "json_object")
+public enum DeepSeekChatResponseFormatType: String, Codable, Hashable, Sendable {
+  case text = "text"
+  case jsonObject = "json_object"
 }

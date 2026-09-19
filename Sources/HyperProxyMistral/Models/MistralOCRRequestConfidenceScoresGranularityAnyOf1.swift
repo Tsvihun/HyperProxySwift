@@ -10,16 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralOCRRequestConfidenceScoresGranularityAnyOf1: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum MistralOCRRequestConfidenceScoresGranularityAnyOf1: String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let word = Self(rawValue: "word")
-  public static let page = Self(rawValue: "page")
-  public static let block = Self(rawValue: "block")
+  case word = "word"
+  case page = "page"
+  case block = "block"
 }

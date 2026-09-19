@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsListProductsParams: Codable, Sendable {
   public var listKwargs: [String: HyperProxyJSONValue]?
-  public var smbToolType: String?
+  public var smbToolType: ElevenLabsListProductsSmbToolType?
 
   public init(
     listKwargs: [String: HyperProxyJSONValue]? = nil,
-    smbToolType: String? = nil
+    smbToolType: ElevenLabsListProductsSmbToolType? = nil
   ) {
     self.listKwargs = listKwargs
     self.smbToolType = smbToolType

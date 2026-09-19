@@ -10,21 +10,15 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralApiEndpoint: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let v1ChatCompletions = Self(rawValue: "/v1/chat/completions")
-  public static let v1Embeddings = Self(rawValue: "/v1/embeddings")
-  public static let v1FimCompletions = Self(rawValue: "/v1/fim/completions")
-  public static let v1Moderations = Self(rawValue: "/v1/moderations")
-  public static let v1ChatModerations = Self(rawValue: "/v1/chat/moderations")
-  public static let v1Ocr = Self(rawValue: "/v1/ocr")
-  public static let v1Classifications = Self(rawValue: "/v1/classifications")
-  public static let v1ChatClassifications = Self(rawValue: "/v1/chat/classifications")
-  public static let v1Conversations = Self(rawValue: "/v1/conversations")
-  public static let v1AudioTranscriptions = Self(rawValue: "/v1/audio/transcriptions")
+public enum MistralApiEndpoint: String, Codable, Hashable, Sendable {
+  case v1ChatCompletions = "/v1/chat/completions"
+  case v1Embeddings = "/v1/embeddings"
+  case v1FimCompletions = "/v1/fim/completions"
+  case v1Moderations = "/v1/moderations"
+  case v1ChatModerations = "/v1/chat/moderations"
+  case v1Ocr = "/v1/ocr"
+  case v1Classifications = "/v1/classifications"
+  case v1ChatClassifications = "/v1/chat/classifications"
+  case v1Conversations = "/v1/conversations"
+  case v1AudioTranscriptions = "/v1/audio/transcriptions"
 }

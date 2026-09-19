@@ -15,20 +15,20 @@ public struct AnthropicBetaManagedAgentsSpanOutcomeEvaluationStartEvent: Codable
   public var iteration: Int
   public var outcomeId: String
   public var processedAt: AnthropicBetaTimestamp
-  public var typeModel: AnthropicBetaManagedAgentsSpanOutcomeEvaluationStartEventTypeModel
+  public var kind: AnthropicBetaManagedAgentsSpanOutcomeEvaluationStartEventKind
 
   public init(
     id: String,
     iteration: Int,
     outcomeId: String,
     processedAt: AnthropicBetaTimestamp,
-    typeModel: AnthropicBetaManagedAgentsSpanOutcomeEvaluationStartEventTypeModel
+    kind: AnthropicBetaManagedAgentsSpanOutcomeEvaluationStartEventKind
   ) {
     self.id = id
     self.iteration = iteration
     self.outcomeId = outcomeId
     self.processedAt = processedAt
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct AnthropicBetaManagedAgentsSpanOutcomeEvaluationStartEvent: Codable
     case iteration
     case outcomeId = "outcome_id"
     case processedAt = "processed_at"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

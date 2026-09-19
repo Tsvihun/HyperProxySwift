@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct AnthropicBetaToolChoiceTool: Codable, Sendable {
   public var disableParallelToolUse: Bool?
   public var name: String
-  public var typeModel: String
+  public var kind: AnthropicToolKind
 
   public init(
     name: String,
-    typeModel: String,
+    kind: AnthropicToolKind = .tool,
     disableParallelToolUse: Bool? = nil
   ) {
     self.disableParallelToolUse = disableParallelToolUse
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case disableParallelToolUse = "disable_parallel_tool_use"
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

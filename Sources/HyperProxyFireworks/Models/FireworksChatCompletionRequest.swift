@@ -16,11 +16,11 @@ public struct FireworksChatCompletionRequest: Codable, Sendable {
   public var echo: Bool?
   public var echoLast: Int?
   public var frequencyPenalty: Double?
-  public var functionCall: HyperProxyJSONValue?
+  public var functionCall: FireworksChatCompletionRequestFunctionCall?
   public var functions: [FireworksChatCompletionFunction]?
   public var ignoreEos: Bool?
   public var logitBias: [String: Double]?
-  public var logprobs: HyperProxyJSONValue?
+  public var logprobs: FireworksChatCompletionRequestLogprobs?
   public var maxCompletionTokens: Int?
   public var maxTokens: Int?
   public var messages: [FireworksChatMessage]?
@@ -32,14 +32,14 @@ public struct FireworksChatCompletionRequest: Codable, Sendable {
   public var n: Int?
   public var parallelToolCalls: Bool?
   public var perfMetricsInResponse: Bool?
-  public var prediction: HyperProxyJSONValue?
+  public var prediction: FireworksChatCompletionRequestPrediction?
   public var presencePenalty: Double?
   public var promptCacheIsolationKey: String?
   public var promptCacheKey: String?
   public var promptTokenIds: [Int]?
   public var promptTruncateLen: Int?
   public var rawOutput: Bool?
-  public var reasoningEffort: HyperProxyJSONValue?
+  public var reasoningEffort: FireworksChatCompletionRequestReasoningEffort?
   public var reasoningHistory: FireworksChatCompletionRequestReasoningHistoryAnyOf1?
   public var repetitionPenalty: Double?
   public var responseFormat: FireworksResponseFormat?
@@ -48,13 +48,13 @@ public struct FireworksChatCompletionRequest: Codable, Sendable {
   public var samplingMask: FireworksChatCompletionRequestSamplingMaskAnyOf1?
   public var seed: Int?
   public var serviceTier: FireworksChatCompletionRequestServiceTier?
-  public var speculation: HyperProxyJSONValue?
-  public var stop: HyperProxyJSONValue?
+  public var speculation: FireworksChatCompletionRequestSpeculation?
+  public var stop: FireworksChatCompletionRequestStop?
   public var stream: Bool?
   public var streamOptions: FireworksStreamOptions?
   public var temperature: Double?
-  public var thinking: HyperProxyJSONValue?
-  public var toolChoice: HyperProxyJSONValue?
+  public var thinking: FireworksChatCompletionRequestThinking?
+  public var toolChoice: FireworksChatCompletionRequestToolChoice?
   public var tools: [FireworksChatCompletionTool]?
   public var topK: Int?
   public var topLogprobs: Int?
@@ -69,11 +69,11 @@ public struct FireworksChatCompletionRequest: Codable, Sendable {
     echo: Bool? = nil,
     echoLast: Int? = nil,
     frequencyPenalty: Double? = nil,
-    functionCall: HyperProxyJSONValue? = nil,
+    functionCall: FireworksChatCompletionRequestFunctionCall? = nil,
     functions: [FireworksChatCompletionFunction]? = nil,
     ignoreEos: Bool? = nil,
     logitBias: [String: Double]? = nil,
-    logprobs: HyperProxyJSONValue? = nil,
+    logprobs: FireworksChatCompletionRequestLogprobs? = nil,
     maxCompletionTokens: Int? = nil,
     maxTokens: Int? = nil,
     messages: [FireworksChatMessage]? = nil,
@@ -84,14 +84,14 @@ public struct FireworksChatCompletionRequest: Codable, Sendable {
     n: Int? = nil,
     parallelToolCalls: Bool? = nil,
     perfMetricsInResponse: Bool? = nil,
-    prediction: HyperProxyJSONValue? = nil,
+    prediction: FireworksChatCompletionRequestPrediction? = nil,
     presencePenalty: Double? = nil,
     promptCacheIsolationKey: String? = nil,
     promptCacheKey: String? = nil,
     promptTokenIds: [Int]? = nil,
     promptTruncateLen: Int? = nil,
     rawOutput: Bool? = nil,
-    reasoningEffort: HyperProxyJSONValue? = nil,
+    reasoningEffort: FireworksChatCompletionRequestReasoningEffort? = nil,
     reasoningHistory: FireworksChatCompletionRequestReasoningHistoryAnyOf1? = nil,
     repetitionPenalty: Double? = nil,
     responseFormat: FireworksResponseFormat? = nil,
@@ -100,13 +100,13 @@ public struct FireworksChatCompletionRequest: Codable, Sendable {
     samplingMask: FireworksChatCompletionRequestSamplingMaskAnyOf1? = nil,
     seed: Int? = nil,
     serviceTier: FireworksChatCompletionRequestServiceTier? = nil,
-    speculation: HyperProxyJSONValue? = nil,
-    stop: HyperProxyJSONValue? = nil,
+    speculation: FireworksChatCompletionRequestSpeculation? = nil,
+    stop: FireworksChatCompletionRequestStop? = nil,
     stream: Bool? = nil,
     streamOptions: FireworksStreamOptions? = nil,
     temperature: Double? = nil,
-    thinking: HyperProxyJSONValue? = nil,
-    toolChoice: HyperProxyJSONValue? = nil,
+    thinking: FireworksChatCompletionRequestThinking? = nil,
+    toolChoice: FireworksChatCompletionRequestToolChoice? = nil,
     tools: [FireworksChatCompletionTool]? = nil,
     topK: Int? = nil,
     topLogprobs: Int? = nil,

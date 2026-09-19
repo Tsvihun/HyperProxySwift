@@ -11,29 +11,29 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterBaseMessagesResult: Codable, Sendable {
-  public var container: OpenRouterAnthropicContainer
+  public var container: OpenRouterAnthropicContainer?
   public var content: [OpenRouterORAnthropicContentBlock]
   public var id: String
   public var inputTransformations: [OpenRouterAnthropicInputTransformation]?
   public var model: String
   public var role: OpenRouterBaseMessagesResultRole
-  public var stopDetails: OpenRouterAnthropicRefusalStopDetails
-  public var stopReason: OpenRouterORAnthropicStopReason
+  public var stopDetails: OpenRouterAnthropicRefusalStopDetails?
+  public var stopReason: OpenRouterORAnthropicStopReason?
   public var stopSequence: String
-  public var typeModel: OpenRouterBaseMessagesResultTypeModel
-  public var usage: HyperProxyJSONValue
+  public var kind: OpenRouterBaseMessagesResultKind
+  public var usage: OpenRouterBaseMessagesResultUsage
 
   public init(
-    container: OpenRouterAnthropicContainer,
+    container: OpenRouterAnthropicContainer?,
     content: [OpenRouterORAnthropicContentBlock],
     id: String,
     model: String,
     role: OpenRouterBaseMessagesResultRole,
-    stopDetails: OpenRouterAnthropicRefusalStopDetails,
-    stopReason: OpenRouterORAnthropicStopReason,
+    stopDetails: OpenRouterAnthropicRefusalStopDetails?,
+    stopReason: OpenRouterORAnthropicStopReason?,
     stopSequence: String,
-    typeModel: OpenRouterBaseMessagesResultTypeModel,
-    usage: HyperProxyJSONValue,
+    kind: OpenRouterBaseMessagesResultKind,
+    usage: OpenRouterBaseMessagesResultUsage,
     inputTransformations: [OpenRouterAnthropicInputTransformation]? = nil
   ) {
     self.container = container
@@ -45,7 +45,7 @@ public struct OpenRouterBaseMessagesResult: Codable, Sendable {
     self.stopDetails = stopDetails
     self.stopReason = stopReason
     self.stopSequence = stopSequence
-    self.typeModel = typeModel
+    self.kind = kind
     self.usage = usage
   }
 
@@ -59,7 +59,7 @@ public struct OpenRouterBaseMessagesResult: Codable, Sendable {
     case stopDetails = "stop_details"
     case stopReason = "stop_reason"
     case stopSequence = "stop_sequence"
-    case typeModel = "type"
+    case kind = "type"
     case usage
   }
 }

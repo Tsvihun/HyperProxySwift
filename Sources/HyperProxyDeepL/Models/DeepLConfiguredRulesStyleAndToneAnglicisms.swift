@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesStyleAndToneAnglicisms: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let avoidAnglicismsWhenThereIsAFrenchEquivalent = Self(
-    rawValue: "avoid_anglicisms_when_there_is_a_french_equivalent")
+public enum DeepLConfiguredRulesStyleAndToneAnglicisms: String, Codable, Hashable, Sendable {
+  case avoidAnglicismsWhenThereIsAFrenchEquivalent =
+    "avoid_anglicisms_when_there_is_a_french_equivalent"
 }

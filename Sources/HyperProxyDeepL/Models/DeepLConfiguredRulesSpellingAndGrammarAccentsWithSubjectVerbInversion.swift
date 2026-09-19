@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesSpellingAndGrammarAccentsWithSubjectVerbInversion:
-  RawRepresentable, Codable, Hashable, Sendable
+public enum DeepLConfiguredRulesSpellingAndGrammarAccentsWithSubjectVerbInversion: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useAcuteAccent = Self(rawValue: "use_acute_accent")
-  public static let useGraveAccent = Self(rawValue: "use_grave_accent")
+  case useAcuteAccent = "use_acute_accent"
+  case useGraveAccent = "use_grave_accent"
 }

@@ -10,17 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIAuditLogRoleBoundToResourceSource: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let roleToggle = Self(rawValue: "role_toggle")
-  public static let roleConnectorUpdate = Self(rawValue: "role_connector_update")
-  public static let roleDelete = Self(rawValue: "role_delete")
-  public static let workspacePermissions = Self(rawValue: "workspace_permissions")
-  public static let connectorPublish = Self(rawValue: "connector_publish")
+public enum OpenAIAuditLogRoleBoundToResourceSource: String, Codable, Hashable, Sendable {
+  case roleToggle = "role_toggle"
+  case roleConnectorUpdate = "role_connector_update"
+  case roleDelete = "role_delete"
+  case workspacePermissions = "workspace_permissions"
+  case connectorPublish = "connector_publish"
 }

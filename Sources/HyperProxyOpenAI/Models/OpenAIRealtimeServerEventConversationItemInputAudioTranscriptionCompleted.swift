@@ -19,17 +19,16 @@ public struct OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionCo
   public var languages: [OpenAITranscriptionLanguage]?
   public var logprobs: [OpenAILogProbProperties]?
   public var transcript: String
-  public var typeModel:
-    OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionCompletedTypeModel
-  public var usage: HyperProxyJSONValue
+  public var kind: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionCompletedKind
+  public var usage: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionCompletedUsage
 
   public init(
     contentIndex: Int,
     eventId: String,
     itemId: String,
     transcript: String,
-    typeModel: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionCompletedTypeModel,
-    usage: HyperProxyJSONValue,
+    kind: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionCompletedKind,
+    usage: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionCompletedUsage,
     languages: [OpenAITranscriptionLanguage]? = nil,
     logprobs: [OpenAILogProbProperties]? = nil
   ) {
@@ -39,7 +38,7 @@ public struct OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionCo
     self.languages = languages
     self.logprobs = logprobs
     self.transcript = transcript
-    self.typeModel = typeModel
+    self.kind = kind
     self.usage = usage
   }
 
@@ -50,7 +49,7 @@ public struct OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionCo
     case languages
     case logprobs
     case transcript
-    case typeModel = "type"
+    case kind = "type"
     case usage
   }
 }

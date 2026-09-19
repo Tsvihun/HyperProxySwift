@@ -10,19 +10,13 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAICreateBatchRequestEndpoint: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let v1Responses = Self(rawValue: "/v1/responses")
-  public static let v1ChatCompletions = Self(rawValue: "/v1/chat/completions")
-  public static let v1Embeddings = Self(rawValue: "/v1/embeddings")
-  public static let v1Completions = Self(rawValue: "/v1/completions")
-  public static let v1Moderations = Self(rawValue: "/v1/moderations")
-  public static let v1ImagesGenerations = Self(rawValue: "/v1/images/generations")
-  public static let v1ImagesEdits = Self(rawValue: "/v1/images/edits")
-  public static let v1Videos = Self(rawValue: "/v1/videos")
+public enum OpenAICreateBatchRequestEndpoint: String, Codable, Hashable, Sendable {
+  case v1Responses = "/v1/responses"
+  case v1ChatCompletions = "/v1/chat/completions"
+  case v1Embeddings = "/v1/embeddings"
+  case v1Completions = "/v1/completions"
+  case v1Moderations = "/v1/moderations"
+  case v1ImagesGenerations = "/v1/images/generations"
+  case v1ImagesEdits = "/v1/images/edits"
+  case v1Videos = "/v1/videos"
 }

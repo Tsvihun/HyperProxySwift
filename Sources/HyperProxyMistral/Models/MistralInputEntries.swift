@@ -10,4 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public typealias MistralInputEntries = [HyperProxyJSONValue]
+public typealias MistralInputEntries = [MistralInputEntriesItem]

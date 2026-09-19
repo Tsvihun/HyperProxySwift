@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherEmbeddingsRequest: Codable, Sendable {
-  public var input: HyperProxyJSONValue
-  public var model: HyperProxyJSONValue
+  public var input: TogetherEmbeddingsRequestInput
+  public var model: TogetherEmbeddingsRequestModel
 
   public init(
-    input: HyperProxyJSONValue,
-    model: HyperProxyJSONValue
+    input: TogetherEmbeddingsRequestInput,
+    model: TogetherEmbeddingsRequestModel
   ) {
     self.input = input
     self.model = model

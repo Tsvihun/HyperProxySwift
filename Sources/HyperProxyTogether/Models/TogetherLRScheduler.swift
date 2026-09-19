@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherLRScheduler: Codable, Sendable {
-  public var lrSchedulerArgs: HyperProxyJSONValue?
+  public var lrSchedulerArgs: TogetherLRSchedulerLrSchedulerArgs?
   public var lrSchedulerType: TogetherLRSchedulerLrSchedulerType
 
   public init(
     lrSchedulerType: TogetherLRSchedulerLrSchedulerType,
-    lrSchedulerArgs: HyperProxyJSONValue? = nil
+    lrSchedulerArgs: TogetherLRSchedulerLrSchedulerArgs? = nil
   ) {
     self.lrSchedulerArgs = lrSchedulerArgs
     self.lrSchedulerType = lrSchedulerType

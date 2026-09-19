@@ -10,4 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenRouterUsage = HyperProxyJSONValue?
+public typealias OpenRouterUsage = OpenRouterUsageAnyOf1?

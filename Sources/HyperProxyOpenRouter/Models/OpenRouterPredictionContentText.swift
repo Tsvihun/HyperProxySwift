@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterPredictionContentText: Codable, Sendable {
   public var text: String
-  public var typeModel: OpenRouterPredictionContentTextTypeModel
+  public var kind: OpenRouterPredictionContentTextKind
 
   public init(
     text: String,
-    typeModel: OpenRouterPredictionContentTextTypeModel
+    kind: OpenRouterPredictionContentTextKind
   ) {
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksAnthropicCacheControlEphemeralTtl: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let value5m = Self(rawValue: "5m")
-  public static let value1h = Self(rawValue: "1h")
+public enum FireworksAnthropicCacheControlEphemeralTtl: String, Codable, Hashable, Sendable {
+  case value5m = "5m"
+  case value1h = "1h"
 }

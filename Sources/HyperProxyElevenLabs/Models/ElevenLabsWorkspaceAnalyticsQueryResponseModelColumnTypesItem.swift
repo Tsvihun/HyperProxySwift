@@ -10,21 +10,15 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsWorkspaceAnalyticsQueryResponseModelColumnTypesItem: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum ElevenLabsWorkspaceAnalyticsQueryResponseModelColumnTypesItem: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let string = Self(rawValue: "String")
-  public static let float = Self(rawValue: "Float")
-  public static let dateTime = Self(rawValue: "DateTime")
-  public static let int = Self(rawValue: "Int")
-  public static let bool = Self(rawValue: "Bool")
-  public static let jSON = Self(rawValue: "JSON")
-  public static let map = Self(rawValue: "Map")
-  public static let array = Self(rawValue: "Array")
+  case string = "String"
+  case float = "Float"
+  case dateTime = "DateTime"
+  case int = "Int"
+  case bool = "Bool"
+  case jSON = "JSON"
+  case map = "Map"
+  case array = "Array"
 }

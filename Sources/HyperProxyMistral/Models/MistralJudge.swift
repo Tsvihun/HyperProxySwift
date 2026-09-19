@@ -20,7 +20,7 @@ public struct MistralJudge: Codable, Sendable {
   public var instructions: String
   public var modelName: String
   public var name: String
-  public var output: HyperProxyJSONValue
+  public var output: MistralJudgeOutputacda7906
   public var ownerId: String
   public var tools: [String]
   public var upRevision: String?
@@ -35,7 +35,7 @@ public struct MistralJudge: Codable, Sendable {
     instructions: String,
     modelName: String,
     name: String,
-    output: HyperProxyJSONValue,
+    output: MistralJudgeOutputacda7906,
     ownerId: String,
     tools: [String],
     updatedAt: String,

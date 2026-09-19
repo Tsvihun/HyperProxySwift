@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsBackupLLMOverride: Codable, Sendable {
   public var order: [ElevenLabsLLM]
-  public var preference: String?
+  public var preference: ElevenLabsOverridePreference?
 
   public init(
     order: [ElevenLabsLLM],
-    preference: String? = nil
+    preference: ElevenLabsOverridePreference? = nil
   ) {
     self.order = order
     self.preference = preference

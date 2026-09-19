@@ -16,12 +16,12 @@ public struct OpenAIBetaMCPApprovalResponse: Codable, Sendable {
   public var approve: Bool
   public var id: String?
   public var reason: String?
-  public var typeModel: OpenAIBetaMCPApprovalResponseTypeModel
+  public var kind: OpenAIBetaMCPApprovalResponseKind
 
   public init(
     approvalRequestId: String,
     approve: Bool,
-    typeModel: OpenAIBetaMCPApprovalResponseTypeModel,
+    kind: OpenAIBetaMCPApprovalResponseKind,
     agent: OpenAIBetaAgentTag? = nil,
     id: String? = nil,
     reason: String? = nil
@@ -31,7 +31,7 @@ public struct OpenAIBetaMCPApprovalResponse: Codable, Sendable {
     self.approve = approve
     self.id = id
     self.reason = reason
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIBetaMCPApprovalResponse: Codable, Sendable {
     case approve
     case id
     case reason
-    case typeModel = "type"
+    case kind = "type"
   }
 }

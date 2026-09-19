@@ -10,15 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIOrganizationSpendAlertDeletedResourceObject: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let organizationSpendAlertDeleted = Self(
-    rawValue: "organization.spend_alert.deleted")
+public enum OpenAIOrganizationSpendAlertDeletedResourceObject: String, Codable, Hashable, Sendable {
+  case organizationSpendAlertDeleted = "organization.spend_alert.deleted"
 }

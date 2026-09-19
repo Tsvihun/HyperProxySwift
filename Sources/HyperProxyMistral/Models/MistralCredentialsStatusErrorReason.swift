@@ -10,21 +10,15 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralCredentialsStatusErrorReason: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let oauthExpired = Self(rawValue: "oauth expired")
-  public static let oauthNearExpiry = Self(rawValue: "oauth near expiry")
-  public static let emptyCredentials = Self(rawValue: "empty credentials")
-  public static let unparsableCredentials = Self(rawValue: "unparsable credentials")
-  public static let youNeedToReconnect = Self(rawValue: "you need to reconnect")
-  public static let oauthRefreshError = Self(rawValue: "oauth refresh error")
-  public static let mCPServerUnreachable = Self(rawValue: "MCP server unreachable")
-  public static let mCPServerTimedOut = Self(rawValue: "MCP server timed out")
-  public static let mCPServerError = Self(rawValue: "MCP server error")
-  public static let unknownError = Self(rawValue: "unknown error")
+public enum MistralCredentialsStatusErrorReason: String, Codable, Hashable, Sendable {
+  case oauthExpired = "oauth expired"
+  case oauthNearExpiry = "oauth near expiry"
+  case emptyCredentials = "empty credentials"
+  case unparsableCredentials = "unparsable credentials"
+  case youNeedToReconnect = "you need to reconnect"
+  case oauthRefreshError = "oauth refresh error"
+  case mCPServerUnreachable = "MCP server unreachable"
+  case mCPServerTimedOut = "MCP server timed out"
+  case mCPServerError = "MCP server error"
+  case unknownError = "unknown error"
 }

@@ -10,28 +10,22 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsGuardrailType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let custom = Self(rawValue: "custom")
-  public static let promptInjection = Self(rawValue: "prompt_injection")
-  public static let selfHarmIntent = Self(rawValue: "self_harm_intent")
-  public static let violenceGraphic = Self(rawValue: "violence_graphic")
-  public static let sexual = Self(rawValue: "sexual")
-  public static let violence = Self(rawValue: "violence")
-  public static let harassment = Self(rawValue: "harassment")
-  public static let sexualMinors = Self(rawValue: "sexual_minors")
-  public static let selfHarm = Self(rawValue: "self_harm")
-  public static let selfHarmInstructions = Self(rawValue: "self_harm_instructions")
-  public static let harassmentThreatening = Self(rawValue: "harassment_threatening")
-  public static let hate = Self(rawValue: "hate")
-  public static let hateThreatening = Self(rawValue: "hate_threatening")
-  public static let profanity = Self(rawValue: "profanity")
-  public static let religionOrPolitics = Self(rawValue: "religion_or_politics")
-  public static let medicalAndLegal = Self(rawValue: "medical_and_legal")
-  public static let guardrail = Self(rawValue: "guardrail")
+public enum ElevenLabsGuardrailType: String, Codable, Hashable, Sendable {
+  case custom = "custom"
+  case promptInjection = "prompt_injection"
+  case selfHarmIntent = "self_harm_intent"
+  case violenceGraphic = "violence_graphic"
+  case sexual = "sexual"
+  case violence = "violence"
+  case harassment = "harassment"
+  case sexualMinors = "sexual_minors"
+  case selfHarm = "self_harm"
+  case selfHarmInstructions = "self_harm_instructions"
+  case harassmentThreatening = "harassment_threatening"
+  case hate = "hate"
+  case hateThreatening = "hate_threatening"
+  case profanity = "profanity"
+  case religionOrPolitics = "religion_or_politics"
+  case medicalAndLegal = "medical_and_legal"
+  case guardrail = "guardrail"
 }

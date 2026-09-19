@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiExample: Codable, Sendable {
-  public var input: HyperProxyJSONValue?
-  public var output: HyperProxyJSONValue?
+  public var input: GeminiMessage?
+  public var output: GeminiMessage?
 
   public init(
-    input: HyperProxyJSONValue? = nil,
-    output: HyperProxyJSONValue? = nil
+    input: GeminiMessage? = nil,
+    output: GeminiMessage? = nil
   ) {
     self.input = input
     self.output = output

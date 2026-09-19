@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsLLMSchemaOverride: Codable, Sendable {
   public var prompt: String?
-  public var source: String?
+  public var source: ElevenLabsLlmSource?
 
   public init(
     prompt: String? = nil,
-    source: String? = nil
+    source: ElevenLabsLlmSource? = nil
   ) {
     self.prompt = prompt
     self.source = source

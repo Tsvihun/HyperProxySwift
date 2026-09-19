@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterWebSearchPluginId: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let web = Self(rawValue: "web")
+public enum OpenRouterWebSearchPluginId: String, Codable, Hashable, Sendable {
+  case web = "web"
 }

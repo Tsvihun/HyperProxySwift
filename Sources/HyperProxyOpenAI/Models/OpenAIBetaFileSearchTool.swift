@@ -14,11 +14,11 @@ public struct OpenAIBetaFileSearchTool: Codable, Sendable {
   public var filters: OpenAIBetaFilters?
   public var maxNumResults: Int?
   public var rankingOptions: OpenAIBetaRankingOptions?
-  public var typeModel: OpenAIBetaFileSearchToolTypeModel
+  public var kind: OpenAIBetaFileSearchToolKind
   public var vectorStoreIds: [String]
 
   public init(
-    typeModel: OpenAIBetaFileSearchToolTypeModel,
+    kind: OpenAIBetaFileSearchToolKind,
     vectorStoreIds: [String],
     filters: OpenAIBetaFilters? = nil,
     maxNumResults: Int? = nil,
@@ -27,7 +27,7 @@ public struct OpenAIBetaFileSearchTool: Codable, Sendable {
     self.filters = filters
     self.maxNumResults = maxNumResults
     self.rankingOptions = rankingOptions
-    self.typeModel = typeModel
+    self.kind = kind
     self.vectorStoreIds = vectorStoreIds
   }
 
@@ -35,7 +35,7 @@ public struct OpenAIBetaFileSearchTool: Codable, Sendable {
     case filters
     case maxNumResults = "max_num_results"
     case rankingOptions = "ranking_options"
-    case typeModel = "type"
+    case kind = "type"
     case vectorStoreIds = "vector_store_ids"
   }
 }

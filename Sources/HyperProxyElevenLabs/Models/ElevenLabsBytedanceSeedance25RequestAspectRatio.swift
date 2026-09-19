@@ -10,20 +10,12 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsBytedanceSeedance25RequestAspectRatio: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
-  public static let value219 = Self(rawValue: "21:9")
-  public static let value169 = Self(rawValue: "16:9")
-  public static let value43 = Self(rawValue: "4:3")
-  public static let value11 = Self(rawValue: "1:1")
-  public static let value34 = Self(rawValue: "3:4")
-  public static let value916 = Self(rawValue: "9:16")
+public enum ElevenLabsBytedanceSeedance25RequestAspectRatio: String, Codable, Hashable, Sendable {
+  case auto = "auto"
+  case value219 = "21:9"
+  case value169 = "16:9"
+  case value43 = "4:3"
+  case value11 = "1:1"
+  case value34 = "3:4"
+  case value916 = "9:16"
 }

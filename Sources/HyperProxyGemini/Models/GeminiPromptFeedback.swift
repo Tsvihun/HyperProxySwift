@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct GeminiPromptFeedback: Codable, Sendable {
   public var blockReason: GeminiPromptFeedbackBlockReason?
-  public var safetyRatings: [HyperProxyJSONValue]?
+  public var safetyRatings: [GeminiSafetyRating]?
 
   public init(
     blockReason: GeminiPromptFeedbackBlockReason? = nil,
-    safetyRatings: [HyperProxyJSONValue]? = nil
+    safetyRatings: [GeminiSafetyRating]? = nil
   ) {
     self.blockReason = blockReason
     self.safetyRatings = safetyRatings

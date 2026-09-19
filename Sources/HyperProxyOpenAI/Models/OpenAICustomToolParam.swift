@@ -15,18 +15,18 @@ public struct OpenAICustomToolParam: Codable, Sendable {
   public var async: Bool?
   public var deferLoading: Bool?
   public var description: String?
-  public var format: HyperProxyJSONValue?
+  public var format: OpenAICustomToolParamFormat?
   public var name: String
-  public var typeModel: OpenAICustomToolParamTypeModel
+  public var kind: OpenAICustomToolParamKind
 
   public init(
     name: String,
-    typeModel: OpenAICustomToolParamTypeModel,
+    kind: OpenAICustomToolParamKind,
     allowedCallers: [OpenAICallableToolAllowedCaller]? = nil,
     async: Bool? = nil,
     deferLoading: Bool? = nil,
     description: String? = nil,
-    format: HyperProxyJSONValue? = nil
+    format: OpenAICustomToolParamFormat? = nil
   ) {
     self.allowedCallers = allowedCallers
     self.async = async
@@ -34,7 +34,7 @@ public struct OpenAICustomToolParam: Codable, Sendable {
     self.description = description
     self.format = format
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenAICustomToolParam: Codable, Sendable {
     case description
     case format
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIEditImageBodyJsonParamModerationAnyOf1: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let low = Self(rawValue: "low")
-  public static let auto = Self(rawValue: "auto")
+public enum OpenAIEditImageBodyJsonParamModerationAnyOf1: String, Codable, Hashable, Sendable {
+  case low = "low"
+  case auto = "auto"
 }

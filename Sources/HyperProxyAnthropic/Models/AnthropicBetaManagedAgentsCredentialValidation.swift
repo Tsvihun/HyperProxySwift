@@ -16,7 +16,7 @@ public struct AnthropicBetaManagedAgentsCredentialValidation: Codable, Sendable 
   public var mcpProbe: AnthropicBetaManagedAgentsMcpProbe?
   public var refresh: AnthropicBetaManagedAgentsRefreshObject?
   public var status: AnthropicBetaManagedAgentsCredentialValidationStatus
-  public var typeModel: AnthropicBetaManagedAgentsCredentialValidationTypeModel
+  public var kind: AnthropicBetaManagedAgentsCredentialValidationKind
   public var validatedAt: AnthropicBetaTimestamp
   public var vaultId: String
 
@@ -26,7 +26,7 @@ public struct AnthropicBetaManagedAgentsCredentialValidation: Codable, Sendable 
     mcpProbe: AnthropicBetaManagedAgentsMcpProbe?,
     refresh: AnthropicBetaManagedAgentsRefreshObject?,
     status: AnthropicBetaManagedAgentsCredentialValidationStatus,
-    typeModel: AnthropicBetaManagedAgentsCredentialValidationTypeModel,
+    kind: AnthropicBetaManagedAgentsCredentialValidationKind,
     validatedAt: AnthropicBetaTimestamp,
     vaultId: String
   ) {
@@ -35,7 +35,7 @@ public struct AnthropicBetaManagedAgentsCredentialValidation: Codable, Sendable 
     self.mcpProbe = mcpProbe
     self.refresh = refresh
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
     self.validatedAt = validatedAt
     self.vaultId = vaultId
   }
@@ -46,7 +46,7 @@ public struct AnthropicBetaManagedAgentsCredentialValidation: Codable, Sendable 
     case mcpProbe = "mcp_probe"
     case refresh
     case status
-    case typeModel = "type"
+    case kind = "type"
     case validatedAt = "validated_at"
     case vaultId = "vault_id"
   }

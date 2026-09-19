@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct StabilityPostV2betaStableImageGenerateSd3RequestModel: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum StabilityPostV2betaStableImageGenerateSd3RequestModel: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let sd35Large = Self(rawValue: "sd3.5-large")
-  public static let sd35LargeTurbo = Self(rawValue: "sd3.5-large-turbo")
-  public static let sd35Medium = Self(rawValue: "sd3.5-medium")
+  case sd35Large = "sd3.5-large"
+  case sd35LargeTurbo = "sd3.5-large-turbo"
+  case sd35Medium = "sd3.5-medium"
 }

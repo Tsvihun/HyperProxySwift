@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsMCPServerTransport: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let sSE = Self(rawValue: "SSE")
-  public static let sTREAMABLEHTTP = Self(rawValue: "STREAMABLE_HTTP")
+public enum ElevenLabsMCPServerTransport: String, Codable, Hashable, Sendable {
+  case sSE = "SSE"
+  case sTREAMABLEHTTP = "STREAMABLE_HTTP"
 }

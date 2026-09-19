@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherRLEncodedTextChunk: Codable, Sendable {
-  public var tokens: [HyperProxyJSONValue]
+  public var tokens: [TogetherRLEncodedTextChunkTokensItem]
 
   public init(
-    tokens: [HyperProxyJSONValue]
+    tokens: [TogetherRLEncodedTextChunkTokensItem]
   ) {
     self.tokens = tokens
   }

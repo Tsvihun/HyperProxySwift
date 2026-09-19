@@ -11,10 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsPromptAgentAPIModelWorkflowOverrideOutput: Codable, Sendable {
-  public var backupLlmConfig: HyperProxyJSONValue?
+  public var backupLlmConfig: ElevenLabsPromptAgentAPIModelWorkflowOverrideOutputBackupLlmConfig?
   public var builtInTools: ElevenLabsBuiltInToolsWorkflowOverrideOutput?
   public var cascadeTimeoutSeconds: Double?
   public var customLlm: ElevenLabsCustomLLM?
+  public var enableParallelToolCalls: Bool?
   public var enableReasoningSummary: Bool?
   public var ignoreDefaultPersonality: Bool?
   public var knowledgeBase: [ElevenLabsKnowledgeBaseLocator]?
@@ -29,13 +30,14 @@ public struct ElevenLabsPromptAgentAPIModelWorkflowOverrideOutput: Codable, Send
   public var thinkingBudget: Int?
   public var timezone: String?
   public var toolIds: [String]?
-  public var tools: [HyperProxyJSONValue]?
+  public var tools: [ElevenLabsPromptAgentAPIModelWorkflowOverrideOutputToolsAnyOf1Item]?
 
   public init(
-    backupLlmConfig: HyperProxyJSONValue? = nil,
+    backupLlmConfig: ElevenLabsPromptAgentAPIModelWorkflowOverrideOutputBackupLlmConfig? = nil,
     builtInTools: ElevenLabsBuiltInToolsWorkflowOverrideOutput? = nil,
     cascadeTimeoutSeconds: Double? = nil,
     customLlm: ElevenLabsCustomLLM? = nil,
+    enableParallelToolCalls: Bool? = nil,
     enableReasoningSummary: Bool? = nil,
     ignoreDefaultPersonality: Bool? = nil,
     knowledgeBase: [ElevenLabsKnowledgeBaseLocator]? = nil,
@@ -50,12 +52,13 @@ public struct ElevenLabsPromptAgentAPIModelWorkflowOverrideOutput: Codable, Send
     thinkingBudget: Int? = nil,
     timezone: String? = nil,
     toolIds: [String]? = nil,
-    tools: [HyperProxyJSONValue]? = nil
+    tools: [ElevenLabsPromptAgentAPIModelWorkflowOverrideOutputToolsAnyOf1Item]? = nil
   ) {
     self.backupLlmConfig = backupLlmConfig
     self.builtInTools = builtInTools
     self.cascadeTimeoutSeconds = cascadeTimeoutSeconds
     self.customLlm = customLlm
+    self.enableParallelToolCalls = enableParallelToolCalls
     self.enableReasoningSummary = enableReasoningSummary
     self.ignoreDefaultPersonality = ignoreDefaultPersonality
     self.knowledgeBase = knowledgeBase
@@ -78,6 +81,7 @@ public struct ElevenLabsPromptAgentAPIModelWorkflowOverrideOutput: Codable, Send
     case builtInTools = "built_in_tools"
     case cascadeTimeoutSeconds = "cascade_timeout_seconds"
     case customLlm = "custom_llm"
+    case enableParallelToolCalls = "enable_parallel_tool_calls"
     case enableReasoningSummary = "enable_reasoning_summary"
     case ignoreDefaultPersonality = "ignore_default_personality"
     case knowledgeBase = "knowledge_base"

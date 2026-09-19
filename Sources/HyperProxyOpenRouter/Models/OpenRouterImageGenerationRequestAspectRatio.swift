@@ -10,35 +10,29 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterImageGenerationRequestAspectRatio: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let value11 = Self(rawValue: "1:1")
-  public static let value12 = Self(rawValue: "1:2")
-  public static let value14 = Self(rawValue: "1:4")
-  public static let value18 = Self(rawValue: "1:8")
-  public static let value21 = Self(rawValue: "2:1")
-  public static let value23 = Self(rawValue: "2:3")
-  public static let value32 = Self(rawValue: "3:2")
-  public static let value34 = Self(rawValue: "3:4")
-  public static let value41 = Self(rawValue: "4:1")
-  public static let value43 = Self(rawValue: "4:3")
-  public static let value45 = Self(rawValue: "4:5")
-  public static let value54 = Self(rawValue: "5:4")
-  public static let value81 = Self(rawValue: "8:1")
-  public static let value916 = Self(rawValue: "9:16")
-  public static let value169 = Self(rawValue: "16:9")
-  public static let value9195 = Self(rawValue: "9:19.5")
-  public static let value1959 = Self(rawValue: "19.5:9")
-  public static let value920 = Self(rawValue: "9:20")
-  public static let value209 = Self(rawValue: "20:9")
-  public static let value921 = Self(rawValue: "9:21")
-  public static let value219 = Self(rawValue: "21:9")
-  public static let auto = Self(rawValue: "auto")
+public enum OpenRouterImageGenerationRequestAspectRatio: String, Codable, Hashable, Sendable {
+  case value11 = "1:1"
+  case value12 = "1:2"
+  case value14 = "1:4"
+  case value18 = "1:8"
+  case value21 = "2:1"
+  case value23 = "2:3"
+  case value2351 = "2.35:1"
+  case value32 = "3:2"
+  case value34 = "3:4"
+  case value41 = "4:1"
+  case value43 = "4:3"
+  case value45 = "4:5"
+  case value52 = "5:2"
+  case value54 = "5:4"
+  case value81 = "8:1"
+  case value916 = "9:16"
+  case value169 = "16:9"
+  case value9195 = "9:19.5"
+  case value1959 = "19.5:9"
+  case value920 = "9:20"
+  case value209 = "20:9"
+  case value921 = "9:21"
+  case value219 = "21:9"
+  case auto = "auto"
 }

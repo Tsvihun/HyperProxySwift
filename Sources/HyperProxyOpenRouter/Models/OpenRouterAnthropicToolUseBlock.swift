@@ -15,20 +15,20 @@ public struct OpenRouterAnthropicToolUseBlock: Codable, Sendable {
   public var id: String
   public var input: HyperProxyJSONValue?
   public var name: String
-  public var typeModel: OpenRouterAnthropicToolUseBlockTypeModel
+  public var kind: OpenRouterAnthropicToolUseBlockKind
 
   public init(
     caller: OpenRouterAnthropicCaller,
     id: String,
     name: String,
-    typeModel: OpenRouterAnthropicToolUseBlockTypeModel,
+    kind: OpenRouterAnthropicToolUseBlockKind,
     input: HyperProxyJSONValue? = nil
   ) {
     self.caller = caller
     self.id = id
     self.input = input
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenRouterAnthropicToolUseBlock: Codable, Sendable {
     case id
     case input
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

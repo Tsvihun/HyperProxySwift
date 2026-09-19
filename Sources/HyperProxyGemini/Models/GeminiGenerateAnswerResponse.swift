@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiGenerateAnswerResponse: Codable, Sendable {
-  public var answer: HyperProxyJSONValue?
+  public var answer: GeminiCandidate?
   public var answerableProbability: Double?
-  public var inputFeedback: HyperProxyJSONValue?
+  public var inputFeedback: GeminiInputFeedback?
 
   public init(
-    answer: HyperProxyJSONValue? = nil,
+    answer: GeminiCandidate? = nil,
     answerableProbability: Double? = nil,
-    inputFeedback: HyperProxyJSONValue? = nil
+    inputFeedback: GeminiInputFeedback? = nil
   ) {
     self.answer = answer
     self.answerableProbability = answerableProbability

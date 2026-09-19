@@ -17,12 +17,12 @@ public struct OpenRouterMessagesRequestToolsItemAnyOf5: Codable, Sendable {
   public var cacheControl: OpenRouterAnthropicCacheControlDirective?
   public var maxUses: Int?
   public var name: OpenRouterMessagesRequestToolsItemAnyOf5Name
-  public var typeModel: OpenRouterMessagesRequestToolsItemAnyOf5TypeModel
+  public var kind: OpenRouterMessagesRequestToolsItemAnyOf5Kind
   public var userLocation: OpenRouterAnthropicWebSearchToolUserLocation?
 
   public init(
     name: OpenRouterMessagesRequestToolsItemAnyOf5Name,
-    typeModel: OpenRouterMessagesRequestToolsItemAnyOf5TypeModel,
+    kind: OpenRouterMessagesRequestToolsItemAnyOf5Kind,
     allowedCallers: OpenRouterAnthropicAllowedCallers? = nil,
     allowedDomains: [String]? = nil,
     blockedDomains: [String]? = nil,
@@ -36,7 +36,7 @@ public struct OpenRouterMessagesRequestToolsItemAnyOf5: Codable, Sendable {
     self.cacheControl = cacheControl
     self.maxUses = maxUses
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
     self.userLocation = userLocation
   }
 
@@ -47,7 +47,7 @@ public struct OpenRouterMessagesRequestToolsItemAnyOf5: Codable, Sendable {
     case cacheControl = "cache_control"
     case maxUses = "max_uses"
     case name
-    case typeModel = "type"
+    case kind = "type"
     case userLocation = "user_location"
   }
 }

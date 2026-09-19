@@ -12,14 +12,14 @@ import HyperProxyCore
 
 public struct OpenRouterListEndpointsResponseArchitectureAllOf2: Codable, Sendable {
   public var inputModalities: [OpenRouterInputModality]
-  public var instructType: OpenRouterInstructType
+  public var instructType: OpenRouterInstructType?
   public var modality: String
   public var outputModalities: [OpenRouterOutputModality]
   public var tokenizer: OpenRouterModelGroup?
 
   public init(
     inputModalities: [OpenRouterInputModality],
-    instructType: OpenRouterInstructType,
+    instructType: OpenRouterInstructType?,
     modality: String,
     outputModalities: [OpenRouterOutputModality],
     tokenizer: OpenRouterModelGroup?

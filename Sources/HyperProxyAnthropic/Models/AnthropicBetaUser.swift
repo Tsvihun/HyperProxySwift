@@ -16,7 +16,7 @@ public struct AnthropicBetaUser: Codable, Sendable {
   public var id: String
   public var name: String
   public var role: AnthropicBetaOrganizationRoleSchema
-  public var typeModel: String
+  public var kind: AnthropicUserKind
 
   public init(
     addedAt: String,
@@ -24,14 +24,14 @@ public struct AnthropicBetaUser: Codable, Sendable {
     id: String,
     name: String,
     role: AnthropicBetaOrganizationRoleSchema,
-    typeModel: String
+    kind: AnthropicUserKind = .user
   ) {
     self.addedAt = addedAt
     self.email = email
     self.id = id
     self.name = name
     self.role = role
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct AnthropicBetaUser: Codable, Sendable {
     case id
     case name
     case role
-    case typeModel = "type"
+    case kind = "type"
   }
 }

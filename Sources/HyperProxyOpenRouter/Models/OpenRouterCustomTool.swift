@@ -11,27 +11,31 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterCustomTool: Codable, Sendable {
+  public var async: Bool?
   public var description: String?
-  public var format: HyperProxyJSONValue?
+  public var format: OpenRouterCustomToolFormat?
   public var name: String
-  public var typeModel: OpenRouterCustomToolTypeModel
+  public var kind: OpenRouterCustomToolKind
 
   public init(
     name: String,
-    typeModel: OpenRouterCustomToolTypeModel,
+    kind: OpenRouterCustomToolKind,
+    async: Bool? = nil,
     description: String? = nil,
-    format: HyperProxyJSONValue? = nil
+    format: OpenRouterCustomToolFormat? = nil
   ) {
+    self.async = async
     self.description = description
     self.format = format
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
+    case async
     case description
     case format
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

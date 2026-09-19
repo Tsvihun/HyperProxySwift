@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsFinetuneCreatedBy: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let selfModel = Self(rawValue: "self")
-  public static let workspace = Self(rawValue: "workspace")
-  public static let elevenlabs = Self(rawValue: "elevenlabs")
+public enum ElevenLabsFinetuneCreatedBy: String, Codable, Hashable, Sendable {
+  case selfModel = "self"
+  case workspace = "workspace"
+  case elevenlabs = "elevenlabs"
 }

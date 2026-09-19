@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIOtherChunkingStrategyResponseParam: Codable, Sendable {
-  public var typeModel: OpenAIOtherChunkingStrategyResponseParamTypeModel
+  public var kind: OpenAIOtherChunkingStrategyResponseParamKind
 
   public init(
-    typeModel: OpenAIOtherChunkingStrategyResponseParamTypeModel
+    kind: OpenAIOtherChunkingStrategyResponseParamKind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterObservabilityNewrelicDestinationConfigRegion: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum OpenRouterObservabilityNewrelicDestinationConfigRegion: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let us = Self(rawValue: "us")
-  public static let eu = Self(rawValue: "eu")
+  case us = "us"
+  case eu = "eu"
 }

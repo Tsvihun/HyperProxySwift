@@ -10,18 +10,12 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterSubagentReasoningEffort: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let max = Self(rawValue: "max")
-  public static let xhigh = Self(rawValue: "xhigh")
-  public static let high = Self(rawValue: "high")
-  public static let medium = Self(rawValue: "medium")
-  public static let low = Self(rawValue: "low")
-  public static let minimal = Self(rawValue: "minimal")
-  public static let none = Self(rawValue: "none")
+public enum OpenRouterSubagentReasoningEffort: String, Codable, Hashable, Sendable {
+  case max = "max"
+  case xhigh = "xhigh"
+  case high = "high"
+  case medium = "medium"
+  case low = "low"
+  case minimal = "minimal"
+  case none = "none"
 }

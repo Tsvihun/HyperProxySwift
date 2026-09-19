@@ -14,24 +14,24 @@ public struct BraveImageSearchResponse: Codable, Sendable {
   public var extra: BraveSearchExtra?
   public var query: BraveQuery
   public var results: [BraveImageResult]
-  public var typeModel: String
+  public var kind: String
 
   public init(
     query: BraveQuery,
     results: [BraveImageResult],
-    typeModel: String,
+    kind: String,
     extra: BraveSearchExtra? = nil
   ) {
     self.extra = extra
     self.query = query
     self.results = results
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case extra
     case query
     case results
-    case typeModel = "type"
+    case kind = "type"
   }
 }

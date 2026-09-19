@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIUploadPartObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let uploadPart = Self(rawValue: "upload.part")
+public enum OpenAIUploadPartObject: String, Codable, Hashable, Sendable {
+  case uploadPart = "upload.part"
 }

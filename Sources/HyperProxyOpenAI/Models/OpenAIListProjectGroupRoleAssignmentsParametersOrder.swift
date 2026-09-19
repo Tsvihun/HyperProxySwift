@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIListProjectGroupRoleAssignmentsParametersOrder: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum OpenAIListProjectGroupRoleAssignmentsParametersOrder: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let asc = Self(rawValue: "asc")
-  public static let desc = Self(rawValue: "desc")
+  case asc = "asc"
+  case desc = "desc"
 }

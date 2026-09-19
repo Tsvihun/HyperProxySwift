@@ -10,19 +10,13 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsBatchCallRecipientStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let pending = Self(rawValue: "pending")
-  public static let dispatched = Self(rawValue: "dispatched")
-  public static let initiated = Self(rawValue: "initiated")
-  public static let inProgress = Self(rawValue: "in_progress")
-  public static let completed = Self(rawValue: "completed")
-  public static let failed = Self(rawValue: "failed")
-  public static let cancelled = Self(rawValue: "cancelled")
-  public static let voicemail = Self(rawValue: "voicemail")
+public enum ElevenLabsBatchCallRecipientStatus: String, Codable, Hashable, Sendable {
+  case pending = "pending"
+  case dispatched = "dispatched"
+  case initiated = "initiated"
+  case inProgress = "in_progress"
+  case completed = "completed"
+  case failed = "failed"
+  case cancelled = "cancelled"
+  case voicemail = "voicemail"
 }

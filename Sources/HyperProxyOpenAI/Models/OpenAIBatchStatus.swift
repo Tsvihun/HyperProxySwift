@@ -10,19 +10,13 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIBatchStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let validating = Self(rawValue: "validating")
-  public static let failed = Self(rawValue: "failed")
-  public static let inProgress = Self(rawValue: "in_progress")
-  public static let finalizing = Self(rawValue: "finalizing")
-  public static let completed = Self(rawValue: "completed")
-  public static let expired = Self(rawValue: "expired")
-  public static let cancelling = Self(rawValue: "cancelling")
-  public static let cancelled = Self(rawValue: "cancelled")
+public enum OpenAIBatchStatus: String, Codable, Hashable, Sendable {
+  case validating = "validating"
+  case failed = "failed"
+  case inProgress = "in_progress"
+  case finalizing = "finalizing"
+  case completed = "completed"
+  case expired = "expired"
+  case cancelling = "cancelling"
+  case cancelled = "cancelled"
 }

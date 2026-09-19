@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIFineTuningJobHyperparameters: Codable, Sendable {
-  public var batchSize: HyperProxyJSONValue?
-  public var learningRateMultiplier: HyperProxyJSONValue?
-  public var nEpochs: HyperProxyJSONValue?
+  public var batchSize: OpenAIFineTuningJobHyperparametersBatchSizeAnyOf1?
+  public var learningRateMultiplier: OpenAIFineTuningJobHyperparametersLearningRateMultiplier?
+  public var nEpochs: OpenAIFineTuningJobHyperparametersNEpochs?
 
   public init(
-    batchSize: HyperProxyJSONValue? = nil,
-    learningRateMultiplier: HyperProxyJSONValue? = nil,
-    nEpochs: HyperProxyJSONValue? = nil
+    batchSize: OpenAIFineTuningJobHyperparametersBatchSizeAnyOf1? = nil,
+    learningRateMultiplier: OpenAIFineTuningJobHyperparametersLearningRateMultiplier? = nil,
+    nEpochs: OpenAIFineTuningJobHyperparametersNEpochs? = nil
   ) {
     self.batchSize = batchSize
     self.learningRateMultiplier = learningRateMultiplier

@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct GroqFilePurpose: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let batch = Self(rawValue: "batch")
-  public static let batchOutput = Self(rawValue: "batch_output")
+public enum GroqFilePurpose: String, Codable, Hashable, Sendable {
+  case batch = "batch"
+  case batchOutput = "batch_output"
 }

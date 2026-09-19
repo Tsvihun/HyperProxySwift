@@ -10,4 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenRouterImageConfig = [String: HyperProxyJSONValue]
+public typealias OpenRouterImageConfig = [String: OpenRouterImageConfigValue]

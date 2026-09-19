@@ -15,7 +15,7 @@ public struct BraveLLMContextRequest: Codable, Sendable {
   public var count: Int?
   public var country: String?
   public var enableLocal: Bool?
-  public var goggles: HyperProxyJSONValue?
+  public var goggles: BraveLLMContextRequestGoggles?
   public var maximumNumberOfSnippets: Int?
   public var maximumNumberOfSnippetsPerUrl: Int?
   public var maximumNumberOfTokens: Int?
@@ -30,7 +30,7 @@ public struct BraveLLMContextRequest: Codable, Sendable {
     count: Int? = nil,
     country: String? = nil,
     enableLocal: Bool? = nil,
-    goggles: HyperProxyJSONValue? = nil,
+    goggles: BraveLLMContextRequestGoggles? = nil,
     maximumNumberOfSnippets: Int? = nil,
     maximumNumberOfSnippetsPerUrl: Int? = nil,
     maximumNumberOfTokens: Int? = nil,

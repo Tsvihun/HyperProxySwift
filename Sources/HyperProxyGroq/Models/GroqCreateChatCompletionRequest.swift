@@ -17,7 +17,7 @@ public struct GroqCreateChatCompletionRequest: Codable, Sendable {
   public var documents: [GroqChatCompletionDocument]?
   public var excludeDomains: [String]?
   public var frequencyPenalty: Double?
-  public var functionCall: HyperProxyJSONValue?
+  public var functionCall: GroqCreateChatCompletionRequestFunctionCall?
   public var functions: [GroqChatCompletionFunctions]?
   public var includeDomains: [String]?
   public var includeReasoning: Bool?
@@ -27,17 +27,17 @@ public struct GroqCreateChatCompletionRequest: Codable, Sendable {
   public var maxTokens: Int?
   public var messages: [GroqChatCompletionRequestMessage]
   public var metadata: [String: String]?
-  public var model: HyperProxyJSONValue
+  public var model: GroqCreateChatCompletionRequestModel
   public var n: Int?
   public var parallelToolCalls: Bool?
   public var presencePenalty: Double?
   public var reasoningEffort: GroqCreateChatCompletionRequestReasoningEffort?
   public var reasoningFormat: GroqCreateChatCompletionRequestReasoningFormat?
-  public var responseFormat: HyperProxyJSONValue?
+  public var responseFormat: GroqCreateChatCompletionRequestResponseFormat?
   public var searchSettings: GroqCreateChatCompletionRequestSearchSettings?
   public var seed: Int?
   public var serviceTier: GroqCreateChatCompletionRequestServiceTier?
-  public var stop: HyperProxyJSONValue?
+  public var stop: GroqCreateChatCompletionRequestStop?
   public var store: Bool?
   public var stream: Bool?
   public var temperature: Double?
@@ -49,14 +49,14 @@ public struct GroqCreateChatCompletionRequest: Codable, Sendable {
 
   public init(
     messages: [GroqChatCompletionRequestMessage],
-    model: HyperProxyJSONValue,
+    model: GroqCreateChatCompletionRequestModel,
     citationOptions: GroqCreateChatCompletionRequestCitationOptions? = nil,
     compoundCustom: GroqCreateChatCompletionRequestCompoundCustom? = nil,
     disableToolValidation: Bool? = nil,
     documents: [GroqChatCompletionDocument]? = nil,
     excludeDomains: [String]? = nil,
     frequencyPenalty: Double? = nil,
-    functionCall: HyperProxyJSONValue? = nil,
+    functionCall: GroqCreateChatCompletionRequestFunctionCall? = nil,
     functions: [GroqChatCompletionFunctions]? = nil,
     includeDomains: [String]? = nil,
     includeReasoning: Bool? = nil,
@@ -70,11 +70,11 @@ public struct GroqCreateChatCompletionRequest: Codable, Sendable {
     presencePenalty: Double? = nil,
     reasoningEffort: GroqCreateChatCompletionRequestReasoningEffort? = nil,
     reasoningFormat: GroqCreateChatCompletionRequestReasoningFormat? = nil,
-    responseFormat: HyperProxyJSONValue? = nil,
+    responseFormat: GroqCreateChatCompletionRequestResponseFormat? = nil,
     searchSettings: GroqCreateChatCompletionRequestSearchSettings? = nil,
     seed: Int? = nil,
     serviceTier: GroqCreateChatCompletionRequestServiceTier? = nil,
-    stop: HyperProxyJSONValue? = nil,
+    stop: GroqCreateChatCompletionRequestStop? = nil,
     store: Bool? = nil,
     stream: Bool? = nil,
     temperature: Double? = nil,

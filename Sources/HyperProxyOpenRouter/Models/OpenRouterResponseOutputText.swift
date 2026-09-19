@@ -14,24 +14,24 @@ public struct OpenRouterResponseOutputText: Codable, Sendable {
   public var annotations: [OpenRouterOpenAIResponsesAnnotation]?
   public var logprobs: [OpenRouterResponseOutputTextLogprobsItem]?
   public var text: String
-  public var typeModel: OpenRouterResponseOutputTextTypeModel
+  public var kind: OpenRouterResponseOutputTextKind
 
   public init(
     text: String,
-    typeModel: OpenRouterResponseOutputTextTypeModel,
+    kind: OpenRouterResponseOutputTextKind,
     annotations: [OpenRouterOpenAIResponsesAnnotation]? = nil,
     logprobs: [OpenRouterResponseOutputTextLogprobsItem]? = nil
   ) {
     self.annotations = annotations
     self.logprobs = logprobs
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case annotations
     case logprobs
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

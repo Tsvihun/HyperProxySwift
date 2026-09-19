@@ -15,20 +15,20 @@ public struct TogetherDERemoteUploadEvent: Codable, Sendable {
   public var id: String
   public var level: TogetherDERemoteUploadEventLevel
   public var message: String
-  public var typeModel: String
+  public var kind: String
 
   public init(
     createdAt: String,
     id: String,
     level: TogetherDERemoteUploadEventLevel,
     message: String,
-    typeModel: String
+    kind: String
   ) {
     self.createdAt = createdAt
     self.id = id
     self.level = level
     self.message = message
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct TogetherDERemoteUploadEvent: Codable, Sendable {
     case id
     case level
     case message
-    case typeModel = "type"
+    case kind = "type"
   }
 }

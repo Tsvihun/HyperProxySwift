@@ -16,11 +16,11 @@ public struct OpenAIRealtimeSession: Codable, Sendable {
   public var include: [OpenAIRealtimeSessionIncludeAnyOf1Item]?
   public var inputAudioFormat: OpenAIRealtimeSessionInputAudioFormat?
   public var inputAudioNoiseReduction: OpenAIRealtimeSessionInputAudioNoiseReduction?
-  public var inputAudioTranscription: HyperProxyJSONValue?
+  public var inputAudioTranscription: OpenAIAudioTranscriptionResponse?
   public var instructions: String?
-  public var maxResponseOutputTokens: HyperProxyJSONValue?
-  public var modalities: HyperProxyJSONValue?
-  public var model: HyperProxyJSONValue?
+  public var maxResponseOutputTokens: OpenAIRealtimeSessionMaxResponseOutputTokens?
+  public var modalities: [OpenAIRealtimeSessionModalitiesItem]?
+  public var model: OpenAIRealtimeSessionModel?
   public var object: OpenAIRealtimeSessionObject?
   public var outputAudioFormat: OpenAIRealtimeSessionOutputAudioFormat?
   public var prompt: OpenAIPrompt?
@@ -28,7 +28,7 @@ public struct OpenAIRealtimeSession: Codable, Sendable {
   public var temperature: Double?
   public var toolChoice: String?
   public var tools: [OpenAIRealtimeFunctionTool]?
-  public var tracing: HyperProxyJSONValue?
+  public var tracing: OpenAIRealtimeSessionTracingAnyOf1?
   public var turnDetection: OpenAIRealtimeTurnDetection?
   public var voice: OpenAIVoiceIdsShared?
 
@@ -38,11 +38,11 @@ public struct OpenAIRealtimeSession: Codable, Sendable {
     include: [OpenAIRealtimeSessionIncludeAnyOf1Item]? = nil,
     inputAudioFormat: OpenAIRealtimeSessionInputAudioFormat? = nil,
     inputAudioNoiseReduction: OpenAIRealtimeSessionInputAudioNoiseReduction? = nil,
-    inputAudioTranscription: HyperProxyJSONValue? = nil,
+    inputAudioTranscription: OpenAIAudioTranscriptionResponse? = nil,
     instructions: String? = nil,
-    maxResponseOutputTokens: HyperProxyJSONValue? = nil,
-    modalities: HyperProxyJSONValue? = nil,
-    model: HyperProxyJSONValue? = nil,
+    maxResponseOutputTokens: OpenAIRealtimeSessionMaxResponseOutputTokens? = nil,
+    modalities: [OpenAIRealtimeSessionModalitiesItem]? = nil,
+    model: OpenAIRealtimeSessionModel? = nil,
     object: OpenAIRealtimeSessionObject? = nil,
     outputAudioFormat: OpenAIRealtimeSessionOutputAudioFormat? = nil,
     prompt: OpenAIPrompt? = nil,
@@ -50,7 +50,7 @@ public struct OpenAIRealtimeSession: Codable, Sendable {
     temperature: Double? = nil,
     toolChoice: String? = nil,
     tools: [OpenAIRealtimeFunctionTool]? = nil,
-    tracing: HyperProxyJSONValue? = nil,
+    tracing: OpenAIRealtimeSessionTracingAnyOf1? = nil,
     turnDetection: OpenAIRealtimeTurnDetection? = nil,
     voice: OpenAIVoiceIdsShared? = nil
   ) {

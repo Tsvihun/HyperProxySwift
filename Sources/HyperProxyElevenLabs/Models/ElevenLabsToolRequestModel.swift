@@ -12,10 +12,10 @@ import HyperProxyCore
 
 public struct ElevenLabsToolRequestModel: Codable, Sendable {
   public var responseMocks: [ElevenLabsToolResponseMockConfigInput]?
-  public var toolConfig: HyperProxyJSONValue
+  public var toolConfig: ElevenLabsToolRequestModelToolConfig
 
   public init(
-    toolConfig: HyperProxyJSONValue,
+    toolConfig: ElevenLabsToolRequestModelToolConfig,
     responseMocks: [ElevenLabsToolResponseMockConfigInput]? = nil
   ) {
     self.responseMocks = responseMocks

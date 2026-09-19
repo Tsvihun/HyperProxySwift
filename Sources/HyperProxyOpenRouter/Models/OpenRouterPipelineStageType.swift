@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterPipelineStageType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let guardrail = Self(rawValue: "guardrail")
-  public static let plugin = Self(rawValue: "plugin")
-  public static let serverTools = Self(rawValue: "server_tools")
-  public static let responseHealing = Self(rawValue: "response_healing")
-  public static let contextCompression = Self(rawValue: "context_compression")
+public enum OpenRouterPipelineStageType: String, Codable, Hashable, Sendable {
+  case guardrail = "guardrail"
+  case plugin = "plugin"
+  case serverTools = "server_tools"
+  case responseHealing = "response_healing"
+  case contextCompression = "context_compression"
 }

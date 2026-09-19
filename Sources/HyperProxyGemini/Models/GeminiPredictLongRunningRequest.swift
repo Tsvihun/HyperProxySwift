@@ -12,18 +12,22 @@ import HyperProxyCore
 
 public struct GeminiPredictLongRunningRequest: Codable, Sendable {
   public var instances: [HyperProxyJSONValue]?
+  public var labels: [String: String]?
   public var parameters: HyperProxyJSONValue?
 
   public init(
     instances: [HyperProxyJSONValue]? = nil,
+    labels: [String: String]? = nil,
     parameters: HyperProxyJSONValue? = nil
   ) {
     self.instances = instances
+    self.labels = labels
     self.parameters = parameters
   }
 
   enum CodingKeys: String, CodingKey {
     case instances
+    case labels
     case parameters
   }
 }

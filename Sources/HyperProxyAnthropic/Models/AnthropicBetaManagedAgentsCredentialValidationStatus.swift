@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaManagedAgentsCredentialValidationStatus: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum AnthropicBetaManagedAgentsCredentialValidationStatus: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let valid = Self(rawValue: "valid")
-  public static let invalid = Self(rawValue: "invalid")
-  public static let unknown = Self(rawValue: "unknown")
+  case valid = "valid"
+  case invalid = "invalid"
+  case unknown = "unknown"
 }

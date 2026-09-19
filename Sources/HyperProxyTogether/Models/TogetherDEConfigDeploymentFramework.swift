@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherDEConfigDeploymentFramework: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let dEPLOYMENTFRAMEWORKDEFAULT = Self(rawValue: "DEPLOYMENT_FRAMEWORK_DEFAULT")
-  public static let dEPLOYMENTFRAMEWORKROLLOUTS = Self(rawValue: "DEPLOYMENT_FRAMEWORK_ROLLOUTS")
-  public static let dEPLOYMENTFRAMEWORKLWS = Self(rawValue: "DEPLOYMENT_FRAMEWORK_LWS")
-  public static let dEPLOYMENTFRAMEWORKDYNAMO = Self(rawValue: "DEPLOYMENT_FRAMEWORK_DYNAMO")
-  public static let dEPLOYMENTFRAMEWORKGROVE = Self(rawValue: "DEPLOYMENT_FRAMEWORK_GROVE")
+public enum TogetherDEConfigDeploymentFramework: String, Codable, Hashable, Sendable {
+  case dEPLOYMENTFRAMEWORKDEFAULT = "DEPLOYMENT_FRAMEWORK_DEFAULT"
+  case dEPLOYMENTFRAMEWORKROLLOUTS = "DEPLOYMENT_FRAMEWORK_ROLLOUTS"
+  case dEPLOYMENTFRAMEWORKLWS = "DEPLOYMENT_FRAMEWORK_LWS"
+  case dEPLOYMENTFRAMEWORKDYNAMO = "DEPLOYMENT_FRAMEWORK_DYNAMO"
+  case dEPLOYMENTFRAMEWORKGROVE = "DEPLOYMENT_FRAMEWORK_GROVE"
 }

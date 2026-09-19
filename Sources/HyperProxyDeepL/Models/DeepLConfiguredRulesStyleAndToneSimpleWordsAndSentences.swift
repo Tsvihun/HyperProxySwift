@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesStyleAndToneSimpleWordsAndSentences: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesStyleAndToneSimpleWordsAndSentences: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useSimpleWordsAndSentencesAvoidHardToTranslateWordsAndFiguresOfSpeech = Self(
-    rawValue: "use_simple_words_and_sentences_avoid_hard_to_translate_words_and_figures_of_speech")
+  case useSimpleWordsAndSentencesAvoidHardToTranslateWordsAndFiguresOfSpeech =
+    "use_simple_words_and_sentences_avoid_hard_to_translate_words_and_figures_of_speech"
 }

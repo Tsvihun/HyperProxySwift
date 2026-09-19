@@ -17,7 +17,7 @@ public struct AnthropicBetaManagedAgentsOutcomeEvaluationResource: Codable, Send
   public var iteration: Int
   public var outcomeId: String
   public var result: String
-  public var typeModel: AnthropicBetaManagedAgentsOutcomeEvaluationResourceTypeModel
+  public var kind: AnthropicBetaManagedAgentsOutcomeEvaluationResourceKind
 
   public init(
     completedAt: AnthropicBetaTimestamp?,
@@ -26,7 +26,7 @@ public struct AnthropicBetaManagedAgentsOutcomeEvaluationResource: Codable, Send
     iteration: Int,
     outcomeId: String,
     result: String,
-    typeModel: AnthropicBetaManagedAgentsOutcomeEvaluationResourceTypeModel
+    kind: AnthropicBetaManagedAgentsOutcomeEvaluationResourceKind
   ) {
     self.completedAt = completedAt
     self.description = description
@@ -34,7 +34,7 @@ public struct AnthropicBetaManagedAgentsOutcomeEvaluationResource: Codable, Send
     self.iteration = iteration
     self.outcomeId = outcomeId
     self.result = result
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct AnthropicBetaManagedAgentsOutcomeEvaluationResource: Codable, Send
     case iteration
     case outcomeId = "outcome_id"
     case result
-    case typeModel = "type"
+    case kind = "type"
   }
 }

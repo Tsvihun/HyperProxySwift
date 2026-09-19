@@ -18,10 +18,10 @@ public struct TogetherDedicatedEndpoint: Codable, Sendable {
   public var id: String
   public var model: String
   public var name: String
-  public var object: HyperProxyJSONValue
+  public var object: TogetherEndpointObject
   public var owner: String
   public var state: TogetherDedicatedEndpointState
-  public var typeModel: TogetherDedicatedEndpointTypeModel
+  public var kind: TogetherDedicatedEndpointKind
 
   public init(
     autoscaling: TogetherAutoscaling,
@@ -31,10 +31,10 @@ public struct TogetherDedicatedEndpoint: Codable, Sendable {
     id: String,
     model: String,
     name: String,
-    object: HyperProxyJSONValue,
     owner: String,
     state: TogetherDedicatedEndpointState,
-    typeModel: TogetherDedicatedEndpointTypeModel
+    kind: TogetherDedicatedEndpointKind,
+    object: TogetherEndpointObject = .endpoint
   ) {
     self.autoscaling = autoscaling
     self.createdAt = createdAt
@@ -46,7 +46,7 @@ public struct TogetherDedicatedEndpoint: Codable, Sendable {
     self.object = object
     self.owner = owner
     self.state = state
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -60,6 +60,6 @@ public struct TogetherDedicatedEndpoint: Codable, Sendable {
     case object
     case owner
     case state
-    case typeModel = "type"
+    case kind = "type"
   }
 }

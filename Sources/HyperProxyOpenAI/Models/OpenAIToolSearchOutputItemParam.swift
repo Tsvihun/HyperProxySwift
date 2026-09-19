@@ -16,11 +16,11 @@ public struct OpenAIToolSearchOutputItemParam: Codable, Sendable {
   public var id: String?
   public var status: OpenAIFunctionCallItemStatus?
   public var tools: [OpenAITool]
-  public var typeModel: OpenAIToolSearchOutputItemParamTypeModel
+  public var kind: OpenAIToolSearchOutputItemParamKind
 
   public init(
     tools: [OpenAITool],
-    typeModel: OpenAIToolSearchOutputItemParamTypeModel,
+    kind: OpenAIToolSearchOutputItemParamKind,
     callId: String? = nil,
     execution: OpenAIToolSearchExecutionType? = nil,
     id: String? = nil,
@@ -31,7 +31,7 @@ public struct OpenAIToolSearchOutputItemParam: Codable, Sendable {
     self.id = id
     self.status = status
     self.tools = tools
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIToolSearchOutputItemParam: Codable, Sendable {
     case id
     case status
     case tools
-    case typeModel = "type"
+    case kind = "type"
   }
 }

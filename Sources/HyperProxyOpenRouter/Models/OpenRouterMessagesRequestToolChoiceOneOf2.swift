@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterMessagesRequestToolChoiceOneOf2: Codable, Sendable {
   public var disableParallelToolUse: Bool?
-  public var typeModel: OpenRouterMessagesRequestToolChoiceOneOf2TypeModel
+  public var kind: OpenRouterMessagesRequestToolChoiceOneOf2Kind
 
   public init(
-    typeModel: OpenRouterMessagesRequestToolChoiceOneOf2TypeModel,
+    kind: OpenRouterMessagesRequestToolChoiceOneOf2Kind,
     disableParallelToolUse: Bool? = nil
   ) {
     self.disableParallelToolUse = disableParallelToolUse
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case disableParallelToolUse = "disable_parallel_tool_use"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

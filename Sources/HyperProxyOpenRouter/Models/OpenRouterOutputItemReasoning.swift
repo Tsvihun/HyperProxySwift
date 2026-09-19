@@ -14,24 +14,24 @@ public struct OpenRouterOutputItemReasoning: Codable, Sendable {
   public var content: [OpenRouterReasoningTextContent]?
   public var encryptedContent: String?
   public var id: String
-  public var status: HyperProxyJSONValue?
+  public var status: OpenRouterOutputItemReasoningStatus?
   public var summary: [OpenRouterReasoningSummaryText]
-  public var typeModel: OpenRouterOutputItemReasoningTypeModel
+  public var kind: OpenRouterOutputItemReasoningKind
 
   public init(
     id: String,
     summary: [OpenRouterReasoningSummaryText],
-    typeModel: OpenRouterOutputItemReasoningTypeModel,
+    kind: OpenRouterOutputItemReasoningKind,
     content: [OpenRouterReasoningTextContent]? = nil,
     encryptedContent: String? = nil,
-    status: HyperProxyJSONValue? = nil
+    status: OpenRouterOutputItemReasoningStatus? = nil
   ) {
     self.content = content
     self.encryptedContent = encryptedContent
     self.id = id
     self.status = status
     self.summary = summary
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenRouterOutputItemReasoning: Codable, Sendable {
     case id
     case status
     case summary
-    case typeModel = "type"
+    case kind = "type"
   }
 }

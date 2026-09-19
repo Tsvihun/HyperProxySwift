@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesStyleAndToneShortVsLongWords: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useShortWords = Self(rawValue: "use_short_words")
+public enum DeepLConfiguredRulesStyleAndToneShortVsLongWords: String, Codable, Hashable, Sendable {
+  case useShortWords = "use_short_words"
 }

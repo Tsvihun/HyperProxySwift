@@ -20,20 +20,20 @@ public struct OpenRouterMessagesRequest: Codable, Sendable {
   public var model: String
   public var models: [String]?
   public var outputConfig: OpenRouterMessagesOutputConfig?
-  public var plugins: [HyperProxyJSONValue]?
+  public var plugins: [OpenRouterMessagesRequestPluginsItem]?
   public var provider: OpenRouterProviderPreferences?
   public var route: OpenRouterDeprecatedRoute?
   public var serviceTier: String?
   public var sessionId: String?
-  public var speed: HyperProxyJSONValue?
+  public var speed: OpenRouterAnthropicSpeed?
   public var stopSequences: [String]?
   public var stopServerToolsWhen: OpenRouterStopServerToolsWhen?
   public var stream: Bool?
-  public var system: HyperProxyJSONValue?
+  public var system: OpenRouterMessagesRequestSystem?
   public var temperature: Double?
-  public var thinking: HyperProxyJSONValue?
-  public var toolChoice: HyperProxyJSONValue?
-  public var tools: [HyperProxyJSONValue]?
+  public var thinking: OpenRouterMessagesRequestThinking?
+  public var toolChoice: OpenRouterMessagesRequestToolChoice?
+  public var tools: [OpenRouterMessagesRequestToolsItem]?
   public var topK: Int?
   public var topP: Double?
   public var trace: OpenRouterTraceConfig?
@@ -49,20 +49,20 @@ public struct OpenRouterMessagesRequest: Codable, Sendable {
     metadata: OpenRouterMessagesRequestMetadata? = nil,
     models: [String]? = nil,
     outputConfig: OpenRouterMessagesOutputConfig? = nil,
-    plugins: [HyperProxyJSONValue]? = nil,
+    plugins: [OpenRouterMessagesRequestPluginsItem]? = nil,
     provider: OpenRouterProviderPreferences? = nil,
     route: OpenRouterDeprecatedRoute? = nil,
     serviceTier: String? = nil,
     sessionId: String? = nil,
-    speed: HyperProxyJSONValue? = nil,
+    speed: OpenRouterAnthropicSpeed? = nil,
     stopSequences: [String]? = nil,
     stopServerToolsWhen: OpenRouterStopServerToolsWhen? = nil,
     stream: Bool? = nil,
-    system: HyperProxyJSONValue? = nil,
+    system: OpenRouterMessagesRequestSystem? = nil,
     temperature: Double? = nil,
-    thinking: HyperProxyJSONValue? = nil,
-    toolChoice: HyperProxyJSONValue? = nil,
-    tools: [HyperProxyJSONValue]? = nil,
+    thinking: OpenRouterMessagesRequestThinking? = nil,
+    toolChoice: OpenRouterMessagesRequestToolChoice? = nil,
+    tools: [OpenRouterMessagesRequestToolsItem]? = nil,
     topK: Int? = nil,
     topP: Double? = nil,
     trace: OpenRouterTraceConfig? = nil,

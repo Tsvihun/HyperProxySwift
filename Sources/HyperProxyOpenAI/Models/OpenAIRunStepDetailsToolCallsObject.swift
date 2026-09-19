@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIRunStepDetailsToolCallsObject: Codable, Sendable {
-  public var toolCalls: [HyperProxyJSONValue]
-  public var typeModel: OpenAIRunStepDetailsToolCallsObjectTypeModel
+  public var toolCalls: [OpenAIRunStepDetailsToolCallsObjectToolCallsItem]
+  public var kind: OpenAIRunStepDetailsToolCallsObjectKind
 
   public init(
-    toolCalls: [HyperProxyJSONValue],
-    typeModel: OpenAIRunStepDetailsToolCallsObjectTypeModel
+    toolCalls: [OpenAIRunStepDetailsToolCallsObjectToolCallsItem],
+    kind: OpenAIRunStepDetailsToolCallsObjectKind
   ) {
     self.toolCalls = toolCalls
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case toolCalls = "tool_calls"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

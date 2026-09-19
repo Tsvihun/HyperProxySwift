@@ -10,28 +10,28 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsArrayJsonSchemaPropertyOutput: Codable, Sendable {
+public final class ElevenLabsArrayJsonSchemaPropertyOutput: Codable, @unchecked Sendable {
   public var constantValue: [HyperProxyJSONValue]?
   public var description: String?
   public var dynamicVariable: String?
   public var isOmitted: Bool?
-  public var items: HyperProxyJSONValue?
-  public var typeModel: String?
+  public var items: ElevenLabsArrayJsonSchemaPropertyOutputItems?
+  public var kind: ElevenLabsArrayKind?
 
   public init(
     constantValue: [HyperProxyJSONValue]? = nil,
     description: String? = nil,
     dynamicVariable: String? = nil,
     isOmitted: Bool? = nil,
-    items: HyperProxyJSONValue? = nil,
-    typeModel: String? = nil
+    items: ElevenLabsArrayJsonSchemaPropertyOutputItems? = nil,
+    kind: ElevenLabsArrayKind? = nil
   ) {
     self.constantValue = constantValue
     self.description = description
     self.dynamicVariable = dynamicVariable
     self.isOmitted = isOmitted
     self.items = items
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct ElevenLabsArrayJsonSchemaPropertyOutput: Codable, Sendable {
     case dynamicVariable = "dynamic_variable"
     case isOmitted = "is_omitted"
     case items
-    case typeModel = "type"
+    case kind = "type"
   }
 }

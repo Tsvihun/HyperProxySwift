@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherInstanceClusterConfigLoadBalancer: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let nONE = Self(rawValue: "NONE")
-  public static let tRAEFIK = Self(rawValue: "TRAEFIK")
-  public static let nGINX = Self(rawValue: "NGINX")
-  public static let iSTIO = Self(rawValue: "ISTIO")
+public enum TogetherInstanceClusterConfigLoadBalancer: String, Codable, Hashable, Sendable {
+  case nONE = "NONE"
+  case tRAEFIK = "TRAEFIK"
+  case nGINX = "NGINX"
+  case iSTIO = "ISTIO"
 }

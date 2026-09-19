@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiCreateFileRequest: Codable, Sendable {
-  public var file: HyperProxyJSONValue?
+  public var file: GeminiFile?
 
   public init(
-    file: HyperProxyJSONValue? = nil
+    file: GeminiFile? = nil
   ) {
     self.file = file
   }

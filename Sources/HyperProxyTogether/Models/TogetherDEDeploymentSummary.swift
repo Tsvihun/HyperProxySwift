@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherDEDeploymentSummary: Codable, Sendable {
-  public var autoscaling: HyperProxyJSONValue
+  public var autoscaling: TogetherDEAutoscalingResponse
   public var createdAt: String
   public var desiredReplicas: Int?
   public var estimatedEffectiveTrafficShare: Double
@@ -25,7 +25,7 @@ public struct TogetherDEDeploymentSummary: Codable, Sendable {
   public var trafficMode: TogetherDEDeploymentSummaryTrafficMode
 
   public init(
-    autoscaling: HyperProxyJSONValue,
+    autoscaling: TogetherDEAutoscalingResponse,
     createdAt: String,
     estimatedEffectiveTrafficShare: Double,
     id: String,

@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct PerplexityCompletionResponseStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let pENDING = Self(rawValue: "PENDING")
-  public static let cOMPLETED = Self(rawValue: "COMPLETED")
+public enum PerplexityCompletionResponseStatus: String, Codable, Hashable, Sendable {
+  case pENDING = "PENDING"
+  case cOMPLETED = "COMPLETED"
 }

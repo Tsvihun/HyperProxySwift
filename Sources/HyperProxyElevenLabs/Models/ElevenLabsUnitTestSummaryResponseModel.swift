@@ -21,14 +21,14 @@ public struct ElevenLabsUnitTestSummaryResponseModel: Codable, Sendable {
   public var id: String
   public var lastUpdatedAtUnixSecs: Int
   public var name: String
-  public var typeModel: ElevenLabsTestType
+  public var kind: ElevenLabsTestType
 
   public init(
     createdAtUnixSecs: Int,
     id: String,
     lastUpdatedAtUnixSecs: Int,
     name: String,
-    typeModel: ElevenLabsTestType,
+    kind: ElevenLabsTestType,
     accessInfo: ElevenLabsResourceAccessInfo? = nil,
     childrenCount: Int? = nil,
     conversationInitiationSource: ElevenLabsConversationInitiationSource? = nil,
@@ -46,7 +46,7 @@ public struct ElevenLabsUnitTestSummaryResponseModel: Codable, Sendable {
     self.id = id
     self.lastUpdatedAtUnixSecs = lastUpdatedAtUnixSecs
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -60,6 +60,6 @@ public struct ElevenLabsUnitTestSummaryResponseModel: Codable, Sendable {
     case id
     case lastUpdatedAtUnixSecs = "last_updated_at_unix_secs"
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

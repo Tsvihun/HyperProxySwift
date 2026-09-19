@@ -37,13 +37,13 @@ extension HyperProxyProviderService where Operation == EachAIOperation {
   public var llmRouterModelCatalog: HyperProxyProviderCall<EachAIOperation> {
     self.call(.llmRouterModelCatalog)
   }
-  /// `GET v1/model`
-  public var modelsRetrieve: HyperProxyProviderCall<EachAIOperation> {
-    self.call(.modelsRetrieve)
-  }
   /// `GET v1/models`
   public var modelsList: HyperProxyProviderCall<EachAIOperation> {
     self.call(.modelsList)
+  }
+  /// `GET v1/models/{slug}`
+  public var getModelBySlug: HyperProxyProviderCall<EachAIOperation> {
+    self.call(.getModelBySlug)
   }
   /// `POST v1/prediction`
   public var predictionsCreate: HyperProxyProviderCall<EachAIOperation> {

@@ -15,12 +15,12 @@ public struct OpenRouterAnthropicMessagesErrorResponse: Codable, Sendable {
   public var metadata: [String: HyperProxyJSONValue]?
   public var openrouterMetadata: [String: HyperProxyJSONValue]?
   public var requestId: String
-  public var typeModel: OpenRouterAnthropicMessagesErrorResponseTypeModel
+  public var kind: OpenRouterAnthropicMessagesErrorResponseKind
 
   public init(
     error: OpenRouterAnthropicMessagesErrorResponseError,
     requestId: String,
-    typeModel: OpenRouterAnthropicMessagesErrorResponseTypeModel,
+    kind: OpenRouterAnthropicMessagesErrorResponseKind,
     metadata: [String: HyperProxyJSONValue]? = nil,
     openrouterMetadata: [String: HyperProxyJSONValue]? = nil
   ) {
@@ -28,7 +28,7 @@ public struct OpenRouterAnthropicMessagesErrorResponse: Codable, Sendable {
     self.metadata = metadata
     self.openrouterMetadata = openrouterMetadata
     self.requestId = requestId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenRouterAnthropicMessagesErrorResponse: Codable, Sendable {
     case metadata
     case openrouterMetadata = "openrouter_metadata"
     case requestId = "request_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

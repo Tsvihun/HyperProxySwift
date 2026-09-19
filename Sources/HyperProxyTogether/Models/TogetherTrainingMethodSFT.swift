@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct TogetherTrainingMethodSFT: Codable, Sendable {
   public var method: TogetherTrainingMethodSFTMethod
-  public var trainOnInputs: HyperProxyJSONValue
+  public var trainOnInputs: TogetherTrainingMethodSFTTrainOnInputs
 
   public init(
     method: TogetherTrainingMethodSFTMethod,
-    trainOnInputs: HyperProxyJSONValue
+    trainOnInputs: TogetherTrainingMethodSFTTrainOnInputs
   ) {
     self.method = method
     self.trainOnInputs = trainOnInputs

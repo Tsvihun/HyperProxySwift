@@ -10,16 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsAttachedSystemEvaluationRefAnalysisItemId: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum ElevenLabsAttachedSystemEvaluationRefAnalysisItemId: String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let systemEvalCriteriaSentiment = Self(rawValue: "__system_eval_criteria_sentiment")
-  public static let systemEvalCriteriaFrustration = Self(
-    rawValue: "__system_eval_criteria_frustration")
+  case systemEvalCriteriaSentiment = "__system_eval_criteria_sentiment"
+  case systemEvalCriteriaFrustration = "__system_eval_criteria_frustration"
 }

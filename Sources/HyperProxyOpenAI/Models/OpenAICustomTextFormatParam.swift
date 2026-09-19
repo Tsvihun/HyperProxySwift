@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAICustomTextFormatParam: Codable, Sendable {
-  public var typeModel: OpenAICustomTextFormatParamTypeModel
+  public var kind: OpenAICustomTextFormatParamKind
 
   public init(
-    typeModel: OpenAICustomTextFormatParamTypeModel
+    kind: OpenAICustomTextFormatParamKind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

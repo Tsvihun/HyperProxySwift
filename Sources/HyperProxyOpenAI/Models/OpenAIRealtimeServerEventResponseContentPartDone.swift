@@ -17,7 +17,7 @@ public struct OpenAIRealtimeServerEventResponseContentPartDone: Codable, Sendabl
   public var outputIndex: Int
   public var part: OpenAIRealtimeServerEventResponseContentPartDonePart
   public var responseId: String
-  public var typeModel: OpenAIRealtimeServerEventResponseContentPartDoneTypeModel
+  public var kind: OpenAIRealtimeServerEventResponseContentPartDoneKind
 
   public init(
     contentIndex: Int,
@@ -26,7 +26,7 @@ public struct OpenAIRealtimeServerEventResponseContentPartDone: Codable, Sendabl
     outputIndex: Int,
     part: OpenAIRealtimeServerEventResponseContentPartDonePart,
     responseId: String,
-    typeModel: OpenAIRealtimeServerEventResponseContentPartDoneTypeModel
+    kind: OpenAIRealtimeServerEventResponseContentPartDoneKind
   ) {
     self.contentIndex = contentIndex
     self.eventId = eventId
@@ -34,7 +34,7 @@ public struct OpenAIRealtimeServerEventResponseContentPartDone: Codable, Sendabl
     self.outputIndex = outputIndex
     self.part = part
     self.responseId = responseId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenAIRealtimeServerEventResponseContentPartDone: Codable, Sendabl
     case outputIndex = "output_index"
     case part
     case responseId = "response_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

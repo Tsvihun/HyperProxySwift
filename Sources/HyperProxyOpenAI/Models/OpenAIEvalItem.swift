@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenAIEvalItem: Codable, Sendable {
   public var content: OpenAIEvalItemContent
   public var role: OpenAIEvalItemRole
-  public var typeModel: OpenAIEvalItemTypeModel?
+  public var kind: OpenAIEvalItemKind?
 
   public init(
     content: OpenAIEvalItemContent,
     role: OpenAIEvalItemRole,
-    typeModel: OpenAIEvalItemTypeModel? = nil
+    kind: OpenAIEvalItemKind? = nil
   ) {
     self.content = content
     self.role = role
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case content
     case role
-    case typeModel = "type"
+    case kind = "type"
   }
 }

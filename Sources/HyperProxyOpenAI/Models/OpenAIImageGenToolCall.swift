@@ -18,21 +18,21 @@ public struct OpenAIImageGenToolCall: Codable, Sendable {
   public var quality: OpenAIImageGenToolCallQualityAnyOf1?
   public var result: String?
   public var revisedPrompt: String?
-  public var size: HyperProxyJSONValue?
+  public var size: OpenAIImageGenToolCallSizeAnyOf1?
   public var status: OpenAIImageGenToolCallStatus
-  public var typeModel: OpenAIImageGenToolCallTypeModel
+  public var kind: OpenAIImageGenToolCallKind
 
   public init(
     id: String,
     result: String?,
     status: OpenAIImageGenToolCallStatus,
-    typeModel: OpenAIImageGenToolCallTypeModel,
+    kind: OpenAIImageGenToolCallKind,
     action: OpenAIImageGenActionEnum? = nil,
     background: OpenAIImageBackground? = nil,
     outputFormat: OpenAIImageOutputFormat? = nil,
     quality: OpenAIImageGenToolCallQualityAnyOf1? = nil,
     revisedPrompt: String? = nil,
-    size: HyperProxyJSONValue? = nil
+    size: OpenAIImageGenToolCallSizeAnyOf1? = nil
   ) {
     self.action = action
     self.background = background
@@ -43,7 +43,7 @@ public struct OpenAIImageGenToolCall: Codable, Sendable {
     self.revisedPrompt = revisedPrompt
     self.size = size
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -56,6 +56,6 @@ public struct OpenAIImageGenToolCall: Codable, Sendable {
     case revisedPrompt = "revised_prompt"
     case size
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

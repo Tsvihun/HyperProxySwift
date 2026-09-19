@@ -12,21 +12,21 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsSessionUsageSnapshot: Codable, Sendable {
   public var activeSeconds: Double?
-  public var cacheCreation: HyperProxyJSONValue?
+  public var cacheCreation: AnthropicBetaManagedAgentsCacheCreationUsage?
   public var cacheReadInputTokens: Int?
   public var inputTokens: Int?
-  public var listCost: HyperProxyJSONValue?
+  public var listCost: AnthropicBetaMonetaryAmount?
   public var outputTokens: Int?
-  public var serverToolUse: HyperProxyJSONValue?
+  public var serverToolUse: AnthropicBetaManagedAgentsServerToolUsage?
 
   public init(
     activeSeconds: Double? = nil,
-    cacheCreation: HyperProxyJSONValue? = nil,
+    cacheCreation: AnthropicBetaManagedAgentsCacheCreationUsage? = nil,
     cacheReadInputTokens: Int? = nil,
     inputTokens: Int? = nil,
-    listCost: HyperProxyJSONValue? = nil,
+    listCost: AnthropicBetaMonetaryAmount? = nil,
     outputTokens: Int? = nil,
-    serverToolUse: HyperProxyJSONValue? = nil
+    serverToolUse: AnthropicBetaManagedAgentsServerToolUsage? = nil
   ) {
     self.activeSeconds = activeSeconds
     self.cacheCreation = cacheCreation

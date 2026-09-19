@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterContentFilterBuiltinAction: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let redact = Self(rawValue: "redact")
-  public static let block = Self(rawValue: "block")
-  public static let flag = Self(rawValue: "flag")
+public enum OpenRouterContentFilterBuiltinAction: String, Codable, Hashable, Sendable {
+  case redact = "redact"
+  case block = "block"
+  case flag = "flag"
 }

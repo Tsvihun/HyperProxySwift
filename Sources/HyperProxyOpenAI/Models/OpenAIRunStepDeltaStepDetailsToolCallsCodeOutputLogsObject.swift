@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenAIRunStepDeltaStepDetailsToolCallsCodeOutputLogsObject: Codable, Sendable {
   public var index: Int
   public var logs: String?
-  public var typeModel: OpenAIRunStepDeltaStepDetailsToolCallsCodeOutputLogsObjectTypeModel
+  public var kind: OpenAIRunStepDeltaStepDetailsToolCallsCodeOutputLogsObjectKind
 
   public init(
     index: Int,
-    typeModel: OpenAIRunStepDeltaStepDetailsToolCallsCodeOutputLogsObjectTypeModel,
+    kind: OpenAIRunStepDeltaStepDetailsToolCallsCodeOutputLogsObjectKind,
     logs: String? = nil
   ) {
     self.index = index
     self.logs = logs
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case index
     case logs
-    case typeModel = "type"
+    case kind = "type"
   }
 }

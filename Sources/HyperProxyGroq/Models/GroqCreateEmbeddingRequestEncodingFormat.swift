@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct GroqCreateEmbeddingRequestEncodingFormat: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let float = Self(rawValue: "float")
-  public static let base64 = Self(rawValue: "base64")
+public enum GroqCreateEmbeddingRequestEncodingFormat: String, Codable, Hashable, Sendable {
+  case float = "float"
+  case base64 = "base64"
 }

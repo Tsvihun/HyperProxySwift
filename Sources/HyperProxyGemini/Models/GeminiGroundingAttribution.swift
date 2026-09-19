@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiGroundingAttribution: Codable, Sendable {
-  public var content: HyperProxyJSONValue?
-  public var sourceId: HyperProxyJSONValue?
+  public var content: GeminiContent?
+  public var sourceId: GeminiAttributionSourceId?
 
   public init(
-    content: HyperProxyJSONValue? = nil,
-    sourceId: HyperProxyJSONValue? = nil
+    content: GeminiContent? = nil,
+    sourceId: GeminiAttributionSourceId? = nil
   ) {
     self.content = content
     self.sourceId = sourceId

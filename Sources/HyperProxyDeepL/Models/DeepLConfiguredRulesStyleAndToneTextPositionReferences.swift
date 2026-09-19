@@ -10,18 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesStyleAndToneTextPositionReferences: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesStyleAndToneTextPositionReferences: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static
-    let avoidDirectionalTermsAsOnlyReferenceToPositionInTextSpecifyExactPositionInstead = Self(
-      rawValue:
-        "avoid_directional_terms_as_only_reference_to_position_in_text_specify_exact_position_instead"
-    )
+  case avoidDirectionalTermsAsOnlyReferenceToPositionInTextSpecifyExactPositionInstead =
+    "avoid_directional_terms_as_only_reference_to_position_in_text_specify_exact_position_instead"
 }

@@ -16,7 +16,7 @@ public struct OpenAIImagesResponse: Codable, Sendable {
   public var data: [OpenAIImage]?
   public var outputFormat: OpenAIImagesResponseOutputFormat?
   public var quality: OpenAIImagesResponseQuality?
-  public var size: HyperProxyJSONValue?
+  public var size: OpenAIImagesResponseSize?
   public var usage: OpenAIImageGenUsage?
 
   public init(
@@ -25,7 +25,7 @@ public struct OpenAIImagesResponse: Codable, Sendable {
     data: [OpenAIImage]? = nil,
     outputFormat: OpenAIImagesResponseOutputFormat? = nil,
     quality: OpenAIImagesResponseQuality? = nil,
-    size: HyperProxyJSONValue? = nil,
+    size: OpenAIImagesResponseSize? = nil,
     usage: OpenAIImageGenUsage? = nil
   ) {
     self.background = background

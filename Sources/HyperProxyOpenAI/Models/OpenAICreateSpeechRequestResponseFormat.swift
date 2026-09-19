@@ -10,18 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAICreateSpeechRequestResponseFormat: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mp3 = Self(rawValue: "mp3")
-  public static let opus = Self(rawValue: "opus")
-  public static let aac = Self(rawValue: "aac")
-  public static let flac = Self(rawValue: "flac")
-  public static let wav = Self(rawValue: "wav")
-  public static let pcm = Self(rawValue: "pcm")
+public enum OpenAICreateSpeechRequestResponseFormat: String, Codable, Hashable, Sendable {
+  case mp3 = "mp3"
+  case opus = "opus"
+  case aac = "aac"
+  case flac = "flac"
+  case wav = "wav"
+  case pcm = "pcm"
 }

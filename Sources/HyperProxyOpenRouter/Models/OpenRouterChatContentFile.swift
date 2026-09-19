@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterChatContentFile: Codable, Sendable {
   public var file: OpenRouterChatContentFileFile
-  public var typeModel: OpenRouterChatContentFileTypeModel
+  public var kind: OpenRouterChatContentFileKind
 
   public init(
     file: OpenRouterChatContentFileFile,
-    typeModel: OpenRouterChatContentFileTypeModel
+    kind: OpenRouterChatContentFileKind
   ) {
     self.file = file
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case file
-    case typeModel = "type"
+    case kind = "type"
   }
 }

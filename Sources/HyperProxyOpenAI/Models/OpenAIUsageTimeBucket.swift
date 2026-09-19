@@ -13,13 +13,13 @@ import HyperProxyCore
 public struct OpenAIUsageTimeBucket: Codable, Sendable {
   public var endTime: Int
   public var object: OpenAIUsageTimeBucketObject
-  public var results: [HyperProxyJSONValue]
+  public var results: [OpenAIUsageTimeBucketResultsItem]
   public var startTime: Int
 
   public init(
     endTime: Int,
     object: OpenAIUsageTimeBucketObject,
-    results: [HyperProxyJSONValue],
+    results: [OpenAIUsageTimeBucketResultsItem],
     startTime: Int
   ) {
     self.endTime = endTime

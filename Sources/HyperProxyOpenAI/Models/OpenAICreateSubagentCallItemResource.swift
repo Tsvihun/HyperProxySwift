@@ -18,7 +18,7 @@ public struct OpenAICreateSubagentCallItemResource: Codable, Sendable {
   public var reasoningEffort: String
   public var status: OpenAIFunctionCallStatusResource
   public var turnId: String
-  public var typeModel: OpenAICreateSubagentCallItemResourceTypeModel
+  public var kind: OpenAICreateSubagentCallItemResourceKind
 
   public init(
     agentId: String,
@@ -28,7 +28,7 @@ public struct OpenAICreateSubagentCallItemResource: Codable, Sendable {
     reasoningEffort: String,
     status: OpenAIFunctionCallStatusResource,
     turnId: String,
-    typeModel: OpenAICreateSubagentCallItemResourceTypeModel
+    kind: OpenAICreateSubagentCallItemResourceKind
   ) {
     self.agentId = agentId
     self.content = content
@@ -37,7 +37,7 @@ public struct OpenAICreateSubagentCallItemResource: Codable, Sendable {
     self.reasoningEffort = reasoningEffort
     self.status = status
     self.turnId = turnId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct OpenAICreateSubagentCallItemResource: Codable, Sendable {
     case reasoningEffort = "reasoning_effort"
     case status
     case turnId = "turn_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

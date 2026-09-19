@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherRLStopReason: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let sTOPREASONLENGTH = Self(rawValue: "STOP_REASON_LENGTH")
-  public static let sTOPREASONSTOP = Self(rawValue: "STOP_REASON_STOP")
+public enum TogetherRLStopReason: String, Codable, Hashable, Sendable {
+  case sTOPREASONLENGTH = "STOP_REASON_LENGTH"
+  case sTOPREASONSTOP = "STOP_REASON_STOP"
 }

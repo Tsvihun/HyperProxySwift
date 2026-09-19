@@ -17,10 +17,10 @@ public struct OpenAIBetaInputFileContentParam: Codable, Sendable {
   public var fileUrl: String?
   public var filename: String?
   public var promptCacheBreakpoint: OpenAIBetaPromptCacheBreakpointParam?
-  public var typeModel: OpenAIBetaInputFileContentParamTypeModel
+  public var kind: OpenAIBetaInputFileContentParamKind
 
   public init(
-    typeModel: OpenAIBetaInputFileContentParamTypeModel,
+    kind: OpenAIBetaInputFileContentParamKind,
     detail: OpenAIBetaFileDetailEnum? = nil,
     fileData: String? = nil,
     fileId: String? = nil,
@@ -34,7 +34,7 @@ public struct OpenAIBetaInputFileContentParam: Codable, Sendable {
     self.fileUrl = fileUrl
     self.filename = filename
     self.promptCacheBreakpoint = promptCacheBreakpoint
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenAIBetaInputFileContentParam: Codable, Sendable {
     case fileUrl = "file_url"
     case filename
     case promptCacheBreakpoint = "prompt_cache_breakpoint"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

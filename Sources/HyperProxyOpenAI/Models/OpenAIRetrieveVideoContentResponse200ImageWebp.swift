@@ -10,4 +10,19 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIRetrieveVideoContentResponse200ImageWebp = String
+public struct OpenAIRetrieveVideoContentResponse200ImageWebp: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+}
+
+extension OpenAIRetrieveVideoContentResponse200ImageWebp: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self.init(rawValue: value)
+  }
+}

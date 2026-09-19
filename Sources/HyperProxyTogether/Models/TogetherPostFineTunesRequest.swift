@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherPostFineTunesRequest: Codable, Sendable {
-  public var batchSize: HyperProxyJSONValue?
+  public var batchSize: TogetherPostFineTunesRequestBatchSize?
   public var earlyStoppingEnabled: Bool?
   public var earlyStoppingMinDelta: Double?
   public var earlyStoppingPatience: Int?
@@ -34,10 +34,10 @@ public struct TogetherPostFineTunesRequest: Codable, Sendable {
   public var packing: Bool?
   public var randomSeed: Int?
   public var suffix: String?
-  public var trainOnInputs: HyperProxyJSONValue?
+  public var trainOnInputs: TogetherPostFineTunesRequestTrainOnInputs?
   public var trainingFile: String
-  public var trainingMethod: HyperProxyJSONValue?
-  public var trainingType: HyperProxyJSONValue?
+  public var trainingMethod: TogetherPostFineTunesRequestTrainingMethod?
+  public var trainingType: TogetherPostFineTunesRequestTrainingType?
   public var validationFile: String?
   public var wandbApiKey: String?
   public var wandbBaseUrl: String?
@@ -50,7 +50,7 @@ public struct TogetherPostFineTunesRequest: Codable, Sendable {
   public init(
     model: String,
     trainingFile: String,
-    batchSize: HyperProxyJSONValue? = nil,
+    batchSize: TogetherPostFineTunesRequestBatchSize? = nil,
     earlyStoppingEnabled: Bool? = nil,
     earlyStoppingMinDelta: Double? = nil,
     earlyStoppingPatience: Int? = nil,
@@ -72,9 +72,9 @@ public struct TogetherPostFineTunesRequest: Codable, Sendable {
     packing: Bool? = nil,
     randomSeed: Int? = nil,
     suffix: String? = nil,
-    trainOnInputs: HyperProxyJSONValue? = nil,
-    trainingMethod: HyperProxyJSONValue? = nil,
-    trainingType: HyperProxyJSONValue? = nil,
+    trainOnInputs: TogetherPostFineTunesRequestTrainOnInputs? = nil,
+    trainingMethod: TogetherPostFineTunesRequestTrainingMethod? = nil,
+    trainingType: TogetherPostFineTunesRequestTrainingType? = nil,
     validationFile: String? = nil,
     wandbApiKey: String? = nil,
     wandbBaseUrl: String? = nil,

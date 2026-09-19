@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralRestartConversationRequestHandoffExecution: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let client = Self(rawValue: "client")
-  public static let server = Self(rawValue: "server")
+public enum MistralRestartConversationRequestHandoffExecution: String, Codable, Hashable, Sendable {
+  case client = "client"
+  case server = "server"
 }

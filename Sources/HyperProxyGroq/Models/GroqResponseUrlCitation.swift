@@ -14,11 +14,11 @@ public struct GroqResponseUrlCitation: Codable, Sendable {
   public var endIndex: Int?
   public var startIndex: Int?
   public var title: String?
-  public var typeModel: GroqResponseUrlCitationTypeModel
+  public var kind: GroqResponseUrlCitationKind
   public var url: String
 
   public init(
-    typeModel: GroqResponseUrlCitationTypeModel,
+    kind: GroqResponseUrlCitationKind,
     url: String,
     endIndex: Int? = nil,
     startIndex: Int? = nil,
@@ -27,7 +27,7 @@ public struct GroqResponseUrlCitation: Codable, Sendable {
     self.endIndex = endIndex
     self.startIndex = startIndex
     self.title = title
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
@@ -35,7 +35,7 @@ public struct GroqResponseUrlCitation: Codable, Sendable {
     case endIndex = "end_index"
     case startIndex = "start_index"
     case title
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

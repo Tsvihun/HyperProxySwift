@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherDEABExperimentMemberRole: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let aBEXPERIMENTMEMBERROLECONTROL = Self(
-    rawValue: "AB_EXPERIMENT_MEMBER_ROLE_CONTROL")
-  public static let aBEXPERIMENTMEMBERROLEVARIANT = Self(
-    rawValue: "AB_EXPERIMENT_MEMBER_ROLE_VARIANT")
+public enum TogetherDEABExperimentMemberRole: String, Codable, Hashable, Sendable {
+  case aBEXPERIMENTMEMBERROLECONTROL = "AB_EXPERIMENT_MEMBER_ROLE_CONTROL"
+  case aBEXPERIMENTMEMBERROLEVARIANT = "AB_EXPERIMENT_MEMBER_ROLE_VARIANT"
 }

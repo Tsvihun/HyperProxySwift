@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct AnthropicBetaRequestAdvisorRedactedResultBlock: Codable, Sendable {
   public var encryptedContent: String
   public var stopReason: String?
-  public var typeModel: String
+  public var kind: AnthropicAdvisorRedactedResultKind
 
   public init(
     encryptedContent: String,
-    typeModel: String,
+    kind: AnthropicAdvisorRedactedResultKind = .advisorRedactedResult,
     stopReason: String? = nil
   ) {
     self.encryptedContent = encryptedContent
     self.stopReason = stopReason
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case encryptedContent = "encrypted_content"
     case stopReason = "stop_reason"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

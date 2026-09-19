@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherListEndpointsParametersUsageType: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let onDemand = Self(rawValue: "on-demand")
-  public static let reserved = Self(rawValue: "reserved")
+public enum TogetherListEndpointsParametersUsageType: String, Codable, Hashable, Sendable {
+  case onDemand = "on-demand"
+  case reserved = "reserved"
 }

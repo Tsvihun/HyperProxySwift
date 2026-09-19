@@ -14,24 +14,24 @@ public struct AnthropicBetaRequestFallbackBlock: Codable, Sendable {
   public var from: AnthropicBetaRequestFallbackHopInfo
   public var to: AnthropicBetaRequestFallbackHopInfo
   public var trigger: HyperProxyJSONValue?
-  public var typeModel: String
+  public var kind: AnthropicFallbackKind
 
   public init(
     from: AnthropicBetaRequestFallbackHopInfo,
     to: AnthropicBetaRequestFallbackHopInfo,
-    typeModel: String,
+    kind: AnthropicFallbackKind = .fallback,
     trigger: HyperProxyJSONValue? = nil
   ) {
     self.from = from
     self.to = to
     self.trigger = trigger
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case from
     case to
     case trigger
-    case typeModel = "type"
+    case kind = "type"
   }
 }

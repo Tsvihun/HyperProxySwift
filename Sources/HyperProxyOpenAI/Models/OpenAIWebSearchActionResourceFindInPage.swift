@@ -12,22 +12,22 @@ import HyperProxyCore
 
 public struct OpenAIWebSearchActionResourceFindInPage: Codable, Sendable {
   public var pattern: String
-  public var typeModel: OpenAIWebSearchActionResourceFindInPageTypeModel
+  public var kind: OpenAIWebSearchActionResourceFindInPageKind
   public var url: String
 
   public init(
     pattern: String,
-    typeModel: OpenAIWebSearchActionResourceFindInPageTypeModel,
+    kind: OpenAIWebSearchActionResourceFindInPageKind,
     url: String
   ) {
     self.pattern = pattern
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
   enum CodingKeys: String, CodingKey {
     case pattern
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

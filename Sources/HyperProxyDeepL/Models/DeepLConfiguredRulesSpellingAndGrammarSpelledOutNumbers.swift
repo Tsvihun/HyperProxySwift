@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesSpellingAndGrammarSpelledOutNumbers: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesSpellingAndGrammarSpelledOutNumbers: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useHyphens = Self(rawValue: "use_hyphens")
-  public static let useHyphensBetweenElementsUnder100AndNotSeparatedByFrenchWordEt = Self(
-    rawValue: "use_hyphens_between_elements_under_100_and_not_separated_by_french_word_et")
+  case useHyphens = "use_hyphens"
+  case useHyphensBetweenElementsUnder100AndNotSeparatedByFrenchWordEt =
+    "use_hyphens_between_elements_under_100_and_not_separated_by_french_word_et"
 }

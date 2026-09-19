@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicBetaResponseContainerUploadBlock: Codable, Sendable {
   public var fileId: String
-  public var typeModel: String
+  public var kind: AnthropicContainerUploadKind
 
   public init(
     fileId: String,
-    typeModel: String
+    kind: AnthropicContainerUploadKind = .containerUpload
   ) {
     self.fileId = fileId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case fileId = "file_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterVideoGenerationRequestProvider: Codable, Sendable {
-  public var options: HyperProxyJSONValue?
+  public var options: OpenRouterProviderOptions?
 
   public init(
-    options: HyperProxyJSONValue? = nil
+    options: OpenRouterProviderOptions? = nil
   ) {
     self.options = options
   }

@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIEnvironmentResourceNone: Codable, Sendable {
-  public var typeModel: OpenAIEnvironmentResourceNoneTypeModel
+  public var kind: OpenAIEnvironmentResourceNoneKind
 
   public init(
-    typeModel: OpenAIEnvironmentResourceNoneTypeModel
+    kind: OpenAIEnvironmentResourceNoneKind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

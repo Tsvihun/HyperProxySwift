@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterBooleanCapability: Codable, Sendable {
-  public var typeModel: OpenRouterBooleanCapabilityTypeModel
+  public var kind: OpenRouterBooleanCapabilityKind
 
   public init(
-    typeModel: OpenRouterBooleanCapabilityTypeModel
+    kind: OpenRouterBooleanCapabilityKind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

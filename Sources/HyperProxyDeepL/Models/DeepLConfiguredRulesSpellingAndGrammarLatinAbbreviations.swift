@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesSpellingAndGrammarLatinAbbreviations: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesSpellingAndGrammarLatinAbbreviations: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let doNotUseLatinAbbreviations = Self(rawValue: "do_not_use_latin_abbreviations")
+  case doNotUseLatinAbbreviations = "do_not_use_latin_abbreviations"
 }

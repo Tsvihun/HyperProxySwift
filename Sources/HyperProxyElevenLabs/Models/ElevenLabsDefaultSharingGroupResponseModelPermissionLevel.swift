@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsDefaultSharingGroupResponseModelPermissionLevel: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum ElevenLabsDefaultSharingGroupResponseModelPermissionLevel: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let admin = Self(rawValue: "admin")
-  public static let editor = Self(rawValue: "editor")
-  public static let viewer = Self(rawValue: "viewer")
+  case admin = "admin"
+  case editor = "editor"
+  case viewer = "viewer"
 }

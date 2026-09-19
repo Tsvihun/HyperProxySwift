@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaMessageStopEvent: Codable, Sendable {
-  public var typeModel: String
+  public var kind: AnthropicMessageStopKind
 
   public init(
-    typeModel: String
+    kind: AnthropicMessageStopKind = .messageStop
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

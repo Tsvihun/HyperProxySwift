@@ -14,24 +14,24 @@ public struct MistralPublicConnectionConfig: Codable, Sendable {
   public var baseUrl: String?
   public var headers: [String: String]?
   public var signed: Bool?
-  public var typeModel: MistralConnectionConfigType?
+  public var kind: MistralConnectionConfigType?
 
   public init(
     baseUrl: String? = nil,
     headers: [String: String]? = nil,
     signed: Bool? = nil,
-    typeModel: MistralConnectionConfigType? = nil
+    kind: MistralConnectionConfigType? = nil
   ) {
     self.baseUrl = baseUrl
     self.headers = headers
     self.signed = signed
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case baseUrl = "base_url"
     case headers
     case signed
-    case typeModel = "type"
+    case kind = "type"
   }
 }

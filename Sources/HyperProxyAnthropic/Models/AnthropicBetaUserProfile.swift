@@ -19,7 +19,7 @@ public struct AnthropicBetaUserProfile: Codable, Sendable {
   public var name: String?
   public var relationship: AnthropicBetaUserProfileRelationship?
   public var trustGrants: [String: AnthropicBetaUserProfileTrustGrant]
-  public var typeModel: AnthropicBetaUserProfileTypeModel
+  public var kind: AnthropicBetaUserProfileKind
   public var updatedAt: AnthropicBetaTimestamp
 
   public init(
@@ -27,7 +27,7 @@ public struct AnthropicBetaUserProfile: Codable, Sendable {
     id: String,
     metadata: [String: String],
     trustGrants: [String: AnthropicBetaUserProfileTrustGrant],
-    typeModel: AnthropicBetaUserProfileTypeModel,
+    kind: AnthropicBetaUserProfileKind,
     updatedAt: AnthropicBetaTimestamp,
     accessType: AnthropicBetaUserProfileAccessType? = nil,
     externalId: String? = nil,
@@ -42,7 +42,7 @@ public struct AnthropicBetaUserProfile: Codable, Sendable {
     self.name = name
     self.relationship = relationship
     self.trustGrants = trustGrants
-    self.typeModel = typeModel
+    self.kind = kind
     self.updatedAt = updatedAt
   }
 
@@ -55,7 +55,7 @@ public struct AnthropicBetaUserProfile: Codable, Sendable {
     case name
     case relationship
     case trustGrants = "trust_grants"
-    case typeModel = "type"
+    case kind = "type"
     case updatedAt = "updated_at"
   }
 }

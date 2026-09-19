@@ -50,6 +50,34 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
     return try await prepared.decoded(OpenRouterQueryAnalyticsResponse.self)
   }
 
+  public func createApiAlphaDecisions(
+    _ body: OpenRouterDecisionsRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterDecisionsResponse {
+    let call = self.call(.createApiAlphaDecisions)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenRouterDecisionsResponse.self)
+  }
+
+  public func createAudioSpeech(
+    _ body: OpenRouterSpeechRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.createAudioSpeech)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try prepared.bytes()
+  }
+
   public func createAudioTranscriptions(
     _ body: OpenRouterSTTRequest,
     query: [URLQueryItem] = [],
@@ -216,6 +244,22 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
     return try await call.decoded(OpenRouterContainerFile.self)
   }
 
+  public func downloadContainerFileContent(
+    containerId: String,
+    fileId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.downloadContainerFileContent)
+      .path("container_id", containerId)
+      .path("file_id", fileId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try call.bytes()
+  }
+
   public func promoteContainerFile(
     containerId: String,
     fileId: String,
@@ -299,13 +343,13 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) throws -> AsyncThrowingStream<OpenRouterCreateEmbeddingsResponse200Text, Error> {
+  ) throws -> AsyncThrowingStream<String, Error> {
     let call = self.call(.embeddingsCreate)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     let prepared = try call.json(body)
-    return try prepared.events(decoding: OpenRouterCreateEmbeddingsResponse200Text.self)
+    return try prepared.events(decoding: String.self)
   }
 
   public func listEmbeddingsModels(
@@ -370,6 +414,20 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(OpenRouterFileDeleteResponse.self)
+  }
+
+  public func downloadFileContent(
+    fileId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.downloadFileContent)
+      .path("file_id", fileId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try call.bytes()
   }
 
   public func generationRetrieve(
@@ -658,6 +716,120 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(OpenRouterImageModelEndpointsResponse.self)
+  }
+
+  public func listInterns(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterInternListResponse {
+    let call = self.call(.listInterns)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterInternListResponse.self)
+  }
+
+  public func createIntern(
+    _ body: OpenRouterCreateInternRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterIntern {
+    let call = self.call(.createIntern)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenRouterIntern.self)
+  }
+
+  public func getIntern(
+    internId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterIntern {
+    let call = self.call(.getIntern)
+      .path("internId", internId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterIntern.self)
+  }
+
+  public func updateIntern(
+    _ body: OpenRouterUpdateInternRequest,
+    internId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterIntern {
+    let call = self.call(.updateIntern)
+      .path("internId", internId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenRouterIntern.self)
+  }
+
+  public func deleteIntern(
+    internId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterDeleteInternResponse {
+    let call = self.call(.deleteIntern)
+      .path("internId", internId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterDeleteInternResponse.self)
+  }
+
+  public func createInternChatCompletion(
+    _ body: OpenRouterInternChatCompletionRequest,
+    internId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<OpenRouterInternChatStreamingResponse, Error> {
+    let call = self.call(.createInternChatCompletion)
+      .path("internId", internId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try prepared.events(decoding: OpenRouterInternChatStreamingResponse.self)
+  }
+
+  public func provisionIntern(
+    internId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterProvisionInternResponse {
+    let call = self.call(.provisionIntern)
+      .path("internId", internId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterProvisionInternResponse.self)
+  }
+
+  public func suspendIntern(
+    internId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterSuspendInternResponse {
+    let call = self.call(.suspendIntern)
+      .path("internId", internId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterSuspendInternResponse.self)
   }
 
   public func keyRetrieve(
@@ -1035,13 +1207,13 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) throws -> AsyncThrowingStream<OpenRouterCreateRerankResponse200Text, Error> {
+  ) throws -> AsyncThrowingStream<String, Error> {
     let call = self.call(.createRerank)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     let prepared = try call.json(body)
-    return try prepared.events(decoding: OpenRouterCreateRerankResponse200Text.self)
+    return try prepared.events(decoding: String.self)
   }
 
   public func listScimGroupMappings(
@@ -1152,6 +1324,82 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
     return try await call.decoded(OpenRouterGetScimSyncJobResponse.self)
   }
 
+  public func listInternVaultSecrets(
+    internId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterVaultSecretListResponse {
+    let call = self.call(.listInternVaultSecrets)
+      .path("internId", internId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterVaultSecretListResponse.self)
+  }
+
+  public func copyVaultSecretsToIntern(
+    _ body: OpenRouterVaultSecretCopyRequest,
+    internId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterVaultSecretCopyResponse {
+    let call = self.call(.copyVaultSecretsToIntern)
+      .path("internId", internId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenRouterVaultSecretCopyResponse.self)
+  }
+
+  public func storeInternVaultSecret(
+    _ body: OpenRouterVaultSecretWriteRequest,
+    internId: String,
+    name: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterVaultSecretResponse {
+    let call = self.call(.storeInternVaultSecret)
+      .path("internId", internId)
+      .path("name", name)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenRouterVaultSecretResponse.self)
+  }
+
+  public func listVaultSecrets(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterVaultSecretListResponse {
+    let call = self.call(.listVaultSecrets)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterVaultSecretListResponse.self)
+  }
+
+  public func storeVaultSecret(
+    _ body: OpenRouterVaultSecretWriteRequest,
+    name: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterVaultSecretResponse {
+    let call = self.call(.storeVaultSecret)
+      .path("name", name)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenRouterVaultSecretResponse.self)
+  }
+
   public func createVideos(
     _ body: OpenRouterVideoGenerationRequest,
     query: [URLQueryItem] = [],
@@ -1190,6 +1438,20 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(OpenRouterVideoGenerationResponse.self)
+  }
+
+  public func listVideosContent(
+    jobId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.listVideosContent)
+      .path("jobId", jobId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try call.bytes()
   }
 
   public func listWorkspaces(
@@ -1262,70 +1524,6 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
     return try await call.decoded(OpenRouterDeleteWorkspaceResponse.self)
   }
 
-  public func listWorkspaceBudgets(
-    id: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> OpenRouterListWorkspaceBudgetsResponse {
-    let call = self.call(.listWorkspaceBudgets)
-      .path("id", id)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(OpenRouterListWorkspaceBudgetsResponse.self)
-  }
-
-  public func getWorkspaceBudget(
-    id: String,
-    interval: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> OpenRouterGetWorkspaceBudgetResponse {
-    let call = self.call(.getWorkspaceBudget)
-      .path("id", id)
-      .path("interval", interval)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(OpenRouterGetWorkspaceBudgetResponse.self)
-  }
-
-  public func upsertWorkspaceBudget(
-    _ body: OpenRouterUpsertWorkspaceBudgetRequest,
-    id: String,
-    interval: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> OpenRouterUpsertWorkspaceBudgetResponse {
-    let call = self.call(.upsertWorkspaceBudget)
-      .path("id", id)
-      .path("interval", interval)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(OpenRouterUpsertWorkspaceBudgetResponse.self)
-  }
-
-  public func deleteWorkspaceBudget(
-    id: String,
-    interval: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> OpenRouterDeleteWorkspaceBudgetResponse {
-    let call = self.call(.deleteWorkspaceBudget)
-      .path("id", id)
-      .path("interval", interval)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(OpenRouterDeleteWorkspaceBudgetResponse.self)
-  }
-
   public func listWorkspaceMembers(
     id: String,
     query: [URLQueryItem] = [],
@@ -1370,5 +1568,69 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
       .timeout(timeout)
     let prepared = try call.json(body)
     return try await prepared.decoded(OpenRouterBulkRemoveWorkspaceMembersResponse.self)
+  }
+
+  public func listWorkspaceBudgets(
+    workspaceRef: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterListWorkspaceBudgetsResponse {
+    let call = self.call(.listWorkspaceBudgets)
+      .path("workspace_ref", workspaceRef)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterListWorkspaceBudgetsResponse.self)
+  }
+
+  public func getWorkspaceBudget(
+    workspaceRef: String,
+    interval: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterGetWorkspaceBudgetResponse {
+    let call = self.call(.getWorkspaceBudget)
+      .path("workspace_ref", workspaceRef)
+      .path("interval", interval)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterGetWorkspaceBudgetResponse.self)
+  }
+
+  public func upsertWorkspaceBudget(
+    _ body: OpenRouterUpsertWorkspaceBudgetRequest,
+    workspaceRef: String,
+    interval: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterUpsertWorkspaceBudgetResponse {
+    let call = self.call(.upsertWorkspaceBudget)
+      .path("workspace_ref", workspaceRef)
+      .path("interval", interval)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenRouterUpsertWorkspaceBudgetResponse.self)
+  }
+
+  public func deleteWorkspaceBudget(
+    workspaceRef: String,
+    interval: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterDeleteWorkspaceBudgetResponse {
+    let call = self.call(.deleteWorkspaceBudget)
+      .path("workspace_ref", workspaceRef)
+      .path("interval", interval)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterDeleteWorkspaceBudgetResponse.self)
   }
 }

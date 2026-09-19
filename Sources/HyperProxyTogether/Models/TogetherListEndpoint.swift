@@ -15,20 +15,20 @@ public struct TogetherListEndpoint: Codable, Sendable {
   public var id: String
   public var model: String
   public var name: String
-  public var object: HyperProxyJSONValue
+  public var object: TogetherEndpointObject
   public var owner: String
   public var state: TogetherListEndpointState
-  public var typeModel: TogetherListEndpointTypeModel
+  public var kind: TogetherListEndpointKind
 
   public init(
     createdAt: String,
     id: String,
     model: String,
     name: String,
-    object: HyperProxyJSONValue,
     owner: String,
     state: TogetherListEndpointState,
-    typeModel: TogetherListEndpointTypeModel
+    kind: TogetherListEndpointKind,
+    object: TogetherEndpointObject = .endpoint
   ) {
     self.createdAt = createdAt
     self.id = id
@@ -37,7 +37,7 @@ public struct TogetherListEndpoint: Codable, Sendable {
     self.object = object
     self.owner = owner
     self.state = state
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct TogetherListEndpoint: Codable, Sendable {
     case object
     case owner
     case state
-    case typeModel = "type"
+    case kind = "type"
   }
 }

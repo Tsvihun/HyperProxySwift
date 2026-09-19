@@ -16,24 +16,24 @@ public struct OpenAIRealtimeBetaServerEventConversationItemInputAudioTranscripti
   public var code: String?
   public var message: String?
   public var param: String?
-  public var typeModel: String?
+  public var kind: String?
 
   public init(
     code: String? = nil,
     message: String? = nil,
     param: String? = nil,
-    typeModel: String? = nil
+    kind: String? = nil
   ) {
     self.code = code
     self.message = message
     self.param = param
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case code
     case message
     case param
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -16,13 +16,13 @@ public struct AnthropicBetaManagedAgentsMcpOauthRefreshParams: Codable, Sendable
   public var resource: String?
   public var scope: String?
   public var tokenEndpoint: String
-  public var tokenEndpointAuth: HyperProxyJSONValue
+  public var tokenEndpointAuth: AnthropicBetaManagedAgentsMcpOauthRefreshParamsTokenEndpointAuth
 
   public init(
     clientId: String,
     refreshToken: String,
     tokenEndpoint: String,
-    tokenEndpointAuth: HyperProxyJSONValue,
+    tokenEndpointAuth: AnthropicBetaManagedAgentsMcpOauthRefreshParamsTokenEndpointAuth,
     resource: String? = nil,
     scope: String? = nil
   ) {

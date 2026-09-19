@@ -10,16 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct GroqCreateChatCompletionRequestReasoningFormat: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let hidden = Self(rawValue: "hidden")
-  public static let raw = Self(rawValue: "raw")
-  public static let parsed = Self(rawValue: "parsed")
+public enum GroqCreateChatCompletionRequestReasoningFormat: String, Codable, Hashable, Sendable {
+  case hidden = "hidden"
+  case raw = "raw"
+  case parsed = "parsed"
 }

@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsEndCallToolConfig: Codable, Sendable {
-  public var systemToolType: String?
+  public var systemToolType: ElevenLabsEndCallSystemToolType?
 
   public init(
-    systemToolType: String? = nil
+    systemToolType: ElevenLabsEndCallSystemToolType? = nil
   ) {
     self.systemToolType = systemToolType
   }

@@ -25,6 +25,8 @@ public struct OpenAIAuditLog: Codable, Sendable {
   public var effectiveAt: Int
   public var externalKeyRegistered: OpenAIAuditLogExternalKeyRegistered?
   public var externalKeyRemoved: OpenAIAuditLogExternalKeyRemoved?
+  public var externalStorageRegistered: OpenAIAuditLogExternalStorageRegistered?
+  public var externalStorageRemoved: OpenAIAuditLogExternalStorageRemoved?
   public var groupCreated: OpenAIAuditLogGroupCreated?
   public var groupDeleted: OpenAIAuditLogGroupDeleted?
   public var groupUpdated: OpenAIAuditLogGroupUpdated?
@@ -61,7 +63,7 @@ public struct OpenAIAuditLog: Codable, Sendable {
   public var serviceAccountCreated: OpenAIAuditLogServiceAccountCreated?
   public var serviceAccountDeleted: OpenAIAuditLogServiceAccountDeleted?
   public var serviceAccountUpdated: OpenAIAuditLogServiceAccountUpdated?
-  public var typeModel: OpenAIAuditLogEventType
+  public var kind: OpenAIAuditLogEventType
   public var userAdded: OpenAIAuditLogUserAdded?
   public var userDeleted: OpenAIAuditLogUserDeleted?
   public var userUpdated: OpenAIAuditLogUserUpdated?
@@ -78,7 +80,7 @@ public struct OpenAIAuditLog: Codable, Sendable {
   public init(
     effectiveAt: Int,
     id: String,
-    typeModel: OpenAIAuditLogEventType,
+    kind: OpenAIAuditLogEventType,
     actor: OpenAIAuditLogActor? = nil,
     apiKeyCreated: OpenAIAuditLogApiKeyCreated? = nil,
     apiKeyDeleted: OpenAIAuditLogApiKeyDeleted? = nil,
@@ -92,6 +94,8 @@ public struct OpenAIAuditLog: Codable, Sendable {
     checkpointPermissionDeleted: OpenAIAuditLogCheckpointPermissionDeleted? = nil,
     externalKeyRegistered: OpenAIAuditLogExternalKeyRegistered? = nil,
     externalKeyRemoved: OpenAIAuditLogExternalKeyRemoved? = nil,
+    externalStorageRegistered: OpenAIAuditLogExternalStorageRegistered? = nil,
+    externalStorageRemoved: OpenAIAuditLogExternalStorageRemoved? = nil,
     groupCreated: OpenAIAuditLogGroupCreated? = nil,
     groupDeleted: OpenAIAuditLogGroupDeleted? = nil,
     groupUpdated: OpenAIAuditLogGroupUpdated? = nil,
@@ -154,6 +158,8 @@ public struct OpenAIAuditLog: Codable, Sendable {
     self.effectiveAt = effectiveAt
     self.externalKeyRegistered = externalKeyRegistered
     self.externalKeyRemoved = externalKeyRemoved
+    self.externalStorageRegistered = externalStorageRegistered
+    self.externalStorageRemoved = externalStorageRemoved
     self.groupCreated = groupCreated
     self.groupDeleted = groupDeleted
     self.groupUpdated = groupUpdated
@@ -190,7 +196,7 @@ public struct OpenAIAuditLog: Codable, Sendable {
     self.serviceAccountCreated = serviceAccountCreated
     self.serviceAccountDeleted = serviceAccountDeleted
     self.serviceAccountUpdated = serviceAccountUpdated
-    self.typeModel = typeModel
+    self.kind = kind
     self.userAdded = userAdded
     self.userDeleted = userDeleted
     self.userUpdated = userUpdated
@@ -217,6 +223,8 @@ public struct OpenAIAuditLog: Codable, Sendable {
     case effectiveAt = "effective_at"
     case externalKeyRegistered = "external_key.registered"
     case externalKeyRemoved = "external_key.removed"
+    case externalStorageRegistered = "external_storage.registered"
+    case externalStorageRemoved = "external_storage.removed"
     case groupCreated = "group.created"
     case groupDeleted = "group.deleted"
     case groupUpdated = "group.updated"
@@ -253,7 +261,7 @@ public struct OpenAIAuditLog: Codable, Sendable {
     case serviceAccountCreated = "service_account.created"
     case serviceAccountDeleted = "service_account.deleted"
     case serviceAccountUpdated = "service_account.updated"
-    case typeModel = "type"
+    case kind = "type"
     case userAdded = "user.added"
     case userDeleted = "user.deleted"
     case userUpdated = "user.updated"

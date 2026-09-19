@@ -14,24 +14,24 @@ public struct FalGetAssetCollectionHierarchyResponseHierarchyChildrenItem: Codab
   public var children: [FalGetAssetCollectionHierarchyResponseHierarchyChildrenItemChildrenItem]
   public var id: String
   public var name: String
-  public var typeModel: FalGetAssetCollectionHierarchyResponseHierarchyChildrenItemTypeModel
+  public var kind: FalGetAssetCollectionHierarchyResponseHierarchyChildrenItemKind
 
   public init(
     children: [FalGetAssetCollectionHierarchyResponseHierarchyChildrenItemChildrenItem],
     id: String,
     name: String,
-    typeModel: FalGetAssetCollectionHierarchyResponseHierarchyChildrenItemTypeModel
+    kind: FalGetAssetCollectionHierarchyResponseHierarchyChildrenItemKind
   ) {
     self.children = children
     self.id = id
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case children
     case id
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

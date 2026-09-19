@@ -10,14 +10,14 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiSchema: Codable, Sendable {
-  public var anyOf: [HyperProxyJSONValue]?
+public final class GeminiSchema: Codable, @unchecked Sendable {
+  public var anyOf: [GeminiSchema]?
   public var defaultValue: HyperProxyJSONValue?
   public var description: String?
   public var enumValue: [String]?
   public var example: HyperProxyJSONValue?
   public var format: String?
-  public var items: HyperProxyJSONValue?
+  public var items: GeminiSchema?
   public var maxItems: String?
   public var maxLength: String?
   public var maxProperties: String?
@@ -28,20 +28,20 @@ public struct GeminiSchema: Codable, Sendable {
   public var minimum: Double?
   public var nullable: Bool?
   public var pattern: String?
-  public var properties: [String: HyperProxyJSONValue]?
+  public var properties: [String: GeminiSchema]?
   public var propertyOrdering: [String]?
   public var requiredValue: [String]?
   public var title: String?
-  public var typeModel: GeminiSchemaTypeModel?
+  public var kind: GeminiSchemaKind?
 
   public init(
-    anyOf: [HyperProxyJSONValue]? = nil,
+    anyOf: [GeminiSchema]? = nil,
     defaultValue: HyperProxyJSONValue? = nil,
     description: String? = nil,
     enumValue: [String]? = nil,
     example: HyperProxyJSONValue? = nil,
     format: String? = nil,
-    items: HyperProxyJSONValue? = nil,
+    items: GeminiSchema? = nil,
     maxItems: String? = nil,
     maxLength: String? = nil,
     maxProperties: String? = nil,
@@ -52,11 +52,11 @@ public struct GeminiSchema: Codable, Sendable {
     minimum: Double? = nil,
     nullable: Bool? = nil,
     pattern: String? = nil,
-    properties: [String: HyperProxyJSONValue]? = nil,
+    properties: [String: GeminiSchema]? = nil,
     propertyOrdering: [String]? = nil,
     requiredValue: [String]? = nil,
     title: String? = nil,
-    typeModel: GeminiSchemaTypeModel? = nil
+    kind: GeminiSchemaKind? = nil
   ) {
     self.anyOf = anyOf
     self.defaultValue = defaultValue
@@ -79,7 +79,7 @@ public struct GeminiSchema: Codable, Sendable {
     self.propertyOrdering = propertyOrdering
     self.requiredValue = requiredValue
     self.title = title
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -104,6 +104,6 @@ public struct GeminiSchema: Codable, Sendable {
     case propertyOrdering
     case requiredValue = "required"
     case title
-    case typeModel = "type"
+    case kind = "type"
   }
 }

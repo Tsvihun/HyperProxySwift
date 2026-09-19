@@ -11,26 +11,26 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterAnthropicUsage: Codable, Sendable {
-  public var cacheCreation: OpenRouterAnthropicCacheCreation
+  public var cacheCreation: OpenRouterAnthropicCacheCreation?
   public var cacheCreationInputTokens: Int
   public var cacheReadInputTokens: Int
   public var inferenceGeo: String
   public var inputTokens: Int
   public var outputTokens: Int
-  public var outputTokensDetails: OpenRouterAnthropicOutputTokensDetails
-  public var serverToolUse: OpenRouterAnthropicServerToolUsage
-  public var serviceTier: OpenRouterAnthropicServiceTier
+  public var outputTokensDetails: OpenRouterAnthropicOutputTokensDetails?
+  public var serverToolUse: OpenRouterAnthropicServerToolUsage?
+  public var serviceTier: OpenRouterAnthropicServiceTier?
 
   public init(
-    cacheCreation: OpenRouterAnthropicCacheCreation,
+    cacheCreation: OpenRouterAnthropicCacheCreation?,
     cacheCreationInputTokens: Int,
     cacheReadInputTokens: Int,
     inferenceGeo: String,
     inputTokens: Int,
     outputTokens: Int,
-    outputTokensDetails: OpenRouterAnthropicOutputTokensDetails,
-    serverToolUse: OpenRouterAnthropicServerToolUsage,
-    serviceTier: OpenRouterAnthropicServiceTier
+    outputTokensDetails: OpenRouterAnthropicOutputTokensDetails?,
+    serverToolUse: OpenRouterAnthropicServerToolUsage?,
+    serviceTier: OpenRouterAnthropicServiceTier?
   ) {
     self.cacheCreation = cacheCreation
     self.cacheCreationInputTokens = cacheCreationInputTokens

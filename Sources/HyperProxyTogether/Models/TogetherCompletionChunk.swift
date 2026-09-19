@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct TogetherCompletionChunk: Codable, Sendable {
   public var choices: [TogetherCompletionChoice]
   public var created: Int?
-  public var finishReason: HyperProxyJSONValue
+  public var finishReason: TogetherFinishReason
   public var id: String
-  public var object: HyperProxyJSONValue?
+  public var object: TogetherCompletionChunkObject?
   public var seed: Int?
   public var token: TogetherCompletionToken
-  public var usage: HyperProxyJSONValue
+  public var usage: TogetherUsageData?
 
   public init(
     choices: [TogetherCompletionChoice],
-    finishReason: HyperProxyJSONValue,
+    finishReason: TogetherFinishReason,
     id: String,
     token: TogetherCompletionToken,
-    usage: HyperProxyJSONValue,
+    usage: TogetherUsageData?,
     created: Int? = nil,
-    object: HyperProxyJSONValue? = nil,
+    object: TogetherCompletionChunkObject? = nil,
     seed: Int? = nil
   ) {
     self.choices = choices

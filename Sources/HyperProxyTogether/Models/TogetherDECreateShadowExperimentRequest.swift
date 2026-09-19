@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct TogetherDECreateShadowExperimentRequest: Codable, Sendable {
   public var name: String
-  public var source: HyperProxyJSONValue
+  public var source: TogetherDEShadowExperimentSource
   public var targets: [TogetherDECreateShadowExperimentTargetRequest]?
 
   public init(
     name: String,
-    source: HyperProxyJSONValue,
+    source: TogetherDEShadowExperimentSource,
     targets: [TogetherDECreateShadowExperimentTargetRequest]? = nil
   ) {
     self.name = name

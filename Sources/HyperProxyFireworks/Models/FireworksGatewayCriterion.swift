@@ -14,24 +14,24 @@ public struct FireworksGatewayCriterion: Codable, Sendable {
   public var codeSnippets: FireworksGatewayCodeSnippets?
   public var description: String?
   public var name: String?
-  public var typeModel: FireworksGatewayCriterionType?
+  public var kind: FireworksGatewayCriterionType?
 
   public init(
     codeSnippets: FireworksGatewayCodeSnippets? = nil,
     description: String? = nil,
     name: String? = nil,
-    typeModel: FireworksGatewayCriterionType? = nil
+    kind: FireworksGatewayCriterionType? = nil
   ) {
     self.codeSnippets = codeSnippets
     self.description = description
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case codeSnippets
     case description
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

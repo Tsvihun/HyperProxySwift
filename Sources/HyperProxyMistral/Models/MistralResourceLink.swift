@@ -19,13 +19,13 @@ public struct MistralResourceLink: Codable, Sendable {
   public var name: String
   public var size: Int?
   public var title: String?
-  public var typeModel: String
+  public var kind: MistralResourceLinkKind
   public var uri: String
 
   public init(
     name: String,
-    typeModel: String,
     uri: String,
+    kind: MistralResourceLinkKind = .resourceLink,
     meta: [String: HyperProxyJSONValue]? = nil,
     annotations: MistralAnnotations? = nil,
     description: String? = nil,
@@ -42,7 +42,7 @@ public struct MistralResourceLink: Codable, Sendable {
     self.name = name
     self.size = size
     self.title = title
-    self.typeModel = typeModel
+    self.kind = kind
     self.uri = uri
   }
 
@@ -55,7 +55,7 @@ public struct MistralResourceLink: Codable, Sendable {
     case name
     case size
     case title
-    case typeModel = "type"
+    case kind = "type"
     case uri
   }
 }

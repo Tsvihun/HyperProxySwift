@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAILiveInputAudioAppend: Codable, Sendable {
   public var audio: String
-  public var typeModel: OpenAILiveInputAudioAppendTypeModel
+  public var kind: OpenAILiveInputAudioAppendKind
 
   public init(
     audio: String,
-    typeModel: OpenAILiveInputAudioAppendTypeModel
+    kind: OpenAILiveInputAudioAppendKind
   ) {
     self.audio = audio
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case audio
-    case typeModel = "type"
+    case kind = "type"
   }
 }

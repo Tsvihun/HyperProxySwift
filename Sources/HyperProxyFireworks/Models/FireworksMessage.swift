@@ -15,20 +15,20 @@ public struct FireworksMessage: Codable, Sendable {
   public var id: String
   public var role: String
   public var status: String
-  public var typeModel: String?
+  public var kind: String?
 
   public init(
     content: [FireworksMessageContent],
     id: String,
     role: String,
     status: String,
-    typeModel: String? = nil
+    kind: String? = nil
   ) {
     self.content = content
     self.id = id
     self.role = role
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct FireworksMessage: Codable, Sendable {
     case id
     case role
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

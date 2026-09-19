@@ -14,13 +14,13 @@ public struct GeminiGoogleAiGenerativelanguageV1betaGroundingSupport: Codable, S
   public var confidenceScores: [Double]?
   public var groundingChunkIndices: [Int]?
   public var renderedParts: [Int]?
-  public var segment: HyperProxyJSONValue?
+  public var segment: GeminiGoogleAiGenerativelanguageV1betaSegment?
 
   public init(
     confidenceScores: [Double]? = nil,
     groundingChunkIndices: [Int]? = nil,
     renderedParts: [Int]? = nil,
-    segment: HyperProxyJSONValue? = nil
+    segment: GeminiGoogleAiGenerativelanguageV1betaSegment? = nil
   ) {
     self.confidenceScores = confidenceScores
     self.groundingChunkIndices = groundingChunkIndices

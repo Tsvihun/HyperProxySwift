@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct TogetherVolumeContent: Codable, Sendable {
   public var files: [TogetherFileInfo]?
   public var sourcePrefix: String?
-  public var typeModel: TogetherVolumeContentTypeModel?
+  public var kind: TogetherVolumeContentKind?
 
   public init(
     files: [TogetherFileInfo]? = nil,
     sourcePrefix: String? = nil,
-    typeModel: TogetherVolumeContentTypeModel? = nil
+    kind: TogetherVolumeContentKind? = nil
   ) {
     self.files = files
     self.sourcePrefix = sourcePrefix
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case files
     case sourcePrefix = "source_prefix"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -12,22 +12,22 @@ import HyperProxyCore
 
 public struct ElevenLabsCreateStringEnvironmentVariableRequest: Codable, Sendable {
   public var label: String
-  public var typeModel: String
+  public var kind: ElevenLabsStringKind
   public var values: [String: String]
 
   public init(
     label: String,
-    typeModel: String,
-    values: [String: String]
+    values: [String: String],
+    kind: ElevenLabsStringKind = .string
   ) {
     self.label = label
-    self.typeModel = typeModel
+    self.kind = kind
     self.values = values
   }
 
   enum CodingKeys: String, CodingKey {
     case label
-    case typeModel = "type"
+    case kind = "type"
     case values
   }
 }

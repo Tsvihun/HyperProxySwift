@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct GroqResponseItemReference: Codable, Sendable {
   public var id: String
-  public var typeModel: GroqResponseItemReferenceTypeModel
+  public var kind: GroqResponseItemReferenceKind
 
   public init(
     id: String,
-    typeModel: GroqResponseItemReferenceTypeModel
+    kind: GroqResponseItemReferenceKind
   ) {
     self.id = id
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case id
-    case typeModel = "type"
+    case kind = "type"
   }
 }

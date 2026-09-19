@@ -15,7 +15,7 @@ public struct AnthropicBetaMessageDeltaUsage: Codable, Sendable {
   public var cacheReadInputTokens: Int?
   public var fallbackCredit: AnthropicBetaFallbackCreditUsage?
   public var inputTokens: Int?
-  public var iterations: AnthropicBetaIterationsUsage
+  public var iterations: AnthropicBetaIterationsUsage?
   public var outputTokens: Int
   public var outputTokensDetails: AnthropicBetaOutputTokensDetails?
   public var serverToolUse: AnthropicBetaServerToolUsage?
@@ -25,7 +25,7 @@ public struct AnthropicBetaMessageDeltaUsage: Codable, Sendable {
     cacheReadInputTokens: Int?,
     fallbackCredit: AnthropicBetaFallbackCreditUsage?,
     inputTokens: Int?,
-    iterations: AnthropicBetaIterationsUsage,
+    iterations: AnthropicBetaIterationsUsage?,
     outputTokens: Int,
     outputTokensDetails: AnthropicBetaOutputTokensDetails?,
     serverToolUse: AnthropicBetaServerToolUsage?

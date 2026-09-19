@@ -10,18 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaSelfHostedWorkHeartbeatResponseState: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let queued = Self(rawValue: "queued")
-  public static let starting = Self(rawValue: "starting")
-  public static let active = Self(rawValue: "active")
-  public static let stopping = Self(rawValue: "stopping")
-  public static let stopped = Self(rawValue: "stopped")
+public enum AnthropicBetaSelfHostedWorkHeartbeatResponseState: String, Codable, Hashable, Sendable {
+  case queued = "queued"
+  case starting = "starting"
+  case active = "active"
+  case stopping = "stopping"
+  case stopped = "stopped"
 }

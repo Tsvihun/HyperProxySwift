@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsCustomLLMAPIType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let chatCompletions = Self(rawValue: "chat_completions")
-  public static let responses = Self(rawValue: "responses")
-  public static let websocket = Self(rawValue: "websocket")
+public enum ElevenLabsCustomLLMAPIType: String, Codable, Hashable, Sendable {
+  case chatCompletions = "chat_completions"
+  case responses = "responses"
+  case websocket = "websocket"
 }

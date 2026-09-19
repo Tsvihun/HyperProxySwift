@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterAnthropicWebFetchToolResultError: Codable, Sendable {
   public var errorCode: OpenRouterAnthropicWebFetchToolResultErrorErrorCode
-  public var typeModel: OpenRouterAnthropicWebFetchToolResultErrorTypeModel
+  public var kind: OpenRouterAnthropicWebFetchToolResultErrorKind
 
   public init(
     errorCode: OpenRouterAnthropicWebFetchToolResultErrorErrorCode,
-    typeModel: OpenRouterAnthropicWebFetchToolResultErrorTypeModel
+    kind: OpenRouterAnthropicWebFetchToolResultErrorKind
   ) {
     self.errorCode = errorCode
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case errorCode = "error_code"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

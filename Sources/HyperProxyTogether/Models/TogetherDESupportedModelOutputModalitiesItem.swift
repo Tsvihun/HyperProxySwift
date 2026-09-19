@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherDESupportedModelOutputModalitiesItem: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mODALITYTEXT = Self(rawValue: "MODALITY_TEXT")
-  public static let mODALITYIMAGE = Self(rawValue: "MODALITY_IMAGE")
-  public static let mODALITYAUDIO = Self(rawValue: "MODALITY_AUDIO")
-  public static let mODALITYVIDEO = Self(rawValue: "MODALITY_VIDEO")
+public enum TogetherDESupportedModelOutputModalitiesItem: String, Codable, Hashable, Sendable {
+  case mODALITYTEXT = "MODALITY_TEXT"
+  case mODALITYIMAGE = "MODALITY_IMAGE"
+  case mODALITYAUDIO = "MODALITY_AUDIO"
+  case mODALITYVIDEO = "MODALITY_VIDEO"
 }

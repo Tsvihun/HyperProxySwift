@@ -17,10 +17,10 @@ public struct OpenAICreateCompletionRequest: Codable, Sendable {
   public var logitBias: [String: Int]?
   public var logprobs: Int?
   public var maxTokens: Int?
-  public var model: HyperProxyJSONValue
+  public var model: OpenAICreateCompletionRequestModel
   public var n: Int?
   public var presencePenalty: Double?
-  public var prompt: HyperProxyJSONValue?
+  public var prompt: OpenAICreateCompletionRequestPrompt?
   public var seed: Int64?
   public var stop: OpenAIStopConfiguration?
   public var stream: Bool?
@@ -31,8 +31,8 @@ public struct OpenAICreateCompletionRequest: Codable, Sendable {
   public var user: String?
 
   public init(
-    model: HyperProxyJSONValue,
-    prompt: HyperProxyJSONValue?,
+    model: OpenAICreateCompletionRequestModel,
+    prompt: OpenAICreateCompletionRequestPrompt?,
     bestOf: Int? = nil,
     echo: Bool? = nil,
     frequencyPenalty: Double? = nil,

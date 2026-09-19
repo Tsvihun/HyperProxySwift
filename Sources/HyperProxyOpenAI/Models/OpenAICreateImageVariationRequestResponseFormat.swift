@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAICreateImageVariationRequestResponseFormat: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let url = Self(rawValue: "url")
-  public static let b64Json = Self(rawValue: "b64_json")
+public enum OpenAICreateImageVariationRequestResponseFormat: String, Codable, Hashable, Sendable {
+  case url = "url"
+  case b64Json = "b64_json"
 }

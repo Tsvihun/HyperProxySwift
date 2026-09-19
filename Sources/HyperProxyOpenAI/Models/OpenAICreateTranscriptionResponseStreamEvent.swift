@@ -10,4 +10,33 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAICreateTranscriptionResponseStreamEvent = HyperProxyJSONValue
+public enum OpenAICreateTranscriptionResponseStreamEvent: Codable, Sendable {
+  case transcriptTextSegmentEvent(OpenAITranscriptTextSegmentEvent)
+  case transcriptTextDeltaEvent(OpenAITranscriptTextDeltaEvent)
+  case transcriptTextDoneEvent(OpenAITranscriptTextDoneEvent)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(OpenAITranscriptTextSegmentEvent.self) {
+      self = .transcriptTextSegmentEvent(value)
+      return
+    }
+    if let value = try? container.decode(OpenAITranscriptTextDeltaEvent.self) {
+      self = .transcriptTextDeltaEvent(value)
+      return
+    }
+    self = .transcriptTextDoneEvent(try container.decode(OpenAITranscriptTextDoneEvent.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .transcriptTextSegmentEvent(let value):
+      try container.encode(value)
+    case .transcriptTextDeltaEvent(let value):
+      try container.encode(value)
+    case .transcriptTextDoneEvent(let value):
+      try container.encode(value)
+    }
+  }
+}

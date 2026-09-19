@@ -12,14 +12,14 @@ import HyperProxyCore
 
 public struct MistralConnectorGetAuthUrlV1Parameters: Codable, Sendable {
   public var appReturnUrl: String?
-  public var connectorIdOrName: String
+  public var connectorIdOrName: MistralConnectorGetAuthUrlV1ParametersConnectorIdOrName
   public var credentialsName: String?
   public var credentialsTitle: String?
   public var githubInstallationLink: Bool?
   public var methodType: MistralOutboundAuthenticationType?
 
   public init(
-    connectorIdOrName: String,
+    connectorIdOrName: MistralConnectorGetAuthUrlV1ParametersConnectorIdOrName,
     appReturnUrl: String? = nil,
     credentialsName: String? = nil,
     credentialsTitle: String? = nil,

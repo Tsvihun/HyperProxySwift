@@ -11,27 +11,27 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralCustomConnector: Codable, Sendable {
-  public var authorization: HyperProxyJSONValue?
+  public var authorization: MistralCustomConnectorAuthorizationAnyOf1?
   public var connectorId: String
   public var toolConfiguration: MistralToolConfiguration?
-  public var typeModel: MistralCustomConnectorTypeModel?
+  public var kind: MistralCustomConnectorKind?
 
   public init(
     connectorId: String,
-    authorization: HyperProxyJSONValue? = nil,
+    authorization: MistralCustomConnectorAuthorizationAnyOf1? = nil,
     toolConfiguration: MistralToolConfiguration? = nil,
-    typeModel: MistralCustomConnectorTypeModel? = nil
+    kind: MistralCustomConnectorKind? = nil
   ) {
     self.authorization = authorization
     self.connectorId = connectorId
     self.toolConfiguration = toolConfiguration
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case authorization
     case connectorId = "connector_id"
     case toolConfiguration = "tool_configuration"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

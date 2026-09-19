@@ -15,7 +15,7 @@ public struct AnthropicBetaManagedAgentsFileResource: Codable, Sendable {
   public var fileId: String
   public var id: String
   public var mountPath: String
-  public var typeModel: AnthropicBetaManagedAgentsFileResourceTypeModel
+  public var kind: AnthropicBetaManagedAgentsFileResourceKind
   public var updatedAt: AnthropicBetaTimestamp
 
   public init(
@@ -23,14 +23,14 @@ public struct AnthropicBetaManagedAgentsFileResource: Codable, Sendable {
     fileId: String,
     id: String,
     mountPath: String,
-    typeModel: AnthropicBetaManagedAgentsFileResourceTypeModel,
+    kind: AnthropicBetaManagedAgentsFileResourceKind,
     updatedAt: AnthropicBetaTimestamp
   ) {
     self.createdAt = createdAt
     self.fileId = fileId
     self.id = id
     self.mountPath = mountPath
-    self.typeModel = typeModel
+    self.kind = kind
     self.updatedAt = updatedAt
   }
 
@@ -39,7 +39,7 @@ public struct AnthropicBetaManagedAgentsFileResource: Codable, Sendable {
     case fileId = "file_id"
     case id
     case mountPath = "mount_path"
-    case typeModel = "type"
+    case kind = "type"
     case updatedAt = "updated_at"
   }
 }

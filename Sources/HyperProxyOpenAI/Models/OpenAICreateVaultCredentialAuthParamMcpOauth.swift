@@ -15,12 +15,12 @@ public struct OpenAICreateVaultCredentialAuthParamMcpOauth: Codable, Sendable {
   public var expiresAt: String?
   public var mcpServerUrl: String
   public var refresh: OpenAICreateMcpOauthRefreshParam?
-  public var typeModel: OpenAICreateVaultCredentialAuthParamMcpOauthTypeModel
+  public var kind: OpenAICreateVaultCredentialAuthParamMcpOauthKind
 
   public init(
     accessToken: String,
     mcpServerUrl: String,
-    typeModel: OpenAICreateVaultCredentialAuthParamMcpOauthTypeModel,
+    kind: OpenAICreateVaultCredentialAuthParamMcpOauthKind,
     expiresAt: String? = nil,
     refresh: OpenAICreateMcpOauthRefreshParam? = nil
   ) {
@@ -28,7 +28,7 @@ public struct OpenAICreateVaultCredentialAuthParamMcpOauth: Codable, Sendable {
     self.expiresAt = expiresAt
     self.mcpServerUrl = mcpServerUrl
     self.refresh = refresh
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAICreateVaultCredentialAuthParamMcpOauth: Codable, Sendable {
     case expiresAt = "expires_at"
     case mcpServerUrl = "mcp_server_url"
     case refresh
-    case typeModel = "type"
+    case kind = "type"
   }
 }

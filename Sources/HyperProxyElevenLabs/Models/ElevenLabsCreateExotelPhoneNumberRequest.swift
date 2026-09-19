@@ -20,7 +20,7 @@ public struct ElevenLabsCreateExotelPhoneNumberRequest: Codable, Sendable {
   public var appletUrl: String?
   public var label: String
   public var phoneNumber: String
-  public var provider: String?
+  public var provider: ElevenLabsExotelProvider?
   public var supportsInbound: Bool?
   public var supportsOutbound: Bool?
 
@@ -34,7 +34,7 @@ public struct ElevenLabsCreateExotelPhoneNumberRequest: Codable, Sendable {
     phoneNumber: String,
     agentId: String? = nil,
     appletUrl: String? = nil,
-    provider: String? = nil,
+    provider: ElevenLabsExotelProvider? = nil,
     supportsInbound: Bool? = nil,
     supportsOutbound: Bool? = nil
   ) {

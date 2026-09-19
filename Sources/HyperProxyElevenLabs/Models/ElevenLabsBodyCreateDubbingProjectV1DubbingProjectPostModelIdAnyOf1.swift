@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsBodyCreateDubbingProjectV1DubbingProjectPostModelIdAnyOf1: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum ElevenLabsBodyCreateDubbingProjectV1DubbingProjectPostModelIdAnyOf1: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let dubbingV1 = Self(rawValue: "dubbing_v1")
-  public static let dubbingV2 = Self(rawValue: "dubbing_v2")
+  case dubbingV1 = "dubbing_v1"
+  case dubbingV2 = "dubbing_v2"
 }

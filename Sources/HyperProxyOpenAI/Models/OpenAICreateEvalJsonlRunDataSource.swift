@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAICreateEvalJsonlRunDataSource: Codable, Sendable {
-  public var source: HyperProxyJSONValue
-  public var typeModel: OpenAICreateEvalJsonlRunDataSourceTypeModel
+  public var source: OpenAICreateEvalJsonlRunDataSourceSource
+  public var kind: OpenAICreateEvalJsonlRunDataSourceKind
 
   public init(
-    source: HyperProxyJSONValue,
-    typeModel: OpenAICreateEvalJsonlRunDataSourceTypeModel
+    source: OpenAICreateEvalJsonlRunDataSourceSource,
+    kind: OpenAICreateEvalJsonlRunDataSourceKind
   ) {
     self.source = source
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case source
-    case typeModel = "type"
+    case kind = "type"
   }
 }

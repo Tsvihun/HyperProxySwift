@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct AnthropicBetaManagedAgentsAgentThreadContextCompactedEvent: Codable, Sendable {
   public var id: String
   public var processedAt: AnthropicBetaTimestamp
-  public var typeModel: AnthropicBetaManagedAgentsAgentThreadContextCompactedEventTypeModel
+  public var kind: AnthropicBetaManagedAgentsAgentThreadContextCompactedEventKind
 
   public init(
     id: String,
     processedAt: AnthropicBetaTimestamp,
-    typeModel: AnthropicBetaManagedAgentsAgentThreadContextCompactedEventTypeModel
+    kind: AnthropicBetaManagedAgentsAgentThreadContextCompactedEventKind
   ) {
     self.id = id
     self.processedAt = processedAt
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case id
     case processedAt = "processed_at"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

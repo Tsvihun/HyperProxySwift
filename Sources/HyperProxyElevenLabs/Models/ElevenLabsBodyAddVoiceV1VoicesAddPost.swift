@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsBodyAddVoiceV1VoicesAddPost: Codable, Sendable {
   public var description: String?
   public var files: [String]
-  public var labels: HyperProxyJSONValue?
+  public var labels: ElevenLabsBodyAddVoiceV1VoicesAddPostLabels?
   public var name: String
   public var removeBackgroundNoise: Bool?
 
@@ -21,7 +21,7 @@ public struct ElevenLabsBodyAddVoiceV1VoicesAddPost: Codable, Sendable {
     files: [String],
     name: String,
     description: String? = nil,
-    labels: HyperProxyJSONValue? = nil,
+    labels: ElevenLabsBodyAddVoiceV1VoicesAddPostLabels? = nil,
     removeBackgroundNoise: Bool? = nil
   ) {
     self.description = description

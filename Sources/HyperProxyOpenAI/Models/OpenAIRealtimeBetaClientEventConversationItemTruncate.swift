@@ -15,20 +15,20 @@ public struct OpenAIRealtimeBetaClientEventConversationItemTruncate: Codable, Se
   public var contentIndex: Int
   public var eventId: String?
   public var itemId: String
-  public var typeModel: OpenAIRealtimeBetaClientEventConversationItemTruncateTypeModel
+  public var kind: OpenAIRealtimeBetaClientEventConversationItemTruncateKind
 
   public init(
     audioEndMs: Int,
     contentIndex: Int,
     itemId: String,
-    typeModel: OpenAIRealtimeBetaClientEventConversationItemTruncateTypeModel,
+    kind: OpenAIRealtimeBetaClientEventConversationItemTruncateKind,
     eventId: String? = nil
   ) {
     self.audioEndMs = audioEndMs
     self.contentIndex = contentIndex
     self.eventId = eventId
     self.itemId = itemId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIRealtimeBetaClientEventConversationItemTruncate: Codable, Se
     case contentIndex = "content_index"
     case eventId = "event_id"
     case itemId = "item_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

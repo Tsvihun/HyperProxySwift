@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksGatewayPricingPlanState: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let sTATEUNSPECIFIED = Self(rawValue: "STATE_UNSPECIFIED")
-  public static let cREATING = Self(rawValue: "CREATING")
-  public static let rEADY = Self(rawValue: "READY")
+public enum FireworksGatewayPricingPlanState: String, Codable, Hashable, Sendable {
+  case sTATEUNSPECIFIED = "STATE_UNSPECIFIED"
+  case cREATING = "CREATING"
+  case rEADY = "READY"
 }

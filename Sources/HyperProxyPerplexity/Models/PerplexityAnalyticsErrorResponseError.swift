@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct PerplexityAnalyticsErrorResponseError: Codable, Sendable {
   public var code: Int
   public var message: String
-  public var typeModel: String
+  public var kind: String
 
   public init(
     code: Int,
     message: String,
-    typeModel: String
+    kind: String
   ) {
     self.code = code
     self.message = message
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case code
     case message
-    case typeModel = "type"
+    case kind = "type"
   }
 }

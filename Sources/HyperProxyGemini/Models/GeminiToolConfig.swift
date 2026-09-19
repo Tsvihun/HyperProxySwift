@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiToolConfig: Codable, Sendable {
-  public var functionCallingConfig: HyperProxyJSONValue?
+  public var functionCallingConfig: GeminiFunctionCallingConfig?
   public var includeServerSideToolInvocations: Bool?
-  public var retrievalConfig: HyperProxyJSONValue?
+  public var retrievalConfig: GeminiRetrievalConfig?
 
   public init(
-    functionCallingConfig: HyperProxyJSONValue? = nil,
+    functionCallingConfig: GeminiFunctionCallingConfig? = nil,
     includeServerSideToolInvocations: Bool? = nil,
-    retrievalConfig: HyperProxyJSONValue? = nil
+    retrievalConfig: GeminiRetrievalConfig? = nil
   ) {
     self.functionCallingConfig = functionCallingConfig
     self.includeServerSideToolInvocations = includeServerSideToolInvocations

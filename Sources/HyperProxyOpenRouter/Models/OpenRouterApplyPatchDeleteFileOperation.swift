@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterApplyPatchDeleteFileOperation: Codable, Sendable {
   public var path: String
-  public var typeModel: OpenRouterApplyPatchDeleteFileOperationTypeModel
+  public var kind: OpenRouterApplyPatchDeleteFileOperationKind
 
   public init(
     path: String,
-    typeModel: OpenRouterApplyPatchDeleteFileOperationTypeModel
+    kind: OpenRouterApplyPatchDeleteFileOperationKind
   ) {
     self.path = path
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case path
-    case typeModel = "type"
+    case kind = "type"
   }
 }

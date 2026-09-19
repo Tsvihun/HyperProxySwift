@@ -10,14 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksStreamOptionsBufferModeAnyOf1: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let anyModel = Self(rawValue: "any")
-  public static let all = Self(rawValue: "all")
+public enum FireworksStreamOptionsBufferModeAnyOf1: String, Codable, Hashable, Sendable {
+  case anyModel = "any"
+  case all = "all"
 }

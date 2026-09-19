@@ -14,13 +14,13 @@ public struct AnthropicBetaCodeExecutionTool20250825: Codable, Sendable {
   public var allowedCallers: [AnthropicBetaAllowedCaller]?
   public var cacheControl: AnthropicBetaCacheControlEphemeral?
   public var deferLoading: Bool?
-  public var name: String
+  public var name: AnthropicCodeExecutionName
   public var strict: Bool?
-  public var typeModel: String
+  public var kind: AnthropicCodeExecution20250825Kind
 
   public init(
-    name: String,
-    typeModel: String,
+    name: AnthropicCodeExecutionName = .codeExecution,
+    kind: AnthropicCodeExecution20250825Kind = .codeExecution20250825,
     allowedCallers: [AnthropicBetaAllowedCaller]? = nil,
     cacheControl: AnthropicBetaCacheControlEphemeral? = nil,
     deferLoading: Bool? = nil,
@@ -31,7 +31,7 @@ public struct AnthropicBetaCodeExecutionTool20250825: Codable, Sendable {
     self.deferLoading = deferLoading
     self.name = name
     self.strict = strict
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct AnthropicBetaCodeExecutionTool20250825: Codable, Sendable {
     case deferLoading = "defer_loading"
     case name
     case strict
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAICostsResultObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let organizationCostsResult = Self(rawValue: "organization.costs.result")
+public enum OpenAICostsResultObject: String, Codable, Hashable, Sendable {
+  case organizationCostsResult = "organization.costs.result"
 }

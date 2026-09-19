@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIWaitParam: Codable, Sendable {
-  public var typeModel: OpenAIWaitParamTypeModel
+  public var kind: OpenAIWaitParamKind
 
   public init(
-    typeModel: OpenAIWaitParamTypeModel
+    kind: OpenAIWaitParamKind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

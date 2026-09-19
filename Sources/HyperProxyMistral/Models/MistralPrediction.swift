@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct MistralPrediction: Codable, Sendable {
   public var content: String?
-  public var typeModel: String?
+  public var kind: MistralContentKind?
 
   public init(
     content: String? = nil,
-    typeModel: String? = nil
+    kind: MistralContentKind? = nil
   ) {
     self.content = content
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case content
-    case typeModel = "type"
+    case kind = "type"
   }
 }

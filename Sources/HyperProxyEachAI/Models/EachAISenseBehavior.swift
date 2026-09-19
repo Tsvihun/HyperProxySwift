@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct EachAISenseBehavior: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let agent = Self(rawValue: "agent")
-  public static let plan = Self(rawValue: "plan")
-  public static let ask = Self(rawValue: "ask")
+public enum EachAISenseBehavior: String, Codable, Hashable, Sendable {
+  case agent = "agent"
+  case plan = "plan"
+  case ask = "ask"
 }

@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenRouterAnthropicPlainTextSource: Codable, Sendable {
   public var data: String
   public var mediaType: OpenRouterAnthropicPlainTextSourceMediaType
-  public var typeModel: OpenRouterAnthropicPlainTextSourceTypeModel
+  public var kind: OpenRouterAnthropicPlainTextSourceKind
 
   public init(
     data: String,
     mediaType: OpenRouterAnthropicPlainTextSourceMediaType,
-    typeModel: OpenRouterAnthropicPlainTextSourceTypeModel
+    kind: OpenRouterAnthropicPlainTextSourceKind
   ) {
     self.data = data
     self.mediaType = mediaType
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case data
     case mediaType = "media_type"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

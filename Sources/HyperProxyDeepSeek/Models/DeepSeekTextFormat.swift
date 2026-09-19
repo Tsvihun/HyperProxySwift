@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct DeepSeekTextFormat: Codable, Sendable {
   public var name: String?
   public var schema: [String: HyperProxyJSONValue]?
-  public var typeModel: DeepSeekTextFormatType
+  public var kind: DeepSeekTextFormatType
 
   public init(
-    typeModel: DeepSeekTextFormatType,
+    kind: DeepSeekTextFormatType,
     name: String? = nil,
     schema: [String: HyperProxyJSONValue]? = nil
   ) {
     self.name = name
     self.schema = schema
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case name
     case schema
-    case typeModel = "type"
+    case kind = "type"
   }
 }

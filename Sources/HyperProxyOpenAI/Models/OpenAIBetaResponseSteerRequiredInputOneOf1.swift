@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenAIBetaResponseSteerRequiredInputOneOf1: Codable, Sendable {
   public var callId: String
   public var name: String
-  public var typeModel: OpenAIBetaResponseSteerRequiredInputOneOf1TypeModel
+  public var kind: OpenAIBetaResponseSteerRequiredInputOneOf1Kind
 
   public init(
     callId: String,
     name: String,
-    typeModel: OpenAIBetaResponseSteerRequiredInputOneOf1TypeModel
+    kind: OpenAIBetaResponseSteerRequiredInputOneOf1Kind
   ) {
     self.callId = callId
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case callId = "call_id"
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

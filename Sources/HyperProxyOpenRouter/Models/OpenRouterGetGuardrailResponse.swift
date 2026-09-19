@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterGetGuardrailResponse: Codable, Sendable {
-  public var data: HyperProxyJSONValue
+  public var data: OpenRouterGuardrail
 
   public init(
-    data: HyperProxyJSONValue
+    data: OpenRouterGuardrail
   ) {
     self.data = data
   }

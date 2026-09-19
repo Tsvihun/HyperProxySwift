@@ -14,24 +14,24 @@ public struct AnthropicBetaResponseFallbackBlock: Codable, Sendable {
   public var from: AnthropicBetaResponseFallbackHopInfo
   public var to: AnthropicBetaResponseFallbackHopInfo
   public var trigger: AnthropicBetaFallbackRefusalTrigger
-  public var typeModel: String
+  public var kind: AnthropicFallbackKind
 
   public init(
     from: AnthropicBetaResponseFallbackHopInfo,
     to: AnthropicBetaResponseFallbackHopInfo,
     trigger: AnthropicBetaFallbackRefusalTrigger,
-    typeModel: String
+    kind: AnthropicFallbackKind = .fallback
   ) {
     self.from = from
     self.to = to
     self.trigger = trigger
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case from
     case to
     case trigger
-    case typeModel = "type"
+    case kind = "type"
   }
 }

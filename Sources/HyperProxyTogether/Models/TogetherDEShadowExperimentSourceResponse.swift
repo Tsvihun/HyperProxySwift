@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherDEShadowExperimentSourceResponse: Codable, Sendable {
-  public var endpoint: HyperProxyJSONValue
+  public var endpoint: TogetherDEShadowExperimentEndpointSourceResponse
 
   public init(
-    endpoint: HyperProxyJSONValue
+    endpoint: TogetherDEShadowExperimentEndpointSourceResponse
   ) {
     self.endpoint = endpoint
   }

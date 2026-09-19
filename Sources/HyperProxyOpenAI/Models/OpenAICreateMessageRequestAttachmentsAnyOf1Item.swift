@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAICreateMessageRequestAttachmentsAnyOf1Item: Codable, Sendable {
   public var fileId: String?
-  public var tools: [HyperProxyJSONValue]?
+  public var tools: [OpenAICreateMessageRequestAttachmentsAnyOf1ItemToolsItem]?
 
   public init(
     fileId: String? = nil,
-    tools: [HyperProxyJSONValue]? = nil
+    tools: [OpenAICreateMessageRequestAttachmentsAnyOf1ItemToolsItem]? = nil
   ) {
     self.fileId = fileId
     self.tools = tools

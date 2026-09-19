@@ -10,18 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsVoiceResponseModelRecordingQualityAnyOf1: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum ElevenLabsVoiceResponseModelRecordingQualityAnyOf1: String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let studio = Self(rawValue: "studio")
-  public static let good = Self(rawValue: "good")
-  public static let ok = Self(rawValue: "ok")
-  public static let poor = Self(rawValue: "poor")
-  public static let bad = Self(rawValue: "bad")
+  case studio = "studio"
+  case good = "good"
+  case ok = "ok"
+  case poor = "poor"
+  case bad = "bad"
 }

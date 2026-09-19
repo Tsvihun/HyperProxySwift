@@ -12,26 +12,26 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsGrepToolConfig: Codable, Sendable {
   public var enabled: Bool
-  public var name: String
+  public var name: AnthropicGrepName
   public var permissionPolicy: AnthropicBetaManagedAgentsPermissionPolicy
-  public var typeModel: String
+  public var kind: AnthropicGrepKind
 
   public init(
     enabled: Bool,
-    name: String,
     permissionPolicy: AnthropicBetaManagedAgentsPermissionPolicy,
-    typeModel: String
+    name: AnthropicGrepName = .grep,
+    kind: AnthropicGrepKind = .grep
   ) {
     self.enabled = enabled
     self.name = name
     self.permissionPolicy = permissionPolicy
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case enabled
     case name
     case permissionPolicy = "permission_policy"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

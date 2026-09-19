@@ -10,18 +10,12 @@
 import Foundation
 import HyperProxyCore
 
-public struct FalGetAssetLineageResponseLineageEdgesItemEntitiesItemEntityType: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum FalGetAssetLineageResponseLineageEdgesItemEntitiesItemEntityType: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let character = Self(rawValue: "character")
-  public static let prop = Self(rawValue: "prop")
-  public static let environment = Self(rawValue: "environment")
-  public static let style = Self(rawValue: "style")
-  public static let scene = Self(rawValue: "scene")
+  case character = "character"
+  case prop = "prop"
+  case environment = "environment"
+  case style = "style"
+  case scene = "scene"
 }

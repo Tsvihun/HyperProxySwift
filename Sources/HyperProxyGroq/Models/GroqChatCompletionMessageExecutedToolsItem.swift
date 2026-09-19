@@ -17,12 +17,12 @@ public struct GroqChatCompletionMessageExecutedToolsItem: Codable, Sendable {
   public var index: Int
   public var output: String?
   public var searchResults: GroqChatCompletionMessageExecutedToolsItemSearchResults?
-  public var typeModel: String
+  public var kind: String
 
   public init(
     arguments: String,
     index: Int,
-    typeModel: String,
+    kind: String,
     browserResults: [GroqBrowserResult]? = nil,
     codeResults: [GroqCodeExecutionResult]? = nil,
     output: String? = nil,
@@ -34,7 +34,7 @@ public struct GroqChatCompletionMessageExecutedToolsItem: Codable, Sendable {
     self.index = index
     self.output = output
     self.searchResults = searchResults
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct GroqChatCompletionMessageExecutedToolsItem: Codable, Sendable {
     case index
     case output
     case searchResults = "search_results"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

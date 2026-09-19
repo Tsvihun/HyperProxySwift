@@ -13,10 +13,10 @@ import HyperProxyCore
 public struct TogetherRLRoutedExperts: Codable, Sendable {
   public var data: String?
   public var objectUri: String?
-  public var shape: [HyperProxyJSONValue]
+  public var shape: [TogetherRLRoutedExpertsShapeItem]
 
   public init(
-    shape: [HyperProxyJSONValue],
+    shape: [TogetherRLRoutedExpertsShapeItem],
     data: String? = nil,
     objectUri: String? = nil
   ) {

@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct PerplexityEmbeddingsRequestModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let pplxEmbedV106b = Self(rawValue: "pplx-embed-v1-0.6b")
-  public static let pplxEmbedV14b = Self(rawValue: "pplx-embed-v1-4b")
+public enum PerplexityEmbeddingsRequestModel: String, Codable, Hashable, Sendable {
+  case pplxEmbedV106b = "pplx-embed-v1-0.6b"
+  case pplxEmbedV14b = "pplx-embed-v1-4b"
 }

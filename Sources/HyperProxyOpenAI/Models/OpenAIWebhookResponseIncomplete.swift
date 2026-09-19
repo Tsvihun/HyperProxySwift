@@ -15,20 +15,20 @@ public struct OpenAIWebhookResponseIncomplete: Codable, Sendable {
   public var data: OpenAIWebhookResponseIncompleteData
   public var id: String
   public var object: OpenAIWebhookResponseIncompleteObject?
-  public var typeModel: OpenAIWebhookResponseIncompleteTypeModel
+  public var kind: OpenAIWebhookResponseIncompleteKind
 
   public init(
     createdAt: Int,
     data: OpenAIWebhookResponseIncompleteData,
     id: String,
-    typeModel: OpenAIWebhookResponseIncompleteTypeModel,
+    kind: OpenAIWebhookResponseIncompleteKind,
     object: OpenAIWebhookResponseIncompleteObject? = nil
   ) {
     self.createdAt = createdAt
     self.data = data
     self.id = id
     self.object = object
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIWebhookResponseIncomplete: Codable, Sendable {
     case data
     case id
     case object
-    case typeModel = "type"
+    case kind = "type"
   }
 }

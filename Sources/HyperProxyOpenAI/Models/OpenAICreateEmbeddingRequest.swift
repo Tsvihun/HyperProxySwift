@@ -13,13 +13,13 @@ import HyperProxyCore
 public struct OpenAICreateEmbeddingRequest: Codable, Sendable {
   public var dimensions: Int?
   public var encodingFormat: OpenAICreateEmbeddingRequestEncodingFormat?
-  public var input: HyperProxyJSONValue
-  public var model: HyperProxyJSONValue
+  public var input: OpenAICreateEmbeddingRequestInput
+  public var model: OpenAICreateEmbeddingRequestModel
   public var user: String?
 
   public init(
-    input: HyperProxyJSONValue,
-    model: HyperProxyJSONValue,
+    input: OpenAICreateEmbeddingRequestInput,
+    model: OpenAICreateEmbeddingRequestModel,
     dimensions: Int? = nil,
     encodingFormat: OpenAICreateEmbeddingRequestEncodingFormat? = nil,
     user: String? = nil

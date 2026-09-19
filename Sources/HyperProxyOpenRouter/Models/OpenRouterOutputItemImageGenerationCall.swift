@@ -14,24 +14,24 @@ public struct OpenRouterOutputItemImageGenerationCall: Codable, Sendable {
   public var id: String
   public var result: String?
   public var status: OpenRouterImageGenerationStatus
-  public var typeModel: OpenRouterOutputItemImageGenerationCallTypeModel
+  public var kind: OpenRouterOutputItemImageGenerationCallKind
 
   public init(
     id: String,
     status: OpenRouterImageGenerationStatus,
-    typeModel: OpenRouterOutputItemImageGenerationCallTypeModel,
+    kind: OpenRouterOutputItemImageGenerationCallKind,
     result: String? = nil
   ) {
     self.id = id
     self.result = result
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case id
     case result
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

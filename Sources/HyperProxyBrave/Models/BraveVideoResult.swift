@@ -19,7 +19,7 @@ public struct BraveVideoResult: Codable, Sendable {
   public var pageFetched: String?
   public var thumbnail: BraveThumbnail?
   public var title: String
-  public var typeModel: String?
+  public var kind: String?
   public var url: String
   public var video: BraveVideoData?
 
@@ -33,7 +33,7 @@ public struct BraveVideoResult: Codable, Sendable {
     pageAge: String? = nil,
     pageFetched: String? = nil,
     thumbnail: BraveThumbnail? = nil,
-    typeModel: String? = nil,
+    kind: String? = nil,
     video: BraveVideoData? = nil
   ) {
     self.age = age
@@ -44,7 +44,7 @@ public struct BraveVideoResult: Codable, Sendable {
     self.pageFetched = pageFetched
     self.thumbnail = thumbnail
     self.title = title
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
     self.video = video
   }
@@ -58,7 +58,7 @@ public struct BraveVideoResult: Codable, Sendable {
     case pageFetched = "page_fetched"
     case thumbnail
     case title
-    case typeModel = "type"
+    case kind = "type"
     case url
     case video
   }

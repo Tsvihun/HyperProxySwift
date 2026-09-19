@@ -14,20 +14,20 @@ public struct OpenRouterImageGenCompletedEvent: Codable, Sendable {
   public var b64Json: String
   public var created: Int
   public var mediaType: String?
-  public var typeModel: OpenRouterImageGenCompletedEventTypeModel
+  public var kind: OpenRouterImageGenCompletedEventKind
   public var usage: OpenRouterImageGenerationUsage?
 
   public init(
     b64Json: String,
     created: Int,
-    typeModel: OpenRouterImageGenCompletedEventTypeModel,
+    kind: OpenRouterImageGenCompletedEventKind,
     mediaType: String? = nil,
     usage: OpenRouterImageGenerationUsage? = nil
   ) {
     self.b64Json = b64Json
     self.created = created
     self.mediaType = mediaType
-    self.typeModel = typeModel
+    self.kind = kind
     self.usage = usage
   }
 
@@ -35,7 +35,7 @@ public struct OpenRouterImageGenCompletedEvent: Codable, Sendable {
     case b64Json = "b64_json"
     case created
     case mediaType = "media_type"
-    case typeModel = "type"
+    case kind = "type"
     case usage
   }
 }

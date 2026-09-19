@@ -14,13 +14,13 @@ public struct OpenAICreateTranscriptionResponseJson: Codable, Sendable {
   public var languages: [OpenAITranscriptionLanguage]?
   public var logprobs: [OpenAICreateTranscriptionResponseJsonLogprobsItem]?
   public var text: String
-  public var usage: HyperProxyJSONValue?
+  public var usage: OpenAICreateTranscriptionResponseJsonUsage?
 
   public init(
     text: String,
     languages: [OpenAITranscriptionLanguage]? = nil,
     logprobs: [OpenAICreateTranscriptionResponseJsonLogprobsItem]? = nil,
-    usage: HyperProxyJSONValue? = nil
+    usage: OpenAICreateTranscriptionResponseJsonUsage? = nil
   ) {
     self.languages = languages
     self.logprobs = logprobs

@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct DeepSeekChatImageURLPart: Codable, Sendable {
   public var imageUrl: DeepSeekChatImageURLPartImageUrl
-  public var typeModel: DeepSeekChatImageURLPartTypeModel
+  public var kind: DeepSeekChatImageURLPartKind
 
   public init(
     imageUrl: DeepSeekChatImageURLPartImageUrl,
-    typeModel: DeepSeekChatImageURLPartTypeModel
+    kind: DeepSeekChatImageURLPartKind
   ) {
     self.imageUrl = imageUrl
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case imageUrl = "image_url"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

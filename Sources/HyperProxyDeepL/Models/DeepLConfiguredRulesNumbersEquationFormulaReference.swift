@@ -10,15 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesNumbersEquationFormulaReference: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesNumbersEquationFormulaReference: String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let alwaysUseArabicNumeralsToNumberEquationsOrFormulasReferencedInText = Self(
-    rawValue: "always_use_arabic_numerals_to_number_equations_or_formulas_referenced_in_text")
+  case alwaysUseArabicNumeralsToNumberEquationsOrFormulasReferencedInText =
+    "always_use_arabic_numerals_to_number_equations_or_formulas_referenced_in_text"
 }

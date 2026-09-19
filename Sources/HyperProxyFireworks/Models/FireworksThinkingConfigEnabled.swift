@@ -13,22 +13,22 @@ import HyperProxyCore
 public struct FireworksThinkingConfigEnabled: Codable, Sendable {
   public var budgetEndStr: String?
   public var budgetTokens: Int?
-  public var effort: HyperProxyJSONValue?
-  public var keep: String?
-  public var typeModel: String?
+  public var effort: FireworksThinkingConfigEnabledEffort?
+  public var keep: FireworksThinkingConfigEnabledKeepAnyOf1?
+  public var kind: FireworksEnabledKind?
 
   public init(
     budgetEndStr: String? = nil,
     budgetTokens: Int? = nil,
-    effort: HyperProxyJSONValue? = nil,
-    keep: String? = nil,
-    typeModel: String? = nil
+    effort: FireworksThinkingConfigEnabledEffort? = nil,
+    keep: FireworksThinkingConfigEnabledKeepAnyOf1? = nil,
+    kind: FireworksEnabledKind? = nil
   ) {
     self.budgetEndStr = budgetEndStr
     self.budgetTokens = budgetTokens
     self.effort = effort
     self.keep = keep
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct FireworksThinkingConfigEnabled: Codable, Sendable {
     case budgetTokens = "budget_tokens"
     case effort
     case keep
-    case typeModel = "type"
+    case kind = "type"
   }
 }

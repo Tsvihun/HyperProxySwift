@@ -15,12 +15,12 @@ public struct OpenAILiveLiveError: Codable, Sendable {
   public var code: String
   public var message: String
   public var param: String?
-  public var typeModel: String
+  public var kind: String
 
   public init(
     code: String,
     message: String,
-    typeModel: String,
+    kind: String,
     clientEventId: String? = nil,
     param: String? = nil
   ) {
@@ -28,7 +28,7 @@ public struct OpenAILiveLiveError: Codable, Sendable {
     self.code = code
     self.message = message
     self.param = param
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAILiveLiveError: Codable, Sendable {
     case code
     case message
     case param
-    case typeModel = "type"
+    case kind = "type"
   }
 }

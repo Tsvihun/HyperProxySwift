@@ -17,7 +17,7 @@ public struct OpenAIBetaResponseReasoningSummaryTextDeltaEvent: Codable, Sendabl
   public var outputIndex: Int
   public var sequenceNumber: Int
   public var summaryIndex: Int
-  public var typeModel: OpenAIBetaResponseReasoningSummaryTextDeltaEventTypeModel
+  public var kind: OpenAIBetaResponseReasoningSummaryTextDeltaEventKind
 
   public init(
     delta: String,
@@ -25,7 +25,7 @@ public struct OpenAIBetaResponseReasoningSummaryTextDeltaEvent: Codable, Sendabl
     outputIndex: Int,
     sequenceNumber: Int,
     summaryIndex: Int,
-    typeModel: OpenAIBetaResponseReasoningSummaryTextDeltaEventTypeModel,
+    kind: OpenAIBetaResponseReasoningSummaryTextDeltaEventKind,
     agent: OpenAIBetaAgentTag? = nil
   ) {
     self.agent = agent
@@ -34,7 +34,7 @@ public struct OpenAIBetaResponseReasoningSummaryTextDeltaEvent: Codable, Sendabl
     self.outputIndex = outputIndex
     self.sequenceNumber = sequenceNumber
     self.summaryIndex = summaryIndex
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenAIBetaResponseReasoningSummaryTextDeltaEvent: Codable, Sendabl
     case outputIndex = "output_index"
     case sequenceNumber = "sequence_number"
     case summaryIndex = "summary_index"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

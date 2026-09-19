@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterMessagesRequestToolsItemAnyOf3Name: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let strReplaceEditor = Self(rawValue: "str_replace_editor")
+public enum OpenRouterMessagesRequestToolsItemAnyOf3Name: String, Codable, Hashable, Sendable {
+  case strReplaceEditor = "str_replace_editor"
 }

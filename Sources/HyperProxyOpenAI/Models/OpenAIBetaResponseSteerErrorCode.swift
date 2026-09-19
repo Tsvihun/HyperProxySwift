@@ -10,33 +10,65 @@
 import Foundation
 import HyperProxyCore
 
-public enum OpenAIBetaResponseSteerErrorCode: Codable, Sendable {
-  case string(String)
-  case betaResponseSteerErrorCodeAnyOf1(OpenAIBetaResponseSteerErrorCodeAnyOf1)
+public enum OpenAIBetaResponseSteerErrorCode: RawRepresentable, Codable, Hashable, Sendable {
+  case responseNotFound
+  case invalidInput
+  case steeringNotSupported
+  case tooManyPendingSteers
+  case responseAlreadyCompleted
+  case responseNotActive
+  case successorCreationFailed
+  case custom(String)
+
+  public init(rawValue: String) {
+    switch rawValue {
+    case "response_not_found":
+      self = .responseNotFound
+    case "invalid_input":
+      self = .invalidInput
+    case "steering_not_supported":
+      self = .steeringNotSupported
+    case "too_many_pending_steers":
+      self = .tooManyPendingSteers
+    case "response_already_completed":
+      self = .responseAlreadyCompleted
+    case "response_not_active":
+      self = .responseNotActive
+    case "successor_creation_failed":
+      self = .successorCreationFailed
+    default:
+      self = .custom(rawValue)
+    }
+  }
+
+  public var rawValue: String {
+    switch self {
+    case .responseNotFound:
+      return "response_not_found"
+    case .invalidInput:
+      return "invalid_input"
+    case .steeringNotSupported:
+      return "steering_not_supported"
+    case .tooManyPendingSteers:
+      return "too_many_pending_steers"
+    case .responseAlreadyCompleted:
+      return "response_already_completed"
+    case .responseNotActive:
+      return "response_not_active"
+    case .successorCreationFailed:
+      return "successor_creation_failed"
+    case .custom(let value):
+      return value
+    }
+  }
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(String.self) {
-      self = .string(value)
-      return
-    }
-    self = .betaResponseSteerErrorCodeAnyOf1(
-      try container.decode(OpenAIBetaResponseSteerErrorCodeAnyOf1.self))
+    self.init(rawValue: try container.decode(String.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
-    switch self {
-    case .string(let value):
-      try container.encode(value)
-    case .betaResponseSteerErrorCodeAnyOf1(let value):
-      try container.encode(value)
-    }
-  }
-}
-
-extension OpenAIBetaResponseSteerErrorCode: ExpressibleByStringLiteral {
-  public init(stringLiteral value: String) {
-    self = .string(value)
+    try container.encode(rawValue)
   }
 }

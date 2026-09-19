@@ -15,20 +15,20 @@ public struct AnthropicBetaRateLimit: Codable, Sendable {
   public var id: String
   public var limits: [AnthropicBetaRateLimitValue]
   public var models: [String]?
-  public var typeModel: String
+  public var kind: AnthropicRateLimitKind
 
   public init(
     groupType: AnthropicBetaRateLimitGroupType,
     id: String,
     limits: [AnthropicBetaRateLimitValue],
     models: [String]?,
-    typeModel: String
+    kind: AnthropicRateLimitKind = .rateLimit
   ) {
     self.groupType = groupType
     self.id = id
     self.limits = limits
     self.models = models
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct AnthropicBetaRateLimit: Codable, Sendable {
     case id
     case limits
     case models
-    case typeModel = "type"
+    case kind = "type"
   }
 }

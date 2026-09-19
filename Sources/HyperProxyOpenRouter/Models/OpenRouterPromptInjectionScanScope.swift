@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterPromptInjectionScanScope: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let userOnly = Self(rawValue: "user_only")
-  public static let allMessages = Self(rawValue: "all_messages")
+public enum OpenRouterPromptInjectionScanScope: String, Codable, Hashable, Sendable {
+  case userOnly = "user_only"
+  case allMessages = "all_messages"
 }

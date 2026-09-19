@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsMediaGenerationCreateResponse: Codable, Sendable {
   public var id: String
-  public var status: String
+  public var status: ElevenLabsPendingStatus
 
   public init(
     id: String,
-    status: String
+    status: ElevenLabsPendingStatus = .pending
   ) {
     self.id = id
     self.status = status

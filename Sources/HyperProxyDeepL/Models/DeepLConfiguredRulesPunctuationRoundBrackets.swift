@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesPunctuationRoundBrackets: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useFullWidthRoundBrackets = Self(rawValue: "use_full_width_round_brackets")
-  public static let useHalfWidthRoundBrackets = Self(rawValue: "use_half_width_round_brackets")
+public enum DeepLConfiguredRulesPunctuationRoundBrackets: String, Codable, Hashable, Sendable {
+  case useFullWidthRoundBrackets = "use_full_width_round_brackets"
+  case useHalfWidthRoundBrackets = "use_half_width_round_brackets"
 }

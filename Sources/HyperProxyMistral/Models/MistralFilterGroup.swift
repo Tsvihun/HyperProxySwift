@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralFilterGroup: Codable, Sendable {
-  public var aND: [HyperProxyJSONValue]?
-  public var oR: [HyperProxyJSONValue]?
+  public var aND: [MistralFilterGroupANDAnyOf1Item]?
+  public var oR: [MistralFilterGroupORAnyOf1Item]?
 
   public init(
-    aND: [HyperProxyJSONValue]? = nil,
-    oR: [HyperProxyJSONValue]? = nil
+    aND: [MistralFilterGroupANDAnyOf1Item]? = nil,
+    oR: [MistralFilterGroupORAnyOf1Item]? = nil
   ) {
     self.aND = aND
     self.oR = oR

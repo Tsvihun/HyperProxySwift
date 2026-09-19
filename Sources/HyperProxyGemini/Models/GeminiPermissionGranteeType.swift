@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiPermissionGranteeType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let gRANTEETYPEUNSPECIFIED = Self(rawValue: "GRANTEE_TYPE_UNSPECIFIED")
-  public static let uSER = Self(rawValue: "USER")
-  public static let gROUP = Self(rawValue: "GROUP")
-  public static let eVERYONE = Self(rawValue: "EVERYONE")
+public enum GeminiPermissionGranteeType: String, Codable, Hashable, Sendable {
+  case gRANTEETYPEUNSPECIFIED = "GRANTEE_TYPE_UNSPECIFIED"
+  case uSER = "USER"
+  case gROUP = "GROUP"
+  case eVERYONE = "EVERYONE"
 }

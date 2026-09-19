@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIBetaCancelResponseParametersOpenaiBetaItem: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let responsesMultiAgentV1 = Self(rawValue: "responses_multi_agent=v1")
+public enum OpenAIBetaCancelResponseParametersOpenaiBetaItem: String, Codable, Hashable, Sendable {
+  case responsesMultiAgentV1 = "responses_multi_agent=v1"
 }

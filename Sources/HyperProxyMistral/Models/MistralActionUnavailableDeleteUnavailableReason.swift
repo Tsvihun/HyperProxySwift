@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct MistralActionUnavailableDeleteUnavailableReason: Codable, Sendable {
   public var reason: MistralDeleteUnavailableReason?
-  public var status: String?
+  public var status: MistralUnavailableStatus?
 
   public init(
     reason: MistralDeleteUnavailableReason? = nil,
-    status: String? = nil
+    status: MistralUnavailableStatus? = nil
   ) {
     self.reason = reason
     self.status = status

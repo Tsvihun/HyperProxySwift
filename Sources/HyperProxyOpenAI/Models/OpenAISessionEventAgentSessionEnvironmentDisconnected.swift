@@ -15,20 +15,20 @@ public struct OpenAISessionEventAgentSessionEnvironmentDisconnected: Codable, Se
   public var eventId: String
   public var sessionId: String
   public var turnId: String
-  public var typeModel: OpenAISessionEventAgentSessionEnvironmentDisconnectedTypeModel
+  public var kind: OpenAISessionEventAgentSessionEnvironmentDisconnectedKind
 
   public init(
     environment: OpenAISessionEnvironmentStateResource,
     eventId: String,
     sessionId: String,
     turnId: String,
-    typeModel: OpenAISessionEventAgentSessionEnvironmentDisconnectedTypeModel
+    kind: OpenAISessionEventAgentSessionEnvironmentDisconnectedKind
   ) {
     self.environment = environment
     self.eventId = eventId
     self.sessionId = sessionId
     self.turnId = turnId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAISessionEventAgentSessionEnvironmentDisconnected: Codable, Se
     case eventId = "event_id"
     case sessionId = "session_id"
     case turnId = "turn_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -14,24 +14,24 @@ public struct OpenAIBetaResponseAudioTranscriptDeltaEvent: Codable, Sendable {
   public var agent: OpenAIBetaAgentTag?
   public var delta: String
   public var sequenceNumber: Int
-  public var typeModel: OpenAIBetaResponseAudioTranscriptDeltaEventTypeModel
+  public var kind: OpenAIBetaResponseAudioTranscriptDeltaEventKind
 
   public init(
     delta: String,
     sequenceNumber: Int,
-    typeModel: OpenAIBetaResponseAudioTranscriptDeltaEventTypeModel,
+    kind: OpenAIBetaResponseAudioTranscriptDeltaEventKind,
     agent: OpenAIBetaAgentTag? = nil
   ) {
     self.agent = agent
     self.delta = delta
     self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case agent
     case delta
     case sequenceNumber = "sequence_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

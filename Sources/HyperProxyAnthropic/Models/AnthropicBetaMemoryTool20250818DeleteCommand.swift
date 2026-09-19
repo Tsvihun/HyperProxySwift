@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaMemoryTool20250818DeleteCommand: Codable, Sendable {
-  public var command: AnthropicBetaMemoryTool20250818DeleteCommandCommand
+  public var command: AnthropicDeleteCommand
   public var path: String
 
   public init(
-    command: AnthropicBetaMemoryTool20250818DeleteCommandCommand,
-    path: String
+    path: String,
+    command: AnthropicDeleteCommand = .delete
   ) {
     self.command = command
     self.path = path

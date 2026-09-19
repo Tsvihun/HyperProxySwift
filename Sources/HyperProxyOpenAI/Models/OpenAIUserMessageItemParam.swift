@@ -11,16 +11,16 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIUserMessageItemParam: Codable, Sendable {
-  public var content: HyperProxyJSONValue
+  public var content: OpenAIUserMessageItemParamContent
   public var id: String?
   public var role: OpenAIUserMessageItemParamRole
   public var status: String?
-  public var typeModel: OpenAIUserMessageItemParamTypeModel
+  public var kind: OpenAIUserMessageItemParamKind
 
   public init(
-    content: HyperProxyJSONValue,
+    content: OpenAIUserMessageItemParamContent,
     role: OpenAIUserMessageItemParamRole,
-    typeModel: OpenAIUserMessageItemParamTypeModel,
+    kind: OpenAIUserMessageItemParamKind,
     id: String? = nil,
     status: String? = nil
   ) {
@@ -28,7 +28,7 @@ public struct OpenAIUserMessageItemParam: Codable, Sendable {
     self.id = id
     self.role = role
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIUserMessageItemParam: Codable, Sendable {
     case id
     case role
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

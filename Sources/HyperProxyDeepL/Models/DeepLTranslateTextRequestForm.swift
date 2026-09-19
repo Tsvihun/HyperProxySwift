@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepLTranslateTextRequestForm: Codable, Sendable {
-  public var context: DeepLContext?
+  public var context: String?
   public var enableBetaLanguages: Bool?
   public var formality: DeepLFormality?
   public var glossaryId: String?
@@ -21,20 +21,20 @@ public struct DeepLTranslateTextRequestForm: Codable, Sendable {
   public var nonSplittingTags: [String]?
   public var outlineDetection: DeepLOutlineDetectionOptionStr?
   public var preserveFormatting: DeepLPreserveFormattingOptionStr?
-  public var showBilledCharacters: DeepLShowBilledCharacters?
-  public var sourceLang: DeepLSourceLanguage?
+  public var showBilledCharacters: Bool?
+  public var sourceLang: String?
   public var splitSentences: DeepLSplitSentencesOption?
   public var splittingTags: [String]?
   public var tagHandling: DeepLTagHandlingOption?
-  public var targetLang: DeepLTargetLanguage
+  public var targetLang: String
   public var text: [String]
   public var translationMemoryId: DeepLTranslationMemoryId?
-  public var translationMemoryThreshold: DeepLTranslationMemoryThreshold?
+  public var translationMemoryThreshold: Int?
 
   public init(
-    targetLang: DeepLTargetLanguage,
+    targetLang: String,
     text: [String],
-    context: DeepLContext? = nil,
+    context: String? = nil,
     enableBetaLanguages: Bool? = nil,
     formality: DeepLFormality? = nil,
     glossaryId: String? = nil,
@@ -44,13 +44,13 @@ public struct DeepLTranslateTextRequestForm: Codable, Sendable {
     nonSplittingTags: [String]? = nil,
     outlineDetection: DeepLOutlineDetectionOptionStr? = nil,
     preserveFormatting: DeepLPreserveFormattingOptionStr? = nil,
-    showBilledCharacters: DeepLShowBilledCharacters? = nil,
-    sourceLang: DeepLSourceLanguage? = nil,
+    showBilledCharacters: Bool? = nil,
+    sourceLang: String? = nil,
     splitSentences: DeepLSplitSentencesOption? = nil,
     splittingTags: [String]? = nil,
     tagHandling: DeepLTagHandlingOption? = nil,
     translationMemoryId: DeepLTranslationMemoryId? = nil,
-    translationMemoryThreshold: DeepLTranslationMemoryThreshold? = nil
+    translationMemoryThreshold: Int? = nil
   ) {
     self.context = context
     self.enableBetaLanguages = enableBetaLanguages

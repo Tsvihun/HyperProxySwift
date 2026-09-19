@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsExperimentAssignmentSource: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let serverBranch = Self(rawValue: "server_branch")
-  public static let clientDeclared = Self(rawValue: "client_declared")
+public enum ElevenLabsExperimentAssignmentSource: String, Codable, Hashable, Sendable {
+  case serverBranch = "server_branch"
+  case clientDeclared = "client_declared"
 }

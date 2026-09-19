@@ -14,12 +14,12 @@ public struct TogetherRLTrainingCheckpoint: Codable, Sendable {
   public var createdAt: String
   public var id: String
   public var registration: TogetherRLTrainingCheckpointRegistration?
-  public var step: HyperProxyJSONValue
+  public var step: TogetherRLTrainingCheckpointStep
 
   public init(
     createdAt: String,
     id: String,
-    step: HyperProxyJSONValue,
+    step: TogetherRLTrainingCheckpointStep,
     registration: TogetherRLTrainingCheckpointRegistration? = nil
   ) {
     self.createdAt = createdAt

@@ -10,21 +10,15 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIVoiceIdsSharedAnyOf2: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let alloy = Self(rawValue: "alloy")
-  public static let ash = Self(rawValue: "ash")
-  public static let ballad = Self(rawValue: "ballad")
-  public static let coral = Self(rawValue: "coral")
-  public static let echo = Self(rawValue: "echo")
-  public static let sage = Self(rawValue: "sage")
-  public static let shimmer = Self(rawValue: "shimmer")
-  public static let verse = Self(rawValue: "verse")
-  public static let marin = Self(rawValue: "marin")
-  public static let cedar = Self(rawValue: "cedar")
+public enum OpenAIVoiceIdsSharedAnyOf2: String, Codable, Hashable, Sendable {
+  case alloy = "alloy"
+  case ash = "ash"
+  case ballad = "ballad"
+  case coral = "coral"
+  case echo = "echo"
+  case sage = "sage"
+  case shimmer = "shimmer"
+  case verse = "verse"
+  case marin = "marin"
+  case cedar = "cedar"
 }

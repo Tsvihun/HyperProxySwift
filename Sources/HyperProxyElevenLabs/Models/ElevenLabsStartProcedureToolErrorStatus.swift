@@ -10,15 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsStartProcedureToolErrorStatus: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let notFound = Self(rawValue: "not_found")
-  public static let invalidName = Self(rawValue: "invalid_name")
-  public static let alreadyActive = Self(rawValue: "already_active")
+public enum ElevenLabsStartProcedureToolErrorStatus: String, Codable, Hashable, Sendable {
+  case notFound = "not_found"
+  case invalidName = "invalid_name"
+  case alreadyActive = "already_active"
 }

@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherResponse: Codable, Sendable {
-  public var errors: [HyperProxyJSONValue]?
+  public var errors: [TogetherResponseErrorsItem]?
 
   public init(
-    errors: [HyperProxyJSONValue]? = nil
+    errors: [TogetherResponseErrorsItem]? = nil
   ) {
     self.errors = errors
   }

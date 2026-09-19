@@ -15,16 +15,16 @@ public struct OpenAIApplyPatchToolCall: Codable, Sendable {
   public var caller: OpenAIToolCallCaller?
   public var createdBy: String?
   public var id: String
-  public var operation: HyperProxyJSONValue
+  public var operation: OpenAIApplyPatchToolCallOperation
   public var status: OpenAIApplyPatchCallStatus
-  public var typeModel: OpenAIApplyPatchToolCallTypeModel
+  public var kind: OpenAIApplyPatchToolCallKind
 
   public init(
     callId: String,
     id: String,
-    operation: HyperProxyJSONValue,
+    operation: OpenAIApplyPatchToolCallOperation,
     status: OpenAIApplyPatchCallStatus,
-    typeModel: OpenAIApplyPatchToolCallTypeModel,
+    kind: OpenAIApplyPatchToolCallKind,
     caller: OpenAIToolCallCaller? = nil,
     createdBy: String? = nil
   ) {
@@ -34,7 +34,7 @@ public struct OpenAIApplyPatchToolCall: Codable, Sendable {
     self.id = id
     self.operation = operation
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenAIApplyPatchToolCall: Codable, Sendable {
     case id
     case operation
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -19,7 +19,7 @@ public struct ElevenLabsProcedureRefResponseModel: Codable, Sendable {
   public var referencedProcedureIds: [String]?
   public var referencedToolIds: [String]?
   public var trigger: String?
-  public var typeModel: ElevenLabsProcedureType?
+  public var kind: ElevenLabsProcedureType?
   public var versionId: String?
 
   public init(
@@ -31,7 +31,7 @@ public struct ElevenLabsProcedureRefResponseModel: Codable, Sendable {
     referencedProcedureIds: [String]? = nil,
     referencedToolIds: [String]? = nil,
     trigger: String? = nil,
-    typeModel: ElevenLabsProcedureType? = nil,
+    kind: ElevenLabsProcedureType? = nil,
     versionId: String? = nil
   ) {
     self.folderParentId = folderParentId
@@ -42,7 +42,7 @@ public struct ElevenLabsProcedureRefResponseModel: Codable, Sendable {
     self.referencedProcedureIds = referencedProcedureIds
     self.referencedToolIds = referencedToolIds
     self.trigger = trigger
-    self.typeModel = typeModel
+    self.kind = kind
     self.versionId = versionId
   }
 
@@ -55,7 +55,7 @@ public struct ElevenLabsProcedureRefResponseModel: Codable, Sendable {
     case referencedProcedureIds = "referenced_procedure_ids"
     case referencedToolIds = "referenced_tool_ids"
     case trigger
-    case typeModel = "type"
+    case kind = "type"
     case versionId = "version_id"
   }
 }

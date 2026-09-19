@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct GeminiRetrievalConfig: Codable, Sendable {
   public var languageCode: String?
-  public var latLng: HyperProxyJSONValue?
+  public var latLng: GeminiLatLng?
 
   public init(
     languageCode: String? = nil,
-    latLng: HyperProxyJSONValue? = nil
+    latLng: GeminiLatLng? = nil
   ) {
     self.languageCode = languageCode
     self.latLng = latLng

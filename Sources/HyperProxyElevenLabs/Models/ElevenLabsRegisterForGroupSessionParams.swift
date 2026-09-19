@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsRegisterForGroupSessionParams: Codable, Sendable {
-  public var smbToolType: String?
+  public var smbToolType: ElevenLabsRegisterForGroupSessionSmbToolType?
 
   public init(
-    smbToolType: String? = nil
+    smbToolType: ElevenLabsRegisterForGroupSessionSmbToolType? = nil
   ) {
     self.smbToolType = smbToolType
   }

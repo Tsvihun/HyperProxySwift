@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterOpenAIResponsesToolChoiceAnyOf4: Codable, Sendable {
   public var name: String
-  public var typeModel: OpenRouterOpenAIResponsesToolChoiceAnyOf4TypeModel
+  public var kind: OpenRouterOpenAIResponsesToolChoiceAnyOf4Kind
 
   public init(
     name: String,
-    typeModel: OpenRouterOpenAIResponsesToolChoiceAnyOf4TypeModel
+    kind: OpenRouterOpenAIResponsesToolChoiceAnyOf4Kind
   ) {
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

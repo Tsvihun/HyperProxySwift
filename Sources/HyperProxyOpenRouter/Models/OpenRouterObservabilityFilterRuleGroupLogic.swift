@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterObservabilityFilterRuleGroupLogic: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let and = Self(rawValue: "and")
-  public static let or = Self(rawValue: "or")
+public enum OpenRouterObservabilityFilterRuleGroupLogic: String, Codable, Hashable, Sendable {
+  case and = "and"
+  case or = "or"
 }

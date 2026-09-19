@@ -10,4 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public typealias ElevenLabsPostKnowledgeBaseBulkDeleteRouteResponse = [String: HyperProxyJSONValue]
+public typealias ElevenLabsPostKnowledgeBaseBulkDeleteRouteResponse = [String:
+  ElevenLabsPostKnowledgeBaseBulkDeleteRouteResponseValue]

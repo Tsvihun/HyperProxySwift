@@ -15,20 +15,20 @@ public struct OpenAILiveInitialUserMessageItemParam: Codable, Sendable {
   public var id: String?
   public var role: OpenAILiveInitialUserMessageItemParamRole
   public var status: OpenAILiveInitialMessageStatus?
-  public var typeModel: OpenAILiveInitialUserMessageItemParamTypeModel?
+  public var kind: OpenAILiveInitialUserMessageItemParamKind?
 
   public init(
     content: [OpenAILiveInitialInputTextContentPartParam],
     role: OpenAILiveInitialUserMessageItemParamRole,
     id: String? = nil,
     status: OpenAILiveInitialMessageStatus? = nil,
-    typeModel: OpenAILiveInitialUserMessageItemParamTypeModel? = nil
+    kind: OpenAILiveInitialUserMessageItemParamKind? = nil
   ) {
     self.content = content
     self.id = id
     self.role = role
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAILiveInitialUserMessageItemParam: Codable, Sendable {
     case id
     case role
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

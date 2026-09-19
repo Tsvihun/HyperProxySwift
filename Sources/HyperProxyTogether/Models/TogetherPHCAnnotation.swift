@@ -12,17 +12,17 @@ import HyperProxyCore
 
 public struct TogetherPHCAnnotation: Codable, Sendable {
   public var description: String
-  public var slurmNodeUnavailable: HyperProxyJSONValue?
+  public var slurmNodeUnavailable: TogetherSlurmNodeUnavailableDetail?
   public var summaryLine: String
   public var title: String
-  public var xid: HyperProxyJSONValue?
+  public var xid: TogetherXidDetail?
 
   public init(
     description: String,
     summaryLine: String,
     title: String,
-    slurmNodeUnavailable: HyperProxyJSONValue? = nil,
-    xid: HyperProxyJSONValue? = nil
+    slurmNodeUnavailable: TogetherSlurmNodeUnavailableDetail? = nil,
+    xid: TogetherXidDetail? = nil
   ) {
     self.description = description
     self.slurmNodeUnavailable = slurmNodeUnavailable

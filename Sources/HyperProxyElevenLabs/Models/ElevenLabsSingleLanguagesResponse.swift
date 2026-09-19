@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsSingleLanguagesResponse: Codable, Sendable {
-  public var kind: String?
+  public var kind: ElevenLabsSingleKind?
   public var languages: [ElevenLabsLanguageInfo]
 
   public init(
     languages: [ElevenLabsLanguageInfo],
-    kind: String? = nil
+    kind: ElevenLabsSingleKind? = nil
   ) {
     self.kind = kind
     self.languages = languages

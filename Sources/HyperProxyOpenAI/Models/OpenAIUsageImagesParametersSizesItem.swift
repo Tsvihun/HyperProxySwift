@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIUsageImagesParametersSizesItem: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let value256x256 = Self(rawValue: "256x256")
-  public static let value512x512 = Self(rawValue: "512x512")
-  public static let value1024x1024 = Self(rawValue: "1024x1024")
-  public static let value1792x1792 = Self(rawValue: "1792x1792")
-  public static let value1024x1792 = Self(rawValue: "1024x1792")
+public enum OpenAIUsageImagesParametersSizesItem: String, Codable, Hashable, Sendable {
+  case value256x256 = "256x256"
+  case value512x512 = "512x512"
+  case value1024x1024 = "1024x1024"
+  case value1792x1792 = "1792x1792"
+  case value1024x1792 = "1024x1792"
 }

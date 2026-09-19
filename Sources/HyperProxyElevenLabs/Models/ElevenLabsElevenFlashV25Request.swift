@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct ElevenLabsElevenFlashV25Request: Codable, Sendable {
   public var languageCode: String?
-  public var modelId: String
+  public var modelId: ElevenLabsElevenFlashV25ModelId
   public var outputFormat: ElevenLabsElevenFlashV25RequestOutputFormat?
   public var pronunciationDictionaryLocators: [ElevenLabsPronunciationDictionaryVersionLocator]?
   public var text: String
@@ -21,9 +21,9 @@ public struct ElevenLabsElevenFlashV25Request: Codable, Sendable {
   public var webhook: ElevenLabsWebhookTarget?
 
   public init(
-    modelId: String,
     text: String,
     voice: String,
+    modelId: ElevenLabsElevenFlashV25ModelId = .elevenFlashV25,
     languageCode: String? = nil,
     outputFormat: ElevenLabsElevenFlashV25RequestOutputFormat? = nil,
     pronunciationDictionaryLocators: [ElevenLabsPronunciationDictionaryVersionLocator]? = nil,

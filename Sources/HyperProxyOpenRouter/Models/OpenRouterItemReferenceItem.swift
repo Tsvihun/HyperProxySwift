@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterItemReferenceItem: Codable, Sendable {
   public var id: String
-  public var typeModel: OpenRouterItemReferenceItemTypeModel
+  public var kind: OpenRouterItemReferenceItemKind
 
   public init(
     id: String,
-    typeModel: OpenRouterItemReferenceItemTypeModel
+    kind: OpenRouterItemReferenceItemKind
   ) {
     self.id = id
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case id
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -27,7 +27,7 @@ public struct ElevenLabsUpdateSimulationTestRequest: Codable, Sendable {
   public var successConditions: [String]?
   public var toolMockConfig: ElevenLabsSimulationToolMockBehaviorConfig?
   public var toolMockOverrides: [String: [ElevenLabsToolResponseMockConfigInput]]?
-  public var typeModel: String?
+  public var kind: ElevenLabsSimulationKind?
 
   public init(
     name: String,
@@ -46,7 +46,7 @@ public struct ElevenLabsUpdateSimulationTestRequest: Codable, Sendable {
     successConditions: [String]? = nil,
     toolMockConfig: ElevenLabsSimulationToolMockBehaviorConfig? = nil,
     toolMockOverrides: [String: [ElevenLabsToolResponseMockConfigInput]]? = nil,
-    typeModel: String? = nil
+    kind: ElevenLabsSimulationKind? = nil
   ) {
     self.chatHistory = chatHistory
     self.conversationInitiationSource = conversationInitiationSource
@@ -64,7 +64,7 @@ public struct ElevenLabsUpdateSimulationTestRequest: Codable, Sendable {
     self.successConditions = successConditions
     self.toolMockConfig = toolMockConfig
     self.toolMockOverrides = toolMockOverrides
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -84,6 +84,6 @@ public struct ElevenLabsUpdateSimulationTestRequest: Codable, Sendable {
     case successConditions = "success_conditions"
     case toolMockConfig = "tool_mock_config"
     case toolMockOverrides = "tool_mock_overrides"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

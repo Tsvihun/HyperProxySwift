@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiModalityTokenCountModality: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mODALITYUNSPECIFIED = Self(rawValue: "MODALITY_UNSPECIFIED")
-  public static let tEXT = Self(rawValue: "TEXT")
-  public static let iMAGE = Self(rawValue: "IMAGE")
-  public static let vIDEO = Self(rawValue: "VIDEO")
-  public static let aUDIO = Self(rawValue: "AUDIO")
-  public static let dOCUMENT = Self(rawValue: "DOCUMENT")
+public enum GeminiModalityTokenCountModality: String, Codable, Hashable, Sendable {
+  case mODALITYUNSPECIFIED = "MODALITY_UNSPECIFIED"
+  case tEXT = "TEXT"
+  case iMAGE = "IMAGE"
+  case vIDEO = "VIDEO"
+  case aUDIO = "AUDIO"
+  case dOCUMENT = "DOCUMENT"
 }

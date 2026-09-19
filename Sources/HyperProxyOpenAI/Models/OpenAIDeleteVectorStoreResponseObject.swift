@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIDeleteVectorStoreResponseObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let vectorStoreDeleted = Self(rawValue: "vector_store.deleted")
+public enum OpenAIDeleteVectorStoreResponseObject: String, Codable, Hashable, Sendable {
+  case vectorStoreDeleted = "vector_store.deleted"
 }

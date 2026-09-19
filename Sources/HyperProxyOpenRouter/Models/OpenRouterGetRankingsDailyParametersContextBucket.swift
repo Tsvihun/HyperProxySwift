@@ -10,18 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterGetRankingsDailyParametersContextBucket: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let value1K = Self(rawValue: "1K")
-  public static let value10K = Self(rawValue: "10K")
-  public static let value100K = Self(rawValue: "100K")
-  public static let value1M = Self(rawValue: "1M")
-  public static let value10M = Self(rawValue: "10M")
+public enum OpenRouterGetRankingsDailyParametersContextBucket: String, Codable, Hashable, Sendable {
+  case value1K = "1K"
+  case value10K = "10K"
+  case value100K = "100K"
+  case value1M = "1M"
+  case value10M = "10M"
 }

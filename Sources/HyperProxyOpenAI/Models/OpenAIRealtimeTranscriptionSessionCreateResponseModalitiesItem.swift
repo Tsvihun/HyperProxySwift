@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIRealtimeTranscriptionSessionCreateResponseModalitiesItem: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum OpenAIRealtimeTranscriptionSessionCreateResponseModalitiesItem: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let text = Self(rawValue: "text")
-  public static let audio = Self(rawValue: "audio")
+  case text = "text"
+  case audio = "audio"
 }

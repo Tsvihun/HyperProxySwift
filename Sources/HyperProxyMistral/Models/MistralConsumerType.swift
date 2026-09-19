@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralConsumerType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let user = Self(rawValue: "user")
-  public static let org = Self(rawValue: "org")
-  public static let workspace = Self(rawValue: "workspace")
-  public static let system = Self(rawValue: "system")
+public enum MistralConsumerType: String, Codable, Hashable, Sendable {
+  case user = "user"
+  case org = "org"
+  case workspace = "workspace"
+  case system = "system"
 }

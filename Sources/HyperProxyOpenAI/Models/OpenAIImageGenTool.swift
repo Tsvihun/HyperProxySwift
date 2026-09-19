@@ -15,28 +15,28 @@ public struct OpenAIImageGenTool: Codable, Sendable {
   public var background: OpenAIImageGenToolBackground?
   public var inputFidelity: OpenAIInputFidelity?
   public var inputImageMask: OpenAIImageGenToolInputImageMask?
-  public var model: HyperProxyJSONValue?
+  public var model: OpenAIImageGenToolModel?
   public var moderation: OpenAIImageGenToolModeration?
   public var outputCompression: Int?
   public var outputFormat: OpenAIImageGenToolOutputFormat?
   public var partialImages: Int?
   public var quality: OpenAIImageGenToolQuality?
-  public var size: HyperProxyJSONValue?
-  public var typeModel: OpenAIImageGenToolTypeModel
+  public var size: OpenAIImageGenToolSize?
+  public var kind: OpenAIImageGenToolKind
 
   public init(
-    typeModel: OpenAIImageGenToolTypeModel,
+    kind: OpenAIImageGenToolKind,
     action: OpenAIImageGenActionEnum? = nil,
     background: OpenAIImageGenToolBackground? = nil,
     inputFidelity: OpenAIInputFidelity? = nil,
     inputImageMask: OpenAIImageGenToolInputImageMask? = nil,
-    model: HyperProxyJSONValue? = nil,
+    model: OpenAIImageGenToolModel? = nil,
     moderation: OpenAIImageGenToolModeration? = nil,
     outputCompression: Int? = nil,
     outputFormat: OpenAIImageGenToolOutputFormat? = nil,
     partialImages: Int? = nil,
     quality: OpenAIImageGenToolQuality? = nil,
-    size: HyperProxyJSONValue? = nil
+    size: OpenAIImageGenToolSize? = nil
   ) {
     self.action = action
     self.background = background
@@ -49,7 +49,7 @@ public struct OpenAIImageGenTool: Codable, Sendable {
     self.partialImages = partialImages
     self.quality = quality
     self.size = size
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -64,6 +64,6 @@ public struct OpenAIImageGenTool: Codable, Sendable {
     case partialImages = "partial_images"
     case quality
     case size
-    case typeModel = "type"
+    case kind = "type"
   }
 }

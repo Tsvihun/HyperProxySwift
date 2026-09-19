@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct PerplexityApiChatCompletionsRequestModel: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let sonar = Self(rawValue: "sonar")
-  public static let sonarPro = Self(rawValue: "sonar-pro")
-  public static let sonarDeepResearch = Self(rawValue: "sonar-deep-research")
-  public static let sonarReasoningPro = Self(rawValue: "sonar-reasoning-pro")
+public enum PerplexityApiChatCompletionsRequestModel: String, Codable, Hashable, Sendable {
+  case sonar = "sonar"
+  case sonarPro = "sonar-pro"
+  case sonarDeepResearch = "sonar-deep-research"
+  case sonarReasoningPro = "sonar-reasoning-pro"
 }

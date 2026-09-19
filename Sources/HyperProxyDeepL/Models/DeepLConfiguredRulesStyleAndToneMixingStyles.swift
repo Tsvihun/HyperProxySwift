@@ -10,15 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesStyleAndToneMixingStyles: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let doNotMixDesuMasuStyleAndDearuStyle = Self(
-    rawValue: "do_not_mix_desu_masu_style_and_dearu_style")
+public enum DeepLConfiguredRulesStyleAndToneMixingStyles: String, Codable, Hashable, Sendable {
+  case doNotMixDesuMasuStyleAndDearuStyle = "do_not_mix_desu_masu_style_and_dearu_style"
 }

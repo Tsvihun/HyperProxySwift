@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIFunctionShellCallOutputTimeoutOutcomeParam: Codable, Sendable {
-  public var typeModel: OpenAIFunctionShellCallOutputTimeoutOutcomeParamTypeModel
+  public var kind: OpenAIFunctionShellCallOutputTimeoutOutcomeParamKind
 
   public init(
-    typeModel: OpenAIFunctionShellCallOutputTimeoutOutcomeParamTypeModel
+    kind: OpenAIFunctionShellCallOutputTimeoutOutcomeParamKind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

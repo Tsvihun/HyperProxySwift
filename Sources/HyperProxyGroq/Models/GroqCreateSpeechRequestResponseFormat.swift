@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct GroqCreateSpeechRequestResponseFormat: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let flac = Self(rawValue: "flac")
-  public static let mp3 = Self(rawValue: "mp3")
-  public static let mulaw = Self(rawValue: "mulaw")
-  public static let ogg = Self(rawValue: "ogg")
-  public static let wav = Self(rawValue: "wav")
+public enum GroqCreateSpeechRequestResponseFormat: String, Codable, Hashable, Sendable {
+  case flac = "flac"
+  case mp3 = "mp3"
+  case mulaw = "mulaw"
+  case ogg = "ogg"
+  case wav = "wav"
 }

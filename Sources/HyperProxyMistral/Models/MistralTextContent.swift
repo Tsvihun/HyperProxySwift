@@ -14,24 +14,24 @@ public struct MistralTextContent: Codable, Sendable {
   public var meta: [String: HyperProxyJSONValue]?
   public var annotations: MistralAnnotations?
   public var text: String
-  public var typeModel: String
+  public var kind: MistralTextKind
 
   public init(
     text: String,
-    typeModel: String,
+    kind: MistralTextKind = .text,
     meta: [String: HyperProxyJSONValue]? = nil,
     annotations: MistralAnnotations? = nil
   ) {
     self.meta = meta
     self.annotations = annotations
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case meta = "_meta"
     case annotations
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

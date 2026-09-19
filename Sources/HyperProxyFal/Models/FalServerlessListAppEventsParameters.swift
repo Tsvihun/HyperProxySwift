@@ -11,22 +11,22 @@ import Foundation
 import HyperProxyCore
 
 public struct FalServerlessListAppEventsParameters: Codable, Sendable {
-  public var category: HyperProxyJSONValue?
+  public var category: FalServerlessListAppEventsParametersCategory?
   public var cursor: String?
-  public var end: String?
+  public var end: FalServerlessListAppEventsParametersEnd?
   public var limit: Int?
   public var name: String
   public var owner: String
-  public var start: String?
+  public var start: FalServerlessListAppEventsParametersStart?
 
   public init(
     name: String,
     owner: String,
-    category: HyperProxyJSONValue? = nil,
+    category: FalServerlessListAppEventsParametersCategory? = nil,
     cursor: String? = nil,
-    end: String? = nil,
+    end: FalServerlessListAppEventsParametersEnd? = nil,
     limit: Int? = nil,
-    start: String? = nil
+    start: FalServerlessListAppEventsParametersStart? = nil
   ) {
     self.category = category
     self.cursor = cursor

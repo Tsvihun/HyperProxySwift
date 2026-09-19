@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsMediaCodec: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let g7228000 = Self(rawValue: "G722/8000")
-  public static let pCMU8000 = Self(rawValue: "PCMU/8000")
-  public static let pCMA8000 = Self(rawValue: "PCMA/8000")
+public enum ElevenLabsMediaCodec: String, Codable, Hashable, Sendable {
+  case g7228000 = "G722/8000"
+  case pCMU8000 = "PCMU/8000"
+  case pCMA8000 = "PCMA/8000"
 }

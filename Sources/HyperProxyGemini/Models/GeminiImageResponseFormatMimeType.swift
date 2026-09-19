@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiImageResponseFormatMimeType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mIMETYPEUNSPECIFIED = Self(rawValue: "MIME_TYPE_UNSPECIFIED")
-  public static let iMAGEJPEG = Self(rawValue: "IMAGE_JPEG")
+public enum GeminiImageResponseFormatMimeType: String, Codable, Hashable, Sendable {
+  case mIMETYPEUNSPECIFIED = "MIME_TYPE_UNSPECIFIED"
+  case iMAGEJPEG = "IMAGE_JPEG"
 }

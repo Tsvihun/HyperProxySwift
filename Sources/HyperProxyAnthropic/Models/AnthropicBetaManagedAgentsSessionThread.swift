@@ -19,7 +19,7 @@ public struct AnthropicBetaManagedAgentsSessionThread: Codable, Sendable {
   public var sessionId: String
   public var stats: AnthropicBetaManagedAgentsSessionThreadStats?
   public var status: AnthropicBetaManagedAgentsSessionThreadStatus
-  public var typeModel: AnthropicBetaManagedAgentsSessionThreadTypeModel
+  public var kind: AnthropicBetaManagedAgentsSessionThreadKind
   public var updatedAt: AnthropicBetaTimestamp
   public var usage: AnthropicBetaManagedAgentsSessionThreadUsage?
 
@@ -32,7 +32,7 @@ public struct AnthropicBetaManagedAgentsSessionThread: Codable, Sendable {
     sessionId: String,
     stats: AnthropicBetaManagedAgentsSessionThreadStats?,
     status: AnthropicBetaManagedAgentsSessionThreadStatus,
-    typeModel: AnthropicBetaManagedAgentsSessionThreadTypeModel,
+    kind: AnthropicBetaManagedAgentsSessionThreadKind,
     updatedAt: AnthropicBetaTimestamp,
     usage: AnthropicBetaManagedAgentsSessionThreadUsage?
   ) {
@@ -44,7 +44,7 @@ public struct AnthropicBetaManagedAgentsSessionThread: Codable, Sendable {
     self.sessionId = sessionId
     self.stats = stats
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
     self.updatedAt = updatedAt
     self.usage = usage
   }
@@ -58,7 +58,7 @@ public struct AnthropicBetaManagedAgentsSessionThread: Codable, Sendable {
     case sessionId = "session_id"
     case stats
     case status
-    case typeModel = "type"
+    case kind = "type"
     case updatedAt = "updated_at"
     case usage
   }

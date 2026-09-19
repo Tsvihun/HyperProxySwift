@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIUpdateConversationBody: Codable, Sendable {
-  public var metadata: OpenAIMetadata
+  public var metadata: OpenAIMetadata?
 
   public init(
-    metadata: OpenAIMetadata
+    metadata: OpenAIMetadata?
   ) {
     self.metadata = metadata
   }

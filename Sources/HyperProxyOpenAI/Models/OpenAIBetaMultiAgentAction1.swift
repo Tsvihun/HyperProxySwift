@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIBetaMultiAgentAction1: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let spawnAgent = Self(rawValue: "spawn_agent")
-  public static let interruptAgent = Self(rawValue: "interrupt_agent")
-  public static let listAgents = Self(rawValue: "list_agents")
-  public static let sendMessage = Self(rawValue: "send_message")
-  public static let followupTask = Self(rawValue: "followup_task")
-  public static let waitAgent = Self(rawValue: "wait_agent")
+public enum OpenAIBetaMultiAgentAction1: String, Codable, Hashable, Sendable {
+  case spawnAgent = "spawn_agent"
+  case interruptAgent = "interrupt_agent"
+  case listAgents = "list_agents"
+  case sendMessage = "send_message"
+  case followupTask = "followup_task"
+  case waitAgent = "wait_agent"
 }

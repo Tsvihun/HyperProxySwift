@@ -17,7 +17,7 @@ public struct OpenRouterTextDeltaEvent: Codable, Sendable {
   public var logprobs: [OpenRouterOpenResponsesLogProbs]
   public var outputIndex: Int
   public var sequenceNumber: Int
-  public var typeModel: OpenRouterBaseTextDeltaEventTypeModel
+  public var kind: OpenRouterBaseTextDeltaEventKind
 
   public init(
     contentIndex: Int,
@@ -26,7 +26,7 @@ public struct OpenRouterTextDeltaEvent: Codable, Sendable {
     logprobs: [OpenRouterOpenResponsesLogProbs],
     outputIndex: Int,
     sequenceNumber: Int,
-    typeModel: OpenRouterBaseTextDeltaEventTypeModel
+    kind: OpenRouterBaseTextDeltaEventKind
   ) {
     self.contentIndex = contentIndex
     self.delta = delta
@@ -34,7 +34,7 @@ public struct OpenRouterTextDeltaEvent: Codable, Sendable {
     self.logprobs = logprobs
     self.outputIndex = outputIndex
     self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenRouterTextDeltaEvent: Codable, Sendable {
     case logprobs
     case outputIndex = "output_index"
     case sequenceNumber = "sequence_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

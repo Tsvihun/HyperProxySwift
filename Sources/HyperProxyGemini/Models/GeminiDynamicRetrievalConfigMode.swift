@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiDynamicRetrievalConfigMode: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mODEUNSPECIFIED = Self(rawValue: "MODE_UNSPECIFIED")
-  public static let mODEDYNAMIC = Self(rawValue: "MODE_DYNAMIC")
+public enum GeminiDynamicRetrievalConfigMode: String, Codable, Hashable, Sendable {
+  case mODEUNSPECIFIED = "MODE_UNSPECIFIED"
+  case mODEDYNAMIC = "MODE_DYNAMIC"
 }

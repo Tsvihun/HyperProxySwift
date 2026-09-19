@@ -11,23 +11,23 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaResponseBashCodeExecutionToolResultBlock: Codable, Sendable {
-  public var content: HyperProxyJSONValue
+  public var content: AnthropicBetaResponseBashCodeExecutionToolResultBlockContent
   public var toolUseId: String
-  public var typeModel: String
+  public var kind: AnthropicBashCodeExecutionToolResultKind
 
   public init(
-    content: HyperProxyJSONValue,
+    content: AnthropicBetaResponseBashCodeExecutionToolResultBlockContent,
     toolUseId: String,
-    typeModel: String
+    kind: AnthropicBashCodeExecutionToolResultKind = .bashCodeExecutionToolResult
   ) {
     self.content = content
     self.toolUseId = toolUseId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case content
     case toolUseId = "tool_use_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

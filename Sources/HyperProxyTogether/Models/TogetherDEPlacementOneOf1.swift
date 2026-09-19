@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherDEPlacementOneOf1: Codable, Sendable {
-  public var inline: HyperProxyJSONValue
+  public var inline: TogetherDEInlinePlacement
 
   public init(
-    inline: HyperProxyJSONValue
+    inline: TogetherDEInlinePlacement
   ) {
     self.inline = inline
   }

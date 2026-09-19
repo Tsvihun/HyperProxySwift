@@ -11,30 +11,30 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterMessagesStartEventMessage: Codable, Sendable {
-  public var container: OpenRouterAnthropicContainer
+  public var container: OpenRouterAnthropicContainer?
   public var content: [OpenRouterORAnthropicContentBlock]
   public var id: String
   public var inputTransformations: [OpenRouterAnthropicInputTransformation]?
   public var model: String
   public var provider: OpenRouterMessagesStartEventMessageProvider?
   public var role: OpenRouterMessagesStartEventMessageRole
-  public var stopDetails: OpenRouterAnthropicRefusalStopDetails
+  public var stopDetails: OpenRouterAnthropicRefusalStopDetails?
   public var stopReason: HyperProxyJSONValue
   public var stopSequence: HyperProxyJSONValue
-  public var typeModel: OpenRouterMessagesStartEventMessageTypeModel
-  public var usage: HyperProxyJSONValue
+  public var kind: OpenRouterMessagesStartEventMessageKind
+  public var usage: OpenRouterMessagesStartEventMessageUsage
 
   public init(
-    container: OpenRouterAnthropicContainer,
+    container: OpenRouterAnthropicContainer?,
     content: [OpenRouterORAnthropicContentBlock],
     id: String,
     model: String,
     role: OpenRouterMessagesStartEventMessageRole,
-    stopDetails: OpenRouterAnthropicRefusalStopDetails,
+    stopDetails: OpenRouterAnthropicRefusalStopDetails?,
     stopReason: HyperProxyJSONValue,
     stopSequence: HyperProxyJSONValue,
-    typeModel: OpenRouterMessagesStartEventMessageTypeModel,
-    usage: HyperProxyJSONValue,
+    kind: OpenRouterMessagesStartEventMessageKind,
+    usage: OpenRouterMessagesStartEventMessageUsage,
     inputTransformations: [OpenRouterAnthropicInputTransformation]? = nil,
     provider: OpenRouterMessagesStartEventMessageProvider? = nil
   ) {
@@ -48,7 +48,7 @@ public struct OpenRouterMessagesStartEventMessage: Codable, Sendable {
     self.stopDetails = stopDetails
     self.stopReason = stopReason
     self.stopSequence = stopSequence
-    self.typeModel = typeModel
+    self.kind = kind
     self.usage = usage
   }
 
@@ -63,7 +63,7 @@ public struct OpenRouterMessagesStartEventMessage: Codable, Sendable {
     case stopDetails = "stop_details"
     case stopReason = "stop_reason"
     case stopSequence = "stop_sequence"
-    case typeModel = "type"
+    case kind = "type"
     case usage
   }
 }

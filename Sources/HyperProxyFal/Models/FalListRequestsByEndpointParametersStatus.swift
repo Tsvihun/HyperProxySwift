@@ -10,16 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct FalListRequestsByEndpointParametersStatus: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let success = Self(rawValue: "success")
-  public static let error = Self(rawValue: "error")
-  public static let userError = Self(rawValue: "user_error")
+public enum FalListRequestsByEndpointParametersStatus: String, Codable, Hashable, Sendable {
+  case success = "success"
+  case error = "error"
+  case userError = "user_error"
 }

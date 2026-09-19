@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsMediaGenerationInProgressResponseStatus: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let pending = Self(rawValue: "pending")
-  public static let generating = Self(rawValue: "generating")
+public enum ElevenLabsMediaGenerationInProgressResponseStatus: String, Codable, Hashable, Sendable {
+  case pending = "pending"
+  case generating = "generating"
 }

@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiDownloadMediaResponse: Codable, Sendable {
-  public var blob: HyperProxyJSONValue?
+  public var blob: GeminiGdataMedia?
 
   public init(
-    blob: HyperProxyJSONValue? = nil
+    blob: GeminiGdataMedia? = nil
   ) {
     self.blob = blob
   }

@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesPunctuationChineseMixedWithEnglish: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesPunctuationChineseMixedWithEnglish: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let doNotPlaceEnglishInQuotationMarks = Self(
-    rawValue: "do_not_place_english_in_quotation_marks")
-  public static let placeEnglishInQuotationMarks = Self(
-    rawValue: "place_english_in_quotation_marks")
+  case doNotPlaceEnglishInQuotationMarks = "do_not_place_english_in_quotation_marks"
+  case placeEnglishInQuotationMarks = "place_english_in_quotation_marks"
 }

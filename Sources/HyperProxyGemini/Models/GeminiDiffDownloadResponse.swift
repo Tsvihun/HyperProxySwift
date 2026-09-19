@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiDiffDownloadResponse: Codable, Sendable {
-  public var objectLocation: HyperProxyJSONValue?
+  public var objectLocation: GeminiCompositeMedia?
 
   public init(
-    objectLocation: HyperProxyJSONValue? = nil
+    objectLocation: GeminiCompositeMedia? = nil
   ) {
     self.objectLocation = objectLocation
   }

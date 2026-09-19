@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct PerplexityAsyncProcessingStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let cREATED = Self(rawValue: "CREATED")
-  public static let iNPROGRESS = Self(rawValue: "IN_PROGRESS")
-  public static let cOMPLETED = Self(rawValue: "COMPLETED")
-  public static let fAILED = Self(rawValue: "FAILED")
+public enum PerplexityAsyncProcessingStatus: String, Codable, Hashable, Sendable {
+  case cREATED = "CREATED"
+  case iNPROGRESS = "IN_PROGRESS"
+  case cOMPLETED = "COMPLETED"
+  case fAILED = "FAILED"
 }

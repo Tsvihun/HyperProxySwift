@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct MistralConversationRequestBase: Codable, Sendable {
   public var agentId: String?
-  public var agentVersion: HyperProxyJSONValue?
+  public var agentVersion: MistralConversationRequestBaseAgentVersion?
   public var completionArgs: MistralCompletionArgs?
   public var description: String?
   public var guardrails: [MistralGuardrailConfig]?
@@ -24,12 +24,12 @@ public struct MistralConversationRequestBase: Codable, Sendable {
   public var name: String?
   public var store: Bool?
   public var stream: Bool?
-  public var tools: [HyperProxyJSONValue]?
+  public var tools: [MistralConversationRequestBaseToolsAnyOf1Item]?
 
   public init(
     inputs: MistralConversationInputs,
     agentId: String? = nil,
-    agentVersion: HyperProxyJSONValue? = nil,
+    agentVersion: MistralConversationRequestBaseAgentVersion? = nil,
     completionArgs: MistralCompletionArgs? = nil,
     description: String? = nil,
     guardrails: [MistralGuardrailConfig]? = nil,
@@ -40,7 +40,7 @@ public struct MistralConversationRequestBase: Codable, Sendable {
     name: String? = nil,
     store: Bool? = nil,
     stream: Bool? = nil,
-    tools: [HyperProxyJSONValue]? = nil
+    tools: [MistralConversationRequestBaseToolsAnyOf1Item]? = nil
   ) {
     self.agentId = agentId
     self.agentVersion = agentVersion

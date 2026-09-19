@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsDeployment: Codable, Sendable {
-  public var agent: HyperProxyJSONValue
+  public var agent: AnthropicBetaManagedAgentsAgentReference
   public var archivedAt: AnthropicBetaTimestamp?
   public var budget: AnthropicBetaManagedAgentsBudget?
   public var createdAt: AnthropicBetaTimestamp
@@ -25,12 +25,12 @@ public struct AnthropicBetaManagedAgentsDeployment: Codable, Sendable {
   public var resources: [AnthropicBetaManagedAgentsSessionResourceConfig]
   public var schedule: AnthropicBetaManagedAgentsSchedule?
   public var status: AnthropicBetaManagedAgentsDeploymentStatus
-  public var typeModel: AnthropicBetaManagedAgentsDeploymentTypeModel
+  public var kind: AnthropicBetaManagedAgentsDeploymentKind
   public var updatedAt: AnthropicBetaTimestamp
   public var vaultIds: [String]
 
   public init(
-    agent: HyperProxyJSONValue,
+    agent: AnthropicBetaManagedAgentsAgentReference,
     archivedAt: AnthropicBetaTimestamp?,
     createdAt: AnthropicBetaTimestamp,
     description: String?,
@@ -43,7 +43,7 @@ public struct AnthropicBetaManagedAgentsDeployment: Codable, Sendable {
     resources: [AnthropicBetaManagedAgentsSessionResourceConfig],
     schedule: AnthropicBetaManagedAgentsSchedule?,
     status: AnthropicBetaManagedAgentsDeploymentStatus,
-    typeModel: AnthropicBetaManagedAgentsDeploymentTypeModel,
+    kind: AnthropicBetaManagedAgentsDeploymentKind,
     updatedAt: AnthropicBetaTimestamp,
     vaultIds: [String],
     budget: AnthropicBetaManagedAgentsBudget? = nil
@@ -62,7 +62,7 @@ public struct AnthropicBetaManagedAgentsDeployment: Codable, Sendable {
     self.resources = resources
     self.schedule = schedule
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
     self.updatedAt = updatedAt
     self.vaultIds = vaultIds
   }
@@ -82,7 +82,7 @@ public struct AnthropicBetaManagedAgentsDeployment: Codable, Sendable {
     case resources
     case schedule
     case status
-    case typeModel = "type"
+    case kind = "type"
     case updatedAt = "updated_at"
     case vaultIds = "vault_ids"
   }

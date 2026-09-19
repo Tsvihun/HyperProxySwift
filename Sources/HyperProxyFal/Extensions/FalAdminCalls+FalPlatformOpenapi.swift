@@ -48,6 +48,18 @@ extension FalAdminCalls {
     return try await call.decoded(FalGetOrganizationBillingEventsResponse.self)
   }
 
+  public func getOrganizationFocusReport(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> String {
+    let call = self.service.call(.getOrganizationFocusReport)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.text()
+  }
+
   public func getOrganizationTeams(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],

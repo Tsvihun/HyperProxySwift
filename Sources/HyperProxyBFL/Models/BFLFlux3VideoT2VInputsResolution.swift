@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct BFLFlux3VideoT2VInputsResolution: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let hd = Self(rawValue: "hd")
-  public static let fhd = Self(rawValue: "fhd")
-  public static let qhd = Self(rawValue: "qhd")
-  public static let uhd = Self(rawValue: "uhd")
+public enum BFLFlux3VideoT2VInputsResolution: String, Codable, Hashable, Sendable {
+  case hd = "hd"
+  case fhd = "fhd"
+  case qhd = "qhd"
+  case uhd = "uhd"
 }

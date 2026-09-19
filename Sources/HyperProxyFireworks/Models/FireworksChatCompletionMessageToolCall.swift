@@ -11,23 +11,23 @@ import Foundation
 import HyperProxyCore
 
 public struct FireworksChatCompletionMessageToolCall: Codable, Sendable {
-  public var function: HyperProxyJSONValue
+  public var function: FireworksChatCompletionMessageToolCallFunction5e6788c0
   public var id: String?
-  public var typeModel: String?
+  public var kind: String?
 
   public init(
-    function: HyperProxyJSONValue,
+    function: FireworksChatCompletionMessageToolCallFunction5e6788c0,
     id: String? = nil,
-    typeModel: String? = nil
+    kind: String? = nil
   ) {
     self.function = function
     self.id = id
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case function
     case id
-    case typeModel = "type"
+    case kind = "type"
   }
 }

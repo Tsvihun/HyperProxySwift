@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesPunctuationExplanatoryNoteIndicator: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesPunctuationExplanatoryNoteIndicator: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useDoubleEmDash = Self(rawValue: "use_double_em_dash")
-  public static let useParentheses = Self(rawValue: "use_parentheses")
+  case useDoubleEmDash = "use_double_em_dash"
+  case useParentheses = "use_parentheses"
 }

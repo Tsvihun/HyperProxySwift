@@ -16,13 +16,13 @@ public struct FireworksRawOutput: Codable, Sendable {
   public var completionTokenIds: [Int]?
   public var grammar: String?
   public var images: [String]?
-  public var promptFragments: [HyperProxyJSONValue]
+  public var promptFragments: [FireworksRawOutputPromptFragmentsItem]
   public var promptTokenIds: [Int]
   public var videos: [String]?
 
   public init(
     completion: String,
-    promptFragments: [HyperProxyJSONValue],
+    promptFragments: [FireworksRawOutputPromptFragmentsItem],
     promptTokenIds: [Int],
     completionLogprobs: FireworksNewLogProbs? = nil,
     completionTokenIds: [Int]? = nil,

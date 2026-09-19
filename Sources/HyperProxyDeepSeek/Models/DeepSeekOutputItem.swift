@@ -20,7 +20,7 @@ public struct DeepSeekOutputItem: Codable, Sendable {
   public var role: DeepSeekOutputRole?
   public var status: DeepSeekOutputItemStatus?
   public var summary: [[String: HyperProxyJSONValue]]?
-  public var typeModel: DeepSeekOutputItemType?
+  public var kind: DeepSeekOutputItemType?
 
   public init(
     action: [String: HyperProxyJSONValue]? = nil,
@@ -32,7 +32,7 @@ public struct DeepSeekOutputItem: Codable, Sendable {
     role: DeepSeekOutputRole? = nil,
     status: DeepSeekOutputItemStatus? = nil,
     summary: [[String: HyperProxyJSONValue]]? = nil,
-    typeModel: DeepSeekOutputItemType? = nil
+    kind: DeepSeekOutputItemType? = nil
   ) {
     self.action = action
     self.arguments = arguments
@@ -43,7 +43,7 @@ public struct DeepSeekOutputItem: Codable, Sendable {
     self.role = role
     self.status = status
     self.summary = summary
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -56,6 +56,6 @@ public struct DeepSeekOutputItem: Codable, Sendable {
     case role
     case status
     case summary
-    case typeModel = "type"
+    case kind = "type"
   }
 }

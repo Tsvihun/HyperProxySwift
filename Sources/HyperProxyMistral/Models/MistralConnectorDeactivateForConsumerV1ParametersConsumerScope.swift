@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralConnectorDeactivateForConsumerV1ParametersConsumerScope: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum MistralConnectorDeactivateForConsumerV1ParametersConsumerScope: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let user = Self(rawValue: "user")
-  public static let workspace = Self(rawValue: "workspace")
-  public static let organization = Self(rawValue: "organization")
+  case user = "user"
+  case workspace = "workspace"
+  case organization = "organization"
 }

@@ -14,24 +14,24 @@ public struct OpenAIRealtimeServerEventResponseMCPCallFailed: Codable, Sendable 
   public var eventId: String
   public var itemId: String
   public var outputIndex: Int
-  public var typeModel: OpenAIRealtimeServerEventResponseMCPCallFailedTypeModel
+  public var kind: OpenAIRealtimeServerEventResponseMCPCallFailedKind
 
   public init(
     eventId: String,
     itemId: String,
     outputIndex: Int,
-    typeModel: OpenAIRealtimeServerEventResponseMCPCallFailedTypeModel
+    kind: OpenAIRealtimeServerEventResponseMCPCallFailedKind
   ) {
     self.eventId = eventId
     self.itemId = itemId
     self.outputIndex = outputIndex
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case eventId = "event_id"
     case itemId = "item_id"
     case outputIndex = "output_index"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

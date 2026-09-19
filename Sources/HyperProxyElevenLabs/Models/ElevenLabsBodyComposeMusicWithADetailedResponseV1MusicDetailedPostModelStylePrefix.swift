@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsBodyComposeMusicWithADetailedResponseV1MusicDetailedPostModelStylePrefix:
-  RawRepresentable, Codable, Hashable, Sendable
+public enum ElevenLabsBodyComposeMusicWithADetailedResponseV1MusicDetailedPostModelStylePrefix:
+  String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let music = Self(rawValue: "music")
-  public static let sfx = Self(rawValue: "sfx")
+  case music = "music"
+  case sfx = "sfx"
 }

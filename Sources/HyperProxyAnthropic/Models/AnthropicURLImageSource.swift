@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicURLImageSource: Codable, Sendable {
-  public var typeModel: String
+  public var kind: AnthropicUrlKind
   public var url: String
 
   public init(
-    typeModel: String,
-    url: String
+    url: String,
+    kind: AnthropicUrlKind = .url
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

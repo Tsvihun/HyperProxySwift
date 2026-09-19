@@ -13,16 +13,16 @@ import HyperProxyCore
 public struct OpenAILiveSessionClosed: Codable, Sendable {
   public var clientEventId: String?
   public var eventId: String
-  public var reason: HyperProxyJSONValue
+  public var reason: OpenAILiveSessionClosedReason
   public var session: OpenAILiveSessionResourceParam
-  public var typeModel: OpenAILiveSessionClosedTypeModel
+  public var kind: OpenAILiveSessionClosedKind
   public var usage: OpenAILiveSessionUsage
 
   public init(
     eventId: String,
-    reason: HyperProxyJSONValue,
+    reason: OpenAILiveSessionClosedReason,
     session: OpenAILiveSessionResourceParam,
-    typeModel: OpenAILiveSessionClosedTypeModel,
+    kind: OpenAILiveSessionClosedKind,
     usage: OpenAILiveSessionUsage,
     clientEventId: String? = nil
   ) {
@@ -30,7 +30,7 @@ public struct OpenAILiveSessionClosed: Codable, Sendable {
     self.eventId = eventId
     self.reason = reason
     self.session = session
-    self.typeModel = typeModel
+    self.kind = kind
     self.usage = usage
   }
 
@@ -39,7 +39,7 @@ public struct OpenAILiveSessionClosed: Codable, Sendable {
     case eventId = "event_id"
     case reason
     case session
-    case typeModel = "type"
+    case kind = "type"
     case usage
   }
 }

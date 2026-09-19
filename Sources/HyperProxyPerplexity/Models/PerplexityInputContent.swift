@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public enum PerplexityInputContent: Codable, Sendable {
   case string(String)
-  case array([PerplexityInputContentPart])
+  case inputContentPartArray([PerplexityInputContentPart])
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -20,7 +20,7 @@ public enum PerplexityInputContent: Codable, Sendable {
       self = .string(value)
       return
     }
-    self = .array(try container.decode([PerplexityInputContentPart].self))
+    self = .inputContentPartArray(try container.decode([PerplexityInputContentPart].self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -28,7 +28,7 @@ public enum PerplexityInputContent: Codable, Sendable {
     switch self {
     case .string(let value):
       try container.encode(value)
-    case .array(let value):
+    case .inputContentPartArray(let value):
       try container.encode(value)
     }
   }
@@ -42,6 +42,6 @@ extension PerplexityInputContent: ExpressibleByStringLiteral {
 
 extension PerplexityInputContent: ExpressibleByArrayLiteral {
   public init(arrayLiteral elements: PerplexityInputContentPart...) {
-    self = .array(elements)
+    self = .inputContentPartArray(elements)
   }
 }

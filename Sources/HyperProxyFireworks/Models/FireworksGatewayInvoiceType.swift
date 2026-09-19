@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksGatewayInvoiceType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let tYPEUNSPECIFIED = Self(rawValue: "TYPE_UNSPECIFIED")
-  public static let pOSTPAIDBILLING = Self(rawValue: "POSTPAID_BILLING")
-  public static let pREPAIDCREDITS = Self(rawValue: "PREPAID_CREDITS")
-  public static let cONTRACTED = Self(rawValue: "CONTRACTED")
+public enum FireworksGatewayInvoiceType: String, Codable, Hashable, Sendable {
+  case tYPEUNSPECIFIED = "TYPE_UNSPECIFIED"
+  case pOSTPAIDBILLING = "POSTPAID_BILLING"
+  case pREPAIDCREDITS = "PREPAID_CREDITS"
+  case cONTRACTED = "CONTRACTED"
 }

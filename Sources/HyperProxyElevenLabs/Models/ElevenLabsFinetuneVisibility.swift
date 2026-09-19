@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsFinetuneVisibility: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let privateValue = Self(rawValue: "private")
-  public static let workspace = Self(rawValue: "workspace")
-  public static let publicValue = Self(rawValue: "public")
+public enum ElevenLabsFinetuneVisibility: String, Codable, Hashable, Sendable {
+  case privateValue = "private"
+  case workspace = "workspace"
+  case publicValue = "public"
 }

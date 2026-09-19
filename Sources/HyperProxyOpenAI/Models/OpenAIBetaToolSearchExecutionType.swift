@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIBetaToolSearchExecutionType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let server = Self(rawValue: "server")
-  public static let client = Self(rawValue: "client")
+public enum OpenAIBetaToolSearchExecutionType: String, Codable, Hashable, Sendable {
+  case server = "server"
+  case client = "client"
 }

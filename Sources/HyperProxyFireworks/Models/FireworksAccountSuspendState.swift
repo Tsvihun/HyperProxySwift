@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksAccountSuspendState: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let uNSUSPENDED = Self(rawValue: "UNSUSPENDED")
-  public static let fAILEDPAYMENTS = Self(rawValue: "FAILED_PAYMENTS")
-  public static let cREDITDEPLETED = Self(rawValue: "CREDIT_DEPLETED")
-  public static let mONTHLYSPENDLIMITEXCEEDED = Self(rawValue: "MONTHLY_SPEND_LIMIT_EXCEEDED")
-  public static let bLOCKEDBYABUSERULE = Self(rawValue: "BLOCKED_BY_ABUSE_RULE")
+public enum FireworksAccountSuspendState: String, Codable, Hashable, Sendable {
+  case uNSUSPENDED = "UNSUSPENDED"
+  case fAILEDPAYMENTS = "FAILED_PAYMENTS"
+  case cREDITDEPLETED = "CREDIT_DEPLETED"
+  case mONTHLYSPENDLIMITEXCEEDED = "MONTHLY_SPEND_LIMIT_EXCEEDED"
+  case bLOCKEDBYABUSERULE = "BLOCKED_BY_ABUSE_RULE"
 }

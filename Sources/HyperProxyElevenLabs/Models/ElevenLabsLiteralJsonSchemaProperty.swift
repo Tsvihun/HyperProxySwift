@@ -13,19 +13,19 @@ import HyperProxyCore
 public struct ElevenLabsLiteralJsonSchemaProperty: Codable, Sendable {
   public var allowedValues: ElevenLabsAllowedValues?
   public var allowedValuesDynamicVariable: String?
-  public var constantValue: HyperProxyJSONValue?
+  public var constantValue: ElevenLabsLiteralJsonSchemaPropertyConstantValue?
   public var description: String?
   public var dynamicVariable: String?
   public var enumValue: [String]?
   public var isOmitted: Bool?
   public var isSystemProvided: Bool?
-  public var typeModel: HyperProxyJSONValue
+  public var kind: ElevenLabsLiteralJsonSchemaPropertyKind
 
   public init(
-    typeModel: HyperProxyJSONValue,
+    kind: ElevenLabsLiteralJsonSchemaPropertyKind,
     allowedValues: ElevenLabsAllowedValues? = nil,
     allowedValuesDynamicVariable: String? = nil,
-    constantValue: HyperProxyJSONValue? = nil,
+    constantValue: ElevenLabsLiteralJsonSchemaPropertyConstantValue? = nil,
     description: String? = nil,
     dynamicVariable: String? = nil,
     enumValue: [String]? = nil,
@@ -40,7 +40,7 @@ public struct ElevenLabsLiteralJsonSchemaProperty: Codable, Sendable {
     self.enumValue = enumValue
     self.isOmitted = isOmitted
     self.isSystemProvided = isSystemProvided
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -52,6 +52,6 @@ public struct ElevenLabsLiteralJsonSchemaProperty: Codable, Sendable {
     case enumValue = "enum"
     case isOmitted = "is_omitted"
     case isSystemProvided = "is_system_provided"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

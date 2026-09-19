@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherDEInlinePlacementConstraint: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let eNFORCEMENTREQUIRED = Self(rawValue: "ENFORCEMENT_REQUIRED")
-  public static let eNFORCEMENTPREFERRED = Self(rawValue: "ENFORCEMENT_PREFERRED")
+public enum TogetherDEInlinePlacementConstraint: String, Codable, Hashable, Sendable {
+  case eNFORCEMENTREQUIRED = "ENFORCEMENT_REQUIRED"
+  case eNFORCEMENTPREFERRED = "ENFORCEMENT_PREFERRED"
 }

@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsProjectResponseModelFictionAnyOf1: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let fiction = Self(rawValue: "fiction")
-  public static let nonFiction = Self(rawValue: "non-fiction")
+public enum ElevenLabsProjectResponseModelFictionAnyOf1: String, Codable, Hashable, Sendable {
+  case fiction = "fiction"
+  case nonFiction = "non-fiction"
 }

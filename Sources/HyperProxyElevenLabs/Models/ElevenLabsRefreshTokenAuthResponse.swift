@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsRefreshTokenAuthResponse: Codable, Sendable {
-  public var authType: String?
+  public var authType: ElevenLabsRefreshTokenAuthAuthType?
   public var clientId: String
   public var extraParams: [String: String]?
   public var id: String
@@ -30,7 +30,7 @@ public struct ElevenLabsRefreshTokenAuthResponse: Codable, Sendable {
     name: String,
     provider: String,
     tokenUrl: String,
-    authType: String? = nil,
+    authType: ElevenLabsRefreshTokenAuthAuthType? = nil,
     extraParams: [String: String]? = nil,
     scopes: [String]? = nil,
     status: ElevenLabsAuthConnectionStatus? = nil,

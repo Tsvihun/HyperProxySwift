@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenRouterOutputWebSearchServerToolItemAction: Codable, Sendable {
   public var query: String
   public var sources: [OpenRouterOutputWebSearchServerToolItemActionSourcesItem]?
-  public var typeModel: OpenRouterOutputWebSearchServerToolItemActionTypeModel
+  public var kind: OpenRouterOutputWebSearchServerToolItemActionKind
 
   public init(
     query: String,
-    typeModel: OpenRouterOutputWebSearchServerToolItemActionTypeModel,
+    kind: OpenRouterOutputWebSearchServerToolItemActionKind,
     sources: [OpenRouterOutputWebSearchServerToolItemActionSourcesItem]? = nil
   ) {
     self.query = query
     self.sources = sources
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case query
     case sources
-    case typeModel = "type"
+    case kind = "type"
   }
 }

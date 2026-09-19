@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterListEndpointsResponse: Codable, Sendable {
-  public var architecture: HyperProxyJSONValue
+  public var architecture: OpenRouterListEndpointsResponseArchitecture
   public var created: Int
   public var description: String
   public var endpoints: [OpenRouterPublicEndpoint]
@@ -19,7 +19,7 @@ public struct OpenRouterListEndpointsResponse: Codable, Sendable {
   public var name: String
 
   public init(
-    architecture: HyperProxyJSONValue,
+    architecture: OpenRouterListEndpointsResponseArchitecture,
     created: Int,
     description: String,
     endpoints: [OpenRouterPublicEndpoint],

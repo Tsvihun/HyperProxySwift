@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsSessionThreadUsage: Codable, Sendable {
   public var activeSeconds: Double?
-  public var cacheCreation: HyperProxyJSONValue?
+  public var cacheCreation: AnthropicBetaManagedAgentsCacheCreationUsage?
   public var cacheReadInputTokens: Int?
   public var inputTokens: Int?
   public var listCost: AnthropicBetaMonetaryAmount?
@@ -21,7 +21,7 @@ public struct AnthropicBetaManagedAgentsSessionThreadUsage: Codable, Sendable {
 
   public init(
     activeSeconds: Double? = nil,
-    cacheCreation: HyperProxyJSONValue? = nil,
+    cacheCreation: AnthropicBetaManagedAgentsCacheCreationUsage? = nil,
     cacheReadInputTokens: Int? = nil,
     inputTokens: Int? = nil,
     listCost: AnthropicBetaMonetaryAmount? = nil,

@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaDreamStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let pending = Self(rawValue: "pending")
-  public static let running = Self(rawValue: "running")
-  public static let completed = Self(rawValue: "completed")
-  public static let failed = Self(rawValue: "failed")
-  public static let canceled = Self(rawValue: "canceled")
+public enum AnthropicBetaDreamStatus: String, Codable, Hashable, Sendable {
+  case pending = "pending"
+  case running = "running"
+  case completed = "completed"
+  case failed = "failed"
+  case canceled = "canceled"
 }

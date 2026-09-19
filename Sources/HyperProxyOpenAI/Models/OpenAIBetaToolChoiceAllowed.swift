@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenAIBetaToolChoiceAllowed: Codable, Sendable {
   public var mode: OpenAIBetaToolChoiceAllowedMode
   public var tools: [[String: HyperProxyJSONValue]]
-  public var typeModel: OpenAIBetaToolChoiceAllowedTypeModel
+  public var kind: OpenAIBetaToolChoiceAllowedKind
 
   public init(
     mode: OpenAIBetaToolChoiceAllowedMode,
     tools: [[String: HyperProxyJSONValue]],
-    typeModel: OpenAIBetaToolChoiceAllowedTypeModel
+    kind: OpenAIBetaToolChoiceAllowedKind
   ) {
     self.mode = mode
     self.tools = tools
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case mode
     case tools
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -13,25 +13,25 @@ import HyperProxyCore
 public struct OpenAIAuditLogActorApiKey: Codable, Sendable {
   public var id: String?
   public var serviceAccount: OpenAIAuditLogActorServiceAccount?
-  public var typeModel: OpenAIAuditLogActorApiKeyTypeModel?
+  public var kind: OpenAIAuditLogActorApiKeyKind?
   public var user: OpenAIAuditLogActorUser?
 
   public init(
     id: String? = nil,
     serviceAccount: OpenAIAuditLogActorServiceAccount? = nil,
-    typeModel: OpenAIAuditLogActorApiKeyTypeModel? = nil,
+    kind: OpenAIAuditLogActorApiKeyKind? = nil,
     user: OpenAIAuditLogActorUser? = nil
   ) {
     self.id = id
     self.serviceAccount = serviceAccount
-    self.typeModel = typeModel
+    self.kind = kind
     self.user = user
   }
 
   enum CodingKeys: String, CodingKey {
     case id
     case serviceAccount = "service_account"
-    case typeModel = "type"
+    case kind = "type"
     case user
   }
 }

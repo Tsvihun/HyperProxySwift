@@ -272,6 +272,20 @@ extension HyperProxyProviderService where Operation == MistralOperation {
     return try await call.decoded(MistralVoiceResponse.self)
   }
 
+  public func getVoiceSampleAudioV1AudioVoicesVoiceIdSampleGet(
+    voiceId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.getVoiceSampleAudioV1AudioVoicesVoiceIdSampleGet)
+      .path("voice_id", voiceId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try call.bytes()
+  }
+
   public func batchJobsList(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -778,6 +792,20 @@ extension HyperProxyProviderService where Operation == MistralOperation {
     return try await call.decoded(MistralDeleteFileResponse.self)
   }
 
+  public func filesContent(
+    fileId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.filesContent)
+      .path("file_id", fileId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try call.bytes()
+  }
+
   public func filesApiRoutesGetSignedUrl(
     fileId: String,
     query: [URLQueryItem] = [],
@@ -1031,14 +1059,14 @@ extension HyperProxyProviderService where Operation == MistralOperation {
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> MistralLibrariesDocumentsGetExtractedTextSignedUrlV1Response {
+  ) async throws -> String {
     let call = self.call(.librariesDocumentsGetExtractedTextSignedUrlV1)
       .path("library_id", libraryId)
       .path("document_id", documentId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(MistralLibrariesDocumentsGetExtractedTextSignedUrlV1Response.self)
+    return try await call.decoded(String.self)
   }
 
   public func librariesDocumentsGetSignedUrlV1(
@@ -1047,14 +1075,14 @@ extension HyperProxyProviderService where Operation == MistralOperation {
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> MistralLibrariesDocumentsGetSignedUrlV1Response {
+  ) async throws -> String {
     let call = self.call(.librariesDocumentsGetSignedUrlV1)
       .path("library_id", libraryId)
       .path("document_id", documentId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(MistralLibrariesDocumentsGetSignedUrlV1Response.self)
+    return try await call.decoded(String.self)
   }
 
   public func librariesDocumentsGetStatusV1(

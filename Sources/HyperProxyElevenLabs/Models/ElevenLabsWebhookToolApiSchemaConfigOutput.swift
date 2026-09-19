@@ -11,28 +11,29 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsWebhookToolApiSchemaConfigOutput: Codable, Sendable {
-  public var authConnection: HyperProxyJSONValue?
+  public var authConnection: ElevenLabsWebhookToolApiSchemaConfigOutputAuthConnection?
   public var authResolvedParams: [String]?
   public var contentType: ElevenLabsWebhookToolApiSchemaConfigOutputContentType?
   public var method: ElevenLabsWebhookToolApiSchemaConfigOutputMethod?
   public var pathParamsSchema: [String: ElevenLabsLiteralJsonSchemaProperty]?
   public var queryParamsSchema: ElevenLabsQueryParamsJsonSchemaOutput?
   public var requestBodySchema: ElevenLabsObjectJsonSchemaPropertyOutput?
-  public var requestHeaders: [String: HyperProxyJSONValue]?
+  public var requestHeaders:
+    [String: ElevenLabsWebhookToolApiSchemaConfigOutputRequestHeadersValue]?
   public var responseBodySchema: ElevenLabsObjectJsonSchemaPropertyOutput?
   public var responseFilter: ElevenLabsResponseFilter?
   public var url: String
 
   public init(
     url: String,
-    authConnection: HyperProxyJSONValue? = nil,
+    authConnection: ElevenLabsWebhookToolApiSchemaConfigOutputAuthConnection? = nil,
     authResolvedParams: [String]? = nil,
     contentType: ElevenLabsWebhookToolApiSchemaConfigOutputContentType? = nil,
     method: ElevenLabsWebhookToolApiSchemaConfigOutputMethod? = nil,
     pathParamsSchema: [String: ElevenLabsLiteralJsonSchemaProperty]? = nil,
     queryParamsSchema: ElevenLabsQueryParamsJsonSchemaOutput? = nil,
     requestBodySchema: ElevenLabsObjectJsonSchemaPropertyOutput? = nil,
-    requestHeaders: [String: HyperProxyJSONValue]? = nil,
+    requestHeaders: [String: ElevenLabsWebhookToolApiSchemaConfigOutputRequestHeadersValue]? = nil,
     responseBodySchema: ElevenLabsObjectJsonSchemaPropertyOutput? = nil,
     responseFilter: ElevenLabsResponseFilter? = nil
   ) {

@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepSeekOutputItemType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let message = Self(rawValue: "message")
-  public static let reasoning = Self(rawValue: "reasoning")
-  public static let functionCall = Self(rawValue: "function_call")
-  public static let webSearchCall = Self(rawValue: "web_search_call")
+public enum DeepSeekOutputItemType: String, Codable, Hashable, Sendable {
+  case message = "message"
+  case reasoning = "reasoning"
+  case functionCall = "function_call"
+  case webSearchCall = "web_search_call"
 }

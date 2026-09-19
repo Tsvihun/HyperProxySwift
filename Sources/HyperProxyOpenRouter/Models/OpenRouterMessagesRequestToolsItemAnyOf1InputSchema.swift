@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenRouterMessagesRequestToolsItemAnyOf1InputSchema: Codable, Sendable {
   public var properties: HyperProxyJSONValue?
   public var requiredValue: [String]?
-  public var typeModel: String?
+  public var kind: String?
 
   public init(
     properties: HyperProxyJSONValue? = nil,
     requiredValue: [String]? = nil,
-    typeModel: String? = nil
+    kind: String? = nil
   ) {
     self.properties = properties
     self.requiredValue = requiredValue
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case properties
     case requiredValue = "required"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

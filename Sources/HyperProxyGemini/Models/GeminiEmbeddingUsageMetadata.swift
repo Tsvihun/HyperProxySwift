@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct GeminiEmbeddingUsageMetadata: Codable, Sendable {
   public var promptTokenCount: Int?
-  public var promptTokenDetails: [HyperProxyJSONValue]?
+  public var promptTokenDetails: [GeminiModalityTokenCount]?
 
   public init(
     promptTokenCount: Int? = nil,
-    promptTokenDetails: [HyperProxyJSONValue]? = nil
+    promptTokenDetails: [GeminiModalityTokenCount]? = nil
   ) {
     self.promptTokenCount = promptTokenCount
     self.promptTokenDetails = promptTokenDetails

@@ -15,20 +15,20 @@ public struct OpenRouterMcpListToolsItem: Codable, Sendable {
   public var id: String
   public var serverLabel: String
   public var tools: [OpenRouterMcpListToolsItemToolsItem]
-  public var typeModel: OpenRouterMcpListToolsItemTypeModel
+  public var kind: OpenRouterMcpListToolsItemKind
 
   public init(
     id: String,
     serverLabel: String,
     tools: [OpenRouterMcpListToolsItemToolsItem],
-    typeModel: OpenRouterMcpListToolsItemTypeModel,
+    kind: OpenRouterMcpListToolsItemKind,
     error: String? = nil
   ) {
     self.error = error
     self.id = id
     self.serverLabel = serverLabel
     self.tools = tools
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenRouterMcpListToolsItem: Codable, Sendable {
     case id
     case serverLabel = "server_label"
     case tools
-    case typeModel = "type"
+    case kind = "type"
   }
 }

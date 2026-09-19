@@ -9,10 +9,9 @@ transport in a trusted environment.
 · [Usage guide](Documentation/UsageGuide.md) · [Examples](Examples/QuickStart)
 · [Issues](https://github.com/Tsvihun/HyperProxySwift/issues)
 
-> **Release status:** this branch prepares the next release. Its transport-security
-> fixes are **not included in the existing `0.3.0` tag**. Source-rights review and
-> app-archive privacy checks remain release gates; this branch is not a production-readiness
-> certification. See [release checks](Compliance/README.md). No new release is published yet.
+> **Release status:** `0.4.0` is prepared on `main` but is not tagged yet. Source-rights
+> review and app-archive privacy checks remain release gates; this branch is not a
+> production-readiness certification. See [release checks](Compliance/README.md).
 
 ## What you can build
 
@@ -42,13 +41,13 @@ In Xcode, choose **File → Add Package Dependencies** and enter:
 https://github.com/Tsvihun/HyperProxySwift.git
 ```
 
-To evaluate the unreleased work described here, select the branch
-`prelaunch/security-hardening`. In a `Package.swift` manifest:
+To evaluate the `0.4.0` release candidate before it is tagged, select `main`. In a
+`Package.swift` manifest:
 
 ```swift
 .package(
   url: "https://github.com/Tsvihun/HyperProxySwift.git",
-  branch: "prelaunch/security-hardening"
+  branch: "main"
 )
 ```
 
@@ -59,10 +58,10 @@ Add the product your target needs:
 ```
 
 Choose a provider product for a focused dependency, `HyperProxyCore` for raw transport,
-or `HyperProxy` to import all providers. For the existing tagged version, consult the
-[0.3.0 documentation](https://github.com/Tsvihun/HyperProxySwift/tree/0.3.0)
-and the release warning above. [CocoaPods instructions](CocoaPods/README.md) are also available;
-an existing pod version does not include this branch's unreleased changes.
+or `HyperProxy` to import all providers. Until `0.4.0` is tagged, the latest published
+version remains [0.3.0](https://github.com/Tsvihun/HyperProxySwift/tree/0.3.0).
+[CocoaPods instructions](CocoaPods/README.md) are also available; published pods do not yet
+include the `0.4.0` candidate.
 
 ## Quick start: OpenAI in Swift
 
@@ -81,7 +80,7 @@ let openAI = HyperProxy.openAI(
 )
 
 let response: OpenAIResponse = try await openAI.responsesCreate(
-  OpenAICreateResponse(input: "Say hello in one sentence.", model: .modelIdsShared("gpt-5"))
+  OpenAICreateResponse(input: "Say hello in one sentence.", model: .modelIdsShared(.gpt5))
 )
 ```
 <!-- /readme-check: quick-start -->
@@ -96,8 +95,15 @@ a HyperProxy plan does not include OpenAI or other provider credits.
 ```swift
 for try await chunk in try openAI.chatCompletionsCreateStream(
   OpenAICreateChatCompletionRequest(
-    messages: [["role": "user", "content": "Write one sentence about Swift."]],
-    model: "gpt-5"
+    messages: [
+      .chatCompletionRequestUserMessage(
+        OpenAIChatCompletionRequestUserMessage(
+          content: "Write one sentence about Swift.",
+          role: .user
+        )
+      )
+    ],
+    model: .gpt5
   )
 ) {
   print(chunk.choices.first?.delta.content ?? "", terminator: "")
@@ -128,6 +134,38 @@ See [provider recipes](Documentation/ProviderRecipes.md) and the
 permissions and pricing depend on your provider account; a module is not a promise that every
 provider endpoint has been exercised live. Unlisted APIs can use `HyperProxy.generic(...)`.
 
+## Gateway refusals
+
+When HyperProxy itself refuses a request — the monthly plan allowance is used up, a spend
+budget is reached, an app key was retired — the thrown `HyperProxyError.httpStatus` carries a
+decoded `gatewayRejection`. Provider errors passed through the gateway leave it `nil`, so the
+two never blur together:
+
+```swift
+do {
+  _ = try await openAI.send(.chatCompletionsCreate, json: body)
+} catch let error as HyperProxyError {
+  switch error.gatewayRejection?.reason {
+  case .planQuotaExceeded, .budgetExceeded:
+    // Pause AI features until error.gatewayRejection?.periodResetsAt.
+    showAllowanceReached(until: error.gatewayRejection?.periodResetsAt)
+  case .rateLimited:
+    // Back off; error.retryAfter carries the server's hint when present.
+    scheduleRetry(after: error.retryAfter ?? 1)
+  case .expiredKey, .unknownOrRevokedKey, .invalidAppKey:
+    // The app key in this build no longer opens the gateway: prompt an update.
+    showUpdateRequired()
+  default:
+    throw error
+  }
+}
+```
+
+WebSocket sessions surface the same vocabulary as `HyperProxyWebSocketError.gatewayRejected`
+(close codes 4029 for quota and budget, 4429 for rate limits, 4001/4003/4004 for key and
+service problems). `HyperProxyRetryPolicy` consults the same decoder and never retries a
+refusal that cannot clear on its own, even when the status is otherwise retryable.
+
 ## Security and privacy
 
 - Keep long-lived provider secrets out of mobile apps. Gateway mode sends an app key rather
@@ -148,6 +186,7 @@ Do not post keys, customer data or exploitable details in a public issue.
 - [Runnable quick start](Examples/QuickStart): a small executable example.
 - [Device security probe](Examples/DeviceSecurityProbe): physical-device verification.
 - [Observability](Documentation/Observability.md): sessions, prompts and external telemetry.
+- [Migrating from a compatible legacy gateway](Documentation/MigratingFromLegacyGateway.md): keep the old wire contract during rollout.
 - [Architecture](Documentation/Architecture.md) and [testing](Documentation/Testing.md).
 
 For bugs, [open an issue](https://github.com/Tsvihun/HyperProxySwift/issues) with your SDK revision,

@@ -14,7 +14,7 @@ public struct FireworksEmbeddingRequest: Codable, Sendable {
   public var dimensions: Int?
   public var encodingFormat: FireworksEmbeddingRequestEncodingFormat?
   public var fanoutSize: Int?
-  public var input: HyperProxyJSONValue
+  public var input: FireworksEmbeddingRequestInput
   public var model: String
   public var normalize: Bool?
   public var perfMetricsInResponse: Bool?
@@ -26,7 +26,7 @@ public struct FireworksEmbeddingRequest: Codable, Sendable {
   public var user: String?
 
   public init(
-    input: HyperProxyJSONValue,
+    input: FireworksEmbeddingRequestInput,
     model: String,
     dimensions: Int? = nil,
     encodingFormat: FireworksEmbeddingRequestEncodingFormat? = nil,

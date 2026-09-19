@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterFormatJsonObjectConfig: Codable, Sendable {
-  public var typeModel: OpenRouterFormatJsonObjectConfigTypeModel
+  public var kind: OpenRouterFormatJsonObjectConfigKind
 
   public init(
-    typeModel: OpenRouterFormatJsonObjectConfigTypeModel
+    kind: OpenRouterFormatJsonObjectConfigKind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

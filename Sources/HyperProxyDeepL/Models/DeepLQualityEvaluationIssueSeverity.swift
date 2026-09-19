@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLQualityEvaluationIssueSeverity: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let critical = Self(rawValue: "Critical")
-  public static let major = Self(rawValue: "Major")
-  public static let minor = Self(rawValue: "Minor")
+public enum DeepLQualityEvaluationIssueSeverity: String, Codable, Hashable, Sendable {
+  case critical = "Critical"
+  case major = "Major"
+  case minor = "Minor"
 }

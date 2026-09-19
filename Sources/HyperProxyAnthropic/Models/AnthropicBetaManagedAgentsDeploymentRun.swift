@@ -11,24 +11,24 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsDeploymentRun: Codable, Sendable {
-  public var agent: HyperProxyJSONValue
+  public var agent: AnthropicBetaManagedAgentsAgentReference
   public var createdAt: AnthropicBetaTimestamp
   public var deploymentId: String
   public var error: AnthropicBetaManagedAgentsRunError?
   public var id: String
   public var sessionId: String?
   public var triggerContext: AnthropicBetaManagedAgentsTriggerContext
-  public var typeModel: AnthropicBetaManagedAgentsDeploymentRunTypeModel
+  public var kind: AnthropicBetaManagedAgentsDeploymentRunKind
 
   public init(
-    agent: HyperProxyJSONValue,
+    agent: AnthropicBetaManagedAgentsAgentReference,
     createdAt: AnthropicBetaTimestamp,
     deploymentId: String,
     error: AnthropicBetaManagedAgentsRunError?,
     id: String,
     sessionId: String?,
     triggerContext: AnthropicBetaManagedAgentsTriggerContext,
-    typeModel: AnthropicBetaManagedAgentsDeploymentRunTypeModel
+    kind: AnthropicBetaManagedAgentsDeploymentRunKind
   ) {
     self.agent = agent
     self.createdAt = createdAt
@@ -37,7 +37,7 @@ public struct AnthropicBetaManagedAgentsDeploymentRun: Codable, Sendable {
     self.id = id
     self.sessionId = sessionId
     self.triggerContext = triggerContext
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct AnthropicBetaManagedAgentsDeploymentRun: Codable, Sendable {
     case id
     case sessionId = "session_id"
     case triggerContext = "trigger_context"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

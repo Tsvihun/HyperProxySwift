@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsReportKnowledgeGapParams: Codable, Sendable {
-  public var smbToolType: String?
+  public var smbToolType: ElevenLabsReportKnowledgeGapSmbToolType?
 
   public init(
-    smbToolType: String? = nil
+    smbToolType: ElevenLabsReportKnowledgeGapSmbToolType? = nil
   ) {
     self.smbToolType = smbToolType
   }

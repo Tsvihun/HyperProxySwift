@@ -15,11 +15,11 @@ public struct GroqResponseTool: Codable, Sendable {
   public var name: String
   public var parameters: GroqFunctionParameters?
   public var strict: Bool?
-  public var typeModel: GroqResponseToolTypeModel
+  public var kind: GroqResponseToolKind
 
   public init(
     name: String,
-    typeModel: GroqResponseToolTypeModel,
+    kind: GroqResponseToolKind,
     description: String? = nil,
     parameters: GroqFunctionParameters? = nil,
     strict: Bool? = nil
@@ -28,7 +28,7 @@ public struct GroqResponseTool: Codable, Sendable {
     self.name = name
     self.parameters = parameters
     self.strict = strict
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct GroqResponseTool: Codable, Sendable {
     case name
     case parameters
     case strict
-    case typeModel = "type"
+    case kind = "type"
   }
 }

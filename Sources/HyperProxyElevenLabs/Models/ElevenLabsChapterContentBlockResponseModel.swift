@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsChapterContentBlockResponseModel: Codable, Sendable {
   public var blockId: String
-  public var nodes: [HyperProxyJSONValue]
+  public var nodes: [ElevenLabsChapterContentBlockResponseModelNodesItem]
 
   public init(
     blockId: String,
-    nodes: [HyperProxyJSONValue]
+    nodes: [ElevenLabsChapterContentBlockResponseModelNodesItem]
   ) {
     self.blockId = blockId
     self.nodes = nodes

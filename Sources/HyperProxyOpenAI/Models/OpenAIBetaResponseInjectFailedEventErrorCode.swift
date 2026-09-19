@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIBetaResponseInjectFailedEventErrorCode: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let responseAlreadyCompleted = Self(rawValue: "response_already_completed")
-  public static let responseNotFound = Self(rawValue: "response_not_found")
+public enum OpenAIBetaResponseInjectFailedEventErrorCode: String, Codable, Hashable, Sendable {
+  case responseAlreadyCompleted = "response_already_completed"
+  case responseNotFound = "response_not_found"
 }

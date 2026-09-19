@@ -11,16 +11,16 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherImageResponse: Codable, Sendable {
-  public var data: [HyperProxyJSONValue]
+  public var data: [TogetherImageResponseDataItem]
   public var id: String
   public var model: String
-  public var object: HyperProxyJSONValue
+  public var object: TogetherListObject1dee9a01
 
   public init(
-    data: [HyperProxyJSONValue],
+    data: [TogetherImageResponseDataItem],
     id: String,
     model: String,
-    object: HyperProxyJSONValue
+    object: TogetherListObject1dee9a01 = .list
   ) {
     self.data = data
     self.id = id

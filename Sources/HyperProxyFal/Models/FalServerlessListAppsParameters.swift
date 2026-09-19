@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct FalServerlessListAppsParameters: Codable, Sendable {
   public var environment: String?
-  public var expand: HyperProxyJSONValue?
+  public var expand: FalServerlessListAppsParametersExpand?
   public var search: String?
 
   public init(
     environment: String? = nil,
-    expand: HyperProxyJSONValue? = nil,
+    expand: FalServerlessListAppsParametersExpand? = nil,
     search: String? = nil
   ) {
     self.environment = environment

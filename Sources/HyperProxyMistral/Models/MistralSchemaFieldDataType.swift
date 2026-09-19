@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralSchemaFieldDataType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let int = Self(rawValue: "int")
-  public static let bool = Self(rawValue: "bool")
-  public static let string = Self(rawValue: "string")
-  public static let embedding = Self(rawValue: "embedding")
-  public static let long = Self(rawValue: "long")
-  public static let float = Self(rawValue: "float")
+public enum MistralSchemaFieldDataType: String, Codable, Hashable, Sendable {
+  case int = "int"
+  case bool = "bool"
+  case string = "string"
+  case embedding = "embedding"
+  case long = "long"
+  case float = "float"
 }

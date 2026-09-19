@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAICreateEvalResponsesRunDataSourceInputMessagesOneOf1: Codable, Sendable {
-  public var template: [HyperProxyJSONValue]
-  public var typeModel: OpenAICreateEvalResponsesRunDataSourceInputMessagesOneOf1TypeModel
+  public var template: [OpenAICreateEvalResponsesRunDataSourceInputMessagesOneOf1TemplateItem]
+  public var kind: OpenAICreateEvalResponsesRunDataSourceInputMessagesOneOf1Kind
 
   public init(
-    template: [HyperProxyJSONValue],
-    typeModel: OpenAICreateEvalResponsesRunDataSourceInputMessagesOneOf1TypeModel
+    template: [OpenAICreateEvalResponsesRunDataSourceInputMessagesOneOf1TemplateItem],
+    kind: OpenAICreateEvalResponsesRunDataSourceInputMessagesOneOf1Kind
   ) {
     self.template = template
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case template
-    case typeModel = "type"
+    case kind = "type"
   }
 }

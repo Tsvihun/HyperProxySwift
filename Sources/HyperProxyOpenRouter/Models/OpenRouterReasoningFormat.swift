@@ -10,20 +10,14 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterReasoningFormat: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let unknown = Self(rawValue: "unknown")
-  public static let openaiResponsesV1 = Self(rawValue: "openai-responses-v1")
-  public static let azureOpenaiResponsesV1 = Self(rawValue: "azure-openai-responses-v1")
-  public static let bedrockOpenaiResponsesV1 = Self(rawValue: "bedrock-openai-responses-v1")
-  public static let bedrockXaiResponsesV1 = Self(rawValue: "bedrock-xai-responses-v1")
-  public static let xaiResponsesV1 = Self(rawValue: "xai-responses-v1")
-  public static let metaResponsesV1 = Self(rawValue: "meta-responses-v1")
-  public static let anthropicClaudeV1 = Self(rawValue: "anthropic-claude-v1")
-  public static let googleGeminiV1 = Self(rawValue: "google-gemini-v1")
+public enum OpenRouterReasoningFormat: String, Codable, Hashable, Sendable {
+  case unknown = "unknown"
+  case openaiResponsesV1 = "openai-responses-v1"
+  case azureOpenaiResponsesV1 = "azure-openai-responses-v1"
+  case bedrockOpenaiResponsesV1 = "bedrock-openai-responses-v1"
+  case bedrockXaiResponsesV1 = "bedrock-xai-responses-v1"
+  case xaiResponsesV1 = "xai-responses-v1"
+  case metaResponsesV1 = "meta-responses-v1"
+  case anthropicClaudeV1 = "anthropic-claude-v1"
+  case googleGeminiV1 = "google-gemini-v1"
 }

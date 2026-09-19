@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicRefusalCategory: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let cyber = Self(rawValue: "cyber")
-  public static let bio = Self(rawValue: "bio")
-  public static let frontierLlm = Self(rawValue: "frontier_llm")
-  public static let reasoningExtraction = Self(rawValue: "reasoning_extraction")
-  public static let generalHarms = Self(rawValue: "general_harms")
+public enum AnthropicRefusalCategory: String, Codable, Hashable, Sendable {
+  case cyber = "cyber"
+  case bio = "bio"
+  case frontierLlm = "frontier_llm"
+  case reasoningExtraction = "reasoning_extraction"
+  case generalHarms = "general_harms"
 }

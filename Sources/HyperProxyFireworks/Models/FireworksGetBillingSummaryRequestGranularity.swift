@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksGetBillingSummaryRequestGranularity: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let gRANULARITYUNSPECIFIED = Self(rawValue: "GRANULARITY_UNSPECIFIED")
-  public static let dAILY = Self(rawValue: "DAILY")
+public enum FireworksGetBillingSummaryRequestGranularity: String, Codable, Hashable, Sendable {
+  case gRANULARITYUNSPECIFIED = "GRANULARITY_UNSPECIFIED"
+  case dAILY = "DAILY"
 }

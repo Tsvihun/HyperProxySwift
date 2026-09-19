@@ -11,27 +11,27 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterOpenAIResponseInputMessageItem: Codable, Sendable {
-  public var content: [HyperProxyJSONValue]
+  public var content: [OpenRouterOpenAIResponseInputMessageItemContentItem]
   public var id: String
-  public var role: HyperProxyJSONValue
-  public var typeModel: OpenRouterOpenAIResponseInputMessageItemTypeModel?
+  public var role: OpenRouterOpenAIResponseInputMessageItemRole
+  public var kind: OpenRouterOpenAIResponseInputMessageItemKind?
 
   public init(
-    content: [HyperProxyJSONValue],
+    content: [OpenRouterOpenAIResponseInputMessageItemContentItem],
     id: String,
-    role: HyperProxyJSONValue,
-    typeModel: OpenRouterOpenAIResponseInputMessageItemTypeModel? = nil
+    role: OpenRouterOpenAIResponseInputMessageItemRole,
+    kind: OpenRouterOpenAIResponseInputMessageItemKind? = nil
   ) {
     self.content = content
     self.id = id
     self.role = role
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case content
     case id
     case role
-    case typeModel = "type"
+    case kind = "type"
   }
 }

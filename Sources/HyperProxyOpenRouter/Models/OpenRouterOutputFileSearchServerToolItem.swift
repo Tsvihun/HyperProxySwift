@@ -14,24 +14,24 @@ public struct OpenRouterOutputFileSearchServerToolItem: Codable, Sendable {
   public var id: String?
   public var queries: [String]?
   public var status: OpenRouterToolCallStatus
-  public var typeModel: OpenRouterOutputFileSearchServerToolItemTypeModel
+  public var kind: OpenRouterOutputFileSearchServerToolItemKind
 
   public init(
     status: OpenRouterToolCallStatus,
-    typeModel: OpenRouterOutputFileSearchServerToolItemTypeModel,
+    kind: OpenRouterOutputFileSearchServerToolItemKind,
     id: String? = nil,
     queries: [String]? = nil
   ) {
     self.id = id
     self.queries = queries
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case id
     case queries
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

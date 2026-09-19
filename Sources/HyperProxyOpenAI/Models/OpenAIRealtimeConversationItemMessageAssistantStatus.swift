@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIRealtimeConversationItemMessageAssistantStatus: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum OpenAIRealtimeConversationItemMessageAssistantStatus: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let completed = Self(rawValue: "completed")
-  public static let incomplete = Self(rawValue: "incomplete")
-  public static let inProgress = Self(rawValue: "in_progress")
+  case completed = "completed"
+  case incomplete = "incomplete"
+  case inProgress = "in_progress"
 }

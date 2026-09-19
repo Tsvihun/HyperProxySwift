@@ -10,16 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsCaptionStyleHorizontalPlacementModelAlign: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum ElevenLabsCaptionStyleHorizontalPlacementModelAlign: String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let left = Self(rawValue: "left")
-  public static let center = Self(rawValue: "center")
-  public static let right = Self(rawValue: "right")
+  case left = "left"
+  case center = "center"
+  case right = "right"
 }

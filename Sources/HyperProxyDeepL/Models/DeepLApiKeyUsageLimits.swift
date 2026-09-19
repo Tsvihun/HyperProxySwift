@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepLApiKeyUsageLimits: Codable, Sendable {
-  public var characters: DeepLApiKeyUsageCharacters?
-  public var speechToTextMilliseconds: DeepLApiKeyUsageSpeechToTextMilliseconds?
+  public var characters: Double?
+  public var speechToTextMilliseconds: Double?
 
   public init(
-    characters: DeepLApiKeyUsageCharacters? = nil,
-    speechToTextMilliseconds: DeepLApiKeyUsageSpeechToTextMilliseconds? = nil
+    characters: Double? = nil,
+    speechToTextMilliseconds: Double? = nil
   ) {
     self.characters = characters
     self.speechToTextMilliseconds = speechToTextMilliseconds

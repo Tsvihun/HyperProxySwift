@@ -13,13 +13,13 @@ import HyperProxyCore
 public struct MistralAggregationRow: Codable, Sendable {
   public var dimensions: [String: HyperProxyJSONValue]?
   public var metricName: String
-  public var metricValue: HyperProxyJSONValue?
+  public var metricValue: MistralAggregationRowMetricValue?
   public var timeBucket: String?
 
   public init(
     metricName: String,
     dimensions: [String: HyperProxyJSONValue]? = nil,
-    metricValue: HyperProxyJSONValue? = nil,
+    metricValue: MistralAggregationRowMetricValue? = nil,
     timeBucket: String? = nil
   ) {
     self.dimensions = dimensions

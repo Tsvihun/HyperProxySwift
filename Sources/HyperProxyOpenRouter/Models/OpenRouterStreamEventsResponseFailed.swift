@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenRouterStreamEventsResponseFailed: Codable, Sendable {
   public var response: OpenRouterBaseResponsesResult
   public var sequenceNumber: Int
-  public var typeModel: OpenRouterFailedEventTypeModel
+  public var kind: OpenRouterFailedEventKind
 
   public init(
     response: OpenRouterBaseResponsesResult,
     sequenceNumber: Int,
-    typeModel: OpenRouterFailedEventTypeModel
+    kind: OpenRouterFailedEventKind
   ) {
     self.response = response
     self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case response
     case sequenceNumber = "sequence_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

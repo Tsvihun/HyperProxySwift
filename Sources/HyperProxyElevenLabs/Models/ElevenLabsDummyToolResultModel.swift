@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsDummyToolResultModel: Codable, Sendable {
-  public var resultType: String?
+  public var resultType: ElevenLabsDummyResultType?
 
   public init(
-    resultType: String? = nil
+    resultType: ElevenLabsDummyResultType? = nil
   ) {
     self.resultType = resultType
   }

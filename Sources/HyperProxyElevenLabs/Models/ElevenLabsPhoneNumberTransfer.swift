@@ -12,20 +12,20 @@ import HyperProxyCore
 
 public struct ElevenLabsPhoneNumberTransfer: Codable, Sendable {
   public var condition: String
-  public var customSipHeaders: [HyperProxyJSONValue]?
+  public var customSipHeaders: [ElevenLabsPhoneNumberTransferCustomSipHeadersItem]?
   public var phoneNumber: String?
-  public var postDialDigits: HyperProxyJSONValue?
+  public var postDialDigits: ElevenLabsPhoneNumberTransferPostDialDigitsAnyOf1?
   public var sipReferPlayDialtone: Bool?
-  public var transferDestination: HyperProxyJSONValue
+  public var transferDestination: ElevenLabsPhoneNumberTransferTransferDestination
   public var transferType: ElevenLabsTransferTypeEnum?
   public var uui: ElevenLabsUUITransferConfig?
 
   public init(
     condition: String,
-    transferDestination: HyperProxyJSONValue,
-    customSipHeaders: [HyperProxyJSONValue]? = nil,
+    transferDestination: ElevenLabsPhoneNumberTransferTransferDestination,
+    customSipHeaders: [ElevenLabsPhoneNumberTransferCustomSipHeadersItem]? = nil,
     phoneNumber: String? = nil,
-    postDialDigits: HyperProxyJSONValue? = nil,
+    postDialDigits: ElevenLabsPhoneNumberTransferPostDialDigitsAnyOf1? = nil,
     sipReferPlayDialtone: Bool? = nil,
     transferType: ElevenLabsTransferTypeEnum? = nil,
     uui: ElevenLabsUUITransferConfig? = nil

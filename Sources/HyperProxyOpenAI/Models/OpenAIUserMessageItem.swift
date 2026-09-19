@@ -12,23 +12,23 @@ import HyperProxyCore
 
 public struct OpenAIUserMessageItem: Codable, Sendable {
   public var attachments: [OpenAIAttachment]
-  public var content: [HyperProxyJSONValue]
+  public var content: [OpenAIUserMessageItemContentItem]
   public var createdAt: Int
   public var id: String
   public var inferenceOptions: OpenAIInferenceOptions?
   public var object: OpenAIUserMessageItemObject
   public var threadId: String
-  public var typeModel: OpenAIUserMessageItemTypeModel
+  public var kind: OpenAIUserMessageItemKind
 
   public init(
     attachments: [OpenAIAttachment],
-    content: [HyperProxyJSONValue],
+    content: [OpenAIUserMessageItemContentItem],
     createdAt: Int,
     id: String,
     inferenceOptions: OpenAIInferenceOptions?,
     object: OpenAIUserMessageItemObject,
     threadId: String,
-    typeModel: OpenAIUserMessageItemTypeModel
+    kind: OpenAIUserMessageItemKind
   ) {
     self.attachments = attachments
     self.content = content
@@ -37,7 +37,7 @@ public struct OpenAIUserMessageItem: Codable, Sendable {
     self.inferenceOptions = inferenceOptions
     self.object = object
     self.threadId = threadId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct OpenAIUserMessageItem: Codable, Sendable {
     case inferenceOptions = "inference_options"
     case object
     case threadId = "thread_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

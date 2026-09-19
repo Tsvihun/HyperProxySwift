@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct FalGetComputeInstanceResponseSector: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let sector1 = Self(rawValue: "sector_1")
-  public static let sector2 = Self(rawValue: "sector_2")
-  public static let sector3 = Self(rawValue: "sector_3")
+public enum FalGetComputeInstanceResponseSector: String, Codable, Hashable, Sendable {
+  case sector1 = "sector_1"
+  case sector2 = "sector_2"
+  case sector3 = "sector_3"
 }

@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherDERegion: Codable, Sendable {
-  public var headroom: HyperProxyJSONValue?
+  public var headroom: TogetherDEHeadroom?
   public var name: String
 
   public init(
     name: String,
-    headroom: HyperProxyJSONValue? = nil
+    headroom: TogetherDEHeadroom? = nil
   ) {
     self.headroom = headroom
     self.name = name

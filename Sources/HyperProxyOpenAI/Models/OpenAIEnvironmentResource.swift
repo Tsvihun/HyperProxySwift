@@ -10,4 +10,34 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIEnvironmentResource = HyperProxyJSONValue
+public enum OpenAIEnvironmentResource: Codable, Sendable {
+  case environmentResourceNone(OpenAIEnvironmentResourceNone)
+  case environmentResourceOpenaiHosted(OpenAIEnvironmentResourceOpenaiHosted)
+  case environmentResourceSelfHosted(OpenAIEnvironmentResourceSelfHosted)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(OpenAIEnvironmentResourceNone.self) {
+      self = .environmentResourceNone(value)
+      return
+    }
+    if let value = try? container.decode(OpenAIEnvironmentResourceOpenaiHosted.self) {
+      self = .environmentResourceOpenaiHosted(value)
+      return
+    }
+    self = .environmentResourceSelfHosted(
+      try container.decode(OpenAIEnvironmentResourceSelfHosted.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .environmentResourceNone(let value):
+      try container.encode(value)
+    case .environmentResourceOpenaiHosted(let value):
+      try container.encode(value)
+    case .environmentResourceSelfHosted(let value):
+      try container.encode(value)
+    }
+  }
+}

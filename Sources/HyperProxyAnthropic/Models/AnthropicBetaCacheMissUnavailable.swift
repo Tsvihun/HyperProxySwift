@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaCacheMissUnavailable: Codable, Sendable {
-  public var typeModel: String
+  public var kind: AnthropicUnavailableKind
 
   public init(
-    typeModel: String
+    kind: AnthropicUnavailableKind = .unavailable
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

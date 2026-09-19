@@ -414,6 +414,8 @@ public enum ElevenLabsOperation: String, HyperProxyProviderOperation {
   case registerTwilioCall = "register.twilio.call"
   /// `GET v1/convai/users`
   case getConversationUsersRoute = "get.conversation.users.route"
+  /// `GET v1/convai/v2/phone-numbers`
+  case listPhoneNumbersPageRoute = "list.phone.numbers.page.route"
   /// `GET v1/convai/whatsapp-accounts`
   case listWhatsappAccounts = "list.whatsapp.accounts"
   /// `DELETE v1/convai/whatsapp-accounts/{phone_number_id}`

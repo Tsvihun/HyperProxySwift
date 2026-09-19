@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralInstructRequest: Codable, Sendable {
-  public var messages: [HyperProxyJSONValue]
+  public var messages: [MistralInstructRequestMessagesItem]
 
   public init(
-    messages: [HyperProxyJSONValue]
+    messages: [MistralInstructRequestMessagesItem]
   ) {
     self.messages = messages
   }

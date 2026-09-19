@@ -15,14 +15,14 @@ public struct ElevenLabsPronunciationDictionaryPhonemeRuleRequestModel: Codable,
   public var caseSensitive: Bool?
   public var phoneme: String
   public var stringToReplace: String
-  public var typeModel: String
+  public var kind: ElevenLabsPhonemeKind
   public var wordBoundaries: Bool?
 
   public init(
     alphabet: String,
     phoneme: String,
     stringToReplace: String,
-    typeModel: String,
+    kind: ElevenLabsPhonemeKind = .phoneme,
     caseSensitive: Bool? = nil,
     wordBoundaries: Bool? = nil
   ) {
@@ -30,7 +30,7 @@ public struct ElevenLabsPronunciationDictionaryPhonemeRuleRequestModel: Codable,
     self.caseSensitive = caseSensitive
     self.phoneme = phoneme
     self.stringToReplace = stringToReplace
-    self.typeModel = typeModel
+    self.kind = kind
     self.wordBoundaries = wordBoundaries
   }
 
@@ -39,7 +39,7 @@ public struct ElevenLabsPronunciationDictionaryPhonemeRuleRequestModel: Codable,
     case caseSensitive = "case_sensitive"
     case phoneme
     case stringToReplace = "string_to_replace"
-    case typeModel = "type"
+    case kind = "type"
     case wordBoundaries = "word_boundaries"
   }
 }

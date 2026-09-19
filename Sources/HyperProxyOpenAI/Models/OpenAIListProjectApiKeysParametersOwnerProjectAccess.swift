@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIListProjectApiKeysParametersOwnerProjectAccess: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum OpenAIListProjectApiKeysParametersOwnerProjectAccess: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let active = Self(rawValue: "active")
-  public static let inactive = Self(rawValue: "inactive")
-  public static let anyModel = Self(rawValue: "any")
+  case active = "active"
+  case inactive = "inactive"
+  case anyModel = "any"
 }

@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct TogetherDEMetricResult: Codable, Sendable {
   public var check: TogetherDEMetricResultCheck?
   public var direction: TogetherDEMetricResultDirection?
+  public var failureReason: String?
   public var maxRegressionPercent: Double?
   public var name: String?
   public var operatorValue: TogetherDEMetricResultOperator?
@@ -26,6 +27,7 @@ public struct TogetherDEMetricResult: Codable, Sendable {
   public init(
     check: TogetherDEMetricResultCheck? = nil,
     direction: TogetherDEMetricResultDirection? = nil,
+    failureReason: String? = nil,
     maxRegressionPercent: Double? = nil,
     name: String? = nil,
     operatorValue: TogetherDEMetricResultOperator? = nil,
@@ -38,6 +40,7 @@ public struct TogetherDEMetricResult: Codable, Sendable {
   ) {
     self.check = check
     self.direction = direction
+    self.failureReason = failureReason
     self.maxRegressionPercent = maxRegressionPercent
     self.name = name
     self.operatorValue = operatorValue
@@ -52,6 +55,7 @@ public struct TogetherDEMetricResult: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case check
     case direction
+    case failureReason
     case maxRegressionPercent
     case name
     case operatorValue = "operator"

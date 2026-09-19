@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsWhatsAppTemplateHeaderComponentParams: Codable, Sendable {
-  public var parameters: [HyperProxyJSONValue]
-  public var typeModel: String?
+  public var parameters: [ElevenLabsWhatsAppTemplateHeaderComponentParamsParametersItem]
+  public var kind: ElevenLabsHeaderKind?
 
   public init(
-    parameters: [HyperProxyJSONValue],
-    typeModel: String? = nil
+    parameters: [ElevenLabsWhatsAppTemplateHeaderComponentParamsParametersItem],
+    kind: ElevenLabsHeaderKind? = nil
   ) {
     self.parameters = parameters
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case parameters
-    case typeModel = "type"
+    case kind = "type"
   }
 }

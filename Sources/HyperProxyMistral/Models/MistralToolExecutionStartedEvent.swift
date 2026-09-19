@@ -16,19 +16,19 @@ public struct MistralToolExecutionStartedEvent: Codable, Sendable {
   public var createdAt: String?
   public var id: String
   public var model: String?
-  public var name: HyperProxyJSONValue
+  public var name: MistralToolExecutionStartedEventName
   public var outputIndex: Int?
-  public var typeModel: String?
+  public var kind: MistralToolExecutionStartedKind?
 
   public init(
     arguments: String,
     id: String,
-    name: HyperProxyJSONValue,
+    name: MistralToolExecutionStartedEventName,
     agentId: String? = nil,
     createdAt: String? = nil,
     model: String? = nil,
     outputIndex: Int? = nil,
-    typeModel: String? = nil
+    kind: MistralToolExecutionStartedKind? = nil
   ) {
     self.agentId = agentId
     self.arguments = arguments
@@ -37,7 +37,7 @@ public struct MistralToolExecutionStartedEvent: Codable, Sendable {
     self.model = model
     self.name = name
     self.outputIndex = outputIndex
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct MistralToolExecutionStartedEvent: Codable, Sendable {
     case model
     case name
     case outputIndex = "output_index"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

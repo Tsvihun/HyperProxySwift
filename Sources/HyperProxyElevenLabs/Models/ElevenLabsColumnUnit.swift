@@ -10,22 +10,17 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsColumnUnit: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let ms = Self(rawValue: "ms")
-  public static let s = Self(rawValue: "s")
-  public static let min = Self(rawValue: "min")
-  public static let duration = Self(rawValue: "duration")
-  public static let credits = Self(rawValue: "credits")
-  public static let usd = Self(rawValue: "usd")
-  public static let eur = Self(rawValue: "eur")
-  public static let inr = Self(rawValue: "inr")
-  public static let pln = Self(rawValue: "pln")
-  public static let ratio = Self(rawValue: "ratio")
-  public static let rating = Self(rawValue: "rating")
+public enum ElevenLabsColumnUnit: String, Codable, Hashable, Sendable {
+  case ms = "ms"
+  case s = "s"
+  case min = "min"
+  case duration = "duration"
+  case credits = "credits"
+  case usd = "usd"
+  case eur = "eur"
+  case inr = "inr"
+  case pln = "pln"
+  case gbp = "gbp"
+  case ratio = "ratio"
+  case rating = "rating"
 }

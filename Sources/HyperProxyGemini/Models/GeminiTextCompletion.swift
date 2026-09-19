@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiTextCompletion: Codable, Sendable {
-  public var citationMetadata: HyperProxyJSONValue?
+  public var citationMetadata: GeminiCitationMetadata?
   public var output: String?
-  public var safetyRatings: [HyperProxyJSONValue]?
+  public var safetyRatings: [GeminiSafetyRating]?
 
   public init(
-    citationMetadata: HyperProxyJSONValue? = nil,
+    citationMetadata: GeminiCitationMetadata? = nil,
     output: String? = nil,
-    safetyRatings: [HyperProxyJSONValue]? = nil
+    safetyRatings: [GeminiSafetyRating]? = nil
   ) {
     self.citationMetadata = citationMetadata
     self.output = output

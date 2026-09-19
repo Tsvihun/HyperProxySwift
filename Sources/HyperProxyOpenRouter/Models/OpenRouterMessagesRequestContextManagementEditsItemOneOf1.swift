@@ -12,26 +12,28 @@ import HyperProxyCore
 
 public struct OpenRouterMessagesRequestContextManagementEditsItemOneOf1: Codable, Sendable {
   public var clearAtLeast: OpenRouterAnthropicInputTokensClearAtLeast?
-  public var clearToolInputs: HyperProxyJSONValue?
+  public var clearToolInputs:
+    OpenRouterMessagesRequestContextManagementEditsItemOneOf1ClearToolInputs?
   public var excludeTools: [String]?
   public var keep: OpenRouterAnthropicToolUsesKeep?
-  public var trigger: HyperProxyJSONValue?
-  public var typeModel: OpenRouterMessagesRequestContextManagementEditsItemOneOf1TypeModel
+  public var trigger: OpenRouterMessagesRequestContextManagementEditsItemOneOf1Trigger?
+  public var kind: OpenRouterMessagesRequestContextManagementEditsItemOneOf1Kind
 
   public init(
-    typeModel: OpenRouterMessagesRequestContextManagementEditsItemOneOf1TypeModel,
+    kind: OpenRouterMessagesRequestContextManagementEditsItemOneOf1Kind,
     clearAtLeast: OpenRouterAnthropicInputTokensClearAtLeast? = nil,
-    clearToolInputs: HyperProxyJSONValue? = nil,
+    clearToolInputs: OpenRouterMessagesRequestContextManagementEditsItemOneOf1ClearToolInputs? =
+      nil,
     excludeTools: [String]? = nil,
     keep: OpenRouterAnthropicToolUsesKeep? = nil,
-    trigger: HyperProxyJSONValue? = nil
+    trigger: OpenRouterMessagesRequestContextManagementEditsItemOneOf1Trigger? = nil
   ) {
     self.clearAtLeast = clearAtLeast
     self.clearToolInputs = clearToolInputs
     self.excludeTools = excludeTools
     self.keep = keep
     self.trigger = trigger
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +42,6 @@ public struct OpenRouterMessagesRequestContextManagementEditsItemOneOf1: Codable
     case excludeTools = "exclude_tools"
     case keep
     case trigger
-    case typeModel = "type"
+    case kind = "type"
   }
 }

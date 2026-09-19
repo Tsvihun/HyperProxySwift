@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIBetaPromptCacheModeEnum: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let implicit = Self(rawValue: "implicit")
-  public static let explicit = Self(rawValue: "explicit")
+public enum OpenAIBetaPromptCacheModeEnum: String, Codable, Hashable, Sendable {
+  case implicit = "implicit"
+  case explicit = "explicit"
 }

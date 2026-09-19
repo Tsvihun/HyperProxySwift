@@ -16,7 +16,7 @@ public struct OpenAIRealtimeConversationItemMessageUserContentItem: Codable, Sen
   public var imageUrl: String?
   public var text: String?
   public var transcript: String?
-  public var typeModel: OpenAIRealtimeConversationItemMessageUserContentItemTypeModel?
+  public var kind: OpenAIRealtimeConversationItemMessageUserContentItemKind?
 
   public init(
     audio: String? = nil,
@@ -24,14 +24,14 @@ public struct OpenAIRealtimeConversationItemMessageUserContentItem: Codable, Sen
     imageUrl: String? = nil,
     text: String? = nil,
     transcript: String? = nil,
-    typeModel: OpenAIRealtimeConversationItemMessageUserContentItemTypeModel? = nil
+    kind: OpenAIRealtimeConversationItemMessageUserContentItemKind? = nil
   ) {
     self.audio = audio
     self.detail = detail
     self.imageUrl = imageUrl
     self.text = text
     self.transcript = transcript
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIRealtimeConversationItemMessageUserContentItem: Codable, Sen
     case imageUrl = "image_url"
     case text
     case transcript
-    case typeModel = "type"
+    case kind = "type"
   }
 }

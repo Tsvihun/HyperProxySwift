@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaDataResidency: Codable, Sendable {
-  public var allowedInferenceGeos: HyperProxyJSONValue
+  public var allowedInferenceGeos: AnthropicBetaDataResidencyAllowedInferenceGeos
   public var defaultInferenceGeo: String
   public var workspaceGeo: String
 
   public init(
-    allowedInferenceGeos: HyperProxyJSONValue,
+    allowedInferenceGeos: AnthropicBetaDataResidencyAllowedInferenceGeos,
     defaultInferenceGeo: String,
     workspaceGeo: String
   ) {

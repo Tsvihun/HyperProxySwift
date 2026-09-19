@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct PerplexityChatMessageContentTextChunk: Codable, Sendable {
   public var text: String
-  public var typeModel: String
+  public var kind: PerplexityTextKind
 
   public init(
     text: String,
-    typeModel: String
+    kind: PerplexityTextKind = .text
   ) {
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

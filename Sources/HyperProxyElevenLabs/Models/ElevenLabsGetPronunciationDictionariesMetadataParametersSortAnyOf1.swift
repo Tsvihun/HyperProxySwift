@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsGetPronunciationDictionariesMetadataParametersSortAnyOf1: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum ElevenLabsGetPronunciationDictionariesMetadataParametersSortAnyOf1: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let creationTimeUnix = Self(rawValue: "creation_time_unix")
-  public static let name = Self(rawValue: "name")
+  case creationTimeUnix = "creation_time_unix"
+  case name = "name"
 }

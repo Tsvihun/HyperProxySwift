@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsTextSearchConversationMessagesRouteParametersSummaryMode: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum ElevenLabsTextSearchConversationMessagesRouteParametersSummaryMode: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let exclude = Self(rawValue: "exclude")
-  public static let include = Self(rawValue: "include")
+  case exclude = "exclude"
+  case include = "include"
 }

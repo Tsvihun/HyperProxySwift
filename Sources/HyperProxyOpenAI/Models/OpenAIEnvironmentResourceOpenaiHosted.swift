@@ -18,7 +18,7 @@ public struct OpenAIEnvironmentResourceOpenaiHosted: Codable, Sendable {
   public var packages: OpenAIEnvironmentPackagesResource
   public var plugins: [OpenAIHostedPluginResource]
   public var skills: [OpenAIHostedSkillResource]
-  public var typeModel: OpenAIEnvironmentResourceOpenaiHostedTypeModel
+  public var kind: OpenAIEnvironmentResourceOpenaiHostedKind
 
   public init(
     capabilityDirectories: [String],
@@ -28,7 +28,7 @@ public struct OpenAIEnvironmentResourceOpenaiHosted: Codable, Sendable {
     packages: OpenAIEnvironmentPackagesResource,
     plugins: [OpenAIHostedPluginResource],
     skills: [OpenAIHostedSkillResource],
-    typeModel: OpenAIEnvironmentResourceOpenaiHostedTypeModel
+    kind: OpenAIEnvironmentResourceOpenaiHostedKind
   ) {
     self.capabilityDirectories = capabilityDirectories
     self.files = files
@@ -37,7 +37,7 @@ public struct OpenAIEnvironmentResourceOpenaiHosted: Codable, Sendable {
     self.packages = packages
     self.plugins = plugins
     self.skills = skills
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct OpenAIEnvironmentResourceOpenaiHosted: Codable, Sendable {
     case packages
     case plugins
     case skills
-    case typeModel = "type"
+    case kind = "type"
   }
 }

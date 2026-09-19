@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiContent: Codable, Sendable {
-  public var parts: [HyperProxyJSONValue]?
+  public var parts: [GeminiPart]?
   public var role: String?
 
   public init(
-    parts: [HyperProxyJSONValue]? = nil,
+    parts: [GeminiPart]? = nil,
     role: String? = nil
   ) {
     self.parts = parts

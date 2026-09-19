@@ -12,22 +12,22 @@ import HyperProxyCore
 
 public struct AnthropicBetaEnrollmentUrl: Codable, Sendable {
   public var expiresAt: AnthropicBetaTimestamp
-  public var typeModel: AnthropicBetaEnrollmentUrlTypeModel
+  public var kind: AnthropicBetaEnrollmentUrlKind
   public var url: String
 
   public init(
     expiresAt: AnthropicBetaTimestamp,
-    typeModel: AnthropicBetaEnrollmentUrlTypeModel,
+    kind: AnthropicBetaEnrollmentUrlKind,
     url: String
   ) {
     self.expiresAt = expiresAt
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
   enum CodingKeys: String, CodingKey {
     case expiresAt = "expires_at"
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

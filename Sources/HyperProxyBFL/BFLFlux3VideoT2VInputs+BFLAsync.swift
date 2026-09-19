@@ -14,17 +14,17 @@ extension BFLFlux3VideoT2VInputs {
   /// Creates the official text-to-video variant with the required discriminator.
   public init(
     prompt: String,
-    aspectRatio: HyperProxyJSONValue? = nil,
+    aspectRatio: BFLFlux3VideoT2VInputsAspectRatio? = nil,
     draft: Bool? = nil,
-    duration: HyperProxyJSONValue? = nil,
+    duration: BFLFlux3VideoT2VInputsDuration? = nil,
     generateAudio: Bool? = nil,
     resolution: BFLFlux3VideoT2VInputsResolution? = nil,
     safetyTolerance: Int? = nil,
-    version: String? = nil
+    version: BFLLatestVersion? = nil
   ) {
     self.init(
-      mode: "t2v",
       prompt: prompt,
+      mode: .t2v,
       aspectRatio: aspectRatio,
       draft: draft,
       duration: duration,

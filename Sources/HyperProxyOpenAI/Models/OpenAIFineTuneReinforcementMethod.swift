@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIFineTuneReinforcementMethod: Codable, Sendable {
-  public var grader: HyperProxyJSONValue
+  public var grader: OpenAIFineTuneReinforcementMethodGrader
   public var hyperparameters: OpenAIFineTuneReinforcementHyperparameters?
 
   public init(
-    grader: HyperProxyJSONValue,
+    grader: OpenAIFineTuneReinforcementMethodGrader,
     hyperparameters: OpenAIFineTuneReinforcementHyperparameters? = nil
   ) {
     self.grader = grader

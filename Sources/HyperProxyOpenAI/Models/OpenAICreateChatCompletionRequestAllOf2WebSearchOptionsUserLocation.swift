@@ -13,18 +13,18 @@ import HyperProxyCore
 public struct OpenAICreateChatCompletionRequestAllOf2WebSearchOptionsUserLocation: Codable, Sendable
 {
   public var approximate: OpenAIWebSearchLocation
-  public var typeModel: OpenAICreateChatCompletionRequestAllOf2WebSearchOptionsUserLocationTypeModel
+  public var kind: OpenAICreateChatCompletionRequestAllOf2WebSearchOptionsUserLocationKind
 
   public init(
     approximate: OpenAIWebSearchLocation,
-    typeModel: OpenAICreateChatCompletionRequestAllOf2WebSearchOptionsUserLocationTypeModel
+    kind: OpenAICreateChatCompletionRequestAllOf2WebSearchOptionsUserLocationKind
   ) {
     self.approximate = approximate
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case approximate
-    case typeModel = "type"
+    case kind = "type"
   }
 }

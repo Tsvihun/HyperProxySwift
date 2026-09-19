@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherDEModelWeightsDraftSpeculatorType: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let dRAFTSPECULATORTYPEEAGLE = Self(rawValue: "DRAFT_SPECULATOR_TYPE_EAGLE")
-  public static let dRAFTSPECULATORTYPEPHOENIX = Self(rawValue: "DRAFT_SPECULATOR_TYPE_PHOENIX")
+public enum TogetherDEModelWeightsDraftSpeculatorType: String, Codable, Hashable, Sendable {
+  case dRAFTSPECULATORTYPEEAGLE = "DRAFT_SPECULATOR_TYPE_EAGLE"
+  case dRAFTSPECULATORTYPEPHOENIX = "DRAFT_SPECULATOR_TYPE_PHOENIX"
 }

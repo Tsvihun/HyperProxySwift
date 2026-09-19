@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct FalGetOrganizationUsageParametersBoundToTimeframe: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let trueValue = Self(rawValue: "true")
-  public static let falseValue = Self(rawValue: "false")
+public enum FalGetOrganizationUsageParametersBoundToTimeframe: String, Codable, Hashable, Sendable {
+  case trueValue = "true"
+  case falseValue = "false"
 }

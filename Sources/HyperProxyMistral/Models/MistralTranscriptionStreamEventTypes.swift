@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralTranscriptionStreamEventTypes: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let transcriptionLanguage = Self(rawValue: "transcription.language")
-  public static let transcriptionSegment = Self(rawValue: "transcription.segment")
-  public static let transcriptionTextDelta = Self(rawValue: "transcription.text.delta")
-  public static let transcriptionDone = Self(rawValue: "transcription.done")
+public enum MistralTranscriptionStreamEventTypes: String, Codable, Hashable, Sendable {
+  case transcriptionLanguage = "transcription.language"
+  case transcriptionSegment = "transcription.segment"
+  case transcriptionTextDelta = "transcription.text.delta"
+  case transcriptionDone = "transcription.done"
 }

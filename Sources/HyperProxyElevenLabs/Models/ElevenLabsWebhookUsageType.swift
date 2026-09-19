@@ -10,19 +10,13 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsWebhookUsageType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let convAIAgentSettings = Self(rawValue: "ConvAI Agent Settings")
-  public static let convAISettings = Self(rawValue: "ConvAI Settings")
-  public static let voiceLibraryRemovalNotices = Self(rawValue: "Voice Library Removal Notices")
-  public static let speechToText = Self(rawValue: "Speech to Text")
-  public static let agentQAEvaluations = Self(rawValue: "Agent QA Evaluations")
-  public static let convAIAlerting = Self(rawValue: "ConvAI Alerting")
-  public static let flows = Self(rawValue: "Flows")
-  public static let dubbing = Self(rawValue: "Dubbing")
+public enum ElevenLabsWebhookUsageType: String, Codable, Hashable, Sendable {
+  case convAIAgentSettings = "ConvAI Agent Settings"
+  case convAISettings = "ConvAI Settings"
+  case voiceLibraryRemovalNotices = "Voice Library Removal Notices"
+  case speechToText = "Speech to Text"
+  case agentQAEvaluations = "Agent QA Evaluations"
+  case convAIAlerting = "ConvAI Alerting"
+  case flows = "Flows"
+  case dubbing = "Dubbing"
 }

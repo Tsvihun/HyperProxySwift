@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralApiZone: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let global = Self(rawValue: "global")
-  public static let us = Self(rawValue: "us")
-  public static let eu = Self(rawValue: "eu")
+public enum MistralApiZone: String, Codable, Hashable, Sendable {
+  case global = "global"
+  case us = "us"
+  case eu = "eu"
 }

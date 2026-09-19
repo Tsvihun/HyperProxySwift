@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaInviteStatusSchema: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let accepted = Self(rawValue: "accepted")
-  public static let deleted = Self(rawValue: "deleted")
-  public static let expired = Self(rawValue: "expired")
-  public static let pending = Self(rawValue: "pending")
+public enum AnthropicBetaInviteStatusSchema: String, Codable, Hashable, Sendable {
+  case accepted = "accepted"
+  case deleted = "deleted"
+  case expired = "expired"
+  case pending = "pending"
 }

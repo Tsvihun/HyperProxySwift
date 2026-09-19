@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsBodySpeechToTextV1SpeechToTextPostTimestampsGranularity: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum ElevenLabsBodySpeechToTextV1SpeechToTextPostTimestampsGranularity: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let none = Self(rawValue: "none")
-  public static let word = Self(rawValue: "word")
-  public static let character = Self(rawValue: "character")
+  case none = "none"
+  case word = "word"
+  case character = "character"
 }

@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIAssistantsApiResponseFormatOptionOneOf1: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
+public enum OpenAIAssistantsApiResponseFormatOptionOneOf1: String, Codable, Hashable, Sendable {
+  case auto = "auto"
 }

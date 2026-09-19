@@ -17,7 +17,7 @@ public struct GeminiEnvironmentFile: Codable, Sendable {
   public var name: String?
   public var path: String?
   public var sizeBytes: String?
-  public var typeModel: GeminiEnvironmentFileTypeModel?
+  public var kind: GeminiEnvironmentFileKind?
 
   public init(
     created: String? = nil,
@@ -26,7 +26,7 @@ public struct GeminiEnvironmentFile: Codable, Sendable {
     name: String? = nil,
     path: String? = nil,
     sizeBytes: String? = nil,
-    typeModel: GeminiEnvironmentFileTypeModel? = nil
+    kind: GeminiEnvironmentFileKind? = nil
   ) {
     self.created = created
     self.mimeType = mimeType
@@ -34,7 +34,7 @@ public struct GeminiEnvironmentFile: Codable, Sendable {
     self.name = name
     self.path = path
     self.sizeBytes = sizeBytes
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct GeminiEnvironmentFile: Codable, Sendable {
     case name
     case path
     case sizeBytes = "size_bytes"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

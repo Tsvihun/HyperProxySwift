@@ -15,20 +15,20 @@ public struct OpenAIGraderTextSimilarity: Codable, Sendable {
   public var input: String
   public var name: String
   public var reference: String
-  public var typeModel: OpenAIGraderTextSimilarityTypeModel
+  public var kind: OpenAIGraderTextSimilarityKind
 
   public init(
     evaluationMetric: OpenAIGraderTextSimilarityEvaluationMetric,
     input: String,
     name: String,
     reference: String,
-    typeModel: OpenAIGraderTextSimilarityTypeModel
+    kind: OpenAIGraderTextSimilarityKind
   ) {
     self.evaluationMetric = evaluationMetric
     self.input = input
     self.name = name
     self.reference = reference
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIGraderTextSimilarity: Codable, Sendable {
     case input
     case name
     case reference
-    case typeModel = "type"
+    case kind = "type"
   }
 }

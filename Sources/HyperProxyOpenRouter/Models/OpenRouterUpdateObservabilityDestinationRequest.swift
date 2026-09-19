@@ -17,7 +17,7 @@ public struct OpenRouterUpdateObservabilityDestinationRequest: Codable, Sendable
   public var broadcastGenerationRequestContext: Bool?
   public var config: [String: HyperProxyJSONValue]?
   public var enabled: Bool?
-  public var filterRules: HyperProxyJSONValue?
+  public var filterRules: OpenRouterObservabilityFilterRulesConfigNullable?
   public var name: String?
   public var privacyMode: Bool?
   public var regions: [OpenRouterObservabilityDataRegionInput]?
@@ -30,7 +30,7 @@ public struct OpenRouterUpdateObservabilityDestinationRequest: Codable, Sendable
     broadcastGenerationRequestContext: Bool? = nil,
     config: [String: HyperProxyJSONValue]? = nil,
     enabled: Bool? = nil,
-    filterRules: HyperProxyJSONValue? = nil,
+    filterRules: OpenRouterObservabilityFilterRulesConfigNullable? = nil,
     name: String? = nil,
     privacyMode: Bool? = nil,
     regions: [OpenRouterObservabilityDataRegionInput]? = nil,

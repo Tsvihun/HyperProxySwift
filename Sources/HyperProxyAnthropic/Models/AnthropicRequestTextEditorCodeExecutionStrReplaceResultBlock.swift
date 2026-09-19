@@ -16,10 +16,11 @@ public struct AnthropicRequestTextEditorCodeExecutionStrReplaceResultBlock: Coda
   public var newStart: Int?
   public var oldLines: Int?
   public var oldStart: Int?
-  public var typeModel: String
+  public var kind: AnthropicTextEditorCodeExecutionStrReplaceResultKind
 
   public init(
-    typeModel: String,
+    kind: AnthropicTextEditorCodeExecutionStrReplaceResultKind =
+      .textEditorCodeExecutionStrReplaceResult,
     lines: [String]? = nil,
     newLines: Int? = nil,
     newStart: Int? = nil,
@@ -31,7 +32,7 @@ public struct AnthropicRequestTextEditorCodeExecutionStrReplaceResultBlock: Coda
     self.newStart = newStart
     self.oldLines = oldLines
     self.oldStart = oldStart
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +41,6 @@ public struct AnthropicRequestTextEditorCodeExecutionStrReplaceResultBlock: Coda
     case newStart = "new_start"
     case oldLines = "old_lines"
     case oldStart = "old_start"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

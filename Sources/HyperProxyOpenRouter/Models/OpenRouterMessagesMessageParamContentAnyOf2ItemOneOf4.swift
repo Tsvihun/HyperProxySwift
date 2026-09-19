@@ -15,12 +15,12 @@ public struct OpenRouterMessagesMessageParamContentAnyOf2ItemOneOf4: Codable, Se
   public var id: String
   public var input: HyperProxyJSONValue?
   public var name: String
-  public var typeModel: OpenRouterMessagesMessageParamContentAnyOf2ItemOneOf4TypeModel
+  public var kind: OpenRouterMessagesMessageParamContentAnyOf2ItemOneOf4Kind
 
   public init(
     id: String,
     name: String,
-    typeModel: OpenRouterMessagesMessageParamContentAnyOf2ItemOneOf4TypeModel,
+    kind: OpenRouterMessagesMessageParamContentAnyOf2ItemOneOf4Kind,
     cacheControl: OpenRouterAnthropicCacheControlDirective? = nil,
     input: HyperProxyJSONValue? = nil
   ) {
@@ -28,7 +28,7 @@ public struct OpenRouterMessagesMessageParamContentAnyOf2ItemOneOf4: Codable, Se
     self.id = id
     self.input = input
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenRouterMessagesMessageParamContentAnyOf2ItemOneOf4: Codable, Se
     case id
     case input
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

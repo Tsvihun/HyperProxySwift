@@ -10,16 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAICreateCompletionRequestModelAnyOf2: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let gpt35TurboInstruct = Self(rawValue: "gpt-3.5-turbo-instruct")
-  public static let davinci002 = Self(rawValue: "davinci-002")
-  public static let babbage002 = Self(rawValue: "babbage-002")
+public enum OpenAICreateCompletionRequestModelAnyOf2: String, Codable, Hashable, Sendable {
+  case gpt35TurboInstruct = "gpt-3.5-turbo-instruct"
+  case davinci002 = "davinci-002"
+  case babbage002 = "babbage-002"
 }

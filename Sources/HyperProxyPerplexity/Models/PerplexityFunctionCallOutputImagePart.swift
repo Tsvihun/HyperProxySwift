@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct PerplexityFunctionCallOutputImagePart: Codable, Sendable {
   public var detail: PerplexityFunctionCallOutputImagePartDetail?
   public var imageUrl: String
-  public var typeModel: PerplexityFunctionCallOutputImagePartTypeModel
+  public var kind: PerplexityFunctionCallOutputImagePartKind
 
   public init(
     imageUrl: String,
-    typeModel: PerplexityFunctionCallOutputImagePartTypeModel,
+    kind: PerplexityFunctionCallOutputImagePartKind,
     detail: PerplexityFunctionCallOutputImagePartDetail? = nil
   ) {
     self.detail = detail
     self.imageUrl = imageUrl
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case detail
     case imageUrl = "image_url"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

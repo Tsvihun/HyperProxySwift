@@ -14,13 +14,13 @@ public struct ElevenLabsToolResponseModel: Codable, Sendable {
   public var accessInfo: ElevenLabsResourceAccessInfo
   public var id: String
   public var responseMocks: [ElevenLabsToolResponseMockConfigOutput]?
-  public var toolConfig: HyperProxyJSONValue
+  public var toolConfig: ElevenLabsToolResponseModelToolConfig
   public var usageStats: ElevenLabsToolUsageStatsResponseModel
 
   public init(
     accessInfo: ElevenLabsResourceAccessInfo,
     id: String,
-    toolConfig: HyperProxyJSONValue,
+    toolConfig: ElevenLabsToolResponseModelToolConfig,
     usageStats: ElevenLabsToolUsageStatsResponseModel,
     responseMocks: [ElevenLabsToolResponseMockConfigOutput]? = nil
   ) {

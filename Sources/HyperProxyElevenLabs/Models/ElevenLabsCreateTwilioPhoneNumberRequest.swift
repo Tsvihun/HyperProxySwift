@@ -16,7 +16,7 @@ public struct ElevenLabsCreateTwilioPhoneNumberRequest: Codable, Sendable {
   public var enableSms: Bool?
   public var label: String
   public var phoneNumber: String
-  public var provider: String?
+  public var provider: ElevenLabsTwilioProvider?
   public var regionConfig: ElevenLabsRegionConfigRequest?
   public var sid: String
   public var supportsInbound: Bool?
@@ -31,7 +31,7 @@ public struct ElevenLabsCreateTwilioPhoneNumberRequest: Codable, Sendable {
     accountAuthToken: String? = nil,
     agentId: String? = nil,
     enableSms: Bool? = nil,
-    provider: String? = nil,
+    provider: ElevenLabsTwilioProvider? = nil,
     regionConfig: ElevenLabsRegionConfigRequest? = nil,
     supportsInbound: Bool? = nil,
     supportsOutbound: Bool? = nil

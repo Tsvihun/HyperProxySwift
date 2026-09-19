@@ -14,20 +14,20 @@ public struct MistralOrganizationMemberCreate: Codable, Sendable {
   public var email: String
   public var firstName: String
   public var lastName: String
-  public var role: HyperProxyJSONValue?
+  public var role: MistralOrganizationMemberCreateRole?
   public var roleName: MistralOrganizationMemberCreateRoleNameAnyOf1?
   public var roleNames: [MistralOrganizationMemberCreateRoleNamesAnyOf1Item]?
-  public var roles: HyperProxyJSONValue?
+  public var roles: MistralOrganizationMemberCreateRoles?
   public var subscriptionTypes: [MistralPlanType]?
 
   public init(
     email: String,
     firstName: String,
     lastName: String,
-    role: HyperProxyJSONValue? = nil,
+    role: MistralOrganizationMemberCreateRole? = nil,
     roleName: MistralOrganizationMemberCreateRoleNameAnyOf1? = nil,
     roleNames: [MistralOrganizationMemberCreateRoleNamesAnyOf1Item]? = nil,
-    roles: HyperProxyJSONValue? = nil,
+    roles: MistralOrganizationMemberCreateRoles? = nil,
     subscriptionTypes: [MistralPlanType]? = nil
   ) {
     self.email = email

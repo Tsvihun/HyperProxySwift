@@ -10,19 +10,12 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicResponseServerToolUseBlockName: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let webSearch = Self(rawValue: "web_search")
-  public static let webFetch = Self(rawValue: "web_fetch")
-  public static let codeExecution = Self(rawValue: "code_execution")
-  public static let bashCodeExecution = Self(rawValue: "bash_code_execution")
-  public static let textEditorCodeExecution = Self(rawValue: "text_editor_code_execution")
-  public static let toolSearchToolRegex = Self(rawValue: "tool_search_tool_regex")
-  public static let toolSearchToolBm25 = Self(rawValue: "tool_search_tool_bm25")
+public enum AnthropicResponseServerToolUseBlockName: String, Codable, Hashable, Sendable {
+  case webSearch = "web_search"
+  case webFetch = "web_fetch"
+  case codeExecution = "code_execution"
+  case bashCodeExecution = "bash_code_execution"
+  case textEditorCodeExecution = "text_editor_code_execution"
+  case toolSearchToolRegex = "tool_search_tool_regex"
+  case toolSearchToolBm25 = "tool_search_tool_bm25"
 }

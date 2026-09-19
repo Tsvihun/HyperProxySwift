@@ -11,16 +11,16 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherRerankRequest: Codable, Sendable {
-  public var documents: HyperProxyJSONValue
-  public var model: HyperProxyJSONValue
+  public var documents: TogetherRerankRequestDocuments
+  public var model: TogetherRerankRequestModel
   public var query: String
   public var rankFields: [String]?
   public var returnDocuments: Bool?
   public var topN: Int?
 
   public init(
-    documents: HyperProxyJSONValue,
-    model: HyperProxyJSONValue,
+    documents: TogetherRerankRequestDocuments,
+    model: TogetherRerankRequestModel,
     query: String,
     rankFields: [String]? = nil,
     returnDocuments: Bool? = nil,

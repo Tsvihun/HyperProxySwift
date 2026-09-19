@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsSIPMediaEncryptionEnum: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let disabled = Self(rawValue: "disabled")
-  public static let allowed = Self(rawValue: "allowed")
-  public static let requiredValue = Self(rawValue: "required")
+public enum ElevenLabsSIPMediaEncryptionEnum: String, Codable, Hashable, Sendable {
+  case disabled = "disabled"
+  case allowed = "allowed"
+  case requiredValue = "required"
 }

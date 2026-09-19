@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterUpdateWorkspaceResponse: Codable, Sendable {
-  public var data: HyperProxyJSONValue
+  public var data: OpenRouterWorkspace
 
   public init(
-    data: HyperProxyJSONValue
+    data: OpenRouterWorkspace
   ) {
     self.data = data
   }

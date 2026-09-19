@@ -17,13 +17,13 @@ public struct MistralMCPServerCard: Codable, Sendable {
   public var description: String?
   public var icons: [MistralMCPServerIcon]?
   public var name: String
-  public var prompts: HyperProxyJSONValue?
+  public var prompts: MistralMCPServerCardPrompts?
   public var remotes: [MistralMCPServerRemote]?
   public var repository: MistralMCPServerRepository?
   public var requires: MistralClientCapabilities?
-  public var resources: HyperProxyJSONValue?
+  public var resources: MistralMCPServerCardResources?
   public var title: String?
-  public var tools: HyperProxyJSONValue?
+  public var tools: MistralMCPServerCardTools?
   public var version: String
   public var websiteUrl: String?
 
@@ -35,13 +35,13 @@ public struct MistralMCPServerCard: Codable, Sendable {
     capabilities: MistralServerCapabilities? = nil,
     description: String? = nil,
     icons: [MistralMCPServerIcon]? = nil,
-    prompts: HyperProxyJSONValue? = nil,
+    prompts: MistralMCPServerCardPrompts? = nil,
     remotes: [MistralMCPServerRemote]? = nil,
     repository: MistralMCPServerRepository? = nil,
     requires: MistralClientCapabilities? = nil,
-    resources: HyperProxyJSONValue? = nil,
+    resources: MistralMCPServerCardResources? = nil,
     title: String? = nil,
-    tools: HyperProxyJSONValue? = nil,
+    tools: MistralMCPServerCardTools? = nil,
     websiteUrl: String? = nil
   ) {
     self.schema = schema

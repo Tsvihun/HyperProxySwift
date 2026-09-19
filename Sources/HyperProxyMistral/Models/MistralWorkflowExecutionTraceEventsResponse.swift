@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct MistralWorkflowExecutionTraceEventsResponse: Codable, Sendable {
   public var deploymentName: String?
   public var endTime: String?
-  public var events: [HyperProxyJSONValue]?
+  public var events: [MistralWorkflowExecutionTraceEventsResponseEventsItem]?
   public var executionId: String
   public var parentExecutionId: String?
   public var result: HyperProxyJSONValue?
@@ -35,7 +35,7 @@ public struct MistralWorkflowExecutionTraceEventsResponse: Codable, Sendable {
     status: MistralWorkflowExecutionStatus?,
     workflowName: String,
     deploymentName: String? = nil,
-    events: [HyperProxyJSONValue]? = nil,
+    events: [MistralWorkflowExecutionTraceEventsResponseEventsItem]? = nil,
     parentExecutionId: String? = nil,
     runId: String? = nil,
     totalDurationMs: Int? = nil,

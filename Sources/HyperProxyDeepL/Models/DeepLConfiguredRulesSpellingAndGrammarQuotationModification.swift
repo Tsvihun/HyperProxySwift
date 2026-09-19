@@ -10,17 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesSpellingAndGrammarQuotationModification: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum DeepLConfiguredRulesSpellingAndGrammarQuotationModification: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let doNotModifyTextInQuotationMarks = Self(
-    rawValue: "do_not_modify_text_in_quotation_marks")
-  public static let modifyTextInQuotationMarksAccordingToCustomRules = Self(
-    rawValue: "modify_text_in_quotation_marks_according_to_custom_rules")
+  case doNotModifyTextInQuotationMarks = "do_not_modify_text_in_quotation_marks"
+  case modifyTextInQuotationMarksAccordingToCustomRules =
+    "modify_text_in_quotation_marks_according_to_custom_rules"
 }

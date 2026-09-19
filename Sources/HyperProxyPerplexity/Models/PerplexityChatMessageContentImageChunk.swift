@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct PerplexityChatMessageContentImageChunk: Codable, Sendable {
-  public var imageUrl: HyperProxyJSONValue
-  public var typeModel: String
+  public var imageUrl: PerplexityChatMessageContentImageChunkImageUrl
+  public var kind: PerplexityImageUrlKind
 
   public init(
-    imageUrl: HyperProxyJSONValue,
-    typeModel: String
+    imageUrl: PerplexityChatMessageContentImageChunkImageUrl,
+    kind: PerplexityImageUrlKind = .imageUrl
   ) {
     self.imageUrl = imageUrl
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case imageUrl = "image_url"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

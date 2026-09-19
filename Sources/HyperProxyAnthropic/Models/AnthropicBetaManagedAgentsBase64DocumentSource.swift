@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct AnthropicBetaManagedAgentsBase64DocumentSource: Codable, Sendable {
   public var data: String
   public var mediaType: String
-  public var typeModel: AnthropicBetaManagedAgentsBase64DocumentSourceTypeModel
+  public var kind: AnthropicBetaManagedAgentsBase64DocumentSourceKind
 
   public init(
     data: String,
     mediaType: String,
-    typeModel: AnthropicBetaManagedAgentsBase64DocumentSourceTypeModel
+    kind: AnthropicBetaManagedAgentsBase64DocumentSourceKind
   ) {
     self.data = data
     self.mediaType = mediaType
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case data
     case mediaType = "media_type"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

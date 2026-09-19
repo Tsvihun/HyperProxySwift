@@ -12,22 +12,22 @@ import HyperProxyCore
 
 public struct ElevenLabsCreateAuthConnectionEnvironmentVariableRequest: Codable, Sendable {
   public var label: String
-  public var typeModel: String
+  public var kind: ElevenLabsAuthConnectionKind
   public var values: [String: ElevenLabsEnvironmentVariableAuthConnectionValueRequest]
 
   public init(
     label: String,
-    typeModel: String,
-    values: [String: ElevenLabsEnvironmentVariableAuthConnectionValueRequest]
+    values: [String: ElevenLabsEnvironmentVariableAuthConnectionValueRequest],
+    kind: ElevenLabsAuthConnectionKind = .authConnection
   ) {
     self.label = label
-    self.typeModel = typeModel
+    self.kind = kind
     self.values = values
   }
 
   enum CodingKeys: String, CodingKey {
     case label
-    case typeModel = "type"
+    case kind = "type"
     case values
   }
 }

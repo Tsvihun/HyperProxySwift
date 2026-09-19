@@ -16,13 +16,13 @@ public struct OpenAIBetaMCPListTools: Codable, Sendable {
   public var id: String
   public var serverLabel: String
   public var tools: [OpenAIBetaMCPListToolsTool]
-  public var typeModel: OpenAIBetaMCPListToolsTypeModel
+  public var kind: OpenAIBetaMCPListToolsKind
 
   public init(
     id: String,
     serverLabel: String,
     tools: [OpenAIBetaMCPListToolsTool],
-    typeModel: OpenAIBetaMCPListToolsTypeModel,
+    kind: OpenAIBetaMCPListToolsKind,
     agent: OpenAIBetaAgentTag? = nil,
     error: String? = nil
   ) {
@@ -31,7 +31,7 @@ public struct OpenAIBetaMCPListTools: Codable, Sendable {
     self.id = id
     self.serverLabel = serverLabel
     self.tools = tools
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIBetaMCPListTools: Codable, Sendable {
     case id
     case serverLabel = "server_label"
     case tools
-    case typeModel = "type"
+    case kind = "type"
   }
 }

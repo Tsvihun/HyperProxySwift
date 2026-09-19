@@ -15,7 +15,7 @@ public struct MistralTranscriptionStreamDone: Codable, Sendable {
   public var model: String
   public var segments: [MistralTranscriptionSegmentChunk]?
   public var text: String
-  public var typeModel: String?
+  public var kind: MistralTranscriptionDoneKind?
   public var usage: MistralUsageInfo
 
   public init(
@@ -24,13 +24,13 @@ public struct MistralTranscriptionStreamDone: Codable, Sendable {
     text: String,
     usage: MistralUsageInfo,
     segments: [MistralTranscriptionSegmentChunk]? = nil,
-    typeModel: String? = nil
+    kind: MistralTranscriptionDoneKind? = nil
   ) {
     self.language = language
     self.model = model
     self.segments = segments
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
     self.usage = usage
   }
 
@@ -39,7 +39,7 @@ public struct MistralTranscriptionStreamDone: Codable, Sendable {
     case model
     case segments
     case text
-    case typeModel = "type"
+    case kind = "type"
     case usage
   }
 }

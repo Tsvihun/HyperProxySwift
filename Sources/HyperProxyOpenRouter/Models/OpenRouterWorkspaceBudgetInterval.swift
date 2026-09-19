@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterWorkspaceBudgetInterval: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let daily = Self(rawValue: "daily")
-  public static let weekly = Self(rawValue: "weekly")
-  public static let monthly = Self(rawValue: "monthly")
-  public static let lifetime = Self(rawValue: "lifetime")
+public enum OpenRouterWorkspaceBudgetInterval: String, Codable, Hashable, Sendable {
+  case daily = "daily"
+  case weekly = "weekly"
+  case monthly = "monthly"
+  case lifetime = "lifetime"
 }

@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct TogetherRerankResponse: Codable, Sendable {
   public var id: String?
   public var model: String
-  public var object: HyperProxyJSONValue
+  public var object: TogetherRerankObject
   public var results: [TogetherRerankResponseResultsItem]
   public var usage: TogetherUsageData?
 
   public init(
     model: String,
-    object: HyperProxyJSONValue,
     results: [TogetherRerankResponseResultsItem],
+    object: TogetherRerankObject = .rerank,
     id: String? = nil,
     usage: TogetherUsageData? = nil
   ) {

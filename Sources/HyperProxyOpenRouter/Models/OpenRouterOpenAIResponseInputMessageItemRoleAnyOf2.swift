@@ -10,14 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterOpenAIResponseInputMessageItemRoleAnyOf2: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum OpenRouterOpenAIResponseInputMessageItemRoleAnyOf2: String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let system = Self(rawValue: "system")
+  case system = "system"
 }

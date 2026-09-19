@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsSkipTurnToolConfig: Codable, Sendable {
-  public var systemToolType: String?
+  public var systemToolType: ElevenLabsSkipTurnSystemToolType?
 
   public init(
-    systemToolType: String? = nil
+    systemToolType: ElevenLabsSkipTurnSystemToolType? = nil
   ) {
     self.systemToolType = systemToolType
   }

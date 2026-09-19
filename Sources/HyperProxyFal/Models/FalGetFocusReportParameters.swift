@@ -14,10 +14,10 @@ public struct FalGetFocusReportParameters: Codable, Sendable {
   public var billingMonth: String?
   public var boundToTimeframe: FalGetFocusReportParametersBoundToTimeframe?
   public var chargeMonth: String?
-  public var end: String?
+  public var end: FalGetFocusReportParametersEnd?
   public var expand: FalGetFocusReportParametersExpand?
   public var source: FalGetFocusReportParametersSource
-  public var start: String?
+  public var start: FalGetFocusReportParametersStart?
   public var timeframe: FalGetFocusReportParametersTimeframe?
   public var timezone: String?
 
@@ -26,9 +26,9 @@ public struct FalGetFocusReportParameters: Codable, Sendable {
     billingMonth: String? = nil,
     boundToTimeframe: FalGetFocusReportParametersBoundToTimeframe? = nil,
     chargeMonth: String? = nil,
-    end: String? = nil,
+    end: FalGetFocusReportParametersEnd? = nil,
     expand: FalGetFocusReportParametersExpand? = nil,
-    start: String? = nil,
+    start: FalGetFocusReportParametersStart? = nil,
     timeframe: FalGetFocusReportParametersTimeframe? = nil,
     timezone: String? = nil
   ) {

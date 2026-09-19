@@ -17,12 +17,14 @@ public struct
   public var allowedIps: [String]?
   public var characterLimit: Int?
   public var name: String
-  public var permissions: HyperProxyJSONValue
+  public var permissions:
+    ElevenLabsBodyCreateServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysPostPermissions
   public var thirdPartyDisableAllowed: Bool?
 
   public init(
     name: String,
-    permissions: HyperProxyJSONValue,
+    permissions:
+      ElevenLabsBodyCreateServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysPostPermissions,
     allowedIps: [String]? = nil,
     characterLimit: Int? = nil,
     thirdPartyDisableAllowed: Bool? = nil

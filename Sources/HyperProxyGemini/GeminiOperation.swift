@@ -76,6 +76,9 @@ public enum GeminiOperation: String, HyperProxyProviderOperation {
   /// `GET v1beta/environments/{environmentsId}/files/{filesId}`
   case generativelanguageEnvironmentsFilesMediaDownload =
     "generativelanguage.environments.files.media.download"
+  /// `PUT v1beta/environments/{environmentsId}/files/{filesId}`
+  case generativelanguageEnvironmentsFilesMediaUpload =
+    "generativelanguage.environments.files.media.upload"
   /// `DELETE v1beta/environments/{id}:delete`
   case generativelanguageEnvironmentsDelete = "generativelanguage.environments.delete"
   /// `GET v1beta/environments/{id}:get`

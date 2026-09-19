@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct TogetherEmbeddingsResponse: Codable, Sendable {
   public var data: [TogetherEmbeddingsResponseDataItem]
   public var model: String
-  public var object: HyperProxyJSONValue
+  public var object: TogetherListObject1dee9a01
 
   public init(
     data: [TogetherEmbeddingsResponseDataItem],
     model: String,
-    object: HyperProxyJSONValue
+    object: TogetherListObject1dee9a01 = .list
   ) {
     self.data = data
     self.model = model

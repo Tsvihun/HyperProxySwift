@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct BraveLocationSection: Codable, Sendable {
   public var results: [BraveLocationResult]?
-  public var typeModel: String?
+  public var kind: String?
 
   public init(
     results: [BraveLocationResult]? = nil,
-    typeModel: String? = nil
+    kind: String? = nil
   ) {
     self.results = results
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case results
-    case typeModel = "type"
+    case kind = "type"
   }
 }

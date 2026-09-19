@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsGetClientAppointmentsParams: Codable, Sendable {
   public var includeCancelled: Bool?
-  public var smbToolType: String?
+  public var smbToolType: ElevenLabsGetClientAppointmentsSmbToolType?
 
   public init(
     includeCancelled: Bool? = nil,
-    smbToolType: String? = nil
+    smbToolType: ElevenLabsGetClientAppointmentsSmbToolType? = nil
   ) {
     self.includeCancelled = includeCancelled
     self.smbToolType = smbToolType

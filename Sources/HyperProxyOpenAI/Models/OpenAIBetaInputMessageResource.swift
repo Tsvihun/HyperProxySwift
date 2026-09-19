@@ -16,13 +16,13 @@ public struct OpenAIBetaInputMessageResource: Codable, Sendable {
   public var id: String
   public var role: OpenAIBetaInputMessageRole
   public var status: OpenAIBetaInputMessageStatus?
-  public var typeModel: OpenAIBetaInputMessageTypeModel
+  public var kind: OpenAIBetaInputMessageKind
 
   public init(
     content: OpenAIBetaInputMessageContentList,
     id: String,
     role: OpenAIBetaInputMessageRole,
-    typeModel: OpenAIBetaInputMessageTypeModel,
+    kind: OpenAIBetaInputMessageKind,
     agent: OpenAIBetaAgentTag? = nil,
     status: OpenAIBetaInputMessageStatus? = nil
   ) {
@@ -31,7 +31,7 @@ public struct OpenAIBetaInputMessageResource: Codable, Sendable {
     self.id = id
     self.role = role
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIBetaInputMessageResource: Codable, Sendable {
     case id
     case role
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

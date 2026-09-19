@@ -10,22 +10,14 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsAgentConversationTicketIssueType: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let knowledgeGap = Self(rawValue: "knowledge_gap")
-  public static let incorrectInformation = Self(rawValue: "incorrect_information")
-  public static let documentationGap = Self(rawValue: "documentation_gap")
-  public static let productFeedback = Self(rawValue: "product_feedback")
-  public static let platformBug = Self(rawValue: "platform_bug")
-  public static let toolIssue = Self(rawValue: "tool_issue")
-  public static let missingTool = Self(rawValue: "missing_tool")
-  public static let unnecessaryEscalation = Self(rawValue: "unnecessary_escalation")
-  public static let wrongAction = Self(rawValue: "wrong_action")
+public enum ElevenLabsAgentConversationTicketIssueType: String, Codable, Hashable, Sendable {
+  case knowledgeGap = "knowledge_gap"
+  case incorrectInformation = "incorrect_information"
+  case documentationGap = "documentation_gap"
+  case productFeedback = "product_feedback"
+  case platformBug = "platform_bug"
+  case toolIssue = "tool_issue"
+  case missingTool = "missing_tool"
+  case unnecessaryEscalation = "unnecessary_escalation"
+  case wrongAction = "wrong_action"
 }

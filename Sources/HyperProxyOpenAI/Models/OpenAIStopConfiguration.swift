@@ -10,4 +10,38 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIStopConfiguration = HyperProxyJSONValue?
+public enum OpenAIStopConfiguration: Codable, Sendable {
+  case string(String)
+  case stringArray([String])
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(String.self) {
+      self = .string(value)
+      return
+    }
+    self = .stringArray(try container.decode([String].self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .string(let value):
+      try container.encode(value)
+    case .stringArray(let value):
+      try container.encode(value)
+    }
+  }
+}
+
+extension OpenAIStopConfiguration: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension OpenAIStopConfiguration: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: String...) {
+    self = .stringArray(elements)
+  }
+}

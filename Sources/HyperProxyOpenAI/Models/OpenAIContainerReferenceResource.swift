@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIContainerReferenceResource: Codable, Sendable {
   public var containerId: String
-  public var typeModel: OpenAIContainerReferenceResourceTypeModel
+  public var kind: OpenAIContainerReferenceResourceKind
 
   public init(
     containerId: String,
-    typeModel: OpenAIContainerReferenceResourceTypeModel
+    kind: OpenAIContainerReferenceResourceKind
   ) {
     self.containerId = containerId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case containerId = "container_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

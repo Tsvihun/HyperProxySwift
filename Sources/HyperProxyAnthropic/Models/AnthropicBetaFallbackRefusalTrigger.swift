@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicBetaFallbackRefusalTrigger: Codable, Sendable {
   public var category: AnthropicBetaRefusalCategory?
-  public var typeModel: String
+  public var kind: AnthropicRefusalKind
 
   public init(
     category: AnthropicBetaRefusalCategory?,
-    typeModel: String
+    kind: AnthropicRefusalKind = .refusal
   ) {
     self.category = category
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case category
-    case typeModel = "type"
+    case kind = "type"
   }
 }

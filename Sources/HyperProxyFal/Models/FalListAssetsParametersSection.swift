@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct FalListAssetsParametersSection: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let allMedia = Self(rawValue: "all-media")
-  public static let uploads = Self(rawValue: "uploads")
-  public static let favorites = Self(rawValue: "favorites")
-  public static let generated = Self(rawValue: "generated")
+public enum FalListAssetsParametersSection: String, Codable, Hashable, Sendable {
+  case allMedia = "all-media"
+  case uploads = "uploads"
+  case favorites = "favorites"
+  case generated = "generated"
 }

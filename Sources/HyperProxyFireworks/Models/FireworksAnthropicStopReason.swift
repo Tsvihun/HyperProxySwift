@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksAnthropicStopReason: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let endTurn = Self(rawValue: "end_turn")
-  public static let maxTokens = Self(rawValue: "max_tokens")
-  public static let stopSequence = Self(rawValue: "stop_sequence")
-  public static let toolUse = Self(rawValue: "tool_use")
-  public static let pauseTurn = Self(rawValue: "pause_turn")
-  public static let refusal = Self(rawValue: "refusal")
+public enum FireworksAnthropicStopReason: String, Codable, Hashable, Sendable {
+  case endTurn = "end_turn"
+  case maxTokens = "max_tokens"
+  case stopSequence = "stop_sequence"
+  case toolUse = "tool_use"
+  case pauseTurn = "pause_turn"
+  case refusal = "refusal"
 }

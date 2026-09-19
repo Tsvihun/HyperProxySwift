@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicInputJsonContentBlockDelta: Codable, Sendable {
   public var partialJson: String
-  public var typeModel: String
+  public var kind: AnthropicInputJsonDeltaKind
 
   public init(
     partialJson: String,
-    typeModel: String
+    kind: AnthropicInputJsonDeltaKind = .inputJsonDelta
   ) {
     self.partialJson = partialJson
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case partialJson = "partial_json"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -15,18 +15,18 @@ public struct ElevenLabsEnvironmentVariableResponse: Codable, Sendable {
   public var createdByUserId: String?
   public var id: String
   public var label: String
-  public var typeModel: ElevenLabsEnvironmentVariableResponseTypeModel
+  public var kind: ElevenLabsEnvironmentVariableResponseKind
   public var updatedAtUnixSecs: Int
-  public var values: HyperProxyJSONValue
+  public var values: ElevenLabsEnvironmentVariableResponseValues
   public var workspaceId: String
 
   public init(
     createdAtUnixSecs: Int,
     id: String,
     label: String,
-    typeModel: ElevenLabsEnvironmentVariableResponseTypeModel,
+    kind: ElevenLabsEnvironmentVariableResponseKind,
     updatedAtUnixSecs: Int,
-    values: HyperProxyJSONValue,
+    values: ElevenLabsEnvironmentVariableResponseValues,
     workspaceId: String,
     createdByUserId: String? = nil
   ) {
@@ -34,7 +34,7 @@ public struct ElevenLabsEnvironmentVariableResponse: Codable, Sendable {
     self.createdByUserId = createdByUserId
     self.id = id
     self.label = label
-    self.typeModel = typeModel
+    self.kind = kind
     self.updatedAtUnixSecs = updatedAtUnixSecs
     self.values = values
     self.workspaceId = workspaceId
@@ -45,7 +45,7 @@ public struct ElevenLabsEnvironmentVariableResponse: Codable, Sendable {
     case createdByUserId = "created_by_user_id"
     case id
     case label
-    case typeModel = "type"
+    case kind = "type"
     case updatedAtUnixSecs = "updated_at_unix_secs"
     case values
     case workspaceId = "workspace_id"

@@ -14,19 +14,18 @@ public struct OpenRouterMessagesMessageParamContentAnyOf2ItemOneOf5ContentAnyOf2
   Sendable
 {
   public var toolName: String
-  public var typeModel:
-    OpenRouterMessagesMessageParamContentAnyOf2ItemOneOf5ContentAnyOf2ItemAnyOf3TypeModel
+  public var kind: OpenRouterMessagesMessageParamContentAnyOf2ItemOneOf5ContentAnyOf2ItemAnyOf3Kind
 
   public init(
     toolName: String,
-    typeModel: OpenRouterMessagesMessageParamContentAnyOf2ItemOneOf5ContentAnyOf2ItemAnyOf3TypeModel
+    kind: OpenRouterMessagesMessageParamContentAnyOf2ItemOneOf5ContentAnyOf2ItemAnyOf3Kind
   ) {
     self.toolName = toolName
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case toolName = "tool_name"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

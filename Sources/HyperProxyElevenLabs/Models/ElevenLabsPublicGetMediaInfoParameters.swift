@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsPublicGetMediaInfoParameters: Codable, Sendable {
-  public var mediaId: ElevenLabsMediaId
-  public var orderId: ElevenLabsOrderId
+  public var mediaId: String
+  public var orderId: String
   public var xiApiKey: String?
 
   public init(
-    mediaId: ElevenLabsMediaId,
-    orderId: ElevenLabsOrderId,
+    mediaId: String,
+    orderId: String,
     xiApiKey: String? = nil
   ) {
     self.mediaId = mediaId

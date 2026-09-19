@@ -10,22 +10,16 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherRemediationServiceListRemediationsParametersStateItem: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum TogetherRemediationServiceListRemediationsParametersStateItem: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let pENDINGAPPROVAL = Self(rawValue: "PENDING_APPROVAL")
-  public static let pENDING = Self(rawValue: "PENDING")
-  public static let rUNNING = Self(rawValue: "RUNNING")
-  public static let sUCCEEDED = Self(rawValue: "SUCCEEDED")
-  public static let fAILED = Self(rawValue: "FAILED")
-  public static let cANCELLED = Self(rawValue: "CANCELLED")
-  public static let aUTORESOLVED = Self(rawValue: "AUTO_RESOLVED")
-  public static let qUARANTINING = Self(rawValue: "QUARANTINING")
-  public static let qUARANTINED = Self(rawValue: "QUARANTINED")
+  case pENDINGAPPROVAL = "PENDING_APPROVAL"
+  case pENDING = "PENDING"
+  case rUNNING = "RUNNING"
+  case sUCCEEDED = "SUCCEEDED"
+  case fAILED = "FAILED"
+  case cANCELLED = "CANCELLED"
+  case aUTORESOLVED = "AUTO_RESOLVED"
+  case qUARANTINING = "QUARANTINING"
+  case qUARANTINED = "QUARANTINED"
 }

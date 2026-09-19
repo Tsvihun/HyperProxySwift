@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsCaptionStyleCharacterAnimationModelEnterType: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum ElevenLabsCaptionStyleCharacterAnimationModelEnterType: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let none = Self(rawValue: "none")
-  public static let fade = Self(rawValue: "fade")
-  public static let typewriter = Self(rawValue: "typewriter")
+  case none = "none"
+  case fade = "fade"
+  case typewriter = "typewriter"
 }

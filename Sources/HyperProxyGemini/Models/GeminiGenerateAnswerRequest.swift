@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct GeminiGenerateAnswerRequest: Codable, Sendable {
   public var answerStyle: GeminiGenerateAnswerRequestAnswerStyle?
-  public var contents: [HyperProxyJSONValue]?
-  public var inlinePassages: HyperProxyJSONValue?
-  public var safetySettings: [HyperProxyJSONValue]?
-  public var semanticRetriever: HyperProxyJSONValue?
+  public var contents: [GeminiContent]?
+  public var inlinePassages: GeminiGroundingPassages?
+  public var safetySettings: [GeminiSafetySetting]?
+  public var semanticRetriever: GeminiSemanticRetrieverConfig?
   public var temperature: Double?
 
   public init(
     answerStyle: GeminiGenerateAnswerRequestAnswerStyle? = nil,
-    contents: [HyperProxyJSONValue]? = nil,
-    inlinePassages: HyperProxyJSONValue? = nil,
-    safetySettings: [HyperProxyJSONValue]? = nil,
-    semanticRetriever: HyperProxyJSONValue? = nil,
+    contents: [GeminiContent]? = nil,
+    inlinePassages: GeminiGroundingPassages? = nil,
+    safetySettings: [GeminiSafetySetting]? = nil,
+    semanticRetriever: GeminiSemanticRetrieverConfig? = nil,
     temperature: Double? = nil
   ) {
     self.answerStyle = answerStyle

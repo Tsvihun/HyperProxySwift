@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct OpenAICreateEvalCompletionsRunDataSourceSamplingParams: Codable, Sendable {
   public var maxCompletionTokens: Int?
   public var reasoningEffort: OpenAIReasoningEffort?
-  public var responseFormat: HyperProxyJSONValue?
+  public var responseFormat: OpenAICreateEvalCompletionsRunDataSourceSamplingParamsResponseFormat?
   public var seed: Int?
   public var temperature: Double?
   public var tools: [OpenAIChatCompletionTool]?
@@ -22,7 +22,7 @@ public struct OpenAICreateEvalCompletionsRunDataSourceSamplingParams: Codable, S
   public init(
     maxCompletionTokens: Int? = nil,
     reasoningEffort: OpenAIReasoningEffort? = nil,
-    responseFormat: HyperProxyJSONValue? = nil,
+    responseFormat: OpenAICreateEvalCompletionsRunDataSourceSamplingParamsResponseFormat? = nil,
     seed: Int? = nil,
     temperature: Double? = nil,
     tools: [OpenAIChatCompletionTool]? = nil,

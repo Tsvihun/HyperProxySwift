@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesPunctuationDash: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useEmDash = Self(rawValue: "use_em_dash")
-  public static let useHyphen = Self(rawValue: "use_hyphen")
-  public static let useTilde = Self(rawValue: "use_tilde")
+public enum DeepLConfiguredRulesPunctuationDash: String, Codable, Hashable, Sendable {
+  case useEmDash = "use_em_dash"
+  case useHyphen = "use_hyphen"
+  case useTilde = "use_tilde"
 }

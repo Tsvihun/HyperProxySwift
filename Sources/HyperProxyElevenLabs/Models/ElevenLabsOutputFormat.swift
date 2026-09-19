@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsOutputFormat: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let plainText = Self(rawValue: "plain_text")
-  public static let markdown = Self(rawValue: "markdown")
+public enum ElevenLabsOutputFormat: String, Codable, Hashable, Sendable {
+  case plainText = "plain_text"
+  case markdown = "markdown"
 }

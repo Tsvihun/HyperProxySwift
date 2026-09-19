@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIProvenanceResource: Codable, Sendable {
   public var createdAt: Int
   public var object: OpenAIProvenanceCheckObject
-  public var results: [HyperProxyJSONValue]
+  public var results: [OpenAIProvenanceResourceResultsItem]
 
   public init(
     createdAt: Int,
     object: OpenAIProvenanceCheckObject,
-    results: [HyperProxyJSONValue]
+    results: [OpenAIProvenanceResourceResultsItem]
   ) {
     self.createdAt = createdAt
     self.object = object

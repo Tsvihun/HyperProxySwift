@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenRouterAnthropicTextBlock: Codable, Sendable {
   public var citations: [OpenRouterAnthropicTextCitation]
   public var text: String
-  public var typeModel: OpenRouterAnthropicTextBlockTypeModel
+  public var kind: OpenRouterAnthropicTextBlockKind
 
   public init(
     citations: [OpenRouterAnthropicTextCitation],
     text: String,
-    typeModel: OpenRouterAnthropicTextBlockTypeModel
+    kind: OpenRouterAnthropicTextBlockKind
   ) {
     self.citations = citations
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case citations
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

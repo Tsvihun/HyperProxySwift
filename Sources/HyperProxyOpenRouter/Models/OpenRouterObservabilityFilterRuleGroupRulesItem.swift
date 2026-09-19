@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenRouterObservabilityFilterRuleGroupRulesItem: Codable, Sendable {
   public var field: OpenRouterObservabilityFilterRuleGroupRulesItemField
   public var operatorValue: OpenRouterObservabilityFilterRuleGroupRulesItemOperator
-  public var value: HyperProxyJSONValue?
+  public var value: OpenRouterObservabilityFilterRuleGroupRulesItemValue?
 
   public init(
     field: OpenRouterObservabilityFilterRuleGroupRulesItemField,
     operatorValue: OpenRouterObservabilityFilterRuleGroupRulesItemOperator,
-    value: HyperProxyJSONValue? = nil
+    value: OpenRouterObservabilityFilterRuleGroupRulesItemValue? = nil
   ) {
     self.field = field
     self.operatorValue = operatorValue

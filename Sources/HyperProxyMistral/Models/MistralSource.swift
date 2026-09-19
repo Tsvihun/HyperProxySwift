@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralSource: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let upload = Self(rawValue: "upload")
-  public static let repository = Self(rawValue: "repository")
-  public static let mistral = Self(rawValue: "mistral")
+public enum MistralSource: String, Codable, Hashable, Sendable {
+  case upload = "upload"
+  case repository = "repository"
+  case mistral = "mistral"
 }

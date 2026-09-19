@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct PerplexityGetComputerUsageAnalyticsParametersBucketWidth: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum PerplexityGetComputerUsageAnalyticsParametersBucketWidth: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let value1d = Self(rawValue: "1d")
-  public static let value1h = Self(rawValue: "1h")
+  case value1d = "1d"
+  case value1h = "1h"
 }

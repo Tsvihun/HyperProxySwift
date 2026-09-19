@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIFileStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let uploaded = Self(rawValue: "uploaded")
-  public static let processed = Self(rawValue: "processed")
-  public static let error = Self(rawValue: "error")
+public enum OpenAIFileStatus: String, Codable, Hashable, Sendable {
+  case uploaded = "uploaded"
+  case processed = "processed"
+  case error = "error"
 }

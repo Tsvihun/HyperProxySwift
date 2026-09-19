@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct FireworksCreateResponse: Codable, Sendable {
-  public var input: HyperProxyJSONValue
+  public var input: FireworksCreateResponseInput
   public var instructions: String?
   public var maxOutputTokens: Int?
   public var maxToolCalls: Int?
@@ -24,14 +24,14 @@ public struct FireworksCreateResponse: Codable, Sendable {
   public var stream: Bool?
   public var temperature: Double?
   public var text: [String: HyperProxyJSONValue]?
-  public var toolChoice: HyperProxyJSONValue?
+  public var toolChoice: FireworksCreateResponseToolChoice?
   public var tools: [[String: HyperProxyJSONValue]]?
   public var topP: Double?
   public var truncation: String?
   public var user: String?
 
   public init(
-    input: HyperProxyJSONValue,
+    input: FireworksCreateResponseInput,
     model: String,
     instructions: String? = nil,
     maxOutputTokens: Int? = nil,
@@ -44,7 +44,7 @@ public struct FireworksCreateResponse: Codable, Sendable {
     stream: Bool? = nil,
     temperature: Double? = nil,
     text: [String: HyperProxyJSONValue]? = nil,
-    toolChoice: HyperProxyJSONValue? = nil,
+    toolChoice: FireworksCreateResponseToolChoice? = nil,
     tools: [[String: HyperProxyJSONValue]]? = nil,
     topP: Double? = nil,
     truncation: String? = nil,

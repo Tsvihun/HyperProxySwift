@@ -10,4 +10,19 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIGetSkillContentResponse200ApplicationZip = String
+public struct OpenAIGetSkillContentResponse200ApplicationZip: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+}
+
+extension OpenAIGetSkillContentResponse200ApplicationZip: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self.init(rawValue: value)
+  }
+}

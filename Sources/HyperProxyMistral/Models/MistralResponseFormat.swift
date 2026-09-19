@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct MistralResponseFormat: Codable, Sendable {
   public var jsonSchema: MistralJsonSchema?
-  public var typeModel: MistralResponseFormats?
+  public var kind: MistralResponseFormats?
 
   public init(
     jsonSchema: MistralJsonSchema? = nil,
-    typeModel: MistralResponseFormats? = nil
+    kind: MistralResponseFormats? = nil
   ) {
     self.jsonSchema = jsonSchema
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case jsonSchema = "json_schema"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralOCRRequestTableFormatAnyOf1: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let markdown = Self(rawValue: "markdown")
-  public static let html = Self(rawValue: "html")
+public enum MistralOCRRequestTableFormatAnyOf1: String, Codable, Hashable, Sendable {
+  case markdown = "markdown"
+  case html = "html"
 }

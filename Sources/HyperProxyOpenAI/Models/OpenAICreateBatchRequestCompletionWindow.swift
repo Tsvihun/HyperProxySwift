@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAICreateBatchRequestCompletionWindow: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let value24h = Self(rawValue: "24h")
+public enum OpenAICreateBatchRequestCompletionWindow: String, Codable, Hashable, Sendable {
+  case value24h = "24h"
 }

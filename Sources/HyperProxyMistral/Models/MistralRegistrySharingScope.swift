@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralRegistrySharingScope: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let sharingScopeUnspecified = Self(rawValue: "sharing_scope_unspecified")
-  public static let privateValue = Self(rawValue: "private")
-  public static let workspace = Self(rawValue: "workspace")
+public enum MistralRegistrySharingScope: String, Codable, Hashable, Sendable {
+  case sharingScopeUnspecified = "sharing_scope_unspecified"
+  case privateValue = "private"
+  case workspace = "workspace"
 }

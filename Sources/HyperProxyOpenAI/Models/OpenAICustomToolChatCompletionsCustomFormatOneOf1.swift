@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAICustomToolChatCompletionsCustomFormatOneOf1: Codable, Sendable {
-  public var typeModel: OpenAICustomToolChatCompletionsCustomFormatOneOf1TypeModel
+  public var kind: OpenAICustomToolChatCompletionsCustomFormatOneOf1Kind
 
   public init(
-    typeModel: OpenAICustomToolChatCompletionsCustomFormatOneOf1TypeModel
+    kind: OpenAICustomToolChatCompletionsCustomFormatOneOf1Kind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

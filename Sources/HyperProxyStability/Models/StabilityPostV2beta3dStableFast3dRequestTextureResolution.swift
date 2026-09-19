@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct StabilityPostV2beta3dStableFast3dRequestTextureResolution: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum StabilityPostV2beta3dStableFast3dRequestTextureResolution: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let value512 = Self(rawValue: "512")
-  public static let value1024 = Self(rawValue: "1024")
-  public static let value2048 = Self(rawValue: "2048")
+  case value512 = "512"
+  case value1024 = "1024"
+  case value2048 = "2048"
 }

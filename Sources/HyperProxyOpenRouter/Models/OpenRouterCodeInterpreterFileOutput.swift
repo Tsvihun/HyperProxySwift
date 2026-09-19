@@ -20,10 +20,10 @@ public struct OpenRouterCodeInterpreterFileOutput: Codable, Sendable {
   public var sha256: String?
   public var sizeBytes: Int?
   public var status: String?
-  public var typeModel: OpenRouterCodeInterpreterFileOutputTypeModel
+  public var kind: OpenRouterCodeInterpreterFileOutputKind
 
   public init(
-    typeModel: OpenRouterCodeInterpreterFileOutputTypeModel,
+    kind: OpenRouterCodeInterpreterFileOutputKind,
     downloadUrl: String? = nil,
     errorCode: String? = nil,
     expiresAt: String? = nil,
@@ -43,7 +43,7 @@ public struct OpenRouterCodeInterpreterFileOutput: Codable, Sendable {
     self.sha256 = sha256
     self.sizeBytes = sizeBytes
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -56,6 +56,6 @@ public struct OpenRouterCodeInterpreterFileOutput: Codable, Sendable {
     case sha256
     case sizeBytes = "size_bytes"
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesSpellingAndGrammarPluralizingForeignWords: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum DeepLConfiguredRulesSpellingAndGrammarPluralizingForeignWords: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useFrenchSpellingRules = Self(rawValue: "use_french_spelling_rules")
-  public static let useOriginalLanguageSpelling = Self(rawValue: "use_original_language_spelling")
+  case useFrenchSpellingRules = "use_french_spelling_rules"
+  case useOriginalLanguageSpelling = "use_original_language_spelling"
 }

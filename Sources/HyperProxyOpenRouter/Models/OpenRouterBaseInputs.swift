@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public enum OpenRouterBaseInputs: Codable, Sendable {
   case string(String)
-  case array([HyperProxyJSONValue])
+  case baseInputsAnyOf2ItemArray([OpenRouterBaseInputsAnyOf2Item])
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -20,7 +20,7 @@ public enum OpenRouterBaseInputs: Codable, Sendable {
       self = .string(value)
       return
     }
-    self = .array(try container.decode([HyperProxyJSONValue].self))
+    self = .baseInputsAnyOf2ItemArray(try container.decode([OpenRouterBaseInputsAnyOf2Item].self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -28,7 +28,7 @@ public enum OpenRouterBaseInputs: Codable, Sendable {
     switch self {
     case .string(let value):
       try container.encode(value)
-    case .array(let value):
+    case .baseInputsAnyOf2ItemArray(let value):
       try container.encode(value)
     }
   }
@@ -41,7 +41,7 @@ extension OpenRouterBaseInputs: ExpressibleByStringLiteral {
 }
 
 extension OpenRouterBaseInputs: ExpressibleByArrayLiteral {
-  public init(arrayLiteral elements: HyperProxyJSONValue...) {
-    self = .array(elements)
+  public init(arrayLiteral elements: OpenRouterBaseInputsAnyOf2Item...) {
+    self = .baseInputsAnyOf2ItemArray(elements)
   }
 }

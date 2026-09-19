@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaUnrestrictedNetwork: Codable, Sendable {
-  public var typeModel: String
+  public var kind: AnthropicUnrestrictedKind
 
   public init(
-    typeModel: String
+    kind: AnthropicUnrestrictedKind = .unrestricted
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

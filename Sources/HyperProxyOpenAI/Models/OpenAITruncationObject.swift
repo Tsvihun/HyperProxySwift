@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAITruncationObject: Codable, Sendable {
   public var lastMessages: Int?
-  public var typeModel: OpenAITruncationObjectTypeModel
+  public var kind: OpenAITruncationObjectKind
 
   public init(
-    typeModel: OpenAITruncationObjectTypeModel,
+    kind: OpenAITruncationObjectKind,
     lastMessages: Int? = nil
   ) {
     self.lastMessages = lastMessages
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case lastMessages = "last_messages"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

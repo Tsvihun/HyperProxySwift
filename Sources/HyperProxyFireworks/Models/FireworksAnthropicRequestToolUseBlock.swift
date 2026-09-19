@@ -15,20 +15,20 @@ public struct FireworksAnthropicRequestToolUseBlock: Codable, Sendable {
   public var id: String
   public var input: [String: HyperProxyJSONValue]
   public var name: String
-  public var typeModel: String
+  public var kind: FireworksToolUseKind
 
   public init(
     id: String,
     input: [String: HyperProxyJSONValue],
     name: String,
-    typeModel: String,
+    kind: FireworksToolUseKind = .toolUse,
     cacheControl: FireworksAnthropicCacheControlEphemeral? = nil
   ) {
     self.cacheControl = cacheControl
     self.id = id
     self.input = input
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct FireworksAnthropicRequestToolUseBlock: Codable, Sendable {
     case id
     case input
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

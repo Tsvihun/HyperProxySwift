@@ -21,7 +21,7 @@ public struct DeepSeekAnthropicMessageRequest: Codable, Sendable {
   public var serviceTier: String?
   public var stopSequences: [String]?
   public var stream: Bool?
-  public var system: HyperProxyJSONValue?
+  public var system: DeepSeekAnthropicMessageRequestSystem?
   public var temperature: Double?
   public var thinking: DeepSeekAnthropicThinkingConfig?
   public var toolChoice: DeepSeekAnthropicToolChoice?
@@ -40,7 +40,7 @@ public struct DeepSeekAnthropicMessageRequest: Codable, Sendable {
     serviceTier: String? = nil,
     stopSequences: [String]? = nil,
     stream: Bool? = nil,
-    system: HyperProxyJSONValue? = nil,
+    system: DeepSeekAnthropicMessageRequestSystem? = nil,
     temperature: Double? = nil,
     thinking: DeepSeekAnthropicThinkingConfig? = nil,
     toolChoice: DeepSeekAnthropicToolChoice? = nil,

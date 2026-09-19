@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAILiveResponsesDelegationUpdateParam: Codable, Sendable {
   public var responses: OpenAILiveResponsesDelegationSettingsUpdateInputParam?
-  public var typeModel: OpenAILiveResponsesDelegationUpdateParamTypeModel
+  public var kind: OpenAILiveResponsesDelegationUpdateParamKind
 
   public init(
-    typeModel: OpenAILiveResponsesDelegationUpdateParamTypeModel,
+    kind: OpenAILiveResponsesDelegationUpdateParamKind,
     responses: OpenAILiveResponsesDelegationSettingsUpdateInputParam? = nil
   ) {
     self.responses = responses
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case responses
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -15,20 +15,20 @@ public struct OpenAIBetaResponseSteerFailedEvent: Codable, Sendable {
   public var sequenceNumber: Int
   public var steer: OpenAIBetaResponseSteerFailedEventSteer
   public var streamId: String?
-  public var typeModel: OpenAIBetaResponseSteerFailedEventTypeModel
+  public var kind: OpenAIBetaResponseSteerFailedEventKind
 
   public init(
     error: OpenAIBetaResponseSteerFailedEventError,
     sequenceNumber: Int,
     steer: OpenAIBetaResponseSteerFailedEventSteer,
-    typeModel: OpenAIBetaResponseSteerFailedEventTypeModel,
+    kind: OpenAIBetaResponseSteerFailedEventKind,
     streamId: String? = nil
   ) {
     self.error = error
     self.sequenceNumber = sequenceNumber
     self.steer = steer
     self.streamId = streamId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIBetaResponseSteerFailedEvent: Codable, Sendable {
     case sequenceNumber = "sequence_number"
     case steer
     case streamId = "stream_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

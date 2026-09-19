@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct TogetherChatCompletionUserMessageContentMultimodalItemOneOf5: Codable, Sendable {
   public var inputAudio: TogetherChatCompletionUserMessageContentMultimodalItemOneOf5InputAudio
-  public var typeModel: TogetherChatCompletionUserMessageContentMultimodalItemOneOf5TypeModel
+  public var kind: TogetherChatCompletionUserMessageContentMultimodalItemOneOf5Kind
 
   public init(
     inputAudio: TogetherChatCompletionUserMessageContentMultimodalItemOneOf5InputAudio,
-    typeModel: TogetherChatCompletionUserMessageContentMultimodalItemOneOf5TypeModel
+    kind: TogetherChatCompletionUserMessageContentMultimodalItemOneOf5Kind
   ) {
     self.inputAudio = inputAudio
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case inputAudio = "input_audio"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

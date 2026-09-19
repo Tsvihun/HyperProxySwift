@@ -14,24 +14,24 @@ public struct GroqCreateChatCompletionResponseMcpListToolsItem: Codable, Sendabl
   public var id: String?
   public var serverLabel: String?
   public var tools: [GroqCreateChatCompletionResponseMcpListToolsItemToolsItem]?
-  public var typeModel: String?
+  public var kind: String?
 
   public init(
     id: String? = nil,
     serverLabel: String? = nil,
     tools: [GroqCreateChatCompletionResponseMcpListToolsItemToolsItem]? = nil,
-    typeModel: String? = nil
+    kind: String? = nil
   ) {
     self.id = id
     self.serverLabel = serverLabel
     self.tools = tools
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case id
     case serverLabel = "server_label"
     case tools
-    case typeModel = "type"
+    case kind = "type"
   }
 }

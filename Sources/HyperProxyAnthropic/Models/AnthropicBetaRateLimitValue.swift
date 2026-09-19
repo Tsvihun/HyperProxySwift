@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaRateLimitValue: Codable, Sendable {
-  public var typeModel: String
+  public var kind: String
   public var value: Int
 
   public init(
-    typeModel: String,
+    kind: String,
     value: Int
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
     self.value = value
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
     case value
   }
 }

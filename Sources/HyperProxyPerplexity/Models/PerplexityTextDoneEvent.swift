@@ -16,7 +16,7 @@ public struct PerplexityTextDoneEvent: Codable, Sendable {
   public var outputIndex: Int64
   public var sequenceNumber: Int64
   public var text: String
-  public var typeModel: PerplexityEventType
+  public var kind: PerplexityEventType
 
   public init(
     contentIndex: Int64,
@@ -24,14 +24,14 @@ public struct PerplexityTextDoneEvent: Codable, Sendable {
     outputIndex: Int64,
     sequenceNumber: Int64,
     text: String,
-    typeModel: PerplexityEventType
+    kind: PerplexityEventType
   ) {
     self.contentIndex = contentIndex
     self.itemId = itemId
     self.outputIndex = outputIndex
     self.sequenceNumber = sequenceNumber
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct PerplexityTextDoneEvent: Codable, Sendable {
     case outputIndex = "output_index"
     case sequenceNumber = "sequence_number"
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -19,12 +19,16 @@ public struct OpenRouterVideoGenerationRequest: Codable, Sendable {
   public var generateAudio: Bool?
   public var inputReferences: [OpenRouterInputReference]?
   public var model: String
+  public var previousJobId: String?
   public var prompt: String?
   public var provider: OpenRouterVideoGenerationRequestProvider?
   public var resolution: OpenRouterVideoGenerationRequestResolution?
   public var seed: Int?
+  public var sessionId: String?
   public var size: String?
+  public var trace: OpenRouterTraceConfig?
   public var upscaleFactor: Double?
+  public var user: String?
 
   public init(
     model: String,
@@ -35,12 +39,16 @@ public struct OpenRouterVideoGenerationRequest: Codable, Sendable {
     frameImages: [OpenRouterFrameImage]? = nil,
     generateAudio: Bool? = nil,
     inputReferences: [OpenRouterInputReference]? = nil,
+    previousJobId: String? = nil,
     prompt: String? = nil,
     provider: OpenRouterVideoGenerationRequestProvider? = nil,
     resolution: OpenRouterVideoGenerationRequestResolution? = nil,
     seed: Int? = nil,
+    sessionId: String? = nil,
     size: String? = nil,
-    upscaleFactor: Double? = nil
+    trace: OpenRouterTraceConfig? = nil,
+    upscaleFactor: Double? = nil,
+    user: String? = nil
   ) {
     self.aspectRatio = aspectRatio
     self.callbackUrl = callbackUrl
@@ -50,12 +58,16 @@ public struct OpenRouterVideoGenerationRequest: Codable, Sendable {
     self.generateAudio = generateAudio
     self.inputReferences = inputReferences
     self.model = model
+    self.previousJobId = previousJobId
     self.prompt = prompt
     self.provider = provider
     self.resolution = resolution
     self.seed = seed
+    self.sessionId = sessionId
     self.size = size
+    self.trace = trace
     self.upscaleFactor = upscaleFactor
+    self.user = user
   }
 
   enum CodingKeys: String, CodingKey {
@@ -67,11 +79,15 @@ public struct OpenRouterVideoGenerationRequest: Codable, Sendable {
     case generateAudio = "generate_audio"
     case inputReferences = "input_references"
     case model
+    case previousJobId = "previous_job_id"
     case prompt
     case provider
     case resolution
     case seed
+    case sessionId = "session_id"
     case size
+    case trace
     case upscaleFactor = "upscale_factor"
+    case user
   }
 }

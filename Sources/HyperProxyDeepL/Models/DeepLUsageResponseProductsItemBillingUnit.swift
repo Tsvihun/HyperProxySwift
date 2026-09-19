@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLUsageResponseProductsItemBillingUnit: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let characters = Self(rawValue: "characters")
-  public static let minutes = Self(rawValue: "minutes")
+public enum DeepLUsageResponseProductsItemBillingUnit: String, Codable, Hashable, Sendable {
+  case characters = "characters"
+  case minutes = "minutes"
 }

@@ -17,7 +17,7 @@ public struct TogetherSecretResponseItem: Codable, Sendable {
   public var id: String?
   public var lastUpdatedBy: String?
   public var name: String?
-  public var object: HyperProxyJSONValue?
+  public var object: TogetherSecretObject?
   public var updatedAt: String?
 
   public init(
@@ -27,7 +27,7 @@ public struct TogetherSecretResponseItem: Codable, Sendable {
     id: String? = nil,
     lastUpdatedBy: String? = nil,
     name: String? = nil,
-    object: HyperProxyJSONValue? = nil,
+    object: TogetherSecretObject? = nil,
     updatedAt: String? = nil
   ) {
     self.createdAt = createdAt

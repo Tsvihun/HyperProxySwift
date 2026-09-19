@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterMessagesDeltaEventDelta: Codable, Sendable {
-  public var container: OpenRouterAnthropicContainer
-  public var stopDetails: OpenRouterAnthropicRefusalStopDetails
-  public var stopReason: OpenRouterORAnthropicStopReason
+  public var container: OpenRouterAnthropicContainer?
+  public var stopDetails: OpenRouterAnthropicRefusalStopDetails?
+  public var stopReason: OpenRouterORAnthropicStopReason?
   public var stopSequence: String
 
   public init(
-    container: OpenRouterAnthropicContainer,
-    stopDetails: OpenRouterAnthropicRefusalStopDetails,
-    stopReason: OpenRouterORAnthropicStopReason,
+    container: OpenRouterAnthropicContainer?,
+    stopDetails: OpenRouterAnthropicRefusalStopDetails?,
+    stopReason: OpenRouterORAnthropicStopReason?,
     stopSequence: String
   ) {
     self.container = container

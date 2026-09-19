@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIInviteStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let accepted = Self(rawValue: "accepted")
-  public static let expired = Self(rawValue: "expired")
-  public static let pending = Self(rawValue: "pending")
+public enum OpenAIInviteStatus: String, Codable, Hashable, Sendable {
+  case accepted = "accepted"
+  case expired = "expired"
+  case pending = "pending"
 }

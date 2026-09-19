@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct OpenAIChatCompletionRequestAssistantMessage: Codable, Sendable {
   public var audio: OpenAIChatCompletionRequestAssistantMessageAudioAnyOf1?
-  public var content: HyperProxyJSONValue?
+  public var content: OpenAIChatCompletionRequestAssistantMessageContentAnyOf1?
   public var functionCall: OpenAIChatCompletionRequestAssistantMessageFunctionCallAnyOf1?
   public var name: String?
   public var refusal: String?
@@ -22,7 +22,7 @@ public struct OpenAIChatCompletionRequestAssistantMessage: Codable, Sendable {
   public init(
     role: OpenAIChatCompletionRequestAssistantMessageRole,
     audio: OpenAIChatCompletionRequestAssistantMessageAudioAnyOf1? = nil,
-    content: HyperProxyJSONValue? = nil,
+    content: OpenAIChatCompletionRequestAssistantMessageContentAnyOf1? = nil,
     functionCall: OpenAIChatCompletionRequestAssistantMessageFunctionCallAnyOf1? = nil,
     name: String? = nil,
     refusal: String? = nil,

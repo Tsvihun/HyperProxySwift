@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsASTNullNodeOutput: Codable, Sendable {
-  public var typeModel: String
+  public var kind: ElevenLabsNullLiteralKind
 
   public init(
-    typeModel: String
+    kind: ElevenLabsNullLiteralKind = .nullLiteral
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

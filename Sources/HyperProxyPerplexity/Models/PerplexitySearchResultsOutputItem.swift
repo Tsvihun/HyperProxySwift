@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct PerplexitySearchResultsOutputItem: Codable, Sendable {
   public var queries: [String]?
   public var results: [PerplexitySearchResult]
-  public var typeModel: PerplexitySearchResultsOutputItemTypeModel
+  public var kind: PerplexitySearchResultsOutputItemKind
 
   public init(
     results: [PerplexitySearchResult],
-    typeModel: PerplexitySearchResultsOutputItemTypeModel,
+    kind: PerplexitySearchResultsOutputItemKind,
     queries: [String]? = nil
   ) {
     self.queries = queries
     self.results = results
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case queries
     case results
-    case typeModel = "type"
+    case kind = "type"
   }
 }

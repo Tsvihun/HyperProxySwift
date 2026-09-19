@@ -26,12 +26,13 @@ public struct ElevenLabsExtendedSubscriptionResponseModel: Codable, Sendable {
   public var hasUsedCreatorCouponOnAccount: Bool?
   public var hasUsedStarterCouponOnAccount: Bool?
   public var maxCharacterLimitExtension: Int?
-  public var maxCreditLimitExtension: HyperProxyJSONValue
+  public var maxCreditLimitExtension:
+    ElevenLabsExtendedSubscriptionResponseModelMaxCreditLimitExtension
   public var maxVoiceAddEdits: Int?
   public var nextCharacterCountResetUnix: Int?
   public var nextInvoice: ElevenLabsInvoiceResponseModel?
   public var openInvoices: [ElevenLabsInvoiceResponseModel]
-  public var pendingChange: HyperProxyJSONValue?
+  public var pendingChange: ElevenLabsExtendedSubscriptionResponseModelPendingChange?
   public var professionalVoiceLimit: Int
   public var professionalVoiceSlotsUsed: Int
   public var professionalVoiceSlotsUsedInWorkspace: Int
@@ -52,7 +53,7 @@ public struct ElevenLabsExtendedSubscriptionResponseModel: Codable, Sendable {
     currentOverage: ElevenLabsPrice,
     hasOpenInvoices: Bool,
     maxCharacterLimitExtension: Int?,
-    maxCreditLimitExtension: HyperProxyJSONValue,
+    maxCreditLimitExtension: ElevenLabsExtendedSubscriptionResponseModelMaxCreditLimitExtension,
     openInvoices: [ElevenLabsInvoiceResponseModel],
     professionalVoiceLimit: Int,
     professionalVoiceSlotsUsed: Int,
@@ -70,7 +71,7 @@ public struct ElevenLabsExtendedSubscriptionResponseModel: Codable, Sendable {
     maxVoiceAddEdits: Int? = nil,
     nextCharacterCountResetUnix: Int? = nil,
     nextInvoice: ElevenLabsInvoiceResponseModel? = nil,
-    pendingChange: HyperProxyJSONValue? = nil
+    pendingChange: ElevenLabsExtendedSubscriptionResponseModelPendingChange? = nil
   ) {
     self.allowedToExtendCharacterLimit = allowedToExtendCharacterLimit
     self.billingPeriod = billingPeriod

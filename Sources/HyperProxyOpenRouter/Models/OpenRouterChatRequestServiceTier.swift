@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterChatRequestServiceTier: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
-  public static let defaultValue = Self(rawValue: "default")
-  public static let fast = Self(rawValue: "fast")
-  public static let flex = Self(rawValue: "flex")
-  public static let priority = Self(rawValue: "priority")
-  public static let scale = Self(rawValue: "scale")
+public enum OpenRouterChatRequestServiceTier: String, Codable, Hashable, Sendable {
+  case auto = "auto"
+  case defaultValue = "default"
+  case fast = "fast"
+  case flex = "flex"
+  case priority = "priority"
+  case scale = "scale"
 }

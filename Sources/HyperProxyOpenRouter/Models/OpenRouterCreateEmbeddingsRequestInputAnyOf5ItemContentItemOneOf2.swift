@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterCreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2: Codable, Sendable {
   public var imageUrl: OpenRouterCreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2ImageUrl
-  public var typeModel: OpenRouterCreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2TypeModel
+  public var kind: OpenRouterCreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2Kind
 
   public init(
     imageUrl: OpenRouterCreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2ImageUrl,
-    typeModel: OpenRouterCreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2TypeModel
+    kind: OpenRouterCreateEmbeddingsRequestInputAnyOf5ItemContentItemOneOf2Kind
   ) {
     self.imageUrl = imageUrl
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case imageUrl = "image_url"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

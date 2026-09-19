@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIProjectServiceAccountRole: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let owner = Self(rawValue: "owner")
-  public static let member = Self(rawValue: "member")
-  public static let none = Self(rawValue: "none")
+public enum OpenAIProjectServiceAccountRole: String, Codable, Hashable, Sendable {
+  case owner = "owner"
+  case member = "member"
+  case none = "none"
 }

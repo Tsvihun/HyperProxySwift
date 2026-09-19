@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherAudioTranslationRequestTimestampGranularitiesOneOf1: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum TogetherAudioTranslationRequestTimestampGranularitiesOneOf1: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let segment = Self(rawValue: "segment")
-  public static let word = Self(rawValue: "word")
+  case segment = "segment"
+  case word = "word"
 }

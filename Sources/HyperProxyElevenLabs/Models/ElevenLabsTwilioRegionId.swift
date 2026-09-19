@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsTwilioRegionId: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let us1 = Self(rawValue: "us1")
-  public static let ie1 = Self(rawValue: "ie1")
-  public static let au1 = Self(rawValue: "au1")
+public enum ElevenLabsTwilioRegionId: String, Codable, Hashable, Sendable {
+  case us1 = "us1"
+  case ie1 = "ie1"
+  case au1 = "au1"
 }

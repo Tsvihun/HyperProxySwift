@@ -12,6 +12,20 @@ import HyperProxyCore
 import HyperProxyProviders
 
 extension HyperProxyProviderService where Operation == GroqOperation {
+  public func audioSpeech(
+    _ body: GroqCreateSpeechRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.audioSpeech)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try prepared.bytes()
+  }
+
   public func batchesList(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -132,6 +146,20 @@ extension HyperProxyProviderService where Operation == GroqOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(GroqDeleteFileResponse.self)
+  }
+
+  public func filesContent(
+    fileId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.filesContent)
+      .path("file_id", fileId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try call.bytes()
   }
 
   public func modelsList(

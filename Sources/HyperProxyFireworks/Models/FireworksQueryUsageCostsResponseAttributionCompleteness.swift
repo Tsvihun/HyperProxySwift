@@ -10,18 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksQueryUsageCostsResponseAttributionCompleteness: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum FireworksQueryUsageCostsResponseAttributionCompleteness: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let aTTRIBUTIONCOMPLETENESSUNSPECIFIED = Self(
-    rawValue: "ATTRIBUTION_COMPLETENESS_UNSPECIFIED")
-  public static let cOMPLETE = Self(rawValue: "COMPLETE")
-  public static let iNCOMPLETE = Self(rawValue: "INCOMPLETE")
-  public static let uNKNOWN = Self(rawValue: "UNKNOWN")
+  case aTTRIBUTIONCOMPLETENESSUNSPECIFIED = "ATTRIBUTION_COMPLETENESS_UNSPECIFIED"
+  case cOMPLETE = "COMPLETE"
+  case iNCOMPLETE = "INCOMPLETE"
+  case uNKNOWN = "UNKNOWN"
 }

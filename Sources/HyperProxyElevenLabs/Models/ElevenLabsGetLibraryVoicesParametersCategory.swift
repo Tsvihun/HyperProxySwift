@@ -10,16 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsGetLibraryVoicesParametersCategory: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let professional = Self(rawValue: "professional")
-  public static let famous = Self(rawValue: "famous")
-  public static let highQuality = Self(rawValue: "high_quality")
+public enum ElevenLabsGetLibraryVoicesParametersCategory: String, Codable, Hashable, Sendable {
+  case professional = "professional"
+  case famous = "famous"
+  case highQuality = "high_quality"
 }

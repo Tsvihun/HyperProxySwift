@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct ElevenLabsSayNodeLiteralMessageInput: Codable, Sendable {
   public var text: String
   public var textTranslations: [String: ElevenLabsTranslatedString]?
-  public var typeModel: String?
+  public var kind: ElevenLabsLiteralKind?
 
   public init(
     text: String,
     textTranslations: [String: ElevenLabsTranslatedString]? = nil,
-    typeModel: String? = nil
+    kind: ElevenLabsLiteralKind? = nil
   ) {
     self.text = text
     self.textTranslations = textTranslations
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case text
     case textTranslations = "text_translations"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

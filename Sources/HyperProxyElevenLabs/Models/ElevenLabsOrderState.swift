@@ -10,21 +10,15 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsOrderState: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let openValue = Self(rawValue: "open")
-  public static let submitted = Self(rawValue: "submitted")
-  public static let paid = Self(rawValue: "paid")
-  public static let accepted = Self(rawValue: "accepted")
-  public static let rejected = Self(rawValue: "rejected")
-  public static let done = Self(rawValue: "done")
-  public static let cancelling = Self(rawValue: "cancelling")
-  public static let cancelled = Self(rawValue: "cancelled")
-  public static let expired = Self(rawValue: "expired")
-  public static let merged = Self(rawValue: "merged")
+public enum ElevenLabsOrderState: String, Codable, Hashable, Sendable {
+  case openValue = "open"
+  case submitted = "submitted"
+  case paid = "paid"
+  case accepted = "accepted"
+  case rejected = "rejected"
+  case done = "done"
+  case cancelling = "cancelling"
+  case cancelled = "cancelled"
+  case expired = "expired"
+  case merged = "merged"
 }

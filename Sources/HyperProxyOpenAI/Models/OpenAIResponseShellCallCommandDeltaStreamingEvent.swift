@@ -16,14 +16,14 @@ public struct OpenAIResponseShellCallCommandDeltaStreamingEvent: Codable, Sendab
   public var obfuscation: String?
   public var outputIndex: Int
   public var sequenceNumber: Int
-  public var typeModel: OpenAIResponseShellCallCommandDeltaStreamingEventTypeModel
+  public var kind: OpenAIResponseShellCallCommandDeltaStreamingEventKind
 
   public init(
     commandIndex: Int,
     delta: String,
     outputIndex: Int,
     sequenceNumber: Int,
-    typeModel: OpenAIResponseShellCallCommandDeltaStreamingEventTypeModel,
+    kind: OpenAIResponseShellCallCommandDeltaStreamingEventKind,
     obfuscation: String? = nil
   ) {
     self.commandIndex = commandIndex
@@ -31,7 +31,7 @@ public struct OpenAIResponseShellCallCommandDeltaStreamingEvent: Codable, Sendab
     self.obfuscation = obfuscation
     self.outputIndex = outputIndex
     self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIResponseShellCallCommandDeltaStreamingEvent: Codable, Sendab
     case obfuscation
     case outputIndex = "output_index"
     case sequenceNumber = "sequence_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

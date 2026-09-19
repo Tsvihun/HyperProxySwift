@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksGatewayRolloutStrategy: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let rOLLOUTSTRATEGYUNSPECIFIED = Self(rawValue: "ROLLOUT_STRATEGY_UNSPECIFIED")
-  public static let rOLLOUTSTRATEGYSTANDARD = Self(rawValue: "ROLLOUT_STRATEGY_STANDARD")
-  public static let rOLLOUTSTRATEGYHOTRELOAD = Self(rawValue: "ROLLOUT_STRATEGY_HOT_RELOAD")
+public enum FireworksGatewayRolloutStrategy: String, Codable, Hashable, Sendable {
+  case rOLLOUTSTRATEGYUNSPECIFIED = "ROLLOUT_STRATEGY_UNSPECIFIED"
+  case rOLLOUTSTRATEGYSTANDARD = "ROLLOUT_STRATEGY_STANDARD"
+  case rOLLOUTSTRATEGYHOTRELOAD = "ROLLOUT_STRATEGY_HOT_RELOAD"
 }

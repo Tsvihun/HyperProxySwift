@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAITranscriptionChunkingStrategyOneOf1: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
+public enum OpenAITranscriptionChunkingStrategyOneOf1: String, Codable, Hashable, Sendable {
+  case auto = "auto"
 }

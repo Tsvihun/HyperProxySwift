@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterChatChoice: Codable, Sendable {
-  public var finishReason: OpenRouterChatFinishReasonEnum
+  public var finishReason: OpenRouterChatFinishReasonEnum?
   public var index: Int
   public var logprobs: OpenRouterChatTokenLogprobs?
   public var message: OpenRouterChatAssistantMessage
 
   public init(
-    finishReason: OpenRouterChatFinishReasonEnum,
+    finishReason: OpenRouterChatFinishReasonEnum?,
     index: Int,
     message: OpenRouterChatAssistantMessage,
     logprobs: OpenRouterChatTokenLogprobs? = nil

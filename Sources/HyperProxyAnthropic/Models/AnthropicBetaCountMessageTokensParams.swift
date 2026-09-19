@@ -19,10 +19,10 @@ public struct AnthropicBetaCountMessageTokensParams: Codable, Sendable {
   public var outputConfig: AnthropicBetaOutputConfig?
   public var outputFormat: AnthropicBetaJsonOutputFormat?
   public var speed: AnthropicBetaSpeed?
-  public var system: HyperProxyJSONValue?
+  public var system: AnthropicBetaCountMessageTokensParamsSystem?
   public var thinking: AnthropicBetaThinkingConfigParam?
   public var toolChoice: AnthropicBetaToolChoice?
-  public var tools: [HyperProxyJSONValue]?
+  public var tools: [AnthropicBetaCountMessageTokensParamsToolsItem]?
 
   public init(
     messages: [AnthropicBetaInputMessage],
@@ -33,10 +33,10 @@ public struct AnthropicBetaCountMessageTokensParams: Codable, Sendable {
     outputConfig: AnthropicBetaOutputConfig? = nil,
     outputFormat: AnthropicBetaJsonOutputFormat? = nil,
     speed: AnthropicBetaSpeed? = nil,
-    system: HyperProxyJSONValue? = nil,
+    system: AnthropicBetaCountMessageTokensParamsSystem? = nil,
     thinking: AnthropicBetaThinkingConfigParam? = nil,
     toolChoice: AnthropicBetaToolChoice? = nil,
-    tools: [HyperProxyJSONValue]? = nil
+    tools: [AnthropicBetaCountMessageTokensParamsToolsItem]? = nil
   ) {
     self.cacheControl = cacheControl
     self.contextManagement = contextManagement

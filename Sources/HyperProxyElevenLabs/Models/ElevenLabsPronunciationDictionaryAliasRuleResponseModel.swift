@@ -14,20 +14,20 @@ public struct ElevenLabsPronunciationDictionaryAliasRuleResponseModel: Codable, 
   public var alias: String
   public var caseSensitive: Bool?
   public var stringToReplace: String
-  public var typeModel: String
+  public var kind: ElevenLabsAliasKind
   public var wordBoundaries: Bool?
 
   public init(
     alias: String,
     stringToReplace: String,
-    typeModel: String,
+    kind: ElevenLabsAliasKind = .alias,
     caseSensitive: Bool? = nil,
     wordBoundaries: Bool? = nil
   ) {
     self.alias = alias
     self.caseSensitive = caseSensitive
     self.stringToReplace = stringToReplace
-    self.typeModel = typeModel
+    self.kind = kind
     self.wordBoundaries = wordBoundaries
   }
 
@@ -35,7 +35,7 @@ public struct ElevenLabsPronunciationDictionaryAliasRuleResponseModel: Codable, 
     case alias
     case caseSensitive = "case_sensitive"
     case stringToReplace = "string_to_replace"
-    case typeModel = "type"
+    case kind = "type"
     case wordBoundaries = "word_boundaries"
   }
 }

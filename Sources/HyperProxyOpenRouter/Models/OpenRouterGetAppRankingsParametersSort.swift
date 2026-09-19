@@ -10,14 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterGetAppRankingsParametersSort: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let popular = Self(rawValue: "popular")
-  public static let trending = Self(rawValue: "trending")
+public enum OpenRouterGetAppRankingsParametersSort: String, Codable, Hashable, Sendable {
+  case popular = "popular"
+  case trending = "trending"
 }

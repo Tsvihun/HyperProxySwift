@@ -10,20 +10,14 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIRunObjectStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let queued = Self(rawValue: "queued")
-  public static let inProgress = Self(rawValue: "in_progress")
-  public static let requiresAction = Self(rawValue: "requires_action")
-  public static let cancelling = Self(rawValue: "cancelling")
-  public static let cancelled = Self(rawValue: "cancelled")
-  public static let failed = Self(rawValue: "failed")
-  public static let completed = Self(rawValue: "completed")
-  public static let incomplete = Self(rawValue: "incomplete")
-  public static let expired = Self(rawValue: "expired")
+public enum OpenAIRunObjectStatus: String, Codable, Hashable, Sendable {
+  case queued = "queued"
+  case inProgress = "in_progress"
+  case requiresAction = "requires_action"
+  case cancelling = "cancelling"
+  case cancelled = "cancelled"
+  case failed = "failed"
+  case completed = "completed"
+  case incomplete = "incomplete"
+  case expired = "expired"
 }

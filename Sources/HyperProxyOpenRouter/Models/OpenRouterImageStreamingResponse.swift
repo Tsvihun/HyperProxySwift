@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterImageStreamingResponse: Codable, Sendable {
-  public var data: HyperProxyJSONValue
+  public var data: OpenRouterImageStreamingResponseData
 
   public init(
-    data: HyperProxyJSONValue
+    data: OpenRouterImageStreamingResponseData
   ) {
     self.data = data
   }

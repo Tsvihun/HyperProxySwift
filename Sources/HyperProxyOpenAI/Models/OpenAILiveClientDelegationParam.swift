@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAILiveClientDelegationParam: Codable, Sendable {
-  public var typeModel: OpenAILiveClientDelegationParamTypeModel
+  public var kind: OpenAILiveClientDelegationParamKind
 
   public init(
-    typeModel: OpenAILiveClientDelegationParamTypeModel
+    kind: OpenAILiveClientDelegationParamKind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

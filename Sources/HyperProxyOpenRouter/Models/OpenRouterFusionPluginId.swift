@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterFusionPluginId: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let fusion = Self(rawValue: "fusion")
+public enum OpenRouterFusionPluginId: String, Codable, Hashable, Sendable {
+  case fusion = "fusion"
 }

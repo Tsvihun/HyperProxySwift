@@ -30,7 +30,7 @@ public struct ElevenLabsConversationHistoryMetadataCommonModel: Codable, Sendabl
   public var feedback: ElevenLabsConversationHistoryFeedbackCommonModel?
   public var initiatorId: String?
   public var mainLanguage: String?
-  public var phoneCall: HyperProxyJSONValue?
+  public var phoneCall: ElevenLabsConversationHistoryMetadataCommonModelPhoneCallAnyOf1?
   public var queueWaitSecs: Double?
   public var ragUsage: ElevenLabsConversationHistoryRagUsageCommonModel?
   public var sms: ElevenLabsSMSConversationInfo?
@@ -63,7 +63,7 @@ public struct ElevenLabsConversationHistoryMetadataCommonModel: Codable, Sendabl
     feedback: ElevenLabsConversationHistoryFeedbackCommonModel? = nil,
     initiatorId: String? = nil,
     mainLanguage: String? = nil,
-    phoneCall: HyperProxyJSONValue? = nil,
+    phoneCall: ElevenLabsConversationHistoryMetadataCommonModelPhoneCallAnyOf1? = nil,
     queueWaitSecs: Double? = nil,
     ragUsage: ElevenLabsConversationHistoryRagUsageCommonModel? = nil,
     sms: ElevenLabsSMSConversationInfo? = nil,

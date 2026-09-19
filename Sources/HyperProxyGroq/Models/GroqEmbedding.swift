@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct GroqEmbedding: Codable, Sendable {
-  public var embedding: HyperProxyJSONValue
+  public var embedding: GroqEmbeddingEmbedding
   public var index: Int
   public var object: GroqEmbeddingObject
 
   public init(
-    embedding: HyperProxyJSONValue,
+    embedding: GroqEmbeddingEmbedding,
     index: Int,
     object: GroqEmbeddingObject
   ) {

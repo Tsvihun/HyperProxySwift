@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLTranslationMemoryJobResultStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let awaitingInput = Self(rawValue: "awaiting_input")
-  public static let processing = Self(rawValue: "processing")
-  public static let completed = Self(rawValue: "completed")
-  public static let failed = Self(rawValue: "failed")
-  public static let expired = Self(rawValue: "expired")
+public enum DeepLTranslationMemoryJobResultStatus: String, Codable, Hashable, Sendable {
+  case awaitingInput = "awaiting_input"
+  case processing = "processing"
+  case completed = "completed"
+  case failed = "failed"
+  case expired = "expired"
 }

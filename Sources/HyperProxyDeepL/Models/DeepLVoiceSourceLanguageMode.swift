@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLVoiceSourceLanguageMode: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
-  public static let fixed = Self(rawValue: "fixed")
+public enum DeepLVoiceSourceLanguageMode: String, Codable, Hashable, Sendable {
+  case auto = "auto"
+  case fixed = "fixed"
 }

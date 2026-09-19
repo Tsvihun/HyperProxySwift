@@ -11,26 +11,26 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsWorkflowPhoneNumberNodeModelOutput: Codable, Sendable {
-  public var customSipHeaders: [HyperProxyJSONValue]
+  public var customSipHeaders: [ElevenLabsWorkflowPhoneNumberNodeModelOutputCustomSipHeadersItem]
   public var edgeOrder: [String]
   public var position: ElevenLabsPositionOutput
-  public var postDialDigits: HyperProxyJSONValue?
+  public var postDialDigits: ElevenLabsWorkflowPhoneNumberNodeModelOutputPostDialDigitsAnyOf1?
   public var sipReferPlayDialtone: Bool
-  public var transferDestination: HyperProxyJSONValue
+  public var transferDestination: ElevenLabsWorkflowPhoneNumberNodeModelOutputTransferDestination
   public var transferType: ElevenLabsTransferTypeEnum
-  public var typeModel: String
+  public var kind: ElevenLabsPhoneNumberKind
   public var uui: ElevenLabsUUITransferConfig?
 
   public init(
-    customSipHeaders: [HyperProxyJSONValue],
+    customSipHeaders: [ElevenLabsWorkflowPhoneNumberNodeModelOutputCustomSipHeadersItem],
     edgeOrder: [String],
     position: ElevenLabsPositionOutput,
-    postDialDigits: HyperProxyJSONValue?,
+    postDialDigits: ElevenLabsWorkflowPhoneNumberNodeModelOutputPostDialDigitsAnyOf1?,
     sipReferPlayDialtone: Bool,
-    transferDestination: HyperProxyJSONValue,
+    transferDestination: ElevenLabsWorkflowPhoneNumberNodeModelOutputTransferDestination,
     transferType: ElevenLabsTransferTypeEnum,
-    typeModel: String,
-    uui: ElevenLabsUUITransferConfig?
+    uui: ElevenLabsUUITransferConfig?,
+    kind: ElevenLabsPhoneNumberKind = .phoneNumber
   ) {
     self.customSipHeaders = customSipHeaders
     self.edgeOrder = edgeOrder
@@ -39,7 +39,7 @@ public struct ElevenLabsWorkflowPhoneNumberNodeModelOutput: Codable, Sendable {
     self.sipReferPlayDialtone = sipReferPlayDialtone
     self.transferDestination = transferDestination
     self.transferType = transferType
-    self.typeModel = typeModel
+    self.kind = kind
     self.uui = uui
   }
 
@@ -51,7 +51,7 @@ public struct ElevenLabsWorkflowPhoneNumberNodeModelOutput: Codable, Sendable {
     case sipReferPlayDialtone = "sip_refer_play_dialtone"
     case transferDestination = "transfer_destination"
     case transferType = "transfer_type"
-    case typeModel = "type"
+    case kind = "type"
     case uui
   }
 }

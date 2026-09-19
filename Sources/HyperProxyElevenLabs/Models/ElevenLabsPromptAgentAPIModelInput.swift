@@ -11,10 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsPromptAgentAPIModelInput: Codable, Sendable {
-  public var backupLlmConfig: HyperProxyJSONValue?
+  public var backupLlmConfig: ElevenLabsPromptAgentAPIModelInputBackupLlmConfig?
   public var builtInTools: ElevenLabsBuiltInToolsInput?
   public var cascadeTimeoutSeconds: Double?
   public var customLlm: ElevenLabsCustomLLM?
+  public var enableParallelToolCalls: Bool?
   public var enableReasoningSummary: Bool?
   public var ignoreDefaultPersonality: Bool?
   public var knowledgeBase: [ElevenLabsKnowledgeBaseLocator]?
@@ -29,13 +30,14 @@ public struct ElevenLabsPromptAgentAPIModelInput: Codable, Sendable {
   public var thinkingBudget: Int?
   public var timezone: String?
   public var toolIds: [String]?
-  public var tools: [HyperProxyJSONValue]?
+  public var tools: [ElevenLabsPromptAgentAPIModelInputToolsItem]?
 
   public init(
-    backupLlmConfig: HyperProxyJSONValue? = nil,
+    backupLlmConfig: ElevenLabsPromptAgentAPIModelInputBackupLlmConfig? = nil,
     builtInTools: ElevenLabsBuiltInToolsInput? = nil,
     cascadeTimeoutSeconds: Double? = nil,
     customLlm: ElevenLabsCustomLLM? = nil,
+    enableParallelToolCalls: Bool? = nil,
     enableReasoningSummary: Bool? = nil,
     ignoreDefaultPersonality: Bool? = nil,
     knowledgeBase: [ElevenLabsKnowledgeBaseLocator]? = nil,
@@ -50,12 +52,13 @@ public struct ElevenLabsPromptAgentAPIModelInput: Codable, Sendable {
     thinkingBudget: Int? = nil,
     timezone: String? = nil,
     toolIds: [String]? = nil,
-    tools: [HyperProxyJSONValue]? = nil
+    tools: [ElevenLabsPromptAgentAPIModelInputToolsItem]? = nil
   ) {
     self.backupLlmConfig = backupLlmConfig
     self.builtInTools = builtInTools
     self.cascadeTimeoutSeconds = cascadeTimeoutSeconds
     self.customLlm = customLlm
+    self.enableParallelToolCalls = enableParallelToolCalls
     self.enableReasoningSummary = enableReasoningSummary
     self.ignoreDefaultPersonality = ignoreDefaultPersonality
     self.knowledgeBase = knowledgeBase
@@ -78,6 +81,7 @@ public struct ElevenLabsPromptAgentAPIModelInput: Codable, Sendable {
     case builtInTools = "built_in_tools"
     case cascadeTimeoutSeconds = "cascade_timeout_seconds"
     case customLlm = "custom_llm"
+    case enableParallelToolCalls = "enable_parallel_tool_calls"
     case enableReasoningSummary = "enable_reasoning_summary"
     case ignoreDefaultPersonality = "ignore_default_personality"
     case knowledgeBase = "knowledge_base"

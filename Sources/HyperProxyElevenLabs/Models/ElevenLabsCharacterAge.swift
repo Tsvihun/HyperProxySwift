@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsCharacterAge: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let young = Self(rawValue: "young")
-  public static let middleAged = Self(rawValue: "middle_aged")
-  public static let old = Self(rawValue: "old")
+public enum ElevenLabsCharacterAge: String, Codable, Hashable, Sendable {
+  case young = "young"
+  case middleAged = "middle_aged"
+  case old = "old"
 }

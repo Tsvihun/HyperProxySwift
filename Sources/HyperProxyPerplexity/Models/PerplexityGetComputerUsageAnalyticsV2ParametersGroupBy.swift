@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct PerplexityGetComputerUsageAnalyticsV2ParametersGroupBy: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum PerplexityGetComputerUsageAnalyticsV2ParametersGroupBy: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let userEmail = Self(rawValue: "user_email")
+  case userEmail = "user_email"
 }

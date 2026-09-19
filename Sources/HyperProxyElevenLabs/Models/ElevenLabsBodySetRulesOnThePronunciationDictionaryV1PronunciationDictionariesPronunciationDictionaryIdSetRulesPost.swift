@@ -14,10 +14,12 @@ public struct
   ElevenLabsBodySetRulesOnThePronunciationDictionaryV1PronunciationDictionariesPronunciationDictionaryIdSetRulesPost:
     Codable, Sendable
 {
-  public var rules: [HyperProxyJSONValue]
+  public var rules:
+    [ElevenLabsBodySetRulesOnThePronunciationDictionaryV1PronunciationDictionariesPronunciationDictionaryIdSetRulesPostRulesItem]
 
   public init(
-    rules: [HyperProxyJSONValue]
+    rules:
+      [ElevenLabsBodySetRulesOnThePronunciationDictionaryV1PronunciationDictionariesPronunciationDictionaryIdSetRulesPostRulesItem]
   ) {
     self.rules = rules
   }

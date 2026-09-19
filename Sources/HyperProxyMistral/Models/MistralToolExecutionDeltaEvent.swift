@@ -14,24 +14,24 @@ public struct MistralToolExecutionDeltaEvent: Codable, Sendable {
   public var arguments: String
   public var createdAt: String?
   public var id: String
-  public var name: HyperProxyJSONValue
+  public var name: MistralToolExecutionDeltaEventName
   public var outputIndex: Int?
-  public var typeModel: String?
+  public var kind: MistralToolExecutionDeltaKind?
 
   public init(
     arguments: String,
     id: String,
-    name: HyperProxyJSONValue,
+    name: MistralToolExecutionDeltaEventName,
     createdAt: String? = nil,
     outputIndex: Int? = nil,
-    typeModel: String? = nil
+    kind: MistralToolExecutionDeltaKind? = nil
   ) {
     self.arguments = arguments
     self.createdAt = createdAt
     self.id = id
     self.name = name
     self.outputIndex = outputIndex
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct MistralToolExecutionDeltaEvent: Codable, Sendable {
     case id
     case name
     case outputIndex = "output_index"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

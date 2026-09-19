@@ -16,12 +16,12 @@ public struct OpenAIMcpTransportConfigParamStdio: Codable, Sendable {
   public var cwd: String
   public var env: [String: String]?
   public var envVars: [String]?
-  public var typeModel: OpenAIMcpTransportConfigParamStdioTypeModel
+  public var kind: OpenAIMcpTransportConfigParamStdioKind
 
   public init(
     command: String,
     cwd: String,
-    typeModel: OpenAIMcpTransportConfigParamStdioTypeModel,
+    kind: OpenAIMcpTransportConfigParamStdioKind,
     args: [String]? = nil,
     env: [String: String]? = nil,
     envVars: [String]? = nil
@@ -31,7 +31,7 @@ public struct OpenAIMcpTransportConfigParamStdio: Codable, Sendable {
     self.cwd = cwd
     self.env = env
     self.envVars = envVars
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIMcpTransportConfigParamStdio: Codable, Sendable {
     case cwd
     case env
     case envVars = "env_vars"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

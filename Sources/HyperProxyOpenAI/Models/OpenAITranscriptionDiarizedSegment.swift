@@ -16,7 +16,7 @@ public struct OpenAITranscriptionDiarizedSegment: Codable, Sendable {
   public var speaker: String
   public var start: Double
   public var text: String
-  public var typeModel: OpenAITranscriptionDiarizedSegmentTypeModel
+  public var kind: OpenAITranscriptionDiarizedSegmentKind
 
   public init(
     end: Double,
@@ -24,14 +24,14 @@ public struct OpenAITranscriptionDiarizedSegment: Codable, Sendable {
     speaker: String,
     start: Double,
     text: String,
-    typeModel: OpenAITranscriptionDiarizedSegmentTypeModel
+    kind: OpenAITranscriptionDiarizedSegmentKind
   ) {
     self.end = end
     self.id = id
     self.speaker = speaker
     self.start = start
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAITranscriptionDiarizedSegment: Codable, Sendable {
     case speaker
     case start
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

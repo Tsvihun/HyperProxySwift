@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterProviderSort: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let price = Self(rawValue: "price")
-  public static let throughput = Self(rawValue: "throughput")
-  public static let latency = Self(rawValue: "latency")
-  public static let exacto = Self(rawValue: "exacto")
+public enum OpenRouterProviderSort: String, Codable, Hashable, Sendable {
+  case price = "price"
+  case throughput = "throughput"
+  case latency = "latency"
+  case exacto = "exacto"
 }

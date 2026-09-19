@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIProjectModelPermissionsUpdateRequestMode: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let allowList = Self(rawValue: "allow_list")
-  public static let denyList = Self(rawValue: "deny_list")
+public enum OpenAIProjectModelPermissionsUpdateRequestMode: String, Codable, Hashable, Sendable {
+  case allowList = "allow_list"
+  case denyList = "deny_list"
 }

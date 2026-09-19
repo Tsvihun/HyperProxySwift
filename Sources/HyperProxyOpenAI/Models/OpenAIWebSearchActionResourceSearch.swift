@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenAIWebSearchActionResourceSearch: Codable, Sendable {
   public var queries: [String]
   public var query: String
-  public var typeModel: OpenAIWebSearchActionResourceSearchTypeModel
+  public var kind: OpenAIWebSearchActionResourceSearchKind
 
   public init(
     queries: [String],
     query: String,
-    typeModel: OpenAIWebSearchActionResourceSearchTypeModel
+    kind: OpenAIWebSearchActionResourceSearchKind
   ) {
     self.queries = queries
     self.query = query
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case queries
     case query
-    case typeModel = "type"
+    case kind = "type"
   }
 }

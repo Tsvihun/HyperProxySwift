@@ -14,10 +14,10 @@ public struct OpenAIRealtimeTurnDetectionAnyOf1OneOf2: Codable, Sendable {
   public var createResponse: Bool?
   public var eagerness: OpenAIRealtimeTurnDetectionAnyOf1OneOf2Eagerness?
   public var interruptResponse: Bool?
-  public var typeModel: String
+  public var kind: OpenAISemanticVadKind
 
   public init(
-    typeModel: String,
+    kind: OpenAISemanticVadKind = .semanticVad,
     createResponse: Bool? = nil,
     eagerness: OpenAIRealtimeTurnDetectionAnyOf1OneOf2Eagerness? = nil,
     interruptResponse: Bool? = nil
@@ -25,13 +25,13 @@ public struct OpenAIRealtimeTurnDetectionAnyOf1OneOf2: Codable, Sendable {
     self.createResponse = createResponse
     self.eagerness = eagerness
     self.interruptResponse = interruptResponse
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case createResponse = "create_response"
     case eagerness
     case interruptResponse = "interrupt_response"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

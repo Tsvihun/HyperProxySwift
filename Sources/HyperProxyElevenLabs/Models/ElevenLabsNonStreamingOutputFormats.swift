@@ -10,18 +10,12 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsNonStreamingOutputFormats: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let wav8000 = Self(rawValue: "wav_8000")
-  public static let wav16000 = Self(rawValue: "wav_16000")
-  public static let wav22050 = Self(rawValue: "wav_22050")
-  public static let wav24000 = Self(rawValue: "wav_24000")
-  public static let wav32000 = Self(rawValue: "wav_32000")
-  public static let wav44100 = Self(rawValue: "wav_44100")
-  public static let wav48000 = Self(rawValue: "wav_48000")
+public enum ElevenLabsNonStreamingOutputFormats: String, Codable, Hashable, Sendable {
+  case wav8000 = "wav_8000"
+  case wav16000 = "wav_16000"
+  case wav22050 = "wav_22050"
+  case wav24000 = "wav_24000"
+  case wav32000 = "wav_32000"
+  case wav44100 = "wav_44100"
+  case wav48000 = "wav_48000"
 }

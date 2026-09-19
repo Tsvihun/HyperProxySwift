@@ -15,20 +15,20 @@ public struct OpenAIFileSearchToolCall: Codable, Sendable {
   public var queries: [String]
   public var results: [OpenAIFileSearchToolCallResultsAnyOf1Item]?
   public var status: OpenAIFileSearchToolCallStatus
-  public var typeModel: OpenAIFileSearchToolCallTypeModel
+  public var kind: OpenAIFileSearchToolCallKind
 
   public init(
     id: String,
     queries: [String],
     status: OpenAIFileSearchToolCallStatus,
-    typeModel: OpenAIFileSearchToolCallTypeModel,
+    kind: OpenAIFileSearchToolCallKind,
     results: [OpenAIFileSearchToolCallResultsAnyOf1Item]? = nil
   ) {
     self.id = id
     self.queries = queries
     self.results = results
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIFileSearchToolCall: Codable, Sendable {
     case queries
     case results
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

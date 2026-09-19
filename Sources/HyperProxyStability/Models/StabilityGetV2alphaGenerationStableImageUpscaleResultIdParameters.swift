@@ -12,22 +12,18 @@ import HyperProxyCore
 
 public struct StabilityGetV2alphaGenerationStableImageUpscaleResultIdParameters: Codable, Sendable {
   public var accept: StabilityGetV2alphaGenerationStableImageUpscaleResultIdParametersAccept?
-  public var authorization: String
-  public var id: StabilityGenerationID
+  public var id: String
 
   public init(
-    authorization: String,
-    id: StabilityGenerationID,
+    id: String,
     accept: StabilityGetV2alphaGenerationStableImageUpscaleResultIdParametersAccept? = nil
   ) {
     self.accept = accept
-    self.authorization = authorization
     self.id = id
   }
 
   enum CodingKeys: String, CodingKey {
     case accept
-    case authorization
     case id
   }
 }

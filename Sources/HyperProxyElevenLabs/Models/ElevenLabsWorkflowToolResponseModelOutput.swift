@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsWorkflowToolResponseModelOutput: Codable, Sendable {
-  public var steps: [HyperProxyJSONValue]?
+  public var steps: [ElevenLabsWorkflowToolResponseModelOutputStepsItem]?
 
   public init(
-    steps: [HyperProxyJSONValue]? = nil
+    steps: [ElevenLabsWorkflowToolResponseModelOutputStepsItem]? = nil
   ) {
     self.steps = steps
   }

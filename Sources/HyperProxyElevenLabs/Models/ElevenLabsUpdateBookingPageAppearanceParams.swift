@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsUpdateBookingPageAppearanceParams: Codable, Sendable {
-  public var smbToolType: String?
+  public var smbToolType: ElevenLabsUpdateBookingPageAppearanceSmbToolType?
 
   public init(
-    smbToolType: String? = nil
+    smbToolType: ElevenLabsUpdateBookingPageAppearanceSmbToolType? = nil
   ) {
     self.smbToolType = smbToolType
   }

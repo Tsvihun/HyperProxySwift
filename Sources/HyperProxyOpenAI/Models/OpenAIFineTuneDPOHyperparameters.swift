@@ -11,16 +11,16 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIFineTuneDPOHyperparameters: Codable, Sendable {
-  public var batchSize: HyperProxyJSONValue?
-  public var beta: HyperProxyJSONValue?
-  public var learningRateMultiplier: HyperProxyJSONValue?
-  public var nEpochs: HyperProxyJSONValue?
+  public var batchSize: OpenAIFineTuneDPOHyperparametersBatchSize?
+  public var beta: OpenAIFineTuneDPOHyperparametersBeta?
+  public var learningRateMultiplier: OpenAIFineTuneDPOHyperparametersLearningRateMultiplier?
+  public var nEpochs: OpenAIFineTuneDPOHyperparametersNEpochs?
 
   public init(
-    batchSize: HyperProxyJSONValue? = nil,
-    beta: HyperProxyJSONValue? = nil,
-    learningRateMultiplier: HyperProxyJSONValue? = nil,
-    nEpochs: HyperProxyJSONValue? = nil
+    batchSize: OpenAIFineTuneDPOHyperparametersBatchSize? = nil,
+    beta: OpenAIFineTuneDPOHyperparametersBeta? = nil,
+    learningRateMultiplier: OpenAIFineTuneDPOHyperparametersLearningRateMultiplier? = nil,
+    nEpochs: OpenAIFineTuneDPOHyperparametersNEpochs? = nil
   ) {
     self.batchSize = batchSize
     self.beta = beta

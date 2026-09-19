@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesDatesAndTimesDatesInNumericalForm: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesDatesAndTimesDatesInNumericalForm: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useDdHyphenMmHyphenYyyy = Self(rawValue: "use_dd_hyphen_mm_hyphen_yyyy")
-  public static let useDdPeriodMmPeriodYyyy = Self(rawValue: "use_dd_period_mm_period_yyyy")
-  public static let useDdSlashMmSlashYyyy = Self(rawValue: "use_dd_slash_mm_slash_yyyy")
+  case useDdHyphenMmHyphenYyyy = "use_dd_hyphen_mm_hyphen_yyyy"
+  case useDdPeriodMmPeriodYyyy = "use_dd_period_mm_period_yyyy"
+  case useDdSlashMmSlashYyyy = "use_dd_slash_mm_slash_yyyy"
 }

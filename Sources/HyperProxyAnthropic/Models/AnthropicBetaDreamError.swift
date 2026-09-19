@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicBetaDreamError: Codable, Sendable {
   public var message: String
-  public var typeModel: String
+  public var kind: String
 
   public init(
     message: String,
-    typeModel: String
+    kind: String
   ) {
     self.message = message
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case message
-    case typeModel = "type"
+    case kind = "type"
   }
 }

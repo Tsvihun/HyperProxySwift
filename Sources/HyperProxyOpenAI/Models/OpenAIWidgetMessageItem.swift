@@ -15,7 +15,7 @@ public struct OpenAIWidgetMessageItem: Codable, Sendable {
   public var id: String
   public var object: OpenAIWidgetMessageItemObject
   public var threadId: String
-  public var typeModel: OpenAIWidgetMessageItemTypeModel
+  public var kind: OpenAIWidgetMessageItemKind
   public var widget: String
 
   public init(
@@ -23,14 +23,14 @@ public struct OpenAIWidgetMessageItem: Codable, Sendable {
     id: String,
     object: OpenAIWidgetMessageItemObject,
     threadId: String,
-    typeModel: OpenAIWidgetMessageItemTypeModel,
+    kind: OpenAIWidgetMessageItemKind,
     widget: String
   ) {
     self.createdAt = createdAt
     self.id = id
     self.object = object
     self.threadId = threadId
-    self.typeModel = typeModel
+    self.kind = kind
     self.widget = widget
   }
 
@@ -39,7 +39,7 @@ public struct OpenAIWidgetMessageItem: Codable, Sendable {
     case id
     case object
     case threadId = "thread_id"
-    case typeModel = "type"
+    case kind = "type"
     case widget
   }
 }

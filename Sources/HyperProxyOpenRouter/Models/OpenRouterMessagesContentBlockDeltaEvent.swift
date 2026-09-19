@@ -11,23 +11,23 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterMessagesContentBlockDeltaEvent: Codable, Sendable {
-  public var delta: HyperProxyJSONValue
+  public var delta: OpenRouterMessagesContentBlockDeltaEventDelta
   public var index: Int
-  public var typeModel: OpenRouterMessagesContentBlockDeltaEventTypeModel
+  public var kind: OpenRouterMessagesContentBlockDeltaEventKind
 
   public init(
-    delta: HyperProxyJSONValue,
+    delta: OpenRouterMessagesContentBlockDeltaEventDelta,
     index: Int,
-    typeModel: OpenRouterMessagesContentBlockDeltaEventTypeModel
+    kind: OpenRouterMessagesContentBlockDeltaEventKind
   ) {
     self.delta = delta
     self.index = index
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case delta
     case index
-    case typeModel = "type"
+    case kind = "type"
   }
 }

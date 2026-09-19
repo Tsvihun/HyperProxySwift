@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'HyperProxyProviders'
-  s.version = '0.3.0'
+  s.version = '0.4.0'
   s.summary = 'Generated provider operation catalog for HyperProxySwift.'
   s.homepage = 'https://github.com/Tsvihun/HyperProxySwift'
   s.license = { :type => 'MIT' }
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.resource_bundles = {
     'HyperProxyProviders_Privacy' => ['Sources/HyperProxyProviders/Resources/PrivacyInfo.xcprivacy']
   }
-  s.dependency 'HyperProxyCore', '= 0.3.0'
+  s.dependency 'HyperProxyCore', '= 0.4.0'
   s.pod_target_xcconfig = {
     'DEFINES_MODULE' => 'YES',
     'SWIFT_STRICT_CONCURRENCY' => 'complete'

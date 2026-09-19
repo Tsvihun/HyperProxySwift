@@ -15,20 +15,20 @@ public struct MistralBaseFieldDefinition: Codable, Sendable {
   public var label: String
   public var name: String
   public var supportedOperators: [MistralBaseFieldDefinitionSupportedOperatorsItem]
-  public var typeModel: MistralBaseFieldDefinitionTypeModel
+  public var kind: MistralBaseFieldDefinitionKind
 
   public init(
     label: String,
     name: String,
     supportedOperators: [MistralBaseFieldDefinitionSupportedOperatorsItem],
-    typeModel: MistralBaseFieldDefinitionTypeModel,
+    kind: MistralBaseFieldDefinitionKind,
     group: String? = nil
   ) {
     self.group = group
     self.label = label
     self.name = name
     self.supportedOperators = supportedOperators
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct MistralBaseFieldDefinition: Codable, Sendable {
     case label
     case name
     case supportedOperators = "supported_operators"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

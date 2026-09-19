@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsWebhookEventType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let transcript = Self(rawValue: "transcript")
-  public static let audio = Self(rawValue: "audio")
-  public static let callInitiationFailure = Self(rawValue: "call_initiation_failure")
-  public static let answeringMachineDetection = Self(rawValue: "answering_machine_detection")
-  public static let unredactedTranscript = Self(rawValue: "unredacted_transcript")
-  public static let unredactedAudio = Self(rawValue: "unredacted_audio")
+public enum ElevenLabsWebhookEventType: String, Codable, Hashable, Sendable {
+  case transcript = "transcript"
+  case audio = "audio"
+  case callInitiationFailure = "call_initiation_failure"
+  case answeringMachineDetection = "answering_machine_detection"
+  case unredactedTranscript = "unredacted_transcript"
+  case unredactedAudio = "unredacted_audio"
 }

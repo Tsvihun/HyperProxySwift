@@ -14,24 +14,24 @@ public struct OpenRouterMessagesMessageParamContentAnyOf2ItemOneOf11: Codable, S
   public var cacheControl: OpenRouterAnthropicCacheControlDirective?
   public var content: String
   public var encryptedContent: String?
-  public var typeModel: OpenRouterMessagesMessageParamContentAnyOf2ItemOneOf11TypeModel
+  public var kind: OpenRouterMessagesMessageParamContentAnyOf2ItemOneOf11Kind
 
   public init(
     content: String,
-    typeModel: OpenRouterMessagesMessageParamContentAnyOf2ItemOneOf11TypeModel,
+    kind: OpenRouterMessagesMessageParamContentAnyOf2ItemOneOf11Kind,
     cacheControl: OpenRouterAnthropicCacheControlDirective? = nil,
     encryptedContent: String? = nil
   ) {
     self.cacheControl = cacheControl
     self.content = content
     self.encryptedContent = encryptedContent
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case cacheControl = "cache_control"
     case content
     case encryptedContent = "encrypted_content"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

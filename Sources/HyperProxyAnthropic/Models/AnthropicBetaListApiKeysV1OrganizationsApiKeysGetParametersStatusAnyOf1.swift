@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaListApiKeysV1OrganizationsApiKeysGetParametersStatusAnyOf1:
-  RawRepresentable, Codable, Hashable, Sendable
+public enum AnthropicBetaListApiKeysV1OrganizationsApiKeysGetParametersStatusAnyOf1: String,
+  Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let active = Self(rawValue: "active")
-  public static let archived = Self(rawValue: "archived")
-  public static let expired = Self(rawValue: "expired")
-  public static let inactive = Self(rawValue: "inactive")
+  case active = "active"
+  case archived = "archived"
+  case expired = "expired"
+  case inactive = "inactive"
 }

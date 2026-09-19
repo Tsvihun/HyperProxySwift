@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct GeminiListPermissionsResponse: Codable, Sendable {
   public var nextPageToken: String?
-  public var permissions: [HyperProxyJSONValue]?
+  public var permissions: [GeminiPermission]?
 
   public init(
     nextPageToken: String? = nil,
-    permissions: [HyperProxyJSONValue]? = nil
+    permissions: [GeminiPermission]? = nil
   ) {
     self.nextPageToken = nextPageToken
     self.permissions = permissions

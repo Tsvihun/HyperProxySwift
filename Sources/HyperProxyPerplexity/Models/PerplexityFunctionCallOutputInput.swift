@@ -14,15 +14,15 @@ public struct PerplexityFunctionCallOutputInput: Codable, Sendable {
   public var callId: String
   public var id: String?
   public var name: String?
-  public var output: HyperProxyJSONValue
+  public var output: PerplexityFunctionCallOutputInputOutput
   public var status: PerplexityFunctionCallOutputInputStatus?
   public var thoughtSignature: String?
-  public var typeModel: PerplexityFunctionCallOutputInputTypeModel
+  public var kind: PerplexityFunctionCallOutputInputKind
 
   public init(
     callId: String,
-    output: HyperProxyJSONValue,
-    typeModel: PerplexityFunctionCallOutputInputTypeModel,
+    output: PerplexityFunctionCallOutputInputOutput,
+    kind: PerplexityFunctionCallOutputInputKind,
     id: String? = nil,
     name: String? = nil,
     status: PerplexityFunctionCallOutputInputStatus? = nil,
@@ -34,7 +34,7 @@ public struct PerplexityFunctionCallOutputInput: Codable, Sendable {
     self.output = output
     self.status = status
     self.thoughtSignature = thoughtSignature
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct PerplexityFunctionCallOutputInput: Codable, Sendable {
     case output
     case status
     case thoughtSignature = "thought_signature"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

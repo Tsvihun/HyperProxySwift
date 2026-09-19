@@ -10,16 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct FalGetAssetLineageResponseLineageEdgesItemKind: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let inputTo = Self(rawValue: "input_to")
-  public static let generatedBy = Self(rawValue: "generated_by")
-  public static let referencedEntity = Self(rawValue: "referenced_entity")
+public enum FalGetAssetLineageResponseLineageEdgesItemKind: String, Codable, Hashable, Sendable {
+  case inputTo = "input_to"
+  case generatedBy = "generated_by"
+  case referencedEntity = "referenced_entity"
 }

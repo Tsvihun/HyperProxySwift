@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public enum MistralCompletionArgsStop: Codable, Sendable {
   case string(String)
-  case array([String])
+  case stringArray([String])
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -20,7 +20,7 @@ public enum MistralCompletionArgsStop: Codable, Sendable {
       self = .string(value)
       return
     }
-    self = .array(try container.decode([String].self))
+    self = .stringArray(try container.decode([String].self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -28,7 +28,7 @@ public enum MistralCompletionArgsStop: Codable, Sendable {
     switch self {
     case .string(let value):
       try container.encode(value)
-    case .array(let value):
+    case .stringArray(let value):
       try container.encode(value)
     }
   }
@@ -42,6 +42,6 @@ extension MistralCompletionArgsStop: ExpressibleByStringLiteral {
 
 extension MistralCompletionArgsStop: ExpressibleByArrayLiteral {
   public init(arrayLiteral elements: String...) {
-    self = .array(elements)
+    self = .stringArray(elements)
   }
 }

@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsASTLLMNodeInputOneOf1: Codable, Sendable {
-  public var typeModel: String?
+  public var kind: ElevenLabsLlmKind?
   public var valueSchema: ElevenLabsLLMLiteralJsonSchemaProperty
 
   public init(
     valueSchema: ElevenLabsLLMLiteralJsonSchemaProperty,
-    typeModel: String? = nil
+    kind: ElevenLabsLlmKind? = nil
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
     self.valueSchema = valueSchema
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
     case valueSchema = "value_schema"
   }
 }

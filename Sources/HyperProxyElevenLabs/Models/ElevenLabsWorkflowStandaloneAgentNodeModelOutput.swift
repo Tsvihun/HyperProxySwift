@@ -19,7 +19,7 @@ public struct ElevenLabsWorkflowStandaloneAgentNodeModelOutput: Codable, Sendabl
   public var position: ElevenLabsPositionOutput
   public var preserveClientTtsOverrides: Bool
   public var transferMessage: String?
-  public var typeModel: String
+  public var kind: ElevenLabsStandaloneAgentKind
 
   public init(
     agentId: String?,
@@ -30,7 +30,7 @@ public struct ElevenLabsWorkflowStandaloneAgentNodeModelOutput: Codable, Sendabl
     position: ElevenLabsPositionOutput,
     preserveClientTtsOverrides: Bool,
     transferMessage: String?,
-    typeModel: String
+    kind: ElevenLabsStandaloneAgentKind = .standaloneAgent
   ) {
     self.agentId = agentId
     self.delayMs = delayMs
@@ -40,7 +40,7 @@ public struct ElevenLabsWorkflowStandaloneAgentNodeModelOutput: Codable, Sendabl
     self.position = position
     self.preserveClientTtsOverrides = preserveClientTtsOverrides
     self.transferMessage = transferMessage
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -52,6 +52,6 @@ public struct ElevenLabsWorkflowStandaloneAgentNodeModelOutput: Codable, Sendabl
     case position
     case preserveClientTtsOverrides = "preserve_client_tts_overrides"
     case transferMessage = "transfer_message"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,13 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesPunctuationEmphasis: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useDoubleCornerBrackets = Self(rawValue: "use_double_corner_brackets")
+public enum DeepLConfiguredRulesPunctuationEmphasis: String, Codable, Hashable, Sendable {
+  case useDoubleCornerBrackets = "use_double_corner_brackets"
 }

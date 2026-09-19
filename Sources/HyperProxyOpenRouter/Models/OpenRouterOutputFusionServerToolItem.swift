@@ -19,11 +19,11 @@ public struct OpenRouterOutputFusionServerToolItem: Codable, Sendable {
   public var responses: [OpenRouterOutputFusionServerToolItemResponsesItem]?
   public var sources: [OpenRouterFusionSource]?
   public var status: OpenRouterToolCallStatus
-  public var typeModel: OpenRouterOutputFusionServerToolItemTypeModel
+  public var kind: OpenRouterOutputFusionServerToolItemKind
 
   public init(
     status: OpenRouterToolCallStatus,
-    typeModel: OpenRouterOutputFusionServerToolItemTypeModel,
+    kind: OpenRouterOutputFusionServerToolItemKind,
     analysis: OpenRouterFusionAnalysisResult? = nil,
     error: String? = nil,
     failedModels: [OpenRouterOutputFusionServerToolItemFailedModelsItem]? = nil,
@@ -40,7 +40,7 @@ public struct OpenRouterOutputFusionServerToolItem: Codable, Sendable {
     self.responses = responses
     self.sources = sources
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -52,6 +52,6 @@ public struct OpenRouterOutputFusionServerToolItem: Codable, Sendable {
     case responses
     case sources
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

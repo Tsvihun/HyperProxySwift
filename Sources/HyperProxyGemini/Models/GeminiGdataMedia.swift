@@ -14,18 +14,18 @@ public struct GeminiGdataMedia: Codable, Sendable {
   public var algorithm: String?
   public var bigstoreObjectRef: String?
   public var blobRef: String?
-  public var blobstore2Info: HyperProxyJSONValue?
-  public var compositeMedia: [HyperProxyJSONValue]?
+  public var blobstore2Info: GeminiBlobstore2Info?
+  public var compositeMedia: [GeminiCompositeMedia]?
   public var contentType: String?
-  public var contentTypeInfo: HyperProxyJSONValue?
+  public var contentTypeInfo: GeminiContentTypeInfo?
   public var cosmoBinaryReference: String?
   public var crc32cHash: Int?
-  public var diffChecksumsResponse: HyperProxyJSONValue?
-  public var diffDownloadResponse: HyperProxyJSONValue?
-  public var diffUploadRequest: HyperProxyJSONValue?
-  public var diffUploadResponse: HyperProxyJSONValue?
-  public var diffVersionResponse: HyperProxyJSONValue?
-  public var downloadParameters: HyperProxyJSONValue?
+  public var diffChecksumsResponse: GeminiDiffChecksumsResponse?
+  public var diffDownloadResponse: GeminiDiffDownloadResponse?
+  public var diffUploadRequest: GeminiDiffUploadRequest?
+  public var diffUploadResponse: GeminiDiffUploadResponse?
+  public var diffVersionResponse: GeminiDiffVersionResponse?
+  public var downloadParameters: GeminiDownloadParameters?
   public var filename: String?
   public var hash: String?
   public var hashVerified: Bool?
@@ -34,7 +34,7 @@ public struct GeminiGdataMedia: Codable, Sendable {
   public var length: String?
   public var md5Hash: String?
   public var mediaId: String?
-  public var objectId: HyperProxyJSONValue?
+  public var objectId: GeminiObjectId?
   public var path: String?
   public var referenceType: GeminiGdataMediaReferenceType?
   public var sha1Hash: String?
@@ -47,18 +47,18 @@ public struct GeminiGdataMedia: Codable, Sendable {
     algorithm: String? = nil,
     bigstoreObjectRef: String? = nil,
     blobRef: String? = nil,
-    blobstore2Info: HyperProxyJSONValue? = nil,
-    compositeMedia: [HyperProxyJSONValue]? = nil,
+    blobstore2Info: GeminiBlobstore2Info? = nil,
+    compositeMedia: [GeminiCompositeMedia]? = nil,
     contentType: String? = nil,
-    contentTypeInfo: HyperProxyJSONValue? = nil,
+    contentTypeInfo: GeminiContentTypeInfo? = nil,
     cosmoBinaryReference: String? = nil,
     crc32cHash: Int? = nil,
-    diffChecksumsResponse: HyperProxyJSONValue? = nil,
-    diffDownloadResponse: HyperProxyJSONValue? = nil,
-    diffUploadRequest: HyperProxyJSONValue? = nil,
-    diffUploadResponse: HyperProxyJSONValue? = nil,
-    diffVersionResponse: HyperProxyJSONValue? = nil,
-    downloadParameters: HyperProxyJSONValue? = nil,
+    diffChecksumsResponse: GeminiDiffChecksumsResponse? = nil,
+    diffDownloadResponse: GeminiDiffDownloadResponse? = nil,
+    diffUploadRequest: GeminiDiffUploadRequest? = nil,
+    diffUploadResponse: GeminiDiffUploadResponse? = nil,
+    diffVersionResponse: GeminiDiffVersionResponse? = nil,
+    downloadParameters: GeminiDownloadParameters? = nil,
     filename: String? = nil,
     hash: String? = nil,
     hashVerified: Bool? = nil,
@@ -67,7 +67,7 @@ public struct GeminiGdataMedia: Codable, Sendable {
     length: String? = nil,
     md5Hash: String? = nil,
     mediaId: String? = nil,
-    objectId: HyperProxyJSONValue? = nil,
+    objectId: GeminiObjectId? = nil,
     path: String? = nil,
     referenceType: GeminiGdataMediaReferenceType? = nil,
     sha1Hash: String? = nil,

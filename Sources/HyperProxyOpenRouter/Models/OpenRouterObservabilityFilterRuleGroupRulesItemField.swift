@@ -10,25 +10,19 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterObservabilityFilterRuleGroupRulesItemField: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum OpenRouterObservabilityFilterRuleGroupRulesItemField: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let model = Self(rawValue: "model")
-  public static let provider = Self(rawValue: "provider")
-  public static let sessionId = Self(rawValue: "session_id")
-  public static let userId = Self(rawValue: "user_id")
-  public static let apiKeyName = Self(rawValue: "api_key_name")
-  public static let finishReason = Self(rawValue: "finish_reason")
-  public static let input = Self(rawValue: "input")
-  public static let output = Self(rawValue: "output")
-  public static let totalCost = Self(rawValue: "total_cost")
-  public static let totalTokens = Self(rawValue: "total_tokens")
-  public static let promptTokens = Self(rawValue: "prompt_tokens")
-  public static let completionTokens = Self(rawValue: "completion_tokens")
+  case model = "model"
+  case provider = "provider"
+  case sessionId = "session_id"
+  case userId = "user_id"
+  case apiKeyName = "api_key_name"
+  case finishReason = "finish_reason"
+  case input = "input"
+  case output = "output"
+  case totalCost = "total_cost"
+  case totalTokens = "total_tokens"
+  case promptTokens = "prompt_tokens"
+  case completionTokens = "completion_tokens"
 }

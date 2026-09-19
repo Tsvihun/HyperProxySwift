@@ -11,27 +11,27 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterStreamEventsResponseOutputItemAdded: Codable, Sendable {
-  public var item: HyperProxyJSONValue
+  public var item: OpenRouterOutputItemAddedEventItem
   public var outputIndex: Int
   public var sequenceNumber: Int
-  public var typeModel: OpenRouterOutputItemAddedEventTypeModel
+  public var kind: OpenRouterOutputItemAddedEventKind
 
   public init(
-    item: HyperProxyJSONValue,
+    item: OpenRouterOutputItemAddedEventItem,
     outputIndex: Int,
     sequenceNumber: Int,
-    typeModel: OpenRouterOutputItemAddedEventTypeModel
+    kind: OpenRouterOutputItemAddedEventKind
   ) {
     self.item = item
     self.outputIndex = outputIndex
     self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case item
     case outputIndex = "output_index"
     case sequenceNumber = "sequence_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

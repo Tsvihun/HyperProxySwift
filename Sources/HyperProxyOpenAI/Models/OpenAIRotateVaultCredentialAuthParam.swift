@@ -13,6 +13,8 @@ import HyperProxyCore
 public enum OpenAIRotateVaultCredentialAuthParam: Codable, Sendable {
   case rotateVaultCredentialAuthParamMcpOauth(OpenAIRotateVaultCredentialAuthParamMcpOauth)
   case rotateVaultCredentialAuthParamStaticBearer(OpenAIRotateVaultCredentialAuthParamStaticBearer)
+  case rotateVaultCredentialAuthParamEnvironmentVariable(
+    OpenAIRotateVaultCredentialAuthParamEnvironmentVariable)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -20,8 +22,12 @@ public enum OpenAIRotateVaultCredentialAuthParam: Codable, Sendable {
       self = .rotateVaultCredentialAuthParamMcpOauth(value)
       return
     }
-    self = .rotateVaultCredentialAuthParamStaticBearer(
-      try container.decode(OpenAIRotateVaultCredentialAuthParamStaticBearer.self))
+    if let value = try? container.decode(OpenAIRotateVaultCredentialAuthParamStaticBearer.self) {
+      self = .rotateVaultCredentialAuthParamStaticBearer(value)
+      return
+    }
+    self = .rotateVaultCredentialAuthParamEnvironmentVariable(
+      try container.decode(OpenAIRotateVaultCredentialAuthParamEnvironmentVariable.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -30,6 +36,8 @@ public enum OpenAIRotateVaultCredentialAuthParam: Codable, Sendable {
     case .rotateVaultCredentialAuthParamMcpOauth(let value):
       try container.encode(value)
     case .rotateVaultCredentialAuthParamStaticBearer(let value):
+      try container.encode(value)
+    case .rotateVaultCredentialAuthParamEnvironmentVariable(let value):
       try container.encode(value)
     }
   }

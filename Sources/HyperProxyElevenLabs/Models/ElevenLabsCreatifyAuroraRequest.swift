@@ -15,14 +15,14 @@ public struct ElevenLabsCreatifyAuroraRequest: Codable, Sendable {
   public var audioGuidanceScale: Double?
   public var guidanceScale: Double?
   public var image: ElevenLabsImageReference
-  public var modelId: String
+  public var modelId: ElevenLabsCreatifyAuroraModelId
   public var resolution: ElevenLabsCreatifyAuroraRequestResolution?
   public var webhook: ElevenLabsWebhookTarget?
 
   public init(
     audio: ElevenLabsAudioReference,
     image: ElevenLabsImageReference,
-    modelId: String,
+    modelId: ElevenLabsCreatifyAuroraModelId = .creatifyAurora,
     audioGuidanceScale: Double? = nil,
     guidanceScale: Double? = nil,
     resolution: ElevenLabsCreatifyAuroraRequestResolution? = nil,

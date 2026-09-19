@@ -21,8 +21,8 @@ public struct GeminiTunedModel: Codable, Sendable {
   public var temperature: Double?
   public var topK: Int?
   public var topP: Double?
-  public var tunedModelSource: HyperProxyJSONValue?
-  public var tuningTask: HyperProxyJSONValue?
+  public var tunedModelSource: GeminiTunedModelSource?
+  public var tuningTask: GeminiTuningTask?
   public var updateTime: String?
 
   public init(
@@ -36,8 +36,8 @@ public struct GeminiTunedModel: Codable, Sendable {
     temperature: Double? = nil,
     topK: Int? = nil,
     topP: Double? = nil,
-    tunedModelSource: HyperProxyJSONValue? = nil,
-    tuningTask: HyperProxyJSONValue? = nil,
+    tunedModelSource: GeminiTunedModelSource? = nil,
+    tuningTask: GeminiTuningTask? = nil,
     updateTime: String? = nil
   ) {
     self.baseModel = baseModel

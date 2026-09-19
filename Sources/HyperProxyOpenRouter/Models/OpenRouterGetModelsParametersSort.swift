@@ -10,23 +10,17 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterGetModelsParametersSort: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mostPopular = Self(rawValue: "most-popular")
-  public static let newest = Self(rawValue: "newest")
-  public static let topWeekly = Self(rawValue: "top-weekly")
-  public static let pricingLowToHigh = Self(rawValue: "pricing-low-to-high")
-  public static let pricingHighToLow = Self(rawValue: "pricing-high-to-low")
-  public static let contextHighToLow = Self(rawValue: "context-high-to-low")
-  public static let throughputHighToLow = Self(rawValue: "throughput-high-to-low")
-  public static let latencyLowToHigh = Self(rawValue: "latency-low-to-high")
-  public static let intelligenceHighToLow = Self(rawValue: "intelligence-high-to-low")
-  public static let codingHighToLow = Self(rawValue: "coding-high-to-low")
-  public static let agenticHighToLow = Self(rawValue: "agentic-high-to-low")
-  public static let designArenaEloHighToLow = Self(rawValue: "design-arena-elo-high-to-low")
+public enum OpenRouterGetModelsParametersSort: String, Codable, Hashable, Sendable {
+  case mostPopular = "most-popular"
+  case newest = "newest"
+  case topWeekly = "top-weekly"
+  case pricingLowToHigh = "pricing-low-to-high"
+  case pricingHighToLow = "pricing-high-to-low"
+  case contextHighToLow = "context-high-to-low"
+  case throughputHighToLow = "throughput-high-to-low"
+  case latencyLowToHigh = "latency-low-to-high"
+  case intelligenceHighToLow = "intelligence-high-to-low"
+  case codingHighToLow = "coding-high-to-low"
+  case agenticHighToLow = "agentic-high-to-low"
+  case designArenaEloHighToLow = "design-arena-elo-high-to-low"
 }

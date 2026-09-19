@@ -14,24 +14,24 @@ public struct OpenRouterOutputItemWebSearchCallActionOneOf1: Codable, Sendable {
   public var queries: [String]?
   public var query: String
   public var sources: [OpenRouterWebSearchSource]?
-  public var typeModel: OpenRouterOutputItemWebSearchCallActionOneOf1TypeModel
+  public var kind: OpenRouterOutputItemWebSearchCallActionOneOf1Kind
 
   public init(
     query: String,
-    typeModel: OpenRouterOutputItemWebSearchCallActionOneOf1TypeModel,
+    kind: OpenRouterOutputItemWebSearchCallActionOneOf1Kind,
     queries: [String]? = nil,
     sources: [OpenRouterWebSearchSource]? = nil
   ) {
     self.queries = queries
     self.query = query
     self.sources = sources
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case queries
     case query
     case sources
-    case typeModel = "type"
+    case kind = "type"
   }
 }

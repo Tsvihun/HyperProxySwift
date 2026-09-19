@@ -18,12 +18,12 @@ public struct OpenAIBetaFunctionShellCallOutputItemParam: Codable, Sendable {
   public var maxOutputLength: Int?
   public var output: [OpenAIBetaFunctionShellCallOutputContentParam]
   public var status: OpenAIBetaFunctionShellCallItemStatus?
-  public var typeModel: OpenAIBetaFunctionShellCallOutputItemParamTypeModel
+  public var kind: OpenAIBetaFunctionShellCallOutputItemParamKind
 
   public init(
     callId: String,
     output: [OpenAIBetaFunctionShellCallOutputContentParam],
-    typeModel: OpenAIBetaFunctionShellCallOutputItemParamTypeModel,
+    kind: OpenAIBetaFunctionShellCallOutputItemParamKind,
     agent: OpenAIBetaAgentTagParam? = nil,
     caller: OpenAIBetaToolCallCallerParam? = nil,
     id: String? = nil,
@@ -37,7 +37,7 @@ public struct OpenAIBetaFunctionShellCallOutputItemParam: Codable, Sendable {
     self.maxOutputLength = maxOutputLength
     self.output = output
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct OpenAIBetaFunctionShellCallOutputItemParam: Codable, Sendable {
     case maxOutputLength = "max_output_length"
     case output
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

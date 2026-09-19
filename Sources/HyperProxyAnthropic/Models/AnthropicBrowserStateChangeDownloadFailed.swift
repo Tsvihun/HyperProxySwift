@@ -13,25 +13,25 @@ import HyperProxyCore
 public struct AnthropicBrowserStateChangeDownloadFailed: Codable, Sendable {
   public var downloadId: String
   public var error: String?
-  public var typeModel: String
+  public var kind: AnthropicDownloadFailedKind
   public var url: String
 
   public init(
     downloadId: String,
-    typeModel: String,
     url: String,
+    kind: AnthropicDownloadFailedKind = .downloadFailed,
     error: String? = nil
   ) {
     self.downloadId = downloadId
     self.error = error
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
   enum CodingKeys: String, CodingKey {
     case downloadId = "download_id"
     case error
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

@@ -17,7 +17,7 @@ public struct OpenRouterBaseAnnotationAddedEvent: Codable, Sendable {
   public var itemId: String
   public var outputIndex: Int
   public var sequenceNumber: Int
-  public var typeModel: OpenRouterBaseAnnotationAddedEventTypeModel
+  public var kind: OpenRouterBaseAnnotationAddedEventKind
 
   public init(
     annotation: OpenRouterOpenAIResponsesAnnotation,
@@ -26,7 +26,7 @@ public struct OpenRouterBaseAnnotationAddedEvent: Codable, Sendable {
     itemId: String,
     outputIndex: Int,
     sequenceNumber: Int,
-    typeModel: OpenRouterBaseAnnotationAddedEventTypeModel
+    kind: OpenRouterBaseAnnotationAddedEventKind
   ) {
     self.annotation = annotation
     self.annotationIndex = annotationIndex
@@ -34,7 +34,7 @@ public struct OpenRouterBaseAnnotationAddedEvent: Codable, Sendable {
     self.itemId = itemId
     self.outputIndex = outputIndex
     self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenRouterBaseAnnotationAddedEvent: Codable, Sendable {
     case itemId = "item_id"
     case outputIndex = "output_index"
     case sequenceNumber = "sequence_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

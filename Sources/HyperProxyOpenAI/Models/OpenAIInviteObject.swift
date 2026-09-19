@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIInviteObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let organizationInvite = Self(rawValue: "organization.invite")
+public enum OpenAIInviteObject: String, Codable, Hashable, Sendable {
+  case organizationInvite = "organization.invite"
 }

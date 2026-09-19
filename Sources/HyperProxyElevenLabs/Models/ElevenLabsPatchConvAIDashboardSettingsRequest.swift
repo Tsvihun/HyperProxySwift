@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsPatchConvAIDashboardSettingsRequest: Codable, Sendable {
-  public var charts: [HyperProxyJSONValue]?
+  public var charts: [ElevenLabsPatchConvAIDashboardSettingsRequestChartsItem]?
 
   public init(
-    charts: [HyperProxyJSONValue]? = nil
+    charts: [ElevenLabsPatchConvAIDashboardSettingsRequestChartsItem]? = nil
   ) {
     self.charts = charts
   }

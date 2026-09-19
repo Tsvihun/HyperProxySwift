@@ -10,14 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherDEShadowExperimentState: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let sHADOWEXPERIMENTSTATEACTIVE = Self(rawValue: "SHADOW_EXPERIMENT_STATE_ACTIVE")
-  public static let sHADOWEXPERIMENTSTATEINACTIVE = Self(
-    rawValue: "SHADOW_EXPERIMENT_STATE_INACTIVE")
+public enum TogetherDEShadowExperimentState: String, Codable, Hashable, Sendable {
+  case sHADOWEXPERIMENTSTATEACTIVE = "SHADOW_EXPERIMENT_STATE_ACTIVE"
+  case sHADOWEXPERIMENTSTATEINACTIVE = "SHADOW_EXPERIMENT_STATE_INACTIVE"
 }

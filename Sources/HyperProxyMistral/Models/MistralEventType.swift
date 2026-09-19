@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralEventType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let eVENT = Self(rawValue: "EVENT")
-  public static let eVENTPROGRESS = Self(rawValue: "EVENT_PROGRESS")
+public enum MistralEventType: String, Codable, Hashable, Sendable {
+  case eVENT = "EVENT"
+  case eVENTPROGRESS = "EVENT_PROGRESS"
 }

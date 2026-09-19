@@ -10,4 +10,32 @@
 import Foundation
 import HyperProxyCore
 
-public typealias TogetherPostFineTunesEstimatePriceResponseOneOf1EstimationAvailable = Bool
+public enum TogetherPostFineTunesEstimatePriceResponseOneOf1EstimationAvailable: Codable, Sendable {
+  case booleanTrue
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(Bool.self) {
+      switch value {
+      case true:
+        self = .booleanTrue
+        return
+      default:
+        break
+      }
+    }
+    throw DecodingError.dataCorruptedError(
+      in: container,
+      debugDescription:
+        "Expected a documented TogetherPostFineTunesEstimatePriceResponseOneOf1EstimationAvailable value."
+    )
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .booleanTrue:
+      try container.encode(true)
+    }
+  }
+}

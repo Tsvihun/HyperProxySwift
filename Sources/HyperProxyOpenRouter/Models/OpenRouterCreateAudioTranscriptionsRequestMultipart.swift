@@ -15,25 +15,34 @@ public struct OpenRouterCreateAudioTranscriptionsRequestMultipart: Codable, Send
   public var language: String?
   public var model: String
   public var responseFormat: OpenRouterCreateAudioTranscriptionsRequestMultipartResponseFormat?
+  public var sessionId: String?
   public var temperature: Double?
   public var timestampGranularities:
     [OpenRouterCreateAudioTranscriptionsRequestMultipartTimestampGranularitiesItem]?
+  public var trace: String?
+  public var user: String?
 
   public init(
     file: String,
     model: String,
     language: String? = nil,
     responseFormat: OpenRouterCreateAudioTranscriptionsRequestMultipartResponseFormat? = nil,
+    sessionId: String? = nil,
     temperature: Double? = nil,
     timestampGranularities:
-      [OpenRouterCreateAudioTranscriptionsRequestMultipartTimestampGranularitiesItem]? = nil
+      [OpenRouterCreateAudioTranscriptionsRequestMultipartTimestampGranularitiesItem]? = nil,
+    trace: String? = nil,
+    user: String? = nil
   ) {
     self.file = file
     self.language = language
     self.model = model
     self.responseFormat = responseFormat
+    self.sessionId = sessionId
     self.temperature = temperature
     self.timestampGranularities = timestampGranularities
+    self.trace = trace
+    self.user = user
   }
 
   enum CodingKeys: String, CodingKey {
@@ -41,7 +50,10 @@ public struct OpenRouterCreateAudioTranscriptionsRequestMultipart: Codable, Send
     case language
     case model
     case responseFormat = "response_format"
+    case sessionId = "session_id"
     case temperature
     case timestampGranularities = "timestamp_granularities[]"
+    case trace
+    case user
   }
 }

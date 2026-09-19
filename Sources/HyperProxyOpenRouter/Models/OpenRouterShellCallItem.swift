@@ -17,12 +17,12 @@ public struct OpenRouterShellCallItem: Codable, Sendable {
   public var environment: HyperProxyJSONValue?
   public var id: String?
   public var status: OpenRouterToolCallStatus?
-  public var typeModel: OpenRouterShellCallItemTypeModel
+  public var kind: OpenRouterShellCallItemKind
 
   public init(
     action: OpenRouterShellCallItemAction,
     callId: String,
-    typeModel: OpenRouterShellCallItemTypeModel,
+    kind: OpenRouterShellCallItemKind,
     arguments: String? = nil,
     environment: HyperProxyJSONValue? = nil,
     id: String? = nil,
@@ -34,7 +34,7 @@ public struct OpenRouterShellCallItem: Codable, Sendable {
     self.environment = environment
     self.id = id
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenRouterShellCallItem: Codable, Sendable {
     case environment
     case id
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

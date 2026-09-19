@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIRunStepDeltaObjectDelta: Codable, Sendable {
-  public var stepDetails: HyperProxyJSONValue?
+  public var stepDetails: OpenAIRunStepDeltaObjectDeltaStepDetails?
 
   public init(
-    stepDetails: HyperProxyJSONValue? = nil
+    stepDetails: OpenAIRunStepDeltaObjectDeltaStepDetails? = nil
   ) {
     self.stepDetails = stepDetails
   }

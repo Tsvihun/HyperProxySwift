@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct ElevenLabsLLMLiteralJsonSchemaProperty: Codable, Sendable {
   public var description: String
   public var enumValue: [String]?
-  public var typeModel: HyperProxyJSONValue
+  public var kind: ElevenLabsLLMLiteralJsonSchemaPropertyKind
 
   public init(
     description: String,
-    typeModel: HyperProxyJSONValue,
+    kind: ElevenLabsLLMLiteralJsonSchemaPropertyKind,
     enumValue: [String]? = nil
   ) {
     self.description = description
     self.enumValue = enumValue
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case description
     case enumValue = "enum"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

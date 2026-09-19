@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsExternalSyncJobType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let full = Self(rawValue: "full")
-  public static let incremental = Self(rawValue: "incremental")
+public enum ElevenLabsExternalSyncJobType: String, Codable, Hashable, Sendable {
+  case full = "full"
+  case incremental = "incremental"
 }

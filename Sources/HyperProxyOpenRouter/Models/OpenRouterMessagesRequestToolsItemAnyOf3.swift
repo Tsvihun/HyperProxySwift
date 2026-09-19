@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenRouterMessagesRequestToolsItemAnyOf3: Codable, Sendable {
   public var cacheControl: OpenRouterAnthropicCacheControlDirective?
   public var name: OpenRouterMessagesRequestToolsItemAnyOf3Name
-  public var typeModel: OpenRouterMessagesRequestToolsItemAnyOf3TypeModel
+  public var kind: OpenRouterMessagesRequestToolsItemAnyOf3Kind
 
   public init(
     name: OpenRouterMessagesRequestToolsItemAnyOf3Name,
-    typeModel: OpenRouterMessagesRequestToolsItemAnyOf3TypeModel,
+    kind: OpenRouterMessagesRequestToolsItemAnyOf3Kind,
     cacheControl: OpenRouterAnthropicCacheControlDirective? = nil
   ) {
     self.cacheControl = cacheControl
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case cacheControl = "cache_control"
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

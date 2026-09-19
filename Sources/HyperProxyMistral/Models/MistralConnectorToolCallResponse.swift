@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralConnectorToolCallResponse: Codable, Sendable {
-  public var content: [HyperProxyJSONValue]
+  public var content: [MistralConnectorToolCallResponseContentItem]
   public var metadata: MistralConnectorToolCallMetadata?
 
   public init(
-    content: [HyperProxyJSONValue],
+    content: [MistralConnectorToolCallResponseContentItem],
     metadata: MistralConnectorToolCallMetadata? = nil
   ) {
     self.content = content

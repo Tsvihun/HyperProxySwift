@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct OpenAILiveSessionResourceParam: Codable, Sendable {
   public var audio: OpenAILiveInitialSessionAudioParam?
   public var client: OpenAILiveClientConfigParam?
-  public var delegation: HyperProxyJSONValue?
+  public var delegation: OpenAILiveSessionResourceParamDelegationAnyOf1?
   public var expiresAt: Int
   public var id: String
   public var input: [OpenAILiveInitialItem]?
@@ -29,7 +29,7 @@ public struct OpenAILiveSessionResourceParam: Codable, Sendable {
     status: OpenAILiveSessionResourceParamStatus,
     audio: OpenAILiveInitialSessionAudioParam? = nil,
     client: OpenAILiveClientConfigParam? = nil,
-    delegation: HyperProxyJSONValue? = nil,
+    delegation: OpenAILiveSessionResourceParamDelegationAnyOf1? = nil,
     input: [OpenAILiveInitialItem]? = nil,
     instructions: String? = nil,
     store: Bool? = nil

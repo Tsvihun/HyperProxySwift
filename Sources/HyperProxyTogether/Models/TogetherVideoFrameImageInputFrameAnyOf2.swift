@@ -10,14 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherVideoFrameImageInputFrameAnyOf2: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let first = Self(rawValue: "first")
-  public static let last = Self(rawValue: "last")
+public enum TogetherVideoFrameImageInputFrameAnyOf2: String, Codable, Hashable, Sendable {
+  case first = "first"
+  case last = "last"
 }

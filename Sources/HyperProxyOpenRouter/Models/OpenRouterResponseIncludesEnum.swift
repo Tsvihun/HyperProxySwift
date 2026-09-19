@@ -10,17 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterResponseIncludesEnum: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let fileSearchCallResults = Self(rawValue: "file_search_call.results")
-  public static let messageInputImageImageUrl = Self(rawValue: "message.input_image.image_url")
-  public static let computerCallOutputOutputImageUrl = Self(
-    rawValue: "computer_call_output.output.image_url")
-  public static let reasoningEncryptedContent = Self(rawValue: "reasoning.encrypted_content")
-  public static let codeInterpreterCallOutputs = Self(rawValue: "code_interpreter_call.outputs")
+public enum OpenRouterResponseIncludesEnum: String, Codable, Hashable, Sendable {
+  case fileSearchCallResults = "file_search_call.results"
+  case messageInputImageImageUrl = "message.input_image.image_url"
+  case computerCallOutputOutputImageUrl = "computer_call_output.output.image_url"
+  case reasoningEncryptedContent = "reasoning.encrypted_content"
+  case codeInterpreterCallOutputs = "code_interpreter_call.outputs"
 }

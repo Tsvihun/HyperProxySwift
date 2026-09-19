@@ -16,7 +16,7 @@ public struct ElevenLabsDependentAvailableAgentIdentifier: Codable, Sendable {
   public var id: String
   public var name: String
   public var referencedResourceIds: [String]?
-  public var typeModel: String?
+  public var kind: ElevenLabsAvailableKind?
 
   public init(
     accessLevel: ElevenLabsDependentAvailableAgentIdentifierAccessLevel,
@@ -24,14 +24,14 @@ public struct ElevenLabsDependentAvailableAgentIdentifier: Codable, Sendable {
     id: String,
     name: String,
     referencedResourceIds: [String]? = nil,
-    typeModel: String? = nil
+    kind: ElevenLabsAvailableKind? = nil
   ) {
     self.accessLevel = accessLevel
     self.createdAtUnixSecs = createdAtUnixSecs
     self.id = id
     self.name = name
     self.referencedResourceIds = referencedResourceIds
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct ElevenLabsDependentAvailableAgentIdentifier: Codable, Sendable {
     case id
     case name
     case referencedResourceIds = "referenced_resource_ids"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

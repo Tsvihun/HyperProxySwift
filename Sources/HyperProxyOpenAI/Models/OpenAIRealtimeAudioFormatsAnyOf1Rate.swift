@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIRealtimeAudioFormatsAnyOf1Rate: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: Int
-
-  public init(rawValue: Int) {
-    self.rawValue = rawValue
-  }
-
-  public static let value24000 = Self(rawValue: 24000)
+public enum OpenAIRealtimeAudioFormatsAnyOf1Rate: Int, Codable, Hashable, Sendable {
+  case value24000 = 24000
 }

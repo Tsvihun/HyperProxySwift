@@ -10,15 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIRealtimeTranscriptionSessionCreateRequestGAIncludeItem: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum OpenAIRealtimeTranscriptionSessionCreateRequestGAIncludeItem: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let itemInputAudioTranscriptionLogprobs = Self(
-    rawValue: "item.input_audio_transcription.logprobs")
+  case itemInputAudioTranscriptionLogprobs = "item.input_audio_transcription.logprobs"
 }

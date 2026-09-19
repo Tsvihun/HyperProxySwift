@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct FireworksAnthropicCacheControlEphemeral: Codable, Sendable {
   public var ttl: FireworksAnthropicCacheControlEphemeralTtl?
-  public var typeModel: String
+  public var kind: FireworksEphemeralKind
 
   public init(
-    typeModel: String,
+    kind: FireworksEphemeralKind = .ephemeral,
     ttl: FireworksAnthropicCacheControlEphemeralTtl? = nil
   ) {
     self.ttl = ttl
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case ttl
-    case typeModel = "type"
+    case kind = "type"
   }
 }

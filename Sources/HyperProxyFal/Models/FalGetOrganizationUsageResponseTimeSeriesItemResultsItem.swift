@@ -15,8 +15,12 @@ public struct FalGetOrganizationUsageResponseTimeSeriesItemResultsItem: Codable,
   public var authMethodStructured:
     FalGetOrganizationUsageResponseTimeSeriesItemResultsItemAuthMethodStructured?
   public var cost: Double
+  public var costDiscount: Double
+  public var costSubtotal: Double
+  public var costTotal: Double
   public var currency: String
   public var endpointId: String
+  public var percentDiscount: Double
   public var product: FalGetOrganizationUsageResponseTimeSeriesItemResultsItemProduct
   public var quantity: Double
   public var unit: String
@@ -25,8 +29,12 @@ public struct FalGetOrganizationUsageResponseTimeSeriesItemResultsItem: Codable,
 
   public init(
     cost: Double,
+    costDiscount: Double,
+    costSubtotal: Double,
+    costTotal: Double,
     currency: String,
     endpointId: String,
+    percentDiscount: Double,
     product: FalGetOrganizationUsageResponseTimeSeriesItemResultsItemProduct,
     quantity: Double,
     unit: String,
@@ -39,8 +47,12 @@ public struct FalGetOrganizationUsageResponseTimeSeriesItemResultsItem: Codable,
     self.authMethod = authMethod
     self.authMethodStructured = authMethodStructured
     self.cost = cost
+    self.costDiscount = costDiscount
+    self.costSubtotal = costSubtotal
+    self.costTotal = costTotal
     self.currency = currency
     self.endpointId = endpointId
+    self.percentDiscount = percentDiscount
     self.product = product
     self.quantity = quantity
     self.unit = unit
@@ -52,8 +64,12 @@ public struct FalGetOrganizationUsageResponseTimeSeriesItemResultsItem: Codable,
     case authMethod = "auth_method"
     case authMethodStructured = "auth_method_structured"
     case cost
+    case costDiscount = "cost_discount"
+    case costSubtotal = "cost_subtotal"
+    case costTotal = "cost_total"
     case currency
     case endpointId = "endpoint_id"
+    case percentDiscount = "percent_discount"
     case product
     case quantity
     case unit

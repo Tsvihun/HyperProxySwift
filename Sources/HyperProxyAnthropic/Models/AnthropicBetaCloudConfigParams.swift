@@ -11,23 +11,23 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaCloudConfigParams: Codable, Sendable {
-  public var networking: HyperProxyJSONValue?
+  public var networking: AnthropicBetaCloudConfigParamsNetworkingAnyOf1?
   public var packages: AnthropicBetaPackagesParams?
-  public var typeModel: String
+  public var kind: AnthropicCloudKind
 
   public init(
-    typeModel: String,
-    networking: HyperProxyJSONValue? = nil,
+    kind: AnthropicCloudKind = .cloud,
+    networking: AnthropicBetaCloudConfigParamsNetworkingAnyOf1? = nil,
     packages: AnthropicBetaPackagesParams? = nil
   ) {
     self.networking = networking
     self.packages = packages
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case networking
     case packages
-    case typeModel = "type"
+    case kind = "type"
   }
 }

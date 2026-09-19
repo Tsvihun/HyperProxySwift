@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralBuiltInConnectors: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let webSearch = Self(rawValue: "web_search")
-  public static let webSearchPremium = Self(rawValue: "web_search_premium")
-  public static let codeInterpreter = Self(rawValue: "code_interpreter")
-  public static let imageGeneration = Self(rawValue: "image_generation")
-  public static let documentLibrary = Self(rawValue: "document_library")
+public enum MistralBuiltInConnectors: String, Codable, Hashable, Sendable {
+  case webSearch = "web_search"
+  case webSearchPremium = "web_search_premium"
+  case codeInterpreter = "code_interpreter"
+  case imageGeneration = "image_generation"
+  case documentLibrary = "document_library"
 }

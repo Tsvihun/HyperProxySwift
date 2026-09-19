@@ -18,13 +18,13 @@ public struct OpenRouterReasoningDetailServerToolCall: Codable, Sendable {
   public var result: String
   public var toolCallId: String?
   public var toolName: String
-  public var typeModel: OpenRouterReasoningDetailServerToolCallTypeModel
+  public var kind: OpenRouterReasoningDetailServerToolCallKind
 
   public init(
     arguments: String,
     result: String,
     toolName: String,
-    typeModel: OpenRouterReasoningDetailServerToolCallTypeModel,
+    kind: OpenRouterReasoningDetailServerToolCallKind,
     format: OpenRouterReasoningFormat? = nil,
     id: String? = nil,
     index: Int? = nil,
@@ -37,7 +37,7 @@ public struct OpenRouterReasoningDetailServerToolCall: Codable, Sendable {
     self.result = result
     self.toolCallId = toolCallId
     self.toolName = toolName
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct OpenRouterReasoningDetailServerToolCall: Codable, Sendable {
     case result
     case toolCallId = "tool_call_id"
     case toolName = "tool_name"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

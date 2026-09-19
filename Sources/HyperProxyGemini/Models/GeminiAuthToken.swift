@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiAuthToken: Codable, Sendable {
-  public var bidiGenerateContentSetup: HyperProxyJSONValue?
+  public var bidiGenerateContentSetup: GeminiBidiGenerateContentSetup?
   public var expireTime: String?
   public var fieldMask: String?
   public var name: String?
@@ -19,7 +19,7 @@ public struct GeminiAuthToken: Codable, Sendable {
   public var uses: Int?
 
   public init(
-    bidiGenerateContentSetup: HyperProxyJSONValue? = nil,
+    bidiGenerateContentSetup: GeminiBidiGenerateContentSetup? = nil,
     expireTime: String? = nil,
     fieldMask: String? = nil,
     name: String? = nil,

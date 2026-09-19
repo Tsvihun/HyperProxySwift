@@ -15,20 +15,20 @@ public struct MistralTranscriptionStreamSegmentDelta: Codable, Sendable {
   public var speakerId: String?
   public var start: Double
   public var text: String
-  public var typeModel: String?
+  public var kind: MistralTranscriptionSegmentKind7d07e135?
 
   public init(
     end: Double,
     start: Double,
     text: String,
     speakerId: String? = nil,
-    typeModel: String? = nil
+    kind: MistralTranscriptionSegmentKind7d07e135? = nil
   ) {
     self.end = end
     self.speakerId = speakerId
     self.start = start
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct MistralTranscriptionStreamSegmentDelta: Codable, Sendable {
     case speakerId = "speaker_id"
     case start
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

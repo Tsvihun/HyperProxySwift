@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherDEShadowExperimentSamplingResponseOneOf2: Codable, Sendable {
-  public var keyBased: HyperProxyJSONValue
+  public var keyBased: TogetherDEShadowExperimentKeyBasedSamplingResponse
 
   public init(
-    keyBased: HyperProxyJSONValue
+    keyBased: TogetherDEShadowExperimentKeyBasedSamplingResponse
   ) {
     self.keyBased = keyBased
   }

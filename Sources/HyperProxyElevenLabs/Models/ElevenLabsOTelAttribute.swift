@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsOTelAttribute: Codable, Sendable {
   public var key: String
-  public var value: [String: HyperProxyJSONValue]
+  public var value: [String: ElevenLabsOTelAttributeValueValue]
 
   public init(
     key: String,
-    value: [String: HyperProxyJSONValue]
+    value: [String: ElevenLabsOTelAttributeValueValue]
   ) {
     self.key = key
     self.value = value

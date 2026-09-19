@@ -20,10 +20,10 @@ public struct OpenAIEnvironmentParamOpenaiHosted: Codable, Sendable {
   public var plugins: [OpenAIHostedPluginParam]?
   public var setupCommands: [OpenAISetupCommandParam]?
   public var skills: [OpenAIHostedSkillParam]?
-  public var typeModel: OpenAIEnvironmentParamOpenaiHostedTypeModel
+  public var kind: OpenAIEnvironmentParamOpenaiHostedKind
 
   public init(
-    typeModel: OpenAIEnvironmentParamOpenaiHostedTypeModel,
+    kind: OpenAIEnvironmentParamOpenaiHostedKind,
     capabilityDirectories: [String]? = nil,
     env: [String: String]? = nil,
     environmentTemplateId: String? = nil,
@@ -43,7 +43,7 @@ public struct OpenAIEnvironmentParamOpenaiHosted: Codable, Sendable {
     self.plugins = plugins
     self.setupCommands = setupCommands
     self.skills = skills
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -56,6 +56,6 @@ public struct OpenAIEnvironmentParamOpenaiHosted: Codable, Sendable {
     case plugins
     case setupCommands = "setup_commands"
     case skills
-    case typeModel = "type"
+    case kind = "type"
   }
 }

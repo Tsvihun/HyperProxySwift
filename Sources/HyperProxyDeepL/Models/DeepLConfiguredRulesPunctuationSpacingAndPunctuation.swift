@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesPunctuationSpacingAndPunctuation: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesPunctuationSpacingAndPunctuation: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let doNotUseSpace = Self(rawValue: "do_not_use_space")
-  public static let useRegularSpace = Self(rawValue: "use_regular_space")
+  case doNotUseSpace = "do_not_use_space"
+  case useRegularSpace = "use_regular_space"
 }

@@ -10,14 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAISpendLimitEnforcementStatusAnyOf2: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let inactive = Self(rawValue: "inactive")
-  public static let enforcing = Self(rawValue: "enforcing")
+public enum OpenAISpendLimitEnforcementStatusAnyOf2: String, Codable, Hashable, Sendable {
+  case inactive = "inactive"
+  case enforcing = "enforcing"
 }

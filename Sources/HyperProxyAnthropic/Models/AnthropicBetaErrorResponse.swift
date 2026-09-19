@@ -11,23 +11,23 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaErrorResponse: Codable, Sendable {
-  public var error: HyperProxyJSONValue
+  public var error: AnthropicBetaErrorResponseError
   public var requestId: String?
-  public var typeModel: String
+  public var kind: AnthropicErrorKind
 
   public init(
-    error: HyperProxyJSONValue,
+    error: AnthropicBetaErrorResponseError,
     requestId: String?,
-    typeModel: String
+    kind: AnthropicErrorKind = .error
   ) {
     self.error = error
     self.requestId = requestId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case error
     case requestId = "request_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

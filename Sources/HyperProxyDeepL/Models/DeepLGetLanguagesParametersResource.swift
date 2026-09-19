@@ -10,18 +10,12 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLGetLanguagesParametersResource: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let translateText = Self(rawValue: "translate_text")
-  public static let translateDocument = Self(rawValue: "translate_document")
-  public static let glossary = Self(rawValue: "glossary")
-  public static let voice = Self(rawValue: "voice")
-  public static let write = Self(rawValue: "write")
-  public static let styleRules = Self(rawValue: "style_rules")
-  public static let translationMemory = Self(rawValue: "translation_memory")
+public enum DeepLGetLanguagesParametersResource: String, Codable, Hashable, Sendable {
+  case translateText = "translate_text"
+  case translateDocument = "translate_document"
+  case glossary = "glossary"
+  case voice = "voice"
+  case write = "write"
+  case styleRules = "style_rules"
+  case translationMemory = "translation_memory"
 }

@@ -10,23 +10,17 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterQuantization: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let int4 = Self(rawValue: "int4")
-  public static let int8 = Self(rawValue: "int8")
-  public static let fp4 = Self(rawValue: "fp4")
-  public static let mxfp4 = Self(rawValue: "mxfp4")
-  public static let nvfp4 = Self(rawValue: "nvfp4")
-  public static let fp6 = Self(rawValue: "fp6")
-  public static let fp8 = Self(rawValue: "fp8")
-  public static let mxfp8 = Self(rawValue: "mxfp8")
-  public static let fp16 = Self(rawValue: "fp16")
-  public static let bf16 = Self(rawValue: "bf16")
-  public static let fp32 = Self(rawValue: "fp32")
-  public static let unknown = Self(rawValue: "unknown")
+public enum OpenRouterQuantization: String, Codable, Hashable, Sendable {
+  case int4 = "int4"
+  case int8 = "int8"
+  case fp4 = "fp4"
+  case mxfp4 = "mxfp4"
+  case nvfp4 = "nvfp4"
+  case fp6 = "fp6"
+  case fp8 = "fp8"
+  case mxfp8 = "mxfp8"
+  case fp16 = "fp16"
+  case bf16 = "bf16"
+  case fp32 = "fp32"
+  case unknown = "unknown"
 }

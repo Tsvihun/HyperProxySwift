@@ -10,18 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIUsageImagesParametersGroupByItem: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let projectId = Self(rawValue: "project_id")
-  public static let userId = Self(rawValue: "user_id")
-  public static let apiKeyId = Self(rawValue: "api_key_id")
-  public static let model = Self(rawValue: "model")
-  public static let size = Self(rawValue: "size")
-  public static let source = Self(rawValue: "source")
+public enum OpenAIUsageImagesParametersGroupByItem: String, Codable, Hashable, Sendable {
+  case projectId = "project_id"
+  case userId = "user_id"
+  case apiKeyId = "api_key_id"
+  case model = "model"
+  case size = "size"
+  case source = "source"
 }

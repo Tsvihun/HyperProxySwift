@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsCreateOAuth2ClientCredsRequest: Codable, Sendable {
-  public var authType: String?
+  public var authType: ElevenLabsOauth2ClientCredentialsAuthType?
   public var basicAuthInHeader: Bool?
   public var clientId: String
   public var clientSecret: String
@@ -28,7 +28,7 @@ public struct ElevenLabsCreateOAuth2ClientCredsRequest: Codable, Sendable {
     name: String,
     provider: String,
     tokenUrl: String,
-    authType: String? = nil,
+    authType: ElevenLabsOauth2ClientCredentialsAuthType? = nil,
     basicAuthInHeader: Bool? = nil,
     customHeaders: [String: String]? = nil,
     extraParams: [String: String]? = nil,

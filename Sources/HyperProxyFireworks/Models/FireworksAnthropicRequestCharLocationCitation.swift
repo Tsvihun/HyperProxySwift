@@ -16,7 +16,7 @@ public struct FireworksAnthropicRequestCharLocationCitation: Codable, Sendable {
   public var documentTitle: String?
   public var endCharIndex: Int
   public var startCharIndex: Int
-  public var typeModel: String
+  public var kind: FireworksCharLocationKind
 
   public init(
     citedText: String,
@@ -24,14 +24,14 @@ public struct FireworksAnthropicRequestCharLocationCitation: Codable, Sendable {
     documentTitle: String?,
     endCharIndex: Int,
     startCharIndex: Int,
-    typeModel: String
+    kind: FireworksCharLocationKind = .charLocation
   ) {
     self.citedText = citedText
     self.documentIndex = documentIndex
     self.documentTitle = documentTitle
     self.endCharIndex = endCharIndex
     self.startCharIndex = startCharIndex
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct FireworksAnthropicRequestCharLocationCitation: Codable, Sendable {
     case documentTitle = "document_title"
     case endCharIndex = "end_char_index"
     case startCharIndex = "start_char_index"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

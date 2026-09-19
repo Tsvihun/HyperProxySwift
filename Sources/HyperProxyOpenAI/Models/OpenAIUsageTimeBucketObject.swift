@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIUsageTimeBucketObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let bucket = Self(rawValue: "bucket")
+public enum OpenAIUsageTimeBucketObject: String, Codable, Hashable, Sendable {
+  case bucket = "bucket"
 }

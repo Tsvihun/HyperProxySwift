@@ -12,28 +12,28 @@ import HyperProxyCore
 
 public struct OpenAIMCPTool: Codable, Sendable {
   public var allowedCallers: [OpenAICallableToolAllowedCaller]?
-  public var allowedTools: HyperProxyJSONValue?
+  public var allowedTools: OpenAIMCPToolAllowedToolsAnyOf1?
   public var authorization: String?
   public var connectorId: OpenAIMCPToolConnectorId?
   public var deferLoading: Bool?
   public var headers: [String: String]?
-  public var requireApproval: HyperProxyJSONValue?
+  public var requireApproval: OpenAIMCPToolRequireApprovalAnyOf1?
   public var serverDescription: String?
   public var serverLabel: String
   public var serverUrl: String?
   public var tunnelId: String?
-  public var typeModel: OpenAIMCPToolTypeModel
+  public var kind: OpenAIMCPToolKind
 
   public init(
     serverLabel: String,
-    typeModel: OpenAIMCPToolTypeModel,
+    kind: OpenAIMCPToolKind,
     allowedCallers: [OpenAICallableToolAllowedCaller]? = nil,
-    allowedTools: HyperProxyJSONValue? = nil,
+    allowedTools: OpenAIMCPToolAllowedToolsAnyOf1? = nil,
     authorization: String? = nil,
     connectorId: OpenAIMCPToolConnectorId? = nil,
     deferLoading: Bool? = nil,
     headers: [String: String]? = nil,
-    requireApproval: HyperProxyJSONValue? = nil,
+    requireApproval: OpenAIMCPToolRequireApprovalAnyOf1? = nil,
     serverDescription: String? = nil,
     serverUrl: String? = nil,
     tunnelId: String? = nil
@@ -49,7 +49,7 @@ public struct OpenAIMCPTool: Codable, Sendable {
     self.serverLabel = serverLabel
     self.serverUrl = serverUrl
     self.tunnelId = tunnelId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -64,6 +64,6 @@ public struct OpenAIMCPTool: Codable, Sendable {
     case serverLabel = "server_label"
     case serverUrl = "server_url"
     case tunnelId = "tunnel_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

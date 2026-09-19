@@ -17,7 +17,7 @@ public struct AnthropicBetaAdvisorMessageIterationUsage: Codable, Sendable {
   public var inputTokens: Int
   public var model: AnthropicModel
   public var outputTokens: Int
-  public var typeModel: String
+  public var kind: AnthropicAdvisorMessageKind
 
   public init(
     cacheCreation: AnthropicBetaCacheCreation?,
@@ -26,7 +26,7 @@ public struct AnthropicBetaAdvisorMessageIterationUsage: Codable, Sendable {
     inputTokens: Int,
     model: AnthropicModel,
     outputTokens: Int,
-    typeModel: String
+    kind: AnthropicAdvisorMessageKind = .advisorMessage
   ) {
     self.cacheCreation = cacheCreation
     self.cacheCreationInputTokens = cacheCreationInputTokens
@@ -34,7 +34,7 @@ public struct AnthropicBetaAdvisorMessageIterationUsage: Codable, Sendable {
     self.inputTokens = inputTokens
     self.model = model
     self.outputTokens = outputTokens
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct AnthropicBetaAdvisorMessageIterationUsage: Codable, Sendable {
     case inputTokens = "input_tokens"
     case model
     case outputTokens = "output_tokens"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

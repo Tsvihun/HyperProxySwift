@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsTurnModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let turnV2 = Self(rawValue: "turn_v2")
-  public static let turnV3 = Self(rawValue: "turn_v3")
+public enum ElevenLabsTurnModel: String, Codable, Hashable, Sendable {
+  case turnV2 = "turn_v2"
+  case turnV3 = "turn_v3"
 }

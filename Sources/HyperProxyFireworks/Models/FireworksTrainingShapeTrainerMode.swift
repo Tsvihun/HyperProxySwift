@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksTrainingShapeTrainerMode: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let tRAINERMODEUNSPECIFIED = Self(rawValue: "TRAINER_MODE_UNSPECIFIED")
-  public static let pOLICYTRAINER = Self(rawValue: "POLICY_TRAINER")
-  public static let fORWARDONLY = Self(rawValue: "FORWARD_ONLY")
-  public static let lORATRAINER = Self(rawValue: "LORA_TRAINER")
+public enum FireworksTrainingShapeTrainerMode: String, Codable, Hashable, Sendable {
+  case tRAINERMODEUNSPECIFIED = "TRAINER_MODE_UNSPECIFIED"
+  case pOLICYTRAINER = "POLICY_TRAINER"
+  case fORWARDONLY = "FORWARD_ONLY"
+  case lORATRAINER = "LORA_TRAINER"
 }

@@ -15,20 +15,20 @@ public struct OpenAIWebhookBatchCancelled: Codable, Sendable {
   public var data: OpenAIWebhookBatchCancelledData
   public var id: String
   public var object: OpenAIWebhookBatchCancelledObject?
-  public var typeModel: OpenAIWebhookBatchCancelledTypeModel
+  public var kind: OpenAIWebhookBatchCancelledKind
 
   public init(
     createdAt: Int,
     data: OpenAIWebhookBatchCancelledData,
     id: String,
-    typeModel: OpenAIWebhookBatchCancelledTypeModel,
+    kind: OpenAIWebhookBatchCancelledKind,
     object: OpenAIWebhookBatchCancelledObject? = nil
   ) {
     self.createdAt = createdAt
     self.data = data
     self.id = id
     self.object = object
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIWebhookBatchCancelled: Codable, Sendable {
     case data
     case id
     case object
-    case typeModel = "type"
+    case kind = "type"
   }
 }

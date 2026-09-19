@@ -12,10 +12,10 @@ import HyperProxyCore
 
 public struct OpenAICreateSkillVersionBody: Codable, Sendable {
   public var defaultValue: Bool?
-  public var files: HyperProxyJSONValue
+  public var files: OpenAICreateSkillVersionBodyFiles
 
   public init(
-    files: HyperProxyJSONValue,
+    files: OpenAICreateSkillVersionBodyFiles,
     defaultValue: Bool? = nil
   ) {
     self.defaultValue = defaultValue

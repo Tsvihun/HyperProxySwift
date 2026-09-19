@@ -10,19 +10,13 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIFilePurpose: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let assistants = Self(rawValue: "assistants")
-  public static let assistantsOutput = Self(rawValue: "assistants_output")
-  public static let batch = Self(rawValue: "batch")
-  public static let batchOutput = Self(rawValue: "batch_output")
-  public static let fineTune = Self(rawValue: "fine-tune")
-  public static let fineTuneResults = Self(rawValue: "fine-tune-results")
-  public static let vision = Self(rawValue: "vision")
-  public static let userData = Self(rawValue: "user_data")
+public enum OpenAIFilePurpose: String, Codable, Hashable, Sendable {
+  case assistants = "assistants"
+  case assistantsOutput = "assistants_output"
+  case batch = "batch"
+  case batchOutput = "batch_output"
+  case fineTune = "fine-tune"
+  case fineTuneResults = "fine-tune-results"
+  case vision = "vision"
+  case userData = "user_data"
 }

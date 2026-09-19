@@ -20,7 +20,7 @@ public struct OpenAIClientToolCallItem: Codable, Sendable {
   public var output: String?
   public var status: OpenAIClientToolCallStatus
   public var threadId: String
-  public var typeModel: OpenAIClientToolCallItemTypeModel
+  public var kind: OpenAIClientToolCallItemKind
 
   public init(
     arguments: String,
@@ -32,7 +32,7 @@ public struct OpenAIClientToolCallItem: Codable, Sendable {
     output: String?,
     status: OpenAIClientToolCallStatus,
     threadId: String,
-    typeModel: OpenAIClientToolCallItemTypeModel
+    kind: OpenAIClientToolCallItemKind
   ) {
     self.arguments = arguments
     self.callId = callId
@@ -43,7 +43,7 @@ public struct OpenAIClientToolCallItem: Codable, Sendable {
     self.output = output
     self.status = status
     self.threadId = threadId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -56,6 +56,6 @@ public struct OpenAIClientToolCallItem: Codable, Sendable {
     case output
     case status
     case threadId = "thread_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

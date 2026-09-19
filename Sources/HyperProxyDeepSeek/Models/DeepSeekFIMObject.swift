@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepSeekFIMObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let textCompletion = Self(rawValue: "text_completion")
+public enum DeepSeekFIMObject: String, Codable, Hashable, Sendable {
+  case textCompletion = "text_completion"
 }

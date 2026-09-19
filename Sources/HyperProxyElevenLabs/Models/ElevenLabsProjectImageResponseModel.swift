@@ -27,12 +27,12 @@ public struct ElevenLabsProjectImageResponseModel: Codable, Sendable {
   public var order: String
   public var pendingTask: ElevenLabsPendingClipTask?
   public var signedUrl: String?
-  public var source: String?
+  public var source: ElevenLabsUploadSource?
   public var sourceAssetId: String?
   public var sourcePlatformAssetId: String?
   public var thumbnailSignedUrl: String?
   public var trackId: String?
-  public var typeModel: String?
+  public var kind: ElevenLabsImageKind?
   public var updatedAtMs: Int
   public var width: Int
 
@@ -55,12 +55,12 @@ public struct ElevenLabsProjectImageResponseModel: Codable, Sendable {
     opacity: Double? = nil,
     pendingTask: ElevenLabsPendingClipTask? = nil,
     signedUrl: String? = nil,
-    source: String? = nil,
+    source: ElevenLabsUploadSource? = nil,
     sourceAssetId: String? = nil,
     sourcePlatformAssetId: String? = nil,
     thumbnailSignedUrl: String? = nil,
     trackId: String? = nil,
-    typeModel: String? = nil
+    kind: ElevenLabsImageKind? = nil
   ) {
     self.analysis = analysis
     self.animation = animation
@@ -83,7 +83,7 @@ public struct ElevenLabsProjectImageResponseModel: Codable, Sendable {
     self.sourcePlatformAssetId = sourcePlatformAssetId
     self.thumbnailSignedUrl = thumbnailSignedUrl
     self.trackId = trackId
-    self.typeModel = typeModel
+    self.kind = kind
     self.updatedAtMs = updatedAtMs
     self.width = width
   }
@@ -110,7 +110,7 @@ public struct ElevenLabsProjectImageResponseModel: Codable, Sendable {
     case sourcePlatformAssetId = "source_platform_asset_id"
     case thumbnailSignedUrl = "thumbnail_signed_url"
     case trackId = "track_id"
-    case typeModel = "type"
+    case kind = "type"
     case updatedAtMs = "updated_at_ms"
     case width
   }

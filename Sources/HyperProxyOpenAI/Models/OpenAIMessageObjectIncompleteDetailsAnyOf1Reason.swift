@@ -10,18 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIMessageObjectIncompleteDetailsAnyOf1Reason: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let contentFilter = Self(rawValue: "content_filter")
-  public static let maxTokens = Self(rawValue: "max_tokens")
-  public static let runCancelled = Self(rawValue: "run_cancelled")
-  public static let runExpired = Self(rawValue: "run_expired")
-  public static let runFailed = Self(rawValue: "run_failed")
+public enum OpenAIMessageObjectIncompleteDetailsAnyOf1Reason: String, Codable, Hashable, Sendable {
+  case contentFilter = "content_filter"
+  case maxTokens = "max_tokens"
+  case runCancelled = "run_cancelled"
+  case runExpired = "run_expired"
+  case runFailed = "run_failed"
 }

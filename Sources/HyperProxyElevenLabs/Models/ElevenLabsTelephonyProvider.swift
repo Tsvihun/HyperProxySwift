@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsTelephonyProvider: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let twilio = Self(rawValue: "twilio")
-  public static let sipTrunk = Self(rawValue: "sip_trunk")
-  public static let exotel = Self(rawValue: "exotel")
+public enum ElevenLabsTelephonyProvider: String, Codable, Hashable, Sendable {
+  case twilio = "twilio"
+  case sipTrunk = "sip_trunk"
+  case exotel = "exotel"
 }

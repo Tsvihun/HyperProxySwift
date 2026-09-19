@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsWhatsAppAuthResponse: Codable, Sendable {
-  public var authType: String?
+  public var authType: ElevenLabsWhatsappAuthAuthType?
   public var id: String
   public var name: String
   public var phoneNumberId: String
-  public var provider: String?
+  public var provider: ElevenLabsWhatsappProvider?
   public var status: ElevenLabsAuthConnectionStatus?
   public var statusDetail: String?
   public var statusUpdatedAt: String?
@@ -25,8 +25,8 @@ public struct ElevenLabsWhatsAppAuthResponse: Codable, Sendable {
     id: String,
     name: String,
     phoneNumberId: String,
-    authType: String? = nil,
-    provider: String? = nil,
+    authType: ElevenLabsWhatsappAuthAuthType? = nil,
+    provider: ElevenLabsWhatsappProvider? = nil,
     status: ElevenLabsAuthConnectionStatus? = nil,
     statusDetail: String? = nil,
     statusUpdatedAt: String? = nil,

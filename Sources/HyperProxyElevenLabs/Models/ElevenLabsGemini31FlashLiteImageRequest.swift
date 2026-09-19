@@ -13,17 +13,17 @@ import HyperProxyCore
 public struct ElevenLabsGemini31FlashLiteImageRequest: Codable, Sendable {
   public var aspectRatio: ElevenLabsGemini31FlashLiteImageRequestAspectRatio?
   public var images: [ElevenLabsImageReference]?
-  public var modelId: String
+  public var modelId: ElevenLabsGemini31FlashLiteImageModelId
   public var prompt: String
-  public var resolution: String?
+  public var resolution: ElevenLabsModel1KResolution?
   public var webhook: ElevenLabsWebhookTarget?
 
   public init(
-    modelId: String,
     prompt: String,
+    modelId: ElevenLabsGemini31FlashLiteImageModelId = .gemini31FlashLiteImage,
     aspectRatio: ElevenLabsGemini31FlashLiteImageRequestAspectRatio? = nil,
     images: [ElevenLabsImageReference]? = nil,
-    resolution: String? = nil,
+    resolution: ElevenLabsModel1KResolution? = nil,
     webhook: ElevenLabsWebhookTarget? = nil
   ) {
     self.aspectRatio = aspectRatio

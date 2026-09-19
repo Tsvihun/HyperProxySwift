@@ -10,23 +10,17 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIPublicProjectResidency: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let gLOBAL = Self(rawValue: "GLOBAL")
-  public static let uSSTORAGEPROCESSING = Self(rawValue: "US_STORAGE_PROCESSING")
-  public static let eUSTORAGEPROCESSING = Self(rawValue: "EU_STORAGE_PROCESSING")
-  public static let jPSTORAGE = Self(rawValue: "JP_STORAGE")
-  public static let kRSTORAGE = Self(rawValue: "KR_STORAGE")
-  public static let cASTORAGE = Self(rawValue: "CA_STORAGE")
-  public static let sGSTORAGE = Self(rawValue: "SG_STORAGE")
-  public static let iNSTORAGE = Self(rawValue: "IN_STORAGE")
-  public static let aUSTORAGE = Self(rawValue: "AU_STORAGE")
-  public static let gBSTORAGE = Self(rawValue: "GB_STORAGE")
-  public static let aESTORAGE = Self(rawValue: "AE_STORAGE")
-  public static let aESTORAGEPROCESSING = Self(rawValue: "AE_STORAGE_PROCESSING")
+public enum OpenAIPublicProjectResidency: String, Codable, Hashable, Sendable {
+  case gLOBAL = "GLOBAL"
+  case uSSTORAGEPROCESSING = "US_STORAGE_PROCESSING"
+  case eUSTORAGEPROCESSING = "EU_STORAGE_PROCESSING"
+  case jPSTORAGE = "JP_STORAGE"
+  case kRSTORAGE = "KR_STORAGE"
+  case cASTORAGE = "CA_STORAGE"
+  case sGSTORAGE = "SG_STORAGE"
+  case iNSTORAGE = "IN_STORAGE"
+  case aUSTORAGE = "AU_STORAGE"
+  case gBSTORAGE = "GB_STORAGE"
+  case aESTORAGE = "AE_STORAGE"
+  case aESTORAGEPROCESSING = "AE_STORAGE_PROCESSING"
 }

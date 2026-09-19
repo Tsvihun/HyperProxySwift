@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIVectorStoreSearchResultItem: Codable, Sendable {
-  public var attributes: OpenAIVectorStoreFileAttributes
+  public var attributes: OpenAIVectorStoreFileAttributes?
   public var content: [OpenAIVectorStoreSearchResultContentObject]
   public var fileId: String
   public var filename: String
   public var score: Double
 
   public init(
-    attributes: OpenAIVectorStoreFileAttributes,
+    attributes: OpenAIVectorStoreFileAttributes?,
     content: [OpenAIVectorStoreSearchResultContentObject],
     fileId: String,
     filename: String,

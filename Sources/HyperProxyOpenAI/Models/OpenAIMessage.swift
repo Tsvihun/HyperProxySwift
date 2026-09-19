@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIMessage: Codable, Sendable {
-  public var content: [HyperProxyJSONValue]
+  public var content: [OpenAIMessageContentItem]
   public var id: String
   public var phase: OpenAIMessagePhase2?
   public var role: OpenAIMessageRole
   public var status: OpenAIMessageStatus
-  public var typeModel: OpenAIMessageTypeModel
+  public var kind: OpenAIMessageKind
 
   public init(
-    content: [HyperProxyJSONValue],
+    content: [OpenAIMessageContentItem],
     id: String,
     role: OpenAIMessageRole,
     status: OpenAIMessageStatus,
-    typeModel: OpenAIMessageTypeModel,
+    kind: OpenAIMessageKind,
     phase: OpenAIMessagePhase2? = nil
   ) {
     self.content = content
@@ -31,7 +31,7 @@ public struct OpenAIMessage: Codable, Sendable {
     self.phase = phase
     self.role = role
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIMessage: Codable, Sendable {
     case phase
     case role
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

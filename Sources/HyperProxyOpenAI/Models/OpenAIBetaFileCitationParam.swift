@@ -14,24 +14,24 @@ public struct OpenAIBetaFileCitationParam: Codable, Sendable {
   public var fileId: String
   public var filename: String
   public var index: Int
-  public var typeModel: OpenAIBetaFileCitationParamTypeModel
+  public var kind: OpenAIBetaFileCitationParamKind
 
   public init(
     fileId: String,
     filename: String,
     index: Int,
-    typeModel: OpenAIBetaFileCitationParamTypeModel
+    kind: OpenAIBetaFileCitationParamKind
   ) {
     self.fileId = fileId
     self.filename = filename
     self.index = index
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case fileId = "file_id"
     case filename
     case index
-    case typeModel = "type"
+    case kind = "type"
   }
 }

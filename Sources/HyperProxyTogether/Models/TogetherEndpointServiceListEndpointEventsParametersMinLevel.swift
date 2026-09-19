@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherEndpointServiceListEndpointEventsParametersMinLevel: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum TogetherEndpointServiceListEndpointEventsParametersMinLevel: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let lEVELDEBUG = Self(rawValue: "LEVEL_DEBUG")
-  public static let lEVELINFO = Self(rawValue: "LEVEL_INFO")
-  public static let lEVELWARN = Self(rawValue: "LEVEL_WARN")
-  public static let lEVELERROR = Self(rawValue: "LEVEL_ERROR")
+  case lEVELDEBUG = "LEVEL_DEBUG"
+  case lEVELINFO = "LEVEL_INFO"
+  case lEVELWARN = "LEVEL_WARN"
+  case lEVELERROR = "LEVEL_ERROR"
 }

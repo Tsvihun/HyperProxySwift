@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsSIPLogMessageDirection: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let inValue = Self(rawValue: "in")
-  public static let out = Self(rawValue: "out")
+public enum ElevenLabsSIPLogMessageDirection: String, Codable, Hashable, Sendable {
+  case inValue = "in"
+  case out = "out"
 }

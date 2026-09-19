@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterOAuthErrorResponseError: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let invalidRequest = Self(rawValue: "invalid_request")
-  public static let invalidGrant = Self(rawValue: "invalid_grant")
-  public static let unsupportedGrantType = Self(rawValue: "unsupported_grant_type")
-  public static let invalidScope = Self(rawValue: "invalid_scope")
-  public static let serverError = Self(rawValue: "server_error")
-  public static let temporarilyUnavailable = Self(rawValue: "temporarily_unavailable")
+public enum OpenRouterOAuthErrorResponseError: String, Codable, Hashable, Sendable {
+  case invalidRequest = "invalid_request"
+  case invalidGrant = "invalid_grant"
+  case unsupportedGrantType = "unsupported_grant_type"
+  case invalidScope = "invalid_scope"
+  case serverError = "server_error"
+  case temporarilyUnavailable = "temporarily_unavailable"
 }

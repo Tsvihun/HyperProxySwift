@@ -14,24 +14,24 @@ public struct PerplexityFetchUrlResultsEvent: Codable, Sendable {
   public var contents: [PerplexityUrlContent]
   public var sequenceNumber: Int64
   public var thought: String?
-  public var typeModel: PerplexityEventType
+  public var kind: PerplexityEventType
 
   public init(
     contents: [PerplexityUrlContent],
     sequenceNumber: Int64,
-    typeModel: PerplexityEventType,
+    kind: PerplexityEventType,
     thought: String? = nil
   ) {
     self.contents = contents
     self.sequenceNumber = sequenceNumber
     self.thought = thought
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case contents
     case sequenceNumber = "sequence_number"
     case thought
-    case typeModel = "type"
+    case kind = "type"
   }
 }

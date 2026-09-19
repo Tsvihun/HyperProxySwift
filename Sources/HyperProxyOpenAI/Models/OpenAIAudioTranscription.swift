@@ -15,7 +15,7 @@ public struct OpenAIAudioTranscription: Codable, Sendable {
   public var keywords: [String]?
   public var language: String?
   public var languages: [String]?
-  public var model: HyperProxyJSONValue?
+  public var model: OpenAIAudioTranscriptionModel?
   public var prompt: String?
 
   public init(
@@ -23,7 +23,7 @@ public struct OpenAIAudioTranscription: Codable, Sendable {
     keywords: [String]? = nil,
     language: String? = nil,
     languages: [String]? = nil,
-    model: HyperProxyJSONValue? = nil,
+    model: OpenAIAudioTranscriptionModel? = nil,
     prompt: String? = nil
   ) {
     self.delay = delay

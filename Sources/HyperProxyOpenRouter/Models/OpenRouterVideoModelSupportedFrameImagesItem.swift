@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterVideoModelSupportedFrameImagesItem: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let firstFrame = Self(rawValue: "first_frame")
-  public static let lastFrame = Self(rawValue: "last_frame")
+public enum OpenRouterVideoModelSupportedFrameImagesItem: String, Codable, Hashable, Sendable {
+  case firstFrame = "first_frame"
+  case lastFrame = "last_frame"
 }

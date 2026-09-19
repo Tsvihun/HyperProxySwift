@@ -10,24 +10,24 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsASTGreaterThanOperatorNodeOutput: Codable, Sendable {
+public final class ElevenLabsASTGreaterThanOperatorNodeOutput: Codable, @unchecked Sendable {
   public var left: ElevenLabsASTNodeOutput
   public var right: ElevenLabsASTNodeOutput
-  public var typeModel: String
+  public var kind: ElevenLabsGtOperatorKind
 
   public init(
     left: ElevenLabsASTNodeOutput,
     right: ElevenLabsASTNodeOutput,
-    typeModel: String
+    kind: ElevenLabsGtOperatorKind = .gtOperator
   ) {
     self.left = left
     self.right = right
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case left
     case right
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsWorkflowToolLocator: Codable, Sendable {
-  public var schemaOverrides: [String: HyperProxyJSONValue]?
+  public var schemaOverrides: [String: ElevenLabsWorkflowToolLocatorSchemaOverridesAnyOf1Value]?
   public var toolId: String
 
   public init(
     toolId: String,
-    schemaOverrides: [String: HyperProxyJSONValue]? = nil
+    schemaOverrides: [String: ElevenLabsWorkflowToolLocatorSchemaOverridesAnyOf1Value]? = nil
   ) {
     self.schemaOverrides = schemaOverrides
     self.toolId = toolId

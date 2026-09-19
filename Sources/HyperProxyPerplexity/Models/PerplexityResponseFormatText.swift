@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct PerplexityResponseFormatText: Codable, Sendable {
-  public var typeModel: String
+  public var kind: PerplexityTextKind
 
   public init(
-    typeModel: String
+    kind: PerplexityTextKind = .text
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

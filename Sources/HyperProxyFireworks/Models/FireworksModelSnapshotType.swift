@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksModelSnapshotType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let fULLSNAPSHOT = Self(rawValue: "FULL_SNAPSHOT")
-  public static let iNCREMENTALSNAPSHOT = Self(rawValue: "INCREMENTAL_SNAPSHOT")
+public enum FireworksModelSnapshotType: String, Codable, Hashable, Sendable {
+  case fULLSNAPSHOT = "FULL_SNAPSHOT"
+  case iNCREMENTALSNAPSHOT = "INCREMENTAL_SNAPSHOT"
 }

@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsWidgetEndFeedbackConfig: Codable, Sendable {
-  public var typeModel: ElevenLabsWidgetEndFeedbackType?
+  public var kind: ElevenLabsWidgetEndFeedbackType?
 
   public init(
-    typeModel: ElevenLabsWidgetEndFeedbackType? = nil
+    kind: ElevenLabsWidgetEndFeedbackType? = nil
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

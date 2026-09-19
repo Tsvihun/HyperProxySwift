@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsReaderResourceResponseModelResourceType: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let read = Self(rawValue: "read")
-  public static let collection = Self(rawValue: "collection")
+public enum ElevenLabsReaderResourceResponseModelResourceType: String, Codable, Hashable, Sendable {
+  case read = "read"
+  case collection = "collection"
 }

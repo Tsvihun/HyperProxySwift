@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterListPresetVersionsResponse: Codable, Sendable {
-  public var data: [OpenRouterPresetDesignatedVersion]
+  public var data: [OpenRouterPresetDesignatedVersion?]
   public var totalCount: Int
 
   public init(
-    data: [OpenRouterPresetDesignatedVersion],
+    data: [OpenRouterPresetDesignatedVersion?],
     totalCount: Int
   ) {
     self.data = data

@@ -10,19 +10,12 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaAdvisorToolResultErrorCode: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let maxUsesExceeded = Self(rawValue: "max_uses_exceeded")
-  public static let promptTooLong = Self(rawValue: "prompt_too_long")
-  public static let tooManyRequests = Self(rawValue: "too_many_requests")
-  public static let overloaded = Self(rawValue: "overloaded")
-  public static let unavailable = Self(rawValue: "unavailable")
-  public static let executionTimeExceeded = Self(rawValue: "execution_time_exceeded")
-  public static let modelNotFound = Self(rawValue: "model_not_found")
+public enum AnthropicBetaAdvisorToolResultErrorCode: String, Codable, Hashable, Sendable {
+  case maxUsesExceeded = "max_uses_exceeded"
+  case promptTooLong = "prompt_too_long"
+  case tooManyRequests = "too_many_requests"
+  case overloaded = "overloaded"
+  case unavailable = "unavailable"
+  case executionTimeExceeded = "execution_time_exceeded"
+  case modelNotFound = "model_not_found"
 }

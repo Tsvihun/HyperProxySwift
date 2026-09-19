@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAICreateTranslationRequestModelAnyOf2: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let whisper1 = Self(rawValue: "whisper-1")
+public enum OpenAICreateTranslationRequestModelAnyOf2: String, Codable, Hashable, Sendable {
+  case whisper1 = "whisper-1"
 }

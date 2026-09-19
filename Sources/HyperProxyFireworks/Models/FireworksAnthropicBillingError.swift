@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct FireworksAnthropicBillingError: Codable, Sendable {
   public var message: String
-  public var typeModel: String
+  public var kind: FireworksBillingErrorKind
 
   public init(
     message: String,
-    typeModel: String
+    kind: FireworksBillingErrorKind = .billingError
   ) {
     self.message = message
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case message
-    case typeModel = "type"
+    case kind = "type"
   }
 }

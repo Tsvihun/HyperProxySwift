@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherBatchJobStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let vALIDATING = Self(rawValue: "VALIDATING")
-  public static let iNPROGRESS = Self(rawValue: "IN_PROGRESS")
-  public static let cOMPLETED = Self(rawValue: "COMPLETED")
-  public static let fAILED = Self(rawValue: "FAILED")
-  public static let eXPIRED = Self(rawValue: "EXPIRED")
-  public static let cANCELLED = Self(rawValue: "CANCELLED")
+public enum TogetherBatchJobStatus: String, Codable, Hashable, Sendable {
+  case vALIDATING = "VALIDATING"
+  case iNPROGRESS = "IN_PROGRESS"
+  case cOMPLETED = "COMPLETED"
+  case fAILED = "FAILED"
+  case eXPIRED = "EXPIRED"
+  case cANCELLED = "CANCELLED"
 }

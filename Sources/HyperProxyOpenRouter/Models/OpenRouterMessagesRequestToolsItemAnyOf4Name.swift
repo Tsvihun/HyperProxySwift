@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterMessagesRequestToolsItemAnyOf4Name: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let webSearch = Self(rawValue: "web_search")
+public enum OpenRouterMessagesRequestToolsItemAnyOf4Name: String, Codable, Hashable, Sendable {
+  case webSearch = "web_search"
 }

@@ -15,20 +15,20 @@ public struct ElevenLabsCreateProcedureRequestModel: Codable, Sendable {
   public var folderParentId: String?
   public var name: String?
   public var trigger: String?
-  public var typeModel: ElevenLabsProcedureType?
+  public var kind: ElevenLabsProcedureType?
 
   public init(
     content: String? = nil,
     folderParentId: String? = nil,
     name: String? = nil,
     trigger: String? = nil,
-    typeModel: ElevenLabsProcedureType? = nil
+    kind: ElevenLabsProcedureType? = nil
   ) {
     self.content = content
     self.folderParentId = folderParentId
     self.name = name
     self.trigger = trigger
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct ElevenLabsCreateProcedureRequestModel: Codable, Sendable {
     case folderParentId = "folder_parent_id"
     case name
     case trigger
-    case typeModel = "type"
+    case kind = "type"
   }
 }

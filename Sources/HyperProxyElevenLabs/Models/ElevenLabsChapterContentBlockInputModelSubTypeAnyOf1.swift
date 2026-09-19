@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsChapterContentBlockInputModelSubTypeAnyOf1: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum ElevenLabsChapterContentBlockInputModelSubTypeAnyOf1: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let p = Self(rawValue: "p")
-  public static let h1 = Self(rawValue: "h1")
-  public static let h2 = Self(rawValue: "h2")
-  public static let h3 = Self(rawValue: "h3")
+  case p = "p"
+  case h1 = "h1"
+  case h2 = "h2"
+  case h3 = "h3"
 }

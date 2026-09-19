@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIValidateGraderRequest: Codable, Sendable {
-  public var grader: HyperProxyJSONValue
+  public var grader: OpenAIValidateGraderRequestGrader
 
   public init(
-    grader: HyperProxyJSONValue
+    grader: OpenAIValidateGraderRequestGrader
   ) {
     self.grader = grader
   }

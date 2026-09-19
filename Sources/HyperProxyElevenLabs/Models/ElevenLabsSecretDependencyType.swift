@@ -10,13 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsSecretDependencyType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let conversationInitiationWebhook = Self(
-    rawValue: "conversation_initiation_webhook")
+public enum ElevenLabsSecretDependencyType: String, Codable, Hashable, Sendable {
+  case conversationInitiationWebhook = "conversation_initiation_webhook"
 }

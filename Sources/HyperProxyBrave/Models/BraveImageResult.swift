@@ -18,7 +18,7 @@ public struct BraveImageResult: Codable, Sendable {
   public var source: String?
   public var thumbnail: BraveThumbnail?
   public var title: String?
-  public var typeModel: String?
+  public var kind: String?
   public var url: String?
 
   public init(
@@ -29,7 +29,7 @@ public struct BraveImageResult: Codable, Sendable {
     source: String? = nil,
     thumbnail: BraveThumbnail? = nil,
     title: String? = nil,
-    typeModel: String? = nil,
+    kind: String? = nil,
     url: String? = nil
   ) {
     self.confidence = confidence
@@ -39,7 +39,7 @@ public struct BraveImageResult: Codable, Sendable {
     self.source = source
     self.thumbnail = thumbnail
     self.title = title
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
@@ -51,7 +51,7 @@ public struct BraveImageResult: Codable, Sendable {
     case source
     case thumbnail
     case title
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

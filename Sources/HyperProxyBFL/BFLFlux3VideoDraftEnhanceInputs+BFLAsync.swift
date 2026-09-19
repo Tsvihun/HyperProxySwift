@@ -19,7 +19,7 @@ extension BFLFlux3VideoDraftEnhanceInputs {
   ) {
     self.init(
       draftCache: draftCache,
-      mode: "draft_enhance",
+      mode: .draftEnhance,
       resolution: resolution,
       safetyTolerance: safetyTolerance
     )

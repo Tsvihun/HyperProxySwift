@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsVoiceSharingResponseModelStatus: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let enabled = Self(rawValue: "enabled")
-  public static let disabled = Self(rawValue: "disabled")
-  public static let copied = Self(rawValue: "copied")
-  public static let copiedDisabled = Self(rawValue: "copied_disabled")
+public enum ElevenLabsVoiceSharingResponseModelStatus: String, Codable, Hashable, Sendable {
+  case enabled = "enabled"
+  case disabled = "disabled"
+  case copied = "copied"
+  case copiedDisabled = "copied_disabled"
 }

@@ -14,24 +14,24 @@ public struct OpenAIRealtimeMCPListTools: Codable, Sendable {
   public var id: String?
   public var serverLabel: String
   public var tools: [OpenAIMCPListToolsTool]
-  public var typeModel: OpenAIRealtimeMCPListToolsTypeModel
+  public var kind: OpenAIRealtimeMCPListToolsKind
 
   public init(
     serverLabel: String,
     tools: [OpenAIMCPListToolsTool],
-    typeModel: OpenAIRealtimeMCPListToolsTypeModel,
+    kind: OpenAIRealtimeMCPListToolsKind,
     id: String? = nil
   ) {
     self.id = id
     self.serverLabel = serverLabel
     self.tools = tools
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case id
     case serverLabel = "server_label"
     case tools
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiGenerationConfigMediaResolution: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mEDIARESOLUTIONUNSPECIFIED = Self(rawValue: "MEDIA_RESOLUTION_UNSPECIFIED")
-  public static let mEDIARESOLUTIONLOW = Self(rawValue: "MEDIA_RESOLUTION_LOW")
-  public static let mEDIARESOLUTIONMEDIUM = Self(rawValue: "MEDIA_RESOLUTION_MEDIUM")
-  public static let mEDIARESOLUTIONHIGH = Self(rawValue: "MEDIA_RESOLUTION_HIGH")
+public enum GeminiGenerationConfigMediaResolution: String, Codable, Hashable, Sendable {
+  case mEDIARESOLUTIONUNSPECIFIED = "MEDIA_RESOLUTION_UNSPECIFIED"
+  case mEDIARESOLUTIONLOW = "MEDIA_RESOLUTION_LOW"
+  case mEDIARESOLUTIONMEDIUM = "MEDIA_RESOLUTION_MEDIUM"
+  case mEDIARESOLUTIONHIGH = "MEDIA_RESOLUTION_HIGH"
 }

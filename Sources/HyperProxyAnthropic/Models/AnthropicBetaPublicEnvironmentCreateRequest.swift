@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaPublicEnvironmentCreateRequest: Codable, Sendable {
-  public var config: HyperProxyJSONValue?
+  public var config: AnthropicBetaPublicEnvironmentCreateRequestConfigAnyOf1?
   public var description: String?
   public var metadata: [String: String]?
   public var name: String
@@ -19,7 +19,7 @@ public struct AnthropicBetaPublicEnvironmentCreateRequest: Codable, Sendable {
 
   public init(
     name: String,
-    config: HyperProxyJSONValue? = nil,
+    config: AnthropicBetaPublicEnvironmentCreateRequestConfigAnyOf1? = nil,
     description: String? = nil,
     metadata: [String: String]? = nil,
     scope: AnthropicBetaPublicEnvironmentCreateRequestScopeAnyOf1? = nil

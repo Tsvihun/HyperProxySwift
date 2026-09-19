@@ -17,21 +17,20 @@ public struct OpenAIRealtimeBetaServerEventConversationItemInputAudioTranscripti
   public var error: OpenAIRealtimeBetaServerEventConversationItemInputAudioTranscriptionFailedError
   public var eventId: String
   public var itemId: String
-  public var typeModel:
-    OpenAIRealtimeBetaServerEventConversationItemInputAudioTranscriptionFailedTypeModel
+  public var kind: OpenAIRealtimeBetaServerEventConversationItemInputAudioTranscriptionFailedKind
 
   public init(
     contentIndex: Int,
     error: OpenAIRealtimeBetaServerEventConversationItemInputAudioTranscriptionFailedError,
     eventId: String,
     itemId: String,
-    typeModel: OpenAIRealtimeBetaServerEventConversationItemInputAudioTranscriptionFailedTypeModel
+    kind: OpenAIRealtimeBetaServerEventConversationItemInputAudioTranscriptionFailedKind
   ) {
     self.contentIndex = contentIndex
     self.error = error
     self.eventId = eventId
     self.itemId = itemId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -39,6 +38,6 @@ public struct OpenAIRealtimeBetaServerEventConversationItemInputAudioTranscripti
     case error
     case eventId = "event_id"
     case itemId = "item_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

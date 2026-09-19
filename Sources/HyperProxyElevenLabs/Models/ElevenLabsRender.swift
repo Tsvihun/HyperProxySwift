@@ -15,7 +15,7 @@ public struct ElevenLabsRender: Codable, Sendable {
   public var language: String?
   public var mediaRef: ElevenLabsDubbingMediaReference?
   public var status: ElevenLabsRenderStatus
-  public var typeModel: ElevenLabsRenderType?
+  public var kind: ElevenLabsRenderType?
   public var version: Int
 
   public init(
@@ -23,14 +23,14 @@ public struct ElevenLabsRender: Codable, Sendable {
     language: String?,
     mediaRef: ElevenLabsDubbingMediaReference?,
     status: ElevenLabsRenderStatus,
-    typeModel: ElevenLabsRenderType?,
+    kind: ElevenLabsRenderType?,
     version: Int
   ) {
     self.id = id
     self.language = language
     self.mediaRef = mediaRef
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
     self.version = version
   }
 
@@ -39,7 +39,7 @@ public struct ElevenLabsRender: Codable, Sendable {
     case language
     case mediaRef = "media_ref"
     case status
-    case typeModel = "type"
+    case kind = "type"
     case version
   }
 }

@@ -10,20 +10,14 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsInvoiceResponseModelPaymentIntentStatussesItem: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum ElevenLabsInvoiceResponseModelPaymentIntentStatussesItem: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let canceled = Self(rawValue: "canceled")
-  public static let processing = Self(rawValue: "processing")
-  public static let requiresAction = Self(rawValue: "requires_action")
-  public static let requiresCapture = Self(rawValue: "requires_capture")
-  public static let requiresConfirmation = Self(rawValue: "requires_confirmation")
-  public static let requiresPaymentMethod = Self(rawValue: "requires_payment_method")
-  public static let succeeded = Self(rawValue: "succeeded")
+  case canceled = "canceled"
+  case processing = "processing"
+  case requiresAction = "requires_action"
+  case requiresCapture = "requires_capture"
+  case requiresConfirmation = "requires_confirmation"
+  case requiresPaymentMethod = "requires_payment_method"
+  case succeeded = "succeeded"
 }

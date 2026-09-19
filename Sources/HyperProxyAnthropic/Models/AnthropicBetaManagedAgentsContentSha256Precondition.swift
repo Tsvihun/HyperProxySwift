@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsContentSha256Precondition: Codable, Sendable {
   public var contentSha256: String?
-  public var typeModel: AnthropicBetaManagedAgentsContentSha256PreconditionTypeModel
+  public var kind: AnthropicBetaManagedAgentsContentSha256PreconditionKind
 
   public init(
-    typeModel: AnthropicBetaManagedAgentsContentSha256PreconditionTypeModel,
+    kind: AnthropicBetaManagedAgentsContentSha256PreconditionKind,
     contentSha256: String? = nil
   ) {
     self.contentSha256 = contentSha256
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case contentSha256 = "content_sha256"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

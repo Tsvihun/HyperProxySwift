@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicBetaContentBlockStopEvent: Codable, Sendable {
   public var index: Int
-  public var typeModel: String
+  public var kind: AnthropicContentBlockStopKind
 
   public init(
     index: Int,
-    typeModel: String
+    kind: AnthropicContentBlockStopKind = .contentBlockStop
   ) {
     self.index = index
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case index
-    case typeModel = "type"
+    case kind = "type"
   }
 }

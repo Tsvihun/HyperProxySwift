@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct AnthropicRequestToolReferenceBlock: Codable, Sendable {
   public var cacheControl: AnthropicCacheControlEphemeral?
   public var toolName: String
-  public var typeModel: String
+  public var kind: AnthropicToolReferenceKind
 
   public init(
     toolName: String,
-    typeModel: String,
+    kind: AnthropicToolReferenceKind = .toolReference,
     cacheControl: AnthropicCacheControlEphemeral? = nil
   ) {
     self.cacheControl = cacheControl
     self.toolName = toolName
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case cacheControl = "cache_control"
     case toolName = "tool_name"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

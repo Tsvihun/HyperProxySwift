@@ -14,24 +14,24 @@ public struct OpenAIRunStepDeltaStepDetailsToolCallsFileSearchObject: Codable, S
   public var fileSearch: HyperProxyJSONValue
   public var id: String?
   public var index: Int
-  public var typeModel: OpenAIRunStepDeltaStepDetailsToolCallsFileSearchObjectTypeModel
+  public var kind: OpenAIRunStepDeltaStepDetailsToolCallsFileSearchObjectKind
 
   public init(
     fileSearch: HyperProxyJSONValue,
     index: Int,
-    typeModel: OpenAIRunStepDeltaStepDetailsToolCallsFileSearchObjectTypeModel,
+    kind: OpenAIRunStepDeltaStepDetailsToolCallsFileSearchObjectKind,
     id: String? = nil
   ) {
     self.fileSearch = fileSearch
     self.id = id
     self.index = index
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case fileSearch = "file_search"
     case id
     case index
-    case typeModel = "type"
+    case kind = "type"
   }
 }

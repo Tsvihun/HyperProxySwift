@@ -14,20 +14,20 @@ public struct OpenAIUrlCitationParam: Codable, Sendable {
   public var endIndex: Int
   public var startIndex: Int
   public var title: String
-  public var typeModel: OpenAIUrlCitationParamTypeModel
+  public var kind: OpenAIUrlCitationParamKind
   public var url: String
 
   public init(
     endIndex: Int,
     startIndex: Int,
     title: String,
-    typeModel: OpenAIUrlCitationParamTypeModel,
+    kind: OpenAIUrlCitationParamKind,
     url: String
   ) {
     self.endIndex = endIndex
     self.startIndex = startIndex
     self.title = title
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
@@ -35,7 +35,7 @@ public struct OpenAIUrlCitationParam: Codable, Sendable {
     case endIndex = "end_index"
     case startIndex = "start_index"
     case title
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

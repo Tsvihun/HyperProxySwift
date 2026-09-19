@@ -18,20 +18,20 @@ public struct TogetherFineTuneEvent: Codable, Sendable {
   public var level: TogetherFinetuneEventLevels?
   public var message: String
   public var modelPath: String?
-  public var object: HyperProxyJSONValue
+  public var object: TogetherFineTuneEventObject
   public var paramCount: Int?
   public var step: Int?
   public var tokenCount: Int?
   public var tokenizedDatasetPath: String?
   public var totalSteps: Int?
-  public var typeModel: TogetherFinetuneEventType
+  public var kind: TogetherFinetuneEventType
   public var wandbUrl: String?
 
   public init(
     createdAt: String,
     message: String,
-    object: HyperProxyJSONValue,
-    typeModel: TogetherFinetuneEventType,
+    kind: TogetherFinetuneEventType,
+    object: TogetherFineTuneEventObject = .fineTuneEvent,
     checkpointPath: String? = nil,
     earlyStoppingBestMetricValue: Double? = nil,
     earlyStoppingBestStep: Int? = nil,
@@ -57,7 +57,7 @@ public struct TogetherFineTuneEvent: Codable, Sendable {
     self.tokenCount = tokenCount
     self.tokenizedDatasetPath = tokenizedDatasetPath
     self.totalSteps = totalSteps
-    self.typeModel = typeModel
+    self.kind = kind
     self.wandbUrl = wandbUrl
   }
 
@@ -75,7 +75,7 @@ public struct TogetherFineTuneEvent: Codable, Sendable {
     case tokenCount = "token_count"
     case tokenizedDatasetPath = "tokenized_dataset_path"
     case totalSteps = "total_steps"
-    case typeModel = "type"
+    case kind = "type"
     case wandbUrl = "wandb_url"
   }
 }

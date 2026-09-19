@@ -11,16 +11,16 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherRLSessionPolicyState: Codable, Sendable {
-  public var appliedWeightsVersion: HyperProxyJSONValue
+  public var appliedWeightsVersion: TogetherRLSessionPolicyStateAppliedWeightsVersion
   public var pendingPublish: Bool
-  public var targetWeightsVersion: HyperProxyJSONValue
-  public var trainerStep: HyperProxyJSONValue
+  public var targetWeightsVersion: TogetherRLSessionPolicyStateTargetWeightsVersion
+  public var trainerStep: TogetherRLSessionPolicyStateTrainerStep
 
   public init(
-    appliedWeightsVersion: HyperProxyJSONValue,
+    appliedWeightsVersion: TogetherRLSessionPolicyStateAppliedWeightsVersion,
     pendingPublish: Bool,
-    targetWeightsVersion: HyperProxyJSONValue,
-    trainerStep: HyperProxyJSONValue
+    targetWeightsVersion: TogetherRLSessionPolicyStateTargetWeightsVersion,
+    trainerStep: TogetherRLSessionPolicyStateTrainerStep
   ) {
     self.appliedWeightsVersion = appliedWeightsVersion
     self.pendingPublish = pendingPublish

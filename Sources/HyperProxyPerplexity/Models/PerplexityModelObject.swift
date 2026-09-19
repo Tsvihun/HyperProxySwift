@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct PerplexityModelObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let model = Self(rawValue: "model")
+public enum PerplexityModelObject: String, Codable, Hashable, Sendable {
+  case model = "model"
 }

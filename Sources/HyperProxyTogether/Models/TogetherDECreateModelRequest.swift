@@ -14,24 +14,24 @@ public struct TogetherDECreateModelRequest: Codable, Sendable {
   public var baseModelId: String
   public var description: String?
   public var name: String
-  public var typeModel: String
+  public var kind: String
 
   public init(
     baseModelId: String,
     name: String,
-    typeModel: String,
+    kind: String,
     description: String? = nil
   ) {
     self.baseModelId = baseModelId
     self.description = description
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case baseModelId
     case description
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

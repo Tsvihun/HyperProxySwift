@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct AnthropicBetaResponseClearThinking20251015Edit: Codable, Sendable {
   public var clearedInputTokens: Int
   public var clearedThinkingTurns: Int
-  public var typeModel: String
+  public var kind: AnthropicClearThinking20251015Kind
 
   public init(
     clearedInputTokens: Int,
     clearedThinkingTurns: Int,
-    typeModel: String
+    kind: AnthropicClearThinking20251015Kind = .clearThinking20251015
   ) {
     self.clearedInputTokens = clearedInputTokens
     self.clearedThinkingTurns = clearedThinkingTurns
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case clearedInputTokens = "cleared_input_tokens"
     case clearedThinkingTurns = "cleared_thinking_turns"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

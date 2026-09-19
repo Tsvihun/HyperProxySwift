@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct
+public enum
   StabilityPostV2betaStableImageEditReplaceBackgroundAndRelightRequestKeepOriginalBackground:
-    RawRepresentable, Codable, Hashable, Sendable
+    String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let trueValue = Self(rawValue: "true")
-  public static let falseValue = Self(rawValue: "false")
+  case trueValue = "true"
+  case falseValue = "false"
 }

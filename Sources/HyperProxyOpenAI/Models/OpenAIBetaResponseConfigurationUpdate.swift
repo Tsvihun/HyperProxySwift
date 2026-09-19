@@ -14,24 +14,24 @@ public struct OpenAIBetaResponseConfigurationUpdate: Codable, Sendable {
   public var agent: OpenAIBetaAgentTag?
   public var id: String
   public var reasoning: OpenAIBetaResponseConfigurationUpdateReasoning?
-  public var typeModel: OpenAIBetaResponseConfigurationUpdateTypeModel
+  public var kind: OpenAIBetaResponseConfigurationUpdateKind
 
   public init(
     id: String,
-    typeModel: OpenAIBetaResponseConfigurationUpdateTypeModel,
+    kind: OpenAIBetaResponseConfigurationUpdateKind,
     agent: OpenAIBetaAgentTag? = nil,
     reasoning: OpenAIBetaResponseConfigurationUpdateReasoning? = nil
   ) {
     self.agent = agent
     self.id = id
     self.reasoning = reasoning
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case agent
     case id
     case reasoning
-    case typeModel = "type"
+    case kind = "type"
   }
 }

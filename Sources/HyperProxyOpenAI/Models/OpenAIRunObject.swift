@@ -23,21 +23,21 @@ public struct OpenAIRunObject: Codable, Sendable {
   public var lastError: OpenAIRunObjectLastError?
   public var maxCompletionTokens: Int?
   public var maxPromptTokens: Int?
-  public var metadata: OpenAIMetadata
+  public var metadata: OpenAIMetadata?
   public var model: String
   public var object: OpenAIRunObjectObject
-  public var parallelToolCalls: OpenAIParallelToolCalls
+  public var parallelToolCalls: Bool
   public var requiredAction: OpenAIRunObjectRequiredAction?
   public var responseFormat: OpenAIAssistantsApiResponseFormatOption?
   public var startedAt: Int?
   public var status: OpenAIRunObjectStatus
   public var temperature: Double?
   public var threadId: String
-  public var toolChoice: HyperProxyJSONValue
-  public var tools: [HyperProxyJSONValue]
+  public var toolChoice: OpenAIAssistantsApiToolChoiceOption
+  public var tools: [OpenAIRunObjectToolsItem]
   public var topP: Double?
-  public var truncationStrategy: HyperProxyJSONValue
-  public var usage: OpenAIRunCompletionUsage
+  public var truncationStrategy: OpenAITruncationObject
+  public var usage: OpenAIRunCompletionUsage?
 
   public init(
     assistantId: String,
@@ -52,19 +52,19 @@ public struct OpenAIRunObject: Codable, Sendable {
     lastError: OpenAIRunObjectLastError?,
     maxCompletionTokens: Int?,
     maxPromptTokens: Int?,
-    metadata: OpenAIMetadata,
+    metadata: OpenAIMetadata?,
     model: String,
     object: OpenAIRunObjectObject,
-    parallelToolCalls: OpenAIParallelToolCalls,
+    parallelToolCalls: Bool,
     requiredAction: OpenAIRunObjectRequiredAction?,
     responseFormat: OpenAIAssistantsApiResponseFormatOption?,
     startedAt: Int?,
     status: OpenAIRunObjectStatus,
     threadId: String,
-    toolChoice: HyperProxyJSONValue,
-    tools: [HyperProxyJSONValue],
-    truncationStrategy: HyperProxyJSONValue,
-    usage: OpenAIRunCompletionUsage,
+    toolChoice: OpenAIAssistantsApiToolChoiceOption,
+    tools: [OpenAIRunObjectToolsItem],
+    truncationStrategy: OpenAITruncationObject,
+    usage: OpenAIRunCompletionUsage?,
     temperature: Double? = nil,
     topP: Double? = nil
   ) {

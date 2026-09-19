@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiAutomaticActivityDetectionStartOfSpeechSensitivity: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum GeminiAutomaticActivityDetectionStartOfSpeechSensitivity: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let sTARTSENSITIVITYUNSPECIFIED = Self(rawValue: "START_SENSITIVITY_UNSPECIFIED")
-  public static let sTARTSENSITIVITYHIGH = Self(rawValue: "START_SENSITIVITY_HIGH")
-  public static let sTARTSENSITIVITYLOW = Self(rawValue: "START_SENSITIVITY_LOW")
+  case sTARTSENSITIVITYUNSPECIFIED = "START_SENSITIVITY_UNSPECIFIED"
+  case sTARTSENSITIVITYHIGH = "START_SENSITIVITY_HIGH"
+  case sTARTSENSITIVITYLOW = "START_SENSITIVITY_LOW"
 }

@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesSpellingAndGrammarUmlauts: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let replaceUmlautsWithAeOeUe = Self(rawValue: "replace_umlauts_with_ae_oe_ue")
+public enum DeepLConfiguredRulesSpellingAndGrammarUmlauts: String, Codable, Hashable, Sendable {
+  case replaceUmlautsWithAeOeUe = "replace_umlauts_with_ae_oe_ue"
 }

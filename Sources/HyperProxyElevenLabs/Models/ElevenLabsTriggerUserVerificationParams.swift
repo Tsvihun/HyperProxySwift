@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsTriggerUserVerificationParams: Codable, Sendable {
-  public var smbToolType: String?
+  public var smbToolType: ElevenLabsTriggerUserVerificationSmbToolType?
 
   public init(
-    smbToolType: String? = nil
+    smbToolType: ElevenLabsTriggerUserVerificationSmbToolType? = nil
   ) {
     self.smbToolType = smbToolType
   }

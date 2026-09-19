@@ -11,20 +11,20 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiGenerateContentResponse: Codable, Sendable {
-  public var candidates: [HyperProxyJSONValue]?
-  public var modelStatus: HyperProxyJSONValue?
+  public var candidates: [GeminiCandidate]?
+  public var modelStatus: GeminiModelStatus?
   public var modelVersion: String?
-  public var promptFeedback: HyperProxyJSONValue?
+  public var promptFeedback: GeminiPromptFeedback?
   public var responseId: String?
-  public var usageMetadata: HyperProxyJSONValue?
+  public var usageMetadata: GeminiUsageMetadata?
 
   public init(
-    candidates: [HyperProxyJSONValue]? = nil,
-    modelStatus: HyperProxyJSONValue? = nil,
+    candidates: [GeminiCandidate]? = nil,
+    modelStatus: GeminiModelStatus? = nil,
     modelVersion: String? = nil,
-    promptFeedback: HyperProxyJSONValue? = nil,
+    promptFeedback: GeminiPromptFeedback? = nil,
     responseId: String? = nil,
-    usageMetadata: HyperProxyJSONValue? = nil
+    usageMetadata: GeminiUsageMetadata? = nil
   ) {
     self.candidates = candidates
     self.modelStatus = modelStatus

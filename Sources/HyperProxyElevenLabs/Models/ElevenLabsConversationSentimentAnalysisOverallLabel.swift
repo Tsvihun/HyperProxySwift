@@ -10,16 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsConversationSentimentAnalysisOverallLabel: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum ElevenLabsConversationSentimentAnalysisOverallLabel: String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let positive = Self(rawValue: "positive")
-  public static let neutral = Self(rawValue: "neutral")
-  public static let negative = Self(rawValue: "negative")
+  case positive = "positive"
+  case neutral = "neutral"
+  case negative = "negative"
 }

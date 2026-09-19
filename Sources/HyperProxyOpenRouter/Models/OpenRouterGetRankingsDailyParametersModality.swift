@@ -10,18 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterGetRankingsDailyParametersModality: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let text = Self(rawValue: "text")
-  public static let image = Self(rawValue: "image")
-  public static let imageOutput = Self(rawValue: "image_output")
-  public static let audio = Self(rawValue: "audio")
-  public static let toolCalling = Self(rawValue: "tool_calling")
+public enum OpenRouterGetRankingsDailyParametersModality: String, Codable, Hashable, Sendable {
+  case text = "text"
+  case image = "image"
+  case imageOutput = "image_output"
+  case audio = "audio"
+  case toolCalling = "tool_calling"
 }

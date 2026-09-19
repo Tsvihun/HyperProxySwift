@@ -24,7 +24,7 @@ public struct ElevenLabsConversationHistoryTranscriptWorkflowToolsResultCommonMo
   public var toolHasBeenCalled: Bool
   public var toolLatencySecs: Double?
   public var toolName: String
-  public var typeModel: String
+  public var kind: ElevenLabsWorkflowKind
 
   public init(
     isError: Bool,
@@ -32,7 +32,7 @@ public struct ElevenLabsConversationHistoryTranscriptWorkflowToolsResultCommonMo
     resultValue: String,
     toolHasBeenCalled: Bool,
     toolName: String,
-    typeModel: String,
+    kind: ElevenLabsWorkflowKind = .workflow,
     dynamicVariableUpdates: [ElevenLabsDynamicVariableUpdateCommonModel]? = nil,
     errorType: String? = nil,
     isBlocked: Bool? = nil,
@@ -51,7 +51,7 @@ public struct ElevenLabsConversationHistoryTranscriptWorkflowToolsResultCommonMo
     self.toolHasBeenCalled = toolHasBeenCalled
     self.toolLatencySecs = toolLatencySecs
     self.toolName = toolName
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -66,6 +66,6 @@ public struct ElevenLabsConversationHistoryTranscriptWorkflowToolsResultCommonMo
     case toolHasBeenCalled = "tool_has_been_called"
     case toolLatencySecs = "tool_latency_secs"
     case toolName = "tool_name"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

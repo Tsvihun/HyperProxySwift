@@ -17,7 +17,7 @@ public struct TogetherFileResponse: Codable, Sendable {
   public var createdAt: Int
   public var filename: String
   public var id: String
-  public var object: HyperProxyJSONValue
+  public var object: TogetherFileObject
   public var processingStatus: TogetherFileProcessingStatus?
   public var purpose: TogetherFilePurpose
   public var validationReport: TogetherFileValidationReport?
@@ -29,8 +29,8 @@ public struct TogetherFileResponse: Codable, Sendable {
     createdAt: Int,
     filename: String,
     id: String,
-    object: HyperProxyJSONValue,
     purpose: TogetherFilePurpose,
+    object: TogetherFileObject = .file,
     processingStatus: TogetherFileProcessingStatus? = nil,
     validationReport: TogetherFileValidationReport? = nil
   ) {

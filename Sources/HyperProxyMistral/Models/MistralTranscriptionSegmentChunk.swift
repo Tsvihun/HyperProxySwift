@@ -16,7 +16,7 @@ public struct MistralTranscriptionSegmentChunk: Codable, Sendable {
   public var speakerId: String?
   public var start: Double
   public var text: String
-  public var typeModel: String?
+  public var kind: MistralTranscriptionSegmentKind?
 
   public init(
     end: Double,
@@ -24,14 +24,14 @@ public struct MistralTranscriptionSegmentChunk: Codable, Sendable {
     text: String,
     score: Double? = nil,
     speakerId: String? = nil,
-    typeModel: String? = nil
+    kind: MistralTranscriptionSegmentKind? = nil
   ) {
     self.end = end
     self.score = score
     self.speakerId = speakerId
     self.start = start
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct MistralTranscriptionSegmentChunk: Codable, Sendable {
     case speakerId = "speaker_id"
     case start
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

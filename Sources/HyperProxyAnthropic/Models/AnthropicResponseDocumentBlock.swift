@@ -12,26 +12,26 @@ import HyperProxyCore
 
 public struct AnthropicResponseDocumentBlock: Codable, Sendable {
   public var citations: AnthropicResponseCitationsConfig?
-  public var source: HyperProxyJSONValue
+  public var source: AnthropicResponseDocumentBlockSource
   public var title: String?
-  public var typeModel: String
+  public var kind: AnthropicDocumentKind
 
   public init(
     citations: AnthropicResponseCitationsConfig?,
-    source: HyperProxyJSONValue,
+    source: AnthropicResponseDocumentBlockSource,
     title: String?,
-    typeModel: String
+    kind: AnthropicDocumentKind = .document
   ) {
     self.citations = citations
     self.source = source
     self.title = title
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case citations
     case source
     case title
-    case typeModel = "type"
+    case kind = "type"
   }
 }

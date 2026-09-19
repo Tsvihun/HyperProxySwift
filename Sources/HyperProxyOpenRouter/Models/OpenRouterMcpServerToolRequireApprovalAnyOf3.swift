@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterMcpServerToolRequireApprovalAnyOf3: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let never = Self(rawValue: "never")
+public enum OpenRouterMcpServerToolRequireApprovalAnyOf3: String, Codable, Hashable, Sendable {
+  case never = "never"
 }

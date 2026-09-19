@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct FireworksChatCompletionTool: Codable, Sendable {
   public var function: FireworksChatCompletionFunction?
-  public var typeModel: FireworksChatCompletionToolTypeModel
+  public var kind: FireworksChatCompletionToolKind
 
   public init(
-    typeModel: FireworksChatCompletionToolTypeModel,
+    kind: FireworksChatCompletionToolKind,
     function: FireworksChatCompletionFunction? = nil
   ) {
     self.function = function
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case function
-    case typeModel = "type"
+    case kind = "type"
   }
 }

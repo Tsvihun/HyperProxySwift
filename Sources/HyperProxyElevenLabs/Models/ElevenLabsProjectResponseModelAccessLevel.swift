@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsProjectResponseModelAccessLevel: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let admin = Self(rawValue: "admin")
-  public static let editor = Self(rawValue: "editor")
-  public static let commenter = Self(rawValue: "commenter")
-  public static let viewer = Self(rawValue: "viewer")
+public enum ElevenLabsProjectResponseModelAccessLevel: String, Codable, Hashable, Sendable {
+  case admin = "admin"
+  case editor = "editor"
+  case commenter = "commenter"
+  case viewer = "viewer"
 }

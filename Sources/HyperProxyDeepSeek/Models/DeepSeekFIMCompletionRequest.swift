@@ -18,7 +18,7 @@ public struct DeepSeekFIMCompletionRequest: Codable, Sendable {
   public var model: DeepSeekFIMModel
   public var presencePenalty: Double?
   public var prompt: String
-  public var stop: HyperProxyJSONValue?
+  public var stop: DeepSeekFIMCompletionRequestStop?
   public var stream: Bool?
   public var streamOptions: DeepSeekFIMStreamOptions?
   public var suffix: String?
@@ -33,7 +33,7 @@ public struct DeepSeekFIMCompletionRequest: Codable, Sendable {
     logprobs: Int? = nil,
     maxTokens: Int? = nil,
     presencePenalty: Double? = nil,
-    stop: HyperProxyJSONValue? = nil,
+    stop: DeepSeekFIMCompletionRequestStop? = nil,
     stream: Bool? = nil,
     streamOptions: DeepSeekFIMStreamOptions? = nil,
     suffix: String? = nil,

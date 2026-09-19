@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsGetConversationHistoryRouteParametersFormat: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum ElevenLabsGetConversationHistoryRouteParametersFormat: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let json = Self(rawValue: "json")
-  public static let opentelemetry = Self(rawValue: "opentelemetry")
+  case json = "json"
+  case opentelemetry = "opentelemetry"
 }

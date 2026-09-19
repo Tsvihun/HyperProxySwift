@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsCompositionPlan: Codable, Sendable {
-  public var chunks: [HyperProxyJSONValue]
+  public var chunks: [ElevenLabsCompositionPlanChunksItem]
 
   public init(
-    chunks: [HyperProxyJSONValue]
+    chunks: [ElevenLabsCompositionPlanChunksItem]
   ) {
     self.chunks = chunks
   }

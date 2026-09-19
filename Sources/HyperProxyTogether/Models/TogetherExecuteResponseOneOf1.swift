@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct TogetherExecuteResponseOneOf1: Codable, Sendable {
   public var data: TogetherExecuteResponseOneOf1Data
-  public var errors: HyperProxyJSONValue
+  public var errors: HyperProxyJSONNull
 
   public init(
     data: TogetherExecuteResponseOneOf1Data,
-    errors: HyperProxyJSONValue
+    errors: HyperProxyJSONNull
   ) {
     self.data = data
     self.errors = errors

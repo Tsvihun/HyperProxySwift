@@ -17,14 +17,14 @@ public struct OpenRouterMcpCallItem: Codable, Sendable {
   public var name: String
   public var output: String?
   public var serverLabel: String
-  public var typeModel: OpenRouterMcpCallItemTypeModel
+  public var kind: OpenRouterMcpCallItemKind
 
   public init(
     arguments: String,
     id: String,
     name: String,
     serverLabel: String,
-    typeModel: OpenRouterMcpCallItemTypeModel,
+    kind: OpenRouterMcpCallItemKind,
     error: OpenRouterMcpToolCallError? = nil,
     output: String? = nil
   ) {
@@ -34,7 +34,7 @@ public struct OpenRouterMcpCallItem: Codable, Sendable {
     self.name = name
     self.output = output
     self.serverLabel = serverLabel
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenRouterMcpCallItem: Codable, Sendable {
     case name
     case output
     case serverLabel = "server_label"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

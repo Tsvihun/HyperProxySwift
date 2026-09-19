@@ -16,7 +16,7 @@ public struct DeepLQualityEvaluationIssue: Codable, Sendable {
   public var sourceSpans: [DeepLQualityEvaluationSpan]
   public var subType: DeepLQualityEvaluationIssueSubType
   public var targetSpans: [DeepLQualityEvaluationSpan]
-  public var typeModel: DeepLQualityEvaluationIssueTypeModel
+  public var kind: DeepLQualityEvaluationIssueKind
 
   public init(
     explanation: String,
@@ -24,14 +24,14 @@ public struct DeepLQualityEvaluationIssue: Codable, Sendable {
     sourceSpans: [DeepLQualityEvaluationSpan],
     subType: DeepLQualityEvaluationIssueSubType,
     targetSpans: [DeepLQualityEvaluationSpan],
-    typeModel: DeepLQualityEvaluationIssueTypeModel
+    kind: DeepLQualityEvaluationIssueKind
   ) {
     self.explanation = explanation
     self.severity = severity
     self.sourceSpans = sourceSpans
     self.subType = subType
     self.targetSpans = targetSpans
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct DeepLQualityEvaluationIssue: Codable, Sendable {
     case sourceSpans = "source_spans"
     case subType = "sub_type"
     case targetSpans = "target_spans"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepSeekAnthropicInputMessage: Codable, Sendable {
-  public var content: HyperProxyJSONValue
+  public var content: DeepSeekAnthropicInputMessageContent
   public var role: DeepSeekAnthropicInputRole
 
   public init(
-    content: HyperProxyJSONValue,
+    content: DeepSeekAnthropicInputMessageContent,
     role: DeepSeekAnthropicInputRole
   ) {
     self.content = content

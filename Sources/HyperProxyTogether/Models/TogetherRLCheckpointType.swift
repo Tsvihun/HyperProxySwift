@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherRLCheckpointType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let cHECKPOINTTYPETRAINING = Self(rawValue: "CHECKPOINT_TYPE_TRAINING")
-  public static let cHECKPOINTTYPEINFERENCE = Self(rawValue: "CHECKPOINT_TYPE_INFERENCE")
+public enum TogetherRLCheckpointType: String, Codable, Hashable, Sendable {
+  case cHECKPOINTTYPETRAINING = "CHECKPOINT_TYPE_TRAINING"
+  case cHECKPOINTTYPEINFERENCE = "CHECKPOINT_TYPE_INFERENCE"
 }

@@ -10,15 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesNumbersListOfMeasurementsWithUnits: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesNumbersListOfMeasurementsWithUnits: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let repeatUnitForEachMeasurementInList = Self(
-    rawValue: "repeat_unit_for_each_measurement_in_list")
+  case repeatUnitForEachMeasurementInList = "repeat_unit_for_each_measurement_in_list"
 }

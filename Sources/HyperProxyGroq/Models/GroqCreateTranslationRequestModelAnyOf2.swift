@@ -10,14 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct GroqCreateTranslationRequestModelAnyOf2: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let whisperLargeV3 = Self(rawValue: "whisper-large-v3")
-  public static let whisperLargeV3Turbo = Self(rawValue: "whisper-large-v3-turbo")
+public enum GroqCreateTranslationRequestModelAnyOf2: String, Codable, Hashable, Sendable {
+  case whisperLargeV3 = "whisper-large-v3"
+  case whisperLargeV3Turbo = "whisper-large-v3-turbo"
 }

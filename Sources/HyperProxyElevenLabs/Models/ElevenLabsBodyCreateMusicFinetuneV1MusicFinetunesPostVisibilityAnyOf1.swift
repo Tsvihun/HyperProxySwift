@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsBodyCreateMusicFinetuneV1MusicFinetunesPostVisibilityAnyOf1:
-  RawRepresentable, Codable, Hashable, Sendable
+public enum ElevenLabsBodyCreateMusicFinetuneV1MusicFinetunesPostVisibilityAnyOf1: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let privateValue = Self(rawValue: "private")
-  public static let workspace = Self(rawValue: "workspace")
+  case privateValue = "private"
+  case workspace = "workspace"
 }

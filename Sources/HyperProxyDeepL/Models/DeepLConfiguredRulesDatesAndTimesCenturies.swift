@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesDatesAndTimesCenturies: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let spellOut = Self(rawValue: "spell_out")
-  public static let useArabicNumerals = Self(rawValue: "use_arabic_numerals")
-  public static let useNumerals = Self(rawValue: "use_numerals")
-  public static let useRomanNumerals = Self(rawValue: "use_roman_numerals")
+public enum DeepLConfiguredRulesDatesAndTimesCenturies: String, Codable, Hashable, Sendable {
+  case spellOut = "spell_out"
+  case useArabicNumerals = "use_arabic_numerals"
+  case useNumerals = "use_numerals"
+  case useRomanNumerals = "use_roman_numerals"
 }

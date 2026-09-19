@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralFilesApiRoutesUploadFileRequestVisibilityAllOf1: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum MistralFilesApiRoutesUploadFileRequestVisibilityAllOf1: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let workspace = Self(rawValue: "workspace")
-  public static let user = Self(rawValue: "user")
+  case workspace = "workspace"
+  case user = "user"
 }

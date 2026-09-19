@@ -12,22 +12,22 @@ import HyperProxyCore
 
 public struct OpenAIEnvironmentParamSelfHosted: Codable, Sendable {
   public var capabilityDirectories: [String]?
-  public var typeModel: OpenAIEnvironmentParamSelfHostedTypeModel
+  public var kind: OpenAIEnvironmentParamSelfHostedKind
   public var workspaceDirectory: String
 
   public init(
-    typeModel: OpenAIEnvironmentParamSelfHostedTypeModel,
+    kind: OpenAIEnvironmentParamSelfHostedKind,
     workspaceDirectory: String,
     capabilityDirectories: [String]? = nil
   ) {
     self.capabilityDirectories = capabilityDirectories
-    self.typeModel = typeModel
+    self.kind = kind
     self.workspaceDirectory = workspaceDirectory
   }
 
   enum CodingKeys: String, CodingKey {
     case capabilityDirectories = "capability_directories"
-    case typeModel = "type"
+    case kind = "type"
     case workspaceDirectory = "workspace_directory"
   }
 }

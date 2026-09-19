@@ -214,6 +214,74 @@ extension OpenAIAdminCalls {
     return try await prepared.decoded(OpenAIOrganizationDataRetention.self)
   }
 
+  public func listexternalstorageconfigurations(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIExternalStorageListResource {
+    let call = self.service.call(.listexternalstorageconfigurations)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIExternalStorageListResource.self)
+  }
+
+  public func createanexternalstorageconfiguration(
+    _ body: OpenAICreateExternalStorageBody,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIExternalStorageResponse {
+    let call = self.service.call(.createanexternalstorageconfiguration)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenAIExternalStorageResponse.self)
+  }
+
+  public func getanexternalstorageconfiguration(
+    externalStorageId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIExternalStorageResponse {
+    let call = self.service.call(.getanexternalstorageconfiguration)
+      .path("external_storage_id", externalStorageId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIExternalStorageResponse.self)
+  }
+
+  public func deleteanexternalstorageconfiguration(
+    externalStorageId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIExternalStorageDeletedResource {
+    let call = self.service.call(.deleteanexternalstorageconfiguration)
+      .path("external_storage_id", externalStorageId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIExternalStorageDeletedResource.self)
+  }
+
+  public func validateanexternalstorageconfiguration(
+    externalStorageId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIExternalStorageResponse {
+    let call = self.service.call(.validateanexternalstorageconfiguration)
+      .path("external_storage_id", externalStorageId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIExternalStorageResponse.self)
+  }
+
   public func listGroups(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],

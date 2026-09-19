@@ -10,21 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherDEListRevisionsResponseRevisionValidationStatus: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum TogetherDEListRevisionsResponseRevisionValidationStatus: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let rEVISIONVALIDATIONSTATUSPENDING = Self(
-    rawValue: "REVISION_VALIDATION_STATUS_PENDING")
-  public static let rEVISIONVALIDATIONSTATUSSUCCESS = Self(
-    rawValue: "REVISION_VALIDATION_STATUS_SUCCESS")
-  public static let rEVISIONVALIDATIONSTATUSFAILED = Self(
-    rawValue: "REVISION_VALIDATION_STATUS_FAILED")
-  public static let rEVISIONVALIDATIONSTATUSERROR = Self(
-    rawValue: "REVISION_VALIDATION_STATUS_ERROR")
+  case rEVISIONVALIDATIONSTATUSPENDING = "REVISION_VALIDATION_STATUS_PENDING"
+  case rEVISIONVALIDATIONSTATUSSUCCESS = "REVISION_VALIDATION_STATUS_SUCCESS"
+  case rEVISIONVALIDATIONSTATUSFAILED = "REVISION_VALIDATION_STATUS_FAILED"
+  case rEVISIONVALIDATIONSTATUSERROR = "REVISION_VALIDATION_STATUS_ERROR"
 }

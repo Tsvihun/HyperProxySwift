@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsAgentSummaryBatchSuccessfulResponseModel: Codable, Sendable {
   public var data: ElevenLabsAgentSummaryResponseModel
-  public var status: String
+  public var status: ElevenLabsSuccessStatus
 
   public init(
     data: ElevenLabsAgentSummaryResponseModel,
-    status: String
+    status: ElevenLabsSuccessStatus = .success
   ) {
     self.data = data
     self.status = status

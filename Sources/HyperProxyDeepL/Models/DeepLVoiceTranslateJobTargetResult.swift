@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct DeepLVoiceTranslateJobTargetResult: Codable, Sendable {
   public var downloadUrl: String?
-  public var error: HyperProxyJSONValue?
+  public var error: DeepLErrorResponse?
   public var signature: String?
   public var signedDownloadUrl: String?
   public var status: DeepLResultStatus
@@ -20,7 +20,7 @@ public struct DeepLVoiceTranslateJobTargetResult: Codable, Sendable {
   public init(
     status: DeepLResultStatus,
     downloadUrl: String? = nil,
-    error: HyperProxyJSONValue? = nil,
+    error: DeepLErrorResponse? = nil,
     signature: String? = nil,
     signedDownloadUrl: String? = nil
   ) {

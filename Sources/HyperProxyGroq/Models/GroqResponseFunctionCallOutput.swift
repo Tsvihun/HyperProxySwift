@@ -15,12 +15,12 @@ public struct GroqResponseFunctionCallOutput: Codable, Sendable {
   public var id: String?
   public var output: String
   public var status: GroqResponseFunctionCallOutputStatus?
-  public var typeModel: GroqResponseFunctionCallOutputTypeModel
+  public var kind: GroqResponseFunctionCallOutputKind
 
   public init(
     callId: String,
     output: String,
-    typeModel: GroqResponseFunctionCallOutputTypeModel,
+    kind: GroqResponseFunctionCallOutputKind,
     id: String? = nil,
     status: GroqResponseFunctionCallOutputStatus? = nil
   ) {
@@ -28,7 +28,7 @@ public struct GroqResponseFunctionCallOutput: Codable, Sendable {
     self.id = id
     self.output = output
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct GroqResponseFunctionCallOutput: Codable, Sendable {
     case id
     case output
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

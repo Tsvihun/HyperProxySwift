@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct TogetherStreamOutput: Codable, Sendable {
   public var data: String
-  public var typeModel: TogetherStreamOutputTypeModel
+  public var kind: TogetherStreamOutputKind
 
   public init(
     data: String,
-    typeModel: TogetherStreamOutputTypeModel
+    kind: TogetherStreamOutputKind
   ) {
     self.data = data
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case data
-    case typeModel = "type"
+    case kind = "type"
   }
 }

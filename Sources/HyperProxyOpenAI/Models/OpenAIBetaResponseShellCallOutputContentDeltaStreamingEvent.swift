@@ -17,7 +17,7 @@ public struct OpenAIBetaResponseShellCallOutputContentDeltaStreamingEvent: Codab
   public var itemId: String
   public var outputIndex: Int
   public var sequenceNumber: Int
-  public var typeModel: OpenAIBetaResponseShellCallOutputContentDeltaStreamingEventTypeModel
+  public var kind: OpenAIBetaResponseShellCallOutputContentDeltaStreamingEventKind
 
   public init(
     commandIndex: Int,
@@ -25,7 +25,7 @@ public struct OpenAIBetaResponseShellCallOutputContentDeltaStreamingEvent: Codab
     itemId: String,
     outputIndex: Int,
     sequenceNumber: Int,
-    typeModel: OpenAIBetaResponseShellCallOutputContentDeltaStreamingEventTypeModel,
+    kind: OpenAIBetaResponseShellCallOutputContentDeltaStreamingEventKind,
     agent: OpenAIBetaAgentTag? = nil
   ) {
     self.agent = agent
@@ -34,7 +34,7 @@ public struct OpenAIBetaResponseShellCallOutputContentDeltaStreamingEvent: Codab
     self.itemId = itemId
     self.outputIndex = outputIndex
     self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenAIBetaResponseShellCallOutputContentDeltaStreamingEvent: Codab
     case itemId = "item_id"
     case outputIndex = "output_index"
     case sequenceNumber = "sequence_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

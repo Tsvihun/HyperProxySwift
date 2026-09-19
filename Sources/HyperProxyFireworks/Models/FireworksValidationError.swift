@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct FireworksValidationError: Codable, Sendable {
   public var ctx: HyperProxyJSONValue?
   public var input: HyperProxyJSONValue?
-  public var loc: [HyperProxyJSONValue]
+  public var loc: [FireworksValidationErrorLocItem]
   public var msg: String
-  public var typeModel: String
+  public var kind: String
 
   public init(
-    loc: [HyperProxyJSONValue],
+    loc: [FireworksValidationErrorLocItem],
     msg: String,
-    typeModel: String,
+    kind: String,
     ctx: HyperProxyJSONValue? = nil,
     input: HyperProxyJSONValue? = nil
   ) {
@@ -28,7 +28,7 @@ public struct FireworksValidationError: Codable, Sendable {
     self.input = input
     self.loc = loc
     self.msg = msg
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct FireworksValidationError: Codable, Sendable {
     case input
     case loc
     case msg
-    case typeModel = "type"
+    case kind = "type"
   }
 }

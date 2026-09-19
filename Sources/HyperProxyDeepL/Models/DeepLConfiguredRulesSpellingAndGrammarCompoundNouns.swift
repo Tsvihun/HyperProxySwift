@@ -10,15 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesSpellingAndGrammarCompoundNouns: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesSpellingAndGrammarCompoundNouns: String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let writeAsOneWord = Self(rawValue: "write_as_one_word")
-  public static let writeWithHyphen = Self(rawValue: "write_with_hyphen")
+  case writeAsOneWord = "write_as_one_word"
+  case writeWithHyphen = "write_with_hyphen"
 }

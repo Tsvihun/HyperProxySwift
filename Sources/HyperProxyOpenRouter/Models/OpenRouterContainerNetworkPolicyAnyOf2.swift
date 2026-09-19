@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterContainerNetworkPolicyAnyOf2: Codable, Sendable {
   public var allowedDomains: [String]
-  public var typeModel: OpenRouterContainerNetworkPolicyAnyOf2TypeModel
+  public var kind: OpenRouterContainerNetworkPolicyAnyOf2Kind
 
   public init(
     allowedDomains: [String],
-    typeModel: OpenRouterContainerNetworkPolicyAnyOf2TypeModel
+    kind: OpenRouterContainerNetworkPolicyAnyOf2Kind
   ) {
     self.allowedDomains = allowedDomains
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case allowedDomains = "allowed_domains"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

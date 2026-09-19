@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterGetAppRankingsParametersCategory: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let coding = Self(rawValue: "coding")
-  public static let creative = Self(rawValue: "creative")
-  public static let productivity = Self(rawValue: "productivity")
-  public static let entertainment = Self(rawValue: "entertainment")
+public enum OpenRouterGetAppRankingsParametersCategory: String, Codable, Hashable, Sendable {
+  case coding = "coding"
+  case creative = "creative"
+  case productivity = "productivity"
+  case entertainment = "entertainment"
 }

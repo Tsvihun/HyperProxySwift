@@ -10,4 +10,17 @@
 import Foundation
 import HyperProxyCore
 
-public typealias ElevenLabsSoundGenerationResponse = String
+public struct ElevenLabsSoundGenerationResponse: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+}
+
+extension ElevenLabsSoundGenerationResponse: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self.init(rawValue: value)
+  }
+}

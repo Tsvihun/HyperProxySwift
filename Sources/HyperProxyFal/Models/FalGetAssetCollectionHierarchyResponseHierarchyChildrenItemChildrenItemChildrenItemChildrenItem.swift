@@ -17,26 +17,26 @@ public struct
   public var children: [HyperProxyJSONValue]
   public var id: String
   public var name: String
-  public var typeModel:
-    FalGetAssetCollectionHierarchyResponseHierarchyChildrenItemChildrenItemChildrenItemChildrenItemTypeModel
+  public var kind:
+    FalGetAssetCollectionHierarchyResponseHierarchyChildrenItemChildrenItemChildrenItemChildrenItemKind
 
   public init(
     children: [HyperProxyJSONValue],
     id: String,
     name: String,
-    typeModel:
-      FalGetAssetCollectionHierarchyResponseHierarchyChildrenItemChildrenItemChildrenItemChildrenItemTypeModel
+    kind:
+      FalGetAssetCollectionHierarchyResponseHierarchyChildrenItemChildrenItemChildrenItemChildrenItemKind
   ) {
     self.children = children
     self.id = id
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case children
     case id
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct PerplexityApiChatCompletionsRequestStreamMode: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let full = Self(rawValue: "full")
-  public static let concise = Self(rawValue: "concise")
+public enum PerplexityApiChatCompletionsRequestStreamMode: String, Codable, Hashable, Sendable {
+  case full = "full"
+  case concise = "concise"
 }

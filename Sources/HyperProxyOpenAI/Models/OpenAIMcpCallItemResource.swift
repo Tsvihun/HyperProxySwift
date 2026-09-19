@@ -19,7 +19,7 @@ public struct OpenAIMcpCallItemResource: Codable, Sendable {
   public var serverLabel: String
   public var status: OpenAIFunctionCallStatusResource
   public var turnId: String
-  public var typeModel: OpenAIMcpCallItemResourceTypeModel
+  public var kind: OpenAIMcpCallItemResourceKind
 
   public init(
     arguments: HyperProxyJSONValue,
@@ -30,7 +30,7 @@ public struct OpenAIMcpCallItemResource: Codable, Sendable {
     serverLabel: String,
     status: OpenAIFunctionCallStatusResource,
     turnId: String,
-    typeModel: OpenAIMcpCallItemResourceTypeModel
+    kind: OpenAIMcpCallItemResourceKind
   ) {
     self.arguments = arguments
     self.error = error
@@ -40,7 +40,7 @@ public struct OpenAIMcpCallItemResource: Codable, Sendable {
     self.serverLabel = serverLabel
     self.status = status
     self.turnId = turnId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -52,6 +52,6 @@ public struct OpenAIMcpCallItemResource: Codable, Sendable {
     case serverLabel = "server_label"
     case status
     case turnId = "turn_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

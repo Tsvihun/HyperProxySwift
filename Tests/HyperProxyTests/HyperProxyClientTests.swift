@@ -111,12 +111,12 @@ struct HyperProxyClientTests {
     )
   }
 
-  @Test("Builds the AIProxy-compatible wire contract")
-  func buildsAIProxyRequest() async throws {
+  @Test("Builds the compatible legacy wire contract")
+  func buildsLegacyGatewayRequest() async throws {
     let security = HyperProxySecurity { _ in
       ["X-HyperProxy-Device-Check": "device-token"]
     }
-    let client = HyperProxyClient.aiProxy(
+    let client = HyperProxyClient.legacyGateway(
       gatewayURL: self.gatewayURL,
       appKey: "ai-app-key",
       clientID: "customer-123",
@@ -153,10 +153,10 @@ struct HyperProxyClientTests {
     )
   }
 
-  @Test("Rejects App Attest when targeting an AIProxy service")
+  @Test("Rejects App Attest when targeting a legacy gateway")
   func rejectsIncompatibleSecurity() async {
     let security = HyperProxySecurity.deviceToken { "app-attest-token" }
-    let client = HyperProxyClient.aiProxy(
+    let client = HyperProxyClient.legacyGateway(
       gatewayURL: self.gatewayURL,
       appKey: "ai-app-key",
       clientID: "customer-123",
@@ -168,12 +168,12 @@ struct HyperProxyClientTests {
     }
   }
 
-  @Test("Builds AIProxy-compatible gRPC metadata")
-  func buildsAIProxyGRPCMetadata() async throws {
+  @Test("Builds compatible legacy gRPC metadata")
+  func buildsLegacyGatewayGRPCMetadata() async throws {
     let security = HyperProxySecurity { _ in
       ["X-HyperProxy-Device-Check": "grpc-device-token"]
     }
-    let metadata = try await HyperProxyClient.aiProxyGRPCMetadata(
+    let metadata = try await HyperProxyClient.legacyGatewayGRPCMetadata(
       gatewayURL: self.gatewayURL,
       appKey: "ai-app-key",
       clientID: "customer-123",
@@ -211,21 +211,21 @@ struct HyperProxyClientTests {
         == "anonymous-account"
     )
 
-    let aiClient = HyperProxyClient.aiProxy(
+    let legacyClient = HyperProxyClient.legacyGateway(
       gatewayURL: self.gatewayURL,
       appKey: "ai-app-key",
       identityProvider: identity,
       security: .none
     )
-    let aiRequest = try await aiClient.prepare(
+    let legacyRequest = try await legacyClient.prepare(
       .init(method: .get, path: "v1/models")
     )
     #expect(
-      aiRequest.value(forHTTPHeaderField: "aiproxy-client-id")
+      legacyRequest.value(forHTTPHeaderField: "aiproxy-client-id")
         == "stable-customer"
     )
     #expect(
-      aiRequest.value(forHTTPHeaderField: "aiproxy-anonymous-id")
+      legacyRequest.value(forHTTPHeaderField: "aiproxy-anonymous-id")
         == "anonymous-account"
     )
   }
@@ -266,9 +266,9 @@ struct HyperProxyClientTests {
     )
   }
 
-  @Test("Rejects Firebase App Check when targeting AIProxy")
-  func rejectsFirebaseForAIProxy() async {
-    let client = HyperProxyClient.aiProxy(
+  @Test("Rejects Firebase App Check when targeting a legacy gateway")
+  func rejectsFirebaseForLegacyGateway() async {
+    let client = HyperProxyClient.legacyGateway(
       gatewayURL: self.gatewayURL,
       appKey: "ai-app-key",
       clientID: "customer-123",

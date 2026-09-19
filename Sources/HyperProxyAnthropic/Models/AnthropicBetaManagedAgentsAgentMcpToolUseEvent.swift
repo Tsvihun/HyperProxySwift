@@ -18,7 +18,7 @@ public struct AnthropicBetaManagedAgentsAgentMcpToolUseEvent: Codable, Sendable 
   public var name: String
   public var processedAt: AnthropicBetaTimestamp
   public var sessionThreadId: String?
-  public var typeModel: AnthropicBetaManagedAgentsAgentMcpToolUseEventTypeModel
+  public var kind: AnthropicBetaManagedAgentsAgentMcpToolUseEventKind
 
   public init(
     id: String,
@@ -26,7 +26,7 @@ public struct AnthropicBetaManagedAgentsAgentMcpToolUseEvent: Codable, Sendable 
     mcpServerName: String,
     name: String,
     processedAt: AnthropicBetaTimestamp,
-    typeModel: AnthropicBetaManagedAgentsAgentMcpToolUseEventTypeModel,
+    kind: AnthropicBetaManagedAgentsAgentMcpToolUseEventKind,
     evaluatedPermission: AnthropicBetaManagedAgentsAgentEvaluatedPermission? = nil,
     sessionThreadId: String? = nil
   ) {
@@ -37,7 +37,7 @@ public struct AnthropicBetaManagedAgentsAgentMcpToolUseEvent: Codable, Sendable 
     self.name = name
     self.processedAt = processedAt
     self.sessionThreadId = sessionThreadId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct AnthropicBetaManagedAgentsAgentMcpToolUseEvent: Codable, Sendable 
     case name
     case processedAt = "processed_at"
     case sessionThreadId = "session_thread_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

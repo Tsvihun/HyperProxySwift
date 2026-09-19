@@ -13,25 +13,25 @@ import HyperProxyCore
 public struct OpenAILiveDelegationItem: Codable, Sendable {
   public var id: String
   public var responseId: String?
-  public var target: HyperProxyJSONValue
-  public var typeModel: OpenAILiveDelegationItemTypeModel
+  public var target: OpenAILiveDelegationItemTarget
+  public var kind: OpenAILiveDelegationItemKind
 
   public init(
     id: String,
-    target: HyperProxyJSONValue,
-    typeModel: OpenAILiveDelegationItemTypeModel,
+    target: OpenAILiveDelegationItemTarget,
+    kind: OpenAILiveDelegationItemKind,
     responseId: String? = nil
   ) {
     self.id = id
     self.responseId = responseId
     self.target = target
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case id
     case responseId = "response_id"
     case target
-    case typeModel = "type"
+    case kind = "type"
   }
 }

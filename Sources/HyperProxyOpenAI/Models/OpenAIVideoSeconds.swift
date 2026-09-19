@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIVideoSeconds: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let value4 = Self(rawValue: "4")
-  public static let value8 = Self(rawValue: "8")
-  public static let value12 = Self(rawValue: "12")
+public enum OpenAIVideoSeconds: String, Codable, Hashable, Sendable {
+  case value4 = "4"
+  case value8 = "8"
+  case value12 = "12"
 }

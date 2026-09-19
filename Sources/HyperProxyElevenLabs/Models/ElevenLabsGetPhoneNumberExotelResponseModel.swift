@@ -15,7 +15,7 @@ public struct ElevenLabsGetPhoneNumberExotelResponseModel: Codable, Sendable {
   public var label: String
   public var phoneNumber: String
   public var phoneNumberId: String
-  public var provider: String?
+  public var provider: ElevenLabsExotelProvider?
   public var supportsInbound: Bool?
   public var supportsOutbound: Bool?
 
@@ -24,7 +24,7 @@ public struct ElevenLabsGetPhoneNumberExotelResponseModel: Codable, Sendable {
     phoneNumber: String,
     phoneNumberId: String,
     assignedAgent: ElevenLabsPhoneNumberAgentInfo? = nil,
-    provider: String? = nil,
+    provider: ElevenLabsExotelProvider? = nil,
     supportsInbound: Bool? = nil,
     supportsOutbound: Bool? = nil
   ) {

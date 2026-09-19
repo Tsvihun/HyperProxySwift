@@ -17,7 +17,7 @@ public struct MistralDeploymentWorkerSpecResponse: Codable, Sendable {
   public var githubUrl: String
   public var restartedAt: String?
   public var revision: String?
-  public var typeModel: String?
+  public var kind: String?
   public var workingDir: String?
 
   public init(
@@ -27,7 +27,7 @@ public struct MistralDeploymentWorkerSpecResponse: Codable, Sendable {
     entrypoint: String? = nil,
     restartedAt: String? = nil,
     revision: String? = nil,
-    typeModel: String? = nil,
+    kind: String? = nil,
     workingDir: String? = nil
   ) {
     self.commit = commit
@@ -36,7 +36,7 @@ public struct MistralDeploymentWorkerSpecResponse: Codable, Sendable {
     self.githubUrl = githubUrl
     self.restartedAt = restartedAt
     self.revision = revision
-    self.typeModel = typeModel
+    self.kind = kind
     self.workingDir = workingDir
   }
 
@@ -47,7 +47,7 @@ public struct MistralDeploymentWorkerSpecResponse: Codable, Sendable {
     case githubUrl = "github_url"
     case restartedAt = "restarted_at"
     case revision
-    case typeModel = "type"
+    case kind = "type"
     case workingDir = "working_dir"
   }
 }

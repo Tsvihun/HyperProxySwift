@@ -12,10 +12,10 @@ import HyperProxyCore
 
 public struct MistralUpdateMetricsRequestDeploymentMetricsOffline: Codable, Sendable {
   public var clearMetrics: Bool?
-  public var status: String
+  public var status: MistralOfflineStatus
 
   public init(
-    status: String,
+    status: MistralOfflineStatus = .offline,
     clearMetrics: Bool? = nil
   ) {
     self.clearMetrics = clearMetrics

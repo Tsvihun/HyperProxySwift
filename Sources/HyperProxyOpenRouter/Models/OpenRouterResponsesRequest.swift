@@ -26,7 +26,7 @@ public struct OpenRouterResponsesRequest: Codable, Sendable {
   public var model: String?
   public var models: [String]?
   public var parallelToolCalls: Bool?
-  public var plugins: [HyperProxyJSONValue]?
+  public var plugins: [OpenRouterResponsesRequestPluginsItem]?
   public var presencePenalty: Double?
   public var previousResponseId: HyperProxyJSONValue?
   public var prompt: OpenRouterStoredPromptTemplate?
@@ -39,12 +39,12 @@ public struct OpenRouterResponsesRequest: Codable, Sendable {
   public var serviceTier: OpenRouterResponsesRequestServiceTier?
   public var sessionId: String?
   public var stopServerToolsWhen: OpenRouterStopServerToolsWhen?
-  public var store: Bool?
+  public var store: OpenRouterResponsesRequestStore?
   public var stream: Bool?
   public var temperature: Double?
   public var text: OpenRouterTextExtendedConfig?
   public var toolChoice: OpenRouterOpenAIResponsesToolChoice?
-  public var tools: [HyperProxyJSONValue]?
+  public var tools: [OpenRouterResponsesRequestToolsItem]?
   public var topK: Int?
   public var topLogprobs: Int?
   public var topP: Double?
@@ -68,7 +68,7 @@ public struct OpenRouterResponsesRequest: Codable, Sendable {
     model: String? = nil,
     models: [String]? = nil,
     parallelToolCalls: Bool? = nil,
-    plugins: [HyperProxyJSONValue]? = nil,
+    plugins: [OpenRouterResponsesRequestPluginsItem]? = nil,
     presencePenalty: Double? = nil,
     previousResponseId: HyperProxyJSONValue? = nil,
     prompt: OpenRouterStoredPromptTemplate? = nil,
@@ -81,12 +81,12 @@ public struct OpenRouterResponsesRequest: Codable, Sendable {
     serviceTier: OpenRouterResponsesRequestServiceTier? = nil,
     sessionId: String? = nil,
     stopServerToolsWhen: OpenRouterStopServerToolsWhen? = nil,
-    store: Bool? = nil,
+    store: OpenRouterResponsesRequestStore? = nil,
     stream: Bool? = nil,
     temperature: Double? = nil,
     text: OpenRouterTextExtendedConfig? = nil,
     toolChoice: OpenRouterOpenAIResponsesToolChoice? = nil,
-    tools: [HyperProxyJSONValue]? = nil,
+    tools: [OpenRouterResponsesRequestToolsItem]? = nil,
     topK: Int? = nil,
     topLogprobs: Int? = nil,
     topP: Double? = nil,

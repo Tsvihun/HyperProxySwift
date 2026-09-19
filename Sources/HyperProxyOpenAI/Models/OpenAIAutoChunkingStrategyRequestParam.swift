@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIAutoChunkingStrategyRequestParam: Codable, Sendable {
-  public var typeModel: OpenAIAutoChunkingStrategyRequestParamTypeModel
+  public var kind: OpenAIAutoChunkingStrategyRequestParamKind
 
   public init(
-    typeModel: OpenAIAutoChunkingStrategyRequestParamTypeModel
+    kind: OpenAIAutoChunkingStrategyRequestParamKind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

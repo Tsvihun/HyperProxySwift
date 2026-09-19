@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct
+public enum
   ElevenLabsBodyEditServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysApiKeyIdPatchPermissionsAnyOf2:
-    RawRepresentable, Codable, Hashable, Sendable
+    String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let all = Self(rawValue: "all")
-  public static let noUpdate = Self(rawValue: "no_update")
+  case all = "all"
+  case noUpdate = "no_update"
 }

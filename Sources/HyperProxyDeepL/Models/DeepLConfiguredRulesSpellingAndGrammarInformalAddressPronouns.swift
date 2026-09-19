@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesSpellingAndGrammarInformalAddressPronouns: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum DeepLConfiguredRulesSpellingAndGrammarInformalAddressPronouns: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let capitalizeInformalAddressPronouns = Self(
-    rawValue: "capitalize_informal_address_pronouns")
-  public static let doNotCapitalizeInformalAddressPronouns = Self(
-    rawValue: "do_not_capitalize_informal_address_pronouns")
+  case capitalizeInformalAddressPronouns = "capitalize_informal_address_pronouns"
+  case doNotCapitalizeInformalAddressPronouns = "do_not_capitalize_informal_address_pronouns"
 }

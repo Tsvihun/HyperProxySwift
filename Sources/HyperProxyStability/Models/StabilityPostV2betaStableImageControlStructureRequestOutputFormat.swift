@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct StabilityPostV2betaStableImageControlStructureRequestOutputFormat: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum StabilityPostV2betaStableImageControlStructureRequestOutputFormat: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let png = Self(rawValue: "png")
-  public static let jpeg = Self(rawValue: "jpeg")
-  public static let webp = Self(rawValue: "webp")
+  case png = "png"
+  case jpeg = "jpeg"
+  case webp = "webp"
 }

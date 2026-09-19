@@ -10,20 +10,14 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAICacheMissReasonTypeEnum: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let modelChanged = Self(rawValue: "model_changed")
-  public static let promptCacheKeyChanged = Self(rawValue: "prompt_cache_key_changed")
-  public static let toolsChanged = Self(rawValue: "tools_changed")
-  public static let textFormatChanged = Self(rawValue: "text_format_changed")
-  public static let reasoningEffortChanged = Self(rawValue: "reasoning_effort_changed")
-  public static let verbosityChanged = Self(rawValue: "verbosity_changed")
-  public static let contextCompacted = Self(rawValue: "context_compacted")
-  public static let inputChanged = Self(rawValue: "input_changed")
-  public static let serviceTierChanged = Self(rawValue: "service_tier_changed")
+public enum OpenAICacheMissReasonTypeEnum: String, Codable, Hashable, Sendable {
+  case modelChanged = "model_changed"
+  case promptCacheKeyChanged = "prompt_cache_key_changed"
+  case toolsChanged = "tools_changed"
+  case textFormatChanged = "text_format_changed"
+  case reasoningEffortChanged = "reasoning_effort_changed"
+  case verbosityChanged = "verbosity_changed"
+  case contextCompacted = "context_compacted"
+  case inputChanged = "input_changed"
+  case serviceTierChanged = "service_tier_changed"
 }

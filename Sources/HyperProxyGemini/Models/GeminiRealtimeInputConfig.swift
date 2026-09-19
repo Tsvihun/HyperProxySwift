@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct GeminiRealtimeInputConfig: Codable, Sendable {
   public var activityHandling: GeminiRealtimeInputConfigActivityHandling?
-  public var automaticActivityDetection: HyperProxyJSONValue?
+  public var automaticActivityDetection: GeminiAutomaticActivityDetection?
   public var turnCoverage: GeminiRealtimeInputConfigTurnCoverage?
 
   public init(
     activityHandling: GeminiRealtimeInputConfigActivityHandling? = nil,
-    automaticActivityDetection: HyperProxyJSONValue? = nil,
+    automaticActivityDetection: GeminiAutomaticActivityDetection? = nil,
     turnCoverage: GeminiRealtimeInputConfigTurnCoverage? = nil
   ) {
     self.activityHandling = activityHandling

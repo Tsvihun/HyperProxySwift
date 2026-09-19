@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterCreateEmbeddingsResponse200JSONDataItem: Codable, Sendable {
-  public var embedding: HyperProxyJSONValue
+  public var embedding: OpenRouterCreateEmbeddingsResponse200JSONDataItemEmbedding
   public var index: Int?
   public var object: OpenRouterCreateEmbeddingsResponse200JSONDataItemObject
 
   public init(
-    embedding: HyperProxyJSONValue,
+    embedding: OpenRouterCreateEmbeddingsResponse200JSONDataItemEmbedding,
     object: OpenRouterCreateEmbeddingsResponse200JSONDataItemObject,
     index: Int? = nil
   ) {

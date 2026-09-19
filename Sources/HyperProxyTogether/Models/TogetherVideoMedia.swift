@@ -11,20 +11,20 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherVideoMedia: Codable, Sendable {
-  public var audioInputs: [HyperProxyJSONValue]?
+  public var audioInputs: [TogetherVideoMediaAudioInputsItem]?
   public var frameImages: [TogetherVideoFrameImageInput]?
   public var frameVideos: [TogetherVideoRef]?
   public var referenceImages: [String]?
   public var referenceVideos: [TogetherVideoRef]?
-  public var sourceVideo: HyperProxyJSONValue?
+  public var sourceVideo: TogetherVideoMediaSourceVideo?
 
   public init(
-    audioInputs: [HyperProxyJSONValue]? = nil,
+    audioInputs: [TogetherVideoMediaAudioInputsItem]? = nil,
     frameImages: [TogetherVideoFrameImageInput]? = nil,
     frameVideos: [TogetherVideoRef]? = nil,
     referenceImages: [String]? = nil,
     referenceVideos: [TogetherVideoRef]? = nil,
-    sourceVideo: HyperProxyJSONValue? = nil
+    sourceVideo: TogetherVideoMediaSourceVideo? = nil
   ) {
     self.audioInputs = audioInputs
     self.frameImages = frameImages

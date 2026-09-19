@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsResourceAccessInfoAccessSourceAnyOf1: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let creator = Self(rawValue: "creator")
-  public static let explicit = Self(rawValue: "explicit")
-  public static let workspaceAdmin = Self(rawValue: "workspace_admin")
-  public static let workspaceDefault = Self(rawValue: "workspace_default")
+public enum ElevenLabsResourceAccessInfoAccessSourceAnyOf1: String, Codable, Hashable, Sendable {
+  case creator = "creator"
+  case explicit = "explicit"
+  case workspaceAdmin = "workspace_admin"
+  case workspaceDefault = "workspace_default"
 }

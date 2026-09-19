@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAISpeechAudioDeltaEvent: Codable, Sendable {
   public var audio: String
-  public var typeModel: OpenAISpeechAudioDeltaEventTypeModel
+  public var kind: OpenAISpeechAudioDeltaEventKind
 
   public init(
     audio: String,
-    typeModel: OpenAISpeechAudioDeltaEventTypeModel
+    kind: OpenAISpeechAudioDeltaEventKind
   ) {
     self.audio = audio
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case audio
-    case typeModel = "type"
+    case kind = "type"
   }
 }

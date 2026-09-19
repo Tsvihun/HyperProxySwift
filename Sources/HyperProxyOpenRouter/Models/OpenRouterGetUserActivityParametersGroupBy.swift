@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterGetUserActivityParametersGroupBy: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let workspace = Self(rawValue: "workspace")
+public enum OpenRouterGetUserActivityParametersGroupBy: String, Codable, Hashable, Sendable {
+  case workspace = "workspace"
 }

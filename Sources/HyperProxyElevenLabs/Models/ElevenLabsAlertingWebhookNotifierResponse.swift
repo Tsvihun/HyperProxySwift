@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsAlertingWebhookNotifierResponse: Codable, Sendable {
-  public var typeModel: String?
+  public var kind: ElevenLabsWebhookKind?
   public var webhookId: String
 
   public init(
     webhookId: String,
-    typeModel: String? = nil
+    kind: ElevenLabsWebhookKind? = nil
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
     self.webhookId = webhookId
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
     case webhookId = "webhook_id"
   }
 }

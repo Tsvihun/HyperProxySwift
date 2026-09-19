@@ -10,20 +10,12 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterSubmitGenerationFeedbackRequestCategory: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let latency = Self(rawValue: "latency")
-  public static let incoherence = Self(rawValue: "incoherence")
-  public static let incorrectResponse = Self(rawValue: "incorrect_response")
-  public static let formatting = Self(rawValue: "formatting")
-  public static let billing = Self(rawValue: "billing")
-  public static let apiError = Self(rawValue: "api_error")
-  public static let other = Self(rawValue: "other")
+public enum OpenRouterSubmitGenerationFeedbackRequestCategory: String, Codable, Hashable, Sendable {
+  case latency = "latency"
+  case incoherence = "incoherence"
+  case incorrectResponse = "incorrect_response"
+  case formatting = "formatting"
+  case billing = "billing"
+  case apiError = "api_error"
+  case other = "other"
 }

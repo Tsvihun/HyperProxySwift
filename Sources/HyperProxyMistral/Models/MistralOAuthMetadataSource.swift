@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralOAuthMetadataSource: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let autodiscovery = Self(rawValue: "autodiscovery")
-  public static let provided = Self(rawValue: "provided")
+public enum MistralOAuthMetadataSource: String, Codable, Hashable, Sendable {
+  case autodiscovery = "autodiscovery"
+  case provided = "provided"
 }

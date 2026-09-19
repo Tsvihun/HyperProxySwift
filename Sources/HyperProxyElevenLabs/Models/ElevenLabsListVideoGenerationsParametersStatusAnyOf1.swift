@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsListVideoGenerationsParametersStatusAnyOf1: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum ElevenLabsListVideoGenerationsParametersStatusAnyOf1: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let pending = Self(rawValue: "pending")
-  public static let generating = Self(rawValue: "generating")
-  public static let completed = Self(rawValue: "completed")
-  public static let failed = Self(rawValue: "failed")
+  case pending = "pending"
+  case generating = "generating"
+  case completed = "completed"
+  case failed = "failed"
 }

@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiChunkingConfig: Codable, Sendable {
-  public var whiteSpaceConfig: HyperProxyJSONValue?
+  public var whiteSpaceConfig: GeminiWhiteSpaceConfig?
 
   public init(
-    whiteSpaceConfig: HyperProxyJSONValue? = nil
+    whiteSpaceConfig: GeminiWhiteSpaceConfig? = nil
   ) {
     self.whiteSpaceConfig = whiteSpaceConfig
   }

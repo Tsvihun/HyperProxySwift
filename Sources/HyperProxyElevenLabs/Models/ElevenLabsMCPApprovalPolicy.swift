@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsMCPApprovalPolicy: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let autoApproveAll = Self(rawValue: "auto_approve_all")
-  public static let requireApprovalAll = Self(rawValue: "require_approval_all")
-  public static let requireApprovalPerTool = Self(rawValue: "require_approval_per_tool")
+public enum ElevenLabsMCPApprovalPolicy: String, Codable, Hashable, Sendable {
+  case autoApproveAll = "auto_approve_all"
+  case requireApprovalAll = "require_approval_all"
+  case requireApprovalPerTool = "require_approval_per_tool"
 }

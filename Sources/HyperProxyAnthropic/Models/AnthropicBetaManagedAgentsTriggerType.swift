@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaManagedAgentsTriggerType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let schedule = Self(rawValue: "schedule")
-  public static let manual = Self(rawValue: "manual")
+public enum AnthropicBetaManagedAgentsTriggerType: String, Codable, Hashable, Sendable {
+  case schedule = "schedule"
+  case manual = "manual"
 }

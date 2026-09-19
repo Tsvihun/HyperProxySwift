@@ -10,15 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterTokenExchangeResponseIssuedTokenType: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let urnIetfParamsOauthTokenTypeAccessToken = Self(
-    rawValue: "urn:ietf:params:oauth:token-type:access_token")
+public enum OpenRouterTokenExchangeResponseIssuedTokenType: String, Codable, Hashable, Sendable {
+  case urnIetfParamsOauthTokenTypeAccessToken = "urn:ietf:params:oauth:token-type:access_token"
 }

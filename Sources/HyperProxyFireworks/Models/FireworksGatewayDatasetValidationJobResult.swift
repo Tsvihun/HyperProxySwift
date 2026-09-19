@@ -10,19 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksGatewayDatasetValidationJobResult: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let dATASETVALIDATIONJOBRESULTUNSPECIFIED = Self(
-    rawValue: "DATASET_VALIDATION_JOB_RESULT_UNSPECIFIED")
-  public static let dATASETVALIDATIONJOBRESULTSUCCESS = Self(
-    rawValue: "DATASET_VALIDATION_JOB_RESULT_SUCCESS")
-  public static let dATASETVALIDATIONJOBRESULTFAILURE = Self(
-    rawValue: "DATASET_VALIDATION_JOB_RESULT_FAILURE")
+public enum FireworksGatewayDatasetValidationJobResult: String, Codable, Hashable, Sendable {
+  case dATASETVALIDATIONJOBRESULTUNSPECIFIED = "DATASET_VALIDATION_JOB_RESULT_UNSPECIFIED"
+  case dATASETVALIDATIONJOBRESULTSUCCESS = "DATASET_VALIDATION_JOB_RESULT_SUCCESS"
+  case dATASETVALIDATIONJOBRESULTFAILURE = "DATASET_VALIDATION_JOB_RESULT_FAILURE"
 }

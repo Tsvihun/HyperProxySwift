@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterMessagesContentBlockDeltaEventDeltaOneOf2: Codable, Sendable {
   public var partialJson: String
-  public var typeModel: OpenRouterMessagesContentBlockDeltaEventDeltaOneOf2TypeModel
+  public var kind: OpenRouterMessagesContentBlockDeltaEventDeltaOneOf2Kind
 
   public init(
     partialJson: String,
-    typeModel: OpenRouterMessagesContentBlockDeltaEventDeltaOneOf2TypeModel
+    kind: OpenRouterMessagesContentBlockDeltaEventDeltaOneOf2Kind
   ) {
     self.partialJson = partialJson
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case partialJson = "partial_json"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

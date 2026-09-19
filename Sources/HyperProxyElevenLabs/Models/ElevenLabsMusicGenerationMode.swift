@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsMusicGenerationMode: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let track = Self(rawValue: "track")
-  public static let loop = Self(rawValue: "loop")
-  public static let ambience = Self(rawValue: "ambience")
-  public static let videoToMusic = Self(rawValue: "video_to_music")
+public enum ElevenLabsMusicGenerationMode: String, Codable, Hashable, Sendable {
+  case track = "track"
+  case loop = "loop"
+  case ambience = "ambience"
+  case videoToMusic = "video_to_music"
 }

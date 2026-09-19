@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaInferenceGeoFilter: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let global = Self(rawValue: "global")
-  public static let notAvailable = Self(rawValue: "not_available")
-  public static let us = Self(rawValue: "us")
+public enum AnthropicBetaInferenceGeoFilter: String, Codable, Hashable, Sendable {
+  case global = "global"
+  case notAvailable = "not_available"
+  case us = "us"
 }

@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenAIMessageDeltaContentImageUrlObject: Codable, Sendable {
   public var imageUrl: OpenAIMessageDeltaContentImageUrlObjectImageUrl?
   public var index: Int
-  public var typeModel: OpenAIMessageDeltaContentImageUrlObjectTypeModel
+  public var kind: OpenAIMessageDeltaContentImageUrlObjectKind
 
   public init(
     index: Int,
-    typeModel: OpenAIMessageDeltaContentImageUrlObjectTypeModel,
+    kind: OpenAIMessageDeltaContentImageUrlObjectKind,
     imageUrl: OpenAIMessageDeltaContentImageUrlObjectImageUrl? = nil
   ) {
     self.imageUrl = imageUrl
     self.index = index
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case imageUrl = "image_url"
     case index
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -26,7 +26,7 @@ public struct ElevenLabsClientToolConfigInput: Codable, Sendable {
   public var toolCallSound: ElevenLabsToolCallSoundType?
   public var toolCallSoundBehavior: ElevenLabsToolCallSoundBehavior?
   public var toolErrorHandlingMode: ElevenLabsToolErrorHandlingMode?
-  public var typeModel: String?
+  public var kind: ElevenLabsClientKind?
 
   public init(
     description: String,
@@ -44,7 +44,7 @@ public struct ElevenLabsClientToolConfigInput: Codable, Sendable {
     toolCallSound: ElevenLabsToolCallSoundType? = nil,
     toolCallSoundBehavior: ElevenLabsToolCallSoundBehavior? = nil,
     toolErrorHandlingMode: ElevenLabsToolErrorHandlingMode? = nil,
-    typeModel: String? = nil
+    kind: ElevenLabsClientKind? = nil
   ) {
     self.assignments = assignments
     self.description = description
@@ -61,7 +61,7 @@ public struct ElevenLabsClientToolConfigInput: Codable, Sendable {
     self.toolCallSound = toolCallSound
     self.toolCallSoundBehavior = toolCallSoundBehavior
     self.toolErrorHandlingMode = toolErrorHandlingMode
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -80,6 +80,6 @@ public struct ElevenLabsClientToolConfigInput: Codable, Sendable {
     case toolCallSound = "tool_call_sound"
     case toolCallSoundBehavior = "tool_call_sound_behavior"
     case toolErrorHandlingMode = "tool_error_handling_mode"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

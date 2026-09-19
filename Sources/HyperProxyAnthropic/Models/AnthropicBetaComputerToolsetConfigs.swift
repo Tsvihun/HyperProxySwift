@@ -25,7 +25,7 @@ public struct AnthropicBetaComputerToolsetConfigs: Codable, Sendable {
   public var screenshot: AnthropicBetaComputerScreenshotConfig?
   public var scroll: AnthropicBetaComputerScrollConfig?
   public var tripleClick: AnthropicBetaComputerTripleClickConfig?
-  public var typeModel: AnthropicBetaComputerTypeConfig?
+  public var kind: AnthropicBetaComputerTypeConfig?
   public var wait: AnthropicBetaComputerWaitConfig?
   public var zoom: AnthropicBetaComputerZoomConfig?
 
@@ -44,7 +44,7 @@ public struct AnthropicBetaComputerToolsetConfigs: Codable, Sendable {
     screenshot: AnthropicBetaComputerScreenshotConfig? = nil,
     scroll: AnthropicBetaComputerScrollConfig? = nil,
     tripleClick: AnthropicBetaComputerTripleClickConfig? = nil,
-    typeModel: AnthropicBetaComputerTypeConfig? = nil,
+    kind: AnthropicBetaComputerTypeConfig? = nil,
     wait: AnthropicBetaComputerWaitConfig? = nil,
     zoom: AnthropicBetaComputerZoomConfig? = nil
   ) {
@@ -62,7 +62,7 @@ public struct AnthropicBetaComputerToolsetConfigs: Codable, Sendable {
     self.screenshot = screenshot
     self.scroll = scroll
     self.tripleClick = tripleClick
-    self.typeModel = typeModel
+    self.kind = kind
     self.wait = wait
     self.zoom = zoom
   }
@@ -82,7 +82,7 @@ public struct AnthropicBetaComputerToolsetConfigs: Codable, Sendable {
     case screenshot
     case scroll
     case tripleClick = "triple_click"
-    case typeModel = "type"
+    case kind = "type"
     case wait
     case zoom
   }

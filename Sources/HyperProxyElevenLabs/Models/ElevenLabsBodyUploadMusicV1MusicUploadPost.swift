@@ -11,14 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsBodyUploadMusicV1MusicUploadPost: Codable, Sendable {
-  public var extractCompositionPlan: HyperProxyJSONValue?
+  public var extractCompositionPlan:
+    ElevenLabsBodyUploadMusicV1MusicUploadPostExtractCompositionPlan?
   public var file: String
   public var withTimestamps: Bool?
   public var withWaveformVisual: Bool?
 
   public init(
     file: String,
-    extractCompositionPlan: HyperProxyJSONValue? = nil,
+    extractCompositionPlan: ElevenLabsBodyUploadMusicV1MusicUploadPostExtractCompositionPlan? = nil,
     withTimestamps: Bool? = nil,
     withWaveformVisual: Bool? = nil
   ) {

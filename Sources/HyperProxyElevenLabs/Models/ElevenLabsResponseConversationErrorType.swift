@@ -10,31 +10,24 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsResponseConversationErrorType: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let systemError = Self(rawValue: "system_error")
-  public static let callInitializationError = Self(rawValue: "call_initialization_error")
-  public static let lineBusy = Self(rawValue: "line_busy")
-  public static let noAnswer = Self(rawValue: "no_answer")
-  public static let callRejected = Self(rawValue: "call_rejected")
-  public static let blockedByUser = Self(rawValue: "blocked_by_user")
-  public static let agentConfigurationError = Self(rawValue: "agent_configuration_error")
-  public static let invalidClientRequest = Self(rawValue: "invalid_client_request")
-  public static let permissionError = Self(rawValue: "permission_error")
-  public static let entitlementExceeded = Self(rawValue: "entitlement_exceeded")
-  public static let clientDisconnected = Self(rawValue: "client_disconnected")
-  public static let llmError = Self(rawValue: "llm_error")
-  public static let speechError = Self(rawValue: "speech_error")
-  public static let toolError = Self(rawValue: "tool_error")
-  public static let integrationError = Self(rawValue: "integration_error")
-  public static let guardrailTriggered = Self(rawValue: "guardrail_triggered")
-  public static let safetyViolation = Self(rawValue: "safety_violation")
-  public static let maxDurationExceeded = Self(rawValue: "max_duration_exceeded")
-  public static let postProcessingError = Self(rawValue: "post_processing_error")
+public enum ElevenLabsResponseConversationErrorType: String, Codable, Hashable, Sendable {
+  case systemError = "system_error"
+  case callInitializationError = "call_initialization_error"
+  case lineBusy = "line_busy"
+  case noAnswer = "no_answer"
+  case callRejected = "call_rejected"
+  case blockedByUser = "blocked_by_user"
+  case agentConfigurationError = "agent_configuration_error"
+  case invalidClientRequest = "invalid_client_request"
+  case permissionError = "permission_error"
+  case entitlementExceeded = "entitlement_exceeded"
+  case clientDisconnected = "client_disconnected"
+  case llmError = "llm_error"
+  case speechError = "speech_error"
+  case toolError = "tool_error"
+  case integrationError = "integration_error"
+  case guardrailTriggered = "guardrail_triggered"
+  case safetyViolation = "safety_violation"
+  case maxDurationExceeded = "max_duration_exceeded"
+  case postProcessingError = "post_processing_error"
 }

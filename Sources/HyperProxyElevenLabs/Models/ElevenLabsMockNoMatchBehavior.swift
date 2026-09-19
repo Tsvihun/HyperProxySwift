@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsMockNoMatchBehavior: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let callRealTool = Self(rawValue: "call_real_tool")
-  public static let raiseError = Self(rawValue: "raise_error")
+public enum ElevenLabsMockNoMatchBehavior: String, Codable, Hashable, Sendable {
+  case callRealTool = "call_real_tool"
+  case raiseError = "raise_error"
 }

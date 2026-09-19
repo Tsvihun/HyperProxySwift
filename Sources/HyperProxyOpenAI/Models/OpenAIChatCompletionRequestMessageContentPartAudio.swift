@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenAIChatCompletionRequestMessageContentPartAudio: Codable, Sendable {
   public var inputAudio: OpenAIChatCompletionRequestMessageContentPartAudioInputAudio
   public var promptCacheBreakpoint: OpenAIPromptCacheBreakpointParam?
-  public var typeModel: OpenAIChatCompletionRequestMessageContentPartAudioTypeModel
+  public var kind: OpenAIChatCompletionRequestMessageContentPartAudioKind
 
   public init(
     inputAudio: OpenAIChatCompletionRequestMessageContentPartAudioInputAudio,
-    typeModel: OpenAIChatCompletionRequestMessageContentPartAudioTypeModel,
+    kind: OpenAIChatCompletionRequestMessageContentPartAudioKind,
     promptCacheBreakpoint: OpenAIPromptCacheBreakpointParam? = nil
   ) {
     self.inputAudio = inputAudio
     self.promptCacheBreakpoint = promptCacheBreakpoint
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case inputAudio = "input_audio"
     case promptCacheBreakpoint = "prompt_cache_breakpoint"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

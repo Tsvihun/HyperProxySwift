@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIActiveStatus: Codable, Sendable {
-  public var typeModel: OpenAIActiveStatusTypeModel
+  public var kind: OpenAIActiveStatusKind
 
   public init(
-    typeModel: OpenAIActiveStatusTypeModel
+    kind: OpenAIActiveStatusKind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterAnthropicAdvisorMessageUsageIterationAllOf2: Codable, Sendable {
   public var model: String
-  public var typeModel: OpenRouterAnthropicAdvisorMessageUsageIterationAllOf2TypeModel
+  public var kind: OpenRouterAnthropicAdvisorMessageUsageIterationAllOf2Kind
 
   public init(
     model: String,
-    typeModel: OpenRouterAnthropicAdvisorMessageUsageIterationAllOf2TypeModel
+    kind: OpenRouterAnthropicAdvisorMessageUsageIterationAllOf2Kind
   ) {
     self.model = model
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case model
-    case typeModel = "type"
+    case kind = "type"
   }
 }

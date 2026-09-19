@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralUpdateInvocationBody: Codable, Sendable {
-  public var input: HyperProxyJSONValue?
+  public var input: MistralUpdateInvocationBodyInput?
   public var name: String
 
   public init(
     name: String,
-    input: HyperProxyJSONValue? = nil
+    input: MistralUpdateInvocationBodyInput? = nil
   ) {
     self.input = input
     self.name = name

@@ -15,20 +15,20 @@ public struct OpenRouterFusionCallAnalysisCompletedEvent: Codable, Sendable {
   public var itemId: String
   public var outputIndex: Int
   public var sequenceNumber: Int
-  public var typeModel: OpenRouterFusionCallAnalysisCompletedEventTypeModel
+  public var kind: OpenRouterFusionCallAnalysisCompletedEventKind
 
   public init(
     analysis: OpenRouterFusionAnalysisResult,
     itemId: String,
     outputIndex: Int,
     sequenceNumber: Int,
-    typeModel: OpenRouterFusionCallAnalysisCompletedEventTypeModel
+    kind: OpenRouterFusionCallAnalysisCompletedEventKind
   ) {
     self.analysis = analysis
     self.itemId = itemId
     self.outputIndex = outputIndex
     self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenRouterFusionCallAnalysisCompletedEvent: Codable, Sendable {
     case itemId = "item_id"
     case outputIndex = "output_index"
     case sequenceNumber = "sequence_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

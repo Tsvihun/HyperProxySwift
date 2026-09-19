@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAICustomToolChatCompletionsCustomFormatOneOf2GrammarSyntax: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum OpenAICustomToolChatCompletionsCustomFormatOneOf2GrammarSyntax: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let lark = Self(rawValue: "lark")
-  public static let regex = Self(rawValue: "regex")
+  case lark = "lark"
+  case regex = "regex"
 }

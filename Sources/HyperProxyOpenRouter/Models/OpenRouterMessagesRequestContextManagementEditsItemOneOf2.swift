@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterMessagesRequestContextManagementEditsItemOneOf2: Codable, Sendable {
-  public var keep: HyperProxyJSONValue?
-  public var typeModel: OpenRouterMessagesRequestContextManagementEditsItemOneOf2TypeModel
+  public var keep: OpenRouterMessagesRequestContextManagementEditsItemOneOf2Keep?
+  public var kind: OpenRouterMessagesRequestContextManagementEditsItemOneOf2Kind
 
   public init(
-    typeModel: OpenRouterMessagesRequestContextManagementEditsItemOneOf2TypeModel,
-    keep: HyperProxyJSONValue? = nil
+    kind: OpenRouterMessagesRequestContextManagementEditsItemOneOf2Kind,
+    keep: OpenRouterMessagesRequestContextManagementEditsItemOneOf2Keep? = nil
   ) {
     self.keep = keep
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case keep
-    case typeModel = "type"
+    case kind = "type"
   }
 }

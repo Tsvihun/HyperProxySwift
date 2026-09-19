@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksGatewayCriterionType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let tYPEUNSPECIFIED = Self(rawValue: "TYPE_UNSPECIFIED")
-  public static let cODESNIPPETS = Self(rawValue: "CODE_SNIPPETS")
+public enum FireworksGatewayCriterionType: String, Codable, Hashable, Sendable {
+  case tYPEUNSPECIFIED = "TYPE_UNSPECIFIED"
+  case cODESNIPPETS = "CODE_SNIPPETS"
 }

@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralScimSyncRunStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let pENDING = Self(rawValue: "PENDING")
-  public static let rUNNING = Self(rawValue: "RUNNING")
-  public static let sUCCESS = Self(rawValue: "SUCCESS")
-  public static let sKIPPED = Self(rawValue: "SKIPPED")
-  public static let fAILED = Self(rawValue: "FAILED")
+public enum MistralScimSyncRunStatus: String, Codable, Hashable, Sendable {
+  case pENDING = "PENDING"
+  case rUNNING = "RUNNING"
+  case sUCCESS = "SUCCESS"
+  case sKIPPED = "SKIPPED"
+  case fAILED = "FAILED"
 }

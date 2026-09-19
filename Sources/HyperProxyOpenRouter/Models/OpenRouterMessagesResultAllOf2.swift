@@ -14,13 +14,13 @@ public struct OpenRouterMessagesResultAllOf2: Codable, Sendable {
   public var contextManagement: OpenRouterMessagesResultAllOf2ContextManagement?
   public var openrouterMetadata: OpenRouterMetadata?
   public var provider: OpenRouterProviderName?
-  public var usage: HyperProxyJSONValue?
+  public var usage: OpenRouterMessagesResultAllOf2Usage?
 
   public init(
     contextManagement: OpenRouterMessagesResultAllOf2ContextManagement? = nil,
     openrouterMetadata: OpenRouterMetadata? = nil,
     provider: OpenRouterProviderName? = nil,
-    usage: HyperProxyJSONValue? = nil
+    usage: OpenRouterMessagesResultAllOf2Usage? = nil
   ) {
     self.contextManagement = contextManagement
     self.openrouterMetadata = openrouterMetadata

@@ -12,7 +12,8 @@ import HyperProxyCore
 
 public enum AnthropicBetaManagedAgentsMultiagentRosterEntryParams: Codable, Sendable {
   case string(String)
-  case object(HyperProxyJSONValue)
+  case betaManagedAgentsMultiagentRosterEntryParamsOneOf2(
+    AnthropicBetaManagedAgentsMultiagentRosterEntryParamsOneOf2)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -20,7 +21,8 @@ public enum AnthropicBetaManagedAgentsMultiagentRosterEntryParams: Codable, Send
       self = .string(value)
       return
     }
-    self = .object(try container.decode(HyperProxyJSONValue.self))
+    self = .betaManagedAgentsMultiagentRosterEntryParamsOneOf2(
+      try container.decode(AnthropicBetaManagedAgentsMultiagentRosterEntryParamsOneOf2.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -28,7 +30,7 @@ public enum AnthropicBetaManagedAgentsMultiagentRosterEntryParams: Codable, Send
     switch self {
     case .string(let value):
       try container.encode(value)
-    case .object(let value):
+    case .betaManagedAgentsMultiagentRosterEntryParamsOneOf2(let value):
       try container.encode(value)
     }
   }

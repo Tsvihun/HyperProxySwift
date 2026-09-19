@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsGetKnowledgeBaseListResponseModel: Codable, Sendable {
-  public var documents: [HyperProxyJSONValue]
+  public var documents: [ElevenLabsGetKnowledgeBaseListResponseModelDocumentsItem]
   public var hasMore: Bool
   public var nextCursor: String?
 
   public init(
-    documents: [HyperProxyJSONValue],
+    documents: [ElevenLabsGetKnowledgeBaseListResponseModelDocumentsItem],
     hasMore: Bool,
     nextCursor: String? = nil
   ) {

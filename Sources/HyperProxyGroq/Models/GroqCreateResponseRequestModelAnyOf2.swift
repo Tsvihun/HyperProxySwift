@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct GroqCreateResponseRequestModelAnyOf2: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let gemma29bIt = Self(rawValue: "gemma2-9b-it")
-  public static let llama3370bVersatile = Self(rawValue: "llama-3.3-70b-versatile")
-  public static let llama318bInstant = Self(rawValue: "llama-3.1-8b-instant")
-  public static let llamaGuard38b = Self(rawValue: "llama-guard-3-8b")
-  public static let llama370b8192 = Self(rawValue: "llama3-70b-8192")
-  public static let llama38b8192 = Self(rawValue: "llama3-8b-8192")
+public enum GroqCreateResponseRequestModelAnyOf2: String, Codable, Hashable, Sendable {
+  case gemma29bIt = "gemma2-9b-it"
+  case llama3370bVersatile = "llama-3.3-70b-versatile"
+  case llama318bInstant = "llama-3.1-8b-instant"
+  case llamaGuard38b = "llama-guard-3-8b"
+  case llama370b8192 = "llama3-70b-8192"
+  case llama38b8192 = "llama3-8b-8192"
 }

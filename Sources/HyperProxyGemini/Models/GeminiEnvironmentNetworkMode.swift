@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiEnvironmentNetworkMode: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let nETWORKMODEUNSPECIFIED = Self(rawValue: "NETWORK_MODE_UNSPECIFIED")
-  public static let dISABLED = Self(rawValue: "DISABLED")
+public enum GeminiEnvironmentNetworkMode: String, Codable, Hashable, Sendable {
+  case nETWORKMODEUNSPECIFIED = "NETWORK_MODE_UNSPECIFIED"
+  case dISABLED = "DISABLED"
 }

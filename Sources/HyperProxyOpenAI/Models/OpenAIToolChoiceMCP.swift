@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenAIToolChoiceMCP: Codable, Sendable {
   public var name: String?
   public var serverLabel: String
-  public var typeModel: OpenAIToolChoiceMCPTypeModel
+  public var kind: OpenAIToolChoiceMCPKind
 
   public init(
     serverLabel: String,
-    typeModel: OpenAIToolChoiceMCPTypeModel,
+    kind: OpenAIToolChoiceMCPKind,
     name: String? = nil
   ) {
     self.name = name
     self.serverLabel = serverLabel
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case name
     case serverLabel = "server_label"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

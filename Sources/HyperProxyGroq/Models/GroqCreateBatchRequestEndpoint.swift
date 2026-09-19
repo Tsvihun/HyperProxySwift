@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct GroqCreateBatchRequestEndpoint: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let v1ChatCompletions = Self(rawValue: "/v1/chat/completions")
+public enum GroqCreateBatchRequestEndpoint: String, Codable, Hashable, Sendable {
+  case v1ChatCompletions = "/v1/chat/completions"
 }

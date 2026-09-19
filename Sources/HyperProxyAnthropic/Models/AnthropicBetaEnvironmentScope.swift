@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaEnvironmentScope: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let organization = Self(rawValue: "organization")
-  public static let account = Self(rawValue: "account")
+public enum AnthropicBetaEnvironmentScope: String, Codable, Hashable, Sendable {
+  case organization = "organization"
+  case account = "account"
 }

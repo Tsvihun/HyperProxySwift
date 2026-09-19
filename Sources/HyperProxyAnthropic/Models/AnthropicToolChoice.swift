@@ -10,4 +10,40 @@
 import Foundation
 import HyperProxyCore
 
-public typealias AnthropicToolChoice = HyperProxyJSONValue
+public enum AnthropicToolChoice: Codable, Sendable {
+  case toolChoiceAuto(AnthropicToolChoiceAuto)
+  case toolChoiceAny(AnthropicToolChoiceAny)
+  case toolChoiceTool(AnthropicToolChoiceTool)
+  case toolChoiceNone(AnthropicToolChoiceNone)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(AnthropicToolChoiceAuto.self) {
+      self = .toolChoiceAuto(value)
+      return
+    }
+    if let value = try? container.decode(AnthropicToolChoiceAny.self) {
+      self = .toolChoiceAny(value)
+      return
+    }
+    if let value = try? container.decode(AnthropicToolChoiceTool.self) {
+      self = .toolChoiceTool(value)
+      return
+    }
+    self = .toolChoiceNone(try container.decode(AnthropicToolChoiceNone.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .toolChoiceAuto(let value):
+      try container.encode(value)
+    case .toolChoiceAny(let value):
+      try container.encode(value)
+    case .toolChoiceTool(let value):
+      try container.encode(value)
+    case .toolChoiceNone(let value):
+      try container.encode(value)
+    }
+  }
+}

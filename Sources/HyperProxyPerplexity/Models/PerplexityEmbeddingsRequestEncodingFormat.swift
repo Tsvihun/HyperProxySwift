@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct PerplexityEmbeddingsRequestEncodingFormat: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let base64Int8 = Self(rawValue: "base64_int8")
-  public static let base64Binary = Self(rawValue: "base64_binary")
+public enum PerplexityEmbeddingsRequestEncodingFormat: String, Codable, Hashable, Sendable {
+  case base64Int8 = "base64_int8"
+  case base64Binary = "base64_binary"
 }

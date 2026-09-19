@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherRLTensorDataDtype: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let int64 = Self(rawValue: "int64")
-  public static let float32 = Self(rawValue: "float32")
+public enum TogetherRLTensorDataDtype: String, Codable, Hashable, Sendable {
+  case int64 = "int64"
+  case float32 = "float32"
 }

@@ -11,35 +11,39 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterOpenAIResponseCustomToolCall: Codable, Sendable {
+  public var async: Bool?
   public var callId: String
   public var id: String?
   public var input: String
   public var name: String
   public var namespace: String?
-  public var typeModel: OpenRouterOpenAIResponseCustomToolCallTypeModel
+  public var kind: OpenRouterOpenAIResponseCustomToolCallKind
 
   public init(
     callId: String,
     input: String,
     name: String,
-    typeModel: OpenRouterOpenAIResponseCustomToolCallTypeModel,
+    kind: OpenRouterOpenAIResponseCustomToolCallKind,
+    async: Bool? = nil,
     id: String? = nil,
     namespace: String? = nil
   ) {
+    self.async = async
     self.callId = callId
     self.id = id
     self.input = input
     self.name = name
     self.namespace = namespace
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
+    case async
     case callId = "call_id"
     case id
     case input
     case name
     case namespace
-    case typeModel = "type"
+    case kind = "type"
   }
 }

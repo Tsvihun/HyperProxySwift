@@ -10,32 +10,35 @@
 import Foundation
 import HyperProxyCore
 
-public enum OpenAIModelIdsLive: Codable, Sendable {
-  case string(String)
-  case modelIdsLiveAnyOf2(OpenAIModelIdsLiveAnyOf2)
+public enum OpenAIModelIdsLive: RawRepresentable, Codable, Hashable, Sendable {
+  case gptLive1
+  case custom(String)
+
+  public init(rawValue: String) {
+    switch rawValue {
+    case "gpt-live-1":
+      self = .gptLive1
+    default:
+      self = .custom(rawValue)
+    }
+  }
+
+  public var rawValue: String {
+    switch self {
+    case .gptLive1:
+      return "gpt-live-1"
+    case .custom(let value):
+      return value
+    }
+  }
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(String.self) {
-      self = .string(value)
-      return
-    }
-    self = .modelIdsLiveAnyOf2(try container.decode(OpenAIModelIdsLiveAnyOf2.self))
+    self.init(rawValue: try container.decode(String.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
-    switch self {
-    case .string(let value):
-      try container.encode(value)
-    case .modelIdsLiveAnyOf2(let value):
-      try container.encode(value)
-    }
-  }
-}
-
-extension OpenAIModelIdsLive: ExpressibleByStringLiteral {
-  public init(stringLiteral value: String) {
-    self = .string(value)
+    try container.encode(rawValue)
   }
 }

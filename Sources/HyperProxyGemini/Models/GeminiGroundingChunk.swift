@@ -11,16 +11,16 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiGroundingChunk: Codable, Sendable {
-  public var image: HyperProxyJSONValue?
-  public var maps: HyperProxyJSONValue?
-  public var retrievedContext: HyperProxyJSONValue?
-  public var web: HyperProxyJSONValue?
+  public var image: GeminiImage?
+  public var maps: GeminiMaps?
+  public var retrievedContext: GeminiRetrievedContext?
+  public var web: GeminiWeb?
 
   public init(
-    image: HyperProxyJSONValue? = nil,
-    maps: HyperProxyJSONValue? = nil,
-    retrievedContext: HyperProxyJSONValue? = nil,
-    web: HyperProxyJSONValue? = nil
+    image: GeminiImage? = nil,
+    maps: GeminiMaps? = nil,
+    retrievedContext: GeminiRetrievedContext? = nil,
+    web: GeminiWeb? = nil
   ) {
     self.image = image
     self.maps = maps

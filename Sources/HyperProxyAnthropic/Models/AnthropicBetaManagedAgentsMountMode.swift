@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaManagedAgentsMountMode: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let readWrite = Self(rawValue: "read_write")
-  public static let readOnly = Self(rawValue: "read_only")
+public enum AnthropicBetaManagedAgentsMountMode: String, Codable, Hashable, Sendable {
+  case readWrite = "read_write"
+  case readOnly = "read_only"
 }

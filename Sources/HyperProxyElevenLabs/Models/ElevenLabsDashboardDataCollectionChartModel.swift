@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct ElevenLabsDashboardDataCollectionChartModel: Codable, Sendable {
   public var dataCollectionId: String
   public var name: String
-  public var typeModel: String?
+  public var kind: ElevenLabsDataCollectionKind?
 
   public init(
     dataCollectionId: String,
     name: String,
-    typeModel: String? = nil
+    kind: ElevenLabsDataCollectionKind? = nil
   ) {
     self.dataCollectionId = dataCollectionId
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case dataCollectionId = "data_collection_id"
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIUserDeleteResponseObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let organizationUserDeleted = Self(rawValue: "organization.user.deleted")
+public enum OpenAIUserDeleteResponseObject: String, Codable, Hashable, Sendable {
+  case organizationUserDeleted = "organization.user.deleted"
 }

@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsDynamicVariableSchemaOverride: Codable, Sendable {
   public var dynamicVariable: String
-  public var source: String?
+  public var source: ElevenLabsDynamicVariableSource?
 
   public init(
     dynamicVariable: String,
-    source: String? = nil
+    source: ElevenLabsDynamicVariableSource? = nil
   ) {
     self.dynamicVariable = dynamicVariable
     self.source = source

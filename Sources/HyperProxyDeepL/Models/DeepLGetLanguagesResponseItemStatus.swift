@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLGetLanguagesResponseItemStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let stable = Self(rawValue: "stable")
-  public static let beta = Self(rawValue: "beta")
-  public static let earlyAccess = Self(rawValue: "early_access")
+public enum DeepLGetLanguagesResponseItemStatus: String, Codable, Hashable, Sendable {
+  case stable = "stable"
+  case beta = "beta"
+  case earlyAccess = "early_access"
 }

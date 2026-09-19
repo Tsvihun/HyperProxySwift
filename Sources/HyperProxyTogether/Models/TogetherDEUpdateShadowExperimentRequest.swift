@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct TogetherDEUpdateShadowExperimentRequest: Codable, Sendable {
   public var description: String?
   public var etag: String?
-  public var source: HyperProxyJSONValue?
+  public var source: TogetherDEShadowExperimentSource?
 
   public init(
     description: String? = nil,
     etag: String? = nil,
-    source: HyperProxyJSONValue? = nil
+    source: TogetherDEShadowExperimentSource? = nil
   ) {
     self.description = description
     self.etag = etag

@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAILiveSessionUpdateParams: Codable, Sendable {
-  public var delegation: HyperProxyJSONValue?
+  public var delegation: OpenAILiveSessionUpdateParamsDelegationAnyOf1?
 
   public init(
-    delegation: HyperProxyJSONValue? = nil
+    delegation: OpenAILiveSessionUpdateParamsDelegationAnyOf1? = nil
   ) {
     self.delegation = delegation
   }

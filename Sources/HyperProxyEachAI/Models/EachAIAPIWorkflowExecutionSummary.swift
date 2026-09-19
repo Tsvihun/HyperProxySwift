@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct EachAIAPIWorkflowExecutionSummary: Codable, Sendable {
   public var apiKey: String?
-  public var cost: HyperProxyJSONValue?
+  public var cost: EachAIAPIWorkflowExecutionSummaryCost?
   public var createdAt: String
   public var deletedAt: String?
   public var endedAt: String?
@@ -24,7 +24,7 @@ public struct EachAIAPIWorkflowExecutionSummary: Codable, Sendable {
   public var outputJson: [String: HyperProxyJSONValue]?
   public var startedAt: String?
   public var status: EachAIAPIWorkflowExecutionSummaryStatus
-  public var stepResults: HyperProxyJSONValue?
+  public var stepResults: EachAIAPIWorkflowExecutionSummaryStepResults?
   public var updatedAt: String?
   public var versionId: String
 
@@ -36,14 +36,14 @@ public struct EachAIAPIWorkflowExecutionSummary: Codable, Sendable {
     status: EachAIAPIWorkflowExecutionSummaryStatus,
     versionId: String,
     apiKey: String? = nil,
-    cost: HyperProxyJSONValue? = nil,
+    cost: EachAIAPIWorkflowExecutionSummaryCost? = nil,
     deletedAt: String? = nil,
     endedAt: String? = nil,
     inputs: [String: HyperProxyJSONValue]? = nil,
     output: String? = nil,
     outputJson: [String: HyperProxyJSONValue]? = nil,
     startedAt: String? = nil,
-    stepResults: HyperProxyJSONValue? = nil,
+    stepResults: EachAIAPIWorkflowExecutionSummaryStepResults? = nil,
     updatedAt: String? = nil
   ) {
     self.apiKey = apiKey

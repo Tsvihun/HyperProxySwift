@@ -39,7 +39,7 @@ public struct AnthropicBrowserToolsetConfigs: Codable, Sendable {
   public var scrollTo: AnthropicBrowserScrollToConfig?
   public var switchTab: AnthropicBrowserSwitchTabConfig?
   public var tripleClick: AnthropicBrowserTripleClickConfig?
-  public var typeModel: AnthropicBrowserTypeConfig?
+  public var kind: AnthropicBrowserTypeConfig?
   public var wait: AnthropicBrowserWaitConfig?
   public var zoom: AnthropicBrowserZoomConfig?
 
@@ -72,7 +72,7 @@ public struct AnthropicBrowserToolsetConfigs: Codable, Sendable {
     scrollTo: AnthropicBrowserScrollToConfig? = nil,
     switchTab: AnthropicBrowserSwitchTabConfig? = nil,
     tripleClick: AnthropicBrowserTripleClickConfig? = nil,
-    typeModel: AnthropicBrowserTypeConfig? = nil,
+    kind: AnthropicBrowserTypeConfig? = nil,
     wait: AnthropicBrowserWaitConfig? = nil,
     zoom: AnthropicBrowserZoomConfig? = nil
   ) {
@@ -104,7 +104,7 @@ public struct AnthropicBrowserToolsetConfigs: Codable, Sendable {
     self.scrollTo = scrollTo
     self.switchTab = switchTab
     self.tripleClick = tripleClick
-    self.typeModel = typeModel
+    self.kind = kind
     self.wait = wait
     self.zoom = zoom
   }
@@ -138,7 +138,7 @@ public struct AnthropicBrowserToolsetConfigs: Codable, Sendable {
     case scrollTo = "scroll_to"
     case switchTab = "switch_tab"
     case tripleClick = "triple_click"
-    case typeModel = "type"
+    case kind = "type"
     case wait
     case zoom
   }

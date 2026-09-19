@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsMockingStrategy: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let all = Self(rawValue: "all")
-  public static let selected = Self(rawValue: "selected")
-  public static let none = Self(rawValue: "none")
+public enum ElevenLabsMockingStrategy: String, Codable, Hashable, Sendable {
+  case all = "all"
+  case selected = "selected"
+  case none = "none"
 }

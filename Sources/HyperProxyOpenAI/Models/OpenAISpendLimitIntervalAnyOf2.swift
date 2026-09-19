@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAISpendLimitIntervalAnyOf2: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let month = Self(rawValue: "month")
+public enum OpenAISpendLimitIntervalAnyOf2: String, Codable, Hashable, Sendable {
+  case month = "month"
 }

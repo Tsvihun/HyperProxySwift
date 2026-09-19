@@ -10,30 +10,23 @@
 import Foundation
 import HyperProxyCore
 
-public struct FalServerlessListAppEventsParametersCategoryAnyOf1: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum FalServerlessListAppEventsParametersCategoryAnyOf1: String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let runnerStarted = Self(rawValue: "runner_started")
-  public static let runnerFailed = Self(rawValue: "runner_failed")
-  public static let runnerFinished = Self(rawValue: "runner_finished")
-  public static let runnerPending = Self(rawValue: "runner_pending")
-  public static let runnerStartupFailure = Self(rawValue: "runner_startup_failure")
-  public static let runnerDockerPull = Self(rawValue: "runner_docker_pull")
-  public static let runnerSetup = Self(rawValue: "runner_setup")
-  public static let runnerDraining = Self(rawValue: "runner_draining")
-  public static let runnerStopping = Self(rawValue: "runner_stopping")
-  public static let deploymentStarted = Self(rawValue: "deployment_started")
-  public static let deploymentFailed = Self(rawValue: "deployment_failed")
-  public static let deploymentEnded = Self(rawValue: "deployment_ended")
-  public static let deploymentRollingStarted = Self(rawValue: "deployment_rolling_started")
-  public static let deploymentRollingFailed = Self(rawValue: "deployment_rolling_failed")
-  public static let deploymentRollingEnded = Self(rawValue: "deployment_rolling_ended")
-  public static let deploymentRecreateApplied = Self(rawValue: "deployment_recreate_applied")
-  public static let configChanged = Self(rawValue: "config_changed")
+  case runnerStarted = "runner_started"
+  case runnerFailed = "runner_failed"
+  case runnerFinished = "runner_finished"
+  case runnerPending = "runner_pending"
+  case runnerStartupFailure = "runner_startup_failure"
+  case runnerDockerPull = "runner_docker_pull"
+  case runnerSetup = "runner_setup"
+  case runnerDraining = "runner_draining"
+  case runnerStopping = "runner_stopping"
+  case deploymentStarted = "deployment_started"
+  case deploymentFailed = "deployment_failed"
+  case deploymentEnded = "deployment_ended"
+  case deploymentRollingStarted = "deployment_rolling_started"
+  case deploymentRollingFailed = "deployment_rolling_failed"
+  case deploymentRollingEnded = "deployment_rolling_ended"
+  case deploymentRecreateApplied = "deployment_recreate_applied"
+  case configChanged = "config_changed"
 }

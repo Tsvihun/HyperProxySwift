@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsVeo31RequestResolution: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let value720p = Self(rawValue: "720p")
-  public static let value1080p = Self(rawValue: "1080p")
-  public static let value4K = Self(rawValue: "4K")
+public enum ElevenLabsVeo31RequestResolution: String, Codable, Hashable, Sendable {
+  case value720p = "720p"
+  case value1080p = "1080p"
+  case value4K = "4K"
 }

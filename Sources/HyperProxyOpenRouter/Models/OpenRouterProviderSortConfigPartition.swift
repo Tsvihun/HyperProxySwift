@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterProviderSortConfigPartition: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let model = Self(rawValue: "model")
-  public static let none = Self(rawValue: "none")
+public enum OpenRouterProviderSortConfigPartition: String, Codable, Hashable, Sendable {
+  case model = "model"
+  case none = "none"
 }

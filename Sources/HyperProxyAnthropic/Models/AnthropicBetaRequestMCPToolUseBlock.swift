@@ -16,14 +16,14 @@ public struct AnthropicBetaRequestMCPToolUseBlock: Codable, Sendable {
   public var input: [String: HyperProxyJSONValue]
   public var name: String
   public var serverName: String
-  public var typeModel: String
+  public var kind: AnthropicMcpToolUseKind
 
   public init(
     id: String,
     input: [String: HyperProxyJSONValue],
     name: String,
     serverName: String,
-    typeModel: String,
+    kind: AnthropicMcpToolUseKind = .mcpToolUse,
     cacheControl: AnthropicBetaCacheControlEphemeral? = nil
   ) {
     self.cacheControl = cacheControl
@@ -31,7 +31,7 @@ public struct AnthropicBetaRequestMCPToolUseBlock: Codable, Sendable {
     self.input = input
     self.name = name
     self.serverName = serverName
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct AnthropicBetaRequestMCPToolUseBlock: Codable, Sendable {
     case input
     case name
     case serverName = "server_name"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

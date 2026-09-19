@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIUpdateVectorStoreFileAttributesRequest: Codable, Sendable {
-  public var attributes: OpenAIVectorStoreFileAttributes
+  public var attributes: OpenAIVectorStoreFileAttributes?
 
   public init(
-    attributes: OpenAIVectorStoreFileAttributes
+    attributes: OpenAIVectorStoreFileAttributes?
   ) {
     self.attributes = attributes
   }

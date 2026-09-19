@@ -20,7 +20,7 @@ public struct OpenAIFunctionToolCallResource: Codable, Sendable {
   public var name: String
   public var namespace: String?
   public var status: OpenAIFunctionToolCallStatus
-  public var typeModel: OpenAIFunctionToolCallTypeModel
+  public var kind: OpenAIFunctionToolCallKind
 
   public init(
     arguments: String,
@@ -28,7 +28,7 @@ public struct OpenAIFunctionToolCallResource: Codable, Sendable {
     id: String,
     name: String,
     status: OpenAIFunctionToolCallStatus,
-    typeModel: OpenAIFunctionToolCallTypeModel,
+    kind: OpenAIFunctionToolCallKind,
     async: Bool? = nil,
     caller: OpenAIToolCallCaller? = nil,
     createdBy: String? = nil,
@@ -43,7 +43,7 @@ public struct OpenAIFunctionToolCallResource: Codable, Sendable {
     self.name = name
     self.namespace = namespace
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -56,6 +56,6 @@ public struct OpenAIFunctionToolCallResource: Codable, Sendable {
     case name
     case namespace
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

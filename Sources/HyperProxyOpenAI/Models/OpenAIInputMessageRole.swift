@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIInputMessageRole: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let user = Self(rawValue: "user")
-  public static let system = Self(rawValue: "system")
-  public static let developer = Self(rawValue: "developer")
+public enum OpenAIInputMessageRole: String, Codable, Hashable, Sendable {
+  case user = "user"
+  case system = "system"
+  case developer = "developer"
 }

@@ -11,24 +11,24 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicResponseServerToolUseBlock: Codable, Sendable {
-  public var caller: HyperProxyJSONValue
+  public var caller: AnthropicResponseServerToolUseBlockCaller
   public var id: String
   public var input: [String: HyperProxyJSONValue]
   public var name: AnthropicResponseServerToolUseBlockName
-  public var typeModel: String
+  public var kind: AnthropicServerToolUseKind
 
   public init(
-    caller: HyperProxyJSONValue,
+    caller: AnthropicResponseServerToolUseBlockCaller,
     id: String,
     input: [String: HyperProxyJSONValue],
     name: AnthropicResponseServerToolUseBlockName,
-    typeModel: String
+    kind: AnthropicServerToolUseKind = .serverToolUse
   ) {
     self.caller = caller
     self.id = id
     self.input = input
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct AnthropicResponseServerToolUseBlock: Codable, Sendable {
     case id
     case input
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

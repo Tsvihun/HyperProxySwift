@@ -16,14 +16,14 @@ public struct OpenAIBetaLocalShellToolCall: Codable, Sendable {
   public var callId: String
   public var id: String
   public var status: OpenAIBetaLocalShellToolCallStatus
-  public var typeModel: OpenAIBetaLocalShellToolCallTypeModel
+  public var kind: OpenAIBetaLocalShellToolCallKind
 
   public init(
     action: OpenAIBetaLocalShellExecAction,
     callId: String,
     id: String,
     status: OpenAIBetaLocalShellToolCallStatus,
-    typeModel: OpenAIBetaLocalShellToolCallTypeModel,
+    kind: OpenAIBetaLocalShellToolCallKind,
     agent: OpenAIBetaAgentTag? = nil
   ) {
     self.action = action
@@ -31,7 +31,7 @@ public struct OpenAIBetaLocalShellToolCall: Codable, Sendable {
     self.callId = callId
     self.id = id
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIBetaLocalShellToolCall: Codable, Sendable {
     case callId = "call_id"
     case id
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

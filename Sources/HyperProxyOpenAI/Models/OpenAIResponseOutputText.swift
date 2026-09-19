@@ -11,23 +11,23 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIResponseOutputText: Codable, Sendable {
-  public var annotations: [HyperProxyJSONValue]
+  public var annotations: [OpenAIResponseOutputTextAnnotationsItem]
   public var text: String
-  public var typeModel: OpenAIResponseOutputTextTypeModel
+  public var kind: OpenAIResponseOutputTextKind
 
   public init(
-    annotations: [HyperProxyJSONValue],
+    annotations: [OpenAIResponseOutputTextAnnotationsItem],
     text: String,
-    typeModel: OpenAIResponseOutputTextTypeModel
+    kind: OpenAIResponseOutputTextKind
   ) {
     self.annotations = annotations
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case annotations
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

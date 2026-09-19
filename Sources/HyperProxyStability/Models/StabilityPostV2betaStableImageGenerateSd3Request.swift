@@ -21,7 +21,7 @@ public struct StabilityPostV2betaStableImageGenerateSd3Request: Codable, Sendabl
   public var prompt: String
   public var seed: Double?
   public var strength: Double?
-  public var stylePreset: StabilityPostV2betaStableImageGenerateSd3RequestStylePreset?
+  public var stylePreset: StabilityStylePreset?
 
   public init(
     prompt: String,
@@ -34,7 +34,7 @@ public struct StabilityPostV2betaStableImageGenerateSd3Request: Codable, Sendabl
     outputFormat: StabilityPostV2betaStableImageGenerateSd3RequestOutputFormat? = nil,
     seed: Double? = nil,
     strength: Double? = nil,
-    stylePreset: StabilityPostV2betaStableImageGenerateSd3RequestStylePreset? = nil
+    stylePreset: StabilityStylePreset? = nil
   ) {
     self.aspectRatio = aspectRatio
     self.cfgScale = cfgScale

@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsListAgentProceduresParams: Codable, Sendable {
-  public var smbToolType: String?
+  public var smbToolType: ElevenLabsListAgentProceduresSmbToolType?
 
   public init(
-    smbToolType: String? = nil
+    smbToolType: ElevenLabsListAgentProceduresSmbToolType? = nil
   ) {
     self.smbToolType = smbToolType
   }

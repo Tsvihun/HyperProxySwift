@@ -16,12 +16,12 @@ public struct FalCreateAssetEntityRequest: Codable, Sendable {
   public var handle: String?
   public var name: String
   public var referenceImages: [String]
-  public var typeModel: FalCreateAssetEntityRequestTypeModel
+  public var kind: FalCreateAssetEntityRequestKind
 
   public init(
     name: String,
     referenceImages: [String],
-    typeModel: FalCreateAssetEntityRequestTypeModel,
+    kind: FalCreateAssetEntityRequestKind,
     coverImageUrl: String? = nil,
     description: String? = nil,
     handle: String? = nil
@@ -31,7 +31,7 @@ public struct FalCreateAssetEntityRequest: Codable, Sendable {
     self.handle = handle
     self.name = name
     self.referenceImages = referenceImages
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct FalCreateAssetEntityRequest: Codable, Sendable {
     case handle
     case name
     case referenceImages = "reference_images"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

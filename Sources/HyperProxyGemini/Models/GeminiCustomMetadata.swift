@@ -13,13 +13,13 @@ import HyperProxyCore
 public struct GeminiCustomMetadata: Codable, Sendable {
   public var key: String?
   public var numericValue: Double?
-  public var stringListValue: HyperProxyJSONValue?
+  public var stringListValue: GeminiStringList?
   public var stringValue: String?
 
   public init(
     key: String? = nil,
     numericValue: Double? = nil,
-    stringListValue: HyperProxyJSONValue? = nil,
+    stringListValue: GeminiStringList? = nil,
     stringValue: String? = nil
   ) {
     self.key = key

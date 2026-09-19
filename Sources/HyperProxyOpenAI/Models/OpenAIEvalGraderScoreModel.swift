@@ -17,13 +17,13 @@ public struct OpenAIEvalGraderScoreModel: Codable, Sendable {
   public var passThreshold: Double?
   public var range: [Double]?
   public var samplingParams: OpenAIGraderScoreModelSamplingParams?
-  public var typeModel: OpenAIGraderScoreModelTypeModel
+  public var kind: OpenAIGraderScoreModelKind
 
   public init(
     input: [OpenAIEvalItem],
     model: String,
     name: String,
-    typeModel: OpenAIGraderScoreModelTypeModel,
+    kind: OpenAIGraderScoreModelKind,
     passThreshold: Double? = nil,
     range: [Double]? = nil,
     samplingParams: OpenAIGraderScoreModelSamplingParams? = nil
@@ -34,7 +34,7 @@ public struct OpenAIEvalGraderScoreModel: Codable, Sendable {
     self.passThreshold = passThreshold
     self.range = range
     self.samplingParams = samplingParams
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenAIEvalGraderScoreModel: Codable, Sendable {
     case passThreshold = "pass_threshold"
     case range
     case samplingParams = "sampling_params"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsOrderItemKind: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let dub = Self(rawValue: "dub")
-  public static let subtitles = Self(rawValue: "subtitles")
-  public static let transcription = Self(rawValue: "transcription")
+public enum ElevenLabsOrderItemKind: String, Codable, Hashable, Sendable {
+  case dub = "dub"
+  case subtitles = "subtitles"
+  case transcription = "transcription"
 }

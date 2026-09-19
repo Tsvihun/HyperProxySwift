@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralUpdateUserGroupOrganizationRoleIn: Codable, Sendable {
-  public var organizationRole: HyperProxyJSONValue
+  public var organizationRole: MistralUpdateUserGroupOrganizationRoleInOrganizationRole
 
   public init(
-    organizationRole: HyperProxyJSONValue
+    organizationRole: MistralUpdateUserGroupOrganizationRoleInOrganizationRole
   ) {
     self.organizationRole = organizationRole
   }

@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIAssistantToolsFileSearchTypeOnly: Codable, Sendable {
-  public var typeModel: OpenAIAssistantToolsFileSearchTypeOnlyTypeModel
+  public var kind: OpenAIAssistantToolsFileSearchTypeOnlyKind
 
   public init(
-    typeModel: OpenAIAssistantToolsFileSearchTypeOnlyTypeModel
+    kind: OpenAIAssistantToolsFileSearchTypeOnlyKind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

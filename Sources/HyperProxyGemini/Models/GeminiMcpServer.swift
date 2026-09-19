@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct GeminiMcpServer: Codable, Sendable {
   public var name: String?
-  public var streamableHttpTransport: HyperProxyJSONValue?
+  public var streamableHttpTransport: GeminiStreamableHttpTransport?
 
   public init(
     name: String? = nil,
-    streamableHttpTransport: HyperProxyJSONValue? = nil
+    streamableHttpTransport: GeminiStreamableHttpTransport? = nil
   ) {
     self.name = name
     self.streamableHttpTransport = streamableHttpTransport

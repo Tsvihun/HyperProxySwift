@@ -76,6 +76,26 @@ public struct OpenAIAdminCalls: Sendable {
   public var updateOrganizationDataRetention: HyperProxyProviderCall<OpenAIOperation> {
     self.service.call(.updateOrganizationDataRetention)
   }
+  /// `GET v1/organization/external_storage`
+  public var listexternalstorageconfigurations: HyperProxyProviderCall<OpenAIOperation> {
+    self.service.call(.listexternalstorageconfigurations)
+  }
+  /// `POST v1/organization/external_storage`
+  public var createanexternalstorageconfiguration: HyperProxyProviderCall<OpenAIOperation> {
+    self.service.call(.createanexternalstorageconfiguration)
+  }
+  /// `DELETE v1/organization/external_storage/{external_storage_id}`
+  public var deleteanexternalstorageconfiguration: HyperProxyProviderCall<OpenAIOperation> {
+    self.service.call(.deleteanexternalstorageconfiguration)
+  }
+  /// `GET v1/organization/external_storage/{external_storage_id}`
+  public var getanexternalstorageconfiguration: HyperProxyProviderCall<OpenAIOperation> {
+    self.service.call(.getanexternalstorageconfiguration)
+  }
+  /// `POST v1/organization/external_storage/{external_storage_id}/validate`
+  public var validateanexternalstorageconfiguration: HyperProxyProviderCall<OpenAIOperation> {
+    self.service.call(.validateanexternalstorageconfiguration)
+  }
   /// `GET v1/organization/groups`
   public var listGroups: HyperProxyProviderCall<OpenAIOperation> {
     self.service.call(.listGroups)

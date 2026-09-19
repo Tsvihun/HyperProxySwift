@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIFileSearchToolCallStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let inProgress = Self(rawValue: "in_progress")
-  public static let searching = Self(rawValue: "searching")
-  public static let completed = Self(rawValue: "completed")
-  public static let incomplete = Self(rawValue: "incomplete")
-  public static let failed = Self(rawValue: "failed")
+public enum OpenAIFileSearchToolCallStatus: String, Codable, Hashable, Sendable {
+  case inProgress = "in_progress"
+  case searching = "searching"
+  case completed = "completed"
+  case incomplete = "incomplete"
+  case failed = "failed"
 }

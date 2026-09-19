@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterMessagesRequestContextManagementEditsItemOneOf2KeepAnyOf3: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum OpenRouterMessagesRequestContextManagementEditsItemOneOf2KeepAnyOf3: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let all = Self(rawValue: "all")
+  case all = "all"
 }

@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiFunctionDeclarationBehavior: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let uNSPECIFIED = Self(rawValue: "UNSPECIFIED")
-  public static let bLOCKING = Self(rawValue: "BLOCKING")
-  public static let nONBLOCKING = Self(rawValue: "NON_BLOCKING")
+public enum GeminiFunctionDeclarationBehavior: String, Codable, Hashable, Sendable {
+  case uNSPECIFIED = "UNSPECIFIED"
+  case bLOCKING = "BLOCKING"
+  case nONBLOCKING = "NON_BLOCKING"
 }

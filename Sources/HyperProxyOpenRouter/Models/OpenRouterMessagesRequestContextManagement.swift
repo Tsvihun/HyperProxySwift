@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterMessagesRequestContextManagement: Codable, Sendable {
-  public var edits: [HyperProxyJSONValue]?
+  public var edits: [OpenRouterMessagesRequestContextManagementEditsItem]?
 
   public init(
-    edits: [HyperProxyJSONValue]? = nil
+    edits: [OpenRouterMessagesRequestContextManagementEditsItem]? = nil
   ) {
     self.edits = edits
   }

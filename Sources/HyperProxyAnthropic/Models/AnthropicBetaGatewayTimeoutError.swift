@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicBetaGatewayTimeoutError: Codable, Sendable {
   public var message: String
-  public var typeModel: String
+  public var kind: AnthropicTimeoutErrorKind
 
   public init(
     message: String,
-    typeModel: String
+    kind: AnthropicTimeoutErrorKind = .timeoutError
   ) {
     self.message = message
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case message
-    case typeModel = "type"
+    case kind = "type"
   }
 }

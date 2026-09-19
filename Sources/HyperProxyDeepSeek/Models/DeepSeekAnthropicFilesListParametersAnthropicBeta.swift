@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepSeekAnthropicFilesListParametersAnthropicBeta: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let filesApi20250414 = Self(rawValue: "files-api-2025-04-14")
+public enum DeepSeekAnthropicFilesListParametersAnthropicBeta: String, Codable, Hashable, Sendable {
+  case filesApi20250414 = "files-api-2025-04-14"
 }

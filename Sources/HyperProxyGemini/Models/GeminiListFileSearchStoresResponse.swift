@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiListFileSearchStoresResponse: Codable, Sendable {
-  public var fileSearchStores: [HyperProxyJSONValue]?
+  public var fileSearchStores: [GeminiFileSearchStore]?
   public var nextPageToken: String?
 
   public init(
-    fileSearchStores: [HyperProxyJSONValue]? = nil,
+    fileSearchStores: [GeminiFileSearchStore]? = nil,
     nextPageToken: String? = nil
   ) {
     self.fileSearchStores = fileSearchStores

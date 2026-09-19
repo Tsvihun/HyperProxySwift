@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct DeepSeekChatToolCall: Codable, Sendable {
   public var function: DeepSeekChatFunctionCall
   public var id: String
-  public var typeModel: DeepSeekChatToolType
+  public var kind: DeepSeekChatToolType
 
   public init(
     function: DeepSeekChatFunctionCall,
     id: String,
-    typeModel: DeepSeekChatToolType
+    kind: DeepSeekChatToolType
   ) {
     self.function = function
     self.id = id
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case function
     case id
-    case typeModel = "type"
+    case kind = "type"
   }
 }

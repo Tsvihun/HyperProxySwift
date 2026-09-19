@@ -17,13 +17,13 @@ public struct OpenAIBetaFunctionCallOutputItemParam: Codable, Sendable {
   public var id: String?
   public var name: String?
   public var namespace: String?
-  public var output: HyperProxyJSONValue
+  public var output: OpenAIBetaFunctionCallOutputItemParamOutput
   public var status: OpenAIBetaFunctionCallItemStatus?
-  public var typeModel: OpenAIBetaFunctionCallOutputItemParamTypeModel
+  public var kind: OpenAIBetaFunctionCallOutputItemParamKind
 
   public init(
-    output: HyperProxyJSONValue,
-    typeModel: OpenAIBetaFunctionCallOutputItemParamTypeModel,
+    output: OpenAIBetaFunctionCallOutputItemParamOutput,
+    kind: OpenAIBetaFunctionCallOutputItemParamKind,
     agent: OpenAIBetaAgentTagParam? = nil,
     callId: String? = nil,
     caller: OpenAIBetaToolCallCallerParam? = nil,
@@ -40,7 +40,7 @@ public struct OpenAIBetaFunctionCallOutputItemParam: Codable, Sendable {
     self.namespace = namespace
     self.output = output
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -52,6 +52,6 @@ public struct OpenAIBetaFunctionCallOutputItemParam: Codable, Sendable {
     case namespace
     case output
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

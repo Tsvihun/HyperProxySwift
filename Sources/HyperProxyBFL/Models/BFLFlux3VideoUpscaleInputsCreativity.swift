@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct BFLFlux3VideoUpscaleInputsCreativity: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: Int
-
-  public init(rawValue: Int) {
-    self.rawValue = rawValue
-  }
-
-  public static let value0 = Self(rawValue: 0)
-  public static let value1 = Self(rawValue: 1)
+public enum BFLFlux3VideoUpscaleInputsCreativity: Int, Codable, Hashable, Sendable {
+  case value0 = 0
+  case value1 = 1
 }

@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct GeminiMessagePrompt: Codable, Sendable {
   public var context: String?
-  public var examples: [HyperProxyJSONValue]?
-  public var messages: [HyperProxyJSONValue]?
+  public var examples: [GeminiExample]?
+  public var messages: [GeminiMessage]?
 
   public init(
     context: String? = nil,
-    examples: [HyperProxyJSONValue]? = nil,
-    messages: [HyperProxyJSONValue]? = nil
+    examples: [GeminiExample]? = nil,
+    messages: [GeminiMessage]? = nil
   ) {
     self.context = context
     self.examples = examples

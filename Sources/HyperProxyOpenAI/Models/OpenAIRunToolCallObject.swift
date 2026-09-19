@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenAIRunToolCallObject: Codable, Sendable {
   public var function: OpenAIRunToolCallObjectFunction
   public var id: String
-  public var typeModel: OpenAIRunToolCallObjectTypeModel
+  public var kind: OpenAIRunToolCallObjectKind
 
   public init(
     function: OpenAIRunToolCallObjectFunction,
     id: String,
-    typeModel: OpenAIRunToolCallObjectTypeModel
+    kind: OpenAIRunToolCallObjectKind
   ) {
     self.function = function
     self.id = id
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case function
     case id
-    case typeModel = "type"
+    case kind = "type"
   }
 }

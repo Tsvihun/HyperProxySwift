@@ -10,4 +10,33 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIInputContent = HyperProxyJSONValue
+public enum OpenAIInputContent: Codable, Sendable {
+  case inputTextContent(OpenAIInputTextContent)
+  case inputImageContent(OpenAIInputImageContent)
+  case inputFileContent(OpenAIInputFileContent)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(OpenAIInputTextContent.self) {
+      self = .inputTextContent(value)
+      return
+    }
+    if let value = try? container.decode(OpenAIInputImageContent.self) {
+      self = .inputImageContent(value)
+      return
+    }
+    self = .inputFileContent(try container.decode(OpenAIInputFileContent.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .inputTextContent(let value):
+      try container.encode(value)
+    case .inputImageContent(let value):
+      try container.encode(value)
+    case .inputFileContent(let value):
+      try container.encode(value)
+    }
+  }
+}

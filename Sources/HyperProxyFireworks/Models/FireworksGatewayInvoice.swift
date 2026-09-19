@@ -18,7 +18,7 @@ public struct FireworksGatewayInvoice: Codable, Sendable {
   public var paidTime: String?
   public var state: FireworksGatewayInvoiceState?
   public var targetTime: String?
-  public var typeModel: FireworksGatewayInvoiceType?
+  public var kind: FireworksGatewayInvoiceType?
 
   public init(
     amountDue: FireworksTypeMoney? = nil,
@@ -28,7 +28,7 @@ public struct FireworksGatewayInvoice: Codable, Sendable {
     paidTime: String? = nil,
     state: FireworksGatewayInvoiceState? = nil,
     targetTime: String? = nil,
-    typeModel: FireworksGatewayInvoiceType? = nil
+    kind: FireworksGatewayInvoiceType? = nil
   ) {
     self.amountDue = amountDue
     self.autoCollectionEnabled = autoCollectionEnabled
@@ -37,7 +37,7 @@ public struct FireworksGatewayInvoice: Codable, Sendable {
     self.paidTime = paidTime
     self.state = state
     self.targetTime = targetTime
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct FireworksGatewayInvoice: Codable, Sendable {
     case paidTime
     case state
     case targetTime
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -14,24 +14,24 @@ public struct OpenAIMcpTransportConfigParamHttp: Codable, Sendable {
   public var authorization: String?
   public var headers: [String: String]?
   public var serverUrl: String
-  public var typeModel: OpenAIMcpTransportConfigParamHttpTypeModel
+  public var kind: OpenAIMcpTransportConfigParamHttpKind
 
   public init(
     serverUrl: String,
-    typeModel: OpenAIMcpTransportConfigParamHttpTypeModel,
+    kind: OpenAIMcpTransportConfigParamHttpKind,
     authorization: String? = nil,
     headers: [String: String]? = nil
   ) {
     self.authorization = authorization
     self.headers = headers
     self.serverUrl = serverUrl
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case authorization
     case headers
     case serverUrl = "server_url"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,21 +10,15 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralSSETypes: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let conversationResponseStarted = Self(rawValue: "conversation.response.started")
-  public static let conversationResponseDone = Self(rawValue: "conversation.response.done")
-  public static let conversationResponseError = Self(rawValue: "conversation.response.error")
-  public static let messageOutputDelta = Self(rawValue: "message.output.delta")
-  public static let toolExecutionStarted = Self(rawValue: "tool.execution.started")
-  public static let toolExecutionDelta = Self(rawValue: "tool.execution.delta")
-  public static let toolExecutionDone = Self(rawValue: "tool.execution.done")
-  public static let agentHandoffStarted = Self(rawValue: "agent.handoff.started")
-  public static let agentHandoffDone = Self(rawValue: "agent.handoff.done")
-  public static let functionCallDelta = Self(rawValue: "function.call.delta")
+public enum MistralSSETypes: String, Codable, Hashable, Sendable {
+  case conversationResponseStarted = "conversation.response.started"
+  case conversationResponseDone = "conversation.response.done"
+  case conversationResponseError = "conversation.response.error"
+  case messageOutputDelta = "message.output.delta"
+  case toolExecutionStarted = "tool.execution.started"
+  case toolExecutionDelta = "tool.execution.delta"
+  case toolExecutionDone = "tool.execution.done"
+  case agentHandoffStarted = "agent.handoff.started"
+  case agentHandoffDone = "agent.handoff.done"
+  case functionCallDelta = "function.call.delta"
 }

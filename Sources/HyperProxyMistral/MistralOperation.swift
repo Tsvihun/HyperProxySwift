@@ -130,6 +130,26 @@ public enum MistralOperation: String, HyperProxyProviderOperation {
     "connector.create.or.update.organization.credentials.v1"
   /// `DELETE v1/connectors/{connector_id_or_name}/organization/credentials/{credentials_name}`
   case connectorDeleteOrganizationCredentialsV1 = "connector.delete.organization.credentials.v1"
+  /// `POST v1/service-accounts`
+  case createServiceAccountV1ServiceAccountsPost = "create.service.account.v1.service.accounts.post"
+  /// `GET v1/service-accounts/assignable-roles`
+  case listAssignableServiceAccountRolesV1ServiceAccountsAssignableRolesGet =
+    "list.assignable.service.account.roles.v1.service.accounts.assignable.roles.get"
+  /// `DELETE v1/service-accounts/{service_account_id}`
+  case deleteServiceAccountV1ServiceAccountsServiceAccountIdDelete =
+    "delete.service.account.v1.service.accounts.service.account.id.delete"
+  /// `GET v1/service-accounts/{service_account_id}`
+  case getServiceAccountV1ServiceAccountsServiceAccountIdGet =
+    "get.service.account.v1.service.accounts.service.account.id.get"
+  /// `PATCH v1/service-accounts/{service_account_id}`
+  case updateServiceAccountV1ServiceAccountsServiceAccountIdPatch =
+    "update.service.account.v1.service.accounts.service.account.id.patch"
+  /// `GET v1/service-accounts/{service_account_id}/roles`
+  case listServiceAccountRolesV1ServiceAccountsServiceAccountIdRolesGet =
+    "list.service.account.roles.v1.service.accounts.service.account.id.roles.get"
+  /// `PUT v1/service-accounts/{service_account_id}/roles`
+  case setServiceAccountRolesV1ServiceAccountsServiceAccountIdRolesPut =
+    "set.service.account.roles.v1.service.accounts.service.account.id.roles.put"
   /// `GET v1/agents`
   case agentsList = "agents.list"
   /// `POST v1/agents`
@@ -447,6 +467,8 @@ public enum MistralOperation: String, HyperProxyProviderOperation {
   /// `PUT v1/rag/ingestion_pipeline_configurations/{id}/run_info`
   case updateRunInfoV1RagIngestionPipelineConfigurationsIdRunInfoPut =
     "update.run.info.v1.rag.ingestion.pipeline.configurations.id.run.info.put"
+  /// `GET v1/service-accounts`
+  case listServiceAccountsV1ServiceAccountsGet = "list.service.accounts.v1.service.accounts.get"
   /// `GET v1/users/me`
   case usersApiGetIdentity = "users.api.get.identity"
   /// `GET v1/users/me/organizations`

@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterAnthropicAllowedCallersItem: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let direct = Self(rawValue: "direct")
-  public static let codeExecution20250825 = Self(rawValue: "code_execution_20250825")
-  public static let codeExecution20260120 = Self(rawValue: "code_execution_20260120")
+public enum OpenRouterAnthropicAllowedCallersItem: String, Codable, Hashable, Sendable {
+  case direct = "direct"
+  case codeExecution20250825 = "code_execution_20250825"
+  case codeExecution20260120 = "code_execution_20260120"
 }

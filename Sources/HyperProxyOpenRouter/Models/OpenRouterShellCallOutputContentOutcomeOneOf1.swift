@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterShellCallOutputContentOutcomeOneOf1: Codable, Sendable {
   public var exitCode: Int
-  public var typeModel: OpenRouterShellCallOutputContentOutcomeOneOf1TypeModel
+  public var kind: OpenRouterShellCallOutputContentOutcomeOneOf1Kind
 
   public init(
     exitCode: Int,
-    typeModel: OpenRouterShellCallOutputContentOutcomeOneOf1TypeModel
+    kind: OpenRouterShellCallOutputContentOutcomeOneOf1Kind
   ) {
     self.exitCode = exitCode
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case exitCode = "exit_code"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

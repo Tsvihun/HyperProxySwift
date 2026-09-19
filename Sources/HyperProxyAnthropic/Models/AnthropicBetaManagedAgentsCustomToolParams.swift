@@ -12,26 +12,26 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsCustomToolParams: Codable, Sendable {
   public var description: String
-  public var inputSchema: HyperProxyJSONValue
+  public var inputSchema: AnthropicBetaManagedAgentsCustomToolInputSchema
   public var name: String
-  public var typeModel: AnthropicBetaManagedAgentsCustomToolParamsTypeModel
+  public var kind: AnthropicBetaManagedAgentsCustomToolParamsKind
 
   public init(
     description: String,
-    inputSchema: HyperProxyJSONValue,
+    inputSchema: AnthropicBetaManagedAgentsCustomToolInputSchema,
     name: String,
-    typeModel: AnthropicBetaManagedAgentsCustomToolParamsTypeModel
+    kind: AnthropicBetaManagedAgentsCustomToolParamsKind
   ) {
     self.description = description
     self.inputSchema = inputSchema
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case description
     case inputSchema = "input_schema"
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

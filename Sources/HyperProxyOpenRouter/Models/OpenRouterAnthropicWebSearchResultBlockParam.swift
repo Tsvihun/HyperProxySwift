@@ -14,20 +14,20 @@ public struct OpenRouterAnthropicWebSearchResultBlockParam: Codable, Sendable {
   public var encryptedContent: String
   public var pageAge: String?
   public var title: String
-  public var typeModel: OpenRouterAnthropicWebSearchResultBlockParamTypeModel
+  public var kind: OpenRouterAnthropicWebSearchResultBlockParamKind
   public var url: String
 
   public init(
     encryptedContent: String,
     title: String,
-    typeModel: OpenRouterAnthropicWebSearchResultBlockParamTypeModel,
+    kind: OpenRouterAnthropicWebSearchResultBlockParamKind,
     url: String,
     pageAge: String? = nil
   ) {
     self.encryptedContent = encryptedContent
     self.pageAge = pageAge
     self.title = title
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
@@ -35,7 +35,7 @@ public struct OpenRouterAnthropicWebSearchResultBlockParam: Codable, Sendable {
     case encryptedContent = "encrypted_content"
     case pageAge = "page_age"
     case title
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

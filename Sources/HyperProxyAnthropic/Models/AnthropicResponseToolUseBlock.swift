@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicResponseToolUseBlock: Codable, Sendable {
-  public var caller: HyperProxyJSONValue
+  public var caller: AnthropicResponseToolUseBlockCaller
   public var id: String
   public var input: [String: HyperProxyJSONValue]
   public var name: String
   public var toolsetName: String?
-  public var typeModel: String
+  public var kind: AnthropicToolUseKind
 
   public init(
-    caller: HyperProxyJSONValue,
+    caller: AnthropicResponseToolUseBlockCaller,
     id: String,
     input: [String: HyperProxyJSONValue],
     name: String,
-    typeModel: String,
+    kind: AnthropicToolUseKind = .toolUse,
     toolsetName: String? = nil
   ) {
     self.caller = caller
@@ -31,7 +31,7 @@ public struct AnthropicResponseToolUseBlock: Codable, Sendable {
     self.input = input
     self.name = name
     self.toolsetName = toolsetName
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct AnthropicResponseToolUseBlock: Codable, Sendable {
     case input
     case name
     case toolsetName = "toolset_name"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

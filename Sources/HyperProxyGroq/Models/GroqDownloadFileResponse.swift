@@ -10,4 +10,17 @@
 import Foundation
 import HyperProxyCore
 
-public typealias GroqDownloadFileResponse = String
+public struct GroqDownloadFileResponse: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+}
+
+extension GroqDownloadFileResponse: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self.init(rawValue: value)
+  }
+}

@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsGPTImage1RequestAspectRatio: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let value11 = Self(rawValue: "1:1")
-  public static let value32 = Self(rawValue: "3:2")
-  public static let value23 = Self(rawValue: "2:3")
+public enum ElevenLabsGPTImage1RequestAspectRatio: String, Codable, Hashable, Sendable {
+  case value11 = "1:1"
+  case value32 = "3:2"
+  case value23 = "2:3"
 }

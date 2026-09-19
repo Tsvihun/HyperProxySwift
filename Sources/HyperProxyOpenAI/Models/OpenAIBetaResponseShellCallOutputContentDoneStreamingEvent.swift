@@ -17,7 +17,7 @@ public struct OpenAIBetaResponseShellCallOutputContentDoneStreamingEvent: Codabl
   public var output: [OpenAIBetaFunctionShellCallOutputContent]
   public var outputIndex: Int
   public var sequenceNumber: Int
-  public var typeModel: OpenAIBetaResponseShellCallOutputContentDoneStreamingEventTypeModel
+  public var kind: OpenAIBetaResponseShellCallOutputContentDoneStreamingEventKind
 
   public init(
     commandIndex: Int,
@@ -25,7 +25,7 @@ public struct OpenAIBetaResponseShellCallOutputContentDoneStreamingEvent: Codabl
     output: [OpenAIBetaFunctionShellCallOutputContent],
     outputIndex: Int,
     sequenceNumber: Int,
-    typeModel: OpenAIBetaResponseShellCallOutputContentDoneStreamingEventTypeModel,
+    kind: OpenAIBetaResponseShellCallOutputContentDoneStreamingEventKind,
     agent: OpenAIBetaAgentTag? = nil
   ) {
     self.agent = agent
@@ -34,7 +34,7 @@ public struct OpenAIBetaResponseShellCallOutputContentDoneStreamingEvent: Codabl
     self.output = output
     self.outputIndex = outputIndex
     self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenAIBetaResponseShellCallOutputContentDoneStreamingEvent: Codabl
     case output
     case outputIndex = "output_index"
     case sequenceNumber = "sequence_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

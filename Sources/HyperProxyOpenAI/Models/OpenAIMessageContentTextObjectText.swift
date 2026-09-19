@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIMessageContentTextObjectText: Codable, Sendable {
-  public var annotations: [HyperProxyJSONValue]
+  public var annotations: [OpenAIMessageContentTextObjectTextAnnotationsItem]
   public var value: String
 
   public init(
-    annotations: [HyperProxyJSONValue],
+    annotations: [OpenAIMessageContentTextObjectTextAnnotationsItem],
     value: String
   ) {
     self.annotations = annotations

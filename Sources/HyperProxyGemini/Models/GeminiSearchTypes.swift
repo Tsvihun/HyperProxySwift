@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiSearchTypes: Codable, Sendable {
-  public var imageSearch: HyperProxyJSONValue?
-  public var webSearch: HyperProxyJSONValue?
+  public var imageSearch: GeminiImageSearch?
+  public var webSearch: GeminiWebSearch?
 
   public init(
-    imageSearch: HyperProxyJSONValue? = nil,
-    webSearch: HyperProxyJSONValue? = nil
+    imageSearch: GeminiImageSearch? = nil,
+    webSearch: GeminiWebSearch? = nil
   ) {
     self.imageSearch = imageSearch
     self.webSearch = webSearch

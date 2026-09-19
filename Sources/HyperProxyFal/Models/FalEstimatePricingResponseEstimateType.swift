@@ -10,14 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct FalEstimatePricingResponseEstimateType: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let historicalApiPrice = Self(rawValue: "historical_api_price")
-  public static let unitPrice = Self(rawValue: "unit_price")
+public enum FalEstimatePricingResponseEstimateType: String, Codable, Hashable, Sendable {
+  case historicalApiPrice = "historical_api_price"
+  case unitPrice = "unit_price"
 }

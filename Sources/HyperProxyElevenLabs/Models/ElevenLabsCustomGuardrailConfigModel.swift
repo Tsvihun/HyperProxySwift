@@ -10,19 +10,13 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsCustomGuardrailConfigModel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let gemini25FlashLite = Self(rawValue: "gemini-2.5-flash-lite")
-  public static let gemini25Flash = Self(rawValue: "gemini-2.5-flash")
-  public static let gemini31FlashLite = Self(rawValue: "gemini-3.1-flash-lite")
-  public static let gemini35Flash = Self(rawValue: "gemini-3.5-flash")
-  public static let claudeHaiku45 = Self(rawValue: "claude-haiku-4-5")
-  public static let claudeSonnet46 = Self(rawValue: "claude-sonnet-4-6")
-  public static let gpt54Nano = Self(rawValue: "gpt-5.4-nano")
-  public static let gpt54Mini = Self(rawValue: "gpt-5.4-mini")
+public enum ElevenLabsCustomGuardrailConfigModel: String, Codable, Hashable, Sendable {
+  case gemini25FlashLite = "gemini-2.5-flash-lite"
+  case gemini25Flash = "gemini-2.5-flash"
+  case gemini31FlashLite = "gemini-3.1-flash-lite"
+  case gemini35Flash = "gemini-3.5-flash"
+  case claudeHaiku45 = "claude-haiku-4-5"
+  case claudeSonnet46 = "claude-sonnet-4-6"
+  case gpt54Nano = "gpt-5.4-nano"
+  case gpt54Mini = "gpt-5.4-mini"
 }

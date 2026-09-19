@@ -10,18 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaClaudeEnterpriseOrganizationRole: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let managed = Self(rawValue: "managed")
-  public static let membershipAdmin = Self(rawValue: "membership_admin")
-  public static let owner = Self(rawValue: "owner")
-  public static let primaryOwner = Self(rawValue: "primary_owner")
-  public static let user = Self(rawValue: "user")
+public enum AnthropicBetaClaudeEnterpriseOrganizationRole: String, Codable, Hashable, Sendable {
+  case managed = "managed"
+  case membershipAdmin = "membership_admin"
+  case owner = "owner"
+  case primaryOwner = "primary_owner"
+  case user = "user"
 }

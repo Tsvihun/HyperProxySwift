@@ -10,17 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesSpellingAndGrammarFrenchVerbsEndingInElerAndEter:
-  RawRepresentable, Codable, Hashable, Sendable
+public enum DeepLConfiguredRulesSpellingAndGrammarFrenchVerbsEndingInElerAndEter: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let transcribeOpenESoundByDoublingNextConsonant = Self(
-    rawValue: "transcribe_open_e_sound_by_doubling_next_consonant")
-  public static let transcribeOpenESoundWithGraveAccent = Self(
-    rawValue: "transcribe_open_e_sound_with_grave_accent")
+  case transcribeOpenESoundByDoublingNextConsonant =
+    "transcribe_open_e_sound_by_doubling_next_consonant"
+  case transcribeOpenESoundWithGraveAccent = "transcribe_open_e_sound_with_grave_accent"
 }

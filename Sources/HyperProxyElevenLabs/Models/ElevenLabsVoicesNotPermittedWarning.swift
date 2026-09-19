@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct ElevenLabsVoicesNotPermittedWarning: Codable, Sendable {
   public var message: String
   public var speakerIds: [String]
-  public var typeModel: String
+  public var kind: ElevenLabsVoicesNotPermittedKind
 
   public init(
     message: String,
     speakerIds: [String],
-    typeModel: String
+    kind: ElevenLabsVoicesNotPermittedKind = .voicesNotPermitted
   ) {
     self.message = message
     self.speakerIds = speakerIds
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case message
     case speakerIds = "speaker_ids"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

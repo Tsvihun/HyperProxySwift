@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherDEConfigEngineType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let eNGINETYPEPULSAR = Self(rawValue: "ENGINE_TYPE_PULSAR")
-  public static let eNGINETYPEVLLM = Self(rawValue: "ENGINE_TYPE_VLLM")
-  public static let eNGINETYPESGLANG = Self(rawValue: "ENGINE_TYPE_SGLANG")
-  public static let eNGINETYPETGL = Self(rawValue: "ENGINE_TYPE_TGL")
-  public static let eNGINETYPETRTLLM = Self(rawValue: "ENGINE_TYPE_TRTLLM")
-  public static let eNGINETYPESMG = Self(rawValue: "ENGINE_TYPE_SMG")
+public enum TogetherDEConfigEngineType: String, Codable, Hashable, Sendable {
+  case eNGINETYPEPULSAR = "ENGINE_TYPE_PULSAR"
+  case eNGINETYPEVLLM = "ENGINE_TYPE_VLLM"
+  case eNGINETYPESGLANG = "ENGINE_TYPE_SGLANG"
+  case eNGINETYPETGL = "ENGINE_TYPE_TGL"
+  case eNGINETYPETRTLLM = "ENGINE_TYPE_TRTLLM"
+  case eNGINETYPESMG = "ENGINE_TYPE_SMG"
 }

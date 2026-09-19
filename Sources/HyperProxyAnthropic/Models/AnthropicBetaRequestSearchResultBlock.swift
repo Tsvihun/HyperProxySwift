@@ -16,13 +16,13 @@ public struct AnthropicBetaRequestSearchResultBlock: Codable, Sendable {
   public var content: [AnthropicBetaRequestTextBlock]
   public var source: String
   public var title: String
-  public var typeModel: String
+  public var kind: AnthropicSearchResultKind
 
   public init(
     content: [AnthropicBetaRequestTextBlock],
     source: String,
     title: String,
-    typeModel: String,
+    kind: AnthropicSearchResultKind = .searchResult,
     cacheControl: AnthropicBetaCacheControlEphemeral? = nil,
     citations: AnthropicBetaRequestCitationsConfig? = nil
   ) {
@@ -31,7 +31,7 @@ public struct AnthropicBetaRequestSearchResultBlock: Codable, Sendable {
     self.content = content
     self.source = source
     self.title = title
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct AnthropicBetaRequestSearchResultBlock: Codable, Sendable {
     case content
     case source
     case title
-    case typeModel = "type"
+    case kind = "type"
   }
 }

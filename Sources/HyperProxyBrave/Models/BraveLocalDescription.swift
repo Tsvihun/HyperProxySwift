@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct BraveLocalDescription: Codable, Sendable {
   public var description: String?
   public var id: String
-  public var typeModel: String
+  public var kind: String
 
   public init(
     id: String,
-    typeModel: String,
+    kind: String,
     description: String? = nil
   ) {
     self.description = description
     self.id = id
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case description
     case id
-    case typeModel = "type"
+    case kind = "type"
   }
 }

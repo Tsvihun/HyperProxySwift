@@ -11,17 +11,17 @@ import Foundation
 import HyperProxyCore
 
 public struct PerplexityDateFilters: Codable, Sendable {
-  public var lastUpdatedAfterFilter: PerplexityDate?
-  public var lastUpdatedBeforeFilter: PerplexityDate?
-  public var searchAfterDateFilter: PerplexityDate?
-  public var searchBeforeDateFilter: PerplexityDate?
+  public var lastUpdatedAfterFilter: String?
+  public var lastUpdatedBeforeFilter: String?
+  public var searchAfterDateFilter: String?
+  public var searchBeforeDateFilter: String?
   public var searchRecencyFilter: PerplexitySearchRecencyFilter?
 
   public init(
-    lastUpdatedAfterFilter: PerplexityDate? = nil,
-    lastUpdatedBeforeFilter: PerplexityDate? = nil,
-    searchAfterDateFilter: PerplexityDate? = nil,
-    searchBeforeDateFilter: PerplexityDate? = nil,
+    lastUpdatedAfterFilter: String? = nil,
+    lastUpdatedBeforeFilter: String? = nil,
+    searchAfterDateFilter: String? = nil,
+    searchBeforeDateFilter: String? = nil,
     searchRecencyFilter: PerplexitySearchRecencyFilter? = nil
   ) {
     self.lastUpdatedAfterFilter = lastUpdatedAfterFilter

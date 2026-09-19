@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct ElevenLabsTransferToNumberToolConfigInput: Codable, Sendable {
   public var enableClientMessage: Bool?
-  public var systemToolType: String?
+  public var systemToolType: ElevenLabsTransferToNumberSystemToolType?
   public var transfers: [ElevenLabsPhoneNumberTransfer]
 
   public init(
     transfers: [ElevenLabsPhoneNumberTransfer],
     enableClientMessage: Bool? = nil,
-    systemToolType: String? = nil
+    systemToolType: ElevenLabsTransferToNumberSystemToolType? = nil
   ) {
     self.enableClientMessage = enableClientMessage
     self.systemToolType = systemToolType

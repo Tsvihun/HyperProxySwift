@@ -14,23 +14,23 @@ public struct MistralToolReferenceChunk: Codable, Sendable {
   public var description: String?
   public var favicon: String?
   public var title: String
-  public var tool: HyperProxyJSONValue
-  public var typeModel: String?
+  public var tool: MistralToolReferenceChunkTool
+  public var kind: MistralToolReferenceKind?
   public var url: String?
 
   public init(
     title: String,
-    tool: HyperProxyJSONValue,
+    tool: MistralToolReferenceChunkTool,
     description: String? = nil,
     favicon: String? = nil,
-    typeModel: String? = nil,
+    kind: MistralToolReferenceKind? = nil,
     url: String? = nil
   ) {
     self.description = description
     self.favicon = favicon
     self.title = title
     self.tool = tool
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
@@ -39,7 +39,7 @@ public struct MistralToolReferenceChunk: Codable, Sendable {
     case favicon
     case title
     case tool
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

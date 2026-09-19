@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralMCPUIToolMetaVisibilityAnyOf1Item: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let model = Self(rawValue: "model")
-  public static let app = Self(rawValue: "app")
+public enum MistralMCPUIToolMetaVisibilityAnyOf1Item: String, Codable, Hashable, Sendable {
+  case model = "model"
+  case app = "app"
 }

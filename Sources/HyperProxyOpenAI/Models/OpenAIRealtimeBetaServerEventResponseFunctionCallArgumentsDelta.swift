@@ -17,7 +17,7 @@ public struct OpenAIRealtimeBetaServerEventResponseFunctionCallArgumentsDelta: C
   public var itemId: String
   public var outputIndex: Int
   public var responseId: String
-  public var typeModel: OpenAIRealtimeBetaServerEventResponseFunctionCallArgumentsDeltaTypeModel
+  public var kind: OpenAIRealtimeBetaServerEventResponseFunctionCallArgumentsDeltaKind
 
   public init(
     callId: String,
@@ -26,7 +26,7 @@ public struct OpenAIRealtimeBetaServerEventResponseFunctionCallArgumentsDelta: C
     itemId: String,
     outputIndex: Int,
     responseId: String,
-    typeModel: OpenAIRealtimeBetaServerEventResponseFunctionCallArgumentsDeltaTypeModel
+    kind: OpenAIRealtimeBetaServerEventResponseFunctionCallArgumentsDeltaKind
   ) {
     self.callId = callId
     self.delta = delta
@@ -34,7 +34,7 @@ public struct OpenAIRealtimeBetaServerEventResponseFunctionCallArgumentsDelta: C
     self.itemId = itemId
     self.outputIndex = outputIndex
     self.responseId = responseId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenAIRealtimeBetaServerEventResponseFunctionCallArgumentsDelta: C
     case itemId = "item_id"
     case outputIndex = "output_index"
     case responseId = "response_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

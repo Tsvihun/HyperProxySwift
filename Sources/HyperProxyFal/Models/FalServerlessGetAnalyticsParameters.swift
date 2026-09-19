@@ -13,22 +13,22 @@ import HyperProxyCore
 public struct FalServerlessGetAnalyticsParameters: Codable, Sendable {
   public var boundToTimeframe: FalServerlessGetAnalyticsParametersBoundToTimeframe?
   public var cursor: String?
-  public var end: String?
-  public var endpointId: HyperProxyJSONValue
-  public var expand: HyperProxyJSONValue?
+  public var end: FalServerlessGetAnalyticsParametersEnd?
+  public var endpointId: FalServerlessGetAnalyticsParametersEndpointId
+  public var expand: FalServerlessGetAnalyticsParametersExpand?
   public var limit: Int?
-  public var start: String?
+  public var start: FalServerlessGetAnalyticsParametersStart?
   public var timeframe: FalServerlessGetAnalyticsParametersTimeframe?
   public var timezone: String?
 
   public init(
-    endpointId: HyperProxyJSONValue,
+    endpointId: FalServerlessGetAnalyticsParametersEndpointId,
     boundToTimeframe: FalServerlessGetAnalyticsParametersBoundToTimeframe? = nil,
     cursor: String? = nil,
-    end: String? = nil,
-    expand: HyperProxyJSONValue? = nil,
+    end: FalServerlessGetAnalyticsParametersEnd? = nil,
+    expand: FalServerlessGetAnalyticsParametersExpand? = nil,
     limit: Int? = nil,
-    start: String? = nil,
+    start: FalServerlessGetAnalyticsParametersStart? = nil,
     timeframe: FalServerlessGetAnalyticsParametersTimeframe? = nil,
     timezone: String? = nil
   ) {

@@ -17,7 +17,7 @@ public struct AnthropicBetaResponseContentBlockLocationCitation: Codable, Sendab
   public var endBlockIndex: Int
   public var fileId: String?
   public var startBlockIndex: Int
-  public var typeModel: String
+  public var kind: AnthropicContentBlockLocationKind
 
   public init(
     citedText: String,
@@ -26,7 +26,7 @@ public struct AnthropicBetaResponseContentBlockLocationCitation: Codable, Sendab
     endBlockIndex: Int,
     fileId: String?,
     startBlockIndex: Int,
-    typeModel: String
+    kind: AnthropicContentBlockLocationKind = .contentBlockLocation
   ) {
     self.citedText = citedText
     self.documentIndex = documentIndex
@@ -34,7 +34,7 @@ public struct AnthropicBetaResponseContentBlockLocationCitation: Codable, Sendab
     self.endBlockIndex = endBlockIndex
     self.fileId = fileId
     self.startBlockIndex = startBlockIndex
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct AnthropicBetaResponseContentBlockLocationCitation: Codable, Sendab
     case endBlockIndex = "end_block_index"
     case fileId = "file_id"
     case startBlockIndex = "start_block_index"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

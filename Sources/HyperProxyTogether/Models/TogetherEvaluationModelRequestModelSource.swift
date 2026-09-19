@@ -10,16 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherEvaluationModelRequestModelSource: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let serverless = Self(rawValue: "serverless")
-  public static let dedicated = Self(rawValue: "dedicated")
-  public static let external = Self(rawValue: "external")
+public enum TogetherEvaluationModelRequestModelSource: String, Codable, Hashable, Sendable {
+  case serverless = "serverless"
+  case dedicated = "dedicated"
+  case external = "external"
 }

@@ -19,13 +19,13 @@ public struct OpenAIBetaCustomToolCall: Codable, Sendable {
   public var input: String
   public var name: String
   public var namespace: String?
-  public var typeModel: OpenAIBetaCustomToolCallTypeModel
+  public var kind: OpenAIBetaCustomToolCallKind
 
   public init(
     callId: String,
     input: String,
     name: String,
-    typeModel: OpenAIBetaCustomToolCallTypeModel,
+    kind: OpenAIBetaCustomToolCallKind,
     agent: OpenAIBetaAgentTag? = nil,
     async: Bool? = nil,
     caller: OpenAIBetaToolCallCaller? = nil,
@@ -40,7 +40,7 @@ public struct OpenAIBetaCustomToolCall: Codable, Sendable {
     self.input = input
     self.name = name
     self.namespace = namespace
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -52,6 +52,6 @@ public struct OpenAIBetaCustomToolCall: Codable, Sendable {
     case input
     case name
     case namespace
-    case typeModel = "type"
+    case kind = "type"
   }
 }

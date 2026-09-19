@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct PerplexityResponseInProgressEvent: Codable, Sendable {
   public var response: PerplexityResponsesResponse?
   public var sequenceNumber: Int64
-  public var typeModel: PerplexityEventType
+  public var kind: PerplexityEventType
 
   public init(
     sequenceNumber: Int64,
-    typeModel: PerplexityEventType,
+    kind: PerplexityEventType,
     response: PerplexityResponsesResponse? = nil
   ) {
     self.response = response
     self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case response
     case sequenceNumber = "sequence_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

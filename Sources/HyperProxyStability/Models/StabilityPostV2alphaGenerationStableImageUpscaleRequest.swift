@@ -17,7 +17,7 @@ public struct StabilityPostV2alphaGenerationStableImageUpscaleRequest: Codable, 
   public var outputFormat: StabilityPostV2alphaGenerationStableImageUpscaleRequestOutputFormat?
   public var prompt: String
   public var seed: Double?
-  public var stylePreset: StabilityPostV2alphaGenerationStableImageUpscaleRequestStylePreset?
+  public var stylePreset: StabilityStylePreset?
 
   public init(
     image: String,
@@ -26,7 +26,7 @@ public struct StabilityPostV2alphaGenerationStableImageUpscaleRequest: Codable, 
     negativePrompt: String? = nil,
     outputFormat: StabilityPostV2alphaGenerationStableImageUpscaleRequestOutputFormat? = nil,
     seed: Double? = nil,
-    stylePreset: StabilityPostV2alphaGenerationStableImageUpscaleRequestStylePreset? = nil
+    stylePreset: StabilityStylePreset? = nil
   ) {
     self.creativity = creativity
     self.image = image

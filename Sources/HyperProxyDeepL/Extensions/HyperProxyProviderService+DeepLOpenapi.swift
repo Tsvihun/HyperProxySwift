@@ -84,6 +84,22 @@ extension HyperProxyProviderService where Operation == DeepLOperation {
     return try await prepared.decoded(DeepLGetDocumentStatusResponse.self)
   }
 
+  public func documentsResult(
+    _ body: DeepLDocumentKey,
+    documentId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.documentsResult)
+      .path("document_id", documentId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try prepared.bytes()
+  }
+
   public func listGlossaries(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],

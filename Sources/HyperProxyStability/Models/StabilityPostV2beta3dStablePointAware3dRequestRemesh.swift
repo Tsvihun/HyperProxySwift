@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct StabilityPostV2beta3dStablePointAware3dRequestRemesh: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum StabilityPostV2beta3dStablePointAware3dRequestRemesh: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let none = Self(rawValue: "none")
-  public static let triangle = Self(rawValue: "triangle")
-  public static let quad = Self(rawValue: "quad")
+  case none = "none"
+  case triangle = "triangle"
+  case quad = "quad"
 }

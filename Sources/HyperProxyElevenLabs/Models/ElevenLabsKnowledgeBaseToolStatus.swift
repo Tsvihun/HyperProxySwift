@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsKnowledgeBaseToolStatus: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let success = Self(rawValue: "success")
-  public static let noMatchingDocuments = Self(rawValue: "no_matching_documents")
-  public static let noResults = Self(rawValue: "no_results")
+public enum ElevenLabsKnowledgeBaseToolStatus: String, Codable, Hashable, Sendable {
+  case success = "success"
+  case noMatchingDocuments = "no_matching_documents"
+  case noResults = "no_results"
 }

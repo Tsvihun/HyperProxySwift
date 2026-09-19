@@ -15,7 +15,7 @@ public struct TogetherDERolloutDefaultsPreview: Codable, Sendable {
   public var estimatedSeedPercent: Int?
   public var frozenPair: Bool?
   public var sourceReplicas: Int
-  public var spec: HyperProxyJSONValue
+  public var spec: TogetherDECreateRolloutRequest
   public var targetMaxReplicas: Int
   public var targetMinReplicas: Int
   public var targetReplicas: Int
@@ -23,7 +23,7 @@ public struct TogetherDERolloutDefaultsPreview: Codable, Sendable {
 
   public init(
     sourceReplicas: Int,
-    spec: HyperProxyJSONValue,
+    spec: TogetherDECreateRolloutRequest,
     targetMaxReplicas: Int,
     targetMinReplicas: Int,
     targetReplicas: Int,

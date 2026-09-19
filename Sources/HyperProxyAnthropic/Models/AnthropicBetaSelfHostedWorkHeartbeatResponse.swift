@@ -15,20 +15,20 @@ public struct AnthropicBetaSelfHostedWorkHeartbeatResponse: Codable, Sendable {
   public var leaseExtended: Bool
   public var state: AnthropicBetaSelfHostedWorkHeartbeatResponseState
   public var ttlSeconds: Int
-  public var typeModel: String
+  public var kind: AnthropicWorkHeartbeatKind
 
   public init(
     lastHeartbeat: String,
     leaseExtended: Bool,
     state: AnthropicBetaSelfHostedWorkHeartbeatResponseState,
     ttlSeconds: Int,
-    typeModel: String
+    kind: AnthropicWorkHeartbeatKind = .workHeartbeat
   ) {
     self.lastHeartbeat = lastHeartbeat
     self.leaseExtended = leaseExtended
     self.state = state
     self.ttlSeconds = ttlSeconds
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct AnthropicBetaSelfHostedWorkHeartbeatResponse: Codable, Sendable {
     case leaseExtended = "lease_extended"
     case state
     case ttlSeconds = "ttl_seconds"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

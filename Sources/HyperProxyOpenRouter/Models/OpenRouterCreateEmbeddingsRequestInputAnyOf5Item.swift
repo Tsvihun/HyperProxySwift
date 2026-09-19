@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterCreateEmbeddingsRequestInputAnyOf5Item: Codable, Sendable {
-  public var content: [HyperProxyJSONValue]
+  public var content: [OpenRouterCreateEmbeddingsRequestInputAnyOf5ItemContentItem]
 
   public init(
-    content: [HyperProxyJSONValue]
+    content: [OpenRouterCreateEmbeddingsRequestInputAnyOf5ItemContentItem]
   ) {
     self.content = content
   }

@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIRunStepStreamEventOneOf2Event: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let threadRunStepInProgress = Self(rawValue: "thread.run.step.in_progress")
+public enum OpenAIRunStepStreamEventOneOf2Event: String, Codable, Hashable, Sendable {
+  case threadRunStepInProgress = "thread.run.step.in_progress"
 }

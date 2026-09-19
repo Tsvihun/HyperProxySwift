@@ -16,7 +16,7 @@ public struct MistralRegisterDeploymentRequestVespaField: Codable, Sendable {
   public var name: String
   public var ranking: MistralSchemaFieldRankingType
   public var storage: MistralSchemaFieldStorage
-  public var typeModel: MistralSchemaFieldDataType
+  public var kind: MistralSchemaFieldDataType
 
   public init(
     indexType: MistralSchemaFieldIndex?,
@@ -24,14 +24,14 @@ public struct MistralRegisterDeploymentRequestVespaField: Codable, Sendable {
     name: String,
     ranking: MistralSchemaFieldRankingType,
     storage: MistralSchemaFieldStorage,
-    typeModel: MistralSchemaFieldDataType
+    kind: MistralSchemaFieldDataType
   ) {
     self.indexType = indexType
     self.multidimensional = multidimensional
     self.name = name
     self.ranking = ranking
     self.storage = storage
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct MistralRegisterDeploymentRequestVespaField: Codable, Sendable {
     case name
     case ranking
     case storage
-    case typeModel = "type"
+    case kind = "type"
   }
 }

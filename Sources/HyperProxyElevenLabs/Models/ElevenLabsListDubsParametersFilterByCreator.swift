@@ -10,16 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsListDubsParametersFilterByCreator: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let personal = Self(rawValue: "personal")
-  public static let others = Self(rawValue: "others")
-  public static let all = Self(rawValue: "all")
+public enum ElevenLabsListDubsParametersFilterByCreator: String, Codable, Hashable, Sendable {
+  case personal = "personal"
+  case others = "others"
+  case all = "all"
 }

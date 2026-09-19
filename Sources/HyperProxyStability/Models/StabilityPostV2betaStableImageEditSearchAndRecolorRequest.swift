@@ -18,7 +18,7 @@ public struct StabilityPostV2betaStableImageEditSearchAndRecolorRequest: Codable
   public var prompt: String
   public var seed: Double?
   public var selectPrompt: String
-  public var stylePreset: StabilityPostV2betaStableImageEditSearchAndRecolorRequestStylePreset?
+  public var stylePreset: StabilityStylePreset?
 
   public init(
     image: String,
@@ -28,7 +28,7 @@ public struct StabilityPostV2betaStableImageEditSearchAndRecolorRequest: Codable
     negativePrompt: String? = nil,
     outputFormat: StabilityPostV2betaStableImageEditSearchAndRecolorRequestOutputFormat? = nil,
     seed: Double? = nil,
-    stylePreset: StabilityPostV2betaStableImageEditSearchAndRecolorRequestStylePreset? = nil
+    stylePreset: StabilityStylePreset? = nil
   ) {
     self.growMask = growMask
     self.image = image

@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAISessionEventAgentSessionTurnReasoningSummaryPartDoneStatus: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum OpenAISessionEventAgentSessionTurnReasoningSummaryPartDoneStatus: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let incomplete = Self(rawValue: "incomplete")
+  case incomplete = "incomplete"
 }

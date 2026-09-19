@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsToolExecutionMode: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let immediate = Self(rawValue: "immediate")
-  public static let postToolSpeech = Self(rawValue: "post_tool_speech")
-  public static let async = Self(rawValue: "async")
+public enum ElevenLabsToolExecutionMode: String, Codable, Hashable, Sendable {
+  case immediate = "immediate"
+  case postToolSpeech = "post_tool_speech"
+  case async = "async"
 }

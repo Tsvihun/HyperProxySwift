@@ -16,7 +16,7 @@ public struct OpenRouterImageEndpoint: Codable, Sendable {
   public var providerName: String
   public var providerSlug: String
   public var providerTag: String
-  public var supportedParameters: HyperProxyJSONValue
+  public var supportedParameters: OpenRouterSupportedParameters
   public var supportsStreaming: Bool
 
   public init(
@@ -25,7 +25,7 @@ public struct OpenRouterImageEndpoint: Codable, Sendable {
     providerName: String,
     providerSlug: String,
     providerTag: String,
-    supportedParameters: HyperProxyJSONValue,
+    supportedParameters: OpenRouterSupportedParameters,
     supportsStreaming: Bool
   ) {
     self.allowedPassthroughParameters = allowedPassthroughParameters

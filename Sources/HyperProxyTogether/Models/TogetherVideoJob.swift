@@ -16,7 +16,7 @@ public struct TogetherVideoJob: Codable, Sendable {
   public var error: TogetherVideoJobError?
   public var id: String
   public var model: String
-  public var object: HyperProxyJSONValue?
+  public var object: TogetherVideoObject?
   public var outputs: TogetherVideoJobOutputs?
   public var seconds: String
   public var size: String
@@ -31,7 +31,7 @@ public struct TogetherVideoJob: Codable, Sendable {
     status: TogetherVideoStatus,
     completedAt: Double? = nil,
     error: TogetherVideoJobError? = nil,
-    object: HyperProxyJSONValue? = nil,
+    object: TogetherVideoObject? = nil,
     outputs: TogetherVideoJobOutputs? = nil
   ) {
     self.completedAt = completedAt

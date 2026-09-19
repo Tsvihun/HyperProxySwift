@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct GroqCreateChatCompletionResponseServiceTier: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
-  public static let onDemand = Self(rawValue: "on_demand")
-  public static let flex = Self(rawValue: "flex")
-  public static let performance = Self(rawValue: "performance")
+public enum GroqCreateChatCompletionResponseServiceTier: String, Codable, Hashable, Sendable {
+  case auto = "auto"
+  case onDemand = "on_demand"
+  case flex = "flex"
+  case performance = "performance"
 }

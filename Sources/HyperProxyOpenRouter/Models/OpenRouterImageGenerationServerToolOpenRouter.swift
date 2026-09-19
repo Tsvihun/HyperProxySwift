@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterImageGenerationServerToolOpenRouter: Codable, Sendable {
   public var parameters: OpenRouterImageGenerationServerToolConfig?
-  public var typeModel: OpenRouterImageGenerationServerToolOpenRouterTypeModel
+  public var kind: OpenRouterImageGenerationServerToolOpenRouterKind
 
   public init(
-    typeModel: OpenRouterImageGenerationServerToolOpenRouterTypeModel,
+    kind: OpenRouterImageGenerationServerToolOpenRouterKind,
     parameters: OpenRouterImageGenerationServerToolConfig? = nil
   ) {
     self.parameters = parameters
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case parameters
-    case typeModel = "type"
+    case kind = "type"
   }
 }

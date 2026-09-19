@@ -15,11 +15,11 @@ public struct FalUploadAssetRequest: Codable, Sendable {
   public var favorite: Bool?
   public var prompt: String?
   public var tagIds: [String]?
-  public var typeModel: FalUploadAssetRequestTypeModel
+  public var kind: FalUploadAssetRequestKind
   public var url: String
 
   public init(
-    typeModel: FalUploadAssetRequestTypeModel,
+    kind: FalUploadAssetRequestKind,
     url: String,
     collectionId: String? = nil,
     favorite: Bool? = nil,
@@ -30,7 +30,7 @@ public struct FalUploadAssetRequest: Codable, Sendable {
     self.favorite = favorite
     self.prompt = prompt
     self.tagIds = tagIds
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
@@ -39,7 +39,7 @@ public struct FalUploadAssetRequest: Codable, Sendable {
     case favorite
     case prompt
     case tagIds = "tag_ids"
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

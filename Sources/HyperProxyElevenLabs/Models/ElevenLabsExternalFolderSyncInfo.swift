@@ -16,12 +16,12 @@ public struct ElevenLabsExternalFolderSyncInfo: Codable, Sendable {
   public var rootFolderId: String?
   public var sourceEntityId: String
   public var syncCursor: String?
-  public var typeModel: ElevenLabsExternalSyncProvider
+  public var kind: ElevenLabsExternalSyncProvider
 
   public init(
     integrationConnectionId: String,
     sourceEntityId: String,
-    typeModel: ElevenLabsExternalSyncProvider,
+    kind: ElevenLabsExternalSyncProvider,
     lastSyncAt: Int? = nil,
     rootFolderId: String? = nil,
     syncCursor: String? = nil
@@ -31,7 +31,7 @@ public struct ElevenLabsExternalFolderSyncInfo: Codable, Sendable {
     self.rootFolderId = rootFolderId
     self.sourceEntityId = sourceEntityId
     self.syncCursor = syncCursor
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct ElevenLabsExternalFolderSyncInfo: Codable, Sendable {
     case rootFolderId = "root_folder_id"
     case sourceEntityId = "source_entity_id"
     case syncCursor = "sync_cursor"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

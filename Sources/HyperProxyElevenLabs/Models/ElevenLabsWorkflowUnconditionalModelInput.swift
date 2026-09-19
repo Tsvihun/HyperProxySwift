@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct ElevenLabsWorkflowUnconditionalModelInput: Codable, Sendable {
   public var label: String?
-  public var typeModel: String?
+  public var kind: ElevenLabsUnconditionalKind?
 
   public init(
     label: String? = nil,
-    typeModel: String? = nil
+    kind: ElevenLabsUnconditionalKind? = nil
   ) {
     self.label = label
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case label
-    case typeModel = "type"
+    case kind = "type"
   }
 }

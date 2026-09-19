@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksProtobufNullValue: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let nULLVALUE = Self(rawValue: "NULL_VALUE")
+public enum FireworksProtobufNullValue: String, Codable, Hashable, Sendable {
+  case nULLVALUE = "NULL_VALUE"
 }

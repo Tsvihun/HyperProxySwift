@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherPostImagesGenerationsRequestOutputFormat: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let jpeg = Self(rawValue: "jpeg")
-  public static let png = Self(rawValue: "png")
+public enum TogetherPostImagesGenerationsRequestOutputFormat: String, Codable, Hashable, Sendable {
+  case jpeg = "jpeg"
+  case png = "png"
 }

@@ -10,16 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiGenerateAnswerRequestAnswerStyle: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let aNSWERSTYLEUNSPECIFIED = Self(rawValue: "ANSWER_STYLE_UNSPECIFIED")
-  public static let aBSTRACTIVE = Self(rawValue: "ABSTRACTIVE")
-  public static let eXTRACTIVE = Self(rawValue: "EXTRACTIVE")
-  public static let vERBOSE = Self(rawValue: "VERBOSE")
+public enum GeminiGenerateAnswerRequestAnswerStyle: String, Codable, Hashable, Sendable {
+  case aNSWERSTYLEUNSPECIFIED = "ANSWER_STYLE_UNSPECIFIED"
+  case aBSTRACTIVE = "ABSTRACTIVE"
+  case eXTRACTIVE = "EXTRACTIVE"
+  case vERBOSE = "VERBOSE"
 }

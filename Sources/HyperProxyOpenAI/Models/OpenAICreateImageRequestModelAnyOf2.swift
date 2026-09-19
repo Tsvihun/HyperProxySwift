@@ -10,22 +10,16 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAICreateImageRequestModelAnyOf2: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let gptImage15 = Self(rawValue: "gpt-image-1.5")
-  public static let gptImage2 = Self(rawValue: "gpt-image-2")
-  public static let gptImage220260421 = Self(rawValue: "gpt-image-2-2026-04-21")
-  public static let gptImage25Sunburst = Self(rawValue: "gpt-image-2.5-sunburst")
-  public static let gptImage25Sunburst20260908 = Self(rawValue: "gpt-image-2.5-sunburst-2026-09-08")
-  public static let gptImage25Flare = Self(rawValue: "gpt-image-2.5-flare")
-  public static let gptImage25Flare20260908 = Self(rawValue: "gpt-image-2.5-flare-2026-09-08")
-  public static let dallE2 = Self(rawValue: "dall-e-2")
-  public static let dallE3 = Self(rawValue: "dall-e-3")
-  public static let gptImage1 = Self(rawValue: "gpt-image-1")
-  public static let gptImage1Mini = Self(rawValue: "gpt-image-1-mini")
+public enum OpenAICreateImageRequestModelAnyOf2: String, Codable, Hashable, Sendable {
+  case gptImage15 = "gpt-image-1.5"
+  case gptImage2 = "gpt-image-2"
+  case gptImage220260421 = "gpt-image-2-2026-04-21"
+  case gptImage25Sunburst = "gpt-image-2.5-sunburst"
+  case gptImage25Sunburst20260908 = "gpt-image-2.5-sunburst-2026-09-08"
+  case gptImage25Flare = "gpt-image-2.5-flare"
+  case gptImage25Flare20260908 = "gpt-image-2.5-flare-2026-09-08"
+  case dallE2 = "dall-e-2"
+  case dallE3 = "dall-e-3"
+  case gptImage1 = "gpt-image-1"
+  case gptImage1Mini = "gpt-image-1-mini"
 }

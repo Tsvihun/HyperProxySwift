@@ -12,16 +12,16 @@ import HyperProxyCore
 
 public struct ElevenLabsTranscriptionOrderItemRequest: Codable, Sendable {
   public var instructions: String?
-  public var kind: String?
-  public var mediaIds: [ElevenLabsMediaId]
+  public var kind: ElevenLabsTranscriptionKind?
+  public var mediaIds: [String]
   public var sourceLanguage: String
   public var verbatim: Bool?
 
   public init(
-    mediaIds: [ElevenLabsMediaId],
+    mediaIds: [String],
     sourceLanguage: String,
     instructions: String? = nil,
-    kind: String? = nil,
+    kind: ElevenLabsTranscriptionKind? = nil,
     verbatim: Bool? = nil
   ) {
     self.instructions = instructions

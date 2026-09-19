@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIEnvironmentTypeResource: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let openaiHosted = Self(rawValue: "openai_hosted")
-  public static let selfHosted = Self(rawValue: "self_hosted")
+public enum OpenAIEnvironmentTypeResource: String, Codable, Hashable, Sendable {
+  case openaiHosted = "openai_hosted"
+  case selfHosted = "self_hosted"
 }

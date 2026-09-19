@@ -10,4 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public typealias MistralAgentsApiV1ConversationsListResponse = [HyperProxyJSONValue]
+public typealias MistralAgentsApiV1ConversationsListResponse =
+  [MistralAgentsApiV1ConversationsListResponseItem]

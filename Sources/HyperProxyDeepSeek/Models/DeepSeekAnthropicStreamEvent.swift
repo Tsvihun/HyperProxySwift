@@ -16,11 +16,11 @@ public struct DeepSeekAnthropicStreamEvent: Codable, Sendable {
   public var error: [String: HyperProxyJSONValue]?
   public var index: Int?
   public var message: DeepSeekAnthropicMessageResponse?
-  public var typeModel: String
+  public var kind: String
   public var usage: DeepSeekAnthropicUsage?
 
   public init(
-    typeModel: String,
+    kind: String,
     contentBlock: DeepSeekAnthropicContentBlock? = nil,
     delta: [String: HyperProxyJSONValue]? = nil,
     error: [String: HyperProxyJSONValue]? = nil,
@@ -33,7 +33,7 @@ public struct DeepSeekAnthropicStreamEvent: Codable, Sendable {
     self.error = error
     self.index = index
     self.message = message
-    self.typeModel = typeModel
+    self.kind = kind
     self.usage = usage
   }
 
@@ -43,7 +43,7 @@ public struct DeepSeekAnthropicStreamEvent: Codable, Sendable {
     case error
     case index
     case message
-    case typeModel = "type"
+    case kind = "type"
     case usage
   }
 }

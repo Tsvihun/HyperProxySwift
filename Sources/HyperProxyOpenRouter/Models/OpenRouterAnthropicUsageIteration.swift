@@ -10,4 +10,41 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenRouterAnthropicUsageIteration = HyperProxyJSONValue
+public enum OpenRouterAnthropicUsageIteration: Codable, Sendable {
+  case anthropicCompactionUsageIteration(OpenRouterAnthropicCompactionUsageIteration)
+  case anthropicMessageUsageIteration(OpenRouterAnthropicMessageUsageIteration)
+  case anthropicAdvisorMessageUsageIteration(OpenRouterAnthropicAdvisorMessageUsageIteration)
+  case anthropicUnknownUsageIteration(OpenRouterAnthropicUnknownUsageIteration)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(OpenRouterAnthropicCompactionUsageIteration.self) {
+      self = .anthropicCompactionUsageIteration(value)
+      return
+    }
+    if let value = try? container.decode(OpenRouterAnthropicMessageUsageIteration.self) {
+      self = .anthropicMessageUsageIteration(value)
+      return
+    }
+    if let value = try? container.decode(OpenRouterAnthropicAdvisorMessageUsageIteration.self) {
+      self = .anthropicAdvisorMessageUsageIteration(value)
+      return
+    }
+    self = .anthropicUnknownUsageIteration(
+      try container.decode(OpenRouterAnthropicUnknownUsageIteration.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .anthropicCompactionUsageIteration(let value):
+      try container.encode(value)
+    case .anthropicMessageUsageIteration(let value):
+      try container.encode(value)
+    case .anthropicAdvisorMessageUsageIteration(let value):
+      try container.encode(value)
+    case .anthropicUnknownUsageIteration(let value):
+      try container.encode(value)
+    }
+  }
+}

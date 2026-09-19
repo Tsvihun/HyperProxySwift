@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAICreateCompletionResponseChoicesItemFinishReason: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum OpenAICreateCompletionResponseChoicesItemFinishReason: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let stop = Self(rawValue: "stop")
-  public static let length = Self(rawValue: "length")
-  public static let contentFilter = Self(rawValue: "content_filter")
+  case stop = "stop"
+  case length = "length"
+  case contentFilter = "content_filter"
 }

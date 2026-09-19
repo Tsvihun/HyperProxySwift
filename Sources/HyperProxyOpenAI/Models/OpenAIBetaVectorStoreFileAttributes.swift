@@ -10,4 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIBetaVectorStoreFileAttributes = [String: HyperProxyJSONValue]?
+public typealias OpenAIBetaVectorStoreFileAttributes = [String:
+  OpenAIBetaVectorStoreFileAttributesAnyOf1Value]?

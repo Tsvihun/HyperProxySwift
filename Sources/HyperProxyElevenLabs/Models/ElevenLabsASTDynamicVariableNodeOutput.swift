@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct ElevenLabsASTDynamicVariableNodeOutput: Codable, Sendable {
   public var name: String
-  public var typeModel: String
+  public var kind: ElevenLabsDynamicVariableKind
 
   public init(
     name: String,
-    typeModel: String
+    kind: ElevenLabsDynamicVariableKind = .dynamicVariable
   ) {
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

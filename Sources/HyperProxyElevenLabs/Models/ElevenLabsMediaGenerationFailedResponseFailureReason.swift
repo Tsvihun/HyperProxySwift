@@ -10,20 +10,14 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsMediaGenerationFailedResponseFailureReason: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum ElevenLabsMediaGenerationFailedResponseFailureReason: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let timeout = Self(rawValue: "timeout")
-  public static let modelError = Self(rawValue: "model_error")
-  public static let moderated = Self(rawValue: "moderated")
-  public static let invalidParameters = Self(rawValue: "invalid_parameters")
-  public static let dependencyFailed = Self(rawValue: "dependency_failed")
-  public static let chargingFailed = Self(rawValue: "charging_failed")
-  public static let internalError = Self(rawValue: "internal_error")
+  case timeout = "timeout"
+  case modelError = "model_error"
+  case moderated = "moderated"
+  case invalidParameters = "invalid_parameters"
+  case dependencyFailed = "dependency_failed"
+  case chargingFailed = "charging_failed"
+  case internalError = "internal_error"
 }

@@ -15,20 +15,20 @@ public struct OpenAIMCPApprovalRequest: Codable, Sendable {
   public var id: String
   public var name: String
   public var serverLabel: String
-  public var typeModel: OpenAIMCPApprovalRequestTypeModel
+  public var kind: OpenAIMCPApprovalRequestKind
 
   public init(
     arguments: String,
     id: String,
     name: String,
     serverLabel: String,
-    typeModel: OpenAIMCPApprovalRequestTypeModel
+    kind: OpenAIMCPApprovalRequestKind
   ) {
     self.arguments = arguments
     self.id = id
     self.name = name
     self.serverLabel = serverLabel
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIMCPApprovalRequest: Codable, Sendable {
     case id
     case name
     case serverLabel = "server_label"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

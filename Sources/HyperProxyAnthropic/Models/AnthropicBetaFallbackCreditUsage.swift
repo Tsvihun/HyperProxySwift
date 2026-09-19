@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaFallbackCreditUsage: Codable, Sendable {
-  public var status: HyperProxyJSONValue
+  public var status: AnthropicBetaFallbackCreditUsageStatus
 
   public init(
-    status: HyperProxyJSONValue
+    status: AnthropicBetaFallbackCreditUsageStatus
   ) {
     self.status = status
   }

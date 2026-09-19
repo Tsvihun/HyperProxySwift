@@ -12,18 +12,20 @@ import HyperProxyCore
 
 public struct OpenRouterNamespaceFunctionTool: Codable, Sendable {
   public var allowedCallers: [OpenRouterNamespaceFunctionToolAllowedCallersItem]?
+  public var async: Bool?
   public var deferLoading: Bool?
   public var description: String?
   public var name: String
   public var outputSchema: [String: HyperProxyJSONValue]?
   public var parameters: [String: HyperProxyJSONValue]?
   public var strict: Bool?
-  public var typeModel: OpenRouterNamespaceFunctionToolTypeModel
+  public var kind: OpenRouterNamespaceFunctionToolKind
 
   public init(
     name: String,
-    typeModel: OpenRouterNamespaceFunctionToolTypeModel,
+    kind: OpenRouterNamespaceFunctionToolKind,
     allowedCallers: [OpenRouterNamespaceFunctionToolAllowedCallersItem]? = nil,
+    async: Bool? = nil,
     deferLoading: Bool? = nil,
     description: String? = nil,
     outputSchema: [String: HyperProxyJSONValue]? = nil,
@@ -31,23 +33,25 @@ public struct OpenRouterNamespaceFunctionTool: Codable, Sendable {
     strict: Bool? = nil
   ) {
     self.allowedCallers = allowedCallers
+    self.async = async
     self.deferLoading = deferLoading
     self.description = description
     self.name = name
     self.outputSchema = outputSchema
     self.parameters = parameters
     self.strict = strict
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case allowedCallers = "allowed_callers"
+    case async
     case deferLoading = "defer_loading"
     case description
     case name
     case outputSchema = "output_schema"
     case parameters
     case strict
-    case typeModel = "type"
+    case kind = "type"
   }
 }

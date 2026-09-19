@@ -13,8 +13,8 @@ import HyperProxyCore
 public struct FalGetModelsParameters: Codable, Sendable {
   public var category: String?
   public var cursor: String?
-  public var endpointId: HyperProxyJSONValue?
-  public var expand: HyperProxyJSONValue?
+  public var endpointId: FalGetModelsParametersEndpointId?
+  public var expand: FalGetModelsParametersExpand?
   public var limit: Int?
   public var q: String?
   public var status: FalGetModelsParametersStatus?
@@ -22,8 +22,8 @@ public struct FalGetModelsParameters: Codable, Sendable {
   public init(
     category: String? = nil,
     cursor: String? = nil,
-    endpointId: HyperProxyJSONValue? = nil,
-    expand: HyperProxyJSONValue? = nil,
+    endpointId: FalGetModelsParametersEndpointId? = nil,
+    expand: FalGetModelsParametersExpand? = nil,
     limit: Int? = nil,
     q: String? = nil,
     status: FalGetModelsParametersStatus? = nil

@@ -10,4 +10,36 @@
 import Foundation
 import HyperProxyCore
 
-public typealias GroqChatCompletionRequestMessageContentPart = HyperProxyJSONValue
+public enum GroqChatCompletionRequestMessageContentPart: Codable, Sendable {
+  case chatCompletionRequestMessageContentPartText(GroqChatCompletionRequestMessageContentPartText)
+  case chatCompletionRequestMessageContentPartImage(
+    GroqChatCompletionRequestMessageContentPartImage)
+  case chatCompletionRequestMessageContentPartDocument(
+    GroqChatCompletionRequestMessageContentPartDocument)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(GroqChatCompletionRequestMessageContentPartText.self) {
+      self = .chatCompletionRequestMessageContentPartText(value)
+      return
+    }
+    if let value = try? container.decode(GroqChatCompletionRequestMessageContentPartImage.self) {
+      self = .chatCompletionRequestMessageContentPartImage(value)
+      return
+    }
+    self = .chatCompletionRequestMessageContentPartDocument(
+      try container.decode(GroqChatCompletionRequestMessageContentPartDocument.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .chatCompletionRequestMessageContentPartText(let value):
+      try container.encode(value)
+    case .chatCompletionRequestMessageContentPartImage(let value):
+      try container.encode(value)
+    case .chatCompletionRequestMessageContentPartDocument(let value):
+      try container.encode(value)
+    }
+  }
+}

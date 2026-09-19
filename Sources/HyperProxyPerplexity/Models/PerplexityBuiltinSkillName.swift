@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct PerplexityBuiltinSkillName: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let office = Self(rawValue: "office")
-  public static let officeDocx = Self(rawValue: "office/docx")
-  public static let officePdf = Self(rawValue: "office/pdf")
-  public static let officePptx = Self(rawValue: "office/pptx")
-  public static let officeXlsx = Self(rawValue: "office/xlsx")
+public enum PerplexityBuiltinSkillName: String, Codable, Hashable, Sendable {
+  case office = "office"
+  case officeDocx = "office/docx"
+  case officePdf = "office/pdf"
+  case officePptx = "office/pptx"
+  case officeXlsx = "office/xlsx"
 }

@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralCreateLibraryRequestOwnerTypeAnyOf1: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let user = Self(rawValue: "User")
-  public static let workspace = Self(rawValue: "Workspace")
+public enum MistralCreateLibraryRequestOwnerTypeAnyOf1: String, Codable, Hashable, Sendable {
+  case user = "User"
+  case workspace = "Workspace"
 }

@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiMaps: Codable, Sendable {
-  public var placeAnswerSources: HyperProxyJSONValue?
+  public var placeAnswerSources: GeminiPlaceAnswerSources?
   public var placeId: String?
   public var text: String?
   public var title: String?
   public var uri: String?
 
   public init(
-    placeAnswerSources: HyperProxyJSONValue? = nil,
+    placeAnswerSources: GeminiPlaceAnswerSources? = nil,
     placeId: String? = nil,
     text: String? = nil,
     title: String? = nil,

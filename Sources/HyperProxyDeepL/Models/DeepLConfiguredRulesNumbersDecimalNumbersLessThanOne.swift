@@ -10,15 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesNumbersDecimalNumbersLessThanOne: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesNumbersDecimalNumbersLessThanOne: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let alwaysUse0BeforeDecimalSeparator = Self(
-    rawValue: "always_use_0_before_decimal_separator")
+  case alwaysUse0BeforeDecimalSeparator = "always_use_0_before_decimal_separator"
 }

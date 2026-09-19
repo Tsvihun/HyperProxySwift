@@ -15,12 +15,12 @@ public struct OpenRouterORAnthropicShellToolResult: Codable, Sendable {
   public var content: [String: HyperProxyJSONValue]
   public var files: [OpenRouterORAnthropicShellToolResultFilesItem]?
   public var toolUseId: String
-  public var typeModel: OpenRouterORAnthropicShellToolResultTypeModel
+  public var kind: OpenRouterORAnthropicShellToolResultKind
 
   public init(
     content: [String: HyperProxyJSONValue],
     toolUseId: String,
-    typeModel: OpenRouterORAnthropicShellToolResultTypeModel,
+    kind: OpenRouterORAnthropicShellToolResultKind,
     containerId: String? = nil,
     files: [OpenRouterORAnthropicShellToolResultFilesItem]? = nil
   ) {
@@ -28,7 +28,7 @@ public struct OpenRouterORAnthropicShellToolResult: Codable, Sendable {
     self.content = content
     self.files = files
     self.toolUseId = toolUseId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenRouterORAnthropicShellToolResult: Codable, Sendable {
     case content
     case files
     case toolUseId = "tool_use_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

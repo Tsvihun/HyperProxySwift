@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralLogicalExpression: Codable, Sendable {
-  public var expressions: [HyperProxyJSONValue]
-  public var typeModel: MistralLogicalExpressionTypeModel
+  public var expressions: [MistralLogicalExpressionExpressionsItem]
+  public var kind: MistralLogicalExpressionKind
 
   public init(
-    expressions: [HyperProxyJSONValue],
-    typeModel: MistralLogicalExpressionTypeModel
+    expressions: [MistralLogicalExpressionExpressionsItem],
+    kind: MistralLogicalExpressionKind
   ) {
     self.expressions = expressions
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case expressions
-    case typeModel = "type"
+    case kind = "type"
   }
 }

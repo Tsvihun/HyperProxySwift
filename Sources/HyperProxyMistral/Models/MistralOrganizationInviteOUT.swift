@@ -14,8 +14,8 @@ public struct MistralOrganizationInviteOUT: Codable, Sendable {
   public var createdAt: String
   public var email: String
   public var expired: Bool
-  public var rawRole: HyperProxyJSONValue
-  public var rawRoles: HyperProxyJSONValue
+  public var rawRole: MistralOrganizationInviteOUTRawRole
+  public var rawRoles: MistralOrganizationInviteOUTRawRoles
   public var uuid: String
   public var workspaceUuids: [String]?
 
@@ -23,8 +23,8 @@ public struct MistralOrganizationInviteOUT: Codable, Sendable {
     createdAt: String,
     email: String,
     expired: Bool,
-    rawRole: HyperProxyJSONValue,
-    rawRoles: HyperProxyJSONValue,
+    rawRole: MistralOrganizationInviteOUTRawRole,
+    rawRoles: MistralOrganizationInviteOUTRawRoles,
     uuid: String,
     workspaceUuids: [String]? = nil
   ) {

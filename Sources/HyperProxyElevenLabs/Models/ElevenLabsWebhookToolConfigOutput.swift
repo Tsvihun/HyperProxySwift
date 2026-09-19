@@ -27,7 +27,7 @@ public struct ElevenLabsWebhookToolConfigOutput: Codable, Sendable {
   public var toolCallSound: ElevenLabsToolCallSoundType?
   public var toolCallSoundBehavior: ElevenLabsToolCallSoundBehavior?
   public var toolErrorHandlingMode: ElevenLabsToolErrorHandlingMode?
-  public var typeModel: String?
+  public var kind: ElevenLabsWebhookKind?
 
   public init(
     apiSchema: ElevenLabsWebhookToolApiSchemaConfigOutput,
@@ -46,7 +46,7 @@ public struct ElevenLabsWebhookToolConfigOutput: Codable, Sendable {
     toolCallSound: ElevenLabsToolCallSoundType? = nil,
     toolCallSoundBehavior: ElevenLabsToolCallSoundBehavior? = nil,
     toolErrorHandlingMode: ElevenLabsToolErrorHandlingMode? = nil,
-    typeModel: String? = nil
+    kind: ElevenLabsWebhookKind? = nil
   ) {
     self.apiSchema = apiSchema
     self.assignments = assignments
@@ -64,7 +64,7 @@ public struct ElevenLabsWebhookToolConfigOutput: Codable, Sendable {
     self.toolCallSound = toolCallSound
     self.toolCallSoundBehavior = toolCallSoundBehavior
     self.toolErrorHandlingMode = toolErrorHandlingMode
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -84,6 +84,6 @@ public struct ElevenLabsWebhookToolConfigOutput: Codable, Sendable {
     case toolCallSound = "tool_call_sound"
     case toolCallSoundBehavior = "tool_call_sound_behavior"
     case toolErrorHandlingMode = "tool_error_handling_mode"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct FireworksAnthropicRequestThinkingBlock: Codable, Sendable {
   public var signature: String
   public var thinking: String
-  public var typeModel: String
+  public var kind: FireworksThinkingKind
 
   public init(
     signature: String,
     thinking: String,
-    typeModel: String
+    kind: FireworksThinkingKind = .thinking
   ) {
     self.signature = signature
     self.thinking = thinking
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case signature
     case thinking
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsTurnEagerness: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let patient = Self(rawValue: "patient")
-  public static let normal = Self(rawValue: "normal")
-  public static let eager = Self(rawValue: "eager")
+public enum ElevenLabsTurnEagerness: String, Codable, Hashable, Sendable {
+  case patient = "patient"
+  case normal = "normal"
+  case eager = "eager"
 }

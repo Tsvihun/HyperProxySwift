@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIRunGraderRequest: Codable, Sendable {
-  public var grader: HyperProxyJSONValue
+  public var grader: OpenAIRunGraderRequestGrader
   public var item: HyperProxyJSONValue?
   public var modelSample: String
 
   public init(
-    grader: HyperProxyJSONValue,
+    grader: OpenAIRunGraderRequestGrader,
     modelSample: String,
     item: HyperProxyJSONValue? = nil
   ) {

@@ -15,20 +15,20 @@ public struct OpenAIRealtimeMCPApprovalRequest: Codable, Sendable {
   public var id: String
   public var name: String
   public var serverLabel: String
-  public var typeModel: OpenAIRealtimeMCPApprovalRequestTypeModel
+  public var kind: OpenAIRealtimeMCPApprovalRequestKind
 
   public init(
     arguments: String,
     id: String,
     name: String,
     serverLabel: String,
-    typeModel: OpenAIRealtimeMCPApprovalRequestTypeModel
+    kind: OpenAIRealtimeMCPApprovalRequestKind
   ) {
     self.arguments = arguments
     self.id = id
     self.name = name
     self.serverLabel = serverLabel
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIRealtimeMCPApprovalRequest: Codable, Sendable {
     case id
     case name
     case serverLabel = "server_label"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

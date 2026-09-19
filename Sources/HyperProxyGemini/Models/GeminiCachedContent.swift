@@ -11,32 +11,32 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiCachedContent: Codable, Sendable {
-  public var contents: [HyperProxyJSONValue]?
+  public var contents: [GeminiContent]?
   public var createTime: String?
   public var displayName: String?
   public var expireTime: String?
   public var model: String?
   public var name: String?
-  public var systemInstruction: HyperProxyJSONValue?
-  public var toolConfig: HyperProxyJSONValue?
-  public var tools: [HyperProxyJSONValue]?
+  public var systemInstruction: GeminiContent?
+  public var toolConfig: GeminiToolConfig?
+  public var tools: [GeminiTool]?
   public var ttl: String?
   public var updateTime: String?
-  public var usageMetadata: HyperProxyJSONValue?
+  public var usageMetadata: GeminiCachedContentUsageMetadata?
 
   public init(
-    contents: [HyperProxyJSONValue]? = nil,
+    contents: [GeminiContent]? = nil,
     createTime: String? = nil,
     displayName: String? = nil,
     expireTime: String? = nil,
     model: String? = nil,
     name: String? = nil,
-    systemInstruction: HyperProxyJSONValue? = nil,
-    toolConfig: HyperProxyJSONValue? = nil,
-    tools: [HyperProxyJSONValue]? = nil,
+    systemInstruction: GeminiContent? = nil,
+    toolConfig: GeminiToolConfig? = nil,
+    tools: [GeminiTool]? = nil,
     ttl: String? = nil,
     updateTime: String? = nil,
-    usageMetadata: HyperProxyJSONValue? = nil
+    usageMetadata: GeminiCachedContentUsageMetadata? = nil
   ) {
     self.contents = contents
     self.createTime = createTime

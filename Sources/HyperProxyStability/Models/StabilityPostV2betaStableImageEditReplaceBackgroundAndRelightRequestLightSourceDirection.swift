@@ -10,18 +10,12 @@
 import Foundation
 import HyperProxyCore
 
-public struct
-  StabilityPostV2betaStableImageEditReplaceBackgroundAndRelightRequestLightSourceDirection:
-    RawRepresentable, Codable, Hashable, Sendable
+public enum
+  StabilityPostV2betaStableImageEditReplaceBackgroundAndRelightRequestLightSourceDirection: String,
+    Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let left = Self(rawValue: "left")
-  public static let right = Self(rawValue: "right")
-  public static let above = Self(rawValue: "above")
-  public static let below = Self(rawValue: "below")
+  case left = "left"
+  case right = "right"
+  case above = "above"
+  case below = "below"
 }

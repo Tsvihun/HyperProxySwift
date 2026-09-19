@@ -10,14 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterCustomToolFormatAnyOf2Syntax: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let lark = Self(rawValue: "lark")
-  public static let regex = Self(rawValue: "regex")
+public enum OpenRouterCustomToolFormatAnyOf2Syntax: String, Codable, Hashable, Sendable {
+  case lark = "lark"
+  case regex = "regex"
 }

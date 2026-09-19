@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct MistralToolExecutionConfiguration: Codable, Sendable {
   public var exclude: [String]?
   public var include: [String]?
-  public var requiresConfirmation: HyperProxyJSONValue?
-  public var skipConfirmation: HyperProxyJSONValue?
+  public var requiresConfirmation: MistralToolExecutionConfigurationRequiresConfirmation?
+  public var skipConfirmation: MistralToolExecutionConfigurationSkipConfirmation?
 
   public init(
     exclude: [String]? = nil,
     include: [String]? = nil,
-    requiresConfirmation: HyperProxyJSONValue? = nil,
-    skipConfirmation: HyperProxyJSONValue? = nil
+    requiresConfirmation: MistralToolExecutionConfigurationRequiresConfirmation? = nil,
+    skipConfirmation: MistralToolExecutionConfigurationSkipConfirmation? = nil
   ) {
     self.exclude = exclude
     self.include = include

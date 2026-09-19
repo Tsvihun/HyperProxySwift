@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIAdminApiKeyObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let organizationAdminApiKey = Self(rawValue: "organization.admin_api_key")
+public enum OpenAIAdminApiKeyObject: String, Codable, Hashable, Sendable {
+  case organizationAdminApiKey = "organization.admin_api_key"
 }

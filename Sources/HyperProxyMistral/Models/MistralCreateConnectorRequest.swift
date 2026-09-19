@@ -19,7 +19,7 @@ public struct MistralCreateConnectorRequest: Codable, Sendable {
   public var name: String
   public var oauth2ServerMetadata: MistralExtendedOAuthServerMetadata?
   public var oauth2ServerMetadataUrl: String?
-  public var protocolModel: String?
+  public var protocolModel: MistralMcpProtocolModel?
   public var server: String
   public var systemPrompt: String?
   public var title: String?
@@ -35,7 +35,7 @@ public struct MistralCreateConnectorRequest: Codable, Sendable {
     iconUrl: String? = nil,
     oauth2ServerMetadata: MistralExtendedOAuthServerMetadata? = nil,
     oauth2ServerMetadataUrl: String? = nil,
-    protocolModel: String? = nil,
+    protocolModel: MistralMcpProtocolModel? = nil,
     systemPrompt: String? = nil,
     title: String? = nil,
     visibility: MistralPublicResourceVisibility? = nil

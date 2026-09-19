@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAICreateContainerBodyMemoryLimit: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let value1g = Self(rawValue: "1g")
-  public static let value4g = Self(rawValue: "4g")
-  public static let value16g = Self(rawValue: "16g")
-  public static let value64g = Self(rawValue: "64g")
+public enum OpenAICreateContainerBodyMemoryLimit: String, Codable, Hashable, Sendable {
+  case value1g = "1g"
+  case value4g = "4g"
+  case value16g = "16g"
+  case value64g = "64g"
 }

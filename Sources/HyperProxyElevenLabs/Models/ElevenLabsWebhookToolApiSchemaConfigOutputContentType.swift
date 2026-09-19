@@ -10,16 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsWebhookToolApiSchemaConfigOutputContentType: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum ElevenLabsWebhookToolApiSchemaConfigOutputContentType: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let applicationJson = Self(rawValue: "application/json")
-  public static let applicationXWwwFormUrlencoded = Self(
-    rawValue: "application/x-www-form-urlencoded")
+  case applicationJson = "application/json"
+  case applicationXWwwFormUrlencoded = "application/x-www-form-urlencoded"
 }

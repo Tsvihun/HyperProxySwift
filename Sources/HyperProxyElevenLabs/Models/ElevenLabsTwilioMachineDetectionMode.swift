@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsTwilioMachineDetectionMode: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let enable = Self(rawValue: "enable")
-  public static let detectMessageEnd = Self(rawValue: "detect_message_end")
+public enum ElevenLabsTwilioMachineDetectionMode: String, Codable, Hashable, Sendable {
+  case enable = "enable"
+  case detectMessageEnd = "detect_message_end"
 }

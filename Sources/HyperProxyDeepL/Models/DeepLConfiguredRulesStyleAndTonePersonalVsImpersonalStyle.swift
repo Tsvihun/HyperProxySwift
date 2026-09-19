@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesStyleAndTonePersonalVsImpersonalStyle: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesStyleAndTonePersonalVsImpersonalStyle: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useImpersonalStyle = Self(rawValue: "use_impersonal_style")
-  public static let usePersonalStyle = Self(rawValue: "use_personal_style")
+  case useImpersonalStyle = "use_impersonal_style"
+  case usePersonalStyle = "use_personal_style"
 }

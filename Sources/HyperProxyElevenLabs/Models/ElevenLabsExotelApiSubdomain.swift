@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsExotelApiSubdomain: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let apiInExotelCom = Self(rawValue: "api.in.exotel.com")
-  public static let apiExotelCom = Self(rawValue: "api.exotel.com")
+public enum ElevenLabsExotelApiSubdomain: String, Codable, Hashable, Sendable {
+  case apiInExotelCom = "api.in.exotel.com"
+  case apiExotelCom = "api.exotel.com"
 }

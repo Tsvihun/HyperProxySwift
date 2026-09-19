@@ -14,10 +14,10 @@ public struct OpenAIBetaResponseConfigurationUpdateItemParam: Codable, Sendable 
   public var agent: OpenAIBetaAgentTagParam?
   public var id: String?
   public var reasoning: OpenAIBetaResponseConfigurationUpdateItemParamReasoning?
-  public var typeModel: OpenAIBetaResponseConfigurationUpdateItemParamTypeModel
+  public var kind: OpenAIBetaResponseConfigurationUpdateItemParamKind
 
   public init(
-    typeModel: OpenAIBetaResponseConfigurationUpdateItemParamTypeModel,
+    kind: OpenAIBetaResponseConfigurationUpdateItemParamKind,
     agent: OpenAIBetaAgentTagParam? = nil,
     id: String? = nil,
     reasoning: OpenAIBetaResponseConfigurationUpdateItemParamReasoning? = nil
@@ -25,13 +25,13 @@ public struct OpenAIBetaResponseConfigurationUpdateItemParam: Codable, Sendable 
     self.agent = agent
     self.id = id
     self.reasoning = reasoning
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case agent
     case id
     case reasoning
-    case typeModel = "type"
+    case kind = "type"
   }
 }

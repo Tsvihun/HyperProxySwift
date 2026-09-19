@@ -21,7 +21,7 @@ public struct ElevenLabsGetKnowledgeBaseURLResponseModel: Codable, Sendable {
   public var metadata: ElevenLabsKnowledgeBaseDocumentMetadataResponseModel
   public var name: String
   public var supportedUsages: [ElevenLabsDocumentUsageModeEnum]
-  public var typeModel: String
+  public var kind: ElevenLabsUrlKind
   public var url: String
 
   public init(
@@ -31,8 +31,8 @@ public struct ElevenLabsGetKnowledgeBaseURLResponseModel: Codable, Sendable {
     metadata: ElevenLabsKnowledgeBaseDocumentMetadataResponseModel,
     name: String,
     supportedUsages: [ElevenLabsDocumentUsageModeEnum],
-    typeModel: String,
     url: String,
+    kind: ElevenLabsUrlKind = .url,
     autoSyncInfo: ElevenLabsAutoSyncInfo? = nil,
     contentFormat: ElevenLabsContentFormat? = nil,
     folderParentId: String? = nil,
@@ -48,7 +48,7 @@ public struct ElevenLabsGetKnowledgeBaseURLResponseModel: Codable, Sendable {
     self.metadata = metadata
     self.name = name
     self.supportedUsages = supportedUsages
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
@@ -63,7 +63,7 @@ public struct ElevenLabsGetKnowledgeBaseURLResponseModel: Codable, Sendable {
     case metadata
     case name
     case supportedUsages = "supported_usages"
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

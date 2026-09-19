@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenRouterApplyPatchUpdateFileOperation: Codable, Sendable {
   public var diff: String
   public var path: String
-  public var typeModel: OpenRouterApplyPatchUpdateFileOperationTypeModel
+  public var kind: OpenRouterApplyPatchUpdateFileOperationKind
 
   public init(
     diff: String,
     path: String,
-    typeModel: OpenRouterApplyPatchUpdateFileOperationTypeModel
+    kind: OpenRouterApplyPatchUpdateFileOperationKind
   ) {
     self.diff = diff
     self.path = path
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case diff
     case path
-    case typeModel = "type"
+    case kind = "type"
   }
 }

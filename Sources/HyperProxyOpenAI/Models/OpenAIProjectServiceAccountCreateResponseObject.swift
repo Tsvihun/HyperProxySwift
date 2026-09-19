@@ -10,15 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIProjectServiceAccountCreateResponseObject: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let organizationProjectServiceAccount = Self(
-    rawValue: "organization.project.service_account")
+public enum OpenAIProjectServiceAccountCreateResponseObject: String, Codable, Hashable, Sendable {
+  case organizationProjectServiceAccount = "organization.project.service_account"
 }

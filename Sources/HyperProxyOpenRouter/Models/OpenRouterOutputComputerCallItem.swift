@@ -16,13 +16,13 @@ public struct OpenRouterOutputComputerCallItem: Codable, Sendable {
   public var id: String?
   public var pendingSafetyChecks: [OpenRouterOutputComputerCallItemPendingSafetyChecksItem]
   public var status: OpenRouterOutputComputerCallItemStatus
-  public var typeModel: OpenRouterOutputComputerCallItemTypeModel
+  public var kind: OpenRouterOutputComputerCallItemKind
 
   public init(
     callId: String,
     pendingSafetyChecks: [OpenRouterOutputComputerCallItemPendingSafetyChecksItem],
     status: OpenRouterOutputComputerCallItemStatus,
-    typeModel: OpenRouterOutputComputerCallItemTypeModel,
+    kind: OpenRouterOutputComputerCallItemKind,
     action: HyperProxyJSONValue? = nil,
     id: String? = nil
   ) {
@@ -31,7 +31,7 @@ public struct OpenRouterOutputComputerCallItem: Codable, Sendable {
     self.id = id
     self.pendingSafetyChecks = pendingSafetyChecks
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenRouterOutputComputerCallItem: Codable, Sendable {
     case id
     case pendingSafetyChecks = "pending_safety_checks"
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

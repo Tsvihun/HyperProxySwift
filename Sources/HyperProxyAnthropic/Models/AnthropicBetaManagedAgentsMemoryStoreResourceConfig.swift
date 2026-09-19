@@ -14,24 +14,24 @@ public struct AnthropicBetaManagedAgentsMemoryStoreResourceConfig: Codable, Send
   public var access: AnthropicBetaManagedAgentsMountMode?
   public var instructions: String?
   public var memoryStoreId: String
-  public var typeModel: AnthropicBetaManagedAgentsMemoryStoreResourceConfigTypeModel
+  public var kind: AnthropicBetaManagedAgentsMemoryStoreResourceConfigKind
 
   public init(
     memoryStoreId: String,
-    typeModel: AnthropicBetaManagedAgentsMemoryStoreResourceConfigTypeModel,
+    kind: AnthropicBetaManagedAgentsMemoryStoreResourceConfigKind,
     access: AnthropicBetaManagedAgentsMountMode? = nil,
     instructions: String? = nil
   ) {
     self.access = access
     self.instructions = instructions
     self.memoryStoreId = memoryStoreId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case access
     case instructions
     case memoryStoreId = "memory_store_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

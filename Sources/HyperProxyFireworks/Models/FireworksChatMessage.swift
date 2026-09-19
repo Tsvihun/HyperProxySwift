@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct FireworksChatMessage: Codable, Sendable {
-  public var content: HyperProxyJSONValue?
+  public var content: FireworksChatMessageContent73d26a3d?
   public var reasoningContent: String?
   public var role: String
   public var toolCallId: String?
@@ -19,7 +19,7 @@ public struct FireworksChatMessage: Codable, Sendable {
 
   public init(
     role: String,
-    content: HyperProxyJSONValue? = nil,
+    content: FireworksChatMessageContent73d26a3d? = nil,
     reasoningContent: String? = nil,
     toolCallId: String? = nil,
     toolCalls: [FireworksChatCompletionMessageToolCall]? = nil

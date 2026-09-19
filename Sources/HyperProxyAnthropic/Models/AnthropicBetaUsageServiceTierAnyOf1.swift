@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaUsageServiceTierAnyOf1: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let standard = Self(rawValue: "standard")
-  public static let priority = Self(rawValue: "priority")
-  public static let batch = Self(rawValue: "batch")
+public enum AnthropicBetaUsageServiceTierAnyOf1: String, Codable, Hashable, Sendable {
+  case standard = "standard"
+  case priority = "priority"
+  case batch = "batch"
 }

@@ -10,13 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterUnifiedBenchmarksDAItemSource: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let designArena = Self(rawValue: "design-arena")
+public enum OpenRouterUnifiedBenchmarksDAItemSource: String, Codable, Hashable, Sendable {
+  case designArena = "design-arena"
 }

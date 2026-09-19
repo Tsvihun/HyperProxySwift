@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterOutputMessageStatusAnyOf3: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let inProgress = Self(rawValue: "in_progress")
+public enum OpenRouterOutputMessageStatusAnyOf3: String, Codable, Hashable, Sendable {
+  case inProgress = "in_progress"
 }

@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsSubmitOrderResponse: Codable, Sendable {
-  public var orderId: ElevenLabsOrderId
+  public var orderId: String
   public var state: ElevenLabsOrderState
   public var submittedAt: String
 
   public init(
-    orderId: ElevenLabsOrderId,
+    orderId: String,
     state: ElevenLabsOrderState,
     submittedAt: String
   ) {

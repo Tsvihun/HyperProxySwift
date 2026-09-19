@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherRLOptimStepResult: Codable, Sendable {
-  public var step: HyperProxyJSONValue
+  public var step: TogetherRLOptimStepResultStep
 
   public init(
-    step: HyperProxyJSONValue
+    step: TogetherRLOptimStepResultStep
   ) {
     self.step = step
   }

@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAICreateUploadRequestPurpose: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let assistants = Self(rawValue: "assistants")
-  public static let batch = Self(rawValue: "batch")
-  public static let fineTune = Self(rawValue: "fine-tune")
-  public static let vision = Self(rawValue: "vision")
+public enum OpenAICreateUploadRequestPurpose: String, Codable, Hashable, Sendable {
+  case assistants = "assistants"
+  case batch = "batch"
+  case fineTune = "fine-tune"
+  case vision = "vision"
 }

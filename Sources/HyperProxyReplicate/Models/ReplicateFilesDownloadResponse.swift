@@ -10,4 +10,17 @@
 import Foundation
 import HyperProxyCore
 
-public typealias ReplicateFilesDownloadResponse = String
+public struct ReplicateFilesDownloadResponse: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+}
+
+extension ReplicateFilesDownloadResponse: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self.init(rawValue: value)
+  }
+}

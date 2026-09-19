@@ -14,14 +14,14 @@ public struct ElevenLabsKnowledgeBaseRagToolResultModel: Codable, Sendable {
   public var chunkCount: Int?
   public var chunks: [ElevenLabsKnowledgeBaseRagChunkModel]?
   public var message: String?
-  public var resultType: String?
+  public var resultType: ElevenLabsKnowledgeBaseRagSuccessResultType?
   public var status: ElevenLabsKnowledgeBaseRagToolStatus?
 
   public init(
     chunkCount: Int? = nil,
     chunks: [ElevenLabsKnowledgeBaseRagChunkModel]? = nil,
     message: String? = nil,
-    resultType: String? = nil,
+    resultType: ElevenLabsKnowledgeBaseRagSuccessResultType? = nil,
     status: ElevenLabsKnowledgeBaseRagToolStatus? = nil
   ) {
     self.chunkCount = chunkCount

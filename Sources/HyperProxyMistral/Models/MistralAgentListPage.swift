@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct MistralAgentListPage: Codable, Sendable {
   public var data: [MistralAgent]
   public var nextPageToken: String?
-  public var object: String?
+  public var object: MistralListObject?
 
   public init(
     data: [MistralAgent],
     nextPageToken: String? = nil,
-    object: String? = nil
+    object: MistralListObject? = nil
   ) {
     self.data = data
     self.nextPageToken = nextPageToken

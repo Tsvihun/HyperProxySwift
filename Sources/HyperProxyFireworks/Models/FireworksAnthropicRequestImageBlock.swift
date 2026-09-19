@@ -12,22 +12,22 @@ import HyperProxyCore
 
 public struct FireworksAnthropicRequestImageBlock: Codable, Sendable {
   public var cacheControl: FireworksAnthropicCacheControlEphemeral?
-  public var source: HyperProxyJSONValue
-  public var typeModel: String
+  public var source: FireworksAnthropicRequestImageBlockSource
+  public var kind: FireworksImageKind
 
   public init(
-    source: HyperProxyJSONValue,
-    typeModel: String,
+    source: FireworksAnthropicRequestImageBlockSource,
+    kind: FireworksImageKind = .image,
     cacheControl: FireworksAnthropicCacheControlEphemeral? = nil
   ) {
     self.cacheControl = cacheControl
     self.source = source
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case cacheControl = "cache_control"
     case source
-    case typeModel = "type"
+    case kind = "type"
   }
 }

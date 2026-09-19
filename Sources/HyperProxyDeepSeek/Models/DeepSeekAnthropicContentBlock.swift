@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct DeepSeekAnthropicContentBlock: Codable, Sendable {
   public var cacheControl: [String: HyperProxyJSONValue]?
   public var citations: [[String: HyperProxyJSONValue]]?
-  public var content: HyperProxyJSONValue?
+  public var content: DeepSeekAnthropicContentBlockContent?
   public var fileId: String?
   public var id: String?
   public var input: [String: HyperProxyJSONValue]?
@@ -24,13 +24,13 @@ public struct DeepSeekAnthropicContentBlock: Codable, Sendable {
   public var text: String?
   public var thinking: String?
   public var toolUseId: String?
-  public var typeModel: DeepSeekAnthropicContentBlockType
+  public var kind: DeepSeekAnthropicContentBlockType
 
   public init(
-    typeModel: DeepSeekAnthropicContentBlockType,
+    kind: DeepSeekAnthropicContentBlockType,
     cacheControl: [String: HyperProxyJSONValue]? = nil,
     citations: [[String: HyperProxyJSONValue]]? = nil,
-    content: HyperProxyJSONValue? = nil,
+    content: DeepSeekAnthropicContentBlockContent? = nil,
     fileId: String? = nil,
     id: String? = nil,
     input: [String: HyperProxyJSONValue]? = nil,
@@ -55,7 +55,7 @@ public struct DeepSeekAnthropicContentBlock: Codable, Sendable {
     self.text = text
     self.thinking = thinking
     self.toolUseId = toolUseId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -72,6 +72,6 @@ public struct DeepSeekAnthropicContentBlock: Codable, Sendable {
     case text
     case thinking
     case toolUseId = "tool_use_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

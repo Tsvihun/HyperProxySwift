@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepSeekChatMessage: Codable, Sendable {
-  public var content: HyperProxyJSONValue?
+  public var content: DeepSeekChatMessageContent?
   public var name: String?
   public var prefixValue: Bool?
   public var reasoningContent: String?
@@ -21,7 +21,7 @@ public struct DeepSeekChatMessage: Codable, Sendable {
 
   public init(
     role: DeepSeekChatRole,
-    content: HyperProxyJSONValue? = nil,
+    content: DeepSeekChatMessageContent? = nil,
     name: String? = nil,
     prefixValue: Bool? = nil,
     reasoningContent: String? = nil,

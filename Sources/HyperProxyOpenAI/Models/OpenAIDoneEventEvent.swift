@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIDoneEventEvent: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let done = Self(rawValue: "done")
+public enum OpenAIDoneEventEvent: String, Codable, Hashable, Sendable {
+  case done = "done"
 }

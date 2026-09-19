@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiCountTokensRequest: Codable, Sendable {
-  public var contents: [HyperProxyJSONValue]?
-  public var generateContentRequest: HyperProxyJSONValue?
+  public var contents: [GeminiContent]?
+  public var generateContentRequest: GeminiGenerateContentRequest?
 
   public init(
-    contents: [HyperProxyJSONValue]? = nil,
-    generateContentRequest: HyperProxyJSONValue? = nil
+    contents: [GeminiContent]? = nil,
+    generateContentRequest: GeminiGenerateContentRequest? = nil
   ) {
     self.contents = contents
     self.generateContentRequest = generateContentRequest

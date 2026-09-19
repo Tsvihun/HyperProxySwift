@@ -10,17 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaCodeExecutionToolResultErrorCode: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let invalidToolInput = Self(rawValue: "invalid_tool_input")
-  public static let unavailable = Self(rawValue: "unavailable")
-  public static let tooManyRequests = Self(rawValue: "too_many_requests")
-  public static let executionTimeExceeded = Self(rawValue: "execution_time_exceeded")
+public enum AnthropicBetaCodeExecutionToolResultErrorCode: String, Codable, Hashable, Sendable {
+  case invalidToolInput = "invalid_tool_input"
+  case unavailable = "unavailable"
+  case tooManyRequests = "too_many_requests"
+  case executionTimeExceeded = "execution_time_exceeded"
 }

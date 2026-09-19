@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIEasyInputMessageRole: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let user = Self(rawValue: "user")
-  public static let assistant = Self(rawValue: "assistant")
-  public static let system = Self(rawValue: "system")
-  public static let developer = Self(rawValue: "developer")
+public enum OpenAIEasyInputMessageRole: String, Codable, Hashable, Sendable {
+  case user = "user"
+  case assistant = "assistant"
+  case system = "system"
+  case developer = "developer"
 }

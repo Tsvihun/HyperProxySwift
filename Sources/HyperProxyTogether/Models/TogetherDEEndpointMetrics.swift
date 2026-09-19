@@ -18,7 +18,7 @@ public struct TogetherDEEndpointMetrics: Codable, Sendable {
   public var requestMetrics: TogetherDERequestMetrics?
   public var resourceUtilization: TogetherDEResourceUtilization?
   public var throughputMetrics: TogetherDEThroughputMetrics?
-  public var timeRange: HyperProxyJSONValue?
+  public var timeRange: TogetherDEMetricsTimeRange?
   public var tokenMetrics: TogetherDETokenMetrics?
 
   public init(
@@ -29,7 +29,7 @@ public struct TogetherDEEndpointMetrics: Codable, Sendable {
     requestMetrics: TogetherDERequestMetrics? = nil,
     resourceUtilization: TogetherDEResourceUtilization? = nil,
     throughputMetrics: TogetherDEThroughputMetrics? = nil,
-    timeRange: HyperProxyJSONValue? = nil,
+    timeRange: TogetherDEMetricsTimeRange? = nil,
     tokenMetrics: TogetherDETokenMetrics? = nil
   ) {
     self.deploymentMetrics = deploymentMetrics

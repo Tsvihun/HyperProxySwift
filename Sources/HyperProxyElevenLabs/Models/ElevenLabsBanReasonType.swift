@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsBanReasonType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let safety = Self(rawValue: "safety")
-  public static let manual = Self(rawValue: "manual")
+public enum ElevenLabsBanReasonType: String, Codable, Hashable, Sendable {
+  case safety = "safety"
+  case manual = "manual"
 }

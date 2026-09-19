@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct OpenAIFunctionShellCallOutputContent: Codable, Sendable {
   public var createdBy: String?
-  public var outcome: HyperProxyJSONValue
+  public var outcome: OpenAIFunctionShellCallOutputContentOutcome
   public var stderr: String
   public var stdout: String
 
   public init(
-    outcome: HyperProxyJSONValue,
+    outcome: OpenAIFunctionShellCallOutputContentOutcome,
     stderr: String,
     stdout: String,
     createdBy: String? = nil

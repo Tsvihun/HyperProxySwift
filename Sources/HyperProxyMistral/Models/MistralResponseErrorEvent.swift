@@ -14,24 +14,24 @@ public struct MistralResponseErrorEvent: Codable, Sendable {
   public var code: Int
   public var createdAt: String?
   public var message: String
-  public var typeModel: String?
+  public var kind: MistralConversationResponseErrorKind?
 
   public init(
     code: Int,
     message: String,
     createdAt: String? = nil,
-    typeModel: String? = nil
+    kind: MistralConversationResponseErrorKind? = nil
   ) {
     self.code = code
     self.createdAt = createdAt
     self.message = message
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case code
     case createdAt = "created_at"
     case message
-    case typeModel = "type"
+    case kind = "type"
   }
 }

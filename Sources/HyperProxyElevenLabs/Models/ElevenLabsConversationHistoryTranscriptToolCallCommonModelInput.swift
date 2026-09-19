@@ -13,25 +13,27 @@ import HyperProxyCore
 public struct ElevenLabsConversationHistoryTranscriptToolCallCommonModelInput: Codable, Sendable {
   public var paramsAsJson: String
   public var requestId: String
-  public var toolDetails: HyperProxyJSONValue?
+  public var toolDetails:
+    ElevenLabsConversationHistoryTranscriptToolCallCommonModelInputToolDetailsAnyOf1?
   public var toolHasBeenCalled: Bool
   public var toolName: String
-  public var typeModel: ElevenLabsToolType?
+  public var kind: ElevenLabsToolType?
 
   public init(
     paramsAsJson: String,
     requestId: String,
     toolHasBeenCalled: Bool,
     toolName: String,
-    toolDetails: HyperProxyJSONValue? = nil,
-    typeModel: ElevenLabsToolType? = nil
+    toolDetails: ElevenLabsConversationHistoryTranscriptToolCallCommonModelInputToolDetailsAnyOf1? =
+      nil,
+    kind: ElevenLabsToolType? = nil
   ) {
     self.paramsAsJson = paramsAsJson
     self.requestId = requestId
     self.toolDetails = toolDetails
     self.toolHasBeenCalled = toolHasBeenCalled
     self.toolName = toolName
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +42,6 @@ public struct ElevenLabsConversationHistoryTranscriptToolCallCommonModelInput: C
     case toolDetails = "tool_details"
     case toolHasBeenCalled = "tool_has_been_called"
     case toolName = "tool_name"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

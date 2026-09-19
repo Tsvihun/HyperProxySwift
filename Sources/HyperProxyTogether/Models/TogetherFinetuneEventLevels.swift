@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherFinetuneEventLevels: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let info = Self(rawValue: "info")
-  public static let warning = Self(rawValue: "warning")
-  public static let error = Self(rawValue: "error")
-  public static let legacyInfo = Self(rawValue: "legacy_info")
-  public static let legacyIwarning = Self(rawValue: "legacy_iwarning")
-  public static let legacyIerror = Self(rawValue: "legacy_ierror")
+public enum TogetherFinetuneEventLevels: String, Codable, Hashable, Sendable {
+  case info = "info"
+  case warning = "warning"
+  case error = "error"
+  case legacyInfo = "legacy_info"
+  case legacyIwarning = "legacy_iwarning"
+  case legacyIerror = "legacy_ierror"
 }

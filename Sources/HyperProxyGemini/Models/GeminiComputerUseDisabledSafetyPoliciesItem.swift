@@ -10,21 +10,13 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiComputerUseDisabledSafetyPoliciesItem: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let sAFETYPOLICYUNSPECIFIED = Self(rawValue: "SAFETY_POLICY_UNSPECIFIED")
-  public static let fINANCIALTRANSACTIONS = Self(rawValue: "FINANCIAL_TRANSACTIONS")
-  public static let sENSITIVEDATAMODIFICATION = Self(rawValue: "SENSITIVE_DATA_MODIFICATION")
-  public static let cOMMUNICATIONTOOL = Self(rawValue: "COMMUNICATION_TOOL")
-  public static let aCCOUNTCREATION = Self(rawValue: "ACCOUNT_CREATION")
-  public static let dATAMODIFICATION = Self(rawValue: "DATA_MODIFICATION")
-  public static let uSERCONSENTMANAGEMENT = Self(rawValue: "USER_CONSENT_MANAGEMENT")
-  public static let lEGALTERMSANDAGREEMENTS = Self(rawValue: "LEGAL_TERMS_AND_AGREEMENTS")
+public enum GeminiComputerUseDisabledSafetyPoliciesItem: String, Codable, Hashable, Sendable {
+  case sAFETYPOLICYUNSPECIFIED = "SAFETY_POLICY_UNSPECIFIED"
+  case fINANCIALTRANSACTIONS = "FINANCIAL_TRANSACTIONS"
+  case sENSITIVEDATAMODIFICATION = "SENSITIVE_DATA_MODIFICATION"
+  case cOMMUNICATIONTOOL = "COMMUNICATION_TOOL"
+  case aCCOUNTCREATION = "ACCOUNT_CREATION"
+  case dATAMODIFICATION = "DATA_MODIFICATION"
+  case uSERCONSENTMANAGEMENT = "USER_CONSENT_MANAGEMENT"
+  case lEGALTERMSANDAGREEMENTS = "LEGAL_TERMS_AND_AGREEMENTS"
 }

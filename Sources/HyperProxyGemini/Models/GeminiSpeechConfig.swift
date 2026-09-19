@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct GeminiSpeechConfig: Codable, Sendable {
   public var languageCode: String?
-  public var multiSpeakerVoiceConfig: HyperProxyJSONValue?
-  public var voiceConfig: HyperProxyJSONValue?
+  public var multiSpeakerVoiceConfig: GeminiMultiSpeakerVoiceConfig?
+  public var voiceConfig: GeminiVoiceConfig?
 
   public init(
     languageCode: String? = nil,
-    multiSpeakerVoiceConfig: HyperProxyJSONValue? = nil,
-    voiceConfig: HyperProxyJSONValue? = nil
+    multiSpeakerVoiceConfig: GeminiMultiSpeakerVoiceConfig? = nil,
+    voiceConfig: GeminiVoiceConfig? = nil
   ) {
     self.languageCode = languageCode
     self.multiSpeakerVoiceConfig = multiSpeakerVoiceConfig

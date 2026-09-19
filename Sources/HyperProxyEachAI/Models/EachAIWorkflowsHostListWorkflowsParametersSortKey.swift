@@ -10,18 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct EachAIWorkflowsHostListWorkflowsParametersSortKey: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let name = Self(rawValue: "name")
-  public static let createdAt = Self(rawValue: "created_at")
-  public static let updatedAt = Self(rawValue: "updated_at")
-  public static let triggerCount = Self(rawValue: "trigger_count")
-  public static let status = Self(rawValue: "status")
+public enum EachAIWorkflowsHostListWorkflowsParametersSortKey: String, Codable, Hashable, Sendable {
+  case name = "name"
+  case createdAt = "created_at"
+  case updatedAt = "updated_at"
+  case triggerCount = "trigger_count"
+  case status = "status"
 }

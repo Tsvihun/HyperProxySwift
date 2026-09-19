@@ -19,8 +19,8 @@ Changes invalidate approval. `node Scripts/check_release_provenance.mjs` checks
 inventory; `--release` additionally rejects pending approvals. Do not set approved
 just to make CI pass. Private catalogs/generators are not part of this manifest.
 
-Provider and AIProxy names identify compatible services; no affiliation or
-endorsement is implied. SDK licensing does not grant rights to provider services,
+Provider names identify compatible services; no affiliation or endorsement is
+implied. SDK licensing does not grant rights to provider services,
 trademarks, customer content, or waive their terms. The existing 0.3.0 tag is not
 altered by this gate; any decision about an existing release requires its own review.
 

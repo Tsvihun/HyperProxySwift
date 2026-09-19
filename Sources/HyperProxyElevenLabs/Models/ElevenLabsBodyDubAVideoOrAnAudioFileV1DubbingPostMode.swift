@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsBodyDubAVideoOrAnAudioFileV1DubbingPostMode: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum ElevenLabsBodyDubAVideoOrAnAudioFileV1DubbingPostMode: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let automatic = Self(rawValue: "automatic")
-  public static let manual = Self(rawValue: "manual")
+  case automatic = "automatic"
+  case manual = "manual"
 }

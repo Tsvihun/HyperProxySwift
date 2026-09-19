@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct OpenAIVectorStoreFileObject: Codable, Sendable {
   public var attributes: OpenAIVectorStoreFileAttributes?
-  public var chunkingStrategy: HyperProxyJSONValue?
+  public var chunkingStrategy: OpenAIVectorStoreFileObjectChunkingStrategy?
   public var createdAt: Int
   public var id: String
   public var lastError: OpenAIVectorStoreFileObjectLastErrorAnyOf1?
@@ -30,7 +30,7 @@ public struct OpenAIVectorStoreFileObject: Codable, Sendable {
     usageBytes: Int,
     vectorStoreId: String,
     attributes: OpenAIVectorStoreFileAttributes? = nil,
-    chunkingStrategy: HyperProxyJSONValue? = nil
+    chunkingStrategy: OpenAIVectorStoreFileObjectChunkingStrategy? = nil
   ) {
     self.attributes = attributes
     self.chunkingStrategy = chunkingStrategy

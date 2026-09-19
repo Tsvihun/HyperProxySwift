@@ -16,7 +16,7 @@ public struct AnthropicSkill: Codable, Sendable {
   public var id: String
   public var latestVersionId: String
   public var source: AnthropicSkillSource
-  public var typeModel: String
+  public var kind: AnthropicSkillKind
   public var updatedAt: String
 
   public init(
@@ -25,15 +25,15 @@ public struct AnthropicSkill: Codable, Sendable {
     id: String,
     latestVersionId: String,
     source: AnthropicSkillSource,
-    typeModel: String,
-    updatedAt: String
+    updatedAt: String,
+    kind: AnthropicSkillKind = .skill
   ) {
     self.createdAt = createdAt
     self.displayName = displayName
     self.id = id
     self.latestVersionId = latestVersionId
     self.source = source
-    self.typeModel = typeModel
+    self.kind = kind
     self.updatedAt = updatedAt
   }
 
@@ -43,7 +43,7 @@ public struct AnthropicSkill: Codable, Sendable {
     case id
     case latestVersionId = "latest_version_id"
     case source
-    case typeModel = "type"
+    case kind = "type"
     case updatedAt = "updated_at"
   }
 }

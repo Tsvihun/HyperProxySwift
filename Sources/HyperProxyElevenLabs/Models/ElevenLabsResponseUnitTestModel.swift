@@ -19,7 +19,7 @@ public struct ElevenLabsResponseUnitTestModel: Codable, Sendable {
   public var fromConversationMetadata: ElevenLabsTestFromConversationMetadataOutput?
   public var successCondition: String?
   public var successExamples: [ElevenLabsAgentSuccessfulResponseExample]?
-  public var typeModel: String?
+  public var kind: ElevenLabsLlmKind?
 
   public init(
     chatHistory: [ElevenLabsConversationHistoryTranscriptCommonModelOutput]? = nil,
@@ -30,7 +30,7 @@ public struct ElevenLabsResponseUnitTestModel: Codable, Sendable {
     fromConversationMetadata: ElevenLabsTestFromConversationMetadataOutput? = nil,
     successCondition: String? = nil,
     successExamples: [ElevenLabsAgentSuccessfulResponseExample]? = nil,
-    typeModel: String? = nil
+    kind: ElevenLabsLlmKind? = nil
   ) {
     self.chatHistory = chatHistory
     self.conversationInitiationSource = conversationInitiationSource
@@ -40,7 +40,7 @@ public struct ElevenLabsResponseUnitTestModel: Codable, Sendable {
     self.fromConversationMetadata = fromConversationMetadata
     self.successCondition = successCondition
     self.successExamples = successExamples
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -52,6 +52,6 @@ public struct ElevenLabsResponseUnitTestModel: Codable, Sendable {
     case fromConversationMetadata = "from_conversation_metadata"
     case successCondition = "success_condition"
     case successExamples = "success_examples"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

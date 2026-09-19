@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsUpdateEnvironmentVariableRequest: Codable, Sendable {
-  public var values: [String: HyperProxyJSONValue?]
+  public var values: [String: ElevenLabsUpdateEnvironmentVariableRequestValuesValue?]
 
   public init(
-    values: [String: HyperProxyJSONValue?]
+    values: [String: ElevenLabsUpdateEnvironmentVariableRequestValuesValue?]
   ) {
     self.values = values
   }

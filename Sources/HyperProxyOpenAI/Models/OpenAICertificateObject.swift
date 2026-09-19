@@ -10,15 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAICertificateObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let certificate = Self(rawValue: "certificate")
-  public static let organizationCertificate = Self(rawValue: "organization.certificate")
-  public static let organizationProjectCertificate = Self(
-    rawValue: "organization.project.certificate")
+public enum OpenAICertificateObject: String, Codable, Hashable, Sendable {
+  case certificate = "certificate"
+  case organizationCertificate = "organization.certificate"
+  case organizationProjectCertificate = "organization.project.certificate"
 }

@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsTextNormalisationType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let systemPrompt = Self(rawValue: "system_prompt")
-  public static let elevenlabs = Self(rawValue: "elevenlabs")
+public enum ElevenLabsTextNormalisationType: String, Codable, Hashable, Sendable {
+  case systemPrompt = "system_prompt"
+  case elevenlabs = "elevenlabs"
 }

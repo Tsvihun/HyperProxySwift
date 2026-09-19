@@ -14,24 +14,24 @@ public struct ElevenLabsUpdateProcedureDraftRequestModel: Codable, Sendable {
   public var content: String
   public var name: String
   public var trigger: String?
-  public var typeModel: ElevenLabsProcedureType
+  public var kind: ElevenLabsProcedureType
 
   public init(
     content: String,
     name: String,
-    typeModel: ElevenLabsProcedureType,
+    kind: ElevenLabsProcedureType,
     trigger: String? = nil
   ) {
     self.content = content
     self.name = name
     self.trigger = trigger
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case content
     case name
     case trigger
-    case typeModel = "type"
+    case kind = "type"
   }
 }

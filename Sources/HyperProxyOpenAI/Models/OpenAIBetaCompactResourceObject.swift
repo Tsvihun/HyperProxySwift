@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIBetaCompactResourceObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let responseCompaction = Self(rawValue: "response.compaction")
+public enum OpenAIBetaCompactResourceObject: String, Codable, Hashable, Sendable {
+  case responseCompaction = "response.compaction"
 }

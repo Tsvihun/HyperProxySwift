@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct FalGetAssetLineageResponseLineage: Codable, Sendable {
   public var edges: [FalGetAssetLineageResponseLineageEdgesItem]
   public var focus: String
-  public var nodes: [HyperProxyJSONValue]
+  public var nodes: [FalGetAssetLineageResponseLineageNodesItem]
 
   public init(
     edges: [FalGetAssetLineageResponseLineageEdgesItem],
     focus: String,
-    nodes: [HyperProxyJSONValue]
+    nodes: [FalGetAssetLineageResponseLineageNodesItem]
   ) {
     self.edges = edges
     self.focus = focus

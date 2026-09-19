@@ -14,7 +14,7 @@ public struct ElevenLabsDynamicVariableAssignment: Codable, Sendable {
   public var dynamicVariable: String
   public var preserveNativeType: Bool?
   public var sanitize: Bool?
-  public var source: String?
+  public var source: ElevenLabsResponseSource?
   public var valuePath: String
 
   public init(
@@ -22,7 +22,7 @@ public struct ElevenLabsDynamicVariableAssignment: Codable, Sendable {
     valuePath: String,
     preserveNativeType: Bool? = nil,
     sanitize: Bool? = nil,
-    source: String? = nil
+    source: ElevenLabsResponseSource? = nil
   ) {
     self.dynamicVariable = dynamicVariable
     self.preserveNativeType = preserveNativeType

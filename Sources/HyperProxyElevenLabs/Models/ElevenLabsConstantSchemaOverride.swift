@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsConstantSchemaOverride: Codable, Sendable {
-  public var constantValue: HyperProxyJSONValue?
-  public var source: String?
+  public var constantValue: ElevenLabsConstantSchemaOverrideConstantValue?
+  public var source: ElevenLabsConstantSource?
 
   public init(
-    constantValue: HyperProxyJSONValue?,
-    source: String? = nil
+    constantValue: ElevenLabsConstantSchemaOverrideConstantValue?,
+    source: ElevenLabsConstantSource? = nil
   ) {
     self.constantValue = constantValue
     self.source = source

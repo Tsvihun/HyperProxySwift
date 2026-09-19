@@ -15,7 +15,7 @@ public struct EachAIAPIPrediction: Codable, Sendable {
   public var input: [String: HyperProxyJSONValue]?
   public var logs: String?
   public var metrics: EachAIAPIPredictionMetrics?
-  public var output: HyperProxyJSONValue?
+  public var output: EachAIAPIPredictionOutput?
   public var status: EachAIAPIPredictionStatus?
   public var urls: EachAIAPIPredictionUrls?
 
@@ -24,7 +24,7 @@ public struct EachAIAPIPrediction: Codable, Sendable {
     input: [String: HyperProxyJSONValue]? = nil,
     logs: String? = nil,
     metrics: EachAIAPIPredictionMetrics? = nil,
-    output: HyperProxyJSONValue? = nil,
+    output: EachAIAPIPredictionOutput? = nil,
     status: EachAIAPIPredictionStatus? = nil,
     urls: EachAIAPIPredictionUrls? = nil
   ) {

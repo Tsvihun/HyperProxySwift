@@ -10,16 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsAgentConversationTicketStatus: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let openValue = Self(rawValue: "open")
-  public static let inProgress = Self(rawValue: "in_progress")
-  public static let resolved = Self(rawValue: "resolved")
-  public static let merged = Self(rawValue: "merged")
+public enum ElevenLabsAgentConversationTicketStatus: String, Codable, Hashable, Sendable {
+  case openValue = "open"
+  case inProgress = "in_progress"
+  case resolved = "resolved"
+  case merged = "merged"
 }

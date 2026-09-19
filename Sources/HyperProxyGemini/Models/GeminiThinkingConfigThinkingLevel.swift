@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiThinkingConfigThinkingLevel: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let tHINKINGLEVELUNSPECIFIED = Self(rawValue: "THINKING_LEVEL_UNSPECIFIED")
-  public static let mINIMAL = Self(rawValue: "MINIMAL")
-  public static let lOW = Self(rawValue: "LOW")
-  public static let mEDIUM = Self(rawValue: "MEDIUM")
-  public static let hIGH = Self(rawValue: "HIGH")
+public enum GeminiThinkingConfigThinkingLevel: String, Codable, Hashable, Sendable {
+  case tHINKINGLEVELUNSPECIFIED = "THINKING_LEVEL_UNSPECIFIED"
+  case mINIMAL = "MINIMAL"
+  case lOW = "LOW"
+  case mEDIUM = "MEDIUM"
+  case hIGH = "HIGH"
 }

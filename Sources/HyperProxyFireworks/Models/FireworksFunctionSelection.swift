@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct FireworksFunctionSelection: Codable, Sendable {
   public var function: FireworksFunctionNameSpec?
-  public var typeModel: String
+  public var kind: FireworksFunctionKind
 
   public init(
-    typeModel: String,
+    kind: FireworksFunctionKind = .function,
     function: FireworksFunctionNameSpec? = nil
   ) {
     self.function = function
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case function
-    case typeModel = "type"
+    case kind = "type"
   }
 }

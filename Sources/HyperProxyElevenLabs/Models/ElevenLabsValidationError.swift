@@ -11,23 +11,23 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsValidationError: Codable, Sendable {
-  public var loc: [HyperProxyJSONValue]
+  public var loc: [ElevenLabsValidationErrorLocItem]
   public var msg: String
-  public var typeModel: String
+  public var kind: String
 
   public init(
-    loc: [HyperProxyJSONValue],
+    loc: [ElevenLabsValidationErrorLocItem],
     msg: String,
-    typeModel: String
+    kind: String
   ) {
     self.loc = loc
     self.msg = msg
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case loc
     case msg
-    case typeModel = "type"
+    case kind = "type"
   }
 }

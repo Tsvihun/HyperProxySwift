@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesPunctuationUppercaseAcronyms: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let doNotUseSpaces = Self(rawValue: "do_not_use_spaces")
-  public static let useSpaces = Self(rawValue: "use_spaces")
+public enum DeepLConfiguredRulesPunctuationUppercaseAcronyms: String, Codable, Hashable, Sendable {
+  case doNotUseSpaces = "do_not_use_spaces"
+  case useSpaces = "use_spaces"
 }

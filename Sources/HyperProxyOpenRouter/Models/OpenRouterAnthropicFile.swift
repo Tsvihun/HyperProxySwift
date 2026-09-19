@@ -18,7 +18,7 @@ public struct OpenRouterAnthropicFile: Codable, Sendable {
   public var id: String
   public var mimeType: String
   public var sizeBytes: Int
-  public var typeModel: OpenRouterAnthropicFileTypeModel
+  public var kind: OpenRouterAnthropicFileKind
 
   public init(
     shape: OpenRouterAnthropicFileShape,
@@ -28,7 +28,7 @@ public struct OpenRouterAnthropicFile: Codable, Sendable {
     id: String,
     mimeType: String,
     sizeBytes: Int,
-    typeModel: OpenRouterAnthropicFileTypeModel
+    kind: OpenRouterAnthropicFileKind
   ) {
     self.shape = shape
     self.createdAt = createdAt
@@ -37,7 +37,7 @@ public struct OpenRouterAnthropicFile: Codable, Sendable {
     self.id = id
     self.mimeType = mimeType
     self.sizeBytes = sizeBytes
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct OpenRouterAnthropicFile: Codable, Sendable {
     case id
     case mimeType = "mime_type"
     case sizeBytes = "size_bytes"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

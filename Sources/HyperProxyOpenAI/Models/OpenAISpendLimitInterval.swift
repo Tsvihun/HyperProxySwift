@@ -10,32 +10,35 @@
 import Foundation
 import HyperProxyCore
 
-public enum OpenAISpendLimitInterval: Codable, Sendable {
-  case string(String)
-  case spendLimitIntervalAnyOf2(OpenAISpendLimitIntervalAnyOf2)
+public enum OpenAISpendLimitInterval: RawRepresentable, Codable, Hashable, Sendable {
+  case month
+  case custom(String)
+
+  public init(rawValue: String) {
+    switch rawValue {
+    case "month":
+      self = .month
+    default:
+      self = .custom(rawValue)
+    }
+  }
+
+  public var rawValue: String {
+    switch self {
+    case .month:
+      return "month"
+    case .custom(let value):
+      return value
+    }
+  }
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(String.self) {
-      self = .string(value)
-      return
-    }
-    self = .spendLimitIntervalAnyOf2(try container.decode(OpenAISpendLimitIntervalAnyOf2.self))
+    self.init(rawValue: try container.decode(String.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
-    switch self {
-    case .string(let value):
-      try container.encode(value)
-    case .spendLimitIntervalAnyOf2(let value):
-      try container.encode(value)
-    }
-  }
-}
-
-extension OpenAISpendLimitInterval: ExpressibleByStringLiteral {
-  public init(stringLiteral value: String) {
-    self = .string(value)
+    try container.encode(rawValue)
   }
 }

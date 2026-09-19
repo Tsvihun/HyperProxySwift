@@ -24,7 +24,7 @@ public struct FalListAssetCollectionAssetsResponseAssetsItem: Codable, Sendable 
   public var source: String
   public var tags: [FalListAssetCollectionAssetsResponseAssetsItemTagsItem]
   public var title: String
-  public var typeModel: FalListAssetCollectionAssetsResponseAssetsItemTypeModel
+  public var kind: FalListAssetCollectionAssetsResponseAssetsItemKind
   public var url: String
   public var vectorId: String
   public var width: Double
@@ -43,7 +43,7 @@ public struct FalListAssetCollectionAssetsResponseAssetsItem: Codable, Sendable 
     source: String,
     tags: [FalListAssetCollectionAssetsResponseAssetsItemTagsItem],
     title: String,
-    typeModel: FalListAssetCollectionAssetsResponseAssetsItemTypeModel,
+    kind: FalListAssetCollectionAssetsResponseAssetsItemKind,
     url: String,
     vectorId: String,
     width: Double
@@ -61,7 +61,7 @@ public struct FalListAssetCollectionAssetsResponseAssetsItem: Codable, Sendable 
     self.source = source
     self.tags = tags
     self.title = title
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
     self.vectorId = vectorId
     self.width = width
@@ -81,7 +81,7 @@ public struct FalListAssetCollectionAssetsResponseAssetsItem: Codable, Sendable 
     case source
     case tags
     case title
-    case typeModel = "type"
+    case kind = "type"
     case url
     case vectorId = "vector_id"
     case width

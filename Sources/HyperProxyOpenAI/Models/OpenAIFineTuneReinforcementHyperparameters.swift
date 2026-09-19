@@ -11,21 +11,22 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIFineTuneReinforcementHyperparameters: Codable, Sendable {
-  public var batchSize: HyperProxyJSONValue?
-  public var computeMultiplier: HyperProxyJSONValue?
-  public var evalInterval: HyperProxyJSONValue?
-  public var evalSamples: HyperProxyJSONValue?
-  public var learningRateMultiplier: HyperProxyJSONValue?
-  public var nEpochs: HyperProxyJSONValue?
+  public var batchSize: OpenAIFineTuneReinforcementHyperparametersBatchSize?
+  public var computeMultiplier: OpenAIFineTuneReinforcementHyperparametersComputeMultiplier?
+  public var evalInterval: OpenAIFineTuneReinforcementHyperparametersEvalInterval?
+  public var evalSamples: OpenAIFineTuneReinforcementHyperparametersEvalSamples?
+  public var learningRateMultiplier:
+    OpenAIFineTuneReinforcementHyperparametersLearningRateMultiplier?
+  public var nEpochs: OpenAIFineTuneReinforcementHyperparametersNEpochs?
   public var reasoningEffort: OpenAIFineTuneReinforcementHyperparametersReasoningEffort?
 
   public init(
-    batchSize: HyperProxyJSONValue? = nil,
-    computeMultiplier: HyperProxyJSONValue? = nil,
-    evalInterval: HyperProxyJSONValue? = nil,
-    evalSamples: HyperProxyJSONValue? = nil,
-    learningRateMultiplier: HyperProxyJSONValue? = nil,
-    nEpochs: HyperProxyJSONValue? = nil,
+    batchSize: OpenAIFineTuneReinforcementHyperparametersBatchSize? = nil,
+    computeMultiplier: OpenAIFineTuneReinforcementHyperparametersComputeMultiplier? = nil,
+    evalInterval: OpenAIFineTuneReinforcementHyperparametersEvalInterval? = nil,
+    evalSamples: OpenAIFineTuneReinforcementHyperparametersEvalSamples? = nil,
+    learningRateMultiplier: OpenAIFineTuneReinforcementHyperparametersLearningRateMultiplier? = nil,
+    nEpochs: OpenAIFineTuneReinforcementHyperparametersNEpochs? = nil,
     reasoningEffort: OpenAIFineTuneReinforcementHyperparametersReasoningEffort? = nil
   ) {
     self.batchSize = batchSize

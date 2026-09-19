@@ -21,10 +21,10 @@ public struct OpenRouterImageGenerationServerTool: Codable, Sendable {
   public var partialImages: Int?
   public var quality: OpenRouterImageGenerationServerToolQuality?
   public var size: String?
-  public var typeModel: OpenRouterImageGenerationServerToolTypeModel
+  public var kind: OpenRouterImageGenerationServerToolKind
 
   public init(
-    typeModel: OpenRouterImageGenerationServerToolTypeModel,
+    kind: OpenRouterImageGenerationServerToolKind,
     background: OpenRouterImageGenerationServerToolBackground? = nil,
     inputFidelity: OpenRouterImageGenerationServerToolInputFidelity? = nil,
     inputImageMask: OpenRouterImageGenerationServerToolInputImageMask? = nil,
@@ -46,7 +46,7 @@ public struct OpenRouterImageGenerationServerTool: Codable, Sendable {
     self.partialImages = partialImages
     self.quality = quality
     self.size = size
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -60,6 +60,6 @@ public struct OpenRouterImageGenerationServerTool: Codable, Sendable {
     case partialImages = "partial_images"
     case quality
     case size
-    case typeModel = "type"
+    case kind = "type"
   }
 }

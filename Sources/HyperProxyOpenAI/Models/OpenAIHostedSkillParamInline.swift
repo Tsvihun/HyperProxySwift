@@ -14,24 +14,24 @@ public struct OpenAIHostedSkillParamInline: Codable, Sendable {
   public var description: String
   public var name: String
   public var source: OpenAIInlineCapabilitySourceParam
-  public var typeModel: OpenAIHostedSkillParamInlineTypeModel
+  public var kind: OpenAIHostedSkillParamInlineKind
 
   public init(
     description: String,
     name: String,
     source: OpenAIInlineCapabilitySourceParam,
-    typeModel: OpenAIHostedSkillParamInlineTypeModel
+    kind: OpenAIHostedSkillParamInlineKind
   ) {
     self.description = description
     self.name = name
     self.source = source
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case description
     case name
     case source
-    case typeModel = "type"
+    case kind = "type"
   }
 }

@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterWebSearchEngine: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let native = Self(rawValue: "native")
-  public static let exa = Self(rawValue: "exa")
-  public static let firecrawl = Self(rawValue: "firecrawl")
-  public static let parallel = Self(rawValue: "parallel")
-  public static let perplexity = Self(rawValue: "perplexity")
+public enum OpenRouterWebSearchEngine: String, Codable, Hashable, Sendable {
+  case native = "native"
+  case exa = "exa"
+  case firecrawl = "firecrawl"
+  case parallel = "parallel"
+  case perplexity = "perplexity"
 }

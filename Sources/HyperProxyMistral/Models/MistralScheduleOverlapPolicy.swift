@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralScheduleOverlapPolicy: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: Int
-
-  public init(rawValue: Int) {
-    self.rawValue = rawValue
-  }
-
-  public static let value1 = Self(rawValue: 1)
-  public static let value2 = Self(rawValue: 2)
-  public static let value3 = Self(rawValue: 3)
-  public static let value4 = Self(rawValue: 4)
-  public static let value5 = Self(rawValue: 5)
-  public static let value6 = Self(rawValue: 6)
+public enum MistralScheduleOverlapPolicy: Int, Codable, Hashable, Sendable {
+  case value1 = 1
+  case value2 = 2
+  case value3 = 3
+  case value4 = 4
+  case value5 = 5
+  case value6 = 6
 }

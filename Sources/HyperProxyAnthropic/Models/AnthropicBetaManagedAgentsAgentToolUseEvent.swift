@@ -17,14 +17,14 @@ public struct AnthropicBetaManagedAgentsAgentToolUseEvent: Codable, Sendable {
   public var name: String
   public var processedAt: AnthropicBetaTimestamp
   public var sessionThreadId: String?
-  public var typeModel: AnthropicBetaManagedAgentsAgentToolUseEventTypeModel
+  public var kind: AnthropicBetaManagedAgentsAgentToolUseEventKind
 
   public init(
     id: String,
     input: AnthropicBetaManagedAgentsStruct,
     name: String,
     processedAt: AnthropicBetaTimestamp,
-    typeModel: AnthropicBetaManagedAgentsAgentToolUseEventTypeModel,
+    kind: AnthropicBetaManagedAgentsAgentToolUseEventKind,
     evaluatedPermission: AnthropicBetaManagedAgentsAgentEvaluatedPermission? = nil,
     sessionThreadId: String? = nil
   ) {
@@ -34,7 +34,7 @@ public struct AnthropicBetaManagedAgentsAgentToolUseEvent: Codable, Sendable {
     self.name = name
     self.processedAt = processedAt
     self.sessionThreadId = sessionThreadId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct AnthropicBetaManagedAgentsAgentToolUseEvent: Codable, Sendable {
     case name
     case processedAt = "processed_at"
     case sessionThreadId = "session_thread_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

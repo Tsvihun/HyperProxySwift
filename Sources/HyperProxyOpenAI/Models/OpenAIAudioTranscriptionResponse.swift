@@ -13,13 +13,13 @@ import HyperProxyCore
 public struct OpenAIAudioTranscriptionResponse: Codable, Sendable {
   public var language: String?
   public var languages: [String]?
-  public var model: HyperProxyJSONValue?
+  public var model: OpenAIAudioTranscriptionResponseModel?
   public var prompt: String?
 
   public init(
     language: String? = nil,
     languages: [String]? = nil,
-    model: HyperProxyJSONValue? = nil,
+    model: OpenAIAudioTranscriptionResponseModel? = nil,
     prompt: String? = nil
   ) {
     self.language = language

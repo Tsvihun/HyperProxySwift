@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct GroqResponseNamedToolChoice: Codable, Sendable {
   public var function: GroqResponseNamedToolChoiceFunction
-  public var typeModel: GroqResponseNamedToolChoiceTypeModel
+  public var kind: GroqResponseNamedToolChoiceKind
 
   public init(
     function: GroqResponseNamedToolChoiceFunction,
-    typeModel: GroqResponseNamedToolChoiceTypeModel
+    kind: GroqResponseNamedToolChoiceKind
   ) {
     self.function = function
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case function
-    case typeModel = "type"
+    case kind = "type"
   }
 }

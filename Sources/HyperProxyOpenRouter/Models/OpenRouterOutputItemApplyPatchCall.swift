@@ -14,16 +14,16 @@ public struct OpenRouterOutputItemApplyPatchCall: Codable, Sendable {
   public var callId: String
   public var createdBy: String?
   public var id: String
-  public var operation: HyperProxyJSONValue
+  public var operation: OpenRouterOutputItemApplyPatchCallOperation
   public var status: OpenRouterOutputItemApplyPatchCallStatus
-  public var typeModel: OpenRouterOutputItemApplyPatchCallTypeModel
+  public var kind: OpenRouterOutputItemApplyPatchCallKind
 
   public init(
     callId: String,
     id: String,
-    operation: HyperProxyJSONValue,
+    operation: OpenRouterOutputItemApplyPatchCallOperation,
     status: OpenRouterOutputItemApplyPatchCallStatus,
-    typeModel: OpenRouterOutputItemApplyPatchCallTypeModel,
+    kind: OpenRouterOutputItemApplyPatchCallKind,
     createdBy: String? = nil
   ) {
     self.callId = callId
@@ -31,7 +31,7 @@ public struct OpenRouterOutputItemApplyPatchCall: Codable, Sendable {
     self.id = id
     self.operation = operation
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenRouterOutputItemApplyPatchCall: Codable, Sendable {
     case id
     case operation
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

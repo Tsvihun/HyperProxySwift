@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterOutputItemReasoningStatusAnyOf1: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let completed = Self(rawValue: "completed")
+public enum OpenRouterOutputItemReasoningStatusAnyOf1: String, Codable, Hashable, Sendable {
+  case completed = "completed"
 }

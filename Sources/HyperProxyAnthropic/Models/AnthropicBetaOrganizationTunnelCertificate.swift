@@ -17,7 +17,7 @@ public struct AnthropicBetaOrganizationTunnelCertificate: Codable, Sendable {
   public var fingerprint: String
   public var id: String
   public var tunnelId: String
-  public var typeModel: String
+  public var kind: AnthropicTunnelCertificateKind
 
   public init(
     archivedAt: String?,
@@ -26,7 +26,7 @@ public struct AnthropicBetaOrganizationTunnelCertificate: Codable, Sendable {
     fingerprint: String,
     id: String,
     tunnelId: String,
-    typeModel: String
+    kind: AnthropicTunnelCertificateKind = .tunnelCertificate
   ) {
     self.archivedAt = archivedAt
     self.createdAt = createdAt
@@ -34,7 +34,7 @@ public struct AnthropicBetaOrganizationTunnelCertificate: Codable, Sendable {
     self.fingerprint = fingerprint
     self.id = id
     self.tunnelId = tunnelId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct AnthropicBetaOrganizationTunnelCertificate: Codable, Sendable {
     case fingerprint
     case id
     case tunnelId = "tunnel_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

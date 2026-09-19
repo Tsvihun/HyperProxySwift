@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicResponseTextEditorCodeExecutionCreateResultBlock: Codable, Sendable {
   public var isFileUpdate: Bool
-  public var typeModel: String
+  public var kind: AnthropicTextEditorCodeExecutionCreateResultKind
 
   public init(
     isFileUpdate: Bool,
-    typeModel: String
+    kind: AnthropicTextEditorCodeExecutionCreateResultKind = .textEditorCodeExecutionCreateResult
   ) {
     self.isFileUpdate = isFileUpdate
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case isFileUpdate = "is_file_update"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

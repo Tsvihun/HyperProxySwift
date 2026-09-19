@@ -10,4 +10,19 @@
 import Foundation
 import HyperProxyCore
 
-public typealias ElevenLabsGetDubbedFileResponse200AudioMpeg = String
+public struct ElevenLabsGetDubbedFileResponse200AudioMpeg: RawRepresentable, Codable, Hashable,
+  Sendable
+{
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+}
+
+extension ElevenLabsGetDubbedFileResponse200AudioMpeg: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self.init(rawValue: value)
+  }
+}

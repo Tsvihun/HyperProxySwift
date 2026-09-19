@@ -12,23 +12,23 @@ import HyperProxyCore
 
 public struct AnthropicRequestWebFetchToolResultBlock: Codable, Sendable {
   public var cacheControl: AnthropicCacheControlEphemeral?
-  public var caller: HyperProxyJSONValue?
-  public var content: HyperProxyJSONValue
+  public var caller: AnthropicRequestWebFetchToolResultBlockCaller?
+  public var content: AnthropicRequestWebFetchToolResultBlockContent
   public var toolUseId: String
-  public var typeModel: String
+  public var kind: AnthropicWebFetchToolResultKind
 
   public init(
-    content: HyperProxyJSONValue,
+    content: AnthropicRequestWebFetchToolResultBlockContent,
     toolUseId: String,
-    typeModel: String,
+    kind: AnthropicWebFetchToolResultKind = .webFetchToolResult,
     cacheControl: AnthropicCacheControlEphemeral? = nil,
-    caller: HyperProxyJSONValue? = nil
+    caller: AnthropicRequestWebFetchToolResultBlockCaller? = nil
   ) {
     self.cacheControl = cacheControl
     self.caller = caller
     self.content = content
     self.toolUseId = toolUseId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct AnthropicRequestWebFetchToolResultBlock: Codable, Sendable {
     case caller
     case content
     case toolUseId = "tool_use_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

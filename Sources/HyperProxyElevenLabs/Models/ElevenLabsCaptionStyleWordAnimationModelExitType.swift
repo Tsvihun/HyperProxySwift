@@ -10,22 +10,14 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsCaptionStyleWordAnimationModelExitType: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let none = Self(rawValue: "none")
-  public static let fade = Self(rawValue: "fade")
-  public static let scale = Self(rawValue: "scale")
-  public static let pop = Self(rawValue: "pop")
-  public static let slideUp = Self(rawValue: "slide_up")
-  public static let slideDown = Self(rawValue: "slide_down")
-  public static let slam = Self(rawValue: "slam")
-  public static let scaleDown = Self(rawValue: "scale_down")
-  public static let slideIn = Self(rawValue: "slide_in")
+public enum ElevenLabsCaptionStyleWordAnimationModelExitType: String, Codable, Hashable, Sendable {
+  case none = "none"
+  case fade = "fade"
+  case scale = "scale"
+  case pop = "pop"
+  case slideUp = "slide_up"
+  case slideDown = "slide_down"
+  case slam = "slam"
+  case scaleDown = "scale_down"
+  case slideIn = "slide_in"
 }

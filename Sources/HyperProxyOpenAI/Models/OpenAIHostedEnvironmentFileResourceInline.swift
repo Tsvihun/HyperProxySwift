@@ -14,24 +14,24 @@ public struct OpenAIHostedEnvironmentFileResourceInline: Codable, Sendable {
   public var id: String
   public var path: String
   public var sizeBytes: Int64
-  public var typeModel: OpenAIHostedEnvironmentFileResourceInlineTypeModel
+  public var kind: OpenAIHostedEnvironmentFileResourceInlineKind
 
   public init(
     id: String,
     path: String,
     sizeBytes: Int64,
-    typeModel: OpenAIHostedEnvironmentFileResourceInlineTypeModel
+    kind: OpenAIHostedEnvironmentFileResourceInlineKind
   ) {
     self.id = id
     self.path = path
     self.sizeBytes = sizeBytes
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case id
     case path
     case sizeBytes = "size_bytes"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

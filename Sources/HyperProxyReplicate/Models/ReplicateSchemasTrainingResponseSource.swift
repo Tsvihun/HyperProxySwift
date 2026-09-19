@@ -10,14 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ReplicateSchemasTrainingResponseSource: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let web = Self(rawValue: "web")
-  public static let api = Self(rawValue: "api")
+public enum ReplicateSchemasTrainingResponseSource: String, Codable, Hashable, Sendable {
+  case web = "web"
+  case api = "api"
 }

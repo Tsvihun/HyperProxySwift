@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct FalGetAssetLineageResponseLineageEdgesItemRoleAnyOf1: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum FalGetAssetLineageResponseLineageEdgesItemRoleAnyOf1: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let source = Self(rawValue: "source")
-  public static let contentRef = Self(rawValue: "content_ref")
-  public static let mask = Self(rawValue: "mask")
-  public static let control = Self(rawValue: "control")
+  case source = "source"
+  case contentRef = "content_ref"
+  case mask = "mask"
+  case control = "control"
 }

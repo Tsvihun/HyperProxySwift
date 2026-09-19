@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIRotateVaultCredentialAuthParamStaticBearer: Codable, Sendable {
   public var token: String
-  public var typeModel: OpenAIRotateVaultCredentialAuthParamStaticBearerTypeModel
+  public var kind: OpenAIRotateVaultCredentialAuthParamStaticBearerKind
 
   public init(
     token: String,
-    typeModel: OpenAIRotateVaultCredentialAuthParamStaticBearerTypeModel
+    kind: OpenAIRotateVaultCredentialAuthParamStaticBearerKind
   ) {
     self.token = token
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case token
-    case typeModel = "type"
+    case kind = "type"
   }
 }

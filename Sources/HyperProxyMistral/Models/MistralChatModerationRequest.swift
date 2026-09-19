@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralChatModerationRequest: Codable, Sendable {
-  public var input: HyperProxyJSONValue
+  public var input: MistralChatModerationRequestInput
   public var model: String
 
   public init(
-    input: HyperProxyJSONValue,
+    input: MistralChatModerationRequestInput,
     model: String
   ) {
     self.input = input

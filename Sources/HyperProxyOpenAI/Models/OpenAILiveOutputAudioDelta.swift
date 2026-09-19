@@ -14,24 +14,24 @@ public struct OpenAILiveOutputAudioDelta: Codable, Sendable {
   public var delta: String
   public var endMs: Int?
   public var startMs: Int?
-  public var typeModel: OpenAILiveOutputAudioDeltaTypeModel
+  public var kind: OpenAILiveOutputAudioDeltaKind
 
   public init(
     delta: String,
-    typeModel: OpenAILiveOutputAudioDeltaTypeModel,
+    kind: OpenAILiveOutputAudioDeltaKind,
     endMs: Int? = nil,
     startMs: Int? = nil
   ) {
     self.delta = delta
     self.endMs = endMs
     self.startMs = startMs
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case delta
     case endMs = "end_ms"
     case startMs = "start_ms"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

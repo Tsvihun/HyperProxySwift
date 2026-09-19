@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaManagedAgentsUserToolConfirmationResult: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum AnthropicBetaManagedAgentsUserToolConfirmationResult: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let allow = Self(rawValue: "allow")
-  public static let deny = Self(rawValue: "deny")
+  case allow = "allow"
+  case deny = "deny"
 }

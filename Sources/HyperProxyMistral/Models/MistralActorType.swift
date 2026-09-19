@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralActorType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let hUMAN = Self(rawValue: "HUMAN")
-  public static let aPIKEY = Self(rawValue: "API_KEY")
-  public static let oTHER = Self(rawValue: "OTHER")
+public enum MistralActorType: String, Codable, Hashable, Sendable {
+  case hUMAN = "HUMAN"
+  case aPIKEY = "API_KEY"
+  case oTHER = "OTHER"
 }

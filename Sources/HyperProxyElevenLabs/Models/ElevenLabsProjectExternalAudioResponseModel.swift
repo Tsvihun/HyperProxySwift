@@ -30,14 +30,14 @@ public struct ElevenLabsProjectExternalAudioResponseModel: Codable, Sendable {
   public var pendingTask: ElevenLabsPendingClipTask?
   public var signedUrl: String?
   public var sourceAssetId: String?
-  public var sourceContext: HyperProxyJSONValue?
+  public var sourceContext: ElevenLabsProjectExternalAudioResponseModelSourceContextAnyOf1?
   public var sourceExternalAudioId: String?
   public var sourcePlatformAssetId: String?
   public var speechImported: Bool?
   public var startTimeMs: Int
   public var trackId: String
   public var transcription: ElevenLabsAssetTranscription?
-  public var typeModel: String?
+  public var kind: ElevenLabsAudioKind?
   public var updatedAtMs: Int
   public var volumeGainDb: Double?
 
@@ -64,12 +64,12 @@ public struct ElevenLabsProjectExternalAudioResponseModel: Codable, Sendable {
     pendingExternalAudiosMetadata: ElevenLabsPendingExternalAudiosMetadataModel? = nil,
     pendingTask: ElevenLabsPendingClipTask? = nil,
     sourceAssetId: String? = nil,
-    sourceContext: HyperProxyJSONValue? = nil,
+    sourceContext: ElevenLabsProjectExternalAudioResponseModelSourceContextAnyOf1? = nil,
     sourceExternalAudioId: String? = nil,
     sourcePlatformAssetId: String? = nil,
     speechImported: Bool? = nil,
     transcription: ElevenLabsAssetTranscription? = nil,
-    typeModel: String? = nil,
+    kind: ElevenLabsAudioKind? = nil,
     volumeGainDb: Double? = nil
   ) {
     self.analysis = analysis
@@ -98,7 +98,7 @@ public struct ElevenLabsProjectExternalAudioResponseModel: Codable, Sendable {
     self.startTimeMs = startTimeMs
     self.trackId = trackId
     self.transcription = transcription
-    self.typeModel = typeModel
+    self.kind = kind
     self.updatedAtMs = updatedAtMs
     self.volumeGainDb = volumeGainDb
   }
@@ -130,7 +130,7 @@ public struct ElevenLabsProjectExternalAudioResponseModel: Codable, Sendable {
     case startTimeMs = "start_time_ms"
     case trackId = "track_id"
     case transcription
-    case typeModel = "type"
+    case kind = "type"
     case updatedAtMs = "updated_at_ms"
     case volumeGainDb = "volume_gain_db"
   }

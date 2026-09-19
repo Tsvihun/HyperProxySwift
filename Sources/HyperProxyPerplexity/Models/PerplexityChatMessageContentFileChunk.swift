@@ -12,22 +12,22 @@ import HyperProxyCore
 
 public struct PerplexityChatMessageContentFileChunk: Codable, Sendable {
   public var fileName: String?
-  public var fileUrl: HyperProxyJSONValue
-  public var typeModel: String
+  public var fileUrl: PerplexityChatMessageContentFileChunkFileUrl
+  public var kind: PerplexityFileUrlKind
 
   public init(
-    fileUrl: HyperProxyJSONValue,
-    typeModel: String,
+    fileUrl: PerplexityChatMessageContentFileChunkFileUrl,
+    kind: PerplexityFileUrlKind = .fileUrl,
     fileName: String? = nil
   ) {
     self.fileName = fileName
     self.fileUrl = fileUrl
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case fileName = "file_name"
     case fileUrl = "file_url"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

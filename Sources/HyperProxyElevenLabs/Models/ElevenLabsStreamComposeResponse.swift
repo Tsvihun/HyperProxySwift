@@ -10,4 +10,17 @@
 import Foundation
 import HyperProxyCore
 
-public typealias ElevenLabsStreamComposeResponse = String
+public struct ElevenLabsStreamComposeResponse: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+}
+
+extension ElevenLabsStreamComposeResponse: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self.init(rawValue: value)
+  }
+}

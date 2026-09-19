@@ -15,11 +15,11 @@ public struct OpenAIRealtimeServerEventErrorError: Codable, Sendable {
   public var eventId: String?
   public var message: String
   public var param: String?
-  public var typeModel: String
+  public var kind: String
 
   public init(
     message: String,
-    typeModel: String,
+    kind: String,
     code: String? = nil,
     eventId: String? = nil,
     param: String? = nil
@@ -28,7 +28,7 @@ public struct OpenAIRealtimeServerEventErrorError: Codable, Sendable {
     self.eventId = eventId
     self.message = message
     self.param = param
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIRealtimeServerEventErrorError: Codable, Sendable {
     case eventId = "event_id"
     case message
     case param
-    case typeModel = "type"
+    case kind = "type"
   }
 }

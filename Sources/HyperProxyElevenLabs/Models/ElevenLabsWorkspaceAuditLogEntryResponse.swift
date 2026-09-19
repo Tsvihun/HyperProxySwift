@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsWorkspaceAuditLogEntryResponse: Codable, Sendable {
-  public var activityId: HyperProxyJSONValue
+  public var activityId: ElevenLabsWorkspaceAuditLogEntryResponseActivityId
   public var activityName: String
   public var actor: ElevenLabsActorModel
   public var categoryName: String?
@@ -32,7 +32,7 @@ public struct ElevenLabsWorkspaceAuditLogEntryResponse: Codable, Sendable {
   public var unmapped: [String: HyperProxyJSONValue]?
 
   public init(
-    activityId: HyperProxyJSONValue,
+    activityId: ElevenLabsWorkspaceAuditLogEntryResponseActivityId,
     activityName: String,
     actor: ElevenLabsActorModel,
     id: String,

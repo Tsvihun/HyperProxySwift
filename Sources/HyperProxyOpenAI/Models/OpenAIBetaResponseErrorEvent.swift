@@ -16,14 +16,14 @@ public struct OpenAIBetaResponseErrorEvent: Codable, Sendable {
   public var message: String
   public var param: String?
   public var sequenceNumber: Int
-  public var typeModel: OpenAIBetaResponseErrorEventTypeModel
+  public var kind: OpenAIBetaResponseErrorEventKind
 
   public init(
     code: String?,
     message: String,
     param: String?,
     sequenceNumber: Int,
-    typeModel: OpenAIBetaResponseErrorEventTypeModel,
+    kind: OpenAIBetaResponseErrorEventKind,
     agent: OpenAIBetaAgentTag? = nil
   ) {
     self.agent = agent
@@ -31,7 +31,7 @@ public struct OpenAIBetaResponseErrorEvent: Codable, Sendable {
     self.message = message
     self.param = param
     self.sequenceNumber = sequenceNumber
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenAIBetaResponseErrorEvent: Codable, Sendable {
     case message
     case param
     case sequenceNumber = "sequence_number"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

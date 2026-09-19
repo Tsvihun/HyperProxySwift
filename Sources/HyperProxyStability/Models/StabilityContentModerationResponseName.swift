@@ -10,13 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct StabilityContentModerationResponseName: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let contentModeration = Self(rawValue: "content_moderation")
+public enum StabilityContentModerationResponseName: String, Codable, Hashable, Sendable {
+  case contentModeration = "content_moderation"
 }

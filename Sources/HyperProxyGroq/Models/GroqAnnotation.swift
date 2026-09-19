@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct GroqAnnotation: Codable, Sendable {
   public var documentCitation: GroqDocumentCitation?
   public var functionCitation: GroqFunctionCitation?
-  public var typeModel: GroqAnnotationTypeModel
+  public var kind: GroqAnnotationKind
 
   public init(
-    typeModel: GroqAnnotationTypeModel,
+    kind: GroqAnnotationKind,
     documentCitation: GroqDocumentCitation? = nil,
     functionCitation: GroqFunctionCitation? = nil
   ) {
     self.documentCitation = documentCitation
     self.functionCitation = functionCitation
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case documentCitation = "document_citation"
     case functionCitation = "function_citation"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

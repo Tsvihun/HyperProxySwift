@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIResponseSteerRequiredInputOneOf6Execution: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let client = Self(rawValue: "client")
+public enum OpenAIResponseSteerRequiredInputOneOf6Execution: String, Codable, Hashable, Sendable {
+  case client = "client"
 }

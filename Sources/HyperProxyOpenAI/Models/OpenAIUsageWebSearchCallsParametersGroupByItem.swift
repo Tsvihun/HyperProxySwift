@@ -10,18 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIUsageWebSearchCallsParametersGroupByItem: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let projectId = Self(rawValue: "project_id")
-  public static let userId = Self(rawValue: "user_id")
-  public static let apiKeyId = Self(rawValue: "api_key_id")
-  public static let model = Self(rawValue: "model")
-  public static let contextLevel = Self(rawValue: "context_level")
+public enum OpenAIUsageWebSearchCallsParametersGroupByItem: String, Codable, Hashable, Sendable {
+  case projectId = "project_id"
+  case userId = "user_id"
+  case apiKeyId = "api_key_id"
+  case model = "model"
+  case contextLevel = "context_level"
 }

@@ -10,13 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLQualityEvaluationProcessingStatus: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let processing = Self(rawValue: "processing")
+public enum DeepLQualityEvaluationProcessingStatus: String, Codable, Hashable, Sendable {
+  case processing = "processing"
 }

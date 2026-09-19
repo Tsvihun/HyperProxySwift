@@ -10,16 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherDEModelWeightsSpeculatorMechanism: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let sPECULATORMECHANISMDRAFT = Self(rawValue: "SPECULATOR_MECHANISM_DRAFT")
-  public static let sPECULATORMECHANISMLOOKAHEAD = Self(rawValue: "SPECULATOR_MECHANISM_LOOKAHEAD")
-  public static let sPECULATORMECHANISMMTP = Self(rawValue: "SPECULATOR_MECHANISM_MTP")
+public enum TogetherDEModelWeightsSpeculatorMechanism: String, Codable, Hashable, Sendable {
+  case sPECULATORMECHANISMDRAFT = "SPECULATOR_MECHANISM_DRAFT"
+  case sPECULATORMECHANISMLOOKAHEAD = "SPECULATOR_MECHANISM_LOOKAHEAD"
+  case sPECULATORMECHANISMMTP = "SPECULATOR_MECHANISM_MTP"
 }

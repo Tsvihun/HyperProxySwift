@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiAttributionSourceId: Codable, Sendable {
-  public var groundingPassage: HyperProxyJSONValue?
-  public var semanticRetrieverChunk: HyperProxyJSONValue?
+  public var groundingPassage: GeminiGroundingPassageId?
+  public var semanticRetrieverChunk: GeminiSemanticRetrieverChunk?
 
   public init(
-    groundingPassage: HyperProxyJSONValue? = nil,
-    semanticRetrieverChunk: HyperProxyJSONValue? = nil
+    groundingPassage: GeminiGroundingPassageId? = nil,
+    semanticRetrieverChunk: GeminiSemanticRetrieverChunk? = nil
   ) {
     self.groundingPassage = groundingPassage
     self.semanticRetrieverChunk = semanticRetrieverChunk

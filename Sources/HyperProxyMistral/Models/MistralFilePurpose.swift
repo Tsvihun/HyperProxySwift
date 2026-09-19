@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct MistralFilePurpose: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let fineTune = Self(rawValue: "fine-tune")
-  public static let batch = Self(rawValue: "batch")
-  public static let ocr = Self(rawValue: "ocr")
+public enum MistralFilePurpose: String, Codable, Hashable, Sendable {
+  case fineTune = "fine-tune"
+  case batch = "batch"
+  case ocr = "ocr"
 }

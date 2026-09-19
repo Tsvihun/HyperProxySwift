@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct AnthropicBetaToolChangeMCPToolReference: Codable, Sendable {
   public var name: String
   public var serverName: String
-  public var typeModel: String
+  public var kind: AnthropicMcpToolReferenceKind
 
   public init(
     name: String,
     serverName: String,
-    typeModel: String
+    kind: AnthropicMcpToolReferenceKind = .mcpToolReference
   ) {
     self.name = name
     self.serverName = serverName
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case name
     case serverName = "server_name"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

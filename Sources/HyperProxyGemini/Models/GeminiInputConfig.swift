@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct GeminiInputConfig: Codable, Sendable {
   public var fileName: String?
-  public var requests: HyperProxyJSONValue?
+  public var requests: GeminiInlinedRequests?
 
   public init(
     fileName: String? = nil,
-    requests: HyperProxyJSONValue? = nil
+    requests: GeminiInlinedRequests? = nil
   ) {
     self.fileName = fileName
     self.requests = requests

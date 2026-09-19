@@ -10,16 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct FalUpdateStorageSettingsRequestInitialAclRulesItemDecision: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum FalUpdateStorageSettingsRequestInitialAclRulesItemDecision: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let allow = Self(rawValue: "allow")
-  public static let forbid = Self(rawValue: "forbid")
-  public static let hide = Self(rawValue: "hide")
+  case allow = "allow"
+  case forbid = "forbid"
+  case hide = "hide"
 }

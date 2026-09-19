@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterSubmitGenerationFeedbackResponseData: Codable, Sendable {
-  public var success: Bool
+  public var success: OpenRouterSubmitGenerationFeedbackResponseDataSuccess
 
   public init(
-    success: Bool
+    success: OpenRouterSubmitGenerationFeedbackResponseDataSuccess = .booleanTrue
   ) {
     self.success = success
   }

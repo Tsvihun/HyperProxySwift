@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct ElevenLabsPlayDTMFResultErrorModel: Codable, Sendable {
   public var details: String?
   public var error: String
-  public var resultType: String?
-  public var status: String?
+  public var resultType: ElevenLabsPlayDtmfErrorResultType?
+  public var status: ElevenLabsErrorStatus?
 
   public init(
     error: String,
     details: String? = nil,
-    resultType: String? = nil,
-    status: String? = nil
+    resultType: ElevenLabsPlayDtmfErrorResultType? = nil,
+    status: ElevenLabsErrorStatus? = nil
   ) {
     self.details = details
     self.error = error

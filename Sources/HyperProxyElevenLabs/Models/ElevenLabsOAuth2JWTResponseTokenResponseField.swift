@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsOAuth2JWTResponseTokenResponseField: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let accessToken = Self(rawValue: "access_token")
-  public static let idToken = Self(rawValue: "id_token")
+public enum ElevenLabsOAuth2JWTResponseTokenResponseField: String, Codable, Hashable, Sendable {
+  case accessToken = "access_token"
+  case idToken = "id_token"
 }

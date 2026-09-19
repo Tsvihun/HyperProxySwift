@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIRoleDeletedResourceObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let roleDeleted = Self(rawValue: "role.deleted")
+public enum OpenAIRoleDeletedResourceObject: String, Codable, Hashable, Sendable {
+  case roleDeleted = "role.deleted"
 }

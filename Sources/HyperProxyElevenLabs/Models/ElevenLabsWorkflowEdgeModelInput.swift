@@ -11,16 +11,16 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsWorkflowEdgeModelInput: Codable, Sendable {
-  public var backwardCondition: HyperProxyJSONValue?
-  public var forwardCondition: HyperProxyJSONValue?
+  public var backwardCondition: ElevenLabsWorkflowEdgeModelInputBackwardConditionAnyOf1?
+  public var forwardCondition: ElevenLabsWorkflowEdgeModelInputForwardConditionAnyOf1?
   public var source: String
   public var target: String
 
   public init(
     source: String,
     target: String,
-    backwardCondition: HyperProxyJSONValue? = nil,
-    forwardCondition: HyperProxyJSONValue? = nil
+    backwardCondition: ElevenLabsWorkflowEdgeModelInputBackwardConditionAnyOf1? = nil,
+    forwardCondition: ElevenLabsWorkflowEdgeModelInputForwardConditionAnyOf1? = nil
   ) {
     self.backwardCondition = backwardCondition
     self.forwardCondition = forwardCondition

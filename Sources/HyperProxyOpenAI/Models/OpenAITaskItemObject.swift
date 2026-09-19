@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAITaskItemObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let chatkitThreadItem = Self(rawValue: "chatkit.thread_item")
+public enum OpenAITaskItemObject: String, Codable, Hashable, Sendable {
+  case chatkitThreadItem = "chatkit.thread_item"
 }

@@ -16,13 +16,13 @@ public struct OpenAIRealtimeSessionCreateResponse: Codable, Sendable {
   public var id: String?
   public var include: [OpenAIRealtimeSessionCreateResponseIncludeItem]?
   public var instructions: String?
-  public var maxOutputTokens: HyperProxyJSONValue?
+  public var maxOutputTokens: OpenAIRealtimeSessionCreateResponseMaxOutputTokens?
   public var model: String?
   public var object: String?
-  public var outputModalities: HyperProxyJSONValue?
+  public var outputModalities: [OpenAIRealtimeSessionCreateResponseOutputModalitiesItem]?
   public var toolChoice: String?
   public var tools: [OpenAIRealtimeFunctionTool]?
-  public var tracing: HyperProxyJSONValue?
+  public var tracing: OpenAIRealtimeSessionCreateResponseTracing?
   public var turnDetection: OpenAIRealtimeSessionCreateResponseTurnDetection?
 
   public init(
@@ -31,13 +31,13 @@ public struct OpenAIRealtimeSessionCreateResponse: Codable, Sendable {
     id: String? = nil,
     include: [OpenAIRealtimeSessionCreateResponseIncludeItem]? = nil,
     instructions: String? = nil,
-    maxOutputTokens: HyperProxyJSONValue? = nil,
+    maxOutputTokens: OpenAIRealtimeSessionCreateResponseMaxOutputTokens? = nil,
     model: String? = nil,
     object: String? = nil,
-    outputModalities: HyperProxyJSONValue? = nil,
+    outputModalities: [OpenAIRealtimeSessionCreateResponseOutputModalitiesItem]? = nil,
     toolChoice: String? = nil,
     tools: [OpenAIRealtimeFunctionTool]? = nil,
-    tracing: HyperProxyJSONValue? = nil,
+    tracing: OpenAIRealtimeSessionCreateResponseTracing? = nil,
     turnDetection: OpenAIRealtimeSessionCreateResponseTurnDetection? = nil
   ) {
     self.audio = audio

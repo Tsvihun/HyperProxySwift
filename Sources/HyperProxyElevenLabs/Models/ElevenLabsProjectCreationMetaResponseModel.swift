@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct ElevenLabsProjectCreationMetaResponseModel: Codable, Sendable {
   public var creationProgress: Double
   public var status: ElevenLabsProjectCreationMetaResponseModelStatus
-  public var typeModel: ElevenLabsProjectCreationMetaType
+  public var kind: ElevenLabsProjectCreationMetaType
 
   public init(
     creationProgress: Double,
     status: ElevenLabsProjectCreationMetaResponseModelStatus,
-    typeModel: ElevenLabsProjectCreationMetaType
+    kind: ElevenLabsProjectCreationMetaType
   ) {
     self.creationProgress = creationProgress
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case creationProgress = "creation_progress"
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

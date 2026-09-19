@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiDataset: Codable, Sendable {
-  public var examples: HyperProxyJSONValue?
+  public var examples: GeminiTuningExamples?
 
   public init(
-    examples: HyperProxyJSONValue? = nil
+    examples: GeminiTuningExamples? = nil
   ) {
     self.examples = examples
   }

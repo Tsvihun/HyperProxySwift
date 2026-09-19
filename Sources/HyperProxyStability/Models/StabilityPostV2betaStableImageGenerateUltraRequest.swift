@@ -11,24 +11,24 @@ import Foundation
 import HyperProxyCore
 
 public struct StabilityPostV2betaStableImageGenerateUltraRequest: Codable, Sendable {
-  public var aspectRatio: StabilityPostV2betaStableImageGenerateUltraRequestAspectRatio?
+  public var aspectRatio: StabilityAspectRatio?
   public var image: String?
   public var negativePrompt: String?
   public var outputFormat: StabilityPostV2betaStableImageGenerateUltraRequestOutputFormat?
   public var prompt: String
   public var seed: Double?
   public var strength: Double?
-  public var stylePreset: StabilityPostV2betaStableImageGenerateUltraRequestStylePreset?
+  public var stylePreset: StabilityStylePreset?
 
   public init(
     prompt: String,
-    aspectRatio: StabilityPostV2betaStableImageGenerateUltraRequestAspectRatio? = nil,
+    aspectRatio: StabilityAspectRatio? = nil,
     image: String? = nil,
     negativePrompt: String? = nil,
     outputFormat: StabilityPostV2betaStableImageGenerateUltraRequestOutputFormat? = nil,
     seed: Double? = nil,
     strength: Double? = nil,
-    stylePreset: StabilityPostV2betaStableImageGenerateUltraRequestStylePreset? = nil
+    stylePreset: StabilityStylePreset? = nil
   ) {
     self.aspectRatio = aspectRatio
     self.image = image

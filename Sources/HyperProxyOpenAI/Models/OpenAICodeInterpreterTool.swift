@@ -12,22 +12,22 @@ import HyperProxyCore
 
 public struct OpenAICodeInterpreterTool: Codable, Sendable {
   public var allowedCallers: [OpenAICallableToolAllowedCaller]?
-  public var container: HyperProxyJSONValue
-  public var typeModel: OpenAICodeInterpreterToolTypeModel
+  public var container: OpenAICodeInterpreterToolContainer
+  public var kind: OpenAICodeInterpreterToolKind
 
   public init(
-    container: HyperProxyJSONValue,
-    typeModel: OpenAICodeInterpreterToolTypeModel,
+    container: OpenAICodeInterpreterToolContainer,
+    kind: OpenAICodeInterpreterToolKind,
     allowedCallers: [OpenAICallableToolAllowedCaller]? = nil
   ) {
     self.allowedCallers = allowedCallers
     self.container = container
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case allowedCallers = "allowed_callers"
     case container
-    case typeModel = "type"
+    case kind = "type"
   }
 }

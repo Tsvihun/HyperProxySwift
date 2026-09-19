@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepSeekToolType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let function = Self(rawValue: "function")
-  public static let webSearch = Self(rawValue: "web_search")
-  public static let webSearch20250826 = Self(rawValue: "web_search_2025_08_26")
+public enum DeepSeekToolType: String, Codable, Hashable, Sendable {
+  case function = "function"
+  case webSearch = "web_search"
+  case webSearch20250826 = "web_search_2025_08_26"
 }

@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherEndpointServiceListEndpointEventsParametersSourceKindsItem: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum TogetherEndpointServiceListEndpointEventsParametersSourceKindsItem: String, Codable,
+  Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let sOURCEKINDENDPOINT = Self(rawValue: "SOURCE_KIND_ENDPOINT")
-  public static let sOURCEKINDDEPLOYMENT = Self(rawValue: "SOURCE_KIND_DEPLOYMENT")
+  case sOURCEKINDENDPOINT = "SOURCE_KIND_ENDPOINT"
+  case sOURCEKINDDEPLOYMENT = "SOURCE_KIND_DEPLOYMENT"
 }

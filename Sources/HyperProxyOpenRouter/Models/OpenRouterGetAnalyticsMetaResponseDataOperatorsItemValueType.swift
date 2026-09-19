@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterGetAnalyticsMetaResponseDataOperatorsItemValueType: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum OpenRouterGetAnalyticsMetaResponseDataOperatorsItemValueType: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let scalar = Self(rawValue: "scalar")
-  public static let array = Self(rawValue: "array")
+  case scalar = "scalar"
+  case array = "array"
 }

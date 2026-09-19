@@ -12,8 +12,8 @@ import HyperProxyCore
 
 public struct GroqCreateTranscriptionRequest: Codable, Sendable {
   public var file: String?
-  public var language: HyperProxyJSONValue?
-  public var model: HyperProxyJSONValue
+  public var language: GroqCreateTranscriptionRequestLanguage?
+  public var model: GroqCreateTranscriptionRequestModel
   public var prompt: String?
   public var responseFormat: GroqCreateTranscriptionRequestResponseFormat?
   public var temperature: Double?
@@ -21,9 +21,9 @@ public struct GroqCreateTranscriptionRequest: Codable, Sendable {
   public var url: String?
 
   public init(
-    model: HyperProxyJSONValue,
+    model: GroqCreateTranscriptionRequestModel,
     file: String? = nil,
-    language: HyperProxyJSONValue? = nil,
+    language: GroqCreateTranscriptionRequestLanguage? = nil,
     prompt: String? = nil,
     responseFormat: GroqCreateTranscriptionRequestResponseFormat? = nil,
     temperature: Double? = nil,

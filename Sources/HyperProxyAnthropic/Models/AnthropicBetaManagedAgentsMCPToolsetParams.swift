@@ -14,24 +14,24 @@ public struct AnthropicBetaManagedAgentsMCPToolsetParams: Codable, Sendable {
   public var configs: [AnthropicBetaManagedAgentsMCPToolConfigParams]?
   public var defaultConfig: AnthropicBetaManagedAgentsMCPToolsetDefaultConfigParams?
   public var mcpServerName: String
-  public var typeModel: AnthropicBetaManagedAgentsMCPToolsetParamsTypeModel
+  public var kind: AnthropicBetaManagedAgentsMCPToolsetParamsKind
 
   public init(
     mcpServerName: String,
-    typeModel: AnthropicBetaManagedAgentsMCPToolsetParamsTypeModel,
+    kind: AnthropicBetaManagedAgentsMCPToolsetParamsKind,
     configs: [AnthropicBetaManagedAgentsMCPToolConfigParams]? = nil,
     defaultConfig: AnthropicBetaManagedAgentsMCPToolsetDefaultConfigParams? = nil
   ) {
     self.configs = configs
     self.defaultConfig = defaultConfig
     self.mcpServerName = mcpServerName
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case configs
     case defaultConfig = "default_config"
     case mcpServerName = "mcp_server_name"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

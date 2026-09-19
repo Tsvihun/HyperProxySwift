@@ -10,16 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct EachAIWorkflowsHostWorkflowVersionSummaryVisibility: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum EachAIWorkflowsHostWorkflowVersionSummaryVisibility: String, Codable, Hashable, Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let privateValue = Self(rawValue: "private")
-  public static let unlisted = Self(rawValue: "unlisted")
-  public static let publicValue = Self(rawValue: "public")
+  case privateValue = "private"
+  case unlisted = "unlisted"
+  case publicValue = "public"
 }

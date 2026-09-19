@@ -12,35 +12,35 @@ import HyperProxyCore
 
 public struct OpenAICreateImageEditRequest: Codable, Sendable {
   public var background: OpenAICreateImageEditRequestBackground?
-  public var image: HyperProxyJSONValue
+  public var image: OpenAICreateImageEditRequestImage
   public var inputFidelity: OpenAIInputFidelity?
   public var mask: String?
-  public var model: HyperProxyJSONValue?
+  public var model: OpenAICreateImageEditRequestModel?
   public var n: Int?
   public var outputCompression: Int?
   public var outputFormat: OpenAICreateImageEditRequestOutputFormat?
-  public var partialImages: OpenAIPartialImages?
+  public var partialImages: Int?
   public var prompt: String
   public var quality: OpenAICreateImageEditRequestQuality?
   public var responseFormat: OpenAICreateImageEditRequestResponseFormat?
-  public var size: HyperProxyJSONValue?
+  public var size: OpenAICreateImageEditRequestSize?
   public var stream: Bool?
   public var user: String?
 
   public init(
-    image: HyperProxyJSONValue,
+    image: OpenAICreateImageEditRequestImage,
     prompt: String,
     background: OpenAICreateImageEditRequestBackground? = nil,
     inputFidelity: OpenAIInputFidelity? = nil,
     mask: String? = nil,
-    model: HyperProxyJSONValue? = nil,
+    model: OpenAICreateImageEditRequestModel? = nil,
     n: Int? = nil,
     outputCompression: Int? = nil,
     outputFormat: OpenAICreateImageEditRequestOutputFormat? = nil,
-    partialImages: OpenAIPartialImages? = nil,
+    partialImages: Int? = nil,
     quality: OpenAICreateImageEditRequestQuality? = nil,
     responseFormat: OpenAICreateImageEditRequestResponseFormat? = nil,
-    size: HyperProxyJSONValue? = nil,
+    size: OpenAICreateImageEditRequestSize? = nil,
     stream: Bool? = nil,
     user: String? = nil
   ) {

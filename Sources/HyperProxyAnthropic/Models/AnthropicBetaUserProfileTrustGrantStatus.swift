@@ -10,16 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaUserProfileTrustGrantStatus: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let active = Self(rawValue: "active")
-  public static let pending = Self(rawValue: "pending")
-  public static let rejected = Self(rawValue: "rejected")
+public enum AnthropicBetaUserProfileTrustGrantStatus: String, Codable, Hashable, Sendable {
+  case active = "active"
+  case pending = "pending"
+  case rejected = "rejected"
 }

@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterAnthropicCompactionUsageIterationAllOf2: Codable, Sendable {
-  public var typeModel: OpenRouterAnthropicCompactionUsageIterationAllOf2TypeModel
+  public var kind: OpenRouterAnthropicCompactionUsageIterationAllOf2Kind
 
   public init(
-    typeModel: OpenRouterAnthropicCompactionUsageIterationAllOf2TypeModel
+    kind: OpenRouterAnthropicCompactionUsageIterationAllOf2Kind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

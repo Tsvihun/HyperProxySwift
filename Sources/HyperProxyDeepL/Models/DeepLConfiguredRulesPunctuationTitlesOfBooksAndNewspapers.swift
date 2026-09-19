@@ -10,17 +10,10 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesPunctuationTitlesOfBooksAndNewspapers: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesPunctuationTitlesOfBooksAndNewspapers: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useDoubleAngleBrackets = Self(rawValue: "use_double_angle_brackets")
-  public static let useDoubleCornerBrackets = Self(rawValue: "use_double_corner_brackets")
-  public static let useDoubleStraightQuotationMarks = Self(
-    rawValue: "use_double_straight_quotation_marks")
+  case useDoubleAngleBrackets = "use_double_angle_brackets"
+  case useDoubleCornerBrackets = "use_double_corner_brackets"
+  case useDoubleStraightQuotationMarks = "use_double_straight_quotation_marks"
 }

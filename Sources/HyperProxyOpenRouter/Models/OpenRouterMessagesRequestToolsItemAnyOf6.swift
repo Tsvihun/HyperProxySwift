@@ -18,12 +18,12 @@ public struct OpenRouterMessagesRequestToolsItemAnyOf6: Codable, Sendable {
   public var maxUses: Int?
   public var model: String
   public var name: OpenRouterMessagesRequestToolsItemAnyOf6Name
-  public var typeModel: OpenRouterMessagesRequestToolsItemAnyOf6TypeModel
+  public var kind: OpenRouterMessagesRequestToolsItemAnyOf6Kind
 
   public init(
     model: String,
     name: OpenRouterMessagesRequestToolsItemAnyOf6Name,
-    typeModel: OpenRouterMessagesRequestToolsItemAnyOf6TypeModel,
+    kind: OpenRouterMessagesRequestToolsItemAnyOf6Kind,
     allowedCallers: OpenRouterAnthropicAllowedCallers? = nil,
     cacheControl: OpenRouterAnthropicCacheControlDirective? = nil,
     caching: OpenRouterAnthropicCacheControlDirective? = nil,
@@ -37,7 +37,7 @@ public struct OpenRouterMessagesRequestToolsItemAnyOf6: Codable, Sendable {
     self.maxUses = maxUses
     self.model = model
     self.name = name
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -48,6 +48,6 @@ public struct OpenRouterMessagesRequestToolsItemAnyOf6: Codable, Sendable {
     case maxUses = "max_uses"
     case model
     case name
-    case typeModel = "type"
+    case kind = "type"
   }
 }

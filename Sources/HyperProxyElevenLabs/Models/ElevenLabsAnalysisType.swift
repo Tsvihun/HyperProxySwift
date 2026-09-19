@@ -10,13 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsAnalysisType: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let evaluationCriteria = Self(rawValue: "evaluation_criteria")
-  public static let dataCollection = Self(rawValue: "data_collection")
+public enum ElevenLabsAnalysisType: String, Codable, Hashable, Sendable {
+  case evaluationCriteria = "evaluation_criteria"
+  case dataCollection = "data_collection"
 }

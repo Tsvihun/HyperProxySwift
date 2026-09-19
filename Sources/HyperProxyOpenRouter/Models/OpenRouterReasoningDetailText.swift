@@ -16,10 +16,10 @@ public struct OpenRouterReasoningDetailText: Codable, Sendable {
   public var index: Int?
   public var signature: String?
   public var text: String?
-  public var typeModel: OpenRouterReasoningDetailTextTypeModel
+  public var kind: OpenRouterReasoningDetailTextKind
 
   public init(
-    typeModel: OpenRouterReasoningDetailTextTypeModel,
+    kind: OpenRouterReasoningDetailTextKind,
     format: OpenRouterReasoningFormat? = nil,
     id: String? = nil,
     index: Int? = nil,
@@ -31,7 +31,7 @@ public struct OpenRouterReasoningDetailText: Codable, Sendable {
     self.index = index
     self.signature = signature
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct OpenRouterReasoningDetailText: Codable, Sendable {
     case index
     case signature
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

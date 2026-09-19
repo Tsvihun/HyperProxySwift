@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsVaultNotFoundRunError: Codable, Sendable {
   public var message: String
-  public var typeModel: AnthropicBetaManagedAgentsVaultNotFoundRunErrorTypeModel
+  public var kind: AnthropicBetaManagedAgentsVaultNotFoundRunErrorKind
 
   public init(
     message: String,
-    typeModel: AnthropicBetaManagedAgentsVaultNotFoundRunErrorTypeModel
+    kind: AnthropicBetaManagedAgentsVaultNotFoundRunErrorKind
   ) {
     self.message = message
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case message
-    case typeModel = "type"
+    case kind = "type"
   }
 }

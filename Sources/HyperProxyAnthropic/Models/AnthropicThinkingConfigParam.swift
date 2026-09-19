@@ -10,4 +10,33 @@
 import Foundation
 import HyperProxyCore
 
-public typealias AnthropicThinkingConfigParam = HyperProxyJSONValue
+public enum AnthropicThinkingConfigParam: Codable, Sendable {
+  case thinkingConfigEnabled(AnthropicThinkingConfigEnabled)
+  case thinkingConfigDisabled(AnthropicThinkingConfigDisabled)
+  case thinkingConfigAdaptive(AnthropicThinkingConfigAdaptive)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(AnthropicThinkingConfigEnabled.self) {
+      self = .thinkingConfigEnabled(value)
+      return
+    }
+    if let value = try? container.decode(AnthropicThinkingConfigDisabled.self) {
+      self = .thinkingConfigDisabled(value)
+      return
+    }
+    self = .thinkingConfigAdaptive(try container.decode(AnthropicThinkingConfigAdaptive.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .thinkingConfigEnabled(let value):
+      try container.encode(value)
+    case .thinkingConfigDisabled(let value):
+      try container.encode(value)
+    case .thinkingConfigAdaptive(let value):
+      try container.encode(value)
+    }
+  }
+}

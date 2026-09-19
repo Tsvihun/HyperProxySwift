@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct GeminiAudioTranscriptionConfigMode: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let mODEUNSPECIFIED = Self(rawValue: "MODE_UNSPECIFIED")
-  public static let vERBATIM = Self(rawValue: "VERBATIM")
-  public static let sMART = Self(rawValue: "SMART")
+public enum GeminiAudioTranscriptionConfigMode: String, Codable, Hashable, Sendable {
+  case mODEUNSPECIFIED = "MODE_UNSPECIFIED"
+  case vERBATIM = "VERBATIM"
+  case sMART = "SMART"
 }

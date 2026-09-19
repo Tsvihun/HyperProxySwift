@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterContainerNetworkPolicyAnyOf1: Codable, Sendable {
-  public var typeModel: OpenRouterContainerNetworkPolicyAnyOf1TypeModel
+  public var kind: OpenRouterContainerNetworkPolicyAnyOf1Kind
 
   public init(
-    typeModel: OpenRouterContainerNetworkPolicyAnyOf1TypeModel
+    kind: OpenRouterContainerNetworkPolicyAnyOf1Kind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

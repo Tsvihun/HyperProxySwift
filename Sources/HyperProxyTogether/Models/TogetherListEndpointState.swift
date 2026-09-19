@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherListEndpointState: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let pENDING = Self(rawValue: "PENDING")
-  public static let sTARTING = Self(rawValue: "STARTING")
-  public static let sTARTED = Self(rawValue: "STARTED")
-  public static let sTOPPING = Self(rawValue: "STOPPING")
-  public static let sTOPPED = Self(rawValue: "STOPPED")
-  public static let eRROR = Self(rawValue: "ERROR")
+public enum TogetherListEndpointState: String, Codable, Hashable, Sendable {
+  case pENDING = "PENDING"
+  case sTARTING = "STARTING"
+  case sTARTED = "STARTED"
+  case sTOPPING = "STOPPING"
+  case sTOPPED = "STOPPED"
+  case eRROR = "ERROR"
 }

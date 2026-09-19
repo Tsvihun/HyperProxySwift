@@ -10,15 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesDatesAndTimesSingleDigitHours: RawRepresentable, Codable,
-  Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let doNotUseLeadingZero = Self(rawValue: "do_not_use_leading_zero")
-  public static let useLeadingZero = Self(rawValue: "use_leading_zero")
+public enum DeepLConfiguredRulesDatesAndTimesSingleDigitHours: String, Codable, Hashable, Sendable {
+  case doNotUseLeadingZero = "do_not_use_leading_zero"
+  case useLeadingZero = "use_leading_zero"
 }

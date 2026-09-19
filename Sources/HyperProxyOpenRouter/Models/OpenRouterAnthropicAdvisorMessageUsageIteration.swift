@@ -17,11 +17,11 @@ public struct OpenRouterAnthropicAdvisorMessageUsageIteration: Codable, Sendable
   public var inputTokens: Int?
   public var model: String
   public var outputTokens: Int?
-  public var typeModel: OpenRouterAnthropicAdvisorMessageUsageIterationAllOf2TypeModel
+  public var kind: OpenRouterAnthropicAdvisorMessageUsageIterationAllOf2Kind
 
   public init(
     model: String,
-    typeModel: OpenRouterAnthropicAdvisorMessageUsageIterationAllOf2TypeModel,
+    kind: OpenRouterAnthropicAdvisorMessageUsageIterationAllOf2Kind,
     cacheCreation: OpenRouterAnthropicIterationCacheCreation? = nil,
     cacheCreationInputTokens: Int? = nil,
     cacheReadInputTokens: Int? = nil,
@@ -34,7 +34,7 @@ public struct OpenRouterAnthropicAdvisorMessageUsageIteration: Codable, Sendable
     self.inputTokens = inputTokens
     self.model = model
     self.outputTokens = outputTokens
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +44,6 @@ public struct OpenRouterAnthropicAdvisorMessageUsageIteration: Codable, Sendable
     case inputTokens = "input_tokens"
     case model
     case outputTokens = "output_tokens"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

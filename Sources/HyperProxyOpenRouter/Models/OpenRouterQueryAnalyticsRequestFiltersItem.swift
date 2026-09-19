@@ -14,12 +14,12 @@ public struct OpenRouterQueryAnalyticsRequestFiltersItem: Codable, Sendable {
   public var field: String
   public var includeUnset: Bool?
   public var operatorValue: String
-  public var value: HyperProxyJSONValue
+  public var value: OpenRouterQueryAnalyticsRequestFiltersItemValue
 
   public init(
     field: String,
     operatorValue: String,
-    value: HyperProxyJSONValue,
+    value: OpenRouterQueryAnalyticsRequestFiltersItemValue,
     includeUnset: Bool? = nil
   ) {
     self.field = field

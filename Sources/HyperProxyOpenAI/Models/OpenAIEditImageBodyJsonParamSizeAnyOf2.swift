@@ -10,16 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIEditImageBodyJsonParamSizeAnyOf2: RawRepresentable, Codable, Hashable, Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let auto = Self(rawValue: "auto")
-  public static let value1024x1024 = Self(rawValue: "1024x1024")
-  public static let value1536x1024 = Self(rawValue: "1536x1024")
-  public static let value1024x1536 = Self(rawValue: "1024x1536")
+public enum OpenAIEditImageBodyJsonParamSizeAnyOf2: String, Codable, Hashable, Sendable {
+  case auto = "auto"
+  case value1024x1024 = "1024x1024"
+  case value1536x1024 = "1536x1024"
+  case value1024x1536 = "1024x1536"
 }

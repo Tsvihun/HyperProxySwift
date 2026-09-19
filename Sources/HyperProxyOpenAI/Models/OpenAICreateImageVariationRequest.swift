@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct OpenAICreateImageVariationRequest: Codable, Sendable {
   public var image: String
-  public var model: HyperProxyJSONValue?
+  public var model: OpenAICreateImageVariationRequestModel?
   public var n: Int?
   public var responseFormat: OpenAICreateImageVariationRequestResponseFormat?
   public var size: OpenAICreateImageVariationRequestSize?
@@ -20,7 +20,7 @@ public struct OpenAICreateImageVariationRequest: Codable, Sendable {
 
   public init(
     image: String,
-    model: HyperProxyJSONValue? = nil,
+    model: OpenAICreateImageVariationRequestModel? = nil,
     n: Int? = nil,
     responseFormat: OpenAICreateImageVariationRequestResponseFormat? = nil,
     size: OpenAICreateImageVariationRequestSize? = nil,

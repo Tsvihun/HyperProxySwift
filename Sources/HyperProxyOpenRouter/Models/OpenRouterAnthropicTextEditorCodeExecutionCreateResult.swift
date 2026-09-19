@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterAnthropicTextEditorCodeExecutionCreateResult: Codable, Sendable {
   public var isFileUpdate: Bool
-  public var typeModel: OpenRouterAnthropicTextEditorCodeExecutionCreateResultTypeModel
+  public var kind: OpenRouterAnthropicTextEditorCodeExecutionCreateResultKind
 
   public init(
     isFileUpdate: Bool,
-    typeModel: OpenRouterAnthropicTextEditorCodeExecutionCreateResultTypeModel
+    kind: OpenRouterAnthropicTextEditorCodeExecutionCreateResultKind
   ) {
     self.isFileUpdate = isFileUpdate
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case isFileUpdate = "is_file_update"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

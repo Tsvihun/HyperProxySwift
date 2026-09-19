@@ -16,8 +16,8 @@ public struct MistralWorkspaceEnrichedOUT: Codable, Sendable {
   public var isDefault: Bool
   public var membersCount: Int?
   public var name: String
-  public var rawRole: HyperProxyJSONValue
-  public var rawRoles: [HyperProxyJSONValue]
+  public var rawRole: MistralWorkspaceEnrichedOUTRawRole
+  public var rawRoles: [MistralWorkspaceEnrichedOUTRawRolesItem]
   public var spendLimit: MistralWorkspaceSpendLimitOUT?
   public var uuid: String
 
@@ -26,8 +26,8 @@ public struct MistralWorkspaceEnrichedOUT: Codable, Sendable {
     icon: String?,
     isDefault: Bool,
     name: String,
-    rawRole: HyperProxyJSONValue,
-    rawRoles: [HyperProxyJSONValue],
+    rawRole: MistralWorkspaceEnrichedOUTRawRole,
+    rawRoles: [MistralWorkspaceEnrichedOUTRawRolesItem],
     uuid: String,
     membersCount: Int? = nil,
     spendLimit: MistralWorkspaceSpendLimitOUT? = nil

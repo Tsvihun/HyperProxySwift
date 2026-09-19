@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct OpenAICreateMessageRequest: Codable, Sendable {
   public var attachments: [OpenAICreateMessageRequestAttachmentsAnyOf1Item]?
-  public var content: HyperProxyJSONValue
+  public var content: OpenAICreateMessageRequestContent
   public var metadata: OpenAIMetadata?
   public var role: OpenAICreateMessageRequestRole
 
   public init(
-    content: HyperProxyJSONValue,
+    content: OpenAICreateMessageRequestContent,
     role: OpenAICreateMessageRequestRole,
     attachments: [OpenAICreateMessageRequestAttachmentsAnyOf1Item]? = nil,
     metadata: OpenAIMetadata? = nil

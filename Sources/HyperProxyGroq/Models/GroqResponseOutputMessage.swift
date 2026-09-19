@@ -15,20 +15,20 @@ public struct GroqResponseOutputMessage: Codable, Sendable {
   public var id: String
   public var role: GroqResponseOutputMessageRole
   public var status: GroqResponseOutputMessageStatus?
-  public var typeModel: GroqResponseOutputMessageTypeModel
+  public var kind: GroqResponseOutputMessageKind
 
   public init(
     content: [GroqResponseOutputContent],
     id: String,
     role: GroqResponseOutputMessageRole,
-    typeModel: GroqResponseOutputMessageTypeModel,
+    kind: GroqResponseOutputMessageKind,
     status: GroqResponseOutputMessageStatus? = nil
   ) {
     self.content = content
     self.id = id
     self.role = role
     self.status = status
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct GroqResponseOutputMessage: Codable, Sendable {
     case id
     case role
     case status
-    case typeModel = "type"
+    case kind = "type"
   }
 }

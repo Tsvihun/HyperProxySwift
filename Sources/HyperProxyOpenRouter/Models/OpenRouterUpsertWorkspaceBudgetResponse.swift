@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterUpsertWorkspaceBudgetResponse: Codable, Sendable {
-  public var data: HyperProxyJSONValue
+  public var data: OpenRouterWorkspaceBudget
   public var includeByokInBudgets: Bool?
 
   public init(
-    data: HyperProxyJSONValue,
+    data: OpenRouterWorkspaceBudget,
     includeByokInBudgets: Bool? = nil
   ) {
     self.data = data

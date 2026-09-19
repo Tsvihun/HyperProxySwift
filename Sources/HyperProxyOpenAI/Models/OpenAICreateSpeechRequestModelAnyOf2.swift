@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAICreateSpeechRequestModelAnyOf2: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let tts1 = Self(rawValue: "tts-1")
-  public static let tts1Hd = Self(rawValue: "tts-1-hd")
-  public static let gpt4oMiniTts = Self(rawValue: "gpt-4o-mini-tts")
-  public static let gpt4oMiniTts20251215 = Self(rawValue: "gpt-4o-mini-tts-2025-12-15")
+public enum OpenAICreateSpeechRequestModelAnyOf2: String, Codable, Hashable, Sendable {
+  case tts1 = "tts-1"
+  case tts1Hd = "tts-1-hd"
+  case gpt4oMiniTts = "gpt-4o-mini-tts"
+  case gpt4oMiniTts20251215 = "gpt-4o-mini-tts-2025-12-15"
 }

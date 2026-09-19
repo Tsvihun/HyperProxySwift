@@ -26,7 +26,7 @@ public struct AnthropicBetaFederationRule: Codable, Sendable {
   public var oauthScope: String
   public var target: AnthropicBetaServiceAccountTarget
   public var tokenLifetimeSeconds: Int
-  public var typeModel: String
+  public var kind: AnthropicFederationRuleKind
   public var updatedAt: String
   public var updatedByActorId: String?
   public var workspaceId: String?
@@ -48,11 +48,11 @@ public struct AnthropicBetaFederationRule: Codable, Sendable {
     oauthScope: String,
     target: AnthropicBetaServiceAccountTarget,
     tokenLifetimeSeconds: Int,
-    typeModel: String,
     updatedAt: String,
     updatedByActorId: String?,
     workspaceId: String?,
-    workspaceIds: [String]
+    workspaceIds: [String],
+    kind: AnthropicFederationRuleKind = .federationRule
   ) {
     self.appliesToAllWorkspaces = appliesToAllWorkspaces
     self.archivedAt = archivedAt
@@ -69,7 +69,7 @@ public struct AnthropicBetaFederationRule: Codable, Sendable {
     self.oauthScope = oauthScope
     self.target = target
     self.tokenLifetimeSeconds = tokenLifetimeSeconds
-    self.typeModel = typeModel
+    self.kind = kind
     self.updatedAt = updatedAt
     self.updatedByActorId = updatedByActorId
     self.workspaceId = workspaceId
@@ -92,7 +92,7 @@ public struct AnthropicBetaFederationRule: Codable, Sendable {
     case oauthScope = "oauth_scope"
     case target
     case tokenLifetimeSeconds = "token_lifetime_seconds"
-    case typeModel = "type"
+    case kind = "type"
     case updatedAt = "updated_at"
     case updatedByActorId = "updated_by_actor_id"
     case workspaceId = "workspace_id"

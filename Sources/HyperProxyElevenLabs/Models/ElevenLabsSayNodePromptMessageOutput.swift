@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct ElevenLabsSayNodePromptMessageOutput: Codable, Sendable {
   public var prompt: String
-  public var typeModel: String
+  public var kind: ElevenLabsPromptKind
 
   public init(
     prompt: String,
-    typeModel: String
+    kind: ElevenLabsPromptKind = .prompt
   ) {
     self.prompt = prompt
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case prompt
-    case typeModel = "type"
+    case kind = "type"
   }
 }

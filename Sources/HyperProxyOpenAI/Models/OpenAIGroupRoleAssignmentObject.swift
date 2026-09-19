@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIGroupRoleAssignmentObject: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let groupRole = Self(rawValue: "group.role")
+public enum OpenAIGroupRoleAssignmentObject: String, Codable, Hashable, Sendable {
+  case groupRole = "group.role"
 }

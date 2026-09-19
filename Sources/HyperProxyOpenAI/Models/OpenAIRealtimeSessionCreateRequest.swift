@@ -15,15 +15,15 @@ public struct OpenAIRealtimeSessionCreateRequest: Codable, Sendable {
   public var inputAudioFormat: String?
   public var inputAudioTranscription: OpenAIRealtimeSessionCreateRequestInputAudioTranscription?
   public var instructions: String?
-  public var maxResponseOutputTokens: HyperProxyJSONValue?
-  public var modalities: HyperProxyJSONValue?
+  public var maxResponseOutputTokens: OpenAIRealtimeSessionCreateRequestMaxResponseOutputTokens?
+  public var modalities: [OpenAIRealtimeSessionCreateRequestModalitiesItem]?
   public var outputAudioFormat: String?
   public var prompt: OpenAIPrompt?
   public var speed: Double?
   public var temperature: Double?
   public var toolChoice: String?
   public var tools: [OpenAIRealtimeSessionCreateRequestToolsItem]?
-  public var tracing: HyperProxyJSONValue?
+  public var tracing: OpenAIRealtimeSessionCreateRequestTracing?
   public var truncation: OpenAIRealtimeTruncation?
   public var turnDetection: OpenAIRealtimeSessionCreateRequestTurnDetection?
   public var voice: OpenAIVoiceIdsOrCustomVoice?
@@ -33,15 +33,15 @@ public struct OpenAIRealtimeSessionCreateRequest: Codable, Sendable {
     inputAudioFormat: String? = nil,
     inputAudioTranscription: OpenAIRealtimeSessionCreateRequestInputAudioTranscription? = nil,
     instructions: String? = nil,
-    maxResponseOutputTokens: HyperProxyJSONValue? = nil,
-    modalities: HyperProxyJSONValue? = nil,
+    maxResponseOutputTokens: OpenAIRealtimeSessionCreateRequestMaxResponseOutputTokens? = nil,
+    modalities: [OpenAIRealtimeSessionCreateRequestModalitiesItem]? = nil,
     outputAudioFormat: String? = nil,
     prompt: OpenAIPrompt? = nil,
     speed: Double? = nil,
     temperature: Double? = nil,
     toolChoice: String? = nil,
     tools: [OpenAIRealtimeSessionCreateRequestToolsItem]? = nil,
-    tracing: HyperProxyJSONValue? = nil,
+    tracing: OpenAIRealtimeSessionCreateRequestTracing? = nil,
     truncation: OpenAIRealtimeTruncation? = nil,
     turnDetection: OpenAIRealtimeSessionCreateRequestTurnDetection? = nil,
     voice: OpenAIVoiceIdsOrCustomVoice? = nil

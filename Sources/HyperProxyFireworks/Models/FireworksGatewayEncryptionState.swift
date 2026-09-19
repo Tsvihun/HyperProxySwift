@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct FireworksGatewayEncryptionState: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let eNCRYPTIONSTATEUNSPECIFIED = Self(rawValue: "ENCRYPTION_STATE_UNSPECIFIED")
-  public static let eNCRYPTIONSTATEPLAINTEXT = Self(rawValue: "ENCRYPTION_STATE_PLAINTEXT")
-  public static let eNCRYPTIONSTATECMEK = Self(rawValue: "ENCRYPTION_STATE_CMEK")
+public enum FireworksGatewayEncryptionState: String, Codable, Hashable, Sendable {
+  case eNCRYPTIONSTATEUNSPECIFIED = "ENCRYPTION_STATE_UNSPECIFIED"
+  case eNCRYPTIONSTATEPLAINTEXT = "ENCRYPTION_STATE_PLAINTEXT"
+  case eNCRYPTIONSTATECMEK = "ENCRYPTION_STATE_CMEK"
 }

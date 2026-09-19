@@ -10,21 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherListTrainingSessionsParametersStatusItem: RawRepresentable, Codable, Hashable,
-  Sendable
-{
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let tRAININGSESSIONSTATUSCREATING = Self(
-    rawValue: "TRAINING_SESSION_STATUS_CREATING")
-  public static let tRAININGSESSIONSTATUSRUNNING = Self(rawValue: "TRAINING_SESSION_STATUS_RUNNING")
-  public static let tRAININGSESSIONSTATUSSTOPPED = Self(rawValue: "TRAINING_SESSION_STATUS_STOPPED")
-  public static let tRAININGSESSIONSTATUSSTOPPING = Self(
-    rawValue: "TRAINING_SESSION_STATUS_STOPPING")
-  public static let tRAININGSESSIONSTATUSERROR = Self(rawValue: "TRAINING_SESSION_STATUS_ERROR")
-  public static let tRAININGSESSIONSTATUSEXPIRED = Self(rawValue: "TRAINING_SESSION_STATUS_EXPIRED")
+public enum TogetherListTrainingSessionsParametersStatusItem: String, Codable, Hashable, Sendable {
+  case tRAININGSESSIONSTATUSCREATING = "TRAINING_SESSION_STATUS_CREATING"
+  case tRAININGSESSIONSTATUSRUNNING = "TRAINING_SESSION_STATUS_RUNNING"
+  case tRAININGSESSIONSTATUSSTOPPED = "TRAINING_SESSION_STATUS_STOPPED"
+  case tRAININGSESSIONSTATUSSTOPPING = "TRAINING_SESSION_STATUS_STOPPING"
+  case tRAININGSESSIONSTATUSERROR = "TRAINING_SESSION_STATUS_ERROR"
+  case tRAININGSESSIONSTATUSEXPIRED = "TRAINING_SESSION_STATUS_EXPIRED"
 }

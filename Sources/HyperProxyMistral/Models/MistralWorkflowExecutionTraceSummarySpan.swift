@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralWorkflowExecutionTraceSummarySpan: Codable, Sendable {
-  public var attributes: [String: MistralWorkflowExecutionTraceSummaryAttributesValues]
+  public var attributes: [String: MistralWorkflowExecutionTraceSummaryAttributesValues?]
   public var children: [MistralWorkflowExecutionTraceSummarySpan]?
   public var endTimeUnixNano: Int?
   public var events: [MistralWorkflowExecutionTraceEvent]
@@ -20,7 +20,7 @@ public struct MistralWorkflowExecutionTraceSummarySpan: Codable, Sendable {
   public var startTimeUnixNano: Int
 
   public init(
-    attributes: [String: MistralWorkflowExecutionTraceSummaryAttributesValues],
+    attributes: [String: MistralWorkflowExecutionTraceSummaryAttributesValues?],
     endTimeUnixNano: Int?,
     events: [MistralWorkflowExecutionTraceEvent],
     name: String,

@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsTransferToAgentToolConfigInput: Codable, Sendable {
-  public var systemToolType: String?
+  public var systemToolType: ElevenLabsTransferToAgentSystemToolType?
   public var transfers: [ElevenLabsAgentTransferInput]
 
   public init(
     transfers: [ElevenLabsAgentTransferInput],
-    systemToolType: String? = nil
+    systemToolType: ElevenLabsTransferToAgentSystemToolType? = nil
   ) {
     self.systemToolType = systemToolType
     self.transfers = transfers

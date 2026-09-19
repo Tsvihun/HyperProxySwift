@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct PerplexityResponseFormatJSONSchema: Codable, Sendable {
   public var jsonSchema: PerplexityJSONSchema
-  public var typeModel: String
+  public var kind: PerplexityJsonSchemaKind
 
   public init(
     jsonSchema: PerplexityJSONSchema,
-    typeModel: String
+    kind: PerplexityJsonSchemaKind = .jsonSchema
   ) {
     self.jsonSchema = jsonSchema
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case jsonSchema = "json_schema"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

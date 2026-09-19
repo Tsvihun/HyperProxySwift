@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct ElevenLabsAudioKeyMoment: Codable, Sendable {
   public var description: String
   public var timestampMs: Int
-  public var typeModel: String
+  public var kind: String
 
   public init(
     description: String,
     timestampMs: Int,
-    typeModel: String
+    kind: String
   ) {
     self.description = description
     self.timestampMs = timestampMs
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case description
     case timestampMs = "timestamp_ms"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

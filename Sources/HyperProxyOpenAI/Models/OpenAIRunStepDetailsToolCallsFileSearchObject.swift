@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct OpenAIRunStepDetailsToolCallsFileSearchObject: Codable, Sendable {
   public var fileSearch: OpenAIRunStepDetailsToolCallsFileSearchObjectFileSearch
   public var id: String
-  public var typeModel: OpenAIRunStepDetailsToolCallsFileSearchObjectTypeModel
+  public var kind: OpenAIRunStepDetailsToolCallsFileSearchObjectKind
 
   public init(
     fileSearch: OpenAIRunStepDetailsToolCallsFileSearchObjectFileSearch,
     id: String,
-    typeModel: OpenAIRunStepDetailsToolCallsFileSearchObjectTypeModel
+    kind: OpenAIRunStepDetailsToolCallsFileSearchObjectKind
   ) {
     self.fileSearch = fileSearch
     self.id = id
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case fileSearch = "file_search"
     case id
-    case typeModel = "type"
+    case kind = "type"
   }
 }

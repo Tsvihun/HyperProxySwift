@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct ElevenLabsMCPServerConfigOutput: Codable, Sendable {
   public var approvalPolicy: ElevenLabsMCPApprovalPolicy?
-  public var authConnection: HyperProxyJSONValue?
+  public var authConnection: ElevenLabsMCPServerConfigOutputAuthConnection?
   public var description: String?
   public var disableCompression: Bool?
   public var disableInterruptions: Bool?
@@ -21,22 +21,22 @@ public struct ElevenLabsMCPServerConfigOutput: Codable, Sendable {
   public var interruptionMode: ElevenLabsToolInterruptionMode?
   public var name: String
   public var preToolSpeech: ElevenLabsPreToolSpeechMode?
-  public var requestHeaders: [String: HyperProxyJSONValue]?
-  public var requestMeta: [String: HyperProxyJSONValue]?
+  public var requestHeaders: [String: ElevenLabsMCPServerConfigOutputRequestHeadersValue]?
+  public var requestMeta: [String: ElevenLabsMCPServerConfigOutputRequestMetaValue]?
   public var responseTimeoutSecs: Int?
-  public var secretToken: HyperProxyJSONValue?
+  public var secretToken: ElevenLabsMCPServerConfigOutputSecretToken?
   public var toolApprovalHashes: [ElevenLabsMCPToolApprovalHash]?
   public var toolCallSound: ElevenLabsToolCallSoundType?
   public var toolCallSoundBehavior: ElevenLabsToolCallSoundBehavior?
   public var toolConfigOverrides: [ElevenLabsMCPToolConfigOverrideOutput]?
   public var transport: ElevenLabsMCPServerTransport?
-  public var url: HyperProxyJSONValue
+  public var url: ElevenLabsMCPServerConfigOutputUrl
 
   public init(
     name: String,
-    url: HyperProxyJSONValue,
+    url: ElevenLabsMCPServerConfigOutputUrl,
     approvalPolicy: ElevenLabsMCPApprovalPolicy? = nil,
-    authConnection: HyperProxyJSONValue? = nil,
+    authConnection: ElevenLabsMCPServerConfigOutputAuthConnection? = nil,
     description: String? = nil,
     disableCompression: Bool? = nil,
     disableInterruptions: Bool? = nil,
@@ -44,10 +44,10 @@ public struct ElevenLabsMCPServerConfigOutput: Codable, Sendable {
     forcePreToolSpeech: Bool? = nil,
     interruptionMode: ElevenLabsToolInterruptionMode? = nil,
     preToolSpeech: ElevenLabsPreToolSpeechMode? = nil,
-    requestHeaders: [String: HyperProxyJSONValue]? = nil,
-    requestMeta: [String: HyperProxyJSONValue]? = nil,
+    requestHeaders: [String: ElevenLabsMCPServerConfigOutputRequestHeadersValue]? = nil,
+    requestMeta: [String: ElevenLabsMCPServerConfigOutputRequestMetaValue]? = nil,
     responseTimeoutSecs: Int? = nil,
-    secretToken: HyperProxyJSONValue? = nil,
+    secretToken: ElevenLabsMCPServerConfigOutputSecretToken? = nil,
     toolApprovalHashes: [ElevenLabsMCPToolApprovalHash]? = nil,
     toolCallSound: ElevenLabsToolCallSoundType? = nil,
     toolCallSoundBehavior: ElevenLabsToolCallSoundBehavior? = nil,

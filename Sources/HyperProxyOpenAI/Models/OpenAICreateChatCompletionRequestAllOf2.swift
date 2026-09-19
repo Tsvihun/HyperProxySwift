@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct OpenAICreateChatCompletionRequestAllOf2: Codable, Sendable {
   public var audio: OpenAICreateChatCompletionRequestAllOf2Audio?
   public var frequencyPenalty: Double?
-  public var functionCall: HyperProxyJSONValue?
+  public var functionCall: OpenAICreateChatCompletionRequestAllOf2FunctionCall?
   public var functions: [OpenAIChatCompletionFunctions]?
   public var logitBias: [String: Int]?
   public var logprobs: Bool?
@@ -24,11 +24,11 @@ public struct OpenAICreateChatCompletionRequestAllOf2: Codable, Sendable {
   public var model: OpenAIModelIdsShared
   public var moderation: OpenAIModerationParam?
   public var n: Int?
-  public var parallelToolCalls: OpenAIParallelToolCalls?
+  public var parallelToolCalls: Bool?
   public var prediction: OpenAIPredictionContent?
   public var presencePenalty: Double?
   public var reasoningEffort: OpenAIReasoningEffort?
-  public var responseFormat: HyperProxyJSONValue?
+  public var responseFormat: OpenAICreateChatCompletionRequestAllOf2ResponseFormat?
   public var seed: Int?
   public var serviceTier: OpenAIServiceTier?
   public var stop: OpenAIStopConfiguration?
@@ -36,7 +36,7 @@ public struct OpenAICreateChatCompletionRequestAllOf2: Codable, Sendable {
   public var stream: Bool?
   public var streamOptions: OpenAIChatCompletionStreamOptions?
   public var toolChoice: OpenAIChatCompletionToolChoiceOption?
-  public var tools: [HyperProxyJSONValue]?
+  public var tools: [OpenAICreateChatCompletionRequestAllOf2ToolsItem]?
   public var topLogprobs: Int?
   public var verbosity: OpenAIVerbosity?
   public var webSearchOptions: OpenAICreateChatCompletionRequestAllOf2WebSearchOptions?
@@ -46,7 +46,7 @@ public struct OpenAICreateChatCompletionRequestAllOf2: Codable, Sendable {
     model: OpenAIModelIdsShared,
     audio: OpenAICreateChatCompletionRequestAllOf2Audio? = nil,
     frequencyPenalty: Double? = nil,
-    functionCall: HyperProxyJSONValue? = nil,
+    functionCall: OpenAICreateChatCompletionRequestAllOf2FunctionCall? = nil,
     functions: [OpenAIChatCompletionFunctions]? = nil,
     logitBias: [String: Int]? = nil,
     logprobs: Bool? = nil,
@@ -55,11 +55,11 @@ public struct OpenAICreateChatCompletionRequestAllOf2: Codable, Sendable {
     modalities: OpenAIResponseModalities? = nil,
     moderation: OpenAIModerationParam? = nil,
     n: Int? = nil,
-    parallelToolCalls: OpenAIParallelToolCalls? = nil,
+    parallelToolCalls: Bool? = nil,
     prediction: OpenAIPredictionContent? = nil,
     presencePenalty: Double? = nil,
     reasoningEffort: OpenAIReasoningEffort? = nil,
-    responseFormat: HyperProxyJSONValue? = nil,
+    responseFormat: OpenAICreateChatCompletionRequestAllOf2ResponseFormat? = nil,
     seed: Int? = nil,
     serviceTier: OpenAIServiceTier? = nil,
     stop: OpenAIStopConfiguration? = nil,
@@ -67,7 +67,7 @@ public struct OpenAICreateChatCompletionRequestAllOf2: Codable, Sendable {
     stream: Bool? = nil,
     streamOptions: OpenAIChatCompletionStreamOptions? = nil,
     toolChoice: OpenAIChatCompletionToolChoiceOption? = nil,
-    tools: [HyperProxyJSONValue]? = nil,
+    tools: [OpenAICreateChatCompletionRequestAllOf2ToolsItem]? = nil,
     topLogprobs: Int? = nil,
     verbosity: OpenAIVerbosity? = nil,
     webSearchOptions: OpenAICreateChatCompletionRequestAllOf2WebSearchOptions? = nil

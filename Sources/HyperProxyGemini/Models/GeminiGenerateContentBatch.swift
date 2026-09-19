@@ -11,27 +11,27 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiGenerateContentBatch: Codable, Sendable {
-  public var batchStats: HyperProxyJSONValue?
+  public var batchStats: GeminiBatchStats?
   public var createTime: String?
   public var displayName: String?
   public var endTime: String?
-  public var inputConfig: HyperProxyJSONValue?
+  public var inputConfig: GeminiInputConfig?
   public var model: String?
   public var name: String?
-  public var output: HyperProxyJSONValue?
+  public var output: GeminiGenerateContentBatchOutput?
   public var priority: String?
   public var state: GeminiGenerateContentBatchState?
   public var updateTime: String?
 
   public init(
-    batchStats: HyperProxyJSONValue? = nil,
+    batchStats: GeminiBatchStats? = nil,
     createTime: String? = nil,
     displayName: String? = nil,
     endTime: String? = nil,
-    inputConfig: HyperProxyJSONValue? = nil,
+    inputConfig: GeminiInputConfig? = nil,
     model: String? = nil,
     name: String? = nil,
-    output: HyperProxyJSONValue? = nil,
+    output: GeminiGenerateContentBatchOutput? = nil,
     priority: String? = nil,
     state: GeminiGenerateContentBatchState? = nil,
     updateTime: String? = nil

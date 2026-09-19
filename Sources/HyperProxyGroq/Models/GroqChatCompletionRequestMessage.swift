@@ -10,4 +10,48 @@
 import Foundation
 import HyperProxyCore
 
-public typealias GroqChatCompletionRequestMessage = HyperProxyJSONValue
+public enum GroqChatCompletionRequestMessage: Codable, Sendable {
+  case chatCompletionRequestSystemMessage(GroqChatCompletionRequestSystemMessage)
+  case chatCompletionRequestUserMessage(GroqChatCompletionRequestUserMessage)
+  case chatCompletionRequestAssistantMessage(GroqChatCompletionRequestAssistantMessage)
+  case chatCompletionRequestToolMessage(GroqChatCompletionRequestToolMessage)
+  case chatCompletionRequestFunctionMessage(GroqChatCompletionRequestFunctionMessage)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(GroqChatCompletionRequestSystemMessage.self) {
+      self = .chatCompletionRequestSystemMessage(value)
+      return
+    }
+    if let value = try? container.decode(GroqChatCompletionRequestUserMessage.self) {
+      self = .chatCompletionRequestUserMessage(value)
+      return
+    }
+    if let value = try? container.decode(GroqChatCompletionRequestAssistantMessage.self) {
+      self = .chatCompletionRequestAssistantMessage(value)
+      return
+    }
+    if let value = try? container.decode(GroqChatCompletionRequestToolMessage.self) {
+      self = .chatCompletionRequestToolMessage(value)
+      return
+    }
+    self = .chatCompletionRequestFunctionMessage(
+      try container.decode(GroqChatCompletionRequestFunctionMessage.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .chatCompletionRequestSystemMessage(let value):
+      try container.encode(value)
+    case .chatCompletionRequestUserMessage(let value):
+      try container.encode(value)
+    case .chatCompletionRequestAssistantMessage(let value):
+      try container.encode(value)
+    case .chatCompletionRequestToolMessage(let value):
+      try container.encode(value)
+    case .chatCompletionRequestFunctionMessage(let value):
+      try container.encode(value)
+    }
+  }
+}

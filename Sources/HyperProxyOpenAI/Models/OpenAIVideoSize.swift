@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIVideoSize: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let value720x1280 = Self(rawValue: "720x1280")
-  public static let value1280x720 = Self(rawValue: "1280x720")
-  public static let value1024x1792 = Self(rawValue: "1024x1792")
-  public static let value1792x1024 = Self(rawValue: "1792x1024")
+public enum OpenAIVideoSize: String, Codable, Hashable, Sendable {
+  case value720x1280 = "720x1280"
+  case value1280x720 = "1280x720"
+  case value1024x1792 = "1024x1792"
+  case value1792x1024 = "1792x1024"
 }

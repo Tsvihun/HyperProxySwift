@@ -14,20 +14,20 @@ public struct AnthropicResponseWebSearchResultBlock: Codable, Sendable {
   public var encryptedContent: String
   public var pageAge: String?
   public var title: String
-  public var typeModel: String
+  public var kind: AnthropicWebSearchResultKind
   public var url: String
 
   public init(
     encryptedContent: String,
     pageAge: String?,
     title: String,
-    typeModel: String,
-    url: String
+    url: String,
+    kind: AnthropicWebSearchResultKind = .webSearchResult
   ) {
     self.encryptedContent = encryptedContent
     self.pageAge = pageAge
     self.title = title
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
@@ -35,7 +35,7 @@ public struct AnthropicResponseWebSearchResultBlock: Codable, Sendable {
     case encryptedContent = "encrypted_content"
     case pageAge = "page_age"
     case title
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

@@ -10,4 +10,17 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenRouterDownloadFileContentResponse = String
+public struct OpenRouterDownloadFileContentResponse: RawRepresentable, Codable, Hashable, Sendable {
+  public var rawValue: String
+
+  public init(rawValue: String) {
+    self.rawValue = rawValue
+  }
+
+}
+
+extension OpenRouterDownloadFileContentResponse: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self.init(rawValue: value)
+  }
+}

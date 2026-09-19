@@ -10,20 +10,14 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterWebSearchMode: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let instant = Self(rawValue: "instant")
-  public static let fast = Self(rawValue: "fast")
-  public static let auto = Self(rawValue: "auto")
-  public static let deepLite = Self(rawValue: "deep-lite")
-  public static let deep = Self(rawValue: "deep")
-  public static let deepReasoning = Self(rawValue: "deep-reasoning")
-  public static let turbo = Self(rawValue: "turbo")
-  public static let basic = Self(rawValue: "basic")
-  public static let advanced = Self(rawValue: "advanced")
+public enum OpenRouterWebSearchMode: String, Codable, Hashable, Sendable {
+  case instant = "instant"
+  case fast = "fast"
+  case auto = "auto"
+  case deepLite = "deep-lite"
+  case deep = "deep"
+  case deepReasoning = "deep-reasoning"
+  case turbo = "turbo"
+  case basic = "basic"
+  case advanced = "advanced"
 }

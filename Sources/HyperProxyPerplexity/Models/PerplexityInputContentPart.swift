@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct PerplexityInputContentPart: Codable, Sendable {
   public var imageUrl: String?
   public var text: String?
-  public var typeModel: PerplexityInputContentPartTypeModel
+  public var kind: PerplexityInputContentPartKind
 
   public init(
-    typeModel: PerplexityInputContentPartTypeModel,
+    kind: PerplexityInputContentPartKind,
     imageUrl: String? = nil,
     text: String? = nil
   ) {
     self.imageUrl = imageUrl
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case imageUrl = "image_url"
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

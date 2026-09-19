@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct DeepSeekInputContentPart: Codable, Sendable {
   public var text: String
-  public var typeModel: DeepSeekInputContentPartType
+  public var kind: DeepSeekInputContentPartType
 
   public init(
     text: String,
-    typeModel: DeepSeekInputContentPartType
+    kind: DeepSeekInputContentPartType
   ) {
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case text
-    case typeModel = "type"
+    case kind = "type"
   }
 }

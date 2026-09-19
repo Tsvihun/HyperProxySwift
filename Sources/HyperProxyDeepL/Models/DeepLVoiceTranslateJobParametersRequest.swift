@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepLVoiceTranslateJobParametersRequest: Codable, Sendable {
-  public var sourceLanguage: HyperProxyJSONValue?
+  public var sourceLanguage: String?
 
   public init(
-    sourceLanguage: HyperProxyJSONValue? = nil
+    sourceLanguage: String? = nil
   ) {
     self.sourceLanguage = sourceLanguage
   }

@@ -15,10 +15,10 @@ public struct OpenAIPersistedAgentToolConfigParamWebSearch: Codable, Sendable {
   public var contextSize: OpenAIWebSearchContextSizeParam?
   public var location: OpenAIWebSearchLocationParam?
   public var mode: OpenAIWebSearchModeParam?
-  public var typeModel: OpenAIPersistedAgentToolConfigParamWebSearchTypeModel
+  public var kind: OpenAIPersistedAgentToolConfigParamWebSearchKind
 
   public init(
-    typeModel: OpenAIPersistedAgentToolConfigParamWebSearchTypeModel,
+    kind: OpenAIPersistedAgentToolConfigParamWebSearchKind,
     allowedDomains: [String]? = nil,
     contextSize: OpenAIWebSearchContextSizeParam? = nil,
     location: OpenAIWebSearchLocationParam? = nil,
@@ -28,7 +28,7 @@ public struct OpenAIPersistedAgentToolConfigParamWebSearch: Codable, Sendable {
     self.contextSize = contextSize
     self.location = location
     self.mode = mode
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +36,6 @@ public struct OpenAIPersistedAgentToolConfigParamWebSearch: Codable, Sendable {
     case contextSize = "context_size"
     case location
     case mode
-    case typeModel = "type"
+    case kind = "type"
   }
 }

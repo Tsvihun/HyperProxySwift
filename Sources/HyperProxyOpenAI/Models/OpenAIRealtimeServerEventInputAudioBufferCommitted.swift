@@ -14,24 +14,24 @@ public struct OpenAIRealtimeServerEventInputAudioBufferCommitted: Codable, Senda
   public var eventId: String
   public var itemId: String
   public var previousItemId: String?
-  public var typeModel: OpenAIRealtimeServerEventInputAudioBufferCommittedTypeModel
+  public var kind: OpenAIRealtimeServerEventInputAudioBufferCommittedKind
 
   public init(
     eventId: String,
     itemId: String,
-    typeModel: OpenAIRealtimeServerEventInputAudioBufferCommittedTypeModel,
+    kind: OpenAIRealtimeServerEventInputAudioBufferCommittedKind,
     previousItemId: String? = nil
   ) {
     self.eventId = eventId
     self.itemId = itemId
     self.previousItemId = previousItemId
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case eventId = "event_id"
     case itemId = "item_id"
     case previousItemId = "previous_item_id"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

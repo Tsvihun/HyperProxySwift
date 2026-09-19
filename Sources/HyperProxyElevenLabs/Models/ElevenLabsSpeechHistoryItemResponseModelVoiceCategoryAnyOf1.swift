@@ -10,17 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsSpeechHistoryItemResponseModelVoiceCategoryAnyOf1: RawRepresentable,
-  Codable, Hashable, Sendable
+public enum ElevenLabsSpeechHistoryItemResponseModelVoiceCategoryAnyOf1: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let premade = Self(rawValue: "premade")
-  public static let cloned = Self(rawValue: "cloned")
-  public static let generated = Self(rawValue: "generated")
-  public static let professional = Self(rawValue: "professional")
+  case premade = "premade"
+  case cloned = "cloned"
+  case generated = "generated"
+  case professional = "professional"
 }

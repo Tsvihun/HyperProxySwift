@@ -12,19 +12,19 @@ import HyperProxyCore
 
 public struct OpenRouterImageGenerationProviderPreferences: Codable, Sendable {
   public var allowFallbacks: Bool?
-  public var ignore: [HyperProxyJSONValue]?
-  public var only: [HyperProxyJSONValue]?
-  public var options: HyperProxyJSONValue?
-  public var order: [HyperProxyJSONValue]?
-  public var sort: HyperProxyJSONValue?
+  public var ignore: [OpenRouterImageGenerationProviderPreferencesIgnoreItem]?
+  public var only: [OpenRouterImageGenerationProviderPreferencesOnlyItem]?
+  public var options: OpenRouterProviderOptions?
+  public var order: [OpenRouterImageGenerationProviderPreferencesOrderItem]?
+  public var sort: OpenRouterImageGenerationProviderPreferencesSort?
 
   public init(
     allowFallbacks: Bool? = nil,
-    ignore: [HyperProxyJSONValue]? = nil,
-    only: [HyperProxyJSONValue]? = nil,
-    options: HyperProxyJSONValue? = nil,
-    order: [HyperProxyJSONValue]? = nil,
-    sort: HyperProxyJSONValue? = nil
+    ignore: [OpenRouterImageGenerationProviderPreferencesIgnoreItem]? = nil,
+    only: [OpenRouterImageGenerationProviderPreferencesOnlyItem]? = nil,
+    options: OpenRouterProviderOptions? = nil,
+    order: [OpenRouterImageGenerationProviderPreferencesOrderItem]? = nil,
+    sort: OpenRouterImageGenerationProviderPreferencesSort? = nil
   ) {
     self.allowFallbacks = allowFallbacks
     self.ignore = ignore

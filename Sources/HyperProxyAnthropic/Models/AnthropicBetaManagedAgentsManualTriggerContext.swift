@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsManualTriggerContext: Codable, Sendable {
-  public var typeModel: AnthropicBetaManagedAgentsManualTriggerContextTypeModel
+  public var kind: AnthropicBetaManagedAgentsManualTriggerContextKind
 
   public init(
-    typeModel: AnthropicBetaManagedAgentsManualTriggerContextTypeModel
+    kind: AnthropicBetaManagedAgentsManualTriggerContextKind
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

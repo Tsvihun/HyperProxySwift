@@ -12,22 +12,22 @@ import HyperProxyCore
 
 public struct OpenAIBetaSkillReferenceParam: Codable, Sendable {
   public var skillId: String
-  public var typeModel: OpenAIBetaSkillReferenceParamTypeModel
+  public var kind: OpenAIBetaSkillReferenceParamKind
   public var version: String?
 
   public init(
     skillId: String,
-    typeModel: OpenAIBetaSkillReferenceParamTypeModel,
+    kind: OpenAIBetaSkillReferenceParamKind,
     version: String? = nil
   ) {
     self.skillId = skillId
-    self.typeModel = typeModel
+    self.kind = kind
     self.version = version
   }
 
   enum CodingKeys: String, CodingKey {
     case skillId = "skill_id"
-    case typeModel = "type"
+    case kind = "type"
     case version
   }
 }

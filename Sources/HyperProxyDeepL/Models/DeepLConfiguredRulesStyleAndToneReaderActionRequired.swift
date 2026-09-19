@@ -10,15 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct DeepLConfiguredRulesStyleAndToneReaderActionRequired: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum DeepLConfiguredRulesStyleAndToneReaderActionRequired: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let useYouMustWhenActionIsRequiredFromReader = Self(
-    rawValue: "use_you_must_when_action_is_required_from_reader")
+  case useYouMustWhenActionIsRequiredFromReader = "use_you_must_when_action_is_required_from_reader"
 }

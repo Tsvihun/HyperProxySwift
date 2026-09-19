@@ -14,20 +14,20 @@ public struct AnthropicBetaRequestWebSearchResultLocationCitation: Codable, Send
   public var citedText: String
   public var encryptedIndex: String
   public var title: String?
-  public var typeModel: String
+  public var kind: AnthropicWebSearchResultLocationKind
   public var url: String
 
   public init(
     citedText: String,
     encryptedIndex: String,
     title: String?,
-    typeModel: String,
-    url: String
+    url: String,
+    kind: AnthropicWebSearchResultLocationKind = .webSearchResultLocation
   ) {
     self.citedText = citedText
     self.encryptedIndex = encryptedIndex
     self.title = title
-    self.typeModel = typeModel
+    self.kind = kind
     self.url = url
   }
 
@@ -35,7 +35,7 @@ public struct AnthropicBetaRequestWebSearchResultLocationCitation: Codable, Send
     case citedText = "cited_text"
     case encryptedIndex = "encrypted_index"
     case title
-    case typeModel = "type"
+    case kind = "type"
     case url
   }
 }

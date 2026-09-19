@@ -13,25 +13,25 @@ import HyperProxyCore
 public struct FireworksChatMessageContent: Codable, Sendable {
   public var imageUrl: FireworksChatMessageContentImageURL?
   public var text: String?
-  public var typeModel: String
+  public var kind: String
   public var videoUrl: FireworksChatMessageContentVideoURL?
 
   public init(
-    typeModel: String,
+    kind: String,
     imageUrl: FireworksChatMessageContentImageURL? = nil,
     text: String? = nil,
     videoUrl: FireworksChatMessageContentVideoURL? = nil
   ) {
     self.imageUrl = imageUrl
     self.text = text
-    self.typeModel = typeModel
+    self.kind = kind
     self.videoUrl = videoUrl
   }
 
   enum CodingKeys: String, CodingKey {
     case imageUrl = "image_url"
     case text
-    case typeModel = "type"
+    case kind = "type"
     case videoUrl = "video_url"
   }
 }

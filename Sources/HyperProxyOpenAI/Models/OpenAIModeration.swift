@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIModeration: Codable, Sendable {
-  public var input: HyperProxyJSONValue
-  public var output: HyperProxyJSONValue
+  public var input: OpenAIModerationInput
+  public var output: OpenAIModerationOutput
 
   public init(
-    input: HyperProxyJSONValue,
-    output: HyperProxyJSONValue
+    input: OpenAIModerationInput,
+    output: OpenAIModerationOutput
   ) {
     self.input = input
     self.output = output

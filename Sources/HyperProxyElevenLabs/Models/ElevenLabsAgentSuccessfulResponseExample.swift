@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct ElevenLabsAgentSuccessfulResponseExample: Codable, Sendable {
   public var response: String
-  public var typeModel: String
+  public var kind: ElevenLabsSuccessKind
 
   public init(
     response: String,
-    typeModel: String
+    kind: ElevenLabsSuccessKind = .success
   ) {
     self.response = response
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case response
-    case typeModel = "type"
+    case kind = "type"
   }
 }

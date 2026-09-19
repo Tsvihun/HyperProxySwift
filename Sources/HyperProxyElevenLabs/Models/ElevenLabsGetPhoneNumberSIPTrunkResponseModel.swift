@@ -18,7 +18,7 @@ public struct ElevenLabsGetPhoneNumberSIPTrunkResponseModel: Codable, Sendable {
   public var outboundTrunk: ElevenLabsGetPhoneNumberOutboundSIPTrunkConfigResponseModel?
   public var phoneNumber: String
   public var phoneNumberId: String
-  public var provider: String?
+  public var provider: ElevenLabsSipTrunkProvider?
   public var providerConfig: ElevenLabsGetPhoneNumberOutboundSIPTrunkConfigResponseModel?
   public var storeSipMessages: Bool?
   public var supportsInbound: Bool?
@@ -32,7 +32,7 @@ public struct ElevenLabsGetPhoneNumberSIPTrunkResponseModel: Codable, Sendable {
     assignedAgent: ElevenLabsPhoneNumberAgentInfo? = nil,
     inboundTrunk: ElevenLabsGetPhoneNumberInboundSIPTrunkConfigResponseModel? = nil,
     outboundTrunk: ElevenLabsGetPhoneNumberOutboundSIPTrunkConfigResponseModel? = nil,
-    provider: String? = nil,
+    provider: ElevenLabsSipTrunkProvider? = nil,
     providerConfig: ElevenLabsGetPhoneNumberOutboundSIPTrunkConfigResponseModel? = nil,
     storeSipMessages: Bool? = nil,
     supportsInbound: Bool? = nil,

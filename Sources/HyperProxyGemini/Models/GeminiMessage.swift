@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct GeminiMessage: Codable, Sendable {
   public var author: String?
-  public var citationMetadata: HyperProxyJSONValue?
+  public var citationMetadata: GeminiCitationMetadata?
   public var content: String?
 
   public init(
     author: String? = nil,
-    citationMetadata: HyperProxyJSONValue? = nil,
+    citationMetadata: GeminiCitationMetadata? = nil,
     content: String? = nil
   ) {
     self.author = author

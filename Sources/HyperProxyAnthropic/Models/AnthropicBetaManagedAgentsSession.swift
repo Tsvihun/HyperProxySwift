@@ -21,12 +21,12 @@ public struct AnthropicBetaManagedAgentsSession: Codable, Sendable {
   public var metadata: [String: String]
   public var outcomeEvaluations: [AnthropicBetaManagedAgentsOutcomeEvaluationResource]
   public var resources: [AnthropicBetaManagedAgentsSessionResource]
-  public var stats: HyperProxyJSONValue
+  public var stats: AnthropicBetaManagedAgentsSessionStats
   public var status: AnthropicBetaManagedAgentsSessionStatus
   public var title: String?
-  public var typeModel: AnthropicBetaManagedAgentsSessionTypeModel
+  public var kind: AnthropicBetaManagedAgentsSessionKind
   public var updatedAt: AnthropicBetaTimestamp
-  public var usage: HyperProxyJSONValue
+  public var usage: AnthropicBetaManagedAgentsSessionUsage
   public var vaultIds: [String]
 
   public init(
@@ -39,12 +39,12 @@ public struct AnthropicBetaManagedAgentsSession: Codable, Sendable {
     metadata: [String: String],
     outcomeEvaluations: [AnthropicBetaManagedAgentsOutcomeEvaluationResource],
     resources: [AnthropicBetaManagedAgentsSessionResource],
-    stats: HyperProxyJSONValue,
+    stats: AnthropicBetaManagedAgentsSessionStats,
     status: AnthropicBetaManagedAgentsSessionStatus,
     title: String?,
-    typeModel: AnthropicBetaManagedAgentsSessionTypeModel,
+    kind: AnthropicBetaManagedAgentsSessionKind,
     updatedAt: AnthropicBetaTimestamp,
-    usage: HyperProxyJSONValue,
+    usage: AnthropicBetaManagedAgentsSessionUsage,
     vaultIds: [String],
     deploymentId: String? = nil
   ) {
@@ -61,7 +61,7 @@ public struct AnthropicBetaManagedAgentsSession: Codable, Sendable {
     self.stats = stats
     self.status = status
     self.title = title
-    self.typeModel = typeModel
+    self.kind = kind
     self.updatedAt = updatedAt
     self.usage = usage
     self.vaultIds = vaultIds
@@ -81,7 +81,7 @@ public struct AnthropicBetaManagedAgentsSession: Codable, Sendable {
     case stats
     case status
     case title
-    case typeModel = "type"
+    case kind = "type"
     case updatedAt = "updated_at"
     case usage
     case vaultIds = "vault_ids"

@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepSeekChatResponseFormat: Codable, Sendable {
-  public var typeModel: DeepSeekChatResponseFormatType
+  public var kind: DeepSeekChatResponseFormatType
 
   public init(
-    typeModel: DeepSeekChatResponseFormatType
+    kind: DeepSeekChatResponseFormatType
   ) {
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "type"
+    case kind = "type"
   }
 }

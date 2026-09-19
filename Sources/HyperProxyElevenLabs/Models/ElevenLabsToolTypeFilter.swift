@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct ElevenLabsToolTypeFilter: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let webhook = Self(rawValue: "webhook")
-  public static let client = Self(rawValue: "client")
-  public static let apiIntegrationWebhook = Self(rawValue: "api_integration_webhook")
+public enum ElevenLabsToolTypeFilter: String, Codable, Hashable, Sendable {
+  case webhook = "webhook"
+  case client = "client"
+  case apiIntegrationWebhook = "api_integration_webhook"
 }

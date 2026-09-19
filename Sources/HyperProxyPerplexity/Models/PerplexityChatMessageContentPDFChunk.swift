@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct PerplexityChatMessageContentPDFChunk: Codable, Sendable {
-  public var pdfUrl: HyperProxyJSONValue
-  public var typeModel: String
+  public var pdfUrl: PerplexityChatMessageContentPDFChunkPdfUrl
+  public var kind: PerplexityPdfUrlKind
 
   public init(
-    pdfUrl: HyperProxyJSONValue,
-    typeModel: String
+    pdfUrl: PerplexityChatMessageContentPDFChunkPdfUrl,
+    kind: PerplexityPdfUrlKind = .pdfUrl
   ) {
     self.pdfUrl = pdfUrl
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case pdfUrl = "pdf_url"
-    case typeModel = "type"
+    case kind = "type"
   }
 }

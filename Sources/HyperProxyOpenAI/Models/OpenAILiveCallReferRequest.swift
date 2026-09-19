@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAILiveCallReferRequest: Codable, Sendable {
-  public var targetUri: OpenAITargetUri
+  public var targetUri: String
 
   public init(
-    targetUri: OpenAITargetUri
+    targetUri: String
   ) {
     self.targetUri = targetUri
   }

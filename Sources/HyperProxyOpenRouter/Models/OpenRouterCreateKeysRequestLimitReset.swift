@@ -10,14 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterCreateKeysRequestLimitReset: RawRepresentable, Codable, Hashable, Sendable {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let daily = Self(rawValue: "daily")
-  public static let weekly = Self(rawValue: "weekly")
-  public static let monthly = Self(rawValue: "monthly")
+public enum OpenRouterCreateKeysRequestLimitReset: String, Codable, Hashable, Sendable {
+  case daily = "daily"
+  case weekly = "weekly"
+  case monthly = "monthly"
 }

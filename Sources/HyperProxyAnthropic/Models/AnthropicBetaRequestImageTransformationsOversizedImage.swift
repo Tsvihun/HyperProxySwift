@@ -10,15 +10,9 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicBetaRequestImageTransformationsOversizedImage: RawRepresentable, Codable,
-  Hashable, Sendable
+public enum AnthropicBetaRequestImageTransformationsOversizedImage: String, Codable, Hashable,
+  Sendable
 {
-  public var rawValue: String
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public static let downsize = Self(rawValue: "downsize")
-  public static let error = Self(rawValue: "error")
+  case downsize = "downsize"
+  case error = "error"
 }

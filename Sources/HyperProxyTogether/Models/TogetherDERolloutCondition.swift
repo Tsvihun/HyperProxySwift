@@ -16,7 +16,7 @@ public struct TogetherDERolloutCondition: Codable, Sendable {
   public var message: String?
   public var metrics: [TogetherDEMetricResult]?
   public var observedAt: String?
-  public var typeModel: TogetherDERolloutConditionTypeModel?
+  public var kind: TogetherDERolloutConditionKind?
 
   public init(
     atStep: Int? = nil,
@@ -24,14 +24,14 @@ public struct TogetherDERolloutCondition: Codable, Sendable {
     message: String? = nil,
     metrics: [TogetherDEMetricResult]? = nil,
     observedAt: String? = nil,
-    typeModel: TogetherDERolloutConditionTypeModel? = nil
+    kind: TogetherDERolloutConditionKind? = nil
   ) {
     self.atStep = atStep
     self.category = category
     self.message = message
     self.metrics = metrics
     self.observedAt = observedAt
-    self.typeModel = typeModel
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -40,6 +40,6 @@ public struct TogetherDERolloutCondition: Codable, Sendable {
     case message
     case metrics
     case observedAt
-    case typeModel = "type"
+    case kind = "type"
   }
 }
