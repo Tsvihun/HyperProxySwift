@@ -9,9 +9,9 @@ transport in a trusted environment.
 · [Usage guide](Documentation/UsageGuide.md) · [Examples](Examples/QuickStart)
 · [Issues](https://github.com/Tsvihun/HyperProxySwift/issues)
 
-> **Release status:** `0.4.0` is prepared on `main` but is not tagged yet. Source-rights
-> review and app-archive privacy checks remain release gates; this branch is not a
-> production-readiness certification. See [release checks](Compliance/README.md).
+> **Release status:** `0.4.0` is the current release. Source-rights review remains open,
+> and integrators must still perform app-archive privacy checks. See
+> [release checks](Compliance/README.md).
 
 ## What you can build
 
@@ -41,13 +41,12 @@ In Xcode, choose **File → Add Package Dependencies** and enter:
 https://github.com/Tsvihun/HyperProxySwift.git
 ```
 
-To evaluate the `0.4.0` release candidate before it is tagged, select `main`. In a
-`Package.swift` manifest:
+In a `Package.swift` manifest, select the `0.4.x` release line:
 
 ```swift
 .package(
   url: "https://github.com/Tsvihun/HyperProxySwift.git",
-  branch: "main"
+  .upToNextMinor(from: "0.4.0")
 )
 ```
 
@@ -58,10 +57,8 @@ Add the product your target needs:
 ```
 
 Choose a provider product for a focused dependency, `HyperProxyCore` for raw transport,
-or `HyperProxy` to import all providers. Until `0.4.0` is tagged, the latest published
-version remains [0.3.0](https://github.com/Tsvihun/HyperProxySwift/tree/0.3.0).
-[CocoaPods instructions](CocoaPods/README.md) are also available; published pods do not yet
-include the `0.4.0` candidate.
+or `HyperProxy` to import all providers. [CocoaPods instructions](CocoaPods/README.md)
+are also available.
 
 ## Quick start: OpenAI in Swift
 

@@ -35,9 +35,9 @@ direct-to-provider mode. Background URLSessions are rejected because they do
 not honor the redirect delegate. Default/ephemeral sessions and session-level
 certificate pinning remain supported.
 
-The `0.4.0` release candidate is prepared on `main` but is not tagged yet. See
-[release provenance and privacy checks](../Compliance/README.md) for remaining rights-review
-and app archive requirements before the release.
+`0.4.0` is the current release. See
+[release provenance and privacy checks](../Compliance/README.md) for the open rights review
+and the app archive requirements that remain the integrator's responsibility.
 
 ### Platforms
 
@@ -60,7 +60,7 @@ From another package:
 ```swift
 .package(
   url: "https://github.com/Tsvihun/HyperProxySwift.git",
-  branch: "main"
+  .upToNextMinor(from: "0.4.0")
 )
 ```
 

@@ -10,7 +10,7 @@ HyperProxy gateway. It prints the response and selected request metadata.
 - Copy the gateway URL and app key from that service's dashboard.
 - Choose a model or preset available to your provider account. The example defaults to `gpt-5`.
 
-The example targets the `0.4.0` release candidate on `main`. Read the
+The example targets the `0.4.0` release. Read the
 [SDK release status](../../README.md) before adopting it in an application.
 
 ## Build without sending a request
