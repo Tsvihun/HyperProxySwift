@@ -11,7 +11,8 @@ import Foundation
 @_exported import HyperProxyCore
 @_exported import HyperProxyProviders
 
-public enum BraveOperation: String, HyperProxyProviderOperation {
+public enum BraveOperation: String, HyperProxyCatalogOperation {
+  public static var providerDefinition: HyperProxyProviderDefinition { HyperProxyProviders.brave }
   /// `POST res/v1/chat/completions`
   case answersCreate = "answers.create"
   /// `GET res/v1/images/search`

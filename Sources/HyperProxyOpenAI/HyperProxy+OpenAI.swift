@@ -13,7 +13,7 @@ import Foundation
 
 extension HyperProxy {
   public static func openAI(client: HyperProxyClient) -> OpenAIService {
-    OpenAIService(client: client, definition: HyperProxyProviders.openAI)
+    OpenAIService(client: client)
   }
 
   public static func openAI(

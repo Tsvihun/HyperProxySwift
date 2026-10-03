@@ -12,9 +12,16 @@ import Foundation
 /// the last reference also closes it, with `.goingAway`. An active `messages()`
 /// stream keeps the socket alive until that stream ends.
 public final class HyperProxyWebSocket: @unchecked Sendable {
+  private typealias MessageStream = AsyncThrowingStream<URLSessionWebSocketTask.Message, Error>
   private let task: URLSessionWebSocketTask
   private let lock = NSLock()
-  private var isStreamingMessages = false
+  private var messageSubscriber:
+    (
+      identifier: UUID,
+      continuation: AsyncThrowingStream<URLSessionWebSocketTask.Message, Error>.Continuation
+    )?
+  private var isReceivingMessage = false
+  private var pendingMessage: URLSessionWebSocketTask.Message?
 
   init(task: URLSessionWebSocketTask) {
     self.task = task
@@ -50,12 +57,17 @@ public final class HyperProxyWebSocket: @unchecked Sendable {
     try await self.send(data: encoder.encode(value))
   }
 
+  /// Receives one message through the same reader used by `messages()`.
+  /// Concurrent consumers are rejected rather than racing for provider events.
   public func receive() async throws -> URLSessionWebSocketTask.Message {
-    do {
-      return try await self.task.receive()
-    } catch {
-      throw Self.translate(error, task: self.task)
+    let identifier = UUID()
+    var iterator = self.messageStream(identifier: identifier).makeAsyncIterator()
+    defer { self.finishMessageStream(identifier: identifier) }
+    guard let message = try await iterator.next() else {
+      try Task.checkCancellation()
+      throw HyperProxyError.invalidResponse
     }
+    return message
   }
 
   /// The close code the socket ended with, `.invalid` while it is open.
@@ -113,51 +125,97 @@ public final class HyperProxyWebSocket: @unchecked Sendable {
   /// two loops silently racing on the underlying task. The stream slot frees
   /// up when the active stream finishes or its iteration is cancelled.
   public func messages() -> AsyncThrowingStream<URLSessionWebSocketTask.Message, Error> {
-    let claimed = self.lock.withLock {
-      if self.isStreamingMessages {
-        return false
-      }
-      self.isStreamingMessages = true
-      return true
-    }
-    guard claimed else {
-      return AsyncThrowingStream { continuation in
-        continuation.finish(
-          throwing: HyperProxyWebSocketError.messagesAlreadyStreaming
-        )
-      }
-    }
-    let task = self.task
+    self.messageStream(identifier: UUID())
+  }
+
+  private func messageStream(identifier: UUID) -> AsyncThrowingStream<
+    URLSessionWebSocketTask.Message, Error
+  > {
     return AsyncThrowingStream { continuation in
-      // The receiver must not own the wrapper: `URLSessionWebSocketTask.receive`
-      // ignores task cancellation, so a receiver parked on an idle socket
-      // would keep the wrapper — and the socket — alive after its consumer
-      // stopped iterating.
-      let receiver = Task { [weak self] in
-        defer {
-          if let self {
-            self.lock.withLock { self.isStreamingMessages = false }
-          }
-        }
-        do {
-          while !Task.isCancelled {
-            continuation.yield(try await task.receive())
-          }
-          continuation.finish()
-        } catch {
-          if Task.isCancelled {
-            continuation.finish()
-          } else {
-            continuation.finish(throwing: Self.translate(error, task: task))
+      let claimed = self.lock.withLock {
+        guard self.messageSubscriber == nil else { return false }
+        self.messageSubscriber = (identifier, continuation)
+        return true
+      }
+      guard claimed else {
+        continuation.finish(throwing: HyperProxyWebSocketError.messagesAlreadyStreaming)
+        return
+      }
+      continuation.onTermination = { [self] _ in
+        self.lock.withLock {
+          if self.messageSubscriber?.identifier == identifier {
+            self.messageSubscriber = nil
           }
         }
       }
-      // The stream keeps the wrapper alive while it is consumed. When iteration
-      // ends or is cancelled the wrapper can go; its deinit closes the socket,
-      // which also wakes the parked receiver.
-      continuation.onTermination = { [self] _ in
-        receiver.cancel()
-        withExtendedLifetime(self) {}
+      // URLSession's receive cannot be cancelled independently of the socket.
+      // One shared pending receive transfers to a new subscriber after cancellation.
+      self.receiveNextMessage()
+    }
+  }
+
+  private func finishMessageStream(identifier: UUID) {
+    let continuation: MessageStream.Continuation? = self.lock.withLock {
+      guard self.messageSubscriber?.identifier == identifier else { return nil }
+      defer { self.messageSubscriber = nil }
+      return self.messageSubscriber?.continuation
+    }
+    continuation?.finish()
+  }
+
+  private func receiveNextMessage() {
+    let action = self.lock.withLock {
+      () -> (start: Bool, pending: URLSessionWebSocketTask.Message?) in
+      guard self.messageSubscriber != nil, !self.isReceivingMessage else { return (false, nil) }
+      self.isReceivingMessage = true
+      let pending = self.pendingMessage
+      self.pendingMessage = nil
+      return (true, pending)
+    }
+    guard action.start else { return }
+    if let pending = action.pending {
+      self.deliverMessage(.success(pending))
+    } else {
+      self.task.receive { [weak self] result in
+        self?.deliverMessage(result)
+      }
+    }
+  }
+
+  private func deliverMessage(_ result: Result<URLSessionWebSocketTask.Message, any Error>) {
+    switch result {
+    case .failure(let error):
+      let subscriber = self.lock.withLock {
+        self.isReceivingMessage = false
+        let subscriber = self.messageSubscriber
+        self.messageSubscriber = nil
+        return subscriber
+      }
+      subscriber?.continuation.finish(throwing: Self.translate(error, task: self.task))
+    case .success(let message):
+      // Yield outside the lock: finishing/cancelling a continuation may invoke
+      // onTermination synchronously. A terminated subscriber returns its message.
+      while true {
+        let subscriber = self.lock.withLock { self.messageSubscriber }
+        guard let subscriber else {
+          self.lock.withLock {
+            self.pendingMessage = message
+            self.isReceivingMessage = false
+          }
+          self.receiveNextMessage()
+          return
+        }
+        if case .terminated = subscriber.continuation.yield(message) {
+          self.lock.withLock {
+            if self.messageSubscriber?.identifier == subscriber.identifier {
+              self.messageSubscriber = nil
+            }
+          }
+          continue
+        }
+        self.lock.withLock { self.isReceivingMessage = false }
+        self.receiveNextMessage()
+        return
       }
     }
   }

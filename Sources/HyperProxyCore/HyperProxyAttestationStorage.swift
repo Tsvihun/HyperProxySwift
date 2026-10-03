@@ -8,8 +8,9 @@
 
 import CryptoKit
 import Foundation
+
 #if canImport(DeviceCheck) && (os(iOS) || os(macOS) || os(visionOS))
-import DeviceCheck
+  import DeviceCheck
 #endif
 
 public protocol HyperProxyAttestationStorage: Sendable {

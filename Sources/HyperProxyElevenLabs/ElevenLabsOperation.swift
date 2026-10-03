@@ -11,7 +11,10 @@ import Foundation
 @_exported import HyperProxyCore
 @_exported import HyperProxyProviders
 
-public enum ElevenLabsOperation: String, HyperProxyProviderOperation {
+public enum ElevenLabsOperation: String, HyperProxyCatalogOperation {
+  public static var providerDefinition: HyperProxyProviderDefinition {
+    HyperProxyProviders.elevenLabs
+  }
   /// `POST v1/service-accounts`
   case createServiceAccount = "create.service.account"
   /// `GET v1/service-accounts/{service_account_user_id}/api-keys`

@@ -34,6 +34,9 @@ public enum OpenAICreateFineTuningJobRequestHyperparametersBatchSize: Codable, S
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var auto: Self { .createFineTuningJobRequestHyperparametersBatchSizeOneOf1(.auto) }
 }
 
 extension OpenAICreateFineTuningJobRequestHyperparametersBatchSize: ExpressibleByIntegerLiteral {

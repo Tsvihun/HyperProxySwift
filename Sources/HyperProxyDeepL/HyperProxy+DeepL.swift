@@ -13,7 +13,7 @@ import Foundation
 
 extension HyperProxy {
   public static func deepL(client: HyperProxyClient) -> DeepLService {
-    DeepLService(client: client, definition: HyperProxyProviders.deepL)
+    DeepLService(client: client)
   }
 
   public static func deepL(

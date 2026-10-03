@@ -35,4 +35,22 @@ public enum ElevenLabsMCPToolConfigOverrideCreateRequestModelToolCallSound: Coda
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var typing: Self { .toolCallSoundType(.typing) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var elevator1: Self { .toolCallSoundType(.elevator1) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var elevator2: Self { .toolCallSoundType(.elevator2) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var elevator3: Self { .toolCallSoundType(.elevator3) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var elevator4: Self { .toolCallSoundType(.elevator4) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var off: Self { .mCPToolConfigOverrideCreateRequestModelToolCallSoundAnyOf2(.off) }
 }

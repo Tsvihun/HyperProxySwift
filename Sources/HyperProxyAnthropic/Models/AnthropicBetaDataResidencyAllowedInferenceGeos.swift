@@ -34,6 +34,11 @@ public enum AnthropicBetaDataResidencyAllowedInferenceGeos: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var unrestricted: Self {
+    .betaDataResidencyAllowedInferenceGeosAnyOf2(.unrestricted)
+  }
 }
 
 extension AnthropicBetaDataResidencyAllowedInferenceGeos: ExpressibleByArrayLiteral {

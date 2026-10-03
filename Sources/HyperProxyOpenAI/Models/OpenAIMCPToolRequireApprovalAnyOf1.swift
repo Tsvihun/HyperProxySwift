@@ -33,4 +33,10 @@ public enum OpenAIMCPToolRequireApprovalAnyOf1: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var always: Self { .mCPToolRequireApprovalAnyOf1OneOf2(.always) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var never: Self { .mCPToolRequireApprovalAnyOf1OneOf2(.never) }
 }

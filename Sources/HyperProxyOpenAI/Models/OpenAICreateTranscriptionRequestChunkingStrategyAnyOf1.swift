@@ -35,4 +35,7 @@ public enum OpenAICreateTranscriptionRequestChunkingStrategyAnyOf1: Codable, Sen
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var auto: Self { .createTranscriptionRequestChunkingStrategyAnyOf1AnyOf1(.auto) }
 }

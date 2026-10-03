@@ -13,7 +13,7 @@ import Foundation
 
 extension HyperProxy {
   public static func bfl(client: HyperProxyClient) -> BFLService {
-    BFLService(client: client, definition: HyperProxyProviders.bfl)
+    BFLService(client: client)
   }
 
   public static func bfl(

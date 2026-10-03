@@ -36,4 +36,10 @@ public enum FalGetModelsResponseModelsItemEnterpriseStatus: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var ready: Self { .getModelsResponseModelsItemEnterpriseStatusAnyOf1(.ready) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var pending: Self { .getModelsResponseModelsItemEnterpriseStatusAnyOf1(.pending) }
 }

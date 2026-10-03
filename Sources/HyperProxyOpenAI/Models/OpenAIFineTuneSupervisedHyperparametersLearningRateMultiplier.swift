@@ -35,4 +35,9 @@ public enum OpenAIFineTuneSupervisedHyperparametersLearningRateMultiplier: Codab
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var auto: Self {
+    .fineTuneSupervisedHyperparametersLearningRateMultiplierOneOf1(.auto)
+  }
 }

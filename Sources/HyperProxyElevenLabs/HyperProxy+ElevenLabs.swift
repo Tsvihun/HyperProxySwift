@@ -13,7 +13,7 @@ import Foundation
 
 extension HyperProxy {
   public static func elevenLabs(client: HyperProxyClient) -> ElevenLabsService {
-    ElevenLabsService(client: client, definition: HyperProxyProviders.elevenLabs)
+    ElevenLabsService(client: client)
   }
 
   public static func elevenLabs(

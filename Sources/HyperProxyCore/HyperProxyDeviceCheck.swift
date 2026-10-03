@@ -7,8 +7,9 @@
 //
 
 import Foundation
+
 #if canImport(DeviceCheck) && (os(iOS) || os(macOS) || os(visionOS))
-import DeviceCheck
+  import DeviceCheck
 #endif
 
 /// Generates a fresh Apple DeviceCheck token for every protected request.

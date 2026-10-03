@@ -11,7 +11,8 @@ import Foundation
 @_exported import HyperProxyCore
 @_exported import HyperProxyProviders
 
-public enum MistralOperation: String, HyperProxyProviderOperation {
+public enum MistralOperation: String, HyperProxyCatalogOperation {
+  public static var providerDefinition: HyperProxyProviderDefinition { HyperProxyProviders.mistral }
   /// `GET v1/admin/analytics/vibe/code/usage/by_organization`
   case getOrganizationStatsV1AdminAnalyticsVibeCodeUsageByOrganization =
     "get.organization.stats.v1.admin.analytics.vibe.code.usage.by.organization"

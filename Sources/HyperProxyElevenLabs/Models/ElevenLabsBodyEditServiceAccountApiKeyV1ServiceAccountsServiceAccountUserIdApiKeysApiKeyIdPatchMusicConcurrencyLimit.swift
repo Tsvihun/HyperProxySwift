@@ -43,6 +43,18 @@ public enum
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var clear: Self {
+    .bodyEditServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysApiKeyIdPatchMusicConcurrencyLimitAnyOf2(
+      .clear)
+  }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var noUpdate: Self {
+    .bodyEditServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysApiKeyIdPatchMusicConcurrencyLimitAnyOf2(
+      .noUpdate)
+  }
 }
 
 extension

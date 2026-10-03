@@ -7,8 +7,9 @@
 //
 
 import Foundation
+
 #if canImport(Network)
-import Network
+  import Network
 #endif
 
 enum HyperProxyDNSPrivacy {

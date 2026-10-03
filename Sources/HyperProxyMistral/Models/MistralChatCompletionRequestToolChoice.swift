@@ -32,4 +32,16 @@ public enum MistralChatCompletionRequestToolChoice: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var auto: Self { .toolChoiceEnum(.auto) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var none: Self { .toolChoiceEnum(.none) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var anyModel: Self { .toolChoiceEnum(.anyModel) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var requiredValue: Self { .toolChoiceEnum(.requiredValue) }
 }

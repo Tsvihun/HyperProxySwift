@@ -13,7 +13,7 @@ import Foundation
 
 extension HyperProxy {
   public static func openRouter(client: HyperProxyClient) -> OpenRouterService {
-    OpenRouterService(client: client, definition: HyperProxyProviders.openRouter)
+    OpenRouterService(client: client)
   }
 
   public static func openRouter(

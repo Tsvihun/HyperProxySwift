@@ -10,37 +10,52 @@ import Foundation
 
 actor HyperProxyRequestGate {
   private var isLocked = false
-  private var waiters: [CheckedContinuation<Void, Never>] = []
+  private var order: [UUID] = []
+  private var waiters: [UUID: CheckedContinuation<Void, any Error>] = [:]
 
   func perform<Value: Sendable>(
     _ operation: @escaping @Sendable () async throws -> Value
   ) async throws -> Value {
-    await self.acquire()
-    do {
-      let value = try await operation()
-      self.release()
-      return value
-    } catch {
-      self.release()
-      throw error
-    }
+    try await self.acquire()
+    defer { self.release() }
+    try Task.checkCancellation()
+    return try await operation()
   }
 
-  private func acquire() async {
+  private func acquire() async throws {
+    try Task.checkCancellation()
     if !self.isLocked {
       self.isLocked = true
       return
     }
-    await withCheckedContinuation { continuation in
-      self.waiters.append(continuation)
+    let identifier = UUID()
+    try await withTaskCancellationHandler {
+      try await withCheckedThrowingContinuation {
+        (continuation: CheckedContinuation<Void, any Error>) in
+        if Task.isCancelled {
+          continuation.resume(throwing: CancellationError())
+        } else {
+          self.order.append(identifier)
+          self.waiters[identifier] = continuation
+        }
+      }
+    } onCancel: {
+      Task { await self.cancelWaiter(identifier) }
     }
   }
 
+  private func cancelWaiter(_ identifier: UUID) {
+    guard let continuation = self.waiters.removeValue(forKey: identifier) else { return }
+    self.order.removeAll { $0 == identifier }
+    continuation.resume(throwing: CancellationError())
+  }
+
   private func release() {
-    guard !self.waiters.isEmpty else {
+    guard !self.order.isEmpty else {
       self.isLocked = false
       return
     }
-    self.waiters.removeFirst().resume()
+    let identifier = self.order.removeFirst()
+    self.waiters.removeValue(forKey: identifier)?.resume()
   }
 }

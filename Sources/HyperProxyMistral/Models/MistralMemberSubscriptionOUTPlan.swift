@@ -39,4 +39,22 @@ public enum MistralMemberSubscriptionOUTPlan: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var fREE: Self { .aPIPlan(.fREE) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var pAYASYOUGO: Self { .aPIPlan(.pAYASYOUGO) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var iNDIVIDUAL: Self { .chatPlan(.iNDIVIDUAL) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var eDU: Self { .chatPlan(.eDU) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var tEAM: Self { .chatPlan(.tEAM) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var eNTERPRISE: Self { .codePlan(.eNTERPRISE) }
 }

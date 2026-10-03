@@ -12,6 +12,9 @@ transport in a trusted environment.
 > **Release status:** `0.4.1` is the current release. Source provenance is recorded with
 > explicit maintainer decisions, and integrators must still perform app-archive privacy checks. See
 > [release checks](Compliance/README.md).
+>
+> **This branch is unreleased.** The shorter request names, message factories and
+> validated manual service initializer shown here are on `main`; they are not in `0.4.1`.
 
 ## What you can build
 
@@ -50,6 +53,15 @@ In a `Package.swift` manifest, select the `0.4.x` release line:
 )
 ```
 
+To build the examples on this branch before the next release, select `main` instead:
+
+```swift
+.package(
+  url: "https://github.com/Tsvihun/HyperProxySwift.git",
+  branch: "main"
+)
+```
+
 Add the product your target needs:
 
 ```swift
@@ -77,7 +89,7 @@ let openAI = HyperProxy.openAI(
 )
 
 let response: OpenAIResponse = try await openAI.responsesCreate(
-  OpenAICreateResponse(input: "Say hello in one sentence.", model: .modelIdsShared(.gpt5))
+  OpenAIResponseRequest(input: "Say hello in one sentence.", model: .gpt5)
 )
 ```
 <!-- /readme-check: quick-start -->
@@ -91,15 +103,8 @@ a HyperProxy plan does not include OpenAI or other provider credits.
 <!-- readme-check: streaming -->
 ```swift
 for try await chunk in try openAI.chatCompletionsCreateStream(
-  OpenAICreateChatCompletionRequest(
-    messages: [
-      .chatCompletionRequestUserMessage(
-        OpenAIChatCompletionRequestUserMessage(
-          content: "Write one sentence about Swift.",
-          role: .user
-        )
-      )
-    ],
+  OpenAIChatRequest(
+    messages: [.user("Write one sentence about Swift.")],
     model: .gpt5
   )
 ) {

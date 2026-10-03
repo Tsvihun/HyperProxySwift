@@ -13,7 +13,7 @@ import Foundation
 
 extension HyperProxy {
   public static func eachAI(client: HyperProxyClient) -> EachAIService {
-    EachAIService(client: client, definition: HyperProxyProviders.eachAI)
+    EachAIService(client: client)
   }
 
   public static func eachAI(

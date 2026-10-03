@@ -34,6 +34,9 @@ public enum OpenAIFineTuneReinforcementHyperparametersEvalInterval: Codable, Sen
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var auto: Self { .fineTuneReinforcementHyperparametersEvalIntervalOneOf1(.auto) }
 }
 
 extension OpenAIFineTuneReinforcementHyperparametersEvalInterval: ExpressibleByIntegerLiteral {

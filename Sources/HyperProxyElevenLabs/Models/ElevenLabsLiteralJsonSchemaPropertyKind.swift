@@ -33,6 +33,18 @@ public enum ElevenLabsLiteralJsonSchemaPropertyKind: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var boolean: Self { .literalJsonSchemaPropertyKindAnyOf1(.boolean) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var string: Self { .literalJsonSchemaPropertyKindAnyOf1(.string) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var integer: Self { .literalJsonSchemaPropertyKindAnyOf1(.integer) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var number: Self { .literalJsonSchemaPropertyKindAnyOf1(.number) }
 }
 
 extension ElevenLabsLiteralJsonSchemaPropertyKind: ExpressibleByArrayLiteral {

@@ -13,7 +13,7 @@ import Foundation
 
 extension HyperProxy {
   public static func mistral(client: HyperProxyClient) -> MistralService {
-    MistralService(client: client, definition: HyperProxyProviders.mistral)
+    MistralService(client: client)
   }
 
   public static func mistral(

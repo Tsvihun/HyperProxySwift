@@ -12,6 +12,7 @@ import HyperProxyCore
 public enum HyperProxyProviderCallError: Error, Sendable, Equatable {
   case invalidPollingPolicy
   case paginationCursorRepeated(String)
+  case concurrentPaginationIteration
   case pollingAttemptLimitReached(Int)
   case pollingTimedOut(TimeInterval)
 }

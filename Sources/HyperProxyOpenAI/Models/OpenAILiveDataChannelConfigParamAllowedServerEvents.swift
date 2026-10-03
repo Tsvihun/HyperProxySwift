@@ -34,6 +34,9 @@ public enum OpenAILiveDataChannelConfigParamAllowedServerEvents: Codable, Sendab
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var all: Self { .liveDataChannelConfigParamAllowedServerEventsOneOf1(.all) }
 }
 
 extension OpenAILiveDataChannelConfigParamAllowedServerEvents: ExpressibleByArrayLiteral {

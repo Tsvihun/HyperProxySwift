@@ -72,6 +72,11 @@ Every provider is a separate SwiftPM target and product. For example,
 `HyperProxyOpenAI` exports `OpenAIOperation`, `OpenAIService`, and
 `HyperProxy.openAI(...)`.
 
+The operation enum conforms to `HyperProxyCatalogOperation` and owns its provider definition.
+Generated services use `init(client:)`, so their operation type fixes the catalog.
+Manual `init(client:definition:)` is now throwing: add `try` when constructing a custom service.
+It validates provider identity and complete operation coverage before accepting the catalog.
+
 The operation enum is generated from the same reviewed release snapshot as the provider metadata.
 A provider route therefore cannot silently exist in the snapshot without a corresponding
 compile-time operation.
@@ -80,7 +85,9 @@ Every operation also generates a discoverable call property; for example,
 `openAI.responsesCreate` and `anthropic.messagesCreate`. `service.call(operation)` is the equivalent
 dynamic spelling. Both return the same fluent, immutable call type, which handles provider-native
 path/query/header values, every catalog body mode, response metadata, SSE, JSONL, binary streams,
-WebSockets, cursor pagination, and asynchronous job polling. This is a shared capability rather
+WebSockets, cursor pagination, and asynchronous job polling. Pagination is pull-based: constructing the
+sequence sends nothing, and each `next()` fetches one page. Polling enforces a monotonic deadline
+before and during requests. This is a shared capability rather
 than 2,292 hand-written implementations, so a transport fix applies to every provider consistently.
 
 Where a provider publishes OpenAPI, AsyncAPI, or Google Discovery, its module also contains
@@ -104,6 +111,14 @@ provider product they need.
 SwiftPM and CocoaPods preserve these module boundaries. CocoaPods publishes Core, the catalog,
 realtime audio, and each provider as component pods; the `HyperProxy` pod is only an aggregate.
 That prevents one provider from silently pulling the generated source for every other provider.
+
+## Code style and convenient names
+
+The checked-in `.swift-format` configuration governs handwritten Swift. Run
+`python3 Scripts/check_swift_style.py`; CI runs the same check. Provider generators
+format their output and preserve published schema-derived names. Short request aliases,
+flat enum-union values (for example `.gpt5`), and `.user("Hello")` message factories
+keep common calls readable without changing their JSON representation.
 
 ## Forward compatibility
 

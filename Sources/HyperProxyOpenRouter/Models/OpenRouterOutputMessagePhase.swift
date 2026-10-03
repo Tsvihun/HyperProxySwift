@@ -32,4 +32,10 @@ public enum OpenRouterOutputMessagePhase: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var commentary: Self { .outputMessagePhaseAnyOf1(.commentary) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var finalAnswer: Self { .outputMessagePhaseAnyOf2(.finalAnswer) }
 }

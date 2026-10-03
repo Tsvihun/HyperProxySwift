@@ -11,7 +11,8 @@ import Foundation
 @_exported import HyperProxyCore
 @_exported import HyperProxyProviders
 
-public enum GroqOperation: String, HyperProxyProviderOperation {
+public enum GroqOperation: String, HyperProxyCatalogOperation {
+  public static var providerDefinition: HyperProxyProviderDefinition { HyperProxyProviders.groq }
   /// `GET v1/fine_tunings`
   case fineTuningsList = "fineTunings.list"
   /// `POST v1/fine_tunings`

@@ -8,6 +8,7 @@
 
 import Foundation
 import Testing
+
 @testable import HyperProxyCore
 
 @Suite("HyperProxy DeviceCheck")

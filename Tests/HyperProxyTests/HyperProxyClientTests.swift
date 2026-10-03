@@ -8,6 +8,7 @@
 
 import Foundation
 import Testing
+
 @testable import HyperProxyCore
 
 @Suite("HyperProxy client")
@@ -339,7 +340,23 @@ struct HyperProxyClientTests {
 
     #expect(body.contentType == "application/x-www-form-urlencoded; charset=utf-8")
     #expect(String(decoding: body.data, as: UTF8.self).contains("grant_type=client_credentials"))
-    #expect(String(decoding: body.data, as: UTF8.self).contains("scope=speech%20write"))
+    #expect(String(decoding: body.data, as: UTF8.self).contains("scope=speech+write"))
+  }
+
+  @Test("Form encoding round-trips plus, spaces, delimiters, Unicode and empty values")
+  func formEncodingRoundTrip() throws {
+    let values = ["C++ a+b", "a&b=c%?", "Привіт 😀", "", "a\nb"]
+    let items = values.enumerated().map {
+      URLQueryItem(name: "field+\($0.offset)", value: $0.element)
+    }
+    let wire = String(decoding: HyperProxyBody.formURLEncoded(items).data, as: UTF8.self)
+    let pairs = wire.split(separator: "&", omittingEmptySubsequences: false).map {
+      $0.split(separator: "=", maxSplits: 1, omittingEmptySubsequences: false).map {
+        String($0).replacingOccurrences(of: "+", with: " ").removingPercentEncoding
+      }
+    }
+    #expect(pairs.map { $0[0] } == items.map(\.name))
+    #expect(pairs.map { $0[1] } == values)
   }
 
   @Test("Validates certificate SHA-256 pins")

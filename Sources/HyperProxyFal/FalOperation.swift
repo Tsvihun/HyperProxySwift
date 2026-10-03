@@ -11,7 +11,8 @@ import Foundation
 @_exported import HyperProxyCore
 @_exported import HyperProxyProviders
 
-public enum FalOperation: String, HyperProxyProviderOperation {
+public enum FalOperation: String, HyperProxyCatalogOperation {
+  public static var providerDefinition: HyperProxyProviderDefinition { HyperProxyProviders.fal }
   /// `GET v1/account/billing`
   case getAccountBilling = "getAccountBilling"
   /// `GET v1/models/billing-events`

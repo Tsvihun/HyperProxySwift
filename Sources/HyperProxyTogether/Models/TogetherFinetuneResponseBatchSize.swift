@@ -33,6 +33,9 @@ public enum TogetherFinetuneResponseBatchSize: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var max: Self { .finetuneResponseBatchSizeOneOf2(.max) }
 }
 
 extension TogetherFinetuneResponseBatchSize: ExpressibleByIntegerLiteral {

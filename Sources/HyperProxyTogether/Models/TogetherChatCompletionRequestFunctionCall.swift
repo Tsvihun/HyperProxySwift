@@ -33,4 +33,10 @@ public enum TogetherChatCompletionRequestFunctionCall: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var none: Self { .chatCompletionRequestFunctionCallOneOf1(.none) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var auto: Self { .chatCompletionRequestFunctionCallOneOf1(.auto) }
 }

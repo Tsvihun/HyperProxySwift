@@ -10,6 +10,7 @@ import Foundation
 import HyperProxyOpenAI
 import HyperProxyTogether
 import Testing
+
 @testable import HyperProxyCore
 
 @Suite("HyperProxy transport", .serialized)
@@ -377,6 +378,93 @@ struct HyperProxyTransportTests {
     #expect(counter.value == 2)
   }
 
+  @Test("Pagination is lazy and requests exactly one page per next call")
+  func lazyPagination() async throws {
+    let counter = LockedRequestCounter()
+    TransportURLProtocol.stub.handler = { _ in
+      let attempt = counter.increment()
+      return .init(
+        status: 200, headers: [:], chunks: [Data("{\"next\":\"cursor-\(attempt)\"}".utf8)])
+    }
+    struct Page: Decodable, Sendable { let next: String? }
+    let pages = try HyperProxy.openAI(client: self.client()).call(.modelsList).pages(
+      decoding: Page.self
+    ) { $0.next }
+    try await Task.sleep(nanoseconds: 50_000_000)
+    #expect(counter.value == 0)
+    var iterator = pages.makeAsyncIterator()
+    _ = try await iterator.next()
+    #expect(counter.value == 1)
+    try await Task.sleep(nanoseconds: 50_000_000)
+    #expect(counter.value == 1)
+    _ = try await iterator.next()
+    #expect(counter.value == 2)
+  }
+
+  @Test("Pagination surfaces a repeated cursor after delivering its page")
+  func repeatedPaginationCursor() async throws {
+    TransportURLProtocol.stub.handler = { _ in
+      .init(status: 200, headers: [:], chunks: [Data(#"{"next":"same"}"#.utf8)])
+    }
+    struct Page: Decodable, Sendable { let next: String? }
+    var iterator = try HyperProxy.openAI(client: self.client()).call(.modelsList).pages(
+      decoding: Page.self
+    ) { $0.next }.makeAsyncIterator()
+    _ = try await iterator.next()
+    _ = try await iterator.next()
+    await #expect(throws: HyperProxyProviderCallError.paginationCursorRepeated("same")) {
+      _ = try await iterator.next()
+    }
+  }
+
+  @Test("Polling does not send another request after the deadline")
+  func pollingDeadline() async throws {
+    let counter = LockedRequestCounter()
+    TransportURLProtocol.stub.handler = { _ in
+      let attempt = counter.increment()
+      return .init(status: 200, headers: [:], chunks: [Data("{\"done\":\(attempt > 1)}".utf8)])
+    }
+    struct Job: Decodable, Sendable { let done: Bool }
+    await #expect(throws: HyperProxyProviderCallError.pollingTimedOut(0.05)) {
+      _ = try await HyperProxy.openAI(client: self.client()).call(.batchesRetrieve).path(
+        "batch_id", "test"
+      ).poll(decoding: Job.self, policy: .init(interval: 1, timeout: 0.05)) { $0.done }
+    }
+    #expect(counter.value == 1)
+  }
+
+  @Test("Polling cancels an unfinished response body at its deadline")
+  func unfinishedPollingResponse() async throws {
+    PollingURLProtocol.stoppedRequests.reset()
+    let configuration = URLSessionConfiguration.ephemeral
+    configuration.protocolClasses = [PollingURLProtocol.self]
+    let session = URLSession(configuration: configuration)
+    defer { session.invalidateAndCancel() }
+    let client = HyperProxyClient(gatewayURL: self.gatewayURL, appKey: "test", session: session)
+    struct Job: Decodable, Sendable { let done: Bool }
+    await #expect(throws: HyperProxyProviderCallError.pollingTimedOut(0.05)) {
+      _ = try await HyperProxy.openAI(client: client).call(.batchesRetrieve).path(
+        "batch_id", "test"
+      ).poll(decoding: Job.self, policy: .init(timeout: 0.05)) { $0.done }
+    }
+    #expect(PollingURLProtocol.stoppedRequests.value == 1)
+  }
+
+  @Test("A zero polling timeout does not send a request")
+  func expiredPollingDeadline() async throws {
+    let counter = LockedRequestCounter()
+    TransportURLProtocol.stub.handler = { _ in
+      _ = counter.increment()
+      throw HyperProxyError.invalidResponse
+    }
+    await #expect(throws: HyperProxyProviderCallError.pollingTimedOut(0)) {
+      _ = try await HyperProxy.openAI(client: self.client()).call(.modelsList).poll(
+        decoding: HyperProxyJSONValue.self, policy: .init(timeout: 0)
+      ) { _ in true }
+    }
+    #expect(counter.value == 0)
+  }
+
   @Test("Rejects a typed request body that disagrees with the official route")
   func typedBodyValidation() throws {
     let call = HyperProxy.openAI(client: self.client()).call(.modelsList)
@@ -487,7 +575,8 @@ struct HyperProxyTransportTests {
       let body = Self.drainBody(of: request)
       let json = try JSONSerialization.jsonObject(with: body) as? [String: Any]
       #expect(json?["stream"] as? Bool == true)
-      let event = #"{"id":"chunk-1","object":"chat.completion.chunk","#
+      let event =
+        #"{"id":"chunk-1","object":"chat.completion.chunk","#
         + #""created":1,"model":"gpt-test","choices":[]}"#
       return .init(
         status: 200,
@@ -583,7 +672,9 @@ struct HyperProxyTransportTests {
         status: 200,
         headers: ["Content-Type": "application/json"],
         chunks: [
-          Data(#"{"id":"asst_123","object":"assistant","created_at":1,"model":"gpt-test","tools":[],"metadata":{}}"#.utf8)
+          Data(
+            #"{"id":"asst_123","object":"assistant","created_at":1,"model":"gpt-test","tools":[],"metadata":{}}"#
+              .utf8)
         ]
       )
     }
@@ -663,7 +754,8 @@ struct HyperProxyTransportTests {
       path: "v1/voices/a%2Fb%20c",
       query: [URLQueryItem(name: "limit", value: "10")]
     )
-    #expect(preEncoded.absoluteString == "https://gw.example.com/proj/svc/v1/voices/a%2Fb%20c?limit=10")
+    #expect(
+      preEncoded.absoluteString == "https://gw.example.com/proj/svc/v1/voices/a%2Fb%20c?limit=10")
 
     #expect(throws: HyperProxyError.self) {
       _ = try HyperProxyClient.makeURL(gatewayURL: gateway, path: "v1/%2e%2E/admin", query: [])
@@ -684,15 +776,20 @@ struct HyperProxyTransportTests {
       path: "v1beta/models/my%20model:generateContent",
       query: []
     )
-    #expect(rendered.absoluteString == "https://gw.example.com/proj/svc/v1beta/models/my%20model:generateContent")
-    let firstSegment = try HyperProxyClient.makeURL(gatewayURL: gateway, path: "models:list", query: [])
+    #expect(
+      rendered.absoluteString
+        == "https://gw.example.com/proj/svc/v1beta/models/my%20model:generateContent")
+    let firstSegment = try HyperProxyClient.makeURL(
+      gatewayURL: gateway, path: "models:list", query: [])
     #expect(firstSegment.absoluteString == "https://gw.example.com/proj/svc/models:list")
     let unencodedArgument = try HyperProxyClient.makeURL(
       gatewayURL: gateway,
       path: "v1beta/models/ü:embedContent",
       query: []
     )
-    #expect(unencodedArgument.absoluteString == "https://gw.example.com/proj/svc/v1beta/models/%C3%BC:embedContent")
+    #expect(
+      unencodedArgument.absoluteString
+        == "https://gw.example.com/proj/svc/v1beta/models/%C3%BC:embedContent")
   }
 
   @Test("Retries timeouts only for replay-safe requests, so a paid generation is never sent twice")

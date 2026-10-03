@@ -104,13 +104,17 @@ public struct HyperProxyProviderCall<Operation: HyperProxyProviderOperation>:
   /// fields (model, parameters, …) merged over this call's JSON body.
   public func preset(_ slug: String) -> Self {
     var copy = self
-    copy.headerFields = copy.headerFields.filter { !HyperProxyRequest.promptHeaders.contains($0.key.lowercased()) }
+    copy.headerFields = copy.headerFields.filter {
+      !HyperProxyRequest.promptHeaders.contains($0.key.lowercased())
+    }
     return copy.header(HyperProxyGatewayHeader.preset, slug)
   }
 
   public func prompt(_ prompt: HyperProxyPrompt) -> Self {
     var copy = self
-    copy.headerFields = copy.headerFields.filter { !HyperProxyRequest.promptHeaders.contains($0.key.lowercased()) }
+    copy.headerFields = copy.headerFields.filter {
+      !HyperProxyRequest.promptHeaders.contains($0.key.lowercased())
+    }
     return copy.headers(prompt.headers)
   }
 
@@ -310,7 +314,8 @@ public struct HyperProxyProviderCall<Operation: HyperProxyProviderOperation>:
 
   /// Iterates cursor-based list endpoints while preserving each page's HTTP
   /// metadata. Works with `after`, `cursor`, `page_token`, and provider-specific
-  /// cursor names by changing `cursorQueryName`.
+  /// cursor names by changing `cursorQueryName`. Requests start only when the
+  /// consumer asks for the next page; use one iterator per sequence.
   public func pages<Page: Decodable & Sendable>(
     initialCursor: String? = nil,
     cursorQueryName: String = "after",
@@ -319,36 +324,15 @@ public struct HyperProxyProviderCall<Operation: HyperProxyProviderOperation>:
     nextCursor: @escaping @Sendable (Page) -> String?
   ) throws -> AsyncThrowingStream<HyperProxyDecodedResponse<Page>, Error> {
     try self.requireResponseKind(.json)
-    return AsyncThrowingStream { continuation in
-      let task = Task {
-        do {
-          var cursor = initialCursor
-          var seen = Set<String>()
-          if let initialCursor {
-            seen.insert(initialCursor)
-          }
-          while !Task.isCancelled {
-            let page =
-              try await self
-              .settingQuery(cursorQueryName, cursor)
-              .decodedWithMetadata(type, decoder: decoder)
-            continuation.yield(page)
-            guard let next = nextCursor(page.body), !next.isEmpty else {
-              continuation.finish()
-              return
-            }
-            guard seen.insert(next).inserted else {
-              throw HyperProxyProviderCallError.paginationCursorRepeated(next)
-            }
-            cursor = next
-          }
-          throw CancellationError()
-        } catch {
-          continuation.finish(throwing: error)
-        }
-      }
-      continuation.onTermination = { _ in task.cancel() }
-    }
+    let pagination = HyperProxyPaginationState<HyperProxyDecodedResponse<Page>>(
+      initialCursor: initialCursor,
+      fetch: { cursor in
+        try await self.settingQuery(cursorQueryName, cursor).decodedWithMetadata(
+          type, decoder: decoder)
+      },
+      nextCursor: { nextCursor($0.body) }
+    )
+    return AsyncThrowingStream(unfolding: { try await pagination.next() })
   }
 
   /// Polls an asynchronous provider resource until `isTerminal` returns true.
@@ -365,45 +349,77 @@ public struct HyperProxyProviderCall<Operation: HyperProxyProviderOperation>:
     }
     try self.requireResponseKind(.json)
 
-    let startedAt = ProcessInfo.processInfo.systemUptime
+    let deadline = policy.timeout.map { ProcessInfo.processInfo.systemUptime + $0 }
     var attempt = 0
     var interval = policy.interval
     while true {
       try Task.checkCancellation()
+      let remaining = try self.remainingPollingTime(deadline: deadline, timeout: policy.timeout)
       attempt += 1
-      let response = try await self.decodedWithMetadata(type, decoder: decoder)
-      if isTerminal(response.body) {
-        return response
+      let response: HyperProxyDecodedResponse<Value>
+      do {
+        response = try await self.pollingResponse(
+          type, decoder: decoder, remaining: remaining, timeout: policy.timeout)
+      } catch {
+        try Task.checkCancellation()
+        _ = try self.remainingPollingTime(deadline: deadline, timeout: policy.timeout)
+        throw error
       }
-      if let maximumAttempts = policy.maximumAttempts,
-        attempt >= maximumAttempts
-      {
+      _ = try self.remainingPollingTime(deadline: deadline, timeout: policy.timeout)
+      if isTerminal(response.body) { return response }
+      if let maximumAttempts = policy.maximumAttempts, attempt >= maximumAttempts {
         throw HyperProxyProviderCallError.pollingAttemptLimitReached(attempt)
-      }
-
-      let elapsed = ProcessInfo.processInfo.systemUptime - startedAt
-      if let timeout = policy.timeout, elapsed >= timeout {
-        throw HyperProxyProviderCallError.pollingTimedOut(timeout)
       }
 
       var delay = interval
       if policy.respectsRetryAfterHeader,
         let rawRetryAfter = response[header: "Retry-After"],
-        let retryAfter = TimeInterval(rawRetryAfter),
-        retryAfter.isFinite,
-        retryAfter >= 0
+        let retryAfter = TimeInterval(rawRetryAfter), retryAfter.isFinite, retryAfter >= 0
       {
         delay = retryAfter
       }
-      if let timeout = policy.timeout {
-        delay = min(delay, max(0, timeout - elapsed))
+      if let remaining = try self.remainingPollingTime(deadline: deadline, timeout: policy.timeout)
+      {
+        delay = min(delay, remaining)
       }
-      if delay > 0 {
-        let nanoseconds = UInt64(min(delay * 1_000_000_000, Double(UInt64.max)))
-        try await Task.sleep(nanoseconds: nanoseconds)
-      }
+      if delay > 0 { try await Self.sleepPollingDelay(delay) }
       interval = min(interval * policy.backoffMultiplier, policy.maximumInterval)
     }
+  }
+
+  private func remainingPollingTime(
+    deadline: TimeInterval?, timeout: TimeInterval?
+  ) throws -> TimeInterval? {
+    guard let deadline, let timeout else { return nil }
+    let remaining = deadline - ProcessInfo.processInfo.systemUptime
+    guard remaining > 0 else { throw HyperProxyProviderCallError.pollingTimedOut(timeout) }
+    return remaining
+  }
+
+  private func pollingResponse<Value: Decodable & Sendable>(
+    _ type: Value.Type, decoder: JSONDecoder, remaining: TimeInterval?, timeout: TimeInterval?
+  ) async throws -> HyperProxyDecodedResponse<Value> {
+    guard let remaining, let timeout else {
+      return try await self.decodedWithMetadata(type, decoder: decoder)
+    }
+    let requestTimeout = min(self.requestTimeout ?? self.client.configuration.timeout, remaining)
+    return try await withThrowingTaskGroup(of: HyperProxyDecodedResponse<Value>.self) { group in
+      group.addTask {
+        try await self.timeout(requestTimeout).decodedWithMetadata(type, decoder: decoder)
+      }
+      group.addTask {
+        try await Self.sleepPollingDelay(remaining)
+        throw HyperProxyProviderCallError.pollingTimedOut(timeout)
+      }
+      defer { group.cancelAll() }
+      guard let response = try await group.next() else { throw CancellationError() }
+      return response
+    }
+  }
+
+  private static func sleepPollingDelay(_ seconds: TimeInterval) async throws {
+    let bounded = min(seconds, Double(Int64.max / 1_000_000_000))
+    try await Task.sleep(nanoseconds: UInt64(bounded * 1_000_000_000))
   }
 
   private func requiringBodyKind(

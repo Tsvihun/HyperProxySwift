@@ -11,7 +11,10 @@ import Foundation
 @_exported import HyperProxyCore
 @_exported import HyperProxyProviders
 
-public enum StabilityOperation: String, HyperProxyProviderOperation {
+public enum StabilityOperation: String, HyperProxyCatalogOperation {
+  public static var providerDefinition: HyperProxyProviderDefinition {
+    HyperProxyProviders.stability
+  }
   /// `POST v2alpha/generation/stable-image/inpaint`
   case v2alphaGenerationStableImageInpaintPost = "v2alpha.generation.stable-image.inpaint.post"
   /// `POST v2alpha/generation/stable-image/upscale`

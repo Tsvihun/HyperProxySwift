@@ -8,6 +8,7 @@
 
 import Foundation
 import Testing
+
 @testable import HyperProxyCore
 
 final class CallerSessionDelegate: NSObject, URLSessionDelegate, @unchecked Sendable {}

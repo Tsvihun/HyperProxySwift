@@ -9,6 +9,7 @@
 import CryptoKit
 import Foundation
 import Testing
+
 @testable import HyperProxyCore
 
 @Suite("HyperProxy App Attest", .serialized)
@@ -45,7 +46,8 @@ struct HyperProxyAppAttestTests {
     request.httpMethod = "POST"
     request.httpBody = body
     let headers = try await appAttest.security(mode: .assertion).headers(for: request)
-    let context = try HyperProxyRequestContext(request: request, timestamp: Int(headers["X-HyperProxy-Assertion-Time"]!)!)
+    let context = try HyperProxyRequestContext(
+      request: request, timestamp: Int(headers["X-HyperProxy-Assertion-Time"]!)!)
     let hashes = await platform.hashes
 
     #expect(headers["X-HyperProxy-Key-Id"] == "device-key")
@@ -97,6 +99,45 @@ struct HyperProxyAppAttestTests {
     #expect(first["X-HyperProxy-Device-Token"] == "short-lived-token")
     #expect(second == first)
     #expect(transport.paths.filter { $0.hasSuffix("/token") }.count == 1)
+  }
+
+  @Test("Concurrent first use enrolls once and shares the cached device token")
+  func concurrentDeviceTokenEnrollment() async throws {
+    let registrations = LockedRequestCounter()
+    let tokens = LockedRequestCounter()
+    AttestationURLProtocol.stub.reset()
+    AttestationURLProtocol.stub.handler = { request in
+      switch request.url?.lastPathComponent {
+      case "challenge":
+        return Self.response(request, status: 200, json: #"{"challenge":"test","expires_in":60}"#)
+      case "register":
+        _ = registrations.increment()
+        return Self.response(request, status: 201, json: #"{"registered":true}"#)
+      case "token":
+        _ = tokens.increment()
+        return Self.response(
+          request, status: 200, json: #"{"device_token":"shared","expires_in":600}"#)
+      default: throw HyperProxyError.invalidResponse
+      }
+    }
+    let platform = MockPlatformAppAttest(keyDelay: 50_000_000)
+    let attest = HyperProxyAppAttest(
+      projectID: "test", attestationURL: URL(string: "https://example.com/attest")!,
+      session: Self.session(), storage: MemoryAttestationStorage(), appAttest: platform)
+    let security = attest.security(mode: .deviceToken)
+    try await withThrowingTaskGroup(of: String?.self) { group in
+      for _ in 0..<10 {
+        group.addTask { try await security.headers(for: Data())["X-HyperProxy-Device-Token"] }
+      }
+      for try await token in group { #expect(token == "shared") }
+    }
+    #expect(await platform.keyCount == 1)
+    #expect(registrations.value == 1)
+    #expect(tokens.value == 1)
+    try await attest.invalidateDeviceToken()
+    _ = try await security.headers(for: Data())
+    #expect(registrations.value == 1)
+    #expect(tokens.value == 2)
   }
 
   private static func session() -> URLSession {

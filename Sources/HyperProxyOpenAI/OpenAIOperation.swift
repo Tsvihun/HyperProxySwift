@@ -11,7 +11,8 @@ import Foundation
 @_exported import HyperProxyCore
 @_exported import HyperProxyProviders
 
-public enum OpenAIOperation: String, HyperProxyProviderOperation {
+public enum OpenAIOperation: String, HyperProxyCatalogOperation {
+  public static var providerDefinition: HyperProxyProviderDefinition { HyperProxyProviders.openAI }
   /// `GET v1/organization/admin_api_keys`
   case adminApiKeysList = "admin.api.keys.list"
   /// `POST v1/organization/admin_api_keys`

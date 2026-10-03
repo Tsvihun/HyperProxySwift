@@ -32,12 +32,16 @@ public struct HyperProxySecurity: Sendable {
 
   public func headers(for body: Data) async throws -> [String: String] {
     guard self.requestHeaderProvider == nil else {
-      throw HyperProxyError.incompatibleSecurity("App Attest assertions require a complete URLRequest, not only a body.")
+      throw HyperProxyError.incompatibleSecurity(
+        "App Attest assertions require a complete URLRequest, not only a body.")
     }
     return try await self.headerProvider(body)
   }
 
-  init(serializingRequests: Bool, requestHeaderProvider: @escaping @Sendable (URLRequest) async throws -> [String: String]) {
+  init(
+    serializingRequests: Bool,
+    requestHeaderProvider: @escaping @Sendable (URLRequest) async throws -> [String: String]
+  ) {
     self.headerProvider = { _ in [:] }
     self.requestHeaderProvider = requestHeaderProvider
     self.requestGate = serializingRequests ? HyperProxyRequestGate() : nil
@@ -88,12 +92,16 @@ public struct HyperProxySecurity: Sendable {
   ) -> Self {
     // The provider receives canonical request bytes; hash these bytes before
     // calling DCAppAttestService.generateAssertion(clientDataHash:).
-    Self(serializingRequests: true, requestHeaderProvider: { request in
-      let context = try HyperProxyRequestContext(request: request)
-      return context.headers.merging([
-        "X-HyperProxy-Key-Id": keyID,
-        "X-HyperProxy-Assertion": try await assertionProvider(context.signingData).base64EncodedString(),
-      ], uniquingKeysWith: { _, new in new })
-    })
+    Self(
+      serializingRequests: true,
+      requestHeaderProvider: { request in
+        let context = try HyperProxyRequestContext(request: request)
+        return context.headers.merging(
+          [
+            "X-HyperProxy-Key-Id": keyID,
+            "X-HyperProxy-Assertion": try await assertionProvider(context.signingData)
+              .base64EncodedString(),
+          ], uniquingKeysWith: { _, new in new })
+      })
   }
 }

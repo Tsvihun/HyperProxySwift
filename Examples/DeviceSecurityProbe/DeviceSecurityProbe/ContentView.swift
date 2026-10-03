@@ -16,9 +16,11 @@ struct ContentView: View {
     NavigationView {
       Form {
         Section("HyperProxy service") {
-          TextField("https://api.hyperproxyai.com/<project>/<service>", text: self.$model.gatewayURL)
-            .textInputAutocapitalization(.never)
-            .autocorrectionDisabled()
+          TextField(
+            "https://api.hyperproxyai.com/<project>/<service>", text: self.$model.gatewayURL
+          )
+          .textInputAutocapitalization(.never)
+          .autocorrectionDisabled()
           SecureField("hp_live_… app key", text: self.$model.appKey)
           TextField("Project public ID", text: self.$model.projectID)
             .textInputAutocapitalization(.never)

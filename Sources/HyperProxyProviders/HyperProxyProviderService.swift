@@ -20,12 +20,30 @@ public struct HyperProxyProviderService<Operation: HyperProxyProviderOperation>:
   public let client: HyperProxyClient
   public let definition: HyperProxyProviderDefinition
 
-  public init(
-    client: HyperProxyClient,
-    definition: HyperProxyProviderDefinition
-  ) {
+  /// Creates a service from an explicitly supplied catalog, validating every operation.
+  /// Generated services normally use `init(client:)` instead.
+  public init(client: HyperProxyClient, definition: HyperProxyProviderDefinition) throws {
+    if let catalogOperation = Operation.self as? any HyperProxyCatalogOperation.Type,
+      catalogOperation.providerDefinition.id != definition.id
+    {
+      throw HyperProxyProviderRouteError.providerMismatch(
+        expected: catalogOperation.providerDefinition.id, actual: definition.id
+      )
+    }
+    for operation in Operation.allCases {
+      guard definition.routeIfKnown(operation.rawValue) != nil else {
+        throw HyperProxyProviderRouteError.unknownOperation(
+          provider: definition.id, operation: operation.rawValue)
+      }
+    }
     self.client = client
     self.definition = definition
+  }
+
+  /// Creates a generated service using the catalog owned by its operation type.
+  public init(client: HyperProxyClient) where Operation: HyperProxyCatalogOperation {
+    self.client = client
+    self.definition = Operation.providerDefinition
   }
 
   /// The catalog route for a generated operation.

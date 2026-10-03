@@ -32,4 +32,19 @@ public enum AnthropicBetaManagedAgentsEffortParams: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var low: Self { .betaManagedAgentsEffortLevel(.low) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var medium: Self { .betaManagedAgentsEffortLevel(.medium) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var high: Self { .betaManagedAgentsEffortLevel(.high) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var xhigh: Self { .betaManagedAgentsEffortLevel(.xhigh) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var max: Self { .betaManagedAgentsEffortLevel(.max) }
 }

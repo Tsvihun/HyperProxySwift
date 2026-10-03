@@ -32,4 +32,28 @@ public enum MistralOrganizationUserInviteOUTRole: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var a: Self { .userRole(.a) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var m: Self { .userRole(.m) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var b: Self { .userRole(.b) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var value0d48f530095c43fe8aea6673bcacabe6: Self {
+    .staticOrganizationRoles(.value0d48f530095c43fe8aea6673bcacabe6)
+  }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var c955f4e1947743f083496fbc629fccc9: Self {
+    .staticOrganizationRoles(.c955f4e1947743f083496fbc629fccc9)
+  }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var value7bde5959D67647d2B77935b64323d278: Self {
+    .staticOrganizationRoles(.value7bde5959D67647d2B77935b64323d278)
+  }
 }

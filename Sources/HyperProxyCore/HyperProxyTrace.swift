@@ -33,16 +33,21 @@ public struct HyperProxyTrace: Sendable {
     if sessionID == nil && (sessionName != nil || sessionPath != nil) {
       throw HyperProxyMetadataError.invalidField("session_id_required")
     }
-    if let sessionPath, !sessionPath.hasPrefix("/")
-      || sessionPath.split(separator: "/").contains(where: { $0 == "." || $0 == ".." }) {
+    if let sessionPath,
+      !sessionPath.hasPrefix("/")
+        || sessionPath.split(separator: "/").contains(where: { $0 == "." || $0 == ".." })
+    {
       throw HyperProxyMetadataError.invalidField("session_path")
     }
     guard properties.count <= 20 else { throw HyperProxyMetadataError.invalidField("properties") }
     var names = Set<String>()
     for (key, value) in properties {
       guard key.range(of: "^[a-zA-Z0-9_.-]{1,64}$", options: .regularExpression) != nil,
-        key.range(of: "authorization|cookie|password|secret|token|api.?key", options: [.regularExpression, .caseInsensitive]) == nil,
-        names.insert(key.lowercased()).inserted else {
+        key.range(
+          of: "authorization|cookie|password|secret|token|api.?key",
+          options: [.regularExpression, .caseInsensitive]) == nil,
+        names.insert(key.lowercased()).inserted
+      else {
         throw HyperProxyMetadataError.invalidField("property_name")
       }
       try Self.validate(value, limit: 256, field: "property_value")
@@ -54,7 +59,8 @@ public struct HyperProxyTrace: Sendable {
   private static func validate(_ value: String, limit: Int, field: String) throws {
     // Header labels are ASCII; user-facing Unicode belongs in JSON prompt inputs.
     guard !value.trimmingCharacters(in: .whitespaces).isEmpty, value.utf8.count <= limit,
-      value.utf8.allSatisfy({ (32...126).contains($0) }) else {
+      value.utf8.allSatisfy({ (32...126).contains($0) })
+    else {
       throw HyperProxyMetadataError.invalidField(field)
     }
   }

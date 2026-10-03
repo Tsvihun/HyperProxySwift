@@ -7,8 +7,9 @@
 //
 
 import Foundation
+
 #if canImport(Network)
-import Network
+  import Network
 #endif
 
 public enum HyperProxyLogLevel: Int, Sendable, Comparable {

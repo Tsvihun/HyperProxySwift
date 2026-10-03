@@ -27,7 +27,8 @@ extension HyperProxyWebSocketError: LocalizedError {
     case .messagesAlreadyStreaming:
       return "A messages() stream is already consuming this WebSocket."
     case .gatewayRejected(let rejection):
-      return "HyperProxy closed the WebSocket: \(rejection.code) (close code \(rejection.closeCode ?? 0))."
+      return
+        "HyperProxy closed the WebSocket: \(rejection.code) (close code \(rejection.closeCode ?? 0))."
     case .closed(let code, let reason):
       return "The WebSocket was closed with code \(code)\(reason.map { ": \($0)" } ?? "")."
     }

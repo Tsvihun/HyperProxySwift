@@ -11,7 +11,10 @@ import Foundation
 @_exported import HyperProxyCore
 @_exported import HyperProxyProviders
 
-public enum DeepSeekOperation: String, HyperProxyProviderOperation {
+public enum DeepSeekOperation: String, HyperProxyCatalogOperation {
+  public static var providerDefinition: HyperProxyProviderDefinition {
+    HyperProxyProviders.deepSeek
+  }
   /// `GET anthropic/v1/files`
   case anthropicFilesList = "anthropic.files.list"
   /// `POST anthropic/v1/files`

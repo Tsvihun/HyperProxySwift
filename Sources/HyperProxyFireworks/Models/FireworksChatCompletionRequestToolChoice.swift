@@ -39,4 +39,16 @@ public enum FireworksChatCompletionRequestToolChoice: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var auto: Self { .chatCompletionRequestToolChoiceAnyOf1(.auto) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var none: Self { .chatCompletionRequestToolChoiceAnyOf1(.none) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var anyModel: Self { .chatCompletionRequestToolChoiceAnyOf1(.anyModel) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var requiredValue: Self { .chatCompletionRequestToolChoiceAnyOf1(.requiredValue) }
 }

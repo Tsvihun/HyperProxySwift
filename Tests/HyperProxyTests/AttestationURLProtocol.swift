@@ -9,6 +9,7 @@
 import CryptoKit
 import Foundation
 import Testing
+
 @testable import HyperProxyCore
 
 final class AttestationURLProtocol: URLProtocol, @unchecked Sendable {

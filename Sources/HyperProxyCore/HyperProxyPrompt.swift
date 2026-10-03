@@ -29,7 +29,8 @@ public struct HyperProxyPrompt: Sendable {
       }
       headers["X-HyperProxy-Preset-Version"] = String(version)
     case .environment(let environment):
-      guard environment.range(of: "^[a-z][a-z0-9-]{0,31}$", options: .regularExpression) != nil else {
+      guard environment.range(of: "^[a-z][a-z0-9-]{0,31}$", options: .regularExpression) != nil
+      else {
         throw HyperProxyMetadataError.invalidField("preset_environment")
       }
       headers["X-HyperProxy-Preset-Environment"] = environment

@@ -32,4 +32,13 @@ public enum PerplexityToolChoice: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var none: Self { .toolChoiceOneOf1(.none) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var auto: Self { .toolChoiceOneOf1(.auto) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var requiredValue: Self { .toolChoiceOneOf1(.requiredValue) }
 }

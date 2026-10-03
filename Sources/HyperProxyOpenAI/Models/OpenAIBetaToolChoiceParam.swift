@@ -82,4 +82,13 @@ public enum OpenAIBetaToolChoiceParam: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var none: Self { .betaToolChoiceOptions(.none) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var auto: Self { .betaToolChoiceOptions(.auto) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var requiredValue: Self { .betaToolChoiceOptions(.requiredValue) }
 }

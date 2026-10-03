@@ -33,4 +33,52 @@ public enum BFLFlux3ImageInputsAspectRatio: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var value219: Self { .flux3ImageInputsAspectRatioAnyOf1(.value219) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var value21: Self { .flux3ImageInputsAspectRatioAnyOf1(.value21) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var value169: Self { .flux3ImageInputsAspectRatioAnyOf1(.value169) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var value32: Self { .flux3ImageInputsAspectRatioAnyOf1(.value32) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var value75: Self { .flux3ImageInputsAspectRatioAnyOf1(.value75) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var value43: Self { .flux3ImageInputsAspectRatioAnyOf1(.value43) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var value54: Self { .flux3ImageInputsAspectRatioAnyOf1(.value54) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var value11: Self { .flux3ImageInputsAspectRatioAnyOf1(.value11) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var value45: Self { .flux3ImageInputsAspectRatioAnyOf1(.value45) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var value34: Self { .flux3ImageInputsAspectRatioAnyOf1(.value34) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var value57: Self { .flux3ImageInputsAspectRatioAnyOf1(.value57) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var value23: Self { .flux3ImageInputsAspectRatioAnyOf1(.value23) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var value916: Self { .flux3ImageInputsAspectRatioAnyOf1(.value916) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var value12: Self { .flux3ImageInputsAspectRatioAnyOf1(.value12) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var value921: Self { .flux3ImageInputsAspectRatioAnyOf1(.value921) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var auto: Self { .flux3ImageInputsAspectRatioAnyOf2(.auto) }
 }

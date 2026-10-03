@@ -37,6 +37,12 @@ public enum TogetherAudioTranslationRequestTimestampGranularities: Codable, Send
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var segment: Self { .audioTranslationRequestTimestampGranularitiesOneOf1(.segment) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var word: Self { .audioTranslationRequestTimestampGranularitiesOneOf1(.word) }
 }
 
 extension TogetherAudioTranslationRequestTimestampGranularities: ExpressibleByArrayLiteral {

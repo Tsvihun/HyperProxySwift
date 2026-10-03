@@ -11,7 +11,10 @@ import Foundation
 @_exported import HyperProxyCore
 @_exported import HyperProxyProviders
 
-public enum AnthropicOperation: String, HyperProxyProviderOperation {
+public enum AnthropicOperation: String, HyperProxyCatalogOperation {
+  public static var providerDefinition: HyperProxyProviderDefinition {
+    HyperProxyProviders.anthropic
+  }
   /// `GET v1/organizations/api_keys/{api_key_id}`
   case betaGetApiKeyV1OrganizationsApiKeysApiKeyIdGet =
     "beta.get.api.key.v1.organizations.api.keys.api.key.id.get"

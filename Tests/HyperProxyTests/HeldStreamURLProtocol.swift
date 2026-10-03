@@ -8,6 +8,7 @@
 
 import Foundation
 import Testing
+
 @testable import HyperProxyCore
 
 /// Answers `v1/stream` with its head and one event, then keeps the body open
@@ -30,7 +31,7 @@ final class HeldStreamURLProtocol: URLProtocol, @unchecked Sendable {
       defer { self.pending = [] }
       return self.pending
     }
-    finishers.forEach { $0() }
+    for finish in finishers { finish() }
   }
 
   override class func canInit(with request: URLRequest) -> Bool { true }

@@ -34,4 +34,7 @@ public enum OpenAIFineTuningJobHyperparametersLearningRateMultiplier: Codable, S
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var auto: Self { .fineTuningJobHyperparametersLearningRateMultiplierOneOf1(.auto) }
 }

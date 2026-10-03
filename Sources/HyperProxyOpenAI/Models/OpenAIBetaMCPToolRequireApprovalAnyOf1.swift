@@ -33,4 +33,10 @@ public enum OpenAIBetaMCPToolRequireApprovalAnyOf1: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var always: Self { .betaMCPToolRequireApprovalAnyOf1OneOf2(.always) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var never: Self { .betaMCPToolRequireApprovalAnyOf1OneOf2(.never) }
 }

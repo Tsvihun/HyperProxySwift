@@ -37,10 +37,12 @@ final class HyperProxyAudioCapturePipeline: @unchecked Sendable {
     let capacity = AVAudioFrameCount(
       max(1, ceil(Double(input.frameLength) * ratio) + 1)
     )
-    guard let output = AVAudioPCMBuffer(
-      pcmFormat: self.outputFormat,
-      frameCapacity: capacity
-    ) else {
+    guard
+      let output = AVAudioPCMBuffer(
+        pcmFormat: self.outputFormat,
+        frameCapacity: capacity
+      )
+    else {
       self.finish(HyperProxyAudioControllerError.audioBufferAllocationFailed)
       return
     }
@@ -62,7 +64,7 @@ final class HyperProxyAudioCapturePipeline: @unchecked Sendable {
       )
       return
     }
-    guard (status == .haveData || status == .inputRanDry), output.frameLength > 0,
+    guard status == .haveData || status == .inputRanDry, output.frameLength > 0,
       let samples = output.int16ChannelData?[0]
     else { return }
     let byteCount = Int(output.frameLength) * MemoryLayout<Int16>.size

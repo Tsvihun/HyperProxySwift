@@ -33,6 +33,9 @@ public enum AnthropicBetaCreateMessageParamsFallbacks: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var defaultValue: Self { .betaCreateMessageParamsFallbacksAnyOf2(.defaultValue) }
 }
 
 extension AnthropicBetaCreateMessageParamsFallbacks: ExpressibleByArrayLiteral {

@@ -33,7 +33,9 @@ public struct HyperProxyRequestContext: Sendable {
     ]
     for name in boundHeaders {
       fields.append(name)
-      fields.append(name == "x-hyperproxy-assertion-time" ? String(timestamp) : request.value(forHTTPHeaderField: name) ?? "")
+      fields.append(
+        name == "x-hyperproxy-assertion-time"
+          ? String(timestamp) : request.value(forHTTPHeaderField: name) ?? "")
     }
     var data = Data("hyperproxy-request-v2\n".utf8)
     for field in fields {
@@ -42,6 +44,8 @@ public struct HyperProxyRequestContext: Sendable {
       data.append(value)
     }
     self.signingData = data
-    self.headers = ["X-HyperProxy-Assertion-Version": "2", "X-HyperProxy-Assertion-Time": String(timestamp)]
+    self.headers = [
+      "X-HyperProxy-Assertion-Version": "2", "X-HyperProxy-Assertion-Time": String(timestamp),
+    ]
   }
 }

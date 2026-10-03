@@ -13,7 +13,7 @@ import Foundation
 
 extension HyperProxy {
   public static func fireworks(client: HyperProxyClient) -> FireworksService {
-    FireworksService(client: client, definition: HyperProxyProviders.fireworks)
+    FireworksService(client: client)
   }
 
   public static func fireworks(

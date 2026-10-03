@@ -9,6 +9,7 @@
 import Foundation
 import Network
 import Testing
+
 @testable import HyperProxyCore
 
 final class RedirectServer: @unchecked Sendable {
@@ -27,15 +28,18 @@ final class RedirectServer: @unchecked Sendable {
   func start() async throws -> UInt16 {
     listener.newConnectionHandler = { [self] connection in
       connection.start(queue: queue)
-      connection.receive(minimumIncompleteLength: 1, maximumLength: 65_536) { [self] data, _, _, _ in
+      connection.receive(minimumIncompleteLength: 1, maximumLength: 65_536) {
+        [self] data, _, _, _ in
         let request = data.flatMap { String(data: $0, encoding: .utf8) } ?? ""
         let isTarget = request.contains("/target")
         lock.withLock { if isTarget { target += 1 } else { initial += 1 } }
         let port = listener.port!.rawValue
-        let response = isTarget
+        let response =
+          isTarget
           ? "HTTP/1.1 200 OK\r\nContent-Length: 2\r\nConnection: close\r\n\r\nok"
           : "HTTP/1.1 302 Found\r\nLocation: http://localhost:\(port)/target\r\nContent-Length: 0\r\nConnection: close\r\n\r\n"
-        connection.send(content: Data(response.utf8), completion: .contentProcessed { _ in connection.cancel() })
+        connection.send(
+          content: Data(response.utf8), completion: .contentProcessed { _ in connection.cancel() })
       }
     }
     return try await withCheckedThrowingContinuation { continuation in

@@ -9,6 +9,7 @@
 import Foundation
 import HyperProxy
 import Testing
+
 @testable import HyperProxyProviders
 
 @Suite("Provider catalog")
@@ -33,6 +34,27 @@ struct HyperProxyProviderCatalogTests {
     "brave",
     "deepl",
   ]
+
+  @Test("Generated services bind their catalog and manual construction rejects mismatches")
+  func catalogBinding() throws {
+    let client = HyperProxyClient.direct(baseURL: URL(string: "https://example.com")!)
+    let service = OpenAIService(client: client)
+    #expect(service.definition.id == "openai")
+    #expect(service.route(.responsesCreate).operation == "responses.create")
+    #expect(
+      throws: HyperProxyProviderRouteError.providerMismatch(expected: "openai", actual: "anthropic")
+    ) {
+      _ = try OpenAIService(client: client, definition: HyperProxyProviders.anthropic)
+    }
+    let incomplete = HyperProxyProviderDefinition(
+      id: "openai", displayName: "Incomplete",
+      documentationURL: URL(string: "https://example.com")!, routes: [])
+    #expect(throws: HyperProxyProviderRouteError.self) {
+      _ = try OpenAIService(client: client, definition: incomplete)
+    }
+    let validated = try OpenAIService(client: client, definition: HyperProxyProviders.openAI)
+    #expect(validated.route(.modelsList).operation == "models.list")
+  }
 
   @Test("Includes every supported provider family")
   func includesEverySupportedProvider() {

@@ -36,10 +36,12 @@ public struct HyperProxyPollingPolicy: Sendable, Equatable {
   }
 
   var isValid: Bool {
-    self.interval.isFinite && self.interval >= 0
+    let maximumDuration = Double(Int64.max / 1_000_000_000)
+    return self.interval.isFinite && (0...maximumDuration).contains(self.interval)
       && self.backoffMultiplier.isFinite && self.backoffMultiplier >= 1
-      && self.maximumInterval.isFinite && self.maximumInterval >= self.interval
-      && (self.maximumAttempts == nil || self.maximumAttempts! > 0)
-      && (self.timeout == nil || (self.timeout!.isFinite && self.timeout! >= 0))
+      && self.maximumInterval.isFinite
+      && (self.interval...maximumDuration).contains(self.maximumInterval)
+      && self.maximumAttempts.map { $0 > 0 } != false
+      && self.timeout.map { $0.isFinite && (0...maximumDuration).contains($0) } != false
   }
 }

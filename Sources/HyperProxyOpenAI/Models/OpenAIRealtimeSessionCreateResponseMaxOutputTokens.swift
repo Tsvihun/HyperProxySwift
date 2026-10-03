@@ -34,6 +34,9 @@ public enum OpenAIRealtimeSessionCreateResponseMaxOutputTokens: Codable, Sendabl
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var inf: Self { .realtimeSessionCreateResponseMaxOutputTokensOneOf2(.inf) }
 }
 
 extension OpenAIRealtimeSessionCreateResponseMaxOutputTokens: ExpressibleByIntegerLiteral {

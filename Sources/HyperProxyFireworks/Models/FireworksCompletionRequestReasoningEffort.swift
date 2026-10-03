@@ -40,6 +40,27 @@ public enum FireworksCompletionRequestReasoningEffort: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var low: Self { .completionRequestReasoningEffortAnyOf1(.low) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var medium: Self { .completionRequestReasoningEffortAnyOf1(.medium) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var high: Self { .completionRequestReasoningEffortAnyOf1(.high) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var xhigh: Self { .completionRequestReasoningEffortAnyOf1(.xhigh) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var max: Self { .completionRequestReasoningEffortAnyOf1(.max) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var none: Self { .completionRequestReasoningEffortAnyOf1(.none) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var adaptive: Self { .completionRequestReasoningEffortAnyOf1(.adaptive) }
 }
 
 extension FireworksCompletionRequestReasoningEffort: ExpressibleByIntegerLiteral {

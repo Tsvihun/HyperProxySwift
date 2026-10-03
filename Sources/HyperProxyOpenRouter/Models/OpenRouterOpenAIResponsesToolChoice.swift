@@ -75,4 +75,13 @@ public enum OpenRouterOpenAIResponsesToolChoice: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var auto: Self { .openAIResponsesToolChoiceAnyOf1(.auto) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var none: Self { .openAIResponsesToolChoiceAnyOf2(.none) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var requiredValue: Self { .openAIResponsesToolChoiceAnyOf3(.requiredValue) }
 }

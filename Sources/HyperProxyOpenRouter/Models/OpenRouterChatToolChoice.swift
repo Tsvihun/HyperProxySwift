@@ -53,4 +53,13 @@ public enum OpenRouterChatToolChoice: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var none: Self { .chatToolChoiceAnyOf1(.none) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var auto: Self { .chatToolChoiceAnyOf2(.auto) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var requiredValue: Self { .chatToolChoiceAnyOf3(.requiredValue) }
 }

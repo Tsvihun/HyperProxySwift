@@ -8,6 +8,7 @@
 
 import Foundation
 import Testing
+
 @testable import HyperProxyRealtimeAudio
 
 @Suite("Realtime audio controller")

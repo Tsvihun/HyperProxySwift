@@ -11,7 +11,10 @@ import Foundation
 @_exported import HyperProxyCore
 @_exported import HyperProxyProviders
 
-public enum TogetherOperation: String, HyperProxyProviderOperation {
+public enum TogetherOperation: String, HyperProxyCatalogOperation {
+  public static var providerDefinition: HyperProxyProviderDefinition {
+    HyperProxyProviders.together
+  }
   /// `GET v1/billing/usage`
   case getBillingUsage = "getBillingUsage"
   /// `POST v1/fine-tunes/preview`

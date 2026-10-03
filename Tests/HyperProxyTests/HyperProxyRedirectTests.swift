@@ -9,11 +9,14 @@
 import Foundation
 import Network
 import Testing
+
 @testable import HyperProxyCore
 
 @Suite("Credential-safe redirects", .serialized)
 struct HyperProxyRedirectTests {
-  @Test("Rejects redirects for requests, progress uploads, SSE, byte streams and WebSockets", arguments: [false, true])
+  @Test(
+    "Rejects redirects for requests, progress uploads, SSE, byte streams and WebSockets",
+    arguments: [false, true])
   func redirectsNeverReplayCredentials(direct: Bool) async throws {
     let server = try RedirectServer()
     let port = try await server.start()
@@ -24,10 +27,12 @@ struct HyperProxyRedirectTests {
       gatewayURL: URL(string: "http://127.0.0.1:\(port)/project/service")!,
       appKey: "fake-regression-key", session: session
     )
-    let client = direct ? HyperProxyClient.direct(
-      baseURL: URL(string: "http://127.0.0.1:\(port)/provider")!,
-      defaultHeaders: ["X-Api-Key": "fake-provider-key"], session: session
-    ) : gatewayClient
+    let client =
+      direct
+      ? HyperProxyClient.direct(
+        baseURL: URL(string: "http://127.0.0.1:\(port)/provider")!,
+        defaultHeaders: ["X-Api-Key": "fake-provider-key"], session: session
+      ) : gatewayClient
     let request = HyperProxyRequest(method: .get, path: "start")
     do {
       _ = try await client.send(request)
@@ -49,7 +54,9 @@ struct HyperProxyRedirectTests {
     do {
       _ = try await socket.receive()
       Issue.record("WebSocket redirect must fail")
-    } catch { /* A redirect is not a successful WebSocket handshake. */ }
+    } catch {
+      // A redirect is not a successful WebSocket handshake.
+    }
     #expect(server.redirectTargetHits == 0)
     #expect(server.initialHits == 5)
   }

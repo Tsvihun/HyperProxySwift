@@ -208,7 +208,8 @@ extension HyperProxyJSONValue: CustomStringConvertible, CustomDebugStringConvert
       if value.isEmpty {
         return "[]"
       }
-      let items = value
+      let items =
+        value
         .map { pad + $0.renderedJSON(indent: indent, depth: depth + 1) }
         .joined(separator: separator)
       return "[\(newline)\(items)\(newline)\(closePad)]"
@@ -216,7 +217,8 @@ extension HyperProxyJSONValue: CustomStringConvertible, CustomDebugStringConvert
       if value.isEmpty {
         return "{}"
       }
-      let items = value
+      let items =
+        value
         .sorted { $0.key < $1.key }
         .map { key, item in
           pad + Self.escapedJSONString(key)

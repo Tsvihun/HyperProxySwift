@@ -75,8 +75,7 @@ public actor HyperProxyAudioController {
   private let engine = AVAudioEngine()
   private let player = AVAudioPlayerNode()
   private let microphoneStreamStorage: AsyncThrowingStream<Data, any Error>?
-  private let microphoneContinuation:
-    AsyncThrowingStream<Data, any Error>.Continuation?
+  private let microphoneContinuation: AsyncThrowingStream<Data, any Error>.Continuation?
   private var capturePipeline: HyperProxyAudioCapturePipeline?
   private var playbackAccumulator = HyperProxyPCM16ChunkAccumulator()
   private var hasMicrophoneTap = false

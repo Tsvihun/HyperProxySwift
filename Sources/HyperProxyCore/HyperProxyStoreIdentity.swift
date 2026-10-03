@@ -7,11 +7,12 @@
 //
 
 import Foundation
+
 #if canImport(Security)
-import Security
+  import Security
 #endif
 #if canImport(StoreKit)
-import StoreKit
+  import StoreKit
 #endif
 
 enum HyperProxyStoreIdentity {

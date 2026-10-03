@@ -13,7 +13,7 @@ import Foundation
 
 extension HyperProxy {
   public static func perplexity(client: HyperProxyClient) -> PerplexityService {
-    PerplexityService(client: client, definition: HyperProxyProviders.perplexity)
+    PerplexityService(client: client)
   }
 
   public static func perplexity(

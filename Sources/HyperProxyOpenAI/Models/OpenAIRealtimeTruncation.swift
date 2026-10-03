@@ -32,4 +32,10 @@ public enum OpenAIRealtimeTruncation: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var auto: Self { .realtimeTruncationOneOf1(.auto) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var disabled: Self { .realtimeTruncationOneOf1(.disabled) }
 }

@@ -11,7 +11,10 @@ import Foundation
 @_exported import HyperProxyCore
 @_exported import HyperProxyProviders
 
-public enum PerplexityOperation: String, HyperProxyProviderOperation {
+public enum PerplexityOperation: String, HyperProxyCatalogOperation {
+  public static var providerDefinition: HyperProxyProviderDefinition {
+    HyperProxyProviders.perplexity
+  }
   /// `POST search`
   case searchSearchPost = "search.search.post"
   /// `POST v1/agent`

@@ -32,4 +32,13 @@ public enum DeepSeekResponseCreateRequestToolChoice: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var none: Self { .toolChoiceMode(.none) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var auto: Self { .toolChoiceMode(.auto) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var requiredValue: Self { .toolChoiceMode(.requiredValue) }
 }

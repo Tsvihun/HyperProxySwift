@@ -11,7 +11,8 @@ import Foundation
 @_exported import HyperProxyCore
 @_exported import HyperProxyProviders
 
-public enum DeepLOperation: String, HyperProxyProviderOperation {
+public enum DeepLOperation: String, HyperProxyCatalogOperation {
+  public static var providerDefinition: HyperProxyProviderDefinition { HyperProxyProviders.deepL }
   /// `GET v2/admin/analytics`
   case adminGetAnalytics = "adminGetAnalytics"
   /// `GET v2/admin/analytics/custom-tags`

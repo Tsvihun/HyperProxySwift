@@ -18,6 +18,29 @@ import Testing
 
 @Suite("Generated provider models")
 struct GeneratedProviderModelsTests {
+  @Test("Convenient names preserve provider-native JSON for models and message roles")
+  func convenientRequestNames() throws {
+    let request = OpenAIChatRequest(
+      messages: [
+        .system("system"), .developer("developer"), .user("user"), .assistant("assistant"),
+      ], model: .gpt5
+    )
+    let json = try JSONDecoder().decode(
+      HyperProxyJSONValue.self, from: JSONEncoder().encode(request))
+    #expect(json["model"] == "gpt-5")
+    #expect(json["messages"]?[0]?["role"] == "system")
+    #expect(json["messages"]?[1]?["role"] == "developer")
+    #expect(json["messages"]?[2]?["role"] == "user")
+    #expect(json["messages"]?[3]?["content"] == "assistant")
+    let response = OpenAIResponseRequest(input: "Hello", model: .gpt55Pro)
+    let responseJSON = try JSONDecoder().decode(
+      HyperProxyJSONValue.self, from: JSONEncoder().encode(response))
+    #expect(responseJSON["model"] == "gpt-5.5-pro")
+    let decoded = try JSONDecoder().decode(
+      OpenAIResponseModel.self, from: Data(#""gpt-5.5-pro""#.utf8))
+    #expect(try JSONEncoder().encode(decoded) == JSONEncoder().encode(OpenAIResponseModel.gpt55Pro))
+  }
+
   @Test("JSON null schemas reject non-null values")
   func jsonNullModel() throws {
     _ = try JSONDecoder().decode(HyperProxyJSONNull.self, from: Data("null".utf8))

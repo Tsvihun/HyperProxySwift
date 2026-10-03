@@ -32,6 +32,9 @@ public enum MistralMCPServerCardPrompts: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var dynamicValue: Self { .mCPServerCardPromptsAnyOf1(.dynamicValue) }
 }
 
 extension MistralMCPServerCardPrompts: ExpressibleByArrayLiteral {

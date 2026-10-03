@@ -11,7 +11,10 @@ import Foundation
 @_exported import HyperProxyCore
 @_exported import HyperProxyProviders
 
-public enum ReplicateOperation: String, HyperProxyProviderOperation {
+public enum ReplicateOperation: String, HyperProxyCatalogOperation {
+  public static var providerDefinition: HyperProxyProviderDefinition {
+    HyperProxyProviders.replicate
+  }
   /// `GET v1/account`
   case accountGet = "account.get"
   /// `GET v1/collections`

@@ -11,7 +11,8 @@ import Foundation
 @_exported import HyperProxyCore
 @_exported import HyperProxyProviders
 
-public enum BFLOperation: String, HyperProxyProviderOperation {
+public enum BFLOperation: String, HyperProxyCatalogOperation {
+  public static var providerDefinition: HyperProxyProviderDefinition { HyperProxyProviders.bfl }
   /// `GET v1/credits`
   case creditsRetrieve = "credits.retrieve"
   /// `POST v1/flux-2-klein-9b-preview`

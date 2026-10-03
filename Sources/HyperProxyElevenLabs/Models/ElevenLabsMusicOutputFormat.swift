@@ -32,4 +32,7 @@ public enum ElevenLabsMusicOutputFormat: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var auto: Self { .musicOutputFormatAnyOf2(.auto) }
 }

@@ -13,7 +13,7 @@ import Foundation
 
 extension HyperProxy {
   public static func together(client: HyperProxyClient) -> TogetherService {
-    TogetherService(client: client, definition: HyperProxyProviders.together)
+    TogetherService(client: client)
   }
 
   public static func together(

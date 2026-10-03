@@ -43,6 +43,12 @@ public enum
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var all: Self {
+    .bodyCreateServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysPostPermissionsAnyOf2(
+      .all)
+  }
 }
 
 extension

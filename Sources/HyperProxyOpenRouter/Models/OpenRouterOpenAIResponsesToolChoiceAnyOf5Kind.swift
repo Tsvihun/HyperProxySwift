@@ -35,4 +35,14 @@ public enum OpenRouterOpenAIResponsesToolChoiceAnyOf5Kind: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var webSearchPreview20250311: Self {
+    .openAIResponsesToolChoiceAnyOf5KindAnyOf1(.webSearchPreview20250311)
+  }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var webSearchPreview: Self {
+    .openAIResponsesToolChoiceAnyOf5KindAnyOf2(.webSearchPreview)
+  }
 }

@@ -40,4 +40,10 @@ public enum OpenRouterMcpServerToolRequireApproval: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var always: Self { .mcpServerToolRequireApprovalAnyOf2(.always) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var never: Self { .mcpServerToolRequireApprovalAnyOf3(.never) }
 }

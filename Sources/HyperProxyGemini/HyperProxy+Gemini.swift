@@ -13,7 +13,7 @@ import Foundation
 
 extension HyperProxy {
   public static func gemini(client: HyperProxyClient) -> GeminiService {
-    GeminiService(client: client, definition: HyperProxyProviders.gemini)
+    GeminiService(client: client)
   }
 
   public static func gemini(

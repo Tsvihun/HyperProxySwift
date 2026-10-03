@@ -34,4 +34,14 @@ public enum OpenRouterDeleteScimGroupMappingParametersKeepMembers: Codable, Send
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var trueValue: Self {
+    .deleteScimGroupMappingParametersKeepMembersAnyOf1(.trueValue)
+  }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var falseValue: Self {
+    .deleteScimGroupMappingParametersKeepMembersAnyOf1(.falseValue)
+  }
 }

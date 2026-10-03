@@ -14,6 +14,8 @@ public struct HyperProxyTelemetryReceipt: Decodable, Sendable {
   public let requestID: UUID
   public let status: Status
   enum CodingKeys: String, CodingKey {
-    case eventID = "event_id", requestID = "request_id", status
+    case eventID = "event_id"
+    case requestID = "request_id"
+    case status
   }
 }

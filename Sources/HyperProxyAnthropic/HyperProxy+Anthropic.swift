@@ -13,7 +13,7 @@ import Foundation
 
 extension HyperProxy {
   public static func anthropic(client: HyperProxyClient) -> AnthropicService {
-    AnthropicService(client: client, definition: HyperProxyProviders.anthropic)
+    AnthropicService(client: client)
   }
 
   public static func anthropic(

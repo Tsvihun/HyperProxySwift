@@ -8,6 +8,7 @@
 
 import Foundation
 import Testing
+
 @testable import HyperProxyCore
 
 @Suite("Assertion request gate", .serialized)
@@ -46,7 +47,8 @@ struct HyperProxyRequestGateTests {
 
     // The body is still open. Before the fix this send waited for the whole
     // stream to end; the timeout ends the stream so a failure cannot hang.
-    let response = try await Self.withDeadline(seconds: 5, onTimeout: HeldStreamURLProtocol.release) {
+    let response = try await Self.withDeadline(seconds: 5, onTimeout: HeldStreamURLProtocol.release)
+    {
       try await client.send(.init(method: .get, path: "v1/models"))
     }
     #expect(response.statusCode == 200)
@@ -58,6 +60,36 @@ struct HyperProxyRequestGateTests {
     case .bytes:
       while try await chunks.next() != nil {}
     }
+  }
+
+  @Test("Cancelling a queued request returns promptly without executing it")
+  func cancelledWaiter() async throws {
+    let gate = HyperProxyRequestGate()
+    let entered = LockedRequestCounter()
+    let operations = LockedRequestCounter()
+    let holder = Task {
+      try await gate.perform {
+        _ = entered.increment()
+        try await Task.sleep(nanoseconds: 60_000_000_000)
+        return 0
+      }
+    }
+    defer { holder.cancel() }
+    while entered.value == 0 { await Task.yield() }
+    let waiter = Task { try await gate.perform { operations.increment() } }
+    try await Task.sleep(nanoseconds: 20_000_000)
+    waiter.cancel()
+    await #expect(throws: CancellationError.self) {
+      _ = try await Self.withDeadline(
+        seconds: 1, onTimeout: { holder.cancel() },
+        {
+          try await waiter.value
+        })
+    }
+    #expect(operations.value == 0)
+    holder.cancel()
+    _ = try? await holder.value
+    #expect(try await gate.perform { 42 } == 42)
   }
 
   private struct DeadlineExceeded: Error {}

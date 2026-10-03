@@ -10,6 +10,7 @@ import Foundation
 import HyperProxyCore
 
 public enum HyperProxyProviderRouteError: Error, Sendable, Equatable {
+  case providerMismatch(expected: String, actual: String)
   case unknownOperation(provider: String, operation: String)
   case missingPathParameter(String)
   case unexpectedJSONBody(operation: String)

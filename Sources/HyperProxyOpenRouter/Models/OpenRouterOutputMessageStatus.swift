@@ -40,4 +40,13 @@ public enum OpenRouterOutputMessageStatus: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var completed: Self { .outputMessageStatusAnyOf1(.completed) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var incomplete: Self { .outputMessageStatusAnyOf2(.incomplete) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var inProgress: Self { .outputMessageStatusAnyOf3(.inProgress) }
 }

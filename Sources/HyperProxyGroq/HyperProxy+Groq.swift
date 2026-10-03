@@ -13,7 +13,7 @@ import Foundation
 
 extension HyperProxy {
   public static func groq(client: HyperProxyClient) -> GroqService {
-    GroqService(client: client, definition: HyperProxyProviders.groq)
+    GroqService(client: client)
   }
 
   public static func groq(

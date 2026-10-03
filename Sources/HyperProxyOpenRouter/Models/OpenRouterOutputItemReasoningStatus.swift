@@ -40,4 +40,13 @@ public enum OpenRouterOutputItemReasoningStatus: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var completed: Self { .outputItemReasoningStatusAnyOf1(.completed) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var incomplete: Self { .outputItemReasoningStatusAnyOf2(.incomplete) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var inProgress: Self { .outputItemReasoningStatusAnyOf3(.inProgress) }
 }

@@ -33,4 +33,10 @@ public enum TogetherVideoFrameImageInputFrame: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var first: Self { .videoFrameImageInputFrameAnyOf2(.first) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var last: Self { .videoFrameImageInputFrameAnyOf2(.last) }
 }

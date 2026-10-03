@@ -40,4 +40,13 @@ public enum OpenRouterInputMessageItemRole: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var user: Self { .inputMessageItemRoleAnyOf1(.user) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var system: Self { .inputMessageItemRoleAnyOf2(.system) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var developer: Self { .inputMessageItemRoleAnyOf3(.developer) }
 }

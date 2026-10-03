@@ -13,7 +13,7 @@ import Foundation
 
 extension HyperProxy {
   public static func fal(client: HyperProxyClient) -> FalService {
-    FalService(client: client, definition: HyperProxyProviders.fal)
+    FalService(client: client)
   }
 
   public static func fal(

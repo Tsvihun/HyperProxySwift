@@ -11,7 +11,10 @@ import Foundation
 @_exported import HyperProxyCore
 @_exported import HyperProxyProviders
 
-public enum FireworksOperation: String, HyperProxyProviderOperation {
+public enum FireworksOperation: String, HyperProxyCatalogOperation {
+  public static var providerDefinition: HyperProxyProviderDefinition {
+    HyperProxyProviders.fireworks
+  }
   /// `GET v1/accounts/{account_id}/billing/summary`
   case gatewayGetBillingSummary = "Gateway.GetBillingSummary"
   /// `POST v1/accounts/{account_id}/evaluations/{evaluation_id}:preview`

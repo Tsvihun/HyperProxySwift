@@ -37,4 +37,7 @@ public enum OpenAIRealtimeSessionCreateResponseGATracingAnyOf1: Codable, Sendabl
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var auto: Self { .realtimeSessionCreateResponseGATracingAnyOf1OneOf1(.auto) }
 }

@@ -13,7 +13,7 @@ import Foundation
 
 extension HyperProxy {
   public static func brave(client: HyperProxyClient) -> BraveService {
-    BraveService(client: client, definition: HyperProxyProviders.brave)
+    BraveService(client: client)
   }
 
   public static func brave(

@@ -6,8 +6,6 @@
 //  Copyright © 2026 HyperProxy. All rights reserved.
 //
 
-
-
 public enum HyperProxy {
   /// The SDK version sent with requests and exposed for diagnostics.
   public static let sdkVersion = "0.4.1"

@@ -7,6 +7,7 @@
 //
 
 import Testing
+
 @testable import HyperProxyCore
 
 @Suite("HyperProxy SSE parser")

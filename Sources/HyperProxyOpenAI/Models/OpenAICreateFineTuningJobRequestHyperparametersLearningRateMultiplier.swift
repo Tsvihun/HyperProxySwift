@@ -36,4 +36,9 @@ public enum OpenAICreateFineTuningJobRequestHyperparametersLearningRateMultiplie
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var auto: Self {
+    .createFineTuningJobRequestHyperparametersLearningRateMultiplierOneOf1(.auto)
+  }
 }

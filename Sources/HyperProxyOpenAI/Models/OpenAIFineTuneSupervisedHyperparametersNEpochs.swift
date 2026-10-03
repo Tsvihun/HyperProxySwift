@@ -34,6 +34,9 @@ public enum OpenAIFineTuneSupervisedHyperparametersNEpochs: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var auto: Self { .fineTuneSupervisedHyperparametersNEpochsOneOf1(.auto) }
 }
 
 extension OpenAIFineTuneSupervisedHyperparametersNEpochs: ExpressibleByIntegerLiteral {

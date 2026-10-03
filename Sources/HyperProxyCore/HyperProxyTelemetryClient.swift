@@ -10,7 +10,10 @@ import Foundation
 
 /// Trusted server/macOS process only. Never embed an `hp_obs_` token in a distributed app.
 /// One bounded attempt per submit; the host owns its background queue and retry policy.
-@available(iOS, unavailable, message: "Relay metrics through your backend; ingest tokens must not ship in apps.")
+@available(
+  iOS, unavailable,
+  message: "Relay metrics through your backend; ingest tokens must not ship in apps."
+)
 @available(watchOS, unavailable, message: "Relay metrics through your backend.")
 @available(visionOS, unavailable, message: "Relay metrics through your backend.")
 @available(tvOS, unavailable, message: "Relay metrics through your backend.")
@@ -25,15 +28,18 @@ public final class HyperProxyTelemetryClient: Sendable {
 
   init(projectID: String, ingestToken: String, configuration: URLSessionConfiguration) throws {
     guard projectID.range(of: "^[a-zA-Z0-9_-]{1,128}$", options: .regularExpression) != nil,
-      ingestToken.hasPrefix("hp_obs_"), ingestToken.utf8.allSatisfy({ (33...126).contains($0) }) else {
+      ingestToken.hasPrefix("hp_obs_"), ingestToken.utf8.allSatisfy({ (33...126).contains($0) })
+    else {
       throw HyperProxyMetadataError.invalidField("telemetry_credentials")
     }
-    self.endpoint = URL(string: "https://app.hyperproxyai.com/api/v1/admin/projects/\(projectID)/events")!
+    self.endpoint = URL(
+      string: "https://app.hyperproxyai.com/api/v1/admin/projects/\(projectID)/events")!
     self.token = ingestToken
     configuration.timeoutIntervalForResource = 15
     configuration.httpShouldSetCookies = false
     configuration.urlCache = nil
-    self.session = URLSession(configuration: configuration, delegate: TelemetryRedirectBlocker(), delegateQueue: nil)
+    self.session = URLSession(
+      configuration: configuration, delegate: TelemetryRedirectBlocker(), delegateQueue: nil)
   }
 
   deinit { self.session.invalidateAndCancel() }
@@ -54,12 +60,14 @@ public final class HyperProxyTelemetryClient: Sendable {
     let (data, response) = try await self.session.data(for: request)
     guard let response = response as? HTTPURLResponse else { throw URLError(.badServerResponse) }
     guard response.statusCode == 200 || response.statusCode == 201 else {
-      throw HyperProxyError.httpStatus(code: response.statusCode, body: data, headers: response.hyperProxyHeaders)
+      throw HyperProxyError.httpStatus(
+        code: response.statusCode, body: data, headers: response.hyperProxyHeaders)
     }
     let receipt = try JSONDecoder().decode(HyperProxyTelemetryReceipt.self, from: data)
     guard receipt.eventID == event.eventID,
       (response.statusCode == 201 && receipt.status == .accepted)
-        || (response.statusCode == 200 && receipt.status == .duplicate) else {
+        || (response.statusCode == 200 && receipt.status == .duplicate)
+    else {
       throw URLError(.badServerResponse)
     }
     return receipt

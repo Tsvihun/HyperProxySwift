@@ -32,4 +32,16 @@ public enum OpenRouterPDFParserEngine: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var mistralOcr: Self { .pDFParserEngineAnyOf1(.mistralOcr) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var native: Self { .pDFParserEngineAnyOf1(.native) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var cloudflareAi: Self { .pDFParserEngineAnyOf1(.cloudflareAi) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var pdfText: Self { .pDFParserEngineAnyOf2(.pdfText) }
 }

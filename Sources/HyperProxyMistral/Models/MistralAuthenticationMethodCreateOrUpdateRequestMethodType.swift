@@ -32,4 +32,22 @@ public enum MistralAuthenticationMethodCreateOrUpdateRequestMethodType: Codable,
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var oauth2: Self { .outboundAuthenticationType(.oauth2) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var bearer: Self { .outboundAuthenticationType(.bearer) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var none: Self { .outboundAuthenticationType(.none) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var githubApp: Self { .outboundAuthenticationType(.githubApp) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var slackApp: Self { .outboundAuthenticationType(.slackApp) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var webhook: Self { .inboundAuthenticationType(.webhook) }
 }

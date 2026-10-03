@@ -9,6 +9,7 @@
 import Foundation
 import Network
 import Testing
+
 @testable import HyperProxyCore
 
 /// Echoes text frames and records how the client closed the connection.
@@ -21,7 +22,8 @@ final class WebSocketEchoServer: @unchecked Sendable {
   init() throws {
     let parameters = NWParameters.tcp
     parameters.requiredLocalEndpoint = .hostPort(host: "127.0.0.1", port: .any)
-    parameters.defaultProtocolStack.applicationProtocols.insert(NWProtocolWebSocket.Options(), at: 0)
+    parameters.defaultProtocolStack.applicationProtocols.insert(
+      NWProtocolWebSocket.Options(), at: 0)
     listener = try NWListener(using: parameters)
   }
 
@@ -56,7 +58,8 @@ final class WebSocketEchoServer: @unchecked Sendable {
 
   private func receive(on connection: NWConnection) {
     connection.receiveMessage { [self] data, context, _, error in
-      let metadata = context?.protocolMetadata(definition: NWProtocolWebSocket.definition)
+      let metadata =
+        context?.protocolMetadata(definition: NWProtocolWebSocket.definition)
         as? NWProtocolWebSocket.Metadata
       if error != nil || metadata?.opcode == .close {
         lock.withLock { recordedCloseCode = metadata?.closeCode ?? .protocolCode(.abnormalClosure) }
@@ -67,7 +70,8 @@ final class WebSocketEchoServer: @unchecked Sendable {
         let reply = NWConnection.ContentContext(
           identifier: "echo", metadata: [NWProtocolWebSocket.Metadata(opcode: .text)]
         )
-        connection.send(content: data, contentContext: reply, isComplete: true, completion: .idempotent)
+        connection.send(
+          content: data, contentContext: reply, isComplete: true, completion: .idempotent)
       }
       receive(on: connection)
     }

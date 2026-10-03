@@ -30,8 +30,9 @@ extension HyperProxyRequest {
 
   public static func isTraceHeader(_ name: String) -> Bool {
     let name = name.lowercased()
-    return name.hasPrefix("x-hyperproxy-property-") || [
-      "x-hyperproxy-session-id", "x-hyperproxy-session-name", "x-hyperproxy-session-path",
-    ].contains(name)
+    return name.hasPrefix("x-hyperproxy-property-")
+      || [
+        "x-hyperproxy-session-id", "x-hyperproxy-session-name", "x-hyperproxy-session-path",
+      ].contains(name)
   }
 }

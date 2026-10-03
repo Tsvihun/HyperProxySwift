@@ -8,8 +8,9 @@
 
 import CryptoKit
 import Foundation
+
 #if canImport(DeviceCheck) && (os(iOS) || os(macOS) || os(visionOS))
-import DeviceCheck
+  import DeviceCheck
 #endif
 
 public actor HyperProxyAppAttest {
@@ -21,6 +22,7 @@ public actor HyperProxyAppAttest {
   private let appAttest: any HyperProxyPlatformAppAttest
   private let storageKey: String
   private var cachedState: State?
+  private let stateGate = HyperProxyRequestGate()
 
   public init(
     projectID: String,
@@ -56,11 +58,13 @@ public actor HyperProxyAppAttest {
 
   public nonisolated func security(mode: HyperProxyAppAttestMode) -> HyperProxySecurity {
     if mode == .assertion {
-      return HyperProxySecurity(serializingRequests: true, requestHeaderProvider: { [self] request in
-        let context = try HyperProxyRequestContext(request: request)
-        let proof = try await self.headers(for: context.signingData, mode: mode)
-        return context.headers.merging(proof, uniquingKeysWith: { _, new in new })
-      })
+      return HyperProxySecurity(
+        serializingRequests: true,
+        requestHeaderProvider: { [self] request in
+          let context = try HyperProxyRequestContext(request: request)
+          let proof = try await self.headers(for: context.signingData, mode: mode)
+          return context.headers.merging(proof, uniquingKeysWith: { _, new in new })
+        })
     }
     return HyperProxySecurity(serializingRequests: false) { [self] body in
       try await self.headers(for: body, mode: mode)
@@ -72,17 +76,39 @@ public actor HyperProxyAppAttest {
   }
 
   public func invalidateDeviceToken() async throws {
+    try await self.stateGate.perform {
+      try await self.clearDeviceToken()
+    }
+  }
+
+  public func resetEnrollment() async throws {
+    try await self.stateGate.perform {
+      try await self.resetState()
+    }
+  }
+
+  private func clearDeviceToken() async throws {
     var state = try await self.state()
     state.deviceToken = nil
     state.deviceTokenExpiresAt = nil
     try await self.save(state)
   }
 
-  public func resetEnrollment() async throws {
+  private func resetState() async throws {
     try await self.save(State())
   }
 
   private func headers(
+    for body: Data,
+    mode: HyperProxyAppAttestMode
+  ) async throws -> [String: String] {
+    try await self.stateGate.perform {
+      try await self.makeHeaders(for: body, mode: mode)
+    }
+  }
+
+  // All enrollment, token refresh and invalidation share this gate across awaits.
+  private func makeHeaders(
     for body: Data,
     mode: HyperProxyAppAttestMode
   ) async throws -> [String: String] {
@@ -145,7 +171,7 @@ public actor HyperProxyAppAttest {
       try await self.save(state)
       return response.deviceToken
     } catch HyperProxyError.httpStatus(let code, _, _) where code == 401 && allowEnrollmentRetry {
-      try await self.resetEnrollment()
+      try await self.resetState()
       return try await self.deviceToken(allowEnrollmentRetry: false)
     }
   }
@@ -166,7 +192,7 @@ public actor HyperProxyAppAttest {
       } catch HyperProxyError.httpStatus(let code, _, _)
         where code == 401 && allowKeyRetry
       {
-        try await self.resetEnrollment()
+        try await self.resetState()
         return try await self.ensureRegisteredKey(allowKeyRetry: false)
       }
     }
@@ -203,10 +229,10 @@ public actor HyperProxyAppAttest {
     } catch HyperProxyError.httpStatus(let code, _, _)
       where code == 401 && allowKeyRetry
     {
-      try await self.resetEnrollment()
+      try await self.resetState()
       return try await self.ensureRegisteredKey(allowKeyRetry: false)
     } catch  where allowKeyRetry && Self.isUnusableKeyError(error) {
-      try await self.resetEnrollment()
+      try await self.resetState()
       return try await self.ensureRegisteredKey(allowKeyRetry: false)
     }
   }
@@ -268,11 +294,11 @@ public actor HyperProxyAppAttest {
   }
 
   private func save(_ state: State) async throws {
-    self.cachedState = state
     try await self.storage.set(
       try JSONEncoder().encode(state),
       forKey: self.storageKey
     )
+    self.cachedState = state
   }
 
   private static func defaultAttestationURL(for gatewayURL: URL) -> URL {

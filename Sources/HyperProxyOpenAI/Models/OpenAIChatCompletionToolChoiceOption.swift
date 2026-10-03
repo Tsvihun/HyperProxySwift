@@ -47,4 +47,13 @@ public enum OpenAIChatCompletionToolChoiceOption: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var none: Self { .chatCompletionToolChoiceOptionOneOf1(.none) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var auto: Self { .chatCompletionToolChoiceOptionOneOf1(.auto) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var requiredValue: Self { .chatCompletionToolChoiceOptionOneOf1(.requiredValue) }
 }

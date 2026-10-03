@@ -32,6 +32,30 @@ public enum MistralGetWorkflowsV1WorkflowsGetParametersStatus: Codable, Sendable
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var rUNNING: Self { .workflowExecutionStatus(.rUNNING) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var cOMPLETED: Self { .workflowExecutionStatus(.cOMPLETED) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var fAILED: Self { .workflowExecutionStatus(.fAILED) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var cANCELED: Self { .workflowExecutionStatus(.cANCELED) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var tERMINATED: Self { .workflowExecutionStatus(.tERMINATED) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var cONTINUEDASNEW: Self { .workflowExecutionStatus(.cONTINUEDASNEW) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var tIMEDOUT: Self { .workflowExecutionStatus(.tIMEDOUT) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var rETRYINGAFTERERROR: Self { .workflowExecutionStatus(.rETRYINGAFTERERROR) }
 }
 
 extension MistralGetWorkflowsV1WorkflowsGetParametersStatus: ExpressibleByArrayLiteral {

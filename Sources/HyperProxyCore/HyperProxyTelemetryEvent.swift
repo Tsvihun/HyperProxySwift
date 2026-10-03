@@ -33,16 +33,22 @@ public struct HyperProxyTelemetryEvent: Encodable, Sendable {
     clientID: String? = nil, sessionID: String? = nil, sessionName: String? = nil
   ) throws {
     guard provider.range(of: "^[a-z0-9_-]{1,32}$", options: .regularExpression) != nil,
-      !model.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, model.unicodeScalars.count <= 128,
+      !model.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+      model.unicodeScalars.count <= 128,
       (100...599).contains(statusCode), (0...86_400_000).contains(durationMS),
       occurredAt.timeIntervalSince1970.isFinite,
       (tokensIn == nil) == (tokensOut == nil),
-      [tokensIn ?? 0, tokensOut ?? 0, cachedTokensIn, cacheWriteTokensIn].allSatisfy({ (0...100_000_000).contains($0) }),
-      cachedTokensIn + cacheWriteTokensIn <= (tokensIn ?? 0) else {
+      [tokensIn ?? 0, tokensOut ?? 0, cachedTokensIn, cacheWriteTokensIn].allSatisfy({
+        (0...100_000_000).contains($0)
+      }),
+      cachedTokensIn + cacheWriteTokensIn <= (tokensIn ?? 0)
+    else {
       throw HyperProxyMetadataError.invalidField("telemetry_event")
     }
     for value in [clientID, sessionID, sessionName].compactMap({ $0 }) {
-      guard !value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, value.unicodeScalars.count <= 128 else {
+      guard !value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+        value.unicodeScalars.count <= 128
+      else {
         throw HyperProxyMetadataError.invalidField("telemetry_identity")
       }
     }
@@ -70,10 +76,17 @@ public struct HyperProxyTelemetryEvent: Encodable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
-    case eventID = "event_id", occurredAt = "occurred_at", provider, model
-    case statusCode = "status_code", durationMS = "duration_ms"
-    case tokensIn = "tokens_in", tokensOut = "tokens_out"
-    case cachedTokensIn = "cached_tokens_in", cacheWriteTokensIn = "cache_write_tokens_in"
-    case clientID = "client_id", sessionID = "session_id", sessionName = "session_name"
+    case eventID = "event_id"
+    case occurredAt = "occurred_at"
+    case provider, model
+    case statusCode = "status_code"
+    case durationMS = "duration_ms"
+    case tokensIn = "tokens_in"
+    case tokensOut = "tokens_out"
+    case cachedTokensIn = "cached_tokens_in"
+    case cacheWriteTokensIn = "cache_write_tokens_in"
+    case clientID = "client_id"
+    case sessionID = "session_id"
+    case sessionName = "session_name"
   }
 }

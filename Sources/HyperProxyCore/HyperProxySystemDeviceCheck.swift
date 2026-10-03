@@ -7,12 +7,13 @@
 //
 
 import Foundation
+
 #if canImport(DeviceCheck) && (os(iOS) || os(macOS) || os(visionOS))
-import DeviceCheck
+  import DeviceCheck
 #endif
 
 #if canImport(DeviceCheck) && (os(iOS) || os(macOS) || os(visionOS))
-actor HyperProxySystemDeviceCheck: HyperProxyPlatformDeviceCheck {
+  actor HyperProxySystemDeviceCheck: HyperProxyPlatformDeviceCheck {
     private let device = DCDevice.current
 
     func isSupported() -> Bool {
@@ -38,7 +39,7 @@ actor HyperProxySystemDeviceCheck: HyperProxyPlatformDeviceCheck {
 
 #if canImport(DeviceCheck) && (os(iOS) || os(macOS) || os(visionOS))
 #else
-struct HyperProxySystemDeviceCheck: HyperProxyPlatformDeviceCheck {
+  struct HyperProxySystemDeviceCheck: HyperProxyPlatformDeviceCheck {
     func isSupported() async -> Bool {
       false
     }

@@ -7,13 +7,14 @@
 //
 
 import Foundation
+
 #if canImport(AppKit) && !targetEnvironment(macCatalyst)
-import AppKit
+  import AppKit
 #elseif canImport(UIKit)
 #endif
 #if canImport(AppKit) && !targetEnvironment(macCatalyst)
 #elseif canImport(UIKit)
-import UIKit
+  import UIKit
 #endif
 
 /// A validated base64 data URL for image, audio, and document provider inputs.

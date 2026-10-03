@@ -34,6 +34,9 @@ public enum OpenAIRealtimeBetaResponseCreateParamsMaxOutputTokens: Codable, Send
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var inf: Self { .realtimeBetaResponseCreateParamsMaxOutputTokensOneOf2(.inf) }
 }
 
 extension OpenAIRealtimeBetaResponseCreateParamsMaxOutputTokens: ExpressibleByIntegerLiteral {

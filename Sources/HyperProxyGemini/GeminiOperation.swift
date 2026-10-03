@@ -11,7 +11,8 @@ import Foundation
 @_exported import HyperProxyCore
 @_exported import HyperProxyProviders
 
-public enum GeminiOperation: String, HyperProxyProviderOperation {
+public enum GeminiOperation: String, HyperProxyCatalogOperation {
+  public static var providerDefinition: HyperProxyProviderDefinition { HyperProxyProviders.gemini }
   /// `POST upload/v1beta/fileSearchStores/{store_id}:uploadToFileSearchStore`
   case fileSearchStoresUpload = "fileSearchStores.upload"
   /// `POST upload/v1beta/files`

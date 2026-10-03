@@ -33,4 +33,7 @@ public enum OpenAIRealtimeSessionCreateResponseTracing: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var auto: Self { .realtimeSessionCreateResponseTracingOneOf1(.auto) }
 }

@@ -54,4 +54,19 @@ public enum OpenAILiveSessionClosedReason: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var closeRequested: Self { .liveSessionClosedReasonOneOf1(.closeRequested) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var expired: Self { .liveSessionClosedReasonOneOf2(.expired) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var content: Self { .liveSessionClosedReasonOneOf3(.content) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var remoteHangup: Self { .liveSessionClosedReasonOneOf4(.remoteHangup) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var connectionLost: Self { .liveSessionClosedReasonOneOf5(.connectionLost) }
 }

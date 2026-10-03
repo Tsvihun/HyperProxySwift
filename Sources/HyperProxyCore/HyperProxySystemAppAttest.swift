@@ -8,12 +8,13 @@
 
 import CryptoKit
 import Foundation
+
 #if canImport(DeviceCheck) && (os(iOS) || os(macOS) || os(visionOS))
-import DeviceCheck
+  import DeviceCheck
 #endif
 
 #if canImport(DeviceCheck) && (os(iOS) || os(macOS) || os(visionOS))
-actor HyperProxySystemAppAttest: HyperProxyPlatformAppAttest {
+  actor HyperProxySystemAppAttest: HyperProxyPlatformAppAttest {
     private let service = DCAppAttestService.shared
 
     func isSupported() -> Bool {
@@ -37,7 +38,7 @@ actor HyperProxySystemAppAttest: HyperProxyPlatformAppAttest {
 
 #if canImport(DeviceCheck) && (os(iOS) || os(macOS) || os(visionOS))
 #else
-struct HyperProxySystemAppAttest: HyperProxyPlatformAppAttest {
+  struct HyperProxySystemAppAttest: HyperProxyPlatformAppAttest {
     func isSupported() async -> Bool {
       false
     }

@@ -33,4 +33,10 @@ public enum OpenAILiveDelegationItemTarget: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var client: Self { .liveDelegationItemTargetOneOf1(.client) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var responses: Self { .liveDelegationItemTargetOneOf2(.responses) }
 }

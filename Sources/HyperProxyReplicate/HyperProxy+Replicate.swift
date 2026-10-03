@@ -13,7 +13,7 @@ import Foundation
 
 extension HyperProxy {
   public static func replicate(client: HyperProxyClient) -> ReplicateService {
-    ReplicateService(client: client, definition: HyperProxyProviders.replicate)
+    ReplicateService(client: client)
   }
 
   public static func replicate(

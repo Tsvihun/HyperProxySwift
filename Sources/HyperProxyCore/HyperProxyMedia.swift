@@ -7,13 +7,11 @@
 //
 
 import Foundation
+
 #if canImport(AppKit) && !targetEnvironment(macCatalyst)
-import AppKit
+  import AppKit
 #elseif canImport(UIKit)
-#endif
-#if canImport(AppKit) && !targetEnvironment(macCatalyst)
-#elseif canImport(UIKit)
-import UIKit
+  import UIKit
 #endif
 
 /// Provider-neutral media conveniences. They only transform caller-owned data;
@@ -29,7 +27,7 @@ public enum HyperProxyMedia {
 }
 
 #if canImport(AppKit) && !targetEnvironment(macCatalyst)
-extension HyperProxyMedia {
+  extension HyperProxyMedia {
     public static func jpegData(from image: NSImage, compressionQuality: Double = 0.8) -> Data? {
       guard let tiff = image.tiffRepresentation,
         let bitmap = NSBitmapImageRep(data: tiff)
@@ -48,11 +46,7 @@ extension HyperProxyMedia {
     }
   }
 #elseif canImport(UIKit)
-#endif
-
-#if canImport(AppKit) && !targetEnvironment(macCatalyst)
-#elseif canImport(UIKit)
-extension HyperProxyMedia {
+  extension HyperProxyMedia {
     public static func jpegData(from image: UIImage, compressionQuality: Double = 0.8) -> Data? {
       image.jpegData(
         compressionQuality: CGFloat(max(0, min(1, compressionQuality)))

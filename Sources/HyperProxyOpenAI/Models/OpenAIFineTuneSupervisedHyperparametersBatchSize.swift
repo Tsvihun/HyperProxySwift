@@ -34,6 +34,9 @@ public enum OpenAIFineTuneSupervisedHyperparametersBatchSize: Codable, Sendable 
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var auto: Self { .fineTuneSupervisedHyperparametersBatchSizeOneOf1(.auto) }
 }
 
 extension OpenAIFineTuneSupervisedHyperparametersBatchSize: ExpressibleByIntegerLiteral {

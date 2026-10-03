@@ -32,10 +32,21 @@ public struct HyperProxyBody: Sendable {
   }
 
   public static func formURLEncoded(_ items: [URLQueryItem]) -> Self {
-    var components = URLComponents()
-    components.queryItems = items
+    let allowed = CharacterSet(
+      charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*-._")
+    func encode(_ value: String) -> String {
+      // Form encoding treats + as a space, so literal plus signs must be escaped.
+      value.utf8.map { byte in
+        if byte == 32 { return "+" }
+        if allowed.contains(UnicodeScalar(byte)) { return String(UnicodeScalar(byte)) }
+        return String(format: "%%%02X", byte)
+      }.joined()
+    }
+    let form = items.map { item in
+      encode(item.name) + "=" + encode(item.value ?? "")
+    }.joined(separator: "&")
     return Self(
-      Data((components.percentEncodedQuery ?? "").utf8),
+      Data(form.utf8),
       contentType: "application/x-www-form-urlencoded; charset=utf-8"
     )
   }

@@ -13,7 +13,7 @@ import Foundation
 
 extension HyperProxy {
   public static func deepSeek(client: HyperProxyClient) -> DeepSeekService {
-    DeepSeekService(client: client, definition: HyperProxyProviders.deepSeek)
+    DeepSeekService(client: client)
   }
 
   public static func deepSeek(

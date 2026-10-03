@@ -33,4 +33,13 @@ public enum ElevenLabsContentThresholdGuardrailThreshold: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var low: Self { .contentThresholdGuardrailThresholdAnyOf2(.low) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var medium: Self { .contentThresholdGuardrailThresholdAnyOf2(.medium) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var high: Self { .contentThresholdGuardrailThresholdAnyOf2(.high) }
 }

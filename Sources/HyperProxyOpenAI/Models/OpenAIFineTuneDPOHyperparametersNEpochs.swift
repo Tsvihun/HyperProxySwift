@@ -33,6 +33,9 @@ public enum OpenAIFineTuneDPOHyperparametersNEpochs: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var auto: Self { .fineTuneDPOHyperparametersNEpochsOneOf1(.auto) }
 }
 
 extension OpenAIFineTuneDPOHyperparametersNEpochs: ExpressibleByIntegerLiteral {

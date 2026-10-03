@@ -11,7 +11,8 @@ import Foundation
 @_exported import HyperProxyCore
 @_exported import HyperProxyProviders
 
-public enum EachAIOperation: String, HyperProxyProviderOperation {
+public enum EachAIOperation: String, HyperProxyCatalogOperation {
+  public static var providerDefinition: HyperProxyProviderDefinition { HyperProxyProviders.eachAI }
   /// `POST v1/audio/speech`
   case audioSpeechCreate = "audio.speech.create"
   /// `POST v1/audio/transcriptions`

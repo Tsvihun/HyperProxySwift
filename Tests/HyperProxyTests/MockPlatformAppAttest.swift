@@ -9,9 +9,15 @@
 import CryptoKit
 import Foundation
 import Testing
+
 @testable import HyperProxyCore
 
 actor MockPlatformAppAttest: HyperProxyPlatformAppAttest {
+  private(set) var keyCount = 0
+  private let keyDelay: UInt64
+
+  init(keyDelay: UInt64 = 0) { self.keyDelay = keyDelay }
+
   private(set) var attestationHash: Data?
   private(set) var assertionHashes: [Data] = []
 
@@ -23,8 +29,10 @@ actor MockPlatformAppAttest: HyperProxyPlatformAppAttest {
     true
   }
 
-  func generateKey() -> String {
-    "device-key"
+  func generateKey() async throws -> String {
+    self.keyCount += 1
+    if self.keyDelay > 0 { try await Task.sleep(nanoseconds: self.keyDelay) }
+    return "device-key"
   }
 
   func attestKey(keyID: String, clientDataHash: Data) -> Data {

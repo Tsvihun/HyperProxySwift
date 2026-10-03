@@ -34,6 +34,9 @@ public enum OpenAIFineTuneReinforcementHyperparametersBatchSize: Codable, Sendab
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var auto: Self { .fineTuneReinforcementHyperparametersBatchSizeOneOf1(.auto) }
 }
 
 extension OpenAIFineTuneReinforcementHyperparametersBatchSize: ExpressibleByIntegerLiteral {

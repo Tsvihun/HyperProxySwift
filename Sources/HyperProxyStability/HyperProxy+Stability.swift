@@ -13,7 +13,7 @@ import Foundation
 
 extension HyperProxy {
   public static func stability(client: HyperProxyClient) -> StabilityService {
-    StabilityService(client: client, definition: HyperProxyProviders.stability)
+    StabilityService(client: client)
   }
 
   public static func stability(

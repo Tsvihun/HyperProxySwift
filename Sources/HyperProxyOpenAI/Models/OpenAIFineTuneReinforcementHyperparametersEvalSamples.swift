@@ -34,6 +34,9 @@ public enum OpenAIFineTuneReinforcementHyperparametersEvalSamples: Codable, Send
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var auto: Self { .fineTuneReinforcementHyperparametersEvalSamplesOneOf1(.auto) }
 }
 
 extension OpenAIFineTuneReinforcementHyperparametersEvalSamples: ExpressibleByIntegerLiteral {

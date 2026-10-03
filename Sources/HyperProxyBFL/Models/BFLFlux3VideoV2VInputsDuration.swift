@@ -33,6 +33,9 @@ public enum BFLFlux3VideoV2VInputsDuration: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var auto: Self { .flux3VideoV2VInputsDurationAnyOf2(.auto) }
 }
 
 extension BFLFlux3VideoV2VInputsDuration: ExpressibleByIntegerLiteral {

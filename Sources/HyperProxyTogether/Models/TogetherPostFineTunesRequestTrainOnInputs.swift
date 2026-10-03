@@ -33,4 +33,7 @@ public enum TogetherPostFineTunesRequestTrainOnInputs: Codable, Sendable {
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var auto: Self { .postFineTunesRequestTrainOnInputsOneOf2(.auto) }
 }

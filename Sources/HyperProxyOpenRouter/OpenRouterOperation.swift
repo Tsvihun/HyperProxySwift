@@ -11,7 +11,10 @@ import Foundation
 @_exported import HyperProxyCore
 @_exported import HyperProxyProviders
 
-public enum OpenRouterOperation: String, HyperProxyProviderOperation {
+public enum OpenRouterOperation: String, HyperProxyCatalogOperation {
+  public static var providerDefinition: HyperProxyProviderDefinition {
+    HyperProxyProviders.openRouter
+  }
   /// `GET api/v1/organization/members`
   case listOrganizationMembers = "listOrganizationMembers"
   /// `GET api/v1/organization/settings`

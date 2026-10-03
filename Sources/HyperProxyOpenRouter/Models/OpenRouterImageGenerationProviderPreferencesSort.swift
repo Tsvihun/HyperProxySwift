@@ -32,4 +32,16 @@ public enum OpenRouterImageGenerationProviderPreferencesSort: Codable, Sendable 
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var price: Self { .providerSort(.price) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var throughput: Self { .providerSort(.throughput) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var latency: Self { .providerSort(.latency) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var exacto: Self { .providerSort(.exacto) }
 }

@@ -7,13 +7,14 @@
 //
 
 import Foundation
+
 #if canImport(AppKit) && !targetEnvironment(macCatalyst)
-import AppKit
+  import AppKit
 #elseif canImport(UIKit)
 #endif
 #if canImport(AppKit) && !targetEnvironment(macCatalyst)
 #elseif canImport(UIKit)
-import UIKit
+  import UIKit
 #endif
 
 extension HyperProxy {
@@ -27,7 +28,7 @@ extension HyperProxy {
 }
 
 #if canImport(AppKit) && !targetEnvironment(macCatalyst)
-extension HyperProxy {
+  extension HyperProxy {
     public static func encodeImageAsJPEG(
       _ image: NSImage,
       compressionQuality: CGFloat = 0.8
@@ -65,7 +66,7 @@ extension HyperProxy {
 
 #if canImport(AppKit) && !targetEnvironment(macCatalyst)
 #elseif canImport(UIKit)
-extension HyperProxy {
+  extension HyperProxy {
     public static func encodeImageAsJPEG(
       _ image: UIImage,
       compressionQuality: CGFloat = 0.8

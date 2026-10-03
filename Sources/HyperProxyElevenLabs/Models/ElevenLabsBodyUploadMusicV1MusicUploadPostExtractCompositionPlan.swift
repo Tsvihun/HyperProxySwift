@@ -32,4 +32,13 @@ public enum ElevenLabsBodyUploadMusicV1MusicUploadPostExtractCompositionPlan: Co
       try container.encode(value)
     }
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var musicV1: Self { .musicModelID(.musicV1) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var musicV2: Self { .musicModelID(.musicV2) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var musicV25: Self { .musicModelID(.musicV25) }
 }
