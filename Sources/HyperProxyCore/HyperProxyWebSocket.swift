@@ -18,6 +18,7 @@ public final class HyperProxyWebSocket: @unchecked Sendable {
   private var messageSubscriber:
     (
       identifier: UUID,
+      receivesOneMessage: Bool,
       continuation: AsyncThrowingStream<URLSessionWebSocketTask.Message, Error>.Continuation
     )?
   private var isReceivingMessage = false
@@ -61,7 +62,8 @@ public final class HyperProxyWebSocket: @unchecked Sendable {
   /// Concurrent consumers are rejected rather than racing for provider events.
   public func receive() async throws -> URLSessionWebSocketTask.Message {
     let identifier = UUID()
-    var iterator = self.messageStream(identifier: identifier).makeAsyncIterator()
+    var iterator = self.messageStream(identifier: identifier, receivesOneMessage: true)
+      .makeAsyncIterator()
     defer { self.finishMessageStream(identifier: identifier) }
     guard let message = try await iterator.next() else {
       try Task.checkCancellation()
@@ -128,13 +130,13 @@ public final class HyperProxyWebSocket: @unchecked Sendable {
     self.messageStream(identifier: UUID())
   }
 
-  private func messageStream(identifier: UUID) -> AsyncThrowingStream<
-    URLSessionWebSocketTask.Message, Error
-  > {
+  private func messageStream(identifier: UUID, receivesOneMessage: Bool = false)
+    -> MessageStream
+  {
     return AsyncThrowingStream { continuation in
       let claimed = self.lock.withLock {
         guard self.messageSubscriber == nil else { return false }
-        self.messageSubscriber = (identifier, continuation)
+        self.messageSubscriber = (identifier, receivesOneMessage, continuation)
         return true
       }
       guard claimed else {
@@ -213,7 +215,15 @@ public final class HyperProxyWebSocket: @unchecked Sendable {
           }
           continue
         }
-        self.lock.withLock { self.isReceivingMessage = false }
+        let finished: MessageStream.Continuation? = self.lock.withLock {
+          self.isReceivingMessage = false
+          guard subscriber.receivesOneMessage,
+            self.messageSubscriber?.identifier == subscriber.identifier
+          else { return nil }
+          self.messageSubscriber = nil
+          return subscriber.continuation
+        }
+        finished?.finish()
         self.receiveNextMessage()
         return
       }

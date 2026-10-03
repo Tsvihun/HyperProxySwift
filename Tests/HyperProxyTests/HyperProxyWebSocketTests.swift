@@ -125,6 +125,42 @@ struct HyperProxyWebSocketTests {
     }
   }
 
+  @Test("Sequential single receives preserve every message in a burst")
+  func receiveMessageBurst() async throws {
+    let server = try WebSocketEchoServer()
+    let port = try await server.start()
+    defer { server.stop() }
+    let session = URLSession(configuration: .ephemeral)
+    defer { session.invalidateAndCancel() }
+    let client = HyperProxyClient(
+      gatewayURL: URL(string: "http://127.0.0.1:\(port)/p/s")!, appKey: "test", session: session)
+    let socket = try await client.webSocket(.init(method: .get, path: "realtime"))
+    defer { socket.cancel() }
+    for index in 0..<100 {
+      try await socket.send(text: "message-\(index)")
+    }
+    try await withThrowingTaskGroup(of: Void.self) { group in
+      defer { group.cancelAll() }
+      group.addTask {
+        for index in 0..<100 {
+          let message = try await socket.receive()
+          guard case .string(let text) = message else {
+            Issue.record("Expected a text message")
+            return
+          }
+          #expect(text == "message-\(index)")
+          // Leave the socket idle between calls while the remaining frames arrive.
+          try await Task.sleep(nanoseconds: 1_000_000)
+        }
+      }
+      group.addTask {
+        try await Task.sleep(nanoseconds: 5_000_000_000)
+        throw CancellationError()
+      }
+      try await group.next()
+    }
+  }
+
   @Test("An active messages() loop keeps a released wrapper's socket open until the loop ends")
   func activeMessageLoopKeepsTheSocketOpen() async throws {
     let server = try WebSocketEchoServer()
