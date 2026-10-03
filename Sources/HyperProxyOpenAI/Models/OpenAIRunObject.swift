@@ -12,58 +12,58 @@ import HyperProxyCore
 
 public struct OpenAIRunObject: Codable, Sendable {
   public var assistantId: String
-  public var cancelledAt: Int?
-  public var completedAt: Int?
+  public var cancelledAt: Int
+  public var completedAt: Int
   public var createdAt: Int
-  public var expiresAt: Int?
-  public var failedAt: Int?
+  public var expiresAt: Int
+  public var failedAt: Int
   public var id: String
   public var incompleteDetails: OpenAIRunObjectIncompleteDetails?
   public var instructions: String
   public var lastError: OpenAIRunObjectLastError?
-  public var maxCompletionTokens: Int?
-  public var maxPromptTokens: Int?
+  public var maxCompletionTokens: Int
+  public var maxPromptTokens: Int
   public var metadata: OpenAIMetadata?
   public var model: String
   public var object: OpenAIRunObjectObject
   public var parallelToolCalls: Bool
   public var requiredAction: OpenAIRunObjectRequiredAction?
   public var responseFormat: OpenAIAssistantsApiResponseFormatOption?
-  public var startedAt: Int?
+  public var startedAt: Int
   public var status: OpenAIRunObjectStatus
   public var temperature: Double?
   public var threadId: String
-  public var toolChoice: OpenAIAssistantsApiToolChoiceOption
+  public var toolChoice: OpenAIAssistantsApiToolChoiceOption?
   public var tools: [OpenAIRunObjectToolsItem]
   public var topP: Double?
-  public var truncationStrategy: OpenAITruncationObject
+  public var truncationStrategy: OpenAITruncationObject?
   public var usage: OpenAIRunCompletionUsage?
 
   public init(
     assistantId: String,
-    cancelledAt: Int?,
-    completedAt: Int?,
+    cancelledAt: Int,
+    completedAt: Int,
     createdAt: Int,
-    expiresAt: Int?,
-    failedAt: Int?,
+    expiresAt: Int,
+    failedAt: Int,
     id: String,
     incompleteDetails: OpenAIRunObjectIncompleteDetails?,
     instructions: String,
     lastError: OpenAIRunObjectLastError?,
-    maxCompletionTokens: Int?,
-    maxPromptTokens: Int?,
+    maxCompletionTokens: Int,
+    maxPromptTokens: Int,
     metadata: OpenAIMetadata?,
     model: String,
     object: OpenAIRunObjectObject,
     parallelToolCalls: Bool,
     requiredAction: OpenAIRunObjectRequiredAction?,
     responseFormat: OpenAIAssistantsApiResponseFormatOption?,
-    startedAt: Int?,
+    startedAt: Int,
     status: OpenAIRunObjectStatus,
     threadId: String,
-    toolChoice: OpenAIAssistantsApiToolChoiceOption,
+    toolChoice: OpenAIAssistantsApiToolChoiceOption?,
     tools: [OpenAIRunObjectToolsItem],
-    truncationStrategy: OpenAITruncationObject,
+    truncationStrategy: OpenAITruncationObject?,
     usage: OpenAIRunCompletionUsage?,
     temperature: Double? = nil,
     topP: Double? = nil

@@ -28,6 +28,7 @@ public struct PerplexityResponsesRequest: Codable, Sendable {
   public var store: Bool?
   public var stream: Bool?
   public var temperature: Double?
+  public var toolChoice: PerplexityToolChoice?
   public var tools: [PerplexityTool]?
   public var topP: Double?
 
@@ -49,6 +50,7 @@ public struct PerplexityResponsesRequest: Codable, Sendable {
     store: Bool? = nil,
     stream: Bool? = nil,
     temperature: Double? = nil,
+    toolChoice: PerplexityToolChoice? = nil,
     tools: [PerplexityTool]? = nil,
     topP: Double? = nil
   ) {
@@ -69,6 +71,7 @@ public struct PerplexityResponsesRequest: Codable, Sendable {
     self.store = store
     self.stream = stream
     self.temperature = temperature
+    self.toolChoice = toolChoice
     self.tools = tools
     self.topP = topP
   }
@@ -91,6 +94,7 @@ public struct PerplexityResponsesRequest: Codable, Sendable {
     case store
     case stream
     case temperature
+    case toolChoice = "tool_choice"
     case tools
     case topP = "top_p"
   }

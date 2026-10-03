@@ -18,13 +18,16 @@ public struct OpenRouterPublicEndpoint: Codable, Sendable {
   public var modelId: String
   public var modelName: String
   public var name: String
+  public var nativeTools: [String: OpenRouterPublicEndpointNativeToolsValue]
   public var perfLast30mByWorkload: OpenRouterPublicEndpointPerfLast30mByWorkload?
   public var pricing: OpenRouterPublicEndpointPricing
   public var providerName: OpenRouterProviderName
   public var quantization: OpenRouterQuantization?
   public var status: OpenRouterEndpointStatus?
   public var supportedParameters: [OpenRouterParameter]
+  public var supportsImageReference: Bool?
   public var supportsImplicitCaching: Bool
+  public var supportsMultipleAudioReferences: Bool?
   public var supportsToolChoice: OpenRouterToolChoiceSupport
   public var supportsVoiceCloning: Bool?
   public var tag: String
@@ -41,6 +44,7 @@ public struct OpenRouterPublicEndpoint: Codable, Sendable {
     modelId: String,
     modelName: String,
     name: String,
+    nativeTools: [String: OpenRouterPublicEndpointNativeToolsValue],
     pricing: OpenRouterPublicEndpointPricing,
     providerName: OpenRouterProviderName,
     quantization: OpenRouterQuantization?,
@@ -54,6 +58,8 @@ public struct OpenRouterPublicEndpoint: Codable, Sendable {
     uptimeLast5m: Double,
     perfLast30mByWorkload: OpenRouterPublicEndpointPerfLast30mByWorkload? = nil,
     status: OpenRouterEndpointStatus? = nil,
+    supportsImageReference: Bool? = nil,
+    supportsMultipleAudioReferences: Bool? = nil,
     supportsVoiceCloning: Bool? = nil
   ) {
     self.contextLength = contextLength
@@ -63,13 +69,16 @@ public struct OpenRouterPublicEndpoint: Codable, Sendable {
     self.modelId = modelId
     self.modelName = modelName
     self.name = name
+    self.nativeTools = nativeTools
     self.perfLast30mByWorkload = perfLast30mByWorkload
     self.pricing = pricing
     self.providerName = providerName
     self.quantization = quantization
     self.status = status
     self.supportedParameters = supportedParameters
+    self.supportsImageReference = supportsImageReference
     self.supportsImplicitCaching = supportsImplicitCaching
+    self.supportsMultipleAudioReferences = supportsMultipleAudioReferences
     self.supportsToolChoice = supportsToolChoice
     self.supportsVoiceCloning = supportsVoiceCloning
     self.tag = tag
@@ -87,13 +96,16 @@ public struct OpenRouterPublicEndpoint: Codable, Sendable {
     case modelId = "model_id"
     case modelName = "model_name"
     case name
+    case nativeTools = "native_tools"
     case perfLast30mByWorkload = "perf_last_30m_by_workload"
     case pricing
     case providerName = "provider_name"
     case quantization
     case status
     case supportedParameters = "supported_parameters"
+    case supportsImageReference = "supports_image_reference"
     case supportsImplicitCaching = "supports_implicit_caching"
+    case supportsMultipleAudioReferences = "supports_multiple_audio_references"
     case supportsToolChoice = "supports_tool_choice"
     case supportsVoiceCloning = "supports_voice_cloning"
     case tag

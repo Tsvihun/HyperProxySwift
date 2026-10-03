@@ -17,6 +17,10 @@ public enum OpenAISessionTurnItemResource: Codable, Sendable {
   case functionCallOutputItemResource(OpenAIFunctionCallOutputItemResource)
   case agentMessageItemResource(OpenAIAgentMessageItemResource)
   case mcpCallItemResource(OpenAIMcpCallItemResource)
+  case computerUseCallItemResource(OpenAIComputerUseCallItemResource)
+  case browserAuthenticationRequestItemResource(OpenAIBrowserAuthenticationRequestItemResource)
+  case computerUseApprovalRequestResultItemResource(
+    OpenAIComputerUseApprovalRequestResultItemResource)
   case webSearchCallItemResource(OpenAIWebSearchCallItemResource)
   case commandExecutionItemResource(OpenAICommandExecutionItemResource)
   case createSubagentCallItemResource(OpenAICreateSubagentCallItemResource)
@@ -50,6 +54,18 @@ public enum OpenAISessionTurnItemResource: Codable, Sendable {
     }
     if let value = try? container.decode(OpenAIMcpCallItemResource.self) {
       self = .mcpCallItemResource(value)
+      return
+    }
+    if let value = try? container.decode(OpenAIComputerUseCallItemResource.self) {
+      self = .computerUseCallItemResource(value)
+      return
+    }
+    if let value = try? container.decode(OpenAIBrowserAuthenticationRequestItemResource.self) {
+      self = .browserAuthenticationRequestItemResource(value)
+      return
+    }
+    if let value = try? container.decode(OpenAIComputerUseApprovalRequestResultItemResource.self) {
+      self = .computerUseApprovalRequestResultItemResource(value)
       return
     }
     if let value = try? container.decode(OpenAIWebSearchCallItemResource.self) {
@@ -98,6 +114,12 @@ public enum OpenAISessionTurnItemResource: Codable, Sendable {
     case .agentMessageItemResource(let value):
       try container.encode(value)
     case .mcpCallItemResource(let value):
+      try container.encode(value)
+    case .computerUseCallItemResource(let value):
+      try container.encode(value)
+    case .browserAuthenticationRequestItemResource(let value):
+      try container.encode(value)
+    case .computerUseApprovalRequestResultItemResource(let value):
       try container.encode(value)
     case .webSearchCallItemResource(let value):
       try container.encode(value)

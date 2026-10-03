@@ -123,6 +123,13 @@ public enum TogetherOperation: String, HyperProxyProviderOperation {
   case v1DeploymentsIdPatch = "v1.deployments._id_.patch"
   /// `GET v1/deployments/{id}/logs`
   case v1DeploymentsIdLogsGet = "v1.deployments._id_.logs.get"
+  /// `GET v1/deployments/{id}/revisions`
+  case v1DeploymentsIdRevisionsGet = "v1.deployments._id_.revisions.get"
+  /// `GET v1/deployments/{id}/revisions/{revisionIdentifier}`
+  case v1DeploymentsIdRevisionsRevisionIdentifierGet =
+    "v1.deployments._id_.revisions._revisionIdentifier_.get"
+  /// `POST v1/deployments/{id}/rollback`
+  case v1DeploymentsIdRollbackPost = "v1.deployments._id_.rollback.post"
   /// `POST v1/embeddings`
   case embeddingsCreate = "embeddings.create"
   /// `GET v1/endpoints`

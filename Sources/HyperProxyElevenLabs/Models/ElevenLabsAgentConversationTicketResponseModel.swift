@@ -22,10 +22,13 @@ public struct ElevenLabsAgentConversationTicketResponseModel: Codable, Sendable 
   public var lastSeenUnixSecs: Int?
   public var needsClustering: Bool
   public var ownerUserId: String
+  public var priority: ElevenLabsAgentConversationTicketPriority?
+  public var priorityChanges: [ElevenLabsTicketPriorityChangeResponseModel]
   public var qaComment: String?
   public var source: ElevenLabsAgentConversationTicketSource
   public var status: ElevenLabsAgentConversationTicketStatus
   public var ticketComments: [ElevenLabsTicketCommentResponseModel]
+  public var title: String?
   public var turnComments: [ElevenLabsTurnCommentResponseModel]
   public var updatedAtUnixSecs: Int
   public var workspaceId: String
@@ -42,10 +45,13 @@ public struct ElevenLabsAgentConversationTicketResponseModel: Codable, Sendable 
     lastSeenUnixSecs: Int?,
     needsClustering: Bool,
     ownerUserId: String,
+    priority: ElevenLabsAgentConversationTicketPriority?,
+    priorityChanges: [ElevenLabsTicketPriorityChangeResponseModel],
     qaComment: String?,
     source: ElevenLabsAgentConversationTicketSource,
     status: ElevenLabsAgentConversationTicketStatus,
     ticketComments: [ElevenLabsTicketCommentResponseModel],
+    title: String?,
     turnComments: [ElevenLabsTurnCommentResponseModel],
     updatedAtUnixSecs: Int,
     workspaceId: String
@@ -61,10 +67,13 @@ public struct ElevenLabsAgentConversationTicketResponseModel: Codable, Sendable 
     self.lastSeenUnixSecs = lastSeenUnixSecs
     self.needsClustering = needsClustering
     self.ownerUserId = ownerUserId
+    self.priority = priority
+    self.priorityChanges = priorityChanges
     self.qaComment = qaComment
     self.source = source
     self.status = status
     self.ticketComments = ticketComments
+    self.title = title
     self.turnComments = turnComments
     self.updatedAtUnixSecs = updatedAtUnixSecs
     self.workspaceId = workspaceId
@@ -82,10 +91,13 @@ public struct ElevenLabsAgentConversationTicketResponseModel: Codable, Sendable 
     case lastSeenUnixSecs = "last_seen_unix_secs"
     case needsClustering = "needs_clustering"
     case ownerUserId = "owner_user_id"
+    case priority
+    case priorityChanges = "priority_changes"
     case qaComment = "qa_comment"
     case source
     case status
     case ticketComments = "ticket_comments"
+    case title
     case turnComments = "turn_comments"
     case updatedAtUnixSecs = "updated_at_unix_secs"
     case workspaceId = "workspace_id"

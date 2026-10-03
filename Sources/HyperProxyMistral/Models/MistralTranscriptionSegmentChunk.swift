@@ -11,16 +11,16 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralTranscriptionSegmentChunk: Codable, Sendable {
-  public var end: Double
+  public var end: Double?
   public var score: Double?
   public var speakerId: String?
-  public var start: Double
+  public var start: Double?
   public var text: String
   public var kind: MistralTranscriptionSegmentKind?
 
   public init(
-    end: Double,
-    start: Double,
+    end: Double?,
+    start: Double?,
     text: String,
     score: Double? = nil,
     speakerId: String? = nil,

@@ -221,6 +221,10 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
   public var mergeBranchIntoTarget: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.mergeBranchIntoTarget)
   }
+  /// `GET v1/convai/agents/{agent_id}/deployments`
+  public var listAgentDeploymentsRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.listAgentDeploymentsRoute)
+  }
   /// `POST v1/convai/agents/{agent_id}/deployments`
   public var createAgentDeploymentRoute: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.createAgentDeploymentRoute)
@@ -252,6 +256,34 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
   /// `GET v1/convai/agents/{agent_id}/link`
   public var getAgentLinkRoute: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.getAgentLinkRoute)
+  }
+  /// `GET v1/convai/agents/{agent_id}/merge-proposals`
+  public var listMergeProposalsRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.listMergeProposalsRoute)
+  }
+  /// `POST v1/convai/agents/{agent_id}/merge-proposals`
+  public var createMergeProposalRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.createMergeProposalRoute)
+  }
+  /// `GET v1/convai/agents/{agent_id}/merge-proposals/{merge_proposal_id}`
+  public var getMergeProposalRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.getMergeProposalRoute)
+  }
+  /// `PATCH v1/convai/agents/{agent_id}/merge-proposals/{merge_proposal_id}`
+  public var updateMergeProposalRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.updateMergeProposalRoute)
+  }
+  /// `POST v1/convai/agents/{agent_id}/merge-proposals/{merge_proposal_id}/comments`
+  public var addMergeProposalCommentRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.addMergeProposalCommentRoute)
+  }
+  /// `POST v1/convai/agents/{agent_id}/merge-proposals/{merge_proposal_id}/merge`
+  public var acceptMergeProposalRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.acceptMergeProposalRoute)
+  }
+  /// `POST v1/convai/agents/{agent_id}/merge-proposals/{merge_proposal_id}/reviews`
+  public var submitMergeProposalReviewRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.submitMergeProposalReviewRoute)
   }
   /// `POST v1/convai/agents/{agent_id}/run-tests`
   public var runAgentTestSuiteRoute: HyperProxyProviderCall<ElevenLabsOperation> {
@@ -701,6 +733,10 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
   public var getTestInvocationRoute: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.getTestInvocationRoute)
   }
+  /// `POST v1/convai/test-invocations/{test_invocation_id}/cancel`
+  public var cancelTestInvocationRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.cancelTestInvocationRoute)
+  }
   /// `POST v1/convai/test-invocations/{test_invocation_id}/resubmit`
   public var resubmitTestsRoute: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.resubmitTestsRoute)
@@ -961,6 +997,26 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
   public var getImageGeneration: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.getImageGeneration)
   }
+  /// `GET v1/flows/templates`
+  public var listPublicTemplates: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.listPublicTemplates)
+  }
+  /// `GET v1/flows/templates/{template_id}`
+  public var getPublicTemplate: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.getPublicTemplate)
+  }
+  /// `GET v1/flows/templates/{template_id}/runs`
+  public var listPublicTemplateRuns: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.listPublicTemplateRuns)
+  }
+  /// `POST v1/flows/templates/{template_id}/runs`
+  public var createPublicTemplateRun: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.createPublicTemplateRun)
+  }
+  /// `GET v1/flows/templates/{template_id}/runs/{run_id}`
+  public var getPublicTemplateRun: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.getPublicTemplateRun)
+  }
   /// `GET v1/flows/text-to-speech`
   public var listTextToSpeechGenerations: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.listTextToSpeechGenerations)
@@ -1184,6 +1240,10 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
   /// `PATCH v1/speech-engine/{speech_engine_id}`
   public var updateSpeechEngine: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.updateSpeechEngine)
+  }
+  /// `POST v1/speech-engine/{speech_engine_id}/duplicate`
+  public var duplicateSpeechEngine: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.duplicateSpeechEngine)
   }
   /// `POST v1/speech-to-speech/{voice_id}`
   public var speechToSpeechCreate: HyperProxyProviderCall<ElevenLabsOperation> {

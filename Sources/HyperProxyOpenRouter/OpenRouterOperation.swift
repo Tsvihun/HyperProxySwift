@@ -14,6 +14,10 @@ import Foundation
 public enum OpenRouterOperation: String, HyperProxyProviderOperation {
   /// `GET api/v1/organization/members`
   case listOrganizationMembers = "listOrganizationMembers"
+  /// `GET api/v1/organization/settings`
+  case getOrganizationSettings = "getOrganizationSettings"
+  /// `PATCH api/v1/organization/settings`
+  case updateOrganizationSettings = "updateOrganizationSettings"
   /// `POST api/alpha/decisions`
   case createApiAlphaDecisions = "createApiAlphaDecisions"
   /// `GET api/v1/endpoints/zdr`
@@ -32,6 +36,14 @@ public enum OpenRouterOperation: String, HyperProxyProviderOperation {
   case exchangeAuthCodeForAPIKey = "exchangeAuthCodeForAPIKey"
   /// `POST api/v1/auth/keys/code`
   case createAuthKeysCode = "createAuthKeysCode"
+  /// `GET api/v1/batches`
+  case listBatches = "listBatches"
+  /// `POST api/v1/batches`
+  case createBatches = "createBatches"
+  /// `DELETE api/v1/batches/{id}`
+  case deleteBatch = "deleteBatch"
+  /// `GET api/v1/batches/{id}`
+  case getBatches = "getBatches"
   /// `GET api/v1/benchmarks`
   case getBenchmarks = "getBenchmarks"
   /// `GET api/v1/byok`
@@ -72,6 +84,16 @@ public enum OpenRouterOperation: String, HyperProxyProviderOperation {
   case embeddingsCreate = "embeddings.create"
   /// `GET api/v1/embeddings/models`
   case listEmbeddingsModels = "listEmbeddingsModels"
+  /// `GET api/v1/end-users`
+  case listEndUsers = "listEndUsers"
+  /// `POST api/v1/end-users`
+  case createEndUser = "createEndUser"
+  /// `DELETE api/v1/end-users/{user}`
+  case deleteEndUser = "deleteEndUser"
+  /// `GET api/v1/end-users/{user}`
+  case getEndUser = "getEndUser"
+  /// `PATCH api/v1/end-users/{user}`
+  case updateEndUser = "updateEndUser"
   /// `GET api/v1/files`
   case listFiles = "listFiles"
   /// `POST api/v1/files`
@@ -132,6 +154,12 @@ public enum OpenRouterOperation: String, HyperProxyProviderOperation {
   case updateIntern = "updateIntern"
   /// `POST api/v1/interns/{internId}/chat/completions`
   case createInternChatCompletion = "createInternChatCompletion"
+  /// `GET api/v1/interns/{internId}/daemon`
+  case getInternDaemon = "getInternDaemon"
+  /// `GET api/v1/interns/{internId}/daemon-access`
+  case getInternDaemonAccess = "getInternDaemonAccess"
+  /// `POST api/v1/interns/{internId}/invoke`
+  case invokeIntern = "invokeIntern"
   /// `POST api/v1/interns/{internId}/provision`
   case provisionIntern = "provisionIntern"
   /// `POST api/v1/interns/{internId}/suspend`
@@ -188,6 +216,26 @@ public enum OpenRouterOperation: String, HyperProxyProviderOperation {
   case listPresetVersions = "listPresetVersions"
   /// `GET api/v1/presets/{slug}/versions/{version}`
   case getPresetVersion = "getPresetVersion"
+  /// `GET api/v1/private-endpoints`
+  case listPrivateEndpoints = "listPrivateEndpoints"
+  /// `POST api/v1/private-endpoints`
+  case createPrivateEndpoint = "createPrivateEndpoint"
+  /// `DELETE api/v1/private-endpoints/{id}`
+  case deletePrivateEndpoint = "deletePrivateEndpoint"
+  /// `GET api/v1/private-endpoints/{id}`
+  case getPrivateEndpoint = "getPrivateEndpoint"
+  /// `PATCH api/v1/private-endpoints/{id}`
+  case updatePrivateEndpoint = "updatePrivateEndpoint"
+  /// `POST api/v1/private-endpoints/{id}/activate`
+  case activatePrivateEndpoint = "activatePrivateEndpoint"
+  /// `POST api/v1/private-endpoints/{id}/disable`
+  case disablePrivateEndpoint = "disablePrivateEndpoint"
+  /// `POST api/v1/private-endpoints/{id}/enable`
+  case enablePrivateEndpoint = "enablePrivateEndpoint"
+  /// `PUT api/v1/private-endpoints/{id}/pricing`
+  case updatePrivateEndpointPricing = "updatePrivateEndpointPricing"
+  /// `POST api/v1/private-endpoints/{id}/validate`
+  case validatePrivateEndpoint = "validatePrivateEndpoint"
   /// `GET api/v1/providers`
   case listProviders = "listProviders"
   /// `POST api/v1/rerank`
@@ -210,6 +258,14 @@ public enum OpenRouterOperation: String, HyperProxyProviderOperation {
   case createScimSyncJob = "createScimSyncJob"
   /// `GET api/v1/scim/sync-jobs/{id}`
   case getScimSyncJob = "getScimSyncJob"
+  /// `POST api/v1/systemone`
+  case createSystemone = "createSystemone"
+  /// `GET api/v1/tools`
+  case listTools = "listTools"
+  /// `GET api/v1/tools/{name}`
+  case getTool = "getTool"
+  /// `GET api/v1/vault/interns/{internId}/effective-secrets`
+  case listInternEffectiveVaultSecrets = "listInternEffectiveVaultSecrets"
   /// `GET api/v1/vault/interns/{internId}/secrets`
   case listInternVaultSecrets = "listInternVaultSecrets"
   /// `POST api/v1/vault/interns/{internId}/secrets/copy`

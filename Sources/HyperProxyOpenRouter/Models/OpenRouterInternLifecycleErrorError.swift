@@ -13,17 +13,21 @@ import HyperProxyCore
 public struct OpenRouterInternLifecycleErrorError: Codable, Sendable {
   public var code: OpenRouterInternLifecycleErrorErrorCode
   public var message: String
+  public var metadata: OpenRouterInternLifecycleErrorErrorMetadata?
 
   public init(
     code: OpenRouterInternLifecycleErrorErrorCode,
-    message: String
+    message: String,
+    metadata: OpenRouterInternLifecycleErrorErrorMetadata? = nil
   ) {
     self.code = code
     self.message = message
+    self.metadata = metadata
   }
 
   enum CodingKeys: String, CodingKey {
     case code
     case message
+    case metadata
   }
 }

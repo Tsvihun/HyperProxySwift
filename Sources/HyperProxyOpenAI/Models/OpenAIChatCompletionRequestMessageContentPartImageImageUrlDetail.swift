@@ -16,4 +16,5 @@ public enum OpenAIChatCompletionRequestMessageContentPartImageImageUrlDetail: St
   case auto = "auto"
   case low = "low"
   case high = "high"
+  case original = "original"
 }

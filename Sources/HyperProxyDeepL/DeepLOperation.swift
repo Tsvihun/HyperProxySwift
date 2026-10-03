@@ -30,9 +30,7 @@ public enum DeepLOperation: String, HyperProxyProviderOperation {
   case createVoiceTranslateJob = "createVoiceTranslateJob"
   /// `GET v1/jobs/voice/translate/{job_id}`
   case getVoiceTranslateJobStatus = "getVoiceTranslateJobStatus"
-  /// `POST v1/quality-evaluation`
-  case submitQualityEvaluation = "submitQualityEvaluation"
-  /// `GET v1/quality-evaluation/{job_id}`
+  /// `GET v1/quality-evaluations/{job_id}`
   case pollQualityEvaluation = "pollQualityEvaluation"
   /// `POST v2/document`
   case translateDocument = "translate.document"

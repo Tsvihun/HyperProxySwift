@@ -12,6 +12,7 @@ import HyperProxyCore
 
 public struct MistralWorkspaceOUT: Codable, Sendable {
   public var description: String?
+  public var groupsCount: Int?
   public var icon: String?
   public var isDefault: Bool
   public var membersCount: Int?
@@ -25,10 +26,12 @@ public struct MistralWorkspaceOUT: Codable, Sendable {
     isDefault: Bool,
     name: String,
     uuid: String,
+    groupsCount: Int? = nil,
     membersCount: Int? = nil,
     spendLimit: MistralWorkspaceSpendLimitOUT? = nil
   ) {
     self.description = description
+    self.groupsCount = groupsCount
     self.icon = icon
     self.isDefault = isDefault
     self.membersCount = membersCount
@@ -39,6 +42,7 @@ public struct MistralWorkspaceOUT: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case description
+    case groupsCount = "groups_count"
     case icon
     case isDefault = "is_default"
     case membersCount = "members_count"

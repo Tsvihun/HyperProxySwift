@@ -13,6 +13,7 @@ import HyperProxyCore
 public enum OpenAICreateExternalStorageBodyProvider: Codable, Sendable {
   case awsExternalStorageProviderParams(OpenAIAwsExternalStorageProviderParams)
   case azureExternalStorageProviderParams(OpenAIAzureExternalStorageProviderParams)
+  case gcpExternalStorageProviderParams(OpenAIGcpExternalStorageProviderParams)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -20,8 +21,12 @@ public enum OpenAICreateExternalStorageBodyProvider: Codable, Sendable {
       self = .awsExternalStorageProviderParams(value)
       return
     }
-    self = .azureExternalStorageProviderParams(
-      try container.decode(OpenAIAzureExternalStorageProviderParams.self))
+    if let value = try? container.decode(OpenAIAzureExternalStorageProviderParams.self) {
+      self = .azureExternalStorageProviderParams(value)
+      return
+    }
+    self = .gcpExternalStorageProviderParams(
+      try container.decode(OpenAIGcpExternalStorageProviderParams.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -30,6 +35,8 @@ public enum OpenAICreateExternalStorageBodyProvider: Codable, Sendable {
     case .awsExternalStorageProviderParams(let value):
       try container.encode(value)
     case .azureExternalStorageProviderParams(let value):
+      try container.encode(value)
+    case .gcpExternalStorageProviderParams(let value):
       try container.encode(value)
     }
   }

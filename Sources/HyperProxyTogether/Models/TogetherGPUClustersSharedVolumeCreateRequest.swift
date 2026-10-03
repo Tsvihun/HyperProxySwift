@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherGPUClustersSharedVolumeCreateRequest: Codable, Sendable {
+  public var instanceClusterId: String?
   public var isLifecycleIndependent: Bool?
   public var projectId: String?
   public var region: String
@@ -21,9 +22,11 @@ public struct TogetherGPUClustersSharedVolumeCreateRequest: Codable, Sendable {
     region: String,
     sizeTib: Int,
     volumeName: String,
+    instanceClusterId: String? = nil,
     isLifecycleIndependent: Bool? = nil,
     projectId: String? = nil
   ) {
+    self.instanceClusterId = instanceClusterId
     self.isLifecycleIndependent = isLifecycleIndependent
     self.projectId = projectId
     self.region = region
@@ -32,6 +35,7 @@ public struct TogetherGPUClustersSharedVolumeCreateRequest: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case instanceClusterId = "instance_cluster_id"
     case isLifecycleIndependent = "is_lifecycle_independent"
     case projectId = "project_id"
     case region

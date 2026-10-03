@@ -20,6 +20,7 @@ public enum MistralAdminProvisionGroupToWorkspaceInWorkspaceRoleNameAnyOf1: Stri
   case devContributor = "dev_contributor"
   case mistralCodeUser = "mistral_code_user"
   case cloudUser = "cloud_user"
+  case mistralCloudAdmin = "mistral_cloud_admin"
   case workspaceContributor = "workspace_contributor"
   case workspaceAdmin = "workspace_admin"
   case observabilityViewer = "observability_viewer"

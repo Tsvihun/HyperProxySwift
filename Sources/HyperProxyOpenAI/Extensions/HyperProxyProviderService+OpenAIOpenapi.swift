@@ -432,6 +432,20 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
     return try await call.decoded(OpenAISessionItemListResource.self)
   }
 
+  public func listAgentSessionTraces(
+    sessionId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAISessionTraceListResource {
+    let call = self.call(.listAgentSessionTraces)
+      .path("session_id", sessionId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAISessionTraceListResource.self)
+  }
+
   public func listAgentSessionTurns(
     sessionId: String,
     query: [URLQueryItem] = [],
@@ -460,6 +474,22 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(OpenAITurnResource.self)
+  }
+
+  public func listAgentSessionTurnItems(
+    sessionId: String,
+    turnId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAISessionItemListResource {
+    let call = self.call(.listAgentSessionTurnItems)
+      .path("session_id", sessionId)
+      .path("turn_id", turnId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAISessionItemListResource.self)
   }
 
   public func retrieveAgent(
@@ -666,6 +696,20 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(OpenAIVoiceConsentDeletedResource.self)
+  }
+
+  public func createVoice(
+    _ body: OpenAICreateVoicePromptRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIVoiceResource {
+    let call = self.call(.createVoice)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenAIVoiceResource.self)
   }
 
   public func batchesList(
@@ -964,6 +1008,20 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
     return try await call.decoded(OpenAIContainerResource.self)
   }
 
+  public func deleteContainer(
+    containerId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIDeleteContainerResponse {
+    let call = self.call(.deleteContainer)
+      .path("container_id", containerId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIDeleteContainerResponse.self)
+  }
+
   public func listContainerFiles(
     containerId: String,
     query: [URLQueryItem] = [],
@@ -1008,6 +1066,22 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(OpenAIContainerFileResource.self)
+  }
+
+  public func deleteContainerFile(
+    containerId: String,
+    fileId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIDeleteContainerFileResponse {
+    let call = self.call(.deleteContainerFile)
+      .path("container_id", containerId)
+      .path("file_id", fileId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIDeleteContainerFileResponse.self)
   }
 
   public func conversationsCreate(
@@ -1260,22 +1334,6 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
     return try await call.decoded(OpenAIEvalRun.self)
   }
 
-  public func cancelEvalRun(
-    evalId: String,
-    runId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> OpenAIEvalRun {
-    let call = self.call(.cancelEvalRun)
-      .path("eval_id", evalId)
-      .path("run_id", runId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(OpenAIEvalRun.self)
-  }
-
   public func deleteEvalRun(
     evalId: String,
     runId: String,
@@ -1290,6 +1348,22 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(OpenAIDeleteEvalRunResponse.self)
+  }
+
+  public func cancelEvalRun(
+    evalId: String,
+    runId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIEvalRun {
+    let call = self.call(.cancelEvalRun)
+      .path("eval_id", evalId)
+      .path("run_id", runId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIEvalRun.self)
   }
 
   public func getEvalRunOutputItems(
@@ -1583,17 +1657,17 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
   }
 
   public func createLive(
-    _ body: OpenAILiveCreateRequest,
+    _ body: OpenAILiveSessionCreateRequest,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> OpenAILiveCreateResponse {
+  ) async throws -> OpenAILiveSessionCreateResponse {
     let call = self.call(.createLive)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     let prepared = try call.json(body)
-    return try await prepared.decoded(OpenAILiveCreateResponse.self)
+    return try await prepared.decoded(OpenAILiveSessionCreateResponse.self)
   }
 
   public func downloadLiveRecording(
@@ -2085,6 +2159,31 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
       responseId: responseId, query: query, headers: headers, timeout: timeout)
   }
 
+  public func responsesDelete(
+    responseId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIDeleteResponseResponse {
+    let call = self.call(.responsesDelete)
+      .path("response_id", responseId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIDeleteResponseResponse.self)
+  }
+
+  @available(*, deprecated, renamed: "responsesDelete")
+  public func deleteResponse(
+    responseId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIDeleteResponseResponse {
+    try await self.responsesDelete(
+      responseId: responseId, query: query, headers: headers, timeout: timeout)
+  }
+
   public func responsesCancel(
     responseId: String,
     query: [URLQueryItem] = [],
@@ -2349,8 +2448,30 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
       .query(query)
       .headers(headers)
       .timeout(timeout)
+    if body.stream == true {
+      throw HyperProxyProviderRouteError.streamingBodyOnJSONCall(
+        operation: "createThreadAndRun",
+        streamingVariant: "createThreadAndRunStream"
+      )
+    }
     let prepared = try call.json(body)
     return try await prepared.decoded(OpenAIRunObject.self)
+  }
+
+  public func createThreadAndRunStream(
+    _ body: OpenAICreateThreadAndRunRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<OpenAIAssistantStreamEvent, Error> {
+    let call = self.call(.createThreadAndRun)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    var streamingBody = body
+    streamingBody.stream = true
+    let prepared = try call.json(streamingBody)
+    return try prepared.events(decoding: OpenAIAssistantStreamEvent.self)
   }
 
   public func getThread(
@@ -2503,8 +2624,32 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
       .query(query)
       .headers(headers)
       .timeout(timeout)
+    if body.stream == true {
+      throw HyperProxyProviderRouteError.streamingBodyOnJSONCall(
+        operation: "createRun",
+        streamingVariant: "createRunStream"
+      )
+    }
     let prepared = try call.json(body)
     return try await prepared.decoded(OpenAIRunObject.self)
+  }
+
+  public func createRunStream(
+    _ body: OpenAICreateRunRequest,
+    threadId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<OpenAIAssistantStreamEvent, Error> {
+    let call = self.call(.createRun)
+      .path("thread_id", threadId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    var streamingBody = body
+    streamingBody.stream = true
+    let prepared = try call.json(streamingBody)
+    return try prepared.events(decoding: OpenAIAssistantStreamEvent.self)
   }
 
   public func getRun(
@@ -2605,8 +2750,34 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
       .query(query)
       .headers(headers)
       .timeout(timeout)
+    if body.stream == true {
+      throw HyperProxyProviderRouteError.streamingBodyOnJSONCall(
+        operation: "submitToolOuputsToRun",
+        streamingVariant: "submitToolOuputsToRunStream"
+      )
+    }
     let prepared = try call.json(body)
     return try await prepared.decoded(OpenAIRunObject.self)
+  }
+
+  public func submitToolOuputsToRunStream(
+    _ body: OpenAISubmitToolOutputsRunRequest,
+    threadId: String,
+    runId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<OpenAIAssistantStreamEvent, Error> {
+    let call = self.call(.submitToolOuputsToRun)
+      .path("thread_id", threadId)
+      .path("run_id", runId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    var streamingBody = body
+    streamingBody.stream = true
+    let prepared = try call.json(streamingBody)
+    return try prepared.events(decoding: OpenAIAssistantStreamEvent.self)
   }
 
   public func createUpload(

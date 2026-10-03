@@ -11,6 +11,8 @@ import Foundation
 import HyperProxyCore
 
 public enum OpenAISessionInputParam: Codable, Sendable {
+  case sessionInputParamAgentSessionInputComputerUseApprovalRequestResult(
+    OpenAISessionInputParamAgentSessionInputComputerUseApprovalRequestResult)
   case sessionInputParamAgentSessionInputMessage(OpenAISessionInputParamAgentSessionInputMessage)
   case sessionInputParamAgentSessionInputCancel(OpenAISessionInputParamAgentSessionInputCancel)
   case sessionInputParamAgentSessionInputToolResult(
@@ -18,6 +20,12 @@ public enum OpenAISessionInputParam: Codable, Sendable {
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(
+      OpenAISessionInputParamAgentSessionInputComputerUseApprovalRequestResult.self)
+    {
+      self = .sessionInputParamAgentSessionInputComputerUseApprovalRequestResult(value)
+      return
+    }
     if let value = try? container.decode(OpenAISessionInputParamAgentSessionInputMessage.self) {
       self = .sessionInputParamAgentSessionInputMessage(value)
       return
@@ -33,6 +41,8 @@ public enum OpenAISessionInputParam: Codable, Sendable {
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
+    case .sessionInputParamAgentSessionInputComputerUseApprovalRequestResult(let value):
+      try container.encode(value)
     case .sessionInputParamAgentSessionInputMessage(let value):
       try container.encode(value)
     case .sessionInputParamAgentSessionInputCancel(let value):

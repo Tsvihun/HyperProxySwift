@@ -23,6 +23,7 @@ public enum OpenRouterChatFunctionTool: Codable, Sendable {
   case webFetchServerTool(OpenRouterWebFetchServerTool)
   case openRouterWebSearchServerTool(OpenRouterWebSearchServerTool)
   case chatWebSearchShorthand(OpenRouterChatWebSearchShorthand)
+  case chatDynamicServerTool(OpenRouterChatDynamicServerTool)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -70,7 +71,11 @@ public enum OpenRouterChatFunctionTool: Codable, Sendable {
       self = .openRouterWebSearchServerTool(value)
       return
     }
-    self = .chatWebSearchShorthand(try container.decode(OpenRouterChatWebSearchShorthand.self))
+    if let value = try? container.decode(OpenRouterChatWebSearchShorthand.self) {
+      self = .chatWebSearchShorthand(value)
+      return
+    }
+    self = .chatDynamicServerTool(try container.decode(OpenRouterChatDynamicServerTool.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -99,6 +104,8 @@ public enum OpenRouterChatFunctionTool: Codable, Sendable {
     case .openRouterWebSearchServerTool(let value):
       try container.encode(value)
     case .chatWebSearchShorthand(let value):
+      try container.encode(value)
+    case .chatDynamicServerTool(let value):
       try container.encode(value)
     }
   }

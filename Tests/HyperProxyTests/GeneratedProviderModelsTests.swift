@@ -284,7 +284,7 @@ struct GeneratedProviderModelsTests {
   @Test("Reviewed DeepSeek Responses fields use the official wire contract")
   func deepSeekResponsesRequest() throws {
     let request = DeepSeekResponseCreateRequest(
-      model: .deepseekV4Flash,
+      model: .deepseekFlash,
       input: "Hello",
       maxOutputTokens: 512,
       reasoning: DeepSeekReasoningConfig(effort: .high),
@@ -296,11 +296,53 @@ struct GeneratedProviderModelsTests {
 
     let data = try JSONEncoder().encode(request)
     let json = try #require(JSONSerialization.jsonObject(with: data) as? [String: Any])
-    #expect(json["model"] as? String == "deepseek-v4-flash")
+    #expect(json["model"] as? String == "deepseek-flash")
     #expect(json["max_output_tokens"] as? Int == 512)
     #expect(json["stream"] as? Bool == true)
     #expect((json["reasoning"] as? [String: String])?["effort"] == "high")
     #expect((json["text"] as? [String: [String: String]])?["format"]?["type"] == "json_object")
+  }
+
+  @Test("DeepSeek model discovery decodes capabilities and effort metadata")
+  func deepSeekModelDiscovery() throws {
+    let payload = Data(
+      #"""
+      {"id":"deepseek-flash","object":"model","owned_by":"deepseek",
+       "name":"DeepSeek-V4.1-Flash","context_window":1048576,"max_output_tokens":393216,
+       "input_modalities":["text","image"],"output_modalities":["text"],
+       "effort":{"supported_levels":["low","high","max"],"default_level":"high"},
+       "api_capabilities":{"anthropic_messages":{"system_prompt_update":"in-history"}}}
+      """#.utf8)
+    let model = try JSONDecoder().decode(DeepSeekModel.self, from: payload)
+    #expect(model.contextWindow == 1_048_576)
+    #expect(model.inputModalities == [.text, .image])
+    #expect(model.effort?.supportedLevels == ["low", "high", "max"])
+    #expect(model.apiCapabilities?.anthropicMessages?.systemPromptUpdate == .inHistory)
+    #expect(
+      try JSONDecoder().decode(
+        DeepSeekChatFinishReason.self,
+        from: Data(#""aborted""#.utf8)) == .aborted)
+  }
+
+  @Test("DeepSeek tool outputs preserve image file references without requiring text")
+  func deepSeekImageToolOutput() throws {
+    let payload = Data(
+      #"""
+      {"type":"custom_tool_call_output","call_id":"call_1",
+       "output":[{"type":"input_image","file_id":"file-api-image","detail":"original"}]}
+      """#.utf8)
+    let item = try JSONDecoder().decode(DeepSeekInputItem.self, from: payload)
+    guard case .inputContentPartArray(let parts) = item.output else {
+      Issue.record("Image tool output did not decode as content parts")
+      return
+    }
+    #expect(parts.first?.fileId == "file-api-image")
+    #expect(parts.first?.text == nil)
+    let encoded = try #require(
+      JSONSerialization.jsonObject(with: JSONEncoder().encode(item)) as? [String: Any])
+    #expect(encoded["type"] as? String == "custom_tool_call_output")
+    let output = try #require(encoded["output"] as? [[String: Any]])
+    #expect(output.first?["file_id"] as? String == "file-api-image")
   }
 
   @Test("Each AI preserves runtime model inputs from request_schema")

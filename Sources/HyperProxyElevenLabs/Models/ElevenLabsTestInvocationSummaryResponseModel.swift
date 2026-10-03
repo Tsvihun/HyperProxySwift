@@ -14,7 +14,10 @@ public struct ElevenLabsTestInvocationSummaryResponseModel: Codable, Sendable {
   public var accessInfo: ElevenLabsResourceAccessInfo?
   public var agentId: String?
   public var branchId: String?
+  public var cancelled: Bool?
+  public var cancelledCount: Int
   public var createdAtUnixSecs: Int
+  public var creditsUsed: Int?
   public var failedCount: Int
   public var id: String
   public var passedCount: Int
@@ -24,9 +27,11 @@ public struct ElevenLabsTestInvocationSummaryResponseModel: Codable, Sendable {
   public var runsDivergedFromVersion: Bool?
   public var testRunCount: Int
   public var title: String
+  public var totalPrice: Double?
   public var versionId: String?
 
   public init(
+    cancelledCount: Int,
     createdAtUnixSecs: Int,
     failedCount: Int,
     id: String,
@@ -37,15 +42,21 @@ public struct ElevenLabsTestInvocationSummaryResponseModel: Codable, Sendable {
     accessInfo: ElevenLabsResourceAccessInfo? = nil,
     agentId: String? = nil,
     branchId: String? = nil,
+    cancelled: Bool? = nil,
+    creditsUsed: Int? = nil,
     ranAgainstDraft: Bool? = nil,
     repeatCount: Int? = nil,
     runsDivergedFromVersion: Bool? = nil,
+    totalPrice: Double? = nil,
     versionId: String? = nil
   ) {
     self.accessInfo = accessInfo
     self.agentId = agentId
     self.branchId = branchId
+    self.cancelled = cancelled
+    self.cancelledCount = cancelledCount
     self.createdAtUnixSecs = createdAtUnixSecs
+    self.creditsUsed = creditsUsed
     self.failedCount = failedCount
     self.id = id
     self.passedCount = passedCount
@@ -55,6 +66,7 @@ public struct ElevenLabsTestInvocationSummaryResponseModel: Codable, Sendable {
     self.runsDivergedFromVersion = runsDivergedFromVersion
     self.testRunCount = testRunCount
     self.title = title
+    self.totalPrice = totalPrice
     self.versionId = versionId
   }
 
@@ -62,7 +74,10 @@ public struct ElevenLabsTestInvocationSummaryResponseModel: Codable, Sendable {
     case accessInfo = "access_info"
     case agentId = "agent_id"
     case branchId = "branch_id"
+    case cancelled
+    case cancelledCount = "cancelled_count"
     case createdAtUnixSecs = "created_at_unix_secs"
+    case creditsUsed = "credits_used"
     case failedCount = "failed_count"
     case id
     case passedCount = "passed_count"
@@ -72,6 +87,7 @@ public struct ElevenLabsTestInvocationSummaryResponseModel: Codable, Sendable {
     case runsDivergedFromVersion = "runs_diverged_from_version"
     case testRunCount = "test_run_count"
     case title
+    case totalPrice = "total_price"
     case versionId = "version_id"
   }
 }

@@ -11,9 +11,9 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsGetCrawlJobResponseModel: Codable, Sendable {
+  public var autoDiscover: Bool?
   public var createdAt: Int
   public var id: String
-  public var maxDepth: Int?
   public var maxPages: Int
   public var pagesFailed: Int?
   public var pagesIdentified: Int?
@@ -33,7 +33,7 @@ public struct ElevenLabsGetCrawlJobResponseModel: Codable, Sendable {
     rootFolderId: String,
     seedUrl: String,
     updatedAt: Int,
-    maxDepth: Int? = nil,
+    autoDiscover: Bool? = nil,
     pagesFailed: Int? = nil,
     pagesIdentified: Int? = nil,
     pagesScraped: Int? = nil,
@@ -42,9 +42,9 @@ public struct ElevenLabsGetCrawlJobResponseModel: Codable, Sendable {
     status: ElevenLabsCrawlStatus? = nil,
     kind: ElevenLabsCrawlType? = nil
   ) {
+    self.autoDiscover = autoDiscover
     self.createdAt = createdAt
     self.id = id
-    self.maxDepth = maxDepth
     self.maxPages = maxPages
     self.pagesFailed = pagesFailed
     self.pagesIdentified = pagesIdentified
@@ -59,9 +59,9 @@ public struct ElevenLabsGetCrawlJobResponseModel: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case autoDiscover = "auto_discover"
     case createdAt = "created_at"
     case id
-    case maxDepth = "max_depth"
     case maxPages = "max_pages"
     case pagesFailed = "pages_failed"
     case pagesIdentified = "pages_identified"

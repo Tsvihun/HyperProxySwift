@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public enum OpenRouterVideoGenerationRequestResolution: String, Codable, Hashable, Sendable {
+  case value360p = "360p"
   case value480p = "480p"
   case value720p = "720p"
   case value768p = "768p"

@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public enum OpenAICreateImageEditRequestQuality: String, Codable, Hashable, Sendable {
-  case standard = "standard"
   case low = "low"
   case medium = "medium"
   case high = "high"
   case xhigh = "xhigh"
   case max = "max"
   case auto = "auto"
+  case standard = "standard"
 }

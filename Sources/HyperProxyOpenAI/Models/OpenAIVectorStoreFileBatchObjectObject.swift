@@ -11,5 +11,5 @@ import Foundation
 import HyperProxyCore
 
 public enum OpenAIVectorStoreFileBatchObjectObject: String, Codable, Hashable, Sendable {
-  case vectorStoreFilesBatch = "vector_store.files_batch"
+  case vectorStoreFileBatch = "vector_store.file_batch"
 }

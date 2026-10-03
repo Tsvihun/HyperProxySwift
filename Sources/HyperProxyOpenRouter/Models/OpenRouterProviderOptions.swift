@@ -54,6 +54,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
   public var deepseek: [String: HyperProxyJSONValue]?
   public var dekallm: [String: HyperProxyJSONValue]?
   public var digitalocean: [String: HyperProxyJSONValue]?
+  public var elevenlabs: [String: HyperProxyJSONValue]?
   public var enfer: [String: HyperProxyJSONValue]?
   public var fakeProvider: [String: HyperProxyJSONValue]?
   public var featherless: [String: HyperProxyJSONValue]?
@@ -122,12 +123,14 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
   public var reka: [String: HyperProxyJSONValue]?
   public var relace: [String: HyperProxyJSONValue]?
   public var replicate: [String: HyperProxyJSONValue]?
+  public var respan: [String: HyperProxyJSONValue]?
   public var runway: [String: HyperProxyJSONValue]?
   public var sailResearch: [String: HyperProxyJSONValue]?
   public var sakana: [String: HyperProxyJSONValue]?
   public var sakanaAi: [String: HyperProxyJSONValue]?
   public var sambanova: [String: HyperProxyJSONValue]?
   public var sambanovaCloaked: [String: HyperProxyJSONValue]?
+  public var scaledown: [String: HyperProxyJSONValue]?
   public var seed: [String: HyperProxyJSONValue]?
   public var sfCompute: [String: HyperProxyJSONValue]?
   public var siliconflow: [String: HyperProxyJSONValue]?
@@ -199,6 +202,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     deepseek: [String: HyperProxyJSONValue]? = nil,
     dekallm: [String: HyperProxyJSONValue]? = nil,
     digitalocean: [String: HyperProxyJSONValue]? = nil,
+    elevenlabs: [String: HyperProxyJSONValue]? = nil,
     enfer: [String: HyperProxyJSONValue]? = nil,
     fakeProvider: [String: HyperProxyJSONValue]? = nil,
     featherless: [String: HyperProxyJSONValue]? = nil,
@@ -267,12 +271,14 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     reka: [String: HyperProxyJSONValue]? = nil,
     relace: [String: HyperProxyJSONValue]? = nil,
     replicate: [String: HyperProxyJSONValue]? = nil,
+    respan: [String: HyperProxyJSONValue]? = nil,
     runway: [String: HyperProxyJSONValue]? = nil,
     sailResearch: [String: HyperProxyJSONValue]? = nil,
     sakana: [String: HyperProxyJSONValue]? = nil,
     sakanaAi: [String: HyperProxyJSONValue]? = nil,
     sambanova: [String: HyperProxyJSONValue]? = nil,
     sambanovaCloaked: [String: HyperProxyJSONValue]? = nil,
+    scaledown: [String: HyperProxyJSONValue]? = nil,
     seed: [String: HyperProxyJSONValue]? = nil,
     sfCompute: [String: HyperProxyJSONValue]? = nil,
     siliconflow: [String: HyperProxyJSONValue]? = nil,
@@ -343,6 +349,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     self.deepseek = deepseek
     self.dekallm = dekallm
     self.digitalocean = digitalocean
+    self.elevenlabs = elevenlabs
     self.enfer = enfer
     self.fakeProvider = fakeProvider
     self.featherless = featherless
@@ -411,12 +418,14 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     self.reka = reka
     self.relace = relace
     self.replicate = replicate
+    self.respan = respan
     self.runway = runway
     self.sailResearch = sailResearch
     self.sakana = sakana
     self.sakanaAi = sakanaAi
     self.sambanova = sambanova
     self.sambanovaCloaked = sambanovaCloaked
+    self.scaledown = scaledown
     self.seed = seed
     self.sfCompute = sfCompute
     self.siliconflow = siliconflow
@@ -489,6 +498,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     case deepseek
     case dekallm
     case digitalocean
+    case elevenlabs
     case enfer
     case fakeProvider = "fake-provider"
     case featherless
@@ -557,12 +567,14 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     case reka
     case relace
     case replicate
+    case respan
     case runway
     case sailResearch = "sail-research"
     case sakana
     case sakanaAi = "sakana-ai"
     case sambanova
     case sambanovaCloaked = "sambanova-cloaked"
+    case scaledown
     case seed
     case sfCompute = "sf-compute"
     case siliconflow

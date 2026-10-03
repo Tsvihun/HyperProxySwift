@@ -11,12 +11,20 @@ import Foundation
 import HyperProxyCore
 
 public enum OpenAISessionRequiredActionResource: Codable, Sendable {
+  case sessionRequiredActionResourceComputerUseApprovalRequest(
+    OpenAISessionRequiredActionResourceComputerUseApprovalRequest)
   case sessionRequiredActionResourceFunctionCall(OpenAISessionRequiredActionResourceFunctionCall)
   case sessionRequiredActionResourceEnvironmentConnection(
     OpenAISessionRequiredActionResourceEnvironmentConnection)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(
+      OpenAISessionRequiredActionResourceComputerUseApprovalRequest.self)
+    {
+      self = .sessionRequiredActionResourceComputerUseApprovalRequest(value)
+      return
+    }
     if let value = try? container.decode(OpenAISessionRequiredActionResourceFunctionCall.self) {
       self = .sessionRequiredActionResourceFunctionCall(value)
       return
@@ -28,6 +36,8 @@ public enum OpenAISessionRequiredActionResource: Codable, Sendable {
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
+    case .sessionRequiredActionResourceComputerUseApprovalRequest(let value):
+      try container.encode(value)
     case .sessionRequiredActionResourceFunctionCall(let value):
       try container.encode(value)
     case .sessionRequiredActionResourceEnvironmentConnection(let value):

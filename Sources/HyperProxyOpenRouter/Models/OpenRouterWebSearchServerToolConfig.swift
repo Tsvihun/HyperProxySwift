@@ -21,6 +21,7 @@ public struct OpenRouterWebSearchServerToolConfig: Codable, Sendable {
   public var mode: OpenRouterWebSearchMode?
   public var searchContextSize: OpenRouterSearchQualityLevel?
   public var userLocation: OpenRouterWebSearchUserLocationServerTool?
+  public var xSearch: OpenRouterXSearchOptions?
 
   public init(
     allowedDomains: [String]? = nil,
@@ -32,7 +33,8 @@ public struct OpenRouterWebSearchServerToolConfig: Codable, Sendable {
     maxUses: Int? = nil,
     mode: OpenRouterWebSearchMode? = nil,
     searchContextSize: OpenRouterSearchQualityLevel? = nil,
-    userLocation: OpenRouterWebSearchUserLocationServerTool? = nil
+    userLocation: OpenRouterWebSearchUserLocationServerTool? = nil,
+    xSearch: OpenRouterXSearchOptions? = nil
   ) {
     self.allowedDomains = allowedDomains
     self.engine = engine
@@ -44,6 +46,7 @@ public struct OpenRouterWebSearchServerToolConfig: Codable, Sendable {
     self.mode = mode
     self.searchContextSize = searchContextSize
     self.userLocation = userLocation
+    self.xSearch = xSearch
   }
 
   enum CodingKeys: String, CodingKey {
@@ -57,5 +60,6 @@ public struct OpenRouterWebSearchServerToolConfig: Codable, Sendable {
     case mode
     case searchContextSize = "search_context_size"
     case userLocation = "user_location"
+    case xSearch = "x_search"
   }
 }

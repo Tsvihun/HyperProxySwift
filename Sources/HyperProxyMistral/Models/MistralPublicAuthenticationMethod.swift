@@ -12,6 +12,7 @@ import HyperProxyCore
 
 public struct MistralPublicAuthenticationMethod: Codable, Sendable {
   public var globalHeaders: [String: MistralGlobalHeaderValue]?
+  public var grantType: MistralOAuth2GrantType?
   public var hasDefaultCredentials: Bool
   public var headers: [MistralConnectorAuthenticationHeader]?
   public var methodType: MistralOutboundAuthenticationType
@@ -21,10 +22,12 @@ public struct MistralPublicAuthenticationMethod: Codable, Sendable {
     hasDefaultCredentials: Bool,
     methodType: MistralOutboundAuthenticationType,
     globalHeaders: [String: MistralGlobalHeaderValue]? = nil,
+    grantType: MistralOAuth2GrantType? = nil,
     headers: [MistralConnectorAuthenticationHeader]? = nil,
     oauth2ServerMetadata: MistralExtendedOAuthServerMetadata? = nil
   ) {
     self.globalHeaders = globalHeaders
+    self.grantType = grantType
     self.hasDefaultCredentials = hasDefaultCredentials
     self.headers = headers
     self.methodType = methodType
@@ -33,6 +36,7 @@ public struct MistralPublicAuthenticationMethod: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case globalHeaders = "global_headers"
+    case grantType = "grant_type"
     case hasDefaultCredentials = "has_default_credentials"
     case headers
     case methodType = "method_type"

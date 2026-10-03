@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAICreateChatCompletionStreamResponseChoicesItemLogprobs: Codable, Sendable {
-  public var content: [OpenAIChatCompletionTokenLogprob]?
-  public var refusal: [OpenAIChatCompletionTokenLogprob]?
+  public var content: [OpenAIChatCompletionTokenLogprob]
+  public var refusal: [OpenAIChatCompletionTokenLogprob]
 
   public init(
-    content: [OpenAIChatCompletionTokenLogprob]?,
-    refusal: [OpenAIChatCompletionTokenLogprob]?
+    content: [OpenAIChatCompletionTokenLogprob],
+    refusal: [OpenAIChatCompletionTokenLogprob]
   ) {
     self.content = content
     self.refusal = refusal

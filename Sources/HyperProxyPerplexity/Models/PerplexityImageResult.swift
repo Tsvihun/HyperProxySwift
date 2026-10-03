@@ -11,18 +11,18 @@ import Foundation
 import HyperProxyCore
 
 public struct PerplexityImageResult: Codable, Sendable {
-  public var height: Int
+  public var height: Int64
   public var imageUrl: String
   public var originUrl: String
-  public var title: String
-  public var width: Int
+  public var title: String?
+  public var width: Int64
 
   public init(
-    height: Int,
+    height: Int64,
     imageUrl: String,
     originUrl: String,
-    title: String,
-    width: Int
+    width: Int64,
+    title: String? = nil
   ) {
     self.height = height
     self.imageUrl = imageUrl

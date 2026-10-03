@@ -22,6 +22,8 @@ public enum PerplexityResponseStreamEvent: Codable, Sendable {
   case reasoningStartedEvent(PerplexityReasoningStartedEvent)
   case searchQueriesEvent(PerplexitySearchQueriesEvent)
   case searchResultsEvent(PerplexitySearchResultsEvent)
+  case imageSearchQueriesEvent(PerplexityImageSearchQueriesEvent)
+  case imageSearchResultsEvent(PerplexityImageSearchResultsEvent)
   case fetchUrlQueriesEvent(PerplexityFetchUrlQueriesEvent)
   case fetchUrlResultsEvent(PerplexityFetchUrlResultsEvent)
   case reasoningStoppedEvent(PerplexityReasoningStoppedEvent)
@@ -72,6 +74,14 @@ public enum PerplexityResponseStreamEvent: Codable, Sendable {
       self = .searchResultsEvent(value)
       return
     }
+    if let value = try? container.decode(PerplexityImageSearchQueriesEvent.self) {
+      self = .imageSearchQueriesEvent(value)
+      return
+    }
+    if let value = try? container.decode(PerplexityImageSearchResultsEvent.self) {
+      self = .imageSearchResultsEvent(value)
+      return
+    }
     if let value = try? container.decode(PerplexityFetchUrlQueriesEvent.self) {
       self = .fetchUrlQueriesEvent(value)
       return
@@ -107,6 +117,10 @@ public enum PerplexityResponseStreamEvent: Codable, Sendable {
     case .searchQueriesEvent(let value):
       try container.encode(value)
     case .searchResultsEvent(let value):
+      try container.encode(value)
+    case .imageSearchQueriesEvent(let value):
+      try container.encode(value)
+    case .imageSearchResultsEvent(let value):
       try container.encode(value)
     case .fetchUrlQueriesEvent(let value):
       try container.encode(value)

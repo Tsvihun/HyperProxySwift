@@ -10,24 +10,26 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAICreateVoiceRequest: Codable, Sendable {
-  public var audioSample: String
-  public var consent: String
-  public var name: String
+public enum OpenAICreateVoiceRequest: Codable, Sendable {
+  case createVoiceFromConsentRequest(OpenAICreateVoiceFromConsentRequest)
+  case createVoicePromptRequest(OpenAICreateVoicePromptRequest)
 
-  public init(
-    audioSample: String,
-    consent: String,
-    name: String
-  ) {
-    self.audioSample = audioSample
-    self.consent = consent
-    self.name = name
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(OpenAICreateVoiceFromConsentRequest.self) {
+      self = .createVoiceFromConsentRequest(value)
+      return
+    }
+    self = .createVoicePromptRequest(try container.decode(OpenAICreateVoicePromptRequest.self))
   }
 
-  enum CodingKeys: String, CodingKey {
-    case audioSample = "audio_sample"
-    case consent
-    case name
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .createVoiceFromConsentRequest(let value):
+      try container.encode(value)
+    case .createVoicePromptRequest(let value):
+      try container.encode(value)
+    }
   }
 }

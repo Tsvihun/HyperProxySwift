@@ -12,9 +12,11 @@ import HyperProxyCore
 
 public enum OpenRouterAnthropicWebFetchToolResultErrorErrorCode: String, Codable, Hashable, Sendable
 {
+  case contentTooLarge = "content_too_large"
   case invalidToolInput = "invalid_tool_input"
   case urlTooLong = "url_too_long"
   case urlNotAllowed = "url_not_allowed"
+  case urlNotInPriorContext = "url_not_in_prior_context"
   case urlNotAccessible = "url_not_accessible"
   case unsupportedContentType = "unsupported_content_type"
   case tooManyRequests = "too_many_requests"

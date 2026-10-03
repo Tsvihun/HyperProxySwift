@@ -12,6 +12,7 @@ import HyperProxyCore
 
 public struct TogetherRLModelResources: Codable, Sendable {
   public var baseModel: String
+  public var baseWeightsRef: String?
   public var computeConfig: TogetherRLComputeConfig
   public var createdAt: String
   public var createdBy: String
@@ -32,9 +33,11 @@ public struct TogetherRLModelResources: Codable, Sendable {
     optimizerConfig: TogetherRLOptimizerConfig,
     status: TogetherRLModelResourcesStatus,
     updatedAt: String,
+    baseWeightsRef: String? = nil,
     error: TogetherRLModelResourcesError? = nil
   ) {
     self.baseModel = baseModel
+    self.baseWeightsRef = baseWeightsRef
     self.computeConfig = computeConfig
     self.createdAt = createdAt
     self.createdBy = createdBy
@@ -48,6 +51,7 @@ public struct TogetherRLModelResources: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case baseModel = "base_model"
+    case baseWeightsRef = "base_weights_ref"
     case computeConfig = "compute_config"
     case createdAt = "created_at"
     case createdBy = "created_by"

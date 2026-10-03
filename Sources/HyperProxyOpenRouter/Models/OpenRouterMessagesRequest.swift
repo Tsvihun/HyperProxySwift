@@ -23,6 +23,7 @@ public struct OpenRouterMessagesRequest: Codable, Sendable {
   public var plugins: [OpenRouterMessagesRequestPluginsItem]?
   public var provider: OpenRouterProviderPreferences?
   public var route: OpenRouterDeprecatedRoute?
+  public var safeguards: [OpenRouterAnthropicSafeguard]?
   public var serviceTier: String?
   public var sessionId: String?
   public var speed: OpenRouterAnthropicSpeed?
@@ -52,6 +53,7 @@ public struct OpenRouterMessagesRequest: Codable, Sendable {
     plugins: [OpenRouterMessagesRequestPluginsItem]? = nil,
     provider: OpenRouterProviderPreferences? = nil,
     route: OpenRouterDeprecatedRoute? = nil,
+    safeguards: [OpenRouterAnthropicSafeguard]? = nil,
     serviceTier: String? = nil,
     sessionId: String? = nil,
     speed: OpenRouterAnthropicSpeed? = nil,
@@ -80,6 +82,7 @@ public struct OpenRouterMessagesRequest: Codable, Sendable {
     self.plugins = plugins
     self.provider = provider
     self.route = route
+    self.safeguards = safeguards
     self.serviceTier = serviceTier
     self.sessionId = sessionId
     self.speed = speed
@@ -110,6 +113,7 @@ public struct OpenRouterMessagesRequest: Codable, Sendable {
     case plugins
     case provider
     case route
+    case safeguards
     case serviceTier = "service_tier"
     case sessionId = "session_id"
     case speed

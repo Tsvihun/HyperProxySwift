@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsAttachedSystemDataCollectionRef: Codable, Sendable {
-  public var analysisItemId: ElevenLabsSystemDataCollectionTopicAnalysisItemId
+  public var analysisItemId: ElevenLabsSystemDataCollectionId
   public var scope: ElevenLabsAnalysisScope?
   public var source: ElevenLabsSystemSource
 
   public init(
-    analysisItemId: ElevenLabsSystemDataCollectionTopicAnalysisItemId = .systemDataCollectionTopic,
+    analysisItemId: ElevenLabsSystemDataCollectionId,
     source: ElevenLabsSystemSource = .system,
     scope: ElevenLabsAnalysisScope? = nil
   ) {

@@ -19,6 +19,8 @@ public struct ElevenLabsListAgentConversationTicketsRouteParameters: Codable, Se
   public var label: String?
   public var ownerUserId: String?
   public var pageSize: Int?
+  public var priorities: [ElevenLabsAgentConversationTicketPriority]?
+  public var sortBy: ElevenLabsAgentConversationTicketSortBy?
   public var sources: [ElevenLabsAgentConversationTicketSource]?
   public var status: ElevenLabsAgentConversationTicketStatus?
   public var xiApiKey: String?
@@ -32,6 +34,8 @@ public struct ElevenLabsListAgentConversationTicketsRouteParameters: Codable, Se
     label: String? = nil,
     ownerUserId: String? = nil,
     pageSize: Int? = nil,
+    priorities: [ElevenLabsAgentConversationTicketPriority]? = nil,
+    sortBy: ElevenLabsAgentConversationTicketSortBy? = nil,
     sources: [ElevenLabsAgentConversationTicketSource]? = nil,
     status: ElevenLabsAgentConversationTicketStatus? = nil,
     xiApiKey: String? = nil
@@ -44,6 +48,8 @@ public struct ElevenLabsListAgentConversationTicketsRouteParameters: Codable, Se
     self.label = label
     self.ownerUserId = ownerUserId
     self.pageSize = pageSize
+    self.priorities = priorities
+    self.sortBy = sortBy
     self.sources = sources
     self.status = status
     self.xiApiKey = xiApiKey
@@ -58,6 +64,8 @@ public struct ElevenLabsListAgentConversationTicketsRouteParameters: Codable, Se
     case label
     case ownerUserId = "owner_user_id"
     case pageSize = "page_size"
+    case priorities
+    case sortBy = "sort_by"
     case sources
     case status
     case xiApiKey = "xi-api-key"

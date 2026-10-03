@@ -14,6 +14,7 @@ public struct MistralOtelFieldDefinition: Codable, Sendable {
   public var group: String?
   public var label: String
   public var name: String
+  public var sourceAttributeKey: String?
   public var supportedAggregations: [MistralMetricAggregation]
   public var supportedOperators: [MistralOtelFieldDefinitionSupportedOperatorsItem]
   public var kind: MistralOtelFieldDefinitionKind
@@ -24,11 +25,13 @@ public struct MistralOtelFieldDefinition: Codable, Sendable {
     supportedAggregations: [MistralMetricAggregation],
     supportedOperators: [MistralOtelFieldDefinitionSupportedOperatorsItem],
     kind: MistralOtelFieldDefinitionKind,
-    group: String? = nil
+    group: String? = nil,
+    sourceAttributeKey: String? = nil
   ) {
     self.group = group
     self.label = label
     self.name = name
+    self.sourceAttributeKey = sourceAttributeKey
     self.supportedAggregations = supportedAggregations
     self.supportedOperators = supportedOperators
     self.kind = kind
@@ -38,6 +41,7 @@ public struct MistralOtelFieldDefinition: Codable, Sendable {
     case group
     case label
     case name
+    case sourceAttributeKey = "source_attribute_key"
     case supportedAggregations = "supported_aggregations"
     case supportedOperators = "supported_operators"
     case kind = "type"

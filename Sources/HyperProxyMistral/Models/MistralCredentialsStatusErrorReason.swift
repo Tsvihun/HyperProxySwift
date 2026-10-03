@@ -14,6 +14,7 @@ public enum MistralCredentialsStatusErrorReason: String, Codable, Hashable, Send
   case oauthExpired = "oauth expired"
   case oauthNearExpiry = "oauth near expiry"
   case emptyCredentials = "empty credentials"
+  case blankBearerToken = "blank bearer token"
   case unparsableCredentials = "unparsable credentials"
   case youNeedToReconnect = "you need to reconnect"
   case oauthRefreshError = "oauth refresh error"

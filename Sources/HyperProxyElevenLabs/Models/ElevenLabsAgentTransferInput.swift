@@ -18,6 +18,7 @@ public struct ElevenLabsAgentTransferInput: Codable, Sendable {
   public var isWorkflowNodeTransfer: Bool?
   public var nodeId: String?
   public var preserveClientTtsOverrides: Bool?
+  public var preserveVoiceSettings: Bool?
   public var transferMessage: String?
 
   public init(
@@ -28,6 +29,7 @@ public struct ElevenLabsAgentTransferInput: Codable, Sendable {
     isWorkflowNodeTransfer: Bool? = nil,
     nodeId: String? = nil,
     preserveClientTtsOverrides: Bool? = nil,
+    preserveVoiceSettings: Bool? = nil,
     transferMessage: String? = nil
   ) {
     self.agentId = agentId
@@ -37,6 +39,7 @@ public struct ElevenLabsAgentTransferInput: Codable, Sendable {
     self.isWorkflowNodeTransfer = isWorkflowNodeTransfer
     self.nodeId = nodeId
     self.preserveClientTtsOverrides = preserveClientTtsOverrides
+    self.preserveVoiceSettings = preserveVoiceSettings
     self.transferMessage = transferMessage
   }
 
@@ -48,6 +51,7 @@ public struct ElevenLabsAgentTransferInput: Codable, Sendable {
     case isWorkflowNodeTransfer = "is_workflow_node_transfer"
     case nodeId = "node_id"
     case preserveClientTtsOverrides = "preserve_client_tts_overrides"
+    case preserveVoiceSettings = "preserve_voice_settings"
     case transferMessage = "transfer_message"
   }
 }

@@ -12,6 +12,7 @@ import HyperProxyCore
 
 public struct OpenAIUsageWebSearchCallsResult: Codable, Sendable {
   public var apiKeyId: String?
+  public var apiSource: OpenAIUsageWebSearchCallsResultApiSourceAnyOf1?
   public var contextLevel: String?
   public var model: String?
   public var numModelRequests: Int
@@ -25,12 +26,14 @@ public struct OpenAIUsageWebSearchCallsResult: Codable, Sendable {
     numRequests: Int,
     object: OpenAIUsageWebSearchCallsResultObject,
     apiKeyId: String? = nil,
+    apiSource: OpenAIUsageWebSearchCallsResultApiSourceAnyOf1? = nil,
     contextLevel: String? = nil,
     model: String? = nil,
     projectId: String? = nil,
     userId: String? = nil
   ) {
     self.apiKeyId = apiKeyId
+    self.apiSource = apiSource
     self.contextLevel = contextLevel
     self.model = model
     self.numModelRequests = numModelRequests
@@ -42,6 +45,7 @@ public struct OpenAIUsageWebSearchCallsResult: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case apiKeyId = "api_key_id"
+    case apiSource = "api_source"
     case contextLevel = "context_level"
     case model
     case numModelRequests = "num_model_requests"

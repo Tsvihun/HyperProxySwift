@@ -13,6 +13,7 @@ import HyperProxyCore
 public enum MistralTempoTraceAttributeValue: Codable, Sendable {
   case tempoTraceAttributeStringValue(MistralTempoTraceAttributeStringValue)
   case tempoTraceAttributeIntValue(MistralTempoTraceAttributeIntValue)
+  case tempoTraceAttributeDoubleValue(MistralTempoTraceAttributeDoubleValue)
   case tempoTraceAttributeBoolValue(MistralTempoTraceAttributeBoolValue)
   case tempoTraceAttributeArrayValue(MistralTempoTraceAttributeArrayValue)
 
@@ -24,6 +25,10 @@ public enum MistralTempoTraceAttributeValue: Codable, Sendable {
     }
     if let value = try? container.decode(MistralTempoTraceAttributeIntValue.self) {
       self = .tempoTraceAttributeIntValue(value)
+      return
+    }
+    if let value = try? container.decode(MistralTempoTraceAttributeDoubleValue.self) {
+      self = .tempoTraceAttributeDoubleValue(value)
       return
     }
     if let value = try? container.decode(MistralTempoTraceAttributeBoolValue.self) {
@@ -40,6 +45,8 @@ public enum MistralTempoTraceAttributeValue: Codable, Sendable {
     case .tempoTraceAttributeStringValue(let value):
       try container.encode(value)
     case .tempoTraceAttributeIntValue(let value):
+      try container.encode(value)
+    case .tempoTraceAttributeDoubleValue(let value):
       try container.encode(value)
     case .tempoTraceAttributeBoolValue(let value):
       try container.encode(value)

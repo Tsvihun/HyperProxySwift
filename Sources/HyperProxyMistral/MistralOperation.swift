@@ -125,11 +125,10 @@ public enum MistralOperation: String, HyperProxyProviderOperation {
     "users.api.admin.workspaces.add.or.update.users.workspaces"
   /// `GET v1/connectors/{connector_id_or_name}/organization/credentials`
   case connectorListOrganizationCredentialsV1 = "connector.list.organization.credentials.v1"
-  /// `POST v1/connectors/{connector_id_or_name}/organization/credentials`
-  case connectorCreateOrUpdateOrganizationCredentialsV1 =
-    "connector.create.or.update.organization.credentials.v1"
-  /// `DELETE v1/connectors/{connector_id_or_name}/organization/credentials/{credentials_name}`
-  case connectorDeleteOrganizationCredentialsV1 = "connector.delete.organization.credentials.v1"
+  /// `DELETE v1/connectors/{connector_id}/organization/share`
+  case connectorUnshareFromOrganizationV1 = "connector.unshare.from.organization.v1"
+  /// `PUT v1/connectors/{connector_id}/organization/share`
+  case connectorShareToOrganizationV1 = "connector.share.to.organization.v1"
   /// `POST v1/service-accounts`
   case createServiceAccountV1ServiceAccountsPost = "create.service.account.v1.service.accounts.post"
   /// `GET v1/service-accounts/assignable-roles`
@@ -192,17 +191,14 @@ public enum MistralOperation: String, HyperProxyProviderOperation {
   case connectorDeleteAllUserCredentialsV1 = "connector.delete.all.user.credentials.v1"
   /// `GET v1/connectors/{connector_id_or_name}/user/credentials`
   case connectorListUserCredentialsV1 = "connector.list.user.credentials.v1"
-  /// `POST v1/connectors/{connector_id_or_name}/user/credentials`
-  case connectorCreateOrUpdateUserCredentialsV1 = "connector.create.or.update.user.credentials.v1"
-  /// `DELETE v1/connectors/{connector_id_or_name}/user/credentials/{credentials_name}`
-  case connectorDeleteUserCredentialsV1 = "connector.delete.user.credentials.v1"
   /// `GET v1/connectors/{connector_id_or_name}/workspace/credentials`
   case connectorListWorkspaceCredentialsV1 = "connector.list.workspace.credentials.v1"
-  /// `POST v1/connectors/{connector_id_or_name}/workspace/credentials`
-  case connectorCreateOrUpdateWorkspaceCredentialsV1 =
-    "connector.create.or.update.workspace.credentials.v1"
-  /// `DELETE v1/connectors/{connector_id_or_name}/workspace/credentials/{credentials_name}`
-  case connectorDeleteWorkspaceCredentialsV1 = "connector.delete.workspace.credentials.v1"
+  /// `PATCH v1/connectors/{connector_id_or_name}/{consumer_scope}/credentials`
+  case connectorUpdateCredentials = "connector.update.credentials"
+  /// `POST v1/connectors/{connector_id_or_name}/{consumer_scope}/credentials`
+  case connectorCreateCredentialsV1 = "connector.create.credentials.v1"
+  /// `DELETE v1/connectors/{connector_id_or_name}/{consumer_scope}/credentials/{credentials_name}`
+  case connectorDeleteCredentials = "connector.delete.credentials"
   /// `DELETE v1/connectors/{connector_id}`
   case connectorDeleteV1 = "connector.delete.v1"
   /// `PATCH v1/connectors/{connector_id}`
@@ -278,48 +274,6 @@ public enum MistralOperation: String, HyperProxyProviderOperation {
   case librariesShareListV1 = "libraries.share.list.v1"
   /// `PUT v1/libraries/{library_id}/share`
   case librariesShareCreateV1 = "libraries.share.create.v1"
-  /// `GET v1/observability/campaigns`
-  case getCampaignsV1ObservabilityCampaignsGet = "get.campaigns.v1.observability.campaigns.get"
-  /// `POST v1/observability/campaigns`
-  case createCampaignV1ObservabilityCampaignsPost =
-    "create.campaign.v1.observability.campaigns.post"
-  /// `DELETE v1/observability/campaigns/{campaign_id}`
-  case deleteCampaignV1ObservabilityCampaignsCampaignIdDelete =
-    "delete.campaign.v1.observability.campaigns.campaign.id.delete"
-  /// `GET v1/observability/campaigns/{campaign_id}`
-  case getCampaignByIdV1ObservabilityCampaignsCampaignIdGet =
-    "get.campaign.by.id.v1.observability.campaigns.campaign.id.get"
-  /// `GET v1/observability/campaigns/{campaign_id}/selected-events`
-  case getCampaignSelectedEventsV1ObservabilityCampaignsCampaignIdSelectedEventsGet =
-    "get.campaign.selected.events.v1.observability.campaigns.campaign.id.selected.events.get"
-  /// `GET v1/observability/campaigns/{campaign_id}/status`
-  case getCampaignStatusByIdV1ObservabilityCampaignsCampaignIdStatusGet =
-    "get.campaign.status.by.id.v1.observability.campaigns.campaign.id.status.get"
-  /// `POST v1/observability/chat-completion-events/search`
-  case getChatCompletionEventsV1ObservabilityChatCompletionEventsSearchPost =
-    "get.chat.completion.events.v1.observability.chat.completion.events.search.post"
-  /// `POST v1/observability/chat-completion-events/search-ids`
-  case getChatCompletionEventIdsV1ObservabilityChatCompletionEventsSearchIdsPost =
-    "get.chat.completion.event.ids.v1.observability.chat.completion.events.search.ids.post"
-  /// `GET v1/observability/chat-completion-events/{event_id}`
-  case getChatCompletionEventV1ObservabilityChatCompletionEventsEventIdGet =
-    "get.chat.completion.event.v1.observability.chat.completion.events.event.id.get"
-  /// `POST v1/observability/chat-completion-events/{event_id}/live-judging`
-  case judgeChatCompletionEventV1ObservabilityChatCompletionEventsEventIdLiveJudgingPost =
-    "judge.chat.completion.event.v1.observability.chat.completion.events.event.id.live.judging.post"
-  /// `GET v1/observability/chat-completion-events/{event_id}/similar-events`
-  case getSimilarChatCompletionEventsV1ObservabilityChatCompletionEventsEventIdSimilarEventsGet =
-    "get.similar.chat.completion.events.v1.observability.chat.completion.events.event.id.similar.events.get"
-  /// `GET v1/observability/chat-completion-fields`
-  case getChatCompletionFieldsV1ObservabilityChatCompletionFieldsGet =
-    "get.chat.completion.fields.v1.observability.chat.completion.fields.get"
-  /// `GET v1/observability/chat-completion-fields/{field_name}/options`
-  case getChatCompletionFieldOptionsV1ObservabilityChatCompletionFieldsFieldNameOptionsGet =
-    "get.chat.completion.field.options.v1.observability.chat.completion.fields.field.name.options.get"
-  /// `POST v1/observability/chat-completion-fields/{field_name}/options-counts`
-  case
-    getChatCompletionFieldOptionsCountsV1ObservabilityChatCompletionFieldsFieldNameOptionsCountsPost =
-    "get.chat.completion.field.options.counts.v1.observability.chat.completion.fields.field.name.options.counts.post"
   /// `POST v1/observability/dataset-records/bulk-delete`
   case deleteDatasetRecordsV1ObservabilityDatasetRecordsBulkDeletePost =
     "delete.dataset.records.v1.observability.dataset.records.bulk.delete.post"
@@ -354,15 +308,9 @@ public enum MistralOperation: String, HyperProxyProviderOperation {
   /// `GET v1/observability/datasets/{dataset_id}/exports/to-jsonl`
   case exportDatasetToJsonlV1ObservabilityDatasetsDatasetIdExportsToJsonlGet =
     "export.dataset.to.jsonl.v1.observability.datasets.dataset.id.exports.to.jsonl.get"
-  /// `POST v1/observability/datasets/{dataset_id}/imports/from-campaign`
-  case postDatasetRecordsFromCampaignV1ObservabilityDatasetsDatasetIdImportsFromCampaignPost =
-    "post.dataset.records.from.campaign.v1.observability.datasets.dataset.id.imports.from.campaign.post"
   /// `POST v1/observability/datasets/{dataset_id}/imports/from-dataset`
   case postDatasetRecordsFromDatasetV1ObservabilityDatasetsDatasetIdImportsFromDatasetPost =
     "post.dataset.records.from.dataset.v1.observability.datasets.dataset.id.imports.from.dataset.post"
-  /// `POST v1/observability/datasets/{dataset_id}/imports/from-explorer`
-  case postDatasetRecordsFromExplorerV1ObservabilityDatasetsDatasetIdImportsFromExplorerPost =
-    "post.dataset.records.from.explorer.v1.observability.datasets.dataset.id.imports.from.explorer.post"
   /// `POST v1/observability/datasets/{dataset_id}/imports/from-file`
   case postDatasetRecordsFromFileV1ObservabilityDatasetsDatasetIdImportsFromFilePost =
     "post.dataset.records.from.file.v1.observability.datasets.dataset.id.imports.from.file.post"
@@ -404,9 +352,27 @@ public enum MistralOperation: String, HyperProxyProviderOperation {
     "get.log.field.options.v1.observability.logs.fields.field.name.options.get"
   /// `POST v1/observability/logs/search`
   case searchLogsV1ObservabilityLogsSearchPost = "search.logs.v1.observability.logs.search.post"
+  /// `GET v1/observability/pipeline-configs`
+  case listPipelineConfigsV1ObservabilityPipelineConfigsGet =
+    "list.pipeline.configs.v1.observability.pipeline.configs.get"
+  /// `POST v1/observability/pipeline-configs`
+  case createPipelineConfigV1ObservabilityPipelineConfigsPost =
+    "create.pipeline.config.v1.observability.pipeline.configs.post"
+  /// `DELETE v1/observability/pipeline-configs/{pipeline_config_id}`
+  case deletePipelineConfigV1ObservabilityPipelineConfigsPipelineConfigIdDelete =
+    "delete.pipeline.config.v1.observability.pipeline.configs.pipeline.config.id.delete"
+  /// `GET v1/observability/pipeline-configs/{pipeline_config_id}`
+  case getPipelineConfigV1ObservabilityPipelineConfigsPipelineConfigIdGet =
+    "get.pipeline.config.v1.observability.pipeline.configs.pipeline.config.id.get"
+  /// `PUT v1/observability/pipeline-configs/{pipeline_config_id}`
+  case updatePipelineConfigV1ObservabilityPipelineConfigsPipelineConfigIdPut =
+    "update.pipeline.config.v1.observability.pipeline.configs.pipeline.config.id.put"
   /// `POST v1/observability/spans/aggregate`
   case aggregateSpansV1ObservabilitySpansAggregatePost =
     "aggregate.spans.v1.observability.spans.aggregate.post"
+  /// `POST v1/observability/spans/evaluations/aggregate`
+  case aggregateSpanEvaluationsV1ObservabilitySpansEvaluationsAggregatePost =
+    "aggregate.span.evaluations.v1.observability.spans.evaluations.aggregate.post"
   /// `GET v1/observability/spans/evaluations/fields`
   case getSpanEvaluationFieldsV1ObservabilitySpansEvaluationsFieldsGet =
     "get.span.evaluation.fields.v1.observability.spans.evaluations.fields.get"
@@ -467,6 +433,39 @@ public enum MistralOperation: String, HyperProxyProviderOperation {
   /// `PUT v1/rag/ingestion_pipeline_configurations/{id}/run_info`
   case updateRunInfoV1RagIngestionPipelineConfigurationsIdRunInfoPut =
     "update.run.info.v1.rag.ingestion.pipeline.configurations.id.run.info.put"
+  /// `GET v1/rag/managed_indexes`
+  case listIndexesV1RagManagedIndexesGet = "list.indexes.v1.rag.managed.indexes.get"
+  /// `POST v1/rag/managed_indexes`
+  case createIndexV1RagManagedIndexesPost = "create.index.v1.rag.managed.indexes.post"
+  /// `DELETE v1/rag/managed_indexes/{index_name}`
+  case deleteIndexV1RagManagedIndexesIndexNameDelete =
+    "delete.index.v1.rag.managed.indexes.index.name.delete"
+  /// `GET v1/rag/managed_indexes/{index_name}`
+  case getIndexV1RagManagedIndexesIndexNameGet = "get.index.v1.rag.managed.indexes.index.name.get"
+  /// `PUT v1/rag/managed_indexes/{index_name}`
+  case updateIndexV1RagManagedIndexesIndexNamePut =
+    "update.index.v1.rag.managed.indexes.index.name.put"
+  /// `GET v1/rag/managed_indexes/{index_name}/chunks/{chunk_id}`
+  case getChunkIndexV1RagManagedIndexesIndexNameChunksChunkIdGet =
+    "get.chunk.index.v1.rag.managed.indexes.index.name.chunks.chunk.id.get"
+  /// `DELETE v1/rag/managed_indexes/{index_name}/documents`
+  case deleteDocumentsV1RagManagedIndexesIndexNameDocumentsDelete =
+    "delete.documents.v1.rag.managed.indexes.index.name.documents.delete"
+  /// `POST v1/rag/managed_indexes/{index_name}/documents`
+  case ingestDocumentsV1RagManagedIndexesIndexNameDocumentsPost =
+    "ingest.documents.v1.rag.managed.indexes.index.name.documents.post"
+  /// `POST v1/rag/managed_indexes/{index_name}/grep`
+  case grepIndexV1RagManagedIndexesIndexNameGrepPost =
+    "grep.index.v1.rag.managed.indexes.index.name.grep.post"
+  /// `POST v1/rag/managed_indexes/{index_name}/navigate`
+  case navigateIndexV1RagManagedIndexesIndexNameNavigatePost =
+    "navigate.index.v1.rag.managed.indexes.index.name.navigate.post"
+  /// `POST v1/rag/managed_indexes/{index_name}/read`
+  case readIndexV1RagManagedIndexesIndexNameReadPost =
+    "read.index.v1.rag.managed.indexes.index.name.read.post"
+  /// `POST v1/rag/managed_indexes/{index_name}/search`
+  case searchIndexV1RagManagedIndexesIndexNameSearchPost =
+    "search.index.v1.rag.managed.indexes.index.name.search.post"
   /// `GET v1/service-accounts`
   case listServiceAccountsV1ServiceAccountsGet = "list.service.accounts.v1.service.accounts.get"
   /// `GET v1/users/me`
@@ -549,6 +548,8 @@ public enum MistralOperation: String, HyperProxyProviderOperation {
   case chatModerationsV1ChatModerationsPost = "chat.moderations.v1.chat.moderations.post"
   /// `POST v1/classifications`
   case classificationsCreate = "classifications.create"
+  /// `POST v1/client/sessions`
+  case createClientSessionV1ClientSessionsPost = "create.client.session.v1.client.sessions.post"
   /// `POST v1/embeddings`
   case embeddingsCreate = "embeddings.create"
   /// `GET v1/files`
@@ -601,6 +602,9 @@ public enum MistralOperation: String, HyperProxyProviderOperation {
   /// `POST v1/workflows/deployments`
   case createDeploymentV1WorkflowsDeploymentsPost =
     "create.deployment.v1.workflows.deployments.post"
+  /// `POST v1/workflows/deployments/{deployment_id}/unharden`
+  case unhardenDeploymentV1WorkflowsDeploymentsDeploymentIdUnhardenPost =
+    "unharden.deployment.v1.workflows.deployments.deployment.id.unharden.post"
   /// `DELETE v1/workflows/deployments/{name}`
   case deleteDeploymentV1WorkflowsDeploymentsNameDelete =
     "delete.deployment.v1.workflows.deployments.name.delete"

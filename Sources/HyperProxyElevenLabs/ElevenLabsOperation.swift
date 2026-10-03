@@ -138,6 +138,8 @@ public enum ElevenLabsOperation: String, HyperProxyProviderOperation {
   case rebaseBranchOntoMain = "rebase.branch.onto.main"
   /// `POST v1/convai/agents/{agent_id}/branches/{source_branch_id}/merge`
   case mergeBranchIntoTarget = "merge.branch.into.target"
+  /// `GET v1/convai/agents/{agent_id}/deployments`
+  case listAgentDeploymentsRoute = "list.agent.deployments.route"
   /// `POST v1/convai/agents/{agent_id}/deployments`
   case createAgentDeploymentRoute = "create.agent.deployment.route"
   /// `DELETE v1/convai/agents/{agent_id}/drafts`
@@ -154,6 +156,20 @@ public enum ElevenLabsOperation: String, HyperProxyProviderOperation {
   case queryAgentKnowledgeBaseRagRoute = "query.agent.knowledge.base.rag.route"
   /// `GET v1/convai/agents/{agent_id}/link`
   case getAgentLinkRoute = "get.agent.link.route"
+  /// `GET v1/convai/agents/{agent_id}/merge-proposals`
+  case listMergeProposalsRoute = "list.merge.proposals.route"
+  /// `POST v1/convai/agents/{agent_id}/merge-proposals`
+  case createMergeProposalRoute = "create.merge.proposal.route"
+  /// `GET v1/convai/agents/{agent_id}/merge-proposals/{merge_proposal_id}`
+  case getMergeProposalRoute = "get.merge.proposal.route"
+  /// `PATCH v1/convai/agents/{agent_id}/merge-proposals/{merge_proposal_id}`
+  case updateMergeProposalRoute = "update.merge.proposal.route"
+  /// `POST v1/convai/agents/{agent_id}/merge-proposals/{merge_proposal_id}/comments`
+  case addMergeProposalCommentRoute = "add.merge.proposal.comment.route"
+  /// `POST v1/convai/agents/{agent_id}/merge-proposals/{merge_proposal_id}/merge`
+  case acceptMergeProposalRoute = "accept.merge.proposal.route"
+  /// `POST v1/convai/agents/{agent_id}/merge-proposals/{merge_proposal_id}/reviews`
+  case submitMergeProposalReviewRoute = "submit.merge.proposal.review.route"
   /// `POST v1/convai/agents/{agent_id}/run-tests`
   case runAgentTestSuiteRoute = "run.agent.test.suite.route"
   /// `POST v1/convai/agents/{agent_id}/simulate-conversation`
@@ -378,6 +394,8 @@ public enum ElevenLabsOperation: String, HyperProxyProviderOperation {
   case listTestInvocationsRoute = "list.test.invocations.route"
   /// `GET v1/convai/test-invocations/{test_invocation_id}`
   case getTestInvocationRoute = "get.test.invocation.route"
+  /// `POST v1/convai/test-invocations/{test_invocation_id}/cancel`
+  case cancelTestInvocationRoute = "cancel.test.invocation.route"
   /// `POST v1/convai/test-invocations/{test_invocation_id}/resubmit`
   case resubmitTestsRoute = "resubmit.tests.route"
   /// `GET v1/convai/tools`
@@ -508,6 +526,16 @@ public enum ElevenLabsOperation: String, HyperProxyProviderOperation {
   case createImageGeneration = "create.image.generation"
   /// `GET v1/flows/image/{generation_id}`
   case getImageGeneration = "get.image.generation"
+  /// `GET v1/flows/templates`
+  case listPublicTemplates = "list.public.templates"
+  /// `GET v1/flows/templates/{template_id}`
+  case getPublicTemplate = "get.public.template"
+  /// `GET v1/flows/templates/{template_id}/runs`
+  case listPublicTemplateRuns = "list.public.template.runs"
+  /// `POST v1/flows/templates/{template_id}/runs`
+  case createPublicTemplateRun = "create.public.template.run"
+  /// `GET v1/flows/templates/{template_id}/runs/{run_id}`
+  case getPublicTemplateRun = "get.public.template.run"
   /// `GET v1/flows/text-to-speech`
   case listTextToSpeechGenerations = "list.text.to.speech.generations"
   /// `POST v1/flows/text-to-speech`
@@ -620,6 +648,8 @@ public enum ElevenLabsOperation: String, HyperProxyProviderOperation {
   case getSpeechEngine = "get.speech.engine"
   /// `PATCH v1/speech-engine/{speech_engine_id}`
   case updateSpeechEngine = "update.speech.engine"
+  /// `POST v1/speech-engine/{speech_engine_id}/duplicate`
+  case duplicateSpeechEngine = "duplicate.speech.engine"
   /// `POST v1/speech-to-speech/{voice_id}`
   case speechToSpeechCreate = "speechToSpeech.create"
   /// `POST v1/speech-to-speech/{voice_id}/stream`

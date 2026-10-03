@@ -18,6 +18,7 @@ public struct ElevenLabsWorkflowStandaloneAgentNodeModelInput: Codable, Sendable
   public var nodeId: String?
   public var position: ElevenLabsPositionInput?
   public var preserveClientTtsOverrides: Bool?
+  public var preserveVoiceSettings: Bool?
   public var transferMessage: String?
   public var kind: ElevenLabsStandaloneAgentKind?
 
@@ -29,6 +30,7 @@ public struct ElevenLabsWorkflowStandaloneAgentNodeModelInput: Codable, Sendable
     nodeId: String? = nil,
     position: ElevenLabsPositionInput? = nil,
     preserveClientTtsOverrides: Bool? = nil,
+    preserveVoiceSettings: Bool? = nil,
     transferMessage: String? = nil,
     kind: ElevenLabsStandaloneAgentKind? = nil
   ) {
@@ -39,6 +41,7 @@ public struct ElevenLabsWorkflowStandaloneAgentNodeModelInput: Codable, Sendable
     self.nodeId = nodeId
     self.position = position
     self.preserveClientTtsOverrides = preserveClientTtsOverrides
+    self.preserveVoiceSettings = preserveVoiceSettings
     self.transferMessage = transferMessage
     self.kind = kind
   }
@@ -51,6 +54,7 @@ public struct ElevenLabsWorkflowStandaloneAgentNodeModelInput: Codable, Sendable
     case nodeId = "node_id"
     case position
     case preserveClientTtsOverrides = "preserve_client_tts_overrides"
+    case preserveVoiceSettings = "preserve_voice_settings"
     case transferMessage = "transfer_message"
     case kind = "type"
   }

@@ -12,6 +12,8 @@ import HyperProxyCore
 
 public enum OpenAIUsageCostsParametersGroupByItem: String, Codable, Hashable, Sendable {
   case projectId = "project_id"
+  case userId = "user_id"
   case lineItem = "line_item"
   case apiKeyId = "api_key_id"
+  case apiSource = "api_source"
 }

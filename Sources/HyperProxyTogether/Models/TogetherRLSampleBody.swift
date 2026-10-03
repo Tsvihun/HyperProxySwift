@@ -15,7 +15,6 @@ public struct TogetherRLSampleBody: Codable, Sendable {
   public var numSamples: Int?
   public var promptLogprobs: Bool?
   public var returnRoutedExperts: Bool?
-  public var returnRoutedExpertsObjectUri: Bool?
   public var samplingParams: TogetherRLSamplingParams?
   public var topkPromptLogprobs: Int?
 
@@ -24,7 +23,6 @@ public struct TogetherRLSampleBody: Codable, Sendable {
     numSamples: Int? = nil,
     promptLogprobs: Bool? = nil,
     returnRoutedExperts: Bool? = nil,
-    returnRoutedExpertsObjectUri: Bool? = nil,
     samplingParams: TogetherRLSamplingParams? = nil,
     topkPromptLogprobs: Int? = nil
   ) {
@@ -32,7 +30,6 @@ public struct TogetherRLSampleBody: Codable, Sendable {
     self.numSamples = numSamples
     self.promptLogprobs = promptLogprobs
     self.returnRoutedExperts = returnRoutedExperts
-    self.returnRoutedExpertsObjectUri = returnRoutedExpertsObjectUri
     self.samplingParams = samplingParams
     self.topkPromptLogprobs = topkPromptLogprobs
   }
@@ -42,7 +39,6 @@ public struct TogetherRLSampleBody: Codable, Sendable {
     case numSamples = "num_samples"
     case promptLogprobs = "prompt_logprobs"
     case returnRoutedExperts = "return_routed_experts"
-    case returnRoutedExpertsObjectUri = "return_routed_experts_object_uri"
     case samplingParams = "sampling_params"
     case topkPromptLogprobs = "topk_prompt_logprobs"
   }

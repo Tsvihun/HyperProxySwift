@@ -16,19 +16,22 @@ public struct MistralCreateSkillRequest: Codable, Sendable {
   public var name: String
   public var notes: String?
   public var sharingScope: MistralRegistrySharingScope?
+  public var workspaceRelation: MistralShareRelation?
 
   public init(
     definition: MistralSkillDefinition,
     name: String,
     aliases: [String]? = nil,
     notes: String? = nil,
-    sharingScope: MistralRegistrySharingScope? = nil
+    sharingScope: MistralRegistrySharingScope? = nil,
+    workspaceRelation: MistralShareRelation? = nil
   ) {
     self.aliases = aliases
     self.definition = definition
     self.name = name
     self.notes = notes
     self.sharingScope = sharingScope
+    self.workspaceRelation = workspaceRelation
   }
 
   enum CodingKeys: String, CodingKey {
@@ -37,5 +40,6 @@ public struct MistralCreateSkillRequest: Codable, Sendable {
     case name
     case notes
     case sharingScope
+    case workspaceRelation
   }
 }

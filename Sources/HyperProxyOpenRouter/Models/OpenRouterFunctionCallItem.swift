@@ -14,25 +14,25 @@ public struct OpenRouterFunctionCallItem: Codable, Sendable {
   public var arguments: String
   public var async: Bool?
   public var callId: String
-  public var id: String
+  public var id: String?
   public var name: String
   public var namespace: String?
   public var status: OpenRouterToolCallStatus?
   public var subagentId: String?
-  public var subagentItems: [OpenRouterOpenAIResponseFunctionToolCallSubagentItemsItem]?
-  public var kind: OpenRouterOpenAIResponseFunctionToolCallKind
+  public var subagentItems: [OpenRouterFunctionCallItemSubagentItemsItem]?
+  public var kind: OpenRouterFunctionCallItemKind
 
   public init(
     arguments: String,
     callId: String,
-    id: String,
     name: String,
-    kind: OpenRouterOpenAIResponseFunctionToolCallKind,
+    kind: OpenRouterFunctionCallItemKind,
     async: Bool? = nil,
+    id: String? = nil,
     namespace: String? = nil,
     status: OpenRouterToolCallStatus? = nil,
     subagentId: String? = nil,
-    subagentItems: [OpenRouterOpenAIResponseFunctionToolCallSubagentItemsItem]? = nil
+    subagentItems: [OpenRouterFunctionCallItemSubagentItemsItem]? = nil
   ) {
     self.arguments = arguments
     self.async = async

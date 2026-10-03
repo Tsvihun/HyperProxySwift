@@ -14,4 +14,5 @@ public enum ElevenLabsTestRunStatus: String, Codable, Hashable, Sendable {
   case pending = "pending"
   case passed = "passed"
   case failed = "failed"
+  case cancelled = "cancelled"
 }

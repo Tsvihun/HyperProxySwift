@@ -16,7 +16,7 @@ public struct OpenAIRunGraderResponseMetadata: Codable, Sendable {
   public var name: String
   public var sampledModelName: String?
   public var scores: [String: HyperProxyJSONValue]
-  public var tokenUsage: Int?
+  public var tokenUsage: OpenAIRunGraderResponseMetadataTokenUsageAnyOf1?
   public var kind: String
 
   public init(
@@ -25,7 +25,7 @@ public struct OpenAIRunGraderResponseMetadata: Codable, Sendable {
     name: String,
     sampledModelName: String?,
     scores: [String: HyperProxyJSONValue],
-    tokenUsage: Int?,
+    tokenUsage: OpenAIRunGraderResponseMetadataTokenUsageAnyOf1?,
     kind: String
   ) {
     self.errors = errors

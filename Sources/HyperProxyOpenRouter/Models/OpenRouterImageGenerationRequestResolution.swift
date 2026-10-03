@@ -12,7 +12,9 @@ import HyperProxyCore
 
 public enum OpenRouterImageGenerationRequestResolution: String, Codable, Hashable, Sendable {
   case value512 = "512"
+  case value768 = "768"
   case value1K = "1K"
+  case value15K = "1.5K"
   case value2K = "2K"
   case value4K = "4K"
 }

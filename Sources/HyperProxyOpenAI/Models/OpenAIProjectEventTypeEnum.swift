@@ -28,5 +28,10 @@ public enum OpenAIProjectEventTypeEnum: String, Codable, Hashable, Sendable {
   case realtimeCallIncoming = "realtime.call.incoming"
   case videoCompleted = "video.completed"
   case videoFailed = "video.failed"
+  case agentSessionCreated = "agent.session.created"
+  case agentSessionActionRequired = "agent.session.action_required"
+  case agentSessionInProgress = "agent.session.in_progress"
+  case agentSessionIdle = "agent.session.idle"
+  case agentSessionFailed = "agent.session.failed"
   case safetyAlertCreated = "safety.alert.created"
 }

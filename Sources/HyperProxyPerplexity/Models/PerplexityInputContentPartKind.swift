@@ -13,4 +13,5 @@ import HyperProxyCore
 public enum PerplexityInputContentPartKind: String, Codable, Hashable, Sendable {
   case inputText = "input_text"
   case inputImage = "input_image"
+  case inputFile = "input_file"
 }

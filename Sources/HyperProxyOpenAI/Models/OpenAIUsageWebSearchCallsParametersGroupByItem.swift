@@ -16,4 +16,5 @@ public enum OpenAIUsageWebSearchCallsParametersGroupByItem: String, Codable, Has
   case apiKeyId = "api_key_id"
   case model = "model"
   case contextLevel = "context_level"
+  case apiSource = "api_source"
 }

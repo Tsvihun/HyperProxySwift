@@ -81,7 +81,7 @@ extension HyperProxyProviderService where Operation == BFLOperation {
       BFLOperation.imagesFill.rawValue,
       BFLOperation.imagesFlux11Pro.rawValue,
       BFLOperation.imagesFlux11Ultra.rawValue,
-      BFLOperation.fineTuningGenerateFill.rawValue,
+      BFLOperation.flux3ImageV1Flux3ImagePost.rawValue,
       BFLOperation.fineTuningGenerateUltra.rawValue,
       BFLOperation.fineTuningFlux2Klein4BGenerate.rawValue,
       BFLOperation.fineTuningFlux2Klein9BGenerate.rawValue,

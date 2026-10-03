@@ -29,6 +29,7 @@ public struct TogetherDESupportedModel: Codable, Sendable {
   public var name: String
   public var outputFormat: String?
   public var outputModalities: [TogetherDESupportedModelOutputModalitiesItem]
+  public var pricing: TogetherDESupportedModelPricing?
   public var products: [TogetherDESupportedModelProductsItem]
   public var publisher: String
   public var serverlessEndpoint: String?
@@ -59,6 +60,7 @@ public struct TogetherDESupportedModel: Codable, Sendable {
     features: [TogetherDESupportedModelFeaturesItem]? = nil,
     inputFormat: String? = nil,
     outputFormat: String? = nil,
+    pricing: TogetherDESupportedModelPricing? = nil,
     serverlessEndpoint: String? = nil,
     tags: [String]? = nil
   ) {
@@ -80,6 +82,7 @@ public struct TogetherDESupportedModel: Codable, Sendable {
     self.name = name
     self.outputFormat = outputFormat
     self.outputModalities = outputModalities
+    self.pricing = pricing
     self.products = products
     self.publisher = publisher
     self.serverlessEndpoint = serverlessEndpoint
@@ -107,6 +110,7 @@ public struct TogetherDESupportedModel: Codable, Sendable {
     case name
     case outputFormat
     case outputModalities
+    case pricing
     case products
     case publisher
     case serverlessEndpoint

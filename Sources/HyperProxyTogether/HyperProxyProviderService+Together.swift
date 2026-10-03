@@ -231,6 +231,20 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
   public var v1DeploymentsIdLogsGet: HyperProxyProviderCall<TogetherOperation> {
     self.call(.v1DeploymentsIdLogsGet)
   }
+  /// `GET v1/deployments/{id}/revisions`
+  public var v1DeploymentsIdRevisionsGet: HyperProxyProviderCall<TogetherOperation> {
+    self.call(.v1DeploymentsIdRevisionsGet)
+  }
+  /// `GET v1/deployments/{id}/revisions/{revisionIdentifier}`
+  public var v1DeploymentsIdRevisionsRevisionIdentifierGet:
+    HyperProxyProviderCall<TogetherOperation>
+  {
+    self.call(.v1DeploymentsIdRevisionsRevisionIdentifierGet)
+  }
+  /// `POST v1/deployments/{id}/rollback`
+  public var v1DeploymentsIdRollbackPost: HyperProxyProviderCall<TogetherOperation> {
+    self.call(.v1DeploymentsIdRollbackPost)
+  }
   /// `POST v1/embeddings`
   public var embeddingsCreate: HyperProxyProviderCall<TogetherOperation> {
     self.call(.embeddingsCreate)

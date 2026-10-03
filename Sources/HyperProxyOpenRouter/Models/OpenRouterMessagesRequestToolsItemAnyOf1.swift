@@ -16,6 +16,7 @@ public struct OpenRouterMessagesRequestToolsItemAnyOf1: Codable, Sendable {
   public var description: String?
   public var inputSchema: OpenRouterMessagesRequestToolsItemAnyOf1InputSchema
   public var name: String
+  public var strict: Bool?
   public var kind: OpenRouterMessagesRequestToolsItemAnyOf1Kind?
 
   public init(
@@ -24,6 +25,7 @@ public struct OpenRouterMessagesRequestToolsItemAnyOf1: Codable, Sendable {
     cacheControl: OpenRouterAnthropicCacheControlDirective? = nil,
     deferLoading: Bool? = nil,
     description: String? = nil,
+    strict: Bool? = nil,
     kind: OpenRouterMessagesRequestToolsItemAnyOf1Kind? = nil
   ) {
     self.cacheControl = cacheControl
@@ -31,6 +33,7 @@ public struct OpenRouterMessagesRequestToolsItemAnyOf1: Codable, Sendable {
     self.description = description
     self.inputSchema = inputSchema
     self.name = name
+    self.strict = strict
     self.kind = kind
   }
 
@@ -40,6 +43,7 @@ public struct OpenRouterMessagesRequestToolsItemAnyOf1: Codable, Sendable {
     case description
     case inputSchema = "input_schema"
     case name
+    case strict
     case kind = "type"
   }
 }

@@ -11,15 +11,23 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterSpeechRequestProvider: Codable, Sendable {
+  public var dataCollection: OpenRouterSpeechRequestProviderDataCollection?
   public var options: OpenRouterProviderOptions?
+  public var zdr: Bool?
 
   public init(
-    options: OpenRouterProviderOptions? = nil
+    dataCollection: OpenRouterSpeechRequestProviderDataCollection? = nil,
+    options: OpenRouterProviderOptions? = nil,
+    zdr: Bool? = nil
   ) {
+    self.dataCollection = dataCollection
     self.options = options
+    self.zdr = zdr
   }
 
   enum CodingKeys: String, CodingKey {
+    case dataCollection = "data_collection"
     case options
+    case zdr
   }
 }

@@ -13,17 +13,21 @@ import HyperProxyCore
 public struct OpenAINetworkPolicyParam: Codable, Sendable {
   public var access: OpenAINetworkAccessParam
   public var allowedDomains: [String]?
+  public var blockedDomains: [String]?
 
   public init(
     access: OpenAINetworkAccessParam,
-    allowedDomains: [String]? = nil
+    allowedDomains: [String]? = nil,
+    blockedDomains: [String]? = nil
   ) {
     self.access = access
     self.allowedDomains = allowedDomains
+    self.blockedDomains = blockedDomains
   }
 
   enum CodingKeys: String, CodingKey {
     case access
     case allowedDomains = "allowed_domains"
+    case blockedDomains = "blocked_domains"
   }
 }

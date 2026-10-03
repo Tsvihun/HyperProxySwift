@@ -12,6 +12,4 @@ import HyperProxyCore
 
 public enum DeepSeekToolType: String, Codable, Hashable, Sendable {
   case function = "function"
-  case webSearch = "web_search"
-  case webSearch20250826 = "web_search_2025_08_26"
 }

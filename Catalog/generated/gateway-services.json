@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "providerCatalogSHA256": "2abbb82eac5a44dbff558034fc0c6aff6c3cd52a794e54428243a5fd922dbbba",
+  "providerCatalogSHA256": "8f93f87ac682163771819da1f5303a024e304b74ab96677309e7e6e5ff1c0872",
   "providers": [
     {
       "id": "openai",
@@ -21,7 +21,7 @@
         "v1/embeddings",
         "v1/moderations"
       ],
-      "routeCount": 353
+      "routeCount": 355
     },
     {
       "id": "anthropic",
@@ -93,7 +93,7 @@
         "v1/embeddings",
         "v1/fim/completions"
       ],
-      "routeCount": 299
+      "routeCount": 302
     },
     {
       "id": "openrouter",
@@ -109,7 +109,7 @@
       "defaultAllowedPaths": [
         "api/v1/"
       ],
-      "routeCount": 122
+      "routeCount": 150
     },
     {
       "id": "perplexity",
@@ -158,7 +158,7 @@
       "defaultAllowedPaths": [
         "v1/"
       ],
-      "routeCount": 207
+      "routeCount": 210
     },
     {
       "id": "fireworks",
@@ -268,7 +268,7 @@
       "defaultAllowedPaths": [
         "v1/"
       ],
-      "routeCount": 392
+      "routeCount": 407
     },
     {
       "id": "eachai",
@@ -323,7 +323,7 @@
         "v1/",
         "v2/"
       ],
-      "routeCount": 63
+      "routeCount": 62
     }
   ]
 }

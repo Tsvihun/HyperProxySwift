@@ -21,11 +21,7 @@ extension HyperProxyProviderService where Operation == DeepLOperation {
   public var getVoiceTranslateJobStatus: HyperProxyProviderCall<DeepLOperation> {
     self.call(.getVoiceTranslateJobStatus)
   }
-  /// `POST v1/quality-evaluation`
-  public var submitQualityEvaluation: HyperProxyProviderCall<DeepLOperation> {
-    self.call(.submitQualityEvaluation)
-  }
-  /// `GET v1/quality-evaluation/{job_id}`
+  /// `GET v1/quality-evaluations/{job_id}`
   public var pollQualityEvaluation: HyperProxyProviderCall<DeepLOperation> {
     self.call(.pollQualityEvaluation)
   }

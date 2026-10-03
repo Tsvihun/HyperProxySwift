@@ -11,19 +11,27 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepSeekChatFilePart: Codable, Sendable {
-  public var fileId: String
+  public var fileData: String?
+  public var fileId: String?
+  public var filename: String?
   public var kind: DeepSeekChatFilePartKind
 
   public init(
-    fileId: String,
-    kind: DeepSeekChatFilePartKind
+    kind: DeepSeekChatFilePartKind,
+    fileData: String? = nil,
+    fileId: String? = nil,
+    filename: String? = nil
   ) {
+    self.fileData = fileData
     self.fileId = fileId
+    self.filename = filename
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
+    case fileData = "file_data"
     case fileId = "file_id"
+    case filename
     case kind = "type"
   }
 }

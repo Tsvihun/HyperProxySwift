@@ -17,4 +17,6 @@ public enum ElevenLabsTTSConversationalModel: String, Codable, Hashable, Sendabl
   case elevenFlashV25 = "eleven_flash_v2_5"
   case elevenMultilingualV2 = "eleven_multilingual_v2"
   case elevenV3Conversational = "eleven_v3_conversational"
+  case elevenV4 = "eleven_v4"
+  case elevenV4Turbo = "eleven_v4_turbo"
 }

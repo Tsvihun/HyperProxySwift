@@ -13,9 +13,11 @@ import HyperProxyCore
 public enum MistralSubscriptionStatus: String, Codable, Hashable, Sendable {
   case nS = "NS"
   case s = "S"
+  case iC = "IC"
   case a = "A"
   case cF = "CF"
   case cG = "CG"
   case c = "C"
+  case pC = "PC"
   case gP = "GP"
 }

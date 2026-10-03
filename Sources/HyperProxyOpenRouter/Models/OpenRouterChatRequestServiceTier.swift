@@ -17,4 +17,5 @@ public enum OpenRouterChatRequestServiceTier: String, Codable, Hashable, Sendabl
   case flex = "flex"
   case priority = "priority"
   case scale = "scale"
+  case ultrafast = "ultrafast"
 }

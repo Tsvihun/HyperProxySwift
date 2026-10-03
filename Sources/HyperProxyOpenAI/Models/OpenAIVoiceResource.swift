@@ -15,17 +15,20 @@ public struct OpenAIVoiceResource: Codable, Sendable {
   public var id: String
   public var name: String
   public var object: OpenAIVoiceResourceObject
+  public var kind: OpenAIVoiceResourceKind
 
   public init(
     createdAt: Int,
     id: String,
     name: String,
-    object: OpenAIVoiceResourceObject
+    object: OpenAIVoiceResourceObject,
+    kind: OpenAIVoiceResourceKind
   ) {
     self.createdAt = createdAt
     self.id = id
     self.name = name
     self.object = object
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -33,5 +36,6 @@ public struct OpenAIVoiceResource: Codable, Sendable {
     case id
     case name
     case object
+    case kind = "type"
   }
 }

@@ -13,17 +13,21 @@ import HyperProxyCore
 public struct MistralCreateDatasetRecordRequest: Codable, Sendable {
   public var payload: MistralDatasetRecordPayload
   public var properties: [String: HyperProxyJSONValue]?
+  public var source: MistralCreateDatasetRecordRequestSource?
 
   public init(
     payload: MistralDatasetRecordPayload,
-    properties: [String: HyperProxyJSONValue]? = nil
+    properties: [String: HyperProxyJSONValue]? = nil,
+    source: MistralCreateDatasetRecordRequestSource? = nil
   ) {
     self.payload = payload
     self.properties = properties
+    self.source = source
   }
 
   enum CodingKeys: String, CodingKey {
     case payload
     case properties
+    case source
   }
 }

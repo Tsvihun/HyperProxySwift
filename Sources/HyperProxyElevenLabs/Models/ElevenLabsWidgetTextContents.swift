@@ -45,8 +45,12 @@ public struct ElevenLabsWidgetTextContents: Codable, Sendable {
   public var mainLabel: String?
   public var muteMicrophone: String?
   public var newCall: String?
+  public var queueTimedOut: String?
+  public var queueWaitingStatus: String?
+  public var queueWaitingStatusShort: String?
   public var removeFile: String?
   public var requestFollowUpFeedback: String?
+  public var richContentUnavailable: String?
   public var sendMessage: String?
   public var speakingStatus: String?
   public var startCall: String?
@@ -97,8 +101,12 @@ public struct ElevenLabsWidgetTextContents: Codable, Sendable {
     mainLabel: String? = nil,
     muteMicrophone: String? = nil,
     newCall: String? = nil,
+    queueTimedOut: String? = nil,
+    queueWaitingStatus: String? = nil,
+    queueWaitingStatusShort: String? = nil,
     removeFile: String? = nil,
     requestFollowUpFeedback: String? = nil,
+    richContentUnavailable: String? = nil,
     sendMessage: String? = nil,
     speakingStatus: String? = nil,
     startCall: String? = nil,
@@ -148,8 +156,12 @@ public struct ElevenLabsWidgetTextContents: Codable, Sendable {
     self.mainLabel = mainLabel
     self.muteMicrophone = muteMicrophone
     self.newCall = newCall
+    self.queueTimedOut = queueTimedOut
+    self.queueWaitingStatus = queueWaitingStatus
+    self.queueWaitingStatusShort = queueWaitingStatusShort
     self.removeFile = removeFile
     self.requestFollowUpFeedback = requestFollowUpFeedback
+    self.richContentUnavailable = richContentUnavailable
     self.sendMessage = sendMessage
     self.speakingStatus = speakingStatus
     self.startCall = startCall
@@ -201,8 +213,12 @@ public struct ElevenLabsWidgetTextContents: Codable, Sendable {
     case mainLabel = "main_label"
     case muteMicrophone = "mute_microphone"
     case newCall = "new_call"
+    case queueTimedOut = "queue_timed_out"
+    case queueWaitingStatus = "queue_waiting_status"
+    case queueWaitingStatusShort = "queue_waiting_status_short"
     case removeFile = "remove_file"
     case requestFollowUpFeedback = "request_follow_up_feedback"
+    case richContentUnavailable = "rich_content_unavailable"
     case sendMessage = "send_message"
     case speakingStatus = "speaking_status"
     case startCall = "start_call"

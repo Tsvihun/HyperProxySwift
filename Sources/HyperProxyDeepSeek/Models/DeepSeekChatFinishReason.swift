@@ -16,4 +16,5 @@ public enum DeepSeekChatFinishReason: String, Codable, Hashable, Sendable {
   case contentFilter = "content_filter"
   case toolCalls = "tool_calls"
   case insufficientSystemResource = "insufficient_system_resource"
+  case aborted = "aborted"
 }

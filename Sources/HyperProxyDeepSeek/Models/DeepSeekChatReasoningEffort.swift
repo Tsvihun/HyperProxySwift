@@ -11,9 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public enum DeepSeekChatReasoningEffort: String, Codable, Hashable, Sendable {
+  case none = "none"
   case low = "low"
   case high = "high"
   case max = "max"
+  case minimal = "minimal"
   case medium = "medium"
   case xhigh = "xhigh"
 }

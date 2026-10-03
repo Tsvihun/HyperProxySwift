@@ -22,6 +22,8 @@ public enum PerplexityEventType: String, Codable, Hashable, Sendable {
   case responseReasoningStarted = "response.reasoning.started"
   case responseReasoningSearchQueries = "response.reasoning.search_queries"
   case responseReasoningSearchResults = "response.reasoning.search_results"
+  case responseReasoningImageSearchQueries = "response.reasoning.image_search_queries"
+  case responseReasoningImageSearchResults = "response.reasoning.image_search_results"
   case responseReasoningFetchUrlQueries = "response.reasoning.fetch_url_queries"
   case responseReasoningFetchUrlResults = "response.reasoning.fetch_url_results"
   case responseReasoningStopped = "response.reasoning.stopped"

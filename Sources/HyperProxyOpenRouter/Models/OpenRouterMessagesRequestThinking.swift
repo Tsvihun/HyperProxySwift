@@ -14,6 +14,7 @@ public enum OpenRouterMessagesRequestThinking: Codable, Sendable {
   case messagesRequestThinkingOneOf1(OpenRouterMessagesRequestThinkingOneOf1)
   case messagesRequestThinkingOneOf2(OpenRouterMessagesRequestThinkingOneOf2)
   case messagesRequestThinkingOneOf3(OpenRouterMessagesRequestThinkingOneOf3)
+  case messagesRequestThinkingOneOf4(OpenRouterMessagesRequestThinkingOneOf4)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -25,8 +26,12 @@ public enum OpenRouterMessagesRequestThinking: Codable, Sendable {
       self = .messagesRequestThinkingOneOf2(value)
       return
     }
-    self = .messagesRequestThinkingOneOf3(
-      try container.decode(OpenRouterMessagesRequestThinkingOneOf3.self))
+    if let value = try? container.decode(OpenRouterMessagesRequestThinkingOneOf3.self) {
+      self = .messagesRequestThinkingOneOf3(value)
+      return
+    }
+    self = .messagesRequestThinkingOneOf4(
+      try container.decode(OpenRouterMessagesRequestThinkingOneOf4.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -37,6 +42,8 @@ public enum OpenRouterMessagesRequestThinking: Codable, Sendable {
     case .messagesRequestThinkingOneOf2(let value):
       try container.encode(value)
     case .messagesRequestThinkingOneOf3(let value):
+      try container.encode(value)
+    case .messagesRequestThinkingOneOf4(let value):
       try container.encode(value)
     }
   }

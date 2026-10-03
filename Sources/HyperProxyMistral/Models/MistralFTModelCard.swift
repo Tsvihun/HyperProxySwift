@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct MistralFTModelCard: Codable, Sendable {
   public var aliases: [String]?
   public var archived: Bool?
+  public var billingModelName: String?
   public var capabilities: MistralModelCapabilities
   public var created: Int?
   public var defaultModelTemperature: Double?
@@ -36,6 +37,7 @@ public struct MistralFTModelCard: Codable, Sendable {
     root: String,
     aliases: [String]? = nil,
     archived: Bool? = nil,
+    billingModelName: String? = nil,
     created: Int? = nil,
     defaultModelTemperature: Double? = nil,
     deprecation: String? = nil,
@@ -50,6 +52,7 @@ public struct MistralFTModelCard: Codable, Sendable {
   ) {
     self.aliases = aliases
     self.archived = archived
+    self.billingModelName = billingModelName
     self.capabilities = capabilities
     self.created = created
     self.defaultModelTemperature = defaultModelTemperature
@@ -70,6 +73,7 @@ public struct MistralFTModelCard: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case aliases
     case archived
+    case billingModelName = "billing_model_name"
     case capabilities
     case created
     case defaultModelTemperature = "default_model_temperature"

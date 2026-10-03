@@ -12,6 +12,9 @@ import HyperProxyCore
 
 public enum OpenAIBetaModelIdsSharedAnyOf2: String, Codable, Hashable, Sendable {
   case gpt6Astra = "gpt-6-astra"
+  case gpt61Sol = "gpt-6.1-sol"
+  case gpt6Sol = "gpt-6-sol"
+  case gpt6Luna = "gpt-6-luna"
   case gpt56Sol = "gpt-5.6-sol"
   case gpt56Terra = "gpt-5.6-terra"
   case gpt56Luna = "gpt-5.6-luna"
@@ -31,6 +34,7 @@ public enum OpenAIBetaModelIdsSharedAnyOf2: String, Codable, Hashable, Sendable 
   case gpt51 = "gpt-5.1"
   case gpt5120251113 = "gpt-5.1-2025-11-13"
   case gpt51Codex = "gpt-5.1-codex"
+  case gpt51Mini = "gpt-5.1-mini"
   case gpt51ChatLatest = "gpt-5.1-chat-latest"
   case gpt5 = "gpt-5"
   case gpt5Mini = "gpt-5-mini"

@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public enum OpenAICompoundFilterFiltersItem: Codable, Sendable {
   case comparisonFilter(OpenAIComparisonFilter)
-  case object(HyperProxyJSONValue)
+  case compoundFilter(OpenAICompoundFilter)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -20,7 +20,7 @@ public enum OpenAICompoundFilterFiltersItem: Codable, Sendable {
       self = .comparisonFilter(value)
       return
     }
-    self = .object(try container.decode(HyperProxyJSONValue.self))
+    self = .compoundFilter(try container.decode(OpenAICompoundFilter.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -28,7 +28,7 @@ public enum OpenAICompoundFilterFiltersItem: Codable, Sendable {
     switch self {
     case .comparisonFilter(let value):
       try container.encode(value)
-    case .object(let value):
+    case .compoundFilter(let value):
       try container.encode(value)
     }
   }

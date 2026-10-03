@@ -13,6 +13,7 @@ import HyperProxyCore
 public enum OpenRouterSpeechInputReference: Codable, Sendable {
   case speechInputReferenceAudio(OpenRouterSpeechInputReferenceAudio)
   case speechInputReferenceText(OpenRouterSpeechInputReferenceText)
+  case speechInputReferenceImage(OpenRouterSpeechInputReferenceImage)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -20,7 +21,12 @@ public enum OpenRouterSpeechInputReference: Codable, Sendable {
       self = .speechInputReferenceAudio(value)
       return
     }
-    self = .speechInputReferenceText(try container.decode(OpenRouterSpeechInputReferenceText.self))
+    if let value = try? container.decode(OpenRouterSpeechInputReferenceText.self) {
+      self = .speechInputReferenceText(value)
+      return
+    }
+    self = .speechInputReferenceImage(
+      try container.decode(OpenRouterSpeechInputReferenceImage.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -29,6 +35,8 @@ public enum OpenRouterSpeechInputReference: Codable, Sendable {
     case .speechInputReferenceAudio(let value):
       try container.encode(value)
     case .speechInputReferenceText(let value):
+      try container.encode(value)
+    case .speechInputReferenceImage(let value):
       try container.encode(value)
     }
   }

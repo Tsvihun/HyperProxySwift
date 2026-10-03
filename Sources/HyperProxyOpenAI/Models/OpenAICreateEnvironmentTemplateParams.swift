@@ -12,6 +12,7 @@ import HyperProxyCore
 
 public struct OpenAICreateEnvironmentTemplateParams: Codable, Sendable {
   public var capabilityDirectories: [String]?
+  public var desktop: OpenAIDesktopParam?
   public var env: [String: String]?
   public var files: [OpenAIHostedEnvironmentFileParam]?
   public var name: String?
@@ -23,6 +24,7 @@ public struct OpenAICreateEnvironmentTemplateParams: Codable, Sendable {
 
   public init(
     capabilityDirectories: [String]? = nil,
+    desktop: OpenAIDesktopParam? = nil,
     env: [String: String]? = nil,
     files: [OpenAIHostedEnvironmentFileParam]? = nil,
     name: String? = nil,
@@ -33,6 +35,7 @@ public struct OpenAICreateEnvironmentTemplateParams: Codable, Sendable {
     skills: [OpenAIHostedSkillParam]? = nil
   ) {
     self.capabilityDirectories = capabilityDirectories
+    self.desktop = desktop
     self.env = env
     self.files = files
     self.name = name
@@ -45,6 +48,7 @@ public struct OpenAICreateEnvironmentTemplateParams: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case capabilityDirectories = "capability_directories"
+    case desktop
     case env
     case files
     case name

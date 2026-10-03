@@ -25,6 +25,7 @@ public struct ElevenLabsExtendedSubscriptionResponseModel: Codable, Sendable {
   public var hasOpenInvoices: Bool
   public var hasUsedCreatorCouponOnAccount: Bool?
   public var hasUsedStarterCouponOnAccount: Bool?
+  public var isEligibleForStarterPromo: Bool?
   public var maxCharacterLimitExtension: Int?
   public var maxCreditLimitExtension:
     ElevenLabsExtendedSubscriptionResponseModelMaxCreditLimitExtension
@@ -68,6 +69,7 @@ public struct ElevenLabsExtendedSubscriptionResponseModel: Codable, Sendable {
     currency: ElevenLabsCurrency? = nil,
     hasUsedCreatorCouponOnAccount: Bool? = nil,
     hasUsedStarterCouponOnAccount: Bool? = nil,
+    isEligibleForStarterPromo: Bool? = nil,
     maxVoiceAddEdits: Int? = nil,
     nextCharacterCountResetUnix: Int? = nil,
     nextInvoice: ElevenLabsInvoiceResponseModel? = nil,
@@ -87,6 +89,7 @@ public struct ElevenLabsExtendedSubscriptionResponseModel: Codable, Sendable {
     self.hasOpenInvoices = hasOpenInvoices
     self.hasUsedCreatorCouponOnAccount = hasUsedCreatorCouponOnAccount
     self.hasUsedStarterCouponOnAccount = hasUsedStarterCouponOnAccount
+    self.isEligibleForStarterPromo = isEligibleForStarterPromo
     self.maxCharacterLimitExtension = maxCharacterLimitExtension
     self.maxCreditLimitExtension = maxCreditLimitExtension
     self.maxVoiceAddEdits = maxVoiceAddEdits
@@ -119,6 +122,7 @@ public struct ElevenLabsExtendedSubscriptionResponseModel: Codable, Sendable {
     case hasOpenInvoices = "has_open_invoices"
     case hasUsedCreatorCouponOnAccount = "has_used_creator_coupon_on_account"
     case hasUsedStarterCouponOnAccount = "has_used_starter_coupon_on_account"
+    case isEligibleForStarterPromo = "is_eligible_for_starter_promo"
     case maxCharacterLimitExtension = "max_character_limit_extension"
     case maxCreditLimitExtension = "max_credit_limit_extension"
     case maxVoiceAddEdits = "max_voice_add_edits"

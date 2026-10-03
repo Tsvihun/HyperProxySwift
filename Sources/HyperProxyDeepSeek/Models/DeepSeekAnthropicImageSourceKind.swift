@@ -12,4 +12,6 @@ import HyperProxyCore
 
 public enum DeepSeekAnthropicImageSourceKind: String, Codable, Hashable, Sendable {
   case base64 = "base64"
+  case url = "url"
+  case file = "file"
 }

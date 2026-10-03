@@ -19,6 +19,7 @@ public struct MistralWorkflowExecutionRequest: Codable, Sendable {
   public var input: MistralWorkflowExecutionRequestInput?
   public var taskQueue: String?
   public var timeoutSeconds: Double?
+  public var traceparent: String?
   public var waitForResult: Bool?
 
   public init(
@@ -30,6 +31,7 @@ public struct MistralWorkflowExecutionRequest: Codable, Sendable {
     input: MistralWorkflowExecutionRequestInput? = nil,
     taskQueue: String? = nil,
     timeoutSeconds: Double? = nil,
+    traceparent: String? = nil,
     waitForResult: Bool? = nil
   ) {
     self.customTracingAttributes = customTracingAttributes
@@ -40,6 +42,7 @@ public struct MistralWorkflowExecutionRequest: Codable, Sendable {
     self.input = input
     self.taskQueue = taskQueue
     self.timeoutSeconds = timeoutSeconds
+    self.traceparent = traceparent
     self.waitForResult = waitForResult
   }
 
@@ -52,6 +55,7 @@ public struct MistralWorkflowExecutionRequest: Codable, Sendable {
     case input
     case taskQueue = "task_queue"
     case timeoutSeconds = "timeout_seconds"
+    case traceparent
     case waitForResult = "wait_for_result"
   }
 }

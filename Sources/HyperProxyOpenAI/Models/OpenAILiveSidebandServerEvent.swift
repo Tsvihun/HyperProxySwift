@@ -11,6 +11,9 @@ import Foundation
 import HyperProxyCore
 
 public enum OpenAILiveSidebandServerEvent: Codable, Sendable {
+  case liveTransportRinging(OpenAILiveTransportRinging)
+  case liveTransportAnswered(OpenAILiveTransportAnswered)
+  case liveTransportFailed(OpenAILiveTransportFailed)
   case liveSessionStarted(OpenAILiveSessionStarted)
   case liveSessionUpdated(OpenAILiveSessionUpdated)
   case liveInputAudioMuted(OpenAILiveInputAudioMuted)
@@ -29,6 +32,18 @@ public enum OpenAILiveSidebandServerEvent: Codable, Sendable {
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(OpenAILiveTransportRinging.self) {
+      self = .liveTransportRinging(value)
+      return
+    }
+    if let value = try? container.decode(OpenAILiveTransportAnswered.self) {
+      self = .liveTransportAnswered(value)
+      return
+    }
+    if let value = try? container.decode(OpenAILiveTransportFailed.self) {
+      self = .liveTransportFailed(value)
+      return
+    }
     if let value = try? container.decode(OpenAILiveSessionStarted.self) {
       self = .liveSessionStarted(value)
       return
@@ -91,6 +106,12 @@ public enum OpenAILiveSidebandServerEvent: Codable, Sendable {
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
+    case .liveTransportRinging(let value):
+      try container.encode(value)
+    case .liveTransportAnswered(let value):
+      try container.encode(value)
+    case .liveTransportFailed(let value):
+      try container.encode(value)
     case .liveSessionStarted(let value):
       try container.encode(value)
     case .liveSessionUpdated(let value):

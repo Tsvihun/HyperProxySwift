@@ -18,4 +18,5 @@ public enum OpenRouterMessagesMessageParamContentAnyOf2ItemOneOf9ContentAnyOf2Er
   case maxUsesExceeded = "max_uses_exceeded"
   case tooManyRequests = "too_many_requests"
   case queryTooLong = "query_too_long"
+  case requestTooLarge = "request_too_large"
 }

@@ -19,6 +19,7 @@ public struct OpenRouterPreviewWebSearchServerTool: Codable, Sendable {
   public var searchContextSize: OpenRouterSearchContextSizeEnum?
   public var kind: OpenRouterPreviewWebSearchServerToolKind
   public var userLocation: OpenRouterPreviewWebSearchUserLocation?
+  public var xSearch: OpenRouterXSearchOptions?
 
   public init(
     kind: OpenRouterPreviewWebSearchServerToolKind,
@@ -28,7 +29,8 @@ public struct OpenRouterPreviewWebSearchServerTool: Codable, Sendable {
     maxUses: Int? = nil,
     mode: OpenRouterWebSearchMode? = nil,
     searchContextSize: OpenRouterSearchContextSizeEnum? = nil,
-    userLocation: OpenRouterPreviewWebSearchUserLocation? = nil
+    userLocation: OpenRouterPreviewWebSearchUserLocation? = nil,
+    xSearch: OpenRouterXSearchOptions? = nil
   ) {
     self.engine = engine
     self.filters = filters
@@ -38,6 +40,7 @@ public struct OpenRouterPreviewWebSearchServerTool: Codable, Sendable {
     self.searchContextSize = searchContextSize
     self.kind = kind
     self.userLocation = userLocation
+    self.xSearch = xSearch
   }
 
   enum CodingKeys: String, CodingKey {
@@ -49,5 +52,6 @@ public struct OpenRouterPreviewWebSearchServerTool: Codable, Sendable {
     case searchContextSize = "search_context_size"
     case kind = "type"
     case userLocation = "user_location"
+    case xSearch = "x_search"
   }
 }

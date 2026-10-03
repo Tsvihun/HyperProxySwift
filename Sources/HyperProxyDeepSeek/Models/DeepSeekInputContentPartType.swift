@@ -14,4 +14,5 @@ public enum DeepSeekInputContentPartType: String, Codable, Hashable, Sendable {
   case inputText = "input_text"
   case outputText = "output_text"
   case reasoningText = "reasoning_text"
+  case inputImage = "input_image"
 }

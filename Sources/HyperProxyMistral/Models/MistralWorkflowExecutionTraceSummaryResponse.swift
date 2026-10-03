@@ -18,6 +18,7 @@ public struct MistralWorkflowExecutionTraceSummaryResponse: Codable, Sendable {
   public var result: HyperProxyJSONValue?
   public var rootExecutionId: String
   public var runId: String?
+  public var searchKeys: [String: String?]?
   public var spanTree: MistralWorkflowExecutionTraceSummarySpan?
   public var startTime: String
   public var status: MistralWorkflowExecutionStatus?
@@ -37,6 +38,7 @@ public struct MistralWorkflowExecutionTraceSummaryResponse: Codable, Sendable {
     deploymentName: String? = nil,
     parentExecutionId: String? = nil,
     runId: String? = nil,
+    searchKeys: [String: String?]? = nil,
     spanTree: MistralWorkflowExecutionTraceSummarySpan? = nil,
     totalDurationMs: Int? = nil,
     userId: String? = nil,
@@ -49,6 +51,7 @@ public struct MistralWorkflowExecutionTraceSummaryResponse: Codable, Sendable {
     self.result = result
     self.rootExecutionId = rootExecutionId
     self.runId = runId
+    self.searchKeys = searchKeys
     self.spanTree = spanTree
     self.startTime = startTime
     self.status = status
@@ -66,6 +69,7 @@ public struct MistralWorkflowExecutionTraceSummaryResponse: Codable, Sendable {
     case result
     case rootExecutionId = "root_execution_id"
     case runId = "run_id"
+    case searchKeys = "search_keys"
     case spanTree = "span_tree"
     case startTime = "start_time"
     case status

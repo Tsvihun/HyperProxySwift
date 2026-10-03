@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsGetResponseUnitTestResponseModel: Codable, Sendable {
+  public var accessInfo: ElevenLabsResourceAccessInfo?
   public var chatHistory: [ElevenLabsConversationHistoryTranscriptCommonModelOutput]?
   public var conversationInitiationSource: ElevenLabsConversationInitiationSource?
   public var dynamicVariables: [String: HyperProxyJSONValue]?
@@ -26,6 +27,7 @@ public struct ElevenLabsGetResponseUnitTestResponseModel: Codable, Sendable {
   public init(
     id: String,
     name: String,
+    accessInfo: ElevenLabsResourceAccessInfo? = nil,
     chatHistory: [ElevenLabsConversationHistoryTranscriptCommonModelOutput]? = nil,
     conversationInitiationSource: ElevenLabsConversationInitiationSource? = nil,
     dynamicVariables: [String: HyperProxyJSONValue]? = nil,
@@ -36,6 +38,7 @@ public struct ElevenLabsGetResponseUnitTestResponseModel: Codable, Sendable {
     successExamples: [ElevenLabsAgentSuccessfulResponseExample]? = nil,
     kind: ElevenLabsLlmKind? = nil
   ) {
+    self.accessInfo = accessInfo
     self.chatHistory = chatHistory
     self.conversationInitiationSource = conversationInitiationSource
     self.dynamicVariables = dynamicVariables
@@ -50,6 +53,7 @@ public struct ElevenLabsGetResponseUnitTestResponseModel: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case accessInfo = "access_info"
     case chatHistory = "chat_history"
     case conversationInitiationSource = "conversation_initiation_source"
     case dynamicVariables = "dynamic_variables"

@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIResponsesClientEventResponseCreate: Codable, Sendable {
+  public var accessPrograms: OpenAIAccessProgramsParam?
   public var background: Bool?
   public var contextManagement: [OpenAIContextManagementParam]?
   public var conversation: OpenAIConversationParam?
@@ -47,6 +48,7 @@ public struct OpenAIResponsesClientEventResponseCreate: Codable, Sendable {
 
   public init(
     kind: OpenAIResponsesClientEventResponseCreateAllOf1Kind,
+    accessPrograms: OpenAIAccessProgramsParam? = nil,
     background: Bool? = nil,
     contextManagement: [OpenAIContextManagementParam]? = nil,
     conversation: OpenAIConversationParam? = nil,
@@ -80,6 +82,7 @@ public struct OpenAIResponsesClientEventResponseCreate: Codable, Sendable {
     truncation: OpenAICreateResponseAllOf3TruncationAnyOf1? = nil,
     user: String? = nil
   ) {
+    self.accessPrograms = accessPrograms
     self.background = background
     self.contextManagement = contextManagement
     self.conversation = conversation
@@ -116,6 +119,7 @@ public struct OpenAIResponsesClientEventResponseCreate: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case accessPrograms = "access_programs"
     case background
     case contextManagement = "context_management"
     case conversation

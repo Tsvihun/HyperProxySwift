@@ -23,12 +23,14 @@ public struct MistralVoiceResponse: Codable, Sendable {
   public var slug: String?
   public var tags: [String]?
   public var trimmedSeconds: Double?
+  public var kind: MistralVoiceResponseKind
   public var userId: String?
 
   public init(
     createdAt: String,
     id: String,
     name: String,
+    kind: MistralVoiceResponseKind,
     userId: String?,
     age: Int? = nil,
     color: String? = nil,
@@ -52,6 +54,7 @@ public struct MistralVoiceResponse: Codable, Sendable {
     self.slug = slug
     self.tags = tags
     self.trimmedSeconds = trimmedSeconds
+    self.kind = kind
     self.userId = userId
   }
 
@@ -68,6 +71,7 @@ public struct MistralVoiceResponse: Codable, Sendable {
     case slug
     case tags
     case trimmedSeconds = "trimmed_seconds"
+    case kind = "type"
     case userId = "user_id"
   }
 }

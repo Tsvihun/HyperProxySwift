@@ -12,17 +12,20 @@ import HyperProxyCore
 
 public struct TogetherRLCreateModelResourcesRequest: Codable, Sendable {
   public var baseModel: String
+  public var baseWeightsRef: String?
   public var computeConfig: TogetherRLComputeConfigCreateRequest?
   public var loraEnabled: Bool?
   public var optimizerConfig: TogetherRLOptimizerConfig?
 
   public init(
     baseModel: String,
+    baseWeightsRef: String? = nil,
     computeConfig: TogetherRLComputeConfigCreateRequest? = nil,
     loraEnabled: Bool? = nil,
     optimizerConfig: TogetherRLOptimizerConfig? = nil
   ) {
     self.baseModel = baseModel
+    self.baseWeightsRef = baseWeightsRef
     self.computeConfig = computeConfig
     self.loraEnabled = loraEnabled
     self.optimizerConfig = optimizerConfig
@@ -30,6 +33,7 @@ public struct TogetherRLCreateModelResourcesRequest: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case baseModel = "base_model"
+    case baseWeightsRef = "base_weights_ref"
     case computeConfig = "compute_config"
     case loraEnabled = "lora_enabled"
     case optimizerConfig = "optimizer_config"

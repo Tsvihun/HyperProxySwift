@@ -12,6 +12,7 @@ import HyperProxyCore
 
 public struct MistralWorkflowExecutionFailedResponse: Codable, Sendable {
   public var attributes: MistralWorkflowExecutionFailedAttributes
+  public var chainRunId: String?
   public var continuedRunId: String?
   public var eventId: String
   public var eventTimestamp: Int
@@ -26,6 +27,7 @@ public struct MistralWorkflowExecutionFailedResponse: Codable, Sendable {
 
   public init(
     attributes: MistralWorkflowExecutionFailedAttributes,
+    chainRunId: String?,
     continuedRunId: String?,
     eventId: String,
     eventTimestamp: Int,
@@ -39,6 +41,7 @@ public struct MistralWorkflowExecutionFailedResponse: Codable, Sendable {
     eventType: MistralWORKFLOWEXECUTIONFAILEDEventType = .wORKFLOWEXECUTIONFAILED
   ) {
     self.attributes = attributes
+    self.chainRunId = chainRunId
     self.continuedRunId = continuedRunId
     self.eventId = eventId
     self.eventTimestamp = eventTimestamp
@@ -54,6 +57,7 @@ public struct MistralWorkflowExecutionFailedResponse: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case attributes
+    case chainRunId = "chain_run_id"
     case continuedRunId = "continued_run_id"
     case eventId = "event_id"
     case eventTimestamp = "event_timestamp"

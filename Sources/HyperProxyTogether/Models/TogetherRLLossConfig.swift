@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct TogetherRLLossConfig: Codable, Sendable {
   public var cispoParams: TogetherRLCISPOLossParams?
   public var crossEntropyParams: TogetherRLCrossEntropyLossParams?
+  public var dppoParams: TogetherRLDPPOLossParams?
   public var droParams: TogetherRLDROLossParams?
   public var grpoParams: TogetherRLGRPOLossParams?
   public var ppoParams: TogetherRLPPOLossParams?
@@ -22,12 +23,14 @@ public struct TogetherRLLossConfig: Codable, Sendable {
     kind: TogetherRLLossType,
     cispoParams: TogetherRLCISPOLossParams? = nil,
     crossEntropyParams: TogetherRLCrossEntropyLossParams? = nil,
+    dppoParams: TogetherRLDPPOLossParams? = nil,
     droParams: TogetherRLDROLossParams? = nil,
     grpoParams: TogetherRLGRPOLossParams? = nil,
     ppoParams: TogetherRLPPOLossParams? = nil
   ) {
     self.cispoParams = cispoParams
     self.crossEntropyParams = crossEntropyParams
+    self.dppoParams = dppoParams
     self.droParams = droParams
     self.grpoParams = grpoParams
     self.ppoParams = ppoParams
@@ -37,6 +40,7 @@ public struct TogetherRLLossConfig: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case cispoParams = "cispo_params"
     case crossEntropyParams = "cross_entropy_params"
+    case dppoParams = "dppo_params"
     case droParams = "dro_params"
     case grpoParams = "grpo_params"
     case ppoParams = "ppo_params"

@@ -12,8 +12,10 @@ import HyperProxyCore
 
 public struct OpenAIUsageCompletionsResult: Codable, Sendable {
   public var apiKeyId: String?
+  public var apiSource: OpenAIUsageCompletionsResultApiSourceAnyOf1?
   public var batch: Bool?
   public var inputAudioTokens: Int?
+  public var inputCacheWrite12hTokens: Int?
   public var inputCacheWriteTokens: Int?
   public var inputCachedAudioTokens: Int?
   public var inputCachedImageTokens: Int?
@@ -40,8 +42,10 @@ public struct OpenAIUsageCompletionsResult: Codable, Sendable {
     object: OpenAIUsageCompletionsResultObject,
     outputTokens: Int,
     apiKeyId: String? = nil,
+    apiSource: OpenAIUsageCompletionsResultApiSourceAnyOf1? = nil,
     batch: Bool? = nil,
     inputAudioTokens: Int? = nil,
+    inputCacheWrite12hTokens: Int? = nil,
     inputCacheWriteTokens: Int? = nil,
     inputCachedAudioTokens: Int? = nil,
     inputCachedImageTokens: Int? = nil,
@@ -59,8 +63,10 @@ public struct OpenAIUsageCompletionsResult: Codable, Sendable {
     userId: String? = nil
   ) {
     self.apiKeyId = apiKeyId
+    self.apiSource = apiSource
     self.batch = batch
     self.inputAudioTokens = inputAudioTokens
+    self.inputCacheWrite12hTokens = inputCacheWrite12hTokens
     self.inputCacheWriteTokens = inputCacheWriteTokens
     self.inputCachedAudioTokens = inputCachedAudioTokens
     self.inputCachedImageTokens = inputCachedImageTokens
@@ -84,8 +90,10 @@ public struct OpenAIUsageCompletionsResult: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case apiKeyId = "api_key_id"
+    case apiSource = "api_source"
     case batch
     case inputAudioTokens = "input_audio_tokens"
+    case inputCacheWrite12hTokens = "input_cache_write_12h_tokens"
     case inputCacheWriteTokens = "input_cache_write_tokens"
     case inputCachedAudioTokens = "input_cached_audio_tokens"
     case inputCachedImageTokens = "input_cached_image_tokens"

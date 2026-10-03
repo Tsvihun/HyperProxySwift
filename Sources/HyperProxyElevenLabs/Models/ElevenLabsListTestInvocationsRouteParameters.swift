@@ -12,6 +12,7 @@ import HyperProxyCore
 
 public struct ElevenLabsListTestInvocationsRouteParameters: Codable, Sendable {
   public var agentId: String?
+  public var branchId: String?
   public var cursor: String?
   public var pageSize: Int?
   public var search: String?
@@ -19,12 +20,14 @@ public struct ElevenLabsListTestInvocationsRouteParameters: Codable, Sendable {
 
   public init(
     agentId: String? = nil,
+    branchId: String? = nil,
     cursor: String? = nil,
     pageSize: Int? = nil,
     search: String? = nil,
     xiApiKey: String? = nil
   ) {
     self.agentId = agentId
+    self.branchId = branchId
     self.cursor = cursor
     self.pageSize = pageSize
     self.search = search
@@ -33,6 +36,7 @@ public struct ElevenLabsListTestInvocationsRouteParameters: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case agentId = "agent_id"
+    case branchId = "branch_id"
     case cursor
     case pageSize = "page_size"
     case search

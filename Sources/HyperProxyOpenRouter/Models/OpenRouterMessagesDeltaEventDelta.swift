@@ -12,6 +12,7 @@ import HyperProxyCore
 
 public struct OpenRouterMessagesDeltaEventDelta: Codable, Sendable {
   public var container: OpenRouterAnthropicContainer?
+  public var safeguardResults: [OpenRouterAnthropicSafeguardResult]?
   public var stopDetails: OpenRouterAnthropicRefusalStopDetails?
   public var stopReason: OpenRouterORAnthropicStopReason?
   public var stopSequence: String
@@ -20,9 +21,11 @@ public struct OpenRouterMessagesDeltaEventDelta: Codable, Sendable {
     container: OpenRouterAnthropicContainer?,
     stopDetails: OpenRouterAnthropicRefusalStopDetails?,
     stopReason: OpenRouterORAnthropicStopReason?,
-    stopSequence: String
+    stopSequence: String,
+    safeguardResults: [OpenRouterAnthropicSafeguardResult]? = nil
   ) {
     self.container = container
+    self.safeguardResults = safeguardResults
     self.stopDetails = stopDetails
     self.stopReason = stopReason
     self.stopSequence = stopSequence
@@ -30,6 +33,7 @@ public struct OpenRouterMessagesDeltaEventDelta: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case container
+    case safeguardResults = "safeguard_results"
     case stopDetails = "stop_details"
     case stopReason = "stop_reason"
     case stopSequence = "stop_sequence"

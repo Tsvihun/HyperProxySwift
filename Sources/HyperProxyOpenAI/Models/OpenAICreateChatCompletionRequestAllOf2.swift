@@ -29,7 +29,7 @@ public struct OpenAICreateChatCompletionRequestAllOf2: Codable, Sendable {
   public var presencePenalty: Double?
   public var reasoningEffort: OpenAIReasoningEffort?
   public var responseFormat: OpenAICreateChatCompletionRequestAllOf2ResponseFormat?
-  public var seed: Int?
+  public var seed: Int64?
   public var serviceTier: OpenAIServiceTier?
   public var stop: OpenAIStopConfiguration?
   public var store: Bool?
@@ -60,7 +60,7 @@ public struct OpenAICreateChatCompletionRequestAllOf2: Codable, Sendable {
     presencePenalty: Double? = nil,
     reasoningEffort: OpenAIReasoningEffort? = nil,
     responseFormat: OpenAICreateChatCompletionRequestAllOf2ResponseFormat? = nil,
-    seed: Int? = nil,
+    seed: Int64? = nil,
     serviceTier: OpenAIServiceTier? = nil,
     stop: OpenAIStopConfiguration? = nil,
     store: Bool? = nil,

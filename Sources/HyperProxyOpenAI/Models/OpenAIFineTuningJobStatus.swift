@@ -17,4 +17,6 @@ public enum OpenAIFineTuningJobStatus: String, Codable, Hashable, Sendable {
   case succeeded = "succeeded"
   case failed = "failed"
   case cancelled = "cancelled"
+  case pausing = "pausing"
+  case paused = "paused"
 }

@@ -11,17 +11,20 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralWorkflowsWorkerSpecUpdate: Codable, Sendable {
+  public var backendSpec: MistralWorkflowsWorkerSpecUpdateBackendSpecAnyOf1?
   public var entrypoint: String?
   public var githubUrl: String?
   public var revision: String?
   public var workingDir: String?
 
   public init(
+    backendSpec: MistralWorkflowsWorkerSpecUpdateBackendSpecAnyOf1? = nil,
     entrypoint: String? = nil,
     githubUrl: String? = nil,
     revision: String? = nil,
     workingDir: String? = nil
   ) {
+    self.backendSpec = backendSpec
     self.entrypoint = entrypoint
     self.githubUrl = githubUrl
     self.revision = revision
@@ -29,6 +32,7 @@ public struct MistralWorkflowsWorkerSpecUpdate: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case backendSpec = "backend_spec"
     case entrypoint
     case githubUrl = "github_url"
     case revision

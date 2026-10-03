@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsWorkflowFeaturesUsageCommonModel: Codable, Sendable {
   public var enabled: Bool?
   public var endNode: ElevenLabsFeatureStatusCommonModel?
+  public var overrideAgentNode: ElevenLabsFeatureStatusCommonModel?
   public var phoneNumberNode: ElevenLabsFeatureStatusCommonModel?
   public var standaloneAgentNode: ElevenLabsFeatureStatusCommonModel?
   public var toolNode: ElevenLabsFeatureStatusCommonModel?
@@ -20,12 +21,14 @@ public struct ElevenLabsWorkflowFeaturesUsageCommonModel: Codable, Sendable {
   public init(
     enabled: Bool? = nil,
     endNode: ElevenLabsFeatureStatusCommonModel? = nil,
+    overrideAgentNode: ElevenLabsFeatureStatusCommonModel? = nil,
     phoneNumberNode: ElevenLabsFeatureStatusCommonModel? = nil,
     standaloneAgentNode: ElevenLabsFeatureStatusCommonModel? = nil,
     toolNode: ElevenLabsFeatureStatusCommonModel? = nil
   ) {
     self.enabled = enabled
     self.endNode = endNode
+    self.overrideAgentNode = overrideAgentNode
     self.phoneNumberNode = phoneNumberNode
     self.standaloneAgentNode = standaloneAgentNode
     self.toolNode = toolNode
@@ -34,6 +37,7 @@ public struct ElevenLabsWorkflowFeaturesUsageCommonModel: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case enabled
     case endNode = "end_node"
+    case overrideAgentNode = "override_agent_node"
     case phoneNumberNode = "phone_number_node"
     case standaloneAgentNode = "standalone_agent_node"
     case toolNode = "tool_node"

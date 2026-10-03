@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct TogetherDeploymentResponseItem: Codable, Sendable {
   public var args: [String]?
   public var autoscaling: TogetherDeploymentResponseItemAutoscaling?
+  public var capacityType: TogetherDeploymentResponseItemCapacityType?
   public var command: [String]?
   public var cpu: Double?
   public var createdAt: String?
@@ -27,6 +28,7 @@ public struct TogetherDeploymentResponseItem: Codable, Sendable {
   public var maxReplicas: Int?
   public var memory: Double?
   public var minReplicas: Int?
+  public var modelMounts: [TogetherModelMount]?
   public var name: String?
   public var object: TogetherDeploymentObject?
   public var port: Int?
@@ -41,6 +43,7 @@ public struct TogetherDeploymentResponseItem: Codable, Sendable {
   public init(
     args: [String]? = nil,
     autoscaling: TogetherDeploymentResponseItemAutoscaling? = nil,
+    capacityType: TogetherDeploymentResponseItemCapacityType? = nil,
     command: [String]? = nil,
     cpu: Double? = nil,
     createdAt: String? = nil,
@@ -55,6 +58,7 @@ public struct TogetherDeploymentResponseItem: Codable, Sendable {
     maxReplicas: Int? = nil,
     memory: Double? = nil,
     minReplicas: Int? = nil,
+    modelMounts: [TogetherModelMount]? = nil,
     name: String? = nil,
     object: TogetherDeploymentObject? = nil,
     port: Int? = nil,
@@ -68,6 +72,7 @@ public struct TogetherDeploymentResponseItem: Codable, Sendable {
   ) {
     self.args = args
     self.autoscaling = autoscaling
+    self.capacityType = capacityType
     self.command = command
     self.cpu = cpu
     self.createdAt = createdAt
@@ -82,6 +87,7 @@ public struct TogetherDeploymentResponseItem: Codable, Sendable {
     self.maxReplicas = maxReplicas
     self.memory = memory
     self.minReplicas = minReplicas
+    self.modelMounts = modelMounts
     self.name = name
     self.object = object
     self.port = port
@@ -97,6 +103,7 @@ public struct TogetherDeploymentResponseItem: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case args
     case autoscaling
+    case capacityType = "capacity_type"
     case command
     case cpu
     case createdAt = "created_at"
@@ -111,6 +118,7 @@ public struct TogetherDeploymentResponseItem: Codable, Sendable {
     case maxReplicas = "max_replicas"
     case memory
     case minReplicas = "min_replicas"
+    case modelMounts = "model_mounts"
     case name
     case object
     case port

@@ -308,10 +308,14 @@ public enum OpenAIOperation: String, HyperProxyProviderOperation {
   case retrieveAgentSessionSubagentTurn = "retrieveAgentSessionSubagentTurn"
   /// `GET v1/agents/sessions/{session_id}/subagents/{subagent_id}/turns/{turn_id}/items`
   case listAgentSessionSubagentTurnItems = "listAgentSessionSubagentTurnItems"
+  /// `GET v1/agents/sessions/{session_id}/traces`
+  case listAgentSessionTraces = "listAgentSessionTraces"
   /// `GET v1/agents/sessions/{session_id}/turns`
   case listAgentSessionTurns = "listAgentSessionTurns"
   /// `GET v1/agents/sessions/{session_id}/turns/{turn_id}`
   case retrieveAgentSessionTurn = "retrieveAgentSessionTurn"
+  /// `GET v1/agents/sessions/{session_id}/turns/{turn_id}/items`
+  case listAgentSessionTurnItems = "listAgentSessionTurnItems"
   /// `DELETE v1/agents/{agent_id}`
   case deleteAgent = "deleteAgent"
   /// `GET v1/agents/{agent_id}`
@@ -436,7 +440,7 @@ public enum OpenAIOperation: String, HyperProxyProviderOperation {
   case deleteEvalRun = "deleteEvalRun"
   /// `GET v1/evals/{eval_id}/runs/{run_id}`
   case getEvalRun = "getEvalRun"
-  /// `POST v1/evals/{eval_id}/runs/{run_id}`
+  /// `POST v1/evals/{eval_id}/runs/{run_id}/cancel`
   case cancelEvalRun = "cancelEvalRun"
   /// `GET v1/evals/{eval_id}/runs/{run_id}/output_items`
   case getEvalRunOutputItems = "getEvalRunOutputItems"

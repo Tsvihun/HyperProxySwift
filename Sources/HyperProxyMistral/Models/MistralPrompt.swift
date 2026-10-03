@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct MistralPrompt: Codable, Sendable {
   public var aliases: [String]?
   public var createdAt: MistralTimestamp?
+  public var createdBy: String?
   public var definition: MistralPromptDefinition?
   public var description: String?
   public var id: String?
@@ -23,10 +24,12 @@ public struct MistralPrompt: Codable, Sendable {
   public var title: String?
   public var updatedAt: MistralTimestamp?
   public var version: Int?
+  public var versionCreatedAt: MistralTimestamp?
 
   public init(
     aliases: [String]? = nil,
     createdAt: MistralTimestamp? = nil,
+    createdBy: String? = nil,
     definition: MistralPromptDefinition? = nil,
     description: String? = nil,
     id: String? = nil,
@@ -36,10 +39,12 @@ public struct MistralPrompt: Codable, Sendable {
     sharingScope: MistralRegistrySharingScope? = nil,
     title: String? = nil,
     updatedAt: MistralTimestamp? = nil,
-    version: Int? = nil
+    version: Int? = nil,
+    versionCreatedAt: MistralTimestamp? = nil
   ) {
     self.aliases = aliases
     self.createdAt = createdAt
+    self.createdBy = createdBy
     self.definition = definition
     self.description = description
     self.id = id
@@ -50,11 +55,13 @@ public struct MistralPrompt: Codable, Sendable {
     self.title = title
     self.updatedAt = updatedAt
     self.version = version
+    self.versionCreatedAt = versionCreatedAt
   }
 
   enum CodingKeys: String, CodingKey {
     case aliases
     case createdAt
+    case createdBy
     case definition
     case description
     case id
@@ -65,5 +72,6 @@ public struct MistralPrompt: Codable, Sendable {
     case title
     case updatedAt
     case version
+    case versionCreatedAt
   }
 }

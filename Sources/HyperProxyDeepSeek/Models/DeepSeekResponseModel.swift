@@ -11,5 +11,6 @@ import Foundation
 import HyperProxyCore
 
 public enum DeepSeekResponseModel: String, Codable, Hashable, Sendable {
-  case deepseekV4Flash = "deepseek-v4-flash"
+  case deepseekFlash = "deepseek-flash"
+  case deepseekV4Pro = "deepseek-v4-pro"
 }

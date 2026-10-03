@@ -21,6 +21,7 @@ public struct FalGetUsageResponseTimeSeriesItemResultsItem: Codable, Sendable {
   public var endpointId: String
   public var percentDiscount: Double
   public var quantity: Double
+  public var tags: [String: String]?
   public var unit: String
   public var unitPrice: Double
 
@@ -36,7 +37,8 @@ public struct FalGetUsageResponseTimeSeriesItemResultsItem: Codable, Sendable {
     unit: String,
     unitPrice: Double,
     authMethod: String? = nil,
-    authMethodStructured: FalGetUsageResponseTimeSeriesItemResultsItemAuthMethodStructured? = nil
+    authMethodStructured: FalGetUsageResponseTimeSeriesItemResultsItemAuthMethodStructured? = nil,
+    tags: [String: String]? = nil
   ) {
     self.authMethod = authMethod
     self.authMethodStructured = authMethodStructured
@@ -48,6 +50,7 @@ public struct FalGetUsageResponseTimeSeriesItemResultsItem: Codable, Sendable {
     self.endpointId = endpointId
     self.percentDiscount = percentDiscount
     self.quantity = quantity
+    self.tags = tags
     self.unit = unit
     self.unitPrice = unitPrice
   }
@@ -63,6 +66,7 @@ public struct FalGetUsageResponseTimeSeriesItemResultsItem: Codable, Sendable {
     case endpointId = "endpoint_id"
     case percentDiscount = "percent_discount"
     case quantity
+    case tags
     case unit
     case unitPrice = "unit_price"
   }

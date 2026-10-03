@@ -18,10 +18,11 @@ public enum OpenAICreateImageRequestModel: RawRepresentable, Codable, Hashable, 
   case gptImage25Sunburst20260908
   case gptImage25Flare
   case gptImage25Flare20260908
-  case dallE2
-  case dallE3
   case gptImage1
   case gptImage1Mini
+  case chatgptImageLatest
+  case dallE2
+  case dallE3
   case custom(String)
 
   public init(rawValue: String) {
@@ -40,14 +41,16 @@ public enum OpenAICreateImageRequestModel: RawRepresentable, Codable, Hashable, 
       self = .gptImage25Flare
     case "gpt-image-2.5-flare-2026-09-08":
       self = .gptImage25Flare20260908
-    case "dall-e-2":
-      self = .dallE2
-    case "dall-e-3":
-      self = .dallE3
     case "gpt-image-1":
       self = .gptImage1
     case "gpt-image-1-mini":
       self = .gptImage1Mini
+    case "chatgpt-image-latest":
+      self = .chatgptImageLatest
+    case "dall-e-2":
+      self = .dallE2
+    case "dall-e-3":
+      self = .dallE3
     default:
       self = .custom(rawValue)
     }
@@ -69,14 +72,16 @@ public enum OpenAICreateImageRequestModel: RawRepresentable, Codable, Hashable, 
       return "gpt-image-2.5-flare"
     case .gptImage25Flare20260908:
       return "gpt-image-2.5-flare-2026-09-08"
-    case .dallE2:
-      return "dall-e-2"
-    case .dallE3:
-      return "dall-e-3"
     case .gptImage1:
       return "gpt-image-1"
     case .gptImage1Mini:
       return "gpt-image-1-mini"
+    case .chatgptImageLatest:
+      return "chatgpt-image-latest"
+    case .dallE2:
+      return "dall-e-2"
+    case .dallE3:
+      return "dall-e-3"
     case .custom(let value):
       return value
     }

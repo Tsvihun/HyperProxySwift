@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIEmbedding: Codable, Sendable {
-  public var embedding: [Double]
+  public var embedding: OpenAIEmbeddingEmbedding
   public var index: Int
   public var object: OpenAIEmbeddingObject
 
   public init(
-    embedding: [Double],
+    embedding: OpenAIEmbeddingEmbedding,
     index: Int,
     object: OpenAIEmbeddingObject
   ) {

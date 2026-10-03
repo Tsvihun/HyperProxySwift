@@ -16,12 +16,13 @@ public struct TogetherDEDeployment: Codable, Sendable {
   public var configId: String
   public var createdAt: String
   public var desiredReplicas: Int?
-  public var enableLora: Bool?
   public var endpointId: String
   public var estimatedEffectiveTrafficShare: Double?
   public var etag: String
   public var hardware: String
   public var id: String
+  public var inactiveTimeout: Int?
+  public var maxConcurrentRequestsPerReplica: String?
   public var model: String
   public var modelId: String
   public var modelRevisionId: String
@@ -54,8 +55,9 @@ public struct TogetherDEDeployment: Codable, Sendable {
     trafficMode: TogetherDEDeploymentTrafficMode,
     updatedAt: String,
     desiredReplicas: Int? = nil,
-    enableLora: Bool? = nil,
     estimatedEffectiveTrafficShare: Double? = nil,
+    inactiveTimeout: Int? = nil,
+    maxConcurrentRequestsPerReplica: String? = nil,
     placement: TogetherDEPlacement? = nil,
     runtimeInfo: TogetherDERuntimeInfo? = nil,
     speculator: String? = nil,
@@ -67,12 +69,13 @@ public struct TogetherDEDeployment: Codable, Sendable {
     self.configId = configId
     self.createdAt = createdAt
     self.desiredReplicas = desiredReplicas
-    self.enableLora = enableLora
     self.endpointId = endpointId
     self.estimatedEffectiveTrafficShare = estimatedEffectiveTrafficShare
     self.etag = etag
     self.hardware = hardware
     self.id = id
+    self.inactiveTimeout = inactiveTimeout
+    self.maxConcurrentRequestsPerReplica = maxConcurrentRequestsPerReplica
     self.model = model
     self.modelId = modelId
     self.modelRevisionId = modelRevisionId
@@ -94,12 +97,13 @@ public struct TogetherDEDeployment: Codable, Sendable {
     case configId
     case createdAt
     case desiredReplicas
-    case enableLora
     case endpointId
     case estimatedEffectiveTrafficShare
     case etag
     case hardware
     case id
+    case inactiveTimeout
+    case maxConcurrentRequestsPerReplica
     case model
     case modelId
     case modelRevisionId

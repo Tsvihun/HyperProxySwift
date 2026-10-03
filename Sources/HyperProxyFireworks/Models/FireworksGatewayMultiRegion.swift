@@ -14,6 +14,7 @@ public enum FireworksGatewayMultiRegion: String, Codable, Hashable, Sendable {
   case mULTIREGIONUNSPECIFIED = "MULTI_REGION_UNSPECIFIED"
   case gLOBAL = "GLOBAL"
   case uS = "US"
+  case cANADA = "CANADA"
   case eUROPE = "EUROPE"
   case aPAC = "APAC"
 }

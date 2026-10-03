@@ -14,5 +14,6 @@ public enum ElevenLabsAgentConversationTicketStatus: String, Codable, Hashable, 
   case openValue = "open"
   case inProgress = "in_progress"
   case resolved = "resolved"
+  case cancelled = "cancelled"
   case merged = "merged"
 }

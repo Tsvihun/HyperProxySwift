@@ -231,15 +231,13 @@ public struct MistralAdminCalls: Sendable {
   public var connectorListOrganizationCredentialsV1: HyperProxyProviderCall<MistralOperation> {
     self.service.call(.connectorListOrganizationCredentialsV1)
   }
-  /// `POST v1/connectors/{connector_id_or_name}/organization/credentials`
-  public var connectorCreateOrUpdateOrganizationCredentialsV1:
-    HyperProxyProviderCall<MistralOperation>
-  {
-    self.service.call(.connectorCreateOrUpdateOrganizationCredentialsV1)
+  /// `DELETE v1/connectors/{connector_id}/organization/share`
+  public var connectorUnshareFromOrganizationV1: HyperProxyProviderCall<MistralOperation> {
+    self.service.call(.connectorUnshareFromOrganizationV1)
   }
-  /// `DELETE v1/connectors/{connector_id_or_name}/organization/credentials/{credentials_name}`
-  public var connectorDeleteOrganizationCredentialsV1: HyperProxyProviderCall<MistralOperation> {
-    self.service.call(.connectorDeleteOrganizationCredentialsV1)
+  /// `PUT v1/connectors/{connector_id}/organization/share`
+  public var connectorShareToOrganizationV1: HyperProxyProviderCall<MistralOperation> {
+    self.service.call(.connectorShareToOrganizationV1)
   }
   /// `POST v1/service-accounts`
   public var createServiceAccountV1ServiceAccountsPost: HyperProxyProviderCall<MistralOperation> {

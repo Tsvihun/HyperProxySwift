@@ -21,6 +21,8 @@ public enum ElevenLabsConversationHistoryTranscriptSystemToolResultCommonModelIn
   case transferToNumberResultTwilioSuccessModel(ElevenLabsTransferToNumberResultTwilioSuccessModel)
   case transferToNumberResultSipSuccessModel(ElevenLabsTransferToNumberResultSipSuccessModel)
   case transferToNumberResultExotelSuccessModel(ElevenLabsTransferToNumberResultExotelSuccessModel)
+  case transferToNumberResultAmazonConnectSuccessModel(
+    ElevenLabsTransferToNumberResultAmazonConnectSuccessModel)
   case transferToNumberResultErrorModel(ElevenLabsTransferToNumberResultErrorModel)
   case skipTurnToolResponseModel(ElevenLabsSkipTurnToolResponseModel)
   case playDTMFResultSuccessModel(ElevenLabsPlayDTMFResultSuccessModel)
@@ -64,6 +66,12 @@ public enum ElevenLabsConversationHistoryTranscriptSystemToolResultCommonModelIn
     }
     if let value = try? container.decode(ElevenLabsTransferToNumberResultExotelSuccessModel.self) {
       self = .transferToNumberResultExotelSuccessModel(value)
+      return
+    }
+    if let value = try? container.decode(
+      ElevenLabsTransferToNumberResultAmazonConnectSuccessModel.self)
+    {
+      self = .transferToNumberResultAmazonConnectSuccessModel(value)
       return
     }
     if let value = try? container.decode(ElevenLabsTransferToNumberResultErrorModel.self) {
@@ -133,6 +141,8 @@ public enum ElevenLabsConversationHistoryTranscriptSystemToolResultCommonModelIn
     case .transferToNumberResultSipSuccessModel(let value):
       try container.encode(value)
     case .transferToNumberResultExotelSuccessModel(let value):
+      try container.encode(value)
+    case .transferToNumberResultAmazonConnectSuccessModel(let value):
       try container.encode(value)
     case .transferToNumberResultErrorModel(let value):
       try container.encode(value)

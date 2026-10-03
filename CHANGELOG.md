@@ -2,6 +2,23 @@
 
 ## Unreleased
 
+- Refresh official provider schemas on 2026-10-03: 2,342 routes, 18,272 generated
+  models and 2,099 typed operation bindings. Add OpenRouter batches/end users/private
+  endpoints, Mistral managed indexes and pipeline configuration, ElevenLabs agent
+  merge proposals/flow templates, Together deployment revisions and BFL FLUX.3 images.
+- Follow upstream removals and path changes: OpenAI eval cancellation moves to `/cancel`,
+  Gemini environment file download drops `filesId`, Mistral removes campaign/explorer
+  operations and consolidates connector credentials, BFL removes finetuned fill, and
+  DeepL removes quality submission and pluralizes its polling path. Removed generated
+  helpers and changed path arguments require migration for callers using them.
+- Update reviewed DeepSeek models for `deepseek-flash`, Pro Responses support, image
+  tool outputs, inline file data, model-discovery metadata, cache details and `aborted`
+  completion reasons. The former Flash enum cases and Responses web-search cases are
+  removed; content `text` is optional and tool `output` now accepts a string/parts union.
+- Match updated OpenAI binary/JSON/text/SSE response contracts, fix OpenRouter boolean
+  literal streaming bindings, and update BFL's async submission allowlist. Renew source
+  and artifact inventory hashes; changed snapshots await a new release review.
+
 ## 0.4.1
 
 - Record the exact URL and SHA-256 provenance of all 25 generated provider source

@@ -21,6 +21,9 @@ public enum OpenRouterChatRequestPluginsItem: Codable, Sendable {
   case contextCompressionPlugin(OpenRouterContextCompressionPlugin)
   case paretoRouterPlugin(OpenRouterParetoRouterPlugin)
   case fusionPlugin(OpenRouterFusionPlugin)
+  case switchyardRouterPlugin(OpenRouterSwitchyardRouterPlugin)
+  case jevRouterPlugin(OpenRouterJevRouterPlugin)
+  case alignmentPlugin(OpenRouterAlignmentPlugin)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -60,7 +63,19 @@ public enum OpenRouterChatRequestPluginsItem: Codable, Sendable {
       self = .paretoRouterPlugin(value)
       return
     }
-    self = .fusionPlugin(try container.decode(OpenRouterFusionPlugin.self))
+    if let value = try? container.decode(OpenRouterFusionPlugin.self) {
+      self = .fusionPlugin(value)
+      return
+    }
+    if let value = try? container.decode(OpenRouterSwitchyardRouterPlugin.self) {
+      self = .switchyardRouterPlugin(value)
+      return
+    }
+    if let value = try? container.decode(OpenRouterJevRouterPlugin.self) {
+      self = .jevRouterPlugin(value)
+      return
+    }
+    self = .alignmentPlugin(try container.decode(OpenRouterAlignmentPlugin.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -85,6 +100,12 @@ public enum OpenRouterChatRequestPluginsItem: Codable, Sendable {
     case .paretoRouterPlugin(let value):
       try container.encode(value)
     case .fusionPlugin(let value):
+      try container.encode(value)
+    case .switchyardRouterPlugin(let value):
+      try container.encode(value)
+    case .jevRouterPlugin(let value):
+      try container.encode(value)
+    case .alignmentPlugin(let value):
       try container.encode(value)
     }
   }

@@ -18,8 +18,8 @@ public enum OpenAICreateImageEditRequestModelAnyOf2: String, Codable, Hashable, 
   case gptImage25Sunburst20260908 = "gpt-image-2.5-sunburst-2026-09-08"
   case gptImage25Flare = "gpt-image-2.5-flare"
   case gptImage25Flare20260908 = "gpt-image-2.5-flare-2026-09-08"
-  case dallE2 = "dall-e-2"
   case gptImage1 = "gpt-image-1"
   case gptImage1Mini = "gpt-image-1-mini"
   case chatgptImageLatest = "chatgpt-image-latest"
+  case dallE2 = "dall-e-2"
 }

@@ -25,6 +25,8 @@ public enum OpenRouterImageGenerationRequestAspectRatio: String, Codable, Hashab
   case value45 = "4:5"
   case value52 = "5:2"
   case value54 = "5:4"
+  case value57 = "5:7"
+  case value75 = "7:5"
   case value81 = "8:1"
   case value916 = "9:16"
   case value169 = "16:9"

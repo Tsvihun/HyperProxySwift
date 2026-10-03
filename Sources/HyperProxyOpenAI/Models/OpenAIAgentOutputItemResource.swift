@@ -15,6 +15,8 @@ public enum OpenAIAgentOutputItemResource: Codable, Sendable {
   case reasoningItemResource(OpenAIReasoningItemResource)
   case functionCallItemResource(OpenAIFunctionCallItemResource)
   case mcpCallItemResource(OpenAIMcpCallItemResource)
+  case computerUseCallItemResource(OpenAIComputerUseCallItemResource)
+  case browserAuthenticationRequestItemResource(OpenAIBrowserAuthenticationRequestItemResource)
   case webSearchCallItemResource(OpenAIWebSearchCallItemResource)
   case commandExecutionItemResource(OpenAICommandExecutionItemResource)
   case createSubagentCallItemResource(OpenAICreateSubagentCallItemResource)
@@ -40,6 +42,14 @@ public enum OpenAIAgentOutputItemResource: Codable, Sendable {
     }
     if let value = try? container.decode(OpenAIMcpCallItemResource.self) {
       self = .mcpCallItemResource(value)
+      return
+    }
+    if let value = try? container.decode(OpenAIComputerUseCallItemResource.self) {
+      self = .computerUseCallItemResource(value)
+      return
+    }
+    if let value = try? container.decode(OpenAIBrowserAuthenticationRequestItemResource.self) {
+      self = .browserAuthenticationRequestItemResource(value)
       return
     }
     if let value = try? container.decode(OpenAIWebSearchCallItemResource.self) {
@@ -84,6 +94,10 @@ public enum OpenAIAgentOutputItemResource: Codable, Sendable {
     case .functionCallItemResource(let value):
       try container.encode(value)
     case .mcpCallItemResource(let value):
+      try container.encode(value)
+    case .computerUseCallItemResource(let value):
+      try container.encode(value)
+    case .browserAuthenticationRequestItemResource(let value):
       try container.encode(value)
     case .webSearchCallItemResource(let value):
       try container.encode(value)

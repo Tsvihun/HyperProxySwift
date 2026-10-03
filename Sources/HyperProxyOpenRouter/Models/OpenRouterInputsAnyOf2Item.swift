@@ -20,8 +20,6 @@ public enum OpenRouterInputsAnyOf2Item: Codable, Sendable {
   case applyPatchCallOutputItem(OpenRouterApplyPatchCallOutputItem)
   case inputsAnyOf2ItemAnyOf8(OpenRouterInputsAnyOf2ItemAnyOf8)
   case inputsAnyOf2ItemAnyOf9(OpenRouterInputsAnyOf2ItemAnyOf9)
-  case outputFunctionCallItem(OpenRouterOutputFunctionCallItem)
-  case outputCustomToolCallItem(OpenRouterOutputCustomToolCallItem)
   case outputWebSearchCallItem(OpenRouterOutputWebSearchCallItem)
   case outputFileSearchCallItem(OpenRouterOutputFileSearchCallItem)
   case outputImageGenerationCallItem(OpenRouterOutputImageGenerationCallItem)
@@ -99,14 +97,6 @@ public enum OpenRouterInputsAnyOf2Item: Codable, Sendable {
     }
     if let value = try? container.decode(OpenRouterInputsAnyOf2ItemAnyOf9.self) {
       self = .inputsAnyOf2ItemAnyOf9(value)
-      return
-    }
-    if let value = try? container.decode(OpenRouterOutputFunctionCallItem.self) {
-      self = .outputFunctionCallItem(value)
-      return
-    }
-    if let value = try? container.decode(OpenRouterOutputCustomToolCallItem.self) {
-      self = .outputCustomToolCallItem(value)
       return
     }
     if let value = try? container.decode(OpenRouterOutputWebSearchCallItem.self) {
@@ -288,10 +278,6 @@ public enum OpenRouterInputsAnyOf2Item: Codable, Sendable {
     case .inputsAnyOf2ItemAnyOf8(let value):
       try container.encode(value)
     case .inputsAnyOf2ItemAnyOf9(let value):
-      try container.encode(value)
-    case .outputFunctionCallItem(let value):
-      try container.encode(value)
-    case .outputCustomToolCallItem(let value):
       try container.encode(value)
     case .outputWebSearchCallItem(let value):
       try container.encode(value)

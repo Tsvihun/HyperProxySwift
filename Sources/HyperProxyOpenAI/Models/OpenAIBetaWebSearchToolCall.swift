@@ -11,17 +11,17 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIBetaWebSearchToolCall: Codable, Sendable {
-  public var action: OpenAIBetaWebSearchToolCallAction
+  public var action: OpenAIBetaWebSearchToolCallAction?
   public var agent: OpenAIBetaAgentTag?
   public var id: String
   public var status: OpenAIBetaWebSearchCallStatus
   public var kind: OpenAIBetaWebSearchToolCallKind
 
   public init(
-    action: OpenAIBetaWebSearchToolCallAction,
     id: String,
     status: OpenAIBetaWebSearchCallStatus,
     kind: OpenAIBetaWebSearchToolCallKind,
+    action: OpenAIBetaWebSearchToolCallAction? = nil,
     agent: OpenAIBetaAgentTag? = nil
   ) {
     self.action = action

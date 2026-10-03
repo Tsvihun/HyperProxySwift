@@ -11,12 +11,20 @@ import Foundation
 import HyperProxyCore
 
 public enum OpenRouterVideoModelSupportedSizesItem: String, Codable, Hashable, Sendable {
+  case value360x360 = "360x360"
+  case value360x480 = "360x480"
+  case value360x540 = "360x540"
+  case value360x640 = "360x640"
+  case value360x840 = "360x840"
+  case value480x360 = "480x360"
   case value480x480 = "480x480"
   case value480x640 = "480x640"
   case value480x720 = "480x720"
   case value480x854 = "480x854"
   case value480x1120 = "480x1120"
+  case value540x360 = "540x360"
   case value560x752 = "560x752"
+  case value640x360 = "640x360"
   case value640x480 = "640x480"
   case value640x640 = "640x640"
   case value720x480 = "720x480"
@@ -32,6 +40,7 @@ public enum OpenRouterVideoModelSupportedSizesItem: String, Codable, Hashable, S
   case value768x1366 = "768x1366"
   case value768x1792 = "768x1792"
   case value834x1112 = "834x1112"
+  case value840x360 = "840x360"
   case value854x480 = "854x480"
   case value960x720 = "960x720"
   case value960x960 = "960x960"

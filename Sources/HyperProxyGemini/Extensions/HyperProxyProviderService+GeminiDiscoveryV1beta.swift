@@ -420,14 +420,12 @@ extension HyperProxyProviderService where Operation == GeminiOperation {
 
   public func generativelanguageEnvironmentsFilesMediaDownload(
     environmentsId: String,
-    filesId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> GeminiGetEnvironmentFilesResponse {
     let call = self.call(.generativelanguageEnvironmentsFilesMediaDownload)
       .path("environmentsId", environmentsId)
-      .path("filesId", filesId)
       .query(query)
       .headers(headers)
       .timeout(timeout)

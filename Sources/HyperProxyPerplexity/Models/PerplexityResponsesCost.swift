@@ -17,6 +17,7 @@ public struct PerplexityResponsesCost: Codable, Sendable {
   public var inputCost: Double
   public var outputCost: Double
   public var toolCallsCost: Double?
+  public var toolCallsCostDetails: [String: Double]?
   public var totalCost: Double
 
   public init(
@@ -26,7 +27,8 @@ public struct PerplexityResponsesCost: Codable, Sendable {
     totalCost: Double,
     cacheCreationCost: Double? = nil,
     cacheReadCost: Double? = nil,
-    toolCallsCost: Double? = nil
+    toolCallsCost: Double? = nil,
+    toolCallsCostDetails: [String: Double]? = nil
   ) {
     self.cacheCreationCost = cacheCreationCost
     self.cacheReadCost = cacheReadCost
@@ -34,6 +36,7 @@ public struct PerplexityResponsesCost: Codable, Sendable {
     self.inputCost = inputCost
     self.outputCost = outputCost
     self.toolCallsCost = toolCallsCost
+    self.toolCallsCostDetails = toolCallsCostDetails
     self.totalCost = totalCost
   }
 
@@ -44,6 +47,7 @@ public struct PerplexityResponsesCost: Codable, Sendable {
     case inputCost = "input_cost"
     case outputCost = "output_cost"
     case toolCallsCost = "tool_calls_cost"
+    case toolCallsCostDetails = "tool_calls_cost_details"
     case totalCost = "total_cost"
   }
 }

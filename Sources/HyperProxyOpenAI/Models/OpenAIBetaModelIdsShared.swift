@@ -12,6 +12,9 @@ import HyperProxyCore
 
 public enum OpenAIBetaModelIdsShared: RawRepresentable, Codable, Hashable, Sendable {
   case gpt6Astra
+  case gpt61Sol
+  case gpt6Sol
+  case gpt6Luna
   case gpt56Sol
   case gpt56Terra
   case gpt56Luna
@@ -31,6 +34,7 @@ public enum OpenAIBetaModelIdsShared: RawRepresentable, Codable, Hashable, Senda
   case gpt51
   case gpt5120251113
   case gpt51Codex
+  case gpt51Mini
   case gpt51ChatLatest
   case gpt5
   case gpt5Mini
@@ -102,6 +106,12 @@ public enum OpenAIBetaModelIdsShared: RawRepresentable, Codable, Hashable, Senda
     switch rawValue {
     case "gpt-6-astra":
       self = .gpt6Astra
+    case "gpt-6.1-sol":
+      self = .gpt61Sol
+    case "gpt-6-sol":
+      self = .gpt6Sol
+    case "gpt-6-luna":
+      self = .gpt6Luna
     case "gpt-5.6-sol":
       self = .gpt56Sol
     case "gpt-5.6-terra":
@@ -140,6 +150,8 @@ public enum OpenAIBetaModelIdsShared: RawRepresentable, Codable, Hashable, Senda
       self = .gpt5120251113
     case "gpt-5.1-codex":
       self = .gpt51Codex
+    case "gpt-5.1-mini":
+      self = .gpt51Mini
     case "gpt-5.1-chat-latest":
       self = .gpt51ChatLatest
     case "gpt-5":
@@ -279,6 +291,12 @@ public enum OpenAIBetaModelIdsShared: RawRepresentable, Codable, Hashable, Senda
     switch self {
     case .gpt6Astra:
       return "gpt-6-astra"
+    case .gpt61Sol:
+      return "gpt-6.1-sol"
+    case .gpt6Sol:
+      return "gpt-6-sol"
+    case .gpt6Luna:
+      return "gpt-6-luna"
     case .gpt56Sol:
       return "gpt-5.6-sol"
     case .gpt56Terra:
@@ -317,6 +335,8 @@ public enum OpenAIBetaModelIdsShared: RawRepresentable, Codable, Hashable, Senda
       return "gpt-5.1-2025-11-13"
     case .gpt51Codex:
       return "gpt-5.1-codex"
+    case .gpt51Mini:
+      return "gpt-5.1-mini"
     case .gpt51ChatLatest:
       return "gpt-5.1-chat-latest"
     case .gpt5:

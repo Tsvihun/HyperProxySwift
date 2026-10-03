@@ -34,6 +34,7 @@ public struct ElevenLabsBodySpeechToTextV1SpeechToTextPost: Codable, Sendable {
   public var temperature: Double?
   public var timestampsGranularity:
     ElevenLabsBodySpeechToTextV1SpeechToTextPostTimestampsGranularity?
+  public var transcriptEdit: String?
   public var useMultiChannel: Bool?
   public var useSpeakerLibrary: Bool?
   public var webhook: Bool?
@@ -63,6 +64,7 @@ public struct ElevenLabsBodySpeechToTextV1SpeechToTextPost: Codable, Sendable {
     tagAudioEvents: Bool? = nil,
     temperature: Double? = nil,
     timestampsGranularity: ElevenLabsBodySpeechToTextV1SpeechToTextPostTimestampsGranularity? = nil,
+    transcriptEdit: String? = nil,
     useMultiChannel: Bool? = nil,
     useSpeakerLibrary: Bool? = nil,
     webhook: Bool? = nil,
@@ -90,6 +92,7 @@ public struct ElevenLabsBodySpeechToTextV1SpeechToTextPost: Codable, Sendable {
     self.tagAudioEvents = tagAudioEvents
     self.temperature = temperature
     self.timestampsGranularity = timestampsGranularity
+    self.transcriptEdit = transcriptEdit
     self.useMultiChannel = useMultiChannel
     self.useSpeakerLibrary = useSpeakerLibrary
     self.webhook = webhook
@@ -119,6 +122,7 @@ public struct ElevenLabsBodySpeechToTextV1SpeechToTextPost: Codable, Sendable {
     case tagAudioEvents = "tag_audio_events"
     case temperature
     case timestampsGranularity = "timestamps_granularity"
+    case transcriptEdit = "transcript_edit"
     case useMultiChannel = "use_multi_channel"
     case useSpeakerLibrary = "use_speaker_library"
     case webhook

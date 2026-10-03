@@ -22,6 +22,7 @@ public struct FalGetBillingEventsResponseBillingEventsItem: Codable, Sendable {
   public var percentDiscount: Double
   public var quantity: Double
   public var requestId: String
+  public var tags: [String: String]?
   public var timestamp: String
   public var unit: String
   public var unitPrice: Double
@@ -40,7 +41,8 @@ public struct FalGetBillingEventsResponseBillingEventsItem: Codable, Sendable {
     unit: String,
     unitPrice: Double,
     authMethod: String? = nil,
-    authMethodStructured: FalGetBillingEventsResponseBillingEventsItemAuthMethodStructured? = nil
+    authMethodStructured: FalGetBillingEventsResponseBillingEventsItemAuthMethodStructured? = nil,
+    tags: [String: String]? = nil
   ) {
     self.authMethod = authMethod
     self.authMethodStructured = authMethodStructured
@@ -53,6 +55,7 @@ public struct FalGetBillingEventsResponseBillingEventsItem: Codable, Sendable {
     self.percentDiscount = percentDiscount
     self.quantity = quantity
     self.requestId = requestId
+    self.tags = tags
     self.timestamp = timestamp
     self.unit = unit
     self.unitPrice = unitPrice
@@ -70,6 +73,7 @@ public struct FalGetBillingEventsResponseBillingEventsItem: Codable, Sendable {
     case percentDiscount = "percent_discount"
     case quantity
     case requestId = "request_id"
+    case tags
     case timestamp
     case unit
     case unitPrice = "unit_price"

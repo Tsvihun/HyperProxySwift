@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct EachAIAPICreatePredictionRequest: Codable, Sendable {
+  public var fallbackSelector: String?
   public var input: [String: HyperProxyJSONValue]
   public var model: String
   public var version: String?
@@ -20,10 +21,12 @@ public struct EachAIAPICreatePredictionRequest: Codable, Sendable {
   public init(
     input: [String: HyperProxyJSONValue],
     model: String,
+    fallbackSelector: String? = nil,
     version: String? = nil,
     webhookSecret: String? = nil,
     webhookUrl: String? = nil
   ) {
+    self.fallbackSelector = fallbackSelector
     self.input = input
     self.model = model
     self.version = version
@@ -32,6 +35,7 @@ public struct EachAIAPICreatePredictionRequest: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case fallbackSelector = "fallback_selector"
     case input
     case model
     case version

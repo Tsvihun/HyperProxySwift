@@ -11,27 +11,27 @@ import Foundation
 import HyperProxyCore
 
 public struct FireworksPolicySettingsModelPermissions: Codable, Sendable {
-  public var allowCoding: Bool
   public var allowDedicatedDeployments: Bool
   public var allowServerless: Bool
+  public var allowServerlessFast: Bool
   public var allowTraining: Bool
 
   public init(
-    allowCoding: Bool,
     allowDedicatedDeployments: Bool,
     allowServerless: Bool,
+    allowServerlessFast: Bool,
     allowTraining: Bool
   ) {
-    self.allowCoding = allowCoding
     self.allowDedicatedDeployments = allowDedicatedDeployments
     self.allowServerless = allowServerless
+    self.allowServerlessFast = allowServerlessFast
     self.allowTraining = allowTraining
   }
 
   enum CodingKeys: String, CodingKey {
-    case allowCoding
     case allowDedicatedDeployments
     case allowServerless
+    case allowServerlessFast
     case allowTraining
   }
 }

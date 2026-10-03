@@ -17,6 +17,7 @@ public struct OpenRouterProviderPreferences: Codable, Sendable {
   public var ignore: [OpenRouterProviderPreferencesIgnoreItem]?
   public var maxPrice: OpenRouterProviderPreferencesMaxPrice?
   public var only: [OpenRouterProviderPreferencesOnlyItem]?
+  public var options: OpenRouterProviderOptions?
   public var order: [OpenRouterProviderPreferencesOrderItem]?
   public var preferredMaxLatency: OpenRouterPreferredMaxLatency?
   public var preferredMinThroughput: OpenRouterPreferredMinThroughput?
@@ -32,6 +33,7 @@ public struct OpenRouterProviderPreferences: Codable, Sendable {
     ignore: [OpenRouterProviderPreferencesIgnoreItem]? = nil,
     maxPrice: OpenRouterProviderPreferencesMaxPrice? = nil,
     only: [OpenRouterProviderPreferencesOnlyItem]? = nil,
+    options: OpenRouterProviderOptions? = nil,
     order: [OpenRouterProviderPreferencesOrderItem]? = nil,
     preferredMaxLatency: OpenRouterPreferredMaxLatency? = nil,
     preferredMinThroughput: OpenRouterPreferredMinThroughput? = nil,
@@ -46,6 +48,7 @@ public struct OpenRouterProviderPreferences: Codable, Sendable {
     self.ignore = ignore
     self.maxPrice = maxPrice
     self.only = only
+    self.options = options
     self.order = order
     self.preferredMaxLatency = preferredMaxLatency
     self.preferredMinThroughput = preferredMinThroughput
@@ -62,6 +65,7 @@ public struct OpenRouterProviderPreferences: Codable, Sendable {
     case ignore
     case maxPrice = "max_price"
     case only
+    case options
     case order
     case preferredMaxLatency = "preferred_max_latency"
     case preferredMinThroughput = "preferred_min_throughput"

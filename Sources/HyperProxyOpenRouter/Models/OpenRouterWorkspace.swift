@@ -18,6 +18,7 @@ public struct OpenRouterWorkspace: Codable, Sendable {
   public var defaultProviderSort: String
   public var defaultTextModel: String
   public var description: String
+  public var disabledServerTools: [String]?
   public var id: String
   public var includeByokInBudgets: Bool?
   public var ioLoggingApiKeyIds: [Int]
@@ -46,6 +47,7 @@ public struct OpenRouterWorkspace: Codable, Sendable {
     name: String,
     slug: String,
     updatedAt: String,
+    disabledServerTools: [String]? = nil,
     includeByokInBudgets: Bool? = nil
   ) {
     self.createdAt = createdAt
@@ -55,6 +57,7 @@ public struct OpenRouterWorkspace: Codable, Sendable {
     self.defaultProviderSort = defaultProviderSort
     self.defaultTextModel = defaultTextModel
     self.description = description
+    self.disabledServerTools = disabledServerTools
     self.id = id
     self.includeByokInBudgets = includeByokInBudgets
     self.ioLoggingApiKeyIds = ioLoggingApiKeyIds
@@ -75,6 +78,7 @@ public struct OpenRouterWorkspace: Codable, Sendable {
     case defaultProviderSort = "default_provider_sort"
     case defaultTextModel = "default_text_model"
     case description
+    case disabledServerTools = "disabled_server_tools"
     case id
     case includeByokInBudgets = "include_byok_in_budgets"
     case ioLoggingApiKeyIds = "io_logging_api_key_ids"

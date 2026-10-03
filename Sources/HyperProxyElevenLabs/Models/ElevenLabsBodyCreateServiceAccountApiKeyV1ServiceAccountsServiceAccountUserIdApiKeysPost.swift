@@ -16,10 +16,13 @@ public struct
 {
   public var allowedIps: [String]?
   public var characterLimit: Int?
+  public var dubbingConcurrencyLimit: Int?
+  public var musicConcurrencyLimit: Int?
   public var name: String
   public var permissions:
     ElevenLabsBodyCreateServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysPostPermissions
   public var thirdPartyDisableAllowed: Bool?
+  public var ttsConcurrencyLimit: Int?
 
   public init(
     name: String,
@@ -27,20 +30,29 @@ public struct
       ElevenLabsBodyCreateServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysPostPermissions,
     allowedIps: [String]? = nil,
     characterLimit: Int? = nil,
-    thirdPartyDisableAllowed: Bool? = nil
+    dubbingConcurrencyLimit: Int? = nil,
+    musicConcurrencyLimit: Int? = nil,
+    thirdPartyDisableAllowed: Bool? = nil,
+    ttsConcurrencyLimit: Int? = nil
   ) {
     self.allowedIps = allowedIps
     self.characterLimit = characterLimit
+    self.dubbingConcurrencyLimit = dubbingConcurrencyLimit
+    self.musicConcurrencyLimit = musicConcurrencyLimit
     self.name = name
     self.permissions = permissions
     self.thirdPartyDisableAllowed = thirdPartyDisableAllowed
+    self.ttsConcurrencyLimit = ttsConcurrencyLimit
   }
 
   enum CodingKeys: String, CodingKey {
     case allowedIps = "allowed_ips"
     case characterLimit = "character_limit"
+    case dubbingConcurrencyLimit = "dubbing_concurrency_limit"
+    case musicConcurrencyLimit = "music_concurrency_limit"
     case name
     case permissions
     case thirdPartyDisableAllowed = "third_party_disable_allowed"
+    case ttsConcurrencyLimit = "tts_concurrency_limit"
   }
 }

@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsGetToolCallUnitTestResponseModel: Codable, Sendable {
+  public var accessInfo: ElevenLabsResourceAccessInfo?
   public var chatHistory: [ElevenLabsConversationHistoryTranscriptCommonModelOutput]?
   public var checkAnyToolMatches: Bool?
   public var conversationInitiationSource: ElevenLabsConversationInitiationSource?
@@ -25,6 +26,7 @@ public struct ElevenLabsGetToolCallUnitTestResponseModel: Codable, Sendable {
   public init(
     id: String,
     name: String,
+    accessInfo: ElevenLabsResourceAccessInfo? = nil,
     chatHistory: [ElevenLabsConversationHistoryTranscriptCommonModelOutput]? = nil,
     checkAnyToolMatches: Bool? = nil,
     conversationInitiationSource: ElevenLabsConversationInitiationSource? = nil,
@@ -34,6 +36,7 @@ public struct ElevenLabsGetToolCallUnitTestResponseModel: Codable, Sendable {
     toolCallParameters: ElevenLabsUnitTestToolCallEvaluationModelOutput? = nil,
     kind: ElevenLabsToolKind? = nil
   ) {
+    self.accessInfo = accessInfo
     self.chatHistory = chatHistory
     self.checkAnyToolMatches = checkAnyToolMatches
     self.conversationInitiationSource = conversationInitiationSource
@@ -47,6 +50,7 @@ public struct ElevenLabsGetToolCallUnitTestResponseModel: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case accessInfo = "access_info"
     case chatHistory = "chat_history"
     case checkAnyToolMatches = "check_any_tool_matches"
     case conversationInitiationSource = "conversation_initiation_source"

@@ -603,6 +603,20 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
     return try await call.decoded(ElevenLabsMergePreviewResponseModel.self)
   }
 
+  public func listAgentDeploymentsRoute(
+    agentId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsListResponseAgentDeploymentHistoryItem {
+    let call = self.call(.listAgentDeploymentsRoute)
+      .path("agent_id", agentId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsListResponseAgentDeploymentHistoryItem.self)
+  }
+
   public func createAgentDeploymentRoute(
     _ body: ElevenLabsBodyCreateOrUpdateDeploymentsV1ConvaiAgentsAgentIdDeploymentsPost,
     agentId: String,
@@ -707,6 +721,128 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(ElevenLabsGetAgentLinkResponseModel.self)
+  }
+
+  public func listMergeProposalsRoute(
+    agentId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsPaginatedResultAgentMergeProposalResponse {
+    let call = self.call(.listMergeProposalsRoute)
+      .path("agent_id", agentId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsPaginatedResultAgentMergeProposalResponse.self)
+  }
+
+  public func createMergeProposalRoute(
+    _ body: ElevenLabsBodyCreateAMergeProposalV1ConvaiAgentsAgentIdMergeProposalsPost,
+    agentId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsCreateAgentMergeProposalResponseModel {
+    let call = self.call(.createMergeProposalRoute)
+      .path("agent_id", agentId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(ElevenLabsCreateAgentMergeProposalResponseModel.self)
+  }
+
+  public func getMergeProposalRoute(
+    agentId: String,
+    mergeProposalId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsAgentMergeProposalResponse {
+    let call = self.call(.getMergeProposalRoute)
+      .path("agent_id", agentId)
+      .path("merge_proposal_id", mergeProposalId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsAgentMergeProposalResponse.self)
+  }
+
+  public func updateMergeProposalRoute(
+    _ body:
+      ElevenLabsBodyUpdateAMergeProposalV1ConvaiAgentsAgentIdMergeProposalsMergeProposalIdPatch,
+    agentId: String,
+    mergeProposalId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsAgentMergeProposalResponse {
+    let call = self.call(.updateMergeProposalRoute)
+      .path("agent_id", agentId)
+      .path("merge_proposal_id", mergeProposalId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(ElevenLabsAgentMergeProposalResponse.self)
+  }
+
+  public func addMergeProposalCommentRoute(
+    _ body:
+      ElevenLabsBodyCommentOnAMergeProposalV1ConvaiAgentsAgentIdMergeProposalsMergeProposalIdCommentsPost,
+    agentId: String,
+    mergeProposalId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsAgentMergeProposalResponse {
+    let call = self.call(.addMergeProposalCommentRoute)
+      .path("agent_id", agentId)
+      .path("merge_proposal_id", mergeProposalId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(ElevenLabsAgentMergeProposalResponse.self)
+  }
+
+  public func acceptMergeProposalRoute(
+    _ body:
+      ElevenLabsBodyMergeAMergeProposalV1ConvaiAgentsAgentIdMergeProposalsMergeProposalIdMergePost,
+    agentId: String,
+    mergeProposalId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsAgentMergeProposalResponse {
+    let call = self.call(.acceptMergeProposalRoute)
+      .path("agent_id", agentId)
+      .path("merge_proposal_id", mergeProposalId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(ElevenLabsAgentMergeProposalResponse.self)
+  }
+
+  public func submitMergeProposalReviewRoute(
+    _ body:
+      ElevenLabsBodyReviewAMergeProposalV1ConvaiAgentsAgentIdMergeProposalsMergeProposalIdReviewsPost,
+    agentId: String,
+    mergeProposalId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsAgentMergeProposalResponse {
+    let call = self.call(.submitMergeProposalReviewRoute)
+      .path("agent_id", agentId)
+      .path("merge_proposal_id", mergeProposalId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(ElevenLabsAgentMergeProposalResponse.self)
   }
 
   public func runAgentTestSuiteRoute(
@@ -2994,6 +3130,78 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
     return try await call.decoded(ElevenLabsMediaGenerationResponse.self)
   }
 
+  public func listPublicTemplates(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsTemplateListResponse {
+    let call = self.call(.listPublicTemplates)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsTemplateListResponse.self)
+  }
+
+  public func getPublicTemplate(
+    templateId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsTemplateSummary {
+    let call = self.call(.getPublicTemplate)
+      .path("template_id", templateId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsTemplateSummary.self)
+  }
+
+  public func listPublicTemplateRuns(
+    templateId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsTemplateRunListResponse {
+    let call = self.call(.listPublicTemplateRuns)
+      .path("template_id", templateId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsTemplateRunListResponse.self)
+  }
+
+  public func createPublicTemplateRun(
+    _ body: ElevenLabsTemplateRunCreateRequest,
+    templateId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsTemplateRunResponse {
+    let call = self.call(.createPublicTemplateRun)
+      .path("template_id", templateId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(ElevenLabsTemplateRunResponse.self)
+  }
+
+  public func getPublicTemplateRun(
+    templateId: String,
+    runId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsTemplateRunResponse {
+    let call = self.call(.getPublicTemplateRun)
+      .path("template_id", templateId)
+      .path("run_id", runId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsTemplateRunResponse.self)
+  }
+
   public func listTextToSpeechGenerations(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -3623,6 +3831,22 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
     timeout: TimeInterval? = nil
   ) async throws -> ElevenLabsSpeechEngineResponse {
     let call = self.call(.updateSpeechEngine)
+      .path("speech_engine_id", speechEngineId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(ElevenLabsSpeechEngineResponse.self)
+  }
+
+  public func duplicateSpeechEngine(
+    _ body: ElevenLabsDuplicateSpeechEngineRequest95763227,
+    speechEngineId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsSpeechEngineResponse {
+    let call = self.call(.duplicateSpeechEngine)
       .path("speech_engine_id", speechEngineId)
       .query(query)
       .headers(headers)

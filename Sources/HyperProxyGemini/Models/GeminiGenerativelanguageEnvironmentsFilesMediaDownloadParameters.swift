@@ -14,14 +14,14 @@ public struct GeminiGenerativelanguageEnvironmentsFilesMediaDownloadParameters: 
   public var pageSize: Int?
   public var pageToken: String?
   public var parent: String
-  public var path: String
+  public var path: String?
   public var recursive: Bool?
 
   public init(
     parent: String,
-    path: String,
     pageSize: Int? = nil,
     pageToken: String? = nil,
+    path: String? = nil,
     recursive: Bool? = nil
   ) {
     self.pageSize = pageSize

@@ -15,4 +15,6 @@ public enum ElevenLabsTTSModelFamily: String, Codable, Hashable, Sendable {
   case flash = "flash"
   case multilingual = "multilingual"
   case v3Conversational = "v3_conversational"
+  case v4 = "v4"
+  case v4Turbo = "v4_turbo"
 }

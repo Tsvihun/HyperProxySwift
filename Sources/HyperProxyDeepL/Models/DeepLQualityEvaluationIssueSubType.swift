@@ -25,4 +25,5 @@ public enum DeepLQualityEvaluationIssueSubType: String, Codable, Hashable, Senda
   case characterEncoding = "Character encoding"
   case awkward = "Awkward"
   case inconsistentStyle = "Inconsistent style"
+  case segmentTooLarge = "SegmentTooLarge"
 }

@@ -14,7 +14,9 @@ public struct ElevenLabsUnitTestRunResponseModel: Codable, Sendable {
   public var agentId: String
   public var agentResponses: [ElevenLabsConversationHistoryTranscriptCommonModelOutput]?
   public var branchId: String?
+  public var charging: ElevenLabsConversationChargingCommonModel?
   public var conditionResult: ElevenLabsTestConditionResultCommonModel?
+  public var creditsUsed: Int?
   public var environment: String?
   public var lastUpdatedAtUnix: Int?
   public var metadata: ElevenLabsTestRunMetadata?
@@ -38,7 +40,9 @@ public struct ElevenLabsUnitTestRunResponseModel: Codable, Sendable {
     testRunId: String,
     agentResponses: [ElevenLabsConversationHistoryTranscriptCommonModelOutput]? = nil,
     branchId: String? = nil,
+    charging: ElevenLabsConversationChargingCommonModel? = nil,
     conditionResult: ElevenLabsTestConditionResultCommonModel? = nil,
+    creditsUsed: Int? = nil,
     environment: String? = nil,
     lastUpdatedAtUnix: Int? = nil,
     metadata: ElevenLabsTestRunMetadata? = nil,
@@ -53,7 +57,9 @@ public struct ElevenLabsUnitTestRunResponseModel: Codable, Sendable {
     self.agentId = agentId
     self.agentResponses = agentResponses
     self.branchId = branchId
+    self.charging = charging
     self.conditionResult = conditionResult
+    self.creditsUsed = creditsUsed
     self.environment = environment
     self.lastUpdatedAtUnix = lastUpdatedAtUnix
     self.metadata = metadata
@@ -74,7 +80,9 @@ public struct ElevenLabsUnitTestRunResponseModel: Codable, Sendable {
     case agentId = "agent_id"
     case agentResponses = "agent_responses"
     case branchId = "branch_id"
+    case charging
     case conditionResult = "condition_result"
+    case creditsUsed = "credits_used"
     case environment
     case lastUpdatedAtUnix = "last_updated_at_unix"
     case metadata

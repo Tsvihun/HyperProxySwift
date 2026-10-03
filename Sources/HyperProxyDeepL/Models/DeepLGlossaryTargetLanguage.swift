@@ -39,7 +39,6 @@ public enum DeepLGlossaryTargetLanguage: String, Codable, Hashable, Sendable {
   case sk = "sk"
   case sl = "sl"
   case sv = "sv"
-  case th = "th"
   case tr = "tr"
   case uk = "uk"
   case vi = "vi"

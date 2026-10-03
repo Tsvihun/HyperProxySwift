@@ -14,6 +14,7 @@ public struct ElevenLabsGetTestSuiteInvocationResponseModel: Codable, Sendable {
   public var agentId: String?
   public var branchId: String?
   public var bucketingStatus: ElevenLabsBucketingStatus?
+  public var cancelled: Bool?
   public var createdAt: Int?
   public var folderId: String?
   public var id: String
@@ -29,6 +30,7 @@ public struct ElevenLabsGetTestSuiteInvocationResponseModel: Codable, Sendable {
     agentId: String? = nil,
     branchId: String? = nil,
     bucketingStatus: ElevenLabsBucketingStatus? = nil,
+    cancelled: Bool? = nil,
     createdAt: Int? = nil,
     folderId: String? = nil,
     ranAgainstDraft: Bool? = nil,
@@ -39,6 +41,7 @@ public struct ElevenLabsGetTestSuiteInvocationResponseModel: Codable, Sendable {
     self.agentId = agentId
     self.branchId = branchId
     self.bucketingStatus = bucketingStatus
+    self.cancelled = cancelled
     self.createdAt = createdAt
     self.folderId = folderId
     self.id = id
@@ -53,6 +56,7 @@ public struct ElevenLabsGetTestSuiteInvocationResponseModel: Codable, Sendable {
     case agentId = "agent_id"
     case branchId = "branch_id"
     case bucketingStatus = "bucketing_status"
+    case cancelled
     case createdAt = "created_at"
     case folderId = "folder_id"
     case id

@@ -14,24 +14,20 @@ public struct DeepLQualityEvaluationDone: Codable, Sendable {
   public var jobId: String
   public var segments: [DeepLQualityEvaluationSegment]
   public var status: DeepLQualityEvaluationDoneStatus
-  public var summary: DeepLQualityEvaluationDoneSummary
 
   public init(
     jobId: String,
     segments: [DeepLQualityEvaluationSegment],
-    status: DeepLQualityEvaluationDoneStatus,
-    summary: DeepLQualityEvaluationDoneSummary
+    status: DeepLQualityEvaluationDoneStatus
   ) {
     self.jobId = jobId
     self.segments = segments
     self.status = status
-    self.summary = summary
   }
 
   enum CodingKeys: String, CodingKey {
     case jobId = "job_id"
     case segments
     case status
-    case summary
   }
 }

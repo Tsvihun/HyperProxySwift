@@ -13,6 +13,7 @@ import HyperProxyCore
 public enum PerplexityOutputItem: Codable, Sendable {
   case messageOutputItem(PerplexityMessageOutputItem)
   case searchResultsOutputItem(PerplexitySearchResultsOutputItem)
+  case imageSearchResultsOutputItem(PerplexityImageSearchResultsOutputItem)
   case fetchUrlResultsOutputItem(PerplexityFetchUrlResultsOutputItem)
   case financeResultsOutputItem(PerplexityFinanceResultsOutputItem)
   case peopleSearchResultsOutputItem(PerplexityPeopleSearchResultsOutputItem)
@@ -30,6 +31,10 @@ public enum PerplexityOutputItem: Codable, Sendable {
     }
     if let value = try? container.decode(PerplexitySearchResultsOutputItem.self) {
       self = .searchResultsOutputItem(value)
+      return
+    }
+    if let value = try? container.decode(PerplexityImageSearchResultsOutputItem.self) {
+      self = .imageSearchResultsOutputItem(value)
       return
     }
     if let value = try? container.decode(PerplexityFetchUrlResultsOutputItem.self) {
@@ -69,6 +74,8 @@ public enum PerplexityOutputItem: Codable, Sendable {
     case .messageOutputItem(let value):
       try container.encode(value)
     case .searchResultsOutputItem(let value):
+      try container.encode(value)
+    case .imageSearchResultsOutputItem(let value):
       try container.encode(value)
     case .fetchUrlResultsOutputItem(let value):
       try container.encode(value)

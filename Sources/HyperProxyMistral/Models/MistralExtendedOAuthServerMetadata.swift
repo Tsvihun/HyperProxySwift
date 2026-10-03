@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralExtendedOAuthServerMetadata: Codable, Sendable {
-  public var authorizationEndpoint: String
+  public var authorizationEndpoint: String?
   public var clientIdMetadataDocumentSupported: Bool?
   public var codeChallengeMethodsSupported: [String]?
   public var grantTypesSupported: [String]?
@@ -38,9 +38,9 @@ public struct MistralExtendedOAuthServerMetadata: Codable, Sendable {
   public var xSource: MistralOAuthMetadataSource?
 
   public init(
-    authorizationEndpoint: String,
     issuer: String,
     tokenEndpoint: String,
+    authorizationEndpoint: String? = nil,
     clientIdMetadataDocumentSupported: Bool? = nil,
     codeChallengeMethodsSupported: [String]? = nil,
     grantTypesSupported: [String]? = nil,

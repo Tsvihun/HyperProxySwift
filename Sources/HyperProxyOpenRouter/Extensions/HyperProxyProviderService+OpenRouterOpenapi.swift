@@ -120,6 +120,60 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
     return try await prepared.decoded(OpenRouterCreateAuthKeysCodeResponse.self)
   }
 
+  public func listBatches(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterBatchListResponse {
+    let call = self.call(.listBatches)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterBatchListResponse.self)
+  }
+
+  public func createBatches(
+    _ body: OpenRouterBatchSubmitBody,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterBatchObject {
+    let call = self.call(.createBatches)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenRouterBatchObject.self)
+  }
+
+  public func getBatches(
+    id: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterBatchObject {
+    let call = self.call(.getBatches)
+      .path("id", id)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterBatchObject.self)
+  }
+
+  public func deleteBatch(
+    id: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterBatchDeletedObject {
+    let call = self.call(.deleteBatch)
+      .path("id", id)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterBatchDeletedObject.self)
+  }
+
   public func getBenchmarks(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -362,6 +416,62 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(OpenRouterModelsListResponse.self)
+  }
+
+  public func listEndUsers(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterListEndUsersResponse {
+    let call = self.call(.listEndUsers)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterListEndUsersResponse.self)
+  }
+
+  public func createEndUser(
+    _ body: OpenRouterCreateEndUserRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterEndUserResponse {
+    let call = self.call(.createEndUser)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenRouterEndUserResponse.self)
+  }
+
+  public func getEndUser(
+    user: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterEndUserResponse {
+    let call = self.call(.getEndUser)
+      .path("user", user)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterEndUserResponse.self)
+  }
+
+  public func updateEndUser(
+    _ body: OpenRouterUpdateEndUserRequest,
+    user: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterEndUserResponse {
+    let call = self.call(.updateEndUser)
+      .path("user", user)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenRouterEndUserResponse.self)
   }
 
   public func listEndpointsZdr(
@@ -775,6 +885,7 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
   }
 
   public func deleteIntern(
+    _ body: OpenRouterDeleteInternRequest,
     internId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -785,10 +896,33 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(OpenRouterDeleteInternResponse.self)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenRouterDeleteInternResponse.self)
   }
 
   public func createInternChatCompletion(
+    _ body: OpenRouterInternChatCompletionRequest,
+    internId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterInternChatSteeredResponse {
+    let call = self.call(.createInternChatCompletion)
+      .path("internId", internId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    if case .booleanTrue = body.stream {
+      throw HyperProxyProviderRouteError.streamingBodyOnJSONCall(
+        operation: "createInternChatCompletion",
+        streamingVariant: "createInternChatCompletionStream"
+      )
+    }
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenRouterInternChatSteeredResponse.self)
+  }
+
+  public func createInternChatCompletionStream(
     _ body: OpenRouterInternChatCompletionRequest,
     internId: String,
     query: [URLQueryItem] = [],
@@ -800,8 +934,54 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    let prepared = try call.json(body)
+    var streamingBody = body
+    streamingBody.stream = .booleanTrue
+    let prepared = try call.json(streamingBody)
     return try prepared.events(decoding: OpenRouterInternChatStreamingResponse.self)
+  }
+
+  public func getInternDaemon(
+    internId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterInternDaemonAccess {
+    let call = self.call(.getInternDaemon)
+      .path("internId", internId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterInternDaemonAccess.self)
+  }
+
+  public func getInternDaemonAccess(
+    internId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterInternDaemonAccess {
+    let call = self.call(.getInternDaemonAccess)
+      .path("internId", internId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterInternDaemonAccess.self)
+  }
+
+  public func invokeIntern(
+    _ body: OpenRouterInternInvokeRequest,
+    internId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterInternInvokeAcceptedResponse {
+    let call = self.call(.invokeIntern)
+      .path("internId", internId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenRouterInternInvokeAcceptedResponse.self)
   }
 
   public func provisionIntern(
@@ -1176,6 +1356,150 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
     return try await call.decoded(OpenRouterGetPresetVersionResponse.self)
   }
 
+  public func listPrivateEndpoints(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterListPrivateEndpointsResponse {
+    let call = self.call(.listPrivateEndpoints)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterListPrivateEndpointsResponse.self)
+  }
+
+  public func createPrivateEndpoint(
+    _ body: OpenRouterCreatePrivateEndpointRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterManagedPrivateEndpointResponse {
+    let call = self.call(.createPrivateEndpoint)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenRouterManagedPrivateEndpointResponse.self)
+  }
+
+  public func getPrivateEndpoint(
+    id: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterPrivateEndpointResponse {
+    let call = self.call(.getPrivateEndpoint)
+      .path("id", id)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterPrivateEndpointResponse.self)
+  }
+
+  public func updatePrivateEndpoint(
+    _ body: OpenRouterUpdatePrivateEndpointRequest,
+    id: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterPrivateEndpointResponse {
+    let call = self.call(.updatePrivateEndpoint)
+      .path("id", id)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenRouterPrivateEndpointResponse.self)
+  }
+
+  public func deletePrivateEndpoint(
+    id: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterDeletePrivateEndpointResponse {
+    let call = self.call(.deletePrivateEndpoint)
+      .path("id", id)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterDeletePrivateEndpointResponse.self)
+  }
+
+  public func activatePrivateEndpoint(
+    id: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterManagedPrivateEndpointResponse {
+    let call = self.call(.activatePrivateEndpoint)
+      .path("id", id)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterManagedPrivateEndpointResponse.self)
+  }
+
+  public func disablePrivateEndpoint(
+    id: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterManagedPrivateEndpointResponse {
+    let call = self.call(.disablePrivateEndpoint)
+      .path("id", id)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterManagedPrivateEndpointResponse.self)
+  }
+
+  public func enablePrivateEndpoint(
+    id: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterManagedPrivateEndpointResponse {
+    let call = self.call(.enablePrivateEndpoint)
+      .path("id", id)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterManagedPrivateEndpointResponse.self)
+  }
+
+  public func updatePrivateEndpointPricing(
+    _ body: OpenRouterUpdatePrivateEndpointPricingRequest,
+    id: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterPrivateEndpointResponse {
+    let call = self.call(.updatePrivateEndpointPricing)
+      .path("id", id)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenRouterPrivateEndpointResponse.self)
+  }
+
+  public func validatePrivateEndpoint(
+    _ body: OpenRouterValidatePrivateEndpointRequest,
+    id: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterPrivateEndpointValidationResponse {
+    let call = self.call(.validatePrivateEndpoint)
+      .path("id", id)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenRouterPrivateEndpointValidationResponse.self)
+  }
+
   public func listProviders(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -1322,6 +1646,60 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(OpenRouterGetScimSyncJobResponse.self)
+  }
+
+  public func createSystemone(
+    _ body: OpenRouterDecisionsRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterDecisionsResponse {
+    let call = self.call(.createSystemone)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenRouterDecisionsResponse.self)
+  }
+
+  public func listTools(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterListToolsResponse {
+    let call = self.call(.listTools)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterListToolsResponse.self)
+  }
+
+  public func getTool(
+    name: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterGetToolResponse {
+    let call = self.call(.getTool)
+      .path("name", name)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterGetToolResponse.self)
+  }
+
+  public func listInternEffectiveVaultSecrets(
+    internId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterVaultEffectiveSecretListResponse {
+    let call = self.call(.listInternEffectiveVaultSecrets)
+      .path("internId", internId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterVaultEffectiveSecretListResponse.self)
   }
 
   public func listInternVaultSecrets(

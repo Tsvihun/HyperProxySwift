@@ -14,14 +14,18 @@ public struct MistralGetWorkflowExecutionV1WorkflowsExecutionsExecutionIdGetPara
   Sendable
 {
   public var executionId: String
+  public var includeSearchKeys: Bool?
 
   public init(
-    executionId: String
+    executionId: String,
+    includeSearchKeys: Bool? = nil
   ) {
     self.executionId = executionId
+    self.includeSearchKeys = includeSearchKeys
   }
 
   enum CodingKeys: String, CodingKey {
     case executionId = "execution_id"
+    case includeSearchKeys = "include_search_keys"
   }
 }

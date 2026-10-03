@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsWebhookTargetAll: Codable, Sendable {
-  public var kind: ElevenLabsAllKind?
+  public var kind: ElevenLabsAllKind
 
   public init(
-    kind: ElevenLabsAllKind? = nil
+    kind: ElevenLabsAllKind = .all
   ) {
     self.kind = kind
   }

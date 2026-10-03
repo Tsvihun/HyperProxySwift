@@ -23,6 +23,7 @@ public struct MistralAgent: Codable, Sendable {
   public var model: String
   public var name: String
   public var object: MistralAgentObject?
+  public var ownerId: String?
   public var source: String
   public var tools: [MistralAgentToolsItem]?
   public var updatedAt: String
@@ -47,6 +48,7 @@ public struct MistralAgent: Codable, Sendable {
     instructions: String? = nil,
     metadata: MistralMetadataDict? = nil,
     object: MistralAgentObject? = nil,
+    ownerId: String? = nil,
     tools: [MistralAgentToolsItem]? = nil,
     versionMessage: String? = nil
   ) {
@@ -62,6 +64,7 @@ public struct MistralAgent: Codable, Sendable {
     self.model = model
     self.name = name
     self.object = object
+    self.ownerId = ownerId
     self.source = source
     self.tools = tools
     self.updatedAt = updatedAt
@@ -83,6 +86,7 @@ public struct MistralAgent: Codable, Sendable {
     case model
     case name
     case object
+    case ownerId = "owner_id"
     case source
     case tools
     case updatedAt = "updated_at"

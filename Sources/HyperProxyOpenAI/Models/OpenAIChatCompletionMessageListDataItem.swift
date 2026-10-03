@@ -11,47 +11,31 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIChatCompletionMessageListDataItem: Codable, Sendable {
-  public var annotations: [OpenAIChatCompletionResponseMessageAnnotationsItem]?
-  public var audio: OpenAIChatCompletionResponseMessageAudioAnyOf1?
   public var content: String?
-  public var contentParts: [OpenAIChatCompletionMessageListDataItemAllOf2ContentPartsAnyOf1Item]?
-  public var functionCall: OpenAIChatCompletionResponseMessageFunctionCall?
+  public var contentParts: [OpenAIChatCompletionMessageListDataItemContentPartsAnyOf1Item]?
   public var id: String
-  public var refusal: String?
-  public var role: OpenAIChatCompletionResponseMessageRole
-  public var toolCalls: OpenAIChatCompletionMessageToolCalls?
+  public var name: String?
+  public var role: OpenAIChatCompletionMessageListDataItemRole
 
   public init(
     content: String?,
+    contentParts: [OpenAIChatCompletionMessageListDataItemContentPartsAnyOf1Item]?,
     id: String,
-    refusal: String?,
-    role: OpenAIChatCompletionResponseMessageRole,
-    annotations: [OpenAIChatCompletionResponseMessageAnnotationsItem]? = nil,
-    audio: OpenAIChatCompletionResponseMessageAudioAnyOf1? = nil,
-    contentParts: [OpenAIChatCompletionMessageListDataItemAllOf2ContentPartsAnyOf1Item]? = nil,
-    functionCall: OpenAIChatCompletionResponseMessageFunctionCall? = nil,
-    toolCalls: OpenAIChatCompletionMessageToolCalls? = nil
+    role: OpenAIChatCompletionMessageListDataItemRole,
+    name: String? = nil
   ) {
-    self.annotations = annotations
-    self.audio = audio
     self.content = content
     self.contentParts = contentParts
-    self.functionCall = functionCall
     self.id = id
-    self.refusal = refusal
+    self.name = name
     self.role = role
-    self.toolCalls = toolCalls
   }
 
   enum CodingKeys: String, CodingKey {
-    case annotations
-    case audio
     case content
     case contentParts = "content_parts"
-    case functionCall = "function_call"
     case id
-    case refusal
+    case name
     case role
-    case toolCalls = "tool_calls"
   }
 }

@@ -20,4 +20,12 @@ public struct OpenRouterAdminCalls: Sendable {
   public var listOrganizationMembers: HyperProxyProviderCall<OpenRouterOperation> {
     self.service.call(.listOrganizationMembers)
   }
+  /// `GET api/v1/organization/settings`
+  public var getOrganizationSettings: HyperProxyProviderCall<OpenRouterOperation> {
+    self.service.call(.getOrganizationSettings)
+  }
+  /// `PATCH api/v1/organization/settings`
+  public var updateOrganizationSettings: HyperProxyProviderCall<OpenRouterOperation> {
+    self.service.call(.updateOrganizationSettings)
+  }
 }

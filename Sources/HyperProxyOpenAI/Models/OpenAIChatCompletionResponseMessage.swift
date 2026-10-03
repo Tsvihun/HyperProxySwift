@@ -21,11 +21,11 @@ public struct OpenAIChatCompletionResponseMessage: Codable, Sendable {
 
   public init(
     content: String?,
-    refusal: String?,
     role: OpenAIChatCompletionResponseMessageRole,
     annotations: [OpenAIChatCompletionResponseMessageAnnotationsItem]? = nil,
     audio: OpenAIChatCompletionResponseMessageAudioAnyOf1? = nil,
     functionCall: OpenAIChatCompletionResponseMessageFunctionCall? = nil,
+    refusal: String? = nil,
     toolCalls: OpenAIChatCompletionMessageToolCalls? = nil
   ) {
     self.annotations = annotations

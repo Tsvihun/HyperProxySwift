@@ -16,10 +16,12 @@ public struct MistralDeploymentDetailResponse: Codable, Sendable {
   public var id: String
   public var isActive: Bool
   public var isHardened: Bool?
+  public var lastHeartbeat: String
   public var location: MistralDeploymentLocation?
   public var locations: [MistralLocationType]?
   public var managed: MistralManagedDeploymentResponse?
   public var name: String
+  public var owner: String?
   public var updatedAt: String
   public var workerCount: Int?
   public var workers: [MistralDeploymentWorkerResponse]
@@ -28,6 +30,7 @@ public struct MistralDeploymentDetailResponse: Codable, Sendable {
     createdAt: String,
     id: String,
     isActive: Bool,
+    lastHeartbeat: String,
     name: String,
     updatedAt: String,
     workers: [MistralDeploymentWorkerResponse],
@@ -36,6 +39,7 @@ public struct MistralDeploymentDetailResponse: Codable, Sendable {
     location: MistralDeploymentLocation? = nil,
     locations: [MistralLocationType]? = nil,
     managed: MistralManagedDeploymentResponse? = nil,
+    owner: String? = nil,
     workerCount: Int? = nil
   ) {
     self.activeWorkerCount = activeWorkerCount
@@ -43,10 +47,12 @@ public struct MistralDeploymentDetailResponse: Codable, Sendable {
     self.id = id
     self.isActive = isActive
     self.isHardened = isHardened
+    self.lastHeartbeat = lastHeartbeat
     self.location = location
     self.locations = locations
     self.managed = managed
     self.name = name
+    self.owner = owner
     self.updatedAt = updatedAt
     self.workerCount = workerCount
     self.workers = workers
@@ -58,10 +64,12 @@ public struct MistralDeploymentDetailResponse: Codable, Sendable {
     case id
     case isActive = "is_active"
     case isHardened = "is_hardened"
+    case lastHeartbeat = "last_heartbeat"
     case location
     case locations
     case managed
     case name
+    case owner
     case updatedAt = "updated_at"
     case workerCount = "worker_count"
     case workers

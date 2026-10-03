@@ -12,12 +12,14 @@ import HyperProxyCore
 
 public struct OpenRouterSTTSegment: Codable, Sendable {
   public var avgLogprob: Double?
+  public var channel: Int?
   public var compressionRatio: Double?
   public var end: Double
   public var id: Int
   public var noSpeechProb: Double?
   public var seek: Int?
   public var speaker: Int?
+  public var speakerLabel: String?
   public var start: Double
   public var temperature: Double?
   public var text: String
@@ -29,20 +31,24 @@ public struct OpenRouterSTTSegment: Codable, Sendable {
     start: Double,
     text: String,
     avgLogprob: Double? = nil,
+    channel: Int? = nil,
     compressionRatio: Double? = nil,
     noSpeechProb: Double? = nil,
     seek: Int? = nil,
     speaker: Int? = nil,
+    speakerLabel: String? = nil,
     temperature: Double? = nil,
     tokens: [Int]? = nil
   ) {
     self.avgLogprob = avgLogprob
+    self.channel = channel
     self.compressionRatio = compressionRatio
     self.end = end
     self.id = id
     self.noSpeechProb = noSpeechProb
     self.seek = seek
     self.speaker = speaker
+    self.speakerLabel = speakerLabel
     self.start = start
     self.temperature = temperature
     self.text = text
@@ -51,12 +57,14 @@ public struct OpenRouterSTTSegment: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case avgLogprob = "avg_logprob"
+    case channel
     case compressionRatio = "compression_ratio"
     case end
     case id
     case noSpeechProb = "no_speech_prob"
     case seek
     case speaker
+    case speakerLabel = "speaker_label"
     case start
     case temperature
     case text

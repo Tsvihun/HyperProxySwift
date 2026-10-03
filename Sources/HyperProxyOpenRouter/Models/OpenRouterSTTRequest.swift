@@ -11,7 +11,9 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterSTTRequest: Codable, Sendable {
+  public var diarize: Bool?
   public var inputAudio: OpenRouterSTTInputAudio
+  public var keyterms: [String]?
   public var language: String?
   public var model: String
   public var provider: OpenRouterSTTRequestProvider?
@@ -25,6 +27,8 @@ public struct OpenRouterSTTRequest: Codable, Sendable {
   public init(
     inputAudio: OpenRouterSTTInputAudio,
     model: String,
+    diarize: Bool? = nil,
+    keyterms: [String]? = nil,
     language: String? = nil,
     provider: OpenRouterSTTRequestProvider? = nil,
     responseFormat: OpenRouterSTTRequestResponseFormat? = nil,
@@ -34,7 +38,9 @@ public struct OpenRouterSTTRequest: Codable, Sendable {
     trace: OpenRouterTraceConfig? = nil,
     user: String? = nil
   ) {
+    self.diarize = diarize
     self.inputAudio = inputAudio
+    self.keyterms = keyterms
     self.language = language
     self.model = model
     self.provider = provider
@@ -47,7 +53,9 @@ public struct OpenRouterSTTRequest: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case diarize
     case inputAudio = "input_audio"
+    case keyterms
     case language
     case model
     case provider

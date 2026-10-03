@@ -13,4 +13,5 @@ import HyperProxyCore
 public enum OpenRouterProviderResponseRoutedServiceTier: String, Codable, Hashable, Sendable {
   case flex = "flex"
   case priority = "priority"
+  case ultrafast = "ultrafast"
 }

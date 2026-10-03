@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct OpenAICreateImageRequest: Codable, Sendable {
   public var background: OpenAICreateImageRequestBackground?
-  public var model: OpenAICreateImageRequestModel?
+  public var model: OpenAICreateImageRequestModel
   public var moderation: OpenAICreateImageRequestModeration?
   public var n: Int?
   public var outputCompression: Int?
@@ -27,9 +27,9 @@ public struct OpenAICreateImageRequest: Codable, Sendable {
   public var user: String?
 
   public init(
+    model: OpenAICreateImageRequestModel,
     prompt: String,
     background: OpenAICreateImageRequestBackground? = nil,
-    model: OpenAICreateImageRequestModel? = nil,
     moderation: OpenAICreateImageRequestModeration? = nil,
     n: Int? = nil,
     outputCompression: Int? = nil,

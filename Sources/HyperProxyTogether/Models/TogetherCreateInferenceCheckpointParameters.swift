@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherCreateInferenceCheckpointParameters: Codable, Sendable {
+  public var idempotencyKey: String
   public var sessionId: String
 
   public init(
+    idempotencyKey: String,
     sessionId: String
   ) {
+    self.idempotencyKey = idempotencyKey
     self.sessionId = sessionId
   }
 
   enum CodingKeys: String, CodingKey {
+    case idempotencyKey = "Idempotency-Key"
     case sessionId = "session_id"
   }
 }

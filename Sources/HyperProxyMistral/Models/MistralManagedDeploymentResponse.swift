@@ -19,6 +19,8 @@ public struct MistralManagedDeploymentResponse: Codable, Sendable {
   public var name: String
   public var resources: MistralDeploymentResourceConfig
   public var rolloutStatus: String?
+  public var runtimeCredentialId: String?
+  public var runtimePrincipalType: MistralPrincipalType?
   public var serviceId: String
   public var spec: MistralDeploymentWorkerSpecResponse
   public var status: MistralDeploymentObservedState
@@ -39,6 +41,8 @@ public struct MistralManagedDeploymentResponse: Codable, Sendable {
     deployedBy: String? = nil,
     isHardened: Bool? = nil,
     rolloutStatus: String? = nil,
+    runtimeCredentialId: String? = nil,
+    runtimePrincipalType: MistralPrincipalType? = nil,
     stopped: Bool? = nil,
     updatedBy: String? = nil
   ) {
@@ -50,6 +54,8 @@ public struct MistralManagedDeploymentResponse: Codable, Sendable {
     self.name = name
     self.resources = resources
     self.rolloutStatus = rolloutStatus
+    self.runtimeCredentialId = runtimeCredentialId
+    self.runtimePrincipalType = runtimePrincipalType
     self.serviceId = serviceId
     self.spec = spec
     self.status = status
@@ -67,6 +73,8 @@ public struct MistralManagedDeploymentResponse: Codable, Sendable {
     case name
     case resources
     case rolloutStatus = "rollout_status"
+    case runtimeCredentialId = "runtime_credential_id"
+    case runtimePrincipalType = "runtime_principal_type"
     case serviceId = "service_id"
     case spec
     case status

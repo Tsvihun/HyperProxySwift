@@ -10,20 +10,26 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenRouterSTTInputAudio: Codable, Sendable {
-  public var data: String
-  public var format: String
+public enum OpenRouterSTTInputAudio: Codable, Sendable {
+  case sTTInlineInputAudio(OpenRouterSTTInlineInputAudio)
+  case sTTUrlInputAudio(OpenRouterSTTUrlInputAudio)
 
-  public init(
-    data: String,
-    format: String
-  ) {
-    self.data = data
-    self.format = format
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(OpenRouterSTTInlineInputAudio.self) {
+      self = .sTTInlineInputAudio(value)
+      return
+    }
+    self = .sTTUrlInputAudio(try container.decode(OpenRouterSTTUrlInputAudio.self))
   }
 
-  enum CodingKeys: String, CodingKey {
-    case data
-    case format
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .sTTInlineInputAudio(let value):
+      try container.encode(value)
+    case .sTTUrlInputAudio(let value):
+      try container.encode(value)
+    }
   }
 }

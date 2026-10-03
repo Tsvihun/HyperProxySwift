@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherFineTuneModelLimitsLoraTraining: Codable, Sendable {
+  public var defaultRank: Int
   public var maxBatchSize: Int
   public var maxBatchSizeDpo: Int
   public var maxRank: Int
@@ -18,12 +19,14 @@ public struct TogetherFineTuneModelLimitsLoraTraining: Codable, Sendable {
   public var targetModules: [String]
 
   public init(
+    defaultRank: Int,
     maxBatchSize: Int,
     maxBatchSizeDpo: Int,
     maxRank: Int,
     minBatchSize: Int,
     targetModules: [String]
   ) {
+    self.defaultRank = defaultRank
     self.maxBatchSize = maxBatchSize
     self.maxBatchSizeDpo = maxBatchSizeDpo
     self.maxRank = maxRank
@@ -32,6 +35,7 @@ public struct TogetherFineTuneModelLimitsLoraTraining: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case defaultRank = "default_rank"
     case maxBatchSize = "max_batch_size"
     case maxBatchSizeDpo = "max_batch_size_dpo"
     case maxRank = "max_rank"

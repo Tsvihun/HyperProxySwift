@@ -12,6 +12,7 @@ import HyperProxyCore
 
 public struct ElevenLabsSmartSearchConversationMessagesRouteParameters: Codable, Sendable {
   public var agentId: String?
+  public var branchId: String?
   public var cursor: String?
   public var pageSize: Int?
   public var textQuery: String
@@ -20,11 +21,13 @@ public struct ElevenLabsSmartSearchConversationMessagesRouteParameters: Codable,
   public init(
     textQuery: String,
     agentId: String? = nil,
+    branchId: String? = nil,
     cursor: String? = nil,
     pageSize: Int? = nil,
     xiApiKey: String? = nil
   ) {
     self.agentId = agentId
+    self.branchId = branchId
     self.cursor = cursor
     self.pageSize = pageSize
     self.textQuery = textQuery
@@ -33,6 +36,7 @@ public struct ElevenLabsSmartSearchConversationMessagesRouteParameters: Codable,
 
   enum CodingKeys: String, CodingKey {
     case agentId = "agent_id"
+    case branchId = "branch_id"
     case cursor
     case pageSize = "page_size"
     case textQuery = "text_query"

@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIEvalRunOutputItemSample: Codable, Sendable {
-  public var error: OpenAIEvalApiError
+  public var error: OpenAIEvalApiError?
   public var finishReason: String
   public var input: [OpenAIEvalRunOutputItemSampleInputItem]
   public var maxCompletionTokens: Int
@@ -23,7 +23,7 @@ public struct OpenAIEvalRunOutputItemSample: Codable, Sendable {
   public var usage: OpenAIEvalRunOutputItemSampleUsage
 
   public init(
-    error: OpenAIEvalApiError,
+    error: OpenAIEvalApiError?,
     finishReason: String,
     input: [OpenAIEvalRunOutputItemSampleInputItem],
     maxCompletionTokens: Int,

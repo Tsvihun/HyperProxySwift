@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct OpenAIEvalRun: Codable, Sendable {
   public var createdAt: Int
   public var dataSource: OpenAIEvalRunDataSource
-  public var error: OpenAIEvalApiError
+  public var error: OpenAIEvalApiError?
   public var evalId: String
   public var id: String
   public var metadata: OpenAIMetadata?
@@ -29,7 +29,7 @@ public struct OpenAIEvalRun: Codable, Sendable {
   public init(
     createdAt: Int,
     dataSource: OpenAIEvalRunDataSource,
-    error: OpenAIEvalApiError,
+    error: OpenAIEvalApiError?,
     evalId: String,
     id: String,
     metadata: OpenAIMetadata?,

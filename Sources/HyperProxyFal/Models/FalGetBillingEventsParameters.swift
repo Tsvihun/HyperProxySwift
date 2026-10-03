@@ -19,7 +19,9 @@ public struct FalGetBillingEventsParameters: Codable, Sendable {
   public var limit: Int?
   public var loginUsername: FalGetBillingEventsParametersLoginUsername?
   public var requestId: FalGetBillingEventsParametersRequestId?
+  public var source: FalGetBillingEventsParametersSource?
   public var start: FalGetBillingEventsParametersStart?
+  public var tag: FalGetBillingEventsParametersTag?
 
   public init(
     apiKeyId: FalGetBillingEventsParametersApiKeyId? = nil,
@@ -30,7 +32,9 @@ public struct FalGetBillingEventsParameters: Codable, Sendable {
     limit: Int? = nil,
     loginUsername: FalGetBillingEventsParametersLoginUsername? = nil,
     requestId: FalGetBillingEventsParametersRequestId? = nil,
-    start: FalGetBillingEventsParametersStart? = nil
+    source: FalGetBillingEventsParametersSource? = nil,
+    start: FalGetBillingEventsParametersStart? = nil,
+    tag: FalGetBillingEventsParametersTag? = nil
   ) {
     self.apiKeyId = apiKeyId
     self.cursor = cursor
@@ -40,7 +44,9 @@ public struct FalGetBillingEventsParameters: Codable, Sendable {
     self.limit = limit
     self.loginUsername = loginUsername
     self.requestId = requestId
+    self.source = source
     self.start = start
+    self.tag = tag
   }
 
   enum CodingKeys: String, CodingKey {
@@ -52,6 +58,8 @@ public struct FalGetBillingEventsParameters: Codable, Sendable {
     case limit
     case loginUsername = "login_username"
     case requestId = "request_id"
+    case source
     case start
+    case tag
   }
 }

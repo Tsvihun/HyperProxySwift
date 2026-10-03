@@ -12,14 +12,18 @@ import HyperProxyCore
 
 public struct GeminiVoiceConfig: Codable, Sendable {
   public var prebuiltVoiceConfig: GeminiPrebuiltVoiceConfig?
+  public var voice: String?
 
   public init(
-    prebuiltVoiceConfig: GeminiPrebuiltVoiceConfig? = nil
+    prebuiltVoiceConfig: GeminiPrebuiltVoiceConfig? = nil,
+    voice: String? = nil
   ) {
     self.prebuiltVoiceConfig = prebuiltVoiceConfig
+    self.voice = voice
   }
 
   enum CodingKeys: String, CodingKey {
     case prebuiltVoiceConfig
+    case voice
   }
 }

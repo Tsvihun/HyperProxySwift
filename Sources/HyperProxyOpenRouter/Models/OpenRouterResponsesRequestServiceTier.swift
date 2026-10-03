@@ -17,4 +17,5 @@ public enum OpenRouterResponsesRequestServiceTier: String, Codable, Hashable, Se
   case flex = "flex"
   case priority = "priority"
   case scale = "scale"
+  case ultrafast = "ultrafast"
 }

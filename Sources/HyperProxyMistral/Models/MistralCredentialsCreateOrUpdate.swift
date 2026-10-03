@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralCredentialsCreateOrUpdate: Codable, Sendable {
-  public var credentials: MistralConnectionCredentials?
+  public var credentials: MistralConnectionCredentialsInput?
   public var isDefault: Bool?
   public var name: String
   public var title: String?
 
   public init(
     name: String,
-    credentials: MistralConnectionCredentials? = nil,
+    credentials: MistralConnectionCredentialsInput? = nil,
     isDefault: Bool? = nil,
     title: String? = nil
   ) {

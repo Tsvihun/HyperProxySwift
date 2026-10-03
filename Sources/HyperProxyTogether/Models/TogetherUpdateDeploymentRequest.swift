@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct TogetherUpdateDeploymentRequest: Codable, Sendable {
   public var args: [String]?
   public var autoscaling: TogetherUpdateDeploymentRequestAutoscaling?
+  public var capacityType: TogetherUpdateDeploymentRequestCapacityType?
   public var command: [String]?
   public var cpu: Double?
   public var description: String?
@@ -24,6 +25,7 @@ public struct TogetherUpdateDeploymentRequest: Codable, Sendable {
   public var maxReplicas: Int?
   public var memory: Double?
   public var minReplicas: Int?
+  public var modelMounts: [TogetherModelMount]?
   public var name: String?
   public var port: Int?
   public var storage: Int?
@@ -33,6 +35,7 @@ public struct TogetherUpdateDeploymentRequest: Codable, Sendable {
   public init(
     args: [String]? = nil,
     autoscaling: TogetherUpdateDeploymentRequestAutoscaling? = nil,
+    capacityType: TogetherUpdateDeploymentRequestCapacityType? = nil,
     command: [String]? = nil,
     cpu: Double? = nil,
     description: String? = nil,
@@ -44,6 +47,7 @@ public struct TogetherUpdateDeploymentRequest: Codable, Sendable {
     maxReplicas: Int? = nil,
     memory: Double? = nil,
     minReplicas: Int? = nil,
+    modelMounts: [TogetherModelMount]? = nil,
     name: String? = nil,
     port: Int? = nil,
     storage: Int? = nil,
@@ -52,6 +56,7 @@ public struct TogetherUpdateDeploymentRequest: Codable, Sendable {
   ) {
     self.args = args
     self.autoscaling = autoscaling
+    self.capacityType = capacityType
     self.command = command
     self.cpu = cpu
     self.description = description
@@ -63,6 +68,7 @@ public struct TogetherUpdateDeploymentRequest: Codable, Sendable {
     self.maxReplicas = maxReplicas
     self.memory = memory
     self.minReplicas = minReplicas
+    self.modelMounts = modelMounts
     self.name = name
     self.port = port
     self.storage = storage
@@ -73,6 +79,7 @@ public struct TogetherUpdateDeploymentRequest: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case args
     case autoscaling
+    case capacityType = "capacity_type"
     case command
     case cpu
     case description
@@ -84,6 +91,7 @@ public struct TogetherUpdateDeploymentRequest: Codable, Sendable {
     case maxReplicas = "max_replicas"
     case memory
     case minReplicas = "min_replicas"
+    case modelMounts = "model_mounts"
     case name
     case port
     case storage

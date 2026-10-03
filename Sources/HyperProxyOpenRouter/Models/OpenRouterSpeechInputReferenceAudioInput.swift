@@ -11,19 +11,23 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterSpeechInputReferenceAudioInput: Codable, Sendable {
-  public var data: String
+  public var data: String?
   public var format: String?
+  public var url: String?
 
   public init(
-    data: String,
-    format: String? = nil
+    data: String? = nil,
+    format: String? = nil,
+    url: String? = nil
   ) {
     self.data = data
     self.format = format
+    self.url = url
   }
 
   enum CodingKeys: String, CodingKey {
     case data
     case format
+    case url
   }
 }

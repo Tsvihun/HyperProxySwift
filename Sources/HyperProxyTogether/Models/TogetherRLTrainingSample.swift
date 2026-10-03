@@ -13,21 +13,21 @@ import HyperProxyCore
 public struct TogetherRLTrainingSample: Codable, Sendable {
   public var lossFnInputs: [String: TogetherRLTensorData]
   public var modelInput: TogetherRLModelInput
-  public var routedExperts: TogetherRLRoutedExperts?
+  public var routedExpertsKey: String?
 
   public init(
     lossFnInputs: [String: TogetherRLTensorData],
     modelInput: TogetherRLModelInput,
-    routedExperts: TogetherRLRoutedExperts? = nil
+    routedExpertsKey: String? = nil
   ) {
     self.lossFnInputs = lossFnInputs
     self.modelInput = modelInput
-    self.routedExperts = routedExperts
+    self.routedExpertsKey = routedExpertsKey
   }
 
   enum CodingKeys: String, CodingKey {
     case lossFnInputs = "loss_fn_inputs"
     case modelInput = "model_input"
-    case routedExperts = "routed_experts"
+    case routedExpertsKey = "routed_experts_key"
   }
 }

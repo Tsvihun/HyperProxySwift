@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsBodyCreateCrawlJobV1ConvaiKnowledgeBaseCrawlPost: Codable, Sendable {
+  public var autoDiscover: Bool?
   public var autoRemove: Bool?
   public var enableAutoSync: Bool?
   public var maxDepth: Int?
@@ -23,6 +24,7 @@ public struct ElevenLabsBodyCreateCrawlJobV1ConvaiKnowledgeBaseCrawlPost: Codabl
 
   public init(
     url: String,
+    autoDiscover: Bool? = nil,
     autoRemove: Bool? = nil,
     enableAutoSync: Bool? = nil,
     maxDepth: Int? = nil,
@@ -32,6 +34,7 @@ public struct ElevenLabsBodyCreateCrawlJobV1ConvaiKnowledgeBaseCrawlPost: Codabl
     pattern: String? = nil,
     sitemapUrls: [String]? = nil
   ) {
+    self.autoDiscover = autoDiscover
     self.autoRemove = autoRemove
     self.enableAutoSync = enableAutoSync
     self.maxDepth = maxDepth
@@ -44,6 +47,7 @@ public struct ElevenLabsBodyCreateCrawlJobV1ConvaiKnowledgeBaseCrawlPost: Codabl
   }
 
   enum CodingKeys: String, CodingKey {
+    case autoDiscover = "auto_discover"
     case autoRemove = "auto_remove"
     case enableAutoSync = "enable_auto_sync"
     case maxDepth = "max_depth"

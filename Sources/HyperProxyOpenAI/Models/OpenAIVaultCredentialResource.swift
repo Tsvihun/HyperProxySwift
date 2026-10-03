@@ -14,6 +14,7 @@ public struct OpenAIVaultCredentialResource: Codable, Sendable {
   public var auth: OpenAIVaultCredentialAuthResource
   public var createdAt: Int64
   public var id: String
+  public var metadata: [String: String]
   public var name: String
   public var object: OpenAIVaultCredentialResourceObject
   public var updatedAt: Int64
@@ -23,6 +24,7 @@ public struct OpenAIVaultCredentialResource: Codable, Sendable {
     auth: OpenAIVaultCredentialAuthResource,
     createdAt: Int64,
     id: String,
+    metadata: [String: String],
     name: String,
     object: OpenAIVaultCredentialResourceObject,
     updatedAt: Int64,
@@ -31,6 +33,7 @@ public struct OpenAIVaultCredentialResource: Codable, Sendable {
     self.auth = auth
     self.createdAt = createdAt
     self.id = id
+    self.metadata = metadata
     self.name = name
     self.object = object
     self.updatedAt = updatedAt
@@ -41,6 +44,7 @@ public struct OpenAIVaultCredentialResource: Codable, Sendable {
     case auth
     case createdAt = "created_at"
     case id
+    case metadata
     case name
     case object
     case updatedAt = "updated_at"

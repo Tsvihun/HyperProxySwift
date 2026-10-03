@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct OpenAIGraderMulti: Codable, Sendable {
   public var calculateOutput: String
-  public var graders: OpenAIGraderMultiGraders
+  public var graders: [String: OpenAIGraderMultiGradersValue]
   public var name: String
   public var kind: OpenAIGraderMultiKind
 
   public init(
     calculateOutput: String,
-    graders: OpenAIGraderMultiGraders,
+    graders: [String: OpenAIGraderMultiGradersValue],
     name: String,
     kind: OpenAIGraderMultiKind
   ) {

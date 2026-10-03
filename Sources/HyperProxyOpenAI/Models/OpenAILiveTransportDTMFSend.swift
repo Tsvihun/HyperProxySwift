@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAILiveTransportDTMFSend: Codable, Sendable {
+  public var clientEventId: String?
   public var event: String
   public var eventId: String
   public var kind: OpenAILiveTransportDTMFSendKind
@@ -18,14 +19,17 @@ public struct OpenAILiveTransportDTMFSend: Codable, Sendable {
   public init(
     event: String,
     eventId: String,
-    kind: OpenAILiveTransportDTMFSendKind
+    kind: OpenAILiveTransportDTMFSendKind,
+    clientEventId: String? = nil
   ) {
+    self.clientEventId = clientEventId
     self.event = event
     self.eventId = eventId
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
+    case clientEventId = "client_event_id"
     case event
     case eventId = "event_id"
     case kind = "type"

@@ -45,6 +45,10 @@ extension HyperProxyProviderService where Operation == BFLOperation {
   public var imagesFlux2Pro: HyperProxyProviderCall<BFLOperation> {
     self.call(.imagesFlux2Pro)
   }
+  /// `POST v1/flux-3-image`
+  public var flux3ImageV1Flux3ImagePost: HyperProxyProviderCall<BFLOperation> {
+    self.call(.flux3ImageV1Flux3ImagePost)
+  }
   /// `POST v1/flux-dev`
   public var imagesFlux1Dev: HyperProxyProviderCall<BFLOperation> {
     self.call(.imagesFlux1Dev)
@@ -116,10 +120,6 @@ extension HyperProxyProviderService where Operation == BFLOperation {
   /// `GET v1/finetune_details`
   public var fineTuningRetrieve: HyperProxyProviderCall<BFLOperation> {
     self.call(.fineTuningRetrieve)
-  }
-  /// `POST v1/flux-pro-1.0-fill-finetuned`
-  public var fineTuningGenerateFill: HyperProxyProviderCall<BFLOperation> {
-    self.call(.fineTuningGenerateFill)
   }
   /// `POST v1/flux-pro-1.1-ultra-finetuned`
   public var fineTuningGenerateUltra: HyperProxyProviderCall<BFLOperation> {

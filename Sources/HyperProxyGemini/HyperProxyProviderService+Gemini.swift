@@ -134,7 +134,7 @@ extension HyperProxyProviderService where Operation == GeminiOperation {
   {
     self.call(.generativelanguageDynamicStreamGenerateContent)
   }
-  /// `GET v1beta/environments/{environmentsId}/files/{filesId}`
+  /// `GET v1beta/environments/{environmentsId}/files`
   public var generativelanguageEnvironmentsFilesMediaDownload:
     HyperProxyProviderCall<GeminiOperation>
   {

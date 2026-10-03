@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralTranscriptionStreamSegmentDelta: Codable, Sendable {
-  public var end: Double
+  public var end: Double?
   public var speakerId: String?
-  public var start: Double
+  public var start: Double?
   public var text: String
   public var kind: MistralTranscriptionSegmentKind7d07e135?
 
   public init(
-    end: Double,
-    start: Double,
+    end: Double?,
+    start: Double?,
     text: String,
     speakerId: String? = nil,
     kind: MistralTranscriptionSegmentKind7d07e135? = nil

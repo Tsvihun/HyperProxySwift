@@ -13,4 +13,5 @@ import HyperProxyCore
 public enum ElevenLabsASRProvider: String, Codable, Hashable, Sendable {
   case elevenlabs = "elevenlabs"
   case scribeRealtime = "scribe_realtime"
+  case scribeV2Turbo = "scribe_v2_turbo"
 }

@@ -12,6 +12,7 @@ import HyperProxyCore
 
 public struct OpenRouterActivityItem: Codable, Sendable {
   public var byokUsageInference: Double
+  public var cachedTokens: Int
   public var completionTokens: Int
   public var date: String
   public var endpointId: String
@@ -26,6 +27,7 @@ public struct OpenRouterActivityItem: Codable, Sendable {
 
   public init(
     byokUsageInference: Double,
+    cachedTokens: Int,
     completionTokens: Int,
     date: String,
     endpointId: String,
@@ -39,6 +41,7 @@ public struct OpenRouterActivityItem: Codable, Sendable {
     workspaceId: String? = nil
   ) {
     self.byokUsageInference = byokUsageInference
+    self.cachedTokens = cachedTokens
     self.completionTokens = completionTokens
     self.date = date
     self.endpointId = endpointId
@@ -54,6 +57,7 @@ public struct OpenRouterActivityItem: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case byokUsageInference = "byok_usage_inference"
+    case cachedTokens = "cached_tokens"
     case completionTokens = "completion_tokens"
     case date
     case endpointId = "endpoint_id"

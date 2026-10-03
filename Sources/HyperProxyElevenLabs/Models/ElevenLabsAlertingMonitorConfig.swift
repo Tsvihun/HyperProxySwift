@@ -12,6 +12,7 @@ import HyperProxyCore
 
 public struct ElevenLabsAlertingMonitorConfig: Codable, Sendable {
   public var autoResolveAfterInactiveMinutes: Int?
+  public var enabled: Bool?
   public var minFailureCount: Int?
   public var minHistoryBucketCount: Int?
   public var minSampleCount: Int?
@@ -21,6 +22,7 @@ public struct ElevenLabsAlertingMonitorConfig: Codable, Sendable {
 
   public init(
     autoResolveAfterInactiveMinutes: Int? = nil,
+    enabled: Bool? = nil,
     minFailureCount: Int? = nil,
     minHistoryBucketCount: Int? = nil,
     minSampleCount: Int? = nil,
@@ -29,6 +31,7 @@ public struct ElevenLabsAlertingMonitorConfig: Codable, Sendable {
     threshold: Double? = nil
   ) {
     self.autoResolveAfterInactiveMinutes = autoResolveAfterInactiveMinutes
+    self.enabled = enabled
     self.minFailureCount = minFailureCount
     self.minHistoryBucketCount = minHistoryBucketCount
     self.minSampleCount = minSampleCount
@@ -39,6 +42,7 @@ public struct ElevenLabsAlertingMonitorConfig: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case autoResolveAfterInactiveMinutes = "auto_resolve_after_inactive_minutes"
+    case enabled
     case minFailureCount = "min_failure_count"
     case minHistoryBucketCount = "min_history_bucket_count"
     case minSampleCount = "min_sample_count"

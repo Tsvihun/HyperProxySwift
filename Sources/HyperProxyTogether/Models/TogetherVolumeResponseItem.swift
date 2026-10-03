@@ -18,6 +18,8 @@ public struct TogetherVolumeResponseItem: Codable, Sendable {
   public var mountedBy: [String]?
   public var name: String?
   public var object: String?
+  public var status: TogetherVolumeStatus?
+  public var statusMessage: String?
   public var kind: TogetherVolumeType?
   public var updatedAt: String?
   public var versionHistory: [String: TogetherVersionHistoryItem]?
@@ -30,6 +32,8 @@ public struct TogetherVolumeResponseItem: Codable, Sendable {
     mountedBy: [String]? = nil,
     name: String? = nil,
     object: String? = nil,
+    status: TogetherVolumeStatus? = nil,
+    statusMessage: String? = nil,
     kind: TogetherVolumeType? = nil,
     updatedAt: String? = nil,
     versionHistory: [String: TogetherVersionHistoryItem]? = nil
@@ -41,6 +45,8 @@ public struct TogetherVolumeResponseItem: Codable, Sendable {
     self.mountedBy = mountedBy
     self.name = name
     self.object = object
+    self.status = status
+    self.statusMessage = statusMessage
     self.kind = kind
     self.updatedAt = updatedAt
     self.versionHistory = versionHistory
@@ -54,6 +60,8 @@ public struct TogetherVolumeResponseItem: Codable, Sendable {
     case mountedBy = "mounted_by"
     case name
     case object
+    case status
+    case statusMessage = "status_message"
     case kind = "type"
     case updatedAt = "updated_at"
     case versionHistory = "version_history"

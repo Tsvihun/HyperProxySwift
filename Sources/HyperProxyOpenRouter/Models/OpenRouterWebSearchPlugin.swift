@@ -21,6 +21,7 @@ public struct OpenRouterWebSearchPlugin: Codable, Sendable {
   public var mode: OpenRouterWebSearchMode?
   public var searchPrompt: String?
   public var userLocation: OpenRouterWebSearchUserLocation?
+  public var xSearch: OpenRouterXSearchOptions?
 
   public init(
     id: OpenRouterWebSearchPluginId,
@@ -32,7 +33,8 @@ public struct OpenRouterWebSearchPlugin: Codable, Sendable {
     maxUses: Int? = nil,
     mode: OpenRouterWebSearchMode? = nil,
     searchPrompt: String? = nil,
-    userLocation: OpenRouterWebSearchUserLocation? = nil
+    userLocation: OpenRouterWebSearchUserLocation? = nil,
+    xSearch: OpenRouterXSearchOptions? = nil
   ) {
     self.enabled = enabled
     self.engine = engine
@@ -44,6 +46,7 @@ public struct OpenRouterWebSearchPlugin: Codable, Sendable {
     self.mode = mode
     self.searchPrompt = searchPrompt
     self.userLocation = userLocation
+    self.xSearch = xSearch
   }
 
   enum CodingKeys: String, CodingKey {
@@ -57,5 +60,6 @@ public struct OpenRouterWebSearchPlugin: Codable, Sendable {
     case mode
     case searchPrompt = "search_prompt"
     case userLocation = "user_location"
+    case xSearch = "x_search"
   }
 }

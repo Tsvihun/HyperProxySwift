@@ -1,0 +1,20 @@
+//
+//  PerplexityImageSearchFiltersFormatFilterItem.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+// Maintainer-generated release artifact. Do not edit by hand.
+
+import Foundation
+import HyperProxyCore
+
+public enum PerplexityImageSearchFiltersFormatFilterItem: String, Codable, Hashable, Sendable {
+  case bmp = "bmp"
+  case gif = "gif"
+  case jpeg = "jpeg"
+  case png = "png"
+  case webp = "webp"
+  case svg = "svg"
+}

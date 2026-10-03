@@ -15,4 +15,5 @@ public enum MistralDatasetRecordSource: String, Codable, Hashable, Sendable {
   case uPLOADEDFILE = "UPLOADED_FILE"
   case dIRECTINPUT = "DIRECT_INPUT"
   case pLAYGROUND = "PLAYGROUND"
+  case tELEMETRYSPAN = "TELEMETRY_SPAN"
 }

@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterOpenResponsesResult: Codable, Sendable {
+  public var alignment: OpenRouterAlignment?
   public var background: Bool?
   public var completedAt: Int
   public var createdAt: Int
@@ -68,6 +69,7 @@ public struct OpenRouterOpenResponsesResult: Codable, Sendable {
     toolChoice: OpenRouterOpenAIResponsesToolChoice,
     tools: [OpenRouterBaseResponsesResultToolsItem],
     topP: Double,
+    alignment: OpenRouterAlignment? = nil,
     background: Bool? = nil,
     errorType: OpenRouterApiErrorType? = nil,
     maxOutputTokens: Int? = nil,
@@ -88,6 +90,7 @@ public struct OpenRouterOpenResponsesResult: Codable, Sendable {
     usage: OpenRouterOpenAIResponsesUsage? = nil,
     user: String? = nil
   ) {
+    self.alignment = alignment
     self.background = background
     self.completedAt = completedAt
     self.createdAt = createdAt
@@ -128,6 +131,7 @@ public struct OpenRouterOpenResponsesResult: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case alignment
     case background
     case completedAt = "completed_at"
     case createdAt = "created_at"

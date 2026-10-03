@@ -17,12 +17,12 @@ public struct OpenAICreateSpeechRequest: Codable, Sendable {
   public var responseFormat: OpenAICreateSpeechRequestResponseFormat?
   public var speed: Double?
   public var streamFormat: OpenAICreateSpeechRequestStreamFormat?
-  public var voice: OpenAIVoiceIdsOrCustomVoice
+  public var voice: OpenAICreateSpeechRequestVoice
 
   public init(
     input: String,
     model: OpenAICreateSpeechRequestModel,
-    voice: OpenAIVoiceIdsOrCustomVoice,
+    voice: OpenAICreateSpeechRequestVoice,
     instructions: String? = nil,
     responseFormat: OpenAICreateSpeechRequestResponseFormat? = nil,
     speed: Double? = nil,

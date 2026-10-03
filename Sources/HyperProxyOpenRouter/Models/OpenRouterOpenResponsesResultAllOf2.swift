@@ -11,6 +11,8 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterOpenResponsesResultAllOf2: Codable, Sendable {
+  public var alignment: OpenRouterAlignment?
+  public var error: OpenRouterOpenResponsesErrorField?
   public var errorType: OpenRouterApiErrorType?
   public var openrouterMetadata: OpenRouterMetadata?
   public var output: [OpenRouterOutputItems]?
@@ -19,6 +21,8 @@ public struct OpenRouterOpenResponsesResultAllOf2: Codable, Sendable {
   public var usage: OpenRouterUsage?
 
   public init(
+    alignment: OpenRouterAlignment? = nil,
+    error: OpenRouterOpenResponsesErrorField? = nil,
     errorType: OpenRouterApiErrorType? = nil,
     openrouterMetadata: OpenRouterMetadata? = nil,
     output: [OpenRouterOutputItems]? = nil,
@@ -26,6 +30,8 @@ public struct OpenRouterOpenResponsesResultAllOf2: Codable, Sendable {
     text: OpenRouterTextExtendedConfig? = nil,
     usage: OpenRouterUsage? = nil
   ) {
+    self.alignment = alignment
+    self.error = error
     self.errorType = errorType
     self.openrouterMetadata = openrouterMetadata
     self.output = output
@@ -35,6 +41,8 @@ public struct OpenRouterOpenResponsesResultAllOf2: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case alignment
+    case error
     case errorType = "error_type"
     case openrouterMetadata = "openrouter_metadata"
     case output

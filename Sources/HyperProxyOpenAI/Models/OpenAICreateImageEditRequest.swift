@@ -15,7 +15,7 @@ public struct OpenAICreateImageEditRequest: Codable, Sendable {
   public var image: OpenAICreateImageEditRequestImage
   public var inputFidelity: OpenAIInputFidelity?
   public var mask: String?
-  public var model: OpenAICreateImageEditRequestModel?
+  public var model: OpenAICreateImageEditRequestModel
   public var n: Int?
   public var outputCompression: Int?
   public var outputFormat: OpenAICreateImageEditRequestOutputFormat?
@@ -29,11 +29,11 @@ public struct OpenAICreateImageEditRequest: Codable, Sendable {
 
   public init(
     image: OpenAICreateImageEditRequestImage,
+    model: OpenAICreateImageEditRequestModel,
     prompt: String,
     background: OpenAICreateImageEditRequestBackground? = nil,
     inputFidelity: OpenAIInputFidelity? = nil,
     mask: String? = nil,
-    model: OpenAICreateImageEditRequestModel? = nil,
     n: Int? = nil,
     outputCompression: Int? = nil,
     outputFormat: OpenAICreateImageEditRequestOutputFormat? = nil,

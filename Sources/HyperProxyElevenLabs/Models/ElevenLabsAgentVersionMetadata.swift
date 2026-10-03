@@ -15,6 +15,7 @@ public struct ElevenLabsAgentVersionMetadata: Codable, Sendable {
   public var agentId: String
   public var branchId: String
   public var id: String
+  public var mergedAuthors: [ElevenLabsResourceAccessInfo]?
   public var parents: ElevenLabsAgentVersionParents
   public var seqNoInBranch: Int
   public var timeCommittedSecs: Int
@@ -28,12 +29,14 @@ public struct ElevenLabsAgentVersionMetadata: Codable, Sendable {
     seqNoInBranch: Int,
     timeCommittedSecs: Int,
     versionDescription: String,
-    accessInfo: ElevenLabsResourceAccessInfo? = nil
+    accessInfo: ElevenLabsResourceAccessInfo? = nil,
+    mergedAuthors: [ElevenLabsResourceAccessInfo]? = nil
   ) {
     self.accessInfo = accessInfo
     self.agentId = agentId
     self.branchId = branchId
     self.id = id
+    self.mergedAuthors = mergedAuthors
     self.parents = parents
     self.seqNoInBranch = seqNoInBranch
     self.timeCommittedSecs = timeCommittedSecs
@@ -45,6 +48,7 @@ public struct ElevenLabsAgentVersionMetadata: Codable, Sendable {
     case agentId = "agent_id"
     case branchId = "branch_id"
     case id
+    case mergedAuthors = "merged_authors"
     case parents
     case seqNoInBranch = "seq_no_in_branch"
     case timeCommittedSecs = "time_committed_secs"

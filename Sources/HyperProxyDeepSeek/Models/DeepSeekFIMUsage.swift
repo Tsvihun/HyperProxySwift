@@ -16,6 +16,7 @@ public struct DeepSeekFIMUsage: Codable, Sendable {
   public var promptCacheHitTokens: Int
   public var promptCacheMissTokens: Int
   public var promptTokens: Int
+  public var promptTokensDetails: DeepSeekFIMPromptTokenDetails?
   public var totalTokens: Int
 
   public init(
@@ -24,13 +25,15 @@ public struct DeepSeekFIMUsage: Codable, Sendable {
     promptCacheMissTokens: Int,
     promptTokens: Int,
     totalTokens: Int,
-    completionTokensDetails: DeepSeekFIMCompletionTokenDetails? = nil
+    completionTokensDetails: DeepSeekFIMCompletionTokenDetails? = nil,
+    promptTokensDetails: DeepSeekFIMPromptTokenDetails? = nil
   ) {
     self.completionTokens = completionTokens
     self.completionTokensDetails = completionTokensDetails
     self.promptCacheHitTokens = promptCacheHitTokens
     self.promptCacheMissTokens = promptCacheMissTokens
     self.promptTokens = promptTokens
+    self.promptTokensDetails = promptTokensDetails
     self.totalTokens = totalTokens
   }
 
@@ -40,6 +43,7 @@ public struct DeepSeekFIMUsage: Codable, Sendable {
     case promptCacheHitTokens = "prompt_cache_hit_tokens"
     case promptCacheMissTokens = "prompt_cache_miss_tokens"
     case promptTokens = "prompt_tokens"
+    case promptTokensDetails = "prompt_tokens_details"
     case totalTokens = "total_tokens"
   }
 }

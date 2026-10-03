@@ -40,20 +40,6 @@ extension HyperProxyProviderService where Operation == DeepLOperation {
     return try await call.decoded(DeepLVoiceTranslateJobStatusResponse.self)
   }
 
-  public func submitQualityEvaluation(
-    _ body: DeepLQualityEvaluationRequest,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> DeepLQualityEvaluationJobCreated {
-    let call = self.call(.submitQualityEvaluation)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(DeepLQualityEvaluationJobCreated.self)
-  }
-
   public func pollQualityEvaluation(
     jobId: String,
     query: [URLQueryItem] = [],

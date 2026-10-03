@@ -12,14 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterInternChatErrorMetadata: Codable, Sendable {
   public var reason: OpenRouterInternChatErrorMetadataReason
+  public var retryable: Bool
 
   public init(
-    reason: OpenRouterInternChatErrorMetadataReason
+    reason: OpenRouterInternChatErrorMetadataReason,
+    retryable: Bool
   ) {
     self.reason = reason
+    self.retryable = retryable
   }
 
   enum CodingKeys: String, CodingKey {
     case reason
+    case retryable
   }
 }

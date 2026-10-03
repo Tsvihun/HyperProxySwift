@@ -13,21 +13,25 @@ import HyperProxyCore
 public struct ElevenLabsListMCPToolsResponseModel: Codable, Sendable {
   public var errorMessage: String?
   public var success: Bool
+  public var toolApprovalStatuses: [ElevenLabsMCPToolApprovalStatus]?
   public var tools: [ElevenLabsTool]
 
   public init(
     success: Bool,
     tools: [ElevenLabsTool],
-    errorMessage: String? = nil
+    errorMessage: String? = nil,
+    toolApprovalStatuses: [ElevenLabsMCPToolApprovalStatus]? = nil
   ) {
     self.errorMessage = errorMessage
     self.success = success
+    self.toolApprovalStatuses = toolApprovalStatuses
     self.tools = tools
   }
 
   enum CodingKeys: String, CodingKey {
     case errorMessage = "error_message"
     case success
+    case toolApprovalStatuses = "tool_approval_statuses"
     case tools
   }
 }

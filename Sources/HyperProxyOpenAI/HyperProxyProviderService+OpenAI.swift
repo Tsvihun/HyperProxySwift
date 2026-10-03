@@ -161,6 +161,10 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
   public var listAgentSessionSubagentTurnItems: HyperProxyProviderCall<OpenAIOperation> {
     self.call(.listAgentSessionSubagentTurnItems)
   }
+  /// `GET v1/agents/sessions/{session_id}/traces`
+  public var listAgentSessionTraces: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.listAgentSessionTraces)
+  }
   /// `GET v1/agents/sessions/{session_id}/turns`
   public var listAgentSessionTurns: HyperProxyProviderCall<OpenAIOperation> {
     self.call(.listAgentSessionTurns)
@@ -168,6 +172,10 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
   /// `GET v1/agents/sessions/{session_id}/turns/{turn_id}`
   public var retrieveAgentSessionTurn: HyperProxyProviderCall<OpenAIOperation> {
     self.call(.retrieveAgentSessionTurn)
+  }
+  /// `GET v1/agents/sessions/{session_id}/turns/{turn_id}/items`
+  public var listAgentSessionTurnItems: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.listAgentSessionTurnItems)
   }
   /// `DELETE v1/agents/{agent_id}`
   public var deleteAgent: HyperProxyProviderCall<OpenAIOperation> {
@@ -417,7 +425,7 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
   public var getEvalRun: HyperProxyProviderCall<OpenAIOperation> {
     self.call(.getEvalRun)
   }
-  /// `POST v1/evals/{eval_id}/runs/{run_id}`
+  /// `POST v1/evals/{eval_id}/runs/{run_id}/cancel`
   public var cancelEvalRun: HyperProxyProviderCall<OpenAIOperation> {
     self.call(.cancelEvalRun)
   }

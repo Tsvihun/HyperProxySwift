@@ -12,6 +12,8 @@ import HyperProxyCore
 
 public struct OpenAIEnvironmentResourceOpenaiHosted: Codable, Sendable {
   public var capabilityDirectories: [String]
+  public var containerSize: OpenAIContainerSizeResource?
+  public var desktop: OpenAIDesktopResource
   public var files: [OpenAIHostedEnvironmentFileResource]
   public var id: String
   public var network: OpenAINetworkPolicyResource
@@ -22,15 +24,19 @@ public struct OpenAIEnvironmentResourceOpenaiHosted: Codable, Sendable {
 
   public init(
     capabilityDirectories: [String],
+    desktop: OpenAIDesktopResource,
     files: [OpenAIHostedEnvironmentFileResource],
     id: String,
     network: OpenAINetworkPolicyResource,
     packages: OpenAIEnvironmentPackagesResource,
     plugins: [OpenAIHostedPluginResource],
     skills: [OpenAIHostedSkillResource],
-    kind: OpenAIEnvironmentResourceOpenaiHostedKind
+    kind: OpenAIEnvironmentResourceOpenaiHostedKind,
+    containerSize: OpenAIContainerSizeResource? = nil
   ) {
     self.capabilityDirectories = capabilityDirectories
+    self.containerSize = containerSize
+    self.desktop = desktop
     self.files = files
     self.id = id
     self.network = network
@@ -42,6 +48,8 @@ public struct OpenAIEnvironmentResourceOpenaiHosted: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case capabilityDirectories = "capability_directories"
+    case containerSize = "container_size"
+    case desktop
     case files
     case id
     case network

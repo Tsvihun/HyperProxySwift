@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIBetaCreateResponseAllOf3: Codable, Sendable {
+  public var accessPrograms: OpenAIBetaAccessProgramsParam?
   public var contextManagement: [OpenAIBetaContextManagementParam]?
   public var conversation: OpenAIBetaConversationParam?
   public var include: [OpenAIBetaIncludeEnum]?
@@ -29,6 +30,7 @@ public struct OpenAIBetaCreateResponseAllOf3: Codable, Sendable {
   public var truncation: OpenAIBetaCreateResponseAllOf3TruncationAnyOf1?
 
   public init(
+    accessPrograms: OpenAIBetaAccessProgramsParam? = nil,
     contextManagement: [OpenAIBetaContextManagementParam]? = nil,
     conversation: OpenAIBetaConversationParam? = nil,
     include: [OpenAIBetaIncludeEnum]? = nil,
@@ -46,6 +48,7 @@ public struct OpenAIBetaCreateResponseAllOf3: Codable, Sendable {
     streamOptions: OpenAIBetaResponseStreamOptions? = nil,
     truncation: OpenAIBetaCreateResponseAllOf3TruncationAnyOf1? = nil
   ) {
+    self.accessPrograms = accessPrograms
     self.contextManagement = contextManagement
     self.conversation = conversation
     self.include = include
@@ -65,6 +68,7 @@ public struct OpenAIBetaCreateResponseAllOf3: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case accessPrograms = "access_programs"
     case contextManagement = "context_management"
     case conversation
     case include

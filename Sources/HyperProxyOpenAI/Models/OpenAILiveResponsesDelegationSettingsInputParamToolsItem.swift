@@ -13,6 +13,10 @@ import HyperProxyCore
 public enum OpenAILiveResponsesDelegationSettingsInputParamToolsItem: Codable, Sendable {
   case liveFunctionToolInputParam(OpenAILiveFunctionToolInputParam)
   case liveWebSearchToolInputParam(OpenAILiveWebSearchToolInputParam)
+  case liveFileSearchToolInputParam(OpenAILiveFileSearchToolInputParam)
+  case liveCodeInterpreterToolInputParam(OpenAILiveCodeInterpreterToolInputParam)
+  case liveHostedShellToolInputParam(OpenAILiveHostedShellToolInputParam)
+  case liveImageGenerationToolInputParam(OpenAILiveImageGenerationToolInputParam)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -20,8 +24,24 @@ public enum OpenAILiveResponsesDelegationSettingsInputParamToolsItem: Codable, S
       self = .liveFunctionToolInputParam(value)
       return
     }
-    self = .liveWebSearchToolInputParam(
-      try container.decode(OpenAILiveWebSearchToolInputParam.self))
+    if let value = try? container.decode(OpenAILiveWebSearchToolInputParam.self) {
+      self = .liveWebSearchToolInputParam(value)
+      return
+    }
+    if let value = try? container.decode(OpenAILiveFileSearchToolInputParam.self) {
+      self = .liveFileSearchToolInputParam(value)
+      return
+    }
+    if let value = try? container.decode(OpenAILiveCodeInterpreterToolInputParam.self) {
+      self = .liveCodeInterpreterToolInputParam(value)
+      return
+    }
+    if let value = try? container.decode(OpenAILiveHostedShellToolInputParam.self) {
+      self = .liveHostedShellToolInputParam(value)
+      return
+    }
+    self = .liveImageGenerationToolInputParam(
+      try container.decode(OpenAILiveImageGenerationToolInputParam.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -30,6 +50,14 @@ public enum OpenAILiveResponsesDelegationSettingsInputParamToolsItem: Codable, S
     case .liveFunctionToolInputParam(let value):
       try container.encode(value)
     case .liveWebSearchToolInputParam(let value):
+      try container.encode(value)
+    case .liveFileSearchToolInputParam(let value):
+      try container.encode(value)
+    case .liveCodeInterpreterToolInputParam(let value):
+      try container.encode(value)
+    case .liveHostedShellToolInputParam(let value):
+      try container.encode(value)
+    case .liveImageGenerationToolInputParam(let value):
       try container.encode(value)
     }
   }

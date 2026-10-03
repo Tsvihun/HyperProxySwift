@@ -149,6 +149,20 @@ extension HyperProxyProviderService where Operation == BFLOperation {
     return try await prepared.decoded(BFLGenerateFlux2ProPreviewV1Flux2ProPreviewPostResponse.self)
   }
 
+  public func flux3ImageV1Flux3ImagePost(
+    _ body: BFLFlux3ImageInputs,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> BFLAsyncResponse {
+    let call = self.call(.flux3ImageV1Flux3ImagePost)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(BFLAsyncResponse.self)
+  }
+
   public func videosFlux3(
     _ body: BFLFlux3VideoInputsBody,
     query: [URLQueryItem] = [],
@@ -231,21 +245,6 @@ extension HyperProxyProviderService where Operation == BFLOperation {
       .timeout(timeout)
     let prepared = try call.json(body)
     return try await prepared.decoded(BFLFillV1FluxPro10FillPostResponse.self)
-  }
-
-  public func fineTuningGenerateFill(
-    _ body: BFLFinetuneFluxProFillInputs,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> BFLFluxPro10FillFinetunedV1FluxPro10FillFinetunedPostResponse {
-    let call = self.call(.fineTuningGenerateFill)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(
-      BFLFluxPro10FillFinetunedV1FluxPro10FillFinetunedPostResponse.self)
   }
 
   public func imagesFlux11Pro(

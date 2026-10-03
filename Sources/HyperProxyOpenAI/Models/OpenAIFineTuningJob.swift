@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIFineTuningJob: Codable, Sendable {
   public var createdAt: Int
-  public var error: OpenAIFineTuningJobErrorAnyOf1?
+  public var error: OpenAIFineTuningJobError?
   public var estimatedFinish: Int?
   public var fineTunedModel: String?
   public var finishedAt: Int?
-  public var hyperparameters: OpenAIFineTuningJobHyperparameters
+  public var hyperparameters: OpenAIFineTuningJobHyperparameters?
   public var id: String
   public var integrations: [OpenAIFineTuningIntegration]?
   public var metadata: OpenAIMetadata?
@@ -33,10 +33,9 @@ public struct OpenAIFineTuningJob: Codable, Sendable {
 
   public init(
     createdAt: Int,
-    error: OpenAIFineTuningJobErrorAnyOf1?,
+    error: OpenAIFineTuningJobError?,
     fineTunedModel: String?,
     finishedAt: Int?,
-    hyperparameters: OpenAIFineTuningJobHyperparameters,
     id: String,
     model: String,
     object: OpenAIFineTuningJobObject,
@@ -48,6 +47,7 @@ public struct OpenAIFineTuningJob: Codable, Sendable {
     trainingFile: String,
     validationFile: String?,
     estimatedFinish: Int? = nil,
+    hyperparameters: OpenAIFineTuningJobHyperparameters? = nil,
     integrations: [OpenAIFineTuningIntegration]? = nil,
     metadata: OpenAIMetadata? = nil,
     method: OpenAIFineTuneMethod? = nil

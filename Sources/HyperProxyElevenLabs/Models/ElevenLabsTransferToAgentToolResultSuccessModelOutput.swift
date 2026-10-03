@@ -17,6 +17,7 @@ public struct ElevenLabsTransferToAgentToolResultSuccessModelOutput: Codable, Se
   public var enableTransferredAgentFirstMessage: Bool?
   public var fromAgent: String
   public var preserveClientTtsOverrides: Bool?
+  public var preserveVoiceSettings: Bool?
   public var resultType: ElevenLabsTransferToAgentSuccessResultType?
   public var status: ElevenLabsSuccessStatus?
   public var toAgent: String
@@ -31,6 +32,7 @@ public struct ElevenLabsTransferToAgentToolResultSuccessModelOutput: Codable, Se
     delayMs: Int? = nil,
     enableTransferredAgentFirstMessage: Bool? = nil,
     preserveClientTtsOverrides: Bool? = nil,
+    preserveVoiceSettings: Bool? = nil,
     resultType: ElevenLabsTransferToAgentSuccessResultType? = nil,
     status: ElevenLabsSuccessStatus? = nil,
     toNode: String? = nil,
@@ -42,6 +44,7 @@ public struct ElevenLabsTransferToAgentToolResultSuccessModelOutput: Codable, Se
     self.enableTransferredAgentFirstMessage = enableTransferredAgentFirstMessage
     self.fromAgent = fromAgent
     self.preserveClientTtsOverrides = preserveClientTtsOverrides
+    self.preserveVoiceSettings = preserveVoiceSettings
     self.resultType = resultType
     self.status = status
     self.toAgent = toAgent
@@ -56,6 +59,7 @@ public struct ElevenLabsTransferToAgentToolResultSuccessModelOutput: Codable, Se
     case enableTransferredAgentFirstMessage = "enable_transferred_agent_first_message"
     case fromAgent = "from_agent"
     case preserveClientTtsOverrides = "preserve_client_tts_overrides"
+    case preserveVoiceSettings = "preserve_voice_settings"
     case resultType = "result_type"
     case status
     case toAgent = "to_agent"

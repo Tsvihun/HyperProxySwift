@@ -11,20 +11,16 @@ import Foundation
 import HyperProxyCore
 
 public enum OpenAICreateImageEditRequestSize: RawRepresentable, Codable, Hashable, Sendable {
-  case value256x256
-  case value512x512
   case value1024x1024
   case value1536x1024
   case value1024x1536
   case auto
+  case value256x256
+  case value512x512
   case custom(String)
 
   public init(rawValue: String) {
     switch rawValue {
-    case "256x256":
-      self = .value256x256
-    case "512x512":
-      self = .value512x512
     case "1024x1024":
       self = .value1024x1024
     case "1536x1024":
@@ -33,6 +29,10 @@ public enum OpenAICreateImageEditRequestSize: RawRepresentable, Codable, Hashabl
       self = .value1024x1536
     case "auto":
       self = .auto
+    case "256x256":
+      self = .value256x256
+    case "512x512":
+      self = .value512x512
     default:
       self = .custom(rawValue)
     }
@@ -40,10 +40,6 @@ public enum OpenAICreateImageEditRequestSize: RawRepresentable, Codable, Hashabl
 
   public var rawValue: String {
     switch self {
-    case .value256x256:
-      return "256x256"
-    case .value512x512:
-      return "512x512"
     case .value1024x1024:
       return "1024x1024"
     case .value1536x1024:
@@ -52,6 +48,10 @@ public enum OpenAICreateImageEditRequestSize: RawRepresentable, Codable, Hashabl
       return "1024x1536"
     case .auto:
       return "auto"
+    case .value256x256:
+      return "256x256"
+    case .value512x512:
+      return "512x512"
     case .custom(let value):
       return value
     }

@@ -15,7 +15,7 @@ public struct DeepSeekInputItem: Codable, Sendable {
   public var callId: String?
   public var content: DeepSeekInputItemContent?
   public var name: String?
-  public var output: String?
+  public var output: DeepSeekInputItemOutput?
   public var role: DeepSeekInputRole?
   public var kind: DeepSeekInputItemType?
 
@@ -24,7 +24,7 @@ public struct DeepSeekInputItem: Codable, Sendable {
     callId: String? = nil,
     content: DeepSeekInputItemContent? = nil,
     name: String? = nil,
-    output: String? = nil,
+    output: DeepSeekInputItemOutput? = nil,
     role: DeepSeekInputRole? = nil,
     kind: DeepSeekInputItemType? = nil
   ) {

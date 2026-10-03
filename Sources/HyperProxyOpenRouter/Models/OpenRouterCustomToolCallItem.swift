@@ -18,13 +18,13 @@ public struct OpenRouterCustomToolCallItem: Codable, Sendable {
   public var name: String
   public var namespace: String?
   public var status: OpenRouterToolCallStatus?
-  public var kind: OpenRouterOpenAIResponseCustomToolCallKind
+  public var kind: OpenRouterCustomToolCallItemKind
 
   public init(
     callId: String,
     input: String,
     name: String,
-    kind: OpenRouterOpenAIResponseCustomToolCallKind,
+    kind: OpenRouterCustomToolCallItemKind,
     async: Bool? = nil,
     id: String? = nil,
     namespace: String? = nil,

@@ -13,25 +13,33 @@ import HyperProxyCore
 public struct FireworksGatewayUpdatePolicySettingsRequest: Codable, Sendable {
   public var cmekRequired: Bool?
   public var defaultPermissions: FireworksPolicySettingsModelPermissions?
+  public var residency: FireworksGatewayMultiRegion?
   public var rules: [FireworksPolicySettingsModelAccessRule]?
   public var updateTime: String?
+  public var zeroDataRetention: FireworksPolicySettingsZeroDataRetentionPolicy?
 
   public init(
     cmekRequired: Bool? = nil,
     defaultPermissions: FireworksPolicySettingsModelPermissions? = nil,
+    residency: FireworksGatewayMultiRegion? = nil,
     rules: [FireworksPolicySettingsModelAccessRule]? = nil,
-    updateTime: String? = nil
+    updateTime: String? = nil,
+    zeroDataRetention: FireworksPolicySettingsZeroDataRetentionPolicy? = nil
   ) {
     self.cmekRequired = cmekRequired
     self.defaultPermissions = defaultPermissions
+    self.residency = residency
     self.rules = rules
     self.updateTime = updateTime
+    self.zeroDataRetention = zeroDataRetention
   }
 
   enum CodingKeys: String, CodingKey {
     case cmekRequired
     case defaultPermissions
+    case residency
     case rules
     case updateTime
+    case zeroDataRetention
   }
 }

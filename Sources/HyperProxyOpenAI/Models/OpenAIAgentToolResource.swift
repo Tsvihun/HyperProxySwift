@@ -15,6 +15,7 @@ public enum OpenAIAgentToolResource: Codable, Sendable {
   case agentToolResourceProgrammaticToolCalling(OpenAIAgentToolResourceProgrammaticToolCalling)
   case agentToolResourceMcp(OpenAIAgentToolResourceMcp)
   case agentToolResourceWebSearch(OpenAIAgentToolResourceWebSearch)
+  case agentToolResourceComputerUse(OpenAIAgentToolResourceComputerUse)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -30,7 +31,12 @@ public enum OpenAIAgentToolResource: Codable, Sendable {
       self = .agentToolResourceMcp(value)
       return
     }
-    self = .agentToolResourceWebSearch(try container.decode(OpenAIAgentToolResourceWebSearch.self))
+    if let value = try? container.decode(OpenAIAgentToolResourceWebSearch.self) {
+      self = .agentToolResourceWebSearch(value)
+      return
+    }
+    self = .agentToolResourceComputerUse(
+      try container.decode(OpenAIAgentToolResourceComputerUse.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -43,6 +49,8 @@ public enum OpenAIAgentToolResource: Codable, Sendable {
     case .agentToolResourceMcp(let value):
       try container.encode(value)
     case .agentToolResourceWebSearch(let value):
+      try container.encode(value)
+    case .agentToolResourceComputerUse(let value):
       try container.encode(value)
     }
   }

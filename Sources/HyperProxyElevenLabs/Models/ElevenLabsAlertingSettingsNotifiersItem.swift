@@ -12,7 +12,8 @@ import HyperProxyCore
 
 public enum ElevenLabsAlertingSettingsNotifiersItem: Codable, Sendable {
   case alertingWebhookNotifier(ElevenLabsAlertingWebhookNotifier)
-  case alertingIntegrationNotifier(ElevenLabsAlertingIntegrationNotifier)
+  case alertingPagerDutyNotifier(ElevenLabsAlertingPagerDutyNotifier)
+  case alertingSlackNotifier(ElevenLabsAlertingSlackNotifier)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -20,8 +21,11 @@ public enum ElevenLabsAlertingSettingsNotifiersItem: Codable, Sendable {
       self = .alertingWebhookNotifier(value)
       return
     }
-    self = .alertingIntegrationNotifier(
-      try container.decode(ElevenLabsAlertingIntegrationNotifier.self))
+    if let value = try? container.decode(ElevenLabsAlertingPagerDutyNotifier.self) {
+      self = .alertingPagerDutyNotifier(value)
+      return
+    }
+    self = .alertingSlackNotifier(try container.decode(ElevenLabsAlertingSlackNotifier.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -29,7 +33,9 @@ public enum ElevenLabsAlertingSettingsNotifiersItem: Codable, Sendable {
     switch self {
     case .alertingWebhookNotifier(let value):
       try container.encode(value)
-    case .alertingIntegrationNotifier(let value):
+    case .alertingPagerDutyNotifier(let value):
+      try container.encode(value)
+    case .alertingSlackNotifier(let value):
       try container.encode(value)
     }
   }

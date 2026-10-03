@@ -14,9 +14,9 @@ public enum OpenRouterGenerationResponseDataApiType: String, Codable, Hashable, 
   case completions = "completions"
   case embeddings = "embeddings"
   case rerank = "rerank"
+  case decisions = "decisions"
+  case video = "video"
   case tts = "tts"
   case stt = "stt"
-  case video = "video"
   case image = "image"
-  case decisions = "decisions"
 }

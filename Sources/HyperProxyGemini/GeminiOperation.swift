@@ -73,7 +73,7 @@ public enum GeminiOperation: String, HyperProxyProviderOperation {
   /// `POST v1beta/dynamic/{dynamicId}:streamGenerateContent`
   case generativelanguageDynamicStreamGenerateContent =
     "generativelanguage.dynamic.streamGenerateContent"
-  /// `GET v1beta/environments/{environmentsId}/files/{filesId}`
+  /// `GET v1beta/environments/{environmentsId}/files`
   case generativelanguageEnvironmentsFilesMediaDownload =
     "generativelanguage.environments.files.media.download"
   /// `PUT v1beta/environments/{environmentsId}/files/{filesId}`

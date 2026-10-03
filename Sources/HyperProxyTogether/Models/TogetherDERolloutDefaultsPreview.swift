@@ -14,6 +14,8 @@ public struct TogetherDERolloutDefaultsPreview: Codable, Sendable {
   public var estimatedEffectiveSteps: [TogetherDERolloutStep]?
   public var estimatedSeedPercent: Int?
   public var frozenPair: Bool?
+  public var landingMaxReplicas: Int?
+  public var landingMinReplicas: Int?
   public var sourceReplicas: Int
   public var spec: TogetherDECreateRolloutRequest
   public var targetMaxReplicas: Int
@@ -30,11 +32,15 @@ public struct TogetherDERolloutDefaultsPreview: Codable, Sendable {
     warnings: [TogetherDEPreviewWarning],
     estimatedEffectiveSteps: [TogetherDERolloutStep]? = nil,
     estimatedSeedPercent: Int? = nil,
-    frozenPair: Bool? = nil
+    frozenPair: Bool? = nil,
+    landingMaxReplicas: Int? = nil,
+    landingMinReplicas: Int? = nil
   ) {
     self.estimatedEffectiveSteps = estimatedEffectiveSteps
     self.estimatedSeedPercent = estimatedSeedPercent
     self.frozenPair = frozenPair
+    self.landingMaxReplicas = landingMaxReplicas
+    self.landingMinReplicas = landingMinReplicas
     self.sourceReplicas = sourceReplicas
     self.spec = spec
     self.targetMaxReplicas = targetMaxReplicas
@@ -47,6 +53,8 @@ public struct TogetherDERolloutDefaultsPreview: Codable, Sendable {
     case estimatedEffectiveSteps
     case estimatedSeedPercent
     case frozenPair
+    case landingMaxReplicas
+    case landingMinReplicas
     case sourceReplicas
     case spec
     case targetMaxReplicas

@@ -15,4 +15,5 @@ public enum DeepLQualityEvaluationIssueKind: String, Codable, Hashable, Sendable
   case fluency = "Fluency"
   case style = "Style"
   case miscellaneous = "Miscellaneous"
+  case internalTQEError = "InternalTQEError"
 }

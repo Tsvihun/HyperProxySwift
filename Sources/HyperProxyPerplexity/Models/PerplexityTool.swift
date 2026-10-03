@@ -12,6 +12,7 @@ import HyperProxyCore
 
 public enum PerplexityTool: Codable, Sendable {
   case webSearchTool(PerplexityWebSearchTool)
+  case imageSearchTool(PerplexityImageSearchTool)
   case financeSearchTool(PerplexityFinanceSearchTool)
   case peopleSearchTool(PerplexityPeopleSearchTool)
   case fetchUrlTool(PerplexityFetchUrlTool)
@@ -24,6 +25,10 @@ public enum PerplexityTool: Codable, Sendable {
     let container = try decoder.singleValueContainer()
     if let value = try? container.decode(PerplexityWebSearchTool.self) {
       self = .webSearchTool(value)
+      return
+    }
+    if let value = try? container.decode(PerplexityImageSearchTool.self) {
+      self = .imageSearchTool(value)
       return
     }
     if let value = try? container.decode(PerplexityFinanceSearchTool.self) {
@@ -57,6 +62,8 @@ public enum PerplexityTool: Codable, Sendable {
     var container = encoder.singleValueContainer()
     switch self {
     case .webSearchTool(let value):
+      try container.encode(value)
+    case .imageSearchTool(let value):
       try container.encode(value)
     case .financeSearchTool(let value):
       try container.encode(value)

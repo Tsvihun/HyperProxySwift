@@ -465,7 +465,7 @@ extension MistralAdminCalls {
   }
 
   public func usersApiAdminWorkspacesAddUsersWorkspaces(
-    _ body: MistralWorkspaceMemberIN,
+    _ body: MistralAdminWorkspaceMemberIN,
     workspaceUuid: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -497,7 +497,7 @@ extension MistralAdminCalls {
   }
 
   public func usersApiAdminWorkspacesAddOrUpdateUsersWorkspaces(
-    _ body: MistralWorkspaceMemberIN,
+    _ body: MistralAdminWorkspaceMemberIN,
     workspaceUuid: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -526,35 +526,119 @@ extension MistralAdminCalls {
     return try await call.decoded(MistralCredentialsResponse.self)
   }
 
-  public func connectorCreateOrUpdateOrganizationCredentialsV1(
-    _ body: MistralCredentialsCreateOrUpdate,
-    connectorIdOrName: String,
+  public func connectorShareToOrganizationV1(
+    connectorId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> MistralMessageResponse {
-    let call = self.service.call(.connectorCreateOrUpdateOrganizationCredentialsV1)
-      .path("connector_id_or_name", connectorIdOrName)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(MistralMessageResponse.self)
-  }
-
-  public func connectorDeleteOrganizationCredentialsV1(
-    connectorIdOrName: String,
-    credentialsName: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> MistralMessageResponse {
-    let call = self.service.call(.connectorDeleteOrganizationCredentialsV1)
-      .path("connector_id_or_name", connectorIdOrName)
-      .path("credentials_name", credentialsName)
+    let call = self.service.call(.connectorShareToOrganizationV1)
+      .path("connector_id", connectorId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(MistralMessageResponse.self)
+  }
+
+  public func connectorUnshareFromOrganizationV1(
+    connectorId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralMessageResponse {
+    let call = self.service.call(.connectorUnshareFromOrganizationV1)
+      .path("connector_id", connectorId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralMessageResponse.self)
+  }
+
+  public func createServiceAccountV1ServiceAccountsPost(
+    _ body: MistralCreateServiceAccountRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralServiceAccount {
+    let call = self.service.call(.createServiceAccountV1ServiceAccountsPost)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(MistralServiceAccount.self)
+  }
+
+  public func listAssignableServiceAccountRolesV1ServiceAccountsAssignableRolesGet(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralListAssignableServiceAccountRolesResponse {
+    let call = self.service.call(
+      .listAssignableServiceAccountRolesV1ServiceAccountsAssignableRolesGet
+    )
+    .query(query)
+    .headers(headers)
+    .timeout(timeout)
+    return try await call.decoded(MistralListAssignableServiceAccountRolesResponse.self)
+  }
+
+  public func getServiceAccountV1ServiceAccountsServiceAccountIdGet(
+    serviceAccountId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralServiceAccount {
+    let call = self.service.call(.getServiceAccountV1ServiceAccountsServiceAccountIdGet)
+      .path("service_account_id", serviceAccountId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralServiceAccount.self)
+  }
+
+  public func updateServiceAccountV1ServiceAccountsServiceAccountIdPatch(
+    _ body: MistralUpdateServiceAccountRequest,
+    serviceAccountId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralServiceAccount {
+    let call = self.service.call(.updateServiceAccountV1ServiceAccountsServiceAccountIdPatch)
+      .path("service_account_id", serviceAccountId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(MistralServiceAccount.self)
+  }
+
+  public func listServiceAccountRolesV1ServiceAccountsServiceAccountIdRolesGet(
+    serviceAccountId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralListServiceAccountRolesResponse {
+    let call = self.service.call(.listServiceAccountRolesV1ServiceAccountsServiceAccountIdRolesGet)
+      .path("service_account_id", serviceAccountId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralListServiceAccountRolesResponse.self)
+  }
+
+  public func setServiceAccountRolesV1ServiceAccountsServiceAccountIdRolesPut(
+    _ body: MistralSetServiceAccountRolesRequest,
+    serviceAccountId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralListServiceAccountRolesResponse {
+    let call = self.service.call(.setServiceAccountRolesV1ServiceAccountsServiceAccountIdRolesPut)
+      .path("service_account_id", serviceAccountId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(MistralListServiceAccountRolesResponse.self)
   }
 }

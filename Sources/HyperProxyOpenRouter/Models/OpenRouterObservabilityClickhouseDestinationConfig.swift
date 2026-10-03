@@ -15,6 +15,7 @@ public struct OpenRouterObservabilityClickhouseDestinationConfig: Codable, Senda
   public var headers: [String: String]?
   public var host: String
   public var password: String
+  public var shouldIncludeCacheWriteTokens: Bool?
   public var table: String?
   public var username: String
 
@@ -24,12 +25,14 @@ public struct OpenRouterObservabilityClickhouseDestinationConfig: Codable, Senda
     password: String,
     username: String,
     headers: [String: String]? = nil,
+    shouldIncludeCacheWriteTokens: Bool? = nil,
     table: String? = nil
   ) {
     self.database = database
     self.headers = headers
     self.host = host
     self.password = password
+    self.shouldIncludeCacheWriteTokens = shouldIncludeCacheWriteTokens
     self.table = table
     self.username = username
   }
@@ -39,6 +42,7 @@ public struct OpenRouterObservabilityClickhouseDestinationConfig: Codable, Senda
     case headers
     case host
     case password
+    case shouldIncludeCacheWriteTokens
     case table
     case username
   }

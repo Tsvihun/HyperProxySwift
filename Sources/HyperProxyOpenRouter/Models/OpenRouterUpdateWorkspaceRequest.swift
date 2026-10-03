@@ -15,6 +15,7 @@ public struct OpenRouterUpdateWorkspaceRequest: Codable, Sendable {
   public var defaultProviderSort: String?
   public var defaultTextModel: String?
   public var description: String?
+  public var disabledServerTools: [OpenRouterUpdateWorkspaceRequestDisabledServerToolsItem]?
   public var ioLoggingApiKeyIds: [Int]?
   public var ioLoggingSamplingRate: Double?
   public var isDataDiscountLoggingEnabled: Bool?
@@ -28,6 +29,7 @@ public struct OpenRouterUpdateWorkspaceRequest: Codable, Sendable {
     defaultProviderSort: String? = nil,
     defaultTextModel: String? = nil,
     description: String? = nil,
+    disabledServerTools: [OpenRouterUpdateWorkspaceRequestDisabledServerToolsItem]? = nil,
     ioLoggingApiKeyIds: [Int]? = nil,
     ioLoggingSamplingRate: Double? = nil,
     isDataDiscountLoggingEnabled: Bool? = nil,
@@ -40,6 +42,7 @@ public struct OpenRouterUpdateWorkspaceRequest: Codable, Sendable {
     self.defaultProviderSort = defaultProviderSort
     self.defaultTextModel = defaultTextModel
     self.description = description
+    self.disabledServerTools = disabledServerTools
     self.ioLoggingApiKeyIds = ioLoggingApiKeyIds
     self.ioLoggingSamplingRate = ioLoggingSamplingRate
     self.isDataDiscountLoggingEnabled = isDataDiscountLoggingEnabled
@@ -54,6 +57,7 @@ public struct OpenRouterUpdateWorkspaceRequest: Codable, Sendable {
     case defaultProviderSort = "default_provider_sort"
     case defaultTextModel = "default_text_model"
     case description
+    case disabledServerTools = "disabled_server_tools"
     case ioLoggingApiKeyIds = "io_logging_api_key_ids"
     case ioLoggingSamplingRate = "io_logging_sampling_rate"
     case isDataDiscountLoggingEnabled = "is_data_discount_logging_enabled"

@@ -12,6 +12,7 @@ import HyperProxyCore
 
 public struct MistralAuthenticationConfiguration: Codable, Sendable {
   public var authenticationType: MistralOutboundAuthenticationType
+  public var creatorId: String?
   public var isDefault: Bool?
   public var name: String
   public var scope: MistralConsumerType
@@ -22,11 +23,13 @@ public struct MistralAuthenticationConfiguration: Codable, Sendable {
     authenticationType: MistralOutboundAuthenticationType,
     name: String,
     scope: MistralConsumerType,
+    creatorId: String? = nil,
     isDefault: Bool? = nil,
     status: MistralCredentialsStatus? = nil,
     title: String? = nil
   ) {
     self.authenticationType = authenticationType
+    self.creatorId = creatorId
     self.isDefault = isDefault
     self.name = name
     self.scope = scope
@@ -36,6 +39,7 @@ public struct MistralAuthenticationConfiguration: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case authenticationType = "authentication_type"
+    case creatorId = "creator_id"
     case isDefault = "is_default"
     case name
     case scope

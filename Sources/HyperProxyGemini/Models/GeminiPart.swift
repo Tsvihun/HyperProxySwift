@@ -21,6 +21,7 @@ public struct GeminiPart: Codable, Sendable {
   public var mediaProcessing: GeminiPartMediaProcessing?
   public var mediaResolution: GeminiV1mainMediaResolution?
   public var partMetadata: [String: HyperProxyJSONValue]?
+  public var speechMetadata: GeminiSpeechMetadata?
   public var text: String?
   public var thought: Bool?
   public var thoughtSignature: String?
@@ -39,6 +40,7 @@ public struct GeminiPart: Codable, Sendable {
     mediaProcessing: GeminiPartMediaProcessing? = nil,
     mediaResolution: GeminiV1mainMediaResolution? = nil,
     partMetadata: [String: HyperProxyJSONValue]? = nil,
+    speechMetadata: GeminiSpeechMetadata? = nil,
     text: String? = nil,
     thought: Bool? = nil,
     thoughtSignature: String? = nil,
@@ -56,6 +58,7 @@ public struct GeminiPart: Codable, Sendable {
     self.mediaProcessing = mediaProcessing
     self.mediaResolution = mediaResolution
     self.partMetadata = partMetadata
+    self.speechMetadata = speechMetadata
     self.text = text
     self.thought = thought
     self.thoughtSignature = thoughtSignature
@@ -75,6 +78,7 @@ public struct GeminiPart: Codable, Sendable {
     case mediaProcessing
     case mediaResolution
     case partMetadata
+    case speechMetadata
     case text
     case thought
     case thoughtSignature

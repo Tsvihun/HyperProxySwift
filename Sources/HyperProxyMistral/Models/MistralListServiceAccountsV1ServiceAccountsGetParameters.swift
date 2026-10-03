@@ -14,13 +14,13 @@ public struct MistralListServiceAccountsV1ServiceAccountsGetParameters: Codable,
   public var includeDeleted: Bool?
   public var limit: Int
   public var offset: Int
-  public var workspaceId: String
+  public var workspaceId: String?
 
   public init(
     limit: Int,
     offset: Int,
-    workspaceId: String,
-    includeDeleted: Bool? = nil
+    includeDeleted: Bool? = nil,
+    workspaceId: String? = nil
   ) {
     self.includeDeleted = includeDeleted
     self.limit = limit

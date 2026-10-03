@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsToDialogueSettingsResponseModel: Codable, Sendable {
-  public var speed: Double?
+  public var similarity: Double?
   public var stability: Double?
 
   public init(
-    speed: Double? = nil,
+    similarity: Double? = nil,
     stability: Double? = nil
   ) {
-    self.speed = speed
+    self.similarity = similarity
     self.stability = stability
   }
 
   enum CodingKeys: String, CodingKey {
-    case speed
+    case similarity
     case stability
   }
 }

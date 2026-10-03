@@ -12,14 +12,18 @@ import HyperProxyCore
 
 public struct ElevenLabsSkipTurnToolConfig: Codable, Sendable {
   public var systemToolType: ElevenLabsSkipTurnSystemToolType?
+  public var waitTimeoutSecs: Double?
 
   public init(
-    systemToolType: ElevenLabsSkipTurnSystemToolType? = nil
+    systemToolType: ElevenLabsSkipTurnSystemToolType? = nil,
+    waitTimeoutSecs: Double? = nil
   ) {
     self.systemToolType = systemToolType
+    self.waitTimeoutSecs = waitTimeoutSecs
   }
 
   enum CodingKeys: String, CodingKey {
     case systemToolType = "system_tool_type"
+    case waitTimeoutSecs = "wait_timeout_secs"
   }
 }

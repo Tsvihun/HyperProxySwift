@@ -20,4 +20,6 @@ public enum MistralConnectorSupportedLanguage: String, Codable, Hashable, Sendab
   case ptBR = "pt-BR"
   case it = "it"
   case nl = "nl"
+  case uk = "uk"
+  case ko = "ko"
 }

@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralDeploymentWorkerSpecInput: Codable, Sendable {
+  public var backendSpec: MistralDeploymentWorkerSpecInputBackendSpecAnyOf1?
   public var entrypoint: String?
   public var githubUrl: String
   public var revision: String?
@@ -18,10 +19,12 @@ public struct MistralDeploymentWorkerSpecInput: Codable, Sendable {
 
   public init(
     githubUrl: String,
+    backendSpec: MistralDeploymentWorkerSpecInputBackendSpecAnyOf1? = nil,
     entrypoint: String? = nil,
     revision: String? = nil,
     workingDir: String? = nil
   ) {
+    self.backendSpec = backendSpec
     self.entrypoint = entrypoint
     self.githubUrl = githubUrl
     self.revision = revision
@@ -29,6 +32,7 @@ public struct MistralDeploymentWorkerSpecInput: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case backendSpec = "backend_spec"
     case entrypoint
     case githubUrl = "github_url"
     case revision

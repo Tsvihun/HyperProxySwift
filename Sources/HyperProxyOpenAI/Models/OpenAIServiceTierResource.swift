@@ -16,4 +16,5 @@ public enum OpenAIServiceTierResource: String, Codable, Hashable, Sendable {
   case flex = "flex"
   case priority = "priority"
   case fast = "fast"
+  case ultrafast = "ultrafast"
 }

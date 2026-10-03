@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIBetaResponseAllOf3: Codable, Sendable {
+  public var accessPrograms: OpenAIBetaAccessProgramsBody?
   public var completedAt: Double?
   public var conversation: OpenAIBetaResponseConversation?
   public var createdAt: Double
@@ -33,6 +34,7 @@ public struct OpenAIBetaResponseAllOf3: Codable, Sendable {
   public var usage: OpenAIBetaResponseUsage?
 
   public init(
+    accessPrograms: OpenAIBetaAccessProgramsBody?,
     createdAt: Double,
     error: OpenAIBetaResponseError?,
     id: String,
@@ -54,6 +56,7 @@ public struct OpenAIBetaResponseAllOf3: Codable, Sendable {
     truncation: OpenAIBetaResponseAllOf3TruncationAnyOf1? = nil,
     usage: OpenAIBetaResponseUsage? = nil
   ) {
+    self.accessPrograms = accessPrograms
     self.completedAt = completedAt
     self.conversation = conversation
     self.createdAt = createdAt
@@ -77,6 +80,7 @@ public struct OpenAIBetaResponseAllOf3: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case accessPrograms = "access_programs"
     case completedAt = "completed_at"
     case conversation
     case createdAt = "created_at"

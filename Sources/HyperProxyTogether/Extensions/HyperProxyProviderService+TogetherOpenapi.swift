@@ -670,6 +670,52 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     return try await call.decoded(TogetherDeploymentLogs.self)
   }
 
+  public func v1DeploymentsIdRevisionsGet(
+    id: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRevisionEventListResponse {
+    let call = self.call(.v1DeploymentsIdRevisionsGet)
+      .path("id", id)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherRevisionEventListResponse.self)
+  }
+
+  public func v1DeploymentsIdRevisionsRevisionIdentifierGet(
+    id: String,
+    revisionIdentifier: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRevisionDetailResponse {
+    let call = self.call(.v1DeploymentsIdRevisionsRevisionIdentifierGet)
+      .path("id", id)
+      .path("revisionIdentifier", revisionIdentifier)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherRevisionDetailResponse.self)
+  }
+
+  public func v1DeploymentsIdRollbackPost(
+    _ body: TogetherRollbackDeploymentRequest,
+    id: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherDeploymentResponseItem {
+    let call = self.call(.v1DeploymentsIdRollbackPost)
+      .path("id", id)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(TogetherDeploymentResponseItem.self)
+  }
+
   public func embeddingsCreate(
     _ body: TogetherEmbeddingsRequest,
     query: [URLQueryItem] = [],

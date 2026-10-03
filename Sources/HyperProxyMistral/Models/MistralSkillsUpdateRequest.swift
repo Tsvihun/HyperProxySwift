@@ -12,14 +12,18 @@ import HyperProxyCore
 
 public struct MistralSkillsUpdateRequest: Codable, Sendable {
   public var sharingScope: MistralRegistrySharingScope?
+  public var workspaceRelation: MistralShareRelation?
 
   public init(
-    sharingScope: MistralRegistrySharingScope? = nil
+    sharingScope: MistralRegistrySharingScope? = nil,
+    workspaceRelation: MistralShareRelation? = nil
   ) {
     self.sharingScope = sharingScope
+    self.workspaceRelation = workspaceRelation
   }
 
   enum CodingKeys: String, CodingKey {
     case sharingScope
+    case workspaceRelation
   }
 }

@@ -20,4 +20,5 @@ public enum MistralOrganizationInviteINEmailLanguageAnyOf1: String, Codable, Has
   case pl = "pl"
   case ar = "ar"
   case nl = "nl"
+  case ko = "ko"
 }

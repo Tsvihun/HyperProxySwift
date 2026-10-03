@@ -13,17 +13,21 @@ import HyperProxyCore
 public struct MistralCreateIngestionPipelineConfigurationRequest: Codable, Sendable {
   public var name: String
   public var pipelineComposition: [String: String]?
+  public var targetIndexes: [MistralIngestionPipelineTargetIndexRef]?
 
   public init(
     name: String,
-    pipelineComposition: [String: String]? = nil
+    pipelineComposition: [String: String]? = nil,
+    targetIndexes: [MistralIngestionPipelineTargetIndexRef]? = nil
   ) {
     self.name = name
     self.pipelineComposition = pipelineComposition
+    self.targetIndexes = targetIndexes
   }
 
   enum CodingKeys: String, CodingKey {
     case name
     case pipelineComposition = "pipeline_composition"
+    case targetIndexes = "target_indexes"
   }
 }

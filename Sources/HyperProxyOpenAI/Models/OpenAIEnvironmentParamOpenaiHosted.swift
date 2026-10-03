@@ -12,6 +12,8 @@ import HyperProxyCore
 
 public struct OpenAIEnvironmentParamOpenaiHosted: Codable, Sendable {
   public var capabilityDirectories: [String]?
+  public var containerSize: OpenAIContainerSizeParam?
+  public var desktop: OpenAIDesktopParam?
   public var env: [String: String]?
   public var environmentTemplateId: String?
   public var files: [OpenAIHostedEnvironmentFileParam]?
@@ -25,6 +27,8 @@ public struct OpenAIEnvironmentParamOpenaiHosted: Codable, Sendable {
   public init(
     kind: OpenAIEnvironmentParamOpenaiHostedKind,
     capabilityDirectories: [String]? = nil,
+    containerSize: OpenAIContainerSizeParam? = nil,
+    desktop: OpenAIDesktopParam? = nil,
     env: [String: String]? = nil,
     environmentTemplateId: String? = nil,
     files: [OpenAIHostedEnvironmentFileParam]? = nil,
@@ -35,6 +39,8 @@ public struct OpenAIEnvironmentParamOpenaiHosted: Codable, Sendable {
     skills: [OpenAIHostedSkillParam]? = nil
   ) {
     self.capabilityDirectories = capabilityDirectories
+    self.containerSize = containerSize
+    self.desktop = desktop
     self.env = env
     self.environmentTemplateId = environmentTemplateId
     self.files = files
@@ -48,6 +54,8 @@ public struct OpenAIEnvironmentParamOpenaiHosted: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case capabilityDirectories = "capability_directories"
+    case containerSize = "container_size"
+    case desktop
     case env
     case environmentTemplateId = "environment_template_id"
     case files

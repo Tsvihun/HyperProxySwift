@@ -14,7 +14,8 @@ public struct TogetherDECreateDeploymentRequest: Codable, Sendable {
   public var autoscaling: TogetherDEAutoscaling
   public var config: String?
   public var configId: String?
-  public var enableLora: Bool?
+  public var inactiveTimeout: Int?
+  public var maxConcurrentRequestsPerReplica: String?
   public var model: String?
   public var modelId: String?
   public var modelRevisionId: String?
@@ -26,7 +27,8 @@ public struct TogetherDECreateDeploymentRequest: Codable, Sendable {
     name: String,
     config: String? = nil,
     configId: String? = nil,
-    enableLora: Bool? = nil,
+    inactiveTimeout: Int? = nil,
+    maxConcurrentRequestsPerReplica: String? = nil,
     model: String? = nil,
     modelId: String? = nil,
     modelRevisionId: String? = nil,
@@ -35,7 +37,8 @@ public struct TogetherDECreateDeploymentRequest: Codable, Sendable {
     self.autoscaling = autoscaling
     self.config = config
     self.configId = configId
-    self.enableLora = enableLora
+    self.inactiveTimeout = inactiveTimeout
+    self.maxConcurrentRequestsPerReplica = maxConcurrentRequestsPerReplica
     self.model = model
     self.modelId = modelId
     self.modelRevisionId = modelRevisionId
@@ -47,7 +50,8 @@ public struct TogetherDECreateDeploymentRequest: Codable, Sendable {
     case autoscaling
     case config
     case configId
-    case enableLora
+    case inactiveTimeout
+    case maxConcurrentRequestsPerReplica
     case model
     case modelId
     case modelRevisionId

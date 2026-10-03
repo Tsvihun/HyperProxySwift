@@ -15,6 +15,7 @@ public struct OpenRouterObservabilitySnowflakeDestinationConfig: Codable, Sendab
   public var database: String?
   public var headers: [String: String]?
   public var schema: String?
+  public var shouldIncludeCacheWriteTokens: Bool?
   public var table: String?
   public var token: String
   public var warehouse: String?
@@ -25,6 +26,7 @@ public struct OpenRouterObservabilitySnowflakeDestinationConfig: Codable, Sendab
     database: String? = nil,
     headers: [String: String]? = nil,
     schema: String? = nil,
+    shouldIncludeCacheWriteTokens: Bool? = nil,
     table: String? = nil,
     warehouse: String? = nil
   ) {
@@ -32,6 +34,7 @@ public struct OpenRouterObservabilitySnowflakeDestinationConfig: Codable, Sendab
     self.database = database
     self.headers = headers
     self.schema = schema
+    self.shouldIncludeCacheWriteTokens = shouldIncludeCacheWriteTokens
     self.table = table
     self.token = token
     self.warehouse = warehouse
@@ -42,6 +45,7 @@ public struct OpenRouterObservabilitySnowflakeDestinationConfig: Codable, Sendab
     case database
     case headers
     case schema
+    case shouldIncludeCacheWriteTokens
     case table
     case token
     case warehouse

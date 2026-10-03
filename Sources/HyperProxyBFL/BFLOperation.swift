@@ -28,6 +28,8 @@ public enum BFLOperation: String, HyperProxyProviderOperation {
   case imagesFlux2Max = "images.flux2Max"
   /// `POST v1/flux-2-pro`
   case imagesFlux2Pro = "images.flux2Pro"
+  /// `POST v1/flux-3-image`
+  case flux3ImageV1Flux3ImagePost = "flux.3.image.v1.flux.3.image.post"
   /// `POST v1/flux-dev`
   case imagesFlux1Dev = "images.flux1Dev"
   /// `POST v1/flux-kontext-max`
@@ -64,8 +66,6 @@ public enum BFLOperation: String, HyperProxyProviderOperation {
   case fineTuningDelete = "fineTuning.delete"
   /// `GET v1/finetune_details`
   case fineTuningRetrieve = "fineTuning.retrieve"
-  /// `POST v1/flux-pro-1.0-fill-finetuned`
-  case fineTuningGenerateFill = "fineTuning.generateFill"
   /// `POST v1/flux-pro-1.1-ultra-finetuned`
   case fineTuningGenerateUltra = "fineTuning.generateUltra"
   /// `GET v1/my_finetunes`

@@ -18,6 +18,7 @@ public struct MistralCreatePromptRequest: Codable, Sendable {
   public var notes: String?
   public var sharingScope: MistralRegistrySharingScope?
   public var title: String?
+  public var workspaceRelation: MistralShareRelation?
 
   public init(
     definition: MistralPromptDefinition,
@@ -26,7 +27,8 @@ public struct MistralCreatePromptRequest: Codable, Sendable {
     description: String? = nil,
     notes: String? = nil,
     sharingScope: MistralRegistrySharingScope? = nil,
-    title: String? = nil
+    title: String? = nil,
+    workspaceRelation: MistralShareRelation? = nil
   ) {
     self.aliases = aliases
     self.definition = definition
@@ -35,6 +37,7 @@ public struct MistralCreatePromptRequest: Codable, Sendable {
     self.notes = notes
     self.sharingScope = sharingScope
     self.title = title
+    self.workspaceRelation = workspaceRelation
   }
 
   enum CodingKeys: String, CodingKey {
@@ -45,5 +48,6 @@ public struct MistralCreatePromptRequest: Codable, Sendable {
     case notes
     case sharingScope
     case title
+    case workspaceRelation
   }
 }

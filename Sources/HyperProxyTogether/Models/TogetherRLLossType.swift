@@ -18,4 +18,5 @@ public enum TogetherRLLossType: String, Codable, Hashable, Sendable {
   case lOSSTYPEPPO = "LOSS_TYPE_PPO"
   case lOSSTYPECISPO = "LOSS_TYPE_CISPO"
   case lOSSTYPEDRO = "LOSS_TYPE_DRO"
+  case lOSSTYPEDPPO = "LOSS_TYPE_DPPO"
 }

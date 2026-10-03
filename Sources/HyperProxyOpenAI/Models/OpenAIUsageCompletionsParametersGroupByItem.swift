@@ -17,4 +17,5 @@ public enum OpenAIUsageCompletionsParametersGroupByItem: String, Codable, Hashab
   case model = "model"
   case batch = "batch"
   case serviceTier = "service_tier"
+  case apiSource = "api_source"
 }

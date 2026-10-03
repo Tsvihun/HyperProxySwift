@@ -13,21 +13,29 @@ import HyperProxyCore
 public struct TogetherDEUpdateDeploymentRequest: Codable, Sendable {
   public var autoscaling: TogetherDEAutoscaling?
   public var etag: String?
+  public var inactiveTimeout: Int?
+  public var maxConcurrentRequestsPerReplica: String?
   public var name: String?
 
   public init(
     autoscaling: TogetherDEAutoscaling? = nil,
     etag: String? = nil,
+    inactiveTimeout: Int? = nil,
+    maxConcurrentRequestsPerReplica: String? = nil,
     name: String? = nil
   ) {
     self.autoscaling = autoscaling
     self.etag = etag
+    self.inactiveTimeout = inactiveTimeout
+    self.maxConcurrentRequestsPerReplica = maxConcurrentRequestsPerReplica
     self.name = name
   }
 
   enum CodingKeys: String, CodingKey {
     case autoscaling
     case etag
+    case inactiveTimeout
+    case maxConcurrentRequestsPerReplica
     case name
   }
 }

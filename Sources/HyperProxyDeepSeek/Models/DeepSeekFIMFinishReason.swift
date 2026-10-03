@@ -15,4 +15,5 @@ public enum DeepSeekFIMFinishReason: String, Codable, Hashable, Sendable {
   case length = "length"
   case contentFilter = "content_filter"
   case insufficientSystemResource = "insufficient_system_resource"
+  case aborted = "aborted"
 }

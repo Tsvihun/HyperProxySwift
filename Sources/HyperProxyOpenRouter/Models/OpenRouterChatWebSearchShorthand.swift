@@ -23,6 +23,7 @@ public struct OpenRouterChatWebSearchShorthand: Codable, Sendable {
   public var searchContextSize: OpenRouterSearchQualityLevel?
   public var kind: OpenRouterChatWebSearchShorthandKind
   public var userLocation: OpenRouterWebSearchUserLocationServerTool?
+  public var xSearch: OpenRouterXSearchOptions?
 
   public init(
     kind: OpenRouterChatWebSearchShorthandKind,
@@ -36,7 +37,8 @@ public struct OpenRouterChatWebSearchShorthand: Codable, Sendable {
     mode: OpenRouterWebSearchMode? = nil,
     parameters: OpenRouterWebSearchConfig? = nil,
     searchContextSize: OpenRouterSearchQualityLevel? = nil,
-    userLocation: OpenRouterWebSearchUserLocationServerTool? = nil
+    userLocation: OpenRouterWebSearchUserLocationServerTool? = nil,
+    xSearch: OpenRouterXSearchOptions? = nil
   ) {
     self.allowedDomains = allowedDomains
     self.engine = engine
@@ -50,6 +52,7 @@ public struct OpenRouterChatWebSearchShorthand: Codable, Sendable {
     self.searchContextSize = searchContextSize
     self.kind = kind
     self.userLocation = userLocation
+    self.xSearch = xSearch
   }
 
   enum CodingKeys: String, CodingKey {
@@ -65,5 +68,6 @@ public struct OpenRouterChatWebSearchShorthand: Codable, Sendable {
     case searchContextSize = "search_context_size"
     case kind = "type"
     case userLocation = "user_location"
+    case xSearch = "x_search"
   }
 }

@@ -30,4 +30,5 @@ public enum OpenAIBetaModelIdsResponsesAnyOf2: String, Codable, Hashable, Sendab
   case gptDaybreakBlueLatest = "gpt-daybreak-blue-latest"
   case gptDaybreakRedLatest = "gpt-daybreak-red-latest"
   case gpt56Cyber = "gpt-5.6-cyber"
+  case gptRosalindResearch = "gpt-rosalind-research"
 }

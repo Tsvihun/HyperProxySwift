@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsWebhookTargetIds: Codable, Sendable {
   public var ids: [String]
-  public var kind: ElevenLabsIdsKind?
+  public var kind: ElevenLabsIdsKind
 
   public init(
     ids: [String],
-    kind: ElevenLabsIdsKind? = nil
+    kind: ElevenLabsIdsKind = .ids
   ) {
     self.ids = ids
     self.kind = kind

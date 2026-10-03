@@ -19,7 +19,9 @@ public struct FalGetUsageParameters: Codable, Sendable {
   public var expand: FalGetUsageParametersExpand?
   public var limit: Int?
   public var loginUsername: FalGetUsageParametersLoginUsername?
+  public var source: FalGetUsageParametersSource?
   public var start: FalGetUsageParametersStart?
+  public var tag: FalGetUsageParametersTag?
   public var timeframe: FalGetUsageParametersTimeframe?
   public var timezone: String?
 
@@ -32,7 +34,9 @@ public struct FalGetUsageParameters: Codable, Sendable {
     expand: FalGetUsageParametersExpand? = nil,
     limit: Int? = nil,
     loginUsername: FalGetUsageParametersLoginUsername? = nil,
+    source: FalGetUsageParametersSource? = nil,
     start: FalGetUsageParametersStart? = nil,
+    tag: FalGetUsageParametersTag? = nil,
     timeframe: FalGetUsageParametersTimeframe? = nil,
     timezone: String? = nil
   ) {
@@ -44,7 +48,9 @@ public struct FalGetUsageParameters: Codable, Sendable {
     self.expand = expand
     self.limit = limit
     self.loginUsername = loginUsername
+    self.source = source
     self.start = start
+    self.tag = tag
     self.timeframe = timeframe
     self.timezone = timezone
   }
@@ -58,7 +64,9 @@ public struct FalGetUsageParameters: Codable, Sendable {
     case expand
     case limit
     case loginUsername = "login_username"
+    case source
     case start
+    case tag
     case timeframe
     case timezone
   }

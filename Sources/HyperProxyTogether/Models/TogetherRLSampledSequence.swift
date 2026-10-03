@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct TogetherRLSampledSequence: Codable, Sendable {
   public var logprobs: [Double]?
   public var promptCacheHitTokens: Int
-  public var routedExperts: TogetherRLRoutedExperts?
+  public var routedExpertsKey: String?
   public var stopReason: TogetherRLStopReason
   public var tokens: [TogetherRLSampledSequenceTokensItem]
 
@@ -22,11 +22,11 @@ public struct TogetherRLSampledSequence: Codable, Sendable {
     stopReason: TogetherRLStopReason,
     tokens: [TogetherRLSampledSequenceTokensItem],
     logprobs: [Double]? = nil,
-    routedExperts: TogetherRLRoutedExperts? = nil
+    routedExpertsKey: String? = nil
   ) {
     self.logprobs = logprobs
     self.promptCacheHitTokens = promptCacheHitTokens
-    self.routedExperts = routedExperts
+    self.routedExpertsKey = routedExpertsKey
     self.stopReason = stopReason
     self.tokens = tokens
   }
@@ -34,7 +34,7 @@ public struct TogetherRLSampledSequence: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case logprobs
     case promptCacheHitTokens = "prompt_cache_hit_tokens"
-    case routedExperts = "routed_experts"
+    case routedExpertsKey = "routed_experts_key"
     case stopReason = "stop_reason"
     case tokens
   }

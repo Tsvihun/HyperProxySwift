@@ -20,6 +20,7 @@ public struct OpenRouterMessagesResult: Codable, Sendable {
   public var openrouterMetadata: OpenRouterMetadata?
   public var provider: OpenRouterProviderName?
   public var role: OpenRouterBaseMessagesResultRole
+  public var safeguardResults: [OpenRouterAnthropicSafeguardResult]?
   public var stopDetails: OpenRouterAnthropicRefusalStopDetails?
   public var stopReason: OpenRouterORAnthropicStopReason?
   public var stopSequence: String
@@ -40,7 +41,8 @@ public struct OpenRouterMessagesResult: Codable, Sendable {
     contextManagement: OpenRouterMessagesResultAllOf2ContextManagement? = nil,
     inputTransformations: [OpenRouterAnthropicInputTransformation]? = nil,
     openrouterMetadata: OpenRouterMetadata? = nil,
-    provider: OpenRouterProviderName? = nil
+    provider: OpenRouterProviderName? = nil,
+    safeguardResults: [OpenRouterAnthropicSafeguardResult]? = nil
   ) {
     self.container = container
     self.content = content
@@ -51,6 +53,7 @@ public struct OpenRouterMessagesResult: Codable, Sendable {
     self.openrouterMetadata = openrouterMetadata
     self.provider = provider
     self.role = role
+    self.safeguardResults = safeguardResults
     self.stopDetails = stopDetails
     self.stopReason = stopReason
     self.stopSequence = stopSequence
@@ -68,6 +71,7 @@ public struct OpenRouterMessagesResult: Codable, Sendable {
     case openrouterMetadata = "openrouter_metadata"
     case provider
     case role
+    case safeguardResults = "safeguard_results"
     case stopDetails = "stop_details"
     case stopReason = "stop_reason"
     case stopSequence = "stop_sequence"

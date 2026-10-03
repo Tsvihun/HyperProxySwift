@@ -11,18 +11,30 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepSeekInputContentPart: Codable, Sendable {
-  public var text: String
+  public var detail: DeepSeekInputContentPartDetail?
+  public var fileId: String?
+  public var imageUrl: String?
+  public var text: String?
   public var kind: DeepSeekInputContentPartType
 
   public init(
-    text: String,
-    kind: DeepSeekInputContentPartType
+    kind: DeepSeekInputContentPartType,
+    detail: DeepSeekInputContentPartDetail? = nil,
+    fileId: String? = nil,
+    imageUrl: String? = nil,
+    text: String? = nil
   ) {
+    self.detail = detail
+    self.fileId = fileId
+    self.imageUrl = imageUrl
     self.text = text
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
+    case detail
+    case fileId = "file_id"
+    case imageUrl = "image_url"
     case text
     case kind = "type"
   }

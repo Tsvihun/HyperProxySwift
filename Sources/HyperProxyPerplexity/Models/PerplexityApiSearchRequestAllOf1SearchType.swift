@@ -12,5 +12,6 @@ import HyperProxyCore
 
 public enum PerplexityApiSearchRequestAllOf1SearchType: String, Codable, Hashable, Sendable {
   case web = "web"
+  case fast = "fast"
   case people = "people"
 }

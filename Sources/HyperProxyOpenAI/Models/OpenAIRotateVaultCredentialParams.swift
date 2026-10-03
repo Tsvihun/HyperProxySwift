@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIRotateVaultCredentialParams: Codable, Sendable {
-  public var auth: OpenAIRotateVaultCredentialAuthParam
+  public var auth: OpenAIRotateVaultCredentialAuthParam?
+  public var metadata: [String: String]?
 
   public init(
-    auth: OpenAIRotateVaultCredentialAuthParam
+    auth: OpenAIRotateVaultCredentialAuthParam? = nil,
+    metadata: [String: String]? = nil
   ) {
     self.auth = auth
+    self.metadata = metadata
   }
 
   enum CodingKeys: String, CodingKey {
     case auth
+    case metadata
   }
 }

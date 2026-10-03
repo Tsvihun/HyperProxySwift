@@ -50,6 +50,7 @@ public enum OpenRouterImageGenerationProviderPreferencesIgnoreItem: RawRepresent
   case deepSeek
   case dekaLLM
   case digitalOcean
+  case elevenLabs
   case featherless
   case fireworks
   case fishAudio
@@ -98,9 +99,11 @@ public enum OpenRouterImageGenerationProviderPreferencesIgnoreItem: RawRepresent
   case recraft
   case reka
   case relace
+  case respan
   case sailResearch
   case sakanaAI
   case sambaNova
+  case scaleDown
   case seed
   case siliconFlow
   case sourceful
@@ -202,6 +205,8 @@ public enum OpenRouterImageGenerationProviderPreferencesIgnoreItem: RawRepresent
       self = .dekaLLM
     case "DigitalOcean":
       self = .digitalOcean
+    case "ElevenLabs":
+      self = .elevenLabs
     case "Featherless":
       self = .featherless
     case "Fireworks":
@@ -298,12 +303,16 @@ public enum OpenRouterImageGenerationProviderPreferencesIgnoreItem: RawRepresent
       self = .reka
     case "Relace":
       self = .relace
+    case "Respan":
+      self = .respan
     case "Sail Research":
       self = .sailResearch
     case "Sakana AI":
       self = .sakanaAI
     case "SambaNova":
       self = .sambaNova
+    case "ScaleDown":
+      self = .scaleDown
     case "Seed":
       self = .seed
     case "SiliconFlow":
@@ -431,6 +440,8 @@ public enum OpenRouterImageGenerationProviderPreferencesIgnoreItem: RawRepresent
       return "DekaLLM"
     case .digitalOcean:
       return "DigitalOcean"
+    case .elevenLabs:
+      return "ElevenLabs"
     case .featherless:
       return "Featherless"
     case .fireworks:
@@ -527,12 +538,16 @@ public enum OpenRouterImageGenerationProviderPreferencesIgnoreItem: RawRepresent
       return "Reka"
     case .relace:
       return "Relace"
+    case .respan:
+      return "Respan"
     case .sailResearch:
       return "Sail Research"
     case .sakanaAI:
       return "Sakana AI"
     case .sambaNova:
       return "SambaNova"
+    case .scaleDown:
+      return "ScaleDown"
     case .seed:
       return "Seed"
     case .siliconFlow:
