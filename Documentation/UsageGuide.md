@@ -84,25 +84,23 @@ Then add only the product your target needs:
 
 ### CocoaPods
 
-CocoaPods supports iOS 15+ and macOS 13+. For the published release, pin the
-`0.5.0` SDK line. These examples use the same API through both package managers.
-Use SwiftPM for visionOS and watchOS.
-
-Install the complete SDK:
+CocoaPods supports iOS 15+ and macOS 13+. Use SwiftPM for visionOS and watchOS.
+The 0.5.0 Trunk graph is not fully indexed, so use the Git tag for all required
+components. Add these entries inside your application target:
 
 ```ruby
-pod 'HyperProxy', '~> 0.5.0'
+sdk = { git: 'https://github.com/Tsvihun/HyperProxySwift.git', tag: '0.5.0' }
+pod 'HyperProxyCore', **sdk
+pod 'HyperProxyProviders', **sdk
+pod 'HyperProxyOpenAI', **sdk
+# Optional capture/playback:
+# pod 'HyperProxyRealtimeAudio', **sdk
 ```
 
-Or keep the application binary smaller by selecting only what it uses:
-
-```ruby
-pod 'HyperProxyOpenAI', '~> 0.5.0'
-pod 'HyperProxyRealtimeAudio', '~> 0.5.0' # optional microphone/playback support
-```
-
-The aggregate pod and every component pod use the same module names as SwiftPM, so application
-imports remain unchanged when switching package managers.
+Run `pod install`, open the generated `.xcworkspace` and import `HyperProxyOpenAI`.
+For another provider or the all-provider aggregate, follow the
+[CocoaPods installation guide](../CocoaPods/README.md); every dependency must use
+this same tag. SwiftPM and CocoaPods expose the same module names and API.
 
 ## Five-minute OpenAI integration
 

@@ -2,21 +2,47 @@
 
 CocoaPods supports iOS 15+ and macOS 13+. SwiftPM additionally supports visionOS and watchOS.
 
-> **Published version:** CocoaPods trunk provides the `0.5.0` SDK line. SwiftPM and CocoaPods
-> use the same source tag and module boundaries.
+**SDK release: 0.5.0.** Use SwiftPM or the Git-tag installation below. The full
+0.5.0 graph is not yet available from Trunk: its API failed after writing the
+Brave, Replicate and Stability specs, leaving their version indexes incomplete.
+The aggregate remains unpublished there. Do not use a bare `~> 0.5.0` dependency
+until the complete graph is indexed. The complete Trunk release remains 0.4.1.
 
-## Install a published SDK
+## Install 0.5.0 from its Git tag
 
-Add the provider you need to your Podfile:
+For OpenAI, put all three entries inside your application target in the Podfile:
 
 ```ruby
-pod 'HyperProxyOpenAI', '~> 0.5.0'
+sdk = { git: 'https://github.com/Tsvihun/HyperProxySwift.git', tag: '0.5.0' }
+pod 'HyperProxyCore', **sdk
+pod 'HyperProxyProviders', **sdk
+pod 'HyperProxyOpenAI', **sdk
 ```
 
-Use `pod 'HyperProxy', '~> 0.5.0'` for every provider, then run `pod install` and
-open the generated `.xcworkspace`. Import `HyperProxyOpenAI` (or `HyperProxy`)
-in your app. Follow [the 0.5.0 guide](https://github.com/Tsvihun/HyperProxySwift/blob/0.5.0/Documentation/UsageGuide.md)
-for that dependency. Main may contain later changes; use a version for reproducible builds.
+This resolves Core, Providers and OpenAI from the same tag without relying on
+Trunk's version indexes. For a different provider, replace the OpenAI entry with
+its product name. Add `pod 'HyperProxyRealtimeAudio', **sdk` for optional audio.
+
+For the aggregate, supply **every component** from the same tag; otherwise its
+exact-version dependencies would still be looked up in Trunk:
+
+```ruby
+sdk = { git: 'https://github.com/Tsvihun/HyperProxySwift.git', tag: '0.5.0' }
+%w[
+  HyperProxy HyperProxyCore HyperProxyProviders
+  HyperProxyRealtimeAudio HyperProxyOpenAI HyperProxyAnthropic
+  HyperProxyGemini HyperProxyDeepSeek HyperProxyMistral
+  HyperProxyOpenRouter HyperProxyPerplexity HyperProxyGroq
+  HyperProxyTogether HyperProxyFireworks HyperProxyStability
+  HyperProxyReplicate HyperProxyFal HyperProxyBFL
+  HyperProxyElevenLabs HyperProxyEachAI HyperProxyBrave
+  HyperProxyDeepL
+ ].each { |product| pod product, **sdk }
+```
+
+Run `pod install` and open the generated `.xcworkspace`. Import only the product
+you use. See the [usage guide](../Documentation/UsageGuide.md) for the 0.5.0 API.
+Main can contain later changes; the tag keeps application builds reproducible.
 
 ## Maintainer release layout
 
