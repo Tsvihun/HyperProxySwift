@@ -9,12 +9,10 @@ transport in a trusted environment.
 · [Usage guide](Documentation/UsageGuide.md) · [Examples](Examples/QuickStart)
 · [Issues](https://github.com/Tsvihun/HyperProxySwift/issues)
 
-> **Release status:** `0.4.1` is the current release. Source provenance is recorded with
-> explicit maintainer decisions, and integrators must still perform app-archive privacy checks. See
-> [release checks](Compliance/README.md).
->
-> **This branch is unreleased.** The shorter request names, message factories and
-> validated manual service initializer shown here are on `main`; they are not in `0.4.1`.
+**Current release: 0.5.0.** The examples below use that version's shorter request names,
+message factories and catalog-bound services. Release changes are listed in the
+[changelog](CHANGELOG.md). Source decisions and app privacy requirements are
+recorded in [release checks](Compliance/README.md).
 
 ## What you can build
 
@@ -44,17 +42,19 @@ In Xcode, choose **File → Add Package Dependencies** and enter:
 https://github.com/Tsvihun/HyperProxySwift.git
 ```
 
-In a `Package.swift` manifest, select the `0.4.x` release line:
+In a `Package.swift` manifest, select the `0.5.x` release line:
 
+<!-- docs-check: manifest -->
 ```swift
 .package(
   url: "https://github.com/Tsvihun/HyperProxySwift.git",
-  .upToNextMinor(from: "0.4.1")
+  .upToNextMinor(from: "0.5.0")
 )
 ```
 
-To build the examples on this branch before the next release, select `main` instead:
+For development against future changes, select `main` instead of a version tag:
 
+<!-- docs-check: manifest -->
 ```swift
 .package(
   url: "https://github.com/Tsvihun/HyperProxySwift.git",
@@ -64,12 +64,13 @@ To build the examples on this branch before the next release, select `main` inst
 
 Add the product your target needs:
 
+<!-- docs-check: manifest -->
 ```swift
 .product(name: "HyperProxyOpenAI", package: "HyperProxySwift")
 ```
 
 Choose a provider product for a focused dependency, `HyperProxyCore` for raw transport,
-or `HyperProxy` to import all providers. The `0.4.1` release is available through Swift
+or `HyperProxy` to import all providers. The `0.5.0` release is available through Swift
 Package Manager and CocoaPods. See the [CocoaPods instructions](CocoaPods/README.md).
 
 ## Quick start: OpenAI in Swift
@@ -78,7 +79,7 @@ Package Manager and CocoaPods. See the [CocoaPods instructions](CocoaPods/README
 2. Copy the service's gateway URL and app key. Do not substitute the provider API key.
 3. Call the provider from an asynchronous context in your app:
 
-<!-- readme-check: quick-start -->
+<!-- docs-check: prelude -->
 ```swift
 import Foundation
 import HyperProxyOpenAI
@@ -87,12 +88,17 @@ let openAI = HyperProxy.openAI(
   gatewayURL: URL(string: "https://api.hyperproxyai.com/<project>/<service>")!,
   appKey: "<app-key>"
 )
+```
 
+Run this inside an `async throws` function, or a `Task` that handles thrown errors:
+
+```swift
 let response: OpenAIResponse = try await openAI.responsesCreate(
   OpenAIResponseRequest(input: "Say hello in one sentence.", model: .gpt5)
 )
 ```
-<!-- /readme-check: quick-start -->
+
+For extracting response text, see [Responses output](Documentation/UsageGuide.md#five-minute-openai-integration).
 
 Use the exact URL supplied by your dashboard and a model available to your provider account.
 The placeholders above are not working credentials. Provider usage is billed by the provider;
@@ -100,18 +106,17 @@ a HyperProxy plan does not include OpenAI or other provider credits.
 
 ### Stream a response
 
-<!-- readme-check: streaming -->
 ```swift
 for try await chunk in try openAI.chatCompletionsCreateStream(
   OpenAIChatRequest(
     messages: [.user("Write one sentence about Swift.")],
-    model: .gpt5
+    model: .gpt5,
+    streamOptions: .init(includeUsage: true)
   )
 ) {
   print(chunk.choices.first?.delta.content ?? "", terminator: "")
 }
 ```
-<!-- /readme-check: streaming -->
 
 The typed streaming method enables streaming in the request. See the
 [usage guide](Documentation/UsageGuide.md) for raw events, uploads, WebSockets,
@@ -145,18 +150,17 @@ two never blur together:
 
 ```swift
 do {
-  _ = try await openAI.send(.chatCompletionsCreate, json: body)
+  _ = try await openAI.chatCompletionsCreate(
+    OpenAIChatRequest(messages: [.user("Hello")], model: .gpt5)
+  )
 } catch let error as HyperProxyError {
   switch error.gatewayRejection?.reason {
   case .planQuotaExceeded, .budgetExceeded:
-    // Pause AI features until error.gatewayRejection?.periodResetsAt.
-    showAllowanceReached(until: error.gatewayRejection?.periodResetsAt)
+    print("Allowance reached. Resets:", error.gatewayRejection?.periodResetsAt as Any)
   case .rateLimited:
-    // Back off; error.retryAfter carries the server's hint when present.
-    scheduleRetry(after: error.retryAfter ?? 1)
+    print("Rate limited. Retry after:", error.retryAfter as Any)
   case .expiredKey, .unknownOrRevokedKey, .invalidAppKey:
-    // The app key in this build no longer opens the gateway: prompt an update.
-    showUpdateRequired()
+    print("Replace the app key with its current value from the dashboard.")
   default:
     throw error
   }
@@ -167,6 +171,10 @@ WebSocket sessions surface the same vocabulary as `HyperProxyWebSocketError.gate
 (close codes 4029 for quota and budget, 4429 for rate limits, 4001/4003/4004 for key and
 service problems). `HyperProxyRetryPolicy` consults the same decoder and never retries a
 refusal that cannot clear on its own, even when the status is otherwise retryable.
+
+Paid accounts can disable **Usage-based billing** in Account to stop new requests at
+their included allowance. It is enabled by default; Free always stops at its allowance.
+See [quota guidance](Documentation/UsageGuide.md#gateway-refusals-and-error-codes).
 
 ## Security and privacy
 

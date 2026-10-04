@@ -37,5 +37,5 @@ Recommended rollout:
 
 Provider keys are entered in HyperProxy rather than imported from the legacy gateway.
 Gateway refusals such as quota, budget, and revoked-key failures arrive as
-`HyperProxyError.gatewayRejection`; see
+`HyperProxyError.httpStatus` with a non-nil `gatewayRejection` property; see
 [Gateway refusals and error codes](UsageGuide.md#gateway-refusals-and-error-codes).

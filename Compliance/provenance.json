@@ -41,7 +41,10 @@
         "acceptedAt": "2026-09-20",
         "snapshotSha256": "0bb3988d12122ada452f21a13f100afa7395e77c8479e23168160fa5f4e9bbc0"
       },
-      "rightsStatus": "pending"
+      "rightsStatus": "riskAccepted",
+      "riskDecision": "Pavel Tsvihun explicitly approved release 0.5.0 on 2026-10-04 after reviewing the pending source provenance and accepting unresolved upstream redistribution evidence. This decision does not claim an upstream license.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-10-04"
     },
     "bfl/reviewed-lora-openapi": {
       "kind": "reviewedOpenAPI",
@@ -84,7 +87,10 @@
         "acceptedAt": "2026-09-20",
         "snapshotSha256": "c5cb671e68efcf1b0bd717f59449d8826fc7da1308fca584352818c6542a0956"
       },
-      "rightsStatus": "pending"
+      "rightsStatus": "riskAccepted",
+      "riskDecision": "Pavel Tsvihun explicitly approved release 0.5.0 on 2026-10-04 after reviewing the pending source provenance and accepting unresolved upstream redistribution evidence. This decision does not claim an upstream license.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-10-04"
     },
     "deepl/voice-asyncapi": {
       "kind": "asyncapi",
@@ -113,7 +119,10 @@
         "acceptedAt": "2026-09-20",
         "snapshotSha256": "2ab0642b10d1739b9fde8d28c54e01fe2196ba628fe8f4d2edb3f47fdae05994"
       },
-      "rightsStatus": "pending"
+      "rightsStatus": "riskAccepted",
+      "riskDecision": "Pavel Tsvihun explicitly approved release 0.5.0 on 2026-10-04 after reviewing the pending source provenance and accepting unresolved upstream redistribution evidence. This decision does not claim an upstream license.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-10-04"
     },
     "deepseek/reviewed-core-openapi": {
       "kind": "reviewedOpenAPI",
@@ -130,7 +139,10 @@
         "acceptedAt": "2026-09-20",
         "snapshotSha256": "e206c8a4ae9f6dd41bc45797e93a6d9ff6de95d2b57e954b0475e28ca640a131"
       },
-      "rightsStatus": "pending"
+      "rightsStatus": "riskAccepted",
+      "riskDecision": "Pavel Tsvihun explicitly approved release 0.5.0 on 2026-10-04 after reviewing the pending source provenance and accepting unresolved upstream redistribution evidence. This decision does not claim an upstream license.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-10-04"
     },
     "deepseek/reviewed-responses-openapi": {
       "kind": "reviewedOpenAPI",
@@ -147,7 +159,10 @@
         "acceptedAt": "2026-09-20",
         "snapshotSha256": "21a28b35261a82e2ff5dd7f315315e0ddb180a93b1e67507303da6073b844100"
       },
-      "rightsStatus": "pending"
+      "rightsStatus": "riskAccepted",
+      "riskDecision": "Pavel Tsvihun explicitly approved release 0.5.0 on 2026-10-04 after reviewing the pending source provenance and accepting unresolved upstream redistribution evidence. This decision does not claim an upstream license.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-10-04"
     },
     "eachai/openapi-api": {
       "kind": "openapi",
@@ -163,7 +178,10 @@
         "acceptedAt": "2026-09-20",
         "snapshotSha256": "74145712535ef81e2f948a47f5013d16054614a75ead5ff6c2b8ed84bcf7e5cd"
       },
-      "rightsStatus": "pending"
+      "rightsStatus": "riskAccepted",
+      "riskDecision": "Pavel Tsvihun explicitly approved release 0.5.0 on 2026-10-04 after reviewing the pending source provenance and accepting unresolved upstream redistribution evidence. This decision does not claim an upstream license.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-10-04"
     },
     "eachai/openapi-workflows-host": {
       "kind": "openapi",
@@ -179,7 +197,10 @@
         "acceptedAt": "2026-09-20",
         "snapshotSha256": "518ebf03667562c440b0803abe2eda4821e770fe4a5d660af59633ec00c32877"
       },
-      "rightsStatus": "pending"
+      "rightsStatus": "riskAccepted",
+      "riskDecision": "Pavel Tsvihun explicitly approved release 0.5.0 on 2026-10-04 after reviewing the pending source provenance and accepting unresolved upstream redistribution evidence. This decision does not claim an upstream license.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-10-04"
     },
     "eachai/reviewed-sense": {
       "kind": "reviewedOpenAPI",
@@ -208,7 +229,10 @@
         "acceptedAt": "2026-09-20",
         "snapshotSha256": "3659e012c6e75f9334e83ecd165f7a2d606eed93a438992695e4271e69061d7e"
       },
-      "rightsStatus": "pending"
+      "rightsStatus": "riskAccepted",
+      "riskDecision": "Pavel Tsvihun explicitly approved release 0.5.0 on 2026-10-04 after reviewing the pending source provenance and accepting unresolved upstream redistribution evidence. This decision does not claim an upstream license.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-10-04"
     },
     "fal/platform-openapi": {
       "kind": "openapi",
@@ -224,7 +248,10 @@
         "acceptedAt": "2026-09-20",
         "snapshotSha256": "a7bc5d08cf272253217d969dc4969ad78a160759e7f4d1545c25d56e856567de"
       },
-      "rightsStatus": "pending"
+      "rightsStatus": "riskAccepted",
+      "riskDecision": "Pavel Tsvihun explicitly approved release 0.5.0 on 2026-10-04 after reviewing the pending source provenance and accepting unresolved upstream redistribution evidence. This decision does not claim an upstream license.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-10-04"
     },
     "fireworks/merged-openapi": {
       "kind": "openapi",
@@ -240,7 +267,10 @@
         "acceptedAt": "2026-09-20",
         "snapshotSha256": "39d27fb648016cdba6913b10a1db0537a6f10afed6fe44326824b4263429adcc"
       },
-      "rightsStatus": "pending"
+      "rightsStatus": "riskAccepted",
+      "riskDecision": "Pavel Tsvihun explicitly approved release 0.5.0 on 2026-10-04 after reviewing the pending source provenance and accepting unresolved upstream redistribution evidence. This decision does not claim an upstream license.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-10-04"
     },
     "gemini/discovery-v1beta": {
       "kind": "googleDiscovery",
@@ -256,7 +286,10 @@
         "acceptedAt": "2026-09-20",
         "snapshotSha256": "8ff12a0427e972d5d4040753ecc8e7d31f0e23e36321b5f7e7c0c1d1ad156531"
       },
-      "rightsStatus": "pending"
+      "rightsStatus": "riskAccepted",
+      "riskDecision": "Pavel Tsvihun explicitly approved release 0.5.0 on 2026-10-04 after reviewing the pending source provenance and accepting unresolved upstream redistribution evidence. This decision does not claim an upstream license.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-10-04"
     },
     "groq/official-sdk-openapi": {
       "kind": "stainlessOpenAPI",
@@ -286,7 +319,10 @@
         "acceptedAt": "2026-09-20",
         "snapshotSha256": "e7946a3364d6b519e2980a699c71714eaca7623f19ad4ca28782d4528b1d1c95"
       },
-      "rightsStatus": "pending"
+      "rightsStatus": "riskAccepted",
+      "riskDecision": "Pavel Tsvihun explicitly approved release 0.5.0 on 2026-10-04 after reviewing the pending source provenance and accepting unresolved upstream redistribution evidence. This decision does not claim an upstream license.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-10-04"
     },
     "openai/openapi": {
       "kind": "openapi",
@@ -303,7 +339,9 @@
         "reviewedAt": "2026-09-19",
         "snapshotSha256": "4e9a8ba4cc4225541e340a3d43893a2e4eae20460ad66fe7d3e276fbd5094975"
       },
-      "rightsStatus": "pending"
+      "rightsStatus": "approved",
+      "reviewedBy": "Codex automated license evidence audit",
+      "reviewedAt": "2026-10-04"
     },
     "openrouter/openapi": {
       "kind": "openapi",
@@ -319,7 +357,10 @@
         "acceptedAt": "2026-09-20",
         "snapshotSha256": "fd10216d3404162c3a375468d65e6e8bfe9ad4a89cc98984c6fc8f73e0526bee"
       },
-      "rightsStatus": "pending"
+      "rightsStatus": "riskAccepted",
+      "riskDecision": "Pavel Tsvihun explicitly approved release 0.5.0 on 2026-10-04 after reviewing the pending source provenance and accepting unresolved upstream redistribution evidence. This decision does not claim an upstream license.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-10-04"
     },
     "perplexity/openapi": {
       "kind": "openapi",
@@ -335,7 +376,10 @@
         "acceptedAt": "2026-09-20",
         "snapshotSha256": "e0bfd0c30f919f2679d394e671eba3a309688358f5c3c4fbdbba247f367577e6"
       },
-      "rightsStatus": "pending"
+      "rightsStatus": "riskAccepted",
+      "riskDecision": "Pavel Tsvihun explicitly approved release 0.5.0 on 2026-10-04 after reviewing the pending source provenance and accepting unresolved upstream redistribution evidence. This decision does not claim an upstream license.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-10-04"
     },
     "replicate/openapi": {
       "kind": "openapi",
@@ -375,7 +419,10 @@
         "acceptedAt": "2026-09-20",
         "snapshotSha256": "bf4ead012a5af45aa8487eb3731b4a5cb53e0d9d92514f95064706d0f66e49bf"
       },
-      "rightsStatus": "pending"
+      "rightsStatus": "riskAccepted",
+      "riskDecision": "Pavel Tsvihun explicitly approved release 0.5.0 on 2026-10-04 after reviewing the pending source provenance and accepting unresolved upstream redistribution evidence. This decision does not claim an upstream license.",
+      "acceptedBy": "Pavel Tsvihun (maintainer)",
+      "acceptedAt": "2026-10-04"
     }
   },
   "modules": [
@@ -394,14 +441,16 @@
     {
       "module": "HyperProxyBFL",
       "artifactSha256": "b4ef7fc12b438a1a9cdef71621043440f94a7bd2006c2756bbf1ecaa4c0741f5",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "bfl/openapi",
         "bfl/licenses-openapi",
         "bfl/reviewed-lora-openapi"
       ],
       "artifactReviewedBy": "Codex (generated Swift API review)",
-      "artifactReviewedAt": "2026-10-03"
+      "artifactReviewedAt": "2026-10-03",
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-10-04"
     },
     {
       "module": "HyperProxyBrave",
@@ -418,77 +467,91 @@
     {
       "module": "HyperProxyDeepL",
       "artifactSha256": "c242c743049f5999a04d47bd220af5f92d0d2c6f468e003b7dea5a849f82e83c",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "deepl/openapi",
         "deepl/voice-asyncapi"
       ],
       "artifactReviewedBy": "Codex (generated Swift API review)",
-      "artifactReviewedAt": "2026-10-03"
+      "artifactReviewedAt": "2026-10-03",
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-10-04"
     },
     {
       "module": "HyperProxyDeepSeek",
       "artifactSha256": "bd5a5088b0658ce5b7c40925ff9b49e9de47e1b14e40952e3db2ddc855cc1f8f",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "deepseek/reviewed-core-openapi",
         "deepseek/reviewed-anthropic-openapi",
         "deepseek/reviewed-responses-openapi"
       ],
       "artifactReviewedBy": "Codex (generated Swift API review)",
-      "artifactReviewedAt": "2026-10-03"
+      "artifactReviewedAt": "2026-10-03",
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-10-04"
     },
     {
       "module": "HyperProxyEachAI",
       "artifactSha256": "15e7aaf2afa957622ba31f4cd117e713327b3a9a6124fc687b9123d865827068",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "eachai/openapi-api",
         "eachai/openapi-workflows-host",
         "eachai/reviewed-sense"
       ],
       "artifactReviewedBy": "Codex (generated Swift API review)",
-      "artifactReviewedAt": "2026-10-03"
+      "artifactReviewedAt": "2026-10-03",
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-10-04"
     },
     {
       "module": "HyperProxyElevenLabs",
       "artifactSha256": "6d10b486214a68a6b74a699d52ca6d61ffef3e7877161db0e8bc7c108175f814",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "elevenlabs/openapi"
       ],
       "artifactReviewedBy": "Codex (generated Swift API review)",
-      "artifactReviewedAt": "2026-10-03"
+      "artifactReviewedAt": "2026-10-03",
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-10-04"
     },
     {
       "module": "HyperProxyFal",
       "artifactSha256": "c333da5f671f7bde76095aa8ddc5c5ec2c65ff7856a0dc81723a85359004b2c3",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "fal/platform-openapi"
       ],
       "artifactReviewedBy": "Codex (generated Swift API review)",
-      "artifactReviewedAt": "2026-10-03"
+      "artifactReviewedAt": "2026-10-03",
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-10-04"
     },
     {
       "module": "HyperProxyFireworks",
       "artifactSha256": "541da002b06d09d815e16572bfc287ee3f60d7efb347cb5c393dcd36e8d736aa",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "fireworks/merged-openapi"
       ],
       "artifactReviewedBy": "Codex (generated Swift API review)",
-      "artifactReviewedAt": "2026-10-03"
+      "artifactReviewedAt": "2026-10-03",
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-10-04"
     },
     {
       "module": "HyperProxyGemini",
       "artifactSha256": "054d069ad0d3b223f6ca0d20dda54af9f1b9577046c410f40b743283c15960ac",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "gemini/discovery-v1beta"
       ],
       "artifactReviewedBy": "Codex (generated Swift API review)",
-      "artifactReviewedAt": "2026-10-03"
+      "artifactReviewedAt": "2026-10-03",
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-10-04"
     },
     {
       "module": "HyperProxyGroq",
@@ -505,47 +568,55 @@
     {
       "module": "HyperProxyMistral",
       "artifactSha256": "03baa6bee39e021af5d8a23f34bcbcf5ffd4d1e807ca92b2381c84b444801d13",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "mistral/openapi"
       ],
       "artifactReviewedBy": "Codex (generated Swift API review)",
-      "artifactReviewedAt": "2026-10-03"
+      "artifactReviewedAt": "2026-10-03",
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-10-04"
     },
     {
       "module": "HyperProxyOpenAI",
       "artifactSha256": "fd2b28f3c93862ec5fb9ca72fa1d1cb055ff2c2c48c94858798a592d99038756",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "openai/openapi"
       ],
       "artifactReviewedBy": "Codex (generated Swift API review)",
-      "artifactReviewedAt": "2026-10-03"
+      "artifactReviewedAt": "2026-10-03",
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-10-04"
     },
     {
       "module": "HyperProxyOpenRouter",
       "artifactSha256": "f15b2e50195b328e927deb9d84563a37c2bb5a6880158b8a9471344ce3235022",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "openrouter/openapi"
       ],
       "artifactReviewedBy": "Codex (generated Swift API review)",
-      "artifactReviewedAt": "2026-10-03"
+      "artifactReviewedAt": "2026-10-03",
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-10-04"
     },
     {
       "module": "HyperProxyPerplexity",
       "artifactSha256": "98c8dce3ebcc9b6b3ee4fa2c3b7b079146adbbfa66e6f6fb9c6bff1e52295c81",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "perplexity/openapi"
       ],
       "artifactReviewedBy": "Codex (generated Swift API review)",
-      "artifactReviewedAt": "2026-10-03"
+      "artifactReviewedAt": "2026-10-03",
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-10-04"
     },
     {
       "module": "HyperProxyProviders",
       "artifactSha256": "f419e45839e4c4b5ff7adfab802a4d35732f6a0a06bb67099d4b9193f50cd0dc",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "anthropic/official-sdk-openapi",
         "bfl/licenses-openapi",
@@ -574,7 +645,9 @@
         "together/openapi"
       ],
       "artifactReviewedBy": "Codex (generated Swift API review)",
-      "artifactReviewedAt": "2026-10-03"
+      "artifactReviewedAt": "2026-10-03",
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-10-04"
     },
     {
       "module": "HyperProxyReplicate",
@@ -603,12 +676,14 @@
     {
       "module": "HyperProxyTogether",
       "artifactSha256": "66f5156248d4963afd3fb83fa80cdb8dca99f4da0009797a9dc6e7f33ac7c869",
-      "reviewStatus": "pending",
+      "reviewStatus": "approved",
       "sourceIDs": [
         "together/openapi"
       ],
       "artifactReviewedBy": "Codex (generated Swift API review)",
-      "artifactReviewedAt": "2026-10-03"
+      "artifactReviewedAt": "2026-10-03",
+      "reviewedBy": "Pavel Tsvihun (maintainer)",
+      "reviewedAt": "2026-10-04"
     }
   ]
 }

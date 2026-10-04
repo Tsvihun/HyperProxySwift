@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.5.0 — 2026-10-04
 
 - Refresh official provider schemas on 2026-10-03: 2,342 routes, 18,272 generated
   models and 2,099 typed operation bindings. Add OpenRouter batches/end users/private
@@ -17,7 +17,18 @@
   removed; content `text` is optional and tool `output` now accepts a string/parts union.
 - Match updated OpenAI binary/JSON/text/SSE response contracts, fix OpenRouter boolean
   literal streaming bindings, and update BFL's async submission allowlist. Renew source
-  and artifact inventory hashes; changed snapshots await a new release review.
+  and artifact inventory hashes; renew the recorded release review for this snapshot.
+
+- Add semantic request aliases, message factories, enum convenience values and
+  catalog-bound provider services. Manual service initialization now throws when
+  the supplied provider or operation set is invalid.
+- Serialize App Attest enrollment/reset state and save cached state only after
+  persistent storage succeeds. Give each WebSocket one reader, reject concurrent
+  consumers and preserve messages between consecutive single-message receives.
+- Tighten realtime audio lifecycle and cancellation, handle split PCM16 samples,
+  and consistently format handwritten Swift code.
+- Rewrite README and integration guides, validate
+  every Swift documentation example in CI and make QuickStart configuration explicit.
 
 ## 0.4.1
 

@@ -2,8 +2,23 @@
 
 CocoaPods supports iOS 15+ and macOS 13+. SwiftPM additionally supports visionOS and watchOS.
 
-> **Published version:** CocoaPods trunk provides the `0.4.1` SDK line. SwiftPM and CocoaPods
+> **Published version:** CocoaPods trunk provides the `0.5.0` SDK line. SwiftPM and CocoaPods
 > use the same source tag and module boundaries.
+
+## Install a published SDK
+
+Add the provider you need to your Podfile:
+
+```ruby
+pod 'HyperProxyOpenAI', '~> 0.5.0'
+```
+
+Use `pod 'HyperProxy', '~> 0.5.0'` for every provider, then run `pod install` and
+open the generated `.xcworkspace`. Import `HyperProxyOpenAI` (or `HyperProxy`)
+in your app. Follow [the 0.5.0 guide](https://github.com/Tsvihun/HyperProxySwift/blob/0.5.0/Documentation/UsageGuide.md)
+for that dependency. Main may contain later changes; use a version for reproducible builds.
+
+## Maintainer release layout
 
 HyperProxySwift preserves its SwiftPM module boundaries in CocoaPods:
 

@@ -15,14 +15,24 @@ catalog, while the core transport keeps raw HTTP available for newly released fi
 - **Forward-compatible:** raw JSON, multipart, binary, SSE, and WebSocket APIs remain available.
 - **Two transport modes:** every typed or generic API can use HyperProxy's split-key gateway or
   connect directly with credentials owned by the host application.
-- **Generated from official sources:** 2,292 operations from 53 official specifications and
-  watched documentation sources across 18 provider families.
-- **Official provider models:** 17,559 request, response, event, enum, and parameter models plus
-  2,036 typed operation bindings — including typed `…Stream` variants — generated from official
-  machine-readable or reviewed schemas.
+- **Generated from official sources:** typed operations and models across 18 provider families,
+  including typed `…Stream` variants. See the versioned [coverage report](../PROVIDER_COVERAGE.md)
+  for the checked-in snapshot and its coverage boundaries.
 - **Security-first:** split-key credentials, DeviceCheck, App Attest, and deployment-owned
   certificate pinning, with optional Firebase App Check.
 - **Metadata-preserving:** status codes, headers, request IDs, and provider error bodies stay visible.
+
+## Choose the SDK revision first
+
+This guide describes **0.5.0**, including convenient request names and message factories.
+Use the versioned dependency below to follow the examples. A `main` branch dependency
+may contain later changes; pin a release for reproducible application builds.
+See the [changelog](../CHANGELOG.md) for changes from earlier versions.
+
+Run Swift examples inside an `async throws` function or a `Task` that handles errors.
+The URL and app key below are placeholders. Copy both from the **same service** in the
+dashboard; create a separate service/client for each provider. Select a model enabled
+for your provider account. Provider charges are separate from HyperProxy billing.
 
 ## Requirements
 
@@ -35,7 +45,7 @@ direct-to-provider mode. Background URLSessions are rejected because they do
 not honor the redirect delegate. Default/ephemeral sessions and session-level
 certificate pinning remain supported.
 
-`0.4.1` is the current release. See
+`0.5.0` is the current release. See
 [release provenance and privacy checks](../Compliance/README.md) for recorded source decisions
 and the app archive requirements that remain the integrator's responsibility.
 
@@ -49,7 +59,7 @@ and the app archive requirements that remain the integrator's responsibility.
 ### Swift Package Manager
 
 In Xcode, choose **File → Add Package Dependencies**, enter the published HyperProxySwift
-repository URL, and select one of:
+repository URL, choose the **0.5.x release line** for this guide, and select one of:
 
 - `HyperProxyOpenAI`, `HyperProxyAnthropic`, and the other provider products for a smaller build;
 - `HyperProxy` to expose every provider from one import;
@@ -57,35 +67,38 @@ repository URL, and select one of:
 
 From another package:
 
+<!-- docs-check: manifest -->
 ```swift
 .package(
   url: "https://github.com/Tsvihun/HyperProxySwift.git",
-  .upToNextMinor(from: "0.4.1")
+  .upToNextMinor(from: "0.5.0")
 )
 ```
 
 Then add only the product your target needs:
 
+<!-- docs-check: manifest -->
 ```swift
 .product(name: "HyperProxyOpenAI", package: "HyperProxySwift")
 ```
 
 ### CocoaPods
 
-CocoaPods supports iOS 15+ and macOS 13+. CocoaPods trunk publishes the `0.4.1`
-SDK line; use SwiftPM for visionOS and watchOS.
+CocoaPods supports iOS 15+ and macOS 13+. For the published release, pin the
+`0.5.0` SDK line. These examples use the same API through both package managers.
+Use SwiftPM for visionOS and watchOS.
 
 Install the complete SDK:
 
 ```ruby
-pod 'HyperProxy', '~> 0.4'
+pod 'HyperProxy', '~> 0.5.0'
 ```
 
 Or keep the application binary smaller by selecting only what it uses:
 
 ```ruby
-pod 'HyperProxyOpenAI', '~> 0.4'
-pod 'HyperProxyRealtimeAudio', '~> 0.4' # optional microphone/playback support
+pod 'HyperProxyOpenAI', '~> 0.5.0'
+pod 'HyperProxyRealtimeAudio', '~> 0.5.0' # optional microphone/playback support
 ```
 
 The aggregate pod and every component pod use the same module names as SwiftPM, so application
@@ -93,21 +106,19 @@ imports remain unchanged when switching package managers.
 
 ## Five-minute OpenAI integration
 
+<!-- docs-check: prelude -->
 ```swift
+import Foundation
 import HyperProxyOpenAI
 
-let openAI = HyperProxy.openAI(
-  gatewayURL: URL(
-    string: "https://api.hyperproxyai.com/<project>/<service>"
-  )!,
-  appKey: "<app-key>"
-)
+let gatewayURL = URL(string: "https://api.hyperproxyai.com/<project>/<service>")!
+let appKey = "<app-key>"
+let openAI = HyperProxy.openAI(gatewayURL: gatewayURL, appKey: appKey)
+```
 
+```swift
 let response: OpenAIResponse = try await openAI.responsesCreate(
-  OpenAICreateResponse(
-    input: "Hello",
-    model: .modelIdsShared(.gpt5)
-  )
+  OpenAIResponseRequest(input: "Hello", model: .gpt5)
 )
 ```
 
@@ -125,11 +136,11 @@ let assistant = try await openAI.getAssistant(assistantId: "asst_123")
 For beta headers, pagination, or asynchronous jobs, use the same operation enum
 through a fluent call:
 
+<!-- docs-check: assumes let batchID = "batch_123" -->
 ```swift
 let batch: HyperProxyJSONValue = try await openAI
   .batchesRetrieve
   .path("batch_id", batchID)
-  .header("OpenAI-Beta", "responses=v1")
   .decoded()
 ```
 
@@ -146,6 +157,21 @@ survive decoding. `HyperProxyJSONValue` keeps unknown beta/admin
 fields lossless when an official API adds a field between SDK releases and supports dynamic reads
 such as `response.usage?.total_tokens?.integerValue`.
 
+A Responses result contains typed `output` items. Text, refusals and tool calls are
+different content kinds; do not assume `outputText` is populated by the REST API:
+
+```swift
+let response = try await openAI.responsesCreate(
+  OpenAIResponseRequest(input: "Hello", model: .gpt5)
+)
+for item in response.output {
+  guard case .outputMessage(let message) = item else { continue }
+  for content in message.content {
+    if case .outputTextContent(let text) = content { print(text.text) }
+  }
+}
+```
+
 ## Streaming
 
 Every operation that documents server-sent events has a typed `…Stream` variant.
@@ -154,14 +180,20 @@ model, so forgetting `"stream": true` is impossible:
 
 ```swift
 for try await chunk in try openAI.chatCompletionsCreateStream(
-  OpenAICreateChatCompletionRequest(
-    messages: [["role": "user", "content": "Write one sentence"]],
-    model: .gpt5
+  OpenAIChatRequest(
+    messages: [.user("Write one sentence")],
+    model: .gpt5,
+    streamOptions: .init(includeUsage: true)
   )
 ) {
   print(chunk.choices.first?.delta.content ?? "")
 }
 ```
+
+`includeUsage: true` requests the final usage chunk for gateway cost accounting.
+Keep it enabled when the provider supports it; content-only streams may lack
+reported tokens and remain estimated/incomplete. Cancel the owning Task to stop
+a stream; update application UI on its appropriate actor.
 
 Calling the non-streaming variant with `stream: true` in the body fails
 immediately with `streamingBodyOnJSONCall`, naming the variant to use. For
@@ -176,6 +208,7 @@ Per-request steering of HyperProxy's gateway — none of these headers reach the
 provider:
 
 ```swift
+let body = OpenAIChatRequest(messages: [.user("Hello")], model: .gpt5)
 let response = try await openAI
   .call(.chatCompletionsCreate)
   .session("chat-42")                       // keep this conversation on one
@@ -222,13 +255,14 @@ converts the HTTPS gateway URL to WSS for the WebSocket handshake.
 Large multipart and audio uploads expose provider-neutral progress without adding an upload
 manager to your app:
 
+<!-- docs-check: assumes let stability = HyperProxy.stability(gatewayURL: gatewayURL, appKey: appKey); let multipart = HyperProxyMultipart(parts: [.text(name: "prompt", value: "A glass observatory"), .text(name: "output_format", value: "png")]).body() -->
 ```swift
 let response = try await stability.send(
   .imagesUltra,
   body: multipart,
   uploadProgress: { progress in
     guard let fraction = progress.fractionCompleted else { return }
-    Task { @MainActor in uploadFraction = fraction }
+    print("Upload:", Int(fraction * 100), "%")
   }
 )
 ```
@@ -236,9 +270,15 @@ let response = try await stability.send(
 Realtime sockets can start automatically and encode/decode native provider JSON:
 
 ```swift
-let socket = try await openAI.webSocket(.realtimeWebsocket)
-try await socket.sendJSON(SessionUpdate(model: "gpt-realtime"))
-let event: RealtimeEvent = try await socket.receiveJSON()
+let socket = try await openAI.webSocket(
+  .realtimeWebsocket, query: [URLQueryItem(name: "model", value: "gpt-realtime")]
+)
+defer { socket.cancel() }
+try await socket.sendJSON([
+  "type": "session.update",
+  "session": ["type": "realtime", "instructions": "Be concise."],
+] as HyperProxyJSONValue)
+let event: HyperProxyJSONValue = try await socket.receiveJSON()
 
 for try await message in socket.messages() {
   // Handle provider-native text or binary frames.
@@ -247,7 +287,8 @@ for try await message in socket.messages() {
 
 `cancel(with:reason:)` closes the socket. Releasing the last reference to a socket also closes it,
 so an abandoned realtime session does not stay connected; an active `messages()` loop keeps the
-socket open until the loop ends.
+socket open until the loop ends. Give the socket one consuming task: concurrent `receive()`
+or `messages()` consumers are rejected rather than racing for events.
 
 Speech and realtime providers commonly exchange signed 16-bit little-endian PCM as base64.
 `HyperProxyAudio.pcm16Base64(from:)` and `pcm16Samples(fromBase64:)` provide low-level wire
@@ -265,14 +306,30 @@ let audio = try HyperProxyAudioController(
   )
 )
 try await audio.start()
+```
 
+Run capture and provider playback in separate tasks; a microphone loop lasts until
+the session is stopped. Keep those tasks with the view/session that owns the audio
+controller and cancel them on exit. These are separate API examples:
+
+<!-- docs-check: assumes let audio = try HyperProxyAudioController() -->
+```swift
 let microphone = try await audio.microphonePCM16Stream()
 for try await pcm16 in microphone {
   // Send pcm16 or pcm16.base64EncodedString() to the provider's realtime socket.
 }
+```
 
-// Provider audio chunks may split an Int16 sample; the controller reconciles them.
+<!-- docs-check: assumes let audio = try HyperProxyAudioController(); let providerAudioChunk = Data() -->
+```swift
+// providerAudioChunk is the provider's actual decoded PCM16 data.
 try await audio.playPCM16(data: providerAudioChunk)
+```
+
+<!-- docs-check: assumes let audio = try HyperProxyAudioController() -->
+```swift
+// Always stop on completion, cancellation and failure. A stopped controller
+// cannot restart; create a new one for the next session.
 await audio.stop()
 ```
 
@@ -283,20 +340,21 @@ application has its own audio-session coordinator. Recording applications must i
 
 `AudioController` is provided as a short compatibility alias. Migration-friendly
 `micStream()`, `playPCM16Audio(data:)`, and `playPCM16Audio(base64String:)` spellings remain as
-deprecated aliases with fix-its, and are
-available; the microphone stream carries provider-neutral `Data` chunks instead of exposing an
+deprecated aliases with fix-its; the microphone stream carries provider-neutral `Data` chunks instead of exposing an
 `AVAudioPCMBuffer` across the SDK boundary.
 
 Provider image, audio, and document inputs can be encoded as validated data URLs without defining
 another DTO layer:
 
 ```swift
-let imageURL = HyperProxy.encodeImageAsURL(image, compressionQuality: 0.7)
+let audioData = Data() // replace with your file bytes
 let audioURL = try HyperProxy.dataURL(data: audioData, mimeType: "audio/wav")
 
 let decoded = try HyperProxyMedia.decodeDataURL(audioURL.absoluteString)
 ```
 
+`HyperProxy.encodeImageAsURL(image, compressionQuality: 0.7)` accepts a platform
+image (`UIImage` or `NSImage`); it returns nil if encoding fails.
 `encodeImageAsJpeg` remains as a deprecated capitalization alias for incremental
 migrations. `HyperProxyMedia.pngData(from:)` preserves lossless screenshots and diagrams. Data URL
 parsing accepts base64 payloads only, validates the MIME type, and never logs the decoded bytes.
@@ -305,7 +363,9 @@ parsing accepts base64 payloads only, validates the MIME type, and never logs th
 
 Use `HyperProxy.generic(...)` to build an API for a provider that is not in the generated catalog.
 The generic service keeps the same JSON, raw body, SSE, binary, and WebSocket transports as the
-typed providers. Through HyperProxy, the app still sends only its app key:
+typed providers. The route and `PreviewRequest`/`PreviewResponse` below illustrate an
+application-defined contract; replace all three with your provider's actual contract.
+Through HyperProxy, the app still sends only its app key:
 
 ```swift
 let provider = HyperProxy.generic(
@@ -340,7 +400,7 @@ Select `DeviceCheck` for lightweight Apple validation:
 ```swift
 let deviceCheck = HyperProxyDeviceCheck()
 
-let openAI = HyperProxy.openAI(
+let protectedOpenAI = HyperProxy.openAI(
   gatewayURL: gatewayURL,
   appKey: appKey,
   security: deviceCheck.security()
@@ -359,7 +419,7 @@ let appAttest = HyperProxyAppAttest(
   gatewayURL: gatewayURL
 )
 
-let openAI = HyperProxy.openAI(
+let protectedOpenAI = HyperProxy.openAI(
   gatewayURL: gatewayURL,
   appKey: appKey,
   security: appAttest.security(mode: .deviceToken)
@@ -367,12 +427,24 @@ let openAI = HyperProxy.openAI(
 ```
 
 `.deviceToken` performs challenge, registration, assertion, and token refresh. `.assertion` binds
-each request body to a fresh App Attest assertion and serializes requests to preserve counter
+the HTTP method, URL, body and signed routing headers to a fresh App Attest assertion and serializes requests to preserve counter
 ordering.
 
-For simulator development, read the bypass token from an Xcode scheme environment variable and
-explicitly use `HyperProxySecurity.simulatorBypass(token)`. Never compile that token into a release
-binary.
+For simulator development, mint a temporary bypass for a **test** project. Set
+`HYPERPROXY_ATTEST_BYPASS` in the Xcode scheme and explicitly select simulator security:
+
+```swift
+#if targetEnvironment(simulator)
+guard let token = ProcessInfo.processInfo.environment["HYPERPROXY_ATTEST_BYPASS"] else {
+  return
+}
+let security = HyperProxySecurity.simulatorBypass(token)
+#endif
+```
+
+The bypass expires after one hour and does not work for live projects. Never compile
+it into a release binary. DeviceCheck reads its separate scheme variable automatically.
+App Attest assertion mode is HTTP-only; use device-token or DeviceCheck mode for WebSockets.
 
 ## Runtime configuration and identity
 
@@ -383,9 +455,9 @@ unless explicitly enabled; JSON credential fields are redacted before the byte l
 HyperProxy.configure(
   logLevel: .info,
   resolveDNSOverTLS: true,
-  identityProvider: .fixed(clientID: signedInUser.id),
+  identityProvider: .fixed(clientID: "opaque-account-id"),
   logSink: HyperProxyLogSink { event in
-    telemetry.record(event)
+    print(event) // replace with your application's diagnostic sink
   }
 )
 ```
@@ -414,8 +486,10 @@ HyperProxy.configure(
 ## Firebase App Check
 
 The SDK intentionally does not import Firebase. Apps that already use Firebase provide its current
-token through a closure:
+token through a closure. Add FirebaseAppCheck to your application first; this
+integration block requires that external dependency:
 
+<!-- docs-check: external FirebaseAppCheck -->
 ```swift
 import FirebaseAppCheck
 import HyperProxyOpenAI
@@ -424,7 +498,7 @@ let security = HyperProxySecurity.firebaseAppCheck {
   try await AppCheck.appCheck().token(forcingRefresh: false).token
 }
 
-let openAI = HyperProxy.openAI(
+let protectedOpenAI = HyperProxy.openAI(
   gatewayURL: gatewayURL,
   appKey: appKey,
   security: security
@@ -441,12 +515,13 @@ Check tokens are supported; limited-use token replay consumption is a separate f
 Direct mode is an opt-in escape hatch for development, migration, or backends where the host app
 intentionally owns the provider credential:
 
+<!-- docs-check: assumes let providerKey = "<server-provider-key>" -->
 ```swift
 let direct = HyperProxyClient.direct(
   baseURL: URL(string: "https://api.openai.com")!,
   defaultHeaders: ["Authorization": "Bearer \(providerKey)"]
 )
-let openAI = HyperProxy.openAI(client: direct)
+let directOpenAI = HyperProxy.openAI(client: direct)
 ```
 
 No HyperProxy gateway headers are added. Do not ship a long-lived provider key inside a mobile
@@ -454,6 +529,7 @@ application; the normal split-key HyperProxy transport is the production path.
 
 Direct mode works for generic providers too:
 
+<!-- docs-check: assumes let providerKey = "<server-provider-key>" -->
 ```swift
 let provider = HyperProxy.generic(
   client: .direct(
@@ -469,10 +545,9 @@ let response = try await provider.send(.get, path: "v1/models")
 
 ```swift
 do {
-  let response = try await client.sendWithMetadata(
-    request,
-    decoding: MyResponse.self
-  )
+  let response = try await openAI.call(.responsesCreate)
+    .json(OpenAIResponseRequest(input: "Hello", model: .gpt5))
+    .decodedWithMetadata(OpenAIResponse.self)
   print(response.statusCode)
   print(response[header: "x-request-id"] ?? "no request id")
 } catch let error as HyperProxyError {
@@ -498,12 +573,17 @@ automatically:
 ```swift
 let client = HyperProxyClient(
   gatewayURL: gatewayURL,
-  appKey: "hp_live_...",
+  appKey: appKey,
   retryPolicy: HyperProxyRetryPolicy()  // 3 attempts, 429/503, Retry-After-aware
 )
 ```
 
 ## Certificate pinning
+
+Replace the placeholders below with Base64-encoded SHA-256 hashes of the full DER
+certificates served by your deployment (32 bytes before Base64 encoding). These are
+certificate hashes, not public-key/SPKI hashes. The placeholder strings are not valid
+pins and the initializer throws if they are copied unchanged.
 
 ```swift
 let pin = try HyperProxyCertificatePin(
@@ -515,7 +595,7 @@ let backup = try HyperProxyCertificatePin(
 let client = HyperProxyClient(
   configuration: HyperProxyConfiguration(
     gatewayURL: gatewayURL,
-    appKey: "hp_live_..."
+    appKey: appKey
   ),
   pins: ["api.hyperproxyai.com": [pin, backup]]
 )
@@ -592,7 +672,7 @@ keeps the body, and `gatewayRejection` decodes it:
 
 | Reason | Code(s) | HTTP | WebSocket | What to do |
 |---|---|---|---|---|
-| `planQuotaExceeded` | `plan_quota_exceeded` | 429 | 4029 | Wait for `periodResetsAt`; paid plans also report `limit` and the overage `cap`. |
+| `planQuotaExceeded` | `plan_quota_exceeded` | 429 | 4029 | Shared account allowance reached. Wait for `periodResetsAt` or update the plan; `limit` and `cap` report included usage and the effective stop. Account → Usage-based billing can disable paid usage beyond the included allowance. |
 | `budgetExceeded` | `budget_exceeded` | 429 | 4029 | The project's enforced monthly budget is used up; `monthlyBudgetUSD`, `periodResetsAt`. |
 | `budgetAccountingIncomplete` | `budget_accounting_incomplete` | 429 | 4029 | Retry later; the gateway is finalising recent costs. |
 | `budgetPricingUnavailable` | `budget_pricing_unavailable` | 429 | 4029 | The requested model has no price the hard budget can use; `detail` names it. |
@@ -604,6 +684,10 @@ keeps the body, and `gatewayRejection` decodes it:
 | `accountSuspended` | `account_suspended` | 403 | 4003 | Contact HyperProxy support. |
 | `unknownService` / `keyServiceMismatch` / `forbiddenPath` | as named | 404 / 403 | 4004 / 4003 | The URL, key, and endpoint allowlist disagree; fix the integration. |
 | `upstreamUnavailable` | `all_channels_unavailable`, `upstream_unreachable` | 502/503 | 4502/4503 | Transient; retry with backoff. |
+
+Usage-based billing is enabled by default for paid accounts. Disabling it stops new
+requests at included usage; in-flight requests can finish and accrued charges remain
+payable. Free always stops at its included allowance.
 
 `isTransient` is true only for rate limits and upstream outages. Provider errors (an OpenAI
 `{"error": …}` body, for instance) pass through unchanged and leave `gatewayRejection` nil.

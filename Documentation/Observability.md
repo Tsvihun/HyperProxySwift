@@ -1,5 +1,19 @@
 # Gateway controls and analytics without a gateway
 
+[Overview](../README.md) · [Usage guide](UsageGuide.md)
+
+These examples describe **0.5.0**. Gateway snippets reuse the configured `openAI`
+client from the usage guide and run in an `async throws` context:
+
+<!-- docs-check: prelude -->
+```swift
+import Foundation
+import HyperProxyOpenAI
+
+let gatewayURL = URL(string: "https://api.hyperproxyai.com/<project>/<service>")!
+let openAI = HyperProxy.openAI(gatewayURL: gatewayURL, appKey: "<app-key>")
+```
+
 These APIs require HyperProxy's prompt-environment and external-telemetry endpoints.
 They are additive to provider-native transport; existing `.preset`, `.session` and
 `.modelFallbacks` calls keep working.
@@ -47,6 +61,7 @@ they do not execute locally when the transport is direct. Provider authorization
 
 Create one event per completed direct call. Keep and reuse the same event on retry:
 
+<!-- docs-check: assumes let actualResponseModel = "gpt-5"; let elapsedMilliseconds = 320; let inputTotal = 1000; let outputTotal = 500; let cachedInput = 0 -->
 ```swift
 let event = try HyperProxyTelemetryEvent(
   provider: "openai", model: actualResponseModel,
@@ -59,6 +74,9 @@ let metricsJSON = try event.encoded()
 // Validate the app's identity and submitted metrics there before forwarding.
 ```
 
+The values such as `inputTotal` above come from your completed provider call, not
+from fixed estimates. The compiler checks their shapes with illustrative values.
+
 Token totals must both be known or both omitted. Cached and cache-write tokens are subsets
 of total input, so normalize provider-specific usage first (Anthropic's uncached input
 needs cache read/write added). Do not substitute zeros for unknown usage. HyperProxy computes
@@ -70,8 +88,10 @@ Your backend sends the JSON to
 `Authorization: Bearer <hp_obs_ingest_token>` and an application `User-Agent`.
 Use a project token with **ingest** scope, stored only on your backend.
 
-For a trusted macOS server/tool process using this package:
+For a trusted macOS server/tool process using this package, load the project ID
+and ingest token from server environment variables. `event` is the DTO above:
 
+<!-- docs-check: assumes let projectID = "<project-public-id>"; let serverEnvironmentToken = "<hp_obs_ingest_token>"; let event = try HyperProxyTelemetryEvent(provider: "openai", model: "gpt-5", statusCode: 200, durationMS: 320) -->
 ```swift
 let telemetry = try HyperProxyTelemetryClient(
   projectID: projectID,

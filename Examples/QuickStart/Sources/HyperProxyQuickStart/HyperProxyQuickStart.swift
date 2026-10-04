@@ -16,11 +16,15 @@ struct HyperProxyQuickStart {
     guard
       let gatewayURLString = environment["HYPERPROXY_GATEWAY_URL"],
       let gatewayURL = URL(string: gatewayURLString),
-      let appKey = environment["HYPERPROXY_APP_KEY"]
+      let appKey = environment["HYPERPROXY_APP_KEY"],
+      !appKey.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+      gatewayURL.host != nil,
+      gatewayURL.scheme == "https"
     else {
       print(
         """
-        Set HYPERPROXY_GATEWAY_URL and HYPERPROXY_APP_KEY, then run:
+        Set a full HTTPS service URL in HYPERPROXY_GATEWAY_URL and its app key
+        in HYPERPROXY_APP_KEY, then run:
           swift run --package-path Examples/QuickStart
         """
       )
@@ -34,17 +38,24 @@ struct HyperProxyQuickStart {
     var call = openAI.call(.responsesCreate)
       .trace(
         try HyperProxyTrace(sessionID: UUID().uuidString, properties: ["feature": "quick-start"]))
-    if let preset = environment["HYPERPROXY_PRESET"] {
-      call = call.prompt(try HyperProxyPrompt(preset, selection: .environment("production")))
+    if let preset = environment["HYPERPROXY_PRESET"], !preset.isEmpty {
+      call = call.prompt(
+        try HyperProxyPrompt(
+          preset,
+          selection: .environment(environment["HYPERPROXY_PRESET_ENVIRONMENT"] ?? "production")
+        )
+      )
     }
     let response = try await call.json(
       [
-        "model": "gpt-5",
+        "model": .string(environment["HYPERPROXY_MODEL"] ?? "gpt-5"),
         "input": "Reply with a five-word greeting.",
       ] as HyperProxyJSONValue
     )
     .decodedWithMetadata(HyperProxyJSONValue.self)
-    print(response.body)
+    let encoder = JSONEncoder()
+    encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+    print(String(decoding: try encoder.encode(response.body), as: UTF8.self))
     print(
       "Request:", response.requestID ?? "unknown", "Preset revision:",
       response.presetVersion.map(String.init) ?? "none")

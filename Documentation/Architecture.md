@@ -88,7 +88,7 @@ path/query/header values, every catalog body mode, response metadata, SSE, JSONL
 WebSockets, cursor pagination, and asynchronous job polling. Pagination is pull-based: constructing the
 sequence sends nothing, and each `next()` fetches one page. Polling enforces a monotonic deadline
 before and during requests. This is a shared capability rather
-than 2,292 hand-written implementations, so a transport fix applies to every provider consistently.
+than thousands of hand-written implementations, so a transport fix applies to every provider consistently.
 
 Where a provider publishes OpenAPI, AsyncAPI, or Google Discovery, its module also contains
 provider-prefixed request, response, event, enum, and parameter models plus typed service methods.

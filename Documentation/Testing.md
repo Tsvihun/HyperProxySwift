@@ -6,6 +6,23 @@ Run the package test suite:
 swift test
 ```
 
+Typecheck the actual README and all Swift guide blocks, then compile the executable:
+
+```sh
+node Scripts/check_readme_examples.mjs
+swift build --package-path Examples/QuickStart
+```
+
+The checker reads code directly from Markdown, preserves source line diagnostics,
+and rejects deprecated API calls. Shared setup uses `docs-check: prelude`;
+`continues` joins a preceding example; `assumes` supplies values explicitly described
+in the prose. Package manifest fragments and the external FirebaseAppCheck integration
+are reported separately. It does not execute AI calls. For the sibling website checkout:
+
+```sh
+node Scripts/check_readme_examples.mjs --website ../hyperproxy/landing/docs.html
+```
+
 Run an iOS Simulator build:
 
 ```bash

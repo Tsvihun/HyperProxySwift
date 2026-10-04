@@ -1,5 +1,13 @@
 # Provider recipes
 
+[Overview](../README.md) · [Usage guide](UsageGuide.md)
+
+These examples target **0.5.0**. Run them from an `async throws`
+context with the matching provider product imported. Each provider needs its own
+configured gateway service: replace both placeholders below with values from that
+service. Model IDs and paid/beta access depend on your provider account. Raw JSON
+examples compile without guaranteeing that a model or endpoint is enabled for you.
+
 Provider modules generated from an official OpenAPI, AsyncAPI, or Discovery schema include
 provider-prefixed request, response, event, enum, and parameter types. Prefer their typed service
 methods when available. The raw examples below remain useful for dynamic payloads, heterogeneous
@@ -20,7 +28,7 @@ import HyperProxyOpenAI
 
 let response: OpenAIResponse = try await HyperProxy
   .openAI(gatewayURL: gatewayURL, appKey: appKey)
-  .responsesCreate(OpenAICreateResponse(input: "Hello", model: .modelIdsShared(.gpt5)))
+  .responsesCreate(OpenAIResponseRequest(input: "Hello", model: .gpt5))
 ```
 
 `HyperProxyJSONValue` is the lossless escape hatch for open unions and fields released after the
@@ -29,18 +37,13 @@ checked-in snapshot. You may also supply your own `Codable & Sendable` types to 
 Every provider service also exposes an immutable fluent call. Use it when an endpoint needs several
 path/query/header values or one of the reusable list/job primitives:
 
-<!-- docs-check: skip -->
 ```swift
-let call = try service
-  .someGeneratedOperation
-  .path("resource_id", resourceID)
-  .query("limit", "100")
-  .header("Provider-Beta", "feature-2026-08-01")
-
-let value: MyProviderResponse = try await call.decoded()
+let service = HyperProxy.openAI(gatewayURL: gatewayURL, appKey: appKey)
+let call = service.batchesRetrieve.path("batch_id", "batch_123")
+let value: HyperProxyJSONValue = try await call.decoded()
 ```
 
-`service.call(.someGeneratedOperation)` produces the same value when the operation is chosen at
+`service.call(.batchesRetrieve)` produces the same value when the operation is chosen at
 runtime.
 
 ## Providers outside the catalog
@@ -76,25 +79,28 @@ intentionally owns the credential.
 
 Cursor envelopes remain provider-native; only cursor traversal is shared:
 
-<!-- docs-check: skip -->
 ```swift
-for try await page in try call.pages(
-  cursorQueryName: "page_token",
-  decoding: MyProviderPage.self,
-  nextCursor: { $0.nextPageToken }
+let service = HyperProxy.openAI(gatewayURL: gatewayURL, appKey: appKey)
+for try await page in try service.batchesList.pages(
+  cursorQueryName: "after",
+  decoding: OpenAIListBatchesResponse.self,
+  nextCursor: { $0.hasMore ? $0.lastId : nil }
 ) {
-  consume(page.body.items)
+  for batch in page.body.data { print(batch.id) }
 }
 ```
 
 For provider jobs, polling respects `Retry-After`, preserves response headers, supports backoff and
 timeout limits, and stops according to the provider's own status model:
 
-<!-- docs-check: skip -->
 ```swift
-let completed = try await jobCall.poll(decoding: MyJob.self) {
-  ["completed", "failed", "cancelled"].contains($0.status)
-}
+let service = HyperProxy.openAI(gatewayURL: gatewayURL, appKey: appKey)
+let completed = try await service.batchesRetrieve
+  .path("batch_id", "batch_123")
+  .poll(decoding: OpenAIBatch.self, policy: .init(timeout: 300)) {
+    [.completed, .failed, .cancelled, .expired].contains($0.status)
+  }
+print(completed.body.status)
 ```
 
 ## Black Forest Labs
@@ -111,7 +117,6 @@ let submission = try await bfl.submit(
   .imagesFlux2Pro,
   body: BFLFlux2Inputs(
     prompt: "A glass observatory above the clouds",
-    inputImage: "https://example.com/reference.png",
     outputFormat: .webp,
     webhookSecret: nil,
     webhookUrl: nil
@@ -190,6 +195,8 @@ let response: HyperProxyJSONValue = try await service.send(
 
 ## Anthropic
 
+Use an exact API model ID from the [official model list](https://platform.claude.com/docs/en/models/overview).
+
 ```swift
 import HyperProxyAnthropic
 
@@ -197,7 +204,7 @@ let service = HyperProxy.anthropic(gatewayURL: gatewayURL, appKey: appKey)
 let response: HyperProxyJSONValue = try await service.send(
   .messagesCreate,
   json: [
-    "model": "claude-sonnet",
+    "model": "claude-sonnet-5-5",
     "max_tokens": 512,
     "messages": [["role": "user", "content": "Hello"]],
   ] as HyperProxyJSONValue,
@@ -221,13 +228,16 @@ let response: HyperProxyJSONValue = try await service.send(
 
 ## DeepSeek
 
+The [official Chat API](https://api-docs.deepseek.com/api/create-chat-completion/) lists
+`deepseek-flash` and `deepseek-v4-pro`; replace the example model if your account needs another.
+
 ```swift
 import HyperProxyDeepSeek
 
 let service = HyperProxy.deepSeek(gatewayURL: gatewayURL, appKey: appKey)
 let response: HyperProxyJSONValue = try await service.send(
   .chatCompletionsCreate,
-  json: ["model": "deepseek-chat", "messages": [["role": "user", "content": "Hello"]]]
+  json: ["model": "deepseek-flash", "messages": [["role": "user", "content": "Hello"]]]
     as HyperProxyJSONValue,
   decoding: HyperProxyJSONValue.self
 )

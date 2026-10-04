@@ -1,5 +1,8 @@
 # Provider coverage contract
 
+This document describes the **0.5.0 release**, generated from the 2026-10-03 snapshot.
+For 0.4.1, read [its coverage contract](https://github.com/Tsvihun/HyperProxySwift/blob/0.4.1/PROVIDER_COVERAGE.md).
+
 ## The invariant
 
 No provider registry may block a request.
@@ -45,7 +48,10 @@ Stability AI, Black Forest Labs, Ideogram, Runway, Luma, Kling, ElevenLabs, Cart
 AssemblyAI, Speechmatics, DeepL, Voyage AI, Jina AI, Pinecone, Weaviate, Qdrant, and custom
 OpenAI-compatible or completely private APIs.
 
-This list is descriptive, not normative. Absence from it never means unsupported.
+This list describes transport use cases, not built-in integration or authentication
+coverage. AWS signing, cloud identity, private-network access and provider-specific
+protocols may require caller-owned code or gateway configuration. Generic transport
+does not create an origin allowlist, provider permission or a service credential.
 
 ## Generated provider catalog
 
@@ -55,13 +61,14 @@ checked-in snapshot is built from official OpenAPI, AsyncAPI, and Google Discove
 where providers publish them. Reviewed manual definitions remain only for providers whose public
 documentation does not expose a complete machine-readable schema.
 
-The current snapshot contains 2,292 routes from 53 official specifications or watched
+The current snapshot contains 2,342 routes from 53 official specifications or watched
 documentation sources. The number is evidence for this release, not a permanent completeness
 claim: scheduled CI is the mechanism that detects when providers move it.
 
-As of the 2026-09-19 snapshot, the maintainer audit has no known route-level gap in the published
-API surfaces of those 18 provider families. This is a dated audit result, not a claim that
-an upstream cannot publish a new endpoint immediately after the snapshot.
+The snapshot follows pinned specifications and reviewed documentation. Anthropic and
+Groq currently use their last locked resolved schemas because the upstream metadata no
+longer exposes a new schema URL. Their unchanged hashes do not prove coverage of every
+current documentation/SDK feature. Schema coverage is not live endpoint conformance.
 
 The catalog records the upstream method and path, exact request and successful-response media
 types, normalized request and response modes, API surface, stable/beta lifecycle, public/admin
@@ -78,8 +85,8 @@ generation tooling as part of the public package.
 Typed layers should be generated from official machine-readable schemas when available and
 hand-refined only where Swift ergonomics require it.
 
-The current release artifact contains 17,559 generated provider models with 42,316 named fields and
-2,036 typed operation bindings from official machine-readable or reviewed schemas spanning all 18
+The checked-in source artifact contains 18,272 generated provider models with 44,009 named fields and
+2,099 typed operation bindings from official machine-readable or reviewed schemas spanning all 18
 provider families. DeepSeek's Responses, Chat/FIM, Models, Balance, and Anthropic-compatible
 surfaces are modeled from reviewed official documentation. Each AI uses both of its official
 OpenAPI documents plus a reviewed each::sense schema, including its documented SSE event fields.
@@ -103,7 +110,7 @@ typed.
 
 Some official schemas describe heterogeneous unions or deliberately open objects that Swift
 cannot represent without losing forward compatibility. Those positions use
-`HyperProxyJSONValue`; the generated manifest currently records 2,263 such fallbacks. This is an
+`HyperProxyJSONValue`; the generated manifest currently records 517 such fallbacks. This is an
 explicit escape hatch, not evidence that every provider field is strongly typed.
 
 Each typed endpoint must expose an escape hatch for:
