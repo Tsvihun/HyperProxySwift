@@ -59,6 +59,42 @@ loads a replacement configuration without rebuilding, until the app restarts.
 Local profiles are ignored by Git, but the bundle contains them: keep this build
 for personal testing rather than distributing a credential-bearing example app.
 
+## Open the screen in another app
+
+Add the local Swift package at `Examples/Playground` to your iOS 17+ test target
+and link its **HyperProxyPlayground** product. The screen, view model, recipes,
+and transport stay in this package; the host only opens the view:
+
+```swift
+import HyperProxyPlayground
+import SwiftUI
+
+// Inside an App's body:
+WindowGroup { HyperProxyPlaygroundView() }
+```
+
+For a UIKit test host, present the same screen with a `UIHostingController`:
+
+```swift
+import HyperProxyPlayground
+import SwiftUI
+
+// Inside a UIViewController:
+present(UIHostingController(rootView: HyperProxyPlaygroundView()), animated: true)
+```
+
+The default initializer reads `Profiles.json` from the **host app's bundle**.
+Include your ignored local configuration as that resource, or use
+**Add credentials → Import profiles JSON** after opening the screen. For a separate
+resource bundle, pass `HyperProxyPlaygroundView(profilesBundle: yourBundle)`.
+The screen does not change the host's global SDK logging configuration; SDK logging
+defaults to off. Keep body logging disabled when testing with credentials.
+
+This optional UI product belongs to the example package, keeping SwiftUI and UIKit
+out of the SDK's Core product. It is available from the current local checkout;
+the published 0.5.0 tag predates this example. The UI is iOS-only; model and transport
+tests also run on macOS.
+
 ## What to try
 
 | Provider | Recipes |
@@ -95,8 +131,9 @@ remain inspectable as event JSON. TTS binary responses can be played on the devi
 
 | Layer | Responsibility |
 | --- | --- |
-| `App/PlaygroundView.swift` | SwiftUI presentation, bindings, pickers, and file-picker presentation |
-| `App/PlaygroundViewModel.swift` | Main-actor state, user actions, file loading, run lifecycle, cancellation, and media presentation |
+| `App/PlaygroundApp.swift` | Standalone launcher calling the reusable screen |
+| `Sources/HyperProxyPlayground/HyperProxyPlaygroundView.swift` | Public SwiftUI screen, bindings, pickers, and file-picker presentation |
+| `Sources/HyperProxyPlayground/PlaygroundViewModel.swift` | Main-actor state, user actions, file loading, run lifecycle, cancellation, and media presentation |
 | `Sources/PlaygroundKit` | Configuration and request models, recipes, output formatting, and SDK transport |
 | `Tests/PlaygroundKitTests` | Request/authentication contracts and deterministic transport tests |
 
@@ -112,7 +149,7 @@ demonstrate the Core transport with provider-native JSON.
 The response section displays status, duration, Request ID, headers, events, and the
 original response body. **Copy report** preserves the last run's context even if you
 select another profile. Configured app keys and bypass tokens are redacted, sensitive
-headers are masked, and SDK body logging is disabled. Response/prompt content is still
+headers are masked, and SDK body logging defaults to disabled. Response/prompt content is still
 part of a report: review it before sharing. Output is capped at 200,000 characters;
 streams retain their latest events.
 

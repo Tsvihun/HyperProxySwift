@@ -10,8 +10,11 @@ import PackageDescription
 
 let package = Package(
   name: "HyperProxyPlayground",
-  platforms: [.iOS(.v16), .macOS(.v13)],
-  products: [.library(name: "PlaygroundKit", targets: ["PlaygroundKit"])],
+  platforms: [.iOS(.v17), .macOS(.v13)],
+  products: [
+    .library(name: "PlaygroundKit", targets: ["PlaygroundKit"]),
+    .library(name: "HyperProxyPlayground", targets: ["HyperProxyPlayground"]),
+  ],
   dependencies: [
     .package(path: "../..")
   ],
@@ -23,6 +26,12 @@ let package = Package(
         .product(name: "HyperProxyOpenAI", package: "HyperProxySwift"),
         .product(name: "HyperProxyAnthropic", package: "HyperProxySwift"),
         .product(name: "HyperProxyGemini", package: "HyperProxySwift"),
+      ]),
+    .target(
+      name: "HyperProxyPlayground",
+      dependencies: [
+        "PlaygroundKit",
+        .product(name: "HyperProxyCore", package: "HyperProxySwift"),
       ]),
     .testTarget(name: "PlaygroundKitTests", dependencies: ["PlaygroundKit"]),
   ]

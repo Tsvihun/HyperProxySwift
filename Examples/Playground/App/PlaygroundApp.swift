@@ -6,16 +6,12 @@
 //  Copyright © 2026 HyperProxy. All rights reserved.
 //
 
-import HyperProxyCore
+import HyperProxyPlayground
 import SwiftUI
 
 @main
 struct PlaygroundApp: App {
-  init() {
-    HyperProxy.configure(
-      logLevel: .off, requestBodyLogging: .disabled, responseBodyLogging: .disabled)
-  }
   var body: some Scene {
-    WindowGroup { PlaygroundView() }
+    WindowGroup { HyperProxyPlaygroundView() }
   }
 }

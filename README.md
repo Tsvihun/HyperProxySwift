@@ -195,6 +195,7 @@ Do not post keys, customer data or exploitable details in a public issue.
 - [Detailed usage guide](Documentation/UsageGuide.md): transport, streaming, media and security.
 - [SwiftUI Playground](Examples/Playground): an MVVM iOS app for typed calls, JSON, SSE,
   uploads, WebSockets, and response diagnostics using your own gateway configuration.
+  Its optional `HyperProxyPlayground` product exposes the same screen for other test apps.
 - [Runnable quick start](Examples/QuickStart): a small executable example.
 - [Device security probe](Examples/DeviceSecurityProbe): physical-device verification.
 - [Observability](Documentation/Observability.md): sessions, prompts and external telemetry.
