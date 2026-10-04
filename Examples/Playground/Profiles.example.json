@@ -1,0 +1,125 @@
+{
+  "profiles": [
+    {
+      "id": "openai",
+      "name": "OpenAI",
+      "provider": "openai",
+      "gatewayURL": "",
+      "appKey": "",
+      "models": {},
+      "attestation": "none",
+      "simulatorBypassToken": "",
+      "timeout": 120
+    },
+    {
+      "id": "anthropic",
+      "name": "Anthropic Claude",
+      "provider": "anthropic",
+      "gatewayURL": "",
+      "appKey": "",
+      "models": {},
+      "attestation": "none",
+      "simulatorBypassToken": "",
+      "timeout": 120
+    },
+    {
+      "id": "gemini",
+      "name": "Google Gemini",
+      "provider": "gemini",
+      "gatewayURL": "",
+      "appKey": "",
+      "models": {},
+      "attestation": "none",
+      "simulatorBypassToken": "",
+      "timeout": 120
+    },
+    {
+      "id": "deepseek",
+      "name": "DeepSeek",
+      "provider": "deepseek",
+      "gatewayURL": "",
+      "appKey": "",
+      "models": {},
+      "attestation": "none",
+      "simulatorBypassToken": "",
+      "timeout": 120
+    },
+    {
+      "id": "mistral",
+      "name": "Mistral",
+      "provider": "mistral",
+      "gatewayURL": "",
+      "appKey": "",
+      "models": {},
+      "attestation": "none",
+      "simulatorBypassToken": "",
+      "timeout": 120
+    },
+    {
+      "id": "perplexity",
+      "name": "Perplexity \u00b7 Sonar / Agent",
+      "provider": "perplexity",
+      "gatewayURL": "",
+      "appKey": "",
+      "models": {},
+      "attestation": "none",
+      "simulatorBypassToken": "",
+      "timeout": 120
+    },
+    {
+      "id": "xai",
+      "name": "xAI Grok",
+      "provider": "xai",
+      "gatewayURL": "",
+      "appKey": "",
+      "models": {},
+      "attestation": "none",
+      "simulatorBypassToken": "",
+      "timeout": 120
+    },
+    {
+      "id": "novita",
+      "name": "Novita",
+      "provider": "novita",
+      "gatewayURL": "",
+      "appKey": "",
+      "models": {},
+      "attestation": "none",
+      "simulatorBypassToken": "",
+      "timeout": 120
+    },
+    {
+      "id": "zai",
+      "name": "Z.AI",
+      "provider": "zai",
+      "gatewayURL": "",
+      "appKey": "",
+      "models": {},
+      "attestation": "none",
+      "simulatorBypassToken": "",
+      "timeout": 120
+    },
+    {
+      "id": "bfl",
+      "name": "Black Forest Labs",
+      "provider": "bfl",
+      "gatewayURL": "",
+      "appKey": "",
+      "models": {},
+      "attestation": "none",
+      "simulatorBypassToken": "",
+      "timeout": 120
+    },
+    {
+      "id": "custom",
+      "name": "Custom API",
+      "provider": "custom",
+      "gatewayURL": "",
+      "appKey": "",
+      "models": {},
+      "attestation": "none",
+      "simulatorBypassToken": "",
+      "timeout": 120
+    }
+  ]
+}

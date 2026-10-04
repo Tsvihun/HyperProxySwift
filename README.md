@@ -6,7 +6,7 @@ AI gateway to keep provider API keys out of your app, or choose explicit direct-
 transport in a trusted environment.
 
 [Website](https://hyperproxyai.com/) · [Documentation](https://hyperproxyai.com/docs/)
-· [Usage guide](Documentation/UsageGuide.md) · [Examples](Examples/QuickStart)
+· [Usage guide](Documentation/UsageGuide.md) · [SwiftUI Playground](Examples/Playground)
 · [Issues](https://github.com/Tsvihun/HyperProxySwift/issues)
 
 **Current release: 0.5.0.** The examples below use that version's shorter request names,
@@ -193,6 +193,8 @@ Do not post keys, customer data or exploitable details in a public issue.
 ## Documentation and support
 
 - [Detailed usage guide](Documentation/UsageGuide.md): transport, streaming, media and security.
+- [SwiftUI Playground](Examples/Playground): an MVVM iOS app for typed calls, JSON, SSE,
+  uploads, WebSockets, and response diagnostics using your own gateway configuration.
 - [Runnable quick start](Examples/QuickStart): a small executable example.
 - [Device security probe](Examples/DeviceSecurityProbe): physical-device verification.
 - [Observability](Documentation/Observability.md): sessions, prompts and external telemetry.

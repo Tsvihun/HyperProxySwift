@@ -5,6 +5,8 @@ __pycache__/
 /Packages
 Examples/**/.build/
 Examples/**/.swiftpm/
+Examples/Playground/Profiles.local.json
+Examples/Playground/Package.resolved
 xcuserdata/
 DerivedData/
 .swiftpm/configuration/registries.json

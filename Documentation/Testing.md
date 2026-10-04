@@ -23,6 +23,19 @@ are reported separately. It does not execute AI calls. For the sibling website c
 node Scripts/check_readme_examples.mjs --website ../hyperproxy/landing/docs.html
 ```
 
+The [SwiftUI Playground](../Examples/Playground) has a separate MVVM app and
+model/transport test suite. Both run in CI without gateway credentials:
+
+```sh
+swift test --package-path Examples/Playground --scratch-path .build
+xcodebuild -project Examples/Playground/Playground.xcodeproj \
+  -scheme Playground -destination 'generic/platform=iOS Simulator' \
+  build CODE_SIGNING_ALLOWED=NO
+```
+
+The Playground tests use URLProtocol fixtures. A successful build or fixture test
+does not prove a live provider call or accepted physical-device attestation.
+
 Run an iOS Simulator build:
 
 ```bash

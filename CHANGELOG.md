@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+- Add the SwiftUI MVVM SDK Playground with provider recipes, typed and raw calls,
+  SSE, multipart, WebSockets, image/audio previews, and redacted diagnostic reports.
+  Keep credentials local and validate its transport tests and simulator build in CI.
+- Correct the SDK version reported in request headers and diagnostics to `0.5.0`.
+  Existing published tags are unchanged.
+
 ## 0.5.0 — 2026-10-04
 
 - Refresh official provider schemas on 2026-10-03: 2,342 routes, 18,272 generated
