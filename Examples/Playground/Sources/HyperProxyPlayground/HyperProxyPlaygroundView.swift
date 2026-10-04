@@ -10,9 +10,11 @@
   import Foundation
   import PlaygroundKit
   import SwiftUI
+  import UIKit
   import UniformTypeIdentifiers
 
   /// A reusable iOS testing screen backed by the Playground's shared MVVM implementation.
+  @available(iOS 17.0, *)
   public struct HyperProxyPlaygroundView: View {
     @Environment(\.scenePhase) private var scenePhase
     @StateObject private var viewModel: PlaygroundViewModel
@@ -195,6 +197,17 @@
             viewModel.cancel()
             viewModel.stopAudio()
           }
+        }
+        .onReceive(
+          NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)
+        ) {
+          _ in
+          viewModel.cancel()
+          viewModel.stopAudio()
+        }
+        .onDisappear {
+          viewModel.cancel()
+          viewModel.stopAudio()
         }
         .sheet(
           isPresented: $showingSetup,

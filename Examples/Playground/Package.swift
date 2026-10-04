@@ -10,7 +10,7 @@ import PackageDescription
 
 let package = Package(
   name: "HyperProxyPlayground",
-  platforms: [.iOS(.v17), .macOS(.v13)],
+  platforms: [.iOS(.v15), .macOS(.v13)],
   products: [
     .library(name: "PlaygroundKit", targets: ["PlaygroundKit"]),
     .library(name: "HyperProxyPlayground", targets: ["HyperProxyPlayground"]),

@@ -9,6 +9,7 @@
 #if os(iOS)
   import SwiftUI
 
+  @available(iOS 17.0, *)
   struct JSONEditor: View {
     @Binding var text: String
     let label: String

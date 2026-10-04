@@ -80,7 +80,9 @@ import HyperProxyPlayground
 import SwiftUI
 
 // Inside a UIViewController:
-present(UIHostingController(rootView: HyperProxyPlaygroundView()), animated: true)
+if #available(iOS 17.0, *) {
+  present(UIHostingController(rootView: HyperProxyPlaygroundView()), animated: true)
+}
 ```
 
 The default initializer reads `Profiles.json` from the **host app's bundle**.
@@ -94,6 +96,43 @@ This optional UI product belongs to the example package, keeping SwiftUI and UIK
 out of the SDK's Core product. It is available from the current local checkout;
 the published 0.5.0 tag predates this example. The UI is iOS-only; model and transport
 tests also run on macOS.
+
+### Use the existing app identity
+
+For App Attest testing, run the Playground inside your existing UIKit app target.
+Keep its Bundle ID, signing team, entitlements, Info.plist, and capabilities.
+The package supports iOS 15+ hosts; the interactive screen requires iOS 17+.
+
+In `application(_:didFinishLaunchingWithOptions:)`, before normal app startup:
+
+```swift
+if HyperProxyPlaygroundLauncher.isEnabled { return true }
+```
+
+In the host scene delegate's `scene(_:willConnectTo:options:)`, before normal startup:
+
+```swift
+if let playgroundWindow = HyperProxyPlaygroundLauncher.makeWindow(for: scene) {
+  window = playgroundWindow
+  return
+}
+```
+
+Add `-hyperproxy-playground` to the test scheme's launch arguments. The SDK owns
+window creation and the shared screen; the host keeps its existing scene delegate
+and scene configuration name, so restoring scenes does not pin either launch mode.
+The screen reads the host's `Profiles.json` and uses its actual application identity.
+On older iOS versions, it displays an iOS 17 requirement instead of the normal flow.
+
+Keep the existing `application(_:configurationForConnecting:options:)` unchanged.
+The scene delegate chooses the root window for each launch, including when iOS
+restores an older scene without asking for a new configuration.
+
+This launch mode is enabled only in Debug. Normal launches and Release builds use
+the host's existing flow. Skip host notification, scene lifecycle, shortcut, and
+deep-link callbacks while `isEnabled` is true if those callbacks depend on services
+omitted by test startup. Complete shortcut handlers with `false` in this mode.
+Include private profiles only in your local Debug builds.
 
 ## What to try
 
@@ -132,6 +171,7 @@ remain inspectable as event JSON. TTS binary responses can be played on the devi
 | Layer | Responsibility |
 | --- | --- |
 | `App/PlaygroundApp.swift` | Standalone launcher calling the reusable screen |
+| `Sources/HyperProxyPlayground/HyperProxyPlaygroundLauncher.swift` | Debug launch argument and SDK-owned window for an existing app scene |
 | `Sources/HyperProxyPlayground/HyperProxyPlaygroundView.swift` | Public SwiftUI screen, bindings, pickers, and file-picker presentation |
 | `Sources/HyperProxyPlayground/PlaygroundViewModel.swift` | Main-actor state, user actions, file loading, run lifecycle, cancellation, and media presentation |
 | `Sources/PlaygroundKit` | Configuration and request models, recipes, output formatting, and SDK transport |

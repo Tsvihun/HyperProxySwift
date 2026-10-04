@@ -15,6 +15,7 @@
   import UIKit
   import UniformTypeIdentifiers
 
+  @available(iOS 17.0, *)
   @MainActor
   final class PlaygroundViewModel: ObservableObject {
     @Published private(set) var profiles: [PlaygroundProfile] = []
