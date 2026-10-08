@@ -49,6 +49,16 @@ struct GeneratedProviderModelsTests {
     }
   }
 
+  @Test("Legacy nullable enum names retain raw-value construction and encoding")
+  func legacyNullableEnumNames() throws {
+    let verbosity = try #require(OpenAIVerbosityAnyOf1(rawValue: "low"))
+    #expect(verbosity.rawValue == "low")
+    #expect(try JSONEncoder().encode(verbosity) == Data(#""low""#.utf8))
+    let background: OpenAICreateImageEditRequestBackgroundAnyOf1 = .transparent
+    #expect(background.rawValue == "transparent")
+    #expect(try JSONEncoder().encode(background) == Data(#""transparent""#.utf8))
+  }
+
   @Test("OpenAI image edits expose every typed multipart field")
   func openAIImageEditMultipartRequest() throws {
     let request = OpenAIImageEditMultipartRequest(

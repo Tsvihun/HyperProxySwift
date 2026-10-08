@@ -10,4 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIBetaVerbosityAnyOf1 = OpenAIBetaVerbosity?
+public typealias OpenAIBetaVerbosityAnyOf1 = OpenAIBetaVerbosity

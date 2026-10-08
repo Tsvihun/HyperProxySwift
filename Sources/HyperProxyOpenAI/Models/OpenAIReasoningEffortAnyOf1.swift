@@ -10,4 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIReasoningEffortAnyOf1 = OpenAIReasoningEffort?
+public typealias OpenAIReasoningEffortAnyOf1 = OpenAIReasoningEffort

@@ -632,7 +632,7 @@
     },
     {
       "module": "HyperProxyOpenAI",
-      "artifactSha256": "bed60659fbedc84ea0a9d8cd694330484fd7e3aefe3cf50cbeeed8e10fbe3ec5",
+      "artifactSha256": "075e4bdd2f8be6a2b7610bf73fd5a1a1652ff319e99348a5822e484fba774543",
       "reviewStatus": "pending",
       "sourceIDs": [
         "openai/openapi"

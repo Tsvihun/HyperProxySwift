@@ -10,4 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIBetaReasoningEffortAnyOf1 = OpenAIBetaReasoningEffort?
+public typealias OpenAIBetaReasoningEffortAnyOf1 = OpenAIBetaReasoningEffort

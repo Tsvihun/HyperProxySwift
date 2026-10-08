@@ -10,4 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIServiceTierResponsesAnyOf1 = OpenAIServiceTierResponses?
+public typealias OpenAIServiceTierResponsesAnyOf1 = OpenAIServiceTierResponses
