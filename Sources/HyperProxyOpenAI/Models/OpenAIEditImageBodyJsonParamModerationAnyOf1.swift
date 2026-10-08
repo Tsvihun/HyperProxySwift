@@ -10,7 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum OpenAIEditImageBodyJsonParamModerationAnyOf1: String, Codable, Hashable, Sendable {
-  case low = "low"
-  case auto = "auto"
-}
+public typealias OpenAIEditImageBodyJsonParamModerationAnyOf1 =
+  OpenAIEditImageBodyJsonParamModeration

@@ -53,7 +53,7 @@ public struct ElevenLabsWidgetConfigResponseModel: Codable, Sendable {
   public var styles: ElevenLabsWidgetStyles?
   public var supportedLanguageOverrides: [String]?
   public var supportsTextOnly: Bool?
-  public var syntaxHighlightTheme: ElevenLabsWidgetConfigResponseModelSyntaxHighlightThemeAnyOf1?
+  public var syntaxHighlightTheme: ElevenLabsWidgetConfigResponseModelSyntaxHighlightTheme?
   public var termsHtml: String?
   public var termsKey: String?
   public var termsText: String?
@@ -108,7 +108,7 @@ public struct ElevenLabsWidgetConfigResponseModel: Codable, Sendable {
     styles: ElevenLabsWidgetStyles? = nil,
     supportedLanguageOverrides: [String]? = nil,
     supportsTextOnly: Bool? = nil,
-    syntaxHighlightTheme: ElevenLabsWidgetConfigResponseModelSyntaxHighlightThemeAnyOf1? = nil,
+    syntaxHighlightTheme: ElevenLabsWidgetConfigResponseModelSyntaxHighlightTheme? = nil,
     termsHtml: String? = nil,
     termsKey: String? = nil,
     termsText: String? = nil,

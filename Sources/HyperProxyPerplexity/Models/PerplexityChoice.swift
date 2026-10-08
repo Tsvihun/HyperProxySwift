@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct PerplexityChoice: Codable, Sendable {
   public var delta: PerplexityChatMessageOutput
-  public var finishReason: PerplexityChoiceFinishReasonAnyOf1?
+  public var finishReason: PerplexityChoiceFinishReason?
   public var index: Int
   public var message: PerplexityChatMessageOutput
 
@@ -20,7 +20,7 @@ public struct PerplexityChoice: Codable, Sendable {
     delta: PerplexityChatMessageOutput,
     index: Int,
     message: PerplexityChatMessageOutput,
-    finishReason: PerplexityChoiceFinishReasonAnyOf1? = nil
+    finishReason: PerplexityChoiceFinishReason? = nil
   ) {
     self.delta = delta
     self.finishReason = finishReason

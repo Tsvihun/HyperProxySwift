@@ -10,11 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsResourceMetadataResponseModelAnonymousAccessLevelOverrideAnyOf1: String,
-  Codable, Hashable, Sendable
-{
-  case admin = "admin"
-  case editor = "editor"
-  case commenter = "commenter"
-  case viewer = "viewer"
-}
+public typealias ElevenLabsResourceMetadataResponseModelAnonymousAccessLevelOverrideAnyOf1 =
+  ElevenLabsResourceMetadataResponseModelAnonymousAccessLevelOverride

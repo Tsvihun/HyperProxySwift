@@ -10,8 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsCaptionStyleModelTextBlendModeAnyOf1: String, Codable, Hashable, Sendable {
-  case normal = "normal"
-  case difference = "difference"
-  case multiply = "multiply"
-}
+public typealias ElevenLabsCaptionStyleModelTextBlendModeAnyOf1 =
+  ElevenLabsCaptionStyleModelTextBlendMode

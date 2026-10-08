@@ -10,7 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsVoiceResponseModelLabellingStatusAnyOf1: String, Codable, Hashable, Sendable {
-  case inReview = "in_review"
-  case reviewComplete = "review_complete"
-}
+public typealias ElevenLabsVoiceResponseModelLabellingStatusAnyOf1 =
+  ElevenLabsVoiceResponseModelLabellingStatus

@@ -14,7 +14,7 @@ public struct AnthropicBetaGetOrgRateLimitsV1OrganizationsRateLimitsGetParameter
 {
   public var anthropicVersion: String?
   public var groupType:
-    AnthropicBetaGetOrgRateLimitsV1OrganizationsRateLimitsGetParametersGroupTypeAnyOf1?
+    AnthropicBetaGetOrgRateLimitsV1OrganizationsRateLimitsGetParametersGroupType?
   public var limit: Int?
   public var model: String?
   public var page: String?
@@ -22,8 +22,7 @@ public struct AnthropicBetaGetOrgRateLimitsV1OrganizationsRateLimitsGetParameter
 
   public init(
     anthropicVersion: String? = nil,
-    groupType: AnthropicBetaGetOrgRateLimitsV1OrganizationsRateLimitsGetParametersGroupTypeAnyOf1? =
-      nil,
+    groupType: AnthropicBetaGetOrgRateLimitsV1OrganizationsRateLimitsGetParametersGroupType? = nil,
     limit: Int? = nil,
     model: String? = nil,
     page: String? = nil,

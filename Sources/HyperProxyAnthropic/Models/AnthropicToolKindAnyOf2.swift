@@ -10,6 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public enum AnthropicToolKindAnyOf2: String, Codable, Hashable, Sendable {
-  case custom = "custom"
-}
+public typealias AnthropicToolKindAnyOf2 = AnthropicToolKind8fdbf73a

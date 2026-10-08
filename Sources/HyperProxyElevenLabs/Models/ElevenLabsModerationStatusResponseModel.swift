@@ -19,8 +19,8 @@ public struct ElevenLabsModerationStatusResponseModel: Codable, Sendable {
   public var neverLiveModerate: Bool
   public var nogoVoiceSimilarVoiceUploadCount: Int
   public var onWatchlist: Bool
-  public var safetyStatus: ElevenLabsModerationStatusResponseModelSafetyStatusAnyOf1?
-  public var warningStatus: ElevenLabsModerationStatusResponseModelWarningStatusAnyOf1?
+  public var safetyStatus: ElevenLabsModerationStatusResponseModelSafetyStatus?
+  public var warningStatus: ElevenLabsModerationStatusResponseModelWarningStatus?
 
   public init(
     enterpriseBackgroundModerationEnabled: Bool,
@@ -31,8 +31,8 @@ public struct ElevenLabsModerationStatusResponseModel: Codable, Sendable {
     neverLiveModerate: Bool,
     nogoVoiceSimilarVoiceUploadCount: Int,
     onWatchlist: Bool,
-    safetyStatus: ElevenLabsModerationStatusResponseModelSafetyStatusAnyOf1? = nil,
-    warningStatus: ElevenLabsModerationStatusResponseModelWarningStatusAnyOf1? = nil
+    safetyStatus: ElevenLabsModerationStatusResponseModelSafetyStatus? = nil,
+    warningStatus: ElevenLabsModerationStatusResponseModelWarningStatus? = nil
   ) {
     self.enterpriseBackgroundModerationEnabled = enterpriseBackgroundModerationEnabled
     self.enterpriseCheckBlockNogoVoice = enterpriseCheckBlockNogoVoice

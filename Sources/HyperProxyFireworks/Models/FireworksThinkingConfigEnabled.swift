@@ -14,14 +14,14 @@ public struct FireworksThinkingConfigEnabled: Codable, Sendable {
   public var budgetEndStr: String?
   public var budgetTokens: Int?
   public var effort: FireworksThinkingConfigEnabledEffort?
-  public var keep: FireworksThinkingConfigEnabledKeepAnyOf1?
+  public var keep: FireworksThinkingConfigEnabledKeep?
   public var kind: FireworksEnabledKind?
 
   public init(
     budgetEndStr: String? = nil,
     budgetTokens: Int? = nil,
     effort: FireworksThinkingConfigEnabledEffort? = nil,
-    keep: FireworksThinkingConfigEnabledKeepAnyOf1? = nil,
+    keep: FireworksThinkingConfigEnabledKeep? = nil,
     kind: FireworksEnabledKind? = nil
   ) {
     self.budgetEndStr = budgetEndStr

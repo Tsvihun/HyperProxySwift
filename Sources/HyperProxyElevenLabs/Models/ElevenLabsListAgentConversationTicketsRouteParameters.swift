@@ -17,9 +17,11 @@ public struct ElevenLabsListAgentConversationTicketsRouteParameters: Codable, Se
   public var cursor: String?
   public var issueType: ElevenLabsAgentConversationTicketIssueType?
   public var label: String?
+  public var mergedIntoTicketId: String?
   public var ownerUserId: String?
   public var pageSize: Int?
   public var priorities: [ElevenLabsAgentConversationTicketPriority]?
+  public var search: String?
   public var sortBy: ElevenLabsAgentConversationTicketSortBy?
   public var sources: [ElevenLabsAgentConversationTicketSource]?
   public var status: ElevenLabsAgentConversationTicketStatus?
@@ -32,9 +34,11 @@ public struct ElevenLabsListAgentConversationTicketsRouteParameters: Codable, Se
     cursor: String? = nil,
     issueType: ElevenLabsAgentConversationTicketIssueType? = nil,
     label: String? = nil,
+    mergedIntoTicketId: String? = nil,
     ownerUserId: String? = nil,
     pageSize: Int? = nil,
     priorities: [ElevenLabsAgentConversationTicketPriority]? = nil,
+    search: String? = nil,
     sortBy: ElevenLabsAgentConversationTicketSortBy? = nil,
     sources: [ElevenLabsAgentConversationTicketSource]? = nil,
     status: ElevenLabsAgentConversationTicketStatus? = nil,
@@ -46,9 +50,11 @@ public struct ElevenLabsListAgentConversationTicketsRouteParameters: Codable, Se
     self.cursor = cursor
     self.issueType = issueType
     self.label = label
+    self.mergedIntoTicketId = mergedIntoTicketId
     self.ownerUserId = ownerUserId
     self.pageSize = pageSize
     self.priorities = priorities
+    self.search = search
     self.sortBy = sortBy
     self.sources = sources
     self.status = status
@@ -62,9 +68,11 @@ public struct ElevenLabsListAgentConversationTicketsRouteParameters: Codable, Se
     case cursor
     case issueType = "issue_type"
     case label
+    case mergedIntoTicketId = "merged_into_ticket_id"
     case ownerUserId = "owner_user_id"
     case pageSize = "page_size"
     case priorities
+    case search
     case sortBy = "sort_by"
     case sources
     case status

@@ -10,4 +10,8 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIBetaVerbosity = OpenAIBetaVerbosityAnyOf1?
+public enum OpenAIBetaVerbosity: String, Codable, Hashable, Sendable {
+  case low = "low"
+  case medium = "medium"
+  case high = "high"
+}

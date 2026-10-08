@@ -13,17 +13,20 @@ import HyperProxyCore
 public struct OpenAIListVaultsParameters: Codable, Sendable {
   public var after: String?
   public var limit: Int64?
+  public var metadata: [String: String]?
   public var order: OpenAIListOrderParam?
   public var status: OpenAIVaultStatusFilterParam?
 
   public init(
     after: String? = nil,
     limit: Int64? = nil,
+    metadata: [String: String]? = nil,
     order: OpenAIListOrderParam? = nil,
     status: OpenAIVaultStatusFilterParam? = nil
   ) {
     self.after = after
     self.limit = limit
+    self.metadata = metadata
     self.order = order
     self.status = status
   }
@@ -31,6 +34,7 @@ public struct OpenAIListVaultsParameters: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case after
     case limit
+    case metadata
     case order
     case status
   }

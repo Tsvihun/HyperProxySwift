@@ -16,7 +16,6 @@ public struct PerplexityApiSearchRequestAllOf1: Codable, Sendable {
   public var maxTokens: Int?
   public var maxTokensPerPage: Int?
   public var query: PerplexityApiSearchRequestAllOf1Query
-  public var searchContextSize: String?
   public var searchLanguageFilter: [String]?
   public var searchType: PerplexityApiSearchRequestAllOf1SearchType?
 
@@ -26,7 +25,6 @@ public struct PerplexityApiSearchRequestAllOf1: Codable, Sendable {
     maxResults: Int? = nil,
     maxTokens: Int? = nil,
     maxTokensPerPage: Int? = nil,
-    searchContextSize: String? = nil,
     searchLanguageFilter: [String]? = nil,
     searchType: PerplexityApiSearchRequestAllOf1SearchType? = nil
   ) {
@@ -35,7 +33,6 @@ public struct PerplexityApiSearchRequestAllOf1: Codable, Sendable {
     self.maxTokens = maxTokens
     self.maxTokensPerPage = maxTokensPerPage
     self.query = query
-    self.searchContextSize = searchContextSize
     self.searchLanguageFilter = searchLanguageFilter
     self.searchType = searchType
   }
@@ -46,7 +43,6 @@ public struct PerplexityApiSearchRequestAllOf1: Codable, Sendable {
     case maxTokens = "max_tokens"
     case maxTokensPerPage = "max_tokens_per_page"
     case query
-    case searchContextSize = "search_context_size"
     case searchLanguageFilter = "search_language_filter"
     case searchType = "search_type"
   }

@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIItemReferenceParam: Codable, Sendable {
   public var id: String
-  public var kind: OpenAIItemReferenceParamKindAnyOf1?
+  public var kind: OpenAIItemReferenceParamKind?
 
   public init(
     id: String,
-    kind: OpenAIItemReferenceParamKindAnyOf1? = nil
+    kind: OpenAIItemReferenceParamKind? = nil
   ) {
     self.id = id
     self.kind = kind

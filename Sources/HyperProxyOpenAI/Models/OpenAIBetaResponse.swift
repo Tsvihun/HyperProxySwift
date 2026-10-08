@@ -34,7 +34,7 @@ public struct OpenAIBetaResponse: Codable, Sendable {
   public var promptCacheDiagnostics: OpenAIBetaPromptCacheDiagnostics?
   public var promptCacheKey: String?
   public var promptCacheOptions: OpenAIBetaPromptCacheOptions?
-  public var promptCacheRetention: OpenAIBetaModelResponsePropertiesPromptCacheRetentionAnyOf1?
+  public var promptCacheRetention: OpenAIBetaModelResponsePropertiesPromptCacheRetention?
   public var reasoning: OpenAIBetaReasoning?
   public var safetyIdentifier: String?
   public var serviceTier: OpenAIBetaServiceTierResponses?
@@ -45,7 +45,7 @@ public struct OpenAIBetaResponse: Codable, Sendable {
   public var tools: OpenAIBetaToolsArray
   public var topLogprobs: Int?
   public var topP: Double?
-  public var truncation: OpenAIBetaResponseAllOf3TruncationAnyOf1?
+  public var truncation: OpenAIBetaResponseAllOf3Truncation?
   public var usage: OpenAIBetaResponseUsage?
   public var user: String?
 
@@ -77,14 +77,14 @@ public struct OpenAIBetaResponse: Codable, Sendable {
     promptCacheDiagnostics: OpenAIBetaPromptCacheDiagnostics? = nil,
     promptCacheKey: String? = nil,
     promptCacheOptions: OpenAIBetaPromptCacheOptions? = nil,
-    promptCacheRetention: OpenAIBetaModelResponsePropertiesPromptCacheRetentionAnyOf1? = nil,
+    promptCacheRetention: OpenAIBetaModelResponsePropertiesPromptCacheRetention? = nil,
     reasoning: OpenAIBetaReasoning? = nil,
     safetyIdentifier: String? = nil,
     serviceTier: OpenAIBetaServiceTierResponses? = nil,
     status: OpenAIBetaResponseAllOf3Status? = nil,
     text: OpenAIBetaResponseTextParam? = nil,
     topLogprobs: Int? = nil,
-    truncation: OpenAIBetaResponseAllOf3TruncationAnyOf1? = nil,
+    truncation: OpenAIBetaResponseAllOf3Truncation? = nil,
     usage: OpenAIBetaResponseUsage? = nil,
     user: String? = nil
   ) {

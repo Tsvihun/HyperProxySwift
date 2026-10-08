@@ -10,10 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsListEnvironmentVariablesParametersKindAnyOf1: String, Codable, Hashable,
-  Sendable
-{
-  case string = "string"
-  case secret = "secret"
-  case authConnection = "auth_connection"
-}
+public typealias ElevenLabsListEnvironmentVariablesParametersKindAnyOf1 =
+  ElevenLabsListEnvironmentVariablesParametersKind

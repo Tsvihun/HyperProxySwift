@@ -10,10 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsProjectResponseModelTargetAudienceAnyOf1: String, Codable, Hashable, Sendable
-{
-  case children = "children"
-  case youngAdult = "young adult"
-  case adult = "adult"
-  case allAges = "all ages"
-}
+public typealias ElevenLabsProjectResponseModelTargetAudienceAnyOf1 =
+  ElevenLabsProjectResponseModelTargetAudience

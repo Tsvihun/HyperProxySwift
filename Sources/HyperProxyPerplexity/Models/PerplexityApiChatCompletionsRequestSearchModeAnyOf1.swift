@@ -10,9 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum PerplexityApiChatCompletionsRequestSearchModeAnyOf1: String, Codable, Hashable, Sendable
-{
-  case web = "web"
-  case academic = "academic"
-  case sec = "sec"
-}
+public typealias PerplexityApiChatCompletionsRequestSearchModeAnyOf1 =
+  PerplexityApiChatCompletionsRequestSearchMode

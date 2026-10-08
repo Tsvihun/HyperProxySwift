@@ -23,10 +23,10 @@ public struct ElevenLabsSpeechHistoryItemResponseModel: Codable, Sendable {
   public var requestId: String?
   public var settings: [String: HyperProxyJSONValue]?
   public var shareLinkId: String?
-  public var source: ElevenLabsSpeechHistoryItemResponseModelSourceAnyOf1?
+  public var source: ElevenLabsSpeechHistoryItemResponseModelSource?
   public var state: ElevenLabsSpeechHistoryItemResponseModelState
   public var text: String?
-  public var voiceCategory: ElevenLabsSpeechHistoryItemResponseModelVoiceCategoryAnyOf1?
+  public var voiceCategory: ElevenLabsSpeechHistoryItemResponseModelVoiceCategory?
   public var voiceId: String?
   public var voiceName: String?
 
@@ -44,9 +44,9 @@ public struct ElevenLabsSpeechHistoryItemResponseModel: Codable, Sendable {
     requestId: String? = nil,
     settings: [String: HyperProxyJSONValue]? = nil,
     shareLinkId: String? = nil,
-    source: ElevenLabsSpeechHistoryItemResponseModelSourceAnyOf1? = nil,
+    source: ElevenLabsSpeechHistoryItemResponseModelSource? = nil,
     text: String? = nil,
-    voiceCategory: ElevenLabsSpeechHistoryItemResponseModelVoiceCategoryAnyOf1? = nil,
+    voiceCategory: ElevenLabsSpeechHistoryItemResponseModelVoiceCategory? = nil,
     voiceId: String? = nil,
     voiceName: String? = nil
   ) {

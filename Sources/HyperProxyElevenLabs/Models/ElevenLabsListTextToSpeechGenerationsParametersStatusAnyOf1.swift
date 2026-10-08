@@ -10,11 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsListTextToSpeechGenerationsParametersStatusAnyOf1: String, Codable, Hashable,
-  Sendable
-{
-  case pending = "pending"
-  case generating = "generating"
-  case completed = "completed"
-  case failed = "failed"
-}
+public typealias ElevenLabsListTextToSpeechGenerationsParametersStatusAnyOf1 =
+  ElevenLabsListTextToSpeechGenerationsParametersStatus

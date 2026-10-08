@@ -10,9 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum MistralListDeploymentsV1WorkflowsDeploymentsGetParametersOrderByAnyOf1: String, Codable,
-  Hashable, Sendable
-{
-  case updatedAt = "updated_at"
-  case createdAt = "created_at"
-}
+public typealias MistralListDeploymentsV1WorkflowsDeploymentsGetParametersOrderByAnyOf1 =
+  MistralListDeploymentsV1WorkflowsDeploymentsGetParametersOrderBy

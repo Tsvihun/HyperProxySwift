@@ -10,9 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsBodySpeechToSpeechStreamingV1SpeechToSpeechVoiceIdStreamPostFileFormatAnyOf1:
-  String, Codable, Hashable, Sendable
-{
-  case pcmS16le16 = "pcm_s16le_16"
-  case other = "other"
-}
+public typealias
+  ElevenLabsBodySpeechToSpeechStreamingV1SpeechToSpeechVoiceIdStreamPostFileFormatAnyOf1 =
+  ElevenLabsBodySpeechToSpeechStreamingV1SpeechToSpeechVoiceIdStreamPostFileFormat

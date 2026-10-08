@@ -10,6 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public enum FireworksThinkingConfigEnabledKeepAnyOf1: String, Codable, Hashable, Sendable {
-  case all = "all"
-}
+public typealias FireworksThinkingConfigEnabledKeepAnyOf1 = FireworksThinkingConfigEnabledKeep

@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public enum
-  MistralGetByTimeStatsV1AdminAnalyticsVibeWorkUsageByTimeStatsParametersGranularityAnyOf1: String,
-    Codable, Hashable, Sendable
-{
-  case hour = "hour"
-  case day = "day"
-  case week = "week"
-  case month = "month"
-}
+public typealias
+  MistralGetByTimeStatsV1AdminAnalyticsVibeWorkUsageByTimeStatsParametersGranularityAnyOf1 =
+  MistralGetByTimeStatsV1AdminAnalyticsVibeWorkUsageByTimeStatsParametersGranularity

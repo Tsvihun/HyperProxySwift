@@ -12,9 +12,9 @@ import HyperProxyCore
 
 public struct MistralOrganizationInviteIN: Codable, Sendable {
   public var email: String
-  public var emailLanguage: MistralOrganizationInviteINEmailLanguageAnyOf1?
+  public var emailLanguage: MistralOrganizationInviteINEmailLanguage?
   public var role: MistralOrganizationInviteINRole?
-  public var roleName: MistralOrganizationInviteINRoleNameAnyOf1?
+  public var roleName: MistralOrganizationInviteINRoleName?
   public var roleNames: [MistralOrganizationInviteINRoleNamesAnyOf1Item]?
   public var roles: MistralOrganizationInviteINRoles?
   public var subscriptionSeatAutomaticGranting: Bool?
@@ -24,9 +24,9 @@ public struct MistralOrganizationInviteIN: Codable, Sendable {
 
   public init(
     email: String,
-    emailLanguage: MistralOrganizationInviteINEmailLanguageAnyOf1? = nil,
+    emailLanguage: MistralOrganizationInviteINEmailLanguage? = nil,
     role: MistralOrganizationInviteINRole? = nil,
-    roleName: MistralOrganizationInviteINRoleNameAnyOf1? = nil,
+    roleName: MistralOrganizationInviteINRoleName? = nil,
     roleNames: [MistralOrganizationInviteINRoleNamesAnyOf1Item]? = nil,
     roles: MistralOrganizationInviteINRoles? = nil,
     subscriptionSeatAutomaticGranting: Bool? = nil,

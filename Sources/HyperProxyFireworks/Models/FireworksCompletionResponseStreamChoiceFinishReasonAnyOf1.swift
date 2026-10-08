@@ -10,10 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum FireworksCompletionResponseStreamChoiceFinishReasonAnyOf1: String, Codable, Hashable,
-  Sendable
-{
-  case stop = "stop"
-  case length = "length"
-  case error = "error"
-}
+public typealias FireworksCompletionResponseStreamChoiceFinishReasonAnyOf1 =
+  FireworksCompletionResponseStreamChoiceFinishReason

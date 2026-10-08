@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct OpenAIModelResponseProperties: Codable, Sendable {
   public var metadata: OpenAIMetadata?
   public var promptCacheKey: String?
-  public var promptCacheRetention: OpenAIModelResponsePropertiesPromptCacheRetentionAnyOf1?
+  public var promptCacheRetention: OpenAIModelResponsePropertiesPromptCacheRetention?
   public var safetyIdentifier: String?
   public var temperature: Double?
   public var topLogprobs: Int?
@@ -23,7 +23,7 @@ public struct OpenAIModelResponseProperties: Codable, Sendable {
   public init(
     metadata: OpenAIMetadata? = nil,
     promptCacheKey: String? = nil,
-    promptCacheRetention: OpenAIModelResponsePropertiesPromptCacheRetentionAnyOf1? = nil,
+    promptCacheRetention: OpenAIModelResponsePropertiesPromptCacheRetention? = nil,
     safetyIdentifier: String? = nil,
     temperature: Double? = nil,
     topLogprobs: Int? = nil,

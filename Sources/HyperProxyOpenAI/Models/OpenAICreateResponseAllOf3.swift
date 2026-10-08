@@ -26,7 +26,7 @@ public struct OpenAICreateResponseAllOf3: Codable, Sendable {
   public var store: Bool?
   public var stream: Bool?
   public var streamOptions: OpenAIResponseStreamOptions?
-  public var truncation: OpenAICreateResponseAllOf3TruncationAnyOf1?
+  public var truncation: OpenAICreateResponseAllOf3Truncation?
 
   public init(
     accessPrograms: OpenAIAccessProgramsParam? = nil,
@@ -44,7 +44,7 @@ public struct OpenAICreateResponseAllOf3: Codable, Sendable {
     store: Bool? = nil,
     stream: Bool? = nil,
     streamOptions: OpenAIResponseStreamOptions? = nil,
-    truncation: OpenAICreateResponseAllOf3TruncationAnyOf1? = nil
+    truncation: OpenAICreateResponseAllOf3Truncation? = nil
   ) {
     self.accessPrograms = accessPrograms
     self.contextManagement = contextManagement

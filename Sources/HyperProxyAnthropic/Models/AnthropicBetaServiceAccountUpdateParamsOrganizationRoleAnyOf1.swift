@@ -10,9 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum AnthropicBetaServiceAccountUpdateParamsOrganizationRoleAnyOf1: String, Codable,
-  Hashable, Sendable
-{
-  case admin = "admin"
-  case developer = "developer"
-}
+public typealias AnthropicBetaServiceAccountUpdateParamsOrganizationRoleAnyOf1 =
+  AnthropicBetaServiceAccountUpdateParamsOrganizationRole

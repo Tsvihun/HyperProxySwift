@@ -10,16 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum MistralAdminWorkspaceMemberSingleINRoleNameAnyOf1: String, Codable, Hashable, Sendable {
-  case billing = "billing"
-  case user = "user"
-  case contributor = "contributor"
-  case dev = "dev"
-  case devContributor = "dev_contributor"
-  case mistralCodeUser = "mistral_code_user"
-  case cloudUser = "cloud_user"
-  case workspaceContributor = "workspace_contributor"
-  case workspaceAdmin = "workspace_admin"
-  case observabilityViewer = "observability_viewer"
-  case workflowExecutor = "workflow_executor"
-}
+public typealias MistralAdminWorkspaceMemberSingleINRoleNameAnyOf1 =
+  MistralAdminWorkspaceMemberSingleINRoleName

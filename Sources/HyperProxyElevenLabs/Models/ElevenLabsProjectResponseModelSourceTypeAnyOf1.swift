@@ -10,11 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsProjectResponseModelSourceTypeAnyOf1: String, Codable, Hashable, Sendable {
-  case blank = "blank"
-  case book = "book"
-  case article = "article"
-  case genfm = "genfm"
-  case video = "video"
-  case screenplay = "screenplay"
-}
+public typealias ElevenLabsProjectResponseModelSourceTypeAnyOf1 =
+  ElevenLabsProjectResponseModelSourceType

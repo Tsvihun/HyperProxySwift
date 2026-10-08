@@ -14,7 +14,7 @@ public struct OpenAIBetaLocalShellToolCallOutput: Codable, Sendable {
   public var agent: OpenAIBetaAgentTag?
   public var id: String
   public var output: String
-  public var status: OpenAIBetaLocalShellToolCallOutputStatusAnyOf1?
+  public var status: OpenAIBetaLocalShellToolCallOutputStatus?
   public var kind: OpenAIBetaLocalShellToolCallOutputKind
 
   public init(
@@ -22,7 +22,7 @@ public struct OpenAIBetaLocalShellToolCallOutput: Codable, Sendable {
     output: String,
     kind: OpenAIBetaLocalShellToolCallOutputKind,
     agent: OpenAIBetaAgentTag? = nil,
-    status: OpenAIBetaLocalShellToolCallOutputStatusAnyOf1? = nil
+    status: OpenAIBetaLocalShellToolCallOutputStatus? = nil
   ) {
     self.agent = agent
     self.id = id

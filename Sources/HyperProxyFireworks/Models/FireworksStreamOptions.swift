@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct FireworksStreamOptions: Codable, Sendable {
-  public var bufferMode: FireworksStreamOptionsBufferModeAnyOf1?
+  public var bufferMode: FireworksStreamOptionsBufferMode?
   public var bufferMs: Double?
   public var bufferTokens: Int?
   public var includeInternalContent: Bool?
   public var includeUsage: Bool?
 
   public init(
-    bufferMode: FireworksStreamOptionsBufferModeAnyOf1? = nil,
+    bufferMode: FireworksStreamOptionsBufferMode? = nil,
     bufferMs: Double? = nil,
     bufferTokens: Int? = nil,
     includeInternalContent: Bool? = nil,

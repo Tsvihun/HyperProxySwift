@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsUpdateOAuth2JWTRequest: Codable, Sendable {
-  public var algorithm: ElevenLabsUpdateOAuth2JWTRequestAlgorithmAnyOf1?
+  public var algorithm: ElevenLabsUpdateOAuth2JWTRequestAlgorithm?
   public var audience: String?
   public var authType: ElevenLabsOauth2JwtAuthType?
   public var expirationSeconds: Int?
@@ -22,10 +22,10 @@ public struct ElevenLabsUpdateOAuth2JWTRequest: Codable, Sendable {
   public var scopes: [String]?
   public var secretKey: String?
   public var subject: String?
-  public var tokenResponseField: ElevenLabsUpdateOAuth2JWTRequestTokenResponseFieldAnyOf1?
+  public var tokenResponseField: ElevenLabsUpdateOAuth2JWTRequestTokenResponseField?
 
   public init(
-    algorithm: ElevenLabsUpdateOAuth2JWTRequestAlgorithmAnyOf1? = nil,
+    algorithm: ElevenLabsUpdateOAuth2JWTRequestAlgorithm? = nil,
     audience: String? = nil,
     authType: ElevenLabsOauth2JwtAuthType? = nil,
     expirationSeconds: Int? = nil,
@@ -36,7 +36,7 @@ public struct ElevenLabsUpdateOAuth2JWTRequest: Codable, Sendable {
     scopes: [String]? = nil,
     secretKey: String? = nil,
     subject: String? = nil,
-    tokenResponseField: ElevenLabsUpdateOAuth2JWTRequestTokenResponseFieldAnyOf1? = nil
+    tokenResponseField: ElevenLabsUpdateOAuth2JWTRequestTokenResponseField? = nil
   ) {
     self.algorithm = algorithm
     self.audience = audience

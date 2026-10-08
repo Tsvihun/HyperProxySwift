@@ -35,11 +35,11 @@ public struct FireworksCompletionRequest: Codable, Sendable {
   public var promptCacheKey: String?
   public var rawOutput: Bool?
   public var reasoningEffort: FireworksCompletionRequestReasoningEffort?
-  public var reasoningHistory: FireworksCompletionRequestReasoningHistoryAnyOf1?
+  public var reasoningHistory: FireworksCompletionRequestReasoningHistory?
   public var repetitionPenalty: Double?
   public var responseFormat: FireworksResponseFormat?
   public var returnTokenIds: Bool?
-  public var samplingMask: FireworksCompletionRequestSamplingMaskAnyOf1?
+  public var samplingMask: FireworksCompletionRequestSamplingMask?
   public var seed: Int?
   public var serviceTier: FireworksCompletionRequestServiceTier?
   public var speculation: FireworksCompletionRequestSpeculation?
@@ -79,11 +79,11 @@ public struct FireworksCompletionRequest: Codable, Sendable {
     promptCacheKey: String? = nil,
     rawOutput: Bool? = nil,
     reasoningEffort: FireworksCompletionRequestReasoningEffort? = nil,
-    reasoningHistory: FireworksCompletionRequestReasoningHistoryAnyOf1? = nil,
+    reasoningHistory: FireworksCompletionRequestReasoningHistory? = nil,
     repetitionPenalty: Double? = nil,
     responseFormat: FireworksResponseFormat? = nil,
     returnTokenIds: Bool? = nil,
-    samplingMask: FireworksCompletionRequestSamplingMaskAnyOf1? = nil,
+    samplingMask: FireworksCompletionRequestSamplingMask? = nil,
     seed: Int? = nil,
     serviceTier: FireworksCompletionRequestServiceTier? = nil,
     speculation: FireworksCompletionRequestSpeculation? = nil,

@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsToolExecution: Codable, Sendable {
-  public var taskSupport: ElevenLabsToolExecutionTaskSupportAnyOf1?
+  public var taskSupport: ElevenLabsToolExecutionTaskSupport?
 
   public init(
-    taskSupport: ElevenLabsToolExecutionTaskSupportAnyOf1? = nil
+    taskSupport: ElevenLabsToolExecutionTaskSupport? = nil
   ) {
     self.taskSupport = taskSupport
   }

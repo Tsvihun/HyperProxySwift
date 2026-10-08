@@ -15,7 +15,6 @@ public struct PerplexityWebSearchTool: Codable, Sendable {
   public var maxResults: Int?
   public var maxTokens: Int?
   public var maxTokensPerPage: Int?
-  public var searchContextSize: PerplexityWebSearchToolSearchContextSize?
   public var searchType: PerplexityWebSearchToolSearchType?
   public var kind: PerplexityWebSearchToolKind
   public var userLocation: PerplexityToolUserLocation?
@@ -26,7 +25,6 @@ public struct PerplexityWebSearchTool: Codable, Sendable {
     maxResults: Int? = nil,
     maxTokens: Int? = nil,
     maxTokensPerPage: Int? = nil,
-    searchContextSize: PerplexityWebSearchToolSearchContextSize? = nil,
     searchType: PerplexityWebSearchToolSearchType? = nil,
     userLocation: PerplexityToolUserLocation? = nil
   ) {
@@ -34,7 +32,6 @@ public struct PerplexityWebSearchTool: Codable, Sendable {
     self.maxResults = maxResults
     self.maxTokens = maxTokens
     self.maxTokensPerPage = maxTokensPerPage
-    self.searchContextSize = searchContextSize
     self.searchType = searchType
     self.kind = kind
     self.userLocation = userLocation
@@ -45,7 +42,6 @@ public struct PerplexityWebSearchTool: Codable, Sendable {
     case maxResults = "max_results"
     case maxTokens = "max_tokens"
     case maxTokensPerPage = "max_tokens_per_page"
-    case searchContextSize = "search_context_size"
     case searchType = "search_type"
     case kind = "type"
     case userLocation = "user_location"

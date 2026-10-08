@@ -161,6 +161,10 @@ public enum OpenRouterOperation: String, HyperProxyCatalogOperation {
   case getInternDaemon = "getInternDaemon"
   /// `GET api/v1/interns/{internId}/daemon-access`
   case getInternDaemonAccess = "getInternDaemonAccess"
+  /// `POST api/v1/interns/{internId}/daemon-access/sign`
+  case signInternDaemonAccessRequest = "signInternDaemonAccessRequest"
+  /// `POST api/v1/interns/{internId}/daemon/sign`
+  case signInternDaemonRequest = "signInternDaemonRequest"
   /// `POST api/v1/interns/{internId}/invoke`
   case invokeIntern = "invokeIntern"
   /// `POST api/v1/interns/{internId}/provision`

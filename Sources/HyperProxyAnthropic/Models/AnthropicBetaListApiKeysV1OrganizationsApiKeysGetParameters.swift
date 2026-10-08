@@ -16,7 +16,7 @@ public struct AnthropicBetaListApiKeysV1OrganizationsApiKeysGetParameters: Codab
   public var beforeId: String?
   public var createdByUserId: String?
   public var limit: Int?
-  public var status: AnthropicBetaListApiKeysV1OrganizationsApiKeysGetParametersStatusAnyOf1?
+  public var status: AnthropicBetaListApiKeysV1OrganizationsApiKeysGetParametersStatus?
   public var workspaceId: String?
   public var xApiKey: String?
 
@@ -26,7 +26,7 @@ public struct AnthropicBetaListApiKeysV1OrganizationsApiKeysGetParameters: Codab
     beforeId: String? = nil,
     createdByUserId: String? = nil,
     limit: Int? = nil,
-    status: AnthropicBetaListApiKeysV1OrganizationsApiKeysGetParametersStatusAnyOf1? = nil,
+    status: AnthropicBetaListApiKeysV1OrganizationsApiKeysGetParametersStatus? = nil,
     workspaceId: String? = nil,
     xApiKey: String? = nil
   ) {

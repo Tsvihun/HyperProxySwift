@@ -10,8 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum FireworksCompletionRequestSamplingMaskAnyOf1: String, Codable, Hashable, Sendable {
-  case count = "count"
-  case nonZeroList = "non_zero_list"
-  case nonZeroBuffer = "non_zero_buffer"
-}
+public typealias FireworksCompletionRequestSamplingMaskAnyOf1 =
+  FireworksCompletionRequestSamplingMask

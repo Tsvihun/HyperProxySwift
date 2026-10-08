@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsConversationHistorySIPTrunkingPhoneCallModel: Codable, Sendable {
   public var agentNumber: String
   public var callId: String?
+  public var callResult: ElevenLabsCallResult?
   public var callSid: String
   public var direction: ElevenLabsTelephonyDirection
   public var externalNumber: String
@@ -28,10 +29,12 @@ public struct ElevenLabsConversationHistorySIPTrunkingPhoneCallModel: Codable, S
     phoneNumberId: String,
     kind: ElevenLabsSipTrunkingKind = .sipTrunking,
     callId: String? = nil,
+    callResult: ElevenLabsCallResult? = nil,
     sipHeaderDynamicVariables: [String: String]? = nil
   ) {
     self.agentNumber = agentNumber
     self.callId = callId
+    self.callResult = callResult
     self.callSid = callSid
     self.direction = direction
     self.externalNumber = externalNumber
@@ -43,6 +46,7 @@ public struct ElevenLabsConversationHistorySIPTrunkingPhoneCallModel: Codable, S
   enum CodingKeys: String, CodingKey {
     case agentNumber = "agent_number"
     case callId = "call_id"
+    case callResult = "call_result"
     case callSid = "call_sid"
     case direction
     case externalNumber = "external_number"

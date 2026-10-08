@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralToolExecution: Codable, Sendable {
-  public var taskSupport: MistralToolExecutionTaskSupportAnyOf1?
+  public var taskSupport: MistralToolExecutionTaskSupport?
 
   public init(
-    taskSupport: MistralToolExecutionTaskSupportAnyOf1? = nil
+    taskSupport: MistralToolExecutionTaskSupport? = nil
   ) {
     self.taskSupport = taskSupport
   }

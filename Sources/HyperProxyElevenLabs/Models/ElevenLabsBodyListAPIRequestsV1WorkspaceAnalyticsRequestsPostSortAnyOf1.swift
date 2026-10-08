@@ -10,9 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsBodyListAPIRequestsV1WorkspaceAnalyticsRequestsPostSortAnyOf1: String,
-  Codable, Hashable, Sendable
-{
-  case asc = "asc"
-  case desc = "desc"
-}
+public typealias ElevenLabsBodyListAPIRequestsV1WorkspaceAnalyticsRequestsPostSortAnyOf1 =
+  ElevenLabsBodyListAPIRequestsV1WorkspaceAnalyticsRequestsPostSort

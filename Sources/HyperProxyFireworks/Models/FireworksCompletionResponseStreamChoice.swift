@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct FireworksCompletionResponseStreamChoice: Codable, Sendable {
-  public var finishReason: FireworksCompletionResponseStreamChoiceFinishReasonAnyOf1?
+  public var finishReason: FireworksCompletionResponseStreamChoiceFinishReason?
   public var index: Int
   public var logprobs: FireworksCompletionResponseStreamChoiceLogprobs?
   public var promptTokenIds: [Int]?
@@ -22,7 +22,7 @@ public struct FireworksCompletionResponseStreamChoice: Codable, Sendable {
   public init(
     index: Int,
     text: String,
-    finishReason: FireworksCompletionResponseStreamChoiceFinishReasonAnyOf1? = nil,
+    finishReason: FireworksCompletionResponseStreamChoiceFinishReason? = nil,
     logprobs: FireworksCompletionResponseStreamChoiceLogprobs? = nil,
     promptTokenIds: [Int]? = nil,
     rawOutput: FireworksRawOutput? = nil,

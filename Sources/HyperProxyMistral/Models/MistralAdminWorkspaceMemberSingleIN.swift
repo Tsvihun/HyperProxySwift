@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct MistralAdminWorkspaceMemberSingleIN: Codable, Sendable {
   public var role: MistralAdminWorkspaceMemberSingleINRole?
-  public var roleName: MistralAdminWorkspaceMemberSingleINRoleNameAnyOf1?
+  public var roleName: MistralAdminWorkspaceMemberSingleINRoleName?
   public var roleNames: [MistralAdminWorkspaceMemberSingleINRoleNamesAnyOf1Item]?
   public var roles: MistralAdminWorkspaceMemberSingleINRoles?
   public var userUuid: String
@@ -20,7 +20,7 @@ public struct MistralAdminWorkspaceMemberSingleIN: Codable, Sendable {
   public init(
     userUuid: String,
     role: MistralAdminWorkspaceMemberSingleINRole? = nil,
-    roleName: MistralAdminWorkspaceMemberSingleINRoleNameAnyOf1? = nil,
+    roleName: MistralAdminWorkspaceMemberSingleINRoleName? = nil,
     roleNames: [MistralAdminWorkspaceMemberSingleINRoleNamesAnyOf1Item]? = nil,
     roles: MistralAdminWorkspaceMemberSingleINRoles? = nil
   ) {

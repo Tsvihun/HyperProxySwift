@@ -15,7 +15,7 @@ public struct MistralOrganizationMemberCreate: Codable, Sendable {
   public var firstName: String
   public var lastName: String
   public var role: MistralOrganizationMemberCreateRole?
-  public var roleName: MistralOrganizationMemberCreateRoleNameAnyOf1?
+  public var roleName: MistralOrganizationMemberCreateRoleName?
   public var roleNames: [MistralOrganizationMemberCreateRoleNamesAnyOf1Item]?
   public var roles: MistralOrganizationMemberCreateRoles?
   public var subscriptionTypes: [MistralPlanType]?
@@ -25,7 +25,7 @@ public struct MistralOrganizationMemberCreate: Codable, Sendable {
     firstName: String,
     lastName: String,
     role: MistralOrganizationMemberCreateRole? = nil,
-    roleName: MistralOrganizationMemberCreateRoleNameAnyOf1? = nil,
+    roleName: MistralOrganizationMemberCreateRoleName? = nil,
     roleNames: [MistralOrganizationMemberCreateRoleNamesAnyOf1Item]? = nil,
     roles: MistralOrganizationMemberCreateRoles? = nil,
     subscriptionTypes: [MistralPlanType]? = nil

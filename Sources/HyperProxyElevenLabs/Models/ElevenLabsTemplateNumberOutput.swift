@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsTemplateNumberOutput: Codable, Sendable {
   public var content: Double?
   public var errorMessage: String?
-  public var failureReason: ElevenLabsTemplateNumberOutputFailureReasonAnyOf1?
+  public var failureReason: ElevenLabsTemplateNumberOutputFailureReason?
   public var id: String
   public var status: ElevenLabsTemplateRunStatus
   public var kind: ElevenLabsNumberKind
@@ -24,7 +24,7 @@ public struct ElevenLabsTemplateNumberOutput: Codable, Sendable {
     kind: ElevenLabsNumberKind = .number,
     content: Double? = nil,
     errorMessage: String? = nil,
-    failureReason: ElevenLabsTemplateNumberOutputFailureReasonAnyOf1? = nil
+    failureReason: ElevenLabsTemplateNumberOutputFailureReason? = nil
   ) {
     self.content = content
     self.errorMessage = errorMessage

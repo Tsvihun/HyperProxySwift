@@ -10,10 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum OpenAICreateCompletionResponseChoicesItemFinishReasonAnyOf1: String, Codable, Hashable,
-  Sendable
-{
-  case stop = "stop"
-  case length = "length"
-  case contentFilter = "content_filter"
-}
+public typealias OpenAICreateCompletionResponseChoicesItemFinishReasonAnyOf1 =
+  OpenAICreateCompletionResponseChoicesItemFinishReason

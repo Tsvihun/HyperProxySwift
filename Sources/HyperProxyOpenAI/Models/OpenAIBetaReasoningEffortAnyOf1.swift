@@ -10,12 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public enum OpenAIBetaReasoningEffortAnyOf1: String, Codable, Hashable, Sendable {
-  case none = "none"
-  case minimal = "minimal"
-  case low = "low"
-  case medium = "medium"
-  case high = "high"
-  case xhigh = "xhigh"
-  case max = "max"
-}
+public typealias OpenAIBetaReasoningEffortAnyOf1 = OpenAIBetaReasoningEffort?

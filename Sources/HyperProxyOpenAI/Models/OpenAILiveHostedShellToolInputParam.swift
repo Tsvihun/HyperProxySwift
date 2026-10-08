@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAILiveHostedShellToolInputParam: Codable, Sendable {
-  public var environment: [String: HyperProxyJSONValue]
+  public var environment: OpenAILiveHostedShellToolInputParamEnvironmentAnyOf1?
   public var kind: OpenAILiveHostedShellToolInputParamKind
 
   public init(
-    environment: [String: HyperProxyJSONValue],
-    kind: OpenAILiveHostedShellToolInputParamKind
+    kind: OpenAILiveHostedShellToolInputParamKind,
+    environment: OpenAILiveHostedShellToolInputParamEnvironmentAnyOf1? = nil
   ) {
     self.environment = environment
     self.kind = kind

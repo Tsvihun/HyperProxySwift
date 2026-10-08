@@ -10,9 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum OpenAIModelResponsePropertiesPromptCacheRetentionAnyOf1: String, Codable, Hashable,
-  Sendable
-{
-  case inMemory = "in_memory"
-  case value24h = "24h"
-}
+public typealias OpenAIModelResponsePropertiesPromptCacheRetentionAnyOf1 =
+  OpenAIModelResponsePropertiesPromptCacheRetention

@@ -10,9 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsBodyCreateStudioProjectV1StudioProjectsPostFictionAnyOf1: String, Codable,
-  Hashable, Sendable
-{
-  case fiction = "fiction"
-  case nonFiction = "non-fiction"
-}
+public typealias ElevenLabsBodyCreateStudioProjectV1StudioProjectsPostFictionAnyOf1 =
+  ElevenLabsBodyCreateStudioProjectV1StudioProjectsPostFiction

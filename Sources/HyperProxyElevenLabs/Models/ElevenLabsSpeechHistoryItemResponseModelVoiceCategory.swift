@@ -1,0 +1,20 @@
+//
+//  ElevenLabsSpeechHistoryItemResponseModelVoiceCategory.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+// Maintainer-generated release artifact. Do not edit by hand.
+
+import Foundation
+import HyperProxyCore
+
+public enum ElevenLabsSpeechHistoryItemResponseModelVoiceCategory: String, Codable, Hashable,
+  Sendable
+{
+  case premade = "premade"
+  case cloned = "cloned"
+  case generated = "generated"
+  case professional = "professional"
+}

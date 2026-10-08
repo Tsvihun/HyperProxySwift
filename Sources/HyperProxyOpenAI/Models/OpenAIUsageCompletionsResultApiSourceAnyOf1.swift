@@ -10,7 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public enum OpenAIUsageCompletionsResultApiSourceAnyOf1: String, Codable, Hashable, Sendable {
-  case agentsApi = "agents_api"
-  case unlabeled = "unlabeled"
-}
+public typealias OpenAIUsageCompletionsResultApiSourceAnyOf1 = OpenAIUsageCompletionsResultApiSource

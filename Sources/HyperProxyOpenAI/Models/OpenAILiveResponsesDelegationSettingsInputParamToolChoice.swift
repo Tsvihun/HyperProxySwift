@@ -12,8 +12,7 @@ import HyperProxyCore
 
 public enum OpenAILiveResponsesDelegationSettingsInputParamToolChoice: Codable, Sendable {
   case liveToolChoiceEnum(OpenAILiveToolChoiceEnum)
-  case liveFunctionToolChoiceParam(OpenAILiveFunctionToolChoiceParam)
-  case liveMCPToolChoiceParam(OpenAILiveMCPToolChoiceParam)
+  case objectDictionary([String: HyperProxyJSONValue])
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -21,11 +20,7 @@ public enum OpenAILiveResponsesDelegationSettingsInputParamToolChoice: Codable, 
       self = .liveToolChoiceEnum(value)
       return
     }
-    if let value = try? container.decode(OpenAILiveFunctionToolChoiceParam.self) {
-      self = .liveFunctionToolChoiceParam(value)
-      return
-    }
-    self = .liveMCPToolChoiceParam(try container.decode(OpenAILiveMCPToolChoiceParam.self))
+    self = .objectDictionary(try container.decode([String: HyperProxyJSONValue].self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -33,9 +28,7 @@ public enum OpenAILiveResponsesDelegationSettingsInputParamToolChoice: Codable, 
     switch self {
     case .liveToolChoiceEnum(let value):
       try container.encode(value)
-    case .liveFunctionToolChoiceParam(let value):
-      try container.encode(value)
-    case .liveMCPToolChoiceParam(let value):
+    case .objectDictionary(let value):
       try container.encode(value)
     }
   }

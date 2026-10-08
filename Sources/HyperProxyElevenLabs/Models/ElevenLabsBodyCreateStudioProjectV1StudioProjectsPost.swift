@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsBodyCreateStudioProjectV1StudioProjectsPost: Codable, Sendable {
   public var acxVolumeNormalization: Bool?
   public var applyTextNormalization:
-    ElevenLabsBodyCreateStudioProjectV1StudioProjectsPostApplyTextNormalizationAnyOf1?
+    ElevenLabsBodyCreateStudioProjectV1StudioProjectsPostApplyTextNormalization?
   public var author: String?
   public var autoAssignVoices: Bool?
   public var autoConvert: Bool?
@@ -24,7 +24,7 @@ public struct ElevenLabsBodyCreateStudioProjectV1StudioProjectsPost: Codable, Se
   public var defaultParagraphVoiceId: String?
   public var defaultTitleVoiceId: String?
   public var description: String?
-  public var fiction: ElevenLabsBodyCreateStudioProjectV1StudioProjectsPostFictionAnyOf1?
+  public var fiction: ElevenLabsBodyCreateStudioProjectV1StudioProjectsPostFiction?
   public var fromContentJson: String?
   public var fromDocument: String?
   public var fromUrl: String?
@@ -36,9 +36,8 @@ public struct ElevenLabsBodyCreateStudioProjectV1StudioProjectsPost: Codable, Se
   public var originalPublicationDate: String?
   public var pronunciationDictionaryLocators: [String]?
   public var qualityPreset: ElevenLabsQualityPresetType?
-  public var sourceType: ElevenLabsBodyCreateStudioProjectV1StudioProjectsPostSourceTypeAnyOf1?
-  public var targetAudience:
-    ElevenLabsBodyCreateStudioProjectV1StudioProjectsPostTargetAudienceAnyOf1?
+  public var sourceType: ElevenLabsBodyCreateStudioProjectV1StudioProjectsPostSourceType?
+  public var targetAudience: ElevenLabsBodyCreateStudioProjectV1StudioProjectsPostTargetAudience?
   public var title: String?
   public var voiceSettings: [String]?
   public var volumeNormalization: Bool?
@@ -47,7 +46,7 @@ public struct ElevenLabsBodyCreateStudioProjectV1StudioProjectsPost: Codable, Se
     name: String,
     acxVolumeNormalization: Bool? = nil,
     applyTextNormalization:
-      ElevenLabsBodyCreateStudioProjectV1StudioProjectsPostApplyTextNormalizationAnyOf1? = nil,
+      ElevenLabsBodyCreateStudioProjectV1StudioProjectsPostApplyTextNormalization? = nil,
     author: String? = nil,
     autoAssignVoices: Bool? = nil,
     autoConvert: Bool? = nil,
@@ -58,7 +57,7 @@ public struct ElevenLabsBodyCreateStudioProjectV1StudioProjectsPost: Codable, Se
     defaultParagraphVoiceId: String? = nil,
     defaultTitleVoiceId: String? = nil,
     description: String? = nil,
-    fiction: ElevenLabsBodyCreateStudioProjectV1StudioProjectsPostFictionAnyOf1? = nil,
+    fiction: ElevenLabsBodyCreateStudioProjectV1StudioProjectsPostFiction? = nil,
     fromContentJson: String? = nil,
     fromDocument: String? = nil,
     fromUrl: String? = nil,
@@ -69,9 +68,8 @@ public struct ElevenLabsBodyCreateStudioProjectV1StudioProjectsPost: Codable, Se
     originalPublicationDate: String? = nil,
     pronunciationDictionaryLocators: [String]? = nil,
     qualityPreset: ElevenLabsQualityPresetType? = nil,
-    sourceType: ElevenLabsBodyCreateStudioProjectV1StudioProjectsPostSourceTypeAnyOf1? = nil,
-    targetAudience: ElevenLabsBodyCreateStudioProjectV1StudioProjectsPostTargetAudienceAnyOf1? =
-      nil,
+    sourceType: ElevenLabsBodyCreateStudioProjectV1StudioProjectsPostSourceType? = nil,
+    targetAudience: ElevenLabsBodyCreateStudioProjectV1StudioProjectsPostTargetAudience? = nil,
     title: String? = nil,
     voiceSettings: [String]? = nil,
     volumeNormalization: Bool? = nil

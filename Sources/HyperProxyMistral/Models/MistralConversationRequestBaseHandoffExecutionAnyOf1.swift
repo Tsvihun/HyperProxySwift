@@ -10,9 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum MistralConversationRequestBaseHandoffExecutionAnyOf1: String, Codable, Hashable,
-  Sendable
-{
-  case client = "client"
-  case server = "server"
-}
+public typealias MistralConversationRequestBaseHandoffExecutionAnyOf1 =
+  MistralConversationRequestBaseHandoffExecution

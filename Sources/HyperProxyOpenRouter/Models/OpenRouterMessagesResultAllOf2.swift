@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct OpenRouterMessagesResultAllOf2: Codable, Sendable {
   public var contextManagement: OpenRouterMessagesResultAllOf2ContextManagement?
   public var openrouterMetadata: OpenRouterMetadata?
-  public var provider: OpenRouterProviderName?
+  public var provider: String?
   public var safeguardResults: [OpenRouterAnthropicSafeguardResult]?
   public var usage: OpenRouterMessagesResultAllOf2Usage?
 
   public init(
     contextManagement: OpenRouterMessagesResultAllOf2ContextManagement? = nil,
     openrouterMetadata: OpenRouterMetadata? = nil,
-    provider: OpenRouterProviderName? = nil,
+    provider: String? = nil,
     safeguardResults: [OpenRouterAnthropicSafeguardResult]? = nil,
     usage: OpenRouterMessagesResultAllOf2Usage? = nil
   ) {

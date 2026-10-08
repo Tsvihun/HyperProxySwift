@@ -42,6 +42,7 @@ public enum OpenRouterOutputItems: Codable, Sendable {
   case outputSubagentServerToolItem(OpenRouterOutputSubagentServerToolItem)
   case outputFilesServerToolItem(OpenRouterOutputFilesServerToolItem)
   case outputCustomToolCallItem(OpenRouterOutputCustomToolCallItem)
+  case outputToolSearchCallItem(OpenRouterOutputToolSearchCallItem)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -165,7 +166,11 @@ public enum OpenRouterOutputItems: Codable, Sendable {
       self = .outputFilesServerToolItem(value)
       return
     }
-    self = .outputCustomToolCallItem(try container.decode(OpenRouterOutputCustomToolCallItem.self))
+    if let value = try? container.decode(OpenRouterOutputCustomToolCallItem.self) {
+      self = .outputCustomToolCallItem(value)
+      return
+    }
+    self = .outputToolSearchCallItem(try container.decode(OpenRouterOutputToolSearchCallItem.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -232,6 +237,8 @@ public enum OpenRouterOutputItems: Codable, Sendable {
     case .outputFilesServerToolItem(let value):
       try container.encode(value)
     case .outputCustomToolCallItem(let value):
+      try container.encode(value)
+    case .outputToolSearchCallItem(let value):
       try container.encode(value)
     }
   }

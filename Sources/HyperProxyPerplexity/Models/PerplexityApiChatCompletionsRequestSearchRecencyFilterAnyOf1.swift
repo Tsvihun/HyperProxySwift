@@ -10,12 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum PerplexityApiChatCompletionsRequestSearchRecencyFilterAnyOf1: String, Codable, Hashable,
-  Sendable
-{
-  case hour = "hour"
-  case day = "day"
-  case week = "week"
-  case month = "month"
-  case year = "year"
-}
+public typealias PerplexityApiChatCompletionsRequestSearchRecencyFilterAnyOf1 =
+  PerplexityApiChatCompletionsRequestSearchRecencyFilter

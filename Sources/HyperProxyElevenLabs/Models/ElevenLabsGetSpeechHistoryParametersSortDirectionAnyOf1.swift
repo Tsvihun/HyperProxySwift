@@ -10,9 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsGetSpeechHistoryParametersSortDirectionAnyOf1: String, Codable, Hashable,
-  Sendable
-{
-  case asc = "asc"
-  case desc = "desc"
-}
+public typealias ElevenLabsGetSpeechHistoryParametersSortDirectionAnyOf1 =
+  ElevenLabsGetSpeechHistoryParametersSortDirection

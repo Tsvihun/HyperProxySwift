@@ -10,8 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public enum MistralToolExecutionTaskSupportAnyOf1: String, Codable, Hashable, Sendable {
-  case forbidden = "forbidden"
-  case optionalValue = "optional"
-  case requiredValue = "required"
-}
+public typealias MistralToolExecutionTaskSupportAnyOf1 = MistralToolExecutionTaskSupport

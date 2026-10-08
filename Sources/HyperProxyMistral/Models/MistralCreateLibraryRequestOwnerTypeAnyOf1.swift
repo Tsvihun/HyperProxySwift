@@ -10,7 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public enum MistralCreateLibraryRequestOwnerTypeAnyOf1: String, Codable, Hashable, Sendable {
-  case user = "User"
-  case workspace = "Workspace"
-}
+public typealias MistralCreateLibraryRequestOwnerTypeAnyOf1 = MistralCreateLibraryRequestOwnerType

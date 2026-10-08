@@ -10,8 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum MistralGetWorkflowsV1WorkflowsGetParametersSortByAnyOf1: String, Codable, Hashable,
-  Sendable
-{
-  case displayName = "display_name"
-}
+public typealias MistralGetWorkflowsV1WorkflowsGetParametersSortByAnyOf1 =
+  MistralGetWorkflowsV1WorkflowsGetParametersSortBy

@@ -17,6 +17,7 @@ public enum OpenAISessionTurnErrorCodeResource: String, Codable, Hashable, Senda
   case projectSpendLimitExceeded = "project_spend_limit_exceeded"
   case organizationSpendLimitExceeded = "organization_spend_limit_exceeded"
   case organizationUsageLimitExceeded = "organization_usage_limit_exceeded"
+  case billingNotActive = "billing_not_active"
   case creditBalanceExhausted = "credit_balance_exhausted"
   case rateLimitExceeded = "rate_limit_exceeded"
   case flexUnavailable = "flex_unavailable"

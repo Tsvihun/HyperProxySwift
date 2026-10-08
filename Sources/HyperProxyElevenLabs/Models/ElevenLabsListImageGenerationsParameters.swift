@@ -14,14 +14,14 @@ public struct ElevenLabsListImageGenerationsParameters: Codable, Sendable {
   public var cursor: String?
   public var modelId: String?
   public var pageSize: Int?
-  public var status: ElevenLabsListImageGenerationsParametersStatusAnyOf1?
+  public var status: ElevenLabsListImageGenerationsParametersStatus?
   public var xiApiKey: String?
 
   public init(
     cursor: String? = nil,
     modelId: String? = nil,
     pageSize: Int? = nil,
-    status: ElevenLabsListImageGenerationsParametersStatusAnyOf1? = nil,
+    status: ElevenLabsListImageGenerationsParametersStatus? = nil,
     xiApiKey: String? = nil
   ) {
     self.cursor = cursor

@@ -12,16 +12,16 @@ import HyperProxyCore
 
 public struct OpenAITokenUsageResource: Codable, Sendable {
   public var inputTokens: Int64
-  public var inputTokensDetails: OpenAIInputTokensDetailsResource
+  public var inputTokensDetails: OpenAIInputTokensDetailsResource2
   public var outputTokens: Int64
-  public var outputTokensDetails: OpenAIOutputTokensDetailsResource
+  public var outputTokensDetails: OpenAIOutputTokensDetailsResource2
   public var totalTokens: Int64
 
   public init(
     inputTokens: Int64,
-    inputTokensDetails: OpenAIInputTokensDetailsResource,
+    inputTokensDetails: OpenAIInputTokensDetailsResource2,
     outputTokens: Int64,
-    outputTokensDetails: OpenAIOutputTokensDetailsResource,
+    outputTokensDetails: OpenAIOutputTokensDetailsResource2,
     totalTokens: Int64
   ) {
     self.inputTokens = inputTokens

@@ -60,6 +60,8 @@ public enum OpenRouterInputsAnyOf2Item: Codable, Sendable {
   case additionalToolsItem(OpenRouterAdditionalToolsItem)
   case agentMessageItem(OpenRouterAgentMessageItem)
   case configurationUpdateItem(OpenRouterConfigurationUpdateItem)
+  case toolSearchCallItem(OpenRouterToolSearchCallItem)
+  case toolSearchOutputItem(OpenRouterToolSearchOutputItem)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -255,7 +257,15 @@ public enum OpenRouterInputsAnyOf2Item: Codable, Sendable {
       self = .agentMessageItem(value)
       return
     }
-    self = .configurationUpdateItem(try container.decode(OpenRouterConfigurationUpdateItem.self))
+    if let value = try? container.decode(OpenRouterConfigurationUpdateItem.self) {
+      self = .configurationUpdateItem(value)
+      return
+    }
+    if let value = try? container.decode(OpenRouterToolSearchCallItem.self) {
+      self = .toolSearchCallItem(value)
+      return
+    }
+    self = .toolSearchOutputItem(try container.decode(OpenRouterToolSearchOutputItem.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -358,6 +368,10 @@ public enum OpenRouterInputsAnyOf2Item: Codable, Sendable {
     case .agentMessageItem(let value):
       try container.encode(value)
     case .configurationUpdateItem(let value):
+      try container.encode(value)
+    case .toolSearchCallItem(let value):
+      try container.encode(value)
+    case .toolSearchOutputItem(let value):
       try container.encode(value)
     }
   }

@@ -10,7 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public enum MistralOCRRequestTableFormatAnyOf1: String, Codable, Hashable, Sendable {
-  case markdown = "markdown"
-  case html = "html"
-}
+public typealias MistralOCRRequestTableFormatAnyOf1 = MistralOCRRequestTableFormat

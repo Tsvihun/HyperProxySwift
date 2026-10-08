@@ -17,6 +17,7 @@ public struct FalGetModelsParameters: Codable, Sendable {
   public var expand: FalGetModelsParametersExpand?
   public var limit: Int?
   public var q: String?
+  public var sort: FalGetModelsParametersSort?
   public var status: FalGetModelsParametersStatus?
 
   public init(
@@ -26,6 +27,7 @@ public struct FalGetModelsParameters: Codable, Sendable {
     expand: FalGetModelsParametersExpand? = nil,
     limit: Int? = nil,
     q: String? = nil,
+    sort: FalGetModelsParametersSort? = nil,
     status: FalGetModelsParametersStatus? = nil
   ) {
     self.category = category
@@ -34,6 +36,7 @@ public struct FalGetModelsParameters: Codable, Sendable {
     self.expand = expand
     self.limit = limit
     self.q = q
+    self.sort = sort
     self.status = status
   }
 
@@ -44,6 +47,7 @@ public struct FalGetModelsParameters: Codable, Sendable {
     case expand
     case limit
     case q
+    case sort
     case status
   }
 }

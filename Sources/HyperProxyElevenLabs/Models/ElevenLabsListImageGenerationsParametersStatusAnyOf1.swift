@@ -10,11 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsListImageGenerationsParametersStatusAnyOf1: String, Codable, Hashable,
-  Sendable
-{
-  case pending = "pending"
-  case generating = "generating"
-  case completed = "completed"
-  case failed = "failed"
-}
+public typealias ElevenLabsListImageGenerationsParametersStatusAnyOf1 =
+  ElevenLabsListImageGenerationsParametersStatus

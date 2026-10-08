@@ -10,9 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum MistralAdminOrganizationMemberUpdateRoleNameAnyOf1: String, Codable, Hashable, Sendable
-{
-  case member = "member"
-  case billingManager = "billing_manager"
-  case organizationAdmin = "organization_admin"
-}
+public typealias MistralAdminOrganizationMemberUpdateRoleNameAnyOf1 =
+  MistralAdminOrganizationMemberUpdateRoleName

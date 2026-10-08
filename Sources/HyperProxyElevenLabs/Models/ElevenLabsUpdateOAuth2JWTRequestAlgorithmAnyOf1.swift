@@ -10,11 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsUpdateOAuth2JWTRequestAlgorithmAnyOf1: String, Codable, Hashable, Sendable {
-  case hS256 = "HS256"
-  case hS384 = "HS384"
-  case hS512 = "HS512"
-  case rS256 = "RS256"
-  case rS384 = "RS384"
-  case rS512 = "RS512"
-}
+public typealias ElevenLabsUpdateOAuth2JWTRequestAlgorithmAnyOf1 =
+  ElevenLabsUpdateOAuth2JWTRequestAlgorithm

@@ -51,7 +51,7 @@ public struct ElevenLabsWidgetConfigInput: Codable, Sendable {
   public var stripAudioTags: Bool?
   public var styles: ElevenLabsWidgetStyles?
   public var supportsTextOnly: Bool?
-  public var syntaxHighlightTheme: ElevenLabsWidgetConfigInputSyntaxHighlightThemeAnyOf1?
+  public var syntaxHighlightTheme: ElevenLabsWidgetConfigInputSyntaxHighlightTheme?
   public var termsHtml: String?
   public var termsKey: String?
   public var termsText: String?
@@ -102,7 +102,7 @@ public struct ElevenLabsWidgetConfigInput: Codable, Sendable {
     stripAudioTags: Bool? = nil,
     styles: ElevenLabsWidgetStyles? = nil,
     supportsTextOnly: Bool? = nil,
-    syntaxHighlightTheme: ElevenLabsWidgetConfigInputSyntaxHighlightThemeAnyOf1? = nil,
+    syntaxHighlightTheme: ElevenLabsWidgetConfigInputSyntaxHighlightTheme? = nil,
     termsHtml: String? = nil,
     termsKey: String? = nil,
     termsText: String? = nil,

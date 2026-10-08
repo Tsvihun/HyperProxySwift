@@ -10,7 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public enum PerplexityChoiceFinishReasonAnyOf1: String, Codable, Hashable, Sendable {
-  case stop = "stop"
-  case length = "length"
-}
+public typealias PerplexityChoiceFinishReasonAnyOf1 = PerplexityChoiceFinishReason

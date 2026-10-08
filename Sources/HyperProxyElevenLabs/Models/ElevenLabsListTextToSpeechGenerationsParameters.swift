@@ -14,14 +14,14 @@ public struct ElevenLabsListTextToSpeechGenerationsParameters: Codable, Sendable
   public var cursor: String?
   public var modelId: String?
   public var pageSize: Int?
-  public var status: ElevenLabsListTextToSpeechGenerationsParametersStatusAnyOf1?
+  public var status: ElevenLabsListTextToSpeechGenerationsParametersStatus?
   public var xiApiKey: String?
 
   public init(
     cursor: String? = nil,
     modelId: String? = nil,
     pageSize: Int? = nil,
-    status: ElevenLabsListTextToSpeechGenerationsParametersStatusAnyOf1? = nil,
+    status: ElevenLabsListTextToSpeechGenerationsParametersStatus? = nil,
     xiApiKey: String? = nil
   ) {
     self.cursor = cursor

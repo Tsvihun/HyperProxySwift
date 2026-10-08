@@ -16,7 +16,7 @@ public struct MistralConversationStreamRequest: Codable, Sendable {
   public var completionArgs: MistralCompletionArgs?
   public var description: String?
   public var guardrails: [MistralGuardrailConfig]?
-  public var handoffExecution: MistralConversationRequestBaseHandoffExecutionAnyOf1?
+  public var handoffExecution: MistralConversationRequestBaseHandoffExecution?
   public var inputs: MistralConversationInputs
   public var instructions: String?
   public var metadata: MistralMetadataDict?
@@ -33,7 +33,7 @@ public struct MistralConversationStreamRequest: Codable, Sendable {
     completionArgs: MistralCompletionArgs? = nil,
     description: String? = nil,
     guardrails: [MistralGuardrailConfig]? = nil,
-    handoffExecution: MistralConversationRequestBaseHandoffExecutionAnyOf1? = nil,
+    handoffExecution: MistralConversationRequestBaseHandoffExecution? = nil,
     instructions: String? = nil,
     metadata: MistralMetadataDict? = nil,
     model: String? = nil,

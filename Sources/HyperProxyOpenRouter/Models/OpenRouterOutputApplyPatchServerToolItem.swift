@@ -12,19 +12,22 @@ import HyperProxyCore
 
 public struct OpenRouterOutputApplyPatchServerToolItem: Codable, Sendable {
   public var callId: String?
+  public var error: String?
   public var id: String?
   public var operation: OpenRouterApplyPatchCallOperation?
-  public var status: OpenRouterToolCallStatus
+  public var status: OpenRouterFailableToolCallStatus
   public var kind: OpenRouterOutputApplyPatchServerToolItemKind
 
   public init(
-    status: OpenRouterToolCallStatus,
+    status: OpenRouterFailableToolCallStatus,
     kind: OpenRouterOutputApplyPatchServerToolItemKind,
     callId: String? = nil,
+    error: String? = nil,
     id: String? = nil,
     operation: OpenRouterApplyPatchCallOperation? = nil
   ) {
     self.callId = callId
+    self.error = error
     self.id = id
     self.operation = operation
     self.status = status
@@ -33,6 +36,7 @@ public struct OpenRouterOutputApplyPatchServerToolItem: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case callId = "call_id"
+    case error
     case id
     case operation
     case status

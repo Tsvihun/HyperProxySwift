@@ -10,9 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsBodyCreateMusicFinetuneV1MusicFinetunesPostVisibilityAnyOf1: String, Codable,
-  Hashable, Sendable
-{
-  case privateValue = "private"
-  case workspace = "workspace"
-}
+public typealias ElevenLabsBodyCreateMusicFinetuneV1MusicFinetunesPostVisibilityAnyOf1 =
+  ElevenLabsBodyCreateMusicFinetuneV1MusicFinetunesPostVisibility

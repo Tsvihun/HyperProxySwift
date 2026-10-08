@@ -10,7 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public enum OpenAIBetaResponseAllOf3TruncationAnyOf1: String, Codable, Hashable, Sendable {
-  case auto = "auto"
-  case disabled = "disabled"
-}
+public typealias OpenAIBetaResponseAllOf3TruncationAnyOf1 = OpenAIBetaResponseAllOf3Truncation

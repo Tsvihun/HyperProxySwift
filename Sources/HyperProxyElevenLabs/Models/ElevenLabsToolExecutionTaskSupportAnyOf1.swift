@@ -10,8 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsToolExecutionTaskSupportAnyOf1: String, Codable, Hashable, Sendable {
-  case forbidden = "forbidden"
-  case optionalValue = "optional"
-  case requiredValue = "required"
-}
+public typealias ElevenLabsToolExecutionTaskSupportAnyOf1 = ElevenLabsToolExecutionTaskSupport

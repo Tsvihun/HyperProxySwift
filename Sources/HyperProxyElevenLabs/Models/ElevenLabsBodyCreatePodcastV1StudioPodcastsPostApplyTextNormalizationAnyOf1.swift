@@ -10,11 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsBodyCreatePodcastV1StudioPodcastsPostApplyTextNormalizationAnyOf1: String,
-  Codable, Hashable, Sendable
-{
-  case auto = "auto"
-  case on = "on"
-  case off = "off"
-  case applyEnglish = "apply_english"
-}
+public typealias ElevenLabsBodyCreatePodcastV1StudioPodcastsPostApplyTextNormalizationAnyOf1 =
+  ElevenLabsBodyCreatePodcastV1StudioPodcastsPostApplyTextNormalization

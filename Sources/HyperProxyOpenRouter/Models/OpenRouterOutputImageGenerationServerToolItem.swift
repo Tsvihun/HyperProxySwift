@@ -11,18 +11,20 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterOutputImageGenerationServerToolItem: Codable, Sendable {
+  public var error: String?
   public var id: String?
   public var imageB64: String?
   public var imageUrl: String?
   public var prompt: String?
   public var result: String?
   public var revisedPrompt: String?
-  public var status: OpenRouterToolCallStatus
+  public var status: OpenRouterFailableToolCallStatus
   public var kind: OpenRouterOutputImageGenerationServerToolItemKind
 
   public init(
-    status: OpenRouterToolCallStatus,
+    status: OpenRouterFailableToolCallStatus,
     kind: OpenRouterOutputImageGenerationServerToolItemKind,
+    error: String? = nil,
     id: String? = nil,
     imageB64: String? = nil,
     imageUrl: String? = nil,
@@ -30,6 +32,7 @@ public struct OpenRouterOutputImageGenerationServerToolItem: Codable, Sendable {
     result: String? = nil,
     revisedPrompt: String? = nil
   ) {
+    self.error = error
     self.id = id
     self.imageB64 = imageB64
     self.imageUrl = imageUrl
@@ -41,6 +44,7 @@ public struct OpenRouterOutputImageGenerationServerToolItem: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case error
     case id
     case imageB64
     case imageUrl

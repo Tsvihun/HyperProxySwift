@@ -10,13 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsTemplateIntegerOutputFailureReasonAnyOf1: String, Codable, Hashable, Sendable
-{
-  case timeout = "timeout"
-  case modelError = "model_error"
-  case moderated = "moderated"
-  case invalidParameters = "invalid_parameters"
-  case dependencyFailed = "dependency_failed"
-  case chargingFailed = "charging_failed"
-  case internalError = "internal_error"
-}
+public typealias ElevenLabsTemplateIntegerOutputFailureReasonAnyOf1 =
+  ElevenLabsTemplateIntegerOutputFailureReason

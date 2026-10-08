@@ -698,20 +698,6 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
     return try await call.decoded(OpenAIVoiceConsentDeletedResource.self)
   }
 
-  public func createVoice(
-    _ body: OpenAICreateVoicePromptRequest,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> OpenAIVoiceResource {
-    let call = self.call(.createVoice)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(OpenAIVoiceResource.self)
-  }
-
   public func batchesList(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -1202,6 +1188,20 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(OpenAIConversationResource.self)
+  }
+
+  public func createDecision(
+    _ body: OpenAIDecisionRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIDecisionResponse {
+    let call = self.call(.createDecision)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenAIDecisionResponse.self)
   }
 
   public func embeddingsCreate(
@@ -2862,6 +2862,22 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(OpenAIVaultResource.self)
+  }
+
+  public func updateVault(
+    _ body: OpenAIUpdateVaultParams,
+    vaultId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIVaultResource {
+    let call = self.call(.updateVault)
+      .path("vault_id", vaultId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenAIVaultResource.self)
   }
 
   public func deleteVault(

@@ -10,4 +10,12 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIReasoningEffort = OpenAIReasoningEffortAnyOf1?
+public enum OpenAIReasoningEffort: String, Codable, Hashable, Sendable {
+  case none = "none"
+  case minimal = "minimal"
+  case low = "low"
+  case medium = "medium"
+  case high = "high"
+  case xhigh = "xhigh"
+  case max = "max"
+}

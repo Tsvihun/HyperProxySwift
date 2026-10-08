@@ -15,6 +15,7 @@ public struct OpenRouterBYOKKey: Codable, Sendable {
   public var allowedModels: [String]
   public var allowedUserIds: [String]
   public var createdAt: String
+  public var declaredRegion: OpenRouterBYOKKeyDeclaredRegion?
   public var declaredZdr: Bool
   public var disabled: Bool
   public var id: String
@@ -32,6 +33,7 @@ public struct OpenRouterBYOKKey: Codable, Sendable {
     allowedModels: [String],
     allowedUserIds: [String],
     createdAt: String,
+    declaredRegion: OpenRouterBYOKKeyDeclaredRegion?,
     declaredZdr: Bool,
     disabled: Bool,
     id: String,
@@ -48,6 +50,7 @@ public struct OpenRouterBYOKKey: Codable, Sendable {
     self.allowedModels = allowedModels
     self.allowedUserIds = allowedUserIds
     self.createdAt = createdAt
+    self.declaredRegion = declaredRegion
     self.declaredZdr = declaredZdr
     self.disabled = disabled
     self.id = id
@@ -66,6 +69,7 @@ public struct OpenRouterBYOKKey: Codable, Sendable {
     case allowedModels = "allowed_models"
     case allowedUserIds = "allowed_user_ids"
     case createdAt = "created_at"
+    case declaredRegion = "declared_region"
     case declaredZdr = "declared_zdr"
     case disabled
     case id

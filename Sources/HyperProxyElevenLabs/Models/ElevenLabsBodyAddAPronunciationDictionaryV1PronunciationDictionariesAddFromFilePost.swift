@@ -17,14 +17,14 @@ public struct ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionari
   public var file: String?
   public var name: String
   public var workspaceAccess:
-    ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionariesAddFromFilePostWorkspaceAccessAnyOf1?
+    ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionariesAddFromFilePostWorkspaceAccess?
 
   public init(
     name: String,
     description: String? = nil,
     file: String? = nil,
     workspaceAccess:
-      ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionariesAddFromFilePostWorkspaceAccessAnyOf1? =
+      ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionariesAddFromFilePostWorkspaceAccess? =
       nil
   ) {
     self.description = description

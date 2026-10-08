@@ -14,7 +14,7 @@ public struct ElevenLabsGetPronunciationDictionariesMetadataParameters: Codable,
   public var cursor: String?
   public var includeArchived: Bool?
   public var pageSize: Int?
-  public var sort: ElevenLabsGetPronunciationDictionariesMetadataParametersSortAnyOf1?
+  public var sort: ElevenLabsGetPronunciationDictionariesMetadataParametersSort?
   public var sortDirection: String?
   public var xiApiKey: String?
 
@@ -22,7 +22,7 @@ public struct ElevenLabsGetPronunciationDictionariesMetadataParameters: Codable,
     cursor: String? = nil,
     includeArchived: Bool? = nil,
     pageSize: Int? = nil,
-    sort: ElevenLabsGetPronunciationDictionariesMetadataParametersSortAnyOf1? = nil,
+    sort: ElevenLabsGetPronunciationDictionariesMetadataParametersSort? = nil,
     sortDirection: String? = nil,
     xiApiKey: String? = nil
   ) {

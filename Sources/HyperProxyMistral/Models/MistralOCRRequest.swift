@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct MistralOCRRequest: Codable, Sendable {
   public var bboxAnnotationFormat: MistralResponseFormat?
-  public var confidenceScoresGranularity: MistralOCRRequestConfidenceScoresGranularityAnyOf1?
+  public var confidenceScoresGranularity: MistralOCRRequestConfidenceScoresGranularity?
   public var document: MistralOCRRequestDocument
   public var documentAnnotationFormat: MistralResponseFormat?
   public var documentAnnotationPrompt: String?
@@ -24,13 +24,13 @@ public struct MistralOCRRequest: Codable, Sendable {
   public var includeImageBase64: Bool?
   public var model: String?
   public var pages: MistralOCRRequestPages?
-  public var tableFormat: MistralOCRRequestTableFormatAnyOf1?
+  public var tableFormat: MistralOCRRequestTableFormat?
 
   public init(
     document: MistralOCRRequestDocument,
     model: String?,
     bboxAnnotationFormat: MistralResponseFormat? = nil,
-    confidenceScoresGranularity: MistralOCRRequestConfidenceScoresGranularityAnyOf1? = nil,
+    confidenceScoresGranularity: MistralOCRRequestConfidenceScoresGranularity? = nil,
     documentAnnotationFormat: MistralResponseFormat? = nil,
     documentAnnotationPrompt: String? = nil,
     extractFooter: Bool? = nil,
@@ -40,7 +40,7 @@ public struct MistralOCRRequest: Codable, Sendable {
     includeBlocks: Bool? = nil,
     includeImageBase64: Bool? = nil,
     pages: MistralOCRRequestPages? = nil,
-    tableFormat: MistralOCRRequestTableFormatAnyOf1? = nil
+    tableFormat: MistralOCRRequestTableFormat? = nil
   ) {
     self.bboxAnnotationFormat = bboxAnnotationFormat
     self.confidenceScoresGranularity = confidenceScoresGranularity

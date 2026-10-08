@@ -41,9 +41,6 @@ public enum OpenAILiveInitialSessionAudioOutputParamVoice: Codable, Sendable {
   public static var ash: Self { .liveInitialSessionAudioOutputParamVoiceOneOf1(.ash) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var aube: Self { .liveInitialSessionAudioOutputParamVoiceOneOf1(.aube) }
-
-  /// Provider-native value without the schema union wrapper.
   public static var ballad: Self { .liveInitialSessionAudioOutputParamVoiceOneOf1(.ballad) }
 
   /// Provider-native value without the schema union wrapper.
@@ -107,10 +104,10 @@ public enum OpenAILiveInitialSessionAudioOutputParamVoice: Codable, Sendable {
   public static var sage: Self { .liveInitialSessionAudioOutputParamVoiceOneOf1(.sage) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var shimmer: Self { .liveInitialSessionAudioOutputParamVoiceOneOf1(.shimmer) }
+  public static var shida: Self { .liveInitialSessionAudioOutputParamVoiceOneOf1(.shida) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var shitan: Self { .liveInitialSessionAudioOutputParamVoiceOneOf1(.shitan) }
+  public static var shimmer: Self { .liveInitialSessionAudioOutputParamVoiceOneOf1(.shimmer) }
 
   /// Provider-native value without the schema union wrapper.
   public static var sillage: Self { .liveInitialSessionAudioOutputParamVoiceOneOf1(.sillage) }

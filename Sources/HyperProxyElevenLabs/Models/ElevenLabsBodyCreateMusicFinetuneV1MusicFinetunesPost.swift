@@ -16,7 +16,7 @@ public struct ElevenLabsBodyCreateMusicFinetuneV1MusicFinetunesPost: Codable, Se
   public var name: String
   public var primaryGenre: String
   public var tags: [String]?
-  public var visibility: ElevenLabsBodyCreateMusicFinetuneV1MusicFinetunesPostVisibilityAnyOf1?
+  public var visibility: ElevenLabsBodyCreateMusicFinetuneV1MusicFinetunesPostVisibility?
 
   public init(
     name: String,
@@ -24,7 +24,7 @@ public struct ElevenLabsBodyCreateMusicFinetuneV1MusicFinetunesPost: Codable, Se
     files: [String]? = nil,
     modelId: ElevenLabsMusicModelID? = nil,
     tags: [String]? = nil,
-    visibility: ElevenLabsBodyCreateMusicFinetuneV1MusicFinetunesPostVisibilityAnyOf1? = nil
+    visibility: ElevenLabsBodyCreateMusicFinetuneV1MusicFinetunesPostVisibility? = nil
   ) {
     self.files = files
     self.modelId = modelId

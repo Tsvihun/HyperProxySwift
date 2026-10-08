@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct OpenAICostsResult: Codable, Sendable {
   public var amount: OpenAICostsResultAmount?
   public var apiKeyId: String?
-  public var apiSource: OpenAICostsResultApiSourceAnyOf1?
+  public var apiSource: OpenAICostsResultApiSource?
   public var lineItem: String?
   public var object: OpenAICostsResultObject
   public var projectId: String?
@@ -25,7 +25,7 @@ public struct OpenAICostsResult: Codable, Sendable {
     object: OpenAICostsResultObject,
     amount: OpenAICostsResultAmount? = nil,
     apiKeyId: String? = nil,
-    apiSource: OpenAICostsResultApiSourceAnyOf1? = nil,
+    apiSource: OpenAICostsResultApiSource? = nil,
     lineItem: String? = nil,
     projectId: String? = nil,
     quantity: Double? = nil,

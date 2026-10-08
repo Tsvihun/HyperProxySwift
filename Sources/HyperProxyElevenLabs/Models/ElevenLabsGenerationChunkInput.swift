@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsGenerationChunkInput: Codable, Sendable {
-  public var conditionStrength: ElevenLabsGenerationChunkInputConditionStrengthAnyOf1?
+  public var conditionStrength: ElevenLabsConditionStrength?
   public var conditioningRef: ElevenLabsAudioRefChunk?
   public var contextAdherence: ElevenLabsGenerationChunkInputContextAdherence?
   public var durationMs: Int
@@ -23,7 +23,7 @@ public struct ElevenLabsGenerationChunkInput: Codable, Sendable {
     durationMs: Int,
     positiveStyles: [String],
     text: String,
-    conditionStrength: ElevenLabsGenerationChunkInputConditionStrengthAnyOf1? = nil,
+    conditionStrength: ElevenLabsConditionStrength? = nil,
     conditioningRef: ElevenLabsAudioRefChunk? = nil,
     contextAdherence: ElevenLabsGenerationChunkInputContextAdherence? = nil,
     negativeStyles: [String]? = nil

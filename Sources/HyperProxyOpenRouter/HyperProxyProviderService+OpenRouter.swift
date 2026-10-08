@@ -293,6 +293,14 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
   public var getInternDaemonAccess: HyperProxyProviderCall<OpenRouterOperation> {
     self.call(.getInternDaemonAccess)
   }
+  /// `POST api/v1/interns/{internId}/daemon-access/sign`
+  public var signInternDaemonAccessRequest: HyperProxyProviderCall<OpenRouterOperation> {
+    self.call(.signInternDaemonAccessRequest)
+  }
+  /// `POST api/v1/interns/{internId}/daemon/sign`
+  public var signInternDaemonRequest: HyperProxyProviderCall<OpenRouterOperation> {
+    self.call(.signInternDaemonRequest)
+  }
   /// `POST api/v1/interns/{internId}/invoke`
   public var invokeIntern: HyperProxyProviderCall<OpenRouterOperation> {
     self.call(.invokeIntern)

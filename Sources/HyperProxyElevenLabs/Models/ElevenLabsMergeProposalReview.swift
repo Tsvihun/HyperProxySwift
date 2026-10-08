@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct ElevenLabsMergeProposalReview: Codable, Sendable {
   public var comment: String?
-  public var reviewerRole: ElevenLabsMergeProposalReviewReviewerRoleAnyOf1?
+  public var reviewerRole: ElevenLabsMergeProposalReviewReviewerRole?
   public var state: ElevenLabsMergeProposalReviewState
   public var submittedAt: Int
   public var userId: String
@@ -22,7 +22,7 @@ public struct ElevenLabsMergeProposalReview: Codable, Sendable {
     submittedAt: Int,
     userId: String,
     comment: String? = nil,
-    reviewerRole: ElevenLabsMergeProposalReviewReviewerRoleAnyOf1? = nil
+    reviewerRole: ElevenLabsMergeProposalReviewReviewerRole? = nil
   ) {
     self.comment = comment
     self.reviewerRole = reviewerRole

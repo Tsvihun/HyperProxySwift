@@ -23,6 +23,7 @@ public struct OpenRouterCreateKeysResponseData: Codable, Sendable {
   public var hash: String
   public var includeByokInLimit: Bool
   public var label: String
+  public var lastUsedAt: String
   public var limit: Double
   public var limitRemaining: Double
   public var limitReset: String
@@ -46,6 +47,7 @@ public struct OpenRouterCreateKeysResponseData: Codable, Sendable {
     hash: String,
     includeByokInLimit: Bool,
     label: String,
+    lastUsedAt: String,
     limit: Double,
     limitRemaining: Double,
     limitReset: String,
@@ -70,6 +72,7 @@ public struct OpenRouterCreateKeysResponseData: Codable, Sendable {
     self.hash = hash
     self.includeByokInLimit = includeByokInLimit
     self.label = label
+    self.lastUsedAt = lastUsedAt
     self.limit = limit
     self.limitRemaining = limitRemaining
     self.limitReset = limitReset
@@ -95,6 +98,7 @@ public struct OpenRouterCreateKeysResponseData: Codable, Sendable {
     case hash
     case includeByokInLimit = "include_byok_in_limit"
     case label
+    case lastUsedAt = "last_used_at"
     case limit
     case limitRemaining = "limit_remaining"
     case limitReset = "limit_reset"

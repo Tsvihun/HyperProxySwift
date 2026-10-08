@@ -10,9 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum MistralGetSchedulesV1WorkflowsSchedulesGetParametersStatusAnyOf1: String, Codable,
-  Hashable, Sendable
-{
-  case active = "active"
-  case paused = "paused"
-}
+public typealias MistralGetSchedulesV1WorkflowsSchedulesGetParametersStatusAnyOf1 =
+  MistralGetSchedulesV1WorkflowsSchedulesGetParametersStatus

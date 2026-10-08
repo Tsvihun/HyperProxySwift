@@ -10,11 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsChapterContentBlockInputModelSubTypeAnyOf1: String, Codable, Hashable,
-  Sendable
-{
-  case p = "p"
-  case h1 = "h1"
-  case h2 = "h2"
-  case h3 = "h3"
-}
+public typealias ElevenLabsChapterContentBlockInputModelSubTypeAnyOf1 =
+  ElevenLabsChapterContentBlockInputModelSubType

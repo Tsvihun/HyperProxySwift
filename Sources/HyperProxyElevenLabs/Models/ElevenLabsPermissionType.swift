@@ -18,6 +18,8 @@ public enum ElevenLabsPermissionType: String, Codable, Hashable, Sendable {
   case modelsWrite = "models_write"
   case voicesRead = "voices_read"
   case voicesWrite = "voices_write"
+  case voiceCollectionsRead = "voice_collections_read"
+  case voiceCollectionsWrite = "voice_collections_write"
   case speechHistoryRead = "speech_history_read"
   case speechHistoryWrite = "speech_history_write"
   case soundGeneration = "sound_generation"

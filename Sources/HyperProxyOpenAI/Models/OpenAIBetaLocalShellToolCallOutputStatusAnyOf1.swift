@@ -10,8 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum OpenAIBetaLocalShellToolCallOutputStatusAnyOf1: String, Codable, Hashable, Sendable {
-  case inProgress = "in_progress"
-  case completed = "completed"
-  case incomplete = "incomplete"
-}
+public typealias OpenAIBetaLocalShellToolCallOutputStatusAnyOf1 =
+  OpenAIBetaLocalShellToolCallOutputStatus

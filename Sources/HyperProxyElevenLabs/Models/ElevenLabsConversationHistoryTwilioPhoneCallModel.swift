@@ -12,6 +12,7 @@ import HyperProxyCore
 
 public struct ElevenLabsConversationHistoryTwilioPhoneCallModel: Codable, Sendable {
   public var agentNumber: String
+  public var callResult: ElevenLabsCallResult?
   public var callSid: String
   public var direction: ElevenLabsTelephonyDirection
   public var externalNumber: String
@@ -26,9 +27,11 @@ public struct ElevenLabsConversationHistoryTwilioPhoneCallModel: Codable, Sendab
     externalNumber: String,
     phoneNumberId: String,
     streamSid: String,
-    kind: ElevenLabsTwilioKind = .twilio
+    kind: ElevenLabsTwilioKind = .twilio,
+    callResult: ElevenLabsCallResult? = nil
   ) {
     self.agentNumber = agentNumber
+    self.callResult = callResult
     self.callSid = callSid
     self.direction = direction
     self.externalNumber = externalNumber
@@ -39,6 +42,7 @@ public struct ElevenLabsConversationHistoryTwilioPhoneCallModel: Codable, Sendab
 
   enum CodingKeys: String, CodingKey {
     case agentNumber = "agent_number"
+    case callResult = "call_result"
     case callSid = "call_sid"
     case direction
     case externalNumber = "external_number"

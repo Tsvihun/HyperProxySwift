@@ -2408,6 +2408,22 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
     return try await prepared.decoded(ElevenLabsAgentConversationTicketResponseModel.self)
   }
 
+  public func mergeAgentConversationTicketsRoute(
+    _ body: ElevenLabsMergeAgentConversationTicketsRequestModel,
+    agentqaTicketId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsAgentConversationTicketResponseModel {
+    let call = self.call(.mergeAgentConversationTicketsRoute)
+      .path("agentqa_ticket_id", agentqaTicketId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(ElevenLabsAgentConversationTicketResponseModel.self)
+  }
+
   public func addTurnCommentRoute(
     _ body: ElevenLabsAddTurnCommentRequestModel,
     agentqaTicketId: String,
@@ -4449,6 +4465,108 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
       .timeout(timeout)
     let prepared = try call.json(body)
     return try await prepared.decoded(ElevenLabsAddVoiceResponseModel.self)
+  }
+
+  public func getUserVoiceCollections(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsGetUserVoiceCollectionsResponseModel {
+    let call = self.call(.getUserVoiceCollections)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsGetUserVoiceCollectionsResponseModel.self)
+  }
+
+  public func createOrUpdateUserVoiceCollection(
+    _ body: ElevenLabsBodyCreateVoiceCollectionV1VoicesCollectionsPost,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsUserVoiceCollectionResponseModel {
+    let call = self.call(.createOrUpdateUserVoiceCollection)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(ElevenLabsUserVoiceCollectionResponseModel.self)
+  }
+
+  public func getUserVoiceCollection(
+    collectionId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsUserVoiceCollectionResponseModel {
+    let call = self.call(.getUserVoiceCollection)
+      .path("collection_id", collectionId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsUserVoiceCollectionResponseModel.self)
+  }
+
+  public func updateUserVoiceCollection(
+    _ body: ElevenLabsBodyUpdateVoiceCollectionV1VoicesCollectionsCollectionIdPatch,
+    collectionId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsUserVoiceCollectionResponseModel {
+    let call = self.call(.updateUserVoiceCollection)
+      .path("collection_id", collectionId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(ElevenLabsUserVoiceCollectionResponseModel.self)
+  }
+
+  public func deleteUserVoiceCollection(
+    collectionId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsDeleteUserVoiceCollectionResponseModel {
+    let call = self.call(.deleteUserVoiceCollection)
+      .path("collection_id", collectionId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsDeleteUserVoiceCollectionResponseModel.self)
+  }
+
+  public func addVoiceToUserVoiceCollection(
+    collectionId: String,
+    voiceId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsAddVoiceToUserVoiceCollectionResponseModel {
+    let call = self.call(.addVoiceToUserVoiceCollection)
+      .path("collection_id", collectionId)
+      .path("voice_id", voiceId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsAddVoiceToUserVoiceCollectionResponseModel.self)
+  }
+
+  public func removeVoiceFromUserVoiceCollection(
+    collectionId: String,
+    voiceId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsRemoveVoiceFromUserVoiceCollectionResponseModel {
+    let call = self.call(.removeVoiceFromUserVoiceCollection)
+      .path("collection_id", collectionId)
+      .path("voice_id", voiceId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsRemoveVoiceFromUserVoiceCollectionResponseModel.self)
   }
 
   public func createPvcVoice(

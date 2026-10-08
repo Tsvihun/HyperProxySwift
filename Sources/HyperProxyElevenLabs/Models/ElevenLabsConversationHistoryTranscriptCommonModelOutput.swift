@@ -22,6 +22,7 @@ public struct ElevenLabsConversationHistoryTranscriptCommonModelOutput: Codable,
   public var message: String?
   public var multivoiceMessage: ElevenLabsConversationHistoryMultivoiceMessageModel?
   public var originalMessage: String?
+  public var platformEvent: ElevenLabsTranscriptPlatformEvent?
   public var producingLlm: String?
   public var ragRetrievalInfo: ElevenLabsRagRetrievalInfo?
   public var reasoning: [ElevenLabsConversationReasoningModel]?
@@ -49,6 +50,7 @@ public struct ElevenLabsConversationHistoryTranscriptCommonModelOutput: Codable,
     message: String? = nil,
     multivoiceMessage: ElevenLabsConversationHistoryMultivoiceMessageModel? = nil,
     originalMessage: String? = nil,
+    platformEvent: ElevenLabsTranscriptPlatformEvent? = nil,
     producingLlm: String? = nil,
     ragRetrievalInfo: ElevenLabsRagRetrievalInfo? = nil,
     reasoning: [ElevenLabsConversationReasoningModel]? = nil,
@@ -71,6 +73,7 @@ public struct ElevenLabsConversationHistoryTranscriptCommonModelOutput: Codable,
     self.message = message
     self.multivoiceMessage = multivoiceMessage
     self.originalMessage = originalMessage
+    self.platformEvent = platformEvent
     self.producingLlm = producingLlm
     self.ragRetrievalInfo = ragRetrievalInfo
     self.reasoning = reasoning
@@ -97,6 +100,7 @@ public struct ElevenLabsConversationHistoryTranscriptCommonModelOutput: Codable,
     case message
     case multivoiceMessage = "multivoice_message"
     case originalMessage = "original_message"
+    case platformEvent = "platform_event"
     case producingLlm = "producing_llm"
     case ragRetrievalInfo = "rag_retrieval_info"
     case reasoning

@@ -21,7 +21,7 @@ public struct AnthropicBetaUsage: Codable, Sendable {
   public var outputTokens: Int
   public var outputTokensDetails: AnthropicBetaOutputTokensDetails?
   public var serverToolUse: AnthropicBetaServerToolUsage?
-  public var serviceTier: AnthropicBetaUsageServiceTierAnyOf1?
+  public var serviceTier: AnthropicBetaUsageServiceTier?
   public var speed: AnthropicBetaSpeed?
 
   public init(
@@ -35,7 +35,7 @@ public struct AnthropicBetaUsage: Codable, Sendable {
     outputTokens: Int,
     outputTokensDetails: AnthropicBetaOutputTokensDetails?,
     serverToolUse: AnthropicBetaServerToolUsage?,
-    serviceTier: AnthropicBetaUsageServiceTierAnyOf1?,
+    serviceTier: AnthropicBetaUsageServiceTier?,
     speed: AnthropicBetaSpeed?
   ) {
     self.cacheCreation = cacheCreation

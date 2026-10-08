@@ -20,7 +20,6 @@ public struct PerplexityApiSearchRequest: Codable, Sendable {
   public var query: PerplexityApiSearchRequestAllOf1Query
   public var searchAfterDateFilter: String?
   public var searchBeforeDateFilter: String?
-  public var searchContextSize: String?
   public var searchDomainFilter: [String]?
   public var searchLanguageFilter: [String]?
   public var searchRecencyFilter: PerplexitySearchRecencyFilter?
@@ -36,7 +35,6 @@ public struct PerplexityApiSearchRequest: Codable, Sendable {
     maxTokensPerPage: Int? = nil,
     searchAfterDateFilter: String? = nil,
     searchBeforeDateFilter: String? = nil,
-    searchContextSize: String? = nil,
     searchDomainFilter: [String]? = nil,
     searchLanguageFilter: [String]? = nil,
     searchRecencyFilter: PerplexitySearchRecencyFilter? = nil,
@@ -51,7 +49,6 @@ public struct PerplexityApiSearchRequest: Codable, Sendable {
     self.query = query
     self.searchAfterDateFilter = searchAfterDateFilter
     self.searchBeforeDateFilter = searchBeforeDateFilter
-    self.searchContextSize = searchContextSize
     self.searchDomainFilter = searchDomainFilter
     self.searchLanguageFilter = searchLanguageFilter
     self.searchRecencyFilter = searchRecencyFilter
@@ -68,7 +65,6 @@ public struct PerplexityApiSearchRequest: Codable, Sendable {
     case query
     case searchAfterDateFilter = "search_after_date_filter"
     case searchBeforeDateFilter = "search_before_date_filter"
-    case searchContextSize = "search_context_size"
     case searchDomainFilter = "search_domain_filter"
     case searchLanguageFilter = "search_language_filter"
     case searchRecencyFilter = "search_recency_filter"

@@ -14,7 +14,7 @@ public struct OpenAIBetaCreateModelResponseProperties: Codable, Sendable {
   public var metadata: OpenAIBetaMetadata?
   public var promptCacheKey: String?
   public var promptCacheOptions: OpenAIBetaPromptCacheOptionsParam?
-  public var promptCacheRetention: OpenAIBetaModelResponsePropertiesPromptCacheRetentionAnyOf1?
+  public var promptCacheRetention: OpenAIBetaModelResponsePropertiesPromptCacheRetention?
   public var safetyIdentifier: String?
   public var temperature: Double?
   public var topLogprobs: Int?
@@ -25,7 +25,7 @@ public struct OpenAIBetaCreateModelResponseProperties: Codable, Sendable {
     metadata: OpenAIBetaMetadata? = nil,
     promptCacheKey: String? = nil,
     promptCacheOptions: OpenAIBetaPromptCacheOptionsParam? = nil,
-    promptCacheRetention: OpenAIBetaModelResponsePropertiesPromptCacheRetentionAnyOf1? = nil,
+    promptCacheRetention: OpenAIBetaModelResponsePropertiesPromptCacheRetention? = nil,
     safetyIdentifier: String? = nil,
     temperature: Double? = nil,
     topLogprobs: Int? = nil,

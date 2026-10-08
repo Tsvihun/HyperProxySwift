@@ -17,6 +17,7 @@ public enum BFLStatusResponse: String, Codable, Hashable, Sendable {
   case generating = "Generating"
   case requestModerated = "Request Moderated"
   case contentModerated = "Content Moderated"
+  case noCardGenerated = "No Card Generated"
   case ready = "Ready"
   case error = "Error"
 }

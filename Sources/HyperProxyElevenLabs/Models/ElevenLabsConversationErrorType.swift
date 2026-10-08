@@ -30,6 +30,7 @@ public enum ElevenLabsConversationErrorType: String, Codable, Hashable, Sendable
   case guardrailTriggered = "guardrail_triggered"
   case safetyViolation = "safety_violation"
   case maxDurationExceeded = "max_duration_exceeded"
+  case workflowEndFailure = "workflow_end_failure"
   case internalError = "internal_error"
   case postProcessingError = "post_processing_error"
 }

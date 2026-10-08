@@ -185,6 +185,10 @@ extension HyperProxyProviderService where Operation == FalOperation {
   public var getComputeInstance: HyperProxyProviderCall<FalOperation> {
     self.call(.getComputeInstance)
   }
+  /// `GET v1/compute/metrics`
+  public var getComputeMetrics: HyperProxyProviderCall<FalOperation> {
+    self.call(.getComputeMetrics)
+  }
   /// `GET v1/keys`
   public var listApiKeys: HyperProxyProviderCall<FalOperation> {
     self.call(.listApiKeys)

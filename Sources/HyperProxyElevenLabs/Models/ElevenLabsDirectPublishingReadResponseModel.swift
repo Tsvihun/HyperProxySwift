@@ -21,9 +21,9 @@ public struct ElevenLabsDirectPublishingReadResponseModel: Codable, Sendable {
   public var contributors: [ElevenLabsContributor]?
   public var copyright: String?
   public var createdAtUnix: Int
-  public var currency: ElevenLabsDirectPublishingReadResponseModelCurrencyAnyOf1?
+  public var currency: ElevenLabsDirectPublishingReadResponseModelCurrency?
   public var description: String?
-  public var displayMode: ElevenLabsDirectPublishingReadResponseModelDisplayModeAnyOf1?
+  public var displayMode: ElevenLabsDirectPublishingReadResponseModelDisplayMode?
   public var distributionTerritories: [String]?
   public var ean: String?
   public var edition: String?
@@ -41,7 +41,7 @@ public struct ElevenLabsDirectPublishingReadResponseModel: Codable, Sendable {
   public var originalAudioDocumentId: String?
   public var originalAudioProjectExportId: String?
   public var originalFileType: String?
-  public var payoutType: ElevenLabsDirectPublishingReadResponseModelPayoutTypeAnyOf1?
+  public var payoutType: ElevenLabsDirectPublishingReadResponseModelPayoutType?
   public var previewAudioObject: ElevenLabsPreviewAudioDBModel?
   public var publicationDate: String?
   public var publishedAtUnix: Int?
@@ -58,7 +58,7 @@ public struct ElevenLabsDirectPublishingReadResponseModel: Codable, Sendable {
   public var sampleConfig: ElevenLabsSampleConfigDBModel?
   public var seriesId: String?
   public var subtitle: String?
-  public var targetAudience: ElevenLabsDirectPublishingReadResponseModelTargetAudienceAnyOf1?
+  public var targetAudience: ElevenLabsDirectPublishingReadResponseModelTargetAudience?
   public var title: String?
   public var updatedAtUnix: Int
   public var voiceId: String?
@@ -79,9 +79,9 @@ public struct ElevenLabsDirectPublishingReadResponseModel: Codable, Sendable {
     contentType: String? = nil,
     contributors: [ElevenLabsContributor]? = nil,
     copyright: String? = nil,
-    currency: ElevenLabsDirectPublishingReadResponseModelCurrencyAnyOf1? = nil,
+    currency: ElevenLabsDirectPublishingReadResponseModelCurrency? = nil,
     description: String? = nil,
-    displayMode: ElevenLabsDirectPublishingReadResponseModelDisplayModeAnyOf1? = nil,
+    displayMode: ElevenLabsDirectPublishingReadResponseModelDisplayMode? = nil,
     distributionTerritories: [String]? = nil,
     ean: String? = nil,
     edition: String? = nil,
@@ -99,7 +99,7 @@ public struct ElevenLabsDirectPublishingReadResponseModel: Codable, Sendable {
     originalAudioDocumentId: String? = nil,
     originalAudioProjectExportId: String? = nil,
     originalFileType: String? = nil,
-    payoutType: ElevenLabsDirectPublishingReadResponseModelPayoutTypeAnyOf1? = nil,
+    payoutType: ElevenLabsDirectPublishingReadResponseModelPayoutType? = nil,
     previewAudioObject: ElevenLabsPreviewAudioDBModel? = nil,
     publicationDate: String? = nil,
     publishedAtUnix: Int? = nil,
@@ -115,7 +115,7 @@ public struct ElevenLabsDirectPublishingReadResponseModel: Codable, Sendable {
     sampleConfig: ElevenLabsSampleConfigDBModel? = nil,
     seriesId: String? = nil,
     subtitle: String? = nil,
-    targetAudience: ElevenLabsDirectPublishingReadResponseModelTargetAudienceAnyOf1? = nil,
+    targetAudience: ElevenLabsDirectPublishingReadResponseModelTargetAudience? = nil,
     title: String? = nil,
     voiceId: String? = nil,
     volume: Int? = nil

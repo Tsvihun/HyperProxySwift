@@ -10,8 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsCaptionStyleModelTextAlignAnyOf1: String, Codable, Hashable, Sendable {
-  case start = "start"
-  case center = "center"
-  case end = "end"
-}
+public typealias ElevenLabsCaptionStyleModelTextAlignAnyOf1 = ElevenLabsCaptionStyleModelTextAlign

@@ -14,7 +14,7 @@ public struct ElevenLabsTemplateVideoOutput: Codable, Sendable {
   public var contentMimeType: String?
   public var contentUrl: String?
   public var errorMessage: String?
-  public var failureReason: ElevenLabsTemplateVideoOutputFailureReasonAnyOf1?
+  public var failureReason: ElevenLabsTemplateVideoOutputFailureReason?
   public var id: String
   public var status: ElevenLabsTemplateRunStatus
   public var kind: ElevenLabsVideoKind
@@ -26,7 +26,7 @@ public struct ElevenLabsTemplateVideoOutput: Codable, Sendable {
     contentMimeType: String? = nil,
     contentUrl: String? = nil,
     errorMessage: String? = nil,
-    failureReason: ElevenLabsTemplateVideoOutputFailureReasonAnyOf1? = nil
+    failureReason: ElevenLabsTemplateVideoOutputFailureReason? = nil
   ) {
     self.contentMimeType = contentMimeType
     self.contentUrl = contentUrl

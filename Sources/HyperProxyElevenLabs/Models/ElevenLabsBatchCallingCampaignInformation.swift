@@ -13,17 +13,25 @@ import HyperProxyCore
 public struct ElevenLabsBatchCallingCampaignInformation: Codable, Sendable {
   public var campaignId: String
   public var campaignLeadId: String
+  public var coldAttempt: Int?
+  public var conversationType: ElevenLabsCampaignConversationType?
 
   public init(
     campaignId: String,
-    campaignLeadId: String
+    campaignLeadId: String,
+    coldAttempt: Int? = nil,
+    conversationType: ElevenLabsCampaignConversationType? = nil
   ) {
     self.campaignId = campaignId
     self.campaignLeadId = campaignLeadId
+    self.coldAttempt = coldAttempt
+    self.conversationType = conversationType
   }
 
   enum CodingKeys: String, CodingKey {
     case campaignId = "campaign_id"
     case campaignLeadId = "campaign_lead_id"
+    case coldAttempt = "cold_attempt"
+    case conversationType = "conversation_type"
   }
 }

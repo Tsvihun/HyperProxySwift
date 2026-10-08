@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct ElevenLabsChapterContentBlockInputModel: Codable, Sendable {
   public var blockId: String?
   public var nodes: [ElevenLabsChapterContentParagraphTtsNodeInputModel]
-  public var subType: ElevenLabsChapterContentBlockInputModelSubTypeAnyOf1?
+  public var subType: ElevenLabsChapterContentBlockInputModelSubType?
 
   public init(
     nodes: [ElevenLabsChapterContentParagraphTtsNodeInputModel],
     blockId: String? = nil,
-    subType: ElevenLabsChapterContentBlockInputModelSubTypeAnyOf1? = nil
+    subType: ElevenLabsChapterContentBlockInputModelSubType? = nil
   ) {
     self.blockId = blockId
     self.nodes = nodes

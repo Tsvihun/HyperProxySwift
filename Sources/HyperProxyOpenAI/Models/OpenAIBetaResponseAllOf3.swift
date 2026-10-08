@@ -30,7 +30,7 @@ public struct OpenAIBetaResponseAllOf3: Codable, Sendable {
   public var reasoning: OpenAIBetaReasoning?
   public var serviceTier: OpenAIBetaServiceTierResponses?
   public var status: OpenAIBetaResponseAllOf3Status?
-  public var truncation: OpenAIBetaResponseAllOf3TruncationAnyOf1?
+  public var truncation: OpenAIBetaResponseAllOf3Truncation?
   public var usage: OpenAIBetaResponseUsage?
 
   public init(
@@ -53,7 +53,7 @@ public struct OpenAIBetaResponseAllOf3: Codable, Sendable {
     reasoning: OpenAIBetaReasoning? = nil,
     serviceTier: OpenAIBetaServiceTierResponses? = nil,
     status: OpenAIBetaResponseAllOf3Status? = nil,
-    truncation: OpenAIBetaResponseAllOf3TruncationAnyOf1? = nil,
+    truncation: OpenAIBetaResponseAllOf3Truncation? = nil,
     usage: OpenAIBetaResponseUsage? = nil
   ) {
     self.accessPrograms = accessPrograms

@@ -10,9 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum MistralListRunsV1WorkflowsRunsGetParametersSortByAnyOf1: String, Codable, Hashable,
-  Sendable
-{
-  case startTime = "start_time"
-  case endTime = "end_time"
-}
+public typealias MistralListRunsV1WorkflowsRunsGetParametersSortByAnyOf1 =
+  MistralListRunsV1WorkflowsRunsGetParametersSortBy

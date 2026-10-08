@@ -10,8 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public enum OpenAIReasoningGenerateSummaryAnyOf1: String, Codable, Hashable, Sendable {
-  case auto = "auto"
-  case concise = "concise"
-  case detailed = "detailed"
-}
+public typealias OpenAIReasoningGenerateSummaryAnyOf1 = OpenAIReasoningGenerateSummary

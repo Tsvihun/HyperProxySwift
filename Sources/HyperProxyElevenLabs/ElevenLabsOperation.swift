@@ -427,6 +427,8 @@ public enum ElevenLabsOperation: String, HyperProxyCatalogOperation {
   case updateAgentConversationTicketRoute = "update.agent.conversation.ticket.route"
   /// `POST v1/convai/triage-tickets/{agentqa_ticket_id}/comments`
   case addTicketCommentRoute = "add.ticket.comment.route"
+  /// `POST v1/convai/triage-tickets/{agentqa_ticket_id}/merge`
+  case mergeAgentConversationTicketsRoute = "merge.agent.conversation.tickets.route"
   /// `POST v1/convai/triage-tickets/{agentqa_ticket_id}/turn-comments`
   case addTurnCommentRoute = "add.turn.comment.route"
   /// `POST v1/convai/twilio/outbound-call`
@@ -743,6 +745,20 @@ public enum ElevenLabsOperation: String, HyperProxyCatalogOperation {
   case voicesCreate = "voices.create"
   /// `POST v1/voices/add/{public_user_id}/{voice_id}`
   case addSharingVoice = "add.sharing.voice"
+  /// `GET v1/voices/collections`
+  case getUserVoiceCollections = "get.user.voice.collections"
+  /// `POST v1/voices/collections`
+  case createOrUpdateUserVoiceCollection = "create.or.update.user.voice.collection"
+  /// `DELETE v1/voices/collections/{collection_id}`
+  case deleteUserVoiceCollection = "delete.user.voice.collection"
+  /// `GET v1/voices/collections/{collection_id}`
+  case getUserVoiceCollection = "get.user.voice.collection"
+  /// `PATCH v1/voices/collections/{collection_id}`
+  case updateUserVoiceCollection = "update.user.voice.collection"
+  /// `DELETE v1/voices/collections/{collection_id}/voice/{voice_id}`
+  case removeVoiceFromUserVoiceCollection = "remove.voice.from.user.voice.collection"
+  /// `POST v1/voices/collections/{collection_id}/voice/{voice_id}`
+  case addVoiceToUserVoiceCollection = "add.voice.to.user.voice.collection"
   /// `POST v1/voices/pvc`
   case createPvcVoice = "create.pvc.voice"
   /// `POST v1/voices/pvc/{voice_id}`

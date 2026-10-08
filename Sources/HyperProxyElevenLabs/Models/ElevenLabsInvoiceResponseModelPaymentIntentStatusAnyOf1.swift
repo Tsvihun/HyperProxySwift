@@ -10,14 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsInvoiceResponseModelPaymentIntentStatusAnyOf1: String, Codable, Hashable,
-  Sendable
-{
-  case canceled = "canceled"
-  case processing = "processing"
-  case requiresAction = "requires_action"
-  case requiresCapture = "requires_capture"
-  case requiresConfirmation = "requires_confirmation"
-  case requiresPaymentMethod = "requires_payment_method"
-  case succeeded = "succeeded"
-}
+public typealias ElevenLabsInvoiceResponseModelPaymentIntentStatusAnyOf1 =
+  ElevenLabsInvoiceResponseModelPaymentIntentStatus

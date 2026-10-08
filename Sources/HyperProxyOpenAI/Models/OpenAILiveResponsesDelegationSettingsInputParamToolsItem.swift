@@ -17,6 +17,13 @@ public enum OpenAILiveResponsesDelegationSettingsInputParamToolsItem: Codable, S
   case liveCodeInterpreterToolInputParam(OpenAILiveCodeInterpreterToolInputParam)
   case liveHostedShellToolInputParam(OpenAILiveHostedShellToolInputParam)
   case liveImageGenerationToolInputParam(OpenAILiveImageGenerationToolInputParam)
+  case liveMCPToolInputParam(OpenAILiveMCPToolInputParam)
+  case liveCustomToolInputParam(OpenAILiveCustomToolInputParam)
+  case liveNamespaceToolInputParam(OpenAILiveNamespaceToolInputParam)
+  case liveToolSearchToolInputParam(OpenAILiveToolSearchToolInputParam)
+  case liveProgrammaticToolInputParam(OpenAILiveProgrammaticToolInputParam)
+  case liveComputerToolInputParam(OpenAILiveComputerToolInputParam)
+  case liveApplyPatchToolInputParam(OpenAILiveApplyPatchToolInputParam)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -40,8 +47,36 @@ public enum OpenAILiveResponsesDelegationSettingsInputParamToolsItem: Codable, S
       self = .liveHostedShellToolInputParam(value)
       return
     }
-    self = .liveImageGenerationToolInputParam(
-      try container.decode(OpenAILiveImageGenerationToolInputParam.self))
+    if let value = try? container.decode(OpenAILiveImageGenerationToolInputParam.self) {
+      self = .liveImageGenerationToolInputParam(value)
+      return
+    }
+    if let value = try? container.decode(OpenAILiveMCPToolInputParam.self) {
+      self = .liveMCPToolInputParam(value)
+      return
+    }
+    if let value = try? container.decode(OpenAILiveCustomToolInputParam.self) {
+      self = .liveCustomToolInputParam(value)
+      return
+    }
+    if let value = try? container.decode(OpenAILiveNamespaceToolInputParam.self) {
+      self = .liveNamespaceToolInputParam(value)
+      return
+    }
+    if let value = try? container.decode(OpenAILiveToolSearchToolInputParam.self) {
+      self = .liveToolSearchToolInputParam(value)
+      return
+    }
+    if let value = try? container.decode(OpenAILiveProgrammaticToolInputParam.self) {
+      self = .liveProgrammaticToolInputParam(value)
+      return
+    }
+    if let value = try? container.decode(OpenAILiveComputerToolInputParam.self) {
+      self = .liveComputerToolInputParam(value)
+      return
+    }
+    self = .liveApplyPatchToolInputParam(
+      try container.decode(OpenAILiveApplyPatchToolInputParam.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -58,6 +93,20 @@ public enum OpenAILiveResponsesDelegationSettingsInputParamToolsItem: Codable, S
     case .liveHostedShellToolInputParam(let value):
       try container.encode(value)
     case .liveImageGenerationToolInputParam(let value):
+      try container.encode(value)
+    case .liveMCPToolInputParam(let value):
+      try container.encode(value)
+    case .liveCustomToolInputParam(let value):
+      try container.encode(value)
+    case .liveNamespaceToolInputParam(let value):
+      try container.encode(value)
+    case .liveToolSearchToolInputParam(let value):
+      try container.encode(value)
+    case .liveProgrammaticToolInputParam(let value):
+      try container.encode(value)
+    case .liveComputerToolInputParam(let value):
+      try container.encode(value)
+    case .liveApplyPatchToolInputParam(let value):
       try container.encode(value)
     }
   }

@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterBatchProviderPreferences: Codable, Sendable {
+  public var allowFallbacks: Bool?
   public var only: [OpenRouterBatchProviderPreferencesOnlyItem]?
 
   public init(
+    allowFallbacks: Bool? = nil,
     only: [OpenRouterBatchProviderPreferencesOnlyItem]? = nil
   ) {
+    self.allowFallbacks = allowFallbacks
     self.only = only
   }
 
   enum CodingKeys: String, CodingKey {
+    case allowFallbacks = "allow_fallbacks"
     case only
   }
 }

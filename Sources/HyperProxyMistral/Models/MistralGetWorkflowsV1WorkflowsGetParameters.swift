@@ -16,12 +16,12 @@ public struct MistralGetWorkflowsV1WorkflowsGetParameters: Codable, Sendable {
   public var availableInChatAssistant: Bool?
   public var cursor: String?
   public var deploymentName: [String]?
-  public var deploymentStatus: MistralGetWorkflowsV1WorkflowsGetParametersDeploymentStatusAnyOf1?
+  public var deploymentStatus: MistralGetWorkflowsV1WorkflowsGetParametersDeploymentStatus?
   public var includeShared: Bool?
   public var limit: Int?
   public var order: MistralGetWorkflowsV1WorkflowsGetParametersOrder?
   public var search: String?
-  public var sortBy: MistralGetWorkflowsV1WorkflowsGetParametersSortByAnyOf1?
+  public var sortBy: MistralGetWorkflowsV1WorkflowsGetParametersSortBy?
   public var status: MistralGetWorkflowsV1WorkflowsGetParametersStatus?
   public var tags: [String]?
 
@@ -31,12 +31,12 @@ public struct MistralGetWorkflowsV1WorkflowsGetParameters: Codable, Sendable {
     availableInChatAssistant: Bool? = nil,
     cursor: String? = nil,
     deploymentName: [String]? = nil,
-    deploymentStatus: MistralGetWorkflowsV1WorkflowsGetParametersDeploymentStatusAnyOf1? = nil,
+    deploymentStatus: MistralGetWorkflowsV1WorkflowsGetParametersDeploymentStatus? = nil,
     includeShared: Bool? = nil,
     limit: Int? = nil,
     order: MistralGetWorkflowsV1WorkflowsGetParametersOrder? = nil,
     search: String? = nil,
-    sortBy: MistralGetWorkflowsV1WorkflowsGetParametersSortByAnyOf1? = nil,
+    sortBy: MistralGetWorkflowsV1WorkflowsGetParametersSortBy? = nil,
     status: MistralGetWorkflowsV1WorkflowsGetParametersStatus? = nil,
     tags: [String]? = nil
   ) {

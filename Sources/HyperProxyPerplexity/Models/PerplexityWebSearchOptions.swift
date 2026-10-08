@@ -13,13 +13,13 @@ import HyperProxyCore
 public struct PerplexityWebSearchOptions: Codable, Sendable {
   public var imageResultsEnhancedRelevance: Bool?
   public var searchContextSize: PerplexityWebSearchOptionsSearchContextSize?
-  public var searchType: PerplexityWebSearchOptionsSearchTypeAnyOf1?
+  public var searchType: PerplexityWebSearchOptionsSearchType?
   public var userLocation: PerplexityUserLocation?
 
   public init(
     imageResultsEnhancedRelevance: Bool? = nil,
     searchContextSize: PerplexityWebSearchOptionsSearchContextSize? = nil,
-    searchType: PerplexityWebSearchOptionsSearchTypeAnyOf1? = nil,
+    searchType: PerplexityWebSearchOptionsSearchType? = nil,
     userLocation: PerplexityUserLocation? = nil
   ) {
     self.imageResultsEnhancedRelevance = imageResultsEnhancedRelevance

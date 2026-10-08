@@ -10,8 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsGetSpeechHistoryParametersSourceAnyOf1: String, Codable, Hashable, Sendable {
-  case tTS = "TTS"
-  case sTS = "STS"
-  case flows = "Flows"
-}
+public typealias ElevenLabsGetSpeechHistoryParametersSourceAnyOf1 =
+  ElevenLabsGetSpeechHistoryParametersSource

@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsTemplateBooleanOutput: Codable, Sendable {
   public var content: Bool?
   public var errorMessage: String?
-  public var failureReason: ElevenLabsTemplateBooleanOutputFailureReasonAnyOf1?
+  public var failureReason: ElevenLabsTemplateBooleanOutputFailureReason?
   public var id: String
   public var status: ElevenLabsTemplateRunStatus
   public var kind: ElevenLabsBooleanKind
@@ -24,7 +24,7 @@ public struct ElevenLabsTemplateBooleanOutput: Codable, Sendable {
     kind: ElevenLabsBooleanKind = .boolean,
     content: Bool? = nil,
     errorMessage: String? = nil,
-    failureReason: ElevenLabsTemplateBooleanOutputFailureReasonAnyOf1? = nil
+    failureReason: ElevenLabsTemplateBooleanOutputFailureReason? = nil
   ) {
     self.content = content
     self.errorMessage = errorMessage

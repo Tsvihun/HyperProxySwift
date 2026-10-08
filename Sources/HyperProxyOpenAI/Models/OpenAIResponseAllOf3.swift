@@ -30,7 +30,7 @@ public struct OpenAIResponseAllOf3: Codable, Sendable {
   public var reasoning: OpenAIReasoning?
   public var serviceTier: OpenAIServiceTierResponses?
   public var status: OpenAIResponseAllOf3Status?
-  public var truncation: OpenAIResponseAllOf3TruncationAnyOf1?
+  public var truncation: OpenAIResponseAllOf3Truncation?
   public var usage: OpenAIResponseUsage?
 
   public init(
@@ -53,7 +53,7 @@ public struct OpenAIResponseAllOf3: Codable, Sendable {
     reasoning: OpenAIReasoning? = nil,
     serviceTier: OpenAIServiceTierResponses? = nil,
     status: OpenAIResponseAllOf3Status? = nil,
-    truncation: OpenAIResponseAllOf3TruncationAnyOf1? = nil,
+    truncation: OpenAIResponseAllOf3Truncation? = nil,
     usage: OpenAIResponseUsage? = nil
   ) {
     self.accessPrograms = accessPrograms

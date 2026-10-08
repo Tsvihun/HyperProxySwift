@@ -10,9 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsBodyAudioIsolationV1AudioIsolationPostFileFormatAnyOf1: String, Codable,
-  Hashable, Sendable
-{
-  case pcmS16le16 = "pcm_s16le_16"
-  case other = "other"
-}
+public typealias ElevenLabsBodyAudioIsolationV1AudioIsolationPostFileFormatAnyOf1 =
+  ElevenLabsBodyAudioIsolationV1AudioIsolationPostFileFormat

@@ -20,7 +20,7 @@ public struct ElevenLabsGetPronunciationDictionaryMetadataResponseModel: Codable
   public var latestVersionRulesNum: Int
   public var name: String
   public var permissionOnResource:
-    ElevenLabsGetPronunciationDictionaryMetadataResponseModelPermissionOnResourceAnyOf1?
+    ElevenLabsGetPronunciationDictionaryMetadataResponseModelPermissionOnResource?
 
   public init(
     createdBy: String,
@@ -30,7 +30,7 @@ public struct ElevenLabsGetPronunciationDictionaryMetadataResponseModel: Codable
     latestVersionRulesNum: Int,
     name: String,
     permissionOnResource:
-      ElevenLabsGetPronunciationDictionaryMetadataResponseModelPermissionOnResourceAnyOf1?,
+      ElevenLabsGetPronunciationDictionaryMetadataResponseModelPermissionOnResource?,
     archivedTimeUnix: Int? = nil,
     description: String? = nil
   ) {

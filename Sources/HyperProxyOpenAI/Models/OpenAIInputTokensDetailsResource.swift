@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIInputTokensDetailsResource: Codable, Sendable {
+  public var cacheWriteTokens: Int64
   public var cachedTokens: Int64
 
   public init(
+    cacheWriteTokens: Int64,
     cachedTokens: Int64
   ) {
+    self.cacheWriteTokens = cacheWriteTokens
     self.cachedTokens = cachedTokens
   }
 
   enum CodingKeys: String, CodingKey {
+    case cacheWriteTokens = "cache_write_tokens"
     case cachedTokens = "cached_tokens"
   }
 }

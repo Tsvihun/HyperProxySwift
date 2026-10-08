@@ -10,11 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum FalGetAssetLineageResponseLineageEdgesItemRoleAnyOf1: String, Codable, Hashable,
-  Sendable
-{
-  case source = "source"
-  case contentRef = "content_ref"
-  case mask = "mask"
-  case control = "control"
-}
+public typealias FalGetAssetLineageResponseLineageEdgesItemRoleAnyOf1 =
+  FalGetAssetLineageResponseLineageEdgesItemRole

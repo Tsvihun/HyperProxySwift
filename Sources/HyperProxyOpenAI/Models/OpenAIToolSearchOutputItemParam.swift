@@ -15,11 +15,11 @@ public struct OpenAIToolSearchOutputItemParam: Codable, Sendable {
   public var execution: OpenAIToolSearchExecutionType?
   public var id: String?
   public var status: OpenAIFunctionCallItemStatus?
-  public var tools: [OpenAITool]
+  public var tools: [OpenAIToolSearchOutputTool]
   public var kind: OpenAIToolSearchOutputItemParamKind
 
   public init(
-    tools: [OpenAITool],
+    tools: [OpenAIToolSearchOutputTool],
     kind: OpenAIToolSearchOutputItemParamKind,
     callId: String? = nil,
     execution: OpenAIToolSearchExecutionType? = nil,

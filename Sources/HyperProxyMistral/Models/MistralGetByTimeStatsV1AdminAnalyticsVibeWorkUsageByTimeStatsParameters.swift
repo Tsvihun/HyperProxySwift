@@ -15,15 +15,14 @@ public struct MistralGetByTimeStatsV1AdminAnalyticsVibeWorkUsageByTimeStatsParam
 {
   public var endTime: Int
   public var granularity:
-    MistralGetByTimeStatsV1AdminAnalyticsVibeWorkUsageByTimeStatsParametersGranularityAnyOf1?
+    MistralGetByTimeStatsV1AdminAnalyticsVibeWorkUsageByTimeStatsParametersGranularity?
   public var startTime: Int
 
   public init(
     endTime: Int,
     startTime: Int,
     granularity:
-      MistralGetByTimeStatsV1AdminAnalyticsVibeWorkUsageByTimeStatsParametersGranularityAnyOf1? =
-      nil
+      MistralGetByTimeStatsV1AdminAnalyticsVibeWorkUsageByTimeStatsParametersGranularity? = nil
   ) {
     self.endTime = endTime
     self.granularity = granularity

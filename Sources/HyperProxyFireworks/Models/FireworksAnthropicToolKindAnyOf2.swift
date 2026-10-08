@@ -10,6 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public enum FireworksAnthropicToolKindAnyOf2: String, Codable, Hashable, Sendable {
-  case custom = "custom"
-}
+public typealias FireworksAnthropicToolKindAnyOf2 = FireworksAnthropicToolKind

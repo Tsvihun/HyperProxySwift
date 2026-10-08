@@ -12,14 +12,14 @@ import HyperProxyCore
 
 public struct MistralAdminOrganizationMemberUpdate: Codable, Sendable {
   public var role: MistralAdminOrganizationMemberUpdateRole?
-  public var roleName: MistralAdminOrganizationMemberUpdateRoleNameAnyOf1?
+  public var roleName: MistralAdminOrganizationMemberUpdateRoleName?
   public var roleNames: [MistralAdminOrganizationMemberUpdateRoleNamesAnyOf1Item]?
   public var roles: MistralAdminOrganizationMemberUpdateRoles?
   public var subscriptionTypes: [MistralAdminOrganizationMemberUpdateSubscriptionTypesAnyOf1Item]?
 
   public init(
     role: MistralAdminOrganizationMemberUpdateRole? = nil,
-    roleName: MistralAdminOrganizationMemberUpdateRoleNameAnyOf1? = nil,
+    roleName: MistralAdminOrganizationMemberUpdateRoleName? = nil,
     roleNames: [MistralAdminOrganizationMemberUpdateRoleNamesAnyOf1Item]? = nil,
     roles: MistralAdminOrganizationMemberUpdateRoles? = nil,
     subscriptionTypes: [MistralAdminOrganizationMemberUpdateSubscriptionTypesAnyOf1Item]? = nil

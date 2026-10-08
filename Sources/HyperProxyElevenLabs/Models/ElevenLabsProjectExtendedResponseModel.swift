@@ -14,7 +14,7 @@ public struct ElevenLabsProjectExtendedResponseModel: Codable, Sendable {
   public var accessLevel: ElevenLabsProjectExtendedResponseModelAccessLevel
   public var agentSettings: ElevenLabsStudioAgentSettingsModel?
   public var applyTextNormalization: ElevenLabsProjectExtendedResponseModelApplyTextNormalization
-  public var aspectRatio: ElevenLabsProjectExtendedResponseModelAspectRatioAnyOf1?
+  public var aspectRatio: ElevenLabsProjectExtendedResponseModelAspectRatio?
   public var assets: [ElevenLabsProjectExtendedResponseModelAssetsItem]
   public var author: String?
   public var baseVoices: [ElevenLabsVoiceResponseModel]?
@@ -36,7 +36,7 @@ public struct ElevenLabsProjectExtendedResponseModel: Codable, Sendable {
   public var defaultTitleVoiceRefId: String
   public var description: String?
   public var experimental: [String: HyperProxyJSONValue]?
-  public var fiction: ElevenLabsProjectExtendedResponseModelFictionAnyOf1?
+  public var fiction: ElevenLabsProjectExtendedResponseModelFiction?
   public var genres: [String]?
   public var isbnNumber: String?
   public var language: String?
@@ -54,9 +54,9 @@ public struct ElevenLabsProjectExtendedResponseModel: Codable, Sendable {
   public var qualityCheckOn: Bool
   public var qualityCheckOnWhenBulkConvert: Bool
   public var qualityPreset: ElevenLabsQualityPresetType
-  public var sourceType: ElevenLabsProjectExtendedResponseModelSourceTypeAnyOf1?
+  public var sourceType: ElevenLabsProjectExtendedResponseModelSourceType?
   public var state: ElevenLabsProjectExtendedResponseModelState
-  public var targetAudience: ElevenLabsProjectExtendedResponseModelTargetAudienceAnyOf1?
+  public var targetAudience: ElevenLabsProjectExtendedResponseModelTargetAudience?
   public var title: String?
   public var voices: [ElevenLabsProjectVoiceResponseModel]
   public var volumeNormalization: Bool
@@ -85,7 +85,7 @@ public struct ElevenLabsProjectExtendedResponseModel: Codable, Sendable {
     voices: [ElevenLabsProjectVoiceResponseModel],
     volumeNormalization: Bool,
     agentSettings: ElevenLabsStudioAgentSettingsModel? = nil,
-    aspectRatio: ElevenLabsProjectExtendedResponseModelAspectRatioAnyOf1? = nil,
+    aspectRatio: ElevenLabsProjectExtendedResponseModelAspectRatio? = nil,
     author: String? = nil,
     baseVoices: [ElevenLabsVoiceResponseModel]? = nil,
     captionStyle: ElevenLabsCaptionStyleModel? = nil,
@@ -97,7 +97,7 @@ public struct ElevenLabsProjectExtendedResponseModel: Codable, Sendable {
     creationMeta: ElevenLabsProjectCreationMetaResponseModel? = nil,
     description: String? = nil,
     experimental: [String: HyperProxyJSONValue]? = nil,
-    fiction: ElevenLabsProjectExtendedResponseModelFictionAnyOf1? = nil,
+    fiction: ElevenLabsProjectExtendedResponseModelFiction? = nil,
     genres: [String]? = nil,
     isbnNumber: String? = nil,
     language: String? = nil,
@@ -106,8 +106,8 @@ public struct ElevenLabsProjectExtendedResponseModel: Codable, Sendable {
     originalPublicationDate: String? = nil,
     publicShareId: String? = nil,
     publishingRead: ElevenLabsDirectPublishingReadResponseModel? = nil,
-    sourceType: ElevenLabsProjectExtendedResponseModelSourceTypeAnyOf1? = nil,
-    targetAudience: ElevenLabsProjectExtendedResponseModelTargetAudienceAnyOf1? = nil,
+    sourceType: ElevenLabsProjectExtendedResponseModelSourceType? = nil,
+    targetAudience: ElevenLabsProjectExtendedResponseModelTargetAudience? = nil,
     title: String? = nil
   ) {
     self.accessLevel = accessLevel

@@ -10,10 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsModerationStatusResponseModelSafetyStatusAnyOf1: String, Codable, Hashable,
-  Sendable
-{
-  case appealApproved = "appeal_approved"
-  case appealDenied = "appeal_denied"
-  case falsePositive = "false_positive"
-}
+public typealias ElevenLabsModerationStatusResponseModelSafetyStatusAnyOf1 =
+  ElevenLabsModerationStatusResponseModelSafetyStatus

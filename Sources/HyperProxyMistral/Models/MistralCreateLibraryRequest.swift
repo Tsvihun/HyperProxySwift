@@ -14,13 +14,13 @@ public struct MistralCreateLibraryRequest: Codable, Sendable {
   public var chunkSize: Int?
   public var description: String?
   public var name: String
-  public var ownerType: MistralCreateLibraryRequestOwnerTypeAnyOf1?
+  public var ownerType: MistralCreateLibraryRequestOwnerType?
 
   public init(
     name: String,
     chunkSize: Int? = nil,
     description: String? = nil,
-    ownerType: MistralCreateLibraryRequestOwnerTypeAnyOf1? = nil
+    ownerType: MistralCreateLibraryRequestOwnerType? = nil
   ) {
     self.chunkSize = chunkSize
     self.description = description

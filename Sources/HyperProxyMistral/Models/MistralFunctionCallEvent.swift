@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct MistralFunctionCallEvent: Codable, Sendable {
   public var agentId: String?
   public var arguments: String
-  public var confirmationStatus: MistralFunctionCallEventConfirmationStatusAnyOf1?
+  public var confirmationStatus: MistralFunctionCallEventConfirmationStatus?
   public var createdAt: String?
   public var id: String
   public var model: String?
@@ -28,7 +28,7 @@ public struct MistralFunctionCallEvent: Codable, Sendable {
     name: String,
     toolCallId: String,
     agentId: String? = nil,
-    confirmationStatus: MistralFunctionCallEventConfirmationStatusAnyOf1? = nil,
+    confirmationStatus: MistralFunctionCallEventConfirmationStatus? = nil,
     createdAt: String? = nil,
     model: String? = nil,
     outputIndex: Int? = nil,

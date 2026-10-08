@@ -11,8 +11,9 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterSpeechRequest: Codable, Sendable {
-  public var input: String
+  public var input: OpenRouterSpeechInput
   public var inputReferences: [OpenRouterSpeechInputReference]?
+  public var instructions: String?
   public var model: String
   public var provider: OpenRouterSpeechRequestProvider?
   public var responseFormat: OpenRouterSpeechRequestResponseFormat?
@@ -23,9 +24,10 @@ public struct OpenRouterSpeechRequest: Codable, Sendable {
   public var voice: String?
 
   public init(
-    input: String,
+    input: OpenRouterSpeechInput,
     model: String,
     inputReferences: [OpenRouterSpeechInputReference]? = nil,
+    instructions: String? = nil,
     provider: OpenRouterSpeechRequestProvider? = nil,
     responseFormat: OpenRouterSpeechRequestResponseFormat? = nil,
     sessionId: String? = nil,
@@ -36,6 +38,7 @@ public struct OpenRouterSpeechRequest: Codable, Sendable {
   ) {
     self.input = input
     self.inputReferences = inputReferences
+    self.instructions = instructions
     self.model = model
     self.provider = provider
     self.responseFormat = responseFormat
@@ -49,6 +52,7 @@ public struct OpenRouterSpeechRequest: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case input
     case inputReferences = "input_references"
+    case instructions
     case model
     case provider
     case responseFormat = "response_format"

@@ -20,7 +20,7 @@ public struct AnthropicTool: Codable, Sendable {
   public var inputSchema: AnthropicInputSchema
   public var name: String
   public var strict: Bool?
-  public var kind: AnthropicToolKindAnyOf2?
+  public var kind: AnthropicToolKind8fdbf73a?
 
   public init(
     inputSchema: AnthropicInputSchema,
@@ -32,7 +32,7 @@ public struct AnthropicTool: Codable, Sendable {
     eagerInputStreaming: Bool? = nil,
     inputExamples: [[String: AnthropicJsonValue]]? = nil,
     strict: Bool? = nil,
-    kind: AnthropicToolKindAnyOf2? = nil
+    kind: AnthropicToolKind8fdbf73a? = nil
   ) {
     self.allowedCallers = allowedCallers
     self.cacheControl = cacheControl

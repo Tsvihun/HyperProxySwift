@@ -10,11 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsProjectExtendedResponseModelAspectRatioAnyOf1: String, Codable, Hashable,
-  Sendable
-{
-  case value169 = "16:9"
-  case value916 = "9:16"
-  case value45 = "4:5"
-  case value11 = "1:1"
-}
+public typealias ElevenLabsProjectExtendedResponseModelAspectRatioAnyOf1 =
+  ElevenLabsProjectExtendedResponseModelAspectRatio

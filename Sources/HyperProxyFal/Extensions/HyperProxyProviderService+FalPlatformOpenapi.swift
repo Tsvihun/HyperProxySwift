@@ -514,6 +514,18 @@ extension HyperProxyProviderService where Operation == FalOperation {
     return try await call.decoded(FalGetComputeInstanceResponse.self)
   }
 
+  public func getComputeMetrics(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> String {
+    let call = self.call(.getComputeMetrics)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.text()
+  }
+
   public func listApiKeys(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],

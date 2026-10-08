@@ -15,7 +15,6 @@ public enum OpenAILiveInitialSessionAudioOutputParamVoiceOneOf1AnyOf2: String, C
 {
   case alloy = "alloy"
   case ash = "ash"
-  case aube = "aube"
   case ballad = "ballad"
   case beacon = "beacon"
   case bossa = "bossa"
@@ -37,8 +36,8 @@ public enum OpenAILiveInitialSessionAudioOutputParamVoiceOneOf1AnyOf2: String, C
   case quartz = "quartz"
   case ripple = "ripple"
   case sage = "sage"
+  case shida = "shida"
   case shimmer = "shimmer"
-  case shitan = "shitan"
   case sillage = "sillage"
   case stone = "stone"
   case tempo = "tempo"

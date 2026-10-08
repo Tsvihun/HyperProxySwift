@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct ElevenLabsBodySpeechToSpeechV1SpeechToSpeechVoiceIdPost: Codable, Sendable {
   public var audio: String
-  public var fileFormat: ElevenLabsBodySpeechToSpeechV1SpeechToSpeechVoiceIdPostFileFormatAnyOf1?
+  public var fileFormat: ElevenLabsBodySpeechToSpeechV1SpeechToSpeechVoiceIdPostFileFormat?
   public var modelId: String?
   public var removeBackgroundNoise: Bool?
   public var seed: Int?
@@ -20,7 +20,7 @@ public struct ElevenLabsBodySpeechToSpeechV1SpeechToSpeechVoiceIdPost: Codable, 
 
   public init(
     audio: String,
-    fileFormat: ElevenLabsBodySpeechToSpeechV1SpeechToSpeechVoiceIdPostFileFormatAnyOf1? = nil,
+    fileFormat: ElevenLabsBodySpeechToSpeechV1SpeechToSpeechVoiceIdPostFileFormat? = nil,
     modelId: String? = nil,
     removeBackgroundNoise: Bool? = nil,
     seed: Int? = nil,

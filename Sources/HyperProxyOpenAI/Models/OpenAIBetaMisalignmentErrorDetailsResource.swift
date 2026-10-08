@@ -13,21 +13,25 @@ import HyperProxyCore
 public struct OpenAIBetaMisalignmentErrorDetailsResource: Codable, Sendable {
   public var detailedExplanation: String?
   public var errorType: OpenAIBetaMisalignmentErrorType?
+  public var reviewTarget: String?
   public var steer: OpenAIBetaMisalignmentSteer?
 
   public init(
     detailedExplanation: String? = nil,
     errorType: OpenAIBetaMisalignmentErrorType? = nil,
+    reviewTarget: String? = nil,
     steer: OpenAIBetaMisalignmentSteer? = nil
   ) {
     self.detailedExplanation = detailedExplanation
     self.errorType = errorType
+    self.reviewTarget = reviewTarget
     self.steer = steer
   }
 
   enum CodingKeys: String, CodingKey {
     case detailedExplanation = "detailed_explanation"
     case errorType = "error_type"
+    case reviewTarget = "review_target"
     case steer
   }
 }

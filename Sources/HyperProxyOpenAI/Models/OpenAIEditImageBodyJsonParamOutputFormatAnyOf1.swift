@@ -10,8 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum OpenAIEditImageBodyJsonParamOutputFormatAnyOf1: String, Codable, Hashable, Sendable {
-  case png = "png"
-  case jpeg = "jpeg"
-  case webp = "webp"
-}
+public typealias OpenAIEditImageBodyJsonParamOutputFormatAnyOf1 =
+  OpenAIEditImageBodyJsonParamOutputFormat

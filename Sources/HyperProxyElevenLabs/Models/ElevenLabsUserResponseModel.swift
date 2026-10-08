@@ -24,6 +24,7 @@ public struct ElevenLabsUserResponseModel: Codable, Sendable {
   public var showComplianceTerms: Bool?
   public var subscription: ElevenLabsSubscriptionResponseModel
   public var userId: String
+  public var workspaceId: String
   public var xiApiKeyPreview: String?
 
   public init(
@@ -35,6 +36,7 @@ public struct ElevenLabsUserResponseModel: Codable, Sendable {
     seatType: ElevenLabsSeatType,
     subscription: ElevenLabsSubscriptionResponseModel,
     userId: String,
+    workspaceId: String,
     firstName: String? = nil,
     isApiKeyHashed: Bool? = nil,
     partnerstackPartnerDefaultLink: String? = nil,
@@ -55,6 +57,7 @@ public struct ElevenLabsUserResponseModel: Codable, Sendable {
     self.showComplianceTerms = showComplianceTerms
     self.subscription = subscription
     self.userId = userId
+    self.workspaceId = workspaceId
     self.xiApiKeyPreview = xiApiKeyPreview
   }
 
@@ -72,6 +75,7 @@ public struct ElevenLabsUserResponseModel: Codable, Sendable {
     case showComplianceTerms = "show_compliance_terms"
     case subscription
     case userId = "user_id"
+    case workspaceId = "workspace_id"
     case xiApiKeyPreview = "xi_api_key_preview"
   }
 }

@@ -11,9 +11,8 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsResourceAccessInfo: Codable, Sendable {
-  public var accessSource: ElevenLabsResourceAccessInfoAccessSourceAnyOf1?
-  public var anonymousAccessLevelOverride:
-    ElevenLabsResourceAccessInfoAnonymousAccessLevelOverrideAnyOf1?
+  public var accessSource: ElevenLabsResourceAccessInfoAccessSource?
+  public var anonymousAccessLevelOverride: ElevenLabsResourceAccessInfoAnonymousAccessLevelOverride?
   public var creatorEmail: String
   public var creatorName: String
   public var isCreator: Bool
@@ -24,9 +23,8 @@ public struct ElevenLabsResourceAccessInfo: Codable, Sendable {
     creatorName: String,
     isCreator: Bool,
     role: ElevenLabsResourceAccessInfoRole,
-    accessSource: ElevenLabsResourceAccessInfoAccessSourceAnyOf1? = nil,
-    anonymousAccessLevelOverride: ElevenLabsResourceAccessInfoAnonymousAccessLevelOverrideAnyOf1? =
-      nil
+    accessSource: ElevenLabsResourceAccessInfoAccessSource? = nil,
+    anonymousAccessLevelOverride: ElevenLabsResourceAccessInfoAnonymousAccessLevelOverride? = nil
   ) {
     self.accessSource = accessSource
     self.anonymousAccessLevelOverride = anonymousAccessLevelOverride

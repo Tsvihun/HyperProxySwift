@@ -10,8 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsCaptionStyleModelTextWeightAnyOf1: String, Codable, Hashable, Sendable {
-  case normal = "normal"
-  case bold = "bold"
-  case value900 = "900"
-}
+public typealias ElevenLabsCaptionStyleModelTextWeightAnyOf1 = ElevenLabsCaptionStyleModelTextWeight

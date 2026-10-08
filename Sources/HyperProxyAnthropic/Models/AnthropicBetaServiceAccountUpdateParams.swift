@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct AnthropicBetaServiceAccountUpdateParams: Codable, Sendable {
   public var description: String?
-  public var organizationRole: AnthropicBetaServiceAccountUpdateParamsOrganizationRoleAnyOf1?
+  public var organizationRole: AnthropicBetaServiceAccountUpdateParamsOrganizationRole?
 
   public init(
     description: String? = nil,
-    organizationRole: AnthropicBetaServiceAccountUpdateParamsOrganizationRoleAnyOf1? = nil
+    organizationRole: AnthropicBetaServiceAccountUpdateParamsOrganizationRole? = nil
   ) {
     self.description = description
     self.organizationRole = organizationRole

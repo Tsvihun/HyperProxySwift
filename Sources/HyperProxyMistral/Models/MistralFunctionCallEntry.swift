@@ -14,7 +14,7 @@ public struct MistralFunctionCallEntry: Codable, Sendable {
   public var agentId: String?
   public var arguments: MistralFunctionCallEntryArguments
   public var completedAt: String?
-  public var confirmationStatus: MistralFunctionCallEntryConfirmationStatusAnyOf1?
+  public var confirmationStatus: MistralFunctionCallEntryConfirmationStatus?
   public var createdAt: String?
   public var id: String?
   public var model: String?
@@ -29,7 +29,7 @@ public struct MistralFunctionCallEntry: Codable, Sendable {
     toolCallId: String,
     agentId: String? = nil,
     completedAt: String? = nil,
-    confirmationStatus: MistralFunctionCallEntryConfirmationStatusAnyOf1? = nil,
+    confirmationStatus: MistralFunctionCallEntryConfirmationStatus? = nil,
     createdAt: String? = nil,
     id: String? = nil,
     model: String? = nil,

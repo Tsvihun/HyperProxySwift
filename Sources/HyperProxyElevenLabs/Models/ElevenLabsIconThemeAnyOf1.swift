@@ -10,7 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsIconThemeAnyOf1: String, Codable, Hashable, Sendable {
-  case light = "light"
-  case dark = "dark"
-}
+public typealias ElevenLabsIconThemeAnyOf1 = ElevenLabsIconTheme

@@ -10,6 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public enum PerplexityToolCallKindAnyOf1: String, Codable, Hashable, Sendable {
-  case function = "function"
-}
+public typealias PerplexityToolCallKindAnyOf1 = PerplexityToolCallKind

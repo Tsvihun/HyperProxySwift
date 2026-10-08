@@ -10,11 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsVoiceResponseModelRecordingQualityAnyOf1: String, Codable, Hashable, Sendable
-{
-  case studio = "studio"
-  case good = "good"
-  case ok = "ok"
-  case poor = "poor"
-  case bad = "bad"
-}
+public typealias ElevenLabsVoiceResponseModelRecordingQualityAnyOf1 =
+  ElevenLabsVoiceResponseModelRecordingQuality

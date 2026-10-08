@@ -11,18 +11,18 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIEditImageBodyJsonParam: Codable, Sendable {
-  public var background: OpenAIEditImageBodyJsonParamBackgroundAnyOf1?
+  public var background: OpenAIEditImageBodyJsonParamBackground?
   public var images: [OpenAIImageRefParam]
-  public var inputFidelity: OpenAIEditImageBodyJsonParamInputFidelityAnyOf1?
+  public var inputFidelity: OpenAIEditImageBodyJsonParamInputFidelity?
   public var mask: OpenAIImageRefParam?
   public var model: OpenAIEditImageBodyJsonParamModel?
-  public var moderation: OpenAIEditImageBodyJsonParamModerationAnyOf1?
+  public var moderation: OpenAIEditImageBodyJsonParamModeration?
   public var n: Int?
   public var outputCompression: Int?
-  public var outputFormat: OpenAIEditImageBodyJsonParamOutputFormatAnyOf1?
+  public var outputFormat: OpenAIEditImageBodyJsonParamOutputFormat?
   public var partialImages: Int?
   public var prompt: String
-  public var quality: OpenAIEditImageBodyJsonParamQualityAnyOf1?
+  public var quality: OpenAIEditImageBodyJsonParamQuality?
   public var size: OpenAIEditImageBodyJsonParamSize?
   public var stream: Bool?
   public var user: String?
@@ -30,16 +30,16 @@ public struct OpenAIEditImageBodyJsonParam: Codable, Sendable {
   public init(
     images: [OpenAIImageRefParam],
     prompt: String,
-    background: OpenAIEditImageBodyJsonParamBackgroundAnyOf1? = nil,
-    inputFidelity: OpenAIEditImageBodyJsonParamInputFidelityAnyOf1? = nil,
+    background: OpenAIEditImageBodyJsonParamBackground? = nil,
+    inputFidelity: OpenAIEditImageBodyJsonParamInputFidelity? = nil,
     mask: OpenAIImageRefParam? = nil,
     model: OpenAIEditImageBodyJsonParamModel? = nil,
-    moderation: OpenAIEditImageBodyJsonParamModerationAnyOf1? = nil,
+    moderation: OpenAIEditImageBodyJsonParamModeration? = nil,
     n: Int? = nil,
     outputCompression: Int? = nil,
-    outputFormat: OpenAIEditImageBodyJsonParamOutputFormatAnyOf1? = nil,
+    outputFormat: OpenAIEditImageBodyJsonParamOutputFormat? = nil,
     partialImages: Int? = nil,
-    quality: OpenAIEditImageBodyJsonParamQualityAnyOf1? = nil,
+    quality: OpenAIEditImageBodyJsonParamQuality? = nil,
     size: OpenAIEditImageBodyJsonParamSize? = nil,
     stream: Bool? = nil,
     user: String? = nil

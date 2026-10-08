@@ -10,9 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum AnthropicBetaPublicEnvironmentUpdateRequestScopeAnyOf1: String, Codable, Hashable,
-  Sendable
-{
-  case organization = "organization"
-  case account = "account"
-}
+public typealias AnthropicBetaPublicEnvironmentUpdateRequestScopeAnyOf1 =
+  AnthropicBetaPublicEnvironmentUpdateRequestScope

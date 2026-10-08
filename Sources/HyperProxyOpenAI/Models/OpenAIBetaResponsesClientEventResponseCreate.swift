@@ -29,7 +29,7 @@ public struct OpenAIBetaResponsesClientEventResponseCreate: Codable, Sendable {
   public var prompt: OpenAIBetaPrompt?
   public var promptCacheKey: String?
   public var promptCacheOptions: OpenAIBetaPromptCacheOptionsParam?
-  public var promptCacheRetention: OpenAIBetaModelResponsePropertiesPromptCacheRetentionAnyOf1?
+  public var promptCacheRetention: OpenAIBetaModelResponsePropertiesPromptCacheRetention?
   public var reasoning: OpenAIBetaReasoning?
   public var safetyIdentifier: String?
   public var serviceTier: OpenAIBetaServiceTierResponses?
@@ -43,7 +43,7 @@ public struct OpenAIBetaResponsesClientEventResponseCreate: Codable, Sendable {
   public var tools: OpenAIBetaToolsArray?
   public var topLogprobs: Int?
   public var topP: Double?
-  public var truncation: OpenAIBetaCreateResponseAllOf3TruncationAnyOf1?
+  public var truncation: OpenAIBetaCreateResponseAllOf3Truncation?
   public var kind: OpenAIBetaResponsesClientEventResponseCreateAllOf1Kind
   public var user: String?
 
@@ -67,7 +67,7 @@ public struct OpenAIBetaResponsesClientEventResponseCreate: Codable, Sendable {
     prompt: OpenAIBetaPrompt? = nil,
     promptCacheKey: String? = nil,
     promptCacheOptions: OpenAIBetaPromptCacheOptionsParam? = nil,
-    promptCacheRetention: OpenAIBetaModelResponsePropertiesPromptCacheRetentionAnyOf1? = nil,
+    promptCacheRetention: OpenAIBetaModelResponsePropertiesPromptCacheRetention? = nil,
     reasoning: OpenAIBetaReasoning? = nil,
     safetyIdentifier: String? = nil,
     serviceTier: OpenAIBetaServiceTierResponses? = nil,
@@ -81,7 +81,7 @@ public struct OpenAIBetaResponsesClientEventResponseCreate: Codable, Sendable {
     tools: OpenAIBetaToolsArray? = nil,
     topLogprobs: Int? = nil,
     topP: Double? = nil,
-    truncation: OpenAIBetaCreateResponseAllOf3TruncationAnyOf1? = nil,
+    truncation: OpenAIBetaCreateResponseAllOf3Truncation? = nil,
     user: String? = nil
   ) {
     self.accessPrograms = accessPrograms

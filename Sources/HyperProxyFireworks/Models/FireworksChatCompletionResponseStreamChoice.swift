@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct FireworksChatCompletionResponseStreamChoice: Codable, Sendable {
   public var delta: FireworksDeltaMessage
-  public var finishReason: FireworksChatCompletionResponseStreamChoiceFinishReasonAnyOf1?
+  public var finishReason: FireworksChatCompletionResponseStreamChoiceFinishReason?
   public var index: Int
   public var logprobs: FireworksChatCompletionResponseStreamChoiceLogprobs?
   public var promptTokenIds: [Int]?
@@ -23,7 +23,7 @@ public struct FireworksChatCompletionResponseStreamChoice: Codable, Sendable {
   public init(
     delta: FireworksDeltaMessage,
     index: Int,
-    finishReason: FireworksChatCompletionResponseStreamChoiceFinishReasonAnyOf1? = nil,
+    finishReason: FireworksChatCompletionResponseStreamChoiceFinishReason? = nil,
     logprobs: FireworksChatCompletionResponseStreamChoiceLogprobs? = nil,
     promptTokenIds: [Int]? = nil,
     rawOutput: FireworksRawOutput? = nil,

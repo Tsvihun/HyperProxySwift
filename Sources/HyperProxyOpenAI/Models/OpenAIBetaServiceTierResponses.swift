@@ -10,4 +10,12 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIBetaServiceTierResponses = OpenAIBetaServiceTierResponsesAnyOf1?
+public enum OpenAIBetaServiceTierResponses: String, Codable, Hashable, Sendable {
+  case auto = "auto"
+  case defaultValue = "default"
+  case flex = "flex"
+  case scale = "scale"
+  case priority = "priority"
+  case fast = "fast"
+  case ultrafast = "ultrafast"
+}

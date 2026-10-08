@@ -10,9 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsUpdateOAuth2JWTRequestTokenResponseFieldAnyOf1: String, Codable, Hashable,
-  Sendable
-{
-  case accessToken = "access_token"
-  case idToken = "id_token"
-}
+public typealias ElevenLabsUpdateOAuth2JWTRequestTokenResponseFieldAnyOf1 =
+  ElevenLabsUpdateOAuth2JWTRequestTokenResponseField

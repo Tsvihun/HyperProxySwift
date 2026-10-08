@@ -18,7 +18,7 @@ public struct OpenRouterMessagesResult: Codable, Sendable {
   public var inputTransformations: [OpenRouterAnthropicInputTransformation]?
   public var model: String
   public var openrouterMetadata: OpenRouterMetadata?
-  public var provider: OpenRouterProviderName?
+  public var provider: String?
   public var role: OpenRouterBaseMessagesResultRole
   public var safeguardResults: [OpenRouterAnthropicSafeguardResult]?
   public var stopDetails: OpenRouterAnthropicRefusalStopDetails?
@@ -41,7 +41,7 @@ public struct OpenRouterMessagesResult: Codable, Sendable {
     contextManagement: OpenRouterMessagesResultAllOf2ContextManagement? = nil,
     inputTransformations: [OpenRouterAnthropicInputTransformation]? = nil,
     openrouterMetadata: OpenRouterMetadata? = nil,
-    provider: OpenRouterProviderName? = nil,
+    provider: String? = nil,
     safeguardResults: [OpenRouterAnthropicSafeguardResult]? = nil
   ) {
     self.container = container

@@ -17,15 +17,14 @@ public struct MistralListDeploymentWorkersV1WorkflowsDeploymentsNameWorkersGetPa
   public var limit: Int?
   public var name: String
   public var workerStatus:
-    MistralListDeploymentWorkersV1WorkflowsDeploymentsNameWorkersGetParametersWorkerStatusAnyOf1?
+    MistralListDeploymentWorkersV1WorkflowsDeploymentsNameWorkersGetParametersWorkerStatus?
 
   public init(
     name: String,
     cursor: String? = nil,
     limit: Int? = nil,
     workerStatus:
-      MistralListDeploymentWorkersV1WorkflowsDeploymentsNameWorkersGetParametersWorkerStatusAnyOf1? =
-      nil
+      MistralListDeploymentWorkersV1WorkflowsDeploymentsNameWorkersGetParametersWorkerStatus? = nil
   ) {
     self.cursor = cursor
     self.limit = limit

@@ -18,7 +18,7 @@ public struct MistralListDeploymentsV1WorkflowsDeploymentsGetParameters: Codable
   public var limit: Int?
   public var locationTypes: [MistralLocationType]?
   public var order: MistralListDeploymentsV1WorkflowsDeploymentsGetParametersOrder?
-  public var orderBy: MistralListDeploymentsV1WorkflowsDeploymentsGetParametersOrderByAnyOf1?
+  public var orderBy: MistralListDeploymentsV1WorkflowsDeploymentsGetParametersOrderBy?
   public var owner: String?
   public var search: String?
   public var workflowName: String?
@@ -32,7 +32,7 @@ public struct MistralListDeploymentsV1WorkflowsDeploymentsGetParameters: Codable
     limit: Int? = nil,
     locationTypes: [MistralLocationType]? = nil,
     order: MistralListDeploymentsV1WorkflowsDeploymentsGetParametersOrder? = nil,
-    orderBy: MistralListDeploymentsV1WorkflowsDeploymentsGetParametersOrderByAnyOf1? = nil,
+    orderBy: MistralListDeploymentsV1WorkflowsDeploymentsGetParametersOrderBy? = nil,
     owner: String? = nil,
     search: String? = nil,
     workflowName: String? = nil,

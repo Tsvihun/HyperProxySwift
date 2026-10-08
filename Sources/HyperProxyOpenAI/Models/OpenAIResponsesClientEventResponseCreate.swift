@@ -28,7 +28,7 @@ public struct OpenAIResponsesClientEventResponseCreate: Codable, Sendable {
   public var prompt: OpenAIPrompt?
   public var promptCacheKey: String?
   public var promptCacheOptions: OpenAIPromptCacheOptionsParam?
-  public var promptCacheRetention: OpenAIModelResponsePropertiesPromptCacheRetentionAnyOf1?
+  public var promptCacheRetention: OpenAIModelResponsePropertiesPromptCacheRetention?
   public var reasoning: OpenAIReasoning?
   public var safetyIdentifier: String?
   public var serviceTier: OpenAIServiceTierResponses?
@@ -42,7 +42,7 @@ public struct OpenAIResponsesClientEventResponseCreate: Codable, Sendable {
   public var tools: OpenAIToolsArray?
   public var topLogprobs: Int?
   public var topP: Double?
-  public var truncation: OpenAICreateResponseAllOf3TruncationAnyOf1?
+  public var truncation: OpenAICreateResponseAllOf3Truncation?
   public var kind: OpenAIResponsesClientEventResponseCreateAllOf1Kind
   public var user: String?
 
@@ -65,7 +65,7 @@ public struct OpenAIResponsesClientEventResponseCreate: Codable, Sendable {
     prompt: OpenAIPrompt? = nil,
     promptCacheKey: String? = nil,
     promptCacheOptions: OpenAIPromptCacheOptionsParam? = nil,
-    promptCacheRetention: OpenAIModelResponsePropertiesPromptCacheRetentionAnyOf1? = nil,
+    promptCacheRetention: OpenAIModelResponsePropertiesPromptCacheRetention? = nil,
     reasoning: OpenAIReasoning? = nil,
     safetyIdentifier: String? = nil,
     serviceTier: OpenAIServiceTierResponses? = nil,
@@ -79,7 +79,7 @@ public struct OpenAIResponsesClientEventResponseCreate: Codable, Sendable {
     tools: OpenAIToolsArray? = nil,
     topLogprobs: Int? = nil,
     topP: Double? = nil,
-    truncation: OpenAICreateResponseAllOf3TruncationAnyOf1? = nil,
+    truncation: OpenAICreateResponseAllOf3Truncation? = nil,
     user: String? = nil
   ) {
     self.accessPrograms = accessPrograms

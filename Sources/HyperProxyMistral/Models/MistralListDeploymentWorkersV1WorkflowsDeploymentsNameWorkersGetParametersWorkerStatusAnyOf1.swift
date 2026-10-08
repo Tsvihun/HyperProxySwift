@@ -10,10 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public enum
-  MistralListDeploymentWorkersV1WorkflowsDeploymentsNameWorkersGetParametersWorkerStatusAnyOf1:
-    String, Codable, Hashable, Sendable
-{
-  case active = "active"
-  case inactive = "inactive"
-}
+public typealias
+  MistralListDeploymentWorkersV1WorkflowsDeploymentsNameWorkersGetParametersWorkerStatusAnyOf1 =
+  MistralListDeploymentWorkersV1WorkflowsDeploymentsNameWorkersGetParametersWorkerStatus

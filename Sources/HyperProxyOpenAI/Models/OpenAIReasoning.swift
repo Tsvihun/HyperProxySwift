@@ -11,18 +11,18 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIReasoning: Codable, Sendable {
-  public var context: OpenAIReasoningContextAnyOf1?
+  public var context: OpenAIReasoningContext?
   public var effort: OpenAIReasoningEffort?
-  public var generateSummary: OpenAIReasoningGenerateSummaryAnyOf1?
+  public var generateSummary: OpenAIReasoningGenerateSummary?
   public var mode: OpenAIReasoningModeEnum?
-  public var summary: OpenAIReasoningSummaryAnyOf1?
+  public var summary: OpenAIReasoningSummary?
 
   public init(
-    context: OpenAIReasoningContextAnyOf1? = nil,
+    context: OpenAIReasoningContext? = nil,
     effort: OpenAIReasoningEffort? = nil,
-    generateSummary: OpenAIReasoningGenerateSummaryAnyOf1? = nil,
+    generateSummary: OpenAIReasoningGenerateSummary? = nil,
     mode: OpenAIReasoningModeEnum? = nil,
-    summary: OpenAIReasoningSummaryAnyOf1? = nil
+    summary: OpenAIReasoningSummary? = nil
   ) {
     self.context = context
     self.effort = effort

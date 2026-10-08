@@ -10,7 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsCaptionStyleModelTextTransformAnyOf1: String, Codable, Hashable, Sendable {
-  case none = "none"
-  case uppercase = "uppercase"
-}
+public typealias ElevenLabsCaptionStyleModelTextTransformAnyOf1 =
+  ElevenLabsCaptionStyleModelTextTransform

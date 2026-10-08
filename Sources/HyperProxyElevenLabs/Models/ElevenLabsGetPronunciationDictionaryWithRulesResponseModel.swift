@@ -20,7 +20,7 @@ public struct ElevenLabsGetPronunciationDictionaryWithRulesResponseModel: Codabl
   public var latestVersionRulesNum: Int
   public var name: String
   public var permissionOnResource:
-    ElevenLabsGetPronunciationDictionaryWithRulesResponseModelPermissionOnResourceAnyOf1?
+    ElevenLabsGetPronunciationDictionaryWithRulesResponseModelPermissionOnResource?
   public var rules: [ElevenLabsGetPronunciationDictionaryWithRulesResponseModelRulesItem]
 
   public init(
@@ -31,7 +31,7 @@ public struct ElevenLabsGetPronunciationDictionaryWithRulesResponseModel: Codabl
     latestVersionRulesNum: Int,
     name: String,
     permissionOnResource:
-      ElevenLabsGetPronunciationDictionaryWithRulesResponseModelPermissionOnResourceAnyOf1?,
+      ElevenLabsGetPronunciationDictionaryWithRulesResponseModelPermissionOnResource?,
     rules: [ElevenLabsGetPronunciationDictionaryWithRulesResponseModelRulesItem],
     archivedTimeUnix: Int? = nil,
     description: String? = nil

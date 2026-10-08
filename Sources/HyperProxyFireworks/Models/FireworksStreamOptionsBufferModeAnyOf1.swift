@@ -10,7 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public enum FireworksStreamOptionsBufferModeAnyOf1: String, Codable, Hashable, Sendable {
-  case anyModel = "any"
-  case all = "all"
-}
+public typealias FireworksStreamOptionsBufferModeAnyOf1 = FireworksStreamOptionsBufferMode

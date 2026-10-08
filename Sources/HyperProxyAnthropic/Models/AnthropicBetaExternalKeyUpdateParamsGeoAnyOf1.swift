@@ -10,6 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum AnthropicBetaExternalKeyUpdateParamsGeoAnyOf1: String, Codable, Hashable, Sendable {
-  case us = "us"
-}
+public typealias AnthropicBetaExternalKeyUpdateParamsGeoAnyOf1 =
+  AnthropicBetaExternalKeyUpdateParamsGeo

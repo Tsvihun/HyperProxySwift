@@ -13,13 +13,13 @@ import HyperProxyCore
 public struct OpenAIConversationResource: Codable, Sendable {
   public var createdAt: Int
   public var id: String
-  public var metadata: HyperProxyJSONValue
+  public var metadata: [String: String]
   public var object: OpenAIConversationResourceObject
 
   public init(
     createdAt: Int,
     id: String,
-    metadata: HyperProxyJSONValue,
+    metadata: [String: String],
     object: OpenAIConversationResourceObject
   ) {
     self.createdAt = createdAt

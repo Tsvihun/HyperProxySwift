@@ -10,10 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsDirectPublishingReadResponseModelPayoutTypeAnyOf1: String, Codable, Hashable,
-  Sendable
-{
-  case none = "none"
-  case engagementBased = "engagement_based"
-  case fixedPayout = "fixed_payout"
-}
+public typealias ElevenLabsDirectPublishingReadResponseModelPayoutTypeAnyOf1 =
+  ElevenLabsDirectPublishingReadResponseModelPayoutType

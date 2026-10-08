@@ -10,11 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public enum OpenAIBetaImageGenToolCallQualityAnyOf1: String, Codable, Hashable, Sendable {
-  case low = "low"
-  case medium = "medium"
-  case high = "high"
-  case xhigh = "xhigh"
-  case max = "max"
-  case auto = "auto"
-}
+public typealias OpenAIBetaImageGenToolCallQualityAnyOf1 = OpenAIBetaImageGenToolCallQuality

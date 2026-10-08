@@ -14,13 +14,13 @@ public struct ElevenLabsIcon: Codable, Sendable {
   public var mimeType: String?
   public var sizes: [String]?
   public var src: String
-  public var theme: ElevenLabsIconThemeAnyOf1?
+  public var theme: ElevenLabsIconTheme?
 
   public init(
     src: String,
     mimeType: String? = nil,
     sizes: [String]? = nil,
-    theme: ElevenLabsIconThemeAnyOf1? = nil
+    theme: ElevenLabsIconTheme? = nil
   ) {
     self.mimeType = mimeType
     self.sizes = sizes

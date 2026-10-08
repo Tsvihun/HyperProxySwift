@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct PerplexityToolCall: Codable, Sendable {
   public var function: PerplexityToolCallFunction?
   public var id: String?
-  public var kind: PerplexityToolCallKindAnyOf1?
+  public var kind: PerplexityToolCallKind?
 
   public init(
     function: PerplexityToolCallFunction? = nil,
     id: String? = nil,
-    kind: PerplexityToolCallKindAnyOf1? = nil
+    kind: PerplexityToolCallKind? = nil
   ) {
     self.function = function
     self.id = id

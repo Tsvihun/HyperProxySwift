@@ -10,18 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsSpeechHistoryItemResponseModelSourceAnyOf1: String, Codable, Hashable,
-  Sendable
-{
-  case tTS = "TTS"
-  case sTS = "STS"
-  case projects = "Projects"
-  case pD = "PD"
-  case aN = "AN"
-  case dubbing = "Dubbing"
-  case playAPI = "PlayAPI"
-  case convAI = "ConvAI"
-  case voiceGeneration = "VoiceGeneration"
-  case inVPC = "InVPC"
-  case flows = "Flows"
-}
+public typealias ElevenLabsSpeechHistoryItemResponseModelSourceAnyOf1 =
+  ElevenLabsSpeechHistoryItemResponseModelSource

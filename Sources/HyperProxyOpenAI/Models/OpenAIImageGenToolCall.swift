@@ -15,7 +15,7 @@ public struct OpenAIImageGenToolCall: Codable, Sendable {
   public var background: OpenAIImageBackground?
   public var id: String
   public var outputFormat: OpenAIImageOutputFormat?
-  public var quality: OpenAIImageGenToolCallQualityAnyOf1?
+  public var quality: OpenAIImageGenToolCallQuality?
   public var result: String?
   public var revisedPrompt: String?
   public var size: OpenAIImageGenToolCallSizeAnyOf1?
@@ -30,7 +30,7 @@ public struct OpenAIImageGenToolCall: Codable, Sendable {
     action: OpenAIImageGenActionEnum? = nil,
     background: OpenAIImageBackground? = nil,
     outputFormat: OpenAIImageOutputFormat? = nil,
-    quality: OpenAIImageGenToolCallQualityAnyOf1? = nil,
+    quality: OpenAIImageGenToolCallQuality? = nil,
     revisedPrompt: String? = nil,
     size: OpenAIImageGenToolCallSizeAnyOf1? = nil
   ) {

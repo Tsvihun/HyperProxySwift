@@ -15,14 +15,14 @@ public struct FireworksAnthropicTool: Codable, Sendable {
   public var inputSchema: FireworksAnthropicInputSchema
   public var name: String
   public var strict: Bool?
-  public var kind: FireworksAnthropicToolKindAnyOf2?
+  public var kind: FireworksAnthropicToolKind?
 
   public init(
     inputSchema: FireworksAnthropicInputSchema,
     name: String,
     description: String? = nil,
     strict: Bool? = nil,
-    kind: FireworksAnthropicToolKindAnyOf2? = nil
+    kind: FireworksAnthropicToolKind? = nil
   ) {
     self.description = description
     self.inputSchema = inputSchema

@@ -10,10 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsVoiceResponseModelSafetyControlAnyOf1: String, Codable, Hashable, Sendable {
-  case nONE = "NONE"
-  case bAN = "BAN"
-  case cAPTCHA = "CAPTCHA"
-  case eNTERPRISEBAN = "ENTERPRISE_BAN"
-  case eNTERPRISECAPTCHA = "ENTERPRISE_CAPTCHA"
-}
+public typealias ElevenLabsVoiceResponseModelSafetyControlAnyOf1 =
+  ElevenLabsVoiceResponseModelSafetyControl

@@ -111,6 +111,8 @@ public enum FalOperation: String, HyperProxyCatalogOperation {
   case deleteComputeInstance = "deleteComputeInstance"
   /// `GET v1/compute/instances/{id}`
   case getComputeInstance = "getComputeInstance"
+  /// `GET v1/compute/metrics`
+  case getComputeMetrics = "getComputeMetrics"
   /// `GET v1/keys`
   case listApiKeys = "listApiKeys"
   /// `POST v1/keys`

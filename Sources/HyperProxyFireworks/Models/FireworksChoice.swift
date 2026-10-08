@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct FireworksChoice: Codable, Sendable {
-  public var finishReason: FireworksChoiceFinishReasonAnyOf1?
+  public var finishReason: FireworksChoiceFinishReason?
   public var index: Int
   public var logprobs: FireworksChoiceLogprobs?
   public var promptTokenIds: [Int]?
@@ -22,7 +22,7 @@ public struct FireworksChoice: Codable, Sendable {
   public init(
     index: Int,
     text: String,
-    finishReason: FireworksChoiceFinishReasonAnyOf1? = nil,
+    finishReason: FireworksChoiceFinishReason? = nil,
     logprobs: FireworksChoiceLogprobs? = nil,
     promptTokenIds: [Int]? = nil,
     rawOutput: FireworksRawOutput? = nil,

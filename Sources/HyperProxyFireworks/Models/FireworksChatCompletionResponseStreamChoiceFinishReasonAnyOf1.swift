@@ -10,11 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum FireworksChatCompletionResponseStreamChoiceFinishReasonAnyOf1: String, Codable,
-  Hashable, Sendable
-{
-  case stop = "stop"
-  case length = "length"
-  case functionCall = "function_call"
-  case toolCalls = "tool_calls"
-}
+public typealias FireworksChatCompletionResponseStreamChoiceFinishReasonAnyOf1 =
+  FireworksChatCompletionResponseStreamChoiceFinishReason

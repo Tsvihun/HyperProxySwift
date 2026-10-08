@@ -19,6 +19,7 @@ public struct ElevenLabsGetToolsRouteParameters: Codable, Sendable {
   public var sortBy: ElevenLabsToolSortBy?
   public var sortDirection: ElevenLabsSortDirection?
   public var types: [ElevenLabsToolTypeFilter]?
+  public var usedByAgentId: String?
   public var xiApiKey: String?
 
   public init(
@@ -30,6 +31,7 @@ public struct ElevenLabsGetToolsRouteParameters: Codable, Sendable {
     sortBy: ElevenLabsToolSortBy? = nil,
     sortDirection: ElevenLabsSortDirection? = nil,
     types: [ElevenLabsToolTypeFilter]? = nil,
+    usedByAgentId: String? = nil,
     xiApiKey: String? = nil
   ) {
     self.createdByUserId = createdByUserId
@@ -40,6 +42,7 @@ public struct ElevenLabsGetToolsRouteParameters: Codable, Sendable {
     self.sortBy = sortBy
     self.sortDirection = sortDirection
     self.types = types
+    self.usedByAgentId = usedByAgentId
     self.xiApiKey = xiApiKey
   }
 
@@ -52,6 +55,7 @@ public struct ElevenLabsGetToolsRouteParameters: Codable, Sendable {
     case sortBy = "sort_by"
     case sortDirection = "sort_direction"
     case types
+    case usedByAgentId = "used_by_agent_id"
     case xiApiKey = "xi-api-key"
   }
 }

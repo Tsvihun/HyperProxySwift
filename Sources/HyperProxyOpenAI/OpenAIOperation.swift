@@ -421,6 +421,8 @@ public enum OpenAIOperation: String, HyperProxyCatalogOperation {
   case conversationsItemsDelete = "conversations.items.delete"
   /// `GET v1/conversations/{conversation_id}/items/{item_id}`
   case conversationsItemsRetrieve = "conversations.items.retrieve"
+  /// `POST v1/decisions`
+  case createDecision = "createDecision"
   /// `POST v1/embeddings`
   case embeddingsCreate = "embeddings.create"
   /// `GET v1/evals`
@@ -641,6 +643,8 @@ public enum OpenAIOperation: String, HyperProxyCatalogOperation {
   case deleteVault = "deleteVault"
   /// `GET v1/vaults/{vault_id}`
   case retrieveVault = "retrieveVault"
+  /// `POST v1/vaults/{vault_id}`
+  case updateVault = "updateVault"
   /// `GET v1/vaults/{vault_id}/credentials`
   case listVaultCredentials = "listVaultCredentials"
   /// `POST v1/vaults/{vault_id}/credentials`

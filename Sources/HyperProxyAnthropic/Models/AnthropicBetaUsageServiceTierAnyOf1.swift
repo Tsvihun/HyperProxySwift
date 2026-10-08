@@ -10,8 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public enum AnthropicBetaUsageServiceTierAnyOf1: String, Codable, Hashable, Sendable {
-  case standard = "standard"
-  case priority = "priority"
-  case batch = "batch"
-}
+public typealias AnthropicBetaUsageServiceTierAnyOf1 = AnthropicBetaUsageServiceTier

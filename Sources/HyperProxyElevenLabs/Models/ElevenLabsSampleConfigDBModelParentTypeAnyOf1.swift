@@ -10,7 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsSampleConfigDBModelParentTypeAnyOf1: String, Codable, Hashable, Sendable {
-  case read = "read"
-  case collection = "collection"
-}
+public typealias ElevenLabsSampleConfigDBModelParentTypeAnyOf1 =
+  ElevenLabsSampleConfigDBModelParentType

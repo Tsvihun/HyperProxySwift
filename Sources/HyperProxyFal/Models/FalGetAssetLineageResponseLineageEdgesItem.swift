@@ -14,13 +14,13 @@ public struct FalGetAssetLineageResponseLineageEdgesItem: Codable, Sendable {
   public var entities: [FalGetAssetLineageResponseLineageEdgesItemEntitiesItem]?
   public var from: String
   public var kind: FalGetAssetLineageResponseLineageEdgesItemKind
-  public var role: FalGetAssetLineageResponseLineageEdgesItemRoleAnyOf1?
+  public var role: FalGetAssetLineageResponseLineageEdgesItemRole?
   public var to: String
 
   public init(
     from: String,
     kind: FalGetAssetLineageResponseLineageEdgesItemKind,
-    role: FalGetAssetLineageResponseLineageEdgesItemRoleAnyOf1?,
+    role: FalGetAssetLineageResponseLineageEdgesItemRole?,
     to: String,
     entities: [FalGetAssetLineageResponseLineageEdgesItemEntitiesItem]? = nil
   ) {

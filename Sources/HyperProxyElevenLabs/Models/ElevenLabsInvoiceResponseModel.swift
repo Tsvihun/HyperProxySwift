@@ -16,7 +16,7 @@ public struct ElevenLabsInvoiceResponseModel: Codable, Sendable {
   public var discountPercentOff: Double?
   public var discounts: [ElevenLabsDiscountResponseModel]
   public var nextPaymentAttemptUnix: Int
-  public var paymentIntentStatus: ElevenLabsInvoiceResponseModelPaymentIntentStatusAnyOf1?
+  public var paymentIntentStatus: ElevenLabsInvoiceResponseModelPaymentIntentStatus?
   public var paymentIntentStatusses: [ElevenLabsInvoiceResponseModelPaymentIntentStatussesItem]
   public var subtotalCents: Int?
   public var taxCents: Int?
@@ -25,7 +25,7 @@ public struct ElevenLabsInvoiceResponseModel: Codable, Sendable {
     amountDueCents: Int,
     discounts: [ElevenLabsDiscountResponseModel],
     nextPaymentAttemptUnix: Int,
-    paymentIntentStatus: ElevenLabsInvoiceResponseModelPaymentIntentStatusAnyOf1?,
+    paymentIntentStatus: ElevenLabsInvoiceResponseModelPaymentIntentStatus?,
     paymentIntentStatusses: [ElevenLabsInvoiceResponseModelPaymentIntentStatussesItem],
     discountAmountOff: Double? = nil,
     discountPercentOff: Double? = nil,

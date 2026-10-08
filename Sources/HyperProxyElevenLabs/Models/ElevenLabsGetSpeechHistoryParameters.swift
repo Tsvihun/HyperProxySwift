@@ -16,8 +16,8 @@ public struct ElevenLabsGetSpeechHistoryParameters: Codable, Sendable {
   public var modelId: String?
   public var pageSize: Int?
   public var search: String?
-  public var sortDirection: ElevenLabsGetSpeechHistoryParametersSortDirectionAnyOf1?
-  public var source: ElevenLabsGetSpeechHistoryParametersSourceAnyOf1?
+  public var sortDirection: ElevenLabsGetSpeechHistoryParametersSortDirection?
+  public var source: ElevenLabsGetSpeechHistoryParametersSource?
   public var startAfterHistoryItemId: String?
   public var voiceId: String?
   public var xiApiKey: String?
@@ -28,8 +28,8 @@ public struct ElevenLabsGetSpeechHistoryParameters: Codable, Sendable {
     modelId: String? = nil,
     pageSize: Int? = nil,
     search: String? = nil,
-    sortDirection: ElevenLabsGetSpeechHistoryParametersSortDirectionAnyOf1? = nil,
-    source: ElevenLabsGetSpeechHistoryParametersSourceAnyOf1? = nil,
+    sortDirection: ElevenLabsGetSpeechHistoryParametersSortDirection? = nil,
+    source: ElevenLabsGetSpeechHistoryParametersSource? = nil,
     startAfterHistoryItemId: String? = nil,
     voiceId: String? = nil,
     xiApiKey: String? = nil

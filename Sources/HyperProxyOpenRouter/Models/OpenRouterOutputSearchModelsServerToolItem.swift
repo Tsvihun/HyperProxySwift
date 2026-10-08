@@ -12,19 +12,22 @@ import HyperProxyCore
 
 public struct OpenRouterOutputSearchModelsServerToolItem: Codable, Sendable {
   public var arguments: String?
+  public var error: String?
   public var id: String?
   public var query: String?
-  public var status: OpenRouterToolCallStatus
+  public var status: OpenRouterFailableToolCallStatus
   public var kind: OpenRouterOutputSearchModelsServerToolItemKind
 
   public init(
-    status: OpenRouterToolCallStatus,
+    status: OpenRouterFailableToolCallStatus,
     kind: OpenRouterOutputSearchModelsServerToolItemKind,
     arguments: String? = nil,
+    error: String? = nil,
     id: String? = nil,
     query: String? = nil
   ) {
     self.arguments = arguments
+    self.error = error
     self.id = id
     self.query = query
     self.status = status
@@ -33,6 +36,7 @@ public struct OpenRouterOutputSearchModelsServerToolItem: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case arguments
+    case error
     case id
     case query
     case status

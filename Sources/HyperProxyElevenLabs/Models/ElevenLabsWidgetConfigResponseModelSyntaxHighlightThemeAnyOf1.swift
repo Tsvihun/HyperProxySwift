@@ -10,9 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsWidgetConfigResponseModelSyntaxHighlightThemeAnyOf1: String, Codable,
-  Hashable, Sendable
-{
-  case light = "light"
-  case dark = "dark"
-}
+public typealias ElevenLabsWidgetConfigResponseModelSyntaxHighlightThemeAnyOf1 =
+  ElevenLabsWidgetConfigResponseModelSyntaxHighlightTheme

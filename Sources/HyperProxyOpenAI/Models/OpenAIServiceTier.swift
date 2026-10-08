@@ -10,4 +10,11 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIServiceTier = OpenAIServiceTierAnyOf1?
+public enum OpenAIServiceTier: String, Codable, Hashable, Sendable {
+  case auto = "auto"
+  case defaultValue = "default"
+  case flex = "flex"
+  case scale = "scale"
+  case priority = "priority"
+  case fast = "fast"
+}

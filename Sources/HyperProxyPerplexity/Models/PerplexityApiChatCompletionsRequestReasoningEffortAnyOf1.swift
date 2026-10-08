@@ -10,11 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum PerplexityApiChatCompletionsRequestReasoningEffortAnyOf1: String, Codable, Hashable,
-  Sendable
-{
-  case minimal = "minimal"
-  case low = "low"
-  case medium = "medium"
-  case high = "high"
-}
+public typealias PerplexityApiChatCompletionsRequestReasoningEffortAnyOf1 =
+  PerplexityApiChatCompletionsRequestReasoningEffort

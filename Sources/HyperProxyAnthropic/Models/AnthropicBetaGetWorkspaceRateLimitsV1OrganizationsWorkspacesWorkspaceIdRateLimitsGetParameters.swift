@@ -16,7 +16,7 @@ public struct
 {
   public var anthropicVersion: String?
   public var groupType:
-    AnthropicBetaGetWorkspaceRateLimitsV1OrganizationsWorkspacesWorkspaceIdRateLimitsGetParametersGroupTypeAnyOf1?
+    AnthropicBetaGetWorkspaceRateLimitsV1OrganizationsWorkspacesWorkspaceIdRateLimitsGetParametersGroupType?
   public var limit: Int?
   public var page: String?
   public var workspaceId: String
@@ -26,7 +26,7 @@ public struct
     workspaceId: String,
     anthropicVersion: String? = nil,
     groupType:
-      AnthropicBetaGetWorkspaceRateLimitsV1OrganizationsWorkspacesWorkspaceIdRateLimitsGetParametersGroupTypeAnyOf1? =
+      AnthropicBetaGetWorkspaceRateLimitsV1OrganizationsWorkspacesWorkspaceIdRateLimitsGetParametersGroupType? =
       nil,
     limit: Int? = nil,
     page: String? = nil,

@@ -793,6 +793,10 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
   public var addTicketCommentRoute: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.addTicketCommentRoute)
   }
+  /// `POST v1/convai/triage-tickets/{agentqa_ticket_id}/merge`
+  public var mergeAgentConversationTicketsRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.mergeAgentConversationTicketsRoute)
+  }
   /// `POST v1/convai/triage-tickets/{agentqa_ticket_id}/turn-comments`
   public var addTurnCommentRoute: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.addTurnCommentRoute)
@@ -1424,6 +1428,34 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
   /// `POST v1/voices/add/{public_user_id}/{voice_id}`
   public var addSharingVoice: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.addSharingVoice)
+  }
+  /// `GET v1/voices/collections`
+  public var getUserVoiceCollections: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.getUserVoiceCollections)
+  }
+  /// `POST v1/voices/collections`
+  public var createOrUpdateUserVoiceCollection: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.createOrUpdateUserVoiceCollection)
+  }
+  /// `DELETE v1/voices/collections/{collection_id}`
+  public var deleteUserVoiceCollection: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.deleteUserVoiceCollection)
+  }
+  /// `GET v1/voices/collections/{collection_id}`
+  public var getUserVoiceCollection: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.getUserVoiceCollection)
+  }
+  /// `PATCH v1/voices/collections/{collection_id}`
+  public var updateUserVoiceCollection: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.updateUserVoiceCollection)
+  }
+  /// `DELETE v1/voices/collections/{collection_id}/voice/{voice_id}`
+  public var removeVoiceFromUserVoiceCollection: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.removeVoiceFromUserVoiceCollection)
+  }
+  /// `POST v1/voices/collections/{collection_id}/voice/{voice_id}`
+  public var addVoiceToUserVoiceCollection: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.addVoiceToUserVoiceCollection)
   }
   /// `POST v1/voices/pvc`
   public var createPvcVoice: HyperProxyProviderCall<ElevenLabsOperation> {

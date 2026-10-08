@@ -10,11 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsAddPronunciationDictionaryResponseModelPermissionOnResourceAnyOf1: String,
-  Codable, Hashable, Sendable
-{
-  case admin = "admin"
-  case editor = "editor"
-  case commenter = "commenter"
-  case viewer = "viewer"
-}
+public typealias ElevenLabsAddPronunciationDictionaryResponseModelPermissionOnResourceAnyOf1 =
+  ElevenLabsAddPronunciationDictionaryResponseModelPermissionOnResource

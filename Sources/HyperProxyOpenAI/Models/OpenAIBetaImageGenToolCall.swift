@@ -16,7 +16,7 @@ public struct OpenAIBetaImageGenToolCall: Codable, Sendable {
   public var background: OpenAIBetaImageBackground?
   public var id: String
   public var outputFormat: OpenAIBetaImageOutputFormat?
-  public var quality: OpenAIBetaImageGenToolCallQualityAnyOf1?
+  public var quality: OpenAIBetaImageGenToolCallQuality?
   public var result: String?
   public var revisedPrompt: String?
   public var size: OpenAIBetaImageGenToolCallSizeAnyOf1?
@@ -32,7 +32,7 @@ public struct OpenAIBetaImageGenToolCall: Codable, Sendable {
     agent: OpenAIBetaAgentTag? = nil,
     background: OpenAIBetaImageBackground? = nil,
     outputFormat: OpenAIBetaImageOutputFormat? = nil,
-    quality: OpenAIBetaImageGenToolCallQualityAnyOf1? = nil,
+    quality: OpenAIBetaImageGenToolCallQuality? = nil,
     revisedPrompt: String? = nil,
     size: OpenAIBetaImageGenToolCallSizeAnyOf1? = nil
   ) {

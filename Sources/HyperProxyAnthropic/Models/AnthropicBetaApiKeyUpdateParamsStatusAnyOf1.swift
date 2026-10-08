@@ -10,8 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public enum AnthropicBetaApiKeyUpdateParamsStatusAnyOf1: String, Codable, Hashable, Sendable {
-  case active = "active"
-  case archived = "archived"
-  case inactive = "inactive"
-}
+public typealias AnthropicBetaApiKeyUpdateParamsStatusAnyOf1 = AnthropicBetaApiKeyUpdateParamsStatus

@@ -14,20 +14,24 @@ public struct FalGetModelsResponse: Codable, Sendable {
   public var hasMore: Bool
   public var models: [FalGetModelsResponseModelsItem]
   public var nextCursor: String?
+  public var ordering: FalGetModelsResponseOrdering?
 
   public init(
     hasMore: Bool,
     models: [FalGetModelsResponseModelsItem],
-    nextCursor: String? = nil
+    nextCursor: String? = nil,
+    ordering: FalGetModelsResponseOrdering? = nil
   ) {
     self.hasMore = hasMore
     self.models = models
     self.nextCursor = nextCursor
+    self.ordering = ordering
   }
 
   enum CodingKeys: String, CodingKey {
     case hasMore = "has_more"
     case models
     case nextCursor = "next_cursor"
+    case ordering
   }
 }

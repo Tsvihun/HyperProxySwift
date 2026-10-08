@@ -10,12 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public enum
-  ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionariesAddFromRulesPostWorkspaceAccessAnyOf1:
-    String, Codable, Hashable, Sendable
-{
-  case admin = "admin"
-  case editor = "editor"
-  case commenter = "commenter"
-  case viewer = "viewer"
-}
+public typealias
+  ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionariesAddFromRulesPostWorkspaceAccessAnyOf1 =
+  ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionariesAddFromRulesPostWorkspaceAccess

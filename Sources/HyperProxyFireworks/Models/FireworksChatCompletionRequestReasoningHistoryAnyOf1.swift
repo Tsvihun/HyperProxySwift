@@ -10,10 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum FireworksChatCompletionRequestReasoningHistoryAnyOf1: String, Codable, Hashable,
-  Sendable
-{
-  case disabled = "disabled"
-  case interleaved = "interleaved"
-  case preserved = "preserved"
-}
+public typealias FireworksChatCompletionRequestReasoningHistoryAnyOf1 =
+  FireworksChatCompletionRequestReasoningHistory

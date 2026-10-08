@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAICreateCompletionResponseChoicesItem: Codable, Sendable {
-  public var finishReason: OpenAICreateCompletionResponseChoicesItemFinishReasonAnyOf1?
+  public var finishReason: OpenAICreateCompletionResponseChoicesItemFinishReason?
   public var index: Int
   public var logprobs: OpenAICreateCompletionResponseChoicesItemLogprobsAnyOf1?
   public var text: String
 
   public init(
-    finishReason: OpenAICreateCompletionResponseChoicesItemFinishReasonAnyOf1?,
+    finishReason: OpenAICreateCompletionResponseChoicesItemFinishReason?,
     index: Int,
     logprobs: OpenAICreateCompletionResponseChoicesItemLogprobsAnyOf1?,
     text: String

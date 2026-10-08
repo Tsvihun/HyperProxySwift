@@ -21,7 +21,7 @@ public struct MistralListRunsV1WorkflowsRunsGetParameters: Codable, Sendable {
   public var rootExecutionId: String?
   public var search: String?
   public var searchKey: [String]?
-  public var sortBy: MistralListRunsV1WorkflowsRunsGetParametersSortByAnyOf1?
+  public var sortBy: MistralListRunsV1WorkflowsRunsGetParametersSortBy?
   public var startTimeAfter: String?
   public var startTimeBefore: String?
   public var status: MistralListRunsV1WorkflowsRunsGetParametersStatus?
@@ -40,7 +40,7 @@ public struct MistralListRunsV1WorkflowsRunsGetParameters: Codable, Sendable {
     rootExecutionId: String? = nil,
     search: String? = nil,
     searchKey: [String]? = nil,
-    sortBy: MistralListRunsV1WorkflowsRunsGetParametersSortByAnyOf1? = nil,
+    sortBy: MistralListRunsV1WorkflowsRunsGetParametersSortBy? = nil,
     startTimeAfter: String? = nil,
     startTimeBefore: String? = nil,
     status: MistralListRunsV1WorkflowsRunsGetParametersStatus? = nil,

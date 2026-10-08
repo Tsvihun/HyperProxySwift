@@ -10,9 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsModerationStatusResponseModelWarningStatusAnyOf1: String, Codable, Hashable,
-  Sendable
-{
-  case warning = "warning"
-  case warningCleared = "warning_cleared"
-}
+public typealias ElevenLabsModerationStatusResponseModelWarningStatusAnyOf1 =
+  ElevenLabsModerationStatusResponseModelWarningStatus

@@ -40,12 +40,12 @@ public struct FireworksChatCompletionRequest: Codable, Sendable {
   public var promptTruncateLen: Int?
   public var rawOutput: Bool?
   public var reasoningEffort: FireworksChatCompletionRequestReasoningEffort?
-  public var reasoningHistory: FireworksChatCompletionRequestReasoningHistoryAnyOf1?
+  public var reasoningHistory: FireworksChatCompletionRequestReasoningHistory?
   public var repetitionPenalty: Double?
   public var responseFormat: FireworksResponseFormat?
   public var returnTokenIds: Bool?
   public var safeTokenization: Bool?
-  public var samplingMask: FireworksChatCompletionRequestSamplingMaskAnyOf1?
+  public var samplingMask: FireworksChatCompletionRequestSamplingMask?
   public var seed: Int?
   public var serviceTier: FireworksChatCompletionRequestServiceTier?
   public var speculation: FireworksChatCompletionRequestSpeculation?
@@ -92,12 +92,12 @@ public struct FireworksChatCompletionRequest: Codable, Sendable {
     promptTruncateLen: Int? = nil,
     rawOutput: Bool? = nil,
     reasoningEffort: FireworksChatCompletionRequestReasoningEffort? = nil,
-    reasoningHistory: FireworksChatCompletionRequestReasoningHistoryAnyOf1? = nil,
+    reasoningHistory: FireworksChatCompletionRequestReasoningHistory? = nil,
     repetitionPenalty: Double? = nil,
     responseFormat: FireworksResponseFormat? = nil,
     returnTokenIds: Bool? = nil,
     safeTokenization: Bool? = nil,
-    samplingMask: FireworksChatCompletionRequestSamplingMaskAnyOf1? = nil,
+    samplingMask: FireworksChatCompletionRequestSamplingMask? = nil,
     seed: Int? = nil,
     serviceTier: FireworksChatCompletionRequestServiceTier? = nil,
     speculation: FireworksChatCompletionRequestSpeculation? = nil,

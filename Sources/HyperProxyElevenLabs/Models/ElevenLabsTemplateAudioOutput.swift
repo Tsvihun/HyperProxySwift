@@ -14,7 +14,7 @@ public struct ElevenLabsTemplateAudioOutput: Codable, Sendable {
   public var contentMimeType: String?
   public var contentUrl: String?
   public var errorMessage: String?
-  public var failureReason: ElevenLabsTemplateAudioOutputFailureReasonAnyOf1?
+  public var failureReason: ElevenLabsTemplateAudioOutputFailureReason?
   public var id: String
   public var status: ElevenLabsTemplateRunStatus
   public var kind: ElevenLabsAudioKind
@@ -26,7 +26,7 @@ public struct ElevenLabsTemplateAudioOutput: Codable, Sendable {
     contentMimeType: String? = nil,
     contentUrl: String? = nil,
     errorMessage: String? = nil,
-    failureReason: ElevenLabsTemplateAudioOutputFailureReasonAnyOf1? = nil
+    failureReason: ElevenLabsTemplateAudioOutputFailureReason? = nil
   ) {
     self.contentMimeType = contentMimeType
     self.contentUrl = contentUrl

@@ -10,7 +10,35 @@
 import Foundation
 import HyperProxyCore
 
-public enum OpenAIVoiceResourceKind: String, Codable, Hashable, Sendable {
-  case audioSample = "audio_sample"
-  case prompt = "prompt"
+public enum OpenAIVoiceResourceKind: RawRepresentable, Codable, Hashable, Sendable {
+  case audioSample
+  case custom(String)
+
+  public init(rawValue: String) {
+    switch rawValue {
+    case "audio_sample":
+      self = .audioSample
+    default:
+      self = .custom(rawValue)
+    }
+  }
+
+  public var rawValue: String {
+    switch self {
+    case .audioSample:
+      return "audio_sample"
+    case .custom(let value):
+      return value
+    }
+  }
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    self.init(rawValue: try container.decode(String.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    try container.encode(rawValue)
+  }
 }

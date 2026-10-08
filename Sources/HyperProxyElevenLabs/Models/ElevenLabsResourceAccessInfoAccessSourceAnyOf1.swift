@@ -10,9 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsResourceAccessInfoAccessSourceAnyOf1: String, Codable, Hashable, Sendable {
-  case creator = "creator"
-  case explicit = "explicit"
-  case workspaceAdmin = "workspace_admin"
-  case workspaceDefault = "workspace_default"
-}
+public typealias ElevenLabsResourceAccessInfoAccessSourceAnyOf1 =
+  ElevenLabsResourceAccessInfoAccessSource

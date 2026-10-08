@@ -10,11 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsConversationHistoryTranscriptOtherToolsResultCommonModelKindAnyOf1: String,
-  Codable, Hashable, Sendable
-{
-  case client = "client"
-  case webhook = "webhook"
-  case mcp = "mcp"
-  case code = "code"
-}
+public typealias ElevenLabsConversationHistoryTranscriptOtherToolsResultCommonModelKindAnyOf1 =
+  ElevenLabsConversationHistoryTranscriptOtherToolsResultCommonModelKind

@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct ElevenLabsBodyAudioIsolationV1AudioIsolationPost: Codable, Sendable {
   public var audio: String
-  public var fileFormat: ElevenLabsBodyAudioIsolationV1AudioIsolationPostFileFormatAnyOf1?
+  public var fileFormat: ElevenLabsBodyAudioIsolationV1AudioIsolationPostFileFormat?
   public var previewB64: String?
 
   public init(
     audio: String,
-    fileFormat: ElevenLabsBodyAudioIsolationV1AudioIsolationPostFileFormatAnyOf1? = nil,
+    fileFormat: ElevenLabsBodyAudioIsolationV1AudioIsolationPostFileFormat? = nil,
     previewB64: String? = nil
   ) {
     self.audio = audio

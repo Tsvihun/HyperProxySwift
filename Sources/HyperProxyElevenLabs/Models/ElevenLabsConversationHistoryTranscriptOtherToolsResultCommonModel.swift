@@ -22,7 +22,7 @@ public struct ElevenLabsConversationHistoryTranscriptOtherToolsResultCommonModel
   public var toolHasBeenCalled: Bool
   public var toolLatencySecs: Double?
   public var toolName: String
-  public var kind: ElevenLabsConversationHistoryTranscriptOtherToolsResultCommonModelKindAnyOf1?
+  public var kind: ElevenLabsConversationHistoryTranscriptOtherToolsResultCommonModelKind?
 
   public init(
     isError: Bool,
@@ -35,7 +35,7 @@ public struct ElevenLabsConversationHistoryTranscriptOtherToolsResultCommonModel
     isBlocked: Bool? = nil,
     rawErrorMessage: String? = nil,
     toolLatencySecs: Double? = nil,
-    kind: ElevenLabsConversationHistoryTranscriptOtherToolsResultCommonModelKindAnyOf1? = nil
+    kind: ElevenLabsConversationHistoryTranscriptOtherToolsResultCommonModelKind? = nil
   ) {
     self.dynamicVariableUpdates = dynamicVariableUpdates
     self.errorType = errorType

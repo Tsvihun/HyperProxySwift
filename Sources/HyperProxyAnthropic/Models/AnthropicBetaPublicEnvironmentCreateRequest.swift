@@ -15,14 +15,14 @@ public struct AnthropicBetaPublicEnvironmentCreateRequest: Codable, Sendable {
   public var description: String?
   public var metadata: [String: String]?
   public var name: String
-  public var scope: AnthropicBetaPublicEnvironmentCreateRequestScopeAnyOf1?
+  public var scope: AnthropicBetaPublicEnvironmentCreateRequestScope?
 
   public init(
     name: String,
     config: AnthropicBetaPublicEnvironmentCreateRequestConfigAnyOf1? = nil,
     description: String? = nil,
     metadata: [String: String]? = nil,
-    scope: AnthropicBetaPublicEnvironmentCreateRequestScopeAnyOf1? = nil
+    scope: AnthropicBetaPublicEnvironmentCreateRequestScope? = nil
   ) {
     self.config = config
     self.description = description

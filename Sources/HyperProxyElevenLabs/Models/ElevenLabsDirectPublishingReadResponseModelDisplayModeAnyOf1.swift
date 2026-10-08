@@ -10,10 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsDirectPublishingReadResponseModelDisplayModeAnyOf1: String, Codable, Hashable,
-  Sendable
-{
-  case text = "text"
-  case audioOnly = "audio-only"
-  case textWithAudio = "text-with-audio"
-}
+public typealias ElevenLabsDirectPublishingReadResponseModelDisplayModeAnyOf1 =
+  ElevenLabsDirectPublishingReadResponseModelDisplayMode

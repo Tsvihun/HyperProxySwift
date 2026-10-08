@@ -12,19 +12,22 @@ import HyperProxyCore
 
 public struct OpenRouterOutputDatetimeItem: Codable, Sendable {
   public var datetime: String
+  public var error: String?
   public var id: String?
-  public var status: OpenRouterToolCallStatus
+  public var status: OpenRouterFailableToolCallStatus
   public var timezone: String
   public var kind: OpenRouterOutputDatetimeItemKind
 
   public init(
     datetime: String,
-    status: OpenRouterToolCallStatus,
+    status: OpenRouterFailableToolCallStatus,
     timezone: String,
     kind: OpenRouterOutputDatetimeItemKind,
+    error: String? = nil,
     id: String? = nil
   ) {
     self.datetime = datetime
+    self.error = error
     self.id = id
     self.status = status
     self.timezone = timezone
@@ -33,6 +36,7 @@ public struct OpenRouterOutputDatetimeItem: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case datetime
+    case error
     case id
     case status
     case timezone

@@ -10,8 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum MistralFunctionCallEventConfirmationStatusAnyOf1: String, Codable, Hashable, Sendable {
-  case pending = "pending"
-  case allowed = "allowed"
-  case denied = "denied"
-}
+public typealias MistralFunctionCallEventConfirmationStatusAnyOf1 =
+  MistralFunctionCallEventConfirmationStatus

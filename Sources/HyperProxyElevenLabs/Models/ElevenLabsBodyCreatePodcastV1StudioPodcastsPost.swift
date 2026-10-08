@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct ElevenLabsBodyCreatePodcastV1StudioPodcastsPost: Codable, Sendable {
   public var applyTextNormalization:
-    ElevenLabsBodyCreatePodcastV1StudioPodcastsPostApplyTextNormalizationAnyOf1?
+    ElevenLabsBodyCreatePodcastV1StudioPodcastsPostApplyTextNormalization?
   public var callbackUrl: String?
   public var durationScale: ElevenLabsBodyCreatePodcastV1StudioPodcastsPostDurationScale?
   public var highlights: [String]?
@@ -29,8 +29,8 @@ public struct ElevenLabsBodyCreatePodcastV1StudioPodcastsPost: Codable, Sendable
     mode: ElevenLabsBodyCreatePodcastV1StudioPodcastsPostMode,
     modelId: String,
     source: ElevenLabsBodyCreatePodcastV1StudioPodcastsPostSource,
-    applyTextNormalization:
-      ElevenLabsBodyCreatePodcastV1StudioPodcastsPostApplyTextNormalizationAnyOf1? = nil,
+    applyTextNormalization: ElevenLabsBodyCreatePodcastV1StudioPodcastsPostApplyTextNormalization? =
+      nil,
     callbackUrl: String? = nil,
     durationScale: ElevenLabsBodyCreatePodcastV1StudioPodcastsPostDurationScale? = nil,
     highlights: [String]? = nil,

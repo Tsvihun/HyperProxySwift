@@ -968,6 +968,38 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
     return try await call.decoded(OpenRouterInternDaemonAccess.self)
   }
 
+  public func signInternDaemonAccessRequest(
+    _ body: OpenRouterSignInternDaemonRequest,
+    internId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterSignInternDaemonResponse {
+    let call = self.call(.signInternDaemonAccessRequest)
+      .path("internId", internId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenRouterSignInternDaemonResponse.self)
+  }
+
+  public func signInternDaemonRequest(
+    _ body: OpenRouterSignInternDaemonRequest,
+    internId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterSignInternDaemonResponse {
+    let call = self.call(.signInternDaemonRequest)
+      .path("internId", internId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenRouterSignInternDaemonResponse.self)
+  }
+
   public func invokeIntern(
     _ body: OpenRouterInternInvokeRequest,
     internId: String,

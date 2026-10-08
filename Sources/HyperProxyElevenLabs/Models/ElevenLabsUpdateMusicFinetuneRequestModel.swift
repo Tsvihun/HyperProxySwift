@@ -14,13 +14,13 @@ public struct ElevenLabsUpdateMusicFinetuneRequestModel: Codable, Sendable {
   public var name: String?
   public var primaryGenre: String?
   public var tags: [String]?
-  public var visibility: ElevenLabsUpdateMusicFinetuneRequestModelVisibilityAnyOf1?
+  public var visibility: ElevenLabsUpdateMusicFinetuneRequestModelVisibility?
 
   public init(
     name: String? = nil,
     primaryGenre: String? = nil,
     tags: [String]? = nil,
-    visibility: ElevenLabsUpdateMusicFinetuneRequestModelVisibilityAnyOf1? = nil
+    visibility: ElevenLabsUpdateMusicFinetuneRequestModelVisibility? = nil
   ) {
     self.name = name
     self.primaryGenre = primaryGenre

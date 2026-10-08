@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsProjectResponseModel: Codable, Sendable {
   public var accessLevel: ElevenLabsProjectResponseModelAccessLevel
   public var agentSettings: ElevenLabsStudioAgentSettingsModel?
-  public var aspectRatio: ElevenLabsProjectResponseModelAspectRatioAnyOf1?
+  public var aspectRatio: ElevenLabsProjectResponseModelAspectRatio?
   public var author: String?
   public var canBeDownloaded: Bool
   public var captionStyle: ElevenLabsCaptionStyleModel?
@@ -31,7 +31,7 @@ public struct ElevenLabsProjectResponseModel: Codable, Sendable {
   public var defaultTitleVoiceId: String
   public var defaultTitleVoiceRefId: String
   public var description: String?
-  public var fiction: ElevenLabsProjectResponseModelFictionAnyOf1?
+  public var fiction: ElevenLabsProjectResponseModelFiction?
   public var genres: [String]?
   public var isbnNumber: String?
   public var language: String?
@@ -43,9 +43,9 @@ public struct ElevenLabsProjectResponseModel: Codable, Sendable {
   public var publicShareId: String?
   public var qualityCheckOn: Bool
   public var qualityCheckOnWhenBulkConvert: Bool
-  public var sourceType: ElevenLabsProjectResponseModelSourceTypeAnyOf1?
+  public var sourceType: ElevenLabsProjectResponseModelSourceType?
   public var state: ElevenLabsProjectResponseModelState
-  public var targetAudience: ElevenLabsProjectResponseModelTargetAudienceAnyOf1?
+  public var targetAudience: ElevenLabsProjectResponseModelTargetAudience?
   public var title: String?
   public var volumeNormalization: Bool
 
@@ -66,7 +66,7 @@ public struct ElevenLabsProjectResponseModel: Codable, Sendable {
     state: ElevenLabsProjectResponseModelState,
     volumeNormalization: Bool,
     agentSettings: ElevenLabsStudioAgentSettingsModel? = nil,
-    aspectRatio: ElevenLabsProjectResponseModelAspectRatioAnyOf1? = nil,
+    aspectRatio: ElevenLabsProjectResponseModelAspectRatio? = nil,
     author: String? = nil,
     captionStyle: ElevenLabsCaptionStyleModel? = nil,
     captionStyleTemplateOverrides: [String: ElevenLabsCaptionStyleModel]? = nil,
@@ -76,7 +76,7 @@ public struct ElevenLabsProjectResponseModel: Codable, Sendable {
     coverImageUrl: String? = nil,
     creationMeta: ElevenLabsProjectCreationMetaResponseModel? = nil,
     description: String? = nil,
-    fiction: ElevenLabsProjectResponseModelFictionAnyOf1? = nil,
+    fiction: ElevenLabsProjectResponseModelFiction? = nil,
     genres: [String]? = nil,
     isbnNumber: String? = nil,
     language: String? = nil,
@@ -84,8 +84,8 @@ public struct ElevenLabsProjectResponseModel: Codable, Sendable {
     matureContent: Bool? = nil,
     originalPublicationDate: String? = nil,
     publicShareId: String? = nil,
-    sourceType: ElevenLabsProjectResponseModelSourceTypeAnyOf1? = nil,
-    targetAudience: ElevenLabsProjectResponseModelTargetAudienceAnyOf1? = nil,
+    sourceType: ElevenLabsProjectResponseModelSourceType? = nil,
+    targetAudience: ElevenLabsProjectResponseModelTargetAudience? = nil,
     title: String? = nil
   ) {
     self.accessLevel = accessLevel

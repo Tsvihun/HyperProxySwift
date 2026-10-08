@@ -16,11 +16,11 @@ public struct OpenAIBetaToolSearchOutputItemParam: Codable, Sendable {
   public var execution: OpenAIBetaToolSearchExecutionType?
   public var id: String?
   public var status: OpenAIBetaFunctionCallItemStatus?
-  public var tools: [OpenAIBetaTool]
+  public var tools: [OpenAIBetaToolSearchOutputTool]
   public var kind: OpenAIBetaToolSearchOutputItemParamKind
 
   public init(
-    tools: [OpenAIBetaTool],
+    tools: [OpenAIBetaToolSearchOutputTool],
     kind: OpenAIBetaToolSearchOutputItemParamKind,
     agent: OpenAIBetaAgentTagParam? = nil,
     callId: String? = nil,

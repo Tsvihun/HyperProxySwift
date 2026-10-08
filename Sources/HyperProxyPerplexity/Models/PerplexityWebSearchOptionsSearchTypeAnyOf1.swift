@@ -10,8 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public enum PerplexityWebSearchOptionsSearchTypeAnyOf1: String, Codable, Hashable, Sendable {
-  case fast = "fast"
-  case pro = "pro"
-  case auto = "auto"
-}
+public typealias PerplexityWebSearchOptionsSearchTypeAnyOf1 = PerplexityWebSearchOptionsSearchType

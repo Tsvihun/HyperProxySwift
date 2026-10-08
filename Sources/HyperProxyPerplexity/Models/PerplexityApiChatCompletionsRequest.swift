@@ -21,7 +21,7 @@ public struct PerplexityApiChatCompletionsRequest: Codable, Sendable {
   public var maxTokens: Int?
   public var messages: [PerplexityChatMessageInput]
   public var model: PerplexityApiChatCompletionsRequestModel
-  public var reasoningEffort: PerplexityApiChatCompletionsRequestReasoningEffortAnyOf1?
+  public var reasoningEffort: PerplexityApiChatCompletionsRequestReasoningEffort?
   public var responseFormat: PerplexityApiChatCompletionsRequestResponseFormat?
   public var returnImages: Bool?
   public var returnRelatedQuestions: Bool?
@@ -29,8 +29,8 @@ public struct PerplexityApiChatCompletionsRequest: Codable, Sendable {
   public var searchBeforeDateFilter: String?
   public var searchDomainFilter: [String]?
   public var searchLanguageFilter: [String]?
-  public var searchMode: PerplexityApiChatCompletionsRequestSearchModeAnyOf1?
-  public var searchRecencyFilter: PerplexityApiChatCompletionsRequestSearchRecencyFilterAnyOf1?
+  public var searchMode: PerplexityApiChatCompletionsRequestSearchMode?
+  public var searchRecencyFilter: PerplexityApiChatCompletionsRequestSearchRecencyFilter?
   public var stop: PerplexityApiChatCompletionsRequestStop?
   public var stream: Bool?
   public var streamMode: PerplexityApiChatCompletionsRequestStreamMode?
@@ -49,7 +49,7 @@ public struct PerplexityApiChatCompletionsRequest: Codable, Sendable {
     lastUpdatedAfterFilter: String? = nil,
     lastUpdatedBeforeFilter: String? = nil,
     maxTokens: Int? = nil,
-    reasoningEffort: PerplexityApiChatCompletionsRequestReasoningEffortAnyOf1? = nil,
+    reasoningEffort: PerplexityApiChatCompletionsRequestReasoningEffort? = nil,
     responseFormat: PerplexityApiChatCompletionsRequestResponseFormat? = nil,
     returnImages: Bool? = nil,
     returnRelatedQuestions: Bool? = nil,
@@ -57,8 +57,8 @@ public struct PerplexityApiChatCompletionsRequest: Codable, Sendable {
     searchBeforeDateFilter: String? = nil,
     searchDomainFilter: [String]? = nil,
     searchLanguageFilter: [String]? = nil,
-    searchMode: PerplexityApiChatCompletionsRequestSearchModeAnyOf1? = nil,
-    searchRecencyFilter: PerplexityApiChatCompletionsRequestSearchRecencyFilterAnyOf1? = nil,
+    searchMode: PerplexityApiChatCompletionsRequestSearchMode? = nil,
+    searchRecencyFilter: PerplexityApiChatCompletionsRequestSearchRecencyFilter? = nil,
     stop: PerplexityApiChatCompletionsRequestStop? = nil,
     stream: Bool? = nil,
     streamMode: PerplexityApiChatCompletionsRequestStreamMode? = nil,

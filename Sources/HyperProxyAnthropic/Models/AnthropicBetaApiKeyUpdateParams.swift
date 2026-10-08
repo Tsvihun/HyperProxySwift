@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct AnthropicBetaApiKeyUpdateParams: Codable, Sendable {
   public var name: String?
-  public var status: AnthropicBetaApiKeyUpdateParamsStatusAnyOf1?
+  public var status: AnthropicBetaApiKeyUpdateParamsStatus?
 
   public init(
     name: String? = nil,
-    status: AnthropicBetaApiKeyUpdateParamsStatusAnyOf1? = nil
+    status: AnthropicBetaApiKeyUpdateParamsStatus? = nil
   ) {
     self.name = name
     self.status = status

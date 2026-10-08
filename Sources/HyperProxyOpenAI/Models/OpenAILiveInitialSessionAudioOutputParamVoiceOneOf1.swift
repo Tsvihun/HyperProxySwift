@@ -15,7 +15,6 @@ public enum OpenAILiveInitialSessionAudioOutputParamVoiceOneOf1: RawRepresentabl
 {
   case alloy
   case ash
-  case aube
   case ballad
   case beacon
   case bossa
@@ -37,8 +36,8 @@ public enum OpenAILiveInitialSessionAudioOutputParamVoiceOneOf1: RawRepresentabl
   case quartz
   case ripple
   case sage
+  case shida
   case shimmer
-  case shitan
   case sillage
   case stone
   case tempo
@@ -53,8 +52,6 @@ public enum OpenAILiveInitialSessionAudioOutputParamVoiceOneOf1: RawRepresentabl
       self = .alloy
     case "ash":
       self = .ash
-    case "aube":
-      self = .aube
     case "ballad":
       self = .ballad
     case "beacon":
@@ -97,10 +94,10 @@ public enum OpenAILiveInitialSessionAudioOutputParamVoiceOneOf1: RawRepresentabl
       self = .ripple
     case "sage":
       self = .sage
+    case "shida":
+      self = .shida
     case "shimmer":
       self = .shimmer
-    case "shitan":
-      self = .shitan
     case "sillage":
       self = .sillage
     case "stone":
@@ -124,8 +121,6 @@ public enum OpenAILiveInitialSessionAudioOutputParamVoiceOneOf1: RawRepresentabl
       return "alloy"
     case .ash:
       return "ash"
-    case .aube:
-      return "aube"
     case .ballad:
       return "ballad"
     case .beacon:
@@ -168,10 +163,10 @@ public enum OpenAILiveInitialSessionAudioOutputParamVoiceOneOf1: RawRepresentabl
       return "ripple"
     case .sage:
       return "sage"
+    case .shida:
+      return "shida"
     case .shimmer:
       return "shimmer"
-    case .shitan:
-      return "shitan"
     case .sillage:
       return "sillage"
     case .stone:

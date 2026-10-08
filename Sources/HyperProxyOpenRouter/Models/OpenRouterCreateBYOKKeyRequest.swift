@@ -14,6 +14,7 @@ public struct OpenRouterCreateBYOKKeyRequest: Codable, Sendable {
   public var allowedApiKeyHashes: [String]?
   public var allowedModels: [String]?
   public var allowedUserIds: [String]?
+  public var declaredRegion: OpenRouterCreateBYOKKeyRequestDeclaredRegion?
   public var declaredZdr: Bool?
   public var disabled: Bool?
   public var isByokOnly: Bool?
@@ -30,6 +31,7 @@ public struct OpenRouterCreateBYOKKeyRequest: Codable, Sendable {
     allowedApiKeyHashes: [String]? = nil,
     allowedModels: [String]? = nil,
     allowedUserIds: [String]? = nil,
+    declaredRegion: OpenRouterCreateBYOKKeyRequestDeclaredRegion? = nil,
     declaredZdr: Bool? = nil,
     disabled: Bool? = nil,
     isByokOnly: Bool? = nil,
@@ -41,6 +43,7 @@ public struct OpenRouterCreateBYOKKeyRequest: Codable, Sendable {
     self.allowedApiKeyHashes = allowedApiKeyHashes
     self.allowedModels = allowedModels
     self.allowedUserIds = allowedUserIds
+    self.declaredRegion = declaredRegion
     self.declaredZdr = declaredZdr
     self.disabled = disabled
     self.isByokOnly = isByokOnly
@@ -56,6 +59,7 @@ public struct OpenRouterCreateBYOKKeyRequest: Codable, Sendable {
     case allowedApiKeyHashes = "allowed_api_key_hashes"
     case allowedModels = "allowed_models"
     case allowedUserIds = "allowed_user_ids"
+    case declaredRegion = "declared_region"
     case declaredZdr = "declared_zdr"
     case disabled
     case isByokOnly = "is_byok_only"

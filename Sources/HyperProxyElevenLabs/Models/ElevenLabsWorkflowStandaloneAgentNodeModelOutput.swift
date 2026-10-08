@@ -12,6 +12,7 @@ import HyperProxyCore
 
 public struct ElevenLabsWorkflowStandaloneAgentNodeModelOutput: Codable, Sendable {
   public var agentId: String?
+  public var branchId: String?
   public var delayMs: Int
   public var edgeOrder: [String]
   public var enableTransferredAgentFirstMessage: Bool
@@ -24,6 +25,7 @@ public struct ElevenLabsWorkflowStandaloneAgentNodeModelOutput: Codable, Sendabl
 
   public init(
     agentId: String?,
+    branchId: String?,
     delayMs: Int,
     edgeOrder: [String],
     enableTransferredAgentFirstMessage: Bool,
@@ -35,6 +37,7 @@ public struct ElevenLabsWorkflowStandaloneAgentNodeModelOutput: Codable, Sendabl
     kind: ElevenLabsStandaloneAgentKind = .standaloneAgent
   ) {
     self.agentId = agentId
+    self.branchId = branchId
     self.delayMs = delayMs
     self.edgeOrder = edgeOrder
     self.enableTransferredAgentFirstMessage = enableTransferredAgentFirstMessage
@@ -48,6 +51,7 @@ public struct ElevenLabsWorkflowStandaloneAgentNodeModelOutput: Codable, Sendabl
 
   enum CodingKeys: String, CodingKey {
     case agentId = "agent_id"
+    case branchId = "branch_id"
     case delayMs = "delay_ms"
     case edgeOrder = "edge_order"
     case enableTransferredAgentFirstMessage = "enable_transferred_agent_first_message"

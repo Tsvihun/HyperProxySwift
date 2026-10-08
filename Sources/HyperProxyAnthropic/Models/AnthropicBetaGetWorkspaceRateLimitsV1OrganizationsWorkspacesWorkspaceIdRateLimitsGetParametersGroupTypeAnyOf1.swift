@@ -10,14 +10,6 @@
 import Foundation
 import HyperProxyCore
 
-public enum
-  AnthropicBetaGetWorkspaceRateLimitsV1OrganizationsWorkspacesWorkspaceIdRateLimitsGetParametersGroupTypeAnyOf1:
-    String, Codable, Hashable, Sendable
-{
-  case batch = "batch"
-  case files = "files"
-  case modelGroup = "model_group"
-  case skills = "skills"
-  case tokenCount = "token_count"
-  case webSearch = "web_search"
-}
+public typealias
+  AnthropicBetaGetWorkspaceRateLimitsV1OrganizationsWorkspacesWorkspaceIdRateLimitsGetParametersGroupTypeAnyOf1 =
+  AnthropicBetaGetWorkspaceRateLimitsV1OrganizationsWorkspacesWorkspaceIdRateLimitsGetParametersGroupType

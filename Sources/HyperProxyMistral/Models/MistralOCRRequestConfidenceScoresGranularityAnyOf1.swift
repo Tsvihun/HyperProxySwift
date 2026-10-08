@@ -10,9 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum MistralOCRRequestConfidenceScoresGranularityAnyOf1: String, Codable, Hashable, Sendable
-{
-  case word = "word"
-  case page = "page"
-  case block = "block"
-}
+public typealias MistralOCRRequestConfidenceScoresGranularityAnyOf1 =
+  MistralOCRRequestConfidenceScoresGranularity

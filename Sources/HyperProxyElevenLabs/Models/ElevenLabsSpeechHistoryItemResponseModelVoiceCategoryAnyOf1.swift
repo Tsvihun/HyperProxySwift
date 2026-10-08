@@ -10,11 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsSpeechHistoryItemResponseModelVoiceCategoryAnyOf1: String, Codable, Hashable,
-  Sendable
-{
-  case premade = "premade"
-  case cloned = "cloned"
-  case generated = "generated"
-  case professional = "professional"
-}
+public typealias ElevenLabsSpeechHistoryItemResponseModelVoiceCategoryAnyOf1 =
+  ElevenLabsSpeechHistoryItemResponseModelVoiceCategory

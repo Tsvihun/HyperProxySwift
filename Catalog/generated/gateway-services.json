@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "providerCatalogSHA256": "8f93f87ac682163771819da1f5303a024e304b74ab96677309e7e6e5ff1c0872",
+  "providerCatalogSHA256": "cf02053c674e77c5b815140853f0a14aaa1a5c7c9b7dc6b5168383c6a042c8f6",
   "providers": [
     {
       "id": "openai",
@@ -21,7 +21,7 @@
         "v1/embeddings",
         "v1/moderations"
       ],
-      "routeCount": 355
+      "routeCount": 357
     },
     {
       "id": "anthropic",
@@ -109,7 +109,7 @@
       "defaultAllowedPaths": [
         "api/v1/"
       ],
-      "routeCount": 150
+      "routeCount": 152
     },
     {
       "id": "perplexity",
@@ -231,7 +231,7 @@
         "workflows/",
         "v1/"
       ],
-      "routeCount": 97
+      "routeCount": 98
     },
     {
       "id": "bfl",
@@ -268,7 +268,7 @@
       "defaultAllowedPaths": [
         "v1/"
       ],
-      "routeCount": 407
+      "routeCount": 415
     },
     {
       "id": "eachai",

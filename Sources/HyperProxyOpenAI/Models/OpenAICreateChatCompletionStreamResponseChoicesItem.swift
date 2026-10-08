@@ -18,8 +18,8 @@ public struct OpenAICreateChatCompletionStreamResponseChoicesItem: Codable, Send
 
   public init(
     delta: OpenAIChatCompletionStreamResponseDelta,
-    finishReason: OpenAICreateChatCompletionStreamResponseChoicesItemFinishReason?,
     index: Int,
+    finishReason: OpenAICreateChatCompletionStreamResponseChoicesItemFinishReason? = nil,
     logprobs: OpenAICreateChatCompletionStreamResponseChoicesItemLogprobs? = nil
   ) {
     self.delta = delta

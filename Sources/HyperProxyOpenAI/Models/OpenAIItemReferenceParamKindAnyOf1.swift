@@ -10,6 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public enum OpenAIItemReferenceParamKindAnyOf1: String, Codable, Hashable, Sendable {
-  case itemReference = "item_reference"
-}
+public typealias OpenAIItemReferenceParamKindAnyOf1 = OpenAIItemReferenceParamKind

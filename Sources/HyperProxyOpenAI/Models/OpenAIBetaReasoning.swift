@@ -11,18 +11,18 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIBetaReasoning: Codable, Sendable {
-  public var context: OpenAIBetaReasoningContextAnyOf1?
+  public var context: OpenAIBetaReasoningContext?
   public var effort: OpenAIBetaReasoningEffort?
-  public var generateSummary: OpenAIBetaReasoningGenerateSummaryAnyOf1?
+  public var generateSummary: OpenAIBetaReasoningGenerateSummary?
   public var mode: OpenAIBetaReasoningModeEnum?
-  public var summary: OpenAIBetaReasoningSummaryAnyOf1?
+  public var summary: OpenAIBetaReasoningSummary?
 
   public init(
-    context: OpenAIBetaReasoningContextAnyOf1? = nil,
+    context: OpenAIBetaReasoningContext? = nil,
     effort: OpenAIBetaReasoningEffort? = nil,
-    generateSummary: OpenAIBetaReasoningGenerateSummaryAnyOf1? = nil,
+    generateSummary: OpenAIBetaReasoningGenerateSummary? = nil,
     mode: OpenAIBetaReasoningModeEnum? = nil,
-    summary: OpenAIBetaReasoningSummaryAnyOf1? = nil
+    summary: OpenAIBetaReasoningSummary? = nil
   ) {
     self.context = context
     self.effort = effort

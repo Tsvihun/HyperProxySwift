@@ -10,8 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsDirectPublishingReadResponseModelCurrencyAnyOf1: String, Codable, Hashable,
-  Sendable
-{
-  case usd = "usd"
-}
+public typealias ElevenLabsDirectPublishingReadResponseModelCurrencyAnyOf1 =
+  ElevenLabsDirectPublishingReadResponseModelCurrency

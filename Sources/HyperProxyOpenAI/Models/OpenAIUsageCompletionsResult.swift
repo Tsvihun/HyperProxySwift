@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct OpenAIUsageCompletionsResult: Codable, Sendable {
   public var apiKeyId: String?
-  public var apiSource: OpenAIUsageCompletionsResultApiSourceAnyOf1?
+  public var apiSource: OpenAIUsageCompletionsResultApiSource?
   public var batch: Bool?
   public var inputAudioTokens: Int?
   public var inputCacheWrite12hTokens: Int?
@@ -42,7 +42,7 @@ public struct OpenAIUsageCompletionsResult: Codable, Sendable {
     object: OpenAIUsageCompletionsResultObject,
     outputTokens: Int,
     apiKeyId: String? = nil,
-    apiSource: OpenAIUsageCompletionsResultApiSourceAnyOf1? = nil,
+    apiSource: OpenAIUsageCompletionsResultApiSource? = nil,
     batch: Bool? = nil,
     inputAudioTokens: Int? = nil,
     inputCacheWrite12hTokens: Int? = nil,

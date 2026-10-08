@@ -15,7 +15,7 @@ public struct ElevenLabsBodySpeechToSpeechStreamingV1SpeechToSpeechVoiceIdStream
 {
   public var audio: String
   public var fileFormat:
-    ElevenLabsBodySpeechToSpeechStreamingV1SpeechToSpeechVoiceIdStreamPostFileFormatAnyOf1?
+    ElevenLabsBodySpeechToSpeechStreamingV1SpeechToSpeechVoiceIdStreamPostFileFormat?
   public var modelId: String?
   public var removeBackgroundNoise: Bool?
   public var seed: Int?
@@ -23,8 +23,8 @@ public struct ElevenLabsBodySpeechToSpeechStreamingV1SpeechToSpeechVoiceIdStream
 
   public init(
     audio: String,
-    fileFormat:
-      ElevenLabsBodySpeechToSpeechStreamingV1SpeechToSpeechVoiceIdStreamPostFileFormatAnyOf1? = nil,
+    fileFormat: ElevenLabsBodySpeechToSpeechStreamingV1SpeechToSpeechVoiceIdStreamPostFileFormat? =
+      nil,
     modelId: String? = nil,
     removeBackgroundNoise: Bool? = nil,
     seed: Int? = nil,

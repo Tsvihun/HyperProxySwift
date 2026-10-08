@@ -23,14 +23,14 @@ public struct ElevenLabsVoiceResponseModel: Codable, Sendable {
   public var isLegacy: Bool?
   public var isMixed: Bool?
   public var isOwner: Bool?
-  public var labellingStatus: ElevenLabsVoiceResponseModelLabellingStatusAnyOf1?
+  public var labellingStatus: ElevenLabsVoiceResponseModelLabellingStatus?
   public var labels: [String: String]
   public var name: String
   public var permissionOnResource: String?
   public var previewUrl: String?
-  public var recordingQuality: ElevenLabsVoiceResponseModelRecordingQualityAnyOf1?
+  public var recordingQuality: ElevenLabsVoiceResponseModelRecordingQuality?
   public var recordingQualityReason: String?
-  public var safetyControl: ElevenLabsVoiceResponseModelSafetyControlAnyOf1?
+  public var safetyControl: ElevenLabsVoiceResponseModelSafetyControl?
   public var samples: [ElevenLabsSampleResponseModel]?
   public var settings: ElevenLabsVoiceSettingsResponseModel?
   public var sharing: ElevenLabsVoiceSharingResponseModel?
@@ -54,12 +54,12 @@ public struct ElevenLabsVoiceResponseModel: Codable, Sendable {
     isLegacy: Bool? = nil,
     isMixed: Bool? = nil,
     isOwner: Bool? = nil,
-    labellingStatus: ElevenLabsVoiceResponseModelLabellingStatusAnyOf1? = nil,
+    labellingStatus: ElevenLabsVoiceResponseModelLabellingStatus? = nil,
     permissionOnResource: String? = nil,
     previewUrl: String? = nil,
-    recordingQuality: ElevenLabsVoiceResponseModelRecordingQualityAnyOf1? = nil,
+    recordingQuality: ElevenLabsVoiceResponseModelRecordingQuality? = nil,
     recordingQualityReason: String? = nil,
-    safetyControl: ElevenLabsVoiceResponseModelSafetyControlAnyOf1? = nil,
+    safetyControl: ElevenLabsVoiceResponseModelSafetyControl? = nil,
     samples: [ElevenLabsSampleResponseModel]? = nil,
     settings: ElevenLabsVoiceSettingsResponseModel? = nil,
     sharing: ElevenLabsVoiceSharingResponseModel? = nil,

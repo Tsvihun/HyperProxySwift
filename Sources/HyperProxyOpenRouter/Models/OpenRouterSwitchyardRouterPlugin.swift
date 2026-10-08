@@ -13,17 +13,21 @@ import HyperProxyCore
 public struct OpenRouterSwitchyardRouterPlugin: Codable, Sendable {
   public var algorithm: OpenRouterSwitchyardRouterPluginAlgorithm?
   public var id: OpenRouterSwitchyardRouterPluginId
+  public var judgeModel: String?
 
   public init(
     id: OpenRouterSwitchyardRouterPluginId,
-    algorithm: OpenRouterSwitchyardRouterPluginAlgorithm? = nil
+    algorithm: OpenRouterSwitchyardRouterPluginAlgorithm? = nil,
+    judgeModel: String? = nil
   ) {
     self.algorithm = algorithm
     self.id = id
+    self.judgeModel = judgeModel
   }
 
   enum CodingKeys: String, CodingKey {
     case algorithm
     case id
+    case judgeModel = "judge_model"
   }
 }

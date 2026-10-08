@@ -12,11 +12,16 @@ import HyperProxyCore
 
 public enum ElevenLabsTransferToAgentToolResultSuccessModelInputBranchInfoAnyOf1: Codable, Sendable
 {
+  case transferBranchInfoConfigured(ElevenLabsTransferBranchInfoConfigured)
   case transferBranchInfoTrafficSplit(ElevenLabsTransferBranchInfoTrafficSplit)
   case transferBranchInfoDefaultingToMain(ElevenLabsTransferBranchInfoDefaultingToMain)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(ElevenLabsTransferBranchInfoConfigured.self) {
+      self = .transferBranchInfoConfigured(value)
+      return
+    }
     if let value = try? container.decode(ElevenLabsTransferBranchInfoTrafficSplit.self) {
       self = .transferBranchInfoTrafficSplit(value)
       return
@@ -28,6 +33,8 @@ public enum ElevenLabsTransferToAgentToolResultSuccessModelInputBranchInfoAnyOf1
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
+    case .transferBranchInfoConfigured(let value):
+      try container.encode(value)
     case .transferBranchInfoTrafficSplit(let value):
       try container.encode(value)
     case .transferBranchInfoDefaultingToMain(let value):

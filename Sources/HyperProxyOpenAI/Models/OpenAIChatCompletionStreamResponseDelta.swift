@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIChatCompletionStreamResponseDelta: Codable, Sendable {
+  public var audio: OpenAIChatCompletionStreamResponseDeltaAudio?
   public var content: String?
   public var functionCall: OpenAIChatCompletionStreamResponseDeltaFunctionCall?
   public var reasoningContent: String?
@@ -19,6 +20,7 @@ public struct OpenAIChatCompletionStreamResponseDelta: Codable, Sendable {
   public var toolCalls: [OpenAIChatCompletionMessageToolCallChunk]?
 
   public init(
+    audio: OpenAIChatCompletionStreamResponseDeltaAudio? = nil,
     content: String? = nil,
     functionCall: OpenAIChatCompletionStreamResponseDeltaFunctionCall? = nil,
     reasoningContent: String? = nil,
@@ -26,6 +28,7 @@ public struct OpenAIChatCompletionStreamResponseDelta: Codable, Sendable {
     role: OpenAIChatCompletionStreamResponseDeltaRole? = nil,
     toolCalls: [OpenAIChatCompletionMessageToolCallChunk]? = nil
   ) {
+    self.audio = audio
     self.content = content
     self.functionCall = functionCall
     self.reasoningContent = reasoningContent
@@ -35,6 +38,7 @@ public struct OpenAIChatCompletionStreamResponseDelta: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case audio
     case content
     case functionCall = "function_call"
     case reasoningContent = "reasoning_content"

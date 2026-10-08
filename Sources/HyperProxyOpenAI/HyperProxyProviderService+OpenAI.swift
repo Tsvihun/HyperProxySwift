@@ -385,6 +385,10 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
   public var conversationsItemsRetrieve: HyperProxyProviderCall<OpenAIOperation> {
     self.call(.conversationsItemsRetrieve)
   }
+  /// `POST v1/decisions`
+  public var createDecision: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.createDecision)
+  }
   /// `POST v1/embeddings`
   public var embeddingsCreate: HyperProxyProviderCall<OpenAIOperation> {
     self.call(.embeddingsCreate)
@@ -824,6 +828,10 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
   /// `GET v1/vaults/{vault_id}`
   public var retrieveVault: HyperProxyProviderCall<OpenAIOperation> {
     self.call(.retrieveVault)
+  }
+  /// `POST v1/vaults/{vault_id}`
+  public var updateVault: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.updateVault)
   }
   /// `GET v1/vaults/{vault_id}/credentials`
   public var listVaultCredentials: HyperProxyProviderCall<OpenAIOperation> {

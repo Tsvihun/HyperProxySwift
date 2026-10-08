@@ -10,9 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsGetPronunciationDictionariesMetadataParametersSortAnyOf1: String, Codable,
-  Hashable, Sendable
-{
-  case creationTimeUnix = "creation_time_unix"
-  case name = "name"
-}
+public typealias ElevenLabsGetPronunciationDictionariesMetadataParametersSortAnyOf1 =
+  ElevenLabsGetPronunciationDictionariesMetadataParametersSort

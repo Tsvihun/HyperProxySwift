@@ -10,7 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public enum ElevenLabsCaptionStyleModelTextStyleAnyOf1: String, Codable, Hashable, Sendable {
-  case normal = "normal"
-  case italic = "italic"
-}
+public typealias ElevenLabsCaptionStyleModelTextStyleAnyOf1 = ElevenLabsCaptionStyleModelTextStyle

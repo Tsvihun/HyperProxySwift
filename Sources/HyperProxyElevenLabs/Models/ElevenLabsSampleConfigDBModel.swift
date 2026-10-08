@@ -14,13 +14,13 @@ public struct ElevenLabsSampleConfigDBModel: Codable, Sendable {
   public var chapterIds: [String]?
   public var isSample: Bool?
   public var parentId: String?
-  public var parentType: ElevenLabsSampleConfigDBModelParentTypeAnyOf1?
+  public var parentType: ElevenLabsSampleConfigDBModelParentType?
 
   public init(
     chapterIds: [String]? = nil,
     isSample: Bool? = nil,
     parentId: String? = nil,
-    parentType: ElevenLabsSampleConfigDBModelParentTypeAnyOf1? = nil
+    parentType: ElevenLabsSampleConfigDBModelParentType? = nil
   ) {
     self.chapterIds = chapterIds
     self.isSample = isSample

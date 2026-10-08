@@ -30,7 +30,7 @@ public struct OpenAICreateChatCompletionRequest: Codable, Sendable {
   public var presencePenalty: Double?
   public var promptCacheKey: String?
   public var promptCacheOptions: OpenAIPromptCacheOptionsParam?
-  public var promptCacheRetention: OpenAIModelResponsePropertiesPromptCacheRetentionAnyOf1?
+  public var promptCacheRetention: OpenAIModelResponsePropertiesPromptCacheRetention?
   public var reasoningEffort: OpenAIReasoningEffort?
   public var responseFormat: OpenAICreateChatCompletionRequestAllOf2ResponseFormat?
   public var safetyIdentifier: String?
@@ -69,7 +69,7 @@ public struct OpenAICreateChatCompletionRequest: Codable, Sendable {
     presencePenalty: Double? = nil,
     promptCacheKey: String? = nil,
     promptCacheOptions: OpenAIPromptCacheOptionsParam? = nil,
-    promptCacheRetention: OpenAIModelResponsePropertiesPromptCacheRetentionAnyOf1? = nil,
+    promptCacheRetention: OpenAIModelResponsePropertiesPromptCacheRetention? = nil,
     reasoningEffort: OpenAIReasoningEffort? = nil,
     responseFormat: OpenAICreateChatCompletionRequestAllOf2ResponseFormat? = nil,
     safetyIdentifier: String? = nil,

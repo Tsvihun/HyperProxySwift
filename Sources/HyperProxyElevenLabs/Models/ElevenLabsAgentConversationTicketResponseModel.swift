@@ -20,11 +20,13 @@ public struct ElevenLabsAgentConversationTicketResponseModel: Codable, Sendable 
   public var issueType: ElevenLabsAgentConversationTicketIssueType?
   public var labels: [String]
   public var lastSeenUnixSecs: Int?
+  public var mergedIntoTicketId: String?
   public var needsClustering: Bool
   public var ownerUserId: String
   public var priority: ElevenLabsAgentConversationTicketPriority?
   public var priorityChanges: [ElevenLabsTicketPriorityChangeResponseModel]
   public var qaComment: String?
+  public var searchMatch: ElevenLabsTicketSearchMatchResponseModel?
   public var source: ElevenLabsAgentConversationTicketSource
   public var status: ElevenLabsAgentConversationTicketStatus
   public var ticketComments: [ElevenLabsTicketCommentResponseModel]
@@ -54,7 +56,9 @@ public struct ElevenLabsAgentConversationTicketResponseModel: Codable, Sendable 
     title: String?,
     turnComments: [ElevenLabsTurnCommentResponseModel],
     updatedAtUnixSecs: Int,
-    workspaceId: String
+    workspaceId: String,
+    mergedIntoTicketId: String? = nil,
+    searchMatch: ElevenLabsTicketSearchMatchResponseModel? = nil
   ) {
     self.agentId = agentId
     self.agentqaTicketId = agentqaTicketId
@@ -65,11 +69,13 @@ public struct ElevenLabsAgentConversationTicketResponseModel: Codable, Sendable 
     self.issueType = issueType
     self.labels = labels
     self.lastSeenUnixSecs = lastSeenUnixSecs
+    self.mergedIntoTicketId = mergedIntoTicketId
     self.needsClustering = needsClustering
     self.ownerUserId = ownerUserId
     self.priority = priority
     self.priorityChanges = priorityChanges
     self.qaComment = qaComment
+    self.searchMatch = searchMatch
     self.source = source
     self.status = status
     self.ticketComments = ticketComments
@@ -89,11 +95,13 @@ public struct ElevenLabsAgentConversationTicketResponseModel: Codable, Sendable 
     case issueType = "issue_type"
     case labels
     case lastSeenUnixSecs = "last_seen_unix_secs"
+    case mergedIntoTicketId = "merged_into_ticket_id"
     case needsClustering = "needs_clustering"
     case ownerUserId = "owner_user_id"
     case priority
     case priorityChanges = "priority_changes"
     case qaComment = "qa_comment"
+    case searchMatch = "search_match"
     case source
     case status
     case ticketComments = "ticket_comments"

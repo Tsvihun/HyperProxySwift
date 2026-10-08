@@ -10,8 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public enum OpenAIReasoningContextAnyOf1: String, Codable, Hashable, Sendable {
-  case auto = "auto"
-  case currentTurn = "current_turn"
-  case allTurns = "all_turns"
-}
+public typealias OpenAIReasoningContextAnyOf1 = OpenAIReasoningContext

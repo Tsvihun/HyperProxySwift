@@ -24,16 +24,16 @@ public struct ElevenLabsCaptionStyleModel: Codable, Sendable {
   public var maxWordsPerLine: Int?
   public var sectionAnimation: ElevenLabsCaptionStyleSectionAnimationModel?
   public var template: ElevenLabsCaptionStyleTemplateModel?
-  public var textAlign: ElevenLabsCaptionStyleModelTextAlignAnyOf1?
-  public var textBlendMode: ElevenLabsCaptionStyleModelTextBlendModeAnyOf1?
+  public var textAlign: ElevenLabsCaptionStyleModelTextAlign?
+  public var textBlendMode: ElevenLabsCaptionStyleModelTextBlendMode?
   public var textColor: String?
   public var textFont: String?
   public var textOutline: ElevenLabsStudioTextStyleOutlineModel?
   public var textScale: Double?
   public var textShadow: ElevenLabsStudioTextStyleShadowModel?
-  public var textStyle: ElevenLabsCaptionStyleModelTextStyleAnyOf1?
-  public var textTransform: ElevenLabsCaptionStyleModelTextTransformAnyOf1?
-  public var textWeight: ElevenLabsCaptionStyleModelTextWeightAnyOf1?
+  public var textStyle: ElevenLabsCaptionStyleModelTextStyle?
+  public var textTransform: ElevenLabsCaptionStyleModelTextTransform?
+  public var textWeight: ElevenLabsCaptionStyleModelTextWeight?
   public var verticalPlacement: ElevenLabsCaptionStyleVerticalPlacementModel?
   public var widthPct: Double?
   public var wordAnimation: ElevenLabsCaptionStyleWordAnimationModel?
@@ -58,16 +58,16 @@ public struct ElevenLabsCaptionStyleModel: Codable, Sendable {
     maxWordsPerLine: Int? = nil,
     sectionAnimation: ElevenLabsCaptionStyleSectionAnimationModel? = nil,
     template: ElevenLabsCaptionStyleTemplateModel? = nil,
-    textAlign: ElevenLabsCaptionStyleModelTextAlignAnyOf1? = nil,
-    textBlendMode: ElevenLabsCaptionStyleModelTextBlendModeAnyOf1? = nil,
+    textAlign: ElevenLabsCaptionStyleModelTextAlign? = nil,
+    textBlendMode: ElevenLabsCaptionStyleModelTextBlendMode? = nil,
     textColor: String? = nil,
     textFont: String? = nil,
     textOutline: ElevenLabsStudioTextStyleOutlineModel? = nil,
     textScale: Double? = nil,
     textShadow: ElevenLabsStudioTextStyleShadowModel? = nil,
-    textStyle: ElevenLabsCaptionStyleModelTextStyleAnyOf1? = nil,
-    textTransform: ElevenLabsCaptionStyleModelTextTransformAnyOf1? = nil,
-    textWeight: ElevenLabsCaptionStyleModelTextWeightAnyOf1? = nil,
+    textStyle: ElevenLabsCaptionStyleModelTextStyle? = nil,
+    textTransform: ElevenLabsCaptionStyleModelTextTransform? = nil,
+    textWeight: ElevenLabsCaptionStyleModelTextWeight? = nil,
     verticalPlacement: ElevenLabsCaptionStyleVerticalPlacementModel? = nil,
     widthPct: Double? = nil,
     wordAnimation: ElevenLabsCaptionStyleWordAnimationModel? = nil,

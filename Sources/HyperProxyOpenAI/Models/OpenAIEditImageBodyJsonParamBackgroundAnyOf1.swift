@@ -10,8 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public enum OpenAIEditImageBodyJsonParamBackgroundAnyOf1: String, Codable, Hashable, Sendable {
-  case transparent = "transparent"
-  case opaque = "opaque"
-  case auto = "auto"
-}
+public typealias OpenAIEditImageBodyJsonParamBackgroundAnyOf1 =
+  OpenAIEditImageBodyJsonParamBackground

@@ -18,7 +18,7 @@ public struct ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionari
   public var rules:
     [ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionariesAddFromRulesPostRulesItem]
   public var workspaceAccess:
-    ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionariesAddFromRulesPostWorkspaceAccessAnyOf1?
+    ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionariesAddFromRulesPostWorkspaceAccess?
 
   public init(
     name: String,
@@ -26,7 +26,7 @@ public struct ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionari
       [ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionariesAddFromRulesPostRulesItem],
     description: String? = nil,
     workspaceAccess:
-      ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionariesAddFromRulesPostWorkspaceAccessAnyOf1? =
+      ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionariesAddFromRulesPostWorkspaceAccess? =
       nil
   ) {
     self.description = description
