@@ -14,6 +14,10 @@ public enum PerplexityInputItem: Codable, Sendable {
   case inputMessage(PerplexityInputMessage)
   case functionCallOutputInput(PerplexityFunctionCallOutputInput)
   case functionCallInput(PerplexityFunctionCallInput)
+  case mcpApprovalResponseInput(PerplexityMcpApprovalResponseInput)
+  case mcpApprovalRequestInput(PerplexityMcpApprovalRequestInput)
+  case mcpCallInput(PerplexityMcpCallInput)
+  case mcpListToolsInput(PerplexityMcpListToolsInput)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -25,7 +29,23 @@ public enum PerplexityInputItem: Codable, Sendable {
       self = .functionCallOutputInput(value)
       return
     }
-    self = .functionCallInput(try container.decode(PerplexityFunctionCallInput.self))
+    if let value = try? container.decode(PerplexityFunctionCallInput.self) {
+      self = .functionCallInput(value)
+      return
+    }
+    if let value = try? container.decode(PerplexityMcpApprovalResponseInput.self) {
+      self = .mcpApprovalResponseInput(value)
+      return
+    }
+    if let value = try? container.decode(PerplexityMcpApprovalRequestInput.self) {
+      self = .mcpApprovalRequestInput(value)
+      return
+    }
+    if let value = try? container.decode(PerplexityMcpCallInput.self) {
+      self = .mcpCallInput(value)
+      return
+    }
+    self = .mcpListToolsInput(try container.decode(PerplexityMcpListToolsInput.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -36,6 +56,14 @@ public enum PerplexityInputItem: Codable, Sendable {
     case .functionCallOutputInput(let value):
       try container.encode(value)
     case .functionCallInput(let value):
+      try container.encode(value)
+    case .mcpApprovalResponseInput(let value):
+      try container.encode(value)
+    case .mcpApprovalRequestInput(let value):
+      try container.encode(value)
+    case .mcpCallInput(let value):
+      try container.encode(value)
+    case .mcpListToolsInput(let value):
       try container.encode(value)
     }
   }

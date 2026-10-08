@@ -86,7 +86,7 @@ generation tooling as part of the public package.
 Typed layers should be generated from official machine-readable schemas when available and
 hand-refined only where Swift ergonomics require it.
 
-The checked-in source artifact contains 18,566 generated provider types (including compatibility aliases) with 44,258 named fields and
+The checked-in source artifact contains 18,581 generated provider types (including compatibility aliases) with 44,300 named fields and
 2,111 typed operation bindings from official machine-readable or reviewed schemas spanning all 18
 provider families. DeepSeek's Responses, Chat/FIM, Models, Balance, and Anthropic-compatible
 surfaces are modeled from reviewed official documentation. Each AI uses both of its official

@@ -21,6 +21,7 @@ public enum PerplexityOutputItem: Codable, Sendable {
   case sandboxResultsOutputItem(PerplexitySandboxResultsOutputItem)
   case mcpListToolsOutputItem(PerplexityMcpListToolsOutputItem)
   case mcpCallOutputItem(PerplexityMcpCallOutputItem)
+  case mcpApprovalRequestOutputItem(PerplexityMcpApprovalRequestOutputItem)
   case toolSearchOutputItem(PerplexityToolSearchOutputItem)
 
   public init(from decoder: any Decoder) throws {
@@ -65,6 +66,10 @@ public enum PerplexityOutputItem: Codable, Sendable {
       self = .mcpCallOutputItem(value)
       return
     }
+    if let value = try? container.decode(PerplexityMcpApprovalRequestOutputItem.self) {
+      self = .mcpApprovalRequestOutputItem(value)
+      return
+    }
     self = .toolSearchOutputItem(try container.decode(PerplexityToolSearchOutputItem.self))
   }
 
@@ -90,6 +95,8 @@ public enum PerplexityOutputItem: Codable, Sendable {
     case .mcpListToolsOutputItem(let value):
       try container.encode(value)
     case .mcpCallOutputItem(let value):
+      try container.encode(value)
+    case .mcpApprovalRequestOutputItem(let value):
       try container.encode(value)
     case .toolSearchOutputItem(let value):
       try container.encode(value)

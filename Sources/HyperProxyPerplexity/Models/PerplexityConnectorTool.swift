@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct PerplexityConnectorTool: Codable, Sendable {
   public var allowedTools: [String]?
   public var id: String
+  public var requireApproval: PerplexityRequireApproval?
   public var serverDescription: String?
   public var serverLabel: String
   public var kind: PerplexityConnectorToolKind
@@ -22,10 +23,12 @@ public struct PerplexityConnectorTool: Codable, Sendable {
     serverLabel: String,
     kind: PerplexityConnectorToolKind,
     allowedTools: [String]? = nil,
+    requireApproval: PerplexityRequireApproval? = nil,
     serverDescription: String? = nil
   ) {
     self.allowedTools = allowedTools
     self.id = id
+    self.requireApproval = requireApproval
     self.serverDescription = serverDescription
     self.serverLabel = serverLabel
     self.kind = kind
@@ -34,6 +37,7 @@ public struct PerplexityConnectorTool: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case allowedTools = "allowed_tools"
     case id
+    case requireApproval = "require_approval"
     case serverDescription = "server_description"
     case serverLabel = "server_label"
     case kind = "type"

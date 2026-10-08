@@ -1,5 +1,5 @@
 //
-//  PerplexityMcpCallOutputItem.swift
+//  PerplexityMcpCallInput.swift
 //  HyperProxySwift
 //
 //  Created by HyperProxy on 13.09.2026.
@@ -10,7 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public struct PerplexityMcpCallOutputItem: Codable, Sendable {
+public struct PerplexityMcpCallInput: Codable, Sendable {
   public var approvalRequestId: String?
   public var arguments: String
   public var connectorId: String?
@@ -19,14 +19,14 @@ public struct PerplexityMcpCallOutputItem: Codable, Sendable {
   public var name: String
   public var output: String?
   public var serverLabel: String
-  public var kind: PerplexityMcpCallOutputItemKind
+  public var kind: PerplexityMcpCallInputKind
 
   public init(
     arguments: String,
     id: String,
     name: String,
     serverLabel: String,
-    kind: PerplexityMcpCallOutputItemKind,
+    kind: PerplexityMcpCallInputKind,
     approvalRequestId: String? = nil,
     connectorId: String? = nil,
     error: String? = nil,

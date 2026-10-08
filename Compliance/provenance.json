@@ -368,7 +368,7 @@
     "perplexity/openapi": {
       "kind": "openapi",
       "sourceURL": "https://docs.perplexity.ai/openapi.json",
-      "snapshotSha256": "904516802d5cd516eab6fdb67b4dccee27c5200077d45c634d0de8e8a786256c",
+      "snapshotSha256": "68dd85609215b2f5eafb48ea67c8cff8dc7bdb02b675f2f9d84cedc00104a594",
       "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://docs.perplexity.ai/openapi.json",
       "noticeFiles": [],
@@ -672,7 +672,7 @@
     },
     {
       "module": "HyperProxyPerplexity",
-      "artifactSha256": "2e5ba03a60a7f99203f2392059e0910695e62da10e7c1357dd3285e08c2295c5",
+      "artifactSha256": "a397d4101c7f2dd7e996ca1494d9b9a5947d39eaeee66edf708f1afcb4ba192d",
       "reviewStatus": "pending",
       "sourceIDs": [
         "perplexity/openapi"

@@ -15,6 +15,7 @@ public struct PerplexityMcpTool: Codable, Sendable {
   public var authorization: String?
   public var deferLoading: Bool?
   public var headers: [String: String]?
+  public var requireApproval: PerplexityRequireApproval?
   public var serverLabel: String
   public var serverUrl: String
   public var kind: PerplexityMcpToolKind
@@ -26,12 +27,14 @@ public struct PerplexityMcpTool: Codable, Sendable {
     allowedTools: [String]? = nil,
     authorization: String? = nil,
     deferLoading: Bool? = nil,
-    headers: [String: String]? = nil
+    headers: [String: String]? = nil,
+    requireApproval: PerplexityRequireApproval? = nil
   ) {
     self.allowedTools = allowedTools
     self.authorization = authorization
     self.deferLoading = deferLoading
     self.headers = headers
+    self.requireApproval = requireApproval
     self.serverLabel = serverLabel
     self.serverUrl = serverUrl
     self.kind = kind
@@ -42,6 +45,7 @@ public struct PerplexityMcpTool: Codable, Sendable {
     case authorization
     case deferLoading = "defer_loading"
     case headers
+    case requireApproval = "require_approval"
     case serverLabel = "server_label"
     case serverUrl = "server_url"
     case kind = "type"

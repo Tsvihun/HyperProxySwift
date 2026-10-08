@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct PerplexityMcpToolDef: Codable, Sendable {
+  public var annotations: PerplexityMcpToolDefAnnotations?
   public var description: String?
   public var inputSchema: [String: HyperProxyJSONValue]
   public var name: String
@@ -18,14 +19,17 @@ public struct PerplexityMcpToolDef: Codable, Sendable {
   public init(
     inputSchema: [String: HyperProxyJSONValue],
     name: String,
+    annotations: PerplexityMcpToolDefAnnotations? = nil,
     description: String? = nil
   ) {
+    self.annotations = annotations
     self.description = description
     self.inputSchema = inputSchema
     self.name = name
   }
 
   enum CodingKeys: String, CodingKey {
+    case annotations
     case description
     case inputSchema = "input_schema"
     case name

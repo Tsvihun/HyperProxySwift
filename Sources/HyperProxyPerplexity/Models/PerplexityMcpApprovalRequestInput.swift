@@ -1,5 +1,5 @@
 //
-//  PerplexityMcpCallOutputItem.swift
+//  PerplexityMcpApprovalRequestInput.swift
 //  HyperProxySwift
 //
 //  Created by HyperProxy on 13.09.2026.
@@ -10,48 +10,40 @@
 import Foundation
 import HyperProxyCore
 
-public struct PerplexityMcpCallOutputItem: Codable, Sendable {
-  public var approvalRequestId: String?
+public struct PerplexityMcpApprovalRequestInput: Codable, Sendable {
   public var arguments: String
   public var connectorId: String?
-  public var error: String?
   public var id: String
   public var name: String
-  public var output: String?
   public var serverLabel: String
-  public var kind: PerplexityMcpCallOutputItemKind
+  public var thoughtSignature: String?
+  public var kind: PerplexityMcpApprovalRequestInputKind
 
   public init(
     arguments: String,
     id: String,
     name: String,
     serverLabel: String,
-    kind: PerplexityMcpCallOutputItemKind,
-    approvalRequestId: String? = nil,
+    kind: PerplexityMcpApprovalRequestInputKind,
     connectorId: String? = nil,
-    error: String? = nil,
-    output: String? = nil
+    thoughtSignature: String? = nil
   ) {
-    self.approvalRequestId = approvalRequestId
     self.arguments = arguments
     self.connectorId = connectorId
-    self.error = error
     self.id = id
     self.name = name
-    self.output = output
     self.serverLabel = serverLabel
+    self.thoughtSignature = thoughtSignature
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case approvalRequestId = "approval_request_id"
     case arguments
     case connectorId = "connector_id"
-    case error
     case id
     case name
-    case output
     case serverLabel = "server_label"
+    case thoughtSignature = "thought_signature"
     case kind = "type"
   }
 }
