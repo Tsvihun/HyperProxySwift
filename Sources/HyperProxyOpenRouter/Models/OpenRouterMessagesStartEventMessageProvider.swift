@@ -117,6 +117,7 @@ public enum OpenRouterMessagesStartEventMessageProvider: String, Codable, Hashab
   case openAI = "OpenAI"
   case openInference = "OpenInference"
   case parasail = "Parasail"
+  case paretoAlpha = "ParetoAlpha"
   case poolside = "Poolside"
   case primeIntellect = "PrimeIntellect"
   case perceptron = "Perceptron"

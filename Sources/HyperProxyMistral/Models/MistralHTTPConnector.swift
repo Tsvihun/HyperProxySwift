@@ -11,7 +11,6 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralHTTPConnector: Codable, Sendable {
-  public var active: Bool?
   public var blockedBy: [MistralConsumerType]?
   public var connectionConfig: MistralPublicConnectionConfig?
   public var connectionCredentials: [MistralAuthenticationConfiguration]?
@@ -36,7 +35,6 @@ public struct MistralHTTPConnector: Codable, Sendable {
   public var supportedAuthMethods: [MistralPublicAuthenticationMethod]?
   public var supportsMcp: Bool
   public var systemPrompt: String?
-  public var systemPromptRoute: String?
   public var title: String?
   public var tools: [MistralConnectorTool]?
   public var visibility: MistralResourceVisibility
@@ -52,7 +50,6 @@ public struct MistralHTTPConnector: Codable, Sendable {
     supportsMcp: Bool,
     visibility: MistralResourceVisibility,
     protocolModel: MistralHttpProtocolModel = .http,
-    active: Bool? = nil,
     blockedBy: [MistralConsumerType]? = nil,
     connectionConfig: MistralPublicConnectionConfig? = nil,
     connectionCredentials: [MistralAuthenticationConfiguration]? = nil,
@@ -68,11 +65,9 @@ public struct MistralHTTPConnector: Codable, Sendable {
     serverCard: MistralMCPServerCard? = nil,
     supportedAuthMethods: [MistralPublicAuthenticationMethod]? = nil,
     systemPrompt: String? = nil,
-    systemPromptRoute: String? = nil,
     title: String? = nil,
     tools: [MistralConnectorTool]? = nil
   ) {
-    self.active = active
     self.blockedBy = blockedBy
     self.connectionConfig = connectionConfig
     self.connectionCredentials = connectionCredentials
@@ -97,14 +92,12 @@ public struct MistralHTTPConnector: Codable, Sendable {
     self.supportedAuthMethods = supportedAuthMethods
     self.supportsMcp = supportsMcp
     self.systemPrompt = systemPrompt
-    self.systemPromptRoute = systemPromptRoute
     self.title = title
     self.tools = tools
     self.visibility = visibility
   }
 
   enum CodingKeys: String, CodingKey {
-    case active
     case blockedBy = "blocked_by"
     case connectionConfig = "connection_config"
     case connectionCredentials = "connection_credentials"
@@ -129,7 +122,6 @@ public struct MistralHTTPConnector: Codable, Sendable {
     case supportedAuthMethods = "supported_auth_methods"
     case supportsMcp = "supports_mcp"
     case systemPrompt = "system_prompt"
-    case systemPromptRoute = "system_prompt_route"
     case title
     case tools
     case visibility

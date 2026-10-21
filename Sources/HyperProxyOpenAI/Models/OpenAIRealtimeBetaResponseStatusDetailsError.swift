@@ -12,18 +12,22 @@ import HyperProxyCore
 
 public struct OpenAIRealtimeBetaResponseStatusDetailsError: Codable, Sendable {
   public var code: String?
+  public var message: String?
   public var kind: String?
 
   public init(
     code: String? = nil,
+    message: String? = nil,
     kind: String? = nil
   ) {
     self.code = code
+    self.message = message
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case code
+    case message
     case kind = "type"
   }
 }

@@ -14,9 +14,13 @@ public enum OpenAILiveSidebandClientEvent: Codable, Sendable {
   case liveSessionUpdateParam(OpenAILiveSessionUpdateParam)
   case liveInputAudioMuteParam(OpenAILiveInputAudioMuteParam)
   case liveInputAudioUnmuteParam(OpenAILiveInputAudioUnmuteParam)
+  case liveOutputAudioFixturePlayParam(OpenAILiveOutputAudioFixturePlayParam)
   case liveInstructionsAppendParam(OpenAILiveInstructionsAppendParam)
   case liveThinkingAppendParam(OpenAILiveThinkingAppendParam)
   case liveCommentaryAppendParam(OpenAILiveCommentaryAppendParam)
+  case liveDecisionCreateParam(OpenAILiveDecisionCreateParam)
+  case liveDecisionItemCreateParam(OpenAILiveDecisionItemCreateParam)
+  case liveDecisionItemDeleteParam(OpenAILiveDecisionItemDeleteParam)
   case liveResponseItemCreateParam(OpenAILiveResponseItemCreateParam)
   case liveResponseCreateParam(OpenAILiveResponseCreateParam)
   case liveSessionCloseParam(OpenAILiveSessionCloseParam)
@@ -35,6 +39,10 @@ public enum OpenAILiveSidebandClientEvent: Codable, Sendable {
       self = .liveInputAudioUnmuteParam(value)
       return
     }
+    if let value = try? container.decode(OpenAILiveOutputAudioFixturePlayParam.self) {
+      self = .liveOutputAudioFixturePlayParam(value)
+      return
+    }
     if let value = try? container.decode(OpenAILiveInstructionsAppendParam.self) {
       self = .liveInstructionsAppendParam(value)
       return
@@ -45,6 +53,18 @@ public enum OpenAILiveSidebandClientEvent: Codable, Sendable {
     }
     if let value = try? container.decode(OpenAILiveCommentaryAppendParam.self) {
       self = .liveCommentaryAppendParam(value)
+      return
+    }
+    if let value = try? container.decode(OpenAILiveDecisionCreateParam.self) {
+      self = .liveDecisionCreateParam(value)
+      return
+    }
+    if let value = try? container.decode(OpenAILiveDecisionItemCreateParam.self) {
+      self = .liveDecisionItemCreateParam(value)
+      return
+    }
+    if let value = try? container.decode(OpenAILiveDecisionItemDeleteParam.self) {
+      self = .liveDecisionItemDeleteParam(value)
       return
     }
     if let value = try? container.decode(OpenAILiveResponseItemCreateParam.self) {
@@ -67,11 +87,19 @@ public enum OpenAILiveSidebandClientEvent: Codable, Sendable {
       try container.encode(value)
     case .liveInputAudioUnmuteParam(let value):
       try container.encode(value)
+    case .liveOutputAudioFixturePlayParam(let value):
+      try container.encode(value)
     case .liveInstructionsAppendParam(let value):
       try container.encode(value)
     case .liveThinkingAppendParam(let value):
       try container.encode(value)
     case .liveCommentaryAppendParam(let value):
+      try container.encode(value)
+    case .liveDecisionCreateParam(let value):
+      try container.encode(value)
+    case .liveDecisionItemCreateParam(let value):
+      try container.encode(value)
+    case .liveDecisionItemDeleteParam(let value):
       try container.encode(value)
     case .liveResponseItemCreateParam(let value):
       try container.encode(value)

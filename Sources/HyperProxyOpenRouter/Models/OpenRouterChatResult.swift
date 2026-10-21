@@ -11,12 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterChatResult: Codable, Sendable {
+  public var alignment: OpenRouterAlignment?
   public var choices: [OpenRouterChatChoice]
   public var created: Int
   public var id: String
   public var model: String
   public var object: OpenRouterChatResultObject
   public var openrouterMetadata: OpenRouterMetadata?
+  public var safeguardResults: [OpenRouterArmorSafeguardResult]?
   public var serviceTier: String?
   public var systemFingerprint: String
   public var usage: OpenRouterChatUsage?
@@ -28,28 +30,34 @@ public struct OpenRouterChatResult: Codable, Sendable {
     model: String,
     object: OpenRouterChatResultObject,
     systemFingerprint: String,
+    alignment: OpenRouterAlignment? = nil,
     openrouterMetadata: OpenRouterMetadata? = nil,
+    safeguardResults: [OpenRouterArmorSafeguardResult]? = nil,
     serviceTier: String? = nil,
     usage: OpenRouterChatUsage? = nil
   ) {
+    self.alignment = alignment
     self.choices = choices
     self.created = created
     self.id = id
     self.model = model
     self.object = object
     self.openrouterMetadata = openrouterMetadata
+    self.safeguardResults = safeguardResults
     self.serviceTier = serviceTier
     self.systemFingerprint = systemFingerprint
     self.usage = usage
   }
 
   enum CodingKeys: String, CodingKey {
+    case alignment
     case choices
     case created
     case id
     case model
     case object
     case openrouterMetadata = "openrouter_metadata"
+    case safeguardResults = "safeguard_results"
     case serviceTier = "service_tier"
     case systemFingerprint = "system_fingerprint"
     case usage

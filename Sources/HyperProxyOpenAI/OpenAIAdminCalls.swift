@@ -192,6 +192,10 @@ public struct OpenAIAdminCalls: Sendable {
   public var retrieveProjectApiKey: HyperProxyProviderCall<OpenAIOperation> {
     self.service.call(.retrieveProjectApiKey)
   }
+  /// `POST v1/organization/projects/{project_id}/api_keys/{api_key_id}`
+  public var updateProjectApiKey: HyperProxyProviderCall<OpenAIOperation> {
+    self.service.call(.updateProjectApiKey)
+  }
   /// `POST v1/organization/projects/{project_id}/archive`
   public var archiveProject: HyperProxyProviderCall<OpenAIOperation> {
     self.service.call(.archiveProject)
@@ -403,6 +407,10 @@ public struct OpenAIAdminCalls: Sendable {
   /// `GET v1/organization/usage/completions`
   public var usageCompletions: HyperProxyProviderCall<OpenAIOperation> {
     self.service.call(.usageCompletions)
+  }
+  /// `GET v1/organization/usage/decisions`
+  public var organizationDecisionsusage: HyperProxyProviderCall<OpenAIOperation> {
+    self.service.call(.organizationDecisionsusage)
   }
   /// `GET v1/organization/usage/embeddings`
   public var usageEmbeddings: HyperProxyProviderCall<OpenAIOperation> {

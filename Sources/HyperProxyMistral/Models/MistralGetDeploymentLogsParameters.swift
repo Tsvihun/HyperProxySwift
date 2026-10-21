@@ -15,6 +15,7 @@ public struct MistralGetDeploymentLogsParameters: Codable, Sendable {
   public var before: String?
   public var cursor: String?
   public var limit: Int?
+  public var logType: MistralDeploymentLogType?
   public var name: String
   public var order: MistralGetDeploymentLogsParametersOrder?
   public var workerName: String?
@@ -26,6 +27,7 @@ public struct MistralGetDeploymentLogsParameters: Codable, Sendable {
     before: String? = nil,
     cursor: String? = nil,
     limit: Int? = nil,
+    logType: MistralDeploymentLogType? = nil,
     order: MistralGetDeploymentLogsParametersOrder? = nil,
     workerName: String? = nil,
     workflowName: String? = nil
@@ -34,6 +36,7 @@ public struct MistralGetDeploymentLogsParameters: Codable, Sendable {
     self.before = before
     self.cursor = cursor
     self.limit = limit
+    self.logType = logType
     self.name = name
     self.order = order
     self.workerName = workerName
@@ -45,6 +48,7 @@ public struct MistralGetDeploymentLogsParameters: Codable, Sendable {
     case before
     case cursor
     case limit
+    case logType = "log_type"
     case name
     case order
     case workerName = "worker_name"

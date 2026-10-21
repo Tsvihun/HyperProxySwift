@@ -16,19 +16,22 @@ public struct OpenRouterUpdateKeysRequest: Codable, Sendable {
   public var limit: Double?
   public var limitReset: OpenRouterUpdateKeysRequestLimitReset?
   public var name: String?
+  public var workspaceId: String?
 
   public init(
     disabled: Bool? = nil,
     includeByokInLimit: Bool? = nil,
     limit: Double? = nil,
     limitReset: OpenRouterUpdateKeysRequestLimitReset? = nil,
-    name: String? = nil
+    name: String? = nil,
+    workspaceId: String? = nil
   ) {
     self.disabled = disabled
     self.includeByokInLimit = includeByokInLimit
     self.limit = limit
     self.limitReset = limitReset
     self.name = name
+    self.workspaceId = workspaceId
   }
 
   enum CodingKeys: String, CodingKey {
@@ -37,5 +40,6 @@ public struct OpenRouterUpdateKeysRequest: Codable, Sendable {
     case limit
     case limitReset = "limit_reset"
     case name
+    case workspaceId = "workspace_id"
   }
 }

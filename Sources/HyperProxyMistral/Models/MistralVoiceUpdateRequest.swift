@@ -16,6 +16,7 @@ public struct MistralVoiceUpdateRequest: Codable, Sendable {
   public var gender: String?
   public var languages: [String]?
   public var name: String?
+  public var retentionNotice: Int?
   public var tags: [String]?
 
   public init(
@@ -24,6 +25,7 @@ public struct MistralVoiceUpdateRequest: Codable, Sendable {
     gender: String? = nil,
     languages: [String]? = nil,
     name: String? = nil,
+    retentionNotice: Int? = nil,
     tags: [String]? = nil
   ) {
     self.age = age
@@ -31,6 +33,7 @@ public struct MistralVoiceUpdateRequest: Codable, Sendable {
     self.gender = gender
     self.languages = languages
     self.name = name
+    self.retentionNotice = retentionNotice
     self.tags = tags
   }
 
@@ -40,6 +43,7 @@ public struct MistralVoiceUpdateRequest: Codable, Sendable {
     case gender
     case languages
     case name
+    case retentionNotice = "retention_notice"
     case tags
   }
 }

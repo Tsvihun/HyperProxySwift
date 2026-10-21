@@ -97,6 +97,16 @@ public enum DeepLOperation: String, HyperProxyCatalogOperation {
   case deleteSpokenTermsList = "deleteSpokenTermsList"
   /// `PUT v3/spoken-terms/{spoken_terms_id}/term-lists`
   case putSpokenTermsList = "putSpokenTermsList"
+  /// `GET v3/style_profiles`
+  case listStyleProfiles = "listStyleProfiles"
+  /// `POST v3/style_profiles`
+  case createStyleProfile = "createStyleProfile"
+  /// `DELETE v3/style_profiles/{style_profile_id}`
+  case deleteStyleProfile = "deleteStyleProfile"
+  /// `GET v3/style_profiles/{style_profile_id}`
+  case getStyleProfile = "getStyleProfile"
+  /// `PATCH v3/style_profiles/{style_profile_id}`
+  case updateStyleProfile = "updateStyleProfile"
   /// `GET v3/style_rules`
   case getStyleRuleLists = "getStyleRuleLists"
   /// `POST v3/style_rules`

@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct MistralServerCapabilities: Codable, Sendable {
   public var completions: MistralCompletionsCapability?
   public var experimental: [String: [String: HyperProxyJSONValue]]?
+  public var extensions: [String: [String: HyperProxyJSONValue]]?
   public var logging: MistralLoggingCapability?
   public var prompts: MistralPromptsCapability?
   public var resources: MistralResourcesCapability?
@@ -22,6 +23,7 @@ public struct MistralServerCapabilities: Codable, Sendable {
   public init(
     completions: MistralCompletionsCapability? = nil,
     experimental: [String: [String: HyperProxyJSONValue]]? = nil,
+    extensions: [String: [String: HyperProxyJSONValue]]? = nil,
     logging: MistralLoggingCapability? = nil,
     prompts: MistralPromptsCapability? = nil,
     resources: MistralResourcesCapability? = nil,
@@ -30,6 +32,7 @@ public struct MistralServerCapabilities: Codable, Sendable {
   ) {
     self.completions = completions
     self.experimental = experimental
+    self.extensions = extensions
     self.logging = logging
     self.prompts = prompts
     self.resources = resources
@@ -40,6 +43,7 @@ public struct MistralServerCapabilities: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case completions
     case experimental
+    case extensions
     case logging
     case prompts
     case resources

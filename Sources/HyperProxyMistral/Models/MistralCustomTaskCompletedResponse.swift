@@ -27,18 +27,18 @@ public struct MistralCustomTaskCompletedResponse: Codable, Sendable {
 
   public init(
     attributes: MistralCustomTaskCompletedAttributesResponse,
-    chainRunId: String?,
-    continuedRunId: String?,
     eventId: String,
     eventTimestamp: Int,
-    firstExecutionRunId: String?,
     parentWorkflowExecId: String?,
     rootWorkflowExecId: String,
-    scheduleId: String?,
     workflowExecId: String,
     workflowName: String,
     workflowRunId: String,
-    eventType: MistralCUSTOMTASKCOMPLETEDEventType = .cUSTOMTASKCOMPLETED
+    eventType: MistralCUSTOMTASKCOMPLETEDEventType = .cUSTOMTASKCOMPLETED,
+    chainRunId: String? = nil,
+    continuedRunId: String? = nil,
+    firstExecutionRunId: String? = nil,
+    scheduleId: String? = nil
   ) {
     self.attributes = attributes
     self.chainRunId = chainRunId

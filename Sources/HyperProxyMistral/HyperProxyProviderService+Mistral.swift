@@ -351,6 +351,12 @@ extension HyperProxyProviderService where Operation == MistralOperation {
     self.call(
       .postDatasetRecordsFromPlaygroundV1ObservabilityDatasetsDatasetIdImportsFromPlaygroundPost)
   }
+  /// `POST v1/observability/datasets/{dataset_id}/imports/from-spans`
+  public var postDatasetRecordsFromSpansV1ObservabilityDatasetsDatasetIdImportsFromSpansPost:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(.postDatasetRecordsFromSpansV1ObservabilityDatasetsDatasetIdImportsFromSpansPost)
+  }
   /// `GET v1/observability/datasets/{dataset_id}/records`
   public var getDatasetRecordsV1ObservabilityDatasetsDatasetIdRecordsGet:
     HyperProxyProviderCall<MistralOperation>
@@ -374,6 +380,56 @@ extension HyperProxyProviderService where Operation == MistralOperation {
     HyperProxyProviderCall<MistralOperation>
   {
     self.call(.getDatasetImportTaskV1ObservabilityDatasetsDatasetIdTasksTaskIdGet)
+  }
+  /// `POST v1/observability/evaluation-runs_v2/search`
+  public var searchAllEvaluationRunsV2V1ObservabilityEvaluationRunsV2SearchPost:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(.searchAllEvaluationRunsV2V1ObservabilityEvaluationRunsV2SearchPost)
+  }
+  /// `GET v1/observability/evaluation-runs_v2/{run_id}`
+  public var getEvaluationRunV2V1ObservabilityEvaluationRunsV2RunIdGet:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(.getEvaluationRunV2V1ObservabilityEvaluationRunsV2RunIdGet)
+  }
+  /// `POST v1/observability/evaluation-runs_v2/{run_id}/records/search`
+  public var searchEvaluationRunRecordsV2V1ObservabilityEvaluationRunsV2RunIdRecordsSearchPost:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(.searchEvaluationRunRecordsV2V1ObservabilityEvaluationRunsV2RunIdRecordsSearchPost)
+  }
+  /// `GET v1/observability/evaluation-runs_v2/{run_id}/records/{record_id}`
+  public var getEvaluationRunRecordV2V1ObservabilityEvaluationRunsV2RunIdRecordsRecordIdGet:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(.getEvaluationRunRecordV2V1ObservabilityEvaluationRunsV2RunIdRecordsRecordIdGet)
+  }
+  /// `GET v1/observability/evaluation-runs_v2/{run_id}/statistics`
+  public var getSingleEvaluationRunStatisticsV2V1ObservabilityEvaluationRunsV2RunIdStatisticsGet:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(.getSingleEvaluationRunStatisticsV2V1ObservabilityEvaluationRunsV2RunIdStatisticsGet)
+  }
+  /// `POST v1/observability/evaluation-runs_v2/{run_id}/statistics/compute`
+  public
+    var computeFilteredRunStatisticsV2V1ObservabilityEvaluationRunsV2RunIdStatisticsComputePost:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(
+      .computeFilteredRunStatisticsV2V1ObservabilityEvaluationRunsV2RunIdStatisticsComputePost)
+  }
+  /// `GET v1/observability/evaluations_v2/{evaluation_slug}`
+  public var getEvaluationV2V1ObservabilityEvaluationsV2EvaluationSlugGet:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(.getEvaluationV2V1ObservabilityEvaluationsV2EvaluationSlugGet)
+  }
+  /// `POST v1/observability/evaluations_v2/{evaluation_slug}/runs/search`
+  public var searchEvaluationRunsV2V1ObservabilityEvaluationsV2EvaluationSlugRunsSearchPost:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(.searchEvaluationRunsV2V1ObservabilityEvaluationsV2EvaluationSlugRunsSearchPost)
   }
   /// `GET v1/observability/judges`
   public var getJudgesV1ObservabilityJudgesGet: HyperProxyProviderCall<MistralOperation> {
@@ -416,35 +472,71 @@ extension HyperProxyProviderService where Operation == MistralOperation {
   public var searchLogsV1ObservabilityLogsSearchPost: HyperProxyProviderCall<MistralOperation> {
     self.call(.searchLogsV1ObservabilityLogsSearchPost)
   }
-  /// `GET v1/observability/pipeline-configs`
-  public var listPipelineConfigsV1ObservabilityPipelineConfigsGet:
+  /// `GET v1/observability/optimizations`
+  public var listOptimizationsV1ObservabilityOptimizationsGet:
     HyperProxyProviderCall<MistralOperation>
   {
-    self.call(.listPipelineConfigsV1ObservabilityPipelineConfigsGet)
+    self.call(.listOptimizationsV1ObservabilityOptimizationsGet)
   }
-  /// `POST v1/observability/pipeline-configs`
-  public var createPipelineConfigV1ObservabilityPipelineConfigsPost:
+  /// `GET v1/observability/optimizations/{optimization_id}`
+  public var getOptimizationV1ObservabilityOptimizationsOptimizationIdGet:
     HyperProxyProviderCall<MistralOperation>
   {
-    self.call(.createPipelineConfigV1ObservabilityPipelineConfigsPost)
+    self.call(.getOptimizationV1ObservabilityOptimizationsOptimizationIdGet)
   }
-  /// `DELETE v1/observability/pipeline-configs/{pipeline_config_id}`
-  public var deletePipelineConfigV1ObservabilityPipelineConfigsPipelineConfigIdDelete:
+  /// `GET v1/observability/optimizations/{optimization_id}/trials`
+  public var listOptimizationTrialsV1ObservabilityOptimizationsOptimizationIdTrialsGet:
     HyperProxyProviderCall<MistralOperation>
   {
-    self.call(.deletePipelineConfigV1ObservabilityPipelineConfigsPipelineConfigIdDelete)
+    self.call(.listOptimizationTrialsV1ObservabilityOptimizationsOptimizationIdTrialsGet)
   }
-  /// `GET v1/observability/pipeline-configs/{pipeline_config_id}`
-  public var getPipelineConfigV1ObservabilityPipelineConfigsPipelineConfigIdGet:
+  /// `POST v1/observability/pipeline-results/search`
+  public var searchPipelineResultsV1ObservabilityPipelineResultsSearchPost:
     HyperProxyProviderCall<MistralOperation>
   {
-    self.call(.getPipelineConfigV1ObservabilityPipelineConfigsPipelineConfigIdGet)
+    self.call(.searchPipelineResultsV1ObservabilityPipelineResultsSearchPost)
   }
-  /// `PUT v1/observability/pipeline-configs/{pipeline_config_id}`
-  public var updatePipelineConfigV1ObservabilityPipelineConfigsPipelineConfigIdPut:
+  /// `GET v1/observability/pipelines`
+  public var listPipelinesV1ObservabilityPipelinesGet: HyperProxyProviderCall<MistralOperation> {
+    self.call(.listPipelinesV1ObservabilityPipelinesGet)
+  }
+  /// `POST v1/observability/pipelines`
+  public var createPipelineV1ObservabilityPipelinesPost: HyperProxyProviderCall<MistralOperation> {
+    self.call(.createPipelineV1ObservabilityPipelinesPost)
+  }
+  /// `DELETE v1/observability/pipelines/{pipeline_id}`
+  public var deletePipelineV1ObservabilityPipelinesPipelineIdDelete:
     HyperProxyProviderCall<MistralOperation>
   {
-    self.call(.updatePipelineConfigV1ObservabilityPipelineConfigsPipelineConfigIdPut)
+    self.call(.deletePipelineV1ObservabilityPipelinesPipelineIdDelete)
+  }
+  /// `GET v1/observability/pipelines/{pipeline_id}`
+  public var getPipelineV1ObservabilityPipelinesPipelineIdGet:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(.getPipelineV1ObservabilityPipelinesPipelineIdGet)
+  }
+  /// `PUT v1/observability/pipelines/{pipeline_id}`
+  public var updatePipelineV1ObservabilityPipelinesPipelineIdPut:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(.updatePipelineV1ObservabilityPipelinesPipelineIdPut)
+  }
+  /// `GET v1/observability/projects`
+  public var getProjectsV1ObservabilityProjectsGet: HyperProxyProviderCall<MistralOperation> {
+    self.call(.getProjectsV1ObservabilityProjectsGet)
+  }
+  /// `GET v1/observability/projects/{project_slug}`
+  public var getProjectV1ObservabilityProjectsProjectSlugGet:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(.getProjectV1ObservabilityProjectsProjectSlugGet)
+  }
+  /// `GET v1/observability/projects/{project_slug}/evaluations_v2`
+  public var getProjectEvaluationsV2V1ObservabilityProjectsProjectSlugEvaluationsV2Get:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(.getProjectEvaluationsV2V1ObservabilityProjectsProjectSlugEvaluationsV2Get)
   }
   /// `POST v1/observability/spans/aggregate`
   public var aggregateSpansV1ObservabilitySpansAggregatePost:
@@ -648,6 +740,10 @@ extension HyperProxyProviderService where Operation == MistralOperation {
   /// `GET v1/users/me/workspaces`
   public var usersApiListWorkspaces: HyperProxyProviderCall<MistralOperation> {
     self.call(.usersApiListWorkspaces)
+  }
+  /// `GET v1/whoami`
+  public var usersApiWhoami: HyperProxyProviderCall<MistralOperation> {
+    self.call(.usersApiWhoami)
   }
   /// `GET v2/prompts`
   public var promptsList: HyperProxyProviderCall<MistralOperation> {
@@ -1162,6 +1258,10 @@ extension HyperProxyProviderService where Operation == MistralOperation {
     HyperProxyProviderCall<MistralOperation>
   {
     self.call(.getWorkflowMetricsV1WorkflowsWorkflowNameMetricsGet)
+  }
+  /// `GET v2/audio/voices`
+  public var audioV2VoicesList: HyperProxyProviderCall<MistralOperation> {
+    self.call(.audioV2VoicesList)
   }
   @available(*, deprecated, renamed: "audioTranscriptions")
   public var audioApiV1TranscriptionsPost: HyperProxyProviderCall<MistralOperation> {

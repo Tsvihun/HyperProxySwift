@@ -18,6 +18,8 @@ public enum MistralContentChunk: Codable, Sendable {
   case fileChunk(MistralFileChunk)
   case thinkChunk(MistralThinkChunk)
   case audioChunk(MistralAudioChunk)
+  case resourceChunk(MistralResourceChunk)
+  case resourceLinkChunk(MistralResourceLinkChunk)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -45,7 +47,15 @@ public enum MistralContentChunk: Codable, Sendable {
       self = .thinkChunk(value)
       return
     }
-    self = .audioChunk(try container.decode(MistralAudioChunk.self))
+    if let value = try? container.decode(MistralAudioChunk.self) {
+      self = .audioChunk(value)
+      return
+    }
+    if let value = try? container.decode(MistralResourceChunk.self) {
+      self = .resourceChunk(value)
+      return
+    }
+    self = .resourceLinkChunk(try container.decode(MistralResourceLinkChunk.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -64,6 +74,10 @@ public enum MistralContentChunk: Codable, Sendable {
     case .thinkChunk(let value):
       try container.encode(value)
     case .audioChunk(let value):
+      try container.encode(value)
+    case .resourceChunk(let value):
+      try container.encode(value)
+    case .resourceLinkChunk(let value):
       try container.encode(value)
     }
   }

@@ -98,4 +98,14 @@ public enum MistralAdminAssignGroupToWorkspaceInRole: Codable, Sendable {
   public static var value0f9acbf693b542c7A227Fc7652755f65: Self {
     .staticWorkspaceRoles(.value0f9acbf693b542c7A227Fc7652755f65)
   }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var value94ef59cf56bf43839dd61fee77d370af: Self {
+    .staticWorkspaceRoles(.value94ef59cf56bf43839dd61fee77d370af)
+  }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var value7e69e493Caf64671Af6084951754d9fc: Self {
+    .staticWorkspaceRoles(.value7e69e493Caf64671Af6084951754d9fc)
+  }
 }

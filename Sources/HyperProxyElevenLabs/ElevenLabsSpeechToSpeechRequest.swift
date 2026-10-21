@@ -11,6 +11,6 @@ import Foundation
 @_exported import HyperProxyCore
 @_exported import HyperProxyProviders
 
-/// Semantic name for `ElevenLabsBodySpeechToSpeechV1SpeechToSpeechVoiceIdPost`; the provider wire format is unchanged.
+/// Semantic name for `ElevenLabsBodyVoiceChangerV1VoiceChangerVoiceIdPost`; the provider wire format is unchanged.
 public typealias ElevenLabsSpeechToSpeechRequest =
-  ElevenLabsBodySpeechToSpeechV1SpeechToSpeechVoiceIdPost
+  ElevenLabsBodyVoiceChangerV1VoiceChangerVoiceIdPost

@@ -13,6 +13,7 @@ import HyperProxyCore
 public enum OpenAILiveDelegationItemTarget: Codable, Sendable {
   case liveDelegationItemTargetOneOf1(OpenAILiveDelegationItemTargetOneOf1)
   case liveDelegationItemTargetOneOf2(OpenAILiveDelegationItemTargetOneOf2)
+  case liveDelegationItemTargetOneOf3(OpenAILiveDelegationItemTargetOneOf3)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -20,8 +21,12 @@ public enum OpenAILiveDelegationItemTarget: Codable, Sendable {
       self = .liveDelegationItemTargetOneOf1(value)
       return
     }
-    self = .liveDelegationItemTargetOneOf2(
-      try container.decode(OpenAILiveDelegationItemTargetOneOf2.self))
+    if let value = try? container.decode(OpenAILiveDelegationItemTargetOneOf2.self) {
+      self = .liveDelegationItemTargetOneOf2(value)
+      return
+    }
+    self = .liveDelegationItemTargetOneOf3(
+      try container.decode(OpenAILiveDelegationItemTargetOneOf3.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -31,6 +36,8 @@ public enum OpenAILiveDelegationItemTarget: Codable, Sendable {
       try container.encode(value)
     case .liveDelegationItemTargetOneOf2(let value):
       try container.encode(value)
+    case .liveDelegationItemTargetOneOf3(let value):
+      try container.encode(value)
     }
   }
 
@@ -39,4 +46,7 @@ public enum OpenAILiveDelegationItemTarget: Codable, Sendable {
 
   /// Provider-native value without the schema union wrapper.
   public static var responses: Self { .liveDelegationItemTargetOneOf2(.responses) }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var decisions: Self { .liveDelegationItemTargetOneOf3(.decisions) }
 }

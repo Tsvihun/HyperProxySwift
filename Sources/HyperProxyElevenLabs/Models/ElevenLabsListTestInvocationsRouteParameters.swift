@@ -19,6 +19,7 @@ public struct ElevenLabsListTestInvocationsRouteParameters: Codable, Sendable {
   public var search: String?
   public var startTime: Int?
   public var testId: String?
+  public var versionId: String?
   public var xiApiKey: String?
 
   public init(
@@ -30,6 +31,7 @@ public struct ElevenLabsListTestInvocationsRouteParameters: Codable, Sendable {
     search: String? = nil,
     startTime: Int? = nil,
     testId: String? = nil,
+    versionId: String? = nil,
     xiApiKey: String? = nil
   ) {
     self.agentId = agentId
@@ -40,6 +42,7 @@ public struct ElevenLabsListTestInvocationsRouteParameters: Codable, Sendable {
     self.search = search
     self.startTime = startTime
     self.testId = testId
+    self.versionId = versionId
     self.xiApiKey = xiApiKey
   }
 
@@ -52,6 +55,7 @@ public struct ElevenLabsListTestInvocationsRouteParameters: Codable, Sendable {
     case search
     case startTime = "start_time"
     case testId = "test_id"
+    case versionId = "version_id"
     case xiApiKey = "xi-api-key"
   }
 }

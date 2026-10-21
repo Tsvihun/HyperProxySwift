@@ -13,21 +13,25 @@ import HyperProxyCore
 public struct OpenAIDecisionInputImage: Codable, Sendable {
   public var detail: OpenAIImageDetailParam?
   public var imageUrl: String
+  public var promptCacheBreakpoint: OpenAIDecisionInputImagePromptCacheBreakpoint?
   public var kind: OpenAIDecisionInputImageKind
 
   public init(
     imageUrl: String,
     kind: OpenAIDecisionInputImageKind,
-    detail: OpenAIImageDetailParam? = nil
+    detail: OpenAIImageDetailParam? = nil,
+    promptCacheBreakpoint: OpenAIDecisionInputImagePromptCacheBreakpoint? = nil
   ) {
     self.detail = detail
     self.imageUrl = imageUrl
+    self.promptCacheBreakpoint = promptCacheBreakpoint
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case detail
     case imageUrl = "image_url"
+    case promptCacheBreakpoint = "prompt_cache_breakpoint"
     case kind = "type"
   }
 }

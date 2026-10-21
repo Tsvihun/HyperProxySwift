@@ -224,6 +224,8 @@ public enum TogetherOperation: String, HyperProxyCatalogOperation {
   case modelsList = "models.list"
   /// `POST v1/models`
   case uploadModel = "uploadModel"
+  /// `GET v1/projects`
+  case listProjects = "listProjects"
   /// `POST v1/queue/cancel`
   case cancelQueueJob = "cancelQueueJob"
   /// `POST v1/queue/clear`
@@ -294,6 +296,18 @@ public enum TogetherOperation: String, HyperProxyCatalogOperation {
   case getWeightsSyncOperation = "getWeightsSyncOperation"
   /// `POST v1/rl/training-sessions/{session_id}/stop`
   case stopTrainingSession = "stopTrainingSession"
+  /// `GET v1/shaping`
+  case listShapingJobs = "listShapingJobs"
+  /// `POST v1/shaping/prepare-for-fp4-inference`
+  case createQuantizationJob = "createQuantizationJob"
+  /// `POST v1/shaping/prepare-for-fp4-inference/estimate`
+  case estimateQuantizationJob = "estimateQuantizationJob"
+  /// `GET v1/shaping/{id}`
+  case getShapingJob = "getShapingJob"
+  /// `POST v1/shaping/{id}/cancel`
+  case cancelShapingJob = "cancelShapingJob"
+  /// `GET v1/shaping/{id}/events`
+  case getShapingEvents = "getShapingEvents"
   /// `POST v1/tci/execute`
   case tciExecute = "tci.execute"
   /// `GET v1/tci/sessions`

@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- Refresh the 2026-10-21 development catalog: 2,405 routes, 19,183 generated
+  provider types and 2,161 typed operations across 18 provider families.
+  Follow upstream migrations from OpenRouter end users to external users,
+  Mistral pipeline configs to pipelines, and ElevenLabs streaming speech-to-speech
+  to voice changer. Removed schema-derived types and operations require caller migration.
+  Preserve the semantic ElevenLabs speech-to-speech request aliases against the new types.
+- Await Foundation's cancellation callback in the polling deadline regression test,
+  with a bounded failure timeout, instead of assuming synchronous `stopLoading` delivery.
 - Add the SwiftUI MVVM SDK Playground with provider recipes, typed and raw calls,
   SSE, multipart, WebSockets, image/audio previews, and redacted diagnostic reports.
   Keep credentials local and validate its transport tests and simulator build in CI.

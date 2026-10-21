@@ -36,6 +36,10 @@ public struct ElevenLabsAdminCalls: Sendable {
   public var editServiceAccountApiKey: HyperProxyProviderCall<ElevenLabsOperation> {
     self.service.call(.editServiceAccountApiKey)
   }
+  /// `POST v1/service-accounts/{service_account_user_id}/api-keys/{api_key_id}/disable`
+  public var disableServiceAccountApiKey: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.service.call(.disableServiceAccountApiKey)
+  }
   /// `GET v1/workspace/audit-logs`
   public var getWorkspaceAuditLogs: HyperProxyProviderCall<ElevenLabsOperation> {
     self.service.call(.getWorkspaceAuditLogs)

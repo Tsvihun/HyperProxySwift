@@ -14,6 +14,7 @@ public struct OpenAIBetaImageGenToolCall: Codable, Sendable {
   public var action: OpenAIBetaImageGenActionEnum?
   public var agent: OpenAIBetaAgentTag?
   public var background: OpenAIBetaImageBackground?
+  public var error: OpenAIBetaImageGenToolCallError?
   public var id: String
   public var outputFormat: OpenAIBetaImageOutputFormat?
   public var quality: OpenAIBetaImageGenToolCallQuality?
@@ -31,6 +32,7 @@ public struct OpenAIBetaImageGenToolCall: Codable, Sendable {
     action: OpenAIBetaImageGenActionEnum? = nil,
     agent: OpenAIBetaAgentTag? = nil,
     background: OpenAIBetaImageBackground? = nil,
+    error: OpenAIBetaImageGenToolCallError? = nil,
     outputFormat: OpenAIBetaImageOutputFormat? = nil,
     quality: OpenAIBetaImageGenToolCallQuality? = nil,
     revisedPrompt: String? = nil,
@@ -39,6 +41,7 @@ public struct OpenAIBetaImageGenToolCall: Codable, Sendable {
     self.action = action
     self.agent = agent
     self.background = background
+    self.error = error
     self.id = id
     self.outputFormat = outputFormat
     self.quality = quality
@@ -53,6 +56,7 @@ public struct OpenAIBetaImageGenToolCall: Codable, Sendable {
     case action
     case agent
     case background
+    case error
     case id
     case outputFormat = "output_format"
     case quality

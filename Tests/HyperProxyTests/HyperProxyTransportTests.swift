@@ -435,7 +435,7 @@ struct HyperProxyTransportTests {
 
   @Test("Polling cancels an unfinished response body at its deadline")
   func unfinishedPollingResponse() async throws {
-    PollingURLProtocol.stoppedRequests.reset()
+    let stopEvents = PollingURLProtocol.lifecycle.observeStops()
     let configuration = URLSessionConfiguration.ephemeral
     configuration.protocolClasses = [PollingURLProtocol.self]
     let session = URLSession(configuration: configuration)
@@ -447,7 +447,22 @@ struct HyperProxyTransportTests {
         "batch_id", "test"
       ).poll(decoding: Job.self, policy: .init(timeout: 0.05)) { $0.done }
     }
-    #expect(PollingURLProtocol.stoppedRequests.value == 1)
+    // A timed-out URLSession task can resume its caller before Foundation delivers
+    // stopLoading. Await that callback; the timer only bounds a genuine failure.
+    let didStop = await withTaskGroup(of: Bool.self) { group in
+      group.addTask {
+        for await _ in stopEvents { return true }
+        return false
+      }
+      group.addTask {
+        try? await Task.sleep(for: .seconds(5))
+        return false
+      }
+      defer { group.cancelAll() }
+      return await group.next() ?? false
+    }
+    #expect(didStop, "The unfinished request must receive stopLoading after its deadline")
+    #expect(PollingURLProtocol.lifecycle.stoppedRequests == 1)
   }
 
   @Test("A zero polling timeout does not send a request")

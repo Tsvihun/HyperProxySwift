@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct OpenRouterOutputToolSearchServerToolItem: Codable, Sendable {
   public var error: String?
   public var id: String?
+  public var matches: [OpenRouterOutputToolSearchServerToolItemMatchesItem]?
   public var query: String?
   public var status: OpenRouterFailableToolCallStatus
   public var kind: OpenRouterOutputToolSearchServerToolItemKind
@@ -22,10 +23,12 @@ public struct OpenRouterOutputToolSearchServerToolItem: Codable, Sendable {
     kind: OpenRouterOutputToolSearchServerToolItemKind,
     error: String? = nil,
     id: String? = nil,
+    matches: [OpenRouterOutputToolSearchServerToolItemMatchesItem]? = nil,
     query: String? = nil
   ) {
     self.error = error
     self.id = id
+    self.matches = matches
     self.query = query
     self.status = status
     self.kind = kind
@@ -34,6 +37,7 @@ public struct OpenRouterOutputToolSearchServerToolItem: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case error
     case id
+    case matches
     case query
     case status
     case kind = "type"

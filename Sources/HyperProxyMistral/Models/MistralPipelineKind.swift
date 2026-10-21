@@ -11,8 +11,8 @@ import Foundation
 import HyperProxyCore
 
 public enum MistralPipelineKind: String, Codable, Hashable, Sendable {
-  case detection = "detection"
-  case moderation = "moderation"
-  case judge = "judge"
-  case export = "export"
+  case detectionV1 = "detection-v1"
+  case moderationV1 = "moderation-v1"
+  case judgeV1 = "judge-v1"
+  case exportV1 = "export-v1"
 }

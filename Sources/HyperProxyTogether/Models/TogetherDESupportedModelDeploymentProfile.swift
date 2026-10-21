@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherDESupportedModelDeploymentProfile: Codable, Sendable {
+  public var adapterMode: TogetherDESupportedModelDeploymentProfileAdapterMode?
   public var certifiedConfigRevisionId: String
   public var certifiedModelRevisionId: String
   public var config: String
@@ -36,8 +37,10 @@ public struct TogetherDESupportedModelDeploymentProfile: Codable, Sendable {
     performanceBenchmarks: TogetherDESupportedModelPerformanceBenchmarks,
     profileId: String,
     quantization: String,
+    adapterMode: TogetherDESupportedModelDeploymentProfileAdapterMode? = nil,
     tensorParallelSize: Int? = nil
   ) {
+    self.adapterMode = adapterMode
     self.certifiedConfigRevisionId = certifiedConfigRevisionId
     self.certifiedModelRevisionId = certifiedModelRevisionId
     self.config = config
@@ -53,6 +56,7 @@ public struct TogetherDESupportedModelDeploymentProfile: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case adapterMode
     case certifiedConfigRevisionId
     case certifiedModelRevisionId
     case config

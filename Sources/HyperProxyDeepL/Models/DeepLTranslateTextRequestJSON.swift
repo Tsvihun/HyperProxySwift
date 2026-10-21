@@ -27,6 +27,7 @@ public struct DeepLTranslateTextRequestJSON: Codable, Sendable {
   public var splitSentences: DeepLSplitSentencesOption?
   public var splittingTags: [String]?
   public var styleId: String?
+  public var styleProfileId: String?
   public var tagHandling: DeepLTagHandlingOption?
   public var tagHandlingVersion: DeepLTagHandlingVersionOption?
   public var targetLang: String
@@ -53,6 +54,7 @@ public struct DeepLTranslateTextRequestJSON: Codable, Sendable {
     splitSentences: DeepLSplitSentencesOption? = nil,
     splittingTags: [String]? = nil,
     styleId: String? = nil,
+    styleProfileId: String? = nil,
     tagHandling: DeepLTagHandlingOption? = nil,
     tagHandlingVersion: DeepLTagHandlingVersionOption? = nil,
     translationMemoryId: DeepLTranslationMemoryId? = nil,
@@ -74,6 +76,7 @@ public struct DeepLTranslateTextRequestJSON: Codable, Sendable {
     self.splitSentences = splitSentences
     self.splittingTags = splittingTags
     self.styleId = styleId
+    self.styleProfileId = styleProfileId
     self.tagHandling = tagHandling
     self.tagHandlingVersion = tagHandlingVersion
     self.targetLang = targetLang
@@ -99,6 +102,7 @@ public struct DeepLTranslateTextRequestJSON: Codable, Sendable {
     case splitSentences = "split_sentences"
     case splittingTags = "splitting_tags"
     case styleId = "style_id"
+    case styleProfileId = "style_profile_id"
     case tagHandling = "tag_handling"
     case tagHandlingVersion = "tag_handling_version"
     case targetLang = "target_lang"

@@ -13,21 +13,25 @@ import HyperProxyCore
 public struct GeminiEgressRule: Codable, Sendable {
   public var credential: String?
   public var domain: String?
+  public var mode: GeminiEgressRuleMode?
   public var transform: [String: String]?
 
   public init(
     credential: String? = nil,
     domain: String? = nil,
+    mode: GeminiEgressRuleMode? = nil,
     transform: [String: String]? = nil
   ) {
     self.credential = credential
     self.domain = domain
+    self.mode = mode
     self.transform = transform
   }
 
   enum CodingKeys: String, CodingKey {
     case credential
     case domain
+    case mode
     case transform
   }
 }

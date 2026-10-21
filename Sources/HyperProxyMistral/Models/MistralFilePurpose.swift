@@ -14,4 +14,5 @@ public enum MistralFilePurpose: String, Codable, Hashable, Sendable {
   case fineTune = "fine-tune"
   case batch = "batch"
   case ocr = "ocr"
+  case agenticSafety = "agentic_safety"
 }

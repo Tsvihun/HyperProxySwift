@@ -91,6 +91,7 @@ public enum OpenRouterImageGenerationProviderPreferencesIgnoreItem: RawRepresent
   case openAI
   case openInference
   case parasail
+  case paretoAlpha
   case poolside
   case primeIntellect
   case perceptron
@@ -287,6 +288,8 @@ public enum OpenRouterImageGenerationProviderPreferencesIgnoreItem: RawRepresent
       self = .openInference
     case "Parasail":
       self = .parasail
+    case "ParetoAlpha":
+      self = .paretoAlpha
     case "Poolside":
       self = .poolside
     case "PrimeIntellect":
@@ -522,6 +525,8 @@ public enum OpenRouterImageGenerationProviderPreferencesIgnoreItem: RawRepresent
       return "OpenInference"
     case .parasail:
       return "Parasail"
+    case .paretoAlpha:
+      return "ParetoAlpha"
     case .poolside:
       return "Poolside"
     case .primeIntellect:

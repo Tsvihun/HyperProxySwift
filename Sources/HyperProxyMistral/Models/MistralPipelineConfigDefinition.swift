@@ -11,38 +11,38 @@ import Foundation
 import HyperProxyCore
 
 public enum MistralPipelineConfigDefinition: Codable, Sendable {
-  case detectionDefinition(MistralDetectionDefinition)
-  case moderationDefinition(MistralModerationDefinition)
-  case judgeDefinition(MistralJudgeDefinition)
-  case exportDefinition(MistralExportDefinition)
+  case detectionDefinitionV1(MistralDetectionDefinitionV1)
+  case moderationDefinitionV1(MistralModerationDefinitionV1)
+  case judgeDefinitionV1(MistralJudgeDefinitionV1)
+  case exportDefinitionV1(MistralExportDefinitionV1)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(MistralDetectionDefinition.self) {
-      self = .detectionDefinition(value)
+    if let value = try? container.decode(MistralDetectionDefinitionV1.self) {
+      self = .detectionDefinitionV1(value)
       return
     }
-    if let value = try? container.decode(MistralModerationDefinition.self) {
-      self = .moderationDefinition(value)
+    if let value = try? container.decode(MistralModerationDefinitionV1.self) {
+      self = .moderationDefinitionV1(value)
       return
     }
-    if let value = try? container.decode(MistralJudgeDefinition.self) {
-      self = .judgeDefinition(value)
+    if let value = try? container.decode(MistralJudgeDefinitionV1.self) {
+      self = .judgeDefinitionV1(value)
       return
     }
-    self = .exportDefinition(try container.decode(MistralExportDefinition.self))
+    self = .exportDefinitionV1(try container.decode(MistralExportDefinitionV1.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .detectionDefinition(let value):
+    case .detectionDefinitionV1(let value):
       try container.encode(value)
-    case .moderationDefinition(let value):
+    case .moderationDefinitionV1(let value):
       try container.encode(value)
-    case .judgeDefinition(let value):
+    case .judgeDefinitionV1(let value):
       try container.encode(value)
-    case .exportDefinition(let value):
+    case .exportDefinitionV1(let value):
       try container.encode(value)
     }
   }

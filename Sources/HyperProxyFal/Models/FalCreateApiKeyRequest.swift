@@ -12,14 +12,30 @@ import HyperProxyCore
 
 public struct FalCreateApiKeyRequest: Codable, Sendable {
   public var alias: String
+  public var description: String?
+  public var expiresAt: String?
+  public var permissions: [String]?
+  public var preset: FalCreateApiKeyRequestPreset?
 
   public init(
-    alias: String
+    alias: String,
+    description: String? = nil,
+    expiresAt: String? = nil,
+    permissions: [String]? = nil,
+    preset: FalCreateApiKeyRequestPreset? = nil
   ) {
     self.alias = alias
+    self.description = description
+    self.expiresAt = expiresAt
+    self.permissions = permissions
+    self.preset = preset
   }
 
   enum CodingKeys: String, CodingKey {
     case alias
+    case description
+    case expiresAt = "expires_at"
+    case permissions
+    case preset
   }
 }

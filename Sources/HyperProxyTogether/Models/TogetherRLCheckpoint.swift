@@ -14,9 +14,11 @@ public struct TogetherRLCheckpoint: Codable, Sendable {
   public var baseModel: String
   public var createdAt: String
   public var id: String
+  public var inferenceRegistration: TogetherRLInferenceCheckpointRegistration?
   public var loraRank: Int?
   public var sessionId: String
   public var step: TogetherRLCheckpointStep
+  public var trainingRegistration: TogetherRLModelRegistryArtifact?
   public var kind: TogetherRLCheckpointType
 
   public init(
@@ -26,14 +28,18 @@ public struct TogetherRLCheckpoint: Codable, Sendable {
     sessionId: String,
     step: TogetherRLCheckpointStep,
     kind: TogetherRLCheckpointType,
-    loraRank: Int? = nil
+    inferenceRegistration: TogetherRLInferenceCheckpointRegistration? = nil,
+    loraRank: Int? = nil,
+    trainingRegistration: TogetherRLModelRegistryArtifact? = nil
   ) {
     self.baseModel = baseModel
     self.createdAt = createdAt
     self.id = id
+    self.inferenceRegistration = inferenceRegistration
     self.loraRank = loraRank
     self.sessionId = sessionId
     self.step = step
+    self.trainingRegistration = trainingRegistration
     self.kind = kind
   }
 
@@ -41,9 +47,11 @@ public struct TogetherRLCheckpoint: Codable, Sendable {
     case baseModel = "base_model"
     case createdAt = "created_at"
     case id
+    case inferenceRegistration = "inference_registration"
     case loraRank = "lora_rank"
     case sessionId = "session_id"
     case step
+    case trainingRegistration = "training_registration"
     case kind = "type"
   }
 }

@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherSupportedModelsServiceListSupportedModelsParameters: Codable, Sendable {
+  public var adapterMode: TogetherSupportedModelsServiceListSupportedModelsParametersAdapterMode?
   public var after: String?
   public var limit: Int?
   public var modality: TogetherSupportedModelsServiceListSupportedModelsParametersModality?
@@ -18,12 +19,14 @@ public struct TogetherSupportedModelsServiceListSupportedModelsParameters: Codab
   public var search: String?
 
   public init(
+    adapterMode: TogetherSupportedModelsServiceListSupportedModelsParametersAdapterMode? = nil,
     after: String? = nil,
     limit: Int? = nil,
     modality: TogetherSupportedModelsServiceListSupportedModelsParametersModality? = nil,
     product: TogetherSupportedModelsServiceListSupportedModelsParametersProduct? = nil,
     search: String? = nil
   ) {
+    self.adapterMode = adapterMode
     self.after = after
     self.limit = limit
     self.modality = modality
@@ -32,6 +35,7 @@ public struct TogetherSupportedModelsServiceListSupportedModelsParameters: Codab
   }
 
   enum CodingKeys: String, CodingKey {
+    case adapterMode
     case after
     case limit
     case modality

@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsRunAgentTestsRequestModel: Codable, Sendable {
   public var agentConfigOverride: ElevenLabsAdhocAgentConfigOverrideForTestRequestModel?
   public var branchId: String?
+  public var name: String?
   public var repeatCount: Int?
   public var tests: [ElevenLabsSingleTestRunRequestModel]
 
@@ -20,10 +21,12 @@ public struct ElevenLabsRunAgentTestsRequestModel: Codable, Sendable {
     tests: [ElevenLabsSingleTestRunRequestModel],
     agentConfigOverride: ElevenLabsAdhocAgentConfigOverrideForTestRequestModel? = nil,
     branchId: String? = nil,
+    name: String? = nil,
     repeatCount: Int? = nil
   ) {
     self.agentConfigOverride = agentConfigOverride
     self.branchId = branchId
+    self.name = name
     self.repeatCount = repeatCount
     self.tests = tests
   }
@@ -31,6 +34,7 @@ public struct ElevenLabsRunAgentTestsRequestModel: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case agentConfigOverride = "agent_config_override"
     case branchId = "branch_id"
+    case name
     case repeatCount = "repeat_count"
     case tests
   }

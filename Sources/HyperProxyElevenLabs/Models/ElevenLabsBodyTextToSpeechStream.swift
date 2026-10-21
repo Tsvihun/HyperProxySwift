@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsBodyTextToSpeechStream: Codable, Sendable {
   public var applyLanguageTextNormalization: Bool?
   public var applyTextNormalization: ElevenLabsBodyTextToSpeechStreamApplyTextNormalization?
+  public var audioEffects: ElevenLabsEffectsSpecInput?
   public var languageCode: String?
   public var modelId: String?
   public var nextRequestIds: [String]?
@@ -30,6 +31,7 @@ public struct ElevenLabsBodyTextToSpeechStream: Codable, Sendable {
     text: String,
     applyLanguageTextNormalization: Bool? = nil,
     applyTextNormalization: ElevenLabsBodyTextToSpeechStreamApplyTextNormalization? = nil,
+    audioEffects: ElevenLabsEffectsSpecInput? = nil,
     languageCode: String? = nil,
     modelId: String? = nil,
     nextRequestIds: [String]? = nil,
@@ -44,6 +46,7 @@ public struct ElevenLabsBodyTextToSpeechStream: Codable, Sendable {
   ) {
     self.applyLanguageTextNormalization = applyLanguageTextNormalization
     self.applyTextNormalization = applyTextNormalization
+    self.audioEffects = audioEffects
     self.languageCode = languageCode
     self.modelId = modelId
     self.nextRequestIds = nextRequestIds
@@ -60,6 +63,7 @@ public struct ElevenLabsBodyTextToSpeechStream: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case applyLanguageTextNormalization = "apply_language_text_normalization"
     case applyTextNormalization = "apply_text_normalization"
+    case audioEffects = "audio_effects"
     case languageCode = "language_code"
     case modelId = "model_id"
     case nextRequestIds = "next_request_ids"

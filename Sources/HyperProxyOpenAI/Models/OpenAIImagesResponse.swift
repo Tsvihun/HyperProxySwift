@@ -16,6 +16,7 @@ public struct OpenAIImagesResponse: Codable, Sendable {
   public var data: [OpenAIImage]?
   public var outputFormat: OpenAIImagesResponseOutputFormat?
   public var quality: OpenAIImagesResponseQuality?
+  public var safetyIdentifier: String?
   public var size: OpenAIImagesResponseSize?
   public var usage: OpenAIImageGenUsage?
 
@@ -25,6 +26,7 @@ public struct OpenAIImagesResponse: Codable, Sendable {
     data: [OpenAIImage]? = nil,
     outputFormat: OpenAIImagesResponseOutputFormat? = nil,
     quality: OpenAIImagesResponseQuality? = nil,
+    safetyIdentifier: String? = nil,
     size: OpenAIImagesResponseSize? = nil,
     usage: OpenAIImageGenUsage? = nil
   ) {
@@ -33,6 +35,7 @@ public struct OpenAIImagesResponse: Codable, Sendable {
     self.data = data
     self.outputFormat = outputFormat
     self.quality = quality
+    self.safetyIdentifier = safetyIdentifier
     self.size = size
     self.usage = usage
   }
@@ -43,6 +46,7 @@ public struct OpenAIImagesResponse: Codable, Sendable {
     case data
     case outputFormat = "output_format"
     case quality
+    case safetyIdentifier = "safety_identifier"
     case size
     case usage
   }

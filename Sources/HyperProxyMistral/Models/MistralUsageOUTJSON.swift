@@ -12,6 +12,7 @@ import HyperProxyCore
 
 public struct MistralUsageOUTJSON: Codable, Sendable {
   public var audio: MistralBasicModelUsageDataJSON
+  public var audioAgents: MistralBasicModelUsageDataJSON
   public var audioCharacters: MistralBasicModelUsageDataJSON
   public var chat: MistralBasicModelUsageDataJSON
   public var completion: MistralBasicModelUsageDataJSON
@@ -32,6 +33,7 @@ public struct MistralUsageOUTJSON: Codable, Sendable {
 
   public init(
     audio: MistralBasicModelUsageDataJSON,
+    audioAgents: MistralBasicModelUsageDataJSON,
     audioCharacters: MistralBasicModelUsageDataJSON,
     chat: MistralBasicModelUsageDataJSON,
     completion: MistralBasicModelUsageDataJSON,
@@ -51,6 +53,7 @@ public struct MistralUsageOUTJSON: Codable, Sendable {
     vibeUsage: Double
   ) {
     self.audio = audio
+    self.audioAgents = audioAgents
     self.audioCharacters = audioCharacters
     self.chat = chat
     self.completion = completion
@@ -72,6 +75,7 @@ public struct MistralUsageOUTJSON: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case audio
+    case audioAgents = "audio_agents"
     case audioCharacters = "audio_characters"
     case chat
     case completion

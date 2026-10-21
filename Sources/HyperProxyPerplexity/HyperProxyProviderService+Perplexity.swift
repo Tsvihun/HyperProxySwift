@@ -67,6 +67,10 @@ extension HyperProxyProviderService where Operation == PerplexityOperation {
   {
     self.call(.contextualizedEmbeddingsV1ContextualizedembeddingsPost)
   }
+  /// `POST v1/decisions`
+  public var decisionsV1DecisionsPost: HyperProxyProviderCall<PerplexityOperation> {
+    self.call(.decisionsV1DecisionsPost)
+  }
   /// `POST v1/embeddings`
   public var embeddingsV1EmbeddingsPost: HyperProxyProviderCall<PerplexityOperation> {
     self.call(.embeddingsV1EmbeddingsPost)

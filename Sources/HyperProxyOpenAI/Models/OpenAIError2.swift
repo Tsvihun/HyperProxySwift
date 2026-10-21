@@ -15,17 +15,23 @@ public struct OpenAIError2: Codable, Sendable {
   public var headers: [String: String]?
   public var message: String
   public var misalignment: OpenAIMisalignmentErrorDetailsResource?
+  public var param: String?
+  public var kind: String?
 
   public init(
     code: String,
     message: String,
     headers: [String: String]? = nil,
-    misalignment: OpenAIMisalignmentErrorDetailsResource? = nil
+    misalignment: OpenAIMisalignmentErrorDetailsResource? = nil,
+    param: String? = nil,
+    kind: String? = nil
   ) {
     self.code = code
     self.headers = headers
     self.message = message
     self.misalignment = misalignment
+    self.param = param
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
@@ -33,5 +39,7 @@ public struct OpenAIError2: Codable, Sendable {
     case headers
     case message
     case misalignment
+    case param
+    case kind = "type"
   }
 }

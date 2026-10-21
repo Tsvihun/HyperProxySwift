@@ -214,6 +214,20 @@ extension MistralAdminCalls {
     return try await call.decoded(MistralUsageOUTJSON.self)
   }
 
+  public func usersApiAdminUsageQueryUsage(
+    _ body: MistralUsageQueryIN,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralUsageQueryOUT {
+    let call = self.service.call(.usersApiAdminUsageQueryUsage)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(MistralUsageQueryOUT.self)
+  }
+
   public func usersApiAdminUserGroupsGetUserGroups(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -420,6 +434,20 @@ extension MistralAdminCalls {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(MistralDeleteOUT.self)
+  }
+
+  public func usersApiAdminUsersDeactivateUser(
+    userId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralDeactivateUserOUT {
+    let call = self.service.call(.usersApiAdminUsersDeactivateUser)
+      .path("user_id", userId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralDeactivateUserOUT.self)
   }
 
   public func usersApiAdminWorkspacesGetWorkspaces(

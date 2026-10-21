@@ -12,9 +12,6 @@ import HyperProxyCore
 
 public enum MistralChatCompletionRequestToolsAnyOf1Item: Codable, Sendable {
   case tool(MistralTool)
-  case webSearchTool(MistralWebSearchTool)
-  case webSearchPremiumTool(MistralWebSearchPremiumTool)
-  case codeInterpreterTool(MistralCodeInterpreterTool)
   case imageGenerationTool(MistralImageGenerationTool)
   case documentLibraryTool(MistralDocumentLibraryTool)
   case customConnector(MistralCustomConnector)
@@ -23,18 +20,6 @@ public enum MistralChatCompletionRequestToolsAnyOf1Item: Codable, Sendable {
     let container = try decoder.singleValueContainer()
     if let value = try? container.decode(MistralTool.self) {
       self = .tool(value)
-      return
-    }
-    if let value = try? container.decode(MistralWebSearchTool.self) {
-      self = .webSearchTool(value)
-      return
-    }
-    if let value = try? container.decode(MistralWebSearchPremiumTool.self) {
-      self = .webSearchPremiumTool(value)
-      return
-    }
-    if let value = try? container.decode(MistralCodeInterpreterTool.self) {
-      self = .codeInterpreterTool(value)
       return
     }
     if let value = try? container.decode(MistralImageGenerationTool.self) {
@@ -52,12 +37,6 @@ public enum MistralChatCompletionRequestToolsAnyOf1Item: Codable, Sendable {
     var container = encoder.singleValueContainer()
     switch self {
     case .tool(let value):
-      try container.encode(value)
-    case .webSearchTool(let value):
-      try container.encode(value)
-    case .webSearchPremiumTool(let value):
-      try container.encode(value)
-    case .codeInterpreterTool(let value):
       try container.encode(value)
     case .imageGenerationTool(let value):
       try container.encode(value)

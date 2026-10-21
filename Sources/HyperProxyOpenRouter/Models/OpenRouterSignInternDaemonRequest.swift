@@ -12,14 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterSignInternDaemonRequest: Codable, Sendable {
   public var bodySha256: String
+  public var route: OpenRouterSignInternDaemonRequestRoute?
 
   public init(
-    bodySha256: String
+    bodySha256: String,
+    route: OpenRouterSignInternDaemonRequestRoute? = nil
   ) {
     self.bodySha256 = bodySha256
+    self.route = route
   }
 
   enum CodingKeys: String, CodingKey {
     case bodySha256
+    case route
   }
 }

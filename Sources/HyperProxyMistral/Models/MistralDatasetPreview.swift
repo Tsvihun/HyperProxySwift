@@ -17,6 +17,7 @@ public struct MistralDatasetPreview: Codable, Sendable {
   public var id: String
   public var name: String
   public var ownerId: String
+  public var slug: String
   public var updatedAt: String
   public var workspaceId: String
 
@@ -27,6 +28,7 @@ public struct MistralDatasetPreview: Codable, Sendable {
     id: String,
     name: String,
     ownerId: String,
+    slug: String,
     updatedAt: String,
     workspaceId: String
   ) {
@@ -36,6 +38,7 @@ public struct MistralDatasetPreview: Codable, Sendable {
     self.id = id
     self.name = name
     self.ownerId = ownerId
+    self.slug = slug
     self.updatedAt = updatedAt
     self.workspaceId = workspaceId
   }
@@ -47,6 +50,7 @@ public struct MistralDatasetPreview: Codable, Sendable {
     case id
     case name
     case ownerId = "owner_id"
+    case slug
     case updatedAt = "updated_at"
     case workspaceId = "workspace_id"
   }

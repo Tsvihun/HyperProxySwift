@@ -12,4 +12,5 @@ import HyperProxyCore
 
 public enum FalListApiKeysResponseKeysItemScope: String, Codable, Hashable, Sendable {
   case aPI = "API"
+  case aDMIN = "ADMIN"
 }

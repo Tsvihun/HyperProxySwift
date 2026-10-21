@@ -50,6 +50,18 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
     return try await call.decoded(ElevenLabsAssetResponse.self)
   }
 
+  public func getAudioEffectsCatalog(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsAudioEffectsCatalogResponseModel {
+    let call = self.call(.getAudioEffectsCatalog)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsAudioEffectsCatalogResponseModel.self)
+  }
+
   public func getAudioIsolationHistory(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -1317,6 +1329,32 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
     return try await prepared.decoded(ElevenLabsEnvironmentVariableResponse.self)
   }
 
+  public func listEnvironments(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsEnvironmentsListResponse {
+    let call = self.call(.listEnvironments)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsEnvironmentsListResponse.self)
+  }
+
+  public func createEnvironment(
+    _ body: ElevenLabsCreateEnvironmentRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsEnvironmentResponse {
+    let call = self.call(.createEnvironment)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(ElevenLabsEnvironmentResponse.self)
+  }
+
   public func handleExotelOutboundCall(
     _ body: ElevenLabsBodyHandleAnOutboundCallViaExotelV1ConvaiExotelOutboundCallPost,
     query: [URLQueryItem] = [],
@@ -2002,6 +2040,20 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
     return try await call.decoded(ElevenLabsGetSIPLogMessagesResponse.self)
   }
 
+  public func createRealtimeSession(
+    _ body: ElevenLabsCreateRealtimeSessionRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsClientSecretResponse {
+    let call = self.call(.createRealtimeSession)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(ElevenLabsClientSecretResponse.self)
+  }
+
   public func getSecretsRoute(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -2220,6 +2272,22 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(ElevenLabsGetTestSuiteInvocationResponseModel.self)
+  }
+
+  public func updateTestInvocationRoute(
+    _ body: ElevenLabsUpdateTestSuiteInvocationRequestModel,
+    testInvocationId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsGetTestSuiteInvocationResponseModel {
+    let call = self.call(.updateTestInvocationRoute)
+      .path("test_invocation_id", testInvocationId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(ElevenLabsGetTestSuiteInvocationResponseModel.self)
   }
 
   public func resubmitTestsRoute(

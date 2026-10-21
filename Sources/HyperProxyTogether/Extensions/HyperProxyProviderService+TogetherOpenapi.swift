@@ -1222,6 +1222,18 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     return try await call.decoded(TogetherDEListModelsResponse.self)
   }
 
+  public func listProjects(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherListProjectsResponse {
+    let call = self.call(.listProjects)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherListProjectsResponse.self)
+  }
+
   public func configServiceListProjectConfigs(
     projectId: String,
     query: [URLQueryItem] = [],
@@ -2768,6 +2780,88 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(TogetherRLTrainingSession.self)
+  }
+
+  public func listShapingJobs(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherShapingJobsList {
+    let call = self.call(.listShapingJobs)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherShapingJobsList.self)
+  }
+
+  public func createQuantizationJob(
+    _ body: TogetherQuantizationRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherQuantizationJob {
+    let call = self.call(.createQuantizationJob)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(TogetherQuantizationJob.self)
+  }
+
+  public func estimateQuantizationJob(
+    _ body: TogetherQuantizationRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherQuantizationEstimate {
+    let call = self.call(.estimateQuantizationJob)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(TogetherQuantizationEstimate.self)
+  }
+
+  public func getShapingJob(
+    id: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherQuantizationJob {
+    let call = self.call(.getShapingJob)
+      .path("id", id)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherQuantizationJob.self)
+  }
+
+  public func cancelShapingJob(
+    id: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherQuantizationJob {
+    let call = self.call(.cancelShapingJob)
+      .path("id", id)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherQuantizationJob.self)
+  }
+
+  public func getShapingEvents(
+    id: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherEventsList {
+    let call = self.call(.getShapingEvents)
+      .path("id", id)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherEventsList.self)
   }
 
   public func supportedModelsServiceGetSupportedModel(

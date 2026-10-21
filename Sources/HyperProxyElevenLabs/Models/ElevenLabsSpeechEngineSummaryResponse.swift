@@ -16,6 +16,7 @@ public struct ElevenLabsSpeechEngineSummaryResponse: Codable, Sendable {
   public var name: String
   public var speechEngineId: String
   public var tags: [String]
+  public var updatedAtUnixSecs: Int
   public var voiceId: String
 
   public init(
@@ -24,6 +25,7 @@ public struct ElevenLabsSpeechEngineSummaryResponse: Codable, Sendable {
     name: String,
     speechEngineId: String,
     tags: [String],
+    updatedAtUnixSecs: Int,
     voiceId: String
   ) {
     self.accessInfo = accessInfo
@@ -31,6 +33,7 @@ public struct ElevenLabsSpeechEngineSummaryResponse: Codable, Sendable {
     self.name = name
     self.speechEngineId = speechEngineId
     self.tags = tags
+    self.updatedAtUnixSecs = updatedAtUnixSecs
     self.voiceId = voiceId
   }
 
@@ -40,6 +43,7 @@ public struct ElevenLabsSpeechEngineSummaryResponse: Codable, Sendable {
     case name
     case speechEngineId = "speech_engine_id"
     case tags
+    case updatedAtUnixSecs = "updated_at_unix_secs"
     case voiceId = "voice_id"
   }
 }

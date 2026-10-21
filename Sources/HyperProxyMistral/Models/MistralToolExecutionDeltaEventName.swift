@@ -16,6 +16,7 @@ public enum MistralToolExecutionDeltaEventName: RawRepresentable, Codable, Hasha
   case codeInterpreter
   case imageGeneration
   case documentLibrary
+  case mistralMcp
   case custom(String)
 
   public init(rawValue: String) {
@@ -30,6 +31,8 @@ public enum MistralToolExecutionDeltaEventName: RawRepresentable, Codable, Hasha
       self = .imageGeneration
     case "document_library":
       self = .documentLibrary
+    case "mistral_mcp":
+      self = .mistralMcp
     default:
       self = .custom(rawValue)
     }
@@ -47,6 +50,8 @@ public enum MistralToolExecutionDeltaEventName: RawRepresentable, Codable, Hasha
       return "image_generation"
     case .documentLibrary:
       return "document_library"
+    case .mistralMcp:
+      return "mistral_mcp"
     case .custom(let value):
       return value
     }

@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIBetaWebSearchActionFind: Codable, Sendable {
   public var pattern: String
   public var kind: OpenAIBetaWebSearchActionFindKind
-  public var url: String
+  public var url: String?
 
   public init(
     pattern: String,
     kind: OpenAIBetaWebSearchActionFindKind,
-    url: String
+    url: String? = nil
   ) {
     self.pattern = pattern
     self.kind = kind

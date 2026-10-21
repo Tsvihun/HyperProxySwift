@@ -23,6 +23,7 @@ public struct OpenAIEditImageBodyJsonParam: Codable, Sendable {
   public var partialImages: Int?
   public var prompt: String
   public var quality: OpenAIEditImageBodyJsonParamQuality?
+  public var safetyIdentifier: String?
   public var size: OpenAIEditImageBodyJsonParamSize?
   public var stream: Bool?
   public var user: String?
@@ -40,6 +41,7 @@ public struct OpenAIEditImageBodyJsonParam: Codable, Sendable {
     outputFormat: OpenAIEditImageBodyJsonParamOutputFormat? = nil,
     partialImages: Int? = nil,
     quality: OpenAIEditImageBodyJsonParamQuality? = nil,
+    safetyIdentifier: String? = nil,
     size: OpenAIEditImageBodyJsonParamSize? = nil,
     stream: Bool? = nil,
     user: String? = nil
@@ -56,6 +58,7 @@ public struct OpenAIEditImageBodyJsonParam: Codable, Sendable {
     self.partialImages = partialImages
     self.prompt = prompt
     self.quality = quality
+    self.safetyIdentifier = safetyIdentifier
     self.size = size
     self.stream = stream
     self.user = user
@@ -74,6 +77,7 @@ public struct OpenAIEditImageBodyJsonParam: Codable, Sendable {
     case partialImages = "partial_images"
     case prompt
     case quality
+    case safetyIdentifier = "safety_identifier"
     case size
     case stream
     case user

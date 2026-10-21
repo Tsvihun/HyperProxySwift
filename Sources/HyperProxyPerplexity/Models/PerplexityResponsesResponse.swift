@@ -17,6 +17,7 @@ public struct PerplexityResponsesResponse: Codable, Sendable {
   public var model: String
   public var object: PerplexityResponsesObjectType
   public var output: [PerplexityOutputItem]
+  public var preset: String?
   public var status: PerplexityStatus
   public var usage: PerplexityResponsesUsage?
 
@@ -28,6 +29,7 @@ public struct PerplexityResponsesResponse: Codable, Sendable {
     output: [PerplexityOutputItem],
     status: PerplexityStatus,
     error: PerplexityErrorInfo? = nil,
+    preset: String? = nil,
     usage: PerplexityResponsesUsage? = nil
   ) {
     self.createdAt = createdAt
@@ -36,6 +38,7 @@ public struct PerplexityResponsesResponse: Codable, Sendable {
     self.model = model
     self.object = object
     self.output = output
+    self.preset = preset
     self.status = status
     self.usage = usage
   }
@@ -47,6 +50,7 @@ public struct PerplexityResponsesResponse: Codable, Sendable {
     case model
     case object
     case output
+    case preset
     case status
     case usage
   }

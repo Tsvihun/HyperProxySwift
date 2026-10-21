@@ -28,8 +28,9 @@ public enum OpenRouterMessagesContentBlockStartEventContentBlock: Codable, Senda
   case anthropicAdvisorToolResult(OpenRouterAnthropicAdvisorToolResult)
   case oRAnthropicShellToolResult(OpenRouterORAnthropicShellToolResult)
   case oRAnthropicBashToolResult(OpenRouterORAnthropicBashToolResult)
-  case messagesContentBlockStartEventContentBlockAnyOf17(
-    OpenRouterMessagesContentBlockStartEventContentBlockAnyOf17)
+  case oRAnthropicToolSearchResult(OpenRouterORAnthropicToolSearchResult)
+  case messagesContentBlockStartEventContentBlockAnyOf18(
+    OpenRouterMessagesContentBlockStartEventContentBlockAnyOf18)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -98,8 +99,12 @@ public enum OpenRouterMessagesContentBlockStartEventContentBlock: Codable, Senda
       self = .oRAnthropicBashToolResult(value)
       return
     }
-    self = .messagesContentBlockStartEventContentBlockAnyOf17(
-      try container.decode(OpenRouterMessagesContentBlockStartEventContentBlockAnyOf17.self))
+    if let value = try? container.decode(OpenRouterORAnthropicToolSearchResult.self) {
+      self = .oRAnthropicToolSearchResult(value)
+      return
+    }
+    self = .messagesContentBlockStartEventContentBlockAnyOf18(
+      try container.decode(OpenRouterMessagesContentBlockStartEventContentBlockAnyOf18.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -137,7 +142,9 @@ public enum OpenRouterMessagesContentBlockStartEventContentBlock: Codable, Senda
       try container.encode(value)
     case .oRAnthropicBashToolResult(let value):
       try container.encode(value)
-    case .messagesContentBlockStartEventContentBlockAnyOf17(let value):
+    case .oRAnthropicToolSearchResult(let value):
+      try container.encode(value)
+    case .messagesContentBlockStartEventContentBlockAnyOf18(let value):
       try container.encode(value)
     }
   }

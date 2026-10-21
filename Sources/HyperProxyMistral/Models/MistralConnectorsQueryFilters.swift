@@ -11,19 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralConnectorsQueryFilters: Codable, Sendable {
-  public var active: Bool?
   public var supportsMcp: Bool?
 
   public init(
-    active: Bool? = nil,
     supportsMcp: Bool? = nil
   ) {
-    self.active = active
     self.supportsMcp = supportsMcp
   }
 
   enum CodingKeys: String, CodingKey {
-    case active
     case supportsMcp = "supports_mcp"
   }
 }

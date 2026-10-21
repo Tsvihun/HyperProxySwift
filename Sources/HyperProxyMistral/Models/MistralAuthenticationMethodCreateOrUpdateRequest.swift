@@ -11,22 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralAuthenticationMethodCreateOrUpdateRequest: Codable, Sendable {
-  public var authDirection: MistralAuthDirection?
   public var globalHeaders: [String: MistralGlobalHeaderValue]?
   public var headers: [MistralConnectorAuthenticationHeader]?
-  public var methodType: MistralAuthenticationMethodCreateOrUpdateRequestMethodType
+  public var methodType: MistralAuthenticationType
   public var oauth2MetadataSecrets: MistralOauth2MetadataSecrets?
   public var oauth2ServerMetadata: MistralExtendedOAuthServerMetadata?
 
   public init(
-    methodType: MistralAuthenticationMethodCreateOrUpdateRequestMethodType,
-    authDirection: MistralAuthDirection? = nil,
+    methodType: MistralAuthenticationType,
     globalHeaders: [String: MistralGlobalHeaderValue]? = nil,
     headers: [MistralConnectorAuthenticationHeader]? = nil,
     oauth2MetadataSecrets: MistralOauth2MetadataSecrets? = nil,
     oauth2ServerMetadata: MistralExtendedOAuthServerMetadata? = nil
   ) {
-    self.authDirection = authDirection
     self.globalHeaders = globalHeaders
     self.headers = headers
     self.methodType = methodType
@@ -35,7 +32,6 @@ public struct MistralAuthenticationMethodCreateOrUpdateRequest: Codable, Sendabl
   }
 
   enum CodingKeys: String, CodingKey {
-    case authDirection = "auth_direction"
     case globalHeaders = "global_headers"
     case headers
     case methodType = "method_type"

@@ -13,5 +13,7 @@ import HyperProxyCore
 public enum MistralActorType: String, Codable, Hashable, Sendable {
   case hUMAN = "HUMAN"
   case aPIKEY = "API_KEY"
+  case aDMINAPIKEY = "ADMIN_API_KEY"
+  case sERVICEACCOUNT = "SERVICE_ACCOUNT"
   case oTHER = "OTHER"
 }

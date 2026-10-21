@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsListChatResponseTestsRouteParameters: Codable, Sendable {
+  public var createdByUserId: String?
   public var cursor: String?
   public var includeFolders: Bool?
   public var pageSize: Int?
@@ -22,6 +23,7 @@ public struct ElevenLabsListChatResponseTestsRouteParameters: Codable, Sendable 
   public var xiApiKey: String?
 
   public init(
+    createdByUserId: String? = nil,
     cursor: String? = nil,
     includeFolders: Bool? = nil,
     pageSize: Int? = nil,
@@ -32,6 +34,7 @@ public struct ElevenLabsListChatResponseTestsRouteParameters: Codable, Sendable 
     types: [ElevenLabsTestType]? = nil,
     xiApiKey: String? = nil
   ) {
+    self.createdByUserId = createdByUserId
     self.cursor = cursor
     self.includeFolders = includeFolders
     self.pageSize = pageSize
@@ -44,6 +47,7 @@ public struct ElevenLabsListChatResponseTestsRouteParameters: Codable, Sendable 
   }
 
   enum CodingKeys: String, CodingKey {
+    case createdByUserId = "created_by_user_id"
     case cursor
     case includeFolders = "include_folders"
     case pageSize = "page_size"

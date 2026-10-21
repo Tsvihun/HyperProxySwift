@@ -53,6 +53,10 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
   public var getAsset: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.getAsset)
   }
+  /// `GET v1/audio-effects/catalog`
+  public var getAudioEffectsCatalog: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.getAudioEffectsCatalog)
+  }
   /// `POST v1/audio-isolation`
   public var audioIsolationCreate: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.audioIsolationCreate)
@@ -449,6 +453,18 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
   public var updateEnvironmentVariable: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.updateEnvironmentVariable)
   }
+  /// `GET v1/convai/environments`
+  public var listEnvironments: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.listEnvironments)
+  }
+  /// `POST v1/convai/environments`
+  public var createEnvironment: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.createEnvironment)
+  }
+  /// `DELETE v1/convai/environments/{environment}`
+  public var deleteEnvironment: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.deleteEnvironment)
+  }
   /// `POST v1/convai/exotel/outbound-call`
   public var handleExotelOutboundCall: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.handleExotelOutboundCall)
@@ -661,6 +677,10 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
   public var listSipMessages: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.listSipMessages)
   }
+  /// `POST v1/convai/realtime/client_secrets`
+  public var createRealtimeSession: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.createRealtimeSession)
+  }
   /// `GET v1/convai/secrets`
   public var getSecretsRoute: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.getSecretsRoute)
@@ -732,6 +752,10 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
   /// `GET v1/convai/test-invocations/{test_invocation_id}`
   public var getTestInvocationRoute: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.getTestInvocationRoute)
+  }
+  /// `PATCH v1/convai/test-invocations/{test_invocation_id}`
+  public var updateTestInvocationRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.updateTestInvocationRoute)
   }
   /// `POST v1/convai/test-invocations/{test_invocation_id}/cancel`
   public var cancelTestInvocationRoute: HyperProxyProviderCall<ElevenLabsOperation> {
@@ -1253,10 +1277,6 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
   public var speechToSpeechCreate: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.speechToSpeechCreate)
   }
-  /// `POST v1/speech-to-speech/{voice_id}/stream`
-  public var speechToSpeechStream: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.speechToSpeechStream)
-  }
   /// `POST v1/speech-to-text`
   public var speechToTextCreate: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.speechToTextCreate)
@@ -1412,6 +1432,14 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
   /// `GET v1/user/subscription`
   public var getUserSubscriptionInfo: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.getUserSubscriptionInfo)
+  }
+  /// `POST v1/voice-changer/{voice_id}`
+  public var speechToSpeechFull: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.speechToSpeechFull)
+  }
+  /// `POST v1/voice-changer/{voice_id}/stream`
+  public var speechToSpeechStream: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.speechToSpeechStream)
   }
   /// `GET v1/voices`
   public var getVoices: HyperProxyProviderCall<ElevenLabsOperation> {

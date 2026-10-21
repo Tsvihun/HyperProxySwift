@@ -17,6 +17,5 @@ public enum ElevenLabsToolType: String, Codable, Hashable, Sendable {
   case mcp = "mcp"
   case workflow = "workflow"
   case apiIntegrationWebhook = "api_integration_webhook"
-  case apiIntegrationMcp = "api_integration_mcp"
   case smb = "smb"
 }

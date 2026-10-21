@@ -57,6 +57,14 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
   public var createAgent: HyperProxyProviderCall<OpenAIOperation> {
     self.call(.createAgent)
   }
+  /// `GET v1/agents/environments`
+  public var listAgentEnvironments: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.listAgentEnvironments)
+  }
+  /// `POST v1/agents/environments`
+  public var createAgentEnvironment: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.createAgentEnvironment)
+  }
   /// `GET v1/agents/environments/templates`
   public var listAgentEnvironmentTemplates: HyperProxyProviderCall<OpenAIOperation> {
     self.call(.listAgentEnvironmentTemplates)

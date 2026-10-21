@@ -16,7 +16,6 @@ public struct MistralAdminUserGroupOut: Codable, Sendable {
   public var name: String
   public var organizationRole: String?
   public var parentGroupIds: [String]?
-  public var targetType: MistralUserGroupTargetType?
   public var uuid: String
 
   public init(
@@ -25,15 +24,13 @@ public struct MistralAdminUserGroupOut: Codable, Sendable {
     uuid: String,
     externallyManaged: Bool? = nil,
     organizationRole: String? = nil,
-    parentGroupIds: [String]? = nil,
-    targetType: MistralUserGroupTargetType? = nil
+    parentGroupIds: [String]? = nil
   ) {
     self.description = description
     self.externallyManaged = externallyManaged
     self.name = name
     self.organizationRole = organizationRole
     self.parentGroupIds = parentGroupIds
-    self.targetType = targetType
     self.uuid = uuid
   }
 
@@ -43,7 +40,6 @@ public struct MistralAdminUserGroupOut: Codable, Sendable {
     case name
     case organizationRole = "organization_role"
     case parentGroupIds = "parent_group_ids"
-    case targetType = "target_type"
     case uuid
   }
 }

@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsBodyUpdateMemberV1WorkspaceMembersPost: Codable, Sendable {
+  public var allowDowngradeToBasicSeat: Bool?
   public var email: String
   public var isLocked: Bool?
   public var workspaceRole: ElevenLabsSeatType?
@@ -18,10 +19,12 @@ public struct ElevenLabsBodyUpdateMemberV1WorkspaceMembersPost: Codable, Sendabl
 
   public init(
     email: String,
+    allowDowngradeToBasicSeat: Bool? = nil,
     isLocked: Bool? = nil,
     workspaceRole: ElevenLabsSeatType? = nil,
     workspaceSeatType: ElevenLabsSeatType? = nil
   ) {
+    self.allowDowngradeToBasicSeat = allowDowngradeToBasicSeat
     self.email = email
     self.isLocked = isLocked
     self.workspaceRole = workspaceRole
@@ -29,6 +32,7 @@ public struct ElevenLabsBodyUpdateMemberV1WorkspaceMembersPost: Codable, Sendabl
   }
 
   enum CodingKeys: String, CodingKey {
+    case allowDowngradeToBasicSeat = "allow_downgrade_to_basic_seat"
     case email
     case isLocked = "is_locked"
     case workspaceRole = "workspace_role"

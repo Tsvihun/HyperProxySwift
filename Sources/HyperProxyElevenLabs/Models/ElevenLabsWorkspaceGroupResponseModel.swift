@@ -12,6 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsWorkspaceGroupResponseModel: Codable, Sendable {
   public var characterCount: Int?
+  public var groupConcurrencyLimit: ElevenLabsWorkspaceGroupResponseModelGroupConcurrencyLimit?
+  public var groupDubbingConcurrencyLimit:
+    ElevenLabsWorkspaceGroupResponseModelGroupDubbingConcurrencyLimit?
+  public var groupMusicConcurrencyLimit:
+    ElevenLabsWorkspaceGroupResponseModelGroupMusicConcurrencyLimit?
   public var groupPvcLimit: ElevenLabsWorkspaceGroupResponseModelGroupPvcLimit?
   public var groupUsageLimit: ElevenLabsWorkspaceGroupResponseModelGroupUsageLimit?
   public var id: String
@@ -28,6 +33,11 @@ public struct ElevenLabsWorkspaceGroupResponseModel: Codable, Sendable {
     name: String,
     permissions: [ElevenLabsWorkspaceGroupPermission]?,
     characterCount: Int? = nil,
+    groupConcurrencyLimit: ElevenLabsWorkspaceGroupResponseModelGroupConcurrencyLimit? = nil,
+    groupDubbingConcurrencyLimit:
+      ElevenLabsWorkspaceGroupResponseModelGroupDubbingConcurrencyLimit? = nil,
+    groupMusicConcurrencyLimit: ElevenLabsWorkspaceGroupResponseModelGroupMusicConcurrencyLimit? =
+      nil,
     groupPvcLimit: ElevenLabsWorkspaceGroupResponseModelGroupPvcLimit? = nil,
     groupUsageLimit: ElevenLabsWorkspaceGroupResponseModelGroupUsageLimit? = nil,
     isScimSynced: Bool? = nil,
@@ -35,6 +45,9 @@ public struct ElevenLabsWorkspaceGroupResponseModel: Codable, Sendable {
     scimGroup: ElevenLabsScimGroupResponseModel? = nil
   ) {
     self.characterCount = characterCount
+    self.groupConcurrencyLimit = groupConcurrencyLimit
+    self.groupDubbingConcurrencyLimit = groupDubbingConcurrencyLimit
+    self.groupMusicConcurrencyLimit = groupMusicConcurrencyLimit
     self.groupPvcLimit = groupPvcLimit
     self.groupUsageLimit = groupUsageLimit
     self.id = id
@@ -48,6 +61,9 @@ public struct ElevenLabsWorkspaceGroupResponseModel: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case characterCount = "character_count"
+    case groupConcurrencyLimit = "group_concurrency_limit"
+    case groupDubbingConcurrencyLimit = "group_dubbing_concurrency_limit"
+    case groupMusicConcurrencyLimit = "group_music_concurrency_limit"
     case groupPvcLimit = "group_pvc_limit"
     case groupUsageLimit = "group_usage_limit"
     case id

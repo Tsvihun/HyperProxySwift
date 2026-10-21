@@ -18,6 +18,7 @@ public struct ElevenLabsAgentSummaryResponseModel: Codable, Sendable {
   public var lastCallTimeUnixSecs: Int?
   public var name: String
   public var tags: [String]
+  public var updatedAtUnixSecs: Int
   public var voiceId: String
 
   public init(
@@ -26,6 +27,7 @@ public struct ElevenLabsAgentSummaryResponseModel: Codable, Sendable {
     createdAtUnixSecs: Int,
     name: String,
     tags: [String],
+    updatedAtUnixSecs: Int,
     voiceId: String,
     archived: Bool? = nil,
     lastCallTimeUnixSecs: Int? = nil
@@ -37,6 +39,7 @@ public struct ElevenLabsAgentSummaryResponseModel: Codable, Sendable {
     self.lastCallTimeUnixSecs = lastCallTimeUnixSecs
     self.name = name
     self.tags = tags
+    self.updatedAtUnixSecs = updatedAtUnixSecs
     self.voiceId = voiceId
   }
 
@@ -48,6 +51,7 @@ public struct ElevenLabsAgentSummaryResponseModel: Codable, Sendable {
     case lastCallTimeUnixSecs = "last_call_time_unix_secs"
     case name
     case tags
+    case updatedAtUnixSecs = "updated_at_unix_secs"
     case voiceId = "voice_id"
   }
 }

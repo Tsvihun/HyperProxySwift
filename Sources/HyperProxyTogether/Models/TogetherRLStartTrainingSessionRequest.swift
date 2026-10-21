@@ -17,7 +17,6 @@ public struct TogetherRLStartTrainingSessionRequest: Codable, Sendable {
   public var metadata: TogetherRLTrainingSessionMetadata?
   public var modelResourcesId: String
   public var resumeFromCheckpointId: String?
-  public var resumeFromHfCheckpoint: String?
 
   public init(
     modelResourcesId: String,
@@ -25,8 +24,7 @@ public struct TogetherRLStartTrainingSessionRequest: Codable, Sendable {
     loadOptimizer: Bool? = nil,
     loraConfig: TogetherRLLoraConfig? = nil,
     metadata: TogetherRLTrainingSessionMetadata? = nil,
-    resumeFromCheckpointId: String? = nil,
-    resumeFromHfCheckpoint: String? = nil
+    resumeFromCheckpointId: String? = nil
   ) {
     self.displayName = displayName
     self.loadOptimizer = loadOptimizer
@@ -34,7 +32,6 @@ public struct TogetherRLStartTrainingSessionRequest: Codable, Sendable {
     self.metadata = metadata
     self.modelResourcesId = modelResourcesId
     self.resumeFromCheckpointId = resumeFromCheckpointId
-    self.resumeFromHfCheckpoint = resumeFromHfCheckpoint
   }
 
   enum CodingKeys: String, CodingKey {
@@ -44,6 +41,5 @@ public struct TogetherRLStartTrainingSessionRequest: Codable, Sendable {
     case metadata
     case modelResourcesId = "model_resources_id"
     case resumeFromCheckpointId = "resume_from_checkpoint_id"
-    case resumeFromHfCheckpoint = "resume_from_hf_checkpoint"
   }
 }

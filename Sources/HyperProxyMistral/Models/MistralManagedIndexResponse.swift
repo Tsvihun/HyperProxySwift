@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct MistralManagedIndexResponse: Codable, Sendable {
   public var config: MistralManagedIndexConfig
   public var createdAt: String?
+  public var creatorId: String
   public var id: String
   public var modifiedAt: String?
   public var name: String
@@ -22,6 +23,7 @@ public struct MistralManagedIndexResponse: Codable, Sendable {
 
   public init(
     config: MistralManagedIndexConfig,
+    creatorId: String,
     id: String,
     name: String,
     schema: MistralManagedIndexFields,
@@ -32,6 +34,7 @@ public struct MistralManagedIndexResponse: Codable, Sendable {
   ) {
     self.config = config
     self.createdAt = createdAt
+    self.creatorId = creatorId
     self.id = id
     self.modifiedAt = modifiedAt
     self.name = name
@@ -43,6 +46,7 @@ public struct MistralManagedIndexResponse: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case config
     case createdAt = "created_at"
+    case creatorId = "creator_id"
     case id
     case modifiedAt = "modified_at"
     case name

@@ -16,12 +16,14 @@ public struct TogetherDEAdapterEntry: Codable, Sendable {
   public var desiredRevision: String?
   public var desiredRevisionId: String
   public var etag: String
+  public var id: String
   public var perCluster: [TogetherDEDeploymentAdapterStatus]
 
   public init(
     adapterModelId: String,
     desiredRevisionId: String,
     etag: String,
+    id: String,
     perCluster: [TogetherDEDeploymentAdapterStatus],
     adapterModel: String? = nil,
     desiredRevision: String? = nil
@@ -31,6 +33,7 @@ public struct TogetherDEAdapterEntry: Codable, Sendable {
     self.desiredRevision = desiredRevision
     self.desiredRevisionId = desiredRevisionId
     self.etag = etag
+    self.id = id
     self.perCluster = perCluster
   }
 
@@ -40,6 +43,7 @@ public struct TogetherDEAdapterEntry: Codable, Sendable {
     case desiredRevision
     case desiredRevisionId
     case etag
+    case id
     case perCluster
   }
 }

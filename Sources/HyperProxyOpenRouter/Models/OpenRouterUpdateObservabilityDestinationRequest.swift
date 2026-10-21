@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct OpenRouterUpdateObservabilityDestinationRequest: Codable, Sendable {
   public var apiKeyHashes: [String]?
   public var broadcastGenerationCost: Bool?
+  public var broadcastGenerationCostAllocation: Bool?
   public var broadcastGenerationIdentity: Bool?
   public var broadcastGenerationRequestContext: Bool?
   public var config: [String: HyperProxyJSONValue]?
@@ -26,6 +27,7 @@ public struct OpenRouterUpdateObservabilityDestinationRequest: Codable, Sendable
   public init(
     apiKeyHashes: [String]? = nil,
     broadcastGenerationCost: Bool? = nil,
+    broadcastGenerationCostAllocation: Bool? = nil,
     broadcastGenerationIdentity: Bool? = nil,
     broadcastGenerationRequestContext: Bool? = nil,
     config: [String: HyperProxyJSONValue]? = nil,
@@ -38,6 +40,7 @@ public struct OpenRouterUpdateObservabilityDestinationRequest: Codable, Sendable
   ) {
     self.apiKeyHashes = apiKeyHashes
     self.broadcastGenerationCost = broadcastGenerationCost
+    self.broadcastGenerationCostAllocation = broadcastGenerationCostAllocation
     self.broadcastGenerationIdentity = broadcastGenerationIdentity
     self.broadcastGenerationRequestContext = broadcastGenerationRequestContext
     self.config = config
@@ -52,6 +55,7 @@ public struct OpenRouterUpdateObservabilityDestinationRequest: Codable, Sendable
   enum CodingKeys: String, CodingKey {
     case apiKeyHashes = "api_key_hashes"
     case broadcastGenerationCost = "broadcast_generation_cost"
+    case broadcastGenerationCostAllocation = "broadcast_generation_cost_allocation"
     case broadcastGenerationIdentity = "broadcast_generation_identity"
     case broadcastGenerationRequestContext = "broadcast_generation_request_context"
     case config

@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsBodyTextToDialogueFullWithTimestamps: Codable, Sendable {
   public var applyTextNormalization:
     ElevenLabsBodyTextToDialogueFullWithTimestampsApplyTextNormalization?
+  public var audioEffects: ElevenLabsEffectsSpecInput?
   public var futureText: String?
   public var inputs: [ElevenLabsDialogueInput]
   public var languageCode: String?
@@ -30,6 +31,7 @@ public struct ElevenLabsBodyTextToDialogueFullWithTimestamps: Codable, Sendable 
     inputs: [ElevenLabsDialogueInput],
     applyTextNormalization: ElevenLabsBodyTextToDialogueFullWithTimestampsApplyTextNormalization? =
       nil,
+    audioEffects: ElevenLabsEffectsSpecInput? = nil,
     futureText: String? = nil,
     languageCode: String? = nil,
     modelId: String? = nil,
@@ -43,6 +45,7 @@ public struct ElevenLabsBodyTextToDialogueFullWithTimestamps: Codable, Sendable 
     usePvcAsIvc: Bool? = nil
   ) {
     self.applyTextNormalization = applyTextNormalization
+    self.audioEffects = audioEffects
     self.futureText = futureText
     self.inputs = inputs
     self.languageCode = languageCode
@@ -58,6 +61,7 @@ public struct ElevenLabsBodyTextToDialogueFullWithTimestamps: Codable, Sendable 
 
   enum CodingKeys: String, CodingKey {
     case applyTextNormalization = "apply_text_normalization"
+    case audioEffects = "audio_effects"
     case futureText = "future_text"
     case inputs
     case languageCode = "language_code"

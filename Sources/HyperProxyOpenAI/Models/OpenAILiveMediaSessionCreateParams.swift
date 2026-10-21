@@ -18,6 +18,7 @@ public struct OpenAILiveMediaSessionCreateParams: Codable, Sendable {
   public var instructions: String?
   public var model: OpenAIModelIdsLive
   public var store: Bool?
+  public var triggers: OpenAITriggers?
 
   public init(
     model: OpenAIModelIdsLive,
@@ -26,7 +27,8 @@ public struct OpenAILiveMediaSessionCreateParams: Codable, Sendable {
     delegation: OpenAIDelegation? = nil,
     input: OpenAIInput? = nil,
     instructions: String? = nil,
-    store: Bool? = nil
+    store: Bool? = nil,
+    triggers: OpenAITriggers? = nil
   ) {
     self.audio = audio
     self.client = client
@@ -35,6 +37,7 @@ public struct OpenAILiveMediaSessionCreateParams: Codable, Sendable {
     self.instructions = instructions
     self.model = model
     self.store = store
+    self.triggers = triggers
   }
 
   enum CodingKeys: String, CodingKey {
@@ -45,5 +48,6 @@ public struct OpenAILiveMediaSessionCreateParams: Codable, Sendable {
     case instructions
     case model
     case store
+    case triggers
   }
 }

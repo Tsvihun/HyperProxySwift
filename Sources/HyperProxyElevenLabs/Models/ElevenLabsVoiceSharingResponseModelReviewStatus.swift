@@ -14,6 +14,7 @@ public enum ElevenLabsVoiceSharingResponseModelReviewStatus: String, Codable, Ha
   case notRequested = "not_requested"
   case pending = "pending"
   case declined = "declined"
+  case declinedResubmittable = "declined_resubmittable"
   case allowed = "allowed"
   case allowedWithChanges = "allowed_with_changes"
 }

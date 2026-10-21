@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsAgentBranchResponse: Codable, Sendable {
   public var accessInfo: ElevenLabsResourceAccessInfo?
   public var agentId: String
+  public var autoRebase: Bool?
   public var createdAt: Int
   public var currentLivePercentage: Double?
   public var description: String
@@ -33,6 +34,7 @@ public struct ElevenLabsAgentBranchResponse: Codable, Sendable {
     lastCommittedAt: Int,
     name: String,
     accessInfo: ElevenLabsResourceAccessInfo? = nil,
+    autoRebase: Bool? = nil,
     currentLivePercentage: Double? = nil,
     mostRecentVersions: [ElevenLabsAgentVersionMetadata]? = nil,
     parentBranch: ElevenLabsAgentBranchBasicInfo? = nil,
@@ -40,6 +42,7 @@ public struct ElevenLabsAgentBranchResponse: Codable, Sendable {
   ) {
     self.accessInfo = accessInfo
     self.agentId = agentId
+    self.autoRebase = autoRebase
     self.createdAt = createdAt
     self.currentLivePercentage = currentLivePercentage
     self.description = description
@@ -55,6 +58,7 @@ public struct ElevenLabsAgentBranchResponse: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case accessInfo = "access_info"
     case agentId = "agent_id"
+    case autoRebase = "auto_rebase"
     case createdAt = "created_at"
     case currentLivePercentage = "current_live_percentage"
     case description

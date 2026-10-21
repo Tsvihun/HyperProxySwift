@@ -12,14 +12,18 @@ import HyperProxyCore
 
 public struct OpenAIBetaPromptCacheBreakpointParam: Codable, Sendable {
   public var mode: OpenAIBetaPromptCacheBreakpointParamMode
+  public var ttl: OpenAIBetaPromptCacheBreakpointParamTtl?
 
   public init(
-    mode: OpenAIBetaPromptCacheBreakpointParamMode
+    mode: OpenAIBetaPromptCacheBreakpointParamMode,
+    ttl: OpenAIBetaPromptCacheBreakpointParamTtl? = nil
   ) {
     self.mode = mode
+    self.ttl = ttl
   }
 
   enum CodingKeys: String, CodingKey {
     case mode
+    case ttl
   }
 }

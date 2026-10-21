@@ -14,20 +14,28 @@ public struct OpenAIBetaResponseErrorAnyOf1: Codable, Sendable {
   public var code: OpenAIBetaResponseErrorCode
   public var message: String
   public var misalignment: OpenAIBetaMisalignmentErrorDetailsResource?
+  public var param: String?
+  public var kind: String?
 
   public init(
     code: OpenAIBetaResponseErrorCode,
     message: String,
-    misalignment: OpenAIBetaMisalignmentErrorDetailsResource? = nil
+    misalignment: OpenAIBetaMisalignmentErrorDetailsResource? = nil,
+    param: String? = nil,
+    kind: String? = nil
   ) {
     self.code = code
     self.message = message
     self.misalignment = misalignment
+    self.param = param
+    self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case code
     case message
     case misalignment
+    case param
+    case kind = "type"
   }
 }

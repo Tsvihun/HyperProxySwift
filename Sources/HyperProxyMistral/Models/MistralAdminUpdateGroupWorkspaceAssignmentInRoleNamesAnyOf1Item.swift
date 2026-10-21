@@ -24,4 +24,5 @@ public enum MistralAdminUpdateGroupWorkspaceAssignmentInRoleNamesAnyOf1Item: Str
   case workspaceAdmin = "workspace_admin"
   case observabilityViewer = "observability_viewer"
   case workflowExecutor = "workflow_executor"
+  case member = "member"
 }

@@ -15,6 +15,7 @@ public struct OpenAIVoiceResource: Codable, Sendable {
   public var id: String
   public var name: String
   public var object: OpenAIVoiceResourceObject
+  public var prompt: String?
   public var kind: OpenAIVoiceResourceKind
 
   public init(
@@ -22,12 +23,14 @@ public struct OpenAIVoiceResource: Codable, Sendable {
     id: String,
     name: String,
     object: OpenAIVoiceResourceObject,
-    kind: OpenAIVoiceResourceKind
+    kind: OpenAIVoiceResourceKind,
+    prompt: String? = nil
   ) {
     self.createdAt = createdAt
     self.id = id
     self.name = name
     self.object = object
+    self.prompt = prompt
     self.kind = kind
   }
 
@@ -36,6 +39,7 @@ public struct OpenAIVoiceResource: Codable, Sendable {
     case id
     case name
     case object
+    case prompt
     case kind = "type"
   }
 }

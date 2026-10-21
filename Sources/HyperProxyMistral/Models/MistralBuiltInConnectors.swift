@@ -16,4 +16,5 @@ public enum MistralBuiltInConnectors: String, Codable, Hashable, Sendable {
   case codeInterpreter = "code_interpreter"
   case imageGeneration = "image_generation"
   case documentLibrary = "document_library"
+  case mistralMcp = "mistral_mcp"
 }

@@ -11,19 +11,27 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterBaseResponsesResultToolsItemOneOf1AllOf2: Codable, Sendable {
+  public var allowedCallers: [OpenRouterBaseResponsesResultToolsItemOneOf1AllOf2AllowedCallersItem]?
   public var async: Bool?
   public var deferLoading: Bool?
+  public var outputSchema: [String: HyperProxyJSONValue]?
 
   public init(
+    allowedCallers: [OpenRouterBaseResponsesResultToolsItemOneOf1AllOf2AllowedCallersItem]? = nil,
     async: Bool? = nil,
-    deferLoading: Bool? = nil
+    deferLoading: Bool? = nil,
+    outputSchema: [String: HyperProxyJSONValue]? = nil
   ) {
+    self.allowedCallers = allowedCallers
     self.async = async
     self.deferLoading = deferLoading
+    self.outputSchema = outputSchema
   }
 
   enum CodingKeys: String, CodingKey {
+    case allowedCallers = "allowed_callers"
     case async
     case deferLoading = "defer_loading"
+    case outputSchema = "output_schema"
   }
 }

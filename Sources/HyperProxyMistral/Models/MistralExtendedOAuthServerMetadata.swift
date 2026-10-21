@@ -12,6 +12,8 @@ import HyperProxyCore
 
 public struct MistralExtendedOAuthServerMetadata: Codable, Sendable {
   public var authorizationEndpoint: String?
+  public var authorizationGrantProfilesSupported: [String]?
+  public var authorizationResponseIssParameterSupported: Bool?
   public var clientIdMetadataDocumentSupported: Bool?
   public var codeChallengeMethodsSupported: [String]?
   public var grantTypesSupported: [String]?
@@ -41,6 +43,8 @@ public struct MistralExtendedOAuthServerMetadata: Codable, Sendable {
     issuer: String,
     tokenEndpoint: String,
     authorizationEndpoint: String? = nil,
+    authorizationGrantProfilesSupported: [String]? = nil,
+    authorizationResponseIssParameterSupported: Bool? = nil,
     clientIdMetadataDocumentSupported: Bool? = nil,
     codeChallengeMethodsSupported: [String]? = nil,
     grantTypesSupported: [String]? = nil,
@@ -65,6 +69,8 @@ public struct MistralExtendedOAuthServerMetadata: Codable, Sendable {
     xSource: MistralOAuthMetadataSource? = nil
   ) {
     self.authorizationEndpoint = authorizationEndpoint
+    self.authorizationGrantProfilesSupported = authorizationGrantProfilesSupported
+    self.authorizationResponseIssParameterSupported = authorizationResponseIssParameterSupported
     self.clientIdMetadataDocumentSupported = clientIdMetadataDocumentSupported
     self.codeChallengeMethodsSupported = codeChallengeMethodsSupported
     self.grantTypesSupported = grantTypesSupported
@@ -95,6 +101,9 @@ public struct MistralExtendedOAuthServerMetadata: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case authorizationEndpoint = "authorization_endpoint"
+    case authorizationGrantProfilesSupported = "authorization_grant_profiles_supported"
+    case authorizationResponseIssParameterSupported =
+      "authorization_response_iss_parameter_supported"
     case clientIdMetadataDocumentSupported = "client_id_metadata_document_supported"
     case codeChallengeMethodsSupported = "code_challenge_methods_supported"
     case grantTypesSupported = "grant_types_supported"

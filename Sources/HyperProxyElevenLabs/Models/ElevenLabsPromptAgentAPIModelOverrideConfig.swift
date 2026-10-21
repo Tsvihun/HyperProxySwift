@@ -16,19 +16,22 @@ public struct ElevenLabsPromptAgentAPIModelOverrideConfig: Codable, Sendable {
   public var nativeMcpServerIds: Bool?
   public var prompt: Bool?
   public var toolIds: Bool?
+  public var toolIdsStrict: Bool?
 
   public init(
     knowledgeBase: Bool? = nil,
     llm: Bool? = nil,
     nativeMcpServerIds: Bool? = nil,
     prompt: Bool? = nil,
-    toolIds: Bool? = nil
+    toolIds: Bool? = nil,
+    toolIdsStrict: Bool? = nil
   ) {
     self.knowledgeBase = knowledgeBase
     self.llm = llm
     self.nativeMcpServerIds = nativeMcpServerIds
     self.prompt = prompt
     self.toolIds = toolIds
+    self.toolIdsStrict = toolIdsStrict
   }
 
   enum CodingKeys: String, CodingKey {
@@ -37,5 +40,6 @@ public struct ElevenLabsPromptAgentAPIModelOverrideConfig: Codable, Sendable {
     case nativeMcpServerIds = "native_mcp_server_ids"
     case prompt
     case toolIds = "tool_ids"
+    case toolIdsStrict = "tool_ids_strict"
   }
 }

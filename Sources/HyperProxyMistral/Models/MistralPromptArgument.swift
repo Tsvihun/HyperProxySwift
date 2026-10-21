@@ -14,20 +14,24 @@ public struct MistralPromptArgument: Codable, Sendable {
   public var description: String?
   public var name: String
   public var requiredValue: Bool?
+  public var title: String?
 
   public init(
     name: String,
     description: String? = nil,
-    requiredValue: Bool? = nil
+    requiredValue: Bool? = nil,
+    title: String? = nil
   ) {
     self.description = description
     self.name = name
     self.requiredValue = requiredValue
+    self.title = title
   }
 
   enum CodingKeys: String, CodingKey {
     case description
     case name
     case requiredValue = "required"
+    case title
   }
 }

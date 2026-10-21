@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherRLInferenceCheckpointResult: Codable, Sendable {
-  public var modelName: String
+  public var checkpoint: TogetherRLInferenceCheckpoint
 
   public init(
-    modelName: String
+    checkpoint: TogetherRLInferenceCheckpoint
   ) {
-    self.modelName = modelName
+    self.checkpoint = checkpoint
   }
 
   enum CodingKeys: String, CodingKey {
-    case modelName = "model_name"
+    case checkpoint
   }
 }

@@ -24,6 +24,7 @@ public enum OpenRouterMessagesRequestPluginsItem: Codable, Sendable {
   case switchyardRouterPlugin(OpenRouterSwitchyardRouterPlugin)
   case jevRouterPlugin(OpenRouterJevRouterPlugin)
   case alignmentPlugin(OpenRouterAlignmentPlugin)
+  case armorPlugin(OpenRouterArmorPlugin)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -75,7 +76,11 @@ public enum OpenRouterMessagesRequestPluginsItem: Codable, Sendable {
       self = .jevRouterPlugin(value)
       return
     }
-    self = .alignmentPlugin(try container.decode(OpenRouterAlignmentPlugin.self))
+    if let value = try? container.decode(OpenRouterAlignmentPlugin.self) {
+      self = .alignmentPlugin(value)
+      return
+    }
+    self = .armorPlugin(try container.decode(OpenRouterArmorPlugin.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -106,6 +111,8 @@ public enum OpenRouterMessagesRequestPluginsItem: Codable, Sendable {
     case .jevRouterPlugin(let value):
       try container.encode(value)
     case .alignmentPlugin(let value):
+      try container.encode(value)
+    case .armorPlugin(let value):
       try container.encode(value)
     }
   }

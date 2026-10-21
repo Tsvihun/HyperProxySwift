@@ -12,14 +12,18 @@ import HyperProxyCore
 
 public struct OpenRouterPromptCacheBreakpoint: Codable, Sendable {
   public var mode: OpenRouterPromptCacheBreakpointMode
+  public var ttl: String?
 
   public init(
-    mode: OpenRouterPromptCacheBreakpointMode
+    mode: OpenRouterPromptCacheBreakpointMode,
+    ttl: String? = nil
   ) {
     self.mode = mode
+    self.ttl = ttl
   }
 
   enum CodingKeys: String, CodingKey {
     case mode
+    case ttl
   }
 }

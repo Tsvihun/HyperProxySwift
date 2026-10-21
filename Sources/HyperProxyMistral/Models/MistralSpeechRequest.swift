@@ -14,6 +14,7 @@ public struct MistralSpeechRequest: Codable, Sendable {
   public var input: String
   public var metadata: MistralMetadataDict?
   public var model: String?
+  public var phonemeHints: [String: [MistralIPAPhoneme]]?
   public var promptCacheKey: String?
   public var refAudio: String?
   public var responseFormat: MistralSpeechOutputFormat?
@@ -24,6 +25,7 @@ public struct MistralSpeechRequest: Codable, Sendable {
     input: String,
     metadata: MistralMetadataDict? = nil,
     model: String? = nil,
+    phonemeHints: [String: [MistralIPAPhoneme]]? = nil,
     promptCacheKey: String? = nil,
     refAudio: String? = nil,
     responseFormat: MistralSpeechOutputFormat? = nil,
@@ -33,6 +35,7 @@ public struct MistralSpeechRequest: Codable, Sendable {
     self.input = input
     self.metadata = metadata
     self.model = model
+    self.phonemeHints = phonemeHints
     self.promptCacheKey = promptCacheKey
     self.refAudio = refAudio
     self.responseFormat = responseFormat
@@ -44,6 +47,7 @@ public struct MistralSpeechRequest: Codable, Sendable {
     case input
     case metadata
     case model
+    case phonemeHints = "phoneme_hints"
     case promptCacheKey = "prompt_cache_key"
     case refAudio = "ref_audio"
     case responseFormat = "response_format"

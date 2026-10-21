@@ -15,10 +15,12 @@ public struct OpenRouterBatchListItem: Codable, Sendable {
   public var createdAt: Int
   public var endpoint: String
   public var error: OpenRouterBatchListItemError?
+  public var expiresAt: Int
   public var finalizedAt: Int
   public var id: String
   public var model: String
   public var object: OpenRouterBatchListItemObject
+  public var provider: String
   public var requestCounts: OpenRouterBatchListItemRequestCounts
   public var results: HyperProxyJSONNull
   public var status: OpenRouterBatchListItemStatus
@@ -29,10 +31,12 @@ public struct OpenRouterBatchListItem: Codable, Sendable {
     createdAt: Int,
     endpoint: String,
     error: OpenRouterBatchListItemError?,
+    expiresAt: Int,
     finalizedAt: Int,
     id: String,
     model: String,
     object: OpenRouterBatchListItemObject,
+    provider: String,
     requestCounts: OpenRouterBatchListItemRequestCounts,
     results: HyperProxyJSONNull,
     status: OpenRouterBatchListItemStatus,
@@ -42,10 +46,12 @@ public struct OpenRouterBatchListItem: Codable, Sendable {
     self.createdAt = createdAt
     self.endpoint = endpoint
     self.error = error
+    self.expiresAt = expiresAt
     self.finalizedAt = finalizedAt
     self.id = id
     self.model = model
     self.object = object
+    self.provider = provider
     self.requestCounts = requestCounts
     self.results = results
     self.status = status
@@ -57,10 +63,12 @@ public struct OpenRouterBatchListItem: Codable, Sendable {
     case createdAt = "created_at"
     case endpoint
     case error
+    case expiresAt = "expires_at"
     case finalizedAt = "finalized_at"
     case id
     case model
     case object
+    case provider
     case requestCounts = "request_counts"
     case results
     case status

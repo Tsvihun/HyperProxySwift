@@ -186,6 +186,20 @@ extension HyperProxyProviderService where Operation == PerplexityOperation {
     return try await prepared.decoded(PerplexityContextualizedEmbeddingsResponse.self)
   }
 
+  public func decisionsV1DecisionsPost(
+    _ body: PerplexityDecisionsRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> PerplexityDecisionsResponse {
+    let call = self.call(.decisionsV1DecisionsPost)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(PerplexityDecisionsResponse.self)
+  }
+
   public func embeddingsV1EmbeddingsPost(
     _ body: PerplexityEmbeddingsRequest,
     query: [URLQueryItem] = [],

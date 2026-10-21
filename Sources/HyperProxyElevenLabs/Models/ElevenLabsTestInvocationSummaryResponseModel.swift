@@ -20,6 +20,7 @@ public struct ElevenLabsTestInvocationSummaryResponseModel: Codable, Sendable {
   public var creditsUsed: Int?
   public var failedCount: Int
   public var id: String
+  public var name: String?
   public var passedCount: Int
   public var pendingCount: Int
   public var ranAgainstDraft: Bool?
@@ -44,6 +45,7 @@ public struct ElevenLabsTestInvocationSummaryResponseModel: Codable, Sendable {
     branchId: String? = nil,
     cancelled: Bool? = nil,
     creditsUsed: Int? = nil,
+    name: String? = nil,
     ranAgainstDraft: Bool? = nil,
     repeatCount: Int? = nil,
     runsDivergedFromVersion: Bool? = nil,
@@ -59,6 +61,7 @@ public struct ElevenLabsTestInvocationSummaryResponseModel: Codable, Sendable {
     self.creditsUsed = creditsUsed
     self.failedCount = failedCount
     self.id = id
+    self.name = name
     self.passedCount = passedCount
     self.pendingCount = pendingCount
     self.ranAgainstDraft = ranAgainstDraft
@@ -80,6 +83,7 @@ public struct ElevenLabsTestInvocationSummaryResponseModel: Codable, Sendable {
     case creditsUsed = "credits_used"
     case failedCount = "failed_count"
     case id
+    case name
     case passedCount = "passed_count"
     case pendingCount = "pending_count"
     case ranAgainstDraft = "ran_against_draft"

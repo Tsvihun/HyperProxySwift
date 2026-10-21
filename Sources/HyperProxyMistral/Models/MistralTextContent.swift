@@ -14,13 +14,13 @@ public struct MistralTextContent: Codable, Sendable {
   public var meta: [String: HyperProxyJSONValue]?
   public var annotations: MistralAnnotations?
   public var text: String
-  public var kind: MistralTextKind
+  public var kind: MistralTextKind?
 
   public init(
     text: String,
-    kind: MistralTextKind = .text,
     meta: [String: HyperProxyJSONValue]? = nil,
-    annotations: MistralAnnotations? = nil
+    annotations: MistralAnnotations? = nil,
+    kind: MistralTextKind? = nil
   ) {
     self.meta = meta
     self.annotations = annotations

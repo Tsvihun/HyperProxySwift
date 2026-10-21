@@ -14,6 +14,7 @@ public struct ElevenLabsBodyCreateCrawlJobV1ConvaiKnowledgeBaseCrawlPost: Codabl
   public var autoDiscover: Bool?
   public var autoRemove: Bool?
   public var enableAutoSync: Bool?
+  public var excludePatterns: [String]?
   public var maxDepth: Int?
   public var maxPages: Int?
   public var minimumFrequencyDays: Int?
@@ -27,6 +28,7 @@ public struct ElevenLabsBodyCreateCrawlJobV1ConvaiKnowledgeBaseCrawlPost: Codabl
     autoDiscover: Bool? = nil,
     autoRemove: Bool? = nil,
     enableAutoSync: Bool? = nil,
+    excludePatterns: [String]? = nil,
     maxDepth: Int? = nil,
     maxPages: Int? = nil,
     minimumFrequencyDays: Int? = nil,
@@ -37,6 +39,7 @@ public struct ElevenLabsBodyCreateCrawlJobV1ConvaiKnowledgeBaseCrawlPost: Codabl
     self.autoDiscover = autoDiscover
     self.autoRemove = autoRemove
     self.enableAutoSync = enableAutoSync
+    self.excludePatterns = excludePatterns
     self.maxDepth = maxDepth
     self.maxPages = maxPages
     self.minimumFrequencyDays = minimumFrequencyDays
@@ -50,6 +53,7 @@ public struct ElevenLabsBodyCreateCrawlJobV1ConvaiKnowledgeBaseCrawlPost: Codabl
     case autoDiscover = "auto_discover"
     case autoRemove = "auto_remove"
     case enableAutoSync = "enable_auto_sync"
+    case excludePatterns = "exclude_patterns"
     case maxDepth = "max_depth"
     case maxPages = "max_pages"
     case minimumFrequencyDays = "minimum_frequency_days"

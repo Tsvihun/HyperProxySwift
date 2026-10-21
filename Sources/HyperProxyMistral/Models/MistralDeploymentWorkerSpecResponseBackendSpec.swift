@@ -11,24 +11,24 @@ import Foundation
 import HyperProxyCore
 
 public enum MistralDeploymentWorkerSpecResponseBackendSpec: Codable, Sendable {
+  case deploymentMistralCloudBackendSpec(MistralDeploymentMistralCloudBackendSpec)
   case deploymentK8sBackendSpec(MistralDeploymentK8sBackendSpec)
-  case deploymentKoyebBackendSpec(MistralDeploymentKoyebBackendSpec)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(MistralDeploymentK8sBackendSpec.self) {
-      self = .deploymentK8sBackendSpec(value)
+    if let value = try? container.decode(MistralDeploymentMistralCloudBackendSpec.self) {
+      self = .deploymentMistralCloudBackendSpec(value)
       return
     }
-    self = .deploymentKoyebBackendSpec(try container.decode(MistralDeploymentKoyebBackendSpec.self))
+    self = .deploymentK8sBackendSpec(try container.decode(MistralDeploymentK8sBackendSpec.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .deploymentK8sBackendSpec(let value):
+    case .deploymentMistralCloudBackendSpec(let value):
       try container.encode(value)
-    case .deploymentKoyebBackendSpec(let value):
+    case .deploymentK8sBackendSpec(let value):
       try container.encode(value)
     }
   }

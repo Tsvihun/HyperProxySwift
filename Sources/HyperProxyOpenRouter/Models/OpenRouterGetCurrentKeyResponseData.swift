@@ -12,11 +12,13 @@ import HyperProxyCore
 
 public struct OpenRouterGetCurrentKeyResponseData: Codable, Sendable {
   public var allowedDataRegions: [OpenRouterGetCurrentKeyResponseDataAllowedDataRegionsItem]
+  public var budgets: [OpenRouterKeyBudget]
   public var byokUsage: Double
   public var byokUsageDaily: Double
   public var byokUsageMonthly: Double
   public var byokUsageWeekly: Double
   public var creatorUserId: String
+  public var effectiveBudget: OpenRouterKeyBudget?
   public var expiresAt: String?
   public var freeModelDailyRequests: OpenRouterFreeModelDailyRequests
   public var includeByokInLimit: Bool
@@ -37,11 +39,13 @@ public struct OpenRouterGetCurrentKeyResponseData: Codable, Sendable {
 
   public init(
     allowedDataRegions: [OpenRouterGetCurrentKeyResponseDataAllowedDataRegionsItem],
+    budgets: [OpenRouterKeyBudget],
     byokUsage: Double,
     byokUsageDaily: Double,
     byokUsageMonthly: Double,
     byokUsageWeekly: Double,
     creatorUserId: String,
+    effectiveBudget: OpenRouterKeyBudget?,
     freeModelDailyRequests: OpenRouterFreeModelDailyRequests,
     includeByokInLimit: Bool,
     isFreeTier: Bool,
@@ -61,11 +65,13 @@ public struct OpenRouterGetCurrentKeyResponseData: Codable, Sendable {
     expiresAt: String? = nil
   ) {
     self.allowedDataRegions = allowedDataRegions
+    self.budgets = budgets
     self.byokUsage = byokUsage
     self.byokUsageDaily = byokUsageDaily
     self.byokUsageMonthly = byokUsageMonthly
     self.byokUsageWeekly = byokUsageWeekly
     self.creatorUserId = creatorUserId
+    self.effectiveBudget = effectiveBudget
     self.expiresAt = expiresAt
     self.freeModelDailyRequests = freeModelDailyRequests
     self.includeByokInLimit = includeByokInLimit
@@ -87,11 +93,13 @@ public struct OpenRouterGetCurrentKeyResponseData: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case allowedDataRegions = "allowed_data_regions"
+    case budgets
     case byokUsage = "byok_usage"
     case byokUsageDaily = "byok_usage_daily"
     case byokUsageMonthly = "byok_usage_monthly"
     case byokUsageWeekly = "byok_usage_weekly"
     case creatorUserId = "creator_user_id"
+    case effectiveBudget = "effective_budget"
     case expiresAt = "expires_at"
     case freeModelDailyRequests = "free_model_daily_requests"
     case includeByokInLimit = "include_byok_in_limit"

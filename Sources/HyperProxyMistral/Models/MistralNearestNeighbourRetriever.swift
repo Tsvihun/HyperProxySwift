@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct MistralNearestNeighbourRetriever: Codable, Sendable {
   public var field: String?
   public var filter: MistralNearestNeighbourRetrieverFilterAnyOf1?
+  public var maxCandidates: Int?
   public var query: String?
   public var queryEmbedding: [Double]?
   public var topK: Int?
@@ -21,6 +22,7 @@ public struct MistralNearestNeighbourRetriever: Codable, Sendable {
   public init(
     field: String? = nil,
     filter: MistralNearestNeighbourRetrieverFilterAnyOf1? = nil,
+    maxCandidates: Int? = nil,
     query: String? = nil,
     queryEmbedding: [Double]? = nil,
     topK: Int? = nil,
@@ -28,6 +30,7 @@ public struct MistralNearestNeighbourRetriever: Codable, Sendable {
   ) {
     self.field = field
     self.filter = filter
+    self.maxCandidates = maxCandidates
     self.query = query
     self.queryEmbedding = queryEmbedding
     self.topK = topK
@@ -37,6 +40,7 @@ public struct MistralNearestNeighbourRetriever: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case field
     case filter
+    case maxCandidates = "max_candidates"
     case query
     case queryEmbedding = "query_embedding"
     case topK = "top_k"

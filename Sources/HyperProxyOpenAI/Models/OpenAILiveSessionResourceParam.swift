@@ -21,6 +21,7 @@ public struct OpenAILiveSessionResourceParam: Codable, Sendable {
   public var model: OpenAIModelIdsLive
   public var status: OpenAILiveSessionResourceParamStatus
   public var store: Bool?
+  public var triggers: [OpenAILiveDecisionTriggerInputParam2]?
 
   public init(
     expiresAt: Int,
@@ -32,7 +33,8 @@ public struct OpenAILiveSessionResourceParam: Codable, Sendable {
     delegation: OpenAILiveSessionResourceParamDelegationAnyOf1? = nil,
     input: [OpenAILiveInitialItem]? = nil,
     instructions: String? = nil,
-    store: Bool? = nil
+    store: Bool? = nil,
+    triggers: [OpenAILiveDecisionTriggerInputParam2]? = nil
   ) {
     self.audio = audio
     self.client = client
@@ -44,6 +46,7 @@ public struct OpenAILiveSessionResourceParam: Codable, Sendable {
     self.model = model
     self.status = status
     self.store = store
+    self.triggers = triggers
   }
 
   enum CodingKeys: String, CodingKey {
@@ -57,5 +60,6 @@ public struct OpenAILiveSessionResourceParam: Codable, Sendable {
     case model
     case status
     case store
+    case triggers
   }
 }

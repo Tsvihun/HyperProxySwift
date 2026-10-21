@@ -25,4 +25,6 @@ public enum MistralAdminProvisionGroupToWorkspaceInWorkspaceRoleName: String, Co
   case workspaceAdmin = "workspace_admin"
   case observabilityViewer = "observability_viewer"
   case workflowExecutor = "workflow_executor"
+  case secretRevealer = "secret_revealer"
+  case member = "member"
 }

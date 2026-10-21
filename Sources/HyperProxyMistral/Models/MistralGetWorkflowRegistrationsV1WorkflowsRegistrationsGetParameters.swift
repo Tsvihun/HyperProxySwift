@@ -22,6 +22,7 @@ public struct MistralGetWorkflowRegistrationsV1WorkflowsRegistrationsGetParamete
   public var taskQueue: String?
   public var withWorkflow: Bool?
   public var workflowId: String?
+  public var workflowName: String?
   public var workflowSearch: String?
 
   public init(
@@ -34,6 +35,7 @@ public struct MistralGetWorkflowRegistrationsV1WorkflowsRegistrationsGetParamete
     taskQueue: String? = nil,
     withWorkflow: Bool? = nil,
     workflowId: String? = nil,
+    workflowName: String? = nil,
     workflowSearch: String? = nil
   ) {
     self.activeOnly = activeOnly
@@ -45,6 +47,7 @@ public struct MistralGetWorkflowRegistrationsV1WorkflowsRegistrationsGetParamete
     self.taskQueue = taskQueue
     self.withWorkflow = withWorkflow
     self.workflowId = workflowId
+    self.workflowName = workflowName
     self.workflowSearch = workflowSearch
   }
 
@@ -58,6 +61,7 @@ public struct MistralGetWorkflowRegistrationsV1WorkflowsRegistrationsGetParamete
     case taskQueue = "task_queue"
     case withWorkflow = "with_workflow"
     case workflowId = "workflow_id"
+    case workflowName = "workflow_name"
     case workflowSearch = "workflow_search"
   }
 }

@@ -30,6 +30,7 @@ public struct ElevenLabsPromptAgentAPIModelInput: Codable, Sendable {
   public var thinkingBudget: Int?
   public var timezone: String?
   public var toolIds: [String]?
+  public var toolIdsStrict: Bool?
   public var tools: [ElevenLabsPromptAgentAPIModelInputToolsItem]?
 
   public init(
@@ -52,6 +53,7 @@ public struct ElevenLabsPromptAgentAPIModelInput: Codable, Sendable {
     thinkingBudget: Int? = nil,
     timezone: String? = nil,
     toolIds: [String]? = nil,
+    toolIdsStrict: Bool? = nil,
     tools: [ElevenLabsPromptAgentAPIModelInputToolsItem]? = nil
   ) {
     self.backupLlmConfig = backupLlmConfig
@@ -73,6 +75,7 @@ public struct ElevenLabsPromptAgentAPIModelInput: Codable, Sendable {
     self.thinkingBudget = thinkingBudget
     self.timezone = timezone
     self.toolIds = toolIds
+    self.toolIdsStrict = toolIdsStrict
     self.tools = tools
   }
 
@@ -96,6 +99,7 @@ public struct ElevenLabsPromptAgentAPIModelInput: Codable, Sendable {
     case thinkingBudget = "thinking_budget"
     case timezone
     case toolIds = "tool_ids"
+    case toolIdsStrict = "tool_ids_strict"
     case tools
   }
 }

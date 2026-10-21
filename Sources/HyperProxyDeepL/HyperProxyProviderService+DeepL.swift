@@ -153,6 +153,26 @@ extension HyperProxyProviderService where Operation == DeepLOperation {
   public var putSpokenTermsList: HyperProxyProviderCall<DeepLOperation> {
     self.call(.putSpokenTermsList)
   }
+  /// `GET v3/style_profiles`
+  public var listStyleProfiles: HyperProxyProviderCall<DeepLOperation> {
+    self.call(.listStyleProfiles)
+  }
+  /// `POST v3/style_profiles`
+  public var createStyleProfile: HyperProxyProviderCall<DeepLOperation> {
+    self.call(.createStyleProfile)
+  }
+  /// `DELETE v3/style_profiles/{style_profile_id}`
+  public var deleteStyleProfile: HyperProxyProviderCall<DeepLOperation> {
+    self.call(.deleteStyleProfile)
+  }
+  /// `GET v3/style_profiles/{style_profile_id}`
+  public var getStyleProfile: HyperProxyProviderCall<DeepLOperation> {
+    self.call(.getStyleProfile)
+  }
+  /// `PATCH v3/style_profiles/{style_profile_id}`
+  public var updateStyleProfile: HyperProxyProviderCall<DeepLOperation> {
+    self.call(.updateStyleProfile)
+  }
   /// `GET v3/style_rules`
   public var getStyleRuleLists: HyperProxyProviderCall<DeepLOperation> {
     self.call(.getStyleRuleLists)

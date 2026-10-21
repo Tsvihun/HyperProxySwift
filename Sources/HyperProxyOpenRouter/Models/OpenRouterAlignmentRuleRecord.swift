@@ -11,18 +11,22 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterAlignmentRuleRecord: Codable, Sendable {
+  public var applicable: Bool
   public var broken: Bool
   public var probability: Double
 
   public init(
+    applicable: Bool,
     broken: Bool,
     probability: Double
   ) {
+    self.applicable = applicable
     self.broken = broken
     self.probability = probability
   }
 
   enum CodingKeys: String, CodingKey {
+    case applicable
     case broken
     case probability
   }

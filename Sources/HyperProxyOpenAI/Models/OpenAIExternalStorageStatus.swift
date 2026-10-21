@@ -13,5 +13,6 @@ import HyperProxyCore
 public enum OpenAIExternalStorageStatus: String, Codable, Hashable, Sendable {
   case pending = "pending"
   case validated = "validated"
+  case degraded = "degraded"
   case unhealthy = "unhealthy"
 }

@@ -111,6 +111,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
   public var openInference: [String: HyperProxyJSONValue]?
   public var openai: [String: HyperProxyJSONValue]?
   public var parasail: [String: HyperProxyJSONValue]?
+  public var paretoAlpha: [String: HyperProxyJSONValue]?
   public var perceptron: [String: HyperProxyJSONValue]?
   public var perplexity: [String: HyperProxyJSONValue]?
   public var phala: [String: HyperProxyJSONValue]?
@@ -259,6 +260,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     openInference: [String: HyperProxyJSONValue]? = nil,
     openai: [String: HyperProxyJSONValue]? = nil,
     parasail: [String: HyperProxyJSONValue]? = nil,
+    paretoAlpha: [String: HyperProxyJSONValue]? = nil,
     perceptron: [String: HyperProxyJSONValue]? = nil,
     perplexity: [String: HyperProxyJSONValue]? = nil,
     phala: [String: HyperProxyJSONValue]? = nil,
@@ -406,6 +408,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     self.openInference = openInference
     self.openai = openai
     self.parasail = parasail
+    self.paretoAlpha = paretoAlpha
     self.perceptron = perceptron
     self.perplexity = perplexity
     self.phala = phala
@@ -555,6 +558,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     case openInference = "open-inference"
     case openai
     case parasail
+    case paretoAlpha = "pareto-alpha"
     case perceptron
     case perplexity
     case phala

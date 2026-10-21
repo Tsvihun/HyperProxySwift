@@ -12,6 +12,7 @@ import HyperProxyCore
 
 public struct OpenRouterJevRouterPlugin: Codable, Sendable {
   public var allowedModels: [String]?
+  public var costTier: String?
   public var excludedModels: [String]?
   public var id: OpenRouterJevRouterPluginId
   public var models: [String]?
@@ -19,10 +20,12 @@ public struct OpenRouterJevRouterPlugin: Codable, Sendable {
   public init(
     id: OpenRouterJevRouterPluginId,
     allowedModels: [String]? = nil,
+    costTier: String? = nil,
     excludedModels: [String]? = nil,
     models: [String]? = nil
   ) {
     self.allowedModels = allowedModels
+    self.costTier = costTier
     self.excludedModels = excludedModels
     self.id = id
     self.models = models
@@ -30,6 +33,7 @@ public struct OpenRouterJevRouterPlugin: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case allowedModels = "allowed_models"
+    case costTier = "cost_tier"
     case excludedModels = "excluded_models"
     case id
     case models

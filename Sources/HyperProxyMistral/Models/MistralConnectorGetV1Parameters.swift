@@ -12,22 +12,18 @@ import HyperProxyCore
 
 public struct MistralConnectorGetV1Parameters: Codable, Sendable {
   public var connectorIdOrName: MistralConnectorGetV1ParametersConnectorIdOrName
-  public var fetchCustomerData: Bool?
   public var fetchUserData: Bool?
 
   public init(
     connectorIdOrName: MistralConnectorGetV1ParametersConnectorIdOrName,
-    fetchCustomerData: Bool? = nil,
     fetchUserData: Bool? = nil
   ) {
     self.connectorIdOrName = connectorIdOrName
-    self.fetchCustomerData = fetchCustomerData
     self.fetchUserData = fetchUserData
   }
 
   enum CodingKeys: String, CodingKey {
     case connectorIdOrName = "connector_id_or_name"
-    case fetchCustomerData = "fetch_customer_data"
     case fetchUserData = "fetch_user_data"
   }
 }

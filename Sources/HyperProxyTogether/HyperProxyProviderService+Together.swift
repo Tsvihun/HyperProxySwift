@@ -425,6 +425,10 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
   public var uploadModel: HyperProxyProviderCall<TogetherOperation> {
     self.call(.uploadModel)
   }
+  /// `GET v1/projects`
+  public var listProjects: HyperProxyProviderCall<TogetherOperation> {
+    self.call(.listProjects)
+  }
   /// `POST v1/queue/cancel`
   public var cancelQueueJob: HyperProxyProviderCall<TogetherOperation> {
     self.call(.cancelQueueJob)
@@ -564,6 +568,30 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
   /// `POST v1/rl/training-sessions/{session_id}/stop`
   public var stopTrainingSession: HyperProxyProviderCall<TogetherOperation> {
     self.call(.stopTrainingSession)
+  }
+  /// `GET v1/shaping`
+  public var listShapingJobs: HyperProxyProviderCall<TogetherOperation> {
+    self.call(.listShapingJobs)
+  }
+  /// `POST v1/shaping/prepare-for-fp4-inference`
+  public var createQuantizationJob: HyperProxyProviderCall<TogetherOperation> {
+    self.call(.createQuantizationJob)
+  }
+  /// `POST v1/shaping/prepare-for-fp4-inference/estimate`
+  public var estimateQuantizationJob: HyperProxyProviderCall<TogetherOperation> {
+    self.call(.estimateQuantizationJob)
+  }
+  /// `GET v1/shaping/{id}`
+  public var getShapingJob: HyperProxyProviderCall<TogetherOperation> {
+    self.call(.getShapingJob)
+  }
+  /// `POST v1/shaping/{id}/cancel`
+  public var cancelShapingJob: HyperProxyProviderCall<TogetherOperation> {
+    self.call(.cancelShapingJob)
+  }
+  /// `GET v1/shaping/{id}/events`
+  public var getShapingEvents: HyperProxyProviderCall<TogetherOperation> {
+    self.call(.getShapingEvents)
   }
   /// `POST v1/tci/execute`
   public var tciExecute: HyperProxyProviderCall<TogetherOperation> {

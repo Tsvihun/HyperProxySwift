@@ -1,6 +1,6 @@
 # Provider coverage contract
 
-This document describes the **main development snapshot refreshed on 2026-10-08**.
+This document describes the **main development snapshot refreshed on 2026-10-21**.
 The published 0.5.0 package retains its 2026-10-03 snapshot; read [the 0.5.0 coverage contract](https://github.com/Tsvihun/HyperProxySwift/blob/0.5.0/PROVIDER_COVERAGE.md).
 New source snapshots remain subject to the recorded release review before a new package tag is published.
 
@@ -62,7 +62,7 @@ checked-in snapshot is built from official OpenAPI, AsyncAPI, and Google Discove
 where providers publish them. Reviewed manual definitions remain only for providers whose public
 documentation does not expose a complete machine-readable schema.
 
-The current snapshot contains 2,355 routes from 53 official specifications or watched
+The current snapshot contains 2,405 routes from 53 official specifications or watched
 documentation sources. The number is evidence for this snapshot, not a permanent completeness
 claim: scheduled CI is the mechanism that detects when providers move it.
 
@@ -86,8 +86,8 @@ generation tooling as part of the public package.
 Typed layers should be generated from official machine-readable schemas when available and
 hand-refined only where Swift ergonomics require it.
 
-The checked-in source artifact contains 18,581 generated provider types (including compatibility aliases) with 44,300 named fields and
-2,111 typed operation bindings from official machine-readable or reviewed schemas spanning all 18
+The checked-in source artifact contains 19,183 generated provider types (including compatibility aliases) with 45,801 named fields and
+2,161 typed operation bindings from official machine-readable or reviewed schemas spanning all 18
 provider families. DeepSeek's Responses, Chat/FIM, Models, Balance, and Anthropic-compatible
 surfaces are modeled from reviewed official documentation. Each AI uses both of its official
 OpenAPI documents plus a reviewed each::sense schema, including its documented SSE event fields.
@@ -95,7 +95,7 @@ Brave Search is modeled from the official Brave Search Skills contracts for web,
 videos, LLM context, Answers, local POIs/descriptions, suggest, and spellcheck.
 Black Forest Labs is modeled from its live official inference and Licenses OpenAPI specifications,
 plus a reviewed schema for the six public-beta FLUX.2 Klein LoRA endpoints in the official guide.
-The resulting 36 typed operations cover FLUX 2 image generation/editing, FLUX 3 Video, tools, account
+The resulting 37 typed operations cover FLUX 2 image generation/editing, FLUX 3 Video, tools, account
 credits, result polling, model-usage reporting, current LoRA inference, and the deprecated FLUX 1
 fine-tune surface. Its SDK helper preserves the provider's polling/webhook response union and
 validates the global, EU, US, and legacy US1 polling origins before the gateway receives an origin
@@ -111,7 +111,7 @@ typed.
 
 Some official schemas describe heterogeneous unions or deliberately open objects that Swift
 cannot represent without losing forward compatibility. Those positions use
-`HyperProxyJSONValue`; the generated manifest currently records 522 such fallbacks. This is an
+`HyperProxyJSONValue`; the generated manifest currently records 547 such fallbacks. This is an
 explicit escape hatch, not evidence that every provider field is strongly typed.
 
 Each typed endpoint must expose an escape hatch for:

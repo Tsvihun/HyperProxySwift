@@ -10,4 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public typealias MistralLoggingCapability = [String: HyperProxyJSONValue]
+public struct MistralLoggingCapability: Codable, Sendable {
+
+  public init() {}
+}

@@ -19,20 +19,20 @@ public struct MistralResourceLink: Codable, Sendable {
   public var name: String
   public var size: Int?
   public var title: String?
-  public var kind: MistralResourceLinkKind
+  public var kind: MistralResourceLinkKind?
   public var uri: String
 
   public init(
     name: String,
     uri: String,
-    kind: MistralResourceLinkKind = .resourceLink,
     meta: [String: HyperProxyJSONValue]? = nil,
     annotations: MistralAnnotations? = nil,
     description: String? = nil,
     icons: [MistralMCPServerIcon]? = nil,
     mimeType: String? = nil,
     size: Int? = nil,
-    title: String? = nil
+    title: String? = nil,
+    kind: MistralResourceLinkKind? = nil
   ) {
     self.meta = meta
     self.annotations = annotations

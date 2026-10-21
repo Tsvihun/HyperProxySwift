@@ -38,6 +38,32 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
     return try await prepared.decoded(OpenAIAgentResource.self)
   }
 
+  public func listAgentEnvironments(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIAgentEnvironmentListResource {
+    let call = self.call(.listAgentEnvironments)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIAgentEnvironmentListResource.self)
+  }
+
+  public func createAgentEnvironment(
+    _ body: OpenAICreateAgentEnvironmentParams,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIPublicEnvironmentResource {
+    let call = self.call(.createAgentEnvironment)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenAIPublicEnvironmentResource.self)
+  }
+
   public func listAgentEnvironmentTemplates(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -698,6 +724,20 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
     return try await call.decoded(OpenAIVoiceConsentDeletedResource.self)
   }
 
+  public func createVoice(
+    _ body: OpenAICreateVoicePromptRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIVoiceResource {
+    let call = self.call(.createVoice)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenAIVoiceResource.self)
+  }
+
   public func batchesList(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -950,8 +990,30 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
       .query(query)
       .headers(headers)
       .timeout(timeout)
+    if body.stream == true {
+      throw HyperProxyProviderRouteError.streamingBodyOnJSONCall(
+        operation: "createCompletion",
+        streamingVariant: "createCompletionStream"
+      )
+    }
     let prepared = try call.json(body)
     return try await prepared.decoded(OpenAICreateCompletionResponse.self)
+  }
+
+  public func createCompletionStream(
+    _ body: OpenAICreateCompletionRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<OpenAICreateCompletionResponse, Error> {
+    let call = self.call(.createCompletion)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    var streamingBody = body
+    streamingBody.stream = true
+    let prepared = try call.json(streamingBody)
+    return try prepared.events(decoding: OpenAICreateCompletionResponse.self)
   }
 
   public func listContainers(
@@ -2148,6 +2210,20 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
     return try await call.decoded(OpenAIResponse.self)
   }
 
+  public func responsesRetrieveStream(
+    responseId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<OpenAIResponseStreamEvent, Error> {
+    let call = self.call(.responsesRetrieve)
+      .path("response_id", responseId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try call.events(decoding: OpenAIResponseStreamEvent.self)
+  }
+
   @available(*, deprecated, renamed: "responsesRetrieve")
   public func getResponse(
     responseId: String,
@@ -2156,6 +2232,17 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
     timeout: TimeInterval? = nil
   ) async throws -> OpenAIResponse {
     try await self.responsesRetrieve(
+      responseId: responseId, query: query, headers: headers, timeout: timeout)
+  }
+
+  @available(*, deprecated, renamed: "responsesRetrieveStream")
+  public func getResponseStream(
+    responseId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<OpenAIResponseStreamEvent, Error> {
+    try self.responsesRetrieveStream(
       responseId: responseId, query: query, headers: headers, timeout: timeout)
   }
 

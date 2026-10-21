@@ -14,6 +14,7 @@ public enum OpenRouterDecisionsRequestQuestionsValue: Codable, Sendable {
   case decisionsNoulQuestion(OpenRouterDecisionsNoulQuestion)
   case decisionsChoiceQuestion(OpenRouterDecisionsChoiceQuestion)
   case decisionsScoreQuestion(OpenRouterDecisionsScoreQuestion)
+  case decisionsBoxQuestion(OpenRouterDecisionsBoxQuestion)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -25,7 +26,11 @@ public enum OpenRouterDecisionsRequestQuestionsValue: Codable, Sendable {
       self = .decisionsChoiceQuestion(value)
       return
     }
-    self = .decisionsScoreQuestion(try container.decode(OpenRouterDecisionsScoreQuestion.self))
+    if let value = try? container.decode(OpenRouterDecisionsScoreQuestion.self) {
+      self = .decisionsScoreQuestion(value)
+      return
+    }
+    self = .decisionsBoxQuestion(try container.decode(OpenRouterDecisionsBoxQuestion.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -36,6 +41,8 @@ public enum OpenRouterDecisionsRequestQuestionsValue: Codable, Sendable {
     case .decisionsChoiceQuestion(let value):
       try container.encode(value)
     case .decisionsScoreQuestion(let value):
+      try container.encode(value)
+    case .decisionsBoxQuestion(let value):
       try container.encode(value)
     }
   }

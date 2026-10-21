@@ -14,17 +14,23 @@ public struct MistralListServiceAccountsV1ServiceAccountsGetParameters: Codable,
   public var includeDeleted: Bool?
   public var limit: Int
   public var offset: Int
+  public var order: MistralSortOrder?
+  public var q: String?
   public var workspaceId: String?
 
   public init(
     limit: Int,
     offset: Int,
     includeDeleted: Bool? = nil,
+    order: MistralSortOrder? = nil,
+    q: String? = nil,
     workspaceId: String? = nil
   ) {
     self.includeDeleted = includeDeleted
     self.limit = limit
     self.offset = offset
+    self.order = order
+    self.q = q
     self.workspaceId = workspaceId
   }
 
@@ -32,6 +38,8 @@ public struct MistralListServiceAccountsV1ServiceAccountsGetParameters: Codable,
     case includeDeleted = "include_deleted"
     case limit
     case offset
+    case order
+    case q
     case workspaceId = "workspace_id"
   }
 }

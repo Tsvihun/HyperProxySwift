@@ -201,6 +201,10 @@ extension HyperProxyProviderService where Operation == FalOperation {
   public var deleteApiKey: HyperProxyProviderCall<FalOperation> {
     self.call(.deleteApiKey)
   }
+  /// `POST v1/keys/{key_id}/revoke`
+  public var revokeApiKey: HyperProxyProviderCall<FalOperation> {
+    self.call(.revokeApiKey)
+  }
   /// `GET v1/meta`
   public var getMeta: HyperProxyProviderCall<FalOperation> {
     self.call(.getMeta)

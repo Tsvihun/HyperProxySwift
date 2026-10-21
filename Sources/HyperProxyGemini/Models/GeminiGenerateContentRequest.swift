@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct GeminiGenerateContentRequest: Codable, Sendable {
   public var cachedContent: String?
   public var contents: [GeminiContent]?
+  public var continuationToken: String?
   public var generationConfig: GeminiGenerationConfig?
   public var labels: [String: String]?
   public var model: String?
@@ -26,6 +27,7 @@ public struct GeminiGenerateContentRequest: Codable, Sendable {
   public init(
     cachedContent: String? = nil,
     contents: [GeminiContent]? = nil,
+    continuationToken: String? = nil,
     generationConfig: GeminiGenerationConfig? = nil,
     labels: [String: String]? = nil,
     model: String? = nil,
@@ -38,6 +40,7 @@ public struct GeminiGenerateContentRequest: Codable, Sendable {
   ) {
     self.cachedContent = cachedContent
     self.contents = contents
+    self.continuationToken = continuationToken
     self.generationConfig = generationConfig
     self.labels = labels
     self.model = model
@@ -52,6 +55,7 @@ public struct GeminiGenerateContentRequest: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case cachedContent
     case contents
+    case continuationToken
     case generationConfig
     case labels
     case model

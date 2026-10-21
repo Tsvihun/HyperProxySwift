@@ -91,6 +91,7 @@ public enum OpenRouterBatchProviderPreferencesOnlyItem: RawRepresentable, Codabl
   case openAI
   case openInference
   case parasail
+  case paretoAlpha
   case poolside
   case primeIntellect
   case perceptron
@@ -287,6 +288,8 @@ public enum OpenRouterBatchProviderPreferencesOnlyItem: RawRepresentable, Codabl
       self = .openInference
     case "Parasail":
       self = .parasail
+    case "ParetoAlpha":
+      self = .paretoAlpha
     case "Poolside":
       self = .poolside
     case "PrimeIntellect":
@@ -522,6 +525,8 @@ public enum OpenRouterBatchProviderPreferencesOnlyItem: RawRepresentable, Codabl
       return "OpenInference"
     case .parasail:
       return "Parasail"
+    case .paretoAlpha:
+      return "ParetoAlpha"
     case .poolside:
       return "Poolside"
     case .primeIntellect:

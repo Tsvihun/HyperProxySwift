@@ -119,6 +119,8 @@ public enum FalOperation: String, HyperProxyCatalogOperation {
   case createApiKey = "createApiKey"
   /// `DELETE v1/keys/{key_id}`
   case deleteApiKey = "deleteApiKey"
+  /// `POST v1/keys/{key_id}/revoke`
+  case revokeApiKey = "revokeApiKey"
   /// `GET v1/meta`
   case getMeta = "getMeta"
   /// `GET v1/models`

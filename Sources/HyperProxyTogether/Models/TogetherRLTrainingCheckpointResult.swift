@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherRLTrainingCheckpointResult: Codable, Sendable {
-  public var checkpointId: String
+  public var checkpoint: TogetherRLTrainingCheckpoint
 
   public init(
-    checkpointId: String
+    checkpoint: TogetherRLTrainingCheckpoint
   ) {
-    self.checkpointId = checkpointId
+    self.checkpoint = checkpoint
   }
 
   enum CodingKeys: String, CodingKey {
-    case checkpointId = "checkpoint_id"
+    case checkpoint
   }
 }

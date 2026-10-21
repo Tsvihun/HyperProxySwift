@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsComposePlanParameters: Codable, Sendable {
+  public var enableLogging: Bool?
   public var xiApiKey: String?
 
   public init(
+    enableLogging: Bool? = nil,
     xiApiKey: String? = nil
   ) {
+    self.enableLogging = enableLogging
     self.xiApiKey = xiApiKey
   }
 
   enum CodingKeys: String, CodingKey {
+    case enableLogging = "enable_logging"
     case xiApiKey = "xi-api-key"
   }
 }

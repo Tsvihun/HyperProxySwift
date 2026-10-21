@@ -12,18 +12,22 @@ import HyperProxyCore
 
 public struct ElevenLabsListProductsParams: Codable, Sendable {
   public var listKwargs: [String: HyperProxyJSONValue]?
+  public var ownerView: Bool?
   public var smbToolType: ElevenLabsListProductsSmbToolType?
 
   public init(
     listKwargs: [String: HyperProxyJSONValue]? = nil,
+    ownerView: Bool? = nil,
     smbToolType: ElevenLabsListProductsSmbToolType? = nil
   ) {
     self.listKwargs = listKwargs
+    self.ownerView = ownerView
     self.smbToolType = smbToolType
   }
 
   enum CodingKeys: String, CodingKey {
     case listKwargs = "list_kwargs"
+    case ownerView = "owner_view"
     case smbToolType = "smb_tool_type"
   }
 }

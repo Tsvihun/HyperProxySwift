@@ -10,4 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public typealias MistralTasksCancelCapability = [String: HyperProxyJSONValue]
+public struct MistralTasksCancelCapability: Codable, Sendable {
+
+  public init() {}
+}

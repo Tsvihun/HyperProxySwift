@@ -89,6 +89,7 @@ public enum OpenRouterProviderName: String, Codable, Hashable, Sendable {
   case openAI = "OpenAI"
   case openInference = "OpenInference"
   case parasail = "Parasail"
+  case paretoAlpha = "ParetoAlpha"
   case poolside = "Poolside"
   case primeIntellect = "PrimeIntellect"
   case perceptron = "Perceptron"

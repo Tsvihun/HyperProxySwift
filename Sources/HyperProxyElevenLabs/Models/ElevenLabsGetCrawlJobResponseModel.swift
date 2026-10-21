@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsGetCrawlJobResponseModel: Codable, Sendable {
   public var autoDiscover: Bool?
   public var createdAt: Int
+  public var excludePatterns: [String]?
   public var id: String
   public var maxPages: Int
   public var pagesFailed: Int?
@@ -34,6 +35,7 @@ public struct ElevenLabsGetCrawlJobResponseModel: Codable, Sendable {
     seedUrl: String,
     updatedAt: Int,
     autoDiscover: Bool? = nil,
+    excludePatterns: [String]? = nil,
     pagesFailed: Int? = nil,
     pagesIdentified: Int? = nil,
     pagesScraped: Int? = nil,
@@ -44,6 +46,7 @@ public struct ElevenLabsGetCrawlJobResponseModel: Codable, Sendable {
   ) {
     self.autoDiscover = autoDiscover
     self.createdAt = createdAt
+    self.excludePatterns = excludePatterns
     self.id = id
     self.maxPages = maxPages
     self.pagesFailed = pagesFailed
@@ -61,6 +64,7 @@ public struct ElevenLabsGetCrawlJobResponseModel: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case autoDiscover = "auto_discover"
     case createdAt = "created_at"
+    case excludePatterns = "exclude_patterns"
     case id
     case maxPages = "max_pages"
     case pagesFailed = "pages_failed"

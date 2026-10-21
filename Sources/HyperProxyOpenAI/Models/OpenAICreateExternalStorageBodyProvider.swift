@@ -14,6 +14,7 @@ public enum OpenAICreateExternalStorageBodyProvider: Codable, Sendable {
   case awsExternalStorageProviderParams(OpenAIAwsExternalStorageProviderParams)
   case azureExternalStorageProviderParams(OpenAIAzureExternalStorageProviderParams)
   case gcpExternalStorageProviderParams(OpenAIGcpExternalStorageProviderParams)
+  case ociExternalStorageProviderParams(OpenAIOciExternalStorageProviderParams)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -25,8 +26,12 @@ public enum OpenAICreateExternalStorageBodyProvider: Codable, Sendable {
       self = .azureExternalStorageProviderParams(value)
       return
     }
-    self = .gcpExternalStorageProviderParams(
-      try container.decode(OpenAIGcpExternalStorageProviderParams.self))
+    if let value = try? container.decode(OpenAIGcpExternalStorageProviderParams.self) {
+      self = .gcpExternalStorageProviderParams(value)
+      return
+    }
+    self = .ociExternalStorageProviderParams(
+      try container.decode(OpenAIOciExternalStorageProviderParams.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -37,6 +42,8 @@ public enum OpenAICreateExternalStorageBodyProvider: Codable, Sendable {
     case .azureExternalStorageProviderParams(let value):
       try container.encode(value)
     case .gcpExternalStorageProviderParams(let value):
+      try container.encode(value)
+    case .ociExternalStorageProviderParams(let value):
       try container.encode(value)
     }
   }

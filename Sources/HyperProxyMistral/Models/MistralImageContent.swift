@@ -15,14 +15,14 @@ public struct MistralImageContent: Codable, Sendable {
   public var annotations: MistralAnnotations?
   public var data: String
   public var mimeType: String
-  public var kind: MistralImageKind
+  public var kind: MistralImageKind?
 
   public init(
     data: String,
     mimeType: String,
-    kind: MistralImageKind = .image,
     meta: [String: HyperProxyJSONValue]? = nil,
-    annotations: MistralAnnotations? = nil
+    annotations: MistralAnnotations? = nil,
+    kind: MistralImageKind? = nil
   ) {
     self.meta = meta
     self.annotations = annotations

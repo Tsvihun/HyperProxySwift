@@ -18,6 +18,7 @@ public struct MistralDatasetImportTask: Codable, Sendable {
   public var id: String
   public var message: String?
   public var progress: Int?
+  public var result: MistralDatasetImportResult?
   public var status: MistralBaseTaskStatus
   public var updatedAt: String
   public var workspaceId: String
@@ -32,7 +33,8 @@ public struct MistralDatasetImportTask: Codable, Sendable {
     updatedAt: String,
     workspaceId: String,
     message: String? = nil,
-    progress: Int? = nil
+    progress: Int? = nil,
+    result: MistralDatasetImportResult? = nil
   ) {
     self.createdAt = createdAt
     self.creatorId = creatorId
@@ -41,6 +43,7 @@ public struct MistralDatasetImportTask: Codable, Sendable {
     self.id = id
     self.message = message
     self.progress = progress
+    self.result = result
     self.status = status
     self.updatedAt = updatedAt
     self.workspaceId = workspaceId
@@ -54,6 +57,7 @@ public struct MistralDatasetImportTask: Codable, Sendable {
     case id
     case message
     case progress
+    case result
     case status
     case updatedAt = "updated_at"
     case workspaceId = "workspace_id"

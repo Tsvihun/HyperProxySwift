@@ -23,6 +23,7 @@ public struct DeepLTranslateDocumentRequest: Codable, Sendable {
   public var outputFormat: String?
   public var sourceLang: String?
   public var styleId: String?
+  public var styleProfileId: String?
   public var targetLang: String
   public var translationMemoryId: DeepLTranslationMemoryId?
   public var translationMemoryThreshold: Int?
@@ -41,6 +42,7 @@ public struct DeepLTranslateDocumentRequest: Codable, Sendable {
     outputFormat: String? = nil,
     sourceLang: String? = nil,
     styleId: String? = nil,
+    styleProfileId: String? = nil,
     translationMemoryId: DeepLTranslationMemoryId? = nil,
     translationMemoryThreshold: Int? = nil
   ) {
@@ -56,6 +58,7 @@ public struct DeepLTranslateDocumentRequest: Codable, Sendable {
     self.outputFormat = outputFormat
     self.sourceLang = sourceLang
     self.styleId = styleId
+    self.styleProfileId = styleProfileId
     self.targetLang = targetLang
     self.translationMemoryId = translationMemoryId
     self.translationMemoryThreshold = translationMemoryThreshold
@@ -74,6 +77,7 @@ public struct DeepLTranslateDocumentRequest: Codable, Sendable {
     case outputFormat = "output_format"
     case sourceLang = "source_lang"
     case styleId = "style_id"
+    case styleProfileId = "style_profile_id"
     case targetLang = "target_lang"
     case translationMemoryId = "translation_memory_id"
     case translationMemoryThreshold = "translation_memory_threshold"

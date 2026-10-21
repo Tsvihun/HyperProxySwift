@@ -13,6 +13,8 @@ import HyperProxyCore
 public struct TogetherDEDeploymentAdapterStatus: Codable, Sendable {
   public var adapterModel: String?
   public var adapterModelId: String
+  public var adapterValid: Bool?
+  public var adapterValidReason: String?
   public var clusterId: String
   public var failedPodCount: Int
   public var loadedAt: String?
@@ -34,6 +36,8 @@ public struct TogetherDEDeploymentAdapterStatus: Codable, Sendable {
     state: TogetherDEDeploymentAdapterStatusState,
     totalPodCount: Int,
     adapterModel: String? = nil,
+    adapterValid: Bool? = nil,
+    adapterValidReason: String? = nil,
     loadedAt: String? = nil,
     message: String? = nil,
     realizedEtag: String? = nil,
@@ -44,6 +48,8 @@ public struct TogetherDEDeploymentAdapterStatus: Codable, Sendable {
   ) {
     self.adapterModel = adapterModel
     self.adapterModelId = adapterModelId
+    self.adapterValid = adapterValid
+    self.adapterValidReason = adapterValidReason
     self.clusterId = clusterId
     self.failedPodCount = failedPodCount
     self.loadedAt = loadedAt
@@ -61,6 +67,8 @@ public struct TogetherDEDeploymentAdapterStatus: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case adapterModel
     case adapterModelId
+    case adapterValid
+    case adapterValidReason
     case clusterId
     case failedPodCount
     case loadedAt

@@ -616,6 +616,24 @@ extension OpenAIAdminCalls {
     return try await call.decoded(OpenAIProjectApiKey.self)
   }
 
+  public func updateProjectApiKey(
+    _ body: OpenAIUpdateProjectApiKeyBody,
+    projectId: String,
+    apiKeyId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIProjectApiKey {
+    let call = self.service.call(.updateProjectApiKey)
+      .path("project_id", projectId)
+      .path("api_key_id", apiKeyId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenAIProjectApiKey.self)
+  }
+
   public func deleteProjectApiKey(
     projectId: String,
     apiKeyId: String,
@@ -1416,6 +1434,18 @@ extension OpenAIAdminCalls {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(OpenAIUsageResponse.self)
+  }
+
+  public func organizationDecisionsusage(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIPublicDecisionsUsageResponseResource {
+    let call = self.service.call(.organizationDecisionsusage)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIPublicDecisionsUsageResponseResource.self)
   }
 
   public func usageEmbeddings(

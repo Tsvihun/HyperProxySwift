@@ -10,4 +10,7 @@
 import Foundation
 import HyperProxyCore
 
-public typealias MistralSamplingContextCapability = [String: HyperProxyJSONValue]
+public struct MistralSamplingContextCapability: Codable, Sendable {
+
+  public init() {}
+}

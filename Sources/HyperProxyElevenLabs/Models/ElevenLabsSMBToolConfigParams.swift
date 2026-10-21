@@ -56,6 +56,7 @@ public enum ElevenLabsSMBToolConfigParams: Codable, Sendable {
   case restoreCalendarEventParams(ElevenLabsRestoreCalendarEventParams)
   case deleteCalendarEventParams(ElevenLabsDeleteCalendarEventParams)
   case listCustomerFacingAgentsParams(ElevenLabsListCustomerFacingAgentsParams)
+  case getAgentConfigParams(ElevenLabsGetAgentConfigParams)
   case listAgentRulesParams(ElevenLabsListAgentRulesParams)
   case createAgentRuleParams(ElevenLabsCreateAgentRuleParams)
   case updateAgentRuleParams(ElevenLabsUpdateAgentRuleParams)
@@ -76,8 +77,9 @@ public enum ElevenLabsSMBToolConfigParams: Codable, Sendable {
   case getScheduleParams(ElevenLabsGetScheduleParams)
   case submitBusinessInfoParams(ElevenLabsSubmitBusinessInfoParams)
   case updateBusinessInfoParams(ElevenLabsUpdateBusinessInfoParams)
-  case updateCustomerFacingConfigParams(ElevenLabsUpdateCustomerFacingConfigParams)
+  case updateAgentConfigParams(ElevenLabsUpdateAgentConfigParams)
   case getAnalyticsSummaryParams(ElevenLabsGetAnalyticsSummaryParams)
+  case getWorkspacePlanParams(ElevenLabsGetWorkspacePlanParams)
   case getBookingPageSettingsParams(ElevenLabsGetBookingPageSettingsParams)
   case updateBookingPageSettingsParams(ElevenLabsUpdateBookingPageSettingsParams)
   case updateBookingPageAppearanceParams(ElevenLabsUpdateBookingPageAppearanceParams)
@@ -281,6 +283,10 @@ public enum ElevenLabsSMBToolConfigParams: Codable, Sendable {
       self = .listCustomerFacingAgentsParams(value)
       return
     }
+    if let value = try? container.decode(ElevenLabsGetAgentConfigParams.self) {
+      self = .getAgentConfigParams(value)
+      return
+    }
     if let value = try? container.decode(ElevenLabsListAgentRulesParams.self) {
       self = .listAgentRulesParams(value)
       return
@@ -361,12 +367,16 @@ public enum ElevenLabsSMBToolConfigParams: Codable, Sendable {
       self = .updateBusinessInfoParams(value)
       return
     }
-    if let value = try? container.decode(ElevenLabsUpdateCustomerFacingConfigParams.self) {
-      self = .updateCustomerFacingConfigParams(value)
+    if let value = try? container.decode(ElevenLabsUpdateAgentConfigParams.self) {
+      self = .updateAgentConfigParams(value)
       return
     }
     if let value = try? container.decode(ElevenLabsGetAnalyticsSummaryParams.self) {
       self = .getAnalyticsSummaryParams(value)
+      return
+    }
+    if let value = try? container.decode(ElevenLabsGetWorkspacePlanParams.self) {
+      self = .getWorkspacePlanParams(value)
       return
     }
     if let value = try? container.decode(ElevenLabsGetBookingPageSettingsParams.self) {
@@ -542,6 +552,8 @@ public enum ElevenLabsSMBToolConfigParams: Codable, Sendable {
       try container.encode(value)
     case .listCustomerFacingAgentsParams(let value):
       try container.encode(value)
+    case .getAgentConfigParams(let value):
+      try container.encode(value)
     case .listAgentRulesParams(let value):
       try container.encode(value)
     case .createAgentRuleParams(let value):
@@ -582,9 +594,11 @@ public enum ElevenLabsSMBToolConfigParams: Codable, Sendable {
       try container.encode(value)
     case .updateBusinessInfoParams(let value):
       try container.encode(value)
-    case .updateCustomerFacingConfigParams(let value):
+    case .updateAgentConfigParams(let value):
       try container.encode(value)
     case .getAnalyticsSummaryParams(let value):
+      try container.encode(value)
+    case .getWorkspacePlanParams(let value):
       try container.encode(value)
     case .getBookingPageSettingsParams(let value):
       try container.encode(value)

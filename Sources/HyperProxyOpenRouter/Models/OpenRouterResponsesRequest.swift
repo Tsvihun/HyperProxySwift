@@ -14,6 +14,7 @@ public struct OpenRouterResponsesRequest: Codable, Sendable {
   public var background: Bool?
   public var cacheControl: OpenRouterAnthropicCacheControlDirective?
   public var debug: OpenRouterChatDebugOptions?
+  public var deferredTools: OpenRouterDeferredToolsControl?
   public var frequencyPenalty: Double?
   public var imageConfig: OpenRouterImageConfig?
   public var include: [OpenRouterResponseIncludesEnum]?
@@ -38,6 +39,7 @@ public struct OpenRouterResponsesRequest: Codable, Sendable {
   public var safetyIdentifier: String?
   public var serviceTier: OpenRouterResponsesRequestServiceTier?
   public var sessionId: String?
+  public var stop: OpenRouterResponsesRequestStop?
   public var stopServerToolsWhen: OpenRouterStopServerToolsWhen?
   public var store: OpenRouterResponsesRequestStore?
   public var stream: Bool?
@@ -56,6 +58,7 @@ public struct OpenRouterResponsesRequest: Codable, Sendable {
     background: Bool? = nil,
     cacheControl: OpenRouterAnthropicCacheControlDirective? = nil,
     debug: OpenRouterChatDebugOptions? = nil,
+    deferredTools: OpenRouterDeferredToolsControl? = nil,
     frequencyPenalty: Double? = nil,
     imageConfig: OpenRouterImageConfig? = nil,
     include: [OpenRouterResponseIncludesEnum]? = nil,
@@ -80,6 +83,7 @@ public struct OpenRouterResponsesRequest: Codable, Sendable {
     safetyIdentifier: String? = nil,
     serviceTier: OpenRouterResponsesRequestServiceTier? = nil,
     sessionId: String? = nil,
+    stop: OpenRouterResponsesRequestStop? = nil,
     stopServerToolsWhen: OpenRouterStopServerToolsWhen? = nil,
     store: OpenRouterResponsesRequestStore? = nil,
     stream: Bool? = nil,
@@ -97,6 +101,7 @@ public struct OpenRouterResponsesRequest: Codable, Sendable {
     self.background = background
     self.cacheControl = cacheControl
     self.debug = debug
+    self.deferredTools = deferredTools
     self.frequencyPenalty = frequencyPenalty
     self.imageConfig = imageConfig
     self.include = include
@@ -121,6 +126,7 @@ public struct OpenRouterResponsesRequest: Codable, Sendable {
     self.safetyIdentifier = safetyIdentifier
     self.serviceTier = serviceTier
     self.sessionId = sessionId
+    self.stop = stop
     self.stopServerToolsWhen = stopServerToolsWhen
     self.store = store
     self.stream = stream
@@ -140,6 +146,7 @@ public struct OpenRouterResponsesRequest: Codable, Sendable {
     case background
     case cacheControl = "cache_control"
     case debug
+    case deferredTools = "deferred_tools"
     case frequencyPenalty = "frequency_penalty"
     case imageConfig = "image_config"
     case include
@@ -164,6 +171,7 @@ public struct OpenRouterResponsesRequest: Codable, Sendable {
     case safetyIdentifier = "safety_identifier"
     case serviceTier = "service_tier"
     case sessionId = "session_id"
+    case stop
     case stopServerToolsWhen = "stop_server_tools_when"
     case store
     case stream

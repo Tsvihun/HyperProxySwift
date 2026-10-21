@@ -1,0 +1,37 @@
+//
+//  OpenRouterDeferredCustomSearch.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+// Maintainer-generated release artifact. Do not edit by hand.
+
+import Foundation
+import HyperProxyCore
+
+public struct OpenRouterDeferredCustomSearch: Codable, Sendable {
+  public var maxResults: Int?
+  public var resultKey: String
+  public var toolId: String
+  public var kind: OpenRouterDeferredCustomSearchKind
+
+  public init(
+    resultKey: String,
+    toolId: String,
+    kind: OpenRouterDeferredCustomSearchKind,
+    maxResults: Int? = nil
+  ) {
+    self.maxResults = maxResults
+    self.resultKey = resultKey
+    self.toolId = toolId
+    self.kind = kind
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case maxResults = "max_results"
+    case resultKey = "result_key"
+    case toolId = "tool_id"
+    case kind = "type"
+  }
+}

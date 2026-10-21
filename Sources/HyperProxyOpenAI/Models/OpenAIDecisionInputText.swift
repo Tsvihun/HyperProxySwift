@@ -11,18 +11,22 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIDecisionInputText: Codable, Sendable {
+  public var promptCacheBreakpoint: OpenAIDecisionInputTextPromptCacheBreakpoint?
   public var text: String
   public var kind: OpenAIDecisionInputTextKind
 
   public init(
     text: String,
-    kind: OpenAIDecisionInputTextKind
+    kind: OpenAIDecisionInputTextKind,
+    promptCacheBreakpoint: OpenAIDecisionInputTextPromptCacheBreakpoint? = nil
   ) {
+    self.promptCacheBreakpoint = promptCacheBreakpoint
     self.text = text
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
+    case promptCacheBreakpoint = "prompt_cache_breakpoint"
     case text
     case kind = "type"
   }

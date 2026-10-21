@@ -13,21 +13,25 @@ import HyperProxyCore
 public struct ElevenLabsRebaseBranchOntoMainParameters: Codable, Sendable {
   public var agentId: String
   public var branchId: String
+  public var sourceBranchId: String?
   public var xiApiKey: String?
 
   public init(
     agentId: String,
     branchId: String,
+    sourceBranchId: String? = nil,
     xiApiKey: String? = nil
   ) {
     self.agentId = agentId
     self.branchId = branchId
+    self.sourceBranchId = sourceBranchId
     self.xiApiKey = xiApiKey
   }
 
   enum CodingKeys: String, CodingKey {
     case agentId = "agent_id"
     case branchId = "branch_id"
+    case sourceBranchId = "source_branch_id"
     case xiApiKey = "xi-api-key"
   }
 }

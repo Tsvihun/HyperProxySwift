@@ -11,7 +11,6 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralCreateHTTPConnectorRequest: Codable, Sendable {
-  public var authData: MistralAuthData?
   public var authMethods: [MistralCreateHTTPConnectorRequestAuthMethodsAnyOf1Item]?
   public var description: String
   public var globalHeaders: [String: MistralGlobalHeaderValue]?
@@ -31,7 +30,6 @@ public struct MistralCreateHTTPConnectorRequest: Codable, Sendable {
     name: String,
     server: String,
     protocolModel: MistralHttpProtocolModel = .http,
-    authData: MistralAuthData? = nil,
     authMethods: [MistralCreateHTTPConnectorRequestAuthMethodsAnyOf1Item]? = nil,
     globalHeaders: [String: MistralGlobalHeaderValue]? = nil,
     headers: [String: HyperProxyJSONValue]? = nil,
@@ -42,7 +40,6 @@ public struct MistralCreateHTTPConnectorRequest: Codable, Sendable {
     title: String? = nil,
     visibility: MistralPublicResourceVisibility? = nil
   ) {
-    self.authData = authData
     self.authMethods = authMethods
     self.description = description
     self.globalHeaders = globalHeaders
@@ -59,7 +56,6 @@ public struct MistralCreateHTTPConnectorRequest: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
-    case authData = "auth_data"
     case authMethods = "auth_methods"
     case description
     case globalHeaders = "global_headers"

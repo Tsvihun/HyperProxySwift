@@ -34,6 +34,7 @@ public enum OpenRouterMessagesMessageParamContentAnyOf2Item: Codable, Sendable {
   case messagesToolRemovalBlock(OpenRouterMessagesToolRemovalBlock)
   case messagesShellToolResultBlock(OpenRouterMessagesShellToolResultBlock)
   case messagesBashToolResultBlock(OpenRouterMessagesBashToolResultBlock)
+  case oRAnthropicToolSearchResultParam(OpenRouterORAnthropicToolSearchResultParam)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -105,8 +106,12 @@ public enum OpenRouterMessagesMessageParamContentAnyOf2Item: Codable, Sendable {
       self = .messagesShellToolResultBlock(value)
       return
     }
-    self = .messagesBashToolResultBlock(
-      try container.decode(OpenRouterMessagesBashToolResultBlock.self))
+    if let value = try? container.decode(OpenRouterMessagesBashToolResultBlock.self) {
+      self = .messagesBashToolResultBlock(value)
+      return
+    }
+    self = .oRAnthropicToolSearchResultParam(
+      try container.decode(OpenRouterORAnthropicToolSearchResultParam.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -143,6 +148,8 @@ public enum OpenRouterMessagesMessageParamContentAnyOf2Item: Codable, Sendable {
     case .messagesShellToolResultBlock(let value):
       try container.encode(value)
     case .messagesBashToolResultBlock(let value):
+      try container.encode(value)
+    case .oRAnthropicToolSearchResultParam(let value):
       try container.encode(value)
     }
   }

@@ -46,6 +46,7 @@ public enum ElevenLabsWorkspaceGroupPermission: String, Codable, Hashable, Senda
   case termsOfServiceAccept = "terms_of_service_accept"
   case auditLogRead = "audit_log_read"
   case conversationPrivacyManage = "conversation_privacy_manage"
+  case allResourcesAccess = "all_resources_access"
   case copyResourcesCrossWorkspace = "copy_resources_cross_workspace"
   case voiceDesign = "voice_design"
 }

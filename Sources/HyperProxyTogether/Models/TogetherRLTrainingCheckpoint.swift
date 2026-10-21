@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct TogetherRLTrainingCheckpoint: Codable, Sendable {
   public var createdAt: String
   public var id: String
-  public var registration: TogetherRLTrainingCheckpointRegistration?
+  public var registration: TogetherRLModelRegistryArtifact?
   public var step: TogetherRLTrainingCheckpointStep
 
   public init(
     createdAt: String,
     id: String,
     step: TogetherRLTrainingCheckpointStep,
-    registration: TogetherRLTrainingCheckpointRegistration? = nil
+    registration: TogetherRLModelRegistryArtifact? = nil
   ) {
     self.createdAt = createdAt
     self.id = id

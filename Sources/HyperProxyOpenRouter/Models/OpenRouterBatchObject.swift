@@ -15,10 +15,12 @@ public struct OpenRouterBatchObject: Codable, Sendable {
   public var createdAt: Int
   public var endpoint: String
   public var error: OpenRouterBatchObjectError?
+  public var expiresAt: Int
   public var finalizedAt: Int
   public var id: String
   public var model: String
   public var object: OpenRouterBatchObjectObject
+  public var provider: String
   public var requestCounts: OpenRouterBatchObjectRequestCounts
   public var results: [OpenRouterBatchObjectResultsItem]
   public var status: OpenRouterBatchObjectStatus
@@ -29,10 +31,12 @@ public struct OpenRouterBatchObject: Codable, Sendable {
     createdAt: Int,
     endpoint: String,
     error: OpenRouterBatchObjectError?,
+    expiresAt: Int,
     finalizedAt: Int,
     id: String,
     model: String,
     object: OpenRouterBatchObjectObject,
+    provider: String,
     requestCounts: OpenRouterBatchObjectRequestCounts,
     results: [OpenRouterBatchObjectResultsItem],
     status: OpenRouterBatchObjectStatus,
@@ -42,10 +46,12 @@ public struct OpenRouterBatchObject: Codable, Sendable {
     self.createdAt = createdAt
     self.endpoint = endpoint
     self.error = error
+    self.expiresAt = expiresAt
     self.finalizedAt = finalizedAt
     self.id = id
     self.model = model
     self.object = object
+    self.provider = provider
     self.requestCounts = requestCounts
     self.results = results
     self.status = status
@@ -57,10 +63,12 @@ public struct OpenRouterBatchObject: Codable, Sendable {
     case createdAt = "created_at"
     case endpoint
     case error
+    case expiresAt = "expires_at"
     case finalizedAt = "finalized_at"
     case id
     case model
     case object
+    case provider
     case requestCounts = "request_counts"
     case results
     case status

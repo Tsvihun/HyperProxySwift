@@ -271,6 +271,12 @@ public enum HyperProxyProviders {
         responseContentTypes: ["application/json"], surface: "api", lifecycle: .stable,
         access: .admin, catalogSource: "openai/openapi", upstreamBaseURL: "https://api.openai.com"),
       HyperProxyProviderRoute(
+        operation: "update.project.api.key", method: .post,
+        pathTemplate: "v1/organization/projects/{project_id}/api_keys/{api_key_id}",
+        bodyKind: .json, responseKind: .json, requestContentTypes: ["application/json"],
+        responseContentTypes: ["application/json"], surface: "api", lifecycle: .stable,
+        access: .admin, catalogSource: "openai/openapi", upstreamBaseURL: "https://api.openai.com"),
+      HyperProxyProviderRoute(
         operation: "archive.project", method: .post,
         pathTemplate: "v1/organization/projects/{project_id}/archive", bodyKind: .none,
         responseKind: .json, requestContentTypes: [], responseContentTypes: ["application/json"],
@@ -585,6 +591,12 @@ public enum HyperProxyProviders {
         lifecycle: .stable, access: .admin, catalogSource: "openai/openapi",
         upstreamBaseURL: "https://api.openai.com"),
       HyperProxyProviderRoute(
+        operation: "OrganizationDecisionsusage", method: .get,
+        pathTemplate: "v1/organization/usage/decisions", bodyKind: .none, responseKind: .json,
+        requestContentTypes: [], responseContentTypes: ["application/json"], surface: "api",
+        lifecycle: .stable, access: .admin, catalogSource: "openai/openapi",
+        upstreamBaseURL: "https://api.openai.com"),
+      HyperProxyProviderRoute(
         operation: "usage.embeddings", method: .get,
         pathTemplate: "v1/organization/usage/embeddings", bodyKind: .none, responseKind: .json,
         requestContentTypes: [], responseContentTypes: ["application/json"], surface: "api",
@@ -698,9 +710,10 @@ public enum HyperProxyProviders {
         access: .public, catalogSource: "openai/openapi", upstreamBaseURL: "https://api.openai.com"),
       HyperProxyProviderRoute(
         operation: "responses.retrieve", method: .get, pathTemplate: "v1/responses/{response_id}",
-        bodyKind: .none, responseKind: .json, requestContentTypes: [],
-        responseContentTypes: ["application/json"], surface: "api", lifecycle: .stable,
-        access: .public, catalogSource: "openai/openapi", upstreamBaseURL: "https://api.openai.com"),
+        bodyKind: .none, responseKind: .mixed, requestContentTypes: [],
+        responseContentTypes: ["application/json", "text/event-stream"], surface: "api",
+        lifecycle: .stable, access: .public, catalogSource: "openai/openapi",
+        upstreamBaseURL: "https://api.openai.com"),
       HyperProxyProviderRoute(
         operation: "responses.cancel", method: .post,
         pathTemplate: "v1/responses/{response_id}/cancel", bodyKind: .none, responseKind: .json,
@@ -721,6 +734,16 @@ public enum HyperProxyProviders {
       HyperProxyProviderRoute(
         operation: "createAgent", method: .post, pathTemplate: "v1/agents", bodyKind: .json,
         responseKind: .json, requestContentTypes: ["application/json"],
+        responseContentTypes: ["application/json"], surface: "api", lifecycle: .stable,
+        access: .public, catalogSource: "openai/openapi", upstreamBaseURL: "https://api.openai.com"),
+      HyperProxyProviderRoute(
+        operation: "listAgentEnvironments", method: .get, pathTemplate: "v1/agents/environments",
+        bodyKind: .none, responseKind: .json, requestContentTypes: [],
+        responseContentTypes: ["application/json"], surface: "api", lifecycle: .stable,
+        access: .public, catalogSource: "openai/openapi", upstreamBaseURL: "https://api.openai.com"),
+      HyperProxyProviderRoute(
+        operation: "createAgentEnvironment", method: .post, pathTemplate: "v1/agents/environments",
+        bodyKind: .json, responseKind: .json, requestContentTypes: ["application/json"],
         responseContentTypes: ["application/json"], surface: "api", lifecycle: .stable,
         access: .public, catalogSource: "openai/openapi", upstreamBaseURL: "https://api.openai.com"),
       HyperProxyProviderRoute(
@@ -992,8 +1015,8 @@ public enum HyperProxyProviders {
         surface: "api", lifecycle: .stable, access: .public, catalogSource: "openai/openapi",
         upstreamBaseURL: "https://api.openai.com"),
       HyperProxyProviderRoute(
-        operation: "createVoice", method: .post, pathTemplate: "v1/audio/voices",
-        bodyKind: .multipart, responseKind: .json, requestContentTypes: ["multipart/form-data"],
+        operation: "createVoice", method: .post, pathTemplate: "v1/audio/voices", bodyKind: .mixed,
+        responseKind: .json, requestContentTypes: ["application/json", "multipart/form-data"],
         responseContentTypes: ["application/json"], surface: "api", lifecycle: .stable,
         access: .public, catalogSource: "openai/openapi", upstreamBaseURL: "https://api.openai.com"),
       HyperProxyProviderRoute(
@@ -1086,9 +1109,10 @@ public enum HyperProxyProviders {
         upstreamBaseURL: "https://api.openai.com"),
       HyperProxyProviderRoute(
         operation: "createCompletion", method: .post, pathTemplate: "v1/completions",
-        bodyKind: .json, responseKind: .json, requestContentTypes: ["application/json"],
-        responseContentTypes: ["application/json"], surface: "api", lifecycle: .stable,
-        access: .public, catalogSource: "openai/openapi", upstreamBaseURL: "https://api.openai.com"),
+        bodyKind: .json, responseKind: .mixed, requestContentTypes: ["application/json"],
+        responseContentTypes: ["application/json", "text/event-stream"], surface: "api",
+        lifecycle: .stable, access: .public, catalogSource: "openai/openapi",
+        upstreamBaseURL: "https://api.openai.com"),
       HyperProxyProviderRoute(
         operation: "ListContainers", method: .get, pathTemplate: "v1/containers", bodyKind: .none,
         responseKind: .json, requestContentTypes: [], responseContentTypes: ["application/json"],
@@ -4316,6 +4340,12 @@ public enum HyperProxyProviders {
         responseContentTypes: ["application/json"], surface: "api", lifecycle: .beta,
         access: .admin, catalogSource: "mistral/openapi", upstreamBaseURL: "https://api.mistral.ai"),
       HyperProxyProviderRoute(
+        operation: "users.api.admin.usage.query.usage", method: .post,
+        pathTemplate: "v1/admin/usage/query", bodyKind: .json, responseKind: .json,
+        requestContentTypes: ["application/json"], responseContentTypes: ["application/json"],
+        surface: "api", lifecycle: .beta, access: .admin, catalogSource: "mistral/openapi",
+        upstreamBaseURL: "https://api.mistral.ai"),
+      HyperProxyProviderRoute(
         operation: "users.api.admin.user.groups.get.user.groups", method: .get,
         pathTemplate: "v1/admin/user-groups", bodyKind: .none, responseKind: .json,
         requestContentTypes: [], responseContentTypes: ["application/json"], surface: "api",
@@ -4456,6 +4486,12 @@ public enum HyperProxyProviders {
         pathTemplate: "v1/admin/users/{user_id}", bodyKind: .json, responseKind: .json,
         requestContentTypes: ["application/json"], responseContentTypes: ["application/json"],
         surface: "api", lifecycle: .beta, access: .admin, catalogSource: "mistral/openapi",
+        upstreamBaseURL: "https://api.mistral.ai"),
+      HyperProxyProviderRoute(
+        operation: "users.api.admin.users.deactivate.user", method: .post,
+        pathTemplate: "v1/admin/users/{user_id}/deactivate", bodyKind: .none, responseKind: .json,
+        requestContentTypes: [], responseContentTypes: ["application/json"], surface: "api",
+        lifecycle: .beta, access: .admin, catalogSource: "mistral/openapi",
         upstreamBaseURL: "https://api.mistral.ai"),
       HyperProxyProviderRoute(
         operation: "users.api.admin.workspaces.get.workspaces", method: .get,
@@ -5051,6 +5087,14 @@ public enum HyperProxyProviders {
         access: .public, catalogSource: "mistral/openapi", upstreamBaseURL: "https://api.mistral.ai"
       ),
       HyperProxyProviderRoute(
+        operation:
+          "post.dataset.records.from.spans.v1.observability.datasets.dataset.id.imports.from.spans.post",
+        method: .post, pathTemplate: "v1/observability/datasets/{dataset_id}/imports/from-spans",
+        bodyKind: .json, responseKind: .json, requestContentTypes: ["application/json"],
+        responseContentTypes: ["application/json"], surface: "api", lifecycle: .beta,
+        access: .public, catalogSource: "mistral/openapi", upstreamBaseURL: "https://api.mistral.ai"
+      ),
+      HyperProxyProviderRoute(
         operation: "get.dataset.records.v1.observability.datasets.dataset.id.records.get",
         method: .get, pathTemplate: "v1/observability/datasets/{dataset_id}/records",
         bodyKind: .none, responseKind: .json, requestContentTypes: [],
@@ -5074,6 +5118,69 @@ public enum HyperProxyProviders {
         operation: "get.dataset.import.task.v1.observability.datasets.dataset.id.tasks.task.id.get",
         method: .get, pathTemplate: "v1/observability/datasets/{dataset_id}/tasks/{task_id}",
         bodyKind: .none, responseKind: .json, requestContentTypes: [],
+        responseContentTypes: ["application/json"], surface: "api", lifecycle: .beta,
+        access: .public, catalogSource: "mistral/openapi", upstreamBaseURL: "https://api.mistral.ai"
+      ),
+      HyperProxyProviderRoute(
+        operation: "search.all.evaluation.runs.v2.v1.observability.evaluation.runs.v2.search.post",
+        method: .post, pathTemplate: "v1/observability/evaluation-runs_v2/search", bodyKind: .json,
+        responseKind: .json, requestContentTypes: ["application/json"],
+        responseContentTypes: ["application/json"], surface: "api", lifecycle: .beta,
+        access: .public, catalogSource: "mistral/openapi", upstreamBaseURL: "https://api.mistral.ai"
+      ),
+      HyperProxyProviderRoute(
+        operation: "get.evaluation.run.v2.v1.observability.evaluation.runs.v2.run.id.get",
+        method: .get, pathTemplate: "v1/observability/evaluation-runs_v2/{run_id}", bodyKind: .none,
+        responseKind: .json, requestContentTypes: [], responseContentTypes: ["application/json"],
+        surface: "api", lifecycle: .beta, access: .public, catalogSource: "mistral/openapi",
+        upstreamBaseURL: "https://api.mistral.ai"),
+      HyperProxyProviderRoute(
+        operation:
+          "search.evaluation.run.records.v2.v1.observability.evaluation.runs.v2.run.id.records.search.post",
+        method: .post, pathTemplate: "v1/observability/evaluation-runs_v2/{run_id}/records/search",
+        bodyKind: .json, responseKind: .json, requestContentTypes: ["application/json"],
+        responseContentTypes: ["application/json"], surface: "api", lifecycle: .beta,
+        access: .public, catalogSource: "mistral/openapi", upstreamBaseURL: "https://api.mistral.ai"
+      ),
+      HyperProxyProviderRoute(
+        operation:
+          "get.evaluation.run.record.v2.v1.observability.evaluation.runs.v2.run.id.records.record.id.get",
+        method: .get,
+        pathTemplate: "v1/observability/evaluation-runs_v2/{run_id}/records/{record_id}",
+        bodyKind: .none, responseKind: .json, requestContentTypes: [],
+        responseContentTypes: ["application/json"], surface: "api", lifecycle: .beta,
+        access: .public, catalogSource: "mistral/openapi", upstreamBaseURL: "https://api.mistral.ai"
+      ),
+      HyperProxyProviderRoute(
+        operation:
+          "get.single.evaluation.run.statistics.v2.v1.observability.evaluation.runs.v2.run.id.statistics.get",
+        method: .get, pathTemplate: "v1/observability/evaluation-runs_v2/{run_id}/statistics",
+        bodyKind: .none, responseKind: .json, requestContentTypes: [],
+        responseContentTypes: ["application/json"], surface: "api", lifecycle: .beta,
+        access: .public, catalogSource: "mistral/openapi", upstreamBaseURL: "https://api.mistral.ai"
+      ),
+      HyperProxyProviderRoute(
+        operation:
+          "compute.filtered.run.statistics.v2.v1.observability.evaluation.runs.v2.run.id.statistics.compute.post",
+        method: .post,
+        pathTemplate: "v1/observability/evaluation-runs_v2/{run_id}/statistics/compute",
+        bodyKind: .json, responseKind: .json, requestContentTypes: ["application/json"],
+        responseContentTypes: ["application/json"], surface: "api", lifecycle: .beta,
+        access: .public, catalogSource: "mistral/openapi", upstreamBaseURL: "https://api.mistral.ai"
+      ),
+      HyperProxyProviderRoute(
+        operation: "get.evaluation.v2.v1.observability.evaluations.v2.evaluation.slug.get",
+        method: .get, pathTemplate: "v1/observability/evaluations_v2/{evaluation_slug}",
+        bodyKind: .none, responseKind: .json, requestContentTypes: [],
+        responseContentTypes: ["application/json"], surface: "api", lifecycle: .beta,
+        access: .public, catalogSource: "mistral/openapi", upstreamBaseURL: "https://api.mistral.ai"
+      ),
+      HyperProxyProviderRoute(
+        operation:
+          "search.evaluation.runs.v2.v1.observability.evaluations.v2.evaluation.slug.runs.search.post",
+        method: .post,
+        pathTemplate: "v1/observability/evaluations_v2/{evaluation_slug}/runs/search",
+        bodyKind: .json, responseKind: .json, requestContentTypes: ["application/json"],
         responseContentTypes: ["application/json"], surface: "api", lifecycle: .beta,
         access: .public, catalogSource: "mistral/openapi", upstreamBaseURL: "https://api.mistral.ai"
       ),
@@ -5134,36 +5241,81 @@ public enum HyperProxyProviders {
         surface: "api", lifecycle: .beta, access: .public, catalogSource: "mistral/openapi",
         upstreamBaseURL: "https://api.mistral.ai"),
       HyperProxyProviderRoute(
-        operation: "list.pipeline.configs.v1.observability.pipeline.configs.get", method: .get,
-        pathTemplate: "v1/observability/pipeline-configs", bodyKind: .none, responseKind: .json,
+        operation: "list.optimizations.v1.observability.optimizations.get", method: .get,
+        pathTemplate: "v1/observability/optimizations", bodyKind: .none, responseKind: .json,
         requestContentTypes: [], responseContentTypes: ["application/json"], surface: "api",
         lifecycle: .beta, access: .public, catalogSource: "mistral/openapi",
         upstreamBaseURL: "https://api.mistral.ai"),
       HyperProxyProviderRoute(
-        operation: "create.pipeline.config.v1.observability.pipeline.configs.post", method: .post,
-        pathTemplate: "v1/observability/pipeline-configs", bodyKind: .json, responseKind: .json,
-        requestContentTypes: ["application/json"], responseContentTypes: ["application/json"],
-        surface: "api", lifecycle: .beta, access: .public, catalogSource: "mistral/openapi",
-        upstreamBaseURL: "https://api.mistral.ai"),
-      HyperProxyProviderRoute(
-        operation:
-          "delete.pipeline.config.v1.observability.pipeline.configs.pipeline.config.id.delete",
-        method: .delete, pathTemplate: "v1/observability/pipeline-configs/{pipeline_config_id}",
-        bodyKind: .none, responseKind: .empty, requestContentTypes: [], responseContentTypes: [],
-        surface: "api", lifecycle: .beta, access: .public, catalogSource: "mistral/openapi",
-        upstreamBaseURL: "https://api.mistral.ai"),
-      HyperProxyProviderRoute(
-        operation: "get.pipeline.config.v1.observability.pipeline.configs.pipeline.config.id.get",
-        method: .get, pathTemplate: "v1/observability/pipeline-configs/{pipeline_config_id}",
+        operation: "get.optimization.v1.observability.optimizations.optimization.id.get",
+        method: .get, pathTemplate: "v1/observability/optimizations/{optimization_id}",
         bodyKind: .none, responseKind: .json, requestContentTypes: [],
         responseContentTypes: ["application/json"], surface: "api", lifecycle: .beta,
         access: .public, catalogSource: "mistral/openapi", upstreamBaseURL: "https://api.mistral.ai"
       ),
       HyperProxyProviderRoute(
         operation:
-          "update.pipeline.config.v1.observability.pipeline.configs.pipeline.config.id.put",
-        method: .put, pathTemplate: "v1/observability/pipeline-configs/{pipeline_config_id}",
-        bodyKind: .json, responseKind: .json, requestContentTypes: ["application/json"],
+          "list.optimization.trials.v1.observability.optimizations.optimization.id.trials.get",
+        method: .get, pathTemplate: "v1/observability/optimizations/{optimization_id}/trials",
+        bodyKind: .none, responseKind: .json, requestContentTypes: [],
+        responseContentTypes: ["application/json"], surface: "api", lifecycle: .beta,
+        access: .public, catalogSource: "mistral/openapi", upstreamBaseURL: "https://api.mistral.ai"
+      ),
+      HyperProxyProviderRoute(
+        operation: "search.pipeline.results.v1.observability.pipeline.results.search.post",
+        method: .post, pathTemplate: "v1/observability/pipeline-results/search", bodyKind: .json,
+        responseKind: .json, requestContentTypes: ["application/json"],
+        responseContentTypes: ["application/json"], surface: "api", lifecycle: .beta,
+        access: .public, catalogSource: "mistral/openapi", upstreamBaseURL: "https://api.mistral.ai"
+      ),
+      HyperProxyProviderRoute(
+        operation: "list.pipelines.v1.observability.pipelines.get", method: .get,
+        pathTemplate: "v1/observability/pipelines", bodyKind: .none, responseKind: .json,
+        requestContentTypes: [], responseContentTypes: ["application/json"], surface: "api",
+        lifecycle: .beta, access: .public, catalogSource: "mistral/openapi",
+        upstreamBaseURL: "https://api.mistral.ai"),
+      HyperProxyProviderRoute(
+        operation: "create.pipeline.v1.observability.pipelines.post", method: .post,
+        pathTemplate: "v1/observability/pipelines", bodyKind: .json, responseKind: .json,
+        requestContentTypes: ["application/json"], responseContentTypes: ["application/json"],
+        surface: "api", lifecycle: .beta, access: .public, catalogSource: "mistral/openapi",
+        upstreamBaseURL: "https://api.mistral.ai"),
+      HyperProxyProviderRoute(
+        operation: "delete.pipeline.v1.observability.pipelines.pipeline.id.delete", method: .delete,
+        pathTemplate: "v1/observability/pipelines/{pipeline_id}", bodyKind: .none,
+        responseKind: .empty, requestContentTypes: [], responseContentTypes: [], surface: "api",
+        lifecycle: .beta, access: .public, catalogSource: "mistral/openapi",
+        upstreamBaseURL: "https://api.mistral.ai"),
+      HyperProxyProviderRoute(
+        operation: "get.pipeline.v1.observability.pipelines.pipeline.id.get", method: .get,
+        pathTemplate: "v1/observability/pipelines/{pipeline_id}", bodyKind: .none,
+        responseKind: .json, requestContentTypes: [], responseContentTypes: ["application/json"],
+        surface: "api", lifecycle: .beta, access: .public, catalogSource: "mistral/openapi",
+        upstreamBaseURL: "https://api.mistral.ai"),
+      HyperProxyProviderRoute(
+        operation: "update.pipeline.v1.observability.pipelines.pipeline.id.put", method: .put,
+        pathTemplate: "v1/observability/pipelines/{pipeline_id}", bodyKind: .json,
+        responseKind: .json, requestContentTypes: ["application/json"],
+        responseContentTypes: ["application/json"], surface: "api", lifecycle: .beta,
+        access: .public, catalogSource: "mistral/openapi", upstreamBaseURL: "https://api.mistral.ai"
+      ),
+      HyperProxyProviderRoute(
+        operation: "get.projects.v1.observability.projects.get", method: .get,
+        pathTemplate: "v1/observability/projects", bodyKind: .none, responseKind: .json,
+        requestContentTypes: [], responseContentTypes: ["application/json"], surface: "api",
+        lifecycle: .beta, access: .public, catalogSource: "mistral/openapi",
+        upstreamBaseURL: "https://api.mistral.ai"),
+      HyperProxyProviderRoute(
+        operation: "get.project.v1.observability.projects.project.slug.get", method: .get,
+        pathTemplate: "v1/observability/projects/{project_slug}", bodyKind: .none,
+        responseKind: .json, requestContentTypes: [], responseContentTypes: ["application/json"],
+        surface: "api", lifecycle: .beta, access: .public, catalogSource: "mistral/openapi",
+        upstreamBaseURL: "https://api.mistral.ai"),
+      HyperProxyProviderRoute(
+        operation:
+          "get.project.evaluations.v2.v1.observability.projects.project.slug.evaluations.v2.get",
+        method: .get, pathTemplate: "v1/observability/projects/{project_slug}/evaluations_v2",
+        bodyKind: .none, responseKind: .json, requestContentTypes: [],
         responseContentTypes: ["application/json"], surface: "api", lifecycle: .beta,
         access: .public, catalogSource: "mistral/openapi", upstreamBaseURL: "https://api.mistral.ai"
       ),
@@ -5420,6 +5572,11 @@ public enum HyperProxyProviders {
         pathTemplate: "v1/users/me/workspaces", bodyKind: .none, responseKind: .json,
         requestContentTypes: [], responseContentTypes: ["application/json"], surface: "api",
         lifecycle: .beta, access: .public, catalogSource: "mistral/openapi",
+        upstreamBaseURL: "https://api.mistral.ai"),
+      HyperProxyProviderRoute(
+        operation: "users.api.whoami", method: .get, pathTemplate: "v1/whoami", bodyKind: .none,
+        responseKind: .json, requestContentTypes: [], responseContentTypes: ["application/json"],
+        surface: "api", lifecycle: .beta, access: .public, catalogSource: "mistral/openapi",
         upstreamBaseURL: "https://api.mistral.ai"),
       HyperProxyProviderRoute(
         operation: "prompts.list", method: .get, pathTemplate: "v2/prompts", bodyKind: .none,
@@ -6102,6 +6259,12 @@ public enum HyperProxyProviders {
         requestContentTypes: [], responseContentTypes: ["application/json"], surface: "api",
         lifecycle: .stable, access: .public, catalogSource: "mistral/openapi",
         upstreamBaseURL: "https://api.mistral.ai"),
+      HyperProxyProviderRoute(
+        operation: "audio.v2.voices.list", method: .get, pathTemplate: "v2/audio/voices",
+        bodyKind: .none, responseKind: .json, requestContentTypes: [],
+        responseContentTypes: ["application/json"], surface: "api", lifecycle: .stable,
+        access: .public, catalogSource: "mistral/openapi", upstreamBaseURL: "https://api.mistral.ai"
+      ),
     ]
   )
 
@@ -6321,32 +6484,34 @@ public enum HyperProxyProviders {
         access: .public, catalogSource: "openrouter/openapi",
         upstreamBaseURL: "https://openrouter.ai"),
       HyperProxyProviderRoute(
-        operation: "listEndUsers", method: .get, pathTemplate: "api/v1/end-users", bodyKind: .none,
-        responseKind: .json, requestContentTypes: [], responseContentTypes: ["application/json"],
-        surface: "api", lifecycle: .stable, access: .public, catalogSource: "openrouter/openapi",
-        upstreamBaseURL: "https://openrouter.ai"),
-      HyperProxyProviderRoute(
-        operation: "createEndUser", method: .post, pathTemplate: "api/v1/end-users",
-        bodyKind: .json, responseKind: .json, requestContentTypes: ["application/json"],
-        responseContentTypes: ["application/json"], surface: "api", lifecycle: .stable,
-        access: .public, catalogSource: "openrouter/openapi",
-        upstreamBaseURL: "https://openrouter.ai"),
-      HyperProxyProviderRoute(
-        operation: "deleteEndUser", method: .delete, pathTemplate: "api/v1/end-users/{user}",
-        bodyKind: .none, responseKind: .empty, requestContentTypes: [], responseContentTypes: [],
-        surface: "api", lifecycle: .stable, access: .public, catalogSource: "openrouter/openapi",
-        upstreamBaseURL: "https://openrouter.ai"),
-      HyperProxyProviderRoute(
-        operation: "getEndUser", method: .get, pathTemplate: "api/v1/end-users/{user}",
+        operation: "listExternalUsers", method: .get, pathTemplate: "api/v1/external-users",
         bodyKind: .none, responseKind: .json, requestContentTypes: [],
         responseContentTypes: ["application/json"], surface: "api", lifecycle: .stable,
         access: .public, catalogSource: "openrouter/openapi",
         upstreamBaseURL: "https://openrouter.ai"),
       HyperProxyProviderRoute(
-        operation: "updateEndUser", method: .patch, pathTemplate: "api/v1/end-users/{user}",
+        operation: "createExternalUser", method: .post, pathTemplate: "api/v1/external-users",
         bodyKind: .json, responseKind: .json, requestContentTypes: ["application/json"],
         responseContentTypes: ["application/json"], surface: "api", lifecycle: .stable,
         access: .public, catalogSource: "openrouter/openapi",
+        upstreamBaseURL: "https://openrouter.ai"),
+      HyperProxyProviderRoute(
+        operation: "deleteExternalUser", method: .delete,
+        pathTemplate: "api/v1/external-users/{user}", bodyKind: .none, responseKind: .empty,
+        requestContentTypes: [], responseContentTypes: [], surface: "api", lifecycle: .stable,
+        access: .public, catalogSource: "openrouter/openapi",
+        upstreamBaseURL: "https://openrouter.ai"),
+      HyperProxyProviderRoute(
+        operation: "getExternalUser", method: .get, pathTemplate: "api/v1/external-users/{user}",
+        bodyKind: .none, responseKind: .json, requestContentTypes: [],
+        responseContentTypes: ["application/json"], surface: "api", lifecycle: .stable,
+        access: .public, catalogSource: "openrouter/openapi",
+        upstreamBaseURL: "https://openrouter.ai"),
+      HyperProxyProviderRoute(
+        operation: "updateExternalUser", method: .patch,
+        pathTemplate: "api/v1/external-users/{user}", bodyKind: .json, responseKind: .json,
+        requestContentTypes: ["application/json"], responseContentTypes: ["application/json"],
+        surface: "api", lifecycle: .stable, access: .public, catalogSource: "openrouter/openapi",
         upstreamBaseURL: "https://openrouter.ai"),
       HyperProxyProviderRoute(
         operation: "listFiles", method: .get, pathTemplate: "api/v1/files", bodyKind: .none,
@@ -6532,6 +6697,12 @@ public enum HyperProxyProviders {
         lifecycle: .stable, access: .public, catalogSource: "openrouter/openapi",
         upstreamBaseURL: "https://openrouter.ai"),
       HyperProxyProviderRoute(
+        operation: "getInternConnections", method: .get,
+        pathTemplate: "api/v1/interns/{internId}/connections", bodyKind: .none, responseKind: .json,
+        requestContentTypes: [], responseContentTypes: ["application/json"], surface: "api",
+        lifecycle: .stable, access: .public, catalogSource: "openrouter/openapi",
+        upstreamBaseURL: "https://openrouter.ai"),
+      HyperProxyProviderRoute(
         operation: "getInternDaemon", method: .get,
         pathTemplate: "api/v1/interns/{internId}/daemon", bodyKind: .none, responseKind: .json,
         requestContentTypes: [], responseContentTypes: ["application/json"], surface: "api",
@@ -6556,6 +6727,11 @@ public enum HyperProxyProviders {
         requestContentTypes: ["application/json"], responseContentTypes: ["application/json"],
         surface: "api", lifecycle: .stable, access: .public, catalogSource: "openrouter/openapi",
         upstreamBaseURL: "https://openrouter.ai"),
+      HyperProxyProviderRoute(
+        operation: "getInternIcon", method: .get, pathTemplate: "api/v1/interns/{internId}/icon",
+        bodyKind: .none, responseKind: .binary, requestContentTypes: [],
+        responseContentTypes: ["image/*"], surface: "api", lifecycle: .stable, access: .public,
+        catalogSource: "openrouter/openapi", upstreamBaseURL: "https://openrouter.ai"),
       HyperProxyProviderRoute(
         operation: "invokeIntern", method: .post, pathTemplate: "api/v1/interns/{internId}/invoke",
         bodyKind: .json, responseKind: .json, requestContentTypes: ["application/json"],
@@ -6872,6 +7048,12 @@ public enum HyperProxyProviders {
         surface: "api", lifecycle: .stable, access: .public, catalogSource: "openrouter/openapi",
         upstreamBaseURL: "https://openrouter.ai"),
       HyperProxyProviderRoute(
+        operation: "listInternConnections", method: .get,
+        pathTemplate: "api/v1/vault/interns/{internId}/connections", bodyKind: .none,
+        responseKind: .json, requestContentTypes: [], responseContentTypes: ["application/json"],
+        surface: "api", lifecycle: .stable, access: .public, catalogSource: "openrouter/openapi",
+        upstreamBaseURL: "https://openrouter.ai"),
+      HyperProxyProviderRoute(
         operation: "listInternEffectiveVaultSecrets", method: .get,
         pathTemplate: "api/v1/vault/interns/{internId}/effective-secrets", bodyKind: .none,
         responseKind: .json, requestContentTypes: [], responseContentTypes: ["application/json"],
@@ -7096,6 +7278,12 @@ public enum HyperProxyProviders {
         pathTemplate: "v1/contextualizedembeddings", bodyKind: .json, responseKind: .json,
         requestContentTypes: ["application/json"], responseContentTypes: ["application/json"],
         surface: "api", lifecycle: .stable, access: .public, catalogSource: "perplexity/openapi",
+        upstreamBaseURL: "https://api.perplexity.ai"),
+      HyperProxyProviderRoute(
+        operation: "decisions.v1.decisions.post", method: .post, pathTemplate: "v1/decisions",
+        bodyKind: .json, responseKind: .json, requestContentTypes: ["application/json"],
+        responseContentTypes: ["application/json"], surface: "api", lifecycle: .stable,
+        access: .public, catalogSource: "perplexity/openapi",
         upstreamBaseURL: "https://api.perplexity.ai"),
       HyperProxyProviderRoute(
         operation: "embeddings.v1.embeddings.post", method: .post, pathTemplate: "v1/embeddings",
@@ -7953,6 +8141,11 @@ public enum HyperProxyProviders {
         access: .public, catalogSource: "together/openapi",
         upstreamBaseURL: "https://api.together.ai"),
       HyperProxyProviderRoute(
+        operation: "listProjects", method: .get, pathTemplate: "v1/projects", bodyKind: .none,
+        responseKind: .json, requestContentTypes: [], responseContentTypes: ["application/json"],
+        surface: "api", lifecycle: .stable, access: .public, catalogSource: "together/openapi",
+        upstreamBaseURL: "https://api.together.ai"),
+      HyperProxyProviderRoute(
         operation: "cancelQueueJob", method: .post, pathTemplate: "v1/queue/cancel",
         bodyKind: .json, responseKind: .json, requestContentTypes: ["application/json"],
         responseContentTypes: ["application/json"], surface: "api", lifecycle: .stable,
@@ -8178,6 +8371,41 @@ public enum HyperProxyProviders {
         pathTemplate: "v1/rl/training-sessions/{session_id}/stop", bodyKind: .none,
         responseKind: .json, requestContentTypes: [], responseContentTypes: ["application/json"],
         surface: "api", lifecycle: .stable, access: .public, catalogSource: "together/openapi",
+        upstreamBaseURL: "https://api.together.ai"),
+      HyperProxyProviderRoute(
+        operation: "listShapingJobs", method: .get, pathTemplate: "v1/shaping", bodyKind: .none,
+        responseKind: .json, requestContentTypes: [], responseContentTypes: ["application/json"],
+        surface: "api", lifecycle: .stable, access: .public, catalogSource: "together/openapi",
+        upstreamBaseURL: "https://api.together.ai"),
+      HyperProxyProviderRoute(
+        operation: "createQuantizationJob", method: .post,
+        pathTemplate: "v1/shaping/prepare-for-fp4-inference", bodyKind: .json, responseKind: .json,
+        requestContentTypes: ["application/json"], responseContentTypes: ["application/json"],
+        surface: "api", lifecycle: .stable, access: .public, catalogSource: "together/openapi",
+        upstreamBaseURL: "https://api.together.ai"),
+      HyperProxyProviderRoute(
+        operation: "estimateQuantizationJob", method: .post,
+        pathTemplate: "v1/shaping/prepare-for-fp4-inference/estimate", bodyKind: .json,
+        responseKind: .json, requestContentTypes: ["application/json"],
+        responseContentTypes: ["application/json"], surface: "api", lifecycle: .stable,
+        access: .public, catalogSource: "together/openapi",
+        upstreamBaseURL: "https://api.together.ai"),
+      HyperProxyProviderRoute(
+        operation: "getShapingJob", method: .get, pathTemplate: "v1/shaping/{id}", bodyKind: .none,
+        responseKind: .json, requestContentTypes: [], responseContentTypes: ["application/json"],
+        surface: "api", lifecycle: .stable, access: .public, catalogSource: "together/openapi",
+        upstreamBaseURL: "https://api.together.ai"),
+      HyperProxyProviderRoute(
+        operation: "cancelShapingJob", method: .post, pathTemplate: "v1/shaping/{id}/cancel",
+        bodyKind: .none, responseKind: .json, requestContentTypes: [],
+        responseContentTypes: ["application/json"], surface: "api", lifecycle: .stable,
+        access: .public, catalogSource: "together/openapi",
+        upstreamBaseURL: "https://api.together.ai"),
+      HyperProxyProviderRoute(
+        operation: "getShapingEvents", method: .get, pathTemplate: "v1/shaping/{id}/events",
+        bodyKind: .none, responseKind: .json, requestContentTypes: [],
+        responseContentTypes: ["application/json"], surface: "api", lifecycle: .stable,
+        access: .public, catalogSource: "together/openapi",
         upstreamBaseURL: "https://api.together.ai"),
       HyperProxyProviderRoute(
         operation: "tci.execute", method: .post, pathTemplate: "v1/tci/execute", bodyKind: .json,
@@ -11006,6 +11234,11 @@ public enum HyperProxyProviders {
         surface: "platform", lifecycle: .stable, access: .public,
         catalogSource: "fal/platform-openapi", upstreamBaseURL: "https://api.fal.ai"),
       HyperProxyProviderRoute(
+        operation: "revokeApiKey", method: .post, pathTemplate: "v1/keys/{key_id}/revoke",
+        bodyKind: .none, responseKind: .empty, requestContentTypes: [], responseContentTypes: [],
+        surface: "platform", lifecycle: .stable, access: .public,
+        catalogSource: "fal/platform-openapi", upstreamBaseURL: "https://api.fal.ai"),
+      HyperProxyProviderRoute(
         operation: "getMeta", method: .get, pathTemplate: "v1/meta", bodyKind: .none,
         responseKind: .json, requestContentTypes: [], responseContentTypes: ["application/json"],
         surface: "platform", lifecycle: .stable, access: .public,
@@ -11328,6 +11561,12 @@ public enum HyperProxyProviders {
         surface: "api", lifecycle: .stable, access: .public, catalogSource: "bfl/openapi",
         upstreamBaseURL: "https://api.bfl.ai"),
       HyperProxyProviderRoute(
+        operation: "flux.3.image.klein.v1.flux.3.image.klein.post", method: .post,
+        pathTemplate: "v1/flux-3-image-klein", bodyKind: .json, responseKind: .json,
+        requestContentTypes: ["application/json"], responseContentTypes: ["application/json"],
+        surface: "api", lifecycle: .stable, access: .public, catalogSource: "bfl/openapi",
+        upstreamBaseURL: "https://api.bfl.ai"),
+      HyperProxyProviderRoute(
         operation: "images.flux1Dev", method: .post, pathTemplate: "v1/flux-dev", bodyKind: .json,
         responseKind: .json, requestContentTypes: ["application/json"],
         responseContentTypes: ["application/json"], surface: "api", lifecycle: .stable,
@@ -11514,6 +11753,13 @@ public enum HyperProxyProviders {
         access: .admin, catalogSource: "elevenlabs/openapi",
         upstreamBaseURL: "https://api.elevenlabs.io"),
       HyperProxyProviderRoute(
+        operation: "disable.service.account.api.key", method: .post,
+        pathTemplate: "v1/service-accounts/{service_account_user_id}/api-keys/{api_key_id}/disable",
+        bodyKind: .none, responseKind: .json, requestContentTypes: [],
+        responseContentTypes: ["application/json"], surface: "api", lifecycle: .stable,
+        access: .admin, catalogSource: "elevenlabs/openapi",
+        upstreamBaseURL: "https://api.elevenlabs.io"),
+      HyperProxyProviderRoute(
         operation: "get.workspace.audit.logs", method: .get,
         pathTemplate: "v1/workspace/audit-logs", bodyKind: .none, responseKind: .json,
         requestContentTypes: [], responseContentTypes: ["application/json"], surface: "api",
@@ -11607,6 +11853,12 @@ public enum HyperProxyProviders {
         operation: "get.asset", method: .get, pathTemplate: "v1/assets/{asset_id}", bodyKind: .none,
         responseKind: .json, requestContentTypes: [], responseContentTypes: ["application/json"],
         surface: "api", lifecycle: .stable, access: .public, catalogSource: "elevenlabs/openapi",
+        upstreamBaseURL: "https://api.elevenlabs.io"),
+      HyperProxyProviderRoute(
+        operation: "get.audio.effects.catalog", method: .get,
+        pathTemplate: "v1/audio-effects/catalog", bodyKind: .none, responseKind: .json,
+        requestContentTypes: [], responseContentTypes: ["application/json"], surface: "api",
+        lifecycle: .stable, access: .public, catalogSource: "elevenlabs/openapi",
         upstreamBaseURL: "https://api.elevenlabs.io"),
       HyperProxyProviderRoute(
         operation: "audioIsolation.create", method: .post, pathTemplate: "v1/audio-isolation",
@@ -12235,6 +12487,24 @@ public enum HyperProxyProviders {
         access: .public, catalogSource: "elevenlabs/openapi",
         upstreamBaseURL: "https://api.elevenlabs.io"),
       HyperProxyProviderRoute(
+        operation: "list.environments", method: .get, pathTemplate: "v1/convai/environments",
+        bodyKind: .none, responseKind: .json, requestContentTypes: [],
+        responseContentTypes: ["application/json"], surface: "api", lifecycle: .stable,
+        access: .public, catalogSource: "elevenlabs/openapi",
+        upstreamBaseURL: "https://api.elevenlabs.io"),
+      HyperProxyProviderRoute(
+        operation: "create.environment", method: .post, pathTemplate: "v1/convai/environments",
+        bodyKind: .json, responseKind: .json, requestContentTypes: ["application/json"],
+        responseContentTypes: ["application/json"], surface: "api", lifecycle: .stable,
+        access: .public, catalogSource: "elevenlabs/openapi",
+        upstreamBaseURL: "https://api.elevenlabs.io"),
+      HyperProxyProviderRoute(
+        operation: "delete.environment", method: .delete,
+        pathTemplate: "v1/convai/environments/{environment}", bodyKind: .none, responseKind: .empty,
+        requestContentTypes: [], responseContentTypes: [], surface: "api", lifecycle: .stable,
+        access: .public, catalogSource: "elevenlabs/openapi",
+        upstreamBaseURL: "https://api.elevenlabs.io"),
+      HyperProxyProviderRoute(
         operation: "handle.exotel.outbound.call", method: .post,
         pathTemplate: "v1/convai/exotel/outbound-call", bodyKind: .json, responseKind: .json,
         requestContentTypes: ["application/json"], responseContentTypes: ["application/json"],
@@ -12569,6 +12839,12 @@ public enum HyperProxyProviders {
         surface: "api", lifecycle: .stable, access: .public, catalogSource: "elevenlabs/openapi",
         upstreamBaseURL: "https://api.elevenlabs.io"),
       HyperProxyProviderRoute(
+        operation: "create.realtime.session", method: .post,
+        pathTemplate: "v1/convai/realtime/client_secrets", bodyKind: .json, responseKind: .json,
+        requestContentTypes: ["application/json"], responseContentTypes: ["application/json"],
+        surface: "api", lifecycle: .stable, access: .public, catalogSource: "elevenlabs/openapi",
+        upstreamBaseURL: "https://api.elevenlabs.io"),
+      HyperProxyProviderRoute(
         operation: "get.secrets.route", method: .get, pathTemplate: "v1/convai/secrets",
         bodyKind: .none, responseKind: .json, requestContentTypes: [],
         responseContentTypes: ["application/json"], surface: "api", lifecycle: .stable,
@@ -12675,6 +12951,13 @@ public enum HyperProxyProviders {
         pathTemplate: "v1/convai/test-invocations/{test_invocation_id}", bodyKind: .none,
         responseKind: .json, requestContentTypes: [], responseContentTypes: ["application/json"],
         surface: "api", lifecycle: .stable, access: .public, catalogSource: "elevenlabs/openapi",
+        upstreamBaseURL: "https://api.elevenlabs.io"),
+      HyperProxyProviderRoute(
+        operation: "update.test.invocation.route", method: .patch,
+        pathTemplate: "v1/convai/test-invocations/{test_invocation_id}", bodyKind: .json,
+        responseKind: .json, requestContentTypes: ["application/json"],
+        responseContentTypes: ["application/json"], surface: "api", lifecycle: .stable,
+        access: .public, catalogSource: "elevenlabs/openapi",
         upstreamBaseURL: "https://api.elevenlabs.io"),
       HyperProxyProviderRoute(
         operation: "cancel.test.invocation.route", method: .post,
@@ -13487,15 +13770,10 @@ public enum HyperProxyProviders {
       HyperProxyProviderRoute(
         operation: "speechToSpeech.create", method: .post,
         pathTemplate: "v1/speech-to-speech/{voice_id}", bodyKind: .multipart, responseKind: .binary,
-        requestContentTypes: ["multipart/form-data"], responseContentTypes: ["audio/mpeg"],
-        surface: "api", lifecycle: .stable, access: .public, catalogSource: "elevenlabs/openapi",
+        requestContentTypes: ["multipart/form-data"],
+        responseContentTypes: ["application/octet-stream"], surface: "api", lifecycle: .stable,
+        access: .public, catalogSource: "elevenlabs/reviewed-manual",
         upstreamBaseURL: "https://api.elevenlabs.io"),
-      HyperProxyProviderRoute(
-        operation: "speech.to.speech.stream", method: .post,
-        pathTemplate: "v1/speech-to-speech/{voice_id}/stream", bodyKind: .multipart,
-        responseKind: .binary, requestContentTypes: ["multipart/form-data"],
-        responseContentTypes: ["audio/mpeg"], surface: "api", lifecycle: .stable, access: .public,
-        catalogSource: "elevenlabs/openapi", upstreamBaseURL: "https://api.elevenlabs.io"),
       HyperProxyProviderRoute(
         operation: "speechToText.create", method: .post, pathTemplate: "v1/speech-to-text",
         bodyKind: .multipart, responseKind: .json, requestContentTypes: ["multipart/form-data"],
@@ -13742,6 +14020,18 @@ public enum HyperProxyProviders {
         responseContentTypes: ["application/json"], surface: "api", lifecycle: .stable,
         access: .public, catalogSource: "elevenlabs/openapi",
         upstreamBaseURL: "https://api.elevenlabs.io"),
+      HyperProxyProviderRoute(
+        operation: "speech.to.speech.full", method: .post,
+        pathTemplate: "v1/voice-changer/{voice_id}", bodyKind: .multipart, responseKind: .binary,
+        requestContentTypes: ["multipart/form-data"], responseContentTypes: ["audio/mpeg"],
+        surface: "api", lifecycle: .stable, access: .public, catalogSource: "elevenlabs/openapi",
+        upstreamBaseURL: "https://api.elevenlabs.io"),
+      HyperProxyProviderRoute(
+        operation: "speech.to.speech.stream", method: .post,
+        pathTemplate: "v1/voice-changer/{voice_id}/stream", bodyKind: .multipart,
+        responseKind: .binary, requestContentTypes: ["multipart/form-data"],
+        responseContentTypes: ["audio/mpeg"], surface: "api", lifecycle: .stable, access: .public,
+        catalogSource: "elevenlabs/openapi", upstreamBaseURL: "https://api.elevenlabs.io"),
       HyperProxyProviderRoute(
         operation: "get.voices", method: .get, pathTemplate: "v1/voices", bodyKind: .none,
         responseKind: .json, requestContentTypes: [], responseContentTypes: ["application/json"],
@@ -14661,6 +14951,33 @@ public enum HyperProxyProviders {
         requestContentTypes: ["application/json", "application/x-www-form-urlencoded"],
         responseContentTypes: ["application/json"], surface: "api", lifecycle: .stable,
         access: .public, catalogSource: "deepl/openapi", upstreamBaseURL: "https://api.deepl.com"),
+      HyperProxyProviderRoute(
+        operation: "listStyleProfiles", method: .get, pathTemplate: "v3/style_profiles",
+        bodyKind: .none, responseKind: .json, requestContentTypes: [],
+        responseContentTypes: ["application/json"], surface: "api", lifecycle: .stable,
+        access: .public, catalogSource: "deepl/openapi", upstreamBaseURL: "https://api.deepl.com"),
+      HyperProxyProviderRoute(
+        operation: "createStyleProfile", method: .post, pathTemplate: "v3/style_profiles",
+        bodyKind: .json, responseKind: .json, requestContentTypes: ["application/json"],
+        responseContentTypes: ["application/json"], surface: "api", lifecycle: .stable,
+        access: .public, catalogSource: "deepl/openapi", upstreamBaseURL: "https://api.deepl.com"),
+      HyperProxyProviderRoute(
+        operation: "deleteStyleProfile", method: .delete,
+        pathTemplate: "v3/style_profiles/{style_profile_id}", bodyKind: .none, responseKind: .empty,
+        requestContentTypes: [], responseContentTypes: [], surface: "api", lifecycle: .stable,
+        access: .public, catalogSource: "deepl/openapi", upstreamBaseURL: "https://api.deepl.com"),
+      HyperProxyProviderRoute(
+        operation: "getStyleProfile", method: .get,
+        pathTemplate: "v3/style_profiles/{style_profile_id}", bodyKind: .none, responseKind: .json,
+        requestContentTypes: [], responseContentTypes: ["application/json"], surface: "api",
+        lifecycle: .stable, access: .public, catalogSource: "deepl/openapi",
+        upstreamBaseURL: "https://api.deepl.com"),
+      HyperProxyProviderRoute(
+        operation: "updateStyleProfile", method: .patch,
+        pathTemplate: "v3/style_profiles/{style_profile_id}", bodyKind: .json, responseKind: .json,
+        requestContentTypes: ["application/json"], responseContentTypes: ["application/json"],
+        surface: "api", lifecycle: .stable, access: .public, catalogSource: "deepl/openapi",
+        upstreamBaseURL: "https://api.deepl.com"),
       HyperProxyProviderRoute(
         operation: "getStyleRuleLists", method: .get, pathTemplate: "v3/style_rules",
         bodyKind: .none, responseKind: .json, requestContentTypes: [],

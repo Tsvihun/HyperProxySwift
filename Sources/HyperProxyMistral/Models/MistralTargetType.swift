@@ -52,6 +52,7 @@ public enum MistralTargetType: String, Codable, Hashable, Sendable {
   case sECRETSTOREENTRY = "SECRET_STORE_ENTRY"
   case cRAWLERCONFIG = "CRAWLER_CONFIG"
   case wEBSEARCHFILTER = "WEB_SEARCH_FILTER"
+  case wEBFILTERS = "WEB_FILTERS"
   case sHAREDRESOURCE = "SHARED_RESOURCE"
   case rATELIMITRULE = "RATE_LIMIT_RULE"
   case aPP = "APP"
@@ -61,4 +62,6 @@ public enum MistralTargetType: String, Codable, Hashable, Sendable {
   case sECRET = "SECRET"
   case sERVICE = "SERVICE"
   case tRUSTEDISSUER = "TRUSTED_ISSUER"
+  case wORKFLOW = "WORKFLOW"
+  case sCHEDULE = "SCHEDULE"
 }

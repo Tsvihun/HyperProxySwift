@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterChatStreamChunk: Codable, Sendable {
+  public var alignment: OpenRouterAlignment?
   public var choices: [OpenRouterChatStreamChoice]
   public var created: Int
   public var error: OpenRouterChatStreamChunkError?
@@ -18,6 +19,7 @@ public struct OpenRouterChatStreamChunk: Codable, Sendable {
   public var model: String
   public var object: OpenRouterChatStreamChunkObject
   public var openrouterMetadata: OpenRouterMetadata?
+  public var safeguardResults: [OpenRouterArmorSafeguardResult]?
   public var serviceTier: String?
   public var systemFingerprint: String?
   public var usage: OpenRouterChatUsage?
@@ -28,12 +30,15 @@ public struct OpenRouterChatStreamChunk: Codable, Sendable {
     id: String,
     model: String,
     object: OpenRouterChatStreamChunkObject,
+    alignment: OpenRouterAlignment? = nil,
     error: OpenRouterChatStreamChunkError? = nil,
     openrouterMetadata: OpenRouterMetadata? = nil,
+    safeguardResults: [OpenRouterArmorSafeguardResult]? = nil,
     serviceTier: String? = nil,
     systemFingerprint: String? = nil,
     usage: OpenRouterChatUsage? = nil
   ) {
+    self.alignment = alignment
     self.choices = choices
     self.created = created
     self.error = error
@@ -41,12 +46,14 @@ public struct OpenRouterChatStreamChunk: Codable, Sendable {
     self.model = model
     self.object = object
     self.openrouterMetadata = openrouterMetadata
+    self.safeguardResults = safeguardResults
     self.serviceTier = serviceTier
     self.systemFingerprint = systemFingerprint
     self.usage = usage
   }
 
   enum CodingKeys: String, CodingKey {
+    case alignment
     case choices
     case created
     case error
@@ -54,6 +61,7 @@ public struct OpenRouterChatStreamChunk: Codable, Sendable {
     case model
     case object
     case openrouterMetadata = "openrouter_metadata"
+    case safeguardResults = "safeguard_results"
     case serviceTier = "service_tier"
     case systemFingerprint = "system_fingerprint"
     case usage

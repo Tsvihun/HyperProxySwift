@@ -92,6 +92,22 @@ extension ElevenLabsAdminCalls {
     return try await call.decoded(ElevenLabsDeleteServiceAccountApiKeyResponse.self)
   }
 
+  public func disableServiceAccountApiKey(
+    serviceAccountUserId: String,
+    apiKeyId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsDisableServiceAccountApiKeyResponse {
+    let call = self.service.call(.disableServiceAccountApiKey)
+      .path("service_account_user_id", serviceAccountUserId)
+      .path("api_key_id", apiKeyId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsDisableServiceAccountApiKeyResponse.self)
+  }
+
   public func getWorkspaceAuditLogs(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],

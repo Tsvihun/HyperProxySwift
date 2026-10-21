@@ -16,7 +16,7 @@ public struct MistralConnectorGetAuthUrlV1Parameters: Codable, Sendable {
   public var credentialsName: String?
   public var credentialsTitle: String?
   public var githubInstallationLink: Bool?
-  public var methodType: MistralOutboundAuthenticationType?
+  public var methodType: MistralAuthenticationType?
 
   public init(
     connectorIdOrName: MistralConnectorGetAuthUrlV1ParametersConnectorIdOrName,
@@ -24,7 +24,7 @@ public struct MistralConnectorGetAuthUrlV1Parameters: Codable, Sendable {
     credentialsName: String? = nil,
     credentialsTitle: String? = nil,
     githubInstallationLink: Bool? = nil,
-    methodType: MistralOutboundAuthenticationType? = nil
+    methodType: MistralAuthenticationType? = nil
   ) {
     self.appReturnUrl = appReturnUrl
     self.connectorIdOrName = connectorIdOrName

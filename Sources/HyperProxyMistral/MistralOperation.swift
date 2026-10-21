@@ -51,6 +51,8 @@ public enum MistralOperation: String, HyperProxyCatalogOperation {
     "users.api.admin.spend.limits.update.spend.limits"
   /// `GET v1/admin/usage`
   case usersApiAdminUsageGetUsage = "users.api.admin.usage.get.usage"
+  /// `POST v1/admin/usage/query`
+  case usersApiAdminUsageQueryUsage = "users.api.admin.usage.query.usage"
   /// `GET v1/admin/user-groups`
   case usersApiAdminUserGroupsGetUserGroups = "users.api.admin.user.groups.get.user.groups"
   /// `POST v1/admin/user-groups`
@@ -108,6 +110,8 @@ public enum MistralOperation: String, HyperProxyCatalogOperation {
   case usersApiAdminUsersGetUser = "users.api.admin.users.get.user"
   /// `PATCH v1/admin/users/{user_id}`
   case usersApiAdminUsersUpdateUser = "users.api.admin.users.update.user"
+  /// `POST v1/admin/users/{user_id}/deactivate`
+  case usersApiAdminUsersDeactivateUser = "users.api.admin.users.deactivate.user"
   /// `GET v1/admin/workspaces`
   case usersApiAdminWorkspacesGetWorkspaces = "users.api.admin.workspaces.get.workspaces"
   /// `POST v1/admin/workspaces`
@@ -318,6 +322,9 @@ public enum MistralOperation: String, HyperProxyCatalogOperation {
   /// `POST v1/observability/datasets/{dataset_id}/imports/from-playground`
   case postDatasetRecordsFromPlaygroundV1ObservabilityDatasetsDatasetIdImportsFromPlaygroundPost =
     "post.dataset.records.from.playground.v1.observability.datasets.dataset.id.imports.from.playground.post"
+  /// `POST v1/observability/datasets/{dataset_id}/imports/from-spans`
+  case postDatasetRecordsFromSpansV1ObservabilityDatasetsDatasetIdImportsFromSpansPost =
+    "post.dataset.records.from.spans.v1.observability.datasets.dataset.id.imports.from.spans.post"
   /// `GET v1/observability/datasets/{dataset_id}/records`
   case getDatasetRecordsV1ObservabilityDatasetsDatasetIdRecordsGet =
     "get.dataset.records.v1.observability.datasets.dataset.id.records.get"
@@ -330,6 +337,30 @@ public enum MistralOperation: String, HyperProxyCatalogOperation {
   /// `GET v1/observability/datasets/{dataset_id}/tasks/{task_id}`
   case getDatasetImportTaskV1ObservabilityDatasetsDatasetIdTasksTaskIdGet =
     "get.dataset.import.task.v1.observability.datasets.dataset.id.tasks.task.id.get"
+  /// `POST v1/observability/evaluation-runs_v2/search`
+  case searchAllEvaluationRunsV2V1ObservabilityEvaluationRunsV2SearchPost =
+    "search.all.evaluation.runs.v2.v1.observability.evaluation.runs.v2.search.post"
+  /// `GET v1/observability/evaluation-runs_v2/{run_id}`
+  case getEvaluationRunV2V1ObservabilityEvaluationRunsV2RunIdGet =
+    "get.evaluation.run.v2.v1.observability.evaluation.runs.v2.run.id.get"
+  /// `POST v1/observability/evaluation-runs_v2/{run_id}/records/search`
+  case searchEvaluationRunRecordsV2V1ObservabilityEvaluationRunsV2RunIdRecordsSearchPost =
+    "search.evaluation.run.records.v2.v1.observability.evaluation.runs.v2.run.id.records.search.post"
+  /// `GET v1/observability/evaluation-runs_v2/{run_id}/records/{record_id}`
+  case getEvaluationRunRecordV2V1ObservabilityEvaluationRunsV2RunIdRecordsRecordIdGet =
+    "get.evaluation.run.record.v2.v1.observability.evaluation.runs.v2.run.id.records.record.id.get"
+  /// `GET v1/observability/evaluation-runs_v2/{run_id}/statistics`
+  case getSingleEvaluationRunStatisticsV2V1ObservabilityEvaluationRunsV2RunIdStatisticsGet =
+    "get.single.evaluation.run.statistics.v2.v1.observability.evaluation.runs.v2.run.id.statistics.get"
+  /// `POST v1/observability/evaluation-runs_v2/{run_id}/statistics/compute`
+  case computeFilteredRunStatisticsV2V1ObservabilityEvaluationRunsV2RunIdStatisticsComputePost =
+    "compute.filtered.run.statistics.v2.v1.observability.evaluation.runs.v2.run.id.statistics.compute.post"
+  /// `GET v1/observability/evaluations_v2/{evaluation_slug}`
+  case getEvaluationV2V1ObservabilityEvaluationsV2EvaluationSlugGet =
+    "get.evaluation.v2.v1.observability.evaluations.v2.evaluation.slug.get"
+  /// `POST v1/observability/evaluations_v2/{evaluation_slug}/runs/search`
+  case searchEvaluationRunsV2V1ObservabilityEvaluationsV2EvaluationSlugRunsSearchPost =
+    "search.evaluation.runs.v2.v1.observability.evaluations.v2.evaluation.slug.runs.search.post"
   /// `GET v1/observability/judges`
   case getJudgesV1ObservabilityJudgesGet = "get.judges.v1.observability.judges.get"
   /// `POST v1/observability/judges`
@@ -353,21 +384,40 @@ public enum MistralOperation: String, HyperProxyCatalogOperation {
     "get.log.field.options.v1.observability.logs.fields.field.name.options.get"
   /// `POST v1/observability/logs/search`
   case searchLogsV1ObservabilityLogsSearchPost = "search.logs.v1.observability.logs.search.post"
-  /// `GET v1/observability/pipeline-configs`
-  case listPipelineConfigsV1ObservabilityPipelineConfigsGet =
-    "list.pipeline.configs.v1.observability.pipeline.configs.get"
-  /// `POST v1/observability/pipeline-configs`
-  case createPipelineConfigV1ObservabilityPipelineConfigsPost =
-    "create.pipeline.config.v1.observability.pipeline.configs.post"
-  /// `DELETE v1/observability/pipeline-configs/{pipeline_config_id}`
-  case deletePipelineConfigV1ObservabilityPipelineConfigsPipelineConfigIdDelete =
-    "delete.pipeline.config.v1.observability.pipeline.configs.pipeline.config.id.delete"
-  /// `GET v1/observability/pipeline-configs/{pipeline_config_id}`
-  case getPipelineConfigV1ObservabilityPipelineConfigsPipelineConfigIdGet =
-    "get.pipeline.config.v1.observability.pipeline.configs.pipeline.config.id.get"
-  /// `PUT v1/observability/pipeline-configs/{pipeline_config_id}`
-  case updatePipelineConfigV1ObservabilityPipelineConfigsPipelineConfigIdPut =
-    "update.pipeline.config.v1.observability.pipeline.configs.pipeline.config.id.put"
+  /// `GET v1/observability/optimizations`
+  case listOptimizationsV1ObservabilityOptimizationsGet =
+    "list.optimizations.v1.observability.optimizations.get"
+  /// `GET v1/observability/optimizations/{optimization_id}`
+  case getOptimizationV1ObservabilityOptimizationsOptimizationIdGet =
+    "get.optimization.v1.observability.optimizations.optimization.id.get"
+  /// `GET v1/observability/optimizations/{optimization_id}/trials`
+  case listOptimizationTrialsV1ObservabilityOptimizationsOptimizationIdTrialsGet =
+    "list.optimization.trials.v1.observability.optimizations.optimization.id.trials.get"
+  /// `POST v1/observability/pipeline-results/search`
+  case searchPipelineResultsV1ObservabilityPipelineResultsSearchPost =
+    "search.pipeline.results.v1.observability.pipeline.results.search.post"
+  /// `GET v1/observability/pipelines`
+  case listPipelinesV1ObservabilityPipelinesGet = "list.pipelines.v1.observability.pipelines.get"
+  /// `POST v1/observability/pipelines`
+  case createPipelineV1ObservabilityPipelinesPost =
+    "create.pipeline.v1.observability.pipelines.post"
+  /// `DELETE v1/observability/pipelines/{pipeline_id}`
+  case deletePipelineV1ObservabilityPipelinesPipelineIdDelete =
+    "delete.pipeline.v1.observability.pipelines.pipeline.id.delete"
+  /// `GET v1/observability/pipelines/{pipeline_id}`
+  case getPipelineV1ObservabilityPipelinesPipelineIdGet =
+    "get.pipeline.v1.observability.pipelines.pipeline.id.get"
+  /// `PUT v1/observability/pipelines/{pipeline_id}`
+  case updatePipelineV1ObservabilityPipelinesPipelineIdPut =
+    "update.pipeline.v1.observability.pipelines.pipeline.id.put"
+  /// `GET v1/observability/projects`
+  case getProjectsV1ObservabilityProjectsGet = "get.projects.v1.observability.projects.get"
+  /// `GET v1/observability/projects/{project_slug}`
+  case getProjectV1ObservabilityProjectsProjectSlugGet =
+    "get.project.v1.observability.projects.project.slug.get"
+  /// `GET v1/observability/projects/{project_slug}/evaluations_v2`
+  case getProjectEvaluationsV2V1ObservabilityProjectsProjectSlugEvaluationsV2Get =
+    "get.project.evaluations.v2.v1.observability.projects.project.slug.evaluations.v2.get"
   /// `POST v1/observability/spans/aggregate`
   case aggregateSpansV1ObservabilitySpansAggregatePost =
     "aggregate.spans.v1.observability.spans.aggregate.post"
@@ -475,6 +525,8 @@ public enum MistralOperation: String, HyperProxyCatalogOperation {
   case usersApiListOrganizations = "users.api.list.organizations"
   /// `GET v1/users/me/workspaces`
   case usersApiListWorkspaces = "users.api.list.workspaces"
+  /// `GET v1/whoami`
+  case usersApiWhoami = "users.api.whoami"
   /// `GET v2/prompts`
   case promptsList = "prompts.list"
   /// `POST v2/prompts`
@@ -741,6 +793,8 @@ public enum MistralOperation: String, HyperProxyCatalogOperation {
   /// `GET v1/workflows/{workflow_name}/metrics`
   case getWorkflowMetricsV1WorkflowsWorkflowNameMetricsGet =
     "get.workflow.metrics.v1.workflows.workflow.name.metrics.get"
+  /// `GET v2/audio/voices`
+  case audioV2VoicesList = "audio.v2.voices.list"
 }
 
 /// Earlier snapshots published these operations under different

@@ -1,0 +1,37 @@
+//
+//  PerplexityChoiceAnswer.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+// Maintainer-generated release artifact. Do not edit by hand.
+
+import Foundation
+import HyperProxyCore
+
+public struct PerplexityChoiceAnswer: Codable, Sendable {
+  public var choice: String
+  public var confidence: Double
+  public var probabilities: [String: Double]
+  public var kind: PerplexityChoiceAnswerKind
+
+  public init(
+    choice: String,
+    confidence: Double,
+    probabilities: [String: Double],
+    kind: PerplexityChoiceAnswerKind
+  ) {
+    self.choice = choice
+    self.confidence = confidence
+    self.probabilities = probabilities
+    self.kind = kind
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case choice
+    case confidence
+    case probabilities
+    case kind = "type"
+  }
+}

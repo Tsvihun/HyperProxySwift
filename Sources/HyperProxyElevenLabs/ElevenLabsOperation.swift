@@ -25,6 +25,8 @@ public enum ElevenLabsOperation: String, HyperProxyCatalogOperation {
   case deleteServiceAccountApiKey = "delete.service.account.api.key"
   /// `PATCH v1/service-accounts/{service_account_user_id}/api-keys/{api_key_id}`
   case editServiceAccountApiKey = "edit.service.account.api.key"
+  /// `POST v1/service-accounts/{service_account_user_id}/api-keys/{api_key_id}/disable`
+  case disableServiceAccountApiKey = "disable.service.account.api.key"
   /// `GET v1/workspace/audit-logs`
   case getWorkspaceAuditLogs = "get.workspace.audit.logs"
   /// `DELETE v1/workspace/invites`
@@ -57,6 +59,8 @@ public enum ElevenLabsOperation: String, HyperProxyCatalogOperation {
   case deleteAssetEndpoint = "delete.asset.endpoint"
   /// `GET v1/assets/{asset_id}`
   case getAsset = "get.asset"
+  /// `GET v1/audio-effects/catalog`
+  case getAudioEffectsCatalog = "get.audio.effects.catalog"
   /// `POST v1/audio-isolation`
   case audioIsolationCreate = "audioIsolation.create"
   /// `GET v1/audio-isolation/history`
@@ -255,6 +259,12 @@ public enum ElevenLabsOperation: String, HyperProxyCatalogOperation {
   case getEnvironmentVariable = "get.environment.variable"
   /// `PATCH v1/convai/environment-variables/{env_var_id}`
   case updateEnvironmentVariable = "update.environment.variable"
+  /// `GET v1/convai/environments`
+  case listEnvironments = "list.environments"
+  /// `POST v1/convai/environments`
+  case createEnvironment = "create.environment"
+  /// `DELETE v1/convai/environments/{environment}`
+  case deleteEnvironment = "delete.environment"
   /// `POST v1/convai/exotel/outbound-call`
   case handleExotelOutboundCall = "handle.exotel.outbound.call"
   /// `GET v1/convai/knowledge-base`
@@ -361,6 +371,8 @@ public enum ElevenLabsOperation: String, HyperProxyCatalogOperation {
   case updatePhoneNumberRoute = "update.phone.number.route"
   /// `GET v1/convai/phone-numbers/{phone_number_id}/sip-messages`
   case listSipMessages = "list.sip.messages"
+  /// `POST v1/convai/realtime/client_secrets`
+  case createRealtimeSession = "create.realtime.session"
   /// `GET v1/convai/secrets`
   case getSecretsRoute = "get.secrets.route"
   /// `POST v1/convai/secrets`
@@ -397,6 +409,8 @@ public enum ElevenLabsOperation: String, HyperProxyCatalogOperation {
   case listTestInvocationsRoute = "list.test.invocations.route"
   /// `GET v1/convai/test-invocations/{test_invocation_id}`
   case getTestInvocationRoute = "get.test.invocation.route"
+  /// `PATCH v1/convai/test-invocations/{test_invocation_id}`
+  case updateTestInvocationRoute = "update.test.invocation.route"
   /// `POST v1/convai/test-invocations/{test_invocation_id}/cancel`
   case cancelTestInvocationRoute = "cancel.test.invocation.route"
   /// `POST v1/convai/test-invocations/{test_invocation_id}/resubmit`
@@ -657,8 +671,6 @@ public enum ElevenLabsOperation: String, HyperProxyCatalogOperation {
   case duplicateSpeechEngine = "duplicate.speech.engine"
   /// `POST v1/speech-to-speech/{voice_id}`
   case speechToSpeechCreate = "speechToSpeech.create"
-  /// `POST v1/speech-to-speech/{voice_id}/stream`
-  case speechToSpeechStream = "speech.to.speech.stream"
   /// `POST v1/speech-to-text`
   case speechToTextCreate = "speechToText.create"
   /// `DELETE v1/speech-to-text/transcripts/{transcription_id}`
@@ -737,6 +749,10 @@ public enum ElevenLabsOperation: String, HyperProxyCatalogOperation {
   case getUserInfo = "get.user.info"
   /// `GET v1/user/subscription`
   case getUserSubscriptionInfo = "get.user.subscription.info"
+  /// `POST v1/voice-changer/{voice_id}`
+  case speechToSpeechFull = "speech.to.speech.full"
+  /// `POST v1/voice-changer/{voice_id}/stream`
+  case speechToSpeechStream = "speech.to.speech.stream"
   /// `GET v1/voices`
   case getVoices = "get.voices"
   /// `GET v1/voices/accents`

@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralAuthenticationConfiguration: Codable, Sendable {
-  public var authenticationType: MistralOutboundAuthenticationType
+  public var authenticationType: MistralAuthenticationType
   public var creatorId: String?
   public var isDefault: Bool?
   public var name: String
@@ -20,7 +20,7 @@ public struct MistralAuthenticationConfiguration: Codable, Sendable {
   public var title: String?
 
   public init(
-    authenticationType: MistralOutboundAuthenticationType,
+    authenticationType: MistralAuthenticationType,
     name: String,
     scope: MistralConsumerType,
     creatorId: String? = nil,

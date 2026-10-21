@@ -18,20 +18,20 @@ public struct MistralVoiceCreateRequest: Codable, Sendable {
   public var languages: [String]?
   public var name: String
   public var retentionNotice: Int?
-  public var sampleAudio: String
+  public var sampleAudio: String?
   public var sampleFilename: String?
   public var slug: String?
   public var tags: [String]?
 
   public init(
     name: String,
-    sampleAudio: String,
     age: Int? = nil,
     color: String? = nil,
     description: String? = nil,
     gender: String? = nil,
     languages: [String]? = nil,
     retentionNotice: Int? = nil,
+    sampleAudio: String? = nil,
     sampleFilename: String? = nil,
     slug: String? = nil,
     tags: [String]? = nil

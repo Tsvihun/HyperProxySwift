@@ -12,14 +12,18 @@ import HyperProxyCore
 
 public struct ElevenLabsDubbingLanguageOutputs: Codable, Sendable {
   public var losslessAudio: String?
+  public var subtitles: String?
 
   public init(
-    losslessAudio: String? = nil
+    losslessAudio: String? = nil,
+    subtitles: String? = nil
   ) {
     self.losslessAudio = losslessAudio
+    self.subtitles = subtitles
   }
 
   enum CodingKeys: String, CodingKey {
     case losslessAudio = "lossless_audio"
+    case subtitles
   }
 }

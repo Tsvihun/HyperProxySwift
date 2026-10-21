@@ -31,6 +31,8 @@ public enum BFLOperation: String, HyperProxyCatalogOperation {
   case imagesFlux2Pro = "images.flux2Pro"
   /// `POST v1/flux-3-image`
   case flux3ImageV1Flux3ImagePost = "flux.3.image.v1.flux.3.image.post"
+  /// `POST v1/flux-3-image-klein`
+  case flux3ImageKleinV1Flux3ImageKleinPost = "flux.3.image.klein.v1.flux.3.image.klein.post"
   /// `POST v1/flux-dev`
   case imagesFlux1Dev = "images.flux1Dev"
   /// `POST v1/flux-kontext-max`

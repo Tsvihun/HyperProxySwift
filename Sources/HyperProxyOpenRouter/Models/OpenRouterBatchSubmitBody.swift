@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterBatchSubmitBody: Codable, Sendable {
+  public var callbackUrl: String?
   public var completionWindow: OpenRouterBatchSubmitBodyCompletionWindow?
   public var endpoint: OpenRouterBatchSubmitBodyEndpoint
   public var model: String
@@ -21,9 +22,11 @@ public struct OpenRouterBatchSubmitBody: Codable, Sendable {
     endpoint: OpenRouterBatchSubmitBodyEndpoint,
     model: String,
     requests: [OpenRouterBatchSubmitBodyRequestsItem],
+    callbackUrl: String? = nil,
     completionWindow: OpenRouterBatchSubmitBodyCompletionWindow? = nil,
     provider: OpenRouterBatchProviderPreferences? = nil
   ) {
+    self.callbackUrl = callbackUrl
     self.completionWindow = completionWindow
     self.endpoint = endpoint
     self.model = model
@@ -32,6 +35,7 @@ public struct OpenRouterBatchSubmitBody: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case callbackUrl = "callback_url"
     case completionWindow = "completion_window"
     case endpoint
     case model

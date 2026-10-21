@@ -12,4 +12,7 @@ import HyperProxyCore
 
 public enum OpenAIDecisionInputMessageRole: String, Codable, Hashable, Sendable {
   case user = "user"
+  case developer = "developer"
+  case system = "system"
+  case assistant = "assistant"
 }

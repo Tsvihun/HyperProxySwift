@@ -1,0 +1,23 @@
+//
+//  TogetherQuantizationEventAllOf2Kind.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+// Maintainer-generated release artifact. Do not edit by hand.
+
+import Foundation
+import HyperProxyCore
+
+public enum TogetherQuantizationEventAllOf2Kind: String, Codable, Hashable, Sendable {
+  case sHAPINGERROR = "SHAPING_ERROR"
+  case sHAPINGUSERERROR = "SHAPING_USER_ERROR"
+  case qUANTIZATIONJOBSTART = "QUANTIZATION_JOB_START"
+  case qUANTIZATIONMODELDOWNLOADCOMPLETE = "QUANTIZATION_MODEL_DOWNLOAD_COMPLETE"
+  case qUANTIZATIONMERGECOMPLETE = "QUANTIZATION_MERGE_COMPLETE"
+  case qUANTIZATIONQUANTIZEPROCESSSTART = "QUANTIZATION_QUANTIZE_PROCESS_START"
+  case qUANTIZATIONQUANTIZEPROCESSCOMPLETE = "QUANTIZATION_QUANTIZE_PROCESS_COMPLETE"
+  case qUANTIZATIONMODELUPLOADCOMPLETE = "QUANTIZATION_MODEL_UPLOAD_COMPLETE"
+  case qUANTIZATIONJOBCOMPLETE = "QUANTIZATION_JOB_COMPLETE"
+}

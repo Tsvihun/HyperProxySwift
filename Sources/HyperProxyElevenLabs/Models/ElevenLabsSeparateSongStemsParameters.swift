@@ -11,18 +11,22 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsSeparateSongStemsParameters: Codable, Sendable {
+  public var enableLogging: Bool?
   public var outputFormat: ElevenLabsSeparateSongStemsParametersOutputFormat?
   public var xiApiKey: String?
 
   public init(
+    enableLogging: Bool? = nil,
     outputFormat: ElevenLabsSeparateSongStemsParametersOutputFormat? = nil,
     xiApiKey: String? = nil
   ) {
+    self.enableLogging = enableLogging
     self.outputFormat = outputFormat
     self.xiApiKey = xiApiKey
   }
 
   enum CodingKeys: String, CodingKey {
+    case enableLogging = "enable_logging"
     case outputFormat = "output_format"
     case xiApiKey = "xi-api-key"
   }

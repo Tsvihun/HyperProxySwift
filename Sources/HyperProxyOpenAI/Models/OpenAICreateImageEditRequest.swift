@@ -23,6 +23,7 @@ public struct OpenAICreateImageEditRequest: Codable, Sendable {
   public var prompt: String
   public var quality: OpenAICreateImageEditRequestQuality?
   public var responseFormat: OpenAICreateImageEditRequestResponseFormat?
+  public var safetyIdentifier: String?
   public var size: OpenAICreateImageEditRequestSize?
   public var stream: Bool?
   public var user: String?
@@ -40,6 +41,7 @@ public struct OpenAICreateImageEditRequest: Codable, Sendable {
     partialImages: Int? = nil,
     quality: OpenAICreateImageEditRequestQuality? = nil,
     responseFormat: OpenAICreateImageEditRequestResponseFormat? = nil,
+    safetyIdentifier: String? = nil,
     size: OpenAICreateImageEditRequestSize? = nil,
     stream: Bool? = nil,
     user: String? = nil
@@ -56,6 +58,7 @@ public struct OpenAICreateImageEditRequest: Codable, Sendable {
     self.prompt = prompt
     self.quality = quality
     self.responseFormat = responseFormat
+    self.safetyIdentifier = safetyIdentifier
     self.size = size
     self.stream = stream
     self.user = user
@@ -74,6 +77,7 @@ public struct OpenAICreateImageEditRequest: Codable, Sendable {
     case prompt
     case quality
     case responseFormat = "response_format"
+    case safetyIdentifier = "safety_identifier"
     case size
     case stream
     case user

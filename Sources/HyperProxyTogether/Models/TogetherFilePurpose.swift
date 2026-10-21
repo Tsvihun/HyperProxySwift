@@ -12,6 +12,7 @@ import HyperProxyCore
 
 public enum TogetherFilePurpose: String, Codable, Hashable, Sendable {
   case fineTune = "fine-tune"
+  case calibration = "calibration"
   case eval = "eval"
   case batchApi = "batch-api"
 }

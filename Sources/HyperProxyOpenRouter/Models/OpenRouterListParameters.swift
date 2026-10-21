@@ -12,21 +12,25 @@ import HyperProxyCore
 
 public struct OpenRouterListParameters: Codable, Sendable {
   public var includeDisabled: String?
+  public var includeExpired: String?
   public var offset: Int?
   public var workspaceId: String?
 
   public init(
     includeDisabled: String? = nil,
+    includeExpired: String? = nil,
     offset: Int? = nil,
     workspaceId: String? = nil
   ) {
     self.includeDisabled = includeDisabled
+    self.includeExpired = includeExpired
     self.offset = offset
     self.workspaceId = workspaceId
   }
 
   enum CodingKeys: String, CodingKey {
     case includeDisabled = "include_disabled"
+    case includeExpired = "include_expired"
     case offset
     case workspaceId = "workspace_id"
   }

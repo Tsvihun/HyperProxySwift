@@ -25,6 +25,7 @@ public struct ElevenLabsWidgetConfigResponseModel: Codable, Sendable {
   public var disableBanner: Bool?
   public var dismissible: Bool?
   public var endCallText: String?
+  public var endConfirmationEnabled: Bool?
   public var endFeedback: ElevenLabsWidgetEndFeedbackConfig?
   public var expandText: String?
   public var expandable: ElevenLabsWidgetExpandable?
@@ -81,6 +82,7 @@ public struct ElevenLabsWidgetConfigResponseModel: Codable, Sendable {
     disableBanner: Bool? = nil,
     dismissible: Bool? = nil,
     endCallText: String? = nil,
+    endConfirmationEnabled: Bool? = nil,
     endFeedback: ElevenLabsWidgetEndFeedbackConfig? = nil,
     expandText: String? = nil,
     expandable: ElevenLabsWidgetExpandable? = nil,
@@ -134,6 +136,7 @@ public struct ElevenLabsWidgetConfigResponseModel: Codable, Sendable {
     self.disableBanner = disableBanner
     self.dismissible = dismissible
     self.endCallText = endCallText
+    self.endConfirmationEnabled = endConfirmationEnabled
     self.endFeedback = endFeedback
     self.expandText = expandText
     self.expandable = expandable
@@ -190,6 +193,7 @@ public struct ElevenLabsWidgetConfigResponseModel: Codable, Sendable {
     case disableBanner = "disable_banner"
     case dismissible
     case endCallText = "end_call_text"
+    case endConfirmationEnabled = "end_confirmation_enabled"
     case endFeedback = "end_feedback"
     case expandText = "expand_text"
     case expandable

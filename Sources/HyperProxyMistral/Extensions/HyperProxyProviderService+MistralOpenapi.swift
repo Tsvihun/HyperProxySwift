@@ -1379,6 +1379,24 @@ extension HyperProxyProviderService where Operation == MistralOperation {
     return try await prepared.decoded(MistralDatasetImportTask.self)
   }
 
+  public func postDatasetRecordsFromSpansV1ObservabilityDatasetsDatasetIdImportsFromSpansPost(
+    _ body: MistralImportDatasetFromSpansRequest,
+    datasetId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralDatasetImportTask {
+    let call = self.call(
+      .postDatasetRecordsFromSpansV1ObservabilityDatasetsDatasetIdImportsFromSpansPost
+    )
+    .path("dataset_id", datasetId)
+    .query(query)
+    .headers(headers)
+    .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(MistralDatasetImportTask.self)
+  }
+
   public func getDatasetRecordsV1ObservabilityDatasetsDatasetIdRecordsGet(
     datasetId: String,
     query: [URLQueryItem] = [],
@@ -1437,6 +1455,141 @@ extension HyperProxyProviderService where Operation == MistralOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(MistralDatasetImportTask.self)
+  }
+
+  public func searchAllEvaluationRunsV2V1ObservabilityEvaluationRunsV2SearchPost(
+    _ body: MistralSearchAllEvaluationRunsV2V1ObservabilityEvaluationRunsV2SearchPostRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralSearchAllEvaluationRunsResponse {
+    let call = self.call(.searchAllEvaluationRunsV2V1ObservabilityEvaluationRunsV2SearchPost)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(MistralSearchAllEvaluationRunsResponse.self)
+  }
+
+  public func getEvaluationRunV2V1ObservabilityEvaluationRunsV2RunIdGet(
+    runId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralEvaluationRunV2Response {
+    let call = self.call(.getEvaluationRunV2V1ObservabilityEvaluationRunsV2RunIdGet)
+      .path("run_id", runId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralEvaluationRunV2Response.self)
+  }
+
+  public func searchEvaluationRunRecordsV2V1ObservabilityEvaluationRunsV2RunIdRecordsSearchPost(
+    _ body:
+      MistralSearchEvaluationRunRecordsV2V1ObservabilityEvaluationRunsV2RunIdRecordsSearchPostRequest,
+    runId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralListEvaluationRunRecordsResponse {
+    let call = self.call(
+      .searchEvaluationRunRecordsV2V1ObservabilityEvaluationRunsV2RunIdRecordsSearchPost
+    )
+    .path("run_id", runId)
+    .query(query)
+    .headers(headers)
+    .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(MistralListEvaluationRunRecordsResponse.self)
+  }
+
+  public func getEvaluationRunRecordV2V1ObservabilityEvaluationRunsV2RunIdRecordsRecordIdGet(
+    runId: String,
+    recordId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralEvaluationRunRecordV2Response {
+    let call = self.call(
+      .getEvaluationRunRecordV2V1ObservabilityEvaluationRunsV2RunIdRecordsRecordIdGet
+    )
+    .path("run_id", runId)
+    .path("record_id", recordId)
+    .query(query)
+    .headers(headers)
+    .timeout(timeout)
+    return try await call.decoded(MistralEvaluationRunRecordV2Response.self)
+  }
+
+  public func getSingleEvaluationRunStatisticsV2V1ObservabilityEvaluationRunsV2RunIdStatisticsGet(
+    runId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralRunStatisticsResponse {
+    let call = self.call(
+      .getSingleEvaluationRunStatisticsV2V1ObservabilityEvaluationRunsV2RunIdStatisticsGet
+    )
+    .path("run_id", runId)
+    .query(query)
+    .headers(headers)
+    .timeout(timeout)
+    return try await call.decoded(MistralRunStatisticsResponse.self)
+  }
+
+  public func
+    computeFilteredRunStatisticsV2V1ObservabilityEvaluationRunsV2RunIdStatisticsComputePost(
+      _ body:
+        MistralComputeFilteredRunStatisticsV2V1ObservabilityEvaluationRunsV2RunIdStatisticsComputePostRequest,
+      runId: String,
+      query: [URLQueryItem] = [],
+      headers: [String: String] = [:],
+      timeout: TimeInterval? = nil
+    ) async throws -> MistralRunStatisticsResponse
+  {
+    let call = self.call(
+      .computeFilteredRunStatisticsV2V1ObservabilityEvaluationRunsV2RunIdStatisticsComputePost
+    )
+    .path("run_id", runId)
+    .query(query)
+    .headers(headers)
+    .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(MistralRunStatisticsResponse.self)
+  }
+
+  public func getEvaluationV2V1ObservabilityEvaluationsV2EvaluationSlugGet(
+    evaluationSlug: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralEvaluationV2 {
+    let call = self.call(.getEvaluationV2V1ObservabilityEvaluationsV2EvaluationSlugGet)
+      .path("evaluation_slug", evaluationSlug)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralEvaluationV2.self)
+  }
+
+  public func searchEvaluationRunsV2V1ObservabilityEvaluationsV2EvaluationSlugRunsSearchPost(
+    _ body:
+      MistralSearchEvaluationRunsV2V1ObservabilityEvaluationsV2EvaluationSlugRunsSearchPostRequest,
+    evaluationSlug: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralListEvaluationRunsResponse {
+    let call = self.call(
+      .searchEvaluationRunsV2V1ObservabilityEvaluationsV2EvaluationSlugRunsSearchPost
+    )
+    .path("evaluation_slug", evaluationSlug)
+    .query(query)
+    .headers(headers)
+    .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(MistralListEvaluationRunsResponse.self)
   }
 
   public func getJudgesV1ObservabilityJudgesGet(
@@ -1535,60 +1688,154 @@ extension HyperProxyProviderService where Operation == MistralOperation {
     return try await prepared.decoded(MistralGetLogs.self)
   }
 
-  public func listPipelineConfigsV1ObservabilityPipelineConfigsGet(
+  public func listOptimizationsV1ObservabilityOptimizationsGet(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> MistralPipelineConfigsResponse {
-    let call = self.call(.listPipelineConfigsV1ObservabilityPipelineConfigsGet)
+  ) async throws -> MistralListOptimizationsResponse {
+    let call = self.call(.listOptimizationsV1ObservabilityOptimizationsGet)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(MistralPipelineConfigsResponse.self)
+    return try await call.decoded(MistralListOptimizationsResponse.self)
   }
 
-  public func createPipelineConfigV1ObservabilityPipelineConfigsPost(
-    _ body: MistralCreatePipelineConfigRequest,
+  public func getOptimizationV1ObservabilityOptimizationsOptimizationIdGet(
+    optimizationId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> MistralPipelineConfig {
-    let call = self.call(.createPipelineConfigV1ObservabilityPipelineConfigsPost)
+  ) async throws -> MistralOptimizationDetail {
+    let call = self.call(.getOptimizationV1ObservabilityOptimizationsOptimizationIdGet)
+      .path("optimization_id", optimizationId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralOptimizationDetail.self)
+  }
+
+  public func listOptimizationTrialsV1ObservabilityOptimizationsOptimizationIdTrialsGet(
+    optimizationId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralListOptimizationTrialsResponse {
+    let call = self.call(.listOptimizationTrialsV1ObservabilityOptimizationsOptimizationIdTrialsGet)
+      .path("optimization_id", optimizationId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralListOptimizationTrialsResponse.self)
+  }
+
+  public func searchPipelineResultsV1ObservabilityPipelineResultsSearchPost(
+    _ body: MistralPipelineResultsRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralGetPipelineResults {
+    let call = self.call(.searchPipelineResultsV1ObservabilityPipelineResultsSearchPost)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     let prepared = try call.json(body)
-    return try await prepared.decoded(MistralPipelineConfig.self)
+    return try await prepared.decoded(MistralGetPipelineResults.self)
   }
 
-  public func getPipelineConfigV1ObservabilityPipelineConfigsPipelineConfigIdGet(
-    pipelineConfigId: String,
+  public func listPipelinesV1ObservabilityPipelinesGet(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> MistralPipelineConfig {
-    let call = self.call(.getPipelineConfigV1ObservabilityPipelineConfigsPipelineConfigIdGet)
-      .path("pipeline_config_id", pipelineConfigId)
+  ) async throws -> MistralPipelinesResponse {
+    let call = self.call(.listPipelinesV1ObservabilityPipelinesGet)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(MistralPipelineConfig.self)
+    return try await call.decoded(MistralPipelinesResponse.self)
   }
 
-  public func updatePipelineConfigV1ObservabilityPipelineConfigsPipelineConfigIdPut(
-    _ body: MistralUpdatePipelineConfigRequest,
-    pipelineConfigId: String,
+  public func createPipelineV1ObservabilityPipelinesPost(
+    _ body: MistralCreatePipelineRequest,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> MistralPipelineConfig {
-    let call = self.call(.updatePipelineConfigV1ObservabilityPipelineConfigsPipelineConfigIdPut)
-      .path("pipeline_config_id", pipelineConfigId)
+  ) async throws -> MistralPipeline {
+    let call = self.call(.createPipelineV1ObservabilityPipelinesPost)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     let prepared = try call.json(body)
-    return try await prepared.decoded(MistralPipelineConfig.self)
+    return try await prepared.decoded(MistralPipeline.self)
+  }
+
+  public func getPipelineV1ObservabilityPipelinesPipelineIdGet(
+    pipelineId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralPipeline {
+    let call = self.call(.getPipelineV1ObservabilityPipelinesPipelineIdGet)
+      .path("pipeline_id", pipelineId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralPipeline.self)
+  }
+
+  public func updatePipelineV1ObservabilityPipelinesPipelineIdPut(
+    _ body: MistralUpdatePipelineRequest,
+    pipelineId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralPipeline {
+    let call = self.call(.updatePipelineV1ObservabilityPipelinesPipelineIdPut)
+      .path("pipeline_id", pipelineId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(MistralPipeline.self)
+  }
+
+  public func getProjectsV1ObservabilityProjectsGet(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralProjects {
+    let call = self.call(.getProjectsV1ObservabilityProjectsGet)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralProjects.self)
+  }
+
+  public func getProjectV1ObservabilityProjectsProjectSlugGet(
+    projectSlug: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralProject {
+    let call = self.call(.getProjectV1ObservabilityProjectsProjectSlugGet)
+      .path("project_slug", projectSlug)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralProject.self)
+  }
+
+  public func getProjectEvaluationsV2V1ObservabilityProjectsProjectSlugEvaluationsV2Get(
+    projectSlug: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralEvaluationsV2 {
+    let call = self.call(.getProjectEvaluationsV2V1ObservabilityProjectsProjectSlugEvaluationsV2Get)
+      .path("project_slug", projectSlug)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralEvaluationsV2.self)
   }
 
   public func aggregateSpansV1ObservabilitySpansAggregatePost(
@@ -2158,6 +2405,18 @@ extension HyperProxyProviderService where Operation == MistralOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(MistralListWorkspacesResponse.self)
+  }
+
+  public func usersApiWhoami(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralWhoamiResponse {
+    let call = self.call(.usersApiWhoami)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralWhoamiResponse.self)
   }
 
   public func getWorkflowsV1WorkflowsGet(
@@ -2817,6 +3076,18 @@ extension HyperProxyProviderService where Operation == MistralOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(MistralWorkflowMetrics.self)
+  }
+
+  public func audioV2VoicesList(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralVoiceListPage {
+    let call = self.call(.audioV2VoicesList)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralVoiceListPage.self)
   }
 
   public func promptsList(

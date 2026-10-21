@@ -12,6 +12,7 @@ import HyperProxyCore
 
 public struct OpenRouterCustomTool: Codable, Sendable {
   public var async: Bool?
+  public var deferLoading: Bool?
   public var description: String?
   public var format: OpenRouterCustomToolFormat?
   public var name: String
@@ -21,10 +22,12 @@ public struct OpenRouterCustomTool: Codable, Sendable {
     name: String,
     kind: OpenRouterCustomToolKind,
     async: Bool? = nil,
+    deferLoading: Bool? = nil,
     description: String? = nil,
     format: OpenRouterCustomToolFormat? = nil
   ) {
     self.async = async
+    self.deferLoading = deferLoading
     self.description = description
     self.format = format
     self.name = name
@@ -33,6 +36,7 @@ public struct OpenRouterCustomTool: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case async
+    case deferLoading = "defer_loading"
     case description
     case format
     case name

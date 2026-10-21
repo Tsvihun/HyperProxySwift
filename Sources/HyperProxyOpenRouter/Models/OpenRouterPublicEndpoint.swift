@@ -23,8 +23,10 @@ public struct OpenRouterPublicEndpoint: Codable, Sendable {
   public var pricing: OpenRouterPublicEndpointPricing
   public var providerName: OpenRouterProviderName
   public var quantization: OpenRouterQuantization?
+  public var serviceTier: OpenRouterPublicServiceTier?
   public var status: OpenRouterEndpointStatus?
   public var supportedParameters: [OpenRouterParameter]
+  public var supportsDiarization: Bool
   public var supportsImageReference: Bool?
   public var supportsImplicitCaching: Bool
   public var supportsMultipleAudioReferences: Bool?
@@ -48,7 +50,9 @@ public struct OpenRouterPublicEndpoint: Codable, Sendable {
     pricing: OpenRouterPublicEndpointPricing,
     providerName: OpenRouterProviderName,
     quantization: OpenRouterQuantization?,
+    serviceTier: OpenRouterPublicServiceTier?,
     supportedParameters: [OpenRouterParameter],
+    supportsDiarization: Bool,
     supportsImplicitCaching: Bool,
     supportsToolChoice: OpenRouterToolChoiceSupport,
     tag: String,
@@ -74,8 +78,10 @@ public struct OpenRouterPublicEndpoint: Codable, Sendable {
     self.pricing = pricing
     self.providerName = providerName
     self.quantization = quantization
+    self.serviceTier = serviceTier
     self.status = status
     self.supportedParameters = supportedParameters
+    self.supportsDiarization = supportsDiarization
     self.supportsImageReference = supportsImageReference
     self.supportsImplicitCaching = supportsImplicitCaching
     self.supportsMultipleAudioReferences = supportsMultipleAudioReferences
@@ -101,8 +107,10 @@ public struct OpenRouterPublicEndpoint: Codable, Sendable {
     case pricing
     case providerName = "provider_name"
     case quantization
+    case serviceTier = "service_tier"
     case status
     case supportedParameters = "supported_parameters"
+    case supportsDiarization = "supports_diarization"
     case supportsImageReference = "supports_image_reference"
     case supportsImplicitCaching = "supports_implicit_caching"
     case supportsMultipleAudioReferences = "supports_multiple_audio_references"

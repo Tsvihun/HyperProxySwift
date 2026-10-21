@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsMergePreviewRouteParameters: Codable, Sendable {
   public var agentId: String
   public var force: Bool?
+  public var includeProcedureGeneratedWorkflowElements: Bool?
   public var sourceBranchId: String
   public var targetBranchId: String
   public var xiApiKey: String?
@@ -22,10 +23,12 @@ public struct ElevenLabsMergePreviewRouteParameters: Codable, Sendable {
     sourceBranchId: String,
     targetBranchId: String,
     force: Bool? = nil,
+    includeProcedureGeneratedWorkflowElements: Bool? = nil,
     xiApiKey: String? = nil
   ) {
     self.agentId = agentId
     self.force = force
+    self.includeProcedureGeneratedWorkflowElements = includeProcedureGeneratedWorkflowElements
     self.sourceBranchId = sourceBranchId
     self.targetBranchId = targetBranchId
     self.xiApiKey = xiApiKey
@@ -34,6 +37,7 @@ public struct ElevenLabsMergePreviewRouteParameters: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case agentId = "agent_id"
     case force
+    case includeProcedureGeneratedWorkflowElements = "include_procedure_generated_workflow_elements"
     case sourceBranchId = "source_branch_id"
     case targetBranchId = "target_branch_id"
     case xiApiKey = "xi-api-key"

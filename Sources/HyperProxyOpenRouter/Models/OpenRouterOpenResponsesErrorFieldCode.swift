@@ -33,4 +33,5 @@ public enum OpenRouterOpenResponsesErrorFieldCode: String, Codable, Hashable, Se
   case cyberPolicy = "cyber_policy"
   case misalignmentPolicyViolation = "misalignment_policy_violation"
   case dataResidencyMismatch = "data_residency_mismatch"
+  case permissionDenied = "permission_denied"
 }

@@ -89,6 +89,7 @@ public enum OpenRouterListBYOKKeysParametersProvider: String, Codable, Hashable,
   case openInference = "open-inference"
   case openai = "openai"
   case parasail = "parasail"
+  case paretoAlpha = "pareto-alpha"
   case perceptron = "perceptron"
   case perplexity = "perplexity"
   case phala = "phala"

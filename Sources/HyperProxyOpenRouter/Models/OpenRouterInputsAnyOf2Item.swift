@@ -37,6 +37,7 @@ public enum OpenRouterInputsAnyOf2Item: Codable, Sendable {
   case outputWebFetchServerToolItem(OpenRouterOutputWebFetchServerToolItem)
   case outputToolSearchServerToolItem(OpenRouterOutputToolSearchServerToolItem)
   case outputMemoryServerToolItem(OpenRouterOutputMemoryServerToolItem)
+  case outputArmorBlockedItem(OpenRouterOutputArmorBlockedItem)
   case outputMcpServerToolItem(OpenRouterOutputMcpServerToolItem)
   case outputSearchModelsServerToolItem(OpenRouterOutputSearchModelsServerToolItem)
   case outputFusionServerToolItem(OpenRouterOutputFusionServerToolItem)
@@ -167,6 +168,10 @@ public enum OpenRouterInputsAnyOf2Item: Codable, Sendable {
     }
     if let value = try? container.decode(OpenRouterOutputMemoryServerToolItem.self) {
       self = .outputMemoryServerToolItem(value)
+      return
+    }
+    if let value = try? container.decode(OpenRouterOutputArmorBlockedItem.self) {
+      self = .outputArmorBlockedItem(value)
       return
     }
     if let value = try? container.decode(OpenRouterOutputMcpServerToolItem.self) {
@@ -322,6 +327,8 @@ public enum OpenRouterInputsAnyOf2Item: Codable, Sendable {
     case .outputToolSearchServerToolItem(let value):
       try container.encode(value)
     case .outputMemoryServerToolItem(let value):
+      try container.encode(value)
+    case .outputArmorBlockedItem(let value):
       try container.encode(value)
     case .outputMcpServerToolItem(let value):
       try container.encode(value)

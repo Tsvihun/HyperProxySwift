@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralScimSyncUserRefOut: Codable, Sendable {
-  public var userName: String
+  public var userName: String?
   public var uuid: String
 
   public init(
-    userName: String,
-    uuid: String
+    uuid: String,
+    userName: String? = nil
   ) {
     self.userName = userName
     self.uuid = uuid

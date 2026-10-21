@@ -18,4 +18,7 @@ public enum TogetherModelInfoKind: String, Codable, Hashable, Sendable {
   case embedding = "embedding"
   case moderation = "moderation"
   case rerank = "rerank"
+  case audio = "audio"
+  case transcribe = "transcribe"
+  case video = "video"
 }

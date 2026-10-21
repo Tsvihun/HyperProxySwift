@@ -90,6 +90,10 @@ public struct MistralAdminCalls: Sendable {
   public var usersApiAdminUsageGetUsage: HyperProxyProviderCall<MistralOperation> {
     self.service.call(.usersApiAdminUsageGetUsage)
   }
+  /// `POST v1/admin/usage/query`
+  public var usersApiAdminUsageQueryUsage: HyperProxyProviderCall<MistralOperation> {
+    self.service.call(.usersApiAdminUsageQueryUsage)
+  }
   /// `GET v1/admin/user-groups`
   public var usersApiAdminUserGroupsGetUserGroups: HyperProxyProviderCall<MistralOperation> {
     self.service.call(.usersApiAdminUserGroupsGetUserGroups)
@@ -195,6 +199,10 @@ public struct MistralAdminCalls: Sendable {
   /// `PATCH v1/admin/users/{user_id}`
   public var usersApiAdminUsersUpdateUser: HyperProxyProviderCall<MistralOperation> {
     self.service.call(.usersApiAdminUsersUpdateUser)
+  }
+  /// `POST v1/admin/users/{user_id}/deactivate`
+  public var usersApiAdminUsersDeactivateUser: HyperProxyProviderCall<MistralOperation> {
+    self.service.call(.usersApiAdminUsersDeactivateUser)
   }
   /// `GET v1/admin/workspaces`
   public var usersApiAdminWorkspacesGetWorkspaces: HyperProxyProviderCall<MistralOperation> {

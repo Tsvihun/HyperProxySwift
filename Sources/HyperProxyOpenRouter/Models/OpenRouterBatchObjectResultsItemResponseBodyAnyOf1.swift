@@ -20,6 +20,7 @@ public struct OpenRouterBatchObjectResultsItemResponseBodyAnyOf1: Codable, Senda
   public var object: OpenRouterBatchObjectResultsItemResponseBodyAnyOf1Object
   public var openrouterMetadata: OpenRouterMetadata?
   public var provider: String?
+  public var safeguardResults: [OpenRouterArmorSafeguardResult]?
   public var serviceTier: String?
   public var systemFingerprint: String?
   public var usage: OpenRouterBatchObjectResultsItemResponseBodyAnyOf1Usage?
@@ -34,6 +35,7 @@ public struct OpenRouterBatchObjectResultsItemResponseBodyAnyOf1: Codable, Senda
     debug: OpenRouterBatchObjectResultsItemResponseBodyAnyOf1Debug? = nil,
     openrouterMetadata: OpenRouterMetadata? = nil,
     provider: String? = nil,
+    safeguardResults: [OpenRouterArmorSafeguardResult]? = nil,
     serviceTier: String? = nil,
     systemFingerprint: String? = nil,
     usage: OpenRouterBatchObjectResultsItemResponseBodyAnyOf1Usage? = nil
@@ -47,6 +49,7 @@ public struct OpenRouterBatchObjectResultsItemResponseBodyAnyOf1: Codable, Senda
     self.object = object
     self.openrouterMetadata = openrouterMetadata
     self.provider = provider
+    self.safeguardResults = safeguardResults
     self.serviceTier = serviceTier
     self.systemFingerprint = systemFingerprint
     self.usage = usage
@@ -62,6 +65,7 @@ public struct OpenRouterBatchObjectResultsItemResponseBodyAnyOf1: Codable, Senda
     case object
     case openrouterMetadata = "openrouter_metadata"
     case provider
+    case safeguardResults = "safeguard_results"
     case serviceTier = "service_tier"
     case systemFingerprint = "system_fingerprint"
     case usage

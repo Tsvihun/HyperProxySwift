@@ -13,6 +13,7 @@ import HyperProxyCore
 public enum OpenAILiveSessionResourceParamDelegationAnyOf1: Codable, Sendable {
   case liveClientDelegationParam(OpenAILiveClientDelegationParam)
   case liveResponsesDelegationParam(OpenAILiveResponsesDelegationParam)
+  case liveDecisionsDelegationParam2(OpenAILiveDecisionsDelegationParam2)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -20,8 +21,12 @@ public enum OpenAILiveSessionResourceParamDelegationAnyOf1: Codable, Sendable {
       self = .liveClientDelegationParam(value)
       return
     }
-    self = .liveResponsesDelegationParam(
-      try container.decode(OpenAILiveResponsesDelegationParam.self))
+    if let value = try? container.decode(OpenAILiveResponsesDelegationParam.self) {
+      self = .liveResponsesDelegationParam(value)
+      return
+    }
+    self = .liveDecisionsDelegationParam2(
+      try container.decode(OpenAILiveDecisionsDelegationParam2.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -30,6 +35,8 @@ public enum OpenAILiveSessionResourceParamDelegationAnyOf1: Codable, Sendable {
     case .liveClientDelegationParam(let value):
       try container.encode(value)
     case .liveResponsesDelegationParam(let value):
+      try container.encode(value)
+    case .liveDecisionsDelegationParam2(let value):
       try container.encode(value)
     }
   }

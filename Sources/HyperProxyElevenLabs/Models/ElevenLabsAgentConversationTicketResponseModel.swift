@@ -29,6 +29,7 @@ public struct ElevenLabsAgentConversationTicketResponseModel: Codable, Sendable 
   public var searchMatch: ElevenLabsTicketSearchMatchResponseModel?
   public var source: ElevenLabsAgentConversationTicketSource
   public var status: ElevenLabsAgentConversationTicketStatus
+  public var statusChanges: [ElevenLabsTicketStatusChangeResponseModel]
   public var ticketComments: [ElevenLabsTicketCommentResponseModel]
   public var title: String?
   public var turnComments: [ElevenLabsTurnCommentResponseModel]
@@ -52,6 +53,7 @@ public struct ElevenLabsAgentConversationTicketResponseModel: Codable, Sendable 
     qaComment: String?,
     source: ElevenLabsAgentConversationTicketSource,
     status: ElevenLabsAgentConversationTicketStatus,
+    statusChanges: [ElevenLabsTicketStatusChangeResponseModel],
     ticketComments: [ElevenLabsTicketCommentResponseModel],
     title: String?,
     turnComments: [ElevenLabsTurnCommentResponseModel],
@@ -78,6 +80,7 @@ public struct ElevenLabsAgentConversationTicketResponseModel: Codable, Sendable 
     self.searchMatch = searchMatch
     self.source = source
     self.status = status
+    self.statusChanges = statusChanges
     self.ticketComments = ticketComments
     self.title = title
     self.turnComments = turnComments
@@ -104,6 +107,7 @@ public struct ElevenLabsAgentConversationTicketResponseModel: Codable, Sendable 
     case searchMatch = "search_match"
     case source
     case status
+    case statusChanges = "status_changes"
     case ticketComments = "ticket_comments"
     case title
     case turnComments = "turn_comments"

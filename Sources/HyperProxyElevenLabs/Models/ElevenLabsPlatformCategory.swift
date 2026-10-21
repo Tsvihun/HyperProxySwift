@@ -17,5 +17,8 @@ public enum ElevenLabsPlatformCategory: String, Codable, Hashable, Sendable {
   case asr = "asr"
   case textMessage = "text_message"
   case reception = "reception"
+  case v3Addon = "v3_addon"
+  case v4Addon = "v4_addon"
+  case ragAddon = "rag_addon"
   case other = "other"
 }

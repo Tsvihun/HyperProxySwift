@@ -87,16 +87,16 @@ public enum OpenRouterOperation: String, HyperProxyCatalogOperation {
   case embeddingsCreate = "embeddings.create"
   /// `GET api/v1/embeddings/models`
   case listEmbeddingsModels = "listEmbeddingsModels"
-  /// `GET api/v1/end-users`
-  case listEndUsers = "listEndUsers"
-  /// `POST api/v1/end-users`
-  case createEndUser = "createEndUser"
-  /// `DELETE api/v1/end-users/{user}`
-  case deleteEndUser = "deleteEndUser"
-  /// `GET api/v1/end-users/{user}`
-  case getEndUser = "getEndUser"
-  /// `PATCH api/v1/end-users/{user}`
-  case updateEndUser = "updateEndUser"
+  /// `GET api/v1/external-users`
+  case listExternalUsers = "listExternalUsers"
+  /// `POST api/v1/external-users`
+  case createExternalUser = "createExternalUser"
+  /// `DELETE api/v1/external-users/{user}`
+  case deleteExternalUser = "deleteExternalUser"
+  /// `GET api/v1/external-users/{user}`
+  case getExternalUser = "getExternalUser"
+  /// `PATCH api/v1/external-users/{user}`
+  case updateExternalUser = "updateExternalUser"
   /// `GET api/v1/files`
   case listFiles = "listFiles"
   /// `POST api/v1/files`
@@ -157,6 +157,8 @@ public enum OpenRouterOperation: String, HyperProxyCatalogOperation {
   case updateIntern = "updateIntern"
   /// `POST api/v1/interns/{internId}/chat/completions`
   case createInternChatCompletion = "createInternChatCompletion"
+  /// `GET api/v1/interns/{internId}/connections`
+  case getInternConnections = "getInternConnections"
   /// `GET api/v1/interns/{internId}/daemon`
   case getInternDaemon = "getInternDaemon"
   /// `GET api/v1/interns/{internId}/daemon-access`
@@ -165,6 +167,8 @@ public enum OpenRouterOperation: String, HyperProxyCatalogOperation {
   case signInternDaemonAccessRequest = "signInternDaemonAccessRequest"
   /// `POST api/v1/interns/{internId}/daemon/sign`
   case signInternDaemonRequest = "signInternDaemonRequest"
+  /// `GET api/v1/interns/{internId}/icon`
+  case getInternIcon = "getInternIcon"
   /// `POST api/v1/interns/{internId}/invoke`
   case invokeIntern = "invokeIntern"
   /// `POST api/v1/interns/{internId}/provision`
@@ -271,6 +275,8 @@ public enum OpenRouterOperation: String, HyperProxyCatalogOperation {
   case listTools = "listTools"
   /// `GET api/v1/tools/{name}`
   case getTool = "getTool"
+  /// `GET api/v1/vault/interns/{internId}/connections`
+  case listInternConnections = "listInternConnections"
   /// `GET api/v1/vault/interns/{internId}/effective-secrets`
   case listInternEffectiveVaultSecrets = "listInternEffectiveVaultSecrets"
   /// `GET api/v1/vault/interns/{internId}/secrets`

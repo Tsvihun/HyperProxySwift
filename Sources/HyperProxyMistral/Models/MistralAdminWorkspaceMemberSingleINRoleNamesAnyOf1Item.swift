@@ -24,4 +24,5 @@ public enum MistralAdminWorkspaceMemberSingleINRoleNamesAnyOf1Item: String, Coda
   case workspaceAdmin = "workspace_admin"
   case observabilityViewer = "observability_viewer"
   case workflowExecutor = "workflow_executor"
+  case member = "member"
 }

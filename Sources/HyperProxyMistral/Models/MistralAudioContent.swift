@@ -15,14 +15,14 @@ public struct MistralAudioContent: Codable, Sendable {
   public var annotations: MistralAnnotations?
   public var data: String
   public var mimeType: String
-  public var kind: MistralAudioKind
+  public var kind: MistralAudioKind?
 
   public init(
     data: String,
     mimeType: String,
-    kind: MistralAudioKind = .audio,
     meta: [String: HyperProxyJSONValue]? = nil,
-    annotations: MistralAnnotations? = nil
+    annotations: MistralAnnotations? = nil,
+    kind: MistralAudioKind? = nil
   ) {
     self.meta = meta
     self.annotations = annotations

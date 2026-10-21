@@ -16,6 +16,7 @@ public struct OpenAIImageGenCompletedEvent: Codable, Sendable {
   public var createdAt: Int
   public var outputFormat: OpenAIImageGenCompletedEventOutputFormat
   public var quality: OpenAIImageGenCompletedEventQuality
+  public var safetyIdentifier: String?
   public var size: OpenAIImageGenCompletedEventSize
   public var kind: OpenAIImageGenCompletedEventKind
   public var usage: OpenAIImagesUsage
@@ -28,13 +29,15 @@ public struct OpenAIImageGenCompletedEvent: Codable, Sendable {
     quality: OpenAIImageGenCompletedEventQuality,
     size: OpenAIImageGenCompletedEventSize,
     kind: OpenAIImageGenCompletedEventKind,
-    usage: OpenAIImagesUsage
+    usage: OpenAIImagesUsage,
+    safetyIdentifier: String? = nil
   ) {
     self.b64Json = b64Json
     self.background = background
     self.createdAt = createdAt
     self.outputFormat = outputFormat
     self.quality = quality
+    self.safetyIdentifier = safetyIdentifier
     self.size = size
     self.kind = kind
     self.usage = usage
@@ -46,6 +49,7 @@ public struct OpenAIImageGenCompletedEvent: Codable, Sendable {
     case createdAt = "created_at"
     case outputFormat = "output_format"
     case quality
+    case safetyIdentifier = "safety_identifier"
     case size
     case kind = "type"
     case usage

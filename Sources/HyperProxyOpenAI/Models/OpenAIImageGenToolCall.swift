@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct OpenAIImageGenToolCall: Codable, Sendable {
   public var action: OpenAIImageGenActionEnum?
   public var background: OpenAIImageBackground?
+  public var error: OpenAIImageGenToolCallError?
   public var id: String
   public var outputFormat: OpenAIImageOutputFormat?
   public var quality: OpenAIImageGenToolCallQuality?
@@ -29,6 +30,7 @@ public struct OpenAIImageGenToolCall: Codable, Sendable {
     kind: OpenAIImageGenToolCallKind,
     action: OpenAIImageGenActionEnum? = nil,
     background: OpenAIImageBackground? = nil,
+    error: OpenAIImageGenToolCallError? = nil,
     outputFormat: OpenAIImageOutputFormat? = nil,
     quality: OpenAIImageGenToolCallQuality? = nil,
     revisedPrompt: String? = nil,
@@ -36,6 +38,7 @@ public struct OpenAIImageGenToolCall: Codable, Sendable {
   ) {
     self.action = action
     self.background = background
+    self.error = error
     self.id = id
     self.outputFormat = outputFormat
     self.quality = quality
@@ -49,6 +52,7 @@ public struct OpenAIImageGenToolCall: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case action
     case background
+    case error
     case id
     case outputFormat = "output_format"
     case quality

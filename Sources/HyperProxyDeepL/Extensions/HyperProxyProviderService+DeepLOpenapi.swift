@@ -400,6 +400,62 @@ extension HyperProxyProviderService where Operation == DeepLOperation {
     return try await prepared.decoded(DeepLSpokenTermsList.self)
   }
 
+  public func listStyleProfiles(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> DeepLListStyleProfilesResponse {
+    let call = self.call(.listStyleProfiles)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(DeepLListStyleProfilesResponse.self)
+  }
+
+  public func createStyleProfile(
+    _ body: DeepLCreateStyleProfileRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> DeepLStyleProfile {
+    let call = self.call(.createStyleProfile)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(DeepLStyleProfile.self)
+  }
+
+  public func getStyleProfile(
+    styleProfileId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> DeepLStyleProfile {
+    let call = self.call(.getStyleProfile)
+      .path("style_profile_id", styleProfileId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(DeepLStyleProfile.self)
+  }
+
+  public func updateStyleProfile(
+    _ body: DeepLUpdateStyleProfileRequest,
+    styleProfileId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> DeepLStyleProfile {
+    let call = self.call(.updateStyleProfile)
+      .path("style_profile_id", styleProfileId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(DeepLStyleProfile.self)
+  }
+
   public func getStyleRuleLists(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],

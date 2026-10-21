@@ -15,7 +15,7 @@ public struct ElevenLabsEffectsSpecInput: Codable, Sendable {
   public var distance: Double?
   public var environmentId: String?
   public var filterPresetId: String?
-  public var seed: Int?
+  public var pan: Double?
   public var sendLevel: Double?
 
   public init(
@@ -23,14 +23,14 @@ public struct ElevenLabsEffectsSpecInput: Codable, Sendable {
     distance: Double? = nil,
     environmentId: String? = nil,
     filterPresetId: String? = nil,
-    seed: Int? = nil,
+    pan: Double? = nil,
     sendLevel: Double? = nil
   ) {
     self.backgroundNoiseId = backgroundNoiseId
     self.distance = distance
     self.environmentId = environmentId
     self.filterPresetId = filterPresetId
-    self.seed = seed
+    self.pan = pan
     self.sendLevel = sendLevel
   }
 
@@ -39,7 +39,7 @@ public struct ElevenLabsEffectsSpecInput: Codable, Sendable {
     case distance
     case environmentId = "environment_id"
     case filterPresetId = "filter_preset_id"
-    case seed
+    case pan
     case sendLevel = "send_level"
   }
 }

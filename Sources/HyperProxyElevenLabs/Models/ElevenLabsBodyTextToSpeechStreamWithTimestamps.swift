@@ -14,6 +14,7 @@ public struct ElevenLabsBodyTextToSpeechStreamWithTimestamps: Codable, Sendable 
   public var applyLanguageTextNormalization: Bool?
   public var applyTextNormalization:
     ElevenLabsBodyTextToSpeechStreamWithTimestampsApplyTextNormalization?
+  public var audioEffects: ElevenLabsEffectsSpecInput?
   public var languageCode: String?
   public var modelId: String?
   public var nextRequestIds: [String]?
@@ -32,6 +33,7 @@ public struct ElevenLabsBodyTextToSpeechStreamWithTimestamps: Codable, Sendable 
     applyLanguageTextNormalization: Bool? = nil,
     applyTextNormalization: ElevenLabsBodyTextToSpeechStreamWithTimestampsApplyTextNormalization? =
       nil,
+    audioEffects: ElevenLabsEffectsSpecInput? = nil,
     languageCode: String? = nil,
     modelId: String? = nil,
     nextRequestIds: [String]? = nil,
@@ -46,6 +48,7 @@ public struct ElevenLabsBodyTextToSpeechStreamWithTimestamps: Codable, Sendable 
   ) {
     self.applyLanguageTextNormalization = applyLanguageTextNormalization
     self.applyTextNormalization = applyTextNormalization
+    self.audioEffects = audioEffects
     self.languageCode = languageCode
     self.modelId = modelId
     self.nextRequestIds = nextRequestIds
@@ -62,6 +65,7 @@ public struct ElevenLabsBodyTextToSpeechStreamWithTimestamps: Codable, Sendable 
   enum CodingKeys: String, CodingKey {
     case applyLanguageTextNormalization = "apply_language_text_normalization"
     case applyTextNormalization = "apply_text_normalization"
+    case audioEffects = "audio_effects"
     case languageCode = "language_code"
     case modelId = "model_id"
     case nextRequestIds = "next_request_ids"

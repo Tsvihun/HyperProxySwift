@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsAgentBranchSummary: Codable, Sendable {
   public var accessInfo: ElevenLabsResourceAccessInfo?
   public var agentId: String
+  public var autoRebase: Bool?
   public var calls7d: Int?
   public var commitsAhead: Int?
   public var commitsBehind: Int?
@@ -39,6 +40,7 @@ public struct ElevenLabsAgentBranchSummary: Codable, Sendable {
     lastCommittedAt: Int,
     name: String,
     accessInfo: ElevenLabsResourceAccessInfo? = nil,
+    autoRebase: Bool? = nil,
     calls7d: Int? = nil,
     commitsAhead: Int? = nil,
     commitsBehind: Int? = nil,
@@ -52,6 +54,7 @@ public struct ElevenLabsAgentBranchSummary: Codable, Sendable {
   ) {
     self.accessInfo = accessInfo
     self.agentId = agentId
+    self.autoRebase = autoRebase
     self.calls7d = calls7d
     self.commitsAhead = commitsAhead
     self.commitsBehind = commitsBehind
@@ -73,6 +76,7 @@ public struct ElevenLabsAgentBranchSummary: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case accessInfo = "access_info"
     case agentId = "agent_id"
+    case autoRebase = "auto_rebase"
     case calls7d = "calls_7d"
     case commitsAhead = "commits_ahead"
     case commitsBehind = "commits_behind"

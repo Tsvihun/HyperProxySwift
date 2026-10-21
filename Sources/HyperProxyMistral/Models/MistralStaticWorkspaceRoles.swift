@@ -23,4 +23,6 @@ public enum MistralStaticWorkspaceRoles: String, Codable, Hashable, Sendable {
   case value731eb2beA74f4070B79735bf7009e553 = "731eb2be-a74f-4070-b797-35bf7009e553"
   case ff86d4327f2747f8B02fB5c102ef6a55 = "ff86d432-7f27-47f8-b02f-b5c102ef6a55"
   case value0f9acbf693b542c7A227Fc7652755f65 = "0f9acbf6-93b5-42c7-a227-fc7652755f65"
+  case value94ef59cf56bf43839dd61fee77d370af = "94ef59cf-56bf-4383-9dd6-1fee77d370af"
+  case value7e69e493Caf64671Af6084951754d9fc = "7e69e493-caf6-4671-af60-84951754d9fc"
 }

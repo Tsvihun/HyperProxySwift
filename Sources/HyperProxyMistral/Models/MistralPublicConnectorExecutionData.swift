@@ -13,21 +13,17 @@ import HyperProxyCore
 public struct MistralPublicConnectorExecutionData: Codable, Sendable {
   public var integrations: [MistralPublicExecutionConnector]
   public var tools: [MistralExecutionTool]
-  public var useConnectorsGateway: Bool?
 
   public init(
     integrations: [MistralPublicExecutionConnector],
-    tools: [MistralExecutionTool],
-    useConnectorsGateway: Bool? = nil
+    tools: [MistralExecutionTool]
   ) {
     self.integrations = integrations
     self.tools = tools
-    self.useConnectorsGateway = useConnectorsGateway
   }
 
   enum CodingKeys: String, CodingKey {
     case integrations
     case tools
-    case useConnectorsGateway = "use_connectors_gateway"
   }
 }

@@ -33,4 +33,5 @@ public enum GeminiCandidateFinishReason: String, Codable, Hashable, Sendable {
   case mALFORMEDRESPONSE = "MALFORMED_RESPONSE"
   case eSCALATION = "ESCALATION"
   case pUPLIMITEDDISABLED = "PUP_LIMITED_DISABLED"
+  case cONTINUATION = "CONTINUATION"
 }

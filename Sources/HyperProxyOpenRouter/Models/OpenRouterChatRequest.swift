@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct OpenRouterChatRequest: Codable, Sendable {
   public var cacheControl: OpenRouterAnthropicCacheControlDirective?
   public var debug: OpenRouterChatDebugOptions?
+  public var deferredTools: OpenRouterDeferredToolsControl?
   public var frequencyPenalty: Double?
   public var imageConfig: OpenRouterImageConfig?
   public var logitBias: [String: Double]?
@@ -58,6 +59,7 @@ public struct OpenRouterChatRequest: Codable, Sendable {
     messages: [OpenRouterChatMessages],
     cacheControl: OpenRouterAnthropicCacheControlDirective? = nil,
     debug: OpenRouterChatDebugOptions? = nil,
+    deferredTools: OpenRouterDeferredToolsControl? = nil,
     frequencyPenalty: Double? = nil,
     imageConfig: OpenRouterImageConfig? = nil,
     logitBias: [String: Double]? = nil,
@@ -100,6 +102,7 @@ public struct OpenRouterChatRequest: Codable, Sendable {
   ) {
     self.cacheControl = cacheControl
     self.debug = debug
+    self.deferredTools = deferredTools
     self.frequencyPenalty = frequencyPenalty
     self.imageConfig = imageConfig
     self.logitBias = logitBias
@@ -145,6 +148,7 @@ public struct OpenRouterChatRequest: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case cacheControl = "cache_control"
     case debug
+    case deferredTools = "deferred_tools"
     case frequencyPenalty = "frequency_penalty"
     case imageConfig = "image_config"
     case logitBias = "logit_bias"

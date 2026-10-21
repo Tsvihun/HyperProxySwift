@@ -16,6 +16,7 @@ public struct OpenRouterOpenResponsesResultAllOf2: Codable, Sendable {
   public var errorType: OpenRouterApiErrorType?
   public var openrouterMetadata: OpenRouterMetadata?
   public var output: [OpenRouterOutputItems]?
+  public var safeguardResults: [OpenRouterArmorSafeguardResult]?
   public var serviceTier: String?
   public var text: OpenRouterTextExtendedConfig?
   public var usage: OpenRouterUsage?
@@ -26,6 +27,7 @@ public struct OpenRouterOpenResponsesResultAllOf2: Codable, Sendable {
     errorType: OpenRouterApiErrorType? = nil,
     openrouterMetadata: OpenRouterMetadata? = nil,
     output: [OpenRouterOutputItems]? = nil,
+    safeguardResults: [OpenRouterArmorSafeguardResult]? = nil,
     serviceTier: String? = nil,
     text: OpenRouterTextExtendedConfig? = nil,
     usage: OpenRouterUsage? = nil
@@ -35,6 +37,7 @@ public struct OpenRouterOpenResponsesResultAllOf2: Codable, Sendable {
     self.errorType = errorType
     self.openrouterMetadata = openrouterMetadata
     self.output = output
+    self.safeguardResults = safeguardResults
     self.serviceTier = serviceTier
     self.text = text
     self.usage = usage
@@ -46,6 +49,7 @@ public struct OpenRouterOpenResponsesResultAllOf2: Codable, Sendable {
     case errorType = "error_type"
     case openrouterMetadata = "openrouter_metadata"
     case output
+    case safeguardResults = "safeguard_results"
     case serviceTier = "service_tier"
     case text
     case usage

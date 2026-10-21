@@ -15,6 +15,7 @@ public struct OpenAIEnvironmentParamOpenaiHosted: Codable, Sendable {
   public var containerSize: OpenAIContainerSizeParam?
   public var desktop: OpenAIDesktopParam?
   public var env: [String: String]?
+  public var environmentId: String?
   public var environmentTemplateId: String?
   public var files: [OpenAIHostedEnvironmentFileParam]?
   public var network: OpenAINetworkPolicyParam?
@@ -30,6 +31,7 @@ public struct OpenAIEnvironmentParamOpenaiHosted: Codable, Sendable {
     containerSize: OpenAIContainerSizeParam? = nil,
     desktop: OpenAIDesktopParam? = nil,
     env: [String: String]? = nil,
+    environmentId: String? = nil,
     environmentTemplateId: String? = nil,
     files: [OpenAIHostedEnvironmentFileParam]? = nil,
     network: OpenAINetworkPolicyParam? = nil,
@@ -42,6 +44,7 @@ public struct OpenAIEnvironmentParamOpenaiHosted: Codable, Sendable {
     self.containerSize = containerSize
     self.desktop = desktop
     self.env = env
+    self.environmentId = environmentId
     self.environmentTemplateId = environmentTemplateId
     self.files = files
     self.network = network
@@ -57,6 +60,7 @@ public struct OpenAIEnvironmentParamOpenaiHosted: Codable, Sendable {
     case containerSize = "container_size"
     case desktop
     case env
+    case environmentId = "environment_id"
     case environmentTemplateId = "environment_template_id"
     case files
     case network

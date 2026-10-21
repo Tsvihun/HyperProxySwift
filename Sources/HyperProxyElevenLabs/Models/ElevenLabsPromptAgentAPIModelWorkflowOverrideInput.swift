@@ -30,6 +30,7 @@ public struct ElevenLabsPromptAgentAPIModelWorkflowOverrideInput: Codable, Senda
   public var thinkingBudget: Int?
   public var timezone: String?
   public var toolIds: [String]?
+  public var toolIdsStrict: Bool?
   public var tools: [ElevenLabsPromptAgentAPIModelWorkflowOverrideInputToolsAnyOf1Item]?
 
   public init(
@@ -52,6 +53,7 @@ public struct ElevenLabsPromptAgentAPIModelWorkflowOverrideInput: Codable, Senda
     thinkingBudget: Int? = nil,
     timezone: String? = nil,
     toolIds: [String]? = nil,
+    toolIdsStrict: Bool? = nil,
     tools: [ElevenLabsPromptAgentAPIModelWorkflowOverrideInputToolsAnyOf1Item]? = nil
   ) {
     self.backupLlmConfig = backupLlmConfig
@@ -73,6 +75,7 @@ public struct ElevenLabsPromptAgentAPIModelWorkflowOverrideInput: Codable, Senda
     self.thinkingBudget = thinkingBudget
     self.timezone = timezone
     self.toolIds = toolIds
+    self.toolIdsStrict = toolIdsStrict
     self.tools = tools
   }
 
@@ -96,6 +99,7 @@ public struct ElevenLabsPromptAgentAPIModelWorkflowOverrideInput: Codable, Senda
     case thinkingBudget = "thinking_budget"
     case timezone
     case toolIds = "tool_ids"
+    case toolIdsStrict = "tool_ids_strict"
     case tools
   }
 }

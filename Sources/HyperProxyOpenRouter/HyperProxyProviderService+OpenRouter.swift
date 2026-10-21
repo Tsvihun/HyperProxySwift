@@ -145,25 +145,25 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
   public var listEmbeddingsModels: HyperProxyProviderCall<OpenRouterOperation> {
     self.call(.listEmbeddingsModels)
   }
-  /// `GET api/v1/end-users`
-  public var listEndUsers: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.listEndUsers)
+  /// `GET api/v1/external-users`
+  public var listExternalUsers: HyperProxyProviderCall<OpenRouterOperation> {
+    self.call(.listExternalUsers)
   }
-  /// `POST api/v1/end-users`
-  public var createEndUser: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.createEndUser)
+  /// `POST api/v1/external-users`
+  public var createExternalUser: HyperProxyProviderCall<OpenRouterOperation> {
+    self.call(.createExternalUser)
   }
-  /// `DELETE api/v1/end-users/{user}`
-  public var deleteEndUser: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.deleteEndUser)
+  /// `DELETE api/v1/external-users/{user}`
+  public var deleteExternalUser: HyperProxyProviderCall<OpenRouterOperation> {
+    self.call(.deleteExternalUser)
   }
-  /// `GET api/v1/end-users/{user}`
-  public var getEndUser: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.getEndUser)
+  /// `GET api/v1/external-users/{user}`
+  public var getExternalUser: HyperProxyProviderCall<OpenRouterOperation> {
+    self.call(.getExternalUser)
   }
-  /// `PATCH api/v1/end-users/{user}`
-  public var updateEndUser: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.updateEndUser)
+  /// `PATCH api/v1/external-users/{user}`
+  public var updateExternalUser: HyperProxyProviderCall<OpenRouterOperation> {
+    self.call(.updateExternalUser)
   }
   /// `GET api/v1/files`
   public var listFiles: HyperProxyProviderCall<OpenRouterOperation> {
@@ -285,6 +285,10 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
   public var createInternChatCompletion: HyperProxyProviderCall<OpenRouterOperation> {
     self.call(.createInternChatCompletion)
   }
+  /// `GET api/v1/interns/{internId}/connections`
+  public var getInternConnections: HyperProxyProviderCall<OpenRouterOperation> {
+    self.call(.getInternConnections)
+  }
   /// `GET api/v1/interns/{internId}/daemon`
   public var getInternDaemon: HyperProxyProviderCall<OpenRouterOperation> {
     self.call(.getInternDaemon)
@@ -300,6 +304,10 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
   /// `POST api/v1/interns/{internId}/daemon/sign`
   public var signInternDaemonRequest: HyperProxyProviderCall<OpenRouterOperation> {
     self.call(.signInternDaemonRequest)
+  }
+  /// `GET api/v1/interns/{internId}/icon`
+  public var getInternIcon: HyperProxyProviderCall<OpenRouterOperation> {
+    self.call(.getInternIcon)
   }
   /// `POST api/v1/interns/{internId}/invoke`
   public var invokeIntern: HyperProxyProviderCall<OpenRouterOperation> {
@@ -512,6 +520,10 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
   /// `GET api/v1/tools/{name}`
   public var getTool: HyperProxyProviderCall<OpenRouterOperation> {
     self.call(.getTool)
+  }
+  /// `GET api/v1/vault/interns/{internId}/connections`
+  public var listInternConnections: HyperProxyProviderCall<OpenRouterOperation> {
+    self.call(.listInternConnections)
   }
   /// `GET api/v1/vault/interns/{internId}/effective-secrets`
   public var listInternEffectiveVaultSecrets: HyperProxyProviderCall<OpenRouterOperation> {

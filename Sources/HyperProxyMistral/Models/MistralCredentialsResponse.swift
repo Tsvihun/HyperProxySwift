@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralCredentialsResponse: Codable, Sendable {
-  public var connectorPresetCredentialsForAuth: [MistralOutboundAuthenticationType]?
+  public var connectorPresetCredentialsForAuth: [MistralAuthenticationType]?
   public var credentials: [MistralAuthenticationConfiguration]
 
   public init(
     credentials: [MistralAuthenticationConfiguration],
-    connectorPresetCredentialsForAuth: [MistralOutboundAuthenticationType]? = nil
+    connectorPresetCredentialsForAuth: [MistralAuthenticationType]? = nil
   ) {
     self.connectorPresetCredentialsForAuth = connectorPresetCredentialsForAuth
     self.credentials = credentials

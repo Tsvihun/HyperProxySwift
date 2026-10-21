@@ -14,20 +14,24 @@ public struct OpenRouterListModelsUserParameters: Codable, Sendable {
   public var limit: Int?
   public var offset: Int?
   public var outputModalities: String?
+  public var sort: OpenRouterListModelsUserParametersSort?
 
   public init(
     limit: Int? = nil,
     offset: Int? = nil,
-    outputModalities: String? = nil
+    outputModalities: String? = nil,
+    sort: OpenRouterListModelsUserParametersSort? = nil
   ) {
     self.limit = limit
     self.offset = offset
     self.outputModalities = outputModalities
+    self.sort = sort
   }
 
   enum CodingKeys: String, CodingKey {
     case limit
     case offset
     case outputModalities = "output_modalities"
+    case sort
   }
 }

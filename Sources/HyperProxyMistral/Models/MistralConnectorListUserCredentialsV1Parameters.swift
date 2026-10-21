@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralConnectorListUserCredentialsV1Parameters: Codable, Sendable {
-  public var authType: MistralOutboundAuthenticationType?
+  public var authType: MistralAuthenticationType?
   public var connectorIdOrName: MistralConnectorListUserCredentialsV1ParametersConnectorIdOrName
   public var fetchDefault: Bool?
 
   public init(
     connectorIdOrName: MistralConnectorListUserCredentialsV1ParametersConnectorIdOrName,
-    authType: MistralOutboundAuthenticationType? = nil,
+    authType: MistralAuthenticationType? = nil,
     fetchDefault: Bool? = nil
   ) {
     self.authType = authType

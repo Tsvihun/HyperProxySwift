@@ -14,24 +14,20 @@ public struct MistralAdminUpdateUserGroupIn: Codable, Sendable {
   public var description: String?
   public var name: String?
   public var parentGroupIds: [String]?
-  public var targetType: MistralUserGroupTargetType?
 
   public init(
     description: String? = nil,
     name: String? = nil,
-    parentGroupIds: [String]? = nil,
-    targetType: MistralUserGroupTargetType? = nil
+    parentGroupIds: [String]? = nil
   ) {
     self.description = description
     self.name = name
     self.parentGroupIds = parentGroupIds
-    self.targetType = targetType
   }
 
   enum CodingKeys: String, CodingKey {
     case description
     case name
     case parentGroupIds = "parent_group_ids"
-    case targetType = "target_type"
   }
 }

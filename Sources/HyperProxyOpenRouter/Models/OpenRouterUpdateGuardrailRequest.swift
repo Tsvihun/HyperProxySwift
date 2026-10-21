@@ -11,6 +11,8 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterUpdateGuardrailRequest: Codable, Sendable {
+  public var allowSafetyRetentionGoogle: Bool?
+  public var allowSafetyRetentionOther: Bool?
   public var allowedDataRegions: [OpenRouterGuardrailDataRegion]?
   public var allowedModels: [String]?
   public var allowedProviders: [String]?
@@ -34,6 +36,8 @@ public struct OpenRouterUpdateGuardrailRequest: Codable, Sendable {
   public var resetInterval: OpenRouterGuardrailInterval?
 
   public init(
+    allowSafetyRetentionGoogle: Bool? = nil,
+    allowSafetyRetentionOther: Bool? = nil,
     allowedDataRegions: [OpenRouterGuardrailDataRegion]? = nil,
     allowedModels: [String]? = nil,
     allowedProviders: [String]? = nil,
@@ -56,6 +60,8 @@ public struct OpenRouterUpdateGuardrailRequest: Codable, Sendable {
     name: String? = nil,
     resetInterval: OpenRouterGuardrailInterval? = nil
   ) {
+    self.allowSafetyRetentionGoogle = allowSafetyRetentionGoogle
+    self.allowSafetyRetentionOther = allowSafetyRetentionOther
     self.allowedDataRegions = allowedDataRegions
     self.allowedModels = allowedModels
     self.allowedProviders = allowedProviders
@@ -80,6 +86,8 @@ public struct OpenRouterUpdateGuardrailRequest: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case allowSafetyRetentionGoogle = "allow_safety_retention_google"
+    case allowSafetyRetentionOther = "allow_safety_retention_other"
     case allowedDataRegions = "allowed_data_regions"
     case allowedModels = "allowed_models"
     case allowedProviders = "allowed_providers"

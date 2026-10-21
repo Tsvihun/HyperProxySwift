@@ -15,14 +15,14 @@ public struct MistralOAuth2AuthorizationCodeAuthMethod: Codable, Sendable {
   public var grantType: MistralAuthorizationCodeGrantType?
   public var headers: [MistralConnectorAuthenticationHeader]?
   public var methodType: MistralOauth2MethodType?
-  public var oauth2ServerMetadata: MistralExtendedOAuthServerMetadata
+  public var oauth2ServerMetadata: MistralExtendedOAuthServerMetadata?
 
   public init(
     authData: MistralAuthData,
-    oauth2ServerMetadata: MistralExtendedOAuthServerMetadata,
     grantType: MistralAuthorizationCodeGrantType? = nil,
     headers: [MistralConnectorAuthenticationHeader]? = nil,
-    methodType: MistralOauth2MethodType? = nil
+    methodType: MistralOauth2MethodType? = nil,
+    oauth2ServerMetadata: MistralExtendedOAuthServerMetadata? = nil
   ) {
     self.authData = authData
     self.grantType = grantType

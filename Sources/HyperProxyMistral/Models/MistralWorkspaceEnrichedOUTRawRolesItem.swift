@@ -107,6 +107,16 @@ public enum MistralWorkspaceEnrichedOUTRawRolesItem: Codable, Sendable {
   }
 
   /// Provider-native value without the schema union wrapper.
+  public static var value94ef59cf56bf43839dd61fee77d370af: Self {
+    .staticWorkspaceRoles(.value94ef59cf56bf43839dd61fee77d370af)
+  }
+
+  /// Provider-native value without the schema union wrapper.
+  public static var value7e69e493Caf64671Af6084951754d9fc: Self {
+    .staticWorkspaceRoles(.value7e69e493Caf64671Af6084951754d9fc)
+  }
+
+  /// Provider-native value without the schema union wrapper.
   public static var value0d48f530095c43fe8aea6673bcacabe6: Self {
     .staticOrganizationRoles(.value0d48f530095c43fe8aea6673bcacabe6)
   }

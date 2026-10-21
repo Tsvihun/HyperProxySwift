@@ -13,6 +13,9 @@ import HyperProxyCore
 public enum OpenAISessionEvent: Codable, Sendable {
   case sessionEventError(OpenAISessionEventError)
   case sessionEventAgentSessionEnvironmentReady(OpenAISessionEventAgentSessionEnvironmentReady)
+  case sessionEventAgentSessionEnvironmentSuspended(
+    OpenAISessionEventAgentSessionEnvironmentSuspended)
+  case sessionEventAgentSessionEnvironmentExpired(OpenAISessionEventAgentSessionEnvironmentExpired)
   case sessionEventAgentSessionEnvironmentReset(OpenAISessionEventAgentSessionEnvironmentReset)
   case sessionEventAgentOutputCommandExecutionOutputDelta(
     OpenAISessionEventAgentOutputCommandExecutionOutputDelta)
@@ -61,6 +64,14 @@ public enum OpenAISessionEvent: Codable, Sendable {
     }
     if let value = try? container.decode(OpenAISessionEventAgentSessionEnvironmentReady.self) {
       self = .sessionEventAgentSessionEnvironmentReady(value)
+      return
+    }
+    if let value = try? container.decode(OpenAISessionEventAgentSessionEnvironmentSuspended.self) {
+      self = .sessionEventAgentSessionEnvironmentSuspended(value)
+      return
+    }
+    if let value = try? container.decode(OpenAISessionEventAgentSessionEnvironmentExpired.self) {
+      self = .sessionEventAgentSessionEnvironmentExpired(value)
       return
     }
     if let value = try? container.decode(OpenAISessionEventAgentSessionEnvironmentReset.self) {
@@ -194,6 +205,10 @@ public enum OpenAISessionEvent: Codable, Sendable {
     case .sessionEventError(let value):
       try container.encode(value)
     case .sessionEventAgentSessionEnvironmentReady(let value):
+      try container.encode(value)
+    case .sessionEventAgentSessionEnvironmentSuspended(let value):
+      try container.encode(value)
+    case .sessionEventAgentSessionEnvironmentExpired(let value):
       try container.encode(value)
     case .sessionEventAgentSessionEnvironmentReset(let value):
       try container.encode(value)

@@ -14,6 +14,7 @@ public struct GeminiCandidate: Codable, Sendable {
   public var avgLogprobs: Double?
   public var citationMetadata: GeminiCitationMetadata?
   public var content: GeminiContent?
+  public var continuationToken: String?
   public var finishMessage: String?
   public var finishReason: GeminiCandidateFinishReason?
   public var groundingAttributions: [GeminiGroundingAttribution]?
@@ -28,6 +29,7 @@ public struct GeminiCandidate: Codable, Sendable {
     avgLogprobs: Double? = nil,
     citationMetadata: GeminiCitationMetadata? = nil,
     content: GeminiContent? = nil,
+    continuationToken: String? = nil,
     finishMessage: String? = nil,
     finishReason: GeminiCandidateFinishReason? = nil,
     groundingAttributions: [GeminiGroundingAttribution]? = nil,
@@ -41,6 +43,7 @@ public struct GeminiCandidate: Codable, Sendable {
     self.avgLogprobs = avgLogprobs
     self.citationMetadata = citationMetadata
     self.content = content
+    self.continuationToken = continuationToken
     self.finishMessage = finishMessage
     self.finishReason = finishReason
     self.groundingAttributions = groundingAttributions
@@ -56,6 +59,7 @@ public struct GeminiCandidate: Codable, Sendable {
     case avgLogprobs
     case citationMetadata
     case content
+    case continuationToken
     case finishMessage
     case finishReason
     case groundingAttributions

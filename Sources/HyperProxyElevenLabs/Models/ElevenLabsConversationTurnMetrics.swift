@@ -15,17 +15,20 @@ public struct ElevenLabsConversationTurnMetrics: Codable, Sendable {
   public var convaiTtsCascade: String?
   public var convaiTtsModel: String?
   public var metrics: [String: ElevenLabsMetricRecord]?
+  public var voiceId: String?
 
   public init(
     convaiAsrProvider: String? = nil,
     convaiTtsCascade: String? = nil,
     convaiTtsModel: String? = nil,
-    metrics: [String: ElevenLabsMetricRecord]? = nil
+    metrics: [String: ElevenLabsMetricRecord]? = nil,
+    voiceId: String? = nil
   ) {
     self.convaiAsrProvider = convaiAsrProvider
     self.convaiTtsCascade = convaiTtsCascade
     self.convaiTtsModel = convaiTtsModel
     self.metrics = metrics
+    self.voiceId = voiceId
   }
 
   enum CodingKeys: String, CodingKey {
@@ -33,5 +36,6 @@ public struct ElevenLabsConversationTurnMetrics: Codable, Sendable {
     case convaiTtsCascade = "convai_tts_cascade"
     case convaiTtsModel = "convai_tts_model"
     case metrics
+    case voiceId = "voice_id"
   }
 }

@@ -15,12 +15,12 @@ public struct OpenRouterAlignmentPlugin: Codable, Sendable {
   public var instruct: Bool?
   public var maxRetries: Int?
   public var mode: OpenRouterAlignmentPluginMode?
-  public var rules: [String]
+  public var rules: [OpenRouterAlignmentRule]
   public var threshold: Double?
 
   public init(
     id: OpenRouterAlignmentPluginId,
-    rules: [String],
+    rules: [OpenRouterAlignmentRule],
     instruct: Bool? = nil,
     maxRetries: Int? = nil,
     mode: OpenRouterAlignmentPluginMode? = nil,

@@ -18,12 +18,17 @@ public enum OpenAILiveSidebandServerEvent: Codable, Sendable {
   case liveSessionUpdated(OpenAILiveSessionUpdated)
   case liveInputAudioMuted(OpenAILiveInputAudioMuted)
   case liveInputAudioUnmuted(OpenAILiveInputAudioUnmuted)
+  case liveOutputAudioFixturePlaying(OpenAILiveOutputAudioFixturePlaying)
+  case liveOutputAudioFixturePlayed(OpenAILiveOutputAudioFixturePlayed)
   case liveInstructionsAppended(OpenAILiveInstructionsAppended)
   case liveThinkingAppended(OpenAILiveThinkingAppended)
   case liveCommentaryAppended(OpenAILiveCommentaryAppended)
   case liveInputTranscriptDelta(OpenAILiveInputTranscriptDelta)
   case liveOutputTranscriptDelta(OpenAILiveOutputTranscriptDelta)
   case liveDelegationCreated(OpenAILiveDelegationCreated)
+  case liveDecisionEvent(OpenAILiveDecisionEvent)
+  case liveDecisionItemCreated(OpenAILiveDecisionItemCreated)
+  case liveDecisionItemDeleted(OpenAILiveDecisionItemDeleted)
   case liveResponseEvent(OpenAILiveResponseEvent)
   case liveSessionUsageUpdated(OpenAILiveSessionUsageUpdated)
   case liveSessionClosed(OpenAILiveSessionClosed)
@@ -60,6 +65,14 @@ public enum OpenAILiveSidebandServerEvent: Codable, Sendable {
       self = .liveInputAudioUnmuted(value)
       return
     }
+    if let value = try? container.decode(OpenAILiveOutputAudioFixturePlaying.self) {
+      self = .liveOutputAudioFixturePlaying(value)
+      return
+    }
+    if let value = try? container.decode(OpenAILiveOutputAudioFixturePlayed.self) {
+      self = .liveOutputAudioFixturePlayed(value)
+      return
+    }
     if let value = try? container.decode(OpenAILiveInstructionsAppended.self) {
       self = .liveInstructionsAppended(value)
       return
@@ -82,6 +95,18 @@ public enum OpenAILiveSidebandServerEvent: Codable, Sendable {
     }
     if let value = try? container.decode(OpenAILiveDelegationCreated.self) {
       self = .liveDelegationCreated(value)
+      return
+    }
+    if let value = try? container.decode(OpenAILiveDecisionEvent.self) {
+      self = .liveDecisionEvent(value)
+      return
+    }
+    if let value = try? container.decode(OpenAILiveDecisionItemCreated.self) {
+      self = .liveDecisionItemCreated(value)
+      return
+    }
+    if let value = try? container.decode(OpenAILiveDecisionItemDeleted.self) {
+      self = .liveDecisionItemDeleted(value)
       return
     }
     if let value = try? container.decode(OpenAILiveResponseEvent.self) {
@@ -120,6 +145,10 @@ public enum OpenAILiveSidebandServerEvent: Codable, Sendable {
       try container.encode(value)
     case .liveInputAudioUnmuted(let value):
       try container.encode(value)
+    case .liveOutputAudioFixturePlaying(let value):
+      try container.encode(value)
+    case .liveOutputAudioFixturePlayed(let value):
+      try container.encode(value)
     case .liveInstructionsAppended(let value):
       try container.encode(value)
     case .liveThinkingAppended(let value):
@@ -131,6 +160,12 @@ public enum OpenAILiveSidebandServerEvent: Codable, Sendable {
     case .liveOutputTranscriptDelta(let value):
       try container.encode(value)
     case .liveDelegationCreated(let value):
+      try container.encode(value)
+    case .liveDecisionEvent(let value):
+      try container.encode(value)
+    case .liveDecisionItemCreated(let value):
+      try container.encode(value)
+    case .liveDecisionItemDeleted(let value):
       try container.encode(value)
     case .liveResponseEvent(let value):
       try container.encode(value)

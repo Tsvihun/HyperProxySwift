@@ -15,5 +15,7 @@ public enum OpenAISessionEnvironmentStatusResource: String, Codable, Hashable, S
   case ready = "ready"
   case connected = "connected"
   case disconnected = "disconnected"
+  case suspended = "suspended"
+  case expired = "expired"
   case failed = "failed"
 }

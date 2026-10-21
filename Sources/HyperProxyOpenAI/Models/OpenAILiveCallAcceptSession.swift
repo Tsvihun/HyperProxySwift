@@ -17,6 +17,7 @@ public struct OpenAILiveCallAcceptSession: Codable, Sendable {
   public var instructions: String?
   public var model: OpenAIModelIdsLive
   public var store: Bool?
+  public var triggers: OpenAITriggers?
   public var kind: OpenAILiveCallAcceptSessionKind
 
   public init(
@@ -26,7 +27,8 @@ public struct OpenAILiveCallAcceptSession: Codable, Sendable {
     delegation: OpenAIDelegation? = nil,
     input: OpenAIInput? = nil,
     instructions: String? = nil,
-    store: Bool? = nil
+    store: Bool? = nil,
+    triggers: OpenAITriggers? = nil
   ) {
     self.audio = audio
     self.delegation = delegation
@@ -34,6 +36,7 @@ public struct OpenAILiveCallAcceptSession: Codable, Sendable {
     self.instructions = instructions
     self.model = model
     self.store = store
+    self.triggers = triggers
     self.kind = kind
   }
 
@@ -44,6 +47,7 @@ public struct OpenAILiveCallAcceptSession: Codable, Sendable {
     case instructions
     case model
     case store
+    case triggers
     case kind = "type"
   }
 }

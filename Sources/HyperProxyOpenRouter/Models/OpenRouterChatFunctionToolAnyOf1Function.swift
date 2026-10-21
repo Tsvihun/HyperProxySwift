@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterChatFunctionToolAnyOf1Function: Codable, Sendable {
+  public var deferLoading: Bool?
   public var description: String?
   public var name: String
   public var parameters: [String: HyperProxyJSONValue]?
@@ -18,10 +19,12 @@ public struct OpenRouterChatFunctionToolAnyOf1Function: Codable, Sendable {
 
   public init(
     name: String,
+    deferLoading: Bool? = nil,
     description: String? = nil,
     parameters: [String: HyperProxyJSONValue]? = nil,
     strict: Bool? = nil
   ) {
+    self.deferLoading = deferLoading
     self.description = description
     self.name = name
     self.parameters = parameters
@@ -29,6 +32,7 @@ public struct OpenRouterChatFunctionToolAnyOf1Function: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case deferLoading = "defer_loading"
     case description
     case name
     case parameters

@@ -163,6 +163,20 @@ extension HyperProxyProviderService where Operation == BFLOperation {
     return try await prepared.decoded(BFLAsyncResponse.self)
   }
 
+  public func flux3ImageKleinV1Flux3ImageKleinPost(
+    _ body: BFLFlux3ImageKleinInputs,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> BFLAsyncResponse {
+    let call = self.call(.flux3ImageKleinV1Flux3ImageKleinPost)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(BFLAsyncResponse.self)
+  }
+
   public func videosFlux3(
     _ body: BFLFlux3VideoInputsBody,
     query: [URLQueryItem] = [],

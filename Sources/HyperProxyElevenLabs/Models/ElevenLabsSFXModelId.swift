@@ -12,4 +12,5 @@ import HyperProxyCore
 
 public enum ElevenLabsSFXModelId: String, Codable, Hashable, Sendable {
   case elevenTextToSoundV2 = "eleven_text_to_sound_v2"
+  case elevenTextToSoundV3 = "eleven_text_to_sound_v3"
 }

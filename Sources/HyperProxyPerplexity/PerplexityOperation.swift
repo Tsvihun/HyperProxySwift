@@ -42,6 +42,8 @@ public enum PerplexityOperation: String, HyperProxyCatalogOperation {
   /// `POST v1/contextualizedembeddings`
   case contextualizedEmbeddingsV1ContextualizedembeddingsPost =
     "contextualized.embeddings.v1.contextualizedembeddings.post"
+  /// `POST v1/decisions`
+  case decisionsV1DecisionsPost = "decisions.v1.decisions.post"
   /// `POST v1/embeddings`
   case embeddingsV1EmbeddingsPost = "embeddings.v1.embeddings.post"
   /// `GET v1/models`

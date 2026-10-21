@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralSetServiceAccountRolesRequest: Codable, Sendable {
-  public var roleIds: [String]?
+  public var roleIds: [String]
 
   public init(
-    roleIds: [String]? = nil
+    roleIds: [String]
   ) {
     self.roleIds = roleIds
   }

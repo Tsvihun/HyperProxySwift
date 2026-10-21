@@ -18,6 +18,7 @@ public struct ElevenLabsGetTestSuiteInvocationResponseModel: Codable, Sendable {
   public var createdAt: Int?
   public var folderId: String?
   public var id: String
+  public var name: String?
   public var ranAgainstDraft: Bool?
   public var repeatCount: Int?
   public var resultGroups: [ElevenLabsTestRunResultSummary]?
@@ -33,6 +34,7 @@ public struct ElevenLabsGetTestSuiteInvocationResponseModel: Codable, Sendable {
     cancelled: Bool? = nil,
     createdAt: Int? = nil,
     folderId: String? = nil,
+    name: String? = nil,
     ranAgainstDraft: Bool? = nil,
     repeatCount: Int? = nil,
     resultGroups: [ElevenLabsTestRunResultSummary]? = nil,
@@ -45,6 +47,7 @@ public struct ElevenLabsGetTestSuiteInvocationResponseModel: Codable, Sendable {
     self.createdAt = createdAt
     self.folderId = folderId
     self.id = id
+    self.name = name
     self.ranAgainstDraft = ranAgainstDraft
     self.repeatCount = repeatCount
     self.resultGroups = resultGroups
@@ -60,6 +63,7 @@ public struct ElevenLabsGetTestSuiteInvocationResponseModel: Codable, Sendable {
     case createdAt = "created_at"
     case folderId = "folder_id"
     case id
+    case name
     case ranAgainstDraft = "ran_against_draft"
     case repeatCount = "repeat_count"
     case resultGroups = "result_groups"

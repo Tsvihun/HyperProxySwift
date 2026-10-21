@@ -16,6 +16,7 @@ public struct ElevenLabsConversationHistoryTranscriptToolCallCommonModelInput: C
   public var toolDetails:
     ElevenLabsConversationHistoryTranscriptToolCallCommonModelInputToolDetailsAnyOf1?
   public var toolHasBeenCalled: Bool
+  public var toolId: String?
   public var toolName: String
   public var kind: ElevenLabsToolType?
 
@@ -26,12 +27,14 @@ public struct ElevenLabsConversationHistoryTranscriptToolCallCommonModelInput: C
     toolName: String,
     toolDetails: ElevenLabsConversationHistoryTranscriptToolCallCommonModelInputToolDetailsAnyOf1? =
       nil,
+    toolId: String? = nil,
     kind: ElevenLabsToolType? = nil
   ) {
     self.paramsAsJson = paramsAsJson
     self.requestId = requestId
     self.toolDetails = toolDetails
     self.toolHasBeenCalled = toolHasBeenCalled
+    self.toolId = toolId
     self.toolName = toolName
     self.kind = kind
   }
@@ -41,6 +44,7 @@ public struct ElevenLabsConversationHistoryTranscriptToolCallCommonModelInput: C
     case requestId = "request_id"
     case toolDetails = "tool_details"
     case toolHasBeenCalled = "tool_has_been_called"
+    case toolId = "tool_id"
     case toolName = "tool_name"
     case kind = "type"
   }

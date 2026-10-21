@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct OpenRouterMessagesRequest: Codable, Sendable {
   public var cacheControl: OpenRouterAnthropicCacheControlDirective?
   public var contextManagement: OpenRouterMessagesRequestContextManagement?
+  public var deferredTools: OpenRouterDeferredToolsControl?
   public var fallbacks: [OpenRouterMessagesFallbackParam]?
   public var maxTokens: Int?
   public var messages: [OpenRouterMessagesMessageParam]
@@ -45,6 +46,7 @@ public struct OpenRouterMessagesRequest: Codable, Sendable {
     model: String,
     cacheControl: OpenRouterAnthropicCacheControlDirective? = nil,
     contextManagement: OpenRouterMessagesRequestContextManagement? = nil,
+    deferredTools: OpenRouterDeferredToolsControl? = nil,
     fallbacks: [OpenRouterMessagesFallbackParam]? = nil,
     maxTokens: Int? = nil,
     metadata: OpenRouterMessagesRequestMetadata? = nil,
@@ -72,6 +74,7 @@ public struct OpenRouterMessagesRequest: Codable, Sendable {
   ) {
     self.cacheControl = cacheControl
     self.contextManagement = contextManagement
+    self.deferredTools = deferredTools
     self.fallbacks = fallbacks
     self.maxTokens = maxTokens
     self.messages = messages
@@ -103,6 +106,7 @@ public struct OpenRouterMessagesRequest: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case cacheControl = "cache_control"
     case contextManagement = "context_management"
+    case deferredTools = "deferred_tools"
     case fallbacks
     case maxTokens = "max_tokens"
     case messages

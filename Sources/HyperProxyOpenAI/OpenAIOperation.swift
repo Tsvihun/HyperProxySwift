@@ -101,6 +101,8 @@ public enum OpenAIOperation: String, HyperProxyCatalogOperation {
   case deleteProjectApiKey = "delete.project.api.key"
   /// `GET v1/organization/projects/{project_id}/api_keys/{api_key_id}`
   case retrieveProjectApiKey = "retrieve.project.api.key"
+  /// `POST v1/organization/projects/{project_id}/api_keys/{api_key_id}`
+  case updateProjectApiKey = "update.project.api.key"
   /// `POST v1/organization/projects/{project_id}/archive`
   case archiveProject = "archive.project"
   /// `GET v1/organization/projects/{project_id}/certificates`
@@ -207,6 +209,8 @@ public enum OpenAIOperation: String, HyperProxyCatalogOperation {
   case usageCodeInterpreterSessions = "usage.code.interpreter.sessions"
   /// `GET v1/organization/usage/completions`
   case usageCompletions = "usage.completions"
+  /// `GET v1/organization/usage/decisions`
+  case organizationDecisionsusage = "OrganizationDecisionsusage"
   /// `GET v1/organization/usage/embeddings`
   case usageEmbeddings = "usage.embeddings"
   /// `GET v1/organization/usage/file_search_calls`
@@ -257,6 +261,10 @@ public enum OpenAIOperation: String, HyperProxyCatalogOperation {
   case listAgents = "listAgents"
   /// `POST v1/agents`
   case createAgent = "createAgent"
+  /// `GET v1/agents/environments`
+  case listAgentEnvironments = "listAgentEnvironments"
+  /// `POST v1/agents/environments`
+  case createAgentEnvironment = "createAgentEnvironment"
   /// `GET v1/agents/environments/templates`
   case listAgentEnvironmentTemplates = "listAgentEnvironmentTemplates"
   /// `POST v1/agents/environments/templates`

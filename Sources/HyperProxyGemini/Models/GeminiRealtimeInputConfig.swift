@@ -13,21 +13,25 @@ import HyperProxyCore
 public struct GeminiRealtimeInputConfig: Codable, Sendable {
   public var activityHandling: GeminiRealtimeInputConfigActivityHandling?
   public var automaticActivityDetection: GeminiAutomaticActivityDetection?
+  public var interimTranscriptTimestampEnabled: Bool?
   public var turnCoverage: GeminiRealtimeInputConfigTurnCoverage?
 
   public init(
     activityHandling: GeminiRealtimeInputConfigActivityHandling? = nil,
     automaticActivityDetection: GeminiAutomaticActivityDetection? = nil,
+    interimTranscriptTimestampEnabled: Bool? = nil,
     turnCoverage: GeminiRealtimeInputConfigTurnCoverage? = nil
   ) {
     self.activityHandling = activityHandling
     self.automaticActivityDetection = automaticActivityDetection
+    self.interimTranscriptTimestampEnabled = interimTranscriptTimestampEnabled
     self.turnCoverage = turnCoverage
   }
 
   enum CodingKeys: String, CodingKey {
     case activityHandling
     case automaticActivityDetection
+    case interimTranscriptTimestampEnabled
     case turnCoverage
   }
 }

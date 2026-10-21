@@ -12,6 +12,7 @@ import HyperProxyCore
 
 public struct OpenAISafetyAlertResource: Codable, Sendable {
   public var createdAt: Int
+  public var detailedExplanation: String?
   public var errorType: OpenAISafetyAlertErrorType
   public var id: String
   public var model: String
@@ -30,9 +31,11 @@ public struct OpenAISafetyAlertResource: Codable, Sendable {
     reason: String?,
     requestId: String,
     requestPaused: Bool,
-    responseId: String
+    responseId: String,
+    detailedExplanation: String? = nil
   ) {
     self.createdAt = createdAt
+    self.detailedExplanation = detailedExplanation
     self.errorType = errorType
     self.id = id
     self.model = model
@@ -45,6 +48,7 @@ public struct OpenAISafetyAlertResource: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case createdAt = "created_at"
+    case detailedExplanation = "detailed_explanation"
     case errorType = "error_type"
     case id
     case model

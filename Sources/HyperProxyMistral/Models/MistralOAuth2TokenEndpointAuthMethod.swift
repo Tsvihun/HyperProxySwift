@@ -13,4 +13,5 @@ import HyperProxyCore
 public enum MistralOAuth2TokenEndpointAuthMethod: String, Codable, Hashable, Sendable {
   case clientSecretPost = "client_secret_post"
   case clientSecretBasic = "client_secret_basic"
+  case privateKeyJwt = "private_key_jwt"
 }

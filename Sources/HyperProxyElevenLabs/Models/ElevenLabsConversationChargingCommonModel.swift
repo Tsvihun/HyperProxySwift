@@ -26,6 +26,7 @@ public struct ElevenLabsConversationChargingCommonModel: Codable, Sendable {
   public var platformUsage: ElevenLabsPlatformUsage?
   public var tier: String?
   public var ttsUsage: ElevenLabsConversationTTSUsageModel?
+  public var voiceSurchargeCharge: Int?
 
   public init(
     analysis: ElevenLabsAnalysisCharging? = nil,
@@ -42,7 +43,8 @@ public struct ElevenLabsConversationChargingCommonModel: Codable, Sendable {
     platformPrice: Double? = nil,
     platformUsage: ElevenLabsPlatformUsage? = nil,
     tier: String? = nil,
-    ttsUsage: ElevenLabsConversationTTSUsageModel? = nil
+    ttsUsage: ElevenLabsConversationTTSUsageModel? = nil,
+    voiceSurchargeCharge: Int? = nil
   ) {
     self.analysis = analysis
     self.asrUsage = asrUsage
@@ -59,6 +61,7 @@ public struct ElevenLabsConversationChargingCommonModel: Codable, Sendable {
     self.platformUsage = platformUsage
     self.tier = tier
     self.ttsUsage = ttsUsage
+    self.voiceSurchargeCharge = voiceSurchargeCharge
   }
 
   enum CodingKeys: String, CodingKey {
@@ -77,5 +80,6 @@ public struct ElevenLabsConversationChargingCommonModel: Codable, Sendable {
     case platformUsage = "platform_usage"
     case tier
     case ttsUsage = "tts_usage"
+    case voiceSurchargeCharge = "voice_surcharge_charge"
   }
 }

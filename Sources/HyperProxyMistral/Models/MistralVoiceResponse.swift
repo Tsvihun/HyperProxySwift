@@ -17,25 +17,27 @@ public struct MistralVoiceResponse: Codable, Sendable {
   public var description: String?
   public var gender: String?
   public var id: String
+  public var kind: MistralVoiceKind?
   public var languages: [String]?
   public var name: String
   public var retentionNotice: Int?
   public var slug: String?
   public var tags: [String]?
   public var trimmedSeconds: Double?
-  public var kind: MistralVoiceResponseKind
+  public var kind1303c06b: MistralVoiceResponseKind
   public var userId: String?
 
   public init(
     createdAt: String,
     id: String,
     name: String,
-    kind: MistralVoiceResponseKind,
+    kind1303c06b: MistralVoiceResponseKind,
     userId: String?,
     age: Int? = nil,
     color: String? = nil,
     description: String? = nil,
     gender: String? = nil,
+    kind: MistralVoiceKind? = nil,
     languages: [String]? = nil,
     retentionNotice: Int? = nil,
     slug: String? = nil,
@@ -48,13 +50,14 @@ public struct MistralVoiceResponse: Codable, Sendable {
     self.description = description
     self.gender = gender
     self.id = id
+    self.kind = kind
     self.languages = languages
     self.name = name
     self.retentionNotice = retentionNotice
     self.slug = slug
     self.tags = tags
     self.trimmedSeconds = trimmedSeconds
-    self.kind = kind
+    self.kind1303c06b = kind1303c06b
     self.userId = userId
   }
 
@@ -65,13 +68,14 @@ public struct MistralVoiceResponse: Codable, Sendable {
     case description
     case gender
     case id
+    case kind
     case languages
     case name
     case retentionNotice = "retention_notice"
     case slug
     case tags
     case trimmedSeconds = "trimmed_seconds"
-    case kind = "type"
+    case kind1303c06b = "type"
     case userId = "user_id"
   }
 }

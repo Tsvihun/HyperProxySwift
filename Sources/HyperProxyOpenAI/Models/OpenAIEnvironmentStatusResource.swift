@@ -12,8 +12,10 @@ import HyperProxyCore
 
 public enum OpenAIEnvironmentStatusResource: String, Codable, Hashable, Sendable {
   case pending = "pending"
+  case ready = "ready"
   case connected = "connected"
   case disconnected = "disconnected"
+  case suspended = "suspended"
   case expired = "expired"
   case failed = "failed"
 }

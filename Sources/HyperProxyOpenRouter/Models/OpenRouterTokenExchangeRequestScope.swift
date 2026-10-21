@@ -12,4 +12,5 @@ import HyperProxyCore
 
 public enum OpenRouterTokenExchangeRequestScope: String, Codable, Hashable, Sendable {
   case inference = "inference"
+  case management = "management"
 }

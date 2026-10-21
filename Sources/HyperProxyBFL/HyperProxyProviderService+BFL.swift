@@ -49,6 +49,10 @@ extension HyperProxyProviderService where Operation == BFLOperation {
   public var flux3ImageV1Flux3ImagePost: HyperProxyProviderCall<BFLOperation> {
     self.call(.flux3ImageV1Flux3ImagePost)
   }
+  /// `POST v1/flux-3-image-klein`
+  public var flux3ImageKleinV1Flux3ImageKleinPost: HyperProxyProviderCall<BFLOperation> {
+    self.call(.flux3ImageKleinV1Flux3ImageKleinPost)
+  }
   /// `POST v1/flux-dev`
   public var imagesFlux1Dev: HyperProxyProviderCall<BFLOperation> {
     self.call(.imagesFlux1Dev)

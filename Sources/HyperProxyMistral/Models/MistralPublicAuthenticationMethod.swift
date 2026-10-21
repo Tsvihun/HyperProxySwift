@@ -15,16 +15,18 @@ public struct MistralPublicAuthenticationMethod: Codable, Sendable {
   public var grantType: MistralOAuth2GrantType?
   public var hasDefaultCredentials: Bool
   public var headers: [MistralConnectorAuthenticationHeader]?
-  public var methodType: MistralOutboundAuthenticationType
+  public var methodType: MistralAuthenticationType
   public var oauth2ServerMetadata: MistralExtendedOAuthServerMetadata?
+  public var tokenEndpointAuthMethod: MistralOAuth2TokenEndpointAuthMethod?
 
   public init(
     hasDefaultCredentials: Bool,
-    methodType: MistralOutboundAuthenticationType,
+    methodType: MistralAuthenticationType,
     globalHeaders: [String: MistralGlobalHeaderValue]? = nil,
     grantType: MistralOAuth2GrantType? = nil,
     headers: [MistralConnectorAuthenticationHeader]? = nil,
-    oauth2ServerMetadata: MistralExtendedOAuthServerMetadata? = nil
+    oauth2ServerMetadata: MistralExtendedOAuthServerMetadata? = nil,
+    tokenEndpointAuthMethod: MistralOAuth2TokenEndpointAuthMethod? = nil
   ) {
     self.globalHeaders = globalHeaders
     self.grantType = grantType
@@ -32,6 +34,7 @@ public struct MistralPublicAuthenticationMethod: Codable, Sendable {
     self.headers = headers
     self.methodType = methodType
     self.oauth2ServerMetadata = oauth2ServerMetadata
+    self.tokenEndpointAuthMethod = tokenEndpointAuthMethod
   }
 
   enum CodingKeys: String, CodingKey {
@@ -41,5 +44,6 @@ public struct MistralPublicAuthenticationMethod: Codable, Sendable {
     case headers
     case methodType = "method_type"
     case oauth2ServerMetadata = "oauth2_server_metadata"
+    case tokenEndpointAuthMethod = "token_endpoint_auth_method"
   }
 }

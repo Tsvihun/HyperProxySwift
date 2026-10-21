@@ -10,7 +10,7 @@ import Foundation
 
 /// Keeps a successful JSON response open until the polling deadline cancels it.
 final class PollingURLProtocol: URLProtocol, @unchecked Sendable {
-  static let stoppedRequests = LockedRequestCounter()
+  static let lifecycle = PollingRequestLifecycle()
   override class func canInit(with request: URLRequest) -> Bool { true }
   override class func canonicalRequest(for request: URLRequest) -> URLRequest { request }
   override func startLoading() {
@@ -20,5 +20,5 @@ final class PollingURLProtocol: URLProtocol, @unchecked Sendable {
     self.client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
     self.client?.urlProtocol(self, didLoad: Data(#"{"done":true}"#.utf8))
   }
-  override func stopLoading() { _ = Self.stoppedRequests.increment() }
+  override func stopLoading() { Self.lifecycle.didStopLoading() }
 }

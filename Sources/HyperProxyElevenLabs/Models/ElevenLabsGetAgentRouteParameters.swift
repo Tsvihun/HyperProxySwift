@@ -13,17 +13,20 @@ import HyperProxyCore
 public struct ElevenLabsGetAgentRouteParameters: Codable, Sendable {
   public var agentId: String
   public var branchId: String?
+  public var includeProcedureGeneratedWorkflowElements: Bool?
   public var versionId: String?
   public var xiApiKey: String?
 
   public init(
     agentId: String,
     branchId: String? = nil,
+    includeProcedureGeneratedWorkflowElements: Bool? = nil,
     versionId: String? = nil,
     xiApiKey: String? = nil
   ) {
     self.agentId = agentId
     self.branchId = branchId
+    self.includeProcedureGeneratedWorkflowElements = includeProcedureGeneratedWorkflowElements
     self.versionId = versionId
     self.xiApiKey = xiApiKey
   }
@@ -31,6 +34,7 @@ public struct ElevenLabsGetAgentRouteParameters: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case agentId = "agent_id"
     case branchId = "branch_id"
+    case includeProcedureGeneratedWorkflowElements = "include_procedure_generated_workflow_elements"
     case versionId = "version_id"
     case xiApiKey = "xi-api-key"
   }

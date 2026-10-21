@@ -36,6 +36,7 @@ public struct OpenRouterOpenResponsesResult: Codable, Sendable {
   public var promptCacheKey: String?
   public var promptCacheOptions: OpenRouterPromptCacheOptions?
   public var reasoning: OpenRouterBaseReasoningConfig?
+  public var safeguardResults: [OpenRouterArmorSafeguardResult]?
   public var safetyIdentifier: String?
   public var serviceTier: OpenRouterServiceTier?
   public var status: OpenRouterOpenAIResponsesResponseStatus
@@ -81,6 +82,7 @@ public struct OpenRouterOpenResponsesResult: Codable, Sendable {
     promptCacheKey: String? = nil,
     promptCacheOptions: OpenRouterPromptCacheOptions? = nil,
     reasoning: OpenRouterBaseReasoningConfig? = nil,
+    safeguardResults: [OpenRouterArmorSafeguardResult]? = nil,
     safetyIdentifier: String? = nil,
     serviceTier: OpenRouterServiceTier? = nil,
     store: Bool? = nil,
@@ -115,6 +117,7 @@ public struct OpenRouterOpenResponsesResult: Codable, Sendable {
     self.promptCacheKey = promptCacheKey
     self.promptCacheOptions = promptCacheOptions
     self.reasoning = reasoning
+    self.safeguardResults = safeguardResults
     self.safetyIdentifier = safetyIdentifier
     self.serviceTier = serviceTier
     self.status = status
@@ -156,6 +159,7 @@ public struct OpenRouterOpenResponsesResult: Codable, Sendable {
     case promptCacheKey = "prompt_cache_key"
     case promptCacheOptions = "prompt_cache_options"
     case reasoning
+    case safeguardResults = "safeguard_results"
     case safetyIdentifier = "safety_identifier"
     case serviceTier = "service_tier"
     case status

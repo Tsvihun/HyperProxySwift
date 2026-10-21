@@ -11,18 +11,22 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsEditedTranscript: Codable, Sendable {
+  public var editedText: String
   public var kind: ElevenLabsTranscriptKind
   public var text: String
 
   public init(
+    editedText: String,
     text: String,
     kind: ElevenLabsTranscriptKind = .transcript
   ) {
+    self.editedText = editedText
     self.kind = kind
     self.text = text
   }
 
   enum CodingKeys: String, CodingKey {
+    case editedText = "edited_text"
     case kind
     case text
   }

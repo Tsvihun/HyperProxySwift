@@ -13,7 +13,6 @@ import HyperProxyCore
 public struct MistralConnectorListToolsV1Parameters: Codable, Sendable {
   public var connectorIdOrName: MistralConnectorListToolsV1ParametersConnectorIdOrName
   public var credentialsName: String?
-  public var page: Int?
   public var pageSize: Int?
   public var pretty: Bool?
   public var refresh: Bool?
@@ -21,14 +20,12 @@ public struct MistralConnectorListToolsV1Parameters: Codable, Sendable {
   public init(
     connectorIdOrName: MistralConnectorListToolsV1ParametersConnectorIdOrName,
     credentialsName: String? = nil,
-    page: Int? = nil,
     pageSize: Int? = nil,
     pretty: Bool? = nil,
     refresh: Bool? = nil
   ) {
     self.connectorIdOrName = connectorIdOrName
     self.credentialsName = credentialsName
-    self.page = page
     self.pageSize = pageSize
     self.pretty = pretty
     self.refresh = refresh
@@ -37,7 +34,6 @@ public struct MistralConnectorListToolsV1Parameters: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case connectorIdOrName = "connector_id_or_name"
     case credentialsName = "credentials_name"
-    case page
     case pageSize = "page_size"
     case pretty
     case refresh
