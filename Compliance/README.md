@@ -28,7 +28,9 @@ every referenced source is either rights-approved or explicitly risk-accepted. T
 manifest includes completed evidence reviews for the MIT-licensed OpenAI OpenAPI
 and Brave Search Skills sources, with their required notices preserved. The
 maintainer accepted the remaining source-provenance risk for the 0.4.1 release and
-explicitly renewed that decision for changed sources in 0.5.0 on 2026-10-04. Unchanged
+explicitly renewed that decision for changed sources in 0.5.0 on 2026-10-04 and
+for the 19 changed source snapshots in 0.6.0 on 2026-10-25. The exact 0.6.0 hashes
+and decision are listed in [the release review](0.6.0-release-review.md). Unchanged
 sources retain their recorded decision; these entries remain distinguishable as
 `riskAccepted`. The OpenAI MIT notice was rechecked against the authoritative licence.
 

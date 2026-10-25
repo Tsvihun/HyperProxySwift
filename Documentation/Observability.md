@@ -2,7 +2,7 @@
 
 [Overview](../README.md) · [Usage guide](UsageGuide.md)
 
-These examples describe **0.6.0 candidate**. Gateway snippets reuse the configured `openAI`
+These examples describe **0.6.0**. Gateway snippets reuse the configured `openAI`
 client from the usage guide and run in an `async throws` context:
 
 <!-- docs-check: prelude -->

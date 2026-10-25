@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.6.0 — Unreleased
+## 0.6.0 — 2026-10-25
 
 - Reconcile current Anthropic/Groq SDK contracts: add Claude 5.5/5.1 and Qwen 3.8
   presets, current Messages diagnostics/compaction/thread fields, model lifecycle

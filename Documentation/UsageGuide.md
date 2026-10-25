@@ -24,9 +24,8 @@ catalog, while the core transport keeps raw HTTP available for newly released fi
 
 ## Choose the SDK revision first
 
-This guide describes **0.6.0 candidate**, including convenient request names and message factories.
-Use `main` to evaluate the candidate. After publication, use the versioned dependency
-below to pin a release for reproducible application builds.
+This guide describes **0.6.0**, including convenient request names and message factories.
+Use the versioned dependency below for reproducible application builds.
 See the [changelog](../CHANGELOG.md) for changes from earlier versions.
 
 Run Swift examples inside an `async throws` function or a `Task` that handles errors.
@@ -45,8 +44,7 @@ direct-to-provider mode. Background URLSessions are rejected because they do
 not honor the redirect delegate. Default/ephemeral sessions and session-level
 certificate pinning remain supported.
 
-`0.6.0` is being prepared; `0.5.0` remains the latest published release.
-Use `main` until the new tag is published. See
+Use the `0.6.0` release tag. See
 [release provenance and privacy checks](../Compliance/README.md) for recorded source decisions
 and the app archive requirements that remain the integrator's responsibility.
 
@@ -60,7 +58,7 @@ and the app archive requirements that remain the integrator's responsibility.
 ### Swift Package Manager
 
 In Xcode, choose **File → Add Package Dependencies**, enter the published HyperProxySwift
-repository URL, choose the **0.6.x release line (after publication)** for this guide, and select one of:
+repository URL, choose the **0.6.x release line** for this guide, and select one of:
 
 - `HyperProxyOpenAI`, `HyperProxyAnthropic`, and the other provider products for a smaller build;
 - `HyperProxy` to expose every provider from one import;
@@ -86,8 +84,8 @@ Then add only the product your target needs:
 ### CocoaPods
 
 CocoaPods supports iOS 15+ and macOS 13+. Use SwiftPM for visionOS and watchOS.
-The 0.6.0 candidate is not published to Trunk. Once its Git tag is published,
-use that tag for all required components. Add these entries inside your application target:
+Use the `0.6.0` Git tag for all required components.
+Add these entries inside your application target:
 
 ```ruby
 sdk = { git: 'https://github.com/Tsvihun/HyperProxySwift.git', tag: '0.6.0' }

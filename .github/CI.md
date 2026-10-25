@@ -53,6 +53,12 @@ runner. The subsequent scheduling adjustment limits simultaneous iOS builds to
 two so both CocoaPods jobs can start alongside the SwiftPM test job.
 Quick Start took 19s versus 216s in the baseline, using the shared scratch path.
 
+The repeat run with identical compiler inputs passed all six jobs in 12m38s:
+[run 40186765253](https://github.com/Tsvihun/HyperProxySwift/actions/runs/40186765253).
+CocoaPods took 5m27s for arm64 and 4m57s for x86_64. Both compiler summaries
+reported 311 hits out of 311 cacheable tasks; Release optimization and import
+validation remained enabled.
+
 Xcode supports this cache for clean builds in its
 [release notes](https://developer.apple.com/documentation/Xcode-Release-Notes/xcode-26-release-notes).
 Branch cache lookup follows the

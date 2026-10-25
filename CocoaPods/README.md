@@ -2,12 +2,10 @@
 
 CocoaPods supports iOS 15+ and macOS 13+. SwiftPM additionally supports visionOS and watchOS.
 
-**Preparing SDK release: 0.6.0.** Its Git tag and Trunk graph are not published yet.
-Use `main` for the candidate. After publication, the explicit Git-tag installation
-below resolves every component from the same reviewed snapshot without depending
-on Trunk indexing. The latest published Git release remains 0.5.0.
+**SDK release: 0.6.0.** The explicit Git-tag installation below resolves every
+component from the same reviewed snapshot without depending on Trunk indexing.
 
-## Install 0.6.0 after its Git tag is published
+## Install 0.6.0
 
 For OpenAI, put all three entries inside your application target in the Podfile:
 
