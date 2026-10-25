@@ -67,7 +67,8 @@ jobs:
 
   cocoapods:
     runs-on: macos-26
-    timeout-minutes: 45
+    # The aggregate pod compiles every generated provider in Release mode.
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
@@ -80,3 +81,4 @@ jobs:
           --include-podspecs='HyperProxy*.podspec'
           --platforms=ios
           --fail-fast
+          --verbose

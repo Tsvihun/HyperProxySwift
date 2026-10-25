@@ -87,4 +87,31 @@ final class TransportTests: XCTestCase {
     XCTAssertEqual(sent?.value(forHTTPHeaderField: "X-HyperProxy-Client-ID"), "sdk-playground")
     XCTAssertNil(sent?.value(forHTTPHeaderField: "Authorization"))
   }
+
+  func testTypedGeminiUsesCanonicalModelRouteAndPreservesResponse() async throws {
+    let payload = Data(
+      #"{"candidates":[{"content":{"role":"model","parts":[{"text":"Connected"}]},"finishReason":"STOP"}],"new_provider_field":true}"#
+        .utf8)
+    MockGatewayProtocol.fixture.configure(status: 200, body: payload)
+    let model = "gemini-2.5-flash"
+    let request = PlaygroundRequest(
+      recipe: .geminiContent, mode: .typed, model: model,
+      path: RequestRecipe.geminiContent.path(model: model, mode: .typed),
+      bodyJSON: RequestRecipe.geminiContent.body(model: model, mode: .typed),
+      queryJSON: #"{"test_option":"kept"}"#, sessionID: "gemini-session")
+
+    let response = try await transport().send(request)
+
+    XCTAssertEqual(response.data, payload)
+    XCTAssertEqual(response.requestID, "lab-request-42")
+    XCTAssertEqual(MockGatewayProtocol.fixture.requestCount, 1)
+    let sent = MockGatewayProtocol.fixture.lastRequest
+    XCTAssertEqual(sent?.httpMethod, "POST")
+    XCTAssertEqual(sent?.url?.path, "/project/service/v1beta/models/\(model):generateContent")
+    XCTAssertEqual(sent?.url?.query, "test_option=kept")
+    XCTAssertEqual(sent?.value(forHTTPHeaderField: "X-HyperProxy-Session-Id"), "gemini-session")
+    XCTAssertEqual(
+      sent?.value(forHTTPHeaderField: "X-HyperProxy-Key"), "hp_live_lab.client.test-only")
+    XCTAssertNil(sent?.value(forHTTPHeaderField: "Authorization"))
+  }
 }

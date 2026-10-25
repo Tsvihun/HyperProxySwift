@@ -50,9 +50,9 @@ public struct PlaygroundTransport: Sendable {
     case .geminiContent:
       let body = try decoder.decode(GeminiGenerateContentRequest.self, from: data)
       let response = try await HyperProxy.gemini(client: client).call(
-        .generativelanguageModelsGenerateContent
+        .modelsGenerateContent
       )
-      .path("modelsId", test.model).query(request.query).headers(request.headers).json(body).send()
+      .path("model", test.model).query(request.query).headers(request.headers).json(body).send()
       return try validated(response, as: GeminiGenerateContentResponse.self)
     default: throw PlaygroundTransportError.unsupportedTypedRecipe
     }
