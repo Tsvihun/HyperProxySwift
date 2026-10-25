@@ -8,7 +8,7 @@
 
 public enum HyperProxy {
   /// The SDK version sent with requests and exposed for diagnostics.
-  public static let sdkVersion = "0.5.0"
+  public static let sdkVersion = "0.6.0"
 
   static let runtimeStore = HyperProxyRuntimeStore()
 

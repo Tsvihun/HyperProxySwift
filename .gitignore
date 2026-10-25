@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 /.build
+/.ci/
 /Packages
 Examples/**/.build/
 Examples/**/.swiftpm/

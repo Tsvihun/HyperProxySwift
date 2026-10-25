@@ -1,6 +1,6 @@
 # Provider coverage contract
 
-This document describes the **main development snapshot refreshed on 2026-10-21**.
+This document describes the **0.6.0 candidate snapshot refreshed on 2026-10-25**.
 The published 0.5.0 package retains its 2026-10-03 snapshot; read [the 0.5.0 coverage contract](https://github.com/Tsvihun/HyperProxySwift/blob/0.5.0/PROVIDER_COVERAGE.md).
 New source snapshots remain subject to the recorded release review before a new package tag is published.
 
@@ -62,14 +62,14 @@ checked-in snapshot is built from official OpenAPI, AsyncAPI, and Google Discove
 where providers publish them. Reviewed manual definitions remain only for providers whose public
 documentation does not expose a complete machine-readable schema.
 
-The current snapshot contains 2,405 routes from 53 official specifications or watched
+The current snapshot contains 2,487 routes from 56 official specifications, SDK archives or watched
 documentation sources. The number is evidence for this snapshot, not a permanent completeness
 claim: scheduled CI is the mechanism that detects when providers move it.
 
 The snapshot follows pinned specifications and reviewed documentation. Anthropic and
-Groq currently use their last locked resolved schemas because the upstream metadata no
-longer exposes a new schema URL. Their unchanged hashes do not prove coverage of every
-current documentation/SDK feature. Schema coverage is not live endpoint conformance.
+Groq use pinned current official Python SDK contracts, reconciled against reviewed
+schema baselines and official TypeScript SDK companions. Source checks reject stale
+SDK commits and undocumented contract changes. Schema coverage is not live endpoint conformance.
 
 The catalog records the upstream method and path, exact request and successful-response media
 types, normalized request and response modes, API surface, stable/beta lifecycle, public/admin
@@ -86,11 +86,12 @@ generation tooling as part of the public package.
 Typed layers should be generated from official machine-readable schemas when available and
 hand-refined only where Swift ergonomics require it.
 
-The checked-in source artifact contains 19,183 generated provider types (including compatibility aliases) with 45,801 named fields and
-2,161 typed operation bindings from official machine-readable or reviewed schemas spanning all 18
-provider families. DeepSeek's Responses, Chat/FIM, Models, Balance, and Anthropic-compatible
+The checked-in source artifact contains 21,641 generated provider types with 49,485 named fields and
+2,273 typed operation bindings from official machine-readable or reviewed schemas spanning all 18
+provider families. DeepSeek's Responses, Chat/FIM, Search/Fetch tools, Models, Balance, and Anthropic-compatible
 surfaces are modeled from reviewed official documentation. Each AI uses both of its official
-OpenAPI documents plus a reviewed each::sense schema, including its documented SSE event fields.
+OpenAPI documents plus reviewed each::sense and billing schemas, including SSE event fields
+and signed fractional organization balances.
 Brave Search is modeled from the official Brave Search Skills contracts for web, images, news,
 videos, LLM context, Answers, local POIs/descriptions, suggest, and spellcheck.
 Black Forest Labs is modeled from its live official inference and Licenses OpenAPI specifications,
@@ -111,7 +112,7 @@ typed.
 
 Some official schemas describe heterogeneous unions or deliberately open objects that Swift
 cannot represent without losing forward compatibility. Those positions use
-`HyperProxyJSONValue`; the generated manifest currently records 547 such fallbacks. This is an
+`HyperProxyJSONValue`; the generated manifest currently records 599 such fallbacks. This is an
 explicit escape hatch, not evidence that every provider field is strongly typed.
 
 Each typed endpoint must expose an escape hatch for:

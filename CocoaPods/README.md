@@ -2,18 +2,17 @@
 
 CocoaPods supports iOS 15+ and macOS 13+. SwiftPM additionally supports visionOS and watchOS.
 
-**SDK release: 0.5.0.** Use SwiftPM or the Git-tag installation below. The full
-0.5.0 graph is not yet available from Trunk: its API failed after writing the
-Brave, Replicate and Stability specs, leaving their version indexes incomplete.
-The aggregate remains unpublished there. Do not use a bare `~> 0.5.0` dependency
-until the complete graph is indexed. The complete Trunk release remains 0.4.1.
+**Preparing SDK release: 0.6.0.** Its Git tag and Trunk graph are not published yet.
+Use `main` for the candidate. After publication, the explicit Git-tag installation
+below resolves every component from the same reviewed snapshot without depending
+on Trunk indexing. The latest published Git release remains 0.5.0.
 
-## Install 0.5.0 from its Git tag
+## Install 0.6.0 after its Git tag is published
 
 For OpenAI, put all three entries inside your application target in the Podfile:
 
 ```ruby
-sdk = { git: 'https://github.com/Tsvihun/HyperProxySwift.git', tag: '0.5.0' }
+sdk = { git: 'https://github.com/Tsvihun/HyperProxySwift.git', tag: '0.6.0' }
 pod 'HyperProxyCore', **sdk
 pod 'HyperProxyProviders', **sdk
 pod 'HyperProxyOpenAI', **sdk
@@ -27,7 +26,7 @@ For the aggregate, supply **every component** from the same tag; otherwise its
 exact-version dependencies would still be looked up in Trunk:
 
 ```ruby
-sdk = { git: 'https://github.com/Tsvihun/HyperProxySwift.git', tag: '0.5.0' }
+sdk = { git: 'https://github.com/Tsvihun/HyperProxySwift.git', tag: '0.6.0' }
 %w[
   HyperProxy HyperProxyCore HyperProxyProviders
   HyperProxyRealtimeAudio HyperProxyOpenAI HyperProxyAnthropic
@@ -41,7 +40,7 @@ sdk = { git: 'https://github.com/Tsvihun/HyperProxySwift.git', tag: '0.5.0' }
 ```
 
 Run `pod install` and open the generated `.xcworkspace`. Import only the product
-you use. See the [usage guide](../Documentation/UsageGuide.md) for the 0.5.0 API.
+you use. See the [usage guide](../Documentation/UsageGuide.md) for the 0.6.0 API.
 Main can contain later changes; the tag keeps application builds reproducible.
 
 ## Maintainer release layout

@@ -9,7 +9,8 @@ transport in a trusted environment.
 · [Usage guide](Documentation/UsageGuide.md) · [SwiftUI Playground](Examples/Playground)
 · [Issues](https://github.com/Tsvihun/HyperProxySwift/issues)
 
-**Current release: 0.5.0.** The examples below use that version's shorter request names,
+**Preparing 0.6.0; latest published release: 0.5.0.** The examples below target
+the 0.6.0 candidate, with shorter request names,
 message factories and catalog-bound services. Release changes are listed in the
 [changelog](CHANGELOG.md). Source decisions and app privacy requirements are
 recorded in [release checks](Compliance/README.md).
@@ -42,13 +43,14 @@ In Xcode, choose **File → Add Package Dependencies** and enter:
 https://github.com/Tsvihun/HyperProxySwift.git
 ```
 
-In a `Package.swift` manifest, select the `0.5.x` release line:
+After the `0.6.0` tag is published, select the `0.6.x` release line.
+Until then, use the `main` dependency shown below:
 
 <!-- docs-check: manifest -->
 ```swift
 .package(
   url: "https://github.com/Tsvihun/HyperProxySwift.git",
-  .upToNextMinor(from: "0.5.0")
+  .upToNextMinor(from: "0.6.0")
 )
 ```
 
@@ -70,8 +72,8 @@ Add the product your target needs:
 ```
 
 Choose a provider product for a focused dependency, `HyperProxyCore` for raw transport,
-or `HyperProxy` to import all providers. The `0.5.0` release is available through Swift
-Package Manager and CocoaPods. See the [CocoaPods instructions](CocoaPods/README.md).
+or `HyperProxy` to import all providers. The `0.6.0` candidate is available from `main`;
+its version tag is pending. See the [CocoaPods instructions](CocoaPods/README.md).
 
 ## Quick start: OpenAI in Swift
 

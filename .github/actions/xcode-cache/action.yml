@@ -1,0 +1,27 @@
+name: Xcode compilation cache
+description: Restore compiler-validated outputs while still executing every build.
+inputs:
+  scope:
+    description: Isolate the build configuration and product graph.
+    required: true
+  architecture:
+    description: Optional single CocoaPods architecture; both are checked by the matrix.
+    required: false
+    default: ''
+runs:
+  using: composite
+  steps:
+    - name: Configure compilation caching
+      id: configuration
+      shell: bash
+      env:
+        HYPERPROXY_CI_CACHE_SCOPE: ${{ inputs.scope }}
+        HYPERPROXY_CI_ARCH: ${{ inputs.architecture }}
+      run: bash .github/ci/configure-xcode-cache.sh
+    - name: Restore Xcode compilation results
+      uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+      with:
+        path: ${{ steps.configuration.outputs.cache-path }}
+        key: xcode-cas-v1-${{ runner.os }}-${{ runner.arch }}-${{ steps.configuration.outputs.toolchain }}-${{ inputs.scope }}-${{ hashFiles('Gemfile.lock', '.github/actions/xcode-cache/action.yml', '.github/ci/configure-xcode-cache.sh') }}-${{ github.sha }}
+        restore-keys: |
+          xcode-cas-v1-${{ runner.os }}-${{ runner.arch }}-${{ steps.configuration.outputs.toolchain }}-${{ inputs.scope }}-${{ hashFiles('Gemfile.lock', '.github/actions/xcode-cache/action.yml', '.github/ci/configure-xcode-cache.sh') }}-

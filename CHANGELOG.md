@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.6.0 — Unreleased
 
 - Reconcile current Anthropic/Groq SDK contracts: add Claude 5.5/5.1 and Qwen 3.8
   presets, current Messages diagnostics/compaction/thread fields, model lifecycle
@@ -31,16 +31,13 @@
   case for uppercase constants (`.rolloutFilterActive = "ROLLOUT_FILTER_ACTIVE"`). This changes the
   development Swift API; provider JSON, validation and versioned wire values
   remain unchanged. Provider-authored dates and model versions remain explicit.
-- Refresh and reconcile the 2026-10-24 development catalog: 2,361 routes, 19,047
-  generated provider types and 2,146 canonical typed helpers. Add OpenAI automations and Perplexity
+- Add OpenAI automations and Perplexity
   batches/files; follow upstream removal of OpenRouter interns and legacy Together
   endpoints, hardware and TCI helpers. Together `whoami` moves to `v3/whoami`;
   chat completions now select the official inference origin. Callers using removed
   generated operations or model types must migrate. Refresh the backend gateway
   catalog alongside the SDK so its origin allowlist accepts Together chat requests.
-- Refresh the 2026-10-21 development catalog: 2,405 routes, 19,183 generated
-  provider types and 2,161 typed operations across 18 provider families.
-  Follow upstream migrations from OpenRouter end users to external users,
+- Follow upstream migrations from OpenRouter end users to external users,
   Mistral pipeline configs to pipelines, and ElevenLabs streaming speech-to-speech
   to voice changer. Removed schema-derived types and operations require caller migration.
   Preserve the semantic ElevenLabs speech-to-speech request aliases against the new types.
@@ -49,8 +46,11 @@
 - Add the SwiftUI MVVM SDK Playground with provider recipes, typed and raw calls,
   SSE, multipart, WebSockets, image/audio previews, and redacted diagnostic reports.
   Keep credentials local and validate its transport tests and simulator build in CI.
-- Correct the SDK version reported in request headers and diagnostics to `0.5.0`.
-  Existing published tags are unchanged.
+- Report `0.6.0` in SDK request headers and diagnostic reports.
+- Fix the Playground Gemini request to use the canonical operation and `model` path
+  parameter, with a transport regression test. Validate both simulator architectures
+  in separate CocoaPods Release jobs and reuse compiler-validated build outputs;
+  retain all tests, import validation, iOS products and release review checks.
 
 ## 0.5.0 — 2026-10-04
 

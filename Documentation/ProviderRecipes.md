@@ -2,7 +2,7 @@
 
 [Overview](../README.md) · [Usage guide](UsageGuide.md)
 
-These examples target **0.5.0**. Run them from an `async throws`
+These examples target **0.6.0 candidate**. Run them from an `async throws`
 context with the matching provider product imported. Each provider needs its own
 configured gateway service: replace both placeholders below with values from that
 service. Model IDs and paid/beta access depend on your provider account. Raw JSON
