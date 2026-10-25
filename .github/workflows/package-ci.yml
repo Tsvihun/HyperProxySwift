@@ -50,6 +50,8 @@ jobs:
     timeout-minutes: 60
     strategy:
       fail-fast: false
+      # Leave capacity for both longer CocoaPods architecture builds.
+      max-parallel: 2
       matrix:
         include:
           - scheme: HyperProxySwift-Package

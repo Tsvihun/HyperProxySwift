@@ -18,6 +18,8 @@ successful baseline took 58 minutes 30 seconds:
 - CocoaPods validates the complete aggregate twice, in separate arm64 and x86_64
   Release jobs. Import validation, optimization and the exact-version dependency
   graph are retained. Neither architecture is excluded from CI.
+- At most two iOS product builds run concurrently, leaving runner capacity for
+  both longer CocoaPods builds. All three iOS products still run on every push.
 - Xcode's content-addressed compilation cache survives `clean build`. Compiler
   inputs and flags determine which results are reusable; changed code still
   compiles. The generated CocoaPods validation workspace has a stable path so
@@ -36,11 +38,20 @@ SwiftPM build settings retain their normal optimization and architecture behavio
 
 ## Measuring changes
 
-Compare a cold run with a later commit that changes only documentation. Both runs
+Compare a cold run with a later commit with identical Swift sources, podspecs and
+compiler settings; documentation or scheduling changes are allowed. Both runs
 must finish every job successfully. Use job start/end times for wall time and
 `replayed cache hit` diagnostics for actual compiler reuse; restoring an Actions
 archive alone does not prove that compilation results were reused. Source and
 compiler-flag changes must produce misses for affected compilations.
+
+The first optimized run was cold: all six jobs passed in
+[run 40184376217](https://github.com/Tsvihun/HyperProxySwift/actions/runs/40184376217).
+CocoaPods took 23m12s for arm64 and 24m16s for x86_64, versus the 58m30s serial
+baseline. Its total elapsed time was 32m37s because arm64 waited 9m25s for a
+runner. The subsequent scheduling adjustment limits simultaneous iOS builds to
+two so both CocoaPods jobs can start alongside the SwiftPM test job.
+Quick Start took 19s versus 216s in the baseline, using the shared scratch path.
 
 Xcode supports this cache for clean builds in its
 [release notes](https://developer.apple.com/documentation/Xcode-Release-Notes/xcode-26-release-notes).
