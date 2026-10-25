@@ -41,29 +41,36 @@ jobs:
         run: swift build --package-path Examples/QuickStart
       - name: Test Playground request and transport models
         run: swift test --package-path Examples/Playground --scratch-path .build
-      - name: Build every product for iOS Simulator
-        run: >-
-          xcodebuild
-          -scheme HyperProxySwift-Package
-          -destination 'generic/platform=iOS Simulator'
-          build
-          CODE_SIGNING_ALLOWED=NO
-      - name: Compile the physical-device security probe
-        run: >-
-          xcodebuild
-          -project Examples/DeviceSecurityProbe/DeviceSecurityProbe.xcodeproj
-          -scheme DeviceSecurityProbe
-          -destination 'generic/platform=iOS Simulator'
-          build
-          CODE_SIGNING_ALLOWED=NO
-      - name: Compile the SwiftUI Playground
-        run: >-
-          xcodebuild
-          -project Examples/Playground/Playground.xcodeproj
-          -scheme Playground
-          -destination 'generic/platform=iOS Simulator'
-          build
-          CODE_SIGNING_ALLOWED=NO
+
+  ios:
+    name: iOS / ${{ matrix.scheme }}
+    runs-on: macos-26
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - scheme: HyperProxySwift-Package
+            project: ''
+          - scheme: DeviceSecurityProbe
+            project: Examples/DeviceSecurityProbe/DeviceSecurityProbe.xcodeproj
+          - scheme: Playground
+            project: Examples/Playground/Playground.xcodeproj
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build for iOS Simulator
+        env:
+          BUILD_SCHEME: ${{ matrix.scheme }}
+          BUILD_PROJECT: ${{ matrix.project }}
+        run: |
+          project_args=()
+          if [[ -n "$BUILD_PROJECT" ]]; then
+            project_args=(-project "$BUILD_PROJECT")
+          fi
+          xcodebuild "${project_args[@]}" \
+            -scheme "$BUILD_SCHEME" \
+            -destination 'generic/platform=iOS Simulator' \
+            build CODE_SIGNING_ALLOWED=NO
 
   cocoapods:
     runs-on: macos-26
