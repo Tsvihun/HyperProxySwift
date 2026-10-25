@@ -1,0 +1,50 @@
+//
+//  AnthropicBetaWebFetchUrlSourcesParamClientToolResults.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+// Maintainer-generated release artifact. Do not edit by hand.
+
+import Foundation
+import HyperProxyCore
+
+public enum AnthropicBetaWebFetchUrlSourcesParamClientToolResults: Codable, Sendable {
+  case betaWebFetchURLSourceAllParam(AnthropicBetaWebFetchURLSourceAllParam)
+  case betaWebFetchURLSourceNoneParam(AnthropicBetaWebFetchURLSourceNoneParam)
+  case betaWebFetchURLSourceOnlyParam(AnthropicBetaWebFetchURLSourceOnlyParam)
+  case betaWebFetchURLSourceExceptParam(AnthropicBetaWebFetchURLSourceExceptParam)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(AnthropicBetaWebFetchURLSourceAllParam.self) {
+      self = .betaWebFetchURLSourceAllParam(value)
+      return
+    }
+    if let value = try? container.decode(AnthropicBetaWebFetchURLSourceNoneParam.self) {
+      self = .betaWebFetchURLSourceNoneParam(value)
+      return
+    }
+    if let value = try? container.decode(AnthropicBetaWebFetchURLSourceOnlyParam.self) {
+      self = .betaWebFetchURLSourceOnlyParam(value)
+      return
+    }
+    self = .betaWebFetchURLSourceExceptParam(
+      try container.decode(AnthropicBetaWebFetchURLSourceExceptParam.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .betaWebFetchURLSourceAllParam(let value):
+      try container.encode(value)
+    case .betaWebFetchURLSourceNoneParam(let value):
+      try container.encode(value)
+    case .betaWebFetchURLSourceOnlyParam(let value):
+      try container.encode(value)
+    case .betaWebFetchURLSourceExceptParam(let value):
+      try container.encode(value)
+    }
+  }
+}

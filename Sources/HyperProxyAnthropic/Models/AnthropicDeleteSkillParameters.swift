@@ -12,21 +12,25 @@ import HyperProxyCore
 
 public struct AnthropicDeleteSkillParameters: Codable, Sendable {
   public var anthropicVersion: String?
+  public var anthropicWorkspaceId: String?
   public var skillId: String
   public var xApiKey: String?
 
   public init(
     skillId: String,
     anthropicVersion: String? = nil,
+    anthropicWorkspaceId: String? = nil,
     xApiKey: String? = nil
   ) {
     self.anthropicVersion = anthropicVersion
+    self.anthropicWorkspaceId = anthropicWorkspaceId
     self.skillId = skillId
     self.xApiKey = xApiKey
   }
 
   enum CodingKeys: String, CodingKey {
     case anthropicVersion = "anthropic-version"
+    case anthropicWorkspaceId = "anthropic-workspace-id"
     case skillId = "skill_id"
     case xApiKey = "x-api-key"
   }

@@ -14,13 +14,13 @@ public struct GroqChatCompletionTokenLogprob: Codable, Sendable {
   public var bytes: [Int]?
   public var logprob: Double
   public var token: String
-  public var topLogprobs: [GroqChatCompletionTokenLogprob.TopLogprobsElement]
+  public var topLogprobs: [GroqTopLogprob]
 
   public init(
-    bytes: [Int]?,
     logprob: Double,
     token: String,
-    topLogprobs: [GroqChatCompletionTokenLogprob.TopLogprobsElement]
+    topLogprobs: [GroqTopLogprob],
+    bytes: [Int]? = nil
   ) {
     self.bytes = bytes
     self.logprob = logprob
@@ -33,27 +33,5 @@ public struct GroqChatCompletionTokenLogprob: Codable, Sendable {
     case logprob
     case token
     case topLogprobs = "top_logprobs"
-  }
-
-  public struct TopLogprobsElement: Codable, Sendable {
-    public var bytes: [Int]?
-    public var logprob: Double
-    public var token: String
-
-    public init(
-      bytes: [Int]?,
-      logprob: Double,
-      token: String
-    ) {
-      self.bytes = bytes
-      self.logprob = logprob
-      self.token = token
-    }
-
-    enum CodingKeys: String, CodingKey {
-      case bytes
-      case logprob
-      case token
-    }
   }
 }

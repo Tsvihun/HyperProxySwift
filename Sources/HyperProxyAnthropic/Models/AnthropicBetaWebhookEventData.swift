@@ -65,6 +65,10 @@ public enum AnthropicBetaWebhookEventData: Codable, Sendable {
   case betaWebhookMemoryStoreArchivedEventData(AnthropicBetaWebhookMemoryStoreArchivedEventData)
   case betaWebhookMemoryStoreDeletedEventData(AnthropicBetaWebhookMemoryStoreDeletedEventData)
   case betaWebhookSessionBudgetReachedEventData(AnthropicBetaWebhookSessionBudgetReachedEventData)
+  case betaWebhookUserProfileEnforcementActionOpenedEventData(
+    AnthropicBetaWebhookUserProfileEnforcementActionOpenedEventData)
+  case betaWebhookUserProfileEnforcementActionResolvedEventData(
+    AnthropicBetaWebhookUserProfileEnforcementActionResolvedEventData)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -249,8 +253,18 @@ public enum AnthropicBetaWebhookEventData: Codable, Sendable {
       self = .betaWebhookMemoryStoreDeletedEventData(value)
       return
     }
-    self = .betaWebhookSessionBudgetReachedEventData(
-      try container.decode(AnthropicBetaWebhookSessionBudgetReachedEventData.self))
+    if let value = try? container.decode(AnthropicBetaWebhookSessionBudgetReachedEventData.self) {
+      self = .betaWebhookSessionBudgetReachedEventData(value)
+      return
+    }
+    if let value = try? container.decode(
+      AnthropicBetaWebhookUserProfileEnforcementActionOpenedEventData.self)
+    {
+      self = .betaWebhookUserProfileEnforcementActionOpenedEventData(value)
+      return
+    }
+    self = .betaWebhookUserProfileEnforcementActionResolvedEventData(
+      try container.decode(AnthropicBetaWebhookUserProfileEnforcementActionResolvedEventData.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -343,6 +357,10 @@ public enum AnthropicBetaWebhookEventData: Codable, Sendable {
     case .betaWebhookMemoryStoreDeletedEventData(let value):
       try container.encode(value)
     case .betaWebhookSessionBudgetReachedEventData(let value):
+      try container.encode(value)
+    case .betaWebhookUserProfileEnforcementActionOpenedEventData(let value):
+      try container.encode(value)
+    case .betaWebhookUserProfileEnforcementActionResolvedEventData(let value):
       try container.encode(value)
     }
   }

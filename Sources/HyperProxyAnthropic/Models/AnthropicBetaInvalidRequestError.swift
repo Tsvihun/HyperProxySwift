@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct AnthropicBetaInvalidRequestError: Codable, Sendable {
   public var message: String
-  public var kind: AnthropicInvalidRequestErrorKind
+  public var kind: AnthropicBetaInvalidRequestError.Kind
 
   public init(
     message: String,
-    kind: AnthropicInvalidRequestErrorKind = .invalidRequestError
+    kind: AnthropicBetaInvalidRequestError.Kind
   ) {
     self.message = message
     self.kind = kind
@@ -25,5 +25,9 @@ public struct AnthropicBetaInvalidRequestError: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case message
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case invalidRequestError = "invalid_request_error"
   }
 }

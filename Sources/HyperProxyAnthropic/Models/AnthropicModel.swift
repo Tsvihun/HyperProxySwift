@@ -11,6 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public enum AnthropicModel: RawRepresentable, Codable, Hashable, Sendable {
+  case claudeHaiku5_5
+  case claudeSonnet5_5
+  case claudeFable5_1
+  case claudeOpus5_5
+  case claudeMythos5_1
   case claudeSonnet5
   case claudeFable5
   case claudeMythos5
@@ -30,6 +35,16 @@ public enum AnthropicModel: RawRepresentable, Codable, Hashable, Sendable {
 
   public init(rawValue: String) {
     switch rawValue {
+    case "claude-haiku-5-5":
+      self = .claudeHaiku5_5
+    case "claude-sonnet-5-5":
+      self = .claudeSonnet5_5
+    case "claude-fable-5-1":
+      self = .claudeFable5_1
+    case "claude-opus-5-5":
+      self = .claudeOpus5_5
+    case "claude-mythos-5-1":
+      self = .claudeMythos5_1
     case "claude-sonnet-5":
       self = .claudeSonnet5
     case "claude-fable-5":
@@ -67,6 +82,16 @@ public enum AnthropicModel: RawRepresentable, Codable, Hashable, Sendable {
 
   public var rawValue: String {
     switch self {
+    case .claudeHaiku5_5:
+      return "claude-haiku-5-5"
+    case .claudeSonnet5_5:
+      return "claude-sonnet-5-5"
+    case .claudeFable5_1:
+      return "claude-fable-5-1"
+    case .claudeOpus5_5:
+      return "claude-opus-5-5"
+    case .claudeMythos5_1:
+      return "claude-mythos-5-1"
     case .claudeSonnet5:
       return "claude-sonnet-5"
     case .claudeFable5:
@@ -112,63 +137,26 @@ public enum AnthropicModel: RawRepresentable, Codable, Hashable, Sendable {
     try container.encode(rawValue)
   }
 
-  public enum ClaudeSonnet46: String, Codable, Hashable, Sendable {
-    case claudeSonnet4_6 = "claude-sonnet-4-6"
-  }
-
-  public enum ClaudeHaiku45: String, Codable, Hashable, Sendable {
-    case claudeHaiku4_5 = "claude-haiku-4-5"
-  }
-
-  public enum ClaudeHaiku4520251001: String, Codable, Hashable, Sendable {
-    case claudeHaiku4_5_20251001 = "claude-haiku-4-5-20251001"
-  }
-
-  public enum ClaudeOpus45: String, Codable, Hashable, Sendable {
-    case claudeOpus4_5 = "claude-opus-4-5"
-  }
-
-  public enum ClaudeOpus4520251101: String, Codable, Hashable, Sendable {
-    case claudeOpus4_5_20251101 = "claude-opus-4-5-20251101"
-  }
-
-  public enum ClaudeSonnet45: String, Codable, Hashable, Sendable {
-    case claudeSonnet4_5 = "claude-sonnet-4-5"
-  }
-
-  public enum ClaudeSonnet4520250929: String, Codable, Hashable, Sendable {
-    case claudeSonnet4_5_20250929 = "claude-sonnet-4-5-20250929"
-  }
-
-  public enum ClaudeSonnet5: String, Codable, Hashable, Sendable {
+  public enum Preset: String, Codable, Hashable, Sendable {
+    case claudeHaiku5_5 = "claude-haiku-5-5"
+    case claudeSonnet5_5 = "claude-sonnet-5-5"
+    case claudeFable5_1 = "claude-fable-5-1"
+    case claudeOpus5_5 = "claude-opus-5-5"
+    case claudeMythos5_1 = "claude-mythos-5-1"
     case claudeSonnet5 = "claude-sonnet-5"
-  }
-
-  public enum ClaudeFable5: String, Codable, Hashable, Sendable {
     case claudeFable5 = "claude-fable-5"
-  }
-
-  public enum ClaudeMythos5: String, Codable, Hashable, Sendable {
     case claudeMythos5 = "claude-mythos-5"
-  }
-
-  public enum ClaudeOpus5: String, Codable, Hashable, Sendable {
     case claudeOpus5 = "claude-opus-5"
-  }
-
-  public enum ClaudeOpus48: String, Codable, Hashable, Sendable {
     case claudeOpus4_8 = "claude-opus-4-8"
-  }
-
-  public enum ClaudeOpus47: String, Codable, Hashable, Sendable {
     case claudeOpus4_7 = "claude-opus-4-7"
-  }
-
-  public enum ClaudeMythosPreview: String, Codable, Hashable, Sendable {
     case claudeMythosPreview = "claude-mythos-preview"
-  }
-
-  public enum ClaudeOpus46: String, Codable, Hashable, Sendable {
     case claudeOpus4_6 = "claude-opus-4-6"
+    case claudeSonnet4_6 = "claude-sonnet-4-6"
+    case claudeHaiku4_5 = "claude-haiku-4-5"
+    case claudeHaiku4_5_20251001 = "claude-haiku-4-5-20251001"
+    case claudeOpus4_5 = "claude-opus-4-5"
+    case claudeOpus4_5_20251101 = "claude-opus-4-5-20251101"
+    case claudeSonnet4_5 = "claude-sonnet-4-5"
+    case claudeSonnet4_5_20250929 = "claude-sonnet-4-5-20250929"
   }
 }

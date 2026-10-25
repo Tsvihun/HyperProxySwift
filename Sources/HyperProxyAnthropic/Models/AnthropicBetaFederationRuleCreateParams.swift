@@ -15,19 +15,19 @@ public struct AnthropicBetaFederationRuleCreateParams: Codable, Sendable {
   public var attributes: [String: String]?
   public var description: String?
   public var issuerId: String
-  public var match: AnthropicBetaRuleMatch
+  public var match: AnthropicBetaFederationRuleMatchParam
   public var name: String
   public var oauthScope: String
-  public var target: AnthropicBetaServiceAccountTarget
+  public var target: AnthropicBetaServiceAccountTargetParam
   public var tokenLifetimeSeconds: Int?
   public var workspaceId: String?
 
   public init(
     issuerId: String,
-    match: AnthropicBetaRuleMatch,
+    match: AnthropicBetaFederationRuleMatchParam,
     name: String,
     oauthScope: String,
-    target: AnthropicBetaServiceAccountTarget,
+    target: AnthropicBetaServiceAccountTargetParam,
     appliesToAllWorkspaces: Bool? = nil,
     attributes: [String: String]? = nil,
     description: String? = nil,

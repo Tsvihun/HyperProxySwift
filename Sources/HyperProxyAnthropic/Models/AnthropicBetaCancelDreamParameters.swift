@@ -13,21 +13,25 @@ import HyperProxyCore
 public struct AnthropicBetaCancelDreamParameters: Codable, Sendable {
   public var anthropicBeta: String?
   public var anthropicVersion: String?
+  public var anthropicWorkspaceId: String?
   public var dreamId: String
 
   public init(
     dreamId: String,
     anthropicBeta: String? = nil,
-    anthropicVersion: String? = nil
+    anthropicVersion: String? = nil,
+    anthropicWorkspaceId: String? = nil
   ) {
     self.anthropicBeta = anthropicBeta
     self.anthropicVersion = anthropicVersion
+    self.anthropicWorkspaceId = anthropicWorkspaceId
     self.dreamId = dreamId
   }
 
   enum CodingKeys: String, CodingKey {
     case anthropicBeta = "anthropic-beta"
     case anthropicVersion = "anthropic-version"
+    case anthropicWorkspaceId = "anthropic-workspace-id"
     case dreamId = "dream_id"
   }
 }

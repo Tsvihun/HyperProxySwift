@@ -12,31 +12,34 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsSessionAgent: Codable, Sendable {
   public var description: String?
+  public var executionIdentity: AnthropicBetaManagedAgentsExecutionIdentity
   public var id: String
-  public var mcpServers: [AnthropicBetaManagedAgentsMCPServer]
+  public var mcpServers: [AnthropicBetaManagedAgentsMCPServerURLDefinition]
   public var model: AnthropicBetaManagedAgentsModelConfig
   public var multiagent: AnthropicBetaManagedAgentsSessionMultiagent?
   public var name: String
-  public var skills: [AnthropicBetaManagedAgentsSkill]
+  public var skills: [AnthropicBetaManagedAgentsSessionAgentSkill]
   public var system: String?
-  public var tools: [AnthropicBetaManagedAgentsAgentTool]
+  public var tools: [AnthropicBetaManagedAgentsSessionAgentTool]
   public var kind: AnthropicBetaManagedAgentsSessionAgent.Kind
   public var version: Int
 
   public init(
-    description: String?,
+    executionIdentity: AnthropicBetaManagedAgentsExecutionIdentity,
     id: String,
-    mcpServers: [AnthropicBetaManagedAgentsMCPServer],
+    mcpServers: [AnthropicBetaManagedAgentsMCPServerURLDefinition],
     model: AnthropicBetaManagedAgentsModelConfig,
-    multiagent: AnthropicBetaManagedAgentsSessionMultiagent?,
     name: String,
-    skills: [AnthropicBetaManagedAgentsSkill],
-    system: String?,
-    tools: [AnthropicBetaManagedAgentsAgentTool],
+    skills: [AnthropicBetaManagedAgentsSessionAgentSkill],
+    tools: [AnthropicBetaManagedAgentsSessionAgentTool],
     kind: AnthropicBetaManagedAgentsSessionAgent.Kind,
-    version: Int
+    version: Int,
+    description: String? = nil,
+    multiagent: AnthropicBetaManagedAgentsSessionMultiagent? = nil,
+    system: String? = nil
   ) {
     self.description = description
+    self.executionIdentity = executionIdentity
     self.id = id
     self.mcpServers = mcpServers
     self.model = model
@@ -51,6 +54,7 @@ public struct AnthropicBetaManagedAgentsSessionAgent: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case description
+    case executionIdentity = "execution_identity"
     case id
     case mcpServers = "mcp_servers"
     case model

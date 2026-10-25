@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsCustomToolParams: Codable, Sendable {
   public var description: String
-  public var inputSchema: AnthropicBetaManagedAgentsCustomToolInputSchema
+  public var inputSchema: AnthropicBetaManagedAgentsCustomToolInputSchemaParam
   public var name: String
   public var kind: AnthropicBetaManagedAgentsCustomToolParams.Kind
 
   public init(
     description: String,
-    inputSchema: AnthropicBetaManagedAgentsCustomToolInputSchema,
+    inputSchema: AnthropicBetaManagedAgentsCustomToolInputSchemaParam,
     name: String,
     kind: AnthropicBetaManagedAgentsCustomToolParams.Kind
   ) {

@@ -14,20 +14,24 @@ public struct AnthropicBetaMessagesPostParameters: Codable, Sendable {
   public var anthropicBeta: String?
   public var anthropicUserProfileId: String?
   public var anthropicVersion: String?
+  public var anthropicWorkspaceId: String?
 
   public init(
     anthropicBeta: String? = nil,
     anthropicUserProfileId: String? = nil,
-    anthropicVersion: String? = nil
+    anthropicVersion: String? = nil,
+    anthropicWorkspaceId: String? = nil
   ) {
     self.anthropicBeta = anthropicBeta
     self.anthropicUserProfileId = anthropicUserProfileId
     self.anthropicVersion = anthropicVersion
+    self.anthropicWorkspaceId = anthropicWorkspaceId
   }
 
   enum CodingKeys: String, CodingKey {
     case anthropicBeta = "anthropic-beta"
     case anthropicUserProfileId = "anthropic-user-profile-id"
     case anthropicVersion = "anthropic-version"
+    case anthropicWorkspaceId = "anthropic-workspace-id"
   }
 }

@@ -22,21 +22,21 @@ public struct AnthropicBetaUsage: Codable, Sendable {
   public var outputTokensDetails: AnthropicBetaOutputTokensDetails?
   public var serverToolUse: AnthropicBetaServerToolUsage?
   public var serviceTier: AnthropicBetaUsage.ServiceTier?
-  public var speed: AnthropicBetaSpeed?
+  public var speed: AnthropicBetaUsage.Speed?
 
   public init(
-    cacheCreation: AnthropicBetaCacheCreation?,
-    cacheCreationInputTokens: Int?,
-    cacheReadInputTokens: Int?,
-    fallbackCredit: AnthropicBetaFallbackCreditUsage?,
-    inferenceGeo: String?,
     inputTokens: Int,
-    iterations: AnthropicBetaIterationsUsage?,
     outputTokens: Int,
-    outputTokensDetails: AnthropicBetaOutputTokensDetails?,
-    serverToolUse: AnthropicBetaServerToolUsage?,
-    serviceTier: AnthropicBetaUsage.ServiceTier?,
-    speed: AnthropicBetaSpeed?
+    cacheCreation: AnthropicBetaCacheCreation? = nil,
+    cacheCreationInputTokens: Int? = nil,
+    cacheReadInputTokens: Int? = nil,
+    fallbackCredit: AnthropicBetaFallbackCreditUsage? = nil,
+    inferenceGeo: String? = nil,
+    iterations: AnthropicBetaIterationsUsage? = nil,
+    outputTokensDetails: AnthropicBetaOutputTokensDetails? = nil,
+    serverToolUse: AnthropicBetaServerToolUsage? = nil,
+    serviceTier: AnthropicBetaUsage.ServiceTier? = nil,
+    speed: AnthropicBetaUsage.Speed? = nil
   ) {
     self.cacheCreation = cacheCreation
     self.cacheCreationInputTokens = cacheCreationInputTokens
@@ -71,5 +71,10 @@ public struct AnthropicBetaUsage: Codable, Sendable {
     case standard = "standard"
     case priority = "priority"
     case batch = "batch"
+  }
+
+  public enum Speed: String, Codable, Hashable, Sendable {
+    case standard = "standard"
+    case fast = "fast"
   }
 }

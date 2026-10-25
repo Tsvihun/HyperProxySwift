@@ -13,33 +13,41 @@ import HyperProxyCore
 public struct AnthropicBetaListSessionThreadsParameters: Codable, Sendable {
   public var anthropicBeta: String?
   public var anthropicVersion: String?
+  public var anthropicWorkspaceId: String?
   public var limit: Int?
   public var page: String?
   public var sessionId: String
+  public var statuses: [AnthropicBetaManagedAgentsSessionThreadStatus]?
   public var xApiKey: String?
 
   public init(
     sessionId: String,
     anthropicBeta: String? = nil,
     anthropicVersion: String? = nil,
+    anthropicWorkspaceId: String? = nil,
     limit: Int? = nil,
     page: String? = nil,
+    statuses: [AnthropicBetaManagedAgentsSessionThreadStatus]? = nil,
     xApiKey: String? = nil
   ) {
     self.anthropicBeta = anthropicBeta
     self.anthropicVersion = anthropicVersion
+    self.anthropicWorkspaceId = anthropicWorkspaceId
     self.limit = limit
     self.page = page
     self.sessionId = sessionId
+    self.statuses = statuses
     self.xApiKey = xApiKey
   }
 
   enum CodingKeys: String, CodingKey {
     case anthropicBeta = "anthropic-beta"
     case anthropicVersion = "anthropic-version"
+    case anthropicWorkspaceId = "anthropic-workspace-id"
     case limit
     case page
     case sessionId = "session_id"
+    case statuses
     case xApiKey = "x-api-key"
   }
 }

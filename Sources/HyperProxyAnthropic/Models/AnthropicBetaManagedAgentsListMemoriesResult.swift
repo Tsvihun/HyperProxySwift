@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsListMemoriesResult: Codable, Sendable {
-  public var data: [AnthropicBetaManagedAgentsMemoryListItem]?
+  public var data: [AnthropicBetaManagedAgentsMemoryListItem]
   public var nextPage: String?
 
   public init(
-    data: [AnthropicBetaManagedAgentsMemoryListItem]? = nil,
+    data: [AnthropicBetaManagedAgentsMemoryListItem],
     nextPage: String? = nil
   ) {
     self.data = data

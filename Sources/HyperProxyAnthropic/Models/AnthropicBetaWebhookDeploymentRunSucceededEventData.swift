@@ -19,8 +19,8 @@ public struct AnthropicBetaWebhookDeploymentRunSucceededEventData: Codable, Send
   public init(
     id: String,
     organizationId: String,
-    workspaceId: String,
-    kind: AnthropicBetaWebhookDeploymentRunSucceededEventData.Kind = .deploymentRunSucceeded
+    kind: AnthropicBetaWebhookDeploymentRunSucceededEventData.Kind,
+    workspaceId: String
   ) {
     self.id = id
     self.organizationId = organizationId
@@ -35,7 +35,9 @@ public struct AnthropicBetaWebhookDeploymentRunSucceededEventData: Codable, Send
     case workspaceId = "workspace_id"
   }
 
-  public enum Kind: String, Codable, Hashable, Sendable {
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
     case deploymentRunSucceeded = "deployment_run.succeeded"
   }
 }

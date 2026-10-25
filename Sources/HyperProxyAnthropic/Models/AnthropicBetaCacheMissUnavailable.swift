@@ -14,7 +14,7 @@ public struct AnthropicBetaCacheMissUnavailable: Codable, Sendable {
   public var kind: AnthropicBetaCacheMissUnavailable.Kind
 
   public init(
-    kind: AnthropicBetaCacheMissUnavailable.Kind = .unavailable
+    kind: AnthropicBetaCacheMissUnavailable.Kind
   ) {
     self.kind = kind
   }

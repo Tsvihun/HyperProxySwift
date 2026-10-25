@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaPublicEnvironmentUpdateRequest: Codable, Sendable {
-  public var config: AnthropicBetaPublicEnvironmentUpdateRequestConfigVariant?
+  public var config: AnthropicBetaEnvironmentUpdateParamsConfig?
   public var description: String?
   public var metadata: [String: String?]?
   public var name: String?
   public var scope: AnthropicBetaPublicEnvironmentUpdateRequest.Scope?
 
   public init(
-    config: AnthropicBetaPublicEnvironmentUpdateRequestConfigVariant? = nil,
+    config: AnthropicBetaEnvironmentUpdateParamsConfig? = nil,
     description: String? = nil,
     metadata: [String: String?]? = nil,
     name: String? = nil,

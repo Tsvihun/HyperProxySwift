@@ -14,14 +14,14 @@ public struct AnthropicBetaAzureExternalKeyConfig: Codable, Sendable {
   public var clientId: String?
   public var keyName: String
   public var tenantId: String
-  public var kind: AnthropicAzureKind
+  public var kind: AnthropicBetaAzureExternalKeyConfig.Kind
   public var vaultUri: String
 
   public init(
     keyName: String,
     tenantId: String,
+    kind: AnthropicBetaAzureExternalKeyConfig.Kind,
     vaultUri: String,
-    kind: AnthropicAzureKind = .azure,
     clientId: String? = nil
   ) {
     self.clientId = clientId
@@ -37,5 +37,9 @@ public struct AnthropicBetaAzureExternalKeyConfig: Codable, Sendable {
     case tenantId = "tenant_id"
     case kind = "type"
     case vaultUri = "vault_uri"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case azure = "azure"
   }
 }

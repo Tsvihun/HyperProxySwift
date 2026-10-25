@@ -21,8 +21,8 @@ public struct AnthropicBetaWebhookSessionThreadIdledEventData: Codable, Sendable
     id: String,
     organizationId: String,
     sessionThreadId: String,
-    workspaceId: String,
-    kind: AnthropicBetaWebhookSessionThreadIdledEventData.Kind = .sessionThreadIdled
+    kind: AnthropicBetaWebhookSessionThreadIdledEventData.Kind,
+    workspaceId: String
   ) {
     self.id = id
     self.organizationId = organizationId

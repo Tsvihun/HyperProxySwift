@@ -18,21 +18,21 @@ public struct AnthropicMessageBatch: Codable, Sendable {
   public var expiresAt: String
   public var id: String
   public var processingStatus: AnthropicMessageBatch.ProcessingStatus
-  public var requestCounts: AnthropicRequestCounts
+  public var requestCounts: AnthropicMessageBatchRequestCounts
   public var resultsUrl: String?
-  public var kind: AnthropicMessageBatchKind
+  public var kind: AnthropicMessageBatch.Kind
 
   public init(
-    archivedAt: String?,
-    cancelInitiatedAt: String?,
     createdAt: String,
-    endedAt: String?,
     expiresAt: String,
     id: String,
     processingStatus: AnthropicMessageBatch.ProcessingStatus,
-    requestCounts: AnthropicRequestCounts,
-    resultsUrl: String?,
-    kind: AnthropicMessageBatchKind = .messageBatch
+    requestCounts: AnthropicMessageBatchRequestCounts,
+    kind: AnthropicMessageBatch.Kind,
+    archivedAt: String? = nil,
+    cancelInitiatedAt: String? = nil,
+    endedAt: String? = nil,
+    resultsUrl: String? = nil
   ) {
     self.archivedAt = archivedAt
     self.cancelInitiatedAt = cancelInitiatedAt
@@ -57,6 +57,10 @@ public struct AnthropicMessageBatch: Codable, Sendable {
     case requestCounts = "request_counts"
     case resultsUrl = "results_url"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case messageBatch = "message_batch"
   }
 
   public enum ProcessingStatus: String, Codable, Hashable, Sendable {

@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicCreateMessageBatchParams: Codable, Sendable {
-  public var requests: [AnthropicMessageBatchIndividualRequestParams]
+  public var requests: [AnthropicRequest]
 
   public init(
-    requests: [AnthropicMessageBatchIndividualRequestParams]
+    requests: [AnthropicRequest]
   ) {
     self.requests = requests
   }

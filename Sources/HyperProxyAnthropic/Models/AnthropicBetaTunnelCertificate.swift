@@ -11,22 +11,22 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaTunnelCertificate: Codable, Sendable {
-  public var archivedAt: AnthropicBetaTimestamp?
-  public var createdAt: AnthropicBetaTimestamp
-  public var expiresAt: AnthropicBetaTimestamp?
+  public var archivedAt: String?
+  public var createdAt: String
+  public var expiresAt: String?
   public var fingerprint: String
   public var id: String
   public var tunnelId: String
-  public var kind: AnthropicTunnelCertificateKind
+  public var kind: AnthropicBetaTunnelCertificate.Kind
 
   public init(
-    archivedAt: AnthropicBetaTimestamp?,
-    createdAt: AnthropicBetaTimestamp,
-    expiresAt: AnthropicBetaTimestamp?,
+    createdAt: String,
     fingerprint: String,
     id: String,
     tunnelId: String,
-    kind: AnthropicTunnelCertificateKind = .tunnelCertificate
+    kind: AnthropicBetaTunnelCertificate.Kind,
+    archivedAt: String? = nil,
+    expiresAt: String? = nil
   ) {
     self.archivedAt = archivedAt
     self.createdAt = createdAt
@@ -45,5 +45,9 @@ public struct AnthropicBetaTunnelCertificate: Codable, Sendable {
     case id
     case tunnelId = "tunnel_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case tunnelCertificate = "tunnel_certificate"
   }
 }

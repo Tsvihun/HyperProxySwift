@@ -26,19 +26,19 @@ public struct AnthropicBetaSelfHostedWork: Codable, Sendable {
   public var kind: AnthropicBetaSelfHostedWork.Kind
 
   public init(
-    acknowledgedAt: String?,
     createdAt: String,
     data: AnthropicBetaSessionWorkData,
     environmentId: String,
     id: String,
-    latestHeartbeatAt: String?,
     metadata: [String: String],
-    secret: String?,
-    startedAt: String?,
     state: AnthropicBetaSelfHostedWork.State,
-    stopRequestedAt: String?,
-    stoppedAt: String?,
-    kind: AnthropicBetaSelfHostedWork.Kind = .work
+    kind: AnthropicBetaSelfHostedWork.Kind,
+    acknowledgedAt: String? = nil,
+    latestHeartbeatAt: String? = nil,
+    secret: String? = nil,
+    startedAt: String? = nil,
+    stopRequestedAt: String? = nil,
+    stoppedAt: String? = nil
   ) {
     self.acknowledgedAt = acknowledgedAt
     self.createdAt = createdAt
@@ -71,15 +71,15 @@ public struct AnthropicBetaSelfHostedWork: Codable, Sendable {
     case kind = "type"
   }
 
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case work = "work"
+  }
+
   public enum State: String, Codable, Hashable, Sendable {
     case queued = "queued"
     case starting = "starting"
     case active = "active"
     case stopping = "stopping"
     case stopped = "stopped"
-  }
-
-  public enum Kind: String, Codable, Hashable, Sendable {
-    case work = "work"
   }
 }

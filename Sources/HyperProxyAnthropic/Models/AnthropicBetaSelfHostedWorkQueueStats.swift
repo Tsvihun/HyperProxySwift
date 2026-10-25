@@ -19,10 +19,10 @@ public struct AnthropicBetaSelfHostedWorkQueueStats: Codable, Sendable {
 
   public init(
     depth: Int,
-    oldestQueuedAt: String?,
     pending: Int,
-    workersPolling: Int?,
-    kind: AnthropicBetaSelfHostedWorkQueueStats.Kind = .workQueueStats
+    kind: AnthropicBetaSelfHostedWorkQueueStats.Kind,
+    oldestQueuedAt: String? = nil,
+    workersPolling: Int? = nil
   ) {
     self.depth = depth
     self.oldestQueuedAt = oldestQueuedAt

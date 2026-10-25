@@ -14,6 +14,7 @@ public struct AnthropicBetaListAgentVersionsParameters: Codable, Sendable {
   public var agentId: String
   public var anthropicBeta: String?
   public var anthropicVersion: String?
+  public var anthropicWorkspaceId: String?
   public var limit: Int?
   public var page: String?
   public var xApiKey: String?
@@ -22,6 +23,7 @@ public struct AnthropicBetaListAgentVersionsParameters: Codable, Sendable {
     agentId: String,
     anthropicBeta: String? = nil,
     anthropicVersion: String? = nil,
+    anthropicWorkspaceId: String? = nil,
     limit: Int? = nil,
     page: String? = nil,
     xApiKey: String? = nil
@@ -29,6 +31,7 @@ public struct AnthropicBetaListAgentVersionsParameters: Codable, Sendable {
     self.agentId = agentId
     self.anthropicBeta = anthropicBeta
     self.anthropicVersion = anthropicVersion
+    self.anthropicWorkspaceId = anthropicWorkspaceId
     self.limit = limit
     self.page = page
     self.xApiKey = xApiKey
@@ -38,6 +41,7 @@ public struct AnthropicBetaListAgentVersionsParameters: Codable, Sendable {
     case agentId = "agent_id"
     case anthropicBeta = "anthropic-beta"
     case anthropicVersion = "anthropic-version"
+    case anthropicWorkspaceId = "anthropic-workspace-id"
     case limit
     case page
     case xApiKey = "x-api-key"

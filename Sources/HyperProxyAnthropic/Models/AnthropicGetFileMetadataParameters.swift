@@ -12,21 +12,25 @@ import HyperProxyCore
 
 public struct AnthropicGetFileMetadataParameters: Codable, Sendable {
   public var anthropicVersion: String?
+  public var anthropicWorkspaceId: String?
   public var fileId: String
   public var xApiKey: String?
 
   public init(
     fileId: String,
     anthropicVersion: String? = nil,
+    anthropicWorkspaceId: String? = nil,
     xApiKey: String? = nil
   ) {
     self.anthropicVersion = anthropicVersion
+    self.anthropicWorkspaceId = anthropicWorkspaceId
     self.fileId = fileId
     self.xApiKey = xApiKey
   }
 
   enum CodingKeys: String, CodingKey {
     case anthropicVersion = "anthropic-version"
+    case anthropicWorkspaceId = "anthropic-workspace-id"
     case fileId = "file_id"
     case xApiKey = "x-api-key"
   }

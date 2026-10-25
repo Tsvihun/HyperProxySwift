@@ -11,17 +11,17 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaToolSearchToolRegex20251119: Codable, Sendable {
-  public var allowedCallers: [AnthropicBetaAllowedCaller]?
+  public var allowedCallers: [AnthropicBetaToolSearchToolRegex20251119AllowedCallersItem]?
   public var cacheControl: AnthropicBetaCacheControlEphemeral?
   public var deferLoading: Bool?
-  public var name: AnthropicToolSearchToolRegexName
+  public var name: AnthropicBetaToolSearchToolRegex20251119.Name
   public var strict: Bool?
   public var kind: AnthropicBetaToolSearchToolRegex20251119.Kind
 
   public init(
+    name: AnthropicBetaToolSearchToolRegex20251119.Name,
     kind: AnthropicBetaToolSearchToolRegex20251119.Kind,
-    name: AnthropicToolSearchToolRegexName = .toolSearchToolRegex,
-    allowedCallers: [AnthropicBetaAllowedCaller]? = nil,
+    allowedCallers: [AnthropicBetaToolSearchToolRegex20251119AllowedCallersItem]? = nil,
     cacheControl: AnthropicBetaCacheControlEphemeral? = nil,
     deferLoading: Bool? = nil,
     strict: Bool? = nil
@@ -45,6 +45,10 @@ public struct AnthropicBetaToolSearchToolRegex20251119: Codable, Sendable {
 
   public enum Kind: String, Codable, Hashable, Sendable {
     case toolSearchToolRegex20251119 = "tool_search_tool_regex_20251119"
+    case toolSearchToolRegex = "tool_search_tool_regex"
+  }
+
+  public enum Name: String, Codable, Hashable, Sendable {
     case toolSearchToolRegex = "tool_search_tool_regex"
   }
 }

@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaWorkspaceUpdateParams: Codable, Sendable {
-  public var dataResidency: AnthropicBetaDataResidencyUpdateParams?
+  public var dataResidency: AnthropicBetaDataResidencyUpdateConfigParam?
   public var displayColor: String?
   public var externalKeyId: String?
   public var name: String?
   public var tags: [String: String?]?
 
   public init(
-    dataResidency: AnthropicBetaDataResidencyUpdateParams? = nil,
+    dataResidency: AnthropicBetaDataResidencyUpdateConfigParam? = nil,
     displayColor: String? = nil,
     externalKeyId: String? = nil,
     name: String? = nil,

@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsScheduleTriggerContext: Codable, Sendable {
-  public var scheduledAt: AnthropicBetaTimestamp
+  public var scheduledAt: String
   public var kind: AnthropicBetaManagedAgentsScheduleTriggerContext.Kind
 
   public init(
-    scheduledAt: AnthropicBetaTimestamp,
+    scheduledAt: String,
     kind: AnthropicBetaManagedAgentsScheduleTriggerContext.Kind
   ) {
     self.scheduledAt = scheduledAt

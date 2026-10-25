@@ -11,20 +11,20 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsFileResource: Codable, Sendable {
-  public var createdAt: AnthropicBetaTimestamp
+  public var createdAt: String
   public var fileId: String
   public var id: String
   public var mountPath: String
   public var kind: AnthropicBetaManagedAgentsFileResource.Kind
-  public var updatedAt: AnthropicBetaTimestamp
+  public var updatedAt: String
 
   public init(
-    createdAt: AnthropicBetaTimestamp,
+    createdAt: String,
     fileId: String,
     id: String,
     mountPath: String,
     kind: AnthropicBetaManagedAgentsFileResource.Kind,
-    updatedAt: AnthropicBetaTimestamp
+    updatedAt: String
   ) {
     self.createdAt = createdAt
     self.fileId = fileId

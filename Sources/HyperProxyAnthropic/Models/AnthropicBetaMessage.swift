@@ -13,36 +13,39 @@ import HyperProxyCore
 public struct AnthropicBetaMessage: Codable, Sendable {
   public var container: AnthropicBetaContainer?
   public var content: [AnthropicBetaContentBlock]
-  public var contextManagement: AnthropicBetaResponseContextManagement?
+  public var contextManagement: AnthropicBetaContextManagementResponse?
   public var diagnostics: AnthropicBetaDiagnostics?
   public var id: String
+  public var inputTransformations: [AnthropicBetaInputTransformation]?
   public var model: AnthropicModel
-  public var role: AnthropicAssistantRole
+  public var role: AnthropicBetaMessage.Role
   public var stopDetails: AnthropicBetaRefusalStopDetails?
   public var stopReason: AnthropicBetaStopReason?
   public var stopSequence: String?
-  public var kind: AnthropicMessageKind
+  public var kind: AnthropicBetaMessage.Kind
   public var usage: AnthropicBetaUsage
 
   public init(
-    container: AnthropicBetaContainer?,
     content: [AnthropicBetaContentBlock],
-    contextManagement: AnthropicBetaResponseContextManagement?,
-    diagnostics: AnthropicBetaDiagnostics?,
     id: String,
     model: AnthropicModel,
-    stopDetails: AnthropicBetaRefusalStopDetails?,
-    stopReason: AnthropicBetaStopReason?,
-    stopSequence: String?,
+    role: AnthropicBetaMessage.Role,
+    kind: AnthropicBetaMessage.Kind,
     usage: AnthropicBetaUsage,
-    role: AnthropicAssistantRole = .assistant,
-    kind: AnthropicMessageKind = .message
+    container: AnthropicBetaContainer? = nil,
+    contextManagement: AnthropicBetaContextManagementResponse? = nil,
+    diagnostics: AnthropicBetaDiagnostics? = nil,
+    inputTransformations: [AnthropicBetaInputTransformation]? = nil,
+    stopDetails: AnthropicBetaRefusalStopDetails? = nil,
+    stopReason: AnthropicBetaStopReason? = nil,
+    stopSequence: String? = nil
   ) {
     self.container = container
     self.content = content
     self.contextManagement = contextManagement
     self.diagnostics = diagnostics
     self.id = id
+    self.inputTransformations = inputTransformations
     self.model = model
     self.role = role
     self.stopDetails = stopDetails
@@ -58,6 +61,7 @@ public struct AnthropicBetaMessage: Codable, Sendable {
     case contextManagement = "context_management"
     case diagnostics
     case id
+    case inputTransformations = "input_transformations"
     case model
     case role
     case stopDetails = "stop_details"
@@ -65,5 +69,13 @@ public struct AnthropicBetaMessage: Codable, Sendable {
     case stopSequence = "stop_sequence"
     case kind = "type"
     case usage
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case message = "message"
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case assistant = "assistant"
   }
 }

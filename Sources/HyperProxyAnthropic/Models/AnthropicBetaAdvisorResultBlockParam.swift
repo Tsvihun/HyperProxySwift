@@ -1,0 +1,37 @@
+//
+//  AnthropicBetaAdvisorResultBlockParam.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+// Maintainer-generated release artifact. Do not edit by hand.
+
+import Foundation
+import HyperProxyCore
+
+public struct AnthropicBetaAdvisorResultBlockParam: Codable, Sendable {
+  public var stopReason: String?
+  public var text: String
+  public var kind: AnthropicBetaAdvisorResultBlockParam.Kind
+
+  public init(
+    text: String,
+    kind: AnthropicBetaAdvisorResultBlockParam.Kind,
+    stopReason: String? = nil
+  ) {
+    self.stopReason = stopReason
+    self.text = text
+    self.kind = kind
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case stopReason = "stop_reason"
+    case text
+    case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case advisorResult = "advisor_result"
+  }
+}

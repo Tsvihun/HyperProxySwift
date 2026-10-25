@@ -1,0 +1,37 @@
+//
+//  AnthropicServiceAccountTarget.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+// Maintainer-generated release artifact. Do not edit by hand.
+
+import Foundation
+import HyperProxyCore
+
+public struct AnthropicServiceAccountTarget: Codable, Sendable {
+  public var serviceAccountId: String
+  public var serviceAccountName: String?
+  public var kind: AnthropicServiceAccountTarget.Kind
+
+  public init(
+    serviceAccountId: String,
+    kind: AnthropicServiceAccountTarget.Kind,
+    serviceAccountName: String? = nil
+  ) {
+    self.serviceAccountId = serviceAccountId
+    self.serviceAccountName = serviceAccountName
+    self.kind = kind
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case serviceAccountId = "service_account_id"
+    case serviceAccountName = "service_account_name"
+    case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case serviceAccount = "service_account"
+  }
+}

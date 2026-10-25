@@ -11,17 +11,17 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsGitHubRepositoryResourceParams: Codable, Sendable {
-  public var authorizationToken: String
-  public var checkout: AnthropicBetaManagedAgentsRepositoryCheckout?
+  public var authorizationToken: String?
+  public var checkout: AnthropicBetaManagedAgentsGithubRepositoryResourceParamsCheckout?
   public var mountPath: String?
   public var kind: AnthropicBetaManagedAgentsGitHubRepositoryResourceParams.Kind
   public var url: String
 
   public init(
-    authorizationToken: String,
     kind: AnthropicBetaManagedAgentsGitHubRepositoryResourceParams.Kind,
     url: String,
-    checkout: AnthropicBetaManagedAgentsRepositoryCheckout? = nil,
+    authorizationToken: String? = nil,
+    checkout: AnthropicBetaManagedAgentsGithubRepositoryResourceParamsCheckout? = nil,
     mountPath: String? = nil
   ) {
     self.authorizationToken = authorizationToken

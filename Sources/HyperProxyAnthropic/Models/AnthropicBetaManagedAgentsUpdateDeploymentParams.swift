@@ -11,26 +11,26 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsUpdateDeploymentParams: Codable, Sendable {
-  public var agent: AnthropicBetaManagedAgentsAgentUnionParams?
-  public var budget: AnthropicBetaManagedAgentsBudget?
+  public var agent: AnthropicBetaDeploymentUpdateParamsAgent?
+  public var budget: AnthropicBetaManagedAgentsBudgetLimitParam?
   public var description: String?
   public var environmentId: String?
   public var initialEvents: [AnthropicBetaManagedAgentsDeploymentInitialEventParams]?
   public var metadata: [String: String?]?
   public var name: String?
-  public var resources: [AnthropicBetaManagedAgentsSessionResourceParams]?
+  public var resources: [AnthropicBetaDeploymentUpdateParamsResource]?
   public var schedule: AnthropicBetaManagedAgentsScheduleParams?
   public var vaultIds: [String]?
 
   public init(
-    agent: AnthropicBetaManagedAgentsAgentUnionParams? = nil,
-    budget: AnthropicBetaManagedAgentsBudget? = nil,
+    agent: AnthropicBetaDeploymentUpdateParamsAgent? = nil,
+    budget: AnthropicBetaManagedAgentsBudgetLimitParam? = nil,
     description: String? = nil,
     environmentId: String? = nil,
     initialEvents: [AnthropicBetaManagedAgentsDeploymentInitialEventParams]? = nil,
     metadata: [String: String?]? = nil,
     name: String? = nil,
-    resources: [AnthropicBetaManagedAgentsSessionResourceParams]? = nil,
+    resources: [AnthropicBetaDeploymentUpdateParamsResource]? = nil,
     schedule: AnthropicBetaManagedAgentsScheduleParams? = nil,
     vaultIds: [String]? = nil
   ) {

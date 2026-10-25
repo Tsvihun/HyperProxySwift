@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsAgentToolsetDefaultConfig: Codable, Sendable {
   public var enabled: Bool
-  public var permissionPolicy: AnthropicBetaManagedAgentsPermissionPolicy
+  public var permissionPolicy: AnthropicBetaManagedAgentsAgentToolsetDefaultConfigPermissionPolicy
 
   public init(
     enabled: Bool,
-    permissionPolicy: AnthropicBetaManagedAgentsPermissionPolicy
+    permissionPolicy: AnthropicBetaManagedAgentsAgentToolsetDefaultConfigPermissionPolicy
   ) {
     self.enabled = enabled
     self.permissionPolicy = permissionPolicy

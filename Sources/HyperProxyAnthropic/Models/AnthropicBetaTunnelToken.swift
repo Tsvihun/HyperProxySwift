@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct AnthropicBetaTunnelToken: Codable, Sendable {
   public var id: String
   public var tunnelToken: String
-  public var kind: AnthropicTunnelTokenKind
+  public var kind: AnthropicBetaTunnelToken.Kind
 
   public init(
     id: String,
     tunnelToken: String,
-    kind: AnthropicTunnelTokenKind = .tunnelToken
+    kind: AnthropicBetaTunnelToken.Kind
   ) {
     self.id = id
     self.tunnelToken = tunnelToken
@@ -29,5 +29,9 @@ public struct AnthropicBetaTunnelToken: Codable, Sendable {
     case id
     case tunnelToken = "tunnel_token"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case tunnelToken = "tunnel_token"
   }
 }

@@ -12,15 +12,15 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsWriteToolConfig: Codable, Sendable {
   public var enabled: Bool
-  public var name: AnthropicWriteName
-  public var permissionPolicy: AnthropicBetaManagedAgentsPermissionPolicy
-  public var kind: AnthropicWriteKind
+  public var name: AnthropicBetaManagedAgentsWriteToolConfig.Name
+  public var permissionPolicy: AnthropicBetaManagedAgentsWriteToolConfigPermissionPolicy
+  public var kind: AnthropicBetaManagedAgentsWriteToolConfig.Kind
 
   public init(
     enabled: Bool,
-    permissionPolicy: AnthropicBetaManagedAgentsPermissionPolicy,
-    name: AnthropicWriteName = .write,
-    kind: AnthropicWriteKind = .write
+    name: AnthropicBetaManagedAgentsWriteToolConfig.Name,
+    permissionPolicy: AnthropicBetaManagedAgentsWriteToolConfigPermissionPolicy,
+    kind: AnthropicBetaManagedAgentsWriteToolConfig.Kind
   ) {
     self.enabled = enabled
     self.name = name
@@ -33,5 +33,13 @@ public struct AnthropicBetaManagedAgentsWriteToolConfig: Codable, Sendable {
     case name
     case permissionPolicy = "permission_policy"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case write = "write"
+  }
+
+  public enum Name: String, Codable, Hashable, Sendable {
+    case write = "write"
   }
 }

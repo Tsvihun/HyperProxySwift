@@ -16,7 +16,7 @@ public struct AnthropicBetaSkillVersion: Codable, Sendable {
   public var id: String
   public var name: String
   public var skillId: String
-  public var kind: AnthropicSkillVersionKind
+  public var kind: AnthropicBetaSkillVersion.Kind
 
   public init(
     createdAt: String,
@@ -24,7 +24,7 @@ public struct AnthropicBetaSkillVersion: Codable, Sendable {
     id: String,
     name: String,
     skillId: String,
-    kind: AnthropicSkillVersionKind = .skillVersion
+    kind: AnthropicBetaSkillVersion.Kind
   ) {
     self.createdAt = createdAt
     self.description = description
@@ -41,5 +41,9 @@ public struct AnthropicBetaSkillVersion: Codable, Sendable {
     case name
     case skillId = "skill_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case skillVersion = "skill_version"
   }
 }

@@ -11,33 +11,35 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaWebFetchTool20260318: Codable, Sendable {
-  public var allowedCallers: [AnthropicBetaAllowedCaller]?
+  public var allowedCallers: [AnthropicBetaWebFetchTool20260318AllowedCallersItem]?
   public var allowedDomains: [String]?
   public var blockedDomains: [String]?
   public var cacheControl: AnthropicBetaCacheControlEphemeral?
-  public var citations: AnthropicBetaRequestCitationsConfig?
+  public var citations: AnthropicBetaCitationsConfigParam?
   public var deferLoading: Bool?
   public var maxContentTokens: Int?
   public var maxUses: Int?
-  public var name: AnthropicWebFetchName
+  public var name: AnthropicBetaWebFetchTool20260318.Name
   public var responseInclusion: AnthropicBetaWebFetchTool20260318.ResponseInclusion?
   public var strict: Bool?
-  public var kind: AnthropicWebFetch20260318Kind
+  public var kind: AnthropicBetaWebFetchTool20260318.Kind
+  public var urlSources: AnthropicBetaWebFetchURLSources?
   public var useCache: Bool?
 
   public init(
-    name: AnthropicWebFetchName = .webFetch,
-    kind: AnthropicWebFetch20260318Kind = .webFetch20260318,
-    allowedCallers: [AnthropicBetaAllowedCaller]? = nil,
+    name: AnthropicBetaWebFetchTool20260318.Name,
+    kind: AnthropicBetaWebFetchTool20260318.Kind,
+    allowedCallers: [AnthropicBetaWebFetchTool20260318AllowedCallersItem]? = nil,
     allowedDomains: [String]? = nil,
     blockedDomains: [String]? = nil,
     cacheControl: AnthropicBetaCacheControlEphemeral? = nil,
-    citations: AnthropicBetaRequestCitationsConfig? = nil,
+    citations: AnthropicBetaCitationsConfigParam? = nil,
     deferLoading: Bool? = nil,
     maxContentTokens: Int? = nil,
     maxUses: Int? = nil,
     responseInclusion: AnthropicBetaWebFetchTool20260318.ResponseInclusion? = nil,
     strict: Bool? = nil,
+    urlSources: AnthropicBetaWebFetchURLSources? = nil,
     useCache: Bool? = nil
   ) {
     self.allowedCallers = allowedCallers
@@ -52,6 +54,7 @@ public struct AnthropicBetaWebFetchTool20260318: Codable, Sendable {
     self.responseInclusion = responseInclusion
     self.strict = strict
     self.kind = kind
+    self.urlSources = urlSources
     self.useCache = useCache
   }
 
@@ -68,7 +71,16 @@ public struct AnthropicBetaWebFetchTool20260318: Codable, Sendable {
     case responseInclusion = "response_inclusion"
     case strict
     case kind = "type"
+    case urlSources = "url_sources"
     case useCache = "use_cache"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case webFetch20260318 = "web_fetch_20260318"
+  }
+
+  public enum Name: String, Codable, Hashable, Sendable {
+    case webFetch = "web_fetch"
   }
 
   public enum ResponseInclusion: String, Codable, Hashable, Sendable {

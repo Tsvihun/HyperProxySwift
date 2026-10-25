@@ -11,21 +11,21 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaWebSearchTool20260209: Codable, Sendable {
-  public var allowedCallers: [AnthropicBetaAllowedCaller]?
+  public var allowedCallers: [AnthropicBetaWebSearchTool20260209AllowedCallersItem]?
   public var allowedDomains: [String]?
   public var blockedDomains: [String]?
   public var cacheControl: AnthropicBetaCacheControlEphemeral?
   public var deferLoading: Bool?
   public var maxUses: Int?
-  public var name: AnthropicWebSearchName
+  public var name: AnthropicBetaWebSearchTool20260209.Name
   public var strict: Bool?
-  public var kind: AnthropicWebSearch20260209Kind
+  public var kind: AnthropicBetaWebSearchTool20260209.Kind
   public var userLocation: AnthropicBetaUserLocation?
 
   public init(
-    name: AnthropicWebSearchName = .webSearch,
-    kind: AnthropicWebSearch20260209Kind = .webSearch20260209,
-    allowedCallers: [AnthropicBetaAllowedCaller]? = nil,
+    name: AnthropicBetaWebSearchTool20260209.Name,
+    kind: AnthropicBetaWebSearchTool20260209.Kind,
+    allowedCallers: [AnthropicBetaWebSearchTool20260209AllowedCallersItem]? = nil,
     allowedDomains: [String]? = nil,
     blockedDomains: [String]? = nil,
     cacheControl: AnthropicBetaCacheControlEphemeral? = nil,
@@ -57,5 +57,13 @@ public struct AnthropicBetaWebSearchTool20260209: Codable, Sendable {
     case strict
     case kind = "type"
     case userLocation = "user_location"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case webSearch20260209 = "web_search_20260209"
+  }
+
+  public enum Name: String, Codable, Hashable, Sendable {
+    case webSearch = "web_search"
   }
 }

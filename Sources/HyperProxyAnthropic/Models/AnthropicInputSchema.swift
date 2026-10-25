@@ -10,24 +10,26 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicInputSchema: Codable, Sendable {
-  public var properties: [String: HyperProxyJSONValue]?
-  public var requiredValue: [String]?
-  public var kind: AnthropicObjectKind
+public enum AnthropicInputSchema: Codable, Sendable {
+  case inputSchemaTyped(AnthropicInputSchemaTyped)
+  case objectDictionary([String: HyperProxyJSONValue])
 
-  public init(
-    kind: AnthropicObjectKind = .object,
-    properties: [String: HyperProxyJSONValue]? = nil,
-    requiredValue: [String]? = nil
-  ) {
-    self.properties = properties
-    self.requiredValue = requiredValue
-    self.kind = kind
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(AnthropicInputSchemaTyped.self) {
+      self = .inputSchemaTyped(value)
+      return
+    }
+    self = .objectDictionary(try container.decode([String: HyperProxyJSONValue].self))
   }
 
-  enum CodingKeys: String, CodingKey {
-    case properties
-    case requiredValue = "required"
-    case kind = "type"
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .inputSchemaTyped(let value):
+      try container.encode(value)
+    case .objectDictionary(let value):
+      try container.encode(value)
+    }
   }
 }

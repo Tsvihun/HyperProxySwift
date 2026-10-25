@@ -11,31 +11,39 @@ import Foundation
 import HyperProxyCore
 
 public enum AnthropicThinkingConfigParam: Codable, Sendable {
-  case thinkingConfigEnabled(AnthropicThinkingConfigEnabled)
-  case thinkingConfigDisabled(AnthropicThinkingConfigDisabled)
-  case thinkingConfigAdaptive(AnthropicThinkingConfigAdaptive)
+  case thinkingConfigEnabledParam(AnthropicThinkingConfigEnabledParam)
+  case thinkingConfigDisabledParam(AnthropicThinkingConfigDisabledParam)
+  case thinkingConfigBetweenToolsParam(AnthropicThinkingConfigBetweenToolsParam)
+  case thinkingConfigAdaptiveParam(AnthropicThinkingConfigAdaptiveParam)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(AnthropicThinkingConfigEnabled.self) {
-      self = .thinkingConfigEnabled(value)
+    if let value = try? container.decode(AnthropicThinkingConfigEnabledParam.self) {
+      self = .thinkingConfigEnabledParam(value)
       return
     }
-    if let value = try? container.decode(AnthropicThinkingConfigDisabled.self) {
-      self = .thinkingConfigDisabled(value)
+    if let value = try? container.decode(AnthropicThinkingConfigDisabledParam.self) {
+      self = .thinkingConfigDisabledParam(value)
       return
     }
-    self = .thinkingConfigAdaptive(try container.decode(AnthropicThinkingConfigAdaptive.self))
+    if let value = try? container.decode(AnthropicThinkingConfigBetweenToolsParam.self) {
+      self = .thinkingConfigBetweenToolsParam(value)
+      return
+    }
+    self = .thinkingConfigAdaptiveParam(
+      try container.decode(AnthropicThinkingConfigAdaptiveParam.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .thinkingConfigEnabled(let value):
+    case .thinkingConfigEnabledParam(let value):
       try container.encode(value)
-    case .thinkingConfigDisabled(let value):
+    case .thinkingConfigDisabledParam(let value):
       try container.encode(value)
-    case .thinkingConfigAdaptive(let value):
+    case .thinkingConfigBetweenToolsParam(let value):
+      try container.encode(value)
+    case .thinkingConfigAdaptiveParam(let value):
       try container.encode(value)
     }
   }

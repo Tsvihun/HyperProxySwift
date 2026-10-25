@@ -11,42 +11,45 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsAgent: Codable, Sendable {
-  public var archivedAt: AnthropicBetaTimestamp?
-  public var createdAt: AnthropicBetaTimestamp
+  public var archivedAt: String?
+  public var createdAt: String
   public var description: String?
+  public var executionIdentity: AnthropicBetaManagedAgentsExecutionIdentity
   public var id: String
-  public var mcpServers: [AnthropicBetaManagedAgentsMCPServer]
+  public var mcpServers: [AnthropicBetaManagedAgentsMCPServerURLDefinition]
   public var metadata: [String: String]
   public var model: AnthropicBetaManagedAgentsModelConfig
   public var multiagent: AnthropicBetaManagedAgentsMultiagent?
   public var name: String
-  public var skills: [AnthropicBetaManagedAgentsSkill]
+  public var skills: [AnthropicBetaManagedAgentsAgentSkill]
   public var system: String?
   public var tools: [AnthropicBetaManagedAgentsAgentTool]
   public var kind: AnthropicBetaManagedAgentsAgent.Kind
-  public var updatedAt: AnthropicBetaTimestamp
+  public var updatedAt: String
   public var version: Int
 
   public init(
-    archivedAt: AnthropicBetaTimestamp?,
-    createdAt: AnthropicBetaTimestamp,
-    description: String?,
+    createdAt: String,
+    executionIdentity: AnthropicBetaManagedAgentsExecutionIdentity,
     id: String,
-    mcpServers: [AnthropicBetaManagedAgentsMCPServer],
+    mcpServers: [AnthropicBetaManagedAgentsMCPServerURLDefinition],
     metadata: [String: String],
     model: AnthropicBetaManagedAgentsModelConfig,
-    multiagent: AnthropicBetaManagedAgentsMultiagent?,
     name: String,
-    skills: [AnthropicBetaManagedAgentsSkill],
-    system: String?,
+    skills: [AnthropicBetaManagedAgentsAgentSkill],
     tools: [AnthropicBetaManagedAgentsAgentTool],
     kind: AnthropicBetaManagedAgentsAgent.Kind,
-    updatedAt: AnthropicBetaTimestamp,
-    version: Int
+    updatedAt: String,
+    version: Int,
+    archivedAt: String? = nil,
+    description: String? = nil,
+    multiagent: AnthropicBetaManagedAgentsMultiagent? = nil,
+    system: String? = nil
   ) {
     self.archivedAt = archivedAt
     self.createdAt = createdAt
     self.description = description
+    self.executionIdentity = executionIdentity
     self.id = id
     self.mcpServers = mcpServers
     self.metadata = metadata
@@ -65,6 +68,7 @@ public struct AnthropicBetaManagedAgentsAgent: Codable, Sendable {
     case archivedAt = "archived_at"
     case createdAt = "created_at"
     case description
+    case executionIdentity = "execution_identity"
     case id
     case mcpServers = "mcp_servers"
     case metadata

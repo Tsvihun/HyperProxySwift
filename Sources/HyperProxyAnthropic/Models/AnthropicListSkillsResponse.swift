@@ -16,7 +16,7 @@ public struct AnthropicListSkillsResponse: Codable, Sendable {
 
   public init(
     data: [AnthropicSkill],
-    nextPage: String?
+    nextPage: String? = nil
   ) {
     self.data = data
     self.nextPage = nextPage

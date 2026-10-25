@@ -13,29 +13,32 @@ import HyperProxyCore
 public struct AnthropicMessage: Codable, Sendable {
   public var container: AnthropicContainer?
   public var content: [AnthropicContentBlock]
+  public var diagnostics: AnthropicDiagnostics?
   public var id: String
   public var model: AnthropicModel
-  public var role: AnthropicAssistantRole
+  public var role: AnthropicMessage.Role
   public var stopDetails: AnthropicRefusalStopDetails?
   public var stopReason: AnthropicStopReason?
   public var stopSequence: String?
-  public var kind: AnthropicMessageKind
+  public var kind: AnthropicMessage.Kind
   public var usage: AnthropicUsage
 
   public init(
-    container: AnthropicContainer?,
     content: [AnthropicContentBlock],
     id: String,
     model: AnthropicModel,
-    stopDetails: AnthropicRefusalStopDetails?,
-    stopReason: AnthropicStopReason?,
-    stopSequence: String?,
+    role: AnthropicMessage.Role,
+    kind: AnthropicMessage.Kind,
     usage: AnthropicUsage,
-    role: AnthropicAssistantRole = .assistant,
-    kind: AnthropicMessageKind = .message
+    container: AnthropicContainer? = nil,
+    diagnostics: AnthropicDiagnostics? = nil,
+    stopDetails: AnthropicRefusalStopDetails? = nil,
+    stopReason: AnthropicStopReason? = nil,
+    stopSequence: String? = nil
   ) {
     self.container = container
     self.content = content
+    self.diagnostics = diagnostics
     self.id = id
     self.model = model
     self.role = role
@@ -49,6 +52,7 @@ public struct AnthropicMessage: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case container
     case content
+    case diagnostics
     case id
     case model
     case role
@@ -57,5 +61,13 @@ public struct AnthropicMessage: Codable, Sendable {
     case stopSequence = "stop_sequence"
     case kind = "type"
     case usage
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case message = "message"
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case assistant = "assistant"
   }
 }

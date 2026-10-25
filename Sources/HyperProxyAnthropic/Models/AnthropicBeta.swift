@@ -34,6 +34,7 @@ public enum AnthropicBeta: RawRepresentable, Codable, Hashable, Sendable {
   case output300k2026_03_24
   case userProfiles2026_03_24
   case userProfiles2026_08_18
+  case userProfiles2026_09_04
   case advisorTool2026_03_01
   case managedAgents2026_04_01
   case cacheDiagnosis2026_04_07
@@ -52,6 +53,19 @@ public enum AnthropicBeta: RawRepresentable, Codable, Hashable, Sendable {
   case taskBudgets2026_03_13
   case thinkingDisplayUpdates2026_08_18
   case ceUserManagement2026_07_13
+  case midConversationOutputConfig2026_07_01
+  case thinkingBindingControls2026_08_01
+  case midConversationSystemClearAt2026_08_21
+  case compact2026_09_04
+  case inlineTools2026_09_15
+  case mcpClient2026_09_15
+  case cePlugins2026_09_01
+  case spendLimitReads2026_09_26
+  case telemetryDestinations2026_08_11
+  case webhooks2026_10_07
+  case messageThreads2026_08_12
+  case analyticsUsageCost2026_08_24
+  case experimentalClaudeTag2026_10_21
   case custom(String)
 
   public init(rawValue: String) {
@@ -102,6 +116,8 @@ public enum AnthropicBeta: RawRepresentable, Codable, Hashable, Sendable {
       self = .userProfiles2026_03_24
     case "user-profiles-2026-08-18":
       self = .userProfiles2026_08_18
+    case "user-profiles-2026-09-04":
+      self = .userProfiles2026_09_04
     case "advisor-tool-2026-03-01":
       self = .advisorTool2026_03_01
     case "managed-agents-2026-04-01":
@@ -138,6 +154,32 @@ public enum AnthropicBeta: RawRepresentable, Codable, Hashable, Sendable {
       self = .thinkingDisplayUpdates2026_08_18
     case "ce-user-management-2026-07-13":
       self = .ceUserManagement2026_07_13
+    case "mid-conversation-output-config-2026-07-01":
+      self = .midConversationOutputConfig2026_07_01
+    case "thinking-binding-controls-2026-08-01":
+      self = .thinkingBindingControls2026_08_01
+    case "mid-conversation-system-clear-at-2026-08-21":
+      self = .midConversationSystemClearAt2026_08_21
+    case "compact-2026-09-04":
+      self = .compact2026_09_04
+    case "inline-tools-2026-09-15":
+      self = .inlineTools2026_09_15
+    case "mcp-client-2026-09-15":
+      self = .mcpClient2026_09_15
+    case "ce-plugins-2026-09-01":
+      self = .cePlugins2026_09_01
+    case "spend-limit-reads-2026-09-26":
+      self = .spendLimitReads2026_09_26
+    case "telemetry-destinations-2026-08-11":
+      self = .telemetryDestinations2026_08_11
+    case "webhooks-2026-10-07":
+      self = .webhooks2026_10_07
+    case "message-threads-2026-08-12":
+      self = .messageThreads2026_08_12
+    case "analytics-usage-cost-2026-08-24":
+      self = .analyticsUsageCost2026_08_24
+    case "experimental-claude-tag-2026-10-21":
+      self = .experimentalClaudeTag2026_10_21
     default:
       self = .custom(rawValue)
     }
@@ -191,6 +233,8 @@ public enum AnthropicBeta: RawRepresentable, Codable, Hashable, Sendable {
       return "user-profiles-2026-03-24"
     case .userProfiles2026_08_18:
       return "user-profiles-2026-08-18"
+    case .userProfiles2026_09_04:
+      return "user-profiles-2026-09-04"
     case .advisorTool2026_03_01:
       return "advisor-tool-2026-03-01"
     case .managedAgents2026_04_01:
@@ -227,6 +271,32 @@ public enum AnthropicBeta: RawRepresentable, Codable, Hashable, Sendable {
       return "thinking-display-updates-2026-08-18"
     case .ceUserManagement2026_07_13:
       return "ce-user-management-2026-07-13"
+    case .midConversationOutputConfig2026_07_01:
+      return "mid-conversation-output-config-2026-07-01"
+    case .thinkingBindingControls2026_08_01:
+      return "thinking-binding-controls-2026-08-01"
+    case .midConversationSystemClearAt2026_08_21:
+      return "mid-conversation-system-clear-at-2026-08-21"
+    case .compact2026_09_04:
+      return "compact-2026-09-04"
+    case .inlineTools2026_09_15:
+      return "inline-tools-2026-09-15"
+    case .mcpClient2026_09_15:
+      return "mcp-client-2026-09-15"
+    case .cePlugins2026_09_01:
+      return "ce-plugins-2026-09-01"
+    case .spendLimitReads2026_09_26:
+      return "spend-limit-reads-2026-09-26"
+    case .telemetryDestinations2026_08_11:
+      return "telemetry-destinations-2026-08-11"
+    case .webhooks2026_10_07:
+      return "webhooks-2026-10-07"
+    case .messageThreads2026_08_12:
+      return "message-threads-2026-08-12"
+    case .analyticsUsageCost2026_08_24:
+      return "analytics-usage-cost-2026-08-24"
+    case .experimentalClaudeTag2026_10_21:
+      return "experimental-claude-tag-2026-10-21"
     case .custom(let value):
       return value
     }
@@ -266,6 +336,7 @@ public enum AnthropicBeta: RawRepresentable, Codable, Hashable, Sendable {
     case output300k2026_03_24 = "output-300k-2026-03-24"
     case userProfiles2026_03_24 = "user-profiles-2026-03-24"
     case userProfiles2026_08_18 = "user-profiles-2026-08-18"
+    case userProfiles2026_09_04 = "user-profiles-2026-09-04"
     case advisorTool2026_03_01 = "advisor-tool-2026-03-01"
     case managedAgents2026_04_01 = "managed-agents-2026-04-01"
     case cacheDiagnosis2026_04_07 = "cache-diagnosis-2026-04-07"
@@ -284,5 +355,18 @@ public enum AnthropicBeta: RawRepresentable, Codable, Hashable, Sendable {
     case taskBudgets2026_03_13 = "task-budgets-2026-03-13"
     case thinkingDisplayUpdates2026_08_18 = "thinking-display-updates-2026-08-18"
     case ceUserManagement2026_07_13 = "ce-user-management-2026-07-13"
+    case midConversationOutputConfig2026_07_01 = "mid-conversation-output-config-2026-07-01"
+    case thinkingBindingControls2026_08_01 = "thinking-binding-controls-2026-08-01"
+    case midConversationSystemClearAt2026_08_21 = "mid-conversation-system-clear-at-2026-08-21"
+    case compact2026_09_04 = "compact-2026-09-04"
+    case inlineTools2026_09_15 = "inline-tools-2026-09-15"
+    case mcpClient2026_09_15 = "mcp-client-2026-09-15"
+    case cePlugins2026_09_01 = "ce-plugins-2026-09-01"
+    case spendLimitReads2026_09_26 = "spend-limit-reads-2026-09-26"
+    case telemetryDestinations2026_08_11 = "telemetry-destinations-2026-08-11"
+    case webhooks2026_10_07 = "webhooks-2026-10-07"
+    case messageThreads2026_08_12 = "message-threads-2026-08-12"
+    case analyticsUsageCost2026_08_24 = "analytics-usage-cost-2026-08-24"
+    case experimentalClaudeTag2026_10_21 = "experimental-claude-tag-2026-10-21"
   }
 }

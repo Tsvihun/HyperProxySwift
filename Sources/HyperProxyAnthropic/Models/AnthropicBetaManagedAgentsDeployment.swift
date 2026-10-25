@@ -12,9 +12,9 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsDeployment: Codable, Sendable {
   public var agent: AnthropicBetaManagedAgentsAgentReference
-  public var archivedAt: AnthropicBetaTimestamp?
-  public var budget: AnthropicBetaManagedAgentsBudget?
-  public var createdAt: AnthropicBetaTimestamp
+  public var archivedAt: String?
+  public var budget: AnthropicBetaManagedAgentsBudgetLimit?
+  public var createdAt: String
   public var description: String?
   public var environmentId: String
   public var id: String
@@ -26,27 +26,27 @@ public struct AnthropicBetaManagedAgentsDeployment: Codable, Sendable {
   public var schedule: AnthropicBetaManagedAgentsSchedule?
   public var status: AnthropicBetaManagedAgentsDeploymentStatus
   public var kind: AnthropicBetaManagedAgentsDeployment.Kind
-  public var updatedAt: AnthropicBetaTimestamp
+  public var updatedAt: String
   public var vaultIds: [String]
 
   public init(
     agent: AnthropicBetaManagedAgentsAgentReference,
-    archivedAt: AnthropicBetaTimestamp?,
-    createdAt: AnthropicBetaTimestamp,
-    description: String?,
+    createdAt: String,
     environmentId: String,
     id: String,
     initialEvents: [AnthropicBetaManagedAgentsDeploymentInitialEvent],
     metadata: [String: String],
     name: String,
-    pausedReason: AnthropicBetaManagedAgentsDeploymentPausedReason?,
     resources: [AnthropicBetaManagedAgentsSessionResourceConfig],
-    schedule: AnthropicBetaManagedAgentsSchedule?,
     status: AnthropicBetaManagedAgentsDeploymentStatus,
     kind: AnthropicBetaManagedAgentsDeployment.Kind,
-    updatedAt: AnthropicBetaTimestamp,
+    updatedAt: String,
     vaultIds: [String],
-    budget: AnthropicBetaManagedAgentsBudget? = nil
+    archivedAt: String? = nil,
+    budget: AnthropicBetaManagedAgentsBudgetLimit? = nil,
+    description: String? = nil,
+    pausedReason: AnthropicBetaManagedAgentsDeploymentPausedReason? = nil,
+    schedule: AnthropicBetaManagedAgentsSchedule? = nil
   ) {
     self.agent = agent
     self.archivedAt = archivedAt

@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsSystemMessageEventParams: Codable, Sendable {
-  public var content: [AnthropicBetaManagedAgentsSystemContentBlock]
+  public var content: [AnthropicBetaManagedAgentsSystemContentBlockParam]
   public var kind: AnthropicBetaManagedAgentsSystemMessageEventParams.Kind
 
   public init(
-    content: [AnthropicBetaManagedAgentsSystemContentBlock],
+    content: [AnthropicBetaManagedAgentsSystemContentBlockParam],
     kind: AnthropicBetaManagedAgentsSystemMessageEventParams.Kind
   ) {
     self.content = content

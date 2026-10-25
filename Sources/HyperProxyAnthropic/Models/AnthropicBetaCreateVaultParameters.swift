@@ -13,17 +13,21 @@ import HyperProxyCore
 public struct AnthropicBetaCreateVaultParameters: Codable, Sendable {
   public var anthropicBeta: String?
   public var anthropicVersion: String?
+  public var anthropicWorkspaceId: String?
 
   public init(
     anthropicBeta: String? = nil,
-    anthropicVersion: String? = nil
+    anthropicVersion: String? = nil,
+    anthropicWorkspaceId: String? = nil
   ) {
     self.anthropicBeta = anthropicBeta
     self.anthropicVersion = anthropicVersion
+    self.anthropicWorkspaceId = anthropicWorkspaceId
   }
 
   enum CodingKeys: String, CodingKey {
     case anthropicBeta = "anthropic-beta"
     case anthropicVersion = "anthropic-version"
+    case anthropicWorkspaceId = "anthropic-workspace-id"
   }
 }

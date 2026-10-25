@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct AnthropicMessageBatchesListParameters: Codable, Sendable {
   public var afterId: String?
   public var anthropicVersion: String?
+  public var anthropicWorkspaceId: String?
   public var beforeId: String?
   public var limit: Int?
   public var xApiKey: String?
@@ -20,12 +21,14 @@ public struct AnthropicMessageBatchesListParameters: Codable, Sendable {
   public init(
     afterId: String? = nil,
     anthropicVersion: String? = nil,
+    anthropicWorkspaceId: String? = nil,
     beforeId: String? = nil,
     limit: Int? = nil,
     xApiKey: String? = nil
   ) {
     self.afterId = afterId
     self.anthropicVersion = anthropicVersion
+    self.anthropicWorkspaceId = anthropicWorkspaceId
     self.beforeId = beforeId
     self.limit = limit
     self.xApiKey = xApiKey
@@ -34,6 +37,7 @@ public struct AnthropicMessageBatchesListParameters: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case afterId = "after_id"
     case anthropicVersion = "anthropic-version"
+    case anthropicWorkspaceId = "anthropic-workspace-id"
     case beforeId = "before_id"
     case limit
     case xApiKey = "x-api-key"

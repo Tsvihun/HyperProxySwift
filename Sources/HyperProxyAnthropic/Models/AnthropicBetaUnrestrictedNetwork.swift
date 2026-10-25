@@ -14,7 +14,7 @@ public struct AnthropicBetaUnrestrictedNetwork: Codable, Sendable {
   public var kind: AnthropicBetaUnrestrictedNetwork.Kind
 
   public init(
-    kind: AnthropicBetaUnrestrictedNetwork.Kind = .unrestricted
+    kind: AnthropicBetaUnrestrictedNetwork.Kind
   ) {
     self.kind = kind
   }

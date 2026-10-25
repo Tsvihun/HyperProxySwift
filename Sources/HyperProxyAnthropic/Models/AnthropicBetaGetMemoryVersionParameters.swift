@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct AnthropicBetaGetMemoryVersionParameters: Codable, Sendable {
   public var anthropicBeta: String?
   public var anthropicVersion: String?
+  public var anthropicWorkspaceId: String?
   public var memoryStoreId: String
   public var memoryVersionId: String
   public var view: AnthropicBetaManagedAgentsMemoryView?
@@ -23,11 +24,13 @@ public struct AnthropicBetaGetMemoryVersionParameters: Codable, Sendable {
     memoryVersionId: String,
     anthropicBeta: String? = nil,
     anthropicVersion: String? = nil,
+    anthropicWorkspaceId: String? = nil,
     view: AnthropicBetaManagedAgentsMemoryView? = nil,
     xApiKey: String? = nil
   ) {
     self.anthropicBeta = anthropicBeta
     self.anthropicVersion = anthropicVersion
+    self.anthropicWorkspaceId = anthropicWorkspaceId
     self.memoryStoreId = memoryStoreId
     self.memoryVersionId = memoryVersionId
     self.view = view
@@ -37,6 +40,7 @@ public struct AnthropicBetaGetMemoryVersionParameters: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case anthropicBeta = "anthropic-beta"
     case anthropicVersion = "anthropic-version"
+    case anthropicWorkspaceId = "anthropic-workspace-id"
     case memoryStoreId = "memory_store_id"
     case memoryVersionId = "memory_version_id"
     case view

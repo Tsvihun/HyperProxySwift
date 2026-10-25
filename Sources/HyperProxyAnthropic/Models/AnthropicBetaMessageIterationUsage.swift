@@ -15,18 +15,18 @@ public struct AnthropicBetaMessageIterationUsage: Codable, Sendable {
   public var cacheCreationInputTokens: Int
   public var cacheReadInputTokens: Int
   public var inputTokens: Int
-  public var model: AnthropicModel
+  public var model: AnthropicModel?
   public var outputTokens: Int
-  public var kind: AnthropicMessageKind
+  public var kind: AnthropicBetaMessageIterationUsage.Kind
 
   public init(
-    cacheCreation: AnthropicBetaCacheCreation?,
     cacheCreationInputTokens: Int,
     cacheReadInputTokens: Int,
     inputTokens: Int,
-    model: AnthropicModel,
     outputTokens: Int,
-    kind: AnthropicMessageKind = .message
+    kind: AnthropicBetaMessageIterationUsage.Kind,
+    cacheCreation: AnthropicBetaCacheCreation? = nil,
+    model: AnthropicModel? = nil
   ) {
     self.cacheCreation = cacheCreation
     self.cacheCreationInputTokens = cacheCreationInputTokens
@@ -45,5 +45,9 @@ public struct AnthropicBetaMessageIterationUsage: Codable, Sendable {
     case model
     case outputTokens = "output_tokens"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case message = "message"
   }
 }

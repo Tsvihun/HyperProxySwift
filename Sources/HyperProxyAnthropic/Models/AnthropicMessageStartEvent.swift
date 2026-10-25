@@ -10,20 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicMessageStartEvent: Codable, Sendable {
-  public var message: AnthropicMessage
-  public var kind: AnthropicMessageStartKind
-
-  public init(
-    message: AnthropicMessage,
-    kind: AnthropicMessageStartKind = .messageStart
-  ) {
-    self.message = message
-    self.kind = kind
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case message
-    case kind = "type"
-  }
-}
+public typealias AnthropicMessageStartEvent = AnthropicRawMessageStartEvent

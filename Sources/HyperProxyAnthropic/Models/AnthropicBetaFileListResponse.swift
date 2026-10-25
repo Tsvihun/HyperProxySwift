@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaFileListResponse: Codable, Sendable {
-  public var data: [AnthropicBetaFileMetadataSchema]
+  public var data: [AnthropicBetaFileMetadata]
   public var nextPage: String?
 
   public init(
-    data: [AnthropicBetaFileMetadataSchema],
+    data: [AnthropicBetaFileMetadata],
     nextPage: String? = nil
   ) {
     self.data = data

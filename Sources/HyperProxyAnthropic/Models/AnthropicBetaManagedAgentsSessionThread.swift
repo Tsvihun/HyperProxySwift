@@ -11,30 +11,32 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsSessionThread: Codable, Sendable {
-  public var agent: AnthropicBetaManagedAgentsSessionThreadAgentEntry
-  public var archivedAt: AnthropicBetaTimestamp?
-  public var createdAt: AnthropicBetaTimestamp
+  public var agent: AnthropicBetaSessionsManagedAgentsSessionThreadAgent
+  public var archivedAt: String?
+  public var createdAt: String
   public var id: String
   public var parentThreadId: String?
   public var sessionId: String
   public var stats: AnthropicBetaManagedAgentsSessionThreadStats?
   public var status: AnthropicBetaManagedAgentsSessionThreadStatus
   public var kind: AnthropicBetaManagedAgentsSessionThread.Kind
-  public var updatedAt: AnthropicBetaTimestamp
+  public var updatedAt: String
   public var usage: AnthropicBetaManagedAgentsSessionThreadUsage?
+  public var workflowRunId: String?
 
   public init(
-    agent: AnthropicBetaManagedAgentsSessionThreadAgentEntry,
-    archivedAt: AnthropicBetaTimestamp?,
-    createdAt: AnthropicBetaTimestamp,
+    agent: AnthropicBetaSessionsManagedAgentsSessionThreadAgent,
+    createdAt: String,
     id: String,
-    parentThreadId: String?,
     sessionId: String,
-    stats: AnthropicBetaManagedAgentsSessionThreadStats?,
     status: AnthropicBetaManagedAgentsSessionThreadStatus,
     kind: AnthropicBetaManagedAgentsSessionThread.Kind,
-    updatedAt: AnthropicBetaTimestamp,
-    usage: AnthropicBetaManagedAgentsSessionThreadUsage?
+    updatedAt: String,
+    archivedAt: String? = nil,
+    parentThreadId: String? = nil,
+    stats: AnthropicBetaManagedAgentsSessionThreadStats? = nil,
+    usage: AnthropicBetaManagedAgentsSessionThreadUsage? = nil,
+    workflowRunId: String? = nil
   ) {
     self.agent = agent
     self.archivedAt = archivedAt
@@ -47,6 +49,7 @@ public struct AnthropicBetaManagedAgentsSessionThread: Codable, Sendable {
     self.kind = kind
     self.updatedAt = updatedAt
     self.usage = usage
+    self.workflowRunId = workflowRunId
   }
 
   enum CodingKeys: String, CodingKey {
@@ -61,6 +64,7 @@ public struct AnthropicBetaManagedAgentsSessionThread: Codable, Sendable {
     case kind = "type"
     case updatedAt = "updated_at"
     case usage
+    case workflowRunId = "workflow_run_id"
   }
 
   public enum Kind: String, Codable, Hashable, Sendable {

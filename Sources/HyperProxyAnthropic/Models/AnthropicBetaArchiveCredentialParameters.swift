@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct AnthropicBetaArchiveCredentialParameters: Codable, Sendable {
   public var anthropicBeta: String?
   public var anthropicVersion: String?
+  public var anthropicWorkspaceId: String?
   public var credentialId: String
   public var vaultId: String
 
@@ -20,10 +21,12 @@ public struct AnthropicBetaArchiveCredentialParameters: Codable, Sendable {
     credentialId: String,
     vaultId: String,
     anthropicBeta: String? = nil,
-    anthropicVersion: String? = nil
+    anthropicVersion: String? = nil,
+    anthropicWorkspaceId: String? = nil
   ) {
     self.anthropicBeta = anthropicBeta
     self.anthropicVersion = anthropicVersion
+    self.anthropicWorkspaceId = anthropicWorkspaceId
     self.credentialId = credentialId
     self.vaultId = vaultId
   }
@@ -31,6 +34,7 @@ public struct AnthropicBetaArchiveCredentialParameters: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case anthropicBeta = "anthropic-beta"
     case anthropicVersion = "anthropic-version"
+    case anthropicWorkspaceId = "anthropic-workspace-id"
     case credentialId = "credential_id"
     case vaultId = "vault_id"
   }

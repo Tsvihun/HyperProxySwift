@@ -11,21 +11,21 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaMemoryTool20250818: Codable, Sendable {
-  public var allowedCallers: [AnthropicBetaAllowedCaller]?
+  public var allowedCallers: [AnthropicBetaMemoryTool20250818AllowedCallersItem]?
   public var cacheControl: AnthropicBetaCacheControlEphemeral?
   public var deferLoading: Bool?
-  public var inputExamples: [[String: AnthropicBetaJsonValue]]?
-  public var name: AnthropicMemoryName
+  public var inputExamples: [[String: HyperProxyJSONValue]]?
+  public var name: AnthropicBetaMemoryTool20250818.Name
   public var strict: Bool?
-  public var kind: AnthropicMemory20250818Kind
+  public var kind: AnthropicBetaMemoryTool20250818.Kind
 
   public init(
-    name: AnthropicMemoryName = .memory,
-    kind: AnthropicMemory20250818Kind = .memory20250818,
-    allowedCallers: [AnthropicBetaAllowedCaller]? = nil,
+    name: AnthropicBetaMemoryTool20250818.Name,
+    kind: AnthropicBetaMemoryTool20250818.Kind,
+    allowedCallers: [AnthropicBetaMemoryTool20250818AllowedCallersItem]? = nil,
     cacheControl: AnthropicBetaCacheControlEphemeral? = nil,
     deferLoading: Bool? = nil,
-    inputExamples: [[String: AnthropicBetaJsonValue]]? = nil,
+    inputExamples: [[String: HyperProxyJSONValue]]? = nil,
     strict: Bool? = nil
   ) {
     self.allowedCallers = allowedCallers
@@ -45,5 +45,13 @@ public struct AnthropicBetaMemoryTool20250818: Codable, Sendable {
     case name
     case strict
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case memory20250818 = "memory_20250818"
+  }
+
+  public enum Name: String, Codable, Hashable, Sendable {
+    case memory = "memory"
   }
 }

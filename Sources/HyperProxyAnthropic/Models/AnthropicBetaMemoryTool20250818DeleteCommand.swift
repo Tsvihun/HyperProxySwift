@@ -15,8 +15,8 @@ public struct AnthropicBetaMemoryTool20250818DeleteCommand: Codable, Sendable {
   public var path: String
 
   public init(
-    path: String,
-    command: AnthropicBetaMemoryTool20250818DeleteCommand.Command = .delete
+    command: AnthropicBetaMemoryTool20250818DeleteCommand.Command,
+    path: String
   ) {
     self.command = command
     self.path = path

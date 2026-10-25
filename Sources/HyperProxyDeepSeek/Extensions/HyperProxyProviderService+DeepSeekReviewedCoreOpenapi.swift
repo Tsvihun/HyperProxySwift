@@ -147,4 +147,32 @@ extension HyperProxyProviderService where Operation == DeepSeekOperation {
       .timeout(timeout)
     return try await call.decoded(DeepSeekBalance.self)
   }
+
+  public func toolsFetch(
+    _ body: DeepSeekFetchRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> DeepSeekFetchResponse {
+    let call = self.call(.toolsFetch)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(DeepSeekFetchResponse.self)
+  }
+
+  public func toolsSearch(
+    _ body: DeepSeekSearchRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> DeepSeekSearchResponse {
+    let call = self.call(.toolsSearch)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(DeepSeekSearchResponse.self)
+  }
 }

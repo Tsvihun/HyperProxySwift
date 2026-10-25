@@ -24,7 +24,7 @@ public struct AnthropicBetaEffortCapability: Codable, Sendable {
     max: AnthropicBetaCapabilitySupport,
     medium: AnthropicBetaCapabilitySupport,
     supported: Bool,
-    xhigh: AnthropicBetaCapabilitySupport?
+    xhigh: AnthropicBetaCapabilitySupport? = nil
   ) {
     self.high = high
     self.low = low

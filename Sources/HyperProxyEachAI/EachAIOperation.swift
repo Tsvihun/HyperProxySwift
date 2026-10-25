@@ -17,6 +17,8 @@ public enum EachAIOperation: String, HyperProxyCatalogOperation {
   case audioSpeechCreate = "audio.speech.create"
   /// `POST v1/audio/transcriptions`
   case audioTranscriptionsCreate = "audio.transcriptions.create"
+  /// `GET v1/billing/balance`
+  case billingBalanceRetrieve = "billing.balance.retrieve"
   /// `POST v1/chat/completions`
   case chatCompletionsCreate = "chatCompletions.create"
   /// `GET v1/executions`

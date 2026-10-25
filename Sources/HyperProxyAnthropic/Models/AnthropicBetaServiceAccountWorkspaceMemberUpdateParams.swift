@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaServiceAccountWorkspaceMemberUpdateParams: Codable, Sendable {
-  public var workspaceRole: AnthropicBetaNoBillingWorkspaceRoleSchema
+  public var workspaceRole: AnthropicBetaNoBillingWorkspaceRole
 
   public init(
-    workspaceRole: AnthropicBetaNoBillingWorkspaceRoleSchema
+    workspaceRole: AnthropicBetaNoBillingWorkspaceRole
   ) {
     self.workspaceRole = workspaceRole
   }

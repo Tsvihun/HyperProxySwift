@@ -1,0 +1,25 @@
+//
+//  AnthropicUserProfilesActionUrlsCreateRequest.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+// Maintainer-generated release artifact. Do not edit by hand.
+
+import Foundation
+import HyperProxyCore
+
+public struct AnthropicUserProfilesActionUrlsCreateRequest: Codable, Sendable {
+  public var action: AnthropicUserProfileEnrollEndUserActionParam
+
+  public init(
+    action: AnthropicUserProfileEnrollEndUserActionParam
+  ) {
+    self.action = action
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case action
+  }
+}

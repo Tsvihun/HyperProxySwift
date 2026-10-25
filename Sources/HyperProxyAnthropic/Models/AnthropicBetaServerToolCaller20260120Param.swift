@@ -1,0 +1,33 @@
+//
+//  AnthropicBetaServerToolCaller20260120Param.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+// Maintainer-generated release artifact. Do not edit by hand.
+
+import Foundation
+import HyperProxyCore
+
+public struct AnthropicBetaServerToolCaller20260120Param: Codable, Sendable {
+  public var toolId: String
+  public var kind: AnthropicBetaServerToolCaller20260120Param.Kind
+
+  public init(
+    toolId: String,
+    kind: AnthropicBetaServerToolCaller20260120Param.Kind
+  ) {
+    self.toolId = toolId
+    self.kind = kind
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case toolId = "tool_id"
+    case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case codeExecution20260120 = "code_execution_20260120"
+  }
+}

@@ -19,8 +19,8 @@ public struct AnthropicBetaWebhookDeploymentRunStartedEventData: Codable, Sendab
   public init(
     id: String,
     organizationId: String,
-    workspaceId: String,
-    kind: AnthropicBetaWebhookDeploymentRunStartedEventData.Kind = .deploymentRunStarted
+    kind: AnthropicBetaWebhookDeploymentRunStartedEventData.Kind,
+    workspaceId: String
   ) {
     self.id = id
     self.organizationId = organizationId
@@ -35,7 +35,9 @@ public struct AnthropicBetaWebhookDeploymentRunStartedEventData: Codable, Sendab
     case workspaceId = "workspace_id"
   }
 
-  public enum Kind: String, Codable, Hashable, Sendable {
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
     case deploymentRunStarted = "deployment_run.started"
   }
 }

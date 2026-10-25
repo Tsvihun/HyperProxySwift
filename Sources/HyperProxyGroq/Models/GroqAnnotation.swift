@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct GroqAnnotation: Codable, Sendable {
-  public var documentCitation: GroqDocumentCitation?
-  public var functionCitation: GroqFunctionCitation?
+  public var documentCitation: GroqAnnotationDocumentCitation?
+  public var functionCitation: GroqAnnotationFunctionCitation?
   public var kind: GroqAnnotation.Kind
 
   public init(
     kind: GroqAnnotation.Kind,
-    documentCitation: GroqDocumentCitation? = nil,
-    functionCitation: GroqFunctionCitation? = nil
+    documentCitation: GroqAnnotationDocumentCitation? = nil,
+    functionCitation: GroqAnnotationFunctionCitation? = nil
   ) {
     self.documentCitation = documentCitation
     self.functionCitation = functionCitation

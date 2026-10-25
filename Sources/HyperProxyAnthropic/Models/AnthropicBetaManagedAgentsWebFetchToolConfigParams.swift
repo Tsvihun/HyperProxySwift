@@ -15,18 +15,20 @@ public struct AnthropicBetaManagedAgentsWebFetchToolConfigParams: Codable, Senda
   public var blockedDomains: [String]?
   public var enabled: Bool?
   public var maxContentTokens: Int?
-  public var name: AnthropicWebFetchName
-  public var permissionPolicy: AnthropicBetaManagedAgentsPermissionPolicy?
-  public var kind: AnthropicWebFetchKind?
+  public var name: AnthropicBetaManagedAgentsWebFetchToolConfigParams.Name
+  public var permissionPolicy: AnthropicBetaManagedAgentsWebFetchToolConfigParamsPermissionPolicy?
+  public var kind: AnthropicBetaManagedAgentsWebFetchToolConfigParams.Kind?
+  public var urlSources: AnthropicBetaManagedAgentsWebFetchURLSourcesParams?
 
   public init(
-    name: AnthropicWebFetchName = .webFetch,
+    name: AnthropicBetaManagedAgentsWebFetchToolConfigParams.Name,
     allowedDomains: [String]? = nil,
     blockedDomains: [String]? = nil,
     enabled: Bool? = nil,
     maxContentTokens: Int? = nil,
-    permissionPolicy: AnthropicBetaManagedAgentsPermissionPolicy? = nil,
-    kind: AnthropicWebFetchKind? = nil
+    permissionPolicy: AnthropicBetaManagedAgentsWebFetchToolConfigParamsPermissionPolicy? = nil,
+    kind: AnthropicBetaManagedAgentsWebFetchToolConfigParams.Kind? = nil,
+    urlSources: AnthropicBetaManagedAgentsWebFetchURLSourcesParams? = nil
   ) {
     self.allowedDomains = allowedDomains
     self.blockedDomains = blockedDomains
@@ -35,6 +37,7 @@ public struct AnthropicBetaManagedAgentsWebFetchToolConfigParams: Codable, Senda
     self.name = name
     self.permissionPolicy = permissionPolicy
     self.kind = kind
+    self.urlSources = urlSources
   }
 
   enum CodingKeys: String, CodingKey {
@@ -45,5 +48,18 @@ public struct AnthropicBetaManagedAgentsWebFetchToolConfigParams: Codable, Senda
     case name
     case permissionPolicy = "permission_policy"
     case kind = "type"
+    case urlSources = "url_sources"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case webFetch = "web_fetch"
+  }
+
+  public enum Name: String, Codable, Hashable,
+    Sendable
+  {
+    case webFetch = "web_fetch"
   }
 }

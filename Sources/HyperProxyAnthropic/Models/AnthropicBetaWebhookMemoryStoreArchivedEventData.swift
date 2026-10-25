@@ -19,8 +19,8 @@ public struct AnthropicBetaWebhookMemoryStoreArchivedEventData: Codable, Sendabl
   public init(
     id: String,
     organizationId: String,
-    workspaceId: String,
-    kind: AnthropicBetaWebhookMemoryStoreArchivedEventData.Kind = .memoryStoreArchived
+    kind: AnthropicBetaWebhookMemoryStoreArchivedEventData.Kind,
+    workspaceId: String
   ) {
     self.id = id
     self.organizationId = organizationId
@@ -35,7 +35,9 @@ public struct AnthropicBetaWebhookMemoryStoreArchivedEventData: Codable, Sendabl
     case workspaceId = "workspace_id"
   }
 
-  public enum Kind: String, Codable, Hashable, Sendable {
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
     case memoryStoreArchived = "memory_store.archived"
   }
 }

@@ -12,15 +12,15 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsGrepToolConfigParams: Codable, Sendable {
   public var enabled: Bool?
-  public var name: AnthropicGrepName
-  public var permissionPolicy: AnthropicBetaManagedAgentsPermissionPolicy?
-  public var kind: AnthropicGrepKind?
+  public var name: AnthropicBetaManagedAgentsGrepToolConfigParams.Name
+  public var permissionPolicy: AnthropicBetaManagedAgentsGrepToolConfigParamsPermissionPolicy?
+  public var kind: AnthropicBetaManagedAgentsGrepToolConfigParams.Kind?
 
   public init(
-    name: AnthropicGrepName = .grep,
+    name: AnthropicBetaManagedAgentsGrepToolConfigParams.Name,
     enabled: Bool? = nil,
-    permissionPolicy: AnthropicBetaManagedAgentsPermissionPolicy? = nil,
-    kind: AnthropicGrepKind? = nil
+    permissionPolicy: AnthropicBetaManagedAgentsGrepToolConfigParamsPermissionPolicy? = nil,
+    kind: AnthropicBetaManagedAgentsGrepToolConfigParams.Kind? = nil
   ) {
     self.enabled = enabled
     self.name = name
@@ -33,5 +33,13 @@ public struct AnthropicBetaManagedAgentsGrepToolConfigParams: Codable, Sendable 
     case name
     case permissionPolicy = "permission_policy"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case grep = "grep"
+  }
+
+  public enum Name: String, Codable, Hashable, Sendable {
+    case grep = "grep"
   }
 }

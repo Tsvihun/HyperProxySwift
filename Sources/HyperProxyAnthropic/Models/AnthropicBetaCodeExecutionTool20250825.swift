@@ -11,17 +11,17 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaCodeExecutionTool20250825: Codable, Sendable {
-  public var allowedCallers: [AnthropicBetaAllowedCaller]?
+  public var allowedCallers: [AnthropicBetaCodeExecutionTool20250825AllowedCallersItem]?
   public var cacheControl: AnthropicBetaCacheControlEphemeral?
   public var deferLoading: Bool?
-  public var name: AnthropicCodeExecutionName
+  public var name: AnthropicBetaCodeExecutionTool20250825.Name
   public var strict: Bool?
-  public var kind: AnthropicCodeExecution20250825Kind
+  public var kind: AnthropicBetaCodeExecutionTool20250825.Kind
 
   public init(
-    name: AnthropicCodeExecutionName = .codeExecution,
-    kind: AnthropicCodeExecution20250825Kind = .codeExecution20250825,
-    allowedCallers: [AnthropicBetaAllowedCaller]? = nil,
+    name: AnthropicBetaCodeExecutionTool20250825.Name,
+    kind: AnthropicBetaCodeExecutionTool20250825.Kind,
+    allowedCallers: [AnthropicBetaCodeExecutionTool20250825AllowedCallersItem]? = nil,
     cacheControl: AnthropicBetaCacheControlEphemeral? = nil,
     deferLoading: Bool? = nil,
     strict: Bool? = nil
@@ -41,5 +41,13 @@ public struct AnthropicBetaCodeExecutionTool20250825: Codable, Sendable {
     case name
     case strict
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case codeExecution20250825 = "code_execution_20250825"
+  }
+
+  public enum Name: String, Codable, Hashable, Sendable {
+    case codeExecution = "code_execution"
   }
 }

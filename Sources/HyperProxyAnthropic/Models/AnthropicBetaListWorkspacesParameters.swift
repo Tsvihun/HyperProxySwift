@@ -15,6 +15,7 @@ public struct AnthropicBetaListWorkspacesParameters: Codable, Sendable {
   public var anthropicVersion: String?
   public var beforeId: String?
   public var includeArchived: Bool?
+  public var includeDefault: Bool?
   public var limit: Int?
   public var xApiKey: String?
 
@@ -23,6 +24,7 @@ public struct AnthropicBetaListWorkspacesParameters: Codable, Sendable {
     anthropicVersion: String? = nil,
     beforeId: String? = nil,
     includeArchived: Bool? = nil,
+    includeDefault: Bool? = nil,
     limit: Int? = nil,
     xApiKey: String? = nil
   ) {
@@ -30,6 +32,7 @@ public struct AnthropicBetaListWorkspacesParameters: Codable, Sendable {
     self.anthropicVersion = anthropicVersion
     self.beforeId = beforeId
     self.includeArchived = includeArchived
+    self.includeDefault = includeDefault
     self.limit = limit
     self.xApiKey = xApiKey
   }
@@ -39,6 +42,7 @@ public struct AnthropicBetaListWorkspacesParameters: Codable, Sendable {
     case anthropicVersion = "anthropic-version"
     case beforeId = "before_id"
     case includeArchived = "include_archived"
+    case includeDefault = "include_default"
     case limit
     case xApiKey = "x-api-key"
   }

@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaSelfHostedConfig: Codable, Sendable {
-  public var kind: AnthropicSelfHostedKind
+  public var kind: AnthropicBetaSelfHostedConfig.Kind
 
   public init(
-    kind: AnthropicSelfHostedKind = .selfHosted
+    kind: AnthropicBetaSelfHostedConfig.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case selfHosted = "self_hosted"
   }
 }

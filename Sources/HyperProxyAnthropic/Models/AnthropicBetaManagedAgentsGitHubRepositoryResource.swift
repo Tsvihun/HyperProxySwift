@@ -11,22 +11,22 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsGitHubRepositoryResource: Codable, Sendable {
-  public var checkout: AnthropicBetaManagedAgentsRepositoryCheckout?
-  public var createdAt: AnthropicBetaTimestamp
+  public var checkout: AnthropicBetaSessionsManagedAgentsGithubRepositoryResourceCheckout?
+  public var createdAt: String
   public var id: String
   public var mountPath: String
   public var kind: AnthropicBetaManagedAgentsGitHubRepositoryResource.Kind
-  public var updatedAt: AnthropicBetaTimestamp
+  public var updatedAt: String
   public var url: String
 
   public init(
-    createdAt: AnthropicBetaTimestamp,
+    createdAt: String,
     id: String,
     mountPath: String,
     kind: AnthropicBetaManagedAgentsGitHubRepositoryResource.Kind,
-    updatedAt: AnthropicBetaTimestamp,
+    updatedAt: String,
     url: String,
-    checkout: AnthropicBetaManagedAgentsRepositoryCheckout? = nil
+    checkout: AnthropicBetaSessionsManagedAgentsGithubRepositoryResourceCheckout? = nil
   ) {
     self.checkout = checkout
     self.createdAt = createdAt

@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicRefusalStopDetails: Codable, Sendable {
-  public var category: AnthropicRefusalCategory?
+  public var category: AnthropicRefusalStopDetails.Category?
   public var explanation: String?
-  public var kind: AnthropicRefusalKind
+  public var kind: AnthropicRefusalStopDetails.Kind
 
   public init(
-    category: AnthropicRefusalCategory?,
-    explanation: String?,
-    kind: AnthropicRefusalKind = .refusal
+    kind: AnthropicRefusalStopDetails.Kind,
+    category: AnthropicRefusalStopDetails.Category? = nil,
+    explanation: String? = nil
   ) {
     self.category = category
     self.explanation = explanation
@@ -29,5 +29,17 @@ public struct AnthropicRefusalStopDetails: Codable, Sendable {
     case category
     case explanation
     case kind = "type"
+  }
+
+  public enum Category: String, Codable, Hashable, Sendable {
+    case cyber = "cyber"
+    case bio = "bio"
+    case frontierLlm = "frontier_llm"
+    case reasoningExtraction = "reasoning_extraction"
+    case generalHarms = "general_harms"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case refusal = "refusal"
   }
 }

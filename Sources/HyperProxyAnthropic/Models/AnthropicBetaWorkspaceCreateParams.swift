@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaWorkspaceCreateParams: Codable, Sendable {
-  public var dataResidency: AnthropicBetaDataResidencyCreateParams?
+  public var dataResidency: AnthropicBetaDataResidencyCreateConfigParam?
   public var displayColor: String?
   public var externalKeyId: String?
   public var name: String
@@ -19,7 +19,7 @@ public struct AnthropicBetaWorkspaceCreateParams: Codable, Sendable {
 
   public init(
     name: String,
-    dataResidency: AnthropicBetaDataResidencyCreateParams? = nil,
+    dataResidency: AnthropicBetaDataResidencyCreateConfigParam? = nil,
     displayColor: String? = nil,
     externalKeyId: String? = nil,
     tags: [String: String]? = nil

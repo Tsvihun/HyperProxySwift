@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaContextManagementResponse: Codable, Sendable {
-  public var originalInputTokens: Int
+  public var appliedEdits: [AnthropicBetaAppliedEdit]
 
   public init(
-    originalInputTokens: Int
+    appliedEdits: [AnthropicBetaAppliedEdit]
   ) {
-    self.originalInputTokens = originalInputTokens
+    self.appliedEdits = appliedEdits
   }
 
   enum CodingKeys: String, CodingKey {
-    case originalInputTokens = "original_input_tokens"
+    case appliedEdits = "applied_edits"
   }
 }

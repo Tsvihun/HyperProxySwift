@@ -43,4 +43,8 @@ public enum DeepSeekOperation: String, HyperProxyCatalogOperation {
   case responsesCreate = "responses.create"
   /// `GET user/balance`
   case balanceRetrieve = "balance.retrieve"
+  /// `POST v1/tools/fetch`
+  case toolsFetch = "tools.fetch"
+  /// `POST v1/tools/search`
+  case toolsSearch = "tools.search"
 }

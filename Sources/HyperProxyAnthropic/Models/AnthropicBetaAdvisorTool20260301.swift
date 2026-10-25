@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaAdvisorTool20260301: Codable, Sendable {
-  public var allowedCallers: [AnthropicBetaAllowedCaller]?
+  public var allowedCallers: [AnthropicBetaAdvisorTool20260301AllowedCallersItem]?
   public var cacheControl: AnthropicBetaCacheControlEphemeral?
   public var caching: AnthropicBetaCacheControlEphemeral?
   public var deferLoading: Bool?
@@ -24,9 +24,9 @@ public struct AnthropicBetaAdvisorTool20260301: Codable, Sendable {
 
   public init(
     model: AnthropicModel,
-    name: AnthropicBetaAdvisorTool20260301.Name = .advisor,
-    kind: AnthropicBetaAdvisorTool20260301.Kind = .advisor20260301,
-    allowedCallers: [AnthropicBetaAllowedCaller]? = nil,
+    name: AnthropicBetaAdvisorTool20260301.Name,
+    kind: AnthropicBetaAdvisorTool20260301.Kind,
+    allowedCallers: [AnthropicBetaAdvisorTool20260301AllowedCallersItem]? = nil,
     cacheControl: AnthropicBetaCacheControlEphemeral? = nil,
     caching: AnthropicBetaCacheControlEphemeral? = nil,
     deferLoading: Bool? = nil,

@@ -11,24 +11,24 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsMemoryStore: Codable, Sendable {
-  public var archivedAt: AnthropicBetaTimestamp?
-  public var createdAt: AnthropicBetaTimestamp
-  public var description: String?
+  public var archivedAt: String?
+  public var createdAt: String
+  public var description: String
   public var id: String
-  public var metadata: [String: String]?
+  public var metadata: [String: String]
   public var name: String
   public var kind: AnthropicBetaManagedAgentsMemoryStore.Kind
-  public var updatedAt: AnthropicBetaTimestamp
+  public var updatedAt: String
 
   public init(
-    createdAt: AnthropicBetaTimestamp,
+    createdAt: String,
+    description: String,
     id: String,
+    metadata: [String: String],
     name: String,
     kind: AnthropicBetaManagedAgentsMemoryStore.Kind,
-    updatedAt: AnthropicBetaTimestamp,
-    archivedAt: AnthropicBetaTimestamp? = nil,
-    description: String? = nil,
-    metadata: [String: String]? = nil
+    updatedAt: String,
+    archivedAt: String? = nil
   ) {
     self.archivedAt = archivedAt
     self.createdAt = createdAt

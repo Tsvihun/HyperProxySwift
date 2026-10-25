@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+- Reconcile current Anthropic/Groq SDK contracts: add Claude 5.5/5.1 and Qwen 3.8
+  presets, current Messages diagnostics/compaction/thread fields, model lifecycle
+  metadata, reasoning levels and organization APIs. Preserve JSONL, SSE, multipart
+  and each provider's actual pagination shape. Request/response types follow the
+  current provider contracts; removed fields require caller migration.
+- Add typed DeepSeek Search/Fetch APIs and EachLabs organization balance. Keep
+  negative/fractional balances and nullable search metadata. Include the BFL LoRA
+  end-user `user` field from its documented base request contract.
+- The 2026-10-25 development snapshot contains 2,487 routes across 18 providers,
+  21,641 generated types, 49,485 fields and 2,273 canonical typed helpers.
+
 - Reconcile routes that differ only in placeholder names, using official media
   contracts while preserving access, origins, path expansion and JSON/SSE variants.
   Restore Mistral transcription SSE discovery. Decode JSONL/NDJSON through typed

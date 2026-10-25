@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct AnthropicListResponseModelInfo: Codable, Sendable {
   public var data: [AnthropicModelInfo]
   public var firstId: String?
-  public var hasMore: Bool
+  public var hasMore: Bool?
   public var lastId: String?
 
   public init(
     data: [AnthropicModelInfo],
-    firstId: String?,
-    hasMore: Bool,
-    lastId: String?
+    firstId: String? = nil,
+    hasMore: Bool? = nil,
+    lastId: String? = nil
   ) {
     self.data = data
     self.firstId = firstId

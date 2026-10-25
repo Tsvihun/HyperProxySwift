@@ -11,6 +11,23 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaDreamOutput: Codable, Sendable {
+  public var memoryStoreId: String
+  public var kind: AnthropicBetaDreamOutput.Kind
 
-  public init() {}
+  public init(
+    memoryStoreId: String,
+    kind: AnthropicBetaDreamOutput.Kind
+  ) {
+    self.memoryStoreId = memoryStoreId
+    self.kind = kind
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case memoryStoreId = "memory_store_id"
+    case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case memoryStore = "memory_store"
+  }
 }

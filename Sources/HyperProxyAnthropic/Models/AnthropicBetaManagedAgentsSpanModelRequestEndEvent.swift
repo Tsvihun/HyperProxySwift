@@ -15,16 +15,16 @@ public struct AnthropicBetaManagedAgentsSpanModelRequestEndEvent: Codable, Senda
   public var isError: Bool?
   public var modelRequestStartId: String
   public var modelUsage: AnthropicBetaManagedAgentsSpanModelUsage
-  public var processedAt: AnthropicBetaTimestamp
+  public var processedAt: String
   public var kind: AnthropicBetaManagedAgentsSpanModelRequestEndEvent.Kind
 
   public init(
     id: String,
-    isError: Bool?,
     modelRequestStartId: String,
     modelUsage: AnthropicBetaManagedAgentsSpanModelUsage,
-    processedAt: AnthropicBetaTimestamp,
-    kind: AnthropicBetaManagedAgentsSpanModelRequestEndEvent.Kind
+    processedAt: String,
+    kind: AnthropicBetaManagedAgentsSpanModelRequestEndEvent.Kind,
+    isError: Bool? = nil
   ) {
     self.id = id
     self.isError = isError

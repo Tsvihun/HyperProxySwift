@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct AnthropicBetaManagedAgentsUpdateMemoryParams: Codable, Sendable {
   public var content: String?
   public var path: String?
-  public var precondition: AnthropicBetaManagedAgentsPrecondition?
+  public var precondition: AnthropicBetaManagedAgentsPreconditionParam?
 
   public init(
     content: String? = nil,
     path: String? = nil,
-    precondition: AnthropicBetaManagedAgentsPrecondition? = nil
+    precondition: AnthropicBetaManagedAgentsPreconditionParam? = nil
   ) {
     self.content = content
     self.path = path

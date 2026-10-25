@@ -11,18 +11,18 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsSessionUsageEvent: Codable, Sendable {
-  public var budget: AnthropicBetaManagedAgentsBudget?
+  public var budget: AnthropicBetaManagedAgentsBudgetLimit?
   public var id: String
-  public var processedAt: AnthropicBetaTimestamp
+  public var processedAt: String
   public var kind: AnthropicBetaManagedAgentsSessionUsageEvent.Kind
   public var usage: AnthropicBetaManagedAgentsSessionUsageSnapshot
 
   public init(
     id: String,
-    processedAt: AnthropicBetaTimestamp,
+    processedAt: String,
     kind: AnthropicBetaManagedAgentsSessionUsageEvent.Kind,
     usage: AnthropicBetaManagedAgentsSessionUsageSnapshot,
-    budget: AnthropicBetaManagedAgentsBudget? = nil
+    budget: AnthropicBetaManagedAgentsBudgetLimit? = nil
   ) {
     self.budget = budget
     self.id = id

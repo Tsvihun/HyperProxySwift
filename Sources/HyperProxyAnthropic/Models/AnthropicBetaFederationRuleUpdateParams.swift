@@ -14,10 +14,10 @@ public struct AnthropicBetaFederationRuleUpdateParams: Codable, Sendable {
   public var appliesToAllWorkspaces: Bool?
   public var attributes: [String: String]?
   public var description: String?
-  public var match: AnthropicBetaRuleMatch?
+  public var match: AnthropicBetaFederationRuleMatchParam?
   public var name: String?
   public var oauthScope: String?
-  public var target: AnthropicBetaServiceAccountTarget?
+  public var target: AnthropicBetaServiceAccountTargetParam?
   public var tokenLifetimeSeconds: Int?
   public var workspaceId: String?
 
@@ -25,10 +25,10 @@ public struct AnthropicBetaFederationRuleUpdateParams: Codable, Sendable {
     appliesToAllWorkspaces: Bool? = nil,
     attributes: [String: String]? = nil,
     description: String? = nil,
-    match: AnthropicBetaRuleMatch? = nil,
+    match: AnthropicBetaFederationRuleMatchParam? = nil,
     name: String? = nil,
     oauthScope: String? = nil,
-    target: AnthropicBetaServiceAccountTarget? = nil,
+    target: AnthropicBetaServiceAccountTargetParam? = nil,
     tokenLifetimeSeconds: Int? = nil,
     workspaceId: String? = nil
   ) {

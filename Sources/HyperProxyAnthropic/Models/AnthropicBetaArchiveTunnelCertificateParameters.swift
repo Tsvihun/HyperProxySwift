@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct AnthropicBetaArchiveTunnelCertificateParameters: Codable, Sendable {
   public var anthropicBeta: String?
   public var anthropicVersion: String?
+  public var anthropicWorkspaceId: String?
   public var certificateId: String
   public var tunnelId: String
 
@@ -20,10 +21,12 @@ public struct AnthropicBetaArchiveTunnelCertificateParameters: Codable, Sendable
     certificateId: String,
     tunnelId: String,
     anthropicBeta: String? = nil,
-    anthropicVersion: String? = nil
+    anthropicVersion: String? = nil,
+    anthropicWorkspaceId: String? = nil
   ) {
     self.anthropicBeta = anthropicBeta
     self.anthropicVersion = anthropicVersion
+    self.anthropicWorkspaceId = anthropicWorkspaceId
     self.certificateId = certificateId
     self.tunnelId = tunnelId
   }
@@ -31,6 +34,7 @@ public struct AnthropicBetaArchiveTunnelCertificateParameters: Codable, Sendable
   enum CodingKeys: String, CodingKey {
     case anthropicBeta = "anthropic-beta"
     case anthropicVersion = "anthropic-version"
+    case anthropicWorkspaceId = "anthropic-workspace-id"
     case certificateId = "certificate_id"
     case tunnelId = "tunnel_id"
   }

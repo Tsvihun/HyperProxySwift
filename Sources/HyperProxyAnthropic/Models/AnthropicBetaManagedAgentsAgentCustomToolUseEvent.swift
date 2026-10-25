@@ -12,17 +12,17 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsAgentCustomToolUseEvent: Codable, Sendable {
   public var id: String
-  public var input: AnthropicBetaManagedAgentsStruct
+  public var input: [String: HyperProxyJSONValue]
   public var name: String
-  public var processedAt: AnthropicBetaTimestamp
+  public var processedAt: String
   public var sessionThreadId: String?
   public var kind: AnthropicBetaManagedAgentsAgentCustomToolUseEvent.Kind
 
   public init(
     id: String,
-    input: AnthropicBetaManagedAgentsStruct,
+    input: [String: HyperProxyJSONValue],
     name: String,
-    processedAt: AnthropicBetaTimestamp,
+    processedAt: String,
     kind: AnthropicBetaManagedAgentsAgentCustomToolUseEvent.Kind,
     sessionThreadId: String? = nil
   ) {

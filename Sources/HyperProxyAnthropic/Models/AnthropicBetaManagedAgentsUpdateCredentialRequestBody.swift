@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsUpdateCredentialRequestBody: Codable, Sendable {
-  public var auth: AnthropicBetaManagedAgentsCredentialUpdateAuth?
+  public var auth: AnthropicBetaVaultsCredentialUpdateParamsAuth?
   public var displayName: String?
   public var metadata: [String: String?]?
 
   public init(
-    auth: AnthropicBetaManagedAgentsCredentialUpdateAuth? = nil,
+    auth: AnthropicBetaVaultsCredentialUpdateParamsAuth? = nil,
     displayName: String? = nil,
     metadata: [String: String?]? = nil
   ) {

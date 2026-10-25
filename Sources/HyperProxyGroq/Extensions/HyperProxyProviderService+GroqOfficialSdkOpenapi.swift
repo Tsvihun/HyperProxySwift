@@ -30,26 +30,26 @@ extension HyperProxyProviderService where Operation == GroqOperation {
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> GroqListBatchesResponse {
+  ) async throws -> GroqBatchListResponse {
     let call = self.call(.batchesList)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(GroqListBatchesResponse.self)
+    return try await call.decoded(GroqBatchListResponse.self)
   }
 
   public func batchesCreate(
-    _ body: GroqCreateBatchRequest,
+    _ body: GroqBatchesCreateRequest,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> GroqBatch {
+  ) async throws -> GroqBatchCreateResponse {
     let call = self.call(.batchesCreate)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     let prepared = try call.json(body)
-    return try await prepared.decoded(GroqBatch.self)
+    return try await prepared.decoded(GroqBatchCreateResponse.self)
   }
 
   public func batchesRetrieve(
@@ -57,13 +57,13 @@ extension HyperProxyProviderService where Operation == GroqOperation {
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> GroqBatch {
+  ) async throws -> GroqBatchRetrieveResponse {
     let call = self.call(.batchesRetrieve)
       .path("batch_id", batchId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(GroqBatch.self)
+    return try await call.decoded(GroqBatchRetrieveResponse.self)
   }
 
   public func batchesCancel(
@@ -71,13 +71,13 @@ extension HyperProxyProviderService where Operation == GroqOperation {
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> GroqBatch {
+  ) async throws -> GroqBatchCancelResponse {
     let call = self.call(.batchesCancel)
       .path("batch_id", batchId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(GroqBatch.self)
+    return try await call.decoded(GroqBatchCancelResponse.self)
   }
 
   public func chatCompletionsCreate(
@@ -85,13 +85,27 @@ extension HyperProxyProviderService where Operation == GroqOperation {
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> GroqCreateChatCompletionResponse {
+  ) async throws -> GroqChatCompletion {
     let call = self.call(.chatCompletionsCreate)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     let prepared = try call.json(body)
-    return try await prepared.decoded(GroqCreateChatCompletionResponse.self)
+    return try await prepared.decoded(GroqChatCompletion.self)
+  }
+
+  public func chatCompletionsCreateStream(
+    _ body: GroqCreateChatCompletionRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<GroqChatCompletionChunk, Error> {
+    let call = self.call(.chatCompletionsCreate)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try prepared.events(decoding: GroqChatCompletionChunk.self)
   }
 
   public func createEmbedding(
@@ -112,12 +126,12 @@ extension HyperProxyProviderService where Operation == GroqOperation {
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> GroqListFilesResponse {
+  ) async throws -> GroqFileListResponse {
     let call = self.call(.filesList)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(GroqListFilesResponse.self)
+    return try await call.decoded(GroqFileListResponse.self)
   }
 
   public func filesRetrieve(
@@ -125,13 +139,13 @@ extension HyperProxyProviderService where Operation == GroqOperation {
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> GroqFile {
+  ) async throws -> GroqFileInfoResponse {
     let call = self.call(.filesRetrieve)
       .path("file_id", fileId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(GroqFile.self)
+    return try await call.decoded(GroqFileInfoResponse.self)
   }
 
   public func filesDelete(
@@ -139,13 +153,13 @@ extension HyperProxyProviderService where Operation == GroqOperation {
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> GroqDeleteFileResponse {
+  ) async throws -> GroqFileDeleteResponse {
     let call = self.call(.filesDelete)
       .path("file_id", fileId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(GroqDeleteFileResponse.self)
+    return try await call.decoded(GroqFileDeleteResponse.self)
   }
 
   public func filesContent(
@@ -166,12 +180,12 @@ extension HyperProxyProviderService where Operation == GroqOperation {
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> GroqListModelsResponse {
+  ) async throws -> GroqModelListResponse {
     let call = self.call(.modelsList)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(GroqListModelsResponse.self)
+    return try await call.decoded(GroqModelListResponse.self)
   }
 
   public func modelsRetrieve(
@@ -193,13 +207,13 @@ extension HyperProxyProviderService where Operation == GroqOperation {
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> GroqDeleteModelResponse {
+  ) async throws -> GroqModelDeleted {
     let call = self.call(.deleteModel)
       .path("model", model)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(GroqDeleteModelResponse.self)
+    return try await call.decoded(GroqModelDeleted.self)
   }
 
   public func createReranking(

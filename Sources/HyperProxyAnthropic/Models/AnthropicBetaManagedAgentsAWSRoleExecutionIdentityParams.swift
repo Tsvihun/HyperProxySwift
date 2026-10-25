@@ -1,0 +1,35 @@
+//
+//  AnthropicBetaManagedAgentsAWSRoleExecutionIdentityParams.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+// Maintainer-generated release artifact. Do not edit by hand.
+
+import Foundation
+import HyperProxyCore
+
+public struct AnthropicBetaManagedAgentsAWSRoleExecutionIdentityParams: Codable, Sendable {
+  public var roleArn: String
+  public var kind: AnthropicBetaManagedAgentsAWSRoleExecutionIdentityParams.Kind
+
+  public init(
+    roleArn: String,
+    kind: AnthropicBetaManagedAgentsAWSRoleExecutionIdentityParams.Kind
+  ) {
+    self.roleArn = roleArn
+    self.kind = kind
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case roleArn = "role_arn"
+    case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case awsRole = "aws_role"
+  }
+}

@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct AnthropicBetaManagedAgentsSystemMessageEvent: Codable, Sendable {
   public var content: [AnthropicBetaManagedAgentsSystemContentBlock]
   public var id: String
-  public var processedAt: AnthropicBetaTimestamp?
+  public var processedAt: String?
   public var kind: AnthropicBetaManagedAgentsSystemMessageEvent.Kind
 
   public init(
     content: [AnthropicBetaManagedAgentsSystemContentBlock],
     id: String,
     kind: AnthropicBetaManagedAgentsSystemMessageEvent.Kind,
-    processedAt: AnthropicBetaTimestamp? = nil
+    processedAt: String? = nil
   ) {
     self.content = content
     self.id = id

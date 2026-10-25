@@ -12,21 +12,25 @@ import HyperProxyCore
 
 public struct AnthropicBetaWorkspaceRateLimitValue: Codable, Sendable {
   public var orgLimit: Int?
+  public var source: AnthropicBetaOrganizationWorkspacesWorkspaceRateLimitValueSource
   public var kind: String
   public var value: Int
 
   public init(
-    orgLimit: Int?,
+    source: AnthropicBetaOrganizationWorkspacesWorkspaceRateLimitValueSource,
     kind: String,
-    value: Int
+    value: Int,
+    orgLimit: Int? = nil
   ) {
     self.orgLimit = orgLimit
+    self.source = source
     self.kind = kind
     self.value = value
   }
 
   enum CodingKeys: String, CodingKey {
     case orgLimit = "org_limit"
+    case source
     case kind = "type"
     case value
   }

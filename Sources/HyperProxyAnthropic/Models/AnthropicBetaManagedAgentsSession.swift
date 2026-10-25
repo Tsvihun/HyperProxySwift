@@ -12,9 +12,9 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsSession: Codable, Sendable {
   public var agent: AnthropicBetaManagedAgentsSessionAgent
-  public var archivedAt: AnthropicBetaTimestamp?
-  public var budget: AnthropicBetaManagedAgentsBudget?
-  public var createdAt: AnthropicBetaTimestamp
+  public var archivedAt: String?
+  public var budget: AnthropicBetaManagedAgentsBudgetLimit?
+  public var createdAt: String
   public var deploymentId: String?
   public var environmentId: String
   public var id: String
@@ -22,31 +22,31 @@ public struct AnthropicBetaManagedAgentsSession: Codable, Sendable {
   public var outcomeEvaluations: [AnthropicBetaManagedAgentsOutcomeEvaluationResource]
   public var resources: [AnthropicBetaManagedAgentsSessionResource]
   public var stats: AnthropicBetaManagedAgentsSessionStats
-  public var status: AnthropicBetaManagedAgentsSessionStatus
+  public var status: AnthropicBetaManagedAgentsSession.Status
   public var title: String?
   public var kind: AnthropicBetaManagedAgentsSession.Kind
-  public var updatedAt: AnthropicBetaTimestamp
+  public var updatedAt: String
   public var usage: AnthropicBetaManagedAgentsSessionUsage
   public var vaultIds: [String]
 
   public init(
     agent: AnthropicBetaManagedAgentsSessionAgent,
-    archivedAt: AnthropicBetaTimestamp?,
-    budget: AnthropicBetaManagedAgentsBudget?,
-    createdAt: AnthropicBetaTimestamp,
+    createdAt: String,
     environmentId: String,
     id: String,
     metadata: [String: String],
     outcomeEvaluations: [AnthropicBetaManagedAgentsOutcomeEvaluationResource],
     resources: [AnthropicBetaManagedAgentsSessionResource],
     stats: AnthropicBetaManagedAgentsSessionStats,
-    status: AnthropicBetaManagedAgentsSessionStatus,
-    title: String?,
+    status: AnthropicBetaManagedAgentsSession.Status,
     kind: AnthropicBetaManagedAgentsSession.Kind,
-    updatedAt: AnthropicBetaTimestamp,
+    updatedAt: String,
     usage: AnthropicBetaManagedAgentsSessionUsage,
     vaultIds: [String],
-    deploymentId: String? = nil
+    archivedAt: String? = nil,
+    budget: AnthropicBetaManagedAgentsBudgetLimit? = nil,
+    deploymentId: String? = nil,
+    title: String? = nil
   ) {
     self.agent = agent
     self.archivedAt = archivedAt
@@ -89,5 +89,12 @@ public struct AnthropicBetaManagedAgentsSession: Codable, Sendable {
 
   public enum Kind: String, Codable, Hashable, Sendable {
     case session = "session"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case rescheduling = "rescheduling"
+    case running = "running"
+    case idle = "idle"
+    case terminated = "terminated"
   }
 }

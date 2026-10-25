@@ -16,7 +16,7 @@ public struct AnthropicBetaSelfHostedWorkListResponse: Codable, Sendable {
 
   public init(
     data: [AnthropicBetaSelfHostedWork],
-    nextPage: String?
+    nextPage: String? = nil
   ) {
     self.data = data
     self.nextPage = nextPage

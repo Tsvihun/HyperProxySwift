@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsMultiagentCoordinator: Codable, Sendable {
-  public var agents: [AnthropicBetaManagedAgentsMultiagentRosterEntry]
+  public var agents: [AnthropicBetaManagedAgentsMultiagentCoordinatorAgent]
   public var kind: AnthropicBetaManagedAgentsMultiagentCoordinator.Kind
 
   public init(
-    agents: [AnthropicBetaManagedAgentsMultiagentRosterEntry],
+    agents: [AnthropicBetaManagedAgentsMultiagentCoordinatorAgent],
     kind: AnthropicBetaManagedAgentsMultiagentCoordinator.Kind
   ) {
     self.agents = agents

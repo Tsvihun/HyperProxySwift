@@ -11,22 +11,22 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsCreateSessionParams: Codable, Sendable {
-  public var agent: AnthropicBetaManagedAgentsCreateSessionAgentUnionParams
-  public var budget: AnthropicBetaManagedAgentsBudget?
+  public var agent: AnthropicBetaSessionCreateParamsAgent
+  public var budget: AnthropicBetaManagedAgentsBudgetLimitParam?
   public var environmentId: String
-  public var initialEvents: [AnthropicBetaManagedAgentsSessionInitialEventParams]?
+  public var initialEvents: [AnthropicBetaInitialEvent]?
   public var metadata: [String: String]?
-  public var resources: [AnthropicBetaManagedAgentsSessionResourceParams]?
+  public var resources: [AnthropicBetaSessionCreateParamsResource]?
   public var title: String?
   public var vaultIds: [String]?
 
   public init(
-    agent: AnthropicBetaManagedAgentsCreateSessionAgentUnionParams,
+    agent: AnthropicBetaSessionCreateParamsAgent,
     environmentId: String,
-    budget: AnthropicBetaManagedAgentsBudget? = nil,
-    initialEvents: [AnthropicBetaManagedAgentsSessionInitialEventParams]? = nil,
+    budget: AnthropicBetaManagedAgentsBudgetLimitParam? = nil,
+    initialEvents: [AnthropicBetaInitialEvent]? = nil,
     metadata: [String: String]? = nil,
-    resources: [AnthropicBetaManagedAgentsSessionResourceParams]? = nil,
+    resources: [AnthropicBetaSessionCreateParamsResource]? = nil,
     title: String? = nil,
     vaultIds: [String]? = nil
   ) {

@@ -10,24 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicMessageDeltaEvent: Codable, Sendable {
-  public var delta: AnthropicMessageDelta
-  public var kind: AnthropicMessageDeltaKind
-  public var usage: AnthropicMessageDeltaUsage
-
-  public init(
-    delta: AnthropicMessageDelta,
-    usage: AnthropicMessageDeltaUsage,
-    kind: AnthropicMessageDeltaKind = .messageDelta
-  ) {
-    self.delta = delta
-    self.kind = kind
-    self.usage = usage
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case delta
-    case kind = "type"
-    case usage
-  }
-}
+public typealias AnthropicMessageDeltaEvent = AnthropicRawMessageDeltaEvent

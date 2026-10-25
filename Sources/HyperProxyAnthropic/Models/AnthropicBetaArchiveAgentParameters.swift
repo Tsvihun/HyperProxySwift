@@ -14,20 +14,24 @@ public struct AnthropicBetaArchiveAgentParameters: Codable, Sendable {
   public var agentId: String
   public var anthropicBeta: String?
   public var anthropicVersion: String?
+  public var anthropicWorkspaceId: String?
 
   public init(
     agentId: String,
     anthropicBeta: String? = nil,
-    anthropicVersion: String? = nil
+    anthropicVersion: String? = nil,
+    anthropicWorkspaceId: String? = nil
   ) {
     self.agentId = agentId
     self.anthropicBeta = anthropicBeta
     self.anthropicVersion = anthropicVersion
+    self.anthropicWorkspaceId = anthropicWorkspaceId
   }
 
   enum CodingKeys: String, CodingKey {
     case agentId = "agent_id"
     case anthropicBeta = "anthropic-beta"
     case anthropicVersion = "anthropic-version"
+    case anthropicWorkspaceId = "anthropic-workspace-id"
   }
 }

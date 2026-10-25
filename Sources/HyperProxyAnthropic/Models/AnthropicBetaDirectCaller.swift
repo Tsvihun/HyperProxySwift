@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaDirectCaller: Codable, Sendable {
-  public var kind: AnthropicDirectKind
+  public var kind: AnthropicBetaDirectCaller.Kind
 
   public init(
-    kind: AnthropicDirectKind = .direct
+    kind: AnthropicBetaDirectCaller.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case direct = "direct"
   }
 }

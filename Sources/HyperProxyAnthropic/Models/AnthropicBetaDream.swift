@@ -11,9 +11,9 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaDream: Codable, Sendable {
-  public var archivedAt: AnthropicBetaTimestamp?
-  public var createdAt: AnthropicBetaTimestamp
-  public var endedAt: AnthropicBetaTimestamp?
+  public var archivedAt: String?
+  public var createdAt: String
+  public var endedAt: String?
   public var error: AnthropicBetaDreamError?
   public var id: String
   public var inputs: [AnthropicBetaDreamInput]
@@ -27,20 +27,20 @@ public struct AnthropicBetaDream: Codable, Sendable {
   public var usage: AnthropicBetaDreamUsage
 
   public init(
-    archivedAt: AnthropicBetaTimestamp?,
-    createdAt: AnthropicBetaTimestamp,
-    endedAt: AnthropicBetaTimestamp?,
-    error: AnthropicBetaDreamError?,
+    createdAt: String,
     id: String,
     inputs: [AnthropicBetaDreamInput],
-    instructions: String?,
     model: AnthropicBetaDreamModelConfig,
     outputBehavior: AnthropicBetaOutputBehavior,
     outputs: [AnthropicBetaDreamOutput],
-    sessionId: String?,
     status: AnthropicBetaDreamStatus,
     kind: AnthropicBetaDream.Kind,
-    usage: AnthropicBetaDreamUsage
+    usage: AnthropicBetaDreamUsage,
+    archivedAt: String? = nil,
+    endedAt: String? = nil,
+    error: AnthropicBetaDreamError? = nil,
+    instructions: String? = nil,
+    sessionId: String? = nil
   ) {
     self.archivedAt = archivedAt
     self.createdAt = createdAt

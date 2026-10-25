@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaWorkspaceRateLimit: Codable, Sendable {
-  public var groupType: AnthropicBetaWorkspaceRateLimit.GroupType
+  public var group: AnthropicBetaOrganizationWorkspacesWorkspaceRateLimitGroup
   public var limits: [AnthropicBetaWorkspaceRateLimitValue]
   public var models: [String]?
   public var rateLimitId: String
@@ -19,14 +19,14 @@ public struct AnthropicBetaWorkspaceRateLimit: Codable, Sendable {
   public var workspaceId: String
 
   public init(
-    groupType: AnthropicBetaWorkspaceRateLimit.GroupType,
+    group: AnthropicBetaOrganizationWorkspacesWorkspaceRateLimitGroup,
     limits: [AnthropicBetaWorkspaceRateLimitValue],
-    models: [String]?,
     rateLimitId: String,
+    kind: AnthropicBetaWorkspaceRateLimit.Kind,
     workspaceId: String,
-    kind: AnthropicBetaWorkspaceRateLimit.Kind = .workspaceRateLimit
+    models: [String]? = nil
   ) {
-    self.groupType = groupType
+    self.group = group
     self.limits = limits
     self.models = models
     self.rateLimitId = rateLimitId
@@ -35,21 +35,12 @@ public struct AnthropicBetaWorkspaceRateLimit: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
-    case groupType = "group_type"
+    case group
     case limits
     case models
     case rateLimitId = "rate_limit_id"
     case kind = "type"
     case workspaceId = "workspace_id"
-  }
-
-  public enum GroupType: String, Codable, Hashable, Sendable {
-    case batch = "batch"
-    case files = "files"
-    case modelGroup = "model_group"
-    case skills = "skills"
-    case tokenCount = "token_count"
-    case webSearch = "web_search"
   }
 
   public enum Kind: String, Codable, Hashable, Sendable {

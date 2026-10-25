@@ -11,98 +11,94 @@ import Foundation
 import HyperProxyCore
 
 public enum AnthropicContentBlock: Codable, Sendable {
-  case responseTextBlock(AnthropicResponseTextBlock)
-  case responseThinkingBlock(AnthropicResponseThinkingBlock)
-  case responseRedactedThinkingBlock(AnthropicResponseRedactedThinkingBlock)
-  case responseToolUseBlock(AnthropicResponseToolUseBlock)
-  case responseServerToolUseBlock(AnthropicResponseServerToolUseBlock)
-  case responseWebSearchToolResultBlock(AnthropicResponseWebSearchToolResultBlock)
-  case responseWebFetchToolResultBlock(AnthropicResponseWebFetchToolResultBlock)
-  case responseCodeExecutionToolResultBlock(AnthropicResponseCodeExecutionToolResultBlock)
-  case responseBashCodeExecutionToolResultBlock(AnthropicResponseBashCodeExecutionToolResultBlock)
-  case responseTextEditorCodeExecutionToolResultBlock(
-    AnthropicResponseTextEditorCodeExecutionToolResultBlock)
-  case responseToolSearchToolResultBlock(AnthropicResponseToolSearchToolResultBlock)
-  case responseContainerUploadBlock(AnthropicResponseContainerUploadBlock)
+  case textBlock(AnthropicTextBlock)
+  case thinkingBlock(AnthropicThinkingBlock)
+  case redactedThinkingBlock(AnthropicRedactedThinkingBlock)
+  case toolUseBlock(AnthropicToolUseBlock)
+  case serverToolUseBlock(AnthropicServerToolUseBlock)
+  case webSearchToolResultBlock(AnthropicWebSearchToolResultBlock)
+  case webFetchToolResultBlock(AnthropicWebFetchToolResultBlock)
+  case codeExecutionToolResultBlock(AnthropicCodeExecutionToolResultBlock)
+  case bashCodeExecutionToolResultBlock(AnthropicBashCodeExecutionToolResultBlock)
+  case textEditorCodeExecutionToolResultBlock(AnthropicTextEditorCodeExecutionToolResultBlock)
+  case toolSearchToolResultBlock(AnthropicToolSearchToolResultBlock)
+  case containerUploadBlock(AnthropicContainerUploadBlock)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(AnthropicResponseTextBlock.self) {
-      self = .responseTextBlock(value)
+    if let value = try? container.decode(AnthropicTextBlock.self) {
+      self = .textBlock(value)
       return
     }
-    if let value = try? container.decode(AnthropicResponseThinkingBlock.self) {
-      self = .responseThinkingBlock(value)
+    if let value = try? container.decode(AnthropicThinkingBlock.self) {
+      self = .thinkingBlock(value)
       return
     }
-    if let value = try? container.decode(AnthropicResponseRedactedThinkingBlock.self) {
-      self = .responseRedactedThinkingBlock(value)
+    if let value = try? container.decode(AnthropicRedactedThinkingBlock.self) {
+      self = .redactedThinkingBlock(value)
       return
     }
-    if let value = try? container.decode(AnthropicResponseToolUseBlock.self) {
-      self = .responseToolUseBlock(value)
+    if let value = try? container.decode(AnthropicToolUseBlock.self) {
+      self = .toolUseBlock(value)
       return
     }
-    if let value = try? container.decode(AnthropicResponseServerToolUseBlock.self) {
-      self = .responseServerToolUseBlock(value)
+    if let value = try? container.decode(AnthropicServerToolUseBlock.self) {
+      self = .serverToolUseBlock(value)
       return
     }
-    if let value = try? container.decode(AnthropicResponseWebSearchToolResultBlock.self) {
-      self = .responseWebSearchToolResultBlock(value)
+    if let value = try? container.decode(AnthropicWebSearchToolResultBlock.self) {
+      self = .webSearchToolResultBlock(value)
       return
     }
-    if let value = try? container.decode(AnthropicResponseWebFetchToolResultBlock.self) {
-      self = .responseWebFetchToolResultBlock(value)
+    if let value = try? container.decode(AnthropicWebFetchToolResultBlock.self) {
+      self = .webFetchToolResultBlock(value)
       return
     }
-    if let value = try? container.decode(AnthropicResponseCodeExecutionToolResultBlock.self) {
-      self = .responseCodeExecutionToolResultBlock(value)
+    if let value = try? container.decode(AnthropicCodeExecutionToolResultBlock.self) {
+      self = .codeExecutionToolResultBlock(value)
       return
     }
-    if let value = try? container.decode(AnthropicResponseBashCodeExecutionToolResultBlock.self) {
-      self = .responseBashCodeExecutionToolResultBlock(value)
+    if let value = try? container.decode(AnthropicBashCodeExecutionToolResultBlock.self) {
+      self = .bashCodeExecutionToolResultBlock(value)
       return
     }
-    if let value = try? container.decode(
-      AnthropicResponseTextEditorCodeExecutionToolResultBlock.self)
-    {
-      self = .responseTextEditorCodeExecutionToolResultBlock(value)
+    if let value = try? container.decode(AnthropicTextEditorCodeExecutionToolResultBlock.self) {
+      self = .textEditorCodeExecutionToolResultBlock(value)
       return
     }
-    if let value = try? container.decode(AnthropicResponseToolSearchToolResultBlock.self) {
-      self = .responseToolSearchToolResultBlock(value)
+    if let value = try? container.decode(AnthropicToolSearchToolResultBlock.self) {
+      self = .toolSearchToolResultBlock(value)
       return
     }
-    self = .responseContainerUploadBlock(
-      try container.decode(AnthropicResponseContainerUploadBlock.self))
+    self = .containerUploadBlock(try container.decode(AnthropicContainerUploadBlock.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .responseTextBlock(let value):
+    case .textBlock(let value):
       try container.encode(value)
-    case .responseThinkingBlock(let value):
+    case .thinkingBlock(let value):
       try container.encode(value)
-    case .responseRedactedThinkingBlock(let value):
+    case .redactedThinkingBlock(let value):
       try container.encode(value)
-    case .responseToolUseBlock(let value):
+    case .toolUseBlock(let value):
       try container.encode(value)
-    case .responseServerToolUseBlock(let value):
+    case .serverToolUseBlock(let value):
       try container.encode(value)
-    case .responseWebSearchToolResultBlock(let value):
+    case .webSearchToolResultBlock(let value):
       try container.encode(value)
-    case .responseWebFetchToolResultBlock(let value):
+    case .webFetchToolResultBlock(let value):
       try container.encode(value)
-    case .responseCodeExecutionToolResultBlock(let value):
+    case .codeExecutionToolResultBlock(let value):
       try container.encode(value)
-    case .responseBashCodeExecutionToolResultBlock(let value):
+    case .bashCodeExecutionToolResultBlock(let value):
       try container.encode(value)
-    case .responseTextEditorCodeExecutionToolResultBlock(let value):
+    case .textEditorCodeExecutionToolResultBlock(let value):
       try container.encode(value)
-    case .responseToolSearchToolResultBlock(let value):
+    case .toolSearchToolResultBlock(let value):
       try container.encode(value)
-    case .responseContainerUploadBlock(let value):
+    case .containerUploadBlock(let value):
       try container.encode(value)
     }
   }

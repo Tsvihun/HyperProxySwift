@@ -16,7 +16,7 @@ public struct AnthropicBetaExternalKeyListResponse: Codable, Sendable {
 
   public init(
     data: [AnthropicBetaExternalKey],
-    nextPage: String?
+    nextPage: String? = nil
   ) {
     self.data = data
     self.nextPage = nextPage

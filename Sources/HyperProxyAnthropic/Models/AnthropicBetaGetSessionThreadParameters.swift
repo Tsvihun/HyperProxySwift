@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct AnthropicBetaGetSessionThreadParameters: Codable, Sendable {
   public var anthropicBeta: String?
   public var anthropicVersion: String?
+  public var anthropicWorkspaceId: String?
   public var sessionId: String
   public var threadId: String
   public var xApiKey: String?
@@ -22,10 +23,12 @@ public struct AnthropicBetaGetSessionThreadParameters: Codable, Sendable {
     threadId: String,
     anthropicBeta: String? = nil,
     anthropicVersion: String? = nil,
+    anthropicWorkspaceId: String? = nil,
     xApiKey: String? = nil
   ) {
     self.anthropicBeta = anthropicBeta
     self.anthropicVersion = anthropicVersion
+    self.anthropicWorkspaceId = anthropicWorkspaceId
     self.sessionId = sessionId
     self.threadId = threadId
     self.xApiKey = xApiKey
@@ -34,6 +37,7 @@ public struct AnthropicBetaGetSessionThreadParameters: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case anthropicBeta = "anthropic-beta"
     case anthropicVersion = "anthropic-version"
+    case anthropicWorkspaceId = "anthropic-workspace-id"
     case sessionId = "session_id"
     case threadId = "thread_id"
     case xApiKey = "x-api-key"

@@ -11,27 +11,27 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaComputerToolset20260801: Codable, Sendable {
-  public var allowedCallers: [AnthropicBetaAllowedCaller]?
   public var cacheControl: AnthropicBetaCacheControlEphemeral?
   public var configs: AnthropicBetaComputerToolsetConfigs?
-  public var kind: AnthropicComputerToolset20260801Kind
+  public var kind: AnthropicBetaComputerToolset20260801.Kind
 
   public init(
-    kind: AnthropicComputerToolset20260801Kind = .computerToolset20260801,
-    allowedCallers: [AnthropicBetaAllowedCaller]? = nil,
+    kind: AnthropicBetaComputerToolset20260801.Kind,
     cacheControl: AnthropicBetaCacheControlEphemeral? = nil,
     configs: AnthropicBetaComputerToolsetConfigs? = nil
   ) {
-    self.allowedCallers = allowedCallers
     self.cacheControl = cacheControl
     self.configs = configs
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case allowedCallers = "allowed_callers"
     case cacheControl = "cache_control"
     case configs
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case computerToolset20260801 = "computer_toolset_20260801"
   }
 }

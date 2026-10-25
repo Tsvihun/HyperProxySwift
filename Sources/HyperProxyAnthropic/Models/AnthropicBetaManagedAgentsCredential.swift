@@ -11,25 +11,25 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsCredential: Codable, Sendable {
-  public var archivedAt: AnthropicBetaTimestamp?
-  public var auth: AnthropicBetaManagedAgentsCredentialAuth
-  public var createdAt: AnthropicBetaTimestamp
+  public var archivedAt: String?
+  public var auth: AnthropicBetaVaultsManagedAgentsCredentialAuth
+  public var createdAt: String
   public var displayName: String?
   public var id: String
   public var metadata: [String: String]
   public var kind: AnthropicBetaManagedAgentsCredential.Kind
-  public var updatedAt: AnthropicBetaTimestamp
+  public var updatedAt: String
   public var vaultId: String
 
   public init(
-    archivedAt: AnthropicBetaTimestamp?,
-    auth: AnthropicBetaManagedAgentsCredentialAuth,
-    createdAt: AnthropicBetaTimestamp,
+    auth: AnthropicBetaVaultsManagedAgentsCredentialAuth,
+    createdAt: String,
     id: String,
     metadata: [String: String],
     kind: AnthropicBetaManagedAgentsCredential.Kind,
-    updatedAt: AnthropicBetaTimestamp,
+    updatedAt: String,
     vaultId: String,
+    archivedAt: String? = nil,
     displayName: String? = nil
   ) {
     self.archivedAt = archivedAt

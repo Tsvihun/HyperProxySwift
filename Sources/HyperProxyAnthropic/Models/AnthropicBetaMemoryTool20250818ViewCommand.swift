@@ -16,8 +16,8 @@ public struct AnthropicBetaMemoryTool20250818ViewCommand: Codable, Sendable {
   public var viewRange: [Int]?
 
   public init(
+    command: AnthropicBetaMemoryTool20250818ViewCommand.Command,
     path: String,
-    command: AnthropicBetaMemoryTool20250818ViewCommand.Command = .view,
     viewRange: [Int]? = nil
   ) {
     self.command = command

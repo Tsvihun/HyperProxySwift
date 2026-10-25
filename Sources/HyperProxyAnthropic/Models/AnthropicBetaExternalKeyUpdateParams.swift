@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct AnthropicBetaExternalKeyUpdateParams: Codable, Sendable {
   public var displayName: String?
   public var geo: AnthropicBetaExternalKeyUpdateParams.Geo?
-  public var providerConfig: AnthropicBetaExternalKeyUpdateParamsProviderConfigVariant?
+  public var providerConfig: AnthropicBetaOrganizationExternalKeyUpdateParamsProviderConfig?
 
   public init(
     displayName: String? = nil,
     geo: AnthropicBetaExternalKeyUpdateParams.Geo? = nil,
-    providerConfig: AnthropicBetaExternalKeyUpdateParamsProviderConfigVariant? = nil
+    providerConfig: AnthropicBetaOrganizationExternalKeyUpdateParamsProviderConfig? = nil
   ) {
     self.displayName = displayName
     self.geo = geo

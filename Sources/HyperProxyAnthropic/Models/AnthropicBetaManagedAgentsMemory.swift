@@ -14,24 +14,24 @@ public struct AnthropicBetaManagedAgentsMemory: Codable, Sendable {
   public var content: String?
   public var contentSha256: String
   public var contentSizeBytes: Int
-  public var createdAt: AnthropicBetaTimestamp
+  public var createdAt: String
   public var id: String
   public var memoryStoreId: String
   public var memoryVersionId: String
   public var path: String
   public var kind: AnthropicBetaManagedAgentsMemory.Kind
-  public var updatedAt: AnthropicBetaTimestamp
+  public var updatedAt: String
 
   public init(
     contentSha256: String,
     contentSizeBytes: Int,
-    createdAt: AnthropicBetaTimestamp,
+    createdAt: String,
     id: String,
     memoryStoreId: String,
     memoryVersionId: String,
     path: String,
     kind: AnthropicBetaManagedAgentsMemory.Kind,
-    updatedAt: AnthropicBetaTimestamp,
+    updatedAt: String,
     content: String? = nil
   ) {
     self.content = content

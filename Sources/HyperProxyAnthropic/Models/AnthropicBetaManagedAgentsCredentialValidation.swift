@@ -13,22 +13,22 @@ import HyperProxyCore
 public struct AnthropicBetaManagedAgentsCredentialValidation: Codable, Sendable {
   public var credentialId: String
   public var hasRefreshToken: Bool
-  public var mcpProbe: AnthropicBetaManagedAgentsMcpProbe?
+  public var mcpProbe: AnthropicBetaManagedAgentsMCPProbe?
   public var refresh: AnthropicBetaManagedAgentsRefreshObject?
   public var status: AnthropicBetaManagedAgentsCredentialValidationStatus
   public var kind: AnthropicBetaManagedAgentsCredentialValidation.Kind
-  public var validatedAt: AnthropicBetaTimestamp
+  public var validatedAt: String
   public var vaultId: String
 
   public init(
     credentialId: String,
     hasRefreshToken: Bool,
-    mcpProbe: AnthropicBetaManagedAgentsMcpProbe?,
-    refresh: AnthropicBetaManagedAgentsRefreshObject?,
     status: AnthropicBetaManagedAgentsCredentialValidationStatus,
     kind: AnthropicBetaManagedAgentsCredentialValidation.Kind,
-    validatedAt: AnthropicBetaTimestamp,
-    vaultId: String
+    validatedAt: String,
+    vaultId: String,
+    mcpProbe: AnthropicBetaManagedAgentsMCPProbe? = nil,
+    refresh: AnthropicBetaManagedAgentsRefreshObject? = nil
   ) {
     self.credentialId = credentialId
     self.hasRefreshToken = hasRefreshToken

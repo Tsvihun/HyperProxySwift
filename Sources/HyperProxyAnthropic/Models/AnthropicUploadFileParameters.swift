@@ -12,14 +12,18 @@ import HyperProxyCore
 
 public struct AnthropicUploadFileParameters: Codable, Sendable {
   public var anthropicVersion: String?
+  public var anthropicWorkspaceId: String?
 
   public init(
-    anthropicVersion: String? = nil
+    anthropicVersion: String? = nil,
+    anthropicWorkspaceId: String? = nil
   ) {
     self.anthropicVersion = anthropicVersion
+    self.anthropicWorkspaceId = anthropicWorkspaceId
   }
 
   enum CodingKeys: String, CodingKey {
     case anthropicVersion = "anthropic-version"
+    case anthropicWorkspaceId = "anthropic-workspace-id"
   }
 }

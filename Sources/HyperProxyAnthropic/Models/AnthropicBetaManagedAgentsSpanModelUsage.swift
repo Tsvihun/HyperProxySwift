@@ -15,14 +15,14 @@ public struct AnthropicBetaManagedAgentsSpanModelUsage: Codable, Sendable {
   public var cacheReadInputTokens: Int
   public var inputTokens: Int
   public var outputTokens: Int
-  public var speed: AnthropicBetaManagedAgentsSpeed?
+  public var speed: AnthropicBetaManagedAgentsSpanModelUsage.Speed?
 
   public init(
     cacheCreationInputTokens: Int,
     cacheReadInputTokens: Int,
     inputTokens: Int,
     outputTokens: Int,
-    speed: AnthropicBetaManagedAgentsSpeed? = nil
+    speed: AnthropicBetaManagedAgentsSpanModelUsage.Speed? = nil
   ) {
     self.cacheCreationInputTokens = cacheCreationInputTokens
     self.cacheReadInputTokens = cacheReadInputTokens
@@ -37,5 +37,10 @@ public struct AnthropicBetaManagedAgentsSpanModelUsage: Codable, Sendable {
     case inputTokens = "input_tokens"
     case outputTokens = "output_tokens"
     case speed
+  }
+
+  public enum Speed: String, Codable, Hashable, Sendable {
+    case standard = "standard"
+    case fast = "fast"
   }
 }

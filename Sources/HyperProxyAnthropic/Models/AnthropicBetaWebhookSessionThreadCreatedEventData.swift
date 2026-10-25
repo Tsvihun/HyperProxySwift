@@ -21,8 +21,8 @@ public struct AnthropicBetaWebhookSessionThreadCreatedEventData: Codable, Sendab
     id: String,
     organizationId: String,
     sessionThreadId: String,
-    workspaceId: String,
-    kind: AnthropicBetaWebhookSessionThreadCreatedEventData.Kind = .sessionThreadCreated
+    kind: AnthropicBetaWebhookSessionThreadCreatedEventData.Kind,
+    workspaceId: String
   ) {
     self.id = id
     self.organizationId = organizationId
@@ -39,7 +39,9 @@ public struct AnthropicBetaWebhookSessionThreadCreatedEventData: Codable, Sendab
     case workspaceId = "workspace_id"
   }
 
-  public enum Kind: String, Codable, Hashable, Sendable {
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
     case sessionThreadCreated = "session.thread_created"
   }
 }

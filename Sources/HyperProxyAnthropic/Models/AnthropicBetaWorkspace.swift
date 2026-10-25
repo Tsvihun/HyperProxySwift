@@ -20,19 +20,19 @@ public struct AnthropicBetaWorkspace: Codable, Sendable {
   public var id: String
   public var name: String
   public var tags: [String: String]
-  public var kind: AnthropicWorkspaceKind
+  public var kind: AnthropicBetaWorkspace.Kind
 
   public init(
-    archivedAt: String?,
     compartmentId: String,
     createdAt: String,
     dataResidency: AnthropicBetaDataResidency,
     displayColor: String,
-    externalKeyId: String?,
     id: String,
     name: String,
     tags: [String: String],
-    kind: AnthropicWorkspaceKind = .workspace
+    kind: AnthropicBetaWorkspace.Kind,
+    archivedAt: String? = nil,
+    externalKeyId: String? = nil
   ) {
     self.archivedAt = archivedAt
     self.compartmentId = compartmentId
@@ -57,5 +57,9 @@ public struct AnthropicBetaWorkspace: Codable, Sendable {
     case name
     case tags
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case workspace = "workspace"
   }
 }

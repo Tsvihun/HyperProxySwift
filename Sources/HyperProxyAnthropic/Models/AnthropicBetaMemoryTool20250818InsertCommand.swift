@@ -17,10 +17,10 @@ public struct AnthropicBetaMemoryTool20250818InsertCommand: Codable, Sendable {
   public var path: String
 
   public init(
+    command: AnthropicBetaMemoryTool20250818InsertCommand.Command,
     insertLine: Int,
     insertText: String,
-    path: String,
-    command: AnthropicBetaMemoryTool20250818InsertCommand.Command = .insert
+    path: String
   ) {
     self.command = command
     self.insertLine = insertLine

@@ -11,20 +11,20 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaTunnel: Codable, Sendable {
-  public var archivedAt: AnthropicBetaTimestamp?
-  public var createdAt: AnthropicBetaTimestamp
+  public var archivedAt: String?
+  public var createdAt: String
   public var displayName: String?
   public var domain: String
   public var id: String
-  public var kind: AnthropicTunnelKind
+  public var kind: AnthropicBetaTunnel.Kind
 
   public init(
-    archivedAt: AnthropicBetaTimestamp?,
-    createdAt: AnthropicBetaTimestamp,
-    displayName: String?,
+    createdAt: String,
     domain: String,
     id: String,
-    kind: AnthropicTunnelKind = .tunnel
+    kind: AnthropicBetaTunnel.Kind,
+    archivedAt: String? = nil,
+    displayName: String? = nil
   ) {
     self.archivedAt = archivedAt
     self.createdAt = createdAt
@@ -41,5 +41,9 @@ public struct AnthropicBetaTunnel: Codable, Sendable {
     case domain
     case id
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case tunnel = "tunnel"
   }
 }

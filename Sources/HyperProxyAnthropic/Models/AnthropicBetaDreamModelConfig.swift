@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct AnthropicBetaDreamModelConfig: Codable, Sendable {
   public var id: String
-  public var speed: AnthropicBetaSpeed?
+  public var speed: AnthropicBetaDreamModelConfig.Speed?
 
   public init(
     id: String,
-    speed: AnthropicBetaSpeed? = nil
+    speed: AnthropicBetaDreamModelConfig.Speed? = nil
   ) {
     self.id = id
     self.speed = speed
@@ -25,5 +25,10 @@ public struct AnthropicBetaDreamModelConfig: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case id
     case speed
+  }
+
+  public enum Speed: String, Codable, Hashable, Sendable {
+    case standard = "standard"
+    case fast = "fast"
   }
 }

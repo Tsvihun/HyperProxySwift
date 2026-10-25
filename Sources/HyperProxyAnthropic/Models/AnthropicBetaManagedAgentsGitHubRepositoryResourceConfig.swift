@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsGitHubRepositoryResourceConfig: Codable, Sendable {
-  public var checkout: AnthropicBetaManagedAgentsRepositoryCheckout?
+  public var checkout: AnthropicBetaManagedAgentsGithubRepositoryResourceConfigCheckout?
   public var mountPath: String?
   public var kind: AnthropicBetaManagedAgentsGitHubRepositoryResourceConfig.Kind
   public var url: String
@@ -19,7 +19,7 @@ public struct AnthropicBetaManagedAgentsGitHubRepositoryResourceConfig: Codable,
   public init(
     kind: AnthropicBetaManagedAgentsGitHubRepositoryResourceConfig.Kind,
     url: String,
-    checkout: AnthropicBetaManagedAgentsRepositoryCheckout? = nil,
+    checkout: AnthropicBetaManagedAgentsGithubRepositoryResourceConfigCheckout? = nil,
     mountPath: String? = nil
   ) {
     self.checkout = checkout

@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaDiagnostics: Codable, Sendable {
-  public var cacheMissReason: AnthropicBetaDiagnosticsCacheMissReasonVariant?
+  public var cacheMissReason: AnthropicBetaCacheMissReason?
 
   public init(
-    cacheMissReason: AnthropicBetaDiagnosticsCacheMissReasonVariant?
+    cacheMissReason: AnthropicBetaCacheMissReason? = nil
   ) {
     self.cacheMissReason = cacheMissReason
   }

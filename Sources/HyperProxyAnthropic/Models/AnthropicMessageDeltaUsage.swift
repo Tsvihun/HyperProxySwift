@@ -19,12 +19,12 @@ public struct AnthropicMessageDeltaUsage: Codable, Sendable {
   public var serverToolUse: AnthropicServerToolUsage?
 
   public init(
-    cacheCreationInputTokens: Int?,
-    cacheReadInputTokens: Int?,
-    inputTokens: Int?,
     outputTokens: Int,
-    outputTokensDetails: AnthropicOutputTokensDetails?,
-    serverToolUse: AnthropicServerToolUsage?
+    cacheCreationInputTokens: Int? = nil,
+    cacheReadInputTokens: Int? = nil,
+    inputTokens: Int? = nil,
+    outputTokensDetails: AnthropicOutputTokensDetails? = nil,
+    serverToolUse: AnthropicServerToolUsage? = nil
   ) {
     self.cacheCreationInputTokens = cacheCreationInputTokens
     self.cacheReadInputTokens = cacheReadInputTokens

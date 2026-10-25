@@ -22,6 +22,7 @@ public struct BFLFlux2KleinFinetuneInputs: Codable, Sendable {
   public var prompt: String
   public var safetyTolerance: Int?
   public var seed: Int?
+  public var user: String?
   public var webhookSecret: String?
   public var webhookUrl: String?
   public var width: Int?
@@ -38,6 +39,7 @@ public struct BFLFlux2KleinFinetuneInputs: Codable, Sendable {
     outputFormat: BFLFlux2KleinFinetuneOutputFormat? = nil,
     safetyTolerance: Int? = nil,
     seed: Int? = nil,
+    user: String? = nil,
     webhookSecret: String? = nil,
     webhookUrl: String? = nil,
     width: Int? = nil
@@ -53,6 +55,7 @@ public struct BFLFlux2KleinFinetuneInputs: Codable, Sendable {
     self.prompt = prompt
     self.safetyTolerance = safetyTolerance
     self.seed = seed
+    self.user = user
     self.webhookSecret = webhookSecret
     self.webhookUrl = webhookUrl
     self.width = width
@@ -70,6 +73,7 @@ public struct BFLFlux2KleinFinetuneInputs: Codable, Sendable {
     case prompt
     case safetyTolerance = "safety_tolerance"
     case seed
+    case user
     case webhookSecret = "webhook_secret"
     case webhookUrl = "webhook_url"
     case width

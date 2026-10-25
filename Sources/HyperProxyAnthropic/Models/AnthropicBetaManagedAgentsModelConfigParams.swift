@@ -11,16 +11,16 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsModelConfigParams: Codable, Sendable {
-  public var effort: AnthropicBetaManagedAgentsEffortParams?
-  public var id: AnthropicBetaManagedAgentsModel
+  public var effort: AnthropicBetaManagedAgentsModelConfigParamsEffort?
+  public var id: AnthropicBetaManagedAgentsModelParam
   public var inferenceGeo: String?
-  public var speed: AnthropicBetaManagedAgentsSpeed?
+  public var speed: AnthropicBetaManagedAgentsModelConfigParams.Speed?
 
   public init(
-    id: AnthropicBetaManagedAgentsModel,
-    effort: AnthropicBetaManagedAgentsEffortParams? = nil,
+    id: AnthropicBetaManagedAgentsModelParam,
+    effort: AnthropicBetaManagedAgentsModelConfigParamsEffort? = nil,
     inferenceGeo: String? = nil,
-    speed: AnthropicBetaManagedAgentsSpeed? = nil
+    speed: AnthropicBetaManagedAgentsModelConfigParams.Speed? = nil
   ) {
     self.effort = effort
     self.id = id
@@ -33,5 +33,10 @@ public struct AnthropicBetaManagedAgentsModelConfigParams: Codable, Sendable {
     case id
     case inferenceGeo = "inference_geo"
     case speed
+  }
+
+  public enum Speed: String, Codable, Hashable, Sendable {
+    case standard = "standard"
+    case fast = "fast"
   }
 }

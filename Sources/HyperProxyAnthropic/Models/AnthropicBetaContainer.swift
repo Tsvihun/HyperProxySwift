@@ -18,7 +18,7 @@ public struct AnthropicBetaContainer: Codable, Sendable {
   public init(
     expiresAt: String,
     id: String,
-    skills: [AnthropicBetaContainerSkill]?
+    skills: [AnthropicBetaContainerSkill]? = nil
   ) {
     self.expiresAt = expiresAt
     self.id = id

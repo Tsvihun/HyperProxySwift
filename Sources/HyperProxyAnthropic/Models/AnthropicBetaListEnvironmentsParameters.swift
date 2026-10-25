@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct AnthropicBetaListEnvironmentsParameters: Codable, Sendable {
   public var anthropicBeta: String?
   public var anthropicVersion: String?
+  public var anthropicWorkspaceId: String?
   public var includeArchived: Bool?
   public var limit: Int?
   public var page: String?
@@ -21,6 +22,7 @@ public struct AnthropicBetaListEnvironmentsParameters: Codable, Sendable {
   public init(
     anthropicBeta: String? = nil,
     anthropicVersion: String? = nil,
+    anthropicWorkspaceId: String? = nil,
     includeArchived: Bool? = nil,
     limit: Int? = nil,
     page: String? = nil,
@@ -28,6 +30,7 @@ public struct AnthropicBetaListEnvironmentsParameters: Codable, Sendable {
   ) {
     self.anthropicBeta = anthropicBeta
     self.anthropicVersion = anthropicVersion
+    self.anthropicWorkspaceId = anthropicWorkspaceId
     self.includeArchived = includeArchived
     self.limit = limit
     self.page = page
@@ -37,6 +40,7 @@ public struct AnthropicBetaListEnvironmentsParameters: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case anthropicBeta = "anthropic-beta"
     case anthropicVersion = "anthropic-version"
+    case anthropicWorkspaceId = "anthropic-workspace-id"
     case includeArchived = "include_archived"
     case limit
     case page

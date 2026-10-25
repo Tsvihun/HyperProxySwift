@@ -20,4 +20,5 @@ public enum AnthropicBetaWebFetchToolResultErrorCode: String, Codable, Hashable,
   case tooManyRequests = "too_many_requests"
   case maxUsesExceeded = "max_uses_exceeded"
   case unavailable = "unavailable"
+  case contentTooLarge = "content_too_large"
 }

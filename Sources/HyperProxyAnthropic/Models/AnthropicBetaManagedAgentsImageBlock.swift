@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsImageBlock: Codable, Sendable {
-  public var source: AnthropicBetaManagedAgentsImageSource
+  public var source: AnthropicBetaSessionsManagedAgentsImageBlockSource
   public var kind: AnthropicBetaManagedAgentsImageBlock.Kind
 
   public init(
-    source: AnthropicBetaManagedAgentsImageSource,
+    source: AnthropicBetaSessionsManagedAgentsImageBlockSource,
     kind: AnthropicBetaManagedAgentsImageBlock.Kind
   ) {
     self.source = source

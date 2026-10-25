@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct GroqChatCompletionRequestMessageContentPartDocument: Codable, Sendable {
-  public var document: GroqChatCompletionRequestMessageContentPartDocument.Document
+  public var document: GroqChatCompletionRequestMessageContentPartDocumentDocument
   public var kind: GroqChatCompletionRequestMessageContentPartDocument.Kind
 
   public init(
-    document: GroqChatCompletionRequestMessageContentPartDocument.Document,
+    document: GroqChatCompletionRequestMessageContentPartDocumentDocument,
     kind: GroqChatCompletionRequestMessageContentPartDocument.Kind
   ) {
     self.document = document
@@ -25,24 +25,6 @@ public struct GroqChatCompletionRequestMessageContentPartDocument: Codable, Send
   enum CodingKeys: String, CodingKey {
     case document
     case kind = "type"
-  }
-
-  public struct Document: Codable, Sendable {
-    public var data: [String: HyperProxyJSONValue]
-    public var id: String?
-
-    public init(
-      data: [String: HyperProxyJSONValue],
-      id: String? = nil
-    ) {
-      self.data = data
-      self.id = id
-    }
-
-    enum CodingKeys: String, CodingKey {
-      case data
-      case id
-    }
   }
 
   public enum Kind: String, Codable, Hashable,

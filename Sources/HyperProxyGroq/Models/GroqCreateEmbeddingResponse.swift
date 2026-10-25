@@ -14,13 +14,13 @@ public struct GroqCreateEmbeddingResponse: Codable, Sendable {
   public var data: [GroqEmbedding]
   public var model: String
   public var object: GroqCreateEmbeddingResponse.Object
-  public var usage: GroqCreateEmbeddingResponse.Usage
+  public var usage: GroqUsage
 
   public init(
     data: [GroqEmbedding],
     model: String,
     object: GroqCreateEmbeddingResponse.Object,
-    usage: GroqCreateEmbeddingResponse.Usage
+    usage: GroqUsage
   ) {
     self.data = data
     self.model = model
@@ -37,23 +37,5 @@ public struct GroqCreateEmbeddingResponse: Codable, Sendable {
 
   public enum Object: String, Codable, Hashable, Sendable {
     case list = "list"
-  }
-
-  public struct Usage: Codable, Sendable {
-    public var promptTokens: Int
-    public var totalTokens: Int
-
-    public init(
-      promptTokens: Int,
-      totalTokens: Int
-    ) {
-      self.promptTokens = promptTokens
-      self.totalTokens = totalTokens
-    }
-
-    enum CodingKeys: String, CodingKey {
-      case promptTokens = "prompt_tokens"
-      case totalTokens = "total_tokens"
-    }
   }
 }

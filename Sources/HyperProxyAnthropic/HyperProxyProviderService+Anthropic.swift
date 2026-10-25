@@ -365,6 +365,14 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
   public var betaDownloadSkillVersionContent: HyperProxyProviderCall<AnthropicOperation> {
     self.call(.betaDownloadSkillVersionContent)
   }
+  /// `DELETE v1/user_profiles/{user_profile_id}`
+  public var userProfilesDelete: HyperProxyProviderCall<AnthropicOperation> {
+    self.call(.userProfilesDelete)
+  }
+  /// `POST v1/user_profiles/{user_profile_id}/action_urls`
+  public var userProfilesActionUrlsCreate: HyperProxyProviderCall<AnthropicOperation> {
+    self.call(.userProfilesActionUrlsCreate)
+  }
   /// `GET v1/agents`
   public var betaListAgents: HyperProxyProviderCall<AnthropicOperation> {
     self.call(.betaListAgents)
@@ -626,20 +634,20 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     self.call(.betaRotateTunnelToken)
   }
   /// `GET v1/user_profiles`
-  public var betaListUserProfiles: HyperProxyProviderCall<AnthropicOperation> {
-    self.call(.betaListUserProfiles)
+  public var userProfilesList: HyperProxyProviderCall<AnthropicOperation> {
+    self.call(.userProfilesList)
   }
   /// `POST v1/user_profiles`
-  public var betaCreateUserProfile: HyperProxyProviderCall<AnthropicOperation> {
-    self.call(.betaCreateUserProfile)
+  public var userProfilesCreate: HyperProxyProviderCall<AnthropicOperation> {
+    self.call(.userProfilesCreate)
   }
   /// `GET v1/user_profiles/{user_profile_id}`
-  public var betaGetUserProfile: HyperProxyProviderCall<AnthropicOperation> {
-    self.call(.betaGetUserProfile)
+  public var userProfilesRetrieve: HyperProxyProviderCall<AnthropicOperation> {
+    self.call(.userProfilesRetrieve)
   }
   /// `POST v1/user_profiles/{user_profile_id}`
-  public var betaUpdateUserProfile: HyperProxyProviderCall<AnthropicOperation> {
-    self.call(.betaUpdateUserProfile)
+  public var userProfilesUpdate: HyperProxyProviderCall<AnthropicOperation> {
+    self.call(.userProfilesUpdate)
   }
   /// `POST v1/user_profiles/{user_profile_id}/enrollment_url`
   public var betaCreateEnrollmentUrl: HyperProxyProviderCall<AnthropicOperation> {

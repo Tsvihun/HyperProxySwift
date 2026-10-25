@@ -2,18 +2,36 @@
   "schemaVersion": 2,
   "sources": {
     "anthropic/official-sdk-openapi": {
-      "kind": "stainlessOpenAPI",
-      "sourceURL": "https://storage.googleapis.com/stainless-sdk-openapi-specs/anthropic/anthropic-319861ef873b46e22d6feb51442e743643815093bdd2b3324df52ed202d7ab93.yml",
-      "snapshotSha256": "8a5cbd0e3a1e2db9df7f35d750bdabb3228da9d635c3acb967fc969f5fbb2d17",
-      "pointerURL": "https://raw.githubusercontent.com/anthropics/anthropic-sdk-typescript/main/.stats.yml",
-      "pointerSha256": "8ebddc94306eabae43ab00280e6701685c1fc0fa02454d27de46e162215645b3",
-      "rightsStatus": "riskAccepted",
+      "kind": "pythonSDK",
+      "sourceURL": "https://codeload.github.com/anthropics/anthropic-sdk-python/tar.gz/202db72c87d7c6eaa72129c67ce67fd343a3a20c",
+      "snapshotSha256": "4ecdb11c555bf72aba70a86dd4a39adb11c7fc9ca551a6124161f569278dc786",
+      "pointerURL": "https://api.github.com/repos/anthropics/anthropic-sdk-python/commits/main",
+      "pointerSha256": "63545823bcd30fdd714ce5f2fd48fab41bab7f3e86a4c2bacd42e7068efdec95",
+      "rightsStatus": "pending",
       "rightsBasis": "No explicit redistribution grant for the resolved schema has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://github.com/anthropics/anthropic-sdk-typescript",
       "noticeFiles": [],
-      "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
-      "acceptedBy": "Pavel Tsvihun (maintainer)",
-      "acceptedAt": "2026-09-20"
+      "snapshotHistory": [
+        {
+          "kind": "stainlessOpenAPI",
+          "sourceURL": "https://storage.googleapis.com/stainless-sdk-openapi-specs/anthropic/anthropic-319861ef873b46e22d6feb51442e743643815093bdd2b3324df52ed202d7ab93.yml",
+          "snapshotSha256": "8a5cbd0e3a1e2db9df7f35d750bdabb3228da9d635c3acb967fc969f5fbb2d17",
+          "pointerURL": "https://raw.githubusercontent.com/anthropics/anthropic-sdk-typescript/main/.stats.yml",
+          "pointerSha256": "8ebddc94306eabae43ab00280e6701685c1fc0fa02454d27de46e162215645b3",
+          "rightsStatus": "riskAccepted",
+          "rightsBasis": "No explicit redistribution grant for the resolved schema has been documented; provider permission or counsel review is required.",
+          "rightsEvidenceURL": "https://github.com/anthropics/anthropic-sdk-typescript",
+          "noticeFiles": [],
+          "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
+          "acceptedBy": "Pavel Tsvihun (maintainer)",
+          "acceptedAt": "2026-09-20"
+        }
+      ],
+      "sdkCommit": "202db72c87d7c6eaa72129c67ce67fd343a3a20c",
+      "baselineSha256": "8a5cbd0e3a1e2db9df7f35d750bdabb3228da9d635c3acb967fc969f5fbb2d17",
+      "snapshotBasis": "Current official Python SDK AST reconciled with the reviewed pre-SDK schema; old source and rights records retained in snapshotHistory.",
+      "companionSDKCommit": "cb5fba419808e3844fa6407e59577ab7ba346b79",
+      "companionSDKURL": "https://api.github.com/repos/anthropics/anthropic-sdk-typescript/commits/main"
     },
     "bfl/licenses-openapi": {
       "kind": "openapi",
@@ -60,15 +78,27 @@
     "bfl/reviewed-lora-openapi": {
       "kind": "reviewedOpenAPI",
       "sourceURL": "https://docs.bfl.ml/flux_2/flux2_lora_inference.md",
-      "snapshotSha256": "8b2ee99cba34ac24b1569a87d851e71dad68117ece051bf65d826f29d2e3112b",
+      "snapshotSha256": "2dd1f9f37cb130a51d4b94b2d2db745dbff7e8e2b1a9da89c4cabcd4deb00517",
       "snapshotBasis": "Hash of the maintainer-reviewed schema derived from the cited documentation.",
-      "rightsStatus": "riskAccepted",
+      "rightsStatus": "pending",
       "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://docs.bfl.ml/flux_2/flux2_lora_inference.md",
       "noticeFiles": [],
-      "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
-      "acceptedBy": "Pavel Tsvihun (maintainer)",
-      "acceptedAt": "2026-09-20"
+      "snapshotHistory": [
+        {
+          "kind": "reviewedOpenAPI",
+          "sourceURL": "https://docs.bfl.ml/flux_2/flux2_lora_inference.md",
+          "snapshotSha256": "8b2ee99cba34ac24b1569a87d851e71dad68117ece051bf65d826f29d2e3112b",
+          "snapshotBasis": "Hash of the maintainer-reviewed schema derived from the cited documentation.",
+          "rightsStatus": "riskAccepted",
+          "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
+          "rightsEvidenceURL": "https://docs.bfl.ml/flux_2/flux2_lora_inference.md",
+          "noticeFiles": [],
+          "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
+          "acceptedBy": "Pavel Tsvihun (maintainer)",
+          "acceptedAt": "2026-09-20"
+        }
+      ]
     },
     "brave/reviewed-search-api": {
       "kind": "reviewedOpenAPI",
@@ -138,7 +168,7 @@
     "deepseek/reviewed-core-openapi": {
       "kind": "reviewedOpenAPI",
       "sourceURL": "https://api-docs.deepseek.com/api/create-chat-completion/",
-      "snapshotSha256": "b87512fe40cd04fb40afa7d567dee2ee63cec33bf54ce64e7595e1c43df18c3a",
+      "snapshotSha256": "84a2872688bce5e58eb2343a196873c3877fe16418454aaa03426db97b751648",
       "snapshotBasis": "Hash of the maintainer-reviewed schema derived from the cited documentation.",
       "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://api-docs.deepseek.com/api/create-chat-completion/",
@@ -150,10 +180,29 @@
         "acceptedAt": "2026-09-20",
         "snapshotSha256": "e206c8a4ae9f6dd41bc45797e93a6d9ff6de95d2b57e954b0475e28ca640a131"
       },
-      "rightsStatus": "riskAccepted",
-      "riskDecision": "Pavel Tsvihun explicitly approved release 0.5.0 on 2026-10-04 after reviewing the pending source provenance and accepting unresolved upstream redistribution evidence. This decision does not claim an upstream license.",
-      "acceptedBy": "Pavel Tsvihun (maintainer)",
-      "acceptedAt": "2026-10-04"
+      "rightsStatus": "pending",
+      "snapshotHistory": [
+        {
+          "kind": "reviewedOpenAPI",
+          "sourceURL": "https://api-docs.deepseek.com/api/create-chat-completion/",
+          "snapshotSha256": "b87512fe40cd04fb40afa7d567dee2ee63cec33bf54ce64e7595e1c43df18c3a",
+          "snapshotBasis": "Hash of the maintainer-reviewed schema derived from the cited documentation.",
+          "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
+          "rightsEvidenceURL": "https://api-docs.deepseek.com/api/create-chat-completion/",
+          "noticeFiles": [],
+          "previousReview": {
+            "rightsStatus": "riskAccepted",
+            "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
+            "acceptedBy": "Pavel Tsvihun (maintainer)",
+            "acceptedAt": "2026-09-20",
+            "snapshotSha256": "e206c8a4ae9f6dd41bc45797e93a6d9ff6de95d2b57e954b0475e28ca640a131"
+          },
+          "rightsStatus": "riskAccepted",
+          "riskDecision": "Pavel Tsvihun explicitly approved release 0.5.0 on 2026-10-04 after reviewing the pending source provenance and accepting unresolved upstream redistribution evidence. This decision does not claim an upstream license.",
+          "acceptedBy": "Pavel Tsvihun (maintainer)",
+          "acceptedAt": "2026-10-04"
+        }
+      ]
     },
     "deepseek/reviewed-responses-openapi": {
       "kind": "reviewedOpenAPI",
@@ -325,18 +374,36 @@
       ]
     },
     "groq/official-sdk-openapi": {
-      "kind": "stainlessOpenAPI",
-      "sourceURL": "https://storage.googleapis.com/stainless-sdk-openapi-specs/groqcloud/groqcloud-debd965baa031e12228c41e538741fa6055bf2813bcd062840a19f84a17cea95.yml",
-      "snapshotSha256": "695e2c7db9369f2dbf7283786d62e8166d4e2761cc599c3dc6df9a97c7f79a2d",
-      "pointerURL": "https://raw.githubusercontent.com/groq/groq-typescript/main/.stats.yml",
-      "pointerSha256": "dc13d304fac5475c1ad16a7a6436a9b92c8f763d4cab722fd872323d6719fd51",
-      "rightsStatus": "riskAccepted",
+      "kind": "pythonSDK",
+      "sourceURL": "https://codeload.github.com/groq/groq-python/tar.gz/55066d94acca028c3cb74e050f2711b80ade6298",
+      "snapshotSha256": "717b2c6cdb1d7987f7bf00cb2f8c8402ca8307d9ddc3d4083dcce38c66ce07ba",
+      "pointerURL": "https://api.github.com/repos/groq/groq-python/commits/main",
+      "pointerSha256": "a0c3fd6d64649c3db979ddf14ec7da1d1dd4dbb080579dd416e7181638ac8d45",
+      "rightsStatus": "pending",
       "rightsBasis": "No explicit redistribution grant for the resolved schema has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://github.com/groq/groq-typescript",
       "noticeFiles": [],
-      "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
-      "acceptedBy": "Pavel Tsvihun (maintainer)",
-      "acceptedAt": "2026-09-20"
+      "snapshotHistory": [
+        {
+          "kind": "stainlessOpenAPI",
+          "sourceURL": "https://storage.googleapis.com/stainless-sdk-openapi-specs/groqcloud/groqcloud-debd965baa031e12228c41e538741fa6055bf2813bcd062840a19f84a17cea95.yml",
+          "snapshotSha256": "695e2c7db9369f2dbf7283786d62e8166d4e2761cc599c3dc6df9a97c7f79a2d",
+          "pointerURL": "https://raw.githubusercontent.com/groq/groq-typescript/main/.stats.yml",
+          "pointerSha256": "dc13d304fac5475c1ad16a7a6436a9b92c8f763d4cab722fd872323d6719fd51",
+          "rightsStatus": "riskAccepted",
+          "rightsBasis": "No explicit redistribution grant for the resolved schema has been documented; provider permission or counsel review is required.",
+          "rightsEvidenceURL": "https://github.com/groq/groq-typescript",
+          "noticeFiles": [],
+          "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
+          "acceptedBy": "Pavel Tsvihun (maintainer)",
+          "acceptedAt": "2026-09-20"
+        }
+      ],
+      "sdkCommit": "55066d94acca028c3cb74e050f2711b80ade6298",
+      "baselineSha256": "695e2c7db9369f2dbf7283786d62e8166d4e2761cc599c3dc6df9a97c7f79a2d",
+      "snapshotBasis": "Current official Python SDK AST reconciled with the reviewed pre-SDK schema; old source and rights records retained in snapshotHistory.",
+      "companionSDKCommit": "c0f7d7dea69659edb64486f4a53aea9ae541d957",
+      "companionSDKURL": "https://api.github.com/repos/groq/groq-typescript/commits/main"
     },
     "mistral/openapi": {
       "kind": "openapi",
@@ -512,18 +579,25 @@
           "rightsStatus": "pending"
         }
       ]
+    },
+    "eachai/reviewed-billing": {
+      "noticeFiles": [],
+      "rightsBasis": "No new redistribution approval is recorded for this reviewed source; release review remains pending.",
+      "rightsEvidenceURL": "https://docs.eachlabs.ai/llms.txt",
+      "kind": "reviewedOpenAPI",
+      "sourceURL": "https://docs.eachlabs.ai/llms.txt",
+      "snapshotSha256": "0388ef9bb357914cd6204bcc90c613620a87fb373c6845d1bed58f9886bc0bd0",
+      "rightsStatus": "pending"
     }
   },
   "modules": [
     {
       "module": "HyperProxyAnthropic",
-      "artifactSha256": "b26cef226e734e716d3528c547690c227316832178485338b4bf4828f1fcf5c2",
-      "reviewStatus": "approved",
+      "artifactSha256": "ce1ecd3f632520557fa434dda32eea359b5ac8a549b87fe0aa7c88160036747e",
+      "reviewStatus": "pending",
       "sourceIDs": [
         "anthropic/official-sdk-openapi"
       ],
-      "reviewedBy": "Pavel Tsvihun (maintainer)",
-      "reviewedAt": "2026-09-20",
       "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
       "artifactReviewedAt": "2026-10-25",
       "previousArtifactReview": {
@@ -546,16 +620,33 @@
           "artifactSha256": "816684ec886ac8c3213a2dd661f9c1ab6b9634b00a319d7901293b6e7d41d5ab",
           "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
           "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "module": "HyperProxyAnthropic",
+          "artifactSha256": "b26cef226e734e716d3528c547690c227316832178485338b4bf4828f1fcf5c2",
+          "reviewStatus": "approved",
+          "sourceIDs": [
+            "anthropic/official-sdk-openapi"
+          ],
+          "reviewedBy": "Pavel Tsvihun (maintainer)",
+          "reviewedAt": "2026-09-20",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25",
+          "previousArtifactReview": {
+            "artifactSha256": "270b7c27de25ff6368950dca7befc48cb0d9f0ff4ebf809f124bec9bd1ad8b12",
+            "artifactReviewedBy": "Codex (generated Swift API review)",
+            "artifactReviewedAt": "2026-10-03"
+          }
         }
       ]
     },
     {
       "module": "HyperProxyBFL",
-      "artifactSha256": "f430a5971aedd12b2c2a4e87232ef9a803deaf296405dbd1cff9bb63cee1913c",
+      "artifactSha256": "dd2e7c4286a30dfa54fdc8cb53bd41c334e46382db3677b390581f971629273c",
       "reviewStatus": "pending",
       "sourceIDs": [
-        "bfl/openapi",
         "bfl/licenses-openapi",
+        "bfl/openapi",
         "bfl/reviewed-lora-openapi"
       ],
       "previousArtifactReview": {
@@ -586,6 +677,28 @@
         },
         {
           "artifactSha256": "ab2c4d9064705ea05d05727a3fa8f7d33013c916585116851f803589b7732180",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "module": "HyperProxyBFL",
+          "artifactSha256": "f430a5971aedd12b2c2a4e87232ef9a803deaf296405dbd1cff9bb63cee1913c",
+          "reviewStatus": "pending",
+          "sourceIDs": [
+            "bfl/openapi",
+            "bfl/licenses-openapi",
+            "bfl/reviewed-lora-openapi"
+          ],
+          "previousArtifactReview": {
+            "artifactSha256": "50fbea5486b79509c60cac61f9497336238e41a17e93eb1c788a1a2def6908f1",
+            "artifactReviewedBy": "Codex (generated Swift diff, compilation and contract tests)",
+            "artifactReviewedAt": "2026-10-08"
+          },
+          "previousReview": {
+            "reviewStatus": "approved",
+            "reviewedBy": "Pavel Tsvihun (maintainer)",
+            "reviewedAt": "2026-10-04"
+          },
           "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
           "artifactReviewedAt": "2026-10-25"
         }
@@ -652,17 +765,15 @@
     },
     {
       "module": "HyperProxyDeepSeek",
-      "artifactSha256": "86ab73b2d120fd498af933d452331d3e62655cc5ba01bba3f59ff1901f83fd89",
-      "reviewStatus": "approved",
+      "artifactSha256": "429a5d0cffbeed3322be96745ef90718ceb0078b7cf328260da2995a2e3cc0cc",
+      "reviewStatus": "pending",
       "sourceIDs": [
-        "deepseek/reviewed-core-openapi",
         "deepseek/reviewed-anthropic-openapi",
+        "deepseek/reviewed-core-openapi",
         "deepseek/reviewed-responses-openapi"
       ],
       "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
       "artifactReviewedAt": "2026-10-25",
-      "reviewedBy": "Pavel Tsvihun (maintainer)",
-      "reviewedAt": "2026-10-04",
       "artifactReviewHistory": [
         {
           "artifactSha256": "bd5a5088b0658ce5b7c40925ff9b49e9de47e1b14e40952e3db2ddc855cc1f8f",
@@ -678,16 +789,31 @@
           "artifactSha256": "30586878605dd31d0222536ca584a7ecf76d7cd5aa4991d5830e166e42d30612",
           "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
           "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "module": "HyperProxyDeepSeek",
+          "artifactSha256": "86ab73b2d120fd498af933d452331d3e62655cc5ba01bba3f59ff1901f83fd89",
+          "reviewStatus": "approved",
+          "sourceIDs": [
+            "deepseek/reviewed-core-openapi",
+            "deepseek/reviewed-anthropic-openapi",
+            "deepseek/reviewed-responses-openapi"
+          ],
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25",
+          "reviewedBy": "Pavel Tsvihun (maintainer)",
+          "reviewedAt": "2026-10-04"
         }
       ]
     },
     {
       "module": "HyperProxyEachAI",
-      "artifactSha256": "965f101c06be82052d622883dff257689c366d4e5c603077e92fbe4923ec6857",
+      "artifactSha256": "62e5f248ee5381c572729c78b180e83e2332c8f22105ad5e66f4edbd2c5f7cc5",
       "reviewStatus": "pending",
       "sourceIDs": [
         "eachai/openapi-api",
         "eachai/openapi-workflows-host",
+        "eachai/reviewed-billing",
         "eachai/reviewed-sense"
       ],
       "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
@@ -717,6 +843,28 @@
           "artifactSha256": "dc13262cd905e5e3272df3a571ad018b1c0e4bd5aa7a3012fd751f520b9fd759",
           "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
           "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "module": "HyperProxyEachAI",
+          "artifactSha256": "965f101c06be82052d622883dff257689c366d4e5c603077e92fbe4923ec6857",
+          "reviewStatus": "pending",
+          "sourceIDs": [
+            "eachai/openapi-api",
+            "eachai/openapi-workflows-host",
+            "eachai/reviewed-sense"
+          ],
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25",
+          "previousArtifactReview": {
+            "artifactSha256": "15e7aaf2afa957622ba31f4cd117e713327b3a9a6124fc687b9123d865827068",
+            "artifactReviewedBy": "Codex (generated Swift API review)",
+            "artifactReviewedAt": "2026-10-03"
+          },
+          "previousReview": {
+            "reviewStatus": "approved",
+            "reviewedBy": "Pavel Tsvihun (maintainer)",
+            "reviewedAt": "2026-10-04"
+          }
         }
       ]
     },
@@ -870,13 +1018,11 @@
     },
     {
       "module": "HyperProxyGroq",
-      "artifactSha256": "167457f24c94123b5e20d510677fdf6adf01d1b29c6a483135bc97cb4f78e327",
-      "reviewStatus": "approved",
+      "artifactSha256": "f6244d958bc18589c33bf359b94306b7e16bd4aef500f45eee3c558d354d4abf",
+      "reviewStatus": "pending",
       "sourceIDs": [
         "groq/official-sdk-openapi"
       ],
-      "reviewedBy": "Pavel Tsvihun (maintainer)",
-      "reviewedAt": "2026-09-20",
       "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
       "artifactReviewedAt": "2026-10-25",
       "artifactReviewHistory": [
@@ -892,6 +1038,18 @@
         },
         {
           "artifactSha256": "b34197378ddbad41d99e8375ac464261fc79031354dbc2e27d4b73632cef8c0b",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "module": "HyperProxyGroq",
+          "artifactSha256": "167457f24c94123b5e20d510677fdf6adf01d1b29c6a483135bc97cb4f78e327",
+          "reviewStatus": "approved",
+          "sourceIDs": [
+            "groq/official-sdk-openapi"
+          ],
+          "reviewedBy": "Pavel Tsvihun (maintainer)",
+          "reviewedAt": "2026-09-20",
           "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
           "artifactReviewedAt": "2026-10-25"
         }
@@ -1067,7 +1225,7 @@
     },
     {
       "module": "HyperProxyProviders",
-      "artifactSha256": "974123992429e69d9c8fd94d82df1f307104421c931aff561870fc1fcda3ecda",
+      "artifactSha256": "1fde2c6bfe7fbfb332c0d5f2916e756f979559c8c705156958801f65e4aecc56",
       "reviewStatus": "pending",
       "sourceIDs": [
         "anthropic/official-sdk-openapi",
@@ -1082,6 +1240,7 @@
         "deepseek/reviewed-responses-openapi",
         "eachai/openapi-api",
         "eachai/openapi-workflows-host",
+        "eachai/reviewed-billing",
         "eachai/reviewed-sense",
         "elevenlabs/openapi",
         "fal/platform-openapi",
@@ -1116,6 +1275,50 @@
           "artifactSha256": "ad56daebe5ba2b2eafe04786b3e07a0576f901a29710ffc6d80452153ba269ea",
           "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
           "artifactReviewedAt": "2026-10-24"
+        },
+        {
+          "module": "HyperProxyProviders",
+          "artifactSha256": "974123992429e69d9c8fd94d82df1f307104421c931aff561870fc1fcda3ecda",
+          "reviewStatus": "pending",
+          "sourceIDs": [
+            "anthropic/official-sdk-openapi",
+            "bfl/licenses-openapi",
+            "bfl/openapi",
+            "bfl/reviewed-lora-openapi",
+            "brave/reviewed-search-api",
+            "deepl/openapi",
+            "deepl/voice-asyncapi",
+            "deepseek/reviewed-anthropic-openapi",
+            "deepseek/reviewed-core-openapi",
+            "deepseek/reviewed-responses-openapi",
+            "eachai/openapi-api",
+            "eachai/openapi-workflows-host",
+            "eachai/reviewed-sense",
+            "elevenlabs/openapi",
+            "fal/platform-openapi",
+            "fireworks/merged-openapi",
+            "gemini/discovery-v1beta",
+            "groq/official-sdk-openapi",
+            "mistral/openapi",
+            "openai/openapi",
+            "openrouter/openapi",
+            "perplexity/openapi",
+            "replicate/openapi",
+            "stability/openapi-v2beta",
+            "together/openapi"
+          ],
+          "previousArtifactReview": {
+            "artifactSha256": "ba280d186ed0c15fe0f686e54e86753d89b4a1a1f0a5190e8748f938013414e8",
+            "artifactReviewedBy": "Codex (generated Swift diff, compilation and contract tests)",
+            "artifactReviewedAt": "2026-10-08"
+          },
+          "previousReview": {
+            "reviewStatus": "approved",
+            "reviewedBy": "Pavel Tsvihun (maintainer)",
+            "reviewedAt": "2026-10-04"
+          },
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
         }
       ],
       "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",

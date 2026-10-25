@@ -12,6 +12,7 @@ import HyperProxyCore
 
 public struct AnthropicListFilesParameters: Codable, Sendable {
   public var anthropicVersion: String?
+  public var anthropicWorkspaceId: String?
   public var ids: [String]?
   public var limit: Int?
   public var page: String?
@@ -19,12 +20,14 @@ public struct AnthropicListFilesParameters: Codable, Sendable {
 
   public init(
     anthropicVersion: String? = nil,
+    anthropicWorkspaceId: String? = nil,
     ids: [String]? = nil,
     limit: Int? = nil,
     page: String? = nil,
     xApiKey: String? = nil
   ) {
     self.anthropicVersion = anthropicVersion
+    self.anthropicWorkspaceId = anthropicWorkspaceId
     self.ids = ids
     self.limit = limit
     self.page = page
@@ -33,7 +36,8 @@ public struct AnthropicListFilesParameters: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case anthropicVersion = "anthropic-version"
-    case ids = "ids[]"
+    case anthropicWorkspaceId = "anthropic-workspace-id"
+    case ids
     case limit
     case page
     case xApiKey = "x-api-key"

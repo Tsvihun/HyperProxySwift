@@ -15,18 +15,18 @@ public struct AnthropicBetaManagedAgentsUserDefineOutcomeEvent: Codable, Sendabl
   public var id: String
   public var maxIterations: Int?
   public var outcomeId: String
-  public var processedAt: AnthropicBetaTimestamp
-  public var rubric: AnthropicBetaManagedAgentsRubric
+  public var processedAt: String
+  public var rubric: AnthropicBetaSessionsManagedAgentsUserDefineOutcomeEventRubric
   public var kind: AnthropicBetaManagedAgentsUserDefineOutcomeEvent.Kind
 
   public init(
     description: String,
     id: String,
-    maxIterations: Int?,
     outcomeId: String,
-    processedAt: AnthropicBetaTimestamp,
-    rubric: AnthropicBetaManagedAgentsRubric,
-    kind: AnthropicBetaManagedAgentsUserDefineOutcomeEvent.Kind
+    processedAt: String,
+    rubric: AnthropicBetaSessionsManagedAgentsUserDefineOutcomeEventRubric,
+    kind: AnthropicBetaManagedAgentsUserDefineOutcomeEvent.Kind,
+    maxIterations: Int? = nil
   ) {
     self.description = description
     self.id = id

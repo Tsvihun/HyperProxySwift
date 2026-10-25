@@ -13,10 +13,10 @@ import HyperProxyCore
 public struct AnthropicBetaManagedAgentsCustomToolInputSchema: Codable, Sendable {
   public var properties: [String: HyperProxyJSONValue]?
   public var requiredValue: [String]?
-  public var kind: AnthropicObjectKind
+  public var kind: AnthropicBetaManagedAgentsCustomToolInputSchema.Kind
 
   public init(
-    kind: AnthropicObjectKind = .object,
+    kind: AnthropicBetaManagedAgentsCustomToolInputSchema.Kind,
     properties: [String: HyperProxyJSONValue]? = nil,
     requiredValue: [String]? = nil
   ) {
@@ -29,5 +29,9 @@ public struct AnthropicBetaManagedAgentsCustomToolInputSchema: Codable, Sendable
     case properties
     case requiredValue = "required"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case object = "object"
   }
 }

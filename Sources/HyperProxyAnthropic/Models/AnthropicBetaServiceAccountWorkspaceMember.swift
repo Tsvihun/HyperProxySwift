@@ -16,15 +16,15 @@ public struct AnthropicBetaServiceAccountWorkspaceMember: Codable, Sendable {
   public var serviceAccountId: String
   public var kind: AnthropicBetaServiceAccountWorkspaceMember.Kind
   public var workspaceId: String
-  public var workspaceRole: AnthropicBetaWorkspaceRoleSchema
+  public var workspaceRole: AnthropicBetaWorkspaceRole
 
   public init(
-    createdByActorId: String?,
-    implicit: Bool?,
     serviceAccountId: String,
+    kind: AnthropicBetaServiceAccountWorkspaceMember.Kind,
     workspaceId: String,
-    workspaceRole: AnthropicBetaWorkspaceRoleSchema,
-    kind: AnthropicBetaServiceAccountWorkspaceMember.Kind = .serviceAccountWorkspaceMember
+    workspaceRole: AnthropicBetaWorkspaceRole,
+    createdByActorId: String? = nil,
+    implicit: Bool? = nil
   ) {
     self.createdByActorId = createdByActorId
     self.implicit = implicit

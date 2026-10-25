@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsSpanModelRequestStartEvent: Codable, Sendable {
   public var id: String
-  public var processedAt: AnthropicBetaTimestamp
+  public var processedAt: String
   public var kind: AnthropicBetaManagedAgentsSpanModelRequestStartEvent.Kind
 
   public init(
     id: String,
-    processedAt: AnthropicBetaTimestamp,
+    processedAt: String,
     kind: AnthropicBetaManagedAgentsSpanModelRequestStartEvent.Kind
   ) {
     self.id = id

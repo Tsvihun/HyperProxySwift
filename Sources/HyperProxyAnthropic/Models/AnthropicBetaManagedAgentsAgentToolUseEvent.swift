@@ -12,23 +12,26 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsAgentToolUseEvent: Codable, Sendable {
   public var evaluatedPermission: AnthropicBetaManagedAgentsAgentEvaluatedPermission?
+  public var evaluation: AnthropicBetaManagedAgentsAgentToolEvaluation?
   public var id: String
-  public var input: AnthropicBetaManagedAgentsStruct
+  public var input: [String: HyperProxyJSONValue]
   public var name: String
-  public var processedAt: AnthropicBetaTimestamp
+  public var processedAt: String
   public var sessionThreadId: String?
   public var kind: AnthropicBetaManagedAgentsAgentToolUseEvent.Kind
 
   public init(
     id: String,
-    input: AnthropicBetaManagedAgentsStruct,
+    input: [String: HyperProxyJSONValue],
     name: String,
-    processedAt: AnthropicBetaTimestamp,
+    processedAt: String,
     kind: AnthropicBetaManagedAgentsAgentToolUseEvent.Kind,
     evaluatedPermission: AnthropicBetaManagedAgentsAgentEvaluatedPermission? = nil,
+    evaluation: AnthropicBetaManagedAgentsAgentToolEvaluation? = nil,
     sessionThreadId: String? = nil
   ) {
     self.evaluatedPermission = evaluatedPermission
+    self.evaluation = evaluation
     self.id = id
     self.input = input
     self.name = name
@@ -39,6 +42,7 @@ public struct AnthropicBetaManagedAgentsAgentToolUseEvent: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case evaluatedPermission = "evaluated_permission"
+    case evaluation
     case id
     case input
     case name

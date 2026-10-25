@@ -13,9 +13,10 @@ import HyperProxyCore
 public struct AnthropicBetaListMemoryVersionsParameters: Codable, Sendable {
   public var anthropicBeta: String?
   public var anthropicVersion: String?
+  public var anthropicWorkspaceId: String?
   public var apiKeyId: String?
-  public var createdAtGte: AnthropicBetaTimestamp?
-  public var createdAtLte: AnthropicBetaTimestamp?
+  public var createdAtGte: AnthropicBetaListMemoryVersionsParameters.CreatedAtGte?
+  public var createdAtLte: AnthropicBetaListMemoryVersionsParameters.CreatedAtLte?
   public var limit: Int?
   public var memoryId: String?
   public var memoryStoreId: String
@@ -30,9 +31,10 @@ public struct AnthropicBetaListMemoryVersionsParameters: Codable, Sendable {
     memoryStoreId: String,
     anthropicBeta: String? = nil,
     anthropicVersion: String? = nil,
+    anthropicWorkspaceId: String? = nil,
     apiKeyId: String? = nil,
-    createdAtGte: AnthropicBetaTimestamp? = nil,
-    createdAtLte: AnthropicBetaTimestamp? = nil,
+    createdAtGte: AnthropicBetaListMemoryVersionsParameters.CreatedAtGte? = nil,
+    createdAtLte: AnthropicBetaListMemoryVersionsParameters.CreatedAtLte? = nil,
     limit: Int? = nil,
     memoryId: String? = nil,
     operation: AnthropicBetaManagedAgentsMemoryVersionOperation? = nil,
@@ -44,6 +46,7 @@ public struct AnthropicBetaListMemoryVersionsParameters: Codable, Sendable {
   ) {
     self.anthropicBeta = anthropicBeta
     self.anthropicVersion = anthropicVersion
+    self.anthropicWorkspaceId = anthropicWorkspaceId
     self.apiKeyId = apiKeyId
     self.createdAtGte = createdAtGte
     self.createdAtLte = createdAtLte
@@ -61,6 +64,7 @@ public struct AnthropicBetaListMemoryVersionsParameters: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case anthropicBeta = "anthropic-beta"
     case anthropicVersion = "anthropic-version"
+    case anthropicWorkspaceId = "anthropic-workspace-id"
     case apiKeyId = "api_key_id"
     case createdAtGte = "created_at[gte]"
     case createdAtLte = "created_at[lte]"
@@ -73,5 +77,107 @@ public struct AnthropicBetaListMemoryVersionsParameters: Codable, Sendable {
     case sessionId = "session_id"
     case view
     case xApiKey = "x-api-key"
+  }
+
+  public enum CreatedAtGte: Codable, Sendable {
+    case string(String)
+    case dateTime(
+      AnthropicBetaListMemoryVersionsParameters.CreatedAtGte.DateTime)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .dateTime(
+        try container.decode(AnthropicBetaListMemoryVersionsParameters.CreatedAtGte.DateTime.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .dateTime(let value):
+        try container.encode(value)
+      }
+    }
+
+    public struct DateTime: RawRepresentable,
+      Codable, Hashable, Sendable
+    {
+      public var rawValue: String
+
+      public init(rawValue: String) {
+        self.rawValue = rawValue
+      }
+
+    }
+  }
+
+  public enum CreatedAtLte: Codable, Sendable {
+    case string(String)
+    case dateTime(
+      AnthropicBetaListMemoryVersionsParameters.CreatedAtLte.DateTime)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .dateTime(
+        try container.decode(AnthropicBetaListMemoryVersionsParameters.CreatedAtLte.DateTime.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .dateTime(let value):
+        try container.encode(value)
+      }
+    }
+
+    public struct DateTime: RawRepresentable,
+      Codable, Hashable, Sendable
+    {
+      public var rawValue: String
+
+      public init(rawValue: String) {
+        self.rawValue = rawValue
+      }
+
+    }
+  }
+}
+
+extension AnthropicBetaListMemoryVersionsParameters.CreatedAtGte: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension AnthropicBetaListMemoryVersionsParameters.CreatedAtGte.DateTime:
+  ExpressibleByStringLiteral
+{
+  public init(stringLiteral value: String) {
+    self.init(rawValue: value)
+  }
+}
+
+extension AnthropicBetaListMemoryVersionsParameters.CreatedAtLte: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension AnthropicBetaListMemoryVersionsParameters.CreatedAtLte.DateTime:
+  ExpressibleByStringLiteral
+{
+  public init(stringLiteral value: String) {
+    self.init(rawValue: value)
   }
 }

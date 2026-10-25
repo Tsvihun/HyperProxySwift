@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct AnthropicBetaListMemoriesParameters: Codable, Sendable {
   public var anthropicBeta: String?
   public var anthropicVersion: String?
+  public var anthropicWorkspaceId: String?
   public var depth: Int?
   public var limit: Int?
   public var memoryStoreId: String
@@ -25,6 +26,7 @@ public struct AnthropicBetaListMemoriesParameters: Codable, Sendable {
     memoryStoreId: String,
     anthropicBeta: String? = nil,
     anthropicVersion: String? = nil,
+    anthropicWorkspaceId: String? = nil,
     depth: Int? = nil,
     limit: Int? = nil,
     page: String? = nil,
@@ -34,6 +36,7 @@ public struct AnthropicBetaListMemoriesParameters: Codable, Sendable {
   ) {
     self.anthropicBeta = anthropicBeta
     self.anthropicVersion = anthropicVersion
+    self.anthropicWorkspaceId = anthropicWorkspaceId
     self.depth = depth
     self.limit = limit
     self.memoryStoreId = memoryStoreId
@@ -46,6 +49,7 @@ public struct AnthropicBetaListMemoriesParameters: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case anthropicBeta = "anthropic-beta"
     case anthropicVersion = "anthropic-version"
+    case anthropicWorkspaceId = "anthropic-workspace-id"
     case depth
     case limit
     case memoryStoreId = "memory_store_id"

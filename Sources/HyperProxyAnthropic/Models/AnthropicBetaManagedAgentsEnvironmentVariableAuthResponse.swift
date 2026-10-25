@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsEnvironmentVariableAuthResponse: Codable, Sendable {
   public var injectionLocation: AnthropicBetaManagedAgentsInjectionLocationResponse
-  public var networking: AnthropicBetaManagedAgentsCredentialNetworkingResponse
+  public var networking: AnthropicBetaVaultsManagedAgentsEnvironmentVariableAuthResponseNetworking
   public var secretName: String
   public var kind: AnthropicBetaManagedAgentsEnvironmentVariableAuthResponse.Kind
 
   public init(
     injectionLocation: AnthropicBetaManagedAgentsInjectionLocationResponse,
-    networking: AnthropicBetaManagedAgentsCredentialNetworkingResponse,
+    networking: AnthropicBetaVaultsManagedAgentsEnvironmentVariableAuthResponseNetworking,
     secretName: String,
     kind: AnthropicBetaManagedAgentsEnvironmentVariableAuthResponse.Kind
   ) {

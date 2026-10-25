@@ -13,17 +13,21 @@ import HyperProxyCore
 public struct AnthropicMessagesPostParameters: Codable, Sendable {
   public var anthropicUserProfileId: String?
   public var anthropicVersion: String?
+  public var anthropicWorkspaceId: String?
 
   public init(
     anthropicUserProfileId: String? = nil,
-    anthropicVersion: String? = nil
+    anthropicVersion: String? = nil,
+    anthropicWorkspaceId: String? = nil
   ) {
     self.anthropicUserProfileId = anthropicUserProfileId
     self.anthropicVersion = anthropicVersion
+    self.anthropicWorkspaceId = anthropicWorkspaceId
   }
 
   enum CodingKeys: String, CodingKey {
     case anthropicUserProfileId = "anthropic-user-profile-id"
     case anthropicVersion = "anthropic-version"
+    case anthropicWorkspaceId = "anthropic-workspace-id"
   }
 }

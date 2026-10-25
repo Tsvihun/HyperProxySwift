@@ -14,7 +14,7 @@ public struct AnthropicBetaCacheMissPreviousMessageNotFound: Codable, Sendable {
   public var kind: AnthropicBetaCacheMissPreviousMessageNotFound.Kind
 
   public init(
-    kind: AnthropicBetaCacheMissPreviousMessageNotFound.Kind = .previousMessageNotFound
+    kind: AnthropicBetaCacheMissPreviousMessageNotFound.Kind
   ) {
     self.kind = kind
   }

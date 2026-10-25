@@ -14,19 +14,19 @@ public struct AnthropicBetaManagedAgentsWebSearchToolConfigParams: Codable, Send
   public var allowedDomains: [String]?
   public var blockedDomains: [String]?
   public var enabled: Bool?
-  public var name: AnthropicWebSearchName
-  public var permissionPolicy: AnthropicBetaManagedAgentsPermissionPolicy?
-  public var kind: AnthropicWebSearchKind?
-  public var userLocation: AnthropicBetaManagedAgentsUserLocation?
+  public var name: AnthropicBetaManagedAgentsWebSearchToolConfigParams.Name
+  public var permissionPolicy: AnthropicBetaManagedAgentsWebSearchToolConfigParamsPermissionPolicy?
+  public var kind: AnthropicBetaManagedAgentsWebSearchToolConfigParams.Kind?
+  public var userLocation: AnthropicBetaManagedAgentsUserLocationParam?
 
   public init(
-    name: AnthropicWebSearchName = .webSearch,
+    name: AnthropicBetaManagedAgentsWebSearchToolConfigParams.Name,
     allowedDomains: [String]? = nil,
     blockedDomains: [String]? = nil,
     enabled: Bool? = nil,
-    permissionPolicy: AnthropicBetaManagedAgentsPermissionPolicy? = nil,
-    kind: AnthropicWebSearchKind? = nil,
-    userLocation: AnthropicBetaManagedAgentsUserLocation? = nil
+    permissionPolicy: AnthropicBetaManagedAgentsWebSearchToolConfigParamsPermissionPolicy? = nil,
+    kind: AnthropicBetaManagedAgentsWebSearchToolConfigParams.Kind? = nil,
+    userLocation: AnthropicBetaManagedAgentsUserLocationParam? = nil
   ) {
     self.allowedDomains = allowedDomains
     self.blockedDomains = blockedDomains
@@ -45,5 +45,17 @@ public struct AnthropicBetaManagedAgentsWebSearchToolConfigParams: Codable, Send
     case permissionPolicy = "permission_policy"
     case kind = "type"
     case userLocation = "user_location"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case webSearch = "web_search"
+  }
+
+  public enum Name: String, Codable, Hashable,
+    Sendable
+  {
+    case webSearch = "web_search"
   }
 }

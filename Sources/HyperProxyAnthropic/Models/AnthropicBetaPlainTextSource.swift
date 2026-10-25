@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct AnthropicBetaPlainTextSource: Codable, Sendable {
   public var data: String
-  public var mediaType: AnthropicTextPlainMediaType
-  public var kind: AnthropicTextKind
+  public var mediaType: AnthropicBetaPlainTextSource.MediaType
+  public var kind: AnthropicBetaPlainTextSource.Kind
 
   public init(
     data: String,
-    mediaType: AnthropicTextPlainMediaType = .textPlain,
-    kind: AnthropicTextKind = .text
+    mediaType: AnthropicBetaPlainTextSource.MediaType,
+    kind: AnthropicBetaPlainTextSource.Kind
   ) {
     self.data = data
     self.mediaType = mediaType
@@ -29,5 +29,13 @@ public struct AnthropicBetaPlainTextSource: Codable, Sendable {
     case data
     case mediaType = "media_type"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case text = "text"
+  }
+
+  public enum MediaType: String, Codable, Hashable, Sendable {
+    case textPlain = "text/plain"
   }
 }

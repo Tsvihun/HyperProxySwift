@@ -14,10 +14,10 @@ public struct AnthropicBetaLimitedNetworkParams: Codable, Sendable {
   public var allowMcpServers: Bool?
   public var allowPackageManagers: Bool?
   public var allowedHosts: [String]?
-  public var kind: AnthropicLimitedKind
+  public var kind: AnthropicBetaLimitedNetworkParams.Kind
 
   public init(
-    kind: AnthropicLimitedKind = .limited,
+    kind: AnthropicBetaLimitedNetworkParams.Kind,
     allowMcpServers: Bool? = nil,
     allowPackageManagers: Bool? = nil,
     allowedHosts: [String]? = nil
@@ -33,5 +33,9 @@ public struct AnthropicBetaLimitedNetworkParams: Codable, Sendable {
     case allowPackageManagers = "allow_package_managers"
     case allowedHosts = "allowed_hosts"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case limited = "limited"
   }
 }

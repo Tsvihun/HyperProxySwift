@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsAgentToolset20260401Params: Codable, Sendable {
-  public var configs: [AnthropicBetaManagedAgentsAgentToolConfigUnionParams]?
+  public var configs: [AnthropicBetaManagedAgentsAgentToolConfigParams]?
   public var defaultConfig: AnthropicBetaManagedAgentsAgentToolsetDefaultConfigParams?
   public var kind: AnthropicBetaManagedAgentsAgentToolset20260401Params.Kind
 
   public init(
     kind: AnthropicBetaManagedAgentsAgentToolset20260401Params.Kind,
-    configs: [AnthropicBetaManagedAgentsAgentToolConfigUnionParams]? = nil,
+    configs: [AnthropicBetaManagedAgentsAgentToolConfigParams]? = nil,
     defaultConfig: AnthropicBetaManagedAgentsAgentToolsetDefaultConfigParams? = nil
   ) {
     self.configs = configs

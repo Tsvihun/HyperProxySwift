@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct AnthropicBetaFederationIssuerCreateParams: Codable, Sendable {
   public var checkJti: Bool?
   public var issuerUrl: String
-  public var jwks: AnthropicBetaFederationIssuerCreateParams.Jwks?
+  public var jwks: AnthropicBetaOrganizationFederationIssuerCreateParamsJWKS?
   public var maxJwtLifetimeSeconds: Int?
   public var name: String
 
@@ -21,7 +21,7 @@ public struct AnthropicBetaFederationIssuerCreateParams: Codable, Sendable {
     issuerUrl: String,
     name: String,
     checkJti: Bool? = nil,
-    jwks: AnthropicBetaFederationIssuerCreateParams.Jwks? = nil,
+    jwks: AnthropicBetaOrganizationFederationIssuerCreateParamsJWKS? = nil,
     maxJwtLifetimeSeconds: Int? = nil
   ) {
     self.checkJti = checkJti
@@ -37,36 +37,5 @@ public struct AnthropicBetaFederationIssuerCreateParams: Codable, Sendable {
     case jwks
     case maxJwtLifetimeSeconds = "max_jwt_lifetime_seconds"
     case name
-  }
-
-  public enum Jwks: Codable, Sendable {
-    case betaJwksDiscovery(AnthropicBetaJwksDiscovery)
-    case betaJwksExplicitUrl(AnthropicBetaJwksExplicitUrl)
-    case betaJwksInline(AnthropicBetaJwksInline)
-
-    public init(from decoder: any Decoder) throws {
-      let container = try decoder.singleValueContainer()
-      if let value = try? container.decode(AnthropicBetaJwksDiscovery.self) {
-        self = .betaJwksDiscovery(value)
-        return
-      }
-      if let value = try? container.decode(AnthropicBetaJwksExplicitUrl.self) {
-        self = .betaJwksExplicitUrl(value)
-        return
-      }
-      self = .betaJwksInline(try container.decode(AnthropicBetaJwksInline.self))
-    }
-
-    public func encode(to encoder: any Encoder) throws {
-      var container = encoder.singleValueContainer()
-      switch self {
-      case .betaJwksDiscovery(let value):
-        try container.encode(value)
-      case .betaJwksExplicitUrl(let value):
-        try container.encode(value)
-      case .betaJwksInline(let value):
-        try container.encode(value)
-      }
-    }
   }
 }

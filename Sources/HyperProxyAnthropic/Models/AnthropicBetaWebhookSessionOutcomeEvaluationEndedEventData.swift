@@ -19,9 +19,8 @@ public struct AnthropicBetaWebhookSessionOutcomeEvaluationEndedEventData: Codabl
   public init(
     id: String,
     organizationId: String,
-    workspaceId: String,
-    kind: AnthropicBetaWebhookSessionOutcomeEvaluationEndedEventData.Kind =
-      .sessionOutcomeEvaluationEnded
+    kind: AnthropicBetaWebhookSessionOutcomeEvaluationEndedEventData.Kind,
+    workspaceId: String
   ) {
     self.id = id
     self.organizationId = organizationId
@@ -36,7 +35,9 @@ public struct AnthropicBetaWebhookSessionOutcomeEvaluationEndedEventData: Codabl
     case workspaceId = "workspace_id"
   }
 
-  public enum Kind: String, Codable, Hashable, Sendable {
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
     case sessionOutcomeEvaluationEnded = "session.outcome_evaluation_ended"
   }
 }

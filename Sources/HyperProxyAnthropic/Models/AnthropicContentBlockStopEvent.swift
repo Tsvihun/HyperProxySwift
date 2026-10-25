@@ -10,20 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public struct AnthropicContentBlockStopEvent: Codable, Sendable {
-  public var index: Int
-  public var kind: AnthropicContentBlockStopKind
-
-  public init(
-    index: Int,
-    kind: AnthropicContentBlockStopKind = .contentBlockStop
-  ) {
-    self.index = index
-    self.kind = kind
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case index
-    case kind = "type"
-  }
-}
+public typealias AnthropicContentBlockStopEvent = AnthropicRawContentBlockStopEvent

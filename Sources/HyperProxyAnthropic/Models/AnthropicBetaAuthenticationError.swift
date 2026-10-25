@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct AnthropicBetaAuthenticationError: Codable, Sendable {
   public var message: String
-  public var kind: AnthropicAuthenticationErrorKind
+  public var kind: AnthropicBetaAuthenticationError.Kind
 
   public init(
     message: String,
-    kind: AnthropicAuthenticationErrorKind = .authenticationError
+    kind: AnthropicBetaAuthenticationError.Kind
   ) {
     self.message = message
     self.kind = kind
@@ -25,5 +25,9 @@ public struct AnthropicBetaAuthenticationError: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case message
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case authenticationError = "authentication_error"
   }
 }

@@ -13,14 +13,15 @@ import HyperProxyCore
 public struct AnthropicBetaManagedAgentsCredentialHostUnreachableError: Codable, Sendable {
   public var credentialId: String
   public var message: String
-  public var retryStatus: AnthropicBetaManagedAgentsRetryStatus
+  public var retryStatus:
+    AnthropicBetaSessionsManagedAgentsCredentialHostUnreachableErrorRetryStatus
   public var kind: AnthropicBetaManagedAgentsCredentialHostUnreachableError.Kind
   public var vaultId: String
 
   public init(
     credentialId: String,
     message: String,
-    retryStatus: AnthropicBetaManagedAgentsRetryStatus,
+    retryStatus: AnthropicBetaSessionsManagedAgentsCredentialHostUnreachableErrorRetryStatus,
     kind: AnthropicBetaManagedAgentsCredentialHostUnreachableError.Kind,
     vaultId: String
   ) {

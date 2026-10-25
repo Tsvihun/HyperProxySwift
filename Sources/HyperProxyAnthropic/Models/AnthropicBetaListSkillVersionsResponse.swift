@@ -16,7 +16,7 @@ public struct AnthropicBetaListSkillVersionsResponse: Codable, Sendable {
 
   public init(
     data: [AnthropicBetaSkillVersion],
-    nextPage: String?
+    nextPage: String? = nil
   ) {
     self.data = data
     self.nextPage = nextPage

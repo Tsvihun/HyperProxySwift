@@ -37,8 +37,8 @@ public enum AnthropicBetaManagedAgentsDeploymentPausedReasonError: Codable, Send
     AnthropicBetaManagedAgentsUnknownDeploymentPausedReasonError)
   case betaManagedAgentsSelfHostedResourcesUnsupportedDeploymentPausedReasonError(
     AnthropicBetaManagedAgentsSelfHostedResourcesUnsupportedDeploymentPausedReasonError)
-  case betaManagedAgentsMcpEgressBlockedDeploymentPausedReasonError(
-    AnthropicBetaManagedAgentsMcpEgressBlockedDeploymentPausedReasonError)
+  case betaManagedAgentsMCPEgressBlockedDeploymentPausedReasonError(
+    AnthropicBetaManagedAgentsMCPEgressBlockedDeploymentPausedReasonError)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -120,9 +120,9 @@ public enum AnthropicBetaManagedAgentsDeploymentPausedReasonError: Codable, Send
       self = .betaManagedAgentsSelfHostedResourcesUnsupportedDeploymentPausedReasonError(value)
       return
     }
-    self = .betaManagedAgentsMcpEgressBlockedDeploymentPausedReasonError(
+    self = .betaManagedAgentsMCPEgressBlockedDeploymentPausedReasonError(
       try container.decode(
-        AnthropicBetaManagedAgentsMcpEgressBlockedDeploymentPausedReasonError.self))
+        AnthropicBetaManagedAgentsMCPEgressBlockedDeploymentPausedReasonError.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -154,7 +154,7 @@ public enum AnthropicBetaManagedAgentsDeploymentPausedReasonError: Codable, Send
       try container.encode(value)
     case .betaManagedAgentsSelfHostedResourcesUnsupportedDeploymentPausedReasonError(let value):
       try container.encode(value)
-    case .betaManagedAgentsMcpEgressBlockedDeploymentPausedReasonError(let value):
+    case .betaManagedAgentsMCPEgressBlockedDeploymentPausedReasonError(let value):
       try container.encode(value)
     }
   }

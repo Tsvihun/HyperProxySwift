@@ -19,8 +19,8 @@ public struct AnthropicBetaWebhookSessionBudgetReachedEventData: Codable, Sendab
   public init(
     id: String,
     organizationId: String,
-    workspaceId: String,
-    kind: AnthropicBetaWebhookSessionBudgetReachedEventData.Kind = .sessionBudgetReached
+    kind: AnthropicBetaWebhookSessionBudgetReachedEventData.Kind,
+    workspaceId: String
   ) {
     self.id = id
     self.organizationId = organizationId
@@ -35,7 +35,9 @@ public struct AnthropicBetaWebhookSessionBudgetReachedEventData: Codable, Sendab
     case workspaceId = "workspace_id"
   }
 
-  public enum Kind: String, Codable, Hashable, Sendable {
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
     case sessionBudgetReached = "session.budget_reached"
   }
 }

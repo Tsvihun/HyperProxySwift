@@ -12,29 +12,32 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsSessionThreadAgent: Codable, Sendable {
   public var description: String?
+  public var executionIdentity: AnthropicBetaManagedAgentsExecutionIdentity
   public var id: String
-  public var mcpServers: [AnthropicBetaManagedAgentsMCPServer]
+  public var mcpServers: [AnthropicBetaManagedAgentsMCPServerURLDefinition]
   public var model: AnthropicBetaManagedAgentsModelConfig
   public var name: String
-  public var skills: [AnthropicBetaManagedAgentsSkill]
+  public var skills: [AnthropicBetaManagedAgentsSessionThreadAgentSkill]
   public var system: String?
-  public var tools: [AnthropicBetaManagedAgentsAgentTool]
+  public var tools: [AnthropicBetaManagedAgentsSessionThreadAgentTool]
   public var kind: AnthropicBetaManagedAgentsSessionThreadAgent.Kind
   public var version: Int
 
   public init(
-    description: String?,
+    executionIdentity: AnthropicBetaManagedAgentsExecutionIdentity,
     id: String,
-    mcpServers: [AnthropicBetaManagedAgentsMCPServer],
+    mcpServers: [AnthropicBetaManagedAgentsMCPServerURLDefinition],
     model: AnthropicBetaManagedAgentsModelConfig,
     name: String,
-    skills: [AnthropicBetaManagedAgentsSkill],
-    system: String?,
-    tools: [AnthropicBetaManagedAgentsAgentTool],
+    skills: [AnthropicBetaManagedAgentsSessionThreadAgentSkill],
+    tools: [AnthropicBetaManagedAgentsSessionThreadAgentTool],
     kind: AnthropicBetaManagedAgentsSessionThreadAgent.Kind,
-    version: Int
+    version: Int,
+    description: String? = nil,
+    system: String? = nil
   ) {
     self.description = description
+    self.executionIdentity = executionIdentity
     self.id = id
     self.mcpServers = mcpServers
     self.model = model
@@ -48,6 +51,7 @@ public struct AnthropicBetaManagedAgentsSessionThreadAgent: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case description
+    case executionIdentity = "execution_identity"
     case id
     case mcpServers = "mcp_servers"
     case model

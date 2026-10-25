@@ -21,7 +21,7 @@ public struct AnthropicBetaFederationRule: Codable, Sendable {
   public var id: String
   public var issuerId: String
   public var issuerName: String?
-  public var match: AnthropicBetaRuleMatch
+  public var match: AnthropicBetaFederationRuleMatch
   public var name: String
   public var oauthScope: String
   public var target: AnthropicBetaServiceAccountTarget
@@ -34,25 +34,25 @@ public struct AnthropicBetaFederationRule: Codable, Sendable {
 
   public init(
     appliesToAllWorkspaces: Bool,
-    archivedAt: String?,
-    archivedByActorId: String?,
-    attributes: [String: String]?,
     createdAt: String,
-    createdByActorId: String?,
-    description: String?,
     id: String,
     issuerId: String,
-    issuerName: String?,
-    match: AnthropicBetaRuleMatch,
+    match: AnthropicBetaFederationRuleMatch,
     name: String,
     oauthScope: String,
     target: AnthropicBetaServiceAccountTarget,
     tokenLifetimeSeconds: Int,
+    kind: AnthropicBetaFederationRule.Kind,
     updatedAt: String,
-    updatedByActorId: String?,
-    workspaceId: String?,
     workspaceIds: [String],
-    kind: AnthropicBetaFederationRule.Kind = .federationRule
+    archivedAt: String? = nil,
+    archivedByActorId: String? = nil,
+    attributes: [String: String]? = nil,
+    createdByActorId: String? = nil,
+    description: String? = nil,
+    issuerName: String? = nil,
+    updatedByActorId: String? = nil,
+    workspaceId: String? = nil
   ) {
     self.appliesToAllWorkspaces = appliesToAllWorkspaces
     self.archivedAt = archivedAt

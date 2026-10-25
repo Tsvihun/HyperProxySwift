@@ -12,19 +12,19 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsSessionUpdatedEvent: Codable, Sendable {
   public var agent: AnthropicBetaManagedAgentsSessionAgent?
-  public var budget: AnthropicBetaManagedAgentsBudget?
+  public var budget: AnthropicBetaManagedAgentsBudgetLimit?
   public var id: String
   public var metadata: [String: String]?
-  public var processedAt: AnthropicBetaTimestamp
+  public var processedAt: String
   public var title: String?
   public var kind: AnthropicBetaManagedAgentsSessionUpdatedEvent.Kind
 
   public init(
     id: String,
-    processedAt: AnthropicBetaTimestamp,
+    processedAt: String,
     kind: AnthropicBetaManagedAgentsSessionUpdatedEvent.Kind,
     agent: AnthropicBetaManagedAgentsSessionAgent? = nil,
-    budget: AnthropicBetaManagedAgentsBudget? = nil,
+    budget: AnthropicBetaManagedAgentsBudgetLimit? = nil,
     metadata: [String: String]? = nil,
     title: String? = nil
   ) {

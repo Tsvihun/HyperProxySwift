@@ -12,18 +12,22 @@ import HyperProxyCore
 
 public struct AnthropicMessageBatchesCancelParameters: Codable, Sendable {
   public var anthropicVersion: String?
+  public var anthropicWorkspaceId: String?
   public var messageBatchId: String
 
   public init(
     messageBatchId: String,
-    anthropicVersion: String? = nil
+    anthropicVersion: String? = nil,
+    anthropicWorkspaceId: String? = nil
   ) {
     self.anthropicVersion = anthropicVersion
+    self.anthropicWorkspaceId = anthropicWorkspaceId
     self.messageBatchId = messageBatchId
   }
 
   enum CodingKeys: String, CodingKey {
     case anthropicVersion = "anthropic-version"
+    case anthropicWorkspaceId = "anthropic-workspace-id"
     case messageBatchId = "message_batch_id"
   }
 }

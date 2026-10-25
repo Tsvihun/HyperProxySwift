@@ -16,7 +16,7 @@ public struct AnthropicBetaManagedAgentsSpanOutcomeEvaluationEndEvent: Codable, 
   public var iteration: Int
   public var outcomeEvaluationStartId: String
   public var outcomeId: String
-  public var processedAt: AnthropicBetaTimestamp
+  public var processedAt: String
   public var result: String
   public var kind: AnthropicBetaManagedAgentsSpanOutcomeEvaluationEndEvent.Kind
   public var usage: AnthropicBetaManagedAgentsSpanModelUsage
@@ -27,7 +27,7 @@ public struct AnthropicBetaManagedAgentsSpanOutcomeEvaluationEndEvent: Codable, 
     iteration: Int,
     outcomeEvaluationStartId: String,
     outcomeId: String,
-    processedAt: AnthropicBetaTimestamp,
+    processedAt: String,
     result: String,
     kind: AnthropicBetaManagedAgentsSpanOutcomeEvaluationEndEvent.Kind,
     usage: AnthropicBetaManagedAgentsSpanModelUsage

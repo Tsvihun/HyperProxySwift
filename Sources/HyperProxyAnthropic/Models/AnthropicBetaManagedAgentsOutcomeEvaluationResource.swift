@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsOutcomeEvaluationResource: Codable, Sendable {
-  public var completedAt: AnthropicBetaTimestamp?
+  public var completedAt: String?
   public var description: String
   public var explanation: String?
   public var iteration: Int
@@ -20,13 +20,13 @@ public struct AnthropicBetaManagedAgentsOutcomeEvaluationResource: Codable, Send
   public var kind: AnthropicBetaManagedAgentsOutcomeEvaluationResource.Kind
 
   public init(
-    completedAt: AnthropicBetaTimestamp?,
     description: String,
-    explanation: String?,
     iteration: Int,
     outcomeId: String,
     result: String,
-    kind: AnthropicBetaManagedAgentsOutcomeEvaluationResource.Kind
+    kind: AnthropicBetaManagedAgentsOutcomeEvaluationResource.Kind,
+    completedAt: String? = nil,
+    explanation: String? = nil
   ) {
     self.completedAt = completedAt
     self.description = description

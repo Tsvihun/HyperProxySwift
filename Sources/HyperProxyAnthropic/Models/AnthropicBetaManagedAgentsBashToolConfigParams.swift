@@ -12,15 +12,15 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsBashToolConfigParams: Codable, Sendable {
   public var enabled: Bool?
-  public var name: AnthropicBashName
-  public var permissionPolicy: AnthropicBetaManagedAgentsPermissionPolicy?
-  public var kind: AnthropicBashKind?
+  public var name: AnthropicBetaManagedAgentsBashToolConfigParams.Name
+  public var permissionPolicy: AnthropicBetaManagedAgentsBashToolConfigParamsPermissionPolicy?
+  public var kind: AnthropicBetaManagedAgentsBashToolConfigParams.Kind?
 
   public init(
-    name: AnthropicBashName = .bash,
+    name: AnthropicBetaManagedAgentsBashToolConfigParams.Name,
     enabled: Bool? = nil,
-    permissionPolicy: AnthropicBetaManagedAgentsPermissionPolicy? = nil,
-    kind: AnthropicBashKind? = nil
+    permissionPolicy: AnthropicBetaManagedAgentsBashToolConfigParamsPermissionPolicy? = nil,
+    kind: AnthropicBetaManagedAgentsBashToolConfigParams.Kind? = nil
   ) {
     self.enabled = enabled
     self.name = name
@@ -33,5 +33,13 @@ public struct AnthropicBetaManagedAgentsBashToolConfigParams: Codable, Sendable 
     case name
     case permissionPolicy = "permission_policy"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case bash = "bash"
+  }
+
+  public enum Name: String, Codable, Hashable, Sendable {
+    case bash = "bash"
   }
 }

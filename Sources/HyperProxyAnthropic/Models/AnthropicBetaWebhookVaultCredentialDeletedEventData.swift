@@ -20,9 +20,9 @@ public struct AnthropicBetaWebhookVaultCredentialDeletedEventData: Codable, Send
   public init(
     id: String,
     organizationId: String,
+    kind: AnthropicBetaWebhookVaultCredentialDeletedEventData.Kind,
     vaultId: String,
-    workspaceId: String,
-    kind: AnthropicBetaWebhookVaultCredentialDeletedEventData.Kind = .vaultCredentialDeleted
+    workspaceId: String
   ) {
     self.id = id
     self.organizationId = organizationId
@@ -39,7 +39,9 @@ public struct AnthropicBetaWebhookVaultCredentialDeletedEventData: Codable, Send
     case workspaceId = "workspace_id"
   }
 
-  public enum Kind: String, Codable, Hashable, Sendable {
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
     case vaultCredentialDeleted = "vault_credential.deleted"
   }
 }

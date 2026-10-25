@@ -11,18 +11,18 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsAgentThreadMessageReceivedEvent: Codable, Sendable {
-  public var content: [AnthropicBetaManagedAgentsUserContentBlock]
+  public var content: [AnthropicBetaSessionsManagedAgentsAgentThreadMessageReceivedEventContent]
   public var fromAgentName: String?
   public var fromSessionThreadId: String
   public var id: String
-  public var processedAt: AnthropicBetaTimestamp
+  public var processedAt: String
   public var kind: AnthropicBetaManagedAgentsAgentThreadMessageReceivedEvent.Kind
 
   public init(
-    content: [AnthropicBetaManagedAgentsUserContentBlock],
+    content: [AnthropicBetaSessionsManagedAgentsAgentThreadMessageReceivedEventContent],
     fromSessionThreadId: String,
     id: String,
-    processedAt: AnthropicBetaTimestamp,
+    processedAt: String,
     kind: AnthropicBetaManagedAgentsAgentThreadMessageReceivedEvent.Kind,
     fromAgentName: String? = nil
   ) {

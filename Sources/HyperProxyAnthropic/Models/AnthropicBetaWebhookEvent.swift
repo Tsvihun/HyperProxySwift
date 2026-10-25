@@ -20,7 +20,7 @@ public struct AnthropicBetaWebhookEvent: Codable, Sendable {
     createdAt: String,
     data: AnthropicBetaWebhookEventData,
     id: String,
-    kind: AnthropicBetaWebhookEvent.Kind = .event
+    kind: AnthropicBetaWebhookEvent.Kind
   ) {
     self.createdAt = createdAt
     self.data = data

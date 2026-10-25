@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaRateLimitListResponse: Codable, Sendable {
-  public var data: [AnthropicBetaRateLimit]
+  public var data: [AnthropicBetaOrganizationRateLimit]
   public var nextPage: String?
 
   public init(
-    data: [AnthropicBetaRateLimit],
-    nextPage: String?
+    data: [AnthropicBetaOrganizationRateLimit],
+    nextPage: String? = nil
   ) {
     self.data = data
     self.nextPage = nextPage

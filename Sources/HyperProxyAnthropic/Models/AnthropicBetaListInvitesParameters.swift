@@ -46,8 +46,8 @@ public struct AnthropicBetaListInvitesParameters: Codable, Sendable {
     case beforeId = "before_id"
     case email
     case limit
-    case roles = "roles[]"
-    case statuses = "statuses[]"
+    case roles
+    case statuses
     case xApiKey = "x-api-key"
   }
 

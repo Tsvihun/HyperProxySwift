@@ -21,14 +21,14 @@ public struct AnthropicBetaMessageDeltaUsage: Codable, Sendable {
   public var serverToolUse: AnthropicBetaServerToolUsage?
 
   public init(
-    cacheCreationInputTokens: Int?,
-    cacheReadInputTokens: Int?,
-    fallbackCredit: AnthropicBetaFallbackCreditUsage?,
-    inputTokens: Int?,
-    iterations: AnthropicBetaIterationsUsage?,
     outputTokens: Int,
-    outputTokensDetails: AnthropicBetaOutputTokensDetails?,
-    serverToolUse: AnthropicBetaServerToolUsage?
+    cacheCreationInputTokens: Int? = nil,
+    cacheReadInputTokens: Int? = nil,
+    fallbackCredit: AnthropicBetaFallbackCreditUsage? = nil,
+    inputTokens: Int? = nil,
+    iterations: AnthropicBetaIterationsUsage? = nil,
+    outputTokensDetails: AnthropicBetaOutputTokensDetails? = nil,
+    serverToolUse: AnthropicBetaServerToolUsage? = nil
   ) {
     self.cacheCreationInputTokens = cacheCreationInputTokens
     self.cacheReadInputTokens = cacheReadInputTokens

@@ -20,8 +20,8 @@ public enum AnthropicBetaManagedAgentsSessionEvent: Codable, Sendable {
   case betaManagedAgentsAgentCustomToolUseEvent(AnthropicBetaManagedAgentsAgentCustomToolUseEvent)
   case betaManagedAgentsAgentMessageEvent(AnthropicBetaManagedAgentsAgentMessageEvent)
   case betaManagedAgentsAgentThinkingEvent(AnthropicBetaManagedAgentsAgentThinkingEvent)
-  case betaManagedAgentsAgentMcpToolUseEvent(AnthropicBetaManagedAgentsAgentMcpToolUseEvent)
-  case betaManagedAgentsAgentMcpToolResultEvent(AnthropicBetaManagedAgentsAgentMcpToolResultEvent)
+  case betaManagedAgentsAgentMCPToolUseEvent(AnthropicBetaManagedAgentsAgentMCPToolUseEvent)
+  case betaManagedAgentsAgentMCPToolResultEvent(AnthropicBetaManagedAgentsAgentMCPToolResultEvent)
   case betaManagedAgentsAgentToolUseEvent(AnthropicBetaManagedAgentsAgentToolUseEvent)
   case betaManagedAgentsAgentToolResultEvent(AnthropicBetaManagedAgentsAgentToolResultEvent)
   case betaManagedAgentsAgentThreadMessageReceivedEvent(
@@ -63,6 +63,18 @@ public enum AnthropicBetaManagedAgentsSessionEvent: Codable, Sendable {
   case betaManagedAgentsSessionUpdatedEvent(AnthropicBetaManagedAgentsSessionUpdatedEvent)
   case betaManagedAgentsSystemMessageEvent(AnthropicBetaManagedAgentsSystemMessageEvent)
   case betaManagedAgentsSessionUsageEvent(AnthropicBetaManagedAgentsSessionUsageEvent)
+  case betaManagedAgentsWorkflowRunCreatedEvent(AnthropicBetaManagedAgentsWorkflowRunCreatedEvent)
+  case betaManagedAgentsWorkflowRunStatusEndedEvent(
+    AnthropicBetaManagedAgentsWorkflowRunStatusEndedEvent)
+  case betaManagedAgentsWorkflowRunPhaseStartedEvent(
+    AnthropicBetaManagedAgentsWorkflowRunPhaseStartedEvent)
+  case betaManagedAgentsWorkflowRunPhaseEndedEvent(
+    AnthropicBetaManagedAgentsWorkflowRunPhaseEndedEvent)
+  case betaManagedAgentsWorkflowRunStatusRunningEvent(
+    AnthropicBetaManagedAgentsWorkflowRunStatusRunningEvent)
+  case betaManagedAgentsWorkflowRunStatusIdleEvent(
+    AnthropicBetaManagedAgentsWorkflowRunStatusIdleEvent)
+  case betaManagedAgentsWorkflowRunErrorEvent(AnthropicBetaManagedAgentsWorkflowRunErrorEvent)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -94,12 +106,12 @@ public enum AnthropicBetaManagedAgentsSessionEvent: Codable, Sendable {
       self = .betaManagedAgentsAgentThinkingEvent(value)
       return
     }
-    if let value = try? container.decode(AnthropicBetaManagedAgentsAgentMcpToolUseEvent.self) {
-      self = .betaManagedAgentsAgentMcpToolUseEvent(value)
+    if let value = try? container.decode(AnthropicBetaManagedAgentsAgentMCPToolUseEvent.self) {
+      self = .betaManagedAgentsAgentMCPToolUseEvent(value)
       return
     }
-    if let value = try? container.decode(AnthropicBetaManagedAgentsAgentMcpToolResultEvent.self) {
-      self = .betaManagedAgentsAgentMcpToolResultEvent(value)
+    if let value = try? container.decode(AnthropicBetaManagedAgentsAgentMCPToolResultEvent.self) {
+      self = .betaManagedAgentsAgentMCPToolResultEvent(value)
       return
     }
     if let value = try? container.decode(AnthropicBetaManagedAgentsAgentToolUseEvent.self) {
@@ -226,8 +238,43 @@ public enum AnthropicBetaManagedAgentsSessionEvent: Codable, Sendable {
       self = .betaManagedAgentsSystemMessageEvent(value)
       return
     }
-    self = .betaManagedAgentsSessionUsageEvent(
-      try container.decode(AnthropicBetaManagedAgentsSessionUsageEvent.self))
+    if let value = try? container.decode(AnthropicBetaManagedAgentsSessionUsageEvent.self) {
+      self = .betaManagedAgentsSessionUsageEvent(value)
+      return
+    }
+    if let value = try? container.decode(AnthropicBetaManagedAgentsWorkflowRunCreatedEvent.self) {
+      self = .betaManagedAgentsWorkflowRunCreatedEvent(value)
+      return
+    }
+    if let value = try? container.decode(AnthropicBetaManagedAgentsWorkflowRunStatusEndedEvent.self)
+    {
+      self = .betaManagedAgentsWorkflowRunStatusEndedEvent(value)
+      return
+    }
+    if let value = try? container.decode(
+      AnthropicBetaManagedAgentsWorkflowRunPhaseStartedEvent.self)
+    {
+      self = .betaManagedAgentsWorkflowRunPhaseStartedEvent(value)
+      return
+    }
+    if let value = try? container.decode(AnthropicBetaManagedAgentsWorkflowRunPhaseEndedEvent.self)
+    {
+      self = .betaManagedAgentsWorkflowRunPhaseEndedEvent(value)
+      return
+    }
+    if let value = try? container.decode(
+      AnthropicBetaManagedAgentsWorkflowRunStatusRunningEvent.self)
+    {
+      self = .betaManagedAgentsWorkflowRunStatusRunningEvent(value)
+      return
+    }
+    if let value = try? container.decode(AnthropicBetaManagedAgentsWorkflowRunStatusIdleEvent.self)
+    {
+      self = .betaManagedAgentsWorkflowRunStatusIdleEvent(value)
+      return
+    }
+    self = .betaManagedAgentsWorkflowRunErrorEvent(
+      try container.decode(AnthropicBetaManagedAgentsWorkflowRunErrorEvent.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -247,9 +294,9 @@ public enum AnthropicBetaManagedAgentsSessionEvent: Codable, Sendable {
       try container.encode(value)
     case .betaManagedAgentsAgentThinkingEvent(let value):
       try container.encode(value)
-    case .betaManagedAgentsAgentMcpToolUseEvent(let value):
+    case .betaManagedAgentsAgentMCPToolUseEvent(let value):
       try container.encode(value)
-    case .betaManagedAgentsAgentMcpToolResultEvent(let value):
+    case .betaManagedAgentsAgentMCPToolResultEvent(let value):
       try container.encode(value)
     case .betaManagedAgentsAgentToolUseEvent(let value):
       try container.encode(value)
@@ -302,6 +349,20 @@ public enum AnthropicBetaManagedAgentsSessionEvent: Codable, Sendable {
     case .betaManagedAgentsSystemMessageEvent(let value):
       try container.encode(value)
     case .betaManagedAgentsSessionUsageEvent(let value):
+      try container.encode(value)
+    case .betaManagedAgentsWorkflowRunCreatedEvent(let value):
+      try container.encode(value)
+    case .betaManagedAgentsWorkflowRunStatusEndedEvent(let value):
+      try container.encode(value)
+    case .betaManagedAgentsWorkflowRunPhaseStartedEvent(let value):
+      try container.encode(value)
+    case .betaManagedAgentsWorkflowRunPhaseEndedEvent(let value):
+      try container.encode(value)
+    case .betaManagedAgentsWorkflowRunStatusRunningEvent(let value):
+      try container.encode(value)
+    case .betaManagedAgentsWorkflowRunStatusIdleEvent(let value):
+      try container.encode(value)
+    case .betaManagedAgentsWorkflowRunErrorEvent(let value):
       try container.encode(value)
     }
   }

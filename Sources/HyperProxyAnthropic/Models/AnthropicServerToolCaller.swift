@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct AnthropicServerToolCaller: Codable, Sendable {
   public var toolId: String
-  public var kind: AnthropicCodeExecution20250825Kind
+  public var kind: AnthropicServerToolCaller.Kind
 
   public init(
     toolId: String,
-    kind: AnthropicCodeExecution20250825Kind = .codeExecution20250825
+    kind: AnthropicServerToolCaller.Kind
   ) {
     self.toolId = toolId
     self.kind = kind
@@ -25,5 +25,9 @@ public struct AnthropicServerToolCaller: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case toolId = "tool_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case codeExecution20250825 = "code_execution_20250825"
   }
 }

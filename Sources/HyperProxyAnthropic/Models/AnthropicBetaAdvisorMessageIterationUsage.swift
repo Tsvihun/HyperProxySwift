@@ -20,13 +20,13 @@ public struct AnthropicBetaAdvisorMessageIterationUsage: Codable, Sendable {
   public var kind: AnthropicBetaAdvisorMessageIterationUsage.Kind
 
   public init(
-    cacheCreation: AnthropicBetaCacheCreation?,
     cacheCreationInputTokens: Int,
     cacheReadInputTokens: Int,
     inputTokens: Int,
     model: AnthropicModel,
     outputTokens: Int,
-    kind: AnthropicBetaAdvisorMessageIterationUsage.Kind = .advisorMessage
+    kind: AnthropicBetaAdvisorMessageIterationUsage.Kind,
+    cacheCreation: AnthropicBetaCacheCreation? = nil
   ) {
     self.cacheCreation = cacheCreation
     self.cacheCreationInputTokens = cacheCreationInputTokens

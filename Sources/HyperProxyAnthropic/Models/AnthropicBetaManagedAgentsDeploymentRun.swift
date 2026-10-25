@@ -12,9 +12,9 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsDeploymentRun: Codable, Sendable {
   public var agent: AnthropicBetaManagedAgentsAgentReference
-  public var createdAt: AnthropicBetaTimestamp
+  public var createdAt: String
   public var deploymentId: String
-  public var error: AnthropicBetaManagedAgentsRunError?
+  public var error: AnthropicBetaManagedAgentsDeploymentRunError?
   public var id: String
   public var sessionId: String?
   public var triggerContext: AnthropicBetaManagedAgentsTriggerContext
@@ -22,13 +22,13 @@ public struct AnthropicBetaManagedAgentsDeploymentRun: Codable, Sendable {
 
   public init(
     agent: AnthropicBetaManagedAgentsAgentReference,
-    createdAt: AnthropicBetaTimestamp,
+    createdAt: String,
     deploymentId: String,
-    error: AnthropicBetaManagedAgentsRunError?,
     id: String,
-    sessionId: String?,
     triggerContext: AnthropicBetaManagedAgentsTriggerContext,
-    kind: AnthropicBetaManagedAgentsDeploymentRun.Kind
+    kind: AnthropicBetaManagedAgentsDeploymentRun.Kind,
+    error: AnthropicBetaManagedAgentsDeploymentRunError? = nil,
+    sessionId: String? = nil
   ) {
     self.agent = agent
     self.createdAt = createdAt

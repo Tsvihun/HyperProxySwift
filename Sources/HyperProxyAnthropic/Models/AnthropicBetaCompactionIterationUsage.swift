@@ -16,15 +16,15 @@ public struct AnthropicBetaCompactionIterationUsage: Codable, Sendable {
   public var cacheReadInputTokens: Int
   public var inputTokens: Int
   public var outputTokens: Int
-  public var kind: AnthropicCompactionKind
+  public var kind: AnthropicBetaCompactionIterationUsage.Kind
 
   public init(
-    cacheCreation: AnthropicBetaCacheCreation?,
     cacheCreationInputTokens: Int,
     cacheReadInputTokens: Int,
     inputTokens: Int,
     outputTokens: Int,
-    kind: AnthropicCompactionKind = .compaction
+    kind: AnthropicBetaCompactionIterationUsage.Kind,
+    cacheCreation: AnthropicBetaCacheCreation? = nil
   ) {
     self.cacheCreation = cacheCreation
     self.cacheCreationInputTokens = cacheCreationInputTokens
@@ -41,5 +41,9 @@ public struct AnthropicBetaCompactionIterationUsage: Codable, Sendable {
     case inputTokens = "input_tokens"
     case outputTokens = "output_tokens"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case compaction = "compaction"
   }
 }

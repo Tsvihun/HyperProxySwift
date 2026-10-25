@@ -1,0 +1,36 @@
+//
+//  AnthropicBetaClaudeTagBundleTarget.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+// Maintainer-generated release artifact. Do not edit by hand.
+
+import Foundation
+import HyperProxyCore
+
+public enum AnthropicBetaClaudeTagBundleTarget: Codable, Sendable {
+  case betaClaudeTagSlackChannelBundleTarget(AnthropicBetaClaudeTagSlackChannelBundleTarget)
+  case betaClaudeTagSlackWorkspaceBundleTarget(AnthropicBetaClaudeTagSlackWorkspaceBundleTarget)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(AnthropicBetaClaudeTagSlackChannelBundleTarget.self) {
+      self = .betaClaudeTagSlackChannelBundleTarget(value)
+      return
+    }
+    self = .betaClaudeTagSlackWorkspaceBundleTarget(
+      try container.decode(AnthropicBetaClaudeTagSlackWorkspaceBundleTarget.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .betaClaudeTagSlackChannelBundleTarget(let value):
+      try container.encode(value)
+    case .betaClaudeTagSlackWorkspaceBundleTarget(let value):
+      try container.encode(value)
+    }
+  }
+}

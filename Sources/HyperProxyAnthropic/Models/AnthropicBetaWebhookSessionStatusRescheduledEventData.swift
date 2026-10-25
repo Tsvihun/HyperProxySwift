@@ -19,8 +19,8 @@ public struct AnthropicBetaWebhookSessionStatusRescheduledEventData: Codable, Se
   public init(
     id: String,
     organizationId: String,
-    workspaceId: String,
-    kind: AnthropicBetaWebhookSessionStatusRescheduledEventData.Kind = .sessionStatusRescheduled
+    kind: AnthropicBetaWebhookSessionStatusRescheduledEventData.Kind,
+    workspaceId: String
   ) {
     self.id = id
     self.organizationId = organizationId
@@ -35,7 +35,9 @@ public struct AnthropicBetaWebhookSessionStatusRescheduledEventData: Codable, Se
     case workspaceId = "workspace_id"
   }
 
-  public enum Kind: String, Codable, Hashable, Sendable {
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
     case sessionStatusRescheduled = "session.status_rescheduled"
   }
 }

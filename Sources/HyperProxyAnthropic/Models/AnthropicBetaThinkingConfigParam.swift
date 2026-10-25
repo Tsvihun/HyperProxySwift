@@ -11,32 +11,39 @@ import Foundation
 import HyperProxyCore
 
 public enum AnthropicBetaThinkingConfigParam: Codable, Sendable {
-  case betaThinkingConfigEnabled(AnthropicBetaThinkingConfigEnabled)
-  case betaThinkingConfigDisabled(AnthropicBetaThinkingConfigDisabled)
-  case betaThinkingConfigAdaptive(AnthropicBetaThinkingConfigAdaptive)
+  case betaThinkingConfigEnabledParam(AnthropicBetaThinkingConfigEnabledParam)
+  case betaThinkingConfigDisabledParam(AnthropicBetaThinkingConfigDisabledParam)
+  case betaThinkingConfigBetweenToolsParam(AnthropicBetaThinkingConfigBetweenToolsParam)
+  case betaThinkingConfigAdaptiveParam(AnthropicBetaThinkingConfigAdaptiveParam)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(AnthropicBetaThinkingConfigEnabled.self) {
-      self = .betaThinkingConfigEnabled(value)
+    if let value = try? container.decode(AnthropicBetaThinkingConfigEnabledParam.self) {
+      self = .betaThinkingConfigEnabledParam(value)
       return
     }
-    if let value = try? container.decode(AnthropicBetaThinkingConfigDisabled.self) {
-      self = .betaThinkingConfigDisabled(value)
+    if let value = try? container.decode(AnthropicBetaThinkingConfigDisabledParam.self) {
+      self = .betaThinkingConfigDisabledParam(value)
       return
     }
-    self = .betaThinkingConfigAdaptive(
-      try container.decode(AnthropicBetaThinkingConfigAdaptive.self))
+    if let value = try? container.decode(AnthropicBetaThinkingConfigBetweenToolsParam.self) {
+      self = .betaThinkingConfigBetweenToolsParam(value)
+      return
+    }
+    self = .betaThinkingConfigAdaptiveParam(
+      try container.decode(AnthropicBetaThinkingConfigAdaptiveParam.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .betaThinkingConfigEnabled(let value):
+    case .betaThinkingConfigEnabledParam(let value):
       try container.encode(value)
-    case .betaThinkingConfigDisabled(let value):
+    case .betaThinkingConfigDisabledParam(let value):
       try container.encode(value)
-    case .betaThinkingConfigAdaptive(let value):
+    case .betaThinkingConfigBetweenToolsParam(let value):
+      try container.encode(value)
+    case .betaThinkingConfigAdaptiveParam(let value):
       try container.encode(value)
     }
   }

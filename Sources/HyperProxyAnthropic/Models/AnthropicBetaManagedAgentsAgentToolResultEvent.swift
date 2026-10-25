@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsAgentToolResultEvent: Codable, Sendable {
-  public var content: [AnthropicBetaManagedAgentsToolResultContentBlock]?
+  public var content: [AnthropicBetaSessionsManagedAgentsAgentToolResultEventContent]?
   public var id: String
   public var isError: Bool?
-  public var processedAt: AnthropicBetaTimestamp
+  public var processedAt: String
   public var toolUseId: String
   public var kind: AnthropicBetaManagedAgentsAgentToolResultEvent.Kind
 
   public init(
     id: String,
-    processedAt: AnthropicBetaTimestamp,
+    processedAt: String,
     toolUseId: String,
     kind: AnthropicBetaManagedAgentsAgentToolResultEvent.Kind,
-    content: [AnthropicBetaManagedAgentsToolResultContentBlock]? = nil,
+    content: [AnthropicBetaSessionsManagedAgentsAgentToolResultEventContent]? = nil,
     isError: Bool? = nil
   ) {
     self.content = content

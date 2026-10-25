@@ -16,7 +16,7 @@ public struct AnthropicBetaWorkspaceRateLimitListResponse: Codable, Sendable {
 
   public init(
     data: [AnthropicBetaWorkspaceRateLimit],
-    nextPage: String?
+    nextPage: String? = nil
   ) {
     self.data = data
     self.nextPage = nextPage

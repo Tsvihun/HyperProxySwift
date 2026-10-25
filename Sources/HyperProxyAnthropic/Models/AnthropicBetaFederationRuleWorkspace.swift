@@ -20,11 +20,11 @@ public struct AnthropicBetaFederationRuleWorkspace: Codable, Sendable {
 
   public init(
     createdAt: String,
-    createdByActorId: String?,
     federationRuleId: String,
+    kind: AnthropicBetaFederationRuleWorkspace.Kind,
     workspaceId: String,
-    workspaceName: String?,
-    kind: AnthropicBetaFederationRuleWorkspace.Kind = .federationRuleWorkspace
+    createdByActorId: String? = nil,
+    workspaceName: String? = nil
   ) {
     self.createdAt = createdAt
     self.createdByActorId = createdByActorId

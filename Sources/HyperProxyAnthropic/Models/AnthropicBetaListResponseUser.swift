@@ -11,16 +11,16 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaListResponseUser: Codable, Sendable {
-  public var data: [AnthropicBetaUser]
+  public var data: [AnthropicBetaOrganizationUser]
   public var firstId: String?
-  public var hasMore: Bool
+  public var hasMore: Bool?
   public var lastId: String?
 
   public init(
-    data: [AnthropicBetaUser],
-    firstId: String?,
-    hasMore: Bool,
-    lastId: String?
+    data: [AnthropicBetaOrganizationUser],
+    firstId: String? = nil,
+    hasMore: Bool? = nil,
+    lastId: String? = nil
   ) {
     self.data = data
     self.firstId = firstId

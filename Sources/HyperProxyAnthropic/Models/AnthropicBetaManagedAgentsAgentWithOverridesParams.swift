@@ -12,22 +12,22 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsAgentWithOverridesParams: Codable, Sendable {
   public var id: String
-  public var mcpServers: [AnthropicBetaManagedAgentsMCPServerParams]?
-  public var model: AnthropicBetaManagedAgentsModelParams?
+  public var mcpServers: [AnthropicBetaManagedAgentsURLMCPServerParams]?
+  public var model: AnthropicBetaManagedAgentsAgentWithOverridesParamsModel?
   public var skills: [AnthropicBetaManagedAgentsSkillParams]?
   public var system: String?
-  public var tools: [AnthropicBetaManagedAgentsAgentToolParams]?
+  public var tools: [AnthropicBetaManagedAgentsAgentWithOverridesParamsTool]?
   public var kind: AnthropicBetaManagedAgentsAgentWithOverridesParams.Kind
   public var version: Int?
 
   public init(
     id: String,
     kind: AnthropicBetaManagedAgentsAgentWithOverridesParams.Kind,
-    mcpServers: [AnthropicBetaManagedAgentsMCPServerParams]? = nil,
-    model: AnthropicBetaManagedAgentsModelParams? = nil,
+    mcpServers: [AnthropicBetaManagedAgentsURLMCPServerParams]? = nil,
+    model: AnthropicBetaManagedAgentsAgentWithOverridesParamsModel? = nil,
     skills: [AnthropicBetaManagedAgentsSkillParams]? = nil,
     system: String? = nil,
-    tools: [AnthropicBetaManagedAgentsAgentToolParams]? = nil,
+    tools: [AnthropicBetaManagedAgentsAgentWithOverridesParamsTool]? = nil,
     version: Int? = nil
   ) {
     self.id = id

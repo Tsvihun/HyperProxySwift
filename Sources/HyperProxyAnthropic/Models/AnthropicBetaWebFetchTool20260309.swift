@@ -11,31 +11,33 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaWebFetchTool20260309: Codable, Sendable {
-  public var allowedCallers: [AnthropicBetaAllowedCaller]?
+  public var allowedCallers: [AnthropicBetaWebFetchTool20260309AllowedCallersItem]?
   public var allowedDomains: [String]?
   public var blockedDomains: [String]?
   public var cacheControl: AnthropicBetaCacheControlEphemeral?
-  public var citations: AnthropicBetaRequestCitationsConfig?
+  public var citations: AnthropicBetaCitationsConfigParam?
   public var deferLoading: Bool?
   public var maxContentTokens: Int?
   public var maxUses: Int?
-  public var name: AnthropicWebFetchName
+  public var name: AnthropicBetaWebFetchTool20260309.Name
   public var strict: Bool?
-  public var kind: AnthropicWebFetch20260309Kind
+  public var kind: AnthropicBetaWebFetchTool20260309.Kind
+  public var urlSources: AnthropicBetaWebFetchURLSources?
   public var useCache: Bool?
 
   public init(
-    name: AnthropicWebFetchName = .webFetch,
-    kind: AnthropicWebFetch20260309Kind = .webFetch20260309,
-    allowedCallers: [AnthropicBetaAllowedCaller]? = nil,
+    name: AnthropicBetaWebFetchTool20260309.Name,
+    kind: AnthropicBetaWebFetchTool20260309.Kind,
+    allowedCallers: [AnthropicBetaWebFetchTool20260309AllowedCallersItem]? = nil,
     allowedDomains: [String]? = nil,
     blockedDomains: [String]? = nil,
     cacheControl: AnthropicBetaCacheControlEphemeral? = nil,
-    citations: AnthropicBetaRequestCitationsConfig? = nil,
+    citations: AnthropicBetaCitationsConfigParam? = nil,
     deferLoading: Bool? = nil,
     maxContentTokens: Int? = nil,
     maxUses: Int? = nil,
     strict: Bool? = nil,
+    urlSources: AnthropicBetaWebFetchURLSources? = nil,
     useCache: Bool? = nil
   ) {
     self.allowedCallers = allowedCallers
@@ -49,6 +51,7 @@ public struct AnthropicBetaWebFetchTool20260309: Codable, Sendable {
     self.name = name
     self.strict = strict
     self.kind = kind
+    self.urlSources = urlSources
     self.useCache = useCache
   }
 
@@ -64,6 +67,15 @@ public struct AnthropicBetaWebFetchTool20260309: Codable, Sendable {
     case name
     case strict
     case kind = "type"
+    case urlSources = "url_sources"
     case useCache = "use_cache"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case webFetch20260309 = "web_fetch_20260309"
+  }
+
+  public enum Name: String, Codable, Hashable, Sendable {
+    case webFetch = "web_fetch"
   }
 }

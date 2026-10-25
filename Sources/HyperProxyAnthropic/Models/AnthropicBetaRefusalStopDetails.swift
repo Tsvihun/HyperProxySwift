@@ -11,20 +11,20 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaRefusalStopDetails: Codable, Sendable {
-  public var category: AnthropicBetaRefusalCategory?
+  public var category: AnthropicBetaRefusalStopDetails.Category?
   public var explanation: String?
   public var fallbackCreditToken: String?
   public var fallbackHasPrefillClaim: Bool?
   public var recommendedModel: String?
-  public var kind: AnthropicRefusalKind
+  public var kind: AnthropicBetaRefusalStopDetails.Kind
 
   public init(
-    category: AnthropicBetaRefusalCategory?,
-    explanation: String?,
-    fallbackCreditToken: String?,
-    fallbackHasPrefillClaim: Bool?,
-    recommendedModel: String?,
-    kind: AnthropicRefusalKind = .refusal
+    kind: AnthropicBetaRefusalStopDetails.Kind,
+    category: AnthropicBetaRefusalStopDetails.Category? = nil,
+    explanation: String? = nil,
+    fallbackCreditToken: String? = nil,
+    fallbackHasPrefillClaim: Bool? = nil,
+    recommendedModel: String? = nil
   ) {
     self.category = category
     self.explanation = explanation
@@ -41,5 +41,17 @@ public struct AnthropicBetaRefusalStopDetails: Codable, Sendable {
     case fallbackHasPrefillClaim = "fallback_has_prefill_claim"
     case recommendedModel = "recommended_model"
     case kind = "type"
+  }
+
+  public enum Category: String, Codable, Hashable, Sendable {
+    case cyber = "cyber"
+    case bio = "bio"
+    case frontierLlm = "frontier_llm"
+    case reasoningExtraction = "reasoning_extraction"
+    case generalHarms = "general_harms"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case refusal = "refusal"
   }
 }

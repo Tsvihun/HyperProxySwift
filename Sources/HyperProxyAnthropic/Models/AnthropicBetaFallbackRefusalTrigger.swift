@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaFallbackRefusalTrigger: Codable, Sendable {
-  public var category: AnthropicBetaRefusalCategory?
-  public var kind: AnthropicRefusalKind
+  public var category: AnthropicBetaFallbackRefusalTrigger.Category?
+  public var kind: AnthropicBetaFallbackRefusalTrigger.Kind
 
   public init(
-    category: AnthropicBetaRefusalCategory?,
-    kind: AnthropicRefusalKind = .refusal
+    kind: AnthropicBetaFallbackRefusalTrigger.Kind,
+    category: AnthropicBetaFallbackRefusalTrigger.Category? = nil
   ) {
     self.category = category
     self.kind = kind
@@ -25,5 +25,17 @@ public struct AnthropicBetaFallbackRefusalTrigger: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case category
     case kind = "type"
+  }
+
+  public enum Category: String, Codable, Hashable, Sendable {
+    case cyber = "cyber"
+    case bio = "bio"
+    case frontierLlm = "frontier_llm"
+    case reasoningExtraction = "reasoning_extraction"
+    case generalHarms = "general_harms"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case refusal = "refusal"
   }
 }

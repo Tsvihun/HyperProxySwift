@@ -1,0 +1,47 @@
+//
+//  AnthropicBetaManagedAgentsWorkflowRunStatusEndedEvent.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+// Maintainer-generated release artifact. Do not edit by hand.
+
+import Foundation
+import HyperProxyCore
+
+public struct AnthropicBetaManagedAgentsWorkflowRunStatusEndedEvent: Codable, Sendable {
+  public var id: String
+  public var processedAt: String
+  public var result: AnthropicBetaManagedAgentsWorkflowRunResult
+  public var kind: AnthropicBetaManagedAgentsWorkflowRunStatusEndedEvent.Kind
+  public var workflowRunId: String
+
+  public init(
+    id: String,
+    processedAt: String,
+    result: AnthropicBetaManagedAgentsWorkflowRunResult,
+    kind: AnthropicBetaManagedAgentsWorkflowRunStatusEndedEvent.Kind,
+    workflowRunId: String
+  ) {
+    self.id = id
+    self.processedAt = processedAt
+    self.result = result
+    self.kind = kind
+    self.workflowRunId = workflowRunId
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case id
+    case processedAt = "processed_at"
+    case result
+    case kind = "type"
+    case workflowRunId = "workflow_run_id"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case workflowRunStatusEnded = "workflow_run.status_ended"
+  }
+}

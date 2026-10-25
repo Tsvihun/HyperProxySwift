@@ -19,8 +19,8 @@ public struct AnthropicBetaWebhookAgentDeletedEventData: Codable, Sendable {
   public init(
     id: String,
     organizationId: String,
-    workspaceId: String,
-    kind: AnthropicBetaWebhookAgentDeletedEventData.Kind = .agentDeleted
+    kind: AnthropicBetaWebhookAgentDeletedEventData.Kind,
+    workspaceId: String
   ) {
     self.id = id
     self.organizationId = organizationId

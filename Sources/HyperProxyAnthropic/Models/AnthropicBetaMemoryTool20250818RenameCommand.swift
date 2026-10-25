@@ -16,9 +16,9 @@ public struct AnthropicBetaMemoryTool20250818RenameCommand: Codable, Sendable {
   public var oldPath: String
 
   public init(
+    command: AnthropicBetaMemoryTool20250818RenameCommand.Command,
     newPath: String,
-    oldPath: String,
-    command: AnthropicBetaMemoryTool20250818RenameCommand.Command = .rename
+    oldPath: String
   ) {
     self.command = command
     self.newPath = newPath

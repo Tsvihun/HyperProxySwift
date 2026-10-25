@@ -20,10 +20,9 @@ public struct AnthropicBetaWebhookVaultCredentialRefreshFailedEventData: Codable
   public init(
     id: String,
     organizationId: String,
+    kind: AnthropicBetaWebhookVaultCredentialRefreshFailedEventData.Kind,
     vaultId: String,
-    workspaceId: String,
-    kind: AnthropicBetaWebhookVaultCredentialRefreshFailedEventData.Kind =
-      .vaultCredentialRefreshFailed
+    workspaceId: String
   ) {
     self.id = id
     self.organizationId = organizationId
@@ -40,7 +39,9 @@ public struct AnthropicBetaWebhookVaultCredentialRefreshFailedEventData: Codable
     case workspaceId = "workspace_id"
   }
 
-  public enum Kind: String, Codable, Hashable, Sendable {
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
     case vaultCredentialRefreshFailed = "vault_credential.refresh_failed"
   }
 }

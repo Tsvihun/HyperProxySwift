@@ -10,5 +10,29 @@
 import Foundation
 import HyperProxyCore
 
-public typealias AnthropicBetaManagedAgentsMultiagentParams =
-  AnthropicBetaManagedAgentsMultiagentCoordinatorParams
+public enum AnthropicBetaManagedAgentsMultiagentParams: Codable, Sendable {
+  case betaManagedAgentsMultiagentCoordinatorParams(
+    AnthropicBetaManagedAgentsMultiagentCoordinatorParams)
+  case betaManagedAgentsMultiagent20261001Params(AnthropicBetaManagedAgentsMultiagent20261001Params)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(AnthropicBetaManagedAgentsMultiagentCoordinatorParams.self)
+    {
+      self = .betaManagedAgentsMultiagentCoordinatorParams(value)
+      return
+    }
+    self = .betaManagedAgentsMultiagent20261001Params(
+      try container.decode(AnthropicBetaManagedAgentsMultiagent20261001Params.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .betaManagedAgentsMultiagentCoordinatorParams(let value):
+      try container.encode(value)
+    case .betaManagedAgentsMultiagent20261001Params(let value):
+      try container.encode(value)
+    }
+  }
+}

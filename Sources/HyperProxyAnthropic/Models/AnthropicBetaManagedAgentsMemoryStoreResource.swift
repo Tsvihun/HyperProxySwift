@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsMemoryStoreResource: Codable, Sendable {
-  public var access: AnthropicBetaManagedAgentsMountMode?
+  public var access: AnthropicBetaManagedAgentsMemoryStoreResource.Access?
   public var description: String?
   public var instructions: String?
   public var memoryStoreId: String
@@ -22,7 +22,7 @@ public struct AnthropicBetaManagedAgentsMemoryStoreResource: Codable, Sendable {
   public init(
     memoryStoreId: String,
     kind: AnthropicBetaManagedAgentsMemoryStoreResource.Kind,
-    access: AnthropicBetaManagedAgentsMountMode? = nil,
+    access: AnthropicBetaManagedAgentsMemoryStoreResource.Access? = nil,
     description: String? = nil,
     instructions: String? = nil,
     mountPath: String? = nil,
@@ -45,6 +45,11 @@ public struct AnthropicBetaManagedAgentsMemoryStoreResource: Codable, Sendable {
     case mountPath = "mount_path"
     case name
     case kind = "type"
+  }
+
+  public enum Access: String, Codable, Hashable, Sendable {
+    case readWrite = "read_write"
+    case readOnly = "read_only"
   }
 
   public enum Kind: String, Codable, Hashable, Sendable {

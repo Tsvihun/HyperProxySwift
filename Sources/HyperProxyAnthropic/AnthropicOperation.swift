@@ -15,54 +15,321 @@ public enum AnthropicOperation: String, HyperProxyCatalogOperation {
   public static var providerDefinition: HyperProxyProviderDefinition {
     HyperProxyProviders.anthropic
   }
+  /// `GET v1/organizations/analytics/apps/chat/projects`
+  case betaOrganizationAnalyticsAppsChatProjectsList =
+    "beta.organization.analytics.apps.chat.projects.list"
+  /// `GET v1/organizations/analytics/artifacts`
+  case betaOrganizationAnalyticsArtifactsList = "beta.organization.analytics.artifacts.list"
+  /// `GET v1/organizations/analytics/connectors`
+  case betaOrganizationAnalyticsConnectorsList = "beta.organization.analytics.connectors.list"
+  /// `GET v1/organizations/analytics/cost`
+  case betaOrganizationAnalyticsCostList = "beta.organization.analytics.cost.list"
+  /// `GET v1/organizations/analytics/cost_report`
+  case betaOrganizationAnalyticsCostReportList = "beta.organization.analytics.cost.report.list"
+  /// `GET v1/organizations/analytics/plugins`
+  case betaOrganizationAnalyticsPluginsList = "beta.organization.analytics.plugins.list"
+  /// `GET v1/organizations/analytics/skills`
+  case betaOrganizationAnalyticsSkillsList = "beta.organization.analytics.skills.list"
+  /// `GET v1/organizations/analytics/summaries`
+  case betaOrganizationAnalyticsSummariesList = "beta.organization.analytics.summaries.list"
+  /// `GET v1/organizations/analytics/usage`
+  case betaOrganizationAnalyticsUsageList = "beta.organization.analytics.usage.list"
+  /// `GET v1/organizations/analytics/usage_report`
+  case betaOrganizationAnalyticsUsageReportList = "beta.organization.analytics.usage.report.list"
+  /// `GET v1/organizations/analytics/user_cost_report`
+  case betaOrganizationAnalyticsUserCostReportList =
+    "beta.organization.analytics.user.cost.report.list"
+  /// `GET v1/organizations/analytics/user_usage_report`
+  case betaOrganizationAnalyticsUserUsageReportList =
+    "beta.organization.analytics.user.usage.report.list"
+  /// `GET v1/organizations/analytics/users`
+  case betaOrganizationAnalyticsUsersList = "beta.organization.analytics.users.list"
   /// `GET v1/organizations/api_keys/{api_key_id}`
-  case betaGetApiKey = "beta.get.api.key.v1.organizations.api.keys.api.key.id.get"
+  case organizationApiKeysRetrieve = "organization.api.keys.retrieve"
   /// `POST v1/organizations/api_keys/{api_key_id}`
-  case betaUpdateApiKey = "beta.update.api.key.v1.organizations.api.keys.api.key.id.post"
+  case organizationApiKeysUpdate = "organization.api.keys.update"
+  /// `GET v1/organizations/claude_tag/bundles`
+  case betaOrganizationClaudeTagBundlesList = "beta.organization.claude.tag.bundles.list"
+  /// `GET v1/organizations/claude_tag/bundles/{bundle_id}`
+  case betaOrganizationClaudeTagBundlesRetrieve = "beta.organization.claude.tag.bundles.retrieve"
+  /// `GET v1/organizations/claude_tag/bundles/{bundle_id}/targets`
+  case betaOrganizationClaudeTagBundlesTargetsList =
+    "beta.organization.claude.tag.bundles.targets.list"
+  /// `POST v1/organizations/claude_tag/bundles/{bundle_id}/targets`
+  case betaOrganizationClaudeTagBundlesTargetsCreate =
+    "beta.organization.claude.tag.bundles.targets.create"
+  /// `DELETE v1/organizations/claude_tag/bundles/{bundle_id}/targets/{target_id}`
+  case betaOrganizationClaudeTagBundlesTargetsDelete =
+    "beta.organization.claude.tag.bundles.targets.delete"
+  /// `GET v1/organizations/claude_tag/bundles/{bundle_id}/targets/{target_id}`
+  case betaOrganizationClaudeTagBundlesTargetsRetrieve =
+    "beta.organization.claude.tag.bundles.targets.retrieve"
+  /// `GET v1/organizations/claude_tag/slack_channels`
+  case betaOrganizationClaudeTagSlackChannelsList =
+    "beta.organization.claude.tag.slack.channels.list"
+  /// `POST v1/organizations/claude_tag/slack_channels`
+  case betaOrganizationClaudeTagSlackChannelsCreate =
+    "beta.organization.claude.tag.slack.channels.create"
+  /// `DELETE v1/organizations/claude_tag/slack_channels/{id}`
+  case betaOrganizationClaudeTagSlackChannelsDelete =
+    "beta.organization.claude.tag.slack.channels.delete"
+  /// `GET v1/organizations/claude_tag/slack_channels/{id}`
+  case betaOrganizationClaudeTagSlackChannelsRetrieve =
+    "beta.organization.claude.tag.slack.channels.retrieve"
+  /// `POST v1/organizations/claude_tag/slack_channels/{id}`
+  case betaOrganizationClaudeTagSlackChannelsUpdate =
+    "beta.organization.claude.tag.slack.channels.update"
+  /// `GET v1/organizations/claude_tag/slack_workspaces`
+  case betaOrganizationClaudeTagSlackWorkspacesList =
+    "beta.organization.claude.tag.slack.workspaces.list"
+  /// `GET v1/organizations/claude_tag/slack_workspaces/{id}`
+  case betaOrganizationClaudeTagSlackWorkspacesRetrieve =
+    "beta.organization.claude.tag.slack.workspaces.retrieve"
+  /// `POST v1/organizations/claude_tag/slack_workspaces/{id}`
+  case betaOrganizationClaudeTagSlackWorkspacesUpdate =
+    "beta.organization.claude.tag.slack.workspaces.update"
+  /// `GET v1/organizations/compliance_settings`
+  case organizationComplianceSettingsRetrieve = "organization.compliance.settings.retrieve"
+  /// `POST v1/organizations/compliance_settings`
+  case organizationComplianceSettingsUpdate = "organization.compliance.settings.update"
   /// `POST v1/organizations/invites`
-  case betaCreateInvite = "beta.create.invite.v1.organizations.invites.post"
+  case organizationInvitesCreate = "organization.invites.create"
   /// `DELETE v1/organizations/invites/{invite_id}`
-  case betaDeleteInvite = "beta.delete.invite.v1.organizations.invites.invite.id.delete"
+  case organizationInvitesDelete = "organization.invites.delete"
   /// `GET v1/organizations/invites/{invite_id}`
-  case betaGetInvite = "beta.get.invite.v1.organizations.invites.invite.id.get"
+  case organizationInvitesRetrieve = "organization.invites.retrieve"
   /// `GET v1/organizations/me`
-  case betaGetCurrentOrganization = "beta.get.current.organization.v1.organizations.me.get"
+  case organizationRetrieve = "organization.retrieve"
+  /// `GET v1/organizations/plugin_marketplaces`
+  case betaOrganizationPluginMarketplacesList = "beta.organization.plugin.marketplaces.list"
+  /// `POST v1/organizations/plugin_marketplaces/validate_archive`
+  case betaOrganizationPluginMarketplacesValidateArchive =
+    "beta.organization.plugin.marketplaces.validate.archive"
+  /// `POST v1/organizations/plugin_marketplaces/validate_repository`
+  case betaOrganizationPluginMarketplacesValidateRepository =
+    "beta.organization.plugin.marketplaces.validate.repository"
+  /// `GET v1/organizations/plugin_marketplaces/{marketplace_id}`
+  case betaOrganizationPluginMarketplacesRetrieve = "beta.organization.plugin.marketplaces.retrieve"
+  /// `POST v1/organizations/plugin_marketplaces/{marketplace_id}`
+  case betaOrganizationPluginMarketplacesUpdate = "beta.organization.plugin.marketplaces.update"
+  /// `GET v1/organizations/plugins`
+  case betaOrganizationPluginsList = "beta.organization.plugins.list"
+  /// `POST v1/organizations/plugins`
+  case betaOrganizationPluginsCreate = "beta.organization.plugins.create"
+  /// `DELETE v1/organizations/plugins/{plugin_id}`
+  case betaOrganizationPluginsDelete = "beta.organization.plugins.delete"
+  /// `GET v1/organizations/plugins/{plugin_id}`
+  case betaOrganizationPluginsRetrieve = "beta.organization.plugins.retrieve"
+  /// `POST v1/organizations/plugins/{plugin_id}`
+  case betaOrganizationPluginsUpdate = "beta.organization.plugins.update"
+  /// `GET v1/organizations/plugins/{plugin_id}/installation_settings`
+  case betaOrganizationPluginsInstallationSettingsList =
+    "beta.organization.plugins.installation.settings.list"
+  /// `DELETE v1/organizations/plugins/{plugin_id}/installation_settings/{target}`
+  case betaOrganizationPluginsInstallationSettingsRemove =
+    "beta.organization.plugins.installation.settings.remove"
+  /// `POST v1/organizations/plugins/{plugin_id}/installation_settings/{target}`
+  case betaOrganizationPluginsInstallationSettingsSet =
+    "beta.organization.plugins.installation.settings.set"
+  /// `GET v1/organizations/plugins/{plugin_id}/shares`
+  case betaOrganizationPluginsSharesList = "beta.organization.plugins.shares.list"
+  /// `GET v1/organizations/plugins/{plugin_id}/versions`
+  case betaOrganizationPluginsVersionsList = "beta.organization.plugins.versions.list"
+  /// `POST v1/organizations/plugins/{plugin_id}/versions`
+  case betaOrganizationPluginsVersionsCreate = "beta.organization.plugins.versions.create"
+  /// `GET v1/organizations/plugins/{plugin_id}/versions/{version}`
+  case betaOrganizationPluginsVersionsRetrieve = "beta.organization.plugins.versions.retrieve"
+  /// `GET v1/organizations/plugins/{plugin_id}/versions/{version}/content`
+  case betaOrganizationPluginsVersionsDownload = "beta.organization.plugins.versions.download"
+  /// `GET v1/organizations/rbac_groups`
+  case betaOrganizationRbacGroupsList = "beta.organization.rbac.groups.list"
+  /// `POST v1/organizations/rbac_groups`
+  case betaOrganizationRbacGroupsCreate = "beta.organization.rbac.groups.create"
+  /// `DELETE v1/organizations/rbac_groups/{rbac_group_id}`
+  case betaOrganizationRbacGroupsDelete = "beta.organization.rbac.groups.delete"
+  /// `GET v1/organizations/rbac_groups/{rbac_group_id}`
+  case betaOrganizationRbacGroupsRetrieve = "beta.organization.rbac.groups.retrieve"
+  /// `POST v1/organizations/rbac_groups/{rbac_group_id}`
+  case betaOrganizationRbacGroupsUpdate = "beta.organization.rbac.groups.update"
+  /// `GET v1/organizations/rbac_groups/{rbac_group_id}/members`
+  case betaOrganizationRbacGroupsMembersList = "beta.organization.rbac.groups.members.list"
+  /// `POST v1/organizations/rbac_groups/{rbac_group_id}/members`
+  case betaOrganizationRbacGroupsMembersAdd = "beta.organization.rbac.groups.members.add"
+  /// `DELETE v1/organizations/rbac_groups/{rbac_group_id}/members/{user_id}`
+  case betaOrganizationRbacGroupsMembersRemove = "beta.organization.rbac.groups.members.remove"
+  /// `GET v1/organizations/rbac_roles`
+  case betaOrganizationRbacRolesList = "beta.organization.rbac.roles.list"
+  /// `GET v1/organizations/rbac_roles/{rbac_role_id}`
+  case betaOrganizationRbacRolesRetrieve = "beta.organization.rbac.roles.retrieve"
+  /// `GET v1/organizations/rbac_roles/{rbac_role_id}/permissions`
+  case betaOrganizationRbacRolesPermissionsList = "beta.organization.rbac.roles.permissions.list"
   /// `POST v1/organizations/service_accounts`
-  case betaCreateServiceAccount =
-    "beta.create.service.account.v1.organizations.service.accounts.post"
+  case organizationServiceAccountsCreate = "organization.service.accounts.create"
   /// `GET v1/organizations/service_accounts/{service_account_id}`
-  case betaGetServiceAccount =
-    "beta.get.service.account.v1.organizations.service.accounts.service.account.id.get"
+  case organizationServiceAccountsRetrieve = "organization.service.accounts.retrieve"
   /// `POST v1/organizations/service_accounts/{service_account_id}`
-  case betaUpdateServiceAccount =
-    "beta.update.service.account.v1.organizations.service.accounts.service.account.id.post"
+  case organizationServiceAccountsUpdate = "organization.service.accounts.update"
   /// `POST v1/organizations/service_accounts/{service_account_id}/archive`
-  case betaArchiveServiceAccount =
-    "beta.archive.service.account.v1.organizations.service.accounts.service.account.id.archive.post"
+  case organizationServiceAccountsArchive = "organization.service.accounts.archive"
   /// `GET v1/organizations/service_accounts/{service_account_id}/workspaces`
-  case betaListWorkspacesForServiceAccount =
-    "beta.list.workspaces.for.service.account.v1.organizations.service.accounts.service.account.id.workspaces.get"
+  case organizationServiceAccountsWorkspacesList = "organization.service.accounts.workspaces.list"
   /// `POST v1/organizations/service_accounts/{service_account_id}/workspaces`
-  case betaAddWorkspaceToServiceAccount =
-    "beta.add.workspace.to.service.account.v1.organizations.service.accounts.service.account.id.workspaces.post"
+  case organizationServiceAccountsWorkspacesAdd = "organization.service.accounts.workspaces.add"
   /// `DELETE v1/organizations/service_accounts/{service_account_id}/workspaces/{workspace_id}`
-  case betaRemoveWorkspaceFromServiceAccount =
-    "beta.remove.workspace.from.service.account.v1.organizations.service.accounts.service.account.id.workspaces.workspace.id.delete"
+  case organizationServiceAccountsWorkspacesRemove =
+    "organization.service.accounts.workspaces.remove"
+  /// `GET v1/organizations/spend_limit_increase_requests`
+  case betaOrganizationSpendLimitsIncreaseRequestsList =
+    "beta.organization.spend.limits.increase.requests.list"
+  /// `GET v1/organizations/spend_limit_increase_requests/{spend_limit_increase_request_id}`
+  case betaOrganizationSpendLimitsIncreaseRequestsRetrieve =
+    "beta.organization.spend.limits.increase.requests.retrieve"
+  /// `POST v1/organizations/spend_limit_increase_requests/{spend_limit_increase_request_id}/approve`
+  case betaOrganizationSpendLimitsIncreaseRequestsApprove =
+    "beta.organization.spend.limits.increase.requests.approve"
+  /// `POST v1/organizations/spend_limit_increase_requests/{spend_limit_increase_request_id}/deny`
+  case betaOrganizationSpendLimitsIncreaseRequestsDeny =
+    "beta.organization.spend.limits.increase.requests.deny"
+  /// `GET v1/organizations/spend_limits`
+  case betaOrganizationSpendLimitsList = "beta.organization.spend.limits.list"
+  /// `POST v1/organizations/spend_limits`
+  case betaOrganizationSpendLimitsSet = "beta.organization.spend.limits.set"
+  /// `GET v1/organizations/spend_limits/effective`
+  case betaOrganizationSpendLimitsEffectiveList = "beta.organization.spend.limits.effective.list"
+  /// `DELETE v1/organizations/spend_limits/{spend_limit_id}`
+  case betaOrganizationSpendLimitsDelete = "beta.organization.spend.limits.delete"
+  /// `GET v1/organizations/spend_limits/{spend_limit_id}`
+  case betaOrganizationSpendLimitsRetrieve = "beta.organization.spend.limits.retrieve"
+  /// `GET v1/organizations/telemetry_destinations`
+  case betaOrganizationTelemetryDestinationsList = "beta.organization.telemetry.destinations.list"
+  /// `POST v1/organizations/telemetry_destinations`
+  case betaOrganizationTelemetryDestinationsCreate =
+    "beta.organization.telemetry.destinations.create"
+  /// `DELETE v1/organizations/telemetry_destinations/{destination_id}`
+  case betaOrganizationTelemetryDestinationsDelete =
+    "beta.organization.telemetry.destinations.delete"
+  /// `GET v1/organizations/telemetry_destinations/{destination_id}`
+  case betaOrganizationTelemetryDestinationsRetrieve =
+    "beta.organization.telemetry.destinations.retrieve"
+  /// `POST v1/organizations/telemetry_destinations/{destination_id}`
+  case betaOrganizationTelemetryDestinationsUpdate =
+    "beta.organization.telemetry.destinations.update"
+  /// `POST v1/organizations/telemetry_destinations/{destination_id}/test`
+  case betaOrganizationTelemetryDestinationsTest = "beta.organization.telemetry.destinations.test"
+  /// `GET v1/organizations/telemetry_destinations/{destination_id}/workspaces`
+  case betaOrganizationTelemetryDestinationsWorkspacesList =
+    "beta.organization.telemetry.destinations.workspaces.list"
+  /// `DELETE v1/organizations/telemetry_destinations/{destination_id}/workspaces/{workspace_id}`
+  case betaOrganizationTelemetryDestinationsWorkspacesRemove =
+    "beta.organization.telemetry.destinations.workspaces.remove"
+  /// `POST v1/organizations/telemetry_destinations/{destination_id}/workspaces/{workspace_id}`
+  case betaOrganizationTelemetryDestinationsWorkspacesAdd =
+    "beta.organization.telemetry.destinations.workspaces.add"
+  /// `GET v1/organizations/webhooks`
+  case betaOrganizationWebhooksList = "beta.organization.webhooks.list"
+  /// `POST v1/organizations/webhooks`
+  case betaOrganizationWebhooksCreate = "beta.organization.webhooks.create"
+  /// `DELETE v1/organizations/webhooks/{webhook_endpoint_id}`
+  case betaOrganizationWebhooksDelete = "beta.organization.webhooks.delete"
+  /// `GET v1/organizations/webhooks/{webhook_endpoint_id}`
+  case betaOrganizationWebhooksRetrieve = "beta.organization.webhooks.retrieve"
+  /// `POST v1/organizations/webhooks/{webhook_endpoint_id}`
+  case betaOrganizationWebhooksUpdate = "beta.organization.webhooks.update"
+  /// `POST v1/organizations/webhooks/{webhook_endpoint_id}/regenerate_signing_secret`
+  case betaOrganizationWebhooksRegenerateSigningSecret =
+    "beta.organization.webhooks.regenerate.signing.secret"
+  /// `POST v1/organizations/workspaces/{workspace_id}/rate_limits/{rate_limit_id}`
+  case organizationWorkspacesRateLimitsUpdate = "organization.workspaces.rate.limits.update"
   /// `GET v1/organizations/workspaces/{workspace_id}/service_accounts`
-  case betaListServiceAccountWorkspaceMembers =
-    "beta.list.service.account.workspace.members.v1.organizations.workspaces.workspace.id.service.accounts.get"
+  case organizationWorkspacesServiceAccountsList = "organization.workspaces.service.accounts.list"
   /// `POST v1/organizations/workspaces/{workspace_id}/service_accounts`
-  case betaCreateServiceAccountWorkspaceMember =
-    "beta.create.service.account.workspace.member.v1.organizations.workspaces.workspace.id.service.accounts.post"
+  case organizationWorkspacesServiceAccountsAdd = "organization.workspaces.service.accounts.add"
   /// `DELETE v1/organizations/workspaces/{workspace_id}/service_accounts/{service_account_id}`
-  case betaDeleteServiceAccountWorkspaceMember =
-    "beta.delete.service.account.workspace.member.v1.organizations.workspaces.workspace.id.service.accounts.service.account.id.delete"
+  case organizationWorkspacesServiceAccountsRemove =
+    "organization.workspaces.service.accounts.remove"
   /// `GET v1/organizations/workspaces/{workspace_id}/service_accounts/{service_account_id}`
-  case betaGetServiceAccountWorkspaceMember =
-    "beta.get.service.account.workspace.member.v1.organizations.workspaces.workspace.id.service.accounts.service.account.id.get"
+  case organizationWorkspacesServiceAccountsRetrieve =
+    "organization.workspaces.service.accounts.retrieve"
   /// `POST v1/organizations/workspaces/{workspace_id}/service_accounts/{service_account_id}`
-  case betaUpdateServiceAccountWorkspaceMember =
-    "beta.update.service.account.workspace.member.v1.organizations.workspaces.workspace.id.service.accounts.service.account.id.post"
+  case organizationWorkspacesServiceAccountsUpdate =
+    "organization.workspaces.service.accounts.update"
+  /// `GET v1/organizations/api_keys`
+  case organizationApiKeysList = "organization.api.keys.list"
+  /// `GET v1/organizations/external_keys`
+  case organizationExternalKeysList = "organization.external.keys.list"
+  /// `POST v1/organizations/external_keys`
+  case organizationExternalKeysCreate = "organization.external.keys.create"
+  /// `DELETE v1/organizations/external_keys/{external_key_id}`
+  case organizationExternalKeysDelete = "organization.external.keys.delete"
+  /// `GET v1/organizations/external_keys/{external_key_id}`
+  case organizationExternalKeysRetrieve = "organization.external.keys.retrieve"
+  /// `POST v1/organizations/external_keys/{external_key_id}`
+  case organizationExternalKeysUpdate = "organization.external.keys.update"
+  /// `POST v1/organizations/external_keys/{external_key_id}/validate`
+  case organizationExternalKeysValidate = "organization.external.keys.validate"
+  /// `GET v1/organizations/federation_issuers`
+  case organizationFederationIssuersList = "organization.federation.issuers.list"
+  /// `POST v1/organizations/federation_issuers`
+  case organizationFederationIssuersCreate = "organization.federation.issuers.create"
+  /// `GET v1/organizations/federation_issuers/{federation_issuer_id}`
+  case organizationFederationIssuersRetrieve = "organization.federation.issuers.retrieve"
+  /// `POST v1/organizations/federation_issuers/{federation_issuer_id}`
+  case organizationFederationIssuersUpdate = "organization.federation.issuers.update"
+  /// `POST v1/organizations/federation_issuers/{federation_issuer_id}/archive`
+  case organizationFederationIssuersArchive = "organization.federation.issuers.archive"
+  /// `GET v1/organizations/federation_rules`
+  case organizationFederationRulesList = "organization.federation.rules.list"
+  /// `POST v1/organizations/federation_rules`
+  case organizationFederationRulesCreate = "organization.federation.rules.create"
+  /// `GET v1/organizations/federation_rules/{federation_rule_id}`
+  case organizationFederationRulesRetrieve = "organization.federation.rules.retrieve"
+  /// `POST v1/organizations/federation_rules/{federation_rule_id}`
+  case organizationFederationRulesUpdate = "organization.federation.rules.update"
+  /// `POST v1/organizations/federation_rules/{federation_rule_id}/archive`
+  case organizationFederationRulesArchive = "organization.federation.rules.archive"
+  /// `GET v1/organizations/federation_rules/{federation_rule_id}/workspaces`
+  case organizationFederationRulesWorkspacesList = "organization.federation.rules.workspaces.list"
+  /// `POST v1/organizations/federation_rules/{federation_rule_id}/workspaces`
+  case organizationFederationRulesWorkspacesAdd = "organization.federation.rules.workspaces.add"
+  /// `DELETE v1/organizations/federation_rules/{federation_rule_id}/workspaces/{workspace_id}`
+  case organizationFederationRulesWorkspacesRemove =
+    "organization.federation.rules.workspaces.remove"
+  /// `GET v1/organizations/invites`
+  case organizationInvitesList = "organization.invites.list"
+  /// `GET v1/organizations/rate_limits`
+  case organizationRateLimitsList = "organization.rate.limits.list"
+  /// `GET v1/organizations/service_accounts`
+  case organizationServiceAccountsList = "organization.service.accounts.list"
+  /// `GET v1/organizations/users`
+  case organizationUsersList = "organization.users.list"
+  /// `DELETE v1/organizations/users/{user_id}`
+  case organizationUsersRemove = "organization.users.remove"
+  /// `GET v1/organizations/users/{user_id}`
+  case organizationUsersRetrieve = "organization.users.retrieve"
+  /// `POST v1/organizations/users/{user_id}`
+  case organizationUsersUpdate = "organization.users.update"
+  /// `GET v1/organizations/workspaces`
+  case organizationWorkspacesList = "organization.workspaces.list"
+  /// `POST v1/organizations/workspaces`
+  case organizationWorkspacesCreate = "organization.workspaces.create"
+  /// `GET v1/organizations/workspaces/{workspace_id}`
+  case organizationWorkspacesRetrieve = "organization.workspaces.retrieve"
+  /// `POST v1/organizations/workspaces/{workspace_id}`
+  case organizationWorkspacesUpdate = "organization.workspaces.update"
+  /// `POST v1/organizations/workspaces/{workspace_id}/archive`
+  case organizationWorkspacesArchive = "organization.workspaces.archive"
+  /// `GET v1/organizations/workspaces/{workspace_id}/members`
+  case organizationWorkspacesMembersList = "organization.workspaces.members.list"
+  /// `POST v1/organizations/workspaces/{workspace_id}/members`
+  case organizationWorkspacesMembersAdd = "organization.workspaces.members.add"
+  /// `DELETE v1/organizations/workspaces/{workspace_id}/members/{user_id}`
+  case organizationWorkspacesMembersRemove = "organization.workspaces.members.remove"
+  /// `GET v1/organizations/workspaces/{workspace_id}/members/{user_id}`
+  case organizationWorkspacesMembersRetrieve = "organization.workspaces.members.retrieve"
+  /// `POST v1/organizations/workspaces/{workspace_id}/members/{user_id}`
+  case organizationWorkspacesMembersUpdate = "organization.workspaces.members.update"
+  /// `GET v1/organizations/workspaces/{workspace_id}/rate_limits`
+  case organizationWorkspacesRateLimitsList = "organization.workspaces.rate.limits.list"
   /// `GET v1/environments`
   case betaListEnvironments = "beta.list.environments.v1.environments.get"
   /// `POST v1/environments`
@@ -276,6 +543,10 @@ public enum AnthropicOperation: String, HyperProxyCatalogOperation {
   /// `GET v1/skills/{skill_id}/versions/{version}/content`
   case betaDownloadSkillVersionContent =
     "beta.download.skill.version.content.v1.skills.skill.id.versions.version.content.get"
+  /// `DELETE v1/user_profiles/{user_profile_id}`
+  case userProfilesDelete = "user.profiles.delete"
+  /// `POST v1/user_profiles/{user_profile_id}/action_urls`
+  case userProfilesActionUrlsCreate = "user.profiles.action.urls.create"
   /// `GET v1/agents`
   case betaListAgents = "BetaListAgents"
   /// `POST v1/agents`
@@ -407,13 +678,13 @@ public enum AnthropicOperation: String, HyperProxyCatalogOperation {
   /// `POST v1/tunnels/{tunnel_id}/rotate_token`
   case betaRotateTunnelToken = "BetaRotateTunnelToken"
   /// `GET v1/user_profiles`
-  case betaListUserProfiles = "BetaListUserProfiles"
+  case userProfilesList = "user.profiles.list"
   /// `POST v1/user_profiles`
-  case betaCreateUserProfile = "BetaCreateUserProfile"
+  case userProfilesCreate = "user.profiles.create"
   /// `GET v1/user_profiles/{user_profile_id}`
-  case betaGetUserProfile = "BetaGetUserProfile"
+  case userProfilesRetrieve = "user.profiles.retrieve"
   /// `POST v1/user_profiles/{user_profile_id}`
-  case betaUpdateUserProfile = "BetaUpdateUserProfile"
+  case userProfilesUpdate = "user.profiles.update"
   /// `POST v1/user_profiles/{user_profile_id}/enrollment_url`
   case betaCreateEnrollmentUrl = "BetaCreateEnrollmentUrl"
   /// `GET v1/vaults`

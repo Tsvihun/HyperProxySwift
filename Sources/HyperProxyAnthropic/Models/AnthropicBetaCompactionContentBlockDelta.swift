@@ -16,9 +16,9 @@ public struct AnthropicBetaCompactionContentBlockDelta: Codable, Sendable {
   public var kind: AnthropicBetaCompactionContentBlockDelta.Kind
 
   public init(
-    content: String?,
-    encryptedContent: String?,
-    kind: AnthropicBetaCompactionContentBlockDelta.Kind = .compactionDelta
+    kind: AnthropicBetaCompactionContentBlockDelta.Kind,
+    content: String? = nil,
+    encryptedContent: String? = nil
   ) {
     self.content = content
     self.encryptedContent = encryptedContent

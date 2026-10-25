@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct AnthropicBetaDeleteMemoryParameters: Codable, Sendable {
   public var anthropicBeta: String?
   public var anthropicVersion: String?
+  public var anthropicWorkspaceId: String?
   public var expectedContentSha256: String?
   public var memoryId: String
   public var memoryStoreId: String
@@ -23,11 +24,13 @@ public struct AnthropicBetaDeleteMemoryParameters: Codable, Sendable {
     memoryStoreId: String,
     anthropicBeta: String? = nil,
     anthropicVersion: String? = nil,
+    anthropicWorkspaceId: String? = nil,
     expectedContentSha256: String? = nil,
     xApiKey: String? = nil
   ) {
     self.anthropicBeta = anthropicBeta
     self.anthropicVersion = anthropicVersion
+    self.anthropicWorkspaceId = anthropicWorkspaceId
     self.expectedContentSha256 = expectedContentSha256
     self.memoryId = memoryId
     self.memoryStoreId = memoryStoreId
@@ -37,6 +40,7 @@ public struct AnthropicBetaDeleteMemoryParameters: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case anthropicBeta = "anthropic-beta"
     case anthropicVersion = "anthropic-version"
+    case anthropicWorkspaceId = "anthropic-workspace-id"
     case expectedContentSha256 = "expected_content_sha256"
     case memoryId = "memory_id"
     case memoryStoreId = "memory_store_id"

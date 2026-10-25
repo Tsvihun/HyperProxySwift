@@ -12,14 +12,14 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsUserInterruptEvent: Codable, Sendable {
   public var id: String
-  public var processedAt: AnthropicBetaTimestamp?
+  public var processedAt: String?
   public var sessionThreadId: String?
   public var kind: AnthropicBetaManagedAgentsUserInterruptEvent.Kind
 
   public init(
     id: String,
     kind: AnthropicBetaManagedAgentsUserInterruptEvent.Kind,
-    processedAt: AnthropicBetaTimestamp? = nil,
+    processedAt: String? = nil,
     sessionThreadId: String? = nil
   ) {
     self.id = id

@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct AnthropicBetaPermissionError: Codable, Sendable {
   public var message: String
-  public var kind: AnthropicPermissionErrorKind
+  public var kind: AnthropicBetaPermissionError.Kind
 
   public init(
     message: String,
-    kind: AnthropicPermissionErrorKind = .permissionError
+    kind: AnthropicBetaPermissionError.Kind
   ) {
     self.message = message
     self.kind = kind
@@ -25,5 +25,9 @@ public struct AnthropicBetaPermissionError: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case message
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case permissionError = "permission_error"
   }
 }

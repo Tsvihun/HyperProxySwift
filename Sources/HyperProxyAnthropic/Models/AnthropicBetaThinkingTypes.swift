@@ -12,18 +12,26 @@ import HyperProxyCore
 
 public struct AnthropicBetaThinkingTypes: Codable, Sendable {
   public var adaptive: AnthropicBetaCapabilitySupport
+  public var betweenTools: AnthropicBetaCapabilitySupport
+  public var disabled: AnthropicBetaCapabilitySupport
   public var enabled: AnthropicBetaCapabilitySupport
 
   public init(
     adaptive: AnthropicBetaCapabilitySupport,
+    betweenTools: AnthropicBetaCapabilitySupport,
+    disabled: AnthropicBetaCapabilitySupport,
     enabled: AnthropicBetaCapabilitySupport
   ) {
     self.adaptive = adaptive
+    self.betweenTools = betweenTools
+    self.disabled = disabled
     self.enabled = enabled
   }
 
   enum CodingKeys: String, CodingKey {
     case adaptive
+    case betweenTools = "between_tools"
+    case disabled
     case enabled
   }
 }

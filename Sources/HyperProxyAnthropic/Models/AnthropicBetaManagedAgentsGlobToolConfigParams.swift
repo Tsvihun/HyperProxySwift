@@ -12,15 +12,15 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsGlobToolConfigParams: Codable, Sendable {
   public var enabled: Bool?
-  public var name: AnthropicGlobName
-  public var permissionPolicy: AnthropicBetaManagedAgentsPermissionPolicy?
-  public var kind: AnthropicGlobKind?
+  public var name: AnthropicBetaManagedAgentsGlobToolConfigParams.Name
+  public var permissionPolicy: AnthropicBetaManagedAgentsGlobToolConfigParamsPermissionPolicy?
+  public var kind: AnthropicBetaManagedAgentsGlobToolConfigParams.Kind?
 
   public init(
-    name: AnthropicGlobName = .glob,
+    name: AnthropicBetaManagedAgentsGlobToolConfigParams.Name,
     enabled: Bool? = nil,
-    permissionPolicy: AnthropicBetaManagedAgentsPermissionPolicy? = nil,
-    kind: AnthropicGlobKind? = nil
+    permissionPolicy: AnthropicBetaManagedAgentsGlobToolConfigParamsPermissionPolicy? = nil,
+    kind: AnthropicBetaManagedAgentsGlobToolConfigParams.Kind? = nil
   ) {
     self.enabled = enabled
     self.name = name
@@ -33,5 +33,13 @@ public struct AnthropicBetaManagedAgentsGlobToolConfigParams: Codable, Sendable 
     case name
     case permissionPolicy = "permission_policy"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case glob = "glob"
+  }
+
+  public enum Name: String, Codable, Hashable, Sendable {
+    case glob = "glob"
   }
 }

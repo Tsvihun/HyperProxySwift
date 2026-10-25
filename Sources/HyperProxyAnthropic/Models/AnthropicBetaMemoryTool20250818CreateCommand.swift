@@ -16,9 +16,9 @@ public struct AnthropicBetaMemoryTool20250818CreateCommand: Codable, Sendable {
   public var path: String
 
   public init(
+    command: AnthropicBetaMemoryTool20250818CreateCommand.Command,
     fileText: String,
-    path: String,
-    command: AnthropicBetaMemoryTool20250818CreateCommand.Command = .create
+    path: String
   ) {
     self.command = command
     self.fileText = fileText

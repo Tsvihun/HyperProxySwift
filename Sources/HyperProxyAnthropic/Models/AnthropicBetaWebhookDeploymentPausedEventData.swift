@@ -19,8 +19,8 @@ public struct AnthropicBetaWebhookDeploymentPausedEventData: Codable, Sendable {
   public init(
     id: String,
     organizationId: String,
-    workspaceId: String,
-    kind: AnthropicBetaWebhookDeploymentPausedEventData.Kind = .deploymentPaused
+    kind: AnthropicBetaWebhookDeploymentPausedEventData.Kind,
+    workspaceId: String
   ) {
     self.id = id
     self.organizationId = organizationId

@@ -18,31 +18,31 @@ public struct AnthropicBetaFederationIssuer: Codable, Sendable {
   public var createdByActorId: String?
   public var id: String
   public var issuerUrl: String
-  public var jwks: AnthropicBetaFederationIssuer.Jwks
+  public var jwks: AnthropicBetaOrganizationFederationFederationIssuerJWKS
   public var jwksPollingDisabledAt: String?
   public var maxJwtLifetimeSeconds: Int
   public var name: String
-  public var pollStatus: AnthropicBetaIssuerPollStatus?
+  public var pollStatus: AnthropicBetaFederationIssuerPollStatus?
   public var kind: AnthropicBetaFederationIssuer.Kind
   public var updatedAt: String
   public var updatedByActorId: String?
 
   public init(
-    archivedAt: String?,
-    archivedByActorId: String?,
     checkJti: Bool,
     createdAt: String,
-    createdByActorId: String?,
     id: String,
     issuerUrl: String,
-    jwks: AnthropicBetaFederationIssuer.Jwks,
-    jwksPollingDisabledAt: String?,
+    jwks: AnthropicBetaOrganizationFederationFederationIssuerJWKS,
     maxJwtLifetimeSeconds: Int,
     name: String,
-    pollStatus: AnthropicBetaIssuerPollStatus?,
+    kind: AnthropicBetaFederationIssuer.Kind,
     updatedAt: String,
-    updatedByActorId: String?,
-    kind: AnthropicBetaFederationIssuer.Kind = .federationIssuer
+    archivedAt: String? = nil,
+    archivedByActorId: String? = nil,
+    createdByActorId: String? = nil,
+    jwksPollingDisabledAt: String? = nil,
+    pollStatus: AnthropicBetaFederationIssuerPollStatus? = nil,
+    updatedByActorId: String? = nil
   ) {
     self.archivedAt = archivedAt
     self.archivedByActorId = archivedByActorId
@@ -77,37 +77,6 @@ public struct AnthropicBetaFederationIssuer: Codable, Sendable {
     case kind = "type"
     case updatedAt = "updated_at"
     case updatedByActorId = "updated_by_actor_id"
-  }
-
-  public enum Jwks: Codable, Sendable {
-    case betaJwksDiscovery(AnthropicBetaJwksDiscovery)
-    case betaJwksExplicitUrl(AnthropicBetaJwksExplicitUrl)
-    case betaJwksInline(AnthropicBetaJwksInline)
-
-    public init(from decoder: any Decoder) throws {
-      let container = try decoder.singleValueContainer()
-      if let value = try? container.decode(AnthropicBetaJwksDiscovery.self) {
-        self = .betaJwksDiscovery(value)
-        return
-      }
-      if let value = try? container.decode(AnthropicBetaJwksExplicitUrl.self) {
-        self = .betaJwksExplicitUrl(value)
-        return
-      }
-      self = .betaJwksInline(try container.decode(AnthropicBetaJwksInline.self))
-    }
-
-    public func encode(to encoder: any Encoder) throws {
-      var container = encoder.singleValueContainer()
-      switch self {
-      case .betaJwksDiscovery(let value):
-        try container.encode(value)
-      case .betaJwksExplicitUrl(let value):
-        try container.encode(value)
-      case .betaJwksInline(let value):
-        try container.encode(value)
-      }
-    }
   }
 
   public enum Kind: String, Codable, Hashable, Sendable {

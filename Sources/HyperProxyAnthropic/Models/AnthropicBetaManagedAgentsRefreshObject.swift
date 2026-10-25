@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsRefreshObject: Codable, Sendable {
-  public var httpResponse: AnthropicBetaManagedAgentsRefreshHttpResponse?
-  public var status: AnthropicBetaManagedAgentsCredentialRefreshStatus
+  public var httpResponse: AnthropicBetaManagedAgentsRefreshHTTPResponse?
+  public var status: AnthropicBetaManagedAgentsRefreshObject.Status
 
   public init(
-    httpResponse: AnthropicBetaManagedAgentsRefreshHttpResponse?,
-    status: AnthropicBetaManagedAgentsCredentialRefreshStatus
+    status: AnthropicBetaManagedAgentsRefreshObject.Status,
+    httpResponse: AnthropicBetaManagedAgentsRefreshHTTPResponse? = nil
   ) {
     self.httpResponse = httpResponse
     self.status = status
@@ -25,5 +25,12 @@ public struct AnthropicBetaManagedAgentsRefreshObject: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case httpResponse = "http_response"
     case status
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case succeeded = "succeeded"
+    case failed = "failed"
+    case connectError = "connect_error"
+    case noRefreshToken = "no_refresh_token"
   }
 }

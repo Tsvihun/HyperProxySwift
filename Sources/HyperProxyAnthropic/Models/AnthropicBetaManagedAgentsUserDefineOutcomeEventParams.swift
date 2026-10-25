@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct AnthropicBetaManagedAgentsUserDefineOutcomeEventParams: Codable, Sendable {
   public var description: String
   public var maxIterations: Int?
-  public var rubric: AnthropicBetaManagedAgentsRubricParams
+  public var rubric: AnthropicBetaSessionsManagedAgentsUserDefineOutcomeEventParamsRubric
   public var kind: AnthropicBetaManagedAgentsUserDefineOutcomeEventParams.Kind
 
   public init(
     description: String,
-    rubric: AnthropicBetaManagedAgentsRubricParams,
+    rubric: AnthropicBetaSessionsManagedAgentsUserDefineOutcomeEventParamsRubric,
     kind: AnthropicBetaManagedAgentsUserDefineOutcomeEventParams.Kind,
     maxIterations: Int? = nil
   ) {

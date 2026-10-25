@@ -14,7 +14,7 @@ public struct AnthropicBetaFallbackCreditRedeemed: Codable, Sendable {
   public var kind: AnthropicBetaFallbackCreditRedeemed.Kind
 
   public init(
-    kind: AnthropicBetaFallbackCreditRedeemed.Kind = .redeemed
+    kind: AnthropicBetaFallbackCreditRedeemed.Kind
   ) {
     self.kind = kind
   }

@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaPublicEnvironmentCreateRequest: Codable, Sendable {
-  public var config: AnthropicBetaPublicEnvironmentCreateRequestConfigVariant?
+  public var config: AnthropicBetaEnvironmentCreateParamsConfig?
   public var description: String?
   public var metadata: [String: String]?
   public var name: String
@@ -19,7 +19,7 @@ public struct AnthropicBetaPublicEnvironmentCreateRequest: Codable, Sendable {
 
   public init(
     name: String,
-    config: AnthropicBetaPublicEnvironmentCreateRequestConfigVariant? = nil,
+    config: AnthropicBetaEnvironmentCreateParamsConfig? = nil,
     description: String? = nil,
     metadata: [String: String]? = nil,
     scope: AnthropicBetaPublicEnvironmentCreateRequest.Scope? = nil

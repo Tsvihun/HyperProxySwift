@@ -19,8 +19,8 @@ public struct AnthropicBetaWebhookSessionRequiresActionEventData: Codable, Senda
   public init(
     id: String,
     organizationId: String,
-    workspaceId: String,
-    kind: AnthropicBetaWebhookSessionRequiresActionEventData.Kind = .sessionRequiresAction
+    kind: AnthropicBetaWebhookSessionRequiresActionEventData.Kind,
+    workspaceId: String
   ) {
     self.id = id
     self.organizationId = organizationId
@@ -35,7 +35,9 @@ public struct AnthropicBetaWebhookSessionRequiresActionEventData: Codable, Senda
     case workspaceId = "workspace_id"
   }
 
-  public enum Kind: String, Codable, Hashable, Sendable {
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
     case sessionRequiresAction = "session.requires_action"
   }
 }

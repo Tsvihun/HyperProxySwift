@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaCloudConfigParams: Codable, Sendable {
-  public var networking: AnthropicBetaCloudConfigParamsNetworkingVariant?
+  public var networking: AnthropicBetaCloudConfigParamsNetworking?
   public var packages: AnthropicBetaPackagesParams?
-  public var kind: AnthropicCloudKind
+  public var kind: AnthropicBetaCloudConfigParams.Kind
 
   public init(
-    kind: AnthropicCloudKind = .cloud,
-    networking: AnthropicBetaCloudConfigParamsNetworkingVariant? = nil,
+    kind: AnthropicBetaCloudConfigParams.Kind,
+    networking: AnthropicBetaCloudConfigParamsNetworking? = nil,
     packages: AnthropicBetaPackagesParams? = nil
   ) {
     self.networking = networking
@@ -29,5 +29,9 @@ public struct AnthropicBetaCloudConfigParams: Codable, Sendable {
     case networking
     case packages
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case cloud = "cloud"
   }
 }

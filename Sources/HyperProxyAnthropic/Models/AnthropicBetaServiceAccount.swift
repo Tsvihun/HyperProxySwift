@@ -19,22 +19,22 @@ public struct AnthropicBetaServiceAccount: Codable, Sendable {
   public var id: String
   public var name: String
   public var organizationRole: AnthropicBetaServiceAccount.OrganizationRole
-  public var kind: AnthropicServiceAccountKind
+  public var kind: AnthropicBetaServiceAccount.Kind
   public var updatedAt: String
   public var updatedByActorId: String?
 
   public init(
-    archivedAt: String?,
-    archivedByActorId: String?,
     createdAt: String,
-    createdByActorId: String?,
-    description: String?,
     id: String,
     name: String,
     organizationRole: AnthropicBetaServiceAccount.OrganizationRole,
+    kind: AnthropicBetaServiceAccount.Kind,
     updatedAt: String,
-    updatedByActorId: String?,
-    kind: AnthropicServiceAccountKind = .serviceAccount
+    archivedAt: String? = nil,
+    archivedByActorId: String? = nil,
+    createdByActorId: String? = nil,
+    description: String? = nil,
+    updatedByActorId: String? = nil
   ) {
     self.archivedAt = archivedAt
     self.archivedByActorId = archivedByActorId
@@ -61,6 +61,10 @@ public struct AnthropicBetaServiceAccount: Codable, Sendable {
     case kind = "type"
     case updatedAt = "updated_at"
     case updatedByActorId = "updated_by_actor_id"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case serviceAccount = "service_account"
   }
 
   public enum OrganizationRole: String, Codable, Hashable, Sendable {

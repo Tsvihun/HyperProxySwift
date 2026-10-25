@@ -13,23 +13,26 @@ import HyperProxyCore
 public struct AnthropicBetaManagedAgentsSessionThreadStatusIdleEvent: Codable, Sendable {
   public var agentName: String
   public var id: String
-  public var processedAt: AnthropicBetaTimestamp
+  public var processedAt: String
   public var sessionThreadId: String
-  public var stopReason: AnthropicBetaManagedAgentsSessionThreadStatusIdleEvent.StopReason
+  public var stopDetails: AnthropicBetaManagedAgentsSessionRefusalStopDetails?
+  public var stopReason: AnthropicBetaSessionsManagedAgentsSessionThreadStatusIdleEventStopReason
   public var kind: AnthropicBetaManagedAgentsSessionThreadStatusIdleEvent.Kind
 
   public init(
     agentName: String,
     id: String,
-    processedAt: AnthropicBetaTimestamp,
+    processedAt: String,
     sessionThreadId: String,
-    stopReason: AnthropicBetaManagedAgentsSessionThreadStatusIdleEvent.StopReason,
-    kind: AnthropicBetaManagedAgentsSessionThreadStatusIdleEvent.Kind
+    stopReason: AnthropicBetaSessionsManagedAgentsSessionThreadStatusIdleEventStopReason,
+    kind: AnthropicBetaManagedAgentsSessionThreadStatusIdleEvent.Kind,
+    stopDetails: AnthropicBetaManagedAgentsSessionRefusalStopDetails? = nil
   ) {
     self.agentName = agentName
     self.id = id
     self.processedAt = processedAt
     self.sessionThreadId = sessionThreadId
+    self.stopDetails = stopDetails
     self.stopReason = stopReason
     self.kind = kind
   }
@@ -39,6 +42,7 @@ public struct AnthropicBetaManagedAgentsSessionThreadStatusIdleEvent: Codable, S
     case id
     case processedAt = "processed_at"
     case sessionThreadId = "session_thread_id"
+    case stopDetails = "stop_details"
     case stopReason = "stop_reason"
     case kind = "type"
   }
@@ -47,44 +51,5 @@ public struct AnthropicBetaManagedAgentsSessionThreadStatusIdleEvent: Codable, S
     Sendable
   {
     case sessionThreadStatusIdle = "session.thread_status_idle"
-  }
-
-  public enum StopReason: Codable, Sendable {
-    case betaManagedAgentsSessionEndTurn(AnthropicBetaManagedAgentsSessionEndTurn)
-    case betaManagedAgentsSessionRequiresAction(AnthropicBetaManagedAgentsSessionRequiresAction)
-    case betaManagedAgentsSessionRetriesExhausted(AnthropicBetaManagedAgentsSessionRetriesExhausted)
-    case betaManagedAgentsSessionBudgetReached(AnthropicBetaManagedAgentsSessionBudgetReached)
-
-    public init(from decoder: any Decoder) throws {
-      let container = try decoder.singleValueContainer()
-      if let value = try? container.decode(AnthropicBetaManagedAgentsSessionEndTurn.self) {
-        self = .betaManagedAgentsSessionEndTurn(value)
-        return
-      }
-      if let value = try? container.decode(AnthropicBetaManagedAgentsSessionRequiresAction.self) {
-        self = .betaManagedAgentsSessionRequiresAction(value)
-        return
-      }
-      if let value = try? container.decode(AnthropicBetaManagedAgentsSessionRetriesExhausted.self) {
-        self = .betaManagedAgentsSessionRetriesExhausted(value)
-        return
-      }
-      self = .betaManagedAgentsSessionBudgetReached(
-        try container.decode(AnthropicBetaManagedAgentsSessionBudgetReached.self))
-    }
-
-    public func encode(to encoder: any Encoder) throws {
-      var container = encoder.singleValueContainer()
-      switch self {
-      case .betaManagedAgentsSessionEndTurn(let value):
-        try container.encode(value)
-      case .betaManagedAgentsSessionRequiresAction(let value):
-        try container.encode(value)
-      case .betaManagedAgentsSessionRetriesExhausted(let value):
-        try container.encode(value)
-      case .betaManagedAgentsSessionBudgetReached(let value):
-        try container.encode(value)
-      }
-    }
   }
 }

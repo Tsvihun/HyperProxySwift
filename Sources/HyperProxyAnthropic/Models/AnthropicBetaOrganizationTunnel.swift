@@ -16,7 +16,7 @@ public struct AnthropicBetaOrganizationTunnel: Codable, Sendable {
   public var displayName: String?
   public var domain: String
   public var id: String
-  public var kind: AnthropicTunnelKind
+  public var kind: AnthropicBetaOrganizationTunnel.Kind
   public var workspaceId: String?
 
   public init(
@@ -26,7 +26,7 @@ public struct AnthropicBetaOrganizationTunnel: Codable, Sendable {
     domain: String,
     id: String,
     workspaceId: String?,
-    kind: AnthropicTunnelKind = .tunnel
+    kind: AnthropicBetaOrganizationTunnel.Kind = .tunnel
   ) {
     self.archivedAt = archivedAt
     self.createdAt = createdAt
@@ -45,5 +45,9 @@ public struct AnthropicBetaOrganizationTunnel: Codable, Sendable {
     case id
     case kind = "type"
     case workspaceId = "workspace_id"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case tunnel = "tunnel"
   }
 }

@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsUpdateSessionParams: Codable, Sendable {
-  public var agent: AnthropicBetaManagedAgentsSessionAgentUpdate?
-  public var budget: AnthropicBetaManagedAgentsBudget?
+  public var agent: AnthropicBetaManagedAgentsSessionAgentUpdateParam?
+  public var budget: AnthropicBetaManagedAgentsBudgetLimitParam?
   public var metadata: [String: String?]?
   public var title: String?
   public var vaultIds: [String]?
 
   public init(
-    agent: AnthropicBetaManagedAgentsSessionAgentUpdate? = nil,
-    budget: AnthropicBetaManagedAgentsBudget? = nil,
+    agent: AnthropicBetaManagedAgentsSessionAgentUpdateParam? = nil,
+    budget: AnthropicBetaManagedAgentsBudgetLimitParam? = nil,
     metadata: [String: String?]? = nil,
     title: String? = nil,
     vaultIds: [String]? = nil

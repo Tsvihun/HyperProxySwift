@@ -20,13 +20,13 @@ public struct AnthropicBetaFallbackMessageIterationUsage: Codable, Sendable {
   public var kind: AnthropicBetaFallbackMessageIterationUsage.Kind
 
   public init(
-    cacheCreation: AnthropicBetaCacheCreation?,
     cacheCreationInputTokens: Int,
     cacheReadInputTokens: Int,
     inputTokens: Int,
     model: AnthropicModel,
     outputTokens: Int,
-    kind: AnthropicBetaFallbackMessageIterationUsage.Kind = .fallbackMessage
+    kind: AnthropicBetaFallbackMessageIterationUsage.Kind,
+    cacheCreation: AnthropicBetaCacheCreation? = nil
   ) {
     self.cacheCreation = cacheCreation
     self.cacheCreationInputTokens = cacheCreationInputTokens

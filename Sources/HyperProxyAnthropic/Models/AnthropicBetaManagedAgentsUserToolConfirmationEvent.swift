@@ -13,19 +13,19 @@ import HyperProxyCore
 public struct AnthropicBetaManagedAgentsUserToolConfirmationEvent: Codable, Sendable {
   public var denyMessage: String?
   public var id: String
-  public var processedAt: AnthropicBetaTimestamp?
-  public var result: AnthropicBetaManagedAgentsUserToolConfirmationResult
+  public var processedAt: String?
+  public var result: AnthropicBetaManagedAgentsUserToolConfirmationEvent.ResultValue
   public var sessionThreadId: String?
   public var toolUseId: String
   public var kind: AnthropicBetaManagedAgentsUserToolConfirmationEvent.Kind
 
   public init(
     id: String,
-    result: AnthropicBetaManagedAgentsUserToolConfirmationResult,
+    result: AnthropicBetaManagedAgentsUserToolConfirmationEvent.ResultValue,
     toolUseId: String,
     kind: AnthropicBetaManagedAgentsUserToolConfirmationEvent.Kind,
     denyMessage: String? = nil,
-    processedAt: AnthropicBetaTimestamp? = nil,
+    processedAt: String? = nil,
     sessionThreadId: String? = nil
   ) {
     self.denyMessage = denyMessage
@@ -51,5 +51,12 @@ public struct AnthropicBetaManagedAgentsUserToolConfirmationEvent: Codable, Send
     Sendable
   {
     case userToolConfirmation = "user.tool_confirmation"
+  }
+
+  public enum ResultValue: String, Codable, Hashable,
+    Sendable
+  {
+    case allow = "allow"
+    case deny = "deny"
   }
 }

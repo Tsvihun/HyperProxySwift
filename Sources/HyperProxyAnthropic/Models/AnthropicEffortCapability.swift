@@ -24,7 +24,7 @@ public struct AnthropicEffortCapability: Codable, Sendable {
     max: AnthropicCapabilitySupport,
     medium: AnthropicCapabilitySupport,
     supported: Bool,
-    xhigh: AnthropicCapabilitySupport?
+    xhigh: AnthropicCapabilitySupport? = nil
   ) {
     self.high = high
     self.low = low

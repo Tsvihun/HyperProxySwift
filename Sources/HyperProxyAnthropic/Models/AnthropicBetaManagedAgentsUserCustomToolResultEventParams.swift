@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsUserCustomToolResultEventParams: Codable, Sendable {
-  public var content: [AnthropicBetaManagedAgentsToolResultContentBlock]?
+  public var content: [AnthropicBetaSessionsManagedAgentsUserCustomToolResultEventParamsContent]?
   public var customToolUseId: String
   public var isError: Bool?
   public var kind: AnthropicBetaManagedAgentsUserCustomToolResultEventParams.Kind
@@ -19,7 +19,7 @@ public struct AnthropicBetaManagedAgentsUserCustomToolResultEventParams: Codable
   public init(
     customToolUseId: String,
     kind: AnthropicBetaManagedAgentsUserCustomToolResultEventParams.Kind,
-    content: [AnthropicBetaManagedAgentsToolResultContentBlock]? = nil,
+    content: [AnthropicBetaSessionsManagedAgentsUserCustomToolResultEventParamsContent]? = nil,
     isError: Bool? = nil
   ) {
     self.content = content

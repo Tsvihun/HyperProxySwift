@@ -17,10 +17,10 @@ public struct AnthropicBetaMemoryTool20250818StrReplaceCommand: Codable, Sendabl
   public var path: String
 
   public init(
+    command: AnthropicBetaMemoryTool20250818StrReplaceCommand.Command,
     newStr: String,
     oldStr: String,
-    path: String,
-    command: AnthropicBetaMemoryTool20250818StrReplaceCommand.Command = .strReplace
+    path: String
   ) {
     self.command = command
     self.newStr = newStr
@@ -35,7 +35,9 @@ public struct AnthropicBetaMemoryTool20250818StrReplaceCommand: Codable, Sendabl
     case path
   }
 
-  public enum Command: String, Codable, Hashable, Sendable {
+  public enum Command: String, Codable, Hashable,
+    Sendable
+  {
     case strReplace = "str_replace"
   }
 }

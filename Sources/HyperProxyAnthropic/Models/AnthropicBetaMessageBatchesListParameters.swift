@@ -14,6 +14,7 @@ public struct AnthropicBetaMessageBatchesListParameters: Codable, Sendable {
   public var afterId: String?
   public var anthropicBeta: String?
   public var anthropicVersion: String?
+  public var anthropicWorkspaceId: String?
   public var beforeId: String?
   public var limit: Int?
   public var xApiKey: String?
@@ -22,6 +23,7 @@ public struct AnthropicBetaMessageBatchesListParameters: Codable, Sendable {
     afterId: String? = nil,
     anthropicBeta: String? = nil,
     anthropicVersion: String? = nil,
+    anthropicWorkspaceId: String? = nil,
     beforeId: String? = nil,
     limit: Int? = nil,
     xApiKey: String? = nil
@@ -29,6 +31,7 @@ public struct AnthropicBetaMessageBatchesListParameters: Codable, Sendable {
     self.afterId = afterId
     self.anthropicBeta = anthropicBeta
     self.anthropicVersion = anthropicVersion
+    self.anthropicWorkspaceId = anthropicWorkspaceId
     self.beforeId = beforeId
     self.limit = limit
     self.xApiKey = xApiKey
@@ -38,6 +41,7 @@ public struct AnthropicBetaMessageBatchesListParameters: Codable, Sendable {
     case afterId = "after_id"
     case anthropicBeta = "anthropic-beta"
     case anthropicVersion = "anthropic-version"
+    case anthropicWorkspaceId = "anthropic-workspace-id"
     case beforeId = "before_id"
     case limit
     case xApiKey = "x-api-key"

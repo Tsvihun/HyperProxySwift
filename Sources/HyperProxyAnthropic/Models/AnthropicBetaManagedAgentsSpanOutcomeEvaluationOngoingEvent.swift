@@ -14,14 +14,14 @@ public struct AnthropicBetaManagedAgentsSpanOutcomeEvaluationOngoingEvent: Codab
   public var id: String
   public var iteration: Int
   public var outcomeId: String
-  public var processedAt: AnthropicBetaTimestamp
+  public var processedAt: String
   public var kind: AnthropicBetaManagedAgentsSpanOutcomeEvaluationOngoingEvent.Kind
 
   public init(
     id: String,
     iteration: Int,
     outcomeId: String,
-    processedAt: AnthropicBetaTimestamp,
+    processedAt: String,
     kind: AnthropicBetaManagedAgentsSpanOutcomeEvaluationOngoingEvent.Kind
   ) {
     self.id = id

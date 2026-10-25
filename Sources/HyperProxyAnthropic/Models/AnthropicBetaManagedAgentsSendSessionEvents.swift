@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsSendSessionEvents: Codable, Sendable {
-  public var data: [AnthropicBetaManagedAgentsInputEvent]?
+  public var data: [AnthropicBetaData]?
 
   public init(
-    data: [AnthropicBetaManagedAgentsInputEvent]? = nil
+    data: [AnthropicBetaData]? = nil
   ) {
     self.data = data
   }

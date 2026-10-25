@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct AnthropicBetaServiceAccountTarget: Codable, Sendable {
   public var serviceAccountId: String
   public var serviceAccountName: String?
-  public var kind: AnthropicServiceAccountKind
+  public var kind: AnthropicBetaServiceAccountTarget.Kind
 
   public init(
     serviceAccountId: String,
-    kind: AnthropicServiceAccountKind = .serviceAccount,
+    kind: AnthropicBetaServiceAccountTarget.Kind,
     serviceAccountName: String? = nil
   ) {
     self.serviceAccountId = serviceAccountId
@@ -29,5 +29,9 @@ public struct AnthropicBetaServiceAccountTarget: Codable, Sendable {
     case serviceAccountId = "service_account_id"
     case serviceAccountName = "service_account_name"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case serviceAccount = "service_account"
   }
 }

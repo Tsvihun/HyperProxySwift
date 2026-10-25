@@ -17,7 +17,7 @@ public struct AnthropicBetaFallbackCreditNotApplied: Codable, Sendable {
 
   public init(
     reason: AnthropicBetaFallbackCreditNotApplied.Reason,
-    kind: AnthropicBetaFallbackCreditNotApplied.Kind = .notApplied,
+    kind: AnthropicBetaFallbackCreditNotApplied.Kind,
     removeToRedeem: [String]? = nil
   ) {
     self.reason = reason
@@ -29,6 +29,10 @@ public struct AnthropicBetaFallbackCreditNotApplied: Codable, Sendable {
     case reason
     case removeToRedeem = "remove_to_redeem"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case notApplied = "not_applied"
   }
 
   public enum Reason: String, Codable, Hashable, Sendable {
@@ -44,9 +48,5 @@ public struct AnthropicBetaFallbackCreditNotApplied: Codable, Sendable {
     case wrongOrganization = "wrong_organization"
     case wrongPlatform = "wrong_platform"
     case wrongWorkspace = "wrong_workspace"
-  }
-
-  public enum Kind: String, Codable, Hashable, Sendable {
-    case notApplied = "not_applied"
   }
 }

@@ -12,20 +12,20 @@ import HyperProxyCore
 
 public struct GroqCreateChatCompletionRequest: Codable, Sendable {
   public var citationOptions: GroqCreateChatCompletionRequest.CitationOptions?
-  public var compoundCustom: GroqCreateChatCompletionRequest.CompoundCustom?
+  public var compoundCustom: GroqCompoundCustom?
   public var disableToolValidation: Bool?
-  public var documents: [GroqChatCompletionDocument]?
+  public var documents: [GroqDocument]?
   public var excludeDomains: [String]?
   public var frequencyPenalty: Double?
-  public var functionCall: GroqCreateChatCompletionRequest.FunctionCall?
-  public var functions: [GroqChatCompletionFunctions]?
+  public var functionCall: GroqChatCompletionCreateParamsFunctionCall?
+  public var functions: [GroqChatCompletionCreateParamsFunction]?
   public var includeDomains: [String]?
   public var includeReasoning: Bool?
   public var logitBias: [String: Int]?
   public var logprobs: Bool?
   public var maxCompletionTokens: Int?
   public var maxTokens: Int?
-  public var messages: [GroqChatCompletionRequestMessage]
+  public var messages: [GroqChatCompletionMessageParam]
   public var metadata: [String: String]?
   public var model: GroqCreateChatCompletionRequest.Model
   public var n: Int?
@@ -33,31 +33,31 @@ public struct GroqCreateChatCompletionRequest: Codable, Sendable {
   public var presencePenalty: Double?
   public var reasoningEffort: GroqCreateChatCompletionRequest.ReasoningEffort?
   public var reasoningFormat: GroqCreateChatCompletionRequest.ReasoningFormat?
-  public var responseFormat: GroqCreateChatCompletionRequest.ResponseFormat?
-  public var searchSettings: GroqCreateChatCompletionRequest.SearchSettings?
+  public var responseFormat: GroqResponseFormat?
+  public var searchSettings: GroqSearchSettings?
   public var seed: Int?
   public var serviceTier: GroqCreateChatCompletionRequest.ServiceTier?
   public var stop: GroqCreateChatCompletionRequest.Stop?
   public var store: Bool?
-  public var stream: Bool?
+  public var stream: GroqCreateChatCompletionRequest.Stream?
   public var temperature: Double?
-  public var toolChoice: GroqChatCompletionToolChoiceOption?
-  public var tools: [GroqChatCompletionTool]?
+  public var toolChoice: GroqChatCompletionToolChoiceOptionParam?
+  public var tools: [GroqChatCompletionToolParam]?
   public var topLogprobs: Int?
   public var topP: Double?
   public var user: String?
 
   public init(
-    messages: [GroqChatCompletionRequestMessage],
+    messages: [GroqChatCompletionMessageParam],
     model: GroqCreateChatCompletionRequest.Model,
     citationOptions: GroqCreateChatCompletionRequest.CitationOptions? = nil,
-    compoundCustom: GroqCreateChatCompletionRequest.CompoundCustom? = nil,
+    compoundCustom: GroqCompoundCustom? = nil,
     disableToolValidation: Bool? = nil,
-    documents: [GroqChatCompletionDocument]? = nil,
+    documents: [GroqDocument]? = nil,
     excludeDomains: [String]? = nil,
     frequencyPenalty: Double? = nil,
-    functionCall: GroqCreateChatCompletionRequest.FunctionCall? = nil,
-    functions: [GroqChatCompletionFunctions]? = nil,
+    functionCall: GroqChatCompletionCreateParamsFunctionCall? = nil,
+    functions: [GroqChatCompletionCreateParamsFunction]? = nil,
     includeDomains: [String]? = nil,
     includeReasoning: Bool? = nil,
     logitBias: [String: Int]? = nil,
@@ -70,16 +70,16 @@ public struct GroqCreateChatCompletionRequest: Codable, Sendable {
     presencePenalty: Double? = nil,
     reasoningEffort: GroqCreateChatCompletionRequest.ReasoningEffort? = nil,
     reasoningFormat: GroqCreateChatCompletionRequest.ReasoningFormat? = nil,
-    responseFormat: GroqCreateChatCompletionRequest.ResponseFormat? = nil,
-    searchSettings: GroqCreateChatCompletionRequest.SearchSettings? = nil,
+    responseFormat: GroqResponseFormat? = nil,
+    searchSettings: GroqSearchSettings? = nil,
     seed: Int? = nil,
     serviceTier: GroqCreateChatCompletionRequest.ServiceTier? = nil,
     stop: GroqCreateChatCompletionRequest.Stop? = nil,
     store: Bool? = nil,
-    stream: Bool? = nil,
+    stream: GroqCreateChatCompletionRequest.Stream? = nil,
     temperature: Double? = nil,
-    toolChoice: GroqChatCompletionToolChoiceOption? = nil,
-    tools: [GroqChatCompletionTool]? = nil,
+    toolChoice: GroqChatCompletionToolChoiceOptionParam? = nil,
+    tools: [GroqChatCompletionToolParam]? = nil,
     topLogprobs: Int? = nil,
     topP: Double? = nil,
     user: String? = nil
@@ -164,119 +164,6 @@ public struct GroqCreateChatCompletionRequest: Codable, Sendable {
     case disabled = "disabled"
   }
 
-  public struct CompoundCustom: Codable, Sendable {
-    public var models: GroqCreateChatCompletionRequest.CompoundCustom.Models?
-    public var tools: GroqCreateChatCompletionRequest.CompoundCustom.Tools?
-
-    public init(
-      models: GroqCreateChatCompletionRequest.CompoundCustom.Models? = nil,
-      tools: GroqCreateChatCompletionRequest.CompoundCustom.Tools? = nil
-    ) {
-      self.models = models
-      self.tools = tools
-    }
-
-    enum CodingKeys: String, CodingKey {
-      case models
-      case tools
-    }
-
-    public struct Models: Codable, Sendable {
-      public var answeringModel: String?
-      public var reasoningModel: String?
-
-      public init(
-        answeringModel: String? = nil,
-        reasoningModel: String? = nil
-      ) {
-        self.answeringModel = answeringModel
-        self.reasoningModel = reasoningModel
-      }
-
-      enum CodingKeys: String, CodingKey {
-        case answeringModel = "answering_model"
-        case reasoningModel = "reasoning_model"
-      }
-    }
-
-    public struct Tools: Codable, Sendable {
-      public var enabledTools: [String]?
-      public var wolframSettings:
-        GroqCreateChatCompletionRequest.CompoundCustom.Tools.WolframSettings?
-
-      public init(
-        enabledTools: [String]? = nil,
-        wolframSettings: GroqCreateChatCompletionRequest.CompoundCustom.Tools.WolframSettings? = nil
-      ) {
-        self.enabledTools = enabledTools
-        self.wolframSettings = wolframSettings
-      }
-
-      enum CodingKeys: String, CodingKey {
-        case enabledTools = "enabled_tools"
-        case wolframSettings = "wolfram_settings"
-      }
-
-      public struct WolframSettings: Codable, Sendable {
-        public var authorization: String?
-
-        public init(
-          authorization: String? = nil
-        ) {
-          self.authorization = authorization
-        }
-
-        enum CodingKeys: String, CodingKey {
-          case authorization
-        }
-      }
-    }
-  }
-
-  public enum FunctionCall: Codable, Sendable {
-    case preset(
-      GroqCreateChatCompletionRequest.FunctionCall.Preset)
-    case chatCompletionFunctionCallOption(GroqChatCompletionFunctionCallOption)
-
-    public init(from decoder: any Decoder) throws {
-      let container = try decoder.singleValueContainer()
-      if let value = try? container.decode(GroqCreateChatCompletionRequest.FunctionCall.Preset.self)
-      {
-        self = .preset(value)
-        return
-      }
-      self = .chatCompletionFunctionCallOption(
-        try container.decode(GroqChatCompletionFunctionCallOption.self))
-    }
-
-    public func encode(to encoder: any Encoder) throws {
-      var container = encoder.singleValueContainer()
-      switch self {
-      case .preset(let value):
-        try container.encode(value)
-      case .chatCompletionFunctionCallOption(let value):
-        try container.encode(value)
-      }
-    }
-
-    /// Provider-native value without the schema union wrapper.
-    public static var none: Self { .preset(.none) }
-
-    /// Provider-native value without the schema union wrapper.
-    public static var auto: Self { .preset(.auto) }
-
-    /// Provider-native value without the schema union wrapper.
-    public static var requiredValue: Self {
-      .preset(.requiredValue)
-    }
-
-    public enum Preset: String, Codable, Hashable, Sendable {
-      case none = "none"
-      case auto = "auto"
-      case requiredValue = "required"
-    }
-  }
-
   public enum Model: RawRepresentable, Codable, Hashable, Sendable {
     case compoundBeta
     case compoundBetaMini
@@ -291,6 +178,7 @@ public struct GroqCreateChatCompletionRequest: Codable, Sendable {
     case openaiGptOss20b
     case qwenQwen3_32b
     case qwenQwen3_6_27b
+    case qwenQwen3_8_27b
     case custom(String)
 
     public init(rawValue: String) {
@@ -321,6 +209,8 @@ public struct GroqCreateChatCompletionRequest: Codable, Sendable {
         self = .qwenQwen3_32b
       case "qwen/qwen3.6-27b":
         self = .qwenQwen3_6_27b
+      case "qwen/qwen3.8-27b":
+        self = .qwenQwen3_8_27b
       default:
         self = .custom(rawValue)
       }
@@ -354,6 +244,8 @@ public struct GroqCreateChatCompletionRequest: Codable, Sendable {
         return "qwen/qwen3-32b"
       case .qwenQwen3_6_27b:
         return "qwen/qwen3.6-27b"
+      case .qwenQwen3_8_27b:
+        return "qwen/qwen3.8-27b"
       case .custom(let value):
         return value
       }
@@ -383,78 +275,25 @@ public struct GroqCreateChatCompletionRequest: Codable, Sendable {
       case openaiGptOss20b = "openai/gpt-oss-20b"
       case qwenQwen3_32b = "qwen/qwen3-32b"
       case qwenQwen3_6_27b = "qwen/qwen3.6-27b"
+      case qwenQwen3_8_27b = "qwen/qwen3.8-27b"
     }
   }
 
   public enum ReasoningEffort: String, Codable, Hashable, Sendable {
     case none = "none"
     case defaultValue = "default"
+    case minimal = "minimal"
     case low = "low"
     case medium = "medium"
     case high = "high"
+    case xhigh = "xhigh"
+    case max = "max"
   }
 
   public enum ReasoningFormat: String, Codable, Hashable, Sendable {
     case hidden = "hidden"
     case raw = "raw"
     case parsed = "parsed"
-  }
-
-  public enum ResponseFormat: Codable, Sendable {
-    case responseFormatText(GroqResponseFormatText)
-    case responseFormatJsonSchema(GroqResponseFormatJsonSchema)
-    case responseFormatJsonObject(GroqResponseFormatJsonObject)
-
-    public init(from decoder: any Decoder) throws {
-      let container = try decoder.singleValueContainer()
-      if let value = try? container.decode(GroqResponseFormatText.self) {
-        self = .responseFormatText(value)
-        return
-      }
-      if let value = try? container.decode(GroqResponseFormatJsonSchema.self) {
-        self = .responseFormatJsonSchema(value)
-        return
-      }
-      self = .responseFormatJsonObject(try container.decode(GroqResponseFormatJsonObject.self))
-    }
-
-    public func encode(to encoder: any Encoder) throws {
-      var container = encoder.singleValueContainer()
-      switch self {
-      case .responseFormatText(let value):
-        try container.encode(value)
-      case .responseFormatJsonSchema(let value):
-        try container.encode(value)
-      case .responseFormatJsonObject(let value):
-        try container.encode(value)
-      }
-    }
-  }
-
-  public struct SearchSettings: Codable, Sendable {
-    public var country: String?
-    public var excludeDomains: [String]?
-    public var includeDomains: [String]?
-    public var includeImages: Bool?
-
-    public init(
-      country: String? = nil,
-      excludeDomains: [String]? = nil,
-      includeDomains: [String]? = nil,
-      includeImages: Bool? = nil
-    ) {
-      self.country = country
-      self.excludeDomains = excludeDomains
-      self.includeDomains = includeDomains
-      self.includeImages = includeImages
-    }
-
-    enum CodingKeys: String, CodingKey {
-      case country
-      case excludeDomains = "exclude_domains"
-      case includeDomains = "include_domains"
-      case includeImages = "include_images"
-    }
   }
 
   public enum ServiceTier: String, Codable, Hashable, Sendable {
@@ -484,6 +323,91 @@ public struct GroqCreateChatCompletionRequest: Codable, Sendable {
         try container.encode(value)
       case .stringArray(let value):
         try container.encode(value)
+      }
+    }
+  }
+
+  public enum Stream: Codable, Sendable {
+    case falseValue(GroqCreateChatCompletionRequest.Stream.False)
+    case trueValue(GroqCreateChatCompletionRequest.Stream.True)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(GroqCreateChatCompletionRequest.Stream.False.self) {
+        self = .falseValue(value)
+        return
+      }
+      self = .trueValue(
+        try container.decode(GroqCreateChatCompletionRequest.Stream.True.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .falseValue(let value):
+        try container.encode(value)
+      case .trueValue(let value):
+        try container.encode(value)
+      }
+    }
+
+    public enum False: Codable, Sendable {
+      case booleanFalse
+
+      public init(from decoder: any Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if let value = try? container.decode(Bool.self) {
+          switch value {
+          case false:
+            self = .booleanFalse
+            return
+          default:
+            break
+          }
+        }
+        throw DecodingError.dataCorruptedError(
+          in: container,
+          debugDescription:
+            "Expected a documented GroqCreateChatCompletionRequest.Stream.False value."
+        )
+      }
+
+      public func encode(to encoder: any Encoder) throws {
+        var container = encoder.singleValueContainer()
+        switch self {
+        case .booleanFalse:
+          try container.encode(false)
+        }
+      }
+    }
+
+    public enum True: Codable, Sendable {
+      case booleanTrue
+
+      public init(from decoder: any Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if let value = try? container.decode(Bool.self) {
+          switch value {
+          case true:
+            self = .booleanTrue
+            return
+          default:
+            break
+          }
+        }
+        throw DecodingError.dataCorruptedError(
+          in: container,
+          debugDescription:
+            "Expected a documented GroqCreateChatCompletionRequest.Stream.True value."
+        )
+      }
+
+      public func encode(to encoder: any Encoder) throws {
+        var container = encoder.singleValueContainer()
+        switch self {
+        case .booleanTrue:
+          try container.encode(true)
+        }
       }
     }
   }

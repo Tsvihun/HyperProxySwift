@@ -69,4 +69,12 @@ extension HyperProxyProviderService where Operation == DeepSeekOperation {
   public var balanceRetrieve: HyperProxyProviderCall<DeepSeekOperation> {
     self.call(.balanceRetrieve)
   }
+  /// `POST v1/tools/fetch`
+  public var toolsFetch: HyperProxyProviderCall<DeepSeekOperation> {
+    self.call(.toolsFetch)
+  }
+  /// `POST v1/tools/search`
+  public var toolsSearch: HyperProxyProviderCall<DeepSeekOperation> {
+    self.call(.toolsSearch)
+  }
 }

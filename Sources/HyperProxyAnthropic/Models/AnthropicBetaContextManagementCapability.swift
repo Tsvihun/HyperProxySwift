@@ -17,10 +17,10 @@ public struct AnthropicBetaContextManagementCapability: Codable, Sendable {
   public var supported: Bool
 
   public init(
-    clearThinking20251015: AnthropicBetaCapabilitySupport?,
-    clearToolUses20250919: AnthropicBetaCapabilitySupport?,
-    compact20260112: AnthropicBetaCapabilitySupport?,
-    supported: Bool
+    supported: Bool,
+    clearThinking20251015: AnthropicBetaCapabilitySupport? = nil,
+    clearToolUses20250919: AnthropicBetaCapabilitySupport? = nil,
+    compact20260112: AnthropicBetaCapabilitySupport? = nil
   ) {
     self.clearThinking20251015 = clearThinking20251015
     self.clearToolUses20250919 = clearToolUses20250919

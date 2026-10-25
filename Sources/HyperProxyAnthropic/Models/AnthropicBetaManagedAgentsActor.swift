@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public enum AnthropicBetaManagedAgentsActor: Codable, Sendable {
   case betaManagedAgentsSessionActor(AnthropicBetaManagedAgentsSessionActor)
-  case betaManagedAgentsApiActor(AnthropicBetaManagedAgentsApiActor)
+  case betaManagedAgentsAPIActor(AnthropicBetaManagedAgentsAPIActor)
   case betaManagedAgentsUserActor(AnthropicBetaManagedAgentsUserActor)
   case betaManagedAgentsServiceAccountActor(AnthropicBetaManagedAgentsServiceAccountActor)
 
@@ -22,8 +22,8 @@ public enum AnthropicBetaManagedAgentsActor: Codable, Sendable {
       self = .betaManagedAgentsSessionActor(value)
       return
     }
-    if let value = try? container.decode(AnthropicBetaManagedAgentsApiActor.self) {
-      self = .betaManagedAgentsApiActor(value)
+    if let value = try? container.decode(AnthropicBetaManagedAgentsAPIActor.self) {
+      self = .betaManagedAgentsAPIActor(value)
       return
     }
     if let value = try? container.decode(AnthropicBetaManagedAgentsUserActor.self) {
@@ -39,7 +39,7 @@ public enum AnthropicBetaManagedAgentsActor: Codable, Sendable {
     switch self {
     case .betaManagedAgentsSessionActor(let value):
       try container.encode(value)
-    case .betaManagedAgentsApiActor(let value):
+    case .betaManagedAgentsAPIActor(let value):
       try container.encode(value)
     case .betaManagedAgentsUserActor(let value):
       try container.encode(value)

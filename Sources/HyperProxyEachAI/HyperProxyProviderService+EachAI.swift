@@ -21,6 +21,10 @@ extension HyperProxyProviderService where Operation == EachAIOperation {
   public var audioTranscriptionsCreate: HyperProxyProviderCall<EachAIOperation> {
     self.call(.audioTranscriptionsCreate)
   }
+  /// `GET v1/billing/balance`
+  public var billingBalanceRetrieve: HyperProxyProviderCall<EachAIOperation> {
+    self.call(.billingBalanceRetrieve)
+  }
   /// `POST v1/chat/completions`
   public var chatCompletionsCreate: HyperProxyProviderCall<EachAIOperation> {
     self.call(.chatCompletionsCreate)

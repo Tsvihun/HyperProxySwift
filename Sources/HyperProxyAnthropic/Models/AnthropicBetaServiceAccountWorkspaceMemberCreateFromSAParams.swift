@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct AnthropicBetaServiceAccountWorkspaceMemberCreateFromSAParams: Codable, Sendable {
   public var workspaceId: String
-  public var workspaceRole: AnthropicBetaNoBillingWorkspaceRoleSchema
+  public var workspaceRole: AnthropicBetaNoBillingWorkspaceRole
 
   public init(
     workspaceId: String,
-    workspaceRole: AnthropicBetaNoBillingWorkspaceRoleSchema
+    workspaceRole: AnthropicBetaNoBillingWorkspaceRole
   ) {
     self.workspaceId = workspaceId
     self.workspaceRole = workspaceRole

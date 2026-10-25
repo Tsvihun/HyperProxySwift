@@ -11,6 +11,23 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsSystemContentBlock: Codable, Sendable {
+  public var text: String
+  public var kind: AnthropicBetaManagedAgentsSystemContentBlock.Kind
 
-  public init() {}
+  public init(
+    text: String,
+    kind: AnthropicBetaManagedAgentsSystemContentBlock.Kind
+  ) {
+    self.text = text
+    self.kind = kind
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case text
+    case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case text = "text"
+  }
 }

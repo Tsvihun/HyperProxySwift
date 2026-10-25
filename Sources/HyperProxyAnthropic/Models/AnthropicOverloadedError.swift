@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct AnthropicOverloadedError: Codable, Sendable {
   public var message: String
-  public var kind: AnthropicOverloadedErrorKind
+  public var kind: AnthropicOverloadedError.Kind
 
   public init(
     message: String,
-    kind: AnthropicOverloadedErrorKind = .overloadedError
+    kind: AnthropicOverloadedError.Kind
   ) {
     self.message = message
     self.kind = kind
@@ -25,5 +25,9 @@ public struct AnthropicOverloadedError: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case message
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case overloadedError = "overloaded_error"
   }
 }

@@ -16,7 +16,7 @@ public struct AnthropicBetaFederationRuleWorkspaceListResponse: Codable, Sendabl
 
   public init(
     data: [AnthropicBetaFederationRuleWorkspace],
-    nextPage: String?
+    nextPage: String? = nil
   ) {
     self.data = data
     self.nextPage = nextPage

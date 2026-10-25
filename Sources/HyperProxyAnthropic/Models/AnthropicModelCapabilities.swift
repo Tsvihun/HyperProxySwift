@@ -18,6 +18,7 @@ public struct AnthropicModelCapabilities: Codable, Sendable {
   public var effort: AnthropicEffortCapability
   public var imageInput: AnthropicCapabilitySupport
   public var pdfInput: AnthropicCapabilitySupport
+  public var serverTools: AnthropicServerToolsCapability
   public var structuredOutputs: AnthropicCapabilitySupport
   public var thinking: AnthropicThinkingCapability
 
@@ -29,6 +30,7 @@ public struct AnthropicModelCapabilities: Codable, Sendable {
     effort: AnthropicEffortCapability,
     imageInput: AnthropicCapabilitySupport,
     pdfInput: AnthropicCapabilitySupport,
+    serverTools: AnthropicServerToolsCapability,
     structuredOutputs: AnthropicCapabilitySupport,
     thinking: AnthropicThinkingCapability
   ) {
@@ -39,6 +41,7 @@ public struct AnthropicModelCapabilities: Codable, Sendable {
     self.effort = effort
     self.imageInput = imageInput
     self.pdfInput = pdfInput
+    self.serverTools = serverTools
     self.structuredOutputs = structuredOutputs
     self.thinking = thinking
   }
@@ -51,6 +54,7 @@ public struct AnthropicModelCapabilities: Codable, Sendable {
     case effort
     case imageInput = "image_input"
     case pdfInput = "pdf_input"
+    case serverTools = "server_tools"
     case structuredOutputs = "structured_outputs"
     case thinking
   }

@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsListSessions: Codable, Sendable {
-  public var data: [AnthropicBetaManagedAgentsSession]?
+  public var data: [AnthropicBetaManagedAgentsSession]
   public var nextPage: String?
   public var prevPage: String?
 
   public init(
-    data: [AnthropicBetaManagedAgentsSession]? = nil,
+    data: [AnthropicBetaManagedAgentsSession],
     nextPage: String? = nil,
     prevPage: String? = nil
   ) {

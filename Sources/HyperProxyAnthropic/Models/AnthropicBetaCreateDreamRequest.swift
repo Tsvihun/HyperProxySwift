@@ -11,16 +11,16 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaCreateDreamRequest: Codable, Sendable {
-  public var inputs: [AnthropicBetaDreamInput]
+  public var inputs: [AnthropicBetaDreamInputParam]
   public var instructions: String?
-  public var model: AnthropicBetaDreamModelParams
-  public var outputBehavior: AnthropicBetaOutputBehavior?
+  public var model: AnthropicBetaDreamCreateParamsModel
+  public var outputBehavior: AnthropicBetaOutputBehaviorParam?
 
   public init(
-    inputs: [AnthropicBetaDreamInput],
-    model: AnthropicBetaDreamModelParams,
+    inputs: [AnthropicBetaDreamInputParam],
+    model: AnthropicBetaDreamCreateParamsModel,
     instructions: String? = nil,
-    outputBehavior: AnthropicBetaOutputBehavior? = nil
+    outputBehavior: AnthropicBetaOutputBehaviorParam? = nil
   ) {
     self.inputs = inputs
     self.instructions = instructions

@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsModelRequestFailedError: Codable, Sendable {
   public var message: String
-  public var retryStatus: AnthropicBetaManagedAgentsRetryStatus
+  public var retryStatus: AnthropicBetaSessionsManagedAgentsModelRequestFailedErrorRetryStatus
   public var kind: AnthropicBetaManagedAgentsModelRequestFailedError.Kind
 
   public init(
     message: String,
-    retryStatus: AnthropicBetaManagedAgentsRetryStatus,
+    retryStatus: AnthropicBetaSessionsManagedAgentsModelRequestFailedErrorRetryStatus,
     kind: AnthropicBetaManagedAgentsModelRequestFailedError.Kind
   ) {
     self.message = message

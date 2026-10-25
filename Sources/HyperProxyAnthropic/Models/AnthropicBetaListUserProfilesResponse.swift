@@ -16,7 +16,7 @@ public struct AnthropicBetaListUserProfilesResponse: Codable, Sendable {
 
   public init(
     data: [AnthropicBetaUserProfile],
-    nextPage: String?
+    nextPage: String? = nil
   ) {
     self.data = data
     self.nextPage = nextPage

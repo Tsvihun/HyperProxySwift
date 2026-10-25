@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct AnthropicBetaManagedAgentsMCPToolConfigParams: Codable, Sendable {
   public var enabled: Bool?
   public var name: String
-  public var permissionPolicy: AnthropicBetaManagedAgentsPermissionPolicy?
+  public var permissionPolicy: AnthropicBetaManagedAgentsMcpToolConfigParamsPermissionPolicy?
 
   public init(
     name: String,
     enabled: Bool? = nil,
-    permissionPolicy: AnthropicBetaManagedAgentsPermissionPolicy? = nil
+    permissionPolicy: AnthropicBetaManagedAgentsMcpToolConfigParamsPermissionPolicy? = nil
   ) {
     self.enabled = enabled
     self.name = name

@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsDocumentBlock: Codable, Sendable {
   public var context: String?
-  public var source: AnthropicBetaManagedAgentsDocumentSource
+  public var source: AnthropicBetaSessionsManagedAgentsDocumentBlockSource
   public var title: String?
   public var kind: AnthropicBetaManagedAgentsDocumentBlock.Kind
 
   public init(
-    source: AnthropicBetaManagedAgentsDocumentSource,
+    source: AnthropicBetaSessionsManagedAgentsDocumentBlockSource,
     kind: AnthropicBetaManagedAgentsDocumentBlock.Kind,
     context: String? = nil,
     title: String? = nil

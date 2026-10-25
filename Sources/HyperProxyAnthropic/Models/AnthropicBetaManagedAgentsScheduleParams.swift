@@ -11,6 +11,27 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsScheduleParams: Codable, Sendable {
+  public var expression: String
+  public var timezone: String
+  public var kind: AnthropicBetaManagedAgentsScheduleParams.Kind
 
-  public init() {}
+  public init(
+    expression: String,
+    timezone: String,
+    kind: AnthropicBetaManagedAgentsScheduleParams.Kind
+  ) {
+    self.expression = expression
+    self.timezone = timezone
+    self.kind = kind
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case expression
+    case timezone
+    case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case cron = "cron"
+  }
 }

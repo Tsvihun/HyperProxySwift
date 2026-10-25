@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct AnthropicBetaGetWorkspaceRateLimitsParameters: Codable, Sendable {
   public var anthropicVersion: String?
   public var groupType: AnthropicBetaGetWorkspaceRateLimitsParameters.GroupType?
+  public var includeInherited: Bool?
   public var limit: Int?
   public var page: String?
   public var workspaceId: String
@@ -22,12 +23,14 @@ public struct AnthropicBetaGetWorkspaceRateLimitsParameters: Codable, Sendable {
     workspaceId: String,
     anthropicVersion: String? = nil,
     groupType: AnthropicBetaGetWorkspaceRateLimitsParameters.GroupType? = nil,
+    includeInherited: Bool? = nil,
     limit: Int? = nil,
     page: String? = nil,
     xApiKey: String? = nil
   ) {
     self.anthropicVersion = anthropicVersion
     self.groupType = groupType
+    self.includeInherited = includeInherited
     self.limit = limit
     self.page = page
     self.workspaceId = workspaceId
@@ -37,6 +40,7 @@ public struct AnthropicBetaGetWorkspaceRateLimitsParameters: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case anthropicVersion = "anthropic-version"
     case groupType = "group_type"
+    case includeInherited = "include_inherited"
     case limit
     case page
     case workspaceId = "workspace_id"

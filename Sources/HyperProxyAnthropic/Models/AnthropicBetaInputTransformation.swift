@@ -1,0 +1,37 @@
+//
+//  AnthropicBetaInputTransformation.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+// Maintainer-generated release artifact. Do not edit by hand.
+
+import Foundation
+import HyperProxyCore
+
+public enum AnthropicBetaInputTransformation: Codable, Sendable {
+  case betaThinkingDroppedInputTransformation(AnthropicBetaThinkingDroppedInputTransformation)
+  case betaThinkingMismatchAllowedInputTransformation(
+    AnthropicBetaThinkingMismatchAllowedInputTransformation)
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(AnthropicBetaThinkingDroppedInputTransformation.self) {
+      self = .betaThinkingDroppedInputTransformation(value)
+      return
+    }
+    self = .betaThinkingMismatchAllowedInputTransformation(
+      try container.decode(AnthropicBetaThinkingMismatchAllowedInputTransformation.self))
+  }
+
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .betaThinkingDroppedInputTransformation(let value):
+      try container.encode(value)
+    case .betaThinkingMismatchAllowedInputTransformation(let value):
+      try container.encode(value)
+    }
+  }
+}

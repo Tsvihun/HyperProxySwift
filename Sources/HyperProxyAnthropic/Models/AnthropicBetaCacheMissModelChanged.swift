@@ -16,7 +16,7 @@ public struct AnthropicBetaCacheMissModelChanged: Codable, Sendable {
 
   public init(
     cacheMissedInputTokens: Int,
-    kind: AnthropicBetaCacheMissModelChanged.Kind = .modelChanged
+    kind: AnthropicBetaCacheMissModelChanged.Kind
   ) {
     self.cacheMissedInputTokens = cacheMissedInputTokens
     self.kind = kind

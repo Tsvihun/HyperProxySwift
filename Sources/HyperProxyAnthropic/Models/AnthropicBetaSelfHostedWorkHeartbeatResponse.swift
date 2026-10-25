@@ -22,7 +22,7 @@ public struct AnthropicBetaSelfHostedWorkHeartbeatResponse: Codable, Sendable {
     leaseExtended: Bool,
     state: AnthropicBetaSelfHostedWorkHeartbeatResponse.State,
     ttlSeconds: Int,
-    kind: AnthropicBetaSelfHostedWorkHeartbeatResponse.Kind = .workHeartbeat
+    kind: AnthropicBetaSelfHostedWorkHeartbeatResponse.Kind
   ) {
     self.lastHeartbeat = lastHeartbeat
     self.leaseExtended = leaseExtended
@@ -39,15 +39,15 @@ public struct AnthropicBetaSelfHostedWorkHeartbeatResponse: Codable, Sendable {
     case kind = "type"
   }
 
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case workHeartbeat = "work_heartbeat"
+  }
+
   public enum State: String, Codable, Hashable, Sendable {
     case queued = "queued"
     case starting = "starting"
     case active = "active"
     case stopping = "stopping"
     case stopped = "stopped"
-  }
-
-  public enum Kind: String, Codable, Hashable, Sendable {
-    case workHeartbeat = "work_heartbeat"
   }
 }

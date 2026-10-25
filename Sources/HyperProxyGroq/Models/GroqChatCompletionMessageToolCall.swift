@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct GroqChatCompletionMessageToolCall: Codable, Sendable {
-  public var function: GroqChatCompletionMessageToolCall.Function
+  public var function: GroqChatChatCompletionMessageToolCallFunction
   public var id: String
   public var kind: GroqChatCompletionMessageToolCall.Kind
 
   public init(
-    function: GroqChatCompletionMessageToolCall.Function,
+    function: GroqChatChatCompletionMessageToolCallFunction,
     id: String,
     kind: GroqChatCompletionMessageToolCall.Kind
   ) {
@@ -29,24 +29,6 @@ public struct GroqChatCompletionMessageToolCall: Codable, Sendable {
     case function
     case id
     case kind = "type"
-  }
-
-  public struct Function: Codable, Sendable {
-    public var arguments: String
-    public var name: String
-
-    public init(
-      arguments: String,
-      name: String
-    ) {
-      self.arguments = arguments
-      self.name = name
-    }
-
-    enum CodingKeys: String, CodingKey {
-      case arguments
-      case name
-    }
   }
 
   public enum Kind: String, Codable, Hashable, Sendable {

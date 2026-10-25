@@ -13,10 +13,10 @@ import HyperProxyCore
 public struct AnthropicBetaExternalKeyCreateParams: Codable, Sendable {
   public var displayName: String?
   public var geo: AnthropicBetaExternalKeyCreateParams.Geo?
-  public var providerConfig: AnthropicBetaExternalKeyCreateParams.ProviderConfig
+  public var providerConfig: AnthropicBetaOrganizationExternalKeyCreateParamsProviderConfig
 
   public init(
-    providerConfig: AnthropicBetaExternalKeyCreateParams.ProviderConfig,
+    providerConfig: AnthropicBetaOrganizationExternalKeyCreateParamsProviderConfig,
     displayName: String? = nil,
     geo: AnthropicBetaExternalKeyCreateParams.Geo? = nil
   ) {
@@ -29,38 +29,6 @@ public struct AnthropicBetaExternalKeyCreateParams: Codable, Sendable {
     case displayName = "display_name"
     case geo
     case providerConfig = "provider_config"
-  }
-
-  public enum ProviderConfig: Codable, Sendable {
-    case betaAwsExternalKeyConfig(AnthropicBetaAwsExternalKeyConfig)
-    case betaGcpExternalKeyConfig(AnthropicBetaGcpExternalKeyConfig)
-    case betaAzureExternalKeyConfigParams(AnthropicBetaAzureExternalKeyConfigParams)
-
-    public init(from decoder: any Decoder) throws {
-      let container = try decoder.singleValueContainer()
-      if let value = try? container.decode(AnthropicBetaAwsExternalKeyConfig.self) {
-        self = .betaAwsExternalKeyConfig(value)
-        return
-      }
-      if let value = try? container.decode(AnthropicBetaGcpExternalKeyConfig.self) {
-        self = .betaGcpExternalKeyConfig(value)
-        return
-      }
-      self = .betaAzureExternalKeyConfigParams(
-        try container.decode(AnthropicBetaAzureExternalKeyConfigParams.self))
-    }
-
-    public func encode(to encoder: any Encoder) throws {
-      var container = encoder.singleValueContainer()
-      switch self {
-      case .betaAwsExternalKeyConfig(let value):
-        try container.encode(value)
-      case .betaGcpExternalKeyConfig(let value):
-        try container.encode(value)
-      case .betaAzureExternalKeyConfigParams(let value):
-        try container.encode(value)
-      }
-    }
   }
 
   public enum Geo: String, Codable, Hashable, Sendable {
