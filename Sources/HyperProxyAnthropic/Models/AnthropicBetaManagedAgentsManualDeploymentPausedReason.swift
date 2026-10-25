@@ -11,15 +11,21 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsManualDeploymentPausedReason: Codable, Sendable {
-  public var kind: AnthropicBetaManagedAgentsManualDeploymentPausedReasonKind
+  public var kind: AnthropicBetaManagedAgentsManualDeploymentPausedReason.Kind
 
   public init(
-    kind: AnthropicBetaManagedAgentsManualDeploymentPausedReasonKind
+    kind: AnthropicBetaManagedAgentsManualDeploymentPausedReason.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case manual = "manual"
   }
 }

@@ -14,13 +14,13 @@ public struct OpenAICreateVoiceFromConsentRequest: Codable, Sendable {
   public var audioSample: String
   public var consent: String
   public var name: String
-  public var kind: OpenAICreateVoiceFromConsentRequestKind?
+  public var kind: OpenAICreateVoiceFromConsentRequest.Kind?
 
   public init(
     audioSample: String,
     consent: String,
     name: String,
-    kind: OpenAICreateVoiceFromConsentRequestKind? = nil
+    kind: OpenAICreateVoiceFromConsentRequest.Kind? = nil
   ) {
     self.audioSample = audioSample
     self.consent = consent
@@ -33,5 +33,9 @@ public struct OpenAICreateVoiceFromConsentRequest: Codable, Sendable {
     case consent
     case name
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case audioSample = "audio_sample"
   }
 }

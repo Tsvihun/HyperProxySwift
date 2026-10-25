@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct MistralListVoicesV1AudioVoicesGetParameters: Codable, Sendable {
   public var limit: Int?
   public var offset: Int?
-  public var kind: MistralListVoicesV1AudioVoicesGetParametersKind?
+  public var kind: MistralListVoicesV1AudioVoicesGetParameters.Kind?
 
   public init(
     limit: Int? = nil,
     offset: Int? = nil,
-    kind: MistralListVoicesV1AudioVoicesGetParametersKind? = nil
+    kind: MistralListVoicesV1AudioVoicesGetParameters.Kind? = nil
   ) {
     self.limit = limit
     self.offset = offset
@@ -29,5 +29,11 @@ public struct MistralListVoicesV1AudioVoicesGetParameters: Codable, Sendable {
     case limit
     case offset
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case all = "all"
+    case custom = "custom"
+    case preset = "preset"
   }
 }

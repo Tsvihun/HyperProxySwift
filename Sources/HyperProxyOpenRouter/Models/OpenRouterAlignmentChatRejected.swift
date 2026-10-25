@@ -15,13 +15,13 @@ public struct OpenRouterAlignmentChatRejected: Codable, Sendable {
   public var content: String
   public var images: [OpenRouterAlignmentChatImage]?
   public var refusal: String
-  public var role: OpenRouterAlignmentChatRejectedRole
+  public var role: OpenRouterAlignmentChatRejected.Role
   public var toolCalls: [OpenRouterAlignmentChatToolCall]?
 
   public init(
     content: String,
     refusal: String,
-    role: OpenRouterAlignmentChatRejectedRole,
+    role: OpenRouterAlignmentChatRejected.Role,
     audio: OpenRouterAlignmentChatAudio? = nil,
     images: [OpenRouterAlignmentChatImage]? = nil,
     toolCalls: [OpenRouterAlignmentChatToolCall]? = nil
@@ -41,5 +41,9 @@ public struct OpenRouterAlignmentChatRejected: Codable, Sendable {
     case refusal
     case role
     case toolCalls = "tool_calls"
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case assistant = "assistant"
   }
 }

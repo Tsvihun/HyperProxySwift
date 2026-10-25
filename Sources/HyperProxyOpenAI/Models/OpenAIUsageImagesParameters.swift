@@ -12,30 +12,30 @@ import HyperProxyCore
 
 public struct OpenAIUsageImagesParameters: Codable, Sendable {
   public var apiKeyIds: [String]?
-  public var bucketWidth: OpenAIUsageImagesParametersBucketWidth?
+  public var bucketWidth: OpenAIUsageImagesParameters.BucketWidth?
   public var endTime: Int?
-  public var groupBy: [OpenAIUsageImagesParametersGroupByItem]?
+  public var groupBy: [OpenAIUsageImagesParameters.GroupByElement]?
   public var limit: Int?
   public var models: [String]?
   public var page: String?
   public var projectIds: [String]?
-  public var sizes: [OpenAIUsageImagesParametersSizesItem]?
-  public var sources: [OpenAIUsageImagesParametersSourcesItem]?
+  public var sizes: [OpenAIUsageImagesParameters.SizesElement]?
+  public var sources: [OpenAIUsageImagesParameters.SourcesElement]?
   public var startTime: Int
   public var userIds: [String]?
 
   public init(
     startTime: Int,
     apiKeyIds: [String]? = nil,
-    bucketWidth: OpenAIUsageImagesParametersBucketWidth? = nil,
+    bucketWidth: OpenAIUsageImagesParameters.BucketWidth? = nil,
     endTime: Int? = nil,
-    groupBy: [OpenAIUsageImagesParametersGroupByItem]? = nil,
+    groupBy: [OpenAIUsageImagesParameters.GroupByElement]? = nil,
     limit: Int? = nil,
     models: [String]? = nil,
     page: String? = nil,
     projectIds: [String]? = nil,
-    sizes: [OpenAIUsageImagesParametersSizesItem]? = nil,
-    sources: [OpenAIUsageImagesParametersSourcesItem]? = nil,
+    sizes: [OpenAIUsageImagesParameters.SizesElement]? = nil,
+    sources: [OpenAIUsageImagesParameters.SourcesElement]? = nil,
     userIds: [String]? = nil
   ) {
     self.apiKeyIds = apiKeyIds
@@ -65,5 +65,34 @@ public struct OpenAIUsageImagesParameters: Codable, Sendable {
     case sources
     case startTime = "start_time"
     case userIds = "user_ids"
+  }
+
+  public enum BucketWidth: String, Codable, Hashable, Sendable {
+    case value1m = "1m"
+    case value1h = "1h"
+    case value1d = "1d"
+  }
+
+  public enum GroupByElement: String, Codable, Hashable, Sendable {
+    case projectId = "project_id"
+    case userId = "user_id"
+    case apiKeyId = "api_key_id"
+    case model = "model"
+    case size = "size"
+    case source = "source"
+  }
+
+  public enum SizesElement: String, Codable, Hashable, Sendable {
+    case value256x256 = "256x256"
+    case value512x512 = "512x512"
+    case value1024x1024 = "1024x1024"
+    case value1792x1792 = "1792x1792"
+    case value1024x1792 = "1024x1792"
+  }
+
+  public enum SourcesElement: String, Codable, Hashable, Sendable {
+    case imageGeneration = "image.generation"
+    case imageEdit = "image.edit"
+    case imageVariation = "image.variation"
   }
 }

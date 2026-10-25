@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public enum GroqResponseToolChoiceOption: Codable, Sendable {
-  case responseToolChoiceOptionOneOf1(GroqResponseToolChoiceOptionOneOf1)
+  case preset(GroqResponseToolChoiceOption.Preset)
   case responseNamedToolChoice(GroqResponseNamedToolChoice)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(GroqResponseToolChoiceOptionOneOf1.self) {
-      self = .responseToolChoiceOptionOneOf1(value)
+    if let value = try? container.decode(GroqResponseToolChoiceOption.Preset.self) {
+      self = .preset(value)
       return
     }
     self = .responseNamedToolChoice(try container.decode(GroqResponseNamedToolChoice.self))
@@ -26,7 +26,7 @@ public enum GroqResponseToolChoiceOption: Codable, Sendable {
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .responseToolChoiceOptionOneOf1(let value):
+    case .preset(let value):
       try container.encode(value)
     case .responseNamedToolChoice(let value):
       try container.encode(value)
@@ -34,11 +34,17 @@ public enum GroqResponseToolChoiceOption: Codable, Sendable {
   }
 
   /// Provider-native value without the schema union wrapper.
-  public static var none: Self { .responseToolChoiceOptionOneOf1(.none) }
+  public static var none: Self { .preset(.none) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var auto: Self { .responseToolChoiceOptionOneOf1(.auto) }
+  public static var auto: Self { .preset(.auto) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var requiredValue: Self { .responseToolChoiceOptionOneOf1(.requiredValue) }
+  public static var requiredValue: Self { .preset(.requiredValue) }
+
+  public enum Preset: String, Codable, Hashable, Sendable {
+    case none = "none"
+    case auto = "auto"
+    case requiredValue = "required"
+  }
 }

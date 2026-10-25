@@ -11,17 +11,17 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIBetaWebSearchToolCall: Codable, Sendable {
-  public var action: OpenAIBetaWebSearchToolCallAction?
+  public var action: OpenAIBetaWebSearchToolCall.Action?
   public var agent: OpenAIBetaAgentTag?
   public var id: String
   public var status: OpenAIBetaWebSearchCallStatus
-  public var kind: OpenAIBetaWebSearchToolCallKind
+  public var kind: OpenAIBetaWebSearchToolCall.Kind
 
   public init(
     id: String,
     status: OpenAIBetaWebSearchCallStatus,
-    kind: OpenAIBetaWebSearchToolCallKind,
-    action: OpenAIBetaWebSearchToolCallAction? = nil,
+    kind: OpenAIBetaWebSearchToolCall.Kind,
+    action: OpenAIBetaWebSearchToolCall.Action? = nil,
     agent: OpenAIBetaAgentTag? = nil
   ) {
     self.action = action
@@ -37,5 +37,40 @@ public struct OpenAIBetaWebSearchToolCall: Codable, Sendable {
     case id
     case status
     case kind = "type"
+  }
+
+  public enum Action: Codable, Sendable {
+    case betaWebSearchActionSearch(OpenAIBetaWebSearchActionSearch)
+    case betaWebSearchActionOpenPage(OpenAIBetaWebSearchActionOpenPage)
+    case betaWebSearchActionFind(OpenAIBetaWebSearchActionFind)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenAIBetaWebSearchActionSearch.self) {
+        self = .betaWebSearchActionSearch(value)
+        return
+      }
+      if let value = try? container.decode(OpenAIBetaWebSearchActionOpenPage.self) {
+        self = .betaWebSearchActionOpenPage(value)
+        return
+      }
+      self = .betaWebSearchActionFind(try container.decode(OpenAIBetaWebSearchActionFind.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .betaWebSearchActionSearch(let value):
+        try container.encode(value)
+      case .betaWebSearchActionOpenPage(let value):
+        try container.encode(value)
+      case .betaWebSearchActionFind(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case webSearchCall = "web_search_call"
   }
 }

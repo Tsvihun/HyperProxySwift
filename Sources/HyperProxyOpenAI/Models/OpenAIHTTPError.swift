@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIHTTPError: Codable, Sendable {
   public var code: Int
   public var message: String
-  public var kind: OpenAIHTTPErrorKind
+  public var kind: OpenAIHTTPError.Kind
 
   public init(
     code: Int,
     message: String,
-    kind: OpenAIHTTPErrorKind
+    kind: OpenAIHTTPError.Kind
   ) {
     self.code = code
     self.message = message
@@ -29,5 +29,9 @@ public struct OpenAIHTTPError: Codable, Sendable {
     case code
     case message
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case httpError = "http_error"
   }
 }

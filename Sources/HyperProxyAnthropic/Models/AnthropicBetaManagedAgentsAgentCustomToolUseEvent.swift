@@ -16,14 +16,14 @@ public struct AnthropicBetaManagedAgentsAgentCustomToolUseEvent: Codable, Sendab
   public var name: String
   public var processedAt: AnthropicBetaTimestamp
   public var sessionThreadId: String?
-  public var kind: AnthropicBetaManagedAgentsAgentCustomToolUseEventKind
+  public var kind: AnthropicBetaManagedAgentsAgentCustomToolUseEvent.Kind
 
   public init(
     id: String,
     input: AnthropicBetaManagedAgentsStruct,
     name: String,
     processedAt: AnthropicBetaTimestamp,
-    kind: AnthropicBetaManagedAgentsAgentCustomToolUseEventKind,
+    kind: AnthropicBetaManagedAgentsAgentCustomToolUseEvent.Kind,
     sessionThreadId: String? = nil
   ) {
     self.id = id
@@ -41,5 +41,11 @@ public struct AnthropicBetaManagedAgentsAgentCustomToolUseEvent: Codable, Sendab
     case processedAt = "processed_at"
     case sessionThreadId = "session_thread_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case agentCustomToolUse = "agent.custom_tool_use"
   }
 }

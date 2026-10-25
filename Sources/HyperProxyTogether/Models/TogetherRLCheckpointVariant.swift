@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public enum TogetherRLCheckpointVariant: String, Codable, Hashable, Sendable {
-  case cHECKPOINTVARIANTUNSPECIFIED = "CHECKPOINT_VARIANT_UNSPECIFIED"
-  case cHECKPOINTVARIANTMERGED = "CHECKPOINT_VARIANT_MERGED"
-  case cHECKPOINTVARIANTADAPTER = "CHECKPOINT_VARIANT_ADAPTER"
+  case checkpointVariantUnspecified = "CHECKPOINT_VARIANT_UNSPECIFIED"
+  case checkpointVariantMerged = "CHECKPOINT_VARIANT_MERGED"
+  case checkpointVariantAdapter = "CHECKPOINT_VARIANT_ADAPTER"
 }

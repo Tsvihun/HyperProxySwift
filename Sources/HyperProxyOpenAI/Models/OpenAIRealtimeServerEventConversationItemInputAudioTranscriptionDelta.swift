@@ -18,12 +18,12 @@ public struct OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionDe
   public var eventId: String
   public var itemId: String
   public var logprobs: [OpenAILogProbProperties]?
-  public var kind: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionDeltaKind
+  public var kind: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionDelta.Kind
 
   public init(
     eventId: String,
     itemId: String,
-    kind: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionDeltaKind,
+    kind: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionDelta.Kind,
     contentIndex: Int? = nil,
     delta: String? = nil,
     logprobs: [OpenAILogProbProperties]? = nil
@@ -43,5 +43,12 @@ public struct OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionDe
     case itemId = "item_id"
     case logprobs
     case kind = "type"
+  }
+
+  public enum Kind: String,
+    Codable, Hashable, Sendable
+  {
+    case conversationItemInputAudioTranscriptionDelta =
+      "conversation.item.input_audio_transcription.delta"
   }
 }

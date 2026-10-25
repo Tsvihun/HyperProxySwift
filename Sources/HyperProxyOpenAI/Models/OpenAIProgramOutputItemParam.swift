@@ -15,14 +15,14 @@ public struct OpenAIProgramOutputItemParam: Codable, Sendable {
   public var id: String
   public var result: String
   public var status: OpenAIProgramOutputItemStatus
-  public var kind: OpenAIProgramOutputItemParamKind
+  public var kind: OpenAIProgramOutputItemParam.Kind
 
   public init(
     callId: String,
     id: String,
     result: String,
     status: OpenAIProgramOutputItemStatus,
-    kind: OpenAIProgramOutputItemParamKind
+    kind: OpenAIProgramOutputItemParam.Kind
   ) {
     self.callId = callId
     self.id = id
@@ -37,5 +37,9 @@ public struct OpenAIProgramOutputItemParam: Codable, Sendable {
     case result
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case programOutput = "program_output"
   }
 }

@@ -18,6 +18,7 @@ public enum OpenAIAgentToolConfigParam: Codable, Sendable {
   case agentToolConfigParamMcp(OpenAIAgentToolConfigParamMcp)
   case agentToolConfigParamWebSearch(OpenAIAgentToolConfigParamWebSearch)
   case agentToolConfigParamComputerUse(OpenAIAgentToolConfigParamComputerUse)
+  case agentToolConfigParamAutomations(OpenAIAgentToolConfigParamAutomations)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -41,8 +42,12 @@ public enum OpenAIAgentToolConfigParam: Codable, Sendable {
       self = .agentToolConfigParamWebSearch(value)
       return
     }
-    self = .agentToolConfigParamComputerUse(
-      try container.decode(OpenAIAgentToolConfigParamComputerUse.self))
+    if let value = try? container.decode(OpenAIAgentToolConfigParamComputerUse.self) {
+      self = .agentToolConfigParamComputerUse(value)
+      return
+    }
+    self = .agentToolConfigParamAutomations(
+      try container.decode(OpenAIAgentToolConfigParamAutomations.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -59,6 +64,8 @@ public enum OpenAIAgentToolConfigParam: Codable, Sendable {
     case .agentToolConfigParamWebSearch(let value):
       try container.encode(value)
     case .agentToolConfigParamComputerUse(let value):
+      try container.encode(value)
+    case .agentToolConfigParamAutomations(let value):
       try container.encode(value)
     }
   }

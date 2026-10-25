@@ -56,4 +56,11 @@ public enum OpenAIMisalignmentErrorType: RawRepresentable, Codable, Hashable, Se
     var container = encoder.singleValueContainer()
     try container.encode(rawValue)
   }
+
+  public enum Preset: String, Codable, Hashable, Sendable {
+    case potentiallyUnintendedDataTransfer = "potentially_unintended_data_transfer"
+    case potentiallyUnintendedDataAccess = "potentially_unintended_data_access"
+    case potentiallyUnintendedDestructiveActivity = "potentially_unintended_destructive_activity"
+    case other = "other"
+  }
 }

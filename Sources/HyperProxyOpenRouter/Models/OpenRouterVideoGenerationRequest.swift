@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterVideoGenerationRequest: Codable, Sendable {
-  public var aspectRatio: OpenRouterVideoGenerationRequestAspectRatio?
+  public var aspectRatio: OpenRouterVideoGenerationRequest.AspectRatio?
   public var callbackUrl: String?
   public var creativity: Int?
   public var duration: Int?
@@ -21,8 +21,8 @@ public struct OpenRouterVideoGenerationRequest: Codable, Sendable {
   public var model: String
   public var previousJobId: String?
   public var prompt: String?
-  public var provider: OpenRouterVideoGenerationRequestProvider?
-  public var resolution: OpenRouterVideoGenerationRequestResolution?
+  public var provider: OpenRouterVideoGenerationRequest.Provider?
+  public var resolution: OpenRouterVideoGenerationRequest.Resolution?
   public var seed: Int?
   public var sessionId: String?
   public var size: String?
@@ -32,7 +32,7 @@ public struct OpenRouterVideoGenerationRequest: Codable, Sendable {
 
   public init(
     model: String,
-    aspectRatio: OpenRouterVideoGenerationRequestAspectRatio? = nil,
+    aspectRatio: OpenRouterVideoGenerationRequest.AspectRatio? = nil,
     callbackUrl: String? = nil,
     creativity: Int? = nil,
     duration: Int? = nil,
@@ -41,8 +41,8 @@ public struct OpenRouterVideoGenerationRequest: Codable, Sendable {
     inputReferences: [OpenRouterInputReference]? = nil,
     previousJobId: String? = nil,
     prompt: String? = nil,
-    provider: OpenRouterVideoGenerationRequestProvider? = nil,
-    resolution: OpenRouterVideoGenerationRequestResolution? = nil,
+    provider: OpenRouterVideoGenerationRequest.Provider? = nil,
+    resolution: OpenRouterVideoGenerationRequest.Resolution? = nil,
     seed: Int? = nil,
     sessionId: String? = nil,
     size: String? = nil,
@@ -89,5 +89,42 @@ public struct OpenRouterVideoGenerationRequest: Codable, Sendable {
     case trace
     case upscaleFactor = "upscale_factor"
     case user
+  }
+
+  public enum AspectRatio: String, Codable, Hashable, Sendable {
+    case ratio16x9 = "16:9"
+    case ratio9x16 = "9:16"
+    case ratio1x1 = "1:1"
+    case ratio4x3 = "4:3"
+    case ratio3x4 = "3:4"
+    case ratio3x2 = "3:2"
+    case ratio2x3 = "2:3"
+    case ratio21x9 = "21:9"
+    case ratio9x21 = "9:21"
+  }
+
+  public struct Provider: Codable, Sendable {
+    public var options: OpenRouterProviderOptions?
+
+    public init(
+      options: OpenRouterProviderOptions? = nil
+    ) {
+      self.options = options
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case options
+    }
+  }
+
+  public enum Resolution: String, Codable, Hashable, Sendable {
+    case value360p = "360p"
+    case value480p = "480p"
+    case value720p = "720p"
+    case value768p = "768p"
+    case value1080p = "1080p"
+    case value1k = "1K"
+    case value2k = "2K"
+    case value4k = "4K"
   }
 }

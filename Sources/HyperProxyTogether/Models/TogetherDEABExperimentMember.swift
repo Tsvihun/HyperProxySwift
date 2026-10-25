@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct TogetherDEABExperimentMember: Codable, Sendable {
   public var deploymentId: String
   public var percent: Int
-  public var role: TogetherDEABExperimentMemberRole
+  public var role: TogetherDEABExperimentMember.Role
 
   public init(
     deploymentId: String,
     percent: Int,
-    role: TogetherDEABExperimentMemberRole
+    role: TogetherDEABExperimentMember.Role
   ) {
     self.deploymentId = deploymentId
     self.percent = percent
@@ -29,5 +29,10 @@ public struct TogetherDEABExperimentMember: Codable, Sendable {
     case deploymentId
     case percent
     case role
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case abExperimentMemberRoleControl = "AB_EXPERIMENT_MEMBER_ROLE_CONTROL"
+    case abExperimentMemberRoleVariant = "AB_EXPERIMENT_MEMBER_ROLE_VARIANT"
   }
 }

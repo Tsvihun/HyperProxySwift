@@ -15,14 +15,14 @@ public struct OpenAISessionEventAgentSessionEnvironmentReady: Codable, Sendable 
   public var eventId: String
   public var sessionId: String
   public var turnId: String
-  public var kind: OpenAISessionEventAgentSessionEnvironmentReadyKind
+  public var kind: OpenAISessionEventAgentSessionEnvironmentReady.Kind
 
   public init(
     environment: OpenAISessionEnvironmentStateResource,
     eventId: String,
     sessionId: String,
     turnId: String,
-    kind: OpenAISessionEventAgentSessionEnvironmentReadyKind
+    kind: OpenAISessionEventAgentSessionEnvironmentReady.Kind
   ) {
     self.environment = environment
     self.eventId = eventId
@@ -37,5 +37,9 @@ public struct OpenAISessionEventAgentSessionEnvironmentReady: Codable, Sendable 
     case sessionId = "session_id"
     case turnId = "turn_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case agentSessionEnvironmentReady = "agent.session.environment.ready"
   }
 }

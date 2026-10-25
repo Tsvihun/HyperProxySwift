@@ -14,12 +14,12 @@ public struct OpenAIRealtimeBetaServerEventInputAudioBufferCommitted: Codable, S
   public var eventId: String
   public var itemId: String
   public var previousItemId: String?
-  public var kind: OpenAIRealtimeBetaServerEventInputAudioBufferCommittedKind
+  public var kind: OpenAIRealtimeBetaServerEventInputAudioBufferCommitted.Kind
 
   public init(
     eventId: String,
     itemId: String,
-    kind: OpenAIRealtimeBetaServerEventInputAudioBufferCommittedKind,
+    kind: OpenAIRealtimeBetaServerEventInputAudioBufferCommitted.Kind,
     previousItemId: String? = nil
   ) {
     self.eventId = eventId
@@ -33,5 +33,11 @@ public struct OpenAIRealtimeBetaServerEventInputAudioBufferCommitted: Codable, S
     case itemId = "item_id"
     case previousItemId = "previous_item_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case inputAudioBufferCommitted = "input_audio_buffer.committed"
   }
 }

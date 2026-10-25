@@ -15,14 +15,14 @@ public struct OpenAIMcpTransportResourceStdio: Codable, Sendable {
   public var command: String
   public var cwd: String
   public var envVars: [String]
-  public var kind: OpenAIMcpTransportResourceStdioKind
+  public var kind: OpenAIMcpTransportResourceStdio.Kind
 
   public init(
     args: [String],
     command: String,
     cwd: String,
     envVars: [String],
-    kind: OpenAIMcpTransportResourceStdioKind
+    kind: OpenAIMcpTransportResourceStdio.Kind
   ) {
     self.args = args
     self.command = command
@@ -37,5 +37,9 @@ public struct OpenAIMcpTransportResourceStdio: Codable, Sendable {
     case cwd
     case envVars = "env_vars"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case stdio = "stdio"
   }
 }

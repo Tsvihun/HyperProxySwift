@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct FireworksProtobufAny: Codable, Sendable {
-  public var typeModel: String?
+  public var type: String?
 
   public init(
-    typeModel: String? = nil
+    type: String? = nil
   ) {
-    self.typeModel = typeModel
+    self.type = type
   }
 
   enum CodingKeys: String, CodingKey {
-    case typeModel = "@type"
+    case type = "@type"
   }
 }

@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIProjectDataRetention: Codable, Sendable {
-  public var object: OpenAIProjectDataRetentionObject
-  public var kind: OpenAIProjectDataRetentionKind
+  public var object: OpenAIProjectDataRetention.Object
+  public var kind: OpenAIProjectDataRetention.Kind
 
   public init(
-    object: OpenAIProjectDataRetentionObject,
-    kind: OpenAIProjectDataRetentionKind
+    object: OpenAIProjectDataRetention.Object,
+    kind: OpenAIProjectDataRetention.Kind
   ) {
     self.object = object
     self.kind = kind
@@ -25,5 +25,18 @@ public struct OpenAIProjectDataRetention: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case object
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case organizationDefault = "organization_default"
+    case none = "none"
+    case zeroDataRetention = "zero_data_retention"
+    case modifiedAbuseMonitoring = "modified_abuse_monitoring"
+    case enhancedZeroDataRetention = "enhanced_zero_data_retention"
+    case enhancedModifiedAbuseMonitoring = "enhanced_modified_abuse_monitoring"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case projectDataRetention = "project.data_retention"
   }
 }

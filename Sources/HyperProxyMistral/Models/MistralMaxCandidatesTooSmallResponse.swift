@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct MistralMaxCandidatesTooSmallResponse: Codable, Sendable {
   public var maxCandidates: Int
   public var topK: Int
-  public var kind: MistralMaxCandidatesTooSmallKind?
+  public var kind: MistralMaxCandidatesTooSmallResponse.Kind?
 
   public init(
     maxCandidates: Int,
     topK: Int,
-    kind: MistralMaxCandidatesTooSmallKind? = nil
+    kind: MistralMaxCandidatesTooSmallResponse.Kind? = nil
   ) {
     self.maxCandidates = maxCandidates
     self.topK = topK
@@ -29,5 +29,9 @@ public struct MistralMaxCandidatesTooSmallResponse: Codable, Sendable {
     case maxCandidates = "max_candidates"
     case topK = "top_k"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case maxCandidatesTooSmall = "max_candidates_too_small"
   }
 }

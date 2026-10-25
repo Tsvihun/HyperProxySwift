@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiTextResponseFormat: Codable, Sendable {
-  public var mimeType: GeminiTextResponseFormatMimeType?
+  public var mimeType: GeminiTextResponseFormat.MimeType?
   public var schema: HyperProxyJSONValue?
 
   public init(
-    mimeType: GeminiTextResponseFormatMimeType? = nil,
+    mimeType: GeminiTextResponseFormat.MimeType? = nil,
     schema: HyperProxyJSONValue? = nil
   ) {
     self.mimeType = mimeType
@@ -25,5 +25,11 @@ public struct GeminiTextResponseFormat: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case mimeType
     case schema
+  }
+
+  public enum MimeType: String, Codable, Hashable, Sendable {
+    case mimeTypeUnspecified = "MIME_TYPE_UNSPECIFIED"
+    case applicationJSON = "APPLICATION_JSON"
+    case textPlain = "TEXT_PLAIN"
   }
 }

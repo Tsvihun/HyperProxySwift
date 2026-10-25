@@ -31,7 +31,7 @@ public enum ReplicateOperation: String, HyperProxyCatalogOperation {
   case deploymentsGet = "deployments.get"
   /// `PATCH v1/deployments/{deployment_owner}/{deployment_name}`
   case deploymentsUpdate = "deployments.update"
-  /// `POST v1/deployments/{deployment_owner}/{deployment_name}/predictions`
+  /// `POST v1/deployments/{owner}/{deployment}/predictions`
   case deploymentsPredictionsCreate = "deployments.predictions.create"
   /// `GET v1/files`
   case filesList = "files.list"
@@ -51,28 +51,24 @@ public enum ReplicateOperation: String, HyperProxyCatalogOperation {
   case modelsCreate = "models.create"
   /// `DELETE v1/models/{model_owner}/{model_name}`
   case modelsDelete = "models.delete"
-  /// `GET v1/models/{model_owner}/{model_name}`
-  case modelsGet = "models.get"
   /// `PATCH v1/models/{model_owner}/{model_name}`
   case modelsUpdate = "models.update"
   /// `GET v1/models/{model_owner}/{model_name}/examples`
   case modelsExamplesList = "models.examples.list"
-  /// `POST v1/models/{model_owner}/{model_name}/predictions`
-  case modelsPredictionsCreate = "models.predictions.create"
   /// `GET v1/models/{model_owner}/{model_name}/readme`
   case modelsReadmeGet = "models.readme.get"
-  /// `GET v1/models/{model_owner}/{model_name}/versions`
-  case modelsVersionsList = "models.versions.list"
   /// `DELETE v1/models/{model_owner}/{model_name}/versions/{version_id}`
   case modelsVersionsDelete = "models.versions.delete"
   /// `GET v1/models/{model_owner}/{model_name}/versions/{version_id}`
   case modelsVersionsGet = "models.versions.get"
-  /// `POST v1/models/{model_owner}/{model_name}/versions/{version_id}/trainings`
-  case trainingsCreate = "trainings.create"
   /// `GET v1/models/{owner}/{model}`
   case modelsRetrieve = "models.retrieve"
+  /// `POST v1/models/{owner}/{model}/predictions`
+  case modelsPredictionsCreate = "models.predictions.create"
   /// `GET v1/models/{owner}/{model}/versions`
   case modelsVersions = "models.versions"
+  /// `POST v1/models/{owner}/{model}/versions/{version_id}/trainings`
+  case trainingsCreate = "trainings.create"
   /// `GET v1/predictions`
   case predictionsList = "predictions.list"
   /// `POST v1/predictions`

@@ -18,6 +18,7 @@ public enum OpenAIPersistedAgentToolConfigParam: Codable, Sendable {
   case persistedAgentToolConfigParamMcp(OpenAIPersistedAgentToolConfigParamMcp)
   case persistedAgentToolConfigParamWebSearch(OpenAIPersistedAgentToolConfigParamWebSearch)
   case persistedAgentToolConfigParamComputerUse(OpenAIPersistedAgentToolConfigParamComputerUse)
+  case persistedAgentToolConfigParamAutomations(OpenAIPersistedAgentToolConfigParamAutomations)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -43,8 +44,12 @@ public enum OpenAIPersistedAgentToolConfigParam: Codable, Sendable {
       self = .persistedAgentToolConfigParamWebSearch(value)
       return
     }
-    self = .persistedAgentToolConfigParamComputerUse(
-      try container.decode(OpenAIPersistedAgentToolConfigParamComputerUse.self))
+    if let value = try? container.decode(OpenAIPersistedAgentToolConfigParamComputerUse.self) {
+      self = .persistedAgentToolConfigParamComputerUse(value)
+      return
+    }
+    self = .persistedAgentToolConfigParamAutomations(
+      try container.decode(OpenAIPersistedAgentToolConfigParamAutomations.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -61,6 +66,8 @@ public enum OpenAIPersistedAgentToolConfigParam: Codable, Sendable {
     case .persistedAgentToolConfigParamWebSearch(let value):
       try container.encode(value)
     case .persistedAgentToolConfigParamComputerUse(let value):
+      try container.encode(value)
+    case .persistedAgentToolConfigParamAutomations(let value):
       try container.encode(value)
     }
   }

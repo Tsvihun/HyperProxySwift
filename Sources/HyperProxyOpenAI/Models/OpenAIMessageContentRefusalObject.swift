@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIMessageContentRefusalObject: Codable, Sendable {
   public var refusal: String
-  public var kind: OpenAIMessageContentRefusalObjectKind
+  public var kind: OpenAIMessageContentRefusalObject.Kind
 
   public init(
     refusal: String,
-    kind: OpenAIMessageContentRefusalObjectKind
+    kind: OpenAIMessageContentRefusalObject.Kind
   ) {
     self.refusal = refusal
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenAIMessageContentRefusalObject: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case refusal
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case refusal = "refusal"
   }
 }

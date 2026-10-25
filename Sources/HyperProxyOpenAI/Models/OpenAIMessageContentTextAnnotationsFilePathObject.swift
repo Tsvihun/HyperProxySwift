@@ -12,17 +12,17 @@ import HyperProxyCore
 
 public struct OpenAIMessageContentTextAnnotationsFilePathObject: Codable, Sendable {
   public var endIndex: Int
-  public var filePath: OpenAIMessageContentTextAnnotationsFilePathObjectFilePath
+  public var filePath: OpenAIMessageContentTextAnnotationsFilePathObject.FilePath
   public var startIndex: Int
   public var text: String
-  public var kind: OpenAIMessageContentTextAnnotationsFilePathObjectKind
+  public var kind: OpenAIMessageContentTextAnnotationsFilePathObject.Kind
 
   public init(
     endIndex: Int,
-    filePath: OpenAIMessageContentTextAnnotationsFilePathObjectFilePath,
+    filePath: OpenAIMessageContentTextAnnotationsFilePathObject.FilePath,
     startIndex: Int,
     text: String,
-    kind: OpenAIMessageContentTextAnnotationsFilePathObjectKind
+    kind: OpenAIMessageContentTextAnnotationsFilePathObject.Kind
   ) {
     self.endIndex = endIndex
     self.filePath = filePath
@@ -37,5 +37,25 @@ public struct OpenAIMessageContentTextAnnotationsFilePathObject: Codable, Sendab
     case startIndex = "start_index"
     case text
     case kind = "type"
+  }
+
+  public struct FilePath: Codable, Sendable {
+    public var fileId: String
+
+    public init(
+      fileId: String
+    ) {
+      self.fileId = fileId
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case fileId = "file_id"
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case filePath = "file_path"
   }
 }

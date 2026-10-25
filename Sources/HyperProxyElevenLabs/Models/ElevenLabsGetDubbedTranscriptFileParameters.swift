@@ -12,14 +12,14 @@ import HyperProxyCore
 
 public struct ElevenLabsGetDubbedTranscriptFileParameters: Codable, Sendable {
   public var dubbingId: String
-  public var formatType: ElevenLabsGetDubbedTranscriptFileParametersFormatType?
+  public var formatType: ElevenLabsGetDubbedTranscriptFileParameters.FormatType?
   public var languageCode: String
   public var xiApiKey: String?
 
   public init(
     dubbingId: String,
     languageCode: String,
-    formatType: ElevenLabsGetDubbedTranscriptFileParametersFormatType? = nil,
+    formatType: ElevenLabsGetDubbedTranscriptFileParameters.FormatType? = nil,
     xiApiKey: String? = nil
   ) {
     self.dubbingId = dubbingId
@@ -33,5 +33,13 @@ public struct ElevenLabsGetDubbedTranscriptFileParameters: Codable, Sendable {
     case formatType = "format_type"
     case languageCode = "language_code"
     case xiApiKey = "xi-api-key"
+  }
+
+  public enum FormatType: String, Codable, Hashable,
+    Sendable
+  {
+    case srt = "srt"
+    case webvtt = "webvtt"
+    case json = "json"
   }
 }

@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public enum TogetherRLLossType: String, Codable, Hashable, Sendable {
-  case lOSSTYPEUNSPECIFIED = "LOSS_TYPE_UNSPECIFIED"
-  case lOSSTYPECROSSENTROPY = "LOSS_TYPE_CROSS_ENTROPY"
-  case lOSSTYPEGRPO = "LOSS_TYPE_GRPO"
-  case lOSSTYPEIMPORTANCESAMPLING = "LOSS_TYPE_IMPORTANCE_SAMPLING"
-  case lOSSTYPEPPO = "LOSS_TYPE_PPO"
-  case lOSSTYPECISPO = "LOSS_TYPE_CISPO"
-  case lOSSTYPEDRO = "LOSS_TYPE_DRO"
-  case lOSSTYPEDPPO = "LOSS_TYPE_DPPO"
+  case lossTypeUnspecified = "LOSS_TYPE_UNSPECIFIED"
+  case lossTypeCrossEntropy = "LOSS_TYPE_CROSS_ENTROPY"
+  case lossTypeGrpo = "LOSS_TYPE_GRPO"
+  case lossTypeImportanceSampling = "LOSS_TYPE_IMPORTANCE_SAMPLING"
+  case lossTypePpo = "LOSS_TYPE_PPO"
+  case lossTypeCispo = "LOSS_TYPE_CISPO"
+  case lossTypeDro = "LOSS_TYPE_DRO"
+  case lossTypeDppo = "LOSS_TYPE_DPPO"
 }

@@ -16,7 +16,7 @@ public struct TogetherEvaluationModelRequest: Codable, Sendable {
   public var inputTemplate: String
   public var maxTokens: Int
   public var model: String
-  public var modelSource: TogetherEvaluationModelRequestModelSource
+  public var modelSource: TogetherEvaluationModelRequest.ModelSource
   public var numWorkers: Int?
   public var systemTemplate: String
   public var temperature: Double
@@ -25,7 +25,7 @@ public struct TogetherEvaluationModelRequest: Codable, Sendable {
     inputTemplate: String,
     maxTokens: Int,
     model: String,
-    modelSource: TogetherEvaluationModelRequestModelSource,
+    modelSource: TogetherEvaluationModelRequest.ModelSource,
     systemTemplate: String,
     temperature: Double,
     externalApiToken: String? = nil,
@@ -53,5 +53,11 @@ public struct TogetherEvaluationModelRequest: Codable, Sendable {
     case numWorkers = "num_workers"
     case systemTemplate = "system_template"
     case temperature
+  }
+
+  public enum ModelSource: String, Codable, Hashable, Sendable {
+    case serverless = "serverless"
+    case dedicated = "dedicated"
+    case external = "external"
   }
 }

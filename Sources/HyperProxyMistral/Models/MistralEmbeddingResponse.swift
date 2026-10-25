@@ -38,4 +38,18 @@ public struct MistralEmbeddingResponse: Codable, Sendable {
     case object
     case usage
   }
+
+  public struct WithData: Codable, Sendable {
+    public var data: [MistralEmbeddingResponseData]
+
+    public init(
+      data: [MistralEmbeddingResponseData]
+    ) {
+      self.data = data
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case data
+    }
+  }
 }

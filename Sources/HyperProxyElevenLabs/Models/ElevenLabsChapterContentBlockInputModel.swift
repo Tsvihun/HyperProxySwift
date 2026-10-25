@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct ElevenLabsChapterContentBlockInputModel: Codable, Sendable {
   public var blockId: String?
   public var nodes: [ElevenLabsChapterContentParagraphTtsNodeInputModel]
-  public var subType: ElevenLabsChapterContentBlockInputModelSubType?
+  public var subType: ElevenLabsChapterContentBlockInputModel.SubType?
 
   public init(
     nodes: [ElevenLabsChapterContentParagraphTtsNodeInputModel],
     blockId: String? = nil,
-    subType: ElevenLabsChapterContentBlockInputModelSubType? = nil
+    subType: ElevenLabsChapterContentBlockInputModel.SubType? = nil
   ) {
     self.blockId = blockId
     self.nodes = nodes
@@ -29,5 +29,12 @@ public struct ElevenLabsChapterContentBlockInputModel: Codable, Sendable {
     case blockId = "block_id"
     case nodes
     case subType = "sub_type"
+  }
+
+  public enum SubType: String, Codable, Hashable, Sendable {
+    case p = "p"
+    case h1 = "h1"
+    case h2 = "h2"
+    case h3 = "h3"
   }
 }

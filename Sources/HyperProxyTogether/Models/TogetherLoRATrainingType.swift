@@ -15,12 +15,12 @@ public struct TogetherLoRATrainingType: Codable, Sendable {
   public var loraDropout: Double?
   public var loraR: Int
   public var loraTrainableModules: String?
-  public var kind: TogetherLoRATrainingTypeKind
+  public var kind: TogetherLoRATrainingType.Kind
 
   public init(
     loraAlpha: Int,
     loraR: Int,
-    kind: TogetherLoRATrainingTypeKind,
+    kind: TogetherLoRATrainingType.Kind,
     loraDropout: Double? = nil,
     loraTrainableModules: String? = nil
   ) {
@@ -37,5 +37,9 @@ public struct TogetherLoRATrainingType: Codable, Sendable {
     case loraR = "lora_r"
     case loraTrainableModules = "lora_trainable_modules"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case lora = "Lora"
   }
 }

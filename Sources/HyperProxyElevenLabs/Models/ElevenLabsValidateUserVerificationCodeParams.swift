@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsValidateUserVerificationCodeParams: Codable, Sendable {
-  public var smbToolType: ElevenLabsValidateUserVerificationCodeSmbToolType?
+  public var smbToolType: ElevenLabsValidateUserVerificationCodeParams.SmbToolType?
 
   public init(
-    smbToolType: ElevenLabsValidateUserVerificationCodeSmbToolType? = nil
+    smbToolType: ElevenLabsValidateUserVerificationCodeParams.SmbToolType? = nil
   ) {
     self.smbToolType = smbToolType
   }
 
   enum CodingKeys: String, CodingKey {
     case smbToolType = "smb_tool_type"
+  }
+
+  public enum SmbToolType: String, Codable, Hashable, Sendable {
+    case validateUserVerificationCode = "validate_user_verification_code"
   }
 }

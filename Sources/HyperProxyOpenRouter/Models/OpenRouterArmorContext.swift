@@ -12,10 +12,10 @@ import HyperProxyCore
 
 public struct OpenRouterArmorContext: Codable, Sendable {
   public var autoMode: OpenRouterArmorAutoMode?
-  public var v: OpenRouterArmorContextV
+  public var v: OpenRouterArmorContext.V
 
   public init(
-    v: OpenRouterArmorContextV,
+    v: OpenRouterArmorContext.V,
     autoMode: OpenRouterArmorAutoMode? = nil
   ) {
     self.autoMode = autoMode
@@ -25,5 +25,9 @@ public struct OpenRouterArmorContext: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case autoMode = "auto_mode"
     case v
+  }
+
+  public enum V: Int, Codable, Hashable, Sendable {
+    case value1 = 1
   }
 }

@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAICreateMcpOauthTokenEndpointAuthParamNone: Codable, Sendable {
-  public var kind: OpenAICreateMcpOauthTokenEndpointAuthParamNoneKind
+  public var kind: OpenAICreateMcpOauthTokenEndpointAuthParamNone.Kind
 
   public init(
-    kind: OpenAICreateMcpOauthTokenEndpointAuthParamNoneKind
+    kind: OpenAICreateMcpOauthTokenEndpointAuthParamNone.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case none = "none"
   }
 }

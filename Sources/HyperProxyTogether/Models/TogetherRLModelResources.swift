@@ -21,6 +21,7 @@ public struct TogetherRLModelResources: Codable, Sendable {
   public var loraEnabled: Bool
   public var optimizerConfig: TogetherRLOptimizerConfig
   public var status: TogetherRLModelResourcesStatus
+  public var statusDetails: TogetherRLModelResourcesStatusDetails
   public var updatedAt: String
 
   public init(
@@ -32,6 +33,7 @@ public struct TogetherRLModelResources: Codable, Sendable {
     loraEnabled: Bool,
     optimizerConfig: TogetherRLOptimizerConfig,
     status: TogetherRLModelResourcesStatus,
+    statusDetails: TogetherRLModelResourcesStatusDetails,
     updatedAt: String,
     baseWeightsRef: String? = nil,
     error: TogetherRLModelResourcesError? = nil
@@ -46,6 +48,7 @@ public struct TogetherRLModelResources: Codable, Sendable {
     self.loraEnabled = loraEnabled
     self.optimizerConfig = optimizerConfig
     self.status = status
+    self.statusDetails = statusDetails
     self.updatedAt = updatedAt
   }
 
@@ -60,6 +63,7 @@ public struct TogetherRLModelResources: Codable, Sendable {
     case loraEnabled = "lora_enabled"
     case optimizerConfig = "optimizer_config"
     case status
+    case statusDetails = "status_details"
     case updatedAt = "updated_at"
   }
 }

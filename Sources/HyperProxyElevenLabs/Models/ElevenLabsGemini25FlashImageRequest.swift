@@ -11,16 +11,16 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsGemini25FlashImageRequest: Codable, Sendable {
-  public var aspectRatio: ElevenLabsGemini25FlashImageRequestAspectRatio?
+  public var aspectRatio: ElevenLabsGemini25FlashImageRequest.AspectRatio?
   public var images: [ElevenLabsImageReference]?
-  public var modelId: ElevenLabsGemini25FlashImageModelId
+  public var modelId: ElevenLabsGemini25FlashImageRequest.ModelId
   public var prompt: String
   public var webhook: ElevenLabsWebhookTarget?
 
   public init(
     prompt: String,
-    modelId: ElevenLabsGemini25FlashImageModelId = .gemini25FlashImage,
-    aspectRatio: ElevenLabsGemini25FlashImageRequestAspectRatio? = nil,
+    modelId: ElevenLabsGemini25FlashImageRequest.ModelId = .gemini2_5FlashImage,
+    aspectRatio: ElevenLabsGemini25FlashImageRequest.AspectRatio? = nil,
     images: [ElevenLabsImageReference]? = nil,
     webhook: ElevenLabsWebhookTarget? = nil
   ) {
@@ -37,5 +37,23 @@ public struct ElevenLabsGemini25FlashImageRequest: Codable, Sendable {
     case modelId = "model_id"
     case prompt
     case webhook
+  }
+
+  public enum ModelId: String, Codable, Hashable, Sendable {
+    case gemini2_5FlashImage = "gemini-2.5-flash-image"
+  }
+
+  public enum AspectRatio: String, Codable, Hashable, Sendable {
+    case auto = "auto"
+    case ratio1x1 = "1:1"
+    case ratio2x3 = "2:3"
+    case ratio3x2 = "3:2"
+    case ratio3x4 = "3:4"
+    case ratio4x3 = "4:3"
+    case ratio4x5 = "4:5"
+    case ratio5x4 = "5:4"
+    case ratio9x16 = "9:16"
+    case ratio16x9 = "16:9"
+    case ratio21x9 = "21:9"
   }
 }

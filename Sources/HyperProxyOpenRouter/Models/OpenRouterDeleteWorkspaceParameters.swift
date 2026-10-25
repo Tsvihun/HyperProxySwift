@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct OpenRouterDeleteWorkspaceParameters: Codable, Sendable {
   public var confirmDefaultWorkspaceDeletion:
-    OpenRouterDeleteWorkspaceParametersConfirmDefaultWorkspaceDeletion?
+    OpenRouterDeleteWorkspaceParameters.ConfirmDefaultWorkspaceDeletion?
   public var id: String
 
   public init(
     id: String,
     confirmDefaultWorkspaceDeletion:
-      OpenRouterDeleteWorkspaceParametersConfirmDefaultWorkspaceDeletion? = nil
+      OpenRouterDeleteWorkspaceParameters.ConfirmDefaultWorkspaceDeletion? = nil
   ) {
     self.confirmDefaultWorkspaceDeletion = confirmDefaultWorkspaceDeletion
     self.id = id
@@ -27,5 +27,12 @@ public struct OpenRouterDeleteWorkspaceParameters: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case confirmDefaultWorkspaceDeletion = "confirm_default_workspace_deletion"
     case id
+  }
+
+  public enum ConfirmDefaultWorkspaceDeletion: String, Codable,
+    Hashable, Sendable
+  {
+    case trueValue = "true"
+    case falseValue = "false"
   }
 }

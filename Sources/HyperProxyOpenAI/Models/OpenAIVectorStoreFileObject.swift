@@ -12,25 +12,25 @@ import HyperProxyCore
 
 public struct OpenAIVectorStoreFileObject: Codable, Sendable {
   public var attributes: OpenAIVectorStoreFileAttributes?
-  public var chunkingStrategy: OpenAIVectorStoreFileObjectChunkingStrategy?
+  public var chunkingStrategy: OpenAIVectorStoreFileObject.ChunkingStrategy?
   public var createdAt: Int
   public var id: String
-  public var lastError: OpenAIVectorStoreFileObjectLastErrorAnyOf1?
-  public var object: OpenAIVectorStoreFileObjectObject
-  public var status: OpenAIVectorStoreFileObjectStatus
+  public var lastError: OpenAIVectorStoreFileObjectLastErrorWithCodeAndMessage?
+  public var object: OpenAIVectorStoreFileObject.Object
+  public var status: OpenAIVectorStoreFileObject.Status
   public var usageBytes: Int
   public var vectorStoreId: String
 
   public init(
     createdAt: Int,
     id: String,
-    lastError: OpenAIVectorStoreFileObjectLastErrorAnyOf1?,
-    object: OpenAIVectorStoreFileObjectObject,
-    status: OpenAIVectorStoreFileObjectStatus,
+    lastError: OpenAIVectorStoreFileObjectLastErrorWithCodeAndMessage?,
+    object: OpenAIVectorStoreFileObject.Object,
+    status: OpenAIVectorStoreFileObject.Status,
     usageBytes: Int,
     vectorStoreId: String,
     attributes: OpenAIVectorStoreFileAttributes? = nil,
-    chunkingStrategy: OpenAIVectorStoreFileObjectChunkingStrategy? = nil
+    chunkingStrategy: OpenAIVectorStoreFileObject.ChunkingStrategy? = nil
   ) {
     self.attributes = attributes
     self.chunkingStrategy = chunkingStrategy
@@ -53,5 +53,41 @@ public struct OpenAIVectorStoreFileObject: Codable, Sendable {
     case status
     case usageBytes = "usage_bytes"
     case vectorStoreId = "vector_store_id"
+  }
+
+  public enum ChunkingStrategy: Codable, Sendable {
+    case staticChunkingStrategyResponseParam(OpenAIStaticChunkingStrategyResponseParam)
+    case otherChunkingStrategyResponseParam(OpenAIOtherChunkingStrategyResponseParam)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenAIStaticChunkingStrategyResponseParam.self) {
+        self = .staticChunkingStrategyResponseParam(value)
+        return
+      }
+      self = .otherChunkingStrategyResponseParam(
+        try container.decode(OpenAIOtherChunkingStrategyResponseParam.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .staticChunkingStrategyResponseParam(let value):
+        try container.encode(value)
+      case .otherChunkingStrategyResponseParam(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case vectorStoreFile = "vector_store.file"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case inProgress = "in_progress"
+    case completed = "completed"
+    case cancelled = "cancelled"
+    case failed = "failed"
   }
 }

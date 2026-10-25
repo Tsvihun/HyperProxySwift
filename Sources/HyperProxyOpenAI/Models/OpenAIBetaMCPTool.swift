@@ -12,28 +12,28 @@ import HyperProxyCore
 
 public struct OpenAIBetaMCPTool: Codable, Sendable {
   public var allowedCallers: [OpenAIBetaCallableToolAllowedCaller]?
-  public var allowedTools: OpenAIBetaMCPToolAllowedToolsAnyOf1?
+  public var allowedTools: OpenAIBetaMCPToolAllowedToolsVariant?
   public var authorization: String?
-  public var connectorId: OpenAIBetaMCPToolConnectorId?
+  public var connectorId: OpenAIBetaMCPTool.ConnectorId?
   public var deferLoading: Bool?
   public var headers: [String: String]?
-  public var requireApproval: OpenAIBetaMCPToolRequireApprovalAnyOf1?
+  public var requireApproval: OpenAIBetaMCPToolRequireApprovalVariant?
   public var serverDescription: String?
   public var serverLabel: String
   public var serverUrl: String?
   public var tunnelId: String?
-  public var kind: OpenAIBetaMCPToolKind
+  public var kind: OpenAIBetaMCPTool.Kind
 
   public init(
     serverLabel: String,
-    kind: OpenAIBetaMCPToolKind,
+    kind: OpenAIBetaMCPTool.Kind,
     allowedCallers: [OpenAIBetaCallableToolAllowedCaller]? = nil,
-    allowedTools: OpenAIBetaMCPToolAllowedToolsAnyOf1? = nil,
+    allowedTools: OpenAIBetaMCPToolAllowedToolsVariant? = nil,
     authorization: String? = nil,
-    connectorId: OpenAIBetaMCPToolConnectorId? = nil,
+    connectorId: OpenAIBetaMCPTool.ConnectorId? = nil,
     deferLoading: Bool? = nil,
     headers: [String: String]? = nil,
-    requireApproval: OpenAIBetaMCPToolRequireApprovalAnyOf1? = nil,
+    requireApproval: OpenAIBetaMCPToolRequireApprovalVariant? = nil,
     serverDescription: String? = nil,
     serverUrl: String? = nil,
     tunnelId: String? = nil
@@ -65,5 +65,20 @@ public struct OpenAIBetaMCPTool: Codable, Sendable {
     case serverUrl = "server_url"
     case tunnelId = "tunnel_id"
     case kind = "type"
+  }
+
+  public enum ConnectorId: String, Codable, Hashable, Sendable {
+    case connectorDropbox = "connector_dropbox"
+    case connectorGmail = "connector_gmail"
+    case connectorGooglecalendar = "connector_googlecalendar"
+    case connectorGoogledrive = "connector_googledrive"
+    case connectorMicrosoftteams = "connector_microsoftteams"
+    case connectorOutlookcalendar = "connector_outlookcalendar"
+    case connectorOutlookemail = "connector_outlookemail"
+    case connectorSharepoint = "connector_sharepoint"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case mcp = "mcp"
   }
 }

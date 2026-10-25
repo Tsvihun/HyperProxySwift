@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaMemoryTool20250818RenameCommand: Codable, Sendable {
-  public var command: AnthropicRenameCommand
+  public var command: AnthropicBetaMemoryTool20250818RenameCommand.Command
   public var newPath: String
   public var oldPath: String
 
   public init(
     newPath: String,
     oldPath: String,
-    command: AnthropicRenameCommand = .rename
+    command: AnthropicBetaMemoryTool20250818RenameCommand.Command = .rename
   ) {
     self.command = command
     self.newPath = newPath
@@ -29,5 +29,9 @@ public struct AnthropicBetaMemoryTool20250818RenameCommand: Codable, Sendable {
     case command
     case newPath = "new_path"
     case oldPath = "old_path"
+  }
+
+  public enum Command: String, Codable, Hashable, Sendable {
+    case rename = "rename"
   }
 }

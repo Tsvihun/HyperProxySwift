@@ -15,7 +15,7 @@ public struct StabilityPostV2betaStableImageControlStyleTransferRequest: Codable
   public var compositionFidelity: Double?
   public var initImage: String
   public var negativePrompt: String?
-  public var outputFormat: StabilityPostV2betaStableImageControlStyleTransferRequestOutputFormat?
+  public var outputFormat: StabilityPostV2betaStableImageControlStyleTransferRequest.OutputFormat?
   public var prompt: String?
   public var seed: Double?
   public var styleImage: String
@@ -27,7 +27,7 @@ public struct StabilityPostV2betaStableImageControlStyleTransferRequest: Codable
     changeStrength: Double? = nil,
     compositionFidelity: Double? = nil,
     negativePrompt: String? = nil,
-    outputFormat: StabilityPostV2betaStableImageControlStyleTransferRequestOutputFormat? = nil,
+    outputFormat: StabilityPostV2betaStableImageControlStyleTransferRequest.OutputFormat? = nil,
     prompt: String? = nil,
     seed: Double? = nil,
     styleStrength: Double? = nil
@@ -53,5 +53,13 @@ public struct StabilityPostV2betaStableImageControlStyleTransferRequest: Codable
     case seed
     case styleImage = "style_image"
     case styleStrength = "style_strength"
+  }
+
+  public enum OutputFormat: String, Codable,
+    Hashable, Sendable
+  {
+    case png = "png"
+    case jpeg = "jpeg"
+    case webp = "webp"
   }
 }

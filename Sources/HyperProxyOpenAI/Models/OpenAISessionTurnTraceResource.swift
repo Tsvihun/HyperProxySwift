@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct OpenAISessionTurnTraceResource: Codable, Sendable {
   public var createdAt: Int64
   public var id: String
-  public var object: OpenAISessionTurnTraceResourceObject
+  public var object: OpenAISessionTurnTraceResource.Object
   public var otlp: [String: HyperProxyJSONValue]
   public var sessionId: String
 
   public init(
     createdAt: Int64,
     id: String,
-    object: OpenAISessionTurnTraceResourceObject,
+    object: OpenAISessionTurnTraceResource.Object,
     otlp: [String: HyperProxyJSONValue],
     sessionId: String
   ) {
@@ -37,5 +37,9 @@ public struct OpenAISessionTurnTraceResource: Codable, Sendable {
     case object
     case otlp
     case sessionId = "session_id"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case agentSessionTrace = "agent.session.trace"
   }
 }

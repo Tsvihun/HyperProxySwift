@@ -17,7 +17,7 @@ public struct MistralOCRSignatureBlock: Codable, Sendable {
   public var content: String
   public var topLeftX: Int
   public var topLeftY: Int
-  public var kind: MistralSignatureKind?
+  public var kind: MistralOCRSignatureBlock.Kind?
 
   public init(
     bottomRightX: Int,
@@ -26,7 +26,7 @@ public struct MistralOCRSignatureBlock: Codable, Sendable {
     topLeftX: Int,
     topLeftY: Int,
     confidenceScores: MistralOCRBlockConfidenceScores? = nil,
-    kind: MistralSignatureKind? = nil
+    kind: MistralOCRSignatureBlock.Kind? = nil
   ) {
     self.bottomRightX = bottomRightX
     self.bottomRightY = bottomRightY
@@ -45,5 +45,9 @@ public struct MistralOCRSignatureBlock: Codable, Sendable {
     case topLeftX = "top_left_x"
     case topLeftY = "top_left_y"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case signature = "signature"
   }
 }

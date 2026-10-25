@@ -13,6 +13,6 @@ import HyperProxyCore
 public enum MistralToolChoiceEnum: String, Codable, Hashable, Sendable {
   case auto = "auto"
   case none = "none"
-  case anyModel = "any"
+  case any = "any"
   case requiredValue = "required"
 }

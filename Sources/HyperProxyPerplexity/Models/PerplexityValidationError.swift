@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct PerplexityValidationError: Codable, Sendable {
-  public var loc: [PerplexityValidationErrorLocItem]
+  public var loc: [PerplexityValidationError.LocElement]
   public var msg: String
   public var kind: String
 
   public init(
-    loc: [PerplexityValidationErrorLocItem],
+    loc: [PerplexityValidationError.LocElement],
     msg: String,
     kind: String
   ) {
@@ -29,5 +29,41 @@ public struct PerplexityValidationError: Codable, Sendable {
     case loc
     case msg
     case kind = "type"
+  }
+
+  public enum LocElement: Codable, Sendable {
+    case integer(Int)
+    case string(String)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Int.self) {
+        self = .integer(value)
+        return
+      }
+      self = .string(try container.decode(String.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .integer(let value):
+        try container.encode(value)
+      case .string(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension PerplexityValidationError.LocElement: ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Int) {
+    self = .integer(value)
+  }
+}
+
+extension PerplexityValidationError.LocElement: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

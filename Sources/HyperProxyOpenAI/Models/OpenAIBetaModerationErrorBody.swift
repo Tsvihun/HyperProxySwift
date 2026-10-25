@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIBetaModerationErrorBody: Codable, Sendable {
   public var code: String
   public var message: String
-  public var kind: OpenAIBetaModerationErrorBodyKind
+  public var kind: OpenAIBetaModerationErrorBody.Kind
 
   public init(
     code: String,
     message: String,
-    kind: OpenAIBetaModerationErrorBodyKind
+    kind: OpenAIBetaModerationErrorBody.Kind
   ) {
     self.code = code
     self.message = message
@@ -29,5 +29,9 @@ public struct OpenAIBetaModerationErrorBody: Codable, Sendable {
     case code
     case message
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case error = "error"
   }
 }

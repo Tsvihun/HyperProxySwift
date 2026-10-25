@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct OpenAIResponseConfigurationUpdateItemParam: Codable, Sendable {
   public var id: String?
-  public var reasoning: OpenAIResponseConfigurationUpdateItemParamReasoning?
-  public var kind: OpenAIResponseConfigurationUpdateItemParamKind
+  public var reasoning: OpenAIResponseConfigurationUpdateItemParam.Reasoning?
+  public var kind: OpenAIResponseConfigurationUpdateItemParam.Kind
 
   public init(
-    kind: OpenAIResponseConfigurationUpdateItemParamKind,
+    kind: OpenAIResponseConfigurationUpdateItemParam.Kind,
     id: String? = nil,
-    reasoning: OpenAIResponseConfigurationUpdateItemParamReasoning? = nil
+    reasoning: OpenAIResponseConfigurationUpdateItemParam.Reasoning? = nil
   ) {
     self.id = id
     self.reasoning = reasoning
@@ -29,5 +29,23 @@ public struct OpenAIResponseConfigurationUpdateItemParam: Codable, Sendable {
     case id
     case reasoning
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case configurationUpdate = "configuration_update"
+  }
+
+  public struct Reasoning: Codable, Sendable {
+    public var effort: OpenAIReasoningEffort?
+
+    public init(
+      effort: OpenAIReasoningEffort? = nil
+    ) {
+      self.effort = effort
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case effort
+    }
   }
 }

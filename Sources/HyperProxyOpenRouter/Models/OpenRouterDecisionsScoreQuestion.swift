@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterDecisionsScoreQuestion: Codable, Sendable {
-  public var criteria: [OpenRouterDecisionsScoreQuestionCriteriaItem]
-  public var instructions: OpenRouterDecisionsScoreQuestionInstructions
-  public var kind: OpenRouterDecisionsScoreQuestionKind
+  public var criteria: [OpenRouterDecisionsScoreQuestion.CriteriaElement]
+  public var instructions: OpenRouterDecisionsScoreQuestion.Instructions
+  public var kind: OpenRouterDecisionsScoreQuestion.Kind
 
   public init(
-    criteria: [OpenRouterDecisionsScoreQuestionCriteriaItem],
-    instructions: OpenRouterDecisionsScoreQuestionInstructions,
-    kind: OpenRouterDecisionsScoreQuestionKind
+    criteria: [OpenRouterDecisionsScoreQuestion.CriteriaElement],
+    instructions: OpenRouterDecisionsScoreQuestion.Instructions,
+    kind: OpenRouterDecisionsScoreQuestion.Kind
   ) {
     self.criteria = criteria
     self.instructions = instructions
@@ -29,5 +29,83 @@ public struct OpenRouterDecisionsScoreQuestion: Codable, Sendable {
     case criteria
     case instructions
     case kind = "type"
+  }
+
+  public enum CriteriaElement: Codable, Sendable {
+    case string(String)
+    case objectDictionary([String: HyperProxyJSONValue])
+    case array([HyperProxyJSONValue])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      if let value = try? container.decode([String: HyperProxyJSONValue].self) {
+        self = .objectDictionary(value)
+        return
+      }
+      self = .array(try container.decode([HyperProxyJSONValue].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .objectDictionary(let value):
+        try container.encode(value)
+      case .array(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Instructions: Codable, Sendable {
+    case string(String)
+    case objectDictionary([String: HyperProxyJSONValue])
+    case array([HyperProxyJSONValue])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      if let value = try? container.decode([String: HyperProxyJSONValue].self) {
+        self = .objectDictionary(value)
+        return
+      }
+      self = .array(try container.decode([HyperProxyJSONValue].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .objectDictionary(let value):
+        try container.encode(value)
+      case .array(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case score = "score"
+  }
+}
+
+extension OpenRouterDecisionsScoreQuestion.CriteriaElement: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension OpenRouterDecisionsScoreQuestion.Instructions: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIDeletedWebhookEndpointResource: Codable, Sendable {
   public var deleted: Bool
   public var id: String
-  public var object: OpenAIDeletedWebhookEndpointResourceObject
+  public var object: OpenAIDeletedWebhookEndpointResource.Object
 
   public init(
     deleted: Bool,
     id: String,
-    object: OpenAIDeletedWebhookEndpointResourceObject
+    object: OpenAIDeletedWebhookEndpointResource.Object
   ) {
     self.deleted = deleted
     self.id = id
@@ -29,5 +29,9 @@ public struct OpenAIDeletedWebhookEndpointResource: Codable, Sendable {
     case deleted
     case id
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case webhookEndpointDeleted = "webhook_endpoint.deleted"
   }
 }

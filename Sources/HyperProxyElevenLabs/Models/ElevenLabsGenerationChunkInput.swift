@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsGenerationChunkInput: Codable, Sendable {
   public var conditionStrength: ElevenLabsConditionStrength?
   public var conditioningRef: ElevenLabsAudioRefChunk?
-  public var contextAdherence: ElevenLabsGenerationChunkInputContextAdherence?
+  public var contextAdherence: ElevenLabsGenerationChunkInput.ContextAdherence?
   public var durationMs: Int
   public var negativeStyles: [String]?
   public var positiveStyles: [String]
@@ -25,7 +25,7 @@ public struct ElevenLabsGenerationChunkInput: Codable, Sendable {
     text: String,
     conditionStrength: ElevenLabsConditionStrength? = nil,
     conditioningRef: ElevenLabsAudioRefChunk? = nil,
-    contextAdherence: ElevenLabsGenerationChunkInputContextAdherence? = nil,
+    contextAdherence: ElevenLabsGenerationChunkInput.ContextAdherence? = nil,
     negativeStyles: [String]? = nil
   ) {
     self.conditionStrength = conditionStrength
@@ -45,5 +45,11 @@ public struct ElevenLabsGenerationChunkInput: Codable, Sendable {
     case negativeStyles = "negative_styles"
     case positiveStyles = "positive_styles"
     case text
+  }
+
+  public enum ContextAdherence: String, Codable, Hashable, Sendable {
+    case low = "low"
+    case medium = "medium"
+    case high = "high"
   }
 }

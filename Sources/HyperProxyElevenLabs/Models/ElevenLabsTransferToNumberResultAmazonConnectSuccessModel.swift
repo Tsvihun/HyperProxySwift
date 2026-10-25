@@ -14,14 +14,14 @@ public struct ElevenLabsTransferToNumberResultAmazonConnectSuccessModel: Codable
   public var clientMessage: String?
   public var note: String?
   public var reason: String?
-  public var resultType: ElevenLabsTransferToNumberAmazonConnectSuccessResultType?
+  public var resultType: ElevenLabsTransferToNumberResultAmazonConnectSuccessModel.ResultType?
   public var status: ElevenLabsSuccessStatus?
 
   public init(
     clientMessage: String? = nil,
     note: String? = nil,
     reason: String? = nil,
-    resultType: ElevenLabsTransferToNumberAmazonConnectSuccessResultType? = nil,
+    resultType: ElevenLabsTransferToNumberResultAmazonConnectSuccessModel.ResultType? = nil,
     status: ElevenLabsSuccessStatus? = nil
   ) {
     self.clientMessage = clientMessage
@@ -37,5 +37,11 @@ public struct ElevenLabsTransferToNumberResultAmazonConnectSuccessModel: Codable
     case reason
     case resultType = "result_type"
     case status
+  }
+
+  public enum ResultType: String, Codable, Hashable,
+    Sendable
+  {
+    case transferToNumberAmazonConnectSuccess = "transfer_to_number_amazon_connect_success"
   }
 }

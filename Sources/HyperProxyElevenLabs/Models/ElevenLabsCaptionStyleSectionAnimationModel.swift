@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsCaptionStyleSectionAnimationModel: Codable, Sendable {
-  public var enterType: ElevenLabsCaptionStyleSectionAnimationModelEnterType
-  public var exitType: ElevenLabsCaptionStyleSectionAnimationModelExitType
+  public var enterType: ElevenLabsCaptionStyleSectionAnimationModel.EnterType
+  public var exitType: ElevenLabsCaptionStyleSectionAnimationModel.ExitType
 
   public init(
-    enterType: ElevenLabsCaptionStyleSectionAnimationModelEnterType,
-    exitType: ElevenLabsCaptionStyleSectionAnimationModelExitType
+    enterType: ElevenLabsCaptionStyleSectionAnimationModel.EnterType,
+    exitType: ElevenLabsCaptionStyleSectionAnimationModel.ExitType
   ) {
     self.enterType = enterType
     self.exitType = exitType
@@ -25,5 +25,31 @@ public struct ElevenLabsCaptionStyleSectionAnimationModel: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case enterType = "enter_type"
     case exitType = "exit_type"
+  }
+
+  public enum EnterType: String, Codable, Hashable,
+    Sendable
+  {
+    case none = "none"
+    case fade = "fade"
+    case scale = "scale"
+    case pop = "pop"
+    case slideUp = "slide_up"
+    case slideDown = "slide_down"
+    case slam = "slam"
+    case scaleDown = "scale_down"
+    case slideIn = "slide_in"
+  }
+
+  public enum ExitType: String, Codable, Hashable, Sendable {
+    case none = "none"
+    case fade = "fade"
+    case scale = "scale"
+    case pop = "pop"
+    case slideUp = "slide_up"
+    case slideDown = "slide_down"
+    case slam = "slam"
+    case scaleDown = "scale_down"
+    case slideIn = "slide_in"
   }
 }

@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsProjectExtendedResponseModel: Codable, Sendable {
-  public var accessLevel: ElevenLabsProjectExtendedResponseModelAccessLevel
+  public var accessLevel: ElevenLabsProjectExtendedResponseModel.AccessLevel
   public var agentSettings: ElevenLabsStudioAgentSettingsModel?
-  public var applyTextNormalization: ElevenLabsProjectExtendedResponseModelApplyTextNormalization
-  public var aspectRatio: ElevenLabsProjectExtendedResponseModelAspectRatio?
-  public var assets: [ElevenLabsProjectExtendedResponseModelAssetsItem]
+  public var applyTextNormalization: ElevenLabsProjectExtendedResponseModel.ApplyTextNormalization
+  public var aspectRatio: ElevenLabsProjectExtendedResponseModel.AspectRatio?
+  public var assets: [ElevenLabsProjectExtendedResponseModel.AssetsElement]
   public var author: String?
   public var baseVoices: [ElevenLabsVoiceResponseModel]?
   public var canBeDownloaded: Bool
@@ -36,7 +36,7 @@ public struct ElevenLabsProjectExtendedResponseModel: Codable, Sendable {
   public var defaultTitleVoiceRefId: String
   public var description: String?
   public var experimental: [String: HyperProxyJSONValue]?
-  public var fiction: ElevenLabsProjectExtendedResponseModelFiction?
+  public var fiction: ElevenLabsProjectExtendedResponseModel.Fiction?
   public var genres: [String]?
   public var isbnNumber: String?
   public var language: String?
@@ -54,17 +54,17 @@ public struct ElevenLabsProjectExtendedResponseModel: Codable, Sendable {
   public var qualityCheckOn: Bool
   public var qualityCheckOnWhenBulkConvert: Bool
   public var qualityPreset: ElevenLabsQualityPresetType
-  public var sourceType: ElevenLabsProjectExtendedResponseModelSourceType?
-  public var state: ElevenLabsProjectExtendedResponseModelState
-  public var targetAudience: ElevenLabsProjectExtendedResponseModelTargetAudience?
+  public var sourceType: ElevenLabsProjectExtendedResponseModel.SourceType?
+  public var state: ElevenLabsProjectExtendedResponseModel.State
+  public var targetAudience: ElevenLabsProjectExtendedResponseModel.TargetAudience?
   public var title: String?
   public var voices: [ElevenLabsProjectVoiceResponseModel]
   public var volumeNormalization: Bool
 
   public init(
-    accessLevel: ElevenLabsProjectExtendedResponseModelAccessLevel,
-    applyTextNormalization: ElevenLabsProjectExtendedResponseModelApplyTextNormalization,
-    assets: [ElevenLabsProjectExtendedResponseModelAssetsItem],
+    accessLevel: ElevenLabsProjectExtendedResponseModel.AccessLevel,
+    applyTextNormalization: ElevenLabsProjectExtendedResponseModel.ApplyTextNormalization,
+    assets: [ElevenLabsProjectExtendedResponseModel.AssetsElement],
     canBeDownloaded: Bool,
     chapters: [ElevenLabsChapterResponseModel],
     createDateUnix: Int,
@@ -81,11 +81,11 @@ public struct ElevenLabsProjectExtendedResponseModel: Codable, Sendable {
     qualityCheckOn: Bool,
     qualityCheckOnWhenBulkConvert: Bool,
     qualityPreset: ElevenLabsQualityPresetType,
-    state: ElevenLabsProjectExtendedResponseModelState,
+    state: ElevenLabsProjectExtendedResponseModel.State,
     voices: [ElevenLabsProjectVoiceResponseModel],
     volumeNormalization: Bool,
     agentSettings: ElevenLabsStudioAgentSettingsModel? = nil,
-    aspectRatio: ElevenLabsProjectExtendedResponseModelAspectRatio? = nil,
+    aspectRatio: ElevenLabsProjectExtendedResponseModel.AspectRatio? = nil,
     author: String? = nil,
     baseVoices: [ElevenLabsVoiceResponseModel]? = nil,
     captionStyle: ElevenLabsCaptionStyleModel? = nil,
@@ -97,7 +97,7 @@ public struct ElevenLabsProjectExtendedResponseModel: Codable, Sendable {
     creationMeta: ElevenLabsProjectCreationMetaResponseModel? = nil,
     description: String? = nil,
     experimental: [String: HyperProxyJSONValue]? = nil,
-    fiction: ElevenLabsProjectExtendedResponseModelFiction? = nil,
+    fiction: ElevenLabsProjectExtendedResponseModel.Fiction? = nil,
     genres: [String]? = nil,
     isbnNumber: String? = nil,
     language: String? = nil,
@@ -106,8 +106,8 @@ public struct ElevenLabsProjectExtendedResponseModel: Codable, Sendable {
     originalPublicationDate: String? = nil,
     publicShareId: String? = nil,
     publishingRead: ElevenLabsDirectPublishingReadResponseModel? = nil,
-    sourceType: ElevenLabsProjectExtendedResponseModelSourceType? = nil,
-    targetAudience: ElevenLabsProjectExtendedResponseModelTargetAudience? = nil,
+    sourceType: ElevenLabsProjectExtendedResponseModel.SourceType? = nil,
+    targetAudience: ElevenLabsProjectExtendedResponseModel.TargetAudience? = nil,
     title: String? = nil
   ) {
     self.accessLevel = accessLevel
@@ -207,5 +207,90 @@ public struct ElevenLabsProjectExtendedResponseModel: Codable, Sendable {
     case title
     case voices
     case volumeNormalization = "volume_normalization"
+  }
+
+  public enum AccessLevel: String, Codable, Hashable, Sendable {
+    case admin = "admin"
+    case editor = "editor"
+    case commenter = "commenter"
+    case viewer = "viewer"
+  }
+
+  public enum ApplyTextNormalization: String, Codable, Hashable,
+    Sendable
+  {
+    case auto = "auto"
+    case on = "on"
+    case off = "off"
+    case applyEnglish = "apply_english"
+  }
+
+  public enum AspectRatio: String, Codable, Hashable, Sendable {
+    case ratio16x9 = "16:9"
+    case ratio9x16 = "9:16"
+    case ratio4x5 = "4:5"
+    case ratio1x1 = "1:1"
+  }
+
+  public enum AssetsElement: Codable, Sendable {
+    case projectVideoResponseModel(ElevenLabsProjectVideoResponseModel)
+    case projectExternalAudioResponseModel(ElevenLabsProjectExternalAudioResponseModel)
+    case projectImageResponseModel(ElevenLabsProjectImageResponseModel)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsProjectVideoResponseModel.self) {
+        self = .projectVideoResponseModel(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsProjectExternalAudioResponseModel.self) {
+        self = .projectExternalAudioResponseModel(value)
+        return
+      }
+      self = .projectImageResponseModel(
+        try container.decode(ElevenLabsProjectImageResponseModel.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .projectVideoResponseModel(let value):
+        try container.encode(value)
+      case .projectExternalAudioResponseModel(let value):
+        try container.encode(value)
+      case .projectImageResponseModel(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Fiction: String, Codable, Hashable, Sendable {
+    case fiction = "fiction"
+    case nonFiction = "non-fiction"
+  }
+
+  public enum SourceType: String, Codable, Hashable, Sendable {
+    case blank = "blank"
+    case book = "book"
+    case article = "article"
+    case genfm = "genfm"
+    case video = "video"
+    case screenplay = "screenplay"
+  }
+
+  public enum State: String, Codable, Hashable, Sendable {
+    case creating = "creating"
+    case defaultValue = "default"
+    case converting = "converting"
+    case inQueue = "in_queue"
+  }
+
+  public enum TargetAudience: String, Codable, Hashable,
+    Sendable
+  {
+    case children = "children"
+    case youngAdult = "young adult"
+    case adult = "adult"
+    case allAges = "all ages"
   }
 }

@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct OpenAIRealtimeClientEventSessionUpdate: Codable, Sendable {
   public var eventId: String?
-  public var session: OpenAIRealtimeClientEventSessionUpdateSession
-  public var kind: OpenAIRealtimeClientEventSessionUpdateKind
+  public var session: OpenAIRealtimeClientEventSessionUpdate.Session
+  public var kind: OpenAIRealtimeClientEventSessionUpdate.Kind
 
   public init(
-    session: OpenAIRealtimeClientEventSessionUpdateSession,
-    kind: OpenAIRealtimeClientEventSessionUpdateKind,
+    session: OpenAIRealtimeClientEventSessionUpdate.Session,
+    kind: OpenAIRealtimeClientEventSessionUpdate.Kind,
     eventId: String? = nil
   ) {
     self.eventId = eventId
@@ -29,5 +29,35 @@ public struct OpenAIRealtimeClientEventSessionUpdate: Codable, Sendable {
     case eventId = "event_id"
     case session
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case sessionUpdate = "session.update"
+  }
+
+  public enum Session: Codable, Sendable {
+    case realtimeSessionCreateRequestGa(OpenAIRealtimeSessionCreateRequestGA)
+    case realtimeTranscriptionSessionCreateRequestGa(
+      OpenAIRealtimeTranscriptionSessionCreateRequestGA)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenAIRealtimeSessionCreateRequestGA.self) {
+        self = .realtimeSessionCreateRequestGa(value)
+        return
+      }
+      self = .realtimeTranscriptionSessionCreateRequestGa(
+        try container.decode(OpenAIRealtimeTranscriptionSessionCreateRequestGA.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .realtimeSessionCreateRequestGa(let value):
+        try container.encode(value)
+      case .realtimeTranscriptionSessionCreateRequestGa(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

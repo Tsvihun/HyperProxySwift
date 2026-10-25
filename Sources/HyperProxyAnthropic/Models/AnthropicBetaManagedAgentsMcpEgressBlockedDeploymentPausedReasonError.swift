@@ -13,15 +13,21 @@ import HyperProxyCore
 public struct AnthropicBetaManagedAgentsMcpEgressBlockedDeploymentPausedReasonError: Codable,
   Sendable
 {
-  public var kind: AnthropicBetaManagedAgentsMcpEgressBlockedDeploymentPausedReasonErrorKind
+  public var kind: AnthropicBetaManagedAgentsMcpEgressBlockedDeploymentPausedReasonError.Kind
 
   public init(
-    kind: AnthropicBetaManagedAgentsMcpEgressBlockedDeploymentPausedReasonErrorKind
+    kind: AnthropicBetaManagedAgentsMcpEgressBlockedDeploymentPausedReasonError.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String,
+    Codable, Hashable, Sendable
+  {
+    case mcpEgressBlockedError = "mcp_egress_blocked_error"
   }
 }

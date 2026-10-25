@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralMCPPrompt: Codable, Sendable {
-  public var meta: [String: HyperProxyJSONValue]?
+  public var _meta: [String: HyperProxyJSONValue]?
   public var arguments: [MistralPromptArgument]?
   public var description: String?
   public var icons: [MistralMCPServerIcon]?
@@ -20,13 +20,13 @@ public struct MistralMCPPrompt: Codable, Sendable {
 
   public init(
     name: String,
-    meta: [String: HyperProxyJSONValue]? = nil,
+    _meta: [String: HyperProxyJSONValue]? = nil,
     arguments: [MistralPromptArgument]? = nil,
     description: String? = nil,
     icons: [MistralMCPServerIcon]? = nil,
     title: String? = nil
   ) {
-    self.meta = meta
+    self._meta = _meta
     self.arguments = arguments
     self.description = description
     self.icons = icons
@@ -35,7 +35,7 @@ public struct MistralMCPPrompt: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
-    case meta = "_meta"
+    case _meta
     case arguments
     case description
     case icons

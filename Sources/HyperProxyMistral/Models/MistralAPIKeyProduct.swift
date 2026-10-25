@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public enum MistralAPIKeyProduct: String, Codable, Hashable, Sendable {
-  case aPI = "API"
+  case api = "API"
   case mistralCode = "Mistral Code"
   case vibe = "Vibe"
 }

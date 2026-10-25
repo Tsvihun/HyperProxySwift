@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public enum ElevenLabsMusicOutputFormat: Codable, Sendable {
   case musicAllowedOutputFormats(ElevenLabsMusicAllowedOutputFormats)
-  case musicOutputFormatAnyOf2(ElevenLabsMusicOutputFormatAnyOf2)
+  case automatic(ElevenLabsMusicOutputFormat.Auto)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -20,7 +20,7 @@ public enum ElevenLabsMusicOutputFormat: Codable, Sendable {
       self = .musicAllowedOutputFormats(value)
       return
     }
-    self = .musicOutputFormatAnyOf2(try container.decode(ElevenLabsMusicOutputFormatAnyOf2.self))
+    self = .automatic(try container.decode(ElevenLabsMusicOutputFormat.Auto.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -28,11 +28,15 @@ public enum ElevenLabsMusicOutputFormat: Codable, Sendable {
     switch self {
     case .musicAllowedOutputFormats(let value):
       try container.encode(value)
-    case .musicOutputFormatAnyOf2(let value):
+    case .automatic(let value):
       try container.encode(value)
     }
   }
 
   /// Provider-native value without the schema union wrapper.
-  public static var auto: Self { .musicOutputFormatAnyOf2(.auto) }
+  public static var auto: Self { .automatic(.auto) }
+
+  public enum Auto: String, Codable, Hashable, Sendable {
+    case auto = "auto"
+  }
 }

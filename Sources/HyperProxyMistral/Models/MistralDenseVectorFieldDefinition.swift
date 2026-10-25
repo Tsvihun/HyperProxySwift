@@ -15,14 +15,14 @@ public struct MistralDenseVectorFieldDefinition: Codable, Sendable {
   public var indexed: Bool?
   public var requiredValue: Bool?
   public var system: Bool?
-  public var kind: MistralDenseVectorKind?
+  public var kind: MistralDenseVectorFieldDefinition.Kind?
 
   public init(
     defaultValue: HyperProxyJSONValue? = nil,
     indexed: Bool? = nil,
     requiredValue: Bool? = nil,
     system: Bool? = nil,
-    kind: MistralDenseVectorKind? = nil
+    kind: MistralDenseVectorFieldDefinition.Kind? = nil
   ) {
     self.defaultValue = defaultValue
     self.indexed = indexed
@@ -37,5 +37,9 @@ public struct MistralDenseVectorFieldDefinition: Codable, Sendable {
     case requiredValue = "required"
     case system
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case denseVector = "dense_vector"
   }
 }

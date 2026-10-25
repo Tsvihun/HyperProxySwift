@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct PerplexityToolCall: Codable, Sendable {
   public var function: PerplexityToolCallFunction?
   public var id: String?
-  public var kind: PerplexityToolCallKind?
+  public var kind: PerplexityToolCall.Kind?
 
   public init(
     function: PerplexityToolCallFunction? = nil,
     id: String? = nil,
-    kind: PerplexityToolCallKind? = nil
+    kind: PerplexityToolCall.Kind? = nil
   ) {
     self.function = function
     self.id = id
@@ -29,5 +29,9 @@ public struct PerplexityToolCall: Codable, Sendable {
     case function
     case id
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case function = "function"
   }
 }

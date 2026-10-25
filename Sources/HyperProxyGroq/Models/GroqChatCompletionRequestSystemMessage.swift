@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct GroqChatCompletionRequestSystemMessage: Codable, Sendable {
-  public var content: GroqChatCompletionRequestSystemMessageContent
+  public var content: GroqChatCompletionRequestSystemMessage.Content
   public var name: String?
-  public var role: GroqChatCompletionRequestSystemMessageRole
+  public var role: GroqChatCompletionRequestSystemMessage.Role
 
   public init(
-    content: GroqChatCompletionRequestSystemMessageContent,
-    role: GroqChatCompletionRequestSystemMessageRole,
+    content: GroqChatCompletionRequestSystemMessage.Content,
+    role: GroqChatCompletionRequestSystemMessage.Role,
     name: String? = nil
   ) {
     self.content = content
@@ -29,5 +29,48 @@ public struct GroqChatCompletionRequestSystemMessage: Codable, Sendable {
     case content
     case name
     case role
+  }
+
+  public enum Content: Codable, Sendable {
+    case string(String)
+    case chatCompletionRequestMessageContentPartTextArray(
+      [GroqChatCompletionRequestMessageContentPartText])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .chatCompletionRequestMessageContentPartTextArray(
+        try container.decode([GroqChatCompletionRequestMessageContentPartText].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .chatCompletionRequestMessageContentPartTextArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case system = "system"
+    case developer = "developer"
+  }
+}
+
+extension GroqChatCompletionRequestSystemMessage.Content: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension GroqChatCompletionRequestSystemMessage.Content: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: GroqChatCompletionRequestMessageContentPartText...) {
+    self = .chatCompletionRequestMessageContentPartTextArray(elements)
   }
 }

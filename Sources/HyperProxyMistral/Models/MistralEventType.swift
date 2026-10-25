@@ -11,6 +11,6 @@ import Foundation
 import HyperProxyCore
 
 public enum MistralEventType: String, Codable, Hashable, Sendable {
-  case eVENT = "EVENT"
-  case eVENTPROGRESS = "EVENT_PROGRESS"
+  case event = "EVENT"
+  case eventProgress = "EVENT_PROGRESS"
 }

@@ -14,13 +14,13 @@ public struct OpenAIAdditionalTools: Codable, Sendable {
   public var id: String
   public var role: OpenAIMessageRole
   public var tools: [OpenAITool]
-  public var kind: OpenAIAdditionalToolsKind
+  public var kind: OpenAIAdditionalTools.Kind
 
   public init(
     id: String,
     role: OpenAIMessageRole,
     tools: [OpenAITool],
-    kind: OpenAIAdditionalToolsKind
+    kind: OpenAIAdditionalTools.Kind
   ) {
     self.id = id
     self.role = role
@@ -33,5 +33,9 @@ public struct OpenAIAdditionalTools: Codable, Sendable {
     case role
     case tools
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case additionalTools = "additional_tools"
   }
 }

@@ -15,17 +15,17 @@ public struct ElevenLabsCreatifyAuroraRequest: Codable, Sendable {
   public var audioGuidanceScale: Double?
   public var guidanceScale: Double?
   public var image: ElevenLabsImageReference
-  public var modelId: ElevenLabsCreatifyAuroraModelId
-  public var resolution: ElevenLabsCreatifyAuroraRequestResolution?
+  public var modelId: ElevenLabsCreatifyAuroraRequest.ModelId
+  public var resolution: ElevenLabsCreatifyAuroraRequest.Resolution?
   public var webhook: ElevenLabsWebhookTarget?
 
   public init(
     audio: ElevenLabsAudioReference,
     image: ElevenLabsImageReference,
-    modelId: ElevenLabsCreatifyAuroraModelId = .creatifyAurora,
+    modelId: ElevenLabsCreatifyAuroraRequest.ModelId = .creatifyAurora,
     audioGuidanceScale: Double? = nil,
     guidanceScale: Double? = nil,
-    resolution: ElevenLabsCreatifyAuroraRequestResolution? = nil,
+    resolution: ElevenLabsCreatifyAuroraRequest.Resolution? = nil,
     webhook: ElevenLabsWebhookTarget? = nil
   ) {
     self.audio = audio
@@ -45,5 +45,14 @@ public struct ElevenLabsCreatifyAuroraRequest: Codable, Sendable {
     case modelId = "model_id"
     case resolution
     case webhook
+  }
+
+  public enum ModelId: String, Codable, Hashable, Sendable {
+    case creatifyAurora = "creatify-aurora"
+  }
+
+  public enum Resolution: String, Codable, Hashable, Sendable {
+    case value480p = "480p"
+    case value720p = "720p"
   }
 }

@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksPricingPlanBillingType: String, Codable, Hashable, Sendable {
-  case bILLINGTYPEUNSPECIFIED = "BILLING_TYPE_UNSPECIFIED"
-  case tOKENUSAGE = "TOKEN_USAGE"
-  case aCCELERATORHOURS = "ACCELERATOR_HOURS"
+  case billingTypeUnspecified = "BILLING_TYPE_UNSPECIFIED"
+  case tokenUsage = "TOKEN_USAGE"
+  case acceleratorHours = "ACCELERATOR_HOURS"
 }

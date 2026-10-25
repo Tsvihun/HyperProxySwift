@@ -12,15 +12,15 @@ import HyperProxyCore
 
 public struct ElevenLabsClipAnimation: Codable, Sendable {
   public var enterDurationMs: Int?
-  public var enterEffect: ElevenLabsClipAnimationEnterEffect?
+  public var enterEffect: ElevenLabsClipAnimation.EnterEffect?
   public var exitDurationMs: Int?
-  public var exitEffect: ElevenLabsClipAnimationExitEffect?
+  public var exitEffect: ElevenLabsClipAnimation.ExitEffect?
 
   public init(
     enterDurationMs: Int? = nil,
-    enterEffect: ElevenLabsClipAnimationEnterEffect? = nil,
+    enterEffect: ElevenLabsClipAnimation.EnterEffect? = nil,
     exitDurationMs: Int? = nil,
-    exitEffect: ElevenLabsClipAnimationExitEffect? = nil
+    exitEffect: ElevenLabsClipAnimation.ExitEffect? = nil
   ) {
     self.enterDurationMs = enterDurationMs
     self.enterEffect = enterEffect
@@ -33,5 +33,39 @@ public struct ElevenLabsClipAnimation: Codable, Sendable {
     case enterEffect = "enter_effect"
     case exitDurationMs = "exit_duration_ms"
     case exitEffect = "exit_effect"
+  }
+
+  public enum EnterEffect: String, Codable, Hashable, Sendable {
+    case none = "none"
+    case fade = "fade"
+    case float = "float"
+    case gentleFloat = "gentle_float"
+    case zoomIn = "zoom_in"
+    case drop = "drop"
+    case slideLeft = "slide_left"
+    case slideRight = "slide_right"
+    case slideUp = "slide_up"
+    case slideDown = "slide_down"
+    case pop = "pop"
+    case bounce = "bounce"
+    case spin = "spin"
+    case slideBounce = "slide_bounce"
+  }
+
+  public enum ExitEffect: String, Codable, Hashable, Sendable {
+    case none = "none"
+    case fade = "fade"
+    case float = "float"
+    case gentleFloat = "gentle_float"
+    case zoomIn = "zoom_in"
+    case drop = "drop"
+    case slideLeft = "slide_left"
+    case slideRight = "slide_right"
+    case slideUp = "slide_up"
+    case slideDown = "slide_down"
+    case pop = "pop"
+    case bounce = "bounce"
+    case spin = "spin"
+    case slideBounce = "slide_bounce"
   }
 }

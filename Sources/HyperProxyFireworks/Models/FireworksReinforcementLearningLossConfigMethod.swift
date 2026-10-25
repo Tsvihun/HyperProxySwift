@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksReinforcementLearningLossConfigMethod: String, Codable, Hashable, Sendable {
-  case mETHODUNSPECIFIED = "METHOD_UNSPECIFIED"
-  case gRPO = "GRPO"
-  case dAPO = "DAPO"
-  case dPO = "DPO"
-  case oRPO = "ORPO"
-  case gSPOTOKEN = "GSPO_TOKEN"
+  case methodUnspecified = "METHOD_UNSPECIFIED"
+  case grpo = "GRPO"
+  case dapo = "DAPO"
+  case dpo = "DPO"
+  case orpo = "ORPO"
+  case gspoToken = "GSPO_TOKEN"
 }

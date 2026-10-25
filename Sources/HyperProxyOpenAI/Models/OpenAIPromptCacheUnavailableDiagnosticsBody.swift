@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIPromptCacheUnavailableDiagnosticsBody: Codable, Sendable {
-  public var kind: OpenAIPromptCacheUnavailableDiagnosticsBodyKind
+  public var kind: OpenAIPromptCacheUnavailableDiagnosticsBody.Kind
 
   public init(
-    kind: OpenAIPromptCacheUnavailableDiagnosticsBodyKind
+    kind: OpenAIPromptCacheUnavailableDiagnosticsBody.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case unavailable = "unavailable"
   }
 }

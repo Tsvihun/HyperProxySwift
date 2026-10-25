@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct OpenAILiveSIPTrunkAuth: Codable, Sendable {
   public var password: String
-  public var kind: OpenAILiveSIPTrunkAuthKind
+  public var kind: OpenAILiveSIPTrunkAuth.Kind
   public var username: String
 
   public init(
     password: String,
-    kind: OpenAILiveSIPTrunkAuthKind,
+    kind: OpenAILiveSIPTrunkAuth.Kind,
     username: String
   ) {
     self.password = password
@@ -29,5 +29,9 @@ public struct OpenAILiveSIPTrunkAuth: Codable, Sendable {
     case password
     case kind = "type"
     case username
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case digest = "digest"
   }
 }

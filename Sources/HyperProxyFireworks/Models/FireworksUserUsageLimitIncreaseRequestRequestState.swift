@@ -12,8 +12,8 @@ import HyperProxyCore
 
 public enum FireworksUserUsageLimitIncreaseRequestRequestState: String, Codable, Hashable, Sendable
 {
-  case rEQUESTSTATEUNSPECIFIED = "REQUEST_STATE_UNSPECIFIED"
-  case pENDING = "PENDING"
-  case aPPROVED = "APPROVED"
-  case rEJECTED = "REJECTED"
+  case requestStateUnspecified = "REQUEST_STATE_UNSPECIFIED"
+  case pending = "PENDING"
+  case approved = "APPROVED"
+  case rejected = "REJECTED"
 }

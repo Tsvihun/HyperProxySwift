@@ -12,10 +12,10 @@ import HyperProxyCore
 
 public struct OpenAIBetaApplyPatchToolParam: Codable, Sendable {
   public var allowedCallers: [OpenAIBetaCallableToolAllowedCaller]?
-  public var kind: OpenAIBetaApplyPatchToolParamKind
+  public var kind: OpenAIBetaApplyPatchToolParam.Kind
 
   public init(
-    kind: OpenAIBetaApplyPatchToolParamKind,
+    kind: OpenAIBetaApplyPatchToolParam.Kind,
     allowedCallers: [OpenAIBetaCallableToolAllowedCaller]? = nil
   ) {
     self.allowedCallers = allowedCallers
@@ -25,5 +25,9 @@ public struct OpenAIBetaApplyPatchToolParam: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case allowedCallers = "allowed_callers"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case applyPatch = "apply_patch"
   }
 }

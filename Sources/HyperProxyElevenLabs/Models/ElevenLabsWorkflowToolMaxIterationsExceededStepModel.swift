@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct ElevenLabsWorkflowToolMaxIterationsExceededStepModel: Codable, Sendable {
   public var maxIterations: Int
   public var stepLatencySecs: Double
-  public var kind: ElevenLabsMaxIterationsExceededKind?
+  public var kind: ElevenLabsWorkflowToolMaxIterationsExceededStepModel.Kind?
 
   public init(
     maxIterations: Int,
     stepLatencySecs: Double,
-    kind: ElevenLabsMaxIterationsExceededKind? = nil
+    kind: ElevenLabsWorkflowToolMaxIterationsExceededStepModel.Kind? = nil
   ) {
     self.maxIterations = maxIterations
     self.stepLatencySecs = stepLatencySecs
@@ -29,5 +29,9 @@ public struct ElevenLabsWorkflowToolMaxIterationsExceededStepModel: Codable, Sen
     case maxIterations = "max_iterations"
     case stepLatencySecs = "step_latency_secs"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case maxIterationsExceeded = "max_iterations_exceeded"
   }
 }

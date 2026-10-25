@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsOAuth2JWTResponse: Codable, Sendable {
-  public var algorithm: ElevenLabsOAuth2JWTResponseAlgorithm?
+  public var algorithm: ElevenLabsOAuth2JWTResponse.Algorithm?
   public var audience: String
   public var authType: ElevenLabsOauth2JwtAuthType?
   public var expirationSeconds: Int?
@@ -26,7 +26,7 @@ public struct ElevenLabsOAuth2JWTResponse: Codable, Sendable {
   public var statusDetail: String?
   public var statusUpdatedAt: String?
   public var subject: String
-  public var tokenResponseField: ElevenLabsOAuth2JWTResponseTokenResponseField?
+  public var tokenResponseField: ElevenLabsOAuth2JWTResponse.TokenResponseField?
   public var tokenUrl: String
   public var usedBy: ElevenLabsAuthConnectionDependencies?
 
@@ -38,7 +38,7 @@ public struct ElevenLabsOAuth2JWTResponse: Codable, Sendable {
     provider: String,
     subject: String,
     tokenUrl: String,
-    algorithm: ElevenLabsOAuth2JWTResponseAlgorithm? = nil,
+    algorithm: ElevenLabsOAuth2JWTResponse.Algorithm? = nil,
     authType: ElevenLabsOauth2JwtAuthType? = nil,
     expirationSeconds: Int? = nil,
     extraParams: [String: String]? = nil,
@@ -47,7 +47,7 @@ public struct ElevenLabsOAuth2JWTResponse: Codable, Sendable {
     status: ElevenLabsAuthConnectionStatus? = nil,
     statusDetail: String? = nil,
     statusUpdatedAt: String? = nil,
-    tokenResponseField: ElevenLabsOAuth2JWTResponseTokenResponseField? = nil,
+    tokenResponseField: ElevenLabsOAuth2JWTResponse.TokenResponseField? = nil,
     usedBy: ElevenLabsAuthConnectionDependencies? = nil
   ) {
     self.algorithm = algorithm
@@ -89,5 +89,19 @@ public struct ElevenLabsOAuth2JWTResponse: Codable, Sendable {
     case tokenResponseField = "token_response_field"
     case tokenUrl = "token_url"
     case usedBy = "used_by"
+  }
+
+  public enum Algorithm: String, Codable, Hashable, Sendable {
+    case hs256 = "HS256"
+    case hs384 = "HS384"
+    case hs512 = "HS512"
+    case rs256 = "RS256"
+    case rs384 = "RS384"
+    case rs512 = "RS512"
+  }
+
+  public enum TokenResponseField: String, Codable, Hashable, Sendable {
+    case accessToken = "access_token"
+    case idToken = "id_token"
   }
 }

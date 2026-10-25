@@ -11,8 +11,8 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksGatewayAccountUsageLimitsEnforcementMode: String, Codable, Hashable, Sendable {
-  case eNFORCEMENTMODEUNSPECIFIED = "ENFORCEMENT_MODE_UNSPECIFIED"
-  case dISABLED = "DISABLED"
-  case wARN = "WARN"
-  case bLOCK = "BLOCK"
+  case enforcementModeUnspecified = "ENFORCEMENT_MODE_UNSPECIFIED"
+  case disabled = "DISABLED"
+  case warn = "WARN"
+  case block = "BLOCK"
 }

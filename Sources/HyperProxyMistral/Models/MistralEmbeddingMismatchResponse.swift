@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct MistralEmbeddingMismatchResponse: Codable, Sendable {
   public var expected: Int
   public var received: Int
-  public var kind: MistralEmbeddingMismatchKind?
+  public var kind: MistralEmbeddingMismatchResponse.Kind?
 
   public init(
     expected: Int,
     received: Int,
-    kind: MistralEmbeddingMismatchKind? = nil
+    kind: MistralEmbeddingMismatchResponse.Kind? = nil
   ) {
     self.expected = expected
     self.received = received
@@ -29,5 +29,9 @@ public struct MistralEmbeddingMismatchResponse: Codable, Sendable {
     case expected
     case received
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case embeddingMismatch = "embedding_mismatch"
   }
 }

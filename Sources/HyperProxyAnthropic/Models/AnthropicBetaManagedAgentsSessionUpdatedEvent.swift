@@ -17,12 +17,12 @@ public struct AnthropicBetaManagedAgentsSessionUpdatedEvent: Codable, Sendable {
   public var metadata: [String: String]?
   public var processedAt: AnthropicBetaTimestamp
   public var title: String?
-  public var kind: AnthropicBetaManagedAgentsSessionUpdatedEventKind
+  public var kind: AnthropicBetaManagedAgentsSessionUpdatedEvent.Kind
 
   public init(
     id: String,
     processedAt: AnthropicBetaTimestamp,
-    kind: AnthropicBetaManagedAgentsSessionUpdatedEventKind,
+    kind: AnthropicBetaManagedAgentsSessionUpdatedEvent.Kind,
     agent: AnthropicBetaManagedAgentsSessionAgent? = nil,
     budget: AnthropicBetaManagedAgentsBudget? = nil,
     metadata: [String: String]? = nil,
@@ -45,5 +45,9 @@ public struct AnthropicBetaManagedAgentsSessionUpdatedEvent: Codable, Sendable {
     case processedAt = "processed_at"
     case title
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case sessionUpdated = "session.updated"
   }
 }

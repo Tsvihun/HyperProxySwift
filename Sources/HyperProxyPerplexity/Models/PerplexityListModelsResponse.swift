@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct PerplexityListModelsResponse: Codable, Sendable {
   public var data: [PerplexityModel]
-  public var object: PerplexityListModelsResponseObject
+  public var object: PerplexityListModelsResponse.Object
 
   public init(
     data: [PerplexityModel],
-    object: PerplexityListModelsResponseObject
+    object: PerplexityListModelsResponse.Object
   ) {
     self.data = data
     self.object = object
@@ -25,5 +25,9 @@ public struct PerplexityListModelsResponse: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case data
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case list = "list"
   }
 }

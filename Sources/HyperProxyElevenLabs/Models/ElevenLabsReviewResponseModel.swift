@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct ElevenLabsReviewResponseModel: Codable, Sendable {
   public var explanation: String?
-  public var rejectReasons: [ElevenLabsReviewResponseModelRejectReasonsAnyOf1Item]?
+  public var rejectReasons: [ElevenLabsReviewResponseModelRejectReasonsItem]?
   public var rejectedDetails: String?
-  public var reviewStatus: ElevenLabsReviewResponseModelReviewStatus
+  public var reviewStatus: ElevenLabsReviewResponseModel.ReviewStatus
   public var reviewedAtUnix: Int
   public var reviewedBy: String?
   public var scoresBreakdown: [String: Int]?
 
   public init(
-    reviewStatus: ElevenLabsReviewResponseModelReviewStatus,
+    reviewStatus: ElevenLabsReviewResponseModel.ReviewStatus,
     reviewedAtUnix: Int,
     explanation: String? = nil,
-    rejectReasons: [ElevenLabsReviewResponseModelRejectReasonsAnyOf1Item]? = nil,
+    rejectReasons: [ElevenLabsReviewResponseModelRejectReasonsItem]? = nil,
     rejectedDetails: String? = nil,
     reviewedBy: String? = nil,
     scoresBreakdown: [String: Int]? = nil
@@ -45,5 +45,11 @@ public struct ElevenLabsReviewResponseModel: Codable, Sendable {
     case reviewedAtUnix = "reviewed_at_unix"
     case reviewedBy = "reviewed_by"
     case scoresBreakdown = "scores_breakdown"
+  }
+
+  public enum ReviewStatus: String, Codable, Hashable, Sendable {
+    case approved = "approved"
+    case editsRequired = "edits_required"
+    case rejected = "rejected"
   }
 }

@@ -11,26 +11,66 @@ import Foundation
 import HyperProxyCore
 
 public enum OpenRouterContainerNetworkPolicy: Codable, Sendable {
-  case containerNetworkPolicyAnyOf1(OpenRouterContainerNetworkPolicyAnyOf1)
-  case containerNetworkPolicyAnyOf2(OpenRouterContainerNetworkPolicyAnyOf2)
+  case disabled(OpenRouterContainerNetworkPolicy.Disabled)
+  case allowlist(OpenRouterContainerNetworkPolicy.Allowlist)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(OpenRouterContainerNetworkPolicyAnyOf1.self) {
-      self = .containerNetworkPolicyAnyOf1(value)
+    if let value = try? container.decode(OpenRouterContainerNetworkPolicy.Disabled.self) {
+      self = .disabled(value)
       return
     }
-    self = .containerNetworkPolicyAnyOf2(
-      try container.decode(OpenRouterContainerNetworkPolicyAnyOf2.self))
+    self = .allowlist(
+      try container.decode(OpenRouterContainerNetworkPolicy.Allowlist.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .containerNetworkPolicyAnyOf1(let value):
+    case .disabled(let value):
       try container.encode(value)
-    case .containerNetworkPolicyAnyOf2(let value):
+    case .allowlist(let value):
       try container.encode(value)
+    }
+  }
+
+  public struct Disabled: Codable, Sendable {
+    public var kind: OpenRouterContainerNetworkPolicy.Disabled.Kind
+
+    public init(
+      kind: OpenRouterContainerNetworkPolicy.Disabled.Kind
+    ) {
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case kind = "type"
+    }
+
+    public enum Kind: String, Codable, Hashable, Sendable {
+      case disabled = "disabled"
+    }
+  }
+
+  public struct Allowlist: Codable, Sendable {
+    public var allowedDomains: [String]
+    public var kind: OpenRouterContainerNetworkPolicy.Allowlist.Kind
+
+    public init(
+      allowedDomains: [String],
+      kind: OpenRouterContainerNetworkPolicy.Allowlist.Kind
+    ) {
+      self.allowedDomains = allowedDomains
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case allowedDomains = "allowed_domains"
+      case kind = "type"
+    }
+
+    public enum Kind: String, Codable, Hashable, Sendable {
+      case allowlist = "allowlist"
     }
   }
 }

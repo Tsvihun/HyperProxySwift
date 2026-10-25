@@ -14,11 +14,11 @@ public struct AnthropicBetaAwsExternalKeyConfig: Codable, Sendable {
   public var kmsArn: String
   public var region: String?
   public var roleArn: String?
-  public var kind: AnthropicAwsKind
+  public var kind: AnthropicBetaAwsExternalKeyConfig.Kind
 
   public init(
     kmsArn: String,
-    kind: AnthropicAwsKind = .aws,
+    kind: AnthropicBetaAwsExternalKeyConfig.Kind = .aws,
     region: String? = nil,
     roleArn: String? = nil
   ) {
@@ -33,5 +33,9 @@ public struct AnthropicBetaAwsExternalKeyConfig: Codable, Sendable {
     case region
     case roleArn = "role_arn"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case aws = "aws"
   }
 }

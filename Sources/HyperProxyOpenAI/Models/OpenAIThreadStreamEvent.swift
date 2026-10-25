@@ -10,4 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIThreadStreamEvent = OpenAIThreadStreamEventOneOf1
+public typealias OpenAIThreadStreamEvent = OpenAIThreadStreamEventWithDataAndEnabledAndEvent

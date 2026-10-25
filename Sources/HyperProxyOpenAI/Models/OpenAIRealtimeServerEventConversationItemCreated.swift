@@ -14,12 +14,12 @@ public struct OpenAIRealtimeServerEventConversationItemCreated: Codable, Sendabl
   public var eventId: String
   public var item: OpenAIRealtimeConversationItem
   public var previousItemId: String?
-  public var kind: OpenAIRealtimeServerEventConversationItemCreatedKind
+  public var kind: OpenAIRealtimeServerEventConversationItemCreated.Kind
 
   public init(
     eventId: String,
     item: OpenAIRealtimeConversationItem,
-    kind: OpenAIRealtimeServerEventConversationItemCreatedKind,
+    kind: OpenAIRealtimeServerEventConversationItemCreated.Kind,
     previousItemId: String? = nil
   ) {
     self.eventId = eventId
@@ -33,5 +33,11 @@ public struct OpenAIRealtimeServerEventConversationItemCreated: Codable, Sendabl
     case item
     case previousItemId = "previous_item_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case conversationItemCreated = "conversation.item.created"
   }
 }

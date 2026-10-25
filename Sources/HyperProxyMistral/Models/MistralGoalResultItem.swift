@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct MistralGoalResultItem: Codable, Sendable {
   public var actual: Double
-  public var direction: MistralGoalResultItemDirection?
+  public var direction: MistralGoalResultItem.Direction?
   public var metric: String
   public var operatorValue: String
   public var passed: Bool
@@ -25,7 +25,7 @@ public struct MistralGoalResultItem: Codable, Sendable {
     metric: String,
     operatorValue: String,
     passed: Bool,
-    direction: MistralGoalResultItemDirection? = nil,
+    direction: MistralGoalResultItem.Direction? = nil,
     target: Double? = nil,
     targetMax: Double? = nil,
     targetMin: Double? = nil
@@ -49,5 +49,10 @@ public struct MistralGoalResultItem: Codable, Sendable {
     case target
     case targetMax = "target_max"
     case targetMin = "target_min"
+  }
+
+  public enum Direction: String, Codable, Hashable, Sendable {
+    case higherIsBetter = "higher_is_better"
+    case lowerIsBetter = "lower_is_better"
   }
 }

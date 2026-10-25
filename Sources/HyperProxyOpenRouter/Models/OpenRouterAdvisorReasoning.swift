@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterAdvisorReasoning: Codable, Sendable {
-  public var effort: OpenRouterAdvisorReasoningEffort?
+  public var effort: OpenRouterAdvisorReasoning.Effort?
   public var maxTokens: Int?
 
   public init(
-    effort: OpenRouterAdvisorReasoningEffort? = nil,
+    effort: OpenRouterAdvisorReasoning.Effort? = nil,
     maxTokens: Int? = nil
   ) {
     self.effort = effort
@@ -25,5 +25,15 @@ public struct OpenRouterAdvisorReasoning: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case effort
     case maxTokens = "max_tokens"
+  }
+
+  public enum Effort: String, Codable, Hashable, Sendable {
+    case max = "max"
+    case xhigh = "xhigh"
+    case high = "high"
+    case medium = "medium"
+    case low = "low"
+    case minimal = "minimal"
+    case none = "none"
   }
 }

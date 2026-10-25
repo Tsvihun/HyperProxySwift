@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralCreateConnectorRequest: Codable, Sendable {
-  public var authMethods: [MistralCreateConnectorRequestAuthMethodsAnyOf1Item]?
+  public var authMethods: [MistralCreateConnectorRequestAuthMethodsItem]?
   public var description: String
   public var globalHeaders: [String: MistralGlobalHeaderValue]?
   public var headers: [String: HyperProxyJSONValue]?
@@ -19,7 +19,7 @@ public struct MistralCreateConnectorRequest: Codable, Sendable {
   public var name: String
   public var oauth2ServerMetadata: MistralExtendedOAuthServerMetadata?
   public var oauth2ServerMetadataUrl: String?
-  public var protocolModel: MistralMcpProtocolModel?
+  public var protocolValue: MistralMcpProtocolModel?
   public var server: String
   public var systemPrompt: String?
   public var title: String?
@@ -29,13 +29,13 @@ public struct MistralCreateConnectorRequest: Codable, Sendable {
     description: String,
     name: String,
     server: String,
-    authMethods: [MistralCreateConnectorRequestAuthMethodsAnyOf1Item]? = nil,
+    authMethods: [MistralCreateConnectorRequestAuthMethodsItem]? = nil,
     globalHeaders: [String: MistralGlobalHeaderValue]? = nil,
     headers: [String: HyperProxyJSONValue]? = nil,
     iconUrl: String? = nil,
     oauth2ServerMetadata: MistralExtendedOAuthServerMetadata? = nil,
     oauth2ServerMetadataUrl: String? = nil,
-    protocolModel: MistralMcpProtocolModel? = nil,
+    protocolValue: MistralMcpProtocolModel? = nil,
     systemPrompt: String? = nil,
     title: String? = nil,
     visibility: MistralPublicResourceVisibility? = nil
@@ -48,7 +48,7 @@ public struct MistralCreateConnectorRequest: Codable, Sendable {
     self.name = name
     self.oauth2ServerMetadata = oauth2ServerMetadata
     self.oauth2ServerMetadataUrl = oauth2ServerMetadataUrl
-    self.protocolModel = protocolModel
+    self.protocolValue = protocolValue
     self.server = server
     self.systemPrompt = systemPrompt
     self.title = title
@@ -64,7 +64,7 @@ public struct MistralCreateConnectorRequest: Codable, Sendable {
     case name
     case oauth2ServerMetadata = "oauth2_server_metadata"
     case oauth2ServerMetadataUrl = "oauth2_server_metadata_url"
-    case protocolModel = "protocol"
+    case protocolValue = "protocol"
     case server
     case systemPrompt = "system_prompt"
     case title

@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct AnthropicMessageBatchIndividualResponse: Codable, Sendable {
   public var customId: String
-  public var result: AnthropicMessageBatchIndividualResponseResult
+  public var result: AnthropicMessageBatchIndividualResponse.ResultValue
 
   public init(
     customId: String,
-    result: AnthropicMessageBatchIndividualResponseResult
+    result: AnthropicMessageBatchIndividualResponse.ResultValue
   ) {
     self.customId = customId
     self.result = result
@@ -25,5 +25,43 @@ public struct AnthropicMessageBatchIndividualResponse: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case customId = "custom_id"
     case result
+  }
+
+  public enum ResultValue: Codable, Sendable {
+    case succeededResult(AnthropicSucceededResult)
+    case erroredResult(AnthropicErroredResult)
+    case canceledResult(AnthropicCanceledResult)
+    case expiredResult(AnthropicExpiredResult)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(AnthropicSucceededResult.self) {
+        self = .succeededResult(value)
+        return
+      }
+      if let value = try? container.decode(AnthropicErroredResult.self) {
+        self = .erroredResult(value)
+        return
+      }
+      if let value = try? container.decode(AnthropicCanceledResult.self) {
+        self = .canceledResult(value)
+        return
+      }
+      self = .expiredResult(try container.decode(AnthropicExpiredResult.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .succeededResult(let value):
+        try container.encode(value)
+      case .erroredResult(let value):
+        try container.encode(value)
+      case .canceledResult(let value):
+        try container.encode(value)
+      case .expiredResult(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

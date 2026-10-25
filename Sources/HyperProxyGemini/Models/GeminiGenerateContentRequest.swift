@@ -18,7 +18,7 @@ public struct GeminiGenerateContentRequest: Codable, Sendable {
   public var labels: [String: String]?
   public var model: String?
   public var safetySettings: [GeminiSafetySetting]?
-  public var serviceTier: GeminiGenerateContentRequestServiceTier?
+  public var serviceTier: GeminiGenerateContentRequest.ServiceTier?
   public var store: Bool?
   public var systemInstruction: GeminiContent?
   public var toolConfig: GeminiToolConfig?
@@ -32,7 +32,7 @@ public struct GeminiGenerateContentRequest: Codable, Sendable {
     labels: [String: String]? = nil,
     model: String? = nil,
     safetySettings: [GeminiSafetySetting]? = nil,
-    serviceTier: GeminiGenerateContentRequestServiceTier? = nil,
+    serviceTier: GeminiGenerateContentRequest.ServiceTier? = nil,
     store: Bool? = nil,
     systemInstruction: GeminiContent? = nil,
     toolConfig: GeminiToolConfig? = nil,
@@ -65,5 +65,12 @@ public struct GeminiGenerateContentRequest: Codable, Sendable {
     case systemInstruction
     case toolConfig
     case tools
+  }
+
+  public enum ServiceTier: String, Codable, Hashable, Sendable {
+    case unspecified = "unspecified"
+    case standard = "standard"
+    case flex = "flex"
+    case priority = "priority"
   }
 }

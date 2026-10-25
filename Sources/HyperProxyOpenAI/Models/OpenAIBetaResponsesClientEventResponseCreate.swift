@@ -43,12 +43,12 @@ public struct OpenAIBetaResponsesClientEventResponseCreate: Codable, Sendable {
   public var tools: OpenAIBetaToolsArray?
   public var topLogprobs: Int?
   public var topP: Double?
-  public var truncation: OpenAIBetaCreateResponseAllOf3Truncation?
-  public var kind: OpenAIBetaResponsesClientEventResponseCreateAllOf1Kind
+  public var truncation: OpenAIBetaCreateResponseTruncation?
+  public var kind: OpenAIBetaResponsesClientEventResponseCreateKind
   public var user: String?
 
   public init(
-    kind: OpenAIBetaResponsesClientEventResponseCreateAllOf1Kind,
+    kind: OpenAIBetaResponsesClientEventResponseCreateKind,
     accessPrograms: OpenAIBetaAccessProgramsParam? = nil,
     background: Bool? = nil,
     contextManagement: [OpenAIBetaContextManagementParam]? = nil,
@@ -81,7 +81,7 @@ public struct OpenAIBetaResponsesClientEventResponseCreate: Codable, Sendable {
     tools: OpenAIBetaToolsArray? = nil,
     topLogprobs: Int? = nil,
     topP: Double? = nil,
-    truncation: OpenAIBetaCreateResponseAllOf3Truncation? = nil,
+    truncation: OpenAIBetaCreateResponseTruncation? = nil,
     user: String? = nil
   ) {
     self.accessPrograms = accessPrograms
@@ -157,5 +157,23 @@ public struct OpenAIBetaResponsesClientEventResponseCreate: Codable, Sendable {
     case truncation
     case kind = "type"
     case user
+  }
+
+  public struct ResponseCreate: Codable, Sendable {
+    public var streamId: String?
+    public var kind: OpenAIBetaResponsesClientEventResponseCreateKind
+
+    public init(
+      kind: OpenAIBetaResponsesClientEventResponseCreateKind,
+      streamId: String? = nil
+    ) {
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case streamId = "stream_id"
+      case kind = "type"
+    }
   }
 }

@@ -11,15 +11,48 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsWorkflowToolResponseModelOutput: Codable, Sendable {
-  public var steps: [ElevenLabsWorkflowToolResponseModelOutputStepsItem]?
+  public var steps: [ElevenLabsWorkflowToolResponseModelOutput.StepsElement]?
 
   public init(
-    steps: [ElevenLabsWorkflowToolResponseModelOutputStepsItem]? = nil
+    steps: [ElevenLabsWorkflowToolResponseModelOutput.StepsElement]? = nil
   ) {
     self.steps = steps
   }
 
   enum CodingKeys: String, CodingKey {
     case steps
+  }
+
+  public enum StepsElement: Codable, Sendable {
+    case workflowToolEdgeStepModel(ElevenLabsWorkflowToolEdgeStepModel)
+    case workflowToolNestedToolsStepModelOutput(ElevenLabsWorkflowToolNestedToolsStepModelOutput)
+    case workflowToolMaxIterationsExceededStepModel(
+      ElevenLabsWorkflowToolMaxIterationsExceededStepModel)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsWorkflowToolEdgeStepModel.self) {
+        self = .workflowToolEdgeStepModel(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsWorkflowToolNestedToolsStepModelOutput.self) {
+        self = .workflowToolNestedToolsStepModelOutput(value)
+        return
+      }
+      self = .workflowToolMaxIterationsExceededStepModel(
+        try container.decode(ElevenLabsWorkflowToolMaxIterationsExceededStepModel.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .workflowToolEdgeStepModel(let value):
+        try container.encode(value)
+      case .workflowToolNestedToolsStepModelOutput(let value):
+        try container.encode(value)
+      case .workflowToolMaxIterationsExceededStepModel(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

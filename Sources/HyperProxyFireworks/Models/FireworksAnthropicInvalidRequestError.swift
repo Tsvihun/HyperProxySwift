@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct FireworksAnthropicInvalidRequestError: Codable, Sendable {
   public var message: String
-  public var kind: FireworksInvalidRequestErrorKind
+  public var kind: FireworksAnthropicInvalidRequestError.Kind
 
   public init(
     message: String,
-    kind: FireworksInvalidRequestErrorKind = .invalidRequestError
+    kind: FireworksAnthropicInvalidRequestError.Kind = .invalidRequestError
   ) {
     self.message = message
     self.kind = kind
@@ -25,5 +25,9 @@ public struct FireworksAnthropicInvalidRequestError: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case message
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case invalidRequestError = "invalid_request_error"
   }
 }

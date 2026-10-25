@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralConnectorUpdateCredentialsParameters: Codable, Sendable {
-  public var connectorIdOrName: MistralConnectorUpdateCredentialsParametersConnectorIdOrName
-  public var consumerScope: MistralConnectorUpdateCredentialsParametersConsumerScope
+  public var connectorIdOrName: MistralConnectorUpdateCredentialsParameters.ConnectorIdOrName
+  public var consumerScope: MistralConnectorUpdateCredentialsParameters.ConsumerScope
 
   public init(
-    connectorIdOrName: MistralConnectorUpdateCredentialsParametersConnectorIdOrName,
-    consumerScope: MistralConnectorUpdateCredentialsParametersConsumerScope
+    connectorIdOrName: MistralConnectorUpdateCredentialsParameters.ConnectorIdOrName,
+    consumerScope: MistralConnectorUpdateCredentialsParameters.ConsumerScope
   ) {
     self.connectorIdOrName = connectorIdOrName
     self.consumerScope = consumerScope
@@ -25,5 +25,66 @@ public struct MistralConnectorUpdateCredentialsParameters: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case connectorIdOrName = "connector_id_or_name"
     case consumerScope = "consumer_scope"
+  }
+
+  public enum ConnectorIdOrName: Codable, Sendable {
+    case string(String)
+    case uuid(
+      MistralConnectorUpdateCredentialsParameters.ConnectorIdOrName.Uuid)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .uuid(
+        try container.decode(
+          MistralConnectorUpdateCredentialsParameters.ConnectorIdOrName.Uuid.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .uuid(let value):
+        try container.encode(value)
+      }
+    }
+
+    public struct Uuid: RawRepresentable,
+      Codable, Hashable, Sendable
+    {
+      public var rawValue: String
+
+      public init(rawValue: String) {
+        self.rawValue = rawValue
+      }
+
+    }
+  }
+
+  public enum ConsumerScope: String, Codable, Hashable,
+    Sendable
+  {
+    case user = "user"
+    case workspace = "workspace"
+    case organization = "organization"
+  }
+}
+
+extension MistralConnectorUpdateCredentialsParameters.ConnectorIdOrName: ExpressibleByStringLiteral
+{
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension MistralConnectorUpdateCredentialsParameters.ConnectorIdOrName.Uuid:
+  ExpressibleByStringLiteral
+{
+  public init(stringLiteral value: String) {
+    self.init(rawValue: value)
   }
 }

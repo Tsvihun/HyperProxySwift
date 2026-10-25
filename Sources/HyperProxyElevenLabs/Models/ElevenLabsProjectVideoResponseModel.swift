@@ -47,7 +47,7 @@ public struct ElevenLabsProjectVideoResponseModel: Codable, Sendable {
   public var startTimeMs: Int
   public var thumbnailIntervalSeconds: Double
   public var thumbnailSheets: [ElevenLabsProjectVideoThumbnailSheetResponseModel]
-  public var thumbnailSize: ElevenLabsProjectVideoResponseModelThumbnailSize
+  public var thumbnailSize: ElevenLabsProjectVideoResponseModel.ThumbnailSize
   public var trackId: String?
   public var transcription: ElevenLabsAssetTranscription?
   public var kind: ElevenLabsVideoKind?
@@ -73,7 +73,7 @@ public struct ElevenLabsProjectVideoResponseModel: Codable, Sendable {
     startTimeMs: Int,
     thumbnailIntervalSeconds: Double,
     thumbnailSheets: [ElevenLabsProjectVideoThumbnailSheetResponseModel],
-    thumbnailSize: ElevenLabsProjectVideoResponseModelThumbnailSize,
+    thumbnailSize: ElevenLabsProjectVideoResponseModel.ThumbnailSize,
     updatedAtMs: Int,
     videoId: String,
     volumeGainDb: Double,
@@ -193,5 +193,36 @@ public struct ElevenLabsProjectVideoResponseModel: Codable, Sendable {
     case videoId = "video_id"
     case volumeGainDb = "volume_gain_db"
     case width
+  }
+
+  public struct ThumbnailSize: Codable, Sendable {
+    public var item1: Int
+    public var item2: Int
+
+    public init(
+      item1: Int,
+      item2: Int
+    ) {
+      self.item1 = item1
+      self.item2 = item2
+    }
+
+    public init(from decoder: any Decoder) throws {
+      var container = try decoder.unkeyedContainer()
+      self.item1 = try container.decode(Int.self)
+      self.item2 = try container.decode(Int.self)
+      guard container.isAtEnd else {
+        throw DecodingError.dataCorruptedError(
+          in: container,
+          debugDescription: "Expected exactly 2 tuple values."
+        )
+      }
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.unkeyedContainer()
+      try container.encode(self.item1)
+      try container.encode(self.item2)
+    }
   }
 }

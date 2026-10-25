@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherStreamSentinel: Codable, Sendable {
-  public var data: TogetherStreamSentinelData
+  public var data: TogetherStreamSentinel.DataValue
 
   public init(
-    data: TogetherStreamSentinelData
+    data: TogetherStreamSentinel.DataValue
   ) {
     self.data = data
   }
 
   enum CodingKeys: String, CodingKey {
     case data
+  }
+
+  public enum DataValue: String, Codable, Hashable, Sendable {
+    case done = "[DONE]"
   }
 }

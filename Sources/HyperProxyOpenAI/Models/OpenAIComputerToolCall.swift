@@ -16,15 +16,15 @@ public struct OpenAIComputerToolCall: Codable, Sendable {
   public var callId: String
   public var id: String
   public var pendingSafetyChecks: [OpenAIComputerCallSafetyCheckParam]
-  public var status: OpenAIComputerToolCallStatus
-  public var kind: OpenAIComputerToolCallKind
+  public var status: OpenAIComputerToolCall.Status
+  public var kind: OpenAIComputerToolCall.Kind
 
   public init(
     callId: String,
     id: String,
     pendingSafetyChecks: [OpenAIComputerCallSafetyCheckParam],
-    status: OpenAIComputerToolCallStatus,
-    kind: OpenAIComputerToolCallKind,
+    status: OpenAIComputerToolCall.Status,
+    kind: OpenAIComputerToolCall.Kind,
     action: OpenAIComputerAction? = nil,
     actions: OpenAIComputerActionList? = nil
   ) {
@@ -45,5 +45,15 @@ public struct OpenAIComputerToolCall: Codable, Sendable {
     case pendingSafetyChecks = "pending_safety_checks"
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case computerCall = "computer_call"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case inProgress = "in_progress"
+    case completed = "completed"
+    case incomplete = "incomplete"
   }
 }

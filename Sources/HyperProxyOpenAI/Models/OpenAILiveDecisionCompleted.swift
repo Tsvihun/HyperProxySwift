@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAILiveDecisionCompleted: Codable, Sendable {
   public var decision: OpenAIDecisionResponse
-  public var kind: OpenAILiveDecisionCompletedKind
+  public var kind: OpenAILiveDecisionCompleted.Kind
 
   public init(
     decision: OpenAIDecisionResponse,
-    kind: OpenAILiveDecisionCompletedKind
+    kind: OpenAILiveDecisionCompleted.Kind
   ) {
     self.decision = decision
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenAILiveDecisionCompleted: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case decision
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case decisionCompleted = "decision.completed"
   }
 }

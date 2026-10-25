@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct FireworksAnthropicMessageStopEvent: Codable, Sendable {
-  public var kind: FireworksMessageStopKind
+  public var kind: FireworksAnthropicMessageStopEvent.Kind
 
   public init(
-    kind: FireworksMessageStopKind = .messageStop
+    kind: FireworksAnthropicMessageStopEvent.Kind = .messageStop
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case messageStop = "message_stop"
   }
 }

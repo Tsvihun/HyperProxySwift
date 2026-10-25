@@ -11,22 +11,22 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterGetAppRankingsParameters: Codable, Sendable {
-  public var category: OpenRouterGetAppRankingsParametersCategory?
+  public var category: OpenRouterGetAppRankingsParameters.Category?
   public var endDate: String?
   public var limit: Int?
   public var offset: Int?
-  public var sort: OpenRouterGetAppRankingsParametersSort?
+  public var sort: OpenRouterGetAppRankingsParameters.Sort?
   public var startDate: String?
-  public var subcategory: OpenRouterGetAppRankingsParametersSubcategory?
+  public var subcategory: OpenRouterGetAppRankingsParameters.Subcategory?
 
   public init(
-    category: OpenRouterGetAppRankingsParametersCategory? = nil,
+    category: OpenRouterGetAppRankingsParameters.Category? = nil,
     endDate: String? = nil,
     limit: Int? = nil,
     offset: Int? = nil,
-    sort: OpenRouterGetAppRankingsParametersSort? = nil,
+    sort: OpenRouterGetAppRankingsParameters.Sort? = nil,
     startDate: String? = nil,
-    subcategory: OpenRouterGetAppRankingsParametersSubcategory? = nil
+    subcategory: OpenRouterGetAppRankingsParameters.Subcategory? = nil
   ) {
     self.category = category
     self.endDate = endDate
@@ -45,5 +45,35 @@ public struct OpenRouterGetAppRankingsParameters: Codable, Sendable {
     case sort
     case startDate = "start_date"
     case subcategory
+  }
+
+  public enum Category: String, Codable, Hashable, Sendable {
+    case coding = "coding"
+    case creative = "creative"
+    case productivity = "productivity"
+    case entertainment = "entertainment"
+  }
+
+  public enum Sort: String, Codable, Hashable, Sendable {
+    case popular = "popular"
+    case trending = "trending"
+  }
+
+  public enum Subcategory: String, Codable, Hashable, Sendable {
+    case cliAgent = "cli-agent"
+    case ideExtension = "ide-extension"
+    case cloudAgent = "cloud-agent"
+    case programmingApp = "programming-app"
+    case nativeAppBuilder = "native-app-builder"
+    case creativeWriting = "creative-writing"
+    case videoGen = "video-gen"
+    case imageGen = "image-gen"
+    case audioGen = "audio-gen"
+    case roleplay = "roleplay"
+    case game = "game"
+    case writingAssistant = "writing-assistant"
+    case generalChat = "general-chat"
+    case personalAgent = "personal-agent"
+    case legal = "legal"
   }
 }

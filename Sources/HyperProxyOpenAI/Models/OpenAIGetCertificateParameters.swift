@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIGetCertificateParameters: Codable, Sendable {
   public var certificateId: String
-  public var include: [OpenAIGetCertificateParametersIncludeItem]?
+  public var include: [OpenAIGetCertificateParameters.IncludeElement]?
 
   public init(
     certificateId: String,
-    include: [OpenAIGetCertificateParametersIncludeItem]? = nil
+    include: [OpenAIGetCertificateParameters.IncludeElement]? = nil
   ) {
     self.certificateId = certificateId
     self.include = include
@@ -25,5 +25,9 @@ public struct OpenAIGetCertificateParameters: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case certificateId = "certificate_id"
     case include
+  }
+
+  public enum IncludeElement: String, Codable, Hashable, Sendable {
+    case content = "content"
   }
 }

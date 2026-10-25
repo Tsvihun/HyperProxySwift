@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAISummaryTextResource: Codable, Sendable {
   public var text: String
-  public var kind: OpenAISummaryTextResourceKind
+  public var kind: OpenAISummaryTextResource.Kind
 
   public init(
     text: String,
-    kind: OpenAISummaryTextResourceKind
+    kind: OpenAISummaryTextResource.Kind
   ) {
     self.text = text
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenAISummaryTextResource: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case text
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case summaryText = "summary_text"
   }
 }

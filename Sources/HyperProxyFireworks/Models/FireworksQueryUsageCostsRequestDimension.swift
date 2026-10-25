@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksQueryUsageCostsRequestDimension: String, Codable, Hashable, Sendable {
-  case dIMENSIONUNSPECIFIED = "DIMENSION_UNSPECIFIED"
-  case hOUR = "HOUR"
-  case mODEL = "MODEL"
-  case uSER = "USER"
-  case aPIKEY = "API_KEY"
-  case dAY = "DAY"
+  case dimensionUnspecified = "DIMENSION_UNSPECIFIED"
+  case hour = "HOUR"
+  case model = "MODEL"
+  case user = "USER"
+  case apiKey = "API_KEY"
+  case day = "DAY"
 }

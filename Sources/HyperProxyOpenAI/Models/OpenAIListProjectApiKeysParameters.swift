@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct OpenAIListProjectApiKeysParameters: Codable, Sendable {
   public var after: String?
   public var limit: Int?
-  public var ownerProjectAccess: OpenAIListProjectApiKeysParametersOwnerProjectAccess?
+  public var ownerProjectAccess: OpenAIListProjectApiKeysParameters.OwnerProjectAccess?
   public var projectId: String
 
   public init(
     projectId: String,
     after: String? = nil,
     limit: Int? = nil,
-    ownerProjectAccess: OpenAIListProjectApiKeysParametersOwnerProjectAccess? = nil
+    ownerProjectAccess: OpenAIListProjectApiKeysParameters.OwnerProjectAccess? = nil
   ) {
     self.after = after
     self.limit = limit
@@ -33,5 +33,13 @@ public struct OpenAIListProjectApiKeysParameters: Codable, Sendable {
     case limit
     case ownerProjectAccess = "owner_project_access"
     case projectId = "project_id"
+  }
+
+  public enum OwnerProjectAccess: String, Codable, Hashable,
+    Sendable
+  {
+    case active = "active"
+    case inactive = "inactive"
+    case any = "any"
   }
 }

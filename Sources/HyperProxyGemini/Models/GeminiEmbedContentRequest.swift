@@ -15,7 +15,7 @@ public struct GeminiEmbedContentRequest: Codable, Sendable {
   public var embedContentConfig: GeminiEmbedContentConfig?
   public var model: String?
   public var outputDimensionality: Int?
-  public var taskType: GeminiEmbedContentRequestTaskType?
+  public var taskType: GeminiEmbedContentRequest.TaskType?
   public var title: String?
 
   public init(
@@ -23,7 +23,7 @@ public struct GeminiEmbedContentRequest: Codable, Sendable {
     embedContentConfig: GeminiEmbedContentConfig? = nil,
     model: String? = nil,
     outputDimensionality: Int? = nil,
-    taskType: GeminiEmbedContentRequestTaskType? = nil,
+    taskType: GeminiEmbedContentRequest.TaskType? = nil,
     title: String? = nil
   ) {
     self.content = content
@@ -41,5 +41,17 @@ public struct GeminiEmbedContentRequest: Codable, Sendable {
     case outputDimensionality
     case taskType
     case title
+  }
+
+  public enum TaskType: String, Codable, Hashable, Sendable {
+    case taskTypeUnspecified = "TASK_TYPE_UNSPECIFIED"
+    case retrievalQuery = "RETRIEVAL_QUERY"
+    case retrievalDocument = "RETRIEVAL_DOCUMENT"
+    case semanticSimilarity = "SEMANTIC_SIMILARITY"
+    case classification = "CLASSIFICATION"
+    case clustering = "CLUSTERING"
+    case questionAnswering = "QUESTION_ANSWERING"
+    case factVerification = "FACT_VERIFICATION"
+    case codeRetrievalQuery = "CODE_RETRIEVAL_QUERY"
   }
 }

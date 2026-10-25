@@ -14,13 +14,13 @@ public struct ElevenLabsBatchFailureResponseModel: Codable, Sendable {
   public var errorCode: Int
   public var errorMessage: String
   public var errorStatus: String
-  public var status: ElevenLabsFailureStatus
+  public var status: ElevenLabsBatchFailureResponseModel.Status
 
   public init(
     errorCode: Int,
     errorMessage: String,
     errorStatus: String,
-    status: ElevenLabsFailureStatus = .failure
+    status: ElevenLabsBatchFailureResponseModel.Status = .failure
   ) {
     self.errorCode = errorCode
     self.errorMessage = errorMessage
@@ -33,5 +33,9 @@ public struct ElevenLabsBatchFailureResponseModel: Codable, Sendable {
     case errorMessage = "error_message"
     case errorStatus = "error_status"
     case status
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case failure = "failure"
   }
 }

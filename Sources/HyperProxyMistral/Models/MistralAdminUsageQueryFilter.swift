@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralAdminUsageQueryFilter: Codable, Sendable {
-  public var field: MistralAdminUsageQueryFilterField
-  public var operatorValue: MistralAdminUsageQueryFilterOperator
+  public var field: MistralAdminUsageQueryFilter.Field
+  public var operatorValue: MistralAdminUsageQueryFilter.OperatorValue
   public var values: [String?]
 
   public init(
-    field: MistralAdminUsageQueryFilterField,
-    operatorValue: MistralAdminUsageQueryFilterOperator,
+    field: MistralAdminUsageQueryFilter.Field,
+    operatorValue: MistralAdminUsageQueryFilter.OperatorValue,
     values: [String?]
   ) {
     self.field = field
@@ -29,5 +29,24 @@ public struct MistralAdminUsageQueryFilter: Codable, Sendable {
     case field
     case operatorValue = "operator"
     case values
+  }
+
+  public enum Field: String, Codable, Hashable, Sendable {
+    case usageType = "usage_type"
+    case billingMetric = "billing_metric"
+    case billingDisplayName = "billing_display_name"
+    case billingGroup = "billing_group"
+    case workspaceId = "workspace_id"
+    case organizationId = "organization_id"
+    case userId = "user_id"
+    case serviceAccountId = "service_account_id"
+    case apiKeyId = "api_key_id"
+    case apiZone = "api_zone"
+    case serviceTier = "service_tier"
+  }
+
+  public enum OperatorValue: String, Codable, Hashable, Sendable {
+    case isValue = "is"
+    case isNot = "is_not"
   }
 }

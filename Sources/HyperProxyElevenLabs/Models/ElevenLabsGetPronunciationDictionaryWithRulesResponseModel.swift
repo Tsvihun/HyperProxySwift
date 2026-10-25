@@ -20,8 +20,8 @@ public struct ElevenLabsGetPronunciationDictionaryWithRulesResponseModel: Codabl
   public var latestVersionRulesNum: Int
   public var name: String
   public var permissionOnResource:
-    ElevenLabsGetPronunciationDictionaryWithRulesResponseModelPermissionOnResource?
-  public var rules: [ElevenLabsGetPronunciationDictionaryWithRulesResponseModelRulesItem]
+    ElevenLabsGetPronunciationDictionaryWithRulesResponseModel.PermissionOnResource?
+  public var rules: [ElevenLabsGetPronunciationDictionaryWithRulesResponseModel.RulesElement]
 
   public init(
     createdBy: String,
@@ -31,8 +31,8 @@ public struct ElevenLabsGetPronunciationDictionaryWithRulesResponseModel: Codabl
     latestVersionRulesNum: Int,
     name: String,
     permissionOnResource:
-      ElevenLabsGetPronunciationDictionaryWithRulesResponseModelPermissionOnResource?,
-    rules: [ElevenLabsGetPronunciationDictionaryWithRulesResponseModelRulesItem],
+      ElevenLabsGetPronunciationDictionaryWithRulesResponseModel.PermissionOnResource?,
+    rules: [ElevenLabsGetPronunciationDictionaryWithRulesResponseModel.RulesElement],
     archivedTimeUnix: Int? = nil,
     description: String? = nil
   ) {
@@ -59,5 +59,43 @@ public struct ElevenLabsGetPronunciationDictionaryWithRulesResponseModel: Codabl
     case name
     case permissionOnResource = "permission_on_resource"
     case rules
+  }
+
+  public enum PermissionOnResource: String,
+    Codable, Hashable, Sendable
+  {
+    case admin = "admin"
+    case editor = "editor"
+    case commenter = "commenter"
+    case viewer = "viewer"
+  }
+
+  public enum RulesElement: Codable, Sendable {
+    case pronunciationDictionaryAliasRuleResponseModel(
+      ElevenLabsPronunciationDictionaryAliasRuleResponseModel)
+    case pronunciationDictionaryPhonemeRuleResponseModel(
+      ElevenLabsPronunciationDictionaryPhonemeRuleResponseModel)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(
+        ElevenLabsPronunciationDictionaryAliasRuleResponseModel.self)
+      {
+        self = .pronunciationDictionaryAliasRuleResponseModel(value)
+        return
+      }
+      self = .pronunciationDictionaryPhonemeRuleResponseModel(
+        try container.decode(ElevenLabsPronunciationDictionaryPhonemeRuleResponseModel.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .pronunciationDictionaryAliasRuleResponseModel(let value):
+        try container.encode(value)
+      case .pronunciationDictionaryPhonemeRuleResponseModel(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

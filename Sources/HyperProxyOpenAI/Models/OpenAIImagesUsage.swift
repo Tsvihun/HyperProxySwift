@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct OpenAIImagesUsage: Codable, Sendable {
   public var inputTokens: Int
-  public var inputTokensDetails: OpenAIImagesUsageInputTokensDetails
+  public var inputTokensDetails: OpenAIImagesUsage.InputTokensDetails
   public var outputTokens: Int
   public var totalTokens: Int
 
   public init(
     inputTokens: Int,
-    inputTokensDetails: OpenAIImagesUsageInputTokensDetails,
+    inputTokensDetails: OpenAIImagesUsage.InputTokensDetails,
     outputTokens: Int,
     totalTokens: Int
   ) {
@@ -33,5 +33,23 @@ public struct OpenAIImagesUsage: Codable, Sendable {
     case inputTokensDetails = "input_tokens_details"
     case outputTokens = "output_tokens"
     case totalTokens = "total_tokens"
+  }
+
+  public struct InputTokensDetails: Codable, Sendable {
+    public var imageTokens: Int
+    public var textTokens: Int
+
+    public init(
+      imageTokens: Int,
+      textTokens: Int
+    ) {
+      self.imageTokens = imageTokens
+      self.textTokens = textTokens
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case imageTokens = "image_tokens"
+      case textTokens = "text_tokens"
+    }
   }
 }

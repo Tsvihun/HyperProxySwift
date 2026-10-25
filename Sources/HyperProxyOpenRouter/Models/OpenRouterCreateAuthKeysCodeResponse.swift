@@ -11,15 +11,37 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterCreateAuthKeysCodeResponse: Codable, Sendable {
-  public var data: OpenRouterCreateAuthKeysCodeResponseData
+  public var data: OpenRouterCreateAuthKeysCodeResponse.DataValue
 
   public init(
-    data: OpenRouterCreateAuthKeysCodeResponseData
+    data: OpenRouterCreateAuthKeysCodeResponse.DataValue
   ) {
     self.data = data
   }
 
   enum CodingKeys: String, CodingKey {
     case data
+  }
+
+  public struct DataValue: Codable, Sendable {
+    public var appId: Int
+    public var createdAt: String
+    public var id: String
+
+    public init(
+      appId: Int,
+      createdAt: String,
+      id: String
+    ) {
+      self.appId = appId
+      self.createdAt = createdAt
+      self.id = id
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case appId = "app_id"
+      case createdAt = "created_at"
+      case id
+    }
   }
 }

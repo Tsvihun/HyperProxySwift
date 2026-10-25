@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsRetryTriggerAction: Codable, Sendable {
   public var feedback: String?
-  public var kind: ElevenLabsRetryKind?
+  public var kind: ElevenLabsRetryTriggerAction.Kind?
 
   public init(
     feedback: String? = nil,
-    kind: ElevenLabsRetryKind? = nil
+    kind: ElevenLabsRetryTriggerAction.Kind? = nil
   ) {
     self.feedback = feedback
     self.kind = kind
@@ -25,5 +25,9 @@ public struct ElevenLabsRetryTriggerAction: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case feedback
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case retry = "retry"
   }
 }

@@ -11,15 +11,41 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepLErrorPayload: Codable, Sendable {
-  public var error: DeepLErrorPayloadError
+  public var error: DeepLErrorPayload.ErrorValue
 
   public init(
-    error: DeepLErrorPayloadError
+    error: DeepLErrorPayload.ErrorValue
   ) {
     self.error = error
   }
 
   enum CodingKeys: String, CodingKey {
     case error
+  }
+
+  public struct ErrorValue: Codable, Sendable {
+    public var errorCode: Int
+    public var errorMessage: String
+    public var reasonCode: Int
+    public var requestType: String
+
+    public init(
+      errorCode: Int,
+      errorMessage: String,
+      reasonCode: Int,
+      requestType: String
+    ) {
+      self.errorCode = errorCode
+      self.errorMessage = errorMessage
+      self.reasonCode = reasonCode
+      self.requestType = requestType
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case errorCode = "error_code"
+      case errorMessage = "error_message"
+      case reasonCode = "reason_code"
+      case requestType = "request_type"
+    }
   }
 }

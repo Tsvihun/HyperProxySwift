@@ -42,4 +42,18 @@ public struct OpenAIBetaInputMessageResource: Codable, Sendable {
     case status
     case kind = "type"
   }
+
+  public struct WithId: Codable, Sendable {
+    public var id: String
+
+    public init(
+      id: String
+    ) {
+      self.id = id
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case id
+    }
+  }
 }

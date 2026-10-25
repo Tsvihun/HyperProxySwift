@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherFineTuneCheckpoint: Codable, Sendable {
-  public var checkpoint: TogetherFineTuneCheckpointCheckpoint?
+  public var checkpoint: TogetherFineTuneCheckpoint.Checkpoint?
   public var checkpointType: String
   public var createdAt: String
   public var objectId: String?
@@ -25,7 +25,7 @@ public struct TogetherFineTuneCheckpoint: Codable, Sendable {
     createdAt: String,
     path: String,
     step: Int,
-    checkpoint: TogetherFineTuneCheckpointCheckpoint? = nil,
+    checkpoint: TogetherFineTuneCheckpoint.Checkpoint? = nil,
     objectId: String? = nil,
     objectName: String? = nil,
     objectRevisionId: String? = nil
@@ -49,5 +49,10 @@ public struct TogetherFineTuneCheckpoint: Codable, Sendable {
     case objectRevisionId = "object_revision_id"
     case path
     case step
+  }
+
+  public enum Checkpoint: String, Codable, Hashable, Sendable {
+    case model = "model"
+    case adapter = "adapter"
   }
 }

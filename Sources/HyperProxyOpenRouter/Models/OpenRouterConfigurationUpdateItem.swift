@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct OpenRouterConfigurationUpdateItem: Codable, Sendable {
   public var id: String?
   public var reasoning: OpenRouterConfigurationUpdateReasoning
-  public var kind: OpenRouterConfigurationUpdateItemKind
+  public var kind: OpenRouterConfigurationUpdateItem.Kind
 
   public init(
     reasoning: OpenRouterConfigurationUpdateReasoning,
-    kind: OpenRouterConfigurationUpdateItemKind,
+    kind: OpenRouterConfigurationUpdateItem.Kind,
     id: String? = nil
   ) {
     self.id = id
@@ -29,5 +29,9 @@ public struct OpenRouterConfigurationUpdateItem: Codable, Sendable {
     case id
     case reasoning
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case configurationUpdate = "configuration_update"
   }
 }

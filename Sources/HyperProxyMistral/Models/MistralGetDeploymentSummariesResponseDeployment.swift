@@ -18,7 +18,7 @@ public struct MistralGetDeploymentSummariesResponseDeployment: Codable, Sendable
   public var id: String
   public var modifiedAt: String
   public var name: String
-  public var status: MistralGetDeploymentSummariesResponseDeploymentStatus
+  public var status: MistralGetDeploymentSummariesResponseDeployment.Status
 
   public init(
     createdAt: String,
@@ -28,7 +28,7 @@ public struct MistralGetDeploymentSummariesResponseDeployment: Codable, Sendable
     id: String,
     modifiedAt: String,
     name: String,
-    status: MistralGetDeploymentSummariesResponseDeploymentStatus
+    status: MistralGetDeploymentSummariesResponseDeployment.Status
   ) {
     self.createdAt = createdAt
     self.creatorId = creatorId
@@ -49,5 +49,12 @@ public struct MistralGetDeploymentSummariesResponseDeployment: Codable, Sendable
     case modifiedAt = "modified_at"
     case name
     case status
+  }
+
+  public enum Status: String, Codable, Hashable,
+    Sendable
+  {
+    case online = "online"
+    case offline = "offline"
   }
 }

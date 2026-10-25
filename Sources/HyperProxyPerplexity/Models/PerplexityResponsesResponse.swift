@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct PerplexityResponsesResponse: Codable, Sendable {
   public var createdAt: Int64
+  public var effort: String?
   public var error: PerplexityErrorInfo?
   public var id: String
   public var model: String
   public var object: PerplexityResponsesObjectType
   public var output: [PerplexityOutputItem]
-  public var preset: String?
   public var status: PerplexityStatus
   public var usage: PerplexityResponsesUsage?
 
@@ -28,29 +28,29 @@ public struct PerplexityResponsesResponse: Codable, Sendable {
     object: PerplexityResponsesObjectType,
     output: [PerplexityOutputItem],
     status: PerplexityStatus,
+    effort: String? = nil,
     error: PerplexityErrorInfo? = nil,
-    preset: String? = nil,
     usage: PerplexityResponsesUsage? = nil
   ) {
     self.createdAt = createdAt
+    self.effort = effort
     self.error = error
     self.id = id
     self.model = model
     self.object = object
     self.output = output
-    self.preset = preset
     self.status = status
     self.usage = usage
   }
 
   enum CodingKeys: String, CodingKey {
     case createdAt = "created_at"
+    case effort
     case error
     case id
     case model
     case object
     case output
-    case preset
     case status
     case usage
   }

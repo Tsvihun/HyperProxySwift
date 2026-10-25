@@ -12,8 +12,8 @@ import HyperProxyCore
 
 public struct TogetherDeploymentResponseItem: Codable, Sendable {
   public var args: [String]?
-  public var autoscaling: TogetherDeploymentResponseItemAutoscaling?
-  public var capacityType: TogetherDeploymentResponseItemCapacityType?
+  public var autoscaling: TogetherDeploymentResponseItem.Autoscaling?
+  public var capacityType: TogetherDeploymentResponseItem.CapacityType?
   public var command: [String]?
   public var cpu: Double?
   public var createdAt: String?
@@ -21,7 +21,7 @@ public struct TogetherDeploymentResponseItem: Codable, Sendable {
   public var desiredReplicas: Int?
   public var environmentVariables: [TogetherEnvironmentVariable]?
   public var gpuCount: Int?
-  public var gpuType: TogetherDeploymentResponseItemGpuType?
+  public var gpuType: TogetherDeploymentResponseItem.GpuType?
   public var healthCheckPath: String?
   public var id: String?
   public var image: String?
@@ -30,11 +30,11 @@ public struct TogetherDeploymentResponseItem: Codable, Sendable {
   public var minReplicas: Int?
   public var modelMounts: [TogetherModelMount]?
   public var name: String?
-  public var object: TogetherDeploymentObject?
+  public var object: TogetherDeploymentResponseItem.Object?
   public var port: Int?
   public var readyReplicas: Int?
   public var replicaEvents: [String: TogetherReplicaEvent]?
-  public var status: TogetherDeploymentResponseItemStatus?
+  public var status: TogetherDeploymentResponseItem.Status?
   public var storage: Int?
   public var terminationGracePeriodSeconds: Int?
   public var updatedAt: String?
@@ -42,8 +42,8 @@ public struct TogetherDeploymentResponseItem: Codable, Sendable {
 
   public init(
     args: [String]? = nil,
-    autoscaling: TogetherDeploymentResponseItemAutoscaling? = nil,
-    capacityType: TogetherDeploymentResponseItemCapacityType? = nil,
+    autoscaling: TogetherDeploymentResponseItem.Autoscaling? = nil,
+    capacityType: TogetherDeploymentResponseItem.CapacityType? = nil,
     command: [String]? = nil,
     cpu: Double? = nil,
     createdAt: String? = nil,
@@ -51,7 +51,7 @@ public struct TogetherDeploymentResponseItem: Codable, Sendable {
     desiredReplicas: Int? = nil,
     environmentVariables: [TogetherEnvironmentVariable]? = nil,
     gpuCount: Int? = nil,
-    gpuType: TogetherDeploymentResponseItemGpuType? = nil,
+    gpuType: TogetherDeploymentResponseItem.GpuType? = nil,
     healthCheckPath: String? = nil,
     id: String? = nil,
     image: String? = nil,
@@ -60,11 +60,11 @@ public struct TogetherDeploymentResponseItem: Codable, Sendable {
     minReplicas: Int? = nil,
     modelMounts: [TogetherModelMount]? = nil,
     name: String? = nil,
-    object: TogetherDeploymentObject? = nil,
+    object: TogetherDeploymentResponseItem.Object? = nil,
     port: Int? = nil,
     readyReplicas: Int? = nil,
     replicaEvents: [String: TogetherReplicaEvent]? = nil,
-    status: TogetherDeploymentResponseItemStatus? = nil,
+    status: TogetherDeploymentResponseItem.Status? = nil,
     storage: Int? = nil,
     terminationGracePeriodSeconds: Int? = nil,
     updatedAt: String? = nil,
@@ -129,5 +129,61 @@ public struct TogetherDeploymentResponseItem: Codable, Sendable {
     case terminationGracePeriodSeconds = "termination_grace_period_seconds"
     case updatedAt = "updated_at"
     case volumes
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case deployment = "deployment"
+  }
+
+  public enum Autoscaling: Codable, Sendable {
+    case httpAutoscalingConfig(TogetherHTTPAutoscalingConfig)
+    case queueAutoscalingConfig(TogetherQueueAutoscalingConfig)
+    case customMetricAutoscalingConfig(TogetherCustomMetricAutoscalingConfig)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(TogetherHTTPAutoscalingConfig.self) {
+        self = .httpAutoscalingConfig(value)
+        return
+      }
+      if let value = try? container.decode(TogetherQueueAutoscalingConfig.self) {
+        self = .queueAutoscalingConfig(value)
+        return
+      }
+      self = .customMetricAutoscalingConfig(
+        try container.decode(TogetherCustomMetricAutoscalingConfig.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .httpAutoscalingConfig(let value):
+        try container.encode(value)
+      case .queueAutoscalingConfig(let value):
+        try container.encode(value)
+      case .customMetricAutoscalingConfig(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum CapacityType: String, Codable, Hashable, Sendable {
+    case stable = "stable"
+    case preemptible = "preemptible"
+  }
+
+  public enum GpuType: String, Codable, Hashable, Sendable {
+    case h100_80gb = "h100-80gb"
+    case h100_40gbMig = "h100-40gb-mig"
+    case h200_140gb = "h200-140gb"
+    case b200_192gb = "b200-192gb"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case updating = "Updating"
+    case scaling = "Scaling"
+    case ready = "Ready"
+    case failed = "Failed"
+    case scaledToZero = "ScaledToZero"
   }
 }

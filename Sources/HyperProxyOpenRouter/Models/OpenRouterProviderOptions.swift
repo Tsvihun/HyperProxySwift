@@ -120,6 +120,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
   public var quiver: [String: HyperProxyJSONValue]?
   public var recraft: [String: HyperProxyJSONValue]?
   public var recursal: [String: HyperProxyJSONValue]?
+  public var recursive: [String: HyperProxyJSONValue]?
   public var reflection: [String: HyperProxyJSONValue]?
   public var reka: [String: HyperProxyJSONValue]?
   public var relace: [String: HyperProxyJSONValue]?
@@ -269,6 +270,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     quiver: [String: HyperProxyJSONValue]? = nil,
     recraft: [String: HyperProxyJSONValue]? = nil,
     recursal: [String: HyperProxyJSONValue]? = nil,
+    recursive: [String: HyperProxyJSONValue]? = nil,
     reflection: [String: HyperProxyJSONValue]? = nil,
     reka: [String: HyperProxyJSONValue]? = nil,
     relace: [String: HyperProxyJSONValue]? = nil,
@@ -417,6 +419,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     self.quiver = quiver
     self.recraft = recraft
     self.recursal = recursal
+    self.recursive = recursive
     self.reflection = reflection
     self.reka = reka
     self.relace = relace
@@ -567,6 +570,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     case quiver
     case recraft
     case recursal
+    case recursive
     case reflection
     case reka
     case relace

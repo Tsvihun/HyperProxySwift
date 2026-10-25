@@ -14,13 +14,13 @@ public struct OpenAIProjectGroupListResource: Codable, Sendable {
   public var data: [OpenAIProjectGroup]
   public var hasMore: Bool
   public var next: String?
-  public var object: OpenAIProjectGroupListResourceObject
+  public var object: OpenAIProjectGroupListResource.Object
 
   public init(
     data: [OpenAIProjectGroup],
     hasMore: Bool,
     next: String?,
-    object: OpenAIProjectGroupListResourceObject
+    object: OpenAIProjectGroupListResource.Object
   ) {
     self.data = data
     self.hasMore = hasMore
@@ -33,5 +33,9 @@ public struct OpenAIProjectGroupListResource: Codable, Sendable {
     case hasMore = "has_more"
     case next
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case list = "list"
   }
 }

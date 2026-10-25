@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIProjectModelPermissionsDeleteResponse: Codable, Sendable {
   public var deleted: Bool
-  public var object: OpenAIProjectModelPermissionsDeleteResponseObject
+  public var object: OpenAIProjectModelPermissionsDeleteResponse.Object
 
   public init(
     deleted: Bool,
-    object: OpenAIProjectModelPermissionsDeleteResponseObject
+    object: OpenAIProjectModelPermissionsDeleteResponse.Object
   ) {
     self.deleted = deleted
     self.object = object
@@ -25,5 +25,9 @@ public struct OpenAIProjectModelPermissionsDeleteResponse: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case deleted
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case projectModelPermissionsDeleted = "project.model_permissions.deleted"
   }
 }

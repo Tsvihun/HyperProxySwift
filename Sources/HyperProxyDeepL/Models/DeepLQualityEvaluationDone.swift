@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct DeepLQualityEvaluationDone: Codable, Sendable {
   public var jobId: String
   public var segments: [DeepLQualityEvaluationSegment]
-  public var status: DeepLQualityEvaluationDoneStatus
+  public var status: DeepLQualityEvaluationDone.Status
 
   public init(
     jobId: String,
     segments: [DeepLQualityEvaluationSegment],
-    status: DeepLQualityEvaluationDoneStatus
+    status: DeepLQualityEvaluationDone.Status
   ) {
     self.jobId = jobId
     self.segments = segments
@@ -29,5 +29,9 @@ public struct DeepLQualityEvaluationDone: Codable, Sendable {
     case jobId = "job_id"
     case segments
     case status
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case done = "done"
   }
 }

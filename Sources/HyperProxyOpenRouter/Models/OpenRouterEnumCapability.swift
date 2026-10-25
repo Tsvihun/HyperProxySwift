@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterEnumCapability: Codable, Sendable {
-  public var kind: OpenRouterEnumCapabilityKind
+  public var kind: OpenRouterEnumCapability.Kind
   public var values: [String]
 
   public init(
-    kind: OpenRouterEnumCapabilityKind,
+    kind: OpenRouterEnumCapability.Kind,
     values: [String]
   ) {
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenRouterEnumCapability: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case kind = "type"
     case values
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case enumValue = "enum"
   }
 }

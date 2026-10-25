@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsCheckServiceAvailabilityParams: Codable, Sendable {
-  public var smbToolType: ElevenLabsCheckServiceAvailabilitySmbToolType?
+  public var smbToolType: ElevenLabsCheckServiceAvailabilityParams.SmbToolType?
 
   public init(
-    smbToolType: ElevenLabsCheckServiceAvailabilitySmbToolType? = nil
+    smbToolType: ElevenLabsCheckServiceAvailabilityParams.SmbToolType? = nil
   ) {
     self.smbToolType = smbToolType
   }
 
   enum CodingKeys: String, CodingKey {
     case smbToolType = "smb_tool_type"
+  }
+
+  public enum SmbToolType: String, Codable, Hashable, Sendable {
+    case checkServiceAvailability = "check_service_availability"
   }
 }

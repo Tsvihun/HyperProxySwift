@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIDeletedEnvironmentTemplateResource: Codable, Sendable {
   public var deleted: Bool
   public var id: String
-  public var object: OpenAIDeletedEnvironmentTemplateResourceObject
+  public var object: OpenAIDeletedEnvironmentTemplateResource.Object
 
   public init(
     deleted: Bool,
     id: String,
-    object: OpenAIDeletedEnvironmentTemplateResourceObject
+    object: OpenAIDeletedEnvironmentTemplateResource.Object
   ) {
     self.deleted = deleted
     self.id = id
@@ -29,5 +29,9 @@ public struct OpenAIDeletedEnvironmentTemplateResource: Codable, Sendable {
     case deleted
     case id
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case agentEnvironmentTemplateDeleted = "agent.environment.template.deleted"
   }
 }

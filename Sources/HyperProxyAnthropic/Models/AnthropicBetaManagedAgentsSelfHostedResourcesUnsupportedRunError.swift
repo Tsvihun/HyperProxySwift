@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsSelfHostedResourcesUnsupportedRunError: Codable, Sendable {
   public var message: String
-  public var kind: AnthropicBetaManagedAgentsSelfHostedResourcesUnsupportedRunErrorKind
+  public var kind: AnthropicBetaManagedAgentsSelfHostedResourcesUnsupportedRunError.Kind
 
   public init(
     message: String,
-    kind: AnthropicBetaManagedAgentsSelfHostedResourcesUnsupportedRunErrorKind
+    kind: AnthropicBetaManagedAgentsSelfHostedResourcesUnsupportedRunError.Kind
   ) {
     self.message = message
     self.kind = kind
@@ -25,5 +25,11 @@ public struct AnthropicBetaManagedAgentsSelfHostedResourcesUnsupportedRunError: 
   enum CodingKeys: String, CodingKey {
     case message
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case selfHostedResourcesUnsupportedError = "self_hosted_resources_unsupported_error"
   }
 }

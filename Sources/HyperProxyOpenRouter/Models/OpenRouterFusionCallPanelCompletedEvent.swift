@@ -16,7 +16,7 @@ public struct OpenRouterFusionCallPanelCompletedEvent: Codable, Sendable {
   public var model: String
   public var outputIndex: Int
   public var sequenceNumber: Int
-  public var kind: OpenRouterFusionCallPanelCompletedEventKind
+  public var kind: OpenRouterFusionCallPanelCompletedEvent.Kind
 
   public init(
     content: String,
@@ -24,7 +24,7 @@ public struct OpenRouterFusionCallPanelCompletedEvent: Codable, Sendable {
     model: String,
     outputIndex: Int,
     sequenceNumber: Int,
-    kind: OpenRouterFusionCallPanelCompletedEventKind
+    kind: OpenRouterFusionCallPanelCompletedEvent.Kind
   ) {
     self.content = content
     self.itemId = itemId
@@ -41,5 +41,9 @@ public struct OpenRouterFusionCallPanelCompletedEvent: Codable, Sendable {
     case outputIndex = "output_index"
     case sequenceNumber = "sequence_number"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case responseFusionCallPanelCompleted = "response.fusion_call.panel.completed"
   }
 }

@@ -14,15 +14,15 @@ public struct GroqResponseFunctionCallOutput: Codable, Sendable {
   public var callId: String
   public var id: String?
   public var output: String
-  public var status: GroqResponseFunctionCallOutputStatus?
-  public var kind: GroqResponseFunctionCallOutputKind
+  public var status: GroqResponseFunctionCallOutput.Status?
+  public var kind: GroqResponseFunctionCallOutput.Kind
 
   public init(
     callId: String,
     output: String,
-    kind: GroqResponseFunctionCallOutputKind,
+    kind: GroqResponseFunctionCallOutput.Kind,
     id: String? = nil,
-    status: GroqResponseFunctionCallOutputStatus? = nil
+    status: GroqResponseFunctionCallOutput.Status? = nil
   ) {
     self.callId = callId
     self.id = id
@@ -37,5 +37,15 @@ public struct GroqResponseFunctionCallOutput: Codable, Sendable {
     case output
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case functionCallOutput = "function_call_output"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case inProgress = "in_progress"
+    case completed = "completed"
+    case incomplete = "incomplete"
   }
 }

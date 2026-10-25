@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct ElevenLabsDubbingProjectListParameters: Codable, Sendable {
   public var cursor: String?
   public var pageSize: Int?
-  public var sortDirection: ElevenLabsDubbingProjectListParametersSortDirection?
+  public var sortDirection: ElevenLabsDubbingProjectListParameters.SortDirection?
   public var status: String?
   public var xiApiKey: String?
 
   public init(
     cursor: String? = nil,
     pageSize: Int? = nil,
-    sortDirection: ElevenLabsDubbingProjectListParametersSortDirection? = nil,
+    sortDirection: ElevenLabsDubbingProjectListParameters.SortDirection? = nil,
     status: String? = nil,
     xiApiKey: String? = nil
   ) {
@@ -37,5 +37,10 @@ public struct ElevenLabsDubbingProjectListParameters: Codable, Sendable {
     case sortDirection = "sort_direction"
     case status
     case xiApiKey = "xi-api-key"
+  }
+
+  public enum SortDirection: String, Codable, Hashable, Sendable {
+    case ascending = "ASCENDING"
+    case descending = "DESCENDING"
   }
 }

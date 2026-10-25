@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIRealtimeBetaServerEventMCPListToolsInProgress: Codable, Sendable {
   public var eventId: String
   public var itemId: String
-  public var kind: OpenAIRealtimeBetaServerEventMCPListToolsInProgressKind
+  public var kind: OpenAIRealtimeBetaServerEventMCPListToolsInProgress.Kind
 
   public init(
     eventId: String,
     itemId: String,
-    kind: OpenAIRealtimeBetaServerEventMCPListToolsInProgressKind
+    kind: OpenAIRealtimeBetaServerEventMCPListToolsInProgress.Kind
   ) {
     self.eventId = eventId
     self.itemId = itemId
@@ -29,5 +29,11 @@ public struct OpenAIRealtimeBetaServerEventMCPListToolsInProgress: Codable, Send
     case eventId = "event_id"
     case itemId = "item_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case mcpListToolsInProgress = "mcp_list_tools.in_progress"
   }
 }

@@ -16,7 +16,7 @@ public struct OpenAIChatSessionResource: Codable, Sendable {
   public var expiresAt: Int
   public var id: String
   public var maxRequestsPer1Minute: Int
-  public var object: OpenAIChatSessionResourceObject
+  public var object: OpenAIChatSessionResource.Object
   public var rateLimits: OpenAIChatSessionRateLimits
   public var status: OpenAIChatSessionStatus
   public var user: String
@@ -28,7 +28,7 @@ public struct OpenAIChatSessionResource: Codable, Sendable {
     expiresAt: Int,
     id: String,
     maxRequestsPer1Minute: Int,
-    object: OpenAIChatSessionResourceObject,
+    object: OpenAIChatSessionResource.Object,
     rateLimits: OpenAIChatSessionRateLimits,
     status: OpenAIChatSessionStatus,
     user: String,
@@ -57,5 +57,9 @@ public struct OpenAIChatSessionResource: Codable, Sendable {
     case status
     case user
     case workflow
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case chatkitSession = "chatkit.session"
   }
 }

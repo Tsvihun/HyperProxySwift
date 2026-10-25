@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherHTTPAutoscalingConfig: Codable, Sendable {
-  public var metric: TogetherHTTPAutoscalingConfigMetric?
+  public var metric: TogetherHTTPAutoscalingConfig.Metric?
   public var target: Double?
   public var timeIntervalMinutes: Int?
 
   public init(
-    metric: TogetherHTTPAutoscalingConfigMetric? = nil,
+    metric: TogetherHTTPAutoscalingConfig.Metric? = nil,
     target: Double? = nil,
     timeIntervalMinutes: Int? = nil
   ) {
@@ -29,5 +29,10 @@ public struct TogetherHTTPAutoscalingConfig: Codable, Sendable {
     case metric
     case target
     case timeIntervalMinutes = "time_interval_minutes"
+  }
+
+  public enum Metric: String, Codable, Hashable, Sendable {
+    case httpTotalRequests = "HTTPTotalRequests"
+    case httpAvgRequestDuration = "HTTPAvgRequestDuration"
   }
 }

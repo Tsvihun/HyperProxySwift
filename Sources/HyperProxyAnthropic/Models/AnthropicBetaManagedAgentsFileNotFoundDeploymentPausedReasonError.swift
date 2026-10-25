@@ -11,15 +11,21 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsFileNotFoundDeploymentPausedReasonError: Codable, Sendable {
-  public var kind: AnthropicBetaManagedAgentsFileNotFoundDeploymentPausedReasonErrorKind
+  public var kind: AnthropicBetaManagedAgentsFileNotFoundDeploymentPausedReasonError.Kind
 
   public init(
-    kind: AnthropicBetaManagedAgentsFileNotFoundDeploymentPausedReasonErrorKind
+    kind: AnthropicBetaManagedAgentsFileNotFoundDeploymentPausedReasonError.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case fileNotFoundError = "file_not_found_error"
   }
 }

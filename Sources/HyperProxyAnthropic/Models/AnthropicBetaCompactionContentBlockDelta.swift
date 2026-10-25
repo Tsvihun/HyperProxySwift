@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct AnthropicBetaCompactionContentBlockDelta: Codable, Sendable {
   public var content: String?
   public var encryptedContent: String?
-  public var kind: AnthropicCompactionDeltaKind
+  public var kind: AnthropicBetaCompactionContentBlockDelta.Kind
 
   public init(
     content: String?,
     encryptedContent: String?,
-    kind: AnthropicCompactionDeltaKind = .compactionDelta
+    kind: AnthropicBetaCompactionContentBlockDelta.Kind = .compactionDelta
   ) {
     self.content = content
     self.encryptedContent = encryptedContent
@@ -29,5 +29,9 @@ public struct AnthropicBetaCompactionContentBlockDelta: Codable, Sendable {
     case content
     case encryptedContent = "encrypted_content"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case compactionDelta = "compaction_delta"
   }
 }

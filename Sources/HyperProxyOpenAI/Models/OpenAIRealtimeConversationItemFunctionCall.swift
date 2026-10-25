@@ -15,18 +15,18 @@ public struct OpenAIRealtimeConversationItemFunctionCall: Codable, Sendable {
   public var callId: String?
   public var id: String?
   public var name: String
-  public var object: OpenAIRealtimeConversationItemFunctionCallObject?
-  public var status: OpenAIRealtimeConversationItemFunctionCallStatus?
-  public var kind: OpenAIRealtimeConversationItemFunctionCallKind
+  public var object: OpenAIRealtimeConversationItemFunctionCall.Object?
+  public var status: OpenAIRealtimeConversationItemFunctionCall.Status?
+  public var kind: OpenAIRealtimeConversationItemFunctionCall.Kind
 
   public init(
     arguments: String,
     name: String,
-    kind: OpenAIRealtimeConversationItemFunctionCallKind,
+    kind: OpenAIRealtimeConversationItemFunctionCall.Kind,
     callId: String? = nil,
     id: String? = nil,
-    object: OpenAIRealtimeConversationItemFunctionCallObject? = nil,
-    status: OpenAIRealtimeConversationItemFunctionCallStatus? = nil
+    object: OpenAIRealtimeConversationItemFunctionCall.Object? = nil,
+    status: OpenAIRealtimeConversationItemFunctionCall.Status? = nil
   ) {
     self.arguments = arguments
     self.callId = callId
@@ -45,5 +45,19 @@ public struct OpenAIRealtimeConversationItemFunctionCall: Codable, Sendable {
     case object
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case functionCall = "function_call"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case realtimeItem = "realtime.item"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case completed = "completed"
+    case incomplete = "incomplete"
+    case inProgress = "in_progress"
   }
 }

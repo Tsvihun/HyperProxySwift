@@ -12,14 +12,14 @@ import HyperProxyCore
 
 public struct MistralCompletionResponseStreamChoice: Codable, Sendable {
   public var delta: MistralDeltaMessage
-  public var finishReason: MistralCompletionResponseStreamChoiceFinishReason?
+  public var finishReason: MistralCompletionResponseStreamChoice.FinishReason?
   public var index: Int
   public var logprobs: MistralChatCompletionResponseChoiceLogprobs?
   public var promptLogprobs: MistralChatCompletionResponseChoiceLogprobs?
 
   public init(
     delta: MistralDeltaMessage,
-    finishReason: MistralCompletionResponseStreamChoiceFinishReason?,
+    finishReason: MistralCompletionResponseStreamChoice.FinishReason?,
     index: Int,
     logprobs: MistralChatCompletionResponseChoiceLogprobs? = nil,
     promptLogprobs: MistralChatCompletionResponseChoiceLogprobs? = nil
@@ -37,5 +37,12 @@ public struct MistralCompletionResponseStreamChoice: Codable, Sendable {
     case index
     case logprobs
     case promptLogprobs = "prompt_logprobs"
+  }
+
+  public enum FinishReason: String, Codable, Hashable, Sendable {
+    case stop = "stop"
+    case length = "length"
+    case error = "error"
+    case toolCalls = "tool_calls"
   }
 }

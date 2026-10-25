@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct TogetherDEListInferenceInstanceTypesResponse: Codable, Sendable {
   public var data: [TogetherDEInferenceInstanceType]
   public var nextCursor: String?
-  public var object: TogetherListObject7074d0bb
+  public var object: TogetherListObject
 
   public init(
     data: [TogetherDEInferenceInstanceType],
-    object: TogetherListObject7074d0bb = .list,
+    object: TogetherListObject = .list,
     nextCursor: String? = nil
   ) {
     self.data = data

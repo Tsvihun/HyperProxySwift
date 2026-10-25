@@ -17,7 +17,7 @@ public struct OpenAIRealtimeServerEventResponseFunctionCallArgumentsDelta: Codab
   public var itemId: String
   public var outputIndex: Int
   public var responseId: String
-  public var kind: OpenAIRealtimeServerEventResponseFunctionCallArgumentsDeltaKind
+  public var kind: OpenAIRealtimeServerEventResponseFunctionCallArgumentsDelta.Kind
 
   public init(
     callId: String,
@@ -26,7 +26,7 @@ public struct OpenAIRealtimeServerEventResponseFunctionCallArgumentsDelta: Codab
     itemId: String,
     outputIndex: Int,
     responseId: String,
-    kind: OpenAIRealtimeServerEventResponseFunctionCallArgumentsDeltaKind
+    kind: OpenAIRealtimeServerEventResponseFunctionCallArgumentsDelta.Kind
   ) {
     self.callId = callId
     self.delta = delta
@@ -45,5 +45,11 @@ public struct OpenAIRealtimeServerEventResponseFunctionCallArgumentsDelta: Codab
     case outputIndex = "output_index"
     case responseId = "response_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case responseFunctionCallArgumentsDelta = "response.function_call_arguments.delta"
   }
 }

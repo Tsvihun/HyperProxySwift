@@ -15,12 +15,12 @@ public struct OpenRouterFormatJsonSchemaConfig: Codable, Sendable {
   public var name: String
   public var schema: [String: HyperProxyJSONValue]
   public var strict: Bool?
-  public var kind: OpenRouterFormatJsonSchemaConfigKind
+  public var kind: OpenRouterFormatJsonSchemaConfig.Kind
 
   public init(
     name: String,
     schema: [String: HyperProxyJSONValue],
-    kind: OpenRouterFormatJsonSchemaConfigKind,
+    kind: OpenRouterFormatJsonSchemaConfig.Kind,
     description: String? = nil,
     strict: Bool? = nil
   ) {
@@ -37,5 +37,9 @@ public struct OpenRouterFormatJsonSchemaConfig: Codable, Sendable {
     case schema
     case strict
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case jsonSchema = "json_schema"
   }
 }

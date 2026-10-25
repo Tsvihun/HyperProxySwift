@@ -14,14 +14,14 @@ public struct MistralFunctionCallEntry: Codable, Sendable {
   public var agentId: String?
   public var arguments: MistralFunctionCallEntryArguments
   public var completedAt: String?
-  public var confirmationStatus: MistralFunctionCallEntryConfirmationStatus?
+  public var confirmationStatus: MistralFunctionCallEntry.ConfirmationStatus?
   public var createdAt: String?
   public var id: String?
   public var model: String?
   public var name: String
   public var object: MistralEntryObject?
   public var toolCallId: String
-  public var kind: MistralFunctionCallKind?
+  public var kind: MistralFunctionCallEntry.Kind?
 
   public init(
     arguments: MistralFunctionCallEntryArguments,
@@ -29,12 +29,12 @@ public struct MistralFunctionCallEntry: Codable, Sendable {
     toolCallId: String,
     agentId: String? = nil,
     completedAt: String? = nil,
-    confirmationStatus: MistralFunctionCallEntryConfirmationStatus? = nil,
+    confirmationStatus: MistralFunctionCallEntry.ConfirmationStatus? = nil,
     createdAt: String? = nil,
     id: String? = nil,
     model: String? = nil,
     object: MistralEntryObject? = nil,
-    kind: MistralFunctionCallKind? = nil
+    kind: MistralFunctionCallEntry.Kind? = nil
   ) {
     self.agentId = agentId
     self.arguments = arguments
@@ -61,5 +61,15 @@ public struct MistralFunctionCallEntry: Codable, Sendable {
     case object
     case toolCallId = "tool_call_id"
     case kind = "type"
+  }
+
+  public enum ConfirmationStatus: String, Codable, Hashable, Sendable {
+    case pending = "pending"
+    case allowed = "allowed"
+    case denied = "denied"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case functionCall = "function.call"
   }
 }

@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsAnthropicSkill: Codable, Sendable {
   public var skillId: String
-  public var kind: AnthropicBetaManagedAgentsAnthropicSkillKind
+  public var kind: AnthropicBetaManagedAgentsAnthropicSkill.Kind
   public var version: String
 
   public init(
     skillId: String,
-    kind: AnthropicBetaManagedAgentsAnthropicSkillKind,
+    kind: AnthropicBetaManagedAgentsAnthropicSkill.Kind,
     version: String
   ) {
     self.skillId = skillId
@@ -29,5 +29,9 @@ public struct AnthropicBetaManagedAgentsAnthropicSkill: Codable, Sendable {
     case skillId = "skill_id"
     case kind = "type"
     case version
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case anthropic = "anthropic"
   }
 }

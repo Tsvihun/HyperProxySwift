@@ -11,18 +11,18 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterShellCallItem: Codable, Sendable {
-  public var action: OpenRouterShellCallItemAction
+  public var action: OpenRouterShellCallItem.Action
   public var arguments: String?
   public var callId: String
   public var environment: HyperProxyJSONValue?
   public var id: String?
   public var status: OpenRouterToolCallStatus?
-  public var kind: OpenRouterShellCallItemKind
+  public var kind: OpenRouterShellCallItem.Kind
 
   public init(
-    action: OpenRouterShellCallItemAction,
+    action: OpenRouterShellCallItem.Action,
     callId: String,
-    kind: OpenRouterShellCallItemKind,
+    kind: OpenRouterShellCallItem.Kind,
     arguments: String? = nil,
     environment: HyperProxyJSONValue? = nil,
     id: String? = nil,
@@ -45,5 +45,31 @@ public struct OpenRouterShellCallItem: Codable, Sendable {
     case id
     case status
     case kind = "type"
+  }
+
+  public struct Action: Codable, Sendable {
+    public var commands: [String]
+    public var maxOutputLength: Int?
+    public var timeoutMs: Int?
+
+    public init(
+      commands: [String],
+      maxOutputLength: Int? = nil,
+      timeoutMs: Int? = nil
+    ) {
+      self.commands = commands
+      self.maxOutputLength = maxOutputLength
+      self.timeoutMs = timeoutMs
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case commands
+      case maxOutputLength = "max_output_length"
+      case timeoutMs = "timeout_ms"
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case shellCall = "shell_call"
   }
 }

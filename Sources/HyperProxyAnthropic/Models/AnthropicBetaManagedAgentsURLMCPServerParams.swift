@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsURLMCPServerParams: Codable, Sendable {
   public var name: String
-  public var kind: AnthropicBetaManagedAgentsURLMCPServerParamsKind
+  public var kind: AnthropicBetaManagedAgentsURLMCPServerParams.Kind
   public var url: String
 
   public init(
     name: String,
-    kind: AnthropicBetaManagedAgentsURLMCPServerParamsKind,
+    kind: AnthropicBetaManagedAgentsURLMCPServerParams.Kind,
     url: String
   ) {
     self.name = name
@@ -29,5 +29,9 @@ public struct AnthropicBetaManagedAgentsURLMCPServerParams: Codable, Sendable {
     case name
     case kind = "type"
     case url
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case url = "url"
   }
 }

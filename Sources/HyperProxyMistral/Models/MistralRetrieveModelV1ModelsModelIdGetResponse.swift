@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public enum MistralRetrieveModelV1ModelsModelIdGetResponse: Codable, Sendable {
   case baseModelCard(MistralBaseModelCard)
-  case fTModelCard(MistralFTModelCard)
+  case ftModelCard(MistralFTModelCard)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -20,7 +20,7 @@ public enum MistralRetrieveModelV1ModelsModelIdGetResponse: Codable, Sendable {
       self = .baseModelCard(value)
       return
     }
-    self = .fTModelCard(try container.decode(MistralFTModelCard.self))
+    self = .ftModelCard(try container.decode(MistralFTModelCard.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -28,7 +28,7 @@ public enum MistralRetrieveModelV1ModelsModelIdGetResponse: Codable, Sendable {
     switch self {
     case .baseModelCard(let value):
       try container.encode(value)
-    case .fTModelCard(let value):
+    case .ftModelCard(let value):
       try container.encode(value)
     }
   }

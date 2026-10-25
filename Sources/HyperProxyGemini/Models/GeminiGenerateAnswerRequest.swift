@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiGenerateAnswerRequest: Codable, Sendable {
-  public var answerStyle: GeminiGenerateAnswerRequestAnswerStyle?
+  public var answerStyle: GeminiGenerateAnswerRequest.AnswerStyle?
   public var contents: [GeminiContent]?
   public var inlinePassages: GeminiGroundingPassages?
   public var safetySettings: [GeminiSafetySetting]?
@@ -19,7 +19,7 @@ public struct GeminiGenerateAnswerRequest: Codable, Sendable {
   public var temperature: Double?
 
   public init(
-    answerStyle: GeminiGenerateAnswerRequestAnswerStyle? = nil,
+    answerStyle: GeminiGenerateAnswerRequest.AnswerStyle? = nil,
     contents: [GeminiContent]? = nil,
     inlinePassages: GeminiGroundingPassages? = nil,
     safetySettings: [GeminiSafetySetting]? = nil,
@@ -41,5 +41,12 @@ public struct GeminiGenerateAnswerRequest: Codable, Sendable {
     case safetySettings
     case semanticRetriever
     case temperature
+  }
+
+  public enum AnswerStyle: String, Codable, Hashable, Sendable {
+    case answerStyleUnspecified = "ANSWER_STYLE_UNSPECIFIED"
+    case abstractive = "ABSTRACTIVE"
+    case extractive = "EXTRACTIVE"
+    case verbose = "VERBOSE"
   }
 }

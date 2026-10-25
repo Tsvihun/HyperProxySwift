@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIChatCompletionRequestSystemMessage: Codable, Sendable {
-  public var content: OpenAIChatCompletionRequestSystemMessageContent
+  public var content: OpenAIChatCompletionRequestSystemMessage.Content
   public var name: String?
-  public var role: OpenAIChatCompletionRequestSystemMessageRole
+  public var role: OpenAIChatCompletionRequestSystemMessage.Role
 
   public init(
-    content: OpenAIChatCompletionRequestSystemMessageContent,
-    role: OpenAIChatCompletionRequestSystemMessageRole,
+    content: OpenAIChatCompletionRequestSystemMessage.Content,
+    role: OpenAIChatCompletionRequestSystemMessage.Role,
     name: String? = nil
   ) {
     self.content = content
@@ -29,5 +29,47 @@ public struct OpenAIChatCompletionRequestSystemMessage: Codable, Sendable {
     case content
     case name
     case role
+  }
+
+  public enum Content: Codable, Sendable {
+    case string(String)
+    case chatCompletionRequestSystemMessageContentPartArray(
+      [OpenAIChatCompletionRequestSystemMessageContentPart])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .chatCompletionRequestSystemMessageContentPartArray(
+        try container.decode([OpenAIChatCompletionRequestSystemMessageContentPart].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .chatCompletionRequestSystemMessageContentPartArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case system = "system"
+  }
+}
+
+extension OpenAIChatCompletionRequestSystemMessage.Content: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension OpenAIChatCompletionRequestSystemMessage.Content: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: OpenAIChatCompletionRequestSystemMessageContentPart...) {
+    self = .chatCompletionRequestSystemMessageContentPartArray(elements)
   }
 }

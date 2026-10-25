@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct ReplicateSchemasSearchResponse: Codable, Sendable {
   public var collections: [ReplicateSchemasSearchCollectionResponse]
-  public var models: [ReplicateSchemasSearchResponseModelsItem]
+  public var models: [ReplicateSchemasSearchResponse.ModelsElement]
   public var pages: [ReplicateSchemasPageResponse]
   public var query: String
 
   public init(
     collections: [ReplicateSchemasSearchCollectionResponse],
-    models: [ReplicateSchemasSearchResponseModelsItem],
+    models: [ReplicateSchemasSearchResponse.ModelsElement],
     pages: [ReplicateSchemasPageResponse],
     query: String
   ) {
@@ -33,5 +33,23 @@ public struct ReplicateSchemasSearchResponse: Codable, Sendable {
     case models
     case pages
     case query
+  }
+
+  public struct ModelsElement: Codable, Sendable {
+    public var metadata: ReplicateSchemasSearchModelMetadataResponse
+    public var model: ReplicateSchemasModelResponse
+
+    public init(
+      metadata: ReplicateSchemasSearchModelMetadataResponse,
+      model: ReplicateSchemasModelResponse
+    ) {
+      self.metadata = metadata
+      self.model = model
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case metadata
+      case model
+    }
   }
 }

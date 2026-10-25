@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct TogetherBillingUsageReport: Codable, Sendable {
   public var billingPeriod: String
-  public var currency: TogetherUSDCurrency
+  public var currency: TogetherBillingUsageReport.Currency
   public var data: [TogetherBillingUsageWindow]
   public var earliestWindowStart: String?
   public var latestWindowEnd: String?
@@ -27,7 +27,7 @@ public struct TogetherBillingUsageReport: Codable, Sendable {
     latestWindowEnd: String?,
     nextCursor: String?,
     organizationId: String,
-    currency: TogetherUSDCurrency = .uSD,
+    currency: TogetherBillingUsageReport.Currency = .usd,
     object: TogetherListObject = .list
   ) {
     self.billingPeriod = billingPeriod
@@ -49,5 +49,9 @@ public struct TogetherBillingUsageReport: Codable, Sendable {
     case nextCursor = "next_cursor"
     case object
     case organizationId = "organization_id"
+  }
+
+  public enum Currency: String, Codable, Hashable, Sendable {
+    case usd = "USD"
   }
 }

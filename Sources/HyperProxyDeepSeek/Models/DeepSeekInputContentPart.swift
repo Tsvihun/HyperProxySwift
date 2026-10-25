@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepSeekInputContentPart: Codable, Sendable {
-  public var detail: DeepSeekInputContentPartDetail?
+  public var detail: DeepSeekInputContentPart.Detail?
   public var fileId: String?
   public var imageUrl: String?
   public var text: String?
@@ -19,7 +19,7 @@ public struct DeepSeekInputContentPart: Codable, Sendable {
 
   public init(
     kind: DeepSeekInputContentPartType,
-    detail: DeepSeekInputContentPartDetail? = nil,
+    detail: DeepSeekInputContentPart.Detail? = nil,
     fileId: String? = nil,
     imageUrl: String? = nil,
     text: String? = nil
@@ -37,5 +37,12 @@ public struct DeepSeekInputContentPart: Codable, Sendable {
     case imageUrl = "image_url"
     case text
     case kind = "type"
+  }
+
+  public enum Detail: String, Codable, Hashable, Sendable {
+    case low = "low"
+    case high = "high"
+    case original = "original"
+    case auto = "auto"
   }
 }

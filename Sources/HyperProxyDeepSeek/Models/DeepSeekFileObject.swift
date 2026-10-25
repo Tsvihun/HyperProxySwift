@@ -16,16 +16,16 @@ public struct DeepSeekFileObject: Codable, Sendable {
   public var expiresAt: Int?
   public var filename: String
   public var id: String
-  public var object: DeepSeekFileObjectObject
-  public var purpose: DeepSeekFileObjectPurpose
+  public var object: DeepSeekFileObject.Object
+  public var purpose: DeepSeekFileObject.Purpose
 
   public init(
     bytes: Int,
     createdAt: Int,
     filename: String,
     id: String,
-    object: DeepSeekFileObjectObject,
-    purpose: DeepSeekFileObjectPurpose,
+    object: DeepSeekFileObject.Object,
+    purpose: DeepSeekFileObject.Purpose,
     expiresAt: Int? = nil
   ) {
     self.bytes = bytes
@@ -45,5 +45,13 @@ public struct DeepSeekFileObject: Codable, Sendable {
     case id
     case object
     case purpose
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case file = "file"
+  }
+
+  public enum Purpose: String, Codable, Hashable, Sendable {
+    case userData = "user_data"
   }
 }

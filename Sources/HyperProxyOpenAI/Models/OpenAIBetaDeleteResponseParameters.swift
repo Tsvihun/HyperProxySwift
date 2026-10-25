@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIBetaDeleteResponseParameters: Codable, Sendable {
-  public var openaiBeta: [OpenAIBetaDeleteResponseParametersOpenaiBetaItem]?
+  public var openaiBeta: [OpenAIBetaDeleteResponseParameters.OpenaiBetaElement]?
   public var responseId: String
 
   public init(
     responseId: String,
-    openaiBeta: [OpenAIBetaDeleteResponseParametersOpenaiBetaItem]? = nil
+    openaiBeta: [OpenAIBetaDeleteResponseParameters.OpenaiBetaElement]? = nil
   ) {
     self.openaiBeta = openaiBeta
     self.responseId = responseId
@@ -25,5 +25,9 @@ public struct OpenAIBetaDeleteResponseParameters: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case openaiBeta = "openai-beta"
     case responseId = "response_id"
+  }
+
+  public enum OpenaiBetaElement: String, Codable, Hashable, Sendable {
+    case responsesMultiAgentV1 = "responses_multi_agent=v1"
   }
 }

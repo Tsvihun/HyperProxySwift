@@ -42,4 +42,18 @@ public struct OpenRouterAnthropicUnknownUsageIteration: Codable, Sendable {
     case outputTokens = "output_tokens"
     case kind = "type"
   }
+
+  public struct WithValueType: Codable, Sendable {
+    public var kind: String
+
+    public init(
+      kind: String
+    ) {
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case kind = "type"
+    }
+  }
 }

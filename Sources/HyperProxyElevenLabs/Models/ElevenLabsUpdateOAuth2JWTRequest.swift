@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsUpdateOAuth2JWTRequest: Codable, Sendable {
-  public var algorithm: ElevenLabsUpdateOAuth2JWTRequestAlgorithm?
+  public var algorithm: ElevenLabsUpdateOAuth2JWTRequest.Algorithm?
   public var audience: String?
   public var authType: ElevenLabsOauth2JwtAuthType?
   public var expirationSeconds: Int?
@@ -22,10 +22,10 @@ public struct ElevenLabsUpdateOAuth2JWTRequest: Codable, Sendable {
   public var scopes: [String]?
   public var secretKey: String?
   public var subject: String?
-  public var tokenResponseField: ElevenLabsUpdateOAuth2JWTRequestTokenResponseField?
+  public var tokenResponseField: ElevenLabsUpdateOAuth2JWTRequest.TokenResponseField?
 
   public init(
-    algorithm: ElevenLabsUpdateOAuth2JWTRequestAlgorithm? = nil,
+    algorithm: ElevenLabsUpdateOAuth2JWTRequest.Algorithm? = nil,
     audience: String? = nil,
     authType: ElevenLabsOauth2JwtAuthType? = nil,
     expirationSeconds: Int? = nil,
@@ -36,7 +36,7 @@ public struct ElevenLabsUpdateOAuth2JWTRequest: Codable, Sendable {
     scopes: [String]? = nil,
     secretKey: String? = nil,
     subject: String? = nil,
-    tokenResponseField: ElevenLabsUpdateOAuth2JWTRequestTokenResponseField? = nil
+    tokenResponseField: ElevenLabsUpdateOAuth2JWTRequest.TokenResponseField? = nil
   ) {
     self.algorithm = algorithm
     self.audience = audience
@@ -65,5 +65,19 @@ public struct ElevenLabsUpdateOAuth2JWTRequest: Codable, Sendable {
     case secretKey = "secret_key"
     case subject
     case tokenResponseField = "token_response_field"
+  }
+
+  public enum Algorithm: String, Codable, Hashable, Sendable {
+    case hs256 = "HS256"
+    case hs384 = "HS384"
+    case hs512 = "HS512"
+    case rs256 = "RS256"
+    case rs384 = "RS384"
+    case rs512 = "RS512"
+  }
+
+  public enum TokenResponseField: String, Codable, Hashable, Sendable {
+    case accessToken = "access_token"
+    case idToken = "id_token"
   }
 }

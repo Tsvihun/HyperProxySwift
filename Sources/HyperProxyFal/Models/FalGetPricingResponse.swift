@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct FalGetPricingResponse: Codable, Sendable {
   public var hasMore: Bool
   public var nextCursor: String
-  public var prices: [FalGetPricingResponsePricesItem]
+  public var prices: [FalGetPricingResponse.PricesElement]
 
   public init(
     hasMore: Bool,
     nextCursor: String,
-    prices: [FalGetPricingResponsePricesItem]
+    prices: [FalGetPricingResponse.PricesElement]
   ) {
     self.hasMore = hasMore
     self.nextCursor = nextCursor
@@ -29,5 +29,31 @@ public struct FalGetPricingResponse: Codable, Sendable {
     case hasMore = "has_more"
     case nextCursor = "next_cursor"
     case prices
+  }
+
+  public struct PricesElement: Codable, Sendable {
+    public var currency: String
+    public var endpointId: String
+    public var unit: String
+    public var unitPrice: Double
+
+    public init(
+      currency: String,
+      endpointId: String,
+      unit: String,
+      unitPrice: Double
+    ) {
+      self.currency = currency
+      self.endpointId = endpointId
+      self.unit = unit
+      self.unitPrice = unitPrice
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case currency
+      case endpointId = "endpoint_id"
+      case unit
+      case unitPrice = "unit_price"
+    }
   }
 }

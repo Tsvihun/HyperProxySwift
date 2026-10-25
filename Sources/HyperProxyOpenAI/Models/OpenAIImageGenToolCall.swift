@@ -16,25 +16,25 @@ public struct OpenAIImageGenToolCall: Codable, Sendable {
   public var error: OpenAIImageGenToolCallError?
   public var id: String
   public var outputFormat: OpenAIImageOutputFormat?
-  public var quality: OpenAIImageGenToolCallQuality?
+  public var quality: OpenAIImageGenToolCall.Quality?
   public var result: String?
   public var revisedPrompt: String?
-  public var size: OpenAIImageGenToolCallSizeAnyOf1?
-  public var status: OpenAIImageGenToolCallStatus
-  public var kind: OpenAIImageGenToolCallKind
+  public var size: OpenAIImageGenToolCallSizeVariant?
+  public var status: OpenAIImageGenToolCall.Status
+  public var kind: OpenAIImageGenToolCall.Kind
 
   public init(
     id: String,
     result: String?,
-    status: OpenAIImageGenToolCallStatus,
-    kind: OpenAIImageGenToolCallKind,
+    status: OpenAIImageGenToolCall.Status,
+    kind: OpenAIImageGenToolCall.Kind,
     action: OpenAIImageGenActionEnum? = nil,
     background: OpenAIImageBackground? = nil,
     error: OpenAIImageGenToolCallError? = nil,
     outputFormat: OpenAIImageOutputFormat? = nil,
-    quality: OpenAIImageGenToolCallQuality? = nil,
+    quality: OpenAIImageGenToolCall.Quality? = nil,
     revisedPrompt: String? = nil,
-    size: OpenAIImageGenToolCallSizeAnyOf1? = nil
+    size: OpenAIImageGenToolCallSizeVariant? = nil
   ) {
     self.action = action
     self.background = background
@@ -61,5 +61,25 @@ public struct OpenAIImageGenToolCall: Codable, Sendable {
     case size
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case imageGenerationCall = "image_generation_call"
+  }
+
+  public enum Quality: String, Codable, Hashable, Sendable {
+    case low = "low"
+    case medium = "medium"
+    case high = "high"
+    case xhigh = "xhigh"
+    case max = "max"
+    case auto = "auto"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case inProgress = "in_progress"
+    case completed = "completed"
+    case generating = "generating"
+    case failed = "failed"
   }
 }

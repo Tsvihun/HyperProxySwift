@@ -17,7 +17,7 @@ public struct TogetherRLCheckpoint: Codable, Sendable {
   public var inferenceRegistration: TogetherRLInferenceCheckpointRegistration?
   public var loraRank: Int?
   public var sessionId: String
-  public var step: TogetherRLCheckpointStep
+  public var step: TogetherRLCheckpoint.Step
   public var trainingRegistration: TogetherRLModelRegistryArtifact?
   public var kind: TogetherRLCheckpointType
 
@@ -26,7 +26,7 @@ public struct TogetherRLCheckpoint: Codable, Sendable {
     createdAt: String,
     id: String,
     sessionId: String,
-    step: TogetherRLCheckpointStep,
+    step: TogetherRLCheckpoint.Step,
     kind: TogetherRLCheckpointType,
     inferenceRegistration: TogetherRLInferenceCheckpointRegistration? = nil,
     loraRank: Int? = nil,
@@ -53,5 +53,41 @@ public struct TogetherRLCheckpoint: Codable, Sendable {
     case step
     case trainingRegistration = "training_registration"
     case kind = "type"
+  }
+
+  public enum Step: Codable, Sendable {
+    case integer(Int)
+    case string(String)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Int.self) {
+        self = .integer(value)
+        return
+      }
+      self = .string(try container.decode(String.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .integer(let value):
+        try container.encode(value)
+      case .string(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension TogetherRLCheckpoint.Step: ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Int) {
+    self = .integer(value)
+  }
+}
+
+extension TogetherRLCheckpoint.Step: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

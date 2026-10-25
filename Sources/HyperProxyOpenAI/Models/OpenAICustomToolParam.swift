@@ -15,18 +15,18 @@ public struct OpenAICustomToolParam: Codable, Sendable {
   public var async: Bool?
   public var deferLoading: Bool?
   public var description: String?
-  public var format: OpenAICustomToolParamFormat?
+  public var format: OpenAICustomToolParam.Format?
   public var name: String
-  public var kind: OpenAICustomToolParamKind
+  public var kind: OpenAICustomToolParam.Kind
 
   public init(
     name: String,
-    kind: OpenAICustomToolParamKind,
+    kind: OpenAICustomToolParam.Kind,
     allowedCallers: [OpenAICallableToolAllowedCaller]? = nil,
     async: Bool? = nil,
     deferLoading: Bool? = nil,
     description: String? = nil,
-    format: OpenAICustomToolParamFormat? = nil
+    format: OpenAICustomToolParam.Format? = nil
   ) {
     self.allowedCallers = allowedCallers
     self.async = async
@@ -45,5 +45,33 @@ public struct OpenAICustomToolParam: Codable, Sendable {
     case format
     case name
     case kind = "type"
+  }
+
+  public enum Format: Codable, Sendable {
+    case customTextFormatParam(OpenAICustomTextFormatParam)
+    case customGrammarFormatParam(OpenAICustomGrammarFormatParam)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenAICustomTextFormatParam.self) {
+        self = .customTextFormatParam(value)
+        return
+      }
+      self = .customGrammarFormatParam(try container.decode(OpenAICustomGrammarFormatParam.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .customTextFormatParam(let value):
+        try container.encode(value)
+      case .customGrammarFormatParam(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case custom = "custom"
   }
 }

@@ -16,7 +16,7 @@ public struct MistralActivityTaskFailedResponse: Codable, Sendable {
   public var continuedRunId: String?
   public var eventId: String
   public var eventTimestamp: Int
-  public var eventType: MistralACTIVITYTASKFAILEDEventType
+  public var eventType: MistralActivityTaskFailedResponse.EventType
   public var firstExecutionRunId: String?
   public var parentWorkflowExecId: String?
   public var rootWorkflowExecId: String
@@ -34,7 +34,7 @@ public struct MistralActivityTaskFailedResponse: Codable, Sendable {
     workflowExecId: String,
     workflowName: String,
     workflowRunId: String,
-    eventType: MistralACTIVITYTASKFAILEDEventType = .aCTIVITYTASKFAILED,
+    eventType: MistralActivityTaskFailedResponse.EventType = .activityTaskFailed,
     chainRunId: String? = nil,
     continuedRunId: String? = nil,
     firstExecutionRunId: String? = nil,
@@ -69,5 +69,9 @@ public struct MistralActivityTaskFailedResponse: Codable, Sendable {
     case workflowExecId = "workflow_exec_id"
     case workflowName = "workflow_name"
     case workflowRunId = "workflow_run_id"
+  }
+
+  public enum EventType: String, Codable, Hashable, Sendable {
+    case activityTaskFailed = "ACTIVITY_TASK_FAILED"
   }
 }

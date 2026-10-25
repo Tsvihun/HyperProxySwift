@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIHostedEnvironmentFileParamInline: Codable, Sendable {
   public var data: String
   public var path: String
-  public var kind: OpenAIHostedEnvironmentFileParamInlineKind
+  public var kind: OpenAIHostedEnvironmentFileParamInline.Kind
 
   public init(
     data: String,
     path: String,
-    kind: OpenAIHostedEnvironmentFileParamInlineKind
+    kind: OpenAIHostedEnvironmentFileParamInline.Kind
   ) {
     self.data = data
     self.path = path
@@ -29,5 +29,9 @@ public struct OpenAIHostedEnvironmentFileParamInline: Codable, Sendable {
     case data
     case path
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case inline = "inline"
   }
 }

@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct ElevenLabsVoiceResponseModel: Codable, Sendable {
   public var availableForTiers: [String]
-  public var category: ElevenLabsVoiceResponseModelCategory
+  public var category: ElevenLabsVoiceResponseModel.Category
   public var collectionIds: [String]?
   public var createdAtUnix: Int?
   public var description: String?
@@ -23,14 +23,14 @@ public struct ElevenLabsVoiceResponseModel: Codable, Sendable {
   public var isLegacy: Bool?
   public var isMixed: Bool?
   public var isOwner: Bool?
-  public var labellingStatus: ElevenLabsVoiceResponseModelLabellingStatus?
+  public var labellingStatus: ElevenLabsVoiceResponseModel.LabellingStatus?
   public var labels: [String: String]
   public var name: String
   public var permissionOnResource: String?
   public var previewUrl: String?
-  public var recordingQuality: ElevenLabsVoiceResponseModelRecordingQuality?
+  public var recordingQuality: ElevenLabsVoiceResponseModel.RecordingQuality?
   public var recordingQualityReason: String?
-  public var safetyControl: ElevenLabsVoiceResponseModelSafetyControl?
+  public var safetyControl: ElevenLabsVoiceResponseModel.SafetyControl?
   public var samples: [ElevenLabsSampleResponseModel]?
   public var settings: ElevenLabsVoiceSettingsResponseModel?
   public var sharing: ElevenLabsVoiceSharingResponseModel?
@@ -40,7 +40,7 @@ public struct ElevenLabsVoiceResponseModel: Codable, Sendable {
 
   public init(
     availableForTiers: [String],
-    category: ElevenLabsVoiceResponseModelCategory,
+    category: ElevenLabsVoiceResponseModel.Category,
     highQualityBaseModelIds: [String],
     labels: [String: String],
     name: String,
@@ -54,12 +54,12 @@ public struct ElevenLabsVoiceResponseModel: Codable, Sendable {
     isLegacy: Bool? = nil,
     isMixed: Bool? = nil,
     isOwner: Bool? = nil,
-    labellingStatus: ElevenLabsVoiceResponseModelLabellingStatus? = nil,
+    labellingStatus: ElevenLabsVoiceResponseModel.LabellingStatus? = nil,
     permissionOnResource: String? = nil,
     previewUrl: String? = nil,
-    recordingQuality: ElevenLabsVoiceResponseModelRecordingQuality? = nil,
+    recordingQuality: ElevenLabsVoiceResponseModel.RecordingQuality? = nil,
     recordingQualityReason: String? = nil,
-    safetyControl: ElevenLabsVoiceResponseModelSafetyControl? = nil,
+    safetyControl: ElevenLabsVoiceResponseModel.SafetyControl? = nil,
     samples: [ElevenLabsSampleResponseModel]? = nil,
     settings: ElevenLabsVoiceSettingsResponseModel? = nil,
     sharing: ElevenLabsVoiceSharingResponseModel? = nil,
@@ -121,5 +121,35 @@ public struct ElevenLabsVoiceResponseModel: Codable, Sendable {
     case verifiedLanguages = "verified_languages"
     case voiceId = "voice_id"
     case voiceVerification = "voice_verification"
+  }
+
+  public enum Category: String, Codable, Hashable, Sendable {
+    case generated = "generated"
+    case cloned = "cloned"
+    case premade = "premade"
+    case professional = "professional"
+    case famous = "famous"
+    case highQuality = "high_quality"
+  }
+
+  public enum LabellingStatus: String, Codable, Hashable, Sendable {
+    case inReview = "in_review"
+    case reviewComplete = "review_complete"
+  }
+
+  public enum RecordingQuality: String, Codable, Hashable, Sendable {
+    case studio = "studio"
+    case good = "good"
+    case ok = "ok"
+    case poor = "poor"
+    case bad = "bad"
+  }
+
+  public enum SafetyControl: String, Codable, Hashable, Sendable {
+    case none = "NONE"
+    case ban = "BAN"
+    case captcha = "CAPTCHA"
+    case enterpriseBan = "ENTERPRISE_BAN"
+    case enterpriseCaptcha = "ENTERPRISE_CAPTCHA"
   }
 }

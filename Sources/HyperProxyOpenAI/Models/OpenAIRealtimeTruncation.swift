@@ -11,31 +11,77 @@ import Foundation
 import HyperProxyCore
 
 public enum OpenAIRealtimeTruncation: Codable, Sendable {
-  case realtimeTruncationOneOf1(OpenAIRealtimeTruncationOneOf1)
-  case realtimeTruncationOneOf2(OpenAIRealtimeTruncationOneOf2)
+  case preset(OpenAIRealtimeTruncation.Preset)
+  case retentionRatioTruncation(OpenAIRealtimeTruncation.RetentionRatioTruncation)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(OpenAIRealtimeTruncationOneOf1.self) {
-      self = .realtimeTruncationOneOf1(value)
+    if let value = try? container.decode(OpenAIRealtimeTruncation.Preset.self) {
+      self = .preset(value)
       return
     }
-    self = .realtimeTruncationOneOf2(try container.decode(OpenAIRealtimeTruncationOneOf2.self))
+    self = .retentionRatioTruncation(
+      try container.decode(OpenAIRealtimeTruncation.RetentionRatioTruncation.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .realtimeTruncationOneOf1(let value):
+    case .preset(let value):
       try container.encode(value)
-    case .realtimeTruncationOneOf2(let value):
+    case .retentionRatioTruncation(let value):
       try container.encode(value)
     }
   }
 
   /// Provider-native value without the schema union wrapper.
-  public static var auto: Self { .realtimeTruncationOneOf1(.auto) }
+  public static var auto: Self { .preset(.auto) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var disabled: Self { .realtimeTruncationOneOf1(.disabled) }
+  public static var disabled: Self { .preset(.disabled) }
+
+  public enum Preset: String, Codable, Hashable, Sendable {
+    case auto = "auto"
+    case disabled = "disabled"
+  }
+
+  public struct RetentionRatioTruncation: Codable, Sendable {
+    public var retentionRatio: Double
+    public var tokenLimits: OpenAIRealtimeTruncation.RetentionRatioTruncation.TokenLimits?
+    public var kind: OpenAIRealtimeTruncation.RetentionRatioTruncation.Kind
+
+    public init(
+      retentionRatio: Double,
+      kind: OpenAIRealtimeTruncation.RetentionRatioTruncation.Kind,
+      tokenLimits: OpenAIRealtimeTruncation.RetentionRatioTruncation.TokenLimits? = nil
+    ) {
+      self.retentionRatio = retentionRatio
+      self.tokenLimits = tokenLimits
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case retentionRatio = "retention_ratio"
+      case tokenLimits = "token_limits"
+      case kind = "type"
+    }
+
+    public enum Kind: String, Codable, Hashable, Sendable {
+      case retentionRatio = "retention_ratio"
+    }
+
+    public struct TokenLimits: Codable, Sendable {
+      public var postInstructions: Int?
+
+      public init(
+        postInstructions: Int? = nil
+      ) {
+        self.postInstructions = postInstructions
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case postInstructions = "post_instructions"
+      }
+    }
+  }
 }

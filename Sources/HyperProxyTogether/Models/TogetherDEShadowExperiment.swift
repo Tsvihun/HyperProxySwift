@@ -20,7 +20,7 @@ public struct TogetherDEShadowExperiment: Codable, Sendable {
   public var name: String
   public var projectId: String
   public var source: TogetherDEShadowExperimentSourceResponse
-  public var state: TogetherDEShadowExperimentState
+  public var state: TogetherDEShadowExperiment.State
   public var targets: [TogetherDEShadowExperimentTarget]
   public var updatedAt: String
 
@@ -33,7 +33,7 @@ public struct TogetherDEShadowExperiment: Codable, Sendable {
     name: String,
     projectId: String,
     source: TogetherDEShadowExperimentSourceResponse,
-    state: TogetherDEShadowExperimentState,
+    state: TogetherDEShadowExperiment.State,
     targets: [TogetherDEShadowExperimentTarget],
     updatedAt: String,
     description: String? = nil
@@ -65,5 +65,10 @@ public struct TogetherDEShadowExperiment: Codable, Sendable {
     case state
     case targets
     case updatedAt
+  }
+
+  public enum State: String, Codable, Hashable, Sendable {
+    case shadowExperimentStateActive = "SHADOW_EXPERIMENT_STATE_ACTIVE"
+    case shadowExperimentStateInactive = "SHADOW_EXPERIMENT_STATE_INACTIVE"
   }
 }

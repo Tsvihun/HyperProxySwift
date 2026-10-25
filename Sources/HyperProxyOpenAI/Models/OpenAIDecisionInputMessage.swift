@@ -10,28 +10,41 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAIDecisionInputMessage: Codable, Sendable {
-  public var content: OpenAIDecisionInputContent
-  public var phase: OpenAIMessagePhaseParam?
-  public var role: OpenAIDecisionInputMessageRole
-  public var kind: OpenAIDecisionInputMessageKind?
+public enum OpenAIDecisionInputMessage: Codable, Sendable {
+  case decisionInputUserMessage(OpenAIDecisionInputUserMessage)
+  case decisionInputDeveloperMessage(OpenAIDecisionInputDeveloperMessage)
+  case decisionInputSystemMessage(OpenAIDecisionInputSystemMessage)
+  case decisionInputAssistantMessage(OpenAIDecisionInputAssistantMessage)
 
-  public init(
-    content: OpenAIDecisionInputContent,
-    role: OpenAIDecisionInputMessageRole,
-    phase: OpenAIMessagePhaseParam? = nil,
-    kind: OpenAIDecisionInputMessageKind? = nil
-  ) {
-    self.content = content
-    self.phase = phase
-    self.role = role
-    self.kind = kind
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(OpenAIDecisionInputUserMessage.self) {
+      self = .decisionInputUserMessage(value)
+      return
+    }
+    if let value = try? container.decode(OpenAIDecisionInputDeveloperMessage.self) {
+      self = .decisionInputDeveloperMessage(value)
+      return
+    }
+    if let value = try? container.decode(OpenAIDecisionInputSystemMessage.self) {
+      self = .decisionInputSystemMessage(value)
+      return
+    }
+    self = .decisionInputAssistantMessage(
+      try container.decode(OpenAIDecisionInputAssistantMessage.self))
   }
 
-  enum CodingKeys: String, CodingKey {
-    case content
-    case phase
-    case role
-    case kind = "type"
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .decisionInputUserMessage(let value):
+      try container.encode(value)
+    case .decisionInputDeveloperMessage(let value):
+      try container.encode(value)
+    case .decisionInputSystemMessage(let value):
+      try container.encode(value)
+    case .decisionInputAssistantMessage(let value):
+      try container.encode(value)
+    }
   }
 }

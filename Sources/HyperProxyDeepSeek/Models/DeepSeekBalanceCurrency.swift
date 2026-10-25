@@ -11,6 +11,6 @@ import Foundation
 import HyperProxyCore
 
 public enum DeepSeekBalanceCurrency: String, Codable, Hashable, Sendable {
-  case cNY = "CNY"
-  case uSD = "USD"
+  case cny = "CNY"
+  case usd = "USD"
 }

@@ -13,16 +13,16 @@ import HyperProxyCore
 public struct OpenRouterMessagesBashToolResultBlock: Codable, Sendable {
   public var containerId: String?
   public var content: [String: HyperProxyJSONValue]
-  public var files: [OpenRouterMessagesBashToolResultBlockFilesItem]?
+  public var files: [OpenRouterMessagesBashToolResultBlock.FilesElement]?
   public var toolUseId: String
-  public var kind: OpenRouterMessagesBashToolResultBlockKind
+  public var kind: OpenRouterMessagesBashToolResultBlock.Kind
 
   public init(
     content: [String: HyperProxyJSONValue],
     toolUseId: String,
-    kind: OpenRouterMessagesBashToolResultBlockKind,
+    kind: OpenRouterMessagesBashToolResultBlock.Kind,
     containerId: String? = nil,
-    files: [OpenRouterMessagesBashToolResultBlockFilesItem]? = nil
+    files: [OpenRouterMessagesBashToolResultBlock.FilesElement]? = nil
   ) {
     self.containerId = containerId
     self.content = content
@@ -37,5 +37,47 @@ public struct OpenRouterMessagesBashToolResultBlock: Codable, Sendable {
     case files
     case toolUseId = "tool_use_id"
     case kind = "type"
+  }
+
+  public struct FilesElement: Codable, Sendable {
+    public var containerId: String
+    public var endIndex: Int
+    public var fileId: String
+    public var filename: String
+    public var startIndex: Int
+    public var kind: OpenRouterMessagesBashToolResultBlock.FilesElement.Kind
+
+    public init(
+      containerId: String,
+      endIndex: Int,
+      fileId: String,
+      filename: String,
+      startIndex: Int,
+      kind: OpenRouterMessagesBashToolResultBlock.FilesElement.Kind
+    ) {
+      self.containerId = containerId
+      self.endIndex = endIndex
+      self.fileId = fileId
+      self.filename = filename
+      self.startIndex = startIndex
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case containerId = "container_id"
+      case endIndex = "end_index"
+      case fileId = "file_id"
+      case filename
+      case startIndex = "start_index"
+      case kind = "type"
+    }
+
+    public enum Kind: String, Codable, Hashable, Sendable {
+      case containerFileCitation = "container_file_citation"
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case openrouterBashToolResult = "openrouter_bash_tool_result"
   }
 }

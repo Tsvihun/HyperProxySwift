@@ -11,8 +11,8 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksGatewayGetAccountUsageRequestUsageType: String, Codable, Hashable, Sendable {
-  case uSAGETYPEUNSPECIFIED = "USAGE_TYPE_UNSPECIFIED"
-  case sERVERLESS = "SERVERLESS"
-  case dEDICATEDDEPLOYMENT = "DEDICATED_DEPLOYMENT"
-  case tRAINING = "TRAINING"
+  case usageTypeUnspecified = "USAGE_TYPE_UNSPECIFIED"
+  case serverless = "SERVERLESS"
+  case dedicatedDeployment = "DEDICATED_DEPLOYMENT"
+  case training = "TRAINING"
 }

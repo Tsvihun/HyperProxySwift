@@ -71,4 +71,14 @@ public enum OpenAIBetaResponseSteerErrorCode: RawRepresentable, Codable, Hashabl
     var container = encoder.singleValueContainer()
     try container.encode(rawValue)
   }
+
+  public enum Preset: String, Codable, Hashable, Sendable {
+    case responseNotFound = "response_not_found"
+    case invalidInput = "invalid_input"
+    case steeringNotSupported = "steering_not_supported"
+    case tooManyPendingSteers = "too_many_pending_steers"
+    case responseAlreadyCompleted = "response_already_completed"
+    case responseNotActive = "response_not_active"
+    case successorCreationFailed = "successor_creation_failed"
+  }
 }

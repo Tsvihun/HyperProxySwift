@@ -17,7 +17,7 @@ public struct OpenAIRealtimeServerEventResponseAudioDelta: Codable, Sendable {
   public var itemId: String
   public var outputIndex: Int
   public var responseId: String
-  public var kind: OpenAIRealtimeServerEventResponseAudioDeltaKind
+  public var kind: OpenAIRealtimeServerEventResponseAudioDelta.Kind
 
   public init(
     contentIndex: Int,
@@ -26,7 +26,7 @@ public struct OpenAIRealtimeServerEventResponseAudioDelta: Codable, Sendable {
     itemId: String,
     outputIndex: Int,
     responseId: String,
-    kind: OpenAIRealtimeServerEventResponseAudioDeltaKind
+    kind: OpenAIRealtimeServerEventResponseAudioDelta.Kind
   ) {
     self.contentIndex = contentIndex
     self.delta = delta
@@ -45,5 +45,9 @@ public struct OpenAIRealtimeServerEventResponseAudioDelta: Codable, Sendable {
     case outputIndex = "output_index"
     case responseId = "response_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case responseOutputAudioDelta = "response.output_audio.delta"
   }
 }

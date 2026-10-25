@@ -14,14 +14,14 @@ public struct OpenAIListFineTuningCheckpointPermissionsParameters: Codable, Send
   public var after: String?
   public var fineTunedModelCheckpoint: String
   public var limit: Int?
-  public var order: OpenAIListFineTuningCheckpointPermissionsParametersOrder?
+  public var order: OpenAIListFineTuningCheckpointPermissionsParameters.Order?
   public var projectId: String?
 
   public init(
     fineTunedModelCheckpoint: String,
     after: String? = nil,
     limit: Int? = nil,
-    order: OpenAIListFineTuningCheckpointPermissionsParametersOrder? = nil,
+    order: OpenAIListFineTuningCheckpointPermissionsParameters.Order? = nil,
     projectId: String? = nil
   ) {
     self.after = after
@@ -37,5 +37,12 @@ public struct OpenAIListFineTuningCheckpointPermissionsParameters: Codable, Send
     case limit
     case order
     case projectId = "project_id"
+  }
+
+  public enum Order: String, Codable, Hashable,
+    Sendable
+  {
+    case ascending = "ascending"
+    case descending = "descending"
   }
 }

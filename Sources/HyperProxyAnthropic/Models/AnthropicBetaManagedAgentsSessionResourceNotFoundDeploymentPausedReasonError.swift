@@ -13,15 +13,21 @@ import HyperProxyCore
 public struct AnthropicBetaManagedAgentsSessionResourceNotFoundDeploymentPausedReasonError: Codable,
   Sendable
 {
-  public var kind: AnthropicBetaManagedAgentsSessionResourceNotFoundDeploymentPausedReasonErrorKind
+  public var kind: AnthropicBetaManagedAgentsSessionResourceNotFoundDeploymentPausedReasonError.Kind
 
   public init(
-    kind: AnthropicBetaManagedAgentsSessionResourceNotFoundDeploymentPausedReasonErrorKind
+    kind: AnthropicBetaManagedAgentsSessionResourceNotFoundDeploymentPausedReasonError.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind:
+    String, Codable, Hashable, Sendable
+  {
+    case sessionResourceNotFoundError = "session_resource_not_found_error"
   }
 }

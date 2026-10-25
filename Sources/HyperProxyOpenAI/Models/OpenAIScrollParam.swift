@@ -14,14 +14,14 @@ public struct OpenAIScrollParam: Codable, Sendable {
   public var keys: [String]?
   public var scrollX: Int
   public var scrollY: Int
-  public var kind: OpenAIScrollParamKind
+  public var kind: OpenAIScrollParam.Kind
   public var x: Int
   public var y: Int
 
   public init(
     scrollX: Int,
     scrollY: Int,
-    kind: OpenAIScrollParamKind,
+    kind: OpenAIScrollParam.Kind,
     x: Int,
     y: Int,
     keys: [String]? = nil
@@ -41,5 +41,9 @@ public struct OpenAIScrollParam: Codable, Sendable {
     case kind = "type"
     case x
     case y
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case scroll = "scroll"
   }
 }

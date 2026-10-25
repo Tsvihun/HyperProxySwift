@@ -17,7 +17,7 @@ public struct PerplexityToolSearchOutputItem: Codable, Sendable {
   public var id: String
   public var status: String
   public var tools: [PerplexityNamespaceTool]
-  public var kind: PerplexityToolSearchOutputItemKind
+  public var kind: PerplexityToolSearchOutputItem.Kind
 
   public init(
     callId: String,
@@ -25,7 +25,7 @@ public struct PerplexityToolSearchOutputItem: Codable, Sendable {
     id: String,
     status: String,
     tools: [PerplexityNamespaceTool],
-    kind: PerplexityToolSearchOutputItemKind,
+    kind: PerplexityToolSearchOutputItem.Kind,
     arguments: String? = nil
   ) {
     self.arguments = arguments
@@ -45,5 +45,9 @@ public struct PerplexityToolSearchOutputItem: Codable, Sendable {
     case status
     case tools
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case toolSearchOutput = "tool_search_output"
   }
 }

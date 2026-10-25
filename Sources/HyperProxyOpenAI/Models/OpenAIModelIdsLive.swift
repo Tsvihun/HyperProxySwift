@@ -41,4 +41,8 @@ public enum OpenAIModelIdsLive: RawRepresentable, Codable, Hashable, Sendable {
     var container = encoder.singleValueContainer()
     try container.encode(rawValue)
   }
+
+  public enum GptLive1: String, Codable, Hashable, Sendable {
+    case gptLive1 = "gpt-live-1"
+  }
 }

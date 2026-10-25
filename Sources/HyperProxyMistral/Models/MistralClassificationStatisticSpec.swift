@@ -11,16 +11,16 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralClassificationStatisticSpec: Codable, Sendable {
-  public var average: MistralClassificationStatisticSpecAverage?
+  public var average: MistralClassificationStatisticSpec.Average?
   public var expectedKey: String?
   public var goal: MistralGoalSpec?
-  public var kind: MistralClassificationStatisticSpecKind
+  public var kind: MistralClassificationStatisticSpec.Kind
   public var labels: [String]?
   public var positiveLabel: String?
 
   public init(
-    kind: MistralClassificationStatisticSpecKind,
-    average: MistralClassificationStatisticSpecAverage? = nil,
+    kind: MistralClassificationStatisticSpec.Kind,
+    average: MistralClassificationStatisticSpec.Average? = nil,
     expectedKey: String? = nil,
     goal: MistralGoalSpec? = nil,
     labels: [String]? = nil,
@@ -41,5 +41,17 @@ public struct MistralClassificationStatisticSpec: Codable, Sendable {
     case kind
     case labels
     case positiveLabel = "positive_label"
+  }
+
+  public enum Average: String, Codable, Hashable, Sendable {
+    case macroValue = "macro"
+    case micro = "micro"
+    case weighted = "weighted"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case precision = "precision"
+    case recall = "recall"
+    case f1 = "f1"
   }
 }

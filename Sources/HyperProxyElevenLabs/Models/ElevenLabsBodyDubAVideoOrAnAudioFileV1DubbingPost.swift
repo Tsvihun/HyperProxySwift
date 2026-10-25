@@ -21,7 +21,7 @@ public struct ElevenLabsBodyDubAVideoOrAnAudioFileV1DubbingPost: Codable, Sendab
   public var file: String?
   public var foregroundAudioFile: String?
   public var highestResolution: Bool?
-  public var mode: ElevenLabsBodyDubAVideoOrAnAudioFileV1DubbingPostMode?
+  public var mode: ElevenLabsBodyDubAVideoOrAnAudioFileV1DubbingPost.Mode?
   public var name: String?
   public var numSpeakers: Int?
   public var sourceLang: String?
@@ -43,7 +43,7 @@ public struct ElevenLabsBodyDubAVideoOrAnAudioFileV1DubbingPost: Codable, Sendab
     file: String? = nil,
     foregroundAudioFile: String? = nil,
     highestResolution: Bool? = nil,
-    mode: ElevenLabsBodyDubAVideoOrAnAudioFileV1DubbingPostMode? = nil,
+    mode: ElevenLabsBodyDubAVideoOrAnAudioFileV1DubbingPost.Mode? = nil,
     name: String? = nil,
     numSpeakers: Int? = nil,
     sourceLang: String? = nil,
@@ -97,5 +97,12 @@ public struct ElevenLabsBodyDubAVideoOrAnAudioFileV1DubbingPost: Codable, Sendab
     case targetLang = "target_lang"
     case useProfanityFilter = "use_profanity_filter"
     case watermark
+  }
+
+  public enum Mode: String, Codable, Hashable,
+    Sendable
+  {
+    case automatic = "automatic"
+    case manual = "manual"
   }
 }

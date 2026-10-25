@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct OpenAIBetaAdditionalToolsItemParam: Codable, Sendable {
   public var agent: OpenAIBetaAgentTagParam?
   public var id: String?
-  public var role: OpenAIBetaAdditionalToolsItemParamRole
+  public var role: OpenAIBetaAdditionalToolsItemParam.Role
   public var tools: [OpenAIBetaTool]
-  public var kind: OpenAIBetaAdditionalToolsItemParamKind
+  public var kind: OpenAIBetaAdditionalToolsItemParam.Kind
 
   public init(
-    role: OpenAIBetaAdditionalToolsItemParamRole,
+    role: OpenAIBetaAdditionalToolsItemParam.Role,
     tools: [OpenAIBetaTool],
-    kind: OpenAIBetaAdditionalToolsItemParamKind,
+    kind: OpenAIBetaAdditionalToolsItemParam.Kind,
     agent: OpenAIBetaAgentTagParam? = nil,
     id: String? = nil
   ) {
@@ -37,5 +37,13 @@ public struct OpenAIBetaAdditionalToolsItemParam: Codable, Sendable {
     case role
     case tools
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case additionalTools = "additional_tools"
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case developer = "developer"
   }
 }

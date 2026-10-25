@@ -12,17 +12,17 @@ import HyperProxyCore
 
 public struct OpenAIWebhookSafetyOrgAlertCreated: Codable, Sendable {
   public var createdAt: Int
-  public var data: OpenAIWebhookSafetyOrgAlertCreatedData
+  public var data: OpenAIWebhookSafetyOrgAlertCreated.DataValue
   public var id: String
-  public var object: OpenAIWebhookSafetyOrgAlertCreatedObject
-  public var kind: OpenAIWebhookSafetyOrgAlertCreatedKind
+  public var object: OpenAIWebhookSafetyOrgAlertCreated.Object
+  public var kind: OpenAIWebhookSafetyOrgAlertCreated.Kind
 
   public init(
     createdAt: Int,
-    data: OpenAIWebhookSafetyOrgAlertCreatedData,
+    data: OpenAIWebhookSafetyOrgAlertCreated.DataValue,
     id: String,
-    object: OpenAIWebhookSafetyOrgAlertCreatedObject,
-    kind: OpenAIWebhookSafetyOrgAlertCreatedKind
+    object: OpenAIWebhookSafetyOrgAlertCreated.Object,
+    kind: OpenAIWebhookSafetyOrgAlertCreated.Kind
   ) {
     self.createdAt = createdAt
     self.data = data
@@ -37,5 +37,27 @@ public struct OpenAIWebhookSafetyOrgAlertCreated: Codable, Sendable {
     case id
     case object
     case kind = "type"
+  }
+
+  public struct DataValue: Codable, Sendable {
+    public var id: String
+
+    public init(
+      id: String
+    ) {
+      self.id = id
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case id
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case safetyOrgAlertCreated = "safety.org_alert.created"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case event = "event"
   }
 }

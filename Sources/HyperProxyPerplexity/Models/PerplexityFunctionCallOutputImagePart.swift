@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct PerplexityFunctionCallOutputImagePart: Codable, Sendable {
-  public var detail: PerplexityFunctionCallOutputImagePartDetail?
+  public var detail: PerplexityFunctionCallOutputImagePart.Detail?
   public var imageUrl: String
-  public var kind: PerplexityFunctionCallOutputImagePartKind
+  public var kind: PerplexityFunctionCallOutputImagePart.Kind
 
   public init(
     imageUrl: String,
-    kind: PerplexityFunctionCallOutputImagePartKind,
-    detail: PerplexityFunctionCallOutputImagePartDetail? = nil
+    kind: PerplexityFunctionCallOutputImagePart.Kind,
+    detail: PerplexityFunctionCallOutputImagePart.Detail? = nil
   ) {
     self.detail = detail
     self.imageUrl = imageUrl
@@ -29,5 +29,15 @@ public struct PerplexityFunctionCallOutputImagePart: Codable, Sendable {
     case detail
     case imageUrl = "image_url"
     case kind = "type"
+  }
+
+  public enum Detail: String, Codable, Hashable, Sendable {
+    case low = "low"
+    case high = "high"
+    case auto = "auto"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case inputImage = "input_image"
   }
 }

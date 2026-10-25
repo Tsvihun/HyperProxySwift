@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherDECancelRolloutRequest: Codable, Sendable {
-  public var disposition: TogetherDECancelRolloutRequestDisposition?
+  public var disposition: TogetherDECancelRolloutRequest.Disposition?
   public var etag: String?
   public var reason: String
 
   public init(
     reason: String,
-    disposition: TogetherDECancelRolloutRequestDisposition? = nil,
+    disposition: TogetherDECancelRolloutRequest.Disposition? = nil,
     etag: String? = nil
   ) {
     self.disposition = disposition
@@ -29,5 +29,10 @@ public struct TogetherDECancelRolloutRequest: Codable, Sendable {
     case disposition
     case etag
     case reason
+  }
+
+  public enum Disposition: String, Codable, Hashable, Sendable {
+    case cancelDispositionFreeze = "CANCEL_DISPOSITION_FREEZE"
+    case cancelDispositionRevert = "CANCEL_DISPOSITION_REVERT"
   }
 }

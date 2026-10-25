@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct ElevenLabsSkipTurnToolResponseModel: Codable, Sendable {
   public var reason: String?
-  public var resultType: ElevenLabsSkipTurnSuccessResultType?
+  public var resultType: ElevenLabsSkipTurnToolResponseModel.ResultType?
   public var status: ElevenLabsSuccessStatus?
 
   public init(
     reason: String? = nil,
-    resultType: ElevenLabsSkipTurnSuccessResultType? = nil,
+    resultType: ElevenLabsSkipTurnToolResponseModel.ResultType? = nil,
     status: ElevenLabsSuccessStatus? = nil
   ) {
     self.reason = reason
@@ -29,5 +29,9 @@ public struct ElevenLabsSkipTurnToolResponseModel: Codable, Sendable {
     case reason
     case resultType = "result_type"
     case status
+  }
+
+  public enum ResultType: String, Codable, Hashable, Sendable {
+    case skipTurnSuccess = "skip_turn_success"
   }
 }

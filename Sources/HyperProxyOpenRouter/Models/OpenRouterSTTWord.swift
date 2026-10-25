@@ -17,7 +17,7 @@ public struct OpenRouterSTTWord: Codable, Sendable {
   public var speaker: Int?
   public var speakerLabel: String?
   public var start: Double
-  public var kind: OpenRouterSTTWordKind?
+  public var kind: OpenRouterSTTWord.Kind?
   public var word: String
 
   public init(
@@ -28,7 +28,7 @@ public struct OpenRouterSTTWord: Codable, Sendable {
     confidence: Double? = nil,
     speaker: Int? = nil,
     speakerLabel: String? = nil,
-    kind: OpenRouterSTTWordKind? = nil
+    kind: OpenRouterSTTWord.Kind? = nil
   ) {
     self.channel = channel
     self.confidence = confidence
@@ -49,5 +49,10 @@ public struct OpenRouterSTTWord: Codable, Sendable {
     case start
     case kind = "type"
     case word
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case word = "word"
+    case audioEvent = "audio_event"
   }
 }

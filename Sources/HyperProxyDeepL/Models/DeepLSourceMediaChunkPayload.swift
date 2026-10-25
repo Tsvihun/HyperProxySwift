@@ -11,15 +11,29 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepLSourceMediaChunkPayload: Codable, Sendable {
-  public var sourceMediaChunk: DeepLSourceMediaChunkPayloadSourceMediaChunk
+  public var sourceMediaChunk: DeepLSourceMediaChunkPayload.SourceMediaChunk
 
   public init(
-    sourceMediaChunk: DeepLSourceMediaChunkPayloadSourceMediaChunk
+    sourceMediaChunk: DeepLSourceMediaChunkPayload.SourceMediaChunk
   ) {
     self.sourceMediaChunk = sourceMediaChunk
   }
 
   enum CodingKeys: String, CodingKey {
     case sourceMediaChunk = "source_media_chunk"
+  }
+
+  public struct SourceMediaChunk: Codable, Sendable {
+    public var data: String
+
+    public init(
+      data: String
+    ) {
+      self.data = data
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case data
+    }
   }
 }

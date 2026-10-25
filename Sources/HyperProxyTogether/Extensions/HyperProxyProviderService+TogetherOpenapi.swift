@@ -52,12 +52,12 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> TogetherGetBatchesResponse {
+  ) async throws -> TogetherGetV1BatchesResponse {
     let call = self.call(.v1BatchesGet)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(TogetherGetBatchesResponse.self)
+    return try await call.decoded(TogetherGetV1BatchesResponse.self)
   }
 
   public func v1BatchesPost(
@@ -138,37 +138,61 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     return try prepared.events(decoding: TogetherChatCompletionStream.self)
   }
 
-  public func availabilityZones(
+  public func completionsCreate(
+    _ body: TogetherCompletionRequest,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> TogetherListAvailibilityZonesResponse {
-    let call = self.call(.availabilityZones)
+  ) async throws -> TogetherCompletionResponse {
+    let call = self.call(.completionsCreate)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(TogetherListAvailibilityZonesResponse.self)
+    if body.stream == true {
+      throw HyperProxyProviderRouteError.streamingBodyOnJSONCall(
+        operation: "completionsCreate",
+        streamingVariant: "completionsCreateStream"
+      )
+    }
+    let prepared = try call.json(body)
+    return try await prepared.decoded(TogetherCompletionResponse.self)
   }
 
-  public func gPUClusterServiceList(
+  public func completionsCreateStream(
+    _ body: TogetherCompletionRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<TogetherCompletionStream, Error> {
+    let call = self.call(.completionsCreate)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    var streamingBody = body
+    streamingBody.stream = true
+    let prepared = try call.json(streamingBody)
+    return try prepared.events(decoding: TogetherCompletionStream.self)
+  }
+
+  public func gpuClusterServiceList(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> TogetherGPUClusters {
-    let call = self.call(.gPUClusterServiceList)
+    let call = self.call(.gpuClusterServiceList)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(TogetherGPUClusters.self)
   }
 
-  public func gPUClusterServiceCreate(
+  public func gpuClusterServiceCreate(
     _ body: TogetherGPUClusterCreateRequest,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> TogetherGPUClusterInfo {
-    let call = self.call(.gPUClusterServiceCreate)
+    let call = self.call(.gpuClusterServiceCreate)
       .query(query)
       .headers(headers)
       .timeout(timeout)
@@ -244,13 +268,13 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     return try await call.decoded(TogetherGPUClustersSharedVolumeDeleteResponse.self)
   }
 
-  public func gPUClusterServiceGet(
+  public func gpuClusterServiceGet(
     clusterId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> TogetherGPUClusterInfo {
-    let call = self.call(.gPUClusterServiceGet)
+    let call = self.call(.gpuClusterServiceGet)
       .path("cluster_id", clusterId)
       .query(query)
       .headers(headers)
@@ -258,14 +282,14 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     return try await call.decoded(TogetherGPUClusterInfo.self)
   }
 
-  public func gPUClusterServiceUpdate(
+  public func gpuClusterServiceUpdate(
     _ body: TogetherGPUClusterUpdateRequest,
     clusterId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> TogetherGPUClusterInfo {
-    let call = self.call(.gPUClusterServiceUpdate)
+    let call = self.call(.gpuClusterServiceUpdate)
       .path("cluster_id", clusterId)
       .query(query)
       .headers(headers)
@@ -274,13 +298,13 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     return try await prepared.decoded(TogetherGPUClusterInfo.self)
   }
 
-  public func gPUClusterServiceDelete(
+  public func gpuClusterServiceDelete(
     clusterId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> TogetherGPUClusterDeleteResponse {
-    let call = self.call(.gPUClusterServiceDelete)
+    let call = self.call(.gpuClusterServiceDelete)
       .path("cluster_id", clusterId)
       .query(query)
       .headers(headers)
@@ -502,6 +526,32 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     return try await call.decoded(TogetherRegionListResponse.self)
   }
 
+  public func v1DeploymentsGet(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherDeploymentListResponse {
+    let call = self.call(.v1DeploymentsGet)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherDeploymentListResponse.self)
+  }
+
+  public func v1DeploymentsPost(
+    _ body: TogetherCreateDeploymentRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherDeploymentResponseItem {
+    let call = self.call(.v1DeploymentsPost)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(TogetherDeploymentResponseItem.self)
+  }
+
   public func v1DeploymentsSecretsGet(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -563,13 +613,13 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> TogetherDeleteDeploymentsSecretsIdResponse {
+  ) async throws -> TogetherDeleteV1DeploymentsSecretsIdResponse {
     let call = self.call(.v1DeploymentsSecretsIdDelete)
       .path("id", id)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(TogetherDeleteDeploymentsSecretsIdResponse.self)
+    return try await call.decoded(TogetherDeleteV1DeploymentsSecretsIdResponse.self)
   }
 
   public func v1DeploymentsStorageVolumesGet(
@@ -633,13 +683,13 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> TogetherDeleteDeploymentsStorageVolumesIdResponse {
+  ) async throws -> TogetherDeleteV1DeploymentsStorageVolumesIdResponse {
     let call = self.call(.v1DeploymentsStorageVolumesIdDelete)
       .path("id", id)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(TogetherDeleteDeploymentsStorageVolumesIdResponse.self)
+    return try await call.decoded(TogetherDeleteV1DeploymentsStorageVolumesIdResponse.self)
   }
 
   public func v1DeploymentsStorageFilenameUrlGet(
@@ -654,6 +704,50 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(TogetherSignedURLResponse.self)
+  }
+
+  public func v1DeploymentsIdGet(
+    id: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherDeploymentResponseItem {
+    let call = self.call(.v1DeploymentsIdGet)
+      .path("id", id)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherDeploymentResponseItem.self)
+  }
+
+  public func v1DeploymentsIdPatch(
+    _ body: TogetherUpdateDeploymentRequest,
+    id: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherDeploymentResponseItem {
+    let call = self.call(.v1DeploymentsIdPatch)
+      .path("id", id)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(TogetherDeploymentResponseItem.self)
+  }
+
+  public func v1DeploymentsIdDelete(
+    id: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherDeleteV1DeploymentsIdResponse {
+    let call = self.call(.v1DeploymentsIdDelete)
+      .path("id", id)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherDeleteV1DeploymentsIdResponse.self)
   }
 
   public func v1DeploymentsIdLogsGet(
@@ -730,108 +824,6 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     return try await prepared.decoded(TogetherEmbeddingsResponse.self)
   }
 
-  public func listEndpoints(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherListEndpointsResponse {
-    let call = self.call(.listEndpoints)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherListEndpointsResponse.self)
-  }
-
-  public func createEndpoint(
-    _ body: TogetherCreateEndpointRequest,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherDedicatedEndpoint {
-    let call = self.call(.createEndpoint)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(TogetherDedicatedEndpoint.self)
-  }
-
-  public func getEndpoint(
-    endpointId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherDedicatedEndpoint {
-    let call = self.call(.getEndpoint)
-      .path("endpointId", endpointId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherDedicatedEndpoint.self)
-  }
-
-  public func updateEndpoint(
-    _ body: TogetherUpdateEndpointRequest,
-    endpointId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherDedicatedEndpoint {
-    let call = self.call(.updateEndpoint)
-      .path("endpointId", endpointId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(TogetherDedicatedEndpoint.self)
-  }
-
-  public func listAdapters(
-    endpointId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherListAdaptersResponse {
-    let call = self.call(.listAdapters)
-      .path("endpointId", endpointId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherListAdaptersResponse.self)
-  }
-
-  public func addAdapter(
-    _ body: TogetherAddAdapterRequest,
-    endpointId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherAddAdapterResponse {
-    let call = self.call(.addAdapter)
-      .path("endpointId", endpointId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(TogetherAddAdapterResponse.self)
-  }
-
-  public func removeAdapter(
-    _ body: TogetherRemoveAdapterRequest,
-    endpointId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRemoveAdapterResponse {
-    let call = self.call(.removeAdapter)
-      .path("endpointId", endpointId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(TogetherRemoveAdapterResponse.self)
-  }
-
   public func getAllEvaluationJobs(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -898,28 +890,40 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     return try await call.decoded(TogetherGetEvaluationJobStatusAndResultsResponse.self)
   }
 
-  public func v1FilesIdGet(
-    id: String,
+  public func filesList(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherFileList {
+    let call = self.call(.filesList)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherFileList.self)
+  }
+
+  public func filesRetrieve(
+    fileId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> TogetherFileResponse {
-    let call = self.call(.v1FilesIdGet)
-      .path("id", id)
+    let call = self.call(.filesRetrieve)
+      .path("file_id", fileId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(TogetherFileResponse.self)
   }
 
-  public func v1FilesIdDelete(
-    id: String,
+  public func filesDelete(
+    fileId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> TogetherFileDeleteResponse {
-    let call = self.call(.v1FilesIdDelete)
-      .path("id", id)
+    let call = self.call(.filesDelete)
+      .path("file_id", fileId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
@@ -953,7 +957,7 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
   }
 
   public func fineTuningCreate(
-    _ body: TogetherPostFineTunesRequest,
+    _ body: TogetherPostV1FineTunesRequest,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
@@ -967,17 +971,17 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
   }
 
   public func v1FineTunesEstimatePricePost(
-    _ body: TogetherPostFineTunesEstimatePriceRequest,
+    _ body: TogetherPostV1FineTunesEstimatePriceRequest,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> TogetherPostFineTunesEstimatePriceResponse {
+  ) async throws -> TogetherPostV1FineTunesEstimatePriceResponse {
     let call = self.call(.v1FineTunesEstimatePricePost)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     let prepared = try call.json(body)
-    return try await prepared.decoded(TogetherPostFineTunesEstimatePriceResponse.self)
+    return try await prepared.decoded(TogetherPostV1FineTunesEstimatePriceResponse.self)
   }
 
   public func v1FineTunesModelsLimitsGet(
@@ -996,12 +1000,12 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> TogetherGetFineTunesModelsSupportedResponse {
+  ) async throws -> TogetherGetV1FineTunesModelsSupportedResponse {
     let call = self.call(.v1FineTunesModelsSupportedGet)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(TogetherGetFineTunesModelsSupportedResponse.self)
+    return try await call.decoded(TogetherGetV1FineTunesModelsSupportedResponse.self)
   }
 
   public func v1FineTunesPreviewPost(
@@ -1018,14 +1022,14 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     return try await prepared.decoded(TogetherFineTunePreviewResponse.self)
   }
 
-  public func v1FineTunesIdGet(
-    id: String,
+  public func fineTuningRetrieve(
+    jobId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> TogetherFinetuneResponse {
-    let call = self.call(.v1FineTunesIdGet)
-      .path("id", id)
+    let call = self.call(.fineTuningRetrieve)
+      .path("job_id", jobId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
@@ -1046,14 +1050,14 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     return try await call.decoded(TogetherFinetuneDeleteResponse.self)
   }
 
-  public func v1FineTunesIdCancelPost(
-    id: String,
+  public func fineTuningCancel(
+    jobId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> TogetherFinetuneResponseTruncated {
-    let call = self.call(.v1FineTunesIdCancelPost)
-      .path("id", id)
+    let call = self.call(.fineTuningCancel)
+      .path("job_id", jobId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
@@ -1107,13 +1111,13 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> TogetherGetFineTunesIdMetricsResponse {
+  ) async throws -> TogetherGetV1FineTunesIdMetricsResponse {
     let call = self.call(.v1FineTunesIdMetricsGet)
       .path("id", id)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(TogetherGetFineTunesIdMetricsResponse.self)
+    return try await call.decoded(TogetherGetV1FineTunesIdMetricsResponse.self)
   }
 
   public func v1FinetuneDownloadGet(
@@ -1128,20 +1132,8 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     return try call.bytes()
   }
 
-  public func listHardware(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherListHardwareResponse {
-    let call = self.call(.listHardware)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherListHardwareResponse.self)
-  }
-
   public func imagesCreate(
-    _ body: TogetherPostImagesGenerationsRequest,
+    _ body: TogetherPostV1ImagesGenerationsRequest,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
@@ -1154,44 +1146,600 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     return try await prepared.decoded(TogetherImageResponse.self)
   }
 
-  public func listJobs(
+  public func listProjects(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> TogetherJobsInfoSuccessResponse {
-    let call = self.call(.listJobs)
+  ) async throws -> TogetherListProjectsResponse {
+    let call = self.call(.listProjects)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(TogetherJobsInfoSuccessResponse.self)
+    return try await call.decoded(TogetherListProjectsResponse.self)
   }
 
-  public func getJob(
-    jobId: String,
+  public func cancelQueueJob(
+    _ body: TogetherQueueCancelRequest,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> TogetherJobInfoSuccessResponse {
-    let call = self.call(.getJob)
-      .path("jobId", jobId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherJobInfoSuccessResponse.self)
-  }
-
-  public func uploadModel(
-    _ body: TogetherModelUploadRequest,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherModelUploadSuccessResponse {
-    let call = self.call(.uploadModel)
+  ) async throws -> TogetherQueueCancelResponse {
+    let call = self.call(.cancelQueueJob)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     let prepared = try call.json(body)
-    return try await prepared.decoded(TogetherModelUploadSuccessResponse.self)
+    return try await prepared.decoded(TogetherQueueCancelResponse.self)
+  }
+
+  public func clearQueue(
+    _ body: TogetherQueueClearRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherQueueClearResponse {
+    let call = self.call(.clearQueue)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(TogetherQueueClearResponse.self)
+  }
+
+  public func getQueueMetrics(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherQueueMetricsResponse {
+    let call = self.call(.getQueueMetrics)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherQueueMetricsResponse.self)
+  }
+
+  public func getQueueJobStatus(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherQueueJobStatusResponse {
+    let call = self.call(.getQueueJobStatus)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherQueueJobStatusResponse.self)
+  }
+
+  public func submitQueueJob(
+    _ body: TogetherQueueJobRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherQueueJobResponse {
+    let call = self.call(.submitQueueJob)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(TogetherQueueJobResponse.self)
+  }
+
+  public func rerankCreate(
+    _ body: TogetherRerankRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRerankResponse {
+    let call = self.call(.rerankCreate)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(TogetherRerankResponse.self)
+  }
+
+  public func listCheckpoints(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRLCheckpointsListResponse {
+    let call = self.call(.listCheckpoints)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherRLCheckpointsListResponse.self)
+  }
+
+  public func getCheckpoint(
+    id: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRLCheckpoint {
+    let call = self.call(.getCheckpoint)
+      .path("id", id)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherRLCheckpoint.self)
+  }
+
+  public func downloadCheckpoint(
+    id: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRLCheckpointDownloadResponse {
+    let call = self.call(.downloadCheckpoint)
+      .path("id", id)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherRLCheckpointDownloadResponse.self)
+  }
+
+  public func listModelResources(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRLModelResourcesListResponse {
+    let call = self.call(.listModelResources)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherRLModelResourcesListResponse.self)
+  }
+
+  public func createModelResources(
+    _ body: TogetherRLCreateModelResourcesRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRLModelResources {
+    let call = self.call(.createModelResources)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(TogetherRLModelResources.self)
+  }
+
+  public func estimateModelResourcesCost(
+    _ body: TogetherRLCreateModelResourcesRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRLModelResourcesEstimateCostResponse {
+    let call = self.call(.estimateModelResourcesCost)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(TogetherRLModelResourcesEstimateCostResponse.self)
+  }
+
+  public func getModelResources(
+    modelResourcesId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRLModelResources {
+    let call = self.call(.getModelResources)
+      .path("model_resources_id", modelResourcesId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherRLModelResources.self)
+  }
+
+  public func stopModelResources(
+    modelResourcesId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRLModelResources {
+    let call = self.call(.stopModelResources)
+      .path("model_resources_id", modelResourcesId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherRLModelResources.self)
+  }
+
+  public func listSupportedModels(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRLSupportedModelsListResponse {
+    let call = self.call(.listSupportedModels)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherRLSupportedModelsListResponse.self)
+  }
+
+  public func listTrainingSessions(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRLTrainingSessionsListResponse {
+    let call = self.call(.listTrainingSessions)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherRLTrainingSessionsListResponse.self)
+  }
+
+  public func startTrainingSession(
+    _ body: TogetherRLStartTrainingSessionRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRLTrainingSession {
+    let call = self.call(.startTrainingSession)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(TogetherRLTrainingSession.self)
+  }
+
+  public func getTrainingSession(
+    sessionId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRLTrainingSession {
+    let call = self.call(.getTrainingSession)
+      .path("session_id", sessionId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherRLTrainingSession.self)
+  }
+
+  public func updateTrainingSession(
+    _ body: TogetherRLUpdateTrainingSessionRequest,
+    sessionId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRLTrainingSession {
+    let call = self.call(.updateTrainingSession)
+      .path("session_id", sessionId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(TogetherRLTrainingSession.self)
+  }
+
+  public func customForwardBackward(
+    _ body: TogetherRLCustomForwardBackwardBody,
+    sessionId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRLCustomForwardBackwardOperation {
+    let call = self.call(.customForwardBackward)
+      .path("session_id", sessionId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(TogetherRLCustomForwardBackwardOperation.self)
+  }
+
+  public func getCustomForwardBackwardOperation(
+    sessionId: String,
+    operationId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRLCustomForwardBackwardOperation {
+    let call = self.call(.getCustomForwardBackwardOperation)
+      .path("session_id", sessionId)
+      .path("operation_id", operationId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherRLCustomForwardBackwardOperation.self)
+  }
+
+  public func forwardBackward(
+    _ body: TogetherRLForwardBackwardBody,
+    sessionId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRLForwardBackwardOperation {
+    let call = self.call(.forwardBackward)
+      .path("session_id", sessionId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(TogetherRLForwardBackwardOperation.self)
+  }
+
+  public func getForwardBackwardOperation(
+    sessionId: String,
+    operationId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRLForwardBackwardOperation {
+    let call = self.call(.getForwardBackwardOperation)
+      .path("session_id", sessionId)
+      .path("operation_id", operationId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherRLForwardBackwardOperation.self)
+  }
+
+  public func createInferenceCheckpoint(
+    sessionId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRLInferenceCheckpointOperation {
+    let call = self.call(.createInferenceCheckpoint)
+      .path("session_id", sessionId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherRLInferenceCheckpointOperation.self)
+  }
+
+  public func getInferenceCheckpointOperation(
+    sessionId: String,
+    operationId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRLInferenceCheckpointOperation {
+    let call = self.call(.getInferenceCheckpointOperation)
+      .path("session_id", sessionId)
+      .path("operation_id", operationId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherRLInferenceCheckpointOperation.self)
+  }
+
+  public func optimStep(
+    _ body: TogetherRLOptimStepBody,
+    sessionId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRLOptimStepOperation {
+    let call = self.call(.optimStep)
+      .path("session_id", sessionId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(TogetherRLOptimStepOperation.self)
+  }
+
+  public func getOptimStepOperation(
+    sessionId: String,
+    operationId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRLOptimStepOperation {
+    let call = self.call(.getOptimStepOperation)
+      .path("session_id", sessionId)
+      .path("operation_id", operationId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherRLOptimStepOperation.self)
+  }
+
+  public func sample(
+    _ body: TogetherRLSampleBody,
+    sessionId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRLSampleOperation {
+    let call = self.call(.sample)
+      .path("session_id", sessionId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(TogetherRLSampleOperation.self)
+  }
+
+  public func getSample(
+    sessionId: String,
+    operationId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRLSampleOperation {
+    let call = self.call(.getSample)
+      .path("session_id", sessionId)
+      .path("operation_id", operationId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherRLSampleOperation.self)
+  }
+
+  public func createTrainingCheckpoint(
+    sessionId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRLTrainingCheckpointOperation {
+    let call = self.call(.createTrainingCheckpoint)
+      .path("session_id", sessionId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherRLTrainingCheckpointOperation.self)
+  }
+
+  public func getTrainingCheckpointOperation(
+    sessionId: String,
+    operationId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRLTrainingCheckpointOperation {
+    let call = self.call(.getTrainingCheckpointOperation)
+      .path("session_id", sessionId)
+      .path("operation_id", operationId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherRLTrainingCheckpointOperation.self)
+  }
+
+  public func weightsSync(
+    _ body: TogetherRLWeightsSyncBody,
+    sessionId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRLWeightsSyncOperation {
+    let call = self.call(.weightsSync)
+      .path("session_id", sessionId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(TogetherRLWeightsSyncOperation.self)
+  }
+
+  public func getWeightsSyncOperation(
+    sessionId: String,
+    operationId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRLWeightsSyncOperation {
+    let call = self.call(.getWeightsSyncOperation)
+      .path("session_id", sessionId)
+      .path("operation_id", operationId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherRLWeightsSyncOperation.self)
+  }
+
+  public func stopTrainingSession(
+    sessionId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRLTrainingSession {
+    let call = self.call(.stopTrainingSession)
+      .path("session_id", sessionId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherRLTrainingSession.self)
+  }
+
+  public func listShapingJobs(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherShapingJobsList {
+    let call = self.call(.listShapingJobs)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherShapingJobsList.self)
+  }
+
+  public func createQuantizationJob(
+    _ body: TogetherQuantizationRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherQuantizationJob {
+    let call = self.call(.createQuantizationJob)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(TogetherQuantizationJob.self)
+  }
+
+  public func estimateQuantizationJob(
+    _ body: TogetherQuantizationRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherQuantizationEstimate {
+    let call = self.call(.estimateQuantizationJob)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(TogetherQuantizationEstimate.self)
+  }
+
+  public func getShapingJob(
+    id: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherQuantizationJob {
+    let call = self.call(.getShapingJob)
+      .path("id", id)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherQuantizationJob.self)
+  }
+
+  public func cancelShapingJob(
+    id: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherQuantizationJob {
+    let call = self.call(.cancelShapingJob)
+      .path("id", id)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherQuantizationJob.self)
+  }
+
+  public func getShapingEvents(
+    id: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherEventsList {
+    let call = self.call(.getShapingEvents)
+      .path("id", id)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherEventsList.self)
+  }
+
+  public func fetchVoices(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherListVoicesResponse {
+    let call = self.call(.fetchVoices)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherListVoicesResponse.self)
   }
 
   public func endpointServiceListOrganizationEndpoints(
@@ -1220,18 +1768,6 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(TogetherDEListModelsResponse.self)
-  }
-
-  public func listProjects(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherListProjectsResponse {
-    let call = self.call(.listProjects)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherListProjectsResponse.self)
   }
 
   public func configServiceListProjectConfigs(
@@ -1294,14 +1830,14 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     return try await prepared.decoded(TogetherDEEndpoint.self)
   }
 
-  public func aBExperimentServiceListABExperiments(
+  public func abExperimentServiceListAbExperiments(
     projectId: String,
     endpointId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> TogetherDEListABExperimentsResponse {
-    let call = self.call(.aBExperimentServiceListABExperiments)
+    let call = self.call(.abExperimentServiceListAbExperiments)
       .path("projectId", projectId)
       .path("endpointId", endpointId)
       .query(query)
@@ -1310,7 +1846,7 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     return try await call.decoded(TogetherDEListABExperimentsResponse.self)
   }
 
-  public func aBExperimentServiceCreateABExperiment(
+  public func abExperimentServiceCreateAbExperiment(
     _ body: TogetherDECreateABExperimentRequest,
     projectId: String,
     endpointId: String,
@@ -1318,7 +1854,7 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> TogetherDEABExperiment {
-    let call = self.call(.aBExperimentServiceCreateABExperiment)
+    let call = self.call(.abExperimentServiceCreateAbExperiment)
       .path("projectId", projectId)
       .path("endpointId", endpointId)
       .query(query)
@@ -1328,7 +1864,7 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     return try await prepared.decoded(TogetherDEABExperiment.self)
   }
 
-  public func aBExperimentServiceGetABExperiment(
+  public func abExperimentServiceGetAbExperiment(
     projectId: String,
     endpointId: String,
     id: String,
@@ -1336,7 +1872,7 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> TogetherDEABExperiment {
-    let call = self.call(.aBExperimentServiceGetABExperiment)
+    let call = self.call(.abExperimentServiceGetAbExperiment)
       .path("projectId", projectId)
       .path("endpointId", endpointId)
       .path("id", id)
@@ -1346,7 +1882,7 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     return try await call.decoded(TogetherDEABExperiment.self)
   }
 
-  public func aBExperimentServiceUpdateABExperiment(
+  public func abExperimentServiceUpdateAbExperiment(
     _ body: TogetherDEUpdateABExperimentRequest,
     projectId: String,
     endpointId: String,
@@ -1355,7 +1891,7 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> TogetherDEABExperiment {
-    let call = self.call(.aBExperimentServiceUpdateABExperiment)
+    let call = self.call(.abExperimentServiceUpdateAbExperiment)
       .path("projectId", projectId)
       .path("endpointId", endpointId)
       .path("id", id)
@@ -1366,7 +1902,7 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     return try await prepared.decoded(TogetherDEABExperiment.self)
   }
 
-  public func aBExperimentServiceDeleteABExperiment(
+  public func abExperimentServiceDeleteAbExperiment(
     projectId: String,
     endpointId: String,
     id: String,
@@ -1374,7 +1910,7 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> TogetherDEDeleteResponse {
-    let call = self.call(.aBExperimentServiceDeleteABExperiment)
+    let call = self.call(.abExperimentServiceDeleteAbExperiment)
       .path("projectId", projectId)
       .path("endpointId", endpointId)
       .path("id", id)
@@ -2292,576 +2828,16 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     return try await call.decoded(TogetherDEInferenceInstanceType.self)
   }
 
-  public func cancelQueueJob(
-    _ body: TogetherQueueCancelRequest,
+  public func supportedModelsServiceListSupportedModels(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> TogetherQueueCancelResponse {
-    let call = self.call(.cancelQueueJob)
+  ) async throws -> TogetherDEListSupportedModelsResponse {
+    let call = self.call(.supportedModelsServiceListSupportedModels)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(TogetherQueueCancelResponse.self)
-  }
-
-  public func clearQueue(
-    _ body: TogetherQueueClearRequest,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherQueueClearResponse {
-    let call = self.call(.clearQueue)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(TogetherQueueClearResponse.self)
-  }
-
-  public func getQueueMetrics(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherQueueMetricsResponse {
-    let call = self.call(.getQueueMetrics)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherQueueMetricsResponse.self)
-  }
-
-  public func getQueueJobStatus(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherQueueJobStatusResponse {
-    let call = self.call(.getQueueJobStatus)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherQueueJobStatusResponse.self)
-  }
-
-  public func submitQueueJob(
-    _ body: TogetherQueueJobRequest,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherQueueJobResponse {
-    let call = self.call(.submitQueueJob)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(TogetherQueueJobResponse.self)
-  }
-
-  public func rerankCreate(
-    _ body: TogetherRerankRequest,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRerankResponse {
-    let call = self.call(.rerankCreate)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(TogetherRerankResponse.self)
-  }
-
-  public func listCheckpoints(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRLCheckpointsListResponse {
-    let call = self.call(.listCheckpoints)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherRLCheckpointsListResponse.self)
-  }
-
-  public func getCheckpoint(
-    id: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRLCheckpoint {
-    let call = self.call(.getCheckpoint)
-      .path("id", id)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherRLCheckpoint.self)
-  }
-
-  public func downloadCheckpoint(
-    id: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRLCheckpointDownloadResponse {
-    let call = self.call(.downloadCheckpoint)
-      .path("id", id)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherRLCheckpointDownloadResponse.self)
-  }
-
-  public func listModelResources(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRLModelResourcesListResponse {
-    let call = self.call(.listModelResources)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherRLModelResourcesListResponse.self)
-  }
-
-  public func createModelResources(
-    _ body: TogetherRLCreateModelResourcesRequest,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRLModelResources {
-    let call = self.call(.createModelResources)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(TogetherRLModelResources.self)
-  }
-
-  public func estimateModelResourcesCost(
-    _ body: TogetherRLCreateModelResourcesRequest,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRLModelResourcesEstimateCostResponse {
-    let call = self.call(.estimateModelResourcesCost)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(TogetherRLModelResourcesEstimateCostResponse.self)
-  }
-
-  public func getModelResources(
-    modelResourcesId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRLModelResources {
-    let call = self.call(.getModelResources)
-      .path("model_resources_id", modelResourcesId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherRLModelResources.self)
-  }
-
-  public func stopModelResources(
-    modelResourcesId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRLModelResources {
-    let call = self.call(.stopModelResources)
-      .path("model_resources_id", modelResourcesId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherRLModelResources.self)
-  }
-
-  public func listSupportedModels(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRLSupportedModelsListResponse {
-    let call = self.call(.listSupportedModels)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherRLSupportedModelsListResponse.self)
-  }
-
-  public func listTrainingSessions(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRLTrainingSessionsListResponse {
-    let call = self.call(.listTrainingSessions)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherRLTrainingSessionsListResponse.self)
-  }
-
-  public func startTrainingSession(
-    _ body: TogetherRLStartTrainingSessionRequest,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRLTrainingSession {
-    let call = self.call(.startTrainingSession)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(TogetherRLTrainingSession.self)
-  }
-
-  public func getTrainingSession(
-    sessionId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRLTrainingSession {
-    let call = self.call(.getTrainingSession)
-      .path("session_id", sessionId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherRLTrainingSession.self)
-  }
-
-  public func updateTrainingSession(
-    _ body: TogetherRLUpdateTrainingSessionRequest,
-    sessionId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRLTrainingSession {
-    let call = self.call(.updateTrainingSession)
-      .path("session_id", sessionId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(TogetherRLTrainingSession.self)
-  }
-
-  public func customForwardBackward(
-    _ body: TogetherRLCustomForwardBackwardBody,
-    sessionId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRLCustomForwardBackwardOperation {
-    let call = self.call(.customForwardBackward)
-      .path("session_id", sessionId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(TogetherRLCustomForwardBackwardOperation.self)
-  }
-
-  public func getCustomForwardBackwardOperation(
-    sessionId: String,
-    operationId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRLCustomForwardBackwardOperation {
-    let call = self.call(.getCustomForwardBackwardOperation)
-      .path("session_id", sessionId)
-      .path("operation_id", operationId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherRLCustomForwardBackwardOperation.self)
-  }
-
-  public func forwardBackward(
-    _ body: TogetherRLForwardBackwardBody,
-    sessionId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRLForwardBackwardOperation {
-    let call = self.call(.forwardBackward)
-      .path("session_id", sessionId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(TogetherRLForwardBackwardOperation.self)
-  }
-
-  public func getForwardBackwardOperation(
-    sessionId: String,
-    operationId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRLForwardBackwardOperation {
-    let call = self.call(.getForwardBackwardOperation)
-      .path("session_id", sessionId)
-      .path("operation_id", operationId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherRLForwardBackwardOperation.self)
-  }
-
-  public func createInferenceCheckpoint(
-    sessionId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRLInferenceCheckpointOperation {
-    let call = self.call(.createInferenceCheckpoint)
-      .path("session_id", sessionId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherRLInferenceCheckpointOperation.self)
-  }
-
-  public func getInferenceCheckpointOperation(
-    sessionId: String,
-    operationId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRLInferenceCheckpointOperation {
-    let call = self.call(.getInferenceCheckpointOperation)
-      .path("session_id", sessionId)
-      .path("operation_id", operationId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherRLInferenceCheckpointOperation.self)
-  }
-
-  public func optimStep(
-    _ body: TogetherRLOptimStepBody,
-    sessionId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRLOptimStepOperation {
-    let call = self.call(.optimStep)
-      .path("session_id", sessionId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(TogetherRLOptimStepOperation.self)
-  }
-
-  public func getOptimStepOperation(
-    sessionId: String,
-    operationId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRLOptimStepOperation {
-    let call = self.call(.getOptimStepOperation)
-      .path("session_id", sessionId)
-      .path("operation_id", operationId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherRLOptimStepOperation.self)
-  }
-
-  public func sample(
-    _ body: TogetherRLSampleBody,
-    sessionId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRLSampleOperation {
-    let call = self.call(.sample)
-      .path("session_id", sessionId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(TogetherRLSampleOperation.self)
-  }
-
-  public func getSample(
-    sessionId: String,
-    operationId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRLSampleOperation {
-    let call = self.call(.getSample)
-      .path("session_id", sessionId)
-      .path("operation_id", operationId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherRLSampleOperation.self)
-  }
-
-  public func createTrainingCheckpoint(
-    sessionId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRLTrainingCheckpointOperation {
-    let call = self.call(.createTrainingCheckpoint)
-      .path("session_id", sessionId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherRLTrainingCheckpointOperation.self)
-  }
-
-  public func getTrainingCheckpointOperation(
-    sessionId: String,
-    operationId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRLTrainingCheckpointOperation {
-    let call = self.call(.getTrainingCheckpointOperation)
-      .path("session_id", sessionId)
-      .path("operation_id", operationId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherRLTrainingCheckpointOperation.self)
-  }
-
-  public func weightsSync(
-    _ body: TogetherRLWeightsSyncBody,
-    sessionId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRLWeightsSyncOperation {
-    let call = self.call(.weightsSync)
-      .path("session_id", sessionId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(TogetherRLWeightsSyncOperation.self)
-  }
-
-  public func getWeightsSyncOperation(
-    sessionId: String,
-    operationId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRLWeightsSyncOperation {
-    let call = self.call(.getWeightsSyncOperation)
-      .path("session_id", sessionId)
-      .path("operation_id", operationId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherRLWeightsSyncOperation.self)
-  }
-
-  public func stopTrainingSession(
-    sessionId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherRLTrainingSession {
-    let call = self.call(.stopTrainingSession)
-      .path("session_id", sessionId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherRLTrainingSession.self)
-  }
-
-  public func listShapingJobs(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherShapingJobsList {
-    let call = self.call(.listShapingJobs)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherShapingJobsList.self)
-  }
-
-  public func createQuantizationJob(
-    _ body: TogetherQuantizationRequest,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherQuantizationJob {
-    let call = self.call(.createQuantizationJob)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(TogetherQuantizationJob.self)
-  }
-
-  public func estimateQuantizationJob(
-    _ body: TogetherQuantizationRequest,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherQuantizationEstimate {
-    let call = self.call(.estimateQuantizationJob)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(TogetherQuantizationEstimate.self)
-  }
-
-  public func getShapingJob(
-    id: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherQuantizationJob {
-    let call = self.call(.getShapingJob)
-      .path("id", id)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherQuantizationJob.self)
-  }
-
-  public func cancelShapingJob(
-    id: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherQuantizationJob {
-    let call = self.call(.cancelShapingJob)
-      .path("id", id)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherQuantizationJob.self)
-  }
-
-  public func getShapingEvents(
-    id: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherEventsList {
-    let call = self.call(.getShapingEvents)
-      .path("id", id)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherEventsList.self)
+    return try await call.decoded(TogetherDEListSupportedModelsResponse.self)
   }
 
   public func supportedModelsServiceGetSupportedModel(
@@ -2876,32 +2852,6 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(TogetherDESupportedModel.self)
-  }
-
-  public func tciExecute(
-    _ body: TogetherExecuteRequest,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherExecuteResponse {
-    let call = self.call(.tciExecute)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(TogetherExecuteResponse.self)
-  }
-
-  public func sessionsList(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherSessionListResponse {
-    let call = self.call(.sessionsList)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherSessionListResponse.self)
   }
 
   public func createVideo(
@@ -2930,18 +2880,6 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(TogetherVideoJob.self)
-  }
-
-  public func fetchVoices(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherListVoicesResponse {
-    let call = self.call(.fetchVoices)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherListVoicesResponse.self)
   }
 
   public func whoami(

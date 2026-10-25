@@ -13,13 +13,13 @@ import HyperProxyCore
 public struct ElevenLabsTransferToAgentToolResultErrorModel: Codable, Sendable {
   public var error: String
   public var fromAgent: String
-  public var resultType: ElevenLabsTransferToAgentErrorResultType?
+  public var resultType: ElevenLabsTransferToAgentToolResultErrorModel.ResultType?
   public var status: ElevenLabsErrorStatus?
 
   public init(
     error: String,
     fromAgent: String,
-    resultType: ElevenLabsTransferToAgentErrorResultType? = nil,
+    resultType: ElevenLabsTransferToAgentToolResultErrorModel.ResultType? = nil,
     status: ElevenLabsErrorStatus? = nil
   ) {
     self.error = error
@@ -33,5 +33,9 @@ public struct ElevenLabsTransferToAgentToolResultErrorModel: Codable, Sendable {
     case fromAgent = "from_agent"
     case resultType = "result_type"
     case status
+  }
+
+  public enum ResultType: String, Codable, Hashable, Sendable {
+    case transferToAgentError = "transfer_to_agent_error"
   }
 }

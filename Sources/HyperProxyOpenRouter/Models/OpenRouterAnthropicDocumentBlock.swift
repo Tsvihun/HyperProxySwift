@@ -12,14 +12,14 @@ import HyperProxyCore
 
 public struct OpenRouterAnthropicDocumentBlock: Codable, Sendable {
   public var citations: OpenRouterAnthropicCitationsConfig?
-  public var source: OpenRouterAnthropicDocumentBlockSource
+  public var source: OpenRouterAnthropicDocumentBlock.Source
   public var title: String
-  public var kind: OpenRouterAnthropicDocumentBlockKind
+  public var kind: OpenRouterAnthropicDocumentBlock.Kind
 
   public init(
-    source: OpenRouterAnthropicDocumentBlockSource,
+    source: OpenRouterAnthropicDocumentBlock.Source,
     title: String,
-    kind: OpenRouterAnthropicDocumentBlockKind,
+    kind: OpenRouterAnthropicDocumentBlock.Kind,
     citations: OpenRouterAnthropicCitationsConfig? = nil
   ) {
     self.citations = citations
@@ -33,5 +33,34 @@ public struct OpenRouterAnthropicDocumentBlock: Codable, Sendable {
     case source
     case title
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case document = "document"
+  }
+
+  public enum Source: Codable, Sendable {
+    case anthropicBase64PdfSource(OpenRouterAnthropicBase64PdfSource)
+    case anthropicPlainTextSource(OpenRouterAnthropicPlainTextSource)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenRouterAnthropicBase64PdfSource.self) {
+        self = .anthropicBase64PdfSource(value)
+        return
+      }
+      self = .anthropicPlainTextSource(
+        try container.decode(OpenRouterAnthropicPlainTextSource.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .anthropicBase64PdfSource(let value):
+        try container.encode(value)
+      case .anthropicPlainTextSource(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

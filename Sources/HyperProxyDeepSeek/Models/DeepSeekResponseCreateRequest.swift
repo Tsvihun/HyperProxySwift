@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepSeekResponseCreateRequest: Codable, Sendable {
-  public var input: DeepSeekResponseCreateRequestInput?
+  public var input: DeepSeekResponseCreateRequest.Input?
   public var instructions: String?
   public var maxOutputTokens: Int?
   public var model: DeepSeekResponseModel
@@ -19,7 +19,7 @@ public struct DeepSeekResponseCreateRequest: Codable, Sendable {
   public var stream: Bool?
   public var temperature: Double?
   public var text: DeepSeekTextConfig?
-  public var toolChoice: DeepSeekResponseCreateRequestToolChoice?
+  public var toolChoice: DeepSeekResponseCreateRequest.ToolChoice?
   public var tools: [DeepSeekTool]?
   public var topLogprobs: Int?
   public var topP: Double?
@@ -27,14 +27,14 @@ public struct DeepSeekResponseCreateRequest: Codable, Sendable {
 
   public init(
     model: DeepSeekResponseModel,
-    input: DeepSeekResponseCreateRequestInput? = nil,
+    input: DeepSeekResponseCreateRequest.Input? = nil,
     instructions: String? = nil,
     maxOutputTokens: Int? = nil,
     reasoning: DeepSeekReasoningConfig? = nil,
     stream: Bool? = nil,
     temperature: Double? = nil,
     text: DeepSeekTextConfig? = nil,
-    toolChoice: DeepSeekResponseCreateRequestToolChoice? = nil,
+    toolChoice: DeepSeekResponseCreateRequest.ToolChoice? = nil,
     tools: [DeepSeekTool]? = nil,
     topLogprobs: Int? = nil,
     topP: Double? = nil,
@@ -69,5 +69,74 @@ public struct DeepSeekResponseCreateRequest: Codable, Sendable {
     case topLogprobs = "top_logprobs"
     case topP = "top_p"
     case user
+  }
+
+  public enum Input: Codable, Sendable {
+    case string(String)
+    case inputItemArray([DeepSeekInputItem])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .inputItemArray(try container.decode([DeepSeekInputItem].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .inputItemArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum ToolChoice: Codable, Sendable {
+    case toolChoiceMode(DeepSeekToolChoiceMode)
+    case namedToolChoice(DeepSeekNamedToolChoice)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(DeepSeekToolChoiceMode.self) {
+        self = .toolChoiceMode(value)
+        return
+      }
+      self = .namedToolChoice(try container.decode(DeepSeekNamedToolChoice.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .toolChoiceMode(let value):
+        try container.encode(value)
+      case .namedToolChoice(let value):
+        try container.encode(value)
+      }
+    }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var none: Self { .toolChoiceMode(.none) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var auto: Self { .toolChoiceMode(.auto) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var requiredValue: Self { .toolChoiceMode(.requiredValue) }
+  }
+}
+
+extension DeepSeekResponseCreateRequest.Input: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension DeepSeekResponseCreateRequest.Input: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: DeepSeekInputItem...) {
+    self = .inputItemArray(elements)
   }
 }

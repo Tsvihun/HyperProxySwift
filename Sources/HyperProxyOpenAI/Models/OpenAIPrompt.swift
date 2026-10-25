@@ -10,4 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIPrompt = OpenAIPromptAnyOf1?
+public typealias OpenAIPrompt = OpenAIPromptWithIdAndVariablesAndVersion?

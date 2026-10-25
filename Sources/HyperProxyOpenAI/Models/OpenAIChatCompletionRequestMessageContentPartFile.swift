@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIChatCompletionRequestMessageContentPartFile: Codable, Sendable {
-  public var file: OpenAIChatCompletionRequestMessageContentPartFileFile
+  public var file: OpenAIChatCompletionRequestMessageContentPartFile.File
   public var promptCacheBreakpoint: OpenAIPromptCacheBreakpointParam?
-  public var kind: OpenAIChatCompletionRequestMessageContentPartFileKind
+  public var kind: OpenAIChatCompletionRequestMessageContentPartFile.Kind
 
   public init(
-    file: OpenAIChatCompletionRequestMessageContentPartFileFile,
-    kind: OpenAIChatCompletionRequestMessageContentPartFileKind,
+    file: OpenAIChatCompletionRequestMessageContentPartFile.File,
+    kind: OpenAIChatCompletionRequestMessageContentPartFile.Kind,
     promptCacheBreakpoint: OpenAIPromptCacheBreakpointParam? = nil
   ) {
     self.file = file
@@ -29,5 +29,33 @@ public struct OpenAIChatCompletionRequestMessageContentPartFile: Codable, Sendab
     case file
     case promptCacheBreakpoint = "prompt_cache_breakpoint"
     case kind = "type"
+  }
+
+  public struct File: Codable, Sendable {
+    public var fileData: String?
+    public var fileId: String?
+    public var filename: String?
+
+    public init(
+      fileData: String? = nil,
+      fileId: String? = nil,
+      filename: String? = nil
+    ) {
+      self.fileData = fileData
+      self.fileId = fileId
+      self.filename = filename
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case fileData = "file_data"
+      case fileId = "file_id"
+      case filename
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case file = "file"
   }
 }

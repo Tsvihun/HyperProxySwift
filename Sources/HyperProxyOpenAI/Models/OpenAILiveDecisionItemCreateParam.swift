@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct OpenAILiveDecisionItemCreateParam: Codable, Sendable {
   public var eventId: String?
   public var item: OpenAILiveDecisionInputItemParam
-  public var kind: OpenAILiveDecisionItemCreateParamKind
+  public var kind: OpenAILiveDecisionItemCreateParam.Kind
 
   public init(
     item: OpenAILiveDecisionInputItemParam,
-    kind: OpenAILiveDecisionItemCreateParamKind,
+    kind: OpenAILiveDecisionItemCreateParam.Kind,
     eventId: String? = nil
   ) {
     self.eventId = eventId
@@ -29,5 +29,9 @@ public struct OpenAILiveDecisionItemCreateParam: Codable, Sendable {
     case eventId = "event_id"
     case item
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case decisionItemCreate = "decision.item.create"
   }
 }

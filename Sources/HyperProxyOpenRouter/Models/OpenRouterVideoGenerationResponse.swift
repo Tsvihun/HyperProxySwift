@@ -16,7 +16,7 @@ public struct OpenRouterVideoGenerationResponse: Codable, Sendable {
   public var generationId: String?
   public var id: String
   public var pollingUrl: String
-  public var status: OpenRouterVideoGenerationResponseStatus
+  public var status: OpenRouterVideoGenerationResponse.Status
   public var unsignedUrls: [String]?
   public var urls: [String]?
   public var usage: OpenRouterVideoGenerationUsage?
@@ -24,7 +24,7 @@ public struct OpenRouterVideoGenerationResponse: Codable, Sendable {
   public init(
     id: String,
     pollingUrl: String,
-    status: OpenRouterVideoGenerationResponseStatus,
+    status: OpenRouterVideoGenerationResponse.Status,
     error: String? = nil,
     expiresAt: Int? = nil,
     generationId: String? = nil,
@@ -53,5 +53,14 @@ public struct OpenRouterVideoGenerationResponse: Codable, Sendable {
     case unsignedUrls = "unsigned_urls"
     case urls
     case usage
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case pending = "pending"
+    case inProgress = "in_progress"
+    case completed = "completed"
+    case failed = "failed"
+    case cancelled = "cancelled"
+    case expired = "expired"
   }
 }

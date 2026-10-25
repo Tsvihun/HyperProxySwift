@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct ElevenLabsWorkspaceGroupResponseModel: Codable, Sendable {
   public var characterCount: Int?
-  public var groupConcurrencyLimit: ElevenLabsWorkspaceGroupResponseModelGroupConcurrencyLimit?
+  public var groupConcurrencyLimit: ElevenLabsWorkspaceGroupResponseModel.GroupConcurrencyLimit?
   public var groupDubbingConcurrencyLimit:
-    ElevenLabsWorkspaceGroupResponseModelGroupDubbingConcurrencyLimit?
+    ElevenLabsWorkspaceGroupResponseModel.GroupDubbingConcurrencyLimit?
   public var groupMusicConcurrencyLimit:
-    ElevenLabsWorkspaceGroupResponseModelGroupMusicConcurrencyLimit?
-  public var groupPvcLimit: ElevenLabsWorkspaceGroupResponseModelGroupPvcLimit?
-  public var groupUsageLimit: ElevenLabsWorkspaceGroupResponseModelGroupUsageLimit?
+    ElevenLabsWorkspaceGroupResponseModel.GroupMusicConcurrencyLimit?
+  public var groupPvcLimit: ElevenLabsWorkspaceGroupResponseModel.GroupPvcLimit?
+  public var groupUsageLimit: ElevenLabsWorkspaceGroupResponseModel.GroupUsageLimit?
   public var id: String
   public var isScimSynced: Bool?
   public var members: [String]
@@ -33,13 +33,13 @@ public struct ElevenLabsWorkspaceGroupResponseModel: Codable, Sendable {
     name: String,
     permissions: [ElevenLabsWorkspaceGroupPermission]?,
     characterCount: Int? = nil,
-    groupConcurrencyLimit: ElevenLabsWorkspaceGroupResponseModelGroupConcurrencyLimit? = nil,
+    groupConcurrencyLimit: ElevenLabsWorkspaceGroupResponseModel.GroupConcurrencyLimit? = nil,
     groupDubbingConcurrencyLimit:
-      ElevenLabsWorkspaceGroupResponseModelGroupDubbingConcurrencyLimit? = nil,
-    groupMusicConcurrencyLimit: ElevenLabsWorkspaceGroupResponseModelGroupMusicConcurrencyLimit? =
+      ElevenLabsWorkspaceGroupResponseModel.GroupDubbingConcurrencyLimit? = nil,
+    groupMusicConcurrencyLimit: ElevenLabsWorkspaceGroupResponseModel.GroupMusicConcurrencyLimit? =
       nil,
-    groupPvcLimit: ElevenLabsWorkspaceGroupResponseModelGroupPvcLimit? = nil,
-    groupUsageLimit: ElevenLabsWorkspaceGroupResponseModelGroupUsageLimit? = nil,
+    groupPvcLimit: ElevenLabsWorkspaceGroupResponseModel.GroupPvcLimit? = nil,
+    groupUsageLimit: ElevenLabsWorkspaceGroupResponseModel.GroupUsageLimit? = nil,
     isScimSynced: Bool? = nil,
     scimFrozen: Bool? = nil,
     scimGroup: ElevenLabsScimGroupResponseModel? = nil
@@ -73,5 +73,225 @@ public struct ElevenLabsWorkspaceGroupResponseModel: Codable, Sendable {
     case permissions
     case scimFrozen = "scim_frozen"
     case scimGroup = "scim_group"
+  }
+
+  public enum GroupConcurrencyLimit: Codable, Sendable {
+    case integer(Int)
+    case unlimitedValue(
+      ElevenLabsWorkspaceGroupResponseModel.GroupConcurrencyLimit.Unlimited)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Int.self) {
+        self = .integer(value)
+        return
+      }
+      self = .unlimitedValue(
+        try container.decode(
+          ElevenLabsWorkspaceGroupResponseModel.GroupConcurrencyLimit.Unlimited.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .integer(let value):
+        try container.encode(value)
+      case .unlimitedValue(let value):
+        try container.encode(value)
+      }
+    }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var unlimited: Self {
+      .unlimitedValue(.unlimited)
+    }
+
+    public enum Unlimited: String, Codable,
+      Hashable, Sendable
+    {
+      case unlimited = "unlimited"
+    }
+  }
+
+  public enum GroupDubbingConcurrencyLimit: Codable, Sendable {
+    case integer(Int)
+    case unlimitedValue(
+      ElevenLabsWorkspaceGroupResponseModel.GroupDubbingConcurrencyLimit.Unlimited)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Int.self) {
+        self = .integer(value)
+        return
+      }
+      self = .unlimitedValue(
+        try container.decode(
+          ElevenLabsWorkspaceGroupResponseModel.GroupDubbingConcurrencyLimit.Unlimited.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .integer(let value):
+        try container.encode(value)
+      case .unlimitedValue(let value):
+        try container.encode(value)
+      }
+    }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var unlimited: Self {
+      .unlimitedValue(.unlimited)
+    }
+
+    public enum Unlimited: String,
+      Codable, Hashable, Sendable
+    {
+      case unlimited = "unlimited"
+    }
+  }
+
+  public enum GroupMusicConcurrencyLimit: Codable, Sendable {
+    case integer(Int)
+    case unlimitedValue(
+      ElevenLabsWorkspaceGroupResponseModel.GroupMusicConcurrencyLimit.Unlimited)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Int.self) {
+        self = .integer(value)
+        return
+      }
+      self = .unlimitedValue(
+        try container.decode(
+          ElevenLabsWorkspaceGroupResponseModel.GroupMusicConcurrencyLimit.Unlimited.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .integer(let value):
+        try container.encode(value)
+      case .unlimitedValue(let value):
+        try container.encode(value)
+      }
+    }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var unlimited: Self {
+      .unlimitedValue(.unlimited)
+    }
+
+    public enum Unlimited: String, Codable,
+      Hashable, Sendable
+    {
+      case unlimited = "unlimited"
+    }
+  }
+
+  public enum GroupPvcLimit: Codable, Sendable {
+    case integer(Int)
+    case unlimitedValue(
+      ElevenLabsWorkspaceGroupResponseModel.GroupPvcLimit.Unlimited)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Int.self) {
+        self = .integer(value)
+        return
+      }
+      self = .unlimitedValue(
+        try container.decode(ElevenLabsWorkspaceGroupResponseModel.GroupPvcLimit.Unlimited.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .integer(let value):
+        try container.encode(value)
+      case .unlimitedValue(let value):
+        try container.encode(value)
+      }
+    }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var unlimited: Self { .unlimitedValue(.unlimited) }
+
+    public enum Unlimited: String, Codable, Hashable,
+      Sendable
+    {
+      case unlimited = "unlimited"
+    }
+  }
+
+  public enum GroupUsageLimit: Codable, Sendable {
+    case integer(Int)
+    case unlimitedValue(
+      ElevenLabsWorkspaceGroupResponseModel.GroupUsageLimit.Unlimited)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Int.self) {
+        self = .integer(value)
+        return
+      }
+      self = .unlimitedValue(
+        try container.decode(ElevenLabsWorkspaceGroupResponseModel.GroupUsageLimit.Unlimited.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .integer(let value):
+        try container.encode(value)
+      case .unlimitedValue(let value):
+        try container.encode(value)
+      }
+    }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var unlimited: Self {
+      .unlimitedValue(.unlimited)
+    }
+
+    public enum Unlimited: String, Codable, Hashable,
+      Sendable
+    {
+      case unlimited = "unlimited"
+    }
+  }
+}
+
+extension ElevenLabsWorkspaceGroupResponseModel.GroupConcurrencyLimit: ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Int) {
+    self = .integer(value)
+  }
+}
+
+extension ElevenLabsWorkspaceGroupResponseModel.GroupDubbingConcurrencyLimit:
+  ExpressibleByIntegerLiteral
+{
+  public init(integerLiteral value: Int) {
+    self = .integer(value)
+  }
+}
+
+extension ElevenLabsWorkspaceGroupResponseModel.GroupMusicConcurrencyLimit:
+  ExpressibleByIntegerLiteral
+{
+  public init(integerLiteral value: Int) {
+    self = .integer(value)
+  }
+}
+
+extension ElevenLabsWorkspaceGroupResponseModel.GroupPvcLimit: ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Int) {
+    self = .integer(value)
+  }
+}
+
+extension ElevenLabsWorkspaceGroupResponseModel.GroupUsageLimit: ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Int) {
+    self = .integer(value)
   }
 }

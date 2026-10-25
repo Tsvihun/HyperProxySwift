@@ -19,12 +19,12 @@ public struct DeepSeekChatCompletionRequest: Codable, Sendable {
   public var presencePenalty: Double?
   public var reasoningEffort: DeepSeekChatReasoningEffort?
   public var responseFormat: DeepSeekChatResponseFormat?
-  public var stop: DeepSeekChatCompletionRequestStop?
+  public var stop: DeepSeekChatCompletionRequest.Stop?
   public var stream: Bool?
   public var streamOptions: DeepSeekChatStreamOptions?
   public var temperature: Double?
   public var thinking: DeepSeekChatThinkingConfig?
-  public var toolChoice: DeepSeekChatCompletionRequestToolChoice?
+  public var toolChoice: DeepSeekChatCompletionRequest.ToolChoice?
   public var tools: [DeepSeekChatTool]?
   public var topLogprobs: Int?
   public var topP: Double?
@@ -39,12 +39,12 @@ public struct DeepSeekChatCompletionRequest: Codable, Sendable {
     presencePenalty: Double? = nil,
     reasoningEffort: DeepSeekChatReasoningEffort? = nil,
     responseFormat: DeepSeekChatResponseFormat? = nil,
-    stop: DeepSeekChatCompletionRequestStop? = nil,
+    stop: DeepSeekChatCompletionRequest.Stop? = nil,
     stream: Bool? = nil,
     streamOptions: DeepSeekChatStreamOptions? = nil,
     temperature: Double? = nil,
     thinking: DeepSeekChatThinkingConfig? = nil,
-    toolChoice: DeepSeekChatCompletionRequestToolChoice? = nil,
+    toolChoice: DeepSeekChatCompletionRequest.ToolChoice? = nil,
     tools: [DeepSeekChatTool]? = nil,
     topLogprobs: Int? = nil,
     topP: Double? = nil,
@@ -89,5 +89,74 @@ public struct DeepSeekChatCompletionRequest: Codable, Sendable {
     case topLogprobs = "top_logprobs"
     case topP = "top_p"
     case userId = "user_id"
+  }
+
+  public enum Stop: Codable, Sendable {
+    case string(String)
+    case stringArray([String])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .stringArray(try container.decode([String].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .stringArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum ToolChoice: Codable, Sendable {
+    case chatToolChoiceMode(DeepSeekChatToolChoiceMode)
+    case chatNamedToolChoice(DeepSeekChatNamedToolChoice)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(DeepSeekChatToolChoiceMode.self) {
+        self = .chatToolChoiceMode(value)
+        return
+      }
+      self = .chatNamedToolChoice(try container.decode(DeepSeekChatNamedToolChoice.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .chatToolChoiceMode(let value):
+        try container.encode(value)
+      case .chatNamedToolChoice(let value):
+        try container.encode(value)
+      }
+    }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var none: Self { .chatToolChoiceMode(.none) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var auto: Self { .chatToolChoiceMode(.auto) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var requiredValue: Self { .chatToolChoiceMode(.requiredValue) }
+  }
+}
+
+extension DeepSeekChatCompletionRequest.Stop: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension DeepSeekChatCompletionRequest.Stop: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: String...) {
+    self = .stringArray(elements)
   }
 }

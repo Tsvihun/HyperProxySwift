@@ -12,19 +12,19 @@ import HyperProxyCore
 
 public struct OpenRouterTokenExchangeRequest: Codable, Sendable {
   public var federationPolicyId: String
-  public var grantType: OpenRouterTokenExchangeRequestGrantType
-  public var requestedTokenType: OpenRouterTokenExchangeRequestRequestedTokenType?
-  public var scope: OpenRouterTokenExchangeRequestScope?
+  public var grantType: OpenRouterTokenExchangeRequest.GrantType
+  public var requestedTokenType: OpenRouterTokenExchangeRequest.RequestedTokenType?
+  public var scope: OpenRouterTokenExchangeRequest.Scope?
   public var subjectToken: String
-  public var subjectTokenType: OpenRouterTokenExchangeRequestSubjectTokenType
+  public var subjectTokenType: OpenRouterTokenExchangeRequest.SubjectTokenType
 
   public init(
     federationPolicyId: String,
-    grantType: OpenRouterTokenExchangeRequestGrantType,
+    grantType: OpenRouterTokenExchangeRequest.GrantType,
     subjectToken: String,
-    subjectTokenType: OpenRouterTokenExchangeRequestSubjectTokenType,
-    requestedTokenType: OpenRouterTokenExchangeRequestRequestedTokenType? = nil,
-    scope: OpenRouterTokenExchangeRequestScope? = nil
+    subjectTokenType: OpenRouterTokenExchangeRequest.SubjectTokenType,
+    requestedTokenType: OpenRouterTokenExchangeRequest.RequestedTokenType? = nil,
+    scope: OpenRouterTokenExchangeRequest.Scope? = nil
   ) {
     self.federationPolicyId = federationPolicyId
     self.grantType = grantType
@@ -41,5 +41,23 @@ public struct OpenRouterTokenExchangeRequest: Codable, Sendable {
     case scope
     case subjectToken = "subject_token"
     case subjectTokenType = "subject_token_type"
+  }
+
+  public enum GrantType: String, Codable, Hashable, Sendable {
+    case urnIetfParamsOauthGrantTypeTokenExchange =
+      "urn:ietf:params:oauth:grant-type:token-exchange"
+  }
+
+  public enum RequestedTokenType: String, Codable, Hashable, Sendable {
+    case urnIetfParamsOauthTokenTypeAccessToken = "urn:ietf:params:oauth:token-type:access_token"
+  }
+
+  public enum Scope: String, Codable, Hashable, Sendable {
+    case inference = "inference"
+    case management = "management"
+  }
+
+  public enum SubjectTokenType: String, Codable, Hashable, Sendable {
+    case urnIetfParamsOauthTokenTypeJwt = "urn:ietf:params:oauth:token-type:jwt"
   }
 }

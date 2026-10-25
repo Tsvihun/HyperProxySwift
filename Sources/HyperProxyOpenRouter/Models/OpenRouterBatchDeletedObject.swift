@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenRouterBatchDeletedObject: Codable, Sendable {
   public var deletion: OpenRouterBatchDeletionTargets
   public var id: String
-  public var object: OpenRouterBatchDeletedObjectObject
+  public var object: OpenRouterBatchDeletedObject.Object
 
   public init(
     deletion: OpenRouterBatchDeletionTargets,
     id: String,
-    object: OpenRouterBatchDeletedObjectObject
+    object: OpenRouterBatchDeletedObject.Object
   ) {
     self.deletion = deletion
     self.id = id
@@ -29,5 +29,9 @@ public struct OpenRouterBatchDeletedObject: Codable, Sendable {
     case deletion
     case id
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case batch = "batch"
   }
 }

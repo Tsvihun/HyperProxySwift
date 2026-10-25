@@ -17,10 +17,10 @@ public struct OpenRouterAnthropicMessageUsageIteration: Codable, Sendable {
   public var inputTokens: Int?
   public var model: String?
   public var outputTokens: Int?
-  public var kind: OpenRouterAnthropicMessageUsageIterationAllOf2Kind
+  public var kind: OpenRouterAnthropicMessageUsageIterationKind
 
   public init(
-    kind: OpenRouterAnthropicMessageUsageIterationAllOf2Kind,
+    kind: OpenRouterAnthropicMessageUsageIterationKind,
     cacheCreation: OpenRouterAnthropicIterationCacheCreation? = nil,
     cacheCreationInputTokens: Int? = nil,
     cacheReadInputTokens: Int? = nil,
@@ -45,5 +45,23 @@ public struct OpenRouterAnthropicMessageUsageIteration: Codable, Sendable {
     case model
     case outputTokens = "output_tokens"
     case kind = "type"
+  }
+
+  public struct Message: Codable, Sendable {
+    public var model: String?
+    public var kind: OpenRouterAnthropicMessageUsageIterationKind
+
+    public init(
+      kind: OpenRouterAnthropicMessageUsageIterationKind,
+      model: String? = nil
+    ) {
+      self.model = model
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case model
+      case kind = "type"
+    }
   }
 }

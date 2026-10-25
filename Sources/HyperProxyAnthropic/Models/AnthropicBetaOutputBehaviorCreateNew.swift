@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaOutputBehaviorCreateNew: Codable, Sendable {
-  public var kind: AnthropicBetaOutputBehaviorCreateNewKind
+  public var kind: AnthropicBetaOutputBehaviorCreateNew.Kind
 
   public init(
-    kind: AnthropicBetaOutputBehaviorCreateNewKind
+    kind: AnthropicBetaOutputBehaviorCreateNew.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case createNew = "create_new"
   }
 }

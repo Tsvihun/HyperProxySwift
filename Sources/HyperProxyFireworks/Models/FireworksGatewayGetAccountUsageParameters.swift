@@ -17,7 +17,7 @@ public struct FireworksGatewayGetAccountUsageParameters: Codable, Sendable {
   public var groupBy: [String]?
   public var startTime: String
   public var timezone: String?
-  public var usageType: FireworksGatewayGetAccountUsageParametersUsageType?
+  public var usageType: FireworksGatewayGetAccountUsageParameters.UsageType?
 
   public init(
     accountId: String,
@@ -26,7 +26,7 @@ public struct FireworksGatewayGetAccountUsageParameters: Codable, Sendable {
     filter: String? = nil,
     groupBy: [String]? = nil,
     timezone: String? = nil,
-    usageType: FireworksGatewayGetAccountUsageParametersUsageType? = nil
+    usageType: FireworksGatewayGetAccountUsageParameters.UsageType? = nil
   ) {
     self.accountId = accountId
     self.endTime = endTime
@@ -45,5 +45,12 @@ public struct FireworksGatewayGetAccountUsageParameters: Codable, Sendable {
     case startTime
     case timezone
     case usageType
+  }
+
+  public enum UsageType: String, Codable, Hashable, Sendable {
+    case usageTypeUnspecified = "USAGE_TYPE_UNSPECIFIED"
+    case serverless = "SERVERLESS"
+    case dedicatedDeployment = "DEDICATED_DEPLOYMENT"
+    case training = "TRAINING"
   }
 }

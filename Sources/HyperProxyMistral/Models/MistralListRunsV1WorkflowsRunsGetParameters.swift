@@ -16,15 +16,15 @@ public struct MistralListRunsV1WorkflowsRunsGetParameters: Codable, Sendable {
   public var endTimeBefore: String?
   public var includeInternal: Bool?
   public var nextPageToken: String?
-  public var order: MistralListRunsV1WorkflowsRunsGetParametersOrder?
+  public var order: MistralListRunsV1WorkflowsRunsGetParameters.Order?
   public var pageSize: Int?
   public var rootExecutionId: String?
   public var search: String?
   public var searchKey: [String]?
-  public var sortBy: MistralListRunsV1WorkflowsRunsGetParametersSortBy?
+  public var sortBy: MistralListRunsV1WorkflowsRunsGetParameters.SortBy?
   public var startTimeAfter: String?
   public var startTimeBefore: String?
-  public var status: MistralListRunsV1WorkflowsRunsGetParametersStatus?
+  public var status: MistralListRunsV1WorkflowsRunsGetParameters.Status?
   public var userId: String?
   public var workflowIdentifier: String?
   public var workflowTags: [String]?
@@ -35,15 +35,15 @@ public struct MistralListRunsV1WorkflowsRunsGetParameters: Codable, Sendable {
     endTimeBefore: String? = nil,
     includeInternal: Bool? = nil,
     nextPageToken: String? = nil,
-    order: MistralListRunsV1WorkflowsRunsGetParametersOrder? = nil,
+    order: MistralListRunsV1WorkflowsRunsGetParameters.Order? = nil,
     pageSize: Int? = nil,
     rootExecutionId: String? = nil,
     search: String? = nil,
     searchKey: [String]? = nil,
-    sortBy: MistralListRunsV1WorkflowsRunsGetParametersSortBy? = nil,
+    sortBy: MistralListRunsV1WorkflowsRunsGetParameters.SortBy? = nil,
     startTimeAfter: String? = nil,
     startTimeBefore: String? = nil,
-    status: MistralListRunsV1WorkflowsRunsGetParametersStatus? = nil,
+    status: MistralListRunsV1WorkflowsRunsGetParameters.Status? = nil,
     userId: String? = nil,
     workflowIdentifier: String? = nil,
     workflowTags: [String]? = nil
@@ -85,5 +85,69 @@ public struct MistralListRunsV1WorkflowsRunsGetParameters: Codable, Sendable {
     case userId = "user_id"
     case workflowIdentifier = "workflow_identifier"
     case workflowTags = "workflow_tags"
+  }
+
+  public enum Order: String, Codable, Hashable, Sendable {
+    case asc = "asc"
+    case desc = "desc"
+  }
+
+  public enum SortBy: String, Codable, Hashable, Sendable {
+    case startTime = "start_time"
+    case endTime = "end_time"
+  }
+
+  public enum Status: Codable, Sendable {
+    case workflowExecutionStatusArray([MistralWorkflowExecutionStatus])
+    case workflowExecutionStatus(MistralWorkflowExecutionStatus)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode([MistralWorkflowExecutionStatus].self) {
+        self = .workflowExecutionStatusArray(value)
+        return
+      }
+      self = .workflowExecutionStatus(try container.decode(MistralWorkflowExecutionStatus.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .workflowExecutionStatusArray(let value):
+        try container.encode(value)
+      case .workflowExecutionStatus(let value):
+        try container.encode(value)
+      }
+    }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var running: Self { .workflowExecutionStatus(.running) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var completed: Self { .workflowExecutionStatus(.completed) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var failed: Self { .workflowExecutionStatus(.failed) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var canceled: Self { .workflowExecutionStatus(.canceled) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var terminated: Self { .workflowExecutionStatus(.terminated) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var continuedAsNew: Self { .workflowExecutionStatus(.continuedAsNew) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var timedOut: Self { .workflowExecutionStatus(.timedOut) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var retryingAfterError: Self { .workflowExecutionStatus(.retryingAfterError) }
+  }
+}
+
+extension MistralListRunsV1WorkflowsRunsGetParameters.Status: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: MistralWorkflowExecutionStatus...) {
+    self = .workflowExecutionStatusArray(elements)
   }
 }

@@ -33,10 +33,10 @@ public enum OpenAIItem: Codable, Sendable {
   case functionShellCallOutputItemParam(OpenAIFunctionShellCallOutputItemParam)
   case applyPatchToolCallItemParam(OpenAIApplyPatchToolCallItemParam)
   case applyPatchToolCallOutputItemParam(OpenAIApplyPatchToolCallOutputItemParam)
-  case mCPListTools(OpenAIMCPListTools)
-  case mCPApprovalRequest(OpenAIMCPApprovalRequest)
-  case mCPApprovalResponse(OpenAIMCPApprovalResponse)
-  case mCPToolCall(OpenAIMCPToolCall)
+  case mcpListTools(OpenAIMCPListTools)
+  case mcpApprovalRequest(OpenAIMCPApprovalRequest)
+  case mcpApprovalResponse(OpenAIMCPApprovalResponse)
+  case mcpToolCall(OpenAIMCPToolCall)
   case customToolCallOutput(OpenAICustomToolCallOutput)
   case customToolCall(OpenAICustomToolCall)
 
@@ -131,19 +131,19 @@ public enum OpenAIItem: Codable, Sendable {
       return
     }
     if let value = try? container.decode(OpenAIMCPListTools.self) {
-      self = .mCPListTools(value)
+      self = .mcpListTools(value)
       return
     }
     if let value = try? container.decode(OpenAIMCPApprovalRequest.self) {
-      self = .mCPApprovalRequest(value)
+      self = .mcpApprovalRequest(value)
       return
     }
     if let value = try? container.decode(OpenAIMCPApprovalResponse.self) {
-      self = .mCPApprovalResponse(value)
+      self = .mcpApprovalResponse(value)
       return
     }
     if let value = try? container.decode(OpenAIMCPToolCall.self) {
-      self = .mCPToolCall(value)
+      self = .mcpToolCall(value)
       return
     }
     if let value = try? container.decode(OpenAICustomToolCallOutput.self) {
@@ -200,13 +200,13 @@ public enum OpenAIItem: Codable, Sendable {
       try container.encode(value)
     case .applyPatchToolCallOutputItemParam(let value):
       try container.encode(value)
-    case .mCPListTools(let value):
+    case .mcpListTools(let value):
       try container.encode(value)
-    case .mCPApprovalRequest(let value):
+    case .mcpApprovalRequest(let value):
       try container.encode(value)
-    case .mCPApprovalResponse(let value):
+    case .mcpApprovalResponse(let value):
       try container.encode(value)
-    case .mCPToolCall(let value):
+    case .mcpToolCall(let value):
       try container.encode(value)
     case .customToolCallOutput(let value):
       try container.encode(value)

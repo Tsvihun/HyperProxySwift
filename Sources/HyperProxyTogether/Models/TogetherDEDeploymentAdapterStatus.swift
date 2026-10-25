@@ -24,7 +24,7 @@ public struct TogetherDEDeploymentAdapterStatus: Codable, Sendable {
   public var realizedRevision: String?
   public var realizedRevisionId: String?
   public var reason: String?
-  public var state: TogetherDEDeploymentAdapterStatusState
+  public var state: TogetherDEDeploymentAdapterStatus.State
   public var totalPodCount: Int
   public var updatedAt: String?
 
@@ -33,7 +33,7 @@ public struct TogetherDEDeploymentAdapterStatus: Codable, Sendable {
     clusterId: String,
     failedPodCount: Int,
     readyPodCount: Int,
-    state: TogetherDEDeploymentAdapterStatusState,
+    state: TogetherDEDeploymentAdapterStatus.State,
     totalPodCount: Int,
     adapterModel: String? = nil,
     adapterValid: Bool? = nil,
@@ -81,5 +81,13 @@ public struct TogetherDEDeploymentAdapterStatus: Codable, Sendable {
     case state
     case totalPodCount
     case updatedAt
+  }
+
+  public enum State: String, Codable, Hashable, Sendable {
+    case adapterLoadStatePending = "ADAPTER_LOAD_STATE_PENDING"
+    case adapterLoadStateLoading = "ADAPTER_LOAD_STATE_LOADING"
+    case adapterLoadStateReady = "ADAPTER_LOAD_STATE_READY"
+    case adapterLoadStateRemoving = "ADAPTER_LOAD_STATE_REMOVING"
+    case adapterLoadStateFailed = "ADAPTER_LOAD_STATE_FAILED"
   }
 }

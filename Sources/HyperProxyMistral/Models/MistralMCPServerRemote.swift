@@ -14,11 +14,11 @@ public struct MistralMCPServerRemote: Codable, Sendable {
   public var authentication: MistralMCPServerAuthenticationRequirement?
   public var headers: [MistralMCPServerRemoteHeader]?
   public var supportedProtocolVersions: [String]?
-  public var kind: MistralMCPServerRemoteKind
+  public var kind: MistralMCPServerRemote.Kind
   public var url: String
 
   public init(
-    kind: MistralMCPServerRemoteKind,
+    kind: MistralMCPServerRemote.Kind,
     url: String,
     authentication: MistralMCPServerAuthenticationRequirement? = nil,
     headers: [MistralMCPServerRemoteHeader]? = nil,
@@ -37,5 +37,10 @@ public struct MistralMCPServerRemote: Codable, Sendable {
     case supportedProtocolVersions
     case kind = "type"
     case url
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case streamableHttp = "streamable-http"
+    case sse = "sse"
   }
 }

@@ -16,7 +16,7 @@ public struct OpenRouterListFilesParameters: Codable, Sendable {
   public var beforeId: String?
   public var cursor: String?
   public var limit: Int?
-  public var order: OpenRouterListFilesParametersOrder?
+  public var order: OpenRouterListFilesParameters.Order?
   public var provider: OpenRouterFileProvider?
   public var workspaceId: String?
 
@@ -26,7 +26,7 @@ public struct OpenRouterListFilesParameters: Codable, Sendable {
     beforeId: String? = nil,
     cursor: String? = nil,
     limit: Int? = nil,
-    order: OpenRouterListFilesParametersOrder? = nil,
+    order: OpenRouterListFilesParameters.Order? = nil,
     provider: OpenRouterFileProvider? = nil,
     workspaceId: String? = nil
   ) {
@@ -49,5 +49,10 @@ public struct OpenRouterListFilesParameters: Codable, Sendable {
     case order
     case provider
     case workspaceId = "workspace_id"
+  }
+
+  public enum Order: String, Codable, Hashable, Sendable {
+    case asc = "asc"
+    case desc = "desc"
   }
 }

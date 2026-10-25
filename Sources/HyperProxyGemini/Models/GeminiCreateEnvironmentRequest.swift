@@ -13,13 +13,13 @@ import HyperProxyCore
 public struct GeminiCreateEnvironmentRequest: Codable, Sendable {
   public var fromEnvironment: String?
   public var networkAllowlist: GeminiEnvironmentNetworkEgressAllowlist?
-  public var networkMode: GeminiCreateEnvironmentRequestNetworkMode?
+  public var networkMode: GeminiCreateEnvironmentRequest.NetworkMode?
   public var sources: [GeminiSource]?
 
   public init(
     fromEnvironment: String? = nil,
     networkAllowlist: GeminiEnvironmentNetworkEgressAllowlist? = nil,
-    networkMode: GeminiCreateEnvironmentRequestNetworkMode? = nil,
+    networkMode: GeminiCreateEnvironmentRequest.NetworkMode? = nil,
     sources: [GeminiSource]? = nil
   ) {
     self.fromEnvironment = fromEnvironment
@@ -33,5 +33,10 @@ public struct GeminiCreateEnvironmentRequest: Codable, Sendable {
     case networkAllowlist
     case networkMode
     case sources
+  }
+
+  public enum NetworkMode: String, Codable, Hashable, Sendable {
+    case networkModeUnspecified = "NETWORK_MODE_UNSPECIFIED"
+    case disabled = "DISABLED"
   }
 }

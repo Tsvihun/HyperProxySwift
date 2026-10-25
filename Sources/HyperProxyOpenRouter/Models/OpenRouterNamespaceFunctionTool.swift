@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterNamespaceFunctionTool: Codable, Sendable {
-  public var allowedCallers: [OpenRouterNamespaceFunctionToolAllowedCallersItem]?
+  public var allowedCallers: [OpenRouterNamespaceFunctionTool.AllowedCallersElement]?
   public var async: Bool?
   public var deferLoading: Bool?
   public var description: String?
@@ -19,12 +19,12 @@ public struct OpenRouterNamespaceFunctionTool: Codable, Sendable {
   public var outputSchema: [String: HyperProxyJSONValue]?
   public var parameters: [String: HyperProxyJSONValue]?
   public var strict: Bool?
-  public var kind: OpenRouterNamespaceFunctionToolKind
+  public var kind: OpenRouterNamespaceFunctionTool.Kind
 
   public init(
     name: String,
-    kind: OpenRouterNamespaceFunctionToolKind,
-    allowedCallers: [OpenRouterNamespaceFunctionToolAllowedCallersItem]? = nil,
+    kind: OpenRouterNamespaceFunctionTool.Kind,
+    allowedCallers: [OpenRouterNamespaceFunctionTool.AllowedCallersElement]? = nil,
     async: Bool? = nil,
     deferLoading: Bool? = nil,
     description: String? = nil,
@@ -53,5 +53,14 @@ public struct OpenRouterNamespaceFunctionTool: Codable, Sendable {
     case parameters
     case strict
     case kind = "type"
+  }
+
+  public enum AllowedCallersElement: String, Codable, Hashable, Sendable {
+    case direct = "direct"
+    case programmatic = "programmatic"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case function = "function"
   }
 }

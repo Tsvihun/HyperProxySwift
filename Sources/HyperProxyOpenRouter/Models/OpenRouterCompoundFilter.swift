@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenRouterCompoundFilter: Codable, Sendable {
   public var filters: [[String: HyperProxyJSONValue]]
-  public var kind: OpenRouterCompoundFilterKind
+  public var kind: OpenRouterCompoundFilter.Kind
 
   public init(
     filters: [[String: HyperProxyJSONValue]],
-    kind: OpenRouterCompoundFilterKind
+    kind: OpenRouterCompoundFilter.Kind
   ) {
     self.filters = filters
     self.kind = kind
@@ -25,5 +25,10 @@ public struct OpenRouterCompoundFilter: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case filters
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case and = "and"
+    case or = "or"
   }
 }

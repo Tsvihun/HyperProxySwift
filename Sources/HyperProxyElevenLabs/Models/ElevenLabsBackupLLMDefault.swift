@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsBackupLLMDefault: Codable, Sendable {
-  public var preference: ElevenLabsDefaultPreference?
+  public var preference: ElevenLabsBackupLLMDefault.Preference?
 
   public init(
-    preference: ElevenLabsDefaultPreference? = nil
+    preference: ElevenLabsBackupLLMDefault.Preference? = nil
   ) {
     self.preference = preference
   }
 
   enum CodingKeys: String, CodingKey {
     case preference
+  }
+
+  public enum Preference: String, Codable, Hashable, Sendable {
+    case defaultValue = "default"
   }
 }

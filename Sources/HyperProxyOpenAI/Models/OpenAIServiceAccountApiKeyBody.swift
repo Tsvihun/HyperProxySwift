@@ -15,14 +15,14 @@ public struct OpenAIServiceAccountApiKeyBody: Codable, Sendable {
   public var expiresAt: Int?
   public var id: String
   public var name: String
-  public var object: OpenAIServiceAccountApiKeyBodyObject
+  public var object: OpenAIServiceAccountApiKeyBody.Object
   public var value: String
 
   public init(
     createdAt: Int,
     id: String,
     name: String,
-    object: OpenAIServiceAccountApiKeyBodyObject,
+    object: OpenAIServiceAccountApiKeyBody.Object,
     value: String,
     expiresAt: Int? = nil
   ) {
@@ -41,5 +41,9 @@ public struct OpenAIServiceAccountApiKeyBody: Codable, Sendable {
     case name
     case object
     case value
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case organizationProjectServiceAccountApiKey = "organization.project.service_account.api_key"
   }
 }

@@ -43,12 +43,6 @@ public enum GeminiOperation: String, HyperProxyCatalogOperation {
   case cachedContentsRetrieve = "cachedContents.retrieve"
   /// `PATCH v1beta/cachedContents/{cache_id}`
   case cachedContentsUpdate = "cachedContents.update"
-  /// `DELETE v1beta/cachedContents/{cachedContentsId}`
-  case generativelanguageCachedContentsDelete = "generativelanguage.cachedContents.delete"
-  /// `GET v1beta/cachedContents/{cachedContentsId}`
-  case generativelanguageCachedContentsGet = "generativelanguage.cachedContents.get"
-  /// `PATCH v1beta/cachedContents/{cachedContentsId}`
-  case generativelanguageCachedContentsPatch = "generativelanguage.cachedContents.patch"
   /// `GET v1beta/corpora`
   case generativelanguageCorporaList = "generativelanguage.corpora.list"
   /// `POST v1beta/corpora`
@@ -92,10 +86,6 @@ public enum GeminiOperation: String, HyperProxyCatalogOperation {
   case fileSearchStoresList = "fileSearchStores.list"
   /// `POST v1beta/fileSearchStores`
   case fileSearchStoresCreate = "fileSearchStores.create"
-  /// `DELETE v1beta/fileSearchStores/{fileSearchStoresId}`
-  case generativelanguageFileSearchStoresDelete = "generativelanguage.fileSearchStores.delete"
-  /// `GET v1beta/fileSearchStores/{fileSearchStoresId}`
-  case generativelanguageFileSearchStoresGet = "generativelanguage.fileSearchStores.get"
   /// `GET v1beta/fileSearchStores/{fileSearchStoresId}/documents`
   case generativelanguageFileSearchStoresDocumentsList =
     "generativelanguage.fileSearchStores.documents.list"
@@ -111,9 +101,6 @@ public enum GeminiOperation: String, HyperProxyCatalogOperation {
   /// `GET v1beta/fileSearchStores/{fileSearchStoresId}/upload/operations/{operationsId}`
   case generativelanguageFileSearchStoresUploadOperationsGet =
     "generativelanguage.fileSearchStores.upload.operations.get"
-  /// `POST v1beta/fileSearchStores/{fileSearchStoresId}:importFile`
-  case generativelanguageFileSearchStoresImportFile =
-    "generativelanguage.fileSearchStores.importFile"
   /// `POST v1beta/fileSearchStores/{fileSearchStoresId}:uploadToFileSearchStore`
   case generativelanguageMediaUploadToFileSearchStore =
     "generativelanguage.media.uploadToFileSearchStore"
@@ -131,10 +118,6 @@ public enum GeminiOperation: String, HyperProxyCatalogOperation {
   case filesDelete = "files.delete"
   /// `GET v1beta/files/{file_id}`
   case filesRetrieve = "files.retrieve"
-  /// `DELETE v1beta/files/{filesId}`
-  case generativelanguageFilesDelete = "generativelanguage.files.delete"
-  /// `GET v1beta/files/{filesId}`
-  case generativelanguageFilesGet = "generativelanguage.files.get"
   /// `POST v1beta/files:register`
   case filesRegister = "files.register"
   /// `GET v1beta/generatedFiles`
@@ -146,8 +129,6 @@ public enum GeminiOperation: String, HyperProxyCatalogOperation {
   case interactionsCreate = "interactions.create"
   /// `GET v1beta/models`
   case modelsList = "models.list"
-  /// `GET v1beta/models/{modelsId}`
-  case generativelanguageModelsGet = "generativelanguage.models.get"
   /// `GET v1beta/models/{modelsId}/operations`
   case generativelanguageModelsOperationsList = "generativelanguage.models.operations.list"
   /// `GET v1beta/models/{modelsId}/operations/{operationsId}`
@@ -155,35 +136,20 @@ public enum GeminiOperation: String, HyperProxyCatalogOperation {
   /// `POST v1beta/models/{modelsId}:asyncBatchEmbedContent`
   case generativelanguageModelsAsyncBatchEmbedContent =
     "generativelanguage.models.asyncBatchEmbedContent"
-  /// `POST v1beta/models/{modelsId}:batchEmbedContents`
-  case generativelanguageModelsBatchEmbedContents = "generativelanguage.models.batchEmbedContents"
   /// `POST v1beta/models/{modelsId}:batchEmbedText`
   case generativelanguageModelsBatchEmbedText = "generativelanguage.models.batchEmbedText"
-  /// `POST v1beta/models/{modelsId}:batchGenerateContent`
-  case generativelanguageModelsBatchGenerateContent =
-    "generativelanguage.models.batchGenerateContent"
   /// `POST v1beta/models/{modelsId}:countMessageTokens`
   case generativelanguageModelsCountMessageTokens = "generativelanguage.models.countMessageTokens"
   /// `POST v1beta/models/{modelsId}:countTextTokens`
   case generativelanguageModelsCountTextTokens = "generativelanguage.models.countTextTokens"
-  /// `POST v1beta/models/{modelsId}:countTokens`
-  case generativelanguageModelsCountTokens = "generativelanguage.models.countTokens"
-  /// `POST v1beta/models/{modelsId}:embedContent`
-  case generativelanguageModelsEmbedContent = "generativelanguage.models.embedContent"
   /// `POST v1beta/models/{modelsId}:embedText`
   case generativelanguageModelsEmbedText = "generativelanguage.models.embedText"
   /// `POST v1beta/models/{modelsId}:generateAnswer`
   case generativelanguageModelsGenerateAnswer = "generativelanguage.models.generateAnswer"
-  /// `POST v1beta/models/{modelsId}:generateContent`
-  case generativelanguageModelsGenerateContent = "generativelanguage.models.generateContent"
   /// `POST v1beta/models/{modelsId}:generateMessage`
   case generativelanguageModelsGenerateMessage = "generativelanguage.models.generateMessage"
   /// `POST v1beta/models/{modelsId}:generateText`
   case generativelanguageModelsGenerateText = "generativelanguage.models.generateText"
-  /// `POST v1beta/models/{modelsId}:predict`
-  case generativelanguageModelsPredict = "generativelanguage.models.predict"
-  /// `POST v1beta/models/{modelsId}:predictLongRunning`
-  case generativelanguageModelsPredictLongRunning = "generativelanguage.models.predictLongRunning"
   /// `POST v1beta/models/{modelsId}:streamGenerateContent`
   case generativelanguageModelsStreamGenerateContent =
     "generativelanguage.models.streamGenerateContent"

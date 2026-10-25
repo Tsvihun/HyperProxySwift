@@ -14,7 +14,7 @@ public struct OpenAIListMessagesParameters: Codable, Sendable {
   public var after: String?
   public var before: String?
   public var limit: Int?
-  public var order: OpenAIListMessagesParametersOrder?
+  public var order: OpenAIListMessagesParameters.Order?
   public var runId: String?
   public var threadId: String
 
@@ -23,7 +23,7 @@ public struct OpenAIListMessagesParameters: Codable, Sendable {
     after: String? = nil,
     before: String? = nil,
     limit: Int? = nil,
-    order: OpenAIListMessagesParametersOrder? = nil,
+    order: OpenAIListMessagesParameters.Order? = nil,
     runId: String? = nil
   ) {
     self.after = after
@@ -41,5 +41,10 @@ public struct OpenAIListMessagesParameters: Codable, Sendable {
     case order
     case runId = "run_id"
     case threadId = "thread_id"
+  }
+
+  public enum Order: String, Codable, Hashable, Sendable {
+    case asc = "asc"
+    case desc = "desc"
   }
 }

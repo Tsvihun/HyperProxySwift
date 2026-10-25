@@ -11,8 +11,8 @@ import Foundation
 import HyperProxyCore
 
 public struct PerplexityGetComputerUsageAnalyticsParameters: Codable, Sendable {
-  public var bucketWidth: PerplexityGetComputerUsageAnalyticsParametersBucketWidth?
-  public var dataset: PerplexityGetComputerUsageAnalyticsParametersDataset
+  public var bucketWidth: PerplexityGetComputerUsageAnalyticsParameters.BucketWidth?
+  public var dataset: PerplexityGetComputerUsageAnalyticsParameters.Dataset
   public var endTime: Int?
   public var limit: Int?
   public var page: String?
@@ -20,9 +20,9 @@ public struct PerplexityGetComputerUsageAnalyticsParameters: Codable, Sendable {
   public var userEmail: String?
 
   public init(
-    dataset: PerplexityGetComputerUsageAnalyticsParametersDataset,
+    dataset: PerplexityGetComputerUsageAnalyticsParameters.Dataset,
     startTime: Int,
-    bucketWidth: PerplexityGetComputerUsageAnalyticsParametersBucketWidth? = nil,
+    bucketWidth: PerplexityGetComputerUsageAnalyticsParameters.BucketWidth? = nil,
     endTime: Int? = nil,
     limit: Int? = nil,
     page: String? = nil,
@@ -45,5 +45,26 @@ public struct PerplexityGetComputerUsageAnalyticsParameters: Codable, Sendable {
     case page
     case startTime = "start_time"
     case userEmail = "user_email"
+  }
+
+  public enum BucketWidth: String, Codable, Hashable,
+    Sendable
+  {
+    case value1d = "1d"
+    case value1h = "1h"
+  }
+
+  public enum Dataset: String, Codable, Hashable,
+    Sendable
+  {
+    case creditUsage = "credit_usage"
+    case connectors = "connectors"
+    case artifacts = "artifacts"
+    case skills = "skills"
+    case spaces = "spaces"
+    case workflows = "workflows"
+    case taskDurations = "task_durations"
+    case queryVolume = "query_volume"
+    case dailyActiveUsers = "daily_active_users"
   }
 }

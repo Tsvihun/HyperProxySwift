@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksTrainingSessionReferenceState: String, Codable, Hashable, Sendable {
-  case tRAININGSESSIONREFERENCESTATEUNSPECIFIED = "TRAINING_SESSION_REFERENCE_STATE_UNSPECIFIED"
-  case bASE = "BASE"
-  case aDAPTER = "ADAPTER"
+  case trainingSessionReferenceStateUnspecified = "TRAINING_SESSION_REFERENCE_STATE_UNSPECIFIED"
+  case base = "BASE"
+  case adapter = "ADAPTER"
 }

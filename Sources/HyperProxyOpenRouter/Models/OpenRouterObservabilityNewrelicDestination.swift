@@ -16,7 +16,7 @@ public struct OpenRouterObservabilityNewrelicDestination: Codable, Sendable {
   public var broadcastGenerationCostAllocation: Bool
   public var broadcastGenerationIdentity: Bool
   public var broadcastGenerationRequestContext: Bool
-  public var config: OpenRouterObservabilityNewrelicDestinationConfig
+  public var config: OpenRouterObservabilityNewrelicDestination.Config
   public var createdAt: String
   public var enabled: Bool
   public var filterRules: OpenRouterObservabilityFilterRulesConfig?
@@ -25,7 +25,7 @@ public struct OpenRouterObservabilityNewrelicDestination: Codable, Sendable {
   public var privacyMode: Bool
   public var regions: [OpenRouterObservabilityDataRegion]
   public var samplingRate: Double
-  public var kind: OpenRouterObservabilityNewrelicDestinationKind
+  public var kind: OpenRouterObservabilityNewrelicDestination.Kind
   public var updatedAt: String
   public var workspaceId: String
 
@@ -35,7 +35,7 @@ public struct OpenRouterObservabilityNewrelicDestination: Codable, Sendable {
     broadcastGenerationCostAllocation: Bool,
     broadcastGenerationIdentity: Bool,
     broadcastGenerationRequestContext: Bool,
-    config: OpenRouterObservabilityNewrelicDestinationConfig,
+    config: OpenRouterObservabilityNewrelicDestination.Config,
     createdAt: String,
     enabled: Bool,
     filterRules: OpenRouterObservabilityFilterRulesConfig?,
@@ -44,7 +44,7 @@ public struct OpenRouterObservabilityNewrelicDestination: Codable, Sendable {
     privacyMode: Bool,
     regions: [OpenRouterObservabilityDataRegion],
     samplingRate: Double,
-    kind: OpenRouterObservabilityNewrelicDestinationKind,
+    kind: OpenRouterObservabilityNewrelicDestination.Kind,
     updatedAt: String,
     workspaceId: String
   ) {
@@ -85,5 +85,38 @@ public struct OpenRouterObservabilityNewrelicDestination: Codable, Sendable {
     case kind = "type"
     case updatedAt = "updated_at"
     case workspaceId = "workspace_id"
+  }
+
+  public struct Config: Codable, Sendable {
+    public var headers: [String: String]?
+    public var licenseKey: String
+    public var region: OpenRouterObservabilityNewrelicDestination.Config.Region?
+
+    public init(
+      licenseKey: String,
+      headers: [String: String]? = nil,
+      region: OpenRouterObservabilityNewrelicDestination.Config.Region? = nil
+    ) {
+      self.headers = headers
+      self.licenseKey = licenseKey
+      self.region = region
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case headers
+      case licenseKey
+      case region
+    }
+
+    public enum Region: String, Codable, Hashable,
+      Sendable
+    {
+      case us = "us"
+      case eu = "eu"
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case newrelic = "newrelic"
   }
 }

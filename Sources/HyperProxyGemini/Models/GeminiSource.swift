@@ -15,14 +15,14 @@ public struct GeminiSource: Codable, Sendable {
   public var encoding: String?
   public var source: String?
   public var target: String?
-  public var kind: GeminiSourceKind?
+  public var kind: GeminiSource.Kind?
 
   public init(
     content: String? = nil,
     encoding: String? = nil,
     source: String? = nil,
     target: String? = nil,
-    kind: GeminiSourceKind? = nil
+    kind: GeminiSource.Kind? = nil
   ) {
     self.content = content
     self.encoding = encoding
@@ -37,5 +37,12 @@ public struct GeminiSource: Codable, Sendable {
     case source
     case target
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case typeUnspecified = "TYPE_UNSPECIFIED"
+    case gcs = "GCS"
+    case inline = "INLINE"
+    case repository = "REPOSITORY"
   }
 }

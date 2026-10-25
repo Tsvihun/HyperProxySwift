@@ -11,6 +11,6 @@ import Foundation
 import HyperProxyCore
 
 public enum MistralAPIPlan: String, Codable, Hashable, Sendable {
-  case fREE = "FREE"
-  case pAYASYOUGO = "PAY_AS_YOU_GO"
+  case free = "FREE"
+  case payAsYouGo = "PAY_AS_YOU_GO"
 }

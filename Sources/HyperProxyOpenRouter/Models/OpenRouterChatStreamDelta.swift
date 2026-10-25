@@ -16,7 +16,7 @@ public struct OpenRouterChatStreamDelta: Codable, Sendable {
   public var reasoning: String?
   public var reasoningDetails: OpenRouterChatStreamReasoningDetails?
   public var refusal: String?
-  public var role: OpenRouterChatStreamDeltaRole?
+  public var role: OpenRouterChatStreamDelta.Role?
   public var toolCalls: [OpenRouterChatStreamToolCall]?
 
   public init(
@@ -25,7 +25,7 @@ public struct OpenRouterChatStreamDelta: Codable, Sendable {
     reasoning: String? = nil,
     reasoningDetails: OpenRouterChatStreamReasoningDetails? = nil,
     refusal: String? = nil,
-    role: OpenRouterChatStreamDeltaRole? = nil,
+    role: OpenRouterChatStreamDelta.Role? = nil,
     toolCalls: [OpenRouterChatStreamToolCall]? = nil
   ) {
     self.audio = audio
@@ -45,5 +45,9 @@ public struct OpenRouterChatStreamDelta: Codable, Sendable {
     case refusal
     case role
     case toolCalls = "tool_calls"
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case assistant = "assistant"
   }
 }

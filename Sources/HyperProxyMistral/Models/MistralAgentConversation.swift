@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct MistralAgentConversation: Codable, Sendable {
   public var agentId: String
-  public var agentVersion: MistralAgentConversationAgentVersion?
+  public var agentVersion: MistralAgentConversation.AgentVersion?
   public var createdAt: String
   public var description: String?
   public var id: String
@@ -26,7 +26,7 @@ public struct MistralAgentConversation: Codable, Sendable {
     createdAt: String,
     id: String,
     updatedAt: String,
-    agentVersion: MistralAgentConversationAgentVersion? = nil,
+    agentVersion: MistralAgentConversation.AgentVersion? = nil,
     description: String? = nil,
     metadata: MistralMetadataDict? = nil,
     name: String? = nil,
@@ -53,5 +53,41 @@ public struct MistralAgentConversation: Codable, Sendable {
     case name
     case object
     case updatedAt = "updated_at"
+  }
+
+  public enum AgentVersion: Codable, Sendable {
+    case integer(Int)
+    case string(String)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Int.self) {
+        self = .integer(value)
+        return
+      }
+      self = .string(try container.decode(String.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .integer(let value):
+        try container.encode(value)
+      case .string(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension MistralAgentConversation.AgentVersion: ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Int) {
+    self = .integer(value)
+  }
+}
+
+extension MistralAgentConversation.AgentVersion: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

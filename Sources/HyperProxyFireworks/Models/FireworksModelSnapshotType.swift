@@ -11,6 +11,6 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksModelSnapshotType: String, Codable, Hashable, Sendable {
-  case fULLSNAPSHOT = "FULL_SNAPSHOT"
-  case iNCREMENTALSNAPSHOT = "INCREMENTAL_SNAPSHOT"
+  case fullSnapshot = "FULL_SNAPSHOT"
+  case incrementalSnapshot = "INCREMENTAL_SNAPSHOT"
 }

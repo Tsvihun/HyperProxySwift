@@ -16,11 +16,11 @@ public struct OpenAIClientToolCallItem: Codable, Sendable {
   public var createdAt: Int
   public var id: String
   public var name: String
-  public var object: OpenAIClientToolCallItemObject
+  public var object: OpenAIClientToolCallItem.Object
   public var output: String?
   public var status: OpenAIClientToolCallStatus
   public var threadId: String
-  public var kind: OpenAIClientToolCallItemKind
+  public var kind: OpenAIClientToolCallItem.Kind
 
   public init(
     arguments: String,
@@ -28,11 +28,11 @@ public struct OpenAIClientToolCallItem: Codable, Sendable {
     createdAt: Int,
     id: String,
     name: String,
-    object: OpenAIClientToolCallItemObject,
+    object: OpenAIClientToolCallItem.Object,
     output: String?,
     status: OpenAIClientToolCallStatus,
     threadId: String,
-    kind: OpenAIClientToolCallItemKind
+    kind: OpenAIClientToolCallItem.Kind
   ) {
     self.arguments = arguments
     self.callId = callId
@@ -57,5 +57,13 @@ public struct OpenAIClientToolCallItem: Codable, Sendable {
     case status
     case threadId = "thread_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case chatkitClientToolCall = "chatkit.client_tool_call"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case chatkitThreadItem = "chatkit.thread_item"
   }
 }

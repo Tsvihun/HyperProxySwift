@@ -16,7 +16,7 @@ public struct MistralCustomTaskTimedOutResponse: Codable, Sendable {
   public var continuedRunId: String?
   public var eventId: String
   public var eventTimestamp: Int
-  public var eventType: MistralCUSTOMTASKTIMEDOUTEventType
+  public var eventType: MistralCustomTaskTimedOutResponse.EventType
   public var firstExecutionRunId: String?
   public var parentWorkflowExecId: String?
   public var rootWorkflowExecId: String
@@ -34,7 +34,7 @@ public struct MistralCustomTaskTimedOutResponse: Codable, Sendable {
     workflowExecId: String,
     workflowName: String,
     workflowRunId: String,
-    eventType: MistralCUSTOMTASKTIMEDOUTEventType = .cUSTOMTASKTIMEDOUT,
+    eventType: MistralCustomTaskTimedOutResponse.EventType = .customTaskTimedOut,
     chainRunId: String? = nil,
     continuedRunId: String? = nil,
     firstExecutionRunId: String? = nil,
@@ -69,5 +69,9 @@ public struct MistralCustomTaskTimedOutResponse: Codable, Sendable {
     case workflowExecId = "workflow_exec_id"
     case workflowName = "workflow_name"
     case workflowRunId = "workflow_run_id"
+  }
+
+  public enum EventType: String, Codable, Hashable, Sendable {
+    case customTaskTimedOut = "CUSTOM_TASK_TIMED_OUT"
   }
 }

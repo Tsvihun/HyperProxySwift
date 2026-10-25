@@ -38,6 +38,148 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
     return try await prepared.decoded(OpenAIAgentResource.self)
   }
 
+  public func listAgentAutomations(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIListAgentAutomationsResponse {
+    let call = self.call(.listAgentAutomations)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIListAgentAutomationsResponse.self)
+  }
+
+  public func createAgentAutomation(
+    _ body: OpenAICreateAutomationParams,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIAutomationResource {
+    let call = self.call(.createAgentAutomation)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenAIAutomationResource.self)
+  }
+
+  public func getAgentAutomation(
+    automationId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIAutomationResource {
+    let call = self.call(.getAgentAutomation)
+      .path("automation_id", automationId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIAutomationResource.self)
+  }
+
+  public func updateAgentAutomation(
+    _ body: OpenAIUpdateAutomationParams,
+    automationId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIAutomationResource {
+    let call = self.call(.updateAgentAutomation)
+      .path("automation_id", automationId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenAIAutomationResource.self)
+  }
+
+  public func deleteAgentAutomation(
+    automationId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIDeletedAutomationResource {
+    let call = self.call(.deleteAgentAutomation)
+      .path("automation_id", automationId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIDeletedAutomationResource.self)
+  }
+
+  public func listAgentAutomationInvocations(
+    automationId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIListAgentAutomationInvocationsResponse {
+    let call = self.call(.listAgentAutomationInvocations)
+      .path("automation_id", automationId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIListAgentAutomationInvocationsResponse.self)
+  }
+
+  public func createAgentAutomationInvocation(
+    automationId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIAutomationInvocationResource {
+    let call = self.call(.createAgentAutomationInvocation)
+      .path("automation_id", automationId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIAutomationInvocationResource.self)
+  }
+
+  public func getAgentAutomationInvocation(
+    automationId: String,
+    invocationId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIAutomationInvocationResource {
+    let call = self.call(.getAgentAutomationInvocation)
+      .path("automation_id", automationId)
+      .path("invocation_id", invocationId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIAutomationInvocationResource.self)
+  }
+
+  public func pauseAgentAutomation(
+    automationId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIAutomationResource {
+    let call = self.call(.pauseAgentAutomation)
+      .path("automation_id", automationId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIAutomationResource.self)
+  }
+
+  public func resumeAgentAutomation(
+    automationId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIAutomationResource {
+    let call = self.call(.resumeAgentAutomation)
+      .path("automation_id", automationId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIAutomationResource.self)
+  }
+
   public func listAgentEnvironments(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -736,6 +878,20 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
       .timeout(timeout)
     let prepared = try call.json(body)
     return try await prepared.decoded(OpenAIVoiceResource.self)
+  }
+
+  public func deleteVoice(
+    voiceId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIVoiceDeletedResource {
+    let call = self.call(.deleteVoice)
+      .path("voice_id", voiceId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIVoiceDeletedResource.self)
   }
 
   public func batchesList(
@@ -1462,6 +1618,60 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
     return try await call.decoded(OpenAIEvalRunOutputItem.self)
   }
 
+  public func filesList(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIListFilesResponse {
+    let call = self.call(.filesList)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIListFilesResponse.self)
+  }
+
+  public func filesRetrieve(
+    fileId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIFile {
+    let call = self.call(.filesRetrieve)
+      .path("file_id", fileId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIFile.self)
+  }
+
+  public func filesDelete(
+    fileId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIDeleteFileResponse {
+    let call = self.call(.filesDelete)
+      .path("file_id", fileId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIDeleteFileResponse.self)
+  }
+
+  public func filesContent(
+    fileId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.filesContent)
+      .path("file_id", fileId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try call.bytes()
+  }
+
   public func runGrader(
     _ body: OpenAIRunGraderRequest,
     query: [URLQueryItem] = [],
@@ -1562,28 +1772,28 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
     return try await prepared.decoded(OpenAIFineTuningJob.self)
   }
 
-  public func retrieveFineTuningJob(
-    fineTuningJobId: String,
+  public func fineTuningJobsRetrieve(
+    jobId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> OpenAIFineTuningJob {
-    let call = self.call(.retrieveFineTuningJob)
-      .path("fine_tuning_job_id", fineTuningJobId)
+    let call = self.call(.fineTuningJobsRetrieve)
+      .path("job_id", jobId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(OpenAIFineTuningJob.self)
   }
 
-  public func cancelFineTuningJob(
-    fineTuningJobId: String,
+  public func fineTuningJobsCancel(
+    jobId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> OpenAIFineTuningJob {
-    let call = self.call(.cancelFineTuningJob)
-      .path("fine_tuning_job_id", fineTuningJobId)
+    let call = self.call(.fineTuningJobsCancel)
+      .path("job_id", jobId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
@@ -1618,28 +1828,28 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
     return try await call.decoded(OpenAIListFineTuningJobEventsResponse.self)
   }
 
-  public func pauseFineTuningJob(
-    fineTuningJobId: String,
+  public func fineTuningJobsPause(
+    jobId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> OpenAIFineTuningJob {
-    let call = self.call(.pauseFineTuningJob)
-      .path("fine_tuning_job_id", fineTuningJobId)
+    let call = self.call(.fineTuningJobsPause)
+      .path("job_id", jobId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(OpenAIFineTuningJob.self)
   }
 
-  public func resumeFineTuningJob(
-    fineTuningJobId: String,
+  public func fineTuningJobsResume(
+    jobId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> OpenAIFineTuningJob {
-    let call = self.call(.resumeFineTuningJob)
-      .path("fine_tuning_job_id", fineTuningJobId)
+    let call = self.call(.fineTuningJobsResume)
+      .path("job_id", jobId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
@@ -1774,14 +1984,14 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
     return try await call.decoded(OpenAIListModelsResponse.self)
   }
 
-  public func retrieveModel(
-    model: String,
+  public func modelsRetrieve(
+    modelId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> OpenAIModel {
-    let call = self.call(.retrieveModel)
-      .path("model", model)
+    let call = self.call(.modelsRetrieve)
+      .path("model_id", modelId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
@@ -2128,26 +2338,6 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
     return try prepared.events(decoding: OpenAIResponseStreamEvent.self)
   }
 
-  @available(*, deprecated, renamed: "responsesCreate")
-  public func createResponse(
-    _ body: OpenAICreateResponse,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> OpenAIResponse {
-    try await self.responsesCreate(body, query: query, headers: headers, timeout: timeout)
-  }
-
-  @available(*, deprecated, renamed: "responsesCreateStream")
-  public func createResponseStream(
-    _ body: OpenAICreateResponse,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) throws -> AsyncThrowingStream<OpenAIResponseStreamEvent, Error> {
-    try self.responsesCreateStream(body, query: query, headers: headers, timeout: timeout)
-  }
-
   public func responsesCompact(
     _ body: OpenAICompactResponseMethodPublicBody,
     query: [URLQueryItem] = [],
@@ -2162,16 +2352,6 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
     return try await prepared.decoded(OpenAICompactResource.self)
   }
 
-  @available(*, deprecated, renamed: "responsesCompact")
-  public func compactconversation(
-    _ body: OpenAICompactResponseMethodPublicBody,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> OpenAICompactResource {
-    try await self.responsesCompact(body, query: query, headers: headers, timeout: timeout)
-  }
-
   public func responsesCountInputTokens(
     _ body: OpenAITokenCountsBody,
     query: [URLQueryItem] = [],
@@ -2184,16 +2364,6 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
       .timeout(timeout)
     let prepared = try call.json(body)
     return try await prepared.decoded(OpenAITokenCountsResource.self)
-  }
-
-  @available(*, deprecated, renamed: "responsesCountInputTokens")
-  public func getinputtokencounts(
-    _ body: OpenAITokenCountsBody,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> OpenAITokenCountsResource {
-    try await self.responsesCountInputTokens(body, query: query, headers: headers, timeout: timeout)
   }
 
   public func responsesRetrieve(
@@ -2224,28 +2394,6 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
     return try call.events(decoding: OpenAIResponseStreamEvent.self)
   }
 
-  @available(*, deprecated, renamed: "responsesRetrieve")
-  public func getResponse(
-    responseId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> OpenAIResponse {
-    try await self.responsesRetrieve(
-      responseId: responseId, query: query, headers: headers, timeout: timeout)
-  }
-
-  @available(*, deprecated, renamed: "responsesRetrieveStream")
-  public func getResponseStream(
-    responseId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) throws -> AsyncThrowingStream<OpenAIResponseStreamEvent, Error> {
-    try self.responsesRetrieveStream(
-      responseId: responseId, query: query, headers: headers, timeout: timeout)
-  }
-
   public func responsesDelete(
     responseId: String,
     query: [URLQueryItem] = [],
@@ -2258,17 +2406,6 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(OpenAIDeleteResponseResponse.self)
-  }
-
-  @available(*, deprecated, renamed: "responsesDelete")
-  public func deleteResponse(
-    responseId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> OpenAIDeleteResponseResponse {
-    try await self.responsesDelete(
-      responseId: responseId, query: query, headers: headers, timeout: timeout)
   }
 
   public func responsesCancel(
@@ -2285,17 +2422,6 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
     return try await call.decoded(OpenAIResponse.self)
   }
 
-  @available(*, deprecated, renamed: "responsesCancel")
-  public func cancelResponse(
-    responseId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> OpenAIResponse {
-    try await self.responsesCancel(
-      responseId: responseId, query: query, headers: headers, timeout: timeout)
-  }
-
   public func responsesInputItems(
     responseId: String,
     query: [URLQueryItem] = [],
@@ -2308,17 +2434,6 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(OpenAIResponseItemList.self)
-  }
-
-  @available(*, deprecated, renamed: "responsesInputItems")
-  public func listInputItems(
-    responseId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> OpenAIResponseItemList {
-    try await self.responsesInputItems(
-      responseId: responseId, query: query, headers: headers, timeout: timeout)
   }
 
   public func getprojectsafetyalert(
@@ -3059,6 +3174,18 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(OpenAIDeletedVaultCredentialResource.self)
+  }
+
+  public func vectorStoresList(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIListVectorStoresResponse {
+    let call = self.call(.vectorStoresList)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIListVectorStoresResponse.self)
   }
 
   public func vectorStoresCreate(

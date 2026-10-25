@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct OpenAIInputTextContentParam: Codable, Sendable {
   public var promptCacheBreakpoint: OpenAIPromptCacheBreakpointParam?
   public var text: String
-  public var kind: OpenAIInputTextContentParamKind
+  public var kind: OpenAIInputTextContentParam.Kind
 
   public init(
     text: String,
-    kind: OpenAIInputTextContentParamKind,
+    kind: OpenAIInputTextContentParam.Kind,
     promptCacheBreakpoint: OpenAIPromptCacheBreakpointParam? = nil
   ) {
     self.promptCacheBreakpoint = promptCacheBreakpoint
@@ -29,5 +29,9 @@ public struct OpenAIInputTextContentParam: Codable, Sendable {
     case promptCacheBreakpoint = "prompt_cache_breakpoint"
     case text
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case inputText = "input_text"
   }
 }

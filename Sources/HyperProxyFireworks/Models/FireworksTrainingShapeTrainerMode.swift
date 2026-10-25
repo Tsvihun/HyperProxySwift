@@ -11,8 +11,8 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksTrainingShapeTrainerMode: String, Codable, Hashable, Sendable {
-  case tRAINERMODEUNSPECIFIED = "TRAINER_MODE_UNSPECIFIED"
-  case pOLICYTRAINER = "POLICY_TRAINER"
-  case fORWARDONLY = "FORWARD_ONLY"
-  case lORATRAINER = "LORA_TRAINER"
+  case trainerModeUnspecified = "TRAINER_MODE_UNSPECIFIED"
+  case policyTrainer = "POLICY_TRAINER"
+  case forwardOnly = "FORWARD_ONLY"
+  case loraTrainer = "LORA_TRAINER"
 }

@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct ElevenLabsUUITransferConfig: Codable, Sendable {
   public var data: String
   public var protocolDiscriminator: String?
-  public var protocolDiscriminatorMode: ElevenLabsUUITransferConfigProtocolDiscriminatorMode?
+  public var protocolDiscriminatorMode: ElevenLabsUUITransferConfig.ProtocolDiscriminatorMode?
 
   public init(
     data: String,
     protocolDiscriminator: String? = nil,
-    protocolDiscriminatorMode: ElevenLabsUUITransferConfigProtocolDiscriminatorMode? = nil
+    protocolDiscriminatorMode: ElevenLabsUUITransferConfig.ProtocolDiscriminatorMode? = nil
   ) {
     self.data = data
     self.protocolDiscriminator = protocolDiscriminator
@@ -29,5 +29,12 @@ public struct ElevenLabsUUITransferConfig: Codable, Sendable {
     case data
     case protocolDiscriminator = "protocol_discriminator"
     case protocolDiscriminatorMode = "protocol_discriminator_mode"
+  }
+
+  public enum ProtocolDiscriminatorMode: String, Codable, Hashable,
+    Sendable
+  {
+    case prefixValue = "prefix"
+    case pdParameter = "pd_parameter"
   }
 }

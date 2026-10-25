@@ -13,13 +13,13 @@ import HyperProxyCore
 public struct ElevenLabsUserVoiceCollectionResponseModel: Codable, Sendable {
   public var collectionId: String
   public var icon: String
-  public var permissionOnResource: ElevenLabsUserVoiceCollectionResponseModelPermissionOnResource
+  public var permissionOnResource: ElevenLabsUserVoiceCollectionResponseModel.PermissionOnResource
   public var title: String
 
   public init(
     collectionId: String,
     icon: String,
-    permissionOnResource: ElevenLabsUserVoiceCollectionResponseModelPermissionOnResource,
+    permissionOnResource: ElevenLabsUserVoiceCollectionResponseModel.PermissionOnResource,
     title: String
   ) {
     self.collectionId = collectionId
@@ -33,5 +33,14 @@ public struct ElevenLabsUserVoiceCollectionResponseModel: Codable, Sendable {
     case icon
     case permissionOnResource = "permission_on_resource"
     case title
+  }
+
+  public enum PermissionOnResource: String, Codable,
+    Hashable, Sendable
+  {
+    case admin = "admin"
+    case editor = "editor"
+    case commenter = "commenter"
+    case viewer = "viewer"
   }
 }

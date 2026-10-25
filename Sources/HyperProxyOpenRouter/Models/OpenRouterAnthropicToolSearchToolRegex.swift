@@ -14,13 +14,13 @@ public struct OpenRouterAnthropicToolSearchToolRegex: Codable, Sendable {
   public var allowedCallers: OpenRouterAnthropicAllowedCallers?
   public var cacheControl: OpenRouterAnthropicCacheControlDirective?
   public var deferLoading: Bool?
-  public var name: OpenRouterAnthropicToolSearchToolRegexName
+  public var name: OpenRouterAnthropicToolSearchToolRegex.Name
   public var strict: Bool?
-  public var kind: OpenRouterAnthropicToolSearchToolRegexKind
+  public var kind: OpenRouterAnthropicToolSearchToolRegex.Kind
 
   public init(
-    name: OpenRouterAnthropicToolSearchToolRegexName,
-    kind: OpenRouterAnthropicToolSearchToolRegexKind,
+    name: OpenRouterAnthropicToolSearchToolRegex.Name,
+    kind: OpenRouterAnthropicToolSearchToolRegex.Kind,
     allowedCallers: OpenRouterAnthropicAllowedCallers? = nil,
     cacheControl: OpenRouterAnthropicCacheControlDirective? = nil,
     deferLoading: Bool? = nil,
@@ -41,5 +41,14 @@ public struct OpenRouterAnthropicToolSearchToolRegex: Codable, Sendable {
     case name
     case strict
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case toolSearchToolRegex20251119 = "tool_search_tool_regex_20251119"
+    case toolSearchToolRegex = "tool_search_tool_regex"
+  }
+
+  public enum Name: String, Codable, Hashable, Sendable {
+    case toolSearchToolRegex = "tool_search_tool_regex"
   }
 }

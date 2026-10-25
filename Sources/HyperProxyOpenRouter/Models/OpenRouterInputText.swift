@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct OpenRouterInputText: Codable, Sendable {
   public var promptCacheBreakpoint: OpenRouterPromptCacheBreakpoint?
   public var text: String
-  public var kind: OpenRouterInputTextKind
+  public var kind: OpenRouterInputText.Kind
 
   public init(
     text: String,
-    kind: OpenRouterInputTextKind,
+    kind: OpenRouterInputText.Kind,
     promptCacheBreakpoint: OpenRouterPromptCacheBreakpoint? = nil
   ) {
     self.promptCacheBreakpoint = promptCacheBreakpoint
@@ -29,5 +29,9 @@ public struct OpenRouterInputText: Codable, Sendable {
     case promptCacheBreakpoint = "prompt_cache_breakpoint"
     case text
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case inputText = "input_text"
   }
 }

@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct FalListAssetEntitiesParameters: Codable, Sendable {
   public var limit: Int?
   public var offset: Int?
-  public var types: [FalListAssetEntitiesParametersTypesItem]?
+  public var types: [FalListAssetEntitiesParameters.TypesElement]?
 
   public init(
     limit: Int? = nil,
     offset: Int? = nil,
-    types: [FalListAssetEntitiesParametersTypesItem]? = nil
+    types: [FalListAssetEntitiesParameters.TypesElement]? = nil
   ) {
     self.limit = limit
     self.offset = offset
@@ -29,5 +29,13 @@ public struct FalListAssetEntitiesParameters: Codable, Sendable {
     case limit
     case offset
     case types
+  }
+
+  public enum TypesElement: String, Codable, Hashable, Sendable {
+    case character = "character"
+    case prop = "prop"
+    case environment = "environment"
+    case style = "style"
+    case scene = "scene"
   }
 }

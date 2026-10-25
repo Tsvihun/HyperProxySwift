@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaCacheMissPreviousMessageNotFound: Codable, Sendable {
-  public var kind: AnthropicPreviousMessageNotFoundKind
+  public var kind: AnthropicBetaCacheMissPreviousMessageNotFound.Kind
 
   public init(
-    kind: AnthropicPreviousMessageNotFoundKind = .previousMessageNotFound
+    kind: AnthropicBetaCacheMissPreviousMessageNotFound.Kind = .previousMessageNotFound
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case previousMessageNotFound = "previous_message_not_found"
   }
 }

@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsBodyAddVoiceV1VoicesAddPost: Codable, Sendable {
   public var description: String?
   public var files: [String]
-  public var labels: ElevenLabsBodyAddVoiceV1VoicesAddPostLabels?
+  public var labels: ElevenLabsBodyAddVoiceV1VoicesAddPost.Labels?
   public var name: String
   public var removeBackgroundNoise: Bool?
 
@@ -21,7 +21,7 @@ public struct ElevenLabsBodyAddVoiceV1VoicesAddPost: Codable, Sendable {
     files: [String],
     name: String,
     description: String? = nil,
-    labels: ElevenLabsBodyAddVoiceV1VoicesAddPostLabels? = nil,
+    labels: ElevenLabsBodyAddVoiceV1VoicesAddPost.Labels? = nil,
     removeBackgroundNoise: Bool? = nil
   ) {
     self.description = description
@@ -37,5 +37,35 @@ public struct ElevenLabsBodyAddVoiceV1VoicesAddPost: Codable, Sendable {
     case labels
     case name
     case removeBackgroundNoise = "remove_background_noise"
+  }
+
+  public enum Labels: Codable, Sendable {
+    case string(String)
+    case stringDictionary([String: String])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .stringDictionary(try container.decode([String: String].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .stringDictionary(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension ElevenLabsBodyAddVoiceV1VoicesAddPost.Labels: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

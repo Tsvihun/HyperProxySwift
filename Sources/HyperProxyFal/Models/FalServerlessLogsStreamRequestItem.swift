@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct FalServerlessLogsStreamRequestItem: Codable, Sendable {
-  public var conditionType: FalServerlessLogsStreamRequestItemConditionType?
+  public var conditionType: FalServerlessLogsStreamRequestItem.ConditionType?
   public var key: String
-  public var value: FalServerlessLogsStreamRequestItemValue
+  public var value: FalServerlessLogsStreamRequestItem.Value
 
   public init(
     key: String,
-    value: FalServerlessLogsStreamRequestItemValue,
-    conditionType: FalServerlessLogsStreamRequestItemConditionType? = nil
+    value: FalServerlessLogsStreamRequestItem.Value,
+    conditionType: FalServerlessLogsStreamRequestItem.ConditionType? = nil
   ) {
     self.conditionType = conditionType
     self.key = key
@@ -29,5 +29,48 @@ public struct FalServerlessLogsStreamRequestItem: Codable, Sendable {
     case conditionType = "condition_type"
     case key
     case value
+  }
+
+  public enum ConditionType: String, Codable, Hashable, Sendable {
+    case equals = "equals"
+    case inValue = "in"
+    case notEquals = "not_equals"
+    case notIn = "not_in"
+  }
+
+  public enum Value: Codable, Sendable {
+    case string(String)
+    case stringArray([String])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .stringArray(try container.decode([String].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .stringArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension FalServerlessLogsStreamRequestItem.Value: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension FalServerlessLogsStreamRequestItem.Value: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: String...) {
+    self = .stringArray(elements)
   }
 }

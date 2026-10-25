@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct StabilityImageJSONResponse: Codable, Sendable {
-  public var finishReason: StabilityImageJSONResponseFinishReason
+  public var finishReason: StabilityImageJSONResponse.FinishReason
   public var image: String
   public var seed: Double?
 
   public init(
-    finishReason: StabilityImageJSONResponseFinishReason,
+    finishReason: StabilityImageJSONResponse.FinishReason,
     image: String,
     seed: Double? = nil
   ) {
@@ -29,5 +29,10 @@ public struct StabilityImageJSONResponse: Codable, Sendable {
     case finishReason = "finish_reason"
     case image
     case seed
+  }
+
+  public enum FinishReason: String, Codable, Hashable, Sendable {
+    case success = "SUCCESS"
+    case contentFiltered = "CONTENT_FILTERED"
   }
 }

@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct MistralConnectorDeactivateForConsumerV1Parameters: Codable, Sendable {
   public var connectorId: String
-  public var consumerScope: MistralConnectorDeactivateForConsumerV1ParametersConsumerScope
+  public var consumerScope: MistralConnectorDeactivateForConsumerV1Parameters.ConsumerScope
 
   public init(
     connectorId: String,
-    consumerScope: MistralConnectorDeactivateForConsumerV1ParametersConsumerScope
+    consumerScope: MistralConnectorDeactivateForConsumerV1Parameters.ConsumerScope
   ) {
     self.connectorId = connectorId
     self.consumerScope = consumerScope
@@ -25,5 +25,13 @@ public struct MistralConnectorDeactivateForConsumerV1Parameters: Codable, Sendab
   enum CodingKeys: String, CodingKey {
     case connectorId = "connector_id"
     case consumerScope = "consumer_scope"
+  }
+
+  public enum ConsumerScope: String, Codable,
+    Hashable, Sendable
+  {
+    case user = "user"
+    case workspace = "workspace"
+    case organization = "organization"
   }
 }

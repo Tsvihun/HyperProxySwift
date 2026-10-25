@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct OpenRouterAlignmentAllowedCallRecord: Codable, Sendable {
   public var call: Int
-  public var outcome: OpenRouterAlignmentAllowedCallRecordOutcome
+  public var outcome: OpenRouterAlignmentAllowedCallRecord.Outcome
   public var rules: [OpenRouterAlignmentRuleRecord]
 
   public init(
     call: Int,
-    outcome: OpenRouterAlignmentAllowedCallRecordOutcome,
+    outcome: OpenRouterAlignmentAllowedCallRecord.Outcome,
     rules: [OpenRouterAlignmentRuleRecord]
   ) {
     self.call = call
@@ -29,5 +29,9 @@ public struct OpenRouterAlignmentAllowedCallRecord: Codable, Sendable {
     case call
     case outcome
     case rules
+  }
+
+  public enum Outcome: String, Codable, Hashable, Sendable {
+    case allowed = "allowed"
   }
 }

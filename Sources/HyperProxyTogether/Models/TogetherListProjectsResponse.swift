@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct TogetherListProjectsResponse: Codable, Sendable {
   public var data: [TogetherProject]
   public var nextCursor: String
-  public var object: TogetherListObject7074d0bb
+  public var object: TogetherListObject
 
   public init(
     data: [TogetherProject],
     nextCursor: String,
-    object: TogetherListObject7074d0bb = .list
+    object: TogetherListObject = .list
   ) {
     self.data = data
     self.nextCursor = nextCursor

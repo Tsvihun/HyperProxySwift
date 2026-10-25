@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIComputerUseApprovalResponseParamBrowserAuthenticationCancelParam: Codable,
   Sendable
 {
-  public var action: OpenAIComputerUseApprovalResponseParamBrowserAuthenticationCancelParamAction
-  public var kind: OpenAIComputerUseApprovalResponseParamBrowserAuthenticationCancelParamKind
+  public var action: OpenAIComputerUseApprovalResponseParamBrowserAuthenticationCancelParam.Action
+  public var kind: OpenAIComputerUseApprovalResponseParamBrowserAuthenticationCancelParam.Kind
 
   public init(
-    action: OpenAIComputerUseApprovalResponseParamBrowserAuthenticationCancelParamAction,
-    kind: OpenAIComputerUseApprovalResponseParamBrowserAuthenticationCancelParamKind
+    action: OpenAIComputerUseApprovalResponseParamBrowserAuthenticationCancelParam.Action,
+    kind: OpenAIComputerUseApprovalResponseParamBrowserAuthenticationCancelParam.Kind
   ) {
     self.action = action
     self.kind = kind
@@ -27,5 +27,17 @@ public struct OpenAIComputerUseApprovalResponseParamBrowserAuthenticationCancelP
   enum CodingKeys: String, CodingKey {
     case action
     case kind = "type"
+  }
+
+  public enum Action: String,
+    Codable, Hashable, Sendable
+  {
+    case cancel = "cancel"
+  }
+
+  public enum Kind: String,
+    Codable, Hashable, Sendable
+  {
+    case browserAuthentication = "browser_authentication"
   }
 }

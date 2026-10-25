@@ -13,17 +13,17 @@ import HyperProxyCore
 public struct OpenAIWidgetMessageItem: Codable, Sendable {
   public var createdAt: Int
   public var id: String
-  public var object: OpenAIWidgetMessageItemObject
+  public var object: OpenAIWidgetMessageItem.Object
   public var threadId: String
-  public var kind: OpenAIWidgetMessageItemKind
+  public var kind: OpenAIWidgetMessageItem.Kind
   public var widget: String
 
   public init(
     createdAt: Int,
     id: String,
-    object: OpenAIWidgetMessageItemObject,
+    object: OpenAIWidgetMessageItem.Object,
     threadId: String,
-    kind: OpenAIWidgetMessageItemKind,
+    kind: OpenAIWidgetMessageItem.Kind,
     widget: String
   ) {
     self.createdAt = createdAt
@@ -41,5 +41,13 @@ public struct OpenAIWidgetMessageItem: Codable, Sendable {
     case threadId = "thread_id"
     case kind = "type"
     case widget
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case chatkitWidget = "chatkit.widget"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case chatkitThreadItem = "chatkit.thread_item"
   }
 }

@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public enum OpenAIVoiceIdsOrCustomVoice: Codable, Sendable {
   case voiceIdsShared(OpenAIVoiceIdsShared)
-  case voiceIdsOrCustomVoiceAnyOf2(OpenAIVoiceIdsOrCustomVoiceAnyOf2)
+  case withId(OpenAIVoiceIdsOrCustomVoice.WithId)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -20,8 +20,8 @@ public enum OpenAIVoiceIdsOrCustomVoice: Codable, Sendable {
       self = .voiceIdsShared(value)
       return
     }
-    self = .voiceIdsOrCustomVoiceAnyOf2(
-      try container.decode(OpenAIVoiceIdsOrCustomVoiceAnyOf2.self))
+    self = .withId(
+      try container.decode(OpenAIVoiceIdsOrCustomVoice.WithId.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -29,7 +29,7 @@ public enum OpenAIVoiceIdsOrCustomVoice: Codable, Sendable {
     switch self {
     case .voiceIdsShared(let value):
       try container.encode(value)
-    case .voiceIdsOrCustomVoiceAnyOf2(let value):
+    case .withId(let value):
       try container.encode(value)
     }
   }
@@ -63,4 +63,18 @@ public enum OpenAIVoiceIdsOrCustomVoice: Codable, Sendable {
 
   /// Provider-native value without the schema union wrapper.
   public static var cedar: Self { .voiceIdsShared(.cedar) }
+
+  public struct WithId: Codable, Sendable {
+    public var id: String
+
+    public init(
+      id: String
+    ) {
+      self.id = id
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case id
+    }
+  }
 }

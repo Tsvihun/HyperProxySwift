@@ -17,11 +17,11 @@ public struct AnthropicBetaManagedAgentsMemoryStoreResource: Codable, Sendable {
   public var memoryStoreId: String
   public var mountPath: String?
   public var name: String?
-  public var kind: AnthropicBetaManagedAgentsMemoryStoreResourceKind
+  public var kind: AnthropicBetaManagedAgentsMemoryStoreResource.Kind
 
   public init(
     memoryStoreId: String,
-    kind: AnthropicBetaManagedAgentsMemoryStoreResourceKind,
+    kind: AnthropicBetaManagedAgentsMemoryStoreResource.Kind,
     access: AnthropicBetaManagedAgentsMountMode? = nil,
     description: String? = nil,
     instructions: String? = nil,
@@ -45,5 +45,9 @@ public struct AnthropicBetaManagedAgentsMemoryStoreResource: Codable, Sendable {
     case mountPath = "mount_path"
     case name
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case memoryStore = "memory_store"
   }
 }

@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct AnthropicBetaManagedAgentsSpanModelRequestStartEvent: Codable, Sendable {
   public var id: String
   public var processedAt: AnthropicBetaTimestamp
-  public var kind: AnthropicBetaManagedAgentsSpanModelRequestStartEventKind
+  public var kind: AnthropicBetaManagedAgentsSpanModelRequestStartEvent.Kind
 
   public init(
     id: String,
     processedAt: AnthropicBetaTimestamp,
-    kind: AnthropicBetaManagedAgentsSpanModelRequestStartEventKind
+    kind: AnthropicBetaManagedAgentsSpanModelRequestStartEvent.Kind
   ) {
     self.id = id
     self.processedAt = processedAt
@@ -29,5 +29,11 @@ public struct AnthropicBetaManagedAgentsSpanModelRequestStartEvent: Codable, Sen
     case id
     case processedAt = "processed_at"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case spanModelRequestStart = "span.model_request_start"
   }
 }

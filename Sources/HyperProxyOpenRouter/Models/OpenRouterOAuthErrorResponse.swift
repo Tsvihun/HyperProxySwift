@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterOAuthErrorResponse: Codable, Sendable {
-  public var error: OpenRouterOAuthErrorResponseError
+  public var error: OpenRouterOAuthErrorResponse.ErrorValue
   public var errorDescription: String
 
   public init(
-    error: OpenRouterOAuthErrorResponseError,
+    error: OpenRouterOAuthErrorResponse.ErrorValue,
     errorDescription: String
   ) {
     self.error = error
@@ -25,5 +25,14 @@ public struct OpenRouterOAuthErrorResponse: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case error
     case errorDescription = "error_description"
+  }
+
+  public enum ErrorValue: String, Codable, Hashable, Sendable {
+    case invalidRequest = "invalid_request"
+    case invalidGrant = "invalid_grant"
+    case unsupportedGrantType = "unsupported_grant_type"
+    case invalidScope = "invalid_scope"
+    case serverError = "server_error"
+    case temporarilyUnavailable = "temporarily_unavailable"
   }
 }

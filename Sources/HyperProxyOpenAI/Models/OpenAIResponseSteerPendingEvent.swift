@@ -14,16 +14,16 @@ public struct OpenAIResponseSteerPendingEvent: Codable, Sendable {
   public var reason: OpenAIResponseSteerPendingReason
   public var requiredInput: [OpenAIResponseSteerRequiredInput]
   public var sequenceNumber: Int
-  public var steer: OpenAIResponseSteerPendingEventSteer
+  public var steer: OpenAIResponseSteerPendingEvent.Steer
   public var streamId: String?
-  public var kind: OpenAIResponseSteerPendingEventKind
+  public var kind: OpenAIResponseSteerPendingEvent.Kind
 
   public init(
     reason: OpenAIResponseSteerPendingReason,
     requiredInput: [OpenAIResponseSteerRequiredInput],
     sequenceNumber: Int,
-    steer: OpenAIResponseSteerPendingEventSteer,
-    kind: OpenAIResponseSteerPendingEventKind,
+    steer: OpenAIResponseSteerPendingEvent.Steer,
+    kind: OpenAIResponseSteerPendingEvent.Kind,
     streamId: String? = nil
   ) {
     self.reason = reason
@@ -41,5 +41,27 @@ public struct OpenAIResponseSteerPendingEvent: Codable, Sendable {
     case steer
     case streamId = "stream_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case responseSteerPending = "response.steer.pending"
+  }
+
+  public struct Steer: Codable, Sendable {
+    public var id: String
+    public var previousResponseId: String
+
+    public init(
+      id: String,
+      previousResponseId: String
+    ) {
+      self.id = id
+      self.previousResponseId = previousResponseId
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case id
+      case previousResponseId = "previous_response_id"
+    }
   }
 }

@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct TogetherDEScalingPolicy: Codable, Sendable {
   public var periodSeconds: Int
-  public var kind: TogetherDEScalingPolicyKind
+  public var kind: TogetherDEScalingPolicy.Kind
   public var value: Int
 
   public init(
     periodSeconds: Int,
-    kind: TogetherDEScalingPolicyKind,
+    kind: TogetherDEScalingPolicy.Kind,
     value: Int
   ) {
     self.periodSeconds = periodSeconds
@@ -29,5 +29,10 @@ public struct TogetherDEScalingPolicy: Codable, Sendable {
     case periodSeconds
     case kind = "type"
     case value
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case scalingPolicyTypePods = "SCALING_POLICY_TYPE_PODS"
+    case scalingPolicyTypePercent = "SCALING_POLICY_TYPE_PERCENT"
   }
 }

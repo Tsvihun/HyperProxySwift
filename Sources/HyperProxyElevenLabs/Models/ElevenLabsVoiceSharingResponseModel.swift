@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct ElevenLabsVoiceSharingResponseModel: Codable, Sendable {
   public var banReason: String?
-  public var category: ElevenLabsVoiceSharingResponseModelCategory
+  public var category: ElevenLabsVoiceSharingResponseModel.Category
   public var clonedByCount: Int
   public var dateUnix: Int
   public var description: String?
@@ -37,8 +37,8 @@ public struct ElevenLabsVoiceSharingResponseModel: Codable, Sendable {
   public var readerAppEnabled: Bool?
   public var readerRestrictedOn: [ElevenLabsReaderResourceResponseModel]?
   public var reviewMessage: String?
-  public var reviewStatus: ElevenLabsVoiceSharingResponseModelReviewStatus
-  public var status: ElevenLabsVoiceSharingResponseModelStatus
+  public var reviewStatus: ElevenLabsVoiceSharingResponseModel.ReviewStatus
+  public var status: ElevenLabsVoiceSharingResponseModel.Status
   public var tiktokUsername: String?
   public var twitterUsername: String?
   public var voiceMixingAllowed: Bool
@@ -46,7 +46,7 @@ public struct ElevenLabsVoiceSharingResponseModel: Codable, Sendable {
   public var youtubeUsername: String?
 
   public init(
-    category: ElevenLabsVoiceSharingResponseModelCategory,
+    category: ElevenLabsVoiceSharingResponseModel.Category,
     clonedByCount: Int,
     dateUnix: Int,
     enabledInLibrary: Bool,
@@ -60,8 +60,8 @@ public struct ElevenLabsVoiceSharingResponseModel: Codable, Sendable {
     noticePeriod: Int,
     originalVoiceId: String,
     publicOwnerId: String,
-    reviewStatus: ElevenLabsVoiceSharingResponseModelReviewStatus,
-    status: ElevenLabsVoiceSharingResponseModelStatus,
+    reviewStatus: ElevenLabsVoiceSharingResponseModel.ReviewStatus,
+    status: ElevenLabsVoiceSharingResponseModel.Status,
     voiceMixingAllowed: Bool,
     whitelistedEmails: [String],
     banReason: String? = nil,
@@ -149,5 +149,30 @@ public struct ElevenLabsVoiceSharingResponseModel: Codable, Sendable {
     case voiceMixingAllowed = "voice_mixing_allowed"
     case whitelistedEmails = "whitelisted_emails"
     case youtubeUsername = "youtube_username"
+  }
+
+  public enum Category: String, Codable, Hashable, Sendable {
+    case generated = "generated"
+    case cloned = "cloned"
+    case premade = "premade"
+    case professional = "professional"
+    case famous = "famous"
+    case highQuality = "high_quality"
+  }
+
+  public enum ReviewStatus: String, Codable, Hashable, Sendable {
+    case notRequested = "not_requested"
+    case pending = "pending"
+    case declined = "declined"
+    case declinedResubmittable = "declined_resubmittable"
+    case allowed = "allowed"
+    case allowedWithChanges = "allowed_with_changes"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case enabled = "enabled"
+    case disabled = "disabled"
+    case copied = "copied"
+    case copiedDisabled = "copied_disabled"
   }
 }

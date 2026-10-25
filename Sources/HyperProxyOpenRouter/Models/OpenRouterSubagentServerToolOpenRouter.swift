@@ -12,10 +12,10 @@ import HyperProxyCore
 
 public struct OpenRouterSubagentServerToolOpenRouter: Codable, Sendable {
   public var parameters: OpenRouterSubagentServerToolConfig?
-  public var kind: OpenRouterSubagentServerToolOpenRouterKind
+  public var kind: OpenRouterSubagentServerToolOpenRouter.Kind
 
   public init(
-    kind: OpenRouterSubagentServerToolOpenRouterKind,
+    kind: OpenRouterSubagentServerToolOpenRouter.Kind,
     parameters: OpenRouterSubagentServerToolConfig? = nil
   ) {
     self.parameters = parameters
@@ -25,5 +25,9 @@ public struct OpenRouterSubagentServerToolOpenRouter: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case parameters
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case openrouterSubagent = "openrouter:subagent"
   }
 }

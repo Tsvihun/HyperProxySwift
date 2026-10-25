@@ -20,7 +20,7 @@ public struct ElevenLabsGetPronunciationDictionaryMetadataResponseModel: Codable
   public var latestVersionRulesNum: Int
   public var name: String
   public var permissionOnResource:
-    ElevenLabsGetPronunciationDictionaryMetadataResponseModelPermissionOnResource?
+    ElevenLabsGetPronunciationDictionaryMetadataResponseModel.PermissionOnResource?
 
   public init(
     createdBy: String,
@@ -30,7 +30,7 @@ public struct ElevenLabsGetPronunciationDictionaryMetadataResponseModel: Codable
     latestVersionRulesNum: Int,
     name: String,
     permissionOnResource:
-      ElevenLabsGetPronunciationDictionaryMetadataResponseModelPermissionOnResource?,
+      ElevenLabsGetPronunciationDictionaryMetadataResponseModel.PermissionOnResource?,
     archivedTimeUnix: Int? = nil,
     description: String? = nil
   ) {
@@ -55,5 +55,14 @@ public struct ElevenLabsGetPronunciationDictionaryMetadataResponseModel: Codable
     case latestVersionRulesNum = "latest_version_rules_num"
     case name
     case permissionOnResource = "permission_on_resource"
+  }
+
+  public enum PermissionOnResource: String,
+    Codable, Hashable, Sendable
+  {
+    case admin = "admin"
+    case editor = "editor"
+    case commenter = "commenter"
+    case viewer = "viewer"
   }
 }

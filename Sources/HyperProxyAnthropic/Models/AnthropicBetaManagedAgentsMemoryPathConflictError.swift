@@ -14,10 +14,10 @@ public struct AnthropicBetaManagedAgentsMemoryPathConflictError: Codable, Sendab
   public var conflictingMemoryId: String?
   public var conflictingPath: String?
   public var message: String?
-  public var kind: AnthropicBetaManagedAgentsMemoryPathConflictErrorKind
+  public var kind: AnthropicBetaManagedAgentsMemoryPathConflictError.Kind
 
   public init(
-    kind: AnthropicBetaManagedAgentsMemoryPathConflictErrorKind,
+    kind: AnthropicBetaManagedAgentsMemoryPathConflictError.Kind,
     conflictingMemoryId: String? = nil,
     conflictingPath: String? = nil,
     message: String? = nil
@@ -33,5 +33,11 @@ public struct AnthropicBetaManagedAgentsMemoryPathConflictError: Codable, Sendab
     case conflictingPath = "conflicting_path"
     case message
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case memoryPathConflictError = "memory_path_conflict_error"
   }
 }

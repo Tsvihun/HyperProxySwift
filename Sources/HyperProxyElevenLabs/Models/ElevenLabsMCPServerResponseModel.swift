@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsMCPServerResponseModel: Codable, Sendable {
   public var accessInfo: ElevenLabsResourceAccessInfo?
   public var config: ElevenLabsMCPServerConfigOutput
-  public var dependentAgents: [ElevenLabsMCPServerResponseModelDependentAgentsItem]?
+  public var dependentAgents: [ElevenLabsMCPServerResponseModel.DependentAgentsElement]?
   public var id: String
   public var metadata: ElevenLabsMCPServerMetadataResponseModel
 
@@ -22,7 +22,7 @@ public struct ElevenLabsMCPServerResponseModel: Codable, Sendable {
     id: String,
     metadata: ElevenLabsMCPServerMetadataResponseModel,
     accessInfo: ElevenLabsResourceAccessInfo? = nil,
-    dependentAgents: [ElevenLabsMCPServerResponseModelDependentAgentsItem]? = nil
+    dependentAgents: [ElevenLabsMCPServerResponseModel.DependentAgentsElement]? = nil
   ) {
     self.accessInfo = accessInfo
     self.config = config
@@ -37,5 +37,30 @@ public struct ElevenLabsMCPServerResponseModel: Codable, Sendable {
     case dependentAgents = "dependent_agents"
     case id
     case metadata
+  }
+
+  public enum DependentAgentsElement: Codable, Sendable {
+    case dependentAvailableAgentIdentifier(ElevenLabsDependentAvailableAgentIdentifier)
+    case dependentUnknownAgentIdentifier(ElevenLabsDependentUnknownAgentIdentifier)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsDependentAvailableAgentIdentifier.self) {
+        self = .dependentAvailableAgentIdentifier(value)
+        return
+      }
+      self = .dependentUnknownAgentIdentifier(
+        try container.decode(ElevenLabsDependentUnknownAgentIdentifier.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .dependentAvailableAgentIdentifier(let value):
+        try container.encode(value)
+      case .dependentUnknownAgentIdentifier(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

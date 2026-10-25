@@ -16,7 +16,7 @@ public struct OpenRouterObservabilityOpikDestination: Codable, Sendable {
   public var broadcastGenerationCostAllocation: Bool
   public var broadcastGenerationIdentity: Bool
   public var broadcastGenerationRequestContext: Bool
-  public var config: OpenRouterObservabilityOpikDestinationConfig
+  public var config: OpenRouterObservabilityOpikDestination.Config
   public var createdAt: String
   public var enabled: Bool
   public var filterRules: OpenRouterObservabilityFilterRulesConfig?
@@ -25,7 +25,7 @@ public struct OpenRouterObservabilityOpikDestination: Codable, Sendable {
   public var privacyMode: Bool
   public var regions: [OpenRouterObservabilityDataRegion]
   public var samplingRate: Double
-  public var kind: OpenRouterObservabilityOpikDestinationKind
+  public var kind: OpenRouterObservabilityOpikDestination.Kind
   public var updatedAt: String
   public var workspaceId: String
 
@@ -35,7 +35,7 @@ public struct OpenRouterObservabilityOpikDestination: Codable, Sendable {
     broadcastGenerationCostAllocation: Bool,
     broadcastGenerationIdentity: Bool,
     broadcastGenerationRequestContext: Bool,
-    config: OpenRouterObservabilityOpikDestinationConfig,
+    config: OpenRouterObservabilityOpikDestination.Config,
     createdAt: String,
     enabled: Bool,
     filterRules: OpenRouterObservabilityFilterRulesConfig?,
@@ -44,7 +44,7 @@ public struct OpenRouterObservabilityOpikDestination: Codable, Sendable {
     privacyMode: Bool,
     regions: [OpenRouterObservabilityDataRegion],
     samplingRate: Double,
-    kind: OpenRouterObservabilityOpikDestinationKind,
+    kind: OpenRouterObservabilityOpikDestination.Kind,
     updatedAt: String,
     workspaceId: String
   ) {
@@ -85,5 +85,35 @@ public struct OpenRouterObservabilityOpikDestination: Codable, Sendable {
     case kind = "type"
     case updatedAt = "updated_at"
     case workspaceId = "workspace_id"
+  }
+
+  public struct Config: Codable, Sendable {
+    public var apiKey: String
+    public var headers: [String: String]?
+    public var projectName: String
+    public var workspace: String
+
+    public init(
+      apiKey: String,
+      projectName: String,
+      workspace: String,
+      headers: [String: String]? = nil
+    ) {
+      self.apiKey = apiKey
+      self.headers = headers
+      self.projectName = projectName
+      self.workspace = workspace
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case apiKey
+      case headers
+      case projectName
+      case workspace
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case opik = "opik"
   }
 }

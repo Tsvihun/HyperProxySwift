@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct DeepLAdminUsageReportData: Codable, Sendable {
   public var endDate: String?
-  public var groupBy: DeepLAdminUsageReportDataGroupBy?
+  public var groupBy: DeepLAdminUsageReportData.GroupBy?
   public var keyAndDayUsages: [DeepLKeyAndDayUsageItem]?
   public var keyUsages: [DeepLKeyUsageItem]?
   public var startDate: String?
@@ -20,7 +20,7 @@ public struct DeepLAdminUsageReportData: Codable, Sendable {
 
   public init(
     endDate: String? = nil,
-    groupBy: DeepLAdminUsageReportDataGroupBy? = nil,
+    groupBy: DeepLAdminUsageReportData.GroupBy? = nil,
     keyAndDayUsages: [DeepLKeyAndDayUsageItem]? = nil,
     keyUsages: [DeepLKeyUsageItem]? = nil,
     startDate: String? = nil,
@@ -41,5 +41,10 @@ public struct DeepLAdminUsageReportData: Codable, Sendable {
     case keyUsages = "key_usages"
     case startDate = "start_date"
     case totalUsage = "total_usage"
+  }
+
+  public enum GroupBy: String, Codable, Hashable, Sendable {
+    case key = "key"
+    case keyAndDay = "key_and_day"
   }
 }

@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsErrorDeploymentPausedReason: Codable, Sendable {
   public var error: AnthropicBetaManagedAgentsDeploymentPausedReasonError
-  public var kind: AnthropicBetaManagedAgentsErrorDeploymentPausedReasonKind
+  public var kind: AnthropicBetaManagedAgentsErrorDeploymentPausedReason.Kind
 
   public init(
     error: AnthropicBetaManagedAgentsDeploymentPausedReasonError,
-    kind: AnthropicBetaManagedAgentsErrorDeploymentPausedReasonKind
+    kind: AnthropicBetaManagedAgentsErrorDeploymentPausedReason.Kind
   ) {
     self.error = error
     self.kind = kind
@@ -25,5 +25,11 @@ public struct AnthropicBetaManagedAgentsErrorDeploymentPausedReason: Codable, Se
   enum CodingKeys: String, CodingKey {
     case error
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case error = "error"
   }
 }

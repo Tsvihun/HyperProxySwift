@@ -15,14 +15,14 @@ public struct MistralTimestampFieldDefinition: Codable, Sendable {
   public var indexed: Bool?
   public var requiredValue: Bool?
   public var system: Bool?
-  public var kind: MistralTimestampKind19f6e310?
+  public var kind: MistralTimestampFieldDefinition.Kind?
 
   public init(
     defaultValue: HyperProxyJSONValue? = nil,
     indexed: Bool? = nil,
     requiredValue: Bool? = nil,
     system: Bool? = nil,
-    kind: MistralTimestampKind19f6e310? = nil
+    kind: MistralTimestampFieldDefinition.Kind? = nil
   ) {
     self.defaultValue = defaultValue
     self.indexed = indexed
@@ -37,5 +37,9 @@ public struct MistralTimestampFieldDefinition: Codable, Sendable {
     case requiredValue = "required"
     case system
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case timestamp = "timestamp"
   }
 }

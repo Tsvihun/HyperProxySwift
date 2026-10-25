@@ -14,26 +14,26 @@ public struct TogetherDEEndpoint: Codable, Sendable {
   public var activeRolloutId: String?
   public var createdAt: String
   public var deployments: [TogetherDEDeploymentSummary]
-  public var endpointType: TogetherDEEndpointEndpointType
+  public var endpointType: TogetherDEEndpoint.EndpointType
   public var etag: String
   public var id: String
   public var name: String
   public var projectId: String
   public var trafficSplit: [TogetherDETrafficSplitEntry]
   public var updatedAt: String
-  public var visibility: TogetherDEEndpointVisibility
+  public var visibility: TogetherDEEndpoint.Visibility
 
   public init(
     createdAt: String,
     deployments: [TogetherDEDeploymentSummary],
-    endpointType: TogetherDEEndpointEndpointType,
+    endpointType: TogetherDEEndpoint.EndpointType,
     etag: String,
     id: String,
     name: String,
     projectId: String,
     trafficSplit: [TogetherDETrafficSplitEntry],
     updatedAt: String,
-    visibility: TogetherDEEndpointVisibility,
+    visibility: TogetherDEEndpoint.Visibility,
     activeRolloutId: String? = nil
   ) {
     self.activeRolloutId = activeRolloutId
@@ -61,5 +61,16 @@ public struct TogetherDEEndpoint: Codable, Sendable {
     case trafficSplit
     case updatedAt
     case visibility
+  }
+
+  public enum EndpointType: String, Codable, Hashable, Sendable {
+    case endpointTypeDedicated = "ENDPOINT_TYPE_DEDICATED"
+    case endpointTypeServerless = "ENDPOINT_TYPE_SERVERLESS"
+    case endpointTypeReserved = "ENDPOINT_TYPE_RESERVED"
+  }
+
+  public enum Visibility: String, Codable, Hashable, Sendable {
+    case visibilityPrivate = "VISIBILITY_PRIVATE"
+    case visibilityInternal = "VISIBILITY_INTERNAL"
   }
 }

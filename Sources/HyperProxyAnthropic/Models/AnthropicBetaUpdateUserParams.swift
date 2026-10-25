@@ -11,15 +11,23 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaUpdateUserParams: Codable, Sendable {
-  public var role: AnthropicBetaUpdateUserParamsRole
+  public var role: AnthropicBetaUpdateUserParams.Role
 
   public init(
-    role: AnthropicBetaUpdateUserParamsRole
+    role: AnthropicBetaUpdateUserParams.Role
   ) {
     self.role = role
   }
 
   enum CodingKeys: String, CodingKey {
     case role
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case billing = "billing"
+    case claudeCodeUser = "claude_code_user"
+    case developer = "developer"
+    case managed = "managed"
+    case user = "user"
   }
 }

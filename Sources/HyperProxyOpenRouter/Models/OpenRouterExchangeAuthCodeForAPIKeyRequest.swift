@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct OpenRouterExchangeAuthCodeForAPIKeyRequest: Codable, Sendable {
   public var code: String
-  public var codeChallengeMethod: OpenRouterExchangeAuthCodeForAPIKeyRequestCodeChallengeMethod?
+  public var codeChallengeMethod: OpenRouterExchangeAuthCodeForAPIKeyRequest.CodeChallengeMethod?
   public var codeVerifier: String?
 
   public init(
     code: String,
-    codeChallengeMethod: OpenRouterExchangeAuthCodeForAPIKeyRequestCodeChallengeMethod? = nil,
+    codeChallengeMethod: OpenRouterExchangeAuthCodeForAPIKeyRequest.CodeChallengeMethod? = nil,
     codeVerifier: String? = nil
   ) {
     self.code = code
@@ -29,5 +29,12 @@ public struct OpenRouterExchangeAuthCodeForAPIKeyRequest: Codable, Sendable {
     case code
     case codeChallengeMethod = "code_challenge_method"
     case codeVerifier = "code_verifier"
+  }
+
+  public enum CodeChallengeMethod: String, Codable,
+    Hashable, Sendable
+  {
+    case s256 = "S256"
+    case plain = "plain"
   }
 }

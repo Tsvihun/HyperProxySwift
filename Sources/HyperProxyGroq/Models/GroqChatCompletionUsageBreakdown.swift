@@ -11,15 +11,33 @@ import Foundation
 import HyperProxyCore
 
 public struct GroqChatCompletionUsageBreakdown: Codable, Sendable {
-  public var models: [GroqChatCompletionUsageBreakdownModelsItem]
+  public var models: [GroqChatCompletionUsageBreakdown.ModelsElement]
 
   public init(
-    models: [GroqChatCompletionUsageBreakdownModelsItem]
+    models: [GroqChatCompletionUsageBreakdown.ModelsElement]
   ) {
     self.models = models
   }
 
   enum CodingKeys: String, CodingKey {
     case models
+  }
+
+  public struct ModelsElement: Codable, Sendable {
+    public var model: String
+    public var usage: GroqCompletionUsage
+
+    public init(
+      model: String,
+      usage: GroqCompletionUsage
+    ) {
+      self.model = model
+      self.usage = usage
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case model
+      case usage
+    }
   }
 }

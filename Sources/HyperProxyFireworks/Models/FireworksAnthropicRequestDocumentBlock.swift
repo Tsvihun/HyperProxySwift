@@ -14,13 +14,13 @@ public struct FireworksAnthropicRequestDocumentBlock: Codable, Sendable {
   public var cacheControl: FireworksAnthropicCacheControlEphemeral?
   public var citations: FireworksAnthropicRequestCitationsConfig?
   public var context: String?
-  public var source: FireworksAnthropicRequestDocumentBlockSource
+  public var source: FireworksAnthropicRequestDocumentBlock.Source
   public var title: String?
-  public var kind: FireworksDocumentKind
+  public var kind: FireworksAnthropicRequestDocumentBlock.Kind
 
   public init(
-    source: FireworksAnthropicRequestDocumentBlockSource,
-    kind: FireworksDocumentKind = .document,
+    source: FireworksAnthropicRequestDocumentBlock.Source,
+    kind: FireworksAnthropicRequestDocumentBlock.Kind = .document,
     cacheControl: FireworksAnthropicCacheControlEphemeral? = nil,
     citations: FireworksAnthropicRequestCitationsConfig? = nil,
     context: String? = nil,
@@ -41,5 +41,47 @@ public struct FireworksAnthropicRequestDocumentBlock: Codable, Sendable {
     case source
     case title
     case kind = "type"
+  }
+
+  public enum Source: Codable, Sendable {
+    case anthropicBase64PDFSource(FireworksAnthropicBase64PDFSource)
+    case anthropicPlainTextSource(FireworksAnthropicPlainTextSource)
+    case anthropicContentBlockSource(FireworksAnthropicContentBlockSource)
+    case anthropicUrlpdfSource(FireworksAnthropicURLPDFSource)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(FireworksAnthropicBase64PDFSource.self) {
+        self = .anthropicBase64PDFSource(value)
+        return
+      }
+      if let value = try? container.decode(FireworksAnthropicPlainTextSource.self) {
+        self = .anthropicPlainTextSource(value)
+        return
+      }
+      if let value = try? container.decode(FireworksAnthropicContentBlockSource.self) {
+        self = .anthropicContentBlockSource(value)
+        return
+      }
+      self = .anthropicUrlpdfSource(try container.decode(FireworksAnthropicURLPDFSource.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .anthropicBase64PDFSource(let value):
+        try container.encode(value)
+      case .anthropicPlainTextSource(let value):
+        try container.encode(value)
+      case .anthropicContentBlockSource(let value):
+        try container.encode(value)
+      case .anthropicUrlpdfSource(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case document = "document"
   }
 }

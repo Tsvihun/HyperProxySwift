@@ -19,7 +19,7 @@ public struct ElevenLabsGetConversationSummaryResponseModel: Codable, Sendable {
   public var messages: [ElevenLabsConversationSummaryMessageModel]?
   public var messagesOmitted: Bool?
   public var note: String
-  public var status: ElevenLabsGetConversationSummaryResponseModelStatus
+  public var status: ElevenLabsGetConversationSummaryResponseModel.Status
   public var transcriptSummary: String?
 
   public init(
@@ -27,7 +27,7 @@ public struct ElevenLabsGetConversationSummaryResponseModel: Codable, Sendable {
     conversationId: String,
     messageCount: Int,
     note: String,
-    status: ElevenLabsGetConversationSummaryResponseModelStatus,
+    status: ElevenLabsGetConversationSummaryResponseModel.Status,
     callSuccessful: ElevenLabsEvaluationSuccessResult? = nil,
     callSummaryTitle: String? = nil,
     messages: [ElevenLabsConversationSummaryMessageModel]? = nil,
@@ -57,5 +57,13 @@ public struct ElevenLabsGetConversationSummaryResponseModel: Codable, Sendable {
     case note
     case status
     case transcriptSummary = "transcript_summary"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case initiated = "initiated"
+    case inProgress = "in-progress"
+    case processing = "processing"
+    case done = "done"
+    case failed = "failed"
   }
 }

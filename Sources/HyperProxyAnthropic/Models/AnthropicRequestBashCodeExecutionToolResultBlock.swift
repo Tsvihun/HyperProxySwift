@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct AnthropicRequestBashCodeExecutionToolResultBlock: Codable, Sendable {
   public var cacheControl: AnthropicCacheControlEphemeral?
-  public var content: AnthropicRequestBashCodeExecutionToolResultBlockContent
+  public var content: AnthropicRequestBashCodeExecutionToolResultBlock.Content
   public var toolUseId: String
   public var kind: AnthropicBashCodeExecutionToolResultKind
 
   public init(
-    content: AnthropicRequestBashCodeExecutionToolResultBlockContent,
+    content: AnthropicRequestBashCodeExecutionToolResultBlock.Content,
     toolUseId: String,
     kind: AnthropicBashCodeExecutionToolResultKind = .bashCodeExecutionToolResult,
     cacheControl: AnthropicCacheControlEphemeral? = nil
@@ -33,5 +33,30 @@ public struct AnthropicRequestBashCodeExecutionToolResultBlock: Codable, Sendabl
     case content
     case toolUseId = "tool_use_id"
     case kind = "type"
+  }
+
+  public enum Content: Codable, Sendable {
+    case requestBashCodeExecutionToolResultError(AnthropicRequestBashCodeExecutionToolResultError)
+    case requestBashCodeExecutionResultBlock(AnthropicRequestBashCodeExecutionResultBlock)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(AnthropicRequestBashCodeExecutionToolResultError.self) {
+        self = .requestBashCodeExecutionToolResultError(value)
+        return
+      }
+      self = .requestBashCodeExecutionResultBlock(
+        try container.decode(AnthropicRequestBashCodeExecutionResultBlock.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .requestBashCodeExecutionToolResultError(let value):
+        try container.encode(value)
+      case .requestBashCodeExecutionResultBlock(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

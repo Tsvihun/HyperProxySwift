@@ -11,22 +11,22 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralConnectorToolResultMetadata: Codable, Sendable {
-  public var meta: [String: HyperProxyJSONValue]?
+  public var _meta: [String: HyperProxyJSONValue]?
   public var isError: Bool?
   public var structuredContent: [String: HyperProxyJSONValue]?
 
   public init(
-    meta: [String: HyperProxyJSONValue]? = nil,
+    _meta: [String: HyperProxyJSONValue]? = nil,
     isError: Bool? = nil,
     structuredContent: [String: HyperProxyJSONValue]? = nil
   ) {
-    self.meta = meta
+    self._meta = _meta
     self.isError = isError
     self.structuredContent = structuredContent
   }
 
   enum CodingKeys: String, CodingKey {
-    case meta = "_meta"
+    case _meta
     case isError
     case structuredContent
   }

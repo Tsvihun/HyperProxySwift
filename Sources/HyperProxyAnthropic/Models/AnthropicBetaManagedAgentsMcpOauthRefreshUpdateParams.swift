@@ -14,12 +14,13 @@ public struct AnthropicBetaManagedAgentsMcpOauthRefreshUpdateParams: Codable, Se
   public var refreshToken: String?
   public var scope: String?
   public var tokenEndpointAuth:
-    AnthropicBetaManagedAgentsMcpOauthRefreshUpdateParamsTokenEndpointAuth?
+    AnthropicBetaManagedAgentsMcpOauthRefreshUpdateParams.TokenEndpointAuth?
 
   public init(
     refreshToken: String? = nil,
     scope: String? = nil,
-    tokenEndpointAuth: AnthropicBetaManagedAgentsMcpOauthRefreshUpdateParamsTokenEndpointAuth? = nil
+    tokenEndpointAuth: AnthropicBetaManagedAgentsMcpOauthRefreshUpdateParams.TokenEndpointAuth? =
+      nil
   ) {
     self.refreshToken = refreshToken
     self.scope = scope
@@ -30,5 +31,36 @@ public struct AnthropicBetaManagedAgentsMcpOauthRefreshUpdateParams: Codable, Se
     case refreshToken = "refresh_token"
     case scope
     case tokenEndpointAuth = "token_endpoint_auth"
+  }
+
+  public enum TokenEndpointAuth: Codable,
+    Sendable
+  {
+    case betaManagedAgentsTokenEndpointAuthBasicUpdateParam(
+      AnthropicBetaManagedAgentsTokenEndpointAuthBasicUpdateParam)
+    case betaManagedAgentsTokenEndpointAuthPostUpdateParam(
+      AnthropicBetaManagedAgentsTokenEndpointAuthPostUpdateParam)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(
+        AnthropicBetaManagedAgentsTokenEndpointAuthBasicUpdateParam.self)
+      {
+        self = .betaManagedAgentsTokenEndpointAuthBasicUpdateParam(value)
+        return
+      }
+      self = .betaManagedAgentsTokenEndpointAuthPostUpdateParam(
+        try container.decode(AnthropicBetaManagedAgentsTokenEndpointAuthPostUpdateParam.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .betaManagedAgentsTokenEndpointAuthBasicUpdateParam(let value):
+        try container.encode(value)
+      case .betaManagedAgentsTokenEndpointAuthPostUpdateParam(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

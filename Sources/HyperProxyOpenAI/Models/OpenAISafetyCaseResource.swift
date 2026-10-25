@@ -15,7 +15,7 @@ public struct OpenAISafetyCaseResource: Codable, Sendable {
   public var entityIdentifier: String
   public var id: String
   public var notice: OpenAISafetyCaseNotice
-  public var object: OpenAISafetyCaseResourceObject
+  public var object: OpenAISafetyCaseResource.Object
   public var reason: String?
 
   public init(
@@ -23,7 +23,7 @@ public struct OpenAISafetyCaseResource: Codable, Sendable {
     entityIdentifier: String,
     id: String,
     notice: OpenAISafetyCaseNotice,
-    object: OpenAISafetyCaseResourceObject,
+    object: OpenAISafetyCaseResource.Object,
     reason: String?
   ) {
     self.createdAt = createdAt
@@ -41,5 +41,9 @@ public struct OpenAISafetyCaseResource: Codable, Sendable {
     case notice
     case object
     case reason
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case safetyCase = "safety.case"
   }
 }

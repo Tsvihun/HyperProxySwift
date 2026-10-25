@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralResourceLinkChunk: Codable, Sendable {
-  public var metadata: [String: MistralResourceLinkChunkMetadataAnyOf1Value]?
+  public var metadata: [String: MistralResourceLinkChunkMetadataValue]?
   public var kind: MistralResourceLinkKind?
   public var uri: String
 
   public init(
     uri: String,
-    metadata: [String: MistralResourceLinkChunkMetadataAnyOf1Value]? = nil,
+    metadata: [String: MistralResourceLinkChunkMetadataValue]? = nil,
     kind: MistralResourceLinkKind? = nil
   ) {
     self.metadata = metadata

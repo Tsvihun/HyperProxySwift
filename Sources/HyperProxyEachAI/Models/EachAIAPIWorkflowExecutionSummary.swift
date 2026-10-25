@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct EachAIAPIWorkflowExecutionSummary: Codable, Sendable {
   public var apiKey: String?
-  public var cost: EachAIAPIWorkflowExecutionSummaryCost?
+  public var cost: EachAIAPIWorkflowExecutionSummary.Cost?
   public var createdAt: String
   public var deletedAt: String?
   public var endedAt: String?
@@ -23,8 +23,8 @@ public struct EachAIAPIWorkflowExecutionSummary: Codable, Sendable {
   public var output: String?
   public var outputJson: [String: HyperProxyJSONValue]?
   public var startedAt: String?
-  public var status: EachAIAPIWorkflowExecutionSummaryStatus
-  public var stepResults: EachAIAPIWorkflowExecutionSummaryStepResults?
+  public var status: EachAIAPIWorkflowExecutionSummary.Status
+  public var stepResults: EachAIAPIWorkflowExecutionSummary.StepResults?
   public var updatedAt: String?
   public var versionId: String
 
@@ -33,17 +33,17 @@ public struct EachAIAPIWorkflowExecutionSummary: Codable, Sendable {
     executionId: String,
     flowId: String,
     flowName: String,
-    status: EachAIAPIWorkflowExecutionSummaryStatus,
+    status: EachAIAPIWorkflowExecutionSummary.Status,
     versionId: String,
     apiKey: String? = nil,
-    cost: EachAIAPIWorkflowExecutionSummaryCost? = nil,
+    cost: EachAIAPIWorkflowExecutionSummary.Cost? = nil,
     deletedAt: String? = nil,
     endedAt: String? = nil,
     inputs: [String: HyperProxyJSONValue]? = nil,
     output: String? = nil,
     outputJson: [String: HyperProxyJSONValue]? = nil,
     startedAt: String? = nil,
-    stepResults: EachAIAPIWorkflowExecutionSummaryStepResults? = nil,
+    stepResults: EachAIAPIWorkflowExecutionSummary.StepResults? = nil,
     updatedAt: String? = nil
   ) {
     self.apiKey = apiKey
@@ -81,5 +81,66 @@ public struct EachAIAPIWorkflowExecutionSummary: Codable, Sendable {
     case stepResults = "step_results"
     case updatedAt = "updated_at"
     case versionId = "version_id"
+  }
+
+  public enum Cost: Codable, Sendable {
+    case number(Double)
+    case object(HyperProxyJSONValue)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Double.self) {
+        self = .number(value)
+        return
+      }
+      self = .object(try container.decode(HyperProxyJSONValue.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .number(let value):
+        try container.encode(value)
+      case .object(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case running = "running"
+    case completed = "completed"
+    case failed = "failed"
+    case cancelled = "cancelled"
+  }
+
+  public enum StepResults: Codable, Sendable {
+    case array([HyperProxyJSONValue])
+    case object(HyperProxyJSONValue)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode([HyperProxyJSONValue].self) {
+        self = .array(value)
+        return
+      }
+      self = .object(try container.decode(HyperProxyJSONValue.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .array(let value):
+        try container.encode(value)
+      case .object(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension EachAIAPIWorkflowExecutionSummary.StepResults: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: HyperProxyJSONValue...) {
+    self = .array(elements)
   }
 }

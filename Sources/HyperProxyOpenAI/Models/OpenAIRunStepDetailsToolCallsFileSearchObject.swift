@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIRunStepDetailsToolCallsFileSearchObject: Codable, Sendable {
-  public var fileSearch: OpenAIRunStepDetailsToolCallsFileSearchObjectFileSearch
+  public var fileSearch: OpenAIRunStepDetailsToolCallsFileSearchObject.FileSearch
   public var id: String
-  public var kind: OpenAIRunStepDetailsToolCallsFileSearchObjectKind
+  public var kind: OpenAIRunStepDetailsToolCallsFileSearchObject.Kind
 
   public init(
-    fileSearch: OpenAIRunStepDetailsToolCallsFileSearchObjectFileSearch,
+    fileSearch: OpenAIRunStepDetailsToolCallsFileSearchObject.FileSearch,
     id: String,
-    kind: OpenAIRunStepDetailsToolCallsFileSearchObjectKind
+    kind: OpenAIRunStepDetailsToolCallsFileSearchObject.Kind
   ) {
     self.fileSearch = fileSearch
     self.id = id
@@ -29,5 +29,27 @@ public struct OpenAIRunStepDetailsToolCallsFileSearchObject: Codable, Sendable {
     case fileSearch = "file_search"
     case id
     case kind = "type"
+  }
+
+  public struct FileSearch: Codable, Sendable {
+    public var rankingOptions: OpenAIRunStepDetailsToolCallsFileSearchRankingOptionsObject?
+    public var results: [OpenAIRunStepDetailsToolCallsFileSearchResultObject]?
+
+    public init(
+      rankingOptions: OpenAIRunStepDetailsToolCallsFileSearchRankingOptionsObject? = nil,
+      results: [OpenAIRunStepDetailsToolCallsFileSearchResultObject]? = nil
+    ) {
+      self.rankingOptions = rankingOptions
+      self.results = results
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case rankingOptions = "ranking_options"
+      case results
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case fileSearch = "file_search"
   }
 }

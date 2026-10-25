@@ -13,57 +13,57 @@ import HyperProxyCore
 public struct GroqCreateResponseResponse: Codable, Sendable {
   public var background: Bool?
   public var createdAt: Int
-  public var error: GroqCreateResponseResponseError?
+  public var error: GroqCreateResponseResponse.ErrorValue?
   public var id: String
-  public var incompleteDetails: GroqCreateResponseResponseIncompleteDetails?
+  public var incompleteDetails: GroqCreateResponseResponse.IncompleteDetails?
   public var instructions: String?
   public var maxOutputTokens: Int?
   public var maxToolCalls: Int?
   public var metadata: [String: String]?
   public var model: String
-  public var object: GroqCreateResponseResponseObject
+  public var object: GroqCreateResponseResponse.Object
   public var output: [GroqResponseOutputItem]
   public var parallelToolCalls: Bool
   public var previousResponseId: String?
-  public var reasoning: GroqCreateResponseResponseReasoning?
-  public var serviceTier: GroqCreateResponseResponseServiceTier
-  public var status: GroqCreateResponseResponseStatus
+  public var reasoning: GroqCreateResponseResponse.Reasoning?
+  public var serviceTier: GroqCreateResponseResponse.ServiceTier
+  public var status: GroqCreateResponseResponse.Status
   public var store: Bool
   public var temperature: Double
-  public var text: GroqCreateResponseResponseText?
+  public var text: GroqCreateResponseResponse.Text?
   public var toolChoice: GroqResponseToolChoiceOption?
   public var tools: [GroqResponseTool]
   public var topLogprobs: Int?
   public var topP: Double
-  public var truncation: GroqCreateResponseResponseTruncation
+  public var truncation: GroqCreateResponseResponse.Truncation
   public var usage: GroqResponseUsage?
   public var user: String?
 
   public init(
     createdAt: Int,
-    error: GroqCreateResponseResponseError?,
+    error: GroqCreateResponseResponse.ErrorValue?,
     id: String,
-    incompleteDetails: GroqCreateResponseResponseIncompleteDetails?,
+    incompleteDetails: GroqCreateResponseResponse.IncompleteDetails?,
     metadata: [String: String]?,
     model: String,
-    object: GroqCreateResponseResponseObject,
+    object: GroqCreateResponseResponse.Object,
     output: [GroqResponseOutputItem],
     parallelToolCalls: Bool,
-    serviceTier: GroqCreateResponseResponseServiceTier,
-    status: GroqCreateResponseResponseStatus,
+    serviceTier: GroqCreateResponseResponse.ServiceTier,
+    status: GroqCreateResponseResponse.Status,
     store: Bool,
     temperature: Double,
     toolChoice: GroqResponseToolChoiceOption?,
     tools: [GroqResponseTool],
     topP: Double,
-    truncation: GroqCreateResponseResponseTruncation,
+    truncation: GroqCreateResponseResponse.Truncation,
     background: Bool? = nil,
     instructions: String? = nil,
     maxOutputTokens: Int? = nil,
     maxToolCalls: Int? = nil,
     previousResponseId: String? = nil,
-    reasoning: GroqCreateResponseResponseReasoning? = nil,
-    text: GroqCreateResponseResponseText? = nil,
+    reasoning: GroqCreateResponseResponse.Reasoning? = nil,
+    text: GroqCreateResponseResponse.Text? = nil,
     topLogprobs: Int? = nil,
     usage: GroqResponseUsage? = nil,
     user: String? = nil
@@ -125,5 +125,97 @@ public struct GroqCreateResponseResponse: Codable, Sendable {
     case truncation
     case usage
     case user
+  }
+
+  public struct ErrorValue: Codable, Sendable {
+    public var code: String
+    public var message: String
+
+    public init(
+      code: String,
+      message: String
+    ) {
+      self.code = code
+      self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case code
+      case message
+    }
+  }
+
+  public struct IncompleteDetails: Codable, Sendable {
+    public var reason: String?
+
+    public init(
+      reason: String? = nil
+    ) {
+      self.reason = reason
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case reason
+    }
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case response = "response"
+  }
+
+  public struct Reasoning: Codable, Sendable {
+    public var effort: GroqCreateResponseResponse.Reasoning.Effort?
+    public var summary: String?
+
+    public init(
+      effort: GroqCreateResponseResponse.Reasoning.Effort? = nil,
+      summary: String? = nil
+    ) {
+      self.effort = effort
+      self.summary = summary
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case effort
+      case summary
+    }
+
+    public enum Effort: String, Codable, Hashable, Sendable {
+      case low = "low"
+      case medium = "medium"
+      case high = "high"
+    }
+  }
+
+  public enum ServiceTier: String, Codable, Hashable, Sendable {
+    case auto = "auto"
+    case defaultValue = "default"
+    case flex = "flex"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case completed = "completed"
+    case failed = "failed"
+    case inProgress = "in_progress"
+    case incomplete = "incomplete"
+  }
+
+  public struct Text: Codable, Sendable {
+    public var format: GroqResponseFormatConfiguration?
+
+    public init(
+      format: GroqResponseFormatConfiguration? = nil
+    ) {
+      self.format = format
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case format
+    }
+  }
+
+  public enum Truncation: String, Codable, Hashable, Sendable {
+    case auto = "auto"
+    case disabled = "disabled"
   }
 }

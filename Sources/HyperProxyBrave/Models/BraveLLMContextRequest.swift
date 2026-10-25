@@ -15,7 +15,7 @@ public struct BraveLLMContextRequest: Codable, Sendable {
   public var count: Int?
   public var country: String?
   public var enableLocal: Bool?
-  public var goggles: BraveLLMContextRequestGoggles?
+  public var goggles: BraveLLMContextRequest.Goggles?
   public var maximumNumberOfSnippets: Int?
   public var maximumNumberOfSnippetsPerUrl: Int?
   public var maximumNumberOfTokens: Int?
@@ -30,7 +30,7 @@ public struct BraveLLMContextRequest: Codable, Sendable {
     count: Int? = nil,
     country: String? = nil,
     enableLocal: Bool? = nil,
-    goggles: BraveLLMContextRequestGoggles? = nil,
+    goggles: BraveLLMContextRequest.Goggles? = nil,
     maximumNumberOfSnippets: Int? = nil,
     maximumNumberOfSnippetsPerUrl: Int? = nil,
     maximumNumberOfTokens: Int? = nil,
@@ -65,5 +65,41 @@ public struct BraveLLMContextRequest: Codable, Sendable {
     case maximumNumberOfUrls = "maximum_number_of_urls"
     case q
     case searchLang = "search_lang"
+  }
+
+  public enum Goggles: Codable, Sendable {
+    case string(String)
+    case stringArray([String])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .stringArray(try container.decode([String].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .stringArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension BraveLLMContextRequest.Goggles: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension BraveLLMContextRequest.Goggles: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: String...) {
+    self = .stringArray(elements)
   }
 }

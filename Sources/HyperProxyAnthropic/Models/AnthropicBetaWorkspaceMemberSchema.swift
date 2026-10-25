@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaWorkspaceMemberSchema: Codable, Sendable {
-  public var kind: AnthropicWorkspaceMemberKind
+  public var kind: AnthropicBetaWorkspaceMemberSchema.Kind
   public var userId: String
   public var workspaceId: String
   public var workspaceRole: AnthropicBetaWorkspaceRoleSchema
@@ -20,7 +20,7 @@ public struct AnthropicBetaWorkspaceMemberSchema: Codable, Sendable {
     userId: String,
     workspaceId: String,
     workspaceRole: AnthropicBetaWorkspaceRoleSchema,
-    kind: AnthropicWorkspaceMemberKind = .workspaceMember
+    kind: AnthropicBetaWorkspaceMemberSchema.Kind = .workspaceMember
   ) {
     self.kind = kind
     self.userId = userId
@@ -33,5 +33,9 @@ public struct AnthropicBetaWorkspaceMemberSchema: Codable, Sendable {
     case userId = "user_id"
     case workspaceId = "workspace_id"
     case workspaceRole = "workspace_role"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case workspaceMember = "workspace_member"
   }
 }

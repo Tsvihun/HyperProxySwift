@@ -17,10 +17,10 @@ public struct OpenAICreateCompletionRequest: Codable, Sendable {
   public var logitBias: [String: Int]?
   public var logprobs: Int?
   public var maxTokens: Int?
-  public var model: OpenAICreateCompletionRequestModel
+  public var model: OpenAICreateCompletionRequest.Model
   public var n: Int?
   public var presencePenalty: Double?
-  public var prompt: OpenAICreateCompletionRequestPrompt?
+  public var prompt: OpenAICreateCompletionRequest.Prompt?
   public var seed: Int64?
   public var stop: OpenAIStopConfiguration?
   public var stream: Bool?
@@ -31,8 +31,8 @@ public struct OpenAICreateCompletionRequest: Codable, Sendable {
   public var user: String?
 
   public init(
-    model: OpenAICreateCompletionRequestModel,
-    prompt: OpenAICreateCompletionRequestPrompt?,
+    model: OpenAICreateCompletionRequest.Model,
+    prompt: OpenAICreateCompletionRequest.Prompt?,
     bestOf: Int? = nil,
     echo: Bool? = nil,
     frequencyPenalty: Double? = nil,
@@ -89,5 +89,98 @@ public struct OpenAICreateCompletionRequest: Codable, Sendable {
     case temperature
     case topP = "top_p"
     case user
+  }
+
+  public enum Model: RawRepresentable, Codable, Hashable, Sendable {
+    case gpt3_5TurboInstruct
+    case davinci002
+    case babbage002
+    case custom(String)
+
+    public init(rawValue: String) {
+      switch rawValue {
+      case "gpt-3.5-turbo-instruct":
+        self = .gpt3_5TurboInstruct
+      case "davinci-002":
+        self = .davinci002
+      case "babbage-002":
+        self = .babbage002
+      default:
+        self = .custom(rawValue)
+      }
+    }
+
+    public var rawValue: String {
+      switch self {
+      case .gpt3_5TurboInstruct:
+        return "gpt-3.5-turbo-instruct"
+      case .davinci002:
+        return "davinci-002"
+      case .babbage002:
+        return "babbage-002"
+      case .custom(let value):
+        return value
+      }
+    }
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      self.init(rawValue: try container.decode(String.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      try container.encode(rawValue)
+    }
+
+    public enum Preset: String, Codable, Hashable, Sendable {
+      case gpt3_5TurboInstruct = "gpt-3.5-turbo-instruct"
+      case davinci002 = "davinci-002"
+      case babbage002 = "babbage-002"
+    }
+  }
+
+  public enum Prompt: Codable, Sendable {
+    case string(String)
+    case stringArray([String])
+    case integerArray([Int])
+    case arrayArray([[Int]])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      if let value = try? container.decode([String].self) {
+        self = .stringArray(value)
+        return
+      }
+      if let value = try? container.decode([Int].self) {
+        self = .integerArray(value)
+        return
+      }
+      self = .arrayArray(try container.decode([[Int]].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .stringArray(let value):
+        try container.encode(value)
+      case .integerArray(let value):
+        try container.encode(value)
+      case .arrayArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension OpenAICreateCompletionRequest.Prompt: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherDEScalingMetric: Codable, Sendable {
-  public var name: TogetherDEScalingMetricName
+  public var name: TogetherDEScalingMetric.Name
   public var percentile: String?
   public var target: Double
-  public var kind: TogetherDEScalingMetricKind
+  public var kind: TogetherDEScalingMetric.Kind
 
   public init(
-    name: TogetherDEScalingMetricName,
+    name: TogetherDEScalingMetric.Name,
     target: Double,
-    kind: TogetherDEScalingMetricKind,
+    kind: TogetherDEScalingMetric.Kind,
     percentile: String? = nil
   ) {
     self.name = name
@@ -33,5 +33,23 @@ public struct TogetherDEScalingMetric: Codable, Sendable {
     case percentile
     case target
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case metricTargetTypeValue = "METRIC_TARGET_TYPE_VALUE"
+    case metricTargetTypeUtilization = "METRIC_TARGET_TYPE_UTILIZATION"
+    case metricTargetTypeAverageValue = "METRIC_TARGET_TYPE_AVERAGE_VALUE"
+  }
+
+  public enum Name: String, Codable, Hashable, Sendable {
+    case activeSessions = "active_sessions"
+    case cacheHitRate = "cache_hit_rate"
+    case decodingSpeed = "decoding_speed"
+    case e2eLatency = "e2e_latency"
+    case gpuUtilization = "gpu_utilization"
+    case inflightRequests = "inflight_requests"
+    case throughputPerReplica = "throughput_per_replica"
+    case tokenUtilization = "token_utilization"
+    case ttft = "ttft"
   }
 }

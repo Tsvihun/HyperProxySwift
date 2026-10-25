@@ -174,14 +174,14 @@ extension HyperProxyProviderService where Operation == GroqOperation {
     return try await call.decoded(GroqListModelsResponse.self)
   }
 
-  public func retrieveModel(
-    model: String,
+  public func modelsRetrieve(
+    modelId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> GroqModel {
-    let call = self.call(.retrieveModel)
-      .path("model", model)
+    let call = self.call(.modelsRetrieve)
+      .path("model_id", modelId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
@@ -256,28 +256,28 @@ extension HyperProxyProviderService where Operation == GroqOperation {
     return try await prepared.decoded(GroqReadFineTuningResponse.self)
   }
 
-  public func getFineTuning(
-    id: String,
+  public func fineTuningsRetrieve(
+    fineTuningId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> GroqReadFineTuningResponse {
-    let call = self.call(.getFineTuning)
-      .path("id", id)
+    let call = self.call(.fineTuningsRetrieve)
+      .path("fine_tuning_id", fineTuningId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(GroqReadFineTuningResponse.self)
   }
 
-  public func deleteFineTuning(
-    id: String,
+  public func fineTuningsDelete(
+    fineTuningId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> GroqDeleteFineTuningResponse {
-    let call = self.call(.deleteFineTuning)
-      .path("id", id)
+    let call = self.call(.fineTuningsDelete)
+      .path("fine_tuning_id", fineTuningId)
       .query(query)
       .headers(headers)
       .timeout(timeout)

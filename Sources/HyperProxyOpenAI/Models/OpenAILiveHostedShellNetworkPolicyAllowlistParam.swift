@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAILiveHostedShellNetworkPolicyAllowlistParam: Codable, Sendable {
   public var allowedDomains: [String]
-  public var kind: OpenAILiveHostedShellNetworkPolicyAllowlistParamKind
+  public var kind: OpenAILiveHostedShellNetworkPolicyAllowlistParam.Kind
 
   public init(
     allowedDomains: [String],
-    kind: OpenAILiveHostedShellNetworkPolicyAllowlistParamKind
+    kind: OpenAILiveHostedShellNetworkPolicyAllowlistParam.Kind
   ) {
     self.allowedDomains = allowedDomains
     self.kind = kind
@@ -25,5 +25,11 @@ public struct OpenAILiveHostedShellNetworkPolicyAllowlistParam: Codable, Sendabl
   enum CodingKeys: String, CodingKey {
     case allowedDomains = "allowed_domains"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case allowlist = "allowlist"
   }
 }

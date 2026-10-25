@@ -11,6 +11,6 @@ import Foundation
 import HyperProxyCore
 
 public enum PerplexityCompletionResponseStatus: String, Codable, Hashable, Sendable {
-  case pENDING = "PENDING"
-  case cOMPLETED = "COMPLETED"
+  case pending = "PENDING"
+  case completed = "COMPLETED"
 }

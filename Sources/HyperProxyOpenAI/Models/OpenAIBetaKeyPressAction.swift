@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIBetaKeyPressAction: Codable, Sendable {
   public var keys: [String]
-  public var kind: OpenAIBetaKeyPressActionKind
+  public var kind: OpenAIBetaKeyPressAction.Kind
 
   public init(
     keys: [String],
-    kind: OpenAIBetaKeyPressActionKind
+    kind: OpenAIBetaKeyPressAction.Kind
   ) {
     self.keys = keys
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenAIBetaKeyPressAction: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case keys
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case keypress = "keypress"
   }
 }

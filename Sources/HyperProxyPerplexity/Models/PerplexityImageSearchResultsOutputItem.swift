@@ -14,11 +14,11 @@ public struct PerplexityImageSearchResultsOutputItem: Codable, Sendable {
   public var error: String?
   public var queries: [String]?
   public var results: [PerplexityImageResult]
-  public var kind: PerplexityImageSearchResultsOutputItemKind
+  public var kind: PerplexityImageSearchResultsOutputItem.Kind
 
   public init(
     results: [PerplexityImageResult],
-    kind: PerplexityImageSearchResultsOutputItemKind,
+    kind: PerplexityImageSearchResultsOutputItem.Kind,
     error: String? = nil,
     queries: [String]? = nil
   ) {
@@ -33,5 +33,9 @@ public struct PerplexityImageSearchResultsOutputItem: Codable, Sendable {
     case queries
     case results
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case imageSearchResults = "image_search_results"
   }
 }

@@ -12,10 +12,10 @@ import HyperProxyCore
 
 public struct OpenRouterResponseHealingPlugin: Codable, Sendable {
   public var enabled: Bool?
-  public var id: OpenRouterResponseHealingPluginId
+  public var id: OpenRouterResponseHealingPlugin.Id
 
   public init(
-    id: OpenRouterResponseHealingPluginId,
+    id: OpenRouterResponseHealingPlugin.Id,
     enabled: Bool? = nil
   ) {
     self.enabled = enabled
@@ -25,5 +25,9 @@ public struct OpenRouterResponseHealingPlugin: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case enabled
     case id
+  }
+
+  public enum Id: String, Codable, Hashable, Sendable {
+    case responseHealing = "response-healing"
   }
 }

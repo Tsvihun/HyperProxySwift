@@ -14,13 +14,13 @@ public struct MistralAcceptedDocumentResponse: Codable, Sendable {
   public var chunkCount: Int
   public var documentId: String
   public var position: Int
-  public var status: MistralAcceptedStatus?
+  public var status: MistralAcceptedDocumentResponse.Status?
 
   public init(
     chunkCount: Int,
     documentId: String,
     position: Int,
-    status: MistralAcceptedStatus? = nil
+    status: MistralAcceptedDocumentResponse.Status? = nil
   ) {
     self.chunkCount = chunkCount
     self.documentId = documentId
@@ -33,5 +33,9 @@ public struct MistralAcceptedDocumentResponse: Codable, Sendable {
     case documentId = "document_id"
     case position
     case status
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case accepted = "accepted"
   }
 }

@@ -10,4 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIResponseError = OpenAIResponseErrorAnyOf1?
+public typealias OpenAIResponseError = OpenAIResponseErrorWithCodeAndMessageAndMisalignment?

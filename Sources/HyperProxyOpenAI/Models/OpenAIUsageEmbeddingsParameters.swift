@@ -12,9 +12,9 @@ import HyperProxyCore
 
 public struct OpenAIUsageEmbeddingsParameters: Codable, Sendable {
   public var apiKeyIds: [String]?
-  public var bucketWidth: OpenAIUsageEmbeddingsParametersBucketWidth?
+  public var bucketWidth: OpenAIUsageEmbeddingsParameters.BucketWidth?
   public var endTime: Int?
-  public var groupBy: [OpenAIUsageEmbeddingsParametersGroupByItem]?
+  public var groupBy: [OpenAIUsageEmbeddingsParameters.GroupByElement]?
   public var limit: Int?
   public var models: [String]?
   public var page: String?
@@ -25,9 +25,9 @@ public struct OpenAIUsageEmbeddingsParameters: Codable, Sendable {
   public init(
     startTime: Int,
     apiKeyIds: [String]? = nil,
-    bucketWidth: OpenAIUsageEmbeddingsParametersBucketWidth? = nil,
+    bucketWidth: OpenAIUsageEmbeddingsParameters.BucketWidth? = nil,
     endTime: Int? = nil,
-    groupBy: [OpenAIUsageEmbeddingsParametersGroupByItem]? = nil,
+    groupBy: [OpenAIUsageEmbeddingsParameters.GroupByElement]? = nil,
     limit: Int? = nil,
     models: [String]? = nil,
     page: String? = nil,
@@ -57,5 +57,18 @@ public struct OpenAIUsageEmbeddingsParameters: Codable, Sendable {
     case projectIds = "project_ids"
     case startTime = "start_time"
     case userIds = "user_ids"
+  }
+
+  public enum BucketWidth: String, Codable, Hashable, Sendable {
+    case value1m = "1m"
+    case value1h = "1h"
+    case value1d = "1d"
+  }
+
+  public enum GroupByElement: String, Codable, Hashable, Sendable {
+    case projectId = "project_id"
+    case userId = "user_id"
+    case apiKeyId = "api_key_id"
+    case model = "model"
   }
 }

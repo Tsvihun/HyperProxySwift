@@ -18,7 +18,7 @@ public struct OpenAIPersistedAgentToolResourceMcp: Codable, Sendable {
   public var requiredValue: Bool
   public var serverLabel: String
   public var transport: OpenAIPersistedMcpTransportResource
-  public var kind: OpenAIPersistedAgentToolResourceMcpKind
+  public var kind: OpenAIPersistedAgentToolResourceMcp.Kind
 
   public init(
     allowedTools: [String],
@@ -28,7 +28,7 @@ public struct OpenAIPersistedAgentToolResourceMcp: Codable, Sendable {
     requiredValue: Bool,
     serverLabel: String,
     transport: OpenAIPersistedMcpTransportResource,
-    kind: OpenAIPersistedAgentToolResourceMcpKind
+    kind: OpenAIPersistedAgentToolResourceMcp.Kind
   ) {
     self.allowedTools = allowedTools
     self.connectionOrigin = connectionOrigin
@@ -49,5 +49,9 @@ public struct OpenAIPersistedAgentToolResourceMcp: Codable, Sendable {
     case serverLabel = "server_label"
     case transport
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case mcp = "mcp"
   }
 }

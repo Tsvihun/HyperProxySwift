@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralDeploymentWorkerSpecResponse: Codable, Sendable {
-  public var backendSpec: MistralDeploymentWorkerSpecResponseBackendSpec
+  public var backendSpec: MistralDeploymentWorkerSpecResponse.BackendSpec
   public var commit: MistralGitCommitMetadata?
   public var githubUrl: String
   public var restartedAt: String?
@@ -19,7 +19,7 @@ public struct MistralDeploymentWorkerSpecResponse: Codable, Sendable {
   public var kind: String?
 
   public init(
-    backendSpec: MistralDeploymentWorkerSpecResponseBackendSpec,
+    backendSpec: MistralDeploymentWorkerSpecResponse.BackendSpec,
     githubUrl: String,
     commit: MistralGitCommitMetadata? = nil,
     restartedAt: String? = nil,
@@ -41,5 +41,29 @@ public struct MistralDeploymentWorkerSpecResponse: Codable, Sendable {
     case restartedAt = "restarted_at"
     case revision
     case kind = "type"
+  }
+
+  public enum BackendSpec: Codable, Sendable {
+    case deploymentMistralCloudBackendSpec(MistralDeploymentMistralCloudBackendSpec)
+    case deploymentK8sBackendSpec(MistralDeploymentK8sBackendSpec)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(MistralDeploymentMistralCloudBackendSpec.self) {
+        self = .deploymentMistralCloudBackendSpec(value)
+        return
+      }
+      self = .deploymentK8sBackendSpec(try container.decode(MistralDeploymentK8sBackendSpec.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .deploymentMistralCloudBackendSpec(let value):
+        try container.encode(value)
+      case .deploymentK8sBackendSpec(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksGatewayDeveloperPassState: String, Codable, Hashable, Sendable {
-  case sTATEUNSPECIFIED = "STATE_UNSPECIFIED"
-  case aCTIVE = "ACTIVE"
-  case eXPIRED = "EXPIRED"
-  case fAILED = "FAILED"
-  case cREATING = "CREATING"
-  case eNABLINGAUTORENEW = "ENABLING_AUTO_RENEW"
-  case dISABLINGAUTORENEW = "DISABLING_AUTO_RENEW"
-  case pAYMENTFAILED = "PAYMENT_FAILED"
-  case uPDATING = "UPDATING"
+  case stateUnspecified = "STATE_UNSPECIFIED"
+  case active = "ACTIVE"
+  case expired = "EXPIRED"
+  case failed = "FAILED"
+  case creating = "CREATING"
+  case enablingAutoRenew = "ENABLING_AUTO_RENEW"
+  case disablingAutoRenew = "DISABLING_AUTO_RENEW"
+  case paymentFailed = "PAYMENT_FAILED"
+  case updating = "UPDATING"
 }

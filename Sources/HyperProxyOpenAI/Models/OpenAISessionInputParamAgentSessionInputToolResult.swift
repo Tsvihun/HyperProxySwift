@@ -16,13 +16,13 @@ public struct OpenAISessionInputParamAgentSessionInputToolResult: Codable, Senda
   public var output: OpenAIFunctionCallOutputParam?
   public var success: Bool
   public var turnId: String
-  public var kind: OpenAISessionInputParamAgentSessionInputToolResultKind
+  public var kind: OpenAISessionInputParamAgentSessionInputToolResult.Kind
 
   public init(
     callId: String,
     success: Bool,
     turnId: String,
-    kind: OpenAISessionInputParamAgentSessionInputToolResultKind,
+    kind: OpenAISessionInputParamAgentSessionInputToolResult.Kind,
     error: String? = nil,
     output: OpenAIFunctionCallOutputParam? = nil
   ) {
@@ -41,5 +41,11 @@ public struct OpenAISessionInputParamAgentSessionInputToolResult: Codable, Senda
     case success
     case turnId = "turn_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case agentSessionInputToolResult = "agent.session.input.tool_result"
   }
 }

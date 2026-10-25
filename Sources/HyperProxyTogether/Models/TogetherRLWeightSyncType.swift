@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public enum TogetherRLWeightSyncType: String, Codable, Hashable, Sendable {
-  case wEIGHTSYNCTYPESYNCHRONOUS = "WEIGHT_SYNC_TYPE_SYNCHRONOUS"
-  case wEIGHTSYNCTYPEBACKGROUNDPUBLISH = "WEIGHT_SYNC_TYPE_BACKGROUND_PUBLISH"
-  case wEIGHTSYNCTYPEPIPELINE = "WEIGHT_SYNC_TYPE_PIPELINE"
+  case weightSyncTypeSynchronous = "WEIGHT_SYNC_TYPE_SYNCHRONOUS"
+  case weightSyncTypeBackgroundPublish = "WEIGHT_SYNC_TYPE_BACKGROUND_PUBLISH"
+  case weightSyncTypePipeline = "WEIGHT_SYNC_TYPE_PIPELINE"
 }

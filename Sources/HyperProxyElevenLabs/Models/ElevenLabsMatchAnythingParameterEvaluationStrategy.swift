@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsMatchAnythingParameterEvaluationStrategy: Codable, Sendable {
-  public var kind: ElevenLabsAnythingKind
+  public var kind: ElevenLabsMatchAnythingParameterEvaluationStrategy.Kind
 
   public init(
-    kind: ElevenLabsAnythingKind = .anything
+    kind: ElevenLabsMatchAnythingParameterEvaluationStrategy.Kind = .anything
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case anything = "anything"
   }
 }

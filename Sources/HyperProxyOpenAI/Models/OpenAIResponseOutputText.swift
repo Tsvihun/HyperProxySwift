@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIResponseOutputText: Codable, Sendable {
-  public var annotations: [OpenAIResponseOutputTextAnnotationsItem]
+  public var annotations: [OpenAIResponseOutputText.AnnotationsElement]
   public var text: String
-  public var kind: OpenAIResponseOutputTextKind
+  public var kind: OpenAIResponseOutputText.Kind
 
   public init(
-    annotations: [OpenAIResponseOutputTextAnnotationsItem],
+    annotations: [OpenAIResponseOutputText.AnnotationsElement],
     text: String,
-    kind: OpenAIResponseOutputTextKind
+    kind: OpenAIResponseOutputText.Kind
   ) {
     self.annotations = annotations
     self.text = text
@@ -29,5 +29,33 @@ public struct OpenAIResponseOutputText: Codable, Sendable {
     case annotations
     case text
     case kind = "type"
+  }
+
+  public enum AnnotationsElement: Codable, Sendable {
+    case fileAnnotation(OpenAIFileAnnotation)
+    case urlAnnotation(OpenAIUrlAnnotation)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenAIFileAnnotation.self) {
+        self = .fileAnnotation(value)
+        return
+      }
+      self = .urlAnnotation(try container.decode(OpenAIUrlAnnotation.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .fileAnnotation(let value):
+        try container.encode(value)
+      case .urlAnnotation(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case outputText = "output_text"
   }
 }

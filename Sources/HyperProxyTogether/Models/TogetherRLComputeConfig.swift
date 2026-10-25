@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherRLComputeConfig: Codable, Sendable {
-  public var gpuType: TogetherRLComputeConfigGpuType?
+  public var gpuType: TogetherRLComputeConfig.GpuType?
   public var numGeneratorReplicas: Int
 
   public init(
     numGeneratorReplicas: Int,
-    gpuType: TogetherRLComputeConfigGpuType? = nil
+    gpuType: TogetherRLComputeConfig.GpuType? = nil
   ) {
     self.gpuType = gpuType
     self.numGeneratorReplicas = numGeneratorReplicas
@@ -25,5 +25,10 @@ public struct TogetherRLComputeConfig: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case gpuType = "gpu_type"
     case numGeneratorReplicas = "num_generator_replicas"
+  }
+
+  public enum GpuType: String, Codable, Hashable, Sendable {
+    case h100_80gb = "H100-80GB"
+    case b200Sxm = "B200-SXM"
   }
 }

@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAILiveSIPTransport: Codable, Sendable {
   public var destination: String
   public var trunk: OpenAILiveSIPTrunk
-  public var kind: OpenAILiveSIPTransportKind
+  public var kind: OpenAILiveSIPTransport.Kind
 
   public init(
     destination: String,
     trunk: OpenAILiveSIPTrunk,
-    kind: OpenAILiveSIPTransportKind
+    kind: OpenAILiveSIPTransport.Kind
   ) {
     self.destination = destination
     self.trunk = trunk
@@ -29,5 +29,9 @@ public struct OpenAILiveSIPTransport: Codable, Sendable {
     case destination
     case trunk
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case sip = "sip"
   }
 }

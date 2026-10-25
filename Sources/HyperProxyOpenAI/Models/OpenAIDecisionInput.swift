@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public enum OpenAIDecisionInput: Codable, Sendable {
   case string(String)
-  case decisionInputOneOf2ItemArray([OpenAIDecisionInputOneOf2Item])
+  case variantArray([OpenAIDecisionInput.Variant])
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -20,7 +20,7 @@ public enum OpenAIDecisionInput: Codable, Sendable {
       self = .string(value)
       return
     }
-    self = .decisionInputOneOf2ItemArray(try container.decode([OpenAIDecisionInputOneOf2Item].self))
+    self = .variantArray(try container.decode([OpenAIDecisionInput.Variant].self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -28,8 +28,54 @@ public enum OpenAIDecisionInput: Codable, Sendable {
     switch self {
     case .string(let value):
       try container.encode(value)
-    case .decisionInputOneOf2ItemArray(let value):
+    case .variantArray(let value):
       try container.encode(value)
+    }
+  }
+
+  public enum Variant: Codable, Sendable {
+    case decisionInputMessage(OpenAIDecisionInputMessage)
+    case decisionInputFunctionCall(OpenAIDecisionInputFunctionCall)
+    case decisionInputFunctionCallOutput(OpenAIDecisionInputFunctionCallOutput)
+    case decisionInputCustomToolCall(OpenAIDecisionInputCustomToolCall)
+    case decisionInputCustomToolCallOutput(OpenAIDecisionInputCustomToolCallOutput)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenAIDecisionInputMessage.self) {
+        self = .decisionInputMessage(value)
+        return
+      }
+      if let value = try? container.decode(OpenAIDecisionInputFunctionCall.self) {
+        self = .decisionInputFunctionCall(value)
+        return
+      }
+      if let value = try? container.decode(OpenAIDecisionInputFunctionCallOutput.self) {
+        self = .decisionInputFunctionCallOutput(value)
+        return
+      }
+      if let value = try? container.decode(OpenAIDecisionInputCustomToolCall.self) {
+        self = .decisionInputCustomToolCall(value)
+        return
+      }
+      self = .decisionInputCustomToolCallOutput(
+        try container.decode(OpenAIDecisionInputCustomToolCallOutput.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .decisionInputMessage(let value):
+        try container.encode(value)
+      case .decisionInputFunctionCall(let value):
+        try container.encode(value)
+      case .decisionInputFunctionCallOutput(let value):
+        try container.encode(value)
+      case .decisionInputCustomToolCall(let value):
+        try container.encode(value)
+      case .decisionInputCustomToolCallOutput(let value):
+        try container.encode(value)
+      }
     }
   }
 }
@@ -41,7 +87,7 @@ extension OpenAIDecisionInput: ExpressibleByStringLiteral {
 }
 
 extension OpenAIDecisionInput: ExpressibleByArrayLiteral {
-  public init(arrayLiteral elements: OpenAIDecisionInputOneOf2Item...) {
-    self = .decisionInputOneOf2ItemArray(elements)
+  public init(arrayLiteral elements: OpenAIDecisionInput.Variant...) {
+    self = .variantArray(elements)
   }
 }

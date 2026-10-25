@@ -14,13 +14,13 @@ public struct ElevenLabsSampleConfigDBModel: Codable, Sendable {
   public var chapterIds: [String]?
   public var isSample: Bool?
   public var parentId: String?
-  public var parentType: ElevenLabsSampleConfigDBModelParentType?
+  public var parentType: ElevenLabsSampleConfigDBModel.ParentType?
 
   public init(
     chapterIds: [String]? = nil,
     isSample: Bool? = nil,
     parentId: String? = nil,
-    parentType: ElevenLabsSampleConfigDBModelParentType? = nil
+    parentType: ElevenLabsSampleConfigDBModel.ParentType? = nil
   ) {
     self.chapterIds = chapterIds
     self.isSample = isSample
@@ -33,5 +33,10 @@ public struct ElevenLabsSampleConfigDBModel: Codable, Sendable {
     case isSample = "is_sample"
     case parentId = "parent_id"
     case parentType = "parent_type"
+  }
+
+  public enum ParentType: String, Codable, Hashable, Sendable {
+    case read = "read"
+    case collection = "collection"
   }
 }

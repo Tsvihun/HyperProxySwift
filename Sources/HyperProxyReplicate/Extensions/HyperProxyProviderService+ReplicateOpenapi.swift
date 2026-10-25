@@ -112,15 +112,15 @@ extension HyperProxyProviderService where Operation == ReplicateOperation {
 
   public func deploymentsPredictionsCreate(
     _ body: ReplicateSchemasPredictionRequest,
-    deploymentOwner: String,
-    deploymentName: String,
+    owner: String,
+    deployment: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> ReplicateSchemasPredictionResponse {
     let call = self.call(.deploymentsPredictionsCreate)
-      .path("deployment_owner", deploymentOwner)
-      .path("deployment_name", deploymentName)
+      .path("owner", owner)
+      .path("deployment", deployment)
       .query(query)
       .headers(headers)
       .timeout(timeout)
@@ -206,16 +206,16 @@ extension HyperProxyProviderService where Operation == ReplicateOperation {
     return try await prepared.decoded(ReplicateSchemasModelResponse.self)
   }
 
-  public func modelsGet(
-    modelOwner: String,
-    modelName: String,
+  public func modelsRetrieve(
+    owner: String,
+    model: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> ReplicateSchemasModelResponse {
-    let call = self.call(.modelsGet)
-      .path("model_owner", modelOwner)
-      .path("model_name", modelName)
+    let call = self.call(.modelsRetrieve)
+      .path("owner", owner)
+      .path("model", model)
       .query(query)
       .headers(headers)
       .timeout(timeout)
@@ -258,15 +258,15 @@ extension HyperProxyProviderService where Operation == ReplicateOperation {
 
   public func modelsPredictionsCreate(
     _ body: ReplicateSchemasPredictionRequest,
-    modelOwner: String,
-    modelName: String,
+    owner: String,
+    model: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> ReplicateSchemasPredictionResponse {
     let call = self.call(.modelsPredictionsCreate)
-      .path("model_owner", modelOwner)
-      .path("model_name", modelName)
+      .path("owner", owner)
+      .path("model", model)
       .query(query)
       .headers(headers)
       .timeout(timeout)
@@ -290,16 +290,16 @@ extension HyperProxyProviderService where Operation == ReplicateOperation {
     return try await call.text()
   }
 
-  public func modelsVersionsList(
-    modelOwner: String,
-    modelName: String,
+  public func modelsVersions(
+    owner: String,
+    model: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> ReplicateSchemasPaginatedVersionResponse {
-    let call = self.call(.modelsVersionsList)
-      .path("model_owner", modelOwner)
-      .path("model_name", modelName)
+    let call = self.call(.modelsVersions)
+      .path("owner", owner)
+      .path("model", model)
       .query(query)
       .headers(headers)
       .timeout(timeout)
@@ -326,16 +326,16 @@ extension HyperProxyProviderService where Operation == ReplicateOperation {
 
   public func trainingsCreate(
     _ body: ReplicateSchemasTrainingRequest,
-    modelOwner: String,
-    modelName: String,
+    owner: String,
+    model: String,
     versionId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> ReplicateSchemasTrainingResponse {
     let call = self.call(.trainingsCreate)
-      .path("model_owner", modelOwner)
-      .path("model_name", modelName)
+      .path("owner", owner)
+      .path("model", model)
       .path("version_id", versionId)
       .query(query)
       .headers(headers)

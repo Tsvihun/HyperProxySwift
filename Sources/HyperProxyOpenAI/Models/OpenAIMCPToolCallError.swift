@@ -11,31 +11,31 @@ import Foundation
 import HyperProxyCore
 
 public enum OpenAIMCPToolCallError: Codable, Sendable {
-  case mCPProtocolError(OpenAIMCPProtocolError)
-  case mCPToolExecutionError(OpenAIMCPToolExecutionError)
-  case hTTPError(OpenAIHTTPError)
+  case mcpProtocolError(OpenAIMCPProtocolError)
+  case mcpToolExecutionError(OpenAIMCPToolExecutionError)
+  case httpError(OpenAIHTTPError)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
     if let value = try? container.decode(OpenAIMCPProtocolError.self) {
-      self = .mCPProtocolError(value)
+      self = .mcpProtocolError(value)
       return
     }
     if let value = try? container.decode(OpenAIMCPToolExecutionError.self) {
-      self = .mCPToolExecutionError(value)
+      self = .mcpToolExecutionError(value)
       return
     }
-    self = .hTTPError(try container.decode(OpenAIHTTPError.self))
+    self = .httpError(try container.decode(OpenAIHTTPError.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .mCPProtocolError(let value):
+    case .mcpProtocolError(let value):
       try container.encode(value)
-    case .mCPToolExecutionError(let value):
+    case .mcpToolExecutionError(let value):
       try container.encode(value)
-    case .hTTPError(let value):
+    case .httpError(let value):
       try container.encode(value)
     }
   }

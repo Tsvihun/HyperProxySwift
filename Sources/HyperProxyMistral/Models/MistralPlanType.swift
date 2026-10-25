@@ -11,9 +11,9 @@ import Foundation
 import HyperProxyCore
 
 public enum MistralPlanType: String, Codable, Hashable, Sendable {
-  case aPI = "API"
-  case cHAT = "CHAT"
-  case oNPREMISE = "ON_PREMISE"
-  case lICENSE = "LICENSE"
-  case mISTRALCODE = "MISTRAL_CODE"
+  case api = "API"
+  case chat = "CHAT"
+  case onPremise = "ON_PREMISE"
+  case license = "LICENSE"
+  case mistralCode = "MISTRAL_CODE"
 }

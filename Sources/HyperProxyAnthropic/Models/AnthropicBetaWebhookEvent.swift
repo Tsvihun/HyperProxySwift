@@ -14,13 +14,13 @@ public struct AnthropicBetaWebhookEvent: Codable, Sendable {
   public var createdAt: String
   public var data: AnthropicBetaWebhookEventData
   public var id: String
-  public var kind: AnthropicEventKind
+  public var kind: AnthropicBetaWebhookEvent.Kind
 
   public init(
     createdAt: String,
     data: AnthropicBetaWebhookEventData,
     id: String,
-    kind: AnthropicEventKind = .event
+    kind: AnthropicBetaWebhookEvent.Kind = .event
   ) {
     self.createdAt = createdAt
     self.data = data
@@ -33,5 +33,9 @@ public struct AnthropicBetaWebhookEvent: Codable, Sendable {
     case data
     case id
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case event = "event"
   }
 }

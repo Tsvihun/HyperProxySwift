@@ -13,10 +13,10 @@ import HyperProxyCore
 public struct GroqCompletionUsage: Codable, Sendable {
   public var completionTime: Double?
   public var completionTokens: Int
-  public var completionTokensDetails: GroqCompletionUsageCompletionTokensDetails?
+  public var completionTokensDetails: GroqCompletionUsage.CompletionTokensDetails?
   public var promptTime: Double?
   public var promptTokens: Int
-  public var promptTokensDetails: GroqCompletionUsagePromptTokensDetails?
+  public var promptTokensDetails: GroqCompletionUsage.PromptTokensDetails?
   public var queueTime: Double?
   public var totalTime: Double?
   public var totalTokens: Int
@@ -26,9 +26,9 @@ public struct GroqCompletionUsage: Codable, Sendable {
     promptTokens: Int,
     totalTokens: Int,
     completionTime: Double? = nil,
-    completionTokensDetails: GroqCompletionUsageCompletionTokensDetails? = nil,
+    completionTokensDetails: GroqCompletionUsage.CompletionTokensDetails? = nil,
     promptTime: Double? = nil,
-    promptTokensDetails: GroqCompletionUsagePromptTokensDetails? = nil,
+    promptTokensDetails: GroqCompletionUsage.PromptTokensDetails? = nil,
     queueTime: Double? = nil,
     totalTime: Double? = nil
   ) {
@@ -53,5 +53,33 @@ public struct GroqCompletionUsage: Codable, Sendable {
     case queueTime = "queue_time"
     case totalTime = "total_time"
     case totalTokens = "total_tokens"
+  }
+
+  public struct CompletionTokensDetails: Codable, Sendable {
+    public var reasoningTokens: Int
+
+    public init(
+      reasoningTokens: Int
+    ) {
+      self.reasoningTokens = reasoningTokens
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case reasoningTokens = "reasoning_tokens"
+    }
+  }
+
+  public struct PromptTokensDetails: Codable, Sendable {
+    public var cachedTokens: Int
+
+    public init(
+      cachedTokens: Int
+    ) {
+      self.cachedTokens = cachedTokens
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case cachedTokens = "cached_tokens"
+    }
   }
 }

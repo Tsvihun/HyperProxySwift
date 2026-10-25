@@ -11,15 +11,41 @@ import Foundation
 import HyperProxyCore
 
 public struct PerplexityApiError: Codable, Sendable {
-  public var error: PerplexityApiErrorError?
+  public var error: PerplexityApiError.ErrorValue?
 
   public init(
-    error: PerplexityApiErrorError? = nil
+    error: PerplexityApiError.ErrorValue? = nil
   ) {
     self.error = error
   }
 
   enum CodingKeys: String, CodingKey {
     case error
+  }
+
+  public struct ErrorValue: Codable, Sendable {
+    public var code: Int
+    public var message: String
+    public var param: String?
+    public var kind: String
+
+    public init(
+      code: Int,
+      message: String,
+      kind: String,
+      param: String? = nil
+    ) {
+      self.code = code
+      self.message = message
+      self.param = param
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case code
+      case message
+      case param
+      case kind = "type"
+    }
   }
 }

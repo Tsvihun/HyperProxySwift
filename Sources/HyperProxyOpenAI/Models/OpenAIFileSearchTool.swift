@@ -14,11 +14,11 @@ public struct OpenAIFileSearchTool: Codable, Sendable {
   public var filters: OpenAIFilters?
   public var maxNumResults: Int?
   public var rankingOptions: OpenAIRankingOptions?
-  public var kind: OpenAIFileSearchToolKind
+  public var kind: OpenAIFileSearchTool.Kind
   public var vectorStoreIds: [String]
 
   public init(
-    kind: OpenAIFileSearchToolKind,
+    kind: OpenAIFileSearchTool.Kind,
     vectorStoreIds: [String],
     filters: OpenAIFilters? = nil,
     maxNumResults: Int? = nil,
@@ -37,5 +37,9 @@ public struct OpenAIFileSearchTool: Codable, Sendable {
     case rankingOptions = "ranking_options"
     case kind = "type"
     case vectorStoreIds = "vector_store_ids"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case fileSearch = "file_search"
   }
 }

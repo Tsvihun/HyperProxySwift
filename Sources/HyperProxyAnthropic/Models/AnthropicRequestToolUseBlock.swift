@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct AnthropicRequestToolUseBlock: Codable, Sendable {
   public var cacheControl: AnthropicCacheControlEphemeral?
-  public var caller: AnthropicRequestToolUseBlockCaller?
+  public var caller: AnthropicRequestToolUseBlock.Caller?
   public var id: String
   public var input: [String: HyperProxyJSONValue]
   public var name: String
@@ -25,7 +25,7 @@ public struct AnthropicRequestToolUseBlock: Codable, Sendable {
     name: String,
     kind: AnthropicToolUseKind = .toolUse,
     cacheControl: AnthropicCacheControlEphemeral? = nil,
-    caller: AnthropicRequestToolUseBlockCaller? = nil,
+    caller: AnthropicRequestToolUseBlock.Caller? = nil,
     toolsetName: String? = nil
   ) {
     self.cacheControl = cacheControl
@@ -45,5 +45,36 @@ public struct AnthropicRequestToolUseBlock: Codable, Sendable {
     case name
     case toolsetName = "toolset_name"
     case kind = "type"
+  }
+
+  public enum Caller: Codable, Sendable {
+    case directCaller(AnthropicDirectCaller)
+    case serverToolCaller(AnthropicServerToolCaller)
+    case serverToolCaller20260120(AnthropicServerToolCaller20260120)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(AnthropicDirectCaller.self) {
+        self = .directCaller(value)
+        return
+      }
+      if let value = try? container.decode(AnthropicServerToolCaller.self) {
+        self = .serverToolCaller(value)
+        return
+      }
+      self = .serverToolCaller20260120(try container.decode(AnthropicServerToolCaller20260120.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .directCaller(let value):
+        try container.encode(value)
+      case .serverToolCaller(let value):
+        try container.encode(value)
+      case .serverToolCaller20260120(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

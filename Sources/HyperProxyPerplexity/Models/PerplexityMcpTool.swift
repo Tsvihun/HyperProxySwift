@@ -18,12 +18,12 @@ public struct PerplexityMcpTool: Codable, Sendable {
   public var requireApproval: PerplexityRequireApproval?
   public var serverLabel: String
   public var serverUrl: String
-  public var kind: PerplexityMcpToolKind
+  public var kind: PerplexityMcpTool.Kind
 
   public init(
     serverLabel: String,
     serverUrl: String,
-    kind: PerplexityMcpToolKind,
+    kind: PerplexityMcpTool.Kind,
     allowedTools: [String]? = nil,
     authorization: String? = nil,
     deferLoading: Bool? = nil,
@@ -49,5 +49,9 @@ public struct PerplexityMcpTool: Codable, Sendable {
     case serverLabel = "server_label"
     case serverUrl = "server_url"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case mcp = "mcp"
   }
 }

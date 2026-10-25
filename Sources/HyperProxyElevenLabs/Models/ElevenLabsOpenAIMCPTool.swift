@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsOpenAIMCPTool: Codable, Sendable {
   public var allowedTools: [String]?
   public var authorization: String?
-  public var requireApproval: ElevenLabsOpenAIMCPToolRequireApproval?
+  public var requireApproval: ElevenLabsOpenAIMCPTool.RequireApproval?
   public var serverLabel: String
   public var serverUrl: String
   public var kind: ElevenLabsMcpKind?
@@ -23,7 +23,7 @@ public struct ElevenLabsOpenAIMCPTool: Codable, Sendable {
     serverUrl: String,
     allowedTools: [String]? = nil,
     authorization: String? = nil,
-    requireApproval: ElevenLabsOpenAIMCPToolRequireApproval? = nil,
+    requireApproval: ElevenLabsOpenAIMCPTool.RequireApproval? = nil,
     kind: ElevenLabsMcpKind? = nil
   ) {
     self.allowedTools = allowedTools
@@ -41,5 +41,10 @@ public struct ElevenLabsOpenAIMCPTool: Codable, Sendable {
     case serverLabel = "server_label"
     case serverUrl = "server_url"
     case kind = "type"
+  }
+
+  public enum RequireApproval: String, Codable, Hashable, Sendable {
+    case never = "never"
+    case always = "always"
   }
 }

@@ -14,7 +14,7 @@ public struct ElevenLabsFrustratedConversationRef: Codable, Sendable {
   public var agentId: String
   public var conversationId: String
   public var overallFrustrationScore: Double
-  public var overallLabel: ElevenLabsFrustratedConversationRefOverallLabel
+  public var overallLabel: ElevenLabsFrustratedConversationRef.OverallLabel
   public var overallSentimentScore: Double
   public var startTimeUnixSecs: Int
 
@@ -22,7 +22,7 @@ public struct ElevenLabsFrustratedConversationRef: Codable, Sendable {
     agentId: String,
     conversationId: String,
     overallFrustrationScore: Double,
-    overallLabel: ElevenLabsFrustratedConversationRefOverallLabel,
+    overallLabel: ElevenLabsFrustratedConversationRef.OverallLabel,
     overallSentimentScore: Double,
     startTimeUnixSecs: Int
   ) {
@@ -41,5 +41,11 @@ public struct ElevenLabsFrustratedConversationRef: Codable, Sendable {
     case overallLabel = "overall_label"
     case overallSentimentScore = "overall_sentiment_score"
     case startTimeUnixSecs = "start_time_unix_secs"
+  }
+
+  public enum OverallLabel: String, Codable, Hashable, Sendable {
+    case positive = "positive"
+    case neutral = "neutral"
+    case negative = "negative"
   }
 }

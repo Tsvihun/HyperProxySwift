@@ -22,7 +22,8 @@ def validate(path: Path, source: str, entries: list[dict[str, str]]) -> list[str
         failures.append('multiple primary types: ' + ', '.join(sorted(names)))
     elif names and names != {path.stem}:
         failures.append('filename must match primary type: ' + next(iter(names)))
-    if extensions and extensions != (names or {path.stem.split('+', 1)[0]}):
+    extension_targets = {name.split('.')[0] for name in extensions} if names else extensions
+    if extension_targets and extension_targets != (names or {path.stem.split('+', 1)[0]}):
         failures.append('extensions must target the file type, using Type+Purpose.swift for separate extensions')
     if '.generated.' in path.name or path.parent.name == 'GeneratedModels':
         failures.append('legacy aggregate layout')

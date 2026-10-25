@@ -28,12 +28,12 @@ public struct ElevenLabsExtendedSubscriptionResponseModel: Codable, Sendable {
   public var isEligibleForStarterPromo: Bool?
   public var maxCharacterLimitExtension: Int?
   public var maxCreditLimitExtension:
-    ElevenLabsExtendedSubscriptionResponseModelMaxCreditLimitExtension
+    ElevenLabsExtendedSubscriptionResponseModel.MaxCreditLimitExtension
   public var maxVoiceAddEdits: Int?
   public var nextCharacterCountResetUnix: Int?
   public var nextInvoice: ElevenLabsInvoiceResponseModel?
   public var openInvoices: [ElevenLabsInvoiceResponseModel]
-  public var pendingChange: ElevenLabsExtendedSubscriptionResponseModelPendingChange?
+  public var pendingChange: ElevenLabsExtendedSubscriptionResponseModel.PendingChange?
   public var professionalVoiceLimit: Int
   public var professionalVoiceSlotsUsed: Int
   public var professionalVoiceSlotsUsedInWorkspace: Int
@@ -54,7 +54,7 @@ public struct ElevenLabsExtendedSubscriptionResponseModel: Codable, Sendable {
     currentOverage: ElevenLabsPrice,
     hasOpenInvoices: Bool,
     maxCharacterLimitExtension: Int?,
-    maxCreditLimitExtension: ElevenLabsExtendedSubscriptionResponseModelMaxCreditLimitExtension,
+    maxCreditLimitExtension: ElevenLabsExtendedSubscriptionResponseModel.MaxCreditLimitExtension,
     openInvoices: [ElevenLabsInvoiceResponseModel],
     professionalVoiceLimit: Int,
     professionalVoiceSlotsUsed: Int,
@@ -73,7 +73,7 @@ public struct ElevenLabsExtendedSubscriptionResponseModel: Codable, Sendable {
     maxVoiceAddEdits: Int? = nil,
     nextCharacterCountResetUnix: Int? = nil,
     nextInvoice: ElevenLabsInvoiceResponseModel? = nil,
-    pendingChange: ElevenLabsExtendedSubscriptionResponseModelPendingChange? = nil
+    pendingChange: ElevenLabsExtendedSubscriptionResponseModel.PendingChange? = nil
   ) {
     self.allowedToExtendCharacterLimit = allowedToExtendCharacterLimit
     self.billingPeriod = billingPeriod
@@ -138,5 +138,76 @@ public struct ElevenLabsExtendedSubscriptionResponseModel: Codable, Sendable {
     case voiceAddEditCounter = "voice_add_edit_counter"
     case voiceLimit = "voice_limit"
     case voiceSlotsUsed = "voice_slots_used"
+  }
+
+  public enum MaxCreditLimitExtension: Codable, Sendable {
+    case integer(Int)
+    case unlimitedValue(
+      ElevenLabsExtendedSubscriptionResponseModel.MaxCreditLimitExtension.Unlimited)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Int.self) {
+        self = .integer(value)
+        return
+      }
+      self = .unlimitedValue(
+        try container.decode(
+          ElevenLabsExtendedSubscriptionResponseModel.MaxCreditLimitExtension.Unlimited.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .integer(let value):
+        try container.encode(value)
+      case .unlimitedValue(let value):
+        try container.encode(value)
+      }
+    }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var unlimited: Self {
+      .unlimitedValue(.unlimited)
+    }
+
+    public enum Unlimited: String,
+      Codable, Hashable, Sendable
+    {
+      case unlimited = "unlimited"
+    }
+  }
+
+  public enum PendingChange: Codable, Sendable {
+    case pendingSubscriptionSwitchResponseModel(ElevenLabsPendingSubscriptionSwitchResponseModel)
+    case pendingCancellationResponseModel(ElevenLabsPendingCancellationResponseModel)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsPendingSubscriptionSwitchResponseModel.self) {
+        self = .pendingSubscriptionSwitchResponseModel(value)
+        return
+      }
+      self = .pendingCancellationResponseModel(
+        try container.decode(ElevenLabsPendingCancellationResponseModel.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .pendingSubscriptionSwitchResponseModel(let value):
+        try container.encode(value)
+      case .pendingCancellationResponseModel(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension ElevenLabsExtendedSubscriptionResponseModel.MaxCreditLimitExtension:
+  ExpressibleByIntegerLiteral
+{
+  public init(integerLiteral value: Int) {
+    self = .integer(value)
   }
 }

@@ -15,11 +15,11 @@ extension BFLFlux3VideoV2VInputs {
   public init(
     prompt: String,
     startVideo: String,
-    aspectRatio: BFLFlux3VideoV2VInputsAspectRatio? = nil,
+    aspectRatio: BFLFlux3VideoV2VInputs.AspectRatio? = nil,
     draft: Bool? = nil,
-    duration: BFLFlux3VideoV2VInputsDuration? = nil,
+    duration: BFLFlux3VideoV2VInputs.Duration? = nil,
     generateAudio: Bool? = nil,
-    resolution: BFLFlux3VideoV2VInputsResolution? = nil,
+    resolution: BFLFlux3VideoV2VInputs.Resolution? = nil,
     safetyTolerance: Int? = nil,
     version: BFLLatestVersion? = nil
   ) {

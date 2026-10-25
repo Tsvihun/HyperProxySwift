@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public enum GroqChatCompletionToolChoiceOption: Codable, Sendable {
-  case chatCompletionToolChoiceOptionOneOf1(GroqChatCompletionToolChoiceOptionOneOf1)
+  case preset(GroqChatCompletionToolChoiceOption.Preset)
   case chatCompletionNamedToolChoice(GroqChatCompletionNamedToolChoice)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(GroqChatCompletionToolChoiceOptionOneOf1.self) {
-      self = .chatCompletionToolChoiceOptionOneOf1(value)
+    if let value = try? container.decode(GroqChatCompletionToolChoiceOption.Preset.self) {
+      self = .preset(value)
       return
     }
     self = .chatCompletionNamedToolChoice(
@@ -27,7 +27,7 @@ public enum GroqChatCompletionToolChoiceOption: Codable, Sendable {
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .chatCompletionToolChoiceOptionOneOf1(let value):
+    case .preset(let value):
       try container.encode(value)
     case .chatCompletionNamedToolChoice(let value):
       try container.encode(value)
@@ -35,11 +35,17 @@ public enum GroqChatCompletionToolChoiceOption: Codable, Sendable {
   }
 
   /// Provider-native value without the schema union wrapper.
-  public static var none: Self { .chatCompletionToolChoiceOptionOneOf1(.none) }
+  public static var none: Self { .preset(.none) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var auto: Self { .chatCompletionToolChoiceOptionOneOf1(.auto) }
+  public static var auto: Self { .preset(.auto) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var requiredValue: Self { .chatCompletionToolChoiceOptionOneOf1(.requiredValue) }
+  public static var requiredValue: Self { .preset(.requiredValue) }
+
+  public enum Preset: String, Codable, Hashable, Sendable {
+    case none = "none"
+    case auto = "auto"
+    case requiredValue = "required"
+  }
 }

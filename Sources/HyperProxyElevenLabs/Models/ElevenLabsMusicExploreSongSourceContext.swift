@@ -15,7 +15,7 @@ public struct ElevenLabsMusicExploreSongSourceContext: Codable, Sendable {
   public var description: String?
   public var lyrics: String?
   public var musicExploreSongId: String
-  public var sourceType: ElevenLabsMusicExploreSongSourceType?
+  public var sourceType: ElevenLabsMusicExploreSongSourceContext.SourceType?
   public var title: String?
   public var vocals: String?
 
@@ -24,7 +24,7 @@ public struct ElevenLabsMusicExploreSongSourceContext: Codable, Sendable {
     bpm: Int? = nil,
     description: String? = nil,
     lyrics: String? = nil,
-    sourceType: ElevenLabsMusicExploreSongSourceType? = nil,
+    sourceType: ElevenLabsMusicExploreSongSourceContext.SourceType? = nil,
     title: String? = nil,
     vocals: String? = nil
   ) {
@@ -45,5 +45,9 @@ public struct ElevenLabsMusicExploreSongSourceContext: Codable, Sendable {
     case sourceType = "source_type"
     case title
     case vocals
+  }
+
+  public enum SourceType: String, Codable, Hashable, Sendable {
+    case musicExploreSong = "music_explore_song"
   }
 }

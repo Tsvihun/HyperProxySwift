@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct OpenAIDragParam: Codable, Sendable {
   public var keys: [String]?
   public var path: [OpenAICoordParam]
-  public var kind: OpenAIDragParamKind
+  public var kind: OpenAIDragParam.Kind
 
   public init(
     path: [OpenAICoordParam],
-    kind: OpenAIDragParamKind,
+    kind: OpenAIDragParam.Kind,
     keys: [String]? = nil
   ) {
     self.keys = keys
@@ -29,5 +29,9 @@ public struct OpenAIDragParam: Codable, Sendable {
     case keys
     case path
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case drag = "drag"
   }
 }

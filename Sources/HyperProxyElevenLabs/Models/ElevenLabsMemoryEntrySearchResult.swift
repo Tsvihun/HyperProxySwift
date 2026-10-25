@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct ElevenLabsMemoryEntrySearchResult: Codable, Sendable {
   public var entryId: String
-  public var source: ElevenLabsMemoryEntrySearchResultSource?
+  public var source: ElevenLabsMemoryEntrySearchResult.Source?
   public var summary: String?
   public var text: String?
   public var version: Int
@@ -20,7 +20,7 @@ public struct ElevenLabsMemoryEntrySearchResult: Codable, Sendable {
   public init(
     entryId: String,
     version: Int,
-    source: ElevenLabsMemoryEntrySearchResultSource? = nil,
+    source: ElevenLabsMemoryEntrySearchResult.Source? = nil,
     summary: String? = nil,
     text: String? = nil
   ) {
@@ -37,5 +37,29 @@ public struct ElevenLabsMemoryEntrySearchResult: Codable, Sendable {
     case summary
     case text
     case version
+  }
+
+  public enum Source: Codable, Sendable {
+    case conversationSource(ElevenLabsConversationSource)
+    case manualSource(ElevenLabsManualSource)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsConversationSource.self) {
+        self = .conversationSource(value)
+        return
+      }
+      self = .manualSource(try container.decode(ElevenLabsManualSource.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .conversationSource(let value):
+        try container.encode(value)
+      case .manualSource(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

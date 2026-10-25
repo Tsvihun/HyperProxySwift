@@ -14,13 +14,13 @@ public struct OpenAIFileCitationBody: Codable, Sendable {
   public var fileId: String
   public var filename: String
   public var index: Int
-  public var kind: OpenAIFileCitationBodyKind
+  public var kind: OpenAIFileCitationBody.Kind
 
   public init(
     fileId: String,
     filename: String,
     index: Int,
-    kind: OpenAIFileCitationBodyKind
+    kind: OpenAIFileCitationBody.Kind
   ) {
     self.fileId = fileId
     self.filename = filename
@@ -33,5 +33,9 @@ public struct OpenAIFileCitationBody: Codable, Sendable {
     case filename
     case index
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case fileCitation = "file_citation"
   }
 }

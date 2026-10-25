@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct GroqResponseFormatText: Codable, Sendable {
-  public var kind: GroqResponseFormatTextKind
+  public var kind: GroqResponseFormatText.Kind
 
   public init(
-    kind: GroqResponseFormatTextKind
+    kind: GroqResponseFormatText.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case text = "text"
   }
 }

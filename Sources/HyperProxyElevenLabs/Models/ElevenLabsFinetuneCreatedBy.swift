@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public enum ElevenLabsFinetuneCreatedBy: String, Codable, Hashable, Sendable {
-  case selfModel = "self"
+  case selfValue = "self"
   case workspace = "workspace"
   case elevenlabs = "elevenlabs"
 }

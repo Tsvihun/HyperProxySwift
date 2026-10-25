@@ -16,13 +16,13 @@ public struct FireworksRawOutput: Codable, Sendable {
   public var completionTokenIds: [Int]?
   public var grammar: String?
   public var images: [String]?
-  public var promptFragments: [FireworksRawOutputPromptFragmentsItem]
+  public var promptFragments: [FireworksRawOutput.PromptFragmentsElement]
   public var promptTokenIds: [Int]
   public var videos: [String]?
 
   public init(
     completion: String,
-    promptFragments: [FireworksRawOutputPromptFragmentsItem],
+    promptFragments: [FireworksRawOutput.PromptFragmentsElement],
     promptTokenIds: [Int],
     completionLogprobs: FireworksNewLogProbs? = nil,
     completionTokenIds: [Int]? = nil,
@@ -49,5 +49,41 @@ public struct FireworksRawOutput: Codable, Sendable {
     case promptFragments = "prompt_fragments"
     case promptTokenIds = "prompt_token_ids"
     case videos
+  }
+
+  public enum PromptFragmentsElement: Codable, Sendable {
+    case integer(Int)
+    case string(String)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Int.self) {
+        self = .integer(value)
+        return
+      }
+      self = .string(try container.decode(String.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .integer(let value):
+        try container.encode(value)
+      case .string(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension FireworksRawOutput.PromptFragmentsElement: ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Int) {
+    self = .integer(value)
+  }
+}
+
+extension FireworksRawOutput.PromptFragmentsElement: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

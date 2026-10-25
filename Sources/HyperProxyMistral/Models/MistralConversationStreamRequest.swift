@@ -24,7 +24,7 @@ public struct MistralConversationStreamRequest: Codable, Sendable {
   public var name: String?
   public var store: Bool?
   public var stream: Bool?
-  public var tools: [MistralConversationRequestBaseToolsAnyOf1Item]?
+  public var tools: [MistralConversationRequestBaseToolsItem]?
 
   public init(
     inputs: MistralConversationInputs,
@@ -40,7 +40,7 @@ public struct MistralConversationStreamRequest: Codable, Sendable {
     name: String? = nil,
     store: Bool? = nil,
     stream: Bool? = nil,
-    tools: [MistralConversationRequestBaseToolsAnyOf1Item]? = nil
+    tools: [MistralConversationRequestBaseToolsItem]? = nil
   ) {
     self.agentId = agentId
     self.agentVersion = agentVersion
@@ -73,5 +73,49 @@ public struct MistralConversationStreamRequest: Codable, Sendable {
     case store
     case stream
     case tools
+  }
+
+  public struct WithStream: Codable, Sendable {
+    public var stream: MistralConversationStreamRequest.WithStream.Stream?
+
+    public init(
+      stream: MistralConversationStreamRequest.WithStream.Stream? = nil
+    ) {
+      self.stream = stream
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case stream
+    }
+
+    public enum Stream: Codable, Sendable {
+      case booleanTrue
+
+      public init(from decoder: any Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if let value = try? container.decode(Bool.self) {
+          switch value {
+          case true:
+            self = .booleanTrue
+            return
+          default:
+            break
+          }
+        }
+        throw DecodingError.dataCorruptedError(
+          in: container,
+          debugDescription:
+            "Expected a documented MistralConversationStreamRequest.WithStream.Stream value."
+        )
+      }
+
+      public func encode(to encoder: any Encoder) throws {
+        var container = encoder.singleValueContainer()
+        switch self {
+        case .booleanTrue:
+          try container.encode(true)
+        }
+      }
+    }
   }
 }

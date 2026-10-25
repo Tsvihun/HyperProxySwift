@@ -14,7 +14,7 @@ public struct OpenAIListInputItemsParameters: Codable, Sendable {
   public var after: String?
   public var include: [OpenAIIncludeEnum]?
   public var limit: Int?
-  public var order: OpenAIListInputItemsParametersOrder?
+  public var order: OpenAIListInputItemsParameters.Order?
   public var responseId: String
 
   public init(
@@ -22,7 +22,7 @@ public struct OpenAIListInputItemsParameters: Codable, Sendable {
     after: String? = nil,
     include: [OpenAIIncludeEnum]? = nil,
     limit: Int? = nil,
-    order: OpenAIListInputItemsParametersOrder? = nil
+    order: OpenAIListInputItemsParameters.Order? = nil
   ) {
     self.after = after
     self.include = include
@@ -37,5 +37,10 @@ public struct OpenAIListInputItemsParameters: Codable, Sendable {
     case limit
     case order
     case responseId = "response_id"
+  }
+
+  public enum Order: String, Codable, Hashable, Sendable {
+    case asc = "asc"
+    case desc = "desc"
   }
 }

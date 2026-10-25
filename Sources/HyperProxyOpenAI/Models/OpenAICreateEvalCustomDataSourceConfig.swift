@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct OpenAICreateEvalCustomDataSourceConfig: Codable, Sendable {
   public var includeSampleSchema: Bool?
   public var itemSchema: [String: HyperProxyJSONValue]
-  public var kind: OpenAICreateEvalCustomDataSourceConfigKind
+  public var kind: OpenAICreateEvalCustomDataSourceConfig.Kind
 
   public init(
     itemSchema: [String: HyperProxyJSONValue],
-    kind: OpenAICreateEvalCustomDataSourceConfigKind,
+    kind: OpenAICreateEvalCustomDataSourceConfig.Kind,
     includeSampleSchema: Bool? = nil
   ) {
     self.includeSampleSchema = includeSampleSchema
@@ -29,5 +29,9 @@ public struct OpenAICreateEvalCustomDataSourceConfig: Codable, Sendable {
     case includeSampleSchema = "include_sample_schema"
     case itemSchema = "item_schema"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case custom = "custom"
   }
 }

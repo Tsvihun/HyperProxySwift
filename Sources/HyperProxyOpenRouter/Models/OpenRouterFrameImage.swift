@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterFrameImage: Codable, Sendable {
-  public var frameType: OpenRouterFrameImageAllOf2FrameType
+  public var frameType: OpenRouterFrameImageFrameType
   public var imageUrl: OpenRouterContentPartImageImageUrl
   public var kind: OpenRouterContentPartImageKind
 
   public init(
-    frameType: OpenRouterFrameImageAllOf2FrameType,
+    frameType: OpenRouterFrameImageFrameType,
     imageUrl: OpenRouterContentPartImageImageUrl,
     kind: OpenRouterContentPartImageKind
   ) {
@@ -29,5 +29,19 @@ public struct OpenRouterFrameImage: Codable, Sendable {
     case frameType = "frame_type"
     case imageUrl = "image_url"
     case kind = "type"
+  }
+
+  public struct WithFrameType: Codable, Sendable {
+    public var frameType: OpenRouterFrameImageFrameType
+
+    public init(
+      frameType: OpenRouterFrameImageFrameType
+    ) {
+      self.frameType = frameType
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case frameType = "frame_type"
+    }
   }
 }

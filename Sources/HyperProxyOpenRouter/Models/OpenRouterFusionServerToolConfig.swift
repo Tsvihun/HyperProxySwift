@@ -16,9 +16,9 @@ public struct OpenRouterFusionServerToolConfig: Codable, Sendable {
   public var maxCompletionTokens: Int?
   public var maxToolCalls: Int?
   public var model: String?
-  public var reasoning: OpenRouterFusionServerToolConfigReasoning?
+  public var reasoning: OpenRouterFusionServerToolConfig.Reasoning?
   public var temperature: Double?
-  public var tools: [OpenRouterFusionServerToolConfigToolsItem]?
+  public var tools: [OpenRouterFusionServerToolConfig.ToolsElement]?
 
   public init(
     analysisModels: [String]? = nil,
@@ -26,9 +26,9 @@ public struct OpenRouterFusionServerToolConfig: Codable, Sendable {
     maxCompletionTokens: Int? = nil,
     maxToolCalls: Int? = nil,
     model: String? = nil,
-    reasoning: OpenRouterFusionServerToolConfigReasoning? = nil,
+    reasoning: OpenRouterFusionServerToolConfig.Reasoning? = nil,
     temperature: Double? = nil,
-    tools: [OpenRouterFusionServerToolConfigToolsItem]? = nil
+    tools: [OpenRouterFusionServerToolConfig.ToolsElement]? = nil
   ) {
     self.analysisModels = analysisModels
     self.cacheControl = cacheControl
@@ -49,5 +49,51 @@ public struct OpenRouterFusionServerToolConfig: Codable, Sendable {
     case reasoning
     case temperature
     case tools
+  }
+
+  public struct Reasoning: Codable, Sendable {
+    public var effort: OpenRouterFusionServerToolConfig.Reasoning.Effort?
+    public var maxTokens: Int?
+
+    public init(
+      effort: OpenRouterFusionServerToolConfig.Reasoning.Effort? = nil,
+      maxTokens: Int? = nil
+    ) {
+      self.effort = effort
+      self.maxTokens = maxTokens
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case effort
+      case maxTokens = "max_tokens"
+    }
+
+    public enum Effort: String, Codable, Hashable, Sendable {
+      case max = "max"
+      case xhigh = "xhigh"
+      case high = "high"
+      case medium = "medium"
+      case low = "low"
+      case minimal = "minimal"
+      case none = "none"
+    }
+  }
+
+  public struct ToolsElement: Codable, Sendable {
+    public var parameters: [String: HyperProxyJSONValue]?
+    public var kind: String
+
+    public init(
+      kind: String,
+      parameters: [String: HyperProxyJSONValue]? = nil
+    ) {
+      self.parameters = parameters
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case parameters
+      case kind = "type"
+    }
   }
 }

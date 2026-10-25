@@ -16,7 +16,7 @@ public struct MistralTranscriptionSegmentChunk: Codable, Sendable {
   public var speakerId: String?
   public var start: Double?
   public var text: String
-  public var kind: MistralTranscriptionSegmentKind?
+  public var kind: MistralTranscriptionSegmentChunk.Kind?
 
   public init(
     end: Double?,
@@ -24,7 +24,7 @@ public struct MistralTranscriptionSegmentChunk: Codable, Sendable {
     text: String,
     score: Double? = nil,
     speakerId: String? = nil,
-    kind: MistralTranscriptionSegmentKind? = nil
+    kind: MistralTranscriptionSegmentChunk.Kind? = nil
   ) {
     self.end = end
     self.score = score
@@ -41,5 +41,9 @@ public struct MistralTranscriptionSegmentChunk: Codable, Sendable {
     case start
     case text
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case transcriptionSegment = "transcription_segment"
   }
 }

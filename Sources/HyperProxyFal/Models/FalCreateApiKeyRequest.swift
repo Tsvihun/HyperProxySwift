@@ -15,14 +15,14 @@ public struct FalCreateApiKeyRequest: Codable, Sendable {
   public var description: String?
   public var expiresAt: String?
   public var permissions: [String]?
-  public var preset: FalCreateApiKeyRequestPreset?
+  public var preset: FalCreateApiKeyRequest.Preset?
 
   public init(
     alias: String,
     description: String? = nil,
     expiresAt: String? = nil,
     permissions: [String]? = nil,
-    preset: FalCreateApiKeyRequestPreset? = nil
+    preset: FalCreateApiKeyRequest.Preset? = nil
   ) {
     self.alias = alias
     self.description = description
@@ -37,5 +37,16 @@ public struct FalCreateApiKeyRequest: Codable, Sendable {
     case expiresAt = "expires_at"
     case permissions
     case preset
+  }
+
+  public enum Preset: String, Codable, Hashable, Sendable {
+    case full = "FULL"
+    case agent = "AGENT"
+    case api = "API"
+    case deploy = "DEPLOY"
+    case readonly = "READONLY"
+    case billing = "BILLING"
+    case compute = "COMPUTE"
+    case serverless = "SERVERLESS"
   }
 }

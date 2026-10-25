@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct FireworksAnthropicContentBlockStopEvent: Codable, Sendable {
   public var index: Int
-  public var kind: FireworksContentBlockStopKind
+  public var kind: FireworksAnthropicContentBlockStopEvent.Kind
 
   public init(
     index: Int,
-    kind: FireworksContentBlockStopKind = .contentBlockStop
+    kind: FireworksAnthropicContentBlockStopEvent.Kind = .contentBlockStop
   ) {
     self.index = index
     self.kind = kind
@@ -25,5 +25,9 @@ public struct FireworksAnthropicContentBlockStopEvent: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case index
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case contentBlockStop = "content_block_stop"
   }
 }

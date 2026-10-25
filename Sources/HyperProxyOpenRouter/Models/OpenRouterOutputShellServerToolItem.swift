@@ -11,26 +11,26 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterOutputShellServerToolItem: Codable, Sendable {
-  public var action: OpenRouterOutputShellServerToolItemAction?
+  public var action: OpenRouterOutputShellServerToolItem.Action?
   public var arguments: String?
   public var callId: String?
   public var containerId: String?
   public var error: String?
-  public var files: [OpenRouterOutputShellServerToolItemFilesItem]?
+  public var files: [OpenRouterOutputShellServerToolItem.FilesElement]?
   public var id: String?
   public var output: [OpenRouterShellCallOutputContent]?
   public var status: OpenRouterFailableToolCallStatus
-  public var kind: OpenRouterOutputShellServerToolItemKind
+  public var kind: OpenRouterOutputShellServerToolItem.Kind
 
   public init(
     status: OpenRouterFailableToolCallStatus,
-    kind: OpenRouterOutputShellServerToolItemKind,
-    action: OpenRouterOutputShellServerToolItemAction? = nil,
+    kind: OpenRouterOutputShellServerToolItem.Kind,
+    action: OpenRouterOutputShellServerToolItem.Action? = nil,
     arguments: String? = nil,
     callId: String? = nil,
     containerId: String? = nil,
     error: String? = nil,
-    files: [OpenRouterOutputShellServerToolItemFilesItem]? = nil,
+    files: [OpenRouterOutputShellServerToolItem.FilesElement]? = nil,
     id: String? = nil,
     output: [OpenRouterShellCallOutputContent]? = nil
   ) {
@@ -57,5 +57,69 @@ public struct OpenRouterOutputShellServerToolItem: Codable, Sendable {
     case output
     case status
     case kind = "type"
+  }
+
+  public struct Action: Codable, Sendable {
+    public var commands: [String]
+    public var maxOutputLength: Int?
+    public var timeoutMs: Int?
+
+    public init(
+      commands: [String],
+      maxOutputLength: Int? = nil,
+      timeoutMs: Int? = nil
+    ) {
+      self.commands = commands
+      self.maxOutputLength = maxOutputLength
+      self.timeoutMs = timeoutMs
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case commands
+      case maxOutputLength = "max_output_length"
+      case timeoutMs = "timeout_ms"
+    }
+  }
+
+  public struct FilesElement: Codable, Sendable {
+    public var containerId: String
+    public var endIndex: Int
+    public var fileId: String
+    public var filename: String
+    public var startIndex: Int
+    public var kind: OpenRouterOutputShellServerToolItem.FilesElement.Kind
+
+    public init(
+      containerId: String,
+      endIndex: Int,
+      fileId: String,
+      filename: String,
+      startIndex: Int,
+      kind: OpenRouterOutputShellServerToolItem.FilesElement.Kind
+    ) {
+      self.containerId = containerId
+      self.endIndex = endIndex
+      self.fileId = fileId
+      self.filename = filename
+      self.startIndex = startIndex
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case containerId = "container_id"
+      case endIndex = "end_index"
+      case fileId = "file_id"
+      case filename
+      case startIndex = "start_index"
+      case kind = "type"
+    }
+
+    public enum Kind: String, Codable, Hashable, Sendable {
+      case containerFileCitation = "container_file_citation"
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case openrouterShell = "openrouter:shell"
   }
 }

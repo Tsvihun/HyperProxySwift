@@ -13,13 +13,13 @@ import HyperProxyCore
 public struct MistralScoreSortInput: Codable, Sendable {
   public var direction: MistralSortDirection?
   public var evaluatorName: String
-  public var kind: MistralScoreKind?
+  public var kind: MistralScoreSortInput.Kind?
   public var metric: MistralNumericScoreMetric?
 
   public init(
     evaluatorName: String,
     direction: MistralSortDirection? = nil,
-    kind: MistralScoreKind? = nil,
+    kind: MistralScoreSortInput.Kind? = nil,
     metric: MistralNumericScoreMetric? = nil
   ) {
     self.direction = direction
@@ -33,5 +33,9 @@ public struct MistralScoreSortInput: Codable, Sendable {
     case evaluatorName = "evaluator_name"
     case kind
     case metric
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case score = "score"
   }
 }

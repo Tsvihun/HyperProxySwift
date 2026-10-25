@@ -15,11 +15,11 @@ public struct DeepLGetDocumentStatusResponse: Codable, Sendable {
   public var documentId: String
   public var errorMessage: String?
   public var secondsRemaining: Int?
-  public var status: DeepLGetDocumentStatusResponseStatus
+  public var status: DeepLGetDocumentStatusResponse.Status
 
   public init(
     documentId: String,
-    status: DeepLGetDocumentStatusResponseStatus,
+    status: DeepLGetDocumentStatusResponse.Status,
     billedCharacters: Int? = nil,
     errorMessage: String? = nil,
     secondsRemaining: Int? = nil
@@ -37,5 +37,12 @@ public struct DeepLGetDocumentStatusResponse: Codable, Sendable {
     case errorMessage = "error_message"
     case secondsRemaining = "seconds_remaining"
     case status
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case queued = "queued"
+    case translating = "translating"
+    case done = "done"
+    case error = "error"
   }
 }

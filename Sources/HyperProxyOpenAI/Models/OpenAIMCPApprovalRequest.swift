@@ -15,14 +15,14 @@ public struct OpenAIMCPApprovalRequest: Codable, Sendable {
   public var id: String
   public var name: String
   public var serverLabel: String
-  public var kind: OpenAIMCPApprovalRequestKind
+  public var kind: OpenAIMCPApprovalRequest.Kind
 
   public init(
     arguments: String,
     id: String,
     name: String,
     serverLabel: String,
-    kind: OpenAIMCPApprovalRequestKind
+    kind: OpenAIMCPApprovalRequest.Kind
   ) {
     self.arguments = arguments
     self.id = id
@@ -37,5 +37,9 @@ public struct OpenAIMCPApprovalRequest: Codable, Sendable {
     case name
     case serverLabel = "server_label"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case mcpApprovalRequest = "mcp_approval_request"
   }
 }

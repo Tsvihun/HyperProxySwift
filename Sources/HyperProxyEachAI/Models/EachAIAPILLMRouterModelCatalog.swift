@@ -15,7 +15,7 @@ public struct EachAIAPILLMRouterModelCatalog: Codable, Sendable {
   public var models: [EachAIAPILLMRouterCatalogModel]?
   public var requestSchema: HyperProxyJSONValue?
   public var slug: String?
-  public var source: EachAIAPILLMRouterModelCatalogSource?
+  public var source: EachAIAPILLMRouterModelCatalog.Source?
   public var updatedAt: String?
   public var version: Int?
 
@@ -24,7 +24,7 @@ public struct EachAIAPILLMRouterModelCatalog: Codable, Sendable {
     models: [EachAIAPILLMRouterCatalogModel]? = nil,
     requestSchema: HyperProxyJSONValue? = nil,
     slug: String? = nil,
-    source: EachAIAPILLMRouterModelCatalogSource? = nil,
+    source: EachAIAPILLMRouterModelCatalog.Source? = nil,
     updatedAt: String? = nil,
     version: Int? = nil
   ) {
@@ -45,5 +45,10 @@ public struct EachAIAPILLMRouterModelCatalog: Codable, Sendable {
     case source
     case updatedAt = "updated_at"
     case version
+  }
+
+  public enum Source: String, Codable, Hashable, Sendable {
+    case catalog = "catalog"
+    case odooFallback = "odoo_fallback"
   }
 }

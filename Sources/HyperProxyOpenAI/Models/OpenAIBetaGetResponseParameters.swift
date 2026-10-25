@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct OpenAIBetaGetResponseParameters: Codable, Sendable {
   public var include: [OpenAIBetaIncludeEnum]?
   public var includeObfuscation: Bool?
-  public var openaiBeta: [OpenAIBetaGetResponseParametersOpenaiBetaItem]?
+  public var openaiBeta: [OpenAIBetaGetResponseParameters.OpenaiBetaElement]?
   public var responseId: String
   public var startingAfter: Int?
   public var stream: Bool?
@@ -22,7 +22,7 @@ public struct OpenAIBetaGetResponseParameters: Codable, Sendable {
     responseId: String,
     include: [OpenAIBetaIncludeEnum]? = nil,
     includeObfuscation: Bool? = nil,
-    openaiBeta: [OpenAIBetaGetResponseParametersOpenaiBetaItem]? = nil,
+    openaiBeta: [OpenAIBetaGetResponseParameters.OpenaiBetaElement]? = nil,
     startingAfter: Int? = nil,
     stream: Bool? = nil
   ) {
@@ -41,5 +41,9 @@ public struct OpenAIBetaGetResponseParameters: Codable, Sendable {
     case responseId = "response_id"
     case startingAfter = "starting_after"
     case stream
+  }
+
+  public enum OpenaiBetaElement: String, Codable, Hashable, Sendable {
+    case responsesMultiAgentV1 = "responses_multi_agent=v1"
   }
 }

@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct MistralFunctionTool: Codable, Sendable {
   public var function: MistralFunction
-  public var kind: MistralFunctionToolKind?
+  public var kind: MistralFunctionTool.Kind?
 
   public init(
     function: MistralFunction,
-    kind: MistralFunctionToolKind? = nil
+    kind: MistralFunctionTool.Kind? = nil
   ) {
     self.function = function
     self.kind = kind
@@ -25,5 +25,9 @@ public struct MistralFunctionTool: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case function
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case function = "function"
   }
 }

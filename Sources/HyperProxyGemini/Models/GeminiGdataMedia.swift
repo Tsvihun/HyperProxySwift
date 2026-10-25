@@ -36,7 +36,7 @@ public struct GeminiGdataMedia: Codable, Sendable {
   public var mediaId: String?
   public var objectId: GeminiObjectId?
   public var path: String?
-  public var referenceType: GeminiGdataMediaReferenceType?
+  public var referenceType: GeminiGdataMedia.ReferenceType?
   public var sha1Hash: String?
   public var sha256Hash: String?
   public var sha512Hash: String?
@@ -69,7 +69,7 @@ public struct GeminiGdataMedia: Codable, Sendable {
     mediaId: String? = nil,
     objectId: GeminiObjectId? = nil,
     path: String? = nil,
-    referenceType: GeminiGdataMediaReferenceType? = nil,
+    referenceType: GeminiGdataMedia.ReferenceType? = nil,
     sha1Hash: String? = nil,
     sha256Hash: String? = nil,
     sha512Hash: String? = nil,
@@ -141,5 +141,21 @@ public struct GeminiGdataMedia: Codable, Sendable {
     case sha512Hash
     case timestamp
     case token
+  }
+
+  public enum ReferenceType: String, Codable, Hashable, Sendable {
+    case path = "PATH"
+    case blobRef = "BLOB_REF"
+    case inline = "INLINE"
+    case getMedia = "GET_MEDIA"
+    case compositeMedia = "COMPOSITE_MEDIA"
+    case bigstoreRef = "BIGSTORE_REF"
+    case diffVersionResponse = "DIFF_VERSION_RESPONSE"
+    case diffChecksumsResponse = "DIFF_CHECKSUMS_RESPONSE"
+    case diffDownloadResponse = "DIFF_DOWNLOAD_RESPONSE"
+    case diffUploadRequest = "DIFF_UPLOAD_REQUEST"
+    case diffUploadResponse = "DIFF_UPLOAD_RESPONSE"
+    case cosmoBinaryReference = "COSMO_BINARY_REFERENCE"
+    case arbitraryBytes = "ARBITRARY_BYTES"
   }
 }

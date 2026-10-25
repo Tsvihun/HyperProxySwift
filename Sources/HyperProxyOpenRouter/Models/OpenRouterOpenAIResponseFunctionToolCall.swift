@@ -19,20 +19,20 @@ public struct OpenRouterOpenAIResponseFunctionToolCall: Codable, Sendable {
   public var namespace: String?
   public var status: OpenRouterToolCallStatus?
   public var subagentId: String?
-  public var subagentItems: [OpenRouterOpenAIResponseFunctionToolCallSubagentItemsItem]?
-  public var kind: OpenRouterOpenAIResponseFunctionToolCallKind
+  public var subagentItems: [OpenRouterOpenAIResponseFunctionToolCall.SubagentItemsElement]?
+  public var kind: OpenRouterOpenAIResponseFunctionToolCall.Kind
 
   public init(
     arguments: String,
     callId: String,
     name: String,
-    kind: OpenRouterOpenAIResponseFunctionToolCallKind,
+    kind: OpenRouterOpenAIResponseFunctionToolCall.Kind,
     async: Bool? = nil,
     id: String? = nil,
     namespace: String? = nil,
     status: OpenRouterToolCallStatus? = nil,
     subagentId: String? = nil,
-    subagentItems: [OpenRouterOpenAIResponseFunctionToolCallSubagentItemsItem]? = nil
+    subagentItems: [OpenRouterOpenAIResponseFunctionToolCall.SubagentItemsElement]? = nil
   ) {
     self.arguments = arguments
     self.async = async
@@ -57,5 +57,23 @@ public struct OpenRouterOpenAIResponseFunctionToolCall: Codable, Sendable {
     case subagentId = "subagent_id"
     case subagentItems = "subagent_items"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case functionCall = "function_call"
+  }
+
+  public struct SubagentItemsElement: Codable, Sendable {
+    public var kind: String
+
+    public init(
+      kind: String
+    ) {
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case kind = "type"
+    }
   }
 }

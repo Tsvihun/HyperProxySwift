@@ -13,15 +13,15 @@ import HyperProxyCore
 public struct OpenAIComputerUseApprovalResponseParamBrowserAuthenticationSubmitParam: Codable,
   Sendable
 {
-  public var action: OpenAIComputerUseApprovalResponseParamBrowserAuthenticationSubmitParamAction
+  public var action: OpenAIComputerUseApprovalResponseParamBrowserAuthenticationSubmitParam.Action
   public var fields: [OpenAIBrowserAuthenticationFieldValueParam]
   public var selectedOption: String?
-  public var kind: OpenAIComputerUseApprovalResponseParamBrowserAuthenticationSubmitParamKind
+  public var kind: OpenAIComputerUseApprovalResponseParamBrowserAuthenticationSubmitParam.Kind
 
   public init(
-    action: OpenAIComputerUseApprovalResponseParamBrowserAuthenticationSubmitParamAction,
+    action: OpenAIComputerUseApprovalResponseParamBrowserAuthenticationSubmitParam.Action,
     fields: [OpenAIBrowserAuthenticationFieldValueParam],
-    kind: OpenAIComputerUseApprovalResponseParamBrowserAuthenticationSubmitParamKind,
+    kind: OpenAIComputerUseApprovalResponseParamBrowserAuthenticationSubmitParam.Kind,
     selectedOption: String? = nil
   ) {
     self.action = action
@@ -35,5 +35,17 @@ public struct OpenAIComputerUseApprovalResponseParamBrowserAuthenticationSubmitP
     case fields
     case selectedOption = "selected_option"
     case kind = "type"
+  }
+
+  public enum Action: String,
+    Codable, Hashable, Sendable
+  {
+    case submit = "submit"
+  }
+
+  public enum Kind: String,
+    Codable, Hashable, Sendable
+  {
+    case browserAuthentication = "browser_authentication"
   }
 }

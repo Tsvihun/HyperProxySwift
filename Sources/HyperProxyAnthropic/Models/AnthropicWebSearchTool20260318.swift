@@ -18,7 +18,7 @@ public struct AnthropicWebSearchTool20260318: Codable, Sendable {
   public var deferLoading: Bool?
   public var maxUses: Int?
   public var name: AnthropicWebSearchName
-  public var responseInclusion: AnthropicWebSearchTool20260318ResponseInclusion?
+  public var responseInclusion: AnthropicWebSearchTool20260318.ResponseInclusion?
   public var strict: Bool?
   public var kind: AnthropicWebSearch20260318Kind
   public var userLocation: AnthropicUserLocation?
@@ -32,7 +32,7 @@ public struct AnthropicWebSearchTool20260318: Codable, Sendable {
     cacheControl: AnthropicCacheControlEphemeral? = nil,
     deferLoading: Bool? = nil,
     maxUses: Int? = nil,
-    responseInclusion: AnthropicWebSearchTool20260318ResponseInclusion? = nil,
+    responseInclusion: AnthropicWebSearchTool20260318.ResponseInclusion? = nil,
     strict: Bool? = nil,
     userLocation: AnthropicUserLocation? = nil
   ) {
@@ -61,5 +61,10 @@ public struct AnthropicWebSearchTool20260318: Codable, Sendable {
     case strict
     case kind = "type"
     case userLocation = "user_location"
+  }
+
+  public enum ResponseInclusion: String, Codable, Hashable, Sendable {
+    case full = "full"
+    case excluded = "excluded"
   }
 }

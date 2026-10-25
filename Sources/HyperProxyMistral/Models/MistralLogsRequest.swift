@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralLogsRequest: Codable, Sendable {
-  public var order: MistralLogsRequestOrder?
+  public var order: MistralLogsRequest.Order?
   public var searchExpression: String?
 
   public init(
-    order: MistralLogsRequestOrder? = nil,
+    order: MistralLogsRequest.Order? = nil,
     searchExpression: String? = nil
   ) {
     self.order = order
@@ -25,5 +25,10 @@ public struct MistralLogsRequest: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case order
     case searchExpression = "search_expression"
+  }
+
+  public enum Order: String, Codable, Hashable, Sendable {
+    case asc = "asc"
+    case desc = "desc"
   }
 }

@@ -13,16 +13,16 @@ import HyperProxyCore
 public struct OpenRouterOutputToolSearchCallItem: Codable, Sendable {
   public var arguments: HyperProxyJSONValue?
   public var callId: String
-  public var execution: OpenRouterOutputToolSearchCallItemExecution
+  public var execution: OpenRouterOutputToolSearchCallItem.Execution
   public var id: String?
   public var status: OpenRouterToolCallStatus
-  public var kind: OpenRouterOutputToolSearchCallItemKind
+  public var kind: OpenRouterOutputToolSearchCallItem.Kind
 
   public init(
     callId: String,
-    execution: OpenRouterOutputToolSearchCallItemExecution,
+    execution: OpenRouterOutputToolSearchCallItem.Execution,
     status: OpenRouterToolCallStatus,
-    kind: OpenRouterOutputToolSearchCallItemKind,
+    kind: OpenRouterOutputToolSearchCallItem.Kind,
     arguments: HyperProxyJSONValue? = nil,
     id: String? = nil
   ) {
@@ -41,5 +41,13 @@ public struct OpenRouterOutputToolSearchCallItem: Codable, Sendable {
     case id
     case status
     case kind = "type"
+  }
+
+  public enum Execution: String, Codable, Hashable, Sendable {
+    case client = "client"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case toolSearchCall = "tool_search_call"
   }
 }

@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct FireworksAnthropicMessageStartEvent: Codable, Sendable {
   public var message: FireworksAnthropicMessage
-  public var kind: FireworksMessageStartKind
+  public var kind: FireworksAnthropicMessageStartEvent.Kind
 
   public init(
     message: FireworksAnthropicMessage,
-    kind: FireworksMessageStartKind = .messageStart
+    kind: FireworksAnthropicMessageStartEvent.Kind = .messageStart
   ) {
     self.message = message
     self.kind = kind
@@ -25,5 +25,9 @@ public struct FireworksAnthropicMessageStartEvent: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case message
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case messageStart = "message_start"
   }
 }

@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterSwitchyardRouterPlugin: Codable, Sendable {
-  public var algorithm: OpenRouterSwitchyardRouterPluginAlgorithm?
-  public var id: OpenRouterSwitchyardRouterPluginId
+  public var algorithm: OpenRouterSwitchyardRouterPlugin.Algorithm?
+  public var id: OpenRouterSwitchyardRouterPlugin.Id
   public var judgeModel: String?
 
   public init(
-    id: OpenRouterSwitchyardRouterPluginId,
-    algorithm: OpenRouterSwitchyardRouterPluginAlgorithm? = nil,
+    id: OpenRouterSwitchyardRouterPlugin.Id,
+    algorithm: OpenRouterSwitchyardRouterPlugin.Algorithm? = nil,
     judgeModel: String? = nil
   ) {
     self.algorithm = algorithm
@@ -29,5 +29,18 @@ public struct OpenRouterSwitchyardRouterPlugin: Codable, Sendable {
     case algorithm
     case id
     case judgeModel = "judge_model"
+  }
+
+  public enum Algorithm: String, Codable, Hashable, Sendable {
+    case capability = "capability"
+    case stage = "stage"
+    case auto = "auto"
+    case random = "random"
+    case composite = "composite"
+    case passthrough = "passthrough"
+  }
+
+  public enum Id: String, Codable, Hashable, Sendable {
+    case switchyardRouter = "switchyard-router"
   }
 }

@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsWorkspaceAuditLogEntryResponse: Codable, Sendable {
-  public var activityId: ElevenLabsWorkspaceAuditLogEntryResponseActivityId
+  public var activityId: ElevenLabsWorkspaceAuditLogEntryResponse.ActivityId
   public var activityName: String
   public var actor: ElevenLabsActorModel
   public var categoryName: String?
@@ -32,7 +32,7 @@ public struct ElevenLabsWorkspaceAuditLogEntryResponse: Codable, Sendable {
   public var unmapped: [String: HyperProxyJSONValue]?
 
   public init(
-    activityId: ElevenLabsWorkspaceAuditLogEntryResponseActivityId,
+    activityId: ElevenLabsWorkspaceAuditLogEntryResponse.ActivityId,
     activityName: String,
     actor: ElevenLabsActorModel,
     id: String,
@@ -93,5 +93,51 @@ public struct ElevenLabsWorkspaceAuditLogEntryResponse: Codable, Sendable {
     case typeName = "type_name"
     case typeUid = "type_uid"
     case unmapped
+  }
+
+  public enum ActivityId: Codable, Sendable {
+    case accountChangeActivityId(ElevenLabsAccountChangeActivityId)
+    case authenticationActivityId(ElevenLabsAuthenticationActivityId)
+    case entityManagementActivityId(ElevenLabsEntityManagementActivityId)
+    case userAccessManagementActivityId(ElevenLabsUserAccessManagementActivityId)
+    case groupManagementActivityId(ElevenLabsGroupManagementActivityId)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsAccountChangeActivityId.self) {
+        self = .accountChangeActivityId(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsAuthenticationActivityId.self) {
+        self = .authenticationActivityId(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsEntityManagementActivityId.self) {
+        self = .entityManagementActivityId(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsUserAccessManagementActivityId.self) {
+        self = .userAccessManagementActivityId(value)
+        return
+      }
+      self = .groupManagementActivityId(
+        try container.decode(ElevenLabsGroupManagementActivityId.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .accountChangeActivityId(let value):
+        try container.encode(value)
+      case .authenticationActivityId(let value):
+        try container.encode(value)
+      case .entityManagementActivityId(let value):
+        try container.encode(value)
+      case .userAccessManagementActivityId(let value):
+        try container.encode(value)
+      case .groupManagementActivityId(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

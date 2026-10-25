@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterFileList: Codable, Sendable {
-  public var shape: OpenRouterFileListShape
+  public var _shape: OpenRouterFileList.Shape
   public var cursor: String
   public var data: [OpenRouterFile]
   public var firstId: String
@@ -19,14 +19,14 @@ public struct OpenRouterFileList: Codable, Sendable {
   public var lastId: String
 
   public init(
-    shape: OpenRouterFileListShape,
+    _shape: OpenRouterFileList.Shape,
     cursor: String,
     data: [OpenRouterFile],
     firstId: String,
     hasMore: Bool,
     lastId: String
   ) {
-    self.shape = shape
+    self._shape = _shape
     self.cursor = cursor
     self.data = data
     self.firstId = firstId
@@ -35,11 +35,15 @@ public struct OpenRouterFileList: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
-    case shape = "_shape"
+    case _shape
     case cursor
     case data
     case firstId = "first_id"
     case hasMore = "has_more"
     case lastId = "last_id"
+  }
+
+  public enum Shape: String, Codable, Hashable, Sendable {
+    case openrouter = "openrouter"
   }
 }

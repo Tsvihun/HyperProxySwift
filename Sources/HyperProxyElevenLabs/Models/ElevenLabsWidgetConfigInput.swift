@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsWidgetConfigInput: Codable, Sendable {
   public var actionText: String?
   public var alwaysExpanded: Bool?
-  public var avatar: ElevenLabsWidgetConfigInputAvatar?
+  public var avatar: ElevenLabsWidgetConfigInput.Avatar?
   public var bgColor: String?
   public var borderColor: String?
   public var borderRadius: Int?
@@ -39,6 +39,7 @@ public struct ElevenLabsWidgetConfigInput: Codable, Sendable {
   public var markdownLinkAllowedHosts: [ElevenLabsAllowlistItem]?
   public var markdownLinkIncludeWww: Bool?
   public var micMutingEnabled: Bool?
+  public var mobileFullscreen: Bool?
   public var overrideLink: String?
   public var placement: ElevenLabsWidgetPlacement?
   public var shareablePageShowTerms: Bool?
@@ -52,7 +53,7 @@ public struct ElevenLabsWidgetConfigInput: Codable, Sendable {
   public var stripAudioTags: Bool?
   public var styles: ElevenLabsWidgetStyles?
   public var supportsTextOnly: Bool?
-  public var syntaxHighlightTheme: ElevenLabsWidgetConfigInputSyntaxHighlightTheme?
+  public var syntaxHighlightTheme: ElevenLabsWidgetConfigInput.SyntaxHighlightTheme?
   public var termsHtml: String?
   public var termsKey: String?
   public var termsText: String?
@@ -65,7 +66,7 @@ public struct ElevenLabsWidgetConfigInput: Codable, Sendable {
   public init(
     actionText: String? = nil,
     alwaysExpanded: Bool? = nil,
-    avatar: ElevenLabsWidgetConfigInputAvatar? = nil,
+    avatar: ElevenLabsWidgetConfigInput.Avatar? = nil,
     bgColor: String? = nil,
     borderColor: String? = nil,
     borderRadius: Int? = nil,
@@ -91,6 +92,7 @@ public struct ElevenLabsWidgetConfigInput: Codable, Sendable {
     markdownLinkAllowedHosts: [ElevenLabsAllowlistItem]? = nil,
     markdownLinkIncludeWww: Bool? = nil,
     micMutingEnabled: Bool? = nil,
+    mobileFullscreen: Bool? = nil,
     overrideLink: String? = nil,
     placement: ElevenLabsWidgetPlacement? = nil,
     shareablePageShowTerms: Bool? = nil,
@@ -104,7 +106,7 @@ public struct ElevenLabsWidgetConfigInput: Codable, Sendable {
     stripAudioTags: Bool? = nil,
     styles: ElevenLabsWidgetStyles? = nil,
     supportsTextOnly: Bool? = nil,
-    syntaxHighlightTheme: ElevenLabsWidgetConfigInputSyntaxHighlightTheme? = nil,
+    syntaxHighlightTheme: ElevenLabsWidgetConfigInput.SyntaxHighlightTheme? = nil,
     termsHtml: String? = nil,
     termsKey: String? = nil,
     termsText: String? = nil,
@@ -142,6 +144,7 @@ public struct ElevenLabsWidgetConfigInput: Codable, Sendable {
     self.markdownLinkAllowedHosts = markdownLinkAllowedHosts
     self.markdownLinkIncludeWww = markdownLinkIncludeWww
     self.micMutingEnabled = micMutingEnabled
+    self.mobileFullscreen = mobileFullscreen
     self.overrideLink = overrideLink
     self.placement = placement
     self.shareablePageShowTerms = shareablePageShowTerms
@@ -195,6 +198,7 @@ public struct ElevenLabsWidgetConfigInput: Codable, Sendable {
     case markdownLinkAllowedHosts = "markdown_link_allowed_hosts"
     case markdownLinkIncludeWww = "markdown_link_include_www"
     case micMutingEnabled = "mic_muting_enabled"
+    case mobileFullscreen = "mobile_fullscreen"
     case overrideLink = "override_link"
     case placement
     case shareablePageShowTerms = "shareable_page_show_terms"
@@ -217,5 +221,41 @@ public struct ElevenLabsWidgetConfigInput: Codable, Sendable {
     case textInputEnabled = "text_input_enabled"
     case transcriptEnabled = "transcript_enabled"
     case variant
+  }
+
+  public enum Avatar: Codable, Sendable {
+    case orbAvatar(ElevenLabsOrbAvatar)
+    case urlAvatar(ElevenLabsURLAvatar)
+    case imageAvatar(ElevenLabsImageAvatar)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsOrbAvatar.self) {
+        self = .orbAvatar(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsURLAvatar.self) {
+        self = .urlAvatar(value)
+        return
+      }
+      self = .imageAvatar(try container.decode(ElevenLabsImageAvatar.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .orbAvatar(let value):
+        try container.encode(value)
+      case .urlAvatar(let value):
+        try container.encode(value)
+      case .imageAvatar(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum SyntaxHighlightTheme: String, Codable, Hashable, Sendable {
+    case light = "light"
+    case dark = "dark"
   }
 }

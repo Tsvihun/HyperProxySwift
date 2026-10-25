@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct OpenAIEvalItem: Codable, Sendable {
   public var content: OpenAIEvalItemContent
-  public var role: OpenAIEvalItemRole
-  public var kind: OpenAIEvalItemKind?
+  public var role: OpenAIEvalItem.Role
+  public var kind: OpenAIEvalItem.Kind?
 
   public init(
     content: OpenAIEvalItemContent,
-    role: OpenAIEvalItemRole,
-    kind: OpenAIEvalItemKind? = nil
+    role: OpenAIEvalItem.Role,
+    kind: OpenAIEvalItem.Kind? = nil
   ) {
     self.content = content
     self.role = role
@@ -29,5 +29,16 @@ public struct OpenAIEvalItem: Codable, Sendable {
     case content
     case role
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case message = "message"
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case user = "user"
+    case assistant = "assistant"
+    case system = "system"
+    case developer = "developer"
   }
 }

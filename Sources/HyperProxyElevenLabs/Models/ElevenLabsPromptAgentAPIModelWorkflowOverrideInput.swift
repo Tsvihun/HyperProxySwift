@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsPromptAgentAPIModelWorkflowOverrideInput: Codable, Sendable {
-  public var backupLlmConfig: ElevenLabsPromptAgentAPIModelWorkflowOverrideInputBackupLlmConfig?
+  public var backupLlmConfig: ElevenLabsPromptAgentAPIModelWorkflowOverrideInput.BackupLlmConfig?
   public var builtInTools: ElevenLabsBuiltInToolsWorkflowOverrideInput?
   public var cascadeTimeoutSeconds: Double?
   public var customLlm: ElevenLabsCustomLLM?
@@ -26,15 +26,16 @@ public struct ElevenLabsPromptAgentAPIModelWorkflowOverrideInput: Codable, Senda
   public var prompt: String?
   public var rag: ElevenLabsRagConfigWorkflowOverrideInput?
   public var reasoningEffort: ElevenLabsLLMReasoningEffort?
+  public var serviceTier: ElevenLabsLLMServiceTier?
   public var temperature: Double?
   public var thinkingBudget: Int?
   public var timezone: String?
   public var toolIds: [String]?
   public var toolIdsStrict: Bool?
-  public var tools: [ElevenLabsPromptAgentAPIModelWorkflowOverrideInputToolsAnyOf1Item]?
+  public var tools: [ElevenLabsPromptAgentAPIModelWorkflowOverrideInputToolsItem]?
 
   public init(
-    backupLlmConfig: ElevenLabsPromptAgentAPIModelWorkflowOverrideInputBackupLlmConfig? = nil,
+    backupLlmConfig: ElevenLabsPromptAgentAPIModelWorkflowOverrideInput.BackupLlmConfig? = nil,
     builtInTools: ElevenLabsBuiltInToolsWorkflowOverrideInput? = nil,
     cascadeTimeoutSeconds: Double? = nil,
     customLlm: ElevenLabsCustomLLM? = nil,
@@ -49,12 +50,13 @@ public struct ElevenLabsPromptAgentAPIModelWorkflowOverrideInput: Codable, Senda
     prompt: String? = nil,
     rag: ElevenLabsRagConfigWorkflowOverrideInput? = nil,
     reasoningEffort: ElevenLabsLLMReasoningEffort? = nil,
+    serviceTier: ElevenLabsLLMServiceTier? = nil,
     temperature: Double? = nil,
     thinkingBudget: Int? = nil,
     timezone: String? = nil,
     toolIds: [String]? = nil,
     toolIdsStrict: Bool? = nil,
-    tools: [ElevenLabsPromptAgentAPIModelWorkflowOverrideInputToolsAnyOf1Item]? = nil
+    tools: [ElevenLabsPromptAgentAPIModelWorkflowOverrideInputToolsItem]? = nil
   ) {
     self.backupLlmConfig = backupLlmConfig
     self.builtInTools = builtInTools
@@ -71,6 +73,7 @@ public struct ElevenLabsPromptAgentAPIModelWorkflowOverrideInput: Codable, Senda
     self.prompt = prompt
     self.rag = rag
     self.reasoningEffort = reasoningEffort
+    self.serviceTier = serviceTier
     self.temperature = temperature
     self.thinkingBudget = thinkingBudget
     self.timezone = timezone
@@ -95,11 +98,43 @@ public struct ElevenLabsPromptAgentAPIModelWorkflowOverrideInput: Codable, Senda
     case prompt
     case rag
     case reasoningEffort = "reasoning_effort"
+    case serviceTier = "service_tier"
     case temperature
     case thinkingBudget = "thinking_budget"
     case timezone
     case toolIds = "tool_ids"
     case toolIdsStrict = "tool_ids_strict"
     case tools
+  }
+
+  public enum BackupLlmConfig: Codable, Sendable {
+    case backupLlmDefault(ElevenLabsBackupLLMDefault)
+    case backupLlmDisabled(ElevenLabsBackupLLMDisabled)
+    case backupLlmOverride(ElevenLabsBackupLLMOverride)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsBackupLLMDefault.self) {
+        self = .backupLlmDefault(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsBackupLLMDisabled.self) {
+        self = .backupLlmDisabled(value)
+        return
+      }
+      self = .backupLlmOverride(try container.decode(ElevenLabsBackupLLMOverride.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .backupLlmDefault(let value):
+        try container.encode(value)
+      case .backupLlmDisabled(let value):
+        try container.encode(value)
+      case .backupLlmOverride(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

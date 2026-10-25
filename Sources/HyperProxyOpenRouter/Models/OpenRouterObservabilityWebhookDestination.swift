@@ -16,7 +16,7 @@ public struct OpenRouterObservabilityWebhookDestination: Codable, Sendable {
   public var broadcastGenerationCostAllocation: Bool
   public var broadcastGenerationIdentity: Bool
   public var broadcastGenerationRequestContext: Bool
-  public var config: OpenRouterObservabilityWebhookDestinationConfig
+  public var config: OpenRouterObservabilityWebhookDestination.Config
   public var createdAt: String
   public var enabled: Bool
   public var filterRules: OpenRouterObservabilityFilterRulesConfig?
@@ -25,7 +25,7 @@ public struct OpenRouterObservabilityWebhookDestination: Codable, Sendable {
   public var privacyMode: Bool
   public var regions: [OpenRouterObservabilityDataRegion]
   public var samplingRate: Double
-  public var kind: OpenRouterObservabilityWebhookDestinationKind
+  public var kind: OpenRouterObservabilityWebhookDestination.Kind
   public var updatedAt: String
   public var workspaceId: String
 
@@ -35,7 +35,7 @@ public struct OpenRouterObservabilityWebhookDestination: Codable, Sendable {
     broadcastGenerationCostAllocation: Bool,
     broadcastGenerationIdentity: Bool,
     broadcastGenerationRequestContext: Bool,
-    config: OpenRouterObservabilityWebhookDestinationConfig,
+    config: OpenRouterObservabilityWebhookDestination.Config,
     createdAt: String,
     enabled: Bool,
     filterRules: OpenRouterObservabilityFilterRulesConfig?,
@@ -44,7 +44,7 @@ public struct OpenRouterObservabilityWebhookDestination: Codable, Sendable {
     privacyMode: Bool,
     regions: [OpenRouterObservabilityDataRegion],
     samplingRate: Double,
-    kind: OpenRouterObservabilityWebhookDestinationKind,
+    kind: OpenRouterObservabilityWebhookDestination.Kind,
     updatedAt: String,
     workspaceId: String
   ) {
@@ -85,5 +85,38 @@ public struct OpenRouterObservabilityWebhookDestination: Codable, Sendable {
     case kind = "type"
     case updatedAt = "updated_at"
     case workspaceId = "workspace_id"
+  }
+
+  public struct Config: Codable, Sendable {
+    public var headers: [String: String]?
+    public var method: OpenRouterObservabilityWebhookDestination.Config.Method?
+    public var url: String
+
+    public init(
+      url: String,
+      headers: [String: String]? = nil,
+      method: OpenRouterObservabilityWebhookDestination.Config.Method? = nil
+    ) {
+      self.headers = headers
+      self.method = method
+      self.url = url
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case headers
+      case method
+      case url
+    }
+
+    public enum Method: String, Codable, Hashable,
+      Sendable
+    {
+      case post = "POST"
+      case put = "PUT"
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case webhook = "webhook"
   }
 }

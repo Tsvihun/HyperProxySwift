@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct ElevenLabsAssetTranscription: Codable, Sendable {
   public var data: ElevenLabsAssetTranscriptionData?
-  public var status: ElevenLabsAssetTranscriptionStatus
+  public var status: ElevenLabsAssetTranscription.Status
   public var updatedAtMs: Int?
 
   public init(
     data: ElevenLabsAssetTranscriptionData?,
-    status: ElevenLabsAssetTranscriptionStatus,
+    status: ElevenLabsAssetTranscription.Status,
     updatedAtMs: Int? = nil
   ) {
     self.data = data
@@ -29,5 +29,11 @@ public struct ElevenLabsAssetTranscription: Codable, Sendable {
     case data
     case status
     case updatedAtMs = "updated_at_ms"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case processing = "processing"
+    case completed = "completed"
+    case failed = "failed"
   }
 }

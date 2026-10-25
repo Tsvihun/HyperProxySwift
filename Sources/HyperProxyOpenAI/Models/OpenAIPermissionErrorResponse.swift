@@ -11,15 +11,45 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIPermissionErrorResponse: Codable, Sendable {
-  public var error: OpenAIPermissionErrorResponseError
+  public var error: OpenAIPermissionErrorResponse.ErrorValue
 
   public init(
-    error: OpenAIPermissionErrorResponseError
+    error: OpenAIPermissionErrorResponse.ErrorValue
   ) {
     self.error = error
   }
 
   enum CodingKeys: String, CodingKey {
     case error
+  }
+
+  public enum ErrorValue: Codable, Sendable {
+    case string(String)
+    case error(OpenAIError)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .error(try container.decode(OpenAIError.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .error(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension OpenAIPermissionErrorResponse.ErrorValue: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

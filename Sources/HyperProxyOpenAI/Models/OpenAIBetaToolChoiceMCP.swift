@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct OpenAIBetaToolChoiceMCP: Codable, Sendable {
   public var name: String?
   public var serverLabel: String
-  public var kind: OpenAIBetaToolChoiceMCPKind
+  public var kind: OpenAIBetaToolChoiceMCP.Kind
 
   public init(
     serverLabel: String,
-    kind: OpenAIBetaToolChoiceMCPKind,
+    kind: OpenAIBetaToolChoiceMCP.Kind,
     name: String? = nil
   ) {
     self.name = name
@@ -29,5 +29,9 @@ public struct OpenAIBetaToolChoiceMCP: Codable, Sendable {
     case name
     case serverLabel = "server_label"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case mcp = "mcp"
   }
 }

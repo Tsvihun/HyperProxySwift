@@ -18,7 +18,7 @@ public struct MistralOCRTableBlock: Codable, Sendable {
   public var tableId: String?
   public var topLeftX: Int
   public var topLeftY: Int
-  public var kind: MistralTableKind?
+  public var kind: MistralOCRTableBlock.Kind?
 
   public init(
     bottomRightX: Int,
@@ -28,7 +28,7 @@ public struct MistralOCRTableBlock: Codable, Sendable {
     topLeftY: Int,
     confidenceScores: MistralOCRBlockConfidenceScores? = nil,
     tableId: String? = nil,
-    kind: MistralTableKind? = nil
+    kind: MistralOCRTableBlock.Kind? = nil
   ) {
     self.bottomRightX = bottomRightX
     self.bottomRightY = bottomRightY
@@ -49,5 +49,9 @@ public struct MistralOCRTableBlock: Codable, Sendable {
     case topLeftX = "top_left_x"
     case topLeftY = "top_left_y"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case table = "table"
   }
 }

@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct GroqChatCompletionRequestFunctionMessage: Codable, Sendable {
   public var content: String?
   public var name: String
-  public var role: GroqChatCompletionRequestFunctionMessageRole
+  public var role: GroqChatCompletionRequestFunctionMessage.Role
 
   public init(
     content: String?,
     name: String,
-    role: GroqChatCompletionRequestFunctionMessageRole
+    role: GroqChatCompletionRequestFunctionMessage.Role
   ) {
     self.content = content
     self.name = name
@@ -29,5 +29,9 @@ public struct GroqChatCompletionRequestFunctionMessage: Codable, Sendable {
     case content
     case name
     case role
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case function = "function"
   }
 }

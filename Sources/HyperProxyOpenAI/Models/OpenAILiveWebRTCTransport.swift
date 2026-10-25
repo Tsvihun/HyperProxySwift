@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAILiveWebRTCTransport: Codable, Sendable {
   public var sdp: String
-  public var kind: OpenAILiveWebRTCTransportKind
+  public var kind: OpenAILiveWebRTCTransport.Kind
 
   public init(
     sdp: String,
-    kind: OpenAILiveWebRTCTransportKind
+    kind: OpenAILiveWebRTCTransport.Kind
   ) {
     self.sdp = sdp
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenAILiveWebRTCTransport: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case sdp
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case webrtc = "webrtc"
   }
 }

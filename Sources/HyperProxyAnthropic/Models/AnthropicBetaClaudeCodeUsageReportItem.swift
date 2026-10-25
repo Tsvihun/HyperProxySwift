@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaClaudeCodeUsageReportItem: Codable, Sendable {
-  public var actor: AnthropicBetaClaudeCodeUsageReportItemActor
+  public var actor: AnthropicBetaClaudeCodeUsageReportItem.Actor
   public var coreMetrics: AnthropicBetaCoreMetrics
   public var customerType: AnthropicBetaCustomerType
   public var date: String
@@ -23,7 +23,7 @@ public struct AnthropicBetaClaudeCodeUsageReportItem: Codable, Sendable {
   public var toolActions: [String: AnthropicBetaApprovalMetrics]
 
   public init(
-    actor: AnthropicBetaClaudeCodeUsageReportItemActor,
+    actor: AnthropicBetaClaudeCodeUsageReportItem.Actor,
     coreMetrics: AnthropicBetaCoreMetrics,
     customerType: AnthropicBetaCustomerType,
     date: String,
@@ -57,5 +57,29 @@ public struct AnthropicBetaClaudeCodeUsageReportItem: Codable, Sendable {
     case subscriptionType = "subscription_type"
     case terminalType = "terminal_type"
     case toolActions = "tool_actions"
+  }
+
+  public enum Actor: Codable, Sendable {
+    case betaClaudeCodeUserActor(AnthropicBetaClaudeCodeUserActor)
+    case betaClaudeCodeApiActor(AnthropicBetaClaudeCodeApiActor)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(AnthropicBetaClaudeCodeUserActor.self) {
+        self = .betaClaudeCodeUserActor(value)
+        return
+      }
+      self = .betaClaudeCodeApiActor(try container.decode(AnthropicBetaClaudeCodeApiActor.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .betaClaudeCodeUserActor(let value):
+        try container.encode(value)
+      case .betaClaudeCodeApiActor(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

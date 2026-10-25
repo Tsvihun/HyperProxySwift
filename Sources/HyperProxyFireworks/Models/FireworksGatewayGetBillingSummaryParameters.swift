@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct FireworksGatewayGetBillingSummaryParameters: Codable, Sendable {
   public var accountId: String
   public var endTime: String
-  public var granularity: FireworksGatewayGetBillingSummaryParametersGranularity?
+  public var granularity: FireworksGatewayGetBillingSummaryParameters.Granularity?
   public var startTime: String
 
   public init(
     accountId: String,
     endTime: String,
     startTime: String,
-    granularity: FireworksGatewayGetBillingSummaryParametersGranularity? = nil
+    granularity: FireworksGatewayGetBillingSummaryParameters.Granularity? = nil
   ) {
     self.accountId = accountId
     self.endTime = endTime
@@ -33,5 +33,12 @@ public struct FireworksGatewayGetBillingSummaryParameters: Codable, Sendable {
     case endTime
     case granularity
     case startTime
+  }
+
+  public enum Granularity: String, Codable, Hashable,
+    Sendable
+  {
+    case granularityUnspecified = "GRANULARITY_UNSPECIFIED"
+    case daily = "DAILY"
   }
 }

@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct DeepSeekFilesListParameters: Codable, Sendable {
   public var after: String?
   public var limit: Int?
-  public var order: DeepSeekFilesListParametersOrder?
-  public var purpose: DeepSeekFilesListParametersPurpose?
+  public var order: DeepSeekFilesListParameters.Order?
+  public var purpose: DeepSeekFilesListParameters.Purpose?
 
   public init(
     after: String? = nil,
     limit: Int? = nil,
-    order: DeepSeekFilesListParametersOrder? = nil,
-    purpose: DeepSeekFilesListParametersPurpose? = nil
+    order: DeepSeekFilesListParameters.Order? = nil,
+    purpose: DeepSeekFilesListParameters.Purpose? = nil
   ) {
     self.after = after
     self.limit = limit
@@ -33,5 +33,14 @@ public struct DeepSeekFilesListParameters: Codable, Sendable {
     case limit
     case order
     case purpose
+  }
+
+  public enum Order: String, Codable, Hashable, Sendable {
+    case asc = "asc"
+    case desc = "desc"
+  }
+
+  public enum Purpose: String, Codable, Hashable, Sendable {
+    case userData = "user_data"
   }
 }

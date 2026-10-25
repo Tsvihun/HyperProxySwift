@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct FalGetAccountBillingResponse: Codable, Sendable {
-  public var credits: FalGetAccountBillingResponseCredits?
+  public var credits: FalGetAccountBillingResponse.Credits?
   public var username: String
 
   public init(
     username: String,
-    credits: FalGetAccountBillingResponseCredits? = nil
+    credits: FalGetAccountBillingResponse.Credits? = nil
   ) {
     self.credits = credits
     self.username = username
@@ -25,5 +25,23 @@ public struct FalGetAccountBillingResponse: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case credits
     case username
+  }
+
+  public struct Credits: Codable, Sendable {
+    public var currency: String
+    public var currentBalance: Double
+
+    public init(
+      currency: String,
+      currentBalance: Double
+    ) {
+      self.currency = currency
+      self.currentBalance = currentBalance
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case currency
+      case currentBalance = "current_balance"
+    }
   }
 }

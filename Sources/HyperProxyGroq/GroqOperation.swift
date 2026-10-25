@@ -17,10 +17,10 @@ public enum GroqOperation: String, HyperProxyCatalogOperation {
   case fineTuningsList = "fineTunings.list"
   /// `POST v1/fine_tunings`
   case fineTuningsCreate = "fineTunings.create"
-  /// `DELETE v1/fine_tunings/{id}`
-  case deleteFineTuning = "deleteFineTuning"
-  /// `GET v1/fine_tunings/{id}`
-  case getFineTuning = "getFineTuning"
+  /// `DELETE v1/fine_tunings/{fine_tuning_id}`
+  case fineTuningsDelete = "fineTunings.delete"
+  /// `GET v1/fine_tunings/{fine_tuning_id}`
+  case fineTuningsRetrieve = "fineTunings.retrieve"
   /// `POST openai/v1/audio/speech`
   case audioSpeech = "audio.speech"
   /// `POST openai/v1/audio/transcriptions`
@@ -55,14 +55,8 @@ public enum GroqOperation: String, HyperProxyCatalogOperation {
   case modelsRetrieve = "models.retrieve"
   /// `DELETE openai/v1/models/{model}`
   case deleteModel = "deleteModel"
-  /// `GET openai/v1/models/{model}`
-  case retrieveModel = "retrieveModel"
   /// `POST openai/v1/reranking`
   case createReranking = "createReranking"
   /// `POST openai/v1/responses`
   case responsesCreate = "responses.create"
-  /// `DELETE v1/fine_tunings/{fine_tuning_id}`
-  case fineTuningsDelete = "fineTunings.delete"
-  /// `GET v1/fine_tunings/{fine_tuning_id}`
-  case fineTuningsRetrieve = "fineTunings.retrieve"
 }

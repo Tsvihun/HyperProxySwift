@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterDecisionsBoxAnswer: Codable, Sendable {
-  public var box: OpenRouterDecisionsBoxAnswerBox
+  public var box: OpenRouterDecisionsBoxAnswer.Box
   public var confidence: Double?
-  public var kind: OpenRouterDecisionsBoxAnswerKind
+  public var kind: OpenRouterDecisionsBoxAnswer.Kind
 
   public init(
-    box: OpenRouterDecisionsBoxAnswerBox,
-    kind: OpenRouterDecisionsBoxAnswerKind,
+    box: OpenRouterDecisionsBoxAnswer.Box,
+    kind: OpenRouterDecisionsBoxAnswer.Kind,
     confidence: Double? = nil
   ) {
     self.box = box
@@ -29,5 +29,35 @@ public struct OpenRouterDecisionsBoxAnswer: Codable, Sendable {
     case box
     case confidence
     case kind = "type"
+  }
+
+  public struct Box: Codable, Sendable {
+    public var bottom: Double
+    public var left: Double
+    public var right: Double
+    public var top: Double
+
+    public init(
+      bottom: Double,
+      left: Double,
+      right: Double,
+      top: Double
+    ) {
+      self.bottom = bottom
+      self.left = left
+      self.right = right
+      self.top = top
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case bottom
+      case left
+      case right
+      case top
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case box = "box"
   }
 }

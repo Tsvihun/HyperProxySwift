@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct MistralFieldSortInput: Codable, Sendable {
   public var direction: MistralSortDirection?
   public var field: MistralRecordSortField
-  public var kind: MistralFieldKind?
+  public var kind: MistralFieldSortInput.Kind?
 
   public init(
     field: MistralRecordSortField,
     direction: MistralSortDirection? = nil,
-    kind: MistralFieldKind? = nil
+    kind: MistralFieldSortInput.Kind? = nil
   ) {
     self.direction = direction
     self.field = field
@@ -29,5 +29,9 @@ public struct MistralFieldSortInput: Codable, Sendable {
     case direction
     case field
     case kind
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case field = "field"
   }
 }

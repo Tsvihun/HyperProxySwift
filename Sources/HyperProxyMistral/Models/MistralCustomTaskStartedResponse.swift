@@ -16,7 +16,7 @@ public struct MistralCustomTaskStartedResponse: Codable, Sendable {
   public var continuedRunId: String?
   public var eventId: String
   public var eventTimestamp: Int
-  public var eventType: MistralCUSTOMTASKSTARTEDEventType
+  public var eventType: MistralCustomTaskStartedResponse.EventType
   public var firstExecutionRunId: String?
   public var parentWorkflowExecId: String?
   public var rootWorkflowExecId: String
@@ -34,7 +34,7 @@ public struct MistralCustomTaskStartedResponse: Codable, Sendable {
     workflowExecId: String,
     workflowName: String,
     workflowRunId: String,
-    eventType: MistralCUSTOMTASKSTARTEDEventType = .cUSTOMTASKSTARTED,
+    eventType: MistralCustomTaskStartedResponse.EventType = .customTaskStarted,
     chainRunId: String? = nil,
     continuedRunId: String? = nil,
     firstExecutionRunId: String? = nil,
@@ -69,5 +69,9 @@ public struct MistralCustomTaskStartedResponse: Codable, Sendable {
     case workflowExecId = "workflow_exec_id"
     case workflowName = "workflow_name"
     case workflowRunId = "workflow_run_id"
+  }
+
+  public enum EventType: String, Codable, Hashable, Sendable {
+    case customTaskStarted = "CUSTOM_TASK_STARTED"
   }
 }

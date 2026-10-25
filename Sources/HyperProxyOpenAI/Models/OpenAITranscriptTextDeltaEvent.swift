@@ -12,14 +12,14 @@ import HyperProxyCore
 
 public struct OpenAITranscriptTextDeltaEvent: Codable, Sendable {
   public var delta: String
-  public var logprobs: [OpenAITranscriptTextDeltaEventLogprobsItem]?
+  public var logprobs: [OpenAITranscriptTextDeltaEvent.LogprobsElement]?
   public var segmentId: String?
-  public var kind: OpenAITranscriptTextDeltaEventKind
+  public var kind: OpenAITranscriptTextDeltaEvent.Kind
 
   public init(
     delta: String,
-    kind: OpenAITranscriptTextDeltaEventKind,
-    logprobs: [OpenAITranscriptTextDeltaEventLogprobsItem]? = nil,
+    kind: OpenAITranscriptTextDeltaEvent.Kind,
+    logprobs: [OpenAITranscriptTextDeltaEvent.LogprobsElement]? = nil,
     segmentId: String? = nil
   ) {
     self.delta = delta
@@ -33,5 +33,31 @@ public struct OpenAITranscriptTextDeltaEvent: Codable, Sendable {
     case logprobs
     case segmentId = "segment_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case transcriptTextDelta = "transcript.text.delta"
+  }
+
+  public struct LogprobsElement: Codable, Sendable {
+    public var bytes: [Int]?
+    public var logprob: Double?
+    public var token: String?
+
+    public init(
+      bytes: [Int]? = nil,
+      logprob: Double? = nil,
+      token: String? = nil
+    ) {
+      self.bytes = bytes
+      self.logprob = logprob
+      self.token = token
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case bytes
+      case logprob
+      case token
+    }
   }
 }

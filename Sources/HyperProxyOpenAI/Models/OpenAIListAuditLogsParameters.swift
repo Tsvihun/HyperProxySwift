@@ -15,7 +15,7 @@ public struct OpenAIListAuditLogsParameters: Codable, Sendable {
   public var actorIds: [String]?
   public var after: String?
   public var before: String?
-  public var effectiveAt: OpenAIListAuditLogsParametersEffectiveAt?
+  public var effectiveAt: OpenAIListAuditLogsParameters.EffectiveAt?
   public var eventTypes: [OpenAIAuditLogEventType]?
   public var limit: Int?
   public var projectIds: [String]?
@@ -27,7 +27,7 @@ public struct OpenAIListAuditLogsParameters: Codable, Sendable {
     actorIds: [String]? = nil,
     after: String? = nil,
     before: String? = nil,
-    effectiveAt: OpenAIListAuditLogsParametersEffectiveAt? = nil,
+    effectiveAt: OpenAIListAuditLogsParameters.EffectiveAt? = nil,
     eventTypes: [OpenAIAuditLogEventType]? = nil,
     limit: Int? = nil,
     projectIds: [String]? = nil,
@@ -57,5 +57,31 @@ public struct OpenAIListAuditLogsParameters: Codable, Sendable {
     case projectIds = "project_ids[]"
     case resourceIds = "resource_ids[]"
     case tenantOnly = "tenant_only"
+  }
+
+  public struct EffectiveAt: Codable, Sendable {
+    public var gt: Int?
+    public var gte: Int?
+    public var lt: Int?
+    public var lte: Int?
+
+    public init(
+      gt: Int? = nil,
+      gte: Int? = nil,
+      lt: Int? = nil,
+      lte: Int? = nil
+    ) {
+      self.gt = gt
+      self.gte = gte
+      self.lt = lt
+      self.lte = lte
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case gt
+      case gte
+      case lt
+      case lte
+    }
   }
 }

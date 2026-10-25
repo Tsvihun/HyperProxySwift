@@ -6,7 +6,7 @@
       "sourceURL": "https://storage.googleapis.com/stainless-sdk-openapi-specs/anthropic/anthropic-319861ef873b46e22d6feb51442e743643815093bdd2b3324df52ed202d7ab93.yml",
       "snapshotSha256": "8a5cbd0e3a1e2db9df7f35d750bdabb3228da9d635c3acb967fc969f5fbb2d17",
       "pointerURL": "https://raw.githubusercontent.com/anthropics/anthropic-sdk-typescript/main/.stats.yml",
-      "pointerSha256": "2392f06e9db7f4ded35715362c5d4d40b16e8457be44ee3b572467b193b2f4c9",
+      "pointerSha256": "8ebddc94306eabae43ab00280e6701685c1fc0fa02454d27de46e162215645b3",
       "rightsStatus": "riskAccepted",
       "rightsBasis": "No explicit redistribution grant for the resolved schema has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://github.com/anthropics/anthropic-sdk-typescript",
@@ -30,7 +30,7 @@
     "bfl/openapi": {
       "kind": "openapi",
       "sourceURL": "https://api.bfl.ai/openapi.json",
-      "snapshotSha256": "c425362557d02011976b65d6cfb83f719560a1a56b1e0df50988561fb02f8fb9",
+      "snapshotSha256": "130e07cb1373004985ed3ed69dc144df75a923d6e0921345caf1ea7cba9ea317",
       "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://api.bfl.ai/openapi.json",
       "noticeFiles": [],
@@ -44,7 +44,18 @@
         "snapshotSha256": "5d7c5ddab12dc1bad7d2575cc535678284b9da9749520938ace98b2d43c6fbe9",
         "noticeFiles": []
       },
-      "rightsStatus": "pending"
+      "rightsStatus": "pending",
+      "snapshotHistory": [
+        {
+          "kind": "openapi",
+          "sourceURL": "https://api.bfl.ai/openapi.json",
+          "snapshotSha256": "c425362557d02011976b65d6cfb83f719560a1a56b1e0df50988561fb02f8fb9",
+          "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
+          "rightsEvidenceURL": "https://api.bfl.ai/openapi.json",
+          "noticeFiles": [],
+          "rightsStatus": "pending"
+        }
+      ]
     },
     "bfl/reviewed-lora-openapi": {
       "kind": "reviewedOpenAPI",
@@ -218,7 +229,7 @@
     "elevenlabs/openapi": {
       "kind": "openapi",
       "sourceURL": "https://api.elevenlabs.io/openapi.json",
-      "snapshotSha256": "59c0327d9fd2285eed2403f9cb263ed91b3beaf074ca517a352363cc97812114",
+      "snapshotSha256": "b382874f3164446ee096d8097c4054cc26c235cb92cd5248b17235fdba87af01",
       "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://api.elevenlabs.io/openapi.json",
       "noticeFiles": [],
@@ -232,7 +243,18 @@
         "snapshotSha256": "dd67fc039c6e3950a2d0e5da46fe452e298adc9d848f049d7e2e7cf2c8835eab",
         "noticeFiles": []
       },
-      "rightsStatus": "pending"
+      "rightsStatus": "pending",
+      "snapshotHistory": [
+        {
+          "kind": "openapi",
+          "sourceURL": "https://api.elevenlabs.io/openapi.json",
+          "snapshotSha256": "59c0327d9fd2285eed2403f9cb263ed91b3beaf074ca517a352363cc97812114",
+          "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
+          "rightsEvidenceURL": "https://api.elevenlabs.io/openapi.json",
+          "noticeFiles": [],
+          "rightsStatus": "pending"
+        }
+      ]
     },
     "fal/platform-openapi": {
       "kind": "openapi",
@@ -275,7 +297,7 @@
     "gemini/discovery-v1beta": {
       "kind": "googleDiscovery",
       "sourceURL": "https://generativelanguage.googleapis.com/$discovery/rest?version=v1beta",
-      "snapshotSha256": "3ec8beb8b13ccd6bd33804e6f18aa17a48330f02cdfbb25fa0ba00c286db7fbd",
+      "snapshotSha256": "fead7088cb1bd1554323ec3d739e1bbef9568691d033eecc3f68d642bba1f12c",
       "rightsBasis": "No explicit redistribution grant for the Discovery document has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://developers.google.com/terms/api-services-user-data-policy",
       "noticeFiles": [],
@@ -289,7 +311,18 @@
         "acceptedBy": "Pavel Tsvihun (maintainer)",
         "acceptedAt": "2026-10-04"
       },
-      "rightsStatus": "pending"
+      "rightsStatus": "pending",
+      "snapshotHistory": [
+        {
+          "kind": "googleDiscovery",
+          "sourceURL": "https://generativelanguage.googleapis.com/$discovery/rest?version=v1beta",
+          "snapshotSha256": "3ec8beb8b13ccd6bd33804e6f18aa17a48330f02cdfbb25fa0ba00c286db7fbd",
+          "rightsBasis": "No explicit redistribution grant for the Discovery document has been documented; provider permission or counsel review is required.",
+          "rightsEvidenceURL": "https://developers.google.com/terms/api-services-user-data-policy",
+          "noticeFiles": [],
+          "rightsStatus": "pending"
+        }
+      ]
     },
     "groq/official-sdk-openapi": {
       "kind": "stainlessOpenAPI",
@@ -327,7 +360,7 @@
     "openai/openapi": {
       "kind": "openapi",
       "sourceURL": "https://raw.githubusercontent.com/openai/openai-openapi/master/openapi.yaml",
-      "snapshotSha256": "04c2cf961eceed6d0dab440f5ed753467cc98d8dbc572383bd9490006fff84b9",
+      "snapshotSha256": "a992b7e399108256c87e1f1259733cf163fea744ce3fd9609998781313bb3b34",
       "rightsBasis": "MIT License; preserve the OpenAI copyright and permission notice.",
       "rightsEvidenceURL": "https://github.com/openai/openai-openapi/blob/main/LICENSE",
       "noticeFiles": [
@@ -344,12 +377,25 @@
           "Compliance/notices/OpenAI-OpenAPI-MIT.txt"
         ]
       },
-      "rightsStatus": "pending"
+      "rightsStatus": "pending",
+      "snapshotHistory": [
+        {
+          "kind": "openapi",
+          "sourceURL": "https://raw.githubusercontent.com/openai/openai-openapi/master/openapi.yaml",
+          "snapshotSha256": "04c2cf961eceed6d0dab440f5ed753467cc98d8dbc572383bd9490006fff84b9",
+          "rightsBasis": "MIT License; preserve the OpenAI copyright and permission notice.",
+          "rightsEvidenceURL": "https://github.com/openai/openai-openapi/blob/main/LICENSE",
+          "noticeFiles": [
+            "Compliance/notices/OpenAI-OpenAPI-MIT.txt"
+          ],
+          "rightsStatus": "pending"
+        }
+      ]
     },
     "openrouter/openapi": {
       "kind": "openapi",
       "sourceURL": "https://openrouter.ai/docs/openapi/openapi.yaml",
-      "snapshotSha256": "3daf64103bb66b8cba3cf104e1c8df8fc14d11563f1d6e45c777742c002dc67f",
+      "snapshotSha256": "037d69c4cbbb8a151970ba6916587ff076f58f62f9d47ed81bfe40802b0c3a89",
       "rightsBasis": "The schema declares MIT but an authoritative copyright notice for this schema was not captured; provenance review remains required.",
       "rightsEvidenceURL": "https://openrouter.ai/docs/openapi/openapi.yaml",
       "noticeFiles": [],
@@ -363,12 +409,23 @@
         "snapshotSha256": "62124c640e813f866111dad50996496338a1a4739ba52696e1cce0a6d12ac2af",
         "noticeFiles": []
       },
-      "rightsStatus": "pending"
+      "rightsStatus": "pending",
+      "snapshotHistory": [
+        {
+          "kind": "openapi",
+          "sourceURL": "https://openrouter.ai/docs/openapi/openapi.yaml",
+          "snapshotSha256": "3daf64103bb66b8cba3cf104e1c8df8fc14d11563f1d6e45c777742c002dc67f",
+          "rightsBasis": "The schema declares MIT but an authoritative copyright notice for this schema was not captured; provenance review remains required.",
+          "rightsEvidenceURL": "https://openrouter.ai/docs/openapi/openapi.yaml",
+          "noticeFiles": [],
+          "rightsStatus": "pending"
+        }
+      ]
     },
     "perplexity/openapi": {
       "kind": "openapi",
       "sourceURL": "https://docs.perplexity.ai/openapi.json",
-      "snapshotSha256": "cb64900abdbf297d94546b6149830cfa7d6602a01a8f9ae8e7791a427e9d9247",
+      "snapshotSha256": "4cbf12afc8f732f844bfe0b014532cb9a6d18db94811b5bf283065b962c9cc8a",
       "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://docs.perplexity.ai/openapi.json",
       "noticeFiles": [],
@@ -382,7 +439,18 @@
         "snapshotSha256": "8c1c50724852fffdc6dc540c37f400bbbaf5f1fda0fca6f400ff869ecffdd42b",
         "noticeFiles": []
       },
-      "rightsStatus": "pending"
+      "rightsStatus": "pending",
+      "snapshotHistory": [
+        {
+          "kind": "openapi",
+          "sourceURL": "https://docs.perplexity.ai/openapi.json",
+          "snapshotSha256": "cb64900abdbf297d94546b6149830cfa7d6602a01a8f9ae8e7791a427e9d9247",
+          "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
+          "rightsEvidenceURL": "https://docs.perplexity.ai/openapi.json",
+          "noticeFiles": [],
+          "rightsStatus": "pending"
+        }
+      ]
     },
     "replicate/openapi": {
       "kind": "openapi",
@@ -418,7 +486,7 @@
     "together/openapi": {
       "kind": "openapi",
       "sourceURL": "https://docs.together.ai/openapi.yaml",
-      "snapshotSha256": "2e7b389c3e14f19e771c45eedd9794923eaf8e476e7595195f9cf4befa0a1757",
+      "snapshotSha256": "d6545309422476005d4da4c2f75cec82ff4a54ffd55e6aaa95188c3333a29284",
       "rightsBasis": "The schema declares MIT, but its referenced license URL returned 404 on 2026-09-19; authoritative license evidence and notice remain required.",
       "rightsEvidenceURL": "https://docs.together.ai/openapi.yaml",
       "noticeFiles": [],
@@ -432,30 +500,58 @@
         "acceptedBy": "Pavel Tsvihun (maintainer)",
         "acceptedAt": "2026-10-04"
       },
-      "rightsStatus": "pending"
+      "rightsStatus": "pending",
+      "snapshotHistory": [
+        {
+          "kind": "openapi",
+          "sourceURL": "https://docs.together.ai/openapi.yaml",
+          "snapshotSha256": "2e7b389c3e14f19e771c45eedd9794923eaf8e476e7595195f9cf4befa0a1757",
+          "rightsBasis": "The schema declares MIT, but its referenced license URL returned 404 on 2026-09-19; authoritative license evidence and notice remain required.",
+          "rightsEvidenceURL": "https://docs.together.ai/openapi.yaml",
+          "noticeFiles": [],
+          "rightsStatus": "pending"
+        }
+      ]
     }
   },
   "modules": [
     {
       "module": "HyperProxyAnthropic",
-      "artifactSha256": "851e970c3276a8c60380eec0b90eb577ffdba981238f1c5b7c6c1d9810fada1c",
+      "artifactSha256": "b26cef226e734e716d3528c547690c227316832178485338b4bf4828f1fcf5c2",
       "reviewStatus": "approved",
       "sourceIDs": [
         "anthropic/official-sdk-openapi"
       ],
       "reviewedBy": "Pavel Tsvihun (maintainer)",
       "reviewedAt": "2026-09-20",
-      "artifactReviewedBy": "Codex generated diff, compilation and contract checks",
-      "artifactReviewedAt": "2026-10-08",
+      "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+      "artifactReviewedAt": "2026-10-25",
       "previousArtifactReview": {
         "artifactSha256": "270b7c27de25ff6368950dca7befc48cb0d9f0ff4ebf809f124bec9bd1ad8b12",
         "artifactReviewedBy": "Codex (generated Swift API review)",
         "artifactReviewedAt": "2026-10-03"
-      }
+      },
+      "artifactReviewHistory": [
+        {
+          "artifactSha256": "851e970c3276a8c60380eec0b90eb577ffdba981238f1c5b7c6c1d9810fada1c",
+          "artifactReviewedBy": "Codex generated diff, compilation and contract checks",
+          "artifactReviewedAt": "2026-10-08"
+        },
+        {
+          "artifactSha256": "f4d4c4a71ef750f58b8bdc0e7dffd903756e280814eb57464bb2b46848cee144",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "artifactSha256": "816684ec886ac8c3213a2dd661f9c1ab6b9634b00a319d7901293b6e7d41d5ab",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        }
+      ]
     },
     {
       "module": "HyperProxyBFL",
-      "artifactSha256": "3f841582315dee0de05cba7a510b4cbe1801ae9d72ea97e54aad43155aaaf5ba",
+      "artifactSha256": "f430a5971aedd12b2c2a4e87232ef9a803deaf296405dbd1cff9bb63cee1913c",
       "reviewStatus": "pending",
       "sourceIDs": [
         "bfl/openapi",
@@ -472,24 +568,53 @@
         "reviewedBy": "Pavel Tsvihun (maintainer)",
         "reviewedAt": "2026-10-04"
       },
+      "artifactReviewHistory": [
+        {
+          "artifactSha256": "3f841582315dee0de05cba7a510b4cbe1801ae9d72ea97e54aad43155aaaf5ba",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-21"
+        },
+        {
+          "artifactSha256": "d648cfb2d141282a2071ebbe8e9dc9263666108f066d67c44090a826f9ff249f",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-24"
+        },
+        {
+          "artifactSha256": "29cf1e190e606fe838cacfdecda8116db78a479c974be22aa19ff1d2bf1067f8",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "artifactSha256": "ab2c4d9064705ea05d05727a3fa8f7d33013c916585116851f803589b7732180",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        }
+      ],
       "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
-      "artifactReviewedAt": "2026-10-21"
+      "artifactReviewedAt": "2026-10-25"
     },
     {
       "module": "HyperProxyBrave",
-      "artifactSha256": "f009374840e4e761d0e64c3ad264c964272e81dfedc8c3a5f596d9bf6edf2033",
+      "artifactSha256": "5e0845156b7c25f94c903ea9b67e3a65a8e26f380c76a1940cf8778bcfb06e34",
       "reviewStatus": "approved",
       "reviewedBy": "Pavel Tsvihun (maintainer)",
       "reviewedAt": "2026-09-20",
       "sourceIDs": [
         "brave/reviewed-search-api"
       ],
-      "artifactReviewedBy": "Codex (generated Swift API review)",
-      "artifactReviewedAt": "2026-10-03"
+      "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+      "artifactReviewedAt": "2026-10-25",
+      "artifactReviewHistory": [
+        {
+          "artifactSha256": "f009374840e4e761d0e64c3ad264c964272e81dfedc8c3a5f596d9bf6edf2033",
+          "artifactReviewedBy": "Codex (generated Swift API review)",
+          "artifactReviewedAt": "2026-10-03"
+        }
+      ]
     },
     {
       "module": "HyperProxyDeepL",
-      "artifactSha256": "83b64f2e92a7c0b27a1dac8e5388a4c225ab2449d8cf14b1952bee66815f939c",
+      "artifactSha256": "26f3e7591666e15dcc7edd6d2ba787329bb67494de55544ce97570a4caca566f",
       "reviewStatus": "pending",
       "sourceIDs": [
         "deepl/openapi",
@@ -506,33 +631,67 @@
         "reviewedAt": "2026-10-04"
       },
       "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
-      "artifactReviewedAt": "2026-10-21"
+      "artifactReviewedAt": "2026-10-25",
+      "artifactReviewHistory": [
+        {
+          "artifactSha256": "83b64f2e92a7c0b27a1dac8e5388a4c225ab2449d8cf14b1952bee66815f939c",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-21"
+        },
+        {
+          "artifactSha256": "925e26a88b4e47b7590dc5b892081b0ba21eeb4c233d12dd69483546b9b17508",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "artifactSha256": "1c835d1ee9699c62d8363add6389707032a48d8e2534ef713c88d4597efad436",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        }
+      ]
     },
     {
       "module": "HyperProxyDeepSeek",
-      "artifactSha256": "bd5a5088b0658ce5b7c40925ff9b49e9de47e1b14e40952e3db2ddc855cc1f8f",
+      "artifactSha256": "86ab73b2d120fd498af933d452331d3e62655cc5ba01bba3f59ff1901f83fd89",
       "reviewStatus": "approved",
       "sourceIDs": [
         "deepseek/reviewed-core-openapi",
         "deepseek/reviewed-anthropic-openapi",
         "deepseek/reviewed-responses-openapi"
       ],
-      "artifactReviewedBy": "Codex (generated Swift API review)",
-      "artifactReviewedAt": "2026-10-03",
+      "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+      "artifactReviewedAt": "2026-10-25",
       "reviewedBy": "Pavel Tsvihun (maintainer)",
-      "reviewedAt": "2026-10-04"
+      "reviewedAt": "2026-10-04",
+      "artifactReviewHistory": [
+        {
+          "artifactSha256": "bd5a5088b0658ce5b7c40925ff9b49e9de47e1b14e40952e3db2ddc855cc1f8f",
+          "artifactReviewedBy": "Codex (generated Swift API review)",
+          "artifactReviewedAt": "2026-10-03"
+        },
+        {
+          "artifactSha256": "119bb189d7318fd6546e91e7dcb78feca25f194b23ae41f3ce1a6d69b178a578",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "artifactSha256": "30586878605dd31d0222536ca584a7ecf76d7cd5aa4991d5830e166e42d30612",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        }
+      ]
     },
     {
       "module": "HyperProxyEachAI",
-      "artifactSha256": "7b752fbf1d5483c2d939eb28f7c0299337dc8499280817494fabe790ccd18b3b",
+      "artifactSha256": "965f101c06be82052d622883dff257689c366d4e5c603077e92fbe4923ec6857",
       "reviewStatus": "pending",
       "sourceIDs": [
         "eachai/openapi-api",
         "eachai/openapi-workflows-host",
         "eachai/reviewed-sense"
       ],
-      "artifactReviewedBy": "Codex (generated Swift diff, compilation and contract tests)",
-      "artifactReviewedAt": "2026-10-08",
+      "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+      "artifactReviewedAt": "2026-10-25",
       "previousArtifactReview": {
         "artifactSha256": "15e7aaf2afa957622ba31f4cd117e713327b3a9a6124fc687b9123d865827068",
         "artifactReviewedBy": "Codex (generated Swift API review)",
@@ -542,11 +701,28 @@
         "reviewStatus": "approved",
         "reviewedBy": "Pavel Tsvihun (maintainer)",
         "reviewedAt": "2026-10-04"
-      }
+      },
+      "artifactReviewHistory": [
+        {
+          "artifactSha256": "7b752fbf1d5483c2d939eb28f7c0299337dc8499280817494fabe790ccd18b3b",
+          "artifactReviewedBy": "Codex (generated Swift diff, compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-08"
+        },
+        {
+          "artifactSha256": "2593c3868415a0e91c54332e441846d973bc2c857215d8f468bef17733638308",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "artifactSha256": "dc13262cd905e5e3272df3a571ad018b1c0e4bd5aa7a3012fd751f520b9fd759",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        }
+      ]
     },
     {
       "module": "HyperProxyElevenLabs",
-      "artifactSha256": "94eb83e280cc7448984db6f7a3d68962b03d3514b2de9ca208e34d07d0225af5",
+      "artifactSha256": "069f33ecf5d73f0e9ce7963ce159469c5835ac233dd74469d759c8a8f2b0ad53",
       "reviewStatus": "pending",
       "sourceIDs": [
         "elevenlabs/openapi"
@@ -561,12 +737,34 @@
         "reviewedBy": "Pavel Tsvihun (maintainer)",
         "reviewedAt": "2026-10-04"
       },
+      "artifactReviewHistory": [
+        {
+          "artifactSha256": "94eb83e280cc7448984db6f7a3d68962b03d3514b2de9ca208e34d07d0225af5",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-21"
+        },
+        {
+          "artifactSha256": "5749fb941f3b23c4a1f6acb22bdb9cf77727436bb5c6f86096f7514231cc1dcd",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-24"
+        },
+        {
+          "artifactSha256": "918c4e4866eaa34f9c84bf00a6963296402990c458132e062f13792dc692a401",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "artifactSha256": "015353e16c75fbd7e35674221042d67d4be3cd4f390642377b656b5dd213e107",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        }
+      ],
       "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
-      "artifactReviewedAt": "2026-10-21"
+      "artifactReviewedAt": "2026-10-25"
     },
     {
       "module": "HyperProxyFal",
-      "artifactSha256": "9ccbb53af1d6f573aeec26574e93b54f9de6a076bfdca930062d3097606c8f00",
+      "artifactSha256": "18d9934957328b0129aef15af17fe2e7cf4e4915438b1a3159adf00c76bfb3fd",
       "reviewStatus": "pending",
       "sourceIDs": [
         "fal/platform-openapi"
@@ -582,17 +780,29 @@
         "reviewedAt": "2026-10-04"
       },
       "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
-      "artifactReviewedAt": "2026-10-21"
+      "artifactReviewedAt": "2026-10-25",
+      "artifactReviewHistory": [
+        {
+          "artifactSha256": "9ccbb53af1d6f573aeec26574e93b54f9de6a076bfdca930062d3097606c8f00",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-21"
+        },
+        {
+          "artifactSha256": "4e9ed52e87f36ffa115f59a4dbb3768a86435db7efb9118ec59e6cce09c65a27",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        }
+      ]
     },
     {
       "module": "HyperProxyFireworks",
-      "artifactSha256": "79978753e723fbadf456f98f2a328346a63a8b9aa8a161c4f0d5a700e7a086f6",
+      "artifactSha256": "5bad640016a57a74b4a69ab2ce84f7c4fda738634278252b67ee93b77d1a771c",
       "reviewStatus": "pending",
       "sourceIDs": [
         "fireworks/merged-openapi"
       ],
-      "artifactReviewedBy": "Codex generated diff, compilation and contract checks",
-      "artifactReviewedAt": "2026-10-08",
+      "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+      "artifactReviewedAt": "2026-10-25",
       "previousArtifactReview": {
         "artifactSha256": "541da002b06d09d815e16572bfc287ee3f60d7efb347cb5c393dcd36e8d736aa",
         "artifactReviewedBy": "Codex (generated Swift API review)",
@@ -602,11 +812,28 @@
         "reviewStatus": "approved",
         "reviewedBy": "Pavel Tsvihun (maintainer)",
         "reviewedAt": "2026-10-04"
-      }
+      },
+      "artifactReviewHistory": [
+        {
+          "artifactSha256": "79978753e723fbadf456f98f2a328346a63a8b9aa8a161c4f0d5a700e7a086f6",
+          "artifactReviewedBy": "Codex generated diff, compilation and contract checks",
+          "artifactReviewedAt": "2026-10-08"
+        },
+        {
+          "artifactSha256": "6c8a5ab519b020f09f17cda6191fe79da76f2267ab7ee3462706b148e511165b",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "artifactSha256": "61b3c73af13aea79ec4e963792ade3f51b07861ee325aede7953619e19f9fec8",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        }
+      ]
     },
     {
       "module": "HyperProxyGemini",
-      "artifactSha256": "4c21ca3227e7d424c0b5c222efb0bbe38c23a85cd2306ab152c1544d73d17b24",
+      "artifactSha256": "c5bdf7e81491cb4e0faa66b8b8d271d8da32bdb218806e477c66452095a5efd4",
       "reviewStatus": "pending",
       "sourceIDs": [
         "gemini/discovery-v1beta"
@@ -622,23 +849,57 @@
         "reviewedAt": "2026-10-04"
       },
       "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
-      "artifactReviewedAt": "2026-10-21"
+      "artifactReviewedAt": "2026-10-25",
+      "artifactReviewHistory": [
+        {
+          "artifactSha256": "4c21ca3227e7d424c0b5c222efb0bbe38c23a85cd2306ab152c1544d73d17b24",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-21"
+        },
+        {
+          "artifactSha256": "888c6c853725285bd1115503a39c5908fdd83d463404bb89889364169ce26401",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "artifactSha256": "66b841c09e138f9a7a27f9a2fcda6eaee87b690a261425a41b0ab2ef7398bc15",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        }
+      ]
     },
     {
       "module": "HyperProxyGroq",
-      "artifactSha256": "c34ecc757c08da63d7a174b0a33f3cd6a98c0713df7a1fb9d1ce3628d3e41a84",
+      "artifactSha256": "167457f24c94123b5e20d510677fdf6adf01d1b29c6a483135bc97cb4f78e327",
       "reviewStatus": "approved",
       "sourceIDs": [
         "groq/official-sdk-openapi"
       ],
       "reviewedBy": "Pavel Tsvihun (maintainer)",
       "reviewedAt": "2026-09-20",
-      "artifactReviewedBy": "Codex (generated Swift API review)",
-      "artifactReviewedAt": "2026-10-03"
+      "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+      "artifactReviewedAt": "2026-10-25",
+      "artifactReviewHistory": [
+        {
+          "artifactSha256": "c34ecc757c08da63d7a174b0a33f3cd6a98c0713df7a1fb9d1ce3628d3e41a84",
+          "artifactReviewedBy": "Codex (generated Swift API review)",
+          "artifactReviewedAt": "2026-10-03"
+        },
+        {
+          "artifactSha256": "f5576fe32cf4653d324a6d209eea4f8bfd0d358d1a009000f2d6eb31605e8dd8",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "artifactSha256": "b34197378ddbad41d99e8375ac464261fc79031354dbc2e27d4b73632cef8c0b",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        }
+      ]
     },
     {
       "module": "HyperProxyMistral",
-      "artifactSha256": "44927b0cf6e41884116237df0dff4af4a91ebb2651c2d28745b12200126f8fb3",
+      "artifactSha256": "93f702dceba1dfd10cd571091c13b652d8796847bf7612675a7c8a58af083109",
       "reviewStatus": "pending",
       "sourceIDs": [
         "mistral/openapi"
@@ -654,11 +915,33 @@
         "reviewedAt": "2026-10-04"
       },
       "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
-      "artifactReviewedAt": "2026-10-21"
+      "artifactReviewedAt": "2026-10-25",
+      "artifactReviewHistory": [
+        {
+          "artifactSha256": "44927b0cf6e41884116237df0dff4af4a91ebb2651c2d28745b12200126f8fb3",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-21"
+        },
+        {
+          "artifactSha256": "82ef4a4f9213ebe29a2efbc22a909ea120d248c1556f108a158ff77fbbc7c512",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "artifactSha256": "e4e8c2fd70c29fc9a5c8d3989c22a028ede591adcf99c2d4cb4491d6fd51ea07",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "artifactSha256": "f6ca05a8d1952c5202835c7507d25e313735c497cdbf0fbf338e3039a9afd0d7",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        }
+      ]
     },
     {
       "module": "HyperProxyOpenAI",
-      "artifactSha256": "f8f076a45b6d2b1e9f4ad9fa2dd80a666007631a365743f9def6487f876872fe",
+      "artifactSha256": "33fc5dfcda0e8486de51567603532576d790c7efa3bcf1cfdb05492188b4a14e",
       "reviewStatus": "pending",
       "sourceIDs": [
         "openai/openapi"
@@ -673,12 +956,34 @@
         "reviewedBy": "Pavel Tsvihun (maintainer)",
         "reviewedAt": "2026-10-04"
       },
+      "artifactReviewHistory": [
+        {
+          "artifactSha256": "f8f076a45b6d2b1e9f4ad9fa2dd80a666007631a365743f9def6487f876872fe",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-21"
+        },
+        {
+          "artifactSha256": "cc0d9589aea9338fd53924807991eae117f55bc5a85900beb33b80c485e2ac1e",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-24"
+        },
+        {
+          "artifactSha256": "3dd357f86aef88a12c929f17ab9f4cef9b26d4479ae68c8b2b44ec456225cbbd",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "artifactSha256": "a88c4ca05a80d52271605685507fe5cf9f5e69e12085b431199450f50a260c4d",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        }
+      ],
       "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
-      "artifactReviewedAt": "2026-10-21"
+      "artifactReviewedAt": "2026-10-25"
     },
     {
       "module": "HyperProxyOpenRouter",
-      "artifactSha256": "c82f28a2fbf6a2d806888e877f2b3f11c94762071b6be151e832a65604f21c0e",
+      "artifactSha256": "0085d16a4b6dfd32379960b4c8191a919695fc855c26c3fcf39036eddf24ed9c",
       "reviewStatus": "pending",
       "sourceIDs": [
         "openrouter/openapi"
@@ -693,12 +998,34 @@
         "reviewedBy": "Pavel Tsvihun (maintainer)",
         "reviewedAt": "2026-10-04"
       },
+      "artifactReviewHistory": [
+        {
+          "artifactSha256": "c82f28a2fbf6a2d806888e877f2b3f11c94762071b6be151e832a65604f21c0e",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-21"
+        },
+        {
+          "artifactSha256": "8f767749b6a60d6ebc49b937efb594a50e6601db0a0f73e1fe725df136d2c1d0",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-24"
+        },
+        {
+          "artifactSha256": "634b675e2574b8ca19f914283c7216a55f7f6c25c7c632a012f27c4c418c8c61",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "artifactSha256": "5476cc6574d52a7a8a483ad166b250c191ec1544dabb840fafdcfe6836f7e887",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        }
+      ],
       "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
-      "artifactReviewedAt": "2026-10-21"
+      "artifactReviewedAt": "2026-10-25"
     },
     {
       "module": "HyperProxyPerplexity",
-      "artifactSha256": "0b624732965e5d213a71e31b14e01d500c35aa08198ba0de33fd8046209d97ea",
+      "artifactSha256": "fc1053d82f589f7023919208c325dc02bc9a40f251ba9ec2997465d61af92564",
       "reviewStatus": "pending",
       "sourceIDs": [
         "perplexity/openapi"
@@ -713,12 +1040,34 @@
         "reviewedBy": "Pavel Tsvihun (maintainer)",
         "reviewedAt": "2026-10-04"
       },
+      "artifactReviewHistory": [
+        {
+          "artifactSha256": "0b624732965e5d213a71e31b14e01d500c35aa08198ba0de33fd8046209d97ea",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-21"
+        },
+        {
+          "artifactSha256": "ceb4d73204f6c7165a27018fa31ea574762fb4650723f6d0db05c4367de065a1",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-24"
+        },
+        {
+          "artifactSha256": "cb8c0f6fabed8334d4b5abd9c76e4493cc6e7adfe28a3758c7fecde2cf3e0a32",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "artifactSha256": "dfc1a4b8aaf0880663f09371f46f648051d01424c4bd9163d4432b4ba601bd0f",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        }
+      ],
       "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
-      "artifactReviewedAt": "2026-10-21"
+      "artifactReviewedAt": "2026-10-25"
     },
     {
       "module": "HyperProxyProviders",
-      "artifactSha256": "30ff0171d0c7957fdd7a2c3ab498d2919ed9701d619834e0fceb2c9882bea51b",
+      "artifactSha256": "974123992429e69d9c8fd94d82df1f307104421c931aff561870fc1fcda3ecda",
       "reviewStatus": "pending",
       "sourceIDs": [
         "anthropic/official-sdk-openapi",
@@ -757,39 +1106,80 @@
         "reviewedBy": "Pavel Tsvihun (maintainer)",
         "reviewedAt": "2026-10-04"
       },
+      "artifactReviewHistory": [
+        {
+          "artifactSha256": "30ff0171d0c7957fdd7a2c3ab498d2919ed9701d619834e0fceb2c9882bea51b",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-21"
+        },
+        {
+          "artifactSha256": "ad56daebe5ba2b2eafe04786b3e07a0576f901a29710ffc6d80452153ba269ea",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-24"
+        }
+      ],
       "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
-      "artifactReviewedAt": "2026-10-21"
+      "artifactReviewedAt": "2026-10-25"
     },
     {
       "module": "HyperProxyReplicate",
-      "artifactSha256": "af8ff3eb97e21781b2e259c2945b92cd93a14d75f39907bd462f5b08c24f38cf",
+      "artifactSha256": "2e195be574301c495dec535699e1a49cbfaf3faf217da71022e1c273435b3f9e",
       "reviewStatus": "approved",
       "sourceIDs": [
         "replicate/openapi"
       ],
       "reviewedBy": "Pavel Tsvihun (maintainer)",
       "reviewedAt": "2026-09-20",
-      "artifactReviewedBy": "Codex (generated Swift API review)",
-      "artifactReviewedAt": "2026-10-03"
+      "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+      "artifactReviewedAt": "2026-10-25",
+      "artifactReviewHistory": [
+        {
+          "artifactSha256": "af8ff3eb97e21781b2e259c2945b92cd93a14d75f39907bd462f5b08c24f38cf",
+          "artifactReviewedBy": "Codex (generated Swift API review)",
+          "artifactReviewedAt": "2026-10-03"
+        },
+        {
+          "artifactSha256": "0c4eed3bfda021a0ae1fc299cb73233ec7ccd5ee48de491b0b875e4e4ae29970",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "artifactSha256": "a318e51952cae6845e6f03b24af94133885357209b24aa94304149d80c226225",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        }
+      ]
     },
     {
       "module": "HyperProxyStability",
-      "artifactSha256": "313bb86a7880a1e55c41abf5f140b8d065fb692427034ad60f5a677a411fd652",
+      "artifactSha256": "191c4f952968f801cbfc4d004f8fda5d366c7dd4e025347f095a7c73d3a77399",
       "reviewStatus": "pending",
       "sourceIDs": [
         "stability/openapi-v2beta"
       ],
-      "artifactReviewedBy": "Codex (generated Swift API review)",
-      "artifactReviewedAt": "2026-10-03",
+      "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+      "artifactReviewedAt": "2026-10-25",
       "previousReview": {
         "reviewStatus": "approved",
         "reviewedBy": "Pavel Tsvihun (maintainer)",
         "reviewedAt": "2026-09-20"
-      }
+      },
+      "artifactReviewHistory": [
+        {
+          "artifactSha256": "313bb86a7880a1e55c41abf5f140b8d065fb692427034ad60f5a677a411fd652",
+          "artifactReviewedBy": "Codex (generated Swift API review)",
+          "artifactReviewedAt": "2026-10-03"
+        },
+        {
+          "artifactSha256": "32f76423e18a1fbe79c5454c6dfb3bf8bef2d8419cce3989521a54453cb99910",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        }
+      ]
     },
     {
       "module": "HyperProxyTogether",
-      "artifactSha256": "2a8ea74dea81c944025bd36551ffe693c62340ed330485514e8959fe3fca72ad",
+      "artifactSha256": "48ff1a2feb7ed86fb111be2a08b7306b349cd8711f62c2127164c4433a5f25e9",
       "reviewStatus": "pending",
       "sourceIDs": [
         "together/openapi"
@@ -804,8 +1194,30 @@
         "reviewedBy": "Pavel Tsvihun (maintainer)",
         "reviewedAt": "2026-10-04"
       },
+      "artifactReviewHistory": [
+        {
+          "artifactSha256": "2a8ea74dea81c944025bd36551ffe693c62340ed330485514e8959fe3fca72ad",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-21"
+        },
+        {
+          "artifactSha256": "b4dd893f99bc242b329c1e39447290d2c8178327889a5c274e08ec54f3ffb51b",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-24"
+        },
+        {
+          "artifactSha256": "7825b0e2f0de02771b146838a0683368f5b85082772b15b0af60f33fdd9f594d",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "artifactSha256": "848dbdcc26e999a1715aef280f392ee5fc5f4f5b032e1ee1a2d876016ec34278",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        }
+      ],
       "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
-      "artifactReviewedAt": "2026-10-21"
+      "artifactReviewedAt": "2026-10-25"
     }
   ]
 }

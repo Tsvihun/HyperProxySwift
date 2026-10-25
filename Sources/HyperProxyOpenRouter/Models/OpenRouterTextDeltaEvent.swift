@@ -46,4 +46,18 @@ public struct OpenRouterTextDeltaEvent: Codable, Sendable {
     case sequenceNumber = "sequence_number"
     case kind = "type"
   }
+
+  public struct WithLogprobs: Codable, Sendable {
+    public var logprobs: [OpenRouterStreamLogprob]?
+
+    public init(
+      logprobs: [OpenRouterStreamLogprob]? = nil
+    ) {
+      self.logprobs = logprobs
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case logprobs
+    }
+  }
 }

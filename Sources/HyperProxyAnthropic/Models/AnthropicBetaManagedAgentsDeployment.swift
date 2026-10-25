@@ -25,7 +25,7 @@ public struct AnthropicBetaManagedAgentsDeployment: Codable, Sendable {
   public var resources: [AnthropicBetaManagedAgentsSessionResourceConfig]
   public var schedule: AnthropicBetaManagedAgentsSchedule?
   public var status: AnthropicBetaManagedAgentsDeploymentStatus
-  public var kind: AnthropicBetaManagedAgentsDeploymentKind
+  public var kind: AnthropicBetaManagedAgentsDeployment.Kind
   public var updatedAt: AnthropicBetaTimestamp
   public var vaultIds: [String]
 
@@ -43,7 +43,7 @@ public struct AnthropicBetaManagedAgentsDeployment: Codable, Sendable {
     resources: [AnthropicBetaManagedAgentsSessionResourceConfig],
     schedule: AnthropicBetaManagedAgentsSchedule?,
     status: AnthropicBetaManagedAgentsDeploymentStatus,
-    kind: AnthropicBetaManagedAgentsDeploymentKind,
+    kind: AnthropicBetaManagedAgentsDeployment.Kind,
     updatedAt: AnthropicBetaTimestamp,
     vaultIds: [String],
     budget: AnthropicBetaManagedAgentsBudget? = nil
@@ -85,5 +85,9 @@ public struct AnthropicBetaManagedAgentsDeployment: Codable, Sendable {
     case kind = "type"
     case updatedAt = "updated_at"
     case vaultIds = "vault_ids"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case deployment = "deployment"
   }
 }

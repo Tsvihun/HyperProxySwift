@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAILockedStatus: Codable, Sendable {
   public var reason: String?
-  public var kind: OpenAILockedStatusKind
+  public var kind: OpenAILockedStatus.Kind
 
   public init(
     reason: String?,
-    kind: OpenAILockedStatusKind
+    kind: OpenAILockedStatus.Kind
   ) {
     self.reason = reason
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenAILockedStatus: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case reason
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case locked = "locked"
   }
 }

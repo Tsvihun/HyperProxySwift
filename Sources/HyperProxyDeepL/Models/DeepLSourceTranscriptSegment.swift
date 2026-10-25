@@ -34,4 +34,18 @@ public struct DeepLSourceTranscriptSegment: Codable, Sendable {
     case startTime = "start_time"
     case text
   }
+
+  public struct WithLanguage: Codable, Sendable {
+    public var language: String
+
+    public init(
+      language: String
+    ) {
+      self.language = language
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case language
+    }
+  }
 }

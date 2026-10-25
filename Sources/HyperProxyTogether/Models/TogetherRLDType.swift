@@ -11,8 +11,8 @@ import Foundation
 import HyperProxyCore
 
 public enum TogetherRLDType: String, Codable, Hashable, Sendable {
-  case dTYPEUNSPECIFIED = "D_TYPE_UNSPECIFIED"
-  case dTYPEINT64 = "D_TYPE_INT64"
-  case dTYPEFLOAT32 = "D_TYPE_FLOAT32"
-  case dTYPEBFLOAT16 = "D_TYPE_BFLOAT16"
+  case dTypeUnspecified = "D_TYPE_UNSPECIFIED"
+  case dTypeInt64 = "D_TYPE_INT64"
+  case dTypeFloat32 = "D_TYPE_FLOAT32"
+  case dTypeBfloat16 = "D_TYPE_BFLOAT16"
 }

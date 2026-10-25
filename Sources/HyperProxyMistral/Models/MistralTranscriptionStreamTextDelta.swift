@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct MistralTranscriptionStreamTextDelta: Codable, Sendable {
   public var text: String
-  public var kind: MistralTranscriptionTextDeltaKind?
+  public var kind: MistralTranscriptionStreamTextDelta.Kind?
 
   public init(
     text: String,
-    kind: MistralTranscriptionTextDeltaKind? = nil
+    kind: MistralTranscriptionStreamTextDelta.Kind? = nil
   ) {
     self.text = text
     self.kind = kind
@@ -25,5 +25,9 @@ public struct MistralTranscriptionStreamTextDelta: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case text
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case transcriptionTextDelta = "transcription.text.delta"
   }
 }

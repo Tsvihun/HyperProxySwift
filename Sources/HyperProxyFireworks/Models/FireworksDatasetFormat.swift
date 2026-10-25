@@ -11,8 +11,8 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksDatasetFormat: String, Codable, Hashable, Sendable {
-  case fORMATUNSPECIFIED = "FORMAT_UNSPECIFIED"
-  case cHAT = "CHAT"
-  case cOMPLETION = "COMPLETION"
-  case rL = "RL"
+  case formatUnspecified = "FORMAT_UNSPECIFIED"
+  case chat = "CHAT"
+  case completion = "COMPLETION"
+  case rl = "RL"
 }

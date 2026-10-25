@@ -15,13 +15,13 @@ public struct OpenAILiveDelegationCreated: Codable, Sendable {
   public var delegation: OpenAILiveDelegationItem
   public var eventId: String
   public var offsetMs: Int
-  public var kind: OpenAILiveDelegationCreatedKind
+  public var kind: OpenAILiveDelegationCreated.Kind
 
   public init(
     delegation: OpenAILiveDelegationItem,
     eventId: String,
     offsetMs: Int,
-    kind: OpenAILiveDelegationCreatedKind,
+    kind: OpenAILiveDelegationCreated.Kind,
     clientEventId: String? = nil
   ) {
     self.clientEventId = clientEventId
@@ -37,5 +37,9 @@ public struct OpenAILiveDelegationCreated: Codable, Sendable {
     case eventId = "event_id"
     case offsetMs = "offset_ms"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case sessionDelegationCreated = "session.delegation.created"
   }
 }

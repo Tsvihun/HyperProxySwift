@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct MistralKeywordRetriever: Codable, Sendable {
   public var field: String?
-  public var filter: MistralKeywordRetrieverFilterAnyOf1?
+  public var filter: MistralKeywordRetrieverFilterVariant?
   public var query: String
   public var topK: Int?
   public var kind: MistralKeywordKindc07262b7?
@@ -20,7 +20,7 @@ public struct MistralKeywordRetriever: Codable, Sendable {
   public init(
     query: String,
     field: String? = nil,
-    filter: MistralKeywordRetrieverFilterAnyOf1? = nil,
+    filter: MistralKeywordRetrieverFilterVariant? = nil,
     topK: Int? = nil,
     kind: MistralKeywordKindc07262b7? = nil
   ) {

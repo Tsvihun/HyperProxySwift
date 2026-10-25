@@ -23,25 +23,25 @@ public struct OpenRouterChatRequest: Codable, Sendable {
   public var messages: [OpenRouterChatMessages]
   public var metadata: [String: String]?
   public var minP: Double?
-  public var modalities: [OpenRouterChatRequestModalitiesItem]?
+  public var modalities: [OpenRouterChatRequest.ModalitiesElement]?
   public var model: String?
   public var models: OpenRouterChatModelNames?
   public var parallelToolCalls: Bool?
-  public var plugins: [OpenRouterChatRequestPluginsItem]?
+  public var plugins: [OpenRouterChatRequest.PluginsElement]?
   public var prediction: OpenRouterPrediction?
   public var presencePenalty: Double?
   public var promptCacheKey: String?
   public var promptCacheOptions: OpenRouterPromptCacheOptions?
   public var provider: OpenRouterProviderPreferences?
-  public var reasoning: OpenRouterChatRequestReasoning?
-  public var reasoningEffort: OpenRouterChatRequestReasoningEffort83f7f0cc?
+  public var reasoning: OpenRouterChatRequest.Reasoning?
+  public var reasoningEffort: OpenRouterChatRequest.ReasoningEffort?
   public var repetitionPenalty: Double?
-  public var responseFormat: OpenRouterChatRequestResponseFormat?
+  public var responseFormat: OpenRouterChatRequest.ResponseFormat?
   public var route: OpenRouterDeprecatedRoute?
   public var seed: Int?
-  public var serviceTier: OpenRouterChatRequestServiceTier?
+  public var serviceTier: OpenRouterChatRequest.ServiceTier?
   public var sessionId: String?
-  public var stop: OpenRouterChatRequestStop?
+  public var stop: OpenRouterChatRequest.Stop?
   public var stopServerToolsWhen: OpenRouterStopServerToolsWhen?
   public var stream: Bool?
   public var streamOptions: OpenRouterChatStreamOptions?
@@ -68,25 +68,25 @@ public struct OpenRouterChatRequest: Codable, Sendable {
     maxTokens: Int? = nil,
     metadata: [String: String]? = nil,
     minP: Double? = nil,
-    modalities: [OpenRouterChatRequestModalitiesItem]? = nil,
+    modalities: [OpenRouterChatRequest.ModalitiesElement]? = nil,
     model: String? = nil,
     models: OpenRouterChatModelNames? = nil,
     parallelToolCalls: Bool? = nil,
-    plugins: [OpenRouterChatRequestPluginsItem]? = nil,
+    plugins: [OpenRouterChatRequest.PluginsElement]? = nil,
     prediction: OpenRouterPrediction? = nil,
     presencePenalty: Double? = nil,
     promptCacheKey: String? = nil,
     promptCacheOptions: OpenRouterPromptCacheOptions? = nil,
     provider: OpenRouterProviderPreferences? = nil,
-    reasoning: OpenRouterChatRequestReasoning? = nil,
-    reasoningEffort: OpenRouterChatRequestReasoningEffort83f7f0cc? = nil,
+    reasoning: OpenRouterChatRequest.Reasoning? = nil,
+    reasoningEffort: OpenRouterChatRequest.ReasoningEffort? = nil,
     repetitionPenalty: Double? = nil,
-    responseFormat: OpenRouterChatRequestResponseFormat? = nil,
+    responseFormat: OpenRouterChatRequest.ResponseFormat? = nil,
     route: OpenRouterDeprecatedRoute? = nil,
     seed: Int? = nil,
-    serviceTier: OpenRouterChatRequestServiceTier? = nil,
+    serviceTier: OpenRouterChatRequest.ServiceTier? = nil,
     sessionId: String? = nil,
-    stop: OpenRouterChatRequestStop? = nil,
+    stop: OpenRouterChatRequest.Stop? = nil,
     stopServerToolsWhen: OpenRouterStopServerToolsWhen? = nil,
     stream: Bool? = nil,
     streamOptions: OpenRouterChatStreamOptions? = nil,
@@ -189,5 +189,248 @@ public struct OpenRouterChatRequest: Codable, Sendable {
     case topP = "top_p"
     case trace
     case user
+  }
+
+  public enum ModalitiesElement: String, Codable, Hashable, Sendable {
+    case text = "text"
+    case image = "image"
+    case audio = "audio"
+  }
+
+  public enum PluginsElement: Codable, Sendable {
+    case autoRouterPlugin(OpenRouterAutoRouterPlugin)
+    case autoBetaRouterPlugin(OpenRouterAutoBetaRouterPlugin)
+    case moderationPlugin(OpenRouterModerationPlugin)
+    case webSearchPlugin(OpenRouterWebSearchPlugin)
+    case webFetchPlugin(OpenRouterWebFetchPlugin)
+    case fileParserPlugin(OpenRouterFileParserPlugin)
+    case responseHealingPlugin(OpenRouterResponseHealingPlugin)
+    case contextCompressionPlugin(OpenRouterContextCompressionPlugin)
+    case paretoRouterPlugin(OpenRouterParetoRouterPlugin)
+    case fusionPlugin(OpenRouterFusionPlugin)
+    case switchyardRouterPlugin(OpenRouterSwitchyardRouterPlugin)
+    case jevRouterPlugin(OpenRouterJevRouterPlugin)
+    case alignmentPlugin(OpenRouterAlignmentPlugin)
+    case armorPlugin(OpenRouterArmorPlugin)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenRouterAutoRouterPlugin.self) {
+        self = .autoRouterPlugin(value)
+        return
+      }
+      if let value = try? container.decode(OpenRouterAutoBetaRouterPlugin.self) {
+        self = .autoBetaRouterPlugin(value)
+        return
+      }
+      if let value = try? container.decode(OpenRouterModerationPlugin.self) {
+        self = .moderationPlugin(value)
+        return
+      }
+      if let value = try? container.decode(OpenRouterWebSearchPlugin.self) {
+        self = .webSearchPlugin(value)
+        return
+      }
+      if let value = try? container.decode(OpenRouterWebFetchPlugin.self) {
+        self = .webFetchPlugin(value)
+        return
+      }
+      if let value = try? container.decode(OpenRouterFileParserPlugin.self) {
+        self = .fileParserPlugin(value)
+        return
+      }
+      if let value = try? container.decode(OpenRouterResponseHealingPlugin.self) {
+        self = .responseHealingPlugin(value)
+        return
+      }
+      if let value = try? container.decode(OpenRouterContextCompressionPlugin.self) {
+        self = .contextCompressionPlugin(value)
+        return
+      }
+      if let value = try? container.decode(OpenRouterParetoRouterPlugin.self) {
+        self = .paretoRouterPlugin(value)
+        return
+      }
+      if let value = try? container.decode(OpenRouterFusionPlugin.self) {
+        self = .fusionPlugin(value)
+        return
+      }
+      if let value = try? container.decode(OpenRouterSwitchyardRouterPlugin.self) {
+        self = .switchyardRouterPlugin(value)
+        return
+      }
+      if let value = try? container.decode(OpenRouterJevRouterPlugin.self) {
+        self = .jevRouterPlugin(value)
+        return
+      }
+      if let value = try? container.decode(OpenRouterAlignmentPlugin.self) {
+        self = .alignmentPlugin(value)
+        return
+      }
+      self = .armorPlugin(try container.decode(OpenRouterArmorPlugin.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .autoRouterPlugin(let value):
+        try container.encode(value)
+      case .autoBetaRouterPlugin(let value):
+        try container.encode(value)
+      case .moderationPlugin(let value):
+        try container.encode(value)
+      case .webSearchPlugin(let value):
+        try container.encode(value)
+      case .webFetchPlugin(let value):
+        try container.encode(value)
+      case .fileParserPlugin(let value):
+        try container.encode(value)
+      case .responseHealingPlugin(let value):
+        try container.encode(value)
+      case .contextCompressionPlugin(let value):
+        try container.encode(value)
+      case .paretoRouterPlugin(let value):
+        try container.encode(value)
+      case .fusionPlugin(let value):
+        try container.encode(value)
+      case .switchyardRouterPlugin(let value):
+        try container.encode(value)
+      case .jevRouterPlugin(let value):
+        try container.encode(value)
+      case .alignmentPlugin(let value):
+        try container.encode(value)
+      case .armorPlugin(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public struct Reasoning: Codable, Sendable {
+    public var effort: OpenRouterChatRequest.Reasoning.Effort?
+    public var summary: OpenRouterChatReasoningSummaryVerbosityEnum?
+
+    public init(
+      effort: OpenRouterChatRequest.Reasoning.Effort? = nil,
+      summary: OpenRouterChatReasoningSummaryVerbosityEnum? = nil
+    ) {
+      self.effort = effort
+      self.summary = summary
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case effort
+      case summary
+    }
+
+    public enum Effort: String, Codable, Hashable, Sendable {
+      case max = "max"
+      case xhigh = "xhigh"
+      case high = "high"
+      case medium = "medium"
+      case low = "low"
+      case minimal = "minimal"
+      case none = "none"
+    }
+  }
+
+  public enum ReasoningEffort: String, Codable, Hashable, Sendable {
+    case max = "max"
+    case xhigh = "xhigh"
+    case high = "high"
+    case medium = "medium"
+    case low = "low"
+    case minimal = "minimal"
+    case none = "none"
+  }
+
+  public enum ResponseFormat: Codable, Sendable {
+    case chatFormatTextConfig(OpenRouterChatFormatTextConfig)
+    case chatFormatJsonObjectConfig(OpenRouterChatFormatJsonObjectConfig)
+    case chatFormatJsonSchemaConfig(OpenRouterChatFormatJsonSchemaConfig)
+    case chatFormatGrammarConfig(OpenRouterChatFormatGrammarConfig)
+    case chatFormatPythonConfig(OpenRouterChatFormatPythonConfig)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenRouterChatFormatTextConfig.self) {
+        self = .chatFormatTextConfig(value)
+        return
+      }
+      if let value = try? container.decode(OpenRouterChatFormatJsonObjectConfig.self) {
+        self = .chatFormatJsonObjectConfig(value)
+        return
+      }
+      if let value = try? container.decode(OpenRouterChatFormatJsonSchemaConfig.self) {
+        self = .chatFormatJsonSchemaConfig(value)
+        return
+      }
+      if let value = try? container.decode(OpenRouterChatFormatGrammarConfig.self) {
+        self = .chatFormatGrammarConfig(value)
+        return
+      }
+      self = .chatFormatPythonConfig(try container.decode(OpenRouterChatFormatPythonConfig.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .chatFormatTextConfig(let value):
+        try container.encode(value)
+      case .chatFormatJsonObjectConfig(let value):
+        try container.encode(value)
+      case .chatFormatJsonSchemaConfig(let value):
+        try container.encode(value)
+      case .chatFormatGrammarConfig(let value):
+        try container.encode(value)
+      case .chatFormatPythonConfig(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum ServiceTier: String, Codable, Hashable, Sendable {
+    case auto = "auto"
+    case defaultValue = "default"
+    case fast = "fast"
+    case flex = "flex"
+    case priority = "priority"
+    case scale = "scale"
+    case ultrafast = "ultrafast"
+  }
+
+  public enum Stop: Codable, Sendable {
+    case string(String)
+    case stringArray([String])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .stringArray(try container.decode([String].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .stringArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension OpenRouterChatRequest.Stop: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension OpenRouterChatRequest.Stop: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: String...) {
+    self = .stringArray(elements)
   }
 }

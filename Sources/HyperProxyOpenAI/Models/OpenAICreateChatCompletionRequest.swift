@@ -11,9 +11,9 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAICreateChatCompletionRequest: Codable, Sendable {
-  public var audio: OpenAICreateChatCompletionRequestAllOf2Audio?
+  public var audio: OpenAICreateChatCompletionRequestAudio?
   public var frequencyPenalty: Double?
-  public var functionCall: OpenAICreateChatCompletionRequestAllOf2FunctionCall?
+  public var functionCall: OpenAICreateChatCompletionRequestFunctionCall?
   public var functions: [OpenAIChatCompletionFunctions]?
   public var logitBias: [String: Int]?
   public var logprobs: Bool?
@@ -32,7 +32,7 @@ public struct OpenAICreateChatCompletionRequest: Codable, Sendable {
   public var promptCacheOptions: OpenAIPromptCacheOptionsParam?
   public var promptCacheRetention: OpenAIModelResponsePropertiesPromptCacheRetention?
   public var reasoningEffort: OpenAIReasoningEffort?
-  public var responseFormat: OpenAICreateChatCompletionRequestAllOf2ResponseFormat?
+  public var responseFormat: OpenAICreateChatCompletionRequestResponseFormat?
   public var safetyIdentifier: String?
   public var seed: Int64?
   public var serviceTier: OpenAIServiceTier?
@@ -42,19 +42,19 @@ public struct OpenAICreateChatCompletionRequest: Codable, Sendable {
   public var streamOptions: OpenAIChatCompletionStreamOptions?
   public var temperature: Double?
   public var toolChoice: OpenAIChatCompletionToolChoiceOption?
-  public var tools: [OpenAICreateChatCompletionRequestAllOf2ToolsItem]?
+  public var tools: [OpenAICreateChatCompletionRequestToolsItem]?
   public var topLogprobs: Int?
   public var topP: Double?
   public var user: String?
   public var verbosity: OpenAIVerbosity?
-  public var webSearchOptions: OpenAICreateChatCompletionRequestAllOf2WebSearchOptions?
+  public var webSearchOptions: OpenAICreateChatCompletionRequestWebSearchOptions?
 
   public init(
     messages: [OpenAIChatCompletionRequestMessage],
     model: OpenAIModelIdsShared,
-    audio: OpenAICreateChatCompletionRequestAllOf2Audio? = nil,
+    audio: OpenAICreateChatCompletionRequestAudio? = nil,
     frequencyPenalty: Double? = nil,
-    functionCall: OpenAICreateChatCompletionRequestAllOf2FunctionCall? = nil,
+    functionCall: OpenAICreateChatCompletionRequestFunctionCall? = nil,
     functions: [OpenAIChatCompletionFunctions]? = nil,
     logitBias: [String: Int]? = nil,
     logprobs: Bool? = nil,
@@ -71,7 +71,7 @@ public struct OpenAICreateChatCompletionRequest: Codable, Sendable {
     promptCacheOptions: OpenAIPromptCacheOptionsParam? = nil,
     promptCacheRetention: OpenAIModelResponsePropertiesPromptCacheRetention? = nil,
     reasoningEffort: OpenAIReasoningEffort? = nil,
-    responseFormat: OpenAICreateChatCompletionRequestAllOf2ResponseFormat? = nil,
+    responseFormat: OpenAICreateChatCompletionRequestResponseFormat? = nil,
     safetyIdentifier: String? = nil,
     seed: Int64? = nil,
     serviceTier: OpenAIServiceTier? = nil,
@@ -81,12 +81,12 @@ public struct OpenAICreateChatCompletionRequest: Codable, Sendable {
     streamOptions: OpenAIChatCompletionStreamOptions? = nil,
     temperature: Double? = nil,
     toolChoice: OpenAIChatCompletionToolChoiceOption? = nil,
-    tools: [OpenAICreateChatCompletionRequestAllOf2ToolsItem]? = nil,
+    tools: [OpenAICreateChatCompletionRequestToolsItem]? = nil,
     topLogprobs: Int? = nil,
     topP: Double? = nil,
     user: String? = nil,
     verbosity: OpenAIVerbosity? = nil,
-    webSearchOptions: OpenAICreateChatCompletionRequestAllOf2WebSearchOptions? = nil
+    webSearchOptions: OpenAICreateChatCompletionRequestWebSearchOptions? = nil
   ) {
     self.audio = audio
     self.frequencyPenalty = frequencyPenalty
@@ -165,5 +165,131 @@ public struct OpenAICreateChatCompletionRequest: Codable, Sendable {
     case user
     case verbosity
     case webSearchOptions = "web_search_options"
+  }
+
+  public struct WithAudioAndFrequencyPenaltyAndFunctionCall: Codable, Sendable {
+    public var audio: OpenAICreateChatCompletionRequestAudio?
+    public var frequencyPenalty: Double?
+    public var functionCall: OpenAICreateChatCompletionRequestFunctionCall?
+    public var functions: [OpenAIChatCompletionFunctions]?
+    public var logitBias: [String: Int]?
+    public var logprobs: Bool?
+    public var maxCompletionTokens: Int?
+    public var maxTokens: Int?
+    public var messages: [OpenAIChatCompletionRequestMessage]
+    public var modalities: OpenAIResponseModalities?
+    public var model: OpenAIModelIdsShared
+    public var moderation: OpenAIModerationParam?
+    public var n: Int?
+    public var parallelToolCalls: Bool?
+    public var prediction: OpenAIPredictionContent?
+    public var presencePenalty: Double?
+    public var reasoningEffort: OpenAIReasoningEffort?
+    public var responseFormat: OpenAICreateChatCompletionRequestResponseFormat?
+    public var seed: Int64?
+    public var serviceTier: OpenAIServiceTier?
+    public var stop: OpenAIStopConfiguration?
+    public var store: Bool?
+    public var stream: Bool?
+    public var streamOptions: OpenAIChatCompletionStreamOptions?
+    public var toolChoice: OpenAIChatCompletionToolChoiceOption?
+    public var tools: [OpenAICreateChatCompletionRequestToolsItem]?
+    public var topLogprobs: Int?
+    public var verbosity: OpenAIVerbosity?
+    public var webSearchOptions: OpenAICreateChatCompletionRequestWebSearchOptions?
+
+    public init(
+      messages: [OpenAIChatCompletionRequestMessage],
+      model: OpenAIModelIdsShared,
+      audio: OpenAICreateChatCompletionRequestAudio? = nil,
+      frequencyPenalty: Double? = nil,
+      functionCall: OpenAICreateChatCompletionRequestFunctionCall? = nil,
+      functions: [OpenAIChatCompletionFunctions]? = nil,
+      logitBias: [String: Int]? = nil,
+      logprobs: Bool? = nil,
+      maxCompletionTokens: Int? = nil,
+      maxTokens: Int? = nil,
+      modalities: OpenAIResponseModalities? = nil,
+      moderation: OpenAIModerationParam? = nil,
+      n: Int? = nil,
+      parallelToolCalls: Bool? = nil,
+      prediction: OpenAIPredictionContent? = nil,
+      presencePenalty: Double? = nil,
+      reasoningEffort: OpenAIReasoningEffort? = nil,
+      responseFormat: OpenAICreateChatCompletionRequestResponseFormat? = nil,
+      seed: Int64? = nil,
+      serviceTier: OpenAIServiceTier? = nil,
+      stop: OpenAIStopConfiguration? = nil,
+      store: Bool? = nil,
+      stream: Bool? = nil,
+      streamOptions: OpenAIChatCompletionStreamOptions? = nil,
+      toolChoice: OpenAIChatCompletionToolChoiceOption? = nil,
+      tools: [OpenAICreateChatCompletionRequestToolsItem]? = nil,
+      topLogprobs: Int? = nil,
+      verbosity: OpenAIVerbosity? = nil,
+      webSearchOptions: OpenAICreateChatCompletionRequestWebSearchOptions? = nil
+    ) {
+      self.audio = audio
+      self.frequencyPenalty = frequencyPenalty
+      self.functionCall = functionCall
+      self.functions = functions
+      self.logitBias = logitBias
+      self.logprobs = logprobs
+      self.maxCompletionTokens = maxCompletionTokens
+      self.maxTokens = maxTokens
+      self.messages = messages
+      self.modalities = modalities
+      self.model = model
+      self.moderation = moderation
+      self.n = n
+      self.parallelToolCalls = parallelToolCalls
+      self.prediction = prediction
+      self.presencePenalty = presencePenalty
+      self.reasoningEffort = reasoningEffort
+      self.responseFormat = responseFormat
+      self.seed = seed
+      self.serviceTier = serviceTier
+      self.stop = stop
+      self.store = store
+      self.stream = stream
+      self.streamOptions = streamOptions
+      self.toolChoice = toolChoice
+      self.tools = tools
+      self.topLogprobs = topLogprobs
+      self.verbosity = verbosity
+      self.webSearchOptions = webSearchOptions
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case audio
+      case frequencyPenalty = "frequency_penalty"
+      case functionCall = "function_call"
+      case functions
+      case logitBias = "logit_bias"
+      case logprobs
+      case maxCompletionTokens = "max_completion_tokens"
+      case maxTokens = "max_tokens"
+      case messages
+      case modalities
+      case model
+      case moderation
+      case n
+      case parallelToolCalls = "parallel_tool_calls"
+      case prediction
+      case presencePenalty = "presence_penalty"
+      case reasoningEffort = "reasoning_effort"
+      case responseFormat = "response_format"
+      case seed
+      case serviceTier = "service_tier"
+      case stop
+      case store
+      case stream
+      case streamOptions = "stream_options"
+      case toolChoice = "tool_choice"
+      case tools
+      case topLogprobs = "top_logprobs"
+      case verbosity
+      case webSearchOptions = "web_search_options"
+    }
   }
 }

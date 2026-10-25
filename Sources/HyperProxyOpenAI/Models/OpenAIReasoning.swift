@@ -11,18 +11,18 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIReasoning: Codable, Sendable {
-  public var context: OpenAIReasoningContext?
+  public var context: OpenAIReasoning.Context?
   public var effort: OpenAIReasoningEffort?
-  public var generateSummary: OpenAIReasoningGenerateSummary?
+  public var generateSummary: OpenAIReasoning.GenerateSummary?
   public var mode: OpenAIReasoningModeEnum?
-  public var summary: OpenAIReasoningSummary?
+  public var summary: OpenAIReasoning.Summary?
 
   public init(
-    context: OpenAIReasoningContext? = nil,
+    context: OpenAIReasoning.Context? = nil,
     effort: OpenAIReasoningEffort? = nil,
-    generateSummary: OpenAIReasoningGenerateSummary? = nil,
+    generateSummary: OpenAIReasoning.GenerateSummary? = nil,
     mode: OpenAIReasoningModeEnum? = nil,
-    summary: OpenAIReasoningSummary? = nil
+    summary: OpenAIReasoning.Summary? = nil
   ) {
     self.context = context
     self.effort = effort
@@ -37,5 +37,23 @@ public struct OpenAIReasoning: Codable, Sendable {
     case generateSummary = "generate_summary"
     case mode
     case summary
+  }
+
+  public enum Context: String, Codable, Hashable, Sendable {
+    case auto = "auto"
+    case currentTurn = "current_turn"
+    case allTurns = "all_turns"
+  }
+
+  public enum GenerateSummary: String, Codable, Hashable, Sendable {
+    case auto = "auto"
+    case concise = "concise"
+    case detailed = "detailed"
+  }
+
+  public enum Summary: String, Codable, Hashable, Sendable {
+    case auto = "auto"
+    case concise = "concise"
+    case detailed = "detailed"
   }
 }

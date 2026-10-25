@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct OpenAIInputMessageParam: Codable, Sendable {
   public var content: [OpenAIInputContentParam]
-  public var role: OpenAIInputMessageParamRole
-  public var kind: OpenAIInputMessageParamKind?
+  public var role: OpenAIInputMessageParam.Role
+  public var kind: OpenAIInputMessageParam.Kind?
 
   public init(
     content: [OpenAIInputContentParam],
-    role: OpenAIInputMessageParamRole,
-    kind: OpenAIInputMessageParamKind? = nil
+    role: OpenAIInputMessageParam.Role,
+    kind: OpenAIInputMessageParam.Kind? = nil
   ) {
     self.content = content
     self.role = role
@@ -29,5 +29,13 @@ public struct OpenAIInputMessageParam: Codable, Sendable {
     case content
     case role
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case message = "message"
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case user = "user"
   }
 }

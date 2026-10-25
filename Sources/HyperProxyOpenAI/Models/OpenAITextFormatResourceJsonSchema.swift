@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAITextFormatResourceJsonSchema: Codable, Sendable {
   public var schema: [String: HyperProxyJSONValue]
-  public var kind: OpenAITextFormatResourceJsonSchemaKind
+  public var kind: OpenAITextFormatResourceJsonSchema.Kind
 
   public init(
     schema: [String: HyperProxyJSONValue],
-    kind: OpenAITextFormatResourceJsonSchemaKind
+    kind: OpenAITextFormatResourceJsonSchema.Kind
   ) {
     self.schema = schema
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenAITextFormatResourceJsonSchema: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case schema
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case jsonSchema = "json_schema"
   }
 }

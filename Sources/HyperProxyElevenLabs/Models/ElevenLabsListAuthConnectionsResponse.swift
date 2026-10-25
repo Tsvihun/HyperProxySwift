@@ -11,15 +11,116 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsListAuthConnectionsResponse: Codable, Sendable {
-  public var authConnections: [ElevenLabsListAuthConnectionsResponseAuthConnectionsItem]
+  public var authConnections: [ElevenLabsListAuthConnectionsResponse.AuthConnectionsElement]
 
   public init(
-    authConnections: [ElevenLabsListAuthConnectionsResponseAuthConnectionsItem]
+    authConnections: [ElevenLabsListAuthConnectionsResponse.AuthConnectionsElement]
   ) {
     self.authConnections = authConnections
   }
 
   enum CodingKeys: String, CodingKey {
     case authConnections = "auth_connections"
+  }
+
+  public enum AuthConnectionsElement: Codable, Sendable {
+    case oAuth2ClientCredsResponse(ElevenLabsOAuth2ClientCredsResponse)
+    case refreshTokenAuthResponse(ElevenLabsRefreshTokenAuthResponse)
+    case basicAuthResponse(ElevenLabsBasicAuthResponse)
+    case bearerAuthResponse(ElevenLabsBearerAuthResponse)
+    case oAuth2JwtResponse(ElevenLabsOAuth2JWTResponse)
+    case privateKeyJwtResponse(ElevenLabsPrivateKeyJWTResponse)
+    case mtlsAuthResponse(ElevenLabsMTLSAuthResponse)
+    case customHeaderAuthResponse(ElevenLabsCustomHeaderAuthResponse)
+    case apiIntegrationOAuth2AuthCodeResponse(ElevenLabsApiIntegrationOAuth2AuthCodeResponse)
+    case apiIntegrationOAuth2CustomAppResponse(ElevenLabsApiIntegrationOAuth2CustomAppResponse)
+    case whatsAppAuthResponse(ElevenLabsWhatsAppAuthResponse)
+    case slackBotAuthResponse(ElevenLabsSlackBotAuthResponse)
+    case urlSecretAuthResponse(ElevenLabsUrlSecretAuthResponse)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsOAuth2ClientCredsResponse.self) {
+        self = .oAuth2ClientCredsResponse(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsRefreshTokenAuthResponse.self) {
+        self = .refreshTokenAuthResponse(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsBasicAuthResponse.self) {
+        self = .basicAuthResponse(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsBearerAuthResponse.self) {
+        self = .bearerAuthResponse(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsOAuth2JWTResponse.self) {
+        self = .oAuth2JwtResponse(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsPrivateKeyJWTResponse.self) {
+        self = .privateKeyJwtResponse(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsMTLSAuthResponse.self) {
+        self = .mtlsAuthResponse(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsCustomHeaderAuthResponse.self) {
+        self = .customHeaderAuthResponse(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsApiIntegrationOAuth2AuthCodeResponse.self) {
+        self = .apiIntegrationOAuth2AuthCodeResponse(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsApiIntegrationOAuth2CustomAppResponse.self) {
+        self = .apiIntegrationOAuth2CustomAppResponse(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsWhatsAppAuthResponse.self) {
+        self = .whatsAppAuthResponse(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsSlackBotAuthResponse.self) {
+        self = .slackBotAuthResponse(value)
+        return
+      }
+      self = .urlSecretAuthResponse(try container.decode(ElevenLabsUrlSecretAuthResponse.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .oAuth2ClientCredsResponse(let value):
+        try container.encode(value)
+      case .refreshTokenAuthResponse(let value):
+        try container.encode(value)
+      case .basicAuthResponse(let value):
+        try container.encode(value)
+      case .bearerAuthResponse(let value):
+        try container.encode(value)
+      case .oAuth2JwtResponse(let value):
+        try container.encode(value)
+      case .privateKeyJwtResponse(let value):
+        try container.encode(value)
+      case .mtlsAuthResponse(let value):
+        try container.encode(value)
+      case .customHeaderAuthResponse(let value):
+        try container.encode(value)
+      case .apiIntegrationOAuth2AuthCodeResponse(let value):
+        try container.encode(value)
+      case .apiIntegrationOAuth2CustomAppResponse(let value):
+        try container.encode(value)
+      case .whatsAppAuthResponse(let value):
+        try container.encode(value)
+      case .slackBotAuthResponse(let value):
+        try container.encode(value)
+      case .urlSecretAuthResponse(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

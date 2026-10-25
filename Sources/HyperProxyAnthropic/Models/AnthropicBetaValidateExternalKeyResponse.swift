@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct AnthropicBetaValidateExternalKeyResponse: Codable, Sendable {
   public var error: String?
-  public var status: AnthropicBetaValidateExternalKeyResponseStatus
-  public var kind: AnthropicExternalKeyValidationKind
+  public var status: AnthropicBetaValidateExternalKeyResponse.Status
+  public var kind: AnthropicBetaValidateExternalKeyResponse.Kind
 
   public init(
     error: String?,
-    status: AnthropicBetaValidateExternalKeyResponseStatus,
-    kind: AnthropicExternalKeyValidationKind = .externalKeyValidation
+    status: AnthropicBetaValidateExternalKeyResponse.Status,
+    kind: AnthropicBetaValidateExternalKeyResponse.Kind = .externalKeyValidation
   ) {
     self.error = error
     self.status = status
@@ -29,5 +29,14 @@ public struct AnthropicBetaValidateExternalKeyResponse: Codable, Sendable {
     case error
     case status
     case kind = "type"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case failure = "failure"
+    case success = "success"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case externalKeyValidation = "external_key_validation"
   }
 }

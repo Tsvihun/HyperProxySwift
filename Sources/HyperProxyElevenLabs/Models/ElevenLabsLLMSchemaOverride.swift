@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsLLMSchemaOverride: Codable, Sendable {
   public var prompt: String?
-  public var source: ElevenLabsLlmSource?
+  public var source: ElevenLabsLLMSchemaOverride.Source?
 
   public init(
     prompt: String? = nil,
-    source: ElevenLabsLlmSource? = nil
+    source: ElevenLabsLLMSchemaOverride.Source? = nil
   ) {
     self.prompt = prompt
     self.source = source
@@ -25,5 +25,9 @@ public struct ElevenLabsLLMSchemaOverride: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case prompt
     case source
+  }
+
+  public enum Source: String, Codable, Hashable, Sendable {
+    case llm = "llm"
   }
 }

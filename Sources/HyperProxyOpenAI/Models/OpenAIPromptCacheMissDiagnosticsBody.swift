@@ -14,12 +14,12 @@ public struct OpenAIPromptCacheMissDiagnosticsBody: Codable, Sendable {
   public var cacheMissedTokens: Int
   public var comparisonReusableTokens: Int?
   public var reason: OpenAICacheMissReasonTypeEnum
-  public var kind: OpenAIPromptCacheMissDiagnosticsBodyKind
+  public var kind: OpenAIPromptCacheMissDiagnosticsBody.Kind
 
   public init(
     cacheMissedTokens: Int,
     reason: OpenAICacheMissReasonTypeEnum,
-    kind: OpenAIPromptCacheMissDiagnosticsBodyKind,
+    kind: OpenAIPromptCacheMissDiagnosticsBody.Kind,
     comparisonReusableTokens: Int? = nil
   ) {
     self.cacheMissedTokens = cacheMissedTokens
@@ -33,5 +33,9 @@ public struct OpenAIPromptCacheMissDiagnosticsBody: Codable, Sendable {
     case comparisonReusableTokens = "comparison_reusable_tokens"
     case reason
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case cacheMiss = "cache_miss"
   }
 }

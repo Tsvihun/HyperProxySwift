@@ -15,18 +15,18 @@ public struct OpenAIFunctionShellCall: Codable, Sendable {
   public var callId: String
   public var caller: OpenAIToolCallCaller?
   public var createdBy: String?
-  public var environment: OpenAIFunctionShellCallEnvironmentAnyOf1?
+  public var environment: OpenAIFunctionShellCallEnvironmentVariant?
   public var id: String
   public var status: OpenAIFunctionShellCallStatus
-  public var kind: OpenAIFunctionShellCallKind
+  public var kind: OpenAIFunctionShellCall.Kind
 
   public init(
     action: OpenAIFunctionShellAction,
     callId: String,
-    environment: OpenAIFunctionShellCallEnvironmentAnyOf1?,
+    environment: OpenAIFunctionShellCallEnvironmentVariant?,
     id: String,
     status: OpenAIFunctionShellCallStatus,
-    kind: OpenAIFunctionShellCallKind,
+    kind: OpenAIFunctionShellCall.Kind,
     caller: OpenAIToolCallCaller? = nil,
     createdBy: String? = nil
   ) {
@@ -49,5 +49,9 @@ public struct OpenAIFunctionShellCall: Codable, Sendable {
     case id
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case shellCall = "shell_call"
   }
 }

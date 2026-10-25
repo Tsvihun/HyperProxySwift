@@ -12,8 +12,8 @@ import HyperProxyCore
 
 public struct TogetherFineTuneModelLimits: Codable, Sendable {
   public var defaultGradientAccumulationSteps: Int
-  public var fullTraining: TogetherFineTuneModelLimitsFullTraining?
-  public var loraTraining: TogetherFineTuneModelLimitsLoraTraining
+  public var fullTraining: TogetherFineTuneModelLimits.FullTraining?
+  public var loraTraining: TogetherFineTuneModelLimits.LoraTraining
   public var maxLearningRate: Double
   public var maxNumCheckpoints: Int
   public var maxNumEpochs: Int
@@ -31,7 +31,7 @@ public struct TogetherFineTuneModelLimits: Codable, Sendable {
 
   public init(
     defaultGradientAccumulationSteps: Int,
-    loraTraining: TogetherFineTuneModelLimitsLoraTraining,
+    loraTraining: TogetherFineTuneModelLimits.LoraTraining,
     maxLearningRate: Double,
     maxNumCheckpoints: Int,
     maxNumEpochs: Int,
@@ -46,7 +46,7 @@ public struct TogetherFineTuneModelLimits: Codable, Sendable {
     supportsReasoning: Bool,
     supportsTools: Bool,
     supportsVision: Bool,
-    fullTraining: TogetherFineTuneModelLimitsFullTraining? = nil
+    fullTraining: TogetherFineTuneModelLimits.FullTraining? = nil
   ) {
     self.defaultGradientAccumulationSteps = defaultGradientAccumulationSteps
     self.fullTraining = fullTraining
@@ -85,5 +85,61 @@ public struct TogetherFineTuneModelLimits: Codable, Sendable {
     case supportsReasoning = "supports_reasoning"
     case supportsTools = "supports_tools"
     case supportsVision = "supports_vision"
+  }
+
+  public struct FullTraining: Codable, Sendable {
+    public var maxBatchSize: Int
+    public var maxBatchSizeDpo: Int
+    public var minBatchSize: Int
+
+    public init(
+      maxBatchSize: Int,
+      maxBatchSizeDpo: Int,
+      minBatchSize: Int
+    ) {
+      self.maxBatchSize = maxBatchSize
+      self.maxBatchSizeDpo = maxBatchSizeDpo
+      self.minBatchSize = minBatchSize
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case maxBatchSize = "max_batch_size"
+      case maxBatchSizeDpo = "max_batch_size_dpo"
+      case minBatchSize = "min_batch_size"
+    }
+  }
+
+  public struct LoraTraining: Codable, Sendable {
+    public var defaultRank: Int
+    public var maxBatchSize: Int
+    public var maxBatchSizeDpo: Int
+    public var maxRank: Int
+    public var minBatchSize: Int
+    public var targetModules: [String]
+
+    public init(
+      defaultRank: Int,
+      maxBatchSize: Int,
+      maxBatchSizeDpo: Int,
+      maxRank: Int,
+      minBatchSize: Int,
+      targetModules: [String]
+    ) {
+      self.defaultRank = defaultRank
+      self.maxBatchSize = maxBatchSize
+      self.maxBatchSizeDpo = maxBatchSizeDpo
+      self.maxRank = maxRank
+      self.minBatchSize = minBatchSize
+      self.targetModules = targetModules
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case defaultRank = "default_rank"
+      case maxBatchSize = "max_batch_size"
+      case maxBatchSizeDpo = "max_batch_size_dpo"
+      case maxRank = "max_rank"
+      case minBatchSize = "min_batch_size"
+      case targetModules = "target_modules"
+    }
   }
 }

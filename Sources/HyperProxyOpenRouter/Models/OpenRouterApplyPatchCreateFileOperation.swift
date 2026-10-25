@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenRouterApplyPatchCreateFileOperation: Codable, Sendable {
   public var diff: String
   public var path: String
-  public var kind: OpenRouterApplyPatchCreateFileOperationKind
+  public var kind: OpenRouterApplyPatchCreateFileOperation.Kind
 
   public init(
     diff: String,
     path: String,
-    kind: OpenRouterApplyPatchCreateFileOperationKind
+    kind: OpenRouterApplyPatchCreateFileOperation.Kind
   ) {
     self.diff = diff
     self.path = path
@@ -29,5 +29,9 @@ public struct OpenRouterApplyPatchCreateFileOperation: Codable, Sendable {
     case diff
     case path
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case createFile = "create_file"
   }
 }

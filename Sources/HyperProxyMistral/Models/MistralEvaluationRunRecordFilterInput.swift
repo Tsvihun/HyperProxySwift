@@ -15,14 +15,14 @@ public struct MistralEvaluationRunRecordFilterInput: Codable, Sendable {
   public var inputFilters: MistralContentSearchFilterGroup?
   public var outputFilters: MistralContentSearchFilterGroup?
   public var scoreFilters: MistralScoreFilterGroup?
-  public var sort: MistralEvaluationRunRecordFilterInputSortAnyOf1?
+  public var sort: MistralEvaluationRunRecordFilterInputSortVariant?
 
   public init(
     goalFilters: MistralGoalStatusFilterGroup? = nil,
     inputFilters: MistralContentSearchFilterGroup? = nil,
     outputFilters: MistralContentSearchFilterGroup? = nil,
     scoreFilters: MistralScoreFilterGroup? = nil,
-    sort: MistralEvaluationRunRecordFilterInputSortAnyOf1? = nil
+    sort: MistralEvaluationRunRecordFilterInputSortVariant? = nil
   ) {
     self.goalFilters = goalFilters
     self.inputFilters = inputFilters

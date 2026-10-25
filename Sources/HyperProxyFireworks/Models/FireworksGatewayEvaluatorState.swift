@@ -11,8 +11,8 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksGatewayEvaluatorState: String, Codable, Hashable, Sendable {
-  case sTATEUNSPECIFIED = "STATE_UNSPECIFIED"
-  case aCTIVE = "ACTIVE"
-  case bUILDING = "BUILDING"
-  case bUILDFAILED = "BUILD_FAILED"
+  case stateUnspecified = "STATE_UNSPECIFIED"
+  case active = "ACTIVE"
+  case building = "BUILDING"
+  case buildFailed = "BUILD_FAILED"
 }

@@ -17,16 +17,16 @@ public struct PerplexityApiSearchRequest: Codable, Sendable {
   public var maxResults: Int?
   public var maxTokens: Int?
   public var maxTokensPerPage: Int?
-  public var query: PerplexityApiSearchRequestAllOf1Query
+  public var query: PerplexityApiSearchRequestQuery
   public var searchAfterDateFilter: String?
   public var searchBeforeDateFilter: String?
   public var searchDomainFilter: [String]?
   public var searchLanguageFilter: [String]?
   public var searchRecencyFilter: PerplexitySearchRecencyFilter?
-  public var searchType: PerplexityApiSearchRequestAllOf1SearchType?
+  public var searchType: PerplexityApiSearchRequestSearchType?
 
   public init(
-    query: PerplexityApiSearchRequestAllOf1Query,
+    query: PerplexityApiSearchRequestQuery,
     country: String? = nil,
     lastUpdatedAfterFilter: String? = nil,
     lastUpdatedBeforeFilter: String? = nil,
@@ -38,7 +38,7 @@ public struct PerplexityApiSearchRequest: Codable, Sendable {
     searchDomainFilter: [String]? = nil,
     searchLanguageFilter: [String]? = nil,
     searchRecencyFilter: PerplexitySearchRecencyFilter? = nil,
-    searchType: PerplexityApiSearchRequestAllOf1SearchType? = nil
+    searchType: PerplexityApiSearchRequestSearchType? = nil
   ) {
     self.country = country
     self.lastUpdatedAfterFilter = lastUpdatedAfterFilter
@@ -69,5 +69,43 @@ public struct PerplexityApiSearchRequest: Codable, Sendable {
     case searchLanguageFilter = "search_language_filter"
     case searchRecencyFilter = "search_recency_filter"
     case searchType = "search_type"
+  }
+
+  public struct WithCountryAndMaxResultsAndMaxTokens: Codable, Sendable {
+    public var country: String?
+    public var maxResults: Int?
+    public var maxTokens: Int?
+    public var maxTokensPerPage: Int?
+    public var query: PerplexityApiSearchRequestQuery
+    public var searchLanguageFilter: [String]?
+    public var searchType: PerplexityApiSearchRequestSearchType?
+
+    public init(
+      query: PerplexityApiSearchRequestQuery,
+      country: String? = nil,
+      maxResults: Int? = nil,
+      maxTokens: Int? = nil,
+      maxTokensPerPage: Int? = nil,
+      searchLanguageFilter: [String]? = nil,
+      searchType: PerplexityApiSearchRequestSearchType? = nil
+    ) {
+      self.country = country
+      self.maxResults = maxResults
+      self.maxTokens = maxTokens
+      self.maxTokensPerPage = maxTokensPerPage
+      self.query = query
+      self.searchLanguageFilter = searchLanguageFilter
+      self.searchType = searchType
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case country
+      case maxResults = "max_results"
+      case maxTokens = "max_tokens"
+      case maxTokensPerPage = "max_tokens_per_page"
+      case query
+      case searchLanguageFilter = "search_language_filter"
+      case searchType = "search_type"
+    }
   }
 }

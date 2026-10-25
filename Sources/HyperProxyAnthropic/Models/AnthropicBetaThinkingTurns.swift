@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaThinkingTurns: Codable, Sendable {
-  public var kind: AnthropicThinkingTurnsKind
+  public var kind: AnthropicBetaThinkingTurns.Kind
   public var value: Int
 
   public init(
     value: Int,
-    kind: AnthropicThinkingTurnsKind = .thinkingTurns
+    kind: AnthropicBetaThinkingTurns.Kind = .thinkingTurns
   ) {
     self.kind = kind
     self.value = value
@@ -25,5 +25,9 @@ public struct AnthropicBetaThinkingTurns: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case kind = "type"
     case value
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case thinkingTurns = "thinking_turns"
   }
 }

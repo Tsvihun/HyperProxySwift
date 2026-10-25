@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsSlackBotAuthResponse: Codable, Sendable {
-  public var authType: ElevenLabsSlackBotAuthAuthType?
+  public var authType: ElevenLabsSlackBotAuthResponse.AuthType?
   public var id: String
   public var name: String
-  public var provider: ElevenLabsSlackProvider?
+  public var provider: ElevenLabsSlackBotAuthResponse.Provider?
   public var status: ElevenLabsAuthConnectionStatus?
   public var statusDetail: String?
   public var statusUpdatedAt: String?
@@ -23,8 +23,8 @@ public struct ElevenLabsSlackBotAuthResponse: Codable, Sendable {
   public init(
     id: String,
     name: String,
-    authType: ElevenLabsSlackBotAuthAuthType? = nil,
-    provider: ElevenLabsSlackProvider? = nil,
+    authType: ElevenLabsSlackBotAuthResponse.AuthType? = nil,
+    provider: ElevenLabsSlackBotAuthResponse.Provider? = nil,
     status: ElevenLabsAuthConnectionStatus? = nil,
     statusDetail: String? = nil,
     statusUpdatedAt: String? = nil,
@@ -49,5 +49,13 @@ public struct ElevenLabsSlackBotAuthResponse: Codable, Sendable {
     case statusDetail = "status_detail"
     case statusUpdatedAt = "status_updated_at"
     case usedBy = "used_by"
+  }
+
+  public enum AuthType: String, Codable, Hashable, Sendable {
+    case slackBotAuth = "slack_bot_auth"
+  }
+
+  public enum Provider: String, Codable, Hashable, Sendable {
+    case slack = "Slack"
   }
 }

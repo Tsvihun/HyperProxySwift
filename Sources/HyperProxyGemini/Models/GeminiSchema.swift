@@ -32,7 +32,7 @@ public final class GeminiSchema: Codable, @unchecked Sendable {
   public var propertyOrdering: [String]?
   public var requiredValue: [String]?
   public var title: String?
-  public var kind: GeminiSchemaKind?
+  public var kind: GeminiSchema.Kind?
 
   public init(
     anyOf: [GeminiSchema]? = nil,
@@ -56,7 +56,7 @@ public final class GeminiSchema: Codable, @unchecked Sendable {
     propertyOrdering: [String]? = nil,
     requiredValue: [String]? = nil,
     title: String? = nil,
-    kind: GeminiSchemaKind? = nil
+    kind: GeminiSchema.Kind? = nil
   ) {
     self.anyOf = anyOf
     self.defaultValue = defaultValue
@@ -105,5 +105,16 @@ public final class GeminiSchema: Codable, @unchecked Sendable {
     case requiredValue = "required"
     case title
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case typeUnspecified = "TYPE_UNSPECIFIED"
+    case string = "STRING"
+    case number = "NUMBER"
+    case integer = "INTEGER"
+    case boolean = "BOOLEAN"
+    case array = "ARRAY"
+    case object = "OBJECT"
+    case null = "NULL"
   }
 }

@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsListCalendarEventsParams: Codable, Sendable {
   public var includeCancelled: Bool?
-  public var smbToolType: ElevenLabsListCalendarEventsSmbToolType?
+  public var smbToolType: ElevenLabsListCalendarEventsParams.SmbToolType?
 
   public init(
     includeCancelled: Bool? = nil,
-    smbToolType: ElevenLabsListCalendarEventsSmbToolType? = nil
+    smbToolType: ElevenLabsListCalendarEventsParams.SmbToolType? = nil
   ) {
     self.includeCancelled = includeCancelled
     self.smbToolType = smbToolType
@@ -25,5 +25,9 @@ public struct ElevenLabsListCalendarEventsParams: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case includeCancelled = "include_cancelled"
     case smbToolType = "smb_tool_type"
+  }
+
+  public enum SmbToolType: String, Codable, Hashable, Sendable {
+    case listCalendarEvents = "list_calendar_events"
   }
 }

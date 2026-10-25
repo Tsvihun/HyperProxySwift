@@ -10,4 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIWebSearchApproximateLocation = OpenAIWebSearchApproximateLocationAnyOf1?
+public typealias OpenAIWebSearchApproximateLocation =
+  OpenAIWebSearchApproximateLocationWebSearchApproximateLocation?

@@ -38,4 +38,18 @@ public struct OpenRouterOutputImageGenerationCallItem: Codable, Sendable {
     case status
     case kind = "type"
   }
+
+  public struct WithPrompt: Codable, Sendable {
+    public var prompt: String?
+
+    public init(
+      prompt: String? = nil
+    ) {
+      self.prompt = prompt
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case prompt
+    }
+  }
 }

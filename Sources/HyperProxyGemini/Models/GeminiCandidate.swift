@@ -16,7 +16,7 @@ public struct GeminiCandidate: Codable, Sendable {
   public var content: GeminiContent?
   public var continuationToken: String?
   public var finishMessage: String?
-  public var finishReason: GeminiCandidateFinishReason?
+  public var finishReason: GeminiCandidate.FinishReason?
   public var groundingAttributions: [GeminiGroundingAttribution]?
   public var groundingMetadata: GeminiGroundingMetadata?
   public var index: Int?
@@ -31,7 +31,7 @@ public struct GeminiCandidate: Codable, Sendable {
     content: GeminiContent? = nil,
     continuationToken: String? = nil,
     finishMessage: String? = nil,
-    finishReason: GeminiCandidateFinishReason? = nil,
+    finishReason: GeminiCandidate.FinishReason? = nil,
     groundingAttributions: [GeminiGroundingAttribution]? = nil,
     groundingMetadata: GeminiGroundingMetadata? = nil,
     index: Int? = nil,
@@ -69,5 +69,31 @@ public struct GeminiCandidate: Codable, Sendable {
     case safetyRatings
     case tokenCount
     case urlContextMetadata
+  }
+
+  public enum FinishReason: String, Codable, Hashable, Sendable {
+    case finishReasonUnspecified = "FINISH_REASON_UNSPECIFIED"
+    case stop = "STOP"
+    case maxTokens = "MAX_TOKENS"
+    case safety = "SAFETY"
+    case recitation = "RECITATION"
+    case language = "LANGUAGE"
+    case other = "OTHER"
+    case blocklist = "BLOCKLIST"
+    case prohibitedContent = "PROHIBITED_CONTENT"
+    case spii = "SPII"
+    case malformedFunctionCall = "MALFORMED_FUNCTION_CALL"
+    case imageSafety = "IMAGE_SAFETY"
+    case imageProhibitedContent = "IMAGE_PROHIBITED_CONTENT"
+    case imageOther = "IMAGE_OTHER"
+    case noImage = "NO_IMAGE"
+    case imageRecitation = "IMAGE_RECITATION"
+    case unexpectedToolCall = "UNEXPECTED_TOOL_CALL"
+    case tooManyToolCalls = "TOO_MANY_TOOL_CALLS"
+    case missingThoughtSignature = "MISSING_THOUGHT_SIGNATURE"
+    case malformedResponse = "MALFORMED_RESPONSE"
+    case escalation = "ESCALATION"
+    case pupLimitedDisabled = "PUP_LIMITED_DISABLED"
+    case continuation = "CONTINUATION"
   }
 }

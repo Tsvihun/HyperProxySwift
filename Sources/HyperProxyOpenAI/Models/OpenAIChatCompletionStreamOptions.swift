@@ -10,4 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIChatCompletionStreamOptions = OpenAIChatCompletionStreamOptionsAnyOf1?
+public typealias OpenAIChatCompletionStreamOptions =
+  OpenAIChatCompletionStreamOptionsWithIncludeObfuscationAndIncludeUsage?

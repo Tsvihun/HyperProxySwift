@@ -15,13 +15,13 @@ public struct OpenAIBetaComputerScreenshotContent: Codable, Sendable {
   public var fileId: String?
   public var imageUrl: String?
   public var promptCacheBreakpoint: OpenAIBetaPromptCacheBreakpointConfig?
-  public var kind: OpenAIBetaComputerScreenshotContentKind
+  public var kind: OpenAIBetaComputerScreenshotContent.Kind
 
   public init(
     detail: OpenAIBetaImageDetail,
     fileId: String?,
     imageUrl: String?,
-    kind: OpenAIBetaComputerScreenshotContentKind,
+    kind: OpenAIBetaComputerScreenshotContent.Kind,
     promptCacheBreakpoint: OpenAIBetaPromptCacheBreakpointConfig? = nil
   ) {
     self.detail = detail
@@ -37,5 +37,9 @@ public struct OpenAIBetaComputerScreenshotContent: Codable, Sendable {
     case imageUrl = "image_url"
     case promptCacheBreakpoint = "prompt_cache_breakpoint"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case computerScreenshot = "computer_screenshot"
   }
 }

@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct TogetherModelVoices: Codable, Sendable {
   public var model: String
-  public var voices: [TogetherModelVoicesVoicesItem]
+  public var voices: [TogetherModelVoices.VoicesElement]
 
   public init(
     model: String,
-    voices: [TogetherModelVoicesVoicesItem]
+    voices: [TogetherModelVoices.VoicesElement]
   ) {
     self.model = model
     self.voices = voices
@@ -25,5 +25,23 @@ public struct TogetherModelVoices: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case model
     case voices
+  }
+
+  public struct VoicesElement: Codable, Sendable {
+    public var id: String
+    public var name: String
+
+    public init(
+      id: String,
+      name: String
+    ) {
+      self.id = id
+      self.name = name
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case id
+      case name
+    }
   }
 }

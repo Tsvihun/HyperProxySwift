@@ -18,11 +18,11 @@ public struct OpenAILiveCallAcceptSession: Codable, Sendable {
   public var model: OpenAIModelIdsLive
   public var store: Bool?
   public var triggers: OpenAITriggers?
-  public var kind: OpenAILiveCallAcceptSessionKind
+  public var kind: OpenAILiveCallAcceptSession.Kind
 
   public init(
     model: OpenAIModelIdsLive,
-    kind: OpenAILiveCallAcceptSessionKind,
+    kind: OpenAILiveCallAcceptSession.Kind,
     audio: OpenAILiveMediaSessionAudioParam? = nil,
     delegation: OpenAIDelegation? = nil,
     input: OpenAIInput? = nil,
@@ -49,5 +49,9 @@ public struct OpenAILiveCallAcceptSession: Codable, Sendable {
     case store
     case triggers
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case live = "live"
   }
 }

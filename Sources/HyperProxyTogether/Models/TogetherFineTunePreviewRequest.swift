@@ -15,14 +15,14 @@ public struct TogetherFineTunePreviewRequest: Codable, Sendable {
   public var topK: Int?
   public var trainOnInputs: Bool?
   public var trainingFile: String
-  public var trainingMethod: TogetherFineTunePreviewRequestTrainingMethod?
+  public var trainingMethod: TogetherFineTunePreviewRequest.TrainingMethod?
 
   public init(
     model: String,
     trainingFile: String,
     topK: Int? = nil,
     trainOnInputs: Bool? = nil,
-    trainingMethod: TogetherFineTunePreviewRequestTrainingMethod? = nil
+    trainingMethod: TogetherFineTunePreviewRequest.TrainingMethod? = nil
   ) {
     self.model = model
     self.topK = topK
@@ -37,5 +37,9 @@ public struct TogetherFineTunePreviewRequest: Codable, Sendable {
     case trainOnInputs = "train_on_inputs"
     case trainingFile = "training_file"
     case trainingMethod = "training_method"
+  }
+
+  public enum TrainingMethod: String, Codable, Hashable, Sendable {
+    case sft = "sft"
   }
 }

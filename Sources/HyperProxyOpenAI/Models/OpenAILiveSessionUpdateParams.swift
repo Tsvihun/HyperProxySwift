@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAILiveSessionUpdateParams: Codable, Sendable {
-  public var delegation: OpenAILiveSessionUpdateParamsDelegationAnyOf1?
-  public var triggers: [OpenAILiveDecisionTriggerInputParam2]?
+  public var delegation: OpenAILiveSessionUpdateParamsDelegationVariant?
+  public var triggers: [OpenAILiveDecisionTriggerInputParam]?
 
   public init(
-    delegation: OpenAILiveSessionUpdateParamsDelegationAnyOf1? = nil,
-    triggers: [OpenAILiveDecisionTriggerInputParam2]? = nil
+    delegation: OpenAILiveSessionUpdateParamsDelegationVariant? = nil,
+    triggers: [OpenAILiveDecisionTriggerInputParam]? = nil
   ) {
     self.delegation = delegation
     self.triggers = triggers

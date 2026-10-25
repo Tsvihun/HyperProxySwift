@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherEvaluationResponse: Codable, Sendable {
-  public var status: TogetherEvaluationResponseStatus?
+  public var status: TogetherEvaluationResponse.Status?
   public var workflowId: String?
 
   public init(
-    status: TogetherEvaluationResponseStatus? = nil,
+    status: TogetherEvaluationResponse.Status? = nil,
     workflowId: String? = nil
   ) {
     self.status = status
@@ -25,5 +25,9 @@ public struct TogetherEvaluationResponse: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case status
     case workflowId = "workflow_id"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case pending = "pending"
   }
 }

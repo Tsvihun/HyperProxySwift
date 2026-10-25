@@ -11,20 +11,20 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIRealtimeTranscriptionSessionCreateRequest: Codable, Sendable {
-  public var include: [OpenAIRealtimeTranscriptionSessionCreateRequestIncludeItem]?
-  public var inputAudioFormat: OpenAIRealtimeTranscriptionSessionCreateRequestInputAudioFormat?
+  public var include: [OpenAIRealtimeTranscriptionSessionCreateRequest.IncludeElement]?
+  public var inputAudioFormat: OpenAIRealtimeTranscriptionSessionCreateRequest.InputAudioFormat?
   public var inputAudioNoiseReduction:
-    OpenAIRealtimeTranscriptionSessionCreateRequestInputAudioNoiseReduction?
+    OpenAIRealtimeTranscriptionSessionCreateRequest.InputAudioNoiseReduction?
   public var inputAudioTranscription: OpenAIAudioTranscription?
-  public var turnDetection: OpenAIRealtimeTranscriptionSessionCreateRequestTurnDetection?
+  public var turnDetection: OpenAIRealtimeTranscriptionSessionCreateRequest.TurnDetection?
 
   public init(
-    include: [OpenAIRealtimeTranscriptionSessionCreateRequestIncludeItem]? = nil,
-    inputAudioFormat: OpenAIRealtimeTranscriptionSessionCreateRequestInputAudioFormat? = nil,
+    include: [OpenAIRealtimeTranscriptionSessionCreateRequest.IncludeElement]? = nil,
+    inputAudioFormat: OpenAIRealtimeTranscriptionSessionCreateRequest.InputAudioFormat? = nil,
     inputAudioNoiseReduction:
-      OpenAIRealtimeTranscriptionSessionCreateRequestInputAudioNoiseReduction? = nil,
+      OpenAIRealtimeTranscriptionSessionCreateRequest.InputAudioNoiseReduction? = nil,
     inputAudioTranscription: OpenAIAudioTranscription? = nil,
-    turnDetection: OpenAIRealtimeTranscriptionSessionCreateRequestTurnDetection? = nil
+    turnDetection: OpenAIRealtimeTranscriptionSessionCreateRequest.TurnDetection? = nil
   ) {
     self.include = include
     self.inputAudioFormat = inputAudioFormat
@@ -39,5 +39,67 @@ public struct OpenAIRealtimeTranscriptionSessionCreateRequest: Codable, Sendable
     case inputAudioNoiseReduction = "input_audio_noise_reduction"
     case inputAudioTranscription = "input_audio_transcription"
     case turnDetection = "turn_detection"
+  }
+
+  public enum IncludeElement: String, Codable, Hashable,
+    Sendable
+  {
+    case itemInputAudioTranscriptionLogprobs = "item.input_audio_transcription.logprobs"
+  }
+
+  public enum InputAudioFormat: String, Codable,
+    Hashable, Sendable
+  {
+    case pcm16 = "pcm16"
+    case g711Ulaw = "g711_ulaw"
+    case g711Alaw = "g711_alaw"
+  }
+
+  public struct InputAudioNoiseReduction: Codable,
+    Sendable
+  {
+    public var kind: OpenAINoiseReductionType?
+
+    public init(
+      kind: OpenAINoiseReductionType? = nil
+    ) {
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case kind = "type"
+    }
+  }
+
+  public struct TurnDetection: Codable, Sendable {
+    public var prefixPaddingMs: Int?
+    public var silenceDurationMs: Int?
+    public var threshold: Double?
+    public var kind: OpenAIRealtimeTranscriptionSessionCreateRequest.TurnDetection.Kind?
+
+    public init(
+      prefixPaddingMs: Int? = nil,
+      silenceDurationMs: Int? = nil,
+      threshold: Double? = nil,
+      kind: OpenAIRealtimeTranscriptionSessionCreateRequest.TurnDetection.Kind? = nil
+    ) {
+      self.prefixPaddingMs = prefixPaddingMs
+      self.silenceDurationMs = silenceDurationMs
+      self.threshold = threshold
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case prefixPaddingMs = "prefix_padding_ms"
+      case silenceDurationMs = "silence_duration_ms"
+      case threshold
+      case kind = "type"
+    }
+
+    public enum Kind: String, Codable,
+      Hashable, Sendable
+    {
+      case serverVad = "server_vad"
+    }
   }
 }

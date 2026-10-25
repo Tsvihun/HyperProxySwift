@@ -17,11 +17,11 @@ public struct AnthropicBetaBashTool20241022: Codable, Sendable {
   public var inputExamples: [[String: AnthropicBetaJsonValue]]?
   public var name: AnthropicBashName
   public var strict: Bool?
-  public var kind: AnthropicBash20241022Kind
+  public var kind: AnthropicBetaBashTool20241022.Kind
 
   public init(
     name: AnthropicBashName = .bash,
-    kind: AnthropicBash20241022Kind = .bash20241022,
+    kind: AnthropicBetaBashTool20241022.Kind = .bash20241022,
     allowedCallers: [AnthropicBetaAllowedCaller]? = nil,
     cacheControl: AnthropicBetaCacheControlEphemeral? = nil,
     deferLoading: Bool? = nil,
@@ -45,5 +45,9 @@ public struct AnthropicBetaBashTool20241022: Codable, Sendable {
     case name
     case strict
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case bash20241022 = "bash_20241022"
   }
 }

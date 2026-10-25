@@ -16,7 +16,7 @@ public struct OpenRouterChatResult: Codable, Sendable {
   public var created: Int
   public var id: String
   public var model: String
-  public var object: OpenRouterChatResultObject
+  public var object: OpenRouterChatResult.Object
   public var openrouterMetadata: OpenRouterMetadata?
   public var safeguardResults: [OpenRouterArmorSafeguardResult]?
   public var serviceTier: String?
@@ -28,7 +28,7 @@ public struct OpenRouterChatResult: Codable, Sendable {
     created: Int,
     id: String,
     model: String,
-    object: OpenRouterChatResultObject,
+    object: OpenRouterChatResult.Object,
     systemFingerprint: String,
     alignment: OpenRouterAlignment? = nil,
     openrouterMetadata: OpenRouterMetadata? = nil,
@@ -61,5 +61,9 @@ public struct OpenRouterChatResult: Codable, Sendable {
     case serviceTier = "service_tier"
     case systemFingerprint = "system_fingerprint"
     case usage
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case chatCompletion = "chat.completion"
   }
 }

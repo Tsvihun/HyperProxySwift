@@ -15,14 +15,14 @@ public struct OpenRouterApplyPatchCallOperationDiffDoneEvent: Codable, Sendable 
   public var itemId: String
   public var outputIndex: Int
   public var sequenceNumber: Int
-  public var kind: OpenRouterApplyPatchCallOperationDiffDoneEventKind
+  public var kind: OpenRouterApplyPatchCallOperationDiffDoneEvent.Kind
 
   public init(
     diff: String,
     itemId: String,
     outputIndex: Int,
     sequenceNumber: Int,
-    kind: OpenRouterApplyPatchCallOperationDiffDoneEventKind
+    kind: OpenRouterApplyPatchCallOperationDiffDoneEvent.Kind
   ) {
     self.diff = diff
     self.itemId = itemId
@@ -37,5 +37,9 @@ public struct OpenRouterApplyPatchCallOperationDiffDoneEvent: Codable, Sendable 
     case outputIndex = "output_index"
     case sequenceNumber = "sequence_number"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case responseApplyPatchCallOperationDiffDone = "response.apply_patch_call_operation_diff.done"
   }
 }

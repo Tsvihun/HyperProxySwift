@@ -14,13 +14,13 @@ public struct OpenAISessionRequiredActionResourceComputerUseApprovalRequest: Cod
   public var request: OpenAIComputerUseApprovalRequestKindResource
   public var requestId: String
   public var turnId: String
-  public var kind: OpenAISessionRequiredActionResourceComputerUseApprovalRequestKind
+  public var kind: OpenAISessionRequiredActionResourceComputerUseApprovalRequest.Kind
 
   public init(
     request: OpenAIComputerUseApprovalRequestKindResource,
     requestId: String,
     turnId: String,
-    kind: OpenAISessionRequiredActionResourceComputerUseApprovalRequestKind
+    kind: OpenAISessionRequiredActionResourceComputerUseApprovalRequest.Kind
   ) {
     self.request = request
     self.requestId = requestId
@@ -33,5 +33,11 @@ public struct OpenAISessionRequiredActionResourceComputerUseApprovalRequest: Cod
     case requestId = "request_id"
     case turnId = "turn_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case computerUseApprovalRequest = "computer_use_approval_request"
   }
 }

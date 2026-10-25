@@ -16,7 +16,7 @@ public struct OpenAIRealtimeBetaServerEventResponseAudioDone: Codable, Sendable 
   public var itemId: String
   public var outputIndex: Int
   public var responseId: String
-  public var kind: OpenAIRealtimeBetaServerEventResponseAudioDoneKind
+  public var kind: OpenAIRealtimeBetaServerEventResponseAudioDone.Kind
 
   public init(
     contentIndex: Int,
@@ -24,7 +24,7 @@ public struct OpenAIRealtimeBetaServerEventResponseAudioDone: Codable, Sendable 
     itemId: String,
     outputIndex: Int,
     responseId: String,
-    kind: OpenAIRealtimeBetaServerEventResponseAudioDoneKind
+    kind: OpenAIRealtimeBetaServerEventResponseAudioDone.Kind
   ) {
     self.contentIndex = contentIndex
     self.eventId = eventId
@@ -41,5 +41,9 @@ public struct OpenAIRealtimeBetaServerEventResponseAudioDone: Codable, Sendable 
     case outputIndex = "output_index"
     case responseId = "response_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case responseOutputAudioDone = "response.output_audio.done"
   }
 }

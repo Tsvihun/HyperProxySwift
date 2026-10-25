@@ -11,23 +11,23 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsGPTImage1Request: Codable, Sendable {
-  public var aspectRatio: ElevenLabsGPTImage1RequestAspectRatio?
-  public var background: ElevenLabsGPTImage1RequestBackground?
+  public var aspectRatio: ElevenLabsGPTImage1Request.AspectRatio?
+  public var background: ElevenLabsGPTImage1Request.Background?
   public var images: [ElevenLabsImageReference]?
   public var mask: ElevenLabsImageReference?
-  public var modelId: ElevenLabsGptImage1ModelId
+  public var modelId: ElevenLabsGPTImage1Request.ModelId
   public var prompt: String
-  public var quality: ElevenLabsGPTImage1RequestQuality?
+  public var quality: ElevenLabsGPTImage1Request.Quality?
   public var webhook: ElevenLabsWebhookTarget?
 
   public init(
     prompt: String,
-    modelId: ElevenLabsGptImage1ModelId = .gptImage1,
-    aspectRatio: ElevenLabsGPTImage1RequestAspectRatio? = nil,
-    background: ElevenLabsGPTImage1RequestBackground? = nil,
+    modelId: ElevenLabsGPTImage1Request.ModelId = .gptImage1,
+    aspectRatio: ElevenLabsGPTImage1Request.AspectRatio? = nil,
+    background: ElevenLabsGPTImage1Request.Background? = nil,
     images: [ElevenLabsImageReference]? = nil,
     mask: ElevenLabsImageReference? = nil,
-    quality: ElevenLabsGPTImage1RequestQuality? = nil,
+    quality: ElevenLabsGPTImage1Request.Quality? = nil,
     webhook: ElevenLabsWebhookTarget? = nil
   ) {
     self.aspectRatio = aspectRatio
@@ -49,5 +49,27 @@ public struct ElevenLabsGPTImage1Request: Codable, Sendable {
     case prompt
     case quality
     case webhook
+  }
+
+  public enum AspectRatio: String, Codable, Hashable, Sendable {
+    case ratio1x1 = "1:1"
+    case ratio3x2 = "3:2"
+    case ratio2x3 = "2:3"
+  }
+
+  public enum Background: String, Codable, Hashable, Sendable {
+    case transparent = "transparent"
+    case opaque = "opaque"
+    case auto = "auto"
+  }
+
+  public enum Quality: String, Codable, Hashable, Sendable {
+    case low = "low"
+    case medium = "medium"
+    case high = "high"
+  }
+
+  public enum ModelId: String, Codable, Hashable, Sendable {
+    case gptImage1 = "gpt-image-1"
   }
 }

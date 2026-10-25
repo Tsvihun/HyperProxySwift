@@ -14,11 +14,11 @@ public struct ElevenLabsPendingClipTask: Codable, Sendable {
   public var metadata: [String: HyperProxyJSONValue]?
   public var progress: Double?
   public var startedAtMs: Int?
-  public var kind: ElevenLabsPendingClipTaskKind
+  public var kind: ElevenLabsPendingClipTask.Kind
   public var updatedAtMs: Int?
 
   public init(
-    kind: ElevenLabsPendingClipTaskKind,
+    kind: ElevenLabsPendingClipTask.Kind,
     metadata: [String: HyperProxyJSONValue]? = nil,
     progress: Double? = nil,
     startedAtMs: Int? = nil,
@@ -37,5 +37,13 @@ public struct ElevenLabsPendingClipTask: Codable, Sendable {
     case startedAtMs = "started_at_ms"
     case kind = "type"
     case updatedAtMs = "updated_at_ms"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case preprocessing = "preprocessing"
+    case speechImport = "speech_import"
+    case dubbing = "dubbing"
+    case videoToMusic = "video_to_music"
+    case mediaGeneration = "media_generation"
   }
 }

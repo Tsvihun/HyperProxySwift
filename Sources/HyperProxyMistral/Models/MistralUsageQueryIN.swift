@@ -18,7 +18,7 @@ public struct MistralUsageQueryIN: Codable, Sendable {
   public var billingMetric: [String]?
   public var end: String
   public var filters: [MistralAdminUsageQueryFilter]?
-  public var groupBy: [MistralUsageQueryINGroupByAnyOf1Item]?
+  public var groupBy: [MistralUsageQueryINGroupByItem]?
   public var includeAggregates: Bool?
   public var includeNbApiCalls: Bool?
   public var limit: Int?
@@ -27,7 +27,7 @@ public struct MistralUsageQueryIN: Codable, Sendable {
   public var serviceAccountId: [String]?
   public var serviceTier: [String]?
   public var start: String
-  public var timeBucket: MistralUsageQueryINTimeBucket?
+  public var timeBucket: MistralUsageQueryIN.TimeBucket?
   public var untracked: Bool?
   public var usageType: [MistralUsageType]?
   public var userId: [String]?
@@ -42,7 +42,7 @@ public struct MistralUsageQueryIN: Codable, Sendable {
     billingGroup: [String]? = nil,
     billingMetric: [String]? = nil,
     filters: [MistralAdminUsageQueryFilter]? = nil,
-    groupBy: [MistralUsageQueryINGroupByAnyOf1Item]? = nil,
+    groupBy: [MistralUsageQueryINGroupByItem]? = nil,
     includeAggregates: Bool? = nil,
     includeNbApiCalls: Bool? = nil,
     limit: Int? = nil,
@@ -50,7 +50,7 @@ public struct MistralUsageQueryIN: Codable, Sendable {
     organizationId: [String]? = nil,
     serviceAccountId: [String]? = nil,
     serviceTier: [String]? = nil,
-    timeBucket: MistralUsageQueryINTimeBucket? = nil,
+    timeBucket: MistralUsageQueryIN.TimeBucket? = nil,
     untracked: Bool? = nil,
     usageType: [MistralUsageType]? = nil,
     userId: [String]? = nil,
@@ -101,5 +101,18 @@ public struct MistralUsageQueryIN: Codable, Sendable {
     case usageType = "usage_type"
     case userId = "user_id"
     case workspaceIds = "workspace_ids"
+  }
+
+  public enum TimeBucket: String, Codable, Hashable, Sendable {
+    case second = "second"
+    case value1min = "1min"
+    case value5min = "5min"
+    case value15min = "15min"
+    case value30min = "30min"
+    case hour = "hour"
+    case value4hours = "4hours"
+    case day = "day"
+    case week = "week"
+    case month = "month"
   }
 }

@@ -13,18 +13,18 @@ import HyperProxyCore
 public struct OpenAIListVectorStoreFilesParameters: Codable, Sendable {
   public var after: String?
   public var before: String?
-  public var filter: OpenAIListVectorStoreFilesParametersFilter?
+  public var filter: OpenAIListVectorStoreFilesParameters.Filter?
   public var limit: Int?
-  public var order: OpenAIListVectorStoreFilesParametersOrder?
+  public var order: OpenAIListVectorStoreFilesParameters.Order?
   public var vectorStoreId: String
 
   public init(
     vectorStoreId: String,
     after: String? = nil,
     before: String? = nil,
-    filter: OpenAIListVectorStoreFilesParametersFilter? = nil,
+    filter: OpenAIListVectorStoreFilesParameters.Filter? = nil,
     limit: Int? = nil,
-    order: OpenAIListVectorStoreFilesParametersOrder? = nil
+    order: OpenAIListVectorStoreFilesParameters.Order? = nil
   ) {
     self.after = after
     self.before = before
@@ -41,5 +41,17 @@ public struct OpenAIListVectorStoreFilesParameters: Codable, Sendable {
     case limit
     case order
     case vectorStoreId = "vector_store_id"
+  }
+
+  public enum Filter: String, Codable, Hashable, Sendable {
+    case inProgress = "in_progress"
+    case completed = "completed"
+    case failed = "failed"
+    case cancelled = "cancelled"
+  }
+
+  public enum Order: String, Codable, Hashable, Sendable {
+    case asc = "asc"
+    case desc = "desc"
   }
 }

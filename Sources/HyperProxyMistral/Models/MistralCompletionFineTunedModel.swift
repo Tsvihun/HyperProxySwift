@@ -19,7 +19,7 @@ public struct MistralCompletionFineTunedModel: Codable, Sendable {
   public var id: String
   public var job: String?
   public var maxContextLength: Int?
-  public var modelType: MistralCompletionModelType?
+  public var modelType: MistralCompletionFineTunedModel.ModelType?
   public var name: String?
   public var object: MistralModelObject?
   public var ownedBy: String
@@ -40,7 +40,7 @@ public struct MistralCompletionFineTunedModel: Codable, Sendable {
     description: String? = nil,
     job: String? = nil,
     maxContextLength: Int? = nil,
-    modelType: MistralCompletionModelType? = nil,
+    modelType: MistralCompletionFineTunedModel.ModelType? = nil,
     name: String? = nil,
     object: MistralModelObject? = nil
   ) {
@@ -77,5 +77,9 @@ public struct MistralCompletionFineTunedModel: Codable, Sendable {
     case root
     case rootVersion = "root_version"
     case workspaceId = "workspace_id"
+  }
+
+  public enum ModelType: String, Codable, Hashable, Sendable {
+    case completion = "completion"
   }
 }

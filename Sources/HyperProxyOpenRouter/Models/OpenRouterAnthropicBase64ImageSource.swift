@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenRouterAnthropicBase64ImageSource: Codable, Sendable {
   public var data: String
   public var mediaType: OpenRouterAnthropicImageMimeType
-  public var kind: OpenRouterAnthropicBase64ImageSourceKind
+  public var kind: OpenRouterAnthropicBase64ImageSource.Kind
 
   public init(
     data: String,
     mediaType: OpenRouterAnthropicImageMimeType,
-    kind: OpenRouterAnthropicBase64ImageSourceKind
+    kind: OpenRouterAnthropicBase64ImageSource.Kind
   ) {
     self.data = data
     self.mediaType = mediaType
@@ -29,5 +29,9 @@ public struct OpenRouterAnthropicBase64ImageSource: Codable, Sendable {
     case data
     case mediaType = "media_type"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case base64 = "base64"
   }
 }

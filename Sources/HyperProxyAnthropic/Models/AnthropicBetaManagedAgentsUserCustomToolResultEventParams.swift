@@ -14,11 +14,11 @@ public struct AnthropicBetaManagedAgentsUserCustomToolResultEventParams: Codable
   public var content: [AnthropicBetaManagedAgentsToolResultContentBlock]?
   public var customToolUseId: String
   public var isError: Bool?
-  public var kind: AnthropicBetaManagedAgentsUserCustomToolResultEventParamsKind
+  public var kind: AnthropicBetaManagedAgentsUserCustomToolResultEventParams.Kind
 
   public init(
     customToolUseId: String,
-    kind: AnthropicBetaManagedAgentsUserCustomToolResultEventParamsKind,
+    kind: AnthropicBetaManagedAgentsUserCustomToolResultEventParams.Kind,
     content: [AnthropicBetaManagedAgentsToolResultContentBlock]? = nil,
     isError: Bool? = nil
   ) {
@@ -33,5 +33,11 @@ public struct AnthropicBetaManagedAgentsUserCustomToolResultEventParams: Codable
     case customToolUseId = "custom_tool_use_id"
     case isError = "is_error"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case userCustomToolResult = "user.custom_tool_result"
   }
 }

@@ -46,4 +46,9 @@ public enum OpenAISpendLimitEnforcementStatus: RawRepresentable, Codable, Hashab
     var container = encoder.singleValueContainer()
     try container.encode(rawValue)
   }
+
+  public enum Preset: String, Codable, Hashable, Sendable {
+    case inactive = "inactive"
+    case enforcing = "enforcing"
+  }
 }

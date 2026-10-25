@@ -13,13 +13,13 @@ import HyperProxyCore
 public struct OpenAIFineTuningCheckpointPermission: Codable, Sendable {
   public var createdAt: Int
   public var id: String
-  public var object: OpenAIFineTuningCheckpointPermissionObject
+  public var object: OpenAIFineTuningCheckpointPermission.Object
   public var projectId: String
 
   public init(
     createdAt: Int,
     id: String,
-    object: OpenAIFineTuningCheckpointPermissionObject,
+    object: OpenAIFineTuningCheckpointPermission.Object,
     projectId: String
   ) {
     self.createdAt = createdAt
@@ -33,5 +33,9 @@ public struct OpenAIFineTuningCheckpointPermission: Codable, Sendable {
     case id
     case object
     case projectId = "project_id"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case checkpointPermission = "checkpoint.permission"
   }
 }

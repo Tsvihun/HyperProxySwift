@@ -14,12 +14,12 @@ public struct AnthropicBetaManagedAgentsUserToolConfirmationEventParams: Codable
   public var denyMessage: String?
   public var result: AnthropicBetaManagedAgentsUserToolConfirmationResult
   public var toolUseId: String
-  public var kind: AnthropicBetaManagedAgentsUserToolConfirmationEventParamsKind
+  public var kind: AnthropicBetaManagedAgentsUserToolConfirmationEventParams.Kind
 
   public init(
     result: AnthropicBetaManagedAgentsUserToolConfirmationResult,
     toolUseId: String,
-    kind: AnthropicBetaManagedAgentsUserToolConfirmationEventParamsKind,
+    kind: AnthropicBetaManagedAgentsUserToolConfirmationEventParams.Kind,
     denyMessage: String? = nil
   ) {
     self.denyMessage = denyMessage
@@ -33,5 +33,11 @@ public struct AnthropicBetaManagedAgentsUserToolConfirmationEventParams: Codable
     case result
     case toolUseId = "tool_use_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case userToolConfirmation = "user.tool_confirmation"
   }
 }

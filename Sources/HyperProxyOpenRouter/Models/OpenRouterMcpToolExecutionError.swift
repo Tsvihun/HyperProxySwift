@@ -12,10 +12,10 @@ import HyperProxyCore
 
 public struct OpenRouterMcpToolExecutionError: Codable, Sendable {
   public var content: HyperProxyJSONValue?
-  public var kind: OpenRouterMcpToolExecutionErrorKind
+  public var kind: OpenRouterMcpToolExecutionError.Kind
 
   public init(
-    kind: OpenRouterMcpToolExecutionErrorKind,
+    kind: OpenRouterMcpToolExecutionError.Kind,
     content: HyperProxyJSONValue? = nil
   ) {
     self.content = content
@@ -25,5 +25,9 @@ public struct OpenRouterMcpToolExecutionError: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case content
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case mcpToolExecutionError = "mcp_tool_execution_error"
   }
 }

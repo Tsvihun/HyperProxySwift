@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct OpenAILiveDecisionInputImageParam: Codable, Sendable {
   public var detail: OpenAILiveDetailEnum?
   public var imageUrl: String
-  public var kind: OpenAILiveDecisionInputImageParamKind
+  public var kind: OpenAILiveDecisionInputImageParam.Kind
 
   public init(
     imageUrl: String,
-    kind: OpenAILiveDecisionInputImageParamKind,
+    kind: OpenAILiveDecisionInputImageParam.Kind,
     detail: OpenAILiveDetailEnum? = nil
   ) {
     self.detail = detail
@@ -29,5 +29,9 @@ public struct OpenAILiveDecisionInputImageParam: Codable, Sendable {
     case detail
     case imageUrl = "image_url"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case inputImage = "input_image"
   }
 }

@@ -15,14 +15,14 @@ public struct OpenAISessionArtifactListResource: Codable, Sendable {
   public var firstId: String
   public var hasMore: Bool
   public var lastId: String
-  public var object: OpenAISessionArtifactListResourceObject
+  public var object: OpenAISessionArtifactListResource.Object
 
   public init(
     data: [OpenAISessionArtifactResource],
     firstId: String,
     hasMore: Bool,
     lastId: String,
-    object: OpenAISessionArtifactListResourceObject
+    object: OpenAISessionArtifactListResource.Object
   ) {
     self.data = data
     self.firstId = firstId
@@ -37,5 +37,9 @@ public struct OpenAISessionArtifactListResource: Codable, Sendable {
     case hasMore = "has_more"
     case lastId = "last_id"
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case list = "list"
   }
 }

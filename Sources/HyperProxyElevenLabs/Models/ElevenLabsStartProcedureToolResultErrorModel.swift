@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct ElevenLabsStartProcedureToolResultErrorModel: Codable, Sendable {
   public var message: String
   public var procedureId: String?
-  public var resultType: ElevenLabsStartProcedureErrorResultType?
+  public var resultType: ElevenLabsStartProcedureToolResultErrorModel.ResultType?
   public var status: ElevenLabsStartProcedureToolErrorStatus
 
   public init(
     message: String,
     status: ElevenLabsStartProcedureToolErrorStatus,
     procedureId: String? = nil,
-    resultType: ElevenLabsStartProcedureErrorResultType? = nil
+    resultType: ElevenLabsStartProcedureToolResultErrorModel.ResultType? = nil
   ) {
     self.message = message
     self.procedureId = procedureId
@@ -33,5 +33,9 @@ public struct ElevenLabsStartProcedureToolResultErrorModel: Codable, Sendable {
     case procedureId = "procedure_id"
     case resultType = "result_type"
     case status
+  }
+
+  public enum ResultType: String, Codable, Hashable, Sendable {
+    case startProcedureError = "start_procedure_error"
   }
 }

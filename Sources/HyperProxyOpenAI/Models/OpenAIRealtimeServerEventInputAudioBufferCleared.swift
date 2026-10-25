@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIRealtimeServerEventInputAudioBufferCleared: Codable, Sendable {
   public var eventId: String
-  public var kind: OpenAIRealtimeServerEventInputAudioBufferClearedKind
+  public var kind: OpenAIRealtimeServerEventInputAudioBufferCleared.Kind
 
   public init(
     eventId: String,
-    kind: OpenAIRealtimeServerEventInputAudioBufferClearedKind
+    kind: OpenAIRealtimeServerEventInputAudioBufferCleared.Kind
   ) {
     self.eventId = eventId
     self.kind = kind
@@ -25,5 +25,11 @@ public struct OpenAIRealtimeServerEventInputAudioBufferCleared: Codable, Sendabl
   enum CodingKeys: String, CodingKey {
     case eventId = "event_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case inputAudioBufferCleared = "input_audio_buffer.cleared"
   }
 }

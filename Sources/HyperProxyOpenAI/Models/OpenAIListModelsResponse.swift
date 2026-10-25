@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIListModelsResponse: Codable, Sendable {
   public var data: [OpenAIModel]
-  public var object: OpenAIListModelsResponseObject
+  public var object: OpenAIListModelsResponse.Object
 
   public init(
     data: [OpenAIModel],
-    object: OpenAIListModelsResponseObject
+    object: OpenAIListModelsResponse.Object
   ) {
     self.data = data
     self.object = object
@@ -25,5 +25,9 @@ public struct OpenAIListModelsResponse: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case data
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case list = "list"
   }
 }

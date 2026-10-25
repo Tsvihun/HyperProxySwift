@@ -11,9 +11,9 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksEagleTrainingJobTrainingStyle: String, Codable, Hashable, Sendable {
-  case tRAININGSTYLEUNSPECIFIED = "TRAINING_STYLE_UNSPECIFIED"
-  case eAGLE = "EAGLE"
-  case eAGLE3 = "EAGLE3"
-  case dFLASH = "DFLASH"
-  case dSPARK = "DSPARK"
+  case trainingStyleUnspecified = "TRAINING_STYLE_UNSPECIFIED"
+  case eagle = "EAGLE"
+  case eagle3 = "EAGLE3"
+  case dflash = "DFLASH"
+  case dspark = "DSPARK"
 }

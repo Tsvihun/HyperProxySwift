@@ -11,64 +11,104 @@ import Foundation
 import HyperProxyCore
 
 public enum OpenAIBetaResponsesServerEvent: Codable, Sendable {
-  case betaResponsesServerEventAnyOf1(OpenAIBetaResponsesServerEventAnyOf1)
-  case betaResponsesServerEventAnyOf2(OpenAIBetaResponsesServerEventAnyOf2)
-  case betaResponsesServerEventAnyOf3(OpenAIBetaResponsesServerEventAnyOf3)
-  case betaResponsesServerEventAnyOf4(OpenAIBetaResponsesServerEventAnyOf4)
-  case betaResponsesServerEventAnyOf5(OpenAIBetaResponsesServerEventAnyOf5)
-  case betaResponsesServerEventAnyOf6(OpenAIBetaResponsesServerEventAnyOf6)
-  case betaResponsesServerEventAnyOf7(OpenAIBetaResponsesServerEventAnyOf7)
-  case betaResponsesServerEventAnyOf8(OpenAIBetaResponsesServerEventAnyOf8)
-  case betaResponsesServerEventAnyOf9(OpenAIBetaResponsesServerEventAnyOf9)
-  case betaResponsesServerEventAnyOf10(OpenAIBetaResponsesServerEventAnyOf10)
-  case betaResponsesServerEventAnyOf11(OpenAIBetaResponsesServerEventAnyOf11)
-  case betaResponsesServerEventAnyOf12(OpenAIBetaResponsesServerEventAnyOf12)
-  case betaResponsesServerEventAnyOf13(OpenAIBetaResponsesServerEventAnyOf13)
-  case betaResponsesServerEventAnyOf14(OpenAIBetaResponsesServerEventAnyOf14)
-  case betaResponsesServerEventAnyOf15(OpenAIBetaResponsesServerEventAnyOf15)
-  case betaResponsesServerEventAnyOf16(OpenAIBetaResponsesServerEventAnyOf16)
-  case betaResponsesServerEventAnyOf17(OpenAIBetaResponsesServerEventAnyOf17)
-  case betaResponsesServerEventAnyOf18(OpenAIBetaResponsesServerEventAnyOf18)
-  case betaResponsesServerEventAnyOf19(OpenAIBetaResponsesServerEventAnyOf19)
-  case betaResponsesServerEventAnyOf20(OpenAIBetaResponsesServerEventAnyOf20)
-  case betaResponsesServerEventAnyOf21(OpenAIBetaResponsesServerEventAnyOf21)
-  case betaResponsesServerEventAnyOf22(OpenAIBetaResponsesServerEventAnyOf22)
-  case betaResponsesServerEventAnyOf23(OpenAIBetaResponsesServerEventAnyOf23)
-  case betaResponsesServerEventAnyOf24(OpenAIBetaResponsesServerEventAnyOf24)
-  case betaResponsesServerEventAnyOf25(OpenAIBetaResponsesServerEventAnyOf25)
-  case betaResponsesServerEventAnyOf26(OpenAIBetaResponsesServerEventAnyOf26)
-  case betaResponsesServerEventAnyOf27(OpenAIBetaResponsesServerEventAnyOf27)
-  case betaResponsesServerEventAnyOf28(OpenAIBetaResponsesServerEventAnyOf28)
-  case betaResponsesServerEventAnyOf29(OpenAIBetaResponsesServerEventAnyOf29)
-  case betaResponsesServerEventAnyOf30(OpenAIBetaResponsesServerEventAnyOf30)
-  case betaResponsesServerEventAnyOf31(OpenAIBetaResponsesServerEventAnyOf31)
-  case betaResponsesServerEventAnyOf32(OpenAIBetaResponsesServerEventAnyOf32)
-  case betaResponsesServerEventAnyOf33(OpenAIBetaResponsesServerEventAnyOf33)
-  case betaResponsesServerEventAnyOf34(OpenAIBetaResponsesServerEventAnyOf34)
-  case betaResponsesServerEventAnyOf35(OpenAIBetaResponsesServerEventAnyOf35)
-  case betaResponsesServerEventAnyOf36(OpenAIBetaResponsesServerEventAnyOf36)
-  case betaResponsesServerEventAnyOf37(OpenAIBetaResponsesServerEventAnyOf37)
-  case betaResponsesServerEventAnyOf38(OpenAIBetaResponsesServerEventAnyOf38)
-  case betaResponsesServerEventAnyOf39(OpenAIBetaResponsesServerEventAnyOf39)
-  case betaResponsesServerEventAnyOf40(OpenAIBetaResponsesServerEventAnyOf40)
-  case betaResponsesServerEventAnyOf41(OpenAIBetaResponsesServerEventAnyOf41)
-  case betaResponsesServerEventAnyOf42(OpenAIBetaResponsesServerEventAnyOf42)
-  case betaResponsesServerEventAnyOf43(OpenAIBetaResponsesServerEventAnyOf43)
-  case betaResponsesServerEventAnyOf44(OpenAIBetaResponsesServerEventAnyOf44)
-  case betaResponsesServerEventAnyOf45(OpenAIBetaResponsesServerEventAnyOf45)
-  case betaResponsesServerEventAnyOf46(OpenAIBetaResponsesServerEventAnyOf46)
-  case betaResponsesServerEventAnyOf47(OpenAIBetaResponsesServerEventAnyOf47)
-  case betaResponsesServerEventAnyOf48(OpenAIBetaResponsesServerEventAnyOf48)
-  case betaResponsesServerEventAnyOf49(OpenAIBetaResponsesServerEventAnyOf49)
-  case betaResponsesServerEventAnyOf50(OpenAIBetaResponsesServerEventAnyOf50)
-  case betaResponsesServerEventAnyOf51(OpenAIBetaResponsesServerEventAnyOf51)
-  case betaResponsesServerEventAnyOf52(OpenAIBetaResponsesServerEventAnyOf52)
-  case betaResponsesServerEventAnyOf53(OpenAIBetaResponsesServerEventAnyOf53)
-  case betaResponsesServerEventAnyOf54(OpenAIBetaResponsesServerEventAnyOf54)
-  case betaResponsesServerEventAnyOf55(OpenAIBetaResponsesServerEventAnyOf55)
-  case betaResponsesServerEventAnyOf56(OpenAIBetaResponsesServerEventAnyOf56)
-  case betaResponsesServerEventAnyOf57(OpenAIBetaResponsesServerEventAnyOf57)
-  case betaResponsesServerEventAnyOf58(OpenAIBetaResponsesServerEventAnyOf58)
+  case betaResponseAudioWsDelta(OpenAIBetaResponsesServerEvent.BetaResponseAudioWsDelta)
+  case betaResponseAudioWsDone(OpenAIBetaResponsesServerEvent.BetaResponseAudioWsDone)
+  case betaResponseAudioTranscriptWsDelta(
+    OpenAIBetaResponsesServerEvent.BetaResponseAudioTranscriptWsDelta)
+  case betaResponseAudioTranscriptWsDone(
+    OpenAIBetaResponsesServerEvent.BetaResponseAudioTranscriptWsDone)
+  case betaResponseCodeInterpreterCallCodeWsDelta(
+    OpenAIBetaResponsesServerEvent.BetaResponseCodeInterpreterCallCodeWsDelta)
+  case betaResponseCodeInterpreterCallCodeWsDone(
+    OpenAIBetaResponsesServerEvent.BetaResponseCodeInterpreterCallCodeWsDone)
+  case betaResponseCodeInterpreterCallWsCompleted(
+    OpenAIBetaResponsesServerEvent.BetaResponseCodeInterpreterCallWsCompleted)
+  case betaResponseCodeInterpreterCallInWsProgress(
+    OpenAIBetaResponsesServerEvent.BetaResponseCodeInterpreterCallInWsProgress)
+  case betaResponseCodeInterpreterCallWsInterpreting(
+    OpenAIBetaResponsesServerEvent.BetaResponseCodeInterpreterCallWsInterpreting)
+  case betaResponseCompactionWsCompacting(
+    OpenAIBetaResponsesServerEvent.BetaResponseCompactionWsCompacting)
+  case betaResponseWsCompleted(OpenAIBetaResponsesServerEvent.BetaResponseWsCompleted)
+  case betaResponseContentPartWsAdded(OpenAIBetaResponsesServerEvent.BetaResponseContentPartWsAdded)
+  case betaResponseContentPartWsDone(OpenAIBetaResponsesServerEvent.BetaResponseContentPartWsDone)
+  case betaResponseWsCreated(OpenAIBetaResponsesServerEvent.BetaResponseWsCreated)
+  case betaResponseFileSearchCallWsCompleted(
+    OpenAIBetaResponsesServerEvent.BetaResponseFileSearchCallWsCompleted)
+  case betaResponseFileSearchCallInWsProgress(
+    OpenAIBetaResponsesServerEvent.BetaResponseFileSearchCallInWsProgress)
+  case betaResponseFileSearchCallWsSearching(
+    OpenAIBetaResponsesServerEvent.BetaResponseFileSearchCallWsSearching)
+  case betaResponseFunctionCallArgumentsWsDelta(
+    OpenAIBetaResponsesServerEvent.BetaResponseFunctionCallArgumentsWsDelta)
+  case betaResponseFunctionCallArgumentsWsDone(
+    OpenAIBetaResponsesServerEvent.BetaResponseFunctionCallArgumentsWsDone)
+  case betaResponseShellCallCommandWsAdded(
+    OpenAIBetaResponsesServerEvent.BetaResponseShellCallCommandWsAdded)
+  case betaResponseShellCallCommandWsDelta(
+    OpenAIBetaResponsesServerEvent.BetaResponseShellCallCommandWsDelta)
+  case betaResponseShellCallCommandWsDone(
+    OpenAIBetaResponsesServerEvent.BetaResponseShellCallCommandWsDone)
+  case betaResponseShellCallOutputContentWsDelta(
+    OpenAIBetaResponsesServerEvent.BetaResponseShellCallOutputContentWsDelta)
+  case betaResponseShellCallOutputContentWsDone(
+    OpenAIBetaResponsesServerEvent.BetaResponseShellCallOutputContentWsDone)
+  case betaResponseInWsProgress(OpenAIBetaResponsesServerEvent.BetaResponseInWsProgress)
+  case betaResponseWsFailed(OpenAIBetaResponsesServerEvent.BetaResponseWsFailed)
+  case betaResponseWsIncomplete(OpenAIBetaResponsesServerEvent.BetaResponseWsIncomplete)
+  case betaResponseOutputItemWsAdded(OpenAIBetaResponsesServerEvent.BetaResponseOutputItemWsAdded)
+  case betaResponseOutputItemWsDone(OpenAIBetaResponsesServerEvent.BetaResponseOutputItemWsDone)
+  case betaResponseReasoningSummaryPartWsAdded(
+    OpenAIBetaResponsesServerEvent.BetaResponseReasoningSummaryPartWsAdded)
+  case betaResponseReasoningSummaryPartWsDone(
+    OpenAIBetaResponsesServerEvent.BetaResponseReasoningSummaryPartWsDone)
+  case betaResponseReasoningSummaryTextWsDelta(
+    OpenAIBetaResponsesServerEvent.BetaResponseReasoningSummaryTextWsDelta)
+  case betaResponseReasoningSummaryTextWsDone(
+    OpenAIBetaResponsesServerEvent.BetaResponseReasoningSummaryTextWsDone)
+  case betaResponseReasoningTextWsDelta(
+    OpenAIBetaResponsesServerEvent.BetaResponseReasoningTextWsDelta)
+  case betaResponseReasoningTextWsDone(
+    OpenAIBetaResponsesServerEvent.BetaResponseReasoningTextWsDone)
+  case betaResponseRefusalWsDelta(OpenAIBetaResponsesServerEvent.BetaResponseRefusalWsDelta)
+  case betaResponseRefusalWsDone(OpenAIBetaResponsesServerEvent.BetaResponseRefusalWsDone)
+  case betaResponseTextWsDelta(OpenAIBetaResponsesServerEvent.BetaResponseTextWsDelta)
+  case betaResponseTextWsDone(OpenAIBetaResponsesServerEvent.BetaResponseTextWsDone)
+  case betaResponseWebSearchCallWsCompleted(
+    OpenAIBetaResponsesServerEvent.BetaResponseWebSearchCallWsCompleted)
+  case betaResponseWebSearchCallInWsProgress(
+    OpenAIBetaResponsesServerEvent.BetaResponseWebSearchCallInWsProgress)
+  case betaResponseWebSearchCallWsSearching(
+    OpenAIBetaResponsesServerEvent.BetaResponseWebSearchCallWsSearching)
+  case betaResponseImageGenCallWsCompleted(
+    OpenAIBetaResponsesServerEvent.BetaResponseImageGenCallWsCompleted)
+  case betaResponseImageGenCallWsGenerating(
+    OpenAIBetaResponsesServerEvent.BetaResponseImageGenCallWsGenerating)
+  case betaResponseImageGenCallInWsProgress(
+    OpenAIBetaResponsesServerEvent.BetaResponseImageGenCallInWsProgress)
+  case betaResponseImageGenCallPartialWsImage(
+    OpenAIBetaResponsesServerEvent.BetaResponseImageGenCallPartialWsImage)
+  case betaResponseMcpCallArgumentsWsDelta(
+    OpenAIBetaResponsesServerEvent.BetaResponseMcpCallArgumentsWsDelta)
+  case betaResponseMcpCallArgumentsWsDone(
+    OpenAIBetaResponsesServerEvent.BetaResponseMcpCallArgumentsWsDone)
+  case betaResponseMcpCallWsCompleted(OpenAIBetaResponsesServerEvent.BetaResponseMcpCallWsCompleted)
+  case betaResponseMcpCallWsFailed(OpenAIBetaResponsesServerEvent.BetaResponseMcpCallWsFailed)
+  case betaResponseMcpCallInWsProgress(
+    OpenAIBetaResponsesServerEvent.BetaResponseMcpCallInWsProgress)
+  case betaResponseMcpListToolsWsCompleted(
+    OpenAIBetaResponsesServerEvent.BetaResponseMcpListToolsWsCompleted)
+  case betaResponseMcpListToolsWsFailed(
+    OpenAIBetaResponsesServerEvent.BetaResponseMcpListToolsWsFailed)
+  case betaResponseMcpListToolsInWsProgress(
+    OpenAIBetaResponsesServerEvent.BetaResponseMcpListToolsInWsProgress)
+  case betaResponseOutputTextAnnotationWsAdded(
+    OpenAIBetaResponsesServerEvent.BetaResponseOutputTextAnnotationWsAdded)
+  case betaResponseWsQueued(OpenAIBetaResponsesServerEvent.BetaResponseWsQueued)
+  case betaResponseCustomToolCallInputWsDelta(
+    OpenAIBetaResponsesServerEvent.BetaResponseCustomToolCallInputWsDelta)
+  case betaResponseCustomToolCallInputWsDone(
+    OpenAIBetaResponsesServerEvent.BetaResponseCustomToolCallInputWsDone)
   case betaResponseWsError(OpenAIBetaResponseWsError)
   case betaResponseSteerAcceptedEvent(OpenAIBetaResponseSteerAcceptedEvent)
   case betaResponseSteerPendingEvent(OpenAIBetaResponseSteerPendingEvent)
@@ -78,236 +118,346 @@ public enum OpenAIBetaResponsesServerEvent: Codable, Sendable {
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf1.self) {
-      self = .betaResponsesServerEventAnyOf1(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseAudioWsDelta.self)
+    {
+      self = .betaResponseAudioWsDelta(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf2.self) {
-      self = .betaResponsesServerEventAnyOf2(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseAudioWsDone.self)
+    {
+      self = .betaResponseAudioWsDone(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf3.self) {
-      self = .betaResponsesServerEventAnyOf3(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseAudioTranscriptWsDelta.self)
+    {
+      self = .betaResponseAudioTranscriptWsDelta(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf4.self) {
-      self = .betaResponsesServerEventAnyOf4(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseAudioTranscriptWsDone.self)
+    {
+      self = .betaResponseAudioTranscriptWsDone(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf5.self) {
-      self = .betaResponsesServerEventAnyOf5(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseCodeInterpreterCallCodeWsDelta.self)
+    {
+      self = .betaResponseCodeInterpreterCallCodeWsDelta(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf6.self) {
-      self = .betaResponsesServerEventAnyOf6(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseCodeInterpreterCallCodeWsDone.self)
+    {
+      self = .betaResponseCodeInterpreterCallCodeWsDone(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf7.self) {
-      self = .betaResponsesServerEventAnyOf7(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseCodeInterpreterCallWsCompleted.self)
+    {
+      self = .betaResponseCodeInterpreterCallWsCompleted(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf8.self) {
-      self = .betaResponsesServerEventAnyOf8(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseCodeInterpreterCallInWsProgress.self)
+    {
+      self = .betaResponseCodeInterpreterCallInWsProgress(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf9.self) {
-      self = .betaResponsesServerEventAnyOf9(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseCodeInterpreterCallWsInterpreting.self)
+    {
+      self = .betaResponseCodeInterpreterCallWsInterpreting(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf10.self) {
-      self = .betaResponsesServerEventAnyOf10(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseCompactionWsCompacting.self)
+    {
+      self = .betaResponseCompactionWsCompacting(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf11.self) {
-      self = .betaResponsesServerEventAnyOf11(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseWsCompleted.self)
+    {
+      self = .betaResponseWsCompleted(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf12.self) {
-      self = .betaResponsesServerEventAnyOf12(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseContentPartWsAdded.self)
+    {
+      self = .betaResponseContentPartWsAdded(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf13.self) {
-      self = .betaResponsesServerEventAnyOf13(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseContentPartWsDone.self)
+    {
+      self = .betaResponseContentPartWsDone(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf14.self) {
-      self = .betaResponsesServerEventAnyOf14(value)
+    if let value = try? container.decode(OpenAIBetaResponsesServerEvent.BetaResponseWsCreated.self)
+    {
+      self = .betaResponseWsCreated(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf15.self) {
-      self = .betaResponsesServerEventAnyOf15(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseFileSearchCallWsCompleted.self)
+    {
+      self = .betaResponseFileSearchCallWsCompleted(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf16.self) {
-      self = .betaResponsesServerEventAnyOf16(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseFileSearchCallInWsProgress.self)
+    {
+      self = .betaResponseFileSearchCallInWsProgress(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf17.self) {
-      self = .betaResponsesServerEventAnyOf17(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseFileSearchCallWsSearching.self)
+    {
+      self = .betaResponseFileSearchCallWsSearching(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf18.self) {
-      self = .betaResponsesServerEventAnyOf18(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseFunctionCallArgumentsWsDelta.self)
+    {
+      self = .betaResponseFunctionCallArgumentsWsDelta(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf19.self) {
-      self = .betaResponsesServerEventAnyOf19(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseFunctionCallArgumentsWsDone.self)
+    {
+      self = .betaResponseFunctionCallArgumentsWsDone(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf20.self) {
-      self = .betaResponsesServerEventAnyOf20(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseShellCallCommandWsAdded.self)
+    {
+      self = .betaResponseShellCallCommandWsAdded(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf21.self) {
-      self = .betaResponsesServerEventAnyOf21(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseShellCallCommandWsDelta.self)
+    {
+      self = .betaResponseShellCallCommandWsDelta(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf22.self) {
-      self = .betaResponsesServerEventAnyOf22(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseShellCallCommandWsDone.self)
+    {
+      self = .betaResponseShellCallCommandWsDone(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf23.self) {
-      self = .betaResponsesServerEventAnyOf23(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseShellCallOutputContentWsDelta.self)
+    {
+      self = .betaResponseShellCallOutputContentWsDelta(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf24.self) {
-      self = .betaResponsesServerEventAnyOf24(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseShellCallOutputContentWsDone.self)
+    {
+      self = .betaResponseShellCallOutputContentWsDone(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf25.self) {
-      self = .betaResponsesServerEventAnyOf25(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseInWsProgress.self)
+    {
+      self = .betaResponseInWsProgress(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf26.self) {
-      self = .betaResponsesServerEventAnyOf26(value)
+    if let value = try? container.decode(OpenAIBetaResponsesServerEvent.BetaResponseWsFailed.self) {
+      self = .betaResponseWsFailed(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf27.self) {
-      self = .betaResponsesServerEventAnyOf27(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseWsIncomplete.self)
+    {
+      self = .betaResponseWsIncomplete(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf28.self) {
-      self = .betaResponsesServerEventAnyOf28(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseOutputItemWsAdded.self)
+    {
+      self = .betaResponseOutputItemWsAdded(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf29.self) {
-      self = .betaResponsesServerEventAnyOf29(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseOutputItemWsDone.self)
+    {
+      self = .betaResponseOutputItemWsDone(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf30.self) {
-      self = .betaResponsesServerEventAnyOf30(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseReasoningSummaryPartWsAdded.self)
+    {
+      self = .betaResponseReasoningSummaryPartWsAdded(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf31.self) {
-      self = .betaResponsesServerEventAnyOf31(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseReasoningSummaryPartWsDone.self)
+    {
+      self = .betaResponseReasoningSummaryPartWsDone(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf32.self) {
-      self = .betaResponsesServerEventAnyOf32(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseReasoningSummaryTextWsDelta.self)
+    {
+      self = .betaResponseReasoningSummaryTextWsDelta(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf33.self) {
-      self = .betaResponsesServerEventAnyOf33(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseReasoningSummaryTextWsDone.self)
+    {
+      self = .betaResponseReasoningSummaryTextWsDone(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf34.self) {
-      self = .betaResponsesServerEventAnyOf34(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseReasoningTextWsDelta.self)
+    {
+      self = .betaResponseReasoningTextWsDelta(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf35.self) {
-      self = .betaResponsesServerEventAnyOf35(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseReasoningTextWsDone.self)
+    {
+      self = .betaResponseReasoningTextWsDone(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf36.self) {
-      self = .betaResponsesServerEventAnyOf36(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseRefusalWsDelta.self)
+    {
+      self = .betaResponseRefusalWsDelta(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf37.self) {
-      self = .betaResponsesServerEventAnyOf37(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseRefusalWsDone.self)
+    {
+      self = .betaResponseRefusalWsDone(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf38.self) {
-      self = .betaResponsesServerEventAnyOf38(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseTextWsDelta.self)
+    {
+      self = .betaResponseTextWsDelta(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf39.self) {
-      self = .betaResponsesServerEventAnyOf39(value)
+    if let value = try? container.decode(OpenAIBetaResponsesServerEvent.BetaResponseTextWsDone.self)
+    {
+      self = .betaResponseTextWsDone(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf40.self) {
-      self = .betaResponsesServerEventAnyOf40(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseWebSearchCallWsCompleted.self)
+    {
+      self = .betaResponseWebSearchCallWsCompleted(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf41.self) {
-      self = .betaResponsesServerEventAnyOf41(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseWebSearchCallInWsProgress.self)
+    {
+      self = .betaResponseWebSearchCallInWsProgress(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf42.self) {
-      self = .betaResponsesServerEventAnyOf42(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseWebSearchCallWsSearching.self)
+    {
+      self = .betaResponseWebSearchCallWsSearching(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf43.self) {
-      self = .betaResponsesServerEventAnyOf43(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseImageGenCallWsCompleted.self)
+    {
+      self = .betaResponseImageGenCallWsCompleted(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf44.self) {
-      self = .betaResponsesServerEventAnyOf44(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseImageGenCallWsGenerating.self)
+    {
+      self = .betaResponseImageGenCallWsGenerating(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf45.self) {
-      self = .betaResponsesServerEventAnyOf45(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseImageGenCallInWsProgress.self)
+    {
+      self = .betaResponseImageGenCallInWsProgress(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf46.self) {
-      self = .betaResponsesServerEventAnyOf46(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseImageGenCallPartialWsImage.self)
+    {
+      self = .betaResponseImageGenCallPartialWsImage(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf47.self) {
-      self = .betaResponsesServerEventAnyOf47(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseMcpCallArgumentsWsDelta.self)
+    {
+      self = .betaResponseMcpCallArgumentsWsDelta(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf48.self) {
-      self = .betaResponsesServerEventAnyOf48(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseMcpCallArgumentsWsDone.self)
+    {
+      self = .betaResponseMcpCallArgumentsWsDone(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf49.self) {
-      self = .betaResponsesServerEventAnyOf49(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseMcpCallWsCompleted.self)
+    {
+      self = .betaResponseMcpCallWsCompleted(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf50.self) {
-      self = .betaResponsesServerEventAnyOf50(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseMcpCallWsFailed.self)
+    {
+      self = .betaResponseMcpCallWsFailed(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf51.self) {
-      self = .betaResponsesServerEventAnyOf51(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseMcpCallInWsProgress.self)
+    {
+      self = .betaResponseMcpCallInWsProgress(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf52.self) {
-      self = .betaResponsesServerEventAnyOf52(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseMcpListToolsWsCompleted.self)
+    {
+      self = .betaResponseMcpListToolsWsCompleted(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf53.self) {
-      self = .betaResponsesServerEventAnyOf53(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseMcpListToolsWsFailed.self)
+    {
+      self = .betaResponseMcpListToolsWsFailed(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf54.self) {
-      self = .betaResponsesServerEventAnyOf54(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseMcpListToolsInWsProgress.self)
+    {
+      self = .betaResponseMcpListToolsInWsProgress(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf55.self) {
-      self = .betaResponsesServerEventAnyOf55(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseOutputTextAnnotationWsAdded.self)
+    {
+      self = .betaResponseOutputTextAnnotationWsAdded(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf56.self) {
-      self = .betaResponsesServerEventAnyOf56(value)
+    if let value = try? container.decode(OpenAIBetaResponsesServerEvent.BetaResponseWsQueued.self) {
+      self = .betaResponseWsQueued(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf57.self) {
-      self = .betaResponsesServerEventAnyOf57(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseCustomToolCallInputWsDelta.self)
+    {
+      self = .betaResponseCustomToolCallInputWsDelta(value)
       return
     }
-    if let value = try? container.decode(OpenAIBetaResponsesServerEventAnyOf58.self) {
-      self = .betaResponsesServerEventAnyOf58(value)
+    if let value = try? container.decode(
+      OpenAIBetaResponsesServerEvent.BetaResponseCustomToolCallInputWsDone.self)
+    {
+      self = .betaResponseCustomToolCallInputWsDone(value)
       return
     }
     if let value = try? container.decode(OpenAIBetaResponseWsError.self) {
@@ -337,121 +487,121 @@ public enum OpenAIBetaResponsesServerEvent: Codable, Sendable {
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .betaResponsesServerEventAnyOf1(let value):
+    case .betaResponseAudioWsDelta(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf2(let value):
+    case .betaResponseAudioWsDone(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf3(let value):
+    case .betaResponseAudioTranscriptWsDelta(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf4(let value):
+    case .betaResponseAudioTranscriptWsDone(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf5(let value):
+    case .betaResponseCodeInterpreterCallCodeWsDelta(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf6(let value):
+    case .betaResponseCodeInterpreterCallCodeWsDone(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf7(let value):
+    case .betaResponseCodeInterpreterCallWsCompleted(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf8(let value):
+    case .betaResponseCodeInterpreterCallInWsProgress(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf9(let value):
+    case .betaResponseCodeInterpreterCallWsInterpreting(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf10(let value):
+    case .betaResponseCompactionWsCompacting(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf11(let value):
+    case .betaResponseWsCompleted(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf12(let value):
+    case .betaResponseContentPartWsAdded(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf13(let value):
+    case .betaResponseContentPartWsDone(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf14(let value):
+    case .betaResponseWsCreated(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf15(let value):
+    case .betaResponseFileSearchCallWsCompleted(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf16(let value):
+    case .betaResponseFileSearchCallInWsProgress(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf17(let value):
+    case .betaResponseFileSearchCallWsSearching(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf18(let value):
+    case .betaResponseFunctionCallArgumentsWsDelta(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf19(let value):
+    case .betaResponseFunctionCallArgumentsWsDone(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf20(let value):
+    case .betaResponseShellCallCommandWsAdded(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf21(let value):
+    case .betaResponseShellCallCommandWsDelta(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf22(let value):
+    case .betaResponseShellCallCommandWsDone(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf23(let value):
+    case .betaResponseShellCallOutputContentWsDelta(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf24(let value):
+    case .betaResponseShellCallOutputContentWsDone(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf25(let value):
+    case .betaResponseInWsProgress(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf26(let value):
+    case .betaResponseWsFailed(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf27(let value):
+    case .betaResponseWsIncomplete(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf28(let value):
+    case .betaResponseOutputItemWsAdded(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf29(let value):
+    case .betaResponseOutputItemWsDone(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf30(let value):
+    case .betaResponseReasoningSummaryPartWsAdded(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf31(let value):
+    case .betaResponseReasoningSummaryPartWsDone(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf32(let value):
+    case .betaResponseReasoningSummaryTextWsDelta(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf33(let value):
+    case .betaResponseReasoningSummaryTextWsDone(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf34(let value):
+    case .betaResponseReasoningTextWsDelta(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf35(let value):
+    case .betaResponseReasoningTextWsDone(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf36(let value):
+    case .betaResponseRefusalWsDelta(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf37(let value):
+    case .betaResponseRefusalWsDone(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf38(let value):
+    case .betaResponseTextWsDelta(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf39(let value):
+    case .betaResponseTextWsDone(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf40(let value):
+    case .betaResponseWebSearchCallWsCompleted(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf41(let value):
+    case .betaResponseWebSearchCallInWsProgress(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf42(let value):
+    case .betaResponseWebSearchCallWsSearching(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf43(let value):
+    case .betaResponseImageGenCallWsCompleted(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf44(let value):
+    case .betaResponseImageGenCallWsGenerating(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf45(let value):
+    case .betaResponseImageGenCallInWsProgress(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf46(let value):
+    case .betaResponseImageGenCallPartialWsImage(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf47(let value):
+    case .betaResponseMcpCallArgumentsWsDelta(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf48(let value):
+    case .betaResponseMcpCallArgumentsWsDone(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf49(let value):
+    case .betaResponseMcpCallWsCompleted(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf50(let value):
+    case .betaResponseMcpCallWsFailed(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf51(let value):
+    case .betaResponseMcpCallInWsProgress(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf52(let value):
+    case .betaResponseMcpListToolsWsCompleted(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf53(let value):
+    case .betaResponseMcpListToolsWsFailed(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf54(let value):
+    case .betaResponseMcpListToolsInWsProgress(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf55(let value):
+    case .betaResponseOutputTextAnnotationWsAdded(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf56(let value):
+    case .betaResponseWsQueued(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf57(let value):
+    case .betaResponseCustomToolCallInputWsDelta(let value):
       try container.encode(value)
-    case .betaResponsesServerEventAnyOf58(let value):
+    case .betaResponseCustomToolCallInputWsDone(let value):
       try container.encode(value)
     case .betaResponseWsError(let value):
       try container.encode(value)
@@ -465,6 +615,2950 @@ public enum OpenAIBetaResponsesServerEvent: Codable, Sendable {
       try container.encode(value)
     case .betaResponseInjectFailedEvent(let value):
       try container.encode(value)
+    }
+  }
+
+  public struct BetaResponseAudioWsDelta: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var delta: String
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseAudioDeltaEventKind
+
+    public init(
+      delta: String,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseAudioDeltaEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.delta = delta
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case delta
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseCompactionWsCompacting: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseCompactionCompactingStreamingEventKind
+
+    public init(
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseCompactionCompactingStreamingEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseWsCompleted: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var response: OpenAIBetaResponse
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseCompletedEventKind
+
+    public init(
+      response: OpenAIBetaResponse,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseCompletedEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.response = response
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case response
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseContentPartWsAdded: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var contentIndex: Int
+    public var itemId: String
+    public var outputIndex: Int
+    public var part: OpenAIBetaOutputContent
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseContentPartAddedEventKind
+
+    public init(
+      contentIndex: Int,
+      itemId: String,
+      outputIndex: Int,
+      part: OpenAIBetaOutputContent,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseContentPartAddedEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.contentIndex = contentIndex
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.part = part
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case contentIndex = "content_index"
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case part
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseContentPartWsDone: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var contentIndex: Int
+    public var itemId: String
+    public var outputIndex: Int
+    public var part: OpenAIBetaOutputContent
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseContentPartDoneEventKind
+
+    public init(
+      contentIndex: Int,
+      itemId: String,
+      outputIndex: Int,
+      part: OpenAIBetaOutputContent,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseContentPartDoneEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.contentIndex = contentIndex
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.part = part
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case contentIndex = "content_index"
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case part
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseWsCreated: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var response: OpenAIBetaResponse
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseCreatedEventKind
+
+    public init(
+      response: OpenAIBetaResponse,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseCreatedEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.response = response
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case response
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseFileSearchCallWsCompleted: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseFileSearchCallCompletedEventKind
+
+    public init(
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseFileSearchCallCompletedEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseFileSearchCallInWsProgress: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseFileSearchCallInProgressEventKind
+
+    public init(
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseFileSearchCallInProgressEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseFileSearchCallWsSearching: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseFileSearchCallSearchingEventKind
+
+    public init(
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseFileSearchCallSearchingEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseFunctionCallArgumentsWsDelta: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var delta: String
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseFunctionCallArgumentsDeltaEventKind
+
+    public init(
+      delta: String,
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseFunctionCallArgumentsDeltaEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.delta = delta
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case delta
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseFunctionCallArgumentsWsDone: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var arguments: String
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseFunctionCallArgumentsDoneEventKind
+
+    public init(
+      arguments: String,
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseFunctionCallArgumentsDoneEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.arguments = arguments
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case arguments
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseAudioWsDone: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseAudioDoneEventKind
+
+    public init(
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseAudioDoneEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseShellCallCommandWsAdded: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var command: String
+    public var commandIndex: Int
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseShellCallCommandAddedStreamingEventKind
+
+    public init(
+      command: String,
+      commandIndex: Int,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseShellCallCommandAddedStreamingEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.command = command
+      self.commandIndex = commandIndex
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case command
+      case commandIndex = "command_index"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseShellCallCommandWsDelta: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var commandIndex: Int
+    public var delta: String
+    public var obfuscation: String?
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseShellCallCommandDeltaStreamingEventKind
+
+    public init(
+      commandIndex: Int,
+      delta: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseShellCallCommandDeltaStreamingEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      obfuscation: String? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.commandIndex = commandIndex
+      self.delta = delta
+      self.obfuscation = obfuscation
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case commandIndex = "command_index"
+      case delta
+      case obfuscation
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseShellCallCommandWsDone: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var command: String
+    public var commandIndex: Int
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseShellCallCommandDoneStreamingEventKind
+
+    public init(
+      command: String,
+      commandIndex: Int,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseShellCallCommandDoneStreamingEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.command = command
+      self.commandIndex = commandIndex
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case command
+      case commandIndex = "command_index"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseShellCallOutputContentWsDelta: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var commandIndex: Int
+    public var delta: OpenAIBetaShellCallOutputDelta
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseShellCallOutputContentDeltaStreamingEventKind
+
+    public init(
+      commandIndex: Int,
+      delta: OpenAIBetaShellCallOutputDelta,
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseShellCallOutputContentDeltaStreamingEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.commandIndex = commandIndex
+      self.delta = delta
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case commandIndex = "command_index"
+      case delta
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseShellCallOutputContentWsDone: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var commandIndex: Int
+    public var itemId: String
+    public var output: [OpenAIBetaFunctionShellCallOutputContent]
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseShellCallOutputContentDoneStreamingEventKind
+
+    public init(
+      commandIndex: Int,
+      itemId: String,
+      output: [OpenAIBetaFunctionShellCallOutputContent],
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseShellCallOutputContentDoneStreamingEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.commandIndex = commandIndex
+      self.itemId = itemId
+      self.output = output
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case commandIndex = "command_index"
+      case itemId = "item_id"
+      case output
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseInWsProgress: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var response: OpenAIBetaResponse
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseInProgressEventKind
+
+    public init(
+      response: OpenAIBetaResponse,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseInProgressEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.response = response
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case response
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseWsFailed: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var response: OpenAIBetaResponse
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseFailedEventKind
+
+    public init(
+      response: OpenAIBetaResponse,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseFailedEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.response = response
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case response
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseWsIncomplete: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var response: OpenAIBetaResponse
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseIncompleteEventKind
+
+    public init(
+      response: OpenAIBetaResponse,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseIncompleteEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.response = response
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case response
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseOutputItemWsAdded: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var item: OpenAIBetaOutputItem
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseOutputItemAddedEventKind
+
+    public init(
+      item: OpenAIBetaOutputItem,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseOutputItemAddedEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.item = item
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case item
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseOutputItemWsDone: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var item: OpenAIBetaOutputItem
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseOutputItemDoneEventKind
+
+    public init(
+      item: OpenAIBetaOutputItem,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseOutputItemDoneEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.item = item
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case item
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseAudioTranscriptWsDelta: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var delta: String
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseAudioTranscriptDeltaEventKind
+
+    public init(
+      delta: String,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseAudioTranscriptDeltaEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.delta = delta
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case delta
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseReasoningSummaryPartWsAdded: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var itemId: String
+    public var outputIndex: Int
+    public var part: OpenAIBetaResponseReasoningSummaryPartAddedEventPart
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var summaryIndex: Int
+    public var kind: OpenAIBetaResponseReasoningSummaryPartAddedEventKind
+
+    public init(
+      itemId: String,
+      outputIndex: Int,
+      part: OpenAIBetaResponseReasoningSummaryPartAddedEventPart,
+      sequenceNumber: Int,
+      summaryIndex: Int,
+      kind: OpenAIBetaResponseReasoningSummaryPartAddedEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.part = part
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.summaryIndex = summaryIndex
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case part
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case summaryIndex = "summary_index"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseReasoningSummaryPartWsDone: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var itemId: String
+    public var outputIndex: Int
+    public var part: OpenAIBetaResponseReasoningSummaryPartDoneEventPart
+    public var sequenceNumber: Int
+    public var status: OpenAIBetaResponseReasoningSummaryPartDoneEventStatus?
+    public var streamId: String?
+    public var summaryIndex: Int
+    public var kind: OpenAIBetaResponseReasoningSummaryPartDoneEventKind
+
+    public init(
+      itemId: String,
+      outputIndex: Int,
+      part: OpenAIBetaResponseReasoningSummaryPartDoneEventPart,
+      sequenceNumber: Int,
+      summaryIndex: Int,
+      kind: OpenAIBetaResponseReasoningSummaryPartDoneEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      status: OpenAIBetaResponseReasoningSummaryPartDoneEventStatus? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.part = part
+      self.sequenceNumber = sequenceNumber
+      self.status = status
+      self.streamId = streamId
+      self.summaryIndex = summaryIndex
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case part
+      case sequenceNumber = "sequence_number"
+      case status
+      case streamId = "stream_id"
+      case summaryIndex = "summary_index"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseReasoningSummaryTextWsDelta: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var delta: String
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var summaryIndex: Int
+    public var kind: OpenAIBetaResponseReasoningSummaryTextDeltaEventKind
+
+    public init(
+      delta: String,
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      summaryIndex: Int,
+      kind: OpenAIBetaResponseReasoningSummaryTextDeltaEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.delta = delta
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.summaryIndex = summaryIndex
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case delta
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case summaryIndex = "summary_index"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseReasoningSummaryTextWsDone: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var summaryIndex: Int
+    public var text: String
+    public var kind: OpenAIBetaResponseReasoningSummaryTextDoneEventKind
+
+    public init(
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      summaryIndex: Int,
+      text: String,
+      kind: OpenAIBetaResponseReasoningSummaryTextDoneEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.summaryIndex = summaryIndex
+      self.text = text
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case summaryIndex = "summary_index"
+      case text
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseReasoningTextWsDelta: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var contentIndex: Int
+    public var delta: String
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseReasoningTextDeltaEventKind
+
+    public init(
+      contentIndex: Int,
+      delta: String,
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseReasoningTextDeltaEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.contentIndex = contentIndex
+      self.delta = delta
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case contentIndex = "content_index"
+      case delta
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseReasoningTextWsDone: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var contentIndex: Int
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var text: String
+    public var kind: OpenAIBetaResponseReasoningTextDoneEventKind
+
+    public init(
+      contentIndex: Int,
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      text: String,
+      kind: OpenAIBetaResponseReasoningTextDoneEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.contentIndex = contentIndex
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.text = text
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case contentIndex = "content_index"
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case text
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseRefusalWsDelta: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var contentIndex: Int
+    public var delta: String
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseRefusalDeltaEventKind
+
+    public init(
+      contentIndex: Int,
+      delta: String,
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseRefusalDeltaEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.contentIndex = contentIndex
+      self.delta = delta
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case contentIndex = "content_index"
+      case delta
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseRefusalWsDone: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var contentIndex: Int
+    public var itemId: String
+    public var outputIndex: Int
+    public var refusal: String
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseRefusalDoneEventKind
+
+    public init(
+      contentIndex: Int,
+      itemId: String,
+      outputIndex: Int,
+      refusal: String,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseRefusalDoneEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.contentIndex = contentIndex
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.refusal = refusal
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case contentIndex = "content_index"
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case refusal
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseTextWsDelta: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var contentIndex: Int
+    public var delta: String
+    public var itemId: String
+    public var logprobs: [OpenAIBetaResponseLogProb]
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseTextDeltaEventKind
+
+    public init(
+      contentIndex: Int,
+      delta: String,
+      itemId: String,
+      logprobs: [OpenAIBetaResponseLogProb],
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseTextDeltaEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.contentIndex = contentIndex
+      self.delta = delta
+      self.itemId = itemId
+      self.logprobs = logprobs
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case contentIndex = "content_index"
+      case delta
+      case itemId = "item_id"
+      case logprobs
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseTextWsDone: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var contentIndex: Int
+    public var itemId: String
+    public var logprobs: [OpenAIBetaResponseLogProb]
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var text: String
+    public var kind: OpenAIBetaResponseTextDoneEventKind
+
+    public init(
+      contentIndex: Int,
+      itemId: String,
+      logprobs: [OpenAIBetaResponseLogProb],
+      outputIndex: Int,
+      sequenceNumber: Int,
+      text: String,
+      kind: OpenAIBetaResponseTextDoneEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.contentIndex = contentIndex
+      self.itemId = itemId
+      self.logprobs = logprobs
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.text = text
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case contentIndex = "content_index"
+      case itemId = "item_id"
+      case logprobs
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case text
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseAudioTranscriptWsDone: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseAudioTranscriptDoneEventKind
+
+    public init(
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseAudioTranscriptDoneEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseWebSearchCallWsCompleted: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseWebSearchCallCompletedEventKind
+
+    public init(
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseWebSearchCallCompletedEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseWebSearchCallInWsProgress: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseWebSearchCallInProgressEventKind
+
+    public init(
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseWebSearchCallInProgressEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseWebSearchCallWsSearching: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseWebSearchCallSearchingEventKind
+
+    public init(
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseWebSearchCallSearchingEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseImageGenCallWsCompleted: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseImageGenCallCompletedEventKind
+
+    public init(
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseImageGenCallCompletedEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseImageGenCallWsGenerating: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseImageGenCallGeneratingEventKind
+
+    public init(
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseImageGenCallGeneratingEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseImageGenCallInWsProgress: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseImageGenCallInProgressEventKind
+
+    public init(
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseImageGenCallInProgressEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseImageGenCallPartialWsImage: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var background: String?
+    public var itemId: String
+    public var outputFormat: String?
+    public var outputIndex: Int
+    public var partialImageB64: String
+    public var partialImageIndex: Int
+    public var quality: String?
+    public var sequenceNumber: Int
+    public var size: String?
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseImageGenCallPartialImageEventKind
+
+    public init(
+      itemId: String,
+      outputIndex: Int,
+      partialImageB64: String,
+      partialImageIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseImageGenCallPartialImageEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      background: String? = nil,
+      outputFormat: String? = nil,
+      quality: String? = nil,
+      size: String? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.background = background
+      self.itemId = itemId
+      self.outputFormat = outputFormat
+      self.outputIndex = outputIndex
+      self.partialImageB64 = partialImageB64
+      self.partialImageIndex = partialImageIndex
+      self.quality = quality
+      self.sequenceNumber = sequenceNumber
+      self.size = size
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case background
+      case itemId = "item_id"
+      case outputFormat = "output_format"
+      case outputIndex = "output_index"
+      case partialImageB64 = "partial_image_b64"
+      case partialImageIndex = "partial_image_index"
+      case quality
+      case sequenceNumber = "sequence_number"
+      case size
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseMcpCallArgumentsWsDelta: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var delta: String
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseMCPCallArgumentsDeltaEventKind
+
+    public init(
+      delta: String,
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseMCPCallArgumentsDeltaEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.delta = delta
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case delta
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseMcpCallArgumentsWsDone: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var arguments: String
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseMCPCallArgumentsDoneEventKind
+
+    public init(
+      arguments: String,
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseMCPCallArgumentsDoneEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.arguments = arguments
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case arguments
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseMcpCallWsCompleted: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseMCPCallCompletedEventKind
+
+    public init(
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseMCPCallCompletedEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseCodeInterpreterCallCodeWsDelta: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var delta: String
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseCodeInterpreterCallCodeDeltaEventKind
+
+    public init(
+      delta: String,
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseCodeInterpreterCallCodeDeltaEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.delta = delta
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case delta
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseMcpCallWsFailed: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseMCPCallFailedEventKind
+
+    public init(
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseMCPCallFailedEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseMcpCallInWsProgress: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseMCPCallInProgressEventKind
+
+    public init(
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseMCPCallInProgressEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseMcpListToolsWsCompleted: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseMCPListToolsCompletedEventKind
+
+    public init(
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseMCPListToolsCompletedEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseMcpListToolsWsFailed: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseMCPListToolsFailedEventKind
+
+    public init(
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseMCPListToolsFailedEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseMcpListToolsInWsProgress: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseMCPListToolsInProgressEventKind
+
+    public init(
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseMCPListToolsInProgressEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseOutputTextAnnotationWsAdded: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var annotation: OpenAIBetaAnnotation?
+    public var annotationIndex: Int
+    public var contentIndex: Int
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseOutputTextAnnotationAddedEventKind
+
+    public init(
+      annotation: OpenAIBetaAnnotation?,
+      annotationIndex: Int,
+      contentIndex: Int,
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseOutputTextAnnotationAddedEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.annotation = annotation
+      self.annotationIndex = annotationIndex
+      self.contentIndex = contentIndex
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case annotation
+      case annotationIndex = "annotation_index"
+      case contentIndex = "content_index"
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseWsQueued: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var response: OpenAIBetaResponse
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseQueuedEventKind
+
+    public init(
+      response: OpenAIBetaResponse,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseQueuedEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.response = response
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case response
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseCustomToolCallInputWsDelta: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var delta: String
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseCustomToolCallInputDeltaEventKind
+
+    public init(
+      delta: String,
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseCustomToolCallInputDeltaEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.delta = delta
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case delta
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseCustomToolCallInputWsDone: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var input: String
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseCustomToolCallInputDoneEventKind
+
+    public init(
+      input: String,
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseCustomToolCallInputDoneEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.input = input
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case input
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseCodeInterpreterCallCodeWsDone: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var code: String
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseCodeInterpreterCallCodeDoneEventKind
+
+    public init(
+      code: String,
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseCodeInterpreterCallCodeDoneEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.code = code
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case code
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseCodeInterpreterCallWsCompleted: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseCodeInterpreterCallCompletedEventKind
+
+    public init(
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseCodeInterpreterCallCompletedEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseCodeInterpreterCallInWsProgress: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseCodeInterpreterCallInProgressEventKind
+
+    public init(
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseCodeInterpreterCallInProgressEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
+    }
+  }
+
+  public struct BetaResponseCodeInterpreterCallWsInterpreting: Codable, Sendable {
+    public var agent: OpenAIBetaAgentTag?
+    public var itemId: String
+    public var outputIndex: Int
+    public var sequenceNumber: Int
+    public var streamId: String?
+    public var kind: OpenAIBetaResponseCodeInterpreterCallInterpretingEventKind
+
+    public init(
+      itemId: String,
+      outputIndex: Int,
+      sequenceNumber: Int,
+      kind: OpenAIBetaResponseCodeInterpreterCallInterpretingEventKind,
+      agent: OpenAIBetaAgentTag? = nil,
+      streamId: String? = nil
+    ) {
+      self.agent = agent
+      self.itemId = itemId
+      self.outputIndex = outputIndex
+      self.sequenceNumber = sequenceNumber
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case agent
+      case itemId = "item_id"
+      case outputIndex = "output_index"
+      case sequenceNumber = "sequence_number"
+      case streamId = "stream_id"
+      case kind = "type"
+    }
+
+    public struct WithStreamId: Codable, Sendable {
+      public var streamId: String?
+
+      public init(
+        streamId: String? = nil
+      ) {
+        self.streamId = streamId
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case streamId = "stream_id"
+      }
     }
   }
 }

@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct OpenAIBetaDoubleClickAction: Codable, Sendable {
   public var keys: [String]?
-  public var kind: OpenAIBetaDoubleClickActionKind
+  public var kind: OpenAIBetaDoubleClickAction.Kind
   public var x: Int
   public var y: Int
 
   public init(
     keys: [String]?,
-    kind: OpenAIBetaDoubleClickActionKind,
+    kind: OpenAIBetaDoubleClickAction.Kind,
     x: Int,
     y: Int
   ) {
@@ -33,5 +33,9 @@ public struct OpenAIBetaDoubleClickAction: Codable, Sendable {
     case kind = "type"
     case x
     case y
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case doubleClick = "double_click"
   }
 }

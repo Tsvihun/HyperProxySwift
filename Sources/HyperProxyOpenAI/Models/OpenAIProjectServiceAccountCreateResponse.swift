@@ -15,16 +15,16 @@ public struct OpenAIProjectServiceAccountCreateResponse: Codable, Sendable {
   public var createdAt: Int
   public var id: String
   public var name: String
-  public var object: OpenAIProjectServiceAccountCreateResponseObject
-  public var role: OpenAIProjectServiceAccountCreateResponseRole
+  public var object: OpenAIProjectServiceAccountCreateResponse.Object
+  public var role: OpenAIProjectServiceAccountCreateResponse.Role
 
   public init(
     apiKey: OpenAIProjectServiceAccountApiKey?,
     createdAt: Int,
     id: String,
     name: String,
-    object: OpenAIProjectServiceAccountCreateResponseObject,
-    role: OpenAIProjectServiceAccountCreateResponseRole
+    object: OpenAIProjectServiceAccountCreateResponse.Object,
+    role: OpenAIProjectServiceAccountCreateResponse.Role
   ) {
     self.apiKey = apiKey
     self.createdAt = createdAt
@@ -41,5 +41,14 @@ public struct OpenAIProjectServiceAccountCreateResponse: Codable, Sendable {
     case name
     case object
     case role
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case organizationProjectServiceAccount = "organization.project.service_account"
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case member = "member"
+    case none = "none"
   }
 }

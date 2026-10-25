@@ -18,7 +18,7 @@ public struct MistralFIMCompletionRequest: Codable, Sendable {
   public var prompt: String
   public var promptCacheKey: String?
   public var randomSeed: Int?
-  public var stop: MistralFIMCompletionRequestStop?
+  public var stop: MistralFIMCompletionRequest.Stop?
   public var stream: Bool?
   public var suffix: String?
   public var temperature: Double?
@@ -32,7 +32,7 @@ public struct MistralFIMCompletionRequest: Codable, Sendable {
     minTokens: Int? = nil,
     promptCacheKey: String? = nil,
     randomSeed: Int? = nil,
-    stop: MistralFIMCompletionRequestStop? = nil,
+    stop: MistralFIMCompletionRequest.Stop? = nil,
     stream: Bool? = nil,
     suffix: String? = nil,
     temperature: Double? = nil,
@@ -65,5 +65,41 @@ public struct MistralFIMCompletionRequest: Codable, Sendable {
     case suffix
     case temperature
     case topP = "top_p"
+  }
+
+  public enum Stop: Codable, Sendable {
+    case string(String)
+    case stringArray([String])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .stringArray(try container.decode([String].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .stringArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension MistralFIMCompletionRequest.Stop: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension MistralFIMCompletionRequest.Stop: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: String...) {
+    self = .stringArray(elements)
   }
 }

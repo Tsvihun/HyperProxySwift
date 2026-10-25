@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIMcpTransportResourceHttp: Codable, Sendable {
   public var serverUrl: String
-  public var kind: OpenAIMcpTransportResourceHttpKind
+  public var kind: OpenAIMcpTransportResourceHttp.Kind
 
   public init(
     serverUrl: String,
-    kind: OpenAIMcpTransportResourceHttpKind
+    kind: OpenAIMcpTransportResourceHttp.Kind
   ) {
     self.serverUrl = serverUrl
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenAIMcpTransportResourceHttp: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case serverUrl = "server_url"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case http = "http"
   }
 }

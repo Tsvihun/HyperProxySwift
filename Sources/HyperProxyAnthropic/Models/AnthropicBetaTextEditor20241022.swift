@@ -17,11 +17,11 @@ public struct AnthropicBetaTextEditor20241022: Codable, Sendable {
   public var inputExamples: [[String: AnthropicBetaJsonValue]]?
   public var name: AnthropicStrReplaceEditorName
   public var strict: Bool?
-  public var kind: AnthropicTextEditor20241022Kind
+  public var kind: AnthropicBetaTextEditor20241022.Kind
 
   public init(
     name: AnthropicStrReplaceEditorName = .strReplaceEditor,
-    kind: AnthropicTextEditor20241022Kind = .textEditor20241022,
+    kind: AnthropicBetaTextEditor20241022.Kind = .textEditor20241022,
     allowedCallers: [AnthropicBetaAllowedCaller]? = nil,
     cacheControl: AnthropicBetaCacheControlEphemeral? = nil,
     deferLoading: Bool? = nil,
@@ -45,5 +45,9 @@ public struct AnthropicBetaTextEditor20241022: Codable, Sendable {
     case name
     case strict
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case textEditor20241022 = "text_editor_20241022"
   }
 }

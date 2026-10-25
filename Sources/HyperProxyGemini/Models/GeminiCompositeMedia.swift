@@ -20,7 +20,7 @@ public struct GeminiCompositeMedia: Codable, Sendable {
   public var md5Hash: String?
   public var objectId: GeminiObjectId?
   public var path: String?
-  public var referenceType: GeminiCompositeMediaReferenceType?
+  public var referenceType: GeminiCompositeMedia.ReferenceType?
   public var sha1Hash: String?
 
   public init(
@@ -33,7 +33,7 @@ public struct GeminiCompositeMedia: Codable, Sendable {
     md5Hash: String? = nil,
     objectId: GeminiObjectId? = nil,
     path: String? = nil,
-    referenceType: GeminiCompositeMediaReferenceType? = nil,
+    referenceType: GeminiCompositeMedia.ReferenceType? = nil,
     sha1Hash: String? = nil
   ) {
     self.blobRef = blobRef
@@ -61,5 +61,13 @@ public struct GeminiCompositeMedia: Codable, Sendable {
     case path
     case referenceType
     case sha1Hash
+  }
+
+  public enum ReferenceType: String, Codable, Hashable, Sendable {
+    case path = "PATH"
+    case blobRef = "BLOB_REF"
+    case inline = "INLINE"
+    case bigstoreRef = "BIGSTORE_REF"
+    case cosmoBinaryReference = "COSMO_BINARY_REFERENCE"
   }
 }

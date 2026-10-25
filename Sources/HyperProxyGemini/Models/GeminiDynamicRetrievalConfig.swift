@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct GeminiDynamicRetrievalConfig: Codable, Sendable {
   public var dynamicThreshold: Double?
-  public var mode: GeminiDynamicRetrievalConfigMode?
+  public var mode: GeminiDynamicRetrievalConfig.Mode?
 
   public init(
     dynamicThreshold: Double? = nil,
-    mode: GeminiDynamicRetrievalConfigMode? = nil
+    mode: GeminiDynamicRetrievalConfig.Mode? = nil
   ) {
     self.dynamicThreshold = dynamicThreshold
     self.mode = mode
@@ -25,5 +25,10 @@ public struct GeminiDynamicRetrievalConfig: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case dynamicThreshold
     case mode
+  }
+
+  public enum Mode: String, Codable, Hashable, Sendable {
+    case modeUnspecified = "MODE_UNSPECIFIED"
+    case modeDynamic = "MODE_DYNAMIC"
   }
 }

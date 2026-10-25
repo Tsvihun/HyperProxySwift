@@ -20,8 +20,8 @@ public struct GeminiFile: Codable, Sendable {
   public var name: String?
   public var sha256Hash: String?
   public var sizeBytes: String?
-  public var source: GeminiFileSource?
-  public var state: GeminiFileState?
+  public var source: GeminiFile.Source?
+  public var state: GeminiFile.State?
   public var updateTime: String?
   public var uri: String?
   public var videoMetadata: GeminiVideoFileMetadata?
@@ -36,8 +36,8 @@ public struct GeminiFile: Codable, Sendable {
     name: String? = nil,
     sha256Hash: String? = nil,
     sizeBytes: String? = nil,
-    source: GeminiFileSource? = nil,
-    state: GeminiFileState? = nil,
+    source: GeminiFile.Source? = nil,
+    state: GeminiFile.State? = nil,
     updateTime: String? = nil,
     uri: String? = nil,
     videoMetadata: GeminiVideoFileMetadata? = nil
@@ -73,5 +73,19 @@ public struct GeminiFile: Codable, Sendable {
     case updateTime
     case uri
     case videoMetadata
+  }
+
+  public enum Source: String, Codable, Hashable, Sendable {
+    case sourceUnspecified = "SOURCE_UNSPECIFIED"
+    case uploaded = "UPLOADED"
+    case generated = "GENERATED"
+    case registered = "REGISTERED"
+  }
+
+  public enum State: String, Codable, Hashable, Sendable {
+    case stateUnspecified = "STATE_UNSPECIFIED"
+    case processing = "PROCESSING"
+    case active = "ACTIVE"
+    case failed = "FAILED"
   }
 }

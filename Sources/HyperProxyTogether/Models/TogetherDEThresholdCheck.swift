@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherDEThresholdCheck: Codable, Sendable {
-  public var operatorValue: TogetherDEThresholdCheckOperator
+  public var operatorValue: TogetherDEThresholdCheck.OperatorValue
   public var value: Double?
 
   public init(
-    operatorValue: TogetherDEThresholdCheckOperator,
+    operatorValue: TogetherDEThresholdCheck.OperatorValue,
     value: Double? = nil
   ) {
     self.operatorValue = operatorValue
@@ -25,5 +25,12 @@ public struct TogetherDEThresholdCheck: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case operatorValue = "operator"
     case value
+  }
+
+  public enum OperatorValue: String, Codable, Hashable, Sendable {
+    case thresholdOperatorGt = "THRESHOLD_OPERATOR_GT"
+    case thresholdOperatorGte = "THRESHOLD_OPERATOR_GTE"
+    case thresholdOperatorLt = "THRESHOLD_OPERATOR_LT"
+    case thresholdOperatorLte = "THRESHOLD_OPERATOR_LTE"
   }
 }

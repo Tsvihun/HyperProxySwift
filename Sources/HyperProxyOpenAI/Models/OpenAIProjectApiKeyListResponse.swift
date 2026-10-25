@@ -15,12 +15,12 @@ public struct OpenAIProjectApiKeyListResponse: Codable, Sendable {
   public var firstId: String?
   public var hasMore: Bool
   public var lastId: String?
-  public var object: OpenAIProjectApiKeyListResponseObject
+  public var object: OpenAIProjectApiKeyListResponse.Object
 
   public init(
     data: [OpenAIProjectApiKey],
     hasMore: Bool,
-    object: OpenAIProjectApiKeyListResponseObject,
+    object: OpenAIProjectApiKeyListResponse.Object,
     firstId: String? = nil,
     lastId: String? = nil
   ) {
@@ -37,5 +37,9 @@ public struct OpenAIProjectApiKeyListResponse: Codable, Sendable {
     case hasMore = "has_more"
     case lastId = "last_id"
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case list = "list"
   }
 }

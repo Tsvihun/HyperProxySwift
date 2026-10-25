@@ -14,17 +14,18 @@ public struct OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionFa
   Sendable
 {
   public var contentIndex: Int
-  public var error: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionFailedError
+  public var error:
+    OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionFailed.ErrorValue
   public var eventId: String
   public var itemId: String
-  public var kind: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionFailedKind
+  public var kind: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionFailed.Kind
 
   public init(
     contentIndex: Int,
-    error: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionFailedError,
+    error: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionFailed.ErrorValue,
     eventId: String,
     itemId: String,
-    kind: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionFailedKind
+    kind: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionFailed.Kind
   ) {
     self.contentIndex = contentIndex
     self.error = error
@@ -39,5 +40,40 @@ public struct OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionFa
     case eventId = "event_id"
     case itemId = "item_id"
     case kind = "type"
+  }
+
+  public struct ErrorValue: Codable,
+    Sendable
+  {
+    public var code: String?
+    public var message: String?
+    public var param: String?
+    public var kind: String?
+
+    public init(
+      code: String? = nil,
+      message: String? = nil,
+      param: String? = nil,
+      kind: String? = nil
+    ) {
+      self.code = code
+      self.message = message
+      self.param = param
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case code
+      case message
+      case param
+      case kind = "type"
+    }
+  }
+
+  public enum Kind: String,
+    Codable, Hashable, Sendable
+  {
+    case conversationItemInputAudioTranscriptionFailed =
+      "conversation.item.input_audio_transcription.failed"
   }
 }

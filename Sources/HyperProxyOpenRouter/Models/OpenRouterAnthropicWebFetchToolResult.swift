@@ -14,13 +14,13 @@ public struct OpenRouterAnthropicWebFetchToolResult: Codable, Sendable {
   public var caller: OpenRouterAnthropicCaller
   public var content: OpenRouterAnthropicWebFetchContent
   public var toolUseId: String
-  public var kind: OpenRouterAnthropicWebFetchToolResultKind
+  public var kind: OpenRouterAnthropicWebFetchToolResult.Kind
 
   public init(
     caller: OpenRouterAnthropicCaller,
     content: OpenRouterAnthropicWebFetchContent,
     toolUseId: String,
-    kind: OpenRouterAnthropicWebFetchToolResultKind
+    kind: OpenRouterAnthropicWebFetchToolResult.Kind
   ) {
     self.caller = caller
     self.content = content
@@ -33,5 +33,9 @@ public struct OpenRouterAnthropicWebFetchToolResult: Codable, Sendable {
     case content
     case toolUseId = "tool_use_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case webFetchToolResult = "web_fetch_tool_result"
   }
 }

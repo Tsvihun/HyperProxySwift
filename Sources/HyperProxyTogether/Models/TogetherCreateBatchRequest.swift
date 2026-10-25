@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct TogetherCreateBatchRequest: Codable, Sendable {
   public var completionWindow: String?
-  public var endpoint: TogetherCreateBatchRequestEndpoint
+  public var endpoint: TogetherCreateBatchRequest.Endpoint
   public var inputFileId: String
   public var modelId: String?
   public var priority: Int?
 
   public init(
-    endpoint: TogetherCreateBatchRequestEndpoint,
+    endpoint: TogetherCreateBatchRequest.Endpoint,
     inputFileId: String,
     completionWindow: String? = nil,
     modelId: String? = nil,
@@ -37,5 +37,11 @@ public struct TogetherCreateBatchRequest: Codable, Sendable {
     case inputFileId = "input_file_id"
     case modelId = "model_id"
     case priority
+  }
+
+  public enum Endpoint: String, Codable, Hashable, Sendable {
+    case v1ChatCompletions = "/v1/chat/completions"
+    case v1AudioTranscriptions = "/v1/audio/transcriptions"
+    case v1AudioTranslations = "/v1/audio/translations"
   }
 }

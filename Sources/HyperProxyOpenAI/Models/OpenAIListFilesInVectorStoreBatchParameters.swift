@@ -14,9 +14,9 @@ public struct OpenAIListFilesInVectorStoreBatchParameters: Codable, Sendable {
   public var after: String?
   public var batchId: String
   public var before: String?
-  public var filter: OpenAIListFilesInVectorStoreBatchParametersFilter?
+  public var filter: OpenAIListFilesInVectorStoreBatchParameters.Filter?
   public var limit: Int?
-  public var order: OpenAIListFilesInVectorStoreBatchParametersOrder?
+  public var order: OpenAIListFilesInVectorStoreBatchParameters.Order?
   public var vectorStoreId: String
 
   public init(
@@ -24,9 +24,9 @@ public struct OpenAIListFilesInVectorStoreBatchParameters: Codable, Sendable {
     vectorStoreId: String,
     after: String? = nil,
     before: String? = nil,
-    filter: OpenAIListFilesInVectorStoreBatchParametersFilter? = nil,
+    filter: OpenAIListFilesInVectorStoreBatchParameters.Filter? = nil,
     limit: Int? = nil,
-    order: OpenAIListFilesInVectorStoreBatchParametersOrder? = nil
+    order: OpenAIListFilesInVectorStoreBatchParameters.Order? = nil
   ) {
     self.after = after
     self.batchId = batchId
@@ -45,5 +45,17 @@ public struct OpenAIListFilesInVectorStoreBatchParameters: Codable, Sendable {
     case limit
     case order
     case vectorStoreId = "vector_store_id"
+  }
+
+  public enum Filter: String, Codable, Hashable, Sendable {
+    case inProgress = "in_progress"
+    case completed = "completed"
+    case failed = "failed"
+    case cancelled = "cancelled"
+  }
+
+  public enum Order: String, Codable, Hashable, Sendable {
+    case asc = "asc"
+    case desc = "desc"
   }
 }

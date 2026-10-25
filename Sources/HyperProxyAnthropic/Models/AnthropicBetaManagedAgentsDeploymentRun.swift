@@ -18,7 +18,7 @@ public struct AnthropicBetaManagedAgentsDeploymentRun: Codable, Sendable {
   public var id: String
   public var sessionId: String?
   public var triggerContext: AnthropicBetaManagedAgentsTriggerContext
-  public var kind: AnthropicBetaManagedAgentsDeploymentRunKind
+  public var kind: AnthropicBetaManagedAgentsDeploymentRun.Kind
 
   public init(
     agent: AnthropicBetaManagedAgentsAgentReference,
@@ -28,7 +28,7 @@ public struct AnthropicBetaManagedAgentsDeploymentRun: Codable, Sendable {
     id: String,
     sessionId: String?,
     triggerContext: AnthropicBetaManagedAgentsTriggerContext,
-    kind: AnthropicBetaManagedAgentsDeploymentRunKind
+    kind: AnthropicBetaManagedAgentsDeploymentRun.Kind
   ) {
     self.agent = agent
     self.createdAt = createdAt
@@ -49,5 +49,9 @@ public struct AnthropicBetaManagedAgentsDeploymentRun: Codable, Sendable {
     case sessionId = "session_id"
     case triggerContext = "trigger_context"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case deploymentRun = "deployment_run"
   }
 }

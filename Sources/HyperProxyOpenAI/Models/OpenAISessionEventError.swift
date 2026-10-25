@@ -14,13 +14,13 @@ public struct OpenAISessionEventError: Codable, Sendable {
   public var error: OpenAISessionErrorResource
   public var eventId: String
   public var sessionId: String
-  public var kind: OpenAISessionEventErrorKind
+  public var kind: OpenAISessionEventError.Kind
 
   public init(
     error: OpenAISessionErrorResource,
     eventId: String,
     sessionId: String,
-    kind: OpenAISessionEventErrorKind
+    kind: OpenAISessionEventError.Kind
   ) {
     self.error = error
     self.eventId = eventId
@@ -33,5 +33,9 @@ public struct OpenAISessionEventError: Codable, Sendable {
     case eventId = "event_id"
     case sessionId = "session_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case error = "error"
   }
 }

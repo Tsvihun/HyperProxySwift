@@ -23,7 +23,7 @@ public struct AnthropicBetaManagedAgentsMemoryVersion: Codable, Sendable {
   public var path: String?
   public var redactedAt: AnthropicBetaTimestamp?
   public var redactedBy: AnthropicBetaManagedAgentsActor?
-  public var kind: AnthropicBetaManagedAgentsMemoryVersionKind
+  public var kind: AnthropicBetaManagedAgentsMemoryVersion.Kind
 
   public init(
     createdAt: AnthropicBetaTimestamp,
@@ -31,7 +31,7 @@ public struct AnthropicBetaManagedAgentsMemoryVersion: Codable, Sendable {
     memoryId: String,
     memoryStoreId: String,
     operation: AnthropicBetaManagedAgentsMemoryVersionOperation,
-    kind: AnthropicBetaManagedAgentsMemoryVersionKind,
+    kind: AnthropicBetaManagedAgentsMemoryVersion.Kind,
     content: String? = nil,
     contentSha256: String? = nil,
     contentSizeBytes: Int? = nil,
@@ -69,5 +69,9 @@ public struct AnthropicBetaManagedAgentsMemoryVersion: Codable, Sendable {
     case redactedAt = "redacted_at"
     case redactedBy = "redacted_by"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case memoryVersion = "memory_version"
   }
 }

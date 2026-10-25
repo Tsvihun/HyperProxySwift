@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAICompactResponseMethodPublicBody: Codable, Sendable {
-  public var input: OpenAICompactResponseMethodPublicBodyInputAnyOf1?
+  public var input: OpenAICompactResponseMethodPublicBodyInputVariant?
   public var instructions: String?
   public var model: OpenAIModelIdsCompaction?
   public var previousResponseId: String?
@@ -22,7 +22,7 @@ public struct OpenAICompactResponseMethodPublicBody: Codable, Sendable {
 
   public init(
     model: OpenAIModelIdsCompaction?,
-    input: OpenAICompactResponseMethodPublicBodyInputAnyOf1? = nil,
+    input: OpenAICompactResponseMethodPublicBodyInputVariant? = nil,
     instructions: String? = nil,
     previousResponseId: String? = nil,
     promptCacheKey: String? = nil,

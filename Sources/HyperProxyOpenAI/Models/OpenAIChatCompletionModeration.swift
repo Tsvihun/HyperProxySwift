@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIChatCompletionModeration: Codable, Sendable {
-  public var input: OpenAIChatCompletionModerationInput
-  public var output: OpenAIChatCompletionModerationOutput
+  public var input: OpenAIChatCompletionModeration.Input
+  public var output: OpenAIChatCompletionModeration.Output
 
   public init(
-    input: OpenAIChatCompletionModerationInput,
-    output: OpenAIChatCompletionModerationOutput
+    input: OpenAIChatCompletionModeration.Input,
+    output: OpenAIChatCompletionModeration.Output
   ) {
     self.input = input
     self.output = output
@@ -25,5 +25,55 @@ public struct OpenAIChatCompletionModeration: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case input
     case output
+  }
+
+  public enum Input: Codable, Sendable {
+    case chatCompletionModerationResults(OpenAIChatCompletionModerationResults)
+    case chatCompletionModerationError(OpenAIChatCompletionModerationError)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenAIChatCompletionModerationResults.self) {
+        self = .chatCompletionModerationResults(value)
+        return
+      }
+      self = .chatCompletionModerationError(
+        try container.decode(OpenAIChatCompletionModerationError.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .chatCompletionModerationResults(let value):
+        try container.encode(value)
+      case .chatCompletionModerationError(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Output: Codable, Sendable {
+    case chatCompletionModerationResults(OpenAIChatCompletionModerationResults)
+    case chatCompletionModerationError(OpenAIChatCompletionModerationError)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenAIChatCompletionModerationResults.self) {
+        self = .chatCompletionModerationResults(value)
+        return
+      }
+      self = .chatCompletionModerationError(
+        try container.decode(OpenAIChatCompletionModerationError.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .chatCompletionModerationResults(let value):
+        try container.encode(value)
+      case .chatCompletionModerationError(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

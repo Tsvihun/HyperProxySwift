@@ -12,9 +12,9 @@ import HyperProxyCore
 
 public struct OpenAIUsageFileSearchCallsParameters: Codable, Sendable {
   public var apiKeyIds: [String]?
-  public var bucketWidth: OpenAIUsageFileSearchCallsParametersBucketWidth?
+  public var bucketWidth: OpenAIUsageFileSearchCallsParameters.BucketWidth?
   public var endTime: Int?
-  public var groupBy: [OpenAIUsageFileSearchCallsParametersGroupByItem]?
+  public var groupBy: [OpenAIUsageFileSearchCallsParameters.GroupByElement]?
   public var limit: Int?
   public var page: String?
   public var projectIds: [String]?
@@ -25,9 +25,9 @@ public struct OpenAIUsageFileSearchCallsParameters: Codable, Sendable {
   public init(
     startTime: Int,
     apiKeyIds: [String]? = nil,
-    bucketWidth: OpenAIUsageFileSearchCallsParametersBucketWidth? = nil,
+    bucketWidth: OpenAIUsageFileSearchCallsParameters.BucketWidth? = nil,
     endTime: Int? = nil,
-    groupBy: [OpenAIUsageFileSearchCallsParametersGroupByItem]? = nil,
+    groupBy: [OpenAIUsageFileSearchCallsParameters.GroupByElement]? = nil,
     limit: Int? = nil,
     page: String? = nil,
     projectIds: [String]? = nil,
@@ -57,5 +57,18 @@ public struct OpenAIUsageFileSearchCallsParameters: Codable, Sendable {
     case startTime = "start_time"
     case userIds = "user_ids"
     case vectorStoreIds = "vector_store_ids"
+  }
+
+  public enum BucketWidth: String, Codable, Hashable, Sendable {
+    case value1m = "1m"
+    case value1h = "1h"
+    case value1d = "1d"
+  }
+
+  public enum GroupByElement: String, Codable, Hashable, Sendable {
+    case projectId = "project_id"
+    case userId = "user_id"
+    case apiKeyId = "api_key_id"
+    case vectorStoreId = "vector_store_id"
   }
 }

@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct FalGetStorageFileAclResponse: Codable, Sendable {
-  public var defaultValue: FalGetStorageFileAclResponseDefault
-  public var rules: [FalGetStorageFileAclResponseRulesItem]
+  public var defaultValue: FalGetStorageFileAclResponse.DefaultValue
+  public var rules: [FalGetStorageFileAclResponse.RulesElement]
 
   public init(
-    defaultValue: FalGetStorageFileAclResponseDefault,
-    rules: [FalGetStorageFileAclResponseRulesItem]
+    defaultValue: FalGetStorageFileAclResponse.DefaultValue,
+    rules: [FalGetStorageFileAclResponse.RulesElement]
   ) {
     self.defaultValue = defaultValue
     self.rules = rules
@@ -25,5 +25,35 @@ public struct FalGetStorageFileAclResponse: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case defaultValue = "default"
     case rules
+  }
+
+  public enum DefaultValue: String, Codable, Hashable, Sendable {
+    case allow = "allow"
+    case forbid = "forbid"
+    case hide = "hide"
+  }
+
+  public struct RulesElement: Codable, Sendable {
+    public var decision: FalGetStorageFileAclResponse.RulesElement.Decision
+    public var user: String
+
+    public init(
+      decision: FalGetStorageFileAclResponse.RulesElement.Decision,
+      user: String
+    ) {
+      self.decision = decision
+      self.user = user
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case decision
+      case user
+    }
+
+    public enum Decision: String, Codable, Hashable, Sendable {
+      case allow = "allow"
+      case forbid = "forbid"
+      case hide = "hide"
+    }
   }
 }

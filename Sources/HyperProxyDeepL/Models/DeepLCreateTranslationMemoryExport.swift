@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct DeepLCreateTranslationMemoryExport: Codable, Sendable {
   public var jobId: String
-  public var parameters: DeepLCreateTranslationMemoryExportParametersffd079ee
+  public var parameters: DeepLCreateTranslationMemoryExport.Parameters
 
   public init(
     jobId: String,
-    parameters: DeepLCreateTranslationMemoryExportParametersffd079ee
+    parameters: DeepLCreateTranslationMemoryExport.Parameters
   ) {
     self.jobId = jobId
     self.parameters = parameters
@@ -25,5 +25,19 @@ public struct DeepLCreateTranslationMemoryExport: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case jobId = "job_id"
     case parameters
+  }
+
+  public struct Parameters: Codable, Sendable {
+    public var translationMemoryId: DeepLTranslationMemoryId?
+
+    public init(
+      translationMemoryId: DeepLTranslationMemoryId? = nil
+    ) {
+      self.translationMemoryId = translationMemoryId
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case translationMemoryId = "translation_memory_id"
+    }
   }
 }

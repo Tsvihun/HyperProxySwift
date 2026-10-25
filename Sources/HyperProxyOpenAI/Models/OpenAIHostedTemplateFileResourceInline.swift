@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIHostedTemplateFileResourceInline: Codable, Sendable {
   public var path: String
   public var sizeBytes: Int64
-  public var kind: OpenAIHostedTemplateFileResourceInlineKind
+  public var kind: OpenAIHostedTemplateFileResourceInline.Kind
 
   public init(
     path: String,
     sizeBytes: Int64,
-    kind: OpenAIHostedTemplateFileResourceInlineKind
+    kind: OpenAIHostedTemplateFileResourceInline.Kind
   ) {
     self.path = path
     self.sizeBytes = sizeBytes
@@ -29,5 +29,9 @@ public struct OpenAIHostedTemplateFileResourceInline: Codable, Sendable {
     case path
     case sizeBytes = "size_bytes"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case inline = "inline"
   }
 }

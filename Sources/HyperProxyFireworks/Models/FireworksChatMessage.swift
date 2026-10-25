@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct FireworksChatMessage: Codable, Sendable {
-  public var content: FireworksChatMessageContent73d26a3d?
+  public var content: FireworksChatMessage.Content?
   public var reasoningContent: String?
   public var role: String
   public var toolCallId: String?
@@ -19,7 +19,7 @@ public struct FireworksChatMessage: Codable, Sendable {
 
   public init(
     role: String,
-    content: FireworksChatMessageContent73d26a3d? = nil,
+    content: FireworksChatMessage.Content? = nil,
     reasoningContent: String? = nil,
     toolCallId: String? = nil,
     toolCalls: [FireworksChatCompletionMessageToolCall]? = nil
@@ -37,5 +37,41 @@ public struct FireworksChatMessage: Codable, Sendable {
     case role
     case toolCallId = "tool_call_id"
     case toolCalls = "tool_calls"
+  }
+
+  public enum Content: Codable, Sendable {
+    case string(String)
+    case chatMessageContentArray([FireworksChatMessageContent])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .chatMessageContentArray(try container.decode([FireworksChatMessageContent].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .chatMessageContentArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension FireworksChatMessage.Content: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension FireworksChatMessage.Content: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: FireworksChatMessageContent...) {
+    self = .chatMessageContentArray(elements)
   }
 }

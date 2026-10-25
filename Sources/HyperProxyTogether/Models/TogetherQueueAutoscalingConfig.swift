@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherQueueAutoscalingConfig: Codable, Sendable {
-  public var metric: TogetherQueueAutoscalingConfigMetric?
+  public var metric: TogetherQueueAutoscalingConfig.Metric?
   public var model: String?
   public var target: Double?
 
   public init(
-    metric: TogetherQueueAutoscalingConfigMetric? = nil,
+    metric: TogetherQueueAutoscalingConfig.Metric? = nil,
     model: String? = nil,
     target: Double? = nil
   ) {
@@ -29,5 +29,9 @@ public struct TogetherQueueAutoscalingConfig: Codable, Sendable {
     case metric
     case model
     case target
+  }
+
+  public enum Metric: String, Codable, Hashable, Sendable {
+    case queueBacklogPerWorker = "QueueBacklogPerWorker"
   }
 }

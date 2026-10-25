@@ -13,22 +13,22 @@ import HyperProxyCore
 public struct FalGetModelsParameters: Codable, Sendable {
   public var category: String?
   public var cursor: String?
-  public var endpointId: FalGetModelsParametersEndpointId?
-  public var expand: FalGetModelsParametersExpand?
+  public var endpointId: FalGetModelsParameters.EndpointId?
+  public var expand: FalGetModelsParameters.Expand?
   public var limit: Int?
   public var q: String?
-  public var sort: FalGetModelsParametersSort?
-  public var status: FalGetModelsParametersStatus?
+  public var sort: FalGetModelsParameters.Sort?
+  public var status: FalGetModelsParameters.Status?
 
   public init(
     category: String? = nil,
     cursor: String? = nil,
-    endpointId: FalGetModelsParametersEndpointId? = nil,
-    expand: FalGetModelsParametersExpand? = nil,
+    endpointId: FalGetModelsParameters.EndpointId? = nil,
+    expand: FalGetModelsParameters.Expand? = nil,
     limit: Int? = nil,
     q: String? = nil,
-    sort: FalGetModelsParametersSort? = nil,
-    status: FalGetModelsParametersStatus? = nil
+    sort: FalGetModelsParameters.Sort? = nil,
+    status: FalGetModelsParameters.Status? = nil
   ) {
     self.category = category
     self.cursor = cursor
@@ -49,5 +49,87 @@ public struct FalGetModelsParameters: Codable, Sendable {
     case q
     case sort
     case status
+  }
+
+  public enum EndpointId: Codable, Sendable {
+    case string(String)
+    case stringArray([String])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .stringArray(try container.decode([String].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .stringArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Expand: Codable, Sendable {
+    case string(String)
+    case stringArray([String])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .stringArray(try container.decode([String].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .stringArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Sort: String, Codable, Hashable, Sendable {
+    case relevant = "relevant"
+    case recent = "recent"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case active = "active"
+    case deprecated = "deprecated"
+  }
+}
+
+extension FalGetModelsParameters.EndpointId: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension FalGetModelsParameters.EndpointId: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: String...) {
+    self = .stringArray(elements)
+  }
+}
+
+extension FalGetModelsParameters.Expand: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension FalGetModelsParameters.Expand: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: String...) {
+    self = .stringArray(elements)
   }
 }

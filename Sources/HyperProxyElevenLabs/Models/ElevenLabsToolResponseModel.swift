@@ -14,13 +14,13 @@ public struct ElevenLabsToolResponseModel: Codable, Sendable {
   public var accessInfo: ElevenLabsResourceAccessInfo
   public var id: String
   public var responseMocks: [ElevenLabsToolResponseMockConfigOutput]?
-  public var toolConfig: ElevenLabsToolResponseModelToolConfig
+  public var toolConfig: ElevenLabsToolResponseModel.ToolConfig
   public var usageStats: ElevenLabsToolUsageStatsResponseModel
 
   public init(
     accessInfo: ElevenLabsResourceAccessInfo,
     id: String,
-    toolConfig: ElevenLabsToolResponseModelToolConfig,
+    toolConfig: ElevenLabsToolResponseModel.ToolConfig,
     usageStats: ElevenLabsToolUsageStatsResponseModel,
     responseMocks: [ElevenLabsToolResponseMockConfigOutput]? = nil
   ) {
@@ -37,5 +37,43 @@ public struct ElevenLabsToolResponseModel: Codable, Sendable {
     case responseMocks = "response_mocks"
     case toolConfig = "tool_config"
     case usageStats = "usage_stats"
+  }
+
+  public enum ToolConfig: Codable, Sendable {
+    case webhookToolConfigOutput(ElevenLabsWebhookToolConfigOutput)
+    case clientToolConfigOutput(ElevenLabsClientToolConfigOutput)
+    case systemToolConfigOutput(ElevenLabsSystemToolConfigOutput)
+    case mcpToolConfigOutput(ElevenLabsMCPToolConfigOutput)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsWebhookToolConfigOutput.self) {
+        self = .webhookToolConfigOutput(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsClientToolConfigOutput.self) {
+        self = .clientToolConfigOutput(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsSystemToolConfigOutput.self) {
+        self = .systemToolConfigOutput(value)
+        return
+      }
+      self = .mcpToolConfigOutput(try container.decode(ElevenLabsMCPToolConfigOutput.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .webhookToolConfigOutput(let value):
+        try container.encode(value)
+      case .clientToolConfigOutput(let value):
+        try container.encode(value)
+      case .systemToolConfigOutput(let value):
+        try container.encode(value)
+      case .mcpToolConfigOutput(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

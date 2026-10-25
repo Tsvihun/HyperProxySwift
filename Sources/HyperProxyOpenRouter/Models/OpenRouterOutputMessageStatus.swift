@@ -11,42 +11,54 @@ import Foundation
 import HyperProxyCore
 
 public enum OpenRouterOutputMessageStatus: Codable, Sendable {
-  case outputMessageStatusAnyOf1(OpenRouterOutputMessageStatusAnyOf1)
-  case outputMessageStatusAnyOf2(OpenRouterOutputMessageStatusAnyOf2)
-  case outputMessageStatusAnyOf3(OpenRouterOutputMessageStatusAnyOf3)
+  case completedValue(OpenRouterOutputMessageStatus.Completed)
+  case incompleteValue(OpenRouterOutputMessageStatus.Incomplete)
+  case inProgressValue(OpenRouterOutputMessageStatus.InProgress)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(OpenRouterOutputMessageStatusAnyOf1.self) {
-      self = .outputMessageStatusAnyOf1(value)
+    if let value = try? container.decode(OpenRouterOutputMessageStatus.Completed.self) {
+      self = .completedValue(value)
       return
     }
-    if let value = try? container.decode(OpenRouterOutputMessageStatusAnyOf2.self) {
-      self = .outputMessageStatusAnyOf2(value)
+    if let value = try? container.decode(OpenRouterOutputMessageStatus.Incomplete.self) {
+      self = .incompleteValue(value)
       return
     }
-    self = .outputMessageStatusAnyOf3(
-      try container.decode(OpenRouterOutputMessageStatusAnyOf3.self))
+    self = .inProgressValue(
+      try container.decode(OpenRouterOutputMessageStatus.InProgress.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .outputMessageStatusAnyOf1(let value):
+    case .completedValue(let value):
       try container.encode(value)
-    case .outputMessageStatusAnyOf2(let value):
+    case .incompleteValue(let value):
       try container.encode(value)
-    case .outputMessageStatusAnyOf3(let value):
+    case .inProgressValue(let value):
       try container.encode(value)
     }
   }
 
   /// Provider-native value without the schema union wrapper.
-  public static var completed: Self { .outputMessageStatusAnyOf1(.completed) }
+  public static var completed: Self { .completedValue(.completed) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var incomplete: Self { .outputMessageStatusAnyOf2(.incomplete) }
+  public static var incomplete: Self { .incompleteValue(.incomplete) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var inProgress: Self { .outputMessageStatusAnyOf3(.inProgress) }
+  public static var inProgress: Self { .inProgressValue(.inProgress) }
+
+  public enum Completed: String, Codable, Hashable, Sendable {
+    case completed = "completed"
+  }
+
+  public enum Incomplete: String, Codable, Hashable, Sendable {
+    case incomplete = "incomplete"
+  }
+
+  public enum InProgress: String, Codable, Hashable, Sendable {
+    case inProgress = "in_progress"
+  }
 }

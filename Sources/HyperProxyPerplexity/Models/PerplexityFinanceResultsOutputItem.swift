@@ -14,11 +14,11 @@ public struct PerplexityFinanceResultsOutputItem: Codable, Sendable {
   public var categories: [String]?
   public var results: [PerplexityFinanceResult]
   public var tickers: [String]?
-  public var kind: PerplexityFinanceResultsOutputItemKind
+  public var kind: PerplexityFinanceResultsOutputItem.Kind
 
   public init(
     results: [PerplexityFinanceResult],
-    kind: PerplexityFinanceResultsOutputItemKind,
+    kind: PerplexityFinanceResultsOutputItem.Kind,
     categories: [String]? = nil,
     tickers: [String]? = nil
   ) {
@@ -33,5 +33,9 @@ public struct PerplexityFinanceResultsOutputItem: Codable, Sendable {
     case results
     case tickers
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case financeResults = "finance_results"
   }
 }

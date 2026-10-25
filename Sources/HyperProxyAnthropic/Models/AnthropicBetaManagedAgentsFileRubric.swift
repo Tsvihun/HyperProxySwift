@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsFileRubric: Codable, Sendable {
   public var fileId: String
-  public var kind: AnthropicBetaManagedAgentsFileRubricKind
+  public var kind: AnthropicBetaManagedAgentsFileRubric.Kind
 
   public init(
     fileId: String,
-    kind: AnthropicBetaManagedAgentsFileRubricKind
+    kind: AnthropicBetaManagedAgentsFileRubric.Kind
   ) {
     self.fileId = fileId
     self.kind = kind
@@ -25,5 +25,9 @@ public struct AnthropicBetaManagedAgentsFileRubric: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case fileId = "file_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case file = "file"
   }
 }

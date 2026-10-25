@@ -13,21 +13,17 @@ import HyperProxyCore
 public struct TogetherRemediationServiceCreateRemediationParameters: Codable, Sendable {
   public var clusterId: String
   public var instanceId: String
-  public var remediationId: String?
 
   public init(
     clusterId: String,
-    instanceId: String,
-    remediationId: String? = nil
+    instanceId: String
   ) {
     self.clusterId = clusterId
     self.instanceId = instanceId
-    self.remediationId = remediationId
   }
 
   enum CodingKeys: String, CodingKey {
     case clusterId = "cluster_id"
     case instanceId = "instance_id"
-    case remediationId = "remediation_id"
   }
 }

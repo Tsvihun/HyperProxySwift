@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiPromptFeedback: Codable, Sendable {
-  public var blockReason: GeminiPromptFeedbackBlockReason?
+  public var blockReason: GeminiPromptFeedback.BlockReason?
   public var safetyRatings: [GeminiSafetyRating]?
 
   public init(
-    blockReason: GeminiPromptFeedbackBlockReason? = nil,
+    blockReason: GeminiPromptFeedback.BlockReason? = nil,
     safetyRatings: [GeminiSafetyRating]? = nil
   ) {
     self.blockReason = blockReason
@@ -25,5 +25,14 @@ public struct GeminiPromptFeedback: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case blockReason
     case safetyRatings
+  }
+
+  public enum BlockReason: String, Codable, Hashable, Sendable {
+    case blockReasonUnspecified = "BLOCK_REASON_UNSPECIFIED"
+    case safety = "SAFETY"
+    case other = "OTHER"
+    case blocklist = "BLOCKLIST"
+    case prohibitedContent = "PROHIBITED_CONTENT"
+    case imageSafety = "IMAGE_SAFETY"
   }
 }

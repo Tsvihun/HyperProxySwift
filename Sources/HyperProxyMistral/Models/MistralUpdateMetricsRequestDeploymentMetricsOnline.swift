@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct MistralUpdateMetricsRequestDeploymentMetricsOnline: Codable, Sendable {
   public var documentCount: Int
   public var indexMetrics: [MistralUpdateMetricsRequestIndexMetrics]
-  public var status: MistralOnlineStatus
+  public var status: MistralUpdateMetricsRequestDeploymentMetricsOnline.Status
 
   public init(
     documentCount: Int,
     indexMetrics: [MistralUpdateMetricsRequestIndexMetrics],
-    status: MistralOnlineStatus = .online
+    status: MistralUpdateMetricsRequestDeploymentMetricsOnline.Status = .online
   ) {
     self.documentCount = documentCount
     self.indexMetrics = indexMetrics
@@ -29,5 +29,9 @@ public struct MistralUpdateMetricsRequestDeploymentMetricsOnline: Codable, Senda
     case documentCount = "document_count"
     case indexMetrics = "index_metrics"
     case status
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case online = "online"
   }
 }

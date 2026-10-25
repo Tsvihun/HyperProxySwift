@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public enum PerplexityToolChoice: Codable, Sendable {
-  case toolChoiceOneOf1(PerplexityToolChoiceOneOf1)
+  case preset(PerplexityToolChoice.Preset)
   case objectDictionary([String: HyperProxyJSONValue])
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(PerplexityToolChoiceOneOf1.self) {
-      self = .toolChoiceOneOf1(value)
+    if let value = try? container.decode(PerplexityToolChoice.Preset.self) {
+      self = .preset(value)
       return
     }
     self = .objectDictionary(try container.decode([String: HyperProxyJSONValue].self))
@@ -26,7 +26,7 @@ public enum PerplexityToolChoice: Codable, Sendable {
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .toolChoiceOneOf1(let value):
+    case .preset(let value):
       try container.encode(value)
     case .objectDictionary(let value):
       try container.encode(value)
@@ -34,11 +34,17 @@ public enum PerplexityToolChoice: Codable, Sendable {
   }
 
   /// Provider-native value without the schema union wrapper.
-  public static var none: Self { .toolChoiceOneOf1(.none) }
+  public static var none: Self { .preset(.none) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var auto: Self { .toolChoiceOneOf1(.auto) }
+  public static var auto: Self { .preset(.auto) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var requiredValue: Self { .toolChoiceOneOf1(.requiredValue) }
+  public static var requiredValue: Self { .preset(.requiredValue) }
+
+  public enum Preset: String, Codable, Hashable, Sendable {
+    case none = "none"
+    case auto = "auto"
+    case requiredValue = "required"
+  }
 }

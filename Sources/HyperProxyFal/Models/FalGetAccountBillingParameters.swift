@@ -11,15 +11,51 @@ import Foundation
 import HyperProxyCore
 
 public struct FalGetAccountBillingParameters: Codable, Sendable {
-  public var expand: FalGetAccountBillingParametersExpand?
+  public var expand: FalGetAccountBillingParameters.Expand?
 
   public init(
-    expand: FalGetAccountBillingParametersExpand? = nil
+    expand: FalGetAccountBillingParameters.Expand? = nil
   ) {
     self.expand = expand
   }
 
   enum CodingKeys: String, CodingKey {
     case expand
+  }
+
+  public enum Expand: Codable, Sendable {
+    case string(String)
+    case stringArray([String])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .stringArray(try container.decode([String].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .stringArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension FalGetAccountBillingParameters.Expand: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension FalGetAccountBillingParameters.Expand: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: String...) {
+    self = .stringArray(elements)
   }
 }

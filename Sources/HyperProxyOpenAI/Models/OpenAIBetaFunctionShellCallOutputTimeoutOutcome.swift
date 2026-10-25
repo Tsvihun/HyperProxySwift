@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIBetaFunctionShellCallOutputTimeoutOutcome: Codable, Sendable {
-  public var kind: OpenAIBetaFunctionShellCallOutputTimeoutOutcomeKind
+  public var kind: OpenAIBetaFunctionShellCallOutputTimeoutOutcome.Kind
 
   public init(
-    kind: OpenAIBetaFunctionShellCallOutputTimeoutOutcomeKind
+    kind: OpenAIBetaFunctionShellCallOutputTimeoutOutcome.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case timeout = "timeout"
   }
 }

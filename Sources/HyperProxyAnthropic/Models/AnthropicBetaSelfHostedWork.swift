@@ -20,10 +20,10 @@ public struct AnthropicBetaSelfHostedWork: Codable, Sendable {
   public var metadata: [String: String]
   public var secret: String?
   public var startedAt: String?
-  public var state: AnthropicBetaSelfHostedWorkState
+  public var state: AnthropicBetaSelfHostedWork.State
   public var stopRequestedAt: String?
   public var stoppedAt: String?
-  public var kind: AnthropicWorkKind
+  public var kind: AnthropicBetaSelfHostedWork.Kind
 
   public init(
     acknowledgedAt: String?,
@@ -35,10 +35,10 @@ public struct AnthropicBetaSelfHostedWork: Codable, Sendable {
     metadata: [String: String],
     secret: String?,
     startedAt: String?,
-    state: AnthropicBetaSelfHostedWorkState,
+    state: AnthropicBetaSelfHostedWork.State,
     stopRequestedAt: String?,
     stoppedAt: String?,
-    kind: AnthropicWorkKind = .work
+    kind: AnthropicBetaSelfHostedWork.Kind = .work
   ) {
     self.acknowledgedAt = acknowledgedAt
     self.createdAt = createdAt
@@ -69,5 +69,17 @@ public struct AnthropicBetaSelfHostedWork: Codable, Sendable {
     case stopRequestedAt = "stop_requested_at"
     case stoppedAt = "stopped_at"
     case kind = "type"
+  }
+
+  public enum State: String, Codable, Hashable, Sendable {
+    case queued = "queued"
+    case starting = "starting"
+    case active = "active"
+    case stopping = "stopping"
+    case stopped = "stopped"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case work = "work"
   }
 }

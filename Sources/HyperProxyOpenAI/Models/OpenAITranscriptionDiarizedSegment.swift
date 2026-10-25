@@ -16,7 +16,7 @@ public struct OpenAITranscriptionDiarizedSegment: Codable, Sendable {
   public var speaker: String
   public var start: Double
   public var text: String
-  public var kind: OpenAITranscriptionDiarizedSegmentKind
+  public var kind: OpenAITranscriptionDiarizedSegment.Kind
 
   public init(
     end: Double,
@@ -24,7 +24,7 @@ public struct OpenAITranscriptionDiarizedSegment: Codable, Sendable {
     speaker: String,
     start: Double,
     text: String,
-    kind: OpenAITranscriptionDiarizedSegmentKind
+    kind: OpenAITranscriptionDiarizedSegment.Kind
   ) {
     self.end = end
     self.id = id
@@ -41,5 +41,9 @@ public struct OpenAITranscriptionDiarizedSegment: Codable, Sendable {
     case start
     case text
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case transcriptTextSegment = "transcript.text.segment"
   }
 }

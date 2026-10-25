@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIDeletedThreadResource: Codable, Sendable {
   public var deleted: Bool
   public var id: String
-  public var object: OpenAIDeletedThreadResourceObject
+  public var object: OpenAIDeletedThreadResource.Object
 
   public init(
     deleted: Bool,
     id: String,
-    object: OpenAIDeletedThreadResourceObject
+    object: OpenAIDeletedThreadResource.Object
   ) {
     self.deleted = deleted
     self.id = id
@@ -29,5 +29,9 @@ public struct OpenAIDeletedThreadResource: Codable, Sendable {
     case deleted
     case id
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case chatkitThreadDeleted = "chatkit.thread.deleted"
   }
 }

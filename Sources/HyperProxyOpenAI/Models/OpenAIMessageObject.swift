@@ -12,34 +12,34 @@ import HyperProxyCore
 
 public struct OpenAIMessageObject: Codable, Sendable {
   public var assistantId: String?
-  public var attachments: [OpenAIMessageObjectAttachmentsAnyOf1Item]?
+  public var attachments: [OpenAIMessageObjectAttachmentsItem]?
   public var completedAt: Int?
-  public var content: [OpenAIMessageObjectContentItem]
+  public var content: [OpenAIMessageObject.ContentElement]
   public var createdAt: Int
   public var id: String
   public var incompleteAt: Int?
-  public var incompleteDetails: OpenAIMessageObjectIncompleteDetailsAnyOf1?
+  public var incompleteDetails: OpenAIMessageObjectIncompleteDetailsWithReason?
   public var metadata: OpenAIMetadata?
-  public var object: OpenAIMessageObjectObject
-  public var role: OpenAIMessageObjectRole
+  public var object: OpenAIMessageObject.Object
+  public var role: OpenAIMessageObject.Role
   public var runId: String?
-  public var status: OpenAIMessageObjectStatus
+  public var status: OpenAIMessageObject.Status
   public var threadId: String
 
   public init(
     assistantId: String?,
-    attachments: [OpenAIMessageObjectAttachmentsAnyOf1Item]?,
+    attachments: [OpenAIMessageObjectAttachmentsItem]?,
     completedAt: Int?,
-    content: [OpenAIMessageObjectContentItem],
+    content: [OpenAIMessageObject.ContentElement],
     createdAt: Int,
     id: String,
     incompleteAt: Int?,
-    incompleteDetails: OpenAIMessageObjectIncompleteDetailsAnyOf1?,
+    incompleteDetails: OpenAIMessageObjectIncompleteDetailsWithReason?,
     metadata: OpenAIMetadata?,
-    object: OpenAIMessageObjectObject,
-    role: OpenAIMessageObjectRole,
+    object: OpenAIMessageObject.Object,
+    role: OpenAIMessageObject.Role,
     runId: String?,
-    status: OpenAIMessageObjectStatus,
+    status: OpenAIMessageObject.Status,
     threadId: String
   ) {
     self.assistantId = assistantId
@@ -73,5 +73,59 @@ public struct OpenAIMessageObject: Codable, Sendable {
     case runId = "run_id"
     case status
     case threadId = "thread_id"
+  }
+
+  public enum ContentElement: Codable, Sendable {
+    case messageContentImageFileObject(OpenAIMessageContentImageFileObject)
+    case messageContentImageUrlObject(OpenAIMessageContentImageUrlObject)
+    case messageContentTextObject(OpenAIMessageContentTextObject)
+    case messageContentRefusalObject(OpenAIMessageContentRefusalObject)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenAIMessageContentImageFileObject.self) {
+        self = .messageContentImageFileObject(value)
+        return
+      }
+      if let value = try? container.decode(OpenAIMessageContentImageUrlObject.self) {
+        self = .messageContentImageUrlObject(value)
+        return
+      }
+      if let value = try? container.decode(OpenAIMessageContentTextObject.self) {
+        self = .messageContentTextObject(value)
+        return
+      }
+      self = .messageContentRefusalObject(
+        try container.decode(OpenAIMessageContentRefusalObject.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .messageContentImageFileObject(let value):
+        try container.encode(value)
+      case .messageContentImageUrlObject(let value):
+        try container.encode(value)
+      case .messageContentTextObject(let value):
+        try container.encode(value)
+      case .messageContentRefusalObject(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case threadMessage = "thread.message"
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case user = "user"
+    case assistant = "assistant"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case inProgress = "in_progress"
+    case incomplete = "incomplete"
+    case completed = "completed"
   }
 }

@@ -17,10 +17,10 @@ public struct AnthropicBetaApiKey: Codable, Sendable {
   public var id: String
   public var name: String
   public var partialKeyHint: String?
-  public var principal: AnthropicBetaApiKeyPrincipalAnyOf1?
-  public var scope: AnthropicBetaApiKeyScope
-  public var status: AnthropicBetaApiKeyStatus
-  public var kind: AnthropicApiKeyKind
+  public var principal: AnthropicBetaApiKeyPrincipalVariant?
+  public var scope: AnthropicBetaApiKey.Scope
+  public var status: AnthropicBetaApiKey.Status
+  public var kind: AnthropicBetaApiKey.Kind
   public var workspaceId: String?
 
   public init(
@@ -30,11 +30,11 @@ public struct AnthropicBetaApiKey: Codable, Sendable {
     id: String,
     name: String,
     partialKeyHint: String?,
-    principal: AnthropicBetaApiKeyPrincipalAnyOf1?,
-    scope: AnthropicBetaApiKeyScope,
-    status: AnthropicBetaApiKeyStatus,
+    principal: AnthropicBetaApiKeyPrincipalVariant?,
+    scope: AnthropicBetaApiKey.Scope,
+    status: AnthropicBetaApiKey.Status,
     workspaceId: String?,
-    kind: AnthropicApiKeyKind = .apiKey
+    kind: AnthropicBetaApiKey.Kind = .apiKey
   ) {
     self.createdAt = createdAt
     self.createdBy = createdBy
@@ -61,5 +61,40 @@ public struct AnthropicBetaApiKey: Codable, Sendable {
     case status
     case kind = "type"
     case workspaceId = "workspace_id"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case apiKey = "api_key"
+  }
+
+  public enum Scope: Codable, Sendable {
+    case betaApiKeyOrganizationScope(AnthropicBetaApiKeyOrganizationScope)
+    case betaApiKeyWorkspaceScope(AnthropicBetaApiKeyWorkspaceScope)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(AnthropicBetaApiKeyOrganizationScope.self) {
+        self = .betaApiKeyOrganizationScope(value)
+        return
+      }
+      self = .betaApiKeyWorkspaceScope(try container.decode(AnthropicBetaApiKeyWorkspaceScope.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .betaApiKeyOrganizationScope(let value):
+        try container.encode(value)
+      case .betaApiKeyWorkspaceScope(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case active = "active"
+    case archived = "archived"
+    case expired = "expired"
+    case inactive = "inactive"
   }
 }

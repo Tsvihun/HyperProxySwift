@@ -13,28 +13,28 @@ import HyperProxyCore
 public struct OpenAILiveSessionResourceParam: Codable, Sendable {
   public var audio: OpenAILiveInitialSessionAudioParam?
   public var client: OpenAILiveClientConfigParam?
-  public var delegation: OpenAILiveSessionResourceParamDelegationAnyOf1?
+  public var delegation: OpenAILiveSessionResourceParamDelegationVariant?
   public var expiresAt: Int
   public var id: String
   public var input: [OpenAILiveInitialItem]?
   public var instructions: String?
   public var model: OpenAIModelIdsLive
-  public var status: OpenAILiveSessionResourceParamStatus
+  public var status: OpenAILiveSessionResourceParam.Status
   public var store: Bool?
-  public var triggers: [OpenAILiveDecisionTriggerInputParam2]?
+  public var triggers: [OpenAILiveDecisionTriggerInputParam]?
 
   public init(
     expiresAt: Int,
     id: String,
     model: OpenAIModelIdsLive,
-    status: OpenAILiveSessionResourceParamStatus,
+    status: OpenAILiveSessionResourceParam.Status,
     audio: OpenAILiveInitialSessionAudioParam? = nil,
     client: OpenAILiveClientConfigParam? = nil,
-    delegation: OpenAILiveSessionResourceParamDelegationAnyOf1? = nil,
+    delegation: OpenAILiveSessionResourceParamDelegationVariant? = nil,
     input: [OpenAILiveInitialItem]? = nil,
     instructions: String? = nil,
     store: Bool? = nil,
-    triggers: [OpenAILiveDecisionTriggerInputParam2]? = nil
+    triggers: [OpenAILiveDecisionTriggerInputParam]? = nil
   ) {
     self.audio = audio
     self.client = client
@@ -61,5 +61,9 @@ public struct OpenAILiveSessionResourceParam: Codable, Sendable {
     case status
     case store
     case triggers
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case active = "active"
   }
 }

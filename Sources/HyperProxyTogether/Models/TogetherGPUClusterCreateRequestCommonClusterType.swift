@@ -11,6 +11,6 @@ import Foundation
 import HyperProxyCore
 
 public enum TogetherGPUClusterCreateRequestCommonClusterType: String, Codable, Hashable, Sendable {
-  case kUBERNETES = "KUBERNETES"
-  case sLURM = "SLURM"
+  case kubernetes = "KUBERNETES"
+  case slurm = "SLURM"
 }

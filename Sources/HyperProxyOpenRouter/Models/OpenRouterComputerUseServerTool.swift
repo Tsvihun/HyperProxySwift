@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct OpenRouterComputerUseServerTool: Codable, Sendable {
   public var displayHeight: Int
   public var displayWidth: Int
-  public var environment: OpenRouterComputerUseServerToolEnvironment
-  public var kind: OpenRouterComputerUseServerToolKind
+  public var environment: OpenRouterComputerUseServerTool.Environment
+  public var kind: OpenRouterComputerUseServerTool.Kind
 
   public init(
     displayHeight: Int,
     displayWidth: Int,
-    environment: OpenRouterComputerUseServerToolEnvironment,
-    kind: OpenRouterComputerUseServerToolKind
+    environment: OpenRouterComputerUseServerTool.Environment,
+    kind: OpenRouterComputerUseServerTool.Kind
   ) {
     self.displayHeight = displayHeight
     self.displayWidth = displayWidth
@@ -33,5 +33,17 @@ public struct OpenRouterComputerUseServerTool: Codable, Sendable {
     case displayWidth = "display_width"
     case environment
     case kind = "type"
+  }
+
+  public enum Environment: String, Codable, Hashable, Sendable {
+    case windows = "windows"
+    case mac = "mac"
+    case linux = "linux"
+    case ubuntu = "ubuntu"
+    case browser = "browser"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case computerUsePreview = "computer_use_preview"
   }
 }

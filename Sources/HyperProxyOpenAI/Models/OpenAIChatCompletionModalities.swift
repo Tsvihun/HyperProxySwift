@@ -10,4 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIChatCompletionModalities = [OpenAIChatCompletionModalitiesAnyOf1Item]?
+public typealias OpenAIChatCompletionModalities = [OpenAIChatCompletionModalitiesItem]?

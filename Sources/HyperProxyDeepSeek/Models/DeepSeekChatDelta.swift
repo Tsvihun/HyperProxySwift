@@ -13,13 +13,13 @@ import HyperProxyCore
 public struct DeepSeekChatDelta: Codable, Sendable {
   public var content: String?
   public var reasoningContent: String?
-  public var role: DeepSeekChatDeltaRole?
+  public var role: DeepSeekChatDelta.Role?
   public var toolCalls: [DeepSeekChatToolCall]?
 
   public init(
     content: String? = nil,
     reasoningContent: String? = nil,
-    role: DeepSeekChatDeltaRole? = nil,
+    role: DeepSeekChatDelta.Role? = nil,
     toolCalls: [DeepSeekChatToolCall]? = nil
   ) {
     self.content = content
@@ -33,5 +33,9 @@ public struct DeepSeekChatDelta: Codable, Sendable {
     case reasoningContent = "reasoning_content"
     case role
     case toolCalls = "tool_calls"
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case assistant = "assistant"
   }
 }

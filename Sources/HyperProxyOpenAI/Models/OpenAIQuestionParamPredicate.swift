@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIQuestionParamPredicate: Codable, Sendable {
-  public var instructions: String
+  public var instructions: OpenAIQuestionParamPredicate.Instructions
   public var name: String?
-  public var kind: OpenAIQuestionParamPredicateKind
+  public var kind: OpenAIQuestionParamPredicate.Kind
 
   public init(
-    instructions: String,
-    kind: OpenAIQuestionParamPredicateKind,
+    instructions: OpenAIQuestionParamPredicate.Instructions,
+    kind: OpenAIQuestionParamPredicate.Kind,
     name: String? = nil
   ) {
     self.instructions = instructions
@@ -29,5 +29,46 @@ public struct OpenAIQuestionParamPredicate: Codable, Sendable {
     case instructions
     case name
     case kind = "type"
+  }
+
+  public enum Instructions: Codable, Sendable {
+    case string(String)
+    case decisionQuestionInputPartArray([OpenAIDecisionQuestionInputPart])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .decisionQuestionInputPartArray(
+        try container.decode([OpenAIDecisionQuestionInputPart].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .decisionQuestionInputPartArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case predicate = "predicate"
+  }
+}
+
+extension OpenAIQuestionParamPredicate.Instructions: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension OpenAIQuestionParamPredicate.Instructions: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: OpenAIDecisionQuestionInputPart...) {
+    self = .decisionQuestionInputPartArray(elements)
   }
 }

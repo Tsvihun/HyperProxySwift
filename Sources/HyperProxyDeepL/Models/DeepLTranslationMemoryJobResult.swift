@@ -12,20 +12,20 @@ import HyperProxyCore
 
 public struct DeepLTranslationMemoryJobResult: Codable, Sendable {
   public var downloadUrl: String?
-  public var error: DeepLTranslationMemoryJobResultError?
+  public var error: DeepLTranslationMemoryJobResult.ErrorValue?
   public var expiresAt: String?
   public var skippedSegmentCount: Int64?
-  public var status: DeepLTranslationMemoryJobResultStatus
-  public var statusMetadata: DeepLTranslationMemoryJobResultStatusMetadata?
+  public var status: DeepLTranslationMemoryJobResult.Status
+  public var statusMetadata: DeepLTranslationMemoryJobResult.StatusMetadata?
   public var translationMemoryId: DeepLTranslationMemoryId?
 
   public init(
-    status: DeepLTranslationMemoryJobResultStatus,
+    status: DeepLTranslationMemoryJobResult.Status,
     downloadUrl: String? = nil,
-    error: DeepLTranslationMemoryJobResultError? = nil,
+    error: DeepLTranslationMemoryJobResult.ErrorValue? = nil,
     expiresAt: String? = nil,
     skippedSegmentCount: Int64? = nil,
-    statusMetadata: DeepLTranslationMemoryJobResultStatusMetadata? = nil,
+    statusMetadata: DeepLTranslationMemoryJobResult.StatusMetadata? = nil,
     translationMemoryId: DeepLTranslationMemoryId? = nil
   ) {
     self.downloadUrl = downloadUrl
@@ -45,5 +45,41 @@ public struct DeepLTranslationMemoryJobResult: Codable, Sendable {
     case status
     case statusMetadata = "status_metadata"
     case translationMemoryId = "translation_memory_id"
+  }
+
+  public struct ErrorValue: Codable, Sendable {
+    public var message: String?
+
+    public init(
+      message: String? = nil
+    ) {
+      self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case message
+    }
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case awaitingInput = "awaiting_input"
+    case processing = "processing"
+    case completed = "completed"
+    case failed = "failed"
+    case expired = "expired"
+  }
+
+  public struct StatusMetadata: Codable, Sendable {
+    public var requiredAction: String?
+
+    public init(
+      requiredAction: String? = nil
+    ) {
+      self.requiredAction = requiredAction
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case requiredAction = "required_action"
+    }
   }
 }

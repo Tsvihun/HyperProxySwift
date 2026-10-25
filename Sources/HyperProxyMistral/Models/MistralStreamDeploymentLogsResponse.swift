@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralStreamDeploymentLogsResponse: Codable, Sendable {
-  public var data: MistralStreamDeploymentLogsResponseData?
-  public var event: MistralStreamDeploymentLogsResponseEvent?
+  public var data: MistralStreamDeploymentLogsResponse.DataValue?
+  public var event: MistralStreamDeploymentLogsResponse.Event?
   public var id: String?
 
   public init(
-    data: MistralStreamDeploymentLogsResponseData? = nil,
-    event: MistralStreamDeploymentLogsResponseEvent? = nil,
+    data: MistralStreamDeploymentLogsResponse.DataValue? = nil,
+    event: MistralStreamDeploymentLogsResponse.Event? = nil,
     id: String? = nil
   ) {
     self.data = data
@@ -29,5 +29,34 @@ public struct MistralStreamDeploymentLogsResponse: Codable, Sendable {
     case data
     case event
     case id
+  }
+
+  public enum DataValue: Codable, Sendable {
+    case deploymentLogRecord(MistralDeploymentLogRecord)
+    case streamError(MistralStreamError)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(MistralDeploymentLogRecord.self) {
+        self = .deploymentLogRecord(value)
+        return
+      }
+      self = .streamError(try container.decode(MistralStreamError.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .deploymentLogRecord(let value):
+        try container.encode(value)
+      case .streamError(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Event: String, Codable, Hashable, Sendable {
+    case log = "log"
+    case error = "error"
   }
 }

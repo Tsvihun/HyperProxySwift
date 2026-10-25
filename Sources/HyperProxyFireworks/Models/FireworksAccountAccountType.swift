@@ -11,6 +11,6 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksAccountAccountType: String, Codable, Hashable, Sendable {
-  case aCCOUNTTYPEUNSPECIFIED = "ACCOUNT_TYPE_UNSPECIFIED"
-  case eNTERPRISE = "ENTERPRISE"
+  case accountTypeUnspecified = "ACCOUNT_TYPE_UNSPECIFIED"
+  case enterprise = "ENTERPRISE"
 }

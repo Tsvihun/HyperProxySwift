@@ -16,11 +16,11 @@ public struct OpenRouterOutputApplyPatchServerToolItem: Codable, Sendable {
   public var id: String?
   public var operation: OpenRouterApplyPatchCallOperation?
   public var status: OpenRouterFailableToolCallStatus
-  public var kind: OpenRouterOutputApplyPatchServerToolItemKind
+  public var kind: OpenRouterOutputApplyPatchServerToolItem.Kind
 
   public init(
     status: OpenRouterFailableToolCallStatus,
-    kind: OpenRouterOutputApplyPatchServerToolItemKind,
+    kind: OpenRouterOutputApplyPatchServerToolItem.Kind,
     callId: String? = nil,
     error: String? = nil,
     id: String? = nil,
@@ -41,5 +41,9 @@ public struct OpenRouterOutputApplyPatchServerToolItem: Codable, Sendable {
     case operation
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case openrouterApplyPatch = "openrouter:apply_patch"
   }
 }

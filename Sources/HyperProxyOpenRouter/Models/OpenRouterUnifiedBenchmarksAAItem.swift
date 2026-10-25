@@ -17,7 +17,7 @@ public struct OpenRouterUnifiedBenchmarksAAItem: Codable, Sendable {
   public var intelligenceIndex: Double
   public var modelPermaslug: String
   public var pricing: OpenRouterUnifiedBenchmarkPricing?
-  public var source: OpenRouterUnifiedBenchmarksAAItemSource
+  public var source: OpenRouterUnifiedBenchmarksAAItem.Source
 
   public init(
     agenticIndex: Double,
@@ -26,7 +26,7 @@ public struct OpenRouterUnifiedBenchmarksAAItem: Codable, Sendable {
     intelligenceIndex: Double,
     modelPermaslug: String,
     pricing: OpenRouterUnifiedBenchmarkPricing?,
-    source: OpenRouterUnifiedBenchmarksAAItemSource
+    source: OpenRouterUnifiedBenchmarksAAItem.Source
   ) {
     self.agenticIndex = agenticIndex
     self.codingIndex = codingIndex
@@ -45,5 +45,9 @@ public struct OpenRouterUnifiedBenchmarksAAItem: Codable, Sendable {
     case modelPermaslug = "model_permaslug"
     case pricing
     case source
+  }
+
+  public enum Source: String, Codable, Hashable, Sendable {
+    case artificialAnalysis = "artificial-analysis"
   }
 }

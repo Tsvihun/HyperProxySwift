@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAILiveFileSearchToolInputParam: Codable, Sendable {
-  public var kind: OpenAILiveFileSearchToolInputParamKind
+  public var kind: OpenAILiveFileSearchToolInputParam.Kind
 
   public init(
-    kind: OpenAILiveFileSearchToolInputParamKind
+    kind: OpenAILiveFileSearchToolInputParam.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case fileSearch = "file_search"
   }
 }

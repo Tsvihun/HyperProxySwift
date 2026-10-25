@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct FireworksAnthropicToolChoiceNone: Codable, Sendable {
-  public var kind: FireworksNoneKind
+  public var kind: FireworksAnthropicToolChoiceNone.Kind
 
   public init(
-    kind: FireworksNoneKind = .none
+    kind: FireworksAnthropicToolChoiceNone.Kind = .none
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case none = "none"
   }
 }

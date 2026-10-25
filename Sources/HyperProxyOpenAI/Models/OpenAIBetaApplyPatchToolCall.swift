@@ -16,16 +16,16 @@ public struct OpenAIBetaApplyPatchToolCall: Codable, Sendable {
   public var caller: OpenAIBetaToolCallCaller?
   public var createdBy: String?
   public var id: String
-  public var operation: OpenAIBetaApplyPatchToolCallOperation
+  public var operation: OpenAIBetaApplyPatchToolCall.Operation
   public var status: OpenAIBetaApplyPatchCallStatus
-  public var kind: OpenAIBetaApplyPatchToolCallKind
+  public var kind: OpenAIBetaApplyPatchToolCall.Kind
 
   public init(
     callId: String,
     id: String,
-    operation: OpenAIBetaApplyPatchToolCallOperation,
+    operation: OpenAIBetaApplyPatchToolCall.Operation,
     status: OpenAIBetaApplyPatchCallStatus,
-    kind: OpenAIBetaApplyPatchToolCallKind,
+    kind: OpenAIBetaApplyPatchToolCall.Kind,
     agent: OpenAIBetaAgentTag? = nil,
     caller: OpenAIBetaToolCallCaller? = nil,
     createdBy: String? = nil
@@ -49,5 +49,41 @@ public struct OpenAIBetaApplyPatchToolCall: Codable, Sendable {
     case operation
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case applyPatchCall = "apply_patch_call"
+  }
+
+  public enum Operation: Codable, Sendable {
+    case betaApplyPatchCreateFileOperation(OpenAIBetaApplyPatchCreateFileOperation)
+    case betaApplyPatchDeleteFileOperation(OpenAIBetaApplyPatchDeleteFileOperation)
+    case betaApplyPatchUpdateFileOperation(OpenAIBetaApplyPatchUpdateFileOperation)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenAIBetaApplyPatchCreateFileOperation.self) {
+        self = .betaApplyPatchCreateFileOperation(value)
+        return
+      }
+      if let value = try? container.decode(OpenAIBetaApplyPatchDeleteFileOperation.self) {
+        self = .betaApplyPatchDeleteFileOperation(value)
+        return
+      }
+      self = .betaApplyPatchUpdateFileOperation(
+        try container.decode(OpenAIBetaApplyPatchUpdateFileOperation.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .betaApplyPatchCreateFileOperation(let value):
+        try container.encode(value)
+      case .betaApplyPatchDeleteFileOperation(let value):
+        try container.encode(value)
+      case .betaApplyPatchUpdateFileOperation(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

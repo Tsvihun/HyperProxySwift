@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct StabilityFetchAudioResultResponse: Codable, Sendable {
   public var id: String
-  public var status: StabilityFetchAudioResultResponseStatus
+  public var status: StabilityFetchAudioResultResponse.Status
 
   public init(
     id: String,
-    status: StabilityFetchAudioResultResponseStatus
+    status: StabilityFetchAudioResultResponse.Status
   ) {
     self.id = id
     self.status = status
@@ -25,5 +25,9 @@ public struct StabilityFetchAudioResultResponse: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case id
     case status
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case inProgress = "in-progress"
   }
 }

@@ -14,24 +14,24 @@ public struct MistralOTLPDestination: Codable, Sendable {
   public var endpoint: String
   public var headers: [String: MistralPipelineConfigHeader]?
   public var insecure: Bool?
-  public var protocolModel: String
+  public var protocolValue: String
 
   public init(
     endpoint: String,
-    protocolModel: String,
+    protocolValue: String,
     headers: [String: MistralPipelineConfigHeader]? = nil,
     insecure: Bool? = nil
   ) {
     self.endpoint = endpoint
     self.headers = headers
     self.insecure = insecure
-    self.protocolModel = protocolModel
+    self.protocolValue = protocolValue
   }
 
   enum CodingKeys: String, CodingKey {
     case endpoint
     case headers
     case insecure
-    case protocolModel = "protocol"
+    case protocolValue = "protocol"
   }
 }

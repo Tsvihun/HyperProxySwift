@@ -14,13 +14,13 @@ public struct OpenAIOciExternalStorageProviderParams: Codable, Sendable {
   public var bucket: String
   public var region: String
   public var tenancyOcid: String
-  public var kind: OpenAIOciExternalStorageProviderParamsKind
+  public var kind: OpenAIOciExternalStorageProviderParams.Kind
 
   public init(
     bucket: String,
     region: String,
     tenancyOcid: String,
-    kind: OpenAIOciExternalStorageProviderParamsKind
+    kind: OpenAIOciExternalStorageProviderParams.Kind
   ) {
     self.bucket = bucket
     self.region = region
@@ -33,5 +33,9 @@ public struct OpenAIOciExternalStorageProviderParams: Codable, Sendable {
     case region
     case tenancyOcid = "tenancy_ocid"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case oci = "oci"
   }
 }

@@ -14,7 +14,7 @@ public struct ElevenLabsSpeechToTextChunkResponseModel: Codable, Sendable {
   public var additionalFormats: [ElevenLabsAdditionalFormatResponseModel?]?
   public var audioDurationSecs: Double?
   public var channelIndex: Int?
-  public var editedTranscript: ElevenLabsSpeechToTextChunkResponseModelEditedTranscriptAnyOf1?
+  public var editedTranscript: ElevenLabsSpeechToTextChunkResponseModelEditedTranscriptVariant?
   public var entities: [ElevenLabsDetectedEntity]?
   public var languageCode: String
   public var languageProbability: Double
@@ -30,7 +30,7 @@ public struct ElevenLabsSpeechToTextChunkResponseModel: Codable, Sendable {
     additionalFormats: [ElevenLabsAdditionalFormatResponseModel?]? = nil,
     audioDurationSecs: Double? = nil,
     channelIndex: Int? = nil,
-    editedTranscript: ElevenLabsSpeechToTextChunkResponseModelEditedTranscriptAnyOf1? = nil,
+    editedTranscript: ElevenLabsSpeechToTextChunkResponseModelEditedTranscriptVariant? = nil,
     entities: [ElevenLabsDetectedEntity]? = nil,
     transcriptionId: String? = nil
   ) {

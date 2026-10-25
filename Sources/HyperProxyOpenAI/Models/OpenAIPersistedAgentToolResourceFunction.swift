@@ -15,14 +15,14 @@ public struct OpenAIPersistedAgentToolResourceFunction: Codable, Sendable {
   public var description: String
   public var name: String
   public var parameters: [String: HyperProxyJSONValue]
-  public var kind: OpenAIPersistedAgentToolResourceFunctionKind
+  public var kind: OpenAIPersistedAgentToolResourceFunction.Kind
 
   public init(
     deferLoading: Bool,
     description: String,
     name: String,
     parameters: [String: HyperProxyJSONValue],
-    kind: OpenAIPersistedAgentToolResourceFunctionKind
+    kind: OpenAIPersistedAgentToolResourceFunction.Kind
   ) {
     self.deferLoading = deferLoading
     self.description = description
@@ -37,5 +37,9 @@ public struct OpenAIPersistedAgentToolResourceFunction: Codable, Sendable {
     case name
     case parameters
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case function = "function"
   }
 }

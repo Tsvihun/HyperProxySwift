@@ -17,13 +17,13 @@ public struct OpenRouterOpenAIResponseCustomToolCall: Codable, Sendable {
   public var input: String
   public var name: String
   public var namespace: String?
-  public var kind: OpenRouterOpenAIResponseCustomToolCallKind
+  public var kind: OpenRouterOpenAIResponseCustomToolCall.Kind
 
   public init(
     callId: String,
     input: String,
     name: String,
-    kind: OpenRouterOpenAIResponseCustomToolCallKind,
+    kind: OpenRouterOpenAIResponseCustomToolCall.Kind,
     async: Bool? = nil,
     id: String? = nil,
     namespace: String? = nil
@@ -45,5 +45,9 @@ public struct OpenRouterOpenAIResponseCustomToolCall: Codable, Sendable {
     case name
     case namespace
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case customToolCall = "custom_tool_call"
   }
 }

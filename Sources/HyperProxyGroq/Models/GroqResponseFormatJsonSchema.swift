@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct GroqResponseFormatJsonSchema: Codable, Sendable {
-  public var jsonSchema: GroqResponseFormatJsonSchemaJsonSchema
-  public var kind: GroqResponseFormatJsonSchemaKind
+  public var jsonSchema: GroqResponseFormatJsonSchema.JsonSchema
+  public var kind: GroqResponseFormatJsonSchema.Kind
 
   public init(
-    jsonSchema: GroqResponseFormatJsonSchemaJsonSchema,
-    kind: GroqResponseFormatJsonSchemaKind
+    jsonSchema: GroqResponseFormatJsonSchema.JsonSchema,
+    kind: GroqResponseFormatJsonSchema.Kind
   ) {
     self.jsonSchema = jsonSchema
     self.kind = kind
@@ -25,5 +25,35 @@ public struct GroqResponseFormatJsonSchema: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case jsonSchema = "json_schema"
     case kind = "type"
+  }
+
+  public struct JsonSchema: Codable, Sendable {
+    public var description: String?
+    public var name: String
+    public var schema: GroqResponseFormatJsonSchemaSchema?
+    public var strict: Bool?
+
+    public init(
+      name: String,
+      description: String? = nil,
+      schema: GroqResponseFormatJsonSchemaSchema? = nil,
+      strict: Bool? = nil
+    ) {
+      self.description = description
+      self.name = name
+      self.schema = schema
+      self.strict = strict
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case description
+      case name
+      case schema
+      case strict
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case jsonSchema = "json_schema"
   }
 }

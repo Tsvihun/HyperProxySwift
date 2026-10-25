@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIErrorEvent: Codable, Sendable {
   public var data: OpenAIError
-  public var event: OpenAIErrorEventEvent
+  public var event: OpenAIErrorEvent.Event
 
   public init(
     data: OpenAIError,
-    event: OpenAIErrorEventEvent
+    event: OpenAIErrorEvent.Event
   ) {
     self.data = data
     self.event = event
@@ -25,5 +25,9 @@ public struct OpenAIErrorEvent: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case data
     case event
+  }
+
+  public enum Event: String, Codable, Hashable, Sendable {
+    case error = "error"
   }
 }

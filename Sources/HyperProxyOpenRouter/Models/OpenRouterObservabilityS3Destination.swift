@@ -16,7 +16,7 @@ public struct OpenRouterObservabilityS3Destination: Codable, Sendable {
   public var broadcastGenerationCostAllocation: Bool
   public var broadcastGenerationIdentity: Bool
   public var broadcastGenerationRequestContext: Bool
-  public var config: OpenRouterObservabilityS3DestinationConfig
+  public var config: OpenRouterObservabilityS3Destination.Config
   public var createdAt: String
   public var enabled: Bool
   public var filterRules: OpenRouterObservabilityFilterRulesConfig?
@@ -25,7 +25,7 @@ public struct OpenRouterObservabilityS3Destination: Codable, Sendable {
   public var privacyMode: Bool
   public var regions: [OpenRouterObservabilityDataRegion]
   public var samplingRate: Double
-  public var kind: OpenRouterObservabilityS3DestinationKind
+  public var kind: OpenRouterObservabilityS3Destination.Kind
   public var updatedAt: String
   public var workspaceId: String
 
@@ -35,7 +35,7 @@ public struct OpenRouterObservabilityS3Destination: Codable, Sendable {
     broadcastGenerationCostAllocation: Bool,
     broadcastGenerationIdentity: Bool,
     broadcastGenerationRequestContext: Bool,
-    config: OpenRouterObservabilityS3DestinationConfig,
+    config: OpenRouterObservabilityS3Destination.Config,
     createdAt: String,
     enabled: Bool,
     filterRules: OpenRouterObservabilityFilterRulesConfig?,
@@ -44,7 +44,7 @@ public struct OpenRouterObservabilityS3Destination: Codable, Sendable {
     privacyMode: Bool,
     regions: [OpenRouterObservabilityDataRegion],
     samplingRate: Double,
-    kind: OpenRouterObservabilityS3DestinationKind,
+    kind: OpenRouterObservabilityS3Destination.Kind,
     updatedAt: String,
     workspaceId: String
   ) {
@@ -85,5 +85,55 @@ public struct OpenRouterObservabilityS3Destination: Codable, Sendable {
     case kind = "type"
     case updatedAt = "updated_at"
     case workspaceId = "workspace_id"
+  }
+
+  public struct Config: Codable, Sendable {
+    public var accessKeyId: String
+    public var bucketName: String
+    public var endpoint: String?
+    public var headers: [String: String]?
+    public var pathTemplate: String?
+    public var prefixValue: String?
+    public var region: String?
+    public var secretAccessKey: String
+    public var sessionToken: String?
+
+    public init(
+      accessKeyId: String,
+      bucketName: String,
+      secretAccessKey: String,
+      endpoint: String? = nil,
+      headers: [String: String]? = nil,
+      pathTemplate: String? = nil,
+      prefixValue: String? = nil,
+      region: String? = nil,
+      sessionToken: String? = nil
+    ) {
+      self.accessKeyId = accessKeyId
+      self.bucketName = bucketName
+      self.endpoint = endpoint
+      self.headers = headers
+      self.pathTemplate = pathTemplate
+      self.prefixValue = prefixValue
+      self.region = region
+      self.secretAccessKey = secretAccessKey
+      self.sessionToken = sessionToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case accessKeyId
+      case bucketName
+      case endpoint
+      case headers
+      case pathTemplate
+      case prefixValue = "prefix"
+      case region
+      case secretAccessKey
+      case sessionToken
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case s3 = "s3"
   }
 }

@@ -24,7 +24,7 @@ public struct MistralConversationRequestBase: Codable, Sendable {
   public var name: String?
   public var store: Bool?
   public var stream: Bool?
-  public var tools: [MistralConversationRequestBaseToolsAnyOf1Item]?
+  public var tools: [MistralConversationRequestBaseToolsItem]?
 
   public init(
     inputs: MistralConversationInputs,
@@ -40,7 +40,7 @@ public struct MistralConversationRequestBase: Codable, Sendable {
     name: String? = nil,
     store: Bool? = nil,
     stream: Bool? = nil,
-    tools: [MistralConversationRequestBaseToolsAnyOf1Item]? = nil
+    tools: [MistralConversationRequestBaseToolsItem]? = nil
   ) {
     self.agentId = agentId
     self.agentVersion = agentVersion

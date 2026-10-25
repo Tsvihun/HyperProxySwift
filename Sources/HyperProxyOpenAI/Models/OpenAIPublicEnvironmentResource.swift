@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct OpenAIPublicEnvironmentResource: Codable, Sendable {
   public var files: [OpenAIHostedEnvironmentFileResource]
   public var id: String
-  public var object: OpenAIPublicEnvironmentResourceObject
+  public var object: OpenAIPublicEnvironmentResource.Object
   public var plugins: [OpenAIHostedPluginResource]
   public var skills: [OpenAIHostedSkillResource]
   public var status: OpenAIEnvironmentStatusResource
@@ -22,7 +22,7 @@ public struct OpenAIPublicEnvironmentResource: Codable, Sendable {
   public init(
     files: [OpenAIHostedEnvironmentFileResource],
     id: String,
-    object: OpenAIPublicEnvironmentResourceObject,
+    object: OpenAIPublicEnvironmentResource.Object,
     plugins: [OpenAIHostedPluginResource],
     skills: [OpenAIHostedSkillResource],
     status: OpenAIEnvironmentStatusResource,
@@ -45,5 +45,9 @@ public struct OpenAIPublicEnvironmentResource: Codable, Sendable {
     case skills
     case status
     case kind = "type"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case agentEnvironment = "agent.environment"
   }
 }

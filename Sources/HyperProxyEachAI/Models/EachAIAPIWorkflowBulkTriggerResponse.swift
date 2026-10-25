@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct EachAIAPIWorkflowBulkTriggerResponse: Codable, Sendable {
   public var bulkId: String?
-  public var executions: [EachAIAPIWorkflowBulkTriggerResponseExecutionsItem]?
+  public var executions: [EachAIAPIWorkflowBulkTriggerResponse.ExecutionsElement]?
 
   public init(
     bulkId: String? = nil,
-    executions: [EachAIAPIWorkflowBulkTriggerResponseExecutionsItem]? = nil
+    executions: [EachAIAPIWorkflowBulkTriggerResponse.ExecutionsElement]? = nil
   ) {
     self.bulkId = bulkId
     self.executions = executions
@@ -25,5 +25,27 @@ public struct EachAIAPIWorkflowBulkTriggerResponse: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case bulkId = "bulk_id"
     case executions
+  }
+
+  public struct ExecutionsElement: Codable, Sendable {
+    public var executionId: String?
+    public var message: String?
+    public var status: String?
+
+    public init(
+      executionId: String? = nil,
+      message: String? = nil,
+      status: String? = nil
+    ) {
+      self.executionId = executionId
+      self.message = message
+      self.status = status
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case executionId = "execution_id"
+      case message
+      case status
+    }
   }
 }

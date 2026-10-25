@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct GeminiModelStatus: Codable, Sendable {
   public var message: String?
-  public var modelStage: GeminiModelStatusModelStage?
+  public var modelStage: GeminiModelStatus.ModelStage?
   public var retirementTime: String?
 
   public init(
     message: String? = nil,
-    modelStage: GeminiModelStatusModelStage? = nil,
+    modelStage: GeminiModelStatus.ModelStage? = nil,
     retirementTime: String? = nil
   ) {
     self.message = message
@@ -29,5 +29,16 @@ public struct GeminiModelStatus: Codable, Sendable {
     case message
     case modelStage
     case retirementTime
+  }
+
+  public enum ModelStage: String, Codable, Hashable, Sendable {
+    case modelStageUnspecified = "MODEL_STAGE_UNSPECIFIED"
+    case unstableExperimental = "UNSTABLE_EXPERIMENTAL"
+    case experimental = "EXPERIMENTAL"
+    case preview = "PREVIEW"
+    case stable = "STABLE"
+    case legacy = "LEGACY"
+    case deprecated = "DEPRECATED"
+    case retired = "RETIRED"
   }
 }

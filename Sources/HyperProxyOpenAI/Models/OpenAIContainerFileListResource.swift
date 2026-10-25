@@ -15,14 +15,14 @@ public struct OpenAIContainerFileListResource: Codable, Sendable {
   public var firstId: String
   public var hasMore: Bool
   public var lastId: String
-  public var object: OpenAIContainerFileListResourceObject
+  public var object: OpenAIContainerFileListResource.Object
 
   public init(
     data: [OpenAIContainerFileResource],
     firstId: String,
     hasMore: Bool,
     lastId: String,
-    object: OpenAIContainerFileListResourceObject
+    object: OpenAIContainerFileListResource.Object
   ) {
     self.data = data
     self.firstId = firstId
@@ -37,5 +37,9 @@ public struct OpenAIContainerFileListResource: Codable, Sendable {
     case hasMore = "has_more"
     case lastId = "last_id"
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case list = "list"
   }
 }

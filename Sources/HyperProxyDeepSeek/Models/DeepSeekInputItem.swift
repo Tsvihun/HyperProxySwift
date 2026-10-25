@@ -13,18 +13,18 @@ import HyperProxyCore
 public struct DeepSeekInputItem: Codable, Sendable {
   public var arguments: String?
   public var callId: String?
-  public var content: DeepSeekInputItemContent?
+  public var content: DeepSeekInputItem.Content?
   public var name: String?
-  public var output: DeepSeekInputItemOutput?
+  public var output: DeepSeekInputItem.Output?
   public var role: DeepSeekInputRole?
   public var kind: DeepSeekInputItemType?
 
   public init(
     arguments: String? = nil,
     callId: String? = nil,
-    content: DeepSeekInputItemContent? = nil,
+    content: DeepSeekInputItem.Content? = nil,
     name: String? = nil,
-    output: DeepSeekInputItemOutput? = nil,
+    output: DeepSeekInputItem.Output? = nil,
     role: DeepSeekInputRole? = nil,
     kind: DeepSeekInputItemType? = nil
   ) {
@@ -45,5 +45,77 @@ public struct DeepSeekInputItem: Codable, Sendable {
     case output
     case role
     case kind = "type"
+  }
+
+  public enum Content: Codable, Sendable {
+    case string(String)
+    case inputContentPartArray([DeepSeekInputContentPart])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .inputContentPartArray(try container.decode([DeepSeekInputContentPart].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .inputContentPartArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Output: Codable, Sendable {
+    case string(String)
+    case inputContentPartArray([DeepSeekInputContentPart])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .inputContentPartArray(try container.decode([DeepSeekInputContentPart].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .inputContentPartArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension DeepSeekInputItem.Content: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension DeepSeekInputItem.Content: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: DeepSeekInputContentPart...) {
+    self = .inputContentPartArray(elements)
+  }
+}
+
+extension DeepSeekInputItem.Output: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension DeepSeekInputItem.Output: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: DeepSeekInputContentPart...) {
+    self = .inputContentPartArray(elements)
   }
 }

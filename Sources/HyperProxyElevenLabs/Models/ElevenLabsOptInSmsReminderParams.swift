@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsOptInSmsReminderParams: Codable, Sendable {
-  public var smbToolType: ElevenLabsOptInSmsReminderSmbToolType?
+  public var smbToolType: ElevenLabsOptInSmsReminderParams.SmbToolType?
 
   public init(
-    smbToolType: ElevenLabsOptInSmsReminderSmbToolType? = nil
+    smbToolType: ElevenLabsOptInSmsReminderParams.SmbToolType? = nil
   ) {
     self.smbToolType = smbToolType
   }
 
   enum CodingKeys: String, CodingKey {
     case smbToolType = "smb_tool_type"
+  }
+
+  public enum SmbToolType: String, Codable, Hashable, Sendable {
+    case optInSmsReminder = "opt_in_sms_reminder"
   }
 }

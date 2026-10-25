@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAISpecificApplyPatchParam: Codable, Sendable {
-  public var kind: OpenAISpecificApplyPatchParamKind
+  public var kind: OpenAISpecificApplyPatchParam.Kind
 
   public init(
-    kind: OpenAISpecificApplyPatchParamKind
+    kind: OpenAISpecificApplyPatchParam.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case applyPatch = "apply_patch"
   }
 }

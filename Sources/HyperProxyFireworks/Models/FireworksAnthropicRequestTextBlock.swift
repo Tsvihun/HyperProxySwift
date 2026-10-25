@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct FireworksAnthropicRequestTextBlock: Codable, Sendable {
   public var cacheControl: FireworksAnthropicCacheControlEphemeral?
-  public var citations: [FireworksAnthropicRequestTextBlockCitationsAnyOf1Item]?
+  public var citations: [FireworksAnthropicRequestTextBlockCitationsItem]?
   public var text: String
   public var kind: FireworksTextKind
 
@@ -20,7 +20,7 @@ public struct FireworksAnthropicRequestTextBlock: Codable, Sendable {
     text: String,
     kind: FireworksTextKind = .text,
     cacheControl: FireworksAnthropicCacheControlEphemeral? = nil,
-    citations: [FireworksAnthropicRequestTextBlockCitationsAnyOf1Item]? = nil
+    citations: [FireworksAnthropicRequestTextBlockCitationsItem]? = nil
   ) {
     self.cacheControl = cacheControl
     self.citations = citations

@@ -11,8 +11,8 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksEvaluatorSourceType: String, Codable, Hashable, Sendable {
-  case tYPEUNSPECIFIED = "TYPE_UNSPECIFIED"
-  case tYPEUPLOAD = "TYPE_UPLOAD"
-  case tYPEGITHUB = "TYPE_GITHUB"
-  case tYPETEMPORARY = "TYPE_TEMPORARY"
+  case typeUnspecified = "TYPE_UNSPECIFIED"
+  case typeUpload = "TYPE_UPLOAD"
+  case typeGithub = "TYPE_GITHUB"
+  case typeTemporary = "TYPE_TEMPORARY"
 }

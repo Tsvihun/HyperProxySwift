@@ -17,7 +17,7 @@ public struct GeminiTunedModel: Codable, Sendable {
   public var displayName: String?
   public var name: String?
   public var readerProjectNumbers: [String]?
-  public var state: GeminiTunedModelState?
+  public var state: GeminiTunedModel.State?
   public var temperature: Double?
   public var topK: Int?
   public var topP: Double?
@@ -32,7 +32,7 @@ public struct GeminiTunedModel: Codable, Sendable {
     displayName: String? = nil,
     name: String? = nil,
     readerProjectNumbers: [String]? = nil,
-    state: GeminiTunedModelState? = nil,
+    state: GeminiTunedModel.State? = nil,
     temperature: Double? = nil,
     topK: Int? = nil,
     topP: Double? = nil,
@@ -69,5 +69,12 @@ public struct GeminiTunedModel: Codable, Sendable {
     case tunedModelSource
     case tuningTask
     case updateTime
+  }
+
+  public enum State: String, Codable, Hashable, Sendable {
+    case stateUnspecified = "STATE_UNSPECIFIED"
+    case creating = "CREATING"
+    case active = "ACTIVE"
+    case failed = "FAILED"
   }
 }

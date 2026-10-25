@@ -13,10 +13,10 @@ import HyperProxyCore
 public struct AnthropicBetaJwksDiscovery: Codable, Sendable {
   public var caCertPem: String?
   public var discoveryBase: String?
-  public var kind: AnthropicDiscoveryKind
+  public var kind: AnthropicBetaJwksDiscovery.Kind
 
   public init(
-    kind: AnthropicDiscoveryKind = .discovery,
+    kind: AnthropicBetaJwksDiscovery.Kind = .discovery,
     caCertPem: String? = nil,
     discoveryBase: String? = nil
   ) {
@@ -29,5 +29,9 @@ public struct AnthropicBetaJwksDiscovery: Codable, Sendable {
     case caCertPem = "ca_cert_pem"
     case discoveryBase = "discovery_base"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case discovery = "discovery"
   }
 }

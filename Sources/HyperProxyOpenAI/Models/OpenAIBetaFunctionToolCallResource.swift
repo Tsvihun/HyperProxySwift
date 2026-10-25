@@ -62,4 +62,26 @@ public struct OpenAIBetaFunctionToolCallResource: Codable, Sendable {
     case status
     case kind = "type"
   }
+
+  public struct WithCreatedByAndIdAndStatus: Codable, Sendable {
+    public var createdBy: String?
+    public var id: String
+    public var status: OpenAIBetaFunctionCallStatus
+
+    public init(
+      id: String,
+      status: OpenAIBetaFunctionCallStatus,
+      createdBy: String? = nil
+    ) {
+      self.createdBy = createdBy
+      self.id = id
+      self.status = status
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case createdBy = "created_by"
+      case id
+      case status
+    }
+  }
 }

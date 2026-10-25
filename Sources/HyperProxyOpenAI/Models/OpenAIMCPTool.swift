@@ -12,28 +12,28 @@ import HyperProxyCore
 
 public struct OpenAIMCPTool: Codable, Sendable {
   public var allowedCallers: [OpenAICallableToolAllowedCaller]?
-  public var allowedTools: OpenAIMCPToolAllowedToolsAnyOf1?
+  public var allowedTools: OpenAIMCPToolAllowedToolsVariant?
   public var authorization: String?
-  public var connectorId: OpenAIMCPToolConnectorId?
+  public var connectorId: OpenAIMCPTool.ConnectorId?
   public var deferLoading: Bool?
   public var headers: [String: String]?
-  public var requireApproval: OpenAIMCPToolRequireApprovalAnyOf1?
+  public var requireApproval: OpenAIMCPToolRequireApprovalVariant?
   public var serverDescription: String?
   public var serverLabel: String
   public var serverUrl: String?
   public var tunnelId: String?
-  public var kind: OpenAIMCPToolKind
+  public var kind: OpenAIMCPTool.Kind
 
   public init(
     serverLabel: String,
-    kind: OpenAIMCPToolKind,
+    kind: OpenAIMCPTool.Kind,
     allowedCallers: [OpenAICallableToolAllowedCaller]? = nil,
-    allowedTools: OpenAIMCPToolAllowedToolsAnyOf1? = nil,
+    allowedTools: OpenAIMCPToolAllowedToolsVariant? = nil,
     authorization: String? = nil,
-    connectorId: OpenAIMCPToolConnectorId? = nil,
+    connectorId: OpenAIMCPTool.ConnectorId? = nil,
     deferLoading: Bool? = nil,
     headers: [String: String]? = nil,
-    requireApproval: OpenAIMCPToolRequireApprovalAnyOf1? = nil,
+    requireApproval: OpenAIMCPToolRequireApprovalVariant? = nil,
     serverDescription: String? = nil,
     serverUrl: String? = nil,
     tunnelId: String? = nil
@@ -65,5 +65,20 @@ public struct OpenAIMCPTool: Codable, Sendable {
     case serverUrl = "server_url"
     case tunnelId = "tunnel_id"
     case kind = "type"
+  }
+
+  public enum ConnectorId: String, Codable, Hashable, Sendable {
+    case connectorDropbox = "connector_dropbox"
+    case connectorGmail = "connector_gmail"
+    case connectorGooglecalendar = "connector_googlecalendar"
+    case connectorGoogledrive = "connector_googledrive"
+    case connectorMicrosoftteams = "connector_microsoftteams"
+    case connectorOutlookcalendar = "connector_outlookcalendar"
+    case connectorOutlookemail = "connector_outlookemail"
+    case connectorSharepoint = "connector_sharepoint"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case mcp = "mcp"
   }
 }

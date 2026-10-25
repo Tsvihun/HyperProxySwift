@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct PerplexityResponsesUsage: Codable, Sendable {
   public var cost: PerplexityResponsesCost?
   public var inputTokens: Int64
-  public var inputTokensDetails: PerplexityResponsesUsageInputTokensDetails?
+  public var inputTokensDetails: PerplexityResponsesUsage.InputTokensDetails?
   public var outputTokens: Int64
   public var toolCallsDetails: [String: PerplexityToolCallDetails]?
   public var totalTokens: Int64
@@ -23,7 +23,7 @@ public struct PerplexityResponsesUsage: Codable, Sendable {
     outputTokens: Int64,
     totalTokens: Int64,
     cost: PerplexityResponsesCost? = nil,
-    inputTokensDetails: PerplexityResponsesUsageInputTokensDetails? = nil,
+    inputTokensDetails: PerplexityResponsesUsage.InputTokensDetails? = nil,
     toolCallsDetails: [String: PerplexityToolCallDetails]? = nil
   ) {
     self.cost = cost
@@ -41,5 +41,23 @@ public struct PerplexityResponsesUsage: Codable, Sendable {
     case outputTokens = "output_tokens"
     case toolCallsDetails = "tool_calls_details"
     case totalTokens = "total_tokens"
+  }
+
+  public struct InputTokensDetails: Codable, Sendable {
+    public var cacheCreationInputTokens: Int64?
+    public var cacheReadInputTokens: Int64?
+
+    public init(
+      cacheCreationInputTokens: Int64? = nil,
+      cacheReadInputTokens: Int64? = nil
+    ) {
+      self.cacheCreationInputTokens = cacheCreationInputTokens
+      self.cacheReadInputTokens = cacheReadInputTokens
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case cacheCreationInputTokens = "cache_creation_input_tokens"
+      case cacheReadInputTokens = "cache_read_input_tokens"
+    }
   }
 }

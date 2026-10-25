@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenRouterAnthropicTextBlock: Codable, Sendable {
   public var citations: [OpenRouterAnthropicTextCitation]
   public var text: String
-  public var kind: OpenRouterAnthropicTextBlockKind
+  public var kind: OpenRouterAnthropicTextBlock.Kind
 
   public init(
     citations: [OpenRouterAnthropicTextCitation],
     text: String,
-    kind: OpenRouterAnthropicTextBlockKind
+    kind: OpenRouterAnthropicTextBlock.Kind
   ) {
     self.citations = citations
     self.text = text
@@ -29,5 +29,9 @@ public struct OpenRouterAnthropicTextBlock: Codable, Sendable {
     case citations
     case text
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case text = "text"
   }
 }

@@ -30,7 +30,7 @@ public struct ElevenLabsProjectExternalAudioResponseModel: Codable, Sendable {
   public var pendingTask: ElevenLabsPendingClipTask?
   public var signedUrl: String?
   public var sourceAssetId: String?
-  public var sourceContext: ElevenLabsProjectExternalAudioResponseModelSourceContextAnyOf1?
+  public var sourceContext: ElevenLabsProjectExternalAudioResponseModelSourceContextVariant?
   public var sourceExternalAudioId: String?
   public var sourcePlatformAssetId: String?
   public var speechImported: Bool?
@@ -64,7 +64,7 @@ public struct ElevenLabsProjectExternalAudioResponseModel: Codable, Sendable {
     pendingExternalAudiosMetadata: ElevenLabsPendingExternalAudiosMetadataModel? = nil,
     pendingTask: ElevenLabsPendingClipTask? = nil,
     sourceAssetId: String? = nil,
-    sourceContext: ElevenLabsProjectExternalAudioResponseModelSourceContextAnyOf1? = nil,
+    sourceContext: ElevenLabsProjectExternalAudioResponseModelSourceContextVariant? = nil,
     sourceExternalAudioId: String? = nil,
     sourcePlatformAssetId: String? = nil,
     speechImported: Bool? = nil,

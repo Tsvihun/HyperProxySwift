@@ -14,12 +14,12 @@ public struct ElevenLabsSpeakerSeparationResponseModel: Codable, Sendable {
   public var sampleId: String
   public var selectedSpeakerIds: [String]?
   public var speakers: [String: ElevenLabsSpeakerResponseModel]?
-  public var status: ElevenLabsSpeakerSeparationResponseModelStatus
+  public var status: ElevenLabsSpeakerSeparationResponseModel.Status
   public var voiceId: String
 
   public init(
     sampleId: String,
-    status: ElevenLabsSpeakerSeparationResponseModelStatus,
+    status: ElevenLabsSpeakerSeparationResponseModel.Status,
     voiceId: String,
     selectedSpeakerIds: [String]? = nil,
     speakers: [String: ElevenLabsSpeakerResponseModel]? = nil
@@ -37,5 +37,12 @@ public struct ElevenLabsSpeakerSeparationResponseModel: Codable, Sendable {
     case speakers
     case status
     case voiceId = "voice_id"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case notStarted = "not_started"
+    case pending = "pending"
+    case completed = "completed"
+    case failed = "failed"
   }
 }

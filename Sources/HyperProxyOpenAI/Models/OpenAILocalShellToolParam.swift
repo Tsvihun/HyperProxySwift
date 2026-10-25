@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAILocalShellToolParam: Codable, Sendable {
-  public var kind: OpenAILocalShellToolParamKind
+  public var kind: OpenAILocalShellToolParam.Kind
 
   public init(
-    kind: OpenAILocalShellToolParamKind
+    kind: OpenAILocalShellToolParam.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case localShell = "local_shell"
   }
 }

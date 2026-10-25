@@ -14,7 +14,7 @@ public struct PerplexityApiPublicSearchResult: Codable, Sendable {
   public var date: String?
   public var lastUpdated: String?
   public var snippet: String?
-  public var source: PerplexityApiPublicSearchResultSource?
+  public var source: PerplexityApiPublicSearchResult.Source?
   public var title: String
   public var url: String
 
@@ -24,7 +24,7 @@ public struct PerplexityApiPublicSearchResult: Codable, Sendable {
     date: String? = nil,
     lastUpdated: String? = nil,
     snippet: String? = nil,
-    source: PerplexityApiPublicSearchResultSource? = nil
+    source: PerplexityApiPublicSearchResult.Source? = nil
   ) {
     self.date = date
     self.lastUpdated = lastUpdated
@@ -41,5 +41,10 @@ public struct PerplexityApiPublicSearchResult: Codable, Sendable {
     case source
     case title
     case url
+  }
+
+  public enum Source: String, Codable, Hashable, Sendable {
+    case web = "web"
+    case attachment = "attachment"
   }
 }

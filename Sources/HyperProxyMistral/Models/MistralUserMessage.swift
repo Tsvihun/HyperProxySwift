@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralUserMessage: Codable, Sendable {
-  public var content: MistralUserMessageContent?
-  public var role: MistralUserRolef31962ed?
+  public var content: MistralUserMessage.Content?
+  public var role: MistralUserMessage.Role?
 
   public init(
-    content: MistralUserMessageContent?,
-    role: MistralUserRolef31962ed? = nil
+    content: MistralUserMessage.Content?,
+    role: MistralUserMessage.Role? = nil
   ) {
     self.content = content
     self.role = role
@@ -25,5 +25,45 @@ public struct MistralUserMessage: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case content
     case role
+  }
+
+  public enum Content: Codable, Sendable {
+    case string(String)
+    case contentChunkArray([MistralContentChunk])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .contentChunkArray(try container.decode([MistralContentChunk].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .contentChunkArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case user = "user"
+  }
+}
+
+extension MistralUserMessage.Content: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension MistralUserMessage.Content: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: MistralContentChunk...) {
+    self = .contentChunkArray(elements)
   }
 }

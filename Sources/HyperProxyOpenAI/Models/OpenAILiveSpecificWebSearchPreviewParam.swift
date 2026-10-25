@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAILiveSpecificWebSearchPreviewParam: Codable, Sendable {
-  public var kind: OpenAILiveSpecificWebSearchPreviewParamKind
+  public var kind: OpenAILiveSpecificWebSearchPreviewParam.Kind
 
   public init(
-    kind: OpenAILiveSpecificWebSearchPreviewParamKind
+    kind: OpenAILiveSpecificWebSearchPreviewParam.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case webSearchPreview = "web_search_preview"
   }
 }

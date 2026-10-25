@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct MistralScalarStatisticValue: Codable, Sendable {
   public var id: String
-  public var kind: MistralScalarKind?
+  public var kind: MistralScalarStatisticValue.Kind?
   public var value: Double?
 
   public init(
     id: String,
-    kind: MistralScalarKind? = nil,
+    kind: MistralScalarStatisticValue.Kind? = nil,
     value: Double? = nil
   ) {
     self.id = id
@@ -29,5 +29,9 @@ public struct MistralScalarStatisticValue: Codable, Sendable {
     case id
     case kind = "type"
     case value
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case scalar = "scalar"
   }
 }

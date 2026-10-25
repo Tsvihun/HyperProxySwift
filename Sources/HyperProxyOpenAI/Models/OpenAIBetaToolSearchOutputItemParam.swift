@@ -17,11 +17,11 @@ public struct OpenAIBetaToolSearchOutputItemParam: Codable, Sendable {
   public var id: String?
   public var status: OpenAIBetaFunctionCallItemStatus?
   public var tools: [OpenAIBetaToolSearchOutputTool]
-  public var kind: OpenAIBetaToolSearchOutputItemParamKind
+  public var kind: OpenAIBetaToolSearchOutputItemParam.Kind
 
   public init(
     tools: [OpenAIBetaToolSearchOutputTool],
-    kind: OpenAIBetaToolSearchOutputItemParamKind,
+    kind: OpenAIBetaToolSearchOutputItemParam.Kind,
     agent: OpenAIBetaAgentTagParam? = nil,
     callId: String? = nil,
     execution: OpenAIBetaToolSearchExecutionType? = nil,
@@ -45,5 +45,9 @@ public struct OpenAIBetaToolSearchOutputItemParam: Codable, Sendable {
     case status
     case tools
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case toolSearchOutput = "tool_search_output"
   }
 }

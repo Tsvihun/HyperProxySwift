@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct TogetherDEInlinePlacement: Codable, Sendable {
   public var compliancePolicy: TogetherDECompliancePolicy?
-  public var constraint: TogetherDEInlinePlacementConstraint?
+  public var constraint: TogetherDEInlinePlacement.Constraint?
   public var regions: [String]?
 
   public init(
     compliancePolicy: TogetherDECompliancePolicy? = nil,
-    constraint: TogetherDEInlinePlacementConstraint? = nil,
+    constraint: TogetherDEInlinePlacement.Constraint? = nil,
     regions: [String]? = nil
   ) {
     self.compliancePolicy = compliancePolicy
@@ -29,5 +29,10 @@ public struct TogetherDEInlinePlacement: Codable, Sendable {
     case compliancePolicy
     case constraint
     case regions
+  }
+
+  public enum Constraint: String, Codable, Hashable, Sendable {
+    case enforcementRequired = "ENFORCEMENT_REQUIRED"
+    case enforcementPreferred = "ENFORCEMENT_PREFERRED"
   }
 }

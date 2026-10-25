@@ -12,14 +12,14 @@ import HyperProxyCore
 
 public struct OpenRouterUpdatePrivateEndpointRequest: Codable, Sendable {
   public var baseUrl: String?
-  public var declaredRegion: OpenRouterUpdatePrivateEndpointRequestDeclaredRegion?
+  public var declaredRegion: OpenRouterUpdatePrivateEndpointRequest.DeclaredRegion?
   public var declaredZdr: Bool?
   public var upstreamModelId: String
 
   public init(
     upstreamModelId: String,
     baseUrl: String? = nil,
-    declaredRegion: OpenRouterUpdatePrivateEndpointRequestDeclaredRegion? = nil,
+    declaredRegion: OpenRouterUpdatePrivateEndpointRequest.DeclaredRegion? = nil,
     declaredZdr: Bool? = nil
   ) {
     self.baseUrl = baseUrl
@@ -33,5 +33,13 @@ public struct OpenRouterUpdatePrivateEndpointRequest: Codable, Sendable {
     case declaredRegion = "declared_region"
     case declaredZdr = "declared_zdr"
     case upstreamModelId = "upstream_model_id"
+  }
+
+  public enum DeclaredRegion: String, Codable, Hashable,
+    Sendable
+  {
+    case global = "global"
+    case europe = "europe"
+    case us = "us"
   }
 }

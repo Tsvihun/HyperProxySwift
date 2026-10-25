@@ -21,7 +21,7 @@ public struct OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionSe
   public var speaker: String
   public var start: Double
   public var text: String
-  public var kind: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionSegmentKind
+  public var kind: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionSegment.Kind
 
   public init(
     contentIndex: Int,
@@ -32,7 +32,7 @@ public struct OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionSe
     speaker: String,
     start: Double,
     text: String,
-    kind: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionSegmentKind
+    kind: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionSegment.Kind
   ) {
     self.contentIndex = contentIndex
     self.end = end
@@ -55,5 +55,12 @@ public struct OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionSe
     case start
     case text
     case kind = "type"
+  }
+
+  public enum Kind: String,
+    Codable, Hashable, Sendable
+  {
+    case conversationItemInputAudioTranscriptionSegment =
+      "conversation.item.input_audio_transcription.segment"
   }
 }

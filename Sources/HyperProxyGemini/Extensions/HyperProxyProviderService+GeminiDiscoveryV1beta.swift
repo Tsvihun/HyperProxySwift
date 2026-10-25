@@ -126,28 +126,28 @@ extension HyperProxyProviderService where Operation == GeminiOperation {
     return try await prepared.decoded(GeminiCachedContent.self)
   }
 
-  public func generativelanguageCachedContentsDelete(
-    cachedContentsId: String,
+  public func cachedContentsDelete(
+    cacheId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> GeminiEmpty {
-    let call = self.call(.generativelanguageCachedContentsDelete)
-      .path("cachedContentsId", cachedContentsId)
+    let call = self.call(.cachedContentsDelete)
+      .path("cache_id", cacheId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(GeminiEmpty.self)
   }
 
-  public func generativelanguageCachedContentsGet(
-    cachedContentsId: String,
+  public func cachedContentsRetrieve(
+    cacheId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> GeminiCachedContent {
-    let call = self.call(.generativelanguageCachedContentsGet)
-      .path("cachedContentsId", cachedContentsId)
+    let call = self.call(.cachedContentsRetrieve)
+      .path("cache_id", cacheId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
@@ -166,15 +166,15 @@ extension HyperProxyProviderService where Operation == GeminiOperation {
     return try await call.decoded(GeminiListCachedContentsResponse.self)
   }
 
-  public func generativelanguageCachedContentsPatch(
+  public func cachedContentsUpdate(
     _ body: GeminiCachedContent,
-    cachedContentsId: String,
+    cacheId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> GeminiCachedContent {
-    let call = self.call(.generativelanguageCachedContentsPatch)
-      .path("cachedContentsId", cachedContentsId)
+    let call = self.call(.cachedContentsUpdate)
+      .path("cache_id", cacheId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
@@ -464,43 +464,43 @@ extension HyperProxyProviderService where Operation == GeminiOperation {
     return try await prepared.decoded(GeminiFileSearchStore.self)
   }
 
-  public func generativelanguageFileSearchStoresDelete(
-    fileSearchStoresId: String,
+  public func fileSearchStoresDelete(
+    storeId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> GeminiEmpty {
-    let call = self.call(.generativelanguageFileSearchStoresDelete)
-      .path("fileSearchStoresId", fileSearchStoresId)
+    let call = self.call(.fileSearchStoresDelete)
+      .path("store_id", storeId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(GeminiEmpty.self)
   }
 
-  public func generativelanguageFileSearchStoresGet(
-    fileSearchStoresId: String,
+  public func fileSearchStoresRetrieve(
+    storeId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> GeminiFileSearchStore {
-    let call = self.call(.generativelanguageFileSearchStoresGet)
-      .path("fileSearchStoresId", fileSearchStoresId)
+    let call = self.call(.fileSearchStoresRetrieve)
+      .path("store_id", storeId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(GeminiFileSearchStore.self)
   }
 
-  public func generativelanguageFileSearchStoresImportFile(
+  public func fileSearchStoresImportFile(
     _ body: GeminiImportFileRequest,
-    fileSearchStoresId: String,
+    storeId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> GeminiOperationModel {
-    let call = self.call(.generativelanguageFileSearchStoresImportFile)
-      .path("fileSearchStoresId", fileSearchStoresId)
+    let call = self.call(.fileSearchStoresImportFile)
+      .path("store_id", storeId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
@@ -598,28 +598,28 @@ extension HyperProxyProviderService where Operation == GeminiOperation {
     return try await call.decoded(GeminiOperationModel.self)
   }
 
-  public func generativelanguageFilesDelete(
-    filesId: String,
+  public func filesDelete(
+    fileId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> GeminiEmpty {
-    let call = self.call(.generativelanguageFilesDelete)
-      .path("filesId", filesId)
+    let call = self.call(.filesDelete)
+      .path("file_id", fileId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(GeminiEmpty.self)
   }
 
-  public func generativelanguageFilesGet(
-    filesId: String,
+  public func filesRetrieve(
+    fileId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> GeminiFile {
-    let call = self.call(.generativelanguageFilesGet)
-      .path("filesId", filesId)
+    let call = self.call(.filesRetrieve)
+      .path("file_id", fileId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
@@ -726,15 +726,15 @@ extension HyperProxyProviderService where Operation == GeminiOperation {
     return try await prepared.decoded(GeminiOperationModel.self)
   }
 
-  public func generativelanguageModelsBatchEmbedContents(
+  public func modelsBatchEmbedContents(
     _ body: GeminiBatchEmbedContentsRequest,
-    modelsId: String,
+    model: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> GeminiBatchEmbedContentsResponse {
-    let call = self.call(.generativelanguageModelsBatchEmbedContents)
-      .path("modelsId", modelsId)
+    let call = self.call(.modelsBatchEmbedContents)
+      .path("model", model)
       .query(query)
       .headers(headers)
       .timeout(timeout)
@@ -758,15 +758,15 @@ extension HyperProxyProviderService where Operation == GeminiOperation {
     return try await prepared.decoded(GeminiBatchEmbedTextResponse.self)
   }
 
-  public func generativelanguageModelsBatchGenerateContent(
+  public func modelsBatchGenerateContent(
     _ body: GeminiBatchGenerateContentRequest,
-    modelsId: String,
+    model: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> GeminiOperationModel {
-    let call = self.call(.generativelanguageModelsBatchGenerateContent)
-      .path("modelsId", modelsId)
+    let call = self.call(.modelsBatchGenerateContent)
+      .path("model", model)
       .query(query)
       .headers(headers)
       .timeout(timeout)
@@ -806,15 +806,15 @@ extension HyperProxyProviderService where Operation == GeminiOperation {
     return try await prepared.decoded(GeminiCountTextTokensResponse.self)
   }
 
-  public func generativelanguageModelsCountTokens(
+  public func modelsCountTokens(
     _ body: GeminiCountTokensRequest,
-    modelsId: String,
+    model: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> GeminiCountTokensResponse {
-    let call = self.call(.generativelanguageModelsCountTokens)
-      .path("modelsId", modelsId)
+    let call = self.call(.modelsCountTokens)
+      .path("model", model)
       .query(query)
       .headers(headers)
       .timeout(timeout)
@@ -822,15 +822,15 @@ extension HyperProxyProviderService where Operation == GeminiOperation {
     return try await prepared.decoded(GeminiCountTokensResponse.self)
   }
 
-  public func generativelanguageModelsEmbedContent(
+  public func modelsEmbedContent(
     _ body: GeminiEmbedContentRequest,
-    modelsId: String,
+    model: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> GeminiEmbedContentResponse {
-    let call = self.call(.generativelanguageModelsEmbedContent)
-      .path("modelsId", modelsId)
+    let call = self.call(.modelsEmbedContent)
+      .path("model", model)
       .query(query)
       .headers(headers)
       .timeout(timeout)
@@ -870,15 +870,15 @@ extension HyperProxyProviderService where Operation == GeminiOperation {
     return try await prepared.decoded(GeminiGenerateAnswerResponse.self)
   }
 
-  public func generativelanguageModelsGenerateContent(
+  public func modelsGenerateContent(
     _ body: GeminiGenerateContentRequest,
-    modelsId: String,
+    model: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> GeminiGenerateContentResponse {
-    let call = self.call(.generativelanguageModelsGenerateContent)
-      .path("modelsId", modelsId)
+    let call = self.call(.modelsGenerateContent)
+      .path("model", model)
       .query(query)
       .headers(headers)
       .timeout(timeout)
@@ -918,14 +918,14 @@ extension HyperProxyProviderService where Operation == GeminiOperation {
     return try await prepared.decoded(GeminiGenerateTextResponse.self)
   }
 
-  public func generativelanguageModelsGet(
-    modelsId: String,
+  public func modelsRetrieve(
+    model: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> GeminiModel {
-    let call = self.call(.generativelanguageModelsGet)
-      .path("modelsId", modelsId)
+    let call = self.call(.modelsRetrieve)
+      .path("model", model)
       .query(query)
       .headers(headers)
       .timeout(timeout)
@@ -944,15 +944,15 @@ extension HyperProxyProviderService where Operation == GeminiOperation {
     return try await call.decoded(GeminiListModelsResponse.self)
   }
 
-  public func generativelanguageModelsPredict(
+  public func modelsPredict(
     _ body: GeminiPredictRequest,
-    modelsId: String,
+    model: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> GeminiPredictResponse {
-    let call = self.call(.generativelanguageModelsPredict)
-      .path("modelsId", modelsId)
+    let call = self.call(.modelsPredict)
+      .path("model", model)
       .query(query)
       .headers(headers)
       .timeout(timeout)
@@ -960,15 +960,15 @@ extension HyperProxyProviderService where Operation == GeminiOperation {
     return try await prepared.decoded(GeminiPredictResponse.self)
   }
 
-  public func generativelanguageModelsPredictLongRunning(
+  public func modelsPredictLongRunning(
     _ body: GeminiPredictLongRunningRequest,
-    modelsId: String,
+    model: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> GeminiOperationModel {
-    let call = self.call(.generativelanguageModelsPredictLongRunning)
-      .path("modelsId", modelsId)
+    let call = self.call(.modelsPredictLongRunning)
+      .path("model", model)
       .query(query)
       .headers(headers)
       .timeout(timeout)

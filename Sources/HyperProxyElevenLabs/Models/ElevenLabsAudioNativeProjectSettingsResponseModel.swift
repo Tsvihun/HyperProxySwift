@@ -18,7 +18,7 @@ public struct ElevenLabsAudioNativeProjectSettingsResponseModel: Codable, Sendab
   public var image: String
   public var sessionization: Int
   public var small: Bool
-  public var status: ElevenLabsAudioNativeProjectSettingsResponseModelStatus?
+  public var status: ElevenLabsAudioNativeProjectSettingsResponseModel.Status?
   public var textColor: String
   public var title: String
 
@@ -32,7 +32,7 @@ public struct ElevenLabsAudioNativeProjectSettingsResponseModel: Codable, Sendab
     title: String,
     audioPath: String? = nil,
     audioUrl: String? = nil,
-    status: ElevenLabsAudioNativeProjectSettingsResponseModelStatus? = nil
+    status: ElevenLabsAudioNativeProjectSettingsResponseModel.Status? = nil
   ) {
     self.audioPath = audioPath
     self.audioUrl = audioUrl
@@ -57,5 +57,12 @@ public struct ElevenLabsAudioNativeProjectSettingsResponseModel: Codable, Sendab
     case status
     case textColor = "text_color"
     case title
+  }
+
+  public enum Status: String, Codable, Hashable,
+    Sendable
+  {
+    case processing = "processing"
+    case ready = "ready"
   }
 }

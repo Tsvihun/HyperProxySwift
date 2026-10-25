@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct MistralWorkflowExecutionTraceEventsResponse: Codable, Sendable {
   public var deploymentName: String?
   public var endTime: String?
-  public var events: [MistralWorkflowExecutionTraceEventsResponseEventsItem]?
+  public var events: [MistralWorkflowExecutionTraceEventsResponse.EventsElement]?
   public var executionId: String
   public var parentExecutionId: String?
   public var result: HyperProxyJSONValue?
@@ -36,7 +36,7 @@ public struct MistralWorkflowExecutionTraceEventsResponse: Codable, Sendable {
     status: MistralWorkflowExecutionStatus?,
     workflowName: String,
     deploymentName: String? = nil,
-    events: [MistralWorkflowExecutionTraceEventsResponseEventsItem]? = nil,
+    events: [MistralWorkflowExecutionTraceEventsResponse.EventsElement]? = nil,
     parentExecutionId: String? = nil,
     runId: String? = nil,
     searchKeys: [String: String?]? = nil,
@@ -77,5 +77,30 @@ public struct MistralWorkflowExecutionTraceEventsResponse: Codable, Sendable {
     case userId = "user_id"
     case workflowId = "workflow_id"
     case workflowName = "workflow_name"
+  }
+
+  public enum EventsElement: Codable, Sendable {
+    case workflowExecutionTraceEvent(MistralWorkflowExecutionTraceEvent)
+    case workflowExecutionProgressTraceEvent(MistralWorkflowExecutionProgressTraceEvent)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(MistralWorkflowExecutionTraceEvent.self) {
+        self = .workflowExecutionTraceEvent(value)
+        return
+      }
+      self = .workflowExecutionProgressTraceEvent(
+        try container.decode(MistralWorkflowExecutionProgressTraceEvent.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .workflowExecutionTraceEvent(let value):
+        try container.encode(value)
+      case .workflowExecutionProgressTraceEvent(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

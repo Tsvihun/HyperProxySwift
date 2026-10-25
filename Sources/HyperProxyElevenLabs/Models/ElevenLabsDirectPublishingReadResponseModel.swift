@@ -21,14 +21,14 @@ public struct ElevenLabsDirectPublishingReadResponseModel: Codable, Sendable {
   public var contributors: [ElevenLabsContributor]?
   public var copyright: String?
   public var createdAtUnix: Int
-  public var currency: ElevenLabsDirectPublishingReadResponseModelCurrency?
+  public var currency: ElevenLabsDirectPublishingReadResponseModel.Currency?
   public var description: String?
-  public var displayMode: ElevenLabsDirectPublishingReadResponseModelDisplayMode?
+  public var displayMode: ElevenLabsDirectPublishingReadResponseModel.DisplayMode?
   public var distributionTerritories: [String]?
   public var ean: String?
   public var edition: String?
   public var fiction: String?
-  public var genre: [ElevenLabsDirectPublishingReadResponseModelGenreAnyOf1Item]?
+  public var genre: [ElevenLabsDirectPublishingReadResponseModelGenreItem]?
   public var isVoiceChangerOn: Bool?
   public var isbn: String?
   public var language: String?
@@ -41,7 +41,7 @@ public struct ElevenLabsDirectPublishingReadResponseModel: Codable, Sendable {
   public var originalAudioDocumentId: String?
   public var originalAudioProjectExportId: String?
   public var originalFileType: String?
-  public var payoutType: ElevenLabsDirectPublishingReadResponseModelPayoutType?
+  public var payoutType: ElevenLabsDirectPublishingReadResponseModel.PayoutType?
   public var previewAudioObject: ElevenLabsPreviewAudioDBModel?
   public var publicationDate: String?
   public var publishedAtUnix: Int?
@@ -58,7 +58,7 @@ public struct ElevenLabsDirectPublishingReadResponseModel: Codable, Sendable {
   public var sampleConfig: ElevenLabsSampleConfigDBModel?
   public var seriesId: String?
   public var subtitle: String?
-  public var targetAudience: ElevenLabsDirectPublishingReadResponseModelTargetAudience?
+  public var targetAudience: ElevenLabsDirectPublishingReadResponseModel.TargetAudience?
   public var title: String?
   public var updatedAtUnix: Int
   public var voiceId: String?
@@ -79,14 +79,14 @@ public struct ElevenLabsDirectPublishingReadResponseModel: Codable, Sendable {
     contentType: String? = nil,
     contributors: [ElevenLabsContributor]? = nil,
     copyright: String? = nil,
-    currency: ElevenLabsDirectPublishingReadResponseModelCurrency? = nil,
+    currency: ElevenLabsDirectPublishingReadResponseModel.Currency? = nil,
     description: String? = nil,
-    displayMode: ElevenLabsDirectPublishingReadResponseModelDisplayMode? = nil,
+    displayMode: ElevenLabsDirectPublishingReadResponseModel.DisplayMode? = nil,
     distributionTerritories: [String]? = nil,
     ean: String? = nil,
     edition: String? = nil,
     fiction: String? = nil,
-    genre: [ElevenLabsDirectPublishingReadResponseModelGenreAnyOf1Item]? = nil,
+    genre: [ElevenLabsDirectPublishingReadResponseModelGenreItem]? = nil,
     isVoiceChangerOn: Bool? = nil,
     isbn: String? = nil,
     language: String? = nil,
@@ -99,7 +99,7 @@ public struct ElevenLabsDirectPublishingReadResponseModel: Codable, Sendable {
     originalAudioDocumentId: String? = nil,
     originalAudioProjectExportId: String? = nil,
     originalFileType: String? = nil,
-    payoutType: ElevenLabsDirectPublishingReadResponseModelPayoutType? = nil,
+    payoutType: ElevenLabsDirectPublishingReadResponseModel.PayoutType? = nil,
     previewAudioObject: ElevenLabsPreviewAudioDBModel? = nil,
     publicationDate: String? = nil,
     publishedAtUnix: Int? = nil,
@@ -115,7 +115,7 @@ public struct ElevenLabsDirectPublishingReadResponseModel: Codable, Sendable {
     sampleConfig: ElevenLabsSampleConfigDBModel? = nil,
     seriesId: String? = nil,
     subtitle: String? = nil,
-    targetAudience: ElevenLabsDirectPublishingReadResponseModelTargetAudience? = nil,
+    targetAudience: ElevenLabsDirectPublishingReadResponseModel.TargetAudience? = nil,
     title: String? = nil,
     voiceId: String? = nil,
     volume: Int? = nil
@@ -229,5 +229,34 @@ public struct ElevenLabsDirectPublishingReadResponseModel: Codable, Sendable {
     case voiceId = "voice_id"
     case volume
     case wordCount = "word_count"
+  }
+
+  public enum Currency: String, Codable, Hashable, Sendable {
+    case usd = "usd"
+  }
+
+  public enum DisplayMode: String, Codable, Hashable,
+    Sendable
+  {
+    case text = "text"
+    case audioOnly = "audio-only"
+    case textWithAudio = "text-with-audio"
+  }
+
+  public enum PayoutType: String, Codable, Hashable,
+    Sendable
+  {
+    case none = "none"
+    case engagementBased = "engagement_based"
+    case fixedPayout = "fixed_payout"
+  }
+
+  public enum TargetAudience: String, Codable, Hashable,
+    Sendable
+  {
+    case children = "children"
+    case youngAdult = "young adult"
+    case adult = "adult"
+    case allAges = "all ages"
   }
 }

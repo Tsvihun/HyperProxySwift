@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaMemoryTool20250818InsertCommand: Codable, Sendable {
-  public var command: AnthropicInsertCommand
+  public var command: AnthropicBetaMemoryTool20250818InsertCommand.Command
   public var insertLine: Int
   public var insertText: String
   public var path: String
@@ -20,7 +20,7 @@ public struct AnthropicBetaMemoryTool20250818InsertCommand: Codable, Sendable {
     insertLine: Int,
     insertText: String,
     path: String,
-    command: AnthropicInsertCommand = .insert
+    command: AnthropicBetaMemoryTool20250818InsertCommand.Command = .insert
   ) {
     self.command = command
     self.insertLine = insertLine
@@ -33,5 +33,9 @@ public struct AnthropicBetaMemoryTool20250818InsertCommand: Codable, Sendable {
     case insertLine = "insert_line"
     case insertText = "insert_text"
     case path
+  }
+
+  public enum Command: String, Codable, Hashable, Sendable {
+    case insert = "insert"
   }
 }

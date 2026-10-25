@@ -17,7 +17,7 @@ public struct ElevenLabsTransferToNumberResultTwilioSuccessModel: Codable, Senda
   public var note: String?
   public var postDialDigits: String?
   public var reason: String?
-  public var resultType: ElevenLabsTransferToNumberTwilioSuccessResultType?
+  public var resultType: ElevenLabsTransferToNumberResultTwilioSuccessModel.ResultType?
   public var status: ElevenLabsSuccessStatus?
   public var transferNumber: String
 
@@ -29,7 +29,7 @@ public struct ElevenLabsTransferToNumberResultTwilioSuccessModel: Codable, Senda
     note: String? = nil,
     postDialDigits: String? = nil,
     reason: String? = nil,
-    resultType: ElevenLabsTransferToNumberTwilioSuccessResultType? = nil,
+    resultType: ElevenLabsTransferToNumberResultTwilioSuccessModel.ResultType? = nil,
     status: ElevenLabsSuccessStatus? = nil
   ) {
     self.agentMessage = agentMessage
@@ -53,5 +53,9 @@ public struct ElevenLabsTransferToNumberResultTwilioSuccessModel: Codable, Senda
     case resultType = "result_type"
     case status
     case transferNumber = "transfer_number"
+  }
+
+  public enum ResultType: String, Codable, Hashable, Sendable {
+    case transferToNumberTwilioSuccess = "transfer_to_number_twilio_success"
   }
 }

@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public enum TogetherGPUClusterCreateRequestCommonGpuType: String, Codable, Hashable, Sendable {
-  case h100SXM = "H100_SXM"
-  case h200SXM = "H200_SXM"
-  case rTX6000PCI = "RTX_6000_PCI"
-  case l40PCIE = "L40_PCIE"
-  case b200SXM = "B200_SXM"
-  case h100SXMINF = "H100_SXM_INF"
-  case b300SXM = "B300_SXM"
+  case h100Sxm = "H100_SXM"
+  case h200Sxm = "H200_SXM"
+  case rtx6000Pci = "RTX_6000_PCI"
+  case l40Pcie = "L40_PCIE"
+  case b200Sxm = "B200_SXM"
+  case h100SxmInf = "H100_SXM_INF"
+  case b300Sxm = "B300_SXM"
 }

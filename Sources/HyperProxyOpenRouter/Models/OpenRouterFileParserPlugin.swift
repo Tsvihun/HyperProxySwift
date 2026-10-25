@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenRouterFileParserPlugin: Codable, Sendable {
   public var enabled: Bool?
-  public var id: OpenRouterFileParserPluginId
+  public var id: OpenRouterFileParserPlugin.Id
   public var pdf: OpenRouterPDFParserOptions?
 
   public init(
-    id: OpenRouterFileParserPluginId,
+    id: OpenRouterFileParserPlugin.Id,
     enabled: Bool? = nil,
     pdf: OpenRouterPDFParserOptions? = nil
   ) {
@@ -29,5 +29,9 @@ public struct OpenRouterFileParserPlugin: Codable, Sendable {
     case enabled
     case id
     case pdf
+  }
+
+  public enum Id: String, Codable, Hashable, Sendable {
+    case fileParser = "file-parser"
   }
 }

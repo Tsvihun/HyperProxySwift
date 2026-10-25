@@ -11,15 +11,22 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherQueueCancelResponse: Codable, Sendable {
-  public var status: TogetherQueueCancelResponseStatus
+  public var status: TogetherQueueCancelResponse.Status
 
   public init(
-    status: TogetherQueueCancelResponseStatus
+    status: TogetherQueueCancelResponse.Status
   ) {
     self.status = status
   }
 
   enum CodingKeys: String, CodingKey {
     case status
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case canceled = "canceled"
+    case running = "running"
+    case done = "done"
+    case failed = "failed"
   }
 }

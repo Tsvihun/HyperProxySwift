@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaErrorResponse: Codable, Sendable {
-  public var error: AnthropicBetaErrorResponseError
+  public var error: AnthropicBetaErrorResponse.ErrorValue
   public var requestId: String?
   public var kind: AnthropicErrorKind
 
   public init(
-    error: AnthropicBetaErrorResponseError,
+    error: AnthropicBetaErrorResponse.ErrorValue,
     requestId: String?,
     kind: AnthropicErrorKind = .error
   ) {
@@ -29,5 +29,78 @@ public struct AnthropicBetaErrorResponse: Codable, Sendable {
     case error
     case requestId = "request_id"
     case kind = "type"
+  }
+
+  public enum ErrorValue: Codable, Sendable {
+    case betaInvalidRequestError(AnthropicBetaInvalidRequestError)
+    case betaAuthenticationError(AnthropicBetaAuthenticationError)
+    case betaBillingError(AnthropicBetaBillingError)
+    case betaPermissionError(AnthropicBetaPermissionError)
+    case betaNotFoundError(AnthropicBetaNotFoundError)
+    case betaRateLimitError(AnthropicBetaRateLimitError)
+    case betaGatewayTimeoutError(AnthropicBetaGatewayTimeoutError)
+    case betaAPIError(AnthropicBetaAPIError)
+    case betaOverloadedError(AnthropicBetaOverloadedError)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(AnthropicBetaInvalidRequestError.self) {
+        self = .betaInvalidRequestError(value)
+        return
+      }
+      if let value = try? container.decode(AnthropicBetaAuthenticationError.self) {
+        self = .betaAuthenticationError(value)
+        return
+      }
+      if let value = try? container.decode(AnthropicBetaBillingError.self) {
+        self = .betaBillingError(value)
+        return
+      }
+      if let value = try? container.decode(AnthropicBetaPermissionError.self) {
+        self = .betaPermissionError(value)
+        return
+      }
+      if let value = try? container.decode(AnthropicBetaNotFoundError.self) {
+        self = .betaNotFoundError(value)
+        return
+      }
+      if let value = try? container.decode(AnthropicBetaRateLimitError.self) {
+        self = .betaRateLimitError(value)
+        return
+      }
+      if let value = try? container.decode(AnthropicBetaGatewayTimeoutError.self) {
+        self = .betaGatewayTimeoutError(value)
+        return
+      }
+      if let value = try? container.decode(AnthropicBetaAPIError.self) {
+        self = .betaAPIError(value)
+        return
+      }
+      self = .betaOverloadedError(try container.decode(AnthropicBetaOverloadedError.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .betaInvalidRequestError(let value):
+        try container.encode(value)
+      case .betaAuthenticationError(let value):
+        try container.encode(value)
+      case .betaBillingError(let value):
+        try container.encode(value)
+      case .betaPermissionError(let value):
+        try container.encode(value)
+      case .betaNotFoundError(let value):
+        try container.encode(value)
+      case .betaRateLimitError(let value):
+        try container.encode(value)
+      case .betaGatewayTimeoutError(let value):
+        try container.encode(value)
+      case .betaAPIError(let value):
+        try container.encode(value)
+      case .betaOverloadedError(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

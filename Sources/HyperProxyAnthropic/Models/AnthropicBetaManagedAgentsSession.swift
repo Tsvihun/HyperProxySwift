@@ -24,7 +24,7 @@ public struct AnthropicBetaManagedAgentsSession: Codable, Sendable {
   public var stats: AnthropicBetaManagedAgentsSessionStats
   public var status: AnthropicBetaManagedAgentsSessionStatus
   public var title: String?
-  public var kind: AnthropicBetaManagedAgentsSessionKind
+  public var kind: AnthropicBetaManagedAgentsSession.Kind
   public var updatedAt: AnthropicBetaTimestamp
   public var usage: AnthropicBetaManagedAgentsSessionUsage
   public var vaultIds: [String]
@@ -42,7 +42,7 @@ public struct AnthropicBetaManagedAgentsSession: Codable, Sendable {
     stats: AnthropicBetaManagedAgentsSessionStats,
     status: AnthropicBetaManagedAgentsSessionStatus,
     title: String?,
-    kind: AnthropicBetaManagedAgentsSessionKind,
+    kind: AnthropicBetaManagedAgentsSession.Kind,
     updatedAt: AnthropicBetaTimestamp,
     usage: AnthropicBetaManagedAgentsSessionUsage,
     vaultIds: [String],
@@ -85,5 +85,9 @@ public struct AnthropicBetaManagedAgentsSession: Codable, Sendable {
     case updatedAt = "updated_at"
     case usage
     case vaultIds = "vault_ids"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case session = "session"
   }
 }

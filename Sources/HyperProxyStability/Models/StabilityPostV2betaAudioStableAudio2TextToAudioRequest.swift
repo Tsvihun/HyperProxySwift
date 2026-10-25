@@ -13,8 +13,8 @@ import HyperProxyCore
 public struct StabilityPostV2betaAudioStableAudio2TextToAudioRequest: Codable, Sendable {
   public var cfgScale: Double?
   public var duration: Double?
-  public var model: StabilityPostV2betaAudioStableAudio2TextToAudioRequestModel?
-  public var outputFormat: StabilityPostV2betaAudioStableAudio2TextToAudioRequestOutputFormat?
+  public var model: StabilityPostV2betaAudioStableAudio2TextToAudioRequest.Model?
+  public var outputFormat: StabilityPostV2betaAudioStableAudio2TextToAudioRequest.OutputFormat?
   public var prompt: String
   public var seed: Double?
   public var steps: Int?
@@ -23,8 +23,8 @@ public struct StabilityPostV2betaAudioStableAudio2TextToAudioRequest: Codable, S
     prompt: String,
     cfgScale: Double? = nil,
     duration: Double? = nil,
-    model: StabilityPostV2betaAudioStableAudio2TextToAudioRequestModel? = nil,
-    outputFormat: StabilityPostV2betaAudioStableAudio2TextToAudioRequestOutputFormat? = nil,
+    model: StabilityPostV2betaAudioStableAudio2TextToAudioRequest.Model? = nil,
+    outputFormat: StabilityPostV2betaAudioStableAudio2TextToAudioRequest.OutputFormat? = nil,
     seed: Double? = nil,
     steps: Int? = nil
   ) {
@@ -45,5 +45,19 @@ public struct StabilityPostV2betaAudioStableAudio2TextToAudioRequest: Codable, S
     case prompt
     case seed
     case steps
+  }
+
+  public enum Model: String, Codable, Hashable,
+    Sendable
+  {
+    case stableAudio2_5 = "stable-audio-2.5"
+    case stableAudio2 = "stable-audio-2"
+  }
+
+  public enum OutputFormat: String, Codable,
+    Hashable, Sendable
+  {
+    case mp3 = "mp3"
+    case wav = "wav"
   }
 }

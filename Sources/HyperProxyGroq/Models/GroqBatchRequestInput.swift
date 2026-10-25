@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct GroqBatchRequestInput: Codable, Sendable {
   public var customId: String?
-  public var method: GroqBatchRequestInputMethod?
+  public var method: GroqBatchRequestInput.Method?
   public var url: String?
 
   public init(
     customId: String? = nil,
-    method: GroqBatchRequestInputMethod? = nil,
+    method: GroqBatchRequestInput.Method? = nil,
     url: String? = nil
   ) {
     self.customId = customId
@@ -29,5 +29,9 @@ public struct GroqBatchRequestInput: Codable, Sendable {
     case customId = "custom_id"
     case method
     case url
+  }
+
+  public enum Method: String, Codable, Hashable, Sendable {
+    case post = "POST"
   }
 }

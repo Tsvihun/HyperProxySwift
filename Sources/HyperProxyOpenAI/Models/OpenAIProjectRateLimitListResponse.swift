@@ -15,12 +15,12 @@ public struct OpenAIProjectRateLimitListResponse: Codable, Sendable {
   public var firstId: String?
   public var hasMore: Bool
   public var lastId: String?
-  public var object: OpenAIProjectRateLimitListResponseObject
+  public var object: OpenAIProjectRateLimitListResponse.Object
 
   public init(
     data: [OpenAIProjectRateLimit],
     hasMore: Bool,
-    object: OpenAIProjectRateLimitListResponseObject,
+    object: OpenAIProjectRateLimitListResponse.Object,
     firstId: String? = nil,
     lastId: String? = nil
   ) {
@@ -37,5 +37,9 @@ public struct OpenAIProjectRateLimitListResponse: Codable, Sendable {
     case hasMore = "has_more"
     case lastId = "last_id"
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case list = "list"
   }
 }

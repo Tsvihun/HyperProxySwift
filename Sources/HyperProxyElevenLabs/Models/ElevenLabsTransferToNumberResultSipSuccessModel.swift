@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsTransferToNumberResultSipSuccessModel: Codable, Sendable {
   public var note: String?
   public var reason: String?
-  public var resultType: ElevenLabsTransferToNumberSipSuccessResultType?
+  public var resultType: ElevenLabsTransferToNumberResultSipSuccessModel.ResultType?
   public var status: ElevenLabsSuccessStatus?
   public var transferNumber: String
 
@@ -21,7 +21,7 @@ public struct ElevenLabsTransferToNumberResultSipSuccessModel: Codable, Sendable
     transferNumber: String,
     note: String? = nil,
     reason: String? = nil,
-    resultType: ElevenLabsTransferToNumberSipSuccessResultType? = nil,
+    resultType: ElevenLabsTransferToNumberResultSipSuccessModel.ResultType? = nil,
     status: ElevenLabsSuccessStatus? = nil
   ) {
     self.note = note
@@ -37,5 +37,9 @@ public struct ElevenLabsTransferToNumberResultSipSuccessModel: Codable, Sendable
     case resultType = "result_type"
     case status
     case transferNumber = "transfer_number"
+  }
+
+  public enum ResultType: String, Codable, Hashable, Sendable {
+    case transferToNumberSipSuccess = "transfer_to_number_sip_success"
   }
 }

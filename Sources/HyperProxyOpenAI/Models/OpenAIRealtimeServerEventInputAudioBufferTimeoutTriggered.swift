@@ -15,14 +15,14 @@ public struct OpenAIRealtimeServerEventInputAudioBufferTimeoutTriggered: Codable
   public var audioStartMs: Int
   public var eventId: String
   public var itemId: String
-  public var kind: OpenAIRealtimeServerEventInputAudioBufferTimeoutTriggeredKind
+  public var kind: OpenAIRealtimeServerEventInputAudioBufferTimeoutTriggered.Kind
 
   public init(
     audioEndMs: Int,
     audioStartMs: Int,
     eventId: String,
     itemId: String,
-    kind: OpenAIRealtimeServerEventInputAudioBufferTimeoutTriggeredKind
+    kind: OpenAIRealtimeServerEventInputAudioBufferTimeoutTriggered.Kind
   ) {
     self.audioEndMs = audioEndMs
     self.audioStartMs = audioStartMs
@@ -37,5 +37,11 @@ public struct OpenAIRealtimeServerEventInputAudioBufferTimeoutTriggered: Codable
     case eventId = "event_id"
     case itemId = "item_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case inputAudioBufferTimeoutTriggered = "input_audio_buffer.timeout_triggered"
   }
 }

@@ -16,7 +16,7 @@ public struct AnthropicBetaUser: Codable, Sendable {
   public var id: String
   public var name: String
   public var role: AnthropicBetaOrganizationRoleSchema
-  public var kind: AnthropicUserKind
+  public var kind: AnthropicBetaUser.Kind
 
   public init(
     addedAt: String,
@@ -24,7 +24,7 @@ public struct AnthropicBetaUser: Codable, Sendable {
     id: String,
     name: String,
     role: AnthropicBetaOrganizationRoleSchema,
-    kind: AnthropicUserKind = .user
+    kind: AnthropicBetaUser.Kind = .user
   ) {
     self.addedAt = addedAt
     self.email = email
@@ -41,5 +41,9 @@ public struct AnthropicBetaUser: Codable, Sendable {
     case name
     case role
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case user = "user"
   }
 }

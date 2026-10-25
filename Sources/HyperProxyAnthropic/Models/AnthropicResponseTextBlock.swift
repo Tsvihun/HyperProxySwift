@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicResponseTextBlock: Codable, Sendable {
-  public var citations: [AnthropicResponseTextBlockCitationsAnyOf1Item]?
+  public var citations: [AnthropicResponseTextBlockCitationsItem]?
   public var text: String
   public var kind: AnthropicTextKind
 
   public init(
-    citations: [AnthropicResponseTextBlockCitationsAnyOf1Item]?,
+    citations: [AnthropicResponseTextBlockCitationsItem]?,
     text: String,
     kind: AnthropicTextKind = .text
   ) {

@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct AnthropicBetaManagedAgentsEventDeltaEventContentDelta: Codable, Sendable {
   public var content: AnthropicBetaManagedAgentsTextBlock
   public var index: Int?
-  public var kind: AnthropicBetaManagedAgentsEventDeltaEventContentDeltaKind
+  public var kind: AnthropicBetaManagedAgentsEventDeltaEventContentDelta.Kind
 
   public init(
     content: AnthropicBetaManagedAgentsTextBlock,
-    kind: AnthropicBetaManagedAgentsEventDeltaEventContentDeltaKind,
+    kind: AnthropicBetaManagedAgentsEventDeltaEventContentDelta.Kind,
     index: Int? = nil
   ) {
     self.content = content
@@ -29,5 +29,11 @@ public struct AnthropicBetaManagedAgentsEventDeltaEventContentDelta: Codable, Se
     case content
     case index
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case contentDelta = "content_delta"
   }
 }

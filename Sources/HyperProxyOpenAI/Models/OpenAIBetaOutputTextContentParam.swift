@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIBetaOutputTextContentParam: Codable, Sendable {
-  public var annotations: [OpenAIBetaOutputTextContentParamAnnotationsItem]?
+  public var annotations: [OpenAIBetaOutputTextContentParam.AnnotationsElement]?
   public var text: String
-  public var kind: OpenAIBetaOutputTextContentParamKind
+  public var kind: OpenAIBetaOutputTextContentParam.Kind
 
   public init(
     text: String,
-    kind: OpenAIBetaOutputTextContentParamKind,
-    annotations: [OpenAIBetaOutputTextContentParamAnnotationsItem]? = nil
+    kind: OpenAIBetaOutputTextContentParam.Kind,
+    annotations: [OpenAIBetaOutputTextContentParam.AnnotationsElement]? = nil
   ) {
     self.annotations = annotations
     self.text = text
@@ -29,5 +29,41 @@ public struct OpenAIBetaOutputTextContentParam: Codable, Sendable {
     case annotations
     case text
     case kind = "type"
+  }
+
+  public enum AnnotationsElement: Codable, Sendable {
+    case betaFileCitationParam(OpenAIBetaFileCitationParam)
+    case betaUrlCitationParam(OpenAIBetaUrlCitationParam)
+    case betaContainerFileCitationParam(OpenAIBetaContainerFileCitationParam)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenAIBetaFileCitationParam.self) {
+        self = .betaFileCitationParam(value)
+        return
+      }
+      if let value = try? container.decode(OpenAIBetaUrlCitationParam.self) {
+        self = .betaUrlCitationParam(value)
+        return
+      }
+      self = .betaContainerFileCitationParam(
+        try container.decode(OpenAIBetaContainerFileCitationParam.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .betaFileCitationParam(let value):
+        try container.encode(value)
+      case .betaUrlCitationParam(let value):
+        try container.encode(value)
+      case .betaContainerFileCitationParam(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case outputText = "output_text"
   }
 }

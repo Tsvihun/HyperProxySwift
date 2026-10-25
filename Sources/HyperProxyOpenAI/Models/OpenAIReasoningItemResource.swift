@@ -15,14 +15,14 @@ public struct OpenAIReasoningItemResource: Codable, Sendable {
   public var status: OpenAIOutputItemStatusResource?
   public var summary: [OpenAISummaryTextResource]
   public var turnId: String
-  public var kind: OpenAIReasoningItemResourceKind
+  public var kind: OpenAIReasoningItemResource.Kind
 
   public init(
     id: String,
     status: OpenAIOutputItemStatusResource?,
     summary: [OpenAISummaryTextResource],
     turnId: String,
-    kind: OpenAIReasoningItemResourceKind
+    kind: OpenAIReasoningItemResource.Kind
   ) {
     self.id = id
     self.status = status
@@ -37,5 +37,9 @@ public struct OpenAIReasoningItemResource: Codable, Sendable {
     case summary
     case turnId = "turn_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case reasoning = "reasoning"
   }
 }

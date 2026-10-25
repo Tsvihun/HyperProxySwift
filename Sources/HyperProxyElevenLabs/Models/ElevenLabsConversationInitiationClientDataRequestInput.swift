@@ -18,6 +18,7 @@ public struct ElevenLabsConversationInitiationClientDataRequestInput: Codable, S
   public var environment: String?
   public var procedureIds: [String]?
   public var sourceInfo: ElevenLabsConversationInitiationSourceInfo?
+  public var startProcedureIds: [String]?
   public var startingWorkflowNodeId: String?
   public var userId: String?
 
@@ -29,6 +30,7 @@ public struct ElevenLabsConversationInitiationClientDataRequestInput: Codable, S
     environment: String? = nil,
     procedureIds: [String]? = nil,
     sourceInfo: ElevenLabsConversationInitiationSourceInfo? = nil,
+    startProcedureIds: [String]? = nil,
     startingWorkflowNodeId: String? = nil,
     userId: String? = nil
   ) {
@@ -39,6 +41,7 @@ public struct ElevenLabsConversationInitiationClientDataRequestInput: Codable, S
     self.environment = environment
     self.procedureIds = procedureIds
     self.sourceInfo = sourceInfo
+    self.startProcedureIds = startProcedureIds
     self.startingWorkflowNodeId = startingWorkflowNodeId
     self.userId = userId
   }
@@ -51,6 +54,7 @@ public struct ElevenLabsConversationInitiationClientDataRequestInput: Codable, S
     case environment
     case procedureIds = "procedure_ids"
     case sourceInfo = "source_info"
+    case startProcedureIds = "start_procedure_ids"
     case startingWorkflowNodeId = "starting_workflow_node_id"
     case userId = "user_id"
   }

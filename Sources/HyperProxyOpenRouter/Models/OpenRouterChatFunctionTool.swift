@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public enum OpenRouterChatFunctionTool: Codable, Sendable {
-  case chatFunctionToolAnyOf1(OpenRouterChatFunctionToolAnyOf1)
+  case function(OpenRouterChatFunctionTool.Function)
   case advisorServerToolOpenRouter(OpenRouterAdvisorServerToolOpenRouter)
   case bashServerTool(OpenRouterBashServerTool)
   case datetimeServerTool(OpenRouterDatetimeServerTool)
@@ -27,8 +27,8 @@ public enum OpenRouterChatFunctionTool: Codable, Sendable {
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(OpenRouterChatFunctionToolAnyOf1.self) {
-      self = .chatFunctionToolAnyOf1(value)
+    if let value = try? container.decode(OpenRouterChatFunctionTool.Function.self) {
+      self = .function(value)
       return
     }
     if let value = try? container.decode(OpenRouterAdvisorServerToolOpenRouter.self) {
@@ -81,7 +81,7 @@ public enum OpenRouterChatFunctionTool: Codable, Sendable {
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .chatFunctionToolAnyOf1(let value):
+    case .function(let value):
       try container.encode(value)
     case .advisorServerToolOpenRouter(let value):
       try container.encode(value)
@@ -107,6 +107,66 @@ public enum OpenRouterChatFunctionTool: Codable, Sendable {
       try container.encode(value)
     case .chatDynamicServerTool(let value):
       try container.encode(value)
+    }
+  }
+
+  public struct Function: Codable, Sendable {
+    public var cacheControl: OpenRouterChatContentCacheControl?
+    public var deferLoading: Bool?
+    public var function: OpenRouterChatFunctionTool.Function.FunctionValue
+    public var kind: OpenRouterChatFunctionTool.Function.Kind
+
+    public init(
+      function: OpenRouterChatFunctionTool.Function.FunctionValue,
+      kind: OpenRouterChatFunctionTool.Function.Kind,
+      cacheControl: OpenRouterChatContentCacheControl? = nil,
+      deferLoading: Bool? = nil
+    ) {
+      self.cacheControl = cacheControl
+      self.deferLoading = deferLoading
+      self.function = function
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case cacheControl = "cache_control"
+      case deferLoading = "defer_loading"
+      case function
+      case kind = "type"
+    }
+
+    public struct FunctionValue: Codable, Sendable {
+      public var deferLoading: Bool?
+      public var description: String?
+      public var name: String
+      public var parameters: [String: HyperProxyJSONValue]?
+      public var strict: Bool?
+
+      public init(
+        name: String,
+        deferLoading: Bool? = nil,
+        description: String? = nil,
+        parameters: [String: HyperProxyJSONValue]? = nil,
+        strict: Bool? = nil
+      ) {
+        self.deferLoading = deferLoading
+        self.description = description
+        self.name = name
+        self.parameters = parameters
+        self.strict = strict
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case deferLoading = "defer_loading"
+        case description
+        case name
+        case parameters
+        case strict
+      }
+    }
+
+    public enum Kind: String, Codable, Hashable, Sendable {
+      case function = "function"
     }
   }
 }

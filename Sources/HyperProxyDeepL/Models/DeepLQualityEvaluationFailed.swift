@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepLQualityEvaluationFailed: Codable, Sendable {
-  public var error: DeepLQualityEvaluationFailedError
+  public var error: DeepLQualityEvaluationFailed.ErrorValue
   public var jobId: String
-  public var status: DeepLQualityEvaluationFailedStatus
+  public var status: DeepLQualityEvaluationFailed.Status
 
   public init(
-    error: DeepLQualityEvaluationFailedError,
+    error: DeepLQualityEvaluationFailed.ErrorValue,
     jobId: String,
-    status: DeepLQualityEvaluationFailedStatus
+    status: DeepLQualityEvaluationFailed.Status
   ) {
     self.error = error
     self.jobId = jobId
@@ -29,5 +29,27 @@ public struct DeepLQualityEvaluationFailed: Codable, Sendable {
     case error
     case jobId = "job_id"
     case status
+  }
+
+  public struct ErrorValue: Codable, Sendable {
+    public var code: String
+    public var message: String
+
+    public init(
+      code: String,
+      message: String
+    ) {
+      self.code = code
+      self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case code
+      case message
+    }
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case error = "error"
   }
 }

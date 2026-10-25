@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct AnthropicBetaJwksExplicitUrl: Codable, Sendable {
   public var caCertPem: String?
-  public var kind: AnthropicExplicitUrlKind
+  public var kind: AnthropicBetaJwksExplicitUrl.Kind
   public var url: String
 
   public init(
     url: String,
-    kind: AnthropicExplicitUrlKind = .explicitUrl,
+    kind: AnthropicBetaJwksExplicitUrl.Kind = .explicitUrl,
     caCertPem: String? = nil
   ) {
     self.caCertPem = caCertPem
@@ -29,5 +29,9 @@ public struct AnthropicBetaJwksExplicitUrl: Codable, Sendable {
     case caCertPem = "ca_cert_pem"
     case kind = "type"
     case url
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case explicitUrl = "explicit_url"
   }
 }

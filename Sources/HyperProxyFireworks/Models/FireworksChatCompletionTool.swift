@@ -12,10 +12,10 @@ import HyperProxyCore
 
 public struct FireworksChatCompletionTool: Codable, Sendable {
   public var function: FireworksChatCompletionFunction?
-  public var kind: FireworksChatCompletionToolKind
+  public var kind: FireworksChatCompletionTool.Kind
 
   public init(
-    kind: FireworksChatCompletionToolKind,
+    kind: FireworksChatCompletionTool.Kind,
     function: FireworksChatCompletionFunction? = nil
   ) {
     self.function = function
@@ -25,5 +25,9 @@ public struct FireworksChatCompletionTool: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case function
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case function = "function"
   }
 }

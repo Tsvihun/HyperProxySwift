@@ -42,4 +42,18 @@ public struct MistralChatCompletionResponse: Codable, Sendable {
     case object
     case usage
   }
+
+  public struct ChatCompletionResponse: Codable, Sendable {
+    public var choices: [MistralChatCompletionChoice]
+
+    public init(
+      choices: [MistralChatCompletionChoice]
+    ) {
+      self.choices = choices
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case choices
+    }
+  }
 }

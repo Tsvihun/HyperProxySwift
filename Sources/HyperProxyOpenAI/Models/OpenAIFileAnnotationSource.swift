@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIFileAnnotationSource: Codable, Sendable {
   public var filename: String
-  public var kind: OpenAIFileAnnotationSourceKind
+  public var kind: OpenAIFileAnnotationSource.Kind
 
   public init(
     filename: String,
-    kind: OpenAIFileAnnotationSourceKind
+    kind: OpenAIFileAnnotationSource.Kind
   ) {
     self.filename = filename
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenAIFileAnnotationSource: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case filename
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case file = "file"
   }
 }

@@ -15,7 +15,7 @@ public struct OpenRouterBYOKKey: Codable, Sendable {
   public var allowedModels: [String]
   public var allowedUserIds: [String]
   public var createdAt: String
-  public var declaredRegion: OpenRouterBYOKKeyDeclaredRegion?
+  public var declaredRegion: OpenRouterBYOKKey.DeclaredRegion?
   public var declaredZdr: Bool
   public var disabled: Bool
   public var id: String
@@ -33,7 +33,7 @@ public struct OpenRouterBYOKKey: Codable, Sendable {
     allowedModels: [String],
     allowedUserIds: [String],
     createdAt: String,
-    declaredRegion: OpenRouterBYOKKeyDeclaredRegion?,
+    declaredRegion: OpenRouterBYOKKey.DeclaredRegion?,
     declaredZdr: Bool,
     disabled: Bool,
     id: String,
@@ -81,5 +81,11 @@ public struct OpenRouterBYOKKey: Codable, Sendable {
     case provider
     case sortOrder = "sort_order"
     case workspaceId = "workspace_id"
+  }
+
+  public enum DeclaredRegion: String, Codable, Hashable, Sendable {
+    case global = "global"
+    case europe = "europe"
+    case us = "us"
   }
 }

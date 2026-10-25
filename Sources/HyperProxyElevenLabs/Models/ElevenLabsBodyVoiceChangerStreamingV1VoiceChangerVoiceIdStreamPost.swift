@@ -14,7 +14,7 @@ public struct ElevenLabsBodyVoiceChangerStreamingV1VoiceChangerVoiceIdStreamPost
 {
   public var audio: String
   public var fileFormat:
-    ElevenLabsBodyVoiceChangerStreamingV1VoiceChangerVoiceIdStreamPostFileFormat?
+    ElevenLabsBodyVoiceChangerStreamingV1VoiceChangerVoiceIdStreamPost.FileFormat?
   public var modelId: String?
   public var removeBackgroundNoise: Bool?
   public var seed: Int?
@@ -22,7 +22,8 @@ public struct ElevenLabsBodyVoiceChangerStreamingV1VoiceChangerVoiceIdStreamPost
 
   public init(
     audio: String,
-    fileFormat: ElevenLabsBodyVoiceChangerStreamingV1VoiceChangerVoiceIdStreamPostFileFormat? = nil,
+    fileFormat: ElevenLabsBodyVoiceChangerStreamingV1VoiceChangerVoiceIdStreamPost.FileFormat? =
+      nil,
     modelId: String? = nil,
     removeBackgroundNoise: Bool? = nil,
     seed: Int? = nil,
@@ -43,5 +44,12 @@ public struct ElevenLabsBodyVoiceChangerStreamingV1VoiceChangerVoiceIdStreamPost
     case removeBackgroundNoise = "remove_background_noise"
     case seed
     case voiceSettings = "voice_settings"
+  }
+
+  public enum FileFormat: String,
+    Codable, Hashable, Sendable
+  {
+    case pcmS16le16 = "pcm_s16le_16"
+    case other = "other"
   }
 }

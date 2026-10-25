@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterSubmitGenerationFeedbackRequest: Codable, Sendable {
-  public var category: OpenRouterSubmitGenerationFeedbackRequestCategory
+  public var category: OpenRouterSubmitGenerationFeedbackRequest.Category
   public var comment: String?
   public var generationId: String
 
   public init(
-    category: OpenRouterSubmitGenerationFeedbackRequestCategory,
+    category: OpenRouterSubmitGenerationFeedbackRequest.Category,
     generationId: String,
     comment: String? = nil
   ) {
@@ -29,5 +29,15 @@ public struct OpenRouterSubmitGenerationFeedbackRequest: Codable, Sendable {
     case category
     case comment
     case generationId = "generation_id"
+  }
+
+  public enum Category: String, Codable, Hashable, Sendable {
+    case latency = "latency"
+    case incoherence = "incoherence"
+    case incorrectResponse = "incorrect_response"
+    case formatting = "formatting"
+    case billing = "billing"
+    case apiError = "api_error"
+    case other = "other"
   }
 }

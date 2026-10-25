@@ -15,9 +15,9 @@ public enum ElevenLabsCreateAuthConnectionResponse: Codable, Sendable {
   case refreshTokenAuthResponse(ElevenLabsRefreshTokenAuthResponse)
   case basicAuthResponse(ElevenLabsBasicAuthResponse)
   case bearerAuthResponse(ElevenLabsBearerAuthResponse)
-  case oAuth2JWTResponse(ElevenLabsOAuth2JWTResponse)
-  case privateKeyJWTResponse(ElevenLabsPrivateKeyJWTResponse)
-  case mTLSAuthResponse(ElevenLabsMTLSAuthResponse)
+  case oAuth2JwtResponse(ElevenLabsOAuth2JWTResponse)
+  case privateKeyJwtResponse(ElevenLabsPrivateKeyJWTResponse)
+  case mtlsAuthResponse(ElevenLabsMTLSAuthResponse)
   case customHeaderAuthResponse(ElevenLabsCustomHeaderAuthResponse)
   case apiIntegrationOAuth2AuthCodeResponse(ElevenLabsApiIntegrationOAuth2AuthCodeResponse)
   case apiIntegrationOAuth2CustomAppResponse(ElevenLabsApiIntegrationOAuth2CustomAppResponse)
@@ -44,15 +44,15 @@ public enum ElevenLabsCreateAuthConnectionResponse: Codable, Sendable {
       return
     }
     if let value = try? container.decode(ElevenLabsOAuth2JWTResponse.self) {
-      self = .oAuth2JWTResponse(value)
+      self = .oAuth2JwtResponse(value)
       return
     }
     if let value = try? container.decode(ElevenLabsPrivateKeyJWTResponse.self) {
-      self = .privateKeyJWTResponse(value)
+      self = .privateKeyJwtResponse(value)
       return
     }
     if let value = try? container.decode(ElevenLabsMTLSAuthResponse.self) {
-      self = .mTLSAuthResponse(value)
+      self = .mtlsAuthResponse(value)
       return
     }
     if let value = try? container.decode(ElevenLabsCustomHeaderAuthResponse.self) {
@@ -89,11 +89,11 @@ public enum ElevenLabsCreateAuthConnectionResponse: Codable, Sendable {
       try container.encode(value)
     case .bearerAuthResponse(let value):
       try container.encode(value)
-    case .oAuth2JWTResponse(let value):
+    case .oAuth2JwtResponse(let value):
       try container.encode(value)
-    case .privateKeyJWTResponse(let value):
+    case .privateKeyJwtResponse(let value):
       try container.encode(value)
-    case .mTLSAuthResponse(let value):
+    case .mtlsAuthResponse(let value):
       try container.encode(value)
     case .customHeaderAuthResponse(let value):
       try container.encode(value)

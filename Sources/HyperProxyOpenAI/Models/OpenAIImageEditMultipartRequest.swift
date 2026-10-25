@@ -18,34 +18,34 @@ import HyperProxyCore
 public struct OpenAIImageEditMultipartRequest: Sendable {
   public var images: [OpenAIImageEditFile]
   public var prompt: String
-  public var background: OpenAICreateImageEditRequestBackground?
+  public var background: OpenAICreateImageEditRequest.Background?
   public var inputFidelity: OpenAIInputFidelity?
   public var mask: OpenAIImageEditFile?
-  public var model: OpenAICreateImageEditRequestModel?
+  public var model: OpenAICreateImageEditRequest.Model?
   public var n: Int?
   public var outputCompression: Int?
-  public var outputFormat: OpenAICreateImageEditRequestOutputFormat?
+  public var outputFormat: OpenAICreateImageEditRequest.OutputFormat?
   public var partialImages: Int?
-  public var quality: OpenAICreateImageEditRequestQuality?
-  public var responseFormat: OpenAICreateImageEditRequestResponseFormat?
-  public var size: OpenAICreateImageEditRequestSize?
+  public var quality: OpenAICreateImageEditRequest.Quality?
+  public var responseFormat: OpenAICreateImageEditRequest.ResponseFormat?
+  public var size: OpenAICreateImageEditRequest.Size?
   public var stream: Bool?
   public var user: String?
 
   public init(
     images: [OpenAIImageEditFile],
     prompt: String,
-    background: OpenAICreateImageEditRequestBackground? = nil,
+    background: OpenAICreateImageEditRequest.Background? = nil,
     inputFidelity: OpenAIInputFidelity? = nil,
     mask: OpenAIImageEditFile? = nil,
-    model: OpenAICreateImageEditRequestModel? = nil,
+    model: OpenAICreateImageEditRequest.Model? = nil,
     n: Int? = nil,
     outputCompression: Int? = nil,
-    outputFormat: OpenAICreateImageEditRequestOutputFormat? = nil,
+    outputFormat: OpenAICreateImageEditRequest.OutputFormat? = nil,
     partialImages: Int? = nil,
-    quality: OpenAICreateImageEditRequestQuality? = nil,
-    responseFormat: OpenAICreateImageEditRequestResponseFormat? = nil,
-    size: OpenAICreateImageEditRequestSize? = nil,
+    quality: OpenAICreateImageEditRequest.Quality? = nil,
+    responseFormat: OpenAICreateImageEditRequest.ResponseFormat? = nil,
+    size: OpenAICreateImageEditRequest.Size? = nil,
     stream: Bool? = nil,
     user: String? = nil
   ) {

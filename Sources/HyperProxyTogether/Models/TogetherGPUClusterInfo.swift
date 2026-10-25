@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct TogetherGPUClusterInfo: Codable, Sendable {
   public var addOns: [TogetherAddOnInfo]
   public var allocatedPreemptibleGpus: Int
-  public var billingType: TogetherGPUClusterInfoBillingType
+  public var billingType: TogetherGPUClusterInfo.BillingType
   public var capacityPoolId: String?
   public var clusterConfig: TogetherInstanceClusterConfig?
   public var clusterId: String
   public var clusterName: String
-  public var clusterType: TogetherGPUClusterInfoClusterType
+  public var clusterType: TogetherGPUClusterInfo.ClusterType
   public var controlPlaneNodes: [TogetherGPUClusterControlPlaneNode]
   public var controlPlaneReady: Bool?
   public var createdAt: String?
@@ -27,7 +27,7 @@ public struct TogetherGPUClusterInfo: Codable, Sendable {
   public var desiredPreemptibleGpus: Int
   public var durationHours: Int?
   public var firstReadyAt: String?
-  public var gpuType: TogetherGPUClusterInfoGpuType
+  public var gpuType: TogetherGPUClusterInfo.GpuType
   public var gpuWorkerNodes: [TogetherGPUClusterGPUWorkerNode]
   public var installTraefik: Bool?
   public var isInSubstrate: Bool?
@@ -48,7 +48,7 @@ public struct TogetherGPUClusterInfo: Codable, Sendable {
   public var reservationEndTime: String?
   public var reservationStartTime: String?
   public var slurmShmSizeGib: Int?
-  public var status: TogetherGPUClusterInfoStatus
+  public var status: TogetherGPUClusterInfo.Status
   public var umsOrgId: String?
   public var umsProjectId: String?
   public var volumes: [TogetherGPUClusterVolume]
@@ -56,14 +56,14 @@ public struct TogetherGPUClusterInfo: Codable, Sendable {
   public init(
     addOns: [TogetherAddOnInfo],
     allocatedPreemptibleGpus: Int,
-    billingType: TogetherGPUClusterInfoBillingType,
+    billingType: TogetherGPUClusterInfo.BillingType,
     clusterId: String,
     clusterName: String,
-    clusterType: TogetherGPUClusterInfoClusterType,
+    clusterType: TogetherGPUClusterInfo.ClusterType,
     controlPlaneNodes: [TogetherGPUClusterControlPlaneNode],
     cudaVersion: String,
     desiredPreemptibleGpus: Int,
-    gpuType: TogetherGPUClusterInfoGpuType,
+    gpuType: TogetherGPUClusterInfo.GpuType,
     gpuWorkerNodes: [TogetherGPUClusterGPUWorkerNode],
     kubeConfig: String,
     numCapacityPoolGpus: Int,
@@ -74,7 +74,7 @@ public struct TogetherGPUClusterInfo: Codable, Sendable {
     phaseTransitions: [TogetherClusterPhaseTransition],
     projectId: String,
     region: String,
-    status: TogetherGPUClusterInfoStatus,
+    status: TogetherGPUClusterInfo.Status,
     volumes: [TogetherGPUClusterVolume],
     capacityPoolId: String? = nil,
     clusterConfig: TogetherInstanceClusterConfig? = nil,
@@ -181,5 +181,40 @@ public struct TogetherGPUClusterInfo: Codable, Sendable {
     case umsOrgId = "ums_org_id"
     case umsProjectId = "ums_project_id"
     case volumes
+  }
+
+  public enum BillingType: String, Codable, Hashable, Sendable {
+    case reserved = "RESERVED"
+    case onDemand = "ON_DEMAND"
+    case scheduledCapacity = "SCHEDULED_CAPACITY"
+  }
+
+  public enum ClusterType: String, Codable, Hashable, Sendable {
+    case kubernetes = "KUBERNETES"
+    case slurm = "SLURM"
+  }
+
+  public enum GpuType: String, Codable, Hashable, Sendable {
+    case h100Sxm = "H100_SXM"
+    case h200Sxm = "H200_SXM"
+    case rtx6000Pci = "RTX_6000_PCI"
+    case l40Pcie = "L40_PCIE"
+    case b200Sxm = "B200_SXM"
+    case h100SxmInf = "H100_SXM_INF"
+    case b300Sxm = "B300_SXM"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case waitingForControlPlaneNodes = "WaitingForControlPlaneNodes"
+    case waitingForDataPlaneNodes = "WaitingForDataPlaneNodes"
+    case waitingForSubnet = "WaitingForSubnet"
+    case waitingForSharedVolume = "WaitingForSharedVolume"
+    case installingDrivers = "InstallingDrivers"
+    case runningAcceptanceTests = "RunningAcceptanceTests"
+    case paused = "Paused"
+    case onDemandComputePaused = "OnDemandComputePaused"
+    case ready = "Ready"
+    case degraded = "Degraded"
+    case deleting = "Deleting"
   }
 }

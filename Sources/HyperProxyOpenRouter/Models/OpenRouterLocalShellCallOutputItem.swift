@@ -14,12 +14,12 @@ public struct OpenRouterLocalShellCallOutputItem: Codable, Sendable {
   public var id: String
   public var output: String
   public var status: OpenRouterToolCallStatus?
-  public var kind: OpenRouterLocalShellCallOutputItemKind
+  public var kind: OpenRouterLocalShellCallOutputItem.Kind
 
   public init(
     id: String,
     output: String,
-    kind: OpenRouterLocalShellCallOutputItemKind,
+    kind: OpenRouterLocalShellCallOutputItem.Kind,
     status: OpenRouterToolCallStatus? = nil
   ) {
     self.id = id
@@ -33,5 +33,9 @@ public struct OpenRouterLocalShellCallOutputItem: Codable, Sendable {
     case output
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case localShellCallOutput = "local_shell_call_output"
   }
 }

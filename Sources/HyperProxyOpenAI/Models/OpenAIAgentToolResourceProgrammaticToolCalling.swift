@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIAgentToolResourceProgrammaticToolCalling: Codable, Sendable {
   public var enabled: Bool
-  public var kind: OpenAIAgentToolResourceProgrammaticToolCallingKind
+  public var kind: OpenAIAgentToolResourceProgrammaticToolCalling.Kind
 
   public init(
     enabled: Bool,
-    kind: OpenAIAgentToolResourceProgrammaticToolCallingKind
+    kind: OpenAIAgentToolResourceProgrammaticToolCalling.Kind
   ) {
     self.enabled = enabled
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenAIAgentToolResourceProgrammaticToolCalling: Codable, Sendable 
   enum CodingKeys: String, CodingKey {
     case enabled
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case programmaticToolCalling = "programmatic_tool_calling"
   }
 }

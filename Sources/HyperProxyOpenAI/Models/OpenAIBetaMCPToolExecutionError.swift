@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIBetaMCPToolExecutionError: Codable, Sendable {
   public var content: HyperProxyJSONValue
-  public var kind: OpenAIBetaMCPToolExecutionErrorKind
+  public var kind: OpenAIBetaMCPToolExecutionError.Kind
 
   public init(
     content: HyperProxyJSONValue,
-    kind: OpenAIBetaMCPToolExecutionErrorKind
+    kind: OpenAIBetaMCPToolExecutionError.Kind
   ) {
     self.content = content
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenAIBetaMCPToolExecutionError: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case content
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case mcpToolExecutionError = "mcp_tool_execution_error"
   }
 }

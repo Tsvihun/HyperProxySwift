@@ -12,6 +12,7 @@ import HyperProxyCore
 
 public struct PerplexityResponsesRequest: Codable, Sendable {
   public var background: Bool?
+  public var effort: String?
   public var input: PerplexityInput
   public var instructions: String?
   public var languagePreference: String?
@@ -19,7 +20,6 @@ public struct PerplexityResponsesRequest: Codable, Sendable {
   public var maxSteps: Int?
   public var model: String?
   public var models: [String]?
-  public var preset: String?
   public var previousResponseId: String?
   public var profile: PerplexityProfileReference?
   public var reasoning: PerplexityReasoningConfig?
@@ -35,13 +35,13 @@ public struct PerplexityResponsesRequest: Codable, Sendable {
   public init(
     input: PerplexityInput,
     background: Bool? = nil,
+    effort: String? = nil,
     instructions: String? = nil,
     languagePreference: String? = nil,
     maxOutputTokens: Int? = nil,
     maxSteps: Int? = nil,
     model: String? = nil,
     models: [String]? = nil,
-    preset: String? = nil,
     previousResponseId: String? = nil,
     profile: PerplexityProfileReference? = nil,
     reasoning: PerplexityReasoningConfig? = nil,
@@ -55,6 +55,7 @@ public struct PerplexityResponsesRequest: Codable, Sendable {
     topP: Double? = nil
   ) {
     self.background = background
+    self.effort = effort
     self.input = input
     self.instructions = instructions
     self.languagePreference = languagePreference
@@ -62,7 +63,6 @@ public struct PerplexityResponsesRequest: Codable, Sendable {
     self.maxSteps = maxSteps
     self.model = model
     self.models = models
-    self.preset = preset
     self.previousResponseId = previousResponseId
     self.profile = profile
     self.reasoning = reasoning
@@ -78,6 +78,7 @@ public struct PerplexityResponsesRequest: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case background
+    case effort
     case input
     case instructions
     case languagePreference = "language_preference"
@@ -85,7 +86,6 @@ public struct PerplexityResponsesRequest: Codable, Sendable {
     case maxSteps = "max_steps"
     case model
     case models
-    case preset
     case previousResponseId = "previous_response_id"
     case profile
     case reasoning

@@ -16,7 +16,7 @@ public struct EachAIAPIAudioSpeechRequest: Codable, Sendable {
   public var model: String
   public var responseFormat: String?
   public var speed: Double?
-  public var streamFormat: EachAIAPIAudioSpeechRequestStreamFormat?
+  public var streamFormat: EachAIAPIAudioSpeechRequest.StreamFormat?
   public var voice: String
 
   public init(
@@ -26,7 +26,7 @@ public struct EachAIAPIAudioSpeechRequest: Codable, Sendable {
     instructions: String? = nil,
     responseFormat: String? = nil,
     speed: Double? = nil,
-    streamFormat: EachAIAPIAudioSpeechRequestStreamFormat? = nil
+    streamFormat: EachAIAPIAudioSpeechRequest.StreamFormat? = nil
   ) {
     self.input = input
     self.instructions = instructions
@@ -45,5 +45,9 @@ public struct EachAIAPIAudioSpeechRequest: Codable, Sendable {
     case speed
     case streamFormat = "stream_format"
     case voice
+  }
+
+  public enum StreamFormat: String, Codable, Hashable, Sendable {
+    case audio = "audio"
   }
 }

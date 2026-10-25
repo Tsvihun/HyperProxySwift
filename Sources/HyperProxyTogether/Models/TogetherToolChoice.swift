@@ -11,16 +11,16 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherToolChoice: Codable, Sendable {
-  public var function: TogetherToolChoiceFunction
+  public var function: TogetherToolChoice.Function
   public var id: String
   public var index: Double
-  public var kind: TogetherToolChoiceKind
+  public var kind: TogetherToolChoice.Kind
 
   public init(
-    function: TogetherToolChoiceFunction,
+    function: TogetherToolChoice.Function,
     id: String,
     index: Double,
-    kind: TogetherToolChoiceKind
+    kind: TogetherToolChoice.Kind
   ) {
     self.function = function
     self.id = id
@@ -33,5 +33,27 @@ public struct TogetherToolChoice: Codable, Sendable {
     case id
     case index
     case kind = "type"
+  }
+
+  public struct Function: Codable, Sendable {
+    public var arguments: String
+    public var name: String
+
+    public init(
+      arguments: String,
+      name: String
+    ) {
+      self.arguments = arguments
+      self.name = name
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case arguments
+      case name
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case function = "function"
   }
 }

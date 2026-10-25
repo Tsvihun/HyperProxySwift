@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterCreatePrivateEndpointValidationFailedResponse: Codable, Sendable {
-  public var data: OpenRouterCreatePrivateEndpointValidationFailedResponseData
-  public var error: OpenRouterCreatePrivateEndpointValidationFailedResponseError
+  public var data: OpenRouterCreatePrivateEndpointValidationFailedResponse.DataValue
+  public var error: OpenRouterCreatePrivateEndpointValidationFailedResponse.ErrorValue
 
   public init(
-    data: OpenRouterCreatePrivateEndpointValidationFailedResponseData,
-    error: OpenRouterCreatePrivateEndpointValidationFailedResponseError
+    data: OpenRouterCreatePrivateEndpointValidationFailedResponse.DataValue,
+    error: OpenRouterCreatePrivateEndpointValidationFailedResponse.ErrorValue
   ) {
     self.data = data
     self.error = error
@@ -25,5 +25,41 @@ public struct OpenRouterCreatePrivateEndpointValidationFailedResponse: Codable, 
   enum CodingKeys: String, CodingKey {
     case data
     case error
+  }
+
+  public struct DataValue: Codable, Sendable {
+    public var endpoint: OpenRouterManagedPrivateEndpoint
+    public var validation: OpenRouterPrivateEndpointValidationNullable?
+
+    public init(
+      endpoint: OpenRouterManagedPrivateEndpoint,
+      validation: OpenRouterPrivateEndpointValidationNullable?
+    ) {
+      self.endpoint = endpoint
+      self.validation = validation
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case endpoint
+      case validation
+    }
+  }
+
+  public struct ErrorValue: Codable, Sendable {
+    public var code: Int
+    public var message: String
+
+    public init(
+      code: Int,
+      message: String
+    ) {
+      self.code = code
+      self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case code
+      case message
+    }
   }
 }

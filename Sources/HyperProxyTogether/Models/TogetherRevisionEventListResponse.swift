@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct TogetherRevisionEventListResponse: Codable, Sendable {
   public var data: [TogetherRevisionEventItem]
-  public var object: TogetherListObject1dee9a01
+  public var object: TogetherListObject
 
   public init(
     data: [TogetherRevisionEventItem],
-    object: TogetherListObject1dee9a01 = .list
+    object: TogetherListObject = .list
   ) {
     self.data = data
     self.object = object

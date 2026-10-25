@@ -15,14 +15,14 @@ public struct OpenRouterApplyPatchCallOperationDiffDeltaEvent: Codable, Sendable
   public var itemId: String
   public var outputIndex: Int
   public var sequenceNumber: Int
-  public var kind: OpenRouterApplyPatchCallOperationDiffDeltaEventKind
+  public var kind: OpenRouterApplyPatchCallOperationDiffDeltaEvent.Kind
 
   public init(
     delta: String,
     itemId: String,
     outputIndex: Int,
     sequenceNumber: Int,
-    kind: OpenRouterApplyPatchCallOperationDiffDeltaEventKind
+    kind: OpenRouterApplyPatchCallOperationDiffDeltaEvent.Kind
   ) {
     self.delta = delta
     self.itemId = itemId
@@ -37,5 +37,9 @@ public struct OpenRouterApplyPatchCallOperationDiffDeltaEvent: Codable, Sendable
     case outputIndex = "output_index"
     case sequenceNumber = "sequence_number"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case responseApplyPatchCallOperationDiffDelta = "response.apply_patch_call_operation_diff.delta"
   }
 }

@@ -15,14 +15,14 @@ public struct MistralEmbeddingModel: Codable, Sendable {
   public var distanceMetric: MistralDistanceMetric?
   public var dtype: MistralVectorDType?
   public var name: String
-  public var kind: MistralKind?
+  public var kind: MistralEmbeddingModel.Kind?
 
   public init(
     dimensions: Int,
     name: String,
     distanceMetric: MistralDistanceMetric? = nil,
     dtype: MistralVectorDType? = nil,
-    kind: MistralKind? = nil
+    kind: MistralEmbeddingModel.Kind? = nil
   ) {
     self.dimensions = dimensions
     self.distanceMetric = distanceMetric
@@ -37,5 +37,9 @@ public struct MistralEmbeddingModel: Codable, Sendable {
     case dtype
     case name
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case mistral = "mistral"
   }
 }

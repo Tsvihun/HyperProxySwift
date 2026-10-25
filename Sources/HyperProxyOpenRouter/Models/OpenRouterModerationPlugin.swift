@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterModerationPlugin: Codable, Sendable {
-  public var id: OpenRouterModerationPluginId
+  public var id: OpenRouterModerationPlugin.Id
 
   public init(
-    id: OpenRouterModerationPluginId
+    id: OpenRouterModerationPlugin.Id
   ) {
     self.id = id
   }
 
   enum CodingKeys: String, CodingKey {
     case id
+  }
+
+  public enum Id: String, Codable, Hashable, Sendable {
+    case moderation = "moderation"
   }
 }

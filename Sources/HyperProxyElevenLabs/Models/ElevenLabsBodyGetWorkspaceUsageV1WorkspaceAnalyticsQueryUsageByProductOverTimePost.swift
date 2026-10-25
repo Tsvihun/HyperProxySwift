@@ -16,7 +16,7 @@ public struct ElevenLabsBodyGetWorkspaceUsageV1WorkspaceAnalyticsQueryUsageByPro
   public var endTime: Int
   public var filters: [ElevenLabsColumnFilter]?
   public var groupBy:
-    [ElevenLabsBodyGetWorkspaceUsageV1WorkspaceAnalyticsQueryUsageByProductOverTimePostGroupByAnyOf1Item]?
+    [ElevenLabsBodyGetWorkspaceUsageV1WorkspaceAnalyticsQueryUsageByProductOverTimePostGroupByItem]?
   public var intervalSeconds: Int?
   public var startTime: Int
   public var timeZone: String?
@@ -26,7 +26,7 @@ public struct ElevenLabsBodyGetWorkspaceUsageV1WorkspaceAnalyticsQueryUsageByPro
     startTime: Int,
     filters: [ElevenLabsColumnFilter]? = nil,
     groupBy:
-      [ElevenLabsBodyGetWorkspaceUsageV1WorkspaceAnalyticsQueryUsageByProductOverTimePostGroupByAnyOf1Item]? =
+      [ElevenLabsBodyGetWorkspaceUsageV1WorkspaceAnalyticsQueryUsageByProductOverTimePostGroupByItem]? =
       nil,
     intervalSeconds: Int? = nil,
     timeZone: String? = nil

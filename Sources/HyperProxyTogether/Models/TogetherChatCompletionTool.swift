@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherChatCompletionTool: Codable, Sendable {
-  public var function: TogetherChatCompletionToolFunction
-  public var kind: TogetherChatCompletionToolKind
+  public var function: TogetherChatCompletionTool.Function
+  public var kind: TogetherChatCompletionTool.Kind
 
   public init(
-    function: TogetherChatCompletionToolFunction,
-    kind: TogetherChatCompletionToolKind
+    function: TogetherChatCompletionTool.Function,
+    kind: TogetherChatCompletionTool.Kind
   ) {
     self.function = function
     self.kind = kind
@@ -25,5 +25,31 @@ public struct TogetherChatCompletionTool: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case function
     case kind = "type"
+  }
+
+  public struct Function: Codable, Sendable {
+    public var description: String?
+    public var name: String
+    public var parameters: [String: HyperProxyJSONValue]?
+
+    public init(
+      name: String,
+      description: String? = nil,
+      parameters: [String: HyperProxyJSONValue]? = nil
+    ) {
+      self.description = description
+      self.name = name
+      self.parameters = parameters
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case description
+      case name
+      case parameters
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case function = "function"
   }
 }

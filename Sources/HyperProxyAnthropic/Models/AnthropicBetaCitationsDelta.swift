@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaCitationsDelta: Codable, Sendable {
-  public var citation: AnthropicBetaCitationsDeltaCitation
+  public var citation: AnthropicBetaCitationsDelta.Citation
   public var kind: AnthropicCitationsDeltaKind
 
   public init(
-    citation: AnthropicBetaCitationsDeltaCitation,
+    citation: AnthropicBetaCitationsDelta.Citation,
     kind: AnthropicCitationsDeltaKind = .citationsDelta
   ) {
     self.citation = citation
@@ -25,5 +25,54 @@ public struct AnthropicBetaCitationsDelta: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case citation
     case kind = "type"
+  }
+
+  public enum Citation: Codable, Sendable {
+    case betaResponseCharLocationCitation(AnthropicBetaResponseCharLocationCitation)
+    case betaResponsePageLocationCitation(AnthropicBetaResponsePageLocationCitation)
+    case betaResponseContentBlockLocationCitation(AnthropicBetaResponseContentBlockLocationCitation)
+    case betaResponseWebSearchResultLocationCitation(
+      AnthropicBetaResponseWebSearchResultLocationCitation)
+    case betaResponseSearchResultLocationCitation(AnthropicBetaResponseSearchResultLocationCitation)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(AnthropicBetaResponseCharLocationCitation.self) {
+        self = .betaResponseCharLocationCitation(value)
+        return
+      }
+      if let value = try? container.decode(AnthropicBetaResponsePageLocationCitation.self) {
+        self = .betaResponsePageLocationCitation(value)
+        return
+      }
+      if let value = try? container.decode(AnthropicBetaResponseContentBlockLocationCitation.self) {
+        self = .betaResponseContentBlockLocationCitation(value)
+        return
+      }
+      if let value = try? container.decode(
+        AnthropicBetaResponseWebSearchResultLocationCitation.self)
+      {
+        self = .betaResponseWebSearchResultLocationCitation(value)
+        return
+      }
+      self = .betaResponseSearchResultLocationCitation(
+        try container.decode(AnthropicBetaResponseSearchResultLocationCitation.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .betaResponseCharLocationCitation(let value):
+        try container.encode(value)
+      case .betaResponsePageLocationCitation(let value):
+        try container.encode(value)
+      case .betaResponseContentBlockLocationCitation(let value):
+        try container.encode(value)
+      case .betaResponseWebSearchResultLocationCitation(let value):
+        try container.encode(value)
+      case .betaResponseSearchResultLocationCitation(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

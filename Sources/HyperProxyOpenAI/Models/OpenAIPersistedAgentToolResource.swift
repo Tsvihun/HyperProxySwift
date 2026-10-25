@@ -18,6 +18,7 @@ public enum OpenAIPersistedAgentToolResource: Codable, Sendable {
   case persistedAgentToolResourceMcp(OpenAIPersistedAgentToolResourceMcp)
   case persistedAgentToolResourceWebSearch(OpenAIPersistedAgentToolResourceWebSearch)
   case persistedAgentToolResourceComputerUse(OpenAIPersistedAgentToolResourceComputerUse)
+  case persistedAgentToolResourceAutomations(OpenAIPersistedAgentToolResourceAutomations)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -43,8 +44,12 @@ public enum OpenAIPersistedAgentToolResource: Codable, Sendable {
       self = .persistedAgentToolResourceWebSearch(value)
       return
     }
-    self = .persistedAgentToolResourceComputerUse(
-      try container.decode(OpenAIPersistedAgentToolResourceComputerUse.self))
+    if let value = try? container.decode(OpenAIPersistedAgentToolResourceComputerUse.self) {
+      self = .persistedAgentToolResourceComputerUse(value)
+      return
+    }
+    self = .persistedAgentToolResourceAutomations(
+      try container.decode(OpenAIPersistedAgentToolResourceAutomations.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -61,6 +66,8 @@ public enum OpenAIPersistedAgentToolResource: Codable, Sendable {
     case .persistedAgentToolResourceWebSearch(let value):
       try container.encode(value)
     case .persistedAgentToolResourceComputerUse(let value):
+      try container.encode(value)
+    case .persistedAgentToolResourceAutomations(let value):
       try container.encode(value)
     }
   }

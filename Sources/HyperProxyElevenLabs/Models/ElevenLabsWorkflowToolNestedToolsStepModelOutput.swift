@@ -14,7 +14,7 @@ public struct ElevenLabsWorkflowToolNestedToolsStepModelOutput: Codable, Sendabl
   public var isSuccessful: Bool
   public var nodeId: String
   public var requests: [ElevenLabsConversationHistoryTranscriptToolCallCommonModelOutput]
-  public var results: [ElevenLabsWorkflowToolNestedToolsStepModelOutputResultsItem]
+  public var results: [ElevenLabsWorkflowToolNestedToolsStepModelOutput.ResultsElement]
   public var stepLatencySecs: Double
   public var kind: ElevenLabsNestedToolsKind?
 
@@ -22,7 +22,7 @@ public struct ElevenLabsWorkflowToolNestedToolsStepModelOutput: Codable, Sendabl
     isSuccessful: Bool,
     nodeId: String,
     requests: [ElevenLabsConversationHistoryTranscriptToolCallCommonModelOutput],
-    results: [ElevenLabsWorkflowToolNestedToolsStepModelOutputResultsItem],
+    results: [ElevenLabsWorkflowToolNestedToolsStepModelOutput.ResultsElement],
     stepLatencySecs: Double,
     kind: ElevenLabsNestedToolsKind? = nil
   ) {
@@ -41,5 +41,58 @@ public struct ElevenLabsWorkflowToolNestedToolsStepModelOutput: Codable, Sendabl
     case results
     case stepLatencySecs = "step_latency_secs"
     case kind = "type"
+  }
+
+  public enum ResultsElement: Codable, Sendable {
+    case conversationHistoryTranscriptOtherToolsResultCommonModel(
+      ElevenLabsConversationHistoryTranscriptOtherToolsResultCommonModel)
+    case conversationHistoryTranscriptSystemToolResultCommonModelOutput(
+      ElevenLabsConversationHistoryTranscriptSystemToolResultCommonModelOutput)
+    case conversationHistoryTranscriptApiIntegrationWebhookToolsResultCommonModelOutput(
+      ElevenLabsConversationHistoryTranscriptApiIntegrationWebhookToolsResultCommonModelOutput)
+    case conversationHistoryTranscriptWorkflowToolsResultCommonModelOutput(
+      ElevenLabsConversationHistoryTranscriptWorkflowToolsResultCommonModelOutput)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(
+        ElevenLabsConversationHistoryTranscriptOtherToolsResultCommonModel.self)
+      {
+        self = .conversationHistoryTranscriptOtherToolsResultCommonModel(value)
+        return
+      }
+      if let value = try? container.decode(
+        ElevenLabsConversationHistoryTranscriptSystemToolResultCommonModelOutput.self)
+      {
+        self = .conversationHistoryTranscriptSystemToolResultCommonModelOutput(value)
+        return
+      }
+      if let value = try? container.decode(
+        ElevenLabsConversationHistoryTranscriptApiIntegrationWebhookToolsResultCommonModelOutput
+          .self)
+      {
+        self = .conversationHistoryTranscriptApiIntegrationWebhookToolsResultCommonModelOutput(
+          value)
+        return
+      }
+      self = .conversationHistoryTranscriptWorkflowToolsResultCommonModelOutput(
+        try container.decode(
+          ElevenLabsConversationHistoryTranscriptWorkflowToolsResultCommonModelOutput.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .conversationHistoryTranscriptOtherToolsResultCommonModel(let value):
+        try container.encode(value)
+      case .conversationHistoryTranscriptSystemToolResultCommonModelOutput(let value):
+        try container.encode(value)
+      case .conversationHistoryTranscriptApiIntegrationWebhookToolsResultCommonModelOutput(
+        let value):
+        try container.encode(value)
+      case .conversationHistoryTranscriptWorkflowToolsResultCommonModelOutput(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

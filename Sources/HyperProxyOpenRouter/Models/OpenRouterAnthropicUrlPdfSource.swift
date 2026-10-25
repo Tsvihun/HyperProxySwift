@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterAnthropicUrlPdfSource: Codable, Sendable {
-  public var kind: OpenRouterAnthropicUrlPdfSourceKind
+  public var kind: OpenRouterAnthropicUrlPdfSource.Kind
   public var url: String
 
   public init(
-    kind: OpenRouterAnthropicUrlPdfSourceKind,
+    kind: OpenRouterAnthropicUrlPdfSource.Kind,
     url: String
   ) {
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenRouterAnthropicUrlPdfSource: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case kind = "type"
     case url
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case url = "url"
   }
 }

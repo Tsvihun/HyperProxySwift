@@ -15,7 +15,7 @@ public struct TogetherDERolloutStepStatus: Codable, Sendable {
   public var failureReason: String?
   public var metrics: [TogetherDEMetricResult]?
   public var startedAt: String?
-  public var state: TogetherDERolloutStepStatusState?
+  public var state: TogetherDERolloutStepStatus.State?
   public var stepIndex: Int?
   public var targetTrafficPercent: Int?
 
@@ -24,7 +24,7 @@ public struct TogetherDERolloutStepStatus: Codable, Sendable {
     failureReason: String? = nil,
     metrics: [TogetherDEMetricResult]? = nil,
     startedAt: String? = nil,
-    state: TogetherDERolloutStepStatusState? = nil,
+    state: TogetherDERolloutStepStatus.State? = nil,
     stepIndex: Int? = nil,
     targetTrafficPercent: Int? = nil
   ) {
@@ -45,5 +45,15 @@ public struct TogetherDERolloutStepStatus: Codable, Sendable {
     case state
     case stepIndex
     case targetTrafficPercent
+  }
+
+  public enum State: String, Codable, Hashable, Sendable {
+    case rolloutStepStatePending = "ROLLOUT_STEP_STATE_PENDING"
+    case rolloutStepStateRunning = "ROLLOUT_STEP_STATE_RUNNING"
+    case rolloutStepStatePassed = "ROLLOUT_STEP_STATE_PASSED"
+    case rolloutStepStateFailed = "ROLLOUT_STEP_STATE_FAILED"
+    case rolloutStepStatePaused = "ROLLOUT_STEP_STATE_PAUSED"
+    case rolloutStepStateCanceled = "ROLLOUT_STEP_STATE_CANCELED"
+    case rolloutStepStateSkipped = "ROLLOUT_STEP_STATE_SKIPPED"
   }
 }

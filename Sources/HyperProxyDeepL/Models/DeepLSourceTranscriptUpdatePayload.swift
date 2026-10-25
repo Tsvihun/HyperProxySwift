@@ -11,15 +11,33 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepLSourceTranscriptUpdatePayload: Codable, Sendable {
-  public var sourceTranscriptUpdate: DeepLSourceTranscriptUpdatePayloadSourceTranscriptUpdate
+  public var sourceTranscriptUpdate: DeepLSourceTranscriptUpdatePayload.SourceTranscriptUpdate
 
   public init(
-    sourceTranscriptUpdate: DeepLSourceTranscriptUpdatePayloadSourceTranscriptUpdate
+    sourceTranscriptUpdate: DeepLSourceTranscriptUpdatePayload.SourceTranscriptUpdate
   ) {
     self.sourceTranscriptUpdate = sourceTranscriptUpdate
   }
 
   enum CodingKeys: String, CodingKey {
     case sourceTranscriptUpdate = "source_transcript_update"
+  }
+
+  public struct SourceTranscriptUpdate: Codable, Sendable {
+    public var concluded: [DeepLSourceTranscriptSegment]
+    public var tentative: [DeepLSourceTranscriptSegment]
+
+    public init(
+      concluded: [DeepLSourceTranscriptSegment],
+      tentative: [DeepLSourceTranscriptSegment]
+    ) {
+      self.concluded = concluded
+      self.tentative = tentative
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case concluded
+      case tentative
+    }
   }
 }

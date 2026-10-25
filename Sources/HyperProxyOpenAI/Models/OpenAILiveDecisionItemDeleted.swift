@@ -14,12 +14,12 @@ public struct OpenAILiveDecisionItemDeleted: Codable, Sendable {
   public var clientEventId: String?
   public var eventId: String
   public var itemId: String
-  public var kind: OpenAILiveDecisionItemDeletedKind
+  public var kind: OpenAILiveDecisionItemDeleted.Kind
 
   public init(
     eventId: String,
     itemId: String,
-    kind: OpenAILiveDecisionItemDeletedKind,
+    kind: OpenAILiveDecisionItemDeleted.Kind,
     clientEventId: String? = nil
   ) {
     self.clientEventId = clientEventId
@@ -33,5 +33,9 @@ public struct OpenAILiveDecisionItemDeleted: Codable, Sendable {
     case eventId = "event_id"
     case itemId = "item_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case decisionItemDeleted = "decision.item.deleted"
   }
 }

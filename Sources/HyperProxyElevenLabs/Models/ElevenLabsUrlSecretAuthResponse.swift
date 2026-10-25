@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsUrlSecretAuthResponse: Codable, Sendable {
-  public var authType: ElevenLabsUrlSecretAuthType?
+  public var authType: ElevenLabsUrlSecretAuthResponse.AuthType?
   public var id: String
   public var name: String
   public var provider: String
@@ -24,7 +24,7 @@ public struct ElevenLabsUrlSecretAuthResponse: Codable, Sendable {
     id: String,
     name: String,
     provider: String,
-    authType: ElevenLabsUrlSecretAuthType? = nil,
+    authType: ElevenLabsUrlSecretAuthResponse.AuthType? = nil,
     status: ElevenLabsAuthConnectionStatus? = nil,
     statusDetail: String? = nil,
     statusUpdatedAt: String? = nil,
@@ -49,5 +49,9 @@ public struct ElevenLabsUrlSecretAuthResponse: Codable, Sendable {
     case statusDetail = "status_detail"
     case statusUpdatedAt = "status_updated_at"
     case usedBy = "used_by"
+  }
+
+  public enum AuthType: String, Codable, Hashable, Sendable {
+    case urlSecret = "url_secret"
   }
 }

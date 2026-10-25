@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsPromptAgentAPIModelInput: Codable, Sendable {
-  public var backupLlmConfig: ElevenLabsPromptAgentAPIModelInputBackupLlmConfig?
+  public var backupLlmConfig: ElevenLabsPromptAgentAPIModelInput.BackupLlmConfig?
   public var builtInTools: ElevenLabsBuiltInToolsInput?
   public var cascadeTimeoutSeconds: Double?
   public var customLlm: ElevenLabsCustomLLM?
@@ -26,15 +26,16 @@ public struct ElevenLabsPromptAgentAPIModelInput: Codable, Sendable {
   public var prompt: String?
   public var rag: ElevenLabsRagConfigInput?
   public var reasoningEffort: ElevenLabsLLMReasoningEffort?
+  public var serviceTier: ElevenLabsLLMServiceTier?
   public var temperature: Double?
   public var thinkingBudget: Int?
   public var timezone: String?
   public var toolIds: [String]?
   public var toolIdsStrict: Bool?
-  public var tools: [ElevenLabsPromptAgentAPIModelInputToolsItem]?
+  public var tools: [ElevenLabsPromptAgentAPIModelInput.ToolsElement]?
 
   public init(
-    backupLlmConfig: ElevenLabsPromptAgentAPIModelInputBackupLlmConfig? = nil,
+    backupLlmConfig: ElevenLabsPromptAgentAPIModelInput.BackupLlmConfig? = nil,
     builtInTools: ElevenLabsBuiltInToolsInput? = nil,
     cascadeTimeoutSeconds: Double? = nil,
     customLlm: ElevenLabsCustomLLM? = nil,
@@ -49,12 +50,13 @@ public struct ElevenLabsPromptAgentAPIModelInput: Codable, Sendable {
     prompt: String? = nil,
     rag: ElevenLabsRagConfigInput? = nil,
     reasoningEffort: ElevenLabsLLMReasoningEffort? = nil,
+    serviceTier: ElevenLabsLLMServiceTier? = nil,
     temperature: Double? = nil,
     thinkingBudget: Int? = nil,
     timezone: String? = nil,
     toolIds: [String]? = nil,
     toolIdsStrict: Bool? = nil,
-    tools: [ElevenLabsPromptAgentAPIModelInputToolsItem]? = nil
+    tools: [ElevenLabsPromptAgentAPIModelInput.ToolsElement]? = nil
   ) {
     self.backupLlmConfig = backupLlmConfig
     self.builtInTools = builtInTools
@@ -71,6 +73,7 @@ public struct ElevenLabsPromptAgentAPIModelInput: Codable, Sendable {
     self.prompt = prompt
     self.rag = rag
     self.reasoningEffort = reasoningEffort
+    self.serviceTier = serviceTier
     self.temperature = temperature
     self.thinkingBudget = thinkingBudget
     self.timezone = timezone
@@ -95,11 +98,95 @@ public struct ElevenLabsPromptAgentAPIModelInput: Codable, Sendable {
     case prompt
     case rag
     case reasoningEffort = "reasoning_effort"
+    case serviceTier = "service_tier"
     case temperature
     case thinkingBudget = "thinking_budget"
     case timezone
     case toolIds = "tool_ids"
     case toolIdsStrict = "tool_ids_strict"
     case tools
+  }
+
+  public enum BackupLlmConfig: Codable, Sendable {
+    case backupLlmDefault(ElevenLabsBackupLLMDefault)
+    case backupLlmDisabled(ElevenLabsBackupLLMDisabled)
+    case backupLlmOverride(ElevenLabsBackupLLMOverride)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsBackupLLMDefault.self) {
+        self = .backupLlmDefault(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsBackupLLMDisabled.self) {
+        self = .backupLlmDisabled(value)
+        return
+      }
+      self = .backupLlmOverride(try container.decode(ElevenLabsBackupLLMOverride.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .backupLlmDefault(let value):
+        try container.encode(value)
+      case .backupLlmDisabled(let value):
+        try container.encode(value)
+      case .backupLlmOverride(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum ToolsElement: Codable, Sendable {
+    case webhookToolConfigInput(ElevenLabsWebhookToolConfigInput)
+    case clientToolConfigInput(ElevenLabsClientToolConfigInput)
+    case systemToolConfigInput(ElevenLabsSystemToolConfigInput)
+    case mcpToolConfigInput(ElevenLabsMCPToolConfigInput)
+    case apiIntegrationWebhookToolConfigInput(ElevenLabsApiIntegrationWebhookToolConfigInput)
+    case smbToolConfig(ElevenLabsSMBToolConfig)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsWebhookToolConfigInput.self) {
+        self = .webhookToolConfigInput(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsClientToolConfigInput.self) {
+        self = .clientToolConfigInput(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsSystemToolConfigInput.self) {
+        self = .systemToolConfigInput(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsMCPToolConfigInput.self) {
+        self = .mcpToolConfigInput(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsApiIntegrationWebhookToolConfigInput.self) {
+        self = .apiIntegrationWebhookToolConfigInput(value)
+        return
+      }
+      self = .smbToolConfig(try container.decode(ElevenLabsSMBToolConfig.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .webhookToolConfigInput(let value):
+        try container.encode(value)
+      case .clientToolConfigInput(let value):
+        try container.encode(value)
+      case .systemToolConfigInput(let value):
+        try container.encode(value)
+      case .mcpToolConfigInput(let value):
+        try container.encode(value)
+      case .apiIntegrationWebhookToolConfigInput(let value):
+        try container.encode(value)
+      case .smbToolConfig(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

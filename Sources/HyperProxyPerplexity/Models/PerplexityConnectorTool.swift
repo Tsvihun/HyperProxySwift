@@ -16,12 +16,12 @@ public struct PerplexityConnectorTool: Codable, Sendable {
   public var requireApproval: PerplexityRequireApproval?
   public var serverDescription: String?
   public var serverLabel: String
-  public var kind: PerplexityConnectorToolKind
+  public var kind: PerplexityConnectorTool.Kind
 
   public init(
     id: String,
     serverLabel: String,
-    kind: PerplexityConnectorToolKind,
+    kind: PerplexityConnectorTool.Kind,
     allowedTools: [String]? = nil,
     requireApproval: PerplexityRequireApproval? = nil,
     serverDescription: String? = nil
@@ -41,5 +41,9 @@ public struct PerplexityConnectorTool: Codable, Sendable {
     case serverDescription = "server_description"
     case serverLabel = "server_label"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case connector = "connector"
   }
 }

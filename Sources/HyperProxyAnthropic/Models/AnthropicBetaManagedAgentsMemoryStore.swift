@@ -17,14 +17,14 @@ public struct AnthropicBetaManagedAgentsMemoryStore: Codable, Sendable {
   public var id: String
   public var metadata: [String: String]?
   public var name: String
-  public var kind: AnthropicBetaManagedAgentsMemoryStoreKind
+  public var kind: AnthropicBetaManagedAgentsMemoryStore.Kind
   public var updatedAt: AnthropicBetaTimestamp
 
   public init(
     createdAt: AnthropicBetaTimestamp,
     id: String,
     name: String,
-    kind: AnthropicBetaManagedAgentsMemoryStoreKind,
+    kind: AnthropicBetaManagedAgentsMemoryStore.Kind,
     updatedAt: AnthropicBetaTimestamp,
     archivedAt: AnthropicBetaTimestamp? = nil,
     description: String? = nil,
@@ -49,5 +49,9 @@ public struct AnthropicBetaManagedAgentsMemoryStore: Codable, Sendable {
     case name
     case kind = "type"
     case updatedAt = "updated_at"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case memoryStore = "memory_store"
   }
 }

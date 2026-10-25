@@ -15,12 +15,12 @@ public struct OpenRouterMcpApprovalResponseItem: Codable, Sendable {
   public var approve: Bool
   public var id: String?
   public var reason: String?
-  public var kind: OpenRouterMcpApprovalResponseItemKind
+  public var kind: OpenRouterMcpApprovalResponseItem.Kind
 
   public init(
     approvalRequestId: String,
     approve: Bool,
-    kind: OpenRouterMcpApprovalResponseItemKind,
+    kind: OpenRouterMcpApprovalResponseItem.Kind,
     id: String? = nil,
     reason: String? = nil
   ) {
@@ -37,5 +37,9 @@ public struct OpenRouterMcpApprovalResponseItem: Codable, Sendable {
     case id
     case reason
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case mcpApprovalResponse = "mcp_approval_response"
   }
 }

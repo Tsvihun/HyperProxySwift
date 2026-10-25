@@ -14,15 +14,15 @@ public struct OpenAIThreadObject: Codable, Sendable {
   public var createdAt: Int
   public var id: String
   public var metadata: OpenAIMetadata?
-  public var object: OpenAIThreadObjectObject
-  public var toolResources: OpenAIThreadObjectToolResourcesAnyOf1?
+  public var object: OpenAIThreadObject.Object
+  public var toolResources: OpenAIThreadObjectToolResourcesWithCodeInterpreterAndFileSearch?
 
   public init(
     createdAt: Int,
     id: String,
     metadata: OpenAIMetadata?,
-    object: OpenAIThreadObjectObject,
-    toolResources: OpenAIThreadObjectToolResourcesAnyOf1?
+    object: OpenAIThreadObject.Object,
+    toolResources: OpenAIThreadObjectToolResourcesWithCodeInterpreterAndFileSearch?
   ) {
     self.createdAt = createdAt
     self.id = id
@@ -37,5 +37,9 @@ public struct OpenAIThreadObject: Codable, Sendable {
     case metadata
     case object
     case toolResources = "tool_resources"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case thread = "thread"
   }
 }

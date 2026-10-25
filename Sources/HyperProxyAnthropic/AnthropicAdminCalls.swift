@@ -17,133 +17,75 @@ public struct AnthropicAdminCalls: Sendable {
   let service: AnthropicService
 
   /// `GET v1/organizations/api_keys/{api_key_id}`
-  public var betaGetApiKeyV1OrganizationsApiKeysApiKeyIdGet:
-    HyperProxyProviderCall<AnthropicOperation>
-  {
-    self.service.call(.betaGetApiKeyV1OrganizationsApiKeysApiKeyIdGet)
+  public var betaGetApiKey: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.betaGetApiKey)
   }
   /// `POST v1/organizations/api_keys/{api_key_id}`
-  public var betaUpdateApiKeyV1OrganizationsApiKeysApiKeyIdPost:
-    HyperProxyProviderCall<AnthropicOperation>
-  {
-    self.service.call(.betaUpdateApiKeyV1OrganizationsApiKeysApiKeyIdPost)
+  public var betaUpdateApiKey: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.betaUpdateApiKey)
   }
   /// `POST v1/organizations/invites`
-  public var betaCreateInviteV1OrganizationsInvitesPost: HyperProxyProviderCall<AnthropicOperation>
-  {
-    self.service.call(.betaCreateInviteV1OrganizationsInvitesPost)
+  public var betaCreateInvite: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.betaCreateInvite)
   }
   /// `DELETE v1/organizations/invites/{invite_id}`
-  public var betaDeleteInviteV1OrganizationsInvitesInviteIdDelete:
-    HyperProxyProviderCall<AnthropicOperation>
-  {
-    self.service.call(.betaDeleteInviteV1OrganizationsInvitesInviteIdDelete)
+  public var betaDeleteInvite: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.betaDeleteInvite)
   }
   /// `GET v1/organizations/invites/{invite_id}`
-  public var betaGetInviteV1OrganizationsInvitesInviteIdGet:
-    HyperProxyProviderCall<AnthropicOperation>
-  {
-    self.service.call(.betaGetInviteV1OrganizationsInvitesInviteIdGet)
+  public var betaGetInvite: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.betaGetInvite)
   }
   /// `GET v1/organizations/me`
-  public var betaGetCurrentOrganizationV1OrganizationsMeGet:
-    HyperProxyProviderCall<AnthropicOperation>
-  {
-    self.service.call(.betaGetCurrentOrganizationV1OrganizationsMeGet)
+  public var betaGetCurrentOrganization: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.betaGetCurrentOrganization)
   }
   /// `POST v1/organizations/service_accounts`
-  public var betaCreateServiceAccountV1OrganizationsServiceAccountsPost:
-    HyperProxyProviderCall<AnthropicOperation>
-  {
-    self.service.call(.betaCreateServiceAccountV1OrganizationsServiceAccountsPost)
+  public var betaCreateServiceAccount: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.betaCreateServiceAccount)
   }
   /// `GET v1/organizations/service_accounts/{service_account_id}`
-  public var betaGetServiceAccountV1OrganizationsServiceAccountsServiceAccountIdGet:
-    HyperProxyProviderCall<AnthropicOperation>
-  {
-    self.service.call(.betaGetServiceAccountV1OrganizationsServiceAccountsServiceAccountIdGet)
+  public var betaGetServiceAccount: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.betaGetServiceAccount)
   }
   /// `POST v1/organizations/service_accounts/{service_account_id}`
-  public var betaUpdateServiceAccountV1OrganizationsServiceAccountsServiceAccountIdPost:
-    HyperProxyProviderCall<AnthropicOperation>
-  {
-    self.service.call(.betaUpdateServiceAccountV1OrganizationsServiceAccountsServiceAccountIdPost)
+  public var betaUpdateServiceAccount: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.betaUpdateServiceAccount)
   }
   /// `POST v1/organizations/service_accounts/{service_account_id}/archive`
-  public var betaArchiveServiceAccountV1OrganizationsServiceAccountsServiceAccountIdArchivePost:
-    HyperProxyProviderCall<AnthropicOperation>
-  {
-    self.service.call(
-      .betaArchiveServiceAccountV1OrganizationsServiceAccountsServiceAccountIdArchivePost)
+  public var betaArchiveServiceAccount: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.betaArchiveServiceAccount)
   }
   /// `GET v1/organizations/service_accounts/{service_account_id}/workspaces`
-  public
-    var betaListWorkspacesForServiceAccountV1OrganizationsServiceAccountsServiceAccountIdWorkspacesGet:
-    HyperProxyProviderCall<AnthropicOperation>
-  {
-    self.service.call(
-      .betaListWorkspacesForServiceAccountV1OrganizationsServiceAccountsServiceAccountIdWorkspacesGet
-    )
+  public var betaListWorkspacesForServiceAccount: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.betaListWorkspacesForServiceAccount)
   }
   /// `POST v1/organizations/service_accounts/{service_account_id}/workspaces`
-  public
-    var betaAddWorkspaceToServiceAccountV1OrganizationsServiceAccountsServiceAccountIdWorkspacesPost:
-    HyperProxyProviderCall<AnthropicOperation>
-  {
-    self.service.call(
-      .betaAddWorkspaceToServiceAccountV1OrganizationsServiceAccountsServiceAccountIdWorkspacesPost)
+  public var betaAddWorkspaceToServiceAccount: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.betaAddWorkspaceToServiceAccount)
   }
   /// `DELETE v1/organizations/service_accounts/{service_account_id}/workspaces/{workspace_id}`
-  public
-    var betaRemoveWorkspaceFromServiceAccountV1OrganizationsServiceAccountsServiceAccountIdWorkspacesWorkspaceIdDelete:
-    HyperProxyProviderCall<AnthropicOperation>
-  {
-    self.service.call(
-      .betaRemoveWorkspaceFromServiceAccountV1OrganizationsServiceAccountsServiceAccountIdWorkspacesWorkspaceIdDelete
-    )
+  public var betaRemoveWorkspaceFromServiceAccount: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.betaRemoveWorkspaceFromServiceAccount)
   }
   /// `GET v1/organizations/workspaces/{workspace_id}/service_accounts`
-  public
-    var betaListServiceAccountWorkspaceMembersV1OrganizationsWorkspacesWorkspaceIdServiceAccountsGet:
-    HyperProxyProviderCall<AnthropicOperation>
-  {
-    self.service.call(
-      .betaListServiceAccountWorkspaceMembersV1OrganizationsWorkspacesWorkspaceIdServiceAccountsGet)
+  public var betaListServiceAccountWorkspaceMembers: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.betaListServiceAccountWorkspaceMembers)
   }
   /// `POST v1/organizations/workspaces/{workspace_id}/service_accounts`
-  public
-    var betaCreateServiceAccountWorkspaceMemberV1OrganizationsWorkspacesWorkspaceIdServiceAccountsPost:
-    HyperProxyProviderCall<AnthropicOperation>
-  {
-    self.service.call(
-      .betaCreateServiceAccountWorkspaceMemberV1OrganizationsWorkspacesWorkspaceIdServiceAccountsPost
-    )
+  public var betaCreateServiceAccountWorkspaceMember: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.betaCreateServiceAccountWorkspaceMember)
   }
   /// `DELETE v1/organizations/workspaces/{workspace_id}/service_accounts/{service_account_id}`
-  public
-    var betaDeleteServiceAccountWorkspaceMemberV1OrganizationsWorkspacesWorkspaceIdServiceAccountsServiceAccountIdDelete:
-    HyperProxyProviderCall<AnthropicOperation>
-  {
-    self.service.call(
-      .betaDeleteServiceAccountWorkspaceMemberV1OrganizationsWorkspacesWorkspaceIdServiceAccountsServiceAccountIdDelete
-    )
+  public var betaDeleteServiceAccountWorkspaceMember: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.betaDeleteServiceAccountWorkspaceMember)
   }
   /// `GET v1/organizations/workspaces/{workspace_id}/service_accounts/{service_account_id}`
-  public
-    var betaGetServiceAccountWorkspaceMemberV1OrganizationsWorkspacesWorkspaceIdServiceAccountsServiceAccountIdGet:
-    HyperProxyProviderCall<AnthropicOperation>
-  {
-    self.service.call(
-      .betaGetServiceAccountWorkspaceMemberV1OrganizationsWorkspacesWorkspaceIdServiceAccountsServiceAccountIdGet
-    )
+  public var betaGetServiceAccountWorkspaceMember: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.betaGetServiceAccountWorkspaceMember)
   }
   /// `POST v1/organizations/workspaces/{workspace_id}/service_accounts/{service_account_id}`
-  public
-    var betaUpdateServiceAccountWorkspaceMemberV1OrganizationsWorkspacesWorkspaceIdServiceAccountsServiceAccountIdPost:
-    HyperProxyProviderCall<AnthropicOperation>
-  {
-    self.service.call(
-      .betaUpdateServiceAccountWorkspaceMemberV1OrganizationsWorkspacesWorkspaceIdServiceAccountsServiceAccountIdPost
-    )
+  public var betaUpdateServiceAccountWorkspaceMember: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.betaUpdateServiceAccountWorkspaceMember)
   }
 }

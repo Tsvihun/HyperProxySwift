@@ -11,19 +11,27 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAILiveResponsesDelegationUpdateParam: Codable, Sendable {
+  public var acknowledgementDelayMs: Int?
   public var responses: OpenAILiveResponsesDelegationSettingsUpdateInputParam?
-  public var kind: OpenAILiveResponsesDelegationUpdateParamKind
+  public var kind: OpenAILiveResponsesDelegationUpdateParam.Kind
 
   public init(
-    kind: OpenAILiveResponsesDelegationUpdateParamKind,
+    kind: OpenAILiveResponsesDelegationUpdateParam.Kind,
+    acknowledgementDelayMs: Int? = nil,
     responses: OpenAILiveResponsesDelegationSettingsUpdateInputParam? = nil
   ) {
+    self.acknowledgementDelayMs = acknowledgementDelayMs
     self.responses = responses
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
+    case acknowledgementDelayMs = "acknowledgement_delay_ms"
     case responses
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case responses = "responses"
   }
 }

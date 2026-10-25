@@ -16,7 +16,7 @@ public struct OpenRouterObservabilityArizeDestination: Codable, Sendable {
   public var broadcastGenerationCostAllocation: Bool
   public var broadcastGenerationIdentity: Bool
   public var broadcastGenerationRequestContext: Bool
-  public var config: OpenRouterObservabilityArizeDestinationConfig
+  public var config: OpenRouterObservabilityArizeDestination.Config
   public var createdAt: String
   public var enabled: Bool
   public var filterRules: OpenRouterObservabilityFilterRulesConfig?
@@ -25,7 +25,7 @@ public struct OpenRouterObservabilityArizeDestination: Codable, Sendable {
   public var privacyMode: Bool
   public var regions: [OpenRouterObservabilityDataRegion]
   public var samplingRate: Double
-  public var kind: OpenRouterObservabilityArizeDestinationKind
+  public var kind: OpenRouterObservabilityArizeDestination.Kind
   public var updatedAt: String
   public var workspaceId: String
 
@@ -35,7 +35,7 @@ public struct OpenRouterObservabilityArizeDestination: Codable, Sendable {
     broadcastGenerationCostAllocation: Bool,
     broadcastGenerationIdentity: Bool,
     broadcastGenerationRequestContext: Bool,
-    config: OpenRouterObservabilityArizeDestinationConfig,
+    config: OpenRouterObservabilityArizeDestination.Config,
     createdAt: String,
     enabled: Bool,
     filterRules: OpenRouterObservabilityFilterRulesConfig?,
@@ -44,7 +44,7 @@ public struct OpenRouterObservabilityArizeDestination: Codable, Sendable {
     privacyMode: Bool,
     regions: [OpenRouterObservabilityDataRegion],
     samplingRate: Double,
-    kind: OpenRouterObservabilityArizeDestinationKind,
+    kind: OpenRouterObservabilityArizeDestination.Kind,
     updatedAt: String,
     workspaceId: String
   ) {
@@ -85,5 +85,39 @@ public struct OpenRouterObservabilityArizeDestination: Codable, Sendable {
     case kind = "type"
     case updatedAt = "updated_at"
     case workspaceId = "workspace_id"
+  }
+
+  public struct Config: Codable, Sendable {
+    public var apiKey: String
+    public var baseUrl: String?
+    public var headers: [String: String]?
+    public var modelId: String
+    public var spaceKey: String
+
+    public init(
+      apiKey: String,
+      modelId: String,
+      spaceKey: String,
+      baseUrl: String? = nil,
+      headers: [String: String]? = nil
+    ) {
+      self.apiKey = apiKey
+      self.baseUrl = baseUrl
+      self.headers = headers
+      self.modelId = modelId
+      self.spaceKey = spaceKey
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case apiKey
+      case baseUrl
+      case headers
+      case modelId
+      case spaceKey
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case arize = "arize"
   }
 }

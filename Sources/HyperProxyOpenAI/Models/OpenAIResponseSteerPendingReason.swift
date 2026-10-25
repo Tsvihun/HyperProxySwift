@@ -41,4 +41,8 @@ public enum OpenAIResponseSteerPendingReason: RawRepresentable, Codable, Hashabl
     var container = encoder.singleValueContainer()
     try container.encode(rawValue)
   }
+
+  public enum WaitingForRequiredInput: String, Codable, Hashable, Sendable {
+    case waitingForRequiredInput = "waiting_for_required_input"
+  }
 }

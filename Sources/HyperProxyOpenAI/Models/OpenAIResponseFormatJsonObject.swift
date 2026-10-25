@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIResponseFormatJsonObject: Codable, Sendable {
-  public var kind: OpenAIResponseFormatJsonObjectKind
+  public var kind: OpenAIResponseFormatJsonObject.Kind
 
   public init(
-    kind: OpenAIResponseFormatJsonObjectKind
+    kind: OpenAIResponseFormatJsonObject.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case jsonObject = "json_object"
   }
 }

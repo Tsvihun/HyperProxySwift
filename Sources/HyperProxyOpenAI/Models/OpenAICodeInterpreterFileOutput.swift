@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAICodeInterpreterFileOutput: Codable, Sendable {
-  public var files: [OpenAICodeInterpreterFileOutputFilesItem]
-  public var kind: OpenAICodeInterpreterFileOutputKind
+  public var files: [OpenAICodeInterpreterFileOutput.FilesElement]
+  public var kind: OpenAICodeInterpreterFileOutput.Kind
 
   public init(
-    files: [OpenAICodeInterpreterFileOutputFilesItem],
-    kind: OpenAICodeInterpreterFileOutputKind
+    files: [OpenAICodeInterpreterFileOutput.FilesElement],
+    kind: OpenAICodeInterpreterFileOutput.Kind
   ) {
     self.files = files
     self.kind = kind
@@ -25,5 +25,27 @@ public struct OpenAICodeInterpreterFileOutput: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case files
     case kind = "type"
+  }
+
+  public struct FilesElement: Codable, Sendable {
+    public var fileId: String
+    public var mimeType: String
+
+    public init(
+      fileId: String,
+      mimeType: String
+    ) {
+      self.fileId = fileId
+      self.mimeType = mimeType
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case fileId = "file_id"
+      case mimeType = "mime_type"
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case files = "files"
   }
 }

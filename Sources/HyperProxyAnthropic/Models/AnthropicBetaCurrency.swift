@@ -11,5 +11,5 @@ import Foundation
 import HyperProxyCore
 
 public enum AnthropicBetaCurrency: String, Codable, Hashable, Sendable {
-  case uSD = "USD"
+  case usd = "USD"
 }

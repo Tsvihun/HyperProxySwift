@@ -11,15 +11,51 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherRLEncodedTextChunk: Codable, Sendable {
-  public var tokens: [TogetherRLEncodedTextChunkTokensItem]
+  public var tokens: [TogetherRLEncodedTextChunk.TokensElement]
 
   public init(
-    tokens: [TogetherRLEncodedTextChunkTokensItem]
+    tokens: [TogetherRLEncodedTextChunk.TokensElement]
   ) {
     self.tokens = tokens
   }
 
   enum CodingKeys: String, CodingKey {
     case tokens
+  }
+
+  public enum TokensElement: Codable, Sendable {
+    case integer(Int)
+    case string(String)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Int.self) {
+        self = .integer(value)
+        return
+      }
+      self = .string(try container.decode(String.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .integer(let value):
+        try container.encode(value)
+      case .string(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension TogetherRLEncodedTextChunk.TokensElement: ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Int) {
+    self = .integer(value)
+  }
+}
+
+extension TogetherRLEncodedTextChunk.TokensElement: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

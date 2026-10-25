@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenRouterAnthropicThinkingBlock: Codable, Sendable {
   public var signature: String
   public var thinking: String
-  public var kind: OpenRouterAnthropicThinkingBlockKind
+  public var kind: OpenRouterAnthropicThinkingBlock.Kind
 
   public init(
     signature: String,
     thinking: String,
-    kind: OpenRouterAnthropicThinkingBlockKind
+    kind: OpenRouterAnthropicThinkingBlock.Kind
   ) {
     self.signature = signature
     self.thinking = thinking
@@ -29,5 +29,9 @@ public struct OpenRouterAnthropicThinkingBlock: Codable, Sendable {
     case signature
     case thinking
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case thinking = "thinking"
   }
 }

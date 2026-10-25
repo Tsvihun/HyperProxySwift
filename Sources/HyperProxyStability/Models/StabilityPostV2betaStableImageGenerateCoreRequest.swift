@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct StabilityPostV2betaStableImageGenerateCoreRequest: Codable, Sendable {
   public var aspectRatio: StabilityAspectRatio?
   public var negativePrompt: String?
-  public var outputFormat: StabilityPostV2betaStableImageGenerateCoreRequestOutputFormat?
+  public var outputFormat: StabilityPostV2betaStableImageGenerateCoreRequest.OutputFormat?
   public var prompt: String
   public var seed: Double?
   public var stylePreset: StabilityStylePreset?
@@ -22,7 +22,7 @@ public struct StabilityPostV2betaStableImageGenerateCoreRequest: Codable, Sendab
     prompt: String,
     aspectRatio: StabilityAspectRatio? = nil,
     negativePrompt: String? = nil,
-    outputFormat: StabilityPostV2betaStableImageGenerateCoreRequestOutputFormat? = nil,
+    outputFormat: StabilityPostV2betaStableImageGenerateCoreRequest.OutputFormat? = nil,
     seed: Double? = nil,
     stylePreset: StabilityStylePreset? = nil
   ) {
@@ -41,5 +41,13 @@ public struct StabilityPostV2betaStableImageGenerateCoreRequest: Codable, Sendab
     case prompt
     case seed
     case stylePreset = "style_preset"
+  }
+
+  public enum OutputFormat: String, Codable,
+    Hashable, Sendable
+  {
+    case png = "png"
+    case jpeg = "jpeg"
+    case webp = "webp"
   }
 }

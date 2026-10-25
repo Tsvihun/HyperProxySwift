@@ -16,14 +16,14 @@ public struct OpenAIBetaMCPApprovalRequest: Codable, Sendable {
   public var id: String
   public var name: String
   public var serverLabel: String
-  public var kind: OpenAIBetaMCPApprovalRequestKind
+  public var kind: OpenAIBetaMCPApprovalRequest.Kind
 
   public init(
     arguments: String,
     id: String,
     name: String,
     serverLabel: String,
-    kind: OpenAIBetaMCPApprovalRequestKind,
+    kind: OpenAIBetaMCPApprovalRequest.Kind,
     agent: OpenAIBetaAgentTag? = nil
   ) {
     self.agent = agent
@@ -41,5 +41,9 @@ public struct OpenAIBetaMCPApprovalRequest: Codable, Sendable {
     case name
     case serverLabel = "server_label"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case mcpApprovalRequest = "mcp_approval_request"
   }
 }

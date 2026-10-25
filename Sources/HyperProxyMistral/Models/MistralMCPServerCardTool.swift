@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralMCPServerCardTool: Codable, Sendable {
-  public var meta: MistralMCPToolMeta?
+  public var _meta: MistralMCPToolMeta?
   public var annotations: MistralToolAnnotations?
   public var description: String?
   public var execution: MistralToolExecution?
@@ -24,7 +24,7 @@ public struct MistralMCPServerCardTool: Codable, Sendable {
   public init(
     inputSchema: [String: HyperProxyJSONValue],
     name: String,
-    meta: MistralMCPToolMeta? = nil,
+    _meta: MistralMCPToolMeta? = nil,
     annotations: MistralToolAnnotations? = nil,
     description: String? = nil,
     execution: MistralToolExecution? = nil,
@@ -32,7 +32,7 @@ public struct MistralMCPServerCardTool: Codable, Sendable {
     outputSchema: [String: HyperProxyJSONValue]? = nil,
     title: String? = nil
   ) {
-    self.meta = meta
+    self._meta = _meta
     self.annotations = annotations
     self.description = description
     self.execution = execution
@@ -44,7 +44,7 @@ public struct MistralMCPServerCardTool: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
-    case meta = "_meta"
+    case _meta
     case annotations
     case description
     case execution

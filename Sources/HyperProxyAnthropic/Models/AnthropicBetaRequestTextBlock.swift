@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct AnthropicBetaRequestTextBlock: Codable, Sendable {
   public var cacheControl: AnthropicBetaCacheControlEphemeral?
-  public var citations: [AnthropicBetaRequestTextBlockCitationsAnyOf1Item]?
+  public var citations: [AnthropicBetaRequestTextBlockCitationsItem]?
   public var text: String
   public var kind: AnthropicTextKind
 
@@ -20,7 +20,7 @@ public struct AnthropicBetaRequestTextBlock: Codable, Sendable {
     text: String,
     kind: AnthropicTextKind = .text,
     cacheControl: AnthropicBetaCacheControlEphemeral? = nil,
-    citations: [AnthropicBetaRequestTextBlockCitationsAnyOf1Item]? = nil
+    citations: [AnthropicBetaRequestTextBlockCitationsItem]? = nil
   ) {
     self.cacheControl = cacheControl
     self.citations = citations

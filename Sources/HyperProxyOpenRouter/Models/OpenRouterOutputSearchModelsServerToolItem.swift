@@ -16,11 +16,11 @@ public struct OpenRouterOutputSearchModelsServerToolItem: Codable, Sendable {
   public var id: String?
   public var query: String?
   public var status: OpenRouterFailableToolCallStatus
-  public var kind: OpenRouterOutputSearchModelsServerToolItemKind
+  public var kind: OpenRouterOutputSearchModelsServerToolItem.Kind
 
   public init(
     status: OpenRouterFailableToolCallStatus,
-    kind: OpenRouterOutputSearchModelsServerToolItemKind,
+    kind: OpenRouterOutputSearchModelsServerToolItem.Kind,
     arguments: String? = nil,
     error: String? = nil,
     id: String? = nil,
@@ -41,5 +41,9 @@ public struct OpenRouterOutputSearchModelsServerToolItem: Codable, Sendable {
     case query
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case openrouterExperimentalSearchModels = "openrouter:experimental__search_models"
   }
 }

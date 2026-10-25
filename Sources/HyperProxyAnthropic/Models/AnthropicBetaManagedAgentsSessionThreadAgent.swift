@@ -19,7 +19,7 @@ public struct AnthropicBetaManagedAgentsSessionThreadAgent: Codable, Sendable {
   public var skills: [AnthropicBetaManagedAgentsSkill]
   public var system: String?
   public var tools: [AnthropicBetaManagedAgentsAgentTool]
-  public var kind: AnthropicBetaManagedAgentsSessionThreadAgentKind
+  public var kind: AnthropicBetaManagedAgentsSessionThreadAgent.Kind
   public var version: Int
 
   public init(
@@ -31,7 +31,7 @@ public struct AnthropicBetaManagedAgentsSessionThreadAgent: Codable, Sendable {
     skills: [AnthropicBetaManagedAgentsSkill],
     system: String?,
     tools: [AnthropicBetaManagedAgentsAgentTool],
-    kind: AnthropicBetaManagedAgentsSessionThreadAgentKind,
+    kind: AnthropicBetaManagedAgentsSessionThreadAgent.Kind,
     version: Int
   ) {
     self.description = description
@@ -57,5 +57,9 @@ public struct AnthropicBetaManagedAgentsSessionThreadAgent: Codable, Sendable {
     case tools
     case kind = "type"
     case version
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case agent = "agent"
   }
 }

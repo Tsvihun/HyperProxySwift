@@ -18,7 +18,7 @@ public struct TogetherDERemoteUpload: Codable, Sendable {
   public var projectId: String
   public var remoteUrl: String
   public var restartCount: Int?
-  public var status: TogetherDERemoteUploadStatus
+  public var status: TogetherDERemoteUpload.Status
   public var statusMessage: String?
   public var updatedAt: String?
 
@@ -28,7 +28,7 @@ public struct TogetherDERemoteUpload: Codable, Sendable {
     modelId: String,
     projectId: String,
     remoteUrl: String,
-    status: TogetherDERemoteUploadStatus,
+    status: TogetherDERemoteUpload.Status,
     maxRestarts: Int? = nil,
     restartCount: Int? = nil,
     statusMessage: String? = nil,
@@ -57,5 +57,13 @@ public struct TogetherDERemoteUpload: Codable, Sendable {
     case status
     case statusMessage
     case updatedAt
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case remoteUploadStatusPending = "REMOTE_UPLOAD_STATUS_PENDING"
+    case remoteUploadStatusRunning = "REMOTE_UPLOAD_STATUS_RUNNING"
+    case remoteUploadStatusError = "REMOTE_UPLOAD_STATUS_ERROR"
+    case remoteUploadStatusSucceeded = "REMOTE_UPLOAD_STATUS_SUCCEEDED"
+    case remoteUploadStatusFailed = "REMOTE_UPLOAD_STATUS_FAILED"
   }
 }

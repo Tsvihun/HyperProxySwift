@@ -15,11 +15,11 @@ public struct DeepSeekModel: Codable, Sendable {
   public var contextWindow: Int?
   public var effort: DeepSeekModelEffort?
   public var id: String
-  public var inputModalities: [DeepSeekModelInputModalitiesItem]?
+  public var inputModalities: [DeepSeekModel.InputModalitiesElement]?
   public var maxOutputTokens: Int?
   public var name: String?
   public var object: DeepSeekModelObject
-  public var outputModalities: [DeepSeekModelOutputModalitiesItem]?
+  public var outputModalities: [DeepSeekModel.OutputModalitiesElement]?
   public var ownedBy: String
 
   public init(
@@ -29,10 +29,10 @@ public struct DeepSeekModel: Codable, Sendable {
     apiCapabilities: DeepSeekModelAPICapabilities? = nil,
     contextWindow: Int? = nil,
     effort: DeepSeekModelEffort? = nil,
-    inputModalities: [DeepSeekModelInputModalitiesItem]? = nil,
+    inputModalities: [DeepSeekModel.InputModalitiesElement]? = nil,
     maxOutputTokens: Int? = nil,
     name: String? = nil,
-    outputModalities: [DeepSeekModelOutputModalitiesItem]? = nil
+    outputModalities: [DeepSeekModel.OutputModalitiesElement]? = nil
   ) {
     self.apiCapabilities = apiCapabilities
     self.contextWindow = contextWindow
@@ -57,5 +57,14 @@ public struct DeepSeekModel: Codable, Sendable {
     case object
     case outputModalities = "output_modalities"
     case ownedBy = "owned_by"
+  }
+
+  public enum InputModalitiesElement: String, Codable, Hashable, Sendable {
+    case text = "text"
+    case image = "image"
+  }
+
+  public enum OutputModalitiesElement: String, Codable, Hashable, Sendable {
+    case text = "text"
   }
 }

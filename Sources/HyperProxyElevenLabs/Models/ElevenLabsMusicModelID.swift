@@ -13,5 +13,5 @@ import HyperProxyCore
 public enum ElevenLabsMusicModelID: String, Codable, Hashable, Sendable {
   case musicV1 = "music_v1"
   case musicV2 = "music_v2"
-  case musicV25 = "music_v2_5"
+  case musicV2_5 = "music_v2_5"
 }

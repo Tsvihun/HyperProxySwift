@@ -34,4 +34,18 @@ public struct OpenRouterStreamLogprob: Codable, Sendable {
     case token
     case topLogprobs = "top_logprobs"
   }
+
+  public struct WithTopLogprobs: Codable, Sendable {
+    public var topLogprobs: [OpenRouterStreamLogprobTopLogprob]?
+
+    public init(
+      topLogprobs: [OpenRouterStreamLogprobTopLogprob]? = nil
+    ) {
+      self.topLogprobs = topLogprobs
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case topLogprobs = "top_logprobs"
+    }
+  }
 }

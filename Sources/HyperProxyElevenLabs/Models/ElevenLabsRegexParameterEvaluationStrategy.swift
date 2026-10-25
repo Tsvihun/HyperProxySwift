@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsRegexParameterEvaluationStrategy: Codable, Sendable {
   public var pattern: String
-  public var kind: ElevenLabsRegexKind
+  public var kind: ElevenLabsRegexParameterEvaluationStrategy.Kind
 
   public init(
     pattern: String,
-    kind: ElevenLabsRegexKind = .regex
+    kind: ElevenLabsRegexParameterEvaluationStrategy.Kind = .regex
   ) {
     self.pattern = pattern
     self.kind = kind
@@ -25,5 +25,9 @@ public struct ElevenLabsRegexParameterEvaluationStrategy: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case pattern
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case regex = "regex"
   }
 }

@@ -14,13 +14,13 @@ public struct OpenRouterChatTokenLogprob: Codable, Sendable {
   public var bytes: [Int]
   public var logprob: Double
   public var token: String
-  public var topLogprobs: [OpenRouterChatTokenLogprobTopLogprobsItem]
+  public var topLogprobs: [OpenRouterChatTokenLogprob.TopLogprobsElement]
 
   public init(
     bytes: [Int],
     logprob: Double,
     token: String,
-    topLogprobs: [OpenRouterChatTokenLogprobTopLogprobsItem]
+    topLogprobs: [OpenRouterChatTokenLogprob.TopLogprobsElement]
   ) {
     self.bytes = bytes
     self.logprob = logprob
@@ -33,5 +33,27 @@ public struct OpenRouterChatTokenLogprob: Codable, Sendable {
     case logprob
     case token
     case topLogprobs = "top_logprobs"
+  }
+
+  public struct TopLogprobsElement: Codable, Sendable {
+    public var bytes: [Int]
+    public var logprob: Double
+    public var token: String
+
+    public init(
+      bytes: [Int],
+      logprob: Double,
+      token: String
+    ) {
+      self.bytes = bytes
+      self.logprob = logprob
+      self.token = token
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case bytes
+      case logprob
+      case token
+    }
   }
 }

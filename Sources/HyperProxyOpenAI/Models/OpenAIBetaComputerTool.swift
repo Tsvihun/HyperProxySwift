@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIBetaComputerTool: Codable, Sendable {
-  public var kind: OpenAIBetaComputerToolKind
+  public var kind: OpenAIBetaComputerTool.Kind
 
   public init(
-    kind: OpenAIBetaComputerToolKind
+    kind: OpenAIBetaComputerTool.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case computer = "computer"
   }
 }

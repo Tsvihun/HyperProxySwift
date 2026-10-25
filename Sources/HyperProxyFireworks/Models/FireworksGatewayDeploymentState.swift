@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksGatewayDeploymentState: String, Codable, Hashable, Sendable {
-  case sTATEUNSPECIFIED = "STATE_UNSPECIFIED"
-  case cREATING = "CREATING"
-  case rEADY = "READY"
-  case dELETING = "DELETING"
-  case fAILED = "FAILED"
-  case uPDATING = "UPDATING"
-  case dELETED = "DELETED"
+  case stateUnspecified = "STATE_UNSPECIFIED"
+  case creating = "CREATING"
+  case ready = "READY"
+  case deleting = "DELETING"
+  case failed = "FAILED"
+  case updating = "UPDATING"
+  case deleted = "DELETED"
 }

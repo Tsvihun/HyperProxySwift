@@ -17,7 +17,7 @@ public struct OpenAIVideoResource: Codable, Sendable {
   public var expiresAt: Int?
   public var id: String
   public var model: OpenAIVideoModel
-  public var object: OpenAIVideoResourceObject
+  public var object: OpenAIVideoResource.Object
   public var progress: Int
   public var prompt: String?
   public var remixedFromVideoId: String?
@@ -32,7 +32,7 @@ public struct OpenAIVideoResource: Codable, Sendable {
     expiresAt: Int?,
     id: String,
     model: OpenAIVideoModel,
-    object: OpenAIVideoResourceObject,
+    object: OpenAIVideoResource.Object,
     progress: Int,
     prompt: String?,
     remixedFromVideoId: String?,
@@ -69,5 +69,9 @@ public struct OpenAIVideoResource: Codable, Sendable {
     case seconds
     case size
     case status
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case video = "video"
   }
 }

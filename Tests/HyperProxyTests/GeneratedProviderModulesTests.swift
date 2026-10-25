@@ -40,15 +40,12 @@ struct GeneratedProviderModulesTests {
       appKey: "hp_live_test"
     )
     #expect(service.definition.id == "anthropic")
+    #expect(service.route(.betaGetApiKey).operation == AnthropicOperation.betaGetApiKey.rawValue)
     #expect(
-      service.route(.betaGetApiKeyV1OrganizationsApiKeysApiKeyIdGet).operation
-        == AnthropicOperation.betaGetApiKeyV1OrganizationsApiKeysApiKeyIdGet.rawValue)
+      service.betaListEnvironments.operation.rawValue
+        == AnthropicOperation.betaListEnvironments.rawValue)
     #expect(
-      service.betaListEnvironmentsV1EnvironmentsGet.operation.rawValue
-        == AnthropicOperation.betaListEnvironmentsV1EnvironmentsGet.rawValue)
-    #expect(
-      service.admin.betaGetApiKeyV1OrganizationsApiKeysApiKeyIdGet.operation.rawValue
-        == AnthropicOperation.betaGetApiKeyV1OrganizationsApiKeysApiKeyIdGet.rawValue)
+      service.admin.betaGetApiKey.operation.rawValue == AnthropicOperation.betaGetApiKey.rawValue)
   }
 
   @Test("Google Gemini operations match the catalog")

@@ -12,14 +12,14 @@ import HyperProxyCore
 
 public struct DeepLCreateGlossaryParameters: Codable, Sendable {
   public var entries: String
-  public var entriesFormat: DeepLCreateGlossaryParametersEntriesFormat
+  public var entriesFormat: DeepLCreateGlossaryParameters.EntriesFormat
   public var name: String
   public var sourceLang: DeepLGlossarySourceLanguage
   public var targetLang: DeepLGlossaryTargetLanguage
 
   public init(
     entries: String,
-    entriesFormat: DeepLCreateGlossaryParametersEntriesFormat,
+    entriesFormat: DeepLCreateGlossaryParameters.EntriesFormat,
     name: String,
     sourceLang: DeepLGlossarySourceLanguage,
     targetLang: DeepLGlossaryTargetLanguage
@@ -37,5 +37,10 @@ public struct DeepLCreateGlossaryParameters: Codable, Sendable {
     case name
     case sourceLang = "source_lang"
     case targetLang = "target_lang"
+  }
+
+  public enum EntriesFormat: String, Codable, Hashable, Sendable {
+    case tsv = "tsv"
+    case csv = "csv"
   }
 }

@@ -24,7 +24,7 @@ public struct TogetherRLTrainingSession: Codable, Sendable {
   public var policyState: TogetherRLSessionPolicyState
   public var resumeFromCheckpointId: String?
   public var status: TogetherRLTrainingSessionStatus
-  public var step: TogetherRLTrainingSessionStep
+  public var step: TogetherRLTrainingSession.Step
   public var trainingCheckpoints: [TogetherRLTrainingCheckpoint]
   public var updatedAt: String
 
@@ -38,7 +38,7 @@ public struct TogetherRLTrainingSession: Codable, Sendable {
     modelResourcesId: String,
     policyState: TogetherRLSessionPolicyState,
     status: TogetherRLTrainingSessionStatus,
-    step: TogetherRLTrainingSessionStep,
+    step: TogetherRLTrainingSession.Step,
     trainingCheckpoints: [TogetherRLTrainingCheckpoint],
     updatedAt: String,
     displayName: String? = nil,
@@ -81,5 +81,41 @@ public struct TogetherRLTrainingSession: Codable, Sendable {
     case step
     case trainingCheckpoints = "training_checkpoints"
     case updatedAt = "updated_at"
+  }
+
+  public enum Step: Codable, Sendable {
+    case integer(Int)
+    case string(String)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Int.self) {
+        self = .integer(value)
+        return
+      }
+      self = .string(try container.decode(String.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .integer(let value):
+        try container.encode(value)
+      case .string(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension TogetherRLTrainingSession.Step: ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Int) {
+    self = .integer(value)
+  }
+}
+
+extension TogetherRLTrainingSession.Step: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

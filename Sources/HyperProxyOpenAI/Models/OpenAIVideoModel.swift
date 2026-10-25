@@ -13,9 +13,9 @@ import HyperProxyCore
 public enum OpenAIVideoModel: RawRepresentable, Codable, Hashable, Sendable {
   case sora2
   case sora2Pro
-  case sora220251006
-  case sora2Pro20251006
-  case sora220251208
+  case sora2_2025_10_06
+  case sora2Pro2025_10_06
+  case sora2_2025_12_08
   case custom(String)
 
   public init(rawValue: String) {
@@ -25,11 +25,11 @@ public enum OpenAIVideoModel: RawRepresentable, Codable, Hashable, Sendable {
     case "sora-2-pro":
       self = .sora2Pro
     case "sora-2-2025-10-06":
-      self = .sora220251006
+      self = .sora2_2025_10_06
     case "sora-2-pro-2025-10-06":
-      self = .sora2Pro20251006
+      self = .sora2Pro2025_10_06
     case "sora-2-2025-12-08":
-      self = .sora220251208
+      self = .sora2_2025_12_08
     default:
       self = .custom(rawValue)
     }
@@ -41,11 +41,11 @@ public enum OpenAIVideoModel: RawRepresentable, Codable, Hashable, Sendable {
       return "sora-2"
     case .sora2Pro:
       return "sora-2-pro"
-    case .sora220251006:
+    case .sora2_2025_10_06:
       return "sora-2-2025-10-06"
-    case .sora2Pro20251006:
+    case .sora2Pro2025_10_06:
       return "sora-2-pro-2025-10-06"
-    case .sora220251208:
+    case .sora2_2025_12_08:
       return "sora-2-2025-12-08"
     case .custom(let value):
       return value
@@ -60,5 +60,13 @@ public enum OpenAIVideoModel: RawRepresentable, Codable, Hashable, Sendable {
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     try container.encode(rawValue)
+  }
+
+  public enum Preset: String, Codable, Hashable, Sendable {
+    case sora2 = "sora-2"
+    case sora2Pro = "sora-2-pro"
+    case sora2_2025_10_06 = "sora-2-2025-10-06"
+    case sora2Pro2025_10_06 = "sora-2-pro-2025-10-06"
+    case sora2_2025_12_08 = "sora-2-2025-12-08"
   }
 }

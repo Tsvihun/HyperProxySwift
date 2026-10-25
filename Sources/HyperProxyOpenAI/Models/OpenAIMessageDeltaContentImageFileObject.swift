@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIMessageDeltaContentImageFileObject: Codable, Sendable {
-  public var imageFile: OpenAIMessageDeltaContentImageFileObjectImageFile?
+  public var imageFile: OpenAIMessageDeltaContentImageFileObject.ImageFile?
   public var index: Int
-  public var kind: OpenAIMessageDeltaContentImageFileObjectKind
+  public var kind: OpenAIMessageDeltaContentImageFileObject.Kind
 
   public init(
     index: Int,
-    kind: OpenAIMessageDeltaContentImageFileObjectKind,
-    imageFile: OpenAIMessageDeltaContentImageFileObjectImageFile? = nil
+    kind: OpenAIMessageDeltaContentImageFileObject.Kind,
+    imageFile: OpenAIMessageDeltaContentImageFileObject.ImageFile? = nil
   ) {
     self.imageFile = imageFile
     self.index = index
@@ -29,5 +29,35 @@ public struct OpenAIMessageDeltaContentImageFileObject: Codable, Sendable {
     case imageFile = "image_file"
     case index
     case kind = "type"
+  }
+
+  public struct ImageFile: Codable, Sendable {
+    public var detail: OpenAIMessageDeltaContentImageFileObject.ImageFile.Detail?
+    public var fileId: String?
+
+    public init(
+      detail: OpenAIMessageDeltaContentImageFileObject.ImageFile.Detail? = nil,
+      fileId: String? = nil
+    ) {
+      self.detail = detail
+      self.fileId = fileId
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case detail
+      case fileId = "file_id"
+    }
+
+    public enum Detail: String, Codable, Hashable,
+      Sendable
+    {
+      case auto = "auto"
+      case low = "low"
+      case high = "high"
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case imageFile = "image_file"
   }
 }

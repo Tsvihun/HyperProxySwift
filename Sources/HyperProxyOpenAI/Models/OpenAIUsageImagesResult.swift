@@ -15,7 +15,7 @@ public struct OpenAIUsageImagesResult: Codable, Sendable {
   public var images: Int
   public var model: String?
   public var numModelRequests: Int
-  public var object: OpenAIUsageImagesResultObject
+  public var object: OpenAIUsageImagesResult.Object
   public var projectId: String?
   public var size: String?
   public var source: String?
@@ -24,7 +24,7 @@ public struct OpenAIUsageImagesResult: Codable, Sendable {
   public init(
     images: Int,
     numModelRequests: Int,
-    object: OpenAIUsageImagesResultObject,
+    object: OpenAIUsageImagesResult.Object,
     apiKeyId: String? = nil,
     model: String? = nil,
     projectId: String? = nil,
@@ -53,5 +53,9 @@ public struct OpenAIUsageImagesResult: Codable, Sendable {
     case size
     case source
     case userId = "user_id"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case organizationUsageImagesResult = "organization.usage.images.result"
   }
 }

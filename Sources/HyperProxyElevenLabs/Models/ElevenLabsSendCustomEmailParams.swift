@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsSendCustomEmailParams: Codable, Sendable {
-  public var smbToolType: ElevenLabsSendCustomEmailSmbToolType?
+  public var smbToolType: ElevenLabsSendCustomEmailParams.SmbToolType?
 
   public init(
-    smbToolType: ElevenLabsSendCustomEmailSmbToolType? = nil
+    smbToolType: ElevenLabsSendCustomEmailParams.SmbToolType? = nil
   ) {
     self.smbToolType = smbToolType
   }
 
   enum CodingKeys: String, CodingKey {
     case smbToolType = "smb_tool_type"
+  }
+
+  public enum SmbToolType: String, Codable, Hashable, Sendable {
+    case sendCustomEmail = "send_custom_email"
   }
 }

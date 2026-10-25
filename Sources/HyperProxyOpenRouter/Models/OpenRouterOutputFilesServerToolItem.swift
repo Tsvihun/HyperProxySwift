@@ -20,11 +20,11 @@ public struct OpenRouterOutputFilesServerToolItem: Codable, Sendable {
   public var operation: String?
   public var result: String?
   public var status: OpenRouterToolCallStatus
-  public var kind: OpenRouterOutputFilesServerToolItemKind
+  public var kind: OpenRouterOutputFilesServerToolItem.Kind
 
   public init(
     status: OpenRouterToolCallStatus,
-    kind: OpenRouterOutputFilesServerToolItemKind,
+    kind: OpenRouterOutputFilesServerToolItem.Kind,
     arguments: String? = nil,
     callId: String? = nil,
     error: String? = nil,
@@ -57,5 +57,9 @@ public struct OpenRouterOutputFilesServerToolItem: Codable, Sendable {
     case result
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case openrouterFiles = "openrouter:files"
   }
 }

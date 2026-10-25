@@ -30,18 +30,18 @@ public struct ElevenLabsConversationHistoryTranscriptResponseModel: Codable, Sen
   public var ragRetrievalInfo: ElevenLabsRagRetrievalInfo?
   public var reasoned: Bool?
   public var reasoning: [ElevenLabsConversationReasoningModel]?
-  public var role: ElevenLabsConversationHistoryTranscriptResponseModelRole
+  public var role: ElevenLabsConversationHistoryTranscriptResponseModel.Role
   public var sourceEventId: Int?
   public var sourceMedium: ElevenLabsChatSourceMedium?
   public var timeInCallSecs: Int
   public var toolCalls: [ElevenLabsConversationHistoryTranscriptToolCallCommonModelOutput]?
-  public var toolResults: [ElevenLabsConversationHistoryTranscriptResponseModelToolResultsItem]?
+  public var toolResults: [ElevenLabsConversationHistoryTranscriptResponseModel.ToolResultsElement]?
   public var triggeredGuardrails: [ElevenLabsTriggeredGuardrailCommonModel]?
   public var usedStaticKbDocumentIds: [String]?
   public var userIdentifier: String?
 
   public init(
-    role: ElevenLabsConversationHistoryTranscriptResponseModelRole,
+    role: ElevenLabsConversationHistoryTranscriptResponseModel.Role,
     timeInCallSecs: Int,
     agentMetadata: ElevenLabsAgentMetadata? = nil,
     contextualUpdateInfo: ElevenLabsContextualUpdateInfo? = nil,
@@ -65,7 +65,7 @@ public struct ElevenLabsConversationHistoryTranscriptResponseModel: Codable, Sen
     sourceEventId: Int? = nil,
     sourceMedium: ElevenLabsChatSourceMedium? = nil,
     toolCalls: [ElevenLabsConversationHistoryTranscriptToolCallCommonModelOutput]? = nil,
-    toolResults: [ElevenLabsConversationHistoryTranscriptResponseModelToolResultsItem]? = nil,
+    toolResults: [ElevenLabsConversationHistoryTranscriptResponseModel.ToolResultsElement]? = nil,
     triggeredGuardrails: [ElevenLabsTriggeredGuardrailCommonModel]? = nil,
     usedStaticKbDocumentIds: [String]? = nil,
     userIdentifier: String? = nil
@@ -129,5 +129,65 @@ public struct ElevenLabsConversationHistoryTranscriptResponseModel: Codable, Sen
     case triggeredGuardrails = "triggered_guardrails"
     case usedStaticKbDocumentIds = "used_static_kb_document_ids"
     case userIdentifier = "user_identifier"
+  }
+
+  public enum Role: String, Codable, Hashable,
+    Sendable
+  {
+    case user = "user"
+    case agent = "agent"
+  }
+
+  public enum ToolResultsElement: Codable, Sendable {
+    case conversationHistoryTranscriptOtherToolsResultCommonModel(
+      ElevenLabsConversationHistoryTranscriptOtherToolsResultCommonModel)
+    case conversationHistoryTranscriptSystemToolResultCommonModelOutput(
+      ElevenLabsConversationHistoryTranscriptSystemToolResultCommonModelOutput)
+    case conversationHistoryTranscriptApiIntegrationWebhookToolsResultCommonModelOutput(
+      ElevenLabsConversationHistoryTranscriptApiIntegrationWebhookToolsResultCommonModelOutput)
+    case conversationHistoryTranscriptWorkflowToolsResultCommonModelOutput(
+      ElevenLabsConversationHistoryTranscriptWorkflowToolsResultCommonModelOutput)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(
+        ElevenLabsConversationHistoryTranscriptOtherToolsResultCommonModel.self)
+      {
+        self = .conversationHistoryTranscriptOtherToolsResultCommonModel(value)
+        return
+      }
+      if let value = try? container.decode(
+        ElevenLabsConversationHistoryTranscriptSystemToolResultCommonModelOutput.self)
+      {
+        self = .conversationHistoryTranscriptSystemToolResultCommonModelOutput(value)
+        return
+      }
+      if let value = try? container.decode(
+        ElevenLabsConversationHistoryTranscriptApiIntegrationWebhookToolsResultCommonModelOutput
+          .self)
+      {
+        self = .conversationHistoryTranscriptApiIntegrationWebhookToolsResultCommonModelOutput(
+          value)
+        return
+      }
+      self = .conversationHistoryTranscriptWorkflowToolsResultCommonModelOutput(
+        try container.decode(
+          ElevenLabsConversationHistoryTranscriptWorkflowToolsResultCommonModelOutput.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .conversationHistoryTranscriptOtherToolsResultCommonModel(let value):
+        try container.encode(value)
+      case .conversationHistoryTranscriptSystemToolResultCommonModelOutput(let value):
+        try container.encode(value)
+      case .conversationHistoryTranscriptApiIntegrationWebhookToolsResultCommonModelOutput(
+        let value):
+        try container.encode(value)
+      case .conversationHistoryTranscriptWorkflowToolsResultCommonModelOutput(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicCitationsDelta: Codable, Sendable {
-  public var citation: AnthropicCitationsDeltaCitation
+  public var citation: AnthropicCitationsDelta.Citation
   public var kind: AnthropicCitationsDeltaKind
 
   public init(
-    citation: AnthropicCitationsDeltaCitation,
+    citation: AnthropicCitationsDelta.Citation,
     kind: AnthropicCitationsDeltaKind = .citationsDelta
   ) {
     self.citation = citation
@@ -25,5 +25,51 @@ public struct AnthropicCitationsDelta: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case citation
     case kind = "type"
+  }
+
+  public enum Citation: Codable, Sendable {
+    case responseCharLocationCitation(AnthropicResponseCharLocationCitation)
+    case responsePageLocationCitation(AnthropicResponsePageLocationCitation)
+    case responseContentBlockLocationCitation(AnthropicResponseContentBlockLocationCitation)
+    case responseWebSearchResultLocationCitation(AnthropicResponseWebSearchResultLocationCitation)
+    case responseSearchResultLocationCitation(AnthropicResponseSearchResultLocationCitation)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(AnthropicResponseCharLocationCitation.self) {
+        self = .responseCharLocationCitation(value)
+        return
+      }
+      if let value = try? container.decode(AnthropicResponsePageLocationCitation.self) {
+        self = .responsePageLocationCitation(value)
+        return
+      }
+      if let value = try? container.decode(AnthropicResponseContentBlockLocationCitation.self) {
+        self = .responseContentBlockLocationCitation(value)
+        return
+      }
+      if let value = try? container.decode(AnthropicResponseWebSearchResultLocationCitation.self) {
+        self = .responseWebSearchResultLocationCitation(value)
+        return
+      }
+      self = .responseSearchResultLocationCitation(
+        try container.decode(AnthropicResponseSearchResultLocationCitation.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .responseCharLocationCitation(let value):
+        try container.encode(value)
+      case .responsePageLocationCitation(let value):
+        try container.encode(value)
+      case .responseContentBlockLocationCitation(let value):
+        try container.encode(value)
+      case .responseWebSearchResultLocationCitation(let value):
+        try container.encode(value)
+      case .responseSearchResultLocationCitation(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

@@ -19,7 +19,8 @@ public struct ElevenLabsBodySendAnOutboundMessageViaWhatsAppV1ConvaiWhatsappOutb
   public var templateLanguageCode: String
   public var templateName: String
   public var templateParams:
-    [ElevenLabsBodySendAnOutboundMessageViaWhatsAppV1ConvaiWhatsappOutboundMessagePostTemplateParamsItem]
+    [ElevenLabsBodySendAnOutboundMessageViaWhatsAppV1ConvaiWhatsappOutboundMessagePost
+      .TemplateParamsElement]
   public var whatsappPhoneNumberId: String
   public var whatsappUserId: String
 
@@ -28,7 +29,8 @@ public struct ElevenLabsBodySendAnOutboundMessageViaWhatsAppV1ConvaiWhatsappOutb
     templateLanguageCode: String,
     templateName: String,
     templateParams:
-      [ElevenLabsBodySendAnOutboundMessageViaWhatsAppV1ConvaiWhatsappOutboundMessagePostTemplateParamsItem],
+      [ElevenLabsBodySendAnOutboundMessageViaWhatsAppV1ConvaiWhatsappOutboundMessagePost
+      .TemplateParamsElement],
     whatsappPhoneNumberId: String,
     whatsappUserId: String,
     conversationInitiationClientData: ElevenLabsConversationInitiationClientDataRequestInput? = nil
@@ -50,5 +52,40 @@ public struct ElevenLabsBodySendAnOutboundMessageViaWhatsAppV1ConvaiWhatsappOutb
     case templateParams = "template_params"
     case whatsappPhoneNumberId = "whatsapp_phone_number_id"
     case whatsappUserId = "whatsapp_user_id"
+  }
+
+  public enum
+    TemplateParamsElement:
+      Codable, Sendable
+  {
+    case whatsAppTemplateHeaderComponentParams(ElevenLabsWhatsAppTemplateHeaderComponentParams)
+    case whatsAppTemplateBodyComponentParams(ElevenLabsWhatsAppTemplateBodyComponentParams)
+    case whatsAppTemplateButtonComponentParams(ElevenLabsWhatsAppTemplateButtonComponentParams)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsWhatsAppTemplateHeaderComponentParams.self) {
+        self = .whatsAppTemplateHeaderComponentParams(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsWhatsAppTemplateBodyComponentParams.self) {
+        self = .whatsAppTemplateBodyComponentParams(value)
+        return
+      }
+      self = .whatsAppTemplateButtonComponentParams(
+        try container.decode(ElevenLabsWhatsAppTemplateButtonComponentParams.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .whatsAppTemplateHeaderComponentParams(let value):
+        try container.encode(value)
+      case .whatsAppTemplateBodyComponentParams(let value):
+        try container.encode(value)
+      case .whatsAppTemplateButtonComponentParams(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

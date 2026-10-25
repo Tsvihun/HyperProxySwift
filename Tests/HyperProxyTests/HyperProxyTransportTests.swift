@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import HyperProxyAnthropic
 import HyperProxyOpenAI
 import HyperProxyTogether
 import Testing
@@ -18,6 +19,27 @@ struct HyperProxyTransportTests {
   private let gatewayURL = URL(
     string: "https://api.hyperproxyai.com/project123/service456"
   )!
+
+  @Test("Generated Anthropic batch results decode JSONL records across chunk boundaries")
+  func generatedBatchResultsJSONL() async throws {
+    let payload = Data(
+      (#"{"custom_id":"one","result":{"type":"canceled"}}"# + "\n"
+        + #"{"custom_id":"two","result":{"type":"expired"}}"# + "\n").utf8)
+    let stub = TransportURLProtocol.stub
+    stub.reset()
+    stub.handler = { request in
+      #expect(request.url?.path.hasSuffix("/v1/messages/batches/batch_test/results") == true)
+      return .init(
+        status: 200, headers: ["Content-Type": "application/x-jsonl"],
+        chunks: [Data(payload.prefix(23)), Data(payload.dropFirst(23))])
+    }
+    let service = HyperProxy.anthropic(client: self.client())
+    var identifiers: [String] = []
+    for try await record in try service.messageBatchesResults(batchId: "batch_test") {
+      identifiers.append(record.customId)
+    }
+    #expect(identifiers == ["one", "two"])
+  }
 
   @Test("Decodes a response while preserving status, headers, and request id")
   func decodedResponseMetadata() async throws {

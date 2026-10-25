@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIDeleteFineTuningCheckpointPermissionResponse: Codable, Sendable {
   public var deleted: Bool
   public var id: String
-  public var object: OpenAIDeleteFineTuningCheckpointPermissionResponseObject
+  public var object: OpenAIDeleteFineTuningCheckpointPermissionResponse.Object
 
   public init(
     deleted: Bool,
     id: String,
-    object: OpenAIDeleteFineTuningCheckpointPermissionResponseObject
+    object: OpenAIDeleteFineTuningCheckpointPermissionResponse.Object
   ) {
     self.deleted = deleted
     self.id = id
@@ -29,5 +29,11 @@ public struct OpenAIDeleteFineTuningCheckpointPermissionResponse: Codable, Senda
     case deleted
     case id
     case object
+  }
+
+  public enum Object: String, Codable, Hashable,
+    Sendable
+  {
+    case checkpointPermission = "checkpoint.permission"
   }
 }

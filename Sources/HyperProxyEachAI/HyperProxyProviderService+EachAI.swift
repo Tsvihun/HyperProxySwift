@@ -53,13 +53,13 @@ extension HyperProxyProviderService where Operation == EachAIOperation {
   public var predictionsRun: HyperProxyProviderCall<EachAIOperation> {
     self.call(.predictionsRun)
   }
-  /// `GET v1/prediction/{id}`
-  public var predictionsRetrieve: HyperProxyProviderCall<EachAIOperation> {
-    self.call(.predictionsRetrieve)
-  }
   /// `POST v1/prediction/{id}/cancel`
   public var predictionsCancel: HyperProxyProviderCall<EachAIOperation> {
     self.call(.predictionsCancel)
+  }
+  /// `GET v1/prediction/{prediction_id}`
+  public var predictionsRetrieve: HyperProxyProviderCall<EachAIOperation> {
+    self.call(.predictionsRetrieve)
   }
   /// `POST v1/upload/presign`
   public var uploadsCreatePresignedURL: HyperProxyProviderCall<EachAIOperation> {

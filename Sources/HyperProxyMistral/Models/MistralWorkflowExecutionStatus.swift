@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public enum MistralWorkflowExecutionStatus: String, Codable, Hashable, Sendable {
-  case rUNNING = "RUNNING"
-  case cOMPLETED = "COMPLETED"
-  case fAILED = "FAILED"
-  case cANCELED = "CANCELED"
-  case tERMINATED = "TERMINATED"
-  case cONTINUEDASNEW = "CONTINUED_AS_NEW"
-  case tIMEDOUT = "TIMED_OUT"
-  case rETRYINGAFTERERROR = "RETRYING_AFTER_ERROR"
+  case running = "RUNNING"
+  case completed = "COMPLETED"
+  case failed = "FAILED"
+  case canceled = "CANCELED"
+  case terminated = "TERMINATED"
+  case continuedAsNew = "CONTINUED_AS_NEW"
+  case timedOut = "TIMED_OUT"
+  case retryingAfterError = "RETRYING_AFTER_ERROR"
 }

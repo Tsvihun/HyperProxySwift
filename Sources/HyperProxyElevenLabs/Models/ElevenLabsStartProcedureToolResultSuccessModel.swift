@@ -16,7 +16,7 @@ public struct ElevenLabsStartProcedureToolResultSuccessModel: Codable, Sendable 
   public var procedureId: String
   public var procedureName: String
   public var procedureReturnWorkflowNode: String?
-  public var resultType: ElevenLabsStartProcedureSuccessResultType?
+  public var resultType: ElevenLabsStartProcedureToolResultSuccessModel.ResultType?
   public var status: ElevenLabsSuccessStatus?
 
   public init(
@@ -25,7 +25,7 @@ public struct ElevenLabsStartProcedureToolResultSuccessModel: Codable, Sendable 
     message: String? = nil,
     procedureEntryWorkflowNode: String? = nil,
     procedureReturnWorkflowNode: String? = nil,
-    resultType: ElevenLabsStartProcedureSuccessResultType? = nil,
+    resultType: ElevenLabsStartProcedureToolResultSuccessModel.ResultType? = nil,
     status: ElevenLabsSuccessStatus? = nil
   ) {
     self.message = message
@@ -45,5 +45,9 @@ public struct ElevenLabsStartProcedureToolResultSuccessModel: Codable, Sendable 
     case procedureReturnWorkflowNode = "procedure_return_workflow_node"
     case resultType = "result_type"
     case status
+  }
+
+  public enum ResultType: String, Codable, Hashable, Sendable {
+    case startProcedureSuccess = "start_procedure_success"
   }
 }

@@ -11,14 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct FireworksCompletionRequest: Codable, Sendable {
-  public var contextLengthExceededBehavior: FireworksCompletionRequestContextLengthExceededBehavior?
+  public var contextLengthExceededBehavior:
+    FireworksCompletionRequest.ContextLengthExceededBehavior?
   public var echo: Bool?
   public var echoLast: Int?
   public var frequencyPenalty: Double?
   public var ignoreEos: Bool?
-  public var images: FireworksCompletionRequestImages?
+  public var images: FireworksCompletionRequest.Images?
   public var logitBias: [String: Double]?
-  public var logprobs: FireworksCompletionRequestLogprobs?
+  public var logprobs: FireworksCompletionRequest.Logprobs?
   public var maxCompletionTokens: Int?
   public var maxTokens: Int?
   public var metadata: [String: String]?
@@ -28,26 +29,26 @@ public struct FireworksCompletionRequest: Codable, Sendable {
   public var model: String
   public var n: Int?
   public var perfMetricsInResponse: Bool?
-  public var prediction: FireworksCompletionRequestPrediction?
+  public var prediction: FireworksCompletionRequest.Prediction?
   public var presencePenalty: Double?
-  public var prompt: FireworksCompletionRequestPrompt
+  public var prompt: FireworksCompletionRequest.Prompt
   public var promptCacheIsolationKey: String?
   public var promptCacheKey: String?
   public var rawOutput: Bool?
-  public var reasoningEffort: FireworksCompletionRequestReasoningEffort?
-  public var reasoningHistory: FireworksCompletionRequestReasoningHistory?
+  public var reasoningEffort: FireworksCompletionRequest.ReasoningEffort?
+  public var reasoningHistory: FireworksCompletionRequest.ReasoningHistory?
   public var repetitionPenalty: Double?
   public var responseFormat: FireworksResponseFormat?
   public var returnTokenIds: Bool?
-  public var samplingMask: FireworksCompletionRequestSamplingMask?
+  public var samplingMask: FireworksCompletionRequest.SamplingMask?
   public var seed: Int?
-  public var serviceTier: FireworksCompletionRequestServiceTier?
-  public var speculation: FireworksCompletionRequestSpeculation?
-  public var stop: FireworksCompletionRequestStop?
+  public var serviceTier: FireworksCompletionRequest.ServiceTier?
+  public var speculation: FireworksCompletionRequest.Speculation?
+  public var stop: FireworksCompletionRequest.Stop?
   public var stream: Bool?
   public var streamOptions: FireworksStreamOptions?
   public var temperature: Double?
-  public var thinking: FireworksCompletionRequestThinking?
+  public var thinking: FireworksCompletionRequest.Thinking?
   public var topK: Int?
   public var topLogprobs: Int?
   public var topP: Double?
@@ -56,15 +57,15 @@ public struct FireworksCompletionRequest: Codable, Sendable {
 
   public init(
     model: String,
-    prompt: FireworksCompletionRequestPrompt,
-    contextLengthExceededBehavior: FireworksCompletionRequestContextLengthExceededBehavior? = nil,
+    prompt: FireworksCompletionRequest.Prompt,
+    contextLengthExceededBehavior: FireworksCompletionRequest.ContextLengthExceededBehavior? = nil,
     echo: Bool? = nil,
     echoLast: Int? = nil,
     frequencyPenalty: Double? = nil,
     ignoreEos: Bool? = nil,
-    images: FireworksCompletionRequestImages? = nil,
+    images: FireworksCompletionRequest.Images? = nil,
     logitBias: [String: Double]? = nil,
-    logprobs: FireworksCompletionRequestLogprobs? = nil,
+    logprobs: FireworksCompletionRequest.Logprobs? = nil,
     maxCompletionTokens: Int? = nil,
     maxTokens: Int? = nil,
     metadata: [String: String]? = nil,
@@ -73,25 +74,25 @@ public struct FireworksCompletionRequest: Codable, Sendable {
     mirostatTarget: Double? = nil,
     n: Int? = nil,
     perfMetricsInResponse: Bool? = nil,
-    prediction: FireworksCompletionRequestPrediction? = nil,
+    prediction: FireworksCompletionRequest.Prediction? = nil,
     presencePenalty: Double? = nil,
     promptCacheIsolationKey: String? = nil,
     promptCacheKey: String? = nil,
     rawOutput: Bool? = nil,
-    reasoningEffort: FireworksCompletionRequestReasoningEffort? = nil,
-    reasoningHistory: FireworksCompletionRequestReasoningHistory? = nil,
+    reasoningEffort: FireworksCompletionRequest.ReasoningEffort? = nil,
+    reasoningHistory: FireworksCompletionRequest.ReasoningHistory? = nil,
     repetitionPenalty: Double? = nil,
     responseFormat: FireworksResponseFormat? = nil,
     returnTokenIds: Bool? = nil,
-    samplingMask: FireworksCompletionRequestSamplingMask? = nil,
+    samplingMask: FireworksCompletionRequest.SamplingMask? = nil,
     seed: Int? = nil,
-    serviceTier: FireworksCompletionRequestServiceTier? = nil,
-    speculation: FireworksCompletionRequestSpeculation? = nil,
-    stop: FireworksCompletionRequestStop? = nil,
+    serviceTier: FireworksCompletionRequest.ServiceTier? = nil,
+    speculation: FireworksCompletionRequest.Speculation? = nil,
+    stop: FireworksCompletionRequest.Stop? = nil,
     stream: Bool? = nil,
     streamOptions: FireworksStreamOptions? = nil,
     temperature: Double? = nil,
-    thinking: FireworksCompletionRequestThinking? = nil,
+    thinking: FireworksCompletionRequest.Thinking? = nil,
     topK: Int? = nil,
     topLogprobs: Int? = nil,
     topP: Double? = nil,
@@ -185,5 +186,331 @@ public struct FireworksCompletionRequest: Codable, Sendable {
     case topP = "top_p"
     case typicalP = "typical_p"
     case user
+  }
+
+  public enum ContextLengthExceededBehavior: String, Codable, Hashable,
+    Sendable
+  {
+    case error = "error"
+    case truncate = "truncate"
+  }
+
+  public enum Images: Codable, Sendable {
+    case stringArray([String])
+    case arrayArray([[String]])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode([String].self) {
+        self = .stringArray(value)
+        return
+      }
+      self = .arrayArray(try container.decode([[String]].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .stringArray(let value):
+        try container.encode(value)
+      case .arrayArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Logprobs: Codable, Sendable {
+    case boolean(Bool)
+    case integer(Int)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Bool.self) {
+        self = .boolean(value)
+        return
+      }
+      self = .integer(try container.decode(Int.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .boolean(let value):
+        try container.encode(value)
+      case .integer(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Prediction: Codable, Sendable {
+    case string(String)
+    case predictedOutput(FireworksPredictedOutput)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .predictedOutput(try container.decode(FireworksPredictedOutput.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .predictedOutput(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Prompt: Codable, Sendable {
+    case string(String)
+    case stringArray([String])
+    case integerArray([Int])
+    case arrayArray([[Int]])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      if let value = try? container.decode([String].self) {
+        self = .stringArray(value)
+        return
+      }
+      if let value = try? container.decode([Int].self) {
+        self = .integerArray(value)
+        return
+      }
+      self = .arrayArray(try container.decode([[Int]].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .stringArray(let value):
+        try container.encode(value)
+      case .integerArray(let value):
+        try container.encode(value)
+      case .arrayArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum ReasoningEffort: Codable, Sendable {
+    case boolean(Bool)
+    case integer(Int)
+    case preset(FireworksCompletionRequest.ReasoningEffort.Preset)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Bool.self) {
+        self = .boolean(value)
+        return
+      }
+      if let value = try? container.decode(Int.self) {
+        self = .integer(value)
+        return
+      }
+      self = .preset(
+        try container.decode(FireworksCompletionRequest.ReasoningEffort.Preset.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .boolean(let value):
+        try container.encode(value)
+      case .integer(let value):
+        try container.encode(value)
+      case .preset(let value):
+        try container.encode(value)
+      }
+    }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var low: Self { .preset(.low) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var medium: Self { .preset(.medium) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var high: Self { .preset(.high) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var xhigh: Self { .preset(.xhigh) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var max: Self { .preset(.max) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var none: Self { .preset(.none) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var adaptive: Self { .preset(.adaptive) }
+
+    public enum Preset: String, Codable, Hashable, Sendable {
+      case low = "low"
+      case medium = "medium"
+      case high = "high"
+      case xhigh = "xhigh"
+      case max = "max"
+      case none = "none"
+      case adaptive = "adaptive"
+    }
+  }
+
+  public enum ReasoningHistory: String, Codable, Hashable, Sendable {
+    case disabled = "disabled"
+    case interleaved = "interleaved"
+    case preserved = "preserved"
+  }
+
+  public enum SamplingMask: String, Codable, Hashable, Sendable {
+    case count = "count"
+    case nonZeroList = "non_zero_list"
+    case nonZeroBuffer = "non_zero_buffer"
+  }
+
+  public enum ServiceTier: String, Codable, Hashable, Sendable {
+    case auto = "auto"
+    case defaultValue = "default"
+    case flex = "flex"
+    case priority = "priority"
+  }
+
+  public enum Speculation: Codable, Sendable {
+    case string(String)
+    case integerArray([Int])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .integerArray(try container.decode([Int].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .integerArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Stop: Codable, Sendable {
+    case string(String)
+    case stringArray([String])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .stringArray(try container.decode([String].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .stringArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Thinking: Codable, Sendable {
+    case thinkingConfigEnabled(FireworksThinkingConfigEnabled)
+    case thinkingConfigDisabled(FireworksThinkingConfigDisabled)
+    case thinkingConfigAdaptive(FireworksThinkingConfigAdaptive)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(FireworksThinkingConfigEnabled.self) {
+        self = .thinkingConfigEnabled(value)
+        return
+      }
+      if let value = try? container.decode(FireworksThinkingConfigDisabled.self) {
+        self = .thinkingConfigDisabled(value)
+        return
+      }
+      self = .thinkingConfigAdaptive(try container.decode(FireworksThinkingConfigAdaptive.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .thinkingConfigEnabled(let value):
+        try container.encode(value)
+      case .thinkingConfigDisabled(let value):
+        try container.encode(value)
+      case .thinkingConfigAdaptive(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension FireworksCompletionRequest.Logprobs: ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Int) {
+    self = .integer(value)
+  }
+}
+
+extension FireworksCompletionRequest.Prediction: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension FireworksCompletionRequest.Prompt: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension FireworksCompletionRequest.ReasoningEffort: ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Int) {
+    self = .integer(value)
+  }
+}
+
+extension FireworksCompletionRequest.Speculation: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension FireworksCompletionRequest.Speculation: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: Int...) {
+    self = .integerArray(elements)
+  }
+}
+
+extension FireworksCompletionRequest.Stop: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension FireworksCompletionRequest.Stop: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: String...) {
+    self = .stringArray(elements)
   }
 }

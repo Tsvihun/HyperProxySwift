@@ -14,11 +14,11 @@ public struct OpenRouterJevRouterPlugin: Codable, Sendable {
   public var allowedModels: [String]?
   public var costTier: String?
   public var excludedModels: [String]?
-  public var id: OpenRouterJevRouterPluginId
+  public var id: OpenRouterJevRouterPlugin.Id
   public var models: [String]?
 
   public init(
-    id: OpenRouterJevRouterPluginId,
+    id: OpenRouterJevRouterPlugin.Id,
     allowedModels: [String]? = nil,
     costTier: String? = nil,
     excludedModels: [String]? = nil,
@@ -37,5 +37,9 @@ public struct OpenRouterJevRouterPlugin: Codable, Sendable {
     case excludedModels = "excluded_models"
     case id
     case models
+  }
+
+  public enum Id: String, Codable, Hashable, Sendable {
+    case jevRouter = "jev-router"
   }
 }

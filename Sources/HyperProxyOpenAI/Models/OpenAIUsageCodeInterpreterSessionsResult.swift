@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct OpenAIUsageCodeInterpreterSessionsResult: Codable, Sendable {
   public var numSessions: Int
-  public var object: OpenAIUsageCodeInterpreterSessionsResultObject
+  public var object: OpenAIUsageCodeInterpreterSessionsResult.Object
   public var projectId: String?
 
   public init(
     numSessions: Int,
-    object: OpenAIUsageCodeInterpreterSessionsResultObject,
+    object: OpenAIUsageCodeInterpreterSessionsResult.Object,
     projectId: String? = nil
   ) {
     self.numSessions = numSessions
@@ -29,5 +29,10 @@ public struct OpenAIUsageCodeInterpreterSessionsResult: Codable, Sendable {
     case numSessions = "num_sessions"
     case object
     case projectId = "project_id"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case organizationUsageCodeInterpreterSessionsResult =
+      "organization.usage.code_interpreter_sessions.result"
   }
 }

@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsGetScheduleParams: Codable, Sendable {
   public var includeLocationFilter: Bool?
-  public var smbToolType: ElevenLabsGetScheduleSmbToolType?
+  public var smbToolType: ElevenLabsGetScheduleParams.SmbToolType?
 
   public init(
     includeLocationFilter: Bool? = nil,
-    smbToolType: ElevenLabsGetScheduleSmbToolType? = nil
+    smbToolType: ElevenLabsGetScheduleParams.SmbToolType? = nil
   ) {
     self.includeLocationFilter = includeLocationFilter
     self.smbToolType = smbToolType
@@ -25,5 +25,9 @@ public struct ElevenLabsGetScheduleParams: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case includeLocationFilter = "include_location_filter"
     case smbToolType = "smb_tool_type"
+  }
+
+  public enum SmbToolType: String, Codable, Hashable, Sendable {
+    case getSchedule = "get_schedule"
   }
 }

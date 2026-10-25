@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public enum OpenAITranscriptionChunkingStrategy: Codable, Sendable {
-  case transcriptionChunkingStrategyOneOf1(OpenAITranscriptionChunkingStrategyOneOf1)
+  case automatic(OpenAITranscriptionChunkingStrategy.Auto)
   case vadConfig(OpenAIVadConfig)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(OpenAITranscriptionChunkingStrategyOneOf1.self) {
-      self = .transcriptionChunkingStrategyOneOf1(value)
+    if let value = try? container.decode(OpenAITranscriptionChunkingStrategy.Auto.self) {
+      self = .automatic(value)
       return
     }
     self = .vadConfig(try container.decode(OpenAIVadConfig.self))
@@ -26,7 +26,7 @@ public enum OpenAITranscriptionChunkingStrategy: Codable, Sendable {
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .transcriptionChunkingStrategyOneOf1(let value):
+    case .automatic(let value):
       try container.encode(value)
     case .vadConfig(let value):
       try container.encode(value)
@@ -34,5 +34,9 @@ public enum OpenAITranscriptionChunkingStrategy: Codable, Sendable {
   }
 
   /// Provider-native value without the schema union wrapper.
-  public static var auto: Self { .transcriptionChunkingStrategyOneOf1(.auto) }
+  public static var auto: Self { .automatic(.auto) }
+
+  public enum Auto: String, Codable, Hashable, Sendable {
+    case auto = "auto"
+  }
 }

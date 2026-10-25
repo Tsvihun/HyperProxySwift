@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct OpenAILiveOutputAudioFixturePlayed: Codable, Sendable {
   public var clientEventId: String?
   public var eventId: String
-  public var kind: OpenAILiveOutputAudioFixturePlayedKind
+  public var kind: OpenAILiveOutputAudioFixturePlayed.Kind
 
   public init(
     eventId: String,
-    kind: OpenAILiveOutputAudioFixturePlayedKind,
+    kind: OpenAILiveOutputAudioFixturePlayed.Kind,
     clientEventId: String? = nil
   ) {
     self.clientEventId = clientEventId
@@ -29,5 +29,9 @@ public struct OpenAILiveOutputAudioFixturePlayed: Codable, Sendable {
     case clientEventId = "client_event_id"
     case eventId = "event_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case sessionOutputAudioFixturePlayed = "session.output_audio.fixture.played"
   }
 }

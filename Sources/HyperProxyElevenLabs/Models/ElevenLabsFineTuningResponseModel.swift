@@ -21,7 +21,7 @@ public struct ElevenLabsFineTuningResponseModel: Codable, Sendable {
   public var nextMaxVerificationAttemptsResetUnixMs: Int?
   public var progress: [String: Double]?
   public var sliceIds: [String]?
-  public var state: [String: ElevenLabsFineTuningResponseModelStateValue]
+  public var state: [String: ElevenLabsFineTuningResponseModel.StateValue]
   public var verificationAttempts: [ElevenLabsVerificationAttemptResponseModel]?
   public var verificationAttemptsCount: Int
   public var verificationFailures: [String]
@@ -29,7 +29,7 @@ public struct ElevenLabsFineTuningResponseModel: Codable, Sendable {
   public init(
     isAllowedToFineTune: Bool,
     manualVerificationRequested: Bool,
-    state: [String: ElevenLabsFineTuningResponseModelStateValue],
+    state: [String: ElevenLabsFineTuningResponseModel.StateValue],
     verificationAttemptsCount: Int,
     verificationFailures: [String],
     datasetDurationSeconds: Double? = nil,
@@ -73,5 +73,14 @@ public struct ElevenLabsFineTuningResponseModel: Codable, Sendable {
     case verificationAttempts = "verification_attempts"
     case verificationAttemptsCount = "verification_attempts_count"
     case verificationFailures = "verification_failures"
+  }
+
+  public enum StateValue: String, Codable, Hashable, Sendable {
+    case notStarted = "not_started"
+    case queued = "queued"
+    case fineTuning = "fine_tuning"
+    case fineTuned = "fine_tuned"
+    case failed = "failed"
+    case delayed = "delayed"
   }
 }

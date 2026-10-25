@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaMemoryTool20250818ViewCommand: Codable, Sendable {
-  public var command: AnthropicViewCommand
+  public var command: AnthropicBetaMemoryTool20250818ViewCommand.Command
   public var path: String
   public var viewRange: [Int]?
 
   public init(
     path: String,
-    command: AnthropicViewCommand = .view,
+    command: AnthropicBetaMemoryTool20250818ViewCommand.Command = .view,
     viewRange: [Int]? = nil
   ) {
     self.command = command
@@ -29,5 +29,9 @@ public struct AnthropicBetaMemoryTool20250818ViewCommand: Codable, Sendable {
     case command
     case path
     case viewRange = "view_range"
+  }
+
+  public enum Command: String, Codable, Hashable, Sendable {
+    case view = "view"
   }
 }

@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterChatFormatTextConfig: Codable, Sendable {
-  public var kind: OpenRouterChatFormatTextConfigKind
+  public var kind: OpenRouterChatFormatTextConfig.Kind
 
   public init(
-    kind: OpenRouterChatFormatTextConfigKind
+    kind: OpenRouterChatFormatTextConfig.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case text = "text"
   }
 }

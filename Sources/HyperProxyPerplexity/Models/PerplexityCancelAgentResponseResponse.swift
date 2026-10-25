@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct PerplexityCancelAgentResponseResponse: Codable, Sendable {
   public var responseId: String
-  public var status: PerplexityCancelAgentResponseResponseStatus
+  public var status: PerplexityCancelAgentResponseResponse.Status
 
   public init(
     responseId: String,
-    status: PerplexityCancelAgentResponseResponseStatus
+    status: PerplexityCancelAgentResponseResponse.Status
   ) {
     self.responseId = responseId
     self.status = status
@@ -25,5 +25,9 @@ public struct PerplexityCancelAgentResponseResponse: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case responseId = "response_id"
     case status
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case cancelling = "cancelling"
   }
 }

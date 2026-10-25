@@ -15,14 +15,14 @@ public struct OpenAIListConversationItemsParameters: Codable, Sendable {
   public var conversationId: String
   public var include: [OpenAIIncludeEnum]?
   public var limit: Int?
-  public var order: OpenAIListConversationItemsParametersOrder?
+  public var order: OpenAIListConversationItemsParameters.Order?
 
   public init(
     conversationId: String,
     after: String? = nil,
     include: [OpenAIIncludeEnum]? = nil,
     limit: Int? = nil,
-    order: OpenAIListConversationItemsParametersOrder? = nil
+    order: OpenAIListConversationItemsParameters.Order? = nil
   ) {
     self.after = after
     self.conversationId = conversationId
@@ -37,5 +37,10 @@ public struct OpenAIListConversationItemsParameters: Codable, Sendable {
     case include
     case limit
     case order
+  }
+
+  public enum Order: String, Codable, Hashable, Sendable {
+    case asc = "asc"
+    case desc = "desc"
   }
 }

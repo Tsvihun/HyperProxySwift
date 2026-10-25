@@ -13,10 +13,10 @@ import HyperProxyCore
 public struct GroqAnnotation: Codable, Sendable {
   public var documentCitation: GroqDocumentCitation?
   public var functionCitation: GroqFunctionCitation?
-  public var kind: GroqAnnotationKind
+  public var kind: GroqAnnotation.Kind
 
   public init(
-    kind: GroqAnnotationKind,
+    kind: GroqAnnotation.Kind,
     documentCitation: GroqDocumentCitation? = nil,
     functionCitation: GroqFunctionCitation? = nil
   ) {
@@ -29,5 +29,10 @@ public struct GroqAnnotation: Codable, Sendable {
     case documentCitation = "document_citation"
     case functionCitation = "function_citation"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case documentCitation = "document_citation"
+    case functionCitation = "function_citation"
   }
 }

@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAICreateMcpOauthTokenEndpointAuthParamClientSecretBasic: Codable, Sendable {
   public var clientSecret: String
-  public var kind: OpenAICreateMcpOauthTokenEndpointAuthParamClientSecretBasicKind
+  public var kind: OpenAICreateMcpOauthTokenEndpointAuthParamClientSecretBasic.Kind
 
   public init(
     clientSecret: String,
-    kind: OpenAICreateMcpOauthTokenEndpointAuthParamClientSecretBasicKind
+    kind: OpenAICreateMcpOauthTokenEndpointAuthParamClientSecretBasic.Kind
   ) {
     self.clientSecret = clientSecret
     self.kind = kind
@@ -25,5 +25,11 @@ public struct OpenAICreateMcpOauthTokenEndpointAuthParamClientSecretBasic: Codab
   enum CodingKeys: String, CodingKey {
     case clientSecret = "client_secret"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case clientSecretBasic = "client_secret_basic"
   }
 }

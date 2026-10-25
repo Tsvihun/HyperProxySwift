@@ -14,14 +14,14 @@ public struct PerplexitySandboxResultsOutputItem: Codable, Sendable {
   public var code: String?
   public var durationMs: Int64?
   public var exitCode: Int?
-  public var status: PerplexitySandboxResultsOutputItemStatus
+  public var status: PerplexitySandboxResultsOutputItem.Status
   public var stderr: String?
   public var stdout: String?
-  public var kind: PerplexitySandboxResultsOutputItemKind
+  public var kind: PerplexitySandboxResultsOutputItem.Kind
 
   public init(
-    status: PerplexitySandboxResultsOutputItemStatus,
-    kind: PerplexitySandboxResultsOutputItemKind,
+    status: PerplexitySandboxResultsOutputItem.Status,
+    kind: PerplexitySandboxResultsOutputItem.Kind,
     code: String? = nil,
     durationMs: Int64? = nil,
     exitCode: Int? = nil,
@@ -45,5 +45,15 @@ public struct PerplexitySandboxResultsOutputItem: Codable, Sendable {
     case stderr
     case stdout
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case sandboxResults = "sandbox_results"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case completed = "completed"
+    case timedOut = "timed_out"
+    case failed = "failed"
   }
 }

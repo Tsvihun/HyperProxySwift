@@ -16,12 +16,12 @@ public struct OpenAIApplyPatchToolCallOutputItemParam: Codable, Sendable {
   public var id: String?
   public var output: String?
   public var status: OpenAIApplyPatchCallOutputStatusParam
-  public var kind: OpenAIApplyPatchToolCallOutputItemParamKind
+  public var kind: OpenAIApplyPatchToolCallOutputItemParam.Kind
 
   public init(
     callId: String,
     status: OpenAIApplyPatchCallOutputStatusParam,
-    kind: OpenAIApplyPatchToolCallOutputItemParamKind,
+    kind: OpenAIApplyPatchToolCallOutputItemParam.Kind,
     caller: OpenAIToolCallCallerParam? = nil,
     id: String? = nil,
     output: String? = nil
@@ -41,5 +41,9 @@ public struct OpenAIApplyPatchToolCallOutputItemParam: Codable, Sendable {
     case output
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case applyPatchCallOutput = "apply_patch_call_output"
   }
 }

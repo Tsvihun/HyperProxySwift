@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsMCPServerURLDefinition: Codable, Sendable {
   public var name: String
-  public var kind: AnthropicBetaManagedAgentsMCPServerURLDefinitionKind
+  public var kind: AnthropicBetaManagedAgentsMCPServerURLDefinition.Kind
   public var url: String
 
   public init(
     name: String,
-    kind: AnthropicBetaManagedAgentsMCPServerURLDefinitionKind,
+    kind: AnthropicBetaManagedAgentsMCPServerURLDefinition.Kind,
     url: String
   ) {
     self.name = name
@@ -29,5 +29,11 @@ public struct AnthropicBetaManagedAgentsMCPServerURLDefinition: Codable, Sendabl
     case name
     case kind = "type"
     case url
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case url = "url"
   }
 }

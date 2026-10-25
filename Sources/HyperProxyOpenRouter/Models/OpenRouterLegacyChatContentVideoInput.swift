@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterLegacyChatContentVideoInput: Codable, Sendable {
-  public var processing: OpenRouterLegacyChatContentVideoInputProcessing?
+  public var processing: OpenRouterLegacyChatContentVideoInput.Processing?
   public var url: String
 
   public init(
     url: String,
-    processing: OpenRouterLegacyChatContentVideoInputProcessing? = nil
+    processing: OpenRouterLegacyChatContentVideoInput.Processing? = nil
   ) {
     self.processing = processing
     self.url = url
@@ -25,5 +25,10 @@ public struct OpenRouterLegacyChatContentVideoInput: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case processing
     case url
+  }
+
+  public enum Processing: String, Codable, Hashable, Sendable {
+    case agentic = "agentic"
+    case staticValue = "static"
   }
 }

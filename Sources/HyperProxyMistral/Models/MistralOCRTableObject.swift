@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct MistralOCRTableObject: Codable, Sendable {
   public var content: String
-  public var format: MistralOCRTableObjectFormat
+  public var format: MistralOCRTableObject.Format
   public var id: String
   public var wordConfidenceScores: [MistralOCRConfidenceScore]?
 
   public init(
     content: String,
-    format: MistralOCRTableObjectFormat,
+    format: MistralOCRTableObject.Format,
     id: String,
     wordConfidenceScores: [MistralOCRConfidenceScore]? = nil
   ) {
@@ -33,5 +33,10 @@ public struct MistralOCRTableObject: Codable, Sendable {
     case format
     case id
     case wordConfidenceScores = "word_confidence_scores"
+  }
+
+  public enum Format: String, Codable, Hashable, Sendable {
+    case markdown = "markdown"
+    case html = "html"
   }
 }

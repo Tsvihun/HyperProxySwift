@@ -17,7 +17,7 @@ public struct OpenRouterAnthropicCitationSearchResultLocationParam: Codable, Sen
   public var source: String
   public var startBlockIndex: Int
   public var title: String
-  public var kind: OpenRouterAnthropicCitationSearchResultLocationParamKind
+  public var kind: OpenRouterAnthropicCitationSearchResultLocationParam.Kind
 
   public init(
     citedText: String,
@@ -26,7 +26,7 @@ public struct OpenRouterAnthropicCitationSearchResultLocationParam: Codable, Sen
     source: String,
     startBlockIndex: Int,
     title: String,
-    kind: OpenRouterAnthropicCitationSearchResultLocationParamKind
+    kind: OpenRouterAnthropicCitationSearchResultLocationParam.Kind
   ) {
     self.citedText = citedText
     self.endBlockIndex = endBlockIndex
@@ -45,5 +45,11 @@ public struct OpenRouterAnthropicCitationSearchResultLocationParam: Codable, Sen
     case startBlockIndex = "start_block_index"
     case title
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case searchResultLocation = "search_result_location"
   }
 }

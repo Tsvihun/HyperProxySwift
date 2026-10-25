@@ -14,13 +14,13 @@ public struct ElevenLabsIcon: Codable, Sendable {
   public var mimeType: String?
   public var sizes: [String]?
   public var src: String
-  public var theme: ElevenLabsIconTheme?
+  public var theme: ElevenLabsIcon.Theme?
 
   public init(
     src: String,
     mimeType: String? = nil,
     sizes: [String]? = nil,
-    theme: ElevenLabsIconTheme? = nil
+    theme: ElevenLabsIcon.Theme? = nil
   ) {
     self.mimeType = mimeType
     self.sizes = sizes
@@ -33,5 +33,10 @@ public struct ElevenLabsIcon: Codable, Sendable {
     case sizes
     case src
     case theme
+  }
+
+  public enum Theme: String, Codable, Hashable, Sendable {
+    case light = "light"
+    case dark = "dark"
   }
 }

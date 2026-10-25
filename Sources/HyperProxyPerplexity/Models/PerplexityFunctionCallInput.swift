@@ -15,13 +15,13 @@ public struct PerplexityFunctionCallInput: Codable, Sendable {
   public var callId: String
   public var name: String
   public var thoughtSignature: String?
-  public var kind: PerplexityFunctionCallInputKind
+  public var kind: PerplexityFunctionCallInput.Kind
 
   public init(
     arguments: String,
     callId: String,
     name: String,
-    kind: PerplexityFunctionCallInputKind,
+    kind: PerplexityFunctionCallInput.Kind,
     thoughtSignature: String? = nil
   ) {
     self.arguments = arguments
@@ -37,5 +37,9 @@ public struct PerplexityFunctionCallInput: Codable, Sendable {
     case name
     case thoughtSignature = "thought_signature"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case functionCall = "function_call"
   }
 }

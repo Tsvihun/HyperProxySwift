@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksAssertionAssertionType: String, Codable, Hashable, Sendable {
-  case aSSERTIONTYPEUNSPECIFIED = "ASSERTION_TYPE_UNSPECIFIED"
-  case aSSERTIONTYPELLM = "ASSERTION_TYPE_LLM"
-  case aSSERTIONTYPECODE = "ASSERTION_TYPE_CODE"
+  case assertionTypeUnspecified = "ASSERTION_TYPE_UNSPECIFIED"
+  case assertionTypeLlm = "ASSERTION_TYPE_LLM"
+  case assertionTypeCode = "ASSERTION_TYPE_CODE"
 }

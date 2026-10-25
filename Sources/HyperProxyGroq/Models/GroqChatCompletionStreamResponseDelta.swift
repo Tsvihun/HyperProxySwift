@@ -14,18 +14,18 @@ public struct GroqChatCompletionStreamResponseDelta: Codable, Sendable {
   public var annotations: [GroqAnnotation]?
   public var content: String?
   public var executedTools: GroqChatCompletionMessageExecutedTools?
-  public var functionCall: GroqChatCompletionStreamResponseDeltaFunctionCall?
+  public var functionCall: GroqChatCompletionStreamResponseDelta.FunctionCall?
   public var reasoning: String?
-  public var role: GroqChatCompletionStreamResponseDeltaRole?
+  public var role: GroqChatCompletionStreamResponseDelta.Role?
   public var toolCalls: [GroqChatCompletionMessageToolCallChunk]?
 
   public init(
     annotations: [GroqAnnotation]? = nil,
     content: String? = nil,
     executedTools: GroqChatCompletionMessageExecutedTools? = nil,
-    functionCall: GroqChatCompletionStreamResponseDeltaFunctionCall? = nil,
+    functionCall: GroqChatCompletionStreamResponseDelta.FunctionCall? = nil,
     reasoning: String? = nil,
-    role: GroqChatCompletionStreamResponseDeltaRole? = nil,
+    role: GroqChatCompletionStreamResponseDelta.Role? = nil,
     toolCalls: [GroqChatCompletionMessageToolCallChunk]? = nil
   ) {
     self.annotations = annotations
@@ -45,5 +45,30 @@ public struct GroqChatCompletionStreamResponseDelta: Codable, Sendable {
     case reasoning
     case role
     case toolCalls = "tool_calls"
+  }
+
+  public struct FunctionCall: Codable, Sendable {
+    public var arguments: String?
+    public var name: String?
+
+    public init(
+      arguments: String? = nil,
+      name: String? = nil
+    ) {
+      self.arguments = arguments
+      self.name = name
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case arguments
+      case name
+    }
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case system = "system"
+    case user = "user"
+    case assistant = "assistant"
+    case tool = "tool"
   }
 }

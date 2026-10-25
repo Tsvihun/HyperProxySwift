@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsEndCallTriggerAction: Codable, Sendable {
-  public var kind: ElevenLabsEndCallKind?
+  public var kind: ElevenLabsEndCallTriggerAction.Kind?
 
   public init(
-    kind: ElevenLabsEndCallKind? = nil
+    kind: ElevenLabsEndCallTriggerAction.Kind? = nil
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case endCall = "end_call"
   }
 }

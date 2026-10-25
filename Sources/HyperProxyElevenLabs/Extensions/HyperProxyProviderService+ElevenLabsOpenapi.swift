@@ -549,6 +549,7 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
   }
 
   public func rebaseBranchOntoMain(
+    _ body: ElevenLabsBodyRebaseABranchOntoMainV1ConvaiAgentsAgentIdBranchesBranchIdRebasePost,
     agentId: String,
     branchId: String,
     query: [URLQueryItem] = [],
@@ -561,7 +562,8 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(ElevenLabsRebaseBranchOntoMainResponse.self)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(ElevenLabsRebaseBranchOntoMainResponse.self)
   }
 
   public func rebasePreviewRoute(

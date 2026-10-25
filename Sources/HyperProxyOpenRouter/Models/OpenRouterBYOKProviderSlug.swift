@@ -97,6 +97,7 @@ public enum OpenRouterBYOKProviderSlug: String, Codable, Hashable, Sendable {
   case primeintellect = "primeintellect"
   case quiver = "quiver"
   case recraft = "recraft"
+  case recursive = "recursive"
   case reka = "reka"
   case relace = "relace"
   case respan = "respan"

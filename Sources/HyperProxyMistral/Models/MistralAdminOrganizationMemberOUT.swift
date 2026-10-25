@@ -16,9 +16,9 @@ public struct MistralAdminOrganizationMemberOUT: Codable, Sendable {
   public var isSsoOutsider: Bool?
   public var name: String?
   public var oidId: String?
-  public var rawRole: MistralAdminOrganizationMemberOUTRawRole
-  public var rawRoles: MistralAdminOrganizationMemberOUTRawRoles
-  public var subscriptionTypes: [MistralAdminOrganizationMemberOUTSubscriptionTypesAnyOf1Item]?
+  public var rawRole: MistralAdminOrganizationMemberOUT.RawRole
+  public var rawRoles: MistralAdminOrganizationMemberOUT.RawRoles
+  public var subscriptionTypes: [MistralAdminOrganizationMemberOUTSubscriptionTypesItem]?
   public var subscriptions: [MistralMemberSubscriptionOUT]?
   public var uuid: String
   public var workspaces: [MistralMemberWorkspaceInfo]?
@@ -28,11 +28,11 @@ public struct MistralAdminOrganizationMemberOUT: Codable, Sendable {
     email: String?,
     name: String?,
     oidId: String?,
-    rawRole: MistralAdminOrganizationMemberOUTRawRole,
-    rawRoles: MistralAdminOrganizationMemberOUTRawRoles,
+    rawRole: MistralAdminOrganizationMemberOUT.RawRole,
+    rawRoles: MistralAdminOrganizationMemberOUT.RawRoles,
     uuid: String,
     isSsoOutsider: Bool? = nil,
-    subscriptionTypes: [MistralAdminOrganizationMemberOUTSubscriptionTypesAnyOf1Item]? = nil,
+    subscriptionTypes: [MistralAdminOrganizationMemberOUTSubscriptionTypesItem]? = nil,
     subscriptions: [MistralMemberSubscriptionOUT]? = nil,
     workspaces: [MistralMemberWorkspaceInfo]? = nil
   ) {
@@ -61,5 +61,78 @@ public struct MistralAdminOrganizationMemberOUT: Codable, Sendable {
     case subscriptions
     case uuid
     case workspaces
+  }
+
+  public enum RawRole: Codable, Sendable {
+    case userRole(MistralUserRole)
+    case staticOrganizationRoles(MistralStaticOrganizationRoles)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(MistralUserRole.self) {
+        self = .userRole(value)
+        return
+      }
+      self = .staticOrganizationRoles(try container.decode(MistralStaticOrganizationRoles.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .userRole(let value):
+        try container.encode(value)
+      case .staticOrganizationRoles(let value):
+        try container.encode(value)
+      }
+    }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var a: Self { .userRole(.a) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var m: Self { .userRole(.m) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var b: Self { .userRole(.b) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var value0d48f530_095c43fe8aea6673bcacabe6: Self {
+      .staticOrganizationRoles(.value0d48f530_095c43fe8aea6673bcacabe6)
+    }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var c955f4e1_9477_43f0_8349_6fbc629fccc9: Self {
+      .staticOrganizationRoles(.c955f4e1_9477_43f0_8349_6fbc629fccc9)
+    }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var value7bde5959D676_47d2B779_35b64323d278: Self {
+      .staticOrganizationRoles(.value7bde5959D676_47d2B779_35b64323d278)
+    }
+  }
+
+  public enum RawRoles: Codable, Sendable {
+    case userRoleArray([MistralUserRole])
+    case staticOrganizationRolesArray([MistralStaticOrganizationRoles])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode([MistralUserRole].self) {
+        self = .userRoleArray(value)
+        return
+      }
+      self = .staticOrganizationRolesArray(
+        try container.decode([MistralStaticOrganizationRoles].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .userRoleArray(let value):
+        try container.encode(value)
+      case .staticOrganizationRolesArray(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

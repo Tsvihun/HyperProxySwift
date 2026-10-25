@@ -11,17 +11,17 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterOutputMemoryServerToolItem: Codable, Sendable {
-  public var action: OpenRouterOutputMemoryServerToolItemAction?
+  public var action: OpenRouterOutputMemoryServerToolItem.Action?
   public var id: String?
   public var key: String?
   public var status: OpenRouterToolCallStatus
-  public var kind: OpenRouterOutputMemoryServerToolItemKind
+  public var kind: OpenRouterOutputMemoryServerToolItem.Kind
   public var value: HyperProxyJSONValue?
 
   public init(
     status: OpenRouterToolCallStatus,
-    kind: OpenRouterOutputMemoryServerToolItemKind,
-    action: OpenRouterOutputMemoryServerToolItemAction? = nil,
+    kind: OpenRouterOutputMemoryServerToolItem.Kind,
+    action: OpenRouterOutputMemoryServerToolItem.Action? = nil,
     id: String? = nil,
     key: String? = nil,
     value: HyperProxyJSONValue? = nil
@@ -41,5 +41,15 @@ public struct OpenRouterOutputMemoryServerToolItem: Codable, Sendable {
     case status
     case kind = "type"
     case value
+  }
+
+  public enum Action: String, Codable, Hashable, Sendable {
+    case read = "read"
+    case write = "write"
+    case delete = "delete"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case openrouterMemory = "openrouter:memory"
   }
 }

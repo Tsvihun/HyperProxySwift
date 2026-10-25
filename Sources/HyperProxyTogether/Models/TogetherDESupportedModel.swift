@@ -14,7 +14,7 @@ public struct TogetherDESupportedModel: Codable, Sendable {
   public var architecture: String?
   public var baseModel: String
   public var baseModelId: String
-  public var capabilities: [TogetherDESupportedModelCapabilitiesItem]
+  public var capabilities: [TogetherDESupportedModel.CapabilitiesElement]
   public var contextLength: String?
   public var createdAt: String
   public var deploymentProfiles: [TogetherDESupportedModelDeploymentProfile]
@@ -22,42 +22,42 @@ public struct TogetherDESupportedModel: Codable, Sendable {
   public var displayName: String
   public var displayType: String
   public var familyId: String?
-  public var features: [TogetherDESupportedModelFeaturesItem]?
+  public var features: [TogetherDESupportedModel.FeaturesElement]?
   public var id: String
   public var inputFormat: String?
-  public var inputModalities: [TogetherDESupportedModelInputModalitiesItem]
+  public var inputModalities: [TogetherDESupportedModel.InputModalitiesElement]
   public var name: String
   public var outputFormat: String?
-  public var outputModalities: [TogetherDESupportedModelOutputModalitiesItem]
+  public var outputModalities: [TogetherDESupportedModel.OutputModalitiesElement]
   public var pricing: TogetherDESupportedModelPricing?
-  public var products: [TogetherDESupportedModelProductsItem]
+  public var products: [TogetherDESupportedModel.ProductsElement]
   public var publisher: String
   public var serverlessEndpoint: String?
-  public var status: TogetherDESupportedModelStatus
+  public var status: TogetherDESupportedModel.Status
   public var tags: [String]?
   public var updatedAt: String
 
   public init(
     baseModel: String,
     baseModelId: String,
-    capabilities: [TogetherDESupportedModelCapabilitiesItem],
+    capabilities: [TogetherDESupportedModel.CapabilitiesElement],
     createdAt: String,
     deploymentProfiles: [TogetherDESupportedModelDeploymentProfile],
     displayName: String,
     displayType: String,
     id: String,
-    inputModalities: [TogetherDESupportedModelInputModalitiesItem],
+    inputModalities: [TogetherDESupportedModel.InputModalitiesElement],
     name: String,
-    outputModalities: [TogetherDESupportedModelOutputModalitiesItem],
-    products: [TogetherDESupportedModelProductsItem],
+    outputModalities: [TogetherDESupportedModel.OutputModalitiesElement],
+    products: [TogetherDESupportedModel.ProductsElement],
     publisher: String,
-    status: TogetherDESupportedModelStatus,
+    status: TogetherDESupportedModel.Status,
     updatedAt: String,
     architecture: String? = nil,
     contextLength: String? = nil,
     description: String? = nil,
     familyId: String? = nil,
-    features: [TogetherDESupportedModelFeaturesItem]? = nil,
+    features: [TogetherDESupportedModel.FeaturesElement]? = nil,
     inputFormat: String? = nil,
     outputFormat: String? = nil,
     pricing: TogetherDESupportedModelPricing? = nil,
@@ -117,5 +117,47 @@ public struct TogetherDESupportedModel: Codable, Sendable {
     case status
     case tags
     case updatedAt
+  }
+
+  public enum CapabilitiesElement: String, Codable, Hashable, Sendable {
+    case capabilityChat = "CAPABILITY_CHAT"
+    case capabilityEmbedding = "CAPABILITY_EMBEDDING"
+    case capabilityReranking = "CAPABILITY_RERANKING"
+    case capabilityImageGeneration = "CAPABILITY_IMAGE_GENERATION"
+    case capabilityVideoGeneration = "CAPABILITY_VIDEO_GENERATION"
+  }
+
+  public enum FeaturesElement: String, Codable, Hashable, Sendable {
+    case featureToolCalling = "FEATURE_TOOL_CALLING"
+    case featureStructuredOutput = "FEATURE_STRUCTURED_OUTPUT"
+    case featureReasoning = "FEATURE_REASONING"
+  }
+
+  public enum InputModalitiesElement: String, Codable, Hashable, Sendable {
+    case modalityText = "MODALITY_TEXT"
+    case modalityImage = "MODALITY_IMAGE"
+    case modalityAudio = "MODALITY_AUDIO"
+    case modalityVideo = "MODALITY_VIDEO"
+  }
+
+  public enum OutputModalitiesElement: String, Codable, Hashable, Sendable {
+    case modalityText = "MODALITY_TEXT"
+    case modalityImage = "MODALITY_IMAGE"
+    case modalityAudio = "MODALITY_AUDIO"
+    case modalityVideo = "MODALITY_VIDEO"
+  }
+
+  public enum ProductsElement: String, Codable, Hashable, Sendable {
+    case productServerless = "PRODUCT_SERVERLESS"
+    case productDedicated = "PRODUCT_DEDICATED"
+    case productFineTuning = "PRODUCT_FINE_TUNING"
+    case productReserved = "PRODUCT_RESERVED"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case supportedModelStatusRecommended = "SUPPORTED_MODEL_STATUS_RECOMMENDED"
+    case supportedModelStatusSupported = "SUPPORTED_MODEL_STATUS_SUPPORTED"
+    case supportedModelStatusDeprecated = "SUPPORTED_MODEL_STATUS_DEPRECATED"
+    case supportedModelStatusHidden = "SUPPORTED_MODEL_STATUS_HIDDEN"
   }
 }

@@ -11,9 +11,9 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIUsageVectorStoresParameters: Codable, Sendable {
-  public var bucketWidth: OpenAIUsageVectorStoresParametersBucketWidth?
+  public var bucketWidth: OpenAIUsageVectorStoresParameters.BucketWidth?
   public var endTime: Int?
-  public var groupBy: [OpenAIUsageVectorStoresParametersGroupByItem]?
+  public var groupBy: [OpenAIUsageVectorStoresParameters.GroupByElement]?
   public var limit: Int?
   public var page: String?
   public var projectIds: [String]?
@@ -21,9 +21,9 @@ public struct OpenAIUsageVectorStoresParameters: Codable, Sendable {
 
   public init(
     startTime: Int,
-    bucketWidth: OpenAIUsageVectorStoresParametersBucketWidth? = nil,
+    bucketWidth: OpenAIUsageVectorStoresParameters.BucketWidth? = nil,
     endTime: Int? = nil,
-    groupBy: [OpenAIUsageVectorStoresParametersGroupByItem]? = nil,
+    groupBy: [OpenAIUsageVectorStoresParameters.GroupByElement]? = nil,
     limit: Int? = nil,
     page: String? = nil,
     projectIds: [String]? = nil
@@ -45,5 +45,15 @@ public struct OpenAIUsageVectorStoresParameters: Codable, Sendable {
     case page
     case projectIds = "project_ids"
     case startTime = "start_time"
+  }
+
+  public enum BucketWidth: String, Codable, Hashable, Sendable {
+    case value1m = "1m"
+    case value1h = "1h"
+    case value1d = "1d"
+  }
+
+  public enum GroupByElement: String, Codable, Hashable, Sendable {
+    case projectId = "project_id"
   }
 }

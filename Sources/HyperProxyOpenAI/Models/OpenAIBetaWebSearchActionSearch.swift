@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct OpenAIBetaWebSearchActionSearch: Codable, Sendable {
   public var queries: [String]?
   public var query: String?
-  public var sources: [OpenAIBetaWebSearchActionSearchSourcesItem]?
-  public var kind: OpenAIBetaWebSearchActionSearchKind
+  public var sources: [OpenAIBetaWebSearchActionSearch.SourcesElement]?
+  public var kind: OpenAIBetaWebSearchActionSearch.Kind
 
   public init(
-    kind: OpenAIBetaWebSearchActionSearchKind,
+    kind: OpenAIBetaWebSearchActionSearch.Kind,
     queries: [String]? = nil,
     query: String? = nil,
-    sources: [OpenAIBetaWebSearchActionSearchSourcesItem]? = nil
+    sources: [OpenAIBetaWebSearchActionSearch.SourcesElement]? = nil
   ) {
     self.queries = queries
     self.query = query
@@ -33,5 +33,31 @@ public struct OpenAIBetaWebSearchActionSearch: Codable, Sendable {
     case query
     case sources
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case search = "search"
+  }
+
+  public struct SourcesElement: Codable, Sendable {
+    public var kind: OpenAIBetaWebSearchActionSearch.SourcesElement.Kind
+    public var url: String
+
+    public init(
+      kind: OpenAIBetaWebSearchActionSearch.SourcesElement.Kind,
+      url: String
+    ) {
+      self.kind = kind
+      self.url = url
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case kind = "type"
+      case url
+    }
+
+    public enum Kind: String, Codable, Hashable, Sendable {
+      case url = "url"
+    }
   }
 }

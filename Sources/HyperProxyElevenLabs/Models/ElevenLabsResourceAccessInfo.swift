@@ -11,20 +11,21 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsResourceAccessInfo: Codable, Sendable {
-  public var accessSource: ElevenLabsResourceAccessInfoAccessSource?
-  public var anonymousAccessLevelOverride: ElevenLabsResourceAccessInfoAnonymousAccessLevelOverride?
+  public var accessSource: ElevenLabsResourceAccessInfo.AccessSource?
+  public var anonymousAccessLevelOverride:
+    ElevenLabsResourceAccessInfo.AnonymousAccessLevelOverride?
   public var creatorEmail: String
   public var creatorName: String
   public var isCreator: Bool
-  public var role: ElevenLabsResourceAccessInfoRole
+  public var role: ElevenLabsResourceAccessInfo.Role
 
   public init(
     creatorEmail: String,
     creatorName: String,
     isCreator: Bool,
-    role: ElevenLabsResourceAccessInfoRole,
-    accessSource: ElevenLabsResourceAccessInfoAccessSource? = nil,
-    anonymousAccessLevelOverride: ElevenLabsResourceAccessInfoAnonymousAccessLevelOverride? = nil
+    role: ElevenLabsResourceAccessInfo.Role,
+    accessSource: ElevenLabsResourceAccessInfo.AccessSource? = nil,
+    anonymousAccessLevelOverride: ElevenLabsResourceAccessInfo.AnonymousAccessLevelOverride? = nil
   ) {
     self.accessSource = accessSource
     self.anonymousAccessLevelOverride = anonymousAccessLevelOverride
@@ -41,5 +42,28 @@ public struct ElevenLabsResourceAccessInfo: Codable, Sendable {
     case creatorName = "creator_name"
     case isCreator = "is_creator"
     case role
+  }
+
+  public enum AccessSource: String, Codable, Hashable, Sendable {
+    case creator = "creator"
+    case explicit = "explicit"
+    case workspaceAdmin = "workspace_admin"
+    case workspaceDefault = "workspace_default"
+  }
+
+  public enum AnonymousAccessLevelOverride: String, Codable, Hashable,
+    Sendable
+  {
+    case admin = "admin"
+    case editor = "editor"
+    case commenter = "commenter"
+    case viewer = "viewer"
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case admin = "admin"
+    case editor = "editor"
+    case commenter = "commenter"
+    case viewer = "viewer"
   }
 }

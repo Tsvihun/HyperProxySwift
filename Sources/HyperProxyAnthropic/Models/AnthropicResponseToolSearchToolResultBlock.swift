@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicResponseToolSearchToolResultBlock: Codable, Sendable {
-  public var content: AnthropicResponseToolSearchToolResultBlockContent
+  public var content: AnthropicResponseToolSearchToolResultBlock.Content
   public var toolUseId: String
   public var kind: AnthropicToolSearchToolResultKind
 
   public init(
-    content: AnthropicResponseToolSearchToolResultBlockContent,
+    content: AnthropicResponseToolSearchToolResultBlock.Content,
     toolUseId: String,
     kind: AnthropicToolSearchToolResultKind = .toolSearchToolResult
   ) {
@@ -29,5 +29,30 @@ public struct AnthropicResponseToolSearchToolResultBlock: Codable, Sendable {
     case content
     case toolUseId = "tool_use_id"
     case kind = "type"
+  }
+
+  public enum Content: Codable, Sendable {
+    case responseToolSearchToolResultError(AnthropicResponseToolSearchToolResultError)
+    case responseToolSearchToolSearchResultBlock(AnthropicResponseToolSearchToolSearchResultBlock)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(AnthropicResponseToolSearchToolResultError.self) {
+        self = .responseToolSearchToolResultError(value)
+        return
+      }
+      self = .responseToolSearchToolSearchResultBlock(
+        try container.decode(AnthropicResponseToolSearchToolSearchResultBlock.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .responseToolSearchToolResultError(let value):
+        try container.encode(value)
+      case .responseToolSearchToolSearchResultBlock(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

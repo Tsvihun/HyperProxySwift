@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct MistralMetadataFilter: Codable, Sendable {
   public var key: String
   public var operatorValue: MistralSystemParamOperator
-  public var value: MistralMetadataFilterValue
+  public var value: MistralMetadataFilter.Value
 
   public init(
     key: String,
     operatorValue: MistralSystemParamOperator,
-    value: MistralMetadataFilterValue
+    value: MistralMetadataFilter.Value
   ) {
     self.key = key
     self.operatorValue = operatorValue
@@ -29,5 +29,42 @@ public struct MistralMetadataFilter: Codable, Sendable {
     case key
     case operatorValue = "operator"
     case value
+  }
+
+  public enum Value: Codable, Sendable {
+    case boolean(Bool)
+    case number(Double)
+    case string(String)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Bool.self) {
+        self = .boolean(value)
+        return
+      }
+      if let value = try? container.decode(Double.self) {
+        self = .number(value)
+        return
+      }
+      self = .string(try container.decode(String.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .boolean(let value):
+        try container.encode(value)
+      case .number(let value):
+        try container.encode(value)
+      case .string(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension MistralMetadataFilter.Value: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

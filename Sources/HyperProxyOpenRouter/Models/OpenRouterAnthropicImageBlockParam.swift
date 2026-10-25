@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct OpenRouterAnthropicImageBlockParam: Codable, Sendable {
   public var cacheControl: OpenRouterAnthropicCacheControlDirective?
-  public var source: OpenRouterAnthropicImageBlockParamSource
-  public var kind: OpenRouterAnthropicImageBlockParamKind
+  public var source: OpenRouterAnthropicImageBlockParam.Source
+  public var kind: OpenRouterAnthropicImageBlockParam.Kind
 
   public init(
-    source: OpenRouterAnthropicImageBlockParamSource,
-    kind: OpenRouterAnthropicImageBlockParamKind,
+    source: OpenRouterAnthropicImageBlockParam.Source,
+    kind: OpenRouterAnthropicImageBlockParam.Kind,
     cacheControl: OpenRouterAnthropicCacheControlDirective? = nil
   ) {
     self.cacheControl = cacheControl
@@ -29,5 +29,41 @@ public struct OpenRouterAnthropicImageBlockParam: Codable, Sendable {
     case cacheControl = "cache_control"
     case source
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case image = "image"
+  }
+
+  public enum Source: Codable, Sendable {
+    case anthropicBase64ImageSource(OpenRouterAnthropicBase64ImageSource)
+    case anthropicUrlImageSource(OpenRouterAnthropicUrlImageSource)
+    case anthropicFileDocumentSource(OpenRouterAnthropicFileDocumentSource)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenRouterAnthropicBase64ImageSource.self) {
+        self = .anthropicBase64ImageSource(value)
+        return
+      }
+      if let value = try? container.decode(OpenRouterAnthropicUrlImageSource.self) {
+        self = .anthropicUrlImageSource(value)
+        return
+      }
+      self = .anthropicFileDocumentSource(
+        try container.decode(OpenRouterAnthropicFileDocumentSource.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .anthropicBase64ImageSource(let value):
+        try container.encode(value)
+      case .anthropicUrlImageSource(let value):
+        try container.encode(value)
+      case .anthropicFileDocumentSource(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

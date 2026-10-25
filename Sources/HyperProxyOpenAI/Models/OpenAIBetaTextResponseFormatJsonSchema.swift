@@ -15,12 +15,12 @@ public struct OpenAIBetaTextResponseFormatJsonSchema: Codable, Sendable {
   public var name: String
   public var schema: OpenAIBetaResponseFormatJsonSchemaSchema
   public var strict: Bool?
-  public var kind: OpenAIBetaTextResponseFormatJsonSchemaKind
+  public var kind: OpenAIBetaTextResponseFormatJsonSchema.Kind
 
   public init(
     name: String,
     schema: OpenAIBetaResponseFormatJsonSchemaSchema,
-    kind: OpenAIBetaTextResponseFormatJsonSchemaKind,
+    kind: OpenAIBetaTextResponseFormatJsonSchema.Kind,
     description: String? = nil,
     strict: Bool? = nil
   ) {
@@ -37,5 +37,9 @@ public struct OpenAIBetaTextResponseFormatJsonSchema: Codable, Sendable {
     case schema
     case strict
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case jsonSchema = "json_schema"
   }
 }

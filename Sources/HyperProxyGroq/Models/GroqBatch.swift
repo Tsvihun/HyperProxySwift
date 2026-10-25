@@ -18,7 +18,7 @@ public struct GroqBatch: Codable, Sendable {
   public var createdAt: Int
   public var endpoint: String
   public var errorFileId: String?
-  public var errors: GroqBatchErrors?
+  public var errors: GroqBatch.Errors?
   public var expiredAt: Int?
   public var expiresAt: Int?
   public var failedAt: Int?
@@ -27,10 +27,10 @@ public struct GroqBatch: Codable, Sendable {
   public var inProgressAt: Int?
   public var inputFileId: String
   public var metadata: HyperProxyJSONValue?
-  public var object: GroqBatchObject
+  public var object: GroqBatch.Object
   public var outputFileId: String?
-  public var requestCounts: GroqBatchRequestCounts?
-  public var status: GroqBatchStatus
+  public var requestCounts: GroqBatch.RequestCounts?
+  public var status: GroqBatch.Status
 
   public init(
     completionWindow: String,
@@ -38,13 +38,13 @@ public struct GroqBatch: Codable, Sendable {
     endpoint: String,
     id: String,
     inputFileId: String,
-    object: GroqBatchObject,
-    status: GroqBatchStatus,
+    object: GroqBatch.Object,
+    status: GroqBatch.Status,
     cancelledAt: Int? = nil,
     cancellingAt: Int? = nil,
     completedAt: Int? = nil,
     errorFileId: String? = nil,
-    errors: GroqBatchErrors? = nil,
+    errors: GroqBatch.Errors? = nil,
     expiredAt: Int? = nil,
     expiresAt: Int? = nil,
     failedAt: Int? = nil,
@@ -52,7 +52,7 @@ public struct GroqBatch: Codable, Sendable {
     inProgressAt: Int? = nil,
     metadata: HyperProxyJSONValue? = nil,
     outputFileId: String? = nil,
-    requestCounts: GroqBatchRequestCounts? = nil
+    requestCounts: GroqBatch.RequestCounts? = nil
   ) {
     self.cancelledAt = cancelledAt
     self.cancellingAt = cancellingAt
@@ -97,5 +97,86 @@ public struct GroqBatch: Codable, Sendable {
     case outputFileId = "output_file_id"
     case requestCounts = "request_counts"
     case status
+  }
+
+  public struct Errors: Codable, Sendable {
+    public var data: [GroqBatch.Errors.DataElement]?
+    public var object: String?
+
+    public init(
+      data: [GroqBatch.Errors.DataElement]? = nil,
+      object: String? = nil
+    ) {
+      self.data = data
+      self.object = object
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case data
+      case object
+    }
+
+    public struct DataElement: Codable, Sendable {
+      public var code: String?
+      public var line: Int?
+      public var message: String?
+      public var param: String?
+
+      public init(
+        code: String? = nil,
+        line: Int? = nil,
+        message: String? = nil,
+        param: String? = nil
+      ) {
+        self.code = code
+        self.line = line
+        self.message = message
+        self.param = param
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case code
+        case line
+        case message
+        case param
+      }
+    }
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case batch = "batch"
+  }
+
+  public struct RequestCounts: Codable, Sendable {
+    public var completed: Int
+    public var failed: Int
+    public var total: Int
+
+    public init(
+      completed: Int,
+      failed: Int,
+      total: Int
+    ) {
+      self.completed = completed
+      self.failed = failed
+      self.total = total
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case completed
+      case failed
+      case total
+    }
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case validating = "validating"
+    case failed = "failed"
+    case inProgress = "in_progress"
+    case finalizing = "finalizing"
+    case completed = "completed"
+    case expired = "expired"
+    case cancelling = "cancelling"
+    case cancelled = "cancelled"
   }
 }

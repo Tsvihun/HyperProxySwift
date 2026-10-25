@@ -15,7 +15,7 @@ public struct StabilityPostV2betaStableImageControlStyleRequest: Codable, Sendab
   public var fidelity: Double?
   public var image: String
   public var negativePrompt: String?
-  public var outputFormat: StabilityPostV2betaStableImageControlStyleRequestOutputFormat?
+  public var outputFormat: StabilityPostV2betaStableImageControlStyleRequest.OutputFormat?
   public var prompt: String
   public var seed: Double?
   public var stylePreset: StabilityStylePreset?
@@ -26,7 +26,7 @@ public struct StabilityPostV2betaStableImageControlStyleRequest: Codable, Sendab
     aspectRatio: StabilityAspectRatio? = nil,
     fidelity: Double? = nil,
     negativePrompt: String? = nil,
-    outputFormat: StabilityPostV2betaStableImageControlStyleRequestOutputFormat? = nil,
+    outputFormat: StabilityPostV2betaStableImageControlStyleRequest.OutputFormat? = nil,
     seed: Double? = nil,
     stylePreset: StabilityStylePreset? = nil
   ) {
@@ -49,5 +49,13 @@ public struct StabilityPostV2betaStableImageControlStyleRequest: Codable, Sendab
     case prompt
     case seed
     case stylePreset = "style_preset"
+  }
+
+  public enum OutputFormat: String, Codable,
+    Hashable, Sendable
+  {
+    case png = "png"
+    case jpeg = "jpeg"
+    case webp = "webp"
   }
 }

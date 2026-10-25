@@ -14,7 +14,7 @@ public struct OpenAIGcpExternalStorageProviderResponse: Codable, Sendable {
   public var audience: String
   public var bucket: String
   public var region: String
-  public var kind: OpenAIGcpExternalStorageProviderResponseKind
+  public var kind: OpenAIGcpExternalStorageProviderResponse.Kind
   public var workloadIdentityPoolId: String
   public var workloadIdentityProjectNumber: String
   public var workloadIdentityProviderId: String
@@ -23,7 +23,7 @@ public struct OpenAIGcpExternalStorageProviderResponse: Codable, Sendable {
     audience: String,
     bucket: String,
     region: String,
-    kind: OpenAIGcpExternalStorageProviderResponseKind,
+    kind: OpenAIGcpExternalStorageProviderResponse.Kind,
     workloadIdentityPoolId: String,
     workloadIdentityProjectNumber: String,
     workloadIdentityProviderId: String
@@ -45,5 +45,9 @@ public struct OpenAIGcpExternalStorageProviderResponse: Codable, Sendable {
     case workloadIdentityPoolId = "workload_identity_pool_id"
     case workloadIdentityProjectNumber = "workload_identity_project_number"
     case workloadIdentityProviderId = "workload_identity_provider_id"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case gcp = "gcp"
   }
 }

@@ -15,29 +15,29 @@ public struct MistralPromptsListParameters: Codable, Sendable {
   public var fields: [String]?
   public var pageSize: Int?
   public var pageToken: String?
-  public var sortDirection: MistralListSortDirection?
+  public var sortDirectionDotted: MistralListSortDirection?
   public var sortField: MistralListSortField?
   public var sortBy: String?
-  public var sortDirection3b38d570: String?
+  public var sortDirectionUnderscored: String?
 
   public init(
     alias: String? = nil,
     fields: [String]? = nil,
     pageSize: Int? = nil,
     pageToken: String? = nil,
-    sortDirection: MistralListSortDirection? = nil,
+    sortDirectionDotted: MistralListSortDirection? = nil,
     sortField: MistralListSortField? = nil,
     sortBy: String? = nil,
-    sortDirection3b38d570: String? = nil
+    sortDirectionUnderscored: String? = nil
   ) {
     self.alias = alias
     self.fields = fields
     self.pageSize = pageSize
     self.pageToken = pageToken
-    self.sortDirection = sortDirection
+    self.sortDirectionDotted = sortDirectionDotted
     self.sortField = sortField
     self.sortBy = sortBy
-    self.sortDirection3b38d570 = sortDirection3b38d570
+    self.sortDirectionUnderscored = sortDirectionUnderscored
   }
 
   enum CodingKeys: String, CodingKey {
@@ -45,9 +45,9 @@ public struct MistralPromptsListParameters: Codable, Sendable {
     case fields
     case pageSize
     case pageToken
-    case sortDirection = "sort.direction"
+    case sortDirectionDotted = "sort.direction"
     case sortField = "sort.field"
     case sortBy = "sort_by"
-    case sortDirection3b38d570 = "sort_direction"
+    case sortDirectionUnderscored = "sort_direction"
   }
 }

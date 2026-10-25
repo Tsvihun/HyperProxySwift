@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralAssistantMessage: Codable, Sendable {
-  public var content: MistralAssistantMessageContent?
+  public var content: MistralAssistantMessage.Content?
   public var prefixValue: Bool?
   public var role: MistralAssistantRole?
   public var toolCalls: [MistralToolCall]?
 
   public init(
-    content: MistralAssistantMessageContent? = nil,
+    content: MistralAssistantMessage.Content? = nil,
     prefixValue: Bool? = nil,
     role: MistralAssistantRole? = nil,
     toolCalls: [MistralToolCall]? = nil
@@ -33,5 +33,41 @@ public struct MistralAssistantMessage: Codable, Sendable {
     case prefixValue = "prefix"
     case role
     case toolCalls = "tool_calls"
+  }
+
+  public enum Content: Codable, Sendable {
+    case string(String)
+    case contentChunkArray([MistralContentChunk])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .contentChunkArray(try container.decode([MistralContentChunk].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .contentChunkArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension MistralAssistantMessage.Content: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension MistralAssistantMessage.Content: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: MistralContentChunk...) {
+    self = .contentChunkArray(elements)
   }
 }

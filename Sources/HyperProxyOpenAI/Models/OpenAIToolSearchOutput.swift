@@ -17,7 +17,7 @@ public struct OpenAIToolSearchOutput: Codable, Sendable {
   public var id: String
   public var status: OpenAIFunctionCallOutputStatusEnum
   public var tools: [OpenAITool]
-  public var kind: OpenAIToolSearchOutputKind
+  public var kind: OpenAIToolSearchOutput.Kind
 
   public init(
     callId: String?,
@@ -25,7 +25,7 @@ public struct OpenAIToolSearchOutput: Codable, Sendable {
     id: String,
     status: OpenAIFunctionCallOutputStatusEnum,
     tools: [OpenAITool],
-    kind: OpenAIToolSearchOutputKind,
+    kind: OpenAIToolSearchOutput.Kind,
     createdBy: String? = nil
   ) {
     self.callId = callId
@@ -45,5 +45,9 @@ public struct OpenAIToolSearchOutput: Codable, Sendable {
     case status
     case tools
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case toolSearchOutput = "tool_search_output"
   }
 }

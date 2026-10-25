@@ -21,13 +21,13 @@ public struct TogetherQueueJobStatusResponse: Codable, Sendable {
   public var priority: Int?
   public var requestId: String
   public var retries: Int?
-  public var status: TogetherQueueJobStatusResponseStatus
+  public var status: TogetherQueueJobStatusResponse.Status
   public var warnings: [String]?
 
   public init(
     model: String,
     requestId: String,
-    status: TogetherQueueJobStatusResponseStatus,
+    status: TogetherQueueJobStatusResponse.Status,
     claimedAt: String? = nil,
     createdAt: String? = nil,
     doneAt: String? = nil,
@@ -65,5 +65,13 @@ public struct TogetherQueueJobStatusResponse: Codable, Sendable {
     case retries
     case status
     case warnings
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case pending = "pending"
+    case running = "running"
+    case done = "done"
+    case failed = "failed"
+    case canceled = "canceled"
   }
 }

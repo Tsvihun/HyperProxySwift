@@ -19,7 +19,7 @@ public struct ElevenLabsGetAgentResponseModel: Codable, Sendable {
   public var mainBranchId: String?
   public var metadata: ElevenLabsAgentMetadataResponseModel
   public var name: String
-  public var phoneNumbers: [ElevenLabsGetAgentResponseModelPhoneNumbersItem]?
+  public var phoneNumbers: [ElevenLabsGetAgentResponseModel.PhoneNumbersElement]?
   public var platformSettings: ElevenLabsAgentPlatformSettingsResponseModel?
   public var procedures: [String: ElevenLabsProcedureRefResponseModel]?
   public var tags: [String]?
@@ -36,7 +36,7 @@ public struct ElevenLabsGetAgentResponseModel: Codable, Sendable {
     branchId: String? = nil,
     defaultHoldAudioUrl: String? = nil,
     mainBranchId: String? = nil,
-    phoneNumbers: [ElevenLabsGetAgentResponseModelPhoneNumbersItem]? = nil,
+    phoneNumbers: [ElevenLabsGetAgentResponseModel.PhoneNumbersElement]? = nil,
     platformSettings: ElevenLabsAgentPlatformSettingsResponseModel? = nil,
     procedures: [String: ElevenLabsProcedureRefResponseModel]? = nil,
     tags: [String]? = nil,
@@ -77,5 +77,37 @@ public struct ElevenLabsGetAgentResponseModel: Codable, Sendable {
     case versionId = "version_id"
     case whatsappAccounts = "whatsapp_accounts"
     case workflow
+  }
+
+  public enum PhoneNumbersElement: Codable, Sendable {
+    case getPhoneNumberTwilioResponseModel(ElevenLabsGetPhoneNumberTwilioResponseModel)
+    case getPhoneNumberExotelResponseModel(ElevenLabsGetPhoneNumberExotelResponseModel)
+    case getPhoneNumberSipTrunkResponseModel(ElevenLabsGetPhoneNumberSIPTrunkResponseModel)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsGetPhoneNumberTwilioResponseModel.self) {
+        self = .getPhoneNumberTwilioResponseModel(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsGetPhoneNumberExotelResponseModel.self) {
+        self = .getPhoneNumberExotelResponseModel(value)
+        return
+      }
+      self = .getPhoneNumberSipTrunkResponseModel(
+        try container.decode(ElevenLabsGetPhoneNumberSIPTrunkResponseModel.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .getPhoneNumberTwilioResponseModel(let value):
+        try container.encode(value)
+      case .getPhoneNumberExotelResponseModel(let value):
+        try container.encode(value)
+      case .getPhoneNumberSipTrunkResponseModel(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

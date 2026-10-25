@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIDeletedVideoResource: Codable, Sendable {
   public var deleted: Bool
   public var id: String
-  public var object: OpenAIDeletedVideoResourceObject
+  public var object: OpenAIDeletedVideoResource.Object
 
   public init(
     deleted: Bool,
     id: String,
-    object: OpenAIDeletedVideoResourceObject
+    object: OpenAIDeletedVideoResource.Object
   ) {
     self.deleted = deleted
     self.id = id
@@ -29,5 +29,9 @@ public struct OpenAIDeletedVideoResource: Codable, Sendable {
     case deleted
     case id
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case videoDeleted = "video.deleted"
   }
 }

@@ -14,7 +14,7 @@ public struct OpenAISessionArtifactResource: Codable, Sendable {
   public var createdAt: Int64
   public var environmentId: String
   public var id: String
-  public var object: OpenAISessionArtifactResourceObject
+  public var object: OpenAISessionArtifactResource.Object
   public var path: String
   public var sessionId: String
   public var sizeBytes: Int64
@@ -24,7 +24,7 @@ public struct OpenAISessionArtifactResource: Codable, Sendable {
     createdAt: Int64,
     environmentId: String,
     id: String,
-    object: OpenAISessionArtifactResourceObject,
+    object: OpenAISessionArtifactResource.Object,
     path: String,
     sessionId: String,
     sizeBytes: Int64,
@@ -49,5 +49,9 @@ public struct OpenAISessionArtifactResource: Codable, Sendable {
     case sessionId = "session_id"
     case sizeBytes = "size_bytes"
     case turnId = "turn_id"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case agentSessionArtifact = "agent.session.artifact"
   }
 }

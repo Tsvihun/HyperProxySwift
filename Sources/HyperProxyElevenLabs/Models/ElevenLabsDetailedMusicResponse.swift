@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsDetailedMusicResponse: Codable, Sendable {
-  public var compositionPlan: ElevenLabsDetailedMusicResponseCompositionPlan
+  public var compositionPlan: ElevenLabsDetailedMusicResponse.CompositionPlan
   public var songMetadata: ElevenLabsSongMetadata
   public var waveformVisual: [Int]?
   public var wordsTimestamps: [ElevenLabsWordTimestamp]?
 
   public init(
-    compositionPlan: ElevenLabsDetailedMusicResponseCompositionPlan,
+    compositionPlan: ElevenLabsDetailedMusicResponse.CompositionPlan,
     songMetadata: ElevenLabsSongMetadata,
     wordsTimestamps: [ElevenLabsWordTimestamp]?,
     waveformVisual: [Int]? = nil
@@ -33,5 +33,29 @@ public struct ElevenLabsDetailedMusicResponse: Codable, Sendable {
     case songMetadata = "song_metadata"
     case waveformVisual = "waveform_visual"
     case wordsTimestamps = "words_timestamps"
+  }
+
+  public enum CompositionPlan: Codable, Sendable {
+    case musicPrompt(ElevenLabsMusicPrompt)
+    case compositionPlan(ElevenLabsCompositionPlan)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsMusicPrompt.self) {
+        self = .musicPrompt(value)
+        return
+      }
+      self = .compositionPlan(try container.decode(ElevenLabsCompositionPlan.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .musicPrompt(let value):
+        try container.encode(value)
+      case .compositionPlan(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

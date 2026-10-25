@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct TogetherRLSamplingParams: Codable, Sendable {
   public var maxTokens: Int?
-  public var seed: TogetherRLSamplingParamsSeed?
+  public var seed: TogetherRLSamplingParams.Seed?
   public var stop: [String]?
   public var temperature: Double?
   public var topK: Int?
@@ -20,7 +20,7 @@ public struct TogetherRLSamplingParams: Codable, Sendable {
 
   public init(
     maxTokens: Int? = nil,
-    seed: TogetherRLSamplingParamsSeed? = nil,
+    seed: TogetherRLSamplingParams.Seed? = nil,
     stop: [String]? = nil,
     temperature: Double? = nil,
     topK: Int? = nil,
@@ -41,5 +41,41 @@ public struct TogetherRLSamplingParams: Codable, Sendable {
     case temperature
     case topK = "top_k"
     case topP = "top_p"
+  }
+
+  public enum Seed: Codable, Sendable {
+    case integer(Int)
+    case string(String)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Int.self) {
+        self = .integer(value)
+        return
+      }
+      self = .string(try container.decode(String.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .integer(let value):
+        try container.encode(value)
+      case .string(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension TogetherRLSamplingParams.Seed: ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Int) {
+    self = .integer(value)
+  }
+}
+
+extension TogetherRLSamplingParams.Seed: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

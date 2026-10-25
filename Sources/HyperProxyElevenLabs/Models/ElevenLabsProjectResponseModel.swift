@@ -11,9 +11,9 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsProjectResponseModel: Codable, Sendable {
-  public var accessLevel: ElevenLabsProjectResponseModelAccessLevel
+  public var accessLevel: ElevenLabsProjectResponseModel.AccessLevel
   public var agentSettings: ElevenLabsStudioAgentSettingsModel?
-  public var aspectRatio: ElevenLabsProjectResponseModelAspectRatio?
+  public var aspectRatio: ElevenLabsProjectResponseModel.AspectRatio?
   public var author: String?
   public var canBeDownloaded: Bool
   public var captionStyle: ElevenLabsCaptionStyleModel?
@@ -31,7 +31,7 @@ public struct ElevenLabsProjectResponseModel: Codable, Sendable {
   public var defaultTitleVoiceId: String
   public var defaultTitleVoiceRefId: String
   public var description: String?
-  public var fiction: ElevenLabsProjectResponseModelFiction?
+  public var fiction: ElevenLabsProjectResponseModel.Fiction?
   public var genres: [String]?
   public var isbnNumber: String?
   public var language: String?
@@ -43,14 +43,14 @@ public struct ElevenLabsProjectResponseModel: Codable, Sendable {
   public var publicShareId: String?
   public var qualityCheckOn: Bool
   public var qualityCheckOnWhenBulkConvert: Bool
-  public var sourceType: ElevenLabsProjectResponseModelSourceType?
-  public var state: ElevenLabsProjectResponseModelState
-  public var targetAudience: ElevenLabsProjectResponseModelTargetAudience?
+  public var sourceType: ElevenLabsProjectResponseModel.SourceType?
+  public var state: ElevenLabsProjectResponseModel.State
+  public var targetAudience: ElevenLabsProjectResponseModel.TargetAudience?
   public var title: String?
   public var volumeNormalization: Bool
 
   public init(
-    accessLevel: ElevenLabsProjectResponseModelAccessLevel,
+    accessLevel: ElevenLabsProjectResponseModel.AccessLevel,
     canBeDownloaded: Bool,
     createDateUnix: Int,
     createdByUserId: String?,
@@ -63,10 +63,10 @@ public struct ElevenLabsProjectResponseModel: Codable, Sendable {
     projectId: String,
     qualityCheckOn: Bool,
     qualityCheckOnWhenBulkConvert: Bool,
-    state: ElevenLabsProjectResponseModelState,
+    state: ElevenLabsProjectResponseModel.State,
     volumeNormalization: Bool,
     agentSettings: ElevenLabsStudioAgentSettingsModel? = nil,
-    aspectRatio: ElevenLabsProjectResponseModelAspectRatio? = nil,
+    aspectRatio: ElevenLabsProjectResponseModel.AspectRatio? = nil,
     author: String? = nil,
     captionStyle: ElevenLabsCaptionStyleModel? = nil,
     captionStyleTemplateOverrides: [String: ElevenLabsCaptionStyleModel]? = nil,
@@ -76,7 +76,7 @@ public struct ElevenLabsProjectResponseModel: Codable, Sendable {
     coverImageUrl: String? = nil,
     creationMeta: ElevenLabsProjectCreationMetaResponseModel? = nil,
     description: String? = nil,
-    fiction: ElevenLabsProjectResponseModelFiction? = nil,
+    fiction: ElevenLabsProjectResponseModel.Fiction? = nil,
     genres: [String]? = nil,
     isbnNumber: String? = nil,
     language: String? = nil,
@@ -84,8 +84,8 @@ public struct ElevenLabsProjectResponseModel: Codable, Sendable {
     matureContent: Bool? = nil,
     originalPublicationDate: String? = nil,
     publicShareId: String? = nil,
-    sourceType: ElevenLabsProjectResponseModelSourceType? = nil,
-    targetAudience: ElevenLabsProjectResponseModelTargetAudience? = nil,
+    sourceType: ElevenLabsProjectResponseModel.SourceType? = nil,
+    targetAudience: ElevenLabsProjectResponseModel.TargetAudience? = nil,
     title: String? = nil
   ) {
     self.accessLevel = accessLevel
@@ -165,5 +165,47 @@ public struct ElevenLabsProjectResponseModel: Codable, Sendable {
     case targetAudience = "target_audience"
     case title
     case volumeNormalization = "volume_normalization"
+  }
+
+  public enum AccessLevel: String, Codable, Hashable, Sendable {
+    case admin = "admin"
+    case editor = "editor"
+    case commenter = "commenter"
+    case viewer = "viewer"
+  }
+
+  public enum AspectRatio: String, Codable, Hashable, Sendable {
+    case ratio16x9 = "16:9"
+    case ratio9x16 = "9:16"
+    case ratio4x5 = "4:5"
+    case ratio1x1 = "1:1"
+  }
+
+  public enum Fiction: String, Codable, Hashable, Sendable {
+    case fiction = "fiction"
+    case nonFiction = "non-fiction"
+  }
+
+  public enum SourceType: String, Codable, Hashable, Sendable {
+    case blank = "blank"
+    case book = "book"
+    case article = "article"
+    case genfm = "genfm"
+    case video = "video"
+    case screenplay = "screenplay"
+  }
+
+  public enum State: String, Codable, Hashable, Sendable {
+    case creating = "creating"
+    case defaultValue = "default"
+    case converting = "converting"
+    case inQueue = "in_queue"
+  }
+
+  public enum TargetAudience: String, Codable, Hashable, Sendable {
+    case children = "children"
+    case youngAdult = "young adult"
+    case adult = "adult"
+    case allAges = "all ages"
   }
 }

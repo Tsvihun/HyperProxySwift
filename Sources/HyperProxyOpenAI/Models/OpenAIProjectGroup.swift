@@ -14,16 +14,16 @@ public struct OpenAIProjectGroup: Codable, Sendable {
   public var createdAt: Int
   public var groupId: String
   public var groupName: String
-  public var groupType: OpenAIProjectGroupGroupType
-  public var object: OpenAIProjectGroupObject
+  public var groupType: OpenAIProjectGroup.GroupType
+  public var object: OpenAIProjectGroup.Object
   public var projectId: String
 
   public init(
     createdAt: Int,
     groupId: String,
     groupName: String,
-    groupType: OpenAIProjectGroupGroupType,
-    object: OpenAIProjectGroupObject,
+    groupType: OpenAIProjectGroup.GroupType,
+    object: OpenAIProjectGroup.Object,
     projectId: String
   ) {
     self.createdAt = createdAt
@@ -41,5 +41,14 @@ public struct OpenAIProjectGroup: Codable, Sendable {
     case groupType = "group_type"
     case object
     case projectId = "project_id"
+  }
+
+  public enum GroupType: String, Codable, Hashable, Sendable {
+    case group = "group"
+    case tenantGroup = "tenant_group"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case projectGroup = "project.group"
   }
 }

@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksCheckpointAvailabilityAvailabilityClass: String, Codable, Hashable, Sendable {
-  case aVAILABILITYCLASSUNSPECIFIED = "AVAILABILITY_CLASS_UNSPECIFIED"
-  case sINGLEREGION = "SINGLE_REGION"
-  case mANAGEDDURABLE = "MANAGED_DURABLE"
+  case availabilityClassUnspecified = "AVAILABILITY_CLASS_UNSPECIFIED"
+  case singleRegion = "SINGLE_REGION"
+  case managedDurable = "MANAGED_DURABLE"
 }

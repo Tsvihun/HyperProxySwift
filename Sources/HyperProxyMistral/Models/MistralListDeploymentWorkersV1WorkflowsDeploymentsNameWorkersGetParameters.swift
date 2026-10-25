@@ -17,14 +17,14 @@ public struct MistralListDeploymentWorkersV1WorkflowsDeploymentsNameWorkersGetPa
   public var limit: Int?
   public var name: String
   public var workerStatus:
-    MistralListDeploymentWorkersV1WorkflowsDeploymentsNameWorkersGetParametersWorkerStatus?
+    MistralListDeploymentWorkersV1WorkflowsDeploymentsNameWorkersGetParameters.WorkerStatus?
 
   public init(
     name: String,
     cursor: String? = nil,
     limit: Int? = nil,
     workerStatus:
-      MistralListDeploymentWorkersV1WorkflowsDeploymentsNameWorkersGetParametersWorkerStatus? = nil
+      MistralListDeploymentWorkersV1WorkflowsDeploymentsNameWorkersGetParameters.WorkerStatus? = nil
   ) {
     self.cursor = cursor
     self.limit = limit
@@ -37,5 +37,12 @@ public struct MistralListDeploymentWorkersV1WorkflowsDeploymentsNameWorkersGetPa
     case limit
     case name
     case workerStatus = "worker_status"
+  }
+
+  public enum WorkerStatus:
+    String, Codable, Hashable, Sendable
+  {
+    case active = "active"
+    case inactive = "inactive"
   }
 }

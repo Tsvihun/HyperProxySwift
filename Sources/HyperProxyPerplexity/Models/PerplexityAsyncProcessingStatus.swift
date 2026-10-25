@@ -11,8 +11,8 @@ import Foundation
 import HyperProxyCore
 
 public enum PerplexityAsyncProcessingStatus: String, Codable, Hashable, Sendable {
-  case cREATED = "CREATED"
-  case iNPROGRESS = "IN_PROGRESS"
-  case cOMPLETED = "COMPLETED"
-  case fAILED = "FAILED"
+  case created = "CREATED"
+  case inProgress = "IN_PROGRESS"
+  case completed = "COMPLETED"
+  case failed = "FAILED"
 }

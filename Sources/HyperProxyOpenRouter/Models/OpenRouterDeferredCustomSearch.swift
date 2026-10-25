@@ -14,12 +14,12 @@ public struct OpenRouterDeferredCustomSearch: Codable, Sendable {
   public var maxResults: Int?
   public var resultKey: String
   public var toolId: String
-  public var kind: OpenRouterDeferredCustomSearchKind
+  public var kind: OpenRouterDeferredCustomSearch.Kind
 
   public init(
     resultKey: String,
     toolId: String,
-    kind: OpenRouterDeferredCustomSearchKind,
+    kind: OpenRouterDeferredCustomSearch.Kind,
     maxResults: Int? = nil
   ) {
     self.maxResults = maxResults
@@ -33,5 +33,9 @@ public struct OpenRouterDeferredCustomSearch: Codable, Sendable {
     case resultKey = "result_key"
     case toolId = "tool_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case custom = "custom"
   }
 }

@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIPromptCacheHitDiagnosticsBody: Codable, Sendable {
-  public var kind: OpenAIPromptCacheHitDiagnosticsBodyKind
+  public var kind: OpenAIPromptCacheHitDiagnosticsBody.Kind
 
   public init(
-    kind: OpenAIPromptCacheHitDiagnosticsBodyKind
+    kind: OpenAIPromptCacheHitDiagnosticsBody.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case cacheHit = "cache_hit"
   }
 }

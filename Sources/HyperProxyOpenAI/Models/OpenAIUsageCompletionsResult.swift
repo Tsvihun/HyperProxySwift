@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct OpenAIUsageCompletionsResult: Codable, Sendable {
   public var apiKeyId: String?
-  public var apiSource: OpenAIUsageCompletionsResultApiSource?
+  public var apiSource: OpenAIUsageCompletionsResult.ApiSource?
   public var batch: Bool?
   public var inputAudioTokens: Int?
   public var inputCacheWrite12hTokens: Int?
@@ -28,7 +28,7 @@ public struct OpenAIUsageCompletionsResult: Codable, Sendable {
   public var inputUncachedTokens: Int?
   public var model: String?
   public var numModelRequests: Int
-  public var object: OpenAIUsageCompletionsResultObject
+  public var object: OpenAIUsageCompletionsResult.Object
   public var outputAudioTokens: Int?
   public var outputImageTokens: Int?
   public var outputTextTokens: Int?
@@ -40,10 +40,10 @@ public struct OpenAIUsageCompletionsResult: Codable, Sendable {
   public init(
     inputTokens: Int,
     numModelRequests: Int,
-    object: OpenAIUsageCompletionsResultObject,
+    object: OpenAIUsageCompletionsResult.Object,
     outputTokens: Int,
     apiKeyId: String? = nil,
-    apiSource: OpenAIUsageCompletionsResultApiSource? = nil,
+    apiSource: OpenAIUsageCompletionsResult.ApiSource? = nil,
     batch: Bool? = nil,
     inputAudioTokens: Int? = nil,
     inputCacheWrite12hTokens: Int? = nil,
@@ -117,5 +117,14 @@ public struct OpenAIUsageCompletionsResult: Codable, Sendable {
     case projectId = "project_id"
     case serviceTier = "service_tier"
     case userId = "user_id"
+  }
+
+  public enum ApiSource: String, Codable, Hashable, Sendable {
+    case agentsApi = "agents_api"
+    case unlabeled = "unlabeled"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case organizationUsageCompletionsResult = "organization.usage.completions.result"
   }
 }

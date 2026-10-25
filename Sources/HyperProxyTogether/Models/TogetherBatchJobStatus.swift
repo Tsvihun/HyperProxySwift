@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public enum TogetherBatchJobStatus: String, Codable, Hashable, Sendable {
-  case vALIDATING = "VALIDATING"
-  case iNPROGRESS = "IN_PROGRESS"
-  case cOMPLETED = "COMPLETED"
-  case fAILED = "FAILED"
-  case eXPIRED = "EXPIRED"
-  case cANCELLED = "CANCELLED"
+  case validating = "VALIDATING"
+  case inProgress = "IN_PROGRESS"
+  case completed = "COMPLETED"
+  case failed = "FAILED"
+  case expired = "EXPIRED"
+  case cancelled = "CANCELLED"
 }

@@ -11,17 +11,17 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralUpdateHTTPConnectorRequest: Codable, Sendable {
-  public var authMethods: [MistralUpdateHTTPConnectorRequestAuthMethodsAnyOf1Item]?
+  public var authMethods: [MistralUpdateHTTPConnectorRequestAuthMethodsItem]?
   public var description: String?
   public var iconUrl: String?
   public var name: String?
-  public var protocolModel: MistralHttpProtocolModel
+  public var protocolValue: MistralHttpProtocolModel
   public var server: String?
   public var title: String?
 
   public init(
-    protocolModel: MistralHttpProtocolModel = .http,
-    authMethods: [MistralUpdateHTTPConnectorRequestAuthMethodsAnyOf1Item]? = nil,
+    protocolValue: MistralHttpProtocolModel = .http,
+    authMethods: [MistralUpdateHTTPConnectorRequestAuthMethodsItem]? = nil,
     description: String? = nil,
     iconUrl: String? = nil,
     name: String? = nil,
@@ -32,7 +32,7 @@ public struct MistralUpdateHTTPConnectorRequest: Codable, Sendable {
     self.description = description
     self.iconUrl = iconUrl
     self.name = name
-    self.protocolModel = protocolModel
+    self.protocolValue = protocolValue
     self.server = server
     self.title = title
   }
@@ -42,7 +42,7 @@ public struct MistralUpdateHTTPConnectorRequest: Codable, Sendable {
     case description
     case iconUrl = "icon_url"
     case name
-    case protocolModel = "protocol"
+    case protocolValue = "protocol"
     case server
     case title
   }

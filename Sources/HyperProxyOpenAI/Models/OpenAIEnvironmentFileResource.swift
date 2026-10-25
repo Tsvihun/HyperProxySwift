@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct OpenAIEnvironmentFileResource: Codable, Sendable {
   public var environmentId: String
-  public var object: OpenAIEnvironmentFileResourceObject
+  public var object: OpenAIEnvironmentFileResource.Object
   public var path: String
   public var sizeBytes: Int64
 
   public init(
     environmentId: String,
-    object: OpenAIEnvironmentFileResourceObject,
+    object: OpenAIEnvironmentFileResource.Object,
     path: String,
     sizeBytes: Int64
   ) {
@@ -33,5 +33,9 @@ public struct OpenAIEnvironmentFileResource: Codable, Sendable {
     case object
     case path
     case sizeBytes = "size_bytes"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case agentEnvironmentFile = "agent.environment.file"
   }
 }

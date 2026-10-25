@@ -141,13 +141,13 @@ extension HyperProxyProviderService where Operation == EachAIOperation {
   }
 
   public func predictionsRetrieve(
-    id: String,
+    predictionId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> EachAIAPIPrediction {
     let call = self.call(.predictionsRetrieve)
-      .path("id", id)
+      .path("prediction_id", predictionId)
       .query(query)
       .headers(headers)
       .timeout(timeout)

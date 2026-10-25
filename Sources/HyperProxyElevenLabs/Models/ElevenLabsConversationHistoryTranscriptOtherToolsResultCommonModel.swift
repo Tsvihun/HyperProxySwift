@@ -22,7 +22,7 @@ public struct ElevenLabsConversationHistoryTranscriptOtherToolsResultCommonModel
   public var toolHasBeenCalled: Bool
   public var toolLatencySecs: Double?
   public var toolName: String
-  public var kind: ElevenLabsConversationHistoryTranscriptOtherToolsResultCommonModelKind?
+  public var kind: ElevenLabsConversationHistoryTranscriptOtherToolsResultCommonModel.Kind?
 
   public init(
     isError: Bool,
@@ -35,7 +35,7 @@ public struct ElevenLabsConversationHistoryTranscriptOtherToolsResultCommonModel
     isBlocked: Bool? = nil,
     rawErrorMessage: String? = nil,
     toolLatencySecs: Double? = nil,
-    kind: ElevenLabsConversationHistoryTranscriptOtherToolsResultCommonModelKind? = nil
+    kind: ElevenLabsConversationHistoryTranscriptOtherToolsResultCommonModel.Kind? = nil
   ) {
     self.dynamicVariableUpdates = dynamicVariableUpdates
     self.errorType = errorType
@@ -62,5 +62,14 @@ public struct ElevenLabsConversationHistoryTranscriptOtherToolsResultCommonModel
     case toolLatencySecs = "tool_latency_secs"
     case toolName = "tool_name"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case client = "client"
+    case webhook = "webhook"
+    case mcp = "mcp"
+    case code = "code"
   }
 }

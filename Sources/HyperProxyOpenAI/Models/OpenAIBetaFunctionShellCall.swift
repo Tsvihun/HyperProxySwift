@@ -16,18 +16,18 @@ public struct OpenAIBetaFunctionShellCall: Codable, Sendable {
   public var callId: String
   public var caller: OpenAIBetaToolCallCaller?
   public var createdBy: String?
-  public var environment: OpenAIBetaFunctionShellCallEnvironmentAnyOf1?
+  public var environment: OpenAIBetaFunctionShellCallEnvironmentVariant?
   public var id: String
   public var status: OpenAIBetaFunctionShellCallStatus
-  public var kind: OpenAIBetaFunctionShellCallKind
+  public var kind: OpenAIBetaFunctionShellCall.Kind
 
   public init(
     action: OpenAIBetaFunctionShellAction,
     callId: String,
-    environment: OpenAIBetaFunctionShellCallEnvironmentAnyOf1?,
+    environment: OpenAIBetaFunctionShellCallEnvironmentVariant?,
     id: String,
     status: OpenAIBetaFunctionShellCallStatus,
-    kind: OpenAIBetaFunctionShellCallKind,
+    kind: OpenAIBetaFunctionShellCall.Kind,
     agent: OpenAIBetaAgentTag? = nil,
     caller: OpenAIBetaToolCallCaller? = nil,
     createdBy: String? = nil
@@ -53,5 +53,9 @@ public struct OpenAIBetaFunctionShellCall: Codable, Sendable {
     case id
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case shellCall = "shell_call"
   }
 }

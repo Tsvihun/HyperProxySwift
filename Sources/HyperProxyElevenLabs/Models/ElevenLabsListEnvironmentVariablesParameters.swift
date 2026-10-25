@@ -15,7 +15,7 @@ public struct ElevenLabsListEnvironmentVariablesParameters: Codable, Sendable {
   public var environment: String?
   public var label: String?
   public var pageSize: Int?
-  public var kind: ElevenLabsListEnvironmentVariablesParametersKind?
+  public var kind: ElevenLabsListEnvironmentVariablesParameters.Kind?
   public var xiApiKey: String?
 
   public init(
@@ -23,7 +23,7 @@ public struct ElevenLabsListEnvironmentVariablesParameters: Codable, Sendable {
     environment: String? = nil,
     label: String? = nil,
     pageSize: Int? = nil,
-    kind: ElevenLabsListEnvironmentVariablesParametersKind? = nil,
+    kind: ElevenLabsListEnvironmentVariablesParameters.Kind? = nil,
     xiApiKey: String? = nil
   ) {
     self.cursor = cursor
@@ -41,5 +41,11 @@ public struct ElevenLabsListEnvironmentVariablesParameters: Codable, Sendable {
     case pageSize = "page_size"
     case kind = "type"
     case xiApiKey = "xi-api-key"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case string = "string"
+    case secret = "secret"
+    case authConnection = "auth_connection"
   }
 }

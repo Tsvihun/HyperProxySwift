@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsKnowledgeBaseRagToolConfig: Codable, Sendable {
-  public var systemToolType: ElevenLabsKnowledgeBaseRagSystemToolType?
+  public var systemToolType: ElevenLabsKnowledgeBaseRagToolConfig.SystemToolType?
 
   public init(
-    systemToolType: ElevenLabsKnowledgeBaseRagSystemToolType? = nil
+    systemToolType: ElevenLabsKnowledgeBaseRagToolConfig.SystemToolType? = nil
   ) {
     self.systemToolType = systemToolType
   }
 
   enum CodingKeys: String, CodingKey {
     case systemToolType = "system_tool_type"
+  }
+
+  public enum SystemToolType: String, Codable, Hashable, Sendable {
+    case knowledgeBaseRag = "knowledge_base_rag"
   }
 }

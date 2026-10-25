@@ -12,16 +12,16 @@ import HyperProxyCore
 
 public struct OpenAIWebhookEndpointTestResultResource: Codable, Sendable {
   public var eventType: String
-  public var object: OpenAIWebhookEndpointTestResultResourceObject
+  public var object: OpenAIWebhookEndpointTestResultResource.Object
   public var statusCode: Int
-  public var success: OpenAIWebhookEndpointTestResultResourceSuccess
+  public var success: OpenAIWebhookEndpointTestResultResource.Success
   public var webhookEndpointId: String
 
   public init(
     eventType: String,
-    object: OpenAIWebhookEndpointTestResultResourceObject,
+    object: OpenAIWebhookEndpointTestResultResource.Object,
     statusCode: Int,
-    success: OpenAIWebhookEndpointTestResultResourceSuccess,
+    success: OpenAIWebhookEndpointTestResultResource.Success,
     webhookEndpointId: String
   ) {
     self.eventType = eventType
@@ -37,5 +37,39 @@ public struct OpenAIWebhookEndpointTestResultResource: Codable, Sendable {
     case statusCode = "status_code"
     case success
     case webhookEndpointId = "webhook_endpoint_id"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case webhookEndpointTest = "webhook_endpoint.test"
+  }
+
+  public enum Success: Codable, Sendable {
+    case booleanTrue
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Bool.self) {
+        switch value {
+        case true:
+          self = .booleanTrue
+          return
+        default:
+          break
+        }
+      }
+      throw DecodingError.dataCorruptedError(
+        in: container,
+        debugDescription:
+          "Expected a documented OpenAIWebhookEndpointTestResultResource.Success value."
+      )
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .booleanTrue:
+        try container.encode(true)
+      }
+    }
   }
 }

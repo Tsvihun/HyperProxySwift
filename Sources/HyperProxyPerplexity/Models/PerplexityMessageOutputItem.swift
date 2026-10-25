@@ -15,14 +15,14 @@ public struct PerplexityMessageOutputItem: Codable, Sendable {
   public var id: String
   public var role: PerplexityRoleType
   public var status: PerplexityStatus
-  public var kind: PerplexityMessageOutputItemKind
+  public var kind: PerplexityMessageOutputItem.Kind
 
   public init(
     content: [PerplexityContentPart],
     id: String,
     role: PerplexityRoleType,
     status: PerplexityStatus,
-    kind: PerplexityMessageOutputItemKind
+    kind: PerplexityMessageOutputItem.Kind
   ) {
     self.content = content
     self.id = id
@@ -37,5 +37,9 @@ public struct PerplexityMessageOutputItem: Codable, Sendable {
     case role
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case message = "message"
   }
 }

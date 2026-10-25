@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct FireworksValidationError: Codable, Sendable {
   public var ctx: HyperProxyJSONValue?
   public var input: HyperProxyJSONValue?
-  public var loc: [FireworksValidationErrorLocItem]
+  public var loc: [FireworksValidationError.LocElement]
   public var msg: String
   public var kind: String
 
   public init(
-    loc: [FireworksValidationErrorLocItem],
+    loc: [FireworksValidationError.LocElement],
     msg: String,
     kind: String,
     ctx: HyperProxyJSONValue? = nil,
@@ -37,5 +37,41 @@ public struct FireworksValidationError: Codable, Sendable {
     case loc
     case msg
     case kind = "type"
+  }
+
+  public enum LocElement: Codable, Sendable {
+    case integer(Int)
+    case string(String)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Int.self) {
+        self = .integer(value)
+        return
+      }
+      self = .string(try container.decode(String.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .integer(let value):
+        try container.encode(value)
+      case .string(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension FireworksValidationError.LocElement: ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Int) {
+    self = .integer(value)
+  }
+}
+
+extension FireworksValidationError.LocElement: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

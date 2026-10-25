@@ -15,7 +15,7 @@ public struct MistralPriceData: Codable, Sendable {
   public var billingGroup: String
   public var billingMetric: String
   public var eventType: MistralLagoEventType?
-  public var price: MistralPriceDataPrice
+  public var price: MistralPriceData.Price
   public var serviceTier: MistralServiceTier
 
   public init(
@@ -23,7 +23,7 @@ public struct MistralPriceData: Codable, Sendable {
     billingGroup: String,
     billingMetric: String,
     eventType: MistralLagoEventType?,
-    price: MistralPriceDataPrice,
+    price: MistralPriceData.Price,
     serviceTier: MistralServiceTier
   ) {
     self.apiZone = apiZone
@@ -41,5 +41,35 @@ public struct MistralPriceData: Codable, Sendable {
     case eventType = "event_type"
     case price
     case serviceTier = "service_tier"
+  }
+
+  public enum Price: Codable, Sendable {
+    case number(Double)
+    case string(String)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Double.self) {
+        self = .number(value)
+        return
+      }
+      self = .string(try container.decode(String.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .number(let value):
+        try container.encode(value)
+      case .string(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension MistralPriceData.Price: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

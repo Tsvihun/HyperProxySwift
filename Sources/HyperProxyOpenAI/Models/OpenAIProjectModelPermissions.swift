@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIProjectModelPermissions: Codable, Sendable {
-  public var mode: OpenAIProjectModelPermissionsMode
+  public var mode: OpenAIProjectModelPermissions.Mode
   public var modelIds: [String]
-  public var object: OpenAIProjectModelPermissionsObject
+  public var object: OpenAIProjectModelPermissions.Object
 
   public init(
-    mode: OpenAIProjectModelPermissionsMode,
+    mode: OpenAIProjectModelPermissions.Mode,
     modelIds: [String],
-    object: OpenAIProjectModelPermissionsObject
+    object: OpenAIProjectModelPermissions.Object
   ) {
     self.mode = mode
     self.modelIds = modelIds
@@ -29,5 +29,14 @@ public struct OpenAIProjectModelPermissions: Codable, Sendable {
     case mode
     case modelIds = "model_ids"
     case object
+  }
+
+  public enum Mode: String, Codable, Hashable, Sendable {
+    case allowList = "allow_list"
+    case denyList = "deny_list"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case projectModelPermissions = "project.model_permissions"
   }
 }

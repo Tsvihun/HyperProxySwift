@@ -15,12 +15,12 @@ public struct OpenAIInviteListResponse: Codable, Sendable {
   public var firstId: String?
   public var hasMore: Bool
   public var lastId: String?
-  public var object: OpenAIInviteListResponseObject
+  public var object: OpenAIInviteListResponse.Object
 
   public init(
     data: [OpenAIInvite],
     hasMore: Bool,
-    object: OpenAIInviteListResponseObject,
+    object: OpenAIInviteListResponse.Object,
     firstId: String? = nil,
     lastId: String? = nil
   ) {
@@ -37,5 +37,9 @@ public struct OpenAIInviteListResponse: Codable, Sendable {
     case hasMore = "has_more"
     case lastId = "last_id"
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case list = "list"
   }
 }

@@ -13,22 +13,22 @@ import HyperProxyCore
 public struct OpenAILiveSessionCreateParams: Codable, Sendable {
   public var audio: OpenAILiveInitialSessionAudioParam?
   public var client: OpenAILiveClientConfigParam?
-  public var delegation: OpenAILiveSessionCreateParamsDelegationAnyOf1?
+  public var delegation: OpenAILiveSessionCreateParamsDelegationVariant?
   public var input: [OpenAILiveInitialItem]?
   public var instructions: String?
   public var model: OpenAIModelIdsLive
   public var store: Bool?
-  public var triggers: [OpenAILiveDecisionTriggerInputParam2]?
+  public var triggers: [OpenAILiveDecisionTriggerInputParam]?
 
   public init(
     model: OpenAIModelIdsLive,
     audio: OpenAILiveInitialSessionAudioParam? = nil,
     client: OpenAILiveClientConfigParam? = nil,
-    delegation: OpenAILiveSessionCreateParamsDelegationAnyOf1? = nil,
+    delegation: OpenAILiveSessionCreateParamsDelegationVariant? = nil,
     input: [OpenAILiveInitialItem]? = nil,
     instructions: String? = nil,
     store: Bool? = nil,
-    triggers: [OpenAILiveDecisionTriggerInputParam2]? = nil
+    triggers: [OpenAILiveDecisionTriggerInputParam]? = nil
   ) {
     self.audio = audio
     self.client = client

@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public enum MistralTempoTraceScopeKind: String, Codable, Hashable, Sendable {
-  case sPANKINDINTERNAL = "SPAN_KIND_INTERNAL"
-  case sPANKINDSERVER = "SPAN_KIND_SERVER"
-  case sPANKINDCLIENT = "SPAN_KIND_CLIENT"
+  case spanKindInternal = "SPAN_KIND_INTERNAL"
+  case spanKindServer = "SPAN_KIND_SERVER"
+  case spanKindClient = "SPAN_KIND_CLIENT"
 }

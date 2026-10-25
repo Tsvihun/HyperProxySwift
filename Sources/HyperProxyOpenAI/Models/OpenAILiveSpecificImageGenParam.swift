@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAILiveSpecificImageGenParam: Codable, Sendable {
-  public var kind: OpenAILiveSpecificImageGenParamKind
+  public var kind: OpenAILiveSpecificImageGenParam.Kind
 
   public init(
-    kind: OpenAILiveSpecificImageGenParamKind
+    kind: OpenAILiveSpecificImageGenParam.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case imageGeneration = "image_generation"
   }
 }

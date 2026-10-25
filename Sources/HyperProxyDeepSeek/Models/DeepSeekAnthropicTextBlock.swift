@@ -14,11 +14,11 @@ public struct DeepSeekAnthropicTextBlock: Codable, Sendable {
   public var cacheControl: [String: HyperProxyJSONValue]?
   public var citations: [[String: HyperProxyJSONValue]]?
   public var text: String
-  public var kind: DeepSeekAnthropicTextBlockKind
+  public var kind: DeepSeekAnthropicTextBlock.Kind
 
   public init(
     text: String,
-    kind: DeepSeekAnthropicTextBlockKind,
+    kind: DeepSeekAnthropicTextBlock.Kind,
     cacheControl: [String: HyperProxyJSONValue]? = nil,
     citations: [[String: HyperProxyJSONValue]]? = nil
   ) {
@@ -33,5 +33,9 @@ public struct DeepSeekAnthropicTextBlock: Codable, Sendable {
     case citations
     case text
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case text = "text"
   }
 }

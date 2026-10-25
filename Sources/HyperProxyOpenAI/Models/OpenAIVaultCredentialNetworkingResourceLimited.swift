@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIVaultCredentialNetworkingResourceLimited: Codable, Sendable {
   public var allowedHosts: [String]
-  public var kind: OpenAIVaultCredentialNetworkingResourceLimitedKind
+  public var kind: OpenAIVaultCredentialNetworkingResourceLimited.Kind
 
   public init(
     allowedHosts: [String],
-    kind: OpenAIVaultCredentialNetworkingResourceLimitedKind
+    kind: OpenAIVaultCredentialNetworkingResourceLimited.Kind
   ) {
     self.allowedHosts = allowedHosts
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenAIVaultCredentialNetworkingResourceLimited: Codable, Sendable 
   enum CodingKeys: String, CodingKey {
     case allowedHosts = "allowed_hosts"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case limited = "limited"
   }
 }

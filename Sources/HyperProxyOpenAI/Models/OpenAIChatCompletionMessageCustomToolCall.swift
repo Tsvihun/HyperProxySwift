@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIChatCompletionMessageCustomToolCall: Codable, Sendable {
-  public var custom: OpenAIChatCompletionMessageCustomToolCallCustom
+  public var custom: OpenAIChatCompletionMessageCustomToolCall.Custom
   public var id: String
-  public var kind: OpenAIChatCompletionMessageCustomToolCallKind
+  public var kind: OpenAIChatCompletionMessageCustomToolCall.Kind
 
   public init(
-    custom: OpenAIChatCompletionMessageCustomToolCallCustom,
+    custom: OpenAIChatCompletionMessageCustomToolCall.Custom,
     id: String,
-    kind: OpenAIChatCompletionMessageCustomToolCallKind
+    kind: OpenAIChatCompletionMessageCustomToolCall.Kind
   ) {
     self.custom = custom
     self.id = id
@@ -29,5 +29,27 @@ public struct OpenAIChatCompletionMessageCustomToolCall: Codable, Sendable {
     case custom
     case id
     case kind = "type"
+  }
+
+  public struct Custom: Codable, Sendable {
+    public var input: String
+    public var name: String
+
+    public init(
+      input: String,
+      name: String
+    ) {
+      self.input = input
+      self.name = name
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case input
+      case name
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case custom = "custom"
   }
 }

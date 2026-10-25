@@ -11,16 +11,16 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIEasyInputMessage: Codable, Sendable {
-  public var content: OpenAIEasyInputMessageContent
+  public var content: OpenAIEasyInputMessage.Content
   public var phase: OpenAIMessagePhase?
-  public var role: OpenAIEasyInputMessageRole
-  public var kind: OpenAIEasyInputMessageKind?
+  public var role: OpenAIEasyInputMessage.Role
+  public var kind: OpenAIEasyInputMessage.Kind?
 
   public init(
-    content: OpenAIEasyInputMessageContent,
-    role: OpenAIEasyInputMessageRole,
+    content: OpenAIEasyInputMessage.Content,
+    role: OpenAIEasyInputMessage.Role,
     phase: OpenAIMessagePhase? = nil,
-    kind: OpenAIEasyInputMessageKind? = nil
+    kind: OpenAIEasyInputMessage.Kind? = nil
   ) {
     self.content = content
     self.phase = phase
@@ -33,5 +33,46 @@ public struct OpenAIEasyInputMessage: Codable, Sendable {
     case phase
     case role
     case kind = "type"
+  }
+
+  public enum Content: Codable, Sendable {
+    case string(String)
+    case inputMessageContentList(OpenAIInputMessageContentList)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .inputMessageContentList(try container.decode(OpenAIInputMessageContentList.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .inputMessageContentList(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case message = "message"
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case user = "user"
+    case assistant = "assistant"
+    case system = "system"
+    case developer = "developer"
+  }
+}
+
+extension OpenAIEasyInputMessage.Content: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

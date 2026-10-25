@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsMcpEgressBlockedRunError: Codable, Sendable {
   public var message: String
-  public var kind: AnthropicBetaManagedAgentsMcpEgressBlockedRunErrorKind
+  public var kind: AnthropicBetaManagedAgentsMcpEgressBlockedRunError.Kind
 
   public init(
     message: String,
-    kind: AnthropicBetaManagedAgentsMcpEgressBlockedRunErrorKind
+    kind: AnthropicBetaManagedAgentsMcpEgressBlockedRunError.Kind
   ) {
     self.message = message
     self.kind = kind
@@ -25,5 +25,11 @@ public struct AnthropicBetaManagedAgentsMcpEgressBlockedRunError: Codable, Senda
   enum CodingKeys: String, CodingKey {
     case message
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case mcpEgressBlockedError = "mcp_egress_blocked_error"
   }
 }

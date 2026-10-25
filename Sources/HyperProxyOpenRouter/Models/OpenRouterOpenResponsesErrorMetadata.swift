@@ -11,15 +11,47 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterOpenResponsesErrorMetadata: Codable, Sendable {
-  public var alignment: OpenRouterOpenResponsesErrorMetadataAlignment?
+  public var alignment: OpenRouterOpenResponsesErrorMetadata.Alignment?
 
   public init(
-    alignment: OpenRouterOpenResponsesErrorMetadataAlignment? = nil
+    alignment: OpenRouterOpenResponsesErrorMetadata.Alignment? = nil
   ) {
     self.alignment = alignment
   }
 
   enum CodingKeys: String, CodingKey {
     case alignment
+  }
+
+  public struct Alignment: Codable, Sendable {
+    public var calls: [OpenRouterAlignmentCallRecord]
+    public var rejected: OpenRouterAlignmentRejected?
+
+    public init(
+      calls: [OpenRouterAlignmentCallRecord],
+      rejected: OpenRouterAlignmentRejected? = nil
+    ) {
+      self.calls = calls
+      self.rejected = rejected
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case calls
+      case rejected
+    }
+
+    public struct WithRejected: Codable, Sendable {
+      public var rejected: OpenRouterAlignmentRejected?
+
+      public init(
+        rejected: OpenRouterAlignmentRejected? = nil
+      ) {
+        self.rejected = rejected
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case rejected
+      }
+    }
   }
 }

@@ -15,18 +15,18 @@ public struct OpenAIRealtimeBetaServerEventResponseContentPartDone: Codable, Sen
   public var eventId: String
   public var itemId: String
   public var outputIndex: Int
-  public var part: OpenAIRealtimeBetaServerEventResponseContentPartDonePart
+  public var part: OpenAIRealtimeBetaServerEventResponseContentPartDone.Part
   public var responseId: String
-  public var kind: OpenAIRealtimeBetaServerEventResponseContentPartDoneKind
+  public var kind: OpenAIRealtimeBetaServerEventResponseContentPartDone.Kind
 
   public init(
     contentIndex: Int,
     eventId: String,
     itemId: String,
     outputIndex: Int,
-    part: OpenAIRealtimeBetaServerEventResponseContentPartDonePart,
+    part: OpenAIRealtimeBetaServerEventResponseContentPartDone.Part,
     responseId: String,
-    kind: OpenAIRealtimeBetaServerEventResponseContentPartDoneKind
+    kind: OpenAIRealtimeBetaServerEventResponseContentPartDone.Kind
   ) {
     self.contentIndex = contentIndex
     self.eventId = eventId
@@ -45,5 +45,44 @@ public struct OpenAIRealtimeBetaServerEventResponseContentPartDone: Codable, Sen
     case part
     case responseId = "response_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case responseContentPartDone = "response.content_part.done"
+  }
+
+  public struct Part: Codable, Sendable {
+    public var audio: String?
+    public var text: String?
+    public var transcript: String?
+    public var kind: OpenAIRealtimeBetaServerEventResponseContentPartDone.Part.Kind?
+
+    public init(
+      audio: String? = nil,
+      text: String? = nil,
+      transcript: String? = nil,
+      kind: OpenAIRealtimeBetaServerEventResponseContentPartDone.Part.Kind? = nil
+    ) {
+      self.audio = audio
+      self.text = text
+      self.transcript = transcript
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case audio
+      case text
+      case transcript
+      case kind = "type"
+    }
+
+    public enum Kind: String, Codable, Hashable,
+      Sendable
+    {
+      case audio = "audio"
+      case text = "text"
+    }
   }
 }

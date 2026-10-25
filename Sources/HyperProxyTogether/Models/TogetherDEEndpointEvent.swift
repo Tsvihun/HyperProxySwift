@@ -17,7 +17,7 @@ public struct TogetherDEEndpointEvent: Codable, Sendable {
   public var deploymentId: String?
   public var endpointId: String
   public var id: String
-  public var level: TogetherDEEndpointEventLevel
+  public var level: TogetherDEEndpointEvent.Level
   public var logExcerpt: String?
   public var message: String?
   public var name: String?
@@ -29,7 +29,7 @@ public struct TogetherDEEndpointEvent: Codable, Sendable {
   public var replicaId: String?
   public var serviceType: String?
   public var source: String
-  public var sourceKind: TogetherDEEndpointEventSourceKind
+  public var sourceKind: TogetherDEEndpointEvent.SourceKind
   public var status: String?
   public var subjectId: String?
   public var kind: String
@@ -39,9 +39,9 @@ public struct TogetherDEEndpointEvent: Codable, Sendable {
     createdAt: String,
     endpointId: String,
     id: String,
-    level: TogetherDEEndpointEventLevel,
+    level: TogetherDEEndpointEvent.Level,
     source: String,
-    sourceKind: TogetherDEEndpointEventSourceKind,
+    sourceKind: TogetherDEEndpointEvent.SourceKind,
     kind: String,
     clusterId: String? = nil,
     containerName: String? = nil,
@@ -109,5 +109,17 @@ public struct TogetherDEEndpointEvent: Codable, Sendable {
     case subjectId
     case kind = "type"
     case version
+  }
+
+  public enum Level: String, Codable, Hashable, Sendable {
+    case levelDebug = "LEVEL_DEBUG"
+    case levelInfo = "LEVEL_INFO"
+    case levelWarn = "LEVEL_WARN"
+    case levelError = "LEVEL_ERROR"
+  }
+
+  public enum SourceKind: String, Codable, Hashable, Sendable {
+    case sourceKindEndpoint = "SOURCE_KIND_ENDPOINT"
+    case sourceKindDeployment = "SOURCE_KIND_DEPLOYMENT"
   }
 }

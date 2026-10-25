@@ -11,6 +11,6 @@ import Foundation
 import HyperProxyCore
 
 public enum ElevenLabsMCPServerTransport: String, Codable, Hashable, Sendable {
-  case sSE = "SSE"
-  case sTREAMABLEHTTP = "STREAMABLE_HTTP"
+  case sse = "SSE"
+  case streamableHTTP = "STREAMABLE_HTTP"
 }

@@ -19,7 +19,7 @@ public struct TogetherPassiveHealthCheckAlert: Codable, Sendable {
   public var nodeRemediationIntentId: String?
   public var passiveHealthCheckAlertId: String
   public var resolvedAt: String?
-  public var severity: TogetherPassiveHealthCheckAlertSeverity
+  public var severity: TogetherPassiveHealthCheckAlert.Severity
   public var startedAt: String
   public var targetVm: String
 
@@ -29,7 +29,7 @@ public struct TogetherPassiveHealthCheckAlert: Codable, Sendable {
     annotations: [String: String],
     clusterId: String,
     passiveHealthCheckAlertId: String,
-    severity: TogetherPassiveHealthCheckAlertSeverity,
+    severity: TogetherPassiveHealthCheckAlert.Severity,
     startedAt: String,
     targetVm: String,
     instanceId: String? = nil,
@@ -61,5 +61,11 @@ public struct TogetherPassiveHealthCheckAlert: Codable, Sendable {
     case severity
     case startedAt = "started_at"
     case targetVm = "target_vm"
+  }
+
+  public enum Severity: String, Codable, Hashable, Sendable {
+    case phcSeverityInfo = "PHC_SEVERITY_INFO"
+    case phcSeverityWarning = "PHC_SEVERITY_WARNING"
+    case phcSeverityCritical = "PHC_SEVERITY_CRITICAL"
   }
 }

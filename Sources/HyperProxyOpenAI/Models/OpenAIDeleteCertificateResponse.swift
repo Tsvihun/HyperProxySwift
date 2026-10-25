@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIDeleteCertificateResponse: Codable, Sendable {
   public var id: String
-  public var object: OpenAIDeleteCertificateResponseObject
+  public var object: OpenAIDeleteCertificateResponse.Object
 
   public init(
     id: String,
-    object: OpenAIDeleteCertificateResponseObject
+    object: OpenAIDeleteCertificateResponse.Object
   ) {
     self.id = id
     self.object = object
@@ -25,5 +25,9 @@ public struct OpenAIDeleteCertificateResponse: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case id
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case certificateDeleted = "certificate.deleted"
   }
 }

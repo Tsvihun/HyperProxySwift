@@ -11,15 +11,37 @@ import Foundation
 import HyperProxyCore
 
 public struct PerplexityAnalyticsErrorResponse: Codable, Sendable {
-  public var error: PerplexityAnalyticsErrorResponseError
+  public var error: PerplexityAnalyticsErrorResponse.ErrorValue
 
   public init(
-    error: PerplexityAnalyticsErrorResponseError
+    error: PerplexityAnalyticsErrorResponse.ErrorValue
   ) {
     self.error = error
   }
 
   enum CodingKeys: String, CodingKey {
     case error
+  }
+
+  public struct ErrorValue: Codable, Sendable {
+    public var code: Int
+    public var message: String
+    public var kind: String
+
+    public init(
+      code: Int,
+      message: String,
+      kind: String
+    ) {
+      self.code = code
+      self.message = message
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case code
+      case message
+      case kind = "type"
+    }
   }
 }

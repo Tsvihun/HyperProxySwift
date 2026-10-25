@@ -16,10 +16,10 @@ public struct OpenRouterAnthropicCompactionUsageIteration: Codable, Sendable {
   public var cacheReadInputTokens: Int?
   public var inputTokens: Int?
   public var outputTokens: Int?
-  public var kind: OpenRouterAnthropicCompactionUsageIterationAllOf2Kind
+  public var kind: OpenRouterAnthropicCompactionUsageIterationKind
 
   public init(
-    kind: OpenRouterAnthropicCompactionUsageIterationAllOf2Kind,
+    kind: OpenRouterAnthropicCompactionUsageIterationKind,
     cacheCreation: OpenRouterAnthropicIterationCacheCreation? = nil,
     cacheCreationInputTokens: Int? = nil,
     cacheReadInputTokens: Int? = nil,
@@ -41,5 +41,19 @@ public struct OpenRouterAnthropicCompactionUsageIteration: Codable, Sendable {
     case inputTokens = "input_tokens"
     case outputTokens = "output_tokens"
     case kind = "type"
+  }
+
+  public struct Compaction: Codable, Sendable {
+    public var kind: OpenRouterAnthropicCompactionUsageIterationKind
+
+    public init(
+      kind: OpenRouterAnthropicCompactionUsageIterationKind
+    ) {
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case kind = "type"
+    }
   }
 }

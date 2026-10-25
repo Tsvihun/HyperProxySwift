@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsSystemMessageEventParams: Codable, Sendable {
   public var content: [AnthropicBetaManagedAgentsSystemContentBlock]
-  public var kind: AnthropicBetaManagedAgentsSystemMessageEventParamsKind
+  public var kind: AnthropicBetaManagedAgentsSystemMessageEventParams.Kind
 
   public init(
     content: [AnthropicBetaManagedAgentsSystemContentBlock],
-    kind: AnthropicBetaManagedAgentsSystemMessageEventParamsKind
+    kind: AnthropicBetaManagedAgentsSystemMessageEventParams.Kind
   ) {
     self.content = content
     self.kind = kind
@@ -25,5 +25,11 @@ public struct AnthropicBetaManagedAgentsSystemMessageEventParams: Codable, Senda
   enum CodingKeys: String, CodingKey {
     case content
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case systemMessage = "system.message"
   }
 }

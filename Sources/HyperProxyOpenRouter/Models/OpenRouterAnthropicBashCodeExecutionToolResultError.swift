@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterAnthropicBashCodeExecutionToolResultError: Codable, Sendable {
-  public var errorCode: OpenRouterAnthropicBashCodeExecutionToolResultErrorErrorCode
-  public var kind: OpenRouterAnthropicBashCodeExecutionToolResultErrorKind
+  public var errorCode: OpenRouterAnthropicBashCodeExecutionToolResultError.ErrorCode
+  public var kind: OpenRouterAnthropicBashCodeExecutionToolResultError.Kind
 
   public init(
-    errorCode: OpenRouterAnthropicBashCodeExecutionToolResultErrorErrorCode,
-    kind: OpenRouterAnthropicBashCodeExecutionToolResultErrorKind
+    errorCode: OpenRouterAnthropicBashCodeExecutionToolResultError.ErrorCode,
+    kind: OpenRouterAnthropicBashCodeExecutionToolResultError.Kind
   ) {
     self.errorCode = errorCode
     self.kind = kind
@@ -25,5 +25,21 @@ public struct OpenRouterAnthropicBashCodeExecutionToolResultError: Codable, Send
   enum CodingKeys: String, CodingKey {
     case errorCode = "error_code"
     case kind = "type"
+  }
+
+  public enum ErrorCode: String, Codable, Hashable,
+    Sendable
+  {
+    case invalidToolInput = "invalid_tool_input"
+    case unavailable = "unavailable"
+    case tooManyRequests = "too_many_requests"
+    case executionTimeExceeded = "execution_time_exceeded"
+    case outputFileTooLarge = "output_file_too_large"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case bashCodeExecutionToolResultError = "bash_code_execution_tool_result_error"
   }
 }

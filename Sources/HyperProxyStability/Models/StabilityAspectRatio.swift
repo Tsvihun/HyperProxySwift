@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public enum StabilityAspectRatio: String, Codable, Hashable, Sendable {
-  case value219 = "21:9"
-  case value169 = "16:9"
-  case value32 = "3:2"
-  case value54 = "5:4"
-  case value11 = "1:1"
-  case value45 = "4:5"
-  case value23 = "2:3"
-  case value916 = "9:16"
-  case value921 = "9:21"
+  case ratio21x9 = "21:9"
+  case ratio16x9 = "16:9"
+  case ratio3x2 = "3:2"
+  case ratio5x4 = "5:4"
+  case ratio1x1 = "1:1"
+  case ratio4x5 = "4:5"
+  case ratio2x3 = "2:3"
+  case ratio9x16 = "9:16"
+  case ratio9x21 = "9:21"
 }

@@ -15,14 +15,14 @@ public struct TogetherInstanceClusterConfig: Codable, Sendable {
   public var ingress: TogetherClusterIngressConfig?
   public var jumphostEnabled: Bool?
   public var kubernetesDashboardEnabled: Bool?
-  public var loadBalancer: TogetherInstanceClusterConfigLoadBalancer
+  public var loadBalancer: TogetherInstanceClusterConfig.LoadBalancer
   public var networkOperatorVersion: String?
   public var observability: TogetherObservabilityConfig?
   public var slurmStartupScripts: TogetherSlurmStartupScripts?
   public var sshCaEnabled: Bool?
 
   public init(
-    loadBalancer: TogetherInstanceClusterConfigLoadBalancer,
+    loadBalancer: TogetherInstanceClusterConfig.LoadBalancer,
     gpuOperatorVersion: String? = nil,
     ingress: TogetherClusterIngressConfig? = nil,
     jumphostEnabled: Bool? = nil,
@@ -53,5 +53,12 @@ public struct TogetherInstanceClusterConfig: Codable, Sendable {
     case observability
     case slurmStartupScripts = "slurm_startup_scripts"
     case sshCaEnabled = "ssh_ca_enabled"
+  }
+
+  public enum LoadBalancer: String, Codable, Hashable, Sendable {
+    case none = "NONE"
+    case traefik = "TRAEFIK"
+    case nginx = "NGINX"
+    case istio = "ISTIO"
   }
 }

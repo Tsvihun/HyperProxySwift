@@ -16,13 +16,13 @@ public struct OpenRouterOutputDatetimeItem: Codable, Sendable {
   public var id: String?
   public var status: OpenRouterFailableToolCallStatus
   public var timezone: String
-  public var kind: OpenRouterOutputDatetimeItemKind
+  public var kind: OpenRouterOutputDatetimeItem.Kind
 
   public init(
     datetime: String,
     status: OpenRouterFailableToolCallStatus,
     timezone: String,
-    kind: OpenRouterOutputDatetimeItemKind,
+    kind: OpenRouterOutputDatetimeItem.Kind,
     error: String? = nil,
     id: String? = nil
   ) {
@@ -41,5 +41,9 @@ public struct OpenRouterOutputDatetimeItem: Codable, Sendable {
     case status
     case timezone
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case openrouterDatetime = "openrouter:datetime"
   }
 }

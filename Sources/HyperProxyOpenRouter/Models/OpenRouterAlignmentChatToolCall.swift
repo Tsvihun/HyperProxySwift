@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterAlignmentChatToolCall: Codable, Sendable {
-  public var function: OpenRouterAlignmentChatToolCallFunction
+  public var function: OpenRouterAlignmentChatToolCall.Function
   public var id: String
-  public var kind: OpenRouterAlignmentChatToolCallKind
+  public var kind: OpenRouterAlignmentChatToolCall.Kind
 
   public init(
-    function: OpenRouterAlignmentChatToolCallFunction,
+    function: OpenRouterAlignmentChatToolCall.Function,
     id: String,
-    kind: OpenRouterAlignmentChatToolCallKind
+    kind: OpenRouterAlignmentChatToolCall.Kind
   ) {
     self.function = function
     self.id = id
@@ -29,5 +29,27 @@ public struct OpenRouterAlignmentChatToolCall: Codable, Sendable {
     case function
     case id
     case kind = "type"
+  }
+
+  public struct Function: Codable, Sendable {
+    public var arguments: String
+    public var name: String
+
+    public init(
+      arguments: String,
+      name: String
+    ) {
+      self.arguments = arguments
+      self.name = name
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case arguments
+      case name
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case function = "function"
   }
 }

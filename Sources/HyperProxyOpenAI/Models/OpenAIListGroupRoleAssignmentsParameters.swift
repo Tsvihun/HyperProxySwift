@@ -14,13 +14,13 @@ public struct OpenAIListGroupRoleAssignmentsParameters: Codable, Sendable {
   public var after: String?
   public var groupId: String
   public var limit: Int?
-  public var order: OpenAIListGroupRoleAssignmentsParametersOrder?
+  public var order: OpenAIListGroupRoleAssignmentsParameters.Order?
 
   public init(
     groupId: String,
     after: String? = nil,
     limit: Int? = nil,
-    order: OpenAIListGroupRoleAssignmentsParametersOrder? = nil
+    order: OpenAIListGroupRoleAssignmentsParameters.Order? = nil
   ) {
     self.after = after
     self.groupId = groupId
@@ -33,5 +33,10 @@ public struct OpenAIListGroupRoleAssignmentsParameters: Codable, Sendable {
     case groupId = "group_id"
     case limit
     case order
+  }
+
+  public enum Order: String, Codable, Hashable, Sendable {
+    case asc = "asc"
+    case desc = "desc"
   }
 }

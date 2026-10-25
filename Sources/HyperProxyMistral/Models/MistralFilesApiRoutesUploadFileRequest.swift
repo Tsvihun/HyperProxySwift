@@ -14,13 +14,13 @@ public struct MistralFilesApiRoutesUploadFileRequest: Codable, Sendable {
   public var expiry: Int?
   public var file: MistralFile
   public var purpose: MistralFilePurpose?
-  public var visibility: MistralFilesApiRoutesUploadFileRequestVisibilityAllOf1?
+  public var visibility: MistralFilesApiRoutesUploadFileRequestVisibilityFileVisibility?
 
   public init(
     file: MistralFile,
     expiry: Int? = nil,
     purpose: MistralFilePurpose? = nil,
-    visibility: MistralFilesApiRoutesUploadFileRequestVisibilityAllOf1? = nil
+    visibility: MistralFilesApiRoutesUploadFileRequestVisibilityFileVisibility? = nil
   ) {
     self.expiry = expiry
     self.file = file

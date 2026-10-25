@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsVeoImageReference: Codable, Sendable {
   public var image: ElevenLabsImageReference
-  public var role: ElevenLabsVeoImageReferenceRole
+  public var role: ElevenLabsVeoImageReference.Role
 
   public init(
     image: ElevenLabsImageReference,
-    role: ElevenLabsVeoImageReferenceRole
+    role: ElevenLabsVeoImageReference.Role
   ) {
     self.image = image
     self.role = role
@@ -25,5 +25,10 @@ public struct ElevenLabsVeoImageReference: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case image
     case role
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case subject = "subject"
+    case style = "style"
   }
 }

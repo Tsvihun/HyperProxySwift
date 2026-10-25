@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsCreateOAuth2JWTRequest: Codable, Sendable {
-  public var algorithm: ElevenLabsCreateOAuth2JWTRequestAlgorithm?
+  public var algorithm: ElevenLabsCreateOAuth2JWTRequest.Algorithm?
   public var audience: String
   public var authType: ElevenLabsOauth2JwtAuthType?
   public var expirationSeconds: Int?
@@ -23,7 +23,7 @@ public struct ElevenLabsCreateOAuth2JWTRequest: Codable, Sendable {
   public var scopes: [String]?
   public var secretKey: String
   public var subject: String
-  public var tokenResponseField: ElevenLabsCreateOAuth2JWTRequestTokenResponseField?
+  public var tokenResponseField: ElevenLabsCreateOAuth2JWTRequest.TokenResponseField?
   public var tokenUrl: String
 
   public init(
@@ -34,13 +34,13 @@ public struct ElevenLabsCreateOAuth2JWTRequest: Codable, Sendable {
     secretKey: String,
     subject: String,
     tokenUrl: String,
-    algorithm: ElevenLabsCreateOAuth2JWTRequestAlgorithm? = nil,
+    algorithm: ElevenLabsCreateOAuth2JWTRequest.Algorithm? = nil,
     authType: ElevenLabsOauth2JwtAuthType? = nil,
     expirationSeconds: Int? = nil,
     extraParams: [String: String]? = nil,
     keyId: String? = nil,
     scopes: [String]? = nil,
-    tokenResponseField: ElevenLabsCreateOAuth2JWTRequestTokenResponseField? = nil
+    tokenResponseField: ElevenLabsCreateOAuth2JWTRequest.TokenResponseField? = nil
   ) {
     self.algorithm = algorithm
     self.audience = audience
@@ -73,5 +73,19 @@ public struct ElevenLabsCreateOAuth2JWTRequest: Codable, Sendable {
     case subject
     case tokenResponseField = "token_response_field"
     case tokenUrl = "token_url"
+  }
+
+  public enum Algorithm: String, Codable, Hashable, Sendable {
+    case hs256 = "HS256"
+    case hs384 = "HS384"
+    case hs512 = "HS512"
+    case rs256 = "RS256"
+    case rs384 = "RS384"
+    case rs512 = "RS512"
+  }
+
+  public enum TokenResponseField: String, Codable, Hashable, Sendable {
+    case accessToken = "access_token"
+    case idToken = "id_token"
   }
 }

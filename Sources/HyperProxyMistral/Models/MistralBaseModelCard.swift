@@ -25,7 +25,7 @@ public struct MistralBaseModelCard: Codable, Sendable {
   public var name: String?
   public var object: String?
   public var ownedBy: String?
-  public var kind: MistralBaseKind?
+  public var kind: MistralBaseModelCard.Kind?
 
   public init(
     capabilities: MistralModelCapabilities,
@@ -42,7 +42,7 @@ public struct MistralBaseModelCard: Codable, Sendable {
     name: String? = nil,
     object: String? = nil,
     ownedBy: String? = nil,
-    kind: MistralBaseKind? = nil
+    kind: MistralBaseModelCard.Kind? = nil
   ) {
     self.aliases = aliases
     self.billingModelName = billingModelName
@@ -77,5 +77,9 @@ public struct MistralBaseModelCard: Codable, Sendable {
     case object
     case ownedBy = "owned_by"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case base = "base"
   }
 }

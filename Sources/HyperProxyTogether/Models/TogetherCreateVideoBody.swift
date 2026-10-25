@@ -12,7 +12,6 @@ import HyperProxyCore
 
 public struct TogetherCreateVideoBody: Codable, Sendable {
   public var fps: Int?
-  public var frameImages: [TogetherVideoFrameImageInput]?
   public var generateAudio: Bool?
   public var guidanceScale: Int?
   public var height: Int?
@@ -23,7 +22,6 @@ public struct TogetherCreateVideoBody: Codable, Sendable {
   public var outputQuality: Int?
   public var prompt: String?
   public var ratio: String?
-  public var referenceImages: [String]?
   public var resolution: String?
   public var seconds: String?
   public var seed: Int?
@@ -33,7 +31,6 @@ public struct TogetherCreateVideoBody: Codable, Sendable {
   public init(
     model: String,
     fps: Int? = nil,
-    frameImages: [TogetherVideoFrameImageInput]? = nil,
     generateAudio: Bool? = nil,
     guidanceScale: Int? = nil,
     height: Int? = nil,
@@ -43,7 +40,6 @@ public struct TogetherCreateVideoBody: Codable, Sendable {
     outputQuality: Int? = nil,
     prompt: String? = nil,
     ratio: String? = nil,
-    referenceImages: [String]? = nil,
     resolution: String? = nil,
     seconds: String? = nil,
     seed: Int? = nil,
@@ -51,7 +47,6 @@ public struct TogetherCreateVideoBody: Codable, Sendable {
     width: Int? = nil
   ) {
     self.fps = fps
-    self.frameImages = frameImages
     self.generateAudio = generateAudio
     self.guidanceScale = guidanceScale
     self.height = height
@@ -62,7 +57,6 @@ public struct TogetherCreateVideoBody: Codable, Sendable {
     self.outputQuality = outputQuality
     self.prompt = prompt
     self.ratio = ratio
-    self.referenceImages = referenceImages
     self.resolution = resolution
     self.seconds = seconds
     self.seed = seed
@@ -72,7 +66,6 @@ public struct TogetherCreateVideoBody: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case fps
-    case frameImages = "frame_images"
     case generateAudio = "generate_audio"
     case guidanceScale = "guidance_scale"
     case height
@@ -83,7 +76,6 @@ public struct TogetherCreateVideoBody: Codable, Sendable {
     case outputQuality = "output_quality"
     case prompt
     case ratio
-    case referenceImages = "reference_images"
     case resolution
     case seconds
     case seed

@@ -16,7 +16,7 @@ public struct OpenAIBetaModerationResultBody: Codable, Sendable {
   public var categoryScores: [String: Double]
   public var flagged: Bool
   public var model: String
-  public var kind: OpenAIBetaModerationResultBodyKind
+  public var kind: OpenAIBetaModerationResultBody.Kind
 
   public init(
     categories: [String: Bool],
@@ -24,7 +24,7 @@ public struct OpenAIBetaModerationResultBody: Codable, Sendable {
     categoryScores: [String: Double],
     flagged: Bool,
     model: String,
-    kind: OpenAIBetaModerationResultBodyKind
+    kind: OpenAIBetaModerationResultBody.Kind
   ) {
     self.categories = categories
     self.categoryAppliedInputTypes = categoryAppliedInputTypes
@@ -41,5 +41,9 @@ public struct OpenAIBetaModerationResultBody: Codable, Sendable {
     case flagged
     case model
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case moderationResult = "moderation_result"
   }
 }

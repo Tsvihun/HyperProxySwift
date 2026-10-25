@@ -14,15 +14,15 @@ public struct OpenAIBetaLocalShellToolCallOutput: Codable, Sendable {
   public var agent: OpenAIBetaAgentTag?
   public var id: String
   public var output: String
-  public var status: OpenAIBetaLocalShellToolCallOutputStatus?
-  public var kind: OpenAIBetaLocalShellToolCallOutputKind
+  public var status: OpenAIBetaLocalShellToolCallOutput.Status?
+  public var kind: OpenAIBetaLocalShellToolCallOutput.Kind
 
   public init(
     id: String,
     output: String,
-    kind: OpenAIBetaLocalShellToolCallOutputKind,
+    kind: OpenAIBetaLocalShellToolCallOutput.Kind,
     agent: OpenAIBetaAgentTag? = nil,
-    status: OpenAIBetaLocalShellToolCallOutputStatus? = nil
+    status: OpenAIBetaLocalShellToolCallOutput.Status? = nil
   ) {
     self.agent = agent
     self.id = id
@@ -37,5 +37,15 @@ public struct OpenAIBetaLocalShellToolCallOutput: Codable, Sendable {
     case output
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case localShellCallOutput = "local_shell_call_output"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case inProgress = "in_progress"
+    case completed = "completed"
+    case incomplete = "incomplete"
   }
 }

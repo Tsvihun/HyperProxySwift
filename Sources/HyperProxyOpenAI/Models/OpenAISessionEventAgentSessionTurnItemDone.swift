@@ -16,7 +16,7 @@ public struct OpenAISessionEventAgentSessionTurnItemDone: Codable, Sendable {
   public var outputIndex: Int64
   public var sessionId: String
   public var turnId: String
-  public var kind: OpenAISessionEventAgentSessionTurnItemDoneKind
+  public var kind: OpenAISessionEventAgentSessionTurnItemDone.Kind
 
   public init(
     eventId: String,
@@ -24,7 +24,7 @@ public struct OpenAISessionEventAgentSessionTurnItemDone: Codable, Sendable {
     outputIndex: Int64,
     sessionId: String,
     turnId: String,
-    kind: OpenAISessionEventAgentSessionTurnItemDoneKind
+    kind: OpenAISessionEventAgentSessionTurnItemDone.Kind
   ) {
     self.eventId = eventId
     self.item = item
@@ -41,5 +41,9 @@ public struct OpenAISessionEventAgentSessionTurnItemDone: Codable, Sendable {
     case sessionId = "session_id"
     case turnId = "turn_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case agentSessionTurnItemDone = "agent.session.turn.item.done"
   }
 }

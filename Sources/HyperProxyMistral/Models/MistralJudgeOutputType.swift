@@ -11,6 +11,6 @@ import Foundation
 import HyperProxyCore
 
 public enum MistralJudgeOutputType: String, Codable, Hashable, Sendable {
-  case rEGRESSION = "REGRESSION"
-  case cLASSIFICATION = "CLASSIFICATION"
+  case regression = "REGRESSION"
+  case classification = "CLASSIFICATION"
 }

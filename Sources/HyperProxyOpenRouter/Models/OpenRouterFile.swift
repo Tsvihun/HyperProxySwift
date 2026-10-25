@@ -11,26 +11,26 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterFile: Codable, Sendable {
-  public var shape: OpenRouterFileShape
+  public var _shape: OpenRouterFile.Shape
   public var createdAt: String
   public var downloadable: Bool
   public var filename: String
   public var id: String
   public var mimeType: String
   public var sizeBytes: Int
-  public var kind: OpenRouterFileKind
+  public var kind: OpenRouterFile.Kind
 
   public init(
-    shape: OpenRouterFileShape,
+    _shape: OpenRouterFile.Shape,
     createdAt: String,
     downloadable: Bool,
     filename: String,
     id: String,
     mimeType: String,
     sizeBytes: Int,
-    kind: OpenRouterFileKind
+    kind: OpenRouterFile.Kind
   ) {
-    self.shape = shape
+    self._shape = _shape
     self.createdAt = createdAt
     self.downloadable = downloadable
     self.filename = filename
@@ -41,7 +41,7 @@ public struct OpenRouterFile: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
-    case shape = "_shape"
+    case _shape
     case createdAt = "created_at"
     case downloadable
     case filename
@@ -49,5 +49,13 @@ public struct OpenRouterFile: Codable, Sendable {
     case mimeType = "mime_type"
     case sizeBytes = "size_bytes"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case file = "file"
+  }
+
+  public enum Shape: String, Codable, Hashable, Sendable {
+    case openrouter = "openrouter"
   }
 }

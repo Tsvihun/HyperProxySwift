@@ -10,4 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIRunStepCompletionUsage = OpenAIRunStepCompletionUsageAnyOf1?
+public typealias OpenAIRunStepCompletionUsage =
+  OpenAIRunStepCompletionUsageWithCompletionTokensAndPromptTokensAndTotalTokens?

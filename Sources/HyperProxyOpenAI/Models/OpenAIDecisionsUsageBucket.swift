@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct OpenAIDecisionsUsageBucket: Codable, Sendable {
   public var endTime: Int
-  public var object: OpenAIDecisionsUsageBucketObject
+  public var object: OpenAIDecisionsUsageBucket.Object
   public var results: [OpenAIDecisionsUsageResult]
   public var startTime: Int
 
   public init(
     endTime: Int,
-    object: OpenAIDecisionsUsageBucketObject,
+    object: OpenAIDecisionsUsageBucket.Object,
     results: [OpenAIDecisionsUsageResult],
     startTime: Int
   ) {
@@ -33,5 +33,9 @@ public struct OpenAIDecisionsUsageBucket: Codable, Sendable {
     case object
     case results
     case startTime = "start_time"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case bucket = "bucket"
   }
 }

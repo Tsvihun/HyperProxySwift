@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct PerplexityBuiltinSkill: Codable, Sendable {
-  public var name: PerplexityBuiltinSkillName
-  public var kind: PerplexityBuiltinSkillKind
+  public var name: PerplexityBuiltinSkill.Name
+  public var kind: PerplexityBuiltinSkill.Kind
 
   public init(
-    name: PerplexityBuiltinSkillName,
-    kind: PerplexityBuiltinSkillKind
+    name: PerplexityBuiltinSkill.Name,
+    kind: PerplexityBuiltinSkill.Kind
   ) {
     self.name = name
     self.kind = kind
@@ -25,5 +25,17 @@ public struct PerplexityBuiltinSkill: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case name
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case builtin = "builtin"
+  }
+
+  public enum Name: String, Codable, Hashable, Sendable {
+    case office = "office"
+    case officeDocx = "office/docx"
+    case officePdf = "office/pdf"
+    case officePptx = "office/pptx"
+    case officeXlsx = "office/xlsx"
   }
 }

@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct BFLFlux3VideoV2VInputs: Codable, Sendable {
-  public var aspectRatio: BFLFlux3VideoV2VInputsAspectRatio?
+  public var aspectRatio: BFLFlux3VideoV2VInputs.AspectRatio?
   public var draft: Bool?
-  public var duration: BFLFlux3VideoV2VInputsDuration?
+  public var duration: BFLFlux3VideoV2VInputs.Duration?
   public var generateAudio: Bool?
-  public var mode: BFLV2vMode
+  public var mode: BFLFlux3VideoV2VInputs.Mode
   public var prompt: String
-  public var resolution: BFLFlux3VideoV2VInputsResolution?
+  public var resolution: BFLFlux3VideoV2VInputs.Resolution?
   public var safetyTolerance: Int?
   public var startVideo: String
   public var user: String?
@@ -26,12 +26,12 @@ public struct BFLFlux3VideoV2VInputs: Codable, Sendable {
   public init(
     prompt: String,
     startVideo: String,
-    mode: BFLV2vMode = .v2v,
-    aspectRatio: BFLFlux3VideoV2VInputsAspectRatio? = nil,
+    mode: BFLFlux3VideoV2VInputs.Mode = .v2v,
+    aspectRatio: BFLFlux3VideoV2VInputs.AspectRatio? = nil,
     draft: Bool? = nil,
-    duration: BFLFlux3VideoV2VInputsDuration? = nil,
+    duration: BFLFlux3VideoV2VInputs.Duration? = nil,
     generateAudio: Bool? = nil,
-    resolution: BFLFlux3VideoV2VInputsResolution? = nil,
+    resolution: BFLFlux3VideoV2VInputs.Resolution? = nil,
     safetyTolerance: Int? = nil,
     user: String? = nil,
     version: BFLLatestVersion? = nil
@@ -61,5 +61,121 @@ public struct BFLFlux3VideoV2VInputs: Codable, Sendable {
     case startVideo = "start_video"
     case user
     case version
+  }
+
+  public enum AspectRatio: Codable, Sendable {
+    case preset(BFLFlux3VideoV2VInputs.AspectRatio.Preset)
+    case automatic(BFLFlux3VideoV2VInputs.AspectRatio.Auto)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(BFLFlux3VideoV2VInputs.AspectRatio.Preset.self) {
+        self = .preset(value)
+        return
+      }
+      self = .automatic(
+        try container.decode(BFLFlux3VideoV2VInputs.AspectRatio.Auto.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .preset(let value):
+        try container.encode(value)
+      case .automatic(let value):
+        try container.encode(value)
+      }
+    }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var ratio21x9: Self { .preset(.ratio21x9) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var ratio2x1: Self { .preset(.ratio2x1) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var ratio16x9: Self { .preset(.ratio16x9) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var ratio4x3: Self { .preset(.ratio4x3) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var ratio1x1: Self { .preset(.ratio1x1) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var ratio3x4: Self { .preset(.ratio3x4) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var ratio9x16: Self { .preset(.ratio9x16) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var ratio9x21: Self { .preset(.ratio9x21) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var auto: Self { .automatic(.auto) }
+
+    public enum Preset: String, Codable, Hashable, Sendable {
+      case ratio21x9 = "21:9"
+      case ratio2x1 = "2:1"
+      case ratio16x9 = "16:9"
+      case ratio4x3 = "4:3"
+      case ratio1x1 = "1:1"
+      case ratio3x4 = "3:4"
+      case ratio9x16 = "9:16"
+      case ratio9x21 = "9:21"
+    }
+
+    public enum Auto: String, Codable, Hashable, Sendable {
+      case auto = "auto"
+    }
+  }
+
+  public enum Duration: Codable, Sendable {
+    case integer(Int)
+    case automatic(BFLFlux3VideoV2VInputs.Duration.Auto)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Int.self) {
+        self = .integer(value)
+        return
+      }
+      self = .automatic(
+        try container.decode(BFLFlux3VideoV2VInputs.Duration.Auto.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .integer(let value):
+        try container.encode(value)
+      case .automatic(let value):
+        try container.encode(value)
+      }
+    }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var auto: Self { .automatic(.auto) }
+
+    public enum Auto: String, Codable, Hashable, Sendable {
+      case auto = "auto"
+    }
+  }
+
+  public enum Resolution: String, Codable, Hashable, Sendable {
+    case hd = "hd"
+    case fhd = "fhd"
+    case qhd = "qhd"
+    case uhd = "uhd"
+  }
+
+  public enum Mode: String, Codable, Hashable, Sendable {
+    case v2v = "v2v"
+  }
+}
+
+extension BFLFlux3VideoV2VInputs.Duration: ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Int) {
+    self = .integer(value)
   }
 }

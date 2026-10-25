@@ -23,12 +23,12 @@ public struct EachAIWorkflowsHostWorkflowVersionSummary: Codable, Sendable {
   public var publicThumbnail: String?
   public var published: Bool?
   public var slug: String
-  public var status: EachAIWorkflowsHostWorkflowVersionSummaryStatus?
+  public var status: EachAIWorkflowsHostWorkflowVersionSummary.Status?
   public var triggerCount: Int?
   public var updatedAt: String?
   public var updatedBy: String?
   public var versionId: String
-  public var visibility: EachAIWorkflowsHostWorkflowVersionSummaryVisibility?
+  public var visibility: EachAIWorkflowsHostWorkflowVersionSummary.Visibility?
 
   public init(
     slug: String,
@@ -44,11 +44,11 @@ public struct EachAIWorkflowsHostWorkflowVersionSummary: Codable, Sendable {
     publicPopularSortOrder: Int? = nil,
     publicThumbnail: String? = nil,
     published: Bool? = nil,
-    status: EachAIWorkflowsHostWorkflowVersionSummaryStatus? = nil,
+    status: EachAIWorkflowsHostWorkflowVersionSummary.Status? = nil,
     triggerCount: Int? = nil,
     updatedAt: String? = nil,
     updatedBy: String? = nil,
-    visibility: EachAIWorkflowsHostWorkflowVersionSummaryVisibility? = nil
+    visibility: EachAIWorkflowsHostWorkflowVersionSummary.Visibility? = nil
   ) {
     self.allowedToShare = allowedToShare
     self.createdAt = createdAt
@@ -89,5 +89,17 @@ public struct EachAIWorkflowsHostWorkflowVersionSummary: Codable, Sendable {
     case updatedBy = "updated_by"
     case versionId = "version_id"
     case visibility
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case active = "active"
+    case archived = "archived"
+    case deleted = "deleted"
+  }
+
+  public enum Visibility: String, Codable, Hashable, Sendable {
+    case privateValue = "private"
+    case unlisted = "unlisted"
+    case publicValue = "public"
   }
 }

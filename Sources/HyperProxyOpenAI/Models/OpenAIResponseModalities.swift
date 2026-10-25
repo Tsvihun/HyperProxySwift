@@ -10,4 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIResponseModalities = [OpenAIResponseModalitiesAnyOf1Item]?
+public typealias OpenAIResponseModalities = [OpenAIResponseModalitiesItem]?

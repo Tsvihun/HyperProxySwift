@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public enum OpenRouterOpenAIResponsesAnnotation: Codable, Sendable {
   case fileCitation(OpenRouterFileCitation)
-  case uRLCitation(OpenRouterURLCitation)
+  case urlCitation(OpenRouterURLCitation)
   case filePath(OpenRouterFilePath)
 
   public init(from decoder: any Decoder) throws {
@@ -22,7 +22,7 @@ public enum OpenRouterOpenAIResponsesAnnotation: Codable, Sendable {
       return
     }
     if let value = try? container.decode(OpenRouterURLCitation.self) {
-      self = .uRLCitation(value)
+      self = .urlCitation(value)
       return
     }
     self = .filePath(try container.decode(OpenRouterFilePath.self))
@@ -33,7 +33,7 @@ public enum OpenRouterOpenAIResponsesAnnotation: Codable, Sendable {
     switch self {
     case .fileCitation(let value):
       try container.encode(value)
-    case .uRLCitation(let value):
+    case .urlCitation(let value):
       try container.encode(value)
     case .filePath(let value):
       try container.encode(value)

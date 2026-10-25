@@ -10,40 +10,47 @@
 import Foundation
 import HyperProxyCore
 
-public struct TogetherWhoamiResponse: Codable, Sendable {
-  public var apiKeyId: String
-  public var organizationId: String
-  public var organizationName: String
-  public var projectId: String
-  public var projectName: String
-  public var projectSlug: String
-  public var userId: String?
+public enum TogetherWhoamiResponse: Codable, Sendable {
+  case whoamiProjectApiKey(TogetherWhoamiProjectApiKey)
+  case whoamiOrgApiKey(TogetherWhoamiOrgApiKey)
+  case whoamiUserJwt(TogetherWhoamiUserJwt)
+  case whoamiUserOrgJwt(TogetherWhoamiUserOrgJwt)
+  case whoamiUserOrgProjectJwt(TogetherWhoamiUserOrgProjectJwt)
 
-  public init(
-    apiKeyId: String,
-    organizationId: String,
-    organizationName: String,
-    projectId: String,
-    projectName: String,
-    projectSlug: String,
-    userId: String? = nil
-  ) {
-    self.apiKeyId = apiKeyId
-    self.organizationId = organizationId
-    self.organizationName = organizationName
-    self.projectId = projectId
-    self.projectName = projectName
-    self.projectSlug = projectSlug
-    self.userId = userId
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(TogetherWhoamiProjectApiKey.self) {
+      self = .whoamiProjectApiKey(value)
+      return
+    }
+    if let value = try? container.decode(TogetherWhoamiOrgApiKey.self) {
+      self = .whoamiOrgApiKey(value)
+      return
+    }
+    if let value = try? container.decode(TogetherWhoamiUserJwt.self) {
+      self = .whoamiUserJwt(value)
+      return
+    }
+    if let value = try? container.decode(TogetherWhoamiUserOrgJwt.self) {
+      self = .whoamiUserOrgJwt(value)
+      return
+    }
+    self = .whoamiUserOrgProjectJwt(try container.decode(TogetherWhoamiUserOrgProjectJwt.self))
   }
 
-  enum CodingKeys: String, CodingKey {
-    case apiKeyId = "api_key_id"
-    case organizationId = "organization_id"
-    case organizationName = "organization_name"
-    case projectId = "project_id"
-    case projectName = "project_name"
-    case projectSlug = "project_slug"
-    case userId = "user_id"
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .whoamiProjectApiKey(let value):
+      try container.encode(value)
+    case .whoamiOrgApiKey(let value):
+      try container.encode(value)
+    case .whoamiUserJwt(let value):
+      try container.encode(value)
+    case .whoamiUserOrgJwt(let value):
+      try container.encode(value)
+    case .whoamiUserOrgProjectJwt(let value):
+      try container.encode(value)
+    }
   }
 }

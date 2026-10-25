@@ -11,6 +11,6 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksGatewayCriterionType: String, Codable, Hashable, Sendable {
-  case tYPEUNSPECIFIED = "TYPE_UNSPECIFIED"
-  case cODESNIPPETS = "CODE_SNIPPETS"
+  case typeUnspecified = "TYPE_UNSPECIFIED"
+  case codeSnippets = "CODE_SNIPPETS"
 }

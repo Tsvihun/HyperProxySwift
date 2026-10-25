@@ -11,31 +11,39 @@ import Foundation
 import HyperProxyCore
 
 public enum OpenRouterOutputMessagePhase: Codable, Sendable {
-  case outputMessagePhaseAnyOf1(OpenRouterOutputMessagePhaseAnyOf1)
-  case outputMessagePhaseAnyOf2(OpenRouterOutputMessagePhaseAnyOf2)
+  case commentaryValue(OpenRouterOutputMessagePhase.Commentary)
+  case finalAnswerValue(OpenRouterOutputMessagePhase.FinalAnswer)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(OpenRouterOutputMessagePhaseAnyOf1.self) {
-      self = .outputMessagePhaseAnyOf1(value)
+    if let value = try? container.decode(OpenRouterOutputMessagePhase.Commentary.self) {
+      self = .commentaryValue(value)
       return
     }
-    self = .outputMessagePhaseAnyOf2(try container.decode(OpenRouterOutputMessagePhaseAnyOf2.self))
+    self = .finalAnswerValue(try container.decode(OpenRouterOutputMessagePhase.FinalAnswer.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .outputMessagePhaseAnyOf1(let value):
+    case .commentaryValue(let value):
       try container.encode(value)
-    case .outputMessagePhaseAnyOf2(let value):
+    case .finalAnswerValue(let value):
       try container.encode(value)
     }
   }
 
   /// Provider-native value without the schema union wrapper.
-  public static var commentary: Self { .outputMessagePhaseAnyOf1(.commentary) }
+  public static var commentary: Self { .commentaryValue(.commentary) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var finalAnswer: Self { .outputMessagePhaseAnyOf2(.finalAnswer) }
+  public static var finalAnswer: Self { .finalAnswerValue(.finalAnswer) }
+
+  public enum Commentary: String, Codable, Hashable, Sendable {
+    case commentary = "commentary"
+  }
+
+  public enum FinalAnswer: String, Codable, Hashable, Sendable {
+    case finalAnswer = "final_answer"
+  }
 }

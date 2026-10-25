@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct MistralResponseStartedEvent: Codable, Sendable {
   public var conversationId: String
   public var createdAt: String?
-  public var kind: MistralConversationResponseStartedKind?
+  public var kind: MistralResponseStartedEvent.Kind?
 
   public init(
     conversationId: String,
     createdAt: String? = nil,
-    kind: MistralConversationResponseStartedKind? = nil
+    kind: MistralResponseStartedEvent.Kind? = nil
   ) {
     self.conversationId = conversationId
     self.createdAt = createdAt
@@ -29,5 +29,9 @@ public struct MistralResponseStartedEvent: Codable, Sendable {
     case conversationId = "conversation_id"
     case createdAt = "created_at"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case conversationResponseStarted = "conversation.response.started"
   }
 }

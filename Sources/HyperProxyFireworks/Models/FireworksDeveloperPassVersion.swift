@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksDeveloperPassVersion: String, Codable, Hashable, Sendable {
-  case vERSIONUNSPECIFIED = "VERSION_UNSPECIFIED"
-  case vERSIONV1 = "VERSION_V1"
-  case vERSIONV2 = "VERSION_V2"
+  case versionUnspecified = "VERSION_UNSPECIFIED"
+  case versionV1 = "VERSION_V1"
+  case versionV2 = "VERSION_V2"
 }

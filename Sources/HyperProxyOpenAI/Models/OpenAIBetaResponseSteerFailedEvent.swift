@@ -11,17 +11,17 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIBetaResponseSteerFailedEvent: Codable, Sendable {
-  public var error: OpenAIBetaResponseSteerFailedEventError
+  public var error: OpenAIBetaResponseSteerFailedEvent.ErrorValue
   public var sequenceNumber: Int
-  public var steer: OpenAIBetaResponseSteerFailedEventSteer
+  public var steer: OpenAIBetaResponseSteerFailedEvent.Steer
   public var streamId: String?
-  public var kind: OpenAIBetaResponseSteerFailedEventKind
+  public var kind: OpenAIBetaResponseSteerFailedEvent.Kind
 
   public init(
-    error: OpenAIBetaResponseSteerFailedEventError,
+    error: OpenAIBetaResponseSteerFailedEvent.ErrorValue,
     sequenceNumber: Int,
-    steer: OpenAIBetaResponseSteerFailedEventSteer,
-    kind: OpenAIBetaResponseSteerFailedEventKind,
+    steer: OpenAIBetaResponseSteerFailedEvent.Steer,
+    kind: OpenAIBetaResponseSteerFailedEvent.Kind,
     streamId: String? = nil
   ) {
     self.error = error
@@ -37,5 +37,57 @@ public struct OpenAIBetaResponseSteerFailedEvent: Codable, Sendable {
     case steer
     case streamId = "stream_id"
     case kind = "type"
+  }
+
+  public struct ErrorValue: Codable, Sendable {
+    public var code: OpenAIBetaResponseSteerErrorCode
+    public var message: String
+    public var kind: OpenAIBetaResponseSteerFailedEvent.ErrorValue.Kind
+
+    public init(
+      code: OpenAIBetaResponseSteerErrorCode,
+      message: String,
+      kind: OpenAIBetaResponseSteerFailedEvent.ErrorValue.Kind
+    ) {
+      self.code = code
+      self.message = message
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case code
+      case message
+      case kind = "type"
+    }
+
+    public enum Kind: String, Codable, Hashable, Sendable {
+      case invalidRequestError = "invalid_request_error"
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case responseSteerFailed = "response.steer.failed"
+  }
+
+  public struct Steer: Codable, Sendable {
+    public var id: String?
+    public var input: OpenAIBetaResponseSteerInput
+    public var previousResponseId: String
+
+    public init(
+      input: OpenAIBetaResponseSteerInput,
+      previousResponseId: String,
+      id: String? = nil
+    ) {
+      self.id = id
+      self.input = input
+      self.previousResponseId = previousResponseId
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case id
+      case input
+      case previousResponseId = "previous_response_id"
+    }
   }
 }

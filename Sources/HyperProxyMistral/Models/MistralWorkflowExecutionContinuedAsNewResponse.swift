@@ -16,7 +16,7 @@ public struct MistralWorkflowExecutionContinuedAsNewResponse: Codable, Sendable 
   public var continuedRunId: String?
   public var eventId: String
   public var eventTimestamp: Int
-  public var eventType: MistralWORKFLOWEXECUTIONCONTINUEDASNEWEventType
+  public var eventType: MistralWorkflowExecutionContinuedAsNewResponse.EventType
   public var firstExecutionRunId: String?
   public var parentWorkflowExecId: String?
   public var rootWorkflowExecId: String
@@ -34,7 +34,8 @@ public struct MistralWorkflowExecutionContinuedAsNewResponse: Codable, Sendable 
     workflowExecId: String,
     workflowName: String,
     workflowRunId: String,
-    eventType: MistralWORKFLOWEXECUTIONCONTINUEDASNEWEventType = .wORKFLOWEXECUTIONCONTINUEDASNEW,
+    eventType: MistralWorkflowExecutionContinuedAsNewResponse.EventType =
+      .workflowExecutionContinuedAsNew,
     chainRunId: String? = nil,
     continuedRunId: String? = nil,
     firstExecutionRunId: String? = nil,
@@ -69,5 +70,9 @@ public struct MistralWorkflowExecutionContinuedAsNewResponse: Codable, Sendable 
     case workflowExecId = "workflow_exec_id"
     case workflowName = "workflow_name"
     case workflowRunId = "workflow_run_id"
+  }
+
+  public enum EventType: String, Codable, Hashable, Sendable {
+    case workflowExecutionContinuedAsNew = "WORKFLOW_EXECUTION_CONTINUED_AS_NEW"
   }
 }

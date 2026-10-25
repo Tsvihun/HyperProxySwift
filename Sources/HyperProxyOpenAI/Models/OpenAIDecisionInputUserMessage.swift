@@ -1,0 +1,41 @@
+//
+//  OpenAIDecisionInputUserMessage.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+// Maintainer-generated release artifact. Do not edit by hand.
+
+import Foundation
+import HyperProxyCore
+
+public struct OpenAIDecisionInputUserMessage: Codable, Sendable {
+  public var content: OpenAIDecisionInputContent
+  public var role: OpenAIDecisionInputUserMessage.Role
+  public var kind: OpenAIDecisionInputUserMessage.Kind?
+
+  public init(
+    content: OpenAIDecisionInputContent,
+    role: OpenAIDecisionInputUserMessage.Role,
+    kind: OpenAIDecisionInputUserMessage.Kind? = nil
+  ) {
+    self.content = content
+    self.role = role
+    self.kind = kind
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case content
+    case role
+    case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case message = "message"
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case user = "user"
+  }
+}

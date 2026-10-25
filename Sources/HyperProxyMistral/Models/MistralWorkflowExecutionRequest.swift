@@ -16,7 +16,7 @@ public struct MistralWorkflowExecutionRequest: Codable, Sendable {
   public var executionId: String?
   public var extensions: [String: HyperProxyJSONValue]?
   public var forceNewTrace: Bool?
-  public var input: MistralWorkflowExecutionRequestInput?
+  public var input: MistralWorkflowExecutionRequest.Input?
   public var taskQueue: String?
   public var timeoutSeconds: Double?
   public var traceparent: String?
@@ -28,7 +28,7 @@ public struct MistralWorkflowExecutionRequest: Codable, Sendable {
     executionId: String? = nil,
     extensions: [String: HyperProxyJSONValue]? = nil,
     forceNewTrace: Bool? = nil,
-    input: MistralWorkflowExecutionRequestInput? = nil,
+    input: MistralWorkflowExecutionRequest.Input? = nil,
     taskQueue: String? = nil,
     timeoutSeconds: Double? = nil,
     traceparent: String? = nil,
@@ -57,5 +57,29 @@ public struct MistralWorkflowExecutionRequest: Codable, Sendable {
     case timeoutSeconds = "timeout_seconds"
     case traceparent
     case waitForResult = "wait_for_result"
+  }
+
+  public enum Input: Codable, Sendable {
+    case objectDictionary([String: HyperProxyJSONValue])
+    case object(HyperProxyJSONValue)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode([String: HyperProxyJSONValue].self) {
+        self = .objectDictionary(value)
+        return
+      }
+      self = .object(try container.decode(HyperProxyJSONValue.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .objectDictionary(let value):
+        try container.encode(value)
+      case .object(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

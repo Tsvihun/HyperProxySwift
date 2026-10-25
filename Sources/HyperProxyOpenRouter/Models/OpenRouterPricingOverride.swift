@@ -19,7 +19,7 @@ public struct OpenRouterPricingOverride: Codable, Sendable {
   public var inputCacheWrite1h: String?
   public var minPromptTokens: Double?
   public var prompt: String?
-  public var utcDays: [OpenRouterPricingOverrideUtcDaysItem]?
+  public var utcDays: [OpenRouterPricingOverride.UtcDaysElement]?
   public var utcEnd: Double?
   public var utcStart: Double?
 
@@ -32,7 +32,7 @@ public struct OpenRouterPricingOverride: Codable, Sendable {
     inputCacheWrite1h: String? = nil,
     minPromptTokens: Double? = nil,
     prompt: String? = nil,
-    utcDays: [OpenRouterPricingOverrideUtcDaysItem]? = nil,
+    utcDays: [OpenRouterPricingOverride.UtcDaysElement]? = nil,
     utcEnd: Double? = nil,
     utcStart: Double? = nil
   ) {
@@ -61,5 +61,15 @@ public struct OpenRouterPricingOverride: Codable, Sendable {
     case utcDays = "utc_days"
     case utcEnd = "utc_end"
     case utcStart = "utc_start"
+  }
+
+  public enum UtcDaysElement: String, Codable, Hashable, Sendable {
+    case monday = "monday"
+    case tuesday = "tuesday"
+    case wednesday = "wednesday"
+    case thursday = "thursday"
+    case friday = "friday"
+    case saturday = "saturday"
+    case sunday = "sunday"
   }
 }

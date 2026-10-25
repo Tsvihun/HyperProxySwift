@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct TogetherDEScalingRules: Codable, Sendable {
   public var policies: [TogetherDEScalingPolicy]?
-  public var selectPolicy: TogetherDEScalingRulesSelectPolicy?
+  public var selectPolicy: TogetherDEScalingRules.SelectPolicy?
 
   public init(
     policies: [TogetherDEScalingPolicy]? = nil,
-    selectPolicy: TogetherDEScalingRulesSelectPolicy? = nil
+    selectPolicy: TogetherDEScalingRules.SelectPolicy? = nil
   ) {
     self.policies = policies
     self.selectPolicy = selectPolicy
@@ -25,5 +25,11 @@ public struct TogetherDEScalingRules: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case policies
     case selectPolicy
+  }
+
+  public enum SelectPolicy: String, Codable, Hashable, Sendable {
+    case scalingPolicySelectMax = "SCALING_POLICY_SELECT_MAX"
+    case scalingPolicySelectMin = "SCALING_POLICY_SELECT_MIN"
+    case scalingPolicySelectDisabled = "SCALING_POLICY_SELECT_DISABLED"
   }
 }

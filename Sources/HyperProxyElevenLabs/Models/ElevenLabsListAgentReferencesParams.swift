@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsListAgentReferencesParams: Codable, Sendable {
-  public var smbToolType: ElevenLabsListAgentReferencesSmbToolType?
+  public var smbToolType: ElevenLabsListAgentReferencesParams.SmbToolType?
 
   public init(
-    smbToolType: ElevenLabsListAgentReferencesSmbToolType? = nil
+    smbToolType: ElevenLabsListAgentReferencesParams.SmbToolType? = nil
   ) {
     self.smbToolType = smbToolType
   }
 
   enum CodingKeys: String, CodingKey {
     case smbToolType = "smb_tool_type"
+  }
+
+  public enum SmbToolType: String, Codable, Hashable, Sendable {
+    case listAgentReferences = "list_agent_references"
   }
 }

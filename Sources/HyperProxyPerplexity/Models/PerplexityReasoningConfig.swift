@@ -11,15 +11,24 @@ import Foundation
 import HyperProxyCore
 
 public struct PerplexityReasoningConfig: Codable, Sendable {
-  public var effort: PerplexityReasoningConfigEffort?
+  public var effort: PerplexityReasoningConfig.Effort?
 
   public init(
-    effort: PerplexityReasoningConfigEffort? = nil
+    effort: PerplexityReasoningConfig.Effort? = nil
   ) {
     self.effort = effort
   }
 
   enum CodingKeys: String, CodingKey {
     case effort
+  }
+
+  public enum Effort: String, Codable, Hashable, Sendable {
+    case minimal = "minimal"
+    case low = "low"
+    case medium = "medium"
+    case high = "high"
+    case xhigh = "xhigh"
+    case max = "max"
   }
 }

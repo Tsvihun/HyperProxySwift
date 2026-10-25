@@ -11,15 +11,33 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterBatchErrorResponse: Codable, Sendable {
-  public var error: OpenRouterBatchErrorResponseError
+  public var error: OpenRouterBatchErrorResponse.ErrorValue
 
   public init(
-    error: OpenRouterBatchErrorResponseError
+    error: OpenRouterBatchErrorResponse.ErrorValue
   ) {
     self.error = error
   }
 
   enum CodingKeys: String, CodingKey {
     case error
+  }
+
+  public struct ErrorValue: Codable, Sendable {
+    public var code: Int
+    public var message: String
+
+    public init(
+      code: Int,
+      message: String
+    ) {
+      self.code = code
+      self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case code
+      case message
+    }
   }
 }

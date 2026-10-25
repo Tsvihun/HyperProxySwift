@@ -19,14 +19,14 @@ public struct OpenAIProjectRateLimit: Codable, Sendable {
   public var maxRequestsPer1Minute: Int
   public var maxTokensPer1Minute: Int
   public var model: String
-  public var object: OpenAIProjectRateLimitObject
+  public var object: OpenAIProjectRateLimit.Object
 
   public init(
     id: String,
     maxRequestsPer1Minute: Int,
     maxTokensPer1Minute: Int,
     model: String,
-    object: OpenAIProjectRateLimitObject,
+    object: OpenAIProjectRateLimit.Object,
     batch1DayMaxInputTokens: Int? = nil,
     maxAudioMegabytesPer1Minute: Int? = nil,
     maxImagesPer1Minute: Int? = nil,
@@ -53,5 +53,9 @@ public struct OpenAIProjectRateLimit: Codable, Sendable {
     case maxTokensPer1Minute = "max_tokens_per_1_minute"
     case model
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case projectRateLimit = "project.rate_limit"
   }
 }

@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralUpdateDocumentRequest: Codable, Sendable {
-  public var attributes: [String: MistralUpdateDocumentRequestAttributesAnyOf1Value]?
+  public var attributes: [String: MistralUpdateDocumentRequestAttributesValue]?
   public var expiresAt: String?
   public var name: String?
 
   public init(
-    attributes: [String: MistralUpdateDocumentRequestAttributesAnyOf1Value]? = nil,
+    attributes: [String: MistralUpdateDocumentRequestAttributesValue]? = nil,
     expiresAt: String? = nil,
     name: String? = nil
   ) {

@@ -16,8 +16,8 @@ public struct StabilityPostV2betaAudioStableAudioInpaintRequest: Codable, Sendab
   public var duration: Double?
   public var maskEnd: Double?
   public var maskStart: Double?
-  public var model: StabilityPostV2betaAudioStableAudioInpaintRequestModel?
-  public var outputFormat: StabilityPostV2betaAudioStableAudioInpaintRequestOutputFormat?
+  public var model: StabilityPostV2betaAudioStableAudioInpaintRequest.Model?
+  public var outputFormat: StabilityPostV2betaAudioStableAudioInpaintRequest.OutputFormat?
   public var prompt: String
   public var seed: Double?
   public var steps: Int?
@@ -29,8 +29,8 @@ public struct StabilityPostV2betaAudioStableAudioInpaintRequest: Codable, Sendab
     duration: Double? = nil,
     maskEnd: Double? = nil,
     maskStart: Double? = nil,
-    model: StabilityPostV2betaAudioStableAudioInpaintRequestModel? = nil,
-    outputFormat: StabilityPostV2betaAudioStableAudioInpaintRequestOutputFormat? = nil,
+    model: StabilityPostV2betaAudioStableAudioInpaintRequest.Model? = nil,
+    outputFormat: StabilityPostV2betaAudioStableAudioInpaintRequest.OutputFormat? = nil,
     seed: Double? = nil,
     steps: Int? = nil
   ) {
@@ -57,5 +57,18 @@ public struct StabilityPostV2betaAudioStableAudioInpaintRequest: Codable, Sendab
     case prompt
     case seed
     case steps
+  }
+
+  public enum Model: String, Codable, Hashable,
+    Sendable
+  {
+    case stableAudio3 = "stable-audio-3"
+  }
+
+  public enum OutputFormat: String, Codable,
+    Hashable, Sendable
+  {
+    case mp3 = "mp3"
+    case wav = "wav"
   }
 }

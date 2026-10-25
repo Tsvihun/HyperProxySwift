@@ -46,4 +46,18 @@ public struct OpenAIEvalGraderScoreModel: Codable, Sendable {
     case samplingParams = "sampling_params"
     case kind = "type"
   }
+
+  public struct WithPassThreshold: Codable, Sendable {
+    public var passThreshold: Double?
+
+    public init(
+      passThreshold: Double? = nil
+    ) {
+      self.passThreshold = passThreshold
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case passThreshold = "pass_threshold"
+    }
+  }
 }

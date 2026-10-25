@@ -14,15 +14,15 @@ public struct OpenAIGetEvalRunsParameters: Codable, Sendable {
   public var after: String?
   public var evalId: String
   public var limit: Int?
-  public var order: OpenAIGetEvalRunsParametersOrder?
-  public var status: OpenAIGetEvalRunsParametersStatus?
+  public var order: OpenAIGetEvalRunsParameters.Order?
+  public var status: OpenAIGetEvalRunsParameters.Status?
 
   public init(
     evalId: String,
     after: String? = nil,
     limit: Int? = nil,
-    order: OpenAIGetEvalRunsParametersOrder? = nil,
-    status: OpenAIGetEvalRunsParametersStatus? = nil
+    order: OpenAIGetEvalRunsParameters.Order? = nil,
+    status: OpenAIGetEvalRunsParameters.Status? = nil
   ) {
     self.after = after
     self.evalId = evalId
@@ -37,5 +37,18 @@ public struct OpenAIGetEvalRunsParameters: Codable, Sendable {
     case limit
     case order
     case status
+  }
+
+  public enum Order: String, Codable, Hashable, Sendable {
+    case asc = "asc"
+    case desc = "desc"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case queued = "queued"
+    case inProgress = "in_progress"
+    case completed = "completed"
+    case canceled = "canceled"
+    case failed = "failed"
   }
 }

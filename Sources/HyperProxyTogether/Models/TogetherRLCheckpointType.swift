@@ -11,6 +11,6 @@ import Foundation
 import HyperProxyCore
 
 public enum TogetherRLCheckpointType: String, Codable, Hashable, Sendable {
-  case cHECKPOINTTYPETRAINING = "CHECKPOINT_TYPE_TRAINING"
-  case cHECKPOINTTYPEINFERENCE = "CHECKPOINT_TYPE_INFERENCE"
+  case checkpointTypeTraining = "CHECKPOINT_TYPE_TRAINING"
+  case checkpointTypeInference = "CHECKPOINT_TYPE_INFERENCE"
 }

@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct ElevenLabsGetConversationHistoryRouteParameters: Codable, Sendable {
   public var conversationId: String
-  public var format: ElevenLabsGetConversationHistoryRouteParametersFormat?
+  public var format: ElevenLabsGetConversationHistoryRouteParameters.Format?
   public var xiApiKey: String?
 
   public init(
     conversationId: String,
-    format: ElevenLabsGetConversationHistoryRouteParametersFormat? = nil,
+    format: ElevenLabsGetConversationHistoryRouteParameters.Format? = nil,
     xiApiKey: String? = nil
   ) {
     self.conversationId = conversationId
@@ -29,5 +29,12 @@ public struct ElevenLabsGetConversationHistoryRouteParameters: Codable, Sendable
     case conversationId = "conversation_id"
     case format
     case xiApiKey = "xi-api-key"
+  }
+
+  public enum Format: String, Codable, Hashable,
+    Sendable
+  {
+    case json = "json"
+    case opentelemetry = "opentelemetry"
   }
 }

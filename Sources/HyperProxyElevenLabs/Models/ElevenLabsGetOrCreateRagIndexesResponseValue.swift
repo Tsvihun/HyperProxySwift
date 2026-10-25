@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public enum ElevenLabsGetOrCreateRagIndexesResponseValue: Codable, Sendable {
-  case rAGIndexBatchSuccessfulResponseModel(ElevenLabsRAGIndexBatchSuccessfulResponseModel)
+  case ragIndexBatchSuccessfulResponseModel(ElevenLabsRAGIndexBatchSuccessfulResponseModel)
   case batchFailureResponseModel(ElevenLabsBatchFailureResponseModel)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
     if let value = try? container.decode(ElevenLabsRAGIndexBatchSuccessfulResponseModel.self) {
-      self = .rAGIndexBatchSuccessfulResponseModel(value)
+      self = .ragIndexBatchSuccessfulResponseModel(value)
       return
     }
     self = .batchFailureResponseModel(
@@ -27,7 +27,7 @@ public enum ElevenLabsGetOrCreateRagIndexesResponseValue: Codable, Sendable {
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .rAGIndexBatchSuccessfulResponseModel(let value):
+    case .ragIndexBatchSuccessfulResponseModel(let value):
       try container.encode(value)
     case .batchFailureResponseModel(let value):
       try container.encode(value)

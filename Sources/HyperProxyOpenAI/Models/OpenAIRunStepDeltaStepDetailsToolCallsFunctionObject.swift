@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIRunStepDeltaStepDetailsToolCallsFunctionObject: Codable, Sendable {
-  public var function: OpenAIRunStepDeltaStepDetailsToolCallsFunctionObjectFunction?
+  public var function: OpenAIRunStepDeltaStepDetailsToolCallsFunctionObject.Function?
   public var id: String?
   public var index: Int
-  public var kind: OpenAIRunStepDeltaStepDetailsToolCallsFunctionObjectKind
+  public var kind: OpenAIRunStepDeltaStepDetailsToolCallsFunctionObject.Kind
 
   public init(
     index: Int,
-    kind: OpenAIRunStepDeltaStepDetailsToolCallsFunctionObjectKind,
-    function: OpenAIRunStepDeltaStepDetailsToolCallsFunctionObjectFunction? = nil,
+    kind: OpenAIRunStepDeltaStepDetailsToolCallsFunctionObject.Kind,
+    function: OpenAIRunStepDeltaStepDetailsToolCallsFunctionObject.Function? = nil,
     id: String? = nil
   ) {
     self.function = function
@@ -33,5 +33,33 @@ public struct OpenAIRunStepDeltaStepDetailsToolCallsFunctionObject: Codable, Sen
     case id
     case index
     case kind = "type"
+  }
+
+  public struct Function: Codable, Sendable {
+    public var arguments: String?
+    public var name: String?
+    public var output: String?
+
+    public init(
+      arguments: String? = nil,
+      name: String? = nil,
+      output: String? = nil
+    ) {
+      self.arguments = arguments
+      self.name = name
+      self.output = output
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case arguments
+      case name
+      case output
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case function = "function"
   }
 }

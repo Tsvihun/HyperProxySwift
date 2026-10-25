@@ -14,11 +14,11 @@ public struct OpenRouterOutputFileSearchServerToolItem: Codable, Sendable {
   public var id: String?
   public var queries: [String]?
   public var status: OpenRouterToolCallStatus
-  public var kind: OpenRouterOutputFileSearchServerToolItemKind
+  public var kind: OpenRouterOutputFileSearchServerToolItem.Kind
 
   public init(
     status: OpenRouterToolCallStatus,
-    kind: OpenRouterOutputFileSearchServerToolItemKind,
+    kind: OpenRouterOutputFileSearchServerToolItem.Kind,
     id: String? = nil,
     queries: [String]? = nil
   ) {
@@ -33,5 +33,9 @@ public struct OpenRouterOutputFileSearchServerToolItem: Codable, Sendable {
     case queries
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case openrouterFileSearch = "openrouter:file_search"
   }
 }

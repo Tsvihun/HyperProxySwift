@@ -54,4 +54,26 @@ public struct TogetherQuantizationJob: Codable, Sendable {
     case updatedAt = "updated_at"
     case userId = "user_id"
   }
+
+  public struct WithEventsAndParamsAndResults: Codable, Sendable {
+    public var events: [TogetherQuantizationEvent]
+    public var params: TogetherQuantizationPipelineSpec
+    public var results: TogetherQuantizationResults?
+
+    public init(
+      events: [TogetherQuantizationEvent],
+      params: TogetherQuantizationPipelineSpec,
+      results: TogetherQuantizationResults? = nil
+    ) {
+      self.events = events
+      self.params = params
+      self.results = results
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case events
+      case params
+      case results
+    }
+  }
 }

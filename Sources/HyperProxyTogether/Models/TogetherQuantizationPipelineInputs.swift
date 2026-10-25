@@ -11,23 +11,23 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherQuantizationPipelineInputs: Codable, Sendable {
-  public var adapterObjectId: String
-  public var adapterRevisionId: String?
   public var calibrationFileId: String?
+  public var modelObjectId: String?
+  public var modelRevisionId: String?
 
   public init(
-    adapterObjectId: String,
-    adapterRevisionId: String? = nil,
-    calibrationFileId: String? = nil
+    calibrationFileId: String? = nil,
+    modelObjectId: String? = nil,
+    modelRevisionId: String? = nil
   ) {
-    self.adapterObjectId = adapterObjectId
-    self.adapterRevisionId = adapterRevisionId
     self.calibrationFileId = calibrationFileId
+    self.modelObjectId = modelObjectId
+    self.modelRevisionId = modelRevisionId
   }
 
   enum CodingKeys: String, CodingKey {
-    case adapterObjectId = "adapter_object_id"
-    case adapterRevisionId = "adapter_revision_id"
     case calibrationFileId = "calibration_file_id"
+    case modelObjectId = "model_object_id"
+    case modelRevisionId = "model_revision_id"
   }
 }

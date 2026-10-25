@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsSkillNotFoundRunError: Codable, Sendable {
   public var message: String
-  public var kind: AnthropicBetaManagedAgentsSkillNotFoundRunErrorKind
+  public var kind: AnthropicBetaManagedAgentsSkillNotFoundRunError.Kind
 
   public init(
     message: String,
-    kind: AnthropicBetaManagedAgentsSkillNotFoundRunErrorKind
+    kind: AnthropicBetaManagedAgentsSkillNotFoundRunError.Kind
   ) {
     self.message = message
     self.kind = kind
@@ -25,5 +25,9 @@ public struct AnthropicBetaManagedAgentsSkillNotFoundRunError: Codable, Sendable
   enum CodingKeys: String, CodingKey {
     case message
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case skillNotFoundError = "skill_not_found_error"
   }
 }

@@ -13,13 +13,13 @@ import HyperProxyProviders
 extension BFLFlux3VideoI2VInputs {
   /// Creates the official keyframe image-to-video variant with the required discriminator.
   public init(
-    keyframes: BFLFlux3VideoI2VInputsKeyframes,
+    keyframes: BFLFlux3VideoI2VInputs.Keyframes,
     prompt: String,
-    aspectRatio: BFLFlux3VideoI2VInputsAspectRatio? = nil,
+    aspectRatio: BFLFlux3VideoI2VInputs.AspectRatio? = nil,
     draft: Bool? = nil,
-    duration: BFLFlux3VideoI2VInputsDuration? = nil,
+    duration: BFLFlux3VideoI2VInputs.Duration? = nil,
     generateAudio: Bool? = nil,
-    resolution: BFLFlux3VideoI2VInputsResolution? = nil,
+    resolution: BFLFlux3VideoI2VInputs.Resolution? = nil,
     safetyTolerance: Int? = nil,
     version: BFLLatestVersion? = nil
   ) {

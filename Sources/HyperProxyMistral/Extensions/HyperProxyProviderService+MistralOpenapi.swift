@@ -700,6 +700,20 @@ extension HyperProxyProviderService where Operation == MistralOperation {
     return try await call.decoded(MistralAgentsApiV1ConversationsListResponse.self)
   }
 
+  public func agentsApiV1ConversationsStart(
+    _ body: MistralConversationRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralConversationResponse {
+    let call = self.call(.agentsApiV1ConversationsStart)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(MistralConversationResponse.self)
+  }
+
   public func agentsApiV1ConversationsGet(
     conversationId: String,
     query: [URLQueryItem] = [],
@@ -712,6 +726,22 @@ extension HyperProxyProviderService where Operation == MistralOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(MistralAgentsApiV1ConversationsGetResponse.self)
+  }
+
+  public func agentsApiV1ConversationsAppend(
+    _ body: MistralConversationAppendRequest,
+    conversationId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralConversationResponse {
+    let call = self.call(.agentsApiV1ConversationsAppend)
+      .path("conversation_id", conversationId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(MistralConversationResponse.self)
   }
 
   public func agentsApiV1ConversationsHistory(
@@ -740,6 +770,22 @@ extension HyperProxyProviderService where Operation == MistralOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(MistralConversationMessages.self)
+  }
+
+  public func agentsApiV1ConversationsRestart(
+    _ body: MistralConversationRestartRequest,
+    conversationId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralConversationResponse {
+    let call = self.call(.agentsApiV1ConversationsRestart)
+      .path("conversation_id", conversationId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(MistralConversationResponse.self)
   }
 
   public func embeddingsCreate(

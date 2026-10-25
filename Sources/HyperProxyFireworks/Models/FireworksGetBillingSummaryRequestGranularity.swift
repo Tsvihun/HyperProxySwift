@@ -11,6 +11,6 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksGetBillingSummaryRequestGranularity: String, Codable, Hashable, Sendable {
-  case gRANULARITYUNSPECIFIED = "GRANULARITY_UNSPECIFIED"
-  case dAILY = "DAILY"
+  case granularityUnspecified = "GRANULARITY_UNSPECIFIED"
+  case daily = "DAILY"
 }

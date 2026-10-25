@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaFallbackCreditRedeemed: Codable, Sendable {
-  public var kind: AnthropicRedeemedKind
+  public var kind: AnthropicBetaFallbackCreditRedeemed.Kind
 
   public init(
-    kind: AnthropicRedeemedKind = .redeemed
+    kind: AnthropicBetaFallbackCreditRedeemed.Kind = .redeemed
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case redeemed = "redeemed"
   }
 }

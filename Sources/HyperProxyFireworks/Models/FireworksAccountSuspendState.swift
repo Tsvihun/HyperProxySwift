@@ -11,9 +11,9 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksAccountSuspendState: String, Codable, Hashable, Sendable {
-  case uNSUSPENDED = "UNSUSPENDED"
-  case fAILEDPAYMENTS = "FAILED_PAYMENTS"
-  case cREDITDEPLETED = "CREDIT_DEPLETED"
-  case mONTHLYSPENDLIMITEXCEEDED = "MONTHLY_SPEND_LIMIT_EXCEEDED"
-  case bLOCKEDBYABUSERULE = "BLOCKED_BY_ABUSE_RULE"
+  case unsuspended = "UNSUSPENDED"
+  case failedPayments = "FAILED_PAYMENTS"
+  case creditDepleted = "CREDIT_DEPLETED"
+  case monthlySpendLimitExceeded = "MONTHLY_SPEND_LIMIT_EXCEEDED"
+  case blockedByAbuseRule = "BLOCKED_BY_ABUSE_RULE"
 }

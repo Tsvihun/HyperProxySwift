@@ -14,7 +14,7 @@ public struct ElevenLabsConversationHistoryTranscriptToolCallCommonModelInput: C
   public var paramsAsJson: String
   public var requestId: String
   public var toolDetails:
-    ElevenLabsConversationHistoryTranscriptToolCallCommonModelInputToolDetailsAnyOf1?
+    ElevenLabsConversationHistoryTranscriptToolCallCommonModelInputToolDetailsVariant?
   public var toolHasBeenCalled: Bool
   public var toolId: String?
   public var toolName: String
@@ -25,7 +25,8 @@ public struct ElevenLabsConversationHistoryTranscriptToolCallCommonModelInput: C
     requestId: String,
     toolHasBeenCalled: Bool,
     toolName: String,
-    toolDetails: ElevenLabsConversationHistoryTranscriptToolCallCommonModelInputToolDetailsAnyOf1? =
+    toolDetails:
+      ElevenLabsConversationHistoryTranscriptToolCallCommonModelInputToolDetailsVariant? =
       nil,
     toolId: String? = nil,
     kind: ElevenLabsToolType? = nil

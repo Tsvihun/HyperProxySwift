@@ -42,12 +42,12 @@ public struct OpenAIResponsesClientEventResponseCreate: Codable, Sendable {
   public var tools: OpenAIToolsArray?
   public var topLogprobs: Int?
   public var topP: Double?
-  public var truncation: OpenAICreateResponseAllOf3Truncation?
-  public var kind: OpenAIResponsesClientEventResponseCreateAllOf1Kind
+  public var truncation: OpenAICreateResponseTruncation?
+  public var kind: OpenAIResponsesClientEventResponseCreateKind
   public var user: String?
 
   public init(
-    kind: OpenAIResponsesClientEventResponseCreateAllOf1Kind,
+    kind: OpenAIResponsesClientEventResponseCreateKind,
     accessPrograms: OpenAIAccessProgramsParam? = nil,
     background: Bool? = nil,
     contextManagement: [OpenAIContextManagementParam]? = nil,
@@ -79,7 +79,7 @@ public struct OpenAIResponsesClientEventResponseCreate: Codable, Sendable {
     tools: OpenAIToolsArray? = nil,
     topLogprobs: Int? = nil,
     topP: Double? = nil,
-    truncation: OpenAICreateResponseAllOf3Truncation? = nil,
+    truncation: OpenAICreateResponseTruncation? = nil,
     user: String? = nil
   ) {
     self.accessPrograms = accessPrograms
@@ -153,5 +153,23 @@ public struct OpenAIResponsesClientEventResponseCreate: Codable, Sendable {
     case truncation
     case kind = "type"
     case user
+  }
+
+  public struct ResponseCreate: Codable, Sendable {
+    public var streamId: String?
+    public var kind: OpenAIResponsesClientEventResponseCreateKind
+
+    public init(
+      kind: OpenAIResponsesClientEventResponseCreateKind,
+      streamId: String? = nil
+    ) {
+      self.streamId = streamId
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case streamId = "stream_id"
+      case kind = "type"
+    }
   }
 }

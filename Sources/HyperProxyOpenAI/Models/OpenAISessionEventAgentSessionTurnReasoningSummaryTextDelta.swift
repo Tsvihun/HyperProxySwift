@@ -18,7 +18,7 @@ public struct OpenAISessionEventAgentSessionTurnReasoningSummaryTextDelta: Codab
   public var sessionId: String
   public var summaryIndex: Int64
   public var turnId: String
-  public var kind: OpenAISessionEventAgentSessionTurnReasoningSummaryTextDeltaKind
+  public var kind: OpenAISessionEventAgentSessionTurnReasoningSummaryTextDelta.Kind
 
   public init(
     delta: String,
@@ -28,7 +28,7 @@ public struct OpenAISessionEventAgentSessionTurnReasoningSummaryTextDelta: Codab
     sessionId: String,
     summaryIndex: Int64,
     turnId: String,
-    kind: OpenAISessionEventAgentSessionTurnReasoningSummaryTextDeltaKind
+    kind: OpenAISessionEventAgentSessionTurnReasoningSummaryTextDelta.Kind
   ) {
     self.delta = delta
     self.eventId = eventId
@@ -49,5 +49,12 @@ public struct OpenAISessionEventAgentSessionTurnReasoningSummaryTextDelta: Codab
     case summaryIndex = "summary_index"
     case turnId = "turn_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case agentSessionTurnReasoningSummaryTextDelta =
+      "agent.session.turn.reasoning_summary_text.delta"
   }
 }

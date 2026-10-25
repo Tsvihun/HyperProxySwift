@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsEventStartEventAgentThinkingPreview: Codable, Sendable {
   public var id: String
-  public var kind: AnthropicBetaManagedAgentsEventStartEventAgentThinkingPreviewKind
+  public var kind: AnthropicBetaManagedAgentsEventStartEventAgentThinkingPreview.Kind
 
   public init(
     id: String,
-    kind: AnthropicBetaManagedAgentsEventStartEventAgentThinkingPreviewKind
+    kind: AnthropicBetaManagedAgentsEventStartEventAgentThinkingPreview.Kind
   ) {
     self.id = id
     self.kind = kind
@@ -25,5 +25,11 @@ public struct AnthropicBetaManagedAgentsEventStartEventAgentThinkingPreview: Cod
   enum CodingKeys: String, CodingKey {
     case id
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case agentThinking = "agent.thinking"
   }
 }

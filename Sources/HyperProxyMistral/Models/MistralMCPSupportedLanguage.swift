@@ -18,7 +18,7 @@ public enum MistralMCPSupportedLanguage: String, Codable, Hashable, Sendable {
   case pl = "pl"
   case it = "it"
   case ar = "ar"
-  case ptBR = "pt-BR"
+  case ptBr = "pt-BR"
   case nl = "nl"
   case uk = "uk"
   case ko = "ko"

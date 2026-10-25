@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct PerplexityNoulAnswer: Codable, Sendable {
   public var noul: Double
-  public var kind: PerplexityNoulAnswerKind
+  public var kind: PerplexityNoulAnswer.Kind
 
   public init(
     noul: Double,
-    kind: PerplexityNoulAnswerKind
+    kind: PerplexityNoulAnswer.Kind
   ) {
     self.noul = noul
     self.kind = kind
@@ -25,5 +25,9 @@ public struct PerplexityNoulAnswer: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case noul
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case noul = "noul"
   }
 }

@@ -13,13 +13,13 @@ import HyperProxyCore
 public struct GroqModel: Codable, Sendable {
   public var created: Int
   public var id: String
-  public var object: GroqModelObject
+  public var object: GroqModel.Object
   public var ownedBy: String
 
   public init(
     created: Int,
     id: String,
-    object: GroqModelObject,
+    object: GroqModel.Object,
     ownedBy: String
   ) {
     self.created = created
@@ -33,5 +33,9 @@ public struct GroqModel: Codable, Sendable {
     case id
     case object
     case ownedBy = "owned_by"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case model = "model"
   }
 }

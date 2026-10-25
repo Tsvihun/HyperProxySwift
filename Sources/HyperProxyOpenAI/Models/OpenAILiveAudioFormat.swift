@@ -11,32 +11,32 @@ import Foundation
 import HyperProxyCore
 
 public enum OpenAILiveAudioFormat: Codable, Sendable {
-  case liveSessionAudioFormatPCMParam(OpenAILiveSessionAudioFormatPCMParam)
-  case liveSessionAudioFormatPCMUParam(OpenAILiveSessionAudioFormatPCMUParam)
-  case liveSessionAudioFormatPCMAParam(OpenAILiveSessionAudioFormatPCMAParam)
+  case liveSessionAudioFormatPcmParam(OpenAILiveSessionAudioFormatPCMParam)
+  case liveSessionAudioFormatPcmuParam(OpenAILiveSessionAudioFormatPCMUParam)
+  case liveSessionAudioFormatPcmaParam(OpenAILiveSessionAudioFormatPCMAParam)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
     if let value = try? container.decode(OpenAILiveSessionAudioFormatPCMParam.self) {
-      self = .liveSessionAudioFormatPCMParam(value)
+      self = .liveSessionAudioFormatPcmParam(value)
       return
     }
     if let value = try? container.decode(OpenAILiveSessionAudioFormatPCMUParam.self) {
-      self = .liveSessionAudioFormatPCMUParam(value)
+      self = .liveSessionAudioFormatPcmuParam(value)
       return
     }
-    self = .liveSessionAudioFormatPCMAParam(
+    self = .liveSessionAudioFormatPcmaParam(
       try container.decode(OpenAILiveSessionAudioFormatPCMAParam.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .liveSessionAudioFormatPCMParam(let value):
+    case .liveSessionAudioFormatPcmParam(let value):
       try container.encode(value)
-    case .liveSessionAudioFormatPCMUParam(let value):
+    case .liveSessionAudioFormatPcmuParam(let value):
       try container.encode(value)
-    case .liveSessionAudioFormatPCMAParam(let value):
+    case .liveSessionAudioFormatPcmaParam(let value):
       try container.encode(value)
     }
   }

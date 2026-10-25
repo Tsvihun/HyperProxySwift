@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIMessageContentResourceOutputText: Codable, Sendable {
   public var text: String
-  public var kind: OpenAIMessageContentResourceOutputTextKind
+  public var kind: OpenAIMessageContentResourceOutputText.Kind
 
   public init(
     text: String,
-    kind: OpenAIMessageContentResourceOutputTextKind
+    kind: OpenAIMessageContentResourceOutputText.Kind
   ) {
     self.text = text
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenAIMessageContentResourceOutputText: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case text
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case outputText = "output_text"
   }
 }

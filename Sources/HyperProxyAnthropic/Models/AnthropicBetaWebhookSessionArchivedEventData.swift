@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct AnthropicBetaWebhookSessionArchivedEventData: Codable, Sendable {
   public var id: String
   public var organizationId: String
-  public var kind: AnthropicSessionArchivedKind
+  public var kind: AnthropicBetaWebhookSessionArchivedEventData.Kind
   public var workspaceId: String
 
   public init(
     id: String,
     organizationId: String,
     workspaceId: String,
-    kind: AnthropicSessionArchivedKind = .sessionArchived
+    kind: AnthropicBetaWebhookSessionArchivedEventData.Kind = .sessionArchived
   ) {
     self.id = id
     self.organizationId = organizationId
@@ -33,5 +33,9 @@ public struct AnthropicBetaWebhookSessionArchivedEventData: Codable, Sendable {
     case organizationId = "organization_id"
     case kind = "type"
     case workspaceId = "workspace_id"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case sessionArchived = "session.archived"
   }
 }

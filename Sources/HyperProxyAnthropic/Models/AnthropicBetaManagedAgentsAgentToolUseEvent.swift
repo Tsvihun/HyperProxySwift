@@ -17,14 +17,14 @@ public struct AnthropicBetaManagedAgentsAgentToolUseEvent: Codable, Sendable {
   public var name: String
   public var processedAt: AnthropicBetaTimestamp
   public var sessionThreadId: String?
-  public var kind: AnthropicBetaManagedAgentsAgentToolUseEventKind
+  public var kind: AnthropicBetaManagedAgentsAgentToolUseEvent.Kind
 
   public init(
     id: String,
     input: AnthropicBetaManagedAgentsStruct,
     name: String,
     processedAt: AnthropicBetaTimestamp,
-    kind: AnthropicBetaManagedAgentsAgentToolUseEventKind,
+    kind: AnthropicBetaManagedAgentsAgentToolUseEvent.Kind,
     evaluatedPermission: AnthropicBetaManagedAgentsAgentEvaluatedPermission? = nil,
     sessionThreadId: String? = nil
   ) {
@@ -45,5 +45,9 @@ public struct AnthropicBetaManagedAgentsAgentToolUseEvent: Codable, Sendable {
     case processedAt = "processed_at"
     case sessionThreadId = "session_thread_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case agentToolUse = "agent.tool_use"
   }
 }

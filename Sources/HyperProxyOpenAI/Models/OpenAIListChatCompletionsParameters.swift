@@ -15,14 +15,14 @@ public struct OpenAIListChatCompletionsParameters: Codable, Sendable {
   public var limit: Int?
   public var metadata: OpenAIMetadata?
   public var model: String?
-  public var order: OpenAIListChatCompletionsParametersOrder?
+  public var order: OpenAIListChatCompletionsParameters.Order?
 
   public init(
     after: String? = nil,
     limit: Int? = nil,
     metadata: OpenAIMetadata? = nil,
     model: String? = nil,
-    order: OpenAIListChatCompletionsParametersOrder? = nil
+    order: OpenAIListChatCompletionsParameters.Order? = nil
   ) {
     self.after = after
     self.limit = limit
@@ -37,5 +37,10 @@ public struct OpenAIListChatCompletionsParameters: Codable, Sendable {
     case metadata
     case model
     case order
+  }
+
+  public enum Order: String, Codable, Hashable, Sendable {
+    case asc = "asc"
+    case desc = "desc"
   }
 }

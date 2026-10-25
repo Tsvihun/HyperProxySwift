@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct OpenRouterWorkspaceMember: Codable, Sendable {
   public var createdAt: String
   public var id: String
-  public var role: OpenRouterWorkspaceMemberRole
+  public var role: OpenRouterWorkspaceMember.Role
   public var userId: String
   public var workspaceId: String
 
   public init(
     createdAt: String,
     id: String,
-    role: OpenRouterWorkspaceMemberRole,
+    role: OpenRouterWorkspaceMember.Role,
     userId: String,
     workspaceId: String
   ) {
@@ -37,5 +37,10 @@ public struct OpenRouterWorkspaceMember: Codable, Sendable {
     case role
     case userId = "user_id"
     case workspaceId = "workspace_id"
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case admin = "admin"
+    case member = "member"
   }
 }

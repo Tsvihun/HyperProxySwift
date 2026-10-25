@@ -19,20 +19,20 @@ public struct OpenRouterFunctionCallItem: Codable, Sendable {
   public var namespace: String?
   public var status: OpenRouterToolCallStatus?
   public var subagentId: String?
-  public var subagentItems: [OpenRouterFunctionCallItemSubagentItemsItem]?
-  public var kind: OpenRouterFunctionCallItemKind
+  public var subagentItems: [OpenRouterFunctionCallItem.SubagentItemsElement]?
+  public var kind: OpenRouterFunctionCallItem.Kind
 
   public init(
     arguments: String,
     callId: String,
     name: String,
-    kind: OpenRouterFunctionCallItemKind,
+    kind: OpenRouterFunctionCallItem.Kind,
     async: Bool? = nil,
     id: String? = nil,
     namespace: String? = nil,
     status: OpenRouterToolCallStatus? = nil,
     subagentId: String? = nil,
-    subagentItems: [OpenRouterFunctionCallItemSubagentItemsItem]? = nil
+    subagentItems: [OpenRouterFunctionCallItem.SubagentItemsElement]? = nil
   ) {
     self.arguments = arguments
     self.async = async
@@ -57,5 +57,23 @@ public struct OpenRouterFunctionCallItem: Codable, Sendable {
     case subagentId = "subagent_id"
     case subagentItems = "subagent_items"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case functionCall = "function_call"
+  }
+
+  public struct SubagentItemsElement: Codable, Sendable {
+    public var kind: String
+
+    public init(
+      kind: String
+    ) {
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case kind = "type"
+    }
   }
 }

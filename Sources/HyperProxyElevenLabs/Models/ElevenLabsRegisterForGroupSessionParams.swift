@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsRegisterForGroupSessionParams: Codable, Sendable {
-  public var smbToolType: ElevenLabsRegisterForGroupSessionSmbToolType?
+  public var smbToolType: ElevenLabsRegisterForGroupSessionParams.SmbToolType?
 
   public init(
-    smbToolType: ElevenLabsRegisterForGroupSessionSmbToolType? = nil
+    smbToolType: ElevenLabsRegisterForGroupSessionParams.SmbToolType? = nil
   ) {
     self.smbToolType = smbToolType
   }
 
   enum CodingKeys: String, CodingKey {
     case smbToolType = "smb_tool_type"
+  }
+
+  public enum SmbToolType: String, Codable, Hashable, Sendable {
+    case registerForGroupSession = "register_for_group_session"
   }
 }

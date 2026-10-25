@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenRouterChatFormatGrammarConfig: Codable, Sendable {
   public var grammar: String
-  public var kind: OpenRouterChatFormatGrammarConfigKind
+  public var kind: OpenRouterChatFormatGrammarConfig.Kind
 
   public init(
     grammar: String,
-    kind: OpenRouterChatFormatGrammarConfigKind
+    kind: OpenRouterChatFormatGrammarConfig.Kind
   ) {
     self.grammar = grammar
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenRouterChatFormatGrammarConfig: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case grammar
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case grammar = "grammar"
   }
 }

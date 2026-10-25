@@ -14,20 +14,24 @@ public struct ElevenLabsLLMUsageCalculatorPublicRequestModel: Codable, Sendable 
   public var numberOfPages: Int
   public var promptLength: Int
   public var ragEnabled: Bool
+  public var serviceTier: ElevenLabsLLMServiceTier?
 
   public init(
     numberOfPages: Int,
     promptLength: Int,
-    ragEnabled: Bool
+    ragEnabled: Bool,
+    serviceTier: ElevenLabsLLMServiceTier? = nil
   ) {
     self.numberOfPages = numberOfPages
     self.promptLength = promptLength
     self.ragEnabled = ragEnabled
+    self.serviceTier = serviceTier
   }
 
   enum CodingKeys: String, CodingKey {
     case numberOfPages = "number_of_pages"
     case promptLength = "prompt_length"
     case ragEnabled = "rag_enabled"
+    case serviceTier = "service_tier"
   }
 }

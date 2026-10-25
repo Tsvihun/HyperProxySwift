@@ -15,16 +15,16 @@ public struct GroqFile: Codable, Sendable {
   public var createdAt: Int?
   public var filename: String?
   public var id: String?
-  public var object: GroqFileObject?
-  public var purpose: GroqFilePurpose?
+  public var object: GroqFile.Object?
+  public var purpose: GroqFile.Purpose?
 
   public init(
     bytes: Int? = nil,
     createdAt: Int? = nil,
     filename: String? = nil,
     id: String? = nil,
-    object: GroqFileObject? = nil,
-    purpose: GroqFilePurpose? = nil
+    object: GroqFile.Object? = nil,
+    purpose: GroqFile.Purpose? = nil
   ) {
     self.bytes = bytes
     self.createdAt = createdAt
@@ -41,5 +41,14 @@ public struct GroqFile: Codable, Sendable {
     case id
     case object
     case purpose
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case file = "file"
+  }
+
+  public enum Purpose: String, Codable, Hashable, Sendable {
+    case batch = "batch"
+    case batchOutput = "batch_output"
   }
 }

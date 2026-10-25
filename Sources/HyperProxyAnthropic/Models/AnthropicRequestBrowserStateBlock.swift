@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct AnthropicRequestBrowserStateBlock: Codable, Sendable {
   public var cacheControl: AnthropicCacheControlEphemeral?
-  public var stateChanges: [AnthropicRequestBrowserStateBlockStateChangesAnyOf1Item]?
+  public var stateChanges: [AnthropicRequestBrowserStateBlockStateChangesItem]?
   public var tabs: [AnthropicBrowserStateTabEntry]
   public var kind: AnthropicBrowserStateKind
 
@@ -20,7 +20,7 @@ public struct AnthropicRequestBrowserStateBlock: Codable, Sendable {
     tabs: [AnthropicBrowserStateTabEntry],
     kind: AnthropicBrowserStateKind = .browserState,
     cacheControl: AnthropicCacheControlEphemeral? = nil,
-    stateChanges: [AnthropicRequestBrowserStateBlockStateChangesAnyOf1Item]? = nil
+    stateChanges: [AnthropicRequestBrowserStateBlockStateChangesItem]? = nil
   ) {
     self.cacheControl = cacheControl
     self.stateChanges = stateChanges

@@ -14,14 +14,14 @@ public struct OpenAIUrlCitationBody: Codable, Sendable {
   public var endIndex: Int
   public var startIndex: Int
   public var title: String
-  public var kind: OpenAIUrlCitationBodyKind
+  public var kind: OpenAIUrlCitationBody.Kind
   public var url: String
 
   public init(
     endIndex: Int,
     startIndex: Int,
     title: String,
-    kind: OpenAIUrlCitationBodyKind,
+    kind: OpenAIUrlCitationBody.Kind,
     url: String
   ) {
     self.endIndex = endIndex
@@ -37,5 +37,9 @@ public struct OpenAIUrlCitationBody: Codable, Sendable {
     case title
     case kind = "type"
     case url
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case urlCitation = "url_citation"
   }
 }

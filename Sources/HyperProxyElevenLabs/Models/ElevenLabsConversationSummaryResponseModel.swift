@@ -28,7 +28,7 @@ public struct ElevenLabsConversationSummaryResponseModel: Codable, Sendable {
   public var rating: Double?
   public var sentimentAnalysis: ElevenLabsConversationSentimentAnalysis?
   public var startTimeUnixSecs: Int
-  public var status: ElevenLabsConversationSummaryResponseModelStatus
+  public var status: ElevenLabsConversationSummaryResponseModel.Status
   public var tagIds: [String]?
   public var terminationReason: String?
   public var toolNames: [String]?
@@ -42,7 +42,7 @@ public struct ElevenLabsConversationSummaryResponseModel: Codable, Sendable {
     conversationId: String,
     messageCount: Int,
     startTimeUnixSecs: Int,
-    status: ElevenLabsConversationSummaryResponseModelStatus,
+    status: ElevenLabsConversationSummaryResponseModel.Status,
     agentName: String? = nil,
     branchId: String? = nil,
     callSuccessScore: Double? = nil,
@@ -109,5 +109,13 @@ public struct ElevenLabsConversationSummaryResponseModel: Codable, Sendable {
     case toolNames = "tool_names"
     case transcriptSummary = "transcript_summary"
     case versionId = "version_id"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case initiated = "initiated"
+    case inProgress = "in-progress"
+    case processing = "processing"
+    case done = "done"
+    case failed = "failed"
   }
 }

@@ -13,18 +13,18 @@ import HyperProxyCore
 public struct OpenAITaskGroupItem: Codable, Sendable {
   public var createdAt: Int
   public var id: String
-  public var object: OpenAITaskGroupItemObject
+  public var object: OpenAITaskGroupItem.Object
   public var tasks: [OpenAITaskGroupTask]
   public var threadId: String
-  public var kind: OpenAITaskGroupItemKind
+  public var kind: OpenAITaskGroupItem.Kind
 
   public init(
     createdAt: Int,
     id: String,
-    object: OpenAITaskGroupItemObject,
+    object: OpenAITaskGroupItem.Object,
     tasks: [OpenAITaskGroupTask],
     threadId: String,
-    kind: OpenAITaskGroupItemKind
+    kind: OpenAITaskGroupItem.Kind
   ) {
     self.createdAt = createdAt
     self.id = id
@@ -41,5 +41,13 @@ public struct OpenAITaskGroupItem: Codable, Sendable {
     case tasks
     case threadId = "thread_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case chatkitTaskGroup = "chatkit.task_group"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case chatkitThreadItem = "chatkit.thread_item"
   }
 }

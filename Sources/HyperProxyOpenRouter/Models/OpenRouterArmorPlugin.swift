@@ -14,20 +14,20 @@ public struct OpenRouterArmorPlugin: Codable, Sendable {
   public var classifierContext: OpenRouterArmorContext?
   public var enabled: Bool?
   public var evaluateNativeTools: Bool?
-  public var id: OpenRouterArmorPluginId
-  public var mode: OpenRouterArmorPluginMode?
-  public var onError: OpenRouterArmorPluginOnError?
-  public var outputMode: OpenRouterArmorPluginOutputMode?
+  public var id: OpenRouterArmorPlugin.Id
+  public var mode: OpenRouterArmorPlugin.Mode?
+  public var onError: OpenRouterArmorPlugin.OnError?
+  public var outputMode: OpenRouterArmorPlugin.OutputMode?
   public var useCcStyleDefaultRules: Bool?
 
   public init(
-    id: OpenRouterArmorPluginId,
+    id: OpenRouterArmorPlugin.Id,
     classifierContext: OpenRouterArmorContext? = nil,
     enabled: Bool? = nil,
     evaluateNativeTools: Bool? = nil,
-    mode: OpenRouterArmorPluginMode? = nil,
-    onError: OpenRouterArmorPluginOnError? = nil,
-    outputMode: OpenRouterArmorPluginOutputMode? = nil,
+    mode: OpenRouterArmorPlugin.Mode? = nil,
+    onError: OpenRouterArmorPlugin.OnError? = nil,
+    outputMode: OpenRouterArmorPlugin.OutputMode? = nil,
     useCcStyleDefaultRules: Bool? = nil
   ) {
     self.classifierContext = classifierContext
@@ -49,5 +49,25 @@ public struct OpenRouterArmorPlugin: Codable, Sendable {
     case onError = "on_error"
     case outputMode = "output_mode"
     case useCcStyleDefaultRules = "use_cc_style_default_rules"
+  }
+
+  public enum Id: String, Codable, Hashable, Sendable {
+    case armor = "armor"
+  }
+
+  public enum Mode: String, Codable, Hashable, Sendable {
+    case enforce = "enforce"
+    case audit = "audit"
+  }
+
+  public enum OnError: String, Codable, Hashable, Sendable {
+    case log = "log"
+    case block = "block"
+  }
+
+  public enum OutputMode: String, Codable, Hashable, Sendable {
+    case text = "text"
+    case customItem = "custom_item"
+    case claudeCodeCompatibility = "claude_code_compatibility"
   }
 }

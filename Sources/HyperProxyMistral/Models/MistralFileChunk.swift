@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct MistralFileChunk: Codable, Sendable {
   public var fileId: String
-  public var kind: MistralFileKind?
+  public var kind: MistralFileChunk.Kind?
 
   public init(
     fileId: String,
-    kind: MistralFileKind? = nil
+    kind: MistralFileChunk.Kind? = nil
   ) {
     self.fileId = fileId
     self.kind = kind
@@ -25,5 +25,9 @@ public struct MistralFileChunk: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case fileId = "file_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case file = "file"
   }
 }

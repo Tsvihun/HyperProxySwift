@@ -15,14 +15,14 @@ public struct AnthropicBetaManagedAgentsSessionThreadStatusRunningEvent: Codable
   public var id: String
   public var processedAt: AnthropicBetaTimestamp
   public var sessionThreadId: String
-  public var kind: AnthropicBetaManagedAgentsSessionThreadStatusRunningEventKind
+  public var kind: AnthropicBetaManagedAgentsSessionThreadStatusRunningEvent.Kind
 
   public init(
     agentName: String,
     id: String,
     processedAt: AnthropicBetaTimestamp,
     sessionThreadId: String,
-    kind: AnthropicBetaManagedAgentsSessionThreadStatusRunningEventKind
+    kind: AnthropicBetaManagedAgentsSessionThreadStatusRunningEvent.Kind
   ) {
     self.agentName = agentName
     self.id = id
@@ -37,5 +37,11 @@ public struct AnthropicBetaManagedAgentsSessionThreadStatusRunningEvent: Codable
     case processedAt = "processed_at"
     case sessionThreadId = "session_thread_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case sessionThreadStatusRunning = "session.thread_status_running"
   }
 }

@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsListAssetsParams: Codable, Sendable {
   public var listKwargs: [String: HyperProxyJSONValue]?
-  public var smbToolType: ElevenLabsListAssetsSmbToolType?
+  public var smbToolType: ElevenLabsListAssetsParams.SmbToolType?
 
   public init(
     listKwargs: [String: HyperProxyJSONValue]? = nil,
-    smbToolType: ElevenLabsListAssetsSmbToolType? = nil
+    smbToolType: ElevenLabsListAssetsParams.SmbToolType? = nil
   ) {
     self.listKwargs = listKwargs
     self.smbToolType = smbToolType
@@ -25,5 +25,9 @@ public struct ElevenLabsListAssetsParams: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case listKwargs = "list_kwargs"
     case smbToolType = "smb_tool_type"
+  }
+
+  public enum SmbToolType: String, Codable, Hashable, Sendable {
+    case listAssets = "list_assets"
   }
 }

@@ -46,4 +46,18 @@ public struct EachAIAPIWebhookWithAttempts: Codable, Sendable {
     case source
     case url
   }
+
+  public struct WithAttempts: Codable, Sendable {
+    public var attempts: [EachAIAPIWebhookAttempt]?
+
+    public init(
+      attempts: [EachAIAPIWebhookAttempt]? = nil
+    ) {
+      self.attempts = attempts
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case attempts
+    }
+  }
 }

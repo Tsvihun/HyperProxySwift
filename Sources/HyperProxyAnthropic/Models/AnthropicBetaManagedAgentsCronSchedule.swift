@@ -14,13 +14,13 @@ public struct AnthropicBetaManagedAgentsCronSchedule: Codable, Sendable {
   public var expression: String
   public var lastRunAt: AnthropicBetaTimestamp?
   public var timezone: String
-  public var kind: AnthropicBetaManagedAgentsCronScheduleKind
+  public var kind: AnthropicBetaManagedAgentsCronSchedule.Kind
   public var upcomingRunsAt: [AnthropicBetaTimestamp]?
 
   public init(
     expression: String,
     timezone: String,
-    kind: AnthropicBetaManagedAgentsCronScheduleKind,
+    kind: AnthropicBetaManagedAgentsCronSchedule.Kind,
     lastRunAt: AnthropicBetaTimestamp? = nil,
     upcomingRunsAt: [AnthropicBetaTimestamp]? = nil
   ) {
@@ -37,5 +37,9 @@ public struct AnthropicBetaManagedAgentsCronSchedule: Codable, Sendable {
     case timezone
     case kind = "type"
     case upcomingRunsAt = "upcoming_runs_at"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case cron = "cron"
   }
 }

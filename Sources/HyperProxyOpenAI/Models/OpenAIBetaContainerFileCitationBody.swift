@@ -16,7 +16,7 @@ public struct OpenAIBetaContainerFileCitationBody: Codable, Sendable {
   public var fileId: String
   public var filename: String
   public var startIndex: Int
-  public var kind: OpenAIBetaContainerFileCitationBodyKind
+  public var kind: OpenAIBetaContainerFileCitationBody.Kind
 
   public init(
     containerId: String,
@@ -24,7 +24,7 @@ public struct OpenAIBetaContainerFileCitationBody: Codable, Sendable {
     fileId: String,
     filename: String,
     startIndex: Int,
-    kind: OpenAIBetaContainerFileCitationBodyKind
+    kind: OpenAIBetaContainerFileCitationBody.Kind
   ) {
     self.containerId = containerId
     self.endIndex = endIndex
@@ -41,5 +41,9 @@ public struct OpenAIBetaContainerFileCitationBody: Codable, Sendable {
     case filename
     case startIndex = "start_index"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case containerFileCitation = "container_file_citation"
   }
 }

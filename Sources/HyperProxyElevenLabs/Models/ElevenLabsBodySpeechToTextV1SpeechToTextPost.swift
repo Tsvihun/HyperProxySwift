@@ -16,16 +16,16 @@ public struct ElevenLabsBodySpeechToTextV1SpeechToTextPost: Codable, Sendable {
   public var detectSpeakerRoles: Bool?
   public var diarizationThreshold: Double?
   public var diarize: Bool?
-  public var entityDetection: ElevenLabsBodySpeechToTextV1SpeechToTextPostEntityDetection?
-  public var entityRedaction: ElevenLabsBodySpeechToTextV1SpeechToTextPostEntityRedaction?
+  public var entityDetection: ElevenLabsBodySpeechToTextV1SpeechToTextPost.EntityDetection?
+  public var entityRedaction: ElevenLabsBodySpeechToTextV1SpeechToTextPost.EntityRedaction?
   public var entityRedactionMode: String?
   public var file: String?
-  public var fileFormat: ElevenLabsBodySpeechToTextV1SpeechToTextPostFileFormat?
+  public var fileFormat: ElevenLabsBodySpeechToTextV1SpeechToTextPost.FileFormat?
   public var keyterms: [String]?
   public var languageCode: String?
   public var modelId: String
   public var multichannelOutputStyle:
-    ElevenLabsBodySpeechToTextV1SpeechToTextPostMultichannelOutputStyle?
+    ElevenLabsBodySpeechToTextV1SpeechToTextPost.MultichannelOutputStyle?
   public var noVerbatim: Bool?
   public var numSpeakers: Int?
   public var seed: Int?
@@ -33,13 +33,13 @@ public struct ElevenLabsBodySpeechToTextV1SpeechToTextPost: Codable, Sendable {
   public var tagAudioEvents: Bool?
   public var temperature: Double?
   public var timestampsGranularity:
-    ElevenLabsBodySpeechToTextV1SpeechToTextPostTimestampsGranularity?
+    ElevenLabsBodySpeechToTextV1SpeechToTextPost.TimestampsGranularity?
   public var transcriptEdit: String?
   public var useMultiChannel: Bool?
   public var useSpeakerLibrary: Bool?
   public var webhook: Bool?
   public var webhookId: String?
-  public var webhookMetadata: ElevenLabsBodySpeechToTextV1SpeechToTextPostWebhookMetadata?
+  public var webhookMetadata: ElevenLabsBodySpeechToTextV1SpeechToTextPost.WebhookMetadata?
 
   public init(
     modelId: String,
@@ -48,14 +48,14 @@ public struct ElevenLabsBodySpeechToTextV1SpeechToTextPost: Codable, Sendable {
     detectSpeakerRoles: Bool? = nil,
     diarizationThreshold: Double? = nil,
     diarize: Bool? = nil,
-    entityDetection: ElevenLabsBodySpeechToTextV1SpeechToTextPostEntityDetection? = nil,
-    entityRedaction: ElevenLabsBodySpeechToTextV1SpeechToTextPostEntityRedaction? = nil,
+    entityDetection: ElevenLabsBodySpeechToTextV1SpeechToTextPost.EntityDetection? = nil,
+    entityRedaction: ElevenLabsBodySpeechToTextV1SpeechToTextPost.EntityRedaction? = nil,
     entityRedactionMode: String? = nil,
     file: String? = nil,
-    fileFormat: ElevenLabsBodySpeechToTextV1SpeechToTextPostFileFormat? = nil,
+    fileFormat: ElevenLabsBodySpeechToTextV1SpeechToTextPost.FileFormat? = nil,
     keyterms: [String]? = nil,
     languageCode: String? = nil,
-    multichannelOutputStyle: ElevenLabsBodySpeechToTextV1SpeechToTextPostMultichannelOutputStyle? =
+    multichannelOutputStyle: ElevenLabsBodySpeechToTextV1SpeechToTextPost.MultichannelOutputStyle? =
       nil,
     noVerbatim: Bool? = nil,
     numSpeakers: Int? = nil,
@@ -63,13 +63,14 @@ public struct ElevenLabsBodySpeechToTextV1SpeechToTextPost: Codable, Sendable {
     sourceUrl: String? = nil,
     tagAudioEvents: Bool? = nil,
     temperature: Double? = nil,
-    timestampsGranularity: ElevenLabsBodySpeechToTextV1SpeechToTextPostTimestampsGranularity? = nil,
+    timestampsGranularity: ElevenLabsBodySpeechToTextV1SpeechToTextPost.TimestampsGranularity? =
+      nil,
     transcriptEdit: String? = nil,
     useMultiChannel: Bool? = nil,
     useSpeakerLibrary: Bool? = nil,
     webhook: Bool? = nil,
     webhookId: String? = nil,
-    webhookMetadata: ElevenLabsBodySpeechToTextV1SpeechToTextPostWebhookMetadata? = nil
+    webhookMetadata: ElevenLabsBodySpeechToTextV1SpeechToTextPost.WebhookMetadata? = nil
   ) {
     self.additionalFormats = additionalFormats
     self.cloudStorageUrl = cloudStorageUrl
@@ -128,5 +129,129 @@ public struct ElevenLabsBodySpeechToTextV1SpeechToTextPost: Codable, Sendable {
     case webhook
     case webhookId = "webhook_id"
     case webhookMetadata = "webhook_metadata"
+  }
+
+  public enum EntityDetection: Codable, Sendable {
+    case string(String)
+    case stringArray([String])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .stringArray(try container.decode([String].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .stringArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum EntityRedaction: Codable, Sendable {
+    case string(String)
+    case stringArray([String])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .stringArray(try container.decode([String].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .stringArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum FileFormat: String, Codable, Hashable,
+    Sendable
+  {
+    case pcmS16le16 = "pcm_s16le_16"
+    case other = "other"
+  }
+
+  public enum MultichannelOutputStyle: String, Codable,
+    Hashable, Sendable
+  {
+    case separate = "separate"
+    case combined = "combined"
+  }
+
+  public enum TimestampsGranularity: String, Codable,
+    Hashable, Sendable
+  {
+    case none = "none"
+    case word = "word"
+    case character = "character"
+  }
+
+  public enum WebhookMetadata: Codable, Sendable {
+    case string(String)
+    case objectDictionary([String: HyperProxyJSONValue])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .objectDictionary(try container.decode([String: HyperProxyJSONValue].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .objectDictionary(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension ElevenLabsBodySpeechToTextV1SpeechToTextPost.EntityDetection: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension ElevenLabsBodySpeechToTextV1SpeechToTextPost.EntityDetection: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: String...) {
+    self = .stringArray(elements)
+  }
+}
+
+extension ElevenLabsBodySpeechToTextV1SpeechToTextPost.EntityRedaction: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension ElevenLabsBodySpeechToTextV1SpeechToTextPost.EntityRedaction: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: String...) {
+    self = .stringArray(elements)
+  }
+}
+
+extension ElevenLabsBodySpeechToTextV1SpeechToTextPost.WebhookMetadata: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

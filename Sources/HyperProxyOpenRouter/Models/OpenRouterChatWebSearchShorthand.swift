@@ -21,12 +21,12 @@ public struct OpenRouterChatWebSearchShorthand: Codable, Sendable {
   public var mode: OpenRouterWebSearchMode?
   public var parameters: OpenRouterWebSearchConfig?
   public var searchContextSize: OpenRouterSearchQualityLevel?
-  public var kind: OpenRouterChatWebSearchShorthandKind
+  public var kind: OpenRouterChatWebSearchShorthand.Kind
   public var userLocation: OpenRouterWebSearchUserLocationServerTool?
   public var xSearch: OpenRouterXSearchOptions?
 
   public init(
-    kind: OpenRouterChatWebSearchShorthandKind,
+    kind: OpenRouterChatWebSearchShorthand.Kind,
     allowedDomains: [String]? = nil,
     engine: OpenRouterWebSearchEngineEnum? = nil,
     excludedDomains: [String]? = nil,
@@ -69,5 +69,12 @@ public struct OpenRouterChatWebSearchShorthand: Codable, Sendable {
     case kind = "type"
     case userLocation = "user_location"
     case xSearch = "x_search"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case webSearch = "web_search"
+    case webSearchPreview = "web_search_preview"
+    case webSearchPreview2025_03_11 = "web_search_preview_2025_03_11"
+    case webSearch2025_08_26 = "web_search_2025_08_26"
   }
 }

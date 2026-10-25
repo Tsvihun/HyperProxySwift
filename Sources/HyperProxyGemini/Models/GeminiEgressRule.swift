@@ -13,13 +13,13 @@ import HyperProxyCore
 public struct GeminiEgressRule: Codable, Sendable {
   public var credential: String?
   public var domain: String?
-  public var mode: GeminiEgressRuleMode?
+  public var mode: GeminiEgressRule.Mode?
   public var transform: [String: String]?
 
   public init(
     credential: String? = nil,
     domain: String? = nil,
-    mode: GeminiEgressRuleMode? = nil,
+    mode: GeminiEgressRule.Mode? = nil,
     transform: [String: String]? = nil
   ) {
     self.credential = credential
@@ -33,5 +33,10 @@ public struct GeminiEgressRule: Codable, Sendable {
     case domain
     case mode
     case transform
+  }
+
+  public enum Mode: String, Codable, Hashable, Sendable {
+    case networkModeUnspecified = "NETWORK_MODE_UNSPECIFIED"
+    case disabled = "DISABLED"
   }
 }

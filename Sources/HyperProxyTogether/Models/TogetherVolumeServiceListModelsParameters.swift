@@ -15,14 +15,14 @@ public struct TogetherVolumeServiceListModelsParameters: Codable, Sendable {
   public var limit: Int?
   public var organizationId: String?
   public var projectId: String
-  public var visibility: TogetherVolumeServiceListModelsParametersVisibility?
+  public var visibility: TogetherVolumeServiceListModelsParameters.Visibility?
 
   public init(
     projectId: String,
     after: String? = nil,
     limit: Int? = nil,
     organizationId: String? = nil,
-    visibility: TogetherVolumeServiceListModelsParametersVisibility? = nil
+    visibility: TogetherVolumeServiceListModelsParameters.Visibility? = nil
   ) {
     self.after = after
     self.limit = limit
@@ -37,5 +37,10 @@ public struct TogetherVolumeServiceListModelsParameters: Codable, Sendable {
     case organizationId
     case projectId
     case visibility
+  }
+
+  public enum Visibility: String, Codable, Hashable, Sendable {
+    case visibilityPrivate = "VISIBILITY_PRIVATE"
+    case visibilityInternal = "VISIBILITY_INTERNAL"
   }
 }

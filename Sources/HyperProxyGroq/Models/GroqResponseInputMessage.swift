@@ -12,15 +12,15 @@ import HyperProxyCore
 
 public struct GroqResponseInputMessage: Codable, Sendable {
   public var content: [GroqResponseInputContent]
-  public var role: GroqResponseInputMessageRole
-  public var status: GroqResponseInputMessageStatus?
-  public var kind: GroqResponseInputMessageKind
+  public var role: GroqResponseInputMessage.Role
+  public var status: GroqResponseInputMessage.Status?
+  public var kind: GroqResponseInputMessage.Kind
 
   public init(
     content: [GroqResponseInputContent],
-    role: GroqResponseInputMessageRole,
-    kind: GroqResponseInputMessageKind,
-    status: GroqResponseInputMessageStatus? = nil
+    role: GroqResponseInputMessage.Role,
+    kind: GroqResponseInputMessage.Kind,
+    status: GroqResponseInputMessage.Status? = nil
   ) {
     self.content = content
     self.role = role
@@ -33,5 +33,21 @@ public struct GroqResponseInputMessage: Codable, Sendable {
     case role
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case message = "message"
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case user = "user"
+    case system = "system"
+    case developer = "developer"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case inProgress = "in_progress"
+    case completed = "completed"
+    case incomplete = "incomplete"
   }
 }

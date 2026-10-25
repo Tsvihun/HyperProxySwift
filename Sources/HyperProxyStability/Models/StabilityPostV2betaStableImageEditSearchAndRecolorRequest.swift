@@ -14,7 +14,7 @@ public struct StabilityPostV2betaStableImageEditSearchAndRecolorRequest: Codable
   public var growMask: Double?
   public var image: String
   public var negativePrompt: String?
-  public var outputFormat: StabilityPostV2betaStableImageEditSearchAndRecolorRequestOutputFormat?
+  public var outputFormat: StabilityPostV2betaStableImageEditSearchAndRecolorRequest.OutputFormat?
   public var prompt: String
   public var seed: Double?
   public var selectPrompt: String
@@ -26,7 +26,7 @@ public struct StabilityPostV2betaStableImageEditSearchAndRecolorRequest: Codable
     selectPrompt: String,
     growMask: Double? = nil,
     negativePrompt: String? = nil,
-    outputFormat: StabilityPostV2betaStableImageEditSearchAndRecolorRequestOutputFormat? = nil,
+    outputFormat: StabilityPostV2betaStableImageEditSearchAndRecolorRequest.OutputFormat? = nil,
     seed: Double? = nil,
     stylePreset: StabilityStylePreset? = nil
   ) {
@@ -49,5 +49,13 @@ public struct StabilityPostV2betaStableImageEditSearchAndRecolorRequest: Codable
     case seed
     case selectPrompt = "select_prompt"
     case stylePreset = "style_preset"
+  }
+
+  public enum OutputFormat: String, Codable,
+    Hashable, Sendable
+  {
+    case jpeg = "jpeg"
+    case png = "png"
+    case webp = "webp"
   }
 }

@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct GeminiThinkingConfig: Codable, Sendable {
   public var includeThoughts: Bool?
   public var thinkingBudget: Int?
-  public var thinkingLevel: GeminiThinkingConfigThinkingLevel?
+  public var thinkingLevel: GeminiThinkingConfig.ThinkingLevel?
 
   public init(
     includeThoughts: Bool? = nil,
     thinkingBudget: Int? = nil,
-    thinkingLevel: GeminiThinkingConfigThinkingLevel? = nil
+    thinkingLevel: GeminiThinkingConfig.ThinkingLevel? = nil
   ) {
     self.includeThoughts = includeThoughts
     self.thinkingBudget = thinkingBudget
@@ -29,5 +29,13 @@ public struct GeminiThinkingConfig: Codable, Sendable {
     case includeThoughts
     case thinkingBudget
     case thinkingLevel
+  }
+
+  public enum ThinkingLevel: String, Codable, Hashable, Sendable {
+    case thinkingLevelUnspecified = "THINKING_LEVEL_UNSPECIFIED"
+    case minimal = "MINIMAL"
+    case low = "LOW"
+    case medium = "MEDIUM"
+    case high = "HIGH"
   }
 }

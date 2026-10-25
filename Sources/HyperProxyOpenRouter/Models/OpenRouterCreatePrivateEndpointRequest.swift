@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct OpenRouterCreatePrivateEndpointRequest: Codable, Sendable {
   public var activate: OpenRouterPrivateEndpointActivation?
   public var baseUrl: String?
-  public var declaredRegion: OpenRouterCreatePrivateEndpointRequestDeclaredRegion?
+  public var declaredRegion: OpenRouterCreatePrivateEndpointRequest.DeclaredRegion?
   public var declaredZdr: Bool?
   public var modelPermaslug: String
   public var pricing: OpenRouterPrivateEndpointPricing?
@@ -26,7 +26,7 @@ public struct OpenRouterCreatePrivateEndpointRequest: Codable, Sendable {
     upstreamModelId: String,
     activate: OpenRouterPrivateEndpointActivation? = nil,
     baseUrl: String? = nil,
-    declaredRegion: OpenRouterCreatePrivateEndpointRequestDeclaredRegion? = nil,
+    declaredRegion: OpenRouterCreatePrivateEndpointRequest.DeclaredRegion? = nil,
     declaredZdr: Bool? = nil,
     pricing: OpenRouterPrivateEndpointPricing? = nil
   ) {
@@ -49,5 +49,13 @@ public struct OpenRouterCreatePrivateEndpointRequest: Codable, Sendable {
     case pricing
     case providerSlug = "provider_slug"
     case upstreamModelId = "upstream_model_id"
+  }
+
+  public enum DeclaredRegion: String, Codable, Hashable,
+    Sendable
+  {
+    case global = "global"
+    case europe = "europe"
+    case us = "us"
   }
 }

@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsBodyComposeMusicV1MusicPost: Codable, Sendable {
-  public var compositionPlan: ElevenLabsBodyComposeMusicV1MusicPostCompositionPlanAnyOf1?
+  public var compositionPlan: ElevenLabsBodyComposeMusicV1MusicPostCompositionPlanVariant?
   public var finetuneId: String?
   public var finetuneStrength: Double?
   public var forceInstrumental: Bool?
@@ -28,7 +28,7 @@ public struct ElevenLabsBodyComposeMusicV1MusicPost: Codable, Sendable {
   public var usePhoneticNames: Bool?
 
   public init(
-    compositionPlan: ElevenLabsBodyComposeMusicV1MusicPostCompositionPlanAnyOf1? = nil,
+    compositionPlan: ElevenLabsBodyComposeMusicV1MusicPostCompositionPlanVariant? = nil,
     finetuneId: String? = nil,
     finetuneStrength: Double? = nil,
     forceInstrumental: Bool? = nil,

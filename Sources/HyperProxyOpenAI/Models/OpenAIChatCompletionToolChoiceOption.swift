@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public enum OpenAIChatCompletionToolChoiceOption: Codable, Sendable {
-  case chatCompletionToolChoiceOptionOneOf1(OpenAIChatCompletionToolChoiceOptionOneOf1)
+  case toolChoiceMode(OpenAIChatCompletionToolChoiceOption.ToolChoiceMode)
   case chatCompletionAllowedToolsChoice(OpenAIChatCompletionAllowedToolsChoice)
   case chatCompletionNamedToolChoice(OpenAIChatCompletionNamedToolChoice)
   case chatCompletionNamedToolChoiceCustom(OpenAIChatCompletionNamedToolChoiceCustom)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(OpenAIChatCompletionToolChoiceOptionOneOf1.self) {
-      self = .chatCompletionToolChoiceOptionOneOf1(value)
+    if let value = try? container.decode(OpenAIChatCompletionToolChoiceOption.ToolChoiceMode.self) {
+      self = .toolChoiceMode(value)
       return
     }
     if let value = try? container.decode(OpenAIChatCompletionAllowedToolsChoice.self) {
@@ -37,7 +37,7 @@ public enum OpenAIChatCompletionToolChoiceOption: Codable, Sendable {
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .chatCompletionToolChoiceOptionOneOf1(let value):
+    case .toolChoiceMode(let value):
       try container.encode(value)
     case .chatCompletionAllowedToolsChoice(let value):
       try container.encode(value)
@@ -49,11 +49,17 @@ public enum OpenAIChatCompletionToolChoiceOption: Codable, Sendable {
   }
 
   /// Provider-native value without the schema union wrapper.
-  public static var none: Self { .chatCompletionToolChoiceOptionOneOf1(.none) }
+  public static var none: Self { .toolChoiceMode(.none) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var auto: Self { .chatCompletionToolChoiceOptionOneOf1(.auto) }
+  public static var auto: Self { .toolChoiceMode(.auto) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var requiredValue: Self { .chatCompletionToolChoiceOptionOneOf1(.requiredValue) }
+  public static var requiredValue: Self { .toolChoiceMode(.requiredValue) }
+
+  public enum ToolChoiceMode: String, Codable, Hashable, Sendable {
+    case none = "none"
+    case auto = "auto"
+    case requiredValue = "required"
+  }
 }

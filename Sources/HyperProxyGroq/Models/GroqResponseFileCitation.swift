@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct GroqResponseFileCitation: Codable, Sendable {
   public var fileId: String
   public var index: Int?
-  public var kind: GroqResponseFileCitationKind
+  public var kind: GroqResponseFileCitation.Kind
 
   public init(
     fileId: String,
-    kind: GroqResponseFileCitationKind,
+    kind: GroqResponseFileCitation.Kind,
     index: Int? = nil
   ) {
     self.fileId = fileId
@@ -29,5 +29,9 @@ public struct GroqResponseFileCitation: Codable, Sendable {
     case fileId = "file_id"
     case index
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case fileCitation = "file_citation"
   }
 }

@@ -11,27 +11,27 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsListDubsParameters: Codable, Sendable {
-  public var creationSources: [ElevenLabsListDubsParametersCreationSourcesAnyOf1Item]?
+  public var creationSources: [ElevenLabsListDubsParametersCreationSourcesItem]?
   public var cursor: String?
-  public var dubbingModels: [ElevenLabsListDubsParametersDubbingModelsAnyOf1Item]?
-  public var dubbingStatus: ElevenLabsListDubsParametersDubbingStatus?
-  public var dubbingStatuses: [ElevenLabsListDubsParametersDubbingStatusesAnyOf1Item]?
-  public var filterByCreator: ElevenLabsListDubsParametersFilterByCreator?
-  public var orderBy: ElevenLabsListDubsParametersOrderBy?
-  public var orderDirection: ElevenLabsListDubsParametersOrderDirection?
+  public var dubbingModels: [ElevenLabsListDubsParametersDubbingModelsItem]?
+  public var dubbingStatus: ElevenLabsListDubsParameters.DubbingStatus?
+  public var dubbingStatuses: [ElevenLabsListDubsParametersDubbingStatusesItem]?
+  public var filterByCreator: ElevenLabsListDubsParameters.FilterByCreator?
+  public var orderBy: ElevenLabsListDubsParameters.OrderBy?
+  public var orderDirection: ElevenLabsListDubsParameters.OrderDirection?
   public var pageSize: Int?
   public var targetLanguageCodes: [String]?
   public var xiApiKey: String?
 
   public init(
-    creationSources: [ElevenLabsListDubsParametersCreationSourcesAnyOf1Item]? = nil,
+    creationSources: [ElevenLabsListDubsParametersCreationSourcesItem]? = nil,
     cursor: String? = nil,
-    dubbingModels: [ElevenLabsListDubsParametersDubbingModelsAnyOf1Item]? = nil,
-    dubbingStatus: ElevenLabsListDubsParametersDubbingStatus? = nil,
-    dubbingStatuses: [ElevenLabsListDubsParametersDubbingStatusesAnyOf1Item]? = nil,
-    filterByCreator: ElevenLabsListDubsParametersFilterByCreator? = nil,
-    orderBy: ElevenLabsListDubsParametersOrderBy? = nil,
-    orderDirection: ElevenLabsListDubsParametersOrderDirection? = nil,
+    dubbingModels: [ElevenLabsListDubsParametersDubbingModelsItem]? = nil,
+    dubbingStatus: ElevenLabsListDubsParameters.DubbingStatus? = nil,
+    dubbingStatuses: [ElevenLabsListDubsParametersDubbingStatusesItem]? = nil,
+    filterByCreator: ElevenLabsListDubsParameters.FilterByCreator? = nil,
+    orderBy: ElevenLabsListDubsParameters.OrderBy? = nil,
+    orderDirection: ElevenLabsListDubsParameters.OrderDirection? = nil,
     pageSize: Int? = nil,
     targetLanguageCodes: [String]? = nil,
     xiApiKey: String? = nil
@@ -61,5 +61,27 @@ public struct ElevenLabsListDubsParameters: Codable, Sendable {
     case pageSize = "page_size"
     case targetLanguageCodes = "target_language_codes"
     case xiApiKey = "xi-api-key"
+  }
+
+  public enum DubbingStatus: String, Codable, Hashable, Sendable {
+    case dubbing = "dubbing"
+    case dubbed = "dubbed"
+    case failed = "failed"
+  }
+
+  public enum FilterByCreator: String, Codable, Hashable, Sendable {
+    case personal = "personal"
+    case others = "others"
+    case all = "all"
+  }
+
+  public enum OrderBy: String, Codable, Hashable, Sendable {
+    case createdAt = "created_at"
+    case name = "name"
+  }
+
+  public enum OrderDirection: String, Codable, Hashable, Sendable {
+    case descending = "DESCENDING"
+    case ascending = "ASCENDING"
   }
 }

@@ -19,7 +19,7 @@ public struct OpenRouterOutputFunctionCallItem: Codable, Sendable {
   public var namespace: String?
   public var status: OpenRouterOutputItemFunctionCallStatus?
   public var subagentId: String?
-  public var subagentItems: [OpenRouterOutputFunctionCallItemAllOf2SubagentItemsItem]?
+  public var subagentItems: [OpenRouterOutputFunctionCallItemSubagentItemsItem]?
   public var kind: OpenRouterOutputItemFunctionCallKind
 
   public init(
@@ -32,7 +32,7 @@ public struct OpenRouterOutputFunctionCallItem: Codable, Sendable {
     namespace: String? = nil,
     status: OpenRouterOutputItemFunctionCallStatus? = nil,
     subagentId: String? = nil,
-    subagentItems: [OpenRouterOutputFunctionCallItemAllOf2SubagentItemsItem]? = nil
+    subagentItems: [OpenRouterOutputFunctionCallItemSubagentItemsItem]? = nil
   ) {
     self.arguments = arguments
     self.async = async
@@ -57,5 +57,23 @@ public struct OpenRouterOutputFunctionCallItem: Codable, Sendable {
     case subagentId = "subagent_id"
     case subagentItems = "subagent_items"
     case kind = "type"
+  }
+
+  public struct WithSubagentIdAndSubagentItems: Codable, Sendable {
+    public var subagentId: String?
+    public var subagentItems: [OpenRouterOutputFunctionCallItemSubagentItemsItem]?
+
+    public init(
+      subagentId: String? = nil,
+      subagentItems: [OpenRouterOutputFunctionCallItemSubagentItemsItem]? = nil
+    ) {
+      self.subagentId = subagentId
+      self.subagentItems = subagentItems
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case subagentId = "subagent_id"
+      case subagentItems = "subagent_items"
+    }
   }
 }

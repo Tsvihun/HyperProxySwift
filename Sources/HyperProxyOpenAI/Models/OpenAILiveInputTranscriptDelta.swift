@@ -16,14 +16,14 @@ public struct OpenAILiveInputTranscriptDelta: Codable, Sendable {
   public var endMs: Int
   public var eventId: String
   public var startMs: Int
-  public var kind: OpenAILiveInputTranscriptDeltaKind
+  public var kind: OpenAILiveInputTranscriptDelta.Kind
 
   public init(
     delta: String,
     endMs: Int,
     eventId: String,
     startMs: Int,
-    kind: OpenAILiveInputTranscriptDeltaKind,
+    kind: OpenAILiveInputTranscriptDelta.Kind,
     clientEventId: String? = nil
   ) {
     self.clientEventId = clientEventId
@@ -41,5 +41,9 @@ public struct OpenAILiveInputTranscriptDelta: Codable, Sendable {
     case eventId = "event_id"
     case startMs = "start_ms"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case sessionInputTranscriptDelta = "session.input_transcript.delta"
   }
 }

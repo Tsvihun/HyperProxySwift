@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsSessionRateLimitedRunError: Codable, Sendable {
   public var message: String
-  public var kind: AnthropicBetaManagedAgentsSessionRateLimitedRunErrorKind
+  public var kind: AnthropicBetaManagedAgentsSessionRateLimitedRunError.Kind
 
   public init(
     message: String,
-    kind: AnthropicBetaManagedAgentsSessionRateLimitedRunErrorKind
+    kind: AnthropicBetaManagedAgentsSessionRateLimitedRunError.Kind
   ) {
     self.message = message
     self.kind = kind
@@ -25,5 +25,11 @@ public struct AnthropicBetaManagedAgentsSessionRateLimitedRunError: Codable, Sen
   enum CodingKeys: String, CodingKey {
     case message
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case sessionRateLimitedError = "session_rate_limited_error"
   }
 }

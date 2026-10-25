@@ -12,17 +12,17 @@ import HyperProxyCore
 
 public struct OpenAIWebhookFineTuningJobCancelled: Codable, Sendable {
   public var createdAt: Int
-  public var data: OpenAIWebhookFineTuningJobCancelledData
+  public var data: OpenAIWebhookFineTuningJobCancelled.DataValue
   public var id: String
-  public var object: OpenAIWebhookFineTuningJobCancelledObject?
-  public var kind: OpenAIWebhookFineTuningJobCancelledKind
+  public var object: OpenAIWebhookFineTuningJobCancelled.Object?
+  public var kind: OpenAIWebhookFineTuningJobCancelled.Kind
 
   public init(
     createdAt: Int,
-    data: OpenAIWebhookFineTuningJobCancelledData,
+    data: OpenAIWebhookFineTuningJobCancelled.DataValue,
     id: String,
-    kind: OpenAIWebhookFineTuningJobCancelledKind,
-    object: OpenAIWebhookFineTuningJobCancelledObject? = nil
+    kind: OpenAIWebhookFineTuningJobCancelled.Kind,
+    object: OpenAIWebhookFineTuningJobCancelled.Object? = nil
   ) {
     self.createdAt = createdAt
     self.data = data
@@ -37,5 +37,27 @@ public struct OpenAIWebhookFineTuningJobCancelled: Codable, Sendable {
     case id
     case object
     case kind = "type"
+  }
+
+  public struct DataValue: Codable, Sendable {
+    public var id: String
+
+    public init(
+      id: String
+    ) {
+      self.id = id
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case id
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case fineTuningJobCancelled = "fine_tuning.job.cancelled"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case event = "event"
   }
 }

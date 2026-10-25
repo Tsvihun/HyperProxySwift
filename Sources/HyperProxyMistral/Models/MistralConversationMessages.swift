@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct MistralConversationMessages: Codable, Sendable {
   public var conversationId: String
   public var messages: MistralMessageEntries
-  public var object: MistralConversationMessagesObject?
+  public var object: MistralConversationMessages.Object?
 
   public init(
     conversationId: String,
     messages: MistralMessageEntries,
-    object: MistralConversationMessagesObject? = nil
+    object: MistralConversationMessages.Object? = nil
   ) {
     self.conversationId = conversationId
     self.messages = messages
@@ -29,5 +29,9 @@ public struct MistralConversationMessages: Codable, Sendable {
     case conversationId = "conversation_id"
     case messages
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case conversationMessages = "conversation.messages"
   }
 }

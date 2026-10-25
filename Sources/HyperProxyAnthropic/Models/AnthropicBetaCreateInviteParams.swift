@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct AnthropicBetaCreateInviteParams: Codable, Sendable {
   public var email: String
   public var rbacGroupIds: [String]?
-  public var role: AnthropicBetaCreateInviteParamsRole
+  public var role: AnthropicBetaCreateInviteParams.Role
 
   public init(
     email: String,
-    role: AnthropicBetaCreateInviteParamsRole,
+    role: AnthropicBetaCreateInviteParams.Role,
     rbacGroupIds: [String]? = nil
   ) {
     self.email = email
@@ -29,5 +29,13 @@ public struct AnthropicBetaCreateInviteParams: Codable, Sendable {
     case email
     case rbacGroupIds = "rbac_group_ids"
     case role
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case billing = "billing"
+    case claudeCodeUser = "claude_code_user"
+    case developer = "developer"
+    case managed = "managed"
+    case user = "user"
   }
 }

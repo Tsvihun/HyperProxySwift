@@ -40,8 +40,8 @@ public struct TogetherFinetuneResponseTruncated: Codable, Sendable {
   public var tokenCount: Int?
   public var totalPrice: Int?
   public var trainingFile: String?
-  public var trainingMethod: TogetherFinetuneResponseTruncatedTrainingMethod?
-  public var trainingType: TogetherFinetuneResponseTruncatedTrainingType?
+  public var trainingMethod: TogetherFinetuneResponseTruncated.TrainingMethod?
+  public var trainingType: TogetherFinetuneResponseTruncated.TrainingType?
   public var updatedAt: String
   public var userId: String
   public var validationFile: String?
@@ -82,8 +82,8 @@ public struct TogetherFinetuneResponseTruncated: Codable, Sendable {
     tokenCount: Int? = nil,
     totalPrice: Int? = nil,
     trainingFile: String? = nil,
-    trainingMethod: TogetherFinetuneResponseTruncatedTrainingMethod? = nil,
-    trainingType: TogetherFinetuneResponseTruncatedTrainingType? = nil,
+    trainingMethod: TogetherFinetuneResponseTruncated.TrainingMethod? = nil,
+    trainingType: TogetherFinetuneResponseTruncated.TrainingType? = nil,
     validationFile: String? = nil,
     wandbName: String? = nil,
     wandbProjectName: String? = nil,
@@ -169,5 +169,53 @@ public struct TogetherFinetuneResponseTruncated: Codable, Sendable {
     case wandbProjectName = "wandb_project_name"
     case warmupRatio = "warmup_ratio"
     case weightDecay = "weight_decay"
+  }
+
+  public enum TrainingMethod: Codable, Sendable {
+    case trainingMethodSft(TogetherTrainingMethodSFT)
+    case trainingMethodDpo(TogetherTrainingMethodDPO)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(TogetherTrainingMethodSFT.self) {
+        self = .trainingMethodSft(value)
+        return
+      }
+      self = .trainingMethodDpo(try container.decode(TogetherTrainingMethodDPO.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .trainingMethodSft(let value):
+        try container.encode(value)
+      case .trainingMethodDpo(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum TrainingType: Codable, Sendable {
+    case fullTrainingType(TogetherFullTrainingType)
+    case loRaTrainingType(TogetherLoRATrainingType)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(TogetherFullTrainingType.self) {
+        self = .fullTrainingType(value)
+        return
+      }
+      self = .loRaTrainingType(try container.decode(TogetherLoRATrainingType.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .fullTrainingType(let value):
+        try container.encode(value)
+      case .loRaTrainingType(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

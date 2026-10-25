@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsSingleLanguagesResponse: Codable, Sendable {
-  public var kind: ElevenLabsSingleKind?
+  public var kind: ElevenLabsSingleLanguagesResponse.Kind?
   public var languages: [ElevenLabsLanguageInfo]
 
   public init(
     languages: [ElevenLabsLanguageInfo],
-    kind: ElevenLabsSingleKind? = nil
+    kind: ElevenLabsSingleLanguagesResponse.Kind? = nil
   ) {
     self.kind = kind
     self.languages = languages
@@ -25,5 +25,9 @@ public struct ElevenLabsSingleLanguagesResponse: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case kind
     case languages
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case single = "single"
   }
 }

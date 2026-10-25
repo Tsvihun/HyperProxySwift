@@ -18,7 +18,7 @@ public struct EachAIWorkflowsHostPublicWorkflowVersion: Codable, Sendable {
   public var exampleOutput: String?
   public var name: String
   public var slug: String
-  public var status: EachAIWorkflowsHostPublicWorkflowVersionStatus
+  public var status: EachAIWorkflowsHostPublicWorkflowVersion.Status
   public var thumbnail: String?
   public var updatedAt: String
   public var versionId: String
@@ -29,7 +29,7 @@ public struct EachAIWorkflowsHostPublicWorkflowVersion: Codable, Sendable {
     description: String,
     name: String,
     slug: String,
-    status: EachAIWorkflowsHostPublicWorkflowVersionStatus,
+    status: EachAIWorkflowsHostPublicWorkflowVersion.Status,
     updatedAt: String,
     versionId: String,
     workflowId: String,
@@ -65,5 +65,11 @@ public struct EachAIWorkflowsHostPublicWorkflowVersion: Codable, Sendable {
     case updatedAt = "updated_at"
     case versionId = "version_id"
     case workflowId = "workflow_id"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case active = "active"
+    case archived = "archived"
+    case deleted = "deleted"
   }
 }

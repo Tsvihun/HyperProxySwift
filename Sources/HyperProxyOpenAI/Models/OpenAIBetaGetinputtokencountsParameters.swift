@@ -11,15 +11,21 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIBetaGetinputtokencountsParameters: Codable, Sendable {
-  public var openaiBeta: [OpenAIBetaGetinputtokencountsParametersOpenaiBetaItem]?
+  public var openaiBeta: [OpenAIBetaGetinputtokencountsParameters.OpenaiBetaElement]?
 
   public init(
-    openaiBeta: [OpenAIBetaGetinputtokencountsParametersOpenaiBetaItem]? = nil
+    openaiBeta: [OpenAIBetaGetinputtokencountsParameters.OpenaiBetaElement]? = nil
   ) {
     self.openaiBeta = openaiBeta
   }
 
   enum CodingKeys: String, CodingKey {
     case openaiBeta = "openai-beta"
+  }
+
+  public enum OpenaiBetaElement: String, Codable, Hashable,
+    Sendable
+  {
+    case responsesMultiAgentV1 = "responses_multi_agent=v1"
   }
 }

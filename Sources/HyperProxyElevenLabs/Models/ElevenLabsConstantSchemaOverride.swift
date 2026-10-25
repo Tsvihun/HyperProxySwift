@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsConstantSchemaOverride: Codable, Sendable {
-  public var constantValue: ElevenLabsConstantSchemaOverrideConstantValue?
-  public var source: ElevenLabsConstantSource?
+  public var constantValue: ElevenLabsConstantSchemaOverride.ConstantValue?
+  public var source: ElevenLabsConstantSchemaOverride.Source?
 
   public init(
-    constantValue: ElevenLabsConstantSchemaOverrideConstantValue?,
-    source: ElevenLabsConstantSource? = nil
+    constantValue: ElevenLabsConstantSchemaOverride.ConstantValue?,
+    source: ElevenLabsConstantSchemaOverride.Source? = nil
   ) {
     self.constantValue = constantValue
     self.source = source
@@ -25,5 +25,73 @@ public struct ElevenLabsConstantSchemaOverride: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case constantValue = "constant_value"
     case source
+  }
+
+  public enum ConstantValue: Codable, Sendable {
+    case boolean(Bool)
+    case integer(Int)
+    case number(Double)
+    case string(String)
+    case objectDictionary([String: HyperProxyJSONValue])
+    case array([HyperProxyJSONValue])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Bool.self) {
+        self = .boolean(value)
+        return
+      }
+      if let value = try? container.decode(Int.self) {
+        self = .integer(value)
+        return
+      }
+      if let value = try? container.decode(Double.self) {
+        self = .number(value)
+        return
+      }
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      if let value = try? container.decode([String: HyperProxyJSONValue].self) {
+        self = .objectDictionary(value)
+        return
+      }
+      self = .array(try container.decode([HyperProxyJSONValue].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .boolean(let value):
+        try container.encode(value)
+      case .integer(let value):
+        try container.encode(value)
+      case .number(let value):
+        try container.encode(value)
+      case .string(let value):
+        try container.encode(value)
+      case .objectDictionary(let value):
+        try container.encode(value)
+      case .array(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Source: String, Codable, Hashable, Sendable {
+    case constant = "constant"
+  }
+}
+
+extension ElevenLabsConstantSchemaOverride.ConstantValue: ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Int) {
+    self = .integer(value)
+  }
+}
+
+extension ElevenLabsConstantSchemaOverride.ConstantValue: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

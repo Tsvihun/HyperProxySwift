@@ -14,23 +14,24 @@ public struct TogetherHealthCheckServiceListPassiveHealthCheckAlertsParameters: 
   public var clusterId: String?
   public var instanceId: String?
   public var intentId: String?
-  public var orderBy: TogetherHealthCheckServiceListPassiveHealthCheckAlertsParametersOrderBy?
+  public var orderBy: TogetherHealthCheckServiceListPassiveHealthCheckAlertsParameters.OrderBy?
   public var pageSize: Int?
   public var pageToken: String?
   public var severityFilter:
-    [TogetherHealthCheckServiceListPassiveHealthCheckAlertsParametersSeverityFilterItem]?
-  public var status: TogetherHealthCheckServiceListPassiveHealthCheckAlertsParametersStatus?
+    [TogetherHealthCheckServiceListPassiveHealthCheckAlertsParameters.SeverityFilterElement]?
+  public var status: TogetherHealthCheckServiceListPassiveHealthCheckAlertsParameters.Status?
 
   public init(
     clusterId: String? = nil,
     instanceId: String? = nil,
     intentId: String? = nil,
-    orderBy: TogetherHealthCheckServiceListPassiveHealthCheckAlertsParametersOrderBy? = nil,
+    orderBy: TogetherHealthCheckServiceListPassiveHealthCheckAlertsParameters.OrderBy? = nil,
     pageSize: Int? = nil,
     pageToken: String? = nil,
     severityFilter:
-      [TogetherHealthCheckServiceListPassiveHealthCheckAlertsParametersSeverityFilterItem]? = nil,
-    status: TogetherHealthCheckServiceListPassiveHealthCheckAlertsParametersStatus? = nil
+      [TogetherHealthCheckServiceListPassiveHealthCheckAlertsParameters.SeverityFilterElement]? =
+      nil,
+    status: TogetherHealthCheckServiceListPassiveHealthCheckAlertsParameters.Status? = nil
   ) {
     self.clusterId = clusterId
     self.instanceId = instanceId
@@ -51,5 +52,28 @@ public struct TogetherHealthCheckServiceListPassiveHealthCheckAlertsParameters: 
     case pageToken = "page_token"
     case severityFilter = "severity_filter"
     case status
+  }
+
+  public enum OrderBy: String,
+    Codable, Hashable, Sendable
+  {
+    case phcAlertOrderStartedAtAsc = "PHC_ALERT_ORDER_STARTED_AT_ASC"
+    case phcAlertOrderStartedAtDesc = "PHC_ALERT_ORDER_STARTED_AT_DESC"
+  }
+
+  public enum SeverityFilterElement:
+    String, Codable, Hashable, Sendable
+  {
+    case phcSeverityInfo = "PHC_SEVERITY_INFO"
+    case phcSeverityWarning = "PHC_SEVERITY_WARNING"
+    case phcSeverityCritical = "PHC_SEVERITY_CRITICAL"
+  }
+
+  public enum Status: String, Codable,
+    Hashable, Sendable
+  {
+    case phcAlertStatusFiring = "PHC_ALERT_STATUS_FIRING"
+    case phcAlertStatusResolved = "PHC_ALERT_STATUS_RESOLVED"
+    case phcAlertStatusAll = "PHC_ALERT_STATUS_ALL"
   }
 }

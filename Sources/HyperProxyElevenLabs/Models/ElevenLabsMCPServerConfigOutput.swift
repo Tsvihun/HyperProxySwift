@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct ElevenLabsMCPServerConfigOutput: Codable, Sendable {
   public var approvalPolicy: ElevenLabsMCPApprovalPolicy?
-  public var authConnection: ElevenLabsMCPServerConfigOutputAuthConnection?
+  public var authConnection: ElevenLabsMCPServerConfigOutput.AuthConnection?
   public var description: String?
   public var disableCompression: Bool?
   public var disableInterruptions: Bool?
@@ -21,22 +21,22 @@ public struct ElevenLabsMCPServerConfigOutput: Codable, Sendable {
   public var interruptionMode: ElevenLabsToolInterruptionMode?
   public var name: String
   public var preToolSpeech: ElevenLabsPreToolSpeechMode?
-  public var requestHeaders: [String: ElevenLabsMCPServerConfigOutputRequestHeadersValue]?
-  public var requestMeta: [String: ElevenLabsMCPServerConfigOutputRequestMetaValue]?
+  public var requestHeaders: [String: ElevenLabsMCPServerConfigOutput.RequestHeadersValue]?
+  public var requestMeta: [String: ElevenLabsMCPServerConfigOutput.RequestMetaValue]?
   public var responseTimeoutSecs: Int?
-  public var secretToken: ElevenLabsMCPServerConfigOutputSecretToken?
+  public var secretToken: ElevenLabsMCPServerConfigOutput.SecretToken?
   public var toolApprovalHashes: [ElevenLabsMCPToolApprovalHash]?
   public var toolCallSound: ElevenLabsToolCallSoundType?
   public var toolCallSoundBehavior: ElevenLabsToolCallSoundBehavior?
   public var toolConfigOverrides: [ElevenLabsMCPToolConfigOverrideOutput]?
   public var transport: ElevenLabsMCPServerTransport?
-  public var url: ElevenLabsMCPServerConfigOutputUrl
+  public var url: ElevenLabsMCPServerConfigOutput.Url
 
   public init(
     name: String,
-    url: ElevenLabsMCPServerConfigOutputUrl,
+    url: ElevenLabsMCPServerConfigOutput.Url,
     approvalPolicy: ElevenLabsMCPApprovalPolicy? = nil,
-    authConnection: ElevenLabsMCPServerConfigOutputAuthConnection? = nil,
+    authConnection: ElevenLabsMCPServerConfigOutput.AuthConnection? = nil,
     description: String? = nil,
     disableCompression: Bool? = nil,
     disableInterruptions: Bool? = nil,
@@ -44,10 +44,10 @@ public struct ElevenLabsMCPServerConfigOutput: Codable, Sendable {
     forcePreToolSpeech: Bool? = nil,
     interruptionMode: ElevenLabsToolInterruptionMode? = nil,
     preToolSpeech: ElevenLabsPreToolSpeechMode? = nil,
-    requestHeaders: [String: ElevenLabsMCPServerConfigOutputRequestHeadersValue]? = nil,
-    requestMeta: [String: ElevenLabsMCPServerConfigOutputRequestMetaValue]? = nil,
+    requestHeaders: [String: ElevenLabsMCPServerConfigOutput.RequestHeadersValue]? = nil,
+    requestMeta: [String: ElevenLabsMCPServerConfigOutput.RequestMetaValue]? = nil,
     responseTimeoutSecs: Int? = nil,
-    secretToken: ElevenLabsMCPServerConfigOutputSecretToken? = nil,
+    secretToken: ElevenLabsMCPServerConfigOutput.SecretToken? = nil,
     toolApprovalHashes: [ElevenLabsMCPToolApprovalHash]? = nil,
     toolCallSound: ElevenLabsToolCallSoundType? = nil,
     toolCallSoundBehavior: ElevenLabsToolCallSoundBehavior? = nil,
@@ -97,5 +97,199 @@ public struct ElevenLabsMCPServerConfigOutput: Codable, Sendable {
     case toolConfigOverrides = "tool_config_overrides"
     case transport
     case url
+  }
+
+  public enum AuthConnection: Codable, Sendable {
+    case authConnectionLocator(ElevenLabsAuthConnectionLocator)
+    case environmentAuthConnectionLocator(ElevenLabsEnvironmentAuthConnectionLocator)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsAuthConnectionLocator.self) {
+        self = .authConnectionLocator(value)
+        return
+      }
+      self = .environmentAuthConnectionLocator(
+        try container.decode(ElevenLabsEnvironmentAuthConnectionLocator.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .authConnectionLocator(let value):
+        try container.encode(value)
+      case .environmentAuthConnectionLocator(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum RequestHeadersValue: Codable, Sendable {
+    case string(String)
+    case convAISecretLocator(ElevenLabsConvAISecretLocator)
+    case convAIDynamicVariable(ElevenLabsConvAIDynamicVariable)
+    case convAIEnvVarLocator(ElevenLabsConvAIEnvVarLocator)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsConvAISecretLocator.self) {
+        self = .convAISecretLocator(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsConvAIDynamicVariable.self) {
+        self = .convAIDynamicVariable(value)
+        return
+      }
+      self = .convAIEnvVarLocator(try container.decode(ElevenLabsConvAIEnvVarLocator.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .convAISecretLocator(let value):
+        try container.encode(value)
+      case .convAIDynamicVariable(let value):
+        try container.encode(value)
+      case .convAIEnvVarLocator(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum RequestMetaValue: Codable, Sendable {
+    case boolean(Bool)
+    case integer(Int)
+    case number(Double)
+    case string(String)
+    case convAISecretLocator(ElevenLabsConvAISecretLocator)
+    case convAIDynamicVariable(ElevenLabsConvAIDynamicVariable)
+    case convAIEnvVarLocator(ElevenLabsConvAIEnvVarLocator)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Bool.self) {
+        self = .boolean(value)
+        return
+      }
+      if let value = try? container.decode(Int.self) {
+        self = .integer(value)
+        return
+      }
+      if let value = try? container.decode(Double.self) {
+        self = .number(value)
+        return
+      }
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsConvAISecretLocator.self) {
+        self = .convAISecretLocator(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsConvAIDynamicVariable.self) {
+        self = .convAIDynamicVariable(value)
+        return
+      }
+      self = .convAIEnvVarLocator(try container.decode(ElevenLabsConvAIEnvVarLocator.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .boolean(let value):
+        try container.encode(value)
+      case .integer(let value):
+        try container.encode(value)
+      case .number(let value):
+        try container.encode(value)
+      case .string(let value):
+        try container.encode(value)
+      case .convAISecretLocator(let value):
+        try container.encode(value)
+      case .convAIDynamicVariable(let value):
+        try container.encode(value)
+      case .convAIEnvVarLocator(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum SecretToken: Codable, Sendable {
+    case convAISecretLocator(ElevenLabsConvAISecretLocator)
+    case convAIUserSecretDbModel(ElevenLabsConvAIUserSecretDBModel)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsConvAISecretLocator.self) {
+        self = .convAISecretLocator(value)
+        return
+      }
+      self = .convAIUserSecretDbModel(try container.decode(ElevenLabsConvAIUserSecretDBModel.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .convAISecretLocator(let value):
+        try container.encode(value)
+      case .convAIUserSecretDbModel(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Url: Codable, Sendable {
+    case string(String)
+    case convAISecretLocator(ElevenLabsConvAISecretLocator)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .convAISecretLocator(try container.decode(ElevenLabsConvAISecretLocator.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .convAISecretLocator(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension ElevenLabsMCPServerConfigOutput.RequestHeadersValue: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension ElevenLabsMCPServerConfigOutput.RequestMetaValue: ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Int) {
+    self = .integer(value)
+  }
+}
+
+extension ElevenLabsMCPServerConfigOutput.RequestMetaValue: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension ElevenLabsMCPServerConfigOutput.Url: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

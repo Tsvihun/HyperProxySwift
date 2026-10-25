@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenRouterSpeechInputReferenceText: Codable, Sendable {
   public var text: String
-  public var kind: OpenRouterSpeechInputReferenceTextKind
+  public var kind: OpenRouterSpeechInputReferenceText.Kind
 
   public init(
     text: String,
-    kind: OpenRouterSpeechInputReferenceTextKind
+    kind: OpenRouterSpeechInputReferenceText.Kind
   ) {
     self.text = text
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenRouterSpeechInputReferenceText: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case text
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case text = "text"
   }
 }

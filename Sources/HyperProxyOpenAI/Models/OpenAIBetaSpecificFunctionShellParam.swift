@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIBetaSpecificFunctionShellParam: Codable, Sendable {
-  public var kind: OpenAIBetaSpecificFunctionShellParamKind
+  public var kind: OpenAIBetaSpecificFunctionShellParam.Kind
 
   public init(
-    kind: OpenAIBetaSpecificFunctionShellParamKind
+    kind: OpenAIBetaSpecificFunctionShellParam.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case shell = "shell"
   }
 }

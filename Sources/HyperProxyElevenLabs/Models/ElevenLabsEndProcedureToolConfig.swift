@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsEndProcedureToolConfig: Codable, Sendable {
-  public var procedures: [String: ElevenLabsEndProcedureToolConfigProceduresValue]?
-  public var systemToolType: ElevenLabsEndProcedureSystemToolType?
+  public var procedures: [String: ElevenLabsEndProcedureToolConfig.ProceduresValue]?
+  public var systemToolType: ElevenLabsEndProcedureToolConfig.SystemToolType?
 
   public init(
-    procedures: [String: ElevenLabsEndProcedureToolConfigProceduresValue]? = nil,
-    systemToolType: ElevenLabsEndProcedureSystemToolType? = nil
+    procedures: [String: ElevenLabsEndProcedureToolConfig.ProceduresValue]? = nil,
+    systemToolType: ElevenLabsEndProcedureToolConfig.SystemToolType? = nil
   ) {
     self.procedures = procedures
     self.systemToolType = systemToolType
@@ -25,5 +25,33 @@ public struct ElevenLabsEndProcedureToolConfig: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case procedures
     case systemToolType = "system_tool_type"
+  }
+
+  public enum SystemToolType: String, Codable, Hashable, Sendable {
+    case endProcedure = "end_procedure"
+  }
+
+  public enum ProceduresValue: Codable, Sendable {
+    case procedureVersionRef(ElevenLabsProcedureVersionRef)
+    case procedureDraftRef(ElevenLabsProcedureDraftRef)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsProcedureVersionRef.self) {
+        self = .procedureVersionRef(value)
+        return
+      }
+      self = .procedureDraftRef(try container.decode(ElevenLabsProcedureDraftRef.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .procedureVersionRef(let value):
+        try container.encode(value)
+      case .procedureDraftRef(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

@@ -45,7 +45,7 @@ extension HyperProxyProviderService where Operation == ReplicateOperation {
   public var deploymentsUpdate: HyperProxyProviderCall<ReplicateOperation> {
     self.call(.deploymentsUpdate)
   }
-  /// `POST v1/deployments/{deployment_owner}/{deployment_name}/predictions`
+  /// `POST v1/deployments/{owner}/{deployment}/predictions`
   public var deploymentsPredictionsCreate: HyperProxyProviderCall<ReplicateOperation> {
     self.call(.deploymentsPredictionsCreate)
   }
@@ -85,10 +85,6 @@ extension HyperProxyProviderService where Operation == ReplicateOperation {
   public var modelsDelete: HyperProxyProviderCall<ReplicateOperation> {
     self.call(.modelsDelete)
   }
-  /// `GET v1/models/{model_owner}/{model_name}`
-  public var modelsGet: HyperProxyProviderCall<ReplicateOperation> {
-    self.call(.modelsGet)
-  }
   /// `PATCH v1/models/{model_owner}/{model_name}`
   public var modelsUpdate: HyperProxyProviderCall<ReplicateOperation> {
     self.call(.modelsUpdate)
@@ -97,17 +93,9 @@ extension HyperProxyProviderService where Operation == ReplicateOperation {
   public var modelsExamplesList: HyperProxyProviderCall<ReplicateOperation> {
     self.call(.modelsExamplesList)
   }
-  /// `POST v1/models/{model_owner}/{model_name}/predictions`
-  public var modelsPredictionsCreate: HyperProxyProviderCall<ReplicateOperation> {
-    self.call(.modelsPredictionsCreate)
-  }
   /// `GET v1/models/{model_owner}/{model_name}/readme`
   public var modelsReadmeGet: HyperProxyProviderCall<ReplicateOperation> {
     self.call(.modelsReadmeGet)
-  }
-  /// `GET v1/models/{model_owner}/{model_name}/versions`
-  public var modelsVersionsList: HyperProxyProviderCall<ReplicateOperation> {
-    self.call(.modelsVersionsList)
   }
   /// `DELETE v1/models/{model_owner}/{model_name}/versions/{version_id}`
   public var modelsVersionsDelete: HyperProxyProviderCall<ReplicateOperation> {
@@ -117,17 +105,21 @@ extension HyperProxyProviderService where Operation == ReplicateOperation {
   public var modelsVersionsGet: HyperProxyProviderCall<ReplicateOperation> {
     self.call(.modelsVersionsGet)
   }
-  /// `POST v1/models/{model_owner}/{model_name}/versions/{version_id}/trainings`
-  public var trainingsCreate: HyperProxyProviderCall<ReplicateOperation> {
-    self.call(.trainingsCreate)
-  }
   /// `GET v1/models/{owner}/{model}`
   public var modelsRetrieve: HyperProxyProviderCall<ReplicateOperation> {
     self.call(.modelsRetrieve)
   }
+  /// `POST v1/models/{owner}/{model}/predictions`
+  public var modelsPredictionsCreate: HyperProxyProviderCall<ReplicateOperation> {
+    self.call(.modelsPredictionsCreate)
+  }
   /// `GET v1/models/{owner}/{model}/versions`
   public var modelsVersions: HyperProxyProviderCall<ReplicateOperation> {
     self.call(.modelsVersions)
+  }
+  /// `POST v1/models/{owner}/{model}/versions/{version_id}/trainings`
+  public var trainingsCreate: HyperProxyProviderCall<ReplicateOperation> {
+    self.call(.trainingsCreate)
   }
   /// `GET v1/predictions`
   public var predictionsList: HyperProxyProviderCall<ReplicateOperation> {

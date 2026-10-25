@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenRouterStopServerToolsWhenFinishReasonIs: Codable, Sendable {
   public var reason: String
-  public var kind: OpenRouterStopServerToolsWhenFinishReasonIsKind
+  public var kind: OpenRouterStopServerToolsWhenFinishReasonIs.Kind
 
   public init(
     reason: String,
-    kind: OpenRouterStopServerToolsWhenFinishReasonIsKind
+    kind: OpenRouterStopServerToolsWhenFinishReasonIs.Kind
   ) {
     self.reason = reason
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenRouterStopServerToolsWhenFinishReasonIs: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case reason
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case finishReasonIs = "finish_reason_is"
   }
 }

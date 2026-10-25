@@ -12,14 +12,14 @@ import HyperProxyCore
 
 public struct MistralOAuth2AuthorizationCodeAuthMethod: Codable, Sendable {
   public var authData: MistralAuthData
-  public var grantType: MistralAuthorizationCodeGrantType?
+  public var grantType: MistralOAuth2AuthorizationCodeAuthMethod.GrantType?
   public var headers: [MistralConnectorAuthenticationHeader]?
   public var methodType: MistralOauth2MethodType?
   public var oauth2ServerMetadata: MistralExtendedOAuthServerMetadata?
 
   public init(
     authData: MistralAuthData,
-    grantType: MistralAuthorizationCodeGrantType? = nil,
+    grantType: MistralOAuth2AuthorizationCodeAuthMethod.GrantType? = nil,
     headers: [MistralConnectorAuthenticationHeader]? = nil,
     methodType: MistralOauth2MethodType? = nil,
     oauth2ServerMetadata: MistralExtendedOAuthServerMetadata? = nil
@@ -37,5 +37,9 @@ public struct MistralOAuth2AuthorizationCodeAuthMethod: Codable, Sendable {
     case headers
     case methodType = "method_type"
     case oauth2ServerMetadata = "oauth2_server_metadata"
+  }
+
+  public enum GrantType: String, Codable, Hashable, Sendable {
+    case authorizationCode = "authorization_code"
   }
 }

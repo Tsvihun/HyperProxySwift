@@ -12,8 +12,8 @@ import HyperProxyCore
 
 public struct ElevenLabsElevenV3Request: Codable, Sendable {
   public var languageCode: String?
-  public var modelId: ElevenLabsElevenV3ModelId
-  public var outputFormat: ElevenLabsElevenV3RequestOutputFormat?
+  public var modelId: ElevenLabsElevenV3Request.ModelId
+  public var outputFormat: ElevenLabsElevenV3Request.OutputFormat?
   public var pronunciationDictionaryLocators: [ElevenLabsPronunciationDictionaryVersionLocator]?
   public var text: String
   public var voice: String
@@ -23,9 +23,9 @@ public struct ElevenLabsElevenV3Request: Codable, Sendable {
   public init(
     text: String,
     voice: String,
-    modelId: ElevenLabsElevenV3ModelId = .elevenV3,
+    modelId: ElevenLabsElevenV3Request.ModelId = .elevenV3,
     languageCode: String? = nil,
-    outputFormat: ElevenLabsElevenV3RequestOutputFormat? = nil,
+    outputFormat: ElevenLabsElevenV3Request.OutputFormat? = nil,
     pronunciationDictionaryLocators: [ElevenLabsPronunciationDictionaryVersionLocator]? = nil,
     voiceSettings: ElevenLabsElevenV3VoiceSettings? = nil,
     webhook: ElevenLabsWebhookTarget? = nil
@@ -49,5 +49,19 @@ public struct ElevenLabsElevenV3Request: Codable, Sendable {
     case voice
     case voiceSettings = "voice_settings"
     case webhook
+  }
+
+  public enum ModelId: String, Codable, Hashable, Sendable {
+    case elevenV3 = "eleven_v3"
+  }
+
+  public enum OutputFormat: String, Codable, Hashable, Sendable {
+    case mp3_22050_32 = "mp3_22050_32"
+    case mp3_24000_48 = "mp3_24000_48"
+    case mp3_44100_32 = "mp3_44100_32"
+    case mp3_44100_64 = "mp3_44100_64"
+    case mp3_44100_96 = "mp3_44100_96"
+    case mp3_44100_128 = "mp3_44100_128"
+    case mp3_44100_192 = "mp3_44100_192"
   }
 }

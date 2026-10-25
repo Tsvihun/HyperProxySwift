@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIAssignedRoleDetails: Codable, Sendable {
-  public var assignmentSources: [OpenAIAssignedRoleDetailsAssignmentSourcesAnyOf1Item]?
+  public var assignmentSources: [OpenAIAssignedRoleDetailsAssignmentSourcesItem]?
   public var createdAt: Int?
   public var createdBy: String?
   public var createdByUserObj: [String: HyperProxyJSONValue]?
@@ -25,7 +25,7 @@ public struct OpenAIAssignedRoleDetails: Codable, Sendable {
   public var updatedAt: Int?
 
   public init(
-    assignmentSources: [OpenAIAssignedRoleDetailsAssignmentSourcesAnyOf1Item]?,
+    assignmentSources: [OpenAIAssignedRoleDetailsAssignmentSourcesItem]?,
     createdAt: Int?,
     createdBy: String?,
     createdByUserObj: [String: HyperProxyJSONValue]?,

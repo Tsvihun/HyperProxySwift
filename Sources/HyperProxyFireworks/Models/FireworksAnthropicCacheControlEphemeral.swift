@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct FireworksAnthropicCacheControlEphemeral: Codable, Sendable {
-  public var ttl: FireworksAnthropicCacheControlEphemeralTtl?
-  public var kind: FireworksEphemeralKind
+  public var ttl: FireworksAnthropicCacheControlEphemeral.Ttl?
+  public var kind: FireworksAnthropicCacheControlEphemeral.Kind
 
   public init(
-    kind: FireworksEphemeralKind = .ephemeral,
-    ttl: FireworksAnthropicCacheControlEphemeralTtl? = nil
+    kind: FireworksAnthropicCacheControlEphemeral.Kind = .ephemeral,
+    ttl: FireworksAnthropicCacheControlEphemeral.Ttl? = nil
   ) {
     self.ttl = ttl
     self.kind = kind
@@ -25,5 +25,14 @@ public struct FireworksAnthropicCacheControlEphemeral: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case ttl
     case kind = "type"
+  }
+
+  public enum Ttl: String, Codable, Hashable, Sendable {
+    case value5m = "5m"
+    case value1h = "1h"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case ephemeral = "ephemeral"
   }
 }

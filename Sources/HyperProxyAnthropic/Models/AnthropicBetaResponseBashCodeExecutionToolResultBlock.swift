@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaResponseBashCodeExecutionToolResultBlock: Codable, Sendable {
-  public var content: AnthropicBetaResponseBashCodeExecutionToolResultBlockContent
+  public var content: AnthropicBetaResponseBashCodeExecutionToolResultBlock.Content
   public var toolUseId: String
   public var kind: AnthropicBashCodeExecutionToolResultKind
 
   public init(
-    content: AnthropicBetaResponseBashCodeExecutionToolResultBlockContent,
+    content: AnthropicBetaResponseBashCodeExecutionToolResultBlock.Content,
     toolUseId: String,
     kind: AnthropicBashCodeExecutionToolResultKind = .bashCodeExecutionToolResult
   ) {
@@ -29,5 +29,33 @@ public struct AnthropicBetaResponseBashCodeExecutionToolResultBlock: Codable, Se
     case content
     case toolUseId = "tool_use_id"
     case kind = "type"
+  }
+
+  public enum Content: Codable, Sendable {
+    case betaResponseBashCodeExecutionToolResultError(
+      AnthropicBetaResponseBashCodeExecutionToolResultError)
+    case betaResponseBashCodeExecutionResultBlock(AnthropicBetaResponseBashCodeExecutionResultBlock)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(
+        AnthropicBetaResponseBashCodeExecutionToolResultError.self)
+      {
+        self = .betaResponseBashCodeExecutionToolResultError(value)
+        return
+      }
+      self = .betaResponseBashCodeExecutionResultBlock(
+        try container.decode(AnthropicBetaResponseBashCodeExecutionResultBlock.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .betaResponseBashCodeExecutionToolResultError(let value):
+        try container.encode(value)
+      case .betaResponseBashCodeExecutionResultBlock(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

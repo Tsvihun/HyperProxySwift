@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterLegacyChatContentVideo: Codable, Sendable {
-  public var kind: OpenRouterLegacyChatContentVideoKind
+  public var kind: OpenRouterLegacyChatContentVideo.Kind
   public var videoUrl: OpenRouterLegacyChatContentVideoInput
 
   public init(
-    kind: OpenRouterLegacyChatContentVideoKind,
+    kind: OpenRouterLegacyChatContentVideo.Kind,
     videoUrl: OpenRouterLegacyChatContentVideoInput
   ) {
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenRouterLegacyChatContentVideo: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case kind = "type"
     case videoUrl = "video_url"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case inputVideo = "input_video"
   }
 }

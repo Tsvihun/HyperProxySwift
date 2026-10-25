@@ -23,13 +23,13 @@ public struct OpenRouterCreateObservabilityDestinationRequest: Codable, Sendable
   public var privacyMode: Bool?
   public var regions: [OpenRouterObservabilityDataRegionInput]?
   public var samplingRate: Double?
-  public var kind: OpenRouterCreateObservabilityDestinationRequestKind
+  public var kind: OpenRouterCreateObservabilityDestinationRequest.Kind
   public var workspaceId: String?
 
   public init(
     config: [String: HyperProxyJSONValue],
     name: String,
-    kind: OpenRouterCreateObservabilityDestinationRequestKind,
+    kind: OpenRouterCreateObservabilityDestinationRequest.Kind,
     apiKeyHashes: [String]? = nil,
     broadcastGenerationCost: Bool? = nil,
     broadcastGenerationCostAllocation: Bool? = nil,
@@ -73,5 +73,25 @@ public struct OpenRouterCreateObservabilityDestinationRequest: Codable, Sendable
     case samplingRate = "sampling_rate"
     case kind = "type"
     case workspaceId = "workspace_id"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case arize = "arize"
+    case braintrust = "braintrust"
+    case clickhouse = "clickhouse"
+    case datadog = "datadog"
+    case grafana = "grafana"
+    case langfuse = "langfuse"
+    case langsmith = "langsmith"
+    case newrelic = "newrelic"
+    case opik = "opik"
+    case otelCollector = "otel-collector"
+    case posthog = "posthog"
+    case ramp = "ramp"
+    case s3 = "s3"
+    case sentry = "sentry"
+    case snowflake = "snowflake"
+    case weave = "weave"
+    case webhook = "webhook"
   }
 }

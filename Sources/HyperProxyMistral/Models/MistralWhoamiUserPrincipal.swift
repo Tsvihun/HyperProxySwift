@@ -15,14 +15,14 @@ public struct MistralWhoamiUserPrincipal: Codable, Sendable {
   public var firstName: String?
   public var id: String
   public var lastName: String?
-  public var principalType: MistralUserPrincipalType?
+  public var principalType: MistralWhoamiUserPrincipal.PrincipalType?
 
   public init(
     id: String,
     email: String? = nil,
     firstName: String? = nil,
     lastName: String? = nil,
-    principalType: MistralUserPrincipalType? = nil
+    principalType: MistralWhoamiUserPrincipal.PrincipalType? = nil
   ) {
     self.email = email
     self.firstName = firstName
@@ -37,5 +37,9 @@ public struct MistralWhoamiUserPrincipal: Codable, Sendable {
     case id
     case lastName = "last_name"
     case principalType = "principal_type"
+  }
+
+  public enum PrincipalType: String, Codable, Hashable, Sendable {
+    case user = "user"
   }
 }

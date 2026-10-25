@@ -15,11 +15,11 @@ public struct TogetherDEDeploymentStatus: Codable, Sendable {
   public var message: String
   public var readyReplicas: Int?
   public var scheduledReplicas: Int?
-  public var state: TogetherDEDeploymentStatusState
+  public var state: TogetherDEDeploymentStatus.State
 
   public init(
     message: String,
-    state: TogetherDEDeploymentStatusState,
+    state: TogetherDEDeploymentStatus.State,
     details: TogetherDEStatusDetails? = nil,
     readyReplicas: Int? = nil,
     scheduledReplicas: Int? = nil
@@ -37,5 +37,15 @@ public struct TogetherDEDeploymentStatus: Codable, Sendable {
     case readyReplicas
     case scheduledReplicas
     case state
+  }
+
+  public enum State: String, Codable, Hashable, Sendable {
+    case deploymentStateProvisioning = "DEPLOYMENT_STATE_PROVISIONING"
+    case deploymentStateReady = "DEPLOYMENT_STATE_READY"
+    case deploymentStateScaling = "DEPLOYMENT_STATE_SCALING"
+    case deploymentStateDegraded = "DEPLOYMENT_STATE_DEGRADED"
+    case deploymentStateFailed = "DEPLOYMENT_STATE_FAILED"
+    case deploymentStateStopped = "DEPLOYMENT_STATE_STOPPED"
+    case deploymentStateStopping = "DEPLOYMENT_STATE_STOPPING"
   }
 }

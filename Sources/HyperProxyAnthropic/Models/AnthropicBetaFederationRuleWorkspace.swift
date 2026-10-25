@@ -14,7 +14,7 @@ public struct AnthropicBetaFederationRuleWorkspace: Codable, Sendable {
   public var createdAt: String
   public var createdByActorId: String?
   public var federationRuleId: String
-  public var kind: AnthropicFederationRuleWorkspaceKind
+  public var kind: AnthropicBetaFederationRuleWorkspace.Kind
   public var workspaceId: String
   public var workspaceName: String?
 
@@ -24,7 +24,7 @@ public struct AnthropicBetaFederationRuleWorkspace: Codable, Sendable {
     federationRuleId: String,
     workspaceId: String,
     workspaceName: String?,
-    kind: AnthropicFederationRuleWorkspaceKind = .federationRuleWorkspace
+    kind: AnthropicBetaFederationRuleWorkspace.Kind = .federationRuleWorkspace
   ) {
     self.createdAt = createdAt
     self.createdByActorId = createdByActorId
@@ -41,5 +41,9 @@ public struct AnthropicBetaFederationRuleWorkspace: Codable, Sendable {
     case kind = "type"
     case workspaceId = "workspace_id"
     case workspaceName = "workspace_name"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case federationRuleWorkspace = "federation_rule_workspace"
   }
 }

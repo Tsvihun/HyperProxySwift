@@ -18,6 +18,7 @@ public struct ElevenLabsConversationInitiationClientDataInternal: Codable, Senda
   public var environment: String?
   public var procedureIds: [String]?
   public var sourceInfo: ElevenLabsConversationInitiationSourceInfo?
+  public var startProcedureIds: [String]?
   public var startingWorkflowNodeId: String?
   public var toolMockConfig: ElevenLabsOrchestratorToolMockBehaviorConfig?
   public var toolMockOverrides: [String: [ElevenLabsToolResponseMockConfigOutput]]?
@@ -31,6 +32,7 @@ public struct ElevenLabsConversationInitiationClientDataInternal: Codable, Senda
     environment: String? = nil,
     procedureIds: [String]? = nil,
     sourceInfo: ElevenLabsConversationInitiationSourceInfo? = nil,
+    startProcedureIds: [String]? = nil,
     startingWorkflowNodeId: String? = nil,
     toolMockConfig: ElevenLabsOrchestratorToolMockBehaviorConfig? = nil,
     toolMockOverrides: [String: [ElevenLabsToolResponseMockConfigOutput]]? = nil,
@@ -43,6 +45,7 @@ public struct ElevenLabsConversationInitiationClientDataInternal: Codable, Senda
     self.environment = environment
     self.procedureIds = procedureIds
     self.sourceInfo = sourceInfo
+    self.startProcedureIds = startProcedureIds
     self.startingWorkflowNodeId = startingWorkflowNodeId
     self.toolMockConfig = toolMockConfig
     self.toolMockOverrides = toolMockOverrides
@@ -57,6 +60,7 @@ public struct ElevenLabsConversationInitiationClientDataInternal: Codable, Senda
     case environment
     case procedureIds = "procedure_ids"
     case sourceInfo = "source_info"
+    case startProcedureIds = "start_procedure_ids"
     case startingWorkflowNodeId = "starting_workflow_node_id"
     case toolMockConfig = "tool_mock_config"
     case toolMockOverrides = "tool_mock_overrides"

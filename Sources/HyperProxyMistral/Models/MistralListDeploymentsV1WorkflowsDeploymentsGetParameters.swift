@@ -17,8 +17,8 @@ public struct MistralListDeploymentsV1WorkflowsDeploymentsGetParameters: Codable
   public var isHardened: Bool?
   public var limit: Int?
   public var locationTypes: [MistralLocationType]?
-  public var order: MistralListDeploymentsV1WorkflowsDeploymentsGetParametersOrder?
-  public var orderBy: MistralListDeploymentsV1WorkflowsDeploymentsGetParametersOrderBy?
+  public var order: MistralListDeploymentsV1WorkflowsDeploymentsGetParameters.Order?
+  public var orderBy: MistralListDeploymentsV1WorkflowsDeploymentsGetParameters.OrderBy?
   public var owner: String?
   public var search: String?
   public var workflowName: String?
@@ -31,8 +31,8 @@ public struct MistralListDeploymentsV1WorkflowsDeploymentsGetParameters: Codable
     isHardened: Bool? = nil,
     limit: Int? = nil,
     locationTypes: [MistralLocationType]? = nil,
-    order: MistralListDeploymentsV1WorkflowsDeploymentsGetParametersOrder? = nil,
-    orderBy: MistralListDeploymentsV1WorkflowsDeploymentsGetParametersOrderBy? = nil,
+    order: MistralListDeploymentsV1WorkflowsDeploymentsGetParameters.Order? = nil,
+    orderBy: MistralListDeploymentsV1WorkflowsDeploymentsGetParameters.OrderBy? = nil,
     owner: String? = nil,
     search: String? = nil,
     workflowName: String? = nil,
@@ -65,5 +65,19 @@ public struct MistralListDeploymentsV1WorkflowsDeploymentsGetParameters: Codable
     case search
     case workflowName = "workflow_name"
     case workspaceId = "workspace_id"
+  }
+
+  public enum Order: String, Codable,
+    Hashable, Sendable
+  {
+    case asc = "asc"
+    case desc = "desc"
+  }
+
+  public enum OrderBy: String, Codable,
+    Hashable, Sendable
+  {
+    case updatedAt = "updated_at"
+    case createdAt = "created_at"
   }
 }

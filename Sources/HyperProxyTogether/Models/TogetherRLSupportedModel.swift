@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct TogetherRLSupportedModel: Codable, Sendable {
   public var baseModel: String
   public var computeConfigs: [TogetherRLSupportedModelComputeConfig]?
-  public var defaultGpuType: TogetherRLSupportedModelDefaultGpuType
+  public var defaultGpuType: TogetherRLSupportedModel.DefaultGpuType
 
   public init(
     baseModel: String,
-    defaultGpuType: TogetherRLSupportedModelDefaultGpuType,
+    defaultGpuType: TogetherRLSupportedModel.DefaultGpuType,
     computeConfigs: [TogetherRLSupportedModelComputeConfig]? = nil
   ) {
     self.baseModel = baseModel
@@ -29,5 +29,9 @@ public struct TogetherRLSupportedModel: Codable, Sendable {
     case baseModel = "base_model"
     case computeConfigs = "compute_configs"
     case defaultGpuType = "default_gpu_type"
+  }
+
+  public enum DefaultGpuType: String, Codable, Hashable, Sendable {
+    case b200Sxm = "B200-SXM"
   }
 }

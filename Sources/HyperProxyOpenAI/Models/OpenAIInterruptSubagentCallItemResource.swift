@@ -16,7 +16,7 @@ public struct OpenAIInterruptSubagentCallItemResource: Codable, Sendable {
   public var senderAgentId: String
   public var status: OpenAIFunctionCallStatusResource
   public var turnId: String
-  public var kind: OpenAIInterruptSubagentCallItemResourceKind
+  public var kind: OpenAIInterruptSubagentCallItemResource.Kind
 
   public init(
     id: String,
@@ -24,7 +24,7 @@ public struct OpenAIInterruptSubagentCallItemResource: Codable, Sendable {
     senderAgentId: String,
     status: OpenAIFunctionCallStatusResource,
     turnId: String,
-    kind: OpenAIInterruptSubagentCallItemResourceKind
+    kind: OpenAIInterruptSubagentCallItemResource.Kind
   ) {
     self.id = id
     self.recipientAgentId = recipientAgentId
@@ -41,5 +41,9 @@ public struct OpenAIInterruptSubagentCallItemResource: Codable, Sendable {
     case status
     case turnId = "turn_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case interruptSubagentCall = "interrupt_subagent_call"
   }
 }

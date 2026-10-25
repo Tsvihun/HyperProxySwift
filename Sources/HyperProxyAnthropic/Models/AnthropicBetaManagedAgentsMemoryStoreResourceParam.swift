@@ -14,11 +14,11 @@ public struct AnthropicBetaManagedAgentsMemoryStoreResourceParam: Codable, Senda
   public var access: AnthropicBetaManagedAgentsMountMode?
   public var instructions: String?
   public var memoryStoreId: String
-  public var kind: AnthropicBetaManagedAgentsMemoryStoreResourceParamKind
+  public var kind: AnthropicBetaManagedAgentsMemoryStoreResourceParam.Kind
 
   public init(
     memoryStoreId: String,
-    kind: AnthropicBetaManagedAgentsMemoryStoreResourceParamKind,
+    kind: AnthropicBetaManagedAgentsMemoryStoreResourceParam.Kind,
     access: AnthropicBetaManagedAgentsMountMode? = nil,
     instructions: String? = nil
   ) {
@@ -33,5 +33,11 @@ public struct AnthropicBetaManagedAgentsMemoryStoreResourceParam: Codable, Senda
     case instructions
     case memoryStoreId = "memory_store_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case memoryStore = "memory_store"
   }
 }

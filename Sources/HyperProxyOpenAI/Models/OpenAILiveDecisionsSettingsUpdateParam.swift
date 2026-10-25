@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAILiveDecisionsSettingsUpdateParam: Codable, Sendable {
   public var model: String?
-  public var questions: [OpenAIQuestionParam]?
+  public var questions: [OpenAILiveDecisionQuestion]?
 
   public init(
     model: String? = nil,
-    questions: [OpenAIQuestionParam]? = nil
+    questions: [OpenAILiveDecisionQuestion]? = nil
   ) {
     self.model = model
     self.questions = questions

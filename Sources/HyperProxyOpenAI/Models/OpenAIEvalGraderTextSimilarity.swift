@@ -42,4 +42,18 @@ public struct OpenAIEvalGraderTextSimilarity: Codable, Sendable {
     case reference
     case kind = "type"
   }
+
+  public struct WithPassThreshold: Codable, Sendable {
+    public var passThreshold: Double
+
+    public init(
+      passThreshold: Double
+    ) {
+      self.passThreshold = passThreshold
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case passThreshold = "pass_threshold"
+    }
+  }
 }

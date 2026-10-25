@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIRunToolCallObject: Codable, Sendable {
-  public var function: OpenAIRunToolCallObjectFunction
+  public var function: OpenAIRunToolCallObject.Function
   public var id: String
-  public var kind: OpenAIRunToolCallObjectKind
+  public var kind: OpenAIRunToolCallObject.Kind
 
   public init(
-    function: OpenAIRunToolCallObjectFunction,
+    function: OpenAIRunToolCallObject.Function,
     id: String,
-    kind: OpenAIRunToolCallObjectKind
+    kind: OpenAIRunToolCallObject.Kind
   ) {
     self.function = function
     self.id = id
@@ -29,5 +29,27 @@ public struct OpenAIRunToolCallObject: Codable, Sendable {
     case function
     case id
     case kind = "type"
+  }
+
+  public struct Function: Codable, Sendable {
+    public var arguments: String
+    public var name: String
+
+    public init(
+      arguments: String,
+      name: String
+    ) {
+      self.arguments = arguments
+      self.name = name
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case arguments
+      case name
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case function = "function"
   }
 }

@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct MistralThinkChunk: Codable, Sendable {
   public var closed: Bool?
   public var signature: String?
-  public var thinking: [MistralThinkChunkThinkingItem]
-  public var kind: MistralThinkingKind?
+  public var thinking: [MistralThinkChunk.ThinkingElement]
+  public var kind: MistralThinkChunk.Kind?
 
   public init(
-    thinking: [MistralThinkChunkThinkingItem],
+    thinking: [MistralThinkChunk.ThinkingElement],
     closed: Bool? = nil,
     signature: String? = nil,
-    kind: MistralThinkingKind? = nil
+    kind: MistralThinkChunk.Kind? = nil
   ) {
     self.closed = closed
     self.signature = signature
@@ -33,5 +33,40 @@ public struct MistralThinkChunk: Codable, Sendable {
     case signature
     case thinking
     case kind = "type"
+  }
+
+  public enum ThinkingElement: Codable, Sendable {
+    case textChunk(MistralTextChunk)
+    case toolReferenceChunk(MistralToolReferenceChunk)
+    case referenceChunk(MistralReferenceChunk)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(MistralTextChunk.self) {
+        self = .textChunk(value)
+        return
+      }
+      if let value = try? container.decode(MistralToolReferenceChunk.self) {
+        self = .toolReferenceChunk(value)
+        return
+      }
+      self = .referenceChunk(try container.decode(MistralReferenceChunk.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .textChunk(let value):
+        try container.encode(value)
+      case .toolReferenceChunk(let value):
+        try container.encode(value)
+      case .referenceChunk(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case thinking = "thinking"
   }
 }

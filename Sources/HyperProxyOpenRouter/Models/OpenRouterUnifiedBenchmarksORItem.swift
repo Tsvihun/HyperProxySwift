@@ -14,22 +14,22 @@ public struct OpenRouterUnifiedBenchmarksORItem: Codable, Sendable {
   public var accuracy: Double
   public var accuracyStddev: Double
   public var avgCostPerTask: Double
-  public var benchmarkType: OpenRouterUnifiedBenchmarksORItemBenchmarkType
+  public var benchmarkType: OpenRouterUnifiedBenchmarksORItem.BenchmarkType
   public var displayName: String
   public var lastRunTimestamp: String
   public var modelPermaslug: String
-  public var source: OpenRouterUnifiedBenchmarksORItemSource
+  public var source: OpenRouterUnifiedBenchmarksORItem.Source
   public var totalTasks: Int
 
   public init(
     accuracy: Double,
     accuracyStddev: Double,
     avgCostPerTask: Double,
-    benchmarkType: OpenRouterUnifiedBenchmarksORItemBenchmarkType,
+    benchmarkType: OpenRouterUnifiedBenchmarksORItem.BenchmarkType,
     displayName: String,
     lastRunTimestamp: String,
     modelPermaslug: String,
-    source: OpenRouterUnifiedBenchmarksORItemSource,
+    source: OpenRouterUnifiedBenchmarksORItem.Source,
     totalTasks: Int
   ) {
     self.accuracy = accuracy
@@ -53,5 +53,14 @@ public struct OpenRouterUnifiedBenchmarksORItem: Codable, Sendable {
     case modelPermaslug = "model_permaslug"
     case source
     case totalTasks = "total_tasks"
+  }
+
+  public enum BenchmarkType: String, Codable, Hashable, Sendable {
+    case gpqaDiamond = "gpqa_diamond"
+    case tauBenchVerifiedAirline = "tau_bench_verified_airline"
+  }
+
+  public enum Source: String, Codable, Hashable, Sendable {
+    case openrouter = "openrouter"
   }
 }

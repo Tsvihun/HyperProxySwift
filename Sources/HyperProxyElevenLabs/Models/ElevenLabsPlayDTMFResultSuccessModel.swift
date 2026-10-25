@@ -13,13 +13,13 @@ import HyperProxyCore
 public struct ElevenLabsPlayDTMFResultSuccessModel: Codable, Sendable {
   public var dtmfTones: String
   public var reason: String?
-  public var resultType: ElevenLabsPlayDtmfSuccessResultType?
+  public var resultType: ElevenLabsPlayDTMFResultSuccessModel.ResultType?
   public var status: ElevenLabsSuccessStatus?
 
   public init(
     dtmfTones: String,
     reason: String? = nil,
-    resultType: ElevenLabsPlayDtmfSuccessResultType? = nil,
+    resultType: ElevenLabsPlayDTMFResultSuccessModel.ResultType? = nil,
     status: ElevenLabsSuccessStatus? = nil
   ) {
     self.dtmfTones = dtmfTones
@@ -33,5 +33,9 @@ public struct ElevenLabsPlayDTMFResultSuccessModel: Codable, Sendable {
     case reason
     case resultType = "result_type"
     case status
+  }
+
+  public enum ResultType: String, Codable, Hashable, Sendable {
+    case playDtmfSuccess = "play_dtmf_success"
   }
 }

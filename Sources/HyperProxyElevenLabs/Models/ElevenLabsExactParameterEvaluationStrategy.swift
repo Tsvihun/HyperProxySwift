@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsExactParameterEvaluationStrategy: Codable, Sendable {
   public var expectedValue: String
-  public var kind: ElevenLabsExactKind
+  public var kind: ElevenLabsExactParameterEvaluationStrategy.Kind
 
   public init(
     expectedValue: String,
-    kind: ElevenLabsExactKind = .exact
+    kind: ElevenLabsExactParameterEvaluationStrategy.Kind = .exact
   ) {
     self.expectedValue = expectedValue
     self.kind = kind
@@ -25,5 +25,9 @@ public struct ElevenLabsExactParameterEvaluationStrategy: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case expectedValue = "expected_value"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case exact = "exact"
   }
 }

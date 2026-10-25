@@ -16,10 +16,10 @@ public struct AnthropicBetaToolSearchToolRegex20251119: Codable, Sendable {
   public var deferLoading: Bool?
   public var name: AnthropicToolSearchToolRegexName
   public var strict: Bool?
-  public var kind: AnthropicBetaToolSearchToolRegex20251119Kind
+  public var kind: AnthropicBetaToolSearchToolRegex20251119.Kind
 
   public init(
-    kind: AnthropicBetaToolSearchToolRegex20251119Kind,
+    kind: AnthropicBetaToolSearchToolRegex20251119.Kind,
     name: AnthropicToolSearchToolRegexName = .toolSearchToolRegex,
     allowedCallers: [AnthropicBetaAllowedCaller]? = nil,
     cacheControl: AnthropicBetaCacheControlEphemeral? = nil,
@@ -41,5 +41,10 @@ public struct AnthropicBetaToolSearchToolRegex20251119: Codable, Sendable {
     case name
     case strict
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case toolSearchToolRegex20251119 = "tool_search_tool_regex_20251119"
+    case toolSearchToolRegex = "tool_search_tool_regex"
   }
 }

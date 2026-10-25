@@ -14,11 +14,11 @@ public struct DeepSeekAnthropicImageSource: Codable, Sendable {
   public var data: String?
   public var fileId: String?
   public var mediaType: String?
-  public var kind: DeepSeekAnthropicImageSourceKind
+  public var kind: DeepSeekAnthropicImageSource.Kind
   public var url: String?
 
   public init(
-    kind: DeepSeekAnthropicImageSourceKind,
+    kind: DeepSeekAnthropicImageSource.Kind,
     data: String? = nil,
     fileId: String? = nil,
     mediaType: String? = nil,
@@ -37,5 +37,11 @@ public struct DeepSeekAnthropicImageSource: Codable, Sendable {
     case mediaType = "media_type"
     case kind = "type"
     case url
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case base64 = "base64"
+    case url = "url"
+    case file = "file"
   }
 }

@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct MistralConnectorListUserCredentialsV1Parameters: Codable, Sendable {
   public var authType: MistralAuthenticationType?
-  public var connectorIdOrName: MistralConnectorListUserCredentialsV1ParametersConnectorIdOrName
+  public var connectorIdOrName: MistralConnectorListUserCredentialsV1Parameters.ConnectorIdOrName
   public var fetchDefault: Bool?
 
   public init(
-    connectorIdOrName: MistralConnectorListUserCredentialsV1ParametersConnectorIdOrName,
+    connectorIdOrName: MistralConnectorListUserCredentialsV1Parameters.ConnectorIdOrName,
     authType: MistralAuthenticationType? = nil,
     fetchDefault: Bool? = nil
   ) {
@@ -29,5 +29,59 @@ public struct MistralConnectorListUserCredentialsV1Parameters: Codable, Sendable
     case authType = "auth_type"
     case connectorIdOrName = "connector_id_or_name"
     case fetchDefault = "fetch_default"
+  }
+
+  public enum ConnectorIdOrName: Codable, Sendable {
+    case string(String)
+    case uuid(
+      MistralConnectorListUserCredentialsV1Parameters.ConnectorIdOrName.Uuid)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .uuid(
+        try container.decode(
+          MistralConnectorListUserCredentialsV1Parameters.ConnectorIdOrName.Uuid.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .uuid(let value):
+        try container.encode(value)
+      }
+    }
+
+    public struct Uuid:
+      RawRepresentable, Codable, Hashable, Sendable
+    {
+      public var rawValue: String
+
+      public init(rawValue: String) {
+        self.rawValue = rawValue
+      }
+
+    }
+  }
+}
+
+extension MistralConnectorListUserCredentialsV1Parameters.ConnectorIdOrName:
+  ExpressibleByStringLiteral
+{
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension MistralConnectorListUserCredentialsV1Parameters.ConnectorIdOrName.Uuid:
+  ExpressibleByStringLiteral
+{
+  public init(stringLiteral value: String) {
+    self.init(rawValue: value)
   }
 }

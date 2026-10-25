@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIProjectSpendAlert: Codable, Sendable {
-  public var currency: OpenAIProjectSpendAlertCurrency
+  public var currency: OpenAIProjectSpendAlert.Currency
   public var id: String
-  public var interval: OpenAIProjectSpendAlertInterval
+  public var interval: OpenAIProjectSpendAlert.Interval
   public var notificationChannel: OpenAISpendAlertNotificationChannel
-  public var object: OpenAIProjectSpendAlertObject
+  public var object: OpenAIProjectSpendAlert.Object
   public var thresholdAmount: Int
 
   public init(
-    currency: OpenAIProjectSpendAlertCurrency,
+    currency: OpenAIProjectSpendAlert.Currency,
     id: String,
-    interval: OpenAIProjectSpendAlertInterval,
+    interval: OpenAIProjectSpendAlert.Interval,
     notificationChannel: OpenAISpendAlertNotificationChannel,
-    object: OpenAIProjectSpendAlertObject,
+    object: OpenAIProjectSpendAlert.Object,
     thresholdAmount: Int
   ) {
     self.currency = currency
@@ -41,5 +41,17 @@ public struct OpenAIProjectSpendAlert: Codable, Sendable {
     case notificationChannel = "notification_channel"
     case object
     case thresholdAmount = "threshold_amount"
+  }
+
+  public enum Currency: String, Codable, Hashable, Sendable {
+    case usd = "USD"
+  }
+
+  public enum Interval: String, Codable, Hashable, Sendable {
+    case month = "month"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case projectSpendAlert = "project.spend_alert"
   }
 }

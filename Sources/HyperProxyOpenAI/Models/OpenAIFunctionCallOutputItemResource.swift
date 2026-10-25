@@ -17,7 +17,7 @@ public struct OpenAIFunctionCallOutputItemResource: Codable, Sendable {
   public var output: OpenAIFunctionCallOutputResource?
   public var status: OpenAIFunctionCallStatusResource
   public var turnId: String
-  public var kind: OpenAIFunctionCallOutputItemResourceKind
+  public var kind: OpenAIFunctionCallOutputItemResource.Kind
 
   public init(
     callId: String,
@@ -26,7 +26,7 @@ public struct OpenAIFunctionCallOutputItemResource: Codable, Sendable {
     output: OpenAIFunctionCallOutputResource?,
     status: OpenAIFunctionCallStatusResource,
     turnId: String,
-    kind: OpenAIFunctionCallOutputItemResourceKind
+    kind: OpenAIFunctionCallOutputItemResource.Kind
   ) {
     self.callId = callId
     self.error = error
@@ -45,5 +45,9 @@ public struct OpenAIFunctionCallOutputItemResource: Codable, Sendable {
     case status
     case turnId = "turn_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case functionCallOutput = "function_call_output"
   }
 }

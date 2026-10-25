@@ -12,18 +12,18 @@ import HyperProxyCore
 
 public struct OpenAICertificate: Codable, Sendable {
   public var active: Bool?
-  public var certificateDetails: OpenAICertificateCertificateDetails
+  public var certificateDetails: OpenAICertificate.CertificateDetails
   public var createdAt: Int
   public var id: String
   public var name: String?
-  public var object: OpenAICertificateObject
+  public var object: OpenAICertificate.Object
 
   public init(
-    certificateDetails: OpenAICertificateCertificateDetails,
+    certificateDetails: OpenAICertificate.CertificateDetails,
     createdAt: Int,
     id: String,
     name: String?,
-    object: OpenAICertificateObject,
+    object: OpenAICertificate.Object,
     active: Bool? = nil
   ) {
     self.active = active
@@ -41,5 +41,33 @@ public struct OpenAICertificate: Codable, Sendable {
     case id
     case name
     case object
+  }
+
+  public struct CertificateDetails: Codable, Sendable {
+    public var content: String?
+    public var expiresAt: Int?
+    public var validAt: Int?
+
+    public init(
+      content: String? = nil,
+      expiresAt: Int? = nil,
+      validAt: Int? = nil
+    ) {
+      self.content = content
+      self.expiresAt = expiresAt
+      self.validAt = validAt
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case content
+      case expiresAt = "expires_at"
+      case validAt = "valid_at"
+    }
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case certificate = "certificate"
+    case organizationCertificate = "organization.certificate"
+    case organizationProjectCertificate = "organization.project.certificate"
   }
 }

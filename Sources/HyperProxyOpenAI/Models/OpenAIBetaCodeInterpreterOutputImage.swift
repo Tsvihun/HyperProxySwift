@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIBetaCodeInterpreterOutputImage: Codable, Sendable {
-  public var kind: OpenAIBetaCodeInterpreterOutputImageKind
+  public var kind: OpenAIBetaCodeInterpreterOutputImage.Kind
   public var url: String
 
   public init(
-    kind: OpenAIBetaCodeInterpreterOutputImageKind,
+    kind: OpenAIBetaCodeInterpreterOutputImage.Kind,
     url: String
   ) {
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenAIBetaCodeInterpreterOutputImage: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case kind = "type"
     case url
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case image = "image"
   }
 }

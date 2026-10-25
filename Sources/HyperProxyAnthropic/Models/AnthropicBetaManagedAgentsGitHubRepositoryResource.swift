@@ -15,7 +15,7 @@ public struct AnthropicBetaManagedAgentsGitHubRepositoryResource: Codable, Senda
   public var createdAt: AnthropicBetaTimestamp
   public var id: String
   public var mountPath: String
-  public var kind: AnthropicBetaManagedAgentsGitHubRepositoryResourceKind
+  public var kind: AnthropicBetaManagedAgentsGitHubRepositoryResource.Kind
   public var updatedAt: AnthropicBetaTimestamp
   public var url: String
 
@@ -23,7 +23,7 @@ public struct AnthropicBetaManagedAgentsGitHubRepositoryResource: Codable, Senda
     createdAt: AnthropicBetaTimestamp,
     id: String,
     mountPath: String,
-    kind: AnthropicBetaManagedAgentsGitHubRepositoryResourceKind,
+    kind: AnthropicBetaManagedAgentsGitHubRepositoryResource.Kind,
     updatedAt: AnthropicBetaTimestamp,
     url: String,
     checkout: AnthropicBetaManagedAgentsRepositoryCheckout? = nil
@@ -45,5 +45,11 @@ public struct AnthropicBetaManagedAgentsGitHubRepositoryResource: Codable, Senda
     case kind = "type"
     case updatedAt = "updated_at"
     case url
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case githubRepository = "github_repository"
   }
 }

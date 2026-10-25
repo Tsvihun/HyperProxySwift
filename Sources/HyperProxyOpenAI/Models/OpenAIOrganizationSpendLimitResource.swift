@@ -14,14 +14,14 @@ public struct OpenAIOrganizationSpendLimitResource: Codable, Sendable {
   public var currency: OpenAISpendLimitCurrency
   public var enforcement: OpenAISpendLimitEnforcement
   public var interval: OpenAISpendLimitInterval
-  public var object: OpenAIOrganizationSpendLimitResourceObject
+  public var object: OpenAIOrganizationSpendLimitResource.Object
   public var thresholdAmount: Int
 
   public init(
     currency: OpenAISpendLimitCurrency,
     enforcement: OpenAISpendLimitEnforcement,
     interval: OpenAISpendLimitInterval,
-    object: OpenAIOrganizationSpendLimitResourceObject,
+    object: OpenAIOrganizationSpendLimitResource.Object,
     thresholdAmount: Int
   ) {
     self.currency = currency
@@ -37,5 +37,9 @@ public struct OpenAIOrganizationSpendLimitResource: Codable, Sendable {
     case interval
     case object
     case thresholdAmount = "threshold_amount"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case organizationSpendLimit = "organization.spend_limit"
   }
 }

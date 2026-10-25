@@ -61,7 +61,7 @@ func declarations(_ items: CodeBlockItemListSyntax) -> [[String: String]] {
     }
     if let decl = node.as(ExtensionDeclSyntax.self) {
       kind = "extension"
-      name = decl.extendedType.trimmedDescription
+      name = decl.extendedType.tokens(viewMode: .sourceAccurate).map(\.text).joined()
     }
     if node.is(ImportDeclSyntax.self) { kind = "import" }
     result.append([

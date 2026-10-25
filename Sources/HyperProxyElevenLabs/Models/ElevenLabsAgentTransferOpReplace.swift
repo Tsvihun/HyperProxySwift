@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsAgentTransferOpReplace: Codable, Sendable {
-  public var kind: ElevenLabsReplaceKind?
+  public var kind: ElevenLabsAgentTransferOpReplace.Kind?
 
   public init(
-    kind: ElevenLabsReplaceKind? = nil
+    kind: ElevenLabsAgentTransferOpReplace.Kind? = nil
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case replace = "replace"
   }
 }

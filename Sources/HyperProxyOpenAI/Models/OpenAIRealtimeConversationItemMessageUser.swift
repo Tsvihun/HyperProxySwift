@@ -11,20 +11,20 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIRealtimeConversationItemMessageUser: Codable, Sendable {
-  public var content: [OpenAIRealtimeConversationItemMessageUserContentItem]
+  public var content: [OpenAIRealtimeConversationItemMessageUser.ContentElement]
   public var id: String?
-  public var object: OpenAIRealtimeConversationItemMessageUserObject?
-  public var role: OpenAIRealtimeConversationItemMessageUserRole
-  public var status: OpenAIRealtimeConversationItemMessageUserStatus?
-  public var kind: OpenAIRealtimeConversationItemMessageUserKind
+  public var object: OpenAIRealtimeConversationItemMessageUser.Object?
+  public var role: OpenAIRealtimeConversationItemMessageUser.Role
+  public var status: OpenAIRealtimeConversationItemMessageUser.Status?
+  public var kind: OpenAIRealtimeConversationItemMessageUser.Kind
 
   public init(
-    content: [OpenAIRealtimeConversationItemMessageUserContentItem],
-    role: OpenAIRealtimeConversationItemMessageUserRole,
-    kind: OpenAIRealtimeConversationItemMessageUserKind,
+    content: [OpenAIRealtimeConversationItemMessageUser.ContentElement],
+    role: OpenAIRealtimeConversationItemMessageUser.Role,
+    kind: OpenAIRealtimeConversationItemMessageUser.Kind,
     id: String? = nil,
-    object: OpenAIRealtimeConversationItemMessageUserObject? = nil,
-    status: OpenAIRealtimeConversationItemMessageUserStatus? = nil
+    object: OpenAIRealtimeConversationItemMessageUser.Object? = nil,
+    status: OpenAIRealtimeConversationItemMessageUser.Status? = nil
   ) {
     self.content = content
     self.id = id
@@ -41,5 +41,73 @@ public struct OpenAIRealtimeConversationItemMessageUser: Codable, Sendable {
     case role
     case status
     case kind = "type"
+  }
+
+  public struct ContentElement: Codable, Sendable {
+    public var audio: String?
+    public var detail: OpenAIRealtimeConversationItemMessageUser.ContentElement.Detail?
+    public var imageUrl: String?
+    public var text: String?
+    public var transcript: String?
+    public var kind: OpenAIRealtimeConversationItemMessageUser.ContentElement.Kind?
+
+    public init(
+      audio: String? = nil,
+      detail: OpenAIRealtimeConversationItemMessageUser.ContentElement.Detail? = nil,
+      imageUrl: String? = nil,
+      text: String? = nil,
+      transcript: String? = nil,
+      kind: OpenAIRealtimeConversationItemMessageUser.ContentElement.Kind? = nil
+    ) {
+      self.audio = audio
+      self.detail = detail
+      self.imageUrl = imageUrl
+      self.text = text
+      self.transcript = transcript
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case audio
+      case detail
+      case imageUrl = "image_url"
+      case text
+      case transcript
+      case kind = "type"
+    }
+
+    public enum Detail: String, Codable, Hashable,
+      Sendable
+    {
+      case auto = "auto"
+      case low = "low"
+      case high = "high"
+    }
+
+    public enum Kind: String, Codable, Hashable,
+      Sendable
+    {
+      case inputText = "input_text"
+      case inputAudio = "input_audio"
+      case inputImage = "input_image"
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case message = "message"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case realtimeItem = "realtime.item"
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case user = "user"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case completed = "completed"
+    case incomplete = "incomplete"
+    case inProgress = "in_progress"
   }
 }

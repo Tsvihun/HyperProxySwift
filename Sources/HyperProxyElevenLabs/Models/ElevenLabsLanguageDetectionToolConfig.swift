@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsLanguageDetectionToolConfig: Codable, Sendable {
   public var onlyAtConversationStart: Bool?
-  public var systemToolType: ElevenLabsLanguageDetectionSystemToolType?
+  public var systemToolType: ElevenLabsLanguageDetectionToolConfig.SystemToolType?
 
   public init(
     onlyAtConversationStart: Bool? = nil,
-    systemToolType: ElevenLabsLanguageDetectionSystemToolType? = nil
+    systemToolType: ElevenLabsLanguageDetectionToolConfig.SystemToolType? = nil
   ) {
     self.onlyAtConversationStart = onlyAtConversationStart
     self.systemToolType = systemToolType
@@ -25,5 +25,9 @@ public struct ElevenLabsLanguageDetectionToolConfig: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case onlyAtConversationStart = "only_at_conversation_start"
     case systemToolType = "system_tool_type"
+  }
+
+  public enum SystemToolType: String, Codable, Hashable, Sendable {
+    case languageDetection = "language_detection"
   }
 }

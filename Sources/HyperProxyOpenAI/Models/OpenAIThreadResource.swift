@@ -13,16 +13,16 @@ import HyperProxyCore
 public struct OpenAIThreadResource: Codable, Sendable {
   public var createdAt: Int
   public var id: String
-  public var object: OpenAIThreadResourceObject
-  public var status: OpenAIThreadResourceStatus
+  public var object: OpenAIThreadResource.Object
+  public var status: OpenAIThreadResource.Status
   public var title: String?
   public var user: String
 
   public init(
     createdAt: Int,
     id: String,
-    object: OpenAIThreadResourceObject,
-    status: OpenAIThreadResourceStatus,
+    object: OpenAIThreadResource.Object,
+    status: OpenAIThreadResource.Status,
     title: String?,
     user: String
   ) {
@@ -41,5 +41,40 @@ public struct OpenAIThreadResource: Codable, Sendable {
     case status
     case title
     case user
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case chatkitThread = "chatkit.thread"
+  }
+
+  public enum Status: Codable, Sendable {
+    case activeStatus(OpenAIActiveStatus)
+    case lockedStatus(OpenAILockedStatus)
+    case closedStatus(OpenAIClosedStatus)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenAIActiveStatus.self) {
+        self = .activeStatus(value)
+        return
+      }
+      if let value = try? container.decode(OpenAILockedStatus.self) {
+        self = .lockedStatus(value)
+        return
+      }
+      self = .closedStatus(try container.decode(OpenAIClosedStatus.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .activeStatus(let value):
+        try container.encode(value)
+      case .lockedStatus(let value):
+        try container.encode(value)
+      case .closedStatus(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

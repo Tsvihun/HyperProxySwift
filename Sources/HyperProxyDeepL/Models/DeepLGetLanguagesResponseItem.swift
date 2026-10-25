@@ -11,18 +11,18 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepLGetLanguagesResponseItem: Codable, Sendable {
-  public var features: [String: DeepLGetLanguagesResponseItemFeaturesValue]
+  public var features: [String: DeepLGetLanguagesResponseItem.FeaturesValue]
   public var lang: String
   public var name: String
-  public var status: DeepLGetLanguagesResponseItemStatus
+  public var status: DeepLGetLanguagesResponseItem.Status
   public var usableAsSource: Bool
   public var usableAsTarget: Bool
 
   public init(
-    features: [String: DeepLGetLanguagesResponseItemFeaturesValue],
+    features: [String: DeepLGetLanguagesResponseItem.FeaturesValue],
     lang: String,
     name: String,
-    status: DeepLGetLanguagesResponseItemStatus,
+    status: DeepLGetLanguagesResponseItem.Status,
     usableAsSource: Bool,
     usableAsTarget: Bool
   ) {
@@ -41,5 +41,31 @@ public struct DeepLGetLanguagesResponseItem: Codable, Sendable {
     case status
     case usableAsSource = "usable_as_source"
     case usableAsTarget = "usable_as_target"
+  }
+
+  public struct FeaturesValue: Codable, Sendable {
+    public var status: DeepLGetLanguagesResponseItem.FeaturesValue.Status
+
+    public init(
+      status: DeepLGetLanguagesResponseItem.FeaturesValue.Status
+    ) {
+      self.status = status
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case status
+    }
+
+    public enum Status: String, Codable, Hashable, Sendable {
+      case stable = "stable"
+      case beta = "beta"
+      case earlyAccess = "early_access"
+    }
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case stable = "stable"
+    case beta = "beta"
+    case earlyAccess = "early_access"
   }
 }

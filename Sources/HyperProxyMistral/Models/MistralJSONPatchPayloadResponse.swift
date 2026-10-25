@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct MistralJSONPatchPayloadResponse: Codable, Sendable {
   public var encodingOptions: [MistralEncodedPayloadOptions]?
-  public var kind: MistralJsonPatchKind
+  public var kind: MistralJSONPatchPayloadResponse.Kind
   public var value: MistralJSONPatchPayloadValueResponse
 
   public init(
     value: MistralJSONPatchPayloadValueResponse,
-    kind: MistralJsonPatchKind = .jsonPatch,
+    kind: MistralJSONPatchPayloadResponse.Kind = .jsonPatch,
     encodingOptions: [MistralEncodedPayloadOptions]? = nil
   ) {
     self.encodingOptions = encodingOptions
@@ -29,5 +29,9 @@ public struct MistralJSONPatchPayloadResponse: Codable, Sendable {
     case encodingOptions = "encoding_options"
     case kind = "type"
     case value
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case jsonPatch = "json_patch"
   }
 }

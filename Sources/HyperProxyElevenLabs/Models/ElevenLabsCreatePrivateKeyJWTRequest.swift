@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsCreatePrivateKeyJWTRequest: Codable, Sendable {
-  public var algorithm: ElevenLabsCreatePrivateKeyJWTRequestAlgorithm?
+  public var algorithm: ElevenLabsCreatePrivateKeyJWTRequest.Algorithm?
   public var audience: String
   public var authType: ElevenLabsPrivateKeyJwtAuthType?
   public var expirationSeconds: Int?
@@ -30,7 +30,7 @@ public struct ElevenLabsCreatePrivateKeyJWTRequest: Codable, Sendable {
     provider: String,
     secretKey: String,
     subject: String,
-    algorithm: ElevenLabsCreatePrivateKeyJWTRequestAlgorithm? = nil,
+    algorithm: ElevenLabsCreatePrivateKeyJWTRequest.Algorithm? = nil,
     authType: ElevenLabsPrivateKeyJwtAuthType? = nil,
     expirationSeconds: Int? = nil,
     extraParams: [String: String]? = nil,
@@ -61,5 +61,14 @@ public struct ElevenLabsCreatePrivateKeyJWTRequest: Codable, Sendable {
     case provider
     case secretKey = "secret_key"
     case subject
+  }
+
+  public enum Algorithm: String, Codable, Hashable, Sendable {
+    case hs256 = "HS256"
+    case hs384 = "HS384"
+    case hs512 = "HS512"
+    case rs256 = "RS256"
+    case rs384 = "RS384"
+    case rs512 = "RS512"
   }
 }

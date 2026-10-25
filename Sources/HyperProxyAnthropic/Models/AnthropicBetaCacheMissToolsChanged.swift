@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct AnthropicBetaCacheMissToolsChanged: Codable, Sendable {
   public var cacheMissedInputTokens: Int
-  public var kind: AnthropicToolsChangedKind
+  public var kind: AnthropicBetaCacheMissToolsChanged.Kind
 
   public init(
     cacheMissedInputTokens: Int,
-    kind: AnthropicToolsChangedKind = .toolsChanged
+    kind: AnthropicBetaCacheMissToolsChanged.Kind = .toolsChanged
   ) {
     self.cacheMissedInputTokens = cacheMissedInputTokens
     self.kind = kind
@@ -25,5 +25,9 @@ public struct AnthropicBetaCacheMissToolsChanged: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case cacheMissedInputTokens = "cache_missed_input_tokens"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case toolsChanged = "tools_changed"
   }
 }

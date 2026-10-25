@@ -14,13 +14,13 @@ public struct OpenRouterFusionCallInProgressEvent: Codable, Sendable {
   public var itemId: String
   public var outputIndex: Int
   public var sequenceNumber: Int
-  public var kind: OpenRouterFusionCallInProgressEventKind
+  public var kind: OpenRouterFusionCallInProgressEvent.Kind
 
   public init(
     itemId: String,
     outputIndex: Int,
     sequenceNumber: Int,
-    kind: OpenRouterFusionCallInProgressEventKind
+    kind: OpenRouterFusionCallInProgressEvent.Kind
   ) {
     self.itemId = itemId
     self.outputIndex = outputIndex
@@ -33,5 +33,9 @@ public struct OpenRouterFusionCallInProgressEvent: Codable, Sendable {
     case outputIndex = "output_index"
     case sequenceNumber = "sequence_number"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case responseFusionCallInProgress = "response.fusion_call.in_progress"
   }
 }

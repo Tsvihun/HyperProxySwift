@@ -16,7 +16,7 @@ public struct FireworksNewLogProbsContent: Codable, Sendable {
   public var logprob: Double
   public var routingMatrix: String?
   public var samplingLogprob: Double?
-  public var samplingMask: FireworksNewLogProbsContentSamplingMask?
+  public var samplingMask: FireworksNewLogProbsContent.SamplingMask?
   public var samplingMaskCount: Int?
   public var textOffset: Int
   public var token: String
@@ -32,7 +32,7 @@ public struct FireworksNewLogProbsContent: Codable, Sendable {
     tokenId: Int,
     lastActivation: String? = nil,
     routingMatrix: String? = nil,
-    samplingMask: FireworksNewLogProbsContentSamplingMask? = nil,
+    samplingMask: FireworksNewLogProbsContent.SamplingMask? = nil,
     samplingMaskCount: Int? = nil,
     topLogprobs: [FireworksNewLogProbsContentTopLogProbs]? = nil
   ) {
@@ -61,5 +61,41 @@ public struct FireworksNewLogProbsContent: Codable, Sendable {
     case token
     case tokenId = "token_id"
     case topLogprobs = "top_logprobs"
+  }
+
+  public enum SamplingMask: Codable, Sendable {
+    case string(String)
+    case integerArray([Int])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .integerArray(try container.decode([Int].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .integerArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension FireworksNewLogProbsContent.SamplingMask: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension FireworksNewLogProbsContent.SamplingMask: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: Int...) {
+    self = .integerArray(elements)
   }
 }

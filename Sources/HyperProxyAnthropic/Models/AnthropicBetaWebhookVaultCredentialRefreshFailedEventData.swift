@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct AnthropicBetaWebhookVaultCredentialRefreshFailedEventData: Codable, Sendable {
   public var id: String
   public var organizationId: String
-  public var kind: AnthropicVaultCredentialRefreshFailedKind
+  public var kind: AnthropicBetaWebhookVaultCredentialRefreshFailedEventData.Kind
   public var vaultId: String
   public var workspaceId: String
 
@@ -22,7 +22,8 @@ public struct AnthropicBetaWebhookVaultCredentialRefreshFailedEventData: Codable
     organizationId: String,
     vaultId: String,
     workspaceId: String,
-    kind: AnthropicVaultCredentialRefreshFailedKind = .vaultCredentialRefreshFailed
+    kind: AnthropicBetaWebhookVaultCredentialRefreshFailedEventData.Kind =
+      .vaultCredentialRefreshFailed
   ) {
     self.id = id
     self.organizationId = organizationId
@@ -37,5 +38,9 @@ public struct AnthropicBetaWebhookVaultCredentialRefreshFailedEventData: Codable
     case kind = "type"
     case vaultId = "vault_id"
     case workspaceId = "workspace_id"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case vaultCredentialRefreshFailed = "vault_credential.refresh_failed"
   }
 }

@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct ElevenLabsTestRunMetadata: Codable, Sendable {
   public var ranByUserEmail: String
   public var testName: String
-  public var testType: ElevenLabsTestRunMetadataTestType?
+  public var testType: ElevenLabsTestRunMetadata.TestType?
   public var workspaceId: String
 
   public init(
     ranByUserEmail: String,
     testName: String,
     workspaceId: String,
-    testType: ElevenLabsTestRunMetadataTestType? = nil
+    testType: ElevenLabsTestRunMetadata.TestType? = nil
   ) {
     self.ranByUserEmail = ranByUserEmail
     self.testName = testName
@@ -33,5 +33,11 @@ public struct ElevenLabsTestRunMetadata: Codable, Sendable {
     case testName = "test_name"
     case testType = "test_type"
     case workspaceId = "workspace_id"
+  }
+
+  public enum TestType: String, Codable, Hashable, Sendable {
+    case llm = "llm"
+    case toolCall = "tool_call"
+    case simulation = "simulation"
   }
 }

@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksGatewayEncryptionState: String, Codable, Hashable, Sendable {
-  case eNCRYPTIONSTATEUNSPECIFIED = "ENCRYPTION_STATE_UNSPECIFIED"
-  case eNCRYPTIONSTATEPLAINTEXT = "ENCRYPTION_STATE_PLAINTEXT"
-  case eNCRYPTIONSTATECMEK = "ENCRYPTION_STATE_CMEK"
+  case encryptionStateUnspecified = "ENCRYPTION_STATE_UNSPECIFIED"
+  case encryptionStatePlaintext = "ENCRYPTION_STATE_PLAINTEXT"
+  case encryptionStateCmek = "ENCRYPTION_STATE_CMEK"
 }

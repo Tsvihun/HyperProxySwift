@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsCancelGroupSessionForAllParams: Codable, Sendable {
-  public var smbToolType: ElevenLabsCancelGroupSessionForAllSmbToolType?
+  public var smbToolType: ElevenLabsCancelGroupSessionForAllParams.SmbToolType?
 
   public init(
-    smbToolType: ElevenLabsCancelGroupSessionForAllSmbToolType? = nil
+    smbToolType: ElevenLabsCancelGroupSessionForAllParams.SmbToolType? = nil
   ) {
     self.smbToolType = smbToolType
   }
 
   enum CodingKeys: String, CodingKey {
     case smbToolType = "smb_tool_type"
+  }
+
+  public enum SmbToolType: String, Codable, Hashable, Sendable {
+    case cancelGroupSessionForAll = "cancel_group_session_for_all"
   }
 }

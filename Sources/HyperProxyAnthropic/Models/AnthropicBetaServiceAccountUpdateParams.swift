@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct AnthropicBetaServiceAccountUpdateParams: Codable, Sendable {
   public var description: String?
-  public var organizationRole: AnthropicBetaServiceAccountUpdateParamsOrganizationRole?
+  public var organizationRole: AnthropicBetaServiceAccountUpdateParams.OrganizationRole?
 
   public init(
     description: String? = nil,
-    organizationRole: AnthropicBetaServiceAccountUpdateParamsOrganizationRole? = nil
+    organizationRole: AnthropicBetaServiceAccountUpdateParams.OrganizationRole? = nil
   ) {
     self.description = description
     self.organizationRole = organizationRole
@@ -25,5 +25,12 @@ public struct AnthropicBetaServiceAccountUpdateParams: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case description
     case organizationRole = "organization_role"
+  }
+
+  public enum OrganizationRole: String, Codable, Hashable,
+    Sendable
+  {
+    case admin = "admin"
+    case developer = "developer"
   }
 }

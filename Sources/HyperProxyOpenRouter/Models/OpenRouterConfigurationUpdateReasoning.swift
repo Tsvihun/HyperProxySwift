@@ -11,15 +11,25 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterConfigurationUpdateReasoning: Codable, Sendable {
-  public var effort: OpenRouterConfigurationUpdateReasoningEffort
+  public var effort: OpenRouterConfigurationUpdateReasoning.Effort
 
   public init(
-    effort: OpenRouterConfigurationUpdateReasoningEffort
+    effort: OpenRouterConfigurationUpdateReasoning.Effort
   ) {
     self.effort = effort
   }
 
   enum CodingKeys: String, CodingKey {
     case effort
+  }
+
+  public enum Effort: String, Codable, Hashable, Sendable {
+    case max = "max"
+    case xhigh = "xhigh"
+    case high = "high"
+    case medium = "medium"
+    case low = "low"
+    case minimal = "minimal"
+    case none = "none"
   }
 }

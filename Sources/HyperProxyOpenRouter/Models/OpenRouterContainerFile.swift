@@ -15,18 +15,18 @@ public struct OpenRouterContainerFile: Codable, Sendable {
   public var containerId: String
   public var createdAt: Int
   public var id: String
-  public var object: OpenRouterContainerFileObject
+  public var object: OpenRouterContainerFile.Object
   public var path: String
-  public var source: OpenRouterContainerFileSource
+  public var source: OpenRouterContainerFile.Source
 
   public init(
     bytes: Int,
     containerId: String,
     createdAt: Int,
     id: String,
-    object: OpenRouterContainerFileObject,
+    object: OpenRouterContainerFile.Object,
     path: String,
-    source: OpenRouterContainerFileSource
+    source: OpenRouterContainerFile.Source
   ) {
     self.bytes = bytes
     self.containerId = containerId
@@ -45,5 +45,13 @@ public struct OpenRouterContainerFile: Codable, Sendable {
     case object
     case path
     case source
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case containerFile = "container.file"
+  }
+
+  public enum Source: String, Codable, Hashable, Sendable {
+    case assistant = "assistant"
   }
 }

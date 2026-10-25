@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct FireworksAnthropicRateLimitError: Codable, Sendable {
   public var message: String
-  public var kind: FireworksRateLimitErrorKind
+  public var kind: FireworksAnthropicRateLimitError.Kind
 
   public init(
     message: String,
-    kind: FireworksRateLimitErrorKind = .rateLimitError
+    kind: FireworksAnthropicRateLimitError.Kind = .rateLimitError
   ) {
     self.message = message
     self.kind = kind
@@ -25,5 +25,9 @@ public struct FireworksAnthropicRateLimitError: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case message
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case rateLimitError = "rate_limit_error"
   }
 }

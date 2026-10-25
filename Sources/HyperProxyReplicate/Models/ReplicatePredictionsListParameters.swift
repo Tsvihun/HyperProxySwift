@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct ReplicatePredictionsListParameters: Codable, Sendable {
   public var createdAfter: String?
   public var createdBefore: String?
-  public var source: ReplicatePredictionsListParametersSource?
+  public var source: ReplicatePredictionsListParameters.Source?
 
   public init(
     createdAfter: String? = nil,
     createdBefore: String? = nil,
-    source: ReplicatePredictionsListParametersSource? = nil
+    source: ReplicatePredictionsListParameters.Source? = nil
   ) {
     self.createdAfter = createdAfter
     self.createdBefore = createdBefore
@@ -29,5 +29,9 @@ public struct ReplicatePredictionsListParameters: Codable, Sendable {
     case createdAfter = "created_after"
     case createdBefore = "created_before"
     case source
+  }
+
+  public enum Source: String, Codable, Hashable, Sendable {
+    case web = "web"
   }
 }

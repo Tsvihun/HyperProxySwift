@@ -57,6 +57,46 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
   public var createAgent: HyperProxyProviderCall<OpenAIOperation> {
     self.call(.createAgent)
   }
+  /// `GET v1/agents/automations`
+  public var listAgentAutomations: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.listAgentAutomations)
+  }
+  /// `POST v1/agents/automations`
+  public var createAgentAutomation: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.createAgentAutomation)
+  }
+  /// `DELETE v1/agents/automations/{automation_id}`
+  public var deleteAgentAutomation: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.deleteAgentAutomation)
+  }
+  /// `GET v1/agents/automations/{automation_id}`
+  public var getAgentAutomation: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.getAgentAutomation)
+  }
+  /// `POST v1/agents/automations/{automation_id}`
+  public var updateAgentAutomation: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.updateAgentAutomation)
+  }
+  /// `GET v1/agents/automations/{automation_id}/invocations`
+  public var listAgentAutomationInvocations: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.listAgentAutomationInvocations)
+  }
+  /// `POST v1/agents/automations/{automation_id}/invocations`
+  public var createAgentAutomationInvocation: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.createAgentAutomationInvocation)
+  }
+  /// `GET v1/agents/automations/{automation_id}/invocations/{invocation_id}`
+  public var getAgentAutomationInvocation: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.getAgentAutomationInvocation)
+  }
+  /// `POST v1/agents/automations/{automation_id}/pause`
+  public var pauseAgentAutomation: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.pauseAgentAutomation)
+  }
+  /// `POST v1/agents/automations/{automation_id}/resume`
+  public var resumeAgentAutomation: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.resumeAgentAutomation)
+  }
   /// `GET v1/agents/environments`
   public var listAgentEnvironments: HyperProxyProviderCall<OpenAIOperation> {
     self.call(.listAgentEnvironments)
@@ -252,6 +292,10 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
   /// `POST v1/audio/voices`
   public var createVoice: HyperProxyProviderCall<OpenAIOperation> {
     self.call(.createVoice)
+  }
+  /// `DELETE v1/audio/voices/{voice_id}`
+  public var deleteVoice: HyperProxyProviderCall<OpenAIOperation> {
+    self.call(.deleteVoice)
   }
   /// `GET v1/batches`
   public var batchesList: HyperProxyProviderCall<OpenAIOperation> {
@@ -489,14 +533,6 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
   public var fineTuningJobsCreate: HyperProxyProviderCall<OpenAIOperation> {
     self.call(.fineTuningJobsCreate)
   }
-  /// `GET v1/fine_tuning/jobs/{fine_tuning_job_id}`
-  public var retrieveFineTuningJob: HyperProxyProviderCall<OpenAIOperation> {
-    self.call(.retrieveFineTuningJob)
-  }
-  /// `POST v1/fine_tuning/jobs/{fine_tuning_job_id}/cancel`
-  public var cancelFineTuningJob: HyperProxyProviderCall<OpenAIOperation> {
-    self.call(.cancelFineTuningJob)
-  }
   /// `GET v1/fine_tuning/jobs/{fine_tuning_job_id}/checkpoints`
   public var listFineTuningJobCheckpoints: HyperProxyProviderCall<OpenAIOperation> {
     self.call(.listFineTuningJobCheckpoints)
@@ -504,14 +540,6 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
   /// `GET v1/fine_tuning/jobs/{fine_tuning_job_id}/events`
   public var listFineTuningEvents: HyperProxyProviderCall<OpenAIOperation> {
     self.call(.listFineTuningEvents)
-  }
-  /// `POST v1/fine_tuning/jobs/{fine_tuning_job_id}/pause`
-  public var pauseFineTuningJob: HyperProxyProviderCall<OpenAIOperation> {
-    self.call(.pauseFineTuningJob)
-  }
-  /// `POST v1/fine_tuning/jobs/{fine_tuning_job_id}/resume`
-  public var resumeFineTuningJob: HyperProxyProviderCall<OpenAIOperation> {
-    self.call(.resumeFineTuningJob)
   }
   /// `GET v1/fine_tuning/jobs/{job_id}`
   public var fineTuningJobsRetrieve: HyperProxyProviderCall<OpenAIOperation> {
@@ -580,10 +608,6 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
   /// `DELETE v1/models/{model}`
   public var deleteModel: HyperProxyProviderCall<OpenAIOperation> {
     self.call(.deleteModel)
-  }
-  /// `GET v1/models/{model}`
-  public var retrieveModel: HyperProxyProviderCall<OpenAIOperation> {
-    self.call(.retrieveModel)
   }
   /// `POST v1/moderations`
   public var moderationsCreate: HyperProxyProviderCall<OpenAIOperation> {
@@ -1004,34 +1028,6 @@ extension HyperProxyProviderService where Operation == OpenAIOperation {
   /// `GET v1/webhook_event_types`
   public var listWebhookEventTypes: HyperProxyProviderCall<OpenAIOperation> {
     self.call(.listWebhookEventTypes)
-  }
-  @available(*, deprecated, renamed: "responsesCreate")
-  public var createResponse: HyperProxyProviderCall<OpenAIOperation> {
-    self.call(.responsesCreate)
-  }
-  @available(*, deprecated, renamed: "responsesCompact")
-  public var compactconversation: HyperProxyProviderCall<OpenAIOperation> {
-    self.call(.responsesCompact)
-  }
-  @available(*, deprecated, renamed: "responsesCountInputTokens")
-  public var getinputtokencounts: HyperProxyProviderCall<OpenAIOperation> {
-    self.call(.responsesCountInputTokens)
-  }
-  @available(*, deprecated, renamed: "responsesDelete")
-  public var deleteResponse: HyperProxyProviderCall<OpenAIOperation> {
-    self.call(.responsesDelete)
-  }
-  @available(*, deprecated, renamed: "responsesRetrieve")
-  public var getResponse: HyperProxyProviderCall<OpenAIOperation> {
-    self.call(.responsesRetrieve)
-  }
-  @available(*, deprecated, renamed: "responsesCancel")
-  public var cancelResponse: HyperProxyProviderCall<OpenAIOperation> {
-    self.call(.responsesCancel)
-  }
-  @available(*, deprecated, renamed: "responsesInputItems")
-  public var listInputItems: HyperProxyProviderCall<OpenAIOperation> {
-    self.call(.responsesInputItems)
   }
 
   /// Organization-administration operations. Kept out of the

@@ -16,7 +16,7 @@ public struct OpenRouterObservabilityWeaveDestination: Codable, Sendable {
   public var broadcastGenerationCostAllocation: Bool
   public var broadcastGenerationIdentity: Bool
   public var broadcastGenerationRequestContext: Bool
-  public var config: OpenRouterObservabilityWeaveDestinationConfig
+  public var config: OpenRouterObservabilityWeaveDestination.Config
   public var createdAt: String
   public var enabled: Bool
   public var filterRules: OpenRouterObservabilityFilterRulesConfig?
@@ -25,7 +25,7 @@ public struct OpenRouterObservabilityWeaveDestination: Codable, Sendable {
   public var privacyMode: Bool
   public var regions: [OpenRouterObservabilityDataRegion]
   public var samplingRate: Double
-  public var kind: OpenRouterObservabilityWeaveDestinationKind
+  public var kind: OpenRouterObservabilityWeaveDestination.Kind
   public var updatedAt: String
   public var workspaceId: String
 
@@ -35,7 +35,7 @@ public struct OpenRouterObservabilityWeaveDestination: Codable, Sendable {
     broadcastGenerationCostAllocation: Bool,
     broadcastGenerationIdentity: Bool,
     broadcastGenerationRequestContext: Bool,
-    config: OpenRouterObservabilityWeaveDestinationConfig,
+    config: OpenRouterObservabilityWeaveDestination.Config,
     createdAt: String,
     enabled: Bool,
     filterRules: OpenRouterObservabilityFilterRulesConfig?,
@@ -44,7 +44,7 @@ public struct OpenRouterObservabilityWeaveDestination: Codable, Sendable {
     privacyMode: Bool,
     regions: [OpenRouterObservabilityDataRegion],
     samplingRate: Double,
-    kind: OpenRouterObservabilityWeaveDestinationKind,
+    kind: OpenRouterObservabilityWeaveDestination.Kind,
     updatedAt: String,
     workspaceId: String
   ) {
@@ -85,5 +85,39 @@ public struct OpenRouterObservabilityWeaveDestination: Codable, Sendable {
     case kind = "type"
     case updatedAt = "updated_at"
     case workspaceId = "workspace_id"
+  }
+
+  public struct Config: Codable, Sendable {
+    public var apiKey: String
+    public var baseUrl: String?
+    public var entity: String
+    public var headers: [String: String]?
+    public var project: String
+
+    public init(
+      apiKey: String,
+      entity: String,
+      project: String,
+      baseUrl: String? = nil,
+      headers: [String: String]? = nil
+    ) {
+      self.apiKey = apiKey
+      self.baseUrl = baseUrl
+      self.entity = entity
+      self.headers = headers
+      self.project = project
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case apiKey
+      case baseUrl
+      case entity
+      case headers
+      case project
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case weave = "weave"
   }
 }

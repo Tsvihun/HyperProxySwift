@@ -28,7 +28,7 @@ public struct OpenAIDecisionsUsageResult: Codable, Sendable {
   public var inputUncachedTokens: Int?
   public var model: String?
   public var numModelRequests: Int
-  public var object: OpenAIDecisionsUsageResultObject
+  public var object: OpenAIDecisionsUsageResult.Object
   public var outputAudioTokens: Int?
   public var outputImageTokens: Int?
   public var outputTextTokens: Int?
@@ -40,7 +40,7 @@ public struct OpenAIDecisionsUsageResult: Codable, Sendable {
   public init(
     inputTokens: Int,
     numModelRequests: Int,
-    object: OpenAIDecisionsUsageResultObject,
+    object: OpenAIDecisionsUsageResult.Object,
     outputTokens: Int,
     apiKeyId: String? = nil,
     apiSource: OpenAIDecisionsUsageApiSource? = nil,
@@ -117,5 +117,9 @@ public struct OpenAIDecisionsUsageResult: Codable, Sendable {
     case projectId = "project_id"
     case serviceTier = "service_tier"
     case userId = "user_id"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case organizationUsageDecisionsResult = "organization.usage.decisions.result"
   }
 }

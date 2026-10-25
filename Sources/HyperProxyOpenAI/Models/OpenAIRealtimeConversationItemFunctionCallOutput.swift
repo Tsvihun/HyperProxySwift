@@ -13,18 +13,18 @@ import HyperProxyCore
 public struct OpenAIRealtimeConversationItemFunctionCallOutput: Codable, Sendable {
   public var callId: String
   public var id: String?
-  public var object: OpenAIRealtimeConversationItemFunctionCallOutputObject?
+  public var object: OpenAIRealtimeConversationItemFunctionCallOutput.Object?
   public var output: String
-  public var status: OpenAIRealtimeConversationItemFunctionCallOutputStatus?
-  public var kind: OpenAIRealtimeConversationItemFunctionCallOutputKind
+  public var status: OpenAIRealtimeConversationItemFunctionCallOutput.Status?
+  public var kind: OpenAIRealtimeConversationItemFunctionCallOutput.Kind
 
   public init(
     callId: String,
     output: String,
-    kind: OpenAIRealtimeConversationItemFunctionCallOutputKind,
+    kind: OpenAIRealtimeConversationItemFunctionCallOutput.Kind,
     id: String? = nil,
-    object: OpenAIRealtimeConversationItemFunctionCallOutputObject? = nil,
-    status: OpenAIRealtimeConversationItemFunctionCallOutputStatus? = nil
+    object: OpenAIRealtimeConversationItemFunctionCallOutput.Object? = nil,
+    status: OpenAIRealtimeConversationItemFunctionCallOutput.Status? = nil
   ) {
     self.callId = callId
     self.id = id
@@ -41,5 +41,25 @@ public struct OpenAIRealtimeConversationItemFunctionCallOutput: Codable, Sendabl
     case output
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case functionCallOutput = "function_call_output"
+  }
+
+  public enum Object: String, Codable, Hashable,
+    Sendable
+  {
+    case realtimeItem = "realtime.item"
+  }
+
+  public enum Status: String, Codable, Hashable,
+    Sendable
+  {
+    case completed = "completed"
+    case incomplete = "incomplete"
+    case inProgress = "in_progress"
   }
 }

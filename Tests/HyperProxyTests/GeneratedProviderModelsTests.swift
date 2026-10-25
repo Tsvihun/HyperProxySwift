@@ -32,13 +32,14 @@ struct GeneratedProviderModelsTests {
     #expect(json["messages"]?[1]?["role"] == "developer")
     #expect(json["messages"]?[2]?["role"] == "user")
     #expect(json["messages"]?[3]?["content"] == "assistant")
-    let response = OpenAIResponseRequest(input: "Hello", model: .gpt55Pro)
+    let response = OpenAIResponseRequest(input: "Hello", model: .gpt5_5Pro)
     let responseJSON = try JSONDecoder().decode(
       HyperProxyJSONValue.self, from: JSONEncoder().encode(response))
     #expect(responseJSON["model"] == "gpt-5.5-pro")
     let decoded = try JSONDecoder().decode(
       OpenAIResponseModel.self, from: Data(#""gpt-5.5-pro""#.utf8))
-    #expect(try JSONEncoder().encode(decoded) == JSONEncoder().encode(OpenAIResponseModel.gpt55Pro))
+    #expect(
+      try JSONEncoder().encode(decoded) == JSONEncoder().encode(OpenAIResponseModel.gpt5_5Pro))
   }
 
   @Test("JSON null schemas reject non-null values")
@@ -49,12 +50,12 @@ struct GeneratedProviderModelsTests {
     }
   }
 
-  @Test("Legacy nullable enum names retain raw-value construction and encoding")
-  func legacyNullableEnumNames() throws {
-    let verbosity = try #require(OpenAIVerbosityAnyOf1(rawValue: "low"))
+  @Test("Nullable enums retain raw-value construction and encoding")
+  func nullableEnumNames() throws {
+    let verbosity = try #require(OpenAIVerbosity(rawValue: "low"))
     #expect(verbosity.rawValue == "low")
     #expect(try JSONEncoder().encode(verbosity) == Data(#""low""#.utf8))
-    let background: OpenAICreateImageEditRequestBackgroundAnyOf1 = .transparent
+    let background: OpenAICreateImageEditRequest.Background = .transparent
     #expect(background.rawValue == "transparent")
     #expect(try JSONEncoder().encode(background) == Data(#""transparent""#.utf8))
   }
@@ -70,7 +71,7 @@ struct GeneratedProviderModelsTests {
       background: .transparent,
       inputFidelity: .high,
       mask: .png(Data([0x03]), filename: "mask.png"),
-      model: .gptImage15,
+      model: .gptImage1_5,
       n: 2,
       outputCompression: 90,
       outputFormat: .webp,
@@ -243,7 +244,7 @@ struct GeneratedProviderModelsTests {
   func bflFlux3VideoRequest() throws {
     let generated = BFLFlux3VideoT2VInputs(
       prompt: "A slow orbit around a glass sculpture",
-      aspectRatio: .flux3VideoT2VInputsAspectRatioAnyOf1(.value169),
+      aspectRatio: .ratio16x9,
       duration: 8,
       generateAudio: true,
       resolution: .uhd,
@@ -306,7 +307,7 @@ struct GeneratedProviderModelsTests {
   func forwardCompatibleEnumValues() throws {
     let futureValue = "future_stop_reason"
     let decoded = try JSONDecoder().decode(
-      OpenAICreateImageEditRequestModel.self,
+      OpenAICreateImageEditRequest.Model.self,
       from: Data(#""future_stop_reason""#.utf8)
     )
 

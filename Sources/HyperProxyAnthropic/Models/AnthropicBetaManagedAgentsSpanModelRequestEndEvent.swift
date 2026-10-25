@@ -16,7 +16,7 @@ public struct AnthropicBetaManagedAgentsSpanModelRequestEndEvent: Codable, Senda
   public var modelRequestStartId: String
   public var modelUsage: AnthropicBetaManagedAgentsSpanModelUsage
   public var processedAt: AnthropicBetaTimestamp
-  public var kind: AnthropicBetaManagedAgentsSpanModelRequestEndEventKind
+  public var kind: AnthropicBetaManagedAgentsSpanModelRequestEndEvent.Kind
 
   public init(
     id: String,
@@ -24,7 +24,7 @@ public struct AnthropicBetaManagedAgentsSpanModelRequestEndEvent: Codable, Senda
     modelRequestStartId: String,
     modelUsage: AnthropicBetaManagedAgentsSpanModelUsage,
     processedAt: AnthropicBetaTimestamp,
-    kind: AnthropicBetaManagedAgentsSpanModelRequestEndEventKind
+    kind: AnthropicBetaManagedAgentsSpanModelRequestEndEvent.Kind
   ) {
     self.id = id
     self.isError = isError
@@ -41,5 +41,11 @@ public struct AnthropicBetaManagedAgentsSpanModelRequestEndEvent: Codable, Senda
     case modelUsage = "model_usage"
     case processedAt = "processed_at"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case spanModelRequestEnd = "span.model_request_end"
   }
 }

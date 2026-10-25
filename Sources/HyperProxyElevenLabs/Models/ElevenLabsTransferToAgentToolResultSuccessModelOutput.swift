@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsTransferToAgentToolResultSuccessModelOutput: Codable, Sendable {
-  public var branchInfo: ElevenLabsTransferToAgentToolResultSuccessModelOutputBranchInfoAnyOf1?
+  public var branchInfo: ElevenLabsTransferToAgentToolResultSuccessModelOutputBranchInfoVariant?
   public var condition: String
   public var delayMs: Int?
   public var enableTransferredAgentFirstMessage: Bool?
@@ -28,7 +28,7 @@ public struct ElevenLabsTransferToAgentToolResultSuccessModelOutput: Codable, Se
     condition: String,
     fromAgent: String,
     toAgent: String,
-    branchInfo: ElevenLabsTransferToAgentToolResultSuccessModelOutputBranchInfoAnyOf1? = nil,
+    branchInfo: ElevenLabsTransferToAgentToolResultSuccessModelOutputBranchInfoVariant? = nil,
     delayMs: Int? = nil,
     enableTransferredAgentFirstMessage: Bool? = nil,
     preserveClientTtsOverrides: Bool? = nil,

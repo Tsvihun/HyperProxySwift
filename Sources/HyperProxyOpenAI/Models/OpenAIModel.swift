@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct OpenAIModel: Codable, Sendable {
   public var created: Int
   public var id: String
-  public var object: OpenAIModelObject
+  public var object: OpenAIModel.Object
   public var ownedBy: String
   public var shutdownDate: String?
 
   public init(
     created: Int,
     id: String,
-    object: OpenAIModelObject,
+    object: OpenAIModel.Object,
     ownedBy: String,
     shutdownDate: String? = nil
   ) {
@@ -37,5 +37,9 @@ public struct OpenAIModel: Codable, Sendable {
     case object
     case ownedBy = "owned_by"
     case shutdownDate = "shutdown_date"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case model = "model"
   }
 }

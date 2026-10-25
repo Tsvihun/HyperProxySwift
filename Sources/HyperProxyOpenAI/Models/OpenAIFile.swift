@@ -16,9 +16,9 @@ public struct OpenAIFile: Codable, Sendable {
   public var expiresAt: Int?
   public var filename: String
   public var id: String
-  public var object: OpenAIFileObject
-  public var purpose: OpenAIFilePurpose
-  public var status: OpenAIFileStatus
+  public var object: OpenAIFile.Object
+  public var purpose: OpenAIFile.Purpose
+  public var status: OpenAIFile.Status
   public var statusDetails: String?
 
   public init(
@@ -26,9 +26,9 @@ public struct OpenAIFile: Codable, Sendable {
     createdAt: Int,
     filename: String,
     id: String,
-    object: OpenAIFileObject,
-    purpose: OpenAIFilePurpose,
-    status: OpenAIFileStatus,
+    object: OpenAIFile.Object,
+    purpose: OpenAIFile.Purpose,
+    status: OpenAIFile.Status,
     expiresAt: Int? = nil,
     statusDetails: String? = nil
   ) {
@@ -53,5 +53,26 @@ public struct OpenAIFile: Codable, Sendable {
     case purpose
     case status
     case statusDetails = "status_details"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case file = "file"
+  }
+
+  public enum Purpose: String, Codable, Hashable, Sendable {
+    case assistants = "assistants"
+    case assistantsOutput = "assistants_output"
+    case batch = "batch"
+    case batchOutput = "batch_output"
+    case fineTune = "fine-tune"
+    case fineTuneResults = "fine-tune-results"
+    case vision = "vision"
+    case userData = "user_data"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case uploaded = "uploaded"
+    case processed = "processed"
+    case error = "error"
   }
 }

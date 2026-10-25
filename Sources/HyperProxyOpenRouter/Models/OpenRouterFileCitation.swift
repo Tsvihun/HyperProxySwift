@@ -14,13 +14,13 @@ public struct OpenRouterFileCitation: Codable, Sendable {
   public var fileId: String
   public var filename: String
   public var index: Int
-  public var kind: OpenRouterFileCitationKind
+  public var kind: OpenRouterFileCitation.Kind
 
   public init(
     fileId: String,
     filename: String,
     index: Int,
-    kind: OpenRouterFileCitationKind
+    kind: OpenRouterFileCitation.Kind
   ) {
     self.fileId = fileId
     self.filename = filename
@@ -33,5 +33,9 @@ public struct OpenRouterFileCitation: Codable, Sendable {
     case filename
     case index
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case fileCitation = "file_citation"
   }
 }

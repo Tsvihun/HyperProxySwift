@@ -14,18 +14,18 @@ public struct OpenAIExternalStorageResponse: Codable, Sendable {
   public var createdAt: Int
   public var geography: String
   public var id: String
-  public var object: OpenAIExternalStorageResponseObject
+  public var object: OpenAIExternalStorageResponse.Object
   public var projectId: String
-  public var provider: OpenAIExternalStorageResponseProvider
+  public var provider: OpenAIExternalStorageResponse.Provider
   public var status: OpenAIExternalStorageStatus
 
   public init(
     createdAt: Int,
     geography: String,
     id: String,
-    object: OpenAIExternalStorageResponseObject,
+    object: OpenAIExternalStorageResponse.Object,
     projectId: String,
-    provider: OpenAIExternalStorageResponseProvider,
+    provider: OpenAIExternalStorageResponse.Provider,
     status: OpenAIExternalStorageStatus
   ) {
     self.createdAt = createdAt
@@ -45,5 +45,48 @@ public struct OpenAIExternalStorageResponse: Codable, Sendable {
     case projectId = "project_id"
     case provider
     case status
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case organizationExternalStorage = "organization.external_storage"
+  }
+
+  public enum Provider: Codable, Sendable {
+    case awsExternalStorageProviderResponse(OpenAIAwsExternalStorageProviderResponse)
+    case azureExternalStorageProviderResponse(OpenAIAzureExternalStorageProviderResponse)
+    case gcpExternalStorageProviderResponse(OpenAIGcpExternalStorageProviderResponse)
+    case ociExternalStorageProviderResponse(OpenAIOciExternalStorageProviderResponse)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenAIAwsExternalStorageProviderResponse.self) {
+        self = .awsExternalStorageProviderResponse(value)
+        return
+      }
+      if let value = try? container.decode(OpenAIAzureExternalStorageProviderResponse.self) {
+        self = .azureExternalStorageProviderResponse(value)
+        return
+      }
+      if let value = try? container.decode(OpenAIGcpExternalStorageProviderResponse.self) {
+        self = .gcpExternalStorageProviderResponse(value)
+        return
+      }
+      self = .ociExternalStorageProviderResponse(
+        try container.decode(OpenAIOciExternalStorageProviderResponse.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .awsExternalStorageProviderResponse(let value):
+        try container.encode(value)
+      case .azureExternalStorageProviderResponse(let value):
+        try container.encode(value)
+      case .gcpExternalStorageProviderResponse(let value):
+        try container.encode(value)
+      case .ociExternalStorageProviderResponse(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

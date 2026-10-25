@@ -50,15 +50,15 @@ public enum OpenRouterOperation: String, HyperProxyCatalogOperation {
   /// `GET api/v1/benchmarks`
   case getBenchmarks = "getBenchmarks"
   /// `GET api/v1/byok`
-  case listBYOKKeys = "listBYOKKeys"
+  case listByokKeys = "listBYOKKeys"
   /// `POST api/v1/byok`
-  case createBYOKKey = "createBYOKKey"
+  case createByokKey = "createBYOKKey"
   /// `DELETE api/v1/byok/{id}`
-  case deleteBYOKKey = "deleteBYOKKey"
+  case deleteByokKey = "deleteBYOKKey"
   /// `GET api/v1/byok/{id}`
-  case getBYOKKey = "getBYOKKey"
+  case getByokKey = "getBYOKKey"
   /// `PATCH api/v1/byok/{id}`
-  case updateBYOKKey = "updateBYOKKey"
+  case updateByokKey = "updateBYOKKey"
   /// `POST api/v1/chat/completions`
   case chatCompletionsCreate = "chatCompletions.create"
   /// `GET api/v1/classifications/task`
@@ -145,36 +145,6 @@ public enum OpenRouterOperation: String, HyperProxyCatalogOperation {
   case listImageModels = "listImageModels"
   /// `GET api/v1/images/models/{author}/{slug}/endpoints`
   case listImageModelEndpoints = "listImageModelEndpoints"
-  /// `GET api/v1/interns`
-  case listInterns = "listInterns"
-  /// `POST api/v1/interns`
-  case createIntern = "createIntern"
-  /// `DELETE api/v1/interns/{internId}`
-  case deleteIntern = "deleteIntern"
-  /// `GET api/v1/interns/{internId}`
-  case getIntern = "getIntern"
-  /// `PATCH api/v1/interns/{internId}`
-  case updateIntern = "updateIntern"
-  /// `POST api/v1/interns/{internId}/chat/completions`
-  case createInternChatCompletion = "createInternChatCompletion"
-  /// `GET api/v1/interns/{internId}/connections`
-  case getInternConnections = "getInternConnections"
-  /// `GET api/v1/interns/{internId}/daemon`
-  case getInternDaemon = "getInternDaemon"
-  /// `GET api/v1/interns/{internId}/daemon-access`
-  case getInternDaemonAccess = "getInternDaemonAccess"
-  /// `POST api/v1/interns/{internId}/daemon-access/sign`
-  case signInternDaemonAccessRequest = "signInternDaemonAccessRequest"
-  /// `POST api/v1/interns/{internId}/daemon/sign`
-  case signInternDaemonRequest = "signInternDaemonRequest"
-  /// `GET api/v1/interns/{internId}/icon`
-  case getInternIcon = "getInternIcon"
-  /// `POST api/v1/interns/{internId}/invoke`
-  case invokeIntern = "invokeIntern"
-  /// `POST api/v1/interns/{internId}/provision`
-  case provisionIntern = "provisionIntern"
-  /// `POST api/v1/interns/{internId}/suspend`
-  case suspendIntern = "suspendIntern"
   /// `GET api/v1/key`
   case keyRetrieve = "key.retrieve"
   /// `GET api/v1/keys`

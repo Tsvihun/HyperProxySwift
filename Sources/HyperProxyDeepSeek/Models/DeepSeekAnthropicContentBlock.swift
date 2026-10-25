@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct DeepSeekAnthropicContentBlock: Codable, Sendable {
   public var cacheControl: [String: HyperProxyJSONValue]?
   public var citations: [[String: HyperProxyJSONValue]]?
-  public var content: DeepSeekAnthropicContentBlockContent?
+  public var content: DeepSeekAnthropicContentBlock.Content?
   public var fileId: String?
   public var id: String?
   public var input: [String: HyperProxyJSONValue]?
@@ -30,7 +30,7 @@ public struct DeepSeekAnthropicContentBlock: Codable, Sendable {
     kind: DeepSeekAnthropicContentBlockType,
     cacheControl: [String: HyperProxyJSONValue]? = nil,
     citations: [[String: HyperProxyJSONValue]]? = nil,
-    content: DeepSeekAnthropicContentBlockContent? = nil,
+    content: DeepSeekAnthropicContentBlock.Content? = nil,
     fileId: String? = nil,
     id: String? = nil,
     input: [String: HyperProxyJSONValue]? = nil,
@@ -73,5 +73,41 @@ public struct DeepSeekAnthropicContentBlock: Codable, Sendable {
     case thinking
     case toolUseId = "tool_use_id"
     case kind = "type"
+  }
+
+  public enum Content: Codable, Sendable {
+    case string(String)
+    case anthropicContentBlockArray([DeepSeekAnthropicContentBlock])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .anthropicContentBlockArray(try container.decode([DeepSeekAnthropicContentBlock].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .anthropicContentBlockArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension DeepSeekAnthropicContentBlock.Content: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension DeepSeekAnthropicContentBlock.Content: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: DeepSeekAnthropicContentBlock...) {
+    self = .anthropicContentBlockArray(elements)
   }
 }

@@ -15,12 +15,12 @@ public struct OpenAIListFineTuningJobCheckpointsResponse: Codable, Sendable {
   public var firstId: String?
   public var hasMore: Bool
   public var lastId: String?
-  public var object: OpenAIListFineTuningJobCheckpointsResponseObject
+  public var object: OpenAIListFineTuningJobCheckpointsResponse.Object
 
   public init(
     data: [OpenAIFineTuningJobCheckpoint],
     hasMore: Bool,
-    object: OpenAIListFineTuningJobCheckpointsResponseObject,
+    object: OpenAIListFineTuningJobCheckpointsResponse.Object,
     firstId: String? = nil,
     lastId: String? = nil
   ) {
@@ -37,5 +37,9 @@ public struct OpenAIListFineTuningJobCheckpointsResponse: Codable, Sendable {
     case hasMore = "has_more"
     case lastId = "last_id"
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case list = "list"
   }
 }

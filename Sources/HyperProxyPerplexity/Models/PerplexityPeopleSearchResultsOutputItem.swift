@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct PerplexityPeopleSearchResultsOutputItem: Codable, Sendable {
   public var queries: [String]?
   public var results: [PerplexitySearchResult]
-  public var kind: PerplexityPeopleSearchResultsOutputItemKind
+  public var kind: PerplexityPeopleSearchResultsOutputItem.Kind
 
   public init(
     results: [PerplexitySearchResult],
-    kind: PerplexityPeopleSearchResultsOutputItemKind,
+    kind: PerplexityPeopleSearchResultsOutputItem.Kind,
     queries: [String]? = nil
   ) {
     self.queries = queries
@@ -29,5 +29,9 @@ public struct PerplexityPeopleSearchResultsOutputItem: Codable, Sendable {
     case queries
     case results
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case peopleSearchResults = "people_search_results"
   }
 }

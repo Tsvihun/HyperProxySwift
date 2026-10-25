@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIVoiceConsentDeletedResource: Codable, Sendable {
   public var deleted: Bool
   public var id: String
-  public var object: OpenAIVoiceConsentDeletedResourceObject
+  public var object: OpenAIVoiceConsentDeletedResource.Object
 
   public init(
     deleted: Bool,
     id: String,
-    object: OpenAIVoiceConsentDeletedResourceObject
+    object: OpenAIVoiceConsentDeletedResource.Object
   ) {
     self.deleted = deleted
     self.id = id
@@ -29,5 +29,9 @@ public struct OpenAIVoiceConsentDeletedResource: Codable, Sendable {
     case deleted
     case id
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case audioVoiceConsent = "audio.voice_consent"
   }
 }

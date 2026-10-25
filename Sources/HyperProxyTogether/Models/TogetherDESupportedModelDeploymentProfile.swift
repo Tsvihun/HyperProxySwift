@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherDESupportedModelDeploymentProfile: Codable, Sendable {
-  public var adapterMode: TogetherDESupportedModelDeploymentProfileAdapterMode?
+  public var adapterMode: TogetherDESupportedModelDeploymentProfile.AdapterMode?
   public var certifiedConfigRevisionId: String
   public var certifiedModelRevisionId: String
   public var config: String
@@ -23,7 +23,6 @@ public struct TogetherDESupportedModelDeploymentProfile: Codable, Sendable {
   public var performanceBenchmarks: TogetherDESupportedModelPerformanceBenchmarks
   public var profileId: String
   public var quantization: String
-  public var tensorParallelSize: Int?
 
   public init(
     certifiedConfigRevisionId: String,
@@ -37,8 +36,7 @@ public struct TogetherDESupportedModelDeploymentProfile: Codable, Sendable {
     performanceBenchmarks: TogetherDESupportedModelPerformanceBenchmarks,
     profileId: String,
     quantization: String,
-    adapterMode: TogetherDESupportedModelDeploymentProfileAdapterMode? = nil,
-    tensorParallelSize: Int? = nil
+    adapterMode: TogetherDESupportedModelDeploymentProfile.AdapterMode? = nil
   ) {
     self.adapterMode = adapterMode
     self.certifiedConfigRevisionId = certifiedConfigRevisionId
@@ -52,7 +50,6 @@ public struct TogetherDESupportedModelDeploymentProfile: Codable, Sendable {
     self.performanceBenchmarks = performanceBenchmarks
     self.profileId = profileId
     self.quantization = quantization
-    self.tensorParallelSize = tensorParallelSize
   }
 
   enum CodingKeys: String, CodingKey {
@@ -68,6 +65,13 @@ public struct TogetherDESupportedModelDeploymentProfile: Codable, Sendable {
     case performanceBenchmarks
     case profileId
     case quantization
-    case tensorParallelSize
+  }
+
+  public enum AdapterMode: String, Codable, Hashable,
+    Sendable
+  {
+    case adapterModeFixed = "ADAPTER_MODE_FIXED"
+    case adapterModeDynamic = "ADAPTER_MODE_DYNAMIC"
+    case adapterModeDisabled = "ADAPTER_MODE_DISABLED"
   }
 }

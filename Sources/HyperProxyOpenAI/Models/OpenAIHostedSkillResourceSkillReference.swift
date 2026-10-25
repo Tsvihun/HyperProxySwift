@@ -14,14 +14,14 @@ public struct OpenAIHostedSkillResourceSkillReference: Codable, Sendable {
   public var description: String
   public var name: String
   public var skillId: String
-  public var kind: OpenAIHostedSkillResourceSkillReferenceKind
+  public var kind: OpenAIHostedSkillResourceSkillReference.Kind
   public var version: String
 
   public init(
     description: String,
     name: String,
     skillId: String,
-    kind: OpenAIHostedSkillResourceSkillReferenceKind,
+    kind: OpenAIHostedSkillResourceSkillReference.Kind,
     version: String
   ) {
     self.description = description
@@ -37,5 +37,9 @@ public struct OpenAIHostedSkillResourceSkillReference: Codable, Sendable {
     case skillId = "skill_id"
     case kind = "type"
     case version
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case skillReference = "skill_reference"
   }
 }

@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenRouterStopServerToolsWhenStepCountIs: Codable, Sendable {
   public var stepCount: Int
-  public var kind: OpenRouterStopServerToolsWhenStepCountIsKind
+  public var kind: OpenRouterStopServerToolsWhenStepCountIs.Kind
 
   public init(
     stepCount: Int,
-    kind: OpenRouterStopServerToolsWhenStepCountIsKind
+    kind: OpenRouterStopServerToolsWhenStepCountIs.Kind
   ) {
     self.stepCount = stepCount
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenRouterStopServerToolsWhenStepCountIs: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case stepCount = "step_count"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case stepCountIs = "step_count_is"
   }
 }

@@ -26,7 +26,7 @@ public struct AnthropicBetaFederationRule: Codable, Sendable {
   public var oauthScope: String
   public var target: AnthropicBetaServiceAccountTarget
   public var tokenLifetimeSeconds: Int
-  public var kind: AnthropicFederationRuleKind
+  public var kind: AnthropicBetaFederationRule.Kind
   public var updatedAt: String
   public var updatedByActorId: String?
   public var workspaceId: String?
@@ -52,7 +52,7 @@ public struct AnthropicBetaFederationRule: Codable, Sendable {
     updatedByActorId: String?,
     workspaceId: String?,
     workspaceIds: [String],
-    kind: AnthropicFederationRuleKind = .federationRule
+    kind: AnthropicBetaFederationRule.Kind = .federationRule
   ) {
     self.appliesToAllWorkspaces = appliesToAllWorkspaces
     self.archivedAt = archivedAt
@@ -97,5 +97,9 @@ public struct AnthropicBetaFederationRule: Codable, Sendable {
     case updatedByActorId = "updated_by_actor_id"
     case workspaceId = "workspace_id"
     case workspaceIds = "workspace_ids"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case federationRule = "federation_rule"
   }
 }

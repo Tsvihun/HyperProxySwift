@@ -20,7 +20,7 @@ public struct ElevenLabsDubbingProjectResponse: Codable, Sendable {
   public var reference: String?
   public var revision: Int
   public var sourceLanguage: String?
-  public var status: ElevenLabsDubbingProjectResponseStatus
+  public var status: ElevenLabsDubbingProjectResponse.Status
   public var updatedAt: String
   public var warnings: [ElevenLabsVoicesNotPermittedWarning]?
   public var webhookIds: [String]?
@@ -29,7 +29,7 @@ public struct ElevenLabsDubbingProjectResponse: Codable, Sendable {
     createdAt: String,
     projectId: String,
     revision: Int,
-    status: ElevenLabsDubbingProjectResponseStatus,
+    status: ElevenLabsDubbingProjectResponse.Status,
     updatedAt: String,
     error: ElevenLabsDubbingError? = nil,
     languageIds: [String]? = nil,
@@ -69,5 +69,13 @@ public struct ElevenLabsDubbingProjectResponse: Codable, Sendable {
     case updatedAt = "updated_at"
     case warnings
     case webhookIds = "webhook_ids"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case queued = "queued"
+    case preparing = "preparing"
+    case processing = "processing"
+    case ready = "ready"
+    case failed = "failed"
   }
 }

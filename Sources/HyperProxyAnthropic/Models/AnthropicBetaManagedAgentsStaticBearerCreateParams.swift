@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct AnthropicBetaManagedAgentsStaticBearerCreateParams: Codable, Sendable {
   public var mcpServerUrl: String
   public var token: String
-  public var kind: AnthropicBetaManagedAgentsStaticBearerCreateParamsKind
+  public var kind: AnthropicBetaManagedAgentsStaticBearerCreateParams.Kind
 
   public init(
     mcpServerUrl: String,
     token: String,
-    kind: AnthropicBetaManagedAgentsStaticBearerCreateParamsKind
+    kind: AnthropicBetaManagedAgentsStaticBearerCreateParams.Kind
   ) {
     self.mcpServerUrl = mcpServerUrl
     self.token = token
@@ -29,5 +29,11 @@ public struct AnthropicBetaManagedAgentsStaticBearerCreateParams: Codable, Senda
     case mcpServerUrl = "mcp_server_url"
     case token
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case staticBearer = "static_bearer"
   }
 }

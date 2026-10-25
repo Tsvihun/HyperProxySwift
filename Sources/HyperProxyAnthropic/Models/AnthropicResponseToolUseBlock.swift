@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicResponseToolUseBlock: Codable, Sendable {
-  public var caller: AnthropicResponseToolUseBlockCaller
+  public var caller: AnthropicResponseToolUseBlock.Caller
   public var id: String
   public var input: [String: HyperProxyJSONValue]
   public var name: String
@@ -19,7 +19,7 @@ public struct AnthropicResponseToolUseBlock: Codable, Sendable {
   public var kind: AnthropicToolUseKind
 
   public init(
-    caller: AnthropicResponseToolUseBlockCaller,
+    caller: AnthropicResponseToolUseBlock.Caller,
     id: String,
     input: [String: HyperProxyJSONValue],
     name: String,
@@ -41,5 +41,36 @@ public struct AnthropicResponseToolUseBlock: Codable, Sendable {
     case name
     case toolsetName = "toolset_name"
     case kind = "type"
+  }
+
+  public enum Caller: Codable, Sendable {
+    case directCaller(AnthropicDirectCaller)
+    case serverToolCaller(AnthropicServerToolCaller)
+    case serverToolCaller20260120(AnthropicServerToolCaller20260120)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(AnthropicDirectCaller.self) {
+        self = .directCaller(value)
+        return
+      }
+      if let value = try? container.decode(AnthropicServerToolCaller.self) {
+        self = .serverToolCaller(value)
+        return
+      }
+      self = .serverToolCaller20260120(try container.decode(AnthropicServerToolCaller20260120.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .directCaller(let value):
+        try container.encode(value)
+      case .serverToolCaller(let value):
+        try container.encode(value)
+      case .serverToolCaller20260120(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

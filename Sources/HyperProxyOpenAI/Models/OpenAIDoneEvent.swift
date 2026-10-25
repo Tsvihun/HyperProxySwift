@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIDoneEvent: Codable, Sendable {
-  public var data: OpenAIDoneEventData
-  public var event: OpenAIDoneEventEvent
+  public var data: OpenAIDoneEvent.DataValue
+  public var event: OpenAIDoneEvent.Event
 
   public init(
-    data: OpenAIDoneEventData,
-    event: OpenAIDoneEventEvent
+    data: OpenAIDoneEvent.DataValue,
+    event: OpenAIDoneEvent.Event
   ) {
     self.data = data
     self.event = event
@@ -25,5 +25,13 @@ public struct OpenAIDoneEvent: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case data
     case event
+  }
+
+  public enum DataValue: String, Codable, Hashable, Sendable {
+    case done = "[DONE]"
+  }
+
+  public enum Event: String, Codable, Hashable, Sendable {
+    case done = "done"
   }
 }

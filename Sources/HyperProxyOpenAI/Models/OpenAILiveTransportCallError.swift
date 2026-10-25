@@ -14,12 +14,12 @@ public struct OpenAILiveTransportCallError: Codable, Sendable {
   public var code: String
   public var message: String
   public var param: String?
-  public var kind: OpenAILiveTransportCallErrorKind
+  public var kind: OpenAILiveTransportCallError.Kind
 
   public init(
     code: String,
     message: String,
-    kind: OpenAILiveTransportCallErrorKind,
+    kind: OpenAILiveTransportCallError.Kind,
     param: String? = nil
   ) {
     self.code = code
@@ -33,5 +33,9 @@ public struct OpenAILiveTransportCallError: Codable, Sendable {
     case message
     case param
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case callError = "call_error"
   }
 }

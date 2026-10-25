@@ -12,10 +12,10 @@ import HyperProxyCore
 
 public struct OpenAILiveInputAudioMuteParam: Codable, Sendable {
   public var eventId: String?
-  public var kind: OpenAILiveInputAudioMuteParamKind
+  public var kind: OpenAILiveInputAudioMuteParam.Kind
 
   public init(
-    kind: OpenAILiveInputAudioMuteParamKind,
+    kind: OpenAILiveInputAudioMuteParam.Kind,
     eventId: String? = nil
   ) {
     self.eventId = eventId
@@ -25,5 +25,9 @@ public struct OpenAILiveInputAudioMuteParam: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case eventId = "event_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case sessionInputAudioMute = "session.input_audio.mute"
   }
 }

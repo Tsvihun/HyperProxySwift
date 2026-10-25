@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct OpenRouterChatUsage: Codable, Sendable {
   public var completionTokens: Int
-  public var completionTokensDetails: OpenRouterChatUsageCompletionTokensDetails?
+  public var completionTokensDetails: OpenRouterChatUsage.CompletionTokensDetails?
   public var cost: Double?
   public var costDetails: OpenRouterCostDetails?
   public var isByok: Bool?
   public var promptTokens: Int
-  public var promptTokensDetails: OpenRouterChatUsagePromptTokensDetails?
+  public var promptTokensDetails: OpenRouterChatUsage.PromptTokensDetails?
   public var serverToolUseDetails: OpenRouterServerToolUseDetails?
   public var totalTokens: Int
 
@@ -25,11 +25,11 @@ public struct OpenRouterChatUsage: Codable, Sendable {
     completionTokens: Int,
     promptTokens: Int,
     totalTokens: Int,
-    completionTokensDetails: OpenRouterChatUsageCompletionTokensDetails? = nil,
+    completionTokensDetails: OpenRouterChatUsage.CompletionTokensDetails? = nil,
     cost: Double? = nil,
     costDetails: OpenRouterCostDetails? = nil,
     isByok: Bool? = nil,
-    promptTokensDetails: OpenRouterChatUsagePromptTokensDetails? = nil,
+    promptTokensDetails: OpenRouterChatUsage.PromptTokensDetails? = nil,
     serverToolUseDetails: OpenRouterServerToolUseDetails? = nil
   ) {
     self.completionTokens = completionTokens
@@ -53,5 +53,57 @@ public struct OpenRouterChatUsage: Codable, Sendable {
     case promptTokensDetails = "prompt_tokens_details"
     case serverToolUseDetails = "server_tool_use_details"
     case totalTokens = "total_tokens"
+  }
+
+  public struct CompletionTokensDetails: Codable, Sendable {
+    public var acceptedPredictionTokens: Int?
+    public var audioTokens: Int?
+    public var reasoningTokens: Int?
+    public var rejectedPredictionTokens: Int?
+
+    public init(
+      acceptedPredictionTokens: Int? = nil,
+      audioTokens: Int? = nil,
+      reasoningTokens: Int? = nil,
+      rejectedPredictionTokens: Int? = nil
+    ) {
+      self.acceptedPredictionTokens = acceptedPredictionTokens
+      self.audioTokens = audioTokens
+      self.reasoningTokens = reasoningTokens
+      self.rejectedPredictionTokens = rejectedPredictionTokens
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case acceptedPredictionTokens = "accepted_prediction_tokens"
+      case audioTokens = "audio_tokens"
+      case reasoningTokens = "reasoning_tokens"
+      case rejectedPredictionTokens = "rejected_prediction_tokens"
+    }
+  }
+
+  public struct PromptTokensDetails: Codable, Sendable {
+    public var audioTokens: Int?
+    public var cacheWriteTokens: Int?
+    public var cachedTokens: Int?
+    public var videoTokens: Int?
+
+    public init(
+      audioTokens: Int? = nil,
+      cacheWriteTokens: Int? = nil,
+      cachedTokens: Int? = nil,
+      videoTokens: Int? = nil
+    ) {
+      self.audioTokens = audioTokens
+      self.cacheWriteTokens = cacheWriteTokens
+      self.cachedTokens = cachedTokens
+      self.videoTokens = videoTokens
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case audioTokens = "audio_tokens"
+      case cacheWriteTokens = "cache_write_tokens"
+      case cachedTokens = "cached_tokens"
+      case videoTokens = "video_tokens"
+    }
   }
 }

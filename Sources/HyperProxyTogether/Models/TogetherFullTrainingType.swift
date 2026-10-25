@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherFullTrainingType: Codable, Sendable {
-  public var kind: TogetherFullTrainingTypeKind
+  public var kind: TogetherFullTrainingType.Kind
 
   public init(
-    kind: TogetherFullTrainingTypeKind
+    kind: TogetherFullTrainingType.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case full = "Full"
   }
 }

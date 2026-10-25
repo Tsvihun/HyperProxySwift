@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct OpenAIBetaResponseConfigurationUpdateItemParam: Codable, Sendable {
   public var agent: OpenAIBetaAgentTagParam?
   public var id: String?
-  public var reasoning: OpenAIBetaResponseConfigurationUpdateItemParamReasoning?
-  public var kind: OpenAIBetaResponseConfigurationUpdateItemParamKind
+  public var reasoning: OpenAIBetaResponseConfigurationUpdateItemParam.Reasoning?
+  public var kind: OpenAIBetaResponseConfigurationUpdateItemParam.Kind
 
   public init(
-    kind: OpenAIBetaResponseConfigurationUpdateItemParamKind,
+    kind: OpenAIBetaResponseConfigurationUpdateItemParam.Kind,
     agent: OpenAIBetaAgentTagParam? = nil,
     id: String? = nil,
-    reasoning: OpenAIBetaResponseConfigurationUpdateItemParamReasoning? = nil
+    reasoning: OpenAIBetaResponseConfigurationUpdateItemParam.Reasoning? = nil
   ) {
     self.agent = agent
     self.id = id
@@ -33,5 +33,23 @@ public struct OpenAIBetaResponseConfigurationUpdateItemParam: Codable, Sendable 
     case id
     case reasoning
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case configurationUpdate = "configuration_update"
+  }
+
+  public struct Reasoning: Codable, Sendable {
+    public var effort: OpenAIBetaReasoningEffort?
+
+    public init(
+      effort: OpenAIBetaReasoningEffort? = nil
+    ) {
+      self.effort = effort
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case effort
+    }
   }
 }

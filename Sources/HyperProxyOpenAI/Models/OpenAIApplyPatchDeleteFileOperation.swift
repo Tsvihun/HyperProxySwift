@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIApplyPatchDeleteFileOperation: Codable, Sendable {
   public var path: String
-  public var kind: OpenAIApplyPatchDeleteFileOperationKind
+  public var kind: OpenAIApplyPatchDeleteFileOperation.Kind
 
   public init(
     path: String,
-    kind: OpenAIApplyPatchDeleteFileOperationKind
+    kind: OpenAIApplyPatchDeleteFileOperation.Kind
   ) {
     self.path = path
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenAIApplyPatchDeleteFileOperation: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case path
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case deleteFile = "delete_file"
   }
 }

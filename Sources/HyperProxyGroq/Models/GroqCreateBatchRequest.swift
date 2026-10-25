@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct GroqCreateBatchRequest: Codable, Sendable {
   public var completionWindow: String
-  public var endpoint: GroqCreateBatchRequestEndpoint
+  public var endpoint: GroqCreateBatchRequest.Endpoint
   public var inputFileId: String
   public var metadata: [String: String]?
 
   public init(
     completionWindow: String,
-    endpoint: GroqCreateBatchRequestEndpoint,
+    endpoint: GroqCreateBatchRequest.Endpoint,
     inputFileId: String,
     metadata: [String: String]? = nil
   ) {
@@ -33,5 +33,9 @@ public struct GroqCreateBatchRequest: Codable, Sendable {
     case endpoint
     case inputFileId = "input_file_id"
     case metadata
+  }
+
+  public enum Endpoint: String, Codable, Hashable, Sendable {
+    case v1ChatCompletions = "/v1/chat/completions"
   }
 }

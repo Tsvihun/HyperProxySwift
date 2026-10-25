@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherResponseFormatJsonObject: Codable, Sendable {
-  public var kind: TogetherResponseFormatJsonObjectKind
+  public var kind: TogetherResponseFormatJsonObject.Kind
 
   public init(
-    kind: TogetherResponseFormatJsonObjectKind
+    kind: TogetherResponseFormatJsonObject.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case jsonObject = "json_object"
   }
 }

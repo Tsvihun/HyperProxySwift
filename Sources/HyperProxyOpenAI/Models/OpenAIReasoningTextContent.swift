@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIReasoningTextContent: Codable, Sendable {
   public var text: String
-  public var kind: OpenAIReasoningTextContentKind
+  public var kind: OpenAIReasoningTextContent.Kind
 
   public init(
     text: String,
-    kind: OpenAIReasoningTextContentKind
+    kind: OpenAIReasoningTextContent.Kind
   ) {
     self.text = text
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenAIReasoningTextContent: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case text
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case reasoningText = "reasoning_text"
   }
 }

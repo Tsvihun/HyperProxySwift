@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIWebSearchActionOpenPage: Codable, Sendable {
-  public var kind: OpenAIWebSearchActionOpenPageKind
+  public var kind: OpenAIWebSearchActionOpenPage.Kind
   public var url: String?
 
   public init(
-    kind: OpenAIWebSearchActionOpenPageKind,
+    kind: OpenAIWebSearchActionOpenPage.Kind,
     url: String? = nil
   ) {
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenAIWebSearchActionOpenPage: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case kind = "type"
     case url
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case openPage = "open_page"
   }
 }

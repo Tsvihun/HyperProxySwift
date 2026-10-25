@@ -34,25 +34,25 @@ public enum ElevenLabsMusicAllowedOutputFormats: Codable, Sendable {
   }
 
   /// Provider-native value without the schema union wrapper.
-  public static var mp32205032: Self { .allowedOutputFormats(.mp32205032) }
+  public static var mp3_22050_32: Self { .allowedOutputFormats(.mp3_22050_32) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var mp32400048: Self { .allowedOutputFormats(.mp32400048) }
+  public static var mp3_24000_48: Self { .allowedOutputFormats(.mp3_24000_48) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var mp34410032: Self { .allowedOutputFormats(.mp34410032) }
+  public static var mp3_44100_32: Self { .allowedOutputFormats(.mp3_44100_32) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var mp34410064: Self { .allowedOutputFormats(.mp34410064) }
+  public static var mp3_44100_64: Self { .allowedOutputFormats(.mp3_44100_64) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var mp34410096: Self { .allowedOutputFormats(.mp34410096) }
+  public static var mp3_44100_96: Self { .allowedOutputFormats(.mp3_44100_96) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var mp344100128: Self { .allowedOutputFormats(.mp344100128) }
+  public static var mp3_44100_128: Self { .allowedOutputFormats(.mp3_44100_128) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var mp344100192: Self { .allowedOutputFormats(.mp344100192) }
+  public static var mp3_44100_192: Self { .allowedOutputFormats(.mp3_44100_192) }
 
   /// Provider-native value without the schema union wrapper.
   public static var pcm8000: Self { .allowedOutputFormats(.pcm8000) }
@@ -82,29 +82,29 @@ public enum ElevenLabsMusicAllowedOutputFormats: Codable, Sendable {
   public static var alaw8000: Self { .allowedOutputFormats(.alaw8000) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var opus4800032: Self { .allowedOutputFormats(.opus4800032) }
+  public static var opus48000_32: Self { .allowedOutputFormats(.opus48000_32) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var opus4800064: Self { .allowedOutputFormats(.opus4800064) }
+  public static var opus48000_64: Self { .allowedOutputFormats(.opus48000_64) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var opus4800096: Self { .allowedOutputFormats(.opus4800096) }
+  public static var opus48000_96: Self { .allowedOutputFormats(.opus48000_96) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var opus48000128: Self { .allowedOutputFormats(.opus48000128) }
+  public static var opus48000_128: Self { .allowedOutputFormats(.opus48000_128) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var opus48000192: Self { .allowedOutputFormats(.opus48000192) }
+  public static var opus48000_192: Self { .allowedOutputFormats(.opus48000_192) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var mp348000128: Self { .musicOnlyOutputFormats(.mp348000128) }
+  public static var mp3_48000_128: Self { .musicOnlyOutputFormats(.mp3_48000_128) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var mp348000192: Self { .musicOnlyOutputFormats(.mp348000192) }
+  public static var mp3_48000_192: Self { .musicOnlyOutputFormats(.mp3_48000_192) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var mp348000240: Self { .musicOnlyOutputFormats(.mp348000240) }
+  public static var mp3_48000_240: Self { .musicOnlyOutputFormats(.mp3_48000_240) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var mp348000320: Self { .musicOnlyOutputFormats(.mp348000320) }
+  public static var mp3_48000_320: Self { .musicOnlyOutputFormats(.mp3_48000_320) }
 }

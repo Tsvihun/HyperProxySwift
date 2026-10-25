@@ -12,9 +12,9 @@ import HyperProxyCore
 
 public struct FireworksEmbeddingRequest: Codable, Sendable {
   public var dimensions: Int?
-  public var encodingFormat: FireworksEmbeddingRequestEncodingFormat?
+  public var encodingFormat: FireworksEmbeddingRequest.EncodingFormat?
   public var fanoutSize: Int?
-  public var input: FireworksEmbeddingRequestInput
+  public var input: FireworksEmbeddingRequest.Input
   public var model: String
   public var normalize: Bool?
   public var perfMetricsInResponse: Bool?
@@ -26,10 +26,10 @@ public struct FireworksEmbeddingRequest: Codable, Sendable {
   public var user: String?
 
   public init(
-    input: FireworksEmbeddingRequestInput,
+    input: FireworksEmbeddingRequest.Input,
     model: String,
     dimensions: Int? = nil,
-    encodingFormat: FireworksEmbeddingRequestEncodingFormat? = nil,
+    encodingFormat: FireworksEmbeddingRequest.EncodingFormat? = nil,
     fanoutSize: Int? = nil,
     normalize: Bool? = nil,
     perfMetricsInResponse: Bool? = nil,
@@ -69,5 +69,68 @@ public struct FireworksEmbeddingRequest: Codable, Sendable {
     case rawOutput = "raw_output"
     case returnLogits = "return_logits"
     case user
+  }
+
+  public enum EncodingFormat: String, Codable, Hashable, Sendable {
+    case float = "float"
+    case base64 = "base64"
+  }
+
+  public enum Input: Codable, Sendable {
+    case string(String)
+    case stringArray([String])
+    case arrayArray([[Int]])
+    case integerArray([Int])
+    case objectDictionary([String: HyperProxyJSONValue])
+    case objectArray([[String: HyperProxyJSONValue]])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      if let value = try? container.decode([String].self) {
+        self = .stringArray(value)
+        return
+      }
+      if let value = try? container.decode([[Int]].self) {
+        self = .arrayArray(value)
+        return
+      }
+      if let value = try? container.decode([Int].self) {
+        self = .integerArray(value)
+        return
+      }
+      if let value = try? container.decode([String: HyperProxyJSONValue].self) {
+        self = .objectDictionary(value)
+        return
+      }
+      self = .objectArray(try container.decode([[String: HyperProxyJSONValue]].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .stringArray(let value):
+        try container.encode(value)
+      case .arrayArray(let value):
+        try container.encode(value)
+      case .integerArray(let value):
+        try container.encode(value)
+      case .objectDictionary(let value):
+        try container.encode(value)
+      case .objectArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension FireworksEmbeddingRequest.Input: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

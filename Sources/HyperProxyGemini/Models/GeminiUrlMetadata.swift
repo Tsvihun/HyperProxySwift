@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct GeminiUrlMetadata: Codable, Sendable {
   public var retrievedUrl: String?
-  public var urlRetrievalStatus: GeminiUrlMetadataUrlRetrievalStatus?
+  public var urlRetrievalStatus: GeminiUrlMetadata.UrlRetrievalStatus?
 
   public init(
     retrievedUrl: String? = nil,
-    urlRetrievalStatus: GeminiUrlMetadataUrlRetrievalStatus? = nil
+    urlRetrievalStatus: GeminiUrlMetadata.UrlRetrievalStatus? = nil
   ) {
     self.retrievedUrl = retrievedUrl
     self.urlRetrievalStatus = urlRetrievalStatus
@@ -25,5 +25,13 @@ public struct GeminiUrlMetadata: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case retrievedUrl
     case urlRetrievalStatus
+  }
+
+  public enum UrlRetrievalStatus: String, Codable, Hashable, Sendable {
+    case urlRetrievalStatusUnspecified = "URL_RETRIEVAL_STATUS_UNSPECIFIED"
+    case urlRetrievalStatusSuccess = "URL_RETRIEVAL_STATUS_SUCCESS"
+    case urlRetrievalStatusError = "URL_RETRIEVAL_STATUS_ERROR"
+    case urlRetrievalStatusPaywall = "URL_RETRIEVAL_STATUS_PAYWALL"
+    case urlRetrievalStatusUnsafe = "URL_RETRIEVAL_STATUS_UNSAFE"
   }
 }

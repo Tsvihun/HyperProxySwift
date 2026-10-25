@@ -18,12 +18,12 @@ public struct AnthropicBetaFederationIssuer: Codable, Sendable {
   public var createdByActorId: String?
   public var id: String
   public var issuerUrl: String
-  public var jwks: AnthropicBetaFederationIssuerJwks
+  public var jwks: AnthropicBetaFederationIssuer.Jwks
   public var jwksPollingDisabledAt: String?
   public var maxJwtLifetimeSeconds: Int
   public var name: String
   public var pollStatus: AnthropicBetaIssuerPollStatus?
-  public var kind: AnthropicFederationIssuerKind
+  public var kind: AnthropicBetaFederationIssuer.Kind
   public var updatedAt: String
   public var updatedByActorId: String?
 
@@ -35,14 +35,14 @@ public struct AnthropicBetaFederationIssuer: Codable, Sendable {
     createdByActorId: String?,
     id: String,
     issuerUrl: String,
-    jwks: AnthropicBetaFederationIssuerJwks,
+    jwks: AnthropicBetaFederationIssuer.Jwks,
     jwksPollingDisabledAt: String?,
     maxJwtLifetimeSeconds: Int,
     name: String,
     pollStatus: AnthropicBetaIssuerPollStatus?,
     updatedAt: String,
     updatedByActorId: String?,
-    kind: AnthropicFederationIssuerKind = .federationIssuer
+    kind: AnthropicBetaFederationIssuer.Kind = .federationIssuer
   ) {
     self.archivedAt = archivedAt
     self.archivedByActorId = archivedByActorId
@@ -77,5 +77,40 @@ public struct AnthropicBetaFederationIssuer: Codable, Sendable {
     case kind = "type"
     case updatedAt = "updated_at"
     case updatedByActorId = "updated_by_actor_id"
+  }
+
+  public enum Jwks: Codable, Sendable {
+    case betaJwksDiscovery(AnthropicBetaJwksDiscovery)
+    case betaJwksExplicitUrl(AnthropicBetaJwksExplicitUrl)
+    case betaJwksInline(AnthropicBetaJwksInline)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(AnthropicBetaJwksDiscovery.self) {
+        self = .betaJwksDiscovery(value)
+        return
+      }
+      if let value = try? container.decode(AnthropicBetaJwksExplicitUrl.self) {
+        self = .betaJwksExplicitUrl(value)
+        return
+      }
+      self = .betaJwksInline(try container.decode(AnthropicBetaJwksInline.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .betaJwksDiscovery(let value):
+        try container.encode(value)
+      case .betaJwksExplicitUrl(let value):
+        try container.encode(value)
+      case .betaJwksInline(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case federationIssuer = "federation_issuer"
   }
 }

@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIListOrganizationCertificatesParameters: Codable, Sendable {
   public var after: String?
   public var limit: Int?
-  public var order: OpenAIListOrganizationCertificatesParametersOrder?
+  public var order: OpenAIListOrganizationCertificatesParameters.Order?
 
   public init(
     after: String? = nil,
     limit: Int? = nil,
-    order: OpenAIListOrganizationCertificatesParametersOrder? = nil
+    order: OpenAIListOrganizationCertificatesParameters.Order? = nil
   ) {
     self.after = after
     self.limit = limit
@@ -29,5 +29,10 @@ public struct OpenAIListOrganizationCertificatesParameters: Codable, Sendable {
     case after
     case limit
     case order
+  }
+
+  public enum Order: String, Codable, Hashable, Sendable {
+    case asc = "asc"
+    case desc = "desc"
   }
 }

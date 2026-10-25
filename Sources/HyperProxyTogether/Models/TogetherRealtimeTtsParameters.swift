@@ -13,13 +13,13 @@ import HyperProxyCore
 public struct TogetherRealtimeTtsParameters: Codable, Sendable {
   public var language: String?
   public var maxPartialLength: Int?
-  public var model: TogetherRealtimeTtsParametersModel?
+  public var model: TogetherRealtimeTtsParameters.Model?
   public var voice: String?
 
   public init(
     language: String? = nil,
     maxPartialLength: Int? = nil,
-    model: TogetherRealtimeTtsParametersModel? = nil,
+    model: TogetherRealtimeTtsParameters.Model? = nil,
     voice: String? = nil
   ) {
     self.language = language
@@ -33,5 +33,10 @@ public struct TogetherRealtimeTtsParameters: Codable, Sendable {
     case maxPartialLength = "max_partial_length"
     case model
     case voice
+  }
+
+  public enum Model: String, Codable, Hashable, Sendable {
+    case hexgradKokoro82m = "hexgrad/Kokoro-82M"
+    case cartesiaSonicEnglish = "cartesia/sonic-english"
   }
 }

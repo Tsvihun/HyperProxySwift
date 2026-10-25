@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct AnthropicBetaWebhookVaultCredentialArchivedEventData: Codable, Sendable {
   public var id: String
   public var organizationId: String
-  public var kind: AnthropicVaultCredentialArchivedKind
+  public var kind: AnthropicBetaWebhookVaultCredentialArchivedEventData.Kind
   public var vaultId: String
   public var workspaceId: String
 
@@ -22,7 +22,7 @@ public struct AnthropicBetaWebhookVaultCredentialArchivedEventData: Codable, Sen
     organizationId: String,
     vaultId: String,
     workspaceId: String,
-    kind: AnthropicVaultCredentialArchivedKind = .vaultCredentialArchived
+    kind: AnthropicBetaWebhookVaultCredentialArchivedEventData.Kind = .vaultCredentialArchived
   ) {
     self.id = id
     self.organizationId = organizationId
@@ -37,5 +37,9 @@ public struct AnthropicBetaWebhookVaultCredentialArchivedEventData: Codable, Sen
     case kind = "type"
     case vaultId = "vault_id"
     case workspaceId = "workspace_id"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case vaultCredentialArchived = "vault_credential.archived"
   }
 }

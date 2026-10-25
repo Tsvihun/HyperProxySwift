@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsGetBookingPageSettingsParams: Codable, Sendable {
-  public var smbToolType: ElevenLabsGetBookingPageSettingsSmbToolType?
+  public var smbToolType: ElevenLabsGetBookingPageSettingsParams.SmbToolType?
 
   public init(
-    smbToolType: ElevenLabsGetBookingPageSettingsSmbToolType? = nil
+    smbToolType: ElevenLabsGetBookingPageSettingsParams.SmbToolType? = nil
   ) {
     self.smbToolType = smbToolType
   }
 
   enum CodingKeys: String, CodingKey {
     case smbToolType = "smb_tool_type"
+  }
+
+  public enum SmbToolType: String, Codable, Hashable, Sendable {
+    case getBookingPageSettings = "get_booking_page_settings"
   }
 }

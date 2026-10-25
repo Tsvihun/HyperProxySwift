@@ -23,10 +23,10 @@ public struct ElevenLabsSpeechHistoryItemResponseModel: Codable, Sendable {
   public var requestId: String?
   public var settings: [String: HyperProxyJSONValue]?
   public var shareLinkId: String?
-  public var source: ElevenLabsSpeechHistoryItemResponseModelSource?
-  public var state: ElevenLabsSpeechHistoryItemResponseModelState
+  public var source: ElevenLabsSpeechHistoryItemResponseModel.Source?
+  public var state: ElevenLabsSpeechHistoryItemResponseModel.State
   public var text: String?
-  public var voiceCategory: ElevenLabsSpeechHistoryItemResponseModelVoiceCategory?
+  public var voiceCategory: ElevenLabsSpeechHistoryItemResponseModel.VoiceCategory?
   public var voiceId: String?
   public var voiceName: String?
 
@@ -36,7 +36,7 @@ public struct ElevenLabsSpeechHistoryItemResponseModel: Codable, Sendable {
     contentType: String,
     dateUnix: Int,
     historyItemId: String,
-    state: ElevenLabsSpeechHistoryItemResponseModelState,
+    state: ElevenLabsSpeechHistoryItemResponseModel.State,
     alignments: ElevenLabsHistoryAlignmentsResponseModel? = nil,
     dialogue: [ElevenLabsDialogueInputResponseModel]? = nil,
     modelId: String? = nil,
@@ -44,9 +44,9 @@ public struct ElevenLabsSpeechHistoryItemResponseModel: Codable, Sendable {
     requestId: String? = nil,
     settings: [String: HyperProxyJSONValue]? = nil,
     shareLinkId: String? = nil,
-    source: ElevenLabsSpeechHistoryItemResponseModelSource? = nil,
+    source: ElevenLabsSpeechHistoryItemResponseModel.Source? = nil,
     text: String? = nil,
-    voiceCategory: ElevenLabsSpeechHistoryItemResponseModelVoiceCategory? = nil,
+    voiceCategory: ElevenLabsSpeechHistoryItemResponseModel.VoiceCategory? = nil,
     voiceId: String? = nil,
     voiceName: String? = nil
   ) {
@@ -89,5 +89,35 @@ public struct ElevenLabsSpeechHistoryItemResponseModel: Codable, Sendable {
     case voiceCategory = "voice_category"
     case voiceId = "voice_id"
     case voiceName = "voice_name"
+  }
+
+  public enum Source: String, Codable, Hashable, Sendable {
+    case tts = "TTS"
+    case sts = "STS"
+    case projects = "Projects"
+    case pd = "PD"
+    case an = "AN"
+    case dubbing = "Dubbing"
+    case playAPI = "PlayAPI"
+    case convAI = "ConvAI"
+    case voiceGeneration = "VoiceGeneration"
+    case inVpc = "InVPC"
+    case flows = "Flows"
+    case voicePreview = "VoicePreview"
+  }
+
+  public enum State: String, Codable, Hashable, Sendable {
+    case created = "created"
+    case deleted = "deleted"
+    case processing = "processing"
+  }
+
+  public enum VoiceCategory: String, Codable, Hashable,
+    Sendable
+  {
+    case premade = "premade"
+    case cloned = "cloned"
+    case generated = "generated"
+    case professional = "professional"
   }
 }

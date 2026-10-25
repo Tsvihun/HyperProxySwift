@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct FalGetModelInsightsParameters: Codable, Sendable {
-  public var endpointId: FalGetModelInsightsParametersEndpointId?
+  public var endpointId: FalGetModelInsightsParameters.EndpointId?
   public var limit: Int?
   public var q: String?
 
   public init(
-    endpointId: FalGetModelInsightsParametersEndpointId? = nil,
+    endpointId: FalGetModelInsightsParameters.EndpointId? = nil,
     limit: Int? = nil,
     q: String? = nil
   ) {
@@ -29,5 +29,41 @@ public struct FalGetModelInsightsParameters: Codable, Sendable {
     case endpointId = "endpoint_id"
     case limit
     case q
+  }
+
+  public enum EndpointId: Codable, Sendable {
+    case string(String)
+    case stringArray([String])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .stringArray(try container.decode([String].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .stringArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension FalGetModelInsightsParameters.EndpointId: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension FalGetModelInsightsParameters.EndpointId: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: String...) {
+    self = .stringArray(elements)
   }
 }

@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsDependentAvailableToolIdentifier: Codable, Sendable {
-  public var accessLevel: ElevenLabsDependentAvailableToolIdentifierAccessLevel
+  public var accessLevel: ElevenLabsDependentAvailableToolIdentifier.AccessLevel
   public var createdAtUnixSecs: Int
   public var id: String
   public var name: String
   public var kind: ElevenLabsAvailableKind?
 
   public init(
-    accessLevel: ElevenLabsDependentAvailableToolIdentifierAccessLevel,
+    accessLevel: ElevenLabsDependentAvailableToolIdentifier.AccessLevel,
     createdAtUnixSecs: Int,
     id: String,
     name: String,
@@ -37,5 +37,14 @@ public struct ElevenLabsDependentAvailableToolIdentifier: Codable, Sendable {
     case id
     case name
     case kind = "type"
+  }
+
+  public enum AccessLevel: String, Codable, Hashable,
+    Sendable
+  {
+    case admin = "admin"
+    case editor = "editor"
+    case commenter = "commenter"
+    case viewer = "viewer"
   }
 }

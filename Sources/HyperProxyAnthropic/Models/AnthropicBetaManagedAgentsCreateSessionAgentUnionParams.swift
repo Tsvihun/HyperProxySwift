@@ -12,8 +12,8 @@ import HyperProxyCore
 
 public enum AnthropicBetaManagedAgentsCreateSessionAgentUnionParams: Codable, Sendable {
   case string(String)
-  case betaManagedAgentsCreateSessionAgentUnionParamsOneOf2(
-    AnthropicBetaManagedAgentsCreateSessionAgentUnionParamsOneOf2)
+  case variant(
+    AnthropicBetaManagedAgentsCreateSessionAgentUnionParams.Variant)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -21,8 +21,8 @@ public enum AnthropicBetaManagedAgentsCreateSessionAgentUnionParams: Codable, Se
       self = .string(value)
       return
     }
-    self = .betaManagedAgentsCreateSessionAgentUnionParamsOneOf2(
-      try container.decode(AnthropicBetaManagedAgentsCreateSessionAgentUnionParamsOneOf2.self))
+    self = .variant(
+      try container.decode(AnthropicBetaManagedAgentsCreateSessionAgentUnionParams.Variant.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -30,8 +30,34 @@ public enum AnthropicBetaManagedAgentsCreateSessionAgentUnionParams: Codable, Se
     switch self {
     case .string(let value):
       try container.encode(value)
-    case .betaManagedAgentsCreateSessionAgentUnionParamsOneOf2(let value):
+    case .variant(let value):
       try container.encode(value)
+    }
+  }
+
+  public enum Variant: Codable, Sendable {
+    case betaManagedAgentsAgentParams(AnthropicBetaManagedAgentsAgentParams)
+    case betaManagedAgentsAgentWithOverridesParams(
+      AnthropicBetaManagedAgentsAgentWithOverridesParams)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(AnthropicBetaManagedAgentsAgentParams.self) {
+        self = .betaManagedAgentsAgentParams(value)
+        return
+      }
+      self = .betaManagedAgentsAgentWithOverridesParams(
+        try container.decode(AnthropicBetaManagedAgentsAgentWithOverridesParams.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .betaManagedAgentsAgentParams(let value):
+        try container.encode(value)
+      case .betaManagedAgentsAgentWithOverridesParams(let value):
+        try container.encode(value)
+      }
     }
   }
 }

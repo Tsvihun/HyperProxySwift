@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterDeletePrivateEndpointParameters: Codable, Sendable {
-  public var draftOnly: OpenRouterDeletePrivateEndpointParametersDraftOnly?
+  public var draftOnly: OpenRouterDeletePrivateEndpointParameters.DraftOnly?
   public var id: String
 
   public init(
     id: String,
-    draftOnly: OpenRouterDeletePrivateEndpointParametersDraftOnly? = nil
+    draftOnly: OpenRouterDeletePrivateEndpointParameters.DraftOnly? = nil
   ) {
     self.draftOnly = draftOnly
     self.id = id
@@ -25,5 +25,10 @@ public struct OpenRouterDeletePrivateEndpointParameters: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case draftOnly = "draft_only"
     case id
+  }
+
+  public enum DraftOnly: String, Codable, Hashable, Sendable {
+    case trueValue = "true"
+    case falseValue = "false"
   }
 }

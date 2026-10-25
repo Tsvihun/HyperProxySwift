@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterResponsesErrorField: Codable, Sendable {
-  public var code: OpenRouterResponsesErrorFieldCode
+  public var code: OpenRouterResponsesErrorField.Code
   public var message: String
 
   public init(
-    code: OpenRouterResponsesErrorFieldCode,
+    code: OpenRouterResponsesErrorField.Code,
     message: String
   ) {
     self.code = code
@@ -25,5 +25,31 @@ public struct OpenRouterResponsesErrorField: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case code
     case message
+  }
+
+  public enum Code: String, Codable, Hashable, Sendable {
+    case serverError = "server_error"
+    case rateLimitExceeded = "rate_limit_exceeded"
+    case invalidPrompt = "invalid_prompt"
+    case vectorStoreTimeout = "vector_store_timeout"
+    case invalidImage = "invalid_image"
+    case invalidImageFormat = "invalid_image_format"
+    case invalidBase64Image = "invalid_base64_image"
+    case invalidImageUrl = "invalid_image_url"
+    case imageTooLarge = "image_too_large"
+    case imageTooSmall = "image_too_small"
+    case imageParseError = "image_parse_error"
+    case imageContentPolicyViolation = "image_content_policy_violation"
+    case invalidImageMode = "invalid_image_mode"
+    case imageFileTooLarge = "image_file_too_large"
+    case unsupportedImageMediaType = "unsupported_image_media_type"
+    case emptyImageFile = "empty_image_file"
+    case failedToDownloadImage = "failed_to_download_image"
+    case imageFileNotFound = "image_file_not_found"
+    case bioPolicy = "bio_policy"
+    case cyberPolicy = "cyber_policy"
+    case misalignmentPolicyViolation = "misalignment_policy_violation"
+    case dataResidencyMismatch = "data_residency_mismatch"
+    case permissionDenied = "permission_denied"
   }
 }

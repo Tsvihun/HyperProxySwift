@@ -11,40 +11,98 @@ import Foundation
 import HyperProxyCore
 
 public enum TogetherDEShadowExperimentSampling: Codable, Sendable {
-  case dEShadowExperimentSamplingOneOf1(TogetherDEShadowExperimentSamplingOneOf1)
-  case dEShadowExperimentSamplingOneOf2(TogetherDEShadowExperimentSamplingOneOf2)
-  case dEShadowExperimentSamplingOneOf3(TogetherDEShadowExperimentSamplingOneOf3)
-  case dEShadowExperimentSamplingOneOf4(TogetherDEShadowExperimentSamplingOneOf4)
+  case withUniform(TogetherDEShadowExperimentSampling.WithUniform)
+  case withKeyBased(TogetherDEShadowExperimentSampling.WithKeyBased)
+  case withAdaptiveUniform(TogetherDEShadowExperimentSampling.WithAdaptiveUniform)
+  case withAdaptiveKeyBased(TogetherDEShadowExperimentSampling.WithAdaptiveKeyBased)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(TogetherDEShadowExperimentSamplingOneOf1.self) {
-      self = .dEShadowExperimentSamplingOneOf1(value)
+    if let value = try? container.decode(TogetherDEShadowExperimentSampling.WithUniform.self) {
+      self = .withUniform(value)
       return
     }
-    if let value = try? container.decode(TogetherDEShadowExperimentSamplingOneOf2.self) {
-      self = .dEShadowExperimentSamplingOneOf2(value)
+    if let value = try? container.decode(TogetherDEShadowExperimentSampling.WithKeyBased.self) {
+      self = .withKeyBased(value)
       return
     }
-    if let value = try? container.decode(TogetherDEShadowExperimentSamplingOneOf3.self) {
-      self = .dEShadowExperimentSamplingOneOf3(value)
+    if let value = try? container.decode(
+      TogetherDEShadowExperimentSampling.WithAdaptiveUniform.self)
+    {
+      self = .withAdaptiveUniform(value)
       return
     }
-    self = .dEShadowExperimentSamplingOneOf4(
-      try container.decode(TogetherDEShadowExperimentSamplingOneOf4.self))
+    self = .withAdaptiveKeyBased(
+      try container.decode(TogetherDEShadowExperimentSampling.WithAdaptiveKeyBased.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .dEShadowExperimentSamplingOneOf1(let value):
+    case .withUniform(let value):
       try container.encode(value)
-    case .dEShadowExperimentSamplingOneOf2(let value):
+    case .withKeyBased(let value):
       try container.encode(value)
-    case .dEShadowExperimentSamplingOneOf3(let value):
+    case .withAdaptiveUniform(let value):
       try container.encode(value)
-    case .dEShadowExperimentSamplingOneOf4(let value):
+    case .withAdaptiveKeyBased(let value):
       try container.encode(value)
+    }
+  }
+
+  public struct WithUniform: Codable, Sendable {
+    public var uniform: TogetherDEShadowExperimentUniformSampling
+
+    public init(
+      uniform: TogetherDEShadowExperimentUniformSampling
+    ) {
+      self.uniform = uniform
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case uniform
+    }
+  }
+
+  public struct WithKeyBased: Codable, Sendable {
+    public var keyBased: TogetherDEShadowExperimentKeyBasedSampling
+
+    public init(
+      keyBased: TogetherDEShadowExperimentKeyBasedSampling
+    ) {
+      self.keyBased = keyBased
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case keyBased
+    }
+  }
+
+  public struct WithAdaptiveUniform: Codable, Sendable {
+    public var adaptiveUniform: TogetherDEShadowExperimentAdaptiveUniformSampling
+
+    public init(
+      adaptiveUniform: TogetherDEShadowExperimentAdaptiveUniformSampling
+    ) {
+      self.adaptiveUniform = adaptiveUniform
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case adaptiveUniform
+    }
+  }
+
+  public struct WithAdaptiveKeyBased: Codable, Sendable {
+    public var adaptiveKeyBased: TogetherDEShadowExperimentAdaptiveKeyBasedSampling
+
+    public init(
+      adaptiveKeyBased: TogetherDEShadowExperimentAdaptiveKeyBasedSampling
+    ) {
+      self.adaptiveKeyBased = adaptiveKeyBased
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case adaptiveKeyBased
     }
   }
 }

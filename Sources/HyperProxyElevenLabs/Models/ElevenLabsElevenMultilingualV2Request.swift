@@ -11,8 +11,8 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsElevenMultilingualV2Request: Codable, Sendable {
-  public var modelId: ElevenLabsElevenMultilingualV2ModelId
-  public var outputFormat: ElevenLabsElevenMultilingualV2RequestOutputFormat?
+  public var modelId: ElevenLabsElevenMultilingualV2Request.ModelId
+  public var outputFormat: ElevenLabsElevenMultilingualV2Request.OutputFormat?
   public var pronunciationDictionaryLocators: [ElevenLabsPronunciationDictionaryVersionLocator]?
   public var text: String
   public var voice: String
@@ -22,8 +22,8 @@ public struct ElevenLabsElevenMultilingualV2Request: Codable, Sendable {
   public init(
     text: String,
     voice: String,
-    modelId: ElevenLabsElevenMultilingualV2ModelId = .elevenMultilingualV2,
-    outputFormat: ElevenLabsElevenMultilingualV2RequestOutputFormat? = nil,
+    modelId: ElevenLabsElevenMultilingualV2Request.ModelId = .elevenMultilingualV2,
+    outputFormat: ElevenLabsElevenMultilingualV2Request.OutputFormat? = nil,
     pronunciationDictionaryLocators: [ElevenLabsPronunciationDictionaryVersionLocator]? = nil,
     voiceSettings: ElevenLabsTtsVoiceSettings? = nil,
     webhook: ElevenLabsWebhookTarget? = nil
@@ -45,5 +45,19 @@ public struct ElevenLabsElevenMultilingualV2Request: Codable, Sendable {
     case voice
     case voiceSettings = "voice_settings"
     case webhook
+  }
+
+  public enum ModelId: String, Codable, Hashable, Sendable {
+    case elevenMultilingualV2 = "eleven_multilingual_v2"
+  }
+
+  public enum OutputFormat: String, Codable, Hashable, Sendable {
+    case mp3_22050_32 = "mp3_22050_32"
+    case mp3_24000_48 = "mp3_24000_48"
+    case mp3_44100_32 = "mp3_44100_32"
+    case mp3_44100_64 = "mp3_44100_64"
+    case mp3_44100_96 = "mp3_44100_96"
+    case mp3_44100_128 = "mp3_44100_128"
+    case mp3_44100_192 = "mp3_44100_192"
   }
 }

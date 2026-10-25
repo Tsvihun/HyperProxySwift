@@ -15,7 +15,7 @@ public struct OpenAISkillVersionResource: Codable, Sendable {
   public var description: String
   public var id: String
   public var name: String
-  public var object: OpenAISkillVersionResourceObject
+  public var object: OpenAISkillVersionResource.Object
   public var skillId: String
   public var version: String
 
@@ -24,7 +24,7 @@ public struct OpenAISkillVersionResource: Codable, Sendable {
     description: String,
     id: String,
     name: String,
-    object: OpenAISkillVersionResourceObject,
+    object: OpenAISkillVersionResource.Object,
     skillId: String,
     version: String
   ) {
@@ -45,5 +45,9 @@ public struct OpenAISkillVersionResource: Codable, Sendable {
     case object
     case skillId = "skill_id"
     case version
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case skillVersion = "skill.version"
   }
 }

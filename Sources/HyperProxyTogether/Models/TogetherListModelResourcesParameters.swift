@@ -14,13 +14,13 @@ public struct TogetherListModelResourcesParameters: Codable, Sendable {
   public var after: String?
   public var createdBy: String?
   public var limit: Int?
-  public var status: [TogetherListModelResourcesParametersStatusItem]?
+  public var status: [TogetherListModelResourcesParameters.StatusElement]?
 
   public init(
     after: String? = nil,
     createdBy: String? = nil,
     limit: Int? = nil,
-    status: [TogetherListModelResourcesParametersStatusItem]? = nil
+    status: [TogetherListModelResourcesParameters.StatusElement]? = nil
   ) {
     self.after = after
     self.createdBy = createdBy
@@ -33,5 +33,14 @@ public struct TogetherListModelResourcesParameters: Codable, Sendable {
     case createdBy = "created_by"
     case limit
     case status
+  }
+
+  public enum StatusElement: String, Codable, Hashable, Sendable {
+    case modelResourcesStatusPending = "MODEL_RESOURCES_STATUS_PENDING"
+    case modelResourcesStatusCreating = "MODEL_RESOURCES_STATUS_CREATING"
+    case modelResourcesStatusReady = "MODEL_RESOURCES_STATUS_READY"
+    case modelResourcesStatusError = "MODEL_RESOURCES_STATUS_ERROR"
+    case modelResourcesStatusStopped = "MODEL_RESOURCES_STATUS_STOPPED"
+    case modelResourcesStatusStopping = "MODEL_RESOURCES_STATUS_STOPPING"
   }
 }

@@ -15,13 +15,13 @@ public struct OpenAILiveInfoEvent: Codable, Sendable {
   public var code: String
   public var eventId: String
   public var message: String
-  public var kind: OpenAILiveInfoEventKind
+  public var kind: OpenAILiveInfoEvent.Kind
 
   public init(
     code: String,
     eventId: String,
     message: String,
-    kind: OpenAILiveInfoEventKind,
+    kind: OpenAILiveInfoEvent.Kind,
     clientEventId: String? = nil
   ) {
     self.clientEventId = clientEventId
@@ -37,5 +37,9 @@ public struct OpenAILiveInfoEvent: Codable, Sendable {
     case eventId = "event_id"
     case message
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case info = "info"
   }
 }

@@ -15,16 +15,16 @@ public struct AnthropicBetaManagedAgentsSessionThreadStatusIdleEvent: Codable, S
   public var id: String
   public var processedAt: AnthropicBetaTimestamp
   public var sessionThreadId: String
-  public var stopReason: AnthropicBetaManagedAgentsSessionThreadStatusIdleEventStopReason
-  public var kind: AnthropicBetaManagedAgentsSessionThreadStatusIdleEventKind
+  public var stopReason: AnthropicBetaManagedAgentsSessionThreadStatusIdleEvent.StopReason
+  public var kind: AnthropicBetaManagedAgentsSessionThreadStatusIdleEvent.Kind
 
   public init(
     agentName: String,
     id: String,
     processedAt: AnthropicBetaTimestamp,
     sessionThreadId: String,
-    stopReason: AnthropicBetaManagedAgentsSessionThreadStatusIdleEventStopReason,
-    kind: AnthropicBetaManagedAgentsSessionThreadStatusIdleEventKind
+    stopReason: AnthropicBetaManagedAgentsSessionThreadStatusIdleEvent.StopReason,
+    kind: AnthropicBetaManagedAgentsSessionThreadStatusIdleEvent.Kind
   ) {
     self.agentName = agentName
     self.id = id
@@ -41,5 +41,50 @@ public struct AnthropicBetaManagedAgentsSessionThreadStatusIdleEvent: Codable, S
     case sessionThreadId = "session_thread_id"
     case stopReason = "stop_reason"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case sessionThreadStatusIdle = "session.thread_status_idle"
+  }
+
+  public enum StopReason: Codable, Sendable {
+    case betaManagedAgentsSessionEndTurn(AnthropicBetaManagedAgentsSessionEndTurn)
+    case betaManagedAgentsSessionRequiresAction(AnthropicBetaManagedAgentsSessionRequiresAction)
+    case betaManagedAgentsSessionRetriesExhausted(AnthropicBetaManagedAgentsSessionRetriesExhausted)
+    case betaManagedAgentsSessionBudgetReached(AnthropicBetaManagedAgentsSessionBudgetReached)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(AnthropicBetaManagedAgentsSessionEndTurn.self) {
+        self = .betaManagedAgentsSessionEndTurn(value)
+        return
+      }
+      if let value = try? container.decode(AnthropicBetaManagedAgentsSessionRequiresAction.self) {
+        self = .betaManagedAgentsSessionRequiresAction(value)
+        return
+      }
+      if let value = try? container.decode(AnthropicBetaManagedAgentsSessionRetriesExhausted.self) {
+        self = .betaManagedAgentsSessionRetriesExhausted(value)
+        return
+      }
+      self = .betaManagedAgentsSessionBudgetReached(
+        try container.decode(AnthropicBetaManagedAgentsSessionBudgetReached.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .betaManagedAgentsSessionEndTurn(let value):
+        try container.encode(value)
+      case .betaManagedAgentsSessionRequiresAction(let value):
+        try container.encode(value)
+      case .betaManagedAgentsSessionRetriesExhausted(let value):
+        try container.encode(value)
+      case .betaManagedAgentsSessionBudgetReached(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

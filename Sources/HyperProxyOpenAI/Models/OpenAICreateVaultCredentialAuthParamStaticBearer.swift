@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAICreateVaultCredentialAuthParamStaticBearer: Codable, Sendable {
   public var mcpServerUrl: String
   public var token: String
-  public var kind: OpenAICreateVaultCredentialAuthParamStaticBearerKind
+  public var kind: OpenAICreateVaultCredentialAuthParamStaticBearer.Kind
 
   public init(
     mcpServerUrl: String,
     token: String,
-    kind: OpenAICreateVaultCredentialAuthParamStaticBearerKind
+    kind: OpenAICreateVaultCredentialAuthParamStaticBearer.Kind
   ) {
     self.mcpServerUrl = mcpServerUrl
     self.token = token
@@ -29,5 +29,11 @@ public struct OpenAICreateVaultCredentialAuthParamStaticBearer: Codable, Sendabl
     case mcpServerUrl = "mcp_server_url"
     case token
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case staticBearer = "static_bearer"
   }
 }

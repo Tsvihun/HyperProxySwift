@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct OpenAILocalShellToolCallOutput: Codable, Sendable {
   public var id: String
   public var output: String
-  public var status: OpenAILocalShellToolCallOutputStatus?
-  public var kind: OpenAILocalShellToolCallOutputKind
+  public var status: OpenAILocalShellToolCallOutput.Status?
+  public var kind: OpenAILocalShellToolCallOutput.Kind
 
   public init(
     id: String,
     output: String,
-    kind: OpenAILocalShellToolCallOutputKind,
-    status: OpenAILocalShellToolCallOutputStatus? = nil
+    kind: OpenAILocalShellToolCallOutput.Kind,
+    status: OpenAILocalShellToolCallOutput.Status? = nil
   ) {
     self.id = id
     self.output = output
@@ -33,5 +33,15 @@ public struct OpenAILocalShellToolCallOutput: Codable, Sendable {
     case output
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case localShellCallOutput = "local_shell_call_output"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case inProgress = "in_progress"
+    case completed = "completed"
+    case incomplete = "incomplete"
   }
 }

@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIUpdateProjectServiceAccountBody: Codable, Sendable {
   public var name: String?
-  public var role: OpenAIUpdateProjectServiceAccountBodyRole?
+  public var role: OpenAIUpdateProjectServiceAccountBody.Role?
 
   public init(
     name: String? = nil,
-    role: OpenAIUpdateProjectServiceAccountBodyRole? = nil
+    role: OpenAIUpdateProjectServiceAccountBody.Role? = nil
   ) {
     self.name = name
     self.role = role
@@ -25,5 +25,10 @@ public struct OpenAIUpdateProjectServiceAccountBody: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case name
     case role
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case member = "member"
+    case owner = "owner"
   }
 }

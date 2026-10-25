@@ -15,7 +15,7 @@ public struct TogetherChatCompletionResponse: Codable, Sendable {
   public var created: Int
   public var id: String
   public var model: String
-  public var object: TogetherChatCompletionObject
+  public var object: TogetherChatCompletionResponse.Object
   public var prompt: TogetherPromptPart
   public var usage: TogetherUsageData?
   public var warnings: [TogetherInferenceWarning]?
@@ -26,7 +26,7 @@ public struct TogetherChatCompletionResponse: Codable, Sendable {
     id: String,
     model: String,
     prompt: TogetherPromptPart,
-    object: TogetherChatCompletionObject = .chatCompletion,
+    object: TogetherChatCompletionResponse.Object = .chatCompletion,
     usage: TogetherUsageData? = nil,
     warnings: [TogetherInferenceWarning]? = nil
   ) {
@@ -49,5 +49,9 @@ public struct TogetherChatCompletionResponse: Codable, Sendable {
     case prompt
     case usage
     case warnings
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case chatCompletion = "chat.completion"
   }
 }

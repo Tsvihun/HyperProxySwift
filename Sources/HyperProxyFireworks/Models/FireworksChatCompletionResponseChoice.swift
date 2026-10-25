@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct FireworksChatCompletionResponseChoice: Codable, Sendable {
   public var finishReason: String?
   public var index: Int
-  public var logprobs: FireworksChatCompletionResponseChoiceLogprobs?
+  public var logprobs: FireworksChatCompletionResponseChoice.Logprobs?
   public var message: FireworksChatMessage
   public var rawOutput: FireworksRawOutput?
   public var tokenIds: [Int]?
@@ -22,7 +22,7 @@ public struct FireworksChatCompletionResponseChoice: Codable, Sendable {
     index: Int,
     message: FireworksChatMessage,
     finishReason: String? = nil,
-    logprobs: FireworksChatCompletionResponseChoiceLogprobs? = nil,
+    logprobs: FireworksChatCompletionResponseChoice.Logprobs? = nil,
     rawOutput: FireworksRawOutput? = nil,
     tokenIds: [Int]? = nil
   ) {
@@ -41,5 +41,29 @@ public struct FireworksChatCompletionResponseChoice: Codable, Sendable {
     case message
     case rawOutput = "raw_output"
     case tokenIds = "token_ids"
+  }
+
+  public enum Logprobs: Codable, Sendable {
+    case logProbs(FireworksLogProbs)
+    case newLogProbs(FireworksNewLogProbs)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(FireworksLogProbs.self) {
+        self = .logProbs(value)
+        return
+      }
+      self = .newLogProbs(try container.decode(FireworksNewLogProbs.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .logProbs(let value):
+        try container.encode(value)
+      case .newLogProbs(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

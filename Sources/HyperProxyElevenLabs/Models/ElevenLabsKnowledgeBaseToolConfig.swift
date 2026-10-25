@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsKnowledgeBaseToolConfig: Codable, Sendable {
   public var enabledStrategies: [ElevenLabsSearchStrategy]?
-  public var systemToolType: ElevenLabsKnowledgeBaseSystemToolType?
+  public var systemToolType: ElevenLabsKnowledgeBaseToolConfig.SystemToolType?
 
   public init(
     enabledStrategies: [ElevenLabsSearchStrategy]? = nil,
-    systemToolType: ElevenLabsKnowledgeBaseSystemToolType? = nil
+    systemToolType: ElevenLabsKnowledgeBaseToolConfig.SystemToolType? = nil
   ) {
     self.enabledStrategies = enabledStrategies
     self.systemToolType = systemToolType
@@ -25,5 +25,9 @@ public struct ElevenLabsKnowledgeBaseToolConfig: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case enabledStrategies = "enabled_strategies"
     case systemToolType = "system_tool_type"
+  }
+
+  public enum SystemToolType: String, Codable, Hashable, Sendable {
+    case knowledgeBase = "knowledge_base"
   }
 }

@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct OpenRouterAnthropicBase64PdfSource: Codable, Sendable {
   public var data: String
-  public var mediaType: OpenRouterAnthropicBase64PdfSourceMediaType
-  public var kind: OpenRouterAnthropicBase64PdfSourceKind
+  public var mediaType: OpenRouterAnthropicBase64PdfSource.MediaType
+  public var kind: OpenRouterAnthropicBase64PdfSource.Kind
 
   public init(
     data: String,
-    mediaType: OpenRouterAnthropicBase64PdfSourceMediaType,
-    kind: OpenRouterAnthropicBase64PdfSourceKind
+    mediaType: OpenRouterAnthropicBase64PdfSource.MediaType,
+    kind: OpenRouterAnthropicBase64PdfSource.Kind
   ) {
     self.data = data
     self.mediaType = mediaType
@@ -29,5 +29,13 @@ public struct OpenRouterAnthropicBase64PdfSource: Codable, Sendable {
     case data
     case mediaType = "media_type"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case base64 = "base64"
+  }
+
+  public enum MediaType: String, Codable, Hashable, Sendable {
+    case applicationPdf = "application/pdf"
   }
 }

@@ -11,15 +11,45 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterDeleteWorkspaceBudgetResponse: Codable, Sendable {
-  public var deleted: OpenRouterDeleteWorkspaceBudgetResponseDeleted
+  public var deleted: OpenRouterDeleteWorkspaceBudgetResponse.Deleted
 
   public init(
-    deleted: OpenRouterDeleteWorkspaceBudgetResponseDeleted = .booleanTrue
+    deleted: OpenRouterDeleteWorkspaceBudgetResponse.Deleted = .booleanTrue
   ) {
     self.deleted = deleted
   }
 
   enum CodingKeys: String, CodingKey {
     case deleted
+  }
+
+  public enum Deleted: Codable, Sendable {
+    case booleanTrue
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Bool.self) {
+        switch value {
+        case true:
+          self = .booleanTrue
+          return
+        default:
+          break
+        }
+      }
+      throw DecodingError.dataCorruptedError(
+        in: container,
+        debugDescription:
+          "Expected a documented OpenRouterDeleteWorkspaceBudgetResponse.Deleted value."
+      )
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .booleanTrue:
+        try container.encode(true)
+      }
+    }
   }
 }

@@ -14,24 +14,24 @@ public struct OpenAIVectorStoreObject: Codable, Sendable {
   public var createdAt: Int
   public var expiresAfter: OpenAIVectorStoreExpirationAfter?
   public var expiresAt: Int?
-  public var fileCounts: OpenAIVectorStoreObjectFileCounts
+  public var fileCounts: OpenAIVectorStoreObject.FileCounts
   public var id: String
   public var lastActiveAt: Int?
   public var metadata: OpenAIMetadata?
   public var name: String
-  public var object: OpenAIVectorStoreObjectObject
-  public var status: OpenAIVectorStoreObjectStatus
+  public var object: OpenAIVectorStoreObject.Object
+  public var status: OpenAIVectorStoreObject.Status
   public var usageBytes: Int
 
   public init(
     createdAt: Int,
-    fileCounts: OpenAIVectorStoreObjectFileCounts,
+    fileCounts: OpenAIVectorStoreObject.FileCounts,
     id: String,
     lastActiveAt: Int?,
     metadata: OpenAIMetadata?,
     name: String,
-    object: OpenAIVectorStoreObjectObject,
-    status: OpenAIVectorStoreObjectStatus,
+    object: OpenAIVectorStoreObject.Object,
+    status: OpenAIVectorStoreObject.Status,
     usageBytes: Int,
     expiresAfter: OpenAIVectorStoreExpirationAfter? = nil,
     expiresAt: Int? = nil
@@ -61,5 +61,45 @@ public struct OpenAIVectorStoreObject: Codable, Sendable {
     case object
     case status
     case usageBytes = "usage_bytes"
+  }
+
+  public struct FileCounts: Codable, Sendable {
+    public var cancelled: Int
+    public var completed: Int
+    public var failed: Int
+    public var inProgress: Int
+    public var total: Int
+
+    public init(
+      cancelled: Int,
+      completed: Int,
+      failed: Int,
+      inProgress: Int,
+      total: Int
+    ) {
+      self.cancelled = cancelled
+      self.completed = completed
+      self.failed = failed
+      self.inProgress = inProgress
+      self.total = total
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case cancelled
+      case completed
+      case failed
+      case inProgress = "in_progress"
+      case total
+    }
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case vectorStore = "vector_store"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case expired = "expired"
+    case inProgress = "in_progress"
+    case completed = "completed"
   }
 }

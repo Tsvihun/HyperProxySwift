@@ -11,15 +11,21 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsUnknownDeploymentPausedReasonError: Codable, Sendable {
-  public var kind: AnthropicBetaManagedAgentsUnknownDeploymentPausedReasonErrorKind
+  public var kind: AnthropicBetaManagedAgentsUnknownDeploymentPausedReasonError.Kind
 
   public init(
-    kind: AnthropicBetaManagedAgentsUnknownDeploymentPausedReasonErrorKind
+    kind: AnthropicBetaManagedAgentsUnknownDeploymentPausedReasonError.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case unknownError = "unknown_error"
   }
 }

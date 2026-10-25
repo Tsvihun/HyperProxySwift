@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAITokenCountsResource: Codable, Sendable {
   public var inputTokens: Int
-  public var object: OpenAITokenCountsResourceObject
+  public var object: OpenAITokenCountsResource.Object
 
   public init(
     inputTokens: Int,
-    object: OpenAITokenCountsResourceObject
+    object: OpenAITokenCountsResource.Object
   ) {
     self.inputTokens = inputTokens
     self.object = object
@@ -25,5 +25,9 @@ public struct OpenAITokenCountsResource: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case inputTokens = "input_tokens"
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case responseInputTokens = "response.input_tokens"
   }
 }

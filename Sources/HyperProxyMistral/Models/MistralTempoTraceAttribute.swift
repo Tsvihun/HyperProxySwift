@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct MistralTempoTraceAttribute: Codable, Sendable {
   public var key: String
-  public var value: MistralTempoTraceAttributeValue
+  public var value: MistralTempoTraceAttribute.Value
 
   public init(
     key: String,
-    value: MistralTempoTraceAttributeValue
+    value: MistralTempoTraceAttribute.Value
   ) {
     self.key = key
     self.value = value
@@ -25,5 +25,51 @@ public struct MistralTempoTraceAttribute: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case key
     case value
+  }
+
+  public enum Value: Codable, Sendable {
+    case tempoTraceAttributeStringValue(MistralTempoTraceAttributeStringValue)
+    case tempoTraceAttributeIntValue(MistralTempoTraceAttributeIntValue)
+    case tempoTraceAttributeDoubleValue(MistralTempoTraceAttributeDoubleValue)
+    case tempoTraceAttributeBoolValue(MistralTempoTraceAttributeBoolValue)
+    case tempoTraceAttributeArrayValue(MistralTempoTraceAttributeArrayValue)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(MistralTempoTraceAttributeStringValue.self) {
+        self = .tempoTraceAttributeStringValue(value)
+        return
+      }
+      if let value = try? container.decode(MistralTempoTraceAttributeIntValue.self) {
+        self = .tempoTraceAttributeIntValue(value)
+        return
+      }
+      if let value = try? container.decode(MistralTempoTraceAttributeDoubleValue.self) {
+        self = .tempoTraceAttributeDoubleValue(value)
+        return
+      }
+      if let value = try? container.decode(MistralTempoTraceAttributeBoolValue.self) {
+        self = .tempoTraceAttributeBoolValue(value)
+        return
+      }
+      self = .tempoTraceAttributeArrayValue(
+        try container.decode(MistralTempoTraceAttributeArrayValue.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .tempoTraceAttributeStringValue(let value):
+        try container.encode(value)
+      case .tempoTraceAttributeIntValue(let value):
+        try container.encode(value)
+      case .tempoTraceAttributeDoubleValue(let value):
+        try container.encode(value)
+      case .tempoTraceAttributeBoolValue(let value):
+        try container.encode(value)
+      case .tempoTraceAttributeArrayValue(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

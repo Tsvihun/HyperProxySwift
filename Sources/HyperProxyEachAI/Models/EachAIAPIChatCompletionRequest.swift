@@ -14,13 +14,13 @@ public struct EachAIAPIChatCompletionRequest: Codable, Sendable {
   public var messages: [[String: HyperProxyJSONValue]]
   public var model: String
   public var stream: Bool?
-  public var streamOptions: EachAIAPIChatCompletionRequestStreamOptions?
+  public var streamOptions: EachAIAPIChatCompletionRequest.StreamOptions?
 
   public init(
     messages: [[String: HyperProxyJSONValue]],
     model: String,
     stream: Bool? = nil,
-    streamOptions: EachAIAPIChatCompletionRequestStreamOptions? = nil
+    streamOptions: EachAIAPIChatCompletionRequest.StreamOptions? = nil
   ) {
     self.messages = messages
     self.model = model
@@ -33,5 +33,19 @@ public struct EachAIAPIChatCompletionRequest: Codable, Sendable {
     case model
     case stream
     case streamOptions = "stream_options"
+  }
+
+  public struct StreamOptions: Codable, Sendable {
+    public var includeUsage: Bool?
+
+    public init(
+      includeUsage: Bool? = nil
+    ) {
+      self.includeUsage = includeUsage
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case includeUsage = "include_usage"
+    }
   }
 }

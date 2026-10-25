@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct OpenAILiveDecisionTriggerInputParam: Codable, Sendable {
   public var decisions: OpenAILiveDecisionQuestionsInputParam
-  public var eventType: OpenAILiveDecisionTriggerInputParamEventType
-  public var kind: OpenAILiveDecisionTriggerInputParamKind
+  public var eventType: OpenAILiveDecisionTriggerInputParam.EventType
+  public var kind: OpenAILiveDecisionTriggerInputParam.Kind
 
   public init(
     decisions: OpenAILiveDecisionQuestionsInputParam,
-    eventType: OpenAILiveDecisionTriggerInputParamEventType,
-    kind: OpenAILiveDecisionTriggerInputParamKind
+    eventType: OpenAILiveDecisionTriggerInputParam.EventType,
+    kind: OpenAILiveDecisionTriggerInputParam.Kind
   ) {
     self.decisions = decisions
     self.eventType = eventType
@@ -29,5 +29,14 @@ public struct OpenAILiveDecisionTriggerInputParam: Codable, Sendable {
     case decisions
     case eventType = "event_type"
     case kind = "type"
+  }
+
+  public enum EventType: String, Codable, Hashable, Sendable {
+    case sessionInputTranscriptDelta = "session.input_transcript.delta"
+    case sessionOutputTranscriptDelta = "session.output_transcript.delta"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case decisions = "decisions"
   }
 }

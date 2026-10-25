@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct AnthropicBetaManagedAgentsCronScheduleParams: Codable, Sendable {
   public var expression: String
   public var timezone: String
-  public var kind: AnthropicBetaManagedAgentsCronScheduleParamsKind
+  public var kind: AnthropicBetaManagedAgentsCronScheduleParams.Kind
 
   public init(
     expression: String,
     timezone: String,
-    kind: AnthropicBetaManagedAgentsCronScheduleParamsKind
+    kind: AnthropicBetaManagedAgentsCronScheduleParams.Kind
   ) {
     self.expression = expression
     self.timezone = timezone
@@ -29,5 +29,9 @@ public struct AnthropicBetaManagedAgentsCronScheduleParams: Codable, Sendable {
     case expression
     case timezone
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case cron = "cron"
   }
 }

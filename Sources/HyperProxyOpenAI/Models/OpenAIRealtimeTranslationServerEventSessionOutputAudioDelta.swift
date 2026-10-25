@@ -15,17 +15,17 @@ public struct OpenAIRealtimeTranslationServerEventSessionOutputAudioDelta: Codab
   public var delta: String
   public var elapsedMs: Int?
   public var eventId: String
-  public var format: OpenAIRealtimeTranslationServerEventSessionOutputAudioDeltaFormat?
+  public var format: OpenAIRealtimeTranslationServerEventSessionOutputAudioDelta.Format?
   public var sampleRate: Int?
-  public var kind: OpenAIRealtimeTranslationServerEventSessionOutputAudioDeltaKind
+  public var kind: OpenAIRealtimeTranslationServerEventSessionOutputAudioDelta.Kind
 
   public init(
     delta: String,
     eventId: String,
-    kind: OpenAIRealtimeTranslationServerEventSessionOutputAudioDeltaKind,
+    kind: OpenAIRealtimeTranslationServerEventSessionOutputAudioDelta.Kind,
     channels: Int? = nil,
     elapsedMs: Int? = nil,
-    format: OpenAIRealtimeTranslationServerEventSessionOutputAudioDeltaFormat? = nil,
+    format: OpenAIRealtimeTranslationServerEventSessionOutputAudioDelta.Format? = nil,
     sampleRate: Int? = nil
   ) {
     self.channels = channels
@@ -45,5 +45,17 @@ public struct OpenAIRealtimeTranslationServerEventSessionOutputAudioDelta: Codab
     case format
     case sampleRate = "sample_rate"
     case kind = "type"
+  }
+
+  public enum Format: String, Codable,
+    Hashable, Sendable
+  {
+    case pcm16 = "pcm16"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case sessionOutputAudioDelta = "session.output_audio.delta"
   }
 }

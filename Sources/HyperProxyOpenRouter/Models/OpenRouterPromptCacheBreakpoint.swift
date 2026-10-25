@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterPromptCacheBreakpoint: Codable, Sendable {
-  public var mode: OpenRouterPromptCacheBreakpointMode
+  public var mode: OpenRouterPromptCacheBreakpoint.Mode
   public var ttl: String?
 
   public init(
-    mode: OpenRouterPromptCacheBreakpointMode,
+    mode: OpenRouterPromptCacheBreakpoint.Mode,
     ttl: String? = nil
   ) {
     self.mode = mode
@@ -25,5 +25,9 @@ public struct OpenRouterPromptCacheBreakpoint: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case mode
     case ttl
+  }
+
+  public enum Mode: String, Codable, Hashable, Sendable {
+    case explicit = "explicit"
   }
 }

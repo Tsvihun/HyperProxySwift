@@ -11,15 +11,46 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralTimeSeriesMetric: Codable, Sendable {
-  public var value: [MistralTimeSeriesMetricValueItem]
+  public var value: [MistralTimeSeriesMetric.ValueElement]
 
   public init(
-    value: [MistralTimeSeriesMetricValueItem]
+    value: [MistralTimeSeriesMetric.ValueElement]
   ) {
     self.value = value
   }
 
   enum CodingKeys: String, CodingKey {
     case value
+  }
+
+  public struct ValueElement: Codable, Sendable {
+    public var item1: Int
+    public var item2: MistralTimeSeriesMetricValueItemItem2
+
+    public init(
+      item1: Int,
+      item2: MistralTimeSeriesMetricValueItemItem2
+    ) {
+      self.item1 = item1
+      self.item2 = item2
+    }
+
+    public init(from decoder: any Decoder) throws {
+      var container = try decoder.unkeyedContainer()
+      self.item1 = try container.decode(Int.self)
+      self.item2 = try container.decode(MistralTimeSeriesMetricValueItemItem2.self)
+      guard container.isAtEnd else {
+        throw DecodingError.dataCorruptedError(
+          in: container,
+          debugDescription: "Expected exactly 2 tuple values."
+        )
+      }
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.unkeyedContainer()
+      try container.encode(self.item1)
+      try container.encode(self.item2)
+    }
   }
 }

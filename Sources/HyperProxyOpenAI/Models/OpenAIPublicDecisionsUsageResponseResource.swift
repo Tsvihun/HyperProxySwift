@@ -14,13 +14,13 @@ public struct OpenAIPublicDecisionsUsageResponseResource: Codable, Sendable {
   public var data: [OpenAIDecisionsUsageBucket]
   public var hasMore: Bool
   public var nextPage: String?
-  public var object: OpenAIPublicDecisionsUsageResponseResourceObject
+  public var object: OpenAIPublicDecisionsUsageResponseResource.Object
 
   public init(
     data: [OpenAIDecisionsUsageBucket],
     hasMore: Bool,
     nextPage: String?,
-    object: OpenAIPublicDecisionsUsageResponseResourceObject
+    object: OpenAIPublicDecisionsUsageResponseResource.Object
   ) {
     self.data = data
     self.hasMore = hasMore
@@ -33,5 +33,9 @@ public struct OpenAIPublicDecisionsUsageResponseResource: Codable, Sendable {
     case hasMore = "has_more"
     case nextPage = "next_page"
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case page = "page"
   }
 }

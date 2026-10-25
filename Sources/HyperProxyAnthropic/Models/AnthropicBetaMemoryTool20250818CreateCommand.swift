@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaMemoryTool20250818CreateCommand: Codable, Sendable {
-  public var command: AnthropicCreateCommand
+  public var command: AnthropicBetaMemoryTool20250818CreateCommand.Command
   public var fileText: String
   public var path: String
 
   public init(
     fileText: String,
     path: String,
-    command: AnthropicCreateCommand = .create
+    command: AnthropicBetaMemoryTool20250818CreateCommand.Command = .create
   ) {
     self.command = command
     self.fileText = fileText
@@ -29,5 +29,9 @@ public struct AnthropicBetaMemoryTool20250818CreateCommand: Codable, Sendable {
     case command
     case fileText = "file_text"
     case path
+  }
+
+  public enum Command: String, Codable, Hashable, Sendable {
+    case create = "create"
   }
 }

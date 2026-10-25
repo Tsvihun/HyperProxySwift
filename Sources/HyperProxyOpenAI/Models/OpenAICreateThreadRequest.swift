@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAICreateThreadRequest: Codable, Sendable {
   public var messages: [OpenAICreateMessageRequest]?
   public var metadata: OpenAIMetadata?
-  public var toolResources: OpenAICreateThreadRequestToolResourcesAnyOf1?
+  public var toolResources: OpenAICreateThreadRequestToolResourcesWithCodeInterpreterAndFileSearch?
 
   public init(
     messages: [OpenAICreateMessageRequest]? = nil,
     metadata: OpenAIMetadata? = nil,
-    toolResources: OpenAICreateThreadRequestToolResourcesAnyOf1? = nil
+    toolResources: OpenAICreateThreadRequestToolResourcesWithCodeInterpreterAndFileSearch? = nil
   ) {
     self.messages = messages
     self.metadata = metadata

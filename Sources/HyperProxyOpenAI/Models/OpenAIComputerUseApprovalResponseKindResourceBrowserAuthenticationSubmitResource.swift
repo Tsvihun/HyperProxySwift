@@ -14,15 +14,15 @@ public struct OpenAIComputerUseApprovalResponseKindResourceBrowserAuthentication
   Codable, Sendable
 {
   public var action:
-    OpenAIComputerUseApprovalResponseKindResourceBrowserAuthenticationSubmitResourceAction
+    OpenAIComputerUseApprovalResponseKindResourceBrowserAuthenticationSubmitResource.Action
   public var selectedOption: String
   public var kind:
-    OpenAIComputerUseApprovalResponseKindResourceBrowserAuthenticationSubmitResourceKind
+    OpenAIComputerUseApprovalResponseKindResourceBrowserAuthenticationSubmitResource.Kind
 
   public init(
-    action: OpenAIComputerUseApprovalResponseKindResourceBrowserAuthenticationSubmitResourceAction,
+    action: OpenAIComputerUseApprovalResponseKindResourceBrowserAuthenticationSubmitResource.Action,
     selectedOption: String,
-    kind: OpenAIComputerUseApprovalResponseKindResourceBrowserAuthenticationSubmitResourceKind
+    kind: OpenAIComputerUseApprovalResponseKindResourceBrowserAuthenticationSubmitResource.Kind
   ) {
     self.action = action
     self.selectedOption = selectedOption
@@ -33,5 +33,17 @@ public struct OpenAIComputerUseApprovalResponseKindResourceBrowserAuthentication
     case action
     case selectedOption = "selected_option"
     case kind = "type"
+  }
+
+  public enum Action:
+    String, Codable, Hashable, Sendable
+  {
+    case submit = "submit"
+  }
+
+  public enum Kind:
+    String, Codable, Hashable, Sendable
+  {
+    case browserAuthentication = "browser_authentication"
   }
 }

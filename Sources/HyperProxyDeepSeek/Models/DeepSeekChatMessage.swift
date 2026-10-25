@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepSeekChatMessage: Codable, Sendable {
-  public var content: DeepSeekChatMessageContent?
+  public var content: DeepSeekChatMessage.Content?
   public var name: String?
   public var prefixValue: Bool?
   public var reasoningContent: String?
@@ -21,7 +21,7 @@ public struct DeepSeekChatMessage: Codable, Sendable {
 
   public init(
     role: DeepSeekChatRole,
-    content: DeepSeekChatMessageContent? = nil,
+    content: DeepSeekChatMessage.Content? = nil,
     name: String? = nil,
     prefixValue: Bool? = nil,
     reasoningContent: String? = nil,
@@ -45,5 +45,41 @@ public struct DeepSeekChatMessage: Codable, Sendable {
     case role
     case toolCallId = "tool_call_id"
     case toolCalls = "tool_calls"
+  }
+
+  public enum Content: Codable, Sendable {
+    case string(String)
+    case chatContentPartArray([DeepSeekChatContentPart])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .chatContentPartArray(try container.decode([DeepSeekChatContentPart].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .chatContentPartArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension DeepSeekChatMessage.Content: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension DeepSeekChatMessage.Content: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: DeepSeekChatContentPart...) {
+    self = .chatContentPartArray(elements)
   }
 }

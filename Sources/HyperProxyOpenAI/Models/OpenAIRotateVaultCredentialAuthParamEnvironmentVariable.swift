@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIRotateVaultCredentialAuthParamEnvironmentVariable: Codable, Sendable {
   public var secretValue: String
-  public var kind: OpenAIRotateVaultCredentialAuthParamEnvironmentVariableKind
+  public var kind: OpenAIRotateVaultCredentialAuthParamEnvironmentVariable.Kind
 
   public init(
     secretValue: String,
-    kind: OpenAIRotateVaultCredentialAuthParamEnvironmentVariableKind
+    kind: OpenAIRotateVaultCredentialAuthParamEnvironmentVariable.Kind
   ) {
     self.secretValue = secretValue
     self.kind = kind
@@ -25,5 +25,11 @@ public struct OpenAIRotateVaultCredentialAuthParamEnvironmentVariable: Codable, 
   enum CodingKeys: String, CodingKey {
     case secretValue = "secret_value"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case environmentVariable = "environment_variable"
   }
 }

@@ -12,9 +12,9 @@ import HyperProxyCore
 
 public struct OpenAIUsageCostsParameters: Codable, Sendable {
   public var apiKeyIds: [String]?
-  public var bucketWidth: OpenAIUsageCostsParametersBucketWidth?
+  public var bucketWidth: OpenAIUsageCostsParameters.BucketWidth?
   public var endTime: Int?
-  public var groupBy: [OpenAIUsageCostsParametersGroupByItem]?
+  public var groupBy: [OpenAIUsageCostsParameters.GroupByElement]?
   public var limit: Int?
   public var lineItems: [String]?
   public var page: String?
@@ -24,9 +24,9 @@ public struct OpenAIUsageCostsParameters: Codable, Sendable {
   public init(
     startTime: Int,
     apiKeyIds: [String]? = nil,
-    bucketWidth: OpenAIUsageCostsParametersBucketWidth? = nil,
+    bucketWidth: OpenAIUsageCostsParameters.BucketWidth? = nil,
     endTime: Int? = nil,
-    groupBy: [OpenAIUsageCostsParametersGroupByItem]? = nil,
+    groupBy: [OpenAIUsageCostsParameters.GroupByElement]? = nil,
     limit: Int? = nil,
     lineItems: [String]? = nil,
     page: String? = nil,
@@ -53,5 +53,17 @@ public struct OpenAIUsageCostsParameters: Codable, Sendable {
     case page
     case projectIds = "project_ids"
     case startTime = "start_time"
+  }
+
+  public enum BucketWidth: String, Codable, Hashable, Sendable {
+    case value1d = "1d"
+  }
+
+  public enum GroupByElement: String, Codable, Hashable, Sendable {
+    case projectId = "project_id"
+    case userId = "user_id"
+    case lineItem = "line_item"
+    case apiKeyId = "api_key_id"
+    case apiSource = "api_source"
   }
 }

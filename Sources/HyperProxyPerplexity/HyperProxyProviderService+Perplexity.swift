@@ -51,15 +51,25 @@ extension HyperProxyProviderService where Operation == PerplexityOperation {
   public var sonarCreateAsync: HyperProxyProviderCall<PerplexityOperation> {
     self.call(.sonarCreateAsync)
   }
-  /// `GET v1/async/sonar/{api_request}`
-  public var getAsyncChatCompletionResponseAsyncChatCompletionsApiRequestGet:
-    HyperProxyProviderCall<PerplexityOperation>
-  {
-    self.call(.getAsyncChatCompletionResponseAsyncChatCompletionsApiRequestGet)
-  }
   /// `GET v1/async/sonar/{request_id}`
   public var sonarRetrieveAsync: HyperProxyProviderCall<PerplexityOperation> {
     self.call(.sonarRetrieveAsync)
+  }
+  /// `GET v1/batches`
+  public var listBatches: HyperProxyProviderCall<PerplexityOperation> {
+    self.call(.listBatches)
+  }
+  /// `POST v1/batches`
+  public var createBatch: HyperProxyProviderCall<PerplexityOperation> {
+    self.call(.createBatch)
+  }
+  /// `GET v1/batches/{batch_id}`
+  public var getBatch: HyperProxyProviderCall<PerplexityOperation> {
+    self.call(.getBatch)
+  }
+  /// `POST v1/batches/{batch_id}/cancel`
+  public var cancelBatch: HyperProxyProviderCall<PerplexityOperation> {
+    self.call(.cancelBatch)
   }
   /// `POST v1/contextualizedembeddings`
   public var contextualizedEmbeddingsV1ContextualizedembeddingsPost:
@@ -74,6 +84,26 @@ extension HyperProxyProviderService where Operation == PerplexityOperation {
   /// `POST v1/embeddings`
   public var embeddingsV1EmbeddingsPost: HyperProxyProviderCall<PerplexityOperation> {
     self.call(.embeddingsV1EmbeddingsPost)
+  }
+  /// `GET v1/files`
+  public var listFiles: HyperProxyProviderCall<PerplexityOperation> {
+    self.call(.listFiles)
+  }
+  /// `POST v1/files`
+  public var createFile: HyperProxyProviderCall<PerplexityOperation> {
+    self.call(.createFile)
+  }
+  /// `DELETE v1/files/{file_id}`
+  public var deleteFile: HyperProxyProviderCall<PerplexityOperation> {
+    self.call(.deleteFile)
+  }
+  /// `GET v1/files/{file_id}`
+  public var getFile: HyperProxyProviderCall<PerplexityOperation> {
+    self.call(.getFile)
+  }
+  /// `GET v1/files/{file_id}/content`
+  public var getFileContent: HyperProxyProviderCall<PerplexityOperation> {
+    self.call(.getFileContent)
   }
   /// `GET v1/models`
   public var modelsList: HyperProxyProviderCall<PerplexityOperation> {

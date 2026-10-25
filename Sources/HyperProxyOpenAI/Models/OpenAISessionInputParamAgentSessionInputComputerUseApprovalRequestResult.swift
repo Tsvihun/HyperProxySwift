@@ -15,12 +15,12 @@ public struct OpenAISessionInputParamAgentSessionInputComputerUseApprovalRequest
 {
   public var requestId: String
   public var response: OpenAIComputerUseApprovalResponseParam
-  public var kind: OpenAISessionInputParamAgentSessionInputComputerUseApprovalRequestResultKind
+  public var kind: OpenAISessionInputParamAgentSessionInputComputerUseApprovalRequestResult.Kind
 
   public init(
     requestId: String,
     response: OpenAIComputerUseApprovalResponseParam,
-    kind: OpenAISessionInputParamAgentSessionInputComputerUseApprovalRequestResultKind
+    kind: OpenAISessionInputParamAgentSessionInputComputerUseApprovalRequestResult.Kind
   ) {
     self.requestId = requestId
     self.response = response
@@ -31,5 +31,12 @@ public struct OpenAISessionInputParamAgentSessionInputComputerUseApprovalRequest
     case requestId = "request_id"
     case response
     case kind = "type"
+  }
+
+  public enum Kind: String,
+    Codable, Hashable, Sendable
+  {
+    case agentSessionInputComputerUseApprovalRequestResult =
+      "agent.session.input.computer_use_approval_request_result"
   }
 }

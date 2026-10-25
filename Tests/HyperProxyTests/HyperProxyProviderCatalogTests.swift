@@ -165,6 +165,20 @@ struct HyperProxyProviderCatalogTests {
     #expect(licenseUsage.pathTemplate == "v1/licenses/models/{model_slug}/usage")
   }
 
+  @Test("Together chat uses its inference origin while other routes keep the API origin")
+  func togetherInferenceOrigin() throws {
+    let chat = try HyperProxyProviders.together.route("chatCompletions.create")
+    let request = try chat.request(
+      json: HyperProxyJSONValue.object(["model": "example", "messages": []])
+    )
+    #expect(request.path == "v1/chat/completions")
+    #expect(
+      request.headers["X-HyperProxy-Upstream-Origin"] == "https://api-inference.together.ai"
+    )
+    let models = try HyperProxyProviders.together.route("models.list")
+    #expect(models.upstreamBaseURL == "https://api.together.ai")
+  }
+
   @Test("Allows a reviewed alternate origin to be selected per request")
   func alternateOriginOverride() throws {
     let route = try HyperProxyProviders.deepL.route("translate.text")

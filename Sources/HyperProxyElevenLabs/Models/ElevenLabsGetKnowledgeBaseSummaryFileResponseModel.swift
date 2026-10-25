@@ -14,7 +14,7 @@ public struct ElevenLabsGetKnowledgeBaseSummaryFileResponseModel: Codable, Senda
   public var accessInfo: ElevenLabsResourceAccessInfo
   public var autoSyncInfo: ElevenLabsAutoSyncInfo?
   public var dependentAgents:
-    [ElevenLabsGetKnowledgeBaseSummaryFileResponseModelDependentAgentsItem]
+    [ElevenLabsGetKnowledgeBaseSummaryFileResponseModel.DependentAgentsElement]
   public var externalSyncInfo: ElevenLabsExternalFileSyncInfo?
   public var folderParentId: String?
   public var folderPath: [ElevenLabsKnowledgeBaseFolderPathSegmentSummaryResponseModel]?
@@ -28,7 +28,7 @@ public struct ElevenLabsGetKnowledgeBaseSummaryFileResponseModel: Codable, Senda
 
   public init(
     accessInfo: ElevenLabsResourceAccessInfo,
-    dependentAgents: [ElevenLabsGetKnowledgeBaseSummaryFileResponseModelDependentAgentsItem],
+    dependentAgents: [ElevenLabsGetKnowledgeBaseSummaryFileResponseModel.DependentAgentsElement],
     id: String,
     metadata: ElevenLabsKnowledgeBaseDocumentMetadataResponseModel,
     name: String,
@@ -70,5 +70,30 @@ public struct ElevenLabsGetKnowledgeBaseSummaryFileResponseModel: Codable, Senda
     case refreshStatus = "refresh_status"
     case supportedUsages = "supported_usages"
     case kind = "type"
+  }
+
+  public enum DependentAgentsElement: Codable, Sendable {
+    case dependentAvailableAgentIdentifier(ElevenLabsDependentAvailableAgentIdentifier)
+    case dependentUnknownAgentIdentifier(ElevenLabsDependentUnknownAgentIdentifier)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsDependentAvailableAgentIdentifier.self) {
+        self = .dependentAvailableAgentIdentifier(value)
+        return
+      }
+      self = .dependentUnknownAgentIdentifier(
+        try container.decode(ElevenLabsDependentUnknownAgentIdentifier.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .dependentAvailableAgentIdentifier(let value):
+        try container.encode(value)
+      case .dependentUnknownAgentIdentifier(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

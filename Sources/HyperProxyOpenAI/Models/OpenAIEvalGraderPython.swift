@@ -38,4 +38,18 @@ public struct OpenAIEvalGraderPython: Codable, Sendable {
     case source
     case kind = "type"
   }
+
+  public struct WithPassThreshold: Codable, Sendable {
+    public var passThreshold: Double?
+
+    public init(
+      passThreshold: Double? = nil
+    ) {
+      self.passThreshold = passThreshold
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case passThreshold = "pass_threshold"
+    }
+  }
 }

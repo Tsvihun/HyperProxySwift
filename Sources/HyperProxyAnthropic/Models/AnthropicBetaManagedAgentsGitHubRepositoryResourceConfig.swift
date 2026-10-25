@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct AnthropicBetaManagedAgentsGitHubRepositoryResourceConfig: Codable, Sendable {
   public var checkout: AnthropicBetaManagedAgentsRepositoryCheckout?
   public var mountPath: String?
-  public var kind: AnthropicBetaManagedAgentsGitHubRepositoryResourceConfigKind
+  public var kind: AnthropicBetaManagedAgentsGitHubRepositoryResourceConfig.Kind
   public var url: String
 
   public init(
-    kind: AnthropicBetaManagedAgentsGitHubRepositoryResourceConfigKind,
+    kind: AnthropicBetaManagedAgentsGitHubRepositoryResourceConfig.Kind,
     url: String,
     checkout: AnthropicBetaManagedAgentsRepositoryCheckout? = nil,
     mountPath: String? = nil
@@ -33,5 +33,11 @@ public struct AnthropicBetaManagedAgentsGitHubRepositoryResourceConfig: Codable,
     case mountPath = "mount_path"
     case kind = "type"
     case url
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case githubRepository = "github_repository"
   }
 }

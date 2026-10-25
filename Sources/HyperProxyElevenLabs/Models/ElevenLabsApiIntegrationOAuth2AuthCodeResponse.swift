@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsApiIntegrationOAuth2AuthCodeResponse: Codable, Sendable {
-  public var authType: ElevenLabsApiIntegrationOauth2AuthCodeAuthType?
+  public var authType: ElevenLabsApiIntegrationOAuth2AuthCodeResponse.AuthType?
   public var credentialId: String
   public var expiresAt: String
   public var id: String
   public var integrationId: String
   public var name: String
   public var provider: String
-  public var scopeSeparator: ElevenLabsApiIntegrationOAuth2AuthCodeResponseScopeSeparator?
+  public var scopeSeparator: ElevenLabsApiIntegrationOAuth2AuthCodeResponse.ScopeSeparator?
   public var scopes: [String]?
   public var status: ElevenLabsAuthConnectionStatus?
   public var statusDetail: String?
@@ -34,8 +34,8 @@ public struct ElevenLabsApiIntegrationOAuth2AuthCodeResponse: Codable, Sendable 
     name: String,
     provider: String,
     tokenUrl: String,
-    authType: ElevenLabsApiIntegrationOauth2AuthCodeAuthType? = nil,
-    scopeSeparator: ElevenLabsApiIntegrationOAuth2AuthCodeResponseScopeSeparator? = nil,
+    authType: ElevenLabsApiIntegrationOAuth2AuthCodeResponse.AuthType? = nil,
+    scopeSeparator: ElevenLabsApiIntegrationOAuth2AuthCodeResponse.ScopeSeparator? = nil,
     scopes: [String]? = nil,
     status: ElevenLabsAuthConnectionStatus? = nil,
     statusDetail: String? = nil,
@@ -73,5 +73,16 @@ public struct ElevenLabsApiIntegrationOAuth2AuthCodeResponse: Codable, Sendable 
     case statusUpdatedAt = "status_updated_at"
     case tokenUrl = "token_url"
     case usedBy = "used_by"
+  }
+
+  public enum ScopeSeparator: String, Codable, Hashable,
+    Sendable
+  {
+    case value = " "
+    case valued03502c4 = ","
+  }
+
+  public enum AuthType: String, Codable, Hashable, Sendable {
+    case apiIntegrationOauth2AuthCode = "api_integration_oauth2_auth_code"
   }
 }

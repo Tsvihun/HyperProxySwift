@@ -15,14 +15,14 @@ public struct OpenRouterSessionCostItem: Codable, Sendable {
   public var appSlug: String
   public var medianSessionCostUsd: Double
   public var modelPermaslug: String
-  public var turnRange: OpenRouterSessionCostItemTurnRange
+  public var turnRange: OpenRouterSessionCostItem.TurnRange
 
   public init(
     appName: String,
     appSlug: String,
     medianSessionCostUsd: Double,
     modelPermaslug: String,
-    turnRange: OpenRouterSessionCostItemTurnRange
+    turnRange: OpenRouterSessionCostItem.TurnRange
   ) {
     self.appName = appName
     self.appSlug = appSlug
@@ -37,5 +37,12 @@ public struct OpenRouterSessionCostItem: Codable, Sendable {
     case medianSessionCostUsd = "median_session_cost_usd"
     case modelPermaslug = "model_permaslug"
     case turnRange = "turn_range"
+  }
+
+  public enum TurnRange: String, Codable, Hashable, Sendable {
+    case value1Turn = "1-turn"
+    case value2_9Turns = "2-9-turns"
+    case value10_49Turns = "10-49-turns"
+    case value50PlusTurns = "50-plus-turns"
   }
 }

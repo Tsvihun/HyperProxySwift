@@ -15,7 +15,7 @@ public struct GeminiFunctionResponse: Codable, Sendable {
   public var name: String?
   public var parts: [GeminiFunctionResponsePart]?
   public var response: [String: HyperProxyJSONValue]?
-  public var scheduling: GeminiFunctionResponseScheduling?
+  public var scheduling: GeminiFunctionResponse.Scheduling?
   public var willContinue: Bool?
 
   public init(
@@ -23,7 +23,7 @@ public struct GeminiFunctionResponse: Codable, Sendable {
     name: String? = nil,
     parts: [GeminiFunctionResponsePart]? = nil,
     response: [String: HyperProxyJSONValue]? = nil,
-    scheduling: GeminiFunctionResponseScheduling? = nil,
+    scheduling: GeminiFunctionResponse.Scheduling? = nil,
     willContinue: Bool? = nil
   ) {
     self.id = id
@@ -41,5 +41,12 @@ public struct GeminiFunctionResponse: Codable, Sendable {
     case response
     case scheduling
     case willContinue
+  }
+
+  public enum Scheduling: String, Codable, Hashable, Sendable {
+    case schedulingUnspecified = "SCHEDULING_UNSPECIFIED"
+    case silent = "SILENT"
+    case whenIdle = "WHEN_IDLE"
+    case interrupt = "INTERRUPT"
   }
 }

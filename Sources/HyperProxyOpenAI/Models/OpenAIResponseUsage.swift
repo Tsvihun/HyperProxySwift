@@ -12,16 +12,16 @@ import HyperProxyCore
 
 public struct OpenAIResponseUsage: Codable, Sendable {
   public var inputTokens: Int
-  public var inputTokensDetails: OpenAIResponseUsageInputTokensDetails
+  public var inputTokensDetails: OpenAIResponseUsage.InputTokensDetails
   public var outputTokens: Int
-  public var outputTokensDetails: OpenAIResponseUsageOutputTokensDetails
+  public var outputTokensDetails: OpenAIResponseUsage.OutputTokensDetails
   public var totalTokens: Int
 
   public init(
     inputTokens: Int,
-    inputTokensDetails: OpenAIResponseUsageInputTokensDetails,
+    inputTokensDetails: OpenAIResponseUsage.InputTokensDetails,
     outputTokens: Int,
-    outputTokensDetails: OpenAIResponseUsageOutputTokensDetails,
+    outputTokensDetails: OpenAIResponseUsage.OutputTokensDetails,
     totalTokens: Int
   ) {
     self.inputTokens = inputTokens
@@ -37,5 +37,37 @@ public struct OpenAIResponseUsage: Codable, Sendable {
     case outputTokens = "output_tokens"
     case outputTokensDetails = "output_tokens_details"
     case totalTokens = "total_tokens"
+  }
+
+  public struct InputTokensDetails: Codable, Sendable {
+    public var cacheWriteTokens: Int
+    public var cachedTokens: Int
+
+    public init(
+      cacheWriteTokens: Int,
+      cachedTokens: Int
+    ) {
+      self.cacheWriteTokens = cacheWriteTokens
+      self.cachedTokens = cachedTokens
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case cacheWriteTokens = "cache_write_tokens"
+      case cachedTokens = "cached_tokens"
+    }
+  }
+
+  public struct OutputTokensDetails: Codable, Sendable {
+    public var reasoningTokens: Int
+
+    public init(
+      reasoningTokens: Int
+    ) {
+      self.reasoningTokens = reasoningTokens
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case reasoningTokens = "reasoning_tokens"
+    }
   }
 }

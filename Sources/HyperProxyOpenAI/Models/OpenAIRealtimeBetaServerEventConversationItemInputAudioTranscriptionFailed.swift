@@ -14,17 +14,18 @@ public struct OpenAIRealtimeBetaServerEventConversationItemInputAudioTranscripti
   Sendable
 {
   public var contentIndex: Int
-  public var error: OpenAIRealtimeBetaServerEventConversationItemInputAudioTranscriptionFailedError
+  public var error:
+    OpenAIRealtimeBetaServerEventConversationItemInputAudioTranscriptionFailed.ErrorValue
   public var eventId: String
   public var itemId: String
-  public var kind: OpenAIRealtimeBetaServerEventConversationItemInputAudioTranscriptionFailedKind
+  public var kind: OpenAIRealtimeBetaServerEventConversationItemInputAudioTranscriptionFailed.Kind
 
   public init(
     contentIndex: Int,
-    error: OpenAIRealtimeBetaServerEventConversationItemInputAudioTranscriptionFailedError,
+    error: OpenAIRealtimeBetaServerEventConversationItemInputAudioTranscriptionFailed.ErrorValue,
     eventId: String,
     itemId: String,
-    kind: OpenAIRealtimeBetaServerEventConversationItemInputAudioTranscriptionFailedKind
+    kind: OpenAIRealtimeBetaServerEventConversationItemInputAudioTranscriptionFailed.Kind
   ) {
     self.contentIndex = contentIndex
     self.error = error
@@ -39,5 +40,40 @@ public struct OpenAIRealtimeBetaServerEventConversationItemInputAudioTranscripti
     case eventId = "event_id"
     case itemId = "item_id"
     case kind = "type"
+  }
+
+  public struct ErrorValue:
+    Codable, Sendable
+  {
+    public var code: String?
+    public var message: String?
+    public var param: String?
+    public var kind: String?
+
+    public init(
+      code: String? = nil,
+      message: String? = nil,
+      param: String? = nil,
+      kind: String? = nil
+    ) {
+      self.code = code
+      self.message = message
+      self.param = param
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case code
+      case message
+      case param
+      case kind = "type"
+    }
+  }
+
+  public enum Kind: String,
+    Codable, Hashable, Sendable
+  {
+    case conversationItemInputAudioTranscriptionFailed =
+      "conversation.item.input_audio_transcription.failed"
   }
 }

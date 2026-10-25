@@ -14,14 +14,14 @@ public struct ElevenLabsEndProcedureToolResultSuccessModel: Codable, Sendable {
   public var message: String?
   public var procedureId: String
   public var procedureName: String
-  public var resultType: ElevenLabsEndProcedureSuccessResultType?
+  public var resultType: ElevenLabsEndProcedureToolResultSuccessModel.ResultType?
   public var status: ElevenLabsSuccessStatus?
 
   public init(
     procedureId: String,
     procedureName: String,
     message: String? = nil,
-    resultType: ElevenLabsEndProcedureSuccessResultType? = nil,
+    resultType: ElevenLabsEndProcedureToolResultSuccessModel.ResultType? = nil,
     status: ElevenLabsSuccessStatus? = nil
   ) {
     self.message = message
@@ -37,5 +37,9 @@ public struct ElevenLabsEndProcedureToolResultSuccessModel: Codable, Sendable {
     case procedureName = "procedure_name"
     case resultType = "result_type"
     case status
+  }
+
+  public enum ResultType: String, Codable, Hashable, Sendable {
+    case endProcedureSuccess = "end_procedure_success"
   }
 }

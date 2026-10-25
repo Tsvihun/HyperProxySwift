@@ -12,10 +12,10 @@ import HyperProxyCore
 
 public struct OpenAITruncationObject: Codable, Sendable {
   public var lastMessages: Int?
-  public var kind: OpenAITruncationObjectKind
+  public var kind: OpenAITruncationObject.Kind
 
   public init(
-    kind: OpenAITruncationObjectKind,
+    kind: OpenAITruncationObject.Kind,
     lastMessages: Int? = nil
   ) {
     self.lastMessages = lastMessages
@@ -25,5 +25,10 @@ public struct OpenAITruncationObject: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case lastMessages = "last_messages"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case auto = "auto"
+    case lastMessages = "last_messages"
   }
 }

@@ -14,7 +14,7 @@ extension BFLFlux3VideoDraftEnhanceInputs {
   /// Creates the official draft-enhance variant with the required discriminator.
   public init(
     draftCache: String,
-    resolution: BFLFlux3VideoDraftEnhanceInputsResolution? = nil,
+    resolution: BFLFlux3VideoDraftEnhanceInputs.Resolution? = nil,
     safetyTolerance: Int? = nil
   ) {
     self.init(

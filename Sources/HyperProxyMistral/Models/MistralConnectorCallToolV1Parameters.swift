@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralConnectorCallToolV1Parameters: Codable, Sendable {
-  public var connectorIdOrName: MistralConnectorCallToolV1ParametersConnectorIdOrName
+  public var connectorIdOrName: MistralConnectorCallToolV1Parameters.ConnectorIdOrName
   public var credentialsName: String?
   public var toolName: String
 
   public init(
-    connectorIdOrName: MistralConnectorCallToolV1ParametersConnectorIdOrName,
+    connectorIdOrName: MistralConnectorCallToolV1Parameters.ConnectorIdOrName,
     toolName: String,
     credentialsName: String? = nil
   ) {
@@ -29,5 +29,54 @@ public struct MistralConnectorCallToolV1Parameters: Codable, Sendable {
     case connectorIdOrName = "connector_id_or_name"
     case credentialsName = "credentials_name"
     case toolName = "tool_name"
+  }
+
+  public enum ConnectorIdOrName: Codable, Sendable {
+    case string(String)
+    case uuid(
+      MistralConnectorCallToolV1Parameters.ConnectorIdOrName.Uuid)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .uuid(
+        try container.decode(MistralConnectorCallToolV1Parameters.ConnectorIdOrName.Uuid.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .uuid(let value):
+        try container.encode(value)
+      }
+    }
+
+    public struct Uuid: RawRepresentable,
+      Codable, Hashable, Sendable
+    {
+      public var rawValue: String
+
+      public init(rawValue: String) {
+        self.rawValue = rawValue
+      }
+
+    }
+  }
+}
+
+extension MistralConnectorCallToolV1Parameters.ConnectorIdOrName: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension MistralConnectorCallToolV1Parameters.ConnectorIdOrName.Uuid: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self.init(rawValue: value)
   }
 }

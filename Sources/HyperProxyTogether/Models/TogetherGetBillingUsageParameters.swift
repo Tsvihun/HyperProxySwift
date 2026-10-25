@@ -12,14 +12,14 @@ import HyperProxyCore
 
 public struct TogetherGetBillingUsageParameters: Codable, Sendable {
   public var after: String?
-  public var granularity: TogetherGetBillingUsageParametersGranularity?
+  public var granularity: TogetherGetBillingUsageParameters.Granularity?
   public var limit: Int?
   public var month: String?
   public var organizationId: String?
 
   public init(
     after: String? = nil,
-    granularity: TogetherGetBillingUsageParametersGranularity? = nil,
+    granularity: TogetherGetBillingUsageParameters.Granularity? = nil,
     limit: Int? = nil,
     month: String? = nil,
     organizationId: String? = nil
@@ -37,5 +37,10 @@ public struct TogetherGetBillingUsageParameters: Codable, Sendable {
     case limit
     case month
     case organizationId = "organization_id"
+  }
+
+  public enum Granularity: String, Codable, Hashable, Sendable {
+    case day = "day"
+    case hour = "hour"
   }
 }

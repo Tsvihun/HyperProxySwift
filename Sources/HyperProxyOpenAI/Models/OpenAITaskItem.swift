@@ -14,21 +14,21 @@ public struct OpenAITaskItem: Codable, Sendable {
   public var createdAt: Int
   public var heading: String?
   public var id: String
-  public var object: OpenAITaskItemObject
+  public var object: OpenAITaskItem.Object
   public var summary: String?
   public var taskType: OpenAITaskType
   public var threadId: String
-  public var kind: OpenAITaskItemKind
+  public var kind: OpenAITaskItem.Kind
 
   public init(
     createdAt: Int,
     heading: String?,
     id: String,
-    object: OpenAITaskItemObject,
+    object: OpenAITaskItem.Object,
     summary: String?,
     taskType: OpenAITaskType,
     threadId: String,
-    kind: OpenAITaskItemKind
+    kind: OpenAITaskItem.Kind
   ) {
     self.createdAt = createdAt
     self.heading = heading
@@ -49,5 +49,13 @@ public struct OpenAITaskItem: Codable, Sendable {
     case taskType = "task_type"
     case threadId = "thread_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case chatkitTask = "chatkit.task"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case chatkitThreadItem = "chatkit.thread_item"
   }
 }

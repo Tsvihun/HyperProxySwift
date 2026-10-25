@@ -13,25 +13,25 @@ import HyperProxyCore
 public struct OpenRouterCreateAuthKeysCodeRequest: Codable, Sendable {
   public var callbackUrl: String
   public var codeChallenge: String?
-  public var codeChallengeMethod: OpenRouterCreateAuthKeysCodeRequestCodeChallengeMethod?
+  public var codeChallengeMethod: OpenRouterCreateAuthKeysCodeRequest.CodeChallengeMethod?
   public var expiresAt: String?
   public var keyLabel: String?
   public var limit: Double?
   public var spawnAgent: String?
   public var spawnCloud: String?
-  public var usageLimitType: OpenRouterCreateAuthKeysCodeRequestUsageLimitType?
+  public var usageLimitType: OpenRouterCreateAuthKeysCodeRequest.UsageLimitType?
   public var workspaceId: String?
 
   public init(
     callbackUrl: String,
     codeChallenge: String? = nil,
-    codeChallengeMethod: OpenRouterCreateAuthKeysCodeRequestCodeChallengeMethod? = nil,
+    codeChallengeMethod: OpenRouterCreateAuthKeysCodeRequest.CodeChallengeMethod? = nil,
     expiresAt: String? = nil,
     keyLabel: String? = nil,
     limit: Double? = nil,
     spawnAgent: String? = nil,
     spawnCloud: String? = nil,
-    usageLimitType: OpenRouterCreateAuthKeysCodeRequestUsageLimitType? = nil,
+    usageLimitType: OpenRouterCreateAuthKeysCodeRequest.UsageLimitType? = nil,
     workspaceId: String? = nil
   ) {
     self.callbackUrl = callbackUrl
@@ -57,5 +57,18 @@ public struct OpenRouterCreateAuthKeysCodeRequest: Codable, Sendable {
     case spawnCloud = "spawn_cloud"
     case usageLimitType = "usage_limit_type"
     case workspaceId = "workspace_id"
+  }
+
+  public enum CodeChallengeMethod: String, Codable, Hashable,
+    Sendable
+  {
+    case s256 = "S256"
+    case plain = "plain"
+  }
+
+  public enum UsageLimitType: String, Codable, Hashable, Sendable {
+    case daily = "daily"
+    case weekly = "weekly"
+    case monthly = "monthly"
   }
 }

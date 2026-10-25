@@ -13,13 +13,13 @@ import HyperProxyCore
 public struct OpenRouterAnthropicWebFetchBlock: Codable, Sendable {
   public var content: OpenRouterAnthropicDocumentBlock
   public var retrievedAt: String
-  public var kind: OpenRouterAnthropicWebFetchBlockKind
+  public var kind: OpenRouterAnthropicWebFetchBlock.Kind
   public var url: String
 
   public init(
     content: OpenRouterAnthropicDocumentBlock,
     retrievedAt: String,
-    kind: OpenRouterAnthropicWebFetchBlockKind,
+    kind: OpenRouterAnthropicWebFetchBlock.Kind,
     url: String
   ) {
     self.content = content
@@ -33,5 +33,9 @@ public struct OpenRouterAnthropicWebFetchBlock: Codable, Sendable {
     case retrievedAt = "retrieved_at"
     case kind = "type"
     case url
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case webFetchResult = "web_fetch_result"
   }
 }

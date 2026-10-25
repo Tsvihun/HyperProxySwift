@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct AnthropicRequestTextEditorCodeExecutionViewResultBlock: Codable, Sendable {
   public var content: String
-  public var fileType: AnthropicRequestTextEditorCodeExecutionViewResultBlockFileType
+  public var fileType: AnthropicRequestTextEditorCodeExecutionViewResultBlock.FileType
   public var numLines: Int?
   public var startLine: Int?
   public var totalLines: Int?
@@ -20,7 +20,7 @@ public struct AnthropicRequestTextEditorCodeExecutionViewResultBlock: Codable, S
 
   public init(
     content: String,
-    fileType: AnthropicRequestTextEditorCodeExecutionViewResultBlockFileType,
+    fileType: AnthropicRequestTextEditorCodeExecutionViewResultBlock.FileType,
     kind: AnthropicTextEditorCodeExecutionViewResultKind = .textEditorCodeExecutionViewResult,
     numLines: Int? = nil,
     startLine: Int? = nil,
@@ -41,5 +41,13 @@ public struct AnthropicRequestTextEditorCodeExecutionViewResultBlock: Codable, S
     case startLine = "start_line"
     case totalLines = "total_lines"
     case kind = "type"
+  }
+
+  public enum FileType: String, Codable,
+    Hashable, Sendable
+  {
+    case text = "text"
+    case image = "image"
+    case pdf = "pdf"
   }
 }

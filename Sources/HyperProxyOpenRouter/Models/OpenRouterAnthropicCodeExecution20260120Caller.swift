@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenRouterAnthropicCodeExecution20260120Caller: Codable, Sendable {
   public var toolId: String
-  public var kind: OpenRouterAnthropicCodeExecution20260120CallerKind
+  public var kind: OpenRouterAnthropicCodeExecution20260120Caller.Kind
 
   public init(
     toolId: String,
-    kind: OpenRouterAnthropicCodeExecution20260120CallerKind
+    kind: OpenRouterAnthropicCodeExecution20260120Caller.Kind
   ) {
     self.toolId = toolId
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenRouterAnthropicCodeExecution20260120Caller: Codable, Sendable 
   enum CodingKeys: String, CodingKey {
     case toolId = "tool_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case codeExecution20260120 = "code_execution_20260120"
   }
 }

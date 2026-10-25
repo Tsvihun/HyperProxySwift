@@ -12,9 +12,9 @@ import HyperProxyCore
 
 public enum OpenRouterEndpointStatus: Int, Codable, Hashable, Sendable {
   case value0 = 0
-  case value1 = -1
-  case value2 = -2
-  case value3 = -3
-  case value5 = -5
-  case value10 = -10
+  case negative1 = -1
+  case negative2 = -2
+  case negative3 = -3
+  case negative5 = -5
+  case negative10 = -10
 }

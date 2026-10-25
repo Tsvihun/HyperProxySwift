@@ -18,7 +18,7 @@ public struct OpenAIBetaToolSearchCall: Codable, Sendable {
   public var execution: OpenAIBetaToolSearchExecutionType
   public var id: String
   public var status: OpenAIBetaFunctionCallStatus
-  public var kind: OpenAIBetaToolSearchCallKind
+  public var kind: OpenAIBetaToolSearchCall.Kind
 
   public init(
     arguments: HyperProxyJSONValue,
@@ -26,7 +26,7 @@ public struct OpenAIBetaToolSearchCall: Codable, Sendable {
     execution: OpenAIBetaToolSearchExecutionType,
     id: String,
     status: OpenAIBetaFunctionCallStatus,
-    kind: OpenAIBetaToolSearchCallKind,
+    kind: OpenAIBetaToolSearchCall.Kind,
     agent: OpenAIBetaAgentTag? = nil,
     createdBy: String? = nil
   ) {
@@ -49,5 +49,9 @@ public struct OpenAIBetaToolSearchCall: Codable, Sendable {
     case id
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case toolSearchCall = "tool_search_call"
   }
 }

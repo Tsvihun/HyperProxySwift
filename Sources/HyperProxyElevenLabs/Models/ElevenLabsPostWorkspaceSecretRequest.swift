@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct ElevenLabsPostWorkspaceSecretRequest: Codable, Sendable {
   public var name: String
-  public var kind: ElevenLabsNewKind
+  public var kind: ElevenLabsPostWorkspaceSecretRequest.Kind
   public var value: String
 
   public init(
     name: String,
     value: String,
-    kind: ElevenLabsNewKind = .new
+    kind: ElevenLabsPostWorkspaceSecretRequest.Kind = .new
   ) {
     self.name = name
     self.kind = kind
@@ -29,5 +29,9 @@ public struct ElevenLabsPostWorkspaceSecretRequest: Codable, Sendable {
     case name
     case kind = "type"
     case value
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case new = "new"
   }
 }

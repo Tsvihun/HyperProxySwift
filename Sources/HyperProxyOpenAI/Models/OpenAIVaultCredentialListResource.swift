@@ -15,14 +15,14 @@ public struct OpenAIVaultCredentialListResource: Codable, Sendable {
   public var firstId: String
   public var hasMore: Bool
   public var lastId: String
-  public var object: OpenAIVaultCredentialListResourceObject
+  public var object: OpenAIVaultCredentialListResource.Object
 
   public init(
     data: [OpenAIVaultCredentialResource],
     firstId: String,
     hasMore: Bool,
     lastId: String,
-    object: OpenAIVaultCredentialListResourceObject
+    object: OpenAIVaultCredentialListResource.Object
   ) {
     self.data = data
     self.firstId = firstId
@@ -37,5 +37,9 @@ public struct OpenAIVaultCredentialListResource: Codable, Sendable {
     case hasMore = "has_more"
     case lastId = "last_id"
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case list = "list"
   }
 }

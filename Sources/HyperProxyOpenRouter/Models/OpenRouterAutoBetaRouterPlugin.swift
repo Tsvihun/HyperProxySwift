@@ -13,16 +13,16 @@ import HyperProxyCore
 public struct OpenRouterAutoBetaRouterPlugin: Codable, Sendable {
   public var allowedModels: [String]?
   public var costQualityTradeoff: Int?
-  public var costTier: OpenRouterAutoBetaRouterPluginCostTier?
+  public var costTier: OpenRouterAutoBetaRouterPlugin.CostTier?
   public var enabled: Bool?
   public var excludedModels: [String]?
-  public var id: OpenRouterAutoBetaRouterPluginId
+  public var id: OpenRouterAutoBetaRouterPlugin.Id
 
   public init(
-    id: OpenRouterAutoBetaRouterPluginId,
+    id: OpenRouterAutoBetaRouterPlugin.Id,
     allowedModels: [String]? = nil,
     costQualityTradeoff: Int? = nil,
-    costTier: OpenRouterAutoBetaRouterPluginCostTier? = nil,
+    costTier: OpenRouterAutoBetaRouterPlugin.CostTier? = nil,
     enabled: Bool? = nil,
     excludedModels: [String]? = nil
   ) {
@@ -41,5 +41,17 @@ public struct OpenRouterAutoBetaRouterPlugin: Codable, Sendable {
     case enabled
     case excludedModels = "excluded_models"
     case id
+  }
+
+  public enum CostTier: String, Codable, Hashable, Sendable {
+    case low = "low"
+    case medium = "medium"
+    case high = "high"
+    case xhigh = "xhigh"
+    case max = "max"
+  }
+
+  public enum Id: String, Codable, Hashable, Sendable {
+    case autoBetaRouter = "auto-beta-router"
   }
 }

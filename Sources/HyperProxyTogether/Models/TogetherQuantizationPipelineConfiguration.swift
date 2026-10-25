@@ -11,39 +11,39 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherQuantizationPipelineConfiguration: Codable, Sendable {
-  public var adapterModelName: String
-  public var adapterProjectId: String
-  public var adapterRevisionId: String
   public var baseModelName: String
   public var baseObjectId: String
   public var baseRevisionId: String
+  public var modelName: String
+  public var modelProjectId: String
+  public var modelRevisionId: String
   public var userId: String
 
   public init(
-    adapterModelName: String,
-    adapterProjectId: String,
-    adapterRevisionId: String,
     baseModelName: String,
     baseObjectId: String,
     baseRevisionId: String,
+    modelName: String,
+    modelProjectId: String,
+    modelRevisionId: String,
     userId: String
   ) {
-    self.adapterModelName = adapterModelName
-    self.adapterProjectId = adapterProjectId
-    self.adapterRevisionId = adapterRevisionId
     self.baseModelName = baseModelName
     self.baseObjectId = baseObjectId
     self.baseRevisionId = baseRevisionId
+    self.modelName = modelName
+    self.modelProjectId = modelProjectId
+    self.modelRevisionId = modelRevisionId
     self.userId = userId
   }
 
   enum CodingKeys: String, CodingKey {
-    case adapterModelName = "adapter_model_name"
-    case adapterProjectId = "adapter_project_id"
-    case adapterRevisionId = "adapter_revision_id"
     case baseModelName = "base_model_name"
     case baseObjectId = "base_object_id"
     case baseRevisionId = "base_revision_id"
+    case modelName = "model_name"
+    case modelProjectId = "model_project_id"
+    case modelRevisionId = "model_revision_id"
     case userId = "user_id"
   }
 }

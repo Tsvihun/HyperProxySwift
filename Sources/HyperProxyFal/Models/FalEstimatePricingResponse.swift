@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct FalEstimatePricingResponse: Codable, Sendable {
   public var currency: String
-  public var estimateType: FalEstimatePricingResponseEstimateType
+  public var estimateType: FalEstimatePricingResponse.EstimateType
   public var totalCost: Double
 
   public init(
     currency: String,
-    estimateType: FalEstimatePricingResponseEstimateType,
+    estimateType: FalEstimatePricingResponse.EstimateType,
     totalCost: Double
   ) {
     self.currency = currency
@@ -29,5 +29,10 @@ public struct FalEstimatePricingResponse: Codable, Sendable {
     case currency
     case estimateType = "estimate_type"
     case totalCost = "total_cost"
+  }
+
+  public enum EstimateType: String, Codable, Hashable, Sendable {
+    case historicalApiPrice = "historical_api_price"
+    case unitPrice = "unit_price"
   }
 }

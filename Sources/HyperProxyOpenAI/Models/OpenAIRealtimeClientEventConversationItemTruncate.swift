@@ -15,13 +15,13 @@ public struct OpenAIRealtimeClientEventConversationItemTruncate: Codable, Sendab
   public var contentIndex: Int
   public var eventId: String?
   public var itemId: String
-  public var kind: OpenAIRealtimeClientEventConversationItemTruncateKind
+  public var kind: OpenAIRealtimeClientEventConversationItemTruncate.Kind
 
   public init(
     audioEndMs: Int,
     contentIndex: Int,
     itemId: String,
-    kind: OpenAIRealtimeClientEventConversationItemTruncateKind,
+    kind: OpenAIRealtimeClientEventConversationItemTruncate.Kind,
     eventId: String? = nil
   ) {
     self.audioEndMs = audioEndMs
@@ -37,5 +37,11 @@ public struct OpenAIRealtimeClientEventConversationItemTruncate: Codable, Sendab
     case eventId = "event_id"
     case itemId = "item_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case conversationItemTruncate = "conversation.item.truncate"
   }
 }

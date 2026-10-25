@@ -13,10 +13,10 @@ import HyperProxyCore
 public struct PerplexityImageSearchTool: Codable, Sendable {
   public var filters: PerplexityImageSearchFilters?
   public var maxResults: Int?
-  public var kind: PerplexityImageSearchToolKind
+  public var kind: PerplexityImageSearchTool.Kind
 
   public init(
-    kind: PerplexityImageSearchToolKind,
+    kind: PerplexityImageSearchTool.Kind,
     filters: PerplexityImageSearchFilters? = nil,
     maxResults: Int? = nil
   ) {
@@ -29,5 +29,9 @@ public struct PerplexityImageSearchTool: Codable, Sendable {
     case filters
     case maxResults = "max_results"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case imageSearch = "image_search"
   }
 }

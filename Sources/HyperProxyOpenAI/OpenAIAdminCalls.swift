@@ -285,8 +285,8 @@ public struct OpenAIAdminCalls: Sendable {
     self.service.call(.updateProjectServiceAccount)
   }
   /// `POST v1/organization/projects/{project_id}/service_accounts/{service_account_id}/api_keys`
-  public var createanAPIkeyforaserviceaccount: HyperProxyProviderCall<OpenAIOperation> {
-    self.service.call(.createanAPIkeyforaserviceaccount)
+  public var createanApIkeyforaserviceaccount: HyperProxyProviderCall<OpenAIOperation> {
+    self.service.call(.createanApIkeyforaserviceaccount)
   }
   /// `GET v1/organization/projects/{project_id}/spend_alerts`
   public var listProjectSpendAlerts: HyperProxyProviderCall<OpenAIOperation> {

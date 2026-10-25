@@ -15,9 +15,9 @@ public enum ElevenLabsCreateAuthConnectionRequest: Codable, Sendable {
   case createCustomHeaderAuthRequest(ElevenLabsCreateCustomHeaderAuthRequest)
   case createBasicAuthRequest(ElevenLabsCreateBasicAuthRequest)
   case createBearerAuthRequest(ElevenLabsCreateBearerAuthRequest)
-  case createOAuth2JWTRequest(ElevenLabsCreateOAuth2JWTRequest)
-  case createPrivateKeyJWTRequest(ElevenLabsCreatePrivateKeyJWTRequest)
-  case createMTLSAuthRequest(ElevenLabsCreateMTLSAuthRequest)
+  case createOAuth2JwtRequest(ElevenLabsCreateOAuth2JWTRequest)
+  case createPrivateKeyJwtRequest(ElevenLabsCreatePrivateKeyJWTRequest)
+  case createMtlsAuthRequest(ElevenLabsCreateMTLSAuthRequest)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -38,14 +38,14 @@ public enum ElevenLabsCreateAuthConnectionRequest: Codable, Sendable {
       return
     }
     if let value = try? container.decode(ElevenLabsCreateOAuth2JWTRequest.self) {
-      self = .createOAuth2JWTRequest(value)
+      self = .createOAuth2JwtRequest(value)
       return
     }
     if let value = try? container.decode(ElevenLabsCreatePrivateKeyJWTRequest.self) {
-      self = .createPrivateKeyJWTRequest(value)
+      self = .createPrivateKeyJwtRequest(value)
       return
     }
-    self = .createMTLSAuthRequest(try container.decode(ElevenLabsCreateMTLSAuthRequest.self))
+    self = .createMtlsAuthRequest(try container.decode(ElevenLabsCreateMTLSAuthRequest.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -59,11 +59,11 @@ public enum ElevenLabsCreateAuthConnectionRequest: Codable, Sendable {
       try container.encode(value)
     case .createBearerAuthRequest(let value):
       try container.encode(value)
-    case .createOAuth2JWTRequest(let value):
+    case .createOAuth2JwtRequest(let value):
       try container.encode(value)
-    case .createPrivateKeyJWTRequest(let value):
+    case .createPrivateKeyJwtRequest(let value):
       try container.encode(value)
-    case .createMTLSAuthRequest(let value):
+    case .createMtlsAuthRequest(let value):
       try container.encode(value)
     }
   }

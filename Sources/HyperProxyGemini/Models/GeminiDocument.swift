@@ -17,7 +17,7 @@ public struct GeminiDocument: Codable, Sendable {
   public var mimeType: String?
   public var name: String?
   public var sizeBytes: String?
-  public var state: GeminiDocumentState?
+  public var state: GeminiDocument.State?
   public var updateTime: String?
 
   public init(
@@ -27,7 +27,7 @@ public struct GeminiDocument: Codable, Sendable {
     mimeType: String? = nil,
     name: String? = nil,
     sizeBytes: String? = nil,
-    state: GeminiDocumentState? = nil,
+    state: GeminiDocument.State? = nil,
     updateTime: String? = nil
   ) {
     self.createTime = createTime
@@ -49,5 +49,12 @@ public struct GeminiDocument: Codable, Sendable {
     case sizeBytes
     case state
     case updateTime
+  }
+
+  public enum State: String, Codable, Hashable, Sendable {
+    case stateUnspecified = "STATE_UNSPECIFIED"
+    case statePending = "STATE_PENDING"
+    case stateActive = "STATE_ACTIVE"
+    case stateFailed = "STATE_FAILED"
   }
 }

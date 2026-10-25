@@ -16,7 +16,7 @@ public struct ElevenLabsBodyCreateMusicFinetuneV1MusicFinetunesPost: Codable, Se
   public var name: String
   public var primaryGenre: String
   public var tags: [String]?
-  public var visibility: ElevenLabsBodyCreateMusicFinetuneV1MusicFinetunesPostVisibility?
+  public var visibility: ElevenLabsBodyCreateMusicFinetuneV1MusicFinetunesPost.Visibility?
 
   public init(
     name: String,
@@ -24,7 +24,7 @@ public struct ElevenLabsBodyCreateMusicFinetuneV1MusicFinetunesPost: Codable, Se
     files: [String]? = nil,
     modelId: ElevenLabsMusicModelID? = nil,
     tags: [String]? = nil,
-    visibility: ElevenLabsBodyCreateMusicFinetuneV1MusicFinetunesPostVisibility? = nil
+    visibility: ElevenLabsBodyCreateMusicFinetuneV1MusicFinetunesPost.Visibility? = nil
   ) {
     self.files = files
     self.modelId = modelId
@@ -41,5 +41,12 @@ public struct ElevenLabsBodyCreateMusicFinetuneV1MusicFinetunesPost: Codable, Se
     case primaryGenre = "primary_genre"
     case tags
     case visibility
+  }
+
+  public enum Visibility: String, Codable,
+    Hashable, Sendable
+  {
+    case privateValue = "private"
+    case workspace = "workspace"
   }
 }

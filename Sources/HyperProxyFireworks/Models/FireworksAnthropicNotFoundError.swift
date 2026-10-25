@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct FireworksAnthropicNotFoundError: Codable, Sendable {
   public var message: String
-  public var kind: FireworksNotFoundErrorKind
+  public var kind: FireworksAnthropicNotFoundError.Kind
 
   public init(
     message: String,
-    kind: FireworksNotFoundErrorKind = .notFoundError
+    kind: FireworksAnthropicNotFoundError.Kind = .notFoundError
   ) {
     self.message = message
     self.kind = kind
@@ -25,5 +25,9 @@ public struct FireworksAnthropicNotFoundError: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case message
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case notFoundError = "not_found_error"
   }
 }

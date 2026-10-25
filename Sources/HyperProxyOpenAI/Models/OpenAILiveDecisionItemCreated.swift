@@ -14,12 +14,12 @@ public struct OpenAILiveDecisionItemCreated: Codable, Sendable {
   public var clientEventId: String?
   public var eventId: String
   public var item: OpenAILiveDecisionStoredInputItemParam
-  public var kind: OpenAILiveDecisionItemCreatedKind
+  public var kind: OpenAILiveDecisionItemCreated.Kind
 
   public init(
     eventId: String,
     item: OpenAILiveDecisionStoredInputItemParam,
-    kind: OpenAILiveDecisionItemCreatedKind,
+    kind: OpenAILiveDecisionItemCreated.Kind,
     clientEventId: String? = nil
   ) {
     self.clientEventId = clientEventId
@@ -33,5 +33,9 @@ public struct OpenAILiveDecisionItemCreated: Codable, Sendable {
     case eventId = "event_id"
     case item
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case decisionItemCreated = "decision.item.created"
   }
 }

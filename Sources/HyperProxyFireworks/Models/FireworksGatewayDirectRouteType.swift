@@ -11,8 +11,8 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksGatewayDirectRouteType: String, Codable, Hashable, Sendable {
-  case dIRECTROUTETYPEUNSPECIFIED = "DIRECT_ROUTE_TYPE_UNSPECIFIED"
-  case iNTERNET = "INTERNET"
-  case gCPPRIVATESERVICECONNECT = "GCP_PRIVATE_SERVICE_CONNECT"
-  case aWSPRIVATELINK = "AWS_PRIVATELINK"
+  case directRouteTypeUnspecified = "DIRECT_ROUTE_TYPE_UNSPECIFIED"
+  case internet = "INTERNET"
+  case gcpPrivateServiceConnect = "GCP_PRIVATE_SERVICE_CONNECT"
+  case awsPrivatelink = "AWS_PRIVATELINK"
 }

@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIGetRunStepParameters: Codable, Sendable {
-  public var include: [OpenAIGetRunStepParametersIncludeItem]?
+  public var include: [OpenAIGetRunStepParameters.IncludeElement]?
   public var runId: String
   public var stepId: String
   public var threadId: String
@@ -20,7 +20,7 @@ public struct OpenAIGetRunStepParameters: Codable, Sendable {
     runId: String,
     stepId: String,
     threadId: String,
-    include: [OpenAIGetRunStepParametersIncludeItem]? = nil
+    include: [OpenAIGetRunStepParameters.IncludeElement]? = nil
   ) {
     self.include = include
     self.runId = runId
@@ -33,5 +33,10 @@ public struct OpenAIGetRunStepParameters: Codable, Sendable {
     case runId = "run_id"
     case stepId = "step_id"
     case threadId = "thread_id"
+  }
+
+  public enum IncludeElement: String, Codable, Hashable, Sendable {
+    case stepDetailsToolCallsFileSearchResultsContent =
+      "step_details.tool_calls[*].file_search.results[*].content"
   }
 }

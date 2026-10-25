@@ -13,19 +13,19 @@ import HyperProxyCore
 public struct StabilityInpaintingMaskingModeRequestBody: Codable, Sendable {
   public var image: String
   public var mask: String?
-  public var mode: StabilityInpaintingMaskingModeRequestBodyMode
+  public var mode: StabilityInpaintingMaskingModeRequestBody.Mode
   public var negativePrompt: String?
-  public var outputFormat: StabilityInpaintingMaskingModeRequestBodyOutputFormat?
+  public var outputFormat: StabilityInpaintingMaskingModeRequestBody.OutputFormat?
   public var prompt: String
   public var seed: Double?
 
   public init(
     image: String,
-    mode: StabilityInpaintingMaskingModeRequestBodyMode,
+    mode: StabilityInpaintingMaskingModeRequestBody.Mode,
     prompt: String,
     mask: String? = nil,
     negativePrompt: String? = nil,
-    outputFormat: StabilityInpaintingMaskingModeRequestBodyOutputFormat? = nil,
+    outputFormat: StabilityInpaintingMaskingModeRequestBody.OutputFormat? = nil,
     seed: Double? = nil
   ) {
     self.image = image
@@ -45,5 +45,17 @@ public struct StabilityInpaintingMaskingModeRequestBody: Codable, Sendable {
     case outputFormat = "output_format"
     case prompt
     case seed
+  }
+
+  public enum Mode: String, Codable, Hashable, Sendable {
+    case mask = "mask"
+  }
+
+  public enum OutputFormat: String, Codable, Hashable,
+    Sendable
+  {
+    case jpeg = "jpeg"
+    case png = "png"
+    case webp = "webp"
   }
 }

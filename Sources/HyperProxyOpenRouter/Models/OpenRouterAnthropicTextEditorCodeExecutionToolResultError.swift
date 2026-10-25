@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterAnthropicTextEditorCodeExecutionToolResultError: Codable, Sendable {
-  public var errorCode: OpenRouterAnthropicTextEditorCodeExecutionToolResultErrorErrorCode
+  public var errorCode: OpenRouterAnthropicTextEditorCodeExecutionToolResultError.ErrorCode
   public var errorMessage: String
-  public var kind: OpenRouterAnthropicTextEditorCodeExecutionToolResultErrorKind
+  public var kind: OpenRouterAnthropicTextEditorCodeExecutionToolResultError.Kind
 
   public init(
-    errorCode: OpenRouterAnthropicTextEditorCodeExecutionToolResultErrorErrorCode,
+    errorCode: OpenRouterAnthropicTextEditorCodeExecutionToolResultError.ErrorCode,
     errorMessage: String,
-    kind: OpenRouterAnthropicTextEditorCodeExecutionToolResultErrorKind
+    kind: OpenRouterAnthropicTextEditorCodeExecutionToolResultError.Kind
   ) {
     self.errorCode = errorCode
     self.errorMessage = errorMessage
@@ -29,5 +29,21 @@ public struct OpenRouterAnthropicTextEditorCodeExecutionToolResultError: Codable
     case errorCode = "error_code"
     case errorMessage = "error_message"
     case kind = "type"
+  }
+
+  public enum ErrorCode: String, Codable,
+    Hashable, Sendable
+  {
+    case invalidToolInput = "invalid_tool_input"
+    case unavailable = "unavailable"
+    case tooManyRequests = "too_many_requests"
+    case executionTimeExceeded = "execution_time_exceeded"
+    case fileNotFound = "file_not_found"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case textEditorCodeExecutionToolResultError = "text_editor_code_execution_tool_result_error"
   }
 }

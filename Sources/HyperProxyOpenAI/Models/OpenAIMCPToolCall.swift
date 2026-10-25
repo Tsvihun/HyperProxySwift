@@ -19,14 +19,14 @@ public struct OpenAIMCPToolCall: Codable, Sendable {
   public var output: String?
   public var serverLabel: String
   public var status: OpenAIMCPToolCallStatus?
-  public var kind: OpenAIMCPToolCallKind
+  public var kind: OpenAIMCPToolCall.Kind
 
   public init(
     arguments: String,
     id: String,
     name: String,
     serverLabel: String,
-    kind: OpenAIMCPToolCallKind,
+    kind: OpenAIMCPToolCall.Kind,
     approvalRequestId: String? = nil,
     error: OpenAIMCPToolCallError? = nil,
     output: String? = nil,
@@ -53,5 +53,9 @@ public struct OpenAIMCPToolCall: Codable, Sendable {
     case serverLabel = "server_label"
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case mcpCall = "mcp_call"
   }
 }

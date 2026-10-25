@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct GeminiCodeExecutionResult: Codable, Sendable {
   public var id: String?
-  public var outcome: GeminiCodeExecutionResultOutcome?
+  public var outcome: GeminiCodeExecutionResult.Outcome?
   public var output: String?
 
   public init(
     id: String? = nil,
-    outcome: GeminiCodeExecutionResultOutcome? = nil,
+    outcome: GeminiCodeExecutionResult.Outcome? = nil,
     output: String? = nil
   ) {
     self.id = id
@@ -29,5 +29,12 @@ public struct GeminiCodeExecutionResult: Codable, Sendable {
     case id
     case outcome
     case output
+  }
+
+  public enum Outcome: String, Codable, Hashable, Sendable {
+    case outcomeUnspecified = "OUTCOME_UNSPECIFIED"
+    case outcomeOk = "OUTCOME_OK"
+    case outcomeFailed = "OUTCOME_FAILED"
+    case outcomeDeadlineExceeded = "OUTCOME_DEADLINE_EXCEEDED"
   }
 }

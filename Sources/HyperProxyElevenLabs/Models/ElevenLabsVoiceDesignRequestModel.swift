@@ -14,7 +14,7 @@ public struct ElevenLabsVoiceDesignRequestModel: Codable, Sendable {
   public var autoGenerateText: Bool?
   public var guidanceScale: Double?
   public var loudness: Double?
-  public var modelId: ElevenLabsVoiceDesignRequestModelModelId?
+  public var modelId: ElevenLabsVoiceDesignRequestModel.ModelId?
   public var promptStrength: Double?
   public var quality: Double?
   public var referenceAudioBase64: String?
@@ -31,7 +31,7 @@ public struct ElevenLabsVoiceDesignRequestModel: Codable, Sendable {
     autoGenerateText: Bool? = nil,
     guidanceScale: Double? = nil,
     loudness: Double? = nil,
-    modelId: ElevenLabsVoiceDesignRequestModelModelId? = nil,
+    modelId: ElevenLabsVoiceDesignRequestModel.ModelId? = nil,
     promptStrength: Double? = nil,
     quality: Double? = nil,
     referenceAudioBase64: String? = nil,
@@ -73,5 +73,10 @@ public struct ElevenLabsVoiceDesignRequestModel: Codable, Sendable {
     case streamPreviews = "stream_previews"
     case text
     case voiceDescription = "voice_description"
+  }
+
+  public enum ModelId: String, Codable, Hashable, Sendable {
+    case elevenMultilingualTtvV2 = "eleven_multilingual_ttv_v2"
+    case elevenTtvV3 = "eleven_ttv_v3"
   }
 }

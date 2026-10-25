@@ -13,13 +13,13 @@ import HyperProxyCore
 public struct ElevenLabsEndCallToolResultModel: Codable, Sendable {
   public var message: String?
   public var reason: String?
-  public var resultType: ElevenLabsEndCallSuccessResultType?
+  public var resultType: ElevenLabsEndCallToolResultModel.ResultType?
   public var status: ElevenLabsSuccessStatus?
 
   public init(
     message: String? = nil,
     reason: String? = nil,
-    resultType: ElevenLabsEndCallSuccessResultType? = nil,
+    resultType: ElevenLabsEndCallToolResultModel.ResultType? = nil,
     status: ElevenLabsSuccessStatus? = nil
   ) {
     self.message = message
@@ -33,5 +33,9 @@ public struct ElevenLabsEndCallToolResultModel: Codable, Sendable {
     case reason
     case resultType = "result_type"
     case status
+  }
+
+  public enum ResultType: String, Codable, Hashable, Sendable {
+    case endCallSuccess = "end_call_success"
   }
 }

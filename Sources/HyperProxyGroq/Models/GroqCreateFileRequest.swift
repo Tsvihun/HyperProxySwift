@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct GroqCreateFileRequest: Codable, Sendable {
   public var file: String
-  public var purpose: GroqCreateFileRequestPurpose
+  public var purpose: GroqCreateFileRequest.Purpose
 
   public init(
     file: String,
-    purpose: GroqCreateFileRequestPurpose
+    purpose: GroqCreateFileRequest.Purpose
   ) {
     self.file = file
     self.purpose = purpose
@@ -25,5 +25,9 @@ public struct GroqCreateFileRequest: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case file
     case purpose
+  }
+
+  public enum Purpose: String, Codable, Hashable, Sendable {
+    case batch = "batch"
   }
 }

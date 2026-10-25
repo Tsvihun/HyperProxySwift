@@ -12,16 +12,16 @@ import HyperProxyCore
 
 public struct OpenAITranscriptTextDoneEvent: Codable, Sendable {
   public var languages: [OpenAITranscriptionLanguage]?
-  public var logprobs: [OpenAITranscriptTextDoneEventLogprobsItem]?
+  public var logprobs: [OpenAITranscriptTextDoneEvent.LogprobsElement]?
   public var text: String
-  public var kind: OpenAITranscriptTextDoneEventKind
+  public var kind: OpenAITranscriptTextDoneEvent.Kind
   public var usage: OpenAITranscriptTextUsageTokens?
 
   public init(
     text: String,
-    kind: OpenAITranscriptTextDoneEventKind,
+    kind: OpenAITranscriptTextDoneEvent.Kind,
     languages: [OpenAITranscriptionLanguage]? = nil,
-    logprobs: [OpenAITranscriptTextDoneEventLogprobsItem]? = nil,
+    logprobs: [OpenAITranscriptTextDoneEvent.LogprobsElement]? = nil,
     usage: OpenAITranscriptTextUsageTokens? = nil
   ) {
     self.languages = languages
@@ -37,5 +37,31 @@ public struct OpenAITranscriptTextDoneEvent: Codable, Sendable {
     case text
     case kind = "type"
     case usage
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case transcriptTextDone = "transcript.text.done"
+  }
+
+  public struct LogprobsElement: Codable, Sendable {
+    public var bytes: [Int]?
+    public var logprob: Double?
+    public var token: String?
+
+    public init(
+      bytes: [Int]? = nil,
+      logprob: Double? = nil,
+      token: String? = nil
+    ) {
+      self.bytes = bytes
+      self.logprob = logprob
+      self.token = token
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case bytes
+      case logprob
+      case token
+    }
   }
 }

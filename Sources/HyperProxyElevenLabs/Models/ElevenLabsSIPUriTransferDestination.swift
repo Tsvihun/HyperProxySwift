@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsSIPUriTransferDestination: Codable, Sendable {
   public var sipUri: String
-  public var kind: ElevenLabsSipUriKind?
+  public var kind: ElevenLabsSIPUriTransferDestination.Kind?
 
   public init(
     sipUri: String,
-    kind: ElevenLabsSipUriKind? = nil
+    kind: ElevenLabsSIPUriTransferDestination.Kind? = nil
   ) {
     self.sipUri = sipUri
     self.kind = kind
@@ -25,5 +25,9 @@ public struct ElevenLabsSIPUriTransferDestination: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case sipUri = "sip_uri"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case sipUri = "sip_uri"
   }
 }

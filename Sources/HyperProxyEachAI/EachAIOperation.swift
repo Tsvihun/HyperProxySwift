@@ -33,10 +33,10 @@ public enum EachAIOperation: String, HyperProxyCatalogOperation {
   case predictionsCreate = "predictions.create"
   /// `POST v1/prediction/run`
   case predictionsRun = "predictions.run"
-  /// `GET v1/prediction/{id}`
-  case predictionsRetrieve = "predictions.retrieve"
   /// `POST v1/prediction/{id}/cancel`
   case predictionsCancel = "predictions.cancel"
+  /// `GET v1/prediction/{prediction_id}`
+  case predictionsRetrieve = "predictions.retrieve"
   /// `POST v1/upload/presign`
   case uploadsCreatePresignedURL = "uploads.createPresignedURL"
   /// `GET v1/webhooks`

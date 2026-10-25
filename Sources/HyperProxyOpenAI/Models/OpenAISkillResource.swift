@@ -17,7 +17,7 @@ public struct OpenAISkillResource: Codable, Sendable {
   public var id: String
   public var latestVersion: String
   public var name: String
-  public var object: OpenAISkillResourceObject
+  public var object: OpenAISkillResource.Object
 
   public init(
     createdAt: Int,
@@ -26,7 +26,7 @@ public struct OpenAISkillResource: Codable, Sendable {
     id: String,
     latestVersion: String,
     name: String,
-    object: OpenAISkillResourceObject
+    object: OpenAISkillResource.Object
   ) {
     self.createdAt = createdAt
     self.defaultVersion = defaultVersion
@@ -45,5 +45,9 @@ public struct OpenAISkillResource: Codable, Sendable {
     case latestVersion = "latest_version"
     case name
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case skill = "skill"
   }
 }

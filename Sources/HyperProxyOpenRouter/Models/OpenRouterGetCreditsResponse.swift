@@ -11,15 +11,33 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterGetCreditsResponse: Codable, Sendable {
-  public var data: OpenRouterGetCreditsResponseData
+  public var data: OpenRouterGetCreditsResponse.DataValue
 
   public init(
-    data: OpenRouterGetCreditsResponseData
+    data: OpenRouterGetCreditsResponse.DataValue
   ) {
     self.data = data
   }
 
   enum CodingKeys: String, CodingKey {
     case data
+  }
+
+  public struct DataValue: Codable, Sendable {
+    public var totalCredits: Double
+    public var totalUsage: Double
+
+    public init(
+      totalCredits: Double,
+      totalUsage: Double
+    ) {
+      self.totalCredits = totalCredits
+      self.totalUsage = totalUsage
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case totalCredits = "total_credits"
+      case totalUsage = "total_usage"
+    }
   }
 }

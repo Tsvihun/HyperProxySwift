@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct FireworksAnthropicBase64PDFSource: Codable, Sendable {
   public var data: String
-  public var mediaType: FireworksApplicationPdfMediaType
+  public var mediaType: FireworksAnthropicBase64PDFSource.MediaType
   public var kind: FireworksBase64Kind
 
   public init(
     data: String,
-    mediaType: FireworksApplicationPdfMediaType = .applicationPdf,
+    mediaType: FireworksAnthropicBase64PDFSource.MediaType = .applicationPdf,
     kind: FireworksBase64Kind = .base64
   ) {
     self.data = data
@@ -29,5 +29,9 @@ public struct FireworksAnthropicBase64PDFSource: Codable, Sendable {
     case data
     case mediaType = "media_type"
     case kind = "type"
+  }
+
+  public enum MediaType: String, Codable, Hashable, Sendable {
+    case applicationPdf = "application/pdf"
   }
 }

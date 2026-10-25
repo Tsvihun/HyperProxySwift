@@ -14,11 +14,11 @@ public struct ReplicateAccountGetResponse: Codable, Sendable {
   public var avatarUrl: String?
   public var githubUrl: String?
   public var name: String?
-  public var kind: ReplicateAccountGetResponseKind
+  public var kind: ReplicateAccountGetResponse.Kind
   public var username: String
 
   public init(
-    kind: ReplicateAccountGetResponseKind,
+    kind: ReplicateAccountGetResponse.Kind,
     username: String,
     avatarUrl: String? = nil,
     githubUrl: String? = nil,
@@ -37,5 +37,10 @@ public struct ReplicateAccountGetResponse: Codable, Sendable {
     case name
     case kind = "type"
     case username
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case organization = "organization"
+    case user = "user"
   }
 }

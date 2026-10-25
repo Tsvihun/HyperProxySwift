@@ -18,7 +18,7 @@ public struct EachAIWorkflowsHostWorkflowDetail: Codable, Sendable {
   public var name: String
   public var production: Bool?
   public var slug: String?
-  public var status: EachAIWorkflowsHostWorkflowDetailStatus?
+  public var status: EachAIWorkflowsHostWorkflowDetail.Status?
   public var tags: [String]?
   public var triggerCount: Int?
   public var updatedAt: String?
@@ -34,7 +34,7 @@ public struct EachAIWorkflowsHostWorkflowDetail: Codable, Sendable {
     isPublic: Bool? = nil,
     production: Bool? = nil,
     slug: String? = nil,
-    status: EachAIWorkflowsHostWorkflowDetailStatus? = nil,
+    status: EachAIWorkflowsHostWorkflowDetail.Status? = nil,
     tags: [String]? = nil,
     triggerCount: Int? = nil,
     updatedAt: String? = nil,
@@ -69,5 +69,11 @@ public struct EachAIWorkflowsHostWorkflowDetail: Codable, Sendable {
     case updatedAt = "updated_at"
     case versions
     case workflowId = "workflow_id"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case active = "active"
+    case archived = "archived"
+    case deleted = "deleted"
   }
 }

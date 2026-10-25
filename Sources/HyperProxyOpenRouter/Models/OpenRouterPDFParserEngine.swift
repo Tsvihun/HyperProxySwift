@@ -11,37 +11,47 @@ import Foundation
 import HyperProxyCore
 
 public enum OpenRouterPDFParserEngine: Codable, Sendable {
-  case pDFParserEngineAnyOf1(OpenRouterPDFParserEngineAnyOf1)
-  case pDFParserEngineAnyOf2(OpenRouterPDFParserEngineAnyOf2)
+  case preset(OpenRouterPDFParserEngine.Preset)
+  case pdfTextValue(OpenRouterPDFParserEngine.PdfText)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(OpenRouterPDFParserEngineAnyOf1.self) {
-      self = .pDFParserEngineAnyOf1(value)
+    if let value = try? container.decode(OpenRouterPDFParserEngine.Preset.self) {
+      self = .preset(value)
       return
     }
-    self = .pDFParserEngineAnyOf2(try container.decode(OpenRouterPDFParserEngineAnyOf2.self))
+    self = .pdfTextValue(try container.decode(OpenRouterPDFParserEngine.PdfText.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .pDFParserEngineAnyOf1(let value):
+    case .preset(let value):
       try container.encode(value)
-    case .pDFParserEngineAnyOf2(let value):
+    case .pdfTextValue(let value):
       try container.encode(value)
     }
   }
 
   /// Provider-native value without the schema union wrapper.
-  public static var mistralOcr: Self { .pDFParserEngineAnyOf1(.mistralOcr) }
+  public static var mistralOcr: Self { .preset(.mistralOcr) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var native: Self { .pDFParserEngineAnyOf1(.native) }
+  public static var native: Self { .preset(.native) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var cloudflareAi: Self { .pDFParserEngineAnyOf1(.cloudflareAi) }
+  public static var cloudflareAi: Self { .preset(.cloudflareAi) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var pdfText: Self { .pDFParserEngineAnyOf2(.pdfText) }
+  public static var pdfText: Self { .pdfTextValue(.pdfText) }
+
+  public enum Preset: String, Codable, Hashable, Sendable {
+    case mistralOcr = "mistral-ocr"
+    case native = "native"
+    case cloudflareAi = "cloudflare-ai"
+  }
+
+  public enum PdfText: String, Codable, Hashable, Sendable {
+    case pdfText = "pdf-text"
+  }
 }

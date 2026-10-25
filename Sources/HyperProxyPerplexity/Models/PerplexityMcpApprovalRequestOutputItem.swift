@@ -17,14 +17,14 @@ public struct PerplexityMcpApprovalRequestOutputItem: Codable, Sendable {
   public var name: String
   public var serverLabel: String
   public var thoughtSignature: String?
-  public var kind: PerplexityMcpApprovalRequestOutputItemKind
+  public var kind: PerplexityMcpApprovalRequestOutputItem.Kind
 
   public init(
     arguments: String,
     id: String,
     name: String,
     serverLabel: String,
-    kind: PerplexityMcpApprovalRequestOutputItemKind,
+    kind: PerplexityMcpApprovalRequestOutputItem.Kind,
     connectorId: String? = nil,
     thoughtSignature: String? = nil
   ) {
@@ -45,5 +45,9 @@ public struct PerplexityMcpApprovalRequestOutputItem: Codable, Sendable {
     case serverLabel = "server_label"
     case thoughtSignature = "thought_signature"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case mcpApprovalRequest = "mcp_approval_request"
   }
 }

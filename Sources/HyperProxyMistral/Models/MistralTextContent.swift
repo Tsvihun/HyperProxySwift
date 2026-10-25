@@ -11,25 +11,25 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralTextContent: Codable, Sendable {
-  public var meta: [String: HyperProxyJSONValue]?
+  public var _meta: [String: HyperProxyJSONValue]?
   public var annotations: MistralAnnotations?
   public var text: String
   public var kind: MistralTextKind?
 
   public init(
     text: String,
-    meta: [String: HyperProxyJSONValue]? = nil,
+    _meta: [String: HyperProxyJSONValue]? = nil,
     annotations: MistralAnnotations? = nil,
     kind: MistralTextKind? = nil
   ) {
-    self.meta = meta
+    self._meta = _meta
     self.annotations = annotations
     self.text = text
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case meta = "_meta"
+    case _meta
     case annotations
     case text
     case kind = "type"

@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct ElevenLabsResourceMetadataResponseModel: Codable, Sendable {
   public var anonymousAccessLevelOverride:
-    ElevenLabsResourceMetadataResponseModelAnonymousAccessLevelOverride?
+    ElevenLabsResourceMetadataResponseModel.AnonymousAccessLevelOverride?
   public var creatorUserId: String?
   public var resourceId: String
   public var resourceName: String?
@@ -22,7 +22,7 @@ public struct ElevenLabsResourceMetadataResponseModel: Codable, Sendable {
 
   public init(
     anonymousAccessLevelOverride:
-      ElevenLabsResourceMetadataResponseModelAnonymousAccessLevelOverride?,
+      ElevenLabsResourceMetadataResponseModel.AnonymousAccessLevelOverride?,
     creatorUserId: String?,
     resourceId: String,
     resourceName: String?,
@@ -47,5 +47,14 @@ public struct ElevenLabsResourceMetadataResponseModel: Codable, Sendable {
     case resourceType = "resource_type"
     case roleToGroupIds = "role_to_group_ids"
     case shareOptions = "share_options"
+  }
+
+  public enum AnonymousAccessLevelOverride: String, Codable,
+    Hashable, Sendable
+  {
+    case admin = "admin"
+    case editor = "editor"
+    case commenter = "commenter"
+    case viewer = "viewer"
   }
 }

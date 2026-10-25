@@ -13,13 +13,13 @@ import HyperProxyCore
 public struct ElevenLabsSfxSourceContext: Codable, Sendable {
   public var generationConfig: [String: HyperProxyJSONValue]?
   public var soundGenerationHistoryItemId: String?
-  public var sourceType: ElevenLabsSfxSourceType?
+  public var sourceType: ElevenLabsSfxSourceContext.SourceType?
   public var text: String?
 
   public init(
     generationConfig: [String: HyperProxyJSONValue]? = nil,
     soundGenerationHistoryItemId: String? = nil,
-    sourceType: ElevenLabsSfxSourceType? = nil,
+    sourceType: ElevenLabsSfxSourceContext.SourceType? = nil,
     text: String? = nil
   ) {
     self.generationConfig = generationConfig
@@ -33,5 +33,9 @@ public struct ElevenLabsSfxSourceContext: Codable, Sendable {
     case soundGenerationHistoryItemId = "sound_generation_history_item_id"
     case sourceType = "source_type"
     case text
+  }
+
+  public enum SourceType: String, Codable, Hashable, Sendable {
+    case sfx = "sfx"
   }
 }

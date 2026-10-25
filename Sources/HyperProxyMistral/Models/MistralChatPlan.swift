@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public enum MistralChatPlan: String, Codable, Hashable, Sendable {
-  case iNDIVIDUAL = "INDIVIDUAL"
-  case eDU = "EDU"
-  case tEAM = "TEAM"
+  case individual = "INDIVIDUAL"
+  case edu = "EDU"
+  case team = "TEAM"
 }

@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct ElevenLabsShareOptionResponseModel: Codable, Sendable {
   public var id: String
   public var name: String
-  public var kind: ElevenLabsShareOptionResponseModelKind
+  public var kind: ElevenLabsShareOptionResponseModel.Kind
 
   public init(
     id: String,
     name: String,
-    kind: ElevenLabsShareOptionResponseModelKind
+    kind: ElevenLabsShareOptionResponseModel.Kind
   ) {
     self.id = id
     self.name = name
@@ -29,5 +29,11 @@ public struct ElevenLabsShareOptionResponseModel: Codable, Sendable {
     case id
     case name
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case user = "user"
+    case group = "group"
+    case key = "key"
   }
 }

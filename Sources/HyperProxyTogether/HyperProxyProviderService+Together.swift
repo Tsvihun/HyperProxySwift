@@ -57,21 +57,17 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
   public var chatCompletionsCreate: HyperProxyProviderCall<TogetherOperation> {
     self.call(.chatCompletionsCreate)
   }
-  /// `GET v1/clusters/availability-zones`
-  public var availabilityZones: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.availabilityZones)
-  }
   /// `POST v1/completions`
   public var completionsCreate: HyperProxyProviderCall<TogetherOperation> {
     self.call(.completionsCreate)
   }
   /// `GET v1/compute/clusters`
-  public var gPUClusterServiceList: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.gPUClusterServiceList)
+  public var gpuClusterServiceList: HyperProxyProviderCall<TogetherOperation> {
+    self.call(.gpuClusterServiceList)
   }
   /// `POST v1/compute/clusters`
-  public var gPUClusterServiceCreate: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.gPUClusterServiceCreate)
+  public var gpuClusterServiceCreate: HyperProxyProviderCall<TogetherOperation> {
+    self.call(.gpuClusterServiceCreate)
   }
   /// `GET v1/compute/clusters/storage/volumes`
   public var sharedVolumeServiceList: HyperProxyProviderCall<TogetherOperation> {
@@ -94,16 +90,16 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     self.call(.sharedVolumeServiceGet)
   }
   /// `DELETE v1/compute/clusters/{cluster_id}`
-  public var gPUClusterServiceDelete: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.gPUClusterServiceDelete)
+  public var gpuClusterServiceDelete: HyperProxyProviderCall<TogetherOperation> {
+    self.call(.gpuClusterServiceDelete)
   }
   /// `GET v1/compute/clusters/{cluster_id}`
-  public var gPUClusterServiceGet: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.gPUClusterServiceGet)
+  public var gpuClusterServiceGet: HyperProxyProviderCall<TogetherOperation> {
+    self.call(.gpuClusterServiceGet)
   }
   /// `PUT v1/compute/clusters/{cluster_id}`
-  public var gPUClusterServiceUpdate: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.gPUClusterServiceUpdate)
+  public var gpuClusterServiceUpdate: HyperProxyProviderCall<TogetherOperation> {
+    self.call(.gpuClusterServiceUpdate)
   }
   /// `GET v1/compute/clusters/{cluster_id}/addons`
   public var instanceClusterAddOnServiceList: HyperProxyProviderCall<TogetherOperation> {
@@ -249,38 +245,6 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
   public var embeddingsCreate: HyperProxyProviderCall<TogetherOperation> {
     self.call(.embeddingsCreate)
   }
-  /// `GET v1/endpoints`
-  public var listEndpoints: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.listEndpoints)
-  }
-  /// `POST v1/endpoints`
-  public var createEndpoint: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.createEndpoint)
-  }
-  /// `DELETE v1/endpoints/{endpointId}`
-  public var deleteEndpoint: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.deleteEndpoint)
-  }
-  /// `GET v1/endpoints/{endpointId}`
-  public var getEndpoint: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.getEndpoint)
-  }
-  /// `PATCH v1/endpoints/{endpointId}`
-  public var updateEndpoint: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.updateEndpoint)
-  }
-  /// `DELETE v1/endpoints/{endpointId}/adapters`
-  public var removeAdapter: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.removeAdapter)
-  }
-  /// `GET v1/endpoints/{endpointId}/adapters`
-  public var listAdapters: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.listAdapters)
-  }
-  /// `POST v1/endpoints/{endpointId}/adapters`
-  public var addAdapter: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.addAdapter)
-  }
   /// `GET v1/evaluation`
   public var getAllEvaluationJobs: HyperProxyProviderCall<TogetherOperation> {
     self.call(.getAllEvaluationJobs)
@@ -321,14 +285,6 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
   public var filesRetrieve: HyperProxyProviderCall<TogetherOperation> {
     self.call(.filesRetrieve)
   }
-  /// `DELETE v1/files/{id}`
-  public var v1FilesIdDelete: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.v1FilesIdDelete)
-  }
-  /// `GET v1/files/{id}`
-  public var v1FilesIdGet: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.v1FilesIdGet)
-  }
   /// `GET v1/files/{id}/content`
   public var v1FilesIdContentGet: HyperProxyProviderCall<TogetherOperation> {
     self.call(.v1FilesIdContentGet)
@@ -356,14 +312,6 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
   /// `DELETE v1/fine-tunes/{id}`
   public var v1FineTunesIdDelete: HyperProxyProviderCall<TogetherOperation> {
     self.call(.v1FineTunesIdDelete)
-  }
-  /// `GET v1/fine-tunes/{id}`
-  public var v1FineTunesIdGet: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.v1FineTunesIdGet)
-  }
-  /// `POST v1/fine-tunes/{id}/cancel`
-  public var v1FineTunesIdCancelPost: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.v1FineTunesIdCancelPost)
   }
   /// `GET v1/fine-tunes/{id}/checkpoints`
   public var v1FineTunesIdCheckpointsGet: HyperProxyProviderCall<TogetherOperation> {
@@ -393,25 +341,13 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
   public var v1FinetuneDownloadGet: HyperProxyProviderCall<TogetherOperation> {
     self.call(.v1FinetuneDownloadGet)
   }
-  /// `GET v1/hardware`
-  public var listHardware: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.listHardware)
-  }
   /// `POST v1/images/generations`
   public var imagesCreate: HyperProxyProviderCall<TogetherOperation> {
     self.call(.imagesCreate)
   }
-  /// `GET v1/jobs`
-  public var listJobs: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.listJobs)
-  }
   /// `POST v1/jobs`
   public var jobsCreate: HyperProxyProviderCall<TogetherOperation> {
     self.call(.jobsCreate)
-  }
-  /// `GET v1/jobs/{jobId}`
-  public var getJob: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.getJob)
   }
   /// `GET v1/jobs/{job_id}`
   public var jobsRetrieve: HyperProxyProviderCall<TogetherOperation> {
@@ -420,10 +356,6 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
   /// `GET v1/models`
   public var modelsList: HyperProxyProviderCall<TogetherOperation> {
     self.call(.modelsList)
-  }
-  /// `POST v1/models`
-  public var uploadModel: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.uploadModel)
   }
   /// `GET v1/projects`
   public var listProjects: HyperProxyProviderCall<TogetherOperation> {
@@ -593,14 +525,6 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
   public var getShapingEvents: HyperProxyProviderCall<TogetherOperation> {
     self.call(.getShapingEvents)
   }
-  /// `POST v1/tci/execute`
-  public var tciExecute: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.tciExecute)
-  }
-  /// `GET v1/tci/sessions`
-  public var sessionsList: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.sessionsList)
-  }
   /// `POST v1/videos`
   public var videosCreate: HyperProxyProviderCall<TogetherOperation> {
     self.call(.videosCreate)
@@ -612,10 +536,6 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
   /// `GET v1/voices`
   public var fetchVoices: HyperProxyProviderCall<TogetherOperation> {
     self.call(.fetchVoices)
-  }
-  /// `GET v1/whoami`
-  public var whoami: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.whoami)
   }
   /// `GET v2/organizations/{organizationId}/endpoints`
   public var endpointServiceListOrganizationEndpoints: HyperProxyProviderCall<TogetherOperation> {
@@ -642,24 +562,24 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     self.call(.endpointServiceCreateEndpoint)
   }
   /// `GET v2/projects/{projectId}/endpoints/{endpointId}/abExperiments`
-  public var aBExperimentServiceListABExperiments: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.aBExperimentServiceListABExperiments)
+  public var abExperimentServiceListAbExperiments: HyperProxyProviderCall<TogetherOperation> {
+    self.call(.abExperimentServiceListAbExperiments)
   }
   /// `POST v2/projects/{projectId}/endpoints/{endpointId}/abExperiments`
-  public var aBExperimentServiceCreateABExperiment: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.aBExperimentServiceCreateABExperiment)
+  public var abExperimentServiceCreateAbExperiment: HyperProxyProviderCall<TogetherOperation> {
+    self.call(.abExperimentServiceCreateAbExperiment)
   }
   /// `DELETE v2/projects/{projectId}/endpoints/{endpointId}/abExperiments/{id}`
-  public var aBExperimentServiceDeleteABExperiment: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.aBExperimentServiceDeleteABExperiment)
+  public var abExperimentServiceDeleteAbExperiment: HyperProxyProviderCall<TogetherOperation> {
+    self.call(.abExperimentServiceDeleteAbExperiment)
   }
   /// `GET v2/projects/{projectId}/endpoints/{endpointId}/abExperiments/{id}`
-  public var aBExperimentServiceGetABExperiment: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.aBExperimentServiceGetABExperiment)
+  public var abExperimentServiceGetAbExperiment: HyperProxyProviderCall<TogetherOperation> {
+    self.call(.abExperimentServiceGetAbExperiment)
   }
   /// `PATCH v2/projects/{projectId}/endpoints/{endpointId}/abExperiments/{id}`
-  public var aBExperimentServiceUpdateABExperiment: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.aBExperimentServiceUpdateABExperiment)
+  public var abExperimentServiceUpdateAbExperiment: HyperProxyProviderCall<TogetherOperation> {
+    self.call(.abExperimentServiceUpdateAbExperiment)
   }
   /// `GET v2/projects/{projectId}/endpoints/{endpointId}/deployments`
   public var deploymentServiceListDeployments: HyperProxyProviderCall<TogetherOperation> {
@@ -891,6 +811,10 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
   /// `GET v2/videos/{id}`
   public var retrieveVideo: HyperProxyProviderCall<TogetherOperation> {
     self.call(.retrieveVideo)
+  }
+  /// `GET v3/whoami`
+  public var whoami: HyperProxyProviderCall<TogetherOperation> {
+    self.call(.whoami)
   }
 
   /// Organization-administration operations. Kept out of the

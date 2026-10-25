@@ -23,7 +23,7 @@ public struct ElevenLabsSubscriptionResponseModel: Codable, Sendable {
   public var currency: ElevenLabsCurrency?
   public var currentOverage: ElevenLabsPrice
   public var maxCharacterLimitExtension: Int?
-  public var maxCreditLimitExtension: ElevenLabsSubscriptionResponseModelMaxCreditLimitExtension
+  public var maxCreditLimitExtension: ElevenLabsSubscriptionResponseModel.MaxCreditLimitExtension
   public var maxVoiceAddEdits: Int?
   public var nextCharacterCountResetUnix: Int?
   public var professionalVoiceLimit: Int
@@ -45,7 +45,7 @@ public struct ElevenLabsSubscriptionResponseModel: Codable, Sendable {
     characterLimit: Int,
     currentOverage: ElevenLabsPrice,
     maxCharacterLimitExtension: Int?,
-    maxCreditLimitExtension: ElevenLabsSubscriptionResponseModelMaxCreditLimitExtension,
+    maxCreditLimitExtension: ElevenLabsSubscriptionResponseModel.MaxCreditLimitExtension,
     professionalVoiceLimit: Int,
     professionalVoiceSlotsUsed: Int,
     professionalVoiceSlotsUsedInWorkspace: Int,
@@ -109,5 +109,49 @@ public struct ElevenLabsSubscriptionResponseModel: Codable, Sendable {
     case voiceAddEditCounter = "voice_add_edit_counter"
     case voiceLimit = "voice_limit"
     case voiceSlotsUsed = "voice_slots_used"
+  }
+
+  public enum MaxCreditLimitExtension: Codable, Sendable {
+    case integer(Int)
+    case unlimitedValue(
+      ElevenLabsSubscriptionResponseModel.MaxCreditLimitExtension.Unlimited)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Int.self) {
+        self = .integer(value)
+        return
+      }
+      self = .unlimitedValue(
+        try container.decode(
+          ElevenLabsSubscriptionResponseModel.MaxCreditLimitExtension.Unlimited.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .integer(let value):
+        try container.encode(value)
+      case .unlimitedValue(let value):
+        try container.encode(value)
+      }
+    }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var unlimited: Self {
+      .unlimitedValue(.unlimited)
+    }
+
+    public enum Unlimited: String, Codable,
+      Hashable, Sendable
+    {
+      case unlimited = "unlimited"
+    }
+  }
+}
+
+extension ElevenLabsSubscriptionResponseModel.MaxCreditLimitExtension: ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Int) {
+    self = .integer(value)
   }
 }

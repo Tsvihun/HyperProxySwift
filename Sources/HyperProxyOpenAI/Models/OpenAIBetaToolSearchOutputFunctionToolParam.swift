@@ -19,11 +19,11 @@ public struct OpenAIBetaToolSearchOutputFunctionToolParam: Codable, Sendable {
   public var outputSchema: [String: HyperProxyJSONValue]?
   public var parameters: OpenAIBetaEmptyModelParam?
   public var strict: Bool?
-  public var kind: OpenAIBetaToolSearchOutputFunctionToolParamKind
+  public var kind: OpenAIBetaToolSearchOutputFunctionToolParam.Kind
 
   public init(
     name: String,
-    kind: OpenAIBetaToolSearchOutputFunctionToolParamKind,
+    kind: OpenAIBetaToolSearchOutputFunctionToolParam.Kind,
     allowedCallers: [OpenAIBetaCallableToolAllowedCaller]? = nil,
     async: Bool? = nil,
     deferLoading: Bool? = nil,
@@ -53,5 +53,9 @@ public struct OpenAIBetaToolSearchOutputFunctionToolParam: Codable, Sendable {
     case parameters
     case strict
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case function = "function"
   }
 }

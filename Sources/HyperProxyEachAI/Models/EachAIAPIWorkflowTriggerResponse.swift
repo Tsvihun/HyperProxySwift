@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct EachAIAPIWorkflowTriggerResponse: Codable, Sendable {
   public var executionId: String?
-  public var status: EachAIAPIWorkflowTriggerResponseStatus?
+  public var status: EachAIAPIWorkflowTriggerResponse.Status?
 
   public init(
     executionId: String? = nil,
-    status: EachAIAPIWorkflowTriggerResponseStatus? = nil
+    status: EachAIAPIWorkflowTriggerResponse.Status? = nil
   ) {
     self.executionId = executionId
     self.status = status
@@ -25,5 +25,9 @@ public struct EachAIAPIWorkflowTriggerResponse: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case executionId = "execution_id"
     case status
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case queued = "queued"
   }
 }

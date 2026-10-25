@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct OpenAIGroupRoleAssignment: Codable, Sendable {
   public var group: OpenAIGroup
-  public var object: OpenAIGroupRoleAssignmentObject
+  public var object: OpenAIGroupRoleAssignment.Object
   public var role: OpenAIRole
 
   public init(
     group: OpenAIGroup,
-    object: OpenAIGroupRoleAssignmentObject,
+    object: OpenAIGroupRoleAssignment.Object,
     role: OpenAIRole
   ) {
     self.group = group
@@ -29,5 +29,9 @@ public struct OpenAIGroupRoleAssignment: Codable, Sendable {
     case group
     case object
     case role
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case groupRole = "group.role"
   }
 }

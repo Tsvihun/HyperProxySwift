@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaFallbackCreditTokenParam: Codable, Sendable {
-  public var mode: AnthropicBetaFallbackCreditTokenParamMode?
+  public var mode: AnthropicBetaFallbackCreditTokenParam.Mode?
   public var token: String
 
   public init(
     token: String,
-    mode: AnthropicBetaFallbackCreditTokenParamMode? = nil
+    mode: AnthropicBetaFallbackCreditTokenParam.Mode? = nil
   ) {
     self.mode = mode
     self.token = token
@@ -25,5 +25,10 @@ public struct AnthropicBetaFallbackCreditTokenParam: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case mode
     case token
+  }
+
+  public enum Mode: String, Codable, Hashable, Sendable {
+    case strict = "strict"
+    case bestEffort = "best_effort"
   }
 }

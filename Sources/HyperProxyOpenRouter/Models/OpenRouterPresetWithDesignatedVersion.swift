@@ -66,4 +66,18 @@ public struct OpenRouterPresetWithDesignatedVersion: Codable, Sendable {
     case updatedAt = "updated_at"
     case workspaceId = "workspace_id"
   }
+
+  public struct WithDesignatedVersion: Codable, Sendable {
+    public var designatedVersion: OpenRouterPresetDesignatedVersion?
+
+    public init(
+      designatedVersion: OpenRouterPresetDesignatedVersion?
+    ) {
+      self.designatedVersion = designatedVersion
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case designatedVersion = "designated_version"
+    }
+  }
 }

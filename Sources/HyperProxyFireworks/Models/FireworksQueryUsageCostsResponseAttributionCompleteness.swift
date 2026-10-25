@@ -13,8 +13,8 @@ import HyperProxyCore
 public enum FireworksQueryUsageCostsResponseAttributionCompleteness: String, Codable, Hashable,
   Sendable
 {
-  case aTTRIBUTIONCOMPLETENESSUNSPECIFIED = "ATTRIBUTION_COMPLETENESS_UNSPECIFIED"
-  case cOMPLETE = "COMPLETE"
-  case iNCOMPLETE = "INCOMPLETE"
-  case uNKNOWN = "UNKNOWN"
+  case attributionCompletenessUnspecified = "ATTRIBUTION_COMPLETENESS_UNSPECIFIED"
+  case complete = "COMPLETE"
+  case incomplete = "INCOMPLETE"
+  case unknown = "UNKNOWN"
 }

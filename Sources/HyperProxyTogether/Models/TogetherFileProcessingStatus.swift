@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public enum TogetherFileProcessingStatus: String, Codable, Hashable, Sendable {
-  case pENDING = "PENDING"
-  case qUEUED = "QUEUED"
-  case rUNNING = "RUNNING"
-  case cOMPLETED = "COMPLETED"
-  case fAILED = "FAILED"
-  case iNVALIDFORMAT = "INVALID_FORMAT"
+  case pending = "PENDING"
+  case queued = "QUEUED"
+  case running = "RUNNING"
+  case completed = "COMPLETED"
+  case failed = "FAILED"
+  case invalidFormat = "INVALID_FORMAT"
 }

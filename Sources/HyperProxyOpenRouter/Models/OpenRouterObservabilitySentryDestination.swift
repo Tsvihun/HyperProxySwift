@@ -16,7 +16,7 @@ public struct OpenRouterObservabilitySentryDestination: Codable, Sendable {
   public var broadcastGenerationCostAllocation: Bool
   public var broadcastGenerationIdentity: Bool
   public var broadcastGenerationRequestContext: Bool
-  public var config: OpenRouterObservabilitySentryDestinationConfig
+  public var config: OpenRouterObservabilitySentryDestination.Config
   public var createdAt: String
   public var enabled: Bool
   public var filterRules: OpenRouterObservabilityFilterRulesConfig?
@@ -25,7 +25,7 @@ public struct OpenRouterObservabilitySentryDestination: Codable, Sendable {
   public var privacyMode: Bool
   public var regions: [OpenRouterObservabilityDataRegion]
   public var samplingRate: Double
-  public var kind: OpenRouterObservabilitySentryDestinationKind
+  public var kind: OpenRouterObservabilitySentryDestination.Kind
   public var updatedAt: String
   public var workspaceId: String
 
@@ -35,7 +35,7 @@ public struct OpenRouterObservabilitySentryDestination: Codable, Sendable {
     broadcastGenerationCostAllocation: Bool,
     broadcastGenerationIdentity: Bool,
     broadcastGenerationRequestContext: Bool,
-    config: OpenRouterObservabilitySentryDestinationConfig,
+    config: OpenRouterObservabilitySentryDestination.Config,
     createdAt: String,
     enabled: Bool,
     filterRules: OpenRouterObservabilityFilterRulesConfig?,
@@ -44,7 +44,7 @@ public struct OpenRouterObservabilitySentryDestination: Codable, Sendable {
     privacyMode: Bool,
     regions: [OpenRouterObservabilityDataRegion],
     samplingRate: Double,
-    kind: OpenRouterObservabilitySentryDestinationKind,
+    kind: OpenRouterObservabilitySentryDestination.Kind,
     updatedAt: String,
     workspaceId: String
   ) {
@@ -85,5 +85,31 @@ public struct OpenRouterObservabilitySentryDestination: Codable, Sendable {
     case kind = "type"
     case updatedAt = "updated_at"
     case workspaceId = "workspace_id"
+  }
+
+  public struct Config: Codable, Sendable {
+    public var dsn: String
+    public var headers: [String: String]?
+    public var otlpEndpoint: String
+
+    public init(
+      dsn: String,
+      otlpEndpoint: String,
+      headers: [String: String]? = nil
+    ) {
+      self.dsn = dsn
+      self.headers = headers
+      self.otlpEndpoint = otlpEndpoint
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case dsn
+      case headers
+      case otlpEndpoint
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case sentry = "sentry"
   }
 }

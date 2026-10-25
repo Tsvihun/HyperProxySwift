@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct TogetherGPUClustersSharedVolume: Codable, Sendable {
   public var sizeTib: Int
-  public var status: TogetherGPUClustersSharedVolumeStatus
+  public var status: TogetherGPUClustersSharedVolume.Status
   public var volumeId: String
   public var volumeName: String
 
   public init(
     sizeTib: Int,
-    status: TogetherGPUClustersSharedVolumeStatus,
+    status: TogetherGPUClustersSharedVolume.Status,
     volumeId: String,
     volumeName: String
   ) {
@@ -33,5 +33,16 @@ public struct TogetherGPUClustersSharedVolume: Codable, Sendable {
     case status
     case volumeId = "volume_id"
     case volumeName = "volume_name"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case scheduled = "scheduled"
+    case available = "available"
+    case bound = "bound"
+    case provisioning = "provisioning"
+    case deleting = "deleting"
+    case failed = "failed"
+    case accessRevoked = "access_revoked"
+    case unknown = "unknown"
   }
 }

@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct OpenAICompactResource: Codable, Sendable {
   public var createdAt: Int
   public var id: String
-  public var object: OpenAICompactResourceObject
+  public var object: OpenAICompactResource.Object
   public var output: [OpenAIItemField]
   public var usage: OpenAIResponseUsage
 
   public init(
     createdAt: Int,
     id: String,
-    object: OpenAICompactResourceObject,
+    object: OpenAICompactResource.Object,
     output: [OpenAIItemField],
     usage: OpenAIResponseUsage
   ) {
@@ -37,5 +37,9 @@ public struct OpenAICompactResource: Codable, Sendable {
     case object
     case output
     case usage
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case responseCompaction = "response.compaction"
   }
 }

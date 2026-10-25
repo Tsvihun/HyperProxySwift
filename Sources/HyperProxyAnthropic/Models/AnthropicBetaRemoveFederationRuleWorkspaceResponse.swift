@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct AnthropicBetaRemoveFederationRuleWorkspaceResponse: Codable, Sendable {
   public var federationRuleId: String
-  public var kind: AnthropicFederationRuleWorkspaceDeletedKind
+  public var kind: AnthropicBetaRemoveFederationRuleWorkspaceResponse.Kind
   public var workspaceId: String
 
   public init(
     federationRuleId: String,
     workspaceId: String,
-    kind: AnthropicFederationRuleWorkspaceDeletedKind = .federationRuleWorkspaceDeleted
+    kind: AnthropicBetaRemoveFederationRuleWorkspaceResponse.Kind = .federationRuleWorkspaceDeleted
   ) {
     self.federationRuleId = federationRuleId
     self.kind = kind
@@ -29,5 +29,9 @@ public struct AnthropicBetaRemoveFederationRuleWorkspaceResponse: Codable, Senda
     case federationRuleId = "federation_rule_id"
     case kind = "type"
     case workspaceId = "workspace_id"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case federationRuleWorkspaceDeleted = "federation_rule_workspace_deleted"
   }
 }

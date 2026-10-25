@@ -15,14 +15,14 @@ public struct OpenRouterAnthropicEncryptedCodeExecutionResult: Codable, Sendable
   public var encryptedStdout: String
   public var returnCode: Int
   public var stderr: String
-  public var kind: OpenRouterAnthropicEncryptedCodeExecutionResultKind
+  public var kind: OpenRouterAnthropicEncryptedCodeExecutionResult.Kind
 
   public init(
     content: [OpenRouterAnthropicCodeExecutionOutput],
     encryptedStdout: String,
     returnCode: Int,
     stderr: String,
-    kind: OpenRouterAnthropicEncryptedCodeExecutionResultKind
+    kind: OpenRouterAnthropicEncryptedCodeExecutionResult.Kind
   ) {
     self.content = content
     self.encryptedStdout = encryptedStdout
@@ -37,5 +37,9 @@ public struct OpenRouterAnthropicEncryptedCodeExecutionResult: Codable, Sendable
     case returnCode = "return_code"
     case stderr
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case encryptedCodeExecutionResult = "encrypted_code_execution_result"
   }
 }

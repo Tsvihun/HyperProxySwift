@@ -11,15 +11,37 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepLCorrectTextResponse: Codable, Sendable {
-  public var improvements: [DeepLCorrectTextResponseImprovementsItem]?
+  public var improvements: [DeepLCorrectTextResponse.ImprovementsElement]?
 
   public init(
-    improvements: [DeepLCorrectTextResponseImprovementsItem]? = nil
+    improvements: [DeepLCorrectTextResponse.ImprovementsElement]? = nil
   ) {
     self.improvements = improvements
   }
 
   enum CodingKeys: String, CodingKey {
     case improvements
+  }
+
+  public struct ImprovementsElement: Codable, Sendable {
+    public var detectedSourceLanguage: String?
+    public var targetLanguage: String?
+    public var text: String?
+
+    public init(
+      detectedSourceLanguage: String? = nil,
+      targetLanguage: String? = nil,
+      text: String? = nil
+    ) {
+      self.detectedSourceLanguage = detectedSourceLanguage
+      self.targetLanguage = targetLanguage
+      self.text = text
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case detectedSourceLanguage = "detected_source_language"
+      case targetLanguage = "target_language"
+      case text
+    }
   }
 }

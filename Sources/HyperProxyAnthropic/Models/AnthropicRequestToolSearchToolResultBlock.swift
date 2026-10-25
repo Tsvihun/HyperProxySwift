@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct AnthropicRequestToolSearchToolResultBlock: Codable, Sendable {
   public var cacheControl: AnthropicCacheControlEphemeral?
-  public var content: AnthropicRequestToolSearchToolResultBlockContent
+  public var content: AnthropicRequestToolSearchToolResultBlock.Content
   public var toolUseId: String
   public var kind: AnthropicToolSearchToolResultKind
 
   public init(
-    content: AnthropicRequestToolSearchToolResultBlockContent,
+    content: AnthropicRequestToolSearchToolResultBlock.Content,
     toolUseId: String,
     kind: AnthropicToolSearchToolResultKind = .toolSearchToolResult,
     cacheControl: AnthropicCacheControlEphemeral? = nil
@@ -33,5 +33,30 @@ public struct AnthropicRequestToolSearchToolResultBlock: Codable, Sendable {
     case content
     case toolUseId = "tool_use_id"
     case kind = "type"
+  }
+
+  public enum Content: Codable, Sendable {
+    case requestToolSearchToolResultError(AnthropicRequestToolSearchToolResultError)
+    case requestToolSearchToolSearchResultBlock(AnthropicRequestToolSearchToolSearchResultBlock)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(AnthropicRequestToolSearchToolResultError.self) {
+        self = .requestToolSearchToolResultError(value)
+        return
+      }
+      self = .requestToolSearchToolSearchResultBlock(
+        try container.decode(AnthropicRequestToolSearchToolSearchResultBlock.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .requestToolSearchToolResultError(let value):
+        try container.encode(value)
+      case .requestToolSearchToolSearchResultBlock(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

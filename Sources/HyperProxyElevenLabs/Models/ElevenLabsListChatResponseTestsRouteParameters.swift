@@ -18,7 +18,7 @@ public struct ElevenLabsListChatResponseTestsRouteParameters: Codable, Sendable 
   public var parentFolderId: String?
   public var search: String?
   public var sharingMode: ElevenLabsTestSharingMode?
-  public var sortMode: ElevenLabsListChatResponseTestsRouteParametersSortMode?
+  public var sortMode: ElevenLabsListChatResponseTestsRouteParameters.SortMode?
   public var types: [ElevenLabsTestType]?
   public var xiApiKey: String?
 
@@ -30,7 +30,7 @@ public struct ElevenLabsListChatResponseTestsRouteParameters: Codable, Sendable 
     parentFolderId: String? = nil,
     search: String? = nil,
     sharingMode: ElevenLabsTestSharingMode? = nil,
-    sortMode: ElevenLabsListChatResponseTestsRouteParametersSortMode? = nil,
+    sortMode: ElevenLabsListChatResponseTestsRouteParameters.SortMode? = nil,
     types: [ElevenLabsTestType]? = nil,
     xiApiKey: String? = nil
   ) {
@@ -57,5 +57,12 @@ public struct ElevenLabsListChatResponseTestsRouteParameters: Codable, Sendable 
     case sortMode = "sort_mode"
     case types
     case xiApiKey = "xi-api-key"
+  }
+
+  public enum SortMode: String, Codable, Hashable,
+    Sendable
+  {
+    case defaultValue = "default"
+    case foldersFirst = "folders_first"
   }
 }

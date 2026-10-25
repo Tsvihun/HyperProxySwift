@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksDeploymentHotLoadTransitionType: String, Codable, Hashable, Sendable {
-  case hOTLOADTRANSITIONTYPEUNSPECIFIED = "HOT_LOAD_TRANSITION_TYPE_UNSPECIFIED"
-  case aSYNC = "ASYNC"
-  case sYNC = "SYNC"
+  case hotLoadTransitionTypeUnspecified = "HOT_LOAD_TRANSITION_TYPE_UNSPECIFIED"
+  case async = "ASYNC"
+  case sync = "SYNC"
 }

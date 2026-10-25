@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public enum TogetherRLMuonScalingStrategy: String, Codable, Hashable, Sendable {
-  case mUONSCALINGSTRATEGYUNSPECIFIED = "MUON_SCALING_STRATEGY_UNSPECIFIED"
-  case mUONSCALINGSTRATEGYMATCHADAM = "MUON_SCALING_STRATEGY_MATCH_ADAM"
-  case mUONSCALINGSTRATEGYORIGINAL = "MUON_SCALING_STRATEGY_ORIGINAL"
+  case muonScalingStrategyUnspecified = "MUON_SCALING_STRATEGY_UNSPECIFIED"
+  case muonScalingStrategyMatchAdam = "MUON_SCALING_STRATEGY_MATCH_ADAM"
+  case muonScalingStrategyOriginal = "MUON_SCALING_STRATEGY_ORIGINAL"
 }

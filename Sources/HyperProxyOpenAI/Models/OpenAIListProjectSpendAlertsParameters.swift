@@ -14,7 +14,7 @@ public struct OpenAIListProjectSpendAlertsParameters: Codable, Sendable {
   public var after: String?
   public var before: String?
   public var limit: Int?
-  public var order: OpenAIListProjectSpendAlertsParametersOrder?
+  public var order: OpenAIListProjectSpendAlertsParameters.Order?
   public var projectId: String
 
   public init(
@@ -22,7 +22,7 @@ public struct OpenAIListProjectSpendAlertsParameters: Codable, Sendable {
     after: String? = nil,
     before: String? = nil,
     limit: Int? = nil,
-    order: OpenAIListProjectSpendAlertsParametersOrder? = nil
+    order: OpenAIListProjectSpendAlertsParameters.Order? = nil
   ) {
     self.after = after
     self.before = before
@@ -37,5 +37,10 @@ public struct OpenAIListProjectSpendAlertsParameters: Codable, Sendable {
     case limit
     case order
     case projectId = "project_id"
+  }
+
+  public enum Order: String, Codable, Hashable, Sendable {
+    case asc = "asc"
+    case desc = "desc"
   }
 }

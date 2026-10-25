@@ -11,9 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIChatCompletionRequestAssistantMessage: Codable, Sendable {
-  public var audio: OpenAIChatCompletionRequestAssistantMessageAudioAnyOf1?
-  public var content: OpenAIChatCompletionRequestAssistantMessageContentAnyOf1?
-  public var functionCall: OpenAIChatCompletionRequestAssistantMessageFunctionCallAnyOf1?
+  public var audio: OpenAIChatCompletionRequestAssistantMessageAudioWithId?
+  public var content: OpenAIChatCompletionRequestAssistantMessageContentVariant?
+  public var functionCall:
+    OpenAIChatCompletionRequestAssistantMessageFunctionCallWithArgumentsAndName?
   public var name: String?
   public var refusal: String?
   public var role: OpenAIChatCompletionRequestAssistantMessageRole
@@ -21,9 +22,10 @@ public struct OpenAIChatCompletionRequestAssistantMessage: Codable, Sendable {
 
   public init(
     role: OpenAIChatCompletionRequestAssistantMessageRole,
-    audio: OpenAIChatCompletionRequestAssistantMessageAudioAnyOf1? = nil,
-    content: OpenAIChatCompletionRequestAssistantMessageContentAnyOf1? = nil,
-    functionCall: OpenAIChatCompletionRequestAssistantMessageFunctionCallAnyOf1? = nil,
+    audio: OpenAIChatCompletionRequestAssistantMessageAudioWithId? = nil,
+    content: OpenAIChatCompletionRequestAssistantMessageContentVariant? = nil,
+    functionCall: OpenAIChatCompletionRequestAssistantMessageFunctionCallWithArgumentsAndName? =
+      nil,
     name: String? = nil,
     refusal: String? = nil,
     toolCalls: OpenAIChatCompletionMessageToolCalls? = nil

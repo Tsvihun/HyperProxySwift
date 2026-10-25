@@ -54,4 +54,22 @@ public struct OpenRouterManagedPrivateEndpoint: Codable, Sendable {
     case providerName = "provider_name"
     case status
   }
+
+  public struct WithDeclaredRegionAndDeclaredZdr: Codable, Sendable {
+    public var declaredRegion: OpenRouterPrivateEndpointDeclaredRegion?
+    public var declaredZdr: Bool
+
+    public init(
+      declaredRegion: OpenRouterPrivateEndpointDeclaredRegion?,
+      declaredZdr: Bool
+    ) {
+      self.declaredRegion = declaredRegion
+      self.declaredZdr = declaredZdr
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case declaredRegion = "declared_region"
+      case declaredZdr = "declared_zdr"
+    }
+  }
 }

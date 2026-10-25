@@ -11,15 +11,20 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterUpdateScimGroupMappingRequest: Codable, Sendable {
-  public var role: OpenRouterUpdateScimGroupMappingRequestRole
+  public var role: OpenRouterUpdateScimGroupMappingRequest.Role
 
   public init(
-    role: OpenRouterUpdateScimGroupMappingRequestRole
+    role: OpenRouterUpdateScimGroupMappingRequest.Role
   ) {
     self.role = role
   }
 
   enum CodingKeys: String, CodingKey {
     case role
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case admin = "admin"
+    case member = "member"
   }
 }

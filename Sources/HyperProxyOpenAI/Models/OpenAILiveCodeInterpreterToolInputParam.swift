@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAILiveCodeInterpreterToolInputParam: Codable, Sendable {
-  public var kind: OpenAILiveCodeInterpreterToolInputParamKind
+  public var kind: OpenAILiveCodeInterpreterToolInputParam.Kind
 
   public init(
-    kind: OpenAILiveCodeInterpreterToolInputParamKind
+    kind: OpenAILiveCodeInterpreterToolInputParam.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case codeInterpreter = "code_interpreter"
   }
 }

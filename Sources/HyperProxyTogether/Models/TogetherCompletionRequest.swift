@@ -17,12 +17,12 @@ public struct TogetherCompletionRequest: Codable, Sendable {
   public var logprobs: Int?
   public var maxTokens: Int?
   public var minP: Double?
-  public var model: TogetherCompletionRequestModel
+  public var model: TogetherCompletionRequest.Model
   public var n: Int?
   public var presencePenalty: Double?
   public var prompt: String
   public var repetitionPenalty: Double?
-  public var safetyModel: TogetherCompletionRequestSafetyModel?
+  public var safetyModel: TogetherCompletionRequest.SafetyModel?
   public var seed: Int?
   public var stop: [String]?
   public var stream: Bool?
@@ -31,7 +31,7 @@ public struct TogetherCompletionRequest: Codable, Sendable {
   public var topP: Double?
 
   public init(
-    model: TogetherCompletionRequestModel,
+    model: TogetherCompletionRequest.Model,
     prompt: String,
     echo: Bool? = nil,
     frequencyPenalty: Double? = nil,
@@ -42,7 +42,7 @@ public struct TogetherCompletionRequest: Codable, Sendable {
     n: Int? = nil,
     presencePenalty: Double? = nil,
     repetitionPenalty: Double? = nil,
-    safetyModel: TogetherCompletionRequestSafetyModel? = nil,
+    safetyModel: TogetherCompletionRequest.SafetyModel? = nil,
     seed: Int? = nil,
     stop: [String]? = nil,
     stream: Bool? = nil,
@@ -89,5 +89,97 @@ public struct TogetherCompletionRequest: Codable, Sendable {
     case temperature
     case topK = "top_k"
     case topP = "top_p"
+  }
+
+  public enum Model: RawRepresentable, Codable, Hashable, Sendable {
+    case metaLlamaLlama2_70bHf
+    case mistralaiMistral7bV0_1
+    case mistralaiMixtral8x7BV0_1
+    case metaLlamaLlamaGuard7b
+    case custom(String)
+
+    public init(rawValue: String) {
+      switch rawValue {
+      case "meta-llama/Llama-2-70b-hf":
+        self = .metaLlamaLlama2_70bHf
+      case "mistralai/Mistral-7B-v0.1":
+        self = .mistralaiMistral7bV0_1
+      case "mistralai/Mixtral-8x7B-v0.1":
+        self = .mistralaiMixtral8x7BV0_1
+      case "Meta-Llama/Llama-Guard-7b":
+        self = .metaLlamaLlamaGuard7b
+      default:
+        self = .custom(rawValue)
+      }
+    }
+
+    public var rawValue: String {
+      switch self {
+      case .metaLlamaLlama2_70bHf:
+        return "meta-llama/Llama-2-70b-hf"
+      case .mistralaiMistral7bV0_1:
+        return "mistralai/Mistral-7B-v0.1"
+      case .mistralaiMixtral8x7BV0_1:
+        return "mistralai/Mixtral-8x7B-v0.1"
+      case .metaLlamaLlamaGuard7b:
+        return "Meta-Llama/Llama-Guard-7b"
+      case .custom(let value):
+        return value
+      }
+    }
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      self.init(rawValue: try container.decode(String.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      try container.encode(rawValue)
+    }
+
+    public enum Preset: String, Codable, Hashable, Sendable {
+      case metaLlamaLlama2_70bHf = "meta-llama/Llama-2-70b-hf"
+      case mistralaiMistral7bV0_1 = "mistralai/Mistral-7B-v0.1"
+      case mistralaiMixtral8x7BV0_1 = "mistralai/Mixtral-8x7B-v0.1"
+      case metaLlamaLlamaGuard7b = "Meta-Llama/Llama-Guard-7b"
+    }
+  }
+
+  public enum SafetyModel: RawRepresentable, Codable, Hashable, Sendable {
+    case metaLlamaLlamaGuard7b
+    case custom(String)
+
+    public init(rawValue: String) {
+      switch rawValue {
+      case "Meta-Llama/Llama-Guard-7b":
+        self = .metaLlamaLlamaGuard7b
+      default:
+        self = .custom(rawValue)
+      }
+    }
+
+    public var rawValue: String {
+      switch self {
+      case .metaLlamaLlamaGuard7b:
+        return "Meta-Llama/Llama-Guard-7b"
+      case .custom(let value):
+        return value
+      }
+    }
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      self.init(rawValue: try container.decode(String.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      try container.encode(rawValue)
+    }
+
+    public enum MetaLlamaLlamaGuard7b: String, Codable, Hashable, Sendable {
+      case metaLlamaLlamaGuard7b = "Meta-Llama/Llama-Guard-7b"
+    }
   }
 }

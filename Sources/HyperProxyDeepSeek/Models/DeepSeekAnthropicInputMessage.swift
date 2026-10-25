@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepSeekAnthropicInputMessage: Codable, Sendable {
-  public var content: DeepSeekAnthropicInputMessageContent
+  public var content: DeepSeekAnthropicInputMessage.Content
   public var role: DeepSeekAnthropicInputRole
 
   public init(
-    content: DeepSeekAnthropicInputMessageContent,
+    content: DeepSeekAnthropicInputMessage.Content,
     role: DeepSeekAnthropicInputRole
   ) {
     self.content = content
@@ -25,5 +25,41 @@ public struct DeepSeekAnthropicInputMessage: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case content
     case role
+  }
+
+  public enum Content: Codable, Sendable {
+    case string(String)
+    case anthropicContentBlockArray([DeepSeekAnthropicContentBlock])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .anthropicContentBlockArray(try container.decode([DeepSeekAnthropicContentBlock].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .anthropicContentBlockArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension DeepSeekAnthropicInputMessage.Content: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension DeepSeekAnthropicInputMessage.Content: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: DeepSeekAnthropicContentBlock...) {
+    self = .anthropicContentBlockArray(elements)
   }
 }

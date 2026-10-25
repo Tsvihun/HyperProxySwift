@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct MistralMissingFieldResponse: Codable, Sendable {
   public var name: String
-  public var kind: MistralMissingFieldKind?
+  public var kind: MistralMissingFieldResponse.Kind?
 
   public init(
     name: String,
-    kind: MistralMissingFieldKind? = nil
+    kind: MistralMissingFieldResponse.Kind? = nil
   ) {
     self.name = name
     self.kind = kind
@@ -25,5 +25,9 @@ public struct MistralMissingFieldResponse: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case name
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case missingField = "missing_field"
   }
 }

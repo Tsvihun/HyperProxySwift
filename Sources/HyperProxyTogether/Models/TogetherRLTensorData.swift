@@ -12,14 +12,14 @@ import HyperProxyCore
 
 public struct TogetherRLTensorData: Codable, Sendable {
   public var data: [Double]
-  public var dtype: TogetherRLTensorDataDtype
+  public var dtype: TogetherRLTensorData.Dtype
   public var shape: [Int]?
   public var sparseColIndices: [Int]?
   public var sparseCrowIndices: [Int]?
 
   public init(
     data: [Double],
-    dtype: TogetherRLTensorDataDtype,
+    dtype: TogetherRLTensorData.Dtype,
     shape: [Int]? = nil,
     sparseColIndices: [Int]? = nil,
     sparseCrowIndices: [Int]? = nil
@@ -37,5 +37,10 @@ public struct TogetherRLTensorData: Codable, Sendable {
     case shape
     case sparseColIndices = "sparse_col_indices"
     case sparseCrowIndices = "sparse_crow_indices"
+  }
+
+  public enum Dtype: String, Codable, Hashable, Sendable {
+    case int64 = "int64"
+    case float32 = "float32"
   }
 }

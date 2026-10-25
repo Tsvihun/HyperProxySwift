@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsWebhookTargetAll: Codable, Sendable {
-  public var kind: ElevenLabsAllKind
+  public var kind: ElevenLabsWebhookTargetAll.Kind
 
   public init(
-    kind: ElevenLabsAllKind = .all
+    kind: ElevenLabsWebhookTargetAll.Kind = .all
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case all = "all"
   }
 }

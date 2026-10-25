@@ -16,19 +16,19 @@ public struct OpenAIInvite: Codable, Sendable {
   public var email: String
   public var expiresAt: Int?
   public var id: String
-  public var object: OpenAIInviteObject
-  public var projects: [OpenAIInviteProjectsItem]
-  public var role: OpenAIInviteRole
-  public var status: OpenAIInviteStatus
+  public var object: OpenAIInvite.Object
+  public var projects: [OpenAIInvite.ProjectsElement]
+  public var role: OpenAIInvite.Role
+  public var status: OpenAIInvite.Status
 
   public init(
     createdAt: Int,
     email: String,
     id: String,
-    object: OpenAIInviteObject,
-    projects: [OpenAIInviteProjectsItem],
-    role: OpenAIInviteRole,
-    status: OpenAIInviteStatus,
+    object: OpenAIInvite.Object,
+    projects: [OpenAIInvite.ProjectsElement],
+    role: OpenAIInvite.Role,
+    status: OpenAIInvite.Status,
     acceptedAt: Int? = nil,
     expiresAt: Int? = nil
   ) {
@@ -53,5 +53,43 @@ public struct OpenAIInvite: Codable, Sendable {
     case projects
     case role
     case status
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case organizationInvite = "organization.invite"
+  }
+
+  public struct ProjectsElement: Codable, Sendable {
+    public var id: String
+    public var role: OpenAIInvite.ProjectsElement.Role
+
+    public init(
+      id: String,
+      role: OpenAIInvite.ProjectsElement.Role
+    ) {
+      self.id = id
+      self.role = role
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case id
+      case role
+    }
+
+    public enum Role: String, Codable, Hashable, Sendable {
+      case member = "member"
+      case owner = "owner"
+    }
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case owner = "owner"
+    case reader = "reader"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case accepted = "accepted"
+    case expired = "expired"
+    case pending = "pending"
   }
 }

@@ -21,8 +21,8 @@ public struct TogetherDEDeploymentSummary: Codable, Sendable {
   public var modelId: String
   public var name: String
   public var readyReplicas: Int?
-  public var state: TogetherDEDeploymentSummaryState
-  public var trafficMode: TogetherDEDeploymentSummaryTrafficMode
+  public var state: TogetherDEDeploymentSummary.State
+  public var trafficMode: TogetherDEDeploymentSummary.TrafficMode
 
   public init(
     autoscaling: TogetherDEAutoscalingResponse,
@@ -32,8 +32,8 @@ public struct TogetherDEDeploymentSummary: Codable, Sendable {
     model: String,
     modelId: String,
     name: String,
-    state: TogetherDEDeploymentSummaryState,
-    trafficMode: TogetherDEDeploymentSummaryTrafficMode,
+    state: TogetherDEDeploymentSummary.State,
+    trafficMode: TogetherDEDeploymentSummary.TrafficMode,
     desiredReplicas: Int? = nil,
     hardware: String? = nil,
     readyReplicas: Int? = nil
@@ -65,5 +65,20 @@ public struct TogetherDEDeploymentSummary: Codable, Sendable {
     case readyReplicas
     case state
     case trafficMode
+  }
+
+  public enum State: String, Codable, Hashable, Sendable {
+    case deploymentStateProvisioning = "DEPLOYMENT_STATE_PROVISIONING"
+    case deploymentStateReady = "DEPLOYMENT_STATE_READY"
+    case deploymentStateScaling = "DEPLOYMENT_STATE_SCALING"
+    case deploymentStateDegraded = "DEPLOYMENT_STATE_DEGRADED"
+    case deploymentStateFailed = "DEPLOYMENT_STATE_FAILED"
+    case deploymentStateStopped = "DEPLOYMENT_STATE_STOPPED"
+    case deploymentStateStopping = "DEPLOYMENT_STATE_STOPPING"
+  }
+
+  public enum TrafficMode: String, Codable, Hashable, Sendable {
+    case trafficModeLive = "TRAFFIC_MODE_LIVE"
+    case trafficModeShadow = "TRAFFIC_MODE_SHADOW"
   }
 }

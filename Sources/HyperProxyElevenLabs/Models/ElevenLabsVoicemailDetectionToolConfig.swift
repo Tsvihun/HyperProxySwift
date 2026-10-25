@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsVoicemailDetectionToolConfig: Codable, Sendable {
-  public var systemToolType: ElevenLabsVoicemailDetectionSystemToolType?
+  public var systemToolType: ElevenLabsVoicemailDetectionToolConfig.SystemToolType?
   public var voicemailMessage: String?
 
   public init(
-    systemToolType: ElevenLabsVoicemailDetectionSystemToolType? = nil,
+    systemToolType: ElevenLabsVoicemailDetectionToolConfig.SystemToolType? = nil,
     voicemailMessage: String? = nil
   ) {
     self.systemToolType = systemToolType
@@ -25,5 +25,9 @@ public struct ElevenLabsVoicemailDetectionToolConfig: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case systemToolType = "system_tool_type"
     case voicemailMessage = "voicemail_message"
+  }
+
+  public enum SystemToolType: String, Codable, Hashable, Sendable {
+    case voicemailDetection = "voicemail_detection"
   }
 }

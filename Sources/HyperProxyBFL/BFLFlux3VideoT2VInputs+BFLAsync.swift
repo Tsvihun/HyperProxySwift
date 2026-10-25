@@ -14,11 +14,11 @@ extension BFLFlux3VideoT2VInputs {
   /// Creates the official text-to-video variant with the required discriminator.
   public init(
     prompt: String,
-    aspectRatio: BFLFlux3VideoT2VInputsAspectRatio? = nil,
+    aspectRatio: BFLFlux3VideoT2VInputs.AspectRatio? = nil,
     draft: Bool? = nil,
-    duration: BFLFlux3VideoT2VInputsDuration? = nil,
+    duration: BFLFlux3VideoT2VInputs.Duration? = nil,
     generateAudio: Bool? = nil,
-    resolution: BFLFlux3VideoT2VInputsResolution? = nil,
+    resolution: BFLFlux3VideoT2VInputs.Resolution? = nil,
     safetyTolerance: Int? = nil,
     version: BFLLatestVersion? = nil
   ) {

@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIBetaContainerNetworkPolicyDisabledParam: Codable, Sendable {
-  public var kind: OpenAIBetaContainerNetworkPolicyDisabledParamKind
+  public var kind: OpenAIBetaContainerNetworkPolicyDisabledParam.Kind
 
   public init(
-    kind: OpenAIBetaContainerNetworkPolicyDisabledParamKind
+    kind: OpenAIBetaContainerNetworkPolicyDisabledParam.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case disabled = "disabled"
   }
 }

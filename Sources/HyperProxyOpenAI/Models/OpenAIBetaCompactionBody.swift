@@ -15,12 +15,12 @@ public struct OpenAIBetaCompactionBody: Codable, Sendable {
   public var createdBy: String?
   public var encryptedContent: String
   public var id: String
-  public var kind: OpenAIBetaCompactionBodyKind
+  public var kind: OpenAIBetaCompactionBody.Kind
 
   public init(
     encryptedContent: String,
     id: String,
-    kind: OpenAIBetaCompactionBodyKind,
+    kind: OpenAIBetaCompactionBody.Kind,
     agent: OpenAIBetaAgentTag? = nil,
     createdBy: String? = nil
   ) {
@@ -37,5 +37,9 @@ public struct OpenAIBetaCompactionBody: Codable, Sendable {
     case encryptedContent = "encrypted_content"
     case id
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case compaction = "compaction"
   }
 }

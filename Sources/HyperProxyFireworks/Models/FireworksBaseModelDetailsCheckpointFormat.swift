@@ -11,8 +11,8 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksBaseModelDetailsCheckpointFormat: String, Codable, Hashable, Sendable {
-  case cHECKPOINTFORMATUNSPECIFIED = "CHECKPOINT_FORMAT_UNSPECIFIED"
-  case nATIVE = "NATIVE"
-  case hUGGINGFACE = "HUGGINGFACE"
-  case uNINITIALIZED = "UNINITIALIZED"
+  case checkpointFormatUnspecified = "CHECKPOINT_FORMAT_UNSPECIFIED"
+  case native = "NATIVE"
+  case huggingface = "HUGGINGFACE"
+  case uninitialized = "UNINITIALIZED"
 }

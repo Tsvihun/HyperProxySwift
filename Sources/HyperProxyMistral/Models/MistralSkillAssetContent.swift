@@ -11,25 +11,53 @@ import Foundation
 import HyperProxyCore
 
 public enum MistralSkillAssetContent: Codable, Sendable {
-  case skillAssetContentOneOf1(MistralSkillAssetContentOneOf1)
-  case skillAssetContentOneOf2(MistralSkillAssetContentOneOf2)
+  case rawContent(MistralSkillAssetContent.RawContent)
+  case textContent(MistralSkillAssetContent.TextContent)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(MistralSkillAssetContentOneOf1.self) {
-      self = .skillAssetContentOneOf1(value)
+    if let value = try? container.decode(MistralSkillAssetContent.RawContent.self) {
+      self = .rawContent(value)
       return
     }
-    self = .skillAssetContentOneOf2(try container.decode(MistralSkillAssetContentOneOf2.self))
+    self = .textContent(try container.decode(MistralSkillAssetContent.TextContent.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .skillAssetContentOneOf1(let value):
+    case .rawContent(let value):
       try container.encode(value)
-    case .skillAssetContentOneOf2(let value):
+    case .textContent(let value):
       try container.encode(value)
+    }
+  }
+
+  public struct RawContent: Codable, Sendable {
+    public var rawContent: String
+
+    public init(
+      rawContent: String
+    ) {
+      self.rawContent = rawContent
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case rawContent
+    }
+  }
+
+  public struct TextContent: Codable, Sendable {
+    public var textContent: String
+
+    public init(
+      textContent: String
+    ) {
+      self.textContent = textContent
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case textContent
     }
   }
 }

@@ -16,7 +16,7 @@ public struct OpenAIComputerUseCallItemResource: Codable, Sendable {
   public var status: OpenAIFunctionCallStatusResource
   public var title: String
   public var turnId: String
-  public var kind: OpenAIComputerUseCallItemResourceKind
+  public var kind: OpenAIComputerUseCallItemResource.Kind
 
   public init(
     id: String,
@@ -24,7 +24,7 @@ public struct OpenAIComputerUseCallItemResource: Codable, Sendable {
     status: OpenAIFunctionCallStatusResource,
     title: String,
     turnId: String,
-    kind: OpenAIComputerUseCallItemResourceKind
+    kind: OpenAIComputerUseCallItemResource.Kind
   ) {
     self.id = id
     self.output = output
@@ -41,5 +41,9 @@ public struct OpenAIComputerUseCallItemResource: Codable, Sendable {
     case title
     case turnId = "turn_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case computerUseCall = "computer_use_call"
   }
 }

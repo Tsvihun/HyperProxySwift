@@ -14,13 +14,13 @@ public struct PerplexityChoiceAnswer: Codable, Sendable {
   public var choice: String
   public var confidence: Double
   public var probabilities: [String: Double]
-  public var kind: PerplexityChoiceAnswerKind
+  public var kind: PerplexityChoiceAnswer.Kind
 
   public init(
     choice: String,
     confidence: Double,
     probabilities: [String: Double],
-    kind: PerplexityChoiceAnswerKind
+    kind: PerplexityChoiceAnswer.Kind
   ) {
     self.choice = choice
     self.confidence = confidence
@@ -33,5 +33,9 @@ public struct PerplexityChoiceAnswer: Codable, Sendable {
     case confidence
     case probabilities
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case choice = "choice"
   }
 }

@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct FireworksAnthropicRequestImageBlock: Codable, Sendable {
   public var cacheControl: FireworksAnthropicCacheControlEphemeral?
-  public var source: FireworksAnthropicRequestImageBlockSource
-  public var kind: FireworksImageKind
+  public var source: FireworksAnthropicRequestImageBlock.Source
+  public var kind: FireworksAnthropicRequestImageBlock.Kind
 
   public init(
-    source: FireworksAnthropicRequestImageBlockSource,
-    kind: FireworksImageKind = .image,
+    source: FireworksAnthropicRequestImageBlock.Source,
+    kind: FireworksAnthropicRequestImageBlock.Kind = .image,
     cacheControl: FireworksAnthropicCacheControlEphemeral? = nil
   ) {
     self.cacheControl = cacheControl
@@ -29,5 +29,33 @@ public struct FireworksAnthropicRequestImageBlock: Codable, Sendable {
     case cacheControl = "cache_control"
     case source
     case kind = "type"
+  }
+
+  public enum Source: Codable, Sendable {
+    case anthropicBase64ImageSource(FireworksAnthropicBase64ImageSource)
+    case anthropicURLImageSource(FireworksAnthropicURLImageSource)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(FireworksAnthropicBase64ImageSource.self) {
+        self = .anthropicBase64ImageSource(value)
+        return
+      }
+      self = .anthropicURLImageSource(try container.decode(FireworksAnthropicURLImageSource.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .anthropicBase64ImageSource(let value):
+        try container.encode(value)
+      case .anthropicURLImageSource(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case image = "image"
   }
 }

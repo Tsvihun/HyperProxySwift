@@ -11,18 +11,18 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaPublicEnvironmentCreateRequest: Codable, Sendable {
-  public var config: AnthropicBetaPublicEnvironmentCreateRequestConfigAnyOf1?
+  public var config: AnthropicBetaPublicEnvironmentCreateRequestConfigVariant?
   public var description: String?
   public var metadata: [String: String]?
   public var name: String
-  public var scope: AnthropicBetaPublicEnvironmentCreateRequestScope?
+  public var scope: AnthropicBetaPublicEnvironmentCreateRequest.Scope?
 
   public init(
     name: String,
-    config: AnthropicBetaPublicEnvironmentCreateRequestConfigAnyOf1? = nil,
+    config: AnthropicBetaPublicEnvironmentCreateRequestConfigVariant? = nil,
     description: String? = nil,
     metadata: [String: String]? = nil,
-    scope: AnthropicBetaPublicEnvironmentCreateRequestScope? = nil
+    scope: AnthropicBetaPublicEnvironmentCreateRequest.Scope? = nil
   ) {
     self.config = config
     self.description = description
@@ -37,5 +37,10 @@ public struct AnthropicBetaPublicEnvironmentCreateRequest: Codable, Sendable {
     case metadata
     case name
     case scope
+  }
+
+  public enum Scope: String, Codable, Hashable, Sendable {
+    case organization = "organization"
+    case account = "account"
   }
 }

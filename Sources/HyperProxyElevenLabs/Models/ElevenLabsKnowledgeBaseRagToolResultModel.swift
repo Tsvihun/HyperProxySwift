@@ -14,14 +14,14 @@ public struct ElevenLabsKnowledgeBaseRagToolResultModel: Codable, Sendable {
   public var chunkCount: Int?
   public var chunks: [ElevenLabsKnowledgeBaseRagChunkModel]?
   public var message: String?
-  public var resultType: ElevenLabsKnowledgeBaseRagSuccessResultType?
+  public var resultType: ElevenLabsKnowledgeBaseRagToolResultModel.ResultType?
   public var status: ElevenLabsKnowledgeBaseRagToolStatus?
 
   public init(
     chunkCount: Int? = nil,
     chunks: [ElevenLabsKnowledgeBaseRagChunkModel]? = nil,
     message: String? = nil,
-    resultType: ElevenLabsKnowledgeBaseRagSuccessResultType? = nil,
+    resultType: ElevenLabsKnowledgeBaseRagToolResultModel.ResultType? = nil,
     status: ElevenLabsKnowledgeBaseRagToolStatus? = nil
   ) {
     self.chunkCount = chunkCount
@@ -37,5 +37,9 @@ public struct ElevenLabsKnowledgeBaseRagToolResultModel: Codable, Sendable {
     case message
     case resultType = "result_type"
     case status
+  }
+
+  public enum ResultType: String, Codable, Hashable, Sendable {
+    case knowledgeBaseRagSuccess = "knowledge_base_rag_success"
   }
 }

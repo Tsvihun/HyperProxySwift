@@ -25,7 +25,7 @@ public struct ElevenLabsUnitTestRunResponseModel: Codable, Sendable {
   public var rootFolderName: String?
   public var status: ElevenLabsTestRunStatus
   public var testId: String
-  public var testInfo: ElevenLabsUnitTestRunResponseModelTestInfoAnyOf1?
+  public var testInfo: ElevenLabsUnitTestRunResponseModelTestInfoVariant?
   public var testInvocationId: String
   public var testName: String?
   public var testRunId: String
@@ -49,7 +49,7 @@ public struct ElevenLabsUnitTestRunResponseModel: Codable, Sendable {
     ranAgainstDraft: Bool? = nil,
     rootFolderId: String? = nil,
     rootFolderName: String? = nil,
-    testInfo: ElevenLabsUnitTestRunResponseModelTestInfoAnyOf1? = nil,
+    testInfo: ElevenLabsUnitTestRunResponseModelTestInfoVariant? = nil,
     testName: String? = nil,
     versionId: String? = nil,
     workflowNodeId: String? = nil

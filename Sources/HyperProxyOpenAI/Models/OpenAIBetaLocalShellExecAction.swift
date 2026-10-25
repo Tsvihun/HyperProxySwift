@@ -14,14 +14,14 @@ public struct OpenAIBetaLocalShellExecAction: Codable, Sendable {
   public var command: [String]
   public var env: [String: String]
   public var timeoutMs: Int?
-  public var kind: OpenAIBetaLocalShellExecActionKind
+  public var kind: OpenAIBetaLocalShellExecAction.Kind
   public var user: String?
   public var workingDirectory: String?
 
   public init(
     command: [String],
     env: [String: String],
-    kind: OpenAIBetaLocalShellExecActionKind,
+    kind: OpenAIBetaLocalShellExecAction.Kind,
     timeoutMs: Int? = nil,
     user: String? = nil,
     workingDirectory: String? = nil
@@ -41,5 +41,9 @@ public struct OpenAIBetaLocalShellExecAction: Codable, Sendable {
     case kind = "type"
     case user
     case workingDirectory = "working_directory"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case exec = "exec"
   }
 }

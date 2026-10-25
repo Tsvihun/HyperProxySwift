@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct PerplexityDecisionsRequest: Codable, Sendable {
   public var model: String
   public var questions: [String: PerplexityQuestion]
-  public var state: PerplexityDecisionsRequestState
+  public var state: PerplexityDecisionsRequest.State
 
   public init(
     model: String,
     questions: [String: PerplexityQuestion],
-    state: PerplexityDecisionsRequestState
+    state: PerplexityDecisionsRequest.State
   ) {
     self.model = model
     self.questions = questions
@@ -29,5 +29,42 @@ public struct PerplexityDecisionsRequest: Codable, Sendable {
     case model
     case questions
     case state
+  }
+
+  public enum State: Codable, Sendable {
+    case string(String)
+    case objectDictionary([String: HyperProxyJSONValue])
+    case array([HyperProxyJSONValue])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      if let value = try? container.decode([String: HyperProxyJSONValue].self) {
+        self = .objectDictionary(value)
+        return
+      }
+      self = .array(try container.decode([HyperProxyJSONValue].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .objectDictionary(let value):
+        try container.encode(value)
+      case .array(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension PerplexityDecisionsRequest.State: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

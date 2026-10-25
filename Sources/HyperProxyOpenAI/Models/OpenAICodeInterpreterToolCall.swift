@@ -14,17 +14,17 @@ public struct OpenAICodeInterpreterToolCall: Codable, Sendable {
   public var code: String?
   public var containerId: String
   public var id: String
-  public var outputs: [OpenAICodeInterpreterToolCallOutputsAnyOf1Item]?
-  public var status: OpenAICodeInterpreterToolCallStatus
-  public var kind: OpenAICodeInterpreterToolCallKind
+  public var outputs: [OpenAICodeInterpreterToolCallOutputsItem]?
+  public var status: OpenAICodeInterpreterToolCall.Status
+  public var kind: OpenAICodeInterpreterToolCall.Kind
 
   public init(
     code: String?,
     containerId: String,
     id: String,
-    outputs: [OpenAICodeInterpreterToolCallOutputsAnyOf1Item]?,
-    status: OpenAICodeInterpreterToolCallStatus,
-    kind: OpenAICodeInterpreterToolCallKind
+    outputs: [OpenAICodeInterpreterToolCallOutputsItem]?,
+    status: OpenAICodeInterpreterToolCall.Status,
+    kind: OpenAICodeInterpreterToolCall.Kind
   ) {
     self.code = code
     self.containerId = containerId
@@ -41,5 +41,17 @@ public struct OpenAICodeInterpreterToolCall: Codable, Sendable {
     case outputs
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case codeInterpreterCall = "code_interpreter_call"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case inProgress = "in_progress"
+    case completed = "completed"
+    case incomplete = "incomplete"
+    case interpreting = "interpreting"
+    case failed = "failed"
   }
 }

@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepLCustomTagUsageReportData: Codable, Sendable {
-  public var aggregateBy: DeepLCustomTagUsageReportDataAggregateBy?
+  public var aggregateBy: DeepLCustomTagUsageReportData.AggregateBy?
   public var endDate: String?
   public var nextPage: Int?
   public var startDate: String?
   public var usage: [DeepLCustomTagUsageItem]?
 
   public init(
-    aggregateBy: DeepLCustomTagUsageReportDataAggregateBy? = nil,
+    aggregateBy: DeepLCustomTagUsageReportData.AggregateBy? = nil,
     endDate: String? = nil,
     nextPage: Int? = nil,
     startDate: String? = nil,
@@ -37,5 +37,10 @@ public struct DeepLCustomTagUsageReportData: Codable, Sendable {
     case nextPage = "next_page"
     case startDate = "start_date"
     case usage
+  }
+
+  public enum AggregateBy: String, Codable, Hashable, Sendable {
+    case period = "period"
+    case day = "day"
   }
 }

@@ -14,7 +14,7 @@ public struct ElevenLabsGetPronunciationDictionariesMetadataParameters: Codable,
   public var cursor: String?
   public var includeArchived: Bool?
   public var pageSize: Int?
-  public var sort: ElevenLabsGetPronunciationDictionariesMetadataParametersSort?
+  public var sort: ElevenLabsGetPronunciationDictionariesMetadataParameters.Sort?
   public var sortDirection: String?
   public var xiApiKey: String?
 
@@ -22,7 +22,7 @@ public struct ElevenLabsGetPronunciationDictionariesMetadataParameters: Codable,
     cursor: String? = nil,
     includeArchived: Bool? = nil,
     pageSize: Int? = nil,
-    sort: ElevenLabsGetPronunciationDictionariesMetadataParametersSort? = nil,
+    sort: ElevenLabsGetPronunciationDictionariesMetadataParameters.Sort? = nil,
     sortDirection: String? = nil,
     xiApiKey: String? = nil
   ) {
@@ -41,5 +41,12 @@ public struct ElevenLabsGetPronunciationDictionariesMetadataParameters: Codable,
     case sort
     case sortDirection = "sort_direction"
     case xiApiKey = "xi-api-key"
+  }
+
+  public enum Sort: String, Codable, Hashable,
+    Sendable
+  {
+    case creationTimeUnix = "creation_time_unix"
+    case name = "name"
   }
 }

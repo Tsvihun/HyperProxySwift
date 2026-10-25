@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralToolCallConfirmation: Codable, Sendable {
-  public var confirmation: MistralToolCallConfirmationConfirmation
+  public var confirmation: MistralToolCallConfirmation.Confirmation
   public var toolCallId: String
 
   public init(
-    confirmation: MistralToolCallConfirmationConfirmation,
+    confirmation: MistralToolCallConfirmation.Confirmation,
     toolCallId: String
   ) {
     self.confirmation = confirmation
@@ -25,5 +25,10 @@ public struct MistralToolCallConfirmation: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case confirmation
     case toolCallId = "tool_call_id"
+  }
+
+  public enum Confirmation: String, Codable, Hashable, Sendable {
+    case allow = "allow"
+    case deny = "deny"
   }
 }

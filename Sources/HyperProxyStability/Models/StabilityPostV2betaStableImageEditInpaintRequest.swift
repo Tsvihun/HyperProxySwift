@@ -15,7 +15,7 @@ public struct StabilityPostV2betaStableImageEditInpaintRequest: Codable, Sendabl
   public var image: String
   public var mask: String?
   public var negativePrompt: String?
-  public var outputFormat: StabilityPostV2betaStableImageEditInpaintRequestOutputFormat?
+  public var outputFormat: StabilityPostV2betaStableImageEditInpaintRequest.OutputFormat?
   public var prompt: String
   public var seed: Double?
   public var stylePreset: StabilityStylePreset?
@@ -26,7 +26,7 @@ public struct StabilityPostV2betaStableImageEditInpaintRequest: Codable, Sendabl
     growMask: Double? = nil,
     mask: String? = nil,
     negativePrompt: String? = nil,
-    outputFormat: StabilityPostV2betaStableImageEditInpaintRequestOutputFormat? = nil,
+    outputFormat: StabilityPostV2betaStableImageEditInpaintRequest.OutputFormat? = nil,
     seed: Double? = nil,
     stylePreset: StabilityStylePreset? = nil
   ) {
@@ -49,5 +49,13 @@ public struct StabilityPostV2betaStableImageEditInpaintRequest: Codable, Sendabl
     case prompt
     case seed
     case stylePreset = "style_preset"
+  }
+
+  public enum OutputFormat: String, Codable, Hashable,
+    Sendable
+  {
+    case jpeg = "jpeg"
+    case png = "png"
+    case webp = "webp"
   }
 }

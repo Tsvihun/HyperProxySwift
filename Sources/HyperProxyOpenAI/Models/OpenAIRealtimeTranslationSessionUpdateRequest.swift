@@ -11,15 +11,70 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIRealtimeTranslationSessionUpdateRequest: Codable, Sendable {
-  public var audio: OpenAIRealtimeTranslationSessionUpdateRequestAudio?
+  public var audio: OpenAIRealtimeTranslationSessionUpdateRequest.Audio?
 
   public init(
-    audio: OpenAIRealtimeTranslationSessionUpdateRequestAudio? = nil
+    audio: OpenAIRealtimeTranslationSessionUpdateRequest.Audio? = nil
   ) {
     self.audio = audio
   }
 
   enum CodingKeys: String, CodingKey {
     case audio
+  }
+
+  public struct Audio: Codable, Sendable {
+    public var input: OpenAIRealtimeTranslationSessionUpdateRequest.Audio.Input?
+    public var output: OpenAIRealtimeTranslationSessionUpdateRequest.Audio.Output?
+
+    public init(
+      input: OpenAIRealtimeTranslationSessionUpdateRequest.Audio.Input? = nil,
+      output: OpenAIRealtimeTranslationSessionUpdateRequest.Audio.Output? = nil
+    ) {
+      self.input = input
+      self.output = output
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case input
+      case output
+    }
+
+    public struct Input: Codable, Sendable {
+      public var noiseReduction:
+        OpenAIRealtimeTranslationSessionUpdateRequestAudioInputNoiseReductionWithValueType?
+      public var transcription:
+        OpenAIRealtimeTranslationSessionUpdateRequestAudioInputTranscriptionWithModel?
+
+      public init(
+        noiseReduction:
+          OpenAIRealtimeTranslationSessionUpdateRequestAudioInputNoiseReductionWithValueType? =
+          nil,
+        transcription:
+          OpenAIRealtimeTranslationSessionUpdateRequestAudioInputTranscriptionWithModel? = nil
+      ) {
+        self.noiseReduction = noiseReduction
+        self.transcription = transcription
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case noiseReduction = "noise_reduction"
+        case transcription
+      }
+    }
+
+    public struct Output: Codable, Sendable {
+      public var language: String?
+
+      public init(
+        language: String? = nil
+      ) {
+        self.language = language
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case language
+      }
+    }
   }
 }

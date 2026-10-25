@@ -11,21 +11,21 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralConnectorMCPPublicUpdate: Codable, Sendable {
-  public var authMethods: [MistralConnectorMCPPublicUpdateAuthMethodsAnyOf1Item]?
+  public var authMethods: [MistralConnectorMCPPublicUpdateAuthMethodsItem]?
   public var description: String?
   public var iconUrl: String?
   public var name: String?
-  public var protocolModel: MistralMcpProtocolModel?
+  public var protocolValue: MistralMcpProtocolModel?
   public var server: String?
   public var systemPrompt: String?
   public var title: String?
 
   public init(
-    authMethods: [MistralConnectorMCPPublicUpdateAuthMethodsAnyOf1Item]? = nil,
+    authMethods: [MistralConnectorMCPPublicUpdateAuthMethodsItem]? = nil,
     description: String? = nil,
     iconUrl: String? = nil,
     name: String? = nil,
-    protocolModel: MistralMcpProtocolModel? = nil,
+    protocolValue: MistralMcpProtocolModel? = nil,
     server: String? = nil,
     systemPrompt: String? = nil,
     title: String? = nil
@@ -34,7 +34,7 @@ public struct MistralConnectorMCPPublicUpdate: Codable, Sendable {
     self.description = description
     self.iconUrl = iconUrl
     self.name = name
-    self.protocolModel = protocolModel
+    self.protocolValue = protocolValue
     self.server = server
     self.systemPrompt = systemPrompt
     self.title = title
@@ -45,7 +45,7 @@ public struct MistralConnectorMCPPublicUpdate: Codable, Sendable {
     case description
     case iconUrl = "icon_url"
     case name
-    case protocolModel = "protocol"
+    case protocolValue = "protocol"
     case server
     case systemPrompt = "system_prompt"
     case title

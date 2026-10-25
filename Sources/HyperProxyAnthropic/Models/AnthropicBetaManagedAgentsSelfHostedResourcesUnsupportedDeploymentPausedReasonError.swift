@@ -14,15 +14,21 @@ public struct AnthropicBetaManagedAgentsSelfHostedResourcesUnsupportedDeployment
   Codable, Sendable
 {
   public var kind:
-    AnthropicBetaManagedAgentsSelfHostedResourcesUnsupportedDeploymentPausedReasonErrorKind
+    AnthropicBetaManagedAgentsSelfHostedResourcesUnsupportedDeploymentPausedReasonError.Kind
 
   public init(
-    kind: AnthropicBetaManagedAgentsSelfHostedResourcesUnsupportedDeploymentPausedReasonErrorKind
+    kind: AnthropicBetaManagedAgentsSelfHostedResourcesUnsupportedDeploymentPausedReasonError.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind:
+    String, Codable, Hashable, Sendable
+  {
+    case selfHostedResourcesUnsupportedError = "self_hosted_resources_unsupported_error"
   }
 }

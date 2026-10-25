@@ -18,7 +18,7 @@ public struct OpenAISessionResource: Codable, Sendable {
   public var id: String
   public var lastActiveAt: Int64
   public var metadata: [String: String]
-  public var object: OpenAISessionResourceObject
+  public var object: OpenAISessionResource.Object
   public var requiredActions: [OpenAISessionRequiredActionResource]
   public var status: OpenAISessionStatusResource
   public var usage: OpenAITokenUsageResource?
@@ -32,7 +32,7 @@ public struct OpenAISessionResource: Codable, Sendable {
     id: String,
     lastActiveAt: Int64,
     metadata: [String: String],
-    object: OpenAISessionResourceObject,
+    object: OpenAISessionResource.Object,
     requiredActions: [OpenAISessionRequiredActionResource],
     status: OpenAISessionStatusResource,
     usage: OpenAITokenUsageResource?,
@@ -65,5 +65,9 @@ public struct OpenAISessionResource: Codable, Sendable {
     case status
     case usage
     case vaultIds = "vault_ids"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case agentSession = "agent.session"
   }
 }

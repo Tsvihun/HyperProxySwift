@@ -14,12 +14,12 @@ public struct EachAIAPIWebhookAttempt: Codable, Sendable {
   public var createdAt: String
   public var errorMessage: String?
   public var response: String?
-  public var status: EachAIAPIWebhookAttemptStatus
+  public var status: EachAIAPIWebhookAttempt.Status
   public var statusCode: Int?
 
   public init(
     createdAt: String,
-    status: EachAIAPIWebhookAttemptStatus,
+    status: EachAIAPIWebhookAttempt.Status,
     errorMessage: String? = nil,
     response: String? = nil,
     statusCode: Int? = nil
@@ -37,5 +37,11 @@ public struct EachAIAPIWebhookAttempt: Codable, Sendable {
     case response
     case status
     case statusCode = "status_code"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case pending = "PENDING"
+    case success = "SUCCESS"
+    case failed = "FAILED"
   }
 }

@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterChatContentImage: Codable, Sendable {
-  public var imageUrl: OpenRouterChatContentImageImageUrl
-  public var kind: OpenRouterChatContentImageKind
+  public var imageUrl: OpenRouterChatContentImage.ImageUrl
+  public var kind: OpenRouterChatContentImage.Kind
 
   public init(
-    imageUrl: OpenRouterChatContentImageImageUrl,
-    kind: OpenRouterChatContentImageKind
+    imageUrl: OpenRouterChatContentImage.ImageUrl,
+    kind: OpenRouterChatContentImage.Kind
   ) {
     self.imageUrl = imageUrl
     self.kind = kind
@@ -25,5 +25,34 @@ public struct OpenRouterChatContentImage: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case imageUrl = "image_url"
     case kind = "type"
+  }
+
+  public struct ImageUrl: Codable, Sendable {
+    public var detail: OpenRouterChatContentImage.ImageUrl.Detail?
+    public var url: String
+
+    public init(
+      url: String,
+      detail: OpenRouterChatContentImage.ImageUrl.Detail? = nil
+    ) {
+      self.detail = detail
+      self.url = url
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case detail
+      case url
+    }
+
+    public enum Detail: String, Codable, Hashable, Sendable {
+      case auto = "auto"
+      case low = "low"
+      case high = "high"
+      case original = "original"
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case imageUrl = "image_url"
   }
 }

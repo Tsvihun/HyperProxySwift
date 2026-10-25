@@ -12,10 +12,10 @@ import HyperProxyCore
 
 public struct OpenAIAgentToolConfigParamComputerUse: Codable, Sendable {
   public var includeScreenshots: Bool?
-  public var kind: OpenAIAgentToolConfigParamComputerUseKind
+  public var kind: OpenAIAgentToolConfigParamComputerUse.Kind
 
   public init(
-    kind: OpenAIAgentToolConfigParamComputerUseKind,
+    kind: OpenAIAgentToolConfigParamComputerUse.Kind,
     includeScreenshots: Bool? = nil
   ) {
     self.includeScreenshots = includeScreenshots
@@ -25,5 +25,9 @@ public struct OpenAIAgentToolConfigParamComputerUse: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case includeScreenshots = "include_screenshots"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case computerUse = "computer_use"
   }
 }

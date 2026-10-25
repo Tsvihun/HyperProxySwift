@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksGatewayQueryUsageCostsRequestScope: String, Codable, Hashable, Sendable {
-  case sCOPEUNSPECIFIED = "SCOPE_UNSPECIFIED"
-  case aCCOUNT = "ACCOUNT"
-  case sELF = "SELF"
+  case scopeUnspecified = "SCOPE_UNSPECIFIED"
+  case account = "ACCOUNT"
+  case selfValue = "SELF"
 }

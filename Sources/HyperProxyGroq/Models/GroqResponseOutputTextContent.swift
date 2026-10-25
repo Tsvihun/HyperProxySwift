@@ -14,12 +14,12 @@ public struct GroqResponseOutputTextContent: Codable, Sendable {
   public var annotations: [GroqResponseAnnotation]
   public var logprobs: [String]?
   public var text: String
-  public var kind: GroqResponseOutputTextContentKind
+  public var kind: GroqResponseOutputTextContent.Kind
 
   public init(
     annotations: [GroqResponseAnnotation],
     text: String,
-    kind: GroqResponseOutputTextContentKind,
+    kind: GroqResponseOutputTextContent.Kind,
     logprobs: [String]? = nil
   ) {
     self.annotations = annotations
@@ -33,5 +33,9 @@ public struct GroqResponseOutputTextContent: Codable, Sendable {
     case logprobs
     case text
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case outputText = "output_text"
   }
 }

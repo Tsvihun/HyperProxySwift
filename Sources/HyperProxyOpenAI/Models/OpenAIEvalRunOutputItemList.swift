@@ -15,14 +15,14 @@ public struct OpenAIEvalRunOutputItemList: Codable, Sendable {
   public var firstId: String
   public var hasMore: Bool
   public var lastId: String
-  public var object: OpenAIEvalRunOutputItemListObject
+  public var object: OpenAIEvalRunOutputItemList.Object
 
   public init(
     data: [OpenAIEvalRunOutputItem],
     firstId: String,
     hasMore: Bool,
     lastId: String,
-    object: OpenAIEvalRunOutputItemListObject
+    object: OpenAIEvalRunOutputItemList.Object
   ) {
     self.data = data
     self.firstId = firstId
@@ -37,5 +37,9 @@ public struct OpenAIEvalRunOutputItemList: Codable, Sendable {
     case hasMore = "has_more"
     case lastId = "last_id"
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case list = "list"
   }
 }

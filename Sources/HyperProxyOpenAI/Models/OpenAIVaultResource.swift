@@ -15,14 +15,14 @@ public struct OpenAIVaultResource: Codable, Sendable {
   public var id: String
   public var metadata: [String: String]
   public var name: String
-  public var object: OpenAIVaultResourceObject
+  public var object: OpenAIVaultResource.Object
 
   public init(
     createdAt: Int64,
     id: String,
     metadata: [String: String],
     name: String,
-    object: OpenAIVaultResourceObject
+    object: OpenAIVaultResource.Object
   ) {
     self.createdAt = createdAt
     self.id = id
@@ -37,5 +37,9 @@ public struct OpenAIVaultResource: Codable, Sendable {
     case metadata
     case name
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case vault = "vault"
   }
 }

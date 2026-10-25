@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsTemplateIntegerOutput: Codable, Sendable {
   public var content: Int?
   public var errorMessage: String?
-  public var failureReason: ElevenLabsTemplateIntegerOutputFailureReason?
+  public var failureReason: ElevenLabsTemplateIntegerOutput.FailureReason?
   public var id: String
   public var status: ElevenLabsTemplateRunStatus
   public var kind: ElevenLabsIntegerKind
@@ -24,7 +24,7 @@ public struct ElevenLabsTemplateIntegerOutput: Codable, Sendable {
     kind: ElevenLabsIntegerKind = .integer,
     content: Int? = nil,
     errorMessage: String? = nil,
-    failureReason: ElevenLabsTemplateIntegerOutputFailureReason? = nil
+    failureReason: ElevenLabsTemplateIntegerOutput.FailureReason? = nil
   ) {
     self.content = content
     self.errorMessage = errorMessage
@@ -41,5 +41,15 @@ public struct ElevenLabsTemplateIntegerOutput: Codable, Sendable {
     case id
     case status
     case kind = "type"
+  }
+
+  public enum FailureReason: String, Codable, Hashable, Sendable {
+    case timeout = "timeout"
+    case modelError = "model_error"
+    case moderated = "moderated"
+    case invalidParameters = "invalid_parameters"
+    case dependencyFailed = "dependency_failed"
+    case chargingFailed = "charging_failed"
+    case internalError = "internal_error"
   }
 }

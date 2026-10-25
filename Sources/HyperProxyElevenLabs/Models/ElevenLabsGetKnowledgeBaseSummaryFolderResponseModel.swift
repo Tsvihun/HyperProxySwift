@@ -15,7 +15,7 @@ public struct ElevenLabsGetKnowledgeBaseSummaryFolderResponseModel: Codable, Sen
   public var autoSyncInfo: ElevenLabsAutoSyncInfo?
   public var childrenCount: Int
   public var dependentAgents:
-    [ElevenLabsGetKnowledgeBaseSummaryFolderResponseModelDependentAgentsItem]
+    [ElevenLabsGetKnowledgeBaseSummaryFolderResponseModel.DependentAgentsElement]
   public var documentCount: Int
   public var externalSyncInfo: ElevenLabsExternalFolderSyncInfo?
   public var folderParentId: String?
@@ -30,7 +30,7 @@ public struct ElevenLabsGetKnowledgeBaseSummaryFolderResponseModel: Codable, Sen
   public init(
     accessInfo: ElevenLabsResourceAccessInfo,
     childrenCount: Int,
-    dependentAgents: [ElevenLabsGetKnowledgeBaseSummaryFolderResponseModelDependentAgentsItem],
+    dependentAgents: [ElevenLabsGetKnowledgeBaseSummaryFolderResponseModel.DependentAgentsElement],
     documentCount: Int,
     id: String,
     metadata: ElevenLabsKnowledgeBaseDocumentMetadataResponseModel,
@@ -74,5 +74,32 @@ public struct ElevenLabsGetKnowledgeBaseSummaryFolderResponseModel: Codable, Sen
     case name
     case supportedUsages = "supported_usages"
     case kind = "type"
+  }
+
+  public enum DependentAgentsElement: Codable,
+    Sendable
+  {
+    case dependentAvailableAgentIdentifier(ElevenLabsDependentAvailableAgentIdentifier)
+    case dependentUnknownAgentIdentifier(ElevenLabsDependentUnknownAgentIdentifier)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsDependentAvailableAgentIdentifier.self) {
+        self = .dependentAvailableAgentIdentifier(value)
+        return
+      }
+      self = .dependentUnknownAgentIdentifier(
+        try container.decode(ElevenLabsDependentUnknownAgentIdentifier.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .dependentAvailableAgentIdentifier(let value):
+        try container.encode(value)
+      case .dependentUnknownAgentIdentifier(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

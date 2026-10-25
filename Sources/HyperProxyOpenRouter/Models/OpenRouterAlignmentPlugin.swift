@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterAlignmentPlugin: Codable, Sendable {
-  public var id: OpenRouterAlignmentPluginId
+  public var id: OpenRouterAlignmentPlugin.Id
   public var instruct: Bool?
   public var maxRetries: Int?
-  public var mode: OpenRouterAlignmentPluginMode?
+  public var mode: OpenRouterAlignmentPlugin.Mode?
   public var rules: [OpenRouterAlignmentRule]
   public var threshold: Double?
 
   public init(
-    id: OpenRouterAlignmentPluginId,
+    id: OpenRouterAlignmentPlugin.Id,
     rules: [OpenRouterAlignmentRule],
     instruct: Bool? = nil,
     maxRetries: Int? = nil,
-    mode: OpenRouterAlignmentPluginMode? = nil,
+    mode: OpenRouterAlignmentPlugin.Mode? = nil,
     threshold: Double? = nil
   ) {
     self.id = id
@@ -41,5 +41,14 @@ public struct OpenRouterAlignmentPlugin: Codable, Sendable {
     case mode
     case rules
     case threshold
+  }
+
+  public enum Id: String, Codable, Hashable, Sendable {
+    case alignment = "alignment"
+  }
+
+  public enum Mode: String, Codable, Hashable, Sendable {
+    case enforce = "enforce"
+    case audit = "audit"
   }
 }

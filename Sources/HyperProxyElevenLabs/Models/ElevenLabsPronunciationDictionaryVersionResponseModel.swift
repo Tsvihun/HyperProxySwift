@@ -16,7 +16,7 @@ public struct ElevenLabsPronunciationDictionaryVersionResponseModel: Codable, Se
   public var creationTimeUnix: Int
   public var dictionaryName: String
   public var permissionOnResource:
-    ElevenLabsPronunciationDictionaryVersionResponseModelPermissionOnResource?
+    ElevenLabsPronunciationDictionaryVersionResponseModel.PermissionOnResource?
   public var pronunciationDictionaryId: String
   public var versionId: String
   public var versionName: String
@@ -27,7 +27,7 @@ public struct ElevenLabsPronunciationDictionaryVersionResponseModel: Codable, Se
     creationTimeUnix: Int,
     dictionaryName: String,
     permissionOnResource:
-      ElevenLabsPronunciationDictionaryVersionResponseModelPermissionOnResource?,
+      ElevenLabsPronunciationDictionaryVersionResponseModel.PermissionOnResource?,
     pronunciationDictionaryId: String,
     versionId: String,
     versionName: String,
@@ -55,5 +55,14 @@ public struct ElevenLabsPronunciationDictionaryVersionResponseModel: Codable, Se
     case versionId = "version_id"
     case versionName = "version_name"
     case versionRulesNum = "version_rules_num"
+  }
+
+  public enum PermissionOnResource: String,
+    Codable, Hashable, Sendable
+  {
+    case admin = "admin"
+    case editor = "editor"
+    case commenter = "commenter"
+    case viewer = "viewer"
   }
 }

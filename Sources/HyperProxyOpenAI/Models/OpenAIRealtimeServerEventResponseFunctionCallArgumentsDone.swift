@@ -18,7 +18,7 @@ public struct OpenAIRealtimeServerEventResponseFunctionCallArgumentsDone: Codabl
   public var name: String
   public var outputIndex: Int
   public var responseId: String
-  public var kind: OpenAIRealtimeServerEventResponseFunctionCallArgumentsDoneKind
+  public var kind: OpenAIRealtimeServerEventResponseFunctionCallArgumentsDone.Kind
 
   public init(
     arguments: String,
@@ -28,7 +28,7 @@ public struct OpenAIRealtimeServerEventResponseFunctionCallArgumentsDone: Codabl
     name: String,
     outputIndex: Int,
     responseId: String,
-    kind: OpenAIRealtimeServerEventResponseFunctionCallArgumentsDoneKind
+    kind: OpenAIRealtimeServerEventResponseFunctionCallArgumentsDone.Kind
   ) {
     self.arguments = arguments
     self.callId = callId
@@ -49,5 +49,11 @@ public struct OpenAIRealtimeServerEventResponseFunctionCallArgumentsDone: Codabl
     case outputIndex = "output_index"
     case responseId = "response_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case responseFunctionCallArgumentsDone = "response.function_call_arguments.done"
   }
 }

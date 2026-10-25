@@ -16,7 +16,7 @@ public struct OpenAIVaultCredentialResource: Codable, Sendable {
   public var id: String
   public var metadata: [String: String]
   public var name: String
-  public var object: OpenAIVaultCredentialResourceObject
+  public var object: OpenAIVaultCredentialResource.Object
   public var updatedAt: Int64
   public var vaultId: String
 
@@ -26,7 +26,7 @@ public struct OpenAIVaultCredentialResource: Codable, Sendable {
     id: String,
     metadata: [String: String],
     name: String,
-    object: OpenAIVaultCredentialResourceObject,
+    object: OpenAIVaultCredentialResource.Object,
     updatedAt: Int64,
     vaultId: String
   ) {
@@ -49,5 +49,9 @@ public struct OpenAIVaultCredentialResource: Codable, Sendable {
     case object
     case updatedAt = "updated_at"
     case vaultId = "vault_id"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case vaultCredential = "vault.credential"
   }
 }

@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsTransferBranchInfoDefaultingToMain: Codable, Sendable {
   public var branchId: String
-  public var branchReason: ElevenLabsDefaultingToMainBranchReason
+  public var branchReason: ElevenLabsTransferBranchInfoDefaultingToMain.BranchReason
 
   public init(
     branchId: String,
-    branchReason: ElevenLabsDefaultingToMainBranchReason = .defaultingToMain
+    branchReason: ElevenLabsTransferBranchInfoDefaultingToMain.BranchReason = .defaultingToMain
   ) {
     self.branchId = branchId
     self.branchReason = branchReason
@@ -25,5 +25,9 @@ public struct ElevenLabsTransferBranchInfoDefaultingToMain: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case branchId = "branch_id"
     case branchReason = "branch_reason"
+  }
+
+  public enum BranchReason: String, Codable, Hashable, Sendable {
+    case defaultingToMain = "defaulting_to_main"
   }
 }

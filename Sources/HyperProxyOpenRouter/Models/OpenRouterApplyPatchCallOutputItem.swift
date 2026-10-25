@@ -14,13 +14,13 @@ public struct OpenRouterApplyPatchCallOutputItem: Codable, Sendable {
   public var callId: String
   public var id: String?
   public var output: String?
-  public var status: OpenRouterApplyPatchCallOutputItemStatus
-  public var kind: OpenRouterApplyPatchCallOutputItemKind
+  public var status: OpenRouterApplyPatchCallOutputItem.Status
+  public var kind: OpenRouterApplyPatchCallOutputItem.Kind
 
   public init(
     callId: String,
-    status: OpenRouterApplyPatchCallOutputItemStatus,
-    kind: OpenRouterApplyPatchCallOutputItemKind,
+    status: OpenRouterApplyPatchCallOutputItem.Status,
+    kind: OpenRouterApplyPatchCallOutputItem.Kind,
     id: String? = nil,
     output: String? = nil
   ) {
@@ -37,5 +37,14 @@ public struct OpenRouterApplyPatchCallOutputItem: Codable, Sendable {
     case output
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case applyPatchCallOutput = "apply_patch_call_output"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case completed = "completed"
+    case failed = "failed"
   }
 }

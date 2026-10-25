@@ -11,6 +11,6 @@ import Foundation
 import HyperProxyCore
 
 public enum AnthropicBetaMessagesUsageReportContextWindow: String, Codable, Hashable, Sendable {
-  case value0200k = "0-200k"
-  case value200k1M = "200k-1M"
+  case value0_200k = "0-200k"
+  case value200k1m = "200k-1M"
 }

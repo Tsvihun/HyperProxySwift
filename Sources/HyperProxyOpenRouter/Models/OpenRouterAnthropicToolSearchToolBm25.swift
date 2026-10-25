@@ -14,13 +14,13 @@ public struct OpenRouterAnthropicToolSearchToolBm25: Codable, Sendable {
   public var allowedCallers: OpenRouterAnthropicAllowedCallers?
   public var cacheControl: OpenRouterAnthropicCacheControlDirective?
   public var deferLoading: Bool?
-  public var name: OpenRouterAnthropicToolSearchToolBm25Name
+  public var name: OpenRouterAnthropicToolSearchToolBm25.Name
   public var strict: Bool?
-  public var kind: OpenRouterAnthropicToolSearchToolBm25Kind
+  public var kind: OpenRouterAnthropicToolSearchToolBm25.Kind
 
   public init(
-    name: OpenRouterAnthropicToolSearchToolBm25Name,
-    kind: OpenRouterAnthropicToolSearchToolBm25Kind,
+    name: OpenRouterAnthropicToolSearchToolBm25.Name,
+    kind: OpenRouterAnthropicToolSearchToolBm25.Kind,
     allowedCallers: OpenRouterAnthropicAllowedCallers? = nil,
     cacheControl: OpenRouterAnthropicCacheControlDirective? = nil,
     deferLoading: Bool? = nil,
@@ -41,5 +41,14 @@ public struct OpenRouterAnthropicToolSearchToolBm25: Codable, Sendable {
     case name
     case strict
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case toolSearchToolBm25_20251119 = "tool_search_tool_bm25_20251119"
+    case toolSearchToolBm25 = "tool_search_tool_bm25"
+  }
+
+  public enum Name: String, Codable, Hashable, Sendable {
+    case toolSearchToolBm25 = "tool_search_tool_bm25"
   }
 }

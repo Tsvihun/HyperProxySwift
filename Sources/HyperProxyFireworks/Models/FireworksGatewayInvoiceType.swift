@@ -11,8 +11,8 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksGatewayInvoiceType: String, Codable, Hashable, Sendable {
-  case tYPEUNSPECIFIED = "TYPE_UNSPECIFIED"
-  case pOSTPAIDBILLING = "POSTPAID_BILLING"
-  case pREPAIDCREDITS = "PREPAID_CREDITS"
-  case cONTRACTED = "CONTRACTED"
+  case typeUnspecified = "TYPE_UNSPECIFIED"
+  case postpaidBilling = "POSTPAID_BILLING"
+  case prepaidCredits = "PREPAID_CREDITS"
+  case contracted = "CONTRACTED"
 }

@@ -18,7 +18,7 @@ public struct OpenAIEnvironmentTemplateResource: Codable, Sendable {
   public var id: String
   public var name: String
   public var network: OpenAINetworkPolicyResource
-  public var object: OpenAIEnvironmentTemplateResourceObject
+  public var object: OpenAIEnvironmentTemplateResource.Object
   public var packages: OpenAIEnvironmentPackagesResource
   public var plugins: [OpenAIHostedPluginResource]
   public var skills: [OpenAIHostedTemplateSkillResource]
@@ -32,7 +32,7 @@ public struct OpenAIEnvironmentTemplateResource: Codable, Sendable {
     id: String,
     name: String,
     network: OpenAINetworkPolicyResource,
-    object: OpenAIEnvironmentTemplateResourceObject,
+    object: OpenAIEnvironmentTemplateResource.Object,
     packages: OpenAIEnvironmentPackagesResource,
     plugins: [OpenAIHostedPluginResource],
     skills: [OpenAIHostedTemplateSkillResource],
@@ -65,5 +65,9 @@ public struct OpenAIEnvironmentTemplateResource: Codable, Sendable {
     case plugins
     case skills
     case updatedAt = "updated_at"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case agentEnvironmentTemplate = "agent.environment.template"
   }
 }

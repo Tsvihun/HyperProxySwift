@@ -12,10 +12,10 @@ import HyperProxyCore
 
 public struct OpenRouterDatetimeServerTool: Codable, Sendable {
   public var parameters: OpenRouterDatetimeServerToolConfig?
-  public var kind: OpenRouterDatetimeServerToolKind
+  public var kind: OpenRouterDatetimeServerTool.Kind
 
   public init(
-    kind: OpenRouterDatetimeServerToolKind,
+    kind: OpenRouterDatetimeServerTool.Kind,
     parameters: OpenRouterDatetimeServerToolConfig? = nil
   ) {
     self.parameters = parameters
@@ -25,5 +25,9 @@ public struct OpenRouterDatetimeServerTool: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case parameters
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case openrouterDatetime = "openrouter:datetime"
   }
 }

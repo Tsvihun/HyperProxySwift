@@ -11,4 +11,4 @@ import Foundation
 import HyperProxyCore
 
 public typealias OpenAIBetaResponsePromptVariables = [String:
-  OpenAIBetaResponsePromptVariablesAnyOf1Value]?
+  OpenAIBetaResponsePromptVariablesValue]?

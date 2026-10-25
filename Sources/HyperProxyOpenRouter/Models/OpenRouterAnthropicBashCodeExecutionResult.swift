@@ -15,14 +15,14 @@ public struct OpenRouterAnthropicBashCodeExecutionResult: Codable, Sendable {
   public var returnCode: Int
   public var stderr: String
   public var stdout: String
-  public var kind: OpenRouterAnthropicBashCodeExecutionResultKind
+  public var kind: OpenRouterAnthropicBashCodeExecutionResult.Kind
 
   public init(
     content: [OpenRouterAnthropicBashCodeExecutionOutput],
     returnCode: Int,
     stderr: String,
     stdout: String,
-    kind: OpenRouterAnthropicBashCodeExecutionResultKind
+    kind: OpenRouterAnthropicBashCodeExecutionResult.Kind
   ) {
     self.content = content
     self.returnCode = returnCode
@@ -37,5 +37,9 @@ public struct OpenRouterAnthropicBashCodeExecutionResult: Codable, Sendable {
     case stderr
     case stdout
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case bashCodeExecutionResult = "bash_code_execution_result"
   }
 }

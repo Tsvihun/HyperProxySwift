@@ -20,7 +20,7 @@ public struct GeminiGenerateContentBatch: Codable, Sendable {
   public var name: String?
   public var output: GeminiGenerateContentBatchOutput?
   public var priority: String?
-  public var state: GeminiGenerateContentBatchState?
+  public var state: GeminiGenerateContentBatch.State?
   public var updateTime: String?
 
   public init(
@@ -33,7 +33,7 @@ public struct GeminiGenerateContentBatch: Codable, Sendable {
     name: String? = nil,
     output: GeminiGenerateContentBatchOutput? = nil,
     priority: String? = nil,
-    state: GeminiGenerateContentBatchState? = nil,
+    state: GeminiGenerateContentBatch.State? = nil,
     updateTime: String? = nil
   ) {
     self.batchStats = batchStats
@@ -61,5 +61,15 @@ public struct GeminiGenerateContentBatch: Codable, Sendable {
     case priority
     case state
     case updateTime
+  }
+
+  public enum State: String, Codable, Hashable, Sendable {
+    case batchStateUnspecified = "BATCH_STATE_UNSPECIFIED"
+    case batchStatePending = "BATCH_STATE_PENDING"
+    case batchStateRunning = "BATCH_STATE_RUNNING"
+    case batchStateSucceeded = "BATCH_STATE_SUCCEEDED"
+    case batchStateFailed = "BATCH_STATE_FAILED"
+    case batchStateCancelled = "BATCH_STATE_CANCELLED"
+    case batchStateExpired = "BATCH_STATE_EXPIRED"
   }
 }

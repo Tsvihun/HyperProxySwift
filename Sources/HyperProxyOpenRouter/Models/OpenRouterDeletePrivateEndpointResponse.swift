@@ -11,15 +11,29 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterDeletePrivateEndpointResponse: Codable, Sendable {
-  public var data: OpenRouterDeletePrivateEndpointResponseData
+  public var data: OpenRouterDeletePrivateEndpointResponse.DataValue
 
   public init(
-    data: OpenRouterDeletePrivateEndpointResponseData
+    data: OpenRouterDeletePrivateEndpointResponse.DataValue
   ) {
     self.data = data
   }
 
   enum CodingKeys: String, CodingKey {
     case data
+  }
+
+  public struct DataValue: Codable, Sendable {
+    public var id: String
+
+    public init(
+      id: String
+    ) {
+      self.id = id
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case id
+    }
   }
 }

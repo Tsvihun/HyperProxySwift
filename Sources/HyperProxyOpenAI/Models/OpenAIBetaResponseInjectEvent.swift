@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIBetaResponseInjectEvent: Codable, Sendable {
   public var input: [OpenAIBetaInputItem]
   public var responseId: String
-  public var kind: OpenAIBetaResponseInjectEventKind
+  public var kind: OpenAIBetaResponseInjectEvent.Kind
 
   public init(
     input: [OpenAIBetaInputItem],
     responseId: String,
-    kind: OpenAIBetaResponseInjectEventKind
+    kind: OpenAIBetaResponseInjectEvent.Kind
   ) {
     self.input = input
     self.responseId = responseId
@@ -29,5 +29,9 @@ public struct OpenAIBetaResponseInjectEvent: Codable, Sendable {
     case input
     case responseId = "response_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case responseInject = "response.inject"
   }
 }

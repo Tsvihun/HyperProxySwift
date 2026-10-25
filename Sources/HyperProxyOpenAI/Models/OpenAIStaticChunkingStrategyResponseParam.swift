@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIStaticChunkingStrategyResponseParam: Codable, Sendable {
   public var staticValue: OpenAIStaticChunkingStrategy
-  public var kind: OpenAIStaticChunkingStrategyResponseParamKind
+  public var kind: OpenAIStaticChunkingStrategyResponseParam.Kind
 
   public init(
     staticValue: OpenAIStaticChunkingStrategy,
-    kind: OpenAIStaticChunkingStrategyResponseParamKind
+    kind: OpenAIStaticChunkingStrategyResponseParam.Kind
   ) {
     self.staticValue = staticValue
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenAIStaticChunkingStrategyResponseParam: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case staticValue = "static"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case staticValue = "static"
   }
 }

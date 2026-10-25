@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaMemoryTool20250818DeleteCommand: Codable, Sendable {
-  public var command: AnthropicDeleteCommand
+  public var command: AnthropicBetaMemoryTool20250818DeleteCommand.Command
   public var path: String
 
   public init(
     path: String,
-    command: AnthropicDeleteCommand = .delete
+    command: AnthropicBetaMemoryTool20250818DeleteCommand.Command = .delete
   ) {
     self.command = command
     self.path = path
@@ -25,5 +25,9 @@ public struct AnthropicBetaMemoryTool20250818DeleteCommand: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case command
     case path
+  }
+
+  public enum Command: String, Codable, Hashable, Sendable {
+    case delete = "delete"
   }
 }

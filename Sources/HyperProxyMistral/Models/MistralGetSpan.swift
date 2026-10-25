@@ -52,7 +52,7 @@ public struct MistralGetSpan: Codable, Sendable {
   public var spanKind: String
   public var spanName: String
   public var startTime: String
-  public var statusCode: MistralGetSpanStatusCode
+  public var statusCode: MistralGetSpan.StatusCode
   public var statusMessage: String
   public var systemInstructions: String
   public var toolCallArguments: String
@@ -113,7 +113,7 @@ public struct MistralGetSpan: Codable, Sendable {
     spanKind: String,
     spanName: String,
     startTime: String,
-    statusCode: MistralGetSpanStatusCode,
+    statusCode: MistralGetSpan.StatusCode,
     statusMessage: String,
     systemInstructions: String,
     toolCallArguments: String,
@@ -253,5 +253,11 @@ public struct MistralGetSpan: Codable, Sendable {
     case userId = "user_id"
     case workflowName = "workflow_name"
     case workspaceId = "workspace_id"
+  }
+
+  public enum StatusCode: String, Codable, Hashable, Sendable {
+    case error = "Error"
+    case ok = "Ok"
+    case unset = "Unset"
   }
 }

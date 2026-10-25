@@ -14,12 +14,12 @@ public struct OpenAIRealtimeTranslationServerEventSessionInputTranscriptDelta: C
   public var delta: String
   public var elapsedMs: Int?
   public var eventId: String
-  public var kind: OpenAIRealtimeTranslationServerEventSessionInputTranscriptDeltaKind
+  public var kind: OpenAIRealtimeTranslationServerEventSessionInputTranscriptDelta.Kind
 
   public init(
     delta: String,
     eventId: String,
-    kind: OpenAIRealtimeTranslationServerEventSessionInputTranscriptDeltaKind,
+    kind: OpenAIRealtimeTranslationServerEventSessionInputTranscriptDelta.Kind,
     elapsedMs: Int? = nil
   ) {
     self.delta = delta
@@ -33,5 +33,11 @@ public struct OpenAIRealtimeTranslationServerEventSessionInputTranscriptDelta: C
     case elapsedMs = "elapsed_ms"
     case eventId = "event_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case sessionInputTranscriptDelta = "session.input_transcript.delta"
   }
 }

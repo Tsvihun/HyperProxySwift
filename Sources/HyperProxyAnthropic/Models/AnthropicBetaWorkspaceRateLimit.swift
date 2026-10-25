@@ -11,20 +11,20 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaWorkspaceRateLimit: Codable, Sendable {
-  public var groupType: AnthropicBetaWorkspaceRateLimitGroupType
+  public var groupType: AnthropicBetaWorkspaceRateLimit.GroupType
   public var limits: [AnthropicBetaWorkspaceRateLimitValue]
   public var models: [String]?
   public var rateLimitId: String
-  public var kind: AnthropicWorkspaceRateLimitKind
+  public var kind: AnthropicBetaWorkspaceRateLimit.Kind
   public var workspaceId: String
 
   public init(
-    groupType: AnthropicBetaWorkspaceRateLimitGroupType,
+    groupType: AnthropicBetaWorkspaceRateLimit.GroupType,
     limits: [AnthropicBetaWorkspaceRateLimitValue],
     models: [String]?,
     rateLimitId: String,
     workspaceId: String,
-    kind: AnthropicWorkspaceRateLimitKind = .workspaceRateLimit
+    kind: AnthropicBetaWorkspaceRateLimit.Kind = .workspaceRateLimit
   ) {
     self.groupType = groupType
     self.limits = limits
@@ -41,5 +41,18 @@ public struct AnthropicBetaWorkspaceRateLimit: Codable, Sendable {
     case rateLimitId = "rate_limit_id"
     case kind = "type"
     case workspaceId = "workspace_id"
+  }
+
+  public enum GroupType: String, Codable, Hashable, Sendable {
+    case batch = "batch"
+    case files = "files"
+    case modelGroup = "model_group"
+    case skills = "skills"
+    case tokenCount = "token_count"
+    case webSearch = "web_search"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case workspaceRateLimit = "workspace_rate_limit"
   }
 }

@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsReaderResourceResponseModel: Codable, Sendable {
   public var resourceId: String
-  public var resourceType: ElevenLabsReaderResourceResponseModelResourceType
+  public var resourceType: ElevenLabsReaderResourceResponseModel.ResourceType
 
   public init(
     resourceId: String,
-    resourceType: ElevenLabsReaderResourceResponseModelResourceType
+    resourceType: ElevenLabsReaderResourceResponseModel.ResourceType
   ) {
     self.resourceId = resourceId
     self.resourceType = resourceType
@@ -25,5 +25,10 @@ public struct ElevenLabsReaderResourceResponseModel: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case resourceId = "resource_id"
     case resourceType = "resource_type"
+  }
+
+  public enum ResourceType: String, Codable, Hashable, Sendable {
+    case read = "read"
+    case collection = "collection"
   }
 }

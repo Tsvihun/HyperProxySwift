@@ -14,13 +14,13 @@ public struct OpenAIListOrganizationSpendAlertsParameters: Codable, Sendable {
   public var after: String?
   public var before: String?
   public var limit: Int?
-  public var order: OpenAIListOrganizationSpendAlertsParametersOrder?
+  public var order: OpenAIListOrganizationSpendAlertsParameters.Order?
 
   public init(
     after: String? = nil,
     before: String? = nil,
     limit: Int? = nil,
-    order: OpenAIListOrganizationSpendAlertsParametersOrder? = nil
+    order: OpenAIListOrganizationSpendAlertsParameters.Order? = nil
   ) {
     self.after = after
     self.before = before
@@ -33,5 +33,10 @@ public struct OpenAIListOrganizationSpendAlertsParameters: Codable, Sendable {
     case before
     case limit
     case order
+  }
+
+  public enum Order: String, Codable, Hashable, Sendable {
+    case asc = "asc"
+    case desc = "desc"
   }
 }

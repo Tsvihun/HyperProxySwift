@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct DeepSeekFileDeleted: Codable, Sendable {
   public var deleted: Bool
   public var id: String
-  public var object: DeepSeekFileDeletedObject
+  public var object: DeepSeekFileDeleted.Object
 
   public init(
     deleted: Bool,
     id: String,
-    object: DeepSeekFileDeletedObject
+    object: DeepSeekFileDeleted.Object
   ) {
     self.deleted = deleted
     self.id = id
@@ -29,5 +29,9 @@ public struct DeepSeekFileDeleted: Codable, Sendable {
     case deleted
     case id
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case file = "file"
   }
 }

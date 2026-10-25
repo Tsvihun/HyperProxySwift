@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAITranscriptTextUsageDuration: Codable, Sendable {
   public var seconds: Double
-  public var kind: OpenAITranscriptTextUsageDurationKind
+  public var kind: OpenAITranscriptTextUsageDuration.Kind
 
   public init(
     seconds: Double,
-    kind: OpenAITranscriptTextUsageDurationKind
+    kind: OpenAITranscriptTextUsageDuration.Kind
   ) {
     self.seconds = seconds
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenAITranscriptTextUsageDuration: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case seconds
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case duration = "duration"
   }
 }

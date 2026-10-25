@@ -21,7 +21,7 @@ public struct DeepSeekAnthropicMessageRequest: Codable, Sendable {
   public var serviceTier: String?
   public var stopSequences: [String]?
   public var stream: Bool?
-  public var system: DeepSeekAnthropicMessageRequestSystem?
+  public var system: DeepSeekAnthropicMessageRequest.System?
   public var temperature: Double?
   public var thinking: DeepSeekAnthropicThinkingConfig?
   public var toolChoice: DeepSeekAnthropicToolChoice?
@@ -40,7 +40,7 @@ public struct DeepSeekAnthropicMessageRequest: Codable, Sendable {
     serviceTier: String? = nil,
     stopSequences: [String]? = nil,
     stream: Bool? = nil,
-    system: DeepSeekAnthropicMessageRequestSystem? = nil,
+    system: DeepSeekAnthropicMessageRequest.System? = nil,
     temperature: Double? = nil,
     thinking: DeepSeekAnthropicThinkingConfig? = nil,
     toolChoice: DeepSeekAnthropicToolChoice? = nil,
@@ -85,5 +85,41 @@ public struct DeepSeekAnthropicMessageRequest: Codable, Sendable {
     case tools
     case topK = "top_k"
     case topP = "top_p"
+  }
+
+  public enum System: Codable, Sendable {
+    case string(String)
+    case anthropicTextBlockArray([DeepSeekAnthropicTextBlock])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .anthropicTextBlockArray(try container.decode([DeepSeekAnthropicTextBlock].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .anthropicTextBlockArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension DeepSeekAnthropicMessageRequest.System: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension DeepSeekAnthropicMessageRequest.System: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: DeepSeekAnthropicTextBlock...) {
+    self = .anthropicTextBlockArray(elements)
   }
 }

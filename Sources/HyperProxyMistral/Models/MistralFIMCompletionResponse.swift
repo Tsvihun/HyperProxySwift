@@ -42,4 +42,18 @@ public struct MistralFIMCompletionResponse: Codable, Sendable {
     case object
     case usage
   }
+
+  public struct WithModel: Codable, Sendable {
+    public var model: String?
+
+    public init(
+      model: String? = nil
+    ) {
+      self.model = model
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case model
+    }
+  }
 }

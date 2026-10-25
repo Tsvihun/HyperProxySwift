@@ -14,13 +14,13 @@ public struct OpenAIVaultCredentialAuthResourceMcpOauth: Codable, Sendable {
   public var expiresAt: String
   public var mcpServerUrl: String
   public var refresh: OpenAIMcpOauthRefreshResource?
-  public var kind: OpenAIVaultCredentialAuthResourceMcpOauthKind
+  public var kind: OpenAIVaultCredentialAuthResourceMcpOauth.Kind
 
   public init(
     expiresAt: String,
     mcpServerUrl: String,
     refresh: OpenAIMcpOauthRefreshResource?,
-    kind: OpenAIVaultCredentialAuthResourceMcpOauthKind
+    kind: OpenAIVaultCredentialAuthResourceMcpOauth.Kind
   ) {
     self.expiresAt = expiresAt
     self.mcpServerUrl = mcpServerUrl
@@ -33,5 +33,9 @@ public struct OpenAIVaultCredentialAuthResourceMcpOauth: Codable, Sendable {
     case mcpServerUrl = "mcp_server_url"
     case refresh
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case mcpOauth = "mcp_oauth"
   }
 }

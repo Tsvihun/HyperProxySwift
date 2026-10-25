@@ -17,7 +17,7 @@ public struct GeminiUsageMetadata: Codable, Sendable {
   public var candidatesTokensDetails: [GeminiModalityTokenCount]?
   public var promptTokenCount: Int?
   public var promptTokensDetails: [GeminiModalityTokenCount]?
-  public var serviceTier: GeminiUsageMetadataServiceTier?
+  public var serviceTier: GeminiUsageMetadata.ServiceTier?
   public var thoughtsTokenCount: Int?
   public var toolUsePromptTokenCount: Int?
   public var toolUsePromptTokensDetails: [GeminiModalityTokenCount]?
@@ -30,7 +30,7 @@ public struct GeminiUsageMetadata: Codable, Sendable {
     candidatesTokensDetails: [GeminiModalityTokenCount]? = nil,
     promptTokenCount: Int? = nil,
     promptTokensDetails: [GeminiModalityTokenCount]? = nil,
-    serviceTier: GeminiUsageMetadataServiceTier? = nil,
+    serviceTier: GeminiUsageMetadata.ServiceTier? = nil,
     thoughtsTokenCount: Int? = nil,
     toolUsePromptTokenCount: Int? = nil,
     toolUsePromptTokensDetails: [GeminiModalityTokenCount]? = nil,
@@ -61,5 +61,12 @@ public struct GeminiUsageMetadata: Codable, Sendable {
     case toolUsePromptTokenCount
     case toolUsePromptTokensDetails
     case totalTokenCount
+  }
+
+  public enum ServiceTier: String, Codable, Hashable, Sendable {
+    case unspecified = "unspecified"
+    case standard = "standard"
+    case flex = "flex"
+    case priority = "priority"
   }
 }

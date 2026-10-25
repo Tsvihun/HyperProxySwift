@@ -11,31 +11,31 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIRealtimeBetaResponseCreateParams: Codable, Sendable {
-  public var conversation: OpenAIRealtimeBetaResponseCreateParamsConversation?
+  public var conversation: OpenAIRealtimeBetaResponseCreateParams.Conversation?
   public var input: [OpenAIRealtimeConversationItem]?
   public var instructions: String?
-  public var maxOutputTokens: OpenAIRealtimeBetaResponseCreateParamsMaxOutputTokens?
+  public var maxOutputTokens: OpenAIRealtimeBetaResponseCreateParams.MaxOutputTokens?
   public var metadata: OpenAIMetadata?
-  public var modalities: [OpenAIRealtimeBetaResponseCreateParamsModalitiesItem]?
-  public var outputAudioFormat: OpenAIRealtimeBetaResponseCreateParamsOutputAudioFormat?
+  public var modalities: [OpenAIRealtimeBetaResponseCreateParams.ModalitiesElement]?
+  public var outputAudioFormat: OpenAIRealtimeBetaResponseCreateParams.OutputAudioFormat?
   public var prompt: OpenAIPrompt?
   public var temperature: Double?
-  public var toolChoice: OpenAIRealtimeBetaResponseCreateParamsToolChoice?
-  public var tools: [OpenAIRealtimeBetaResponseCreateParamsToolsItem]?
+  public var toolChoice: OpenAIRealtimeBetaResponseCreateParams.ToolChoice?
+  public var tools: [OpenAIRealtimeBetaResponseCreateParams.ToolsElement]?
   public var voice: OpenAIVoiceIdsOrCustomVoice?
 
   public init(
-    conversation: OpenAIRealtimeBetaResponseCreateParamsConversation? = nil,
+    conversation: OpenAIRealtimeBetaResponseCreateParams.Conversation? = nil,
     input: [OpenAIRealtimeConversationItem]? = nil,
     instructions: String? = nil,
-    maxOutputTokens: OpenAIRealtimeBetaResponseCreateParamsMaxOutputTokens? = nil,
+    maxOutputTokens: OpenAIRealtimeBetaResponseCreateParams.MaxOutputTokens? = nil,
     metadata: OpenAIMetadata? = nil,
-    modalities: [OpenAIRealtimeBetaResponseCreateParamsModalitiesItem]? = nil,
-    outputAudioFormat: OpenAIRealtimeBetaResponseCreateParamsOutputAudioFormat? = nil,
+    modalities: [OpenAIRealtimeBetaResponseCreateParams.ModalitiesElement]? = nil,
+    outputAudioFormat: OpenAIRealtimeBetaResponseCreateParams.OutputAudioFormat? = nil,
     prompt: OpenAIPrompt? = nil,
     temperature: Double? = nil,
-    toolChoice: OpenAIRealtimeBetaResponseCreateParamsToolChoice? = nil,
-    tools: [OpenAIRealtimeBetaResponseCreateParamsToolsItem]? = nil,
+    toolChoice: OpenAIRealtimeBetaResponseCreateParams.ToolChoice? = nil,
+    tools: [OpenAIRealtimeBetaResponseCreateParams.ToolsElement]? = nil,
     voice: OpenAIVoiceIdsOrCustomVoice? = nil
   ) {
     self.conversation = conversation
@@ -65,5 +65,178 @@ public struct OpenAIRealtimeBetaResponseCreateParams: Codable, Sendable {
     case toolChoice = "tool_choice"
     case tools
     case voice
+  }
+
+  public enum Conversation: RawRepresentable, Codable, Hashable,
+    Sendable
+  {
+    case auto
+    case none
+    case custom(String)
+
+    public init(rawValue: String) {
+      switch rawValue {
+      case "auto":
+        self = .auto
+      case "none":
+        self = .none
+      default:
+        self = .custom(rawValue)
+      }
+    }
+
+    public var rawValue: String {
+      switch self {
+      case .auto:
+        return "auto"
+      case .none:
+        return "none"
+      case .custom(let value):
+        return value
+      }
+    }
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      self.init(rawValue: try container.decode(String.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      try container.encode(rawValue)
+    }
+
+    public enum Preset: String, Codable, Hashable,
+      Sendable
+    {
+      case auto = "auto"
+      case none = "none"
+    }
+  }
+
+  public enum MaxOutputTokens: Codable, Sendable {
+    case integer(Int)
+    case infValue(
+      OpenAIRealtimeBetaResponseCreateParams.MaxOutputTokens.Inf)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Int.self) {
+        self = .integer(value)
+        return
+      }
+      self = .infValue(
+        try container.decode(OpenAIRealtimeBetaResponseCreateParams.MaxOutputTokens.Inf.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .integer(let value):
+        try container.encode(value)
+      case .infValue(let value):
+        try container.encode(value)
+      }
+    }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var inf: Self { .infValue(.inf) }
+
+    public enum Inf: String, Codable, Hashable,
+      Sendable
+    {
+      case inf = "inf"
+    }
+  }
+
+  public enum ModalitiesElement: String, Codable, Hashable,
+    Sendable
+  {
+    case text = "text"
+    case audio = "audio"
+  }
+
+  public enum OutputAudioFormat: String, Codable, Hashable,
+    Sendable
+  {
+    case pcm16 = "pcm16"
+    case g711Ulaw = "g711_ulaw"
+    case g711Alaw = "g711_alaw"
+  }
+
+  public enum ToolChoice: Codable, Sendable {
+    case toolChoiceOptions(OpenAIToolChoiceOptions)
+    case toolChoiceFunction(OpenAIToolChoiceFunction)
+    case toolChoiceMCP(OpenAIToolChoiceMCP)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenAIToolChoiceOptions.self) {
+        self = .toolChoiceOptions(value)
+        return
+      }
+      if let value = try? container.decode(OpenAIToolChoiceFunction.self) {
+        self = .toolChoiceFunction(value)
+        return
+      }
+      self = .toolChoiceMCP(try container.decode(OpenAIToolChoiceMCP.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .toolChoiceOptions(let value):
+        try container.encode(value)
+      case .toolChoiceFunction(let value):
+        try container.encode(value)
+      case .toolChoiceMCP(let value):
+        try container.encode(value)
+      }
+    }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var none: Self { .toolChoiceOptions(.none) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var auto: Self { .toolChoiceOptions(.auto) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var requiredValue: Self { .toolChoiceOptions(.requiredValue) }
+  }
+
+  public struct ToolsElement: Codable, Sendable {
+    public var description: String?
+    public var name: String?
+    public var parameters: HyperProxyJSONValue?
+    public var kind: OpenAIRealtimeBetaResponseCreateParams.ToolsElement.Kind?
+
+    public init(
+      description: String? = nil,
+      name: String? = nil,
+      parameters: HyperProxyJSONValue? = nil,
+      kind: OpenAIRealtimeBetaResponseCreateParams.ToolsElement.Kind? = nil
+    ) {
+      self.description = description
+      self.name = name
+      self.parameters = parameters
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case description
+      case name
+      case parameters
+      case kind = "type"
+    }
+
+    public enum Kind: String, Codable, Hashable, Sendable {
+      case function = "function"
+    }
+  }
+}
+
+extension OpenAIRealtimeBetaResponseCreateParams.MaxOutputTokens: ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Int) {
+    self = .integer(value)
   }
 }

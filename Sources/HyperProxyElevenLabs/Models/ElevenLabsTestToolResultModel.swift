@@ -12,14 +12,14 @@ import HyperProxyCore
 
 public struct ElevenLabsTestToolResultModel: Codable, Sendable {
   public var reason: String?
-  public var resultType: ElevenLabsTestingToolResultResultType?
+  public var resultType: ElevenLabsTestToolResultModel.ResultType?
   public var status: ElevenLabsSuccessStatus?
   public var toAgent: String?
   public var toNode: String?
 
   public init(
     reason: String? = nil,
-    resultType: ElevenLabsTestingToolResultResultType? = nil,
+    resultType: ElevenLabsTestToolResultModel.ResultType? = nil,
     status: ElevenLabsSuccessStatus? = nil,
     toAgent: String? = nil,
     toNode: String? = nil
@@ -37,5 +37,9 @@ public struct ElevenLabsTestToolResultModel: Codable, Sendable {
     case status
     case toAgent = "to_agent"
     case toNode = "to_node"
+  }
+
+  public enum ResultType: String, Codable, Hashable, Sendable {
+    case testingToolResult = "testing_tool_result"
   }
 }

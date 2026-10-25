@@ -19,16 +19,16 @@ public struct OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionCo
   public var languages: [OpenAITranscriptionLanguage]?
   public var logprobs: [OpenAILogProbProperties]?
   public var transcript: String
-  public var kind: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionCompletedKind
-  public var usage: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionCompletedUsage
+  public var kind: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionCompleted.Kind
+  public var usage: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionCompleted.Usage
 
   public init(
     contentIndex: Int,
     eventId: String,
     itemId: String,
     transcript: String,
-    kind: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionCompletedKind,
-    usage: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionCompletedUsage,
+    kind: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionCompleted.Kind,
+    usage: OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionCompleted.Usage,
     languages: [OpenAITranscriptionLanguage]? = nil,
     logprobs: [OpenAILogProbProperties]? = nil
   ) {
@@ -51,5 +51,39 @@ public struct OpenAIRealtimeServerEventConversationItemInputAudioTranscriptionCo
     case transcript
     case kind = "type"
     case usage
+  }
+
+  public enum Kind: String,
+    Codable, Hashable, Sendable
+  {
+    case conversationItemInputAudioTranscriptionCompleted =
+      "conversation.item.input_audio_transcription.completed"
+  }
+
+  public enum Usage: Codable,
+    Sendable
+  {
+    case transcriptTextUsageTokens(OpenAITranscriptTextUsageTokens)
+    case transcriptTextUsageDuration(OpenAITranscriptTextUsageDuration)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenAITranscriptTextUsageTokens.self) {
+        self = .transcriptTextUsageTokens(value)
+        return
+      }
+      self = .transcriptTextUsageDuration(
+        try container.decode(OpenAITranscriptTextUsageDuration.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .transcriptTextUsageTokens(let value):
+        try container.encode(value)
+      case .transcriptTextUsageDuration(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

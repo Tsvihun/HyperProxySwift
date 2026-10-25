@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralQueryInvocationBody: Codable, Sendable {
-  public var input: MistralQueryInvocationBodyInput?
+  public var input: MistralQueryInvocationBody.Input?
   public var name: String
 
   public init(
     name: String,
-    input: MistralQueryInvocationBodyInput? = nil
+    input: MistralQueryInvocationBody.Input? = nil
   ) {
     self.input = input
     self.name = name
@@ -25,5 +25,29 @@ public struct MistralQueryInvocationBody: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case input
     case name
+  }
+
+  public enum Input: Codable, Sendable {
+    case networkEncodedInput(MistralNetworkEncodedInput)
+    case objectDictionary([String: HyperProxyJSONValue])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(MistralNetworkEncodedInput.self) {
+        self = .networkEncodedInput(value)
+        return
+      }
+      self = .objectDictionary(try container.decode([String: HyperProxyJSONValue].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .networkEncodedInput(let value):
+        try container.encode(value)
+      case .objectDictionary(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

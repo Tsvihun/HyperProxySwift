@@ -11,25 +11,53 @@ import Foundation
 import HyperProxyCore
 
 public enum TogetherDEPlacement: Codable, Sendable {
-  case dEPlacementOneOf1(TogetherDEPlacementOneOf1)
-  case dEPlacementOneOf2(TogetherDEPlacementOneOf2)
+  case withInline(TogetherDEPlacement.WithInline)
+  case withProfile(TogetherDEPlacement.WithProfile)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(TogetherDEPlacementOneOf1.self) {
-      self = .dEPlacementOneOf1(value)
+    if let value = try? container.decode(TogetherDEPlacement.WithInline.self) {
+      self = .withInline(value)
       return
     }
-    self = .dEPlacementOneOf2(try container.decode(TogetherDEPlacementOneOf2.self))
+    self = .withProfile(try container.decode(TogetherDEPlacement.WithProfile.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .dEPlacementOneOf1(let value):
+    case .withInline(let value):
       try container.encode(value)
-    case .dEPlacementOneOf2(let value):
+    case .withProfile(let value):
       try container.encode(value)
+    }
+  }
+
+  public struct WithInline: Codable, Sendable {
+    public var inline: TogetherDEInlinePlacement
+
+    public init(
+      inline: TogetherDEInlinePlacement
+    ) {
+      self.inline = inline
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case inline
+    }
+  }
+
+  public struct WithProfile: Codable, Sendable {
+    public var profile: String
+
+    public init(
+      profile: String
+    ) {
+      self.profile = profile
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case profile
     }
   }
 }

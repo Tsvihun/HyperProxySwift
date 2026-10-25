@@ -16,7 +16,7 @@ public struct OpenAICreateEvalLabelModelGrader: Codable, Sendable {
   public var model: String
   public var name: String
   public var passingLabels: [String]
-  public var kind: OpenAICreateEvalLabelModelGraderKind
+  public var kind: OpenAICreateEvalLabelModelGrader.Kind
 
   public init(
     input: [OpenAICreateEvalItem],
@@ -24,7 +24,7 @@ public struct OpenAICreateEvalLabelModelGrader: Codable, Sendable {
     model: String,
     name: String,
     passingLabels: [String],
-    kind: OpenAICreateEvalLabelModelGraderKind
+    kind: OpenAICreateEvalLabelModelGrader.Kind
   ) {
     self.input = input
     self.labels = labels
@@ -41,5 +41,9 @@ public struct OpenAICreateEvalLabelModelGrader: Codable, Sendable {
     case name
     case passingLabels = "passing_labels"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case labelModel = "label_model"
   }
 }

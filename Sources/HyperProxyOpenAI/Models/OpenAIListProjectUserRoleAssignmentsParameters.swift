@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct OpenAIListProjectUserRoleAssignmentsParameters: Codable, Sendable {
   public var after: String?
   public var limit: Int?
-  public var order: OpenAIListProjectUserRoleAssignmentsParametersOrder?
+  public var order: OpenAIListProjectUserRoleAssignmentsParameters.Order?
   public var projectId: String
   public var userId: String
 
@@ -22,7 +22,7 @@ public struct OpenAIListProjectUserRoleAssignmentsParameters: Codable, Sendable 
     userId: String,
     after: String? = nil,
     limit: Int? = nil,
-    order: OpenAIListProjectUserRoleAssignmentsParametersOrder? = nil
+    order: OpenAIListProjectUserRoleAssignmentsParameters.Order? = nil
   ) {
     self.after = after
     self.limit = limit
@@ -37,5 +37,10 @@ public struct OpenAIListProjectUserRoleAssignmentsParameters: Codable, Sendable 
     case order
     case projectId = "project_id"
     case userId = "user_id"
+  }
+
+  public enum Order: String, Codable, Hashable, Sendable {
+    case asc = "asc"
+    case desc = "desc"
   }
 }

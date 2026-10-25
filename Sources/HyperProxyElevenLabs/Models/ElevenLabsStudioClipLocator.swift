@@ -14,14 +14,14 @@ public struct ElevenLabsStudioClipLocator: Codable, Sendable {
   public var blockId: String?
   public var chapterId: String
   public var clipId: String
-  public var clipType: ElevenLabsStudioClipLocatorClipType
+  public var clipType: ElevenLabsStudioClipLocator.ClipType
   public var previewUrl: String?
   public var projectId: String
 
   public init(
     chapterId: String,
     clipId: String,
-    clipType: ElevenLabsStudioClipLocatorClipType,
+    clipType: ElevenLabsStudioClipLocator.ClipType,
     projectId: String,
     blockId: String? = nil,
     previewUrl: String? = nil
@@ -41,5 +41,12 @@ public struct ElevenLabsStudioClipLocator: Codable, Sendable {
     case clipType = "clip_type"
     case previewUrl = "preview_url"
     case projectId = "project_id"
+  }
+
+  public enum ClipType: String, Codable, Hashable, Sendable {
+    case video = "video"
+    case image = "image"
+    case externalAudio = "external_audio"
+    case ttsNode = "tts_node"
   }
 }

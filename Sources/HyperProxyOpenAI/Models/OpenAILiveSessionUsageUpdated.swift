@@ -14,12 +14,12 @@ public struct OpenAILiveSessionUsageUpdated: Codable, Sendable {
   public var clientEventId: String?
   public var contextWindow: OpenAILiveContextWindowUsage?
   public var eventId: String
-  public var kind: OpenAILiveSessionUsageUpdatedKind
+  public var kind: OpenAILiveSessionUsageUpdated.Kind
   public var usage: OpenAILiveSessionUsage
 
   public init(
     eventId: String,
-    kind: OpenAILiveSessionUsageUpdatedKind,
+    kind: OpenAILiveSessionUsageUpdated.Kind,
     usage: OpenAILiveSessionUsage,
     clientEventId: String? = nil,
     contextWindow: OpenAILiveContextWindowUsage? = nil
@@ -37,5 +37,9 @@ public struct OpenAILiveSessionUsageUpdated: Codable, Sendable {
     case eventId = "event_id"
     case kind = "type"
     case usage
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case sessionUsageUpdated = "session.usage.updated"
   }
 }

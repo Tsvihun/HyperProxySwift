@@ -13,10 +13,10 @@ import HyperProxyCore
 public struct OpenRouterContextCompactionItem: Codable, Sendable {
   public var encryptedContent: String?
   public var id: String?
-  public var kind: OpenRouterContextCompactionItemKind
+  public var kind: OpenRouterContextCompactionItem.Kind
 
   public init(
-    kind: OpenRouterContextCompactionItemKind,
+    kind: OpenRouterContextCompactionItem.Kind,
     encryptedContent: String? = nil,
     id: String? = nil
   ) {
@@ -29,5 +29,9 @@ public struct OpenRouterContextCompactionItem: Codable, Sendable {
     case encryptedContent = "encrypted_content"
     case id
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case contextCompaction = "context_compaction"
   }
 }

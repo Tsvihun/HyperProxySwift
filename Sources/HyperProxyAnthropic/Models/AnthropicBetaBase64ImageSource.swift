@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct AnthropicBetaBase64ImageSource: Codable, Sendable {
   public var data: String
-  public var mediaType: AnthropicBetaBase64ImageSourceMediaType
+  public var mediaType: AnthropicBetaBase64ImageSource.MediaType
   public var kind: AnthropicBase64Kind
 
   public init(
     data: String,
-    mediaType: AnthropicBetaBase64ImageSourceMediaType,
+    mediaType: AnthropicBetaBase64ImageSource.MediaType,
     kind: AnthropicBase64Kind = .base64
   ) {
     self.data = data
@@ -29,5 +29,12 @@ public struct AnthropicBetaBase64ImageSource: Codable, Sendable {
     case data
     case mediaType = "media_type"
     case kind = "type"
+  }
+
+  public enum MediaType: String, Codable, Hashable, Sendable {
+    case imageJpeg = "image/jpeg"
+    case imagePng = "image/png"
+    case imageGif = "image/gif"
+    case imageWebp = "image/webp"
   }
 }

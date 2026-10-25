@@ -14,11 +14,11 @@ public struct OpenAIMcpTransportConfigParamHttp: Codable, Sendable {
   public var authorization: String?
   public var headers: [String: String]?
   public var serverUrl: String
-  public var kind: OpenAIMcpTransportConfigParamHttpKind
+  public var kind: OpenAIMcpTransportConfigParamHttp.Kind
 
   public init(
     serverUrl: String,
-    kind: OpenAIMcpTransportConfigParamHttpKind,
+    kind: OpenAIMcpTransportConfigParamHttp.Kind,
     authorization: String? = nil,
     headers: [String: String]? = nil
   ) {
@@ -33,5 +33,9 @@ public struct OpenAIMcpTransportConfigParamHttp: Codable, Sendable {
     case headers
     case serverUrl = "server_url"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case http = "http"
   }
 }

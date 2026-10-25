@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsBodyCreateStudioProjectV1StudioProjectsPost: Codable, Sendable {
   public var acxVolumeNormalization: Bool?
   public var applyTextNormalization:
-    ElevenLabsBodyCreateStudioProjectV1StudioProjectsPostApplyTextNormalization?
+    ElevenLabsBodyCreateStudioProjectV1StudioProjectsPost.ApplyTextNormalization?
   public var author: String?
   public var autoAssignVoices: Bool?
   public var autoConvert: Bool?
@@ -24,7 +24,7 @@ public struct ElevenLabsBodyCreateStudioProjectV1StudioProjectsPost: Codable, Se
   public var defaultParagraphVoiceId: String?
   public var defaultTitleVoiceId: String?
   public var description: String?
-  public var fiction: ElevenLabsBodyCreateStudioProjectV1StudioProjectsPostFiction?
+  public var fiction: ElevenLabsBodyCreateStudioProjectV1StudioProjectsPost.Fiction?
   public var fromContentJson: String?
   public var fromDocument: String?
   public var fromUrl: String?
@@ -36,8 +36,8 @@ public struct ElevenLabsBodyCreateStudioProjectV1StudioProjectsPost: Codable, Se
   public var originalPublicationDate: String?
   public var pronunciationDictionaryLocators: [String]?
   public var qualityPreset: ElevenLabsQualityPresetType?
-  public var sourceType: ElevenLabsBodyCreateStudioProjectV1StudioProjectsPostSourceType?
-  public var targetAudience: ElevenLabsBodyCreateStudioProjectV1StudioProjectsPostTargetAudience?
+  public var sourceType: ElevenLabsBodyCreateStudioProjectV1StudioProjectsPost.SourceType?
+  public var targetAudience: ElevenLabsBodyCreateStudioProjectV1StudioProjectsPost.TargetAudience?
   public var title: String?
   public var voiceSettings: [String]?
   public var volumeNormalization: Bool?
@@ -46,7 +46,7 @@ public struct ElevenLabsBodyCreateStudioProjectV1StudioProjectsPost: Codable, Se
     name: String,
     acxVolumeNormalization: Bool? = nil,
     applyTextNormalization:
-      ElevenLabsBodyCreateStudioProjectV1StudioProjectsPostApplyTextNormalization? = nil,
+      ElevenLabsBodyCreateStudioProjectV1StudioProjectsPost.ApplyTextNormalization? = nil,
     author: String? = nil,
     autoAssignVoices: Bool? = nil,
     autoConvert: Bool? = nil,
@@ -57,7 +57,7 @@ public struct ElevenLabsBodyCreateStudioProjectV1StudioProjectsPost: Codable, Se
     defaultParagraphVoiceId: String? = nil,
     defaultTitleVoiceId: String? = nil,
     description: String? = nil,
-    fiction: ElevenLabsBodyCreateStudioProjectV1StudioProjectsPostFiction? = nil,
+    fiction: ElevenLabsBodyCreateStudioProjectV1StudioProjectsPost.Fiction? = nil,
     fromContentJson: String? = nil,
     fromDocument: String? = nil,
     fromUrl: String? = nil,
@@ -68,8 +68,8 @@ public struct ElevenLabsBodyCreateStudioProjectV1StudioProjectsPost: Codable, Se
     originalPublicationDate: String? = nil,
     pronunciationDictionaryLocators: [String]? = nil,
     qualityPreset: ElevenLabsQualityPresetType? = nil,
-    sourceType: ElevenLabsBodyCreateStudioProjectV1StudioProjectsPostSourceType? = nil,
-    targetAudience: ElevenLabsBodyCreateStudioProjectV1StudioProjectsPostTargetAudience? = nil,
+    sourceType: ElevenLabsBodyCreateStudioProjectV1StudioProjectsPost.SourceType? = nil,
+    targetAudience: ElevenLabsBodyCreateStudioProjectV1StudioProjectsPost.TargetAudience? = nil,
     title: String? = nil,
     voiceSettings: [String]? = nil,
     volumeNormalization: Bool? = nil
@@ -135,5 +135,41 @@ public struct ElevenLabsBodyCreateStudioProjectV1StudioProjectsPost: Codable, Se
     case title
     case voiceSettings = "voice_settings"
     case volumeNormalization = "volume_normalization"
+  }
+
+  public enum ApplyTextNormalization: String,
+    Codable, Hashable, Sendable
+  {
+    case auto = "auto"
+    case on = "on"
+    case off = "off"
+    case applyEnglish = "apply_english"
+  }
+
+  public enum Fiction: String, Codable, Hashable,
+    Sendable
+  {
+    case fiction = "fiction"
+    case nonFiction = "non-fiction"
+  }
+
+  public enum SourceType: String, Codable,
+    Hashable, Sendable
+  {
+    case blank = "blank"
+    case book = "book"
+    case article = "article"
+    case genfm = "genfm"
+    case video = "video"
+    case screenplay = "screenplay"
+  }
+
+  public enum TargetAudience: String, Codable,
+    Hashable, Sendable
+  {
+    case children = "children"
+    case youngAdult = "young adult"
+    case adult = "adult"
+    case allAges = "all ages"
   }
 }

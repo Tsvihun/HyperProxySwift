@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherDEHeadroom: Codable, Sendable {
-  public var relation: TogetherDEHeadroomRelation
+  public var relation: TogetherDEHeadroom.Relation
   public var value: Int?
 
   public init(
-    relation: TogetherDEHeadroomRelation,
+    relation: TogetherDEHeadroom.Relation,
     value: Int? = nil
   ) {
     self.relation = relation
@@ -25,5 +25,10 @@ public struct TogetherDEHeadroom: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case relation
     case value
+  }
+
+  public enum Relation: String, Codable, Hashable, Sendable {
+    case relationEq = "RELATION_EQ"
+    case relationGte = "RELATION_GTE"
   }
 }

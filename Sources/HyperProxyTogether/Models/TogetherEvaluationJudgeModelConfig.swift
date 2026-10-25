@@ -15,14 +15,14 @@ public struct TogetherEvaluationJudgeModelConfig: Codable, Sendable {
   public var externalBaseUrl: String?
   public var maxTokens: Int?
   public var model: String
-  public var modelSource: TogetherEvaluationJudgeModelConfigModelSource
+  public var modelSource: TogetherEvaluationJudgeModelConfig.ModelSource
   public var numWorkers: Int?
   public var systemTemplate: String
   public var temperature: Double?
 
   public init(
     model: String,
-    modelSource: TogetherEvaluationJudgeModelConfigModelSource,
+    modelSource: TogetherEvaluationJudgeModelConfig.ModelSource,
     systemTemplate: String,
     externalApiToken: String? = nil,
     externalBaseUrl: String? = nil,
@@ -49,5 +49,11 @@ public struct TogetherEvaluationJudgeModelConfig: Codable, Sendable {
     case numWorkers = "num_workers"
     case systemTemplate = "system_template"
     case temperature
+  }
+
+  public enum ModelSource: String, Codable, Hashable, Sendable {
+    case serverless = "serverless"
+    case dedicated = "dedicated"
+    case external = "external"
   }
 }

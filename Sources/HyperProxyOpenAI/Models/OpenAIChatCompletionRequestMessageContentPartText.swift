@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct OpenAIChatCompletionRequestMessageContentPartText: Codable, Sendable {
   public var promptCacheBreakpoint: OpenAIPromptCacheBreakpointParam?
   public var text: String
-  public var kind: OpenAIChatCompletionRequestMessageContentPartTextKind
+  public var kind: OpenAIChatCompletionRequestMessageContentPartText.Kind
 
   public init(
     text: String,
-    kind: OpenAIChatCompletionRequestMessageContentPartTextKind,
+    kind: OpenAIChatCompletionRequestMessageContentPartText.Kind,
     promptCacheBreakpoint: OpenAIPromptCacheBreakpointParam? = nil
   ) {
     self.promptCacheBreakpoint = promptCacheBreakpoint
@@ -29,5 +29,11 @@ public struct OpenAIChatCompletionRequestMessageContentPartText: Codable, Sendab
     case promptCacheBreakpoint = "prompt_cache_breakpoint"
     case text
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case text = "text"
   }
 }

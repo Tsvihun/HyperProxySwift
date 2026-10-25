@@ -17,13 +17,13 @@ public struct OpenAIDecisionInputFunctionCall: Codable, Sendable {
   public var name: String
   public var namespace: String?
   public var status: OpenAIFunctionCallStatusParam?
-  public var kind: OpenAIDecisionInputFunctionCallKind
+  public var kind: OpenAIDecisionInputFunctionCall.Kind
 
   public init(
     arguments: String,
     callId: String,
     name: String,
-    kind: OpenAIDecisionInputFunctionCallKind,
+    kind: OpenAIDecisionInputFunctionCall.Kind,
     id: String? = nil,
     namespace: String? = nil,
     status: OpenAIFunctionCallStatusParam? = nil
@@ -45,5 +45,9 @@ public struct OpenAIDecisionInputFunctionCall: Codable, Sendable {
     case namespace
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case functionCall = "function_call"
   }
 }

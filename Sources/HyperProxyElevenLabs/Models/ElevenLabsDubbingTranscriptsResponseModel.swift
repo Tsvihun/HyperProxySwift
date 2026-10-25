@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct ElevenLabsDubbingTranscriptsResponseModel: Codable, Sendable {
   public var json: ElevenLabsDubbingTranscript?
   public var srt: String?
-  public var transcriptFormat: ElevenLabsDubbingTranscriptsResponseModelTranscriptFormat
+  public var transcriptFormat: ElevenLabsDubbingTranscriptsResponseModel.TranscriptFormat
   public var webvtt: String?
 
   public init(
-    transcriptFormat: ElevenLabsDubbingTranscriptsResponseModelTranscriptFormat,
+    transcriptFormat: ElevenLabsDubbingTranscriptsResponseModel.TranscriptFormat,
     json: ElevenLabsDubbingTranscript? = nil,
     srt: String? = nil,
     webvtt: String? = nil
@@ -33,5 +33,13 @@ public struct ElevenLabsDubbingTranscriptsResponseModel: Codable, Sendable {
     case srt
     case transcriptFormat = "transcript_format"
     case webvtt
+  }
+
+  public enum TranscriptFormat: String, Codable, Hashable,
+    Sendable
+  {
+    case srt = "srt"
+    case webvtt = "webvtt"
+    case json = "json"
   }
 }

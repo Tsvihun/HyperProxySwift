@@ -13,13 +13,13 @@ import HyperProxyCore
 public struct OpenAIUploadPart: Codable, Sendable {
   public var createdAt: Int
   public var id: String
-  public var object: OpenAIUploadPartObject
+  public var object: OpenAIUploadPart.Object
   public var uploadId: String
 
   public init(
     createdAt: Int,
     id: String,
-    object: OpenAIUploadPartObject,
+    object: OpenAIUploadPart.Object,
     uploadId: String
   ) {
     self.createdAt = createdAt
@@ -33,5 +33,9 @@ public struct OpenAIUploadPart: Codable, Sendable {
     case id
     case object
     case uploadId = "upload_id"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case uploadPart = "upload.part"
   }
 }

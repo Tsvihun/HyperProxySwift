@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct OpenRouterAlignmentUnavailableCallRecord: Codable, Sendable {
   public var call: Int
-  public var outcome: OpenRouterAlignmentUnavailableCallRecordOutcome
-  public var reason: OpenRouterAlignmentUnavailableCallRecordReason
+  public var outcome: OpenRouterAlignmentUnavailableCallRecord.Outcome
+  public var reason: OpenRouterAlignmentUnavailableCallRecord.Reason
 
   public init(
     call: Int,
-    outcome: OpenRouterAlignmentUnavailableCallRecordOutcome,
-    reason: OpenRouterAlignmentUnavailableCallRecordReason
+    outcome: OpenRouterAlignmentUnavailableCallRecord.Outcome,
+    reason: OpenRouterAlignmentUnavailableCallRecord.Reason
   ) {
     self.call = call
     self.outcome = outcome
@@ -29,5 +29,16 @@ public struct OpenRouterAlignmentUnavailableCallRecord: Codable, Sendable {
     case call
     case outcome
     case reason
+  }
+
+  public enum Outcome: String, Codable, Hashable, Sendable {
+    case unavailable = "unavailable"
+  }
+
+  public enum Reason: String, Codable, Hashable, Sendable {
+    case cut = "cut"
+    case evaluatorError = "evaluator_error"
+    case malformedAnswer = "malformed_answer"
+    case timeLimit = "time_limit"
   }
 }

@@ -11,18 +11,18 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIBetaReasoning: Codable, Sendable {
-  public var context: OpenAIBetaReasoningContext?
+  public var context: OpenAIBetaReasoning.Context?
   public var effort: OpenAIBetaReasoningEffort?
-  public var generateSummary: OpenAIBetaReasoningGenerateSummary?
+  public var generateSummary: OpenAIBetaReasoning.GenerateSummary?
   public var mode: OpenAIBetaReasoningModeEnum?
-  public var summary: OpenAIBetaReasoningSummary?
+  public var summary: OpenAIBetaReasoning.Summary?
 
   public init(
-    context: OpenAIBetaReasoningContext? = nil,
+    context: OpenAIBetaReasoning.Context? = nil,
     effort: OpenAIBetaReasoningEffort? = nil,
-    generateSummary: OpenAIBetaReasoningGenerateSummary? = nil,
+    generateSummary: OpenAIBetaReasoning.GenerateSummary? = nil,
     mode: OpenAIBetaReasoningModeEnum? = nil,
-    summary: OpenAIBetaReasoningSummary? = nil
+    summary: OpenAIBetaReasoning.Summary? = nil
   ) {
     self.context = context
     self.effort = effort
@@ -37,5 +37,23 @@ public struct OpenAIBetaReasoning: Codable, Sendable {
     case generateSummary = "generate_summary"
     case mode
     case summary
+  }
+
+  public enum Context: String, Codable, Hashable, Sendable {
+    case auto = "auto"
+    case currentTurn = "current_turn"
+    case allTurns = "all_turns"
+  }
+
+  public enum GenerateSummary: String, Codable, Hashable, Sendable {
+    case auto = "auto"
+    case concise = "concise"
+    case detailed = "detailed"
+  }
+
+  public enum Summary: String, Codable, Hashable, Sendable {
+    case auto = "auto"
+    case concise = "concise"
+    case detailed = "detailed"
   }
 }

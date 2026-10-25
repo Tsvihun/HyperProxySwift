@@ -11,6 +11,6 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksGatewayPurpose: String, Codable, Hashable, Sendable {
-  case pURPOSEUNSPECIFIED = "PURPOSE_UNSPECIFIED"
-  case pURPOSEPILOT = "PURPOSE_PILOT"
+  case purposeUnspecified = "PURPOSE_UNSPECIFIED"
+  case purposePilot = "PURPOSE_PILOT"
 }

@@ -15,14 +15,14 @@ public struct OpenAIThreadListResource: Codable, Sendable {
   public var firstId: String?
   public var hasMore: Bool
   public var lastId: String?
-  public var object: OpenAIThreadListResourceObject
+  public var object: OpenAIThreadListResource.Object
 
   public init(
     data: [OpenAIThreadResource],
     firstId: String?,
     hasMore: Bool,
     lastId: String?,
-    object: OpenAIThreadListResourceObject
+    object: OpenAIThreadListResource.Object
   ) {
     self.data = data
     self.firstId = firstId
@@ -37,5 +37,9 @@ public struct OpenAIThreadListResource: Codable, Sendable {
     case hasMore = "has_more"
     case lastId = "last_id"
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case list = "list"
   }
 }

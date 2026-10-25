@@ -15,10 +15,10 @@ public struct FireworksAnthropicMessage: Codable, Sendable {
   public var id: String
   public var model: String
   public var rawOutput: FireworksAnthropicRawOutput?
-  public var role: FireworksAssistantRole
+  public var role: FireworksAnthropicMessage.Role
   public var stopReason: FireworksAnthropicStopReason?
   public var stopSequence: String?
-  public var kind: FireworksMessageKind
+  public var kind: FireworksAnthropicMessage.Kind
 
   public init(
     content: [FireworksAnthropicContentBlock],
@@ -26,8 +26,8 @@ public struct FireworksAnthropicMessage: Codable, Sendable {
     model: String,
     stopReason: FireworksAnthropicStopReason?,
     stopSequence: String?,
-    role: FireworksAssistantRole = .assistant,
-    kind: FireworksMessageKind = .message,
+    role: FireworksAnthropicMessage.Role = .assistant,
+    kind: FireworksAnthropicMessage.Kind = .message,
     rawOutput: FireworksAnthropicRawOutput? = nil
   ) {
     self.content = content
@@ -49,5 +49,13 @@ public struct FireworksAnthropicMessage: Codable, Sendable {
     case stopReason = "stop_reason"
     case stopSequence = "stop_sequence"
     case kind = "type"
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case assistant = "assistant"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case message = "message"
   }
 }

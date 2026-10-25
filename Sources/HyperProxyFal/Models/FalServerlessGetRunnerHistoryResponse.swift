@@ -11,16 +11,16 @@ import Foundation
 import HyperProxyCore
 
 public struct FalServerlessGetRunnerHistoryResponse: Codable, Sendable {
-  public var aggregation: FalServerlessGetRunnerHistoryResponseAggregation
+  public var aggregation: FalServerlessGetRunnerHistoryResponse.Aggregation
   public var endpointId: String
-  public var history: [FalServerlessGetRunnerHistoryResponseHistoryItem]
-  public var timeframe: FalServerlessGetRunnerHistoryResponseTimeframe
+  public var history: [FalServerlessGetRunnerHistoryResponse.HistoryElement]
+  public var timeframe: FalServerlessGetRunnerHistoryResponse.Timeframe
 
   public init(
-    aggregation: FalServerlessGetRunnerHistoryResponseAggregation,
+    aggregation: FalServerlessGetRunnerHistoryResponse.Aggregation,
     endpointId: String,
-    history: [FalServerlessGetRunnerHistoryResponseHistoryItem],
-    timeframe: FalServerlessGetRunnerHistoryResponseTimeframe
+    history: [FalServerlessGetRunnerHistoryResponse.HistoryElement],
+    timeframe: FalServerlessGetRunnerHistoryResponse.Timeframe
   ) {
     self.aggregation = aggregation
     self.endpointId = endpointId
@@ -33,5 +33,48 @@ public struct FalServerlessGetRunnerHistoryResponse: Codable, Sendable {
     case endpointId = "endpoint_id"
     case history
     case timeframe
+  }
+
+  public enum Aggregation: String, Codable, Hashable, Sendable {
+    case max = "max"
+    case avg = "avg"
+  }
+
+  public struct HistoryElement: Codable, Sendable {
+    public var draining: Double
+    public var idle: Double
+    public var pending: Double
+    public var running: Double
+    public var timestamp: String
+
+    public init(
+      draining: Double,
+      idle: Double,
+      pending: Double,
+      running: Double,
+      timestamp: String
+    ) {
+      self.draining = draining
+      self.idle = idle
+      self.pending = pending
+      self.running = running
+      self.timestamp = timestamp
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case draining
+      case idle
+      case pending
+      case running
+      case timestamp
+    }
+  }
+
+  public enum Timeframe: String, Codable, Hashable, Sendable {
+    case minute = "minute"
+    case hour = "hour"
+    case day = "day"
+    case week = "week"
+    case month = "month"
   }
 }

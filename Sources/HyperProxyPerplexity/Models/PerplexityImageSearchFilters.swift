@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct PerplexityImageSearchFilters: Codable, Sendable {
   public var domainFilter: [String]?
-  public var formatFilter: [PerplexityImageSearchFiltersFormatFilterItem]?
+  public var formatFilter: [PerplexityImageSearchFilters.FormatFilterElement]?
   public var safeSearch: Bool?
 
   public init(
     domainFilter: [String]? = nil,
-    formatFilter: [PerplexityImageSearchFiltersFormatFilterItem]? = nil,
+    formatFilter: [PerplexityImageSearchFilters.FormatFilterElement]? = nil,
     safeSearch: Bool? = nil
   ) {
     self.domainFilter = domainFilter
@@ -29,5 +29,14 @@ public struct PerplexityImageSearchFilters: Codable, Sendable {
     case domainFilter = "domain_filter"
     case formatFilter = "format_filter"
     case safeSearch = "safe_search"
+  }
+
+  public enum FormatFilterElement: String, Codable, Hashable, Sendable {
+    case bmp = "bmp"
+    case gif = "gif"
+    case jpeg = "jpeg"
+    case png = "png"
+    case webp = "webp"
+    case svg = "svg"
   }
 }

@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIAwsExternalStorageProviderParams: Codable, Sendable {
   public var bucket: String
   public var roleArn: String
-  public var kind: OpenAIAwsExternalStorageProviderParamsKind
+  public var kind: OpenAIAwsExternalStorageProviderParams.Kind
 
   public init(
     bucket: String,
     roleArn: String,
-    kind: OpenAIAwsExternalStorageProviderParamsKind
+    kind: OpenAIAwsExternalStorageProviderParams.Kind
   ) {
     self.bucket = bucket
     self.roleArn = roleArn
@@ -29,5 +29,9 @@ public struct OpenAIAwsExternalStorageProviderParams: Codable, Sendable {
     case bucket
     case roleArn = "role_arn"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case aws = "aws"
   }
 }

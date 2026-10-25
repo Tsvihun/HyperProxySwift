@@ -17,7 +17,7 @@ public struct OpenRouterAnthropicCitationContentBlockLocation: Codable, Sendable
   public var endBlockIndex: Int
   public var fileId: String
   public var startBlockIndex: Int
-  public var kind: OpenRouterAnthropicCitationContentBlockLocationKind
+  public var kind: OpenRouterAnthropicCitationContentBlockLocation.Kind
 
   public init(
     citedText: String,
@@ -26,7 +26,7 @@ public struct OpenRouterAnthropicCitationContentBlockLocation: Codable, Sendable
     endBlockIndex: Int,
     fileId: String,
     startBlockIndex: Int,
-    kind: OpenRouterAnthropicCitationContentBlockLocationKind
+    kind: OpenRouterAnthropicCitationContentBlockLocation.Kind
   ) {
     self.citedText = citedText
     self.documentIndex = documentIndex
@@ -45,5 +45,9 @@ public struct OpenRouterAnthropicCitationContentBlockLocation: Codable, Sendable
     case fileId = "file_id"
     case startBlockIndex = "start_block_index"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case contentBlockLocation = "content_block_location"
   }
 }

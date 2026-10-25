@@ -20,27 +20,27 @@ public struct PerplexityApiChatCompletionsRequest: Codable, Sendable {
   public var lastUpdatedBeforeFilter: String?
   public var maxTokens: Int?
   public var messages: [PerplexityChatMessageInput]
-  public var model: PerplexityApiChatCompletionsRequestModel
-  public var reasoningEffort: PerplexityApiChatCompletionsRequestReasoningEffort?
-  public var responseFormat: PerplexityApiChatCompletionsRequestResponseFormat?
+  public var model: PerplexityApiChatCompletionsRequest.Model
+  public var reasoningEffort: PerplexityApiChatCompletionsRequest.ReasoningEffort?
+  public var responseFormat: PerplexityApiChatCompletionsRequest.ResponseFormat?
   public var returnImages: Bool?
   public var returnRelatedQuestions: Bool?
   public var searchAfterDateFilter: String?
   public var searchBeforeDateFilter: String?
   public var searchDomainFilter: [String]?
   public var searchLanguageFilter: [String]?
-  public var searchMode: PerplexityApiChatCompletionsRequestSearchMode?
-  public var searchRecencyFilter: PerplexityApiChatCompletionsRequestSearchRecencyFilter?
-  public var stop: PerplexityApiChatCompletionsRequestStop?
+  public var searchMode: PerplexityApiChatCompletionsRequest.SearchMode?
+  public var searchRecencyFilter: PerplexityApiChatCompletionsRequest.SearchRecencyFilter?
+  public var stop: PerplexityApiChatCompletionsRequest.Stop?
   public var stream: Bool?
-  public var streamMode: PerplexityApiChatCompletionsRequestStreamMode?
+  public var streamMode: PerplexityApiChatCompletionsRequest.StreamMode?
   public var temperature: Double?
   public var topP: Double?
   public var webSearchOptions: PerplexityWebSearchOptions?
 
   public init(
     messages: [PerplexityChatMessageInput],
-    model: PerplexityApiChatCompletionsRequestModel,
+    model: PerplexityApiChatCompletionsRequest.Model,
     disableSearch: Bool? = nil,
     enableSearchClassifier: Bool? = nil,
     imageDomainFilter: [String]? = nil,
@@ -49,19 +49,19 @@ public struct PerplexityApiChatCompletionsRequest: Codable, Sendable {
     lastUpdatedAfterFilter: String? = nil,
     lastUpdatedBeforeFilter: String? = nil,
     maxTokens: Int? = nil,
-    reasoningEffort: PerplexityApiChatCompletionsRequestReasoningEffort? = nil,
-    responseFormat: PerplexityApiChatCompletionsRequestResponseFormat? = nil,
+    reasoningEffort: PerplexityApiChatCompletionsRequest.ReasoningEffort? = nil,
+    responseFormat: PerplexityApiChatCompletionsRequest.ResponseFormat? = nil,
     returnImages: Bool? = nil,
     returnRelatedQuestions: Bool? = nil,
     searchAfterDateFilter: String? = nil,
     searchBeforeDateFilter: String? = nil,
     searchDomainFilter: [String]? = nil,
     searchLanguageFilter: [String]? = nil,
-    searchMode: PerplexityApiChatCompletionsRequestSearchMode? = nil,
-    searchRecencyFilter: PerplexityApiChatCompletionsRequestSearchRecencyFilter? = nil,
-    stop: PerplexityApiChatCompletionsRequestStop? = nil,
+    searchMode: PerplexityApiChatCompletionsRequest.SearchMode? = nil,
+    searchRecencyFilter: PerplexityApiChatCompletionsRequest.SearchRecencyFilter? = nil,
+    stop: PerplexityApiChatCompletionsRequest.Stop? = nil,
     stream: Bool? = nil,
-    streamMode: PerplexityApiChatCompletionsRequestStreamMode? = nil,
+    streamMode: PerplexityApiChatCompletionsRequest.StreamMode? = nil,
     temperature: Double? = nil,
     topP: Double? = nil,
     webSearchOptions: PerplexityWebSearchOptions? = nil
@@ -121,5 +121,101 @@ public struct PerplexityApiChatCompletionsRequest: Codable, Sendable {
     case temperature
     case topP = "top_p"
     case webSearchOptions = "web_search_options"
+  }
+
+  public enum Model: String, Codable, Hashable, Sendable {
+    case sonar = "sonar"
+    case sonarPro = "sonar-pro"
+    case sonarDeepResearch = "sonar-deep-research"
+    case sonarReasoningPro = "sonar-reasoning-pro"
+  }
+
+  public enum ReasoningEffort: String, Codable, Hashable, Sendable {
+    case minimal = "minimal"
+    case low = "low"
+    case medium = "medium"
+    case high = "high"
+  }
+
+  public enum ResponseFormat: Codable, Sendable {
+    case responseFormatText(PerplexityResponseFormatText)
+    case responseFormatJSONSchema(PerplexityResponseFormatJSONSchema)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(PerplexityResponseFormatText.self) {
+        self = .responseFormatText(value)
+        return
+      }
+      self = .responseFormatJSONSchema(
+        try container.decode(PerplexityResponseFormatJSONSchema.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .responseFormatText(let value):
+        try container.encode(value)
+      case .responseFormatJSONSchema(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum SearchMode: String, Codable, Hashable, Sendable {
+    case web = "web"
+    case academic = "academic"
+    case sec = "sec"
+  }
+
+  public enum SearchRecencyFilter: String, Codable, Hashable,
+    Sendable
+  {
+    case hour = "hour"
+    case day = "day"
+    case week = "week"
+    case month = "month"
+    case year = "year"
+  }
+
+  public enum Stop: Codable, Sendable {
+    case string(String)
+    case stringArray([String])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .stringArray(try container.decode([String].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .stringArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum StreamMode: String, Codable, Hashable, Sendable {
+    case full = "full"
+    case concise = "concise"
+  }
+}
+
+extension PerplexityApiChatCompletionsRequest.Stop: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension PerplexityApiChatCompletionsRequest.Stop: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: String...) {
+    self = .stringArray(elements)
   }
 }

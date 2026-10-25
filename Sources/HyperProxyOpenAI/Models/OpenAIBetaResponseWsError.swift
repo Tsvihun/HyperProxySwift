@@ -16,11 +16,11 @@ public struct OpenAIBetaResponseWsError: Codable, Sendable {
   public var sequenceNumber: Int?
   public var status: Int?
   public var streamId: String?
-  public var kind: OpenAIBetaResponseWsErrorKind
+  public var kind: OpenAIBetaResponseWsError.Kind
 
   public init(
     error: OpenAIBetaErrorPayload,
-    kind: OpenAIBetaResponseWsErrorKind,
+    kind: OpenAIBetaResponseWsError.Kind,
     agent: OpenAIBetaAgentTag? = nil,
     sequenceNumber: Int? = nil,
     status: Int? = nil,
@@ -41,5 +41,9 @@ public struct OpenAIBetaResponseWsError: Codable, Sendable {
     case status
     case streamId = "stream_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case error = "error"
   }
 }

@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct ElevenLabsProjectCreationMetaResponseModel: Codable, Sendable {
   public var creationProgress: Double
-  public var status: ElevenLabsProjectCreationMetaResponseModelStatus
+  public var status: ElevenLabsProjectCreationMetaResponseModel.Status
   public var kind: ElevenLabsProjectCreationMetaType
 
   public init(
     creationProgress: Double,
-    status: ElevenLabsProjectCreationMetaResponseModelStatus,
+    status: ElevenLabsProjectCreationMetaResponseModel.Status,
     kind: ElevenLabsProjectCreationMetaType
   ) {
     self.creationProgress = creationProgress
@@ -29,5 +29,13 @@ public struct ElevenLabsProjectCreationMetaResponseModel: Codable, Sendable {
     case creationProgress = "creation_progress"
     case status
     case kind = "type"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case draft = "draft"
+    case pending = "pending"
+    case creating = "creating"
+    case finished = "finished"
+    case failed = "failed"
   }
 }

@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksGatewayInvoiceState: String, Codable, Hashable, Sendable {
-  case sTATEUNSPECIFIED = "STATE_UNSPECIFIED"
-  case dRAFT = "DRAFT"
-  case iSSUED = "ISSUED"
-  case pAID = "PAID"
-  case vOID = "VOID"
-  case fAILED = "FAILED"
+  case stateUnspecified = "STATE_UNSPECIFIED"
+  case draft = "DRAFT"
+  case issued = "ISSUED"
+  case paid = "PAID"
+  case void = "VOID"
+  case failed = "FAILED"
 }

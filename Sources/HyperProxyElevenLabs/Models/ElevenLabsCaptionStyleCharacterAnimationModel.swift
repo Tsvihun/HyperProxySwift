@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsCaptionStyleCharacterAnimationModel: Codable, Sendable {
-  public var enterType: ElevenLabsCaptionStyleCharacterAnimationModelEnterType
-  public var exitType: ElevenLabsCaptionStyleCharacterAnimationModelExitType
+  public var enterType: ElevenLabsCaptionStyleCharacterAnimationModel.EnterType
+  public var exitType: ElevenLabsCaptionStyleCharacterAnimationModel.ExitType
 
   public init(
-    enterType: ElevenLabsCaptionStyleCharacterAnimationModelEnterType,
-    exitType: ElevenLabsCaptionStyleCharacterAnimationModelExitType
+    enterType: ElevenLabsCaptionStyleCharacterAnimationModel.EnterType,
+    exitType: ElevenLabsCaptionStyleCharacterAnimationModel.ExitType
   ) {
     self.enterType = enterType
     self.exitType = exitType
@@ -25,5 +25,20 @@ public struct ElevenLabsCaptionStyleCharacterAnimationModel: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case enterType = "enter_type"
     case exitType = "exit_type"
+  }
+
+  public enum EnterType: String, Codable, Hashable,
+    Sendable
+  {
+    case none = "none"
+    case fade = "fade"
+    case typewriter = "typewriter"
+  }
+
+  public enum ExitType: String, Codable, Hashable,
+    Sendable
+  {
+    case none = "none"
+    case fade = "fade"
   }
 }

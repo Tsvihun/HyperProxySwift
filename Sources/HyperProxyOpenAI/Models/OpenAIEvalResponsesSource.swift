@@ -20,11 +20,11 @@ public struct OpenAIEvalResponsesSource: Codable, Sendable {
   public var temperature: Double?
   public var tools: [String]?
   public var topP: Double?
-  public var kind: OpenAIEvalResponsesSourceKind
+  public var kind: OpenAIEvalResponsesSource.Kind
   public var users: [String]?
 
   public init(
-    kind: OpenAIEvalResponsesSourceKind,
+    kind: OpenAIEvalResponsesSource.Kind,
     createdAfter: Int? = nil,
     createdBefore: Int? = nil,
     instructionsSearch: String? = nil,
@@ -61,5 +61,9 @@ public struct OpenAIEvalResponsesSource: Codable, Sendable {
     case topP = "top_p"
     case kind = "type"
     case users
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case responses = "responses"
   }
 }

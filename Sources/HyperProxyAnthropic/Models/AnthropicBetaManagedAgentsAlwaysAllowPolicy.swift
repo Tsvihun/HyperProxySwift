@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsAlwaysAllowPolicy: Codable, Sendable {
-  public var kind: AnthropicBetaManagedAgentsAlwaysAllowPolicyKind
+  public var kind: AnthropicBetaManagedAgentsAlwaysAllowPolicy.Kind
 
   public init(
-    kind: AnthropicBetaManagedAgentsAlwaysAllowPolicyKind
+    kind: AnthropicBetaManagedAgentsAlwaysAllowPolicy.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case alwaysAllow = "always_allow"
   }
 }

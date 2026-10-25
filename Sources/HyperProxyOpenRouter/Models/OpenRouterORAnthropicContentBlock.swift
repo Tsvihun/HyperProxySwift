@@ -15,7 +15,7 @@ public enum OpenRouterORAnthropicContentBlock: Codable, Sendable {
   case anthropicToolUseBlock(OpenRouterAnthropicToolUseBlock)
   case anthropicThinkingBlock(OpenRouterAnthropicThinkingBlock)
   case anthropicRedactedThinkingBlock(OpenRouterAnthropicRedactedThinkingBlock)
-  case oRAnthropicServerToolUseBlock(OpenRouterORAnthropicServerToolUseBlock)
+  case orAnthropicServerToolUseBlock(OpenRouterORAnthropicServerToolUseBlock)
   case anthropicWebSearchToolResult(OpenRouterAnthropicWebSearchToolResult)
   case anthropicWebFetchToolResult(OpenRouterAnthropicWebFetchToolResult)
   case anthropicCodeExecutionToolResult(OpenRouterAnthropicCodeExecutionToolResult)
@@ -26,9 +26,9 @@ public enum OpenRouterORAnthropicContentBlock: Codable, Sendable {
   case anthropicContainerUpload(OpenRouterAnthropicContainerUpload)
   case anthropicCompactionBlock(OpenRouterAnthropicCompactionBlock)
   case anthropicAdvisorToolResult(OpenRouterAnthropicAdvisorToolResult)
-  case oRAnthropicShellToolResult(OpenRouterORAnthropicShellToolResult)
-  case oRAnthropicBashToolResult(OpenRouterORAnthropicBashToolResult)
-  case oRAnthropicToolSearchResult(OpenRouterORAnthropicToolSearchResult)
+  case orAnthropicShellToolResult(OpenRouterORAnthropicShellToolResult)
+  case orAnthropicBashToolResult(OpenRouterORAnthropicBashToolResult)
+  case orAnthropicToolSearchResult(OpenRouterORAnthropicToolSearchResult)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -49,7 +49,7 @@ public enum OpenRouterORAnthropicContentBlock: Codable, Sendable {
       return
     }
     if let value = try? container.decode(OpenRouterORAnthropicServerToolUseBlock.self) {
-      self = .oRAnthropicServerToolUseBlock(value)
+      self = .orAnthropicServerToolUseBlock(value)
       return
     }
     if let value = try? container.decode(OpenRouterAnthropicWebSearchToolResult.self) {
@@ -90,14 +90,14 @@ public enum OpenRouterORAnthropicContentBlock: Codable, Sendable {
       return
     }
     if let value = try? container.decode(OpenRouterORAnthropicShellToolResult.self) {
-      self = .oRAnthropicShellToolResult(value)
+      self = .orAnthropicShellToolResult(value)
       return
     }
     if let value = try? container.decode(OpenRouterORAnthropicBashToolResult.self) {
-      self = .oRAnthropicBashToolResult(value)
+      self = .orAnthropicBashToolResult(value)
       return
     }
-    self = .oRAnthropicToolSearchResult(
+    self = .orAnthropicToolSearchResult(
       try container.decode(OpenRouterORAnthropicToolSearchResult.self))
   }
 
@@ -112,7 +112,7 @@ public enum OpenRouterORAnthropicContentBlock: Codable, Sendable {
       try container.encode(value)
     case .anthropicRedactedThinkingBlock(let value):
       try container.encode(value)
-    case .oRAnthropicServerToolUseBlock(let value):
+    case .orAnthropicServerToolUseBlock(let value):
       try container.encode(value)
     case .anthropicWebSearchToolResult(let value):
       try container.encode(value)
@@ -132,11 +132,11 @@ public enum OpenRouterORAnthropicContentBlock: Codable, Sendable {
       try container.encode(value)
     case .anthropicAdvisorToolResult(let value):
       try container.encode(value)
-    case .oRAnthropicShellToolResult(let value):
+    case .orAnthropicShellToolResult(let value):
       try container.encode(value)
-    case .oRAnthropicBashToolResult(let value):
+    case .orAnthropicBashToolResult(let value):
       try container.encode(value)
-    case .oRAnthropicToolSearchResult(let value):
+    case .orAnthropicToolSearchResult(let value):
       try container.encode(value)
     }
   }

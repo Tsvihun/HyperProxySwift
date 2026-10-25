@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct BFLFlux3VideoUpscaleInputs: Codable, Sendable {
-  public var creativity: BFLFlux3VideoUpscaleInputsCreativity?
+  public var creativity: BFLFlux3VideoUpscaleInputs.Creativity?
   public var inputVideo: String
   public var prompt: String?
   public var safetyTolerance: Int?
@@ -22,7 +22,7 @@ public struct BFLFlux3VideoUpscaleInputs: Codable, Sendable {
 
   public init(
     inputVideo: String,
-    creativity: BFLFlux3VideoUpscaleInputsCreativity? = nil,
+    creativity: BFLFlux3VideoUpscaleInputs.Creativity? = nil,
     prompt: String? = nil,
     safetyTolerance: Int? = nil,
     upscaleFactor: Double? = nil,
@@ -49,5 +49,10 @@ public struct BFLFlux3VideoUpscaleInputs: Codable, Sendable {
     case user
     case webhookSecret = "webhook_secret"
     case webhookUrl = "webhook_url"
+  }
+
+  public enum Creativity: Int, Codable, Hashable, Sendable {
+    case value0 = 0
+    case value1 = 1
   }
 }

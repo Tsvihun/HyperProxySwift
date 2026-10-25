@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralJSONPatchAppend: Codable, Sendable {
-  public var op: MistralAppendOp
+  public var op: MistralJSONPatchAppend.Op
   public var path: String
-  public var value: MistralJSONPatchAppendValue
+  public var value: MistralJSONPatchAppend.Value
 
   public init(
     path: String,
-    value: MistralJSONPatchAppendValue,
-    op: MistralAppendOp = .append
+    value: MistralJSONPatchAppend.Value,
+    op: MistralJSONPatchAppend.Op = .append
   ) {
     self.op = op
     self.path = path
@@ -29,5 +29,39 @@ public struct MistralJSONPatchAppend: Codable, Sendable {
     case op
     case path
     case value
+  }
+
+  public enum Op: String, Codable, Hashable, Sendable {
+    case append = "append"
+  }
+
+  public enum Value: Codable, Sendable {
+    case string(String)
+    case encryptedPatchValue(MistralEncryptedPatchValue)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .encryptedPatchValue(try container.decode(MistralEncryptedPatchValue.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .encryptedPatchValue(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension MistralJSONPatchAppend.Value: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

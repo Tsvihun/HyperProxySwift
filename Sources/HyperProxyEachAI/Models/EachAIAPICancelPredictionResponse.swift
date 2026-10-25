@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct EachAIAPICancelPredictionResponse: Codable, Sendable {
   public var message: String?
   public var predictionID: String?
-  public var status: EachAIAPICancelPredictionResponseStatus?
+  public var status: EachAIAPICancelPredictionResponse.Status?
 
   public init(
     message: String? = nil,
     predictionID: String? = nil,
-    status: EachAIAPICancelPredictionResponseStatus? = nil
+    status: EachAIAPICancelPredictionResponse.Status? = nil
   ) {
     self.message = message
     self.predictionID = predictionID
@@ -29,5 +29,9 @@ public struct EachAIAPICancelPredictionResponse: Codable, Sendable {
     case message
     case predictionID
     case status
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case cancelled = "cancelled"
   }
 }

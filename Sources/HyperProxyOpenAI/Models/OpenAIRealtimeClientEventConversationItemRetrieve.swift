@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct OpenAIRealtimeClientEventConversationItemRetrieve: Codable, Sendable {
   public var eventId: String?
   public var itemId: String
-  public var kind: OpenAIRealtimeClientEventConversationItemRetrieveKind
+  public var kind: OpenAIRealtimeClientEventConversationItemRetrieve.Kind
 
   public init(
     itemId: String,
-    kind: OpenAIRealtimeClientEventConversationItemRetrieveKind,
+    kind: OpenAIRealtimeClientEventConversationItemRetrieve.Kind,
     eventId: String? = nil
   ) {
     self.eventId = eventId
@@ -29,5 +29,11 @@ public struct OpenAIRealtimeClientEventConversationItemRetrieve: Codable, Sendab
     case eventId = "event_id"
     case itemId = "item_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case conversationItemRetrieve = "conversation.item.retrieve"
   }
 }

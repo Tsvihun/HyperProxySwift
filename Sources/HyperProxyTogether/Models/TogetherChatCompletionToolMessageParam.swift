@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct TogetherChatCompletionToolMessageParam: Codable, Sendable {
   public var content: String
   public var name: String?
-  public var role: TogetherChatCompletionToolMessageParamRole
+  public var role: TogetherChatCompletionToolMessageParam.Role
   public var toolCallId: String
 
   public init(
     content: String,
-    role: TogetherChatCompletionToolMessageParamRole,
+    role: TogetherChatCompletionToolMessageParam.Role,
     toolCallId: String,
     name: String? = nil
   ) {
@@ -33,5 +33,9 @@ public struct TogetherChatCompletionToolMessageParam: Codable, Sendable {
     case name
     case role
     case toolCallId = "tool_call_id"
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case tool = "tool"
   }
 }

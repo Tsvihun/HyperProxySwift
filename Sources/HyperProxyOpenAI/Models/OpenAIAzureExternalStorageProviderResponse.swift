@@ -17,7 +17,7 @@ public struct OpenAIAzureExternalStorageProviderResponse: Codable, Sendable {
   public var resourceGroup: String
   public var subscriptionId: String
   public var tenantId: String
-  public var kind: OpenAIAzureExternalStorageProviderResponseKind
+  public var kind: OpenAIAzureExternalStorageProviderResponse.Kind
 
   public init(
     accountName: String,
@@ -26,7 +26,7 @@ public struct OpenAIAzureExternalStorageProviderResponse: Codable, Sendable {
     resourceGroup: String,
     subscriptionId: String,
     tenantId: String,
-    kind: OpenAIAzureExternalStorageProviderResponseKind
+    kind: OpenAIAzureExternalStorageProviderResponse.Kind
   ) {
     self.accountName = accountName
     self.container = container
@@ -45,5 +45,9 @@ public struct OpenAIAzureExternalStorageProviderResponse: Codable, Sendable {
     case subscriptionId = "subscription_id"
     case tenantId = "tenant_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case azure = "azure"
   }
 }

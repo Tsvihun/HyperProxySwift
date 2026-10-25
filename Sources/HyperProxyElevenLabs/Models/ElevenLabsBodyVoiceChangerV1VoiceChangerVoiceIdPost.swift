@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct ElevenLabsBodyVoiceChangerV1VoiceChangerVoiceIdPost: Codable, Sendable {
   public var audio: String
-  public var fileFormat: ElevenLabsBodyVoiceChangerV1VoiceChangerVoiceIdPostFileFormat?
+  public var fileFormat: ElevenLabsBodyVoiceChangerV1VoiceChangerVoiceIdPost.FileFormat?
   public var modelId: String?
   public var removeBackgroundNoise: Bool?
   public var seed: Int?
@@ -20,7 +20,7 @@ public struct ElevenLabsBodyVoiceChangerV1VoiceChangerVoiceIdPost: Codable, Send
 
   public init(
     audio: String,
-    fileFormat: ElevenLabsBodyVoiceChangerV1VoiceChangerVoiceIdPostFileFormat? = nil,
+    fileFormat: ElevenLabsBodyVoiceChangerV1VoiceChangerVoiceIdPost.FileFormat? = nil,
     modelId: String? = nil,
     removeBackgroundNoise: Bool? = nil,
     seed: Int? = nil,
@@ -41,5 +41,12 @@ public struct ElevenLabsBodyVoiceChangerV1VoiceChangerVoiceIdPost: Codable, Send
     case removeBackgroundNoise = "remove_background_noise"
     case seed
     case voiceSettings = "voice_settings"
+  }
+
+  public enum FileFormat: String, Codable,
+    Hashable, Sendable
+  {
+    case pcmS16le16 = "pcm_s16le_16"
+    case other = "other"
   }
 }

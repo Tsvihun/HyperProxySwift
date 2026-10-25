@@ -14,13 +14,13 @@ public struct ElevenLabsMediaGenerationCompletedResponse: Codable, Sendable {
   public var contentMimeType: String
   public var contentUrl: String
   public var id: String
-  public var status: ElevenLabsCompletedStatus
+  public var status: ElevenLabsMediaGenerationCompletedResponse.Status
 
   public init(
     contentMimeType: String,
     contentUrl: String,
     id: String,
-    status: ElevenLabsCompletedStatus = .completed
+    status: ElevenLabsMediaGenerationCompletedResponse.Status = .completed
   ) {
     self.contentMimeType = contentMimeType
     self.contentUrl = contentUrl
@@ -33,5 +33,9 @@ public struct ElevenLabsMediaGenerationCompletedResponse: Codable, Sendable {
     case contentUrl = "content_url"
     case id
     case status
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case completed = "completed"
   }
 }

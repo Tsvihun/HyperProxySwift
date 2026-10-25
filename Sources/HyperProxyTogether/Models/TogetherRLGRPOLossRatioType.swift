@@ -11,6 +11,6 @@ import Foundation
 import HyperProxyCore
 
 public enum TogetherRLGRPOLossRatioType: String, Codable, Hashable, Sendable {
-  case gRPOLOSSRATIOTYPETOKEN = "GRPO_LOSS_RATIO_TYPE_TOKEN"
-  case gRPOLOSSRATIOTYPESEQUENCE = "GRPO_LOSS_RATIO_TYPE_SEQUENCE"
+  case grpoLossRatioTypeToken = "GRPO_LOSS_RATIO_TYPE_TOKEN"
+  case grpoLossRatioTypeSequence = "GRPO_LOSS_RATIO_TYPE_SEQUENCE"
 }

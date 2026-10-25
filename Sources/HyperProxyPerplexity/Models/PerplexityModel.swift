@@ -13,13 +13,13 @@ import HyperProxyCore
 public struct PerplexityModel: Codable, Sendable {
   public var created: Int
   public var id: String
-  public var object: PerplexityModelObject
+  public var object: PerplexityModel.Object
   public var ownedBy: String
 
   public init(
     created: Int,
     id: String,
-    object: PerplexityModelObject,
+    object: PerplexityModel.Object,
     ownedBy: String
   ) {
     self.created = created
@@ -33,5 +33,9 @@ public struct PerplexityModel: Codable, Sendable {
     case id
     case object
     case ownedBy = "owned_by"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case model = "model"
   }
 }

@@ -12,15 +12,15 @@ import HyperProxyCore
 
 public struct ElevenLabsMediaGenerationFailedResponse: Codable, Sendable {
   public var errorMessage: String
-  public var failureReason: ElevenLabsMediaGenerationFailedResponseFailureReason
+  public var failureReason: ElevenLabsMediaGenerationFailedResponse.FailureReason
   public var id: String
-  public var status: ElevenLabsFailedStatus
+  public var status: ElevenLabsMediaGenerationFailedResponse.Status
 
   public init(
     errorMessage: String,
-    failureReason: ElevenLabsMediaGenerationFailedResponseFailureReason,
+    failureReason: ElevenLabsMediaGenerationFailedResponse.FailureReason,
     id: String,
-    status: ElevenLabsFailedStatus = .failed
+    status: ElevenLabsMediaGenerationFailedResponse.Status = .failed
   ) {
     self.errorMessage = errorMessage
     self.failureReason = failureReason
@@ -33,5 +33,21 @@ public struct ElevenLabsMediaGenerationFailedResponse: Codable, Sendable {
     case failureReason = "failure_reason"
     case id
     case status
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case failed = "failed"
+  }
+
+  public enum FailureReason: String, Codable, Hashable,
+    Sendable
+  {
+    case timeout = "timeout"
+    case modelError = "model_error"
+    case moderated = "moderated"
+    case invalidParameters = "invalid_parameters"
+    case dependencyFailed = "dependency_failed"
+    case chargingFailed = "charging_failed"
+    case internalError = "internal_error"
   }
 }

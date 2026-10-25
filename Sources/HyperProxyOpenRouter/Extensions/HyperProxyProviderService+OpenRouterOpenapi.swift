@@ -186,25 +186,25 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
     return try await call.decoded(OpenRouterUnifiedBenchmarksResponse.self)
   }
 
-  public func listBYOKKeys(
+  public func listByokKeys(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> OpenRouterListBYOKKeysResponse {
-    let call = self.call(.listBYOKKeys)
+    let call = self.call(.listByokKeys)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(OpenRouterListBYOKKeysResponse.self)
   }
 
-  public func createBYOKKey(
+  public func createByokKey(
     _ body: OpenRouterCreateBYOKKeyRequest,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> OpenRouterCreateBYOKKeyResponse {
-    let call = self.call(.createBYOKKey)
+    let call = self.call(.createByokKey)
       .query(query)
       .headers(headers)
       .timeout(timeout)
@@ -212,13 +212,13 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
     return try await prepared.decoded(OpenRouterCreateBYOKKeyResponse.self)
   }
 
-  public func getBYOKKey(
+  public func getByokKey(
     id: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> OpenRouterGetBYOKKeyResponse {
-    let call = self.call(.getBYOKKey)
+    let call = self.call(.getByokKey)
       .path("id", id)
       .query(query)
       .headers(headers)
@@ -226,14 +226,14 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
     return try await call.decoded(OpenRouterGetBYOKKeyResponse.self)
   }
 
-  public func updateBYOKKey(
+  public func updateByokKey(
     _ body: OpenRouterUpdateBYOKKeyRequest,
     id: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> OpenRouterUpdateBYOKKeyResponse {
-    let call = self.call(.updateBYOKKey)
+    let call = self.call(.updateByokKey)
       .path("id", id)
       .query(query)
       .headers(headers)
@@ -242,18 +242,54 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
     return try await prepared.decoded(OpenRouterUpdateBYOKKeyResponse.self)
   }
 
-  public func deleteBYOKKey(
+  public func deleteByokKey(
     id: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> OpenRouterDeleteBYOKKeyResponse {
-    let call = self.call(.deleteBYOKKey)
+    let call = self.call(.deleteByokKey)
       .path("id", id)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(OpenRouterDeleteBYOKKeyResponse.self)
+  }
+
+  public func chatCompletionsCreate(
+    _ body: OpenRouterChatRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterChatResult {
+    let call = self.call(.chatCompletionsCreate)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    if body.stream == true {
+      throw HyperProxyProviderRouteError.streamingBodyOnJSONCall(
+        operation: "chatCompletionsCreate",
+        streamingVariant: "chatCompletionsCreateStream"
+      )
+    }
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenRouterChatResult.self)
+  }
+
+  public func chatCompletionsCreateStream(
+    _ body: OpenRouterChatRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<OpenRouterChatStreamingResponse, Error> {
+    let call = self.call(.chatCompletionsCreate)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    var streamingBody = body
+    streamingBody.stream = true
+    let prepared = try call.json(streamingBody)
+    return try prepared.events(decoding: OpenRouterChatStreamingResponse.self)
   }
 
   public func getTaskClassifications(
@@ -828,250 +864,6 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
     return try await call.decoded(OpenRouterImageModelEndpointsResponse.self)
   }
 
-  public func listInterns(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> OpenRouterInternListResponse {
-    let call = self.call(.listInterns)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(OpenRouterInternListResponse.self)
-  }
-
-  public func createIntern(
-    _ body: OpenRouterCreateInternRequest,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> OpenRouterIntern {
-    let call = self.call(.createIntern)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(OpenRouterIntern.self)
-  }
-
-  public func getIntern(
-    internId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> OpenRouterIntern {
-    let call = self.call(.getIntern)
-      .path("internId", internId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(OpenRouterIntern.self)
-  }
-
-  public func updateIntern(
-    _ body: OpenRouterUpdateInternRequest,
-    internId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> OpenRouterIntern {
-    let call = self.call(.updateIntern)
-      .path("internId", internId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(OpenRouterIntern.self)
-  }
-
-  public func deleteIntern(
-    _ body: OpenRouterDeleteInternRequest,
-    internId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> OpenRouterDeleteInternResponse {
-    let call = self.call(.deleteIntern)
-      .path("internId", internId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(OpenRouterDeleteInternResponse.self)
-  }
-
-  public func createInternChatCompletion(
-    _ body: OpenRouterInternChatCompletionRequest,
-    internId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> OpenRouterInternChatSteeredResponse {
-    let call = self.call(.createInternChatCompletion)
-      .path("internId", internId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    if case .booleanTrue = body.stream {
-      throw HyperProxyProviderRouteError.streamingBodyOnJSONCall(
-        operation: "createInternChatCompletion",
-        streamingVariant: "createInternChatCompletionStream"
-      )
-    }
-    let prepared = try call.json(body)
-    return try await prepared.decoded(OpenRouterInternChatSteeredResponse.self)
-  }
-
-  public func createInternChatCompletionStream(
-    _ body: OpenRouterInternChatCompletionRequest,
-    internId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) throws -> AsyncThrowingStream<OpenRouterInternChatStreamingResponse, Error> {
-    let call = self.call(.createInternChatCompletion)
-      .path("internId", internId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    var streamingBody = body
-    streamingBody.stream = .booleanTrue
-    let prepared = try call.json(streamingBody)
-    return try prepared.events(decoding: OpenRouterInternChatStreamingResponse.self)
-  }
-
-  public func getInternConnections(
-    internId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> OpenRouterInternConnectionList {
-    let call = self.call(.getInternConnections)
-      .path("internId", internId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(OpenRouterInternConnectionList.self)
-  }
-
-  public func getInternDaemon(
-    internId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> OpenRouterInternDaemonAccess {
-    let call = self.call(.getInternDaemon)
-      .path("internId", internId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(OpenRouterInternDaemonAccess.self)
-  }
-
-  public func getInternDaemonAccess(
-    internId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> OpenRouterInternDaemonAccess {
-    let call = self.call(.getInternDaemonAccess)
-      .path("internId", internId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(OpenRouterInternDaemonAccess.self)
-  }
-
-  public func signInternDaemonAccessRequest(
-    _ body: OpenRouterSignInternDaemonRequest,
-    internId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> OpenRouterSignInternDaemonResponse {
-    let call = self.call(.signInternDaemonAccessRequest)
-      .path("internId", internId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(OpenRouterSignInternDaemonResponse.self)
-  }
-
-  public func signInternDaemonRequest(
-    _ body: OpenRouterSignInternDaemonRequest,
-    internId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> OpenRouterSignInternDaemonResponse {
-    let call = self.call(.signInternDaemonRequest)
-      .path("internId", internId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(OpenRouterSignInternDaemonResponse.self)
-  }
-
-  public func getInternIcon(
-    internId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) throws -> AsyncThrowingStream<Data, Error> {
-    let call = self.call(.getInternIcon)
-      .path("internId", internId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try call.bytes()
-  }
-
-  public func invokeIntern(
-    _ body: OpenRouterInternInvokeRequest,
-    internId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> OpenRouterInternInvokeAcceptedResponse {
-    let call = self.call(.invokeIntern)
-      .path("internId", internId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(OpenRouterInternInvokeAcceptedResponse.self)
-  }
-
-  public func provisionIntern(
-    internId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> OpenRouterProvisionInternResponse {
-    let call = self.call(.provisionIntern)
-      .path("internId", internId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(OpenRouterProvisionInternResponse.self)
-  }
-
-  public func suspendIntern(
-    internId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> OpenRouterSuspendInternResponse {
-    let call = self.call(.suspendIntern)
-      .path("internId", internId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(OpenRouterSuspendInternResponse.self)
-  }
-
   public func keyRetrieve(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -1206,6 +998,18 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
     return try await call.decoded(OpenRouterModelResponse.self)
   }
 
+  public func modelsList(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterModelsListResponse {
+    let call = self.call(.modelsList)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterModelsListResponse.self)
+  }
+
   public func listModelsCount(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -1228,6 +1032,22 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(OpenRouterModelsListResponse.self)
+  }
+
+  public func modelsEndpoints(
+    author: String,
+    slug: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterListEndpointsResponse89253b89 {
+    let call = self.call(.modelsEndpoints)
+      .path("author", author)
+      .path("slug", slug)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterListEndpointsResponse89253b89.self)
   }
 
   public func listOauthJwks(
@@ -1598,6 +1418,42 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
       .timeout(timeout)
     let prepared = try call.json(body)
     return try prepared.events(decoding: String.self)
+  }
+
+  public func responsesCreate(
+    _ body: OpenRouterResponsesRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterOpenResponsesResult {
+    let call = self.call(.responsesCreate)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    if body.stream == true {
+      throw HyperProxyProviderRouteError.streamingBodyOnJSONCall(
+        operation: "responsesCreate",
+        streamingVariant: "responsesCreateStream"
+      )
+    }
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenRouterOpenResponsesResult.self)
+  }
+
+  public func responsesCreateStream(
+    _ body: OpenRouterResponsesRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<OpenRouterResponsesStreamingResponse, Error> {
+    let call = self.call(.responsesCreate)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    var streamingBody = body
+    streamingBody.stream = true
+    let prepared = try call.json(streamingBody)
+    return try prepared.events(decoding: OpenRouterResponsesStreamingResponse.self)
   }
 
   public func listScimGroupMappings(

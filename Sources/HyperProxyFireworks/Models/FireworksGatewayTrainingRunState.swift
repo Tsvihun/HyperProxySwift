@@ -11,9 +11,9 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksGatewayTrainingRunState: String, Codable, Hashable, Sendable {
-  case sTATEUNSPECIFIED = "STATE_UNSPECIFIED"
-  case pENDINGMATERIALIZATION = "PENDING_MATERIALIZATION"
-  case rEADY = "READY"
-  case fAILED = "FAILED"
-  case eXPIRED = "EXPIRED"
+  case stateUnspecified = "STATE_UNSPECIFIED"
+  case pendingMaterialization = "PENDING_MATERIALIZATION"
+  case ready = "READY"
+  case failed = "FAILED"
+  case expired = "EXPIRED"
 }

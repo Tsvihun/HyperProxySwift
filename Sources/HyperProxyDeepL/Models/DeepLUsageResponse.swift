@@ -18,7 +18,7 @@ public struct DeepLUsageResponse: Codable, Sendable {
   public var documentCount: Int64?
   public var documentLimit: Int64?
   public var endTime: String?
-  public var products: [DeepLUsageResponseProductsItem]?
+  public var products: [DeepLUsageResponse.ProductsElement]?
   public var speechToSpeechMinutesCount: Int?
   public var speechToSpeechMinutesLimit: Int?
   public var speechToTextMillisecondsCount: Int?
@@ -37,7 +37,7 @@ public struct DeepLUsageResponse: Codable, Sendable {
     documentCount: Int64? = nil,
     documentLimit: Int64? = nil,
     endTime: String? = nil,
-    products: [DeepLUsageResponseProductsItem]? = nil,
+    products: [DeepLUsageResponse.ProductsElement]? = nil,
     speechToSpeechMinutesCount: Int? = nil,
     speechToSpeechMinutesLimit: Int? = nil,
     speechToTextMillisecondsCount: Int? = nil,
@@ -85,5 +85,44 @@ public struct DeepLUsageResponse: Codable, Sendable {
     case startTime = "start_time"
     case teamDocumentCount = "team_document_count"
     case teamDocumentLimit = "team_document_limit"
+  }
+
+  public struct ProductsElement: Codable, Sendable {
+    public var accountUnitCount: Int?
+    public var apiKeyCharacterCount: Int?
+    public var apiKeyUnitCount: Int?
+    public var billingUnit: DeepLUsageResponse.ProductsElement.BillingUnit?
+    public var characterCount: Int?
+    public var productType: String?
+
+    public init(
+      accountUnitCount: Int? = nil,
+      apiKeyCharacterCount: Int? = nil,
+      apiKeyUnitCount: Int? = nil,
+      billingUnit: DeepLUsageResponse.ProductsElement.BillingUnit? = nil,
+      characterCount: Int? = nil,
+      productType: String? = nil
+    ) {
+      self.accountUnitCount = accountUnitCount
+      self.apiKeyCharacterCount = apiKeyCharacterCount
+      self.apiKeyUnitCount = apiKeyUnitCount
+      self.billingUnit = billingUnit
+      self.characterCount = characterCount
+      self.productType = productType
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case accountUnitCount = "account_unit_count"
+      case apiKeyCharacterCount = "api_key_character_count"
+      case apiKeyUnitCount = "api_key_unit_count"
+      case billingUnit = "billing_unit"
+      case characterCount = "character_count"
+      case productType = "product_type"
+    }
+
+    public enum BillingUnit: String, Codable, Hashable, Sendable {
+      case characters = "characters"
+      case minutes = "minutes"
+    }
   }
 }

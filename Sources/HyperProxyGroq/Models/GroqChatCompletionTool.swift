@@ -12,10 +12,10 @@ import HyperProxyCore
 
 public struct GroqChatCompletionTool: Codable, Sendable {
   public var function: GroqFunctionObject?
-  public var kind: GroqChatCompletionToolKind
+  public var kind: GroqChatCompletionTool.Kind
 
   public init(
-    kind: GroqChatCompletionToolKind,
+    kind: GroqChatCompletionTool.Kind,
     function: GroqFunctionObject? = nil
   ) {
     self.function = function
@@ -25,5 +25,54 @@ public struct GroqChatCompletionTool: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case function
     case kind = "type"
+  }
+
+  public enum Kind: RawRepresentable, Codable, Hashable, Sendable {
+    case function
+    case browserSearch
+    case codeInterpreter
+    case custom(String)
+
+    public init(rawValue: String) {
+      switch rawValue {
+      case "function":
+        self = .function
+      case "browser_search":
+        self = .browserSearch
+      case "code_interpreter":
+        self = .codeInterpreter
+      default:
+        self = .custom(rawValue)
+      }
+    }
+
+    public var rawValue: String {
+      switch self {
+      case .function:
+        return "function"
+      case .browserSearch:
+        return "browser_search"
+      case .codeInterpreter:
+        return "code_interpreter"
+      case .custom(let value):
+        return value
+      }
+    }
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      self.init(rawValue: try container.decode(String.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      try container.encode(rawValue)
+    }
+
+    public enum Preset: String, Codable, Hashable, Sendable {
+      case function = "function"
+      case browserSearch = "browser_search"
+      case codeInterpreter = "code_interpreter"
+    }
   }
 }

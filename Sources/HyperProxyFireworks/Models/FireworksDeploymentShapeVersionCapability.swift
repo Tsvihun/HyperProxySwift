@@ -11,6 +11,6 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksDeploymentShapeVersionCapability: String, Codable, Hashable, Sendable {
-  case cAPABILITYUNSPECIFIED = "CAPABILITY_UNSPECIFIED"
-  case mULTILORA = "MULTI_LORA"
+  case capabilityUnspecified = "CAPABILITY_UNSPECIFIED"
+  case multiLora = "MULTI_LORA"
 }

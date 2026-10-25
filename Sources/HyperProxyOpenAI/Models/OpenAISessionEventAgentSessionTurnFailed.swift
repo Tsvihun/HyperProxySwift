@@ -15,7 +15,7 @@ public struct OpenAISessionEventAgentSessionTurnFailed: Codable, Sendable {
   public var sessionId: String
   public var turn: OpenAITurnResource
   public var turnId: String
-  public var kind: OpenAISessionEventAgentSessionTurnFailedKind
+  public var kind: OpenAISessionEventAgentSessionTurnFailed.Kind
   public var usage: OpenAITokenUsageResource?
 
   public init(
@@ -23,7 +23,7 @@ public struct OpenAISessionEventAgentSessionTurnFailed: Codable, Sendable {
     sessionId: String,
     turn: OpenAITurnResource,
     turnId: String,
-    kind: OpenAISessionEventAgentSessionTurnFailedKind,
+    kind: OpenAISessionEventAgentSessionTurnFailed.Kind,
     usage: OpenAITokenUsageResource?
   ) {
     self.eventId = eventId
@@ -41,5 +41,9 @@ public struct OpenAISessionEventAgentSessionTurnFailed: Codable, Sendable {
     case turnId = "turn_id"
     case kind = "type"
     case usage
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case agentSessionTurnFailed = "agent.session.turn.failed"
   }
 }

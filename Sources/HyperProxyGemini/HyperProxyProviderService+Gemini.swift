@@ -73,18 +73,6 @@ extension HyperProxyProviderService where Operation == GeminiOperation {
   public var cachedContentsUpdate: HyperProxyProviderCall<GeminiOperation> {
     self.call(.cachedContentsUpdate)
   }
-  /// `DELETE v1beta/cachedContents/{cachedContentsId}`
-  public var generativelanguageCachedContentsDelete: HyperProxyProviderCall<GeminiOperation> {
-    self.call(.generativelanguageCachedContentsDelete)
-  }
-  /// `GET v1beta/cachedContents/{cachedContentsId}`
-  public var generativelanguageCachedContentsGet: HyperProxyProviderCall<GeminiOperation> {
-    self.call(.generativelanguageCachedContentsGet)
-  }
-  /// `PATCH v1beta/cachedContents/{cachedContentsId}`
-  public var generativelanguageCachedContentsPatch: HyperProxyProviderCall<GeminiOperation> {
-    self.call(.generativelanguageCachedContentsPatch)
-  }
   /// `GET v1beta/corpora`
   public var generativelanguageCorporaList: HyperProxyProviderCall<GeminiOperation> {
     self.call(.generativelanguageCorporaList)
@@ -169,14 +157,6 @@ extension HyperProxyProviderService where Operation == GeminiOperation {
   public var fileSearchStoresCreate: HyperProxyProviderCall<GeminiOperation> {
     self.call(.fileSearchStoresCreate)
   }
-  /// `DELETE v1beta/fileSearchStores/{fileSearchStoresId}`
-  public var generativelanguageFileSearchStoresDelete: HyperProxyProviderCall<GeminiOperation> {
-    self.call(.generativelanguageFileSearchStoresDelete)
-  }
-  /// `GET v1beta/fileSearchStores/{fileSearchStoresId}`
-  public var generativelanguageFileSearchStoresGet: HyperProxyProviderCall<GeminiOperation> {
-    self.call(.generativelanguageFileSearchStoresGet)
-  }
   /// `GET v1beta/fileSearchStores/{fileSearchStoresId}/documents`
   public var generativelanguageFileSearchStoresDocumentsList:
     HyperProxyProviderCall<GeminiOperation>
@@ -205,10 +185,6 @@ extension HyperProxyProviderService where Operation == GeminiOperation {
     HyperProxyProviderCall<GeminiOperation>
   {
     self.call(.generativelanguageFileSearchStoresUploadOperationsGet)
-  }
-  /// `POST v1beta/fileSearchStores/{fileSearchStoresId}:importFile`
-  public var generativelanguageFileSearchStoresImportFile: HyperProxyProviderCall<GeminiOperation> {
-    self.call(.generativelanguageFileSearchStoresImportFile)
   }
   /// `POST v1beta/fileSearchStores/{fileSearchStoresId}:uploadToFileSearchStore`
   public var generativelanguageMediaUploadToFileSearchStore: HyperProxyProviderCall<GeminiOperation>
@@ -243,14 +219,6 @@ extension HyperProxyProviderService where Operation == GeminiOperation {
   public var filesRetrieve: HyperProxyProviderCall<GeminiOperation> {
     self.call(.filesRetrieve)
   }
-  /// `DELETE v1beta/files/{filesId}`
-  public var generativelanguageFilesDelete: HyperProxyProviderCall<GeminiOperation> {
-    self.call(.generativelanguageFilesDelete)
-  }
-  /// `GET v1beta/files/{filesId}`
-  public var generativelanguageFilesGet: HyperProxyProviderCall<GeminiOperation> {
-    self.call(.generativelanguageFilesGet)
-  }
   /// `POST v1beta/files:register`
   public var filesRegister: HyperProxyProviderCall<GeminiOperation> {
     self.call(.filesRegister)
@@ -272,10 +240,6 @@ extension HyperProxyProviderService where Operation == GeminiOperation {
   public var modelsList: HyperProxyProviderCall<GeminiOperation> {
     self.call(.modelsList)
   }
-  /// `GET v1beta/models/{modelsId}`
-  public var generativelanguageModelsGet: HyperProxyProviderCall<GeminiOperation> {
-    self.call(.generativelanguageModelsGet)
-  }
   /// `GET v1beta/models/{modelsId}/operations`
   public var generativelanguageModelsOperationsList: HyperProxyProviderCall<GeminiOperation> {
     self.call(.generativelanguageModelsOperationsList)
@@ -289,17 +253,9 @@ extension HyperProxyProviderService where Operation == GeminiOperation {
   {
     self.call(.generativelanguageModelsAsyncBatchEmbedContent)
   }
-  /// `POST v1beta/models/{modelsId}:batchEmbedContents`
-  public var generativelanguageModelsBatchEmbedContents: HyperProxyProviderCall<GeminiOperation> {
-    self.call(.generativelanguageModelsBatchEmbedContents)
-  }
   /// `POST v1beta/models/{modelsId}:batchEmbedText`
   public var generativelanguageModelsBatchEmbedText: HyperProxyProviderCall<GeminiOperation> {
     self.call(.generativelanguageModelsBatchEmbedText)
-  }
-  /// `POST v1beta/models/{modelsId}:batchGenerateContent`
-  public var generativelanguageModelsBatchGenerateContent: HyperProxyProviderCall<GeminiOperation> {
-    self.call(.generativelanguageModelsBatchGenerateContent)
   }
   /// `POST v1beta/models/{modelsId}:countMessageTokens`
   public var generativelanguageModelsCountMessageTokens: HyperProxyProviderCall<GeminiOperation> {
@@ -309,14 +265,6 @@ extension HyperProxyProviderService where Operation == GeminiOperation {
   public var generativelanguageModelsCountTextTokens: HyperProxyProviderCall<GeminiOperation> {
     self.call(.generativelanguageModelsCountTextTokens)
   }
-  /// `POST v1beta/models/{modelsId}:countTokens`
-  public var generativelanguageModelsCountTokens: HyperProxyProviderCall<GeminiOperation> {
-    self.call(.generativelanguageModelsCountTokens)
-  }
-  /// `POST v1beta/models/{modelsId}:embedContent`
-  public var generativelanguageModelsEmbedContent: HyperProxyProviderCall<GeminiOperation> {
-    self.call(.generativelanguageModelsEmbedContent)
-  }
   /// `POST v1beta/models/{modelsId}:embedText`
   public var generativelanguageModelsEmbedText: HyperProxyProviderCall<GeminiOperation> {
     self.call(.generativelanguageModelsEmbedText)
@@ -325,10 +273,6 @@ extension HyperProxyProviderService where Operation == GeminiOperation {
   public var generativelanguageModelsGenerateAnswer: HyperProxyProviderCall<GeminiOperation> {
     self.call(.generativelanguageModelsGenerateAnswer)
   }
-  /// `POST v1beta/models/{modelsId}:generateContent`
-  public var generativelanguageModelsGenerateContent: HyperProxyProviderCall<GeminiOperation> {
-    self.call(.generativelanguageModelsGenerateContent)
-  }
   /// `POST v1beta/models/{modelsId}:generateMessage`
   public var generativelanguageModelsGenerateMessage: HyperProxyProviderCall<GeminiOperation> {
     self.call(.generativelanguageModelsGenerateMessage)
@@ -336,14 +280,6 @@ extension HyperProxyProviderService where Operation == GeminiOperation {
   /// `POST v1beta/models/{modelsId}:generateText`
   public var generativelanguageModelsGenerateText: HyperProxyProviderCall<GeminiOperation> {
     self.call(.generativelanguageModelsGenerateText)
-  }
-  /// `POST v1beta/models/{modelsId}:predict`
-  public var generativelanguageModelsPredict: HyperProxyProviderCall<GeminiOperation> {
-    self.call(.generativelanguageModelsPredict)
-  }
-  /// `POST v1beta/models/{modelsId}:predictLongRunning`
-  public var generativelanguageModelsPredictLongRunning: HyperProxyProviderCall<GeminiOperation> {
-    self.call(.generativelanguageModelsPredictLongRunning)
   }
   /// `POST v1beta/models/{modelsId}:streamGenerateContent`
   public var generativelanguageModelsStreamGenerateContent: HyperProxyProviderCall<GeminiOperation>

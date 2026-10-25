@@ -15,7 +15,7 @@ public struct TogetherCompletionChunk: Codable, Sendable {
   public var created: Int?
   public var finishReason: TogetherFinishReason
   public var id: String
-  public var object: TogetherCompletionChunkObject?
+  public var object: TogetherCompletionChunk.Object?
   public var seed: Int?
   public var token: TogetherCompletionToken
   public var usage: TogetherUsageData?
@@ -27,7 +27,7 @@ public struct TogetherCompletionChunk: Codable, Sendable {
     token: TogetherCompletionToken,
     usage: TogetherUsageData?,
     created: Int? = nil,
-    object: TogetherCompletionChunkObject? = nil,
+    object: TogetherCompletionChunk.Object? = nil,
     seed: Int? = nil
   ) {
     self.choices = choices
@@ -49,5 +49,9 @@ public struct TogetherCompletionChunk: Codable, Sendable {
     case seed
     case token
     case usage
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case completionChunk = "completion.chunk"
   }
 }

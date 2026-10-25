@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIEncryptedContentResource: Codable, Sendable {
   public var encryptedContent: String
-  public var kind: OpenAIEncryptedContentResourceKind
+  public var kind: OpenAIEncryptedContentResource.Kind
 
   public init(
     encryptedContent: String,
-    kind: OpenAIEncryptedContentResourceKind
+    kind: OpenAIEncryptedContentResource.Kind
   ) {
     self.encryptedContent = encryptedContent
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenAIEncryptedContentResource: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case encryptedContent = "encrypted_content"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case encryptedContent = "encrypted_content"
   }
 }

@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct MistralProbabilisticSampling: Codable, Sendable {
   public var percentage: Double
-  public var kind: MistralProbabilisticKind?
+  public var kind: MistralProbabilisticSampling.Kind?
 
   public init(
     percentage: Double,
-    kind: MistralProbabilisticKind? = nil
+    kind: MistralProbabilisticSampling.Kind? = nil
   ) {
     self.percentage = percentage
     self.kind = kind
@@ -25,5 +25,9 @@ public struct MistralProbabilisticSampling: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case percentage
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case probabilistic = "probabilistic"
   }
 }

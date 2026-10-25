@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct PerplexityFinanceSearchTool: Codable, Sendable {
-  public var kind: PerplexityFinanceSearchToolKind
+  public var kind: PerplexityFinanceSearchTool.Kind
 
   public init(
-    kind: PerplexityFinanceSearchToolKind
+    kind: PerplexityFinanceSearchTool.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case financeSearch = "finance_search"
   }
 }

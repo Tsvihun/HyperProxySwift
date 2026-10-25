@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIBetaProgrammaticToolCallingParam: Codable, Sendable {
-  public var kind: OpenAIBetaProgrammaticToolCallingParamKind
+  public var kind: OpenAIBetaProgrammaticToolCallingParam.Kind
 
   public init(
-    kind: OpenAIBetaProgrammaticToolCallingParamKind
+    kind: OpenAIBetaProgrammaticToolCallingParam.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case programmaticToolCalling = "programmatic_tool_calling"
   }
 }

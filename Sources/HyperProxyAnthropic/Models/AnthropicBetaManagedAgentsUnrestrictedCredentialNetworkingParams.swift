@@ -11,15 +11,21 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsUnrestrictedCredentialNetworkingParams: Codable, Sendable {
-  public var kind: AnthropicBetaManagedAgentsUnrestrictedCredentialNetworkingParamsKind
+  public var kind: AnthropicBetaManagedAgentsUnrestrictedCredentialNetworkingParams.Kind
 
   public init(
-    kind: AnthropicBetaManagedAgentsUnrestrictedCredentialNetworkingParamsKind
+    kind: AnthropicBetaManagedAgentsUnrestrictedCredentialNetworkingParams.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case unrestricted = "unrestricted"
   }
 }

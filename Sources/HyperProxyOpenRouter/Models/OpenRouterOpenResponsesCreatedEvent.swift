@@ -30,4 +30,18 @@ public struct OpenRouterOpenResponsesCreatedEvent: Codable, Sendable {
     case sequenceNumber = "sequence_number"
     case kind = "type"
   }
+
+  public struct WithResponse: Codable, Sendable {
+    public var response: OpenRouterOpenResponsesResult?
+
+    public init(
+      response: OpenRouterOpenResponsesResult? = nil
+    ) {
+      self.response = response
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case response
+    }
+  }
 }

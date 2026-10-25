@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct ElevenLabsAsyncConversationMetadata: Codable, Sendable {
   public var deliveryError: String?
-  public var deliveryStatus: ElevenLabsAsyncConversationMetadataDeliveryStatus
+  public var deliveryStatus: ElevenLabsAsyncConversationMetadata.DeliveryStatus
   public var deliveryTimestamp: Int
   public var externalId: String
   public var externalLink: String?
@@ -22,7 +22,7 @@ public struct ElevenLabsAsyncConversationMetadata: Codable, Sendable {
   public var retryCount: Int?
 
   public init(
-    deliveryStatus: ElevenLabsAsyncConversationMetadataDeliveryStatus,
+    deliveryStatus: ElevenLabsAsyncConversationMetadata.DeliveryStatus,
     deliveryTimestamp: Int,
     externalId: String,
     externalSystem: String,
@@ -53,5 +53,11 @@ public struct ElevenLabsAsyncConversationMetadata: Codable, Sendable {
     case lastProcessedExternalMessageId = "last_processed_external_message_id"
     case lastRetryTimestamp = "last_retry_timestamp"
     case retryCount = "retry_count"
+  }
+
+  public enum DeliveryStatus: String, Codable, Hashable, Sendable {
+    case pending = "pending"
+    case success = "success"
+    case failed = "failed"
   }
 }

@@ -13,16 +13,16 @@ import HyperProxyCore
 public struct AnthropicBetaSelfHostedWorkHeartbeatResponse: Codable, Sendable {
   public var lastHeartbeat: String
   public var leaseExtended: Bool
-  public var state: AnthropicBetaSelfHostedWorkHeartbeatResponseState
+  public var state: AnthropicBetaSelfHostedWorkHeartbeatResponse.State
   public var ttlSeconds: Int
-  public var kind: AnthropicWorkHeartbeatKind
+  public var kind: AnthropicBetaSelfHostedWorkHeartbeatResponse.Kind
 
   public init(
     lastHeartbeat: String,
     leaseExtended: Bool,
-    state: AnthropicBetaSelfHostedWorkHeartbeatResponseState,
+    state: AnthropicBetaSelfHostedWorkHeartbeatResponse.State,
     ttlSeconds: Int,
-    kind: AnthropicWorkHeartbeatKind = .workHeartbeat
+    kind: AnthropicBetaSelfHostedWorkHeartbeatResponse.Kind = .workHeartbeat
   ) {
     self.lastHeartbeat = lastHeartbeat
     self.leaseExtended = leaseExtended
@@ -37,5 +37,17 @@ public struct AnthropicBetaSelfHostedWorkHeartbeatResponse: Codable, Sendable {
     case state
     case ttlSeconds = "ttl_seconds"
     case kind = "type"
+  }
+
+  public enum State: String, Codable, Hashable, Sendable {
+    case queued = "queued"
+    case starting = "starting"
+    case active = "active"
+    case stopping = "stopping"
+    case stopped = "stopped"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case workHeartbeat = "work_heartbeat"
   }
 }

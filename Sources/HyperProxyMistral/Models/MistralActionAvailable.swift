@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralActionAvailable: Codable, Sendable {
-  public var status: MistralAvailableStatus?
+  public var status: MistralActionAvailable.Status?
 
   public init(
-    status: MistralAvailableStatus? = nil
+    status: MistralActionAvailable.Status? = nil
   ) {
     self.status = status
   }
 
   enum CodingKeys: String, CodingKey {
     case status
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case available = "available"
   }
 }

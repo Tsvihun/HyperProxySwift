@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsLibraryVoiceResponseModel: Codable, Sendable {
   public var accent: String
   public var age: String
-  public var category: ElevenLabsLibraryVoiceResponseModelCategory
+  public var category: ElevenLabsLibraryVoiceResponseModel.Category
   public var clonedByCount: Int
   public var dateUnix: Int
   public var description: String?
@@ -47,7 +47,7 @@ public struct ElevenLabsLibraryVoiceResponseModel: Codable, Sendable {
   public init(
     accent: String,
     age: String,
-    category: ElevenLabsLibraryVoiceResponseModelCategory,
+    category: ElevenLabsLibraryVoiceResponseModel.Category,
     clonedByCount: Int,
     dateUnix: Int,
     descriptive: String,
@@ -145,5 +145,14 @@ public struct ElevenLabsLibraryVoiceResponseModel: Codable, Sendable {
     case verifiedLanguages = "verified_languages"
     case voiceId = "voice_id"
     case youtubeUsername = "youtube_username"
+  }
+
+  public enum Category: String, Codable, Hashable, Sendable {
+    case generated = "generated"
+    case cloned = "cloned"
+    case premade = "premade"
+    case professional = "professional"
+    case famous = "famous"
+    case highQuality = "high_quality"
   }
 }

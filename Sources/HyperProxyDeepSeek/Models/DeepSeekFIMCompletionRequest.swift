@@ -18,7 +18,7 @@ public struct DeepSeekFIMCompletionRequest: Codable, Sendable {
   public var model: DeepSeekFIMModel
   public var presencePenalty: Double?
   public var prompt: String
-  public var stop: DeepSeekFIMCompletionRequestStop?
+  public var stop: DeepSeekFIMCompletionRequest.Stop?
   public var stream: Bool?
   public var streamOptions: DeepSeekFIMStreamOptions?
   public var suffix: String?
@@ -33,7 +33,7 @@ public struct DeepSeekFIMCompletionRequest: Codable, Sendable {
     logprobs: Int? = nil,
     maxTokens: Int? = nil,
     presencePenalty: Double? = nil,
-    stop: DeepSeekFIMCompletionRequestStop? = nil,
+    stop: DeepSeekFIMCompletionRequest.Stop? = nil,
     stream: Bool? = nil,
     streamOptions: DeepSeekFIMStreamOptions? = nil,
     suffix: String? = nil,
@@ -69,5 +69,41 @@ public struct DeepSeekFIMCompletionRequest: Codable, Sendable {
     case suffix
     case temperature
     case topP = "top_p"
+  }
+
+  public enum Stop: Codable, Sendable {
+    case string(String)
+    case stringArray([String])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .stringArray(try container.decode([String].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .stringArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension DeepSeekFIMCompletionRequest.Stop: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension DeepSeekFIMCompletionRequest.Stop: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: String...) {
+    self = .stringArray(elements)
   }
 }

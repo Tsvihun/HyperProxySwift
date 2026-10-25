@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct AnthropicBetaManagedAgentsFileResourceParams: Codable, Sendable {
   public var fileId: String
   public var mountPath: String?
-  public var kind: AnthropicBetaManagedAgentsFileResourceParamsKind
+  public var kind: AnthropicBetaManagedAgentsFileResourceParams.Kind
 
   public init(
     fileId: String,
-    kind: AnthropicBetaManagedAgentsFileResourceParamsKind,
+    kind: AnthropicBetaManagedAgentsFileResourceParams.Kind,
     mountPath: String? = nil
   ) {
     self.fileId = fileId
@@ -29,5 +29,9 @@ public struct AnthropicBetaManagedAgentsFileResourceParams: Codable, Sendable {
     case fileId = "file_id"
     case mountPath = "mount_path"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case file = "file"
   }
 }

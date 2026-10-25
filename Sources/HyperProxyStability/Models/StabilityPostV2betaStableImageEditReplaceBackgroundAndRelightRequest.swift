@@ -17,15 +17,15 @@ public struct StabilityPostV2betaStableImageEditReplaceBackgroundAndRelightReque
   public var backgroundReference: String?
   public var foregroundPrompt: String?
   public var keepOriginalBackground:
-    StabilityPostV2betaStableImageEditReplaceBackgroundAndRelightRequestKeepOriginalBackground?
+    StabilityPostV2betaStableImageEditReplaceBackgroundAndRelightRequest.KeepOriginalBackground?
   public var lightReference: String?
   public var lightSourceDirection:
-    StabilityPostV2betaStableImageEditReplaceBackgroundAndRelightRequestLightSourceDirection?
+    StabilityPostV2betaStableImageEditReplaceBackgroundAndRelightRequest.LightSourceDirection?
   public var lightSourceStrength: Double?
   public var negativePrompt: String?
   public var originalBackgroundDepth: Double?
   public var outputFormat:
-    StabilityPostV2betaStableImageEditReplaceBackgroundAndRelightRequestOutputFormat?
+    StabilityPostV2betaStableImageEditReplaceBackgroundAndRelightRequest.OutputFormat?
   public var preserveOriginalSubject: Double?
   public var seed: Double?
   public var subjectImage: String
@@ -36,17 +36,17 @@ public struct StabilityPostV2betaStableImageEditReplaceBackgroundAndRelightReque
     backgroundReference: String? = nil,
     foregroundPrompt: String? = nil,
     keepOriginalBackground:
-      StabilityPostV2betaStableImageEditReplaceBackgroundAndRelightRequestKeepOriginalBackground? =
+      StabilityPostV2betaStableImageEditReplaceBackgroundAndRelightRequest.KeepOriginalBackground? =
       nil,
     lightReference: String? = nil,
     lightSourceDirection:
-      StabilityPostV2betaStableImageEditReplaceBackgroundAndRelightRequestLightSourceDirection? =
+      StabilityPostV2betaStableImageEditReplaceBackgroundAndRelightRequest.LightSourceDirection? =
       nil,
     lightSourceStrength: Double? = nil,
     negativePrompt: String? = nil,
     originalBackgroundDepth: Double? = nil,
     outputFormat:
-      StabilityPostV2betaStableImageEditReplaceBackgroundAndRelightRequestOutputFormat? = nil,
+      StabilityPostV2betaStableImageEditReplaceBackgroundAndRelightRequest.OutputFormat? = nil,
     preserveOriginalSubject: Double? = nil,
     seed: Double? = nil
   ) {
@@ -79,5 +79,31 @@ public struct StabilityPostV2betaStableImageEditReplaceBackgroundAndRelightReque
     case preserveOriginalSubject = "preserve_original_subject"
     case seed
     case subjectImage = "subject_image"
+  }
+
+  public enum
+    KeepOriginalBackground:
+      String, Codable, Hashable, Sendable
+  {
+    case trueValue = "true"
+    case falseValue = "false"
+  }
+
+  public enum
+    LightSourceDirection: String,
+      Codable, Hashable, Sendable
+  {
+    case left = "left"
+    case right = "right"
+    case above = "above"
+    case below = "below"
+  }
+
+  public enum OutputFormat:
+    String, Codable, Hashable, Sendable
+  {
+    case jpeg = "jpeg"
+    case png = "png"
+    case webp = "webp"
   }
 }

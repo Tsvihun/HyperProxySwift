@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAILiveTransportRinging: Codable, Sendable {
   public var eventId: String
   public var sessionId: String
-  public var kind: OpenAILiveTransportRingingKind
+  public var kind: OpenAILiveTransportRinging.Kind
 
   public init(
     eventId: String,
     sessionId: String,
-    kind: OpenAILiveTransportRingingKind
+    kind: OpenAILiveTransportRinging.Kind
   ) {
     self.eventId = eventId
     self.sessionId = sessionId
@@ -29,5 +29,9 @@ public struct OpenAILiveTransportRinging: Codable, Sendable {
     case eventId = "event_id"
     case sessionId = "session_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case transportRinging = "transport.ringing"
   }
 }

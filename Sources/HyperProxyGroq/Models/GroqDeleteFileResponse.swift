@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct GroqDeleteFileResponse: Codable, Sendable {
   public var deleted: Bool
   public var id: String
-  public var object: GroqDeleteFileResponseObject
+  public var object: GroqDeleteFileResponse.Object
 
   public init(
     deleted: Bool,
     id: String,
-    object: GroqDeleteFileResponseObject
+    object: GroqDeleteFileResponse.Object
   ) {
     self.deleted = deleted
     self.id = id
@@ -29,5 +29,9 @@ public struct GroqDeleteFileResponse: Codable, Sendable {
     case deleted
     case id
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case file = "file"
   }
 }

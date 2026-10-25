@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenRouterRangeCapability: Codable, Sendable {
   public var max: Double
   public var min: Double
-  public var kind: OpenRouterRangeCapabilityKind
+  public var kind: OpenRouterRangeCapability.Kind
 
   public init(
     max: Double,
     min: Double,
-    kind: OpenRouterRangeCapabilityKind
+    kind: OpenRouterRangeCapability.Kind
   ) {
     self.max = max
     self.min = min
@@ -29,5 +29,9 @@ public struct OpenRouterRangeCapability: Codable, Sendable {
     case max
     case min
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case range = "range"
   }
 }

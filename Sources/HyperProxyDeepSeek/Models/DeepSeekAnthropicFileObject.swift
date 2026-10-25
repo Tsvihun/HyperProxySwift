@@ -16,7 +16,7 @@ public struct DeepSeekAnthropicFileObject: Codable, Sendable {
   public var id: String
   public var mimeType: String
   public var sizeBytes: Int
-  public var kind: DeepSeekAnthropicFileObjectKind
+  public var kind: DeepSeekAnthropicFileObject.Kind
 
   public init(
     createdAt: String,
@@ -24,7 +24,7 @@ public struct DeepSeekAnthropicFileObject: Codable, Sendable {
     id: String,
     mimeType: String,
     sizeBytes: Int,
-    kind: DeepSeekAnthropicFileObjectKind
+    kind: DeepSeekAnthropicFileObject.Kind
   ) {
     self.createdAt = createdAt
     self.filename = filename
@@ -41,5 +41,9 @@ public struct DeepSeekAnthropicFileObject: Codable, Sendable {
     case mimeType = "mime_type"
     case sizeBytes = "size_bytes"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case file = "file"
   }
 }

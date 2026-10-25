@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIModifyThreadRequest: Codable, Sendable {
   public var metadata: OpenAIMetadata?
-  public var toolResources: OpenAIModifyThreadRequestToolResourcesAnyOf1?
+  public var toolResources: OpenAIModifyThreadRequestToolResourcesWithCodeInterpreterAndFileSearch?
 
   public init(
     metadata: OpenAIMetadata? = nil,
-    toolResources: OpenAIModifyThreadRequestToolResourcesAnyOf1? = nil
+    toolResources: OpenAIModifyThreadRequestToolResourcesWithCodeInterpreterAndFileSearch? = nil
   ) {
     self.metadata = metadata
     self.toolResources = toolResources

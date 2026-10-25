@@ -12,10 +12,10 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsTokenEndpointAuthBasicUpdateParam: Codable, Sendable {
   public var clientSecret: String?
-  public var kind: AnthropicBetaManagedAgentsTokenEndpointAuthBasicUpdateParamKind
+  public var kind: AnthropicBetaManagedAgentsTokenEndpointAuthBasicUpdateParam.Kind
 
   public init(
-    kind: AnthropicBetaManagedAgentsTokenEndpointAuthBasicUpdateParamKind,
+    kind: AnthropicBetaManagedAgentsTokenEndpointAuthBasicUpdateParam.Kind,
     clientSecret: String? = nil
   ) {
     self.clientSecret = clientSecret
@@ -25,5 +25,11 @@ public struct AnthropicBetaManagedAgentsTokenEndpointAuthBasicUpdateParam: Codab
   enum CodingKeys: String, CodingKey {
     case clientSecret = "client_secret"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case clientSecretBasic = "client_secret_basic"
   }
 }

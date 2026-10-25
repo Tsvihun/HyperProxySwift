@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct OpenAIInviteRequest: Codable, Sendable {
   public var email: String
-  public var projects: [OpenAIInviteRequestProjectsItem]?
-  public var role: OpenAIInviteRequestRole
+  public var projects: [OpenAIInviteRequest.ProjectsElement]?
+  public var role: OpenAIInviteRequest.Role
 
   public init(
     email: String,
-    role: OpenAIInviteRequestRole,
-    projects: [OpenAIInviteRequestProjectsItem]? = nil
+    role: OpenAIInviteRequest.Role,
+    projects: [OpenAIInviteRequest.ProjectsElement]? = nil
   ) {
     self.email = email
     self.projects = projects
@@ -29,5 +29,33 @@ public struct OpenAIInviteRequest: Codable, Sendable {
     case email
     case projects
     case role
+  }
+
+  public struct ProjectsElement: Codable, Sendable {
+    public var id: String
+    public var role: OpenAIInviteRequest.ProjectsElement.Role
+
+    public init(
+      id: String,
+      role: OpenAIInviteRequest.ProjectsElement.Role
+    ) {
+      self.id = id
+      self.role = role
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case id
+      case role
+    }
+
+    public enum Role: String, Codable, Hashable, Sendable {
+      case member = "member"
+      case owner = "owner"
+    }
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case reader = "reader"
+    case owner = "owner"
   }
 }

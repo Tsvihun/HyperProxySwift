@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIBetaPromptCacheBreakpointConfig: Codable, Sendable {
-  public var mode: OpenAIBetaPromptCacheBreakpointConfigMode
+  public var mode: OpenAIBetaPromptCacheBreakpointConfig.Mode
 
   public init(
-    mode: OpenAIBetaPromptCacheBreakpointConfigMode
+    mode: OpenAIBetaPromptCacheBreakpointConfig.Mode
   ) {
     self.mode = mode
   }
 
   enum CodingKeys: String, CodingKey {
     case mode
+  }
+
+  public enum Mode: String, Codable, Hashable, Sendable {
+    case explicit = "explicit"
   }
 }

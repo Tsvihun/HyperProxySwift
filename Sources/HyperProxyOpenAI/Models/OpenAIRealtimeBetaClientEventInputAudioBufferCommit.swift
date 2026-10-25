@@ -12,10 +12,10 @@ import HyperProxyCore
 
 public struct OpenAIRealtimeBetaClientEventInputAudioBufferCommit: Codable, Sendable {
   public var eventId: String?
-  public var kind: OpenAIRealtimeBetaClientEventInputAudioBufferCommitKind
+  public var kind: OpenAIRealtimeBetaClientEventInputAudioBufferCommit.Kind
 
   public init(
-    kind: OpenAIRealtimeBetaClientEventInputAudioBufferCommitKind,
+    kind: OpenAIRealtimeBetaClientEventInputAudioBufferCommit.Kind,
     eventId: String? = nil
   ) {
     self.eventId = eventId
@@ -25,5 +25,11 @@ public struct OpenAIRealtimeBetaClientEventInputAudioBufferCommit: Codable, Send
   enum CodingKeys: String, CodingKey {
     case eventId = "event_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case inputAudioBufferCommit = "input_audio_buffer.commit"
   }
 }

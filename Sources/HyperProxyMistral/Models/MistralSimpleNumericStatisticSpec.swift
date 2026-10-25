@@ -12,10 +12,10 @@ import HyperProxyCore
 
 public struct MistralSimpleNumericStatisticSpec: Codable, Sendable {
   public var goal: MistralGoalSpec?
-  public var kind: MistralSimpleNumericStatisticSpecKind
+  public var kind: MistralSimpleNumericStatisticSpec.Kind
 
   public init(
-    kind: MistralSimpleNumericStatisticSpecKind,
+    kind: MistralSimpleNumericStatisticSpec.Kind,
     goal: MistralGoalSpec? = nil
   ) {
     self.goal = goal
@@ -25,5 +25,14 @@ public struct MistralSimpleNumericStatisticSpec: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case goal
     case kind
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case avg = "avg"
+    case sum = "sum"
+    case min = "min"
+    case max = "max"
+    case std = "std"
+    case count = "count"
   }
 }

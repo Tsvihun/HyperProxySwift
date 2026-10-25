@@ -14,14 +14,14 @@ public struct OpenAIUsageAudioTranscriptionsResult: Codable, Sendable {
   public var apiKeyId: String?
   public var model: String?
   public var numModelRequests: Int
-  public var object: OpenAIUsageAudioTranscriptionsResultObject
+  public var object: OpenAIUsageAudioTranscriptionsResult.Object
   public var projectId: String?
   public var seconds: Int64
   public var userId: String?
 
   public init(
     numModelRequests: Int,
-    object: OpenAIUsageAudioTranscriptionsResultObject,
+    object: OpenAIUsageAudioTranscriptionsResult.Object,
     seconds: Int64,
     apiKeyId: String? = nil,
     model: String? = nil,
@@ -45,5 +45,10 @@ public struct OpenAIUsageAudioTranscriptionsResult: Codable, Sendable {
     case projectId = "project_id"
     case seconds
     case userId = "user_id"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case organizationUsageAudioTranscriptionsResult =
+      "organization.usage.audio_transcriptions.result"
   }
 }

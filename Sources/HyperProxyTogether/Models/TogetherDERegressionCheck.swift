@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherDERegressionCheck: Codable, Sendable {
-  public var direction: TogetherDERegressionCheckDirection
+  public var direction: TogetherDERegressionCheck.Direction
   public var maxRegressionPercent: Double?
 
   public init(
-    direction: TogetherDERegressionCheckDirection,
+    direction: TogetherDERegressionCheck.Direction,
     maxRegressionPercent: Double? = nil
   ) {
     self.direction = direction
@@ -25,5 +25,10 @@ public struct TogetherDERegressionCheck: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case direction
     case maxRegressionPercent
+  }
+
+  public enum Direction: String, Codable, Hashable, Sendable {
+    case regressionDirectionHigherIsWorse = "REGRESSION_DIRECTION_HIGHER_IS_WORSE"
+    case regressionDirectionLowerIsWorse = "REGRESSION_DIRECTION_LOWER_IS_WORSE"
   }
 }

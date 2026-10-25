@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterAnthropicInputTokensClearAtLeast: Codable, Sendable {
-  public var kind: OpenRouterAnthropicInputTokensClearAtLeastKind
+  public var kind: OpenRouterAnthropicInputTokensClearAtLeast.Kind
   public var value: Int
 
   public init(
-    kind: OpenRouterAnthropicInputTokensClearAtLeastKind,
+    kind: OpenRouterAnthropicInputTokensClearAtLeast.Kind,
     value: Int
   ) {
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenRouterAnthropicInputTokensClearAtLeast: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case kind = "type"
     case value
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case inputTokens = "input_tokens"
   }
 }

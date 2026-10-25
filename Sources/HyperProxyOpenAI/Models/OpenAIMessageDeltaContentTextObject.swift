@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct OpenAIMessageDeltaContentTextObject: Codable, Sendable {
   public var index: Int
-  public var text: OpenAIMessageDeltaContentTextObjectText?
-  public var kind: OpenAIMessageDeltaContentTextObjectKind
+  public var text: OpenAIMessageDeltaContentTextObject.Text?
+  public var kind: OpenAIMessageDeltaContentTextObject.Kind
 
   public init(
     index: Int,
-    kind: OpenAIMessageDeltaContentTextObjectKind,
-    text: OpenAIMessageDeltaContentTextObjectText? = nil
+    kind: OpenAIMessageDeltaContentTextObject.Kind,
+    text: OpenAIMessageDeltaContentTextObject.Text? = nil
   ) {
     self.index = index
     self.text = text
@@ -29,5 +29,56 @@ public struct OpenAIMessageDeltaContentTextObject: Codable, Sendable {
     case index
     case text
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case text = "text"
+  }
+
+  public struct Text: Codable, Sendable {
+    public var annotations: [OpenAIMessageDeltaContentTextObject.Text.AnnotationsElement]?
+    public var value: String?
+
+    public init(
+      annotations: [OpenAIMessageDeltaContentTextObject.Text.AnnotationsElement]? = nil,
+      value: String? = nil
+    ) {
+      self.annotations = annotations
+      self.value = value
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case annotations
+      case value
+    }
+
+    public enum AnnotationsElement: Codable, Sendable {
+      case messageDeltaContentTextAnnotationsFileCitationObject(
+        OpenAIMessageDeltaContentTextAnnotationsFileCitationObject)
+      case messageDeltaContentTextAnnotationsFilePathObject(
+        OpenAIMessageDeltaContentTextAnnotationsFilePathObject)
+
+      public init(from decoder: any Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if let value = try? container.decode(
+          OpenAIMessageDeltaContentTextAnnotationsFileCitationObject.self)
+        {
+          self = .messageDeltaContentTextAnnotationsFileCitationObject(value)
+          return
+        }
+        self = .messageDeltaContentTextAnnotationsFilePathObject(
+          try container.decode(OpenAIMessageDeltaContentTextAnnotationsFilePathObject.self))
+      }
+
+      public func encode(to encoder: any Encoder) throws {
+        var container = encoder.singleValueContainer()
+        switch self {
+        case .messageDeltaContentTextAnnotationsFileCitationObject(let value):
+          try container.encode(value)
+        case .messageDeltaContentTextAnnotationsFilePathObject(let value):
+          try container.encode(value)
+        }
+      }
+    }
   }
 }

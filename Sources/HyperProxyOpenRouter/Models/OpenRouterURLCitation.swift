@@ -15,14 +15,14 @@ public struct OpenRouterURLCitation: Codable, Sendable {
   public var endIndex: Int
   public var startIndex: Int
   public var title: String
-  public var kind: OpenRouterURLCitationKind
+  public var kind: OpenRouterURLCitation.Kind
   public var url: String
 
   public init(
     endIndex: Int,
     startIndex: Int,
     title: String,
-    kind: OpenRouterURLCitationKind,
+    kind: OpenRouterURLCitation.Kind,
     url: String,
     content: String? = nil
   ) {
@@ -41,5 +41,9 @@ public struct OpenRouterURLCitation: Codable, Sendable {
     case title
     case kind = "type"
     case url
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case urlCitation = "url_citation"
   }
 }

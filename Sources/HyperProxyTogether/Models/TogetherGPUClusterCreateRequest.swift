@@ -11,25 +11,25 @@ import Foundation
 import HyperProxyCore
 
 public enum TogetherGPUClusterCreateRequest: Codable, Sendable {
-  case gPUClusterCreateRequestNvidiaVersion(TogetherGPUClusterCreateRequestNvidiaVersion)
-  case gPUClusterCreateRequestLegacyNvidia(TogetherGPUClusterCreateRequestLegacyNvidia)
+  case gpuClusterCreateRequestNvidiaVersion(TogetherGPUClusterCreateRequestNvidiaVersion)
+  case gpuClusterCreateRequestLegacyNvidia(TogetherGPUClusterCreateRequestLegacyNvidia)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
     if let value = try? container.decode(TogetherGPUClusterCreateRequestNvidiaVersion.self) {
-      self = .gPUClusterCreateRequestNvidiaVersion(value)
+      self = .gpuClusterCreateRequestNvidiaVersion(value)
       return
     }
-    self = .gPUClusterCreateRequestLegacyNvidia(
+    self = .gpuClusterCreateRequestLegacyNvidia(
       try container.decode(TogetherGPUClusterCreateRequestLegacyNvidia.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .gPUClusterCreateRequestNvidiaVersion(let value):
+    case .gpuClusterCreateRequestNvidiaVersion(let value):
       try container.encode(value)
-    case .gPUClusterCreateRequestLegacyNvidia(let value):
+    case .gpuClusterCreateRequestLegacyNvidia(let value):
       try container.encode(value)
     }
   }

@@ -16,9 +16,9 @@ public struct OpenRouterKeyBudget: Codable, Sendable {
   public var includeByok: Bool
   public var limitUsd: Double
   public var remainingUsd: Double
-  public var resetInterval: OpenRouterKeyBudgetResetInterval?
+  public var resetInterval: OpenRouterKeyBudget.ResetInterval?
   public var resetsAt: String
-  public var scope: OpenRouterKeyBudgetScope
+  public var scope: OpenRouterKeyBudget.Scope
   public var spendUsd: Double
 
   public init(
@@ -27,9 +27,9 @@ public struct OpenRouterKeyBudget: Codable, Sendable {
     includeByok: Bool,
     limitUsd: Double,
     remainingUsd: Double,
-    resetInterval: OpenRouterKeyBudgetResetInterval?,
+    resetInterval: OpenRouterKeyBudget.ResetInterval?,
     resetsAt: String,
-    scope: OpenRouterKeyBudgetScope,
+    scope: OpenRouterKeyBudget.Scope,
     spendUsd: Double
   ) {
     self.budgetId = budgetId
@@ -53,5 +53,20 @@ public struct OpenRouterKeyBudget: Codable, Sendable {
     case resetsAt = "resets_at"
     case scope
     case spendUsd = "spend_usd"
+  }
+
+  public enum ResetInterval: String, Codable, Hashable, Sendable {
+    case daily = "daily"
+    case weekly = "weekly"
+    case monthly = "monthly"
+  }
+
+  public enum Scope: String, Codable, Hashable, Sendable {
+    case workspaceDefaultMember = "workspace_default_member"
+    case workspaceDefaultKey = "workspace_default_key"
+    case member = "member"
+    case apiKey = "api_key"
+    case workspace = "workspace"
+    case keyLimit = "key_limit"
   }
 }

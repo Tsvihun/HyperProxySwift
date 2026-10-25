@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsOpenOutcome: Codable, Sendable {
-  public var status: ElevenLabsOpenStatus?
+  public var status: ElevenLabsOpenOutcome.Status?
 
   public init(
-    status: ElevenLabsOpenStatus? = nil
+    status: ElevenLabsOpenOutcome.Status? = nil
   ) {
     self.status = status
   }
 
   enum CodingKeys: String, CodingKey {
     case status
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case openValue = "open"
   }
 }

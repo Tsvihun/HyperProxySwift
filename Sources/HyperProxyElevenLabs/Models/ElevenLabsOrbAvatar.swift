@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct ElevenLabsOrbAvatar: Codable, Sendable {
   public var color1: String?
   public var color2: String?
-  public var kind: ElevenLabsOrbKind?
+  public var kind: ElevenLabsOrbAvatar.Kind?
 
   public init(
     color1: String? = nil,
     color2: String? = nil,
-    kind: ElevenLabsOrbKind? = nil
+    kind: ElevenLabsOrbAvatar.Kind? = nil
   ) {
     self.color1 = color1
     self.color2 = color2
@@ -29,5 +29,9 @@ public struct ElevenLabsOrbAvatar: Codable, Sendable {
     case color1 = "color_1"
     case color2 = "color_2"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case orb = "orb"
   }
 }

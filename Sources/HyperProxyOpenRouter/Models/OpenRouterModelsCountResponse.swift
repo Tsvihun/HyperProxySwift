@@ -11,15 +11,29 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterModelsCountResponse: Codable, Sendable {
-  public var data: OpenRouterModelsCountResponseData
+  public var data: OpenRouterModelsCountResponse.DataValue
 
   public init(
-    data: OpenRouterModelsCountResponseData
+    data: OpenRouterModelsCountResponse.DataValue
   ) {
     self.data = data
   }
 
   enum CodingKeys: String, CodingKey {
     case data
+  }
+
+  public struct DataValue: Codable, Sendable {
+    public var count: Int
+
+    public init(
+      count: Int
+    ) {
+      self.count = count
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case count
+    }
   }
 }

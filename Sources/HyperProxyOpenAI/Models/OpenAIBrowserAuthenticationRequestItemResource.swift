@@ -15,14 +15,14 @@ public struct OpenAIBrowserAuthenticationRequestItemResource: Codable, Sendable 
   public var request: OpenAIBrowserAuthenticationHistoryRequestKindResource
   public var requestId: String
   public var turnId: String
-  public var kind: OpenAIBrowserAuthenticationRequestItemResourceKind
+  public var kind: OpenAIBrowserAuthenticationRequestItemResource.Kind
 
   public init(
     id: String,
     request: OpenAIBrowserAuthenticationHistoryRequestKindResource,
     requestId: String,
     turnId: String,
-    kind: OpenAIBrowserAuthenticationRequestItemResourceKind
+    kind: OpenAIBrowserAuthenticationRequestItemResource.Kind
   ) {
     self.id = id
     self.request = request
@@ -37,5 +37,9 @@ public struct OpenAIBrowserAuthenticationRequestItemResource: Codable, Sendable 
     case requestId = "request_id"
     case turnId = "turn_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case computerUseApprovalRequest = "computer_use_approval_request"
   }
 }

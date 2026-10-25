@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsBudgetLimit: Codable, Sendable {
   public var maxListCost: AnthropicBetaMonetaryAmount
-  public var kind: AnthropicBetaManagedAgentsBudgetLimitKind
+  public var kind: AnthropicBetaManagedAgentsBudgetLimit.Kind
 
   public init(
     maxListCost: AnthropicBetaMonetaryAmount,
-    kind: AnthropicBetaManagedAgentsBudgetLimitKind
+    kind: AnthropicBetaManagedAgentsBudgetLimit.Kind
   ) {
     self.maxListCost = maxListCost
     self.kind = kind
@@ -25,5 +25,9 @@ public struct AnthropicBetaManagedAgentsBudgetLimit: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case maxListCost = "max_list_cost"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case limit = "limit"
   }
 }

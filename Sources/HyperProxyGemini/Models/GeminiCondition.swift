@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct GeminiCondition: Codable, Sendable {
   public var numericValue: Double?
-  public var operation: GeminiConditionOperation?
+  public var operation: GeminiCondition.Operation?
   public var stringValue: String?
 
   public init(
     numericValue: Double? = nil,
-    operation: GeminiConditionOperation? = nil,
+    operation: GeminiCondition.Operation? = nil,
     stringValue: String? = nil
   ) {
     self.numericValue = numericValue
@@ -29,5 +29,17 @@ public struct GeminiCondition: Codable, Sendable {
     case numericValue
     case operation
     case stringValue
+  }
+
+  public enum Operation: String, Codable, Hashable, Sendable {
+    case operatorUnspecified = "OPERATOR_UNSPECIFIED"
+    case less = "LESS"
+    case lessEqual = "LESS_EQUAL"
+    case equal = "EQUAL"
+    case greaterEqual = "GREATER_EQUAL"
+    case greater = "GREATER"
+    case notEqual = "NOT_EQUAL"
+    case includes = "INCLUDES"
+    case excludes = "EXCLUDES"
   }
 }

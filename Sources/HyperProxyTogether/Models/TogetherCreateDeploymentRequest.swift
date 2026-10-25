@@ -12,14 +12,14 @@ import HyperProxyCore
 
 public struct TogetherCreateDeploymentRequest: Codable, Sendable {
   public var args: [String]?
-  public var autoscaling: TogetherCreateDeploymentRequestAutoscaling?
-  public var capacityType: TogetherCreateDeploymentRequestCapacityType?
+  public var autoscaling: TogetherCreateDeploymentRequest.Autoscaling?
+  public var capacityType: TogetherCreateDeploymentRequest.CapacityType?
   public var command: [String]?
   public var cpu: Double?
   public var description: String?
   public var environmentVariables: [TogetherEnvironmentVariable]?
   public var gpuCount: Int?
-  public var gpuType: TogetherCreateDeploymentRequestGpuType
+  public var gpuType: TogetherCreateDeploymentRequest.GpuType
   public var healthCheckPath: String?
   public var image: String
   public var maxReplicas: Int?
@@ -33,12 +33,12 @@ public struct TogetherCreateDeploymentRequest: Codable, Sendable {
   public var volumes: [TogetherVolumeMount]?
 
   public init(
-    gpuType: TogetherCreateDeploymentRequestGpuType,
+    gpuType: TogetherCreateDeploymentRequest.GpuType,
     image: String,
     name: String,
     args: [String]? = nil,
-    autoscaling: TogetherCreateDeploymentRequestAutoscaling? = nil,
-    capacityType: TogetherCreateDeploymentRequestCapacityType? = nil,
+    autoscaling: TogetherCreateDeploymentRequest.Autoscaling? = nil,
+    capacityType: TogetherCreateDeploymentRequest.CapacityType? = nil,
     command: [String]? = nil,
     cpu: Double? = nil,
     description: String? = nil,
@@ -97,5 +97,49 @@ public struct TogetherCreateDeploymentRequest: Codable, Sendable {
     case storage
     case terminationGracePeriodSeconds = "termination_grace_period_seconds"
     case volumes
+  }
+
+  public enum Autoscaling: Codable, Sendable {
+    case httpAutoscalingConfig(TogetherHTTPAutoscalingConfig)
+    case queueAutoscalingConfig(TogetherQueueAutoscalingConfig)
+    case customMetricAutoscalingConfig(TogetherCustomMetricAutoscalingConfig)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(TogetherHTTPAutoscalingConfig.self) {
+        self = .httpAutoscalingConfig(value)
+        return
+      }
+      if let value = try? container.decode(TogetherQueueAutoscalingConfig.self) {
+        self = .queueAutoscalingConfig(value)
+        return
+      }
+      self = .customMetricAutoscalingConfig(
+        try container.decode(TogetherCustomMetricAutoscalingConfig.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .httpAutoscalingConfig(let value):
+        try container.encode(value)
+      case .queueAutoscalingConfig(let value):
+        try container.encode(value)
+      case .customMetricAutoscalingConfig(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum CapacityType: String, Codable, Hashable, Sendable {
+    case stable = "stable"
+    case preemptible = "preemptible"
+  }
+
+  public enum GpuType: String, Codable, Hashable, Sendable {
+    case h100_80gb = "h100-80gb"
+    case h100_40gbMig = "h100-40gb-mig"
+    case h200_140gb = "h200-140gb"
+    case b200_192gb = "b200-192gb"
   }
 }

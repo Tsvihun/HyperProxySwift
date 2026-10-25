@@ -34,4 +34,18 @@ public struct OpenRouterStreamEventsResponseOutputItemAdded: Codable, Sendable {
     case sequenceNumber = "sequence_number"
     case kind = "type"
   }
+
+  public struct WithItem: Codable, Sendable {
+    public var item: OpenRouterOutputItems?
+
+    public init(
+      item: OpenRouterOutputItems? = nil
+    ) {
+      self.item = item
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case item
+    }
+  }
 }

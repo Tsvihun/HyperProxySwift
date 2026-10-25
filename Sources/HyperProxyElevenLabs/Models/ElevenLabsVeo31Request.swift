@@ -11,31 +11,31 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsVeo31Request: Codable, Sendable {
-  public var aspectRatio: ElevenLabsVeo31RequestAspectRatio?
-  public var durationSecs: ElevenLabsVeo31RequestDurationSecs?
+  public var aspectRatio: ElevenLabsVeo31Request.AspectRatio?
+  public var durationSecs: ElevenLabsVeo31Request.DurationSecs?
   public var endFrame: ElevenLabsImageReference?
   public var enhancePrompt: Bool?
   public var generateAudio: Bool?
   public var images: [ElevenLabsVeoImageReference]?
-  public var modelId: ElevenLabsVeo31Generate001ModelId
+  public var modelId: ElevenLabsVeo31Request.ModelId
   public var negativePrompt: String?
   public var prompt: String
-  public var resolution: ElevenLabsVeo31RequestResolution?
+  public var resolution: ElevenLabsVeo31Request.Resolution?
   public var seed: Int?
   public var startFrame: ElevenLabsImageReference?
   public var webhook: ElevenLabsWebhookTarget?
 
   public init(
     prompt: String,
-    modelId: ElevenLabsVeo31Generate001ModelId = .veo31Generate001,
-    aspectRatio: ElevenLabsVeo31RequestAspectRatio? = nil,
-    durationSecs: ElevenLabsVeo31RequestDurationSecs? = nil,
+    modelId: ElevenLabsVeo31Request.ModelId = .veo3_1Generate001,
+    aspectRatio: ElevenLabsVeo31Request.AspectRatio? = nil,
+    durationSecs: ElevenLabsVeo31Request.DurationSecs? = nil,
     endFrame: ElevenLabsImageReference? = nil,
     enhancePrompt: Bool? = nil,
     generateAudio: Bool? = nil,
     images: [ElevenLabsVeoImageReference]? = nil,
     negativePrompt: String? = nil,
-    resolution: ElevenLabsVeo31RequestResolution? = nil,
+    resolution: ElevenLabsVeo31Request.Resolution? = nil,
     seed: Int? = nil,
     startFrame: ElevenLabsImageReference? = nil,
     webhook: ElevenLabsWebhookTarget? = nil
@@ -69,5 +69,26 @@ public struct ElevenLabsVeo31Request: Codable, Sendable {
     case seed
     case startFrame = "start_frame"
     case webhook
+  }
+
+  public enum ModelId: String, Codable, Hashable, Sendable {
+    case veo3_1Generate001 = "veo-3.1-generate-001"
+  }
+
+  public enum AspectRatio: String, Codable, Hashable, Sendable {
+    case ratio16x9 = "16:9"
+    case ratio9x16 = "9:16"
+  }
+
+  public enum DurationSecs: Int, Codable, Hashable, Sendable {
+    case value4 = 4
+    case value6 = 6
+    case value8 = 8
+  }
+
+  public enum Resolution: String, Codable, Hashable, Sendable {
+    case value720p = "720p"
+    case value1080p = "1080p"
+    case value4k = "4K"
   }
 }

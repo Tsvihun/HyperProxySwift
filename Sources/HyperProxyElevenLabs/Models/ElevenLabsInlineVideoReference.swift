@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct ElevenLabsInlineVideoReference: Codable, Sendable {
   public var contentBase64: String
-  public var mimeType: ElevenLabsInlineVideoReferenceMimeType
+  public var mimeType: ElevenLabsInlineVideoReference.MimeType
   public var kind: ElevenLabsInlineBase64Kind
 
   public init(
     contentBase64: String,
-    mimeType: ElevenLabsInlineVideoReferenceMimeType,
+    mimeType: ElevenLabsInlineVideoReference.MimeType,
     kind: ElevenLabsInlineBase64Kind = .inlineBase64
   ) {
     self.contentBase64 = contentBase64
@@ -29,5 +29,11 @@ public struct ElevenLabsInlineVideoReference: Codable, Sendable {
     case contentBase64 = "content_base64"
     case mimeType = "mime_type"
     case kind = "type"
+  }
+
+  public enum MimeType: String, Codable, Hashable, Sendable {
+    case videoMp4 = "video/mp4"
+    case videoQuicktime = "video/quicktime"
+    case videoWebm = "video/webm"
   }
 }

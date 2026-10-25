@@ -11,15 +11,39 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsCompositionPlan: Codable, Sendable {
-  public var chunks: [ElevenLabsCompositionPlanChunksItem]
+  public var chunks: [ElevenLabsCompositionPlan.ChunksElement]
 
   public init(
-    chunks: [ElevenLabsCompositionPlanChunksItem]
+    chunks: [ElevenLabsCompositionPlan.ChunksElement]
   ) {
     self.chunks = chunks
   }
 
   enum CodingKeys: String, CodingKey {
     case chunks
+  }
+
+  public enum ChunksElement: Codable, Sendable {
+    case generationChunkInput(ElevenLabsGenerationChunkInput)
+    case audioRefChunk(ElevenLabsAudioRefChunk)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsGenerationChunkInput.self) {
+        self = .generationChunkInput(value)
+        return
+      }
+      self = .audioRefChunk(try container.decode(ElevenLabsAudioRefChunk.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .generationChunkInput(let value):
+        try container.encode(value)
+      case .audioRefChunk(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

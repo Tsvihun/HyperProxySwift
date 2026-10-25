@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIChatCompletionAllowedTools: Codable, Sendable {
-  public var mode: OpenAIChatCompletionAllowedToolsMode
+  public var mode: OpenAIChatCompletionAllowedTools.Mode
   public var tools: [[String: HyperProxyJSONValue]]
 
   public init(
-    mode: OpenAIChatCompletionAllowedToolsMode,
+    mode: OpenAIChatCompletionAllowedTools.Mode,
     tools: [[String: HyperProxyJSONValue]]
   ) {
     self.mode = mode
@@ -25,5 +25,10 @@ public struct OpenAIChatCompletionAllowedTools: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case mode
     case tools
+  }
+
+  public enum Mode: String, Codable, Hashable, Sendable {
+    case auto = "auto"
+    case requiredValue = "required"
   }
 }

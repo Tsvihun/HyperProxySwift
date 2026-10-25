@@ -16,7 +16,7 @@ public struct OpenAITranscriptTextSegmentEvent: Codable, Sendable {
   public var speaker: String
   public var start: Double
   public var text: String
-  public var kind: OpenAITranscriptTextSegmentEventKind
+  public var kind: OpenAITranscriptTextSegmentEvent.Kind
 
   public init(
     end: Double,
@@ -24,7 +24,7 @@ public struct OpenAITranscriptTextSegmentEvent: Codable, Sendable {
     speaker: String,
     start: Double,
     text: String,
-    kind: OpenAITranscriptTextSegmentEventKind
+    kind: OpenAITranscriptTextSegmentEvent.Kind
   ) {
     self.end = end
     self.id = id
@@ -41,5 +41,9 @@ public struct OpenAITranscriptTextSegmentEvent: Codable, Sendable {
     case start
     case text
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case transcriptTextSegment = "transcript.text.segment"
   }
 }

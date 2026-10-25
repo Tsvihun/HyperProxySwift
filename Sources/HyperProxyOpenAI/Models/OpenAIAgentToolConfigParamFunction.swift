@@ -15,13 +15,13 @@ public struct OpenAIAgentToolConfigParamFunction: Codable, Sendable {
   public var description: String
   public var name: String
   public var parameters: [String: HyperProxyJSONValue]
-  public var kind: OpenAIAgentToolConfigParamFunctionKind
+  public var kind: OpenAIAgentToolConfigParamFunction.Kind
 
   public init(
     description: String,
     name: String,
     parameters: [String: HyperProxyJSONValue],
-    kind: OpenAIAgentToolConfigParamFunctionKind,
+    kind: OpenAIAgentToolConfigParamFunction.Kind,
     deferLoading: Bool? = nil
   ) {
     self.deferLoading = deferLoading
@@ -37,5 +37,9 @@ public struct OpenAIAgentToolConfigParamFunction: Codable, Sendable {
     case name
     case parameters
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case function = "function"
   }
 }

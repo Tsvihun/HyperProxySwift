@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct TogetherAudioSpeechStreamChunk: Codable, Sendable {
   public var b64: String
   public var model: String
-  public var object: TogetherAudioTtsChunkObject
+  public var object: TogetherAudioSpeechStreamChunk.Object
 
   public init(
     b64: String,
     model: String,
-    object: TogetherAudioTtsChunkObject = .audioTtsChunk
+    object: TogetherAudioSpeechStreamChunk.Object = .audioTtsChunk
   ) {
     self.b64 = b64
     self.model = model
@@ -29,5 +29,9 @@ public struct TogetherAudioSpeechStreamChunk: Codable, Sendable {
     case b64
     case model
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case audioTtsChunk = "audio.tts.chunk"
   }
 }

@@ -15,14 +15,14 @@ public struct OpenAIAnswerResourceScore: Codable, Sendable {
   public var name: String
   public var probabilities: [OpenAIScoreProbabilityResource]
   public var score: Double
-  public var kind: OpenAIAnswerResourceScoreKind
+  public var kind: OpenAIAnswerResourceScore.Kind
 
   public init(
     confidence: Double,
     name: String,
     probabilities: [OpenAIScoreProbabilityResource],
     score: Double,
-    kind: OpenAIAnswerResourceScoreKind
+    kind: OpenAIAnswerResourceScore.Kind
   ) {
     self.confidence = confidence
     self.name = name
@@ -37,5 +37,9 @@ public struct OpenAIAnswerResourceScore: Codable, Sendable {
     case probabilities
     case score
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case score = "score"
   }
 }

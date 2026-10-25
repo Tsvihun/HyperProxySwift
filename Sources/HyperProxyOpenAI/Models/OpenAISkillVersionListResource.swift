@@ -15,14 +15,14 @@ public struct OpenAISkillVersionListResource: Codable, Sendable {
   public var firstId: String?
   public var hasMore: Bool
   public var lastId: String?
-  public var object: OpenAISkillVersionListResourceObject
+  public var object: OpenAISkillVersionListResource.Object
 
   public init(
     data: [OpenAISkillVersionResource],
     firstId: String?,
     hasMore: Bool,
     lastId: String?,
-    object: OpenAISkillVersionListResourceObject
+    object: OpenAISkillVersionListResource.Object
   ) {
     self.data = data
     self.firstId = firstId
@@ -37,5 +37,9 @@ public struct OpenAISkillVersionListResource: Codable, Sendable {
     case hasMore = "has_more"
     case lastId = "last_id"
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case list = "list"
   }
 }

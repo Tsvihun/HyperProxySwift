@@ -148,7 +148,7 @@ public enum OpenAIOperation: String, HyperProxyCatalogOperation {
   /// `POST v1/organization/projects/{project_id}/service_accounts/{service_account_id}`
   case updateProjectServiceAccount = "update.project.service.account"
   /// `POST v1/organization/projects/{project_id}/service_accounts/{service_account_id}/api_keys`
-  case createanAPIkeyforaserviceaccount = "CreateanAPIkeyforaserviceaccount"
+  case createanApIkeyforaserviceaccount = "CreateanAPIkeyforaserviceaccount"
   /// `GET v1/organization/projects/{project_id}/spend_alerts`
   case listProjectSpendAlerts = "list.project.spend.alerts"
   /// `POST v1/organization/projects/{project_id}/spend_alerts`
@@ -261,6 +261,26 @@ public enum OpenAIOperation: String, HyperProxyCatalogOperation {
   case listAgents = "listAgents"
   /// `POST v1/agents`
   case createAgent = "createAgent"
+  /// `GET v1/agents/automations`
+  case listAgentAutomations = "listAgentAutomations"
+  /// `POST v1/agents/automations`
+  case createAgentAutomation = "createAgentAutomation"
+  /// `DELETE v1/agents/automations/{automation_id}`
+  case deleteAgentAutomation = "deleteAgentAutomation"
+  /// `GET v1/agents/automations/{automation_id}`
+  case getAgentAutomation = "getAgentAutomation"
+  /// `POST v1/agents/automations/{automation_id}`
+  case updateAgentAutomation = "updateAgentAutomation"
+  /// `GET v1/agents/automations/{automation_id}/invocations`
+  case listAgentAutomationInvocations = "listAgentAutomationInvocations"
+  /// `POST v1/agents/automations/{automation_id}/invocations`
+  case createAgentAutomationInvocation = "createAgentAutomationInvocation"
+  /// `GET v1/agents/automations/{automation_id}/invocations/{invocation_id}`
+  case getAgentAutomationInvocation = "getAgentAutomationInvocation"
+  /// `POST v1/agents/automations/{automation_id}/pause`
+  case pauseAgentAutomation = "pauseAgentAutomation"
+  /// `POST v1/agents/automations/{automation_id}/resume`
+  case resumeAgentAutomation = "resumeAgentAutomation"
   /// `GET v1/agents/environments`
   case listAgentEnvironments = "listAgentEnvironments"
   /// `POST v1/agents/environments`
@@ -359,6 +379,8 @@ public enum OpenAIOperation: String, HyperProxyCatalogOperation {
   case updateVoiceConsent = "updateVoiceConsent"
   /// `POST v1/audio/voices`
   case createVoice = "createVoice"
+  /// `DELETE v1/audio/voices/{voice_id}`
+  case deleteVoice = "deleteVoice"
   /// `GET v1/batches`
   case batchesList = "batches.list"
   /// `POST v1/batches`
@@ -477,18 +499,10 @@ public enum OpenAIOperation: String, HyperProxyCatalogOperation {
   case fineTuningJobsList = "fineTuning.jobs.list"
   /// `POST v1/fine_tuning/jobs`
   case fineTuningJobsCreate = "fineTuning.jobs.create"
-  /// `GET v1/fine_tuning/jobs/{fine_tuning_job_id}`
-  case retrieveFineTuningJob = "retrieveFineTuningJob"
-  /// `POST v1/fine_tuning/jobs/{fine_tuning_job_id}/cancel`
-  case cancelFineTuningJob = "cancelFineTuningJob"
   /// `GET v1/fine_tuning/jobs/{fine_tuning_job_id}/checkpoints`
   case listFineTuningJobCheckpoints = "listFineTuningJobCheckpoints"
   /// `GET v1/fine_tuning/jobs/{fine_tuning_job_id}/events`
   case listFineTuningEvents = "listFineTuningEvents"
-  /// `POST v1/fine_tuning/jobs/{fine_tuning_job_id}/pause`
-  case pauseFineTuningJob = "pauseFineTuningJob"
-  /// `POST v1/fine_tuning/jobs/{fine_tuning_job_id}/resume`
-  case resumeFineTuningJob = "resumeFineTuningJob"
   /// `GET v1/fine_tuning/jobs/{job_id}`
   case fineTuningJobsRetrieve = "fineTuning.jobs.retrieve"
   /// `POST v1/fine_tuning/jobs/{job_id}/cancel`
@@ -523,8 +537,6 @@ public enum OpenAIOperation: String, HyperProxyCatalogOperation {
   case modelsRetrieve = "models.retrieve"
   /// `DELETE v1/models/{model}`
   case deleteModel = "deleteModel"
-  /// `GET v1/models/{model}`
-  case retrieveModel = "retrieveModel"
   /// `POST v1/moderations`
   case moderationsCreate = "moderations.create"
   /// `GET v1/projects/{project_id}/groups/{group_id}/roles`
@@ -735,23 +747,4 @@ public enum OpenAIOperation: String, HyperProxyCatalogOperation {
   case testWebhookEndpoint = "TestWebhookEndpoint"
   /// `GET v1/webhook_event_types`
   case listWebhookEventTypes = "ListWebhookEventTypes"
-}
-
-/// Earlier snapshots published these operations under different
-/// spellings. They resolve to the canonical case above.
-extension OpenAIOperation {
-  @available(*, deprecated, renamed: "responsesCreate")
-  public static var createResponse: Self { .responsesCreate }
-  @available(*, deprecated, renamed: "responsesCompact")
-  public static var compactconversation: Self { .responsesCompact }
-  @available(*, deprecated, renamed: "responsesCountInputTokens")
-  public static var getinputtokencounts: Self { .responsesCountInputTokens }
-  @available(*, deprecated, renamed: "responsesDelete")
-  public static var deleteResponse: Self { .responsesDelete }
-  @available(*, deprecated, renamed: "responsesRetrieve")
-  public static var getResponse: Self { .responsesRetrieve }
-  @available(*, deprecated, renamed: "responsesCancel")
-  public static var cancelResponse: Self { .responsesCancel }
-  @available(*, deprecated, renamed: "responsesInputItems")
-  public static var listInputItems: Self { .responsesInputItems }
 }

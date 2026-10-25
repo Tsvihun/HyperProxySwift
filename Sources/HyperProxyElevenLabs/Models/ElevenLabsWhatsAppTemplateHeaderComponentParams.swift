@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsWhatsAppTemplateHeaderComponentParams: Codable, Sendable {
-  public var parameters: [ElevenLabsWhatsAppTemplateHeaderComponentParamsParametersItem]
-  public var kind: ElevenLabsHeaderKind?
+  public var parameters: [ElevenLabsWhatsAppTemplateHeaderComponentParams.ParametersElement]
+  public var kind: ElevenLabsWhatsAppTemplateHeaderComponentParams.Kind?
 
   public init(
-    parameters: [ElevenLabsWhatsAppTemplateHeaderComponentParamsParametersItem],
-    kind: ElevenLabsHeaderKind? = nil
+    parameters: [ElevenLabsWhatsAppTemplateHeaderComponentParams.ParametersElement],
+    kind: ElevenLabsWhatsAppTemplateHeaderComponentParams.Kind? = nil
   ) {
     self.parameters = parameters
     self.kind = kind
@@ -25,5 +25,48 @@ public struct ElevenLabsWhatsAppTemplateHeaderComponentParams: Codable, Sendable
   enum CodingKeys: String, CodingKey {
     case parameters
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case header = "header"
+  }
+
+  public enum ParametersElement: Codable, Sendable {
+    case whatsAppTemplateTextParam(ElevenLabsWhatsAppTemplateTextParam)
+    case whatsAppTemplateImageParam(ElevenLabsWhatsAppTemplateImageParam)
+    case whatsAppTemplateDocumentParam(ElevenLabsWhatsAppTemplateDocumentParam)
+    case whatsAppTemplateLocationParam(ElevenLabsWhatsAppTemplateLocationParam)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsWhatsAppTemplateTextParam.self) {
+        self = .whatsAppTemplateTextParam(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsWhatsAppTemplateImageParam.self) {
+        self = .whatsAppTemplateImageParam(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsWhatsAppTemplateDocumentParam.self) {
+        self = .whatsAppTemplateDocumentParam(value)
+        return
+      }
+      self = .whatsAppTemplateLocationParam(
+        try container.decode(ElevenLabsWhatsAppTemplateLocationParam.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .whatsAppTemplateTextParam(let value):
+        try container.encode(value)
+      case .whatsAppTemplateImageParam(let value):
+        try container.encode(value)
+      case .whatsAppTemplateDocumentParam(let value):
+        try container.encode(value)
+      case .whatsAppTemplateLocationParam(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

@@ -21,9 +21,9 @@ public struct TogetherDERollout: Codable, Sendable {
   public var pauseInfo: TogetherDEPauseInfo?
   public var sourceDeploymentId: String
   public var startedAt: String?
-  public var state: TogetherDERolloutState
+  public var state: TogetherDERollout.State
   public var status: TogetherDERolloutStatus
-  public var strategy: TogetherDERolloutStrategy
+  public var strategy: TogetherDERollout.Strategy
   public var targetDeploymentId: String
 
   public init(
@@ -31,9 +31,9 @@ public struct TogetherDERollout: Codable, Sendable {
     endpointId: String,
     id: String,
     sourceDeploymentId: String,
-    state: TogetherDERolloutState,
+    state: TogetherDERollout.State,
     status: TogetherDERolloutStatus,
-    strategy: TogetherDERolloutStrategy,
+    strategy: TogetherDERollout.Strategy,
     targetDeploymentId: String,
     completedAt: String? = nil,
     currentStep: Int? = nil,
@@ -73,5 +73,23 @@ public struct TogetherDERollout: Codable, Sendable {
     case status
     case strategy
     case targetDeploymentId
+  }
+
+  public enum State: String, Codable, Hashable, Sendable {
+    case rolloutStateRunning = "ROLLOUT_STATE_RUNNING"
+    case rolloutStatePaused = "ROLLOUT_STATE_PAUSED"
+    case rolloutStateStabilizing = "ROLLOUT_STATE_STABILIZING"
+    case rolloutStateCompleted = "ROLLOUT_STATE_COMPLETED"
+    case rolloutStatePending = "ROLLOUT_STATE_PENDING"
+    case rolloutStateSystemPaused = "ROLLOUT_STATE_SYSTEM_PAUSED"
+    case rolloutStateCancelling = "ROLLOUT_STATE_CANCELLING"
+    case rolloutStateCanceled = "ROLLOUT_STATE_CANCELED"
+    case rolloutStatePausing = "ROLLOUT_STATE_PAUSING"
+  }
+
+  public enum Strategy: String, Codable, Hashable, Sendable {
+    case rolloutStrategyTypeRolling = "ROLLOUT_STRATEGY_TYPE_ROLLING"
+    case rolloutStrategyTypeCanary = "ROLLOUT_STRATEGY_TYPE_CANARY"
+    case rolloutStrategyTypeBlueGreen = "ROLLOUT_STRATEGY_TYPE_BLUE_GREEN"
   }
 }

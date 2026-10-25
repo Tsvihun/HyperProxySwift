@@ -17,14 +17,16 @@ public struct ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionari
   public var file: String?
   public var name: String
   public var workspaceAccess:
-    ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionariesAddFromFilePostWorkspaceAccess?
+    ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionariesAddFromFilePost
+      .WorkspaceAccess?
 
   public init(
     name: String,
     description: String? = nil,
     file: String? = nil,
     workspaceAccess:
-      ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionariesAddFromFilePostWorkspaceAccess? =
+      ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionariesAddFromFilePost
+      .WorkspaceAccess? =
       nil
   ) {
     self.description = description
@@ -38,5 +40,15 @@ public struct ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionari
     case file
     case name
     case workspaceAccess = "workspace_access"
+  }
+
+  public enum
+    WorkspaceAccess:
+      String, Codable, Hashable, Sendable
+  {
+    case admin = "admin"
+    case editor = "editor"
+    case commenter = "commenter"
+    case viewer = "viewer"
   }
 }

@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct MistralRegisterDeploymentRequestDeployment: Codable, Sendable {
   public var deployment: MistralRegisterDeploymentRequestVespaDeployment
   public var name: String
-  public var status: MistralRegisterDeploymentRequestDeploymentStatus?
+  public var status: MistralRegisterDeploymentRequestDeployment.Status?
 
   public init(
     deployment: MistralRegisterDeploymentRequestVespaDeployment,
     name: String,
-    status: MistralRegisterDeploymentRequestDeploymentStatus? = nil
+    status: MistralRegisterDeploymentRequestDeployment.Status? = nil
   ) {
     self.deployment = deployment
     self.name = name
@@ -29,5 +29,10 @@ public struct MistralRegisterDeploymentRequestDeployment: Codable, Sendable {
     case deployment
     case name
     case status
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case online = "online"
+    case offline = "offline"
   }
 }

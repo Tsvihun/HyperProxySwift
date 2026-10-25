@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsAdvisorParams: Codable, Sendable {
   public var model: String
-  public var kind: AnthropicBetaManagedAgentsAdvisorParamsKind
+  public var kind: AnthropicBetaManagedAgentsAdvisorParams.Kind
 
   public init(
     model: String,
-    kind: AnthropicBetaManagedAgentsAdvisorParamsKind
+    kind: AnthropicBetaManagedAgentsAdvisorParams.Kind
   ) {
     self.model = model
     self.kind = kind
@@ -25,5 +25,9 @@ public struct AnthropicBetaManagedAgentsAdvisorParams: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case model
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case advisor = "advisor"
   }
 }

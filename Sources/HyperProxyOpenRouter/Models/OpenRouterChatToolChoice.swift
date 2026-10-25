@@ -11,24 +11,24 @@ import Foundation
 import HyperProxyCore
 
 public enum OpenRouterChatToolChoice: Codable, Sendable {
-  case chatToolChoiceAnyOf1(OpenRouterChatToolChoiceAnyOf1)
-  case chatToolChoiceAnyOf2(OpenRouterChatToolChoiceAnyOf2)
-  case chatToolChoiceAnyOf3(OpenRouterChatToolChoiceAnyOf3)
+  case noneValue(OpenRouterChatToolChoice.None)
+  case automatic(OpenRouterChatToolChoice.Auto)
+  case required(OpenRouterChatToolChoice.Required)
   case chatNamedToolChoice(OpenRouterChatNamedToolChoice)
   case chatServerToolChoice(OpenRouterChatServerToolChoice)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(OpenRouterChatToolChoiceAnyOf1.self) {
-      self = .chatToolChoiceAnyOf1(value)
+    if let value = try? container.decode(OpenRouterChatToolChoice.None.self) {
+      self = .noneValue(value)
       return
     }
-    if let value = try? container.decode(OpenRouterChatToolChoiceAnyOf2.self) {
-      self = .chatToolChoiceAnyOf2(value)
+    if let value = try? container.decode(OpenRouterChatToolChoice.Auto.self) {
+      self = .automatic(value)
       return
     }
-    if let value = try? container.decode(OpenRouterChatToolChoiceAnyOf3.self) {
-      self = .chatToolChoiceAnyOf3(value)
+    if let value = try? container.decode(OpenRouterChatToolChoice.Required.self) {
+      self = .required(value)
       return
     }
     if let value = try? container.decode(OpenRouterChatNamedToolChoice.self) {
@@ -41,11 +41,11 @@ public enum OpenRouterChatToolChoice: Codable, Sendable {
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .chatToolChoiceAnyOf1(let value):
+    case .noneValue(let value):
       try container.encode(value)
-    case .chatToolChoiceAnyOf2(let value):
+    case .automatic(let value):
       try container.encode(value)
-    case .chatToolChoiceAnyOf3(let value):
+    case .required(let value):
       try container.encode(value)
     case .chatNamedToolChoice(let value):
       try container.encode(value)
@@ -55,11 +55,23 @@ public enum OpenRouterChatToolChoice: Codable, Sendable {
   }
 
   /// Provider-native value without the schema union wrapper.
-  public static var none: Self { .chatToolChoiceAnyOf1(.none) }
+  public static var none: Self { .noneValue(.none) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var auto: Self { .chatToolChoiceAnyOf2(.auto) }
+  public static var auto: Self { .automatic(.auto) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var requiredValue: Self { .chatToolChoiceAnyOf3(.requiredValue) }
+  public static var requiredValue: Self { .required(.requiredValue) }
+
+  public enum None: String, Codable, Hashable, Sendable {
+    case none = "none"
+  }
+
+  public enum Auto: String, Codable, Hashable, Sendable {
+    case auto = "auto"
+  }
+
+  public enum Required: String, Codable, Hashable, Sendable {
+    case requiredValue = "required"
+  }
 }

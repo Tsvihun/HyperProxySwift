@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct GroqListModelsResponse: Codable, Sendable {
   public var data: [GroqModel]
-  public var object: GroqListModelsResponseObject
+  public var object: GroqListModelsResponse.Object
 
   public init(
     data: [GroqModel],
-    object: GroqListModelsResponseObject
+    object: GroqListModelsResponse.Object
   ) {
     self.data = data
     self.object = object
@@ -25,5 +25,9 @@ public struct GroqListModelsResponse: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case data
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case list = "list"
   }
 }

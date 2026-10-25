@@ -11,15 +11,22 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicSkillSource: Codable, Sendable {
-  public var kind: AnthropicSkillSourceKind
+  public var kind: AnthropicSkillSource.Kind
 
   public init(
-    kind: AnthropicSkillSourceKind
+    kind: AnthropicSkillSource.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case custom = "custom"
+    case anthropic = "anthropic"
+    case anthropicExample = "anthropic_example"
+    case plugin = "plugin"
   }
 }

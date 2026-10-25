@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct OpenAIRealtimeServerEventRateLimitsUpdated: Codable, Sendable {
   public var eventId: String
-  public var rateLimits: [OpenAIRealtimeServerEventRateLimitsUpdatedRateLimitsItem]
-  public var kind: OpenAIRealtimeServerEventRateLimitsUpdatedKind
+  public var rateLimits: [OpenAIRealtimeServerEventRateLimitsUpdated.RateLimitsElement]
+  public var kind: OpenAIRealtimeServerEventRateLimitsUpdated.Kind
 
   public init(
     eventId: String,
-    rateLimits: [OpenAIRealtimeServerEventRateLimitsUpdatedRateLimitsItem],
-    kind: OpenAIRealtimeServerEventRateLimitsUpdatedKind
+    rateLimits: [OpenAIRealtimeServerEventRateLimitsUpdated.RateLimitsElement],
+    kind: OpenAIRealtimeServerEventRateLimitsUpdated.Kind
   ) {
     self.eventId = eventId
     self.rateLimits = rateLimits
@@ -29,5 +29,42 @@ public struct OpenAIRealtimeServerEventRateLimitsUpdated: Codable, Sendable {
     case eventId = "event_id"
     case rateLimits = "rate_limits"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case rateLimitsUpdated = "rate_limits.updated"
+  }
+
+  public struct RateLimitsElement: Codable, Sendable {
+    public var limit: Int?
+    public var name: OpenAIRealtimeServerEventRateLimitsUpdated.RateLimitsElement.Name?
+    public var remaining: Int?
+    public var resetSeconds: Double?
+
+    public init(
+      limit: Int? = nil,
+      name: OpenAIRealtimeServerEventRateLimitsUpdated.RateLimitsElement.Name? = nil,
+      remaining: Int? = nil,
+      resetSeconds: Double? = nil
+    ) {
+      self.limit = limit
+      self.name = name
+      self.remaining = remaining
+      self.resetSeconds = resetSeconds
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case limit
+      case name
+      case remaining
+      case resetSeconds = "reset_seconds"
+    }
+
+    public enum Name: String, Codable, Hashable,
+      Sendable
+    {
+      case requests = "requests"
+      case tokens = "tokens"
+    }
   }
 }

@@ -14,10 +14,10 @@ public struct OpenAIToolSearchToolParam: Codable, Sendable {
   public var description: String?
   public var execution: OpenAIToolSearchExecutionType?
   public var parameters: OpenAIEmptyModelParam?
-  public var kind: OpenAIToolSearchToolParamKind
+  public var kind: OpenAIToolSearchToolParam.Kind
 
   public init(
-    kind: OpenAIToolSearchToolParamKind,
+    kind: OpenAIToolSearchToolParam.Kind,
     description: String? = nil,
     execution: OpenAIToolSearchExecutionType? = nil,
     parameters: OpenAIEmptyModelParam? = nil
@@ -33,5 +33,9 @@ public struct OpenAIToolSearchToolParam: Codable, Sendable {
     case execution
     case parameters
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case toolSearch = "tool_search"
   }
 }

@@ -10,4 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIRunCompletionUsage = OpenAIRunCompletionUsageAnyOf1?
+public typealias OpenAIRunCompletionUsage =
+  OpenAIRunCompletionUsageWithCompletionTokensAndPromptTokensAndTotalTokens?

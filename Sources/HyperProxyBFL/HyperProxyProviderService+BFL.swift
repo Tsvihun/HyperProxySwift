@@ -102,12 +102,12 @@ extension HyperProxyProviderService where Operation == BFLOperation {
     self.call(.fineTuningFlux2Klein9BGenerate)
   }
   /// `POST v1/flux-2-klein-9b-kv-bf16-finetuned`
-  public var fineTuningFlux2Klein9BKVBF16Generate: HyperProxyProviderCall<BFLOperation> {
-    self.call(.fineTuningFlux2Klein9BKVBF16Generate)
+  public var fineTuningFlux2Klein9Bkvbf16Generate: HyperProxyProviderCall<BFLOperation> {
+    self.call(.fineTuningFlux2Klein9Bkvbf16Generate)
   }
   /// `POST v1/flux-2-klein-9b-kv-finetuned`
-  public var fineTuningFlux2Klein9BKVGenerate: HyperProxyProviderCall<BFLOperation> {
-    self.call(.fineTuningFlux2Klein9BKVGenerate)
+  public var fineTuningFlux2Klein9BkvGenerate: HyperProxyProviderCall<BFLOperation> {
+    self.call(.fineTuningFlux2Klein9BkvGenerate)
   }
   /// `POST v1/flux-2-klein-base-4b-finetuned`
   public var fineTuningFlux2KleinBase4BGenerate: HyperProxyProviderCall<BFLOperation> {

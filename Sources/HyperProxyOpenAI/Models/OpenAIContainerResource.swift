@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct OpenAIContainerResource: Codable, Sendable {
   public var createdAt: Int
-  public var expiresAfter: OpenAIContainerResourceExpiresAfter?
+  public var expiresAfter: OpenAIContainerResource.ExpiresAfter?
   public var id: String
   public var lastActiveAt: Int?
-  public var memoryLimit: OpenAIContainerResourceMemoryLimit?
+  public var memoryLimit: OpenAIContainerResource.MemoryLimit?
   public var name: String
-  public var networkPolicy: OpenAIContainerResourceNetworkPolicy?
+  public var networkPolicy: OpenAIContainerResource.NetworkPolicy?
   public var object: String
   public var status: String
 
@@ -27,10 +27,10 @@ public struct OpenAIContainerResource: Codable, Sendable {
     name: String,
     object: String,
     status: String,
-    expiresAfter: OpenAIContainerResourceExpiresAfter? = nil,
+    expiresAfter: OpenAIContainerResource.ExpiresAfter? = nil,
     lastActiveAt: Int? = nil,
-    memoryLimit: OpenAIContainerResourceMemoryLimit? = nil,
-    networkPolicy: OpenAIContainerResourceNetworkPolicy? = nil
+    memoryLimit: OpenAIContainerResource.MemoryLimit? = nil,
+    networkPolicy: OpenAIContainerResource.NetworkPolicy? = nil
   ) {
     self.createdAt = createdAt
     self.expiresAfter = expiresAfter
@@ -53,5 +53,57 @@ public struct OpenAIContainerResource: Codable, Sendable {
     case networkPolicy = "network_policy"
     case object
     case status
+  }
+
+  public struct ExpiresAfter: Codable, Sendable {
+    public var anchor: OpenAIContainerResource.ExpiresAfter.Anchor?
+    public var minutes: Int?
+
+    public init(
+      anchor: OpenAIContainerResource.ExpiresAfter.Anchor? = nil,
+      minutes: Int? = nil
+    ) {
+      self.anchor = anchor
+      self.minutes = minutes
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case anchor
+      case minutes
+    }
+
+    public enum Anchor: String, Codable, Hashable, Sendable {
+      case lastActiveAt = "last_active_at"
+    }
+  }
+
+  public enum MemoryLimit: String, Codable, Hashable, Sendable {
+    case value1g = "1g"
+    case value4g = "4g"
+    case value16g = "16g"
+    case value64g = "64g"
+  }
+
+  public struct NetworkPolicy: Codable, Sendable {
+    public var allowedDomains: [String]?
+    public var kind: OpenAIContainerResource.NetworkPolicy.Kind
+
+    public init(
+      kind: OpenAIContainerResource.NetworkPolicy.Kind,
+      allowedDomains: [String]? = nil
+    ) {
+      self.allowedDomains = allowedDomains
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case allowedDomains = "allowed_domains"
+      case kind = "type"
+    }
+
+    public enum Kind: String, Codable, Hashable, Sendable {
+      case allowlist = "allowlist"
+      case disabled = "disabled"
+    }
   }
 }

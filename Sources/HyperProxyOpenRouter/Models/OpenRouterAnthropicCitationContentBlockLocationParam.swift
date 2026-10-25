@@ -16,7 +16,7 @@ public struct OpenRouterAnthropicCitationContentBlockLocationParam: Codable, Sen
   public var documentTitle: String
   public var endBlockIndex: Int
   public var startBlockIndex: Int
-  public var kind: OpenRouterAnthropicCitationContentBlockLocationParamKind
+  public var kind: OpenRouterAnthropicCitationContentBlockLocationParam.Kind
 
   public init(
     citedText: String,
@@ -24,7 +24,7 @@ public struct OpenRouterAnthropicCitationContentBlockLocationParam: Codable, Sen
     documentTitle: String,
     endBlockIndex: Int,
     startBlockIndex: Int,
-    kind: OpenRouterAnthropicCitationContentBlockLocationParamKind
+    kind: OpenRouterAnthropicCitationContentBlockLocationParam.Kind
   ) {
     self.citedText = citedText
     self.documentIndex = documentIndex
@@ -41,5 +41,11 @@ public struct OpenRouterAnthropicCitationContentBlockLocationParam: Codable, Sen
     case endBlockIndex = "end_block_index"
     case startBlockIndex = "start_block_index"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case contentBlockLocation = "content_block_location"
   }
 }

@@ -15,14 +15,14 @@ public struct OpenAIChatCompletionList: Codable, Sendable {
   public var firstId: String
   public var hasMore: Bool
   public var lastId: String
-  public var object: OpenAIChatCompletionListObject
+  public var object: OpenAIChatCompletionList.Object
 
   public init(
     data: [OpenAICreateChatCompletionResponse],
     firstId: String,
     hasMore: Bool,
     lastId: String,
-    object: OpenAIChatCompletionListObject
+    object: OpenAIChatCompletionList.Object
   ) {
     self.data = data
     self.firstId = firstId
@@ -37,5 +37,9 @@ public struct OpenAIChatCompletionList: Codable, Sendable {
     case hasMore = "has_more"
     case lastId = "last_id"
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case list = "list"
   }
 }

@@ -14,11 +14,11 @@ public struct OpenAILiveOutputAudioDelta: Codable, Sendable {
   public var delta: String
   public var endMs: Int?
   public var startMs: Int?
-  public var kind: OpenAILiveOutputAudioDeltaKind
+  public var kind: OpenAILiveOutputAudioDelta.Kind
 
   public init(
     delta: String,
-    kind: OpenAILiveOutputAudioDeltaKind,
+    kind: OpenAILiveOutputAudioDelta.Kind,
     endMs: Int? = nil,
     startMs: Int? = nil
   ) {
@@ -33,5 +33,9 @@ public struct OpenAILiveOutputAudioDelta: Codable, Sendable {
     case endMs = "end_ms"
     case startMs = "start_ms"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case sessionOutputAudioDelta = "session.output_audio.delta"
   }
 }

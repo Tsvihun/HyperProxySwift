@@ -11,15 +11,23 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsUpdateAssetParams: Codable, Sendable {
-  public var smbToolType: ElevenLabsUpdateAssetSmbToolType?
+  public var perResourceTimezones: Bool?
+  public var smbToolType: ElevenLabsUpdateAssetParams.SmbToolType?
 
   public init(
-    smbToolType: ElevenLabsUpdateAssetSmbToolType? = nil
+    perResourceTimezones: Bool? = nil,
+    smbToolType: ElevenLabsUpdateAssetParams.SmbToolType? = nil
   ) {
+    self.perResourceTimezones = perResourceTimezones
     self.smbToolType = smbToolType
   }
 
   enum CodingKeys: String, CodingKey {
+    case perResourceTimezones = "per_resource_timezones"
     case smbToolType = "smb_tool_type"
+  }
+
+  public enum SmbToolType: String, Codable, Hashable, Sendable {
+    case updateAsset = "update_asset"
   }
 }

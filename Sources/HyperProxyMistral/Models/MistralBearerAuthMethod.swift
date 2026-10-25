@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct MistralBearerAuthMethod: Codable, Sendable {
   public var headers: [MistralConnectorAuthenticationHeader]?
-  public var methodType: MistralBearerMethodType?
+  public var methodType: MistralBearerAuthMethod.MethodType?
 
   public init(
     headers: [MistralConnectorAuthenticationHeader]? = nil,
-    methodType: MistralBearerMethodType? = nil
+    methodType: MistralBearerAuthMethod.MethodType? = nil
   ) {
     self.headers = headers
     self.methodType = methodType
@@ -25,5 +25,9 @@ public struct MistralBearerAuthMethod: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case headers
     case methodType = "method_type"
+  }
+
+  public enum MethodType: String, Codable, Hashable, Sendable {
+    case bearer = "bearer"
   }
 }

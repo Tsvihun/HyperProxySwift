@@ -11,15 +11,21 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralToolExecution: Codable, Sendable {
-  public var taskSupport: MistralToolExecutionTaskSupport?
+  public var taskSupport: MistralToolExecution.TaskSupport?
 
   public init(
-    taskSupport: MistralToolExecutionTaskSupport? = nil
+    taskSupport: MistralToolExecution.TaskSupport? = nil
   ) {
     self.taskSupport = taskSupport
   }
 
   enum CodingKeys: String, CodingKey {
     case taskSupport
+  }
+
+  public enum TaskSupport: String, Codable, Hashable, Sendable {
+    case forbidden = "forbidden"
+    case optionalValue = "optional"
+    case requiredValue = "required"
   }
 }

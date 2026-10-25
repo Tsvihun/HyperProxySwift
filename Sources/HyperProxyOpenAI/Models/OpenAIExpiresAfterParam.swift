@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIExpiresAfterParam: Codable, Sendable {
-  public var anchor: OpenAIExpiresAfterParamAnchor
+  public var anchor: OpenAIExpiresAfterParam.Anchor
   public var seconds: Int64
 
   public init(
-    anchor: OpenAIExpiresAfterParamAnchor,
+    anchor: OpenAIExpiresAfterParam.Anchor,
     seconds: Int64
   ) {
     self.anchor = anchor
@@ -25,5 +25,9 @@ public struct OpenAIExpiresAfterParam: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case anchor
     case seconds
+  }
+
+  public enum Anchor: String, Codable, Hashable, Sendable {
+    case createdAt = "created_at"
   }
 }

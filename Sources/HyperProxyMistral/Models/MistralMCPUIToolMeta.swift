@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct MistralMCPUIToolMeta: Codable, Sendable {
   public var resourceUri: String?
-  public var visibility: [MistralMCPUIToolMetaVisibilityAnyOf1Item]?
+  public var visibility: [MistralMCPUIToolMetaVisibilityItem]?
 
   public init(
     resourceUri: String? = nil,
-    visibility: [MistralMCPUIToolMetaVisibilityAnyOf1Item]? = nil
+    visibility: [MistralMCPUIToolMetaVisibilityItem]? = nil
   ) {
     self.resourceUri = resourceUri
     self.visibility = visibility

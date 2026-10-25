@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAILiveMCPToolInputParam: Codable, Sendable {
-  public var kind: OpenAILiveMCPToolInputParamKind
+  public var kind: OpenAILiveMCPToolInputParam.Kind
 
   public init(
-    kind: OpenAILiveMCPToolInputParamKind
+    kind: OpenAILiveMCPToolInputParam.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case mcp = "mcp"
   }
 }

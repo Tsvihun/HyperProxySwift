@@ -39,14 +39,12 @@ public enum TogetherOperation: String, HyperProxyCatalogOperation {
   case v1BatchesIdCancelPost = "v1.batches._id_.cancel.post"
   /// `POST v1/chat/completions`
   case chatCompletionsCreate = "chatCompletions.create"
-  /// `GET v1/clusters/availability-zones`
-  case availabilityZones = "availabilityZones"
   /// `POST v1/completions`
   case completionsCreate = "completions.create"
   /// `GET v1/compute/clusters`
-  case gPUClusterServiceList = "GPUClusterService.List"
+  case gpuClusterServiceList = "GPUClusterService.List"
   /// `POST v1/compute/clusters`
-  case gPUClusterServiceCreate = "GPUClusterService.Create"
+  case gpuClusterServiceCreate = "GPUClusterService.Create"
   /// `GET v1/compute/clusters/storage/volumes`
   case sharedVolumeServiceList = "SharedVolumeService.List"
   /// `POST v1/compute/clusters/storage/volumes`
@@ -58,11 +56,11 @@ public enum TogetherOperation: String, HyperProxyCatalogOperation {
   /// `GET v1/compute/clusters/storage/volumes/{volume_id}`
   case sharedVolumeServiceGet = "SharedVolumeService.Get"
   /// `DELETE v1/compute/clusters/{cluster_id}`
-  case gPUClusterServiceDelete = "GPUClusterService.Delete"
+  case gpuClusterServiceDelete = "GPUClusterService.Delete"
   /// `GET v1/compute/clusters/{cluster_id}`
-  case gPUClusterServiceGet = "GPUClusterService.Get"
+  case gpuClusterServiceGet = "GPUClusterService.Get"
   /// `PUT v1/compute/clusters/{cluster_id}`
-  case gPUClusterServiceUpdate = "GPUClusterService.Update"
+  case gpuClusterServiceUpdate = "GPUClusterService.Update"
   /// `GET v1/compute/clusters/{cluster_id}/addons`
   case instanceClusterAddOnServiceList = "InstanceClusterAddOnService.List"
   /// `POST v1/compute/clusters/{cluster_id}/addons`
@@ -135,22 +133,6 @@ public enum TogetherOperation: String, HyperProxyCatalogOperation {
   case v1DeploymentsIdRollbackPost = "v1.deployments._id_.rollback.post"
   /// `POST v1/embeddings`
   case embeddingsCreate = "embeddings.create"
-  /// `GET v1/endpoints`
-  case listEndpoints = "listEndpoints"
-  /// `POST v1/endpoints`
-  case createEndpoint = "createEndpoint"
-  /// `DELETE v1/endpoints/{endpointId}`
-  case deleteEndpoint = "deleteEndpoint"
-  /// `GET v1/endpoints/{endpointId}`
-  case getEndpoint = "getEndpoint"
-  /// `PATCH v1/endpoints/{endpointId}`
-  case updateEndpoint = "updateEndpoint"
-  /// `DELETE v1/endpoints/{endpointId}/adapters`
-  case removeAdapter = "removeAdapter"
-  /// `GET v1/endpoints/{endpointId}/adapters`
-  case listAdapters = "listAdapters"
-  /// `POST v1/endpoints/{endpointId}/adapters`
-  case addAdapter = "addAdapter"
   /// `GET v1/evaluation`
   case getAllEvaluationJobs = "getAllEvaluationJobs"
   /// `POST v1/evaluation`
@@ -171,10 +153,6 @@ public enum TogetherOperation: String, HyperProxyCatalogOperation {
   case filesDelete = "files.delete"
   /// `GET v1/files/{file_id}`
   case filesRetrieve = "files.retrieve"
-  /// `DELETE v1/files/{id}`
-  case v1FilesIdDelete = "v1.files._id_.delete"
-  /// `GET v1/files/{id}`
-  case v1FilesIdGet = "v1.files._id_.get"
   /// `GET v1/files/{id}/content`
   case v1FilesIdContentGet = "v1.files._id_.content.get"
   /// `GET v1/fine-tunes`
@@ -189,10 +167,6 @@ public enum TogetherOperation: String, HyperProxyCatalogOperation {
   case v1FineTunesModelsSupportedGet = "v1.fine-tunes.models.supported.get"
   /// `DELETE v1/fine-tunes/{id}`
   case v1FineTunesIdDelete = "v1.fine-tunes._id_.delete"
-  /// `GET v1/fine-tunes/{id}`
-  case v1FineTunesIdGet = "v1.fine-tunes._id_.get"
-  /// `POST v1/fine-tunes/{id}/cancel`
-  case v1FineTunesIdCancelPost = "v1.fine-tunes._id_.cancel.post"
   /// `GET v1/fine-tunes/{id}/checkpoints`
   case v1FineTunesIdCheckpointsGet = "v1.fine-tunes._id_.checkpoints.get"
   /// `GET v1/fine-tunes/{id}/download-tokenized-dataset`
@@ -208,22 +182,14 @@ public enum TogetherOperation: String, HyperProxyCatalogOperation {
   case fineTuningCancel = "fineTuning.cancel"
   /// `GET v1/finetune/download`
   case v1FinetuneDownloadGet = "v1.finetune.download.get"
-  /// `GET v1/hardware`
-  case listHardware = "listHardware"
   /// `POST v1/images/generations`
   case imagesCreate = "images.create"
-  /// `GET v1/jobs`
-  case listJobs = "listJobs"
   /// `POST v1/jobs`
   case jobsCreate = "jobs.create"
-  /// `GET v1/jobs/{jobId}`
-  case getJob = "getJob"
   /// `GET v1/jobs/{job_id}`
   case jobsRetrieve = "jobs.retrieve"
   /// `GET v1/models`
   case modelsList = "models.list"
-  /// `POST v1/models`
-  case uploadModel = "uploadModel"
   /// `GET v1/projects`
   case listProjects = "listProjects"
   /// `POST v1/queue/cancel`
@@ -308,18 +274,12 @@ public enum TogetherOperation: String, HyperProxyCatalogOperation {
   case cancelShapingJob = "cancelShapingJob"
   /// `GET v1/shaping/{id}/events`
   case getShapingEvents = "getShapingEvents"
-  /// `POST v1/tci/execute`
-  case tciExecute = "tci.execute"
-  /// `GET v1/tci/sessions`
-  case sessionsList = "sessions.list"
   /// `POST v1/videos`
   case videosCreate = "videos.create"
   /// `GET v1/videos/{video_id}`
   case videosRetrieve = "videos.retrieve"
   /// `GET v1/voices`
   case fetchVoices = "fetchVoices"
-  /// `GET v1/whoami`
-  case whoami = "whoami"
   /// `GET v2/organizations/{organizationId}/endpoints`
   case endpointServiceListOrganizationEndpoints = "EndpointService.ListOrganizationEndpoints"
   /// `GET v2/organizations/{organizationId}/models`
@@ -333,15 +293,15 @@ public enum TogetherOperation: String, HyperProxyCatalogOperation {
   /// `POST v2/projects/{projectId}/endpoints`
   case endpointServiceCreateEndpoint = "EndpointService.CreateEndpoint"
   /// `GET v2/projects/{projectId}/endpoints/{endpointId}/abExperiments`
-  case aBExperimentServiceListABExperiments = "ABExperimentService.ListABExperiments"
+  case abExperimentServiceListAbExperiments = "ABExperimentService.ListABExperiments"
   /// `POST v2/projects/{projectId}/endpoints/{endpointId}/abExperiments`
-  case aBExperimentServiceCreateABExperiment = "ABExperimentService.CreateABExperiment"
+  case abExperimentServiceCreateAbExperiment = "ABExperimentService.CreateABExperiment"
   /// `DELETE v2/projects/{projectId}/endpoints/{endpointId}/abExperiments/{id}`
-  case aBExperimentServiceDeleteABExperiment = "ABExperimentService.DeleteABExperiment"
+  case abExperimentServiceDeleteAbExperiment = "ABExperimentService.DeleteABExperiment"
   /// `GET v2/projects/{projectId}/endpoints/{endpointId}/abExperiments/{id}`
-  case aBExperimentServiceGetABExperiment = "ABExperimentService.GetABExperiment"
+  case abExperimentServiceGetAbExperiment = "ABExperimentService.GetABExperiment"
   /// `PATCH v2/projects/{projectId}/endpoints/{endpointId}/abExperiments/{id}`
-  case aBExperimentServiceUpdateABExperiment = "ABExperimentService.UpdateABExperiment"
+  case abExperimentServiceUpdateAbExperiment = "ABExperimentService.UpdateABExperiment"
   /// `GET v2/projects/{projectId}/endpoints/{endpointId}/deployments`
   case deploymentServiceListDeployments = "DeploymentService.ListDeployments"
   /// `POST v2/projects/{projectId}/endpoints/{endpointId}/deployments`
@@ -458,4 +418,6 @@ public enum TogetherOperation: String, HyperProxyCatalogOperation {
   case createVideo = "createVideo"
   /// `GET v2/videos/{id}`
   case retrieveVideo = "retrieveVideo"
+  /// `GET v3/whoami`
+  case whoami = "whoami"
 }

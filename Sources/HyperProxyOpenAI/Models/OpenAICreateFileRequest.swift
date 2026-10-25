@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct OpenAICreateFileRequest: Codable, Sendable {
   public var expiresAfter: OpenAIFileExpirationAfter?
   public var file: String
-  public var purpose: OpenAICreateFileRequestPurpose
+  public var purpose: OpenAICreateFileRequest.Purpose
 
   public init(
     file: String,
-    purpose: OpenAICreateFileRequestPurpose,
+    purpose: OpenAICreateFileRequest.Purpose,
     expiresAfter: OpenAIFileExpirationAfter? = nil
   ) {
     self.expiresAfter = expiresAfter
@@ -29,5 +29,14 @@ public struct OpenAICreateFileRequest: Codable, Sendable {
     case expiresAfter = "expires_after"
     case file
     case purpose
+  }
+
+  public enum Purpose: String, Codable, Hashable, Sendable {
+    case assistants = "assistants"
+    case batch = "batch"
+    case fineTune = "fine-tune"
+    case vision = "vision"
+    case userData = "user_data"
+    case evals = "evals"
   }
 }

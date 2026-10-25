@@ -11,6 +11,6 @@ import Foundation
 import HyperProxyCore
 
 public enum ElevenLabsAlertingWebhookMethod: String, Codable, Hashable, Sendable {
-  case pOST = "POST"
-  case pUT = "PUT"
+  case post = "POST"
+  case put = "PUT"
 }

@@ -18,9 +18,9 @@ public struct OpenRouterPublicEndpoint: Codable, Sendable {
   public var modelId: String
   public var modelName: String
   public var name: String
-  public var nativeTools: [String: OpenRouterPublicEndpointNativeToolsValue]
-  public var perfLast30mByWorkload: OpenRouterPublicEndpointPerfLast30mByWorkload?
-  public var pricing: OpenRouterPublicEndpointPricing
+  public var nativeTools: [String: OpenRouterPublicEndpoint.NativeToolsValue]
+  public var perfLast30mByWorkload: OpenRouterPublicEndpoint.PerfLast30mByWorkload?
+  public var pricing: OpenRouterPublicEndpoint.Pricing
   public var providerName: OpenRouterProviderName
   public var quantization: OpenRouterQuantization?
   public var serviceTier: OpenRouterPublicServiceTier?
@@ -46,8 +46,8 @@ public struct OpenRouterPublicEndpoint: Codable, Sendable {
     modelId: String,
     modelName: String,
     name: String,
-    nativeTools: [String: OpenRouterPublicEndpointNativeToolsValue],
-    pricing: OpenRouterPublicEndpointPricing,
+    nativeTools: [String: OpenRouterPublicEndpoint.NativeToolsValue],
+    pricing: OpenRouterPublicEndpoint.Pricing,
     providerName: OpenRouterProviderName,
     quantization: OpenRouterQuantization?,
     serviceTier: OpenRouterPublicServiceTier?,
@@ -60,7 +60,7 @@ public struct OpenRouterPublicEndpoint: Codable, Sendable {
     uptimeLast1d: Double,
     uptimeLast30m: Double,
     uptimeLast5m: Double,
-    perfLast30mByWorkload: OpenRouterPublicEndpointPerfLast30mByWorkload? = nil,
+    perfLast30mByWorkload: OpenRouterPublicEndpoint.PerfLast30mByWorkload? = nil,
     status: OpenRouterEndpointStatus? = nil,
     supportsImageReference: Bool? = nil,
     supportsMultipleAudioReferences: Bool? = nil,
@@ -121,5 +121,337 @@ public struct OpenRouterPublicEndpoint: Codable, Sendable {
     case uptimeLast1d = "uptime_last_1d"
     case uptimeLast30m = "uptime_last_30m"
     case uptimeLast5m = "uptime_last_5m"
+  }
+
+  public struct NativeToolsValue: Codable, Sendable {
+    public var kind: String
+
+    public init(
+      kind: String
+    ) {
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case kind = "type"
+    }
+  }
+
+  public struct PerfLast30mByWorkload: Codable, Sendable {
+    public var decisions: OpenRouterPublicEndpoint.PerfLast30mByWorkload.Decisions?
+    public var embeddings: OpenRouterPublicEndpoint.PerfLast30mByWorkload.Embeddings?
+    public var imageGeneration: OpenRouterPublicEndpoint.PerfLast30mByWorkload.ImageGeneration?
+    public var rerank: OpenRouterPublicEndpoint.PerfLast30mByWorkload.Rerank?
+    public var stt: OpenRouterPublicEndpoint.PerfLast30mByWorkload.Stt?
+    public var textGeneration: OpenRouterPublicEndpoint.PerfLast30mByWorkload.TextGeneration?
+    public var tts: OpenRouterPublicEndpoint.PerfLast30mByWorkload.Tts?
+    public var unknown: OpenRouterPublicEndpoint.PerfLast30mByWorkload.Unknown?
+    public var videoGeneration: OpenRouterPublicEndpoint.PerfLast30mByWorkload.VideoGeneration?
+
+    public init(
+      decisions: OpenRouterPublicEndpoint.PerfLast30mByWorkload.Decisions? = nil,
+      embeddings: OpenRouterPublicEndpoint.PerfLast30mByWorkload.Embeddings? = nil,
+      imageGeneration: OpenRouterPublicEndpoint.PerfLast30mByWorkload.ImageGeneration? = nil,
+      rerank: OpenRouterPublicEndpoint.PerfLast30mByWorkload.Rerank? = nil,
+      stt: OpenRouterPublicEndpoint.PerfLast30mByWorkload.Stt? = nil,
+      textGeneration: OpenRouterPublicEndpoint.PerfLast30mByWorkload.TextGeneration? = nil,
+      tts: OpenRouterPublicEndpoint.PerfLast30mByWorkload.Tts? = nil,
+      unknown: OpenRouterPublicEndpoint.PerfLast30mByWorkload.Unknown? = nil,
+      videoGeneration: OpenRouterPublicEndpoint.PerfLast30mByWorkload.VideoGeneration? = nil
+    ) {
+      self.decisions = decisions
+      self.embeddings = embeddings
+      self.imageGeneration = imageGeneration
+      self.rerank = rerank
+      self.stt = stt
+      self.textGeneration = textGeneration
+      self.tts = tts
+      self.unknown = unknown
+      self.videoGeneration = videoGeneration
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case decisions
+      case embeddings
+      case imageGeneration = "image_generation"
+      case rerank
+      case stt
+      case textGeneration = "text_generation"
+      case tts
+      case unknown
+      case videoGeneration = "video_generation"
+    }
+
+    public struct Decisions: Codable, Sendable {
+      public var latency: OpenRouterPercentileStats?
+      public var requestCount: Int
+      public var throughput: OpenRouterPercentileStats?
+
+      public init(
+        latency: OpenRouterPercentileStats?,
+        requestCount: Int,
+        throughput: OpenRouterPercentileStats?
+      ) {
+        self.latency = latency
+        self.requestCount = requestCount
+        self.throughput = throughput
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case latency
+        case requestCount = "request_count"
+        case throughput
+      }
+    }
+
+    public struct Embeddings: Codable, Sendable {
+      public var latency: OpenRouterPercentileStats?
+      public var requestCount: Int
+      public var throughput: OpenRouterPercentileStats?
+
+      public init(
+        latency: OpenRouterPercentileStats?,
+        requestCount: Int,
+        throughput: OpenRouterPercentileStats?
+      ) {
+        self.latency = latency
+        self.requestCount = requestCount
+        self.throughput = throughput
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case latency
+        case requestCount = "request_count"
+        case throughput
+      }
+    }
+
+    public struct ImageGeneration: Codable, Sendable {
+      public var latency: OpenRouterPercentileStats?
+      public var requestCount: Int
+      public var throughput: OpenRouterPercentileStats?
+
+      public init(
+        latency: OpenRouterPercentileStats?,
+        requestCount: Int,
+        throughput: OpenRouterPercentileStats?
+      ) {
+        self.latency = latency
+        self.requestCount = requestCount
+        self.throughput = throughput
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case latency
+        case requestCount = "request_count"
+        case throughput
+      }
+    }
+
+    public struct Rerank: Codable, Sendable {
+      public var latency: OpenRouterPercentileStats?
+      public var requestCount: Int
+      public var throughput: OpenRouterPercentileStats?
+
+      public init(
+        latency: OpenRouterPercentileStats?,
+        requestCount: Int,
+        throughput: OpenRouterPercentileStats?
+      ) {
+        self.latency = latency
+        self.requestCount = requestCount
+        self.throughput = throughput
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case latency
+        case requestCount = "request_count"
+        case throughput
+      }
+    }
+
+    public struct Stt: Codable, Sendable {
+      public var latency: OpenRouterPercentileStats?
+      public var requestCount: Int
+      public var throughput: OpenRouterPercentileStats?
+
+      public init(
+        latency: OpenRouterPercentileStats?,
+        requestCount: Int,
+        throughput: OpenRouterPercentileStats?
+      ) {
+        self.latency = latency
+        self.requestCount = requestCount
+        self.throughput = throughput
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case latency
+        case requestCount = "request_count"
+        case throughput
+      }
+    }
+
+    public struct TextGeneration: Codable, Sendable {
+      public var latency: OpenRouterPercentileStats?
+      public var requestCount: Int
+      public var throughput: OpenRouterPercentileStats?
+
+      public init(
+        latency: OpenRouterPercentileStats?,
+        requestCount: Int,
+        throughput: OpenRouterPercentileStats?
+      ) {
+        self.latency = latency
+        self.requestCount = requestCount
+        self.throughput = throughput
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case latency
+        case requestCount = "request_count"
+        case throughput
+      }
+    }
+
+    public struct Tts: Codable, Sendable {
+      public var latency: OpenRouterPercentileStats?
+      public var requestCount: Int
+      public var throughput: OpenRouterPercentileStats?
+
+      public init(
+        latency: OpenRouterPercentileStats?,
+        requestCount: Int,
+        throughput: OpenRouterPercentileStats?
+      ) {
+        self.latency = latency
+        self.requestCount = requestCount
+        self.throughput = throughput
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case latency
+        case requestCount = "request_count"
+        case throughput
+      }
+    }
+
+    public struct Unknown: Codable, Sendable {
+      public var latency: OpenRouterPercentileStats?
+      public var requestCount: Int
+      public var throughput: OpenRouterPercentileStats?
+
+      public init(
+        latency: OpenRouterPercentileStats?,
+        requestCount: Int,
+        throughput: OpenRouterPercentileStats?
+      ) {
+        self.latency = latency
+        self.requestCount = requestCount
+        self.throughput = throughput
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case latency
+        case requestCount = "request_count"
+        case throughput
+      }
+    }
+
+    public struct VideoGeneration: Codable, Sendable {
+      public var latency: OpenRouterPercentileStats?
+      public var requestCount: Int
+      public var throughput: OpenRouterPercentileStats?
+
+      public init(
+        latency: OpenRouterPercentileStats?,
+        requestCount: Int,
+        throughput: OpenRouterPercentileStats?
+      ) {
+        self.latency = latency
+        self.requestCount = requestCount
+        self.throughput = throughput
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case latency
+        case requestCount = "request_count"
+        case throughput
+      }
+    }
+  }
+
+  public struct Pricing: Codable, Sendable {
+    public var audio: String?
+    public var audioOutput: String?
+    public var completion: String
+    public var discount: Double?
+    public var image: String?
+    public var imageOutput: String?
+    public var imageToken: String?
+    public var inputAudioCache: String?
+    public var inputCacheRead: String?
+    public var inputCacheWrite: String?
+    public var inputCacheWrite1h: String?
+    public var internalReasoning: String?
+    public var overrides: [OpenRouterPricingOverride]?
+    public var prompt: String
+    public var request: String?
+    public var webSearch: String?
+
+    public init(
+      completion: String,
+      prompt: String,
+      audio: String? = nil,
+      audioOutput: String? = nil,
+      discount: Double? = nil,
+      image: String? = nil,
+      imageOutput: String? = nil,
+      imageToken: String? = nil,
+      inputAudioCache: String? = nil,
+      inputCacheRead: String? = nil,
+      inputCacheWrite: String? = nil,
+      inputCacheWrite1h: String? = nil,
+      internalReasoning: String? = nil,
+      overrides: [OpenRouterPricingOverride]? = nil,
+      request: String? = nil,
+      webSearch: String? = nil
+    ) {
+      self.audio = audio
+      self.audioOutput = audioOutput
+      self.completion = completion
+      self.discount = discount
+      self.image = image
+      self.imageOutput = imageOutput
+      self.imageToken = imageToken
+      self.inputAudioCache = inputAudioCache
+      self.inputCacheRead = inputCacheRead
+      self.inputCacheWrite = inputCacheWrite
+      self.inputCacheWrite1h = inputCacheWrite1h
+      self.internalReasoning = internalReasoning
+      self.overrides = overrides
+      self.prompt = prompt
+      self.request = request
+      self.webSearch = webSearch
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case audio
+      case audioOutput = "audio_output"
+      case completion
+      case discount
+      case image
+      case imageOutput = "image_output"
+      case imageToken = "image_token"
+      case inputAudioCache = "input_audio_cache"
+      case inputCacheRead = "input_cache_read"
+      case inputCacheWrite = "input_cache_write"
+      case inputCacheWrite1h = "input_cache_write_1h"
+      case internalReasoning = "internal_reasoning"
+      case overrides
+      case prompt
+      case request
+      case webSearch = "web_search"
+    }
   }
 }

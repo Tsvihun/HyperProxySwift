@@ -16,7 +16,7 @@ public struct OpenAIAgentMessageItemResource: Codable, Sendable {
   public var recipientAgentId: String
   public var senderAgentId: String
   public var turnId: String
-  public var kind: OpenAIAgentMessageItemResourceKind
+  public var kind: OpenAIAgentMessageItemResource.Kind
 
   public init(
     content: [OpenAIAgentContentResource],
@@ -24,7 +24,7 @@ public struct OpenAIAgentMessageItemResource: Codable, Sendable {
     recipientAgentId: String,
     senderAgentId: String,
     turnId: String,
-    kind: OpenAIAgentMessageItemResourceKind
+    kind: OpenAIAgentMessageItemResource.Kind
   ) {
     self.content = content
     self.id = id
@@ -41,5 +41,9 @@ public struct OpenAIAgentMessageItemResource: Codable, Sendable {
     case senderAgentId = "sender_agent_id"
     case turnId = "turn_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case agentMessage = "agent_message"
   }
 }

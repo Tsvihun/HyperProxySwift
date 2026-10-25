@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public enum ElevenLabsImageGenerationRequest: Codable, Sendable {
-  case gPTImage1Request(ElevenLabsGPTImage1Request)
-  case gPTImage15Request(ElevenLabsGPTImage15Request)
-  case gPTImage2Request(ElevenLabsGPTImage2Request)
-  case gPTImage25SunburstRequest(ElevenLabsGPTImage25SunburstRequest)
-  case gPTImage25FlareRequest(ElevenLabsGPTImage25FlareRequest)
+  case gptImage1Request(ElevenLabsGPTImage1Request)
+  case gptImage15Request(ElevenLabsGPTImage15Request)
+  case gptImage2Request(ElevenLabsGPTImage2Request)
+  case gptImage25SunburstRequest(ElevenLabsGPTImage25SunburstRequest)
+  case gptImage25FlareRequest(ElevenLabsGPTImage25FlareRequest)
   case gemini25FlashImageRequest(ElevenLabsGemini25FlashImageRequest)
   case gemini3ProImageRequest(ElevenLabsGemini3ProImageRequest)
   case gemini31FlashImageRequest(ElevenLabsGemini31FlashImageRequest)
@@ -26,23 +26,23 @@ public enum ElevenLabsImageGenerationRequest: Codable, Sendable {
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
     if let value = try? container.decode(ElevenLabsGPTImage1Request.self) {
-      self = .gPTImage1Request(value)
+      self = .gptImage1Request(value)
       return
     }
     if let value = try? container.decode(ElevenLabsGPTImage15Request.self) {
-      self = .gPTImage15Request(value)
+      self = .gptImage15Request(value)
       return
     }
     if let value = try? container.decode(ElevenLabsGPTImage2Request.self) {
-      self = .gPTImage2Request(value)
+      self = .gptImage2Request(value)
       return
     }
     if let value = try? container.decode(ElevenLabsGPTImage25SunburstRequest.self) {
-      self = .gPTImage25SunburstRequest(value)
+      self = .gptImage25SunburstRequest(value)
       return
     }
     if let value = try? container.decode(ElevenLabsGPTImage25FlareRequest.self) {
-      self = .gPTImage25FlareRequest(value)
+      self = .gptImage25FlareRequest(value)
       return
     }
     if let value = try? container.decode(ElevenLabsGemini25FlashImageRequest.self) {
@@ -72,15 +72,15 @@ public enum ElevenLabsImageGenerationRequest: Codable, Sendable {
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .gPTImage1Request(let value):
+    case .gptImage1Request(let value):
       try container.encode(value)
-    case .gPTImage15Request(let value):
+    case .gptImage15Request(let value):
       try container.encode(value)
-    case .gPTImage2Request(let value):
+    case .gptImage2Request(let value):
       try container.encode(value)
-    case .gPTImage25SunburstRequest(let value):
+    case .gptImage25SunburstRequest(let value):
       try container.encode(value)
-    case .gPTImage25FlareRequest(let value):
+    case .gptImage25FlareRequest(let value):
       try container.encode(value)
     case .gemini25FlashImageRequest(let value):
       try container.encode(value)

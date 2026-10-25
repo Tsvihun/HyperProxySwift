@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenRouterAnthropicContainerUpload: Codable, Sendable {
   public var fileId: String
-  public var kind: OpenRouterAnthropicContainerUploadKind
+  public var kind: OpenRouterAnthropicContainerUpload.Kind
 
   public init(
     fileId: String,
-    kind: OpenRouterAnthropicContainerUploadKind
+    kind: OpenRouterAnthropicContainerUpload.Kind
   ) {
     self.fileId = fileId
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenRouterAnthropicContainerUpload: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case fileId = "file_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case containerUpload = "container_upload"
   }
 }

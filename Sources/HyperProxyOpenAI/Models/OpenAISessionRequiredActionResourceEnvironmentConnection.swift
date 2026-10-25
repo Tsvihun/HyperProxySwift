@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAISessionRequiredActionResourceEnvironmentConnection: Codable, Sendable {
   public var environmentId: String
-  public var kind: OpenAISessionRequiredActionResourceEnvironmentConnectionKind
+  public var kind: OpenAISessionRequiredActionResourceEnvironmentConnection.Kind
 
   public init(
     environmentId: String,
-    kind: OpenAISessionRequiredActionResourceEnvironmentConnectionKind
+    kind: OpenAISessionRequiredActionResourceEnvironmentConnection.Kind
   ) {
     self.environmentId = environmentId
     self.kind = kind
@@ -25,5 +25,11 @@ public struct OpenAISessionRequiredActionResourceEnvironmentConnection: Codable,
   enum CodingKeys: String, CodingKey {
     case environmentId = "environment_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case environmentConnection = "environment_connection"
   }
 }

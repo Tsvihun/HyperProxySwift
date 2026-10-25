@@ -15,14 +15,14 @@ public struct AnthropicBetaFallbackConfigV2: Codable, Sendable {
   public var model: AnthropicModel
   public var outputConfig: AnthropicBetaOutputConfig?
   public var speed: AnthropicBetaSpeed?
-  public var thinking: AnthropicBetaFallbackConfigV2ThinkingAnyOf1?
+  public var thinking: AnthropicBetaFallbackConfigV2ThinkingVariant?
 
   public init(
     model: AnthropicModel,
     maxTokens: Int? = nil,
     outputConfig: AnthropicBetaOutputConfig? = nil,
     speed: AnthropicBetaSpeed? = nil,
-    thinking: AnthropicBetaFallbackConfigV2ThinkingAnyOf1? = nil
+    thinking: AnthropicBetaFallbackConfigV2ThinkingVariant? = nil
   ) {
     self.maxTokens = maxTokens
     self.model = model

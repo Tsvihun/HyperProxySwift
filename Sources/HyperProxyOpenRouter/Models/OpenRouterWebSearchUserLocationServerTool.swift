@@ -15,14 +15,14 @@ public struct OpenRouterWebSearchUserLocationServerTool: Codable, Sendable {
   public var country: String?
   public var region: String?
   public var timezone: String?
-  public var kind: OpenRouterWebSearchUserLocationServerToolKind?
+  public var kind: OpenRouterWebSearchUserLocationServerTool.Kind?
 
   public init(
     city: String? = nil,
     country: String? = nil,
     region: String? = nil,
     timezone: String? = nil,
-    kind: OpenRouterWebSearchUserLocationServerToolKind? = nil
+    kind: OpenRouterWebSearchUserLocationServerTool.Kind? = nil
   ) {
     self.city = city
     self.country = country
@@ -37,5 +37,9 @@ public struct OpenRouterWebSearchUserLocationServerTool: Codable, Sendable {
     case region
     case timezone
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case approximate = "approximate"
   }
 }

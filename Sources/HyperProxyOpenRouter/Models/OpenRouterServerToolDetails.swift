@@ -78,4 +78,54 @@ public struct OpenRouterServerToolDetails: Codable, Sendable {
     case supportedApiFormats = "supported_api_formats"
     case toolDescription = "tool_description"
   }
+
+  public struct WithNativeSupport: Codable, Sendable {
+    public var nativeSupport: OpenRouterServerToolDetails.WithNativeSupport.NativeSupport?
+
+    public init(
+      nativeSupport: OpenRouterServerToolDetails.WithNativeSupport.NativeSupport? = nil
+    ) {
+      self.nativeSupport = nativeSupport
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case nativeSupport = "native_support"
+    }
+
+    public struct NativeSupport: Codable, Sendable {
+      public var endpointCount: Int
+      public var modelCount: Int
+      public var models: [OpenRouterServerToolNativeModel]
+
+      public init(
+        endpointCount: Int,
+        modelCount: Int,
+        models: [OpenRouterServerToolNativeModel]
+      ) {
+        self.endpointCount = endpointCount
+        self.modelCount = modelCount
+        self.models = models
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case endpointCount = "endpoint_count"
+        case modelCount = "model_count"
+        case models
+      }
+
+      public struct WithModels: Codable, Sendable {
+        public var models: [OpenRouterServerToolNativeModel]
+
+        public init(
+          models: [OpenRouterServerToolNativeModel]
+        ) {
+          self.models = models
+        }
+
+        enum CodingKeys: String, CodingKey {
+          case models
+        }
+      }
+    }
+  }
 }

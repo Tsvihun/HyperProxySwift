@@ -11,5 +11,5 @@ import Foundation
 import HyperProxyCore
 
 public enum AnthropicAnyModelKind: String, Codable, Hashable, Sendable {
-  case anyModel = "any"
+  case any = "any"
 }

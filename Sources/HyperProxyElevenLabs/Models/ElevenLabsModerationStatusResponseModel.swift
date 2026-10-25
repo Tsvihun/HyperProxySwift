@@ -19,8 +19,8 @@ public struct ElevenLabsModerationStatusResponseModel: Codable, Sendable {
   public var neverLiveModerate: Bool
   public var nogoVoiceSimilarVoiceUploadCount: Int
   public var onWatchlist: Bool
-  public var safetyStatus: ElevenLabsModerationStatusResponseModelSafetyStatus?
-  public var warningStatus: ElevenLabsModerationStatusResponseModelWarningStatus?
+  public var safetyStatus: ElevenLabsModerationStatusResponseModel.SafetyStatus?
+  public var warningStatus: ElevenLabsModerationStatusResponseModel.WarningStatus?
 
   public init(
     enterpriseBackgroundModerationEnabled: Bool,
@@ -31,8 +31,8 @@ public struct ElevenLabsModerationStatusResponseModel: Codable, Sendable {
     neverLiveModerate: Bool,
     nogoVoiceSimilarVoiceUploadCount: Int,
     onWatchlist: Bool,
-    safetyStatus: ElevenLabsModerationStatusResponseModelSafetyStatus? = nil,
-    warningStatus: ElevenLabsModerationStatusResponseModelWarningStatus? = nil
+    safetyStatus: ElevenLabsModerationStatusResponseModel.SafetyStatus? = nil,
+    warningStatus: ElevenLabsModerationStatusResponseModel.WarningStatus? = nil
   ) {
     self.enterpriseBackgroundModerationEnabled = enterpriseBackgroundModerationEnabled
     self.enterpriseCheckBlockNogoVoice = enterpriseCheckBlockNogoVoice
@@ -57,5 +57,18 @@ public struct ElevenLabsModerationStatusResponseModel: Codable, Sendable {
     case onWatchlist = "on_watchlist"
     case safetyStatus = "safety_status"
     case warningStatus = "warning_status"
+  }
+
+  public enum SafetyStatus: String, Codable, Hashable, Sendable {
+    case appealApproved = "appeal_approved"
+    case appealDenied = "appeal_denied"
+    case falsePositive = "false_positive"
+  }
+
+  public enum WarningStatus: String, Codable, Hashable,
+    Sendable
+  {
+    case warning = "warning"
+    case warningCleared = "warning_cleared"
   }
 }

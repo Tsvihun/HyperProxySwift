@@ -15,5 +15,6 @@ public enum ElevenLabsAgentDefinitionSource: String, Codable, Hashable, Sendable
   case ui = "ui"
   case api = "api"
   case template = "template"
+  case architect = "architect"
   case unknown = "unknown"
 }

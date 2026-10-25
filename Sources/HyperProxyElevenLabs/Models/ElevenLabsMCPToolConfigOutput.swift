@@ -17,7 +17,7 @@ public struct ElevenLabsMCPToolConfigOutput: Codable, Sendable {
   public var disableInterruptions: Bool?
   public var executionMode: ElevenLabsToolExecutionMode?
   public var forcePreToolSpeech: Bool?
-  public var inputOverrides: [String: ElevenLabsMCPToolConfigOutputInputOverridesAnyOf1Value]?
+  public var inputOverrides: [String: ElevenLabsMCPToolConfigOutputInputOverridesValue]?
   public var integrationType: ElevenLabsIntegrationType
   public var interruptionMode: ElevenLabsToolInterruptionMode?
   public var mcpInputSchema: [String: HyperProxyJSONValue]?
@@ -47,7 +47,7 @@ public struct ElevenLabsMCPToolConfigOutput: Codable, Sendable {
     disableInterruptions: Bool? = nil,
     executionMode: ElevenLabsToolExecutionMode? = nil,
     forcePreToolSpeech: Bool? = nil,
-    inputOverrides: [String: ElevenLabsMCPToolConfigOutputInputOverridesAnyOf1Value]? = nil,
+    inputOverrides: [String: ElevenLabsMCPToolConfigOutputInputOverridesValue]? = nil,
     interruptionMode: ElevenLabsToolInterruptionMode? = nil,
     mcpInputSchema: [String: HyperProxyJSONValue]? = nil,
     parameters: ElevenLabsObjectJsonSchemaPropertyOutput? = nil,

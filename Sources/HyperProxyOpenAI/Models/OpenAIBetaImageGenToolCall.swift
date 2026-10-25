@@ -17,26 +17,26 @@ public struct OpenAIBetaImageGenToolCall: Codable, Sendable {
   public var error: OpenAIBetaImageGenToolCallError?
   public var id: String
   public var outputFormat: OpenAIBetaImageOutputFormat?
-  public var quality: OpenAIBetaImageGenToolCallQuality?
+  public var quality: OpenAIBetaImageGenToolCall.Quality?
   public var result: String?
   public var revisedPrompt: String?
-  public var size: OpenAIBetaImageGenToolCallSizeAnyOf1?
-  public var status: OpenAIBetaImageGenToolCallStatus
-  public var kind: OpenAIBetaImageGenToolCallKind
+  public var size: OpenAIBetaImageGenToolCallSizeVariant?
+  public var status: OpenAIBetaImageGenToolCall.Status
+  public var kind: OpenAIBetaImageGenToolCall.Kind
 
   public init(
     id: String,
     result: String?,
-    status: OpenAIBetaImageGenToolCallStatus,
-    kind: OpenAIBetaImageGenToolCallKind,
+    status: OpenAIBetaImageGenToolCall.Status,
+    kind: OpenAIBetaImageGenToolCall.Kind,
     action: OpenAIBetaImageGenActionEnum? = nil,
     agent: OpenAIBetaAgentTag? = nil,
     background: OpenAIBetaImageBackground? = nil,
     error: OpenAIBetaImageGenToolCallError? = nil,
     outputFormat: OpenAIBetaImageOutputFormat? = nil,
-    quality: OpenAIBetaImageGenToolCallQuality? = nil,
+    quality: OpenAIBetaImageGenToolCall.Quality? = nil,
     revisedPrompt: String? = nil,
-    size: OpenAIBetaImageGenToolCallSizeAnyOf1? = nil
+    size: OpenAIBetaImageGenToolCallSizeVariant? = nil
   ) {
     self.action = action
     self.agent = agent
@@ -65,5 +65,25 @@ public struct OpenAIBetaImageGenToolCall: Codable, Sendable {
     case size
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case imageGenerationCall = "image_generation_call"
+  }
+
+  public enum Quality: String, Codable, Hashable, Sendable {
+    case low = "low"
+    case medium = "medium"
+    case high = "high"
+    case xhigh = "xhigh"
+    case max = "max"
+    case auto = "auto"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case inProgress = "in_progress"
+    case completed = "completed"
+    case generating = "generating"
+    case failed = "failed"
   }
 }

@@ -16,7 +16,7 @@ public struct OpenRouterObservabilityOtelCollectorDestination: Codable, Sendable
   public var broadcastGenerationCostAllocation: Bool
   public var broadcastGenerationIdentity: Bool
   public var broadcastGenerationRequestContext: Bool
-  public var config: OpenRouterObservabilityOtelCollectorDestinationConfig
+  public var config: OpenRouterObservabilityOtelCollectorDestination.Config
   public var createdAt: String
   public var enabled: Bool
   public var filterRules: OpenRouterObservabilityFilterRulesConfig?
@@ -25,7 +25,7 @@ public struct OpenRouterObservabilityOtelCollectorDestination: Codable, Sendable
   public var privacyMode: Bool
   public var regions: [OpenRouterObservabilityDataRegion]
   public var samplingRate: Double
-  public var kind: OpenRouterObservabilityOtelCollectorDestinationKind
+  public var kind: OpenRouterObservabilityOtelCollectorDestination.Kind
   public var updatedAt: String
   public var workspaceId: String
 
@@ -35,7 +35,7 @@ public struct OpenRouterObservabilityOtelCollectorDestination: Codable, Sendable
     broadcastGenerationCostAllocation: Bool,
     broadcastGenerationIdentity: Bool,
     broadcastGenerationRequestContext: Bool,
-    config: OpenRouterObservabilityOtelCollectorDestinationConfig,
+    config: OpenRouterObservabilityOtelCollectorDestination.Config,
     createdAt: String,
     enabled: Bool,
     filterRules: OpenRouterObservabilityFilterRulesConfig?,
@@ -44,7 +44,7 @@ public struct OpenRouterObservabilityOtelCollectorDestination: Codable, Sendable
     privacyMode: Bool,
     regions: [OpenRouterObservabilityDataRegion],
     samplingRate: Double,
-    kind: OpenRouterObservabilityOtelCollectorDestinationKind,
+    kind: OpenRouterObservabilityOtelCollectorDestination.Kind,
     updatedAt: String,
     workspaceId: String
   ) {
@@ -85,5 +85,27 @@ public struct OpenRouterObservabilityOtelCollectorDestination: Codable, Sendable
     case kind = "type"
     case updatedAt = "updated_at"
     case workspaceId = "workspace_id"
+  }
+
+  public struct Config: Codable, Sendable {
+    public var endpoint: String
+    public var headers: [String: String]?
+
+    public init(
+      endpoint: String,
+      headers: [String: String]? = nil
+    ) {
+      self.endpoint = endpoint
+      self.headers = headers
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case endpoint
+      case headers
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case otelCollector = "otel-collector"
   }
 }

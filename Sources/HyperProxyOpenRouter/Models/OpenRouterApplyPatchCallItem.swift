@@ -15,13 +15,13 @@ public struct OpenRouterApplyPatchCallItem: Codable, Sendable {
   public var id: String?
   public var operation: OpenRouterApplyPatchCallOperation
   public var status: OpenRouterApplyPatchCallStatus
-  public var kind: OpenRouterApplyPatchCallItemKind
+  public var kind: OpenRouterApplyPatchCallItem.Kind
 
   public init(
     callId: String,
     operation: OpenRouterApplyPatchCallOperation,
     status: OpenRouterApplyPatchCallStatus,
-    kind: OpenRouterApplyPatchCallItemKind,
+    kind: OpenRouterApplyPatchCallItem.Kind,
     id: String? = nil
   ) {
     self.callId = callId
@@ -37,5 +37,9 @@ public struct OpenRouterApplyPatchCallItem: Codable, Sendable {
     case operation
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case applyPatchCall = "apply_patch_call"
   }
 }

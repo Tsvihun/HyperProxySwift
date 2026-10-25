@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct ReplicateModelsListParameters: Codable, Sendable {
-  public var sortBy: ReplicateModelsListParametersSortBy?
-  public var sortDirection: ReplicateModelsListParametersSortDirection?
+  public var sortBy: ReplicateModelsListParameters.SortBy?
+  public var sortDirection: ReplicateModelsListParameters.SortDirection?
 
   public init(
-    sortBy: ReplicateModelsListParametersSortBy? = nil,
-    sortDirection: ReplicateModelsListParametersSortDirection? = nil
+    sortBy: ReplicateModelsListParameters.SortBy? = nil,
+    sortDirection: ReplicateModelsListParameters.SortDirection? = nil
   ) {
     self.sortBy = sortBy
     self.sortDirection = sortDirection
@@ -25,5 +25,15 @@ public struct ReplicateModelsListParameters: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case sortBy = "sort_by"
     case sortDirection = "sort_direction"
+  }
+
+  public enum SortBy: String, Codable, Hashable, Sendable {
+    case modelCreatedAt = "model_created_at"
+    case latestVersionCreatedAt = "latest_version_created_at"
+  }
+
+  public enum SortDirection: String, Codable, Hashable, Sendable {
+    case asc = "asc"
+    case desc = "desc"
   }
 }

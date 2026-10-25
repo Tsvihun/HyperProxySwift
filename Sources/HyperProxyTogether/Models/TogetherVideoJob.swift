@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct TogetherVideoJob: Codable, Sendable {
   public var completedAt: Double?
   public var createdAt: Double
-  public var error: TogetherVideoJobError?
+  public var error: TogetherVideoJob.ErrorValue?
   public var id: String
   public var model: String
-  public var object: TogetherVideoObject?
-  public var outputs: TogetherVideoJobOutputs?
+  public var object: TogetherVideoJob.Object?
+  public var outputs: TogetherVideoJob.Outputs?
   public var seconds: String
   public var size: String
   public var status: TogetherVideoStatus
@@ -30,9 +30,9 @@ public struct TogetherVideoJob: Codable, Sendable {
     size: String,
     status: TogetherVideoStatus,
     completedAt: Double? = nil,
-    error: TogetherVideoJobError? = nil,
-    object: TogetherVideoObject? = nil,
-    outputs: TogetherVideoJobOutputs? = nil
+    error: TogetherVideoJob.ErrorValue? = nil,
+    object: TogetherVideoJob.Object? = nil,
+    outputs: TogetherVideoJob.Outputs? = nil
   ) {
     self.completedAt = completedAt
     self.createdAt = createdAt
@@ -57,5 +57,45 @@ public struct TogetherVideoJob: Codable, Sendable {
     case seconds
     case size
     case status
+  }
+
+  public struct ErrorValue: Codable, Sendable {
+    public var code: String?
+    public var message: String
+
+    public init(
+      message: String,
+      code: String? = nil
+    ) {
+      self.code = code
+      self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case code
+      case message
+    }
+  }
+
+  public struct Outputs: Codable, Sendable {
+    public var cost: Int
+    public var videoUrl: String
+
+    public init(
+      cost: Int,
+      videoUrl: String
+    ) {
+      self.cost = cost
+      self.videoUrl = videoUrl
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case cost
+      case videoUrl = "video_url"
+    }
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case video = "video"
   }
 }

@@ -16,7 +16,7 @@ public struct OpenRouterObservabilitySnowflakeDestination: Codable, Sendable {
   public var broadcastGenerationCostAllocation: Bool
   public var broadcastGenerationIdentity: Bool
   public var broadcastGenerationRequestContext: Bool
-  public var config: OpenRouterObservabilitySnowflakeDestinationConfig
+  public var config: OpenRouterObservabilitySnowflakeDestination.Config
   public var createdAt: String
   public var enabled: Bool
   public var filterRules: OpenRouterObservabilityFilterRulesConfig?
@@ -25,7 +25,7 @@ public struct OpenRouterObservabilitySnowflakeDestination: Codable, Sendable {
   public var privacyMode: Bool
   public var regions: [OpenRouterObservabilityDataRegion]
   public var samplingRate: Double
-  public var kind: OpenRouterObservabilitySnowflakeDestinationKind
+  public var kind: OpenRouterObservabilitySnowflakeDestination.Kind
   public var updatedAt: String
   public var workspaceId: String
 
@@ -35,7 +35,7 @@ public struct OpenRouterObservabilitySnowflakeDestination: Codable, Sendable {
     broadcastGenerationCostAllocation: Bool,
     broadcastGenerationIdentity: Bool,
     broadcastGenerationRequestContext: Bool,
-    config: OpenRouterObservabilitySnowflakeDestinationConfig,
+    config: OpenRouterObservabilitySnowflakeDestination.Config,
     createdAt: String,
     enabled: Bool,
     filterRules: OpenRouterObservabilityFilterRulesConfig?,
@@ -44,7 +44,7 @@ public struct OpenRouterObservabilitySnowflakeDestination: Codable, Sendable {
     privacyMode: Bool,
     regions: [OpenRouterObservabilityDataRegion],
     samplingRate: Double,
-    kind: OpenRouterObservabilitySnowflakeDestinationKind,
+    kind: OpenRouterObservabilitySnowflakeDestination.Kind,
     updatedAt: String,
     workspaceId: String
   ) {
@@ -85,5 +85,51 @@ public struct OpenRouterObservabilitySnowflakeDestination: Codable, Sendable {
     case kind = "type"
     case updatedAt = "updated_at"
     case workspaceId = "workspace_id"
+  }
+
+  public struct Config: Codable, Sendable {
+    public var account: String
+    public var database: String?
+    public var headers: [String: String]?
+    public var schema: String?
+    public var shouldIncludeCacheWriteTokens: Bool?
+    public var table: String?
+    public var token: String
+    public var warehouse: String?
+
+    public init(
+      account: String,
+      token: String,
+      database: String? = nil,
+      headers: [String: String]? = nil,
+      schema: String? = nil,
+      shouldIncludeCacheWriteTokens: Bool? = nil,
+      table: String? = nil,
+      warehouse: String? = nil
+    ) {
+      self.account = account
+      self.database = database
+      self.headers = headers
+      self.schema = schema
+      self.shouldIncludeCacheWriteTokens = shouldIncludeCacheWriteTokens
+      self.table = table
+      self.token = token
+      self.warehouse = warehouse
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case account
+      case database
+      case headers
+      case schema
+      case shouldIncludeCacheWriteTokens
+      case table
+      case token
+      case warehouse
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case snowflake = "snowflake"
   }
 }

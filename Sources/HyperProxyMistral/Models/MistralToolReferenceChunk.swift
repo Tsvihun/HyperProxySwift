@@ -14,16 +14,16 @@ public struct MistralToolReferenceChunk: Codable, Sendable {
   public var description: String?
   public var favicon: String?
   public var title: String
-  public var tool: MistralToolReferenceChunkTool
-  public var kind: MistralToolReferenceKind?
+  public var tool: MistralToolReferenceChunk.Tool
+  public var kind: MistralToolReferenceChunk.Kind?
   public var url: String?
 
   public init(
     title: String,
-    tool: MistralToolReferenceChunkTool,
+    tool: MistralToolReferenceChunk.Tool,
     description: String? = nil,
     favicon: String? = nil,
-    kind: MistralToolReferenceKind? = nil,
+    kind: MistralToolReferenceChunk.Kind? = nil,
     url: String? = nil
   ) {
     self.description = description
@@ -41,5 +41,67 @@ public struct MistralToolReferenceChunk: Codable, Sendable {
     case tool
     case kind = "type"
     case url
+  }
+
+  public enum Tool: RawRepresentable, Codable, Hashable, Sendable {
+    case webSearch
+    case webSearchPremium
+    case codeInterpreter
+    case imageGeneration
+    case documentLibrary
+    case mistralMcp
+    case custom(String)
+
+    public init(rawValue: String) {
+      switch rawValue {
+      case "web_search":
+        self = .webSearch
+      case "web_search_premium":
+        self = .webSearchPremium
+      case "code_interpreter":
+        self = .codeInterpreter
+      case "image_generation":
+        self = .imageGeneration
+      case "document_library":
+        self = .documentLibrary
+      case "mistral_mcp":
+        self = .mistralMcp
+      default:
+        self = .custom(rawValue)
+      }
+    }
+
+    public var rawValue: String {
+      switch self {
+      case .webSearch:
+        return "web_search"
+      case .webSearchPremium:
+        return "web_search_premium"
+      case .codeInterpreter:
+        return "code_interpreter"
+      case .imageGeneration:
+        return "image_generation"
+      case .documentLibrary:
+        return "document_library"
+      case .mistralMcp:
+        return "mistral_mcp"
+      case .custom(let value):
+        return value
+      }
+    }
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      self.init(rawValue: try container.decode(String.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      try container.encode(rawValue)
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case toolReference = "tool_reference"
   }
 }

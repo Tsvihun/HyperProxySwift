@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct FalUpdateStorageSettingsResponse: Codable, Sendable {
   public var expirationDurationSeconds: Int
-  public var initialAcl: FalUpdateStorageSettingsResponseInitialAcl?
+  public var initialAcl: FalUpdateStorageSettingsResponse.InitialAcl?
 
   public init(
     expirationDurationSeconds: Int,
-    initialAcl: FalUpdateStorageSettingsResponseInitialAcl?
+    initialAcl: FalUpdateStorageSettingsResponse.InitialAcl?
   ) {
     self.expirationDurationSeconds = expirationDurationSeconds
     self.initialAcl = initialAcl
@@ -25,5 +25,55 @@ public struct FalUpdateStorageSettingsResponse: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case expirationDurationSeconds = "expiration_duration_seconds"
     case initialAcl = "initial_acl"
+  }
+
+  public struct InitialAcl: Codable, Sendable {
+    public var defaultValue: FalUpdateStorageSettingsResponse.InitialAcl.DefaultValue
+    public var rules: [FalUpdateStorageSettingsResponse.InitialAcl.RulesElement]
+
+    public init(
+      defaultValue: FalUpdateStorageSettingsResponse.InitialAcl.DefaultValue,
+      rules: [FalUpdateStorageSettingsResponse.InitialAcl.RulesElement]
+    ) {
+      self.defaultValue = defaultValue
+      self.rules = rules
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case defaultValue = "default"
+      case rules
+    }
+
+    public enum DefaultValue: String, Codable, Hashable, Sendable {
+      case allow = "allow"
+      case forbid = "forbid"
+      case hide = "hide"
+    }
+
+    public struct RulesElement: Codable, Sendable {
+      public var decision: FalUpdateStorageSettingsResponse.InitialAcl.RulesElement.Decision
+      public var user: String
+
+      public init(
+        decision: FalUpdateStorageSettingsResponse.InitialAcl.RulesElement.Decision,
+        user: String
+      ) {
+        self.decision = decision
+        self.user = user
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case decision
+        case user
+      }
+
+      public enum Decision: String, Codable, Hashable,
+        Sendable
+      {
+        case allow = "allow"
+        case forbid = "forbid"
+        case hide = "hide"
+      }
+    }
   }
 }

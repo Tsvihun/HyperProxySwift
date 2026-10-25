@@ -12,6 +12,7 @@ import HyperProxyCore
 
 public struct ElevenLabsLLMInfoModel: Codable, Sendable {
   public var availableReasoningEfforts: [ElevenLabsLLMReasoningEffort]?
+  public var availableServiceTiers: [ElevenLabsLLMServiceTier]
   public var deprecationInfo: ElevenLabsLLMDeprecationInfoModel?
   public var isCheckpoint: Bool
   public var llm: ElevenLabsLLM
@@ -23,6 +24,7 @@ public struct ElevenLabsLLMInfoModel: Codable, Sendable {
   public var supportsParallelToolCalls: Bool
 
   public init(
+    availableServiceTiers: [ElevenLabsLLMServiceTier],
     isCheckpoint: Bool,
     llm: ElevenLabsLLM,
     maxContextLimit: Int,
@@ -35,6 +37,7 @@ public struct ElevenLabsLLMInfoModel: Codable, Sendable {
     regionalProcessingSurcharge: ElevenLabsRegionalProcessingSurchargeInfo? = nil
   ) {
     self.availableReasoningEfforts = availableReasoningEfforts
+    self.availableServiceTiers = availableServiceTiers
     self.deprecationInfo = deprecationInfo
     self.isCheckpoint = isCheckpoint
     self.llm = llm
@@ -48,6 +51,7 @@ public struct ElevenLabsLLMInfoModel: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case availableReasoningEfforts = "available_reasoning_efforts"
+    case availableServiceTiers = "available_service_tiers"
     case deprecationInfo = "deprecation_info"
     case isCheckpoint = "is_checkpoint"
     case llm

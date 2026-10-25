@@ -14,12 +14,12 @@ public struct OpenAILiveSessionStarted: Codable, Sendable {
   public var clientEventId: String?
   public var eventId: String
   public var session: OpenAILiveSessionResourceParam
-  public var kind: OpenAILiveSessionStartedKind
+  public var kind: OpenAILiveSessionStarted.Kind
 
   public init(
     eventId: String,
     session: OpenAILiveSessionResourceParam,
-    kind: OpenAILiveSessionStartedKind,
+    kind: OpenAILiveSessionStarted.Kind,
     clientEventId: String? = nil
   ) {
     self.clientEventId = clientEventId
@@ -33,5 +33,9 @@ public struct OpenAILiveSessionStarted: Codable, Sendable {
     case eventId = "event_id"
     case session
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case sessionStarted = "session.started"
   }
 }

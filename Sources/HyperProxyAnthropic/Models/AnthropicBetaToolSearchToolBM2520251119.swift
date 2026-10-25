@@ -16,10 +16,10 @@ public struct AnthropicBetaToolSearchToolBM2520251119: Codable, Sendable {
   public var deferLoading: Bool?
   public var name: AnthropicToolSearchToolBm25Name
   public var strict: Bool?
-  public var kind: AnthropicBetaToolSearchToolBM2520251119Kind
+  public var kind: AnthropicBetaToolSearchToolBM2520251119.Kind
 
   public init(
-    kind: AnthropicBetaToolSearchToolBM2520251119Kind,
+    kind: AnthropicBetaToolSearchToolBM2520251119.Kind,
     name: AnthropicToolSearchToolBm25Name = .toolSearchToolBm25,
     allowedCallers: [AnthropicBetaAllowedCaller]? = nil,
     cacheControl: AnthropicBetaCacheControlEphemeral? = nil,
@@ -41,5 +41,10 @@ public struct AnthropicBetaToolSearchToolBM2520251119: Codable, Sendable {
     case name
     case strict
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case toolSearchToolBm25_20251119 = "tool_search_tool_bm25_20251119"
+    case toolSearchToolBm25 = "tool_search_tool_bm25"
   }
 }

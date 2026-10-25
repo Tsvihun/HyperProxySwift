@@ -15,7 +15,7 @@ public struct MistralTranscriptionStreamDone: Codable, Sendable {
   public var model: String
   public var segments: [MistralTranscriptionSegmentChunk]?
   public var text: String
-  public var kind: MistralTranscriptionDoneKind?
+  public var kind: MistralTranscriptionStreamDone.Kind?
   public var usage: MistralUsageInfo
 
   public init(
@@ -24,7 +24,7 @@ public struct MistralTranscriptionStreamDone: Codable, Sendable {
     text: String,
     usage: MistralUsageInfo,
     segments: [MistralTranscriptionSegmentChunk]? = nil,
-    kind: MistralTranscriptionDoneKind? = nil
+    kind: MistralTranscriptionStreamDone.Kind? = nil
   ) {
     self.language = language
     self.model = model
@@ -41,5 +41,9 @@ public struct MistralTranscriptionStreamDone: Codable, Sendable {
     case text
     case kind = "type"
     case usage
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case transcriptionDone = "transcription.done"
   }
 }

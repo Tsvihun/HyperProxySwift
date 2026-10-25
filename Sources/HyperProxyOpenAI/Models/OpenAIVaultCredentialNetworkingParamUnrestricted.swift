@@ -11,15 +11,21 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIVaultCredentialNetworkingParamUnrestricted: Codable, Sendable {
-  public var kind: OpenAIVaultCredentialNetworkingParamUnrestrictedKind
+  public var kind: OpenAIVaultCredentialNetworkingParamUnrestricted.Kind
 
   public init(
-    kind: OpenAIVaultCredentialNetworkingParamUnrestrictedKind
+    kind: OpenAIVaultCredentialNetworkingParamUnrestricted.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case unrestricted = "unrestricted"
   }
 }

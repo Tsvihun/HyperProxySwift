@@ -15,13 +15,13 @@ public struct OpenAICreateUploadRequest: Codable, Sendable {
   public var expiresAfter: OpenAIFileExpirationAfter?
   public var filename: String
   public var mimeType: String
-  public var purpose: OpenAICreateUploadRequestPurpose
+  public var purpose: OpenAICreateUploadRequest.Purpose
 
   public init(
     bytes: Int,
     filename: String,
     mimeType: String,
-    purpose: OpenAICreateUploadRequestPurpose,
+    purpose: OpenAICreateUploadRequest.Purpose,
     expiresAfter: OpenAIFileExpirationAfter? = nil
   ) {
     self.bytes = bytes
@@ -37,5 +37,12 @@ public struct OpenAICreateUploadRequest: Codable, Sendable {
     case filename
     case mimeType = "mime_type"
     case purpose
+  }
+
+  public enum Purpose: String, Codable, Hashable, Sendable {
+    case assistants = "assistants"
+    case batch = "batch"
+    case fineTune = "fine-tune"
+    case vision = "vision"
   }
 }

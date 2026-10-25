@@ -11,15 +11,22 @@ import Foundation
 import HyperProxyCore
 
 public struct StabilityPostV2alphaGenerationStableImageInpaintParameters: Codable, Sendable {
-  public var accept: StabilityPostV2alphaGenerationStableImageInpaintParametersAccept?
+  public var accept: StabilityPostV2alphaGenerationStableImageInpaintParameters.Accept?
 
   public init(
-    accept: StabilityPostV2alphaGenerationStableImageInpaintParametersAccept? = nil
+    accept: StabilityPostV2alphaGenerationStableImageInpaintParameters.Accept? = nil
   ) {
     self.accept = accept
   }
 
   enum CodingKeys: String, CodingKey {
     case accept
+  }
+
+  public enum Accept: String, Codable,
+    Hashable, Sendable
+  {
+    case image = "image/*"
+    case applicationJson = "application/json"
   }
 }

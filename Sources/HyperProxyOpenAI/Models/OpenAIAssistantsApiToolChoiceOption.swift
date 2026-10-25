@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public enum OpenAIAssistantsApiToolChoiceOption: Codable, Sendable {
-  case assistantsApiToolChoiceOptionOneOf1(OpenAIAssistantsApiToolChoiceOptionOneOf1)
+  case preset(OpenAIAssistantsApiToolChoiceOption.Preset)
   case assistantsNamedToolChoice(OpenAIAssistantsNamedToolChoice)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(OpenAIAssistantsApiToolChoiceOptionOneOf1.self) {
-      self = .assistantsApiToolChoiceOptionOneOf1(value)
+    if let value = try? container.decode(OpenAIAssistantsApiToolChoiceOption.Preset.self) {
+      self = .preset(value)
       return
     }
     self = .assistantsNamedToolChoice(try container.decode(OpenAIAssistantsNamedToolChoice.self))
@@ -26,7 +26,7 @@ public enum OpenAIAssistantsApiToolChoiceOption: Codable, Sendable {
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .assistantsApiToolChoiceOptionOneOf1(let value):
+    case .preset(let value):
       try container.encode(value)
     case .assistantsNamedToolChoice(let value):
       try container.encode(value)
@@ -34,11 +34,17 @@ public enum OpenAIAssistantsApiToolChoiceOption: Codable, Sendable {
   }
 
   /// Provider-native value without the schema union wrapper.
-  public static var none: Self { .assistantsApiToolChoiceOptionOneOf1(.none) }
+  public static var none: Self { .preset(.none) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var auto: Self { .assistantsApiToolChoiceOptionOneOf1(.auto) }
+  public static var auto: Self { .preset(.auto) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var requiredValue: Self { .assistantsApiToolChoiceOptionOneOf1(.requiredValue) }
+  public static var requiredValue: Self { .preset(.requiredValue) }
+
+  public enum Preset: String, Codable, Hashable, Sendable {
+    case none = "none"
+    case auto = "auto"
+    case requiredValue = "required"
+  }
 }

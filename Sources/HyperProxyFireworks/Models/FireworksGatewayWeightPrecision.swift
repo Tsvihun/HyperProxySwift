@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksGatewayWeightPrecision: String, Codable, Hashable, Sendable {
-  case wEIGHTPRECISIONUNSPECIFIED = "WEIGHT_PRECISION_UNSPECIFIED"
-  case bFLOAT16 = "BFLOAT16"
-  case iNT8 = "INT8"
-  case nF4 = "NF4"
-  case fP8 = "FP8"
-  case fP4FP8 = "FP4_FP8"
+  case weightPrecisionUnspecified = "WEIGHT_PRECISION_UNSPECIFIED"
+  case bfloat16 = "BFLOAT16"
+  case int8 = "INT8"
+  case nf4 = "NF4"
+  case fp8 = "FP8"
+  case fp4Fp8 = "FP4_FP8"
 }

@@ -15,7 +15,7 @@ public struct ElevenLabsBodyListAPIRequestsV1WorkspaceAnalyticsRequestsPost: Cod
   public var filters: [ElevenLabsColumnFilter]?
   public var limit: Int?
   public var search: String?
-  public var sort: ElevenLabsBodyListAPIRequestsV1WorkspaceAnalyticsRequestsPostSort?
+  public var sort: ElevenLabsBodyListAPIRequestsV1WorkspaceAnalyticsRequestsPost.Sort?
   public var startTime: Int?
 
   public init(
@@ -23,7 +23,7 @@ public struct ElevenLabsBodyListAPIRequestsV1WorkspaceAnalyticsRequestsPost: Cod
     filters: [ElevenLabsColumnFilter]? = nil,
     limit: Int? = nil,
     search: String? = nil,
-    sort: ElevenLabsBodyListAPIRequestsV1WorkspaceAnalyticsRequestsPostSort? = nil,
+    sort: ElevenLabsBodyListAPIRequestsV1WorkspaceAnalyticsRequestsPost.Sort? = nil,
     startTime: Int? = nil
   ) {
     self.endTime = endTime
@@ -41,5 +41,12 @@ public struct ElevenLabsBodyListAPIRequestsV1WorkspaceAnalyticsRequestsPost: Cod
     case search
     case sort
     case startTime = "start_time"
+  }
+
+  public enum Sort: String, Codable,
+    Hashable, Sendable
+  {
+    case asc = "asc"
+    case desc = "desc"
   }
 }

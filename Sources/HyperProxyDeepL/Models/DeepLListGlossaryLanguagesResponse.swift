@@ -11,15 +11,33 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepLListGlossaryLanguagesResponse: Codable, Sendable {
-  public var supportedLanguages: [DeepLListGlossaryLanguagesResponseSupportedLanguagesItem]?
+  public var supportedLanguages: [DeepLListGlossaryLanguagesResponse.SupportedLanguagesElement]?
 
   public init(
-    supportedLanguages: [DeepLListGlossaryLanguagesResponseSupportedLanguagesItem]? = nil
+    supportedLanguages: [DeepLListGlossaryLanguagesResponse.SupportedLanguagesElement]? = nil
   ) {
     self.supportedLanguages = supportedLanguages
   }
 
   enum CodingKeys: String, CodingKey {
     case supportedLanguages = "supported_languages"
+  }
+
+  public struct SupportedLanguagesElement: Codable, Sendable {
+    public var sourceLang: String
+    public var targetLang: String
+
+    public init(
+      sourceLang: String,
+      targetLang: String
+    ) {
+      self.sourceLang = sourceLang
+      self.targetLang = targetLang
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case sourceLang = "source_lang"
+      case targetLang = "target_lang"
+    }
   }
 }

@@ -14,14 +14,14 @@ public struct OpenAIEnvironmentResourceSelfHosted: Codable, Sendable {
   public var capabilityDirectories: [String]
   public var id: String
   public var remoteUrl: String
-  public var kind: OpenAIEnvironmentResourceSelfHostedKind
+  public var kind: OpenAIEnvironmentResourceSelfHosted.Kind
   public var workspaceDirectory: String
 
   public init(
     capabilityDirectories: [String],
     id: String,
     remoteUrl: String,
-    kind: OpenAIEnvironmentResourceSelfHostedKind,
+    kind: OpenAIEnvironmentResourceSelfHosted.Kind,
     workspaceDirectory: String
   ) {
     self.capabilityDirectories = capabilityDirectories
@@ -37,5 +37,9 @@ public struct OpenAIEnvironmentResourceSelfHosted: Codable, Sendable {
     case remoteUrl = "remote_url"
     case kind = "type"
     case workspaceDirectory = "workspace_directory"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case selfHosted = "self_hosted"
   }
 }

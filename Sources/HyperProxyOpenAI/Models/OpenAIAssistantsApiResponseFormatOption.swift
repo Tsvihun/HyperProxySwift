@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public enum OpenAIAssistantsApiResponseFormatOption: Codable, Sendable {
-  case assistantsApiResponseFormatOptionOneOf1(OpenAIAssistantsApiResponseFormatOptionOneOf1)
+  case automatic(OpenAIAssistantsApiResponseFormatOption.Auto)
   case responseFormatText(OpenAIResponseFormatText)
   case responseFormatJsonObject(OpenAIResponseFormatJsonObject)
   case responseFormatJsonSchema(OpenAIResponseFormatJsonSchema)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(OpenAIAssistantsApiResponseFormatOptionOneOf1.self) {
-      self = .assistantsApiResponseFormatOptionOneOf1(value)
+    if let value = try? container.decode(OpenAIAssistantsApiResponseFormatOption.Auto.self) {
+      self = .automatic(value)
       return
     }
     if let value = try? container.decode(OpenAIResponseFormatText.self) {
@@ -36,7 +36,7 @@ public enum OpenAIAssistantsApiResponseFormatOption: Codable, Sendable {
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .assistantsApiResponseFormatOptionOneOf1(let value):
+    case .automatic(let value):
       try container.encode(value)
     case .responseFormatText(let value):
       try container.encode(value)
@@ -48,5 +48,9 @@ public enum OpenAIAssistantsApiResponseFormatOption: Codable, Sendable {
   }
 
   /// Provider-native value without the schema union wrapper.
-  public static var auto: Self { .assistantsApiResponseFormatOptionOneOf1(.auto) }
+  public static var auto: Self { .automatic(.auto) }
+
+  public enum Auto: String, Codable, Hashable, Sendable {
+    case auto = "auto"
+  }
 }

@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaCloudConfigParams: Codable, Sendable {
-  public var networking: AnthropicBetaCloudConfigParamsNetworkingAnyOf1?
+  public var networking: AnthropicBetaCloudConfigParamsNetworkingVariant?
   public var packages: AnthropicBetaPackagesParams?
   public var kind: AnthropicCloudKind
 
   public init(
     kind: AnthropicCloudKind = .cloud,
-    networking: AnthropicBetaCloudConfigParamsNetworkingAnyOf1? = nil,
+    networking: AnthropicBetaCloudConfigParamsNetworkingVariant? = nil,
     packages: AnthropicBetaPackagesParams? = nil
   ) {
     self.networking = networking

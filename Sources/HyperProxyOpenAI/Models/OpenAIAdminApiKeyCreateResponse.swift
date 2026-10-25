@@ -54,4 +54,18 @@ public struct OpenAIAdminApiKeyCreateResponse: Codable, Sendable {
     case redactedValue = "redacted_value"
     case value
   }
+
+  public struct WithValue: Codable, Sendable {
+    public var value: String
+
+    public init(
+      value: String
+    ) {
+      self.value = value
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case value
+    }
+  }
 }

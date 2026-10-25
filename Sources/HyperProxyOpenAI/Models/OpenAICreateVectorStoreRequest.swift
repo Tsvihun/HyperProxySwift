@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAICreateVectorStoreRequest: Codable, Sendable {
-  public var chunkingStrategy: OpenAICreateVectorStoreRequestChunkingStrategy?
+  public var chunkingStrategy: OpenAICreateVectorStoreRequest.ChunkingStrategy?
   public var description: String?
   public var expiresAfter: OpenAIVectorStoreExpirationAfter?
   public var fileIds: [String]?
@@ -19,7 +19,7 @@ public struct OpenAICreateVectorStoreRequest: Codable, Sendable {
   public var name: String?
 
   public init(
-    chunkingStrategy: OpenAICreateVectorStoreRequestChunkingStrategy? = nil,
+    chunkingStrategy: OpenAICreateVectorStoreRequest.ChunkingStrategy? = nil,
     description: String? = nil,
     expiresAfter: OpenAIVectorStoreExpirationAfter? = nil,
     fileIds: [String]? = nil,
@@ -41,5 +41,30 @@ public struct OpenAICreateVectorStoreRequest: Codable, Sendable {
     case fileIds = "file_ids"
     case metadata
     case name
+  }
+
+  public enum ChunkingStrategy: Codable, Sendable {
+    case autoChunkingStrategyRequestParam(OpenAIAutoChunkingStrategyRequestParam)
+    case staticChunkingStrategyRequestParam(OpenAIStaticChunkingStrategyRequestParam)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenAIAutoChunkingStrategyRequestParam.self) {
+        self = .autoChunkingStrategyRequestParam(value)
+        return
+      }
+      self = .staticChunkingStrategyRequestParam(
+        try container.decode(OpenAIStaticChunkingStrategyRequestParam.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .autoChunkingStrategyRequestParam(let value):
+        try container.encode(value)
+      case .staticChunkingStrategyRequestParam(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

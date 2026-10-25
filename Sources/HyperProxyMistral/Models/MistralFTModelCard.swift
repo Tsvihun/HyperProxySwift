@@ -28,7 +28,7 @@ public struct MistralFTModelCard: Codable, Sendable {
   public var object: String?
   public var ownedBy: String?
   public var root: String
-  public var kind: MistralFineTunedKind?
+  public var kind: MistralFTModelCard.Kind?
 
   public init(
     capabilities: MistralModelCapabilities,
@@ -48,7 +48,7 @@ public struct MistralFTModelCard: Codable, Sendable {
     name: String? = nil,
     object: String? = nil,
     ownedBy: String? = nil,
-    kind: MistralFineTunedKind? = nil
+    kind: MistralFTModelCard.Kind? = nil
   ) {
     self.aliases = aliases
     self.archived = archived
@@ -89,5 +89,9 @@ public struct MistralFTModelCard: Codable, Sendable {
     case ownedBy = "owned_by"
     case root
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case fineTuned = "fine-tuned"
   }
 }

@@ -30,7 +30,7 @@ public enum OpenRouterInstructType: String, Codable, Hashable, Sendable {
   case vicuna = "vicuna"
   case zephyr = "zephyr"
   case deepseekR1 = "deepseek-r1"
-  case deepseekV31 = "deepseek-v3.1"
+  case deepseekV3_1 = "deepseek-v3.1"
   case qwq = "qwq"
   case qwen3 = "qwen3"
 }

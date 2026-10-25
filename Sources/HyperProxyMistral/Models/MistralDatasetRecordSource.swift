@@ -11,9 +11,9 @@ import Foundation
 import HyperProxyCore
 
 public enum MistralDatasetRecordSource: String, Codable, Hashable, Sendable {
-  case eXPLORER = "EXPLORER"
-  case uPLOADEDFILE = "UPLOADED_FILE"
-  case dIRECTINPUT = "DIRECT_INPUT"
-  case pLAYGROUND = "PLAYGROUND"
-  case tELEMETRYSPAN = "TELEMETRY_SPAN"
+  case explorer = "EXPLORER"
+  case uploadedFile = "UPLOADED_FILE"
+  case directInput = "DIRECT_INPUT"
+  case playground = "PLAYGROUND"
+  case telemetrySpan = "TELEMETRY_SPAN"
 }

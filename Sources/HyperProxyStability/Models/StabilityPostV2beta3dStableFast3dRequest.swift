@@ -13,15 +13,15 @@ import HyperProxyCore
 public struct StabilityPostV2beta3dStableFast3dRequest: Codable, Sendable {
   public var foregroundRatio: Double?
   public var image: String
-  public var remesh: StabilityPostV2beta3dStableFast3dRequestRemesh?
-  public var textureResolution: StabilityPostV2beta3dStableFast3dRequestTextureResolution?
+  public var remesh: StabilityPostV2beta3dStableFast3dRequest.Remesh?
+  public var textureResolution: StabilityPostV2beta3dStableFast3dRequest.TextureResolution?
   public var vertexCount: Double?
 
   public init(
     image: String,
     foregroundRatio: Double? = nil,
-    remesh: StabilityPostV2beta3dStableFast3dRequestRemesh? = nil,
-    textureResolution: StabilityPostV2beta3dStableFast3dRequestTextureResolution? = nil,
+    remesh: StabilityPostV2beta3dStableFast3dRequest.Remesh? = nil,
+    textureResolution: StabilityPostV2beta3dStableFast3dRequest.TextureResolution? = nil,
     vertexCount: Double? = nil
   ) {
     self.foregroundRatio = foregroundRatio
@@ -37,5 +37,19 @@ public struct StabilityPostV2beta3dStableFast3dRequest: Codable, Sendable {
     case remesh
     case textureResolution = "texture_resolution"
     case vertexCount = "vertex_count"
+  }
+
+  public enum Remesh: String, Codable, Hashable, Sendable {
+    case none = "none"
+    case triangle = "triangle"
+    case quad = "quad"
+  }
+
+  public enum TextureResolution: String, Codable, Hashable,
+    Sendable
+  {
+    case value512 = "512"
+    case value1024 = "1024"
+    case value2048 = "2048"
   }
 }

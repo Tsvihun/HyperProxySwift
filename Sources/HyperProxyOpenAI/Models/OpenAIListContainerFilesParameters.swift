@@ -14,13 +14,13 @@ public struct OpenAIListContainerFilesParameters: Codable, Sendable {
   public var after: String?
   public var containerId: String
   public var limit: Int?
-  public var order: OpenAIListContainerFilesParametersOrder?
+  public var order: OpenAIListContainerFilesParameters.Order?
 
   public init(
     containerId: String,
     after: String? = nil,
     limit: Int? = nil,
-    order: OpenAIListContainerFilesParametersOrder? = nil
+    order: OpenAIListContainerFilesParameters.Order? = nil
   ) {
     self.after = after
     self.containerId = containerId
@@ -33,5 +33,10 @@ public struct OpenAIListContainerFilesParameters: Codable, Sendable {
     case containerId = "container_id"
     case limit
     case order
+  }
+
+  public enum Order: String, Codable, Hashable, Sendable {
+    case asc = "asc"
+    case desc = "desc"
   }
 }

@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIListFineTuningJobEventsResponse: Codable, Sendable {
   public var data: [OpenAIFineTuningJobEvent]
   public var hasMore: Bool
-  public var object: OpenAIListFineTuningJobEventsResponseObject
+  public var object: OpenAIListFineTuningJobEventsResponse.Object
 
   public init(
     data: [OpenAIFineTuningJobEvent],
     hasMore: Bool,
-    object: OpenAIListFineTuningJobEventsResponseObject
+    object: OpenAIListFineTuningJobEventsResponse.Object
   ) {
     self.data = data
     self.hasMore = hasMore
@@ -29,5 +29,9 @@ public struct OpenAIListFineTuningJobEventsResponse: Codable, Sendable {
     case data
     case hasMore = "has_more"
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case list = "list"
   }
 }

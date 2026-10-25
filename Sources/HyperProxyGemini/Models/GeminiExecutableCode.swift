@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct GeminiExecutableCode: Codable, Sendable {
   public var code: String?
   public var id: String?
-  public var language: GeminiExecutableCodeLanguage?
+  public var language: GeminiExecutableCode.Language?
 
   public init(
     code: String? = nil,
     id: String? = nil,
-    language: GeminiExecutableCodeLanguage? = nil
+    language: GeminiExecutableCode.Language? = nil
   ) {
     self.code = code
     self.id = id
@@ -29,5 +29,10 @@ public struct GeminiExecutableCode: Codable, Sendable {
     case code
     case id
     case language
+  }
+
+  public enum Language: String, Codable, Hashable, Sendable {
+    case languageUnspecified = "LANGUAGE_UNSPECIFIED"
+    case python = "PYTHON"
   }
 }

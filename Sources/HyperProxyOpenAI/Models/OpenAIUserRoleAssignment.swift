@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIUserRoleAssignment: Codable, Sendable {
-  public var object: OpenAIUserRoleAssignmentObject
+  public var object: OpenAIUserRoleAssignment.Object
   public var role: OpenAIRole
   public var user: OpenAIUser
 
   public init(
-    object: OpenAIUserRoleAssignmentObject,
+    object: OpenAIUserRoleAssignment.Object,
     role: OpenAIRole,
     user: OpenAIUser
   ) {
@@ -29,5 +29,9 @@ public struct OpenAIUserRoleAssignment: Codable, Sendable {
     case object
     case role
     case user
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case userRole = "user.role"
   }
 }

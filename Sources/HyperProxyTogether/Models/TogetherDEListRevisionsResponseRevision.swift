@@ -15,14 +15,14 @@ public struct TogetherDEListRevisionsResponseRevision: Codable, Sendable {
   public var lastValidatedAt: String?
   public var revisionId: String
   public var validationErrors: [TogetherDERevisionValidationError]?
-  public var validationStatus: TogetherDEListRevisionsResponseRevisionValidationStatus?
+  public var validationStatus: TogetherDEListRevisionsResponseRevision.ValidationStatus?
 
   public init(
     createdAt: String,
     revisionId: String,
     lastValidatedAt: String? = nil,
     validationErrors: [TogetherDERevisionValidationError]? = nil,
-    validationStatus: TogetherDEListRevisionsResponseRevisionValidationStatus? = nil
+    validationStatus: TogetherDEListRevisionsResponseRevision.ValidationStatus? = nil
   ) {
     self.createdAt = createdAt
     self.lastValidatedAt = lastValidatedAt
@@ -37,5 +37,14 @@ public struct TogetherDEListRevisionsResponseRevision: Codable, Sendable {
     case revisionId
     case validationErrors
     case validationStatus
+  }
+
+  public enum ValidationStatus: String, Codable, Hashable,
+    Sendable
+  {
+    case revisionValidationStatusPending = "REVISION_VALIDATION_STATUS_PENDING"
+    case revisionValidationStatusSuccess = "REVISION_VALIDATION_STATUS_SUCCESS"
+    case revisionValidationStatusFailed = "REVISION_VALIDATION_STATUS_FAILED"
+    case revisionValidationStatusError = "REVISION_VALIDATION_STATUS_ERROR"
   }
 }

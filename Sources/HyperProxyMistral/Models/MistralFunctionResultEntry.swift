@@ -17,7 +17,7 @@ public struct MistralFunctionResultEntry: Codable, Sendable {
   public var object: MistralEntryObject?
   public var result: String
   public var toolCallId: String
-  public var kind: MistralFunctionResultKind?
+  public var kind: MistralFunctionResultEntry.Kind?
 
   public init(
     result: String,
@@ -26,7 +26,7 @@ public struct MistralFunctionResultEntry: Codable, Sendable {
     createdAt: String? = nil,
     id: String? = nil,
     object: MistralEntryObject? = nil,
-    kind: MistralFunctionResultKind? = nil
+    kind: MistralFunctionResultEntry.Kind? = nil
   ) {
     self.completedAt = completedAt
     self.createdAt = createdAt
@@ -45,5 +45,9 @@ public struct MistralFunctionResultEntry: Codable, Sendable {
     case result
     case toolCallId = "tool_call_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case functionResult = "function.result"
   }
 }

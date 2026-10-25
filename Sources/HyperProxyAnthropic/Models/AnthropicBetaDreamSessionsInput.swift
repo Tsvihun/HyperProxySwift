@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct AnthropicBetaDreamSessionsInput: Codable, Sendable {
   public var sessionIds: [String]
-  public var kind: AnthropicBetaDreamSessionsInputKind
+  public var kind: AnthropicBetaDreamSessionsInput.Kind
 
   public init(
     sessionIds: [String],
-    kind: AnthropicBetaDreamSessionsInputKind
+    kind: AnthropicBetaDreamSessionsInput.Kind
   ) {
     self.sessionIds = sessionIds
     self.kind = kind
@@ -25,5 +25,9 @@ public struct AnthropicBetaDreamSessionsInput: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case sessionIds = "session_ids"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case sessions = "sessions"
   }
 }

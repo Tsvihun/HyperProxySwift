@@ -14,14 +14,14 @@ public struct ElevenLabsListImageGenerationsParameters: Codable, Sendable {
   public var cursor: String?
   public var modelId: String?
   public var pageSize: Int?
-  public var status: ElevenLabsListImageGenerationsParametersStatus?
+  public var status: ElevenLabsListImageGenerationsParameters.Status?
   public var xiApiKey: String?
 
   public init(
     cursor: String? = nil,
     modelId: String? = nil,
     pageSize: Int? = nil,
-    status: ElevenLabsListImageGenerationsParametersStatus? = nil,
+    status: ElevenLabsListImageGenerationsParameters.Status? = nil,
     xiApiKey: String? = nil
   ) {
     self.cursor = cursor
@@ -37,5 +37,12 @@ public struct ElevenLabsListImageGenerationsParameters: Codable, Sendable {
     case pageSize = "page_size"
     case status
     case xiApiKey = "xi-api-key"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case pending = "pending"
+    case generating = "generating"
+    case completed = "completed"
+    case failed = "failed"
   }
 }

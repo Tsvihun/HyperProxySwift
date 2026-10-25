@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsGetKnowledgeBaseDependentAgentsResponseModel: Codable, Sendable {
-  public var agents: [ElevenLabsGetKnowledgeBaseDependentAgentsResponseModelAgentsItem]
+  public var agents: [ElevenLabsGetKnowledgeBaseDependentAgentsResponseModel.AgentsElement]
   public var branches: [ElevenLabsDependentBranchInfo]?
   public var hasMore: Bool
   public var nextCursor: String?
 
   public init(
-    agents: [ElevenLabsGetKnowledgeBaseDependentAgentsResponseModelAgentsItem],
+    agents: [ElevenLabsGetKnowledgeBaseDependentAgentsResponseModel.AgentsElement],
     hasMore: Bool,
     branches: [ElevenLabsDependentBranchInfo]? = nil,
     nextCursor: String? = nil
@@ -33,5 +33,30 @@ public struct ElevenLabsGetKnowledgeBaseDependentAgentsResponseModel: Codable, S
     case branches
     case hasMore = "has_more"
     case nextCursor = "next_cursor"
+  }
+
+  public enum AgentsElement: Codable, Sendable {
+    case dependentAvailableAgentIdentifier(ElevenLabsDependentAvailableAgentIdentifier)
+    case dependentUnknownAgentIdentifier(ElevenLabsDependentUnknownAgentIdentifier)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsDependentAvailableAgentIdentifier.self) {
+        self = .dependentAvailableAgentIdentifier(value)
+        return
+      }
+      self = .dependentUnknownAgentIdentifier(
+        try container.decode(ElevenLabsDependentUnknownAgentIdentifier.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .dependentAvailableAgentIdentifier(let value):
+        try container.encode(value)
+      case .dependentUnknownAgentIdentifier(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsBytedanceSeedance2MiniRequest: Codable, Sendable {
-  public var aspectRatio: ElevenLabsBytedanceSeedance2MiniRequestAspectRatio?
+  public var aspectRatio: ElevenLabsBytedanceSeedance2MiniRequest.AspectRatio?
   public var audios: [ElevenLabsAudioReference]?
   public var durationSecs: Int?
   public var endFrame: ElevenLabsImageReference?
   public var generateAudio: Bool?
   public var images: [ElevenLabsImageReference]?
-  public var modelId: ElevenLabsBytedanceSeedanceV2MiniModelId
+  public var modelId: ElevenLabsBytedanceSeedance2MiniRequest.ModelId
   public var prompt: String
-  public var resolution: ElevenLabsBytedanceSeedance2MiniRequestResolution?
+  public var resolution: ElevenLabsBytedanceSeedance2MiniRequest.Resolution?
   public var seed: Int?
   public var startFrame: ElevenLabsImageReference?
   public var videos: [ElevenLabsVideoReference]?
@@ -27,14 +27,14 @@ public struct ElevenLabsBytedanceSeedance2MiniRequest: Codable, Sendable {
 
   public init(
     prompt: String,
-    modelId: ElevenLabsBytedanceSeedanceV2MiniModelId = .bytedanceSeedanceV2Mini,
-    aspectRatio: ElevenLabsBytedanceSeedance2MiniRequestAspectRatio? = nil,
+    modelId: ElevenLabsBytedanceSeedance2MiniRequest.ModelId = .bytedanceSeedanceV2Mini,
+    aspectRatio: ElevenLabsBytedanceSeedance2MiniRequest.AspectRatio? = nil,
     audios: [ElevenLabsAudioReference]? = nil,
     durationSecs: Int? = nil,
     endFrame: ElevenLabsImageReference? = nil,
     generateAudio: Bool? = nil,
     images: [ElevenLabsImageReference]? = nil,
-    resolution: ElevenLabsBytedanceSeedance2MiniRequestResolution? = nil,
+    resolution: ElevenLabsBytedanceSeedance2MiniRequest.Resolution? = nil,
     seed: Int? = nil,
     startFrame: ElevenLabsImageReference? = nil,
     videos: [ElevenLabsVideoReference]? = nil,
@@ -69,5 +69,24 @@ public struct ElevenLabsBytedanceSeedance2MiniRequest: Codable, Sendable {
     case startFrame = "start_frame"
     case videos
     case webhook
+  }
+
+  public enum AspectRatio: String, Codable, Hashable, Sendable {
+    case auto = "auto"
+    case ratio21x9 = "21:9"
+    case ratio16x9 = "16:9"
+    case ratio4x3 = "4:3"
+    case ratio1x1 = "1:1"
+    case ratio3x4 = "3:4"
+    case ratio9x16 = "9:16"
+  }
+
+  public enum Resolution: String, Codable, Hashable, Sendable {
+    case value480p = "480p"
+    case value720p = "720p"
+  }
+
+  public enum ModelId: String, Codable, Hashable, Sendable {
+    case bytedanceSeedanceV2Mini = "bytedance-seedance-v2-mini"
   }
 }

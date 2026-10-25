@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIBatchFileExpirationAfter: Codable, Sendable {
-  public var anchor: OpenAIBatchFileExpirationAfterAnchor
+  public var anchor: OpenAIBatchFileExpirationAfter.Anchor
   public var seconds: Int64
 
   public init(
-    anchor: OpenAIBatchFileExpirationAfterAnchor,
+    anchor: OpenAIBatchFileExpirationAfter.Anchor,
     seconds: Int64
   ) {
     self.anchor = anchor
@@ -25,5 +25,9 @@ public struct OpenAIBatchFileExpirationAfter: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case anchor
     case seconds
+  }
+
+  public enum Anchor: String, Codable, Hashable, Sendable {
+    case createdAt = "created_at"
   }
 }

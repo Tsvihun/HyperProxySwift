@@ -11,9 +11,9 @@ import Foundation
 import HyperProxyCore
 
 public enum MistralScimSyncRunStatus: String, Codable, Hashable, Sendable {
-  case pENDING = "PENDING"
-  case rUNNING = "RUNNING"
-  case sUCCESS = "SUCCESS"
-  case sKIPPED = "SKIPPED"
-  case fAILED = "FAILED"
+  case pending = "PENDING"
+  case running = "RUNNING"
+  case success = "SUCCESS"
+  case skipped = "SKIPPED"
+  case failed = "FAILED"
 }

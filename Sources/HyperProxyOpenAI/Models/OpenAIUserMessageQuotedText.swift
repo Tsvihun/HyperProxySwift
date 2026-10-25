@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIUserMessageQuotedText: Codable, Sendable {
   public var text: String
-  public var kind: OpenAIUserMessageQuotedTextKind
+  public var kind: OpenAIUserMessageQuotedText.Kind
 
   public init(
     text: String,
-    kind: OpenAIUserMessageQuotedTextKind
+    kind: OpenAIUserMessageQuotedText.Kind
   ) {
     self.text = text
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenAIUserMessageQuotedText: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case text
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case quotedText = "quoted_text"
   }
 }

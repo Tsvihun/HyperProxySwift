@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherDECertification: Codable, Sendable {
-  public var certificationType: TogetherDECertificationCertificationType
+  public var certificationType: TogetherDECertification.CertificationType
   public var certifiedAt: String
   public var certifiedBy: String
   public var draftModel: String?
@@ -19,15 +19,15 @@ public struct TogetherDECertification: Codable, Sendable {
   public var model: String
   public var modelRevisionId: String
   public var notes: String?
-  public var target: TogetherDECertificationTarget
+  public var target: TogetherDECertification.Target
 
   public init(
-    certificationType: TogetherDECertificationCertificationType,
+    certificationType: TogetherDECertification.CertificationType,
     certifiedAt: String,
     certifiedBy: String,
     model: String,
     modelRevisionId: String,
-    target: TogetherDECertificationTarget,
+    target: TogetherDECertification.Target,
     draftModel: String? = nil,
     draftModelRevisionId: String? = nil,
     notes: String? = nil
@@ -53,5 +53,15 @@ public struct TogetherDECertification: Codable, Sendable {
     case modelRevisionId
     case notes
     case target
+  }
+
+  public enum CertificationType: String, Codable, Hashable, Sendable {
+    case certificationTypeCertified = "CERTIFICATION_TYPE_CERTIFIED"
+    case certificationTypeUncertified = "CERTIFICATION_TYPE_UNCERTIFIED"
+  }
+
+  public enum Target: String, Codable, Hashable, Sendable {
+    case certificationTargetDeServerless = "CERTIFICATION_TARGET_DE_SERVERLESS"
+    case certificationTargetMre = "CERTIFICATION_TARGET_MRE"
   }
 }

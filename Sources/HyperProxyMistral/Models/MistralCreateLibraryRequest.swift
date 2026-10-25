@@ -14,13 +14,13 @@ public struct MistralCreateLibraryRequest: Codable, Sendable {
   public var chunkSize: Int?
   public var description: String?
   public var name: String
-  public var ownerType: MistralCreateLibraryRequestOwnerType?
+  public var ownerType: MistralCreateLibraryRequest.OwnerType?
 
   public init(
     name: String,
     chunkSize: Int? = nil,
     description: String? = nil,
-    ownerType: MistralCreateLibraryRequestOwnerType? = nil
+    ownerType: MistralCreateLibraryRequest.OwnerType? = nil
   ) {
     self.chunkSize = chunkSize
     self.description = description
@@ -33,5 +33,10 @@ public struct MistralCreateLibraryRequest: Codable, Sendable {
     case description
     case name
     case ownerType = "owner_type"
+  }
+
+  public enum OwnerType: String, Codable, Hashable, Sendable {
+    case user = "User"
+    case workspace = "Workspace"
   }
 }

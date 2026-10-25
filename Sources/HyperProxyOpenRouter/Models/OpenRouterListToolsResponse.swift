@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct OpenRouterListToolsResponse: Codable, Sendable {
   public var data: [OpenRouterServerTool]
-  public var links: OpenRouterListToolsResponseLinks
+  public var links: OpenRouterListToolsResponse.Links
   public var totalCount: Int
 
   public init(
     data: [OpenRouterServerTool],
-    links: OpenRouterListToolsResponseLinks,
+    links: OpenRouterListToolsResponse.Links,
     totalCount: Int
   ) {
     self.data = data
@@ -29,5 +29,19 @@ public struct OpenRouterListToolsResponse: Codable, Sendable {
     case data
     case links
     case totalCount = "total_count"
+  }
+
+  public struct Links: Codable, Sendable {
+    public var next: String
+
+    public init(
+      next: String
+    ) {
+      self.next = next
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case next
+    }
   }
 }

@@ -13,9 +13,9 @@ import HyperProxyCore
 public struct OpenAIListRunStepsParameters: Codable, Sendable {
   public var after: String?
   public var before: String?
-  public var include: [OpenAIListRunStepsParametersIncludeItem]?
+  public var include: [OpenAIListRunStepsParameters.IncludeElement]?
   public var limit: Int?
-  public var order: OpenAIListRunStepsParametersOrder?
+  public var order: OpenAIListRunStepsParameters.Order?
   public var runId: String
   public var threadId: String
 
@@ -24,9 +24,9 @@ public struct OpenAIListRunStepsParameters: Codable, Sendable {
     threadId: String,
     after: String? = nil,
     before: String? = nil,
-    include: [OpenAIListRunStepsParametersIncludeItem]? = nil,
+    include: [OpenAIListRunStepsParameters.IncludeElement]? = nil,
     limit: Int? = nil,
-    order: OpenAIListRunStepsParametersOrder? = nil
+    order: OpenAIListRunStepsParameters.Order? = nil
   ) {
     self.after = after
     self.before = before
@@ -45,5 +45,15 @@ public struct OpenAIListRunStepsParameters: Codable, Sendable {
     case order
     case runId = "run_id"
     case threadId = "thread_id"
+  }
+
+  public enum IncludeElement: String, Codable, Hashable, Sendable {
+    case stepDetailsToolCallsFileSearchResultsContent =
+      "step_details.tool_calls[*].file_search.results[*].content"
+  }
+
+  public enum Order: String, Codable, Hashable, Sendable {
+    case asc = "asc"
+    case desc = "desc"
   }
 }

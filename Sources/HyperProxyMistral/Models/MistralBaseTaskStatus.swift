@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public enum MistralBaseTaskStatus: String, Codable, Hashable, Sendable {
-  case rUNNING = "RUNNING"
-  case cOMPLETED = "COMPLETED"
-  case fAILED = "FAILED"
-  case cANCELED = "CANCELED"
-  case tERMINATED = "TERMINATED"
-  case cONTINUEDASNEW = "CONTINUED_AS_NEW"
-  case tIMEDOUT = "TIMED_OUT"
-  case uNKNOWN = "UNKNOWN"
+  case running = "RUNNING"
+  case completed = "COMPLETED"
+  case failed = "FAILED"
+  case canceled = "CANCELED"
+  case terminated = "TERMINATED"
+  case continuedAsNew = "CONTINUED_AS_NEW"
+  case timedOut = "TIMED_OUT"
+  case unknown = "UNKNOWN"
 }

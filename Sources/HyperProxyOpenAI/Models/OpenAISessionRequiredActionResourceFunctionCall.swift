@@ -15,14 +15,14 @@ public struct OpenAISessionRequiredActionResourceFunctionCall: Codable, Sendable
   public var callId: String
   public var name: String
   public var turnId: String
-  public var kind: OpenAISessionRequiredActionResourceFunctionCallKind
+  public var kind: OpenAISessionRequiredActionResourceFunctionCall.Kind
 
   public init(
     arguments: HyperProxyJSONValue,
     callId: String,
     name: String,
     turnId: String,
-    kind: OpenAISessionRequiredActionResourceFunctionCallKind
+    kind: OpenAISessionRequiredActionResourceFunctionCall.Kind
   ) {
     self.arguments = arguments
     self.callId = callId
@@ -37,5 +37,9 @@ public struct OpenAISessionRequiredActionResourceFunctionCall: Codable, Sendable
     case name
     case turnId = "turn_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case functionCall = "function_call"
   }
 }

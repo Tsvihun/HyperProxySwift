@@ -14,12 +14,12 @@ public struct OpenAILiveInstructionsAppendParam: Codable, Sendable {
   public var content: String
   public var delegationId: String?
   public var eventId: String?
-  public var kind: OpenAILiveInstructionsAppendParamKind
+  public var kind: OpenAILiveInstructionsAppendParam.Kind
 
   public init(
     content: String,
     delegationId: String?,
-    kind: OpenAILiveInstructionsAppendParamKind,
+    kind: OpenAILiveInstructionsAppendParam.Kind,
     eventId: String? = nil
   ) {
     self.content = content
@@ -33,5 +33,9 @@ public struct OpenAILiveInstructionsAppendParam: Codable, Sendable {
     case delegationId = "delegation_id"
     case eventId = "event_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case sessionInstructionsAppend = "session.instructions.append"
   }
 }

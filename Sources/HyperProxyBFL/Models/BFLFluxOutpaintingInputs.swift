@@ -15,7 +15,7 @@ public struct BFLFluxOutpaintingInputs: Codable, Sendable {
   public var disablePup: Bool?
   public var height: Int
   public var inputImage: String
-  public var mode: BFLFluxOutpaintingInputsMode?
+  public var mode: BFLFluxOutpaintingInputs.Mode?
   public var outputFormat: BFLOutputFormat?
   public var prompt: String?
   public var referenceOffsetX: Int?
@@ -30,7 +30,7 @@ public struct BFLFluxOutpaintingInputs: Codable, Sendable {
     width: Int,
     autoCrop: Bool? = nil,
     disablePup: Bool? = nil,
-    mode: BFLFluxOutpaintingInputsMode? = nil,
+    mode: BFLFluxOutpaintingInputs.Mode? = nil,
     outputFormat: BFLOutputFormat? = nil,
     prompt: String? = nil,
     referenceOffsetX: Int? = nil,
@@ -65,5 +65,10 @@ public struct BFLFluxOutpaintingInputs: Codable, Sendable {
     case safetyTolerance = "safety_tolerance"
     case user
     case width
+  }
+
+  public enum Mode: String, Codable, Hashable, Sendable {
+    case high = "high"
+    case fast = "fast"
   }
 }

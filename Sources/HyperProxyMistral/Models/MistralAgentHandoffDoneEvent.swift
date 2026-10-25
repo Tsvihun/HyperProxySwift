@@ -16,7 +16,7 @@ public struct MistralAgentHandoffDoneEvent: Codable, Sendable {
   public var nextAgentId: String
   public var nextAgentName: String
   public var outputIndex: Int?
-  public var kind: MistralAgentHandoffDoneKind?
+  public var kind: MistralAgentHandoffDoneEvent.Kind?
 
   public init(
     id: String,
@@ -24,7 +24,7 @@ public struct MistralAgentHandoffDoneEvent: Codable, Sendable {
     nextAgentName: String,
     createdAt: String? = nil,
     outputIndex: Int? = nil,
-    kind: MistralAgentHandoffDoneKind? = nil
+    kind: MistralAgentHandoffDoneEvent.Kind? = nil
   ) {
     self.createdAt = createdAt
     self.id = id
@@ -41,5 +41,9 @@ public struct MistralAgentHandoffDoneEvent: Codable, Sendable {
     case nextAgentName = "next_agent_name"
     case outputIndex = "output_index"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case agentHandoffDone = "agent.handoff.done"
   }
 }

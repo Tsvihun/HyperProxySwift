@@ -15,12 +15,12 @@ public struct OpenAILiveResponseEvent: Codable, Sendable {
   public var delegationId: String?
   public var event: [String: HyperProxyJSONValue]
   public var eventId: String
-  public var kind: OpenAILiveResponseEventKind
+  public var kind: OpenAILiveResponseEvent.Kind
 
   public init(
     event: [String: HyperProxyJSONValue],
     eventId: String,
-    kind: OpenAILiveResponseEventKind,
+    kind: OpenAILiveResponseEvent.Kind,
     clientEventId: String? = nil,
     delegationId: String? = nil
   ) {
@@ -37,5 +37,9 @@ public struct OpenAILiveResponseEvent: Codable, Sendable {
     case event
     case eventId = "event_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case responseEvent = "response.event"
   }
 }

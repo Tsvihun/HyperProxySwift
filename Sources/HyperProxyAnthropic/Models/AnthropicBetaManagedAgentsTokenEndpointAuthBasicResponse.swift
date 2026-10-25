@@ -11,15 +11,21 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsTokenEndpointAuthBasicResponse: Codable, Sendable {
-  public var kind: AnthropicBetaManagedAgentsTokenEndpointAuthBasicResponseKind
+  public var kind: AnthropicBetaManagedAgentsTokenEndpointAuthBasicResponse.Kind
 
   public init(
-    kind: AnthropicBetaManagedAgentsTokenEndpointAuthBasicResponseKind
+    kind: AnthropicBetaManagedAgentsTokenEndpointAuthBasicResponse.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case clientSecretBasic = "client_secret_basic"
   }
 }

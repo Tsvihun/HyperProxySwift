@@ -14,13 +14,13 @@ public struct AnthropicBetaManagedAgentsEnvironmentVariableAuthResponse: Codable
   public var injectionLocation: AnthropicBetaManagedAgentsInjectionLocationResponse
   public var networking: AnthropicBetaManagedAgentsCredentialNetworkingResponse
   public var secretName: String
-  public var kind: AnthropicBetaManagedAgentsEnvironmentVariableAuthResponseKind
+  public var kind: AnthropicBetaManagedAgentsEnvironmentVariableAuthResponse.Kind
 
   public init(
     injectionLocation: AnthropicBetaManagedAgentsInjectionLocationResponse,
     networking: AnthropicBetaManagedAgentsCredentialNetworkingResponse,
     secretName: String,
-    kind: AnthropicBetaManagedAgentsEnvironmentVariableAuthResponseKind
+    kind: AnthropicBetaManagedAgentsEnvironmentVariableAuthResponse.Kind
   ) {
     self.injectionLocation = injectionLocation
     self.networking = networking
@@ -33,5 +33,11 @@ public struct AnthropicBetaManagedAgentsEnvironmentVariableAuthResponse: Codable
     case networking
     case secretName = "secret_name"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case environmentVariable = "environment_variable"
   }
 }

@@ -11,16 +11,16 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterOutputTextEditorServerToolItem: Codable, Sendable {
-  public var command: OpenRouterOutputTextEditorServerToolItemCommand?
+  public var command: OpenRouterOutputTextEditorServerToolItem.Command?
   public var filePath: String?
   public var id: String?
   public var status: OpenRouterToolCallStatus
-  public var kind: OpenRouterOutputTextEditorServerToolItemKind
+  public var kind: OpenRouterOutputTextEditorServerToolItem.Kind
 
   public init(
     status: OpenRouterToolCallStatus,
-    kind: OpenRouterOutputTextEditorServerToolItemKind,
-    command: OpenRouterOutputTextEditorServerToolItemCommand? = nil,
+    kind: OpenRouterOutputTextEditorServerToolItem.Kind,
+    command: OpenRouterOutputTextEditorServerToolItem.Command? = nil,
     filePath: String? = nil,
     id: String? = nil
   ) {
@@ -37,5 +37,16 @@ public struct OpenRouterOutputTextEditorServerToolItem: Codable, Sendable {
     case id
     case status
     case kind = "type"
+  }
+
+  public enum Command: String, Codable, Hashable, Sendable {
+    case view = "view"
+    case create = "create"
+    case strReplace = "str_replace"
+    case insert = "insert"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case openrouterTextEditor = "openrouter:text_editor"
   }
 }

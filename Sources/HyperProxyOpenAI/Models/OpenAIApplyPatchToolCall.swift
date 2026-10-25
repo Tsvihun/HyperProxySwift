@@ -15,16 +15,16 @@ public struct OpenAIApplyPatchToolCall: Codable, Sendable {
   public var caller: OpenAIToolCallCaller?
   public var createdBy: String?
   public var id: String
-  public var operation: OpenAIApplyPatchToolCallOperation
+  public var operation: OpenAIApplyPatchToolCall.Operation
   public var status: OpenAIApplyPatchCallStatus
-  public var kind: OpenAIApplyPatchToolCallKind
+  public var kind: OpenAIApplyPatchToolCall.Kind
 
   public init(
     callId: String,
     id: String,
-    operation: OpenAIApplyPatchToolCallOperation,
+    operation: OpenAIApplyPatchToolCall.Operation,
     status: OpenAIApplyPatchCallStatus,
-    kind: OpenAIApplyPatchToolCallKind,
+    kind: OpenAIApplyPatchToolCall.Kind,
     caller: OpenAIToolCallCaller? = nil,
     createdBy: String? = nil
   ) {
@@ -45,5 +45,41 @@ public struct OpenAIApplyPatchToolCall: Codable, Sendable {
     case operation
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case applyPatchCall = "apply_patch_call"
+  }
+
+  public enum Operation: Codable, Sendable {
+    case applyPatchCreateFileOperation(OpenAIApplyPatchCreateFileOperation)
+    case applyPatchDeleteFileOperation(OpenAIApplyPatchDeleteFileOperation)
+    case applyPatchUpdateFileOperation(OpenAIApplyPatchUpdateFileOperation)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenAIApplyPatchCreateFileOperation.self) {
+        self = .applyPatchCreateFileOperation(value)
+        return
+      }
+      if let value = try? container.decode(OpenAIApplyPatchDeleteFileOperation.self) {
+        self = .applyPatchDeleteFileOperation(value)
+        return
+      }
+      self = .applyPatchUpdateFileOperation(
+        try container.decode(OpenAIApplyPatchUpdateFileOperation.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .applyPatchCreateFileOperation(let value):
+        try container.encode(value)
+      case .applyPatchDeleteFileOperation(let value):
+        try container.encode(value)
+      case .applyPatchUpdateFileOperation(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

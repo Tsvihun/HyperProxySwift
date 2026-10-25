@@ -13,4 +13,5 @@ import HyperProxyCore
 public enum ElevenLabsAgentDeploymentSource: String, Codable, Hashable, Sendable {
   case manual = "manual"
   case branchMerge = "branch_merge"
+  case duplicate = "duplicate"
 }

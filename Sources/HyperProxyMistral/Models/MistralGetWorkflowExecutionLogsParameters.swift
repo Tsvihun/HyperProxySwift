@@ -17,7 +17,7 @@ public struct MistralGetWorkflowExecutionLogsParameters: Codable, Sendable {
   public var cursor: String?
   public var executionId: String
   public var limit: Int?
-  public var order: MistralGetWorkflowExecutionLogsParametersOrder?
+  public var order: MistralGetWorkflowExecutionLogsParameters.Order?
   public var runId: String?
 
   public init(
@@ -27,7 +27,7 @@ public struct MistralGetWorkflowExecutionLogsParameters: Codable, Sendable {
     before: String? = nil,
     cursor: String? = nil,
     limit: Int? = nil,
-    order: MistralGetWorkflowExecutionLogsParametersOrder? = nil,
+    order: MistralGetWorkflowExecutionLogsParameters.Order? = nil,
     runId: String? = nil
   ) {
     self.activityId = activityId
@@ -49,5 +49,10 @@ public struct MistralGetWorkflowExecutionLogsParameters: Codable, Sendable {
     case limit
     case order
     case runId = "run_id"
+  }
+
+  public enum Order: String, Codable, Hashable, Sendable {
+    case asc = "asc"
+    case desc = "desc"
   }
 }

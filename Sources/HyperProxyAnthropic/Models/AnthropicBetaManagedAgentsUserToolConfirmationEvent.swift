@@ -17,13 +17,13 @@ public struct AnthropicBetaManagedAgentsUserToolConfirmationEvent: Codable, Send
   public var result: AnthropicBetaManagedAgentsUserToolConfirmationResult
   public var sessionThreadId: String?
   public var toolUseId: String
-  public var kind: AnthropicBetaManagedAgentsUserToolConfirmationEventKind
+  public var kind: AnthropicBetaManagedAgentsUserToolConfirmationEvent.Kind
 
   public init(
     id: String,
     result: AnthropicBetaManagedAgentsUserToolConfirmationResult,
     toolUseId: String,
-    kind: AnthropicBetaManagedAgentsUserToolConfirmationEventKind,
+    kind: AnthropicBetaManagedAgentsUserToolConfirmationEvent.Kind,
     denyMessage: String? = nil,
     processedAt: AnthropicBetaTimestamp? = nil,
     sessionThreadId: String? = nil
@@ -45,5 +45,11 @@ public struct AnthropicBetaManagedAgentsUserToolConfirmationEvent: Codable, Send
     case sessionThreadId = "session_thread_id"
     case toolUseId = "tool_use_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case userToolConfirmation = "user.tool_confirmation"
   }
 }

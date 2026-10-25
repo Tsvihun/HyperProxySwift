@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct ElevenLabsUnitTestWorkflowNodeTransitionEvaluationNodeId: Codable, Sendable {
   public var agentId: String
   public var targetNodeId: String
-  public var kind: ElevenLabsNodeIdKind?
+  public var kind: ElevenLabsUnitTestWorkflowNodeTransitionEvaluationNodeId.Kind?
 
   public init(
     agentId: String,
     targetNodeId: String,
-    kind: ElevenLabsNodeIdKind? = nil
+    kind: ElevenLabsUnitTestWorkflowNodeTransitionEvaluationNodeId.Kind? = nil
   ) {
     self.agentId = agentId
     self.targetNodeId = targetNodeId
@@ -29,5 +29,9 @@ public struct ElevenLabsUnitTestWorkflowNodeTransitionEvaluationNodeId: Codable,
     case agentId = "agent_id"
     case targetNodeId = "target_node_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case nodeId = "node_id"
   }
 }

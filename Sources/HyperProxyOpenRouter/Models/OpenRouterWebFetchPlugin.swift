@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenRouterWebFetchPlugin: Codable, Sendable {
   public var allowedDomains: [String]?
   public var blockedDomains: [String]?
-  public var id: OpenRouterWebFetchPluginId
+  public var id: OpenRouterWebFetchPlugin.Id
   public var maxContentTokens: Int?
   public var maxUses: Int?
 
   public init(
-    id: OpenRouterWebFetchPluginId,
+    id: OpenRouterWebFetchPlugin.Id,
     allowedDomains: [String]? = nil,
     blockedDomains: [String]? = nil,
     maxContentTokens: Int? = nil,
@@ -37,5 +37,9 @@ public struct OpenRouterWebFetchPlugin: Codable, Sendable {
     case id
     case maxContentTokens = "max_content_tokens"
     case maxUses = "max_uses"
+  }
+
+  public enum Id: String, Codable, Hashable, Sendable {
+    case webFetch = "web-fetch"
   }
 }

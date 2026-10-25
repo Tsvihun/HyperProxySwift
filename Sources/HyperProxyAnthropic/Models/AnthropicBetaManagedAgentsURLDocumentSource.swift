@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsURLDocumentSource: Codable, Sendable {
-  public var kind: AnthropicBetaManagedAgentsURLDocumentSourceKind
+  public var kind: AnthropicBetaManagedAgentsURLDocumentSource.Kind
   public var url: String
 
   public init(
-    kind: AnthropicBetaManagedAgentsURLDocumentSourceKind,
+    kind: AnthropicBetaManagedAgentsURLDocumentSource.Kind,
     url: String
   ) {
     self.kind = kind
@@ -25,5 +25,9 @@ public struct AnthropicBetaManagedAgentsURLDocumentSource: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case kind = "type"
     case url
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case url = "url"
   }
 }

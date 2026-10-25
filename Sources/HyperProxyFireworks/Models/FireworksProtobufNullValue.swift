@@ -11,5 +11,5 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksProtobufNullValue: String, Codable, Hashable, Sendable {
-  case nULLVALUE = "NULL_VALUE"
+  case nullValue = "NULL_VALUE"
 }

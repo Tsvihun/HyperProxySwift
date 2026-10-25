@@ -13,16 +13,16 @@ import HyperProxyCore
 public struct OpenAICreateTranscriptionResponseDiarizedJson: Codable, Sendable {
   public var duration: Double
   public var segments: [OpenAITranscriptionDiarizedSegment]
-  public var task: OpenAICreateTranscriptionResponseDiarizedJsonTask
+  public var task: OpenAICreateTranscriptionResponseDiarizedJson.Task
   public var text: String
-  public var usage: OpenAICreateTranscriptionResponseDiarizedJsonUsage?
+  public var usage: OpenAICreateTranscriptionResponseDiarizedJson.Usage?
 
   public init(
     duration: Double,
     segments: [OpenAITranscriptionDiarizedSegment],
-    task: OpenAICreateTranscriptionResponseDiarizedJsonTask,
+    task: OpenAICreateTranscriptionResponseDiarizedJson.Task,
     text: String,
-    usage: OpenAICreateTranscriptionResponseDiarizedJsonUsage? = nil
+    usage: OpenAICreateTranscriptionResponseDiarizedJson.Usage? = nil
   ) {
     self.duration = duration
     self.segments = segments
@@ -37,5 +37,34 @@ public struct OpenAICreateTranscriptionResponseDiarizedJson: Codable, Sendable {
     case task
     case text
     case usage
+  }
+
+  public enum Task: String, Codable, Hashable, Sendable {
+    case transcribe = "transcribe"
+  }
+
+  public enum Usage: Codable, Sendable {
+    case transcriptTextUsageTokens(OpenAITranscriptTextUsageTokens)
+    case transcriptTextUsageDuration(OpenAITranscriptTextUsageDuration)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenAITranscriptTextUsageTokens.self) {
+        self = .transcriptTextUsageTokens(value)
+        return
+      }
+      self = .transcriptTextUsageDuration(
+        try container.decode(OpenAITranscriptTextUsageDuration.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .transcriptTextUsageTokens(let value):
+        try container.encode(value)
+      case .transcriptTextUsageDuration(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

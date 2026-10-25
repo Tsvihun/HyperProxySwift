@@ -14,7 +14,7 @@ public struct OpenRouterWebSearchPlugin: Codable, Sendable {
   public var enabled: Bool?
   public var engine: OpenRouterWebSearchEngine?
   public var excludeDomains: [String]?
-  public var id: OpenRouterWebSearchPluginId
+  public var id: OpenRouterWebSearchPlugin.Id
   public var includeDomains: [String]?
   public var maxResults: Int?
   public var maxUses: Int?
@@ -24,7 +24,7 @@ public struct OpenRouterWebSearchPlugin: Codable, Sendable {
   public var xSearch: OpenRouterXSearchOptions?
 
   public init(
-    id: OpenRouterWebSearchPluginId,
+    id: OpenRouterWebSearchPlugin.Id,
     enabled: Bool? = nil,
     engine: OpenRouterWebSearchEngine? = nil,
     excludeDomains: [String]? = nil,
@@ -61,5 +61,9 @@ public struct OpenRouterWebSearchPlugin: Codable, Sendable {
     case searchPrompt = "search_prompt"
     case userLocation = "user_location"
     case xSearch = "x_search"
+  }
+
+  public enum Id: String, Codable, Hashable, Sendable {
+    case web = "web"
   }
 }

@@ -17,7 +17,7 @@ public struct OpenAIToolSearchCall: Codable, Sendable {
   public var execution: OpenAIToolSearchExecutionType
   public var id: String
   public var status: OpenAIFunctionCallStatus
-  public var kind: OpenAIToolSearchCallKind
+  public var kind: OpenAIToolSearchCall.Kind
 
   public init(
     arguments: HyperProxyJSONValue,
@@ -25,7 +25,7 @@ public struct OpenAIToolSearchCall: Codable, Sendable {
     execution: OpenAIToolSearchExecutionType,
     id: String,
     status: OpenAIFunctionCallStatus,
-    kind: OpenAIToolSearchCallKind,
+    kind: OpenAIToolSearchCall.Kind,
     createdBy: String? = nil
   ) {
     self.arguments = arguments
@@ -45,5 +45,9 @@ public struct OpenAIToolSearchCall: Codable, Sendable {
     case id
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case toolSearchCall = "tool_search_call"
   }
 }

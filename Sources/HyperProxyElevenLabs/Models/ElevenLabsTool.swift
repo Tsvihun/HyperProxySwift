@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsTool: Codable, Sendable {
-  public var meta: [String: HyperProxyJSONValue]?
+  public var _meta: [String: HyperProxyJSONValue]?
   public var annotations: ElevenLabsToolAnnotations?
   public var description: String?
   public var execution: ElevenLabsToolExecution?
@@ -24,7 +24,7 @@ public struct ElevenLabsTool: Codable, Sendable {
   public init(
     inputSchema: [String: HyperProxyJSONValue],
     name: String,
-    meta: [String: HyperProxyJSONValue]? = nil,
+    _meta: [String: HyperProxyJSONValue]? = nil,
     annotations: ElevenLabsToolAnnotations? = nil,
     description: String? = nil,
     execution: ElevenLabsToolExecution? = nil,
@@ -32,7 +32,7 @@ public struct ElevenLabsTool: Codable, Sendable {
     outputSchema: [String: HyperProxyJSONValue]? = nil,
     title: String? = nil
   ) {
-    self.meta = meta
+    self._meta = _meta
     self.annotations = annotations
     self.description = description
     self.execution = execution
@@ -44,7 +44,7 @@ public struct ElevenLabsTool: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
-    case meta = "_meta"
+    case _meta
     case annotations
     case description
     case execution

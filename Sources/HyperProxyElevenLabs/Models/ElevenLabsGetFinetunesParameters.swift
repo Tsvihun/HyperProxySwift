@@ -14,8 +14,8 @@ public struct ElevenLabsGetFinetunesParameters: Codable, Sendable {
   public var createdBy: ElevenLabsFinetuneCreatedBy?
   public var cursor: String?
   public var pageSize: Int?
-  public var sort: ElevenLabsGetFinetunesParametersSort?
-  public var sortDirection: ElevenLabsGetFinetunesParametersSortDirection?
+  public var sort: ElevenLabsGetFinetunesParameters.Sort?
+  public var sortDirection: ElevenLabsGetFinetunesParameters.SortDirection?
   public var visibility: ElevenLabsFinetuneVisibility?
   public var xiApiKey: String?
 
@@ -23,8 +23,8 @@ public struct ElevenLabsGetFinetunesParameters: Codable, Sendable {
     createdBy: ElevenLabsFinetuneCreatedBy? = nil,
     cursor: String? = nil,
     pageSize: Int? = nil,
-    sort: ElevenLabsGetFinetunesParametersSort? = nil,
-    sortDirection: ElevenLabsGetFinetunesParametersSortDirection? = nil,
+    sort: ElevenLabsGetFinetunesParameters.Sort? = nil,
+    sortDirection: ElevenLabsGetFinetunesParameters.SortDirection? = nil,
     visibility: ElevenLabsFinetuneVisibility? = nil,
     xiApiKey: String? = nil
   ) {
@@ -45,5 +45,15 @@ public struct ElevenLabsGetFinetunesParameters: Codable, Sendable {
     case sortDirection = "sort_direction"
     case visibility
     case xiApiKey = "xi-api-key"
+  }
+
+  public enum Sort: String, Codable, Hashable, Sendable {
+    case createdAt = "created_at"
+    case name = "name"
+  }
+
+  public enum SortDirection: String, Codable, Hashable, Sendable {
+    case asc = "asc"
+    case desc = "desc"
   }
 }

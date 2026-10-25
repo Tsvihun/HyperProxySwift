@@ -13,10 +13,10 @@ import HyperProxyCore
 public struct OpenAIRealtimeBetaClientEventResponseCreate: Codable, Sendable {
   public var eventId: String?
   public var response: OpenAIRealtimeBetaResponseCreateParams?
-  public var kind: OpenAIRealtimeBetaClientEventResponseCreateKind
+  public var kind: OpenAIRealtimeBetaClientEventResponseCreate.Kind
 
   public init(
-    kind: OpenAIRealtimeBetaClientEventResponseCreateKind,
+    kind: OpenAIRealtimeBetaClientEventResponseCreate.Kind,
     eventId: String? = nil,
     response: OpenAIRealtimeBetaResponseCreateParams? = nil
   ) {
@@ -29,5 +29,9 @@ public struct OpenAIRealtimeBetaClientEventResponseCreate: Codable, Sendable {
     case eventId = "event_id"
     case response
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case responseCreate = "response.create"
   }
 }

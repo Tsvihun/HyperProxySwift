@@ -12,15 +12,15 @@ import HyperProxyCore
 
 public struct PerplexityContextualizedEmbeddingsRequest: Codable, Sendable {
   public var dimensions: Int?
-  public var encodingFormat: PerplexityContextualizedEmbeddingsRequestEncodingFormat?
+  public var encodingFormat: PerplexityContextualizedEmbeddingsRequest.EncodingFormat?
   public var input: [[String]]
-  public var model: PerplexityContextualizedEmbeddingsRequestModel
+  public var model: PerplexityContextualizedEmbeddingsRequest.Model
 
   public init(
     input: [[String]],
-    model: PerplexityContextualizedEmbeddingsRequestModel,
+    model: PerplexityContextualizedEmbeddingsRequest.Model,
     dimensions: Int? = nil,
-    encodingFormat: PerplexityContextualizedEmbeddingsRequestEncodingFormat? = nil
+    encodingFormat: PerplexityContextualizedEmbeddingsRequest.EncodingFormat? = nil
   ) {
     self.dimensions = dimensions
     self.encodingFormat = encodingFormat
@@ -33,5 +33,17 @@ public struct PerplexityContextualizedEmbeddingsRequest: Codable, Sendable {
     case encodingFormat = "encoding_format"
     case input
     case model
+  }
+
+  public enum EncodingFormat: String, Codable, Hashable,
+    Sendable
+  {
+    case base64Int8 = "base64_int8"
+    case base64Binary = "base64_binary"
+  }
+
+  public enum Model: String, Codable, Hashable, Sendable {
+    case pplxEmbedContextV1_0_6b = "pplx-embed-context-v1-0.6b"
+    case pplxEmbedContextV1_4b = "pplx-embed-context-v1-4b"
   }
 }

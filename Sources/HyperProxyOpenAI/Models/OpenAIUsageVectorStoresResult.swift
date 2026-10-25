@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIUsageVectorStoresResult: Codable, Sendable {
-  public var object: OpenAIUsageVectorStoresResultObject
+  public var object: OpenAIUsageVectorStoresResult.Object
   public var projectId: String?
   public var usageBytes: Int
 
   public init(
-    object: OpenAIUsageVectorStoresResultObject,
+    object: OpenAIUsageVectorStoresResult.Object,
     usageBytes: Int,
     projectId: String? = nil
   ) {
@@ -29,5 +29,9 @@ public struct OpenAIUsageVectorStoresResult: Codable, Sendable {
     case object
     case projectId = "project_id"
     case usageBytes = "usage_bytes"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case organizationUsageVectorStoresResult = "organization.usage.vector_stores.result"
   }
 }

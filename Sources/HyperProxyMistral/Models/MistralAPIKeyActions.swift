@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralAPIKeyActions: Codable, Sendable {
-  public var delete: MistralAPIKeyActionsDeleteAnyOf1?
-  public var rotate: MistralAPIKeyActionsRotateAnyOf1?
+  public var delete: MistralAPIKeyActionsDeleteVariant?
+  public var rotate: MistralAPIKeyActionsRotateVariant?
 
   public init(
-    delete: MistralAPIKeyActionsDeleteAnyOf1? = nil,
-    rotate: MistralAPIKeyActionsRotateAnyOf1? = nil
+    delete: MistralAPIKeyActionsDeleteVariant? = nil,
+    rotate: MistralAPIKeyActionsRotateVariant? = nil
   ) {
     self.delete = delete
     self.rotate = rotate

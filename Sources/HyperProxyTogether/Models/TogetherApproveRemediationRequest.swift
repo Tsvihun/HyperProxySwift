@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct TogetherApproveRemediationRequest: Codable, Sendable {
   public var comment: String?
-  public var mode: TogetherApproveRemediationRequestMode?
+  public var mode: TogetherApproveRemediationRequest.Mode?
 
   public init(
     comment: String? = nil,
-    mode: TogetherApproveRemediationRequestMode? = nil
+    mode: TogetherApproveRemediationRequest.Mode? = nil
   ) {
     self.comment = comment
     self.mode = mode
@@ -25,5 +25,13 @@ public struct TogetherApproveRemediationRequest: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case comment
     case mode
+  }
+
+  public enum Mode: String, Codable, Hashable, Sendable {
+    case remediationModeVmOnly = "REMEDIATION_MODE_VM_ONLY"
+    case remediationModeHostAware = "REMEDIATION_MODE_HOST_AWARE"
+    case remediationModeEvictWithoutReplacement = "REMEDIATION_MODE_EVICT_WITHOUT_REPLACEMENT"
+    case remediationModeRebootVm = "REMEDIATION_MODE_REBOOT_VM"
+    case remediationModeHostPowerCycle = "REMEDIATION_MODE_HOST_POWER_CYCLE"
   }
 }

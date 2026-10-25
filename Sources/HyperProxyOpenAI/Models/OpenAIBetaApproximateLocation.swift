@@ -15,10 +15,10 @@ public struct OpenAIBetaApproximateLocation: Codable, Sendable {
   public var country: String?
   public var region: String?
   public var timezone: String?
-  public var kind: OpenAIBetaApproximateLocationKind
+  public var kind: OpenAIBetaApproximateLocation.Kind
 
   public init(
-    kind: OpenAIBetaApproximateLocationKind,
+    kind: OpenAIBetaApproximateLocation.Kind,
     city: String? = nil,
     country: String? = nil,
     region: String? = nil,
@@ -37,5 +37,9 @@ public struct OpenAIBetaApproximateLocation: Codable, Sendable {
     case region
     case timezone
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case approximate = "approximate"
   }
 }

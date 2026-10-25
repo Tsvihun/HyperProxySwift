@@ -15,14 +15,14 @@ public struct OpenRouterVaultEffectiveSecret: Codable, Sendable {
   public var fingerprint: String
   public var hosts: [String]
   public var name: String
-  public var scope: OpenRouterVaultEffectiveSecretScope
+  public var scope: OpenRouterVaultEffectiveSecret.Scope
 
   public init(
     createdAt: String,
     fingerprint: String,
     hosts: [String],
     name: String,
-    scope: OpenRouterVaultEffectiveSecretScope
+    scope: OpenRouterVaultEffectiveSecret.Scope
   ) {
     self.createdAt = createdAt
     self.fingerprint = fingerprint
@@ -37,5 +37,11 @@ public struct OpenRouterVaultEffectiveSecret: Codable, Sendable {
     case hosts
     case name
     case scope
+  }
+
+  public enum Scope: String, Codable, Hashable, Sendable {
+    case intern = "intern"
+    case attached = "attached"
+    case workspace = "workspace"
   }
 }

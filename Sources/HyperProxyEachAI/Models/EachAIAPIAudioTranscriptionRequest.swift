@@ -14,17 +14,19 @@ public struct EachAIAPIAudioTranscriptionRequest: Codable, Sendable {
   public var file: String
   public var language: String?
   public var model: String
-  public var responseFormat: EachAIAPIAudioTranscriptionRequestResponseFormat?
+  public var responseFormat: EachAIAPIAudioTranscriptionRequest.ResponseFormat?
   public var temperature: Double?
-  public var timestampGranularities: [EachAIAPIAudioTranscriptionRequestTimestampGranularitiesItem]?
+  public var timestampGranularities:
+    [EachAIAPIAudioTranscriptionRequest.TimestampGranularitiesElement]?
 
   public init(
     file: String,
     model: String,
     language: String? = nil,
-    responseFormat: EachAIAPIAudioTranscriptionRequestResponseFormat? = nil,
+    responseFormat: EachAIAPIAudioTranscriptionRequest.ResponseFormat? = nil,
     temperature: Double? = nil,
-    timestampGranularities: [EachAIAPIAudioTranscriptionRequestTimestampGranularitiesItem]? = nil
+    timestampGranularities: [EachAIAPIAudioTranscriptionRequest.TimestampGranularitiesElement]? =
+      nil
   ) {
     self.file = file
     self.language = language
@@ -41,5 +43,17 @@ public struct EachAIAPIAudioTranscriptionRequest: Codable, Sendable {
     case responseFormat = "response_format"
     case temperature
     case timestampGranularities = "timestamp_granularities[]"
+  }
+
+  public enum ResponseFormat: String, Codable, Hashable, Sendable {
+    case json = "json"
+    case verboseJson = "verbose_json"
+  }
+
+  public enum TimestampGranularitiesElement: String, Codable, Hashable,
+    Sendable
+  {
+    case word = "word"
+    case segment = "segment"
   }
 }

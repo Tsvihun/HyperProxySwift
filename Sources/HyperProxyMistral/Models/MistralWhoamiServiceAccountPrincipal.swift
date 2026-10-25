@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct MistralWhoamiServiceAccountPrincipal: Codable, Sendable {
   public var name: String?
-  public var principalType: MistralServiceAccountPrincipalType?
+  public var principalType: MistralWhoamiServiceAccountPrincipal.PrincipalType?
   public var serviceAccountId: String
 
   public init(
     serviceAccountId: String,
     name: String? = nil,
-    principalType: MistralServiceAccountPrincipalType? = nil
+    principalType: MistralWhoamiServiceAccountPrincipal.PrincipalType? = nil
   ) {
     self.name = name
     self.principalType = principalType
@@ -29,5 +29,9 @@ public struct MistralWhoamiServiceAccountPrincipal: Codable, Sendable {
     case name
     case principalType = "principal_type"
     case serviceAccountId = "service_account_id"
+  }
+
+  public enum PrincipalType: String, Codable, Hashable, Sendable {
+    case serviceAccount = "service_account"
   }
 }

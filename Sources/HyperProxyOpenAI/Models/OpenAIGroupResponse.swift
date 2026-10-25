@@ -12,14 +12,14 @@ import HyperProxyCore
 
 public struct OpenAIGroupResponse: Codable, Sendable {
   public var createdAt: Int
-  public var groupType: OpenAIGroupResponseGroupType
+  public var groupType: OpenAIGroupResponse.GroupType
   public var id: String
   public var isScimManaged: Bool
   public var name: String
 
   public init(
     createdAt: Int,
-    groupType: OpenAIGroupResponseGroupType,
+    groupType: OpenAIGroupResponse.GroupType,
     id: String,
     isScimManaged: Bool,
     name: String
@@ -37,5 +37,10 @@ public struct OpenAIGroupResponse: Codable, Sendable {
     case id
     case isScimManaged = "is_scim_managed"
     case name
+  }
+
+  public enum GroupType: String, Codable, Hashable, Sendable {
+    case group = "group"
+    case tenantGroup = "tenant_group"
   }
 }

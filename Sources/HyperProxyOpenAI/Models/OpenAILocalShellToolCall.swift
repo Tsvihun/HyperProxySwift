@@ -14,15 +14,15 @@ public struct OpenAILocalShellToolCall: Codable, Sendable {
   public var action: OpenAILocalShellExecAction
   public var callId: String
   public var id: String
-  public var status: OpenAILocalShellToolCallStatus
-  public var kind: OpenAILocalShellToolCallKind
+  public var status: OpenAILocalShellToolCall.Status
+  public var kind: OpenAILocalShellToolCall.Kind
 
   public init(
     action: OpenAILocalShellExecAction,
     callId: String,
     id: String,
-    status: OpenAILocalShellToolCallStatus,
-    kind: OpenAILocalShellToolCallKind
+    status: OpenAILocalShellToolCall.Status,
+    kind: OpenAILocalShellToolCall.Kind
   ) {
     self.action = action
     self.callId = callId
@@ -37,5 +37,15 @@ public struct OpenAILocalShellToolCall: Codable, Sendable {
     case id
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case localShellCall = "local_shell_call"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case inProgress = "in_progress"
+    case completed = "completed"
+    case incomplete = "incomplete"
   }
 }

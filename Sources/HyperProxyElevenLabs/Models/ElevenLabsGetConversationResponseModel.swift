@@ -26,7 +26,7 @@ public struct ElevenLabsGetConversationResponseModel: Codable, Sendable {
   public var hasUserAudio: Bool
   public var metadata: ElevenLabsConversationHistoryMetadataCommonModel
   public var otlpTraces: [String: HyperProxyJSONValue]?
-  public var status: ElevenLabsGetConversationResponseModelStatus
+  public var status: ElevenLabsGetConversationResponseModel.Status
   public var tagIds: [String]?
   public var transcript: [ElevenLabsConversationHistoryTranscriptResponseModel]
   public var userId: String?
@@ -41,7 +41,7 @@ public struct ElevenLabsGetConversationResponseModel: Codable, Sendable {
     hasResponseAudio: Bool,
     hasUserAudio: Bool,
     metadata: ElevenLabsConversationHistoryMetadataCommonModel,
-    status: ElevenLabsGetConversationResponseModelStatus,
+    status: ElevenLabsGetConversationResponseModel.Status,
     transcript: [ElevenLabsConversationHistoryTranscriptResponseModel],
     agentName: String? = nil,
     analysis: ElevenLabsConversationHistoryAnalysisCommonModel? = nil,
@@ -99,5 +99,13 @@ public struct ElevenLabsGetConversationResponseModel: Codable, Sendable {
     case userId = "user_id"
     case versionId = "version_id"
     case visitedAgents = "visited_agents"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case initiated = "initiated"
+    case inProgress = "in-progress"
+    case processing = "processing"
+    case done = "done"
+    case failed = "failed"
   }
 }

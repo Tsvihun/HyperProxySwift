@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct AnthropicBetaDreamMemoryStoreOutput: Codable, Sendable {
   public var memoryStoreId: String
-  public var kind: AnthropicBetaDreamMemoryStoreOutputKind
+  public var kind: AnthropicBetaDreamMemoryStoreOutput.Kind
 
   public init(
     memoryStoreId: String,
-    kind: AnthropicBetaDreamMemoryStoreOutputKind
+    kind: AnthropicBetaDreamMemoryStoreOutput.Kind
   ) {
     self.memoryStoreId = memoryStoreId
     self.kind = kind
@@ -25,5 +25,9 @@ public struct AnthropicBetaDreamMemoryStoreOutput: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case memoryStoreId = "memory_store_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case memoryStore = "memory_store"
   }
 }

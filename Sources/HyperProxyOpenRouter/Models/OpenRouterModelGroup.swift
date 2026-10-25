@@ -14,7 +14,7 @@ public enum OpenRouterModelGroup: String, Codable, Hashable, Sendable {
   case router = "Router"
   case media = "Media"
   case other = "Other"
-  case gPT = "GPT"
+  case gpt = "GPT"
   case claude = "Claude"
   case gemini = "Gemini"
   case gemma = "Gemma"
@@ -28,7 +28,7 @@ public enum OpenRouterModelGroup: String, Codable, Hashable, Sendable {
   case llama2 = "Llama2"
   case llama3 = "Llama3"
   case llama4 = "Llama4"
-  case paLM = "PaLM"
-  case rWKV = "RWKV"
+  case paLm = "PaLM"
+  case rwkv = "RWKV"
   case qwen3 = "Qwen3"
 }

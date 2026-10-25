@@ -14,19 +14,19 @@ public struct OpenRouterUnifiedBenchmarksMeta: Codable, Sendable {
   public var asOf: String
   public var citation: String
   public var modelCount: Int
-  public var source: OpenRouterUnifiedBenchmarksMetaSource?
+  public var source: OpenRouterUnifiedBenchmarksMeta.Source?
   public var sourceUrl: String
   public var taskType: String
-  public var version: OpenRouterUnifiedBenchmarksMetaVersion
+  public var version: OpenRouterUnifiedBenchmarksMeta.Version
 
   public init(
     asOf: String,
     citation: String,
     modelCount: Int,
-    source: OpenRouterUnifiedBenchmarksMetaSource?,
+    source: OpenRouterUnifiedBenchmarksMeta.Source?,
     sourceUrl: String,
     taskType: String,
-    version: OpenRouterUnifiedBenchmarksMetaVersion
+    version: OpenRouterUnifiedBenchmarksMeta.Version
   ) {
     self.asOf = asOf
     self.citation = citation
@@ -45,5 +45,15 @@ public struct OpenRouterUnifiedBenchmarksMeta: Codable, Sendable {
     case sourceUrl = "source_url"
     case taskType = "task_type"
     case version
+  }
+
+  public enum Source: String, Codable, Hashable, Sendable {
+    case artificialAnalysis = "artificial-analysis"
+    case designArena = "design-arena"
+    case openrouter = "openrouter"
+  }
+
+  public enum Version: String, Codable, Hashable, Sendable {
+    case v1 = "v1"
   }
 }

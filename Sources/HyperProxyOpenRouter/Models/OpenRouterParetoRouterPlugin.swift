@@ -12,17 +12,17 @@ import HyperProxyCore
 
 public struct OpenRouterParetoRouterPlugin: Codable, Sendable {
   public var enabled: Bool?
-  public var id: OpenRouterParetoRouterPluginId
+  public var id: OpenRouterParetoRouterPlugin.Id
   public var maxPrice: Double?
   public var minCodingScore: Double?
-  public var priceSource: OpenRouterParetoRouterPluginPriceSource?
+  public var priceSource: OpenRouterParetoRouterPlugin.PriceSource?
 
   public init(
-    id: OpenRouterParetoRouterPluginId,
+    id: OpenRouterParetoRouterPlugin.Id,
     enabled: Bool? = nil,
     maxPrice: Double? = nil,
     minCodingScore: Double? = nil,
-    priceSource: OpenRouterParetoRouterPluginPriceSource? = nil
+    priceSource: OpenRouterParetoRouterPlugin.PriceSource? = nil
   ) {
     self.enabled = enabled
     self.id = id
@@ -37,5 +37,14 @@ public struct OpenRouterParetoRouterPlugin: Codable, Sendable {
     case maxPrice = "max_price"
     case minCodingScore = "min_coding_score"
     case priceSource = "price_source"
+  }
+
+  public enum Id: String, Codable, Hashable, Sendable {
+    case paretoRouter = "pareto-router"
+  }
+
+  public enum PriceSource: String, Codable, Hashable, Sendable {
+    case prompt = "prompt"
+    case weightedAvg = "weighted_avg"
   }
 }

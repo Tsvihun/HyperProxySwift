@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksDeploymentShapePresetType: String, Codable, Hashable, Sendable {
-  case pRESETTYPEUNSPECIFIED = "PRESET_TYPE_UNSPECIFIED"
-  case mINIMAL = "MINIMAL"
-  case fAST = "FAST"
-  case tHROUGHPUT = "THROUGHPUT"
-  case fULLPRECISION = "FULL_PRECISION"
-  case aGENTICCODING = "AGENTIC_CODING"
-  case cHAT = "CHAT"
-  case sUMMARIZATION = "SUMMARIZATION"
-  case mULTILORA = "MULTI_LORA"
+  case presetTypeUnspecified = "PRESET_TYPE_UNSPECIFIED"
+  case minimal = "MINIMAL"
+  case fast = "FAST"
+  case throughput = "THROUGHPUT"
+  case fullPrecision = "FULL_PRECISION"
+  case agenticCoding = "AGENTIC_CODING"
+  case chat = "CHAT"
+  case summarization = "SUMMARIZATION"
+  case multiLora = "MULTI_LORA"
 }

@@ -11,46 +11,157 @@ import Foundation
 import HyperProxyCore
 
 public enum OpenAIMessageStreamEvent: Codable, Sendable {
-  case messageStreamEventOneOf1(OpenAIMessageStreamEventOneOf1)
-  case messageStreamEventOneOf2(OpenAIMessageStreamEventOneOf2)
-  case messageStreamEventOneOf3(OpenAIMessageStreamEventOneOf3)
-  case messageStreamEventOneOf4(OpenAIMessageStreamEventOneOf4)
-  case messageStreamEventOneOf5(OpenAIMessageStreamEventOneOf5)
+  case withDataAndEventdgddeaho(OpenAIMessageStreamEvent.WithDataAndEventdgddeaho)
+  case withDataAndEventlimhjhdk(OpenAIMessageStreamEvent.WithDataAndEventlimhjhdk)
+  case withDataAndEventoegiojpf(OpenAIMessageStreamEvent.WithDataAndEventoegiojpf)
+  case withDataAndEventlhfdgpom(OpenAIMessageStreamEvent.WithDataAndEventlhfdgpom)
+  case withDataAndEventkabmejeg(OpenAIMessageStreamEvent.WithDataAndEventkabmejeg)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(OpenAIMessageStreamEventOneOf1.self) {
-      self = .messageStreamEventOneOf1(value)
+    if let value = try? container.decode(OpenAIMessageStreamEvent.WithDataAndEventdgddeaho.self) {
+      self = .withDataAndEventdgddeaho(value)
       return
     }
-    if let value = try? container.decode(OpenAIMessageStreamEventOneOf2.self) {
-      self = .messageStreamEventOneOf2(value)
+    if let value = try? container.decode(OpenAIMessageStreamEvent.WithDataAndEventlimhjhdk.self) {
+      self = .withDataAndEventlimhjhdk(value)
       return
     }
-    if let value = try? container.decode(OpenAIMessageStreamEventOneOf3.self) {
-      self = .messageStreamEventOneOf3(value)
+    if let value = try? container.decode(OpenAIMessageStreamEvent.WithDataAndEventoegiojpf.self) {
+      self = .withDataAndEventoegiojpf(value)
       return
     }
-    if let value = try? container.decode(OpenAIMessageStreamEventOneOf4.self) {
-      self = .messageStreamEventOneOf4(value)
+    if let value = try? container.decode(OpenAIMessageStreamEvent.WithDataAndEventlhfdgpom.self) {
+      self = .withDataAndEventlhfdgpom(value)
       return
     }
-    self = .messageStreamEventOneOf5(try container.decode(OpenAIMessageStreamEventOneOf5.self))
+    self = .withDataAndEventkabmejeg(
+      try container.decode(OpenAIMessageStreamEvent.WithDataAndEventkabmejeg.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .messageStreamEventOneOf1(let value):
+    case .withDataAndEventdgddeaho(let value):
       try container.encode(value)
-    case .messageStreamEventOneOf2(let value):
+    case .withDataAndEventlimhjhdk(let value):
       try container.encode(value)
-    case .messageStreamEventOneOf3(let value):
+    case .withDataAndEventoegiojpf(let value):
       try container.encode(value)
-    case .messageStreamEventOneOf4(let value):
+    case .withDataAndEventlhfdgpom(let value):
       try container.encode(value)
-    case .messageStreamEventOneOf5(let value):
+    case .withDataAndEventkabmejeg(let value):
       try container.encode(value)
+    }
+  }
+
+  public struct WithDataAndEventdgddeaho: Codable, Sendable {
+    public var data: OpenAIMessageObject
+    public var event: OpenAIMessageStreamEvent.WithDataAndEventdgddeaho.Event
+
+    public init(
+      data: OpenAIMessageObject,
+      event: OpenAIMessageStreamEvent.WithDataAndEventdgddeaho.Event
+    ) {
+      self.data = data
+      self.event = event
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case data
+      case event
+    }
+
+    public enum Event: String, Codable, Hashable, Sendable {
+      case threadMessageCreated = "thread.message.created"
+    }
+  }
+
+  public struct WithDataAndEventlimhjhdk: Codable, Sendable {
+    public var data: OpenAIMessageObject
+    public var event: OpenAIMessageStreamEvent.WithDataAndEventlimhjhdk.Event
+
+    public init(
+      data: OpenAIMessageObject,
+      event: OpenAIMessageStreamEvent.WithDataAndEventlimhjhdk.Event
+    ) {
+      self.data = data
+      self.event = event
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case data
+      case event
+    }
+
+    public enum Event: String, Codable, Hashable, Sendable {
+      case threadMessageInProgress = "thread.message.in_progress"
+    }
+  }
+
+  public struct WithDataAndEventoegiojpf: Codable, Sendable {
+    public var data: OpenAIMessageDeltaObject
+    public var event: OpenAIMessageStreamEvent.WithDataAndEventoegiojpf.Event
+
+    public init(
+      data: OpenAIMessageDeltaObject,
+      event: OpenAIMessageStreamEvent.WithDataAndEventoegiojpf.Event
+    ) {
+      self.data = data
+      self.event = event
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case data
+      case event
+    }
+
+    public enum Event: String, Codable, Hashable, Sendable {
+      case threadMessageDelta = "thread.message.delta"
+    }
+  }
+
+  public struct WithDataAndEventlhfdgpom: Codable, Sendable {
+    public var data: OpenAIMessageObject
+    public var event: OpenAIMessageStreamEvent.WithDataAndEventlhfdgpom.Event
+
+    public init(
+      data: OpenAIMessageObject,
+      event: OpenAIMessageStreamEvent.WithDataAndEventlhfdgpom.Event
+    ) {
+      self.data = data
+      self.event = event
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case data
+      case event
+    }
+
+    public enum Event: String, Codable, Hashable, Sendable {
+      case threadMessageCompleted = "thread.message.completed"
+    }
+  }
+
+  public struct WithDataAndEventkabmejeg: Codable, Sendable {
+    public var data: OpenAIMessageObject
+    public var event: OpenAIMessageStreamEvent.WithDataAndEventkabmejeg.Event
+
+    public init(
+      data: OpenAIMessageObject,
+      event: OpenAIMessageStreamEvent.WithDataAndEventkabmejeg.Event
+    ) {
+      self.data = data
+      self.event = event
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case data
+      case event
+    }
+
+    public enum Event: String, Codable, Hashable, Sendable {
+      case threadMessageIncomplete = "thread.message.incomplete"
     }
   }
 }

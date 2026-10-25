@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct AnthropicBetaWebhookSessionStatusTerminatedEventData: Codable, Sendable {
   public var id: String
   public var organizationId: String
-  public var kind: AnthropicSessionStatusTerminatedKind
+  public var kind: AnthropicBetaWebhookSessionStatusTerminatedEventData.Kind
   public var workspaceId: String
 
   public init(
     id: String,
     organizationId: String,
     workspaceId: String,
-    kind: AnthropicSessionStatusTerminatedKind = .sessionStatusTerminated
+    kind: AnthropicBetaWebhookSessionStatusTerminatedEventData.Kind = .sessionStatusTerminated
   ) {
     self.id = id
     self.organizationId = organizationId
@@ -33,5 +33,9 @@ public struct AnthropicBetaWebhookSessionStatusTerminatedEventData: Codable, Sen
     case organizationId = "organization_id"
     case kind = "type"
     case workspaceId = "workspace_id"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case sessionStatusTerminated = "session.status_terminated"
   }
 }

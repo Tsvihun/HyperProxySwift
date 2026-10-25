@@ -16,7 +16,7 @@ public struct OpenAIResumeSubagentCallItemResource: Codable, Sendable {
   public var senderAgentId: String
   public var status: OpenAIFunctionCallStatusResource
   public var turnId: String
-  public var kind: OpenAIResumeSubagentCallItemResourceKind
+  public var kind: OpenAIResumeSubagentCallItemResource.Kind
 
   public init(
     id: String,
@@ -24,7 +24,7 @@ public struct OpenAIResumeSubagentCallItemResource: Codable, Sendable {
     senderAgentId: String,
     status: OpenAIFunctionCallStatusResource,
     turnId: String,
-    kind: OpenAIResumeSubagentCallItemResourceKind
+    kind: OpenAIResumeSubagentCallItemResource.Kind
   ) {
     self.id = id
     self.recipientAgentId = recipientAgentId
@@ -41,5 +41,9 @@ public struct OpenAIResumeSubagentCallItemResource: Codable, Sendable {
     case status
     case turnId = "turn_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case resumeSubagentCall = "resume_subagent_call"
   }
 }

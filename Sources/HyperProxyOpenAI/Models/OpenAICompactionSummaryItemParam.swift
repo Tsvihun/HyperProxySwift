@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct OpenAICompactionSummaryItemParam: Codable, Sendable {
   public var encryptedContent: String
   public var id: String?
-  public var kind: OpenAICompactionSummaryItemParamKind
+  public var kind: OpenAICompactionSummaryItemParam.Kind
 
   public init(
     encryptedContent: String,
-    kind: OpenAICompactionSummaryItemParamKind,
+    kind: OpenAICompactionSummaryItemParam.Kind,
     id: String? = nil
   ) {
     self.encryptedContent = encryptedContent
@@ -29,5 +29,9 @@ public struct OpenAICompactionSummaryItemParam: Codable, Sendable {
     case encryptedContent = "encrypted_content"
     case id
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case compaction = "compaction"
   }
 }

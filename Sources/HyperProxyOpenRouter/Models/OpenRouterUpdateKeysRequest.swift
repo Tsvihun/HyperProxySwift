@@ -14,7 +14,7 @@ public struct OpenRouterUpdateKeysRequest: Codable, Sendable {
   public var disabled: Bool?
   public var includeByokInLimit: Bool?
   public var limit: Double?
-  public var limitReset: OpenRouterUpdateKeysRequestLimitReset?
+  public var limitReset: OpenRouterUpdateKeysRequest.LimitReset?
   public var name: String?
   public var workspaceId: String?
 
@@ -22,7 +22,7 @@ public struct OpenRouterUpdateKeysRequest: Codable, Sendable {
     disabled: Bool? = nil,
     includeByokInLimit: Bool? = nil,
     limit: Double? = nil,
-    limitReset: OpenRouterUpdateKeysRequestLimitReset? = nil,
+    limitReset: OpenRouterUpdateKeysRequest.LimitReset? = nil,
     name: String? = nil,
     workspaceId: String? = nil
   ) {
@@ -41,5 +41,11 @@ public struct OpenRouterUpdateKeysRequest: Codable, Sendable {
     case limitReset = "limit_reset"
     case name
     case workspaceId = "workspace_id"
+  }
+
+  public enum LimitReset: String, Codable, Hashable, Sendable {
+    case daily = "daily"
+    case weekly = "weekly"
+    case monthly = "monthly"
   }
 }

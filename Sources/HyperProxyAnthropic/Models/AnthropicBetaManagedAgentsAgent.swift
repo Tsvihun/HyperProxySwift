@@ -23,7 +23,7 @@ public struct AnthropicBetaManagedAgentsAgent: Codable, Sendable {
   public var skills: [AnthropicBetaManagedAgentsSkill]
   public var system: String?
   public var tools: [AnthropicBetaManagedAgentsAgentTool]
-  public var kind: AnthropicBetaManagedAgentsAgentKind
+  public var kind: AnthropicBetaManagedAgentsAgent.Kind
   public var updatedAt: AnthropicBetaTimestamp
   public var version: Int
 
@@ -40,7 +40,7 @@ public struct AnthropicBetaManagedAgentsAgent: Codable, Sendable {
     skills: [AnthropicBetaManagedAgentsSkill],
     system: String?,
     tools: [AnthropicBetaManagedAgentsAgentTool],
-    kind: AnthropicBetaManagedAgentsAgentKind,
+    kind: AnthropicBetaManagedAgentsAgent.Kind,
     updatedAt: AnthropicBetaTimestamp,
     version: Int
   ) {
@@ -77,5 +77,9 @@ public struct AnthropicBetaManagedAgentsAgent: Codable, Sendable {
     case kind = "type"
     case updatedAt = "updated_at"
     case version
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case agent = "agent"
   }
 }

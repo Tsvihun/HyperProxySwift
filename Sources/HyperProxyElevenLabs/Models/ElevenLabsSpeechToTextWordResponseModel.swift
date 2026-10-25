@@ -18,12 +18,12 @@ public struct ElevenLabsSpeechToTextWordResponseModel: Codable, Sendable {
   public var speakerId: String?
   public var start: Double?
   public var text: String
-  public var kind: ElevenLabsSpeechToTextWordResponseModelKind
+  public var kind: ElevenLabsSpeechToTextWordResponseModel.Kind
 
   public init(
     logprob: Double,
     text: String,
-    kind: ElevenLabsSpeechToTextWordResponseModelKind,
+    kind: ElevenLabsSpeechToTextWordResponseModel.Kind,
     channelIndex: Int? = nil,
     characters: [ElevenLabsSpeechToTextCharacterResponseModel]? = nil,
     end: Double? = nil,
@@ -49,5 +49,11 @@ public struct ElevenLabsSpeechToTextWordResponseModel: Codable, Sendable {
     case start
     case text
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case word = "word"
+    case spacing = "spacing"
+    case audioEvent = "audio_event"
   }
 }

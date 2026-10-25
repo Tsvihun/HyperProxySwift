@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct OpenRouterSessionCostMeta: Codable, Sendable {
   public var asOf: String
-  public var version: OpenRouterSessionCostMetaVersion
+  public var version: OpenRouterSessionCostMeta.Version
   public var windowDays: Int
   public var windowEndDate: String
 
   public init(
     asOf: String,
-    version: OpenRouterSessionCostMetaVersion,
+    version: OpenRouterSessionCostMeta.Version,
     windowDays: Int,
     windowEndDate: String
   ) {
@@ -33,5 +33,9 @@ public struct OpenRouterSessionCostMeta: Codable, Sendable {
     case version
     case windowDays = "window_days"
     case windowEndDate = "window_end_date"
+  }
+
+  public enum Version: String, Codable, Hashable, Sendable {
+    case v1 = "v1"
   }
 }

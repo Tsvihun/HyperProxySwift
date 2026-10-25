@@ -14,19 +14,19 @@ public struct OpenAIAssistantMessageItemResource: Codable, Sendable {
   public var content: [OpenAIOutputTextResource]
   public var id: String
   public var phase: OpenAIMessagePhaseResource?
-  public var role: OpenAIAssistantMessageItemResourceRole
+  public var role: OpenAIAssistantMessageItemResource.Role
   public var status: OpenAIOutputItemStatusResource
   public var turnId: String
-  public var kind: OpenAIAssistantMessageItemResourceKind
+  public var kind: OpenAIAssistantMessageItemResource.Kind
 
   public init(
     content: [OpenAIOutputTextResource],
     id: String,
     phase: OpenAIMessagePhaseResource?,
-    role: OpenAIAssistantMessageItemResourceRole,
+    role: OpenAIAssistantMessageItemResource.Role,
     status: OpenAIOutputItemStatusResource,
     turnId: String,
-    kind: OpenAIAssistantMessageItemResourceKind
+    kind: OpenAIAssistantMessageItemResource.Kind
   ) {
     self.content = content
     self.id = id
@@ -45,5 +45,13 @@ public struct OpenAIAssistantMessageItemResource: Codable, Sendable {
     case status
     case turnId = "turn_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case message = "message"
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case assistant = "assistant"
   }
 }

@@ -41,7 +41,7 @@ public struct OpenAICreateResponse: Codable, Sendable {
   public var tools: OpenAIToolsArray?
   public var topLogprobs: Int?
   public var topP: Double?
-  public var truncation: OpenAICreateResponseAllOf3Truncation?
+  public var truncation: OpenAICreateResponseTruncation?
   public var user: String?
 
   public init(
@@ -75,7 +75,7 @@ public struct OpenAICreateResponse: Codable, Sendable {
     tools: OpenAIToolsArray? = nil,
     topLogprobs: Int? = nil,
     topP: Double? = nil,
-    truncation: OpenAICreateResponseAllOf3Truncation? = nil,
+    truncation: OpenAICreateResponseTruncation? = nil,
     user: String? = nil
   ) {
     self.accessPrograms = accessPrograms
@@ -145,5 +145,79 @@ public struct OpenAICreateResponse: Codable, Sendable {
     case topP = "top_p"
     case truncation
     case user
+  }
+
+  public struct WithAccessProgramsAndContextManagementAndConversation: Codable, Sendable {
+    public var accessPrograms: OpenAIAccessProgramsParam?
+    public var contextManagement: [OpenAIContextManagementParam]?
+    public var conversation: OpenAIConversationParam?
+    public var include: [OpenAIIncludeEnum]?
+    public var input: OpenAIInputParam?
+    public var instructions: String?
+    public var maxOutputTokens: Int?
+    public var moderation: OpenAIModerationParam?
+    public var parallelToolCalls: Bool?
+    public var promptCacheOptions: OpenAIResponsePromptCacheOptionsParam?
+    public var reasoning: OpenAIReasoning?
+    public var serviceTier: OpenAIServiceTierResponses?
+    public var store: Bool?
+    public var stream: Bool?
+    public var streamOptions: OpenAIResponseStreamOptions?
+    public var truncation: OpenAICreateResponseTruncation?
+
+    public init(
+      accessPrograms: OpenAIAccessProgramsParam? = nil,
+      contextManagement: [OpenAIContextManagementParam]? = nil,
+      conversation: OpenAIConversationParam? = nil,
+      include: [OpenAIIncludeEnum]? = nil,
+      input: OpenAIInputParam? = nil,
+      instructions: String? = nil,
+      maxOutputTokens: Int? = nil,
+      moderation: OpenAIModerationParam? = nil,
+      parallelToolCalls: Bool? = nil,
+      promptCacheOptions: OpenAIResponsePromptCacheOptionsParam? = nil,
+      reasoning: OpenAIReasoning? = nil,
+      serviceTier: OpenAIServiceTierResponses? = nil,
+      store: Bool? = nil,
+      stream: Bool? = nil,
+      streamOptions: OpenAIResponseStreamOptions? = nil,
+      truncation: OpenAICreateResponseTruncation? = nil
+    ) {
+      self.accessPrograms = accessPrograms
+      self.contextManagement = contextManagement
+      self.conversation = conversation
+      self.include = include
+      self.input = input
+      self.instructions = instructions
+      self.maxOutputTokens = maxOutputTokens
+      self.moderation = moderation
+      self.parallelToolCalls = parallelToolCalls
+      self.promptCacheOptions = promptCacheOptions
+      self.reasoning = reasoning
+      self.serviceTier = serviceTier
+      self.store = store
+      self.stream = stream
+      self.streamOptions = streamOptions
+      self.truncation = truncation
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case accessPrograms = "access_programs"
+      case contextManagement = "context_management"
+      case conversation
+      case include
+      case input
+      case instructions
+      case maxOutputTokens = "max_output_tokens"
+      case moderation
+      case parallelToolCalls = "parallel_tool_calls"
+      case promptCacheOptions = "prompt_cache_options"
+      case reasoning
+      case serviceTier = "service_tier"
+      case store
+      case stream
+      case streamOptions = "stream_options"
+      case truncation
+    }
   }
 }

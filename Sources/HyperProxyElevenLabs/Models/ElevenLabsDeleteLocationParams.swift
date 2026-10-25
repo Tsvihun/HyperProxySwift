@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsDeleteLocationParams: Codable, Sendable {
-  public var smbToolType: ElevenLabsDeleteLocationSmbToolType?
+  public var smbToolType: ElevenLabsDeleteLocationParams.SmbToolType?
 
   public init(
-    smbToolType: ElevenLabsDeleteLocationSmbToolType? = nil
+    smbToolType: ElevenLabsDeleteLocationParams.SmbToolType? = nil
   ) {
     self.smbToolType = smbToolType
   }
 
   enum CodingKeys: String, CodingKey {
     case smbToolType = "smb_tool_type"
+  }
+
+  public enum SmbToolType: String, Codable, Hashable, Sendable {
+    case deleteLocation = "delete_location"
   }
 }

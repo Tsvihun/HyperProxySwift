@@ -13,13 +13,13 @@ import HyperProxyCore
 public struct OpenAIClickParam: Codable, Sendable {
   public var button: OpenAIClickButtonType
   public var keys: [String]?
-  public var kind: OpenAIClickParamKind
+  public var kind: OpenAIClickParam.Kind
   public var x: Int
   public var y: Int
 
   public init(
     button: OpenAIClickButtonType,
-    kind: OpenAIClickParamKind,
+    kind: OpenAIClickParam.Kind,
     x: Int,
     y: Int,
     keys: [String]? = nil
@@ -37,5 +37,9 @@ public struct OpenAIClickParam: Codable, Sendable {
     case kind = "type"
     case x
     case y
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case click = "click"
   }
 }

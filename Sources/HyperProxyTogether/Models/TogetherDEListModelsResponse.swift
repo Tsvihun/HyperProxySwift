@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct TogetherDEListModelsResponse: Codable, Sendable {
   public var data: [TogetherDEModel]
   public var nextCursor: String?
-  public var object: TogetherListObject7074d0bb
+  public var object: TogetherListObject
 
   public init(
     data: [TogetherDEModel],
-    object: TogetherListObject7074d0bb = .list,
+    object: TogetherListObject = .list,
     nextCursor: String? = nil
   ) {
     self.data = data

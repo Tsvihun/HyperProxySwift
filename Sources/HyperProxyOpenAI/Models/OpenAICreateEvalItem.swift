@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public enum OpenAICreateEvalItem: Codable, Sendable {
-  case createEvalItemOneOf1(OpenAICreateEvalItemOneOf1)
+  case simpleInputMessage(OpenAICreateEvalItem.SimpleInputMessage)
   case evalItem(OpenAIEvalItem)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(OpenAICreateEvalItemOneOf1.self) {
-      self = .createEvalItemOneOf1(value)
+    if let value = try? container.decode(OpenAICreateEvalItem.SimpleInputMessage.self) {
+      self = .simpleInputMessage(value)
       return
     }
     self = .evalItem(try container.decode(OpenAIEvalItem.self))
@@ -26,10 +26,28 @@ public enum OpenAICreateEvalItem: Codable, Sendable {
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .createEvalItemOneOf1(let value):
+    case .simpleInputMessage(let value):
       try container.encode(value)
     case .evalItem(let value):
       try container.encode(value)
+    }
+  }
+
+  public struct SimpleInputMessage: Codable, Sendable {
+    public var content: String
+    public var role: String
+
+    public init(
+      content: String,
+      role: String
+    ) {
+      self.content = content
+      self.role = role
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case content
+      case role
     }
   }
 }

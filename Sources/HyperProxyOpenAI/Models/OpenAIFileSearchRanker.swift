@@ -12,5 +12,5 @@ import HyperProxyCore
 
 public enum OpenAIFileSearchRanker: String, Codable, Hashable, Sendable {
   case auto = "auto"
-  case default20240821 = "default_2024_08_21"
+  case default2024_08_21 = "default_2024_08_21"
 }

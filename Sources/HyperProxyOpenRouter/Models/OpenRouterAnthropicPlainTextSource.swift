@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct OpenRouterAnthropicPlainTextSource: Codable, Sendable {
   public var data: String
-  public var mediaType: OpenRouterAnthropicPlainTextSourceMediaType
-  public var kind: OpenRouterAnthropicPlainTextSourceKind
+  public var mediaType: OpenRouterAnthropicPlainTextSource.MediaType
+  public var kind: OpenRouterAnthropicPlainTextSource.Kind
 
   public init(
     data: String,
-    mediaType: OpenRouterAnthropicPlainTextSourceMediaType,
-    kind: OpenRouterAnthropicPlainTextSourceKind
+    mediaType: OpenRouterAnthropicPlainTextSource.MediaType,
+    kind: OpenRouterAnthropicPlainTextSource.Kind
   ) {
     self.data = data
     self.mediaType = mediaType
@@ -29,5 +29,13 @@ public struct OpenRouterAnthropicPlainTextSource: Codable, Sendable {
     case data
     case mediaType = "media_type"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case text = "text"
+  }
+
+  public enum MediaType: String, Codable, Hashable, Sendable {
+    case textPlain = "text/plain"
   }
 }

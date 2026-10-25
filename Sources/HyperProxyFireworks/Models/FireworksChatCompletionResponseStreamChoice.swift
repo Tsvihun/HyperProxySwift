@@ -12,9 +12,9 @@ import HyperProxyCore
 
 public struct FireworksChatCompletionResponseStreamChoice: Codable, Sendable {
   public var delta: FireworksDeltaMessage
-  public var finishReason: FireworksChatCompletionResponseStreamChoiceFinishReason?
+  public var finishReason: FireworksChatCompletionResponseStreamChoice.FinishReason?
   public var index: Int
-  public var logprobs: FireworksChatCompletionResponseStreamChoiceLogprobs?
+  public var logprobs: FireworksChatCompletionResponseStreamChoice.Logprobs?
   public var promptTokenIds: [Int]?
   public var rawOutput: FireworksRawOutput?
   public var tokenIds: [Int]?
@@ -23,8 +23,8 @@ public struct FireworksChatCompletionResponseStreamChoice: Codable, Sendable {
   public init(
     delta: FireworksDeltaMessage,
     index: Int,
-    finishReason: FireworksChatCompletionResponseStreamChoiceFinishReason? = nil,
-    logprobs: FireworksChatCompletionResponseStreamChoiceLogprobs? = nil,
+    finishReason: FireworksChatCompletionResponseStreamChoice.FinishReason? = nil,
+    logprobs: FireworksChatCompletionResponseStreamChoice.Logprobs? = nil,
     promptTokenIds: [Int]? = nil,
     rawOutput: FireworksRawOutput? = nil,
     tokenIds: [Int]? = nil,
@@ -49,5 +49,38 @@ public struct FireworksChatCompletionResponseStreamChoice: Codable, Sendable {
     case rawOutput = "raw_output"
     case tokenIds = "token_ids"
     case usage
+  }
+
+  public enum FinishReason: String, Codable, Hashable,
+    Sendable
+  {
+    case stop = "stop"
+    case length = "length"
+    case functionCall = "function_call"
+    case toolCalls = "tool_calls"
+  }
+
+  public enum Logprobs: Codable, Sendable {
+    case logProbs(FireworksLogProbs)
+    case newLogProbs(FireworksNewLogProbs)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(FireworksLogProbs.self) {
+        self = .logProbs(value)
+        return
+      }
+      self = .newLogProbs(try container.decode(FireworksNewLogProbs.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .logProbs(let value):
+        try container.encode(value)
+      case .newLogProbs(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

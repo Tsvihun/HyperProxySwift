@@ -11,8 +11,8 @@ import Foundation
 import HyperProxyCore
 
 public enum ElevenLabsMusicOnlyOutputFormats: String, Codable, Hashable, Sendable {
-  case mp348000128 = "mp3_48000_128"
-  case mp348000192 = "mp3_48000_192"
-  case mp348000240 = "mp3_48000_240"
-  case mp348000320 = "mp3_48000_320"
+  case mp3_48000_128 = "mp3_48000_128"
+  case mp3_48000_192 = "mp3_48000_192"
+  case mp3_48000_240 = "mp3_48000_240"
+  case mp3_48000_320 = "mp3_48000_320"
 }

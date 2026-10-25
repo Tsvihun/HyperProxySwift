@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct FalListApiKeysParameters: Codable, Sendable {
   public var cursor: String?
-  public var expand: FalListApiKeysParametersExpand?
+  public var expand: FalListApiKeysParameters.Expand?
   public var limit: Int?
 
   public init(
     cursor: String? = nil,
-    expand: FalListApiKeysParametersExpand? = nil,
+    expand: FalListApiKeysParameters.Expand? = nil,
     limit: Int? = nil
   ) {
     self.cursor = cursor
@@ -29,5 +29,41 @@ public struct FalListApiKeysParameters: Codable, Sendable {
     case cursor
     case expand
     case limit
+  }
+
+  public enum Expand: Codable, Sendable {
+    case string(String)
+    case stringArray([String])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .stringArray(try container.decode([String].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .stringArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension FalListApiKeysParameters.Expand: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension FalListApiKeysParameters.Expand: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: String...) {
+    self = .stringArray(elements)
   }
 }

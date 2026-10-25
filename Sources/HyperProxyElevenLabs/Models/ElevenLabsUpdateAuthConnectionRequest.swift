@@ -14,7 +14,7 @@ public enum ElevenLabsUpdateAuthConnectionRequest: Codable, Sendable {
   case updateOAuth2ClientCredsRequest(ElevenLabsUpdateOAuth2ClientCredsRequest)
   case updateBasicAuthRequest(ElevenLabsUpdateBasicAuthRequest)
   case updateBearerAuthRequest(ElevenLabsUpdateBearerAuthRequest)
-  case updateOAuth2JWTRequest(ElevenLabsUpdateOAuth2JWTRequest)
+  case updateOAuth2JwtRequest(ElevenLabsUpdateOAuth2JWTRequest)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -30,7 +30,7 @@ public enum ElevenLabsUpdateAuthConnectionRequest: Codable, Sendable {
       self = .updateBearerAuthRequest(value)
       return
     }
-    self = .updateOAuth2JWTRequest(try container.decode(ElevenLabsUpdateOAuth2JWTRequest.self))
+    self = .updateOAuth2JwtRequest(try container.decode(ElevenLabsUpdateOAuth2JWTRequest.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -42,7 +42,7 @@ public enum ElevenLabsUpdateAuthConnectionRequest: Codable, Sendable {
       try container.encode(value)
     case .updateBearerAuthRequest(let value):
       try container.encode(value)
-    case .updateOAuth2JWTRequest(let value):
+    case .updateOAuth2JwtRequest(let value):
       try container.encode(value)
     }
   }

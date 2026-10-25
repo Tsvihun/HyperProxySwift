@@ -12,10 +12,10 @@ import HyperProxyCore
 
 public struct OpenRouterWebFetchServerTool: Codable, Sendable {
   public var parameters: OpenRouterWebFetchServerToolConfig?
-  public var kind: OpenRouterWebFetchServerToolKind
+  public var kind: OpenRouterWebFetchServerTool.Kind
 
   public init(
-    kind: OpenRouterWebFetchServerToolKind,
+    kind: OpenRouterWebFetchServerTool.Kind,
     parameters: OpenRouterWebFetchServerToolConfig? = nil
   ) {
     self.parameters = parameters
@@ -25,5 +25,9 @@ public struct OpenRouterWebFetchServerTool: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case parameters
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case openrouterWebFetch = "openrouter:web_fetch"
   }
 }

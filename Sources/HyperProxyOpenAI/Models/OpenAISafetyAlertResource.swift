@@ -16,7 +16,7 @@ public struct OpenAISafetyAlertResource: Codable, Sendable {
   public var errorType: OpenAISafetyAlertErrorType
   public var id: String
   public var model: String
-  public var object: OpenAISafetyAlertResourceObject
+  public var object: OpenAISafetyAlertResource.Object
   public var reason: String?
   public var requestId: String
   public var requestPaused: Bool
@@ -27,7 +27,7 @@ public struct OpenAISafetyAlertResource: Codable, Sendable {
     errorType: OpenAISafetyAlertErrorType,
     id: String,
     model: String,
-    object: OpenAISafetyAlertResourceObject,
+    object: OpenAISafetyAlertResource.Object,
     reason: String?,
     requestId: String,
     requestPaused: Bool,
@@ -57,5 +57,9 @@ public struct OpenAISafetyAlertResource: Codable, Sendable {
     case requestId = "request_id"
     case requestPaused = "request_paused"
     case responseId = "response_id"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case safetyAlert = "safety.alert"
   }
 }

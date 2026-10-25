@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIComputerUseApprovalRequestKindResourceBrowserOriginAccess: Codable, Sendable {
   public var origin: String
   public var reason: String
-  public var kind: OpenAIComputerUseApprovalRequestKindResourceBrowserOriginAccessKind
+  public var kind: OpenAIComputerUseApprovalRequestKindResourceBrowserOriginAccess.Kind
 
   public init(
     origin: String,
     reason: String,
-    kind: OpenAIComputerUseApprovalRequestKindResourceBrowserOriginAccessKind
+    kind: OpenAIComputerUseApprovalRequestKindResourceBrowserOriginAccess.Kind
   ) {
     self.origin = origin
     self.reason = reason
@@ -29,5 +29,11 @@ public struct OpenAIComputerUseApprovalRequestKindResourceBrowserOriginAccess: C
     case origin
     case reason
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case browserOriginAccess = "browser_origin_access"
   }
 }

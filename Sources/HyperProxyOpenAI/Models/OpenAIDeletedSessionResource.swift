@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIDeletedSessionResource: Codable, Sendable {
   public var deleted: Bool
   public var id: String
-  public var object: OpenAIDeletedSessionResourceObject
+  public var object: OpenAIDeletedSessionResource.Object
 
   public init(
     deleted: Bool,
     id: String,
-    object: OpenAIDeletedSessionResourceObject
+    object: OpenAIDeletedSessionResource.Object
   ) {
     self.deleted = deleted
     self.id = id
@@ -29,5 +29,9 @@ public struct OpenAIDeletedSessionResource: Codable, Sendable {
     case deleted
     case id
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case agentSessionDeleted = "agent.session.deleted"
   }
 }

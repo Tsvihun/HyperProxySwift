@@ -14,11 +14,11 @@ public struct GroqResponseUrlCitation: Codable, Sendable {
   public var endIndex: Int?
   public var startIndex: Int?
   public var title: String?
-  public var kind: GroqResponseUrlCitationKind
+  public var kind: GroqResponseUrlCitation.Kind
   public var url: String
 
   public init(
-    kind: GroqResponseUrlCitationKind,
+    kind: GroqResponseUrlCitation.Kind,
     url: String,
     endIndex: Int? = nil,
     startIndex: Int? = nil,
@@ -37,5 +37,9 @@ public struct GroqResponseUrlCitation: Codable, Sendable {
     case title
     case kind = "type"
     case url
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case urlCitation = "url_citation"
   }
 }

@@ -11,27 +11,51 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralEmbeddedResource: Codable, Sendable {
-  public var meta: [String: HyperProxyJSONValue]?
+  public var _meta: [String: HyperProxyJSONValue]?
   public var annotations: MistralAnnotations?
-  public var resource: MistralEmbeddedResourceResource
+  public var resource: MistralEmbeddedResource.Resource
   public var kind: MistralResourceKind?
 
   public init(
-    resource: MistralEmbeddedResourceResource,
-    meta: [String: HyperProxyJSONValue]? = nil,
+    resource: MistralEmbeddedResource.Resource,
+    _meta: [String: HyperProxyJSONValue]? = nil,
     annotations: MistralAnnotations? = nil,
     kind: MistralResourceKind? = nil
   ) {
-    self.meta = meta
+    self._meta = _meta
     self.annotations = annotations
     self.resource = resource
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case meta = "_meta"
+    case _meta
     case annotations
     case resource
     case kind = "type"
+  }
+
+  public enum Resource: Codable, Sendable {
+    case textResourceContents(MistralTextResourceContents)
+    case blobResourceContents(MistralBlobResourceContents)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(MistralTextResourceContents.self) {
+        self = .textResourceContents(value)
+        return
+      }
+      self = .blobResourceContents(try container.decode(MistralBlobResourceContents.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .textResourceContents(let value):
+        try container.encode(value)
+      case .blobResourceContents(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

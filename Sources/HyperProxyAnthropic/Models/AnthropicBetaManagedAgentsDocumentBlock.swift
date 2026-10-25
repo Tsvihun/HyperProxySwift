@@ -14,11 +14,11 @@ public struct AnthropicBetaManagedAgentsDocumentBlock: Codable, Sendable {
   public var context: String?
   public var source: AnthropicBetaManagedAgentsDocumentSource
   public var title: String?
-  public var kind: AnthropicBetaManagedAgentsDocumentBlockKind
+  public var kind: AnthropicBetaManagedAgentsDocumentBlock.Kind
 
   public init(
     source: AnthropicBetaManagedAgentsDocumentSource,
-    kind: AnthropicBetaManagedAgentsDocumentBlockKind,
+    kind: AnthropicBetaManagedAgentsDocumentBlock.Kind,
     context: String? = nil,
     title: String? = nil
   ) {
@@ -33,5 +33,9 @@ public struct AnthropicBetaManagedAgentsDocumentBlock: Codable, Sendable {
     case source
     case title
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case document = "document"
   }
 }

@@ -15,14 +15,14 @@ public struct OpenAIProgramItemParam: Codable, Sendable {
   public var code: String
   public var fingerprint: String
   public var id: String
-  public var kind: OpenAIProgramItemParamKind
+  public var kind: OpenAIProgramItemParam.Kind
 
   public init(
     callId: String,
     code: String,
     fingerprint: String,
     id: String,
-    kind: OpenAIProgramItemParamKind
+    kind: OpenAIProgramItemParam.Kind
   ) {
     self.callId = callId
     self.code = code
@@ -37,5 +37,9 @@ public struct OpenAIProgramItemParam: Codable, Sendable {
     case fingerprint
     case id
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case program = "program"
   }
 }

@@ -12,23 +12,23 @@ import HyperProxyCore
 
 public struct OpenAIImageGenPartialImageEvent: Codable, Sendable {
   public var b64Json: String
-  public var background: OpenAIImageGenPartialImageEventBackground
+  public var background: OpenAIImageGenPartialImageEvent.Background
   public var createdAt: Int
-  public var outputFormat: OpenAIImageGenPartialImageEventOutputFormat
+  public var outputFormat: OpenAIImageGenPartialImageEvent.OutputFormat
   public var partialImageIndex: Int
-  public var quality: OpenAIImageGenPartialImageEventQuality
-  public var size: OpenAIImageGenPartialImageEventSize
-  public var kind: OpenAIImageGenPartialImageEventKind
+  public var quality: OpenAIImageGenPartialImageEvent.Quality
+  public var size: OpenAIImageGenPartialImageEvent.Size
+  public var kind: OpenAIImageGenPartialImageEvent.Kind
 
   public init(
     b64Json: String,
-    background: OpenAIImageGenPartialImageEventBackground,
+    background: OpenAIImageGenPartialImageEvent.Background,
     createdAt: Int,
-    outputFormat: OpenAIImageGenPartialImageEventOutputFormat,
+    outputFormat: OpenAIImageGenPartialImageEvent.OutputFormat,
     partialImageIndex: Int,
-    quality: OpenAIImageGenPartialImageEventQuality,
-    size: OpenAIImageGenPartialImageEventSize,
-    kind: OpenAIImageGenPartialImageEventKind
+    quality: OpenAIImageGenPartialImageEvent.Quality,
+    size: OpenAIImageGenPartialImageEvent.Size,
+    kind: OpenAIImageGenPartialImageEvent.Kind
   ) {
     self.b64Json = b64Json
     self.background = background
@@ -49,5 +49,85 @@ public struct OpenAIImageGenPartialImageEvent: Codable, Sendable {
     case quality
     case size
     case kind = "type"
+  }
+
+  public enum Background: String, Codable, Hashable, Sendable {
+    case transparent = "transparent"
+    case opaque = "opaque"
+    case auto = "auto"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case imageGenerationPartialImage = "image_generation.partial_image"
+  }
+
+  public enum OutputFormat: String, Codable, Hashable, Sendable {
+    case png = "png"
+    case webp = "webp"
+    case jpeg = "jpeg"
+  }
+
+  public enum Quality: String, Codable, Hashable, Sendable {
+    case low = "low"
+    case medium = "medium"
+    case high = "high"
+    case xhigh = "xhigh"
+    case max = "max"
+    case auto = "auto"
+  }
+
+  public enum Size: RawRepresentable, Codable, Hashable, Sendable {
+    case value1024x1024
+    case value1024x1536
+    case value1536x1024
+    case auto
+    case custom(String)
+
+    public init(rawValue: String) {
+      switch rawValue {
+      case "1024x1024":
+        self = .value1024x1024
+      case "1024x1536":
+        self = .value1024x1536
+      case "1536x1024":
+        self = .value1536x1024
+      case "auto":
+        self = .auto
+      default:
+        self = .custom(rawValue)
+      }
+    }
+
+    public var rawValue: String {
+      switch self {
+      case .value1024x1024:
+        return "1024x1024"
+      case .value1024x1536:
+        return "1024x1536"
+      case .value1536x1024:
+        return "1536x1024"
+      case .auto:
+        return "auto"
+      case .custom(let value):
+        return value
+      }
+    }
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      self.init(rawValue: try container.decode(String.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      try container.encode(rawValue)
+    }
+
+    public enum Preset: String, Codable, Hashable, Sendable {
+      case value1024x1024 = "1024x1024"
+      case value1024x1536 = "1024x1536"
+      case value1536x1024 = "1536x1024"
+      case auto = "auto"
+    }
   }
 }

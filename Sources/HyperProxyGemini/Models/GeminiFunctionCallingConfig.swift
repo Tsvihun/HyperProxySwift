@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct GeminiFunctionCallingConfig: Codable, Sendable {
   public var allowedFunctionNames: [String]?
-  public var mode: GeminiFunctionCallingConfigMode?
+  public var mode: GeminiFunctionCallingConfig.Mode?
 
   public init(
     allowedFunctionNames: [String]? = nil,
-    mode: GeminiFunctionCallingConfigMode? = nil
+    mode: GeminiFunctionCallingConfig.Mode? = nil
   ) {
     self.allowedFunctionNames = allowedFunctionNames
     self.mode = mode
@@ -25,5 +25,13 @@ public struct GeminiFunctionCallingConfig: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case allowedFunctionNames
     case mode
+  }
+
+  public enum Mode: String, Codable, Hashable, Sendable {
+    case modeUnspecified = "MODE_UNSPECIFIED"
+    case auto = "AUTO"
+    case any = "ANY"
+    case none = "NONE"
+    case validated = "VALIDATED"
   }
 }

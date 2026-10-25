@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaResponseCodeExecutionToolResultBlock: Codable, Sendable {
-  public var content: AnthropicBetaResponseCodeExecutionToolResultBlockContent
+  public var content: AnthropicBetaResponseCodeExecutionToolResultBlock.Content
   public var toolUseId: String
   public var kind: AnthropicCodeExecutionToolResultKind
 
   public init(
-    content: AnthropicBetaResponseCodeExecutionToolResultBlockContent,
+    content: AnthropicBetaResponseCodeExecutionToolResultBlock.Content,
     toolUseId: String,
     kind: AnthropicCodeExecutionToolResultKind = .codeExecutionToolResult
   ) {
@@ -29,5 +29,38 @@ public struct AnthropicBetaResponseCodeExecutionToolResultBlock: Codable, Sendab
     case content
     case toolUseId = "tool_use_id"
     case kind = "type"
+  }
+
+  public enum Content: Codable, Sendable {
+    case betaResponseCodeExecutionToolResultError(AnthropicBetaResponseCodeExecutionToolResultError)
+    case betaResponseCodeExecutionResultBlock(AnthropicBetaResponseCodeExecutionResultBlock)
+    case betaResponseEncryptedCodeExecutionResultBlock(
+      AnthropicBetaResponseEncryptedCodeExecutionResultBlock)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(AnthropicBetaResponseCodeExecutionToolResultError.self) {
+        self = .betaResponseCodeExecutionToolResultError(value)
+        return
+      }
+      if let value = try? container.decode(AnthropicBetaResponseCodeExecutionResultBlock.self) {
+        self = .betaResponseCodeExecutionResultBlock(value)
+        return
+      }
+      self = .betaResponseEncryptedCodeExecutionResultBlock(
+        try container.decode(AnthropicBetaResponseEncryptedCodeExecutionResultBlock.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .betaResponseCodeExecutionToolResultError(let value):
+        try container.encode(value)
+      case .betaResponseCodeExecutionResultBlock(let value):
+        try container.encode(value)
+      case .betaResponseEncryptedCodeExecutionResultBlock(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

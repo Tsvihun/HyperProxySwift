@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct OpenAIBetaNamespaceToolParam: Codable, Sendable {
   public var description: String
   public var name: String
-  public var tools: [OpenAIBetaNamespaceToolParamToolsItem]
-  public var kind: OpenAIBetaNamespaceToolParamKind
+  public var tools: [OpenAIBetaNamespaceToolParam.ToolsElement]
+  public var kind: OpenAIBetaNamespaceToolParam.Kind
 
   public init(
     description: String,
     name: String,
-    tools: [OpenAIBetaNamespaceToolParamToolsItem],
-    kind: OpenAIBetaNamespaceToolParamKind
+    tools: [OpenAIBetaNamespaceToolParam.ToolsElement],
+    kind: OpenAIBetaNamespaceToolParam.Kind
   ) {
     self.description = description
     self.name = name
@@ -33,5 +33,33 @@ public struct OpenAIBetaNamespaceToolParam: Codable, Sendable {
     case name
     case tools
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case namespace = "namespace"
+  }
+
+  public enum ToolsElement: Codable, Sendable {
+    case betaFunctionToolParam(OpenAIBetaFunctionToolParam)
+    case betaCustomToolParam(OpenAIBetaCustomToolParam)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenAIBetaFunctionToolParam.self) {
+        self = .betaFunctionToolParam(value)
+        return
+      }
+      self = .betaCustomToolParam(try container.decode(OpenAIBetaCustomToolParam.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .betaFunctionToolParam(let value):
+        try container.encode(value)
+      case .betaCustomToolParam(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

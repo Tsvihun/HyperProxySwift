@@ -11,16 +11,16 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiRealtimeInputConfig: Codable, Sendable {
-  public var activityHandling: GeminiRealtimeInputConfigActivityHandling?
+  public var activityHandling: GeminiRealtimeInputConfig.ActivityHandling?
   public var automaticActivityDetection: GeminiAutomaticActivityDetection?
   public var interimTranscriptTimestampEnabled: Bool?
-  public var turnCoverage: GeminiRealtimeInputConfigTurnCoverage?
+  public var turnCoverage: GeminiRealtimeInputConfig.TurnCoverage?
 
   public init(
-    activityHandling: GeminiRealtimeInputConfigActivityHandling? = nil,
+    activityHandling: GeminiRealtimeInputConfig.ActivityHandling? = nil,
     automaticActivityDetection: GeminiAutomaticActivityDetection? = nil,
     interimTranscriptTimestampEnabled: Bool? = nil,
-    turnCoverage: GeminiRealtimeInputConfigTurnCoverage? = nil
+    turnCoverage: GeminiRealtimeInputConfig.TurnCoverage? = nil
   ) {
     self.activityHandling = activityHandling
     self.automaticActivityDetection = automaticActivityDetection
@@ -33,5 +33,18 @@ public struct GeminiRealtimeInputConfig: Codable, Sendable {
     case automaticActivityDetection
     case interimTranscriptTimestampEnabled
     case turnCoverage
+  }
+
+  public enum ActivityHandling: String, Codable, Hashable, Sendable {
+    case activityHandlingUnspecified = "ACTIVITY_HANDLING_UNSPECIFIED"
+    case startOfActivityInterrupts = "START_OF_ACTIVITY_INTERRUPTS"
+    case noInterruption = "NO_INTERRUPTION"
+  }
+
+  public enum TurnCoverage: String, Codable, Hashable, Sendable {
+    case turnCoverageUnspecified = "TURN_COVERAGE_UNSPECIFIED"
+    case turnIncludesOnlyActivity = "TURN_INCLUDES_ONLY_ACTIVITY"
+    case turnIncludesAllInput = "TURN_INCLUDES_ALL_INPUT"
+    case turnIncludesAudioActivityAndAllVideo = "TURN_INCLUDES_AUDIO_ACTIVITY_AND_ALL_VIDEO"
   }
 }

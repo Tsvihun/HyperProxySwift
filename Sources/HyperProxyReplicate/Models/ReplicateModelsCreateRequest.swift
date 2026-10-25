@@ -19,13 +19,13 @@ public struct ReplicateModelsCreateRequest: Codable, Sendable {
   public var name: String
   public var owner: String
   public var paperUrl: String?
-  public var visibility: ReplicateModelsCreateRequestVisibility
+  public var visibility: ReplicateModelsCreateRequest.Visibility
 
   public init(
     hardware: String,
     name: String,
     owner: String,
-    visibility: ReplicateModelsCreateRequestVisibility,
+    visibility: ReplicateModelsCreateRequest.Visibility,
     coverImageUrl: String? = nil,
     description: String? = nil,
     githubUrl: String? = nil,
@@ -53,5 +53,10 @@ public struct ReplicateModelsCreateRequest: Codable, Sendable {
     case owner
     case paperUrl = "paper_url"
     case visibility
+  }
+
+  public enum Visibility: String, Codable, Hashable, Sendable {
+    case publicValue = "public"
+    case privateValue = "private"
   }
 }

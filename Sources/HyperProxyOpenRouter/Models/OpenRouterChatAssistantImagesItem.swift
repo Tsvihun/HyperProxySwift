@@ -11,15 +11,29 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterChatAssistantImagesItem: Codable, Sendable {
-  public var imageUrl: OpenRouterChatAssistantImagesItemImageUrl
+  public var imageUrl: OpenRouterChatAssistantImagesItem.ImageUrl
 
   public init(
-    imageUrl: OpenRouterChatAssistantImagesItemImageUrl
+    imageUrl: OpenRouterChatAssistantImagesItem.ImageUrl
   ) {
     self.imageUrl = imageUrl
   }
 
   enum CodingKeys: String, CodingKey {
     case imageUrl = "image_url"
+  }
+
+  public struct ImageUrl: Codable, Sendable {
+    public var url: String
+
+    public init(
+      url: String
+    ) {
+      self.url = url
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case url
+    }
   }
 }

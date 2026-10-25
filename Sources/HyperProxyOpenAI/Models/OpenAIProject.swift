@@ -16,14 +16,14 @@ public struct OpenAIProject: Codable, Sendable {
   public var externalKeyId: String?
   public var id: String
   public var name: String?
-  public var object: OpenAIProjectObject
+  public var object: OpenAIProject.Object
   public var residency: OpenAIPublicProjectResidency?
   public var status: String?
 
   public init(
     createdAt: Int,
     id: String,
-    object: OpenAIProjectObject,
+    object: OpenAIProject.Object,
     archivedAt: Int? = nil,
     externalKeyId: String? = nil,
     name: String? = nil,
@@ -49,5 +49,9 @@ public struct OpenAIProject: Codable, Sendable {
     case object
     case residency
     case status
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case organizationProject = "organization.project"
   }
 }

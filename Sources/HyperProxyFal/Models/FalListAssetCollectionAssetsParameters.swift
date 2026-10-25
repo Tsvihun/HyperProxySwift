@@ -15,28 +15,28 @@ public struct FalListAssetCollectionAssetsParameters: Codable, Sendable {
   public var collectionId: String
   public var cursor: String?
   public var limit: Int?
-  public var mediaType: [FalListAssetCollectionAssetsParametersMediaTypeItem]?
+  public var mediaType: [FalListAssetCollectionAssetsParameters.MediaTypeElement]?
   public var q: String?
   public var searchImageUrl: String?
   public var searchVideoUrl: String?
-  public var section: FalListAssetCollectionAssetsParametersSection?
-  public var source: [FalListAssetCollectionAssetsParametersSourceItem]?
+  public var section: FalListAssetCollectionAssetsParameters.Section?
+  public var source: [FalListAssetCollectionAssetsParameters.SourceElement]?
   public var tagId: [String]?
-  public var tagMode: FalListAssetCollectionAssetsParametersTagMode?
+  public var tagMode: FalListAssetCollectionAssetsParameters.TagMode?
 
   public init(
     collectionId: String,
     characterIdentifier: [String]? = nil,
     cursor: String? = nil,
     limit: Int? = nil,
-    mediaType: [FalListAssetCollectionAssetsParametersMediaTypeItem]? = nil,
+    mediaType: [FalListAssetCollectionAssetsParameters.MediaTypeElement]? = nil,
     q: String? = nil,
     searchImageUrl: String? = nil,
     searchVideoUrl: String? = nil,
-    section: FalListAssetCollectionAssetsParametersSection? = nil,
-    source: [FalListAssetCollectionAssetsParametersSourceItem]? = nil,
+    section: FalListAssetCollectionAssetsParameters.Section? = nil,
+    source: [FalListAssetCollectionAssetsParameters.SourceElement]? = nil,
     tagId: [String]? = nil,
-    tagMode: FalListAssetCollectionAssetsParametersTagMode? = nil
+    tagMode: FalListAssetCollectionAssetsParameters.TagMode? = nil
   ) {
     self.characterIdentifier = characterIdentifier
     self.collectionId = collectionId
@@ -65,5 +65,29 @@ public struct FalListAssetCollectionAssetsParameters: Codable, Sendable {
     case source
     case tagId = "tag_id"
     case tagMode = "tag_mode"
+  }
+
+  public enum MediaTypeElement: String, Codable, Hashable, Sendable {
+    case image = "image"
+    case video = "video"
+    case audio = "audio"
+    case value3d = "3d"
+  }
+
+  public enum Section: String, Codable, Hashable, Sendable {
+    case allMedia = "all-media"
+    case uploads = "uploads"
+    case favorites = "favorites"
+    case generated = "generated"
+  }
+
+  public enum SourceElement: String, Codable, Hashable, Sendable {
+    case upload = "upload"
+    case response = "response"
+  }
+
+  public enum TagMode: String, Codable, Hashable, Sendable {
+    case any = "any"
+    case all = "all"
   }
 }

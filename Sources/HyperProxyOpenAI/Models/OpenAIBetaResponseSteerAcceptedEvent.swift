@@ -12,14 +12,14 @@ import HyperProxyCore
 
 public struct OpenAIBetaResponseSteerAcceptedEvent: Codable, Sendable {
   public var sequenceNumber: Int
-  public var steer: OpenAIBetaResponseSteerAcceptedEventSteer
+  public var steer: OpenAIBetaResponseSteerAcceptedEvent.Steer
   public var streamId: String?
-  public var kind: OpenAIBetaResponseSteerAcceptedEventKind
+  public var kind: OpenAIBetaResponseSteerAcceptedEvent.Kind
 
   public init(
     sequenceNumber: Int,
-    steer: OpenAIBetaResponseSteerAcceptedEventSteer,
-    kind: OpenAIBetaResponseSteerAcceptedEventKind,
+    steer: OpenAIBetaResponseSteerAcceptedEvent.Steer,
+    kind: OpenAIBetaResponseSteerAcceptedEvent.Kind,
     streamId: String? = nil
   ) {
     self.sequenceNumber = sequenceNumber
@@ -33,5 +33,27 @@ public struct OpenAIBetaResponseSteerAcceptedEvent: Codable, Sendable {
     case steer
     case streamId = "stream_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case responseSteerAccepted = "response.steer.accepted"
+  }
+
+  public struct Steer: Codable, Sendable {
+    public var id: String
+    public var previousResponseId: String
+
+    public init(
+      id: String,
+      previousResponseId: String
+    ) {
+      self.id = id
+      self.previousResponseId = previousResponseId
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case id
+      case previousResponseId = "previous_response_id"
+    }
   }
 }

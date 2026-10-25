@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "providerCatalogSHA256": "061d200ddcaa467ebd7fd1e24b3ee3cad885030d5aec2d7ef9c0ed0ac8dbc20b",
+  "providerCatalogSHA256": "f9708afa42eda688c35a3b03d36457ce4773e854a2f236d9f34ccdd5d57cadb1",
   "providers": [
     {
       "id": "openai",
@@ -21,7 +21,7 @@
         "v1/embeddings",
         "v1/moderations"
       ],
-      "routeCount": 361
+      "routeCount": 367
     },
     {
       "id": "anthropic",
@@ -40,7 +40,7 @@
       "defaultAllowedPaths": [
         "v1/messages"
       ],
-      "routeCount": 193
+      "routeCount": 189
     },
     {
       "id": "gemini",
@@ -58,7 +58,7 @@
         "v1beta/models/",
         "v1/models/"
       ],
-      "routeCount": 107
+      "routeCount": 91
     },
     {
       "id": "deepseek",
@@ -93,7 +93,7 @@
         "v1/embeddings",
         "v1/fim/completions"
       ],
-      "routeCount": 322
+      "routeCount": 323
     },
     {
       "id": "openrouter",
@@ -109,7 +109,7 @@
       "defaultAllowedPaths": [
         "api/v1/"
       ],
-      "routeCount": 155
+      "routeCount": 140
     },
     {
       "id": "perplexity",
@@ -126,7 +126,7 @@
         "chat/completions",
         "v1/agent"
       ],
-      "routeCount": 25
+      "routeCount": 33
     },
     {
       "id": "groq",
@@ -142,14 +142,15 @@
       "defaultAllowedPaths": [
         "openai/v1/"
       ],
-      "routeCount": 26
+      "routeCount": 23
     },
     {
       "id": "together",
       "name": "Together AI",
       "defaultBaseURL": "https://api.together.ai",
       "origins": [
-        "https://api.together.ai"
+        "https://api.together.ai",
+        "https://api-inference.together.ai"
       ],
       "auth": {
         "scheme": "bearer"
@@ -158,7 +159,7 @@
       "defaultAllowedPaths": [
         "v1/"
       ],
-      "routeCount": 217
+      "routeCount": 198
     },
     {
       "id": "fireworks",
@@ -208,7 +209,7 @@
       "defaultAllowedPaths": [
         "v1/"
       ],
-      "routeCount": 38
+      "routeCount": 36
     },
     {
       "id": "fal",

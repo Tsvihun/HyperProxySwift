@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsLimitedCredentialNetworkingResponse: Codable, Sendable {
   public var allowedHosts: [String]
-  public var kind: AnthropicBetaManagedAgentsLimitedCredentialNetworkingResponseKind
+  public var kind: AnthropicBetaManagedAgentsLimitedCredentialNetworkingResponse.Kind
 
   public init(
     allowedHosts: [String],
-    kind: AnthropicBetaManagedAgentsLimitedCredentialNetworkingResponseKind
+    kind: AnthropicBetaManagedAgentsLimitedCredentialNetworkingResponse.Kind
   ) {
     self.allowedHosts = allowedHosts
     self.kind = kind
@@ -25,5 +25,11 @@ public struct AnthropicBetaManagedAgentsLimitedCredentialNetworkingResponse: Cod
   enum CodingKeys: String, CodingKey {
     case allowedHosts = "allowed_hosts"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case limited = "limited"
   }
 }

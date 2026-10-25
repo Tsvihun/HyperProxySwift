@@ -17,7 +17,7 @@ public struct GeminiAudioTranscriptionConfig: Codable, Sendable {
   public var languageAuto: GeminiLanguageAuto?
   public var languageCodes: [String]?
   public var languageHints: GeminiLanguageHints?
-  public var mode: GeminiAudioTranscriptionConfigMode?
+  public var mode: GeminiAudioTranscriptionConfig.Mode?
   public var wordTimestamp: Bool?
 
   public init(
@@ -27,7 +27,7 @@ public struct GeminiAudioTranscriptionConfig: Codable, Sendable {
     languageAuto: GeminiLanguageAuto? = nil,
     languageCodes: [String]? = nil,
     languageHints: GeminiLanguageHints? = nil,
-    mode: GeminiAudioTranscriptionConfigMode? = nil,
+    mode: GeminiAudioTranscriptionConfig.Mode? = nil,
     wordTimestamp: Bool? = nil
   ) {
     self.adaptationPhrases = adaptationPhrases
@@ -49,5 +49,11 @@ public struct GeminiAudioTranscriptionConfig: Codable, Sendable {
     case languageHints
     case mode
     case wordTimestamp
+  }
+
+  public enum Mode: String, Codable, Hashable, Sendable {
+    case modeUnspecified = "MODE_UNSPECIFIED"
+    case verbatim = "VERBATIM"
+    case smart = "SMART"
   }
 }

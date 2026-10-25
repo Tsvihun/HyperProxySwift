@@ -38,7 +38,7 @@ public struct MistralGetTrace: Codable, Sendable {
   public var serviceName: String
   public var spanCount: Int
   public var startTime: String
-  public var statusCode: MistralGetTraceStatusCode
+  public var statusCode: MistralGetTrace.StatusCode
   public var toolCallCount: Int
   public var toolsUsed: [String]
   public var traceId: String
@@ -74,7 +74,7 @@ public struct MistralGetTrace: Codable, Sendable {
     serviceName: String,
     spanCount: Int,
     startTime: String,
-    statusCode: MistralGetTraceStatusCode,
+    statusCode: MistralGetTrace.StatusCode,
     toolCallCount: Int,
     toolsUsed: [String],
     traceId: String,
@@ -153,5 +153,10 @@ public struct MistralGetTrace: Codable, Sendable {
     case userId = "user_id"
     case workflowName = "workflow_name"
     case workspaceId = "workspace_id"
+  }
+
+  public enum StatusCode: String, Codable, Hashable, Sendable {
+    case error = "Error"
+    case unset = "Unset"
   }
 }

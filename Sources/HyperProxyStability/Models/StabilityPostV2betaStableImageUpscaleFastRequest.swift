@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct StabilityPostV2betaStableImageUpscaleFastRequest: Codable, Sendable {
   public var image: String
-  public var outputFormat: StabilityPostV2betaStableImageUpscaleFastRequestOutputFormat?
+  public var outputFormat: StabilityPostV2betaStableImageUpscaleFastRequest.OutputFormat?
 
   public init(
     image: String,
-    outputFormat: StabilityPostV2betaStableImageUpscaleFastRequestOutputFormat? = nil
+    outputFormat: StabilityPostV2betaStableImageUpscaleFastRequest.OutputFormat? = nil
   ) {
     self.image = image
     self.outputFormat = outputFormat
@@ -25,5 +25,13 @@ public struct StabilityPostV2betaStableImageUpscaleFastRequest: Codable, Sendabl
   enum CodingKeys: String, CodingKey {
     case image
     case outputFormat = "output_format"
+  }
+
+  public enum OutputFormat: String, Codable, Hashable,
+    Sendable
+  {
+    case jpeg = "jpeg"
+    case png = "png"
+    case webp = "webp"
   }
 }

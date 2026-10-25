@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsSessionCreationRejectedRunError: Codable, Sendable {
   public var message: String
-  public var kind: AnthropicBetaManagedAgentsSessionCreationRejectedRunErrorKind
+  public var kind: AnthropicBetaManagedAgentsSessionCreationRejectedRunError.Kind
 
   public init(
     message: String,
-    kind: AnthropicBetaManagedAgentsSessionCreationRejectedRunErrorKind
+    kind: AnthropicBetaManagedAgentsSessionCreationRejectedRunError.Kind
   ) {
     self.message = message
     self.kind = kind
@@ -25,5 +25,11 @@ public struct AnthropicBetaManagedAgentsSessionCreationRejectedRunError: Codable
   enum CodingKeys: String, CodingKey {
     case message
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case sessionCreationRejectedError = "session_creation_rejected_error"
   }
 }

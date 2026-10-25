@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterAnthropicDirectCaller: Codable, Sendable {
-  public var kind: OpenRouterAnthropicDirectCallerKind
+  public var kind: OpenRouterAnthropicDirectCaller.Kind
 
   public init(
-    kind: OpenRouterAnthropicDirectCallerKind
+    kind: OpenRouterAnthropicDirectCaller.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case direct = "direct"
   }
 }

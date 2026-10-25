@@ -19,7 +19,7 @@ public struct ElevenLabsSongSourceContext: Codable, Sendable {
   public var isExplicit: Bool?
   public var languages: [String]?
   public var songId: String
-  public var sourceType: ElevenLabsSongSourceType?
+  public var sourceType: ElevenLabsSongSourceContext.SourceType?
   public var title: String?
 
   public init(
@@ -31,7 +31,7 @@ public struct ElevenLabsSongSourceContext: Codable, Sendable {
     genres: [String]? = nil,
     isExplicit: Bool? = nil,
     languages: [String]? = nil,
-    sourceType: ElevenLabsSongSourceType? = nil,
+    sourceType: ElevenLabsSongSourceContext.SourceType? = nil,
     title: String? = nil
   ) {
     self.bpm = bpm
@@ -57,5 +57,9 @@ public struct ElevenLabsSongSourceContext: Codable, Sendable {
     case songId = "song_id"
     case sourceType = "source_type"
     case title
+  }
+
+  public enum SourceType: String, Codable, Hashable, Sendable {
+    case song = "song"
   }
 }

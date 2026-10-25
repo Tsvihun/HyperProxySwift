@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct MistralCreateRealtimeSessionResponse: Codable, Sendable {
   public var clientSecret: MistralClientSecret
   public var expiresAt: String
-  public var object: MistralClientSessionObject?
+  public var object: MistralCreateRealtimeSessionResponse.Object?
   public var purpose: MistralClientSessionPurpose
 
   public init(
     clientSecret: MistralClientSecret,
     expiresAt: String,
     purpose: MistralClientSessionPurpose,
-    object: MistralClientSessionObject? = nil
+    object: MistralCreateRealtimeSessionResponse.Object? = nil
   ) {
     self.clientSecret = clientSecret
     self.expiresAt = expiresAt
@@ -33,5 +33,9 @@ public struct MistralCreateRealtimeSessionResponse: Codable, Sendable {
     case expiresAt = "expires_at"
     case object
     case purpose
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case clientSession = "client.session"
   }
 }

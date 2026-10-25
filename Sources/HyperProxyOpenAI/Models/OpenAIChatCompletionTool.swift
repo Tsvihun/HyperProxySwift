@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIChatCompletionTool: Codable, Sendable {
   public var function: OpenAIFunctionObject
-  public var kind: OpenAIChatCompletionToolKind
+  public var kind: OpenAIChatCompletionTool.Kind
 
   public init(
     function: OpenAIFunctionObject,
-    kind: OpenAIChatCompletionToolKind
+    kind: OpenAIChatCompletionTool.Kind
   ) {
     self.function = function
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenAIChatCompletionTool: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case function
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case function = "function"
   }
 }

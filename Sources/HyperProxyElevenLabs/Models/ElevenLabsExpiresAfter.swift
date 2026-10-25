@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsExpiresAfter: Codable, Sendable {
-  public var anchor: ElevenLabsCreatedAtAnchor?
+  public var anchor: ElevenLabsExpiresAfter.Anchor?
   public var seconds: Int
 
   public init(
     seconds: Int,
-    anchor: ElevenLabsCreatedAtAnchor? = nil
+    anchor: ElevenLabsExpiresAfter.Anchor? = nil
   ) {
     self.anchor = anchor
     self.seconds = seconds
@@ -25,5 +25,9 @@ public struct ElevenLabsExpiresAfter: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case anchor
     case seconds
+  }
+
+  public enum Anchor: String, Codable, Hashable, Sendable {
+    case createdAt = "created_at"
   }
 }

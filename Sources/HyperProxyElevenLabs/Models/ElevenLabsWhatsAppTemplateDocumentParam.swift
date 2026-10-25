@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsWhatsAppTemplateDocumentParam: Codable, Sendable {
   public var document: ElevenLabsWhatsAppTemplateDocumentParamDetails
-  public var kind: ElevenLabsDocumentKind?
+  public var kind: ElevenLabsWhatsAppTemplateDocumentParam.Kind?
 
   public init(
     document: ElevenLabsWhatsAppTemplateDocumentParamDetails,
-    kind: ElevenLabsDocumentKind? = nil
+    kind: ElevenLabsWhatsAppTemplateDocumentParam.Kind? = nil
   ) {
     self.document = document
     self.kind = kind
@@ -25,5 +25,9 @@ public struct ElevenLabsWhatsAppTemplateDocumentParam: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case document
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case document = "document"
   }
 }

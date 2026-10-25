@@ -10,4 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIDelegation = OpenAIDelegationAnyOf1?
+public typealias OpenAIDelegation = OpenAIDelegationVariant?

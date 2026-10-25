@@ -12,15 +12,15 @@ import HyperProxyCore
 
 public struct GeminiPermission: Codable, Sendable {
   public var emailAddress: String?
-  public var granteeType: GeminiPermissionGranteeType?
+  public var granteeType: GeminiPermission.GranteeType?
   public var name: String?
-  public var role: GeminiPermissionRole?
+  public var role: GeminiPermission.Role?
 
   public init(
     emailAddress: String? = nil,
-    granteeType: GeminiPermissionGranteeType? = nil,
+    granteeType: GeminiPermission.GranteeType? = nil,
     name: String? = nil,
-    role: GeminiPermissionRole? = nil
+    role: GeminiPermission.Role? = nil
   ) {
     self.emailAddress = emailAddress
     self.granteeType = granteeType
@@ -33,5 +33,19 @@ public struct GeminiPermission: Codable, Sendable {
     case granteeType
     case name
     case role
+  }
+
+  public enum GranteeType: String, Codable, Hashable, Sendable {
+    case granteeTypeUnspecified = "GRANTEE_TYPE_UNSPECIFIED"
+    case user = "USER"
+    case group = "GROUP"
+    case everyone = "EVERYONE"
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case roleUnspecified = "ROLE_UNSPECIFIED"
+    case owner = "OWNER"
+    case writer = "WRITER"
+    case reader = "READER"
   }
 }

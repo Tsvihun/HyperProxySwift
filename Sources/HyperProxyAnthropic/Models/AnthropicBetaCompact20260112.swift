@@ -14,10 +14,10 @@ public struct AnthropicBetaCompact20260112: Codable, Sendable {
   public var instructions: String?
   public var pauseAfterCompaction: Bool?
   public var trigger: AnthropicBetaInputTokensTrigger?
-  public var kind: AnthropicCompact20260112Kind
+  public var kind: AnthropicBetaCompact20260112.Kind
 
   public init(
-    kind: AnthropicCompact20260112Kind = .compact20260112,
+    kind: AnthropicBetaCompact20260112.Kind = .compact20260112,
     instructions: String? = nil,
     pauseAfterCompaction: Bool? = nil,
     trigger: AnthropicBetaInputTokensTrigger? = nil
@@ -33,5 +33,9 @@ public struct AnthropicBetaCompact20260112: Codable, Sendable {
     case pauseAfterCompaction = "pause_after_compaction"
     case trigger
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case compact20260112 = "compact_20260112"
   }
 }

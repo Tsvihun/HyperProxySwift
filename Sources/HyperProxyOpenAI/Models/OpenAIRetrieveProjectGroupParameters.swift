@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct OpenAIRetrieveProjectGroupParameters: Codable, Sendable {
   public var groupId: String
-  public var groupType: OpenAIRetrieveProjectGroupParametersGroupType?
+  public var groupType: OpenAIRetrieveProjectGroupParameters.GroupType?
   public var projectId: String
 
   public init(
     groupId: String,
     projectId: String,
-    groupType: OpenAIRetrieveProjectGroupParametersGroupType? = nil
+    groupType: OpenAIRetrieveProjectGroupParameters.GroupType? = nil
   ) {
     self.groupId = groupId
     self.groupType = groupType
@@ -29,5 +29,10 @@ public struct OpenAIRetrieveProjectGroupParameters: Codable, Sendable {
     case groupId = "group_id"
     case groupType = "group_type"
     case projectId = "project_id"
+  }
+
+  public enum GroupType: String, Codable, Hashable, Sendable {
+    case group = "group"
+    case tenantGroup = "tenant_group"
   }
 }

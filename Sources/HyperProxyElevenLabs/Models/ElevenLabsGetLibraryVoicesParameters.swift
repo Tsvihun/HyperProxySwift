@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsGetLibraryVoicesParameters: Codable, Sendable {
   public var accent: String?
   public var age: String?
-  public var category: ElevenLabsGetLibraryVoicesParametersCategory?
+  public var category: ElevenLabsGetLibraryVoicesParameters.Category?
   public var descriptives: [String]?
   public var featured: Bool?
   public var gender: String?
@@ -27,14 +27,14 @@ public struct ElevenLabsGetLibraryVoicesParameters: Codable, Sendable {
   public var pageSize: Int?
   public var readerAppEnabled: Bool?
   public var search: String?
-  public var sort: ElevenLabsGetLibraryVoicesParametersSort?
+  public var sort: ElevenLabsGetLibraryVoicesParameters.Sort?
   public var useCases: [String]?
   public var xiApiKey: String?
 
   public init(
     accent: String? = nil,
     age: String? = nil,
-    category: ElevenLabsGetLibraryVoicesParametersCategory? = nil,
+    category: ElevenLabsGetLibraryVoicesParameters.Category? = nil,
     descriptives: [String]? = nil,
     featured: Bool? = nil,
     gender: String? = nil,
@@ -48,7 +48,7 @@ public struct ElevenLabsGetLibraryVoicesParameters: Codable, Sendable {
     pageSize: Int? = nil,
     readerAppEnabled: Bool? = nil,
     search: String? = nil,
-    sort: ElevenLabsGetLibraryVoicesParametersSort? = nil,
+    sort: ElevenLabsGetLibraryVoicesParameters.Sort? = nil,
     useCases: [String]? = nil,
     xiApiKey: String? = nil
   ) {
@@ -93,5 +93,18 @@ public struct ElevenLabsGetLibraryVoicesParameters: Codable, Sendable {
     case sort
     case useCases = "use_cases"
     case xiApiKey = "xi-api-key"
+  }
+
+  public enum Category: String, Codable, Hashable, Sendable {
+    case professional = "professional"
+    case famous = "famous"
+    case highQuality = "high_quality"
+  }
+
+  public enum Sort: String, Codable, Hashable, Sendable {
+    case createdDate = "created_date"
+    case usageCharacterCount1y = "usage_character_count_1y"
+    case trending = "trending"
+    case clonedByCount = "cloned_by_count"
   }
 }

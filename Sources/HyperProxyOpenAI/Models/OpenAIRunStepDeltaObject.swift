@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIRunStepDeltaObject: Codable, Sendable {
-  public var delta: OpenAIRunStepDeltaObjectDelta
+  public var delta: OpenAIRunStepDeltaObject.Delta
   public var id: String
-  public var object: OpenAIRunStepDeltaObjectObject
+  public var object: OpenAIRunStepDeltaObject.Object
 
   public init(
-    delta: OpenAIRunStepDeltaObjectDelta,
+    delta: OpenAIRunStepDeltaObject.Delta,
     id: String,
-    object: OpenAIRunStepDeltaObjectObject
+    object: OpenAIRunStepDeltaObject.Object
   ) {
     self.delta = delta
     self.id = id
@@ -29,5 +29,51 @@ public struct OpenAIRunStepDeltaObject: Codable, Sendable {
     case delta
     case id
     case object
+  }
+
+  public struct Delta: Codable, Sendable {
+    public var stepDetails: OpenAIRunStepDeltaObject.Delta.StepDetails?
+
+    public init(
+      stepDetails: OpenAIRunStepDeltaObject.Delta.StepDetails? = nil
+    ) {
+      self.stepDetails = stepDetails
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case stepDetails = "step_details"
+    }
+
+    public enum StepDetails: Codable, Sendable {
+      case runStepDeltaStepDetailsMessageCreationObject(
+        OpenAIRunStepDeltaStepDetailsMessageCreationObject)
+      case runStepDeltaStepDetailsToolCallsObject(OpenAIRunStepDeltaStepDetailsToolCallsObject)
+
+      public init(from decoder: any Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if let value = try? container.decode(
+          OpenAIRunStepDeltaStepDetailsMessageCreationObject.self)
+        {
+          self = .runStepDeltaStepDetailsMessageCreationObject(value)
+          return
+        }
+        self = .runStepDeltaStepDetailsToolCallsObject(
+          try container.decode(OpenAIRunStepDeltaStepDetailsToolCallsObject.self))
+      }
+
+      public func encode(to encoder: any Encoder) throws {
+        var container = encoder.singleValueContainer()
+        switch self {
+        case .runStepDeltaStepDetailsMessageCreationObject(let value):
+          try container.encode(value)
+        case .runStepDeltaStepDetailsToolCallsObject(let value):
+          try container.encode(value)
+        }
+      }
+    }
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case threadRunStepDelta = "thread.run.step.delta"
   }
 }

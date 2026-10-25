@@ -11,9 +11,9 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksDeploymentHotLoadBucketType: String, Codable, Hashable, Sendable {
-  case bUCKETTYPEUNSPECIFIED = "BUCKET_TYPE_UNSPECIFIED"
-  case mINIO = "MINIO"
+  case bucketTypeUnspecified = "BUCKET_TYPE_UNSPECIFIED"
+  case minio = "MINIO"
   case s3 = "S3"
-  case nEBIUS = "NEBIUS"
-  case fWHOSTED = "FW_HOSTED"
+  case nebius = "NEBIUS"
+  case fwHosted = "FW_HOSTED"
 }

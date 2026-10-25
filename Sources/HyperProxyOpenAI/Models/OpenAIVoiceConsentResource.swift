@@ -15,14 +15,14 @@ public struct OpenAIVoiceConsentResource: Codable, Sendable {
   public var id: String
   public var language: String
   public var name: String
-  public var object: OpenAIVoiceConsentResourceObject
+  public var object: OpenAIVoiceConsentResource.Object
 
   public init(
     createdAt: Int,
     id: String,
     language: String,
     name: String,
-    object: OpenAIVoiceConsentResourceObject
+    object: OpenAIVoiceConsentResource.Object
   ) {
     self.createdAt = createdAt
     self.id = id
@@ -37,5 +37,9 @@ public struct OpenAIVoiceConsentResource: Codable, Sendable {
     case language
     case name
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case audioVoiceConsent = "audio.voice_consent"
   }
 }

@@ -14,13 +14,13 @@ public struct AnthropicBetaManagedAgentsSessionUsageEvent: Codable, Sendable {
   public var budget: AnthropicBetaManagedAgentsBudget?
   public var id: String
   public var processedAt: AnthropicBetaTimestamp
-  public var kind: AnthropicBetaManagedAgentsSessionUsageEventKind
+  public var kind: AnthropicBetaManagedAgentsSessionUsageEvent.Kind
   public var usage: AnthropicBetaManagedAgentsSessionUsageSnapshot
 
   public init(
     id: String,
     processedAt: AnthropicBetaTimestamp,
-    kind: AnthropicBetaManagedAgentsSessionUsageEventKind,
+    kind: AnthropicBetaManagedAgentsSessionUsageEvent.Kind,
     usage: AnthropicBetaManagedAgentsSessionUsageSnapshot,
     budget: AnthropicBetaManagedAgentsBudget? = nil
   ) {
@@ -37,5 +37,9 @@ public struct AnthropicBetaManagedAgentsSessionUsageEvent: Codable, Sendable {
     case processedAt = "processed_at"
     case kind = "type"
     case usage
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case sessionUsage = "session.usage"
   }
 }

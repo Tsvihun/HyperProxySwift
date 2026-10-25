@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIComputerScreenshotResource: Codable, Sendable {
   public var imageUrl: String
-  public var kind: OpenAIComputerScreenshotResourceKind
+  public var kind: OpenAIComputerScreenshotResource.Kind
 
   public init(
     imageUrl: String,
-    kind: OpenAIComputerScreenshotResourceKind
+    kind: OpenAIComputerScreenshotResource.Kind
   ) {
     self.imageUrl = imageUrl
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenAIComputerScreenshotResource: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case imageUrl = "image_url"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case computerScreenshot = "computer_screenshot"
   }
 }

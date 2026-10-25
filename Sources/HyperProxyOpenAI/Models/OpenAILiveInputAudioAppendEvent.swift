@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct OpenAILiveInputAudioAppendEvent: Codable, Sendable {
   public var audio: String
   public var eventId: String?
-  public var kind: OpenAILiveInputAudioAppendEventKind
+  public var kind: OpenAILiveInputAudioAppendEvent.Kind
 
   public init(
     audio: String,
-    kind: OpenAILiveInputAudioAppendEventKind,
+    kind: OpenAILiveInputAudioAppendEvent.Kind,
     eventId: String? = nil
   ) {
     self.audio = audio
@@ -29,5 +29,9 @@ public struct OpenAILiveInputAudioAppendEvent: Codable, Sendable {
     case audio
     case eventId = "event_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case sessionInputAudioAppend = "session.input_audio.append"
   }
 }

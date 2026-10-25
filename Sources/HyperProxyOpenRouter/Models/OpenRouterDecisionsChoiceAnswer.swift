@@ -14,11 +14,11 @@ public struct OpenRouterDecisionsChoiceAnswer: Codable, Sendable {
   public var choice: String
   public var confidence: Double?
   public var probabilities: [String: Double]?
-  public var kind: OpenRouterDecisionsChoiceAnswerKind
+  public var kind: OpenRouterDecisionsChoiceAnswer.Kind
 
   public init(
     choice: String,
-    kind: OpenRouterDecisionsChoiceAnswerKind,
+    kind: OpenRouterDecisionsChoiceAnswer.Kind,
     confidence: Double? = nil,
     probabilities: [String: Double]? = nil
   ) {
@@ -33,5 +33,9 @@ public struct OpenRouterDecisionsChoiceAnswer: Codable, Sendable {
     case confidence
     case probabilities
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case choice = "choice"
   }
 }

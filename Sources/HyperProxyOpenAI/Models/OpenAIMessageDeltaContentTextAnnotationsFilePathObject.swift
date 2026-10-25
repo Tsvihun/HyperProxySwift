@@ -12,17 +12,17 @@ import HyperProxyCore
 
 public struct OpenAIMessageDeltaContentTextAnnotationsFilePathObject: Codable, Sendable {
   public var endIndex: Int?
-  public var filePath: OpenAIMessageDeltaContentTextAnnotationsFilePathObjectFilePath?
+  public var filePath: OpenAIMessageDeltaContentTextAnnotationsFilePathObject.FilePath?
   public var index: Int
   public var startIndex: Int?
   public var text: String?
-  public var kind: OpenAIMessageDeltaContentTextAnnotationsFilePathObjectKind
+  public var kind: OpenAIMessageDeltaContentTextAnnotationsFilePathObject.Kind
 
   public init(
     index: Int,
-    kind: OpenAIMessageDeltaContentTextAnnotationsFilePathObjectKind,
+    kind: OpenAIMessageDeltaContentTextAnnotationsFilePathObject.Kind,
     endIndex: Int? = nil,
-    filePath: OpenAIMessageDeltaContentTextAnnotationsFilePathObjectFilePath? = nil,
+    filePath: OpenAIMessageDeltaContentTextAnnotationsFilePathObject.FilePath? = nil,
     startIndex: Int? = nil,
     text: String? = nil
   ) {
@@ -41,5 +41,25 @@ public struct OpenAIMessageDeltaContentTextAnnotationsFilePathObject: Codable, S
     case startIndex = "start_index"
     case text
     case kind = "type"
+  }
+
+  public struct FilePath: Codable, Sendable {
+    public var fileId: String?
+
+    public init(
+      fileId: String? = nil
+    ) {
+      self.fileId = fileId
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case fileId = "file_id"
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case filePath = "file_path"
   }
 }

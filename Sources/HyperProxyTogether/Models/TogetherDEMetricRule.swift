@@ -11,18 +11,18 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherDEMetricRule: Codable, Sendable {
-  public var name: TogetherDEMetricRuleName
+  public var name: TogetherDEMetricRule.Name
   public var percentile: Int?
   public var regressionCheck: TogetherDERegressionCheck?
-  public var stat: TogetherDEMetricRuleStat?
+  public var stat: TogetherDEMetricRule.Stat?
   public var thresholdCheck: TogetherDEThresholdCheck?
   public var window: String?
 
   public init(
-    name: TogetherDEMetricRuleName,
+    name: TogetherDEMetricRule.Name,
     percentile: Int? = nil,
     regressionCheck: TogetherDERegressionCheck? = nil,
-    stat: TogetherDEMetricRuleStat? = nil,
+    stat: TogetherDEMetricRule.Stat? = nil,
     thresholdCheck: TogetherDEThresholdCheck? = nil,
     window: String? = nil
   ) {
@@ -41,5 +41,16 @@ public struct TogetherDEMetricRule: Codable, Sendable {
     case stat
     case thresholdCheck
     case window
+  }
+
+  public enum Name: String, Codable, Hashable, Sendable {
+    case inflightRequests = "inflight_requests"
+    case routerErrorRate = "router_error_rate"
+    case routerLatency = "router_latency"
+  }
+
+  public enum Stat: String, Codable, Hashable, Sendable {
+    case metricStatTypeAvg = "METRIC_STAT_TYPE_AVG"
+    case metricStatTypePercentile = "METRIC_STAT_TYPE_PERCENTILE"
   }
 }

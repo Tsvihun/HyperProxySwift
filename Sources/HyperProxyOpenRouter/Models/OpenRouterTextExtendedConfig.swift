@@ -26,4 +26,26 @@ public struct OpenRouterTextExtendedConfig: Codable, Sendable {
     case format
     case verbosity
   }
+
+  public struct WithVerbosity: Codable, Sendable {
+    public var verbosity: OpenRouterTextExtendedConfig.WithVerbosity.Verbosity?
+
+    public init(
+      verbosity: OpenRouterTextExtendedConfig.WithVerbosity.Verbosity? = nil
+    ) {
+      self.verbosity = verbosity
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case verbosity
+    }
+
+    public enum Verbosity: String, Codable, Hashable, Sendable {
+      case low = "low"
+      case medium = "medium"
+      case high = "high"
+      case xhigh = "xhigh"
+      case max = "max"
+    }
+  }
 }

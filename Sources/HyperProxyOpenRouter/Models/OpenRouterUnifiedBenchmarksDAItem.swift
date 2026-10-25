@@ -18,8 +18,8 @@ public struct OpenRouterUnifiedBenchmarksDAItem: Codable, Sendable {
   public var elo: Double
   public var modelPermaslug: String
   public var pricing: OpenRouterUnifiedBenchmarkPricing?
-  public var source: OpenRouterUnifiedBenchmarksDAItemSource
-  public var tournamentStats: OpenRouterUnifiedBenchmarksDAItemTournamentStats
+  public var source: OpenRouterUnifiedBenchmarksDAItem.Source
+  public var tournamentStats: OpenRouterUnifiedBenchmarksDAItem.TournamentStats
   public var winRate: Double
 
   public init(
@@ -30,8 +30,8 @@ public struct OpenRouterUnifiedBenchmarksDAItem: Codable, Sendable {
     elo: Double,
     modelPermaslug: String,
     pricing: OpenRouterUnifiedBenchmarkPricing?,
-    source: OpenRouterUnifiedBenchmarksDAItemSource,
-    tournamentStats: OpenRouterUnifiedBenchmarksDAItemTournamentStats,
+    source: OpenRouterUnifiedBenchmarksDAItem.Source,
+    tournamentStats: OpenRouterUnifiedBenchmarksDAItem.TournamentStats,
     winRate: Double
   ) {
     self.arena = arena
@@ -57,5 +57,39 @@ public struct OpenRouterUnifiedBenchmarksDAItem: Codable, Sendable {
     case source
     case tournamentStats = "tournament_stats"
     case winRate = "win_rate"
+  }
+
+  public enum Source: String, Codable, Hashable, Sendable {
+    case designArena = "design-arena"
+  }
+
+  public struct TournamentStats: Codable, Sendable {
+    public var firstPlace: Int
+    public var fourthPlace: Int
+    public var secondPlace: Int
+    public var thirdPlace: Int
+    public var total: Int
+
+    public init(
+      firstPlace: Int,
+      fourthPlace: Int,
+      secondPlace: Int,
+      thirdPlace: Int,
+      total: Int
+    ) {
+      self.firstPlace = firstPlace
+      self.fourthPlace = fourthPlace
+      self.secondPlace = secondPlace
+      self.thirdPlace = thirdPlace
+      self.total = total
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case firstPlace = "first_place"
+      case fourthPlace = "fourth_place"
+      case secondPlace = "second_place"
+      case thirdPlace = "third_place"
+      case total
+    }
   }
 }

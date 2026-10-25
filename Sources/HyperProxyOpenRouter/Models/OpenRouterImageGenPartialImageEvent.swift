@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenRouterImageGenPartialImageEvent: Codable, Sendable {
   public var b64Json: String
   public var partialImageIndex: Int
-  public var kind: OpenRouterImageGenPartialImageEventKind
+  public var kind: OpenRouterImageGenPartialImageEvent.Kind
 
   public init(
     b64Json: String,
     partialImageIndex: Int,
-    kind: OpenRouterImageGenPartialImageEventKind
+    kind: OpenRouterImageGenPartialImageEvent.Kind
   ) {
     self.b64Json = b64Json
     self.partialImageIndex = partialImageIndex
@@ -29,5 +29,9 @@ public struct OpenRouterImageGenPartialImageEvent: Codable, Sendable {
     case b64Json = "b64_json"
     case partialImageIndex = "partial_image_index"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case imageGenerationPartialImage = "image_generation.partial_image"
   }
 }

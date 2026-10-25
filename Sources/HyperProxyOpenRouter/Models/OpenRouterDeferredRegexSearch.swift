@@ -12,10 +12,10 @@ import HyperProxyCore
 
 public struct OpenRouterDeferredRegexSearch: Codable, Sendable {
   public var maxResults: Int?
-  public var kind: OpenRouterDeferredRegexSearchKind
+  public var kind: OpenRouterDeferredRegexSearch.Kind
 
   public init(
-    kind: OpenRouterDeferredRegexSearchKind,
+    kind: OpenRouterDeferredRegexSearch.Kind,
     maxResults: Int? = nil
   ) {
     self.maxResults = maxResults
@@ -25,5 +25,9 @@ public struct OpenRouterDeferredRegexSearch: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case maxResults = "max_results"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case regex = "regex"
   }
 }

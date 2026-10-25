@@ -20,14 +20,14 @@ public struct ReplicateSchemasPredictionResponse: Codable, Sendable {
   public var id: String
   public var input: [String: HyperProxyJSONValue]
   public var logs: String?
-  public var metrics: ReplicateSchemasPredictionResponseMetrics?
+  public var metrics: ReplicateSchemasPredictionResponse.Metrics?
   public var model: String
   public var output: HyperProxyJSONValue
-  public var source: ReplicateSchemasPredictionResponseSource?
+  public var source: ReplicateSchemasPredictionResponse.Source?
   public var startedAt: String?
-  public var status: ReplicateSchemasPredictionResponseStatus
-  public var urls: ReplicateSchemasPredictionResponseUrls
-  public var version: ReplicateSchemasPredictionResponseVersion
+  public var status: ReplicateSchemasPredictionResponse.Status
+  public var urls: ReplicateSchemasPredictionResponse.Urls
+  public var version: ReplicateSchemasPredictionResponse.Version
 
   public init(
     createdAt: String,
@@ -37,15 +37,15 @@ public struct ReplicateSchemasPredictionResponse: Codable, Sendable {
     input: [String: HyperProxyJSONValue],
     model: String,
     output: HyperProxyJSONValue,
-    status: ReplicateSchemasPredictionResponseStatus,
-    urls: ReplicateSchemasPredictionResponseUrls,
-    version: ReplicateSchemasPredictionResponseVersion,
+    status: ReplicateSchemasPredictionResponse.Status,
+    urls: ReplicateSchemasPredictionResponse.Urls,
+    version: ReplicateSchemasPredictionResponse.Version,
     completedAt: String? = nil,
     deadline: String? = nil,
     deployment: String? = nil,
     logs: String? = nil,
-    metrics: ReplicateSchemasPredictionResponseMetrics? = nil,
-    source: ReplicateSchemasPredictionResponseSource? = nil,
+    metrics: ReplicateSchemasPredictionResponse.Metrics? = nil,
+    source: ReplicateSchemasPredictionResponse.Source? = nil,
     startedAt: String? = nil
   ) {
     self.completedAt = completedAt
@@ -85,5 +85,96 @@ public struct ReplicateSchemasPredictionResponse: Codable, Sendable {
     case status
     case urls
     case version
+  }
+
+  public struct Metrics: Codable, Sendable {
+    public var totalTime: Double?
+
+    public init(
+      totalTime: Double? = nil
+    ) {
+      self.totalTime = totalTime
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case totalTime = "total_time"
+    }
+  }
+
+  public enum Source: String, Codable, Hashable, Sendable {
+    case web = "web"
+    case api = "api"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case starting = "starting"
+    case processing = "processing"
+    case succeeded = "succeeded"
+    case failed = "failed"
+    case canceled = "canceled"
+    case aborted = "aborted"
+  }
+
+  public struct Urls: Codable, Sendable {
+    public var cancel: String
+    public var getValue: String
+    public var stream: String?
+    public var web: String
+
+    public init(
+      cancel: String,
+      getValue: String,
+      web: String,
+      stream: String? = nil
+    ) {
+      self.cancel = cancel
+      self.getValue = getValue
+      self.stream = stream
+      self.web = web
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case cancel
+      case getValue = "get"
+      case stream
+      case web
+    }
+  }
+
+  public enum Version: RawRepresentable, Codable, Hashable, Sendable {
+    case hidden
+    case custom(String)
+
+    public init(rawValue: String) {
+      switch rawValue {
+      case "hidden":
+        self = .hidden
+      default:
+        self = .custom(rawValue)
+      }
+    }
+
+    public var rawValue: String {
+      switch self {
+      case .hidden:
+        return "hidden"
+      case .custom(let value):
+        return value
+      }
+    }
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      self.init(rawValue: try container.decode(String.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      try container.encode(rawValue)
+    }
+
+    public enum Hidden: String, Codable, Hashable, Sendable {
+      case hidden = "hidden"
+    }
   }
 }

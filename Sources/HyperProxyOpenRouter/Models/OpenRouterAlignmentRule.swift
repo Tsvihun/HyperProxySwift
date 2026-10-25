@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenRouterAlignmentRule: Codable, Sendable {
   public var rule: String
-  public var watch: [OpenRouterAlignmentRuleWatchItem]
+  public var watch: [OpenRouterAlignmentRule.WatchElement]
 
   public init(
     rule: String,
-    watch: [OpenRouterAlignmentRuleWatchItem]
+    watch: [OpenRouterAlignmentRule.WatchElement]
   ) {
     self.rule = rule
     self.watch = watch
@@ -25,5 +25,13 @@ public struct OpenRouterAlignmentRule: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case rule
     case watch
+  }
+
+  public enum WatchElement: String, Codable, Hashable, Sendable {
+    case content = "content"
+    case toolCalls = "tool_calls"
+    case refusal = "refusal"
+    case images = "images"
+    case audio = "audio"
   }
 }

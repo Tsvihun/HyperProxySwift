@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct StabilityContentModerationResponse: Codable, Sendable {
   public var errors: [String]
   public var id: String
-  public var name: StabilityContentModerationResponseName
+  public var name: StabilityContentModerationResponse.Name
 
   public init(
     errors: [String],
     id: String,
-    name: StabilityContentModerationResponseName
+    name: StabilityContentModerationResponse.Name
   ) {
     self.errors = errors
     self.id = id
@@ -29,5 +29,9 @@ public struct StabilityContentModerationResponse: Codable, Sendable {
     case errors
     case id
     case name
+  }
+
+  public enum Name: String, Codable, Hashable, Sendable {
+    case contentModeration = "content_moderation"
   }
 }

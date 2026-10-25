@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherEmbeddingsResponse: Codable, Sendable {
-  public var data: [TogetherEmbeddingsResponseDataItem]
+  public var data: [TogetherEmbeddingsResponse.DataElement]
   public var model: String
-  public var object: TogetherListObject1dee9a01
+  public var object: TogetherListObject
 
   public init(
-    data: [TogetherEmbeddingsResponseDataItem],
+    data: [TogetherEmbeddingsResponse.DataElement],
     model: String,
-    object: TogetherListObject1dee9a01 = .list
+    object: TogetherListObject = .list
   ) {
     self.data = data
     self.model = model
@@ -29,5 +29,31 @@ public struct TogetherEmbeddingsResponse: Codable, Sendable {
     case data
     case model
     case object
+  }
+
+  public struct DataElement: Codable, Sendable {
+    public var embedding: [Double]
+    public var index: Int
+    public var object: TogetherEmbeddingsResponse.DataElement.Object
+
+    public init(
+      embedding: [Double],
+      index: Int,
+      object: TogetherEmbeddingsResponse.DataElement.Object = .embedding
+    ) {
+      self.embedding = embedding
+      self.index = index
+      self.object = object
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case embedding
+      case index
+      case object
+    }
+
+    public enum Object: String, Codable, Hashable, Sendable {
+      case embedding = "embedding"
+    }
   }
 }

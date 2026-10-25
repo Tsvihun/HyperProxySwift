@@ -17,7 +17,7 @@ public struct OpenRouterScimSyncJob: Codable, Sendable {
   public var finishedAt: String
   public var id: String
   public var startedAt: String
-  public var status: OpenRouterScimSyncJobStatus
+  public var status: OpenRouterScimSyncJob.Status
   public var syncedGroups: Int
 
   public init(
@@ -27,7 +27,7 @@ public struct OpenRouterScimSyncJob: Codable, Sendable {
     finishedAt: String,
     id: String,
     startedAt: String,
-    status: OpenRouterScimSyncJobStatus,
+    status: OpenRouterScimSyncJob.Status,
     syncedGroups: Int
   ) {
     self.createdAt = createdAt
@@ -49,5 +49,12 @@ public struct OpenRouterScimSyncJob: Codable, Sendable {
     case startedAt = "started_at"
     case status
     case syncedGroups = "synced_groups"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case queued = "queued"
+    case running = "running"
+    case succeeded = "succeeded"
+    case failed = "failed"
   }
 }

@@ -11,15 +11,20 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterIncompleteDetails: Codable, Sendable {
-  public var reason: OpenRouterIncompleteDetailsReason?
+  public var reason: OpenRouterIncompleteDetails.Reason?
 
   public init(
-    reason: OpenRouterIncompleteDetailsReason? = nil
+    reason: OpenRouterIncompleteDetails.Reason? = nil
   ) {
     self.reason = reason
   }
 
   enum CodingKeys: String, CodingKey {
     case reason
+  }
+
+  public enum Reason: String, Codable, Hashable, Sendable {
+    case maxOutputTokens = "max_output_tokens"
+    case contentFilter = "content_filter"
   }
 }

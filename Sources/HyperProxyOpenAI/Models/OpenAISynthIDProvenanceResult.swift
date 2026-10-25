@@ -14,13 +14,13 @@ public struct OpenAISynthIDProvenanceResult: Codable, Sendable {
   public var generatedAt: String?
   public var model: String?
   public var outcome: OpenAIProvenanceDetectionResultApi
-  public var kind: OpenAISynthIDProvenanceResultKind
+  public var kind: OpenAISynthIDProvenanceResult.Kind
 
   public init(
     generatedAt: String?,
     model: String?,
     outcome: OpenAIProvenanceDetectionResultApi,
-    kind: OpenAISynthIDProvenanceResultKind
+    kind: OpenAISynthIDProvenanceResult.Kind
   ) {
     self.generatedAt = generatedAt
     self.model = model
@@ -33,5 +33,9 @@ public struct OpenAISynthIDProvenanceResult: Codable, Sendable {
     case model
     case outcome
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case synthid = "synthid"
   }
 }

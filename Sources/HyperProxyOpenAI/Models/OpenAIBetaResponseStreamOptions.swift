@@ -10,4 +10,5 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIBetaResponseStreamOptions = OpenAIBetaResponseStreamOptionsAnyOf1?
+public typealias OpenAIBetaResponseStreamOptions =
+  OpenAIBetaResponseStreamOptionsWithIncludeObfuscation?

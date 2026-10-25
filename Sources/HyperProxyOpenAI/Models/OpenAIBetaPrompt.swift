@@ -10,4 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIBetaPrompt = OpenAIBetaPromptAnyOf1?
+public typealias OpenAIBetaPrompt = OpenAIBetaPromptWithIdAndVariablesAndVersion?

@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct AnthropicBetaRequestBashCodeExecutionToolResultBlock: Codable, Sendable {
   public var cacheControl: AnthropicBetaCacheControlEphemeral?
-  public var content: AnthropicBetaRequestBashCodeExecutionToolResultBlockContent
+  public var content: AnthropicBetaRequestBashCodeExecutionToolResultBlock.Content
   public var toolUseId: String
   public var kind: AnthropicBashCodeExecutionToolResultKind
 
   public init(
-    content: AnthropicBetaRequestBashCodeExecutionToolResultBlockContent,
+    content: AnthropicBetaRequestBashCodeExecutionToolResultBlock.Content,
     toolUseId: String,
     kind: AnthropicBashCodeExecutionToolResultKind = .bashCodeExecutionToolResult,
     cacheControl: AnthropicBetaCacheControlEphemeral? = nil
@@ -33,5 +33,33 @@ public struct AnthropicBetaRequestBashCodeExecutionToolResultBlock: Codable, Sen
     case content
     case toolUseId = "tool_use_id"
     case kind = "type"
+  }
+
+  public enum Content: Codable, Sendable {
+    case betaRequestBashCodeExecutionToolResultError(
+      AnthropicBetaRequestBashCodeExecutionToolResultError)
+    case betaRequestBashCodeExecutionResultBlock(AnthropicBetaRequestBashCodeExecutionResultBlock)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(
+        AnthropicBetaRequestBashCodeExecutionToolResultError.self)
+      {
+        self = .betaRequestBashCodeExecutionToolResultError(value)
+        return
+      }
+      self = .betaRequestBashCodeExecutionResultBlock(
+        try container.decode(AnthropicBetaRequestBashCodeExecutionResultBlock.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .betaRequestBashCodeExecutionToolResultError(let value):
+        try container.encode(value)
+      case .betaRequestBashCodeExecutionResultBlock(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

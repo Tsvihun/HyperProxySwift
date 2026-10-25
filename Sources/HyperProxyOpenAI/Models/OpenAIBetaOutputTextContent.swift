@@ -14,13 +14,13 @@ public struct OpenAIBetaOutputTextContent: Codable, Sendable {
   public var annotations: [OpenAIBetaAnnotation]
   public var logprobs: [OpenAIBetaLogProb]
   public var text: String
-  public var kind: OpenAIBetaOutputTextContentKind
+  public var kind: OpenAIBetaOutputTextContent.Kind
 
   public init(
     annotations: [OpenAIBetaAnnotation],
     logprobs: [OpenAIBetaLogProb],
     text: String,
-    kind: OpenAIBetaOutputTextContentKind
+    kind: OpenAIBetaOutputTextContent.Kind
   ) {
     self.annotations = annotations
     self.logprobs = logprobs
@@ -33,5 +33,9 @@ public struct OpenAIBetaOutputTextContent: Codable, Sendable {
     case logprobs
     case text
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case outputText = "output_text"
   }
 }

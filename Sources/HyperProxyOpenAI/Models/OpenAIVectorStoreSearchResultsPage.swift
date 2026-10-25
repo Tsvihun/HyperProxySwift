@@ -14,14 +14,14 @@ public struct OpenAIVectorStoreSearchResultsPage: Codable, Sendable {
   public var data: [OpenAIVectorStoreSearchResultItem]
   public var hasMore: Bool
   public var nextPage: String?
-  public var object: OpenAIVectorStoreSearchResultsPageObject
+  public var object: OpenAIVectorStoreSearchResultsPage.Object
   public var searchQuery: [String]
 
   public init(
     data: [OpenAIVectorStoreSearchResultItem],
     hasMore: Bool,
     nextPage: String?,
-    object: OpenAIVectorStoreSearchResultsPageObject,
+    object: OpenAIVectorStoreSearchResultsPage.Object,
     searchQuery: [String]
   ) {
     self.data = data
@@ -37,5 +37,9 @@ public struct OpenAIVectorStoreSearchResultsPage: Codable, Sendable {
     case nextPage = "next_page"
     case object
     case searchQuery = "search_query"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case vectorStoreSearchResultsPage = "vector_store.search_results.page"
   }
 }

@@ -11,15 +11,29 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepLEndOfTargetTranscriptPayload: Codable, Sendable {
-  public var endOfTargetTranscript: DeepLEndOfTargetTranscriptPayloadEndOfTargetTranscript
+  public var endOfTargetTranscript: DeepLEndOfTargetTranscriptPayload.EndOfTargetTranscript
 
   public init(
-    endOfTargetTranscript: DeepLEndOfTargetTranscriptPayloadEndOfTargetTranscript
+    endOfTargetTranscript: DeepLEndOfTargetTranscriptPayload.EndOfTargetTranscript
   ) {
     self.endOfTargetTranscript = endOfTargetTranscript
   }
 
   enum CodingKeys: String, CodingKey {
     case endOfTargetTranscript = "end_of_target_transcript"
+  }
+
+  public struct EndOfTargetTranscript: Codable, Sendable {
+    public var language: String
+
+    public init(
+      language: String
+    ) {
+      self.language = language
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case language
+    }
   }
 }

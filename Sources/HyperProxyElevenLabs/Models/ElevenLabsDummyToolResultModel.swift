@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsDummyToolResultModel: Codable, Sendable {
-  public var resultType: ElevenLabsDummyResultType?
+  public var resultType: ElevenLabsDummyToolResultModel.ResultType?
 
   public init(
-    resultType: ElevenLabsDummyResultType? = nil
+    resultType: ElevenLabsDummyToolResultModel.ResultType? = nil
   ) {
     self.resultType = resultType
   }
 
   enum CodingKeys: String, CodingKey {
     case resultType = "result_type"
+  }
+
+  public enum ResultType: String, Codable, Hashable, Sendable {
+    case dummy = "dummy"
   }
 }

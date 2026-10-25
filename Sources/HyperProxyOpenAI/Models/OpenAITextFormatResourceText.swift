@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAITextFormatResourceText: Codable, Sendable {
-  public var kind: OpenAITextFormatResourceTextKind
+  public var kind: OpenAITextFormatResourceText.Kind
 
   public init(
-    kind: OpenAITextFormatResourceTextKind
+    kind: OpenAITextFormatResourceText.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case text = "text"
   }
 }

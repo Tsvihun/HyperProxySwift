@@ -11,16 +11,16 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIChatCompletionMessageToolCallChunk: Codable, Sendable {
-  public var function: OpenAIChatCompletionMessageToolCallChunkFunction?
+  public var function: OpenAIChatCompletionMessageToolCallChunk.Function?
   public var id: String?
   public var index: Int
-  public var kind: OpenAIChatCompletionMessageToolCallChunkKind?
+  public var kind: OpenAIChatCompletionMessageToolCallChunk.Kind?
 
   public init(
     index: Int,
-    function: OpenAIChatCompletionMessageToolCallChunkFunction? = nil,
+    function: OpenAIChatCompletionMessageToolCallChunk.Function? = nil,
     id: String? = nil,
-    kind: OpenAIChatCompletionMessageToolCallChunkKind? = nil
+    kind: OpenAIChatCompletionMessageToolCallChunk.Kind? = nil
   ) {
     self.function = function
     self.id = id
@@ -33,5 +33,27 @@ public struct OpenAIChatCompletionMessageToolCallChunk: Codable, Sendable {
     case id
     case index
     case kind = "type"
+  }
+
+  public struct Function: Codable, Sendable {
+    public var arguments: String?
+    public var name: String?
+
+    public init(
+      arguments: String? = nil,
+      name: String? = nil
+    ) {
+      self.arguments = arguments
+      self.name = name
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case arguments
+      case name
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case function = "function"
   }
 }

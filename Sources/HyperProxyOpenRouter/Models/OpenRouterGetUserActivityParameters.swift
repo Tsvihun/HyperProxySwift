@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct OpenRouterGetUserActivityParameters: Codable, Sendable {
   public var apiKeyHash: String?
   public var date: String?
-  public var groupBy: OpenRouterGetUserActivityParametersGroupBy?
+  public var groupBy: OpenRouterGetUserActivityParameters.GroupBy?
   public var userId: String?
   public var workspaceId: String?
 
   public init(
     apiKeyHash: String? = nil,
     date: String? = nil,
-    groupBy: OpenRouterGetUserActivityParametersGroupBy? = nil,
+    groupBy: OpenRouterGetUserActivityParameters.GroupBy? = nil,
     userId: String? = nil,
     workspaceId: String? = nil
   ) {
@@ -37,5 +37,9 @@ public struct OpenRouterGetUserActivityParameters: Codable, Sendable {
     case groupBy = "group_by"
     case userId = "user_id"
     case workspaceId = "workspace_id"
+  }
+
+  public enum GroupBy: String, Codable, Hashable, Sendable {
+    case workspace = "workspace"
   }
 }

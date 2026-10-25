@@ -29,7 +29,7 @@ public struct MistralMCPConnector: Codable, Sendable {
   public var ownerId: String?
   public var ownerType: MistralConsumerType
   public var privateToolExecution: Bool
-  public var protocolModel: MistralMcpProtocolModel
+  public var protocolValue: MistralMcpProtocolModel
   public var server: String?
   public var serverCard: MistralMCPServerCard?
   public var supportedAuthMethods: [MistralPublicAuthenticationMethod]?
@@ -49,7 +49,7 @@ public struct MistralMCPConnector: Codable, Sendable {
     privateToolExecution: Bool,
     supportsMcp: Bool,
     visibility: MistralResourceVisibility,
-    protocolModel: MistralMcpProtocolModel = .mcp,
+    protocolValue: MistralMcpProtocolModel = .mcp,
     blockedBy: [MistralConsumerType]? = nil,
     connectionConfig: MistralPublicConnectionConfig? = nil,
     connectionCredentials: [MistralAuthenticationConfiguration]? = nil,
@@ -86,7 +86,7 @@ public struct MistralMCPConnector: Codable, Sendable {
     self.ownerId = ownerId
     self.ownerType = ownerType
     self.privateToolExecution = privateToolExecution
-    self.protocolModel = protocolModel
+    self.protocolValue = protocolValue
     self.server = server
     self.serverCard = serverCard
     self.supportedAuthMethods = supportedAuthMethods
@@ -116,7 +116,7 @@ public struct MistralMCPConnector: Codable, Sendable {
     case ownerId = "owner_id"
     case ownerType = "owner_type"
     case privateToolExecution = "private_tool_execution"
-    case protocolModel = "protocol"
+    case protocolValue = "protocol"
     case server
     case serverCard = "server_card"
     case supportedAuthMethods = "supported_auth_methods"

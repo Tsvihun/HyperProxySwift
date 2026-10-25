@@ -11,5 +11,5 @@ import Foundation
 import HyperProxyCore
 
 public enum MistralCodePlan: String, Codable, Hashable, Sendable {
-  case eNTERPRISE = "ENTERPRISE"
+  case enterprise = "ENTERPRISE"
 }

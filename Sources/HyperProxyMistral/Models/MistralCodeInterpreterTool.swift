@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct MistralCodeInterpreterTool: Codable, Sendable {
   public var toolConfiguration: MistralToolConfiguration?
-  public var kind: MistralCodeInterpreterToolKind?
+  public var kind: MistralCodeInterpreterTool.Kind?
 
   public init(
     toolConfiguration: MistralToolConfiguration? = nil,
-    kind: MistralCodeInterpreterToolKind? = nil
+    kind: MistralCodeInterpreterTool.Kind? = nil
   ) {
     self.toolConfiguration = toolConfiguration
     self.kind = kind
@@ -25,5 +25,9 @@ public struct MistralCodeInterpreterTool: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case toolConfiguration = "tool_configuration"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case codeInterpreter = "code_interpreter"
   }
 }

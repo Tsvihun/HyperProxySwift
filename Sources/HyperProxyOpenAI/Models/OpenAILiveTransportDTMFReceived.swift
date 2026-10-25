@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAILiveTransportDTMFReceived: Codable, Sendable {
   public var event: String
   public var eventId: String
-  public var kind: OpenAILiveTransportDTMFReceivedKind
+  public var kind: OpenAILiveTransportDTMFReceived.Kind
 
   public init(
     event: String,
     eventId: String,
-    kind: OpenAILiveTransportDTMFReceivedKind
+    kind: OpenAILiveTransportDTMFReceived.Kind
   ) {
     self.event = event
     self.eventId = eventId
@@ -29,5 +29,9 @@ public struct OpenAILiveTransportDTMFReceived: Codable, Sendable {
     case event
     case eventId = "event_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case transportDtmfReceived = "transport.dtmf.received"
   }
 }

@@ -11,23 +11,23 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsGPTImage25FlareRequest: Codable, Sendable {
-  public var aspectRatio: ElevenLabsGPTImage25FlareRequestAspectRatio?
+  public var aspectRatio: ElevenLabsGPTImage25FlareRequest.AspectRatio?
   public var images: [ElevenLabsImageReference]?
   public var mask: ElevenLabsImageReference?
-  public var modelId: ElevenLabsGptImage25FlareModelId
+  public var modelId: ElevenLabsGPTImage25FlareRequest.ModelId
   public var prompt: String
-  public var quality: ElevenLabsGPTImage25FlareRequestQuality?
-  public var resolution: ElevenLabsGPTImage25FlareRequestResolution?
+  public var quality: ElevenLabsGPTImage25FlareRequest.Quality?
+  public var resolution: ElevenLabsGPTImage25FlareRequest.Resolution?
   public var webhook: ElevenLabsWebhookTarget?
 
   public init(
     prompt: String,
-    modelId: ElevenLabsGptImage25FlareModelId = .gptImage25Flare,
-    aspectRatio: ElevenLabsGPTImage25FlareRequestAspectRatio? = nil,
+    modelId: ElevenLabsGPTImage25FlareRequest.ModelId = .gptImage2_5Flare,
+    aspectRatio: ElevenLabsGPTImage25FlareRequest.AspectRatio? = nil,
     images: [ElevenLabsImageReference]? = nil,
     mask: ElevenLabsImageReference? = nil,
-    quality: ElevenLabsGPTImage25FlareRequestQuality? = nil,
-    resolution: ElevenLabsGPTImage25FlareRequestResolution? = nil,
+    quality: ElevenLabsGPTImage25FlareRequest.Quality? = nil,
+    resolution: ElevenLabsGPTImage25FlareRequest.Resolution? = nil,
     webhook: ElevenLabsWebhookTarget? = nil
   ) {
     self.aspectRatio = aspectRatio
@@ -49,5 +49,41 @@ public struct ElevenLabsGPTImage25FlareRequest: Codable, Sendable {
     case quality
     case resolution
     case webhook
+  }
+
+  public enum AspectRatio: String, Codable, Hashable, Sendable {
+    case auto = "auto"
+    case ratio1x1 = "1:1"
+    case ratio4x5 = "4:5"
+    case ratio5x4 = "5:4"
+    case ratio3x4 = "3:4"
+    case ratio4x3 = "4:3"
+    case ratio2x3 = "2:3"
+    case ratio3x2 = "3:2"
+    case ratio1x2 = "1:2"
+    case ratio2x1 = "2:1"
+    case ratio9x16 = "9:16"
+    case ratio16x9 = "16:9"
+    case ratio21x9 = "21:9"
+    case ratio1x3 = "1:3"
+    case ratio3x1 = "3:1"
+  }
+
+  public enum Quality: String, Codable, Hashable, Sendable {
+    case low = "low"
+    case medium = "medium"
+    case high = "high"
+    case xhigh = "xhigh"
+    case max = "max"
+  }
+
+  public enum Resolution: String, Codable, Hashable, Sendable {
+    case value1k = "1K"
+    case value2k = "2K"
+    case value4k = "4K"
+  }
+
+  public enum ModelId: String, Codable, Hashable, Sendable {
+    case gptImage2_5Flare = "gpt-image-2.5-flare"
   }
 }

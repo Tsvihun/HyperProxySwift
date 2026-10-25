@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsAnalysisProperty: Codable, Sendable {
   public var allowedValues: ElevenLabsAllowedValues?
   public var allowedValuesDynamicVariable: String?
-  public var constantValue: ElevenLabsAnalysisPropertyConstantValue?
+  public var constantValue: ElevenLabsAnalysisProperty.ConstantValue?
   public var description: String?
   public var dynamicVariable: String?
   public var enumValue: [String]?
@@ -21,13 +21,13 @@ public struct ElevenLabsAnalysisProperty: Codable, Sendable {
   public var isSystemProvided: Bool?
   public var llm: ElevenLabsLLM?
   public var name: String?
-  public var kind: ElevenLabsAnalysisPropertyKind
+  public var kind: ElevenLabsAnalysisProperty.Kind
 
   public init(
-    kind: ElevenLabsAnalysisPropertyKind,
+    kind: ElevenLabsAnalysisProperty.Kind,
     allowedValues: ElevenLabsAllowedValues? = nil,
     allowedValuesDynamicVariable: String? = nil,
-    constantValue: ElevenLabsAnalysisPropertyConstantValue? = nil,
+    constantValue: ElevenLabsAnalysisProperty.ConstantValue? = nil,
     description: String? = nil,
     dynamicVariable: String? = nil,
     enumValue: [String]? = nil,
@@ -61,5 +61,62 @@ public struct ElevenLabsAnalysisProperty: Codable, Sendable {
     case llm
     case name
     case kind = "type"
+  }
+
+  public enum ConstantValue: Codable, Sendable {
+    case boolean(Bool)
+    case integer(Int)
+    case number(Double)
+    case string(String)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Bool.self) {
+        self = .boolean(value)
+        return
+      }
+      if let value = try? container.decode(Int.self) {
+        self = .integer(value)
+        return
+      }
+      if let value = try? container.decode(Double.self) {
+        self = .number(value)
+        return
+      }
+      self = .string(try container.decode(String.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .boolean(let value):
+        try container.encode(value)
+      case .integer(let value):
+        try container.encode(value)
+      case .number(let value):
+        try container.encode(value)
+      case .string(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case boolean = "boolean"
+    case string = "string"
+    case integer = "integer"
+    case number = "number"
+  }
+}
+
+extension ElevenLabsAnalysisProperty.ConstantValue: ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Int) {
+    self = .integer(value)
+  }
+}
+
+extension ElevenLabsAnalysisProperty.ConstantValue: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

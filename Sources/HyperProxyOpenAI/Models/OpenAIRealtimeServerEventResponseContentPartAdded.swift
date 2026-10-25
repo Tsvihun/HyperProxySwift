@@ -15,18 +15,18 @@ public struct OpenAIRealtimeServerEventResponseContentPartAdded: Codable, Sendab
   public var eventId: String
   public var itemId: String
   public var outputIndex: Int
-  public var part: OpenAIRealtimeServerEventResponseContentPartAddedPart
+  public var part: OpenAIRealtimeServerEventResponseContentPartAdded.Part
   public var responseId: String
-  public var kind: OpenAIRealtimeServerEventResponseContentPartAddedKind
+  public var kind: OpenAIRealtimeServerEventResponseContentPartAdded.Kind
 
   public init(
     contentIndex: Int,
     eventId: String,
     itemId: String,
     outputIndex: Int,
-    part: OpenAIRealtimeServerEventResponseContentPartAddedPart,
+    part: OpenAIRealtimeServerEventResponseContentPartAdded.Part,
     responseId: String,
-    kind: OpenAIRealtimeServerEventResponseContentPartAddedKind
+    kind: OpenAIRealtimeServerEventResponseContentPartAdded.Kind
   ) {
     self.contentIndex = contentIndex
     self.eventId = eventId
@@ -45,5 +45,44 @@ public struct OpenAIRealtimeServerEventResponseContentPartAdded: Codable, Sendab
     case part
     case responseId = "response_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case responseContentPartAdded = "response.content_part.added"
+  }
+
+  public struct Part: Codable, Sendable {
+    public var audio: String?
+    public var text: String?
+    public var transcript: String?
+    public var kind: OpenAIRealtimeServerEventResponseContentPartAdded.Part.Kind?
+
+    public init(
+      audio: String? = nil,
+      text: String? = nil,
+      transcript: String? = nil,
+      kind: OpenAIRealtimeServerEventResponseContentPartAdded.Part.Kind? = nil
+    ) {
+      self.audio = audio
+      self.text = text
+      self.transcript = transcript
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case audio
+      case text
+      case transcript
+      case kind = "type"
+    }
+
+    public enum Kind: String, Codable, Hashable,
+      Sendable
+    {
+      case audio = "audio"
+      case text = "text"
+    }
   }
 }

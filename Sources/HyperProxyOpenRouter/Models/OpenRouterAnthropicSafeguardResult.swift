@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterAnthropicSafeguardResult: Codable, Sendable {
-  public var status: OpenRouterAnthropicSafeguardResultStatus
+  public var status: OpenRouterAnthropicSafeguardResult.Status
   public var kind: String
 
   public init(
-    status: OpenRouterAnthropicSafeguardResultStatus,
+    status: OpenRouterAnthropicSafeguardResult.Status,
     kind: String
   ) {
     self.status = status
@@ -25,5 +25,19 @@ public struct OpenRouterAnthropicSafeguardResult: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case status
     case kind = "type"
+  }
+
+  public struct Status: Codable, Sendable {
+    public var kind: String
+
+    public init(
+      kind: String
+    ) {
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case kind = "type"
+    }
   }
 }

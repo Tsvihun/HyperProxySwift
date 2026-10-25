@@ -16,10 +16,10 @@ public struct OpenRouterReasoningDetailText: Codable, Sendable {
   public var index: Int?
   public var signature: String?
   public var text: String?
-  public var kind: OpenRouterReasoningDetailTextKind
+  public var kind: OpenRouterReasoningDetailText.Kind
 
   public init(
-    kind: OpenRouterReasoningDetailTextKind,
+    kind: OpenRouterReasoningDetailText.Kind,
     format: OpenRouterReasoningFormat? = nil,
     id: String? = nil,
     index: Int? = nil,
@@ -41,5 +41,9 @@ public struct OpenRouterReasoningDetailText: Codable, Sendable {
     case signature
     case text
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case reasoningText = "reasoning.text"
   }
 }

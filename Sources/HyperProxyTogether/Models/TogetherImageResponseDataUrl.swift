@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct TogetherImageResponseDataUrl: Codable, Sendable {
   public var index: Int
-  public var kind: TogetherImageResponseDataUrlKind
+  public var kind: TogetherImageResponseDataUrl.Kind
   public var url: String
 
   public init(
     index: Int,
-    kind: TogetherImageResponseDataUrlKind,
+    kind: TogetherImageResponseDataUrl.Kind,
     url: String
   ) {
     self.index = index
@@ -29,5 +29,9 @@ public struct TogetherImageResponseDataUrl: Codable, Sendable {
     case index
     case kind = "type"
     case url
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case url = "url"
   }
 }

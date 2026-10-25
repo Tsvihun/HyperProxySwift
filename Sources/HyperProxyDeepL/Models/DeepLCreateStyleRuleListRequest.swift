@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct DeepLCreateStyleRuleListRequest: Codable, Sendable {
   public var configuredRules: DeepLConfiguredRules?
-  public var customInstructions: [DeepLCreateStyleRuleListRequestCustomInstructionsItem]?
+  public var customInstructions: [DeepLCreateStyleRuleListRequest.CustomInstructionsElement]?
   public var language: DeepLStyleRuleLanguage
   public var name: String
 
@@ -20,7 +20,7 @@ public struct DeepLCreateStyleRuleListRequest: Codable, Sendable {
     language: DeepLStyleRuleLanguage,
     name: String,
     configuredRules: DeepLConfiguredRules? = nil,
-    customInstructions: [DeepLCreateStyleRuleListRequestCustomInstructionsItem]? = nil
+    customInstructions: [DeepLCreateStyleRuleListRequest.CustomInstructionsElement]? = nil
   ) {
     self.configuredRules = configuredRules
     self.customInstructions = customInstructions
@@ -33,5 +33,27 @@ public struct DeepLCreateStyleRuleListRequest: Codable, Sendable {
     case customInstructions = "custom_instructions"
     case language
     case name
+  }
+
+  public struct CustomInstructionsElement: Codable, Sendable {
+    public var label: String
+    public var prompt: String
+    public var sourceLanguage: String?
+
+    public init(
+      label: String,
+      prompt: String,
+      sourceLanguage: String? = nil
+    ) {
+      self.label = label
+      self.prompt = prompt
+      self.sourceLanguage = sourceLanguage
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case label
+      case prompt
+      case sourceLanguage = "source_language"
+    }
   }
 }

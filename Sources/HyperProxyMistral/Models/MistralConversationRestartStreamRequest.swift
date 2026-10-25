@@ -54,4 +54,48 @@ public struct MistralConversationRestartStreamRequest: Codable, Sendable {
     case store
     case stream
   }
+
+  public struct WithStream: Codable, Sendable {
+    public var stream: MistralConversationRestartStreamRequest.WithStream.Stream?
+
+    public init(
+      stream: MistralConversationRestartStreamRequest.WithStream.Stream? = nil
+    ) {
+      self.stream = stream
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case stream
+    }
+
+    public enum Stream: Codable, Sendable {
+      case booleanTrue
+
+      public init(from decoder: any Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if let value = try? container.decode(Bool.self) {
+          switch value {
+          case true:
+            self = .booleanTrue
+            return
+          default:
+            break
+          }
+        }
+        throw DecodingError.dataCorruptedError(
+          in: container,
+          debugDescription:
+            "Expected a documented MistralConversationRestartStreamRequest.WithStream.Stream value."
+        )
+      }
+
+      public func encode(to encoder: any Encoder) throws {
+        var container = encoder.singleValueContainer()
+        switch self {
+        case .booleanTrue:
+          try container.encode(true)
+        }
+      }
+    }
+  }
 }

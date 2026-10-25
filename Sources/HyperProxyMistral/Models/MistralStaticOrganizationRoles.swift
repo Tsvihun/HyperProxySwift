@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public enum MistralStaticOrganizationRoles: String, Codable, Hashable, Sendable {
-  case value0d48f530095c43fe8aea6673bcacabe6 = "0d48f530-095c-43fe-8aea-6673bcacabe6"
-  case c955f4e1947743f083496fbc629fccc9 = "c955f4e1-9477-43f0-8349-6fbc629fccc9"
-  case value7bde5959D67647d2B77935b64323d278 = "7bde5959-d676-47d2-b779-35b64323d278"
+  case value0d48f530_095c43fe8aea6673bcacabe6 = "0d48f530-095c-43fe-8aea-6673bcacabe6"
+  case c955f4e1_9477_43f0_8349_6fbc629fccc9 = "c955f4e1-9477-43f0-8349-6fbc629fccc9"
+  case value7bde5959D676_47d2B779_35b64323d278 = "7bde5959-d676-47d2-b779-35b64323d278"
 }

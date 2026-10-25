@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksGatewayMultiRegion: String, Codable, Hashable, Sendable {
-  case mULTIREGIONUNSPECIFIED = "MULTI_REGION_UNSPECIFIED"
-  case gLOBAL = "GLOBAL"
-  case uS = "US"
-  case cANADA = "CANADA"
-  case eUROPE = "EUROPE"
-  case aPAC = "APAC"
+  case multiRegionUnspecified = "MULTI_REGION_UNSPECIFIED"
+  case global = "GLOBAL"
+  case us = "US"
+  case canada = "CANADA"
+  case europe = "EUROPE"
+  case apac = "APAC"
 }

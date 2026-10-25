@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsGemini31FlashLiteImageRequest: Codable, Sendable {
-  public var aspectRatio: ElevenLabsGemini31FlashLiteImageRequestAspectRatio?
+  public var aspectRatio: ElevenLabsGemini31FlashLiteImageRequest.AspectRatio?
   public var images: [ElevenLabsImageReference]?
-  public var modelId: ElevenLabsGemini31FlashLiteImageModelId
+  public var modelId: ElevenLabsGemini31FlashLiteImageRequest.ModelId
   public var prompt: String
-  public var resolution: ElevenLabsModel1KResolution?
+  public var resolution: ElevenLabsGemini31FlashLiteImageRequest.Resolution?
   public var webhook: ElevenLabsWebhookTarget?
 
   public init(
     prompt: String,
-    modelId: ElevenLabsGemini31FlashLiteImageModelId = .gemini31FlashLiteImage,
-    aspectRatio: ElevenLabsGemini31FlashLiteImageRequestAspectRatio? = nil,
+    modelId: ElevenLabsGemini31FlashLiteImageRequest.ModelId = .gemini3_1FlashLiteImage,
+    aspectRatio: ElevenLabsGemini31FlashLiteImageRequest.AspectRatio? = nil,
     images: [ElevenLabsImageReference]? = nil,
-    resolution: ElevenLabsModel1KResolution? = nil,
+    resolution: ElevenLabsGemini31FlashLiteImageRequest.Resolution? = nil,
     webhook: ElevenLabsWebhookTarget? = nil
   ) {
     self.aspectRatio = aspectRatio
@@ -41,5 +41,27 @@ public struct ElevenLabsGemini31FlashLiteImageRequest: Codable, Sendable {
     case prompt
     case resolution
     case webhook
+  }
+
+  public enum ModelId: String, Codable, Hashable, Sendable {
+    case gemini3_1FlashLiteImage = "gemini-3.1-flash-lite-image"
+  }
+
+  public enum AspectRatio: String, Codable, Hashable, Sendable {
+    case auto = "auto"
+    case ratio1x1 = "1:1"
+    case ratio2x3 = "2:3"
+    case ratio3x2 = "3:2"
+    case ratio3x4 = "3:4"
+    case ratio4x3 = "4:3"
+    case ratio4x5 = "4:5"
+    case ratio5x4 = "5:4"
+    case ratio9x16 = "9:16"
+    case ratio16x9 = "16:9"
+    case ratio21x9 = "21:9"
+  }
+
+  public enum Resolution: String, Codable, Hashable, Sendable {
+    case value1k = "1K"
   }
 }

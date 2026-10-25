@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksGatewayReservationState: String, Codable, Hashable, Sendable {
-  case sTATEUNSPECIFIED = "STATE_UNSPECIFIED"
-  case aCTIVE = "ACTIVE"
-  case eXPIRED = "EXPIRED"
-  case dELETING = "DELETING"
-  case dELETED = "DELETED"
-  case uPDATING = "UPDATING"
+  case stateUnspecified = "STATE_UNSPECIFIED"
+  case active = "ACTIVE"
+  case expired = "EXPIRED"
+  case deleting = "DELETING"
+  case deleted = "DELETED"
+  case updating = "UPDATING"
 }

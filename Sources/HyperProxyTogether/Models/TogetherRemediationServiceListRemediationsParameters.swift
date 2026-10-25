@@ -13,22 +13,22 @@ import HyperProxyCore
 public struct TogetherRemediationServiceListRemediationsParameters: Codable, Sendable {
   public var clusterId: String
   public var instanceId: String
-  public var mode: [TogetherRemediationServiceListRemediationsParametersModeItem]?
+  public var mode: [TogetherRemediationServiceListRemediationsParameters.ModeElement]?
   public var orderBy: String?
   public var pageSize: Int?
   public var pageToken: String?
-  public var state: [TogetherRemediationServiceListRemediationsParametersStateItem]?
-  public var trigger: [TogetherRemediationServiceListRemediationsParametersTriggerItem]?
+  public var state: [TogetherRemediationServiceListRemediationsParameters.StateElement]?
+  public var trigger: [TogetherRemediationServiceListRemediationsParameters.TriggerElement]?
 
   public init(
     clusterId: String,
     instanceId: String,
-    mode: [TogetherRemediationServiceListRemediationsParametersModeItem]? = nil,
+    mode: [TogetherRemediationServiceListRemediationsParameters.ModeElement]? = nil,
     orderBy: String? = nil,
     pageSize: Int? = nil,
     pageToken: String? = nil,
-    state: [TogetherRemediationServiceListRemediationsParametersStateItem]? = nil,
-    trigger: [TogetherRemediationServiceListRemediationsParametersTriggerItem]? = nil
+    state: [TogetherRemediationServiceListRemediationsParameters.StateElement]? = nil,
+    trigger: [TogetherRemediationServiceListRemediationsParameters.TriggerElement]? = nil
   ) {
     self.clusterId = clusterId
     self.instanceId = instanceId
@@ -49,5 +49,36 @@ public struct TogetherRemediationServiceListRemediationsParameters: Codable, Sen
     case pageToken = "page_token"
     case state
     case trigger
+  }
+
+  public enum ModeElement: String, Codable, Hashable,
+    Sendable
+  {
+    case remediationModeVmOnly = "REMEDIATION_MODE_VM_ONLY"
+    case remediationModeHostAware = "REMEDIATION_MODE_HOST_AWARE"
+    case remediationModeEvictWithoutReplacement = "REMEDIATION_MODE_EVICT_WITHOUT_REPLACEMENT"
+    case remediationModeRebootVm = "REMEDIATION_MODE_REBOOT_VM"
+    case remediationModeHostPowerCycle = "REMEDIATION_MODE_HOST_POWER_CYCLE"
+  }
+
+  public enum StateElement: String, Codable,
+    Hashable, Sendable
+  {
+    case pendingApproval = "PENDING_APPROVAL"
+    case pending = "PENDING"
+    case running = "RUNNING"
+    case succeeded = "SUCCEEDED"
+    case failed = "FAILED"
+    case cancelled = "CANCELLED"
+    case autoResolved = "AUTO_RESOLVED"
+    case quarantining = "QUARANTINING"
+    case quarantined = "QUARANTINED"
+  }
+
+  public enum TriggerElement: String, Codable,
+    Hashable, Sendable
+  {
+    case remediationTriggerManual = "REMEDIATION_TRIGGER_MANUAL"
+    case remediationTriggerAutomated = "REMEDIATION_TRIGGER_AUTOMATED"
   }
 }

@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIMessageContentImageUrlObject: Codable, Sendable {
-  public var imageUrl: OpenAIMessageContentImageUrlObjectImageUrl
-  public var kind: OpenAIMessageContentImageUrlObjectKind
+  public var imageUrl: OpenAIMessageContentImageUrlObject.ImageUrl
+  public var kind: OpenAIMessageContentImageUrlObject.Kind
 
   public init(
-    imageUrl: OpenAIMessageContentImageUrlObjectImageUrl,
-    kind: OpenAIMessageContentImageUrlObjectKind
+    imageUrl: OpenAIMessageContentImageUrlObject.ImageUrl,
+    kind: OpenAIMessageContentImageUrlObject.Kind
   ) {
     self.imageUrl = imageUrl
     self.kind = kind
@@ -25,5 +25,33 @@ public struct OpenAIMessageContentImageUrlObject: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case imageUrl = "image_url"
     case kind = "type"
+  }
+
+  public struct ImageUrl: Codable, Sendable {
+    public var detail: OpenAIMessageContentImageUrlObject.ImageUrl.Detail?
+    public var url: String
+
+    public init(
+      url: String,
+      detail: OpenAIMessageContentImageUrlObject.ImageUrl.Detail? = nil
+    ) {
+      self.detail = detail
+      self.url = url
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case detail
+      case url
+    }
+
+    public enum Detail: String, Codable, Hashable, Sendable {
+      case auto = "auto"
+      case low = "low"
+      case high = "high"
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case imageUrl = "image_url"
   }
 }

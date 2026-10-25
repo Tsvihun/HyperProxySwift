@@ -46,4 +46,9 @@ public enum OpenAIBetaReasoningModeEnum: RawRepresentable, Codable, Hashable, Se
     var container = encoder.singleValueContainer()
     try container.encode(rawValue)
   }
+
+  public enum Preset: String, Codable, Hashable, Sendable {
+    case standard = "standard"
+    case pro = "pro"
+  }
 }

@@ -16,7 +16,7 @@ public struct MistralJobsApiRoutesBatchGetBatchJobsParameters: Codable, Sendable
   public var createdByMe: Bool?
   public var metadata: [String: HyperProxyJSONValue]?
   public var model: String?
-  public var orderBy: MistralJobsApiRoutesBatchGetBatchJobsParametersOrderBy?
+  public var orderBy: MistralJobsApiRoutesBatchGetBatchJobsParameters.OrderBy?
   public var page: Int?
   public var pageSize: Int?
   public var status: [MistralBatchJobStatus]?
@@ -27,7 +27,7 @@ public struct MistralJobsApiRoutesBatchGetBatchJobsParameters: Codable, Sendable
     createdByMe: Bool? = nil,
     metadata: [String: HyperProxyJSONValue]? = nil,
     model: String? = nil,
-    orderBy: MistralJobsApiRoutesBatchGetBatchJobsParametersOrderBy? = nil,
+    orderBy: MistralJobsApiRoutesBatchGetBatchJobsParameters.OrderBy? = nil,
     page: Int? = nil,
     pageSize: Int? = nil,
     status: [MistralBatchJobStatus]? = nil
@@ -53,5 +53,12 @@ public struct MistralJobsApiRoutesBatchGetBatchJobsParameters: Codable, Sendable
     case page
     case pageSize = "page_size"
     case status
+  }
+
+  public enum OrderBy: String, Codable, Hashable,
+    Sendable
+  {
+    case created = "created"
+    case created4b398c38 = "-created"
   }
 }

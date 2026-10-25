@@ -14,7 +14,7 @@ public struct ElevenLabsTransferToNumberResultExotelSuccessModel: Codable, Senda
   public var agentMessage: String?
   public var note: String?
   public var reason: String?
-  public var resultType: ElevenLabsTransferToNumberExotelSuccessResultType?
+  public var resultType: ElevenLabsTransferToNumberResultExotelSuccessModel.ResultType?
   public var status: ElevenLabsSuccessStatus?
   public var transferNumber: String
 
@@ -23,7 +23,7 @@ public struct ElevenLabsTransferToNumberResultExotelSuccessModel: Codable, Senda
     agentMessage: String? = nil,
     note: String? = nil,
     reason: String? = nil,
-    resultType: ElevenLabsTransferToNumberExotelSuccessResultType? = nil,
+    resultType: ElevenLabsTransferToNumberResultExotelSuccessModel.ResultType? = nil,
     status: ElevenLabsSuccessStatus? = nil
   ) {
     self.agentMessage = agentMessage
@@ -41,5 +41,9 @@ public struct ElevenLabsTransferToNumberResultExotelSuccessModel: Codable, Senda
     case resultType = "result_type"
     case status
     case transferNumber = "transfer_number"
+  }
+
+  public enum ResultType: String, Codable, Hashable, Sendable {
+    case transferToNumberExotelSuccess = "transfer_to_number_exotel_success"
   }
 }

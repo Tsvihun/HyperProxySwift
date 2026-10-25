@@ -19,7 +19,7 @@ public struct AnthropicBetaManagedAgentsMemory: Codable, Sendable {
   public var memoryStoreId: String
   public var memoryVersionId: String
   public var path: String
-  public var kind: AnthropicBetaManagedAgentsMemoryKind
+  public var kind: AnthropicBetaManagedAgentsMemory.Kind
   public var updatedAt: AnthropicBetaTimestamp
 
   public init(
@@ -30,7 +30,7 @@ public struct AnthropicBetaManagedAgentsMemory: Codable, Sendable {
     memoryStoreId: String,
     memoryVersionId: String,
     path: String,
-    kind: AnthropicBetaManagedAgentsMemoryKind,
+    kind: AnthropicBetaManagedAgentsMemory.Kind,
     updatedAt: AnthropicBetaTimestamp,
     content: String? = nil
   ) {
@@ -57,5 +57,9 @@ public struct AnthropicBetaManagedAgentsMemory: Codable, Sendable {
     case path
     case kind = "type"
     case updatedAt = "updated_at"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case memory = "memory"
   }
 }

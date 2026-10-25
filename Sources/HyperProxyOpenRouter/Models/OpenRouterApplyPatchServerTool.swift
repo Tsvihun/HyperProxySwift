@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterApplyPatchServerTool: Codable, Sendable {
-  public var kind: OpenRouterApplyPatchServerToolKind
+  public var kind: OpenRouterApplyPatchServerTool.Kind
 
   public init(
-    kind: OpenRouterApplyPatchServerToolKind
+    kind: OpenRouterApplyPatchServerTool.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case applyPatch = "apply_patch"
   }
 }

@@ -15,11 +15,11 @@ public struct OpenRouterReasoningDetailEncrypted: Codable, Sendable {
   public var format: OpenRouterReasoningFormat?
   public var id: String?
   public var index: Int?
-  public var kind: OpenRouterReasoningDetailEncryptedKind
+  public var kind: OpenRouterReasoningDetailEncrypted.Kind
 
   public init(
     data: String,
-    kind: OpenRouterReasoningDetailEncryptedKind,
+    kind: OpenRouterReasoningDetailEncrypted.Kind,
     format: OpenRouterReasoningFormat? = nil,
     id: String? = nil,
     index: Int? = nil
@@ -37,5 +37,9 @@ public struct OpenRouterReasoningDetailEncrypted: Codable, Sendable {
     case id
     case index
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case reasoningEncrypted = "reasoning.encrypted"
   }
 }

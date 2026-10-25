@@ -11,6 +11,6 @@ import Foundation
 import HyperProxyCore
 
 public enum TogetherVideoOutputFormat: String, Codable, Hashable, Sendable {
-  case mP4 = "MP4"
-  case wEBM = "WEBM"
+  case mp4 = "MP4"
+  case webm = "WEBM"
 }

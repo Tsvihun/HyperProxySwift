@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIBetaFilePath: Codable, Sendable {
   public var fileId: String
   public var index: Int
-  public var kind: OpenAIBetaFilePathKind
+  public var kind: OpenAIBetaFilePath.Kind
 
   public init(
     fileId: String,
     index: Int,
-    kind: OpenAIBetaFilePathKind
+    kind: OpenAIBetaFilePath.Kind
   ) {
     self.fileId = fileId
     self.index = index
@@ -29,5 +29,9 @@ public struct OpenAIBetaFilePath: Codable, Sendable {
     case fileId = "file_id"
     case index
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case filePath = "file_path"
   }
 }

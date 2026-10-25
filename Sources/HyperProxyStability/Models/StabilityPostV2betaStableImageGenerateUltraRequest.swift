@@ -14,7 +14,7 @@ public struct StabilityPostV2betaStableImageGenerateUltraRequest: Codable, Senda
   public var aspectRatio: StabilityAspectRatio?
   public var image: String?
   public var negativePrompt: String?
-  public var outputFormat: StabilityPostV2betaStableImageGenerateUltraRequestOutputFormat?
+  public var outputFormat: StabilityPostV2betaStableImageGenerateUltraRequest.OutputFormat?
   public var prompt: String
   public var seed: Double?
   public var strength: Double?
@@ -25,7 +25,7 @@ public struct StabilityPostV2betaStableImageGenerateUltraRequest: Codable, Senda
     aspectRatio: StabilityAspectRatio? = nil,
     image: String? = nil,
     negativePrompt: String? = nil,
-    outputFormat: StabilityPostV2betaStableImageGenerateUltraRequestOutputFormat? = nil,
+    outputFormat: StabilityPostV2betaStableImageGenerateUltraRequest.OutputFormat? = nil,
     seed: Double? = nil,
     strength: Double? = nil,
     stylePreset: StabilityStylePreset? = nil
@@ -49,5 +49,13 @@ public struct StabilityPostV2betaStableImageGenerateUltraRequest: Codable, Senda
     case seed
     case strength
     case stylePreset = "style_preset"
+  }
+
+  public enum OutputFormat: String, Codable,
+    Hashable, Sendable
+  {
+    case jpeg = "jpeg"
+    case png = "png"
+    case webp = "webp"
   }
 }

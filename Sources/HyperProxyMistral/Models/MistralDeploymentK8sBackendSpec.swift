@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct MistralDeploymentK8sBackendSpec: Codable, Sendable {
   public var entrypoint: String?
-  public var kind: MistralKubernetesKind?
+  public var kind: MistralDeploymentK8sBackendSpec.Kind?
   public var workingDir: String?
 
   public init(
     entrypoint: String? = nil,
-    kind: MistralKubernetesKind? = nil,
+    kind: MistralDeploymentK8sBackendSpec.Kind? = nil,
     workingDir: String? = nil
   ) {
     self.entrypoint = entrypoint
@@ -29,5 +29,9 @@ public struct MistralDeploymentK8sBackendSpec: Codable, Sendable {
     case entrypoint
     case kind = "type"
     case workingDir = "working_dir"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case kubernetes = "kubernetes"
   }
 }

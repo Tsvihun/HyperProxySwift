@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public enum OpenRouterBaseResponsesResultToolsItem: Codable, Sendable {
-  case baseResponsesResultToolsItemOneOf1(OpenRouterBaseResponsesResultToolsItemOneOf1)
+  case variant(OpenRouterBaseResponsesResultToolsItem.Variant)
   case previewWebSearchServerTool(OpenRouterPreviewWebSearchServerTool)
   case preview20250311WebSearchServerTool(OpenRouterPreview20250311WebSearchServerTool)
   case legacyWebSearchServerTool(OpenRouterLegacyWebSearchServerTool)
@@ -29,8 +29,8 @@ public enum OpenRouterBaseResponsesResultToolsItem: Codable, Sendable {
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
-    if let value = try? container.decode(OpenRouterBaseResponsesResultToolsItemOneOf1.self) {
-      self = .baseResponsesResultToolsItemOneOf1(value)
+    if let value = try? container.decode(OpenRouterBaseResponsesResultToolsItem.Variant.self) {
+      self = .variant(value)
       return
     }
     if let value = try? container.decode(OpenRouterPreviewWebSearchServerTool.self) {
@@ -91,7 +91,7 @@ public enum OpenRouterBaseResponsesResultToolsItem: Codable, Sendable {
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .baseResponsesResultToolsItemOneOf1(let value):
+    case .variant(let value):
       try container.encode(value)
     case .previewWebSearchServerTool(let value):
       try container.encode(value)
@@ -121,6 +121,78 @@ public enum OpenRouterBaseResponsesResultToolsItem: Codable, Sendable {
       try container.encode(value)
     case .namespaceTool(let value):
       try container.encode(value)
+    }
+  }
+
+  public struct Variant: Codable, Sendable {
+    public var allowedCallers: [OpenRouterBaseResponsesResultToolsItemAllowedCallersItem]?
+    public var async: Bool?
+    public var deferLoading: Bool?
+    public var description: String?
+    public var name: String
+    public var outputSchema: [String: HyperProxyJSONValue]?
+    public var parameters: [String: HyperProxyJSONValue]
+    public var strict: Bool?
+    public var kind: OpenRouterFunctionToolKind
+
+    public init(
+      name: String,
+      parameters: [String: HyperProxyJSONValue],
+      kind: OpenRouterFunctionToolKind,
+      allowedCallers: [OpenRouterBaseResponsesResultToolsItemAllowedCallersItem]? = nil,
+      async: Bool? = nil,
+      deferLoading: Bool? = nil,
+      description: String? = nil,
+      outputSchema: [String: HyperProxyJSONValue]? = nil,
+      strict: Bool? = nil
+    ) {
+      self.allowedCallers = allowedCallers
+      self.async = async
+      self.deferLoading = deferLoading
+      self.description = description
+      self.name = name
+      self.outputSchema = outputSchema
+      self.parameters = parameters
+      self.strict = strict
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case allowedCallers = "allowed_callers"
+      case async
+      case deferLoading = "defer_loading"
+      case description
+      case name
+      case outputSchema = "output_schema"
+      case parameters
+      case strict
+      case kind = "type"
+    }
+
+    public struct WithAllowedCallersAndAsyncAndDeferLoading: Codable, Sendable {
+      public var allowedCallers: [OpenRouterBaseResponsesResultToolsItemAllowedCallersItem]?
+      public var async: Bool?
+      public var deferLoading: Bool?
+      public var outputSchema: [String: HyperProxyJSONValue]?
+
+      public init(
+        allowedCallers: [OpenRouterBaseResponsesResultToolsItemAllowedCallersItem]? = nil,
+        async: Bool? = nil,
+        deferLoading: Bool? = nil,
+        outputSchema: [String: HyperProxyJSONValue]? = nil
+      ) {
+        self.allowedCallers = allowedCallers
+        self.async = async
+        self.deferLoading = deferLoading
+        self.outputSchema = outputSchema
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case allowedCallers = "allowed_callers"
+        case async
+        case deferLoading = "defer_loading"
+        case outputSchema = "output_schema"
+      }
     }
   }
 }

@@ -15,14 +15,14 @@ public struct MistralLongFieldDefinition: Codable, Sendable {
   public var indexed: Bool?
   public var requiredValue: Bool?
   public var system: Bool?
-  public var kind: MistralLongKind3207a6b5?
+  public var kind: MistralLongFieldDefinition.Kind?
 
   public init(
     defaultValue: HyperProxyJSONValue? = nil,
     indexed: Bool? = nil,
     requiredValue: Bool? = nil,
     system: Bool? = nil,
-    kind: MistralLongKind3207a6b5? = nil
+    kind: MistralLongFieldDefinition.Kind? = nil
   ) {
     self.defaultValue = defaultValue
     self.indexed = indexed
@@ -37,5 +37,9 @@ public struct MistralLongFieldDefinition: Codable, Sendable {
     case requiredValue = "required"
     case system
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case long = "long"
   }
 }

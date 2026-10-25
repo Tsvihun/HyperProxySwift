@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherToolsPart: Codable, Sendable {
-  public var function: TogetherToolsPartFunction?
+  public var function: TogetherToolsPart.Function?
   public var kind: String?
 
   public init(
-    function: TogetherToolsPartFunction? = nil,
+    function: TogetherToolsPart.Function? = nil,
     kind: String? = nil
   ) {
     self.function = function
@@ -25,5 +25,27 @@ public struct TogetherToolsPart: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case function
     case kind = "type"
+  }
+
+  public struct Function: Codable, Sendable {
+    public var description: String?
+    public var name: String?
+    public var parameters: [String: HyperProxyJSONValue]?
+
+    public init(
+      description: String? = nil,
+      name: String? = nil,
+      parameters: [String: HyperProxyJSONValue]? = nil
+    ) {
+      self.description = description
+      self.name = name
+      self.parameters = parameters
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case description
+      case name
+      case parameters
+    }
   }
 }

@@ -11,15 +11,51 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherRLWeightsSyncResult: Codable, Sendable {
-  public var weightsVersion: TogetherRLWeightsSyncResultWeightsVersion
+  public var weightsVersion: TogetherRLWeightsSyncResult.WeightsVersion
 
   public init(
-    weightsVersion: TogetherRLWeightsSyncResultWeightsVersion
+    weightsVersion: TogetherRLWeightsSyncResult.WeightsVersion
   ) {
     self.weightsVersion = weightsVersion
   }
 
   enum CodingKeys: String, CodingKey {
     case weightsVersion = "weights_version"
+  }
+
+  public enum WeightsVersion: Codable, Sendable {
+    case integer(Int)
+    case string(String)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Int.self) {
+        self = .integer(value)
+        return
+      }
+      self = .string(try container.decode(String.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .integer(let value):
+        try container.encode(value)
+      case .string(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension TogetherRLWeightsSyncResult.WeightsVersion: ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Int) {
+    self = .integer(value)
+  }
+}
+
+extension TogetherRLWeightsSyncResult.WeightsVersion: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

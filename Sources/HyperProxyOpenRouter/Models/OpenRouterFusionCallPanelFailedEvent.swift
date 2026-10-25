@@ -17,7 +17,7 @@ public struct OpenRouterFusionCallPanelFailedEvent: Codable, Sendable {
   public var outputIndex: Int
   public var sequenceNumber: Int
   public var statusCode: Int?
-  public var kind: OpenRouterFusionCallPanelFailedEventKind
+  public var kind: OpenRouterFusionCallPanelFailedEvent.Kind
 
   public init(
     error: String,
@@ -25,7 +25,7 @@ public struct OpenRouterFusionCallPanelFailedEvent: Codable, Sendable {
     model: String,
     outputIndex: Int,
     sequenceNumber: Int,
-    kind: OpenRouterFusionCallPanelFailedEventKind,
+    kind: OpenRouterFusionCallPanelFailedEvent.Kind,
     statusCode: Int? = nil
   ) {
     self.error = error
@@ -45,5 +45,9 @@ public struct OpenRouterFusionCallPanelFailedEvent: Codable, Sendable {
     case sequenceNumber = "sequence_number"
     case statusCode = "status_code"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case responseFusionCallPanelFailed = "response.fusion_call.panel.failed"
   }
 }

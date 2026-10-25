@@ -15,7 +15,6 @@ public struct TogetherGPUClusterCreateRequestLegacyNvidia: Codable, Sendable {
   public var addOns: [TogetherAddOnCreateRequest]?
   public var autoScale: Bool?
   public var autoScaleMaxGpus: Int?
-  public var autoScaled: Bool?
   public var billingType: TogetherGPUClusterCreateRequestCommonBillingType
   public var capacityPoolId: String?
   public var clusterConfig: TogetherInstanceClusterConfig?
@@ -53,7 +52,6 @@ public struct TogetherGPUClusterCreateRequestLegacyNvidia: Codable, Sendable {
     addOns: [TogetherAddOnCreateRequest]? = nil,
     autoScale: Bool? = nil,
     autoScaleMaxGpus: Int? = nil,
-    autoScaled: Bool? = nil,
     capacityPoolId: String? = nil,
     clusterConfig: TogetherInstanceClusterConfig? = nil,
     clusterType: TogetherGPUClusterCreateRequestCommonClusterType? = nil,
@@ -76,7 +74,6 @@ public struct TogetherGPUClusterCreateRequestLegacyNvidia: Codable, Sendable {
     self.addOns = addOns
     self.autoScale = autoScale
     self.autoScaleMaxGpus = autoScaleMaxGpus
-    self.autoScaled = autoScaled
     self.billingType = billingType
     self.capacityPoolId = capacityPoolId
     self.clusterConfig = clusterConfig
@@ -108,7 +105,6 @@ public struct TogetherGPUClusterCreateRequestLegacyNvidia: Codable, Sendable {
     case addOns = "add_ons"
     case autoScale = "auto_scale"
     case autoScaleMaxGpus = "auto_scale_max_gpus"
-    case autoScaled = "auto_scaled"
     case billingType = "billing_type"
     case capacityPoolId = "capacity_pool_id"
     case clusterConfig = "cluster_config"

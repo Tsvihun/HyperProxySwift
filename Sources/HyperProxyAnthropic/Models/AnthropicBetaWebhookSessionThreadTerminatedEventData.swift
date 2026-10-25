@@ -14,7 +14,7 @@ public struct AnthropicBetaWebhookSessionThreadTerminatedEventData: Codable, Sen
   public var id: String
   public var organizationId: String
   public var sessionThreadId: String
-  public var kind: AnthropicSessionThreadTerminatedKind
+  public var kind: AnthropicBetaWebhookSessionThreadTerminatedEventData.Kind
   public var workspaceId: String
 
   public init(
@@ -22,7 +22,7 @@ public struct AnthropicBetaWebhookSessionThreadTerminatedEventData: Codable, Sen
     organizationId: String,
     sessionThreadId: String,
     workspaceId: String,
-    kind: AnthropicSessionThreadTerminatedKind = .sessionThreadTerminated
+    kind: AnthropicBetaWebhookSessionThreadTerminatedEventData.Kind = .sessionThreadTerminated
   ) {
     self.id = id
     self.organizationId = organizationId
@@ -37,5 +37,9 @@ public struct AnthropicBetaWebhookSessionThreadTerminatedEventData: Codable, Sen
     case sessionThreadId = "session_thread_id"
     case kind = "type"
     case workspaceId = "workspace_id"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case sessionThreadTerminated = "session.thread_terminated"
   }
 }

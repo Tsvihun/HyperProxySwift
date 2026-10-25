@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct TogetherRerankResponse: Codable, Sendable {
   public var id: String?
   public var model: String
-  public var object: TogetherRerankObject
-  public var results: [TogetherRerankResponseResultsItem]
+  public var object: TogetherRerankResponse.Object
+  public var results: [TogetherRerankResponse.ResultsElement]
   public var usage: TogetherUsageData?
 
   public init(
     model: String,
-    results: [TogetherRerankResponseResultsItem],
-    object: TogetherRerankObject = .rerank,
+    results: [TogetherRerankResponse.ResultsElement],
+    object: TogetherRerankResponse.Object = .rerank,
     id: String? = nil,
     usage: TogetherUsageData? = nil
   ) {
@@ -37,5 +37,45 @@ public struct TogetherRerankResponse: Codable, Sendable {
     case object
     case results
     case usage
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case rerank = "rerank"
+  }
+
+  public struct ResultsElement: Codable, Sendable {
+    public var document: TogetherRerankResponse.ResultsElement.Document
+    public var index: Int
+    public var relevanceScore: Double
+
+    public init(
+      document: TogetherRerankResponse.ResultsElement.Document,
+      index: Int,
+      relevanceScore: Double
+    ) {
+      self.document = document
+      self.index = index
+      self.relevanceScore = relevanceScore
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case document
+      case index
+      case relevanceScore = "relevance_score"
+    }
+
+    public struct Document: Codable, Sendable {
+      public var text: String?
+
+      public init(
+        text: String? = nil
+      ) {
+        self.text = text
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case text
+      }
+    }
   }
 }

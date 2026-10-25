@@ -17,12 +17,12 @@ public struct OpenRouterCreateAudioTranscriptionsRequestMultipart: Codable, Send
   public var language: String?
   public var model: String
   public var provider: String?
-  public var responseFormat: OpenRouterCreateAudioTranscriptionsRequestMultipartResponseFormat?
+  public var responseFormat: OpenRouterCreateAudioTranscriptionsRequestMultipart.ResponseFormat?
   public var sessionId: String?
   public var sourceUrl: String?
   public var temperature: Double?
   public var timestampGranularities:
-    [OpenRouterCreateAudioTranscriptionsRequestMultipartTimestampGranularitiesItem]?
+    [OpenRouterCreateAudioTranscriptionsRequestMultipart.TimestampGranularitiesElement]?
   public var trace: String?
   public var user: String?
 
@@ -33,12 +33,12 @@ public struct OpenRouterCreateAudioTranscriptionsRequestMultipart: Codable, Send
     keyterms: [String]? = nil,
     language: String? = nil,
     provider: String? = nil,
-    responseFormat: OpenRouterCreateAudioTranscriptionsRequestMultipartResponseFormat? = nil,
+    responseFormat: OpenRouterCreateAudioTranscriptionsRequestMultipart.ResponseFormat? = nil,
     sessionId: String? = nil,
     sourceUrl: String? = nil,
     temperature: Double? = nil,
     timestampGranularities:
-      [OpenRouterCreateAudioTranscriptionsRequestMultipartTimestampGranularitiesItem]? = nil,
+      [OpenRouterCreateAudioTranscriptionsRequestMultipart.TimestampGranularitiesElement]? = nil,
     trace: String? = nil,
     user: String? = nil
   ) {
@@ -71,5 +71,19 @@ public struct OpenRouterCreateAudioTranscriptionsRequestMultipart: Codable, Send
     case timestampGranularities = "timestamp_granularities[]"
     case trace
     case user
+  }
+
+  public enum ResponseFormat: String, Codable,
+    Hashable, Sendable
+  {
+    case json = "json"
+    case verboseJson = "verbose_json"
+  }
+
+  public enum TimestampGranularitiesElement: String,
+    Codable, Hashable, Sendable
+  {
+    case word = "word"
+    case segment = "segment"
   }
 }

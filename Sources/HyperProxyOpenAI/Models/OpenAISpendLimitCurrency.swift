@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public enum OpenAISpendLimitCurrency: RawRepresentable, Codable, Hashable, Sendable {
-  case uSD
+  case usd
   case custom(String)
 
   public init(rawValue: String) {
     switch rawValue {
     case "USD":
-      self = .uSD
+      self = .usd
     default:
       self = .custom(rawValue)
     }
@@ -25,7 +25,7 @@ public enum OpenAISpendLimitCurrency: RawRepresentable, Codable, Hashable, Senda
 
   public var rawValue: String {
     switch self {
-    case .uSD:
+    case .usd:
       return "USD"
     case .custom(let value):
       return value
@@ -40,5 +40,9 @@ public enum OpenAISpendLimitCurrency: RawRepresentable, Codable, Hashable, Senda
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     try container.encode(rawValue)
+  }
+
+  public enum Usd: String, Codable, Hashable, Sendable {
+    case usd = "USD"
   }
 }

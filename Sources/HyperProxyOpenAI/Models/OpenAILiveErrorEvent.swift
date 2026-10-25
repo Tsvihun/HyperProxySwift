@@ -14,12 +14,12 @@ public struct OpenAILiveErrorEvent: Codable, Sendable {
   public var clientEventId: String?
   public var error: OpenAILiveLiveError
   public var eventId: String
-  public var kind: OpenAILiveErrorEventKind
+  public var kind: OpenAILiveErrorEvent.Kind
 
   public init(
     error: OpenAILiveLiveError,
     eventId: String,
-    kind: OpenAILiveErrorEventKind,
+    kind: OpenAILiveErrorEvent.Kind,
     clientEventId: String? = nil
   ) {
     self.clientEventId = clientEventId
@@ -33,5 +33,9 @@ public struct OpenAILiveErrorEvent: Codable, Sendable {
     case error
     case eventId = "event_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case error = "error"
   }
 }

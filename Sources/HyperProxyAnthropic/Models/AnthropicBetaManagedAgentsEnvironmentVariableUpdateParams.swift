@@ -14,10 +14,10 @@ public struct AnthropicBetaManagedAgentsEnvironmentVariableUpdateParams: Codable
   public var injectionLocation: AnthropicBetaManagedAgentsInjectionLocationUpdateParams?
   public var networking: AnthropicBetaManagedAgentsCredentialNetworkingParams?
   public var secretValue: String?
-  public var kind: AnthropicBetaManagedAgentsEnvironmentVariableUpdateParamsKind
+  public var kind: AnthropicBetaManagedAgentsEnvironmentVariableUpdateParams.Kind
 
   public init(
-    kind: AnthropicBetaManagedAgentsEnvironmentVariableUpdateParamsKind,
+    kind: AnthropicBetaManagedAgentsEnvironmentVariableUpdateParams.Kind,
     injectionLocation: AnthropicBetaManagedAgentsInjectionLocationUpdateParams? = nil,
     networking: AnthropicBetaManagedAgentsCredentialNetworkingParams? = nil,
     secretValue: String? = nil
@@ -33,5 +33,11 @@ public struct AnthropicBetaManagedAgentsEnvironmentVariableUpdateParams: Codable
     case networking
     case secretValue = "secret_value"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case environmentVariable = "environment_variable"
   }
 }

@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterAnthropicToolUsesKeep: Codable, Sendable {
-  public var kind: OpenRouterAnthropicToolUsesKeepKind
+  public var kind: OpenRouterAnthropicToolUsesKeep.Kind
   public var value: Int
 
   public init(
-    kind: OpenRouterAnthropicToolUsesKeepKind,
+    kind: OpenRouterAnthropicToolUsesKeep.Kind,
     value: Int
   ) {
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenRouterAnthropicToolUsesKeep: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case kind = "type"
     case value
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case toolUses = "tool_uses"
   }
 }

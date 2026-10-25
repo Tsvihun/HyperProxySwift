@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIRotateVaultCredentialAuthParamStaticBearer: Codable, Sendable {
   public var token: String
-  public var kind: OpenAIRotateVaultCredentialAuthParamStaticBearerKind
+  public var kind: OpenAIRotateVaultCredentialAuthParamStaticBearer.Kind
 
   public init(
     token: String,
-    kind: OpenAIRotateVaultCredentialAuthParamStaticBearerKind
+    kind: OpenAIRotateVaultCredentialAuthParamStaticBearer.Kind
   ) {
     self.token = token
     self.kind = kind
@@ -25,5 +25,11 @@ public struct OpenAIRotateVaultCredentialAuthParamStaticBearer: Codable, Sendabl
   enum CodingKeys: String, CodingKey {
     case token
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case staticBearer = "static_bearer"
   }
 }

@@ -20,13 +20,13 @@ public struct AnthropicBetaComputerUseTool20241022: Codable, Sendable {
   public var inputExamples: [[String: AnthropicBetaJsonValue]]?
   public var name: AnthropicComputerName
   public var strict: Bool?
-  public var kind: AnthropicComputer20241022Kind
+  public var kind: AnthropicBetaComputerUseTool20241022.Kind
 
   public init(
     displayHeightPx: Int,
     displayWidthPx: Int,
     name: AnthropicComputerName = .computer,
-    kind: AnthropicComputer20241022Kind = .computer20241022,
+    kind: AnthropicBetaComputerUseTool20241022.Kind = .computer20241022,
     allowedCallers: [AnthropicBetaAllowedCaller]? = nil,
     cacheControl: AnthropicBetaCacheControlEphemeral? = nil,
     deferLoading: Bool? = nil,
@@ -57,5 +57,9 @@ public struct AnthropicBetaComputerUseTool20241022: Codable, Sendable {
     case name
     case strict
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case computer20241022 = "computer_20241022"
   }
 }

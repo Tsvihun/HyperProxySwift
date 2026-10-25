@@ -14,16 +14,16 @@ public struct OpenAIVoiceResource: Codable, Sendable {
   public var createdAt: Int
   public var id: String
   public var name: String
-  public var object: OpenAIVoiceResourceObject
+  public var object: OpenAIVoiceResource.Object
   public var prompt: String?
-  public var kind: OpenAIVoiceResourceKind
+  public var kind: OpenAIVoiceResource.Kind
 
   public init(
     createdAt: Int,
     id: String,
     name: String,
-    object: OpenAIVoiceResourceObject,
-    kind: OpenAIVoiceResourceKind,
+    object: OpenAIVoiceResource.Object,
+    kind: OpenAIVoiceResource.Kind,
     prompt: String? = nil
   ) {
     self.createdAt = createdAt
@@ -41,5 +41,14 @@ public struct OpenAIVoiceResource: Codable, Sendable {
     case object
     case prompt
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case audioSample = "audio_sample"
+    case prompt = "prompt"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case audioVoice = "audio.voice"
   }
 }

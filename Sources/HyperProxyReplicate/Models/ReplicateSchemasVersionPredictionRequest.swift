@@ -15,14 +15,16 @@ public struct ReplicateSchemasVersionPredictionRequest: Codable, Sendable {
   public var stream: Bool?
   public var version: String
   public var webhook: String?
-  public var webhookEventsFilter: [ReplicateSchemasVersionPredictionRequestWebhookEventsFilterItem]?
+  public var webhookEventsFilter:
+    [ReplicateSchemasVersionPredictionRequest.WebhookEventsFilterElement]?
 
   public init(
     input: HyperProxyJSONValue,
     version: String,
     stream: Bool? = nil,
     webhook: String? = nil,
-    webhookEventsFilter: [ReplicateSchemasVersionPredictionRequestWebhookEventsFilterItem]? = nil
+    webhookEventsFilter: [ReplicateSchemasVersionPredictionRequest.WebhookEventsFilterElement]? =
+      nil
   ) {
     self.input = input
     self.stream = stream
@@ -37,5 +39,14 @@ public struct ReplicateSchemasVersionPredictionRequest: Codable, Sendable {
     case version
     case webhook
     case webhookEventsFilter = "webhook_events_filter"
+  }
+
+  public enum WebhookEventsFilterElement: String, Codable,
+    Hashable, Sendable
+  {
+    case start = "start"
+    case output = "output"
+    case logs = "logs"
+    case completed = "completed"
   }
 }

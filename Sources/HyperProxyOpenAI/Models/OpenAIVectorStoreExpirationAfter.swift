@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIVectorStoreExpirationAfter: Codable, Sendable {
-  public var anchor: OpenAIVectorStoreExpirationAfterAnchor
+  public var anchor: OpenAIVectorStoreExpirationAfter.Anchor
   public var days: Int
 
   public init(
-    anchor: OpenAIVectorStoreExpirationAfterAnchor,
+    anchor: OpenAIVectorStoreExpirationAfter.Anchor,
     days: Int
   ) {
     self.anchor = anchor
@@ -25,5 +25,9 @@ public struct OpenAIVectorStoreExpirationAfter: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case anchor
     case days
+  }
+
+  public enum Anchor: String, Codable, Hashable, Sendable {
+    case lastActiveAt = "last_active_at"
   }
 }

@@ -15,7 +15,7 @@ public struct GeminiEmbedContentConfig: Codable, Sendable {
   public var autoTruncate: Bool?
   public var documentOcr: Bool?
   public var outputDimensionality: Int?
-  public var taskType: GeminiEmbedContentConfigTaskType?
+  public var taskType: GeminiEmbedContentConfig.TaskType?
   public var title: String?
 
   public init(
@@ -23,7 +23,7 @@ public struct GeminiEmbedContentConfig: Codable, Sendable {
     autoTruncate: Bool? = nil,
     documentOcr: Bool? = nil,
     outputDimensionality: Int? = nil,
-    taskType: GeminiEmbedContentConfigTaskType? = nil,
+    taskType: GeminiEmbedContentConfig.TaskType? = nil,
     title: String? = nil
   ) {
     self.audioTrackExtraction = audioTrackExtraction
@@ -41,5 +41,17 @@ public struct GeminiEmbedContentConfig: Codable, Sendable {
     case outputDimensionality
     case taskType
     case title
+  }
+
+  public enum TaskType: String, Codable, Hashable, Sendable {
+    case taskTypeUnspecified = "TASK_TYPE_UNSPECIFIED"
+    case retrievalQuery = "RETRIEVAL_QUERY"
+    case retrievalDocument = "RETRIEVAL_DOCUMENT"
+    case semanticSimilarity = "SEMANTIC_SIMILARITY"
+    case classification = "CLASSIFICATION"
+    case clustering = "CLUSTERING"
+    case questionAnswering = "QUESTION_ANSWERING"
+    case factVerification = "FACT_VERIFICATION"
+    case codeRetrievalQuery = "CODE_RETRIEVAL_QUERY"
   }
 }

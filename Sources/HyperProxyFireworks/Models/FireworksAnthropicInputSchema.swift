@@ -13,10 +13,10 @@ import HyperProxyCore
 public struct FireworksAnthropicInputSchema: Codable, Sendable {
   public var properties: [String: HyperProxyJSONValue]?
   public var requiredValue: [String]?
-  public var kind: FireworksObjectKind
+  public var kind: FireworksAnthropicInputSchema.Kind
 
   public init(
-    kind: FireworksObjectKind = .object,
+    kind: FireworksAnthropicInputSchema.Kind = .object,
     properties: [String: HyperProxyJSONValue]? = nil,
     requiredValue: [String]? = nil
   ) {
@@ -29,5 +29,9 @@ public struct FireworksAnthropicInputSchema: Codable, Sendable {
     case properties
     case requiredValue = "required"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case object = "object"
   }
 }

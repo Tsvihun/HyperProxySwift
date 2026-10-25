@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterBatchDeletionTargets: Codable, Sendable {
-  public var openrouter: OpenRouterBatchDeletionTargetsOpenrouter
-  public var upstream: OpenRouterBatchDeletionTargetsUpstream?
+  public var openrouter: OpenRouterBatchDeletionTargets.Openrouter
+  public var upstream: OpenRouterBatchDeletionTargets.Upstream?
 
   public init(
-    openrouter: OpenRouterBatchDeletionTargetsOpenrouter,
-    upstream: OpenRouterBatchDeletionTargetsUpstream? = nil
+    openrouter: OpenRouterBatchDeletionTargets.Openrouter,
+    upstream: OpenRouterBatchDeletionTargets.Upstream? = nil
   ) {
     self.openrouter = openrouter
     self.upstream = upstream
@@ -25,5 +25,27 @@ public struct OpenRouterBatchDeletionTargets: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case openrouter
     case upstream
+  }
+
+  public enum Openrouter: String, Codable, Hashable, Sendable {
+    case deleted = "deleted"
+  }
+
+  public struct Upstream: Codable, Sendable {
+    public var provider: String
+    public var status: OpenRouterBatchDeletionOutcome
+
+    public init(
+      provider: String,
+      status: OpenRouterBatchDeletionOutcome
+    ) {
+      self.provider = provider
+      self.status = status
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case provider
+      case status
+    }
   }
 }

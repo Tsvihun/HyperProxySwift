@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIChatCompletionDeleted: Codable, Sendable {
   public var deleted: Bool
   public var id: String
-  public var object: OpenAIChatCompletionDeletedObject
+  public var object: OpenAIChatCompletionDeleted.Object
 
   public init(
     deleted: Bool,
     id: String,
-    object: OpenAIChatCompletionDeletedObject
+    object: OpenAIChatCompletionDeleted.Object
   ) {
     self.deleted = deleted
     self.id = id
@@ -29,5 +29,9 @@ public struct OpenAIChatCompletionDeleted: Codable, Sendable {
     case deleted
     case id
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case chatCompletionDeleted = "chat.completion.deleted"
   }
 }

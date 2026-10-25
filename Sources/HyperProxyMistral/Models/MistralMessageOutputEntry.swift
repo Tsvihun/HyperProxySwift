@@ -13,16 +13,16 @@ import HyperProxyCore
 public struct MistralMessageOutputEntry: Codable, Sendable {
   public var agentId: String?
   public var completedAt: String?
-  public var content: MistralMessageOutputEntryContent
+  public var content: MistralMessageOutputEntry.Content
   public var createdAt: String?
   public var id: String?
   public var model: String?
   public var object: MistralEntryObject?
   public var role: MistralAssistantRole?
-  public var kind: MistralMessageOutputKind?
+  public var kind: MistralMessageOutputEntry.Kind?
 
   public init(
-    content: MistralMessageOutputEntryContent,
+    content: MistralMessageOutputEntry.Content,
     agentId: String? = nil,
     completedAt: String? = nil,
     createdAt: String? = nil,
@@ -30,7 +30,7 @@ public struct MistralMessageOutputEntry: Codable, Sendable {
     model: String? = nil,
     object: MistralEntryObject? = nil,
     role: MistralAssistantRole? = nil,
-    kind: MistralMessageOutputKind? = nil
+    kind: MistralMessageOutputEntry.Kind? = nil
   ) {
     self.agentId = agentId
     self.completedAt = completedAt
@@ -53,5 +53,40 @@ public struct MistralMessageOutputEntry: Codable, Sendable {
     case object
     case role
     case kind = "type"
+  }
+
+  public enum Content: Codable, Sendable {
+    case string(String)
+    case messageOutputContentChunks(MistralMessageOutputContentChunks)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .messageOutputContentChunks(
+        try container.decode(MistralMessageOutputContentChunks.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .messageOutputContentChunks(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case messageOutput = "message.output"
+  }
+}
+
+extension MistralMessageOutputEntry.Content: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

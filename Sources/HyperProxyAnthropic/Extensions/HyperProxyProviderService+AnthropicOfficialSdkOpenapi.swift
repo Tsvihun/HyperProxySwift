@@ -316,13 +316,13 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await prepared.decoded(AnthropicBetaDream.self)
   }
 
-  public func betaArchiveEnvironmentV1EnvironmentsEnvironmentIdArchivePost(
+  public func betaArchiveEnvironment(
     environmentId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaEnvironment {
-    let call = self.call(.betaArchiveEnvironmentV1EnvironmentsEnvironmentIdArchivePost)
+    let call = self.call(.betaArchiveEnvironment)
       .path("environment_id", environmentId)
       .query(query)
       .headers(headers)
@@ -330,28 +330,27 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await call.decoded(AnthropicBetaEnvironment.self)
   }
 
-  public func betaPollWorkV1EnvironmentsEnvironmentIdWorkPollGet(
+  public func betaPollWork(
     environmentId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> AnthropicBetaPollWorkV1EnvironmentsEnvironmentIdWorkPollGetResponse {
-    let call = self.call(.betaPollWorkV1EnvironmentsEnvironmentIdWorkPollGet)
+  ) async throws -> AnthropicBetaPollWorkResponse {
+    let call = self.call(.betaPollWork)
       .path("environment_id", environmentId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(
-      AnthropicBetaPollWorkV1EnvironmentsEnvironmentIdWorkPollGetResponse.self)
+    return try await call.decoded(AnthropicBetaPollWorkResponse.self)
   }
 
-  public func betaGetEnvironmentStatsV1EnvironmentsEnvironmentIdWorkStatsGet(
+  public func betaGetEnvironmentStats(
     environmentId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaSelfHostedWorkQueueStats {
-    let call = self.call(.betaGetEnvironmentStatsV1EnvironmentsEnvironmentIdWorkStatsGet)
+    let call = self.call(.betaGetEnvironmentStats)
       .path("environment_id", environmentId)
       .query(query)
       .headers(headers)
@@ -359,14 +358,14 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await call.decoded(AnthropicBetaSelfHostedWorkQueueStats.self)
   }
 
-  public func betaAcknowledgeWorkV1EnvironmentsEnvironmentIdWorkWorkIdAckPost(
+  public func betaAcknowledgeWork(
     environmentId: String,
     workId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaSelfHostedWork {
-    let call = self.call(.betaAcknowledgeWorkV1EnvironmentsEnvironmentIdWorkWorkIdAckPost)
+    let call = self.call(.betaAcknowledgeWork)
       .path("environment_id", environmentId)
       .path("work_id", workId)
       .query(query)
@@ -375,14 +374,14 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await call.decoded(AnthropicBetaSelfHostedWork.self)
   }
 
-  public func betaRecordHeartbeatV1EnvironmentsEnvironmentIdWorkWorkIdHeartbeatPost(
+  public func betaRecordHeartbeat(
     environmentId: String,
     workId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaSelfHostedWorkHeartbeatResponse {
-    let call = self.call(.betaRecordHeartbeatV1EnvironmentsEnvironmentIdWorkWorkIdHeartbeatPost)
+    let call = self.call(.betaRecordHeartbeat)
       .path("environment_id", environmentId)
       .path("work_id", workId)
       .query(query)
@@ -391,7 +390,7 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await call.decoded(AnthropicBetaSelfHostedWorkHeartbeatResponse.self)
   }
 
-  public func betaStopWorkV1EnvironmentsEnvironmentIdWorkWorkIdStopPost(
+  public func betaStopWork(
     _ body: AnthropicBetaSelfHostedWorkStopRequest,
     environmentId: String,
     workId: String,
@@ -399,7 +398,7 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaSelfHostedWork {
-    let call = self.call(.betaStopWorkV1EnvironmentsEnvironmentIdWorkWorkIdStopPost)
+    let call = self.call(.betaStopWork)
       .path("environment_id", environmentId)
       .path("work_id", workId)
       .query(query)
@@ -409,14 +408,14 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await prepared.decoded(AnthropicBetaSelfHostedWork.self)
   }
 
-  public func betaGetWorkV1EnvironmentsEnvironmentIdWorkWorkIdGet(
+  public func betaGetWork(
     environmentId: String,
     workId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaSelfHostedWork {
-    let call = self.call(.betaGetWorkV1EnvironmentsEnvironmentIdWorkWorkIdGet)
+    let call = self.call(.betaGetWork)
       .path("environment_id", environmentId)
       .path("work_id", workId)
       .query(query)
@@ -425,7 +424,7 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await call.decoded(AnthropicBetaSelfHostedWork.self)
   }
 
-  public func betaUpdateWorkV1EnvironmentsEnvironmentIdWorkWorkIdPost(
+  public func betaUpdateWork(
     _ body: AnthropicBetaSelfHostedWorkUpdateRequest,
     environmentId: String,
     workId: String,
@@ -433,7 +432,7 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaSelfHostedWork {
-    let call = self.call(.betaUpdateWorkV1EnvironmentsEnvironmentIdWorkWorkIdPost)
+    let call = self.call(.betaUpdateWork)
       .path("environment_id", environmentId)
       .path("work_id", workId)
       .query(query)
@@ -443,13 +442,13 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await prepared.decoded(AnthropicBetaSelfHostedWork.self)
   }
 
-  public func betaListWorkV1EnvironmentsEnvironmentIdWorkGet(
+  public func betaListWork(
     environmentId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaSelfHostedWorkListResponse {
-    let call = self.call(.betaListWorkV1EnvironmentsEnvironmentIdWorkGet)
+    let call = self.call(.betaListWork)
       .path("environment_id", environmentId)
       .query(query)
       .headers(headers)
@@ -457,13 +456,13 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await call.decoded(AnthropicBetaSelfHostedWorkListResponse.self)
   }
 
-  public func betaGetEnvironmentV1EnvironmentsEnvironmentIdGet(
+  public func betaGetEnvironment(
     environmentId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaEnvironment {
-    let call = self.call(.betaGetEnvironmentV1EnvironmentsEnvironmentIdGet)
+    let call = self.call(.betaGetEnvironment)
       .path("environment_id", environmentId)
       .query(query)
       .headers(headers)
@@ -471,14 +470,14 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await call.decoded(AnthropicBetaEnvironment.self)
   }
 
-  public func betaUpdateEnvironmentV1EnvironmentsEnvironmentIdPost(
+  public func betaUpdateEnvironment(
     _ body: AnthropicBetaPublicEnvironmentUpdateRequest,
     environmentId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaEnvironment {
-    let call = self.call(.betaUpdateEnvironmentV1EnvironmentsEnvironmentIdPost)
+    let call = self.call(.betaUpdateEnvironment)
       .path("environment_id", environmentId)
       .query(query)
       .headers(headers)
@@ -487,13 +486,13 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await prepared.decoded(AnthropicBetaEnvironment.self)
   }
 
-  public func betaDeleteEnvironmentV1EnvironmentsEnvironmentIdDelete(
+  public func betaDeleteEnvironment(
     environmentId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaEnvironmentDeleteResponse {
-    let call = self.call(.betaDeleteEnvironmentV1EnvironmentsEnvironmentIdDelete)
+    let call = self.call(.betaDeleteEnvironment)
       .path("environment_id", environmentId)
       .query(query)
       .headers(headers)
@@ -501,25 +500,25 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await call.decoded(AnthropicBetaEnvironmentDeleteResponse.self)
   }
 
-  public func betaListEnvironmentsV1EnvironmentsGet(
+  public func betaListEnvironments(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaEnvironmentListResponse {
-    let call = self.call(.betaListEnvironmentsV1EnvironmentsGet)
+    let call = self.call(.betaListEnvironments)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(AnthropicBetaEnvironmentListResponse.self)
   }
 
-  public func betaCreateEnvironmentV1EnvironmentsPost(
+  public func betaCreateEnvironment(
     _ body: AnthropicBetaPublicEnvironmentCreateRequest,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaEnvironment {
-    let call = self.call(.betaCreateEnvironmentV1EnvironmentsPost)
+    let call = self.call(.betaCreateEnvironment)
       .query(query)
       .headers(headers)
       .timeout(timeout)
@@ -539,15 +538,6 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await call.decoded(AnthropicFileListResponse.self)
   }
 
-  @available(*, deprecated, renamed: "filesList")
-  public func listFilesV1FilesGet(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> AnthropicFileListResponse {
-    try await self.filesList(query: query, headers: headers, timeout: timeout)
-  }
-
   public func filesRetrieve(
     fileId: String,
     query: [URLQueryItem] = [],
@@ -560,16 +550,6 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(AnthropicFileMetadataSchema.self)
-  }
-
-  @available(*, deprecated, renamed: "filesRetrieve")
-  public func getFileMetadataV1FilesFileIdGet(
-    fileId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> AnthropicFileMetadataSchema {
-    try await self.filesRetrieve(fileId: fileId, query: query, headers: headers, timeout: timeout)
   }
 
   public func filesDelete(
@@ -586,16 +566,6 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await call.decoded(AnthropicFileDeleteResponse.self)
   }
 
-  @available(*, deprecated, renamed: "filesDelete")
-  public func deleteFileV1FilesFileIdDelete(
-    fileId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> AnthropicFileDeleteResponse {
-    try await self.filesDelete(fileId: fileId, query: query, headers: headers, timeout: timeout)
-  }
-
   public func filesDownload(
     fileId: String,
     query: [URLQueryItem] = [],
@@ -608,16 +578,6 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
       .headers(headers)
       .timeout(timeout)
     return try call.bytes()
-  }
-
-  @available(*, deprecated, renamed: "filesDownload")
-  public func downloadFileV1FilesFileIdContentGet(
-    fileId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) throws -> AsyncThrowingStream<Data, Error> {
-    try self.filesDownload(fileId: fileId, query: query, headers: headers, timeout: timeout)
   }
 
   public func betaArchiveMemoryStore(
@@ -844,16 +804,6 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await prepared.decoded(AnthropicMessage.self)
   }
 
-  @available(*, deprecated, renamed: "messagesCreate")
-  public func messagesPost(
-    _ body: AnthropicCreateMessageParams,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> AnthropicMessage {
-    try await self.messagesCreate(body, query: query, headers: headers, timeout: timeout)
-  }
-
   public func messageBatchesList(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -880,114 +830,60 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await prepared.decoded(AnthropicMessageBatch.self)
   }
 
-  @available(*, deprecated, renamed: "messageBatchesCreate")
-  public func messageBatchesPost(
-    _ body: AnthropicCreateMessageBatchParams,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> AnthropicMessageBatch {
-    try await self.messageBatchesCreate(body, query: query, headers: headers, timeout: timeout)
-  }
-
   public func messageBatchesRetrieve(
-    messageBatchId: String,
+    batchId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicMessageBatch {
     let call = self.call(.messageBatchesRetrieve)
-      .path("message_batch_id", messageBatchId)
+      .path("batch_id", batchId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(AnthropicMessageBatch.self)
   }
 
-  @available(*, deprecated, renamed: "messageBatchesRetrieve")
-  public func betaMessageBatchesRetrieve(
-    messageBatchId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> AnthropicMessageBatch {
-    try await self.messageBatchesRetrieve(
-      messageBatchId: messageBatchId, query: query, headers: headers, timeout: timeout)
-  }
-
   public func messageBatchesDelete(
-    messageBatchId: String,
+    batchId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicDeleteMessageBatchResponse {
     let call = self.call(.messageBatchesDelete)
-      .path("message_batch_id", messageBatchId)
+      .path("batch_id", batchId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(AnthropicDeleteMessageBatchResponse.self)
   }
 
-  @available(*, deprecated, renamed: "messageBatchesDelete")
-  public func betaMessageBatchesDelete(
-    messageBatchId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> AnthropicDeleteMessageBatchResponse {
-    try await self.messageBatchesDelete(
-      messageBatchId: messageBatchId, query: query, headers: headers, timeout: timeout)
-  }
-
   public func messageBatchesCancel(
-    messageBatchId: String,
+    batchId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicMessageBatch {
     let call = self.call(.messageBatchesCancel)
-      .path("message_batch_id", messageBatchId)
+      .path("batch_id", batchId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(AnthropicMessageBatch.self)
   }
 
-  @available(*, deprecated, renamed: "messageBatchesCancel")
-  public func betaMessageBatchesCancel(
-    messageBatchId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> AnthropicMessageBatch {
-    try await self.messageBatchesCancel(
-      messageBatchId: messageBatchId, query: query, headers: headers, timeout: timeout)
-  }
-
   public func messageBatchesResults(
-    messageBatchId: String,
+    batchId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> AnthropicMessageBatchIndividualResponse {
+  ) throws -> AsyncThrowingStream<AnthropicMessageBatchIndividualResponse, Error> {
     let call = self.call(.messageBatchesResults)
-      .path("message_batch_id", messageBatchId)
+      .path("batch_id", batchId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(AnthropicMessageBatchIndividualResponse.self)
-  }
-
-  @available(*, deprecated, renamed: "messageBatchesResults")
-  public func betaMessageBatchesResults(
-    messageBatchId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> AnthropicMessageBatchIndividualResponse {
-    try await self.messageBatchesResults(
-      messageBatchId: messageBatchId, query: query, headers: headers, timeout: timeout)
+    return try call.jsonLines(decoding: AnthropicMessageBatchIndividualResponse.self)
   }
 
   public func messagesCountTokens(
@@ -1002,16 +898,6 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
       .timeout(timeout)
     let prepared = try call.json(body)
     return try await prepared.decoded(AnthropicCountMessageTokensResponse.self)
-  }
-
-  @available(*, deprecated, renamed: "messagesCountTokens")
-  public func messagesCountTokensPost(
-    _ body: AnthropicCountMessageTokensParams,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> AnthropicCountMessageTokensResponse {
-    try await self.messagesCountTokens(body, query: query, headers: headers, timeout: timeout)
   }
 
   public func modelsList(
@@ -1040,64 +926,51 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await call.decoded(AnthropicModelInfo.self)
   }
 
-  @available(*, deprecated, renamed: "modelsRetrieve")
-  public func modelsGet(
-    modelId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> AnthropicModelInfo {
-    try await self.modelsRetrieve(
-      modelId: modelId, query: query, headers: headers, timeout: timeout)
-  }
-
-  public func betaListApiKeysV1OrganizationsApiKeysGet(
+  public func betaListApiKeys(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaListResponseApiKey {
-    let call = self.call(.betaListApiKeysV1OrganizationsApiKeysGet)
+    let call = self.call(.betaListApiKeys)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(AnthropicBetaListResponseApiKey.self)
   }
 
-  public func betaGetCostReportV1OrganizationsCostReportGet(
+  public func betaGetCostReport(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaGetCostReportResponse {
-    let call = self.call(.betaGetCostReportV1OrganizationsCostReportGet)
+    let call = self.call(.betaGetCostReport)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(AnthropicBetaGetCostReportResponse.self)
   }
 
-  public func betaValidateExternalKeyV1OrganizationsExternalKeysExternalKeyIdValidatePost(
+  public func betaValidateExternalKey(
     externalKeyId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaValidateExternalKeyResponse {
-    let call = self.call(
-      .betaValidateExternalKeyV1OrganizationsExternalKeysExternalKeyIdValidatePost
-    )
-    .path("external_key_id", externalKeyId)
-    .query(query)
-    .headers(headers)
-    .timeout(timeout)
+    let call = self.call(.betaValidateExternalKey)
+      .path("external_key_id", externalKeyId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
     return try await call.decoded(AnthropicBetaValidateExternalKeyResponse.self)
   }
 
-  public func betaGetExternalKeyV1OrganizationsExternalKeysExternalKeyIdGet(
+  public func betaGetExternalKey(
     externalKeyId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaExternalKey {
-    let call = self.call(.betaGetExternalKeyV1OrganizationsExternalKeysExternalKeyIdGet)
+    let call = self.call(.betaGetExternalKey)
       .path("external_key_id", externalKeyId)
       .query(query)
       .headers(headers)
@@ -1105,14 +978,14 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await call.decoded(AnthropicBetaExternalKey.self)
   }
 
-  public func betaUpdateExternalKeyV1OrganizationsExternalKeysExternalKeyIdPost(
+  public func betaUpdateExternalKey(
     _ body: AnthropicBetaExternalKeyUpdateParams,
     externalKeyId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaExternalKey {
-    let call = self.call(.betaUpdateExternalKeyV1OrganizationsExternalKeysExternalKeyIdPost)
+    let call = self.call(.betaUpdateExternalKey)
       .path("external_key_id", externalKeyId)
       .query(query)
       .headers(headers)
@@ -1121,13 +994,13 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await prepared.decoded(AnthropicBetaExternalKey.self)
   }
 
-  public func betaDeleteExternalKeyV1OrganizationsExternalKeysExternalKeyIdDelete(
+  public func betaDeleteExternalKey(
     externalKeyId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaDeleteExternalKeyResponse {
-    let call = self.call(.betaDeleteExternalKeyV1OrganizationsExternalKeysExternalKeyIdDelete)
+    let call = self.call(.betaDeleteExternalKey)
       .path("external_key_id", externalKeyId)
       .query(query)
       .headers(headers)
@@ -1135,25 +1008,25 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await call.decoded(AnthropicBetaDeleteExternalKeyResponse.self)
   }
 
-  public func betaListExternalKeysV1OrganizationsExternalKeysGet(
+  public func betaListExternalKeys(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaExternalKeyListResponse {
-    let call = self.call(.betaListExternalKeysV1OrganizationsExternalKeysGet)
+    let call = self.call(.betaListExternalKeys)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(AnthropicBetaExternalKeyListResponse.self)
   }
 
-  public func betaCreateExternalKeyV1OrganizationsExternalKeysPost(
+  public func betaCreateExternalKey(
     _ body: AnthropicBetaExternalKeyCreateParams,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaExternalKey {
-    let call = self.call(.betaCreateExternalKeyV1OrganizationsExternalKeysPost)
+    let call = self.call(.betaCreateExternalKey)
       .query(query)
       .headers(headers)
       .timeout(timeout)
@@ -1161,77 +1034,69 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await prepared.decoded(AnthropicBetaExternalKey.self)
   }
 
-  public func
-    betaArchiveFederationIssuerV1OrganizationsFederationIssuersFederationIssuerIdArchivePost(
-      federationIssuerId: String,
-      query: [URLQueryItem] = [],
-      headers: [String: String] = [:],
-      timeout: TimeInterval? = nil
-    ) async throws -> AnthropicBetaFederationIssuer
-  {
-    let call = self.call(
-      .betaArchiveFederationIssuerV1OrganizationsFederationIssuersFederationIssuerIdArchivePost
-    )
-    .path("federation_issuer_id", federationIssuerId)
-    .query(query)
-    .headers(headers)
-    .timeout(timeout)
-    return try await call.decoded(AnthropicBetaFederationIssuer.self)
-  }
-
-  public func betaGetFederationIssuerV1OrganizationsFederationIssuersFederationIssuerIdGet(
+  public func betaArchiveFederationIssuer(
     federationIssuerId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaFederationIssuer {
-    let call = self.call(
-      .betaGetFederationIssuerV1OrganizationsFederationIssuersFederationIssuerIdGet
-    )
-    .path("federation_issuer_id", federationIssuerId)
-    .query(query)
-    .headers(headers)
-    .timeout(timeout)
+    let call = self.call(.betaArchiveFederationIssuer)
+      .path("federation_issuer_id", federationIssuerId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
     return try await call.decoded(AnthropicBetaFederationIssuer.self)
   }
 
-  public func betaUpdateFederationIssuerV1OrganizationsFederationIssuersFederationIssuerIdPost(
+  public func betaGetFederationIssuer(
+    federationIssuerId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> AnthropicBetaFederationIssuer {
+    let call = self.call(.betaGetFederationIssuer)
+      .path("federation_issuer_id", federationIssuerId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(AnthropicBetaFederationIssuer.self)
+  }
+
+  public func betaUpdateFederationIssuer(
     _ body: AnthropicBetaFederationIssuerUpdateParams,
     federationIssuerId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaFederationIssuer {
-    let call = self.call(
-      .betaUpdateFederationIssuerV1OrganizationsFederationIssuersFederationIssuerIdPost
-    )
-    .path("federation_issuer_id", federationIssuerId)
-    .query(query)
-    .headers(headers)
-    .timeout(timeout)
+    let call = self.call(.betaUpdateFederationIssuer)
+      .path("federation_issuer_id", federationIssuerId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
     let prepared = try call.json(body)
     return try await prepared.decoded(AnthropicBetaFederationIssuer.self)
   }
 
-  public func betaListFederationIssuersV1OrganizationsFederationIssuersGet(
+  public func betaListFederationIssuers(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaFederationIssuerListResponse {
-    let call = self.call(.betaListFederationIssuersV1OrganizationsFederationIssuersGet)
+    let call = self.call(.betaListFederationIssuers)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(AnthropicBetaFederationIssuerListResponse.self)
   }
 
-  public func betaCreateFederationIssuerV1OrganizationsFederationIssuersPost(
+  public func betaCreateFederationIssuer(
     _ body: AnthropicBetaFederationIssuerCreateParams,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaFederationIssuer {
-    let call = self.call(.betaCreateFederationIssuerV1OrganizationsFederationIssuersPost)
+    let call = self.call(.betaCreateFederationIssuer)
       .query(query)
       .headers(headers)
       .timeout(timeout)
@@ -1239,87 +1104,13 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await prepared.decoded(AnthropicBetaFederationIssuer.self)
   }
 
-  public func betaArchiveFederationRuleV1OrganizationsFederationRulesFederationRuleIdArchivePost(
+  public func betaArchiveFederationRule(
     federationRuleId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaFederationRule {
-    let call = self.call(
-      .betaArchiveFederationRuleV1OrganizationsFederationRulesFederationRuleIdArchivePost
-    )
-    .path("federation_rule_id", federationRuleId)
-    .query(query)
-    .headers(headers)
-    .timeout(timeout)
-    return try await call.decoded(AnthropicBetaFederationRule.self)
-  }
-
-  public func
-    betaRemoveFederationRuleWorkspaceV1OrganizationsFederationRulesFederationRuleIdWorkspacesWorkspaceIdDelete(
-      federationRuleId: String,
-      workspaceId: String,
-      query: [URLQueryItem] = [],
-      headers: [String: String] = [:],
-      timeout: TimeInterval? = nil
-    ) async throws -> AnthropicBetaRemoveFederationRuleWorkspaceResponse
-  {
-    let call = self.call(
-      .betaRemoveFederationRuleWorkspaceV1OrganizationsFederationRulesFederationRuleIdWorkspacesWorkspaceIdDelete
-    )
-    .path("federation_rule_id", federationRuleId)
-    .path("workspace_id", workspaceId)
-    .query(query)
-    .headers(headers)
-    .timeout(timeout)
-    return try await call.decoded(AnthropicBetaRemoveFederationRuleWorkspaceResponse.self)
-  }
-
-  public func
-    betaListFederationRuleWorkspacesV1OrganizationsFederationRulesFederationRuleIdWorkspacesGet(
-      federationRuleId: String,
-      query: [URLQueryItem] = [],
-      headers: [String: String] = [:],
-      timeout: TimeInterval? = nil
-    ) async throws -> AnthropicBetaFederationRuleWorkspaceListResponse
-  {
-    let call = self.call(
-      .betaListFederationRuleWorkspacesV1OrganizationsFederationRulesFederationRuleIdWorkspacesGet
-    )
-    .path("federation_rule_id", federationRuleId)
-    .query(query)
-    .headers(headers)
-    .timeout(timeout)
-    return try await call.decoded(AnthropicBetaFederationRuleWorkspaceListResponse.self)
-  }
-
-  public func
-    betaAddFederationRuleWorkspaceV1OrganizationsFederationRulesFederationRuleIdWorkspacesPost(
-      _ body: AnthropicBetaAddFederationRuleWorkspaceParams,
-      federationRuleId: String,
-      query: [URLQueryItem] = [],
-      headers: [String: String] = [:],
-      timeout: TimeInterval? = nil
-    ) async throws -> AnthropicBetaFederationRuleWorkspace
-  {
-    let call = self.call(
-      .betaAddFederationRuleWorkspaceV1OrganizationsFederationRulesFederationRuleIdWorkspacesPost
-    )
-    .path("federation_rule_id", federationRuleId)
-    .query(query)
-    .headers(headers)
-    .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(AnthropicBetaFederationRuleWorkspace.self)
-  }
-
-  public func betaGetFederationRuleV1OrganizationsFederationRulesFederationRuleIdGet(
-    federationRuleId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> AnthropicBetaFederationRule {
-    let call = self.call(.betaGetFederationRuleV1OrganizationsFederationRulesFederationRuleIdGet)
+    let call = self.call(.betaArchiveFederationRule)
       .path("federation_rule_id", federationRuleId)
       .query(query)
       .headers(headers)
@@ -1327,43 +1118,101 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await call.decoded(AnthropicBetaFederationRule.self)
   }
 
-  public func betaUpdateFederationRuleV1OrganizationsFederationRulesFederationRuleIdPost(
+  public func betaRemoveFederationRuleWorkspace(
+    federationRuleId: String,
+    workspaceId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> AnthropicBetaRemoveFederationRuleWorkspaceResponse {
+    let call = self.call(.betaRemoveFederationRuleWorkspace)
+      .path("federation_rule_id", federationRuleId)
+      .path("workspace_id", workspaceId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(AnthropicBetaRemoveFederationRuleWorkspaceResponse.self)
+  }
+
+  public func betaListFederationRuleWorkspaces(
+    federationRuleId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> AnthropicBetaFederationRuleWorkspaceListResponse {
+    let call = self.call(.betaListFederationRuleWorkspaces)
+      .path("federation_rule_id", federationRuleId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(AnthropicBetaFederationRuleWorkspaceListResponse.self)
+  }
+
+  public func betaAddFederationRuleWorkspace(
+    _ body: AnthropicBetaAddFederationRuleWorkspaceParams,
+    federationRuleId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> AnthropicBetaFederationRuleWorkspace {
+    let call = self.call(.betaAddFederationRuleWorkspace)
+      .path("federation_rule_id", federationRuleId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(AnthropicBetaFederationRuleWorkspace.self)
+  }
+
+  public func betaGetFederationRule(
+    federationRuleId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> AnthropicBetaFederationRule {
+    let call = self.call(.betaGetFederationRule)
+      .path("federation_rule_id", federationRuleId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(AnthropicBetaFederationRule.self)
+  }
+
+  public func betaUpdateFederationRule(
     _ body: AnthropicBetaFederationRuleUpdateParams,
     federationRuleId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaFederationRule {
-    let call = self.call(
-      .betaUpdateFederationRuleV1OrganizationsFederationRulesFederationRuleIdPost
-    )
-    .path("federation_rule_id", federationRuleId)
-    .query(query)
-    .headers(headers)
-    .timeout(timeout)
+    let call = self.call(.betaUpdateFederationRule)
+      .path("federation_rule_id", federationRuleId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
     let prepared = try call.json(body)
     return try await prepared.decoded(AnthropicBetaFederationRule.self)
   }
 
-  public func betaListFederationRulesV1OrganizationsFederationRulesGet(
+  public func betaListFederationRules(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaFederationRuleListResponse {
-    let call = self.call(.betaListFederationRulesV1OrganizationsFederationRulesGet)
+    let call = self.call(.betaListFederationRules)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(AnthropicBetaFederationRuleListResponse.self)
   }
 
-  public func betaCreateFederationRuleV1OrganizationsFederationRulesPost(
+  public func betaCreateFederationRule(
     _ body: AnthropicBetaFederationRuleCreateParams,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaFederationRule {
-    let call = self.call(.betaCreateFederationRuleV1OrganizationsFederationRulesPost)
+    let call = self.call(.betaCreateFederationRule)
       .query(query)
       .headers(headers)
       .timeout(timeout)
@@ -1371,49 +1220,49 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await prepared.decoded(AnthropicBetaFederationRule.self)
   }
 
-  public func betaListInvitesV1OrganizationsInvitesGet(
+  public func betaListInvites(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaListResponseInviteSchema {
-    let call = self.call(.betaListInvitesV1OrganizationsInvitesGet)
+    let call = self.call(.betaListInvites)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(AnthropicBetaListResponseInviteSchema.self)
   }
 
-  public func betaGetOrgRateLimitsV1OrganizationsRateLimitsGet(
+  public func betaGetOrgRateLimits(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaRateLimitListResponse {
-    let call = self.call(.betaGetOrgRateLimitsV1OrganizationsRateLimitsGet)
+    let call = self.call(.betaGetOrgRateLimits)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(AnthropicBetaRateLimitListResponse.self)
   }
 
-  public func betaListServiceAccountsV1OrganizationsServiceAccountsGet(
+  public func betaListServiceAccounts(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaServiceAccountListResponse {
-    let call = self.call(.betaListServiceAccountsV1OrganizationsServiceAccountsGet)
+    let call = self.call(.betaListServiceAccounts)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(AnthropicBetaServiceAccountListResponse.self)
   }
 
-  public func betaArchiveTunnelV1OrganizationsTunnelsTunnelIdArchivePost(
+  public func betaArchiveOrganizationTunnel(
     tunnelId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaOrganizationTunnel {
-    let call = self.call(.betaArchiveTunnelV1OrganizationsTunnelsTunnelIdArchivePost)
+    let call = self.call(.betaArchiveOrganizationTunnel)
       .path("tunnel_id", tunnelId)
       .query(query)
       .headers(headers)
@@ -1421,51 +1270,45 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await call.decoded(AnthropicBetaOrganizationTunnel.self)
   }
 
-  public func
-    betaArchiveCertificateV1OrganizationsTunnelsTunnelIdCertificatesCertificateIdArchivePost(
-      tunnelId: String,
-      certificateId: String,
-      query: [URLQueryItem] = [],
-      headers: [String: String] = [:],
-      timeout: TimeInterval? = nil
-    ) async throws -> AnthropicBetaOrganizationTunnelCertificate
-  {
-    let call = self.call(
-      .betaArchiveCertificateV1OrganizationsTunnelsTunnelIdCertificatesCertificateIdArchivePost
-    )
-    .path("tunnel_id", tunnelId)
-    .path("certificate_id", certificateId)
-    .query(query)
-    .headers(headers)
-    .timeout(timeout)
-    return try await call.decoded(AnthropicBetaOrganizationTunnelCertificate.self)
-  }
-
-  public func betaGetCertificateV1OrganizationsTunnelsTunnelIdCertificatesCertificateIdGet(
+  public func betaArchiveOrganizationTunnelCertificate(
     tunnelId: String,
     certificateId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaOrganizationTunnelCertificate {
-    let call = self.call(
-      .betaGetCertificateV1OrganizationsTunnelsTunnelIdCertificatesCertificateIdGet
-    )
-    .path("tunnel_id", tunnelId)
-    .path("certificate_id", certificateId)
-    .query(query)
-    .headers(headers)
-    .timeout(timeout)
+    let call = self.call(.betaArchiveOrganizationTunnelCertificate)
+      .path("tunnel_id", tunnelId)
+      .path("certificate_id", certificateId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
     return try await call.decoded(AnthropicBetaOrganizationTunnelCertificate.self)
   }
 
-  public func betaListCertificatesV1OrganizationsTunnelsTunnelIdCertificatesGet(
+  public func betaGetOrganizationTunnelCertificate(
+    tunnelId: String,
+    certificateId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> AnthropicBetaOrganizationTunnelCertificate {
+    let call = self.call(.betaGetOrganizationTunnelCertificate)
+      .path("tunnel_id", tunnelId)
+      .path("certificate_id", certificateId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(AnthropicBetaOrganizationTunnelCertificate.self)
+  }
+
+  public func betaListOrganizationTunnelCertificates(
     tunnelId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaTunnelCertificateListResponse {
-    let call = self.call(.betaListCertificatesV1OrganizationsTunnelsTunnelIdCertificatesGet)
+    let call = self.call(.betaListOrganizationTunnelCertificates)
       .path("tunnel_id", tunnelId)
       .query(query)
       .headers(headers)
@@ -1473,14 +1316,14 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await call.decoded(AnthropicBetaTunnelCertificateListResponse.self)
   }
 
-  public func betaCreateCertificateV1OrganizationsTunnelsTunnelIdCertificatesPost(
+  public func betaCreateOrganizationTunnelCertificate(
     _ body: AnthropicBetaCreateTunnelCertificateParams,
     tunnelId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaOrganizationTunnelCertificate {
-    let call = self.call(.betaCreateCertificateV1OrganizationsTunnelsTunnelIdCertificatesPost)
+    let call = self.call(.betaCreateOrganizationTunnelCertificate)
       .path("tunnel_id", tunnelId)
       .query(query)
       .headers(headers)
@@ -1489,13 +1332,13 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await prepared.decoded(AnthropicBetaOrganizationTunnelCertificate.self)
   }
 
-  public func betaRevealTunnelTokenV1OrganizationsTunnelsTunnelIdRevealTokenPost(
+  public func betaRevealOrganizationTunnelToken(
     tunnelId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaOrganizationTunnelToken {
-    let call = self.call(.betaRevealTunnelTokenV1OrganizationsTunnelsTunnelIdRevealTokenPost)
+    let call = self.call(.betaRevealOrganizationTunnelToken)
       .path("tunnel_id", tunnelId)
       .query(query)
       .headers(headers)
@@ -1503,14 +1346,14 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await call.decoded(AnthropicBetaOrganizationTunnelToken.self)
   }
 
-  public func betaRotateTunnelTokenV1OrganizationsTunnelsTunnelIdRotateTokenPost(
-    _ body: AnthropicBetaRotateTunnelTokenV1OrganizationsTunnelsTunnelIdRotateTokenPostRequest,
+  public func betaRotateOrganizationTunnelToken(
+    _ body: AnthropicBetaRotateOrganizationTunnelTokenRequest,
     tunnelId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaOrganizationTunnelToken {
-    let call = self.call(.betaRotateTunnelTokenV1OrganizationsTunnelsTunnelIdRotateTokenPost)
+    let call = self.call(.betaRotateOrganizationTunnelToken)
       .path("tunnel_id", tunnelId)
       .query(query)
       .headers(headers)
@@ -1519,13 +1362,13 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await prepared.decoded(AnthropicBetaOrganizationTunnelToken.self)
   }
 
-  public func betaGetTunnelV1OrganizationsTunnelsTunnelIdGet(
+  public func betaGetOrganizationTunnel(
     tunnelId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaOrganizationTunnel {
-    let call = self.call(.betaGetTunnelV1OrganizationsTunnelsTunnelIdGet)
+    let call = self.call(.betaGetOrganizationTunnel)
       .path("tunnel_id", tunnelId)
       .query(query)
       .headers(headers)
@@ -1533,49 +1376,49 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await call.decoded(AnthropicBetaOrganizationTunnel.self)
   }
 
-  public func betaListTunnelsV1OrganizationsTunnelsGet(
+  public func betaListOrganizationTunnels(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaTunnelListResponse {
-    let call = self.call(.betaListTunnelsV1OrganizationsTunnelsGet)
+    let call = self.call(.betaListOrganizationTunnels)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(AnthropicBetaTunnelListResponse.self)
   }
 
-  public func betaGetClaudeCodeUsageReportV1OrganizationsUsageReportClaudeCodeGet(
+  public func betaGetClaudeCodeUsageReport(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaGetClaudeCodeUsageReportResponse {
-    let call = self.call(.betaGetClaudeCodeUsageReportV1OrganizationsUsageReportClaudeCodeGet)
+    let call = self.call(.betaGetClaudeCodeUsageReport)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(AnthropicBetaGetClaudeCodeUsageReportResponse.self)
   }
 
-  public func betaGetMessagesUsageReportV1OrganizationsUsageReportMessagesGet(
+  public func betaGetMessagesUsageReport(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaGetMessagesUsageReportResponse {
-    let call = self.call(.betaGetMessagesUsageReportV1OrganizationsUsageReportMessagesGet)
+    let call = self.call(.betaGetMessagesUsageReport)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(AnthropicBetaGetMessagesUsageReportResponse.self)
   }
 
-  public func betaGetUserV1OrganizationsUsersUserIdGet(
+  public func betaGetUser(
     userId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaUser {
-    let call = self.call(.betaGetUserV1OrganizationsUsersUserIdGet)
+    let call = self.call(.betaGetUser)
       .path("user_id", userId)
       .query(query)
       .headers(headers)
@@ -1583,14 +1426,14 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await call.decoded(AnthropicBetaUser.self)
   }
 
-  public func betaUpdateUserV1OrganizationsUsersUserIdPost(
+  public func betaUpdateUser(
     _ body: AnthropicBetaUpdateUserParams,
     userId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaUser {
-    let call = self.call(.betaUpdateUserV1OrganizationsUsersUserIdPost)
+    let call = self.call(.betaUpdateUser)
       .path("user_id", userId)
       .query(query)
       .headers(headers)
@@ -1599,13 +1442,13 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await prepared.decoded(AnthropicBetaUser.self)
   }
 
-  public func betaRemoveUserV1OrganizationsUsersUserIdDelete(
+  public func betaRemoveUser(
     userId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaDeleteUserResponse {
-    let call = self.call(.betaRemoveUserV1OrganizationsUsersUserIdDelete)
+    let call = self.call(.betaRemoveUser)
       .path("user_id", userId)
       .query(query)
       .headers(headers)
@@ -1613,25 +1456,25 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await call.decoded(AnthropicBetaDeleteUserResponse.self)
   }
 
-  public func betaListUsersV1OrganizationsUsersGet(
+  public func betaListUsers(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaListResponseUser {
-    let call = self.call(.betaListUsersV1OrganizationsUsersGet)
+    let call = self.call(.betaListUsers)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(AnthropicBetaListResponseUser.self)
   }
 
-  public func betaArchiveWorkspaceV1OrganizationsWorkspacesWorkspaceIdArchivePost(
+  public func betaArchiveWorkspace(
     workspaceId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaWorkspace {
-    let call = self.call(.betaArchiveWorkspaceV1OrganizationsWorkspacesWorkspaceIdArchivePost)
+    let call = self.call(.betaArchiveWorkspace)
       .path("workspace_id", workspaceId)
       .query(query)
       .headers(headers)
@@ -1639,25 +1482,23 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await call.decoded(AnthropicBetaWorkspace.self)
   }
 
-  public func betaGetWorkspaceMemberV1OrganizationsWorkspacesWorkspaceIdMembersUserIdGet(
+  public func betaGetWorkspaceMember(
     workspaceId: String,
     userId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaWorkspaceMemberSchema {
-    let call = self.call(
-      .betaGetWorkspaceMemberV1OrganizationsWorkspacesWorkspaceIdMembersUserIdGet
-    )
-    .path("workspace_id", workspaceId)
-    .path("user_id", userId)
-    .query(query)
-    .headers(headers)
-    .timeout(timeout)
+    let call = self.call(.betaGetWorkspaceMember)
+      .path("workspace_id", workspaceId)
+      .path("user_id", userId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
     return try await call.decoded(AnthropicBetaWorkspaceMemberSchema.self)
   }
 
-  public func betaUpdateWorkspaceMemberV1OrganizationsWorkspacesWorkspaceIdMembersUserIdPost(
+  public func betaUpdateWorkspaceMember(
     _ body: AnthropicBetaUpdateWorkspaceMemberParams,
     workspaceId: String,
     userId: String,
@@ -1665,43 +1506,39 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaWorkspaceMemberSchema {
-    let call = self.call(
-      .betaUpdateWorkspaceMemberV1OrganizationsWorkspacesWorkspaceIdMembersUserIdPost
-    )
-    .path("workspace_id", workspaceId)
-    .path("user_id", userId)
-    .query(query)
-    .headers(headers)
-    .timeout(timeout)
+    let call = self.call(.betaUpdateWorkspaceMember)
+      .path("workspace_id", workspaceId)
+      .path("user_id", userId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
     let prepared = try call.json(body)
     return try await prepared.decoded(AnthropicBetaWorkspaceMemberSchema.self)
   }
 
-  public func betaDeleteWorkspaceMemberV1OrganizationsWorkspacesWorkspaceIdMembersUserIdDelete(
+  public func betaDeleteWorkspaceMember(
     workspaceId: String,
     userId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaDeleteWorkspaceMemberResponse {
-    let call = self.call(
-      .betaDeleteWorkspaceMemberV1OrganizationsWorkspacesWorkspaceIdMembersUserIdDelete
-    )
-    .path("workspace_id", workspaceId)
-    .path("user_id", userId)
-    .query(query)
-    .headers(headers)
-    .timeout(timeout)
+    let call = self.call(.betaDeleteWorkspaceMember)
+      .path("workspace_id", workspaceId)
+      .path("user_id", userId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
     return try await call.decoded(AnthropicBetaDeleteWorkspaceMemberResponse.self)
   }
 
-  public func betaListWorkspaceMembersV1OrganizationsWorkspacesWorkspaceIdMembersGet(
+  public func betaListWorkspaceMembers(
     workspaceId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaListResponseWorkspaceMemberSchema {
-    let call = self.call(.betaListWorkspaceMembersV1OrganizationsWorkspacesWorkspaceIdMembersGet)
+    let call = self.call(.betaListWorkspaceMembers)
       .path("workspace_id", workspaceId)
       .query(query)
       .headers(headers)
@@ -1709,14 +1546,14 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await call.decoded(AnthropicBetaListResponseWorkspaceMemberSchema.self)
   }
 
-  public func betaCreateWorkspaceMemberV1OrganizationsWorkspacesWorkspaceIdMembersPost(
+  public func betaCreateWorkspaceMember(
     _ body: AnthropicBetaCreateWorkspaceMemberParams,
     workspaceId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaWorkspaceMemberSchema {
-    let call = self.call(.betaCreateWorkspaceMemberV1OrganizationsWorkspacesWorkspaceIdMembersPost)
+    let call = self.call(.betaCreateWorkspaceMember)
       .path("workspace_id", workspaceId)
       .query(query)
       .headers(headers)
@@ -1725,29 +1562,27 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await prepared.decoded(AnthropicBetaWorkspaceMemberSchema.self)
   }
 
-  public func betaGetWorkspaceRateLimitsV1OrganizationsWorkspacesWorkspaceIdRateLimitsGet(
+  public func betaGetWorkspaceRateLimits(
     workspaceId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaWorkspaceRateLimitListResponse {
-    let call = self.call(
-      .betaGetWorkspaceRateLimitsV1OrganizationsWorkspacesWorkspaceIdRateLimitsGet
-    )
-    .path("workspace_id", workspaceId)
-    .query(query)
-    .headers(headers)
-    .timeout(timeout)
+    let call = self.call(.betaGetWorkspaceRateLimits)
+      .path("workspace_id", workspaceId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
     return try await call.decoded(AnthropicBetaWorkspaceRateLimitListResponse.self)
   }
 
-  public func betaGetWorkspaceV1OrganizationsWorkspacesWorkspaceIdGet(
+  public func betaGetWorkspace(
     workspaceId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaWorkspace {
-    let call = self.call(.betaGetWorkspaceV1OrganizationsWorkspacesWorkspaceIdGet)
+    let call = self.call(.betaGetWorkspace)
       .path("workspace_id", workspaceId)
       .query(query)
       .headers(headers)
@@ -1755,14 +1590,14 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await call.decoded(AnthropicBetaWorkspace.self)
   }
 
-  public func betaUpdateWorkspaceV1OrganizationsWorkspacesWorkspaceIdPost(
+  public func betaUpdateWorkspace(
     _ body: AnthropicBetaWorkspaceUpdateParams,
     workspaceId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaWorkspace {
-    let call = self.call(.betaUpdateWorkspaceV1OrganizationsWorkspacesWorkspaceIdPost)
+    let call = self.call(.betaUpdateWorkspace)
       .path("workspace_id", workspaceId)
       .query(query)
       .headers(headers)
@@ -1771,25 +1606,25 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await prepared.decoded(AnthropicBetaWorkspace.self)
   }
 
-  public func betaListWorkspacesV1OrganizationsWorkspacesGet(
+  public func betaListWorkspaces(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaListResponseWorkspace {
-    let call = self.call(.betaListWorkspacesV1OrganizationsWorkspacesGet)
+    let call = self.call(.betaListWorkspaces)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(AnthropicBetaListResponseWorkspace.self)
   }
 
-  public func betaCreateWorkspaceV1OrganizationsWorkspacesPost(
+  public func betaCreateWorkspace(
     _ body: AnthropicBetaWorkspaceCreateParams,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicBetaWorkspace {
-    let call = self.call(.betaCreateWorkspaceV1OrganizationsWorkspacesPost)
+    let call = self.call(.betaCreateWorkspace)
       .query(query)
       .headers(headers)
       .timeout(timeout)
@@ -2095,15 +1930,6 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await call.decoded(AnthropicListSkillsResponse.self)
   }
 
-  @available(*, deprecated, renamed: "skillsList")
-  public func listSkillsV1SkillsGet(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> AnthropicListSkillsResponse {
-    try await self.skillsList(query: query, headers: headers, timeout: timeout)
-  }
-
   public func skillsRetrieve(
     skillId: String,
     query: [URLQueryItem] = [],
@@ -2116,17 +1942,6 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(AnthropicSkill.self)
-  }
-
-  @available(*, deprecated, renamed: "skillsRetrieve")
-  public func getSkillV1SkillsSkillIdGet(
-    skillId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> AnthropicSkill {
-    try await self.skillsRetrieve(
-      skillId: skillId, query: query, headers: headers, timeout: timeout)
   }
 
   public func skillsDelete(
@@ -2143,23 +1958,13 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await call.decoded(AnthropicDeletedSkill.self)
   }
 
-  @available(*, deprecated, renamed: "skillsDelete")
-  public func deleteSkillV1SkillsSkillIdDelete(
-    skillId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> AnthropicDeletedSkill {
-    try await self.skillsDelete(skillId: skillId, query: query, headers: headers, timeout: timeout)
-  }
-
-  public func listSkillVersionsV1SkillsSkillIdVersionsGet(
+  public func listSkillVersions(
     skillId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicListSkillVersionsResponse {
-    let call = self.call(.listSkillVersionsV1SkillsSkillIdVersionsGet)
+    let call = self.call(.listSkillVersions)
       .path("skill_id", skillId)
       .query(query)
       .headers(headers)
@@ -2167,25 +1972,14 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await call.decoded(AnthropicListSkillVersionsResponse.self)
   }
 
-  @available(*, deprecated, renamed: "listSkillVersionsV1SkillsSkillIdVersionsGet")
-  public func betaListSkillVersionsV1SkillsSkillIdVersionsGet(
-    skillId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> AnthropicListSkillVersionsResponse {
-    try await self.listSkillVersionsV1SkillsSkillIdVersionsGet(
-      skillId: skillId, query: query, headers: headers, timeout: timeout)
-  }
-
-  public func getSkillVersionV1SkillsSkillIdVersionsVersionGet(
+  public func getSkillVersion(
     skillId: String,
     version: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicSkillVersion {
-    let call = self.call(.getSkillVersionV1SkillsSkillIdVersionsVersionGet)
+    let call = self.call(.getSkillVersion)
       .path("skill_id", skillId)
       .path("version", version)
       .query(query)
@@ -2194,44 +1988,20 @@ extension HyperProxyProviderService where Operation == AnthropicOperation {
     return try await call.decoded(AnthropicSkillVersion.self)
   }
 
-  @available(*, deprecated, renamed: "getSkillVersionV1SkillsSkillIdVersionsVersionGet")
-  public func betaGetSkillVersionV1SkillsSkillIdVersionsVersionGet(
-    skillId: String,
-    version: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> AnthropicSkillVersion {
-    try await self.getSkillVersionV1SkillsSkillIdVersionsVersionGet(
-      skillId: skillId, version: version, query: query, headers: headers, timeout: timeout)
-  }
-
-  public func deleteSkillVersionV1SkillsSkillIdVersionsVersionDelete(
+  public func deleteSkillVersion(
     skillId: String,
     version: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> AnthropicDeletedSkillVersion {
-    let call = self.call(.deleteSkillVersionV1SkillsSkillIdVersionsVersionDelete)
+    let call = self.call(.deleteSkillVersion)
       .path("skill_id", skillId)
       .path("version", version)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(AnthropicDeletedSkillVersion.self)
-  }
-
-  @available(*, deprecated, renamed: "deleteSkillVersionV1SkillsSkillIdVersionsVersionDelete")
-  public func betaDeleteSkillVersionV1SkillsSkillIdVersionsVersionDelete(
-    skillId: String,
-    version: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> AnthropicDeletedSkillVersion {
-    try await self.deleteSkillVersionV1SkillsSkillIdVersionsVersionDelete(
-      skillId: skillId, version: version, query: query, headers: headers, timeout: timeout)
   }
 
   public func betaArchiveTunnel(

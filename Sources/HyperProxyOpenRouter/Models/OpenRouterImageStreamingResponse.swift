@@ -11,15 +11,54 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterImageStreamingResponse: Codable, Sendable {
-  public var data: OpenRouterImageStreamingResponseData
+  public var data: OpenRouterImageStreamingResponse.DataValue
 
   public init(
-    data: OpenRouterImageStreamingResponseData
+    data: OpenRouterImageStreamingResponse.DataValue
   ) {
     self.data = data
   }
 
   enum CodingKeys: String, CodingKey {
     case data
+  }
+
+  public enum DataValue: Codable, Sendable {
+    case imageGenPartialImageEvent(OpenRouterImageGenPartialImageEvent)
+    case imageGenTextChunkEvent(OpenRouterImageGenTextChunkEvent)
+    case imageGenCompletedEvent(OpenRouterImageGenCompletedEvent)
+    case imageGenStreamErrorEvent(OpenRouterImageGenStreamErrorEvent)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenRouterImageGenPartialImageEvent.self) {
+        self = .imageGenPartialImageEvent(value)
+        return
+      }
+      if let value = try? container.decode(OpenRouterImageGenTextChunkEvent.self) {
+        self = .imageGenTextChunkEvent(value)
+        return
+      }
+      if let value = try? container.decode(OpenRouterImageGenCompletedEvent.self) {
+        self = .imageGenCompletedEvent(value)
+        return
+      }
+      self = .imageGenStreamErrorEvent(
+        try container.decode(OpenRouterImageGenStreamErrorEvent.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .imageGenPartialImageEvent(let value):
+        try container.encode(value)
+      case .imageGenTextChunkEvent(let value):
+        try container.encode(value)
+      case .imageGenCompletedEvent(let value):
+        try container.encode(value)
+      case .imageGenStreamErrorEvent(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

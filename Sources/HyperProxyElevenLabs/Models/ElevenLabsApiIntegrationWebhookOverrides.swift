@@ -11,19 +11,18 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsApiIntegrationWebhookOverrides: Codable, Sendable {
-  public var requestHeaders:
-    [String: ElevenLabsApiIntegrationWebhookOverridesRequestHeadersAnyOf1Value]?
+  public var requestHeaders: [String: ElevenLabsApiIntegrationWebhookOverridesRequestHeadersValue]?
   public var responseFilterMode: ElevenLabsResponseFilterMode?
   public var responseFilters: [String]?
   public var schemaOverrides:
-    [String: ElevenLabsApiIntegrationWebhookOverridesSchemaOverridesAnyOf1Value]?
+    [String: ElevenLabsApiIntegrationWebhookOverridesSchemaOverridesValue]?
 
   public init(
-    requestHeaders: [String: ElevenLabsApiIntegrationWebhookOverridesRequestHeadersAnyOf1Value]? =
+    requestHeaders: [String: ElevenLabsApiIntegrationWebhookOverridesRequestHeadersValue]? =
       nil,
     responseFilterMode: ElevenLabsResponseFilterMode? = nil,
     responseFilters: [String]? = nil,
-    schemaOverrides: [String: ElevenLabsApiIntegrationWebhookOverridesSchemaOverridesAnyOf1Value]? =
+    schemaOverrides: [String: ElevenLabsApiIntegrationWebhookOverridesSchemaOverridesValue]? =
       nil
   ) {
     self.requestHeaders = requestHeaders

@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksGatewayRolloutStrategy: String, Codable, Hashable, Sendable {
-  case rOLLOUTSTRATEGYUNSPECIFIED = "ROLLOUT_STRATEGY_UNSPECIFIED"
-  case rOLLOUTSTRATEGYSTANDARD = "ROLLOUT_STRATEGY_STANDARD"
-  case rOLLOUTSTRATEGYHOTRELOAD = "ROLLOUT_STRATEGY_HOT_RELOAD"
+  case rolloutStrategyUnspecified = "ROLLOUT_STRATEGY_UNSPECIFIED"
+  case rolloutStrategyStandard = "ROLLOUT_STRATEGY_STANDARD"
+  case rolloutStrategyHotReload = "ROLLOUT_STRATEGY_HOT_RELOAD"
 }

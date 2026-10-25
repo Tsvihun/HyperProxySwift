@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct MistralSpanDatasetMappingContract: Codable, Sendable {
   public var mappings: [MistralSpanDatasetMapping]
-  public var version: MistralModel1Version
+  public var version: MistralSpanDatasetMappingContract.Version
 
   public init(
     mappings: [MistralSpanDatasetMapping],
-    version: MistralModel1Version = .value1
+    version: MistralSpanDatasetMappingContract.Version = .value1
   ) {
     self.mappings = mappings
     self.version = version
@@ -25,5 +25,9 @@ public struct MistralSpanDatasetMappingContract: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case mappings
     case version
+  }
+
+  public enum Version: Int, Codable, Hashable, Sendable {
+    case value1 = 1
   }
 }

@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAILiveDecisionCreateParam: Codable, Sendable {
   public var eventId: String
-  public var kind: OpenAILiveDecisionCreateParamKind
+  public var kind: OpenAILiveDecisionCreateParam.Kind
 
   public init(
     eventId: String,
-    kind: OpenAILiveDecisionCreateParamKind
+    kind: OpenAILiveDecisionCreateParam.Kind
   ) {
     self.eventId = eventId
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenAILiveDecisionCreateParam: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case eventId = "event_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case decisionCreate = "decision.create"
   }
 }

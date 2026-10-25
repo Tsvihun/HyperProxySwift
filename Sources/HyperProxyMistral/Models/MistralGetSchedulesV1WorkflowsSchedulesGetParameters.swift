@@ -14,7 +14,7 @@ public struct MistralGetSchedulesV1WorkflowsSchedulesGetParameters: Codable, Sen
   public var nextPageToken: String?
   public var pageSize: Int?
   public var search: String?
-  public var status: MistralGetSchedulesV1WorkflowsSchedulesGetParametersStatus?
+  public var status: MistralGetSchedulesV1WorkflowsSchedulesGetParameters.Status?
   public var userId: String?
   public var workflowName: String?
 
@@ -22,7 +22,7 @@ public struct MistralGetSchedulesV1WorkflowsSchedulesGetParameters: Codable, Sen
     nextPageToken: String? = nil,
     pageSize: Int? = nil,
     search: String? = nil,
-    status: MistralGetSchedulesV1WorkflowsSchedulesGetParametersStatus? = nil,
+    status: MistralGetSchedulesV1WorkflowsSchedulesGetParameters.Status? = nil,
     userId: String? = nil,
     workflowName: String? = nil
   ) {
@@ -41,5 +41,12 @@ public struct MistralGetSchedulesV1WorkflowsSchedulesGetParameters: Codable, Sen
     case status
     case userId = "user_id"
     case workflowName = "workflow_name"
+  }
+
+  public enum Status: String, Codable, Hashable,
+    Sendable
+  {
+    case active = "active"
+    case paused = "paused"
   }
 }

@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIRoleDeletedResource: Codable, Sendable {
   public var deleted: Bool
   public var id: String
-  public var object: OpenAIRoleDeletedResourceObject
+  public var object: OpenAIRoleDeletedResource.Object
 
   public init(
     deleted: Bool,
     id: String,
-    object: OpenAIRoleDeletedResourceObject
+    object: OpenAIRoleDeletedResource.Object
   ) {
     self.deleted = deleted
     self.id = id
@@ -29,5 +29,9 @@ public struct OpenAIRoleDeletedResource: Codable, Sendable {
     case deleted
     case id
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case roleDeleted = "role.deleted"
   }
 }

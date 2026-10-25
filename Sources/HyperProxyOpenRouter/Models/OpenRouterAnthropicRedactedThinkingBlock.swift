@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenRouterAnthropicRedactedThinkingBlock: Codable, Sendable {
   public var data: String
-  public var kind: OpenRouterAnthropicRedactedThinkingBlockKind
+  public var kind: OpenRouterAnthropicRedactedThinkingBlock.Kind
 
   public init(
     data: String,
-    kind: OpenRouterAnthropicRedactedThinkingBlockKind
+    kind: OpenRouterAnthropicRedactedThinkingBlock.Kind
   ) {
     self.data = data
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenRouterAnthropicRedactedThinkingBlock: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case data
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case redactedThinking = "redacted_thinking"
   }
 }

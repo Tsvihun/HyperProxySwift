@@ -14,14 +14,14 @@ public struct OpenAIGroup: Codable, Sendable {
   public var createdAt: Int
   public var id: String
   public var name: String
-  public var object: OpenAIGroupObject
+  public var object: OpenAIGroup.Object
   public var scimManaged: Bool
 
   public init(
     createdAt: Int,
     id: String,
     name: String,
-    object: OpenAIGroupObject,
+    object: OpenAIGroup.Object,
     scimManaged: Bool
   ) {
     self.createdAt = createdAt
@@ -37,5 +37,9 @@ public struct OpenAIGroup: Codable, Sendable {
     case name
     case object
     case scimManaged = "scim_managed"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case group = "group"
   }
 }

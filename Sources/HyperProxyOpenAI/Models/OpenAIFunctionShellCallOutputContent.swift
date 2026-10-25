@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct OpenAIFunctionShellCallOutputContent: Codable, Sendable {
   public var createdBy: String?
-  public var outcome: OpenAIFunctionShellCallOutputContentOutcome
+  public var outcome: OpenAIFunctionShellCallOutputContent.Outcome
   public var stderr: String
   public var stdout: String
 
   public init(
-    outcome: OpenAIFunctionShellCallOutputContentOutcome,
+    outcome: OpenAIFunctionShellCallOutputContent.Outcome,
     stderr: String,
     stdout: String,
     createdBy: String? = nil
@@ -33,5 +33,30 @@ public struct OpenAIFunctionShellCallOutputContent: Codable, Sendable {
     case outcome
     case stderr
     case stdout
+  }
+
+  public enum Outcome: Codable, Sendable {
+    case functionShellCallOutputTimeoutOutcome(OpenAIFunctionShellCallOutputTimeoutOutcome)
+    case functionShellCallOutputExitOutcome(OpenAIFunctionShellCallOutputExitOutcome)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenAIFunctionShellCallOutputTimeoutOutcome.self) {
+        self = .functionShellCallOutputTimeoutOutcome(value)
+        return
+      }
+      self = .functionShellCallOutputExitOutcome(
+        try container.decode(OpenAIFunctionShellCallOutputExitOutcome.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .functionShellCallOutputTimeoutOutcome(let value):
+        try container.encode(value)
+      case .functionShellCallOutputExitOutcome(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

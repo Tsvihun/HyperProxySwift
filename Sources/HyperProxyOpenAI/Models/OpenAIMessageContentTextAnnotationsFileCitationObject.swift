@@ -12,17 +12,17 @@ import HyperProxyCore
 
 public struct OpenAIMessageContentTextAnnotationsFileCitationObject: Codable, Sendable {
   public var endIndex: Int
-  public var fileCitation: OpenAIMessageContentTextAnnotationsFileCitationObjectFileCitation
+  public var fileCitation: OpenAIMessageContentTextAnnotationsFileCitationObject.FileCitation
   public var startIndex: Int
   public var text: String
-  public var kind: OpenAIMessageContentTextAnnotationsFileCitationObjectKind
+  public var kind: OpenAIMessageContentTextAnnotationsFileCitationObject.Kind
 
   public init(
     endIndex: Int,
-    fileCitation: OpenAIMessageContentTextAnnotationsFileCitationObjectFileCitation,
+    fileCitation: OpenAIMessageContentTextAnnotationsFileCitationObject.FileCitation,
     startIndex: Int,
     text: String,
-    kind: OpenAIMessageContentTextAnnotationsFileCitationObjectKind
+    kind: OpenAIMessageContentTextAnnotationsFileCitationObject.Kind
   ) {
     self.endIndex = endIndex
     self.fileCitation = fileCitation
@@ -37,5 +37,25 @@ public struct OpenAIMessageContentTextAnnotationsFileCitationObject: Codable, Se
     case startIndex = "start_index"
     case text
     case kind = "type"
+  }
+
+  public struct FileCitation: Codable, Sendable {
+    public var fileId: String
+
+    public init(
+      fileId: String
+    ) {
+      self.fileId = fileId
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case fileId = "file_id"
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case fileCitation = "file_citation"
   }
 }

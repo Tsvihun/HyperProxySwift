@@ -15,14 +15,14 @@ public struct OpenAIWebhookAgentSessionInProgress: Codable, Sendable {
   public var data: OpenAIAgentSessionEnvironmentPayloadResource
   public var id: String
   public var object: OpenAIWebhookAgentSessionEnvelopeObject
-  public var kind: OpenAIWebhookAgentSessionInProgressAllOf2Kind
+  public var kind: OpenAIWebhookAgentSessionInProgressKind
 
   public init(
     createdAt: Int,
     data: OpenAIAgentSessionEnvironmentPayloadResource,
     id: String,
     object: OpenAIWebhookAgentSessionEnvelopeObject,
-    kind: OpenAIWebhookAgentSessionInProgressAllOf2Kind
+    kind: OpenAIWebhookAgentSessionInProgressKind
   ) {
     self.createdAt = createdAt
     self.data = data
@@ -37,5 +37,23 @@ public struct OpenAIWebhookAgentSessionInProgress: Codable, Sendable {
     case id
     case object
     case kind = "type"
+  }
+
+  public struct AgentSessionInProgress: Codable, Sendable {
+    public var data: OpenAIAgentSessionEnvironmentPayloadResource
+    public var kind: OpenAIWebhookAgentSessionInProgressKind
+
+    public init(
+      data: OpenAIAgentSessionEnvironmentPayloadResource,
+      kind: OpenAIWebhookAgentSessionInProgressKind
+    ) {
+      self.data = data
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case data
+      case kind = "type"
+    }
   }
 }

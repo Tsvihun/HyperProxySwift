@@ -16,7 +16,7 @@ public struct OpenAISessionEventAgentSessionEnvironmentReset: Codable, Sendable 
   public var resetCount: Int64
   public var sessionId: String
   public var turnId: String
-  public var kind: OpenAISessionEventAgentSessionEnvironmentResetKind
+  public var kind: OpenAISessionEventAgentSessionEnvironmentReset.Kind
 
   public init(
     environmentId: String,
@@ -24,7 +24,7 @@ public struct OpenAISessionEventAgentSessionEnvironmentReset: Codable, Sendable 
     resetCount: Int64,
     sessionId: String,
     turnId: String,
-    kind: OpenAISessionEventAgentSessionEnvironmentResetKind
+    kind: OpenAISessionEventAgentSessionEnvironmentReset.Kind
   ) {
     self.environmentId = environmentId
     self.eventId = eventId
@@ -41,5 +41,9 @@ public struct OpenAISessionEventAgentSessionEnvironmentReset: Codable, Sendable 
     case sessionId = "session_id"
     case turnId = "turn_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case agentSessionEnvironmentReset = "agent.session.environment.reset"
   }
 }

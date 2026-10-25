@@ -12,9 +12,9 @@ import HyperProxyCore
 
 public enum ElevenLabsTTSConversationalModel: String, Codable, Hashable, Sendable {
   case elevenTurboV2 = "eleven_turbo_v2"
-  case elevenTurboV25 = "eleven_turbo_v2_5"
+  case elevenTurboV2_5 = "eleven_turbo_v2_5"
   case elevenFlashV2 = "eleven_flash_v2"
-  case elevenFlashV25 = "eleven_flash_v2_5"
+  case elevenFlashV2_5 = "eleven_flash_v2_5"
   case elevenMultilingualV2 = "eleven_multilingual_v2"
   case elevenV3Conversational = "eleven_v3_conversational"
   case elevenV4 = "eleven_v4"

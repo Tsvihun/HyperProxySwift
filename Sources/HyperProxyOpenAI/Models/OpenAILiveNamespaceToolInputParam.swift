@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAILiveNamespaceToolInputParam: Codable, Sendable {
-  public var kind: OpenAILiveNamespaceToolInputParamKind
+  public var kind: OpenAILiveNamespaceToolInputParam.Kind
 
   public init(
-    kind: OpenAILiveNamespaceToolInputParamKind
+    kind: OpenAILiveNamespaceToolInputParam.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case namespace = "namespace"
   }
 }

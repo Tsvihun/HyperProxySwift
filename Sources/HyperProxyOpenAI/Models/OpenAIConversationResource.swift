@@ -14,13 +14,13 @@ public struct OpenAIConversationResource: Codable, Sendable {
   public var createdAt: Int
   public var id: String
   public var metadata: [String: String]
-  public var object: OpenAIConversationResourceObject
+  public var object: OpenAIConversationResource.Object
 
   public init(
     createdAt: Int,
     id: String,
     metadata: [String: String],
-    object: OpenAIConversationResourceObject
+    object: OpenAIConversationResource.Object
   ) {
     self.createdAt = createdAt
     self.id = id
@@ -33,5 +33,9 @@ public struct OpenAIConversationResource: Codable, Sendable {
     case id
     case metadata
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case conversation = "conversation"
   }
 }

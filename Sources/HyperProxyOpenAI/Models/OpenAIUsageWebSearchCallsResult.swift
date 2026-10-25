@@ -12,21 +12,21 @@ import HyperProxyCore
 
 public struct OpenAIUsageWebSearchCallsResult: Codable, Sendable {
   public var apiKeyId: String?
-  public var apiSource: OpenAIUsageWebSearchCallsResultApiSource?
+  public var apiSource: OpenAIUsageWebSearchCallsResult.ApiSource?
   public var contextLevel: String?
   public var model: String?
   public var numModelRequests: Int
   public var numRequests: Int
-  public var object: OpenAIUsageWebSearchCallsResultObject
+  public var object: OpenAIUsageWebSearchCallsResult.Object
   public var projectId: String?
   public var userId: String?
 
   public init(
     numModelRequests: Int,
     numRequests: Int,
-    object: OpenAIUsageWebSearchCallsResultObject,
+    object: OpenAIUsageWebSearchCallsResult.Object,
     apiKeyId: String? = nil,
-    apiSource: OpenAIUsageWebSearchCallsResultApiSource? = nil,
+    apiSource: OpenAIUsageWebSearchCallsResult.ApiSource? = nil,
     contextLevel: String? = nil,
     model: String? = nil,
     projectId: String? = nil,
@@ -53,5 +53,14 @@ public struct OpenAIUsageWebSearchCallsResult: Codable, Sendable {
     case object
     case projectId = "project_id"
     case userId = "user_id"
+  }
+
+  public enum ApiSource: String, Codable, Hashable, Sendable {
+    case agentsApi = "agents_api"
+    case unlabeled = "unlabeled"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case organizationUsageWebSearchesResult = "organization.usage.web_searches.result"
   }
 }

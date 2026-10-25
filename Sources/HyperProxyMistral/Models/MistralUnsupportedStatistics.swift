@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct MistralUnsupportedStatistics: Codable, Sendable {
   public var count: Int
-  public var kind: MistralUnsupportedKind?
+  public var kind: MistralUnsupportedStatistics.Kind?
 
   public init(
     count: Int,
-    kind: MistralUnsupportedKind? = nil
+    kind: MistralUnsupportedStatistics.Kind? = nil
   ) {
     self.count = count
     self.kind = kind
@@ -25,5 +25,9 @@ public struct MistralUnsupportedStatistics: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case count
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case unsupported = "unsupported"
   }
 }

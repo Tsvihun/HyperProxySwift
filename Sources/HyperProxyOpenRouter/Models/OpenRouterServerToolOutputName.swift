@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterServerToolOutputName: Codable, Sendable {
-  public var apiFormat: OpenRouterServerToolOutputNameApiFormat
+  public var apiFormat: OpenRouterServerToolOutputName.ApiFormat
   public var name: String?
   public var kind: String
 
   public init(
-    apiFormat: OpenRouterServerToolOutputNameApiFormat,
+    apiFormat: OpenRouterServerToolOutputName.ApiFormat,
     kind: String,
     name: String? = nil
   ) {
@@ -29,5 +29,11 @@ public struct OpenRouterServerToolOutputName: Codable, Sendable {
     case apiFormat = "api_format"
     case name
     case kind = "type"
+  }
+
+  public enum ApiFormat: String, Codable, Hashable, Sendable {
+    case responses = "responses"
+    case chatCompletions = "chat-completions"
+    case anthropicMessages = "anthropic-messages"
   }
 }

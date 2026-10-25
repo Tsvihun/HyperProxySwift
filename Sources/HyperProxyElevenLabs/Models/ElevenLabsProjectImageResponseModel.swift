@@ -27,7 +27,7 @@ public struct ElevenLabsProjectImageResponseModel: Codable, Sendable {
   public var order: String
   public var pendingTask: ElevenLabsPendingClipTask?
   public var signedUrl: String?
-  public var source: ElevenLabsUploadSource?
+  public var source: ElevenLabsProjectImageResponseModel.Source?
   public var sourceAssetId: String?
   public var sourcePlatformAssetId: String?
   public var thumbnailSignedUrl: String?
@@ -55,7 +55,7 @@ public struct ElevenLabsProjectImageResponseModel: Codable, Sendable {
     opacity: Double? = nil,
     pendingTask: ElevenLabsPendingClipTask? = nil,
     signedUrl: String? = nil,
-    source: ElevenLabsUploadSource? = nil,
+    source: ElevenLabsProjectImageResponseModel.Source? = nil,
     sourceAssetId: String? = nil,
     sourcePlatformAssetId: String? = nil,
     thumbnailSignedUrl: String? = nil,
@@ -113,5 +113,9 @@ public struct ElevenLabsProjectImageResponseModel: Codable, Sendable {
     case kind = "type"
     case updatedAtMs = "updated_at_ms"
     case width
+  }
+
+  public enum Source: String, Codable, Hashable, Sendable {
+    case upload = "upload"
   }
 }

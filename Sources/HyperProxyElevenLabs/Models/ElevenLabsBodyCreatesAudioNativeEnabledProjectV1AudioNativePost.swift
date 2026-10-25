@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct ElevenLabsBodyCreatesAudioNativeEnabledProjectV1AudioNativePost: Codable, Sendable {
   public var applyTextNormalization:
-    ElevenLabsBodyCreatesAudioNativeEnabledProjectV1AudioNativePostApplyTextNormalization?
+    ElevenLabsBodyCreatesAudioNativeEnabledProjectV1AudioNativePost.ApplyTextNormalization?
   public var author: String?
   public var autoConvert: Bool?
   public var backgroundColor: String?
@@ -30,7 +30,7 @@ public struct ElevenLabsBodyCreatesAudioNativeEnabledProjectV1AudioNativePost: C
   public init(
     name: String,
     applyTextNormalization:
-      ElevenLabsBodyCreatesAudioNativeEnabledProjectV1AudioNativePostApplyTextNormalization? = nil,
+      ElevenLabsBodyCreatesAudioNativeEnabledProjectV1AudioNativePost.ApplyTextNormalization? = nil,
     author: String? = nil,
     autoConvert: Bool? = nil,
     backgroundColor: String? = nil,
@@ -75,5 +75,14 @@ public struct ElevenLabsBodyCreatesAudioNativeEnabledProjectV1AudioNativePost: C
     case textColor = "text_color"
     case title
     case voiceId = "voice_id"
+  }
+
+  public enum ApplyTextNormalization:
+    String, Codable, Hashable, Sendable
+  {
+    case auto = "auto"
+    case on = "on"
+    case off = "off"
+    case applyEnglish = "apply_english"
   }
 }

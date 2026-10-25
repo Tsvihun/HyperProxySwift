@@ -16,7 +16,7 @@ public struct GroqChatCompletionMessageExecutedToolsItem: Codable, Sendable {
   public var codeResults: [GroqCodeExecutionResult]?
   public var index: Int
   public var output: String?
-  public var searchResults: GroqChatCompletionMessageExecutedToolsItemSearchResults?
+  public var searchResults: GroqChatCompletionMessageExecutedToolsItem.SearchResults?
   public var kind: String
 
   public init(
@@ -26,7 +26,7 @@ public struct GroqChatCompletionMessageExecutedToolsItem: Codable, Sendable {
     browserResults: [GroqBrowserResult]? = nil,
     codeResults: [GroqCodeExecutionResult]? = nil,
     output: String? = nil,
-    searchResults: GroqChatCompletionMessageExecutedToolsItemSearchResults? = nil
+    searchResults: GroqChatCompletionMessageExecutedToolsItem.SearchResults? = nil
   ) {
     self.arguments = arguments
     self.browserResults = browserResults
@@ -45,5 +45,49 @@ public struct GroqChatCompletionMessageExecutedToolsItem: Codable, Sendable {
     case output
     case searchResults = "search_results"
     case kind = "type"
+  }
+
+  public struct SearchResults: Codable, Sendable {
+    public var images: [String]?
+    public var results: [GroqChatCompletionMessageExecutedToolsItem.SearchResults.ResultsElement]?
+
+    public init(
+      images: [String]? = nil,
+      results: [GroqChatCompletionMessageExecutedToolsItem.SearchResults.ResultsElement]? = nil
+    ) {
+      self.images = images
+      self.results = results
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case images
+      case results
+    }
+
+    public struct ResultsElement: Codable, Sendable {
+      public var content: String?
+      public var score: Double?
+      public var title: String?
+      public var url: String?
+
+      public init(
+        content: String? = nil,
+        score: Double? = nil,
+        title: String? = nil,
+        url: String? = nil
+      ) {
+        self.content = content
+        self.score = score
+        self.title = title
+        self.url = url
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case content
+        case score
+        case title
+        case url
+      }
+    }
   }
 }

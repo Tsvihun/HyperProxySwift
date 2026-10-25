@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsBodyTextToSpeechFullWithTimestamps: Codable, Sendable {
   public var applyLanguageTextNormalization: Bool?
   public var applyTextNormalization:
-    ElevenLabsBodyTextToSpeechFullWithTimestampsApplyTextNormalization?
+    ElevenLabsBodyTextToSpeechFullWithTimestamps.ApplyTextNormalization?
   public var audioEffects: ElevenLabsEffectsSpecInput?
   public var languageCode: String?
   public var modelId: String?
@@ -31,7 +31,7 @@ public struct ElevenLabsBodyTextToSpeechFullWithTimestamps: Codable, Sendable {
   public init(
     text: String,
     applyLanguageTextNormalization: Bool? = nil,
-    applyTextNormalization: ElevenLabsBodyTextToSpeechFullWithTimestampsApplyTextNormalization? =
+    applyTextNormalization: ElevenLabsBodyTextToSpeechFullWithTimestamps.ApplyTextNormalization? =
       nil,
     audioEffects: ElevenLabsEffectsSpecInput? = nil,
     languageCode: String? = nil,
@@ -77,5 +77,13 @@ public struct ElevenLabsBodyTextToSpeechFullWithTimestamps: Codable, Sendable {
     case text
     case usePvcAsIvc = "use_pvc_as_ivc"
     case voiceSettings = "voice_settings"
+  }
+
+  public enum ApplyTextNormalization: String, Codable,
+    Hashable, Sendable
+  {
+    case auto = "auto"
+    case on = "on"
+    case off = "off"
   }
 }

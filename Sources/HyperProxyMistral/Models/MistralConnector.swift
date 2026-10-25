@@ -11,24 +11,24 @@ import Foundation
 import HyperProxyCore
 
 public enum MistralConnector: Codable, Sendable {
-  case mCPConnector(MistralMCPConnector)
-  case hTTPConnector(MistralHTTPConnector)
+  case mcpConnector(MistralMCPConnector)
+  case httpConnector(MistralHTTPConnector)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
     if let value = try? container.decode(MistralMCPConnector.self) {
-      self = .mCPConnector(value)
+      self = .mcpConnector(value)
       return
     }
-    self = .hTTPConnector(try container.decode(MistralHTTPConnector.self))
+    self = .httpConnector(try container.decode(MistralHTTPConnector.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .mCPConnector(let value):
+    case .mcpConnector(let value):
       try container.encode(value)
-    case .hTTPConnector(let value):
+    case .httpConnector(let value):
       try container.encode(value)
     }
   }

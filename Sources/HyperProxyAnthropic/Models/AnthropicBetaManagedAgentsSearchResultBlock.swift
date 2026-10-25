@@ -15,14 +15,14 @@ public struct AnthropicBetaManagedAgentsSearchResultBlock: Codable, Sendable {
   public var content: [AnthropicBetaManagedAgentsSearchResultContent]
   public var source: String
   public var title: String
-  public var kind: AnthropicBetaManagedAgentsSearchResultBlockKind
+  public var kind: AnthropicBetaManagedAgentsSearchResultBlock.Kind
 
   public init(
     citations: AnthropicBetaManagedAgentsSearchResultCitations,
     content: [AnthropicBetaManagedAgentsSearchResultContent],
     source: String,
     title: String,
-    kind: AnthropicBetaManagedAgentsSearchResultBlockKind
+    kind: AnthropicBetaManagedAgentsSearchResultBlock.Kind
   ) {
     self.citations = citations
     self.content = content
@@ -37,5 +37,9 @@ public struct AnthropicBetaManagedAgentsSearchResultBlock: Codable, Sendable {
     case source
     case title
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case searchResult = "search_result"
   }
 }

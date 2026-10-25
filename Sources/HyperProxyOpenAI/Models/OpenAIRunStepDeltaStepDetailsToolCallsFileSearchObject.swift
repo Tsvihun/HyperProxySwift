@@ -14,12 +14,12 @@ public struct OpenAIRunStepDeltaStepDetailsToolCallsFileSearchObject: Codable, S
   public var fileSearch: HyperProxyJSONValue
   public var id: String?
   public var index: Int
-  public var kind: OpenAIRunStepDeltaStepDetailsToolCallsFileSearchObjectKind
+  public var kind: OpenAIRunStepDeltaStepDetailsToolCallsFileSearchObject.Kind
 
   public init(
     fileSearch: HyperProxyJSONValue,
     index: Int,
-    kind: OpenAIRunStepDeltaStepDetailsToolCallsFileSearchObjectKind,
+    kind: OpenAIRunStepDeltaStepDetailsToolCallsFileSearchObject.Kind,
     id: String? = nil
   ) {
     self.fileSearch = fileSearch
@@ -33,5 +33,11 @@ public struct OpenAIRunStepDeltaStepDetailsToolCallsFileSearchObject: Codable, S
     case id
     case index
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case fileSearch = "file_search"
   }
 }

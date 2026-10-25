@@ -11,9 +11,9 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksGatewayTrainingSessionState: String, Codable, Hashable, Sendable {
-  case tRAININGSESSIONSTATEUNSPECIFIED = "TRAINING_SESSION_STATE_UNSPECIFIED"
-  case rEADY = "READY"
-  case fAILED = "FAILED"
-  case dELETING = "DELETING"
-  case eXPIRED = "EXPIRED"
+  case trainingSessionStateUnspecified = "TRAINING_SESSION_STATE_UNSPECIFIED"
+  case ready = "READY"
+  case failed = "FAILED"
+  case deleting = "DELETING"
+  case expired = "EXPIRED"
 }

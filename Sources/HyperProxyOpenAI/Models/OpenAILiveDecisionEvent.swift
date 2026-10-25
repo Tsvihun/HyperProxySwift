@@ -15,18 +15,18 @@ public struct OpenAILiveDecisionEvent: Codable, Sendable {
   public var event: OpenAILiveDecisionCompleted
   public var eventId: String
   public var sourceEventId: String?
-  public var sourceEventType: OpenAILiveDecisionEventSourceEventTypeAnyOf1?
+  public var sourceEventType: OpenAILiveDecisionEventSourceEventTypeVariant?
   public var triggerId: String?
-  public var kind: OpenAILiveDecisionEventKind
+  public var kind: OpenAILiveDecisionEvent.Kind
 
   public init(
     delegationId: String?,
     event: OpenAILiveDecisionCompleted,
     eventId: String,
     sourceEventId: String?,
-    sourceEventType: OpenAILiveDecisionEventSourceEventTypeAnyOf1?,
+    sourceEventType: OpenAILiveDecisionEventSourceEventTypeVariant?,
     triggerId: String?,
-    kind: OpenAILiveDecisionEventKind
+    kind: OpenAILiveDecisionEvent.Kind
   ) {
     self.delegationId = delegationId
     self.event = event
@@ -45,5 +45,9 @@ public struct OpenAILiveDecisionEvent: Codable, Sendable {
     case sourceEventType = "source_event_type"
     case triggerId = "trigger_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case decisionEvent = "decision.event"
   }
 }

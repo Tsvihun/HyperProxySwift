@@ -12,30 +12,27 @@ import HyperProxyCore
 
 public struct TogetherFileResponse: Codable, Sendable {
   public var fileType: TogetherFileType
-  public var processed: Bool
   public var bytes: Int
   public var createdAt: Int
   public var filename: String
   public var id: String
-  public var object: TogetherFileObject
+  public var object: TogetherFileResponse.Object
   public var processingStatus: TogetherFileProcessingStatus?
   public var purpose: TogetherFilePurpose
   public var validationReport: TogetherFileValidationReport?
 
   public init(
     fileType: TogetherFileType,
-    processed: Bool,
     bytes: Int,
     createdAt: Int,
     filename: String,
     id: String,
     purpose: TogetherFilePurpose,
-    object: TogetherFileObject = .file,
+    object: TogetherFileResponse.Object = .file,
     processingStatus: TogetherFileProcessingStatus? = nil,
     validationReport: TogetherFileValidationReport? = nil
   ) {
     self.fileType = fileType
-    self.processed = processed
     self.bytes = bytes
     self.createdAt = createdAt
     self.filename = filename
@@ -48,7 +45,6 @@ public struct TogetherFileResponse: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case fileType = "FileType"
-    case processed = "Processed"
     case bytes
     case createdAt = "created_at"
     case filename
@@ -57,5 +53,9 @@ public struct TogetherFileResponse: Codable, Sendable {
     case processingStatus = "processing_status"
     case purpose
     case validationReport = "validation_report"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case file = "file"
   }
 }

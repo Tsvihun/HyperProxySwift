@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct OpenAIBetaWebSearchPreviewTool: Codable, Sendable {
   public var searchContentTypes: [OpenAIBetaSearchContentType]?
   public var searchContextSize: OpenAIBetaSearchContextSize?
-  public var kind: OpenAIBetaWebSearchPreviewToolKind
+  public var kind: OpenAIBetaWebSearchPreviewTool.Kind
   public var userLocation: OpenAIBetaApproximateLocation?
 
   public init(
-    kind: OpenAIBetaWebSearchPreviewToolKind,
+    kind: OpenAIBetaWebSearchPreviewTool.Kind,
     searchContentTypes: [OpenAIBetaSearchContentType]? = nil,
     searchContextSize: OpenAIBetaSearchContextSize? = nil,
     userLocation: OpenAIBetaApproximateLocation? = nil
@@ -33,5 +33,10 @@ public struct OpenAIBetaWebSearchPreviewTool: Codable, Sendable {
     case searchContextSize = "search_context_size"
     case kind = "type"
     case userLocation = "user_location"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case webSearchPreview = "web_search_preview"
+    case webSearchPreview2025_03_11 = "web_search_preview_2025_03_11"
   }
 }

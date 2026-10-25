@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct MistralIngestDocumentsResponse: Codable, Sendable {
   public var accepted: Int
   public var rejected: Int
-  public var results: [MistralIngestDocumentsResponseResultsItem]
+  public var results: [MistralIngestDocumentsResponse.ResultsElement]
 
   public init(
     accepted: Int,
     rejected: Int,
-    results: [MistralIngestDocumentsResponseResultsItem]
+    results: [MistralIngestDocumentsResponse.ResultsElement]
   ) {
     self.accepted = accepted
     self.rejected = rejected
@@ -29,5 +29,29 @@ public struct MistralIngestDocumentsResponse: Codable, Sendable {
     case accepted
     case rejected
     case results
+  }
+
+  public enum ResultsElement: Codable, Sendable {
+    case acceptedDocumentResponse(MistralAcceptedDocumentResponse)
+    case rejectedDocumentResponse(MistralRejectedDocumentResponse)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(MistralAcceptedDocumentResponse.self) {
+        self = .acceptedDocumentResponse(value)
+        return
+      }
+      self = .rejectedDocumentResponse(try container.decode(MistralRejectedDocumentResponse.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .acceptedDocumentResponse(let value):
+        try container.encode(value)
+      case .rejectedDocumentResponse(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

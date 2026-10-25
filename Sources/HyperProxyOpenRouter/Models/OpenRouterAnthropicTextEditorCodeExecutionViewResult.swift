@@ -12,19 +12,19 @@ import HyperProxyCore
 
 public struct OpenRouterAnthropicTextEditorCodeExecutionViewResult: Codable, Sendable {
   public var content: String
-  public var fileType: OpenRouterAnthropicTextEditorCodeExecutionViewResultFileType
+  public var fileType: OpenRouterAnthropicTextEditorCodeExecutionViewResult.FileType
   public var numLines: Int
   public var startLine: Int
   public var totalLines: Int
-  public var kind: OpenRouterAnthropicTextEditorCodeExecutionViewResultKind
+  public var kind: OpenRouterAnthropicTextEditorCodeExecutionViewResult.Kind
 
   public init(
     content: String,
-    fileType: OpenRouterAnthropicTextEditorCodeExecutionViewResultFileType,
+    fileType: OpenRouterAnthropicTextEditorCodeExecutionViewResult.FileType,
     numLines: Int,
     startLine: Int,
     totalLines: Int,
-    kind: OpenRouterAnthropicTextEditorCodeExecutionViewResultKind
+    kind: OpenRouterAnthropicTextEditorCodeExecutionViewResult.Kind
   ) {
     self.content = content
     self.fileType = fileType
@@ -41,5 +41,19 @@ public struct OpenRouterAnthropicTextEditorCodeExecutionViewResult: Codable, Sen
     case startLine = "start_line"
     case totalLines = "total_lines"
     case kind = "type"
+  }
+
+  public enum FileType: String, Codable, Hashable,
+    Sendable
+  {
+    case text = "text"
+    case image = "image"
+    case pdf = "pdf"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case textEditorCodeExecutionViewResult = "text_editor_code_execution_view_result"
   }
 }

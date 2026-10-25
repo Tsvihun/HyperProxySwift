@@ -14,13 +14,13 @@ public struct OpenAIRealtimeBetaServerEventInputAudioBufferSpeechStarted: Codabl
   public var audioStartMs: Int
   public var eventId: String
   public var itemId: String
-  public var kind: OpenAIRealtimeBetaServerEventInputAudioBufferSpeechStartedKind
+  public var kind: OpenAIRealtimeBetaServerEventInputAudioBufferSpeechStarted.Kind
 
   public init(
     audioStartMs: Int,
     eventId: String,
     itemId: String,
-    kind: OpenAIRealtimeBetaServerEventInputAudioBufferSpeechStartedKind
+    kind: OpenAIRealtimeBetaServerEventInputAudioBufferSpeechStarted.Kind
   ) {
     self.audioStartMs = audioStartMs
     self.eventId = eventId
@@ -33,5 +33,11 @@ public struct OpenAIRealtimeBetaServerEventInputAudioBufferSpeechStarted: Codabl
     case eventId = "event_id"
     case itemId = "item_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case inputAudioBufferSpeechStarted = "input_audio_buffer.speech_started"
   }
 }

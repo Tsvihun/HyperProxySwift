@@ -19,7 +19,7 @@ public struct AnthropicBetaInviteSchema: Codable, Sendable {
   public var rbacGroupIds: [String]
   public var role: AnthropicBetaOrganizationRoleSchema
   public var status: AnthropicBetaInviteStatusSchema
-  public var kind: AnthropicInviteKind
+  public var kind: AnthropicBetaInviteSchema.Kind
 
   public init(
     acceptedAt: String?,
@@ -30,7 +30,7 @@ public struct AnthropicBetaInviteSchema: Codable, Sendable {
     rbacGroupIds: [String],
     role: AnthropicBetaOrganizationRoleSchema,
     status: AnthropicBetaInviteStatusSchema,
-    kind: AnthropicInviteKind = .invite
+    kind: AnthropicBetaInviteSchema.Kind = .invite
   ) {
     self.acceptedAt = acceptedAt
     self.email = email
@@ -53,5 +53,9 @@ public struct AnthropicBetaInviteSchema: Codable, Sendable {
     case role
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case invite = "invite"
   }
 }

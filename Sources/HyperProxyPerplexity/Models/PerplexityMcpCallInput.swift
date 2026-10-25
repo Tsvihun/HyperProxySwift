@@ -19,14 +19,14 @@ public struct PerplexityMcpCallInput: Codable, Sendable {
   public var name: String
   public var output: String?
   public var serverLabel: String
-  public var kind: PerplexityMcpCallInputKind
+  public var kind: PerplexityMcpCallInput.Kind
 
   public init(
     arguments: String,
     id: String,
     name: String,
     serverLabel: String,
-    kind: PerplexityMcpCallInputKind,
+    kind: PerplexityMcpCallInput.Kind,
     approvalRequestId: String? = nil,
     connectorId: String? = nil,
     error: String? = nil,
@@ -53,5 +53,9 @@ public struct PerplexityMcpCallInput: Codable, Sendable {
     case output
     case serverLabel = "server_label"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case mcpCall = "mcp_call"
   }
 }

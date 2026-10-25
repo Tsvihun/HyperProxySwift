@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterAnthropicToolUsesTrigger: Codable, Sendable {
-  public var kind: OpenRouterAnthropicToolUsesTriggerKind
+  public var kind: OpenRouterAnthropicToolUsesTrigger.Kind
   public var value: Int
 
   public init(
-    kind: OpenRouterAnthropicToolUsesTriggerKind,
+    kind: OpenRouterAnthropicToolUsesTrigger.Kind,
     value: Int
   ) {
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenRouterAnthropicToolUsesTrigger: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case kind = "type"
     case value
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case toolUses = "tool_uses"
   }
 }

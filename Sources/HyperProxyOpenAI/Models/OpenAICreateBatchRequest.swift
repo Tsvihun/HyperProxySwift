@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAICreateBatchRequest: Codable, Sendable {
-  public var completionWindow: OpenAICreateBatchRequestCompletionWindow
-  public var endpoint: OpenAICreateBatchRequestEndpoint
+  public var completionWindow: OpenAICreateBatchRequest.CompletionWindow
+  public var endpoint: OpenAICreateBatchRequest.Endpoint
   public var inputFileId: String
   public var metadata: OpenAIMetadata?
   public var outputExpiresAfter: OpenAIBatchFileExpirationAfter?
 
   public init(
-    completionWindow: OpenAICreateBatchRequestCompletionWindow,
-    endpoint: OpenAICreateBatchRequestEndpoint,
+    completionWindow: OpenAICreateBatchRequest.CompletionWindow,
+    endpoint: OpenAICreateBatchRequest.Endpoint,
     inputFileId: String,
     metadata: OpenAIMetadata? = nil,
     outputExpiresAfter: OpenAIBatchFileExpirationAfter? = nil
@@ -37,5 +37,20 @@ public struct OpenAICreateBatchRequest: Codable, Sendable {
     case inputFileId = "input_file_id"
     case metadata
     case outputExpiresAfter = "output_expires_after"
+  }
+
+  public enum CompletionWindow: String, Codable, Hashable, Sendable {
+    case value24h = "24h"
+  }
+
+  public enum Endpoint: String, Codable, Hashable, Sendable {
+    case v1Responses = "/v1/responses"
+    case v1ChatCompletions = "/v1/chat/completions"
+    case v1Embeddings = "/v1/embeddings"
+    case v1Completions = "/v1/completions"
+    case v1Moderations = "/v1/moderations"
+    case v1ImagesGenerations = "/v1/images/generations"
+    case v1ImagesEdits = "/v1/images/edits"
+    case v1Videos = "/v1/videos"
   }
 }

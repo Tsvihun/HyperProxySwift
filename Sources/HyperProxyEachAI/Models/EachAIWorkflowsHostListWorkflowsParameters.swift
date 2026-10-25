@@ -16,8 +16,8 @@ public struct EachAIWorkflowsHostListWorkflowsParameters: Codable, Sendable {
   public var limit: Int?
   public var nodeBased: Bool?
   public var offset: Int?
-  public var sortDirection: EachAIWorkflowsHostListWorkflowsParametersSortDirection?
-  public var sortKey: EachAIWorkflowsHostListWorkflowsParametersSortKey?
+  public var sortDirection: EachAIWorkflowsHostListWorkflowsParameters.SortDirection?
+  public var sortKey: EachAIWorkflowsHostListWorkflowsParameters.SortKey?
 
   public init(
     category: String? = nil,
@@ -25,8 +25,8 @@ public struct EachAIWorkflowsHostListWorkflowsParameters: Codable, Sendable {
     limit: Int? = nil,
     nodeBased: Bool? = nil,
     offset: Int? = nil,
-    sortDirection: EachAIWorkflowsHostListWorkflowsParametersSortDirection? = nil,
-    sortKey: EachAIWorkflowsHostListWorkflowsParametersSortKey? = nil
+    sortDirection: EachAIWorkflowsHostListWorkflowsParameters.SortDirection? = nil,
+    sortKey: EachAIWorkflowsHostListWorkflowsParameters.SortKey? = nil
   ) {
     self.category = category
     self.keyword = keyword
@@ -45,5 +45,20 @@ public struct EachAIWorkflowsHostListWorkflowsParameters: Codable, Sendable {
     case offset
     case sortDirection = "sort_direction"
     case sortKey = "sort_key"
+  }
+
+  public enum SortDirection: String, Codable, Hashable,
+    Sendable
+  {
+    case asc = "asc"
+    case desc = "desc"
+  }
+
+  public enum SortKey: String, Codable, Hashable, Sendable {
+    case name = "name"
+    case createdAt = "created_at"
+    case updatedAt = "updated_at"
+    case triggerCount = "trigger_count"
+    case status = "status"
   }
 }

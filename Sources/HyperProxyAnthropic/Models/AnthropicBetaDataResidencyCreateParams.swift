@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaDataResidencyCreateParams: Codable, Sendable {
-  public var allowedInferenceGeos: AnthropicBetaDataResidencyCreateParamsAllowedInferenceGeos?
+  public var allowedInferenceGeos: AnthropicBetaDataResidencyCreateParams.AllowedInferenceGeos?
   public var defaultInferenceGeo: AnthropicBetaInferenceGeo?
   public var workspaceGeo: AnthropicBetaWorkspaceGeo?
 
   public init(
-    allowedInferenceGeos: AnthropicBetaDataResidencyCreateParamsAllowedInferenceGeos? = nil,
+    allowedInferenceGeos: AnthropicBetaDataResidencyCreateParams.AllowedInferenceGeos? = nil,
     defaultInferenceGeo: AnthropicBetaInferenceGeo? = nil,
     workspaceGeo: AnthropicBetaWorkspaceGeo? = nil
   ) {
@@ -29,5 +29,50 @@ public struct AnthropicBetaDataResidencyCreateParams: Codable, Sendable {
     case allowedInferenceGeos = "allowed_inference_geos"
     case defaultInferenceGeo = "default_inference_geo"
     case workspaceGeo = "workspace_geo"
+  }
+
+  public enum AllowedInferenceGeos: Codable, Sendable {
+    case betaAllowedInferenceGeoArray([AnthropicBetaAllowedInferenceGeo])
+    case unrestrictedAllowedInferenceGeos(
+      AnthropicBetaDataResidencyCreateParams.AllowedInferenceGeos.UnrestrictedAllowedInferenceGeos)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode([AnthropicBetaAllowedInferenceGeo].self) {
+        self = .betaAllowedInferenceGeoArray(value)
+        return
+      }
+      self = .unrestrictedAllowedInferenceGeos(
+        try container.decode(
+          AnthropicBetaDataResidencyCreateParams.AllowedInferenceGeos
+            .UnrestrictedAllowedInferenceGeos.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .betaAllowedInferenceGeoArray(let value):
+        try container.encode(value)
+      case .unrestrictedAllowedInferenceGeos(let value):
+        try container.encode(value)
+      }
+    }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var unrestricted: Self {
+      .unrestrictedAllowedInferenceGeos(.unrestricted)
+    }
+
+    public enum UnrestrictedAllowedInferenceGeos: String, Codable,
+      Hashable, Sendable
+    {
+      case unrestricted = "unrestricted"
+    }
+  }
+}
+
+extension AnthropicBetaDataResidencyCreateParams.AllowedInferenceGeos: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: AnthropicBetaAllowedInferenceGeo...) {
+    self = .betaAllowedInferenceGeoArray(elements)
   }
 }

@@ -18,7 +18,7 @@ public struct TogetherDEModel: Codable, Sendable {
   public var name: String
   public var organizationId: String
   public var projectId: String
-  public var visibility: TogetherDEModelVisibility
+  public var visibility: TogetherDEModel.Visibility
   public var weights: TogetherDEModelWeights
 
   public init(
@@ -26,7 +26,7 @@ public struct TogetherDEModel: Codable, Sendable {
     name: String,
     organizationId: String,
     projectId: String,
-    visibility: TogetherDEModelVisibility,
+    visibility: TogetherDEModel.Visibility,
     weights: TogetherDEModelWeights,
     baseModel: String? = nil,
     baseModelId: String? = nil,
@@ -53,5 +53,10 @@ public struct TogetherDEModel: Codable, Sendable {
     case projectId
     case visibility
     case weights
+  }
+
+  public enum Visibility: String, Codable, Hashable, Sendable {
+    case visibilityPrivate = "VISIBILITY_PRIVATE"
+    case visibilityInternal = "VISIBILITY_INTERNAL"
   }
 }

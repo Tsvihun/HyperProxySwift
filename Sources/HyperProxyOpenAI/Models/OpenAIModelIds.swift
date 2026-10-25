@@ -37,7 +37,7 @@ public enum OpenAIModelIds: Codable, Sendable {
   public static var gpt6Astra: Self { .modelIdsShared(.gpt6Astra) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt61Sol: Self { .modelIdsShared(.gpt61Sol) }
+  public static var gpt6_1Sol: Self { .modelIdsShared(.gpt6_1Sol) }
 
   /// Provider-native value without the schema union wrapper.
   public static var gpt6Sol: Self { .modelIdsShared(.gpt6Sol) }
@@ -46,67 +46,67 @@ public enum OpenAIModelIds: Codable, Sendable {
   public static var gpt6Luna: Self { .modelIdsShared(.gpt6Luna) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt56Sol: Self { .modelIdsShared(.gpt56Sol) }
+  public static var gpt5_6Sol: Self { .modelIdsShared(.gpt5_6Sol) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt56Terra: Self { .modelIdsShared(.gpt56Terra) }
+  public static var gpt5_6Terra: Self { .modelIdsShared(.gpt5_6Terra) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt56Luna: Self { .modelIdsShared(.gpt56Luna) }
+  public static var gpt5_6Luna: Self { .modelIdsShared(.gpt5_6Luna) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt55: Self { .modelIdsShared(.gpt55) }
+  public static var gpt5_5: Self { .modelIdsShared(.gpt5_5) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt5520260423: Self { .modelIdsShared(.gpt5520260423) }
+  public static var gpt5_5_2026_04_23: Self { .modelIdsShared(.gpt5_5_2026_04_23) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt54: Self { .modelIdsShared(.gpt54) }
+  public static var gpt5_4: Self { .modelIdsShared(.gpt5_4) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt54Mini: Self { .modelIdsShared(.gpt54Mini) }
+  public static var gpt5_4Mini: Self { .modelIdsShared(.gpt5_4Mini) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt54Nano: Self { .modelIdsShared(.gpt54Nano) }
+  public static var gpt5_4Nano: Self { .modelIdsShared(.gpt5_4Nano) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt54Mini20260317: Self { .modelIdsShared(.gpt54Mini20260317) }
+  public static var gpt5_4Mini2026_03_17: Self { .modelIdsShared(.gpt5_4Mini2026_03_17) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt54Nano20260317: Self { .modelIdsShared(.gpt54Nano20260317) }
+  public static var gpt5_4Nano2026_03_17: Self { .modelIdsShared(.gpt5_4Nano2026_03_17) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt53ChatLatest: Self { .modelIdsShared(.gpt53ChatLatest) }
+  public static var gpt5_3ChatLatest: Self { .modelIdsShared(.gpt5_3ChatLatest) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt52: Self { .modelIdsShared(.gpt52) }
+  public static var gpt5_2: Self { .modelIdsShared(.gpt5_2) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt5220251211: Self { .modelIdsShared(.gpt5220251211) }
+  public static var gpt5_2_2025_12_11: Self { .modelIdsShared(.gpt5_2_2025_12_11) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt52ChatLatest: Self { .modelIdsShared(.gpt52ChatLatest) }
+  public static var gpt5_2ChatLatest: Self { .modelIdsShared(.gpt5_2ChatLatest) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt52Pro: Self { .modelIdsShared(.gpt52Pro) }
+  public static var gpt5_2Pro: Self { .modelIdsShared(.gpt5_2Pro) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt52Pro20251211: Self { .modelIdsShared(.gpt52Pro20251211) }
+  public static var gpt5_2Pro2025_12_11: Self { .modelIdsShared(.gpt5_2Pro2025_12_11) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt51: Self { .modelIdsShared(.gpt51) }
+  public static var gpt5_1: Self { .modelIdsShared(.gpt5_1) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt5120251113: Self { .modelIdsShared(.gpt5120251113) }
+  public static var gpt5_1_2025_11_13: Self { .modelIdsShared(.gpt5_1_2025_11_13) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt51Codex: Self { .modelIdsShared(.gpt51Codex) }
+  public static var gpt5_1Codex: Self { .modelIdsShared(.gpt5_1Codex) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt51Mini: Self { .modelIdsShared(.gpt51Mini) }
+  public static var gpt5_1Mini: Self { .modelIdsShared(.gpt5_1Mini) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt51ChatLatest: Self { .modelIdsShared(.gpt51ChatLatest) }
+  public static var gpt5_1ChatLatest: Self { .modelIdsShared(.gpt5_1ChatLatest) }
 
   /// Provider-native value without the schema union wrapper.
   public static var gpt5: Self { .modelIdsShared(.gpt5) }
@@ -118,107 +118,113 @@ public enum OpenAIModelIds: Codable, Sendable {
   public static var gpt5Nano: Self { .modelIdsShared(.gpt5Nano) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt520250807: Self { .modelIdsShared(.gpt520250807) }
+  public static var gpt5_2025_08_07: Self { .modelIdsShared(.gpt5_2025_08_07) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt5Mini20250807: Self { .modelIdsShared(.gpt5Mini20250807) }
+  public static var gpt5Mini2025_08_07: Self { .modelIdsShared(.gpt5Mini2025_08_07) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt5Nano20250807: Self { .modelIdsShared(.gpt5Nano20250807) }
+  public static var gpt5Nano2025_08_07: Self { .modelIdsShared(.gpt5Nano2025_08_07) }
 
   /// Provider-native value without the schema union wrapper.
   public static var gpt5ChatLatest: Self { .modelIdsShared(.gpt5ChatLatest) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt41: Self { .modelIdsShared(.gpt41) }
+  public static var gpt4_1: Self { .modelIdsShared(.gpt4_1) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt41Mini: Self { .modelIdsShared(.gpt41Mini) }
+  public static var gpt4_1Mini: Self { .modelIdsShared(.gpt4_1Mini) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt41Nano: Self { .modelIdsShared(.gpt41Nano) }
+  public static var gpt4_1Nano: Self { .modelIdsShared(.gpt4_1Nano) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt4120250414: Self { .modelIdsShared(.gpt4120250414) }
+  public static var gpt4_1_2025_04_14: Self { .modelIdsShared(.gpt4_1_2025_04_14) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt41Mini20250414: Self { .modelIdsShared(.gpt41Mini20250414) }
+  public static var gpt4_1Mini2025_04_14: Self { .modelIdsShared(.gpt4_1Mini2025_04_14) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt41Nano20250414: Self { .modelIdsShared(.gpt41Nano20250414) }
+  public static var gpt4_1Nano2025_04_14: Self { .modelIdsShared(.gpt4_1Nano2025_04_14) }
 
   /// Provider-native value without the schema union wrapper.
   public static var o4Mini: Self { .modelIdsShared(.o4Mini) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var o4Mini20250416: Self { .modelIdsShared(.o4Mini20250416) }
+  public static var o4Mini2025_04_16: Self { .modelIdsShared(.o4Mini2025_04_16) }
 
   /// Provider-native value without the schema union wrapper.
   public static var o3: Self { .modelIdsShared(.o3) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var o320250416: Self { .modelIdsShared(.o320250416) }
+  public static var o3_2025_04_16: Self { .modelIdsShared(.o3_2025_04_16) }
 
   /// Provider-native value without the schema union wrapper.
   public static var o3Mini: Self { .modelIdsShared(.o3Mini) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var o3Mini20250131: Self { .modelIdsShared(.o3Mini20250131) }
+  public static var o3Mini2025_01_31: Self { .modelIdsShared(.o3Mini2025_01_31) }
 
   /// Provider-native value without the schema union wrapper.
   public static var o1: Self { .modelIdsShared(.o1) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var o120241217: Self { .modelIdsShared(.o120241217) }
+  public static var o1_2024_12_17: Self { .modelIdsShared(.o1_2024_12_17) }
 
   /// Provider-native value without the schema union wrapper.
   public static var o1Preview: Self { .modelIdsShared(.o1Preview) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var o1Preview20240912: Self { .modelIdsShared(.o1Preview20240912) }
+  public static var o1Preview2024_09_12: Self { .modelIdsShared(.o1Preview2024_09_12) }
 
   /// Provider-native value without the schema union wrapper.
   public static var o1Mini: Self { .modelIdsShared(.o1Mini) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var o1Mini20240912: Self { .modelIdsShared(.o1Mini20240912) }
+  public static var o1Mini2024_09_12: Self { .modelIdsShared(.o1Mini2024_09_12) }
 
   /// Provider-native value without the schema union wrapper.
   public static var gpt4o: Self { .modelIdsShared(.gpt4o) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt4o20241120: Self { .modelIdsShared(.gpt4o20241120) }
+  public static var gpt4o2024_11_20: Self { .modelIdsShared(.gpt4o2024_11_20) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt4o20240806: Self { .modelIdsShared(.gpt4o20240806) }
+  public static var gpt4o2024_08_06: Self { .modelIdsShared(.gpt4o2024_08_06) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt4o20240513: Self { .modelIdsShared(.gpt4o20240513) }
+  public static var gpt4o2024_05_13: Self { .modelIdsShared(.gpt4o2024_05_13) }
 
   /// Provider-native value without the schema union wrapper.
   public static var gptAudioMini: Self { .modelIdsShared(.gptAudioMini) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gptAudioMini20251215: Self { .modelIdsShared(.gptAudioMini20251215) }
+  public static var gptAudioMini2025_12_15: Self { .modelIdsShared(.gptAudioMini2025_12_15) }
 
   /// Provider-native value without the schema union wrapper.
   public static var gpt4oAudioPreview: Self { .modelIdsShared(.gpt4oAudioPreview) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt4oAudioPreview20241001: Self { .modelIdsShared(.gpt4oAudioPreview20241001) }
+  public static var gpt4oAudioPreview2024_10_01: Self {
+    .modelIdsShared(.gpt4oAudioPreview2024_10_01)
+  }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt4oAudioPreview20241217: Self { .modelIdsShared(.gpt4oAudioPreview20241217) }
+  public static var gpt4oAudioPreview2024_12_17: Self {
+    .modelIdsShared(.gpt4oAudioPreview2024_12_17)
+  }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt4oAudioPreview20250603: Self { .modelIdsShared(.gpt4oAudioPreview20250603) }
+  public static var gpt4oAudioPreview2025_06_03: Self {
+    .modelIdsShared(.gpt4oAudioPreview2025_06_03)
+  }
 
   /// Provider-native value without the schema union wrapper.
   public static var gpt4oMiniAudioPreview: Self { .modelIdsShared(.gpt4oMiniAudioPreview) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt4oMiniAudioPreview20241217: Self {
-    .modelIdsShared(.gpt4oMiniAudioPreview20241217)
+  public static var gpt4oMiniAudioPreview2024_12_17: Self {
+    .modelIdsShared(.gpt4oMiniAudioPreview2024_12_17)
   }
 
   /// Provider-native value without the schema union wrapper.
@@ -228,13 +234,13 @@ public enum OpenAIModelIds: Codable, Sendable {
   public static var gpt4oMiniSearchPreview: Self { .modelIdsShared(.gpt4oMiniSearchPreview) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt4oSearchPreview20250311: Self {
-    .modelIdsShared(.gpt4oSearchPreview20250311)
+  public static var gpt4oSearchPreview2025_03_11: Self {
+    .modelIdsShared(.gpt4oSearchPreview2025_03_11)
   }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt4oMiniSearchPreview20250311: Self {
-    .modelIdsShared(.gpt4oMiniSearchPreview20250311)
+  public static var gpt4oMiniSearchPreview2025_03_11: Self {
+    .modelIdsShared(.gpt4oMiniSearchPreview2025_03_11)
   }
 
   /// Provider-native value without the schema union wrapper.
@@ -247,22 +253,22 @@ public enum OpenAIModelIds: Codable, Sendable {
   public static var gpt4oMini: Self { .modelIdsShared(.gpt4oMini) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt4oMini20240718: Self { .modelIdsShared(.gpt4oMini20240718) }
+  public static var gpt4oMini2024_07_18: Self { .modelIdsShared(.gpt4oMini2024_07_18) }
 
   /// Provider-native value without the schema union wrapper.
   public static var gpt4Turbo: Self { .modelIdsShared(.gpt4Turbo) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt4Turbo20240409: Self { .modelIdsShared(.gpt4Turbo20240409) }
+  public static var gpt4Turbo2024_04_09: Self { .modelIdsShared(.gpt4Turbo2024_04_09) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt40125Preview: Self { .modelIdsShared(.gpt40125Preview) }
+  public static var gpt4_0125Preview: Self { .modelIdsShared(.gpt4_0125Preview) }
 
   /// Provider-native value without the schema union wrapper.
   public static var gpt4TurboPreview: Self { .modelIdsShared(.gpt4TurboPreview) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt41106Preview: Self { .modelIdsShared(.gpt41106Preview) }
+  public static var gpt4_1106Preview: Self { .modelIdsShared(.gpt4_1106Preview) }
 
   /// Provider-native value without the schema union wrapper.
   public static var gpt4VisionPreview: Self { .modelIdsShared(.gpt4VisionPreview) }
@@ -271,38 +277,38 @@ public enum OpenAIModelIds: Codable, Sendable {
   public static var gpt4: Self { .modelIdsShared(.gpt4) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt40314: Self { .modelIdsShared(.gpt40314) }
+  public static var gpt4_0314: Self { .modelIdsShared(.gpt4_0314) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt40613: Self { .modelIdsShared(.gpt40613) }
+  public static var gpt4_0613: Self { .modelIdsShared(.gpt4_0613) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt432k: Self { .modelIdsShared(.gpt432k) }
+  public static var gpt4_32k: Self { .modelIdsShared(.gpt4_32k) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt432k0314: Self { .modelIdsShared(.gpt432k0314) }
+  public static var gpt4_32k0314: Self { .modelIdsShared(.gpt4_32k0314) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt432k0613: Self { .modelIdsShared(.gpt432k0613) }
+  public static var gpt4_32k0613: Self { .modelIdsShared(.gpt4_32k0613) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt35Turbo: Self { .modelIdsShared(.gpt35Turbo) }
+  public static var gpt3_5Turbo: Self { .modelIdsShared(.gpt3_5Turbo) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt35Turbo16k: Self { .modelIdsShared(.gpt35Turbo16k) }
+  public static var gpt3_5Turbo16k: Self { .modelIdsShared(.gpt3_5Turbo16k) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt35Turbo0301: Self { .modelIdsShared(.gpt35Turbo0301) }
+  public static var gpt3_5Turbo0301: Self { .modelIdsShared(.gpt3_5Turbo0301) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt35Turbo0613: Self { .modelIdsShared(.gpt35Turbo0613) }
+  public static var gpt3_5Turbo0613: Self { .modelIdsShared(.gpt3_5Turbo0613) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt35Turbo1106: Self { .modelIdsShared(.gpt35Turbo1106) }
+  public static var gpt3_5Turbo1106: Self { .modelIdsShared(.gpt3_5Turbo1106) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt35Turbo0125: Self { .modelIdsShared(.gpt35Turbo0125) }
+  public static var gpt3_5Turbo0125: Self { .modelIdsShared(.gpt3_5Turbo0125) }
 
   /// Provider-native value without the schema union wrapper.
-  public static var gpt35Turbo16k0613: Self { .modelIdsShared(.gpt35Turbo16k0613) }
+  public static var gpt3_5Turbo16k0613: Self { .modelIdsShared(.gpt3_5Turbo16k0613) }
 }

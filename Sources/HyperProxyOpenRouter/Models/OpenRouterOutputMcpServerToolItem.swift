@@ -15,11 +15,11 @@ public struct OpenRouterOutputMcpServerToolItem: Codable, Sendable {
   public var serverLabel: String?
   public var status: OpenRouterToolCallStatus
   public var toolName: String?
-  public var kind: OpenRouterOutputMcpServerToolItemKind
+  public var kind: OpenRouterOutputMcpServerToolItem.Kind
 
   public init(
     status: OpenRouterToolCallStatus,
-    kind: OpenRouterOutputMcpServerToolItemKind,
+    kind: OpenRouterOutputMcpServerToolItem.Kind,
     id: String? = nil,
     serverLabel: String? = nil,
     toolName: String? = nil
@@ -37,5 +37,9 @@ public struct OpenRouterOutputMcpServerToolItem: Codable, Sendable {
     case status
     case toolName
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case openrouterMcp = "openrouter:mcp"
   }
 }

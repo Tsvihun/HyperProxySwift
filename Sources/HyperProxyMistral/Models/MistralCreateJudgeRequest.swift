@@ -15,7 +15,7 @@ public struct MistralCreateJudgeRequest: Codable, Sendable {
   public var instructions: String
   public var modelName: String
   public var name: String
-  public var output: MistralCreateJudgeRequestOutput
+  public var output: MistralCreateJudgeRequest.Output
   public var tools: [String]
 
   public init(
@@ -23,7 +23,7 @@ public struct MistralCreateJudgeRequest: Codable, Sendable {
     instructions: String,
     modelName: String,
     name: String,
-    output: MistralCreateJudgeRequestOutput,
+    output: MistralCreateJudgeRequest.Output,
     tools: [String]
   ) {
     self.description = description
@@ -41,5 +41,29 @@ public struct MistralCreateJudgeRequest: Codable, Sendable {
     case name
     case output
     case tools
+  }
+
+  public enum Output: Codable, Sendable {
+    case judgeClassificationOutput(MistralJudgeClassificationOutput)
+    case judgeRegressionOutput(MistralJudgeRegressionOutput)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(MistralJudgeClassificationOutput.self) {
+        self = .judgeClassificationOutput(value)
+        return
+      }
+      self = .judgeRegressionOutput(try container.decode(MistralJudgeRegressionOutput.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .judgeClassificationOutput(let value):
+        try container.encode(value)
+      case .judgeRegressionOutput(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

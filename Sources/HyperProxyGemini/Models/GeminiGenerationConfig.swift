@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiGenerationConfig: Codable, Sendable {
-  public var responseJsonSchema: HyperProxyJSONValue?
+  public var _responseJsonSchema: HyperProxyJSONValue?
   public var audioTranscriptionConfig: GeminiAudioTranscriptionConfig?
   public var candidateCount: Int?
   public var enableAffectiveDialog: Bool?
@@ -20,13 +20,13 @@ public struct GeminiGenerationConfig: Codable, Sendable {
   public var imageConfig: GeminiImageConfig?
   public var logprobs: Int?
   public var maxOutputTokens: Int?
-  public var mediaResolution: GeminiGenerationConfigMediaResolution?
+  public var mediaResolution: GeminiGenerationConfig.MediaResolution?
   public var presencePenalty: Double?
   public var responseFormat: GeminiResponseFormatConfig?
-  public var responseJsonSchemac2dcc47d: HyperProxyJSONValue?
+  public var responseJsonSchema: HyperProxyJSONValue?
   public var responseLogprobs: Bool?
   public var responseMimeType: String?
-  public var responseModalities: [GeminiGenerationConfigResponseModalitiesItem]?
+  public var responseModalities: [GeminiGenerationConfig.ResponseModalitiesElement]?
   public var responseSchema: GeminiSchema?
   public var seed: Int?
   public var speechConfig: GeminiSpeechConfig?
@@ -38,7 +38,7 @@ public struct GeminiGenerationConfig: Codable, Sendable {
   public var translationConfig: GeminiTranslationConfig?
 
   public init(
-    responseJsonSchema: HyperProxyJSONValue? = nil,
+    _responseJsonSchema: HyperProxyJSONValue? = nil,
     audioTranscriptionConfig: GeminiAudioTranscriptionConfig? = nil,
     candidateCount: Int? = nil,
     enableAffectiveDialog: Bool? = nil,
@@ -47,13 +47,13 @@ public struct GeminiGenerationConfig: Codable, Sendable {
     imageConfig: GeminiImageConfig? = nil,
     logprobs: Int? = nil,
     maxOutputTokens: Int? = nil,
-    mediaResolution: GeminiGenerationConfigMediaResolution? = nil,
+    mediaResolution: GeminiGenerationConfig.MediaResolution? = nil,
     presencePenalty: Double? = nil,
     responseFormat: GeminiResponseFormatConfig? = nil,
-    responseJsonSchemac2dcc47d: HyperProxyJSONValue? = nil,
+    responseJsonSchema: HyperProxyJSONValue? = nil,
     responseLogprobs: Bool? = nil,
     responseMimeType: String? = nil,
-    responseModalities: [GeminiGenerationConfigResponseModalitiesItem]? = nil,
+    responseModalities: [GeminiGenerationConfig.ResponseModalitiesElement]? = nil,
     responseSchema: GeminiSchema? = nil,
     seed: Int? = nil,
     speechConfig: GeminiSpeechConfig? = nil,
@@ -64,7 +64,7 @@ public struct GeminiGenerationConfig: Codable, Sendable {
     topP: Double? = nil,
     translationConfig: GeminiTranslationConfig? = nil
   ) {
-    self.responseJsonSchema = responseJsonSchema
+    self._responseJsonSchema = _responseJsonSchema
     self.audioTranscriptionConfig = audioTranscriptionConfig
     self.candidateCount = candidateCount
     self.enableAffectiveDialog = enableAffectiveDialog
@@ -76,7 +76,7 @@ public struct GeminiGenerationConfig: Codable, Sendable {
     self.mediaResolution = mediaResolution
     self.presencePenalty = presencePenalty
     self.responseFormat = responseFormat
-    self.responseJsonSchemac2dcc47d = responseJsonSchemac2dcc47d
+    self.responseJsonSchema = responseJsonSchema
     self.responseLogprobs = responseLogprobs
     self.responseMimeType = responseMimeType
     self.responseModalities = responseModalities
@@ -92,7 +92,7 @@ public struct GeminiGenerationConfig: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
-    case responseJsonSchema = "_responseJsonSchema"
+    case _responseJsonSchema
     case audioTranscriptionConfig
     case candidateCount
     case enableAffectiveDialog
@@ -104,7 +104,7 @@ public struct GeminiGenerationConfig: Codable, Sendable {
     case mediaResolution
     case presencePenalty
     case responseFormat
-    case responseJsonSchemac2dcc47d = "responseJsonSchema"
+    case responseJsonSchema
     case responseLogprobs
     case responseMimeType
     case responseModalities
@@ -117,5 +117,19 @@ public struct GeminiGenerationConfig: Codable, Sendable {
     case topK
     case topP
     case translationConfig
+  }
+
+  public enum MediaResolution: String, Codable, Hashable, Sendable {
+    case mediaResolutionUnspecified = "MEDIA_RESOLUTION_UNSPECIFIED"
+    case mediaResolutionLow = "MEDIA_RESOLUTION_LOW"
+    case mediaResolutionMedium = "MEDIA_RESOLUTION_MEDIUM"
+    case mediaResolutionHigh = "MEDIA_RESOLUTION_HIGH"
+  }
+
+  public enum ResponseModalitiesElement: String, Codable, Hashable, Sendable {
+    case modalityUnspecified = "MODALITY_UNSPECIFIED"
+    case text = "TEXT"
+    case image = "IMAGE"
+    case audio = "AUDIO"
   }
 }

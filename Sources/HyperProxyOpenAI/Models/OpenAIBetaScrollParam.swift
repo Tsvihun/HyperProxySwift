@@ -14,14 +14,14 @@ public struct OpenAIBetaScrollParam: Codable, Sendable {
   public var keys: [String]?
   public var scrollX: Int
   public var scrollY: Int
-  public var kind: OpenAIBetaScrollParamKind
+  public var kind: OpenAIBetaScrollParam.Kind
   public var x: Int
   public var y: Int
 
   public init(
     scrollX: Int,
     scrollY: Int,
-    kind: OpenAIBetaScrollParamKind,
+    kind: OpenAIBetaScrollParam.Kind,
     x: Int,
     y: Int,
     keys: [String]? = nil
@@ -41,5 +41,9 @@ public struct OpenAIBetaScrollParam: Codable, Sendable {
     case kind = "type"
     case x
     case y
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case scroll = "scroll"
   }
 }

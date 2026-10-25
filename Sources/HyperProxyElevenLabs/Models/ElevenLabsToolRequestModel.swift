@@ -12,10 +12,10 @@ import HyperProxyCore
 
 public struct ElevenLabsToolRequestModel: Codable, Sendable {
   public var responseMocks: [ElevenLabsToolResponseMockConfigInput]?
-  public var toolConfig: ElevenLabsToolRequestModelToolConfig
+  public var toolConfig: ElevenLabsToolRequestModel.ToolConfig
 
   public init(
-    toolConfig: ElevenLabsToolRequestModelToolConfig,
+    toolConfig: ElevenLabsToolRequestModel.ToolConfig,
     responseMocks: [ElevenLabsToolResponseMockConfigInput]? = nil
   ) {
     self.responseMocks = responseMocks
@@ -25,5 +25,43 @@ public struct ElevenLabsToolRequestModel: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case responseMocks = "response_mocks"
     case toolConfig = "tool_config"
+  }
+
+  public enum ToolConfig: Codable, Sendable {
+    case webhookToolConfigInput(ElevenLabsWebhookToolConfigInput)
+    case clientToolConfigInput(ElevenLabsClientToolConfigInput)
+    case systemToolConfigInput(ElevenLabsSystemToolConfigInput)
+    case mcpToolConfigInput(ElevenLabsMCPToolConfigInput)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsWebhookToolConfigInput.self) {
+        self = .webhookToolConfigInput(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsClientToolConfigInput.self) {
+        self = .clientToolConfigInput(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsSystemToolConfigInput.self) {
+        self = .systemToolConfigInput(value)
+        return
+      }
+      self = .mcpToolConfigInput(try container.decode(ElevenLabsMCPToolConfigInput.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .webhookToolConfigInput(let value):
+        try container.encode(value)
+      case .clientToolConfigInput(let value):
+        try container.encode(value)
+      case .systemToolConfigInput(let value):
+        try container.encode(value)
+      case .mcpToolConfigInput(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

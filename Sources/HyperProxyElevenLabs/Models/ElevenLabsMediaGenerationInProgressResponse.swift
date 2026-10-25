@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsMediaGenerationInProgressResponse: Codable, Sendable {
   public var id: String
-  public var status: ElevenLabsMediaGenerationInProgressResponseStatus
+  public var status: ElevenLabsMediaGenerationInProgressResponse.Status
 
   public init(
     id: String,
-    status: ElevenLabsMediaGenerationInProgressResponseStatus
+    status: ElevenLabsMediaGenerationInProgressResponse.Status
   ) {
     self.id = id
     self.status = status
@@ -25,5 +25,10 @@ public struct ElevenLabsMediaGenerationInProgressResponse: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case id
     case status
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case pending = "pending"
+    case generating = "generating"
   }
 }

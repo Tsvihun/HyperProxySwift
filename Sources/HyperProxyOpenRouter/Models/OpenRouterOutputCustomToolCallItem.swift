@@ -17,18 +17,18 @@ public struct OpenRouterOutputCustomToolCallItem: Codable, Sendable {
   public var input: String
   public var name: String
   public var namespace: String?
-  public var status: OpenRouterOutputCustomToolCallItemStatus?
-  public var kind: OpenRouterOutputCustomToolCallItemKind
+  public var status: OpenRouterOutputCustomToolCallItem.Status?
+  public var kind: OpenRouterOutputCustomToolCallItem.Kind
 
   public init(
     callId: String,
     input: String,
     name: String,
-    kind: OpenRouterOutputCustomToolCallItemKind,
+    kind: OpenRouterOutputCustomToolCallItem.Kind,
     async: Bool? = nil,
     id: String? = nil,
     namespace: String? = nil,
-    status: OpenRouterOutputCustomToolCallItemStatus? = nil
+    status: OpenRouterOutputCustomToolCallItem.Status? = nil
   ) {
     self.async = async
     self.callId = callId
@@ -49,5 +49,15 @@ public struct OpenRouterOutputCustomToolCallItem: Codable, Sendable {
     case namespace
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case customToolCall = "custom_tool_call"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case inProgress = "in_progress"
+    case completed = "completed"
+    case incomplete = "incomplete"
   }
 }

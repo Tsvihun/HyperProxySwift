@@ -17,7 +17,7 @@ public struct MistralGetStreamEventsV1WorkflowsEventsStreamGetParameters: Codabl
   public var metadataFilters: [String: HyperProxyJSONValue]?
   public var parentWorkflowExecId: String?
   public var rootWorkflowExecId: String?
-  public var scope: MistralGetStreamEventsV1WorkflowsEventsStreamGetParametersScope?
+  public var scope: MistralGetStreamEventsV1WorkflowsEventsStreamGetParameters.Scope?
   public var startSeq: Int?
   public var stream: String?
   public var workflowEventTypes: [MistralWorkflowEventType]?
@@ -31,7 +31,7 @@ public struct MistralGetStreamEventsV1WorkflowsEventsStreamGetParameters: Codabl
     metadataFilters: [String: HyperProxyJSONValue]? = nil,
     parentWorkflowExecId: String? = nil,
     rootWorkflowExecId: String? = nil,
-    scope: MistralGetStreamEventsV1WorkflowsEventsStreamGetParametersScope? = nil,
+    scope: MistralGetStreamEventsV1WorkflowsEventsStreamGetParameters.Scope? = nil,
     startSeq: Int? = nil,
     stream: String? = nil,
     workflowEventTypes: [MistralWorkflowEventType]? = nil,
@@ -65,5 +65,13 @@ public struct MistralGetStreamEventsV1WorkflowsEventsStreamGetParameters: Codabl
     case workflowEventTypes = "workflow_event_types"
     case workflowExecId = "workflow_exec_id"
     case workflowName = "workflow_name"
+  }
+
+  public enum Scope: String, Codable,
+    Hashable, Sendable
+  {
+    case activity = "activity"
+    case workflow = "workflow"
+    case value = "*"
   }
 }

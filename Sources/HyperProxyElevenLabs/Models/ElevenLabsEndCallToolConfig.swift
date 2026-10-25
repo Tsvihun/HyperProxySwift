@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsEndCallToolConfig: Codable, Sendable {
-  public var systemToolType: ElevenLabsEndCallSystemToolType?
+  public var systemToolType: ElevenLabsEndCallToolConfig.SystemToolType?
 
   public init(
-    systemToolType: ElevenLabsEndCallSystemToolType? = nil
+    systemToolType: ElevenLabsEndCallToolConfig.SystemToolType? = nil
   ) {
     self.systemToolType = systemToolType
   }
 
   enum CodingKeys: String, CodingKey {
     case systemToolType = "system_tool_type"
+  }
+
+  public enum SystemToolType: String, Codable, Hashable, Sendable {
+    case endCall = "end_call"
   }
 }

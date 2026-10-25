@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsDynamicVariableSchemaOverride: Codable, Sendable {
   public var dynamicVariable: String
-  public var source: ElevenLabsDynamicVariableSource?
+  public var source: ElevenLabsDynamicVariableSchemaOverride.Source?
 
   public init(
     dynamicVariable: String,
-    source: ElevenLabsDynamicVariableSource? = nil
+    source: ElevenLabsDynamicVariableSchemaOverride.Source? = nil
   ) {
     self.dynamicVariable = dynamicVariable
     self.source = source
@@ -25,5 +25,9 @@ public struct ElevenLabsDynamicVariableSchemaOverride: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case dynamicVariable = "dynamic_variable"
     case source
+  }
+
+  public enum Source: String, Codable, Hashable, Sendable {
+    case dynamicVariable = "dynamic_variable"
   }
 }

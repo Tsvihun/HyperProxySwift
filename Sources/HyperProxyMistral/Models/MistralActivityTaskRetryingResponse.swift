@@ -16,7 +16,7 @@ public struct MistralActivityTaskRetryingResponse: Codable, Sendable {
   public var continuedRunId: String?
   public var eventId: String
   public var eventTimestamp: Int
-  public var eventType: MistralACTIVITYTASKRETRYINGEventType
+  public var eventType: MistralActivityTaskRetryingResponse.EventType
   public var firstExecutionRunId: String?
   public var parentWorkflowExecId: String?
   public var rootWorkflowExecId: String
@@ -34,7 +34,7 @@ public struct MistralActivityTaskRetryingResponse: Codable, Sendable {
     workflowExecId: String,
     workflowName: String,
     workflowRunId: String,
-    eventType: MistralACTIVITYTASKRETRYINGEventType = .aCTIVITYTASKRETRYING,
+    eventType: MistralActivityTaskRetryingResponse.EventType = .activityTaskRetrying,
     chainRunId: String? = nil,
     continuedRunId: String? = nil,
     firstExecutionRunId: String? = nil,
@@ -69,5 +69,9 @@ public struct MistralActivityTaskRetryingResponse: Codable, Sendable {
     case workflowExecId = "workflow_exec_id"
     case workflowName = "workflow_name"
     case workflowRunId = "workflow_run_id"
+  }
+
+  public enum EventType: String, Codable, Hashable, Sendable {
+    case activityTaskRetrying = "ACTIVITY_TASK_RETRYING"
   }
 }

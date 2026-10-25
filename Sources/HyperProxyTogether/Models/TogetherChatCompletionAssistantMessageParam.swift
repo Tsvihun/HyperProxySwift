@@ -12,24 +12,21 @@ import HyperProxyCore
 
 public struct TogetherChatCompletionAssistantMessageParam: Codable, Sendable {
   public var content: String?
-  public var functionCall: TogetherChatCompletionAssistantMessageParamFunctionCall?
   public var name: String?
   public var reasoning: String?
   public var reasoningContent: String?
-  public var role: TogetherChatCompletionAssistantMessageParamRole
+  public var role: TogetherChatCompletionAssistantMessageParam.Role
   public var toolCalls: [TogetherToolChoice]?
 
   public init(
-    role: TogetherChatCompletionAssistantMessageParamRole,
+    role: TogetherChatCompletionAssistantMessageParam.Role,
     content: String? = nil,
-    functionCall: TogetherChatCompletionAssistantMessageParamFunctionCall? = nil,
     name: String? = nil,
     reasoning: String? = nil,
     reasoningContent: String? = nil,
     toolCalls: [TogetherToolChoice]? = nil
   ) {
     self.content = content
-    self.functionCall = functionCall
     self.name = name
     self.reasoning = reasoning
     self.reasoningContent = reasoningContent
@@ -39,11 +36,14 @@ public struct TogetherChatCompletionAssistantMessageParam: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case content
-    case functionCall = "function_call"
     case name
     case reasoning
     case reasoningContent = "reasoning_content"
     case role
     case toolCalls = "tool_calls"
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case assistant = "assistant"
   }
 }

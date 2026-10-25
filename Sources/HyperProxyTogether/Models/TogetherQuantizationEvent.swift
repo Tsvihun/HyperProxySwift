@@ -46,4 +46,34 @@ public struct TogetherQuantizationEvent: Codable, Sendable {
     case result
     case kind = "type"
   }
+
+  public struct WithResultAndValueType: Codable, Sendable {
+    public var result: TogetherQuantizationResults?
+    public var kind: TogetherQuantizationEvent.WithResultAndValueType.Kind?
+
+    public init(
+      result: TogetherQuantizationResults? = nil,
+      kind: TogetherQuantizationEvent.WithResultAndValueType.Kind? = nil
+    ) {
+      self.result = result
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case result
+      case kind = "type"
+    }
+
+    public enum Kind: String, Codable, Hashable, Sendable {
+      case shapingError = "SHAPING_ERROR"
+      case shapingUserError = "SHAPING_USER_ERROR"
+      case quantizationJobStart = "QUANTIZATION_JOB_START"
+      case quantizationModelDownloadComplete = "QUANTIZATION_MODEL_DOWNLOAD_COMPLETE"
+      case quantizationMergeComplete = "QUANTIZATION_MERGE_COMPLETE"
+      case quantizationQuantizeProcessStart = "QUANTIZATION_QUANTIZE_PROCESS_START"
+      case quantizationQuantizeProcessComplete = "QUANTIZATION_QUANTIZE_PROCESS_COMPLETE"
+      case quantizationModelUploadComplete = "QUANTIZATION_MODEL_UPLOAD_COMPLETE"
+      case quantizationJobComplete = "QUANTIZATION_JOB_COMPLETE"
+    }
+  }
 }

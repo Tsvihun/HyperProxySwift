@@ -13,10 +13,10 @@ import HyperProxyCore
 public struct AnthropicBetaManagedAgentsAgentToolset20260401Params: Codable, Sendable {
   public var configs: [AnthropicBetaManagedAgentsAgentToolConfigUnionParams]?
   public var defaultConfig: AnthropicBetaManagedAgentsAgentToolsetDefaultConfigParams?
-  public var kind: AnthropicBetaManagedAgentsAgentToolset20260401ParamsKind
+  public var kind: AnthropicBetaManagedAgentsAgentToolset20260401Params.Kind
 
   public init(
-    kind: AnthropicBetaManagedAgentsAgentToolset20260401ParamsKind,
+    kind: AnthropicBetaManagedAgentsAgentToolset20260401Params.Kind,
     configs: [AnthropicBetaManagedAgentsAgentToolConfigUnionParams]? = nil,
     defaultConfig: AnthropicBetaManagedAgentsAgentToolsetDefaultConfigParams? = nil
   ) {
@@ -29,5 +29,11 @@ public struct AnthropicBetaManagedAgentsAgentToolset20260401Params: Codable, Sen
     case configs
     case defaultConfig = "default_config"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case agentToolset20260401 = "agent_toolset_20260401"
   }
 }

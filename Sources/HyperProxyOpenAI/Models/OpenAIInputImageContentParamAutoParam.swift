@@ -15,10 +15,10 @@ public struct OpenAIInputImageContentParamAutoParam: Codable, Sendable {
   public var fileId: String?
   public var imageUrl: String?
   public var promptCacheBreakpoint: OpenAIPromptCacheBreakpointParam?
-  public var kind: OpenAIInputImageContentParamAutoParamKind
+  public var kind: OpenAIInputImageContentParamAutoParam.Kind
 
   public init(
-    kind: OpenAIInputImageContentParamAutoParamKind,
+    kind: OpenAIInputImageContentParamAutoParam.Kind,
     detail: OpenAIDetailEnum? = nil,
     fileId: String? = nil,
     imageUrl: String? = nil,
@@ -37,5 +37,9 @@ public struct OpenAIInputImageContentParamAutoParam: Codable, Sendable {
     case imageUrl = "image_url"
     case promptCacheBreakpoint = "prompt_cache_breakpoint"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case inputImage = "input_image"
   }
 }

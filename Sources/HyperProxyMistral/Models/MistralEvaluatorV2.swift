@@ -15,14 +15,14 @@ public struct MistralEvaluatorV2: Codable, Sendable {
   public var createdAt: String
   public var deletedAt: String?
   public var description: String?
-  public var direction: MistralEvaluatorV2Direction?
+  public var direction: MistralEvaluatorV2.Direction?
   public var goal: MistralGoalSpec?
   public var id: String
   public var maxValue: Double?
   public var minValue: Double?
   public var name: String
   public var numScores: Int
-  public var statistics: [MistralEvaluatorV2StatisticsAnyOf1Item]?
+  public var statistics: [MistralEvaluatorV2StatisticsItem]?
   public var tags: [String]
   public var updatedAt: String
   public var weight: Double?
@@ -37,11 +37,11 @@ public struct MistralEvaluatorV2: Codable, Sendable {
     tags: [String],
     updatedAt: String,
     aggregateGoal: MistralGoalSpec? = nil,
-    direction: MistralEvaluatorV2Direction? = nil,
+    direction: MistralEvaluatorV2.Direction? = nil,
     goal: MistralGoalSpec? = nil,
     maxValue: Double? = nil,
     minValue: Double? = nil,
-    statistics: [MistralEvaluatorV2StatisticsAnyOf1Item]? = nil,
+    statistics: [MistralEvaluatorV2StatisticsItem]? = nil,
     weight: Double? = nil
   ) {
     self.aggregateGoal = aggregateGoal
@@ -77,5 +77,10 @@ public struct MistralEvaluatorV2: Codable, Sendable {
     case tags
     case updatedAt = "updated_at"
     case weight
+  }
+
+  public enum Direction: String, Codable, Hashable, Sendable {
+    case maximize = "maximize"
+    case minimize = "minimize"
   }
 }

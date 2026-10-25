@@ -12,5 +12,5 @@ import HyperProxyCore
 
 public enum OpenAIRankerVersionType: String, Codable, Hashable, Sendable {
   case auto = "auto"
-  case default20241115 = "default-2024-11-15"
+  case default2024_11_15 = "default-2024-11-15"
 }

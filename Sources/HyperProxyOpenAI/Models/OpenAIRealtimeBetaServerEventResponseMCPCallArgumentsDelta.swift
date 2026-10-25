@@ -17,7 +17,7 @@ public struct OpenAIRealtimeBetaServerEventResponseMCPCallArgumentsDelta: Codabl
   public var obfuscation: String?
   public var outputIndex: Int
   public var responseId: String
-  public var kind: OpenAIRealtimeBetaServerEventResponseMCPCallArgumentsDeltaKind
+  public var kind: OpenAIRealtimeBetaServerEventResponseMCPCallArgumentsDelta.Kind
 
   public init(
     delta: String,
@@ -25,7 +25,7 @@ public struct OpenAIRealtimeBetaServerEventResponseMCPCallArgumentsDelta: Codabl
     itemId: String,
     outputIndex: Int,
     responseId: String,
-    kind: OpenAIRealtimeBetaServerEventResponseMCPCallArgumentsDeltaKind,
+    kind: OpenAIRealtimeBetaServerEventResponseMCPCallArgumentsDelta.Kind,
     obfuscation: String? = nil
   ) {
     self.delta = delta
@@ -45,5 +45,11 @@ public struct OpenAIRealtimeBetaServerEventResponseMCPCallArgumentsDelta: Codabl
     case outputIndex = "output_index"
     case responseId = "response_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case responseMcpCallArgumentsDelta = "response.mcp_call_arguments.delta"
   }
 }

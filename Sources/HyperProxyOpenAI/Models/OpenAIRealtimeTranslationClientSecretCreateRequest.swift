@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIRealtimeTranslationClientSecretCreateRequest: Codable, Sendable {
-  public var expiresAfter: OpenAIRealtimeTranslationClientSecretCreateRequestExpiresAfter?
+  public var expiresAfter: OpenAIRealtimeTranslationClientSecretCreateRequest.ExpiresAfter?
   public var session: OpenAIRealtimeTranslationSessionCreateRequest
 
   public init(
     session: OpenAIRealtimeTranslationSessionCreateRequest,
-    expiresAfter: OpenAIRealtimeTranslationClientSecretCreateRequestExpiresAfter? = nil
+    expiresAfter: OpenAIRealtimeTranslationClientSecretCreateRequest.ExpiresAfter? = nil
   ) {
     self.expiresAfter = expiresAfter
     self.session = session
@@ -25,5 +25,29 @@ public struct OpenAIRealtimeTranslationClientSecretCreateRequest: Codable, Senda
   enum CodingKeys: String, CodingKey {
     case expiresAfter = "expires_after"
     case session
+  }
+
+  public struct ExpiresAfter: Codable, Sendable {
+    public var anchor: OpenAIRealtimeTranslationClientSecretCreateRequest.ExpiresAfter.Anchor?
+    public var seconds: Int64?
+
+    public init(
+      anchor: OpenAIRealtimeTranslationClientSecretCreateRequest.ExpiresAfter.Anchor? = nil,
+      seconds: Int64? = nil
+    ) {
+      self.anchor = anchor
+      self.seconds = seconds
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case anchor
+      case seconds
+    }
+
+    public enum Anchor: String, Codable,
+      Hashable, Sendable
+    {
+      case createdAt = "created_at"
+    }
   }
 }

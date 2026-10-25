@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsPhoneNumberDynamicVariableTransferDestination: Codable, Sendable {
   public var phoneNumber: String
-  public var kind: ElevenLabsPhoneDynamicVariableKind?
+  public var kind: ElevenLabsPhoneNumberDynamicVariableTransferDestination.Kind?
 
   public init(
     phoneNumber: String,
-    kind: ElevenLabsPhoneDynamicVariableKind? = nil
+    kind: ElevenLabsPhoneNumberDynamicVariableTransferDestination.Kind? = nil
   ) {
     self.phoneNumber = phoneNumber
     self.kind = kind
@@ -25,5 +25,9 @@ public struct ElevenLabsPhoneNumberDynamicVariableTransferDestination: Codable, 
   enum CodingKeys: String, CodingKey {
     case phoneNumber = "phone_number"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case phoneDynamicVariable = "phone_dynamic_variable"
   }
 }

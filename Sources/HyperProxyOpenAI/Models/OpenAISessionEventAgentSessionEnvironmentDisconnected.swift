@@ -15,14 +15,14 @@ public struct OpenAISessionEventAgentSessionEnvironmentDisconnected: Codable, Se
   public var eventId: String
   public var sessionId: String
   public var turnId: String
-  public var kind: OpenAISessionEventAgentSessionEnvironmentDisconnectedKind
+  public var kind: OpenAISessionEventAgentSessionEnvironmentDisconnected.Kind
 
   public init(
     environment: OpenAISessionEnvironmentStateResource,
     eventId: String,
     sessionId: String,
     turnId: String,
-    kind: OpenAISessionEventAgentSessionEnvironmentDisconnectedKind
+    kind: OpenAISessionEventAgentSessionEnvironmentDisconnected.Kind
   ) {
     self.environment = environment
     self.eventId = eventId
@@ -37,5 +37,11 @@ public struct OpenAISessionEventAgentSessionEnvironmentDisconnected: Codable, Se
     case sessionId = "session_id"
     case turnId = "turn_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case agentSessionEnvironmentDisconnected = "agent.session.environment.disconnected"
   }
 }

@@ -46,4 +46,9 @@ public enum OpenAIBetaPersonalityEnum: RawRepresentable, Codable, Hashable, Send
     var container = encoder.singleValueContainer()
     try container.encode(rawValue)
   }
+
+  public enum Preset: String, Codable, Hashable, Sendable {
+    case friendly = "friendly"
+    case pragmatic = "pragmatic"
+  }
 }

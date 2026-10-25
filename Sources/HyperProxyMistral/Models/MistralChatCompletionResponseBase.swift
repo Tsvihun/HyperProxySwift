@@ -38,4 +38,18 @@ public struct MistralChatCompletionResponseBase: Codable, Sendable {
     case object
     case usage
   }
+
+  public struct ChatCompletionResponseBase: Codable, Sendable {
+    public var created: Int?
+
+    public init(
+      created: Int? = nil
+    ) {
+      self.created = created
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case created
+    }
+  }
 }

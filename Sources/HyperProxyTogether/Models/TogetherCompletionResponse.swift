@@ -15,7 +15,7 @@ public struct TogetherCompletionResponse: Codable, Sendable {
   public var created: Int
   public var id: String
   public var model: String
-  public var object: TogetherTextCompletionObject
+  public var object: TogetherCompletionResponse.Object
   public var prompt: TogetherPromptPart
   public var usage: TogetherUsageData?
 
@@ -26,7 +26,7 @@ public struct TogetherCompletionResponse: Codable, Sendable {
     model: String,
     prompt: TogetherPromptPart,
     usage: TogetherUsageData?,
-    object: TogetherTextCompletionObject = .textCompletion
+    object: TogetherCompletionResponse.Object = .textCompletion
   ) {
     self.choices = choices
     self.created = created
@@ -45,5 +45,9 @@ public struct TogetherCompletionResponse: Codable, Sendable {
     case object
     case prompt
     case usage
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case textCompletion = "text.completion"
   }
 }

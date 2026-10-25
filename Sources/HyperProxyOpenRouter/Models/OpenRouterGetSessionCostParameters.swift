@@ -15,14 +15,14 @@ public struct OpenRouterGetSessionCostParameters: Codable, Sendable {
   public var limit: Int?
   public var model: String?
   public var offset: Int?
-  public var turnRange: OpenRouterGetSessionCostParametersTurnRange?
+  public var turnRange: OpenRouterGetSessionCostParameters.TurnRange?
 
   public init(
     appSlug: String? = nil,
     limit: Int? = nil,
     model: String? = nil,
     offset: Int? = nil,
-    turnRange: OpenRouterGetSessionCostParametersTurnRange? = nil
+    turnRange: OpenRouterGetSessionCostParameters.TurnRange? = nil
   ) {
     self.appSlug = appSlug
     self.limit = limit
@@ -37,5 +37,12 @@ public struct OpenRouterGetSessionCostParameters: Codable, Sendable {
     case model
     case offset
     case turnRange = "turn_range"
+  }
+
+  public enum TurnRange: String, Codable, Hashable, Sendable {
+    case value1Turn = "1-turn"
+    case value2_9Turns = "2-9-turns"
+    case value10_49Turns = "10-49-turns"
+    case value50PlusTurns = "50-plus-turns"
   }
 }

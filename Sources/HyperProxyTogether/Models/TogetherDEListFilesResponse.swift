@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct TogetherDEListFilesResponse: Codable, Sendable {
   public var data: [TogetherDEListFilesResponseFile]
   public var nextCursor: String?
-  public var object: TogetherListObjectc5330887
+  public var object: TogetherListObject
   public var revisionCreatedAt: String?
   public var revisionId: String?
   public var totalSizeBytes: String?
 
   public init(
     data: [TogetherDEListFilesResponseFile],
-    object: TogetherListObjectc5330887 = .list,
+    object: TogetherListObject = .list,
     nextCursor: String? = nil,
     revisionCreatedAt: String? = nil,
     revisionId: String? = nil,

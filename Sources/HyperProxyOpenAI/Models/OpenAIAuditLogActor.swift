@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIAuditLogActor: Codable, Sendable {
   public var apiKey: OpenAIAuditLogActorApiKey?
   public var session: OpenAIAuditLogActorSession?
-  public var kind: OpenAIAuditLogActorKind?
+  public var kind: OpenAIAuditLogActor.Kind?
 
   public init(
     apiKey: OpenAIAuditLogActorApiKey? = nil,
     session: OpenAIAuditLogActorSession? = nil,
-    kind: OpenAIAuditLogActorKind? = nil
+    kind: OpenAIAuditLogActor.Kind? = nil
   ) {
     self.apiKey = apiKey
     self.session = session
@@ -29,5 +29,10 @@ public struct OpenAIAuditLogActor: Codable, Sendable {
     case apiKey = "api_key"
     case session
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case session = "session"
+    case apiKey = "api_key"
   }
 }

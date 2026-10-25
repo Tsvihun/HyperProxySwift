@@ -10,4 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public typealias AnthropicBetaIterationsUsage = [AnthropicBetaIterationsUsageAnyOf1Item]?
+public typealias AnthropicBetaIterationsUsage = [AnthropicBetaIterationsUsageItem]?

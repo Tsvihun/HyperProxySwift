@@ -12,9 +12,9 @@ import HyperProxyCore
 
 public struct OpenRouterGetModelsParameters: Codable, Sendable {
   public var arch: String?
-  public var category: OpenRouterGetModelsParametersCategory?
+  public var category: OpenRouterGetModelsParameters.Category?
   public var context: Int?
-  public var distillable: OpenRouterGetModelsParametersDistillable?
+  public var distillable: OpenRouterGetModelsParameters.Distillable?
   public var inputModalities: String?
   public var limit: Int?
   public var maxAgeDays: Int?
@@ -36,18 +36,18 @@ public struct OpenRouterGetModelsParameters: Codable, Sendable {
   public var outputModalities: String?
   public var providers: String?
   public var q: String?
-  public var region: OpenRouterGetModelsParametersRegion?
-  public var sort: OpenRouterGetModelsParametersSort?
+  public var region: OpenRouterGetModelsParameters.Region?
+  public var sort: OpenRouterGetModelsParameters.Sort?
   public var supportedParameters: String?
   public var useRss: String?
   public var useRssChatLinks: String?
-  public var zdr: OpenRouterGetModelsParametersZdr?
+  public var zdr: OpenRouterGetModelsParameters.Zdr?
 
   public init(
     arch: String? = nil,
-    category: OpenRouterGetModelsParametersCategory? = nil,
+    category: OpenRouterGetModelsParameters.Category? = nil,
     context: Int? = nil,
-    distillable: OpenRouterGetModelsParametersDistillable? = nil,
+    distillable: OpenRouterGetModelsParameters.Distillable? = nil,
     inputModalities: String? = nil,
     limit: Int? = nil,
     maxAgeDays: Int? = nil,
@@ -69,12 +69,12 @@ public struct OpenRouterGetModelsParameters: Codable, Sendable {
     outputModalities: String? = nil,
     providers: String? = nil,
     q: String? = nil,
-    region: OpenRouterGetModelsParametersRegion? = nil,
-    sort: OpenRouterGetModelsParametersSort? = nil,
+    region: OpenRouterGetModelsParameters.Region? = nil,
+    sort: OpenRouterGetModelsParameters.Sort? = nil,
     supportedParameters: String? = nil,
     useRss: String? = nil,
     useRssChatLinks: String? = nil,
-    zdr: OpenRouterGetModelsParametersZdr? = nil
+    zdr: OpenRouterGetModelsParameters.Zdr? = nil
   ) {
     self.arch = arch
     self.category = category
@@ -141,5 +141,49 @@ public struct OpenRouterGetModelsParameters: Codable, Sendable {
     case useRss = "use_rss"
     case useRssChatLinks = "use_rss_chat_links"
     case zdr
+  }
+
+  public enum Category: String, Codable, Hashable, Sendable {
+    case programming = "programming"
+    case roleplay = "roleplay"
+    case marketing = "marketing"
+    case marketingSeo = "marketing/seo"
+    case technology = "technology"
+    case science = "science"
+    case translation = "translation"
+    case legal = "legal"
+    case finance = "finance"
+    case health = "health"
+    case trivia = "trivia"
+    case academia = "academia"
+  }
+
+  public enum Distillable: String, Codable, Hashable, Sendable {
+    case trueValue = "true"
+    case falseValue = "false"
+  }
+
+  public enum Region: String, Codable, Hashable, Sendable {
+    case eu = "eu"
+    case us = "us"
+  }
+
+  public enum Sort: String, Codable, Hashable, Sendable {
+    case mostPopular = "most-popular"
+    case newest = "newest"
+    case topWeekly = "top-weekly"
+    case pricingLowToHigh = "pricing-low-to-high"
+    case pricingHighToLow = "pricing-high-to-low"
+    case contextHighToLow = "context-high-to-low"
+    case throughputHighToLow = "throughput-high-to-low"
+    case latencyLowToHigh = "latency-low-to-high"
+    case intelligenceHighToLow = "intelligence-high-to-low"
+    case codingHighToLow = "coding-high-to-low"
+    case agenticHighToLow = "agentic-high-to-low"
+    case designArenaEloHighToLow = "design-arena-elo-high-to-low"
+  }
+
+  public enum Zdr: String, Codable, Hashable, Sendable {
+    case trueValue = "true"
   }
 }

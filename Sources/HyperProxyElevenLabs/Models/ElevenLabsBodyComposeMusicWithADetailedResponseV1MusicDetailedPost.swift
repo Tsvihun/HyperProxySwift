@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsBodyComposeMusicWithADetailedResponseV1MusicDetailedPost: Codable, Sendable
 {
   public var compositionPlan:
-    ElevenLabsBodyComposeMusicWithADetailedResponseV1MusicDetailedPostCompositionPlanAnyOf1?
+    ElevenLabsBodyComposeMusicWithADetailedResponseV1MusicDetailedPostCompositionPlanVariant?
   public var finetuneId: String?
   public var finetuneStrength: Double?
   public var forceInstrumental: Bool?
@@ -21,7 +21,7 @@ public struct ElevenLabsBodyComposeMusicWithADetailedResponseV1MusicDetailedPost
   public var lyricsText: String?
   public var modelId: ElevenLabsMusicModelID?
   public var modelStylePrefix:
-    ElevenLabsBodyComposeMusicWithADetailedResponseV1MusicDetailedPostModelStylePrefix?
+    ElevenLabsBodyComposeMusicWithADetailedResponseV1MusicDetailedPost.ModelStylePrefix?
   public var musicLengthMs: Int?
   public var musicPrompt: ElevenLabsMusicPrompt?
   public var prompt: String?
@@ -35,7 +35,7 @@ public struct ElevenLabsBodyComposeMusicWithADetailedResponseV1MusicDetailedPost
 
   public init(
     compositionPlan:
-      ElevenLabsBodyComposeMusicWithADetailedResponseV1MusicDetailedPostCompositionPlanAnyOf1? =
+      ElevenLabsBodyComposeMusicWithADetailedResponseV1MusicDetailedPostCompositionPlanVariant? =
       nil,
     finetuneId: String? = nil,
     finetuneStrength: Double? = nil,
@@ -44,7 +44,7 @@ public struct ElevenLabsBodyComposeMusicWithADetailedResponseV1MusicDetailedPost
     lyricsText: String? = nil,
     modelId: ElevenLabsMusicModelID? = nil,
     modelStylePrefix:
-      ElevenLabsBodyComposeMusicWithADetailedResponseV1MusicDetailedPostModelStylePrefix? = nil,
+      ElevenLabsBodyComposeMusicWithADetailedResponseV1MusicDetailedPost.ModelStylePrefix? = nil,
     musicLengthMs: Int? = nil,
     musicPrompt: ElevenLabsMusicPrompt? = nil,
     prompt: String? = nil,
@@ -95,5 +95,12 @@ public struct ElevenLabsBodyComposeMusicWithADetailedResponseV1MusicDetailedPost
     case usePhoneticNames = "use_phonetic_names"
     case withTimestamps = "with_timestamps"
     case withWaveformVisual = "with_waveform_visual"
+  }
+
+  public enum ModelStylePrefix:
+    String, Codable, Hashable, Sendable
+  {
+    case music = "music"
+    case sfx = "sfx"
   }
 }

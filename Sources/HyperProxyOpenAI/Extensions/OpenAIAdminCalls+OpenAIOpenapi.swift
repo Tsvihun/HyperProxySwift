@@ -988,7 +988,7 @@ extension OpenAIAdminCalls {
     return try await call.decoded(OpenAIProjectServiceAccountDeleteResponse.self)
   }
 
-  public func createanAPIkeyforaserviceaccount(
+  public func createanApIkeyforaserviceaccount(
     _ body: OpenAICreateProjectServiceAccountApiKeyBody,
     projectId: String,
     serviceAccountId: String,
@@ -996,7 +996,7 @@ extension OpenAIAdminCalls {
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> OpenAIServiceAccountApiKeyBody {
-    let call = self.service.call(.createanAPIkeyforaserviceaccount)
+    let call = self.service.call(.createanApIkeyforaserviceaccount)
       .path("project_id", projectId)
       .path("service_account_id", serviceAccountId)
       .query(query)

@@ -16,10 +16,10 @@ public struct GeminiEnvironment: Codable, Sendable {
   public var id: String?
   public var lastAccessed: String?
   public var networkAllowlist: GeminiEnvironmentNetworkEgressAllowlist?
-  public var networkMode: GeminiEnvironmentNetworkMode?
+  public var networkMode: GeminiEnvironment.NetworkMode?
   public var sizeBytes: String?
   public var sources: [GeminiSource]?
-  public var status: GeminiEnvironmentStatus?
+  public var status: GeminiEnvironment.Status?
   public var updated: String?
 
   public init(
@@ -28,10 +28,10 @@ public struct GeminiEnvironment: Codable, Sendable {
     id: String? = nil,
     lastAccessed: String? = nil,
     networkAllowlist: GeminiEnvironmentNetworkEgressAllowlist? = nil,
-    networkMode: GeminiEnvironmentNetworkMode? = nil,
+    networkMode: GeminiEnvironment.NetworkMode? = nil,
     sizeBytes: String? = nil,
     sources: [GeminiSource]? = nil,
-    status: GeminiEnvironmentStatus? = nil,
+    status: GeminiEnvironment.Status? = nil,
     updated: String? = nil
   ) {
     self.created = created
@@ -57,5 +57,16 @@ public struct GeminiEnvironment: Codable, Sendable {
     case sources
     case status
     case updated
+  }
+
+  public enum NetworkMode: String, Codable, Hashable, Sendable {
+    case networkModeUnspecified = "NETWORK_MODE_UNSPECIFIED"
+    case disabled = "DISABLED"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case statusUnspecified = "STATUS_UNSPECIFIED"
+    case active = "ACTIVE"
+    case expired = "EXPIRED"
   }
 }

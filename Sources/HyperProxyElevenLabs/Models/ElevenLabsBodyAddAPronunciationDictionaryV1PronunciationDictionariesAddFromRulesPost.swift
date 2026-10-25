@@ -16,17 +16,21 @@ public struct ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionari
   public var description: String?
   public var name: String
   public var rules:
-    [ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionariesAddFromRulesPostRulesItem]
+    [ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionariesAddFromRulesPost
+      .RulesElement]
   public var workspaceAccess:
-    ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionariesAddFromRulesPostWorkspaceAccess?
+    ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionariesAddFromRulesPost
+      .WorkspaceAccess?
 
   public init(
     name: String,
     rules:
-      [ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionariesAddFromRulesPostRulesItem],
+      [ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionariesAddFromRulesPost
+      .RulesElement],
     description: String? = nil,
     workspaceAccess:
-      ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionariesAddFromRulesPostWorkspaceAccess? =
+      ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionariesAddFromRulesPost
+      .WorkspaceAccess? =
       nil
   ) {
     self.description = description
@@ -40,5 +44,47 @@ public struct ElevenLabsBodyAddAPronunciationDictionaryV1PronunciationDictionari
     case name
     case rules
     case workspaceAccess = "workspace_access"
+  }
+
+  public enum
+    RulesElement:
+      Codable, Sendable
+  {
+    case pronunciationDictionaryAliasRuleRequestModel(
+      ElevenLabsPronunciationDictionaryAliasRuleRequestModel)
+    case pronunciationDictionaryPhonemeRuleRequestModel(
+      ElevenLabsPronunciationDictionaryPhonemeRuleRequestModel)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(
+        ElevenLabsPronunciationDictionaryAliasRuleRequestModel.self)
+      {
+        self = .pronunciationDictionaryAliasRuleRequestModel(value)
+        return
+      }
+      self = .pronunciationDictionaryPhonemeRuleRequestModel(
+        try container.decode(ElevenLabsPronunciationDictionaryPhonemeRuleRequestModel.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .pronunciationDictionaryAliasRuleRequestModel(let value):
+        try container.encode(value)
+      case .pronunciationDictionaryPhonemeRuleRequestModel(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum
+    WorkspaceAccess:
+      String, Codable, Hashable, Sendable
+  {
+    case admin = "admin"
+    case editor = "editor"
+    case commenter = "commenter"
+    case viewer = "viewer"
   }
 }

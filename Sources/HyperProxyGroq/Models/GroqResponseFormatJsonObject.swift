@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct GroqResponseFormatJsonObject: Codable, Sendable {
-  public var kind: GroqResponseFormatJsonObjectKind
+  public var kind: GroqResponseFormatJsonObject.Kind
 
   public init(
-    kind: GroqResponseFormatJsonObjectKind
+    kind: GroqResponseFormatJsonObject.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case jsonObject = "json_object"
   }
 }

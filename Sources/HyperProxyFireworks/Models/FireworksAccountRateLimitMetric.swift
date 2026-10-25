@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksAccountRateLimitMetric: String, Codable, Hashable, Sendable {
-  case mETRICUNSPECIFIED = "METRIC_UNSPECIFIED"
-  case tOKENSGENERATED = "TOKENS_GENERATED"
-  case tOKENSPROMPT = "TOKENS_PROMPT"
-  case tOKENSCACHEADJUSTEDPROMPT = "TOKENS_CACHE_ADJUSTED_PROMPT"
-  case tOKENSCACHEDPROMPT = "TOKENS_CACHED_PROMPT"
-  case tOKENSUNCACHEDPROMPT = "TOKENS_UNCACHED_PROMPT"
+  case metricUnspecified = "METRIC_UNSPECIFIED"
+  case tokensGenerated = "TOKENS_GENERATED"
+  case tokensPrompt = "TOKENS_PROMPT"
+  case tokensCacheAdjustedPrompt = "TOKENS_CACHE_ADJUSTED_PROMPT"
+  case tokensCachedPrompt = "TOKENS_CACHED_PROMPT"
+  case tokensUncachedPrompt = "TOKENS_UNCACHED_PROMPT"
 }

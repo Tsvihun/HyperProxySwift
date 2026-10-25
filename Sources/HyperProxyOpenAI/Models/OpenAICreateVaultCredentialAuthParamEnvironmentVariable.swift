@@ -14,13 +14,13 @@ public struct OpenAICreateVaultCredentialAuthParamEnvironmentVariable: Codable, 
   public var networking: OpenAIVaultCredentialNetworkingParam
   public var secretName: String
   public var secretValue: String
-  public var kind: OpenAICreateVaultCredentialAuthParamEnvironmentVariableKind
+  public var kind: OpenAICreateVaultCredentialAuthParamEnvironmentVariable.Kind
 
   public init(
     networking: OpenAIVaultCredentialNetworkingParam,
     secretName: String,
     secretValue: String,
-    kind: OpenAICreateVaultCredentialAuthParamEnvironmentVariableKind
+    kind: OpenAICreateVaultCredentialAuthParamEnvironmentVariable.Kind
   ) {
     self.networking = networking
     self.secretName = secretName
@@ -33,5 +33,11 @@ public struct OpenAICreateVaultCredentialAuthParamEnvironmentVariable: Codable, 
     case secretName = "secret_name"
     case secretValue = "secret_value"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case environmentVariable = "environment_variable"
   }
 }

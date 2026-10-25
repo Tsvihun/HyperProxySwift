@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIEvalCustomDataSourceConfig: Codable, Sendable {
   public var schema: [String: HyperProxyJSONValue]
-  public var kind: OpenAIEvalCustomDataSourceConfigKind
+  public var kind: OpenAIEvalCustomDataSourceConfig.Kind
 
   public init(
     schema: [String: HyperProxyJSONValue],
-    kind: OpenAIEvalCustomDataSourceConfigKind
+    kind: OpenAIEvalCustomDataSourceConfig.Kind
   ) {
     self.schema = schema
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenAIEvalCustomDataSourceConfig: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case schema
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case custom = "custom"
   }
 }

@@ -14,13 +14,13 @@ public struct OpenAILiveTransportFailed: Codable, Sendable {
   public var error: OpenAILiveTransportCallError
   public var eventId: String
   public var sessionId: String
-  public var kind: OpenAILiveTransportFailedKind
+  public var kind: OpenAILiveTransportFailed.Kind
 
   public init(
     error: OpenAILiveTransportCallError,
     eventId: String,
     sessionId: String,
-    kind: OpenAILiveTransportFailedKind
+    kind: OpenAILiveTransportFailed.Kind
   ) {
     self.error = error
     self.eventId = eventId
@@ -33,5 +33,9 @@ public struct OpenAILiveTransportFailed: Codable, Sendable {
     case eventId = "event_id"
     case sessionId = "session_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case transportFailed = "transport.failed"
   }
 }

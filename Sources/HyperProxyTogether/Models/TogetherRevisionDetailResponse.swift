@@ -12,8 +12,8 @@ import HyperProxyCore
 
 public struct TogetherRevisionDetailResponse: Codable, Sendable {
   public var args: [String]
-  public var autoscaling: TogetherRevisionDetailResponseAutoscaling?
-  public var capacityType: TogetherRevisionDetailResponseCapacityType
+  public var autoscaling: TogetherRevisionDetailResponse.Autoscaling?
+  public var capacityType: TogetherRevisionDetailResponse.CapacityType
   public var command: [String]
   public var cpu: Double
   public var createdAt: String
@@ -25,9 +25,9 @@ public struct TogetherRevisionDetailResponse: Codable, Sendable {
   public var maxReplicas: Int
   public var memory: Double
   public var minReplicas: Int
-  public var object: TogetherRevisionObject
+  public var object: TogetherRevisionDetailResponse.Object
   public var port: Int
-  public var protocolModel: String
+  public var protocolValue: String
   public var revisionId: String
   public var storage: Int
   public var terminationGracePeriodSeconds: Int?
@@ -35,7 +35,7 @@ public struct TogetherRevisionDetailResponse: Codable, Sendable {
 
   public init(
     args: [String],
-    capacityType: TogetherRevisionDetailResponseCapacityType,
+    capacityType: TogetherRevisionDetailResponse.CapacityType,
     command: [String],
     cpu: Double,
     createdAt: String,
@@ -48,12 +48,12 @@ public struct TogetherRevisionDetailResponse: Codable, Sendable {
     memory: Double,
     minReplicas: Int,
     port: Int,
-    protocolModel: String,
+    protocolValue: String,
     revisionId: String,
     storage: Int,
     volumes: [TogetherVolumeMount],
-    object: TogetherRevisionObject = .revision,
-    autoscaling: TogetherRevisionDetailResponseAutoscaling? = nil,
+    object: TogetherRevisionDetailResponse.Object = .revision,
+    autoscaling: TogetherRevisionDetailResponse.Autoscaling? = nil,
     terminationGracePeriodSeconds: Int? = nil
   ) {
     self.args = args
@@ -72,7 +72,7 @@ public struct TogetherRevisionDetailResponse: Codable, Sendable {
     self.minReplicas = minReplicas
     self.object = object
     self.port = port
-    self.protocolModel = protocolModel
+    self.protocolValue = protocolValue
     self.revisionId = revisionId
     self.storage = storage
     self.terminationGracePeriodSeconds = terminationGracePeriodSeconds
@@ -96,10 +96,51 @@ public struct TogetherRevisionDetailResponse: Codable, Sendable {
     case minReplicas = "min_replicas"
     case object
     case port
-    case protocolModel = "protocol"
+    case protocolValue = "protocol"
     case revisionId = "revision_id"
     case storage
     case terminationGracePeriodSeconds = "termination_grace_period_seconds"
     case volumes
+  }
+
+  public enum Autoscaling: Codable, Sendable {
+    case httpAutoscalingConfig(TogetherHTTPAutoscalingConfig)
+    case queueAutoscalingConfig(TogetherQueueAutoscalingConfig)
+    case customMetricAutoscalingConfig(TogetherCustomMetricAutoscalingConfig)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(TogetherHTTPAutoscalingConfig.self) {
+        self = .httpAutoscalingConfig(value)
+        return
+      }
+      if let value = try? container.decode(TogetherQueueAutoscalingConfig.self) {
+        self = .queueAutoscalingConfig(value)
+        return
+      }
+      self = .customMetricAutoscalingConfig(
+        try container.decode(TogetherCustomMetricAutoscalingConfig.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .httpAutoscalingConfig(let value):
+        try container.encode(value)
+      case .queueAutoscalingConfig(let value):
+        try container.encode(value)
+      case .customMetricAutoscalingConfig(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum CapacityType: String, Codable, Hashable, Sendable {
+    case stable = "stable"
+    case preemptible = "preemptible"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case revision = "revision"
   }
 }

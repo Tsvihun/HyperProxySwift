@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct TogetherDEUpdateModelRequest: Codable, Sendable {
   public var description: String?
   public var name: String?
-  public var visibility: TogetherDEUpdateModelRequestVisibility?
+  public var visibility: TogetherDEUpdateModelRequest.Visibility?
 
   public init(
     description: String? = nil,
     name: String? = nil,
-    visibility: TogetherDEUpdateModelRequestVisibility? = nil
+    visibility: TogetherDEUpdateModelRequest.Visibility? = nil
   ) {
     self.description = description
     self.name = name
@@ -29,5 +29,10 @@ public struct TogetherDEUpdateModelRequest: Codable, Sendable {
     case description
     case name
     case visibility
+  }
+
+  public enum Visibility: String, Codable, Hashable, Sendable {
+    case visibilityPrivate = "VISIBILITY_PRIVATE"
+    case visibilityInternal = "VISIBILITY_INTERNAL"
   }
 }

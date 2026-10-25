@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIBetaResponseLogProb: Codable, Sendable {
   public var logprob: Double
   public var token: String
-  public var topLogprobs: [OpenAIBetaResponseLogProbTopLogprobsItem]?
+  public var topLogprobs: [OpenAIBetaResponseLogProb.TopLogprobsElement]?
 
   public init(
     logprob: Double,
     token: String,
-    topLogprobs: [OpenAIBetaResponseLogProbTopLogprobsItem]? = nil
+    topLogprobs: [OpenAIBetaResponseLogProb.TopLogprobsElement]? = nil
   ) {
     self.logprob = logprob
     self.token = token
@@ -29,5 +29,23 @@ public struct OpenAIBetaResponseLogProb: Codable, Sendable {
     case logprob
     case token
     case topLogprobs = "top_logprobs"
+  }
+
+  public struct TopLogprobsElement: Codable, Sendable {
+    public var logprob: Double?
+    public var token: String?
+
+    public init(
+      logprob: Double? = nil,
+      token: String? = nil
+    ) {
+      self.logprob = logprob
+      self.token = token
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case logprob
+      case token
+    }
   }
 }

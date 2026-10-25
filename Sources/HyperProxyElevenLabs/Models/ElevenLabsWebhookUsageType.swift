@@ -15,7 +15,7 @@ public enum ElevenLabsWebhookUsageType: String, Codable, Hashable, Sendable {
   case convAISettings = "ConvAI Settings"
   case voiceLibraryRemovalNotices = "Voice Library Removal Notices"
   case speechToText = "Speech to Text"
-  case agentQAEvaluations = "Agent QA Evaluations"
+  case agentQaEvaluations = "Agent QA Evaluations"
   case convAIAlerting = "ConvAI Alerting"
   case flows = "Flows"
   case dubbing = "Dubbing"

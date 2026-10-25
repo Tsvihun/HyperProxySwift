@@ -11,16 +11,16 @@ import Foundation
 import HyperProxyCore
 
 public struct PerplexityGetComputerUsageAnalyticsV2Parameters: Codable, Sendable {
-  public var dataset: PerplexityGetComputerUsageAnalyticsV2ParametersDataset
+  public var dataset: PerplexityGetComputerUsageAnalyticsV2Parameters.Dataset
   public var endTime: Int?
-  public var groupBy: PerplexityGetComputerUsageAnalyticsV2ParametersGroupBy
+  public var groupBy: PerplexityGetComputerUsageAnalyticsV2Parameters.GroupBy
   public var limit: Int?
   public var page: String?
   public var startTime: Int
 
   public init(
-    dataset: PerplexityGetComputerUsageAnalyticsV2ParametersDataset,
-    groupBy: PerplexityGetComputerUsageAnalyticsV2ParametersGroupBy,
+    dataset: PerplexityGetComputerUsageAnalyticsV2Parameters.Dataset,
+    groupBy: PerplexityGetComputerUsageAnalyticsV2Parameters.GroupBy,
     startTime: Int,
     endTime: Int? = nil,
     limit: Int? = nil,
@@ -41,5 +41,18 @@ public struct PerplexityGetComputerUsageAnalyticsV2Parameters: Codable, Sendable
     case limit
     case page
     case startTime = "start_time"
+  }
+
+  public enum Dataset: String, Codable, Hashable,
+    Sendable
+  {
+    case creditUsage = "credit_usage"
+    case queryVolume = "query_volume"
+  }
+
+  public enum GroupBy: String, Codable, Hashable,
+    Sendable
+  {
+    case userEmail = "user_email"
   }
 }

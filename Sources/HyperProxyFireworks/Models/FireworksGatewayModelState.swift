@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksGatewayModelState: String, Codable, Hashable, Sendable {
-  case sTATEUNSPECIFIED = "STATE_UNSPECIFIED"
-  case uPLOADING = "UPLOADING"
-  case rEADY = "READY"
+  case stateUnspecified = "STATE_UNSPECIFIED"
+  case uploading = "UPLOADING"
+  case ready = "READY"
 }

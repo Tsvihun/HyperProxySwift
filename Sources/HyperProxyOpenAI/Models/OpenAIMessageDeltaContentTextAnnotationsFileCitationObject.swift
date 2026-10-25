@@ -12,17 +12,17 @@ import HyperProxyCore
 
 public struct OpenAIMessageDeltaContentTextAnnotationsFileCitationObject: Codable, Sendable {
   public var endIndex: Int?
-  public var fileCitation: OpenAIMessageDeltaContentTextAnnotationsFileCitationObjectFileCitation?
+  public var fileCitation: OpenAIMessageDeltaContentTextAnnotationsFileCitationObject.FileCitation?
   public var index: Int
   public var startIndex: Int?
   public var text: String?
-  public var kind: OpenAIMessageDeltaContentTextAnnotationsFileCitationObjectKind
+  public var kind: OpenAIMessageDeltaContentTextAnnotationsFileCitationObject.Kind
 
   public init(
     index: Int,
-    kind: OpenAIMessageDeltaContentTextAnnotationsFileCitationObjectKind,
+    kind: OpenAIMessageDeltaContentTextAnnotationsFileCitationObject.Kind,
     endIndex: Int? = nil,
-    fileCitation: OpenAIMessageDeltaContentTextAnnotationsFileCitationObjectFileCitation? = nil,
+    fileCitation: OpenAIMessageDeltaContentTextAnnotationsFileCitationObject.FileCitation? = nil,
     startIndex: Int? = nil,
     text: String? = nil
   ) {
@@ -41,5 +41,31 @@ public struct OpenAIMessageDeltaContentTextAnnotationsFileCitationObject: Codabl
     case startIndex = "start_index"
     case text
     case kind = "type"
+  }
+
+  public struct FileCitation: Codable,
+    Sendable
+  {
+    public var fileId: String?
+    public var quote: String?
+
+    public init(
+      fileId: String? = nil,
+      quote: String? = nil
+    ) {
+      self.fileId = fileId
+      self.quote = quote
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case fileId = "file_id"
+      case quote
+    }
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case fileCitation = "file_citation"
   }
 }

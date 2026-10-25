@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterListEndpointsResponse: Codable, Sendable {
-  public var architecture: OpenRouterListEndpointsResponseArchitecture
+  public var architecture: OpenRouterListEndpointsResponse.Architecture
   public var created: Int
   public var description: String
   public var endpoints: [OpenRouterPublicEndpoint]
@@ -19,7 +19,7 @@ public struct OpenRouterListEndpointsResponse: Codable, Sendable {
   public var name: String
 
   public init(
-    architecture: OpenRouterListEndpointsResponseArchitecture,
+    architecture: OpenRouterListEndpointsResponse.Architecture,
     created: Int,
     description: String,
     endpoints: [OpenRouterPublicEndpoint],
@@ -41,5 +41,65 @@ public struct OpenRouterListEndpointsResponse: Codable, Sendable {
     case endpoints
     case id
     case name
+  }
+
+  public struct Architecture: Codable, Sendable {
+    public var inputModalities: [OpenRouterInputModality]
+    public var instructType: OpenRouterInstructType?
+    public var modality: String
+    public var outputModalities: [OpenRouterOutputModality]
+    public var tokenizer: OpenRouterModelGroup
+
+    public init(
+      inputModalities: [OpenRouterInputModality],
+      instructType: OpenRouterInstructType?,
+      modality: String,
+      outputModalities: [OpenRouterOutputModality],
+      tokenizer: OpenRouterModelGroup
+    ) {
+      self.inputModalities = inputModalities
+      self.instructType = instructType
+      self.modality = modality
+      self.outputModalities = outputModalities
+      self.tokenizer = tokenizer
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case inputModalities = "input_modalities"
+      case instructType = "instruct_type"
+      case modality
+      case outputModalities = "output_modalities"
+      case tokenizer
+    }
+
+    public struct WithInputModalitiesAndInstructTypeAndModality: Codable, Sendable {
+      public var inputModalities: [OpenRouterInputModality]
+      public var instructType: OpenRouterInstructType?
+      public var modality: String
+      public var outputModalities: [OpenRouterOutputModality]
+      public var tokenizer: OpenRouterModelGroup?
+
+      public init(
+        inputModalities: [OpenRouterInputModality],
+        instructType: OpenRouterInstructType?,
+        modality: String,
+        outputModalities: [OpenRouterOutputModality],
+        tokenizer: OpenRouterModelGroup?
+      ) {
+        self.inputModalities = inputModalities
+        self.instructType = instructType
+        self.modality = modality
+        self.outputModalities = outputModalities
+        self.tokenizer = tokenizer
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case inputModalities = "input_modalities"
+        case instructType = "instruct_type"
+        case modality
+        case outputModalities = "output_modalities"
+        case tokenizer
+      }
+    }
   }
 }

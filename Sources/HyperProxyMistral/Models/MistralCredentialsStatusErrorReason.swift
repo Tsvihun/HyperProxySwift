@@ -18,8 +18,8 @@ public enum MistralCredentialsStatusErrorReason: String, Codable, Hashable, Send
   case unparsableCredentials = "unparsable credentials"
   case youNeedToReconnect = "you need to reconnect"
   case oauthRefreshError = "oauth refresh error"
-  case mCPServerUnreachable = "MCP server unreachable"
-  case mCPServerTimedOut = "MCP server timed out"
-  case mCPServerError = "MCP server error"
+  case mcpServerUnreachable = "MCP server unreachable"
+  case mcpServerTimedOut = "MCP server timed out"
+  case mcpServerError = "MCP server error"
   case unknownError = "unknown error"
 }

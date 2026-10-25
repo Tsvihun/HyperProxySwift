@@ -13,16 +13,16 @@ import HyperProxyCore
 public struct OpenAILiveHostedShellContainerAutoParam: Codable, Sendable {
   public var fileIds: [String]?
   public var memoryLimit: OpenAILiveContainerMemoryLimit?
-  public var networkPolicy: OpenAILiveHostedShellContainerAutoParamNetworkPolicyAnyOf1?
-  public var skills: [OpenAILiveHostedShellContainerAutoParamSkillsAnyOf1Item]?
-  public var kind: OpenAILiveHostedShellContainerAutoParamKind
+  public var networkPolicy: OpenAILiveHostedShellContainerAutoParamNetworkPolicyVariant?
+  public var skills: [OpenAILiveHostedShellContainerAutoParamSkillsItem]?
+  public var kind: OpenAILiveHostedShellContainerAutoParam.Kind
 
   public init(
-    kind: OpenAILiveHostedShellContainerAutoParamKind,
+    kind: OpenAILiveHostedShellContainerAutoParam.Kind,
     fileIds: [String]? = nil,
     memoryLimit: OpenAILiveContainerMemoryLimit? = nil,
-    networkPolicy: OpenAILiveHostedShellContainerAutoParamNetworkPolicyAnyOf1? = nil,
-    skills: [OpenAILiveHostedShellContainerAutoParamSkillsAnyOf1Item]? = nil
+    networkPolicy: OpenAILiveHostedShellContainerAutoParamNetworkPolicyVariant? = nil,
+    skills: [OpenAILiveHostedShellContainerAutoParamSkillsItem]? = nil
   ) {
     self.fileIds = fileIds
     self.memoryLimit = memoryLimit
@@ -37,5 +37,9 @@ public struct OpenAILiveHostedShellContainerAutoParam: Codable, Sendable {
     case networkPolicy = "network_policy"
     case skills
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case containerAuto = "container_auto"
   }
 }

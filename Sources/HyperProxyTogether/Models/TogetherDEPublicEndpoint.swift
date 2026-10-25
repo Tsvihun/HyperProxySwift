@@ -16,7 +16,7 @@ public struct TogetherDEPublicEndpoint: Codable, Sendable {
   public var name: String
   public var projectId: String
   public var updatedAt: String
-  public var visibility: TogetherVISIBILITYPUBLICVisibility
+  public var visibility: TogetherDEPublicEndpoint.Visibility
 
   public init(
     createdAt: String,
@@ -24,7 +24,7 @@ public struct TogetherDEPublicEndpoint: Codable, Sendable {
     name: String,
     projectId: String,
     updatedAt: String,
-    visibility: TogetherVISIBILITYPUBLICVisibility = .vISIBILITYPUBLIC
+    visibility: TogetherDEPublicEndpoint.Visibility = .visibilityPublic
   ) {
     self.createdAt = createdAt
     self.id = id
@@ -41,5 +41,9 @@ public struct TogetherDEPublicEndpoint: Codable, Sendable {
     case projectId
     case updatedAt
     case visibility
+  }
+
+  public enum Visibility: String, Codable, Hashable, Sendable {
+    case visibilityPublic = "VISIBILITY_PUBLIC"
   }
 }

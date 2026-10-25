@@ -14,13 +14,13 @@ public struct AnthropicBetaManagedAgentsMCPToolset: Codable, Sendable {
   public var configs: [AnthropicBetaManagedAgentsMCPToolConfig]
   public var defaultConfig: AnthropicBetaManagedAgentsMCPToolsetDefaultConfig
   public var mcpServerName: String
-  public var kind: AnthropicBetaManagedAgentsMCPToolsetKind
+  public var kind: AnthropicBetaManagedAgentsMCPToolset.Kind
 
   public init(
     configs: [AnthropicBetaManagedAgentsMCPToolConfig],
     defaultConfig: AnthropicBetaManagedAgentsMCPToolsetDefaultConfig,
     mcpServerName: String,
-    kind: AnthropicBetaManagedAgentsMCPToolsetKind
+    kind: AnthropicBetaManagedAgentsMCPToolset.Kind
   ) {
     self.configs = configs
     self.defaultConfig = defaultConfig
@@ -33,5 +33,9 @@ public struct AnthropicBetaManagedAgentsMCPToolset: Codable, Sendable {
     case defaultConfig = "default_config"
     case mcpServerName = "mcp_server_name"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case mcpToolset = "mcp_toolset"
   }
 }

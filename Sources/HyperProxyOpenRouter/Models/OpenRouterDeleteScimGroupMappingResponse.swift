@@ -11,15 +11,45 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterDeleteScimGroupMappingResponse: Codable, Sendable {
-  public var deleted: OpenRouterDeleteScimGroupMappingResponseDeleted
+  public var deleted: OpenRouterDeleteScimGroupMappingResponse.Deleted
 
   public init(
-    deleted: OpenRouterDeleteScimGroupMappingResponseDeleted = .booleanTrue
+    deleted: OpenRouterDeleteScimGroupMappingResponse.Deleted = .booleanTrue
   ) {
     self.deleted = deleted
   }
 
   enum CodingKeys: String, CodingKey {
     case deleted
+  }
+
+  public enum Deleted: Codable, Sendable {
+    case booleanTrue
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Bool.self) {
+        switch value {
+        case true:
+          self = .booleanTrue
+          return
+        default:
+          break
+        }
+      }
+      throw DecodingError.dataCorruptedError(
+        in: container,
+        debugDescription:
+          "Expected a documented OpenRouterDeleteScimGroupMappingResponse.Deleted value."
+      )
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .booleanTrue:
+        try container.encode(true)
+      }
+    }
   }
 }

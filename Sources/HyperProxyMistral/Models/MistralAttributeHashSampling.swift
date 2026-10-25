@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct MistralAttributeHashSampling: Codable, Sendable {
   public var attribute: String
   public var percentage: Double
-  public var kind: MistralAttributeHashKind?
+  public var kind: MistralAttributeHashSampling.Kind?
 
   public init(
     attribute: String,
     percentage: Double,
-    kind: MistralAttributeHashKind? = nil
+    kind: MistralAttributeHashSampling.Kind? = nil
   ) {
     self.attribute = attribute
     self.percentage = percentage
@@ -29,5 +29,9 @@ public struct MistralAttributeHashSampling: Codable, Sendable {
     case attribute
     case percentage
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case attributeHash = "attribute_hash"
   }
 }

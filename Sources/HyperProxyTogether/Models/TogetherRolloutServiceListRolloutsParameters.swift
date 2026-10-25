@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct TogetherRolloutServiceListRolloutsParameters: Codable, Sendable {
   public var after: String?
   public var endpointId: String
-  public var filter: TogetherRolloutServiceListRolloutsParametersFilter?
+  public var filter: TogetherRolloutServiceListRolloutsParameters.Filter?
   public var limit: Int?
   public var projectId: String
 
@@ -21,7 +21,7 @@ public struct TogetherRolloutServiceListRolloutsParameters: Codable, Sendable {
     endpointId: String,
     projectId: String,
     after: String? = nil,
-    filter: TogetherRolloutServiceListRolloutsParametersFilter? = nil,
+    filter: TogetherRolloutServiceListRolloutsParameters.Filter? = nil,
     limit: Int? = nil
   ) {
     self.after = after
@@ -37,5 +37,10 @@ public struct TogetherRolloutServiceListRolloutsParameters: Codable, Sendable {
     case filter
     case limit
     case projectId
+  }
+
+  public enum Filter: String, Codable, Hashable, Sendable {
+    case rolloutFilterActive = "ROLLOUT_FILTER_ACTIVE"
+    case rolloutFilterTerminal = "ROLLOUT_FILTER_TERMINAL"
   }
 }

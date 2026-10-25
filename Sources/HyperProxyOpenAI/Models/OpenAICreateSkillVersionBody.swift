@@ -12,10 +12,10 @@ import HyperProxyCore
 
 public struct OpenAICreateSkillVersionBody: Codable, Sendable {
   public var defaultValue: Bool?
-  public var files: OpenAICreateSkillVersionBodyFiles
+  public var files: OpenAICreateSkillVersionBody.Files
 
   public init(
-    files: OpenAICreateSkillVersionBodyFiles,
+    files: OpenAICreateSkillVersionBody.Files,
     defaultValue: Bool? = nil
   ) {
     self.defaultValue = defaultValue
@@ -25,5 +25,41 @@ public struct OpenAICreateSkillVersionBody: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case defaultValue = "default"
     case files
+  }
+
+  public enum Files: Codable, Sendable {
+    case string(String)
+    case stringArray([String])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .stringArray(try container.decode([String].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .stringArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension OpenAICreateSkillVersionBody.Files: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension OpenAICreateSkillVersionBody.Files: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: String...) {
+    self = .stringArray(elements)
   }
 }

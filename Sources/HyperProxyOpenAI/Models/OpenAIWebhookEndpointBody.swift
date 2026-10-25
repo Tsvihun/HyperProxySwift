@@ -15,7 +15,7 @@ public struct OpenAIWebhookEndpointBody: Codable, Sendable {
   public var eventTypes: [String]
   public var id: String
   public var name: String
-  public var object: OpenAIWebhookEndpointBodyObject
+  public var object: OpenAIWebhookEndpointBody.Object
   public var signingSecretHint: String?
   public var updatedAt: Int?
   public var url: String
@@ -25,7 +25,7 @@ public struct OpenAIWebhookEndpointBody: Codable, Sendable {
     eventTypes: [String],
     id: String,
     name: String,
-    object: OpenAIWebhookEndpointBodyObject,
+    object: OpenAIWebhookEndpointBody.Object,
     signingSecretHint: String?,
     url: String,
     updatedAt: Int? = nil
@@ -49,5 +49,9 @@ public struct OpenAIWebhookEndpointBody: Codable, Sendable {
     case signingSecretHint = "signing_secret_hint"
     case updatedAt = "updated_at"
     case url
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case webhookEndpoint = "webhook_endpoint"
   }
 }

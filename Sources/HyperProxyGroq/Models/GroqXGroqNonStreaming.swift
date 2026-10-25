@@ -14,13 +14,13 @@ public struct GroqXGroqNonStreaming: Codable, Sendable {
   public var debug: GroqDebugData?
   public var id: String
   public var seed: Int?
-  public var usage: GroqXGroqNonStreamingUsage?
+  public var usage: GroqXGroqNonStreaming.Usage?
 
   public init(
     id: String,
     debug: GroqDebugData? = nil,
     seed: Int? = nil,
-    usage: GroqXGroqNonStreamingUsage? = nil
+    usage: GroqXGroqNonStreaming.Usage? = nil
   ) {
     self.debug = debug
     self.id = id
@@ -33,5 +33,23 @@ public struct GroqXGroqNonStreaming: Codable, Sendable {
     case id
     case seed
     case usage
+  }
+
+  public struct Usage: Codable, Sendable {
+    public var dramCachedTokens: Int?
+    public var sramCachedTokens: Int?
+
+    public init(
+      dramCachedTokens: Int? = nil,
+      sramCachedTokens: Int? = nil
+    ) {
+      self.dramCachedTokens = dramCachedTokens
+      self.sramCachedTokens = sramCachedTokens
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case dramCachedTokens = "dram_cached_tokens"
+      case sramCachedTokens = "sram_cached_tokens"
+    }
   }
 }

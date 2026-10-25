@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct FireworksChatCompletionMessageToolCall: Codable, Sendable {
-  public var function: FireworksChatCompletionMessageToolCallFunction5e6788c0
+  public var function: FireworksChatCompletionMessageToolCall.Function
   public var id: String?
   public var kind: String?
 
   public init(
-    function: FireworksChatCompletionMessageToolCallFunction5e6788c0,
+    function: FireworksChatCompletionMessageToolCall.Function,
     id: String? = nil,
     kind: String? = nil
   ) {
@@ -29,5 +29,36 @@ public struct FireworksChatCompletionMessageToolCall: Codable, Sendable {
     case function
     case id
     case kind = "type"
+  }
+
+  public enum Function: Codable, Sendable {
+    case string(String)
+    case chatCompletionMessageToolCallFunction(FireworksChatCompletionMessageToolCallFunction)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .chatCompletionMessageToolCallFunction(
+        try container.decode(FireworksChatCompletionMessageToolCallFunction.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .chatCompletionMessageToolCallFunction(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension FireworksChatCompletionMessageToolCall.Function: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

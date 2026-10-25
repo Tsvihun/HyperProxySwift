@@ -11,15 +11,23 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiV1mainMediaResolution: Codable, Sendable {
-  public var level: GeminiV1mainMediaResolutionLevel?
+  public var level: GeminiV1mainMediaResolution.Level?
 
   public init(
-    level: GeminiV1mainMediaResolutionLevel? = nil
+    level: GeminiV1mainMediaResolution.Level? = nil
   ) {
     self.level = level
   }
 
   enum CodingKeys: String, CodingKey {
     case level
+  }
+
+  public enum Level: String, Codable, Hashable, Sendable {
+    case mediaResolutionUnspecified = "MEDIA_RESOLUTION_UNSPECIFIED"
+    case mediaResolutionLow = "MEDIA_RESOLUTION_LOW"
+    case mediaResolutionMedium = "MEDIA_RESOLUTION_MEDIUM"
+    case mediaResolutionHigh = "MEDIA_RESOLUTION_HIGH"
+    case mediaResolutionUltraHigh = "MEDIA_RESOLUTION_ULTRA_HIGH"
   }
 }

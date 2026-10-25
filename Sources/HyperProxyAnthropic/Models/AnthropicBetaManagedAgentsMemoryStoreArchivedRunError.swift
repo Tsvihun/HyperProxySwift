@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsMemoryStoreArchivedRunError: Codable, Sendable {
   public var message: String
-  public var kind: AnthropicBetaManagedAgentsMemoryStoreArchivedRunErrorKind
+  public var kind: AnthropicBetaManagedAgentsMemoryStoreArchivedRunError.Kind
 
   public init(
     message: String,
-    kind: AnthropicBetaManagedAgentsMemoryStoreArchivedRunErrorKind
+    kind: AnthropicBetaManagedAgentsMemoryStoreArchivedRunError.Kind
   ) {
     self.message = message
     self.kind = kind
@@ -25,5 +25,11 @@ public struct AnthropicBetaManagedAgentsMemoryStoreArchivedRunError: Codable, Se
   enum CodingKeys: String, CodingKey {
     case message
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case memoryStoreArchivedError = "memory_store_archived_error"
   }
 }

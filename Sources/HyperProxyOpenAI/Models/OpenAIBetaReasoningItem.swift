@@ -15,18 +15,18 @@ public struct OpenAIBetaReasoningItem: Codable, Sendable {
   public var content: [OpenAIBetaReasoningTextContent]?
   public var encryptedContent: String?
   public var id: String
-  public var status: OpenAIBetaReasoningItemStatus?
+  public var status: OpenAIBetaReasoningItem.Status?
   public var summary: [OpenAIBetaSummaryTextContent]
-  public var kind: OpenAIBetaReasoningItemKind
+  public var kind: OpenAIBetaReasoningItem.Kind
 
   public init(
     id: String,
     summary: [OpenAIBetaSummaryTextContent],
-    kind: OpenAIBetaReasoningItemKind,
+    kind: OpenAIBetaReasoningItem.Kind,
     agent: OpenAIBetaAgentTag? = nil,
     content: [OpenAIBetaReasoningTextContent]? = nil,
     encryptedContent: String? = nil,
-    status: OpenAIBetaReasoningItemStatus? = nil
+    status: OpenAIBetaReasoningItem.Status? = nil
   ) {
     self.agent = agent
     self.content = content
@@ -45,5 +45,15 @@ public struct OpenAIBetaReasoningItem: Codable, Sendable {
     case status
     case summary
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case reasoning = "reasoning"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case inProgress = "in_progress"
+    case completed = "completed"
+    case incomplete = "incomplete"
   }
 }

@@ -14,7 +14,7 @@ public struct OpenRouterScimGroupMapping: Codable, Sendable {
   public var createdAt: String
   public var id: String
   public var organizationId: String
-  public var role: OpenRouterScimGroupMappingRole
+  public var role: OpenRouterScimGroupMapping.Role
   public var scimGroupId: String
   public var updatedAt: String
   public var workspaceId: String
@@ -23,7 +23,7 @@ public struct OpenRouterScimGroupMapping: Codable, Sendable {
     createdAt: String,
     id: String,
     organizationId: String,
-    role: OpenRouterScimGroupMappingRole,
+    role: OpenRouterScimGroupMapping.Role,
     scimGroupId: String,
     updatedAt: String,
     workspaceId: String
@@ -45,5 +45,10 @@ public struct OpenRouterScimGroupMapping: Codable, Sendable {
     case scimGroupId = "scim_group_id"
     case updatedAt = "updated_at"
     case workspaceId = "workspace_id"
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case admin = "admin"
+    case member = "member"
   }
 }

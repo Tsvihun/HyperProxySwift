@@ -14,7 +14,7 @@ public struct StabilityPostV2betaStableImageControlSketchRequest: Codable, Senda
   public var controlStrength: Double?
   public var image: String
   public var negativePrompt: String?
-  public var outputFormat: StabilityPostV2betaStableImageControlSketchRequestOutputFormat?
+  public var outputFormat: StabilityPostV2betaStableImageControlSketchRequest.OutputFormat?
   public var prompt: String
   public var seed: Double?
   public var stylePreset: StabilityStylePreset?
@@ -24,7 +24,7 @@ public struct StabilityPostV2betaStableImageControlSketchRequest: Codable, Senda
     prompt: String,
     controlStrength: Double? = nil,
     negativePrompt: String? = nil,
-    outputFormat: StabilityPostV2betaStableImageControlSketchRequestOutputFormat? = nil,
+    outputFormat: StabilityPostV2betaStableImageControlSketchRequest.OutputFormat? = nil,
     seed: Double? = nil,
     stylePreset: StabilityStylePreset? = nil
   ) {
@@ -45,5 +45,13 @@ public struct StabilityPostV2betaStableImageControlSketchRequest: Codable, Senda
     case prompt
     case seed
     case stylePreset = "style_preset"
+  }
+
+  public enum OutputFormat: String, Codable,
+    Hashable, Sendable
+  {
+    case png = "png"
+    case jpeg = "jpeg"
+    case webp = "webp"
   }
 }

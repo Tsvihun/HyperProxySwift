@@ -14,13 +14,13 @@ public struct OpenAIComputerUseApprovalResponseKindResourceBrowserAuthentication
   Codable, Sendable
 {
   public var action:
-    OpenAIComputerUseApprovalResponseKindResourceBrowserAuthenticationCancelResourceAction
+    OpenAIComputerUseApprovalResponseKindResourceBrowserAuthenticationCancelResource.Action
   public var kind:
-    OpenAIComputerUseApprovalResponseKindResourceBrowserAuthenticationCancelResourceKind
+    OpenAIComputerUseApprovalResponseKindResourceBrowserAuthenticationCancelResource.Kind
 
   public init(
-    action: OpenAIComputerUseApprovalResponseKindResourceBrowserAuthenticationCancelResourceAction,
-    kind: OpenAIComputerUseApprovalResponseKindResourceBrowserAuthenticationCancelResourceKind
+    action: OpenAIComputerUseApprovalResponseKindResourceBrowserAuthenticationCancelResource.Action,
+    kind: OpenAIComputerUseApprovalResponseKindResourceBrowserAuthenticationCancelResource.Kind
   ) {
     self.action = action
     self.kind = kind
@@ -29,5 +29,17 @@ public struct OpenAIComputerUseApprovalResponseKindResourceBrowserAuthentication
   enum CodingKeys: String, CodingKey {
     case action
     case kind = "type"
+  }
+
+  public enum Action:
+    String, Codable, Hashable, Sendable
+  {
+    case cancel = "cancel"
+  }
+
+  public enum Kind:
+    String, Codable, Hashable, Sendable
+  {
+    case browserAuthentication = "browser_authentication"
   }
 }

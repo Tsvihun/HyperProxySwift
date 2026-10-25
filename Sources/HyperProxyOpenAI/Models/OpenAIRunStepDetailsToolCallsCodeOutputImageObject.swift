@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIRunStepDetailsToolCallsCodeOutputImageObject: Codable, Sendable {
-  public var image: OpenAIRunStepDetailsToolCallsCodeOutputImageObjectImage
-  public var kind: OpenAIRunStepDetailsToolCallsCodeOutputImageObjectKind
+  public var image: OpenAIRunStepDetailsToolCallsCodeOutputImageObject.Image
+  public var kind: OpenAIRunStepDetailsToolCallsCodeOutputImageObject.Kind
 
   public init(
-    image: OpenAIRunStepDetailsToolCallsCodeOutputImageObjectImage,
-    kind: OpenAIRunStepDetailsToolCallsCodeOutputImageObjectKind
+    image: OpenAIRunStepDetailsToolCallsCodeOutputImageObject.Image,
+    kind: OpenAIRunStepDetailsToolCallsCodeOutputImageObject.Kind
   ) {
     self.image = image
     self.kind = kind
@@ -25,5 +25,25 @@ public struct OpenAIRunStepDetailsToolCallsCodeOutputImageObject: Codable, Senda
   enum CodingKeys: String, CodingKey {
     case image
     case kind = "type"
+  }
+
+  public struct Image: Codable, Sendable {
+    public var fileId: String
+
+    public init(
+      fileId: String
+    ) {
+      self.fileId = fileId
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case fileId = "file_id"
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case image = "image"
   }
 }

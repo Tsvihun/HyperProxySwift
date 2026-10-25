@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAILiveHostedShellToolInputParam: Codable, Sendable {
-  public var environment: OpenAILiveHostedShellToolInputParamEnvironmentAnyOf1?
-  public var kind: OpenAILiveHostedShellToolInputParamKind
+  public var environment: OpenAILiveHostedShellToolInputParamEnvironmentVariant?
+  public var kind: OpenAILiveHostedShellToolInputParam.Kind
 
   public init(
-    kind: OpenAILiveHostedShellToolInputParamKind,
-    environment: OpenAILiveHostedShellToolInputParamEnvironmentAnyOf1? = nil
+    kind: OpenAILiveHostedShellToolInputParam.Kind,
+    environment: OpenAILiveHostedShellToolInputParamEnvironmentVariant? = nil
   ) {
     self.environment = environment
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenAILiveHostedShellToolInputParam: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case environment
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case shell = "shell"
   }
 }

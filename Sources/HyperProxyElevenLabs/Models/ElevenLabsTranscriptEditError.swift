@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsTranscriptEditError: Codable, Sendable {
-  public var errorType: ElevenLabsEditFailedErrorType
-  public var kind: ElevenLabsErrorKind
+  public var errorType: ElevenLabsTranscriptEditError.ErrorType
+  public var kind: ElevenLabsTranscriptEditError.Kind
   public var message: String
 
   public init(
     message: String,
-    errorType: ElevenLabsEditFailedErrorType = .editFailed,
-    kind: ElevenLabsErrorKind = .error
+    errorType: ElevenLabsTranscriptEditError.ErrorType = .editFailed,
+    kind: ElevenLabsTranscriptEditError.Kind = .error
   ) {
     self.errorType = errorType
     self.kind = kind
@@ -29,5 +29,13 @@ public struct ElevenLabsTranscriptEditError: Codable, Sendable {
     case errorType = "error_type"
     case kind
     case message
+  }
+
+  public enum ErrorType: String, Codable, Hashable, Sendable {
+    case editFailed = "edit_failed"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case error = "error"
   }
 }

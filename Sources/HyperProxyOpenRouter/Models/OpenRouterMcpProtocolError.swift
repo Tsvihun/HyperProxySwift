@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenRouterMcpProtocolError: Codable, Sendable {
   public var code: Int
   public var message: String
-  public var kind: OpenRouterMcpProtocolErrorKind
+  public var kind: OpenRouterMcpProtocolError.Kind
 
   public init(
     code: Int,
     message: String,
-    kind: OpenRouterMcpProtocolErrorKind
+    kind: OpenRouterMcpProtocolError.Kind
   ) {
     self.code = code
     self.message = message
@@ -29,5 +29,9 @@ public struct OpenRouterMcpProtocolError: Codable, Sendable {
     case code
     case message
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case mcpProtocolError = "mcp_protocol_error"
   }
 }

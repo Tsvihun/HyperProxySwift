@@ -10,4 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenAIRealtimeTurnDetection = OpenAIRealtimeTurnDetectionAnyOf1?
+public typealias OpenAIRealtimeTurnDetection = OpenAIRealtimeTurnDetectionRealtimeTurnDetection?

@@ -14,11 +14,11 @@ public struct StabilityGetV2alphaGenerationStableImageUpscaleResultIdResponse202
   Sendable
 {
   public var id: String
-  public var status: StabilityGetV2alphaGenerationStableImageUpscaleResultIdResponse202JSONStatus
+  public var status: StabilityGetV2alphaGenerationStableImageUpscaleResultIdResponse202JSON.Status
 
   public init(
     id: String,
-    status: StabilityGetV2alphaGenerationStableImageUpscaleResultIdResponse202JSONStatus
+    status: StabilityGetV2alphaGenerationStableImageUpscaleResultIdResponse202JSON.Status
   ) {
     self.id = id
     self.status = status
@@ -27,5 +27,11 @@ public struct StabilityGetV2alphaGenerationStableImageUpscaleResultIdResponse202
   enum CodingKeys: String, CodingKey {
     case id
     case status
+  }
+
+  public enum Status: String,
+    Codable, Hashable, Sendable
+  {
+    case inProgress = "in-progress"
   }
 }

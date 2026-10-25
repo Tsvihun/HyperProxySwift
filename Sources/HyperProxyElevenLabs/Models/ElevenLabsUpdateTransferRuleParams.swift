@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsUpdateTransferRuleParams: Codable, Sendable {
   public var postDialDigitsEnabled: Bool?
-  public var smbToolType: ElevenLabsUpdateTransferRuleSmbToolType?
+  public var smbToolType: ElevenLabsUpdateTransferRuleParams.SmbToolType?
 
   public init(
     postDialDigitsEnabled: Bool? = nil,
-    smbToolType: ElevenLabsUpdateTransferRuleSmbToolType? = nil
+    smbToolType: ElevenLabsUpdateTransferRuleParams.SmbToolType? = nil
   ) {
     self.postDialDigitsEnabled = postDialDigitsEnabled
     self.smbToolType = smbToolType
@@ -25,5 +25,9 @@ public struct ElevenLabsUpdateTransferRuleParams: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case postDialDigitsEnabled = "post_dial_digits_enabled"
     case smbToolType = "smb_tool_type"
+  }
+
+  public enum SmbToolType: String, Codable, Hashable, Sendable {
+    case updateTransferRule = "update_transfer_rule"
   }
 }

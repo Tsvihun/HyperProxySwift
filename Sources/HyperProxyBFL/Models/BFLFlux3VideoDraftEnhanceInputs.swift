@@ -12,15 +12,15 @@ import HyperProxyCore
 
 public struct BFLFlux3VideoDraftEnhanceInputs: Codable, Sendable {
   public var draftCache: String
-  public var mode: BFLDraftEnhanceMode
-  public var resolution: BFLFlux3VideoDraftEnhanceInputsResolution?
+  public var mode: BFLFlux3VideoDraftEnhanceInputs.Mode
+  public var resolution: BFLFlux3VideoDraftEnhanceInputs.Resolution?
   public var safetyTolerance: Int?
   public var user: String?
 
   public init(
     draftCache: String,
-    mode: BFLDraftEnhanceMode = .draftEnhance,
-    resolution: BFLFlux3VideoDraftEnhanceInputsResolution? = nil,
+    mode: BFLFlux3VideoDraftEnhanceInputs.Mode = .draftEnhance,
+    resolution: BFLFlux3VideoDraftEnhanceInputs.Resolution? = nil,
     safetyTolerance: Int? = nil,
     user: String? = nil
   ) {
@@ -37,5 +37,16 @@ public struct BFLFlux3VideoDraftEnhanceInputs: Codable, Sendable {
     case resolution
     case safetyTolerance = "safety_tolerance"
     case user
+  }
+
+  public enum Mode: String, Codable, Hashable, Sendable {
+    case draftEnhance = "draft_enhance"
+  }
+
+  public enum Resolution: String, Codable, Hashable, Sendable {
+    case hd = "hd"
+    case fhd = "fhd"
+    case qhd = "qhd"
+    case uhd = "uhd"
   }
 }

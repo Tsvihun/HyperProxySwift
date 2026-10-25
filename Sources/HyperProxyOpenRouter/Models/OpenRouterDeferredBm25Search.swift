@@ -12,10 +12,10 @@ import HyperProxyCore
 
 public struct OpenRouterDeferredBm25Search: Codable, Sendable {
   public var maxResults: Int?
-  public var kind: OpenRouterDeferredBm25SearchKind
+  public var kind: OpenRouterDeferredBm25Search.Kind
 
   public init(
-    kind: OpenRouterDeferredBm25SearchKind,
+    kind: OpenRouterDeferredBm25Search.Kind,
     maxResults: Int? = nil
   ) {
     self.maxResults = maxResults
@@ -25,5 +25,9 @@ public struct OpenRouterDeferredBm25Search: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case maxResults = "max_results"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case bm25 = "bm25"
   }
 }

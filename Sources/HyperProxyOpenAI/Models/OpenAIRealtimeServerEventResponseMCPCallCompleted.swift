@@ -14,13 +14,13 @@ public struct OpenAIRealtimeServerEventResponseMCPCallCompleted: Codable, Sendab
   public var eventId: String
   public var itemId: String
   public var outputIndex: Int
-  public var kind: OpenAIRealtimeServerEventResponseMCPCallCompletedKind
+  public var kind: OpenAIRealtimeServerEventResponseMCPCallCompleted.Kind
 
   public init(
     eventId: String,
     itemId: String,
     outputIndex: Int,
-    kind: OpenAIRealtimeServerEventResponseMCPCallCompletedKind
+    kind: OpenAIRealtimeServerEventResponseMCPCallCompleted.Kind
   ) {
     self.eventId = eventId
     self.itemId = itemId
@@ -33,5 +33,11 @@ public struct OpenAIRealtimeServerEventResponseMCPCallCompleted: Codable, Sendab
     case itemId = "item_id"
     case outputIndex = "output_index"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case responseMcpCallCompleted = "response.mcp_call.completed"
   }
 }

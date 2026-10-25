@@ -14,7 +14,7 @@ public struct OpenAIListRunsParameters: Codable, Sendable {
   public var after: String?
   public var before: String?
   public var limit: Int?
-  public var order: OpenAIListRunsParametersOrder?
+  public var order: OpenAIListRunsParameters.Order?
   public var threadId: String
 
   public init(
@@ -22,7 +22,7 @@ public struct OpenAIListRunsParameters: Codable, Sendable {
     after: String? = nil,
     before: String? = nil,
     limit: Int? = nil,
-    order: OpenAIListRunsParametersOrder? = nil
+    order: OpenAIListRunsParameters.Order? = nil
   ) {
     self.after = after
     self.before = before
@@ -37,5 +37,10 @@ public struct OpenAIListRunsParameters: Codable, Sendable {
     case limit
     case order
     case threadId = "thread_id"
+  }
+
+  public enum Order: String, Codable, Hashable, Sendable {
+    case asc = "asc"
+    case desc = "desc"
   }
 }

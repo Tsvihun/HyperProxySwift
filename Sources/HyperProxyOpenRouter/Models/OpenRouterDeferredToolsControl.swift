@@ -11,27 +11,39 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterDeferredToolsControl: Codable, Sendable {
-  public var profile: OpenRouterDeferredToolsControlProfile
-  public var protocolModel: OpenRouterDeferredToolsControlProtocolModel
+  public var profile: OpenRouterDeferredToolsControl.Profile
+  public var protocolValue: OpenRouterDeferredToolsControl.ProtocolValue
   public var search: OpenRouterDeferredToolsSearchStrategy
-  public var validation: OpenRouterDeferredToolsControlValidation
+  public var validation: OpenRouterDeferredToolsControl.Validation
 
   public init(
-    profile: OpenRouterDeferredToolsControlProfile,
-    protocolModel: OpenRouterDeferredToolsControlProtocolModel,
+    profile: OpenRouterDeferredToolsControl.Profile,
+    protocolValue: OpenRouterDeferredToolsControl.ProtocolValue,
     search: OpenRouterDeferredToolsSearchStrategy,
-    validation: OpenRouterDeferredToolsControlValidation
+    validation: OpenRouterDeferredToolsControl.Validation
   ) {
     self.profile = profile
-    self.protocolModel = protocolModel
+    self.protocolValue = protocolValue
     self.search = search
     self.validation = validation
   }
 
   enum CodingKeys: String, CodingKey {
     case profile
-    case protocolModel = "protocol"
+    case protocolValue = "protocol"
     case search
     case validation
+  }
+
+  public enum Profile: String, Codable, Hashable, Sendable {
+    case portable = "portable"
+  }
+
+  public enum ProtocolValue: String, Codable, Hashable, Sendable {
+    case v1 = "v1"
+  }
+
+  public enum Validation: String, Codable, Hashable, Sendable {
+    case runtime = "runtime"
   }
 }

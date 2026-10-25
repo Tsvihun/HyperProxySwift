@@ -219,25 +219,25 @@ public enum MistralOperation: String, HyperProxyCatalogOperation {
   /// `GET v1/conversations`
   case agentsApiV1ConversationsList = "agents.api.v1.conversations.list"
   /// `POST v1/conversations`
-  case agentsApiV1ConversationsStartStream = "agents.api.v1.conversations.start.stream"
-  /// `POST v1/conversations`
   case agentsApiV1ConversationsStart = "agents.api.v1.conversations.start"
+  /// `POST v1/conversations`
+  case agentsApiV1ConversationsStartStream = "agents.api.v1.conversations.start.stream"
   /// `DELETE v1/conversations/{conversation_id}`
   case agentsApiV1ConversationsDelete = "agents.api.v1.conversations.delete"
   /// `GET v1/conversations/{conversation_id}`
   case agentsApiV1ConversationsGet = "agents.api.v1.conversations.get"
   /// `POST v1/conversations/{conversation_id}`
-  case agentsApiV1ConversationsAppendStream = "agents.api.v1.conversations.append.stream"
-  /// `POST v1/conversations/{conversation_id}`
   case agentsApiV1ConversationsAppend = "agents.api.v1.conversations.append"
+  /// `POST v1/conversations/{conversation_id}`
+  case agentsApiV1ConversationsAppendStream = "agents.api.v1.conversations.append.stream"
   /// `GET v1/conversations/{conversation_id}/history`
   case agentsApiV1ConversationsHistory = "agents.api.v1.conversations.history"
   /// `GET v1/conversations/{conversation_id}/messages`
   case agentsApiV1ConversationsMessages = "agents.api.v1.conversations.messages"
   /// `POST v1/conversations/{conversation_id}/restart`
-  case agentsApiV1ConversationsRestartStream = "agents.api.v1.conversations.restart.stream"
-  /// `POST v1/conversations/{conversation_id}/restart`
   case agentsApiV1ConversationsRestart = "agents.api.v1.conversations.restart"
+  /// `POST v1/conversations/{conversation_id}/restart`
+  case agentsApiV1ConversationsRestartStream = "agents.api.v1.conversations.restart.stream"
   /// `GET v1/libraries`
   case librariesListV1 = "libraries.list.v1"
   /// `POST v1/libraries`
@@ -568,6 +568,8 @@ public enum MistralOperation: String, HyperProxyCatalogOperation {
   /// `POST v1/audio/speech`
   case audioSpeech = "audio.speech"
   /// `POST v1/audio/transcriptions`
+  case audioApiV1TranscriptionsPostStream = "audio.api.v1.transcriptions.post.stream"
+  /// `POST v1/audio/transcriptions`
   case audioTranscriptions = "audio.transcriptions"
   /// `GET v1/audio/voices`
   case listVoicesV1AudioVoicesGet = "list.voices.v1.audio.voices.get"
@@ -795,11 +797,4 @@ public enum MistralOperation: String, HyperProxyCatalogOperation {
     "get.workflow.metrics.v1.workflows.workflow.name.metrics.get"
   /// `GET v2/audio/voices`
   case audioV2VoicesList = "audio.v2.voices.list"
-}
-
-/// Earlier snapshots published these operations under different
-/// spellings. They resolve to the canonical case above.
-extension MistralOperation {
-  @available(*, deprecated, renamed: "audioTranscriptions")
-  public static var audioApiV1TranscriptionsPost: Self { .audioTranscriptions }
 }

@@ -14,13 +14,13 @@ public struct OpenRouterListModelsUserParameters: Codable, Sendable {
   public var limit: Int?
   public var offset: Int?
   public var outputModalities: String?
-  public var sort: OpenRouterListModelsUserParametersSort?
+  public var sort: OpenRouterListModelsUserParameters.Sort?
 
   public init(
     limit: Int? = nil,
     offset: Int? = nil,
     outputModalities: String? = nil,
-    sort: OpenRouterListModelsUserParametersSort? = nil
+    sort: OpenRouterListModelsUserParameters.Sort? = nil
   ) {
     self.limit = limit
     self.offset = offset
@@ -33,5 +33,20 @@ public struct OpenRouterListModelsUserParameters: Codable, Sendable {
     case offset
     case outputModalities = "output_modalities"
     case sort
+  }
+
+  public enum Sort: String, Codable, Hashable, Sendable {
+    case mostPopular = "most-popular"
+    case newest = "newest"
+    case topWeekly = "top-weekly"
+    case pricingLowToHigh = "pricing-low-to-high"
+    case pricingHighToLow = "pricing-high-to-low"
+    case contextHighToLow = "context-high-to-low"
+    case throughputHighToLow = "throughput-high-to-low"
+    case latencyLowToHigh = "latency-low-to-high"
+    case intelligenceHighToLow = "intelligence-high-to-low"
+    case codingHighToLow = "coding-high-to-low"
+    case agenticHighToLow = "agentic-high-to-low"
+    case designArenaEloHighToLow = "design-arena-elo-high-to-low"
   }
 }

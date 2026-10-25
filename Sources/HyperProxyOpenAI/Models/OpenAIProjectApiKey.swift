@@ -16,9 +16,9 @@ public struct OpenAIProjectApiKey: Codable, Sendable {
   public var id: String
   public var lastUsedAt: Int?
   public var name: String
-  public var object: OpenAIProjectApiKeyObject
-  public var owner: OpenAIProjectApiKeyOwner
-  public var ownerProjectAccess: OpenAIProjectApiKeyOwnerProjectAccess
+  public var object: OpenAIProjectApiKey.Object
+  public var owner: OpenAIProjectApiKey.Owner
+  public var ownerProjectAccess: OpenAIProjectApiKey.OwnerProjectAccess
   public var redactedValue: String
 
   public init(
@@ -26,9 +26,9 @@ public struct OpenAIProjectApiKey: Codable, Sendable {
     id: String,
     lastUsedAt: Int?,
     name: String,
-    object: OpenAIProjectApiKeyObject,
-    owner: OpenAIProjectApiKeyOwner,
-    ownerProjectAccess: OpenAIProjectApiKeyOwnerProjectAccess,
+    object: OpenAIProjectApiKey.Object,
+    owner: OpenAIProjectApiKey.Owner,
+    ownerProjectAccess: OpenAIProjectApiKey.OwnerProjectAccess,
     redactedValue: String,
     expiresAt: Int? = nil
   ) {
@@ -53,5 +53,41 @@ public struct OpenAIProjectApiKey: Codable, Sendable {
     case owner
     case ownerProjectAccess = "owner_project_access"
     case redactedValue = "redacted_value"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case organizationProjectApiKey = "organization.project.api_key"
+  }
+
+  public struct Owner: Codable, Sendable {
+    public var serviceAccount: OpenAIProjectApiKeyOwnerServiceAccount?
+    public var kind: OpenAIProjectApiKey.Owner.Kind?
+    public var user: OpenAIProjectApiKeyOwnerUser?
+
+    public init(
+      serviceAccount: OpenAIProjectApiKeyOwnerServiceAccount? = nil,
+      kind: OpenAIProjectApiKey.Owner.Kind? = nil,
+      user: OpenAIProjectApiKeyOwnerUser? = nil
+    ) {
+      self.serviceAccount = serviceAccount
+      self.kind = kind
+      self.user = user
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case serviceAccount = "service_account"
+      case kind = "type"
+      case user
+    }
+
+    public enum Kind: String, Codable, Hashable, Sendable {
+      case user = "user"
+      case serviceAccount = "service_account"
+    }
+  }
+
+  public enum OwnerProjectAccess: String, Codable, Hashable, Sendable {
+    case active = "active"
+    case inactive = "inactive"
   }
 }

@@ -18,7 +18,7 @@ public struct OpenAIFunctionShellCallOutput: Codable, Sendable {
   public var maxOutputLength: Int?
   public var output: [OpenAIFunctionShellCallOutputContent]
   public var status: OpenAIFunctionShellCallOutputStatusEnum
-  public var kind: OpenAIFunctionShellCallOutputKind
+  public var kind: OpenAIFunctionShellCallOutput.Kind
 
   public init(
     callId: String,
@@ -26,7 +26,7 @@ public struct OpenAIFunctionShellCallOutput: Codable, Sendable {
     maxOutputLength: Int?,
     output: [OpenAIFunctionShellCallOutputContent],
     status: OpenAIFunctionShellCallOutputStatusEnum,
-    kind: OpenAIFunctionShellCallOutputKind,
+    kind: OpenAIFunctionShellCallOutput.Kind,
     caller: OpenAIToolCallCaller? = nil,
     createdBy: String? = nil
   ) {
@@ -49,5 +49,9 @@ public struct OpenAIFunctionShellCallOutput: Codable, Sendable {
     case output
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case shellCallOutput = "shell_call_output"
   }
 }

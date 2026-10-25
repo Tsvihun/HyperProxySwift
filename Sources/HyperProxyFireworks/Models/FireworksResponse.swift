@@ -21,7 +21,7 @@ public struct FireworksResponse: Codable, Sendable {
   public var metadata: [String: HyperProxyJSONValue]?
   public var model: String
   public var object: String?
-  public var output: [FireworksResponseOutputItem]
+  public var output: [FireworksResponse.OutputElement]
   public var parallelToolCalls: Bool?
   public var previousResponseId: String?
   public var reasoning: [String: HyperProxyJSONValue]?
@@ -29,7 +29,7 @@ public struct FireworksResponse: Codable, Sendable {
   public var store: Bool?
   public var temperature: Double?
   public var text: [String: HyperProxyJSONValue]?
-  public var toolChoice: FireworksResponseToolChoice?
+  public var toolChoice: FireworksResponse.ToolChoice?
   public var tools: [[String: HyperProxyJSONValue]]?
   public var topP: Double?
   public var truncation: String?
@@ -39,7 +39,7 @@ public struct FireworksResponse: Codable, Sendable {
   public init(
     createdAt: Int,
     model: String,
-    output: [FireworksResponseOutputItem],
+    output: [FireworksResponse.OutputElement],
     status: String,
     error: [String: HyperProxyJSONValue]? = nil,
     id: String? = nil,
@@ -55,7 +55,7 @@ public struct FireworksResponse: Codable, Sendable {
     store: Bool? = nil,
     temperature: Double? = nil,
     text: [String: HyperProxyJSONValue]? = nil,
-    toolChoice: FireworksResponseToolChoice? = nil,
+    toolChoice: FireworksResponse.ToolChoice? = nil,
     tools: [[String: HyperProxyJSONValue]]? = nil,
     topP: Double? = nil,
     truncation: String? = nil,
@@ -113,5 +113,66 @@ public struct FireworksResponse: Codable, Sendable {
     case truncation
     case usage
     case user
+  }
+
+  public enum OutputElement: Codable, Sendable {
+    case message(FireworksMessage)
+    case toolCall(FireworksToolCall)
+    case toolOutput(FireworksToolOutput)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(FireworksMessage.self) {
+        self = .message(value)
+        return
+      }
+      if let value = try? container.decode(FireworksToolCall.self) {
+        self = .toolCall(value)
+        return
+      }
+      self = .toolOutput(try container.decode(FireworksToolOutput.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .message(let value):
+        try container.encode(value)
+      case .toolCall(let value):
+        try container.encode(value)
+      case .toolOutput(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum ToolChoice: Codable, Sendable {
+    case string(String)
+    case objectDictionary([String: HyperProxyJSONValue])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .objectDictionary(try container.decode([String: HyperProxyJSONValue].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .objectDictionary(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension FireworksResponse.ToolChoice: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

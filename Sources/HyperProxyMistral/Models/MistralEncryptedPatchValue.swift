@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralEncryptedPatchValue: Codable, Sendable {
-  public var kind: MistralEncryptedKind
+  public var kind: MistralEncryptedPatchValue.Kind
   public var value: String
 
   public init(
     value: String,
-    kind: MistralEncryptedKind = .encrypted
+    kind: MistralEncryptedPatchValue.Kind = .encrypted
   ) {
     self.kind = kind
     self.value = value
@@ -25,5 +25,9 @@ public struct MistralEncryptedPatchValue: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case kind = "type"
     case value
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case encrypted = "__encrypted__"
   }
 }

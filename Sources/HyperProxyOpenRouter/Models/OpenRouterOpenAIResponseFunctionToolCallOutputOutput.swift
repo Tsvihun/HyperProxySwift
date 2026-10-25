@@ -12,8 +12,8 @@ import HyperProxyCore
 
 public enum OpenRouterOpenAIResponseFunctionToolCallOutputOutput: Codable, Sendable {
   case string(String)
-  case openAIResponseFunctionToolCallOutputOutputAnyOf2ItemArray(
-    [OpenRouterOpenAIResponseFunctionToolCallOutputOutputAnyOf2Item])
+  case variantArray(
+    [OpenRouterOpenAIResponseFunctionToolCallOutputOutput.Variant])
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -21,8 +21,8 @@ public enum OpenRouterOpenAIResponseFunctionToolCallOutputOutput: Codable, Senda
       self = .string(value)
       return
     }
-    self = .openAIResponseFunctionToolCallOutputOutputAnyOf2ItemArray(
-      try container.decode([OpenRouterOpenAIResponseFunctionToolCallOutputOutputAnyOf2Item].self))
+    self = .variantArray(
+      try container.decode([OpenRouterOpenAIResponseFunctionToolCallOutputOutput.Variant].self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -30,8 +30,39 @@ public enum OpenRouterOpenAIResponseFunctionToolCallOutputOutput: Codable, Senda
     switch self {
     case .string(let value):
       try container.encode(value)
-    case .openAIResponseFunctionToolCallOutputOutputAnyOf2ItemArray(let value):
+    case .variantArray(let value):
       try container.encode(value)
+    }
+  }
+
+  public enum Variant: Codable, Sendable {
+    case inputText(OpenRouterInputText)
+    case inputImage(OpenRouterInputImage)
+    case inputFile(OpenRouterInputFile)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenRouterInputText.self) {
+        self = .inputText(value)
+        return
+      }
+      if let value = try? container.decode(OpenRouterInputImage.self) {
+        self = .inputImage(value)
+        return
+      }
+      self = .inputFile(try container.decode(OpenRouterInputFile.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .inputText(let value):
+        try container.encode(value)
+      case .inputImage(let value):
+        try container.encode(value)
+      case .inputFile(let value):
+        try container.encode(value)
+      }
     }
   }
 }
@@ -44,8 +75,8 @@ extension OpenRouterOpenAIResponseFunctionToolCallOutputOutput: ExpressibleByStr
 
 extension OpenRouterOpenAIResponseFunctionToolCallOutputOutput: ExpressibleByArrayLiteral {
   public init(
-    arrayLiteral elements: OpenRouterOpenAIResponseFunctionToolCallOutputOutputAnyOf2Item...
+    arrayLiteral elements: OpenRouterOpenAIResponseFunctionToolCallOutputOutput.Variant...
   ) {
-    self = .openAIResponseFunctionToolCallOutputOutputAnyOf2ItemArray(elements)
+    self = .variantArray(elements)
   }
 }

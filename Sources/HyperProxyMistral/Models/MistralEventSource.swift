@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public enum MistralEventSource: String, Codable, Hashable, Sendable {
-  case dATABASE = "DATABASE"
-  case lIVE = "LIVE"
-  case hYBRID = "HYBRID"
+  case database = "DATABASE"
+  case live = "LIVE"
+  case hybrid = "HYBRID"
 }

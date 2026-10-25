@@ -20,7 +20,7 @@ public struct TogetherRemediation: Codable, Sendable {
   public var instanceId: String
   public var instanceName: String?
   public var linkedAlerts: [TogetherPassiveHealthCheckAlert]?
-  public var mode: TogetherRemediationMode
+  public var mode: TogetherRemediation.Mode
   public var passiveHealthCheckEventId: String?
   public var reason: String?
   public var requestedBy: String?
@@ -28,17 +28,17 @@ public struct TogetherRemediation: Codable, Sendable {
   public var reviewTime: String?
   public var reviewedBy: String?
   public var startTime: String?
-  public var state: TogetherRemediationState
-  public var trigger: TogetherRemediationTrigger
+  public var state: TogetherRemediation.State
+  public var trigger: TogetherRemediation.Trigger
   public var updateTime: String?
 
   public init(
     clusterId: String,
     id: String,
     instanceId: String,
-    mode: TogetherRemediationMode,
-    state: TogetherRemediationState,
-    trigger: TogetherRemediationTrigger,
+    mode: TogetherRemediation.Mode,
+    state: TogetherRemediation.State,
+    trigger: TogetherRemediation.Trigger,
     activeHealthCheckRunId: String? = nil,
     createTime: String? = nil,
     endTime: String? = nil,
@@ -97,5 +97,30 @@ public struct TogetherRemediation: Codable, Sendable {
     case state
     case trigger
     case updateTime = "update_time"
+  }
+
+  public enum Mode: String, Codable, Hashable, Sendable {
+    case remediationModeVmOnly = "REMEDIATION_MODE_VM_ONLY"
+    case remediationModeHostAware = "REMEDIATION_MODE_HOST_AWARE"
+    case remediationModeEvictWithoutReplacement = "REMEDIATION_MODE_EVICT_WITHOUT_REPLACEMENT"
+    case remediationModeRebootVm = "REMEDIATION_MODE_REBOOT_VM"
+    case remediationModeHostPowerCycle = "REMEDIATION_MODE_HOST_POWER_CYCLE"
+  }
+
+  public enum State: String, Codable, Hashable, Sendable {
+    case pendingApproval = "PENDING_APPROVAL"
+    case pending = "PENDING"
+    case running = "RUNNING"
+    case succeeded = "SUCCEEDED"
+    case failed = "FAILED"
+    case cancelled = "CANCELLED"
+    case autoResolved = "AUTO_RESOLVED"
+    case quarantining = "QUARANTINING"
+    case quarantined = "QUARANTINED"
+  }
+
+  public enum Trigger: String, Codable, Hashable, Sendable {
+    case remediationTriggerManual = "REMEDIATION_TRIGGER_MANUAL"
+    case remediationTriggerAutomated = "REMEDIATION_TRIGGER_AUTOMATED"
   }
 }

@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIApplyPatchCreateFileOperation: Codable, Sendable {
   public var diff: String
   public var path: String
-  public var kind: OpenAIApplyPatchCreateFileOperationKind
+  public var kind: OpenAIApplyPatchCreateFileOperation.Kind
 
   public init(
     diff: String,
     path: String,
-    kind: OpenAIApplyPatchCreateFileOperationKind
+    kind: OpenAIApplyPatchCreateFileOperation.Kind
   ) {
     self.diff = diff
     self.path = path
@@ -29,5 +29,9 @@ public struct OpenAIApplyPatchCreateFileOperation: Codable, Sendable {
     case diff
     case path
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case createFile = "create_file"
   }
 }

@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiFunctionDeclaration: Codable, Sendable {
-  public var behavior: GeminiFunctionDeclarationBehavior?
+  public var behavior: GeminiFunctionDeclaration.Behavior?
   public var description: String?
   public var name: String?
   public var parameters: GeminiSchema?
@@ -20,7 +20,7 @@ public struct GeminiFunctionDeclaration: Codable, Sendable {
   public var responseJsonSchema: HyperProxyJSONValue?
 
   public init(
-    behavior: GeminiFunctionDeclarationBehavior? = nil,
+    behavior: GeminiFunctionDeclaration.Behavior? = nil,
     description: String? = nil,
     name: String? = nil,
     parameters: GeminiSchema? = nil,
@@ -45,5 +45,11 @@ public struct GeminiFunctionDeclaration: Codable, Sendable {
     case parametersJsonSchema
     case response
     case responseJsonSchema
+  }
+
+  public enum Behavior: String, Codable, Hashable, Sendable {
+    case unspecified = "UNSPECIFIED"
+    case blocking = "BLOCKING"
+    case nonBlocking = "NON_BLOCKING"
   }
 }

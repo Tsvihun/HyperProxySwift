@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct OpenAIEvalItemInputImage: Codable, Sendable {
   public var detail: String?
   public var imageUrl: String
-  public var kind: OpenAIEvalItemInputImageKind
+  public var kind: OpenAIEvalItemInputImage.Kind
 
   public init(
     imageUrl: String,
-    kind: OpenAIEvalItemInputImageKind,
+    kind: OpenAIEvalItemInputImage.Kind,
     detail: String? = nil
   ) {
     self.detail = detail
@@ -29,5 +29,9 @@ public struct OpenAIEvalItemInputImage: Codable, Sendable {
     case detail
     case imageUrl = "image_url"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case inputImage = "input_image"
   }
 }

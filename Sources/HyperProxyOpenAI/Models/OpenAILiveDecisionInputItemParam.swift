@@ -10,28 +10,91 @@
 import Foundation
 import HyperProxyCore
 
-public struct OpenAILiveDecisionInputItemParam: Codable, Sendable {
-  public var content: OpenAILiveDecisionInputItemParamContent
-  public var id: String?
-  public var role: OpenAILiveDecisionInputItemParamRole
-  public var kind: OpenAILiveDecisionInputItemParamKind?
+public enum OpenAILiveDecisionInputItemParam: Codable, Sendable {
+  case message(OpenAILiveDecisionInputItemParam.Message)
+  case liveDecisionFunctionCallParam(OpenAILiveDecisionFunctionCallParam)
+  case liveDecisionFunctionCallOutputParam(OpenAILiveDecisionFunctionCallOutputParam)
+  case liveDecisionCustomToolCallParam(OpenAILiveDecisionCustomToolCallParam)
+  case liveDecisionCustomToolCallOutputParam(OpenAILiveDecisionCustomToolCallOutputParam)
 
-  public init(
-    content: OpenAILiveDecisionInputItemParamContent,
-    role: OpenAILiveDecisionInputItemParamRole,
-    id: String? = nil,
-    kind: OpenAILiveDecisionInputItemParamKind? = nil
-  ) {
-    self.content = content
-    self.id = id
-    self.role = role
-    self.kind = kind
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if let value = try? container.decode(OpenAILiveDecisionInputItemParam.Message.self) {
+      self = .message(value)
+      return
+    }
+    if let value = try? container.decode(OpenAILiveDecisionFunctionCallParam.self) {
+      self = .liveDecisionFunctionCallParam(value)
+      return
+    }
+    if let value = try? container.decode(OpenAILiveDecisionFunctionCallOutputParam.self) {
+      self = .liveDecisionFunctionCallOutputParam(value)
+      return
+    }
+    if let value = try? container.decode(OpenAILiveDecisionCustomToolCallParam.self) {
+      self = .liveDecisionCustomToolCallParam(value)
+      return
+    }
+    self = .liveDecisionCustomToolCallOutputParam(
+      try container.decode(OpenAILiveDecisionCustomToolCallOutputParam.self))
   }
 
-  enum CodingKeys: String, CodingKey {
-    case content
-    case id
-    case role
-    case kind = "type"
+  public func encode(to encoder: any Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .message(let value):
+      try container.encode(value)
+    case .liveDecisionFunctionCallParam(let value):
+      try container.encode(value)
+    case .liveDecisionFunctionCallOutputParam(let value):
+      try container.encode(value)
+    case .liveDecisionCustomToolCallParam(let value):
+      try container.encode(value)
+    case .liveDecisionCustomToolCallOutputParam(let value):
+      try container.encode(value)
+    }
+  }
+
+  public enum Message: Codable, Sendable {
+    case liveDecisionUserMessageParam(OpenAILiveDecisionUserMessageParam)
+    case liveDecisionDeveloperMessageParam(OpenAILiveDecisionDeveloperMessageParam)
+    case liveDecisionSystemMessageParam(OpenAILiveDecisionSystemMessageParam)
+    case liveDecisionAssistantMessageParam(OpenAILiveDecisionAssistantMessageParam)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenAILiveDecisionUserMessageParam.self) {
+        self = .liveDecisionUserMessageParam(value)
+        return
+      }
+      if let value = try? container.decode(OpenAILiveDecisionDeveloperMessageParam.self) {
+        self = .liveDecisionDeveloperMessageParam(value)
+        return
+      }
+      if let value = try? container.decode(OpenAILiveDecisionSystemMessageParam.self) {
+        self = .liveDecisionSystemMessageParam(value)
+        return
+      }
+      self = .liveDecisionAssistantMessageParam(
+        try container.decode(OpenAILiveDecisionAssistantMessageParam.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .liveDecisionUserMessageParam(let value):
+        try container.encode(value)
+      case .liveDecisionDeveloperMessageParam(let value):
+        try container.encode(value)
+      case .liveDecisionSystemMessageParam(let value):
+        try container.encode(value)
+      case .liveDecisionAssistantMessageParam(let value):
+        try container.encode(value)
+      }
+    }
+
+    public enum Kind: String, Codable, Hashable, Sendable {
+      case message = "message"
+    }
   }
 }

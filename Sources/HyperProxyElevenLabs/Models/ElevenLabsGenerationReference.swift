@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsGenerationReference: Codable, Sendable {
   public var generationId: String
-  public var kind: ElevenLabsGenerationKind
+  public var kind: ElevenLabsGenerationReference.Kind
 
   public init(
     generationId: String,
-    kind: ElevenLabsGenerationKind = .generation
+    kind: ElevenLabsGenerationReference.Kind = .generation
   ) {
     self.generationId = generationId
     self.kind = kind
@@ -25,5 +25,9 @@ public struct ElevenLabsGenerationReference: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case generationId = "generation_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case generation = "generation"
   }
 }

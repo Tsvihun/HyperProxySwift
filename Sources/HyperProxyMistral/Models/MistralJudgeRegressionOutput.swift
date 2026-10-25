@@ -15,14 +15,14 @@ public struct MistralJudgeRegressionOutput: Codable, Sendable {
   public var maxDescription: String
   public var min: Double?
   public var minDescription: String
-  public var kind: MistralREGRESSIONKind?
+  public var kind: MistralJudgeRegressionOutput.Kind?
 
   public init(
     maxDescription: String,
     minDescription: String,
     max: Double? = nil,
     min: Double? = nil,
-    kind: MistralREGRESSIONKind? = nil
+    kind: MistralJudgeRegressionOutput.Kind? = nil
   ) {
     self.max = max
     self.maxDescription = maxDescription
@@ -37,5 +37,9 @@ public struct MistralJudgeRegressionOutput: Codable, Sendable {
     case min
     case minDescription = "min_description"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case regression = "REGRESSION"
   }
 }

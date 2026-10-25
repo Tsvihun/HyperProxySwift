@@ -19,7 +19,7 @@ public struct MistralUsageQueryParamsOUT: Codable, Sendable {
   public var customerId: String?
   public var end: String
   public var filters: [MistralAdminUsageQueryFilter]?
-  public var groupBy: [MistralUsageQueryParamsOUTGroupByAnyOf1Item]?
+  public var groupBy: [MistralUsageQueryParamsOUTGroupByItem]?
   public var includeNbApiCalls: Bool?
   public var limit: Int?
   public var offset: Int?
@@ -27,7 +27,7 @@ public struct MistralUsageQueryParamsOUT: Codable, Sendable {
   public var serviceAccountId: [String]?
   public var serviceTier: [String]?
   public var start: String
-  public var timeBucket: MistralUsageQueryParamsOUTTimeBucket?
+  public var timeBucket: MistralUsageQueryParamsOUT.TimeBucket?
   public var untracked: Bool?
   public var usageType: [MistralUsageType]?
   public var userId: [String]?
@@ -43,14 +43,14 @@ public struct MistralUsageQueryParamsOUT: Codable, Sendable {
     billingMetric: [String]? = nil,
     customerId: String? = nil,
     filters: [MistralAdminUsageQueryFilter]? = nil,
-    groupBy: [MistralUsageQueryParamsOUTGroupByAnyOf1Item]? = nil,
+    groupBy: [MistralUsageQueryParamsOUTGroupByItem]? = nil,
     includeNbApiCalls: Bool? = nil,
     limit: Int? = nil,
     offset: Int? = nil,
     organizationId: [String]? = nil,
     serviceAccountId: [String]? = nil,
     serviceTier: [String]? = nil,
-    timeBucket: MistralUsageQueryParamsOUTTimeBucket? = nil,
+    timeBucket: MistralUsageQueryParamsOUT.TimeBucket? = nil,
     untracked: Bool? = nil,
     usageType: [MistralUsageType]? = nil,
     userId: [String]? = nil,
@@ -101,5 +101,18 @@ public struct MistralUsageQueryParamsOUT: Codable, Sendable {
     case usageType = "usage_type"
     case userId = "user_id"
     case workspaceIds = "workspace_ids"
+  }
+
+  public enum TimeBucket: String, Codable, Hashable, Sendable {
+    case second = "second"
+    case value1min = "1min"
+    case value5min = "5min"
+    case value15min = "15min"
+    case value30min = "30min"
+    case hour = "hour"
+    case value4hours = "4hours"
+    case day = "day"
+    case week = "week"
+    case month = "month"
   }
 }

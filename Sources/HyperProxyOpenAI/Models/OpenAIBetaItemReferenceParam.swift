@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIBetaItemReferenceParam: Codable, Sendable {
   public var agent: OpenAIBetaAgentTagParam?
   public var id: String
-  public var kind: OpenAIBetaItemReferenceParamKind?
+  public var kind: OpenAIBetaItemReferenceParam.Kind?
 
   public init(
     id: String,
     agent: OpenAIBetaAgentTagParam? = nil,
-    kind: OpenAIBetaItemReferenceParamKind? = nil
+    kind: OpenAIBetaItemReferenceParam.Kind? = nil
   ) {
     self.agent = agent
     self.id = id
@@ -29,5 +29,9 @@ public struct OpenAIBetaItemReferenceParam: Codable, Sendable {
     case agent
     case id
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case itemReference = "item_reference"
   }
 }

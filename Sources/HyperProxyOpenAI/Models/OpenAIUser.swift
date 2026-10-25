@@ -22,16 +22,16 @@ public struct OpenAIUser: Codable, Sendable {
   public var isScimManaged: Bool?
   public var isServiceAccount: Bool?
   public var name: String?
-  public var object: OpenAIUserObject
-  public var projects: OpenAIUserProjectsAnyOf1?
+  public var object: OpenAIUser.Object
+  public var projects: OpenAIUserProjectsList?
   public var role: String?
   public var technicalLevel: String?
-  public var user: OpenAIUserUser?
+  public var user: OpenAIUser.User?
 
   public init(
     addedAt: Int,
     id: String,
-    object: OpenAIUserObject,
+    object: OpenAIUser.Object,
     apiKeyLastUsedAt: Int? = nil,
     created: Int? = nil,
     developerPersona: String? = nil,
@@ -41,10 +41,10 @@ public struct OpenAIUser: Codable, Sendable {
     isScimManaged: Bool? = nil,
     isServiceAccount: Bool? = nil,
     name: String? = nil,
-    projects: OpenAIUserProjectsAnyOf1? = nil,
+    projects: OpenAIUserProjectsList? = nil,
     role: String? = nil,
     technicalLevel: String? = nil,
-    user: OpenAIUserUser? = nil
+    user: OpenAIUser.User? = nil
   ) {
     self.addedAt = addedAt
     self.apiKeyLastUsedAt = apiKeyLastUsedAt
@@ -81,5 +81,55 @@ public struct OpenAIUser: Codable, Sendable {
     case role
     case technicalLevel = "technical_level"
     case user
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case organizationUser = "organization.user"
+  }
+
+  public struct User: Codable, Sendable {
+    public var banned: Bool?
+    public var bannedAt: Int?
+    public var email: String?
+    public var enabled: Bool?
+    public var id: String
+    public var name: String?
+    public var object: OpenAIUser.User.Object
+    public var picture: String?
+
+    public init(
+      id: String,
+      object: OpenAIUser.User.Object,
+      banned: Bool? = nil,
+      bannedAt: Int? = nil,
+      email: String? = nil,
+      enabled: Bool? = nil,
+      name: String? = nil,
+      picture: String? = nil
+    ) {
+      self.banned = banned
+      self.bannedAt = bannedAt
+      self.email = email
+      self.enabled = enabled
+      self.id = id
+      self.name = name
+      self.object = object
+      self.picture = picture
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case banned
+      case bannedAt = "banned_at"
+      case email
+      case enabled
+      case id
+      case name
+      case object
+      case picture
+    }
+
+    public enum Object: String, Codable, Hashable, Sendable {
+      case user = "user"
+    }
   }
 }

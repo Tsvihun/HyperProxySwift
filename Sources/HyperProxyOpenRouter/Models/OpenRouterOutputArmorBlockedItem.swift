@@ -18,8 +18,8 @@ public struct OpenRouterOutputArmorBlockedItem: Codable, Sendable {
   public var name: String
   public var namespace: String?
   public var reason: String
-  public var status: OpenRouterOutputArmorBlockedItemStatus
-  public var kind: OpenRouterOutputArmorBlockedItemKind
+  public var status: OpenRouterOutputArmorBlockedItem.Status
+  public var kind: OpenRouterOutputArmorBlockedItem.Kind
 
   public init(
     arguments: String,
@@ -28,8 +28,8 @@ public struct OpenRouterOutputArmorBlockedItem: Codable, Sendable {
     id: String,
     name: String,
     reason: String,
-    status: OpenRouterOutputArmorBlockedItemStatus,
-    kind: OpenRouterOutputArmorBlockedItemKind,
+    status: OpenRouterOutputArmorBlockedItem.Status,
+    kind: OpenRouterOutputArmorBlockedItem.Kind,
     namespace: String? = nil
   ) {
     self.arguments = arguments
@@ -53,5 +53,13 @@ public struct OpenRouterOutputArmorBlockedItem: Codable, Sendable {
     case reason
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case openrouterArmorBlocked = "openrouter:armor_blocked"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case completed = "completed"
   }
 }

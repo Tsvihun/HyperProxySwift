@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIVaultCredentialAuthResourceEnvironmentVariable: Codable, Sendable {
   public var networking: OpenAIVaultCredentialNetworkingResource
   public var secretName: String
-  public var kind: OpenAIVaultCredentialAuthResourceEnvironmentVariableKind
+  public var kind: OpenAIVaultCredentialAuthResourceEnvironmentVariable.Kind
 
   public init(
     networking: OpenAIVaultCredentialNetworkingResource,
     secretName: String,
-    kind: OpenAIVaultCredentialAuthResourceEnvironmentVariableKind
+    kind: OpenAIVaultCredentialAuthResourceEnvironmentVariable.Kind
   ) {
     self.networking = networking
     self.secretName = secretName
@@ -29,5 +29,11 @@ public struct OpenAIVaultCredentialAuthResourceEnvironmentVariable: Codable, Sen
     case networking
     case secretName = "secret_name"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case environmentVariable = "environment_variable"
   }
 }

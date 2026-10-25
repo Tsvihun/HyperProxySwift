@@ -14,10 +14,10 @@ public struct OpenRouterChatStreamChunk: Codable, Sendable {
   public var alignment: OpenRouterAlignment?
   public var choices: [OpenRouterChatStreamChoice]
   public var created: Int
-  public var error: OpenRouterChatStreamChunkError?
+  public var error: OpenRouterChatStreamChunk.ErrorValue?
   public var id: String
   public var model: String
-  public var object: OpenRouterChatStreamChunkObject
+  public var object: OpenRouterChatStreamChunk.Object
   public var openrouterMetadata: OpenRouterMetadata?
   public var safeguardResults: [OpenRouterArmorSafeguardResult]?
   public var serviceTier: String?
@@ -29,9 +29,9 @@ public struct OpenRouterChatStreamChunk: Codable, Sendable {
     created: Int,
     id: String,
     model: String,
-    object: OpenRouterChatStreamChunkObject,
+    object: OpenRouterChatStreamChunk.Object,
     alignment: OpenRouterAlignment? = nil,
-    error: OpenRouterChatStreamChunkError? = nil,
+    error: OpenRouterChatStreamChunk.ErrorValue? = nil,
     openrouterMetadata: OpenRouterMetadata? = nil,
     safeguardResults: [OpenRouterArmorSafeguardResult]? = nil,
     serviceTier: String? = nil,
@@ -65,5 +65,49 @@ public struct OpenRouterChatStreamChunk: Codable, Sendable {
     case serviceTier = "service_tier"
     case systemFingerprint = "system_fingerprint"
     case usage
+  }
+
+  public struct ErrorValue: Codable, Sendable {
+    public var code: Int
+    public var message: String
+    public var metadata: OpenRouterChatStreamChunk.ErrorValue.Metadata?
+
+    public init(
+      code: Int,
+      message: String,
+      metadata: OpenRouterChatStreamChunk.ErrorValue.Metadata? = nil
+    ) {
+      self.code = code
+      self.message = message
+      self.metadata = metadata
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case code
+      case message
+      case metadata
+    }
+
+    public struct Metadata: Codable, Sendable {
+      public var errorType: OpenRouterApiErrorType
+      public var providerCode: String?
+
+      public init(
+        errorType: OpenRouterApiErrorType,
+        providerCode: String? = nil
+      ) {
+        self.errorType = errorType
+        self.providerCode = providerCode
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case errorType = "error_type"
+        case providerCode = "provider_code"
+      }
+    }
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case chatCompletionChunk = "chat.completion.chunk"
   }
 }

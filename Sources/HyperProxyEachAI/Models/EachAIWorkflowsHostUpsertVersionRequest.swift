@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct EachAIWorkflowsHostUpsertVersionRequest: Codable, Sendable {
   public var allowedToShare: Bool?
-  public var definition: EachAIWorkflowsHostUpsertVersionRequestDefinition?
+  public var definition: EachAIWorkflowsHostUpsertVersionRequest.Definition?
   public var locked: Bool?
   public var outputMapping: [String: String]?
   public var production: Bool?
@@ -21,7 +21,7 @@ public struct EachAIWorkflowsHostUpsertVersionRequest: Codable, Sendable {
 
   public init(
     allowedToShare: Bool? = nil,
-    definition: EachAIWorkflowsHostUpsertVersionRequestDefinition? = nil,
+    definition: EachAIWorkflowsHostUpsertVersionRequest.Definition? = nil,
     locked: Bool? = nil,
     outputMapping: [String: String]? = nil,
     production: Bool? = nil,
@@ -45,5 +45,31 @@ public struct EachAIWorkflowsHostUpsertVersionRequest: Codable, Sendable {
     case production
     case published
     case versionId = "version_id"
+  }
+
+  public struct Definition: Codable, Sendable {
+    public var inputSchema: HyperProxyJSONValue?
+    public var metadata: HyperProxyJSONValue?
+    public var steps: [HyperProxyJSONValue]?
+    public var version: String?
+
+    public init(
+      inputSchema: HyperProxyJSONValue? = nil,
+      metadata: HyperProxyJSONValue? = nil,
+      steps: [HyperProxyJSONValue]? = nil,
+      version: String? = nil
+    ) {
+      self.inputSchema = inputSchema
+      self.metadata = metadata
+      self.steps = steps
+      self.version = version
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case inputSchema = "input_schema"
+      case metadata
+      case steps
+      case version
+    }
   }
 }

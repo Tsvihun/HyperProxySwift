@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public enum TogetherGPUClusterCreateRequestCommonBillingType: String, Codable, Hashable, Sendable {
-  case rESERVED = "RESERVED"
-  case oNDEMAND = "ON_DEMAND"
-  case sCHEDULEDCAPACITY = "SCHEDULED_CAPACITY"
+  case reserved = "RESERVED"
+  case onDemand = "ON_DEMAND"
+  case scheduledCapacity = "SCHEDULED_CAPACITY"
 }

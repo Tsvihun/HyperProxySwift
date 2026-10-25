@@ -14,7 +14,7 @@ public struct StabilityPostV2betaStableImageEditSearchAndReplaceRequest: Codable
   public var growMask: Double?
   public var image: String
   public var negativePrompt: String?
-  public var outputFormat: StabilityPostV2betaStableImageEditSearchAndReplaceRequestOutputFormat?
+  public var outputFormat: StabilityPostV2betaStableImageEditSearchAndReplaceRequest.OutputFormat?
   public var prompt: String
   public var searchPrompt: String
   public var seed: Double?
@@ -26,7 +26,7 @@ public struct StabilityPostV2betaStableImageEditSearchAndReplaceRequest: Codable
     searchPrompt: String,
     growMask: Double? = nil,
     negativePrompt: String? = nil,
-    outputFormat: StabilityPostV2betaStableImageEditSearchAndReplaceRequestOutputFormat? = nil,
+    outputFormat: StabilityPostV2betaStableImageEditSearchAndReplaceRequest.OutputFormat? = nil,
     seed: Double? = nil,
     stylePreset: StabilityStylePreset? = nil
   ) {
@@ -49,5 +49,13 @@ public struct StabilityPostV2betaStableImageEditSearchAndReplaceRequest: Codable
     case searchPrompt = "search_prompt"
     case seed
     case stylePreset = "style_preset"
+  }
+
+  public enum OutputFormat: String, Codable,
+    Hashable, Sendable
+  {
+    case jpeg = "jpeg"
+    case png = "png"
+    case webp = "webp"
   }
 }

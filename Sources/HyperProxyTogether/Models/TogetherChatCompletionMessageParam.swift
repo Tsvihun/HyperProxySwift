@@ -15,7 +15,6 @@ public enum TogetherChatCompletionMessageParam: Codable, Sendable {
   case chatCompletionUserMessageParam(TogetherChatCompletionUserMessageParam)
   case chatCompletionAssistantMessageParam(TogetherChatCompletionAssistantMessageParam)
   case chatCompletionToolMessageParam(TogetherChatCompletionToolMessageParam)
-  case chatCompletionFunctionMessageParam(TogetherChatCompletionFunctionMessageParam)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -31,12 +30,8 @@ public enum TogetherChatCompletionMessageParam: Codable, Sendable {
       self = .chatCompletionAssistantMessageParam(value)
       return
     }
-    if let value = try? container.decode(TogetherChatCompletionToolMessageParam.self) {
-      self = .chatCompletionToolMessageParam(value)
-      return
-    }
-    self = .chatCompletionFunctionMessageParam(
-      try container.decode(TogetherChatCompletionFunctionMessageParam.self))
+    self = .chatCompletionToolMessageParam(
+      try container.decode(TogetherChatCompletionToolMessageParam.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
@@ -49,8 +44,6 @@ public enum TogetherChatCompletionMessageParam: Codable, Sendable {
     case .chatCompletionAssistantMessageParam(let value):
       try container.encode(value)
     case .chatCompletionToolMessageParam(let value):
-      try container.encode(value)
-    case .chatCompletionFunctionMessageParam(let value):
       try container.encode(value)
     }
   }

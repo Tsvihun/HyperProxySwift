@@ -16,7 +16,7 @@ public struct OpenRouterObservabilityLangfuseDestination: Codable, Sendable {
   public var broadcastGenerationCostAllocation: Bool
   public var broadcastGenerationIdentity: Bool
   public var broadcastGenerationRequestContext: Bool
-  public var config: OpenRouterObservabilityLangfuseDestinationConfig
+  public var config: OpenRouterObservabilityLangfuseDestination.Config
   public var createdAt: String
   public var enabled: Bool
   public var filterRules: OpenRouterObservabilityFilterRulesConfig?
@@ -25,7 +25,7 @@ public struct OpenRouterObservabilityLangfuseDestination: Codable, Sendable {
   public var privacyMode: Bool
   public var regions: [OpenRouterObservabilityDataRegion]
   public var samplingRate: Double
-  public var kind: OpenRouterObservabilityLangfuseDestinationKind
+  public var kind: OpenRouterObservabilityLangfuseDestination.Kind
   public var updatedAt: String
   public var workspaceId: String
 
@@ -35,7 +35,7 @@ public struct OpenRouterObservabilityLangfuseDestination: Codable, Sendable {
     broadcastGenerationCostAllocation: Bool,
     broadcastGenerationIdentity: Bool,
     broadcastGenerationRequestContext: Bool,
-    config: OpenRouterObservabilityLangfuseDestinationConfig,
+    config: OpenRouterObservabilityLangfuseDestination.Config,
     createdAt: String,
     enabled: Bool,
     filterRules: OpenRouterObservabilityFilterRulesConfig?,
@@ -44,7 +44,7 @@ public struct OpenRouterObservabilityLangfuseDestination: Codable, Sendable {
     privacyMode: Bool,
     regions: [OpenRouterObservabilityDataRegion],
     samplingRate: Double,
-    kind: OpenRouterObservabilityLangfuseDestinationKind,
+    kind: OpenRouterObservabilityLangfuseDestination.Kind,
     updatedAt: String,
     workspaceId: String
   ) {
@@ -85,5 +85,35 @@ public struct OpenRouterObservabilityLangfuseDestination: Codable, Sendable {
     case kind = "type"
     case updatedAt = "updated_at"
     case workspaceId = "workspace_id"
+  }
+
+  public struct Config: Codable, Sendable {
+    public var baseUrl: String?
+    public var headers: [String: String]?
+    public var publicKey: String
+    public var secretKey: String
+
+    public init(
+      publicKey: String,
+      secretKey: String,
+      baseUrl: String? = nil,
+      headers: [String: String]? = nil
+    ) {
+      self.baseUrl = baseUrl
+      self.headers = headers
+      self.publicKey = publicKey
+      self.secretKey = secretKey
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case baseUrl
+      case headers
+      case publicKey
+      case secretKey
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case langfuse = "langfuse"
   }
 }

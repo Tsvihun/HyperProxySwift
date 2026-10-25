@@ -17,7 +17,7 @@ public struct OpenAIRealtimeBetaServerEventResponseTextDelta: Codable, Sendable 
   public var itemId: String
   public var outputIndex: Int
   public var responseId: String
-  public var kind: OpenAIRealtimeBetaServerEventResponseTextDeltaKind
+  public var kind: OpenAIRealtimeBetaServerEventResponseTextDelta.Kind
 
   public init(
     contentIndex: Int,
@@ -26,7 +26,7 @@ public struct OpenAIRealtimeBetaServerEventResponseTextDelta: Codable, Sendable 
     itemId: String,
     outputIndex: Int,
     responseId: String,
-    kind: OpenAIRealtimeBetaServerEventResponseTextDeltaKind
+    kind: OpenAIRealtimeBetaServerEventResponseTextDelta.Kind
   ) {
     self.contentIndex = contentIndex
     self.delta = delta
@@ -45,5 +45,9 @@ public struct OpenAIRealtimeBetaServerEventResponseTextDelta: Codable, Sendable 
     case outputIndex = "output_index"
     case responseId = "response_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case responseOutputTextDelta = "response.output_text.delta"
   }
 }

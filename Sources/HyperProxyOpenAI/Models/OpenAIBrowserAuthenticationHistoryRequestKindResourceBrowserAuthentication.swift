@@ -17,14 +17,14 @@ public struct OpenAIBrowserAuthenticationHistoryRequestKindResourceBrowserAuthen
   public var fields: [OpenAIBrowserAuthenticationFieldResource]
   public var options: [OpenAIBrowserAuthenticationOptionResource]
   public var reason: String
-  public var kind: OpenAIBrowserAuthenticationHistoryRequestKindResourceBrowserAuthenticationKind
+  public var kind: OpenAIBrowserAuthenticationHistoryRequestKindResourceBrowserAuthentication.Kind
 
   public init(
     credentialOrigin: String,
     fields: [OpenAIBrowserAuthenticationFieldResource],
     options: [OpenAIBrowserAuthenticationOptionResource],
     reason: String,
-    kind: OpenAIBrowserAuthenticationHistoryRequestKindResourceBrowserAuthenticationKind
+    kind: OpenAIBrowserAuthenticationHistoryRequestKindResourceBrowserAuthentication.Kind
   ) {
     self.credentialOrigin = credentialOrigin
     self.fields = fields
@@ -39,5 +39,11 @@ public struct OpenAIBrowserAuthenticationHistoryRequestKindResourceBrowserAuthen
     case options
     case reason
     case kind = "type"
+  }
+
+  public enum Kind: String,
+    Codable, Hashable, Sendable
+  {
+    case browserAuthentication = "browser_authentication"
   }
 }

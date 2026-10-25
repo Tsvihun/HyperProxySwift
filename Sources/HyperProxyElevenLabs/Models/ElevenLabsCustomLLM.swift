@@ -11,22 +11,22 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsCustomLLM: Codable, Sendable {
-  public var apiKey: ElevenLabsCustomLLMApiKey?
+  public var apiKey: ElevenLabsCustomLLM.ApiKey?
   public var apiType: ElevenLabsCustomLLMAPIType?
   public var apiVersion: String?
-  public var authConnection: ElevenLabsCustomLLMAuthConnection?
+  public var authConnection: ElevenLabsCustomLLM.AuthConnection?
   public var modelId: String?
-  public var requestHeaders: [String: ElevenLabsCustomLLMRequestHeadersValue]?
+  public var requestHeaders: [String: ElevenLabsCustomLLM.RequestHeadersValue]?
   public var url: String
 
   public init(
     url: String,
-    apiKey: ElevenLabsCustomLLMApiKey? = nil,
+    apiKey: ElevenLabsCustomLLM.ApiKey? = nil,
     apiType: ElevenLabsCustomLLMAPIType? = nil,
     apiVersion: String? = nil,
-    authConnection: ElevenLabsCustomLLMAuthConnection? = nil,
+    authConnection: ElevenLabsCustomLLM.AuthConnection? = nil,
     modelId: String? = nil,
-    requestHeaders: [String: ElevenLabsCustomLLMRequestHeadersValue]? = nil
+    requestHeaders: [String: ElevenLabsCustomLLM.RequestHeadersValue]? = nil
   ) {
     self.apiKey = apiKey
     self.apiType = apiType
@@ -45,5 +45,98 @@ public struct ElevenLabsCustomLLM: Codable, Sendable {
     case modelId = "model_id"
     case requestHeaders = "request_headers"
     case url
+  }
+
+  public enum ApiKey: Codable, Sendable {
+    case convAISecretLocator(ElevenLabsConvAISecretLocator)
+    case convAIEnvVarLocator(ElevenLabsConvAIEnvVarLocator)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsConvAISecretLocator.self) {
+        self = .convAISecretLocator(value)
+        return
+      }
+      self = .convAIEnvVarLocator(try container.decode(ElevenLabsConvAIEnvVarLocator.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .convAISecretLocator(let value):
+        try container.encode(value)
+      case .convAIEnvVarLocator(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum AuthConnection: Codable, Sendable {
+    case authConnectionLocator(ElevenLabsAuthConnectionLocator)
+    case environmentAuthConnectionLocator(ElevenLabsEnvironmentAuthConnectionLocator)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsAuthConnectionLocator.self) {
+        self = .authConnectionLocator(value)
+        return
+      }
+      self = .environmentAuthConnectionLocator(
+        try container.decode(ElevenLabsEnvironmentAuthConnectionLocator.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .authConnectionLocator(let value):
+        try container.encode(value)
+      case .environmentAuthConnectionLocator(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum RequestHeadersValue: Codable, Sendable {
+    case string(String)
+    case convAISecretLocator(ElevenLabsConvAISecretLocator)
+    case convAIDynamicVariable(ElevenLabsConvAIDynamicVariable)
+    case convAIEnvVarLocator(ElevenLabsConvAIEnvVarLocator)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsConvAISecretLocator.self) {
+        self = .convAISecretLocator(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsConvAIDynamicVariable.self) {
+        self = .convAIDynamicVariable(value)
+        return
+      }
+      self = .convAIEnvVarLocator(try container.decode(ElevenLabsConvAIEnvVarLocator.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .convAISecretLocator(let value):
+        try container.encode(value)
+      case .convAIDynamicVariable(let value):
+        try container.encode(value)
+      case .convAIEnvVarLocator(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension ElevenLabsCustomLLM.RequestHeadersValue: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

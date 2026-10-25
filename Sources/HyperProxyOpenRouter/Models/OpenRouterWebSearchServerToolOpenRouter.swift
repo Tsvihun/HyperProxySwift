@@ -12,10 +12,10 @@ import HyperProxyCore
 
 public struct OpenRouterWebSearchServerToolOpenRouter: Codable, Sendable {
   public var parameters: OpenRouterWebSearchServerToolConfig?
-  public var kind: OpenRouterWebSearchServerToolOpenRouterKind
+  public var kind: OpenRouterWebSearchServerToolOpenRouter.Kind
 
   public init(
-    kind: OpenRouterWebSearchServerToolOpenRouterKind,
+    kind: OpenRouterWebSearchServerToolOpenRouter.Kind,
     parameters: OpenRouterWebSearchServerToolConfig? = nil
   ) {
     self.parameters = parameters
@@ -25,5 +25,9 @@ public struct OpenRouterWebSearchServerToolOpenRouter: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case parameters
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case openrouterWebSearch = "openrouter:web_search"
   }
 }

@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct MistralJudgeOutput: Codable, Sendable {
   public var analysis: String
-  public var answer: MistralJudgeOutputAnswer
+  public var answer: MistralJudgeOutput.Answer
 
   public init(
     analysis: String,
-    answer: MistralJudgeOutputAnswer
+    answer: MistralJudgeOutput.Answer
   ) {
     self.analysis = analysis
     self.answer = answer
@@ -25,5 +25,35 @@ public struct MistralJudgeOutput: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case analysis
     case answer
+  }
+
+  public enum Answer: Codable, Sendable {
+    case number(Double)
+    case string(String)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Double.self) {
+        self = .number(value)
+        return
+      }
+      self = .string(try container.decode(String.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .number(let value):
+        try container.encode(value)
+      case .string(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension MistralJudgeOutput.Answer: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

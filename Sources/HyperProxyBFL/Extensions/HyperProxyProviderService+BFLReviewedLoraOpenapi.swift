@@ -40,13 +40,13 @@ extension HyperProxyProviderService where Operation == BFLOperation {
     return try await prepared.decoded(BFLFineTuningFlux2Klein9BGenerateResponse.self)
   }
 
-  public func fineTuningFlux2Klein9BKVBF16Generate(
+  public func fineTuningFlux2Klein9Bkvbf16Generate(
     _ body: BFLFlux2KleinFinetuneInputs,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> BFLFineTuningFlux2Klein9BKVBF16GenerateResponse {
-    let call = self.call(.fineTuningFlux2Klein9BKVBF16Generate)
+    let call = self.call(.fineTuningFlux2Klein9Bkvbf16Generate)
       .query(query)
       .headers(headers)
       .timeout(timeout)
@@ -54,13 +54,13 @@ extension HyperProxyProviderService where Operation == BFLOperation {
     return try await prepared.decoded(BFLFineTuningFlux2Klein9BKVBF16GenerateResponse.self)
   }
 
-  public func fineTuningFlux2Klein9BKVGenerate(
+  public func fineTuningFlux2Klein9BkvGenerate(
     _ body: BFLFlux2KleinFinetuneInputs,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> BFLFineTuningFlux2Klein9BKVGenerateResponse {
-    let call = self.call(.fineTuningFlux2Klein9BKVGenerate)
+    let call = self.call(.fineTuningFlux2Klein9BkvGenerate)
       .query(query)
       .headers(headers)
       .timeout(timeout)

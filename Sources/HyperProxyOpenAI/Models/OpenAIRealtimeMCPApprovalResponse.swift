@@ -15,13 +15,13 @@ public struct OpenAIRealtimeMCPApprovalResponse: Codable, Sendable {
   public var approve: Bool
   public var id: String
   public var reason: String?
-  public var kind: OpenAIRealtimeMCPApprovalResponseKind
+  public var kind: OpenAIRealtimeMCPApprovalResponse.Kind
 
   public init(
     approvalRequestId: String,
     approve: Bool,
     id: String,
-    kind: OpenAIRealtimeMCPApprovalResponseKind,
+    kind: OpenAIRealtimeMCPApprovalResponse.Kind,
     reason: String? = nil
   ) {
     self.approvalRequestId = approvalRequestId
@@ -37,5 +37,9 @@ public struct OpenAIRealtimeMCPApprovalResponse: Codable, Sendable {
     case id
     case reason
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case mcpApprovalResponse = "mcp_approval_response"
   }
 }

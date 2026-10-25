@@ -14,17 +14,17 @@ public struct OpenAIBetaFileSearchToolCall: Codable, Sendable {
   public var agent: OpenAIBetaAgentTag?
   public var id: String
   public var queries: [String]
-  public var results: [OpenAIBetaFileSearchToolCallResultsAnyOf1Item]?
-  public var status: OpenAIBetaFileSearchToolCallStatus
-  public var kind: OpenAIBetaFileSearchToolCallKind
+  public var results: [OpenAIBetaFileSearchToolCallResultsItem]?
+  public var status: OpenAIBetaFileSearchToolCall.Status
+  public var kind: OpenAIBetaFileSearchToolCall.Kind
 
   public init(
     id: String,
     queries: [String],
-    status: OpenAIBetaFileSearchToolCallStatus,
-    kind: OpenAIBetaFileSearchToolCallKind,
+    status: OpenAIBetaFileSearchToolCall.Status,
+    kind: OpenAIBetaFileSearchToolCall.Kind,
     agent: OpenAIBetaAgentTag? = nil,
-    results: [OpenAIBetaFileSearchToolCallResultsAnyOf1Item]? = nil
+    results: [OpenAIBetaFileSearchToolCallResultsItem]? = nil
   ) {
     self.agent = agent
     self.id = id
@@ -41,5 +41,17 @@ public struct OpenAIBetaFileSearchToolCall: Codable, Sendable {
     case results
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case fileSearchCall = "file_search_call"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case inProgress = "in_progress"
+    case searching = "searching"
+    case completed = "completed"
+    case incomplete = "incomplete"
+    case failed = "failed"
   }
 }

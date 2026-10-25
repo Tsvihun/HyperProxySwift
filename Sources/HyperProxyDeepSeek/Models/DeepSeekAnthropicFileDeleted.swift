@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct DeepSeekAnthropicFileDeleted: Codable, Sendable {
   public var id: String
-  public var kind: DeepSeekAnthropicFileDeletedKind
+  public var kind: DeepSeekAnthropicFileDeleted.Kind
 
   public init(
     id: String,
-    kind: DeepSeekAnthropicFileDeletedKind
+    kind: DeepSeekAnthropicFileDeleted.Kind
   ) {
     self.id = id
     self.kind = kind
@@ -25,5 +25,9 @@ public struct DeepSeekAnthropicFileDeleted: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case id
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case fileDeleted = "file_deleted"
   }
 }

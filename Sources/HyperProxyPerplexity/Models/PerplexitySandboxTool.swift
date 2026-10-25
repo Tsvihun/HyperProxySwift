@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct PerplexitySandboxTool: Codable, Sendable {
-  public var kind: PerplexitySandboxToolKind
+  public var kind: PerplexitySandboxTool.Kind
 
   public init(
-    kind: PerplexitySandboxToolKind
+    kind: PerplexitySandboxTool.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case sandbox = "sandbox"
   }
 }

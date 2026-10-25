@@ -12,10 +12,10 @@ import HyperProxyCore
 
 public struct ElevenLabsASTNumberNodeInput: Codable, Sendable {
   public var kind: ElevenLabsNumberLiteralKind?
-  public var value: ElevenLabsASTNumberNodeInputValue
+  public var value: ElevenLabsASTNumberNodeInput.Value
 
   public init(
-    value: ElevenLabsASTNumberNodeInputValue,
+    value: ElevenLabsASTNumberNodeInput.Value,
     kind: ElevenLabsNumberLiteralKind? = nil
   ) {
     self.kind = kind
@@ -25,5 +25,35 @@ public struct ElevenLabsASTNumberNodeInput: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case kind = "type"
     case value
+  }
+
+  public enum Value: Codable, Sendable {
+    case integer(Int)
+    case number(Double)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Int.self) {
+        self = .integer(value)
+        return
+      }
+      self = .number(try container.decode(Double.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .integer(let value):
+        try container.encode(value)
+      case .number(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension ElevenLabsASTNumberNodeInput.Value: ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Int) {
+    self = .integer(value)
   }
 }

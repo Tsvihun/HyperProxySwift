@@ -12,8 +12,8 @@ import HyperProxyCore
 
 public struct MistralOCRRequest: Codable, Sendable {
   public var bboxAnnotationFormat: MistralResponseFormat?
-  public var confidenceScoresGranularity: MistralOCRRequestConfidenceScoresGranularity?
-  public var document: MistralOCRRequestDocument
+  public var confidenceScoresGranularity: MistralOCRRequest.ConfidenceScoresGranularity?
+  public var document: MistralOCRRequest.Document
   public var documentAnnotationFormat: MistralResponseFormat?
   public var documentAnnotationPrompt: String?
   public var extractFooter: Bool?
@@ -23,14 +23,14 @@ public struct MistralOCRRequest: Codable, Sendable {
   public var includeBlocks: Bool?
   public var includeImageBase64: Bool?
   public var model: String?
-  public var pages: MistralOCRRequestPages?
-  public var tableFormat: MistralOCRRequestTableFormat?
+  public var pages: MistralOCRRequest.Pages?
+  public var tableFormat: MistralOCRRequest.TableFormat?
 
   public init(
-    document: MistralOCRRequestDocument,
+    document: MistralOCRRequest.Document,
     model: String?,
     bboxAnnotationFormat: MistralResponseFormat? = nil,
-    confidenceScoresGranularity: MistralOCRRequestConfidenceScoresGranularity? = nil,
+    confidenceScoresGranularity: MistralOCRRequest.ConfidenceScoresGranularity? = nil,
     documentAnnotationFormat: MistralResponseFormat? = nil,
     documentAnnotationPrompt: String? = nil,
     extractFooter: Bool? = nil,
@@ -39,8 +39,8 @@ public struct MistralOCRRequest: Codable, Sendable {
     imageMinSize: Int? = nil,
     includeBlocks: Bool? = nil,
     includeImageBase64: Bool? = nil,
-    pages: MistralOCRRequestPages? = nil,
-    tableFormat: MistralOCRRequestTableFormat? = nil
+    pages: MistralOCRRequest.Pages? = nil,
+    tableFormat: MistralOCRRequest.TableFormat? = nil
   ) {
     self.bboxAnnotationFormat = bboxAnnotationFormat
     self.confidenceScoresGranularity = confidenceScoresGranularity
@@ -73,5 +73,83 @@ public struct MistralOCRRequest: Codable, Sendable {
     case model
     case pages
     case tableFormat = "table_format"
+  }
+
+  public enum ConfidenceScoresGranularity: String, Codable, Hashable, Sendable {
+    case word = "word"
+    case page = "page"
+    case block = "block"
+  }
+
+  public enum Document: Codable, Sendable {
+    case fileChunk(MistralFileChunk)
+    case documentURLChunk(MistralDocumentURLChunk)
+    case imageURLChunk(MistralImageURLChunk)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(MistralFileChunk.self) {
+        self = .fileChunk(value)
+        return
+      }
+      if let value = try? container.decode(MistralDocumentURLChunk.self) {
+        self = .documentURLChunk(value)
+        return
+      }
+      self = .imageURLChunk(try container.decode(MistralImageURLChunk.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .fileChunk(let value):
+        try container.encode(value)
+      case .documentURLChunk(let value):
+        try container.encode(value)
+      case .imageURLChunk(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Pages: Codable, Sendable {
+    case string(String)
+    case integerArray([Int])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .integerArray(try container.decode([Int].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .integerArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum TableFormat: String, Codable, Hashable, Sendable {
+    case markdown = "markdown"
+    case html = "html"
+  }
+}
+
+extension MistralOCRRequest.Pages: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension MistralOCRRequest.Pages: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: Int...) {
+    self = .integerArray(elements)
   }
 }

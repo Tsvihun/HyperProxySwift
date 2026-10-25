@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct ElevenLabsSMSConversationInfo: Codable, Sendable {
   public var agentPhoneNumber: String?
-  public var direction: ElevenLabsSMSConversationInfoDirection
+  public var direction: ElevenLabsSMSConversationInfo.Direction
   public var phoneNumberId: String?
   public var smsUserPhoneNumber: String
 
   public init(
-    direction: ElevenLabsSMSConversationInfoDirection,
+    direction: ElevenLabsSMSConversationInfo.Direction,
     smsUserPhoneNumber: String,
     agentPhoneNumber: String? = nil,
     phoneNumberId: String? = nil
@@ -33,5 +33,10 @@ public struct ElevenLabsSMSConversationInfo: Codable, Sendable {
     case direction
     case phoneNumberId = "phone_number_id"
     case smsUserPhoneNumber = "sms_user_phone_number"
+  }
+
+  public enum Direction: String, Codable, Hashable, Sendable {
+    case inbound = "inbound"
+    case outbound = "outbound"
   }
 }

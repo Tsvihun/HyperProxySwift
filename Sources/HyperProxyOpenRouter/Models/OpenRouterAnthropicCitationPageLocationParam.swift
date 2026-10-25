@@ -16,7 +16,7 @@ public struct OpenRouterAnthropicCitationPageLocationParam: Codable, Sendable {
   public var documentTitle: String
   public var endPageNumber: Int
   public var startPageNumber: Int
-  public var kind: OpenRouterAnthropicCitationPageLocationParamKind
+  public var kind: OpenRouterAnthropicCitationPageLocationParam.Kind
 
   public init(
     citedText: String,
@@ -24,7 +24,7 @@ public struct OpenRouterAnthropicCitationPageLocationParam: Codable, Sendable {
     documentTitle: String,
     endPageNumber: Int,
     startPageNumber: Int,
-    kind: OpenRouterAnthropicCitationPageLocationParamKind
+    kind: OpenRouterAnthropicCitationPageLocationParam.Kind
   ) {
     self.citedText = citedText
     self.documentIndex = documentIndex
@@ -41,5 +41,9 @@ public struct OpenRouterAnthropicCitationPageLocationParam: Codable, Sendable {
     case endPageNumber = "end_page_number"
     case startPageNumber = "start_page_number"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case pageLocation = "page_location"
   }
 }

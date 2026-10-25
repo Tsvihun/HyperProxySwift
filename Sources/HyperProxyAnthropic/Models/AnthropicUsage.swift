@@ -19,7 +19,7 @@ public struct AnthropicUsage: Codable, Sendable {
   public var outputTokens: Int
   public var outputTokensDetails: AnthropicOutputTokensDetails?
   public var serverToolUse: AnthropicServerToolUsage?
-  public var serviceTier: AnthropicUsageServiceTier?
+  public var serviceTier: AnthropicUsage.ServiceTier?
 
   public init(
     cacheCreation: AnthropicCacheCreation?,
@@ -30,7 +30,7 @@ public struct AnthropicUsage: Codable, Sendable {
     outputTokens: Int,
     outputTokensDetails: AnthropicOutputTokensDetails?,
     serverToolUse: AnthropicServerToolUsage?,
-    serviceTier: AnthropicUsageServiceTier?
+    serviceTier: AnthropicUsage.ServiceTier?
   ) {
     self.cacheCreation = cacheCreation
     self.cacheCreationInputTokens = cacheCreationInputTokens
@@ -53,5 +53,11 @@ public struct AnthropicUsage: Codable, Sendable {
     case outputTokensDetails = "output_tokens_details"
     case serverToolUse = "server_tool_use"
     case serviceTier = "service_tier"
+  }
+
+  public enum ServiceTier: String, Codable, Hashable, Sendable {
+    case standard = "standard"
+    case priority = "priority"
+    case batch = "batch"
   }
 }

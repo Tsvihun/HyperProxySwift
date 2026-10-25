@@ -17,7 +17,7 @@ public struct TogetherSecretResponseItem: Codable, Sendable {
   public var id: String?
   public var lastUpdatedBy: String?
   public var name: String?
-  public var object: TogetherSecretObject?
+  public var object: TogetherSecretResponseItem.Object?
   public var updatedAt: String?
 
   public init(
@@ -27,7 +27,7 @@ public struct TogetherSecretResponseItem: Codable, Sendable {
     id: String? = nil,
     lastUpdatedBy: String? = nil,
     name: String? = nil,
-    object: TogetherSecretObject? = nil,
+    object: TogetherSecretResponseItem.Object? = nil,
     updatedAt: String? = nil
   ) {
     self.createdAt = createdAt
@@ -49,5 +49,9 @@ public struct TogetherSecretResponseItem: Codable, Sendable {
     case name
     case object
     case updatedAt = "updated_at"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case secret = "secret"
   }
 }

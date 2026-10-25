@@ -18,7 +18,7 @@ public struct TogetherFineTuneEvent: Codable, Sendable {
   public var level: TogetherFinetuneEventLevels?
   public var message: String
   public var modelPath: String?
-  public var object: TogetherFineTuneEventObject
+  public var object: TogetherFineTuneEvent.Object
   public var paramCount: Int?
   public var step: Int?
   public var tokenCount: Int?
@@ -31,7 +31,7 @@ public struct TogetherFineTuneEvent: Codable, Sendable {
     createdAt: String,
     message: String,
     kind: TogetherFinetuneEventType,
-    object: TogetherFineTuneEventObject = .fineTuneEvent,
+    object: TogetherFineTuneEvent.Object = .fineTuneEvent,
     checkpointPath: String? = nil,
     earlyStoppingBestMetricValue: Double? = nil,
     earlyStoppingBestStep: Int? = nil,
@@ -77,5 +77,9 @@ public struct TogetherFineTuneEvent: Codable, Sendable {
     case totalSteps = "total_steps"
     case kind = "type"
     case wandbUrl = "wandb_url"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case fineTuneEvent = "fine-tune-event"
   }
 }

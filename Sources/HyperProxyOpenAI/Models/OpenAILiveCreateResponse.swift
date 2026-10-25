@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAILiveCreateResponse: Codable, Sendable {
-  public var session: OpenAILiveCreateResponseSession
+  public var session: OpenAILiveCreateResponse.Session
   public var transport: OpenAILiveWebRTCTransport
 
   public init(
-    session: OpenAILiveCreateResponseSession,
+    session: OpenAILiveCreateResponse.Session,
     transport: OpenAILiveWebRTCTransport
   ) {
     self.session = session
@@ -25,5 +25,19 @@ public struct OpenAILiveCreateResponse: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case session
     case transport
+  }
+
+  public struct Session: Codable, Sendable {
+    public var id: String
+
+    public init(
+      id: String
+    ) {
+      self.id = id
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case id
+    }
   }
 }

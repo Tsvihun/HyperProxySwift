@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct GroqChatCompletionDocumentSourceJSON: Codable, Sendable {
   public var data: [String: HyperProxyJSONValue]
-  public var kind: GroqChatCompletionDocumentSourceJSONKind
+  public var kind: GroqChatCompletionDocumentSourceJSON.Kind
 
   public init(
     data: [String: HyperProxyJSONValue],
-    kind: GroqChatCompletionDocumentSourceJSONKind
+    kind: GroqChatCompletionDocumentSourceJSON.Kind
   ) {
     self.data = data
     self.kind = kind
@@ -25,5 +25,9 @@ public struct GroqChatCompletionDocumentSourceJSON: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case data
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case json = "json"
   }
 }

@@ -21,11 +21,11 @@ public struct OpenRouterOutputSubagentServerToolItem: Codable, Sendable {
   public var status: OpenRouterFailableToolCallStatus
   public var taskDescription: String?
   public var taskName: String?
-  public var kind: OpenRouterOutputSubagentServerToolItemKind
+  public var kind: OpenRouterOutputSubagentServerToolItem.Kind
 
   public init(
     status: OpenRouterFailableToolCallStatus,
-    kind: OpenRouterOutputSubagentServerToolItemKind,
+    kind: OpenRouterOutputSubagentServerToolItem.Kind,
     callId: String? = nil,
     error: String? = nil,
     id: String? = nil,
@@ -61,5 +61,9 @@ public struct OpenRouterOutputSubagentServerToolItem: Codable, Sendable {
     case taskDescription = "task_description"
     case taskName = "task_name"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case openrouterSubagent = "openrouter:subagent"
   }
 }

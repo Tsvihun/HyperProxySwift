@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct GroqResponseItemReference: Codable, Sendable {
   public var id: String
-  public var kind: GroqResponseItemReferenceKind
+  public var kind: GroqResponseItemReference.Kind
 
   public init(
     id: String,
-    kind: GroqResponseItemReferenceKind
+    kind: GroqResponseItemReference.Kind
   ) {
     self.id = id
     self.kind = kind
@@ -25,5 +25,9 @@ public struct GroqResponseItemReference: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case id
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case itemReference = "item_reference"
   }
 }

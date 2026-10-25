@@ -18,7 +18,7 @@ public struct AnthropicBetaServiceAccount: Codable, Sendable {
   public var description: String?
   public var id: String
   public var name: String
-  public var organizationRole: AnthropicBetaServiceAccountOrganizationRole
+  public var organizationRole: AnthropicBetaServiceAccount.OrganizationRole
   public var kind: AnthropicServiceAccountKind
   public var updatedAt: String
   public var updatedByActorId: String?
@@ -31,7 +31,7 @@ public struct AnthropicBetaServiceAccount: Codable, Sendable {
     description: String?,
     id: String,
     name: String,
-    organizationRole: AnthropicBetaServiceAccountOrganizationRole,
+    organizationRole: AnthropicBetaServiceAccount.OrganizationRole,
     updatedAt: String,
     updatedByActorId: String?,
     kind: AnthropicServiceAccountKind = .serviceAccount
@@ -61,5 +61,10 @@ public struct AnthropicBetaServiceAccount: Codable, Sendable {
     case kind = "type"
     case updatedAt = "updated_at"
     case updatedByActorId = "updated_by_actor_id"
+  }
+
+  public enum OrganizationRole: String, Codable, Hashable, Sendable {
+    case admin = "admin"
+    case developer = "developer"
   }
 }

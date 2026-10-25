@@ -16,8 +16,8 @@ public struct ElevenLabsInvoiceResponseModel: Codable, Sendable {
   public var discountPercentOff: Double?
   public var discounts: [ElevenLabsDiscountResponseModel]
   public var nextPaymentAttemptUnix: Int
-  public var paymentIntentStatus: ElevenLabsInvoiceResponseModelPaymentIntentStatus?
-  public var paymentIntentStatusses: [ElevenLabsInvoiceResponseModelPaymentIntentStatussesItem]
+  public var paymentIntentStatus: ElevenLabsInvoiceResponseModel.PaymentIntentStatus?
+  public var paymentIntentStatusses: [ElevenLabsInvoiceResponseModel.PaymentIntentStatussesElement]
   public var subtotalCents: Int?
   public var taxCents: Int?
 
@@ -25,8 +25,8 @@ public struct ElevenLabsInvoiceResponseModel: Codable, Sendable {
     amountDueCents: Int,
     discounts: [ElevenLabsDiscountResponseModel],
     nextPaymentAttemptUnix: Int,
-    paymentIntentStatus: ElevenLabsInvoiceResponseModelPaymentIntentStatus?,
-    paymentIntentStatusses: [ElevenLabsInvoiceResponseModelPaymentIntentStatussesItem],
+    paymentIntentStatus: ElevenLabsInvoiceResponseModel.PaymentIntentStatus?,
+    paymentIntentStatusses: [ElevenLabsInvoiceResponseModel.PaymentIntentStatussesElement],
     discountAmountOff: Double? = nil,
     discountPercentOff: Double? = nil,
     subtotalCents: Int? = nil,
@@ -53,5 +53,27 @@ public struct ElevenLabsInvoiceResponseModel: Codable, Sendable {
     case paymentIntentStatusses = "payment_intent_statusses"
     case subtotalCents = "subtotal_cents"
     case taxCents = "tax_cents"
+  }
+
+  public enum PaymentIntentStatus: String, Codable, Hashable, Sendable {
+    case canceled = "canceled"
+    case processing = "processing"
+    case requiresAction = "requires_action"
+    case requiresCapture = "requires_capture"
+    case requiresConfirmation = "requires_confirmation"
+    case requiresPaymentMethod = "requires_payment_method"
+    case succeeded = "succeeded"
+  }
+
+  public enum PaymentIntentStatussesElement: String, Codable, Hashable,
+    Sendable
+  {
+    case canceled = "canceled"
+    case processing = "processing"
+    case requiresAction = "requires_action"
+    case requiresCapture = "requires_capture"
+    case requiresConfirmation = "requires_confirmation"
+    case requiresPaymentMethod = "requires_payment_method"
+    case succeeded = "succeeded"
   }
 }

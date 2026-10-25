@@ -11,26 +11,26 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterOpenAIFile: Codable, Sendable {
-  public var shape: OpenRouterOpenAIFileShape
+  public var _shape: OpenRouterOpenAIFile.Shape
   public var bytes: Int
   public var createdAt: Int
   public var filename: String
   public var id: String
-  public var object: OpenRouterOpenAIFileObject
-  public var purpose: OpenRouterOpenAIFilePurpose
-  public var status: OpenRouterOpenAIFileStatus
+  public var object: OpenRouterOpenAIFile.Object
+  public var purpose: OpenRouterOpenAIFile.Purpose
+  public var status: OpenRouterOpenAIFile.Status
 
   public init(
-    shape: OpenRouterOpenAIFileShape,
+    _shape: OpenRouterOpenAIFile.Shape,
     bytes: Int,
     createdAt: Int,
     filename: String,
     id: String,
-    object: OpenRouterOpenAIFileObject,
-    purpose: OpenRouterOpenAIFilePurpose,
-    status: OpenRouterOpenAIFileStatus
+    object: OpenRouterOpenAIFile.Object,
+    purpose: OpenRouterOpenAIFile.Purpose,
+    status: OpenRouterOpenAIFile.Status
   ) {
-    self.shape = shape
+    self._shape = _shape
     self.bytes = bytes
     self.createdAt = createdAt
     self.filename = filename
@@ -41,7 +41,7 @@ public struct OpenRouterOpenAIFile: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
-    case shape = "_shape"
+    case _shape
     case bytes
     case createdAt = "created_at"
     case filename
@@ -49,5 +49,29 @@ public struct OpenRouterOpenAIFile: Codable, Sendable {
     case object
     case purpose
     case status
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case file = "file"
+  }
+
+  public enum Purpose: String, Codable, Hashable, Sendable {
+    case assistants = "assistants"
+    case batch = "batch"
+    case fineTune = "fine-tune"
+    case vision = "vision"
+    case userData = "user_data"
+    case evals = "evals"
+    case assistantsOutput = "assistants_output"
+    case batchOutput = "batch_output"
+    case fineTuneResults = "fine-tune-results"
+  }
+
+  public enum Shape: String, Codable, Hashable, Sendable {
+    case openai = "openai"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case processed = "processed"
   }
 }

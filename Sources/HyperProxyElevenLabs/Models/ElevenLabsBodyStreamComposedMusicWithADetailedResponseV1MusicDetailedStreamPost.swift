@@ -14,7 +14,7 @@ public struct ElevenLabsBodyStreamComposedMusicWithADetailedResponseV1MusicDetai
   Codable, Sendable
 {
   public var compositionPlan:
-    ElevenLabsBodyStreamComposedMusicWithADetailedResponseV1MusicDetailedStreamPostCompositionPlanAnyOf1?
+    ElevenLabsBodyStreamComposedMusicWithADetailedResponseV1MusicDetailedStreamPostCompositionPlanVariant?
   public var finetuneId: String?
   public var finetuneStrength: Double?
   public var forceInstrumental: Bool?
@@ -32,7 +32,7 @@ public struct ElevenLabsBodyStreamComposedMusicWithADetailedResponseV1MusicDetai
 
   public init(
     compositionPlan:
-      ElevenLabsBodyStreamComposedMusicWithADetailedResponseV1MusicDetailedStreamPostCompositionPlanAnyOf1? =
+      ElevenLabsBodyStreamComposedMusicWithADetailedResponseV1MusicDetailedStreamPostCompositionPlanVariant? =
       nil,
     finetuneId: String? = nil,
     finetuneStrength: Double? = nil,

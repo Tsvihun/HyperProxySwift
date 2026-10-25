@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct OpenAIUsageFileSearchCallsResult: Codable, Sendable {
   public var apiKeyId: String?
   public var numRequests: Int
-  public var object: OpenAIUsageFileSearchCallsResultObject
+  public var object: OpenAIUsageFileSearchCallsResult.Object
   public var projectId: String?
   public var userId: String?
   public var vectorStoreId: String?
 
   public init(
     numRequests: Int,
-    object: OpenAIUsageFileSearchCallsResultObject,
+    object: OpenAIUsageFileSearchCallsResult.Object,
     apiKeyId: String? = nil,
     projectId: String? = nil,
     userId: String? = nil,
@@ -41,5 +41,9 @@ public struct OpenAIUsageFileSearchCallsResult: Codable, Sendable {
     case projectId = "project_id"
     case userId = "user_id"
     case vectorStoreId = "vector_store_id"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case organizationUsageFileSearchesResult = "organization.usage.file_searches.result"
   }
 }

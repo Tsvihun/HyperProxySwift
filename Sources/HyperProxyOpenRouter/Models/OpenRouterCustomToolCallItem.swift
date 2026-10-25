@@ -18,13 +18,13 @@ public struct OpenRouterCustomToolCallItem: Codable, Sendable {
   public var name: String
   public var namespace: String?
   public var status: OpenRouterToolCallStatus?
-  public var kind: OpenRouterCustomToolCallItemKind
+  public var kind: OpenRouterCustomToolCallItem.Kind
 
   public init(
     callId: String,
     input: String,
     name: String,
-    kind: OpenRouterCustomToolCallItemKind,
+    kind: OpenRouterCustomToolCallItem.Kind,
     async: Bool? = nil,
     id: String? = nil,
     namespace: String? = nil,
@@ -49,5 +49,9 @@ public struct OpenRouterCustomToolCallItem: Codable, Sendable {
     case namespace
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case customToolCall = "custom_tool_call"
   }
 }

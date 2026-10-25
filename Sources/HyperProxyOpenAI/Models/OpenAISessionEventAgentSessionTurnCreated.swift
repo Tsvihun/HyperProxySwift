@@ -15,14 +15,14 @@ public struct OpenAISessionEventAgentSessionTurnCreated: Codable, Sendable {
   public var sessionId: String
   public var turn: OpenAITurnResource
   public var turnId: String
-  public var kind: OpenAISessionEventAgentSessionTurnCreatedKind
+  public var kind: OpenAISessionEventAgentSessionTurnCreated.Kind
 
   public init(
     eventId: String,
     sessionId: String,
     turn: OpenAITurnResource,
     turnId: String,
-    kind: OpenAISessionEventAgentSessionTurnCreatedKind
+    kind: OpenAISessionEventAgentSessionTurnCreated.Kind
   ) {
     self.eventId = eventId
     self.sessionId = sessionId
@@ -37,5 +37,9 @@ public struct OpenAISessionEventAgentSessionTurnCreated: Codable, Sendable {
     case turn
     case turnId = "turn_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case agentSessionTurnCreated = "agent.session.turn.created"
   }
 }

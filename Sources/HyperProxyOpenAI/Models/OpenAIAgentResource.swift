@@ -18,7 +18,7 @@ public struct OpenAIAgentResource: Codable, Sendable {
   public var model: String
   public var multiAgent: OpenAIMultiAgentConfigResource
   public var name: String
-  public var object: OpenAIAgentResourceObject
+  public var object: OpenAIAgentResource.Object
   public var reasoning: OpenAIReasoningResource
   public var serviceTier: OpenAIServiceTierResource
   public var text: OpenAITextResource
@@ -33,7 +33,7 @@ public struct OpenAIAgentResource: Codable, Sendable {
     model: String,
     multiAgent: OpenAIMultiAgentConfigResource,
     name: String,
-    object: OpenAIAgentResourceObject,
+    object: OpenAIAgentResource.Object,
     reasoning: OpenAIReasoningResource,
     serviceTier: OpenAIServiceTierResource,
     text: OpenAITextResource,
@@ -69,5 +69,9 @@ public struct OpenAIAgentResource: Codable, Sendable {
     case text
     case tools
     case updatedAt = "updated_at"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case agent = "agent"
   }
 }

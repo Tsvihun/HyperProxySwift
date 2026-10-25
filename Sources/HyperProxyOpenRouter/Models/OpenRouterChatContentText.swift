@@ -14,11 +14,11 @@ public struct OpenRouterChatContentText: Codable, Sendable {
   public var cacheControl: OpenRouterChatContentCacheControl?
   public var promptCacheBreakpoint: OpenRouterPromptCacheBreakpoint?
   public var text: String
-  public var kind: OpenRouterChatContentTextKind
+  public var kind: OpenRouterChatContentText.Kind
 
   public init(
     text: String,
-    kind: OpenRouterChatContentTextKind,
+    kind: OpenRouterChatContentText.Kind,
     cacheControl: OpenRouterChatContentCacheControl? = nil,
     promptCacheBreakpoint: OpenRouterPromptCacheBreakpoint? = nil
   ) {
@@ -33,5 +33,9 @@ public struct OpenRouterChatContentText: Codable, Sendable {
     case promptCacheBreakpoint = "prompt_cache_breakpoint"
     case text
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case text = "text"
   }
 }

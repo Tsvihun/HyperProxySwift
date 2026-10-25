@@ -11,15 +11,29 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterListInternConnectionsResponse: Codable, Sendable {
-  public var data: [OpenRouterListInternConnectionsResponseDataItem]
+  public var data: [OpenRouterListInternConnectionsResponse.DataElement]
 
   public init(
-    data: [OpenRouterListInternConnectionsResponseDataItem]
+    data: [OpenRouterListInternConnectionsResponse.DataElement]
   ) {
     self.data = data
   }
 
   enum CodingKeys: String, CodingKey {
     case data
+  }
+
+  public struct DataElement: Codable, Sendable {
+    public var key: String
+
+    public init(
+      key: String
+    ) {
+      self.key = key
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case key
+    }
   }
 }

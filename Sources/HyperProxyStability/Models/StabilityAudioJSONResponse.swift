@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct StabilityAudioJSONResponse: Codable, Sendable {
   public var audio: String
-  public var finishReason: StabilityAudioJSONResponseFinishReason
+  public var finishReason: StabilityAudioJSONResponse.FinishReason
   public var seed: Double?
 
   public init(
     audio: String,
-    finishReason: StabilityAudioJSONResponseFinishReason,
+    finishReason: StabilityAudioJSONResponse.FinishReason,
     seed: Double? = nil
   ) {
     self.audio = audio
@@ -29,5 +29,9 @@ public struct StabilityAudioJSONResponse: Codable, Sendable {
     case audio
     case finishReason = "finish_reason"
     case seed
+  }
+
+  public enum FinishReason: String, Codable, Hashable, Sendable {
+    case success = "SUCCESS"
   }
 }

@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsDependentAvailableMCPServerIdentifier: Codable, Sendable {
-  public var accessLevel: ElevenLabsDependentAvailableMCPServerIdentifierAccessLevel
+  public var accessLevel: ElevenLabsDependentAvailableMCPServerIdentifier.AccessLevel
   public var createdAtUnixSecs: Int
   public var id: String
   public var name: String
   public var kind: ElevenLabsAvailableKind?
 
   public init(
-    accessLevel: ElevenLabsDependentAvailableMCPServerIdentifierAccessLevel,
+    accessLevel: ElevenLabsDependentAvailableMCPServerIdentifier.AccessLevel,
     createdAtUnixSecs: Int,
     id: String,
     name: String,
@@ -37,5 +37,14 @@ public struct ElevenLabsDependentAvailableMCPServerIdentifier: Codable, Sendable
     case id
     case name
     case kind = "type"
+  }
+
+  public enum AccessLevel: String, Codable, Hashable,
+    Sendable
+  {
+    case admin = "admin"
+    case editor = "editor"
+    case commenter = "commenter"
+    case viewer = "viewer"
   }
 }

@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksModelKind: String, Codable, Hashable, Sendable {
-  case kINDUNSPECIFIED = "KIND_UNSPECIFIED"
-  case hFBASEMODEL = "HF_BASE_MODEL"
-  case hFPEFTADDON = "HF_PEFT_ADDON"
-  case hFTEFTADDON = "HF_TEFT_ADDON"
-  case fLUMINABASEMODEL = "FLUMINA_BASE_MODEL"
-  case fLUMINAADDON = "FLUMINA_ADDON"
-  case dRAFTADDON = "DRAFT_ADDON"
-  case lIVEMERGE = "LIVE_MERGE"
-  case cUSTOMMODEL = "CUSTOM_MODEL"
-  case eMBEDDINGMODEL = "EMBEDDING_MODEL"
-  case sNAPSHOTMODEL = "SNAPSHOT_MODEL"
+  case kindUnspecified = "KIND_UNSPECIFIED"
+  case hfBaseModel = "HF_BASE_MODEL"
+  case hfPeftAddon = "HF_PEFT_ADDON"
+  case hfTeftAddon = "HF_TEFT_ADDON"
+  case fluminaBaseModel = "FLUMINA_BASE_MODEL"
+  case fluminaAddon = "FLUMINA_ADDON"
+  case draftAddon = "DRAFT_ADDON"
+  case liveMerge = "LIVE_MERGE"
+  case customModel = "CUSTOM_MODEL"
+  case embeddingModel = "EMBEDDING_MODEL"
+  case snapshotModel = "SNAPSHOT_MODEL"
 }

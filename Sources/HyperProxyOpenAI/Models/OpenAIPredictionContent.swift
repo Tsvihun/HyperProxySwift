@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIPredictionContent: Codable, Sendable {
-  public var content: OpenAIPredictionContentContent
-  public var kind: OpenAIPredictionContentKind
+  public var content: OpenAIPredictionContent.Content
+  public var kind: OpenAIPredictionContent.Kind
 
   public init(
-    content: OpenAIPredictionContentContent,
-    kind: OpenAIPredictionContentKind
+    content: OpenAIPredictionContent.Content,
+    kind: OpenAIPredictionContent.Kind
   ) {
     self.content = content
     self.kind = kind
@@ -25,5 +25,47 @@ public struct OpenAIPredictionContent: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case content
     case kind = "type"
+  }
+
+  public enum Content: Codable, Sendable {
+    case string(String)
+    case chatCompletionRequestMessageContentPartTextArray(
+      [OpenAIChatCompletionRequestMessageContentPartText])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .chatCompletionRequestMessageContentPartTextArray(
+        try container.decode([OpenAIChatCompletionRequestMessageContentPartText].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .chatCompletionRequestMessageContentPartTextArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case content = "content"
+  }
+}
+
+extension OpenAIPredictionContent.Content: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension OpenAIPredictionContent.Content: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: OpenAIChatCompletionRequestMessageContentPartText...) {
+    self = .chatCompletionRequestMessageContentPartTextArray(elements)
   }
 }

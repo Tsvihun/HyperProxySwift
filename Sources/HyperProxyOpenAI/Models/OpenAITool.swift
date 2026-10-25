@@ -16,7 +16,7 @@ public enum OpenAITool: Codable, Sendable {
   case computerTool(OpenAIComputerTool)
   case computerUsePreviewTool(OpenAIComputerUsePreviewTool)
   case webSearchTool(OpenAIWebSearchTool)
-  case mCPTool(OpenAIMCPTool)
+  case mcpTool(OpenAIMCPTool)
   case codeInterpreterTool(OpenAICodeInterpreterTool)
   case programmaticToolCallingParam(OpenAIProgrammaticToolCallingParam)
   case imageGenTool(OpenAIImageGenTool)
@@ -51,7 +51,7 @@ public enum OpenAITool: Codable, Sendable {
       return
     }
     if let value = try? container.decode(OpenAIMCPTool.self) {
-      self = .mCPTool(value)
+      self = .mcpTool(value)
       return
     }
     if let value = try? container.decode(OpenAICodeInterpreterTool.self) {
@@ -106,7 +106,7 @@ public enum OpenAITool: Codable, Sendable {
       try container.encode(value)
     case .webSearchTool(let value):
       try container.encode(value)
-    case .mCPTool(let value):
+    case .mcpTool(let value):
       try container.encode(value)
     case .codeInterpreterTool(let value):
       try container.encode(value)

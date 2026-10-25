@@ -16,7 +16,7 @@ public struct OpenAIRealtimeServerEventResponseMCPCallArgumentsDone: Codable, Se
   public var itemId: String
   public var outputIndex: Int
   public var responseId: String
-  public var kind: OpenAIRealtimeServerEventResponseMCPCallArgumentsDoneKind
+  public var kind: OpenAIRealtimeServerEventResponseMCPCallArgumentsDone.Kind
 
   public init(
     arguments: String,
@@ -24,7 +24,7 @@ public struct OpenAIRealtimeServerEventResponseMCPCallArgumentsDone: Codable, Se
     itemId: String,
     outputIndex: Int,
     responseId: String,
-    kind: OpenAIRealtimeServerEventResponseMCPCallArgumentsDoneKind
+    kind: OpenAIRealtimeServerEventResponseMCPCallArgumentsDone.Kind
   ) {
     self.arguments = arguments
     self.eventId = eventId
@@ -41,5 +41,11 @@ public struct OpenAIRealtimeServerEventResponseMCPCallArgumentsDone: Codable, Se
     case outputIndex = "output_index"
     case responseId = "response_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case responseMcpCallArgumentsDone = "response.mcp_call_arguments.done"
   }
 }

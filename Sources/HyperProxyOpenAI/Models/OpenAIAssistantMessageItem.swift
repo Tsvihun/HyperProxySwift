@@ -14,17 +14,17 @@ public struct OpenAIAssistantMessageItem: Codable, Sendable {
   public var content: [OpenAIResponseOutputText]
   public var createdAt: Int
   public var id: String
-  public var object: OpenAIAssistantMessageItemObject
+  public var object: OpenAIAssistantMessageItem.Object
   public var threadId: String
-  public var kind: OpenAIAssistantMessageItemKind
+  public var kind: OpenAIAssistantMessageItem.Kind
 
   public init(
     content: [OpenAIResponseOutputText],
     createdAt: Int,
     id: String,
-    object: OpenAIAssistantMessageItemObject,
+    object: OpenAIAssistantMessageItem.Object,
     threadId: String,
-    kind: OpenAIAssistantMessageItemKind
+    kind: OpenAIAssistantMessageItem.Kind
   ) {
     self.content = content
     self.createdAt = createdAt
@@ -41,5 +41,13 @@ public struct OpenAIAssistantMessageItem: Codable, Sendable {
     case object
     case threadId = "thread_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case chatkitAssistantMessage = "chatkit.assistant_message"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case chatkitThreadItem = "chatkit.thread_item"
   }
 }

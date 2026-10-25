@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct ElevenLabsTranscriptionOrderItemRequest: Codable, Sendable {
   public var instructions: String?
-  public var kind: ElevenLabsTranscriptionKind?
+  public var kind: ElevenLabsTranscriptionOrderItemRequest.Kind?
   public var mediaIds: [String]
   public var sourceLanguage: String
   public var verbatim: Bool?
@@ -21,7 +21,7 @@ public struct ElevenLabsTranscriptionOrderItemRequest: Codable, Sendable {
     mediaIds: [String],
     sourceLanguage: String,
     instructions: String? = nil,
-    kind: ElevenLabsTranscriptionKind? = nil,
+    kind: ElevenLabsTranscriptionOrderItemRequest.Kind? = nil,
     verbatim: Bool? = nil
   ) {
     self.instructions = instructions
@@ -37,5 +37,9 @@ public struct ElevenLabsTranscriptionOrderItemRequest: Codable, Sendable {
     case mediaIds = "media_ids"
     case sourceLanguage = "source_language"
     case verbatim
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case transcription = "transcription"
   }
 }

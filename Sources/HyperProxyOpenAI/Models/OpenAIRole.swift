@@ -14,7 +14,7 @@ public struct OpenAIRole: Codable, Sendable {
   public var description: String?
   public var id: String
   public var name: String
-  public var object: OpenAIRoleObject
+  public var object: OpenAIRole.Object
   public var permissions: [String]
   public var predefinedRole: Bool
   public var resourceType: String
@@ -23,7 +23,7 @@ public struct OpenAIRole: Codable, Sendable {
     description: String?,
     id: String,
     name: String,
-    object: OpenAIRoleObject,
+    object: OpenAIRole.Object,
     permissions: [String],
     predefinedRole: Bool,
     resourceType: String
@@ -45,5 +45,9 @@ public struct OpenAIRole: Codable, Sendable {
     case permissions
     case predefinedRole = "predefined_role"
     case resourceType = "resource_type"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case role = "role"
   }
 }

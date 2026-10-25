@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralStreamV1WorkflowsExecutionsExecutionIdStreamGetResponse: Codable, Sendable {
-  public var data: MistralStreamV1WorkflowsExecutionsExecutionIdStreamGetResponseData?
+  public var data: MistralStreamV1WorkflowsExecutionsExecutionIdStreamGetResponse.DataValue?
   public var event: String?
   public var id: String?
   public var retry: Int?
 
   public init(
-    data: MistralStreamV1WorkflowsExecutionsExecutionIdStreamGetResponseData? = nil,
+    data: MistralStreamV1WorkflowsExecutionsExecutionIdStreamGetResponse.DataValue? = nil,
     event: String? = nil,
     id: String? = nil,
     retry: Int? = nil
@@ -33,5 +33,29 @@ public struct MistralStreamV1WorkflowsExecutionsExecutionIdStreamGetResponse: Co
     case event
     case id
     case retry
+  }
+
+  public enum DataValue: Codable, Sendable {
+    case streamEventSsePayload(MistralStreamEventSsePayload)
+    case streamEventSseErrorData(MistralStreamEventSseErrorData)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(MistralStreamEventSsePayload.self) {
+        self = .streamEventSsePayload(value)
+        return
+      }
+      self = .streamEventSseErrorData(try container.decode(MistralStreamEventSseErrorData.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .streamEventSsePayload(let value):
+        try container.encode(value)
+      case .streamEventSseErrorData(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

@@ -16,14 +16,14 @@ public struct OpenAIBetaProgramOutputItemParam: Codable, Sendable {
   public var id: String
   public var result: String
   public var status: OpenAIBetaProgramOutputItemStatus
-  public var kind: OpenAIBetaProgramOutputItemParamKind
+  public var kind: OpenAIBetaProgramOutputItemParam.Kind
 
   public init(
     callId: String,
     id: String,
     result: String,
     status: OpenAIBetaProgramOutputItemStatus,
-    kind: OpenAIBetaProgramOutputItemParamKind,
+    kind: OpenAIBetaProgramOutputItemParam.Kind,
     agent: OpenAIBetaAgentTagParam? = nil
   ) {
     self.agent = agent
@@ -41,5 +41,9 @@ public struct OpenAIBetaProgramOutputItemParam: Codable, Sendable {
     case result
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case programOutput = "program_output"
   }
 }

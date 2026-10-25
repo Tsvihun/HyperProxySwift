@@ -41,4 +41,8 @@ public enum OpenAISpendLimitInterval: RawRepresentable, Codable, Hashable, Senda
     var container = encoder.singleValueContainer()
     try container.encode(rawValue)
   }
+
+  public enum Month: String, Codable, Hashable, Sendable {
+    case month = "month"
+  }
 }

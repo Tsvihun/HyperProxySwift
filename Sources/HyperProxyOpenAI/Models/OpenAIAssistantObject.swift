@@ -18,11 +18,11 @@ public struct OpenAIAssistantObject: Codable, Sendable {
   public var metadata: OpenAIMetadata?
   public var model: String
   public var name: String?
-  public var object: OpenAIAssistantObjectObject
+  public var object: OpenAIAssistantObject.Object
   public var responseFormat: OpenAIAssistantsApiResponseFormatOption?
   public var temperature: Double?
-  public var toolResources: OpenAIAssistantObjectToolResourcesAnyOf1?
-  public var tools: [OpenAIAssistantObjectToolsItem]
+  public var toolResources: OpenAIAssistantObjectToolResourcesWithCodeInterpreterAndFileSearch?
+  public var tools: [OpenAIAssistantObject.ToolsElement]
   public var topP: Double?
 
   public init(
@@ -33,11 +33,11 @@ public struct OpenAIAssistantObject: Codable, Sendable {
     metadata: OpenAIMetadata?,
     model: String,
     name: String?,
-    object: OpenAIAssistantObjectObject,
-    tools: [OpenAIAssistantObjectToolsItem],
+    object: OpenAIAssistantObject.Object,
+    tools: [OpenAIAssistantObject.ToolsElement],
     responseFormat: OpenAIAssistantsApiResponseFormatOption? = nil,
     temperature: Double? = nil,
-    toolResources: OpenAIAssistantObjectToolResourcesAnyOf1? = nil,
+    toolResources: OpenAIAssistantObjectToolResourcesWithCodeInterpreterAndFileSearch? = nil,
     topP: Double? = nil
   ) {
     self.createdAt = createdAt
@@ -69,5 +69,40 @@ public struct OpenAIAssistantObject: Codable, Sendable {
     case toolResources = "tool_resources"
     case tools
     case topP = "top_p"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case assistant = "assistant"
+  }
+
+  public enum ToolsElement: Codable, Sendable {
+    case assistantToolsCode(OpenAIAssistantToolsCode)
+    case assistantToolsFileSearch(OpenAIAssistantToolsFileSearch)
+    case assistantToolsFunction(OpenAIAssistantToolsFunction)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenAIAssistantToolsCode.self) {
+        self = .assistantToolsCode(value)
+        return
+      }
+      if let value = try? container.decode(OpenAIAssistantToolsFileSearch.self) {
+        self = .assistantToolsFileSearch(value)
+        return
+      }
+      self = .assistantToolsFunction(try container.decode(OpenAIAssistantToolsFunction.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .assistantToolsCode(let value):
+        try container.encode(value)
+      case .assistantToolsFileSearch(let value):
+        try container.encode(value)
+      case .assistantToolsFunction(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

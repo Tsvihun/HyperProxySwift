@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct MistralFunctionCallEvent: Codable, Sendable {
   public var agentId: String?
   public var arguments: String
-  public var confirmationStatus: MistralFunctionCallEventConfirmationStatus?
+  public var confirmationStatus: MistralFunctionCallEvent.ConfirmationStatus?
   public var createdAt: String?
   public var id: String
   public var model: String?
   public var name: String
   public var outputIndex: Int?
   public var toolCallId: String
-  public var kind: MistralFunctionCallDeltaKind?
+  public var kind: MistralFunctionCallEvent.Kind?
 
   public init(
     arguments: String,
@@ -28,11 +28,11 @@ public struct MistralFunctionCallEvent: Codable, Sendable {
     name: String,
     toolCallId: String,
     agentId: String? = nil,
-    confirmationStatus: MistralFunctionCallEventConfirmationStatus? = nil,
+    confirmationStatus: MistralFunctionCallEvent.ConfirmationStatus? = nil,
     createdAt: String? = nil,
     model: String? = nil,
     outputIndex: Int? = nil,
-    kind: MistralFunctionCallDeltaKind? = nil
+    kind: MistralFunctionCallEvent.Kind? = nil
   ) {
     self.agentId = agentId
     self.arguments = arguments
@@ -57,5 +57,15 @@ public struct MistralFunctionCallEvent: Codable, Sendable {
     case outputIndex = "output_index"
     case toolCallId = "tool_call_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case functionCallDelta = "function.call.delta"
+  }
+
+  public enum ConfirmationStatus: String, Codable, Hashable, Sendable {
+    case pending = "pending"
+    case allowed = "allowed"
+    case denied = "denied"
   }
 }

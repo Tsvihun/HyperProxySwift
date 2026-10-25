@@ -16,12 +16,12 @@ public struct ElevenLabsMCPToolConfigOverrideCreateRequestModel: Codable, Sendab
   public var executionMode: ElevenLabsToolExecutionMode?
   public var forcePreToolSpeech: Bool?
   public var inputOverrides:
-    [String: ElevenLabsMCPToolConfigOverrideCreateRequestModelInputOverridesAnyOf1Value]?
+    [String: ElevenLabsMCPToolConfigOverrideCreateRequestModelInputOverridesValue]?
   public var interruptionMode: ElevenLabsToolInterruptionMode?
   public var preToolSpeech: ElevenLabsPreToolSpeechMode?
   public var responseMocks: [ElevenLabsToolResponseMockConfigInput]?
   public var responseTimeoutSecs: Int?
-  public var toolCallSound: ElevenLabsMCPToolConfigOverrideCreateRequestModelToolCallSound?
+  public var toolCallSound: ElevenLabsMCPToolConfigOverrideCreateRequestModel.ToolCallSound?
   public var toolCallSoundBehavior: ElevenLabsToolCallSoundBehavior?
   public var toolName: String
 
@@ -32,12 +32,12 @@ public struct ElevenLabsMCPToolConfigOverrideCreateRequestModel: Codable, Sendab
     executionMode: ElevenLabsToolExecutionMode? = nil,
     forcePreToolSpeech: Bool? = nil,
     inputOverrides: [String:
-      ElevenLabsMCPToolConfigOverrideCreateRequestModelInputOverridesAnyOf1Value]? = nil,
+      ElevenLabsMCPToolConfigOverrideCreateRequestModelInputOverridesValue]? = nil,
     interruptionMode: ElevenLabsToolInterruptionMode? = nil,
     preToolSpeech: ElevenLabsPreToolSpeechMode? = nil,
     responseMocks: [ElevenLabsToolResponseMockConfigInput]? = nil,
     responseTimeoutSecs: Int? = nil,
-    toolCallSound: ElevenLabsMCPToolConfigOverrideCreateRequestModelToolCallSound? = nil,
+    toolCallSound: ElevenLabsMCPToolConfigOverrideCreateRequestModel.ToolCallSound? = nil,
     toolCallSoundBehavior: ElevenLabsToolCallSoundBehavior? = nil
   ) {
     self.assignments = assignments
@@ -67,5 +67,56 @@ public struct ElevenLabsMCPToolConfigOverrideCreateRequestModel: Codable, Sendab
     case toolCallSound = "tool_call_sound"
     case toolCallSoundBehavior = "tool_call_sound_behavior"
     case toolName = "tool_name"
+  }
+
+  public enum ToolCallSound: Codable, Sendable {
+    case toolCallSoundType(ElevenLabsToolCallSoundType)
+    case offValue(
+      ElevenLabsMCPToolConfigOverrideCreateRequestModel.ToolCallSound.Off)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsToolCallSoundType.self) {
+        self = .toolCallSoundType(value)
+        return
+      }
+      self = .offValue(
+        try container.decode(
+          ElevenLabsMCPToolConfigOverrideCreateRequestModel.ToolCallSound.Off.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .toolCallSoundType(let value):
+        try container.encode(value)
+      case .offValue(let value):
+        try container.encode(value)
+      }
+    }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var typing: Self { .toolCallSoundType(.typing) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var elevator1: Self { .toolCallSoundType(.elevator1) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var elevator2: Self { .toolCallSoundType(.elevator2) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var elevator3: Self { .toolCallSoundType(.elevator3) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var elevator4: Self { .toolCallSoundType(.elevator4) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var off: Self { .offValue(.off) }
+
+    public enum Off: String, Codable,
+      Hashable, Sendable
+    {
+      case off = "off"
+    }
   }
 }

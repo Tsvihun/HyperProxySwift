@@ -14,16 +14,16 @@ public struct OpenRouterOutputItemApplyPatchCall: Codable, Sendable {
   public var callId: String
   public var createdBy: String?
   public var id: String
-  public var operation: OpenRouterOutputItemApplyPatchCallOperation
-  public var status: OpenRouterOutputItemApplyPatchCallStatus
-  public var kind: OpenRouterOutputItemApplyPatchCallKind
+  public var operation: OpenRouterOutputItemApplyPatchCall.Operation
+  public var status: OpenRouterOutputItemApplyPatchCall.Status
+  public var kind: OpenRouterOutputItemApplyPatchCall.Kind
 
   public init(
     callId: String,
     id: String,
-    operation: OpenRouterOutputItemApplyPatchCallOperation,
-    status: OpenRouterOutputItemApplyPatchCallStatus,
-    kind: OpenRouterOutputItemApplyPatchCallKind,
+    operation: OpenRouterOutputItemApplyPatchCall.Operation,
+    status: OpenRouterOutputItemApplyPatchCall.Status,
+    kind: OpenRouterOutputItemApplyPatchCall.Kind,
     createdBy: String? = nil
   ) {
     self.callId = callId
@@ -41,5 +41,46 @@ public struct OpenRouterOutputItemApplyPatchCall: Codable, Sendable {
     case operation
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case applyPatchCall = "apply_patch_call"
+  }
+
+  public enum Operation: Codable, Sendable {
+    case applyPatchCreateFileOperation(OpenRouterApplyPatchCreateFileOperation)
+    case applyPatchUpdateFileOperation(OpenRouterApplyPatchUpdateFileOperation)
+    case applyPatchDeleteFileOperation(OpenRouterApplyPatchDeleteFileOperation)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenRouterApplyPatchCreateFileOperation.self) {
+        self = .applyPatchCreateFileOperation(value)
+        return
+      }
+      if let value = try? container.decode(OpenRouterApplyPatchUpdateFileOperation.self) {
+        self = .applyPatchUpdateFileOperation(value)
+        return
+      }
+      self = .applyPatchDeleteFileOperation(
+        try container.decode(OpenRouterApplyPatchDeleteFileOperation.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .applyPatchCreateFileOperation(let value):
+        try container.encode(value)
+      case .applyPatchUpdateFileOperation(let value):
+        try container.encode(value)
+      case .applyPatchDeleteFileOperation(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case inProgress = "in_progress"
+    case completed = "completed"
   }
 }

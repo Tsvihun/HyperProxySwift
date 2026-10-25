@@ -15,12 +15,12 @@ public struct OpenAIDecisionInputCustomToolCallOutput: Codable, Sendable {
   public var id: String?
   public var output: OpenAIDecisionInputToolOutputContent
   public var status: OpenAIFunctionCallStatusParam?
-  public var kind: OpenAIDecisionInputCustomToolCallOutputKind
+  public var kind: OpenAIDecisionInputCustomToolCallOutput.Kind
 
   public init(
     callId: String,
     output: OpenAIDecisionInputToolOutputContent,
-    kind: OpenAIDecisionInputCustomToolCallOutputKind,
+    kind: OpenAIDecisionInputCustomToolCallOutput.Kind,
     id: String? = nil,
     status: OpenAIFunctionCallStatusParam? = nil
   ) {
@@ -37,5 +37,9 @@ public struct OpenAIDecisionInputCustomToolCallOutput: Codable, Sendable {
     case output
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case customToolCallOutput = "custom_tool_call_output"
   }
 }

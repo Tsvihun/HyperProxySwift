@@ -14,17 +14,17 @@ public struct OpenAIReasoningItem: Codable, Sendable {
   public var content: [OpenAIReasoningTextContent]?
   public var encryptedContent: String?
   public var id: String
-  public var status: OpenAIReasoningItemStatus?
+  public var status: OpenAIReasoningItem.Status?
   public var summary: [OpenAISummaryTextContent]
-  public var kind: OpenAIReasoningItemKind
+  public var kind: OpenAIReasoningItem.Kind
 
   public init(
     id: String,
     summary: [OpenAISummaryTextContent],
-    kind: OpenAIReasoningItemKind,
+    kind: OpenAIReasoningItem.Kind,
     content: [OpenAIReasoningTextContent]? = nil,
     encryptedContent: String? = nil,
-    status: OpenAIReasoningItemStatus? = nil
+    status: OpenAIReasoningItem.Status? = nil
   ) {
     self.content = content
     self.encryptedContent = encryptedContent
@@ -41,5 +41,15 @@ public struct OpenAIReasoningItem: Codable, Sendable {
     case status
     case summary
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case reasoning = "reasoning"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case inProgress = "in_progress"
+    case completed = "completed"
+    case incomplete = "incomplete"
   }
 }

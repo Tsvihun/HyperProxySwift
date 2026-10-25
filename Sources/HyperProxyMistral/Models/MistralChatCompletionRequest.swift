@@ -15,7 +15,7 @@ public struct MistralChatCompletionRequest: Codable, Sendable {
   public var guardrails: [MistralGuardrailConfig]?
   public var logprobs: Bool?
   public var maxTokens: Int?
-  public var messages: [MistralChatCompletionRequestMessagesItem]
+  public var messages: [MistralChatCompletionRequest.MessagesElement]
   public var metadata: [String: HyperProxyJSONValue]?
   public var minTokens: Int?
   public var model: String
@@ -32,18 +32,18 @@ public struct MistralChatCompletionRequest: Codable, Sendable {
   public var responseFormat: MistralResponseFormat?
   public var safePrompt: Bool?
   public var serviceTier: MistralRequestedServiceTier?
-  public var stop: MistralChatCompletionRequestStop?
+  public var stop: MistralChatCompletionRequest.Stop?
   public var stream: Bool?
   public var temperature: Double?
-  public var toolChoice: MistralChatCompletionRequestToolChoice?
-  public var tools: [MistralChatCompletionRequestToolsAnyOf1Item]?
+  public var toolChoice: MistralChatCompletionRequest.ToolChoice?
+  public var tools: [MistralChatCompletionRequestToolsItem]?
   public var topK: Int?
   public var topLogprobs: Int?
   public var topP: Double?
   public var topPromptLogprobs: Int?
 
   public init(
-    messages: [MistralChatCompletionRequestMessagesItem],
+    messages: [MistralChatCompletionRequest.MessagesElement],
     model: String,
     frequencyPenalty: Double? = nil,
     guardrails: [MistralGuardrailConfig]? = nil,
@@ -64,11 +64,11 @@ public struct MistralChatCompletionRequest: Codable, Sendable {
     responseFormat: MistralResponseFormat? = nil,
     safePrompt: Bool? = nil,
     serviceTier: MistralRequestedServiceTier? = nil,
-    stop: MistralChatCompletionRequestStop? = nil,
+    stop: MistralChatCompletionRequest.Stop? = nil,
     stream: Bool? = nil,
     temperature: Double? = nil,
-    toolChoice: MistralChatCompletionRequestToolChoice? = nil,
-    tools: [MistralChatCompletionRequestToolsAnyOf1Item]? = nil,
+    toolChoice: MistralChatCompletionRequest.ToolChoice? = nil,
+    tools: [MistralChatCompletionRequestToolsItem]? = nil,
     topK: Int? = nil,
     topLogprobs: Int? = nil,
     topP: Double? = nil,
@@ -137,5 +137,115 @@ public struct MistralChatCompletionRequest: Codable, Sendable {
     case topLogprobs = "top_logprobs"
     case topP = "top_p"
     case topPromptLogprobs = "top_prompt_logprobs"
+  }
+
+  public enum MessagesElement: Codable, Sendable {
+    case systemMessage(MistralSystemMessage)
+    case userMessage(MistralUserMessage)
+    case assistantMessage(MistralAssistantMessage)
+    case toolMessage(MistralToolMessage)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(MistralSystemMessage.self) {
+        self = .systemMessage(value)
+        return
+      }
+      if let value = try? container.decode(MistralUserMessage.self) {
+        self = .userMessage(value)
+        return
+      }
+      if let value = try? container.decode(MistralAssistantMessage.self) {
+        self = .assistantMessage(value)
+        return
+      }
+      self = .toolMessage(try container.decode(MistralToolMessage.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .systemMessage(let value):
+        try container.encode(value)
+      case .userMessage(let value):
+        try container.encode(value)
+      case .assistantMessage(let value):
+        try container.encode(value)
+      case .toolMessage(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Stop: Codable, Sendable {
+    case string(String)
+    case stringArray([String])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .stringArray(try container.decode([String].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .stringArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum ToolChoice: Codable, Sendable {
+    case toolChoice(MistralToolChoice)
+    case toolChoiceEnum(MistralToolChoiceEnum)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(MistralToolChoice.self) {
+        self = .toolChoice(value)
+        return
+      }
+      self = .toolChoiceEnum(try container.decode(MistralToolChoiceEnum.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .toolChoice(let value):
+        try container.encode(value)
+      case .toolChoiceEnum(let value):
+        try container.encode(value)
+      }
+    }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var auto: Self { .toolChoiceEnum(.auto) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var none: Self { .toolChoiceEnum(.none) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var any: Self { .toolChoiceEnum(.any) }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var requiredValue: Self { .toolChoiceEnum(.requiredValue) }
+  }
+}
+
+extension MistralChatCompletionRequest.Stop: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension MistralChatCompletionRequest.Stop: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: String...) {
+    self = .stringArray(elements)
   }
 }

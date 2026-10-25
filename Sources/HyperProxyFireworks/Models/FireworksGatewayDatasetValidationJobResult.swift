@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksGatewayDatasetValidationJobResult: String, Codable, Hashable, Sendable {
-  case dATASETVALIDATIONJOBRESULTUNSPECIFIED = "DATASET_VALIDATION_JOB_RESULT_UNSPECIFIED"
-  case dATASETVALIDATIONJOBRESULTSUCCESS = "DATASET_VALIDATION_JOB_RESULT_SUCCESS"
-  case dATASETVALIDATIONJOBRESULTFAILURE = "DATASET_VALIDATION_JOB_RESULT_FAILURE"
+  case datasetValidationJobResultUnspecified = "DATASET_VALIDATION_JOB_RESULT_UNSPECIFIED"
+  case datasetValidationJobResultSuccess = "DATASET_VALIDATION_JOB_RESULT_SUCCESS"
+  case datasetValidationJobResultFailure = "DATASET_VALIDATION_JOB_RESULT_FAILURE"
 }

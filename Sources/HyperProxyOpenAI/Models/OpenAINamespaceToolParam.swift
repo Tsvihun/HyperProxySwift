@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct OpenAINamespaceToolParam: Codable, Sendable {
   public var description: String
   public var name: String
-  public var tools: [OpenAINamespaceToolParamToolsItem]
-  public var kind: OpenAINamespaceToolParamKind
+  public var tools: [OpenAINamespaceToolParam.ToolsElement]
+  public var kind: OpenAINamespaceToolParam.Kind
 
   public init(
     description: String,
     name: String,
-    tools: [OpenAINamespaceToolParamToolsItem],
-    kind: OpenAINamespaceToolParamKind
+    tools: [OpenAINamespaceToolParam.ToolsElement],
+    kind: OpenAINamespaceToolParam.Kind
   ) {
     self.description = description
     self.name = name
@@ -33,5 +33,33 @@ public struct OpenAINamespaceToolParam: Codable, Sendable {
     case name
     case tools
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case namespace = "namespace"
+  }
+
+  public enum ToolsElement: Codable, Sendable {
+    case functionToolParam(OpenAIFunctionToolParam)
+    case customToolParam(OpenAICustomToolParam)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenAIFunctionToolParam.self) {
+        self = .functionToolParam(value)
+        return
+      }
+      self = .customToolParam(try container.decode(OpenAICustomToolParam.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .functionToolParam(let value):
+        try container.encode(value)
+      case .customToolParam(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

@@ -14,15 +14,15 @@ public struct TogetherEvaluationCompareParameters: Codable, Sendable {
   public var disablePositionBiasCorrection: Bool?
   public var inputDataFilePath: String
   public var judge: TogetherEvaluationJudgeModelConfig
-  public var modelA: TogetherEvaluationCompareParametersModelA?
-  public var modelB: TogetherEvaluationCompareParametersModelB?
+  public var modelA: TogetherEvaluationCompareParameters.ModelA?
+  public var modelB: TogetherEvaluationCompareParameters.ModelB?
 
   public init(
     inputDataFilePath: String,
     judge: TogetherEvaluationJudgeModelConfig,
     disablePositionBiasCorrection: Bool? = nil,
-    modelA: TogetherEvaluationCompareParametersModelA? = nil,
-    modelB: TogetherEvaluationCompareParametersModelB? = nil
+    modelA: TogetherEvaluationCompareParameters.ModelA? = nil,
+    modelB: TogetherEvaluationCompareParameters.ModelB? = nil
   ) {
     self.disablePositionBiasCorrection = disablePositionBiasCorrection
     self.inputDataFilePath = inputDataFilePath
@@ -37,5 +37,65 @@ public struct TogetherEvaluationCompareParameters: Codable, Sendable {
     case judge
     case modelA = "model_a"
     case modelB = "model_b"
+  }
+
+  public enum ModelA: Codable, Sendable {
+    case string(String)
+    case evaluationModelRequest(TogetherEvaluationModelRequest)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .evaluationModelRequest(try container.decode(TogetherEvaluationModelRequest.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .evaluationModelRequest(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum ModelB: Codable, Sendable {
+    case string(String)
+    case evaluationModelRequest(TogetherEvaluationModelRequest)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .evaluationModelRequest(try container.decode(TogetherEvaluationModelRequest.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .evaluationModelRequest(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension TogetherEvaluationCompareParameters.ModelA: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension TogetherEvaluationCompareParameters.ModelB: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

@@ -11,38 +11,38 @@ import Foundation
 import HyperProxyCore
 
 public enum MistralJSONPatch: Codable, Sendable {
-  case jSONPatchAppend(MistralJSONPatchAppend)
-  case jSONPatchAdd(MistralJSONPatchAdd)
-  case jSONPatchReplace(MistralJSONPatchReplace)
-  case jSONPatchRemove(MistralJSONPatchRemove)
+  case jsonPatchAppend(MistralJSONPatchAppend)
+  case jsonPatchAdd(MistralJSONPatchAdd)
+  case jsonPatchReplace(MistralJSONPatchReplace)
+  case jsonPatchRemove(MistralJSONPatchRemove)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
     if let value = try? container.decode(MistralJSONPatchAppend.self) {
-      self = .jSONPatchAppend(value)
+      self = .jsonPatchAppend(value)
       return
     }
     if let value = try? container.decode(MistralJSONPatchAdd.self) {
-      self = .jSONPatchAdd(value)
+      self = .jsonPatchAdd(value)
       return
     }
     if let value = try? container.decode(MistralJSONPatchReplace.self) {
-      self = .jSONPatchReplace(value)
+      self = .jsonPatchReplace(value)
       return
     }
-    self = .jSONPatchRemove(try container.decode(MistralJSONPatchRemove.self))
+    self = .jsonPatchRemove(try container.decode(MistralJSONPatchRemove.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .jSONPatchAppend(let value):
+    case .jsonPatchAppend(let value):
       try container.encode(value)
-    case .jSONPatchAdd(let value):
+    case .jsonPatchAdd(let value):
       try container.encode(value)
-    case .jSONPatchReplace(let value):
+    case .jsonPatchReplace(let value):
       try container.encode(value)
-    case .jSONPatchRemove(let value):
+    case .jsonPatchRemove(let value):
       try container.encode(value)
     }
   }

@@ -15,7 +15,7 @@ public final class ElevenLabsArrayJsonSchemaPropertyOutput: Codable, @unchecked 
   public var description: String?
   public var dynamicVariable: String?
   public var isOmitted: Bool?
-  public var items: ElevenLabsArrayJsonSchemaPropertyOutputItems?
+  public var items: ElevenLabsArrayJsonSchemaPropertyOutput.Items?
   public var kind: ElevenLabsArrayKind?
 
   public init(
@@ -23,7 +23,7 @@ public final class ElevenLabsArrayJsonSchemaPropertyOutput: Codable, @unchecked 
     description: String? = nil,
     dynamicVariable: String? = nil,
     isOmitted: Bool? = nil,
-    items: ElevenLabsArrayJsonSchemaPropertyOutputItems? = nil,
+    items: ElevenLabsArrayJsonSchemaPropertyOutput.Items? = nil,
     kind: ElevenLabsArrayKind? = nil
   ) {
     self.constantValue = constantValue
@@ -41,5 +41,37 @@ public final class ElevenLabsArrayJsonSchemaPropertyOutput: Codable, @unchecked 
     case isOmitted = "is_omitted"
     case items
     case kind = "type"
+  }
+
+  public indirect enum Items: Codable, Sendable {
+    case literalJsonSchemaProperty(ElevenLabsLiteralJsonSchemaProperty)
+    case objectJsonSchemaPropertyOutput(ElevenLabsObjectJsonSchemaPropertyOutput)
+    case arrayJsonSchemaPropertyOutput(ElevenLabsArrayJsonSchemaPropertyOutput)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsLiteralJsonSchemaProperty.self) {
+        self = .literalJsonSchemaProperty(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsObjectJsonSchemaPropertyOutput.self) {
+        self = .objectJsonSchemaPropertyOutput(value)
+        return
+      }
+      self = .arrayJsonSchemaPropertyOutput(
+        try container.decode(ElevenLabsArrayJsonSchemaPropertyOutput.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .literalJsonSchemaProperty(let value):
+        try container.encode(value)
+      case .objectJsonSchemaPropertyOutput(let value):
+        try container.encode(value)
+      case .arrayJsonSchemaPropertyOutput(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

@@ -12,7 +12,7 @@ import HyperProxyCore
 
 public struct ElevenLabsMergeProposalReview: Codable, Sendable {
   public var comment: String?
-  public var reviewerRole: ElevenLabsMergeProposalReviewReviewerRole?
+  public var reviewerRole: ElevenLabsMergeProposalReview.ReviewerRole?
   public var state: ElevenLabsMergeProposalReviewState
   public var submittedAt: Int
   public var userId: String
@@ -22,7 +22,7 @@ public struct ElevenLabsMergeProposalReview: Codable, Sendable {
     submittedAt: Int,
     userId: String,
     comment: String? = nil,
-    reviewerRole: ElevenLabsMergeProposalReviewReviewerRole? = nil
+    reviewerRole: ElevenLabsMergeProposalReview.ReviewerRole? = nil
   ) {
     self.comment = comment
     self.reviewerRole = reviewerRole
@@ -37,5 +37,12 @@ public struct ElevenLabsMergeProposalReview: Codable, Sendable {
     case state
     case submittedAt = "submitted_at"
     case userId = "user_id"
+  }
+
+  public enum ReviewerRole: String, Codable, Hashable, Sendable {
+    case admin = "admin"
+    case editor = "editor"
+    case commenter = "commenter"
+    case viewer = "viewer"
   }
 }

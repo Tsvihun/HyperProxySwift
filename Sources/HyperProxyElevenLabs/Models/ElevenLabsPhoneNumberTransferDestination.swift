@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsPhoneNumberTransferDestination: Codable, Sendable {
   public var phoneNumber: String
-  public var kind: ElevenLabsPhoneKind?
+  public var kind: ElevenLabsPhoneNumberTransferDestination.Kind?
 
   public init(
     phoneNumber: String,
-    kind: ElevenLabsPhoneKind? = nil
+    kind: ElevenLabsPhoneNumberTransferDestination.Kind? = nil
   ) {
     self.phoneNumber = phoneNumber
     self.kind = kind
@@ -25,5 +25,9 @@ public struct ElevenLabsPhoneNumberTransferDestination: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case phoneNumber = "phone_number"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case phone = "phone"
   }
 }

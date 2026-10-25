@@ -17,12 +17,12 @@ public struct OpenAIBetaComputerCallOutputItemParam: Codable, Sendable {
   public var id: String?
   public var output: OpenAIBetaComputerScreenshotImage
   public var status: OpenAIBetaFunctionCallItemStatus?
-  public var kind: OpenAIBetaComputerCallOutputItemParamKind
+  public var kind: OpenAIBetaComputerCallOutputItemParam.Kind
 
   public init(
     callId: String,
     output: OpenAIBetaComputerScreenshotImage,
-    kind: OpenAIBetaComputerCallOutputItemParamKind,
+    kind: OpenAIBetaComputerCallOutputItemParam.Kind,
     acknowledgedSafetyChecks: [OpenAIBetaComputerCallSafetyCheckParam]? = nil,
     agent: OpenAIBetaAgentTagParam? = nil,
     id: String? = nil,
@@ -45,5 +45,9 @@ public struct OpenAIBetaComputerCallOutputItemParam: Codable, Sendable {
     case output
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case computerCallOutput = "computer_call_output"
   }
 }

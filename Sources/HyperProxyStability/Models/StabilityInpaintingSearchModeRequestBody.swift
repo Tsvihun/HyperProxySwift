@@ -12,20 +12,20 @@ import HyperProxyCore
 
 public struct StabilityInpaintingSearchModeRequestBody: Codable, Sendable {
   public var image: String
-  public var mode: StabilityInpaintingSearchModeRequestBodyMode
+  public var mode: StabilityInpaintingSearchModeRequestBody.Mode
   public var negativePrompt: String?
-  public var outputFormat: StabilityInpaintingSearchModeRequestBodyOutputFormat?
+  public var outputFormat: StabilityInpaintingSearchModeRequestBody.OutputFormat?
   public var prompt: String
   public var searchPrompt: String
   public var seed: Double?
 
   public init(
     image: String,
-    mode: StabilityInpaintingSearchModeRequestBodyMode,
+    mode: StabilityInpaintingSearchModeRequestBody.Mode,
     prompt: String,
     searchPrompt: String,
     negativePrompt: String? = nil,
-    outputFormat: StabilityInpaintingSearchModeRequestBodyOutputFormat? = nil,
+    outputFormat: StabilityInpaintingSearchModeRequestBody.OutputFormat? = nil,
     seed: Double? = nil
   ) {
     self.image = image
@@ -45,5 +45,17 @@ public struct StabilityInpaintingSearchModeRequestBody: Codable, Sendable {
     case prompt
     case searchPrompt = "search_prompt"
     case seed
+  }
+
+  public enum Mode: String, Codable, Hashable, Sendable {
+    case search = "search"
+  }
+
+  public enum OutputFormat: String, Codable, Hashable,
+    Sendable
+  {
+    case jpeg = "jpeg"
+    case png = "png"
+    case webp = "webp"
   }
 }

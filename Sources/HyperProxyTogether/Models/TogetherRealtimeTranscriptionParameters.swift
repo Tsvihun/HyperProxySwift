@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherRealtimeTranscriptionParameters: Codable, Sendable {
-  public var inputAudioFormat: TogetherRealtimeTranscriptionParametersInputAudioFormat
+  public var inputAudioFormat: TogetherRealtimeTranscriptionParameters.InputAudioFormat
   public var model: String
 
   public init(
-    inputAudioFormat: TogetherRealtimeTranscriptionParametersInputAudioFormat,
+    inputAudioFormat: TogetherRealtimeTranscriptionParameters.InputAudioFormat,
     model: String
   ) {
     self.inputAudioFormat = inputAudioFormat
@@ -25,5 +25,11 @@ public struct TogetherRealtimeTranscriptionParameters: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case inputAudioFormat = "input_audio_format"
     case model
+  }
+
+  public enum InputAudioFormat: String, Codable, Hashable,
+    Sendable
+  {
+    case pcmS16le16000 = "pcm_s16le_16000"
   }
 }

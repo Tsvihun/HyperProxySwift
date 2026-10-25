@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralOCRPageObject: Codable, Sendable {
-  public var blocks: [MistralOCRPageObjectBlocksAnyOf1Item]?
+  public var blocks: [MistralOCRPageObjectBlocksItem]?
   public var confidenceScores: MistralOCRPageConfidenceScores?
   public var dimensions: MistralOCRPageDimensions?
   public var footer: String?
@@ -27,7 +27,7 @@ public struct MistralOCRPageObject: Codable, Sendable {
     images: [MistralOCRImageObject],
     index: Int,
     markdown: String,
-    blocks: [MistralOCRPageObjectBlocksAnyOf1Item]? = nil,
+    blocks: [MistralOCRPageObjectBlocksItem]? = nil,
     confidenceScores: MistralOCRPageConfidenceScores? = nil,
     footer: String? = nil,
     header: String? = nil,

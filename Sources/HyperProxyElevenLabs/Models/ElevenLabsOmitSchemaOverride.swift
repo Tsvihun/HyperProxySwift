@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsOmitSchemaOverride: Codable, Sendable {
-  public var source: ElevenLabsOmitSource?
+  public var source: ElevenLabsOmitSchemaOverride.Source?
 
   public init(
-    source: ElevenLabsOmitSource? = nil
+    source: ElevenLabsOmitSchemaOverride.Source? = nil
   ) {
     self.source = source
   }
 
   enum CodingKeys: String, CodingKey {
     case source
+  }
+
+  public enum Source: String, Codable, Hashable, Sendable {
+    case omit = "omit"
   }
 }

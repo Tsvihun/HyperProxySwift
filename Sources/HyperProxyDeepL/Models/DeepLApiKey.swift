@@ -16,7 +16,7 @@ public struct DeepLApiKey: Codable, Sendable {
   public var isDeactivated: Bool?
   public var keyId: String?
   public var label: String?
-  public var usageLimits: DeepLApiKeyUsageLimits?
+  public var usageLimits: DeepLApiKey.UsageLimits?
 
   public init(
     creationTime: String? = nil,
@@ -24,7 +24,7 @@ public struct DeepLApiKey: Codable, Sendable {
     isDeactivated: Bool? = nil,
     keyId: String? = nil,
     label: String? = nil,
-    usageLimits: DeepLApiKeyUsageLimits? = nil
+    usageLimits: DeepLApiKey.UsageLimits? = nil
   ) {
     self.creationTime = creationTime
     self.deactivatedTime = deactivatedTime
@@ -41,5 +41,27 @@ public struct DeepLApiKey: Codable, Sendable {
     case keyId = "key_id"
     case label
     case usageLimits = "usage_limits"
+  }
+
+  public struct UsageLimits: Codable, Sendable {
+    public var characters: Double?
+    public var speechToSpeechMilliseconds: Double?
+    public var speechToTextMilliseconds: Double?
+
+    public init(
+      characters: Double? = nil,
+      speechToSpeechMilliseconds: Double? = nil,
+      speechToTextMilliseconds: Double? = nil
+    ) {
+      self.characters = characters
+      self.speechToSpeechMilliseconds = speechToSpeechMilliseconds
+      self.speechToTextMilliseconds = speechToTextMilliseconds
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case characters
+      case speechToSpeechMilliseconds = "speech_to_speech_milliseconds"
+      case speechToTextMilliseconds = "speech_to_text_milliseconds"
+    }
   }
 }

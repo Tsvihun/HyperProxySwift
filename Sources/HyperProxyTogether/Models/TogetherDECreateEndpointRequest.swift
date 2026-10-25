@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct TogetherDECreateEndpointRequest: Codable, Sendable {
   public var name: String
-  public var visibility: TogetherDECreateEndpointRequestVisibility?
+  public var visibility: TogetherDECreateEndpointRequest.Visibility?
 
   public init(
     name: String,
-    visibility: TogetherDECreateEndpointRequestVisibility? = nil
+    visibility: TogetherDECreateEndpointRequest.Visibility? = nil
   ) {
     self.name = name
     self.visibility = visibility
@@ -25,5 +25,10 @@ public struct TogetherDECreateEndpointRequest: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case name
     case visibility
+  }
+
+  public enum Visibility: String, Codable, Hashable, Sendable {
+    case visibilityPrivate = "VISIBILITY_PRIVATE"
+    case visibilityInternal = "VISIBILITY_INTERNAL"
   }
 }

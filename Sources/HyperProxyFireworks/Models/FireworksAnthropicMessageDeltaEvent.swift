@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct FireworksAnthropicMessageDeltaEvent: Codable, Sendable {
-  public var delta: FireworksAnthropicMessageDeltaEventDelta
-  public var kind: FireworksMessageDeltaKind
-  public var usage: FireworksAnthropicMessageDeltaEventUsage
+  public var delta: FireworksAnthropicMessageDeltaEvent.Delta
+  public var kind: FireworksAnthropicMessageDeltaEvent.Kind
+  public var usage: FireworksAnthropicMessageDeltaEvent.Usage
 
   public init(
-    delta: FireworksAnthropicMessageDeltaEventDelta,
-    usage: FireworksAnthropicMessageDeltaEventUsage,
-    kind: FireworksMessageDeltaKind = .messageDelta
+    delta: FireworksAnthropicMessageDeltaEvent.Delta,
+    usage: FireworksAnthropicMessageDeltaEvent.Usage,
+    kind: FireworksAnthropicMessageDeltaEvent.Kind = .messageDelta
   ) {
     self.delta = delta
     self.kind = kind
@@ -29,5 +29,41 @@ public struct FireworksAnthropicMessageDeltaEvent: Codable, Sendable {
     case delta
     case kind = "type"
     case usage
+  }
+
+  public struct Delta: Codable, Sendable {
+    public var stopReason: FireworksAnthropicStopReason?
+    public var stopSequence: String?
+
+    public init(
+      stopReason: FireworksAnthropicStopReason? = nil,
+      stopSequence: String? = nil
+    ) {
+      self.stopReason = stopReason
+      self.stopSequence = stopSequence
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case stopReason = "stop_reason"
+      case stopSequence = "stop_sequence"
+    }
+  }
+
+  public struct Usage: Codable, Sendable {
+    public var outputTokens: Int
+
+    public init(
+      outputTokens: Int
+    ) {
+      self.outputTokens = outputTokens
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case outputTokens = "output_tokens"
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case messageDelta = "message_delta"
   }
 }

@@ -18,11 +18,11 @@ public struct OpenRouterOutputCodeInterpreterServerToolItem: Codable, Sendable {
   public var status: OpenRouterToolCallStatus
   public var stderr: String?
   public var stdout: String?
-  public var kind: OpenRouterOutputCodeInterpreterServerToolItemKind
+  public var kind: OpenRouterOutputCodeInterpreterServerToolItem.Kind
 
   public init(
     status: OpenRouterToolCallStatus,
-    kind: OpenRouterOutputCodeInterpreterServerToolItemKind,
+    kind: OpenRouterOutputCodeInterpreterServerToolItem.Kind,
     code: String? = nil,
     exitCode: Int? = nil,
     id: String? = nil,
@@ -49,5 +49,9 @@ public struct OpenRouterOutputCodeInterpreterServerToolItem: Codable, Sendable {
     case stderr
     case stdout
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case openrouterCodeInterpreter = "openrouter:code_interpreter"
   }
 }

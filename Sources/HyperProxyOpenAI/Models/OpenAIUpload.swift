@@ -17,9 +17,9 @@ public struct OpenAIUpload: Codable, Sendable {
   public var file: OpenAIFile?
   public var filename: String
   public var id: String
-  public var object: OpenAIUploadObject?
+  public var object: OpenAIUpload.Object?
   public var purpose: String
-  public var status: OpenAIUploadStatus
+  public var status: OpenAIUpload.Status
 
   public init(
     bytes: Int,
@@ -28,9 +28,9 @@ public struct OpenAIUpload: Codable, Sendable {
     filename: String,
     id: String,
     purpose: String,
-    status: OpenAIUploadStatus,
+    status: OpenAIUpload.Status,
     file: OpenAIFile? = nil,
-    object: OpenAIUploadObject? = nil
+    object: OpenAIUpload.Object? = nil
   ) {
     self.bytes = bytes
     self.createdAt = createdAt
@@ -53,5 +53,16 @@ public struct OpenAIUpload: Codable, Sendable {
     case object
     case purpose
     case status
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case upload = "upload"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case pending = "pending"
+    case completed = "completed"
+    case cancelled = "cancelled"
+    case expired = "expired"
   }
 }

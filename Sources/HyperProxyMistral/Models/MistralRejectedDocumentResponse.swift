@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct MistralRejectedDocumentResponse: Codable, Sendable {
   public var errors: [MistralDocumentFieldErrorResponse]
   public var position: Int
-  public var status: MistralRejectedStatus?
+  public var status: MistralRejectedDocumentResponse.Status?
 
   public init(
     errors: [MistralDocumentFieldErrorResponse],
     position: Int,
-    status: MistralRejectedStatus? = nil
+    status: MistralRejectedDocumentResponse.Status? = nil
   ) {
     self.errors = errors
     self.position = position
@@ -29,5 +29,9 @@ public struct MistralRejectedDocumentResponse: Codable, Sendable {
     case errors
     case position
     case status
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case rejected = "rejected"
   }
 }

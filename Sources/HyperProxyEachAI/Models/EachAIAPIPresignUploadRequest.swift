@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct EachAIAPIPresignUploadRequest: Codable, Sendable {
   public var contentType: String
   public var expiresInSeconds: Int?
-  public var fileType: EachAIAPIPresignUploadRequestFileType?
+  public var fileType: EachAIAPIPresignUploadRequest.FileType?
 
   public init(
     contentType: String,
     expiresInSeconds: Int? = nil,
-    fileType: EachAIAPIPresignUploadRequestFileType? = nil
+    fileType: EachAIAPIPresignUploadRequest.FileType? = nil
   ) {
     self.contentType = contentType
     self.expiresInSeconds = expiresInSeconds
@@ -29,5 +29,12 @@ public struct EachAIAPIPresignUploadRequest: Codable, Sendable {
     case contentType = "content_type"
     case expiresInSeconds = "expires_in_seconds"
     case fileType = "file_type"
+  }
+
+  public enum FileType: String, Codable, Hashable, Sendable {
+    case image = "image"
+    case video = "video"
+    case audio = "audio"
+    case other = "other"
   }
 }

@@ -14,12 +14,12 @@ public struct OpenAILiveTransportDTMFSend: Codable, Sendable {
   public var clientEventId: String?
   public var event: String
   public var eventId: String
-  public var kind: OpenAILiveTransportDTMFSendKind
+  public var kind: OpenAILiveTransportDTMFSend.Kind
 
   public init(
     event: String,
     eventId: String,
-    kind: OpenAILiveTransportDTMFSendKind,
+    kind: OpenAILiveTransportDTMFSend.Kind,
     clientEventId: String? = nil
   ) {
     self.clientEventId = clientEventId
@@ -33,5 +33,9 @@ public struct OpenAILiveTransportDTMFSend: Codable, Sendable {
     case event
     case eventId = "event_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case transportDtmfSend = "transport.dtmf.send"
   }
 }

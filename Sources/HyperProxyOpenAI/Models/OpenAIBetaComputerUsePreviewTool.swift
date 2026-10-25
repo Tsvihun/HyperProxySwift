@@ -14,13 +14,13 @@ public struct OpenAIBetaComputerUsePreviewTool: Codable, Sendable {
   public var displayHeight: Int
   public var displayWidth: Int
   public var environment: OpenAIBetaComputerEnvironment
-  public var kind: OpenAIBetaComputerUsePreviewToolKind
+  public var kind: OpenAIBetaComputerUsePreviewTool.Kind
 
   public init(
     displayHeight: Int,
     displayWidth: Int,
     environment: OpenAIBetaComputerEnvironment,
-    kind: OpenAIBetaComputerUsePreviewToolKind
+    kind: OpenAIBetaComputerUsePreviewTool.Kind
   ) {
     self.displayHeight = displayHeight
     self.displayWidth = displayWidth
@@ -33,5 +33,9 @@ public struct OpenAIBetaComputerUsePreviewTool: Codable, Sendable {
     case displayWidth = "display_width"
     case environment
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case computerUsePreview = "computer_use_preview"
   }
 }

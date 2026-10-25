@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterProviderSortConfig: Codable, Sendable {
-  public var by: OpenRouterProviderSortConfigBy?
-  public var partition: OpenRouterProviderSortConfigPartition?
+  public var by: OpenRouterProviderSortConfig.By?
+  public var partition: OpenRouterProviderSortConfig.Partition?
 
   public init(
-    by: OpenRouterProviderSortConfigBy? = nil,
-    partition: OpenRouterProviderSortConfigPartition? = nil
+    by: OpenRouterProviderSortConfig.By? = nil,
+    partition: OpenRouterProviderSortConfig.Partition? = nil
   ) {
     self.by = by
     self.partition = partition
@@ -25,5 +25,17 @@ public struct OpenRouterProviderSortConfig: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case by
     case partition
+  }
+
+  public enum By: String, Codable, Hashable, Sendable {
+    case price = "price"
+    case throughput = "throughput"
+    case latency = "latency"
+    case exacto = "exacto"
+  }
+
+  public enum Partition: String, Codable, Hashable, Sendable {
+    case model = "model"
+    case none = "none"
   }
 }

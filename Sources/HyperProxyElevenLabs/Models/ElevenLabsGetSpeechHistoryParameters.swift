@@ -16,8 +16,8 @@ public struct ElevenLabsGetSpeechHistoryParameters: Codable, Sendable {
   public var modelId: String?
   public var pageSize: Int?
   public var search: String?
-  public var sortDirection: ElevenLabsGetSpeechHistoryParametersSortDirection?
-  public var source: ElevenLabsGetSpeechHistoryParametersSource?
+  public var sortDirection: ElevenLabsGetSpeechHistoryParameters.SortDirection?
+  public var source: ElevenLabsGetSpeechHistoryParameters.Source?
   public var startAfterHistoryItemId: String?
   public var voiceId: String?
   public var xiApiKey: String?
@@ -28,8 +28,8 @@ public struct ElevenLabsGetSpeechHistoryParameters: Codable, Sendable {
     modelId: String? = nil,
     pageSize: Int? = nil,
     search: String? = nil,
-    sortDirection: ElevenLabsGetSpeechHistoryParametersSortDirection? = nil,
-    source: ElevenLabsGetSpeechHistoryParametersSource? = nil,
+    sortDirection: ElevenLabsGetSpeechHistoryParameters.SortDirection? = nil,
+    source: ElevenLabsGetSpeechHistoryParameters.Source? = nil,
     startAfterHistoryItemId: String? = nil,
     voiceId: String? = nil,
     xiApiKey: String? = nil
@@ -57,5 +57,16 @@ public struct ElevenLabsGetSpeechHistoryParameters: Codable, Sendable {
     case startAfterHistoryItemId = "start_after_history_item_id"
     case voiceId = "voice_id"
     case xiApiKey = "xi-api-key"
+  }
+
+  public enum SortDirection: String, Codable, Hashable, Sendable {
+    case asc = "asc"
+    case desc = "desc"
+  }
+
+  public enum Source: String, Codable, Hashable, Sendable {
+    case tts = "TTS"
+    case sts = "STS"
+    case flows = "Flows"
   }
 }

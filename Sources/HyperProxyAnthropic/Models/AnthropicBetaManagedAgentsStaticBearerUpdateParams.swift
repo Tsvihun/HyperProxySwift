@@ -12,10 +12,10 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsStaticBearerUpdateParams: Codable, Sendable {
   public var token: String?
-  public var kind: AnthropicBetaManagedAgentsStaticBearerUpdateParamsKind
+  public var kind: AnthropicBetaManagedAgentsStaticBearerUpdateParams.Kind
 
   public init(
-    kind: AnthropicBetaManagedAgentsStaticBearerUpdateParamsKind,
+    kind: AnthropicBetaManagedAgentsStaticBearerUpdateParams.Kind,
     token: String? = nil
   ) {
     self.token = token
@@ -25,5 +25,11 @@ public struct AnthropicBetaManagedAgentsStaticBearerUpdateParams: Codable, Senda
   enum CodingKeys: String, CodingKey {
     case token
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case staticBearer = "static_bearer"
   }
 }

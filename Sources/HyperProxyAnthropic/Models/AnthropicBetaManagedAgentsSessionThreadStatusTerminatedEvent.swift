@@ -15,14 +15,14 @@ public struct AnthropicBetaManagedAgentsSessionThreadStatusTerminatedEvent: Coda
   public var id: String
   public var processedAt: AnthropicBetaTimestamp
   public var sessionThreadId: String
-  public var kind: AnthropicBetaManagedAgentsSessionThreadStatusTerminatedEventKind
+  public var kind: AnthropicBetaManagedAgentsSessionThreadStatusTerminatedEvent.Kind
 
   public init(
     agentName: String,
     id: String,
     processedAt: AnthropicBetaTimestamp,
     sessionThreadId: String,
-    kind: AnthropicBetaManagedAgentsSessionThreadStatusTerminatedEventKind
+    kind: AnthropicBetaManagedAgentsSessionThreadStatusTerminatedEvent.Kind
   ) {
     self.agentName = agentName
     self.id = id
@@ -37,5 +37,11 @@ public struct AnthropicBetaManagedAgentsSessionThreadStatusTerminatedEvent: Coda
     case processedAt = "processed_at"
     case sessionThreadId = "session_thread_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case sessionThreadStatusTerminated = "session.thread_status_terminated"
   }
 }

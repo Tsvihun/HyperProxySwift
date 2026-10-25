@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIScreenshotParam: Codable, Sendable {
-  public var kind: OpenAIScreenshotParamKind
+  public var kind: OpenAIScreenshotParam.Kind
 
   public init(
-    kind: OpenAIScreenshotParamKind
+    kind: OpenAIScreenshotParam.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case screenshot = "screenshot"
   }
 }

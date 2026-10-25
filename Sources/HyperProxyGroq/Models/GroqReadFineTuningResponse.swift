@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct GroqReadFineTuningResponse: Codable, Sendable {
-  public var data: GroqReadFineTuningResponseData?
+  public var data: GroqReadFineTuningResponse.DataValue?
   public var id: String?
   public var object: String?
 
   public init(
-    data: GroqReadFineTuningResponseData? = nil,
+    data: GroqReadFineTuningResponse.DataValue? = nil,
     id: String? = nil,
     object: String? = nil
   ) {
@@ -29,5 +29,43 @@ public struct GroqReadFineTuningResponse: Codable, Sendable {
     case data
     case id
     case object
+  }
+
+  public struct DataValue: Codable, Sendable {
+    public var baseModel: String?
+    public var createdAt: Double?
+    public var fineTunedModel: String?
+    public var id: String?
+    public var inputFileId: String?
+    public var name: String?
+    public var kind: String?
+
+    public init(
+      baseModel: String? = nil,
+      createdAt: Double? = nil,
+      fineTunedModel: String? = nil,
+      id: String? = nil,
+      inputFileId: String? = nil,
+      name: String? = nil,
+      kind: String? = nil
+    ) {
+      self.baseModel = baseModel
+      self.createdAt = createdAt
+      self.fineTunedModel = fineTunedModel
+      self.id = id
+      self.inputFileId = inputFileId
+      self.name = name
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case baseModel = "base_model"
+      case createdAt = "created_at"
+      case fineTunedModel = "fine_tuned_model"
+      case id
+      case inputFileId = "input_file_id"
+      case name
+      case kind = "type"
+    }
   }
 }

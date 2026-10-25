@@ -14,10 +14,10 @@ public struct OpenAIVadConfig: Codable, Sendable {
   public var prefixPaddingMs: Int?
   public var silenceDurationMs: Int?
   public var threshold: Double?
-  public var kind: OpenAIVadConfigKind
+  public var kind: OpenAIVadConfig.Kind
 
   public init(
-    kind: OpenAIVadConfigKind,
+    kind: OpenAIVadConfig.Kind,
     prefixPaddingMs: Int? = nil,
     silenceDurationMs: Int? = nil,
     threshold: Double? = nil
@@ -33,5 +33,9 @@ public struct OpenAIVadConfig: Codable, Sendable {
     case silenceDurationMs = "silence_duration_ms"
     case threshold
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case serverVad = "server_vad"
   }
 }

@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct MistralCreateRealtimeSessionRequest: Codable, Sendable {
   public var model: String
-  public var purpose: MistralRealtimePurpose?
+  public var purpose: MistralCreateRealtimeSessionRequest.Purpose?
   public var ttlSeconds: Int?
 
   public init(
     model: String,
-    purpose: MistralRealtimePurpose? = nil,
+    purpose: MistralCreateRealtimeSessionRequest.Purpose? = nil,
     ttlSeconds: Int? = nil
   ) {
     self.model = model
@@ -29,5 +29,9 @@ public struct MistralCreateRealtimeSessionRequest: Codable, Sendable {
     case model
     case purpose
     case ttlSeconds = "ttl_seconds"
+  }
+
+  public enum Purpose: String, Codable, Hashable, Sendable {
+    case realtime = "realtime"
   }
 }

@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenRouterStopServerToolsWhenHasToolCall: Codable, Sendable {
   public var toolName: String
-  public var kind: OpenRouterStopServerToolsWhenHasToolCallKind
+  public var kind: OpenRouterStopServerToolsWhenHasToolCall.Kind
 
   public init(
     toolName: String,
-    kind: OpenRouterStopServerToolsWhenHasToolCallKind
+    kind: OpenRouterStopServerToolsWhenHasToolCall.Kind
   ) {
     self.toolName = toolName
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenRouterStopServerToolsWhenHasToolCall: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case toolName = "tool_name"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case hasToolCall = "has_tool_call"
   }
 }

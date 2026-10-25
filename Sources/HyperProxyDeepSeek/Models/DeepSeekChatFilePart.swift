@@ -14,10 +14,10 @@ public struct DeepSeekChatFilePart: Codable, Sendable {
   public var fileData: String?
   public var fileId: String?
   public var filename: String?
-  public var kind: DeepSeekChatFilePartKind
+  public var kind: DeepSeekChatFilePart.Kind
 
   public init(
-    kind: DeepSeekChatFilePartKind,
+    kind: DeepSeekChatFilePart.Kind,
     fileData: String? = nil,
     fileId: String? = nil,
     filename: String? = nil
@@ -33,5 +33,9 @@ public struct DeepSeekChatFilePart: Codable, Sendable {
     case fileId = "file_id"
     case filename
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case file = "file"
   }
 }

@@ -21,13 +21,13 @@ extension HyperProxyProviderService where Operation == GroqOperation {
   public var fineTuningsCreate: HyperProxyProviderCall<GroqOperation> {
     self.call(.fineTuningsCreate)
   }
-  /// `DELETE v1/fine_tunings/{id}`
-  public var deleteFineTuning: HyperProxyProviderCall<GroqOperation> {
-    self.call(.deleteFineTuning)
+  /// `DELETE v1/fine_tunings/{fine_tuning_id}`
+  public var fineTuningsDelete: HyperProxyProviderCall<GroqOperation> {
+    self.call(.fineTuningsDelete)
   }
-  /// `GET v1/fine_tunings/{id}`
-  public var getFineTuning: HyperProxyProviderCall<GroqOperation> {
-    self.call(.getFineTuning)
+  /// `GET v1/fine_tunings/{fine_tuning_id}`
+  public var fineTuningsRetrieve: HyperProxyProviderCall<GroqOperation> {
+    self.call(.fineTuningsRetrieve)
   }
   /// `POST openai/v1/audio/speech`
   public var audioSpeech: HyperProxyProviderCall<GroqOperation> {
@@ -97,10 +97,6 @@ extension HyperProxyProviderService where Operation == GroqOperation {
   public var deleteModel: HyperProxyProviderCall<GroqOperation> {
     self.call(.deleteModel)
   }
-  /// `GET openai/v1/models/{model}`
-  public var retrieveModel: HyperProxyProviderCall<GroqOperation> {
-    self.call(.retrieveModel)
-  }
   /// `POST openai/v1/reranking`
   public var createReranking: HyperProxyProviderCall<GroqOperation> {
     self.call(.createReranking)
@@ -108,13 +104,5 @@ extension HyperProxyProviderService where Operation == GroqOperation {
   /// `POST openai/v1/responses`
   public var responsesCreate: HyperProxyProviderCall<GroqOperation> {
     self.call(.responsesCreate)
-  }
-  /// `DELETE v1/fine_tunings/{fine_tuning_id}`
-  public var fineTuningsDelete: HyperProxyProviderCall<GroqOperation> {
-    self.call(.fineTuningsDelete)
-  }
-  /// `GET v1/fine_tunings/{fine_tuning_id}`
-  public var fineTuningsRetrieve: HyperProxyProviderCall<GroqOperation> {
-    self.call(.fineTuningsRetrieve)
   }
 }

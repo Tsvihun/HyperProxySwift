@@ -14,13 +14,13 @@ public struct ElevenLabsWorkflowToolEdgeStepModel: Codable, Sendable {
   public var edgeId: String
   public var stepLatencySecs: Double
   public var targetNodeId: String
-  public var kind: ElevenLabsEdgeKind?
+  public var kind: ElevenLabsWorkflowToolEdgeStepModel.Kind?
 
   public init(
     edgeId: String,
     stepLatencySecs: Double,
     targetNodeId: String,
-    kind: ElevenLabsEdgeKind? = nil
+    kind: ElevenLabsWorkflowToolEdgeStepModel.Kind? = nil
   ) {
     self.edgeId = edgeId
     self.stepLatencySecs = stepLatencySecs
@@ -33,5 +33,9 @@ public struct ElevenLabsWorkflowToolEdgeStepModel: Codable, Sendable {
     case stepLatencySecs = "step_latency_secs"
     case targetNodeId = "target_node_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case edge = "edge"
   }
 }

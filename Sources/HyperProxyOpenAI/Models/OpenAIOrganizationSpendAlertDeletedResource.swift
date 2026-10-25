@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIOrganizationSpendAlertDeletedResource: Codable, Sendable {
   public var deleted: Bool
   public var id: String
-  public var object: OpenAIOrganizationSpendAlertDeletedResourceObject
+  public var object: OpenAIOrganizationSpendAlertDeletedResource.Object
 
   public init(
     deleted: Bool,
     id: String,
-    object: OpenAIOrganizationSpendAlertDeletedResourceObject
+    object: OpenAIOrganizationSpendAlertDeletedResource.Object
   ) {
     self.deleted = deleted
     self.id = id
@@ -29,5 +29,9 @@ public struct OpenAIOrganizationSpendAlertDeletedResource: Codable, Sendable {
     case deleted
     case id
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case organizationSpendAlertDeleted = "organization.spend_alert.deleted"
   }
 }

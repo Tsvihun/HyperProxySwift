@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct DeepSeekAnthropicFilesListParameters: Codable, Sendable {
   public var afterId: String?
-  public var anthropicBeta: DeepSeekAnthropicFilesListParametersAnthropicBeta
+  public var anthropicBeta: DeepSeekAnthropicFilesListParameters.AnthropicBeta
   public var beforeId: String?
   public var limit: Int?
 
   public init(
-    anthropicBeta: DeepSeekAnthropicFilesListParametersAnthropicBeta,
+    anthropicBeta: DeepSeekAnthropicFilesListParameters.AnthropicBeta,
     afterId: String? = nil,
     beforeId: String? = nil,
     limit: Int? = nil
@@ -33,5 +33,9 @@ public struct DeepSeekAnthropicFilesListParameters: Codable, Sendable {
     case anthropicBeta = "anthropic-beta"
     case beforeId = "before_id"
     case limit
+  }
+
+  public enum AnthropicBeta: String, Codable, Hashable, Sendable {
+    case filesApi2025_04_14 = "files-api-2025-04-14"
   }
 }

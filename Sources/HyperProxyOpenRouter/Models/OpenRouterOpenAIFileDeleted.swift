@@ -11,27 +11,64 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterOpenAIFileDeleted: Codable, Sendable {
-  public var shape: OpenRouterOpenAIFileDeletedShape
-  public var deleted: OpenRouterOpenAIFileDeletedDeleted
+  public var _shape: OpenRouterOpenAIFileDeleted.Shape
+  public var deleted: OpenRouterOpenAIFileDeleted.Deleted
   public var id: String
-  public var object: OpenRouterOpenAIFileDeletedObject
+  public var object: OpenRouterOpenAIFileDeleted.Object
 
   public init(
-    shape: OpenRouterOpenAIFileDeletedShape,
+    _shape: OpenRouterOpenAIFileDeleted.Shape,
     id: String,
-    object: OpenRouterOpenAIFileDeletedObject,
-    deleted: OpenRouterOpenAIFileDeletedDeleted = .booleanTrue
+    object: OpenRouterOpenAIFileDeleted.Object,
+    deleted: OpenRouterOpenAIFileDeleted.Deleted = .booleanTrue
   ) {
-    self.shape = shape
+    self._shape = _shape
     self.deleted = deleted
     self.id = id
     self.object = object
   }
 
   enum CodingKeys: String, CodingKey {
-    case shape = "_shape"
+    case _shape
     case deleted
     case id
     case object
+  }
+
+  public enum Deleted: Codable, Sendable {
+    case booleanTrue
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Bool.self) {
+        switch value {
+        case true:
+          self = .booleanTrue
+          return
+        default:
+          break
+        }
+      }
+      throw DecodingError.dataCorruptedError(
+        in: container,
+        debugDescription: "Expected a documented OpenRouterOpenAIFileDeleted.Deleted value."
+      )
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .booleanTrue:
+        try container.encode(true)
+      }
+    }
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case file = "file"
+  }
+
+  public enum Shape: String, Codable, Hashable, Sendable {
+    case openai = "openai"
   }
 }

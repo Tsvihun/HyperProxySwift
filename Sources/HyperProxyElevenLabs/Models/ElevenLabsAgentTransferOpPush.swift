@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsAgentTransferOpPush: Codable, Sendable {
   public var returnNodeId: String?
-  public var kind: ElevenLabsPushKind?
+  public var kind: ElevenLabsAgentTransferOpPush.Kind?
 
   public init(
     returnNodeId: String? = nil,
-    kind: ElevenLabsPushKind? = nil
+    kind: ElevenLabsAgentTransferOpPush.Kind? = nil
   ) {
     self.returnNodeId = returnNodeId
     self.kind = kind
@@ -25,5 +25,9 @@ public struct ElevenLabsAgentTransferOpPush: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case returnNodeId = "return_node_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case push = "push"
   }
 }

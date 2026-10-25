@@ -16,7 +16,7 @@ public struct ElevenLabsDubOrderItemRequest: Codable, Sendable {
   public var includeCaptions: Bool
   public var includeSourceCaptions: Bool
   public var instructions: String?
-  public var kind: ElevenLabsDubKind?
+  public var kind: ElevenLabsDubOrderItemRequest.Kind?
   public var mediaId: String
   public var sourceLanguage: String
 
@@ -28,7 +28,7 @@ public struct ElevenLabsDubOrderItemRequest: Codable, Sendable {
     sourceLanguage: String,
     captionsSdh: Bool? = nil,
     instructions: String? = nil,
-    kind: ElevenLabsDubKind? = nil
+    kind: ElevenLabsDubOrderItemRequest.Kind? = nil
   ) {
     self.captionsSdh = captionsSdh
     self.destinationLanguages = destinationLanguages
@@ -49,5 +49,9 @@ public struct ElevenLabsDubOrderItemRequest: Codable, Sendable {
     case kind
     case mediaId = "media_id"
     case sourceLanguage = "source_language"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case dub = "dub"
   }
 }

@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterImageGenTextChunkEvent: Codable, Sendable {
-  public var phase: OpenRouterImageGenTextChunkEventPhase
+  public var phase: OpenRouterImageGenTextChunkEvent.Phase
   public var text: String
-  public var kind: OpenRouterImageGenTextChunkEventKind
+  public var kind: OpenRouterImageGenTextChunkEvent.Kind
 
   public init(
-    phase: OpenRouterImageGenTextChunkEventPhase,
+    phase: OpenRouterImageGenTextChunkEvent.Phase,
     text: String,
-    kind: OpenRouterImageGenTextChunkEventKind
+    kind: OpenRouterImageGenTextChunkEvent.Kind
   ) {
     self.phase = phase
     self.text = text
@@ -29,5 +29,15 @@ public struct OpenRouterImageGenTextChunkEvent: Codable, Sendable {
     case phase
     case text
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case imageGenerationTextChunk = "image_generation.text_chunk"
+  }
+
+  public enum Phase: String, Codable, Hashable, Sendable {
+    case content = "content"
+    case reasoning = "reasoning"
+    case draft = "draft"
   }
 }

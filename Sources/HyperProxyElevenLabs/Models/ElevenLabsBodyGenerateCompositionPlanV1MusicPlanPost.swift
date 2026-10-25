@@ -15,14 +15,14 @@ public struct ElevenLabsBodyGenerateCompositionPlanV1MusicPlanPost: Codable, Sen
   public var musicLengthMs: Int?
   public var prompt: String
   public var sourceCompositionPlan:
-    ElevenLabsBodyGenerateCompositionPlanV1MusicPlanPostSourceCompositionPlan?
+    ElevenLabsBodyGenerateCompositionPlanV1MusicPlanPost.SourceCompositionPlan?
 
   public init(
     prompt: String,
     modelId: ElevenLabsMusicModelID? = nil,
     musicLengthMs: Int? = nil,
     sourceCompositionPlan:
-      ElevenLabsBodyGenerateCompositionPlanV1MusicPlanPostSourceCompositionPlan? = nil
+      ElevenLabsBodyGenerateCompositionPlanV1MusicPlanPost.SourceCompositionPlan? = nil
   ) {
     self.modelId = modelId
     self.musicLengthMs = musicLengthMs
@@ -35,5 +35,31 @@ public struct ElevenLabsBodyGenerateCompositionPlanV1MusicPlanPost: Codable, Sen
     case musicLengthMs = "music_length_ms"
     case prompt
     case sourceCompositionPlan = "source_composition_plan"
+  }
+
+  public enum SourceCompositionPlan: Codable,
+    Sendable
+  {
+    case musicPrompt(ElevenLabsMusicPrompt)
+    case compositionPlan(ElevenLabsCompositionPlan)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsMusicPrompt.self) {
+        self = .musicPrompt(value)
+        return
+      }
+      self = .compositionPlan(try container.decode(ElevenLabsCompositionPlan.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .musicPrompt(let value):
+        try container.encode(value)
+      case .compositionPlan(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

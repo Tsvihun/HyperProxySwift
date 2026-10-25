@@ -13,16 +13,16 @@ import HyperProxyCore
 public struct OpenAILiveInitialDeveloperMessageItemParam: Codable, Sendable {
   public var content: [OpenAILiveInitialInputTextContentPartParam]
   public var id: String?
-  public var role: OpenAILiveInitialDeveloperMessageItemParamRole
+  public var role: OpenAILiveInitialDeveloperMessageItemParam.Role
   public var status: OpenAILiveInitialMessageStatus?
-  public var kind: OpenAILiveInitialDeveloperMessageItemParamKind?
+  public var kind: OpenAILiveInitialDeveloperMessageItemParam.Kind?
 
   public init(
     content: [OpenAILiveInitialInputTextContentPartParam],
-    role: OpenAILiveInitialDeveloperMessageItemParamRole,
+    role: OpenAILiveInitialDeveloperMessageItemParam.Role,
     id: String? = nil,
     status: OpenAILiveInitialMessageStatus? = nil,
-    kind: OpenAILiveInitialDeveloperMessageItemParamKind? = nil
+    kind: OpenAILiveInitialDeveloperMessageItemParam.Kind? = nil
   ) {
     self.content = content
     self.id = id
@@ -37,5 +37,13 @@ public struct OpenAILiveInitialDeveloperMessageItemParam: Codable, Sendable {
     case role
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case message = "message"
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case developer = "developer"
   }
 }

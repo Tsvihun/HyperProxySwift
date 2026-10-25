@@ -15,7 +15,7 @@ public struct OpenRouterUpdateWorkspaceRequest: Codable, Sendable {
   public var defaultProviderSort: String?
   public var defaultTextModel: String?
   public var description: String?
-  public var disabledServerTools: [OpenRouterUpdateWorkspaceRequestDisabledServerToolsItem]?
+  public var disabledServerTools: [OpenRouterUpdateWorkspaceRequest.DisabledServerToolsElement]?
   public var ioLoggingApiKeyIds: [Int]?
   public var ioLoggingSamplingRate: Double?
   public var isDataDiscountLoggingEnabled: Bool?
@@ -29,7 +29,7 @@ public struct OpenRouterUpdateWorkspaceRequest: Codable, Sendable {
     defaultProviderSort: String? = nil,
     defaultTextModel: String? = nil,
     description: String? = nil,
-    disabledServerTools: [OpenRouterUpdateWorkspaceRequestDisabledServerToolsItem]? = nil,
+    disabledServerTools: [OpenRouterUpdateWorkspaceRequest.DisabledServerToolsElement]? = nil,
     ioLoggingApiKeyIds: [Int]? = nil,
     ioLoggingSamplingRate: Double? = nil,
     isDataDiscountLoggingEnabled: Bool? = nil,
@@ -65,5 +65,22 @@ public struct OpenRouterUpdateWorkspaceRequest: Codable, Sendable {
     case isObservabilityIoLoggingEnabled = "is_observability_io_logging_enabled"
     case name
     case slug
+  }
+
+  public enum DisabledServerToolsElement: String, Codable, Hashable,
+    Sendable
+  {
+    case openrouterAdvisor = "openrouter:advisor"
+    case openrouterApplyPatch = "openrouter:apply_patch"
+    case openrouterBash = "openrouter:bash"
+    case openrouterDatetime = "openrouter:datetime"
+    case openrouterFusion = "openrouter:fusion"
+    case openrouterImageGeneration = "openrouter:image_generation"
+    case openrouterExperimentalSearchModels = "openrouter:experimental__search_models"
+    case openrouterShell = "openrouter:shell"
+    case openrouterSubagent = "openrouter:subagent"
+    case openrouterToolSearch = "openrouter:tool_search"
+    case openrouterWebFetch = "openrouter:web_fetch"
+    case openrouterWebSearch = "openrouter:web_search"
   }
 }

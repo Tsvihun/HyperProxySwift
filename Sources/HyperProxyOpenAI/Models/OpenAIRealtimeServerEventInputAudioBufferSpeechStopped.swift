@@ -14,13 +14,13 @@ public struct OpenAIRealtimeServerEventInputAudioBufferSpeechStopped: Codable, S
   public var audioEndMs: Int
   public var eventId: String
   public var itemId: String
-  public var kind: OpenAIRealtimeServerEventInputAudioBufferSpeechStoppedKind
+  public var kind: OpenAIRealtimeServerEventInputAudioBufferSpeechStopped.Kind
 
   public init(
     audioEndMs: Int,
     eventId: String,
     itemId: String,
-    kind: OpenAIRealtimeServerEventInputAudioBufferSpeechStoppedKind
+    kind: OpenAIRealtimeServerEventInputAudioBufferSpeechStopped.Kind
   ) {
     self.audioEndMs = audioEndMs
     self.eventId = eventId
@@ -33,5 +33,11 @@ public struct OpenAIRealtimeServerEventInputAudioBufferSpeechStopped: Codable, S
     case eventId = "event_id"
     case itemId = "item_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case inputAudioBufferSpeechStopped = "input_audio_buffer.speech_stopped"
   }
 }

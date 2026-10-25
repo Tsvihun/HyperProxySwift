@@ -14,7 +14,7 @@ public struct OpenRouterWorkspaceBudget: Codable, Sendable {
   public var createdAt: String
   public var id: String
   public var limitUsd: Double
-  public var resetInterval: OpenRouterWorkspaceBudgetResetInterval?
+  public var resetInterval: OpenRouterWorkspaceBudget.ResetInterval?
   public var updatedAt: String
   public var workspaceId: String
 
@@ -22,7 +22,7 @@ public struct OpenRouterWorkspaceBudget: Codable, Sendable {
     createdAt: String,
     id: String,
     limitUsd: Double,
-    resetInterval: OpenRouterWorkspaceBudgetResetInterval?,
+    resetInterval: OpenRouterWorkspaceBudget.ResetInterval?,
     updatedAt: String,
     workspaceId: String
   ) {
@@ -41,5 +41,11 @@ public struct OpenRouterWorkspaceBudget: Codable, Sendable {
     case resetInterval = "reset_interval"
     case updatedAt = "updated_at"
     case workspaceId = "workspace_id"
+  }
+
+  public enum ResetInterval: String, Codable, Hashable, Sendable {
+    case daily = "daily"
+    case weekly = "weekly"
+    case monthly = "monthly"
   }
 }

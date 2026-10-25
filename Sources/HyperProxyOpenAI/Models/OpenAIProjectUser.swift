@@ -15,13 +15,13 @@ public struct OpenAIProjectUser: Codable, Sendable {
   public var email: String?
   public var id: String
   public var name: String?
-  public var object: OpenAIProjectUserObject
+  public var object: OpenAIProjectUser.Object
   public var role: String
 
   public init(
     addedAt: Int,
     id: String,
-    object: OpenAIProjectUserObject,
+    object: OpenAIProjectUser.Object,
     role: String,
     email: String? = nil,
     name: String? = nil
@@ -41,5 +41,9 @@ public struct OpenAIProjectUser: Codable, Sendable {
     case name
     case object
     case role
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case organizationProjectUser = "organization.project.user"
   }
 }

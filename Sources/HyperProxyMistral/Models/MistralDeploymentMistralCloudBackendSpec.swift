@@ -14,13 +14,13 @@ public struct MistralDeploymentMistralCloudBackendSpec: Codable, Sendable {
   public var buildDirectory: String?
   public var dockerfilePath: String?
   public var secrets: [MistralDeploymentSecretBinding]?
-  public var kind: MistralDeploymentMistralCloudBackendSpecKind?
+  public var kind: MistralDeploymentMistralCloudBackendSpec.Kind?
 
   public init(
     buildDirectory: String? = nil,
     dockerfilePath: String? = nil,
     secrets: [MistralDeploymentSecretBinding]? = nil,
-    kind: MistralDeploymentMistralCloudBackendSpecKind? = nil
+    kind: MistralDeploymentMistralCloudBackendSpec.Kind? = nil
   ) {
     self.buildDirectory = buildDirectory
     self.dockerfilePath = dockerfilePath
@@ -33,5 +33,10 @@ public struct MistralDeploymentMistralCloudBackendSpec: Codable, Sendable {
     case dockerfilePath = "dockerfile_path"
     case secrets
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case mistralCloud = "mistral_cloud"
+    case koyeb = "koyeb"
   }
 }

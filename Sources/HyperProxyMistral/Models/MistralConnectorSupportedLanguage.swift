@@ -17,7 +17,7 @@ public enum MistralConnectorSupportedLanguage: String, Codable, Hashable, Sendab
   case es = "es"
   case de = "de"
   case pl = "pl"
-  case ptBR = "pt-BR"
+  case ptBr = "pt-BR"
   case it = "it"
   case nl = "nl"
   case uk = "uk"

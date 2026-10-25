@@ -14,12 +14,12 @@ public struct TogetherTrainingMethodDPO: Codable, Sendable {
   public var dpoBeta: Double?
   public var dpoNormalizeLogratiosByLength: Bool?
   public var dpoReferenceFree: Bool?
-  public var method: TogetherTrainingMethodDPOMethod
+  public var method: TogetherTrainingMethodDPO.Method
   public var rpoAlpha: Double?
   public var simpoGamma: Double?
 
   public init(
-    method: TogetherTrainingMethodDPOMethod,
+    method: TogetherTrainingMethodDPO.Method,
     dpoBeta: Double? = nil,
     dpoNormalizeLogratiosByLength: Bool? = nil,
     dpoReferenceFree: Bool? = nil,
@@ -41,5 +41,9 @@ public struct TogetherTrainingMethodDPO: Codable, Sendable {
     case method
     case rpoAlpha = "rpo_alpha"
     case simpoGamma = "simpo_gamma"
+  }
+
+  public enum Method: String, Codable, Hashable, Sendable {
+    case dpo = "dpo"
   }
 }

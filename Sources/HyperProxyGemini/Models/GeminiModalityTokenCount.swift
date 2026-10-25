@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiModalityTokenCount: Codable, Sendable {
-  public var modality: GeminiModalityTokenCountModality?
+  public var modality: GeminiModalityTokenCount.Modality?
   public var tokenCount: Int?
 
   public init(
-    modality: GeminiModalityTokenCountModality? = nil,
+    modality: GeminiModalityTokenCount.Modality? = nil,
     tokenCount: Int? = nil
   ) {
     self.modality = modality
@@ -25,5 +25,14 @@ public struct GeminiModalityTokenCount: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case modality
     case tokenCount
+  }
+
+  public enum Modality: String, Codable, Hashable, Sendable {
+    case modalityUnspecified = "MODALITY_UNSPECIFIED"
+    case text = "TEXT"
+    case image = "IMAGE"
+    case video = "VIDEO"
+    case audio = "AUDIO"
+    case document = "DOCUMENT"
   }
 }

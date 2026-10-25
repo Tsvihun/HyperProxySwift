@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsReferencedToolCommonModel: Codable, Sendable {
   public var id: String
-  public var kind: ElevenLabsReferencedToolCommonModelKind
+  public var kind: ElevenLabsReferencedToolCommonModel.Kind
 
   public init(
     id: String,
-    kind: ElevenLabsReferencedToolCommonModelKind
+    kind: ElevenLabsReferencedToolCommonModel.Kind
   ) {
     self.id = id
     self.kind = kind
@@ -25,5 +25,15 @@ public struct ElevenLabsReferencedToolCommonModel: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case id
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case system = "system"
+    case webhook = "webhook"
+    case client = "client"
+    case workflow = "workflow"
+    case apiIntegrationWebhook = "api_integration_webhook"
+    case mcp = "mcp"
+    case code = "code"
   }
 }

@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public enum MistralEventProgressStatus: String, Codable, Hashable, Sendable {
-  case rUNNING = "RUNNING"
-  case cOMPLETED = "COMPLETED"
-  case fAILED = "FAILED"
+  case running = "RUNNING"
+  case completed = "COMPLETED"
+  case failed = "FAILED"
 }

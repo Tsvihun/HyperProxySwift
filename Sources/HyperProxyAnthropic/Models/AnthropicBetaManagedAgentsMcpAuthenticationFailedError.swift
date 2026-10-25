@@ -14,13 +14,13 @@ public struct AnthropicBetaManagedAgentsMcpAuthenticationFailedError: Codable, S
   public var mcpServerName: String
   public var message: String
   public var retryStatus: AnthropicBetaManagedAgentsRetryStatus
-  public var kind: AnthropicBetaManagedAgentsMcpAuthenticationFailedErrorKind
+  public var kind: AnthropicBetaManagedAgentsMcpAuthenticationFailedError.Kind
 
   public init(
     mcpServerName: String,
     message: String,
     retryStatus: AnthropicBetaManagedAgentsRetryStatus,
-    kind: AnthropicBetaManagedAgentsMcpAuthenticationFailedErrorKind
+    kind: AnthropicBetaManagedAgentsMcpAuthenticationFailedError.Kind
   ) {
     self.mcpServerName = mcpServerName
     self.message = message
@@ -33,5 +33,11 @@ public struct AnthropicBetaManagedAgentsMcpAuthenticationFailedError: Codable, S
     case message
     case retryStatus = "retry_status"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case mcpAuthenticationFailedError = "mcp_authentication_failed_error"
   }
 }

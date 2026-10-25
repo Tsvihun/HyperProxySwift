@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct TogetherGPUClusterUpdateRequest: Codable, Sendable {
   public var addOns: [TogetherAddOnUpdateRequest]?
   public var clusterConfig: TogetherInstanceClusterConfig?
-  public var clusterType: TogetherGPUClusterUpdateRequestClusterType?
+  public var clusterType: TogetherGPUClusterUpdateRequest.ClusterType?
   public var numCapacityPoolGpus: Int?
   public var numGpus: Int?
   public var numPreemptibleGpus: Int?
@@ -23,7 +23,7 @@ public struct TogetherGPUClusterUpdateRequest: Codable, Sendable {
   public init(
     addOns: [TogetherAddOnUpdateRequest]? = nil,
     clusterConfig: TogetherInstanceClusterConfig? = nil,
-    clusterType: TogetherGPUClusterUpdateRequestClusterType? = nil,
+    clusterType: TogetherGPUClusterUpdateRequest.ClusterType? = nil,
     numCapacityPoolGpus: Int? = nil,
     numGpus: Int? = nil,
     numPreemptibleGpus: Int? = nil,
@@ -49,5 +49,10 @@ public struct TogetherGPUClusterUpdateRequest: Codable, Sendable {
     case numPreemptibleGpus = "num_preemptible_gpus"
     case numReservedGpus = "num_reserved_gpus"
     case reservationEndTime = "reservation_end_time"
+  }
+
+  public enum ClusterType: String, Codable, Hashable, Sendable {
+    case kubernetes = "KUBERNETES"
+    case slurm = "SLURM"
   }
 }

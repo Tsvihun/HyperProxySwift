@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIAnswerResourcePredicate: Codable, Sendable {
   public var name: String
   public var probability: Double
-  public var kind: OpenAIAnswerResourcePredicateKind
+  public var kind: OpenAIAnswerResourcePredicate.Kind
 
   public init(
     name: String,
     probability: Double,
-    kind: OpenAIAnswerResourcePredicateKind
+    kind: OpenAIAnswerResourcePredicate.Kind
   ) {
     self.name = name
     self.probability = probability
@@ -29,5 +29,9 @@ public struct OpenAIAnswerResourcePredicate: Codable, Sendable {
     case name
     case probability
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case predicate = "predicate"
   }
 }

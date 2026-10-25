@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaMemoryTool20250818StrReplaceCommand: Codable, Sendable {
-  public var command: AnthropicStrReplaceCommand
+  public var command: AnthropicBetaMemoryTool20250818StrReplaceCommand.Command
   public var newStr: String
   public var oldStr: String
   public var path: String
@@ -20,7 +20,7 @@ public struct AnthropicBetaMemoryTool20250818StrReplaceCommand: Codable, Sendabl
     newStr: String,
     oldStr: String,
     path: String,
-    command: AnthropicStrReplaceCommand = .strReplace
+    command: AnthropicBetaMemoryTool20250818StrReplaceCommand.Command = .strReplace
   ) {
     self.command = command
     self.newStr = newStr
@@ -33,5 +33,9 @@ public struct AnthropicBetaMemoryTool20250818StrReplaceCommand: Codable, Sendabl
     case newStr = "new_str"
     case oldStr = "old_str"
     case path
+  }
+
+  public enum Command: String, Codable, Hashable, Sendable {
+    case strReplace = "str_replace"
   }
 }

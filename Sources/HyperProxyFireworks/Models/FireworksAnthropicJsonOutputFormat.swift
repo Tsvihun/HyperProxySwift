@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct FireworksAnthropicJsonOutputFormat: Codable, Sendable {
   public var schema: [String: HyperProxyJSONValue]
-  public var kind: FireworksJsonSchemaKind
+  public var kind: FireworksAnthropicJsonOutputFormat.Kind
 
   public init(
     schema: [String: HyperProxyJSONValue],
-    kind: FireworksJsonSchemaKind = .jsonSchema
+    kind: FireworksAnthropicJsonOutputFormat.Kind = .jsonSchema
   ) {
     self.schema = schema
     self.kind = kind
@@ -25,5 +25,9 @@ public struct FireworksAnthropicJsonOutputFormat: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case schema
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case jsonSchema = "json_schema"
   }
 }

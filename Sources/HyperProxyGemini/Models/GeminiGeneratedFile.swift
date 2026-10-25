@@ -14,13 +14,13 @@ public struct GeminiGeneratedFile: Codable, Sendable {
   public var error: GeminiStatus?
   public var mimeType: String?
   public var name: String?
-  public var state: GeminiGeneratedFileState?
+  public var state: GeminiGeneratedFile.State?
 
   public init(
     error: GeminiStatus? = nil,
     mimeType: String? = nil,
     name: String? = nil,
-    state: GeminiGeneratedFileState? = nil
+    state: GeminiGeneratedFile.State? = nil
   ) {
     self.error = error
     self.mimeType = mimeType
@@ -33,5 +33,12 @@ public struct GeminiGeneratedFile: Codable, Sendable {
     case mimeType
     case name
     case state
+  }
+
+  public enum State: String, Codable, Hashable, Sendable {
+    case stateUnspecified = "STATE_UNSPECIFIED"
+    case generating = "GENERATING"
+    case generated = "GENERATED"
+    case failed = "FAILED"
   }
 }

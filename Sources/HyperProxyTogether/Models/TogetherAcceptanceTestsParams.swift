@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherAcceptanceTestsParams: Codable, Sendable {
-  public var dcgmDiagLevel: TogetherAcceptanceTestsParamsDcgmDiagLevel?
+  public var dcgmDiagLevel: TogetherAcceptanceTestsParams.DcgmDiagLevel?
   public var dcgmDiagSkipped: Bool?
   public var enabled: Bool?
   public var gpuBurnDuration: Int?
@@ -21,7 +21,7 @@ public struct TogetherAcceptanceTestsParams: Codable, Sendable {
   public var storageSkipped: Bool?
 
   public init(
-    dcgmDiagLevel: TogetherAcceptanceTestsParamsDcgmDiagLevel? = nil,
+    dcgmDiagLevel: TogetherAcceptanceTestsParams.DcgmDiagLevel? = nil,
     dcgmDiagSkipped: Bool? = nil,
     enabled: Bool? = nil,
     gpuBurnDuration: Int? = nil,
@@ -49,5 +49,12 @@ public struct TogetherAcceptanceTestsParams: Codable, Sendable {
     case ncclMultiNodeSkipped = "nccl_multi_node_skipped"
     case ncclSingleNodeSkipped = "nccl_single_node_skipped"
     case storageSkipped = "storage_skipped"
+  }
+
+  public enum DcgmDiagLevel: String, Codable, Hashable, Sendable {
+    case dcgmDiagLevelShort = "DCGM_DIAG_LEVEL_SHORT"
+    case dcgmDiagLevelMedium = "DCGM_DIAG_LEVEL_MEDIUM"
+    case dcgmDiagLevelLong = "DCGM_DIAG_LEVEL_LONG"
+    case dcgmDiagLevelExtended = "DCGM_DIAG_LEVEL_EXTENDED"
   }
 }

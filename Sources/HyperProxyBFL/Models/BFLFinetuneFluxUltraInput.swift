@@ -21,6 +21,7 @@ public struct BFLFinetuneFluxUltraInput: Codable, Sendable {
   public var promptUpsampling: Bool?
   public var safetyTolerance: Int?
   public var seed: Int?
+  public var user: String?
   public var webhookSecret: String?
   public var webhookUrl: String?
 
@@ -35,6 +36,7 @@ public struct BFLFinetuneFluxUltraInput: Codable, Sendable {
     promptUpsampling: Bool? = nil,
     safetyTolerance: Int? = nil,
     seed: Int? = nil,
+    user: String? = nil,
     webhookSecret: String? = nil,
     webhookUrl: String? = nil
   ) {
@@ -48,6 +50,7 @@ public struct BFLFinetuneFluxUltraInput: Codable, Sendable {
     self.promptUpsampling = promptUpsampling
     self.safetyTolerance = safetyTolerance
     self.seed = seed
+    self.user = user
     self.webhookSecret = webhookSecret
     self.webhookUrl = webhookUrl
   }
@@ -63,6 +66,7 @@ public struct BFLFinetuneFluxUltraInput: Codable, Sendable {
     case promptUpsampling = "prompt_upsampling"
     case safetyTolerance = "safety_tolerance"
     case seed
+    case user
     case webhookSecret = "webhook_secret"
     case webhookUrl = "webhook_url"
   }

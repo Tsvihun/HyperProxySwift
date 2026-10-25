@@ -11,15 +11,39 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralManagedIndexConfig: Codable, Sendable {
-  public var embedding: MistralManagedIndexConfigEmbedding
+  public var embedding: MistralManagedIndexConfig.Embedding
 
   public init(
-    embedding: MistralManagedIndexConfigEmbedding
+    embedding: MistralManagedIndexConfig.Embedding
   ) {
     self.embedding = embedding
   }
 
   enum CodingKeys: String, CodingKey {
     case embedding
+  }
+
+  public enum Embedding: Codable, Sendable {
+    case mistralEmbeddingModel(MistralEmbeddingModel)
+    case customEmbeddingModel(MistralCustomEmbeddingModel)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(MistralEmbeddingModel.self) {
+        self = .mistralEmbeddingModel(value)
+        return
+      }
+      self = .customEmbeddingModel(try container.decode(MistralCustomEmbeddingModel.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .mistralEmbeddingModel(let value):
+        try container.encode(value)
+      case .customEmbeddingModel(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

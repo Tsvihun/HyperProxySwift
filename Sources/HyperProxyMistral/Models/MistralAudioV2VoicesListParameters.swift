@@ -16,7 +16,7 @@ public struct MistralAudioV2VoicesListParameters: Codable, Sendable {
   public var pageSize: Int?
   public var pageToken: String?
   public var query: String?
-  public var kind: MistralAudioV2VoicesListParametersKind?
+  public var kind: MistralAudioV2VoicesListParameters.Kind?
 
   public init(
     gender: [MistralVoiceGender]? = nil,
@@ -24,7 +24,7 @@ public struct MistralAudioV2VoicesListParameters: Codable, Sendable {
     pageSize: Int? = nil,
     pageToken: String? = nil,
     query: String? = nil,
-    kind: MistralAudioV2VoicesListParametersKind? = nil
+    kind: MistralAudioV2VoicesListParameters.Kind? = nil
   ) {
     self.gender = gender
     self.language = language
@@ -41,5 +41,11 @@ public struct MistralAudioV2VoicesListParameters: Codable, Sendable {
     case pageToken = "page_token"
     case query
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case all = "all"
+    case custom = "custom"
+    case preset = "preset"
   }
 }

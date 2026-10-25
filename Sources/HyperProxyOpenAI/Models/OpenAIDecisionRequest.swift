@@ -14,7 +14,7 @@ public struct OpenAIDecisionRequest: Codable, Sendable {
   public var input: OpenAIDecisionInput
   public var model: String
   public var promptCacheKey: String?
-  public var promptCacheOptions: OpenAIDecisionRequestPromptCacheOptions?
+  public var promptCacheOptions: OpenAIDecisionRequest.PromptCacheOptions?
   public var questions: [OpenAIQuestionParam]
   public var safetyIdentifier: String?
 
@@ -23,7 +23,7 @@ public struct OpenAIDecisionRequest: Codable, Sendable {
     model: String,
     questions: [OpenAIQuestionParam],
     promptCacheKey: String? = nil,
-    promptCacheOptions: OpenAIDecisionRequestPromptCacheOptions? = nil,
+    promptCacheOptions: OpenAIDecisionRequest.PromptCacheOptions? = nil,
     safetyIdentifier: String? = nil
   ) {
     self.input = input
@@ -41,5 +41,32 @@ public struct OpenAIDecisionRequest: Codable, Sendable {
     case promptCacheOptions = "prompt_cache_options"
     case questions
     case safetyIdentifier = "safety_identifier"
+  }
+
+  public struct PromptCacheOptions: Codable, Sendable {
+    public var mode: OpenAIDecisionRequest.PromptCacheOptions.Mode?
+    public var ttl: OpenAIDecisionRequest.PromptCacheOptions.Ttl?
+
+    public init(
+      mode: OpenAIDecisionRequest.PromptCacheOptions.Mode? = nil,
+      ttl: OpenAIDecisionRequest.PromptCacheOptions.Ttl? = nil
+    ) {
+      self.mode = mode
+      self.ttl = ttl
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case mode
+      case ttl
+    }
+
+    public enum Mode: String, Codable, Hashable, Sendable {
+      case implicit = "implicit"
+      case explicit = "explicit"
+    }
+
+    public enum Ttl: String, Codable, Hashable, Sendable {
+      case value30m = "30m"
+    }
   }
 }

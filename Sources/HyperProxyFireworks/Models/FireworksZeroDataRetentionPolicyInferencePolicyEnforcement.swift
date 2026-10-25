@@ -13,7 +13,7 @@ import HyperProxyCore
 public enum FireworksZeroDataRetentionPolicyInferencePolicyEnforcement: String, Codable, Hashable,
   Sendable
 {
-  case eNFORCEMENTUNSPECIFIED = "ENFORCEMENT_UNSPECIFIED"
-  case eNFORCED = "ENFORCED"
-  case nOTENFORCED = "NOT_ENFORCED"
+  case enforcementUnspecified = "ENFORCEMENT_UNSPECIFIED"
+  case enforced = "ENFORCED"
+  case notEnforced = "NOT_ENFORCED"
 }

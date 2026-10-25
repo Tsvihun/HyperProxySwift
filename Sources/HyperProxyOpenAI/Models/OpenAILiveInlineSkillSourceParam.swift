@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct OpenAILiveInlineSkillSourceParam: Codable, Sendable {
   public var data: String
-  public var mediaType: OpenAILiveInlineSkillSourceParamMediaType
-  public var kind: OpenAILiveInlineSkillSourceParamKind
+  public var mediaType: OpenAILiveInlineSkillSourceParam.MediaType
+  public var kind: OpenAILiveInlineSkillSourceParam.Kind
 
   public init(
     data: String,
-    mediaType: OpenAILiveInlineSkillSourceParamMediaType,
-    kind: OpenAILiveInlineSkillSourceParamKind
+    mediaType: OpenAILiveInlineSkillSourceParam.MediaType,
+    kind: OpenAILiveInlineSkillSourceParam.Kind
   ) {
     self.data = data
     self.mediaType = mediaType
@@ -29,5 +29,13 @@ public struct OpenAILiveInlineSkillSourceParam: Codable, Sendable {
     case data
     case mediaType = "media_type"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case base64 = "base64"
+  }
+
+  public enum MediaType: String, Codable, Hashable, Sendable {
+    case applicationZip = "application/zip"
   }
 }

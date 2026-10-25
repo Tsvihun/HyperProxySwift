@@ -18,7 +18,7 @@ public struct MistralAudioTranscriptionRequestStream: Codable, Sendable {
   public var fileUrl: String?
   public var language: String?
   public var model: String
-  public var stream: MistralAudioTranscriptionRequestStreamStream?
+  public var stream: MistralAudioTranscriptionRequestStream.Stream?
   public var temperature: Double?
   public var timestampGranularities: [MistralTimestampGranularity]?
 
@@ -30,7 +30,7 @@ public struct MistralAudioTranscriptionRequestStream: Codable, Sendable {
     fileId: String? = nil,
     fileUrl: String? = nil,
     language: String? = nil,
-    stream: MistralAudioTranscriptionRequestStreamStream? = nil,
+    stream: MistralAudioTranscriptionRequestStream.Stream? = nil,
     temperature: Double? = nil,
     timestampGranularities: [MistralTimestampGranularity]? = nil
   ) {
@@ -57,5 +57,35 @@ public struct MistralAudioTranscriptionRequestStream: Codable, Sendable {
     case stream
     case temperature
     case timestampGranularities = "timestamp_granularities"
+  }
+
+  public enum Stream: Codable, Sendable {
+    case booleanTrue
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Bool.self) {
+        switch value {
+        case true:
+          self = .booleanTrue
+          return
+        default:
+          break
+        }
+      }
+      throw DecodingError.dataCorruptedError(
+        in: container,
+        debugDescription:
+          "Expected a documented MistralAudioTranscriptionRequestStream.Stream value."
+      )
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .booleanTrue:
+        try container.encode(true)
+      }
+    }
   }
 }

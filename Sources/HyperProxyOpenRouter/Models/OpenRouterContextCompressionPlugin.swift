@@ -13,10 +13,10 @@ import HyperProxyCore
 public struct OpenRouterContextCompressionPlugin: Codable, Sendable {
   public var enabled: Bool?
   public var engine: OpenRouterContextCompressionEngine?
-  public var id: OpenRouterContextCompressionPluginId
+  public var id: OpenRouterContextCompressionPlugin.Id
 
   public init(
-    id: OpenRouterContextCompressionPluginId,
+    id: OpenRouterContextCompressionPlugin.Id,
     enabled: Bool? = nil,
     engine: OpenRouterContextCompressionEngine? = nil
   ) {
@@ -29,5 +29,9 @@ public struct OpenRouterContextCompressionPlugin: Codable, Sendable {
     case enabled
     case engine
     case id
+  }
+
+  public enum Id: String, Codable, Hashable, Sendable {
+    case contextCompression = "context-compression"
   }
 }

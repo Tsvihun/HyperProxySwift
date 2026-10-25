@@ -54,4 +54,22 @@ public struct OpenAICreateModelResponseProperties: Codable, Sendable {
     case topP = "top_p"
     case user
   }
+
+  public struct WithPromptCacheOptionsAndTopLogprobs: Codable, Sendable {
+    public var promptCacheOptions: OpenAIPromptCacheOptionsParam?
+    public var topLogprobs: Int?
+
+    public init(
+      promptCacheOptions: OpenAIPromptCacheOptionsParam? = nil,
+      topLogprobs: Int? = nil
+    ) {
+      self.promptCacheOptions = promptCacheOptions
+      self.topLogprobs = topLogprobs
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case promptCacheOptions = "prompt_cache_options"
+      case topLogprobs = "top_logprobs"
+    }
+  }
 }

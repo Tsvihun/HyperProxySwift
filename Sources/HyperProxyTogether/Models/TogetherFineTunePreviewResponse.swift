@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherFineTunePreviewResponse: Codable, Sendable {
-  public var datasetFormat: TogetherFineTunePreviewResponseDatasetFormat
+  public var datasetFormat: TogetherFineTunePreviewResponse.DatasetFormat
   public var maxSeqLength: Int
   public var model: String
   public var rows: [TogetherFineTunePreviewRow]
   public var trainOnInputs: Bool
 
   public init(
-    datasetFormat: TogetherFineTunePreviewResponseDatasetFormat,
+    datasetFormat: TogetherFineTunePreviewResponse.DatasetFormat,
     maxSeqLength: Int,
     model: String,
     rows: [TogetherFineTunePreviewRow],
@@ -37,5 +37,11 @@ public struct TogetherFineTunePreviewResponse: Codable, Sendable {
     case model
     case rows
     case trainOnInputs = "train_on_inputs"
+  }
+
+  public enum DatasetFormat: String, Codable, Hashable, Sendable {
+    case general = "general"
+    case conversation = "conversation"
+    case instruction = "instruction"
   }
 }

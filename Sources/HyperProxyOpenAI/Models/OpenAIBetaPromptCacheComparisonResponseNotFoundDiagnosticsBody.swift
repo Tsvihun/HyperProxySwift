@@ -11,15 +11,21 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIBetaPromptCacheComparisonResponseNotFoundDiagnosticsBody: Codable, Sendable {
-  public var kind: OpenAIBetaPromptCacheComparisonResponseNotFoundDiagnosticsBodyKind
+  public var kind: OpenAIBetaPromptCacheComparisonResponseNotFoundDiagnosticsBody.Kind
 
   public init(
-    kind: OpenAIBetaPromptCacheComparisonResponseNotFoundDiagnosticsBodyKind
+    kind: OpenAIBetaPromptCacheComparisonResponseNotFoundDiagnosticsBody.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case comparisonResponseNotFound = "comparison_response_not_found"
   }
 }

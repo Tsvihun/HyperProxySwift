@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIBetaToolChoiceAllowed: Codable, Sendable {
-  public var mode: OpenAIBetaToolChoiceAllowedMode
+  public var mode: OpenAIBetaToolChoiceAllowed.Mode
   public var tools: [[String: HyperProxyJSONValue]]
-  public var kind: OpenAIBetaToolChoiceAllowedKind
+  public var kind: OpenAIBetaToolChoiceAllowed.Kind
 
   public init(
-    mode: OpenAIBetaToolChoiceAllowedMode,
+    mode: OpenAIBetaToolChoiceAllowed.Mode,
     tools: [[String: HyperProxyJSONValue]],
-    kind: OpenAIBetaToolChoiceAllowedKind
+    kind: OpenAIBetaToolChoiceAllowed.Kind
   ) {
     self.mode = mode
     self.tools = tools
@@ -29,5 +29,14 @@ public struct OpenAIBetaToolChoiceAllowed: Codable, Sendable {
     case mode
     case tools
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case allowedTools = "allowed_tools"
+  }
+
+  public enum Mode: String, Codable, Hashable, Sendable {
+    case auto = "auto"
+    case requiredValue = "required"
   }
 }

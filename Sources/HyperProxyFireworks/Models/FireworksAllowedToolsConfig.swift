@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct FireworksAllowedToolsConfig: Codable, Sendable {
-  public var mode: FireworksAllowedToolsConfigMode
+  public var mode: FireworksAllowedToolsConfig.Mode
   public var tools: [[String: HyperProxyJSONValue]]
 
   public init(
-    mode: FireworksAllowedToolsConfigMode,
+    mode: FireworksAllowedToolsConfig.Mode,
     tools: [[String: HyperProxyJSONValue]]
   ) {
     self.mode = mode
@@ -25,5 +25,10 @@ public struct FireworksAllowedToolsConfig: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case mode
     case tools
+  }
+
+  public enum Mode: String, Codable, Hashable, Sendable {
+    case auto = "auto"
+    case requiredValue = "required"
   }
 }

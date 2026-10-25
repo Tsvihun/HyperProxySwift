@@ -14,13 +14,13 @@ public struct ElevenLabsUpdateMusicFinetuneRequestModel: Codable, Sendable {
   public var name: String?
   public var primaryGenre: String?
   public var tags: [String]?
-  public var visibility: ElevenLabsUpdateMusicFinetuneRequestModelVisibility?
+  public var visibility: ElevenLabsUpdateMusicFinetuneRequestModel.Visibility?
 
   public init(
     name: String? = nil,
     primaryGenre: String? = nil,
     tags: [String]? = nil,
-    visibility: ElevenLabsUpdateMusicFinetuneRequestModelVisibility? = nil
+    visibility: ElevenLabsUpdateMusicFinetuneRequestModel.Visibility? = nil
   ) {
     self.name = name
     self.primaryGenre = primaryGenre
@@ -33,5 +33,10 @@ public struct ElevenLabsUpdateMusicFinetuneRequestModel: Codable, Sendable {
     case primaryGenre = "primary_genre"
     case tags
     case visibility
+  }
+
+  public enum Visibility: String, Codable, Hashable, Sendable {
+    case privateValue = "private"
+    case workspace = "workspace"
   }
 }

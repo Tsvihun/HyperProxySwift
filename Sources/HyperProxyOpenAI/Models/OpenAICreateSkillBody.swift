@@ -11,15 +11,51 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAICreateSkillBody: Codable, Sendable {
-  public var files: OpenAICreateSkillBodyFiles
+  public var files: OpenAICreateSkillBody.Files
 
   public init(
-    files: OpenAICreateSkillBodyFiles
+    files: OpenAICreateSkillBody.Files
   ) {
     self.files = files
   }
 
   enum CodingKeys: String, CodingKey {
     case files
+  }
+
+  public enum Files: Codable, Sendable {
+    case string(String)
+    case stringArray([String])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .stringArray(try container.decode([String].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .stringArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension OpenAICreateSkillBody.Files: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension OpenAICreateSkillBody.Files: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: String...) {
+    self = .stringArray(elements)
   }
 }

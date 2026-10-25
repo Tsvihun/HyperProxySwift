@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepSeekAnthropicFilesUploadParameters: Codable, Sendable {
-  public var anthropicBeta: DeepSeekAnthropicFilesUploadParametersAnthropicBeta
+  public var anthropicBeta: DeepSeekAnthropicFilesUploadParameters.AnthropicBeta
 
   public init(
-    anthropicBeta: DeepSeekAnthropicFilesUploadParametersAnthropicBeta
+    anthropicBeta: DeepSeekAnthropicFilesUploadParameters.AnthropicBeta
   ) {
     self.anthropicBeta = anthropicBeta
   }
 
   enum CodingKeys: String, CodingKey {
     case anthropicBeta = "anthropic-beta"
+  }
+
+  public enum AnthropicBeta: String, Codable, Hashable, Sendable {
+    case filesApi2025_04_14 = "files-api-2025-04-14"
   }
 }

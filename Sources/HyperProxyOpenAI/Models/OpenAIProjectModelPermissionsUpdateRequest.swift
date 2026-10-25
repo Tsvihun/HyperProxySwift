@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIProjectModelPermissionsUpdateRequest: Codable, Sendable {
-  public var mode: OpenAIProjectModelPermissionsUpdateRequestMode
+  public var mode: OpenAIProjectModelPermissionsUpdateRequest.Mode
   public var modelIds: [String]
 
   public init(
-    mode: OpenAIProjectModelPermissionsUpdateRequestMode,
+    mode: OpenAIProjectModelPermissionsUpdateRequest.Mode,
     modelIds: [String]
   ) {
     self.mode = mode
@@ -25,5 +25,10 @@ public struct OpenAIProjectModelPermissionsUpdateRequest: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case mode
     case modelIds = "model_ids"
+  }
+
+  public enum Mode: String, Codable, Hashable, Sendable {
+    case allowList = "allow_list"
+    case denyList = "deny_list"
   }
 }

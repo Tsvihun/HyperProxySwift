@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsPendingCancellationResponseModel: Codable, Sendable {
-  public var kind: ElevenLabsCancellationKind?
+  public var kind: ElevenLabsPendingCancellationResponseModel.Kind?
   public var timestampSeconds: Int
 
   public init(
     timestampSeconds: Int,
-    kind: ElevenLabsCancellationKind? = nil
+    kind: ElevenLabsPendingCancellationResponseModel.Kind? = nil
   ) {
     self.kind = kind
     self.timestampSeconds = timestampSeconds
@@ -25,5 +25,9 @@ public struct ElevenLabsPendingCancellationResponseModel: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case kind
     case timestampSeconds = "timestamp_seconds"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case cancellation = "cancellation"
   }
 }

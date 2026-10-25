@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenRouterAnthropicToolSearchResult: Codable, Sendable {
   public var toolReferences: [OpenRouterAnthropicToolReference]
-  public var kind: OpenRouterAnthropicToolSearchResultKind
+  public var kind: OpenRouterAnthropicToolSearchResult.Kind
 
   public init(
     toolReferences: [OpenRouterAnthropicToolReference],
-    kind: OpenRouterAnthropicToolSearchResultKind
+    kind: OpenRouterAnthropicToolSearchResult.Kind
   ) {
     self.toolReferences = toolReferences
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenRouterAnthropicToolSearchResult: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case toolReferences = "tool_references"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case toolSearchToolSearchResult = "tool_search_tool_search_result"
   }
 }

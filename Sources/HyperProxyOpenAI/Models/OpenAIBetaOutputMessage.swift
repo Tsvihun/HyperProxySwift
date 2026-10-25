@@ -15,16 +15,16 @@ public struct OpenAIBetaOutputMessage: Codable, Sendable {
   public var content: [OpenAIBetaOutputMessageContent]
   public var id: String
   public var phase: OpenAIBetaMessagePhase?
-  public var role: OpenAIBetaOutputMessageRole
-  public var status: OpenAIBetaOutputMessageStatus
-  public var kind: OpenAIBetaOutputMessageKind
+  public var role: OpenAIBetaOutputMessage.Role
+  public var status: OpenAIBetaOutputMessage.Status
+  public var kind: OpenAIBetaOutputMessage.Kind
 
   public init(
     content: [OpenAIBetaOutputMessageContent],
     id: String,
-    role: OpenAIBetaOutputMessageRole,
-    status: OpenAIBetaOutputMessageStatus,
-    kind: OpenAIBetaOutputMessageKind,
+    role: OpenAIBetaOutputMessage.Role,
+    status: OpenAIBetaOutputMessage.Status,
+    kind: OpenAIBetaOutputMessage.Kind,
     agent: OpenAIBetaAgentTag? = nil,
     phase: OpenAIBetaMessagePhase? = nil
   ) {
@@ -45,5 +45,19 @@ public struct OpenAIBetaOutputMessage: Codable, Sendable {
     case role
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case message = "message"
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case assistant = "assistant"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case inProgress = "in_progress"
+    case completed = "completed"
+    case incomplete = "incomplete"
   }
 }

@@ -14,10 +14,10 @@ public struct AnthropicBetaManagedAgentsMcpOauthUpdateParams: Codable, Sendable 
   public var accessToken: String?
   public var expiresAt: AnthropicBetaTimestamp?
   public var refresh: AnthropicBetaManagedAgentsMcpOauthRefreshUpdateParams?
-  public var kind: AnthropicBetaManagedAgentsMcpOauthUpdateParamsKind
+  public var kind: AnthropicBetaManagedAgentsMcpOauthUpdateParams.Kind
 
   public init(
-    kind: AnthropicBetaManagedAgentsMcpOauthUpdateParamsKind,
+    kind: AnthropicBetaManagedAgentsMcpOauthUpdateParams.Kind,
     accessToken: String? = nil,
     expiresAt: AnthropicBetaTimestamp? = nil,
     refresh: AnthropicBetaManagedAgentsMcpOauthRefreshUpdateParams? = nil
@@ -33,5 +33,9 @@ public struct AnthropicBetaManagedAgentsMcpOauthUpdateParams: Codable, Sendable 
     case expiresAt = "expires_at"
     case refresh
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case mcpOauth = "mcp_oauth"
   }
 }

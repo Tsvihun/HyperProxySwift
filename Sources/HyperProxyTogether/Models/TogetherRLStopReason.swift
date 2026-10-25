@@ -11,6 +11,6 @@ import Foundation
 import HyperProxyCore
 
 public enum TogetherRLStopReason: String, Codable, Hashable, Sendable {
-  case sTOPREASONLENGTH = "STOP_REASON_LENGTH"
-  case sTOPREASONSTOP = "STOP_REASON_STOP"
+  case stopReasonLength = "STOP_REASON_LENGTH"
+  case stopReasonStop = "STOP_REASON_STOP"
 }

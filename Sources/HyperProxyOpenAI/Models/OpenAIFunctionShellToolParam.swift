@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct OpenAIFunctionShellToolParam: Codable, Sendable {
   public var allowedCallers: [OpenAICallableToolAllowedCaller]?
-  public var environment: OpenAIFunctionShellToolParamEnvironmentAnyOf1?
-  public var kind: OpenAIFunctionShellToolParamKind
+  public var environment: OpenAIFunctionShellToolParamEnvironmentVariant?
+  public var kind: OpenAIFunctionShellToolParam.Kind
 
   public init(
-    kind: OpenAIFunctionShellToolParamKind,
+    kind: OpenAIFunctionShellToolParam.Kind,
     allowedCallers: [OpenAICallableToolAllowedCaller]? = nil,
-    environment: OpenAIFunctionShellToolParamEnvironmentAnyOf1? = nil
+    environment: OpenAIFunctionShellToolParamEnvironmentVariant? = nil
   ) {
     self.allowedCallers = allowedCallers
     self.environment = environment
@@ -29,5 +29,9 @@ public struct OpenAIFunctionShellToolParam: Codable, Sendable {
     case allowedCallers = "allowed_callers"
     case environment
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case shell = "shell"
   }
 }

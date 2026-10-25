@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralCreateHTTPConnectorRequest: Codable, Sendable {
-  public var authMethods: [MistralCreateHTTPConnectorRequestAuthMethodsAnyOf1Item]?
+  public var authMethods: [MistralCreateHTTPConnectorRequestAuthMethodsItem]?
   public var description: String
   public var globalHeaders: [String: MistralGlobalHeaderValue]?
   public var headers: [String: HyperProxyJSONValue]?
@@ -19,7 +19,7 @@ public struct MistralCreateHTTPConnectorRequest: Codable, Sendable {
   public var name: String
   public var oauth2ServerMetadata: MistralExtendedOAuthServerMetadata?
   public var oauth2ServerMetadataUrl: String?
-  public var protocolModel: MistralHttpProtocolModel
+  public var protocolValue: MistralHttpProtocolModel
   public var server: String
   public var systemPrompt: String?
   public var title: String?
@@ -29,8 +29,8 @@ public struct MistralCreateHTTPConnectorRequest: Codable, Sendable {
     description: String,
     name: String,
     server: String,
-    protocolModel: MistralHttpProtocolModel = .http,
-    authMethods: [MistralCreateHTTPConnectorRequestAuthMethodsAnyOf1Item]? = nil,
+    protocolValue: MistralHttpProtocolModel = .http,
+    authMethods: [MistralCreateHTTPConnectorRequestAuthMethodsItem]? = nil,
     globalHeaders: [String: MistralGlobalHeaderValue]? = nil,
     headers: [String: HyperProxyJSONValue]? = nil,
     iconUrl: String? = nil,
@@ -48,7 +48,7 @@ public struct MistralCreateHTTPConnectorRequest: Codable, Sendable {
     self.name = name
     self.oauth2ServerMetadata = oauth2ServerMetadata
     self.oauth2ServerMetadataUrl = oauth2ServerMetadataUrl
-    self.protocolModel = protocolModel
+    self.protocolValue = protocolValue
     self.server = server
     self.systemPrompt = systemPrompt
     self.title = title
@@ -64,7 +64,7 @@ public struct MistralCreateHTTPConnectorRequest: Codable, Sendable {
     case name
     case oauth2ServerMetadata = "oauth2_server_metadata"
     case oauth2ServerMetadataUrl = "oauth2_server_metadata_url"
-    case protocolModel = "protocol"
+    case protocolValue = "protocol"
     case server
     case systemPrompt = "system_prompt"
     case title

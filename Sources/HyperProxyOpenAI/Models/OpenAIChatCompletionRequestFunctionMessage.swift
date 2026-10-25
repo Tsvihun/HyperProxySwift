@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenAIChatCompletionRequestFunctionMessage: Codable, Sendable {
   public var content: String?
   public var name: String
-  public var role: OpenAIChatCompletionRequestFunctionMessageRole
+  public var role: OpenAIChatCompletionRequestFunctionMessage.Role
 
   public init(
     content: String?,
     name: String,
-    role: OpenAIChatCompletionRequestFunctionMessageRole
+    role: OpenAIChatCompletionRequestFunctionMessage.Role
   ) {
     self.content = content
     self.name = name
@@ -29,5 +29,9 @@ public struct OpenAIChatCompletionRequestFunctionMessage: Codable, Sendable {
     case content
     case name
     case role
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case function = "function"
   }
 }

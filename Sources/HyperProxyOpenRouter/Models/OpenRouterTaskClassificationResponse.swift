@@ -11,15 +11,41 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterTaskClassificationResponse: Codable, Sendable {
-  public var data: OpenRouterTaskClassificationResponseData
+  public var data: OpenRouterTaskClassificationResponse.DataValue
 
   public init(
-    data: OpenRouterTaskClassificationResponseData
+    data: OpenRouterTaskClassificationResponse.DataValue
   ) {
     self.data = data
   }
 
   enum CodingKeys: String, CodingKey {
     case data
+  }
+
+  public struct DataValue: Codable, Sendable {
+    public var asOf: String
+    public var classifications: [OpenRouterTaskClassificationItem]
+    public var macroCategories: [OpenRouterTaskClassificationMacroCategory]
+    public var windowDays: Int
+
+    public init(
+      asOf: String,
+      classifications: [OpenRouterTaskClassificationItem],
+      macroCategories: [OpenRouterTaskClassificationMacroCategory],
+      windowDays: Int
+    ) {
+      self.asOf = asOf
+      self.classifications = classifications
+      self.macroCategories = macroCategories
+      self.windowDays = windowDays
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case asOf = "as_of"
+      case classifications
+      case macroCategories = "macro_categories"
+      case windowDays = "window_days"
+    }
   }
 }

@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct PerplexityCustomSkill: Codable, Sendable {
   public var id: String
-  public var kind: PerplexityCustomSkillKind
+  public var kind: PerplexityCustomSkill.Kind
   public var version: String?
 
   public init(
     id: String,
-    kind: PerplexityCustomSkillKind,
+    kind: PerplexityCustomSkill.Kind,
     version: String? = nil
   ) {
     self.id = id
@@ -29,5 +29,9 @@ public struct PerplexityCustomSkill: Codable, Sendable {
     case id
     case kind = "type"
     case version
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case custom = "custom"
   }
 }

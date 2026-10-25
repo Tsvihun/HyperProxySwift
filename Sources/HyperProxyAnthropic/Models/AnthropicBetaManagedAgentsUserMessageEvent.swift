@@ -14,12 +14,12 @@ public struct AnthropicBetaManagedAgentsUserMessageEvent: Codable, Sendable {
   public var content: [AnthropicBetaManagedAgentsUserContentBlock]
   public var id: String
   public var processedAt: AnthropicBetaTimestamp?
-  public var kind: AnthropicBetaManagedAgentsUserMessageEventKind
+  public var kind: AnthropicBetaManagedAgentsUserMessageEvent.Kind
 
   public init(
     content: [AnthropicBetaManagedAgentsUserContentBlock],
     id: String,
-    kind: AnthropicBetaManagedAgentsUserMessageEventKind,
+    kind: AnthropicBetaManagedAgentsUserMessageEvent.Kind,
     processedAt: AnthropicBetaTimestamp? = nil
   ) {
     self.content = content
@@ -33,5 +33,9 @@ public struct AnthropicBetaManagedAgentsUserMessageEvent: Codable, Sendable {
     case id
     case processedAt = "processed_at"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case userMessage = "user.message"
   }
 }

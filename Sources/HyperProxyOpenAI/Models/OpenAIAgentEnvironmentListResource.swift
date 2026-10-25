@@ -15,14 +15,14 @@ public struct OpenAIAgentEnvironmentListResource: Codable, Sendable {
   public var firstId: String
   public var hasMore: Bool
   public var lastId: String
-  public var object: OpenAIAgentEnvironmentListResourceObject
+  public var object: OpenAIAgentEnvironmentListResource.Object
 
   public init(
     data: [OpenAIPublicEnvironmentResource],
     firstId: String,
     hasMore: Bool,
     lastId: String,
-    object: OpenAIAgentEnvironmentListResourceObject
+    object: OpenAIAgentEnvironmentListResource.Object
   ) {
     self.data = data
     self.firstId = firstId
@@ -37,5 +37,9 @@ public struct OpenAIAgentEnvironmentListResource: Codable, Sendable {
     case hasMore = "has_more"
     case lastId = "last_id"
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case list = "list"
   }
 }

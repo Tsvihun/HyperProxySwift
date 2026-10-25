@@ -19,11 +19,11 @@ public struct OpenRouterOutputImageGenerationServerToolItem: Codable, Sendable {
   public var result: String?
   public var revisedPrompt: String?
   public var status: OpenRouterFailableToolCallStatus
-  public var kind: OpenRouterOutputImageGenerationServerToolItemKind
+  public var kind: OpenRouterOutputImageGenerationServerToolItem.Kind
 
   public init(
     status: OpenRouterFailableToolCallStatus,
-    kind: OpenRouterOutputImageGenerationServerToolItemKind,
+    kind: OpenRouterOutputImageGenerationServerToolItem.Kind,
     error: String? = nil,
     id: String? = nil,
     imageB64: String? = nil,
@@ -53,5 +53,9 @@ public struct OpenRouterOutputImageGenerationServerToolItem: Codable, Sendable {
     case revisedPrompt
     case status
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case openrouterImageGeneration = "openrouter:image_generation"
   }
 }

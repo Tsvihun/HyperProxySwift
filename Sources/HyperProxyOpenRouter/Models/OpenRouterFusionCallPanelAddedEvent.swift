@@ -15,14 +15,14 @@ public struct OpenRouterFusionCallPanelAddedEvent: Codable, Sendable {
   public var model: String
   public var outputIndex: Int
   public var sequenceNumber: Int
-  public var kind: OpenRouterFusionCallPanelAddedEventKind
+  public var kind: OpenRouterFusionCallPanelAddedEvent.Kind
 
   public init(
     itemId: String,
     model: String,
     outputIndex: Int,
     sequenceNumber: Int,
-    kind: OpenRouterFusionCallPanelAddedEventKind
+    kind: OpenRouterFusionCallPanelAddedEvent.Kind
   ) {
     self.itemId = itemId
     self.model = model
@@ -37,5 +37,9 @@ public struct OpenRouterFusionCallPanelAddedEvent: Codable, Sendable {
     case outputIndex = "output_index"
     case sequenceNumber = "sequence_number"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case responseFusionCallPanelAdded = "response.fusion_call.panel.added"
   }
 }

@@ -19,7 +19,7 @@ public struct ElevenLabsDubbingLanguageResponse: Codable, Sendable {
   public var outputs: ElevenLabsDubbingLanguageOutputs?
   public var projectId: String
   public var revision: Int
-  public var status: ElevenLabsDubbingLanguageResponseStatus
+  public var status: ElevenLabsDubbingLanguageResponse.Status
   public var targetLanguage: String
   public var updatedAt: String
   public var voiceSettings: ElevenLabsVoiceSettings?
@@ -30,7 +30,7 @@ public struct ElevenLabsDubbingLanguageResponse: Codable, Sendable {
     languageId: String,
     projectId: String,
     revision: Int,
-    status: ElevenLabsDubbingLanguageResponseStatus,
+    status: ElevenLabsDubbingLanguageResponse.Status,
     targetLanguage: String,
     updatedAt: String,
     error: ElevenLabsDubbingError? = nil,
@@ -69,5 +69,13 @@ public struct ElevenLabsDubbingLanguageResponse: Codable, Sendable {
     case updatedAt = "updated_at"
     case voiceSettings = "voice_settings"
     case warnings
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case queued = "queued"
+    case processing = "processing"
+    case completed = "completed"
+    case stale = "stale"
+    case failed = "failed"
   }
 }

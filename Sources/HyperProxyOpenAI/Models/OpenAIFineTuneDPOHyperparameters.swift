@@ -11,16 +11,16 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIFineTuneDPOHyperparameters: Codable, Sendable {
-  public var batchSize: OpenAIFineTuneDPOHyperparametersBatchSize?
-  public var beta: OpenAIFineTuneDPOHyperparametersBeta?
-  public var learningRateMultiplier: OpenAIFineTuneDPOHyperparametersLearningRateMultiplier?
-  public var nEpochs: OpenAIFineTuneDPOHyperparametersNEpochs?
+  public var batchSize: OpenAIFineTuneDPOHyperparameters.BatchSize?
+  public var beta: OpenAIFineTuneDPOHyperparameters.Beta?
+  public var learningRateMultiplier: OpenAIFineTuneDPOHyperparameters.LearningRateMultiplier?
+  public var nEpochs: OpenAIFineTuneDPOHyperparameters.NEpochs?
 
   public init(
-    batchSize: OpenAIFineTuneDPOHyperparametersBatchSize? = nil,
-    beta: OpenAIFineTuneDPOHyperparametersBeta? = nil,
-    learningRateMultiplier: OpenAIFineTuneDPOHyperparametersLearningRateMultiplier? = nil,
-    nEpochs: OpenAIFineTuneDPOHyperparametersNEpochs? = nil
+    batchSize: OpenAIFineTuneDPOHyperparameters.BatchSize? = nil,
+    beta: OpenAIFineTuneDPOHyperparameters.Beta? = nil,
+    learningRateMultiplier: OpenAIFineTuneDPOHyperparameters.LearningRateMultiplier? = nil,
+    nEpochs: OpenAIFineTuneDPOHyperparameters.NEpochs? = nil
   ) {
     self.batchSize = batchSize
     self.beta = beta
@@ -33,5 +33,148 @@ public struct OpenAIFineTuneDPOHyperparameters: Codable, Sendable {
     case beta
     case learningRateMultiplier = "learning_rate_multiplier"
     case nEpochs = "n_epochs"
+  }
+
+  public enum BatchSize: Codable, Sendable {
+    case integer(Int)
+    case automatic(OpenAIFineTuneDPOHyperparameters.BatchSize.Auto)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Int.self) {
+        self = .integer(value)
+        return
+      }
+      self = .automatic(
+        try container.decode(OpenAIFineTuneDPOHyperparameters.BatchSize.Auto.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .integer(let value):
+        try container.encode(value)
+      case .automatic(let value):
+        try container.encode(value)
+      }
+    }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var auto: Self { .automatic(.auto) }
+
+    public enum Auto: String, Codable, Hashable, Sendable {
+      case auto = "auto"
+    }
+  }
+
+  public enum Beta: Codable, Sendable {
+    case number(Double)
+    case automatic(OpenAIFineTuneDPOHyperparameters.Beta.Auto)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Double.self) {
+        self = .number(value)
+        return
+      }
+      self = .automatic(
+        try container.decode(OpenAIFineTuneDPOHyperparameters.Beta.Auto.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .number(let value):
+        try container.encode(value)
+      case .automatic(let value):
+        try container.encode(value)
+      }
+    }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var auto: Self { .automatic(.auto) }
+
+    public enum Auto: String, Codable, Hashable, Sendable {
+      case auto = "auto"
+    }
+  }
+
+  public enum LearningRateMultiplier: Codable, Sendable {
+    case number(Double)
+    case automatic(
+      OpenAIFineTuneDPOHyperparameters.LearningRateMultiplier.Auto)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Double.self) {
+        self = .number(value)
+        return
+      }
+      self = .automatic(
+        try container.decode(OpenAIFineTuneDPOHyperparameters.LearningRateMultiplier.Auto.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .number(let value):
+        try container.encode(value)
+      case .automatic(let value):
+        try container.encode(value)
+      }
+    }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var auto: Self { .automatic(.auto) }
+
+    public enum Auto: String, Codable, Hashable,
+      Sendable
+    {
+      case auto = "auto"
+    }
+  }
+
+  public enum NEpochs: Codable, Sendable {
+    case integer(Int)
+    case automatic(OpenAIFineTuneDPOHyperparameters.NEpochs.Auto)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Int.self) {
+        self = .integer(value)
+        return
+      }
+      self = .automatic(
+        try container.decode(OpenAIFineTuneDPOHyperparameters.NEpochs.Auto.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .integer(let value):
+        try container.encode(value)
+      case .automatic(let value):
+        try container.encode(value)
+      }
+    }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var auto: Self { .automatic(.auto) }
+
+    public enum Auto: String, Codable, Hashable, Sendable {
+      case auto = "auto"
+    }
+  }
+}
+
+extension OpenAIFineTuneDPOHyperparameters.BatchSize: ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Int) {
+    self = .integer(value)
+  }
+}
+
+extension OpenAIFineTuneDPOHyperparameters.NEpochs: ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Int) {
+    self = .integer(value)
   }
 }

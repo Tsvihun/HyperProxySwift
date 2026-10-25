@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIUpdateOrganizationSpendLimitBody: Codable, Sendable {
-  public var currency: OpenAIUpdateOrganizationSpendLimitBodyCurrency
-  public var interval: OpenAIUpdateOrganizationSpendLimitBodyInterval
+  public var currency: OpenAIUpdateOrganizationSpendLimitBody.Currency
+  public var interval: OpenAIUpdateOrganizationSpendLimitBody.Interval
   public var thresholdAmount: Int
 
   public init(
-    currency: OpenAIUpdateOrganizationSpendLimitBodyCurrency,
-    interval: OpenAIUpdateOrganizationSpendLimitBodyInterval,
+    currency: OpenAIUpdateOrganizationSpendLimitBody.Currency,
+    interval: OpenAIUpdateOrganizationSpendLimitBody.Interval,
     thresholdAmount: Int
   ) {
     self.currency = currency
@@ -29,5 +29,13 @@ public struct OpenAIUpdateOrganizationSpendLimitBody: Codable, Sendable {
     case currency
     case interval
     case thresholdAmount = "threshold_amount"
+  }
+
+  public enum Currency: String, Codable, Hashable, Sendable {
+    case usd = "USD"
+  }
+
+  public enum Interval: String, Codable, Hashable, Sendable {
+    case month = "month"
   }
 }

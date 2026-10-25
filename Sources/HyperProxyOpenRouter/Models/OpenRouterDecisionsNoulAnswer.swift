@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenRouterDecisionsNoulAnswer: Codable, Sendable {
   public var noul: Double
-  public var kind: OpenRouterDecisionsNoulAnswerKind
+  public var kind: OpenRouterDecisionsNoulAnswer.Kind
 
   public init(
     noul: Double,
-    kind: OpenRouterDecisionsNoulAnswerKind
+    kind: OpenRouterDecisionsNoulAnswer.Kind
   ) {
     self.noul = noul
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenRouterDecisionsNoulAnswer: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case noul
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case noul = "noul"
   }
 }

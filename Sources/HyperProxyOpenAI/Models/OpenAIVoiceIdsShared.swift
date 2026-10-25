@@ -86,4 +86,17 @@ public enum OpenAIVoiceIdsShared: RawRepresentable, Codable, Hashable, Sendable 
     var container = encoder.singleValueContainer()
     try container.encode(rawValue)
   }
+
+  public enum Preset: String, Codable, Hashable, Sendable {
+    case alloy = "alloy"
+    case ash = "ash"
+    case ballad = "ballad"
+    case coral = "coral"
+    case echo = "echo"
+    case sage = "sage"
+    case shimmer = "shimmer"
+    case verse = "verse"
+    case marin = "marin"
+    case cedar = "cedar"
+  }
 }

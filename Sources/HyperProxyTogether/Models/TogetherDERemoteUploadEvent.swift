@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct TogetherDERemoteUploadEvent: Codable, Sendable {
   public var createdAt: String
   public var id: String
-  public var level: TogetherDERemoteUploadEventLevel
+  public var level: TogetherDERemoteUploadEvent.Level
   public var message: String
   public var kind: String
 
   public init(
     createdAt: String,
     id: String,
-    level: TogetherDERemoteUploadEventLevel,
+    level: TogetherDERemoteUploadEvent.Level,
     message: String,
     kind: String
   ) {
@@ -37,5 +37,12 @@ public struct TogetherDERemoteUploadEvent: Codable, Sendable {
     case level
     case message
     case kind = "type"
+  }
+
+  public enum Level: String, Codable, Hashable, Sendable {
+    case levelDebug = "LEVEL_DEBUG"
+    case levelInfo = "LEVEL_INFO"
+    case levelWarn = "LEVEL_WARN"
+    case levelError = "LEVEL_ERROR"
   }
 }

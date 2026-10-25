@@ -16,13 +16,13 @@ public struct PerplexityMcpListToolsOutputItem: Codable, Sendable {
   public var id: String
   public var serverLabel: String
   public var tools: [PerplexityMcpToolDef]
-  public var kind: PerplexityMcpListToolsOutputItemKind
+  public var kind: PerplexityMcpListToolsOutputItem.Kind
 
   public init(
     id: String,
     serverLabel: String,
     tools: [PerplexityMcpToolDef],
-    kind: PerplexityMcpListToolsOutputItemKind,
+    kind: PerplexityMcpListToolsOutputItem.Kind,
     connectorId: String? = nil,
     error: String? = nil
   ) {
@@ -41,5 +41,9 @@ public struct PerplexityMcpListToolsOutputItem: Codable, Sendable {
     case serverLabel = "server_label"
     case tools
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case mcpListTools = "mcp_list_tools"
   }
 }

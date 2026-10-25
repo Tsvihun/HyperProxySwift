@@ -14,8 +14,8 @@ public struct OpenAIBetaListInputItemsParameters: Codable, Sendable {
   public var after: String?
   public var include: [OpenAIBetaIncludeEnum]?
   public var limit: Int?
-  public var openaiBeta: [OpenAIBetaListInputItemsParametersOpenaiBetaItem]?
-  public var order: OpenAIBetaListInputItemsParametersOrder?
+  public var openaiBeta: [OpenAIBetaListInputItemsParameters.OpenaiBetaElement]?
+  public var order: OpenAIBetaListInputItemsParameters.Order?
   public var responseId: String
 
   public init(
@@ -23,8 +23,8 @@ public struct OpenAIBetaListInputItemsParameters: Codable, Sendable {
     after: String? = nil,
     include: [OpenAIBetaIncludeEnum]? = nil,
     limit: Int? = nil,
-    openaiBeta: [OpenAIBetaListInputItemsParametersOpenaiBetaItem]? = nil,
-    order: OpenAIBetaListInputItemsParametersOrder? = nil
+    openaiBeta: [OpenAIBetaListInputItemsParameters.OpenaiBetaElement]? = nil,
+    order: OpenAIBetaListInputItemsParameters.Order? = nil
   ) {
     self.after = after
     self.include = include
@@ -41,5 +41,14 @@ public struct OpenAIBetaListInputItemsParameters: Codable, Sendable {
     case openaiBeta = "openai-beta"
     case order
     case responseId = "response_id"
+  }
+
+  public enum OpenaiBetaElement: String, Codable, Hashable, Sendable {
+    case responsesMultiAgentV1 = "responses_multi_agent=v1"
+  }
+
+  public enum Order: String, Codable, Hashable, Sendable {
+    case asc = "asc"
+    case desc = "desc"
   }
 }

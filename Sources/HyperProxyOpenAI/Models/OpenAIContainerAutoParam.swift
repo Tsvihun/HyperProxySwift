@@ -13,16 +13,16 @@ import HyperProxyCore
 public struct OpenAIContainerAutoParam: Codable, Sendable {
   public var fileIds: [String]?
   public var memoryLimit: OpenAIContainerMemoryLimit?
-  public var networkPolicy: OpenAIContainerAutoParamNetworkPolicy?
-  public var skills: [OpenAIContainerAutoParamSkillsItem]?
-  public var kind: OpenAIContainerAutoParamKind
+  public var networkPolicy: OpenAIContainerAutoParam.NetworkPolicy?
+  public var skills: [OpenAIContainerAutoParam.SkillsElement]?
+  public var kind: OpenAIContainerAutoParam.Kind
 
   public init(
-    kind: OpenAIContainerAutoParamKind,
+    kind: OpenAIContainerAutoParam.Kind,
     fileIds: [String]? = nil,
     memoryLimit: OpenAIContainerMemoryLimit? = nil,
-    networkPolicy: OpenAIContainerAutoParamNetworkPolicy? = nil,
-    skills: [OpenAIContainerAutoParamSkillsItem]? = nil
+    networkPolicy: OpenAIContainerAutoParam.NetworkPolicy? = nil,
+    skills: [OpenAIContainerAutoParam.SkillsElement]? = nil
   ) {
     self.fileIds = fileIds
     self.memoryLimit = memoryLimit
@@ -37,5 +37,58 @@ public struct OpenAIContainerAutoParam: Codable, Sendable {
     case networkPolicy = "network_policy"
     case skills
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case containerAuto = "container_auto"
+  }
+
+  public enum NetworkPolicy: Codable, Sendable {
+    case containerNetworkPolicyDisabledParam(OpenAIContainerNetworkPolicyDisabledParam)
+    case containerNetworkPolicyAllowlistParam(OpenAIContainerNetworkPolicyAllowlistParam)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenAIContainerNetworkPolicyDisabledParam.self) {
+        self = .containerNetworkPolicyDisabledParam(value)
+        return
+      }
+      self = .containerNetworkPolicyAllowlistParam(
+        try container.decode(OpenAIContainerNetworkPolicyAllowlistParam.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .containerNetworkPolicyDisabledParam(let value):
+        try container.encode(value)
+      case .containerNetworkPolicyAllowlistParam(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum SkillsElement: Codable, Sendable {
+    case skillReferenceParam(OpenAISkillReferenceParam)
+    case inlineSkillParam(OpenAIInlineSkillParam)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenAISkillReferenceParam.self) {
+        self = .skillReferenceParam(value)
+        return
+      }
+      self = .inlineSkillParam(try container.decode(OpenAIInlineSkillParam.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .skillReferenceParam(let value):
+        try container.encode(value)
+      case .inlineSkillParam(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

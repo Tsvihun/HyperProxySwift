@@ -14,13 +14,13 @@ public struct MistralIncorrectFieldTypeResponse: Codable, Sendable {
   public var expectedType: String
   public var name: String
   public var receivedType: String
-  public var kind: MistralIncorrectFieldTypeKind?
+  public var kind: MistralIncorrectFieldTypeResponse.Kind?
 
   public init(
     expectedType: String,
     name: String,
     receivedType: String,
-    kind: MistralIncorrectFieldTypeKind? = nil
+    kind: MistralIncorrectFieldTypeResponse.Kind? = nil
   ) {
     self.expectedType = expectedType
     self.name = name
@@ -33,5 +33,9 @@ public struct MistralIncorrectFieldTypeResponse: Codable, Sendable {
     case name
     case receivedType = "received_type"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case incorrectFieldType = "incorrect_field_type"
   }
 }

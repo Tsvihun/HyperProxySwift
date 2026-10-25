@@ -11,15 +11,21 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaUserProfileTrustGrant: Codable, Sendable {
-  public var status: AnthropicBetaUserProfileTrustGrantStatus
+  public var status: AnthropicBetaUserProfileTrustGrant.Status
 
   public init(
-    status: AnthropicBetaUserProfileTrustGrantStatus
+    status: AnthropicBetaUserProfileTrustGrant.Status
   ) {
     self.status = status
   }
 
   enum CodingKeys: String, CodingKey {
     case status
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case active = "active"
+    case pending = "pending"
+    case rejected = "rejected"
   }
 }

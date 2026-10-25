@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public enum MistralBatchJobStatus: String, Codable, Hashable, Sendable {
-  case qUEUED = "QUEUED"
-  case rUNNING = "RUNNING"
-  case sUCCESS = "SUCCESS"
-  case fAILED = "FAILED"
-  case tIMEOUTEXCEEDED = "TIMEOUT_EXCEEDED"
-  case cANCELLATIONREQUESTED = "CANCELLATION_REQUESTED"
-  case cANCELLED = "CANCELLED"
+  case queued = "QUEUED"
+  case running = "RUNNING"
+  case success = "SUCCESS"
+  case failed = "FAILED"
+  case timeoutExceeded = "TIMEOUT_EXCEEDED"
+  case cancellationRequested = "CANCELLATION_REQUESTED"
+  case cancelled = "CANCELLED"
 }

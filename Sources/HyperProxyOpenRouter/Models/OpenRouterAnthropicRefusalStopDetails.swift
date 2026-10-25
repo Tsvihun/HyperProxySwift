@@ -11,14 +11,14 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterAnthropicRefusalStopDetails: Codable, Sendable {
-  public var category: OpenRouterAnthropicRefusalStopDetailsCategory?
+  public var category: OpenRouterAnthropicRefusalStopDetails.Category?
   public var explanation: String
-  public var kind: OpenRouterAnthropicRefusalStopDetailsKind
+  public var kind: OpenRouterAnthropicRefusalStopDetails.Kind
 
   public init(
-    category: OpenRouterAnthropicRefusalStopDetailsCategory?,
+    category: OpenRouterAnthropicRefusalStopDetails.Category?,
     explanation: String,
-    kind: OpenRouterAnthropicRefusalStopDetailsKind
+    kind: OpenRouterAnthropicRefusalStopDetails.Kind
   ) {
     self.category = category
     self.explanation = explanation
@@ -29,5 +29,17 @@ public struct OpenRouterAnthropicRefusalStopDetails: Codable, Sendable {
     case category
     case explanation
     case kind = "type"
+  }
+
+  public enum Category: String, Codable, Hashable, Sendable {
+    case cyber = "cyber"
+    case bio = "bio"
+    case frontierLlm = "frontier_llm"
+    case reasoningExtraction = "reasoning_extraction"
+    case generalHarms = "general_harms"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case refusal = "refusal"
   }
 }

@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAICreateVideoMultipartBody: Codable, Sendable {
-  public var inputReference: OpenAICreateVideoMultipartBodyInputReference?
+  public var inputReference: OpenAICreateVideoMultipartBody.InputReference?
   public var model: OpenAIVideoModel?
   public var prompt: String
   public var seconds: OpenAIVideoSeconds?
@@ -19,7 +19,7 @@ public struct OpenAICreateVideoMultipartBody: Codable, Sendable {
 
   public init(
     prompt: String,
-    inputReference: OpenAICreateVideoMultipartBodyInputReference? = nil,
+    inputReference: OpenAICreateVideoMultipartBody.InputReference? = nil,
     model: OpenAIVideoModel? = nil,
     seconds: OpenAIVideoSeconds? = nil,
     size: OpenAIVideoSize? = nil
@@ -37,5 +37,35 @@ public struct OpenAICreateVideoMultipartBody: Codable, Sendable {
     case prompt
     case seconds
     case size
+  }
+
+  public enum InputReference: Codable, Sendable {
+    case string(String)
+    case imageRefParam2(OpenAIImageRefParam2)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .imageRefParam2(try container.decode(OpenAIImageRefParam2.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .imageRefParam2(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension OpenAICreateVideoMultipartBody.InputReference: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

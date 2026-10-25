@@ -12,16 +12,16 @@ import HyperProxyCore
 
 public struct OpenAIBetaWebSearchTool: Codable, Sendable {
   public var externalWebAccess: Bool?
-  public var filters: OpenAIBetaWebSearchToolFiltersAnyOf1?
-  public var searchContextSize: OpenAIBetaWebSearchToolSearchContextSize?
-  public var kind: OpenAIBetaWebSearchToolKind
+  public var filters: OpenAIBetaWebSearchToolFiltersWithAllowedDomains?
+  public var searchContextSize: OpenAIBetaWebSearchTool.SearchContextSize?
+  public var kind: OpenAIBetaWebSearchTool.Kind
   public var userLocation: OpenAIBetaWebSearchApproximateLocation?
 
   public init(
-    kind: OpenAIBetaWebSearchToolKind,
+    kind: OpenAIBetaWebSearchTool.Kind,
     externalWebAccess: Bool? = nil,
-    filters: OpenAIBetaWebSearchToolFiltersAnyOf1? = nil,
-    searchContextSize: OpenAIBetaWebSearchToolSearchContextSize? = nil,
+    filters: OpenAIBetaWebSearchToolFiltersWithAllowedDomains? = nil,
+    searchContextSize: OpenAIBetaWebSearchTool.SearchContextSize? = nil,
     userLocation: OpenAIBetaWebSearchApproximateLocation? = nil
   ) {
     self.externalWebAccess = externalWebAccess
@@ -37,5 +37,16 @@ public struct OpenAIBetaWebSearchTool: Codable, Sendable {
     case searchContextSize = "search_context_size"
     case kind = "type"
     case userLocation = "user_location"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case webSearch = "web_search"
+    case webSearch2025_08_26 = "web_search_2025_08_26"
+  }
+
+  public enum SearchContextSize: String, Codable, Hashable, Sendable {
+    case low = "low"
+    case medium = "medium"
+    case high = "high"
   }
 }

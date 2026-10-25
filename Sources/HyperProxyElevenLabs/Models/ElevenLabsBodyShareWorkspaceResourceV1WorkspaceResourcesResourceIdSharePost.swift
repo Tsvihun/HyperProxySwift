@@ -15,13 +15,13 @@ public struct ElevenLabsBodyShareWorkspaceResourceV1WorkspaceResourcesResourceId
 {
   public var groupId: String?
   public var resourceType: ElevenLabsWorkspaceResourceType
-  public var role: ElevenLabsBodyShareWorkspaceResourceV1WorkspaceResourcesResourceIdSharePostRole
+  public var role: ElevenLabsBodyShareWorkspaceResourceV1WorkspaceResourcesResourceIdSharePost.Role
   public var userEmail: String?
   public var workspaceApiKeyId: String?
 
   public init(
     resourceType: ElevenLabsWorkspaceResourceType,
-    role: ElevenLabsBodyShareWorkspaceResourceV1WorkspaceResourcesResourceIdSharePostRole,
+    role: ElevenLabsBodyShareWorkspaceResourceV1WorkspaceResourcesResourceIdSharePost.Role,
     groupId: String? = nil,
     userEmail: String? = nil,
     workspaceApiKeyId: String? = nil
@@ -39,5 +39,14 @@ public struct ElevenLabsBodyShareWorkspaceResourceV1WorkspaceResourcesResourceId
     case role
     case userEmail = "user_email"
     case workspaceApiKeyId = "workspace_api_key_id"
+  }
+
+  public enum Role: String,
+    Codable, Hashable, Sendable
+  {
+    case admin = "admin"
+    case editor = "editor"
+    case commenter = "commenter"
+    case viewer = "viewer"
   }
 }

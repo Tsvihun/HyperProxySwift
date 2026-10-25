@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralChatCompletionChoice: Codable, Sendable {
-  public var finishReason: MistralChatCompletionChoiceFinishReason
+  public var finishReason: MistralChatCompletionChoice.FinishReason
   public var index: Int
   public var logprobs: MistralChatCompletionResponseChoiceLogprobs?
   public var message: MistralAssistantMessage?
@@ -19,7 +19,7 @@ public struct MistralChatCompletionChoice: Codable, Sendable {
   public var promptLogprobs: MistralChatCompletionResponseChoiceLogprobs?
 
   public init(
-    finishReason: MistralChatCompletionChoiceFinishReason,
+    finishReason: MistralChatCompletionChoice.FinishReason,
     index: Int,
     logprobs: MistralChatCompletionResponseChoiceLogprobs? = nil,
     message: MistralAssistantMessage? = nil,
@@ -41,5 +41,13 @@ public struct MistralChatCompletionChoice: Codable, Sendable {
     case message
     case messages
     case promptLogprobs = "prompt_logprobs"
+  }
+
+  public enum FinishReason: String, Codable, Hashable, Sendable {
+    case stop = "stop"
+    case length = "length"
+    case modelLength = "model_length"
+    case error = "error"
+    case toolCalls = "tool_calls"
   }
 }

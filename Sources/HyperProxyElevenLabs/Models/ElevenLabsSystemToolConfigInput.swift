@@ -17,7 +17,7 @@ public struct ElevenLabsSystemToolConfigInput: Codable, Sendable {
   public var forcePreToolSpeech: Bool?
   public var interruptionMode: ElevenLabsToolInterruptionMode?
   public var name: String
-  public var params: ElevenLabsSystemToolConfigInputParams
+  public var params: ElevenLabsSystemToolConfigInput.Params
   public var preToolSpeech: ElevenLabsPreToolSpeechMode?
   public var responseTimeoutSecs: Int?
   public var toolCallSound: ElevenLabsToolCallSoundType?
@@ -27,7 +27,7 @@ public struct ElevenLabsSystemToolConfigInput: Codable, Sendable {
 
   public init(
     name: String,
-    params: ElevenLabsSystemToolConfigInputParams,
+    params: ElevenLabsSystemToolConfigInput.Params,
     assignments: [ElevenLabsDynamicVariableAssignment]? = nil,
     description: String? = nil,
     disableInterruptions: Bool? = nil,
@@ -69,5 +69,92 @@ public struct ElevenLabsSystemToolConfigInput: Codable, Sendable {
     case toolCallSoundBehavior = "tool_call_sound_behavior"
     case toolErrorHandlingMode = "tool_error_handling_mode"
     case kind = "type"
+  }
+
+  public enum Params: Codable, Sendable {
+    case endCallToolConfig(ElevenLabsEndCallToolConfig)
+    case languageDetectionToolConfig(ElevenLabsLanguageDetectionToolConfig)
+    case transferToAgentToolConfigInput(ElevenLabsTransferToAgentToolConfigInput)
+    case transferToNumberToolConfigInput(ElevenLabsTransferToNumberToolConfigInput)
+    case skipTurnToolConfig(ElevenLabsSkipTurnToolConfig)
+    case playDtmfToolConfig(ElevenLabsPlayDTMFToolConfig)
+    case voicemailDetectionToolConfig(ElevenLabsVoicemailDetectionToolConfig)
+    case knowledgeBaseRagToolConfig(ElevenLabsKnowledgeBaseRagToolConfig)
+    case knowledgeBaseToolConfig(ElevenLabsKnowledgeBaseToolConfig)
+    case startProcedureToolConfig(ElevenLabsStartProcedureToolConfig)
+    case endProcedureToolConfig(ElevenLabsEndProcedureToolConfig)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsEndCallToolConfig.self) {
+        self = .endCallToolConfig(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsLanguageDetectionToolConfig.self) {
+        self = .languageDetectionToolConfig(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsTransferToAgentToolConfigInput.self) {
+        self = .transferToAgentToolConfigInput(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsTransferToNumberToolConfigInput.self) {
+        self = .transferToNumberToolConfigInput(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsSkipTurnToolConfig.self) {
+        self = .skipTurnToolConfig(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsPlayDTMFToolConfig.self) {
+        self = .playDtmfToolConfig(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsVoicemailDetectionToolConfig.self) {
+        self = .voicemailDetectionToolConfig(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsKnowledgeBaseRagToolConfig.self) {
+        self = .knowledgeBaseRagToolConfig(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsKnowledgeBaseToolConfig.self) {
+        self = .knowledgeBaseToolConfig(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsStartProcedureToolConfig.self) {
+        self = .startProcedureToolConfig(value)
+        return
+      }
+      self = .endProcedureToolConfig(try container.decode(ElevenLabsEndProcedureToolConfig.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .endCallToolConfig(let value):
+        try container.encode(value)
+      case .languageDetectionToolConfig(let value):
+        try container.encode(value)
+      case .transferToAgentToolConfigInput(let value):
+        try container.encode(value)
+      case .transferToNumberToolConfigInput(let value):
+        try container.encode(value)
+      case .skipTurnToolConfig(let value):
+        try container.encode(value)
+      case .playDtmfToolConfig(let value):
+        try container.encode(value)
+      case .voicemailDetectionToolConfig(let value):
+        try container.encode(value)
+      case .knowledgeBaseRagToolConfig(let value):
+        try container.encode(value)
+      case .knowledgeBaseToolConfig(let value):
+        try container.encode(value)
+      case .startProcedureToolConfig(let value):
+        try container.encode(value)
+      case .endProcedureToolConfig(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

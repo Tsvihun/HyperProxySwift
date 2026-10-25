@@ -13,7 +13,7 @@ import HyperProxyCore
 public enum ElevenLabsCreatePhoneNumberRouteRequest: Codable, Sendable {
   case createTwilioPhoneNumberRequest(ElevenLabsCreateTwilioPhoneNumberRequest)
   case createExotelPhoneNumberRequest(ElevenLabsCreateExotelPhoneNumberRequest)
-  case createSIPTrunkPhoneNumberRequestV2(ElevenLabsCreateSIPTrunkPhoneNumberRequestV2)
+  case createSipTrunkPhoneNumberRequestV2(ElevenLabsCreateSIPTrunkPhoneNumberRequestV2)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -25,7 +25,7 @@ public enum ElevenLabsCreatePhoneNumberRouteRequest: Codable, Sendable {
       self = .createExotelPhoneNumberRequest(value)
       return
     }
-    self = .createSIPTrunkPhoneNumberRequestV2(
+    self = .createSipTrunkPhoneNumberRequestV2(
       try container.decode(ElevenLabsCreateSIPTrunkPhoneNumberRequestV2.self))
   }
 
@@ -36,7 +36,7 @@ public enum ElevenLabsCreatePhoneNumberRouteRequest: Codable, Sendable {
       try container.encode(value)
     case .createExotelPhoneNumberRequest(let value):
       try container.encode(value)
-    case .createSIPTrunkPhoneNumberRequestV2(let value):
+    case .createSipTrunkPhoneNumberRequestV2(let value):
       try container.encode(value)
     }
   }

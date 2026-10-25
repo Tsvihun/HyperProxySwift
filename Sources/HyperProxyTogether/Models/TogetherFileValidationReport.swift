@@ -19,7 +19,7 @@ public struct TogetherFileValidationReport: Codable, Sendable {
   public var datasetHasTools: Bool?
   public var datasetIsMultimodal: Bool?
   public var error: String?
-  public var errorType: TogetherFileValidationReportErrorType?
+  public var errorType: TogetherFileValidationReport.ErrorType?
   public var fileId: String?
   public var nlines: Int?
   public var valid: Bool
@@ -34,7 +34,7 @@ public struct TogetherFileValidationReport: Codable, Sendable {
     datasetHasTools: Bool? = nil,
     datasetIsMultimodal: Bool? = nil,
     error: String? = nil,
-    errorType: TogetherFileValidationReportErrorType? = nil,
+    errorType: TogetherFileValidationReport.ErrorType? = nil,
     fileId: String? = nil,
     nlines: Int? = nil
   ) {
@@ -65,5 +65,9 @@ public struct TogetherFileValidationReport: Codable, Sendable {
     case fileId = "file_id"
     case nlines
     case valid
+  }
+
+  public enum ErrorType: String, Codable, Hashable, Sendable {
+    case invalidFormat = "INVALID_FORMAT"
   }
 }

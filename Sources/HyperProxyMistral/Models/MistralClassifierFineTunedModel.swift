@@ -20,7 +20,7 @@ public struct MistralClassifierFineTunedModel: Codable, Sendable {
   public var id: String
   public var job: String?
   public var maxContextLength: Int?
-  public var modelType: MistralClassifierModelType?
+  public var modelType: MistralClassifierFineTunedModel.ModelType?
   public var name: String?
   public var object: MistralModelObject?
   public var ownedBy: String
@@ -42,7 +42,7 @@ public struct MistralClassifierFineTunedModel: Codable, Sendable {
     description: String? = nil,
     job: String? = nil,
     maxContextLength: Int? = nil,
-    modelType: MistralClassifierModelType? = nil,
+    modelType: MistralClassifierFineTunedModel.ModelType? = nil,
     name: String? = nil,
     object: MistralModelObject? = nil
   ) {
@@ -81,5 +81,9 @@ public struct MistralClassifierFineTunedModel: Codable, Sendable {
     case root
     case rootVersion = "root_version"
     case workspaceId = "workspace_id"
+  }
+
+  public enum ModelType: String, Codable, Hashable, Sendable {
+    case classifier = "classifier"
   }
 }

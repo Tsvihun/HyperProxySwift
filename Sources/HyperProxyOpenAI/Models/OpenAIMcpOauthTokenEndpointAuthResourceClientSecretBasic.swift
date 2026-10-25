@@ -11,15 +11,21 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIMcpOauthTokenEndpointAuthResourceClientSecretBasic: Codable, Sendable {
-  public var kind: OpenAIMcpOauthTokenEndpointAuthResourceClientSecretBasicKind
+  public var kind: OpenAIMcpOauthTokenEndpointAuthResourceClientSecretBasic.Kind
 
   public init(
-    kind: OpenAIMcpOauthTokenEndpointAuthResourceClientSecretBasicKind
+    kind: OpenAIMcpOauthTokenEndpointAuthResourceClientSecretBasic.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case clientSecretBasic = "client_secret_basic"
   }
 }

@@ -14,12 +14,12 @@ public struct AnthropicBetaManagedAgentsDeploymentUserDefineOutcomeEvent: Codabl
   public var description: String
   public var maxIterations: Int?
   public var rubric: AnthropicBetaManagedAgentsRubric
-  public var kind: AnthropicBetaManagedAgentsDeploymentUserDefineOutcomeEventKind
+  public var kind: AnthropicBetaManagedAgentsDeploymentUserDefineOutcomeEvent.Kind
 
   public init(
     description: String,
     rubric: AnthropicBetaManagedAgentsRubric,
-    kind: AnthropicBetaManagedAgentsDeploymentUserDefineOutcomeEventKind,
+    kind: AnthropicBetaManagedAgentsDeploymentUserDefineOutcomeEvent.Kind,
     maxIterations: Int? = nil
   ) {
     self.description = description
@@ -33,5 +33,11 @@ public struct AnthropicBetaManagedAgentsDeploymentUserDefineOutcomeEvent: Codabl
     case maxIterations = "max_iterations"
     case rubric
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case userDefineOutcome = "user.define_outcome"
   }
 }

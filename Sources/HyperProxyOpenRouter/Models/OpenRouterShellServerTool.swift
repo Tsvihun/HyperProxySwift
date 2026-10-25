@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterShellServerTool: Codable, Sendable {
-  public var kind: OpenRouterShellServerToolKind
+  public var kind: OpenRouterShellServerTool.Kind
 
   public init(
-    kind: OpenRouterShellServerToolKind
+    kind: OpenRouterShellServerTool.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case shell = "shell"
   }
 }

@@ -14,14 +14,14 @@ public struct AnthropicBetaManagedAgentsCredentialHostUnreachableError: Codable,
   public var credentialId: String
   public var message: String
   public var retryStatus: AnthropicBetaManagedAgentsRetryStatus
-  public var kind: AnthropicBetaManagedAgentsCredentialHostUnreachableErrorKind
+  public var kind: AnthropicBetaManagedAgentsCredentialHostUnreachableError.Kind
   public var vaultId: String
 
   public init(
     credentialId: String,
     message: String,
     retryStatus: AnthropicBetaManagedAgentsRetryStatus,
-    kind: AnthropicBetaManagedAgentsCredentialHostUnreachableErrorKind,
+    kind: AnthropicBetaManagedAgentsCredentialHostUnreachableError.Kind,
     vaultId: String
   ) {
     self.credentialId = credentialId
@@ -37,5 +37,11 @@ public struct AnthropicBetaManagedAgentsCredentialHostUnreachableError: Codable,
     case retryStatus = "retry_status"
     case kind = "type"
     case vaultId = "vault_id"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case credentialHostUnreachableError = "credential_host_unreachable_error"
   }
 }

@@ -14,11 +14,11 @@ public struct PerplexityNamespaceToolDef: Codable, Sendable {
   public var description: String?
   public var name: String
   public var parameters: [String: HyperProxyJSONValue]?
-  public var kind: PerplexityNamespaceToolDefKind
+  public var kind: PerplexityNamespaceToolDef.Kind
 
   public init(
     name: String,
-    kind: PerplexityNamespaceToolDefKind,
+    kind: PerplexityNamespaceToolDef.Kind,
     description: String? = nil,
     parameters: [String: HyperProxyJSONValue]? = nil
   ) {
@@ -33,5 +33,9 @@ public struct PerplexityNamespaceToolDef: Codable, Sendable {
     case name
     case parameters
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case function = "function"
   }
 }

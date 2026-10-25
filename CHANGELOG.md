@@ -2,6 +2,31 @@
 
 ## Unreleased
 
+- Reconcile routes that differ only in placeholder names, using official media
+  contracts while preserving access, origins, path expansion and JSON/SSE variants.
+  Restore Mistral transcription SSE discovery. Decode JSONL/NDJSON through typed
+  record streams; Anthropic batch results no longer promise one JSON document.
+  Use reviewed short DeepL cases, readable numeric segments (`.mp3_22050_32`,
+  `.gpt5_5Pro`) and semantic Anthropic operation names with explicit organization
+  tunnel scope. Remove obsolete operation aliases from the development Swift API.
+- Keep distinct JSON keys distinct in Swift (`kind`/`type`, leading underscores,
+  dotted/underscored query fields), preserve negative numeric signs in enum case
+  names and merge equivalent typed/untyped constants. Scope anonymous collection
+  elements and object descendants with their owner, and remove repeated ancestor
+  labels from shared type names. Provider wire contracts remain unchanged.
+- Give anonymous schema unions semantic Swift names and nest inline enums in
+  their owning models. Remove numbered `AnyOf`/`OneOf`/`AllOf` types, cases and
+  legacy aliases; use aspect-ratio cases such as `.ratio16x9` and Swift lower camel
+  case for uppercase constants (`.rolloutFilterActive = "ROLLOUT_FILTER_ACTIVE"`). This changes the
+  development Swift API; provider JSON, validation and versioned wire values
+  remain unchanged. Provider-authored dates and model versions remain explicit.
+- Refresh and reconcile the 2026-10-24 development catalog: 2,361 routes, 19,047
+  generated provider types and 2,146 canonical typed helpers. Add OpenAI automations and Perplexity
+  batches/files; follow upstream removal of OpenRouter interns and legacy Together
+  endpoints, hardware and TCI helpers. Together `whoami` moves to `v3/whoami`;
+  chat completions now select the official inference origin. Callers using removed
+  generated operations or model types must migrate. Refresh the backend gateway
+  catalog alongside the SDK so its origin allowlist accepts Together chat requests.
 - Refresh the 2026-10-21 development catalog: 2,405 routes, 19,183 generated
   provider types and 2,161 typed operations across 18 provider families.
   Follow upstream migrations from OpenRouter end users to external users,

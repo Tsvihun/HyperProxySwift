@@ -18,7 +18,7 @@ public struct GeminiPart: Codable, Sendable {
   public var functionCall: GeminiFunctionCall?
   public var functionResponse: GeminiFunctionResponse?
   public var inlineData: GeminiBlob?
-  public var mediaProcessing: GeminiPartMediaProcessing?
+  public var mediaProcessing: GeminiPart.MediaProcessing?
   public var mediaResolution: GeminiV1mainMediaResolution?
   public var partMetadata: [String: HyperProxyJSONValue]?
   public var speechMetadata: GeminiSpeechMetadata?
@@ -37,7 +37,7 @@ public struct GeminiPart: Codable, Sendable {
     functionCall: GeminiFunctionCall? = nil,
     functionResponse: GeminiFunctionResponse? = nil,
     inlineData: GeminiBlob? = nil,
-    mediaProcessing: GeminiPartMediaProcessing? = nil,
+    mediaProcessing: GeminiPart.MediaProcessing? = nil,
     mediaResolution: GeminiV1mainMediaResolution? = nil,
     partMetadata: [String: HyperProxyJSONValue]? = nil,
     speechMetadata: GeminiSpeechMetadata? = nil,
@@ -85,5 +85,11 @@ public struct GeminiPart: Codable, Sendable {
     case toolCall
     case toolResponse
     case videoMetadata
+  }
+
+  public enum MediaProcessing: String, Codable, Hashable, Sendable {
+    case mediaProcessingUnspecified = "MEDIA_PROCESSING_UNSPECIFIED"
+    case staticValue = "STATIC"
+    case agentic = "AGENTIC"
   }
 }

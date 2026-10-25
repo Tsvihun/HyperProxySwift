@@ -70,24 +70,24 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
     self.call(.getBenchmarks)
   }
   /// `GET api/v1/byok`
-  public var listBYOKKeys: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.listBYOKKeys)
+  public var listByokKeys: HyperProxyProviderCall<OpenRouterOperation> {
+    self.call(.listByokKeys)
   }
   /// `POST api/v1/byok`
-  public var createBYOKKey: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.createBYOKKey)
+  public var createByokKey: HyperProxyProviderCall<OpenRouterOperation> {
+    self.call(.createByokKey)
   }
   /// `DELETE api/v1/byok/{id}`
-  public var deleteBYOKKey: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.deleteBYOKKey)
+  public var deleteByokKey: HyperProxyProviderCall<OpenRouterOperation> {
+    self.call(.deleteByokKey)
   }
   /// `GET api/v1/byok/{id}`
-  public var getBYOKKey: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.getBYOKKey)
+  public var getByokKey: HyperProxyProviderCall<OpenRouterOperation> {
+    self.call(.getByokKey)
   }
   /// `PATCH api/v1/byok/{id}`
-  public var updateBYOKKey: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.updateBYOKKey)
+  public var updateByokKey: HyperProxyProviderCall<OpenRouterOperation> {
+    self.call(.updateByokKey)
   }
   /// `POST api/v1/chat/completions`
   public var chatCompletionsCreate: HyperProxyProviderCall<OpenRouterOperation> {
@@ -260,66 +260,6 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
   /// `GET api/v1/images/models/{author}/{slug}/endpoints`
   public var listImageModelEndpoints: HyperProxyProviderCall<OpenRouterOperation> {
     self.call(.listImageModelEndpoints)
-  }
-  /// `GET api/v1/interns`
-  public var listInterns: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.listInterns)
-  }
-  /// `POST api/v1/interns`
-  public var createIntern: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.createIntern)
-  }
-  /// `DELETE api/v1/interns/{internId}`
-  public var deleteIntern: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.deleteIntern)
-  }
-  /// `GET api/v1/interns/{internId}`
-  public var getIntern: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.getIntern)
-  }
-  /// `PATCH api/v1/interns/{internId}`
-  public var updateIntern: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.updateIntern)
-  }
-  /// `POST api/v1/interns/{internId}/chat/completions`
-  public var createInternChatCompletion: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.createInternChatCompletion)
-  }
-  /// `GET api/v1/interns/{internId}/connections`
-  public var getInternConnections: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.getInternConnections)
-  }
-  /// `GET api/v1/interns/{internId}/daemon`
-  public var getInternDaemon: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.getInternDaemon)
-  }
-  /// `GET api/v1/interns/{internId}/daemon-access`
-  public var getInternDaemonAccess: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.getInternDaemonAccess)
-  }
-  /// `POST api/v1/interns/{internId}/daemon-access/sign`
-  public var signInternDaemonAccessRequest: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.signInternDaemonAccessRequest)
-  }
-  /// `POST api/v1/interns/{internId}/daemon/sign`
-  public var signInternDaemonRequest: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.signInternDaemonRequest)
-  }
-  /// `GET api/v1/interns/{internId}/icon`
-  public var getInternIcon: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.getInternIcon)
-  }
-  /// `POST api/v1/interns/{internId}/invoke`
-  public var invokeIntern: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.invokeIntern)
-  }
-  /// `POST api/v1/interns/{internId}/provision`
-  public var provisionIntern: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.provisionIntern)
-  }
-  /// `POST api/v1/interns/{internId}/suspend`
-  public var suspendIntern: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.suspendIntern)
   }
   /// `GET api/v1/key`
   public var keyRetrieve: HyperProxyProviderCall<OpenRouterOperation> {

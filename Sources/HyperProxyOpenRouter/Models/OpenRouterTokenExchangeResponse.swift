@@ -13,16 +13,16 @@ import HyperProxyCore
 public struct OpenRouterTokenExchangeResponse: Codable, Sendable {
   public var accessToken: String
   public var expiresIn: Int
-  public var issuedTokenType: OpenRouterTokenExchangeResponseIssuedTokenType
+  public var issuedTokenType: OpenRouterTokenExchangeResponse.IssuedTokenType
   public var scope: String
-  public var tokenType: OpenRouterTokenExchangeResponseTokenType
+  public var tokenType: OpenRouterTokenExchangeResponse.TokenType
 
   public init(
     accessToken: String,
     expiresIn: Int,
-    issuedTokenType: OpenRouterTokenExchangeResponseIssuedTokenType,
+    issuedTokenType: OpenRouterTokenExchangeResponse.IssuedTokenType,
     scope: String,
-    tokenType: OpenRouterTokenExchangeResponseTokenType
+    tokenType: OpenRouterTokenExchangeResponse.TokenType
   ) {
     self.accessToken = accessToken
     self.expiresIn = expiresIn
@@ -37,5 +37,13 @@ public struct OpenRouterTokenExchangeResponse: Codable, Sendable {
     case issuedTokenType = "issued_token_type"
     case scope
     case tokenType = "token_type"
+  }
+
+  public enum IssuedTokenType: String, Codable, Hashable, Sendable {
+    case urnIetfParamsOauthTokenTypeAccessToken = "urn:ietf:params:oauth:token-type:access_token"
+  }
+
+  public enum TokenType: String, Codable, Hashable, Sendable {
+    case bearer = "Bearer"
   }
 }

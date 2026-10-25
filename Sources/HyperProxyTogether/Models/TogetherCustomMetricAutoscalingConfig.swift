@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct TogetherCustomMetricAutoscalingConfig: Codable, Sendable {
   public var customMetricName: String?
-  public var metric: TogetherCustomMetricAutoscalingConfigMetric?
+  public var metric: TogetherCustomMetricAutoscalingConfig.Metric?
   public var target: Double?
 
   public init(
     customMetricName: String? = nil,
-    metric: TogetherCustomMetricAutoscalingConfigMetric? = nil,
+    metric: TogetherCustomMetricAutoscalingConfig.Metric? = nil,
     target: Double? = nil
   ) {
     self.customMetricName = customMetricName
@@ -29,5 +29,9 @@ public struct TogetherCustomMetricAutoscalingConfig: Codable, Sendable {
     case customMetricName = "custom_metric_name"
     case metric
     case target
+  }
+
+  public enum Metric: String, Codable, Hashable, Sendable {
+    case customMetric = "CustomMetric"
   }
 }

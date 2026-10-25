@@ -12,10 +12,10 @@ import HyperProxyCore
 
 public struct FireworksAnthropicToolChoiceAny: Codable, Sendable {
   public var disableParallelToolUse: Bool?
-  public var kind: FireworksAnyModelKind
+  public var kind: FireworksAnthropicToolChoiceAny.Kind
 
   public init(
-    kind: FireworksAnyModelKind = .anyModel,
+    kind: FireworksAnthropicToolChoiceAny.Kind = .any,
     disableParallelToolUse: Bool? = nil
   ) {
     self.disableParallelToolUse = disableParallelToolUse
@@ -25,5 +25,9 @@ public struct FireworksAnthropicToolChoiceAny: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case disableParallelToolUse = "disable_parallel_tool_use"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case any = "any"
   }
 }

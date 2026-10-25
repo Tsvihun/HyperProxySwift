@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct OpenAIHostedTemplateSkillResourceSkillReference: Codable, Sendable {
   public var skillId: String
-  public var kind: OpenAIHostedTemplateSkillResourceSkillReferenceKind
+  public var kind: OpenAIHostedTemplateSkillResourceSkillReference.Kind
   public var version: String
 
   public init(
     skillId: String,
-    kind: OpenAIHostedTemplateSkillResourceSkillReferenceKind,
+    kind: OpenAIHostedTemplateSkillResourceSkillReference.Kind,
     version: String
   ) {
     self.skillId = skillId
@@ -29,5 +29,9 @@ public struct OpenAIHostedTemplateSkillResourceSkillReference: Codable, Sendable
     case skillId = "skill_id"
     case kind = "type"
     case version
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case skillReference = "skill_reference"
   }
 }

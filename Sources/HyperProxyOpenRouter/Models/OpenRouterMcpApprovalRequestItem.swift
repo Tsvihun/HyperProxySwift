@@ -15,14 +15,14 @@ public struct OpenRouterMcpApprovalRequestItem: Codable, Sendable {
   public var id: String
   public var name: String
   public var serverLabel: String
-  public var kind: OpenRouterMcpApprovalRequestItemKind
+  public var kind: OpenRouterMcpApprovalRequestItem.Kind
 
   public init(
     arguments: String,
     id: String,
     name: String,
     serverLabel: String,
-    kind: OpenRouterMcpApprovalRequestItemKind
+    kind: OpenRouterMcpApprovalRequestItem.Kind
   ) {
     self.arguments = arguments
     self.id = id
@@ -37,5 +37,9 @@ public struct OpenRouterMcpApprovalRequestItem: Codable, Sendable {
     case name
     case serverLabel = "server_label"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case mcpApprovalRequest = "mcp_approval_request"
   }
 }

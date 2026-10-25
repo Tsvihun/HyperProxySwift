@@ -14,13 +14,13 @@ public struct ElevenLabsClosedOutcome: Codable, Sendable {
   public var at: Int
   public var byUserId: String?
   public var reason: ElevenLabsMergeProposalCloseReason
-  public var status: ElevenLabsClosedStatus?
+  public var status: ElevenLabsClosedOutcome.Status?
 
   public init(
     at: Int,
     byUserId: String?,
     reason: ElevenLabsMergeProposalCloseReason,
-    status: ElevenLabsClosedStatus? = nil
+    status: ElevenLabsClosedOutcome.Status? = nil
   ) {
     self.at = at
     self.byUserId = byUserId
@@ -33,5 +33,9 @@ public struct ElevenLabsClosedOutcome: Codable, Sendable {
     case byUserId = "by_user_id"
     case reason
     case status
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case closed = "closed"
   }
 }

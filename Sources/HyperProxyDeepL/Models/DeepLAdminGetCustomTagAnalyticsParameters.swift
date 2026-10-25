@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepLAdminGetCustomTagAnalyticsParameters: Codable, Sendable {
-  public var aggregateBy: DeepLAdminGetCustomTagAnalyticsParametersAggregateBy?
+  public var aggregateBy: DeepLAdminGetCustomTagAnalyticsParameters.AggregateBy?
   public var endDate: String
   public var page: Int?
   public var startDate: String
@@ -19,7 +19,7 @@ public struct DeepLAdminGetCustomTagAnalyticsParameters: Codable, Sendable {
   public init(
     endDate: String,
     startDate: String,
-    aggregateBy: DeepLAdminGetCustomTagAnalyticsParametersAggregateBy? = nil,
+    aggregateBy: DeepLAdminGetCustomTagAnalyticsParameters.AggregateBy? = nil,
     page: Int? = nil
   ) {
     self.aggregateBy = aggregateBy
@@ -33,5 +33,12 @@ public struct DeepLAdminGetCustomTagAnalyticsParameters: Codable, Sendable {
     case endDate = "end_date"
     case page
     case startDate = "start_date"
+  }
+
+  public enum AggregateBy: String, Codable, Hashable,
+    Sendable
+  {
+    case period = "period"
+    case day = "day"
   }
 }

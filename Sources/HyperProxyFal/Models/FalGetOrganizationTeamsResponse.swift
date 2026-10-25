@@ -11,15 +11,41 @@ import Foundation
 import HyperProxyCore
 
 public struct FalGetOrganizationTeamsResponse: Codable, Sendable {
-  public var teams: [FalGetOrganizationTeamsResponseTeamsItem]
+  public var teams: [FalGetOrganizationTeamsResponse.TeamsElement]
 
   public init(
-    teams: [FalGetOrganizationTeamsResponseTeamsItem]
+    teams: [FalGetOrganizationTeamsResponse.TeamsElement]
   ) {
     self.teams = teams
   }
 
   enum CodingKeys: String, CodingKey {
     case teams
+  }
+
+  public struct TeamsElement: Codable, Sendable {
+    public var createdAt: String
+    public var isOrgRoot: Bool
+    public var name: String
+    public var username: String
+
+    public init(
+      createdAt: String,
+      isOrgRoot: Bool,
+      name: String,
+      username: String
+    ) {
+      self.createdAt = createdAt
+      self.isOrgRoot = isOrgRoot
+      self.name = name
+      self.username = username
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case createdAt = "created_at"
+      case isOrgRoot = "is_org_root"
+      case name
+      case username
+    }
   }
 }

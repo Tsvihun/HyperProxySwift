@@ -15,14 +15,14 @@ public struct OpenAIWebhookEndpointListResource: Codable, Sendable {
   public var firstId: String?
   public var hasMore: Bool
   public var lastId: String?
-  public var object: OpenAIWebhookEndpointListResourceObject
+  public var object: OpenAIWebhookEndpointListResource.Object
 
   public init(
     data: [OpenAIWebhookEndpointBody],
     firstId: String?,
     hasMore: Bool,
     lastId: String?,
-    object: OpenAIWebhookEndpointListResourceObject
+    object: OpenAIWebhookEndpointListResource.Object
   ) {
     self.data = data
     self.firstId = firstId
@@ -37,5 +37,9 @@ public struct OpenAIWebhookEndpointListResource: Codable, Sendable {
     case hasMore = "has_more"
     case lastId = "last_id"
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case list = "list"
   }
 }

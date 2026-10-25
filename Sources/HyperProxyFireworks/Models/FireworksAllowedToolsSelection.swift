@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct FireworksAllowedToolsSelection: Codable, Sendable {
   public var allowedTools: FireworksAllowedToolsConfig
-  public var kind: FireworksAllowedToolsKind
+  public var kind: FireworksAllowedToolsSelection.Kind
 
   public init(
     allowedTools: FireworksAllowedToolsConfig,
-    kind: FireworksAllowedToolsKind = .allowedTools
+    kind: FireworksAllowedToolsSelection.Kind = .allowedTools
   ) {
     self.allowedTools = allowedTools
     self.kind = kind
@@ -25,5 +25,9 @@ public struct FireworksAllowedToolsSelection: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case allowedTools = "allowed_tools"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case allowedTools = "allowed_tools"
   }
 }

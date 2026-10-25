@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIWebhookEventTypeListResource: Codable, Sendable {
   public var data: [String]
-  public var object: OpenAIWebhookEventTypeListResourceObject
+  public var object: OpenAIWebhookEventTypeListResource.Object
 
   public init(
     data: [String],
-    object: OpenAIWebhookEventTypeListResourceObject
+    object: OpenAIWebhookEventTypeListResource.Object
   ) {
     self.data = data
     self.object = object
@@ -25,5 +25,9 @@ public struct OpenAIWebhookEventTypeListResource: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case data
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case list = "list"
   }
 }

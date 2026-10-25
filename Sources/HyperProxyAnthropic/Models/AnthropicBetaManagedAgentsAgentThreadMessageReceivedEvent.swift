@@ -16,14 +16,14 @@ public struct AnthropicBetaManagedAgentsAgentThreadMessageReceivedEvent: Codable
   public var fromSessionThreadId: String
   public var id: String
   public var processedAt: AnthropicBetaTimestamp
-  public var kind: AnthropicBetaManagedAgentsAgentThreadMessageReceivedEventKind
+  public var kind: AnthropicBetaManagedAgentsAgentThreadMessageReceivedEvent.Kind
 
   public init(
     content: [AnthropicBetaManagedAgentsUserContentBlock],
     fromSessionThreadId: String,
     id: String,
     processedAt: AnthropicBetaTimestamp,
-    kind: AnthropicBetaManagedAgentsAgentThreadMessageReceivedEventKind,
+    kind: AnthropicBetaManagedAgentsAgentThreadMessageReceivedEvent.Kind,
     fromAgentName: String? = nil
   ) {
     self.content = content
@@ -41,5 +41,11 @@ public struct AnthropicBetaManagedAgentsAgentThreadMessageReceivedEvent: Codable
     case id
     case processedAt = "processed_at"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case agentThreadMessageReceived = "agent.thread_message_received"
   }
 }

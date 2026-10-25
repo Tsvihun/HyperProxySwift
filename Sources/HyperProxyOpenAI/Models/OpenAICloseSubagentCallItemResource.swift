@@ -16,7 +16,7 @@ public struct OpenAICloseSubagentCallItemResource: Codable, Sendable {
   public var senderAgentId: String
   public var status: OpenAIFunctionCallStatusResource
   public var turnId: String
-  public var kind: OpenAICloseSubagentCallItemResourceKind
+  public var kind: OpenAICloseSubagentCallItemResource.Kind
 
   public init(
     id: String,
@@ -24,7 +24,7 @@ public struct OpenAICloseSubagentCallItemResource: Codable, Sendable {
     senderAgentId: String,
     status: OpenAIFunctionCallStatusResource,
     turnId: String,
-    kind: OpenAICloseSubagentCallItemResourceKind
+    kind: OpenAICloseSubagentCallItemResource.Kind
   ) {
     self.id = id
     self.recipientAgentId = recipientAgentId
@@ -41,5 +41,9 @@ public struct OpenAICloseSubagentCallItemResource: Codable, Sendable {
     case status
     case turnId = "turn_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case closeSubagentCall = "close_subagent_call"
   }
 }

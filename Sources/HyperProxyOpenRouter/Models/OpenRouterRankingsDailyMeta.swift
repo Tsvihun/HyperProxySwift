@@ -14,13 +14,13 @@ public struct OpenRouterRankingsDailyMeta: Codable, Sendable {
   public var asOf: String
   public var endDate: String
   public var startDate: String
-  public var version: OpenRouterRankingsDailyMetaVersion
+  public var version: OpenRouterRankingsDailyMeta.Version
 
   public init(
     asOf: String,
     endDate: String,
     startDate: String,
-    version: OpenRouterRankingsDailyMetaVersion
+    version: OpenRouterRankingsDailyMeta.Version
   ) {
     self.asOf = asOf
     self.endDate = endDate
@@ -33,5 +33,9 @@ public struct OpenRouterRankingsDailyMeta: Codable, Sendable {
     case endDate = "end_date"
     case startDate = "start_date"
     case version
+  }
+
+  public enum Version: String, Codable, Hashable, Sendable {
+    case v1 = "v1"
   }
 }

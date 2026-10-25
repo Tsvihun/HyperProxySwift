@@ -11,9 +11,9 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksGatewayClusterState: String, Codable, Hashable, Sendable {
-  case sTATEUNSPECIFIED = "STATE_UNSPECIFIED"
-  case cREATING = "CREATING"
-  case rEADY = "READY"
-  case dELETING = "DELETING"
-  case fAILED = "FAILED"
+  case stateUnspecified = "STATE_UNSPECIFIED"
+  case creating = "CREATING"
+  case ready = "READY"
+  case deleting = "DELETING"
+  case failed = "FAILED"
 }

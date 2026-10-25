@@ -14,14 +14,14 @@ public struct StabilityPostV2betaStableImageEditEraseRequest: Codable, Sendable 
   public var growMask: Double?
   public var image: String
   public var mask: String?
-  public var outputFormat: StabilityPostV2betaStableImageEditEraseRequestOutputFormat?
+  public var outputFormat: StabilityPostV2betaStableImageEditEraseRequest.OutputFormat?
   public var seed: Double?
 
   public init(
     image: String,
     growMask: Double? = nil,
     mask: String? = nil,
-    outputFormat: StabilityPostV2betaStableImageEditEraseRequestOutputFormat? = nil,
+    outputFormat: StabilityPostV2betaStableImageEditEraseRequest.OutputFormat? = nil,
     seed: Double? = nil
   ) {
     self.growMask = growMask
@@ -37,5 +37,13 @@ public struct StabilityPostV2betaStableImageEditEraseRequest: Codable, Sendable 
     case mask
     case outputFormat = "output_format"
     case seed
+  }
+
+  public enum OutputFormat: String, Codable, Hashable,
+    Sendable
+  {
+    case jpeg = "jpeg"
+    case png = "png"
+    case webp = "webp"
   }
 }

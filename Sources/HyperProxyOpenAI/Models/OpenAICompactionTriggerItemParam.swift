@@ -12,10 +12,10 @@ import HyperProxyCore
 
 public struct OpenAICompactionTriggerItemParam: Codable, Sendable {
   public var id: String?
-  public var kind: OpenAICompactionTriggerItemParamKind
+  public var kind: OpenAICompactionTriggerItemParam.Kind
 
   public init(
-    kind: OpenAICompactionTriggerItemParamKind,
+    kind: OpenAICompactionTriggerItemParam.Kind,
     id: String? = nil
   ) {
     self.id = id
@@ -25,5 +25,9 @@ public struct OpenAICompactionTriggerItemParam: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case id
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case compactionTrigger = "compaction_trigger"
   }
 }

@@ -15,14 +15,14 @@ public struct OpenAIComputerUseApprovalRequestResultItemResource: Codable, Senda
   public var requestId: String
   public var response: OpenAIComputerUseApprovalResponseKindResource
   public var turnId: String
-  public var kind: OpenAIComputerUseApprovalRequestResultItemResourceKind
+  public var kind: OpenAIComputerUseApprovalRequestResultItemResource.Kind
 
   public init(
     id: String,
     requestId: String,
     response: OpenAIComputerUseApprovalResponseKindResource,
     turnId: String,
-    kind: OpenAIComputerUseApprovalRequestResultItemResourceKind
+    kind: OpenAIComputerUseApprovalRequestResultItemResource.Kind
   ) {
     self.id = id
     self.requestId = requestId
@@ -37,5 +37,11 @@ public struct OpenAIComputerUseApprovalRequestResultItemResource: Codable, Senda
     case response
     case turnId = "turn_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case computerUseApprovalRequestResult = "computer_use_approval_request_result"
   }
 }

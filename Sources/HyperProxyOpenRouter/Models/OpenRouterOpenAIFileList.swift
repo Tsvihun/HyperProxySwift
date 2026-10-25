@@ -11,22 +11,22 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterOpenAIFileList: Codable, Sendable {
-  public var shape: OpenRouterOpenAIFileListShape
+  public var _shape: OpenRouterOpenAIFileList.Shape
   public var data: [OpenRouterOpenAIFile]
   public var firstId: String
   public var hasMore: Bool
   public var lastId: String
-  public var object: OpenRouterOpenAIFileListObject
+  public var object: OpenRouterOpenAIFileList.Object
 
   public init(
-    shape: OpenRouterOpenAIFileListShape,
+    _shape: OpenRouterOpenAIFileList.Shape,
     data: [OpenRouterOpenAIFile],
     firstId: String,
     hasMore: Bool,
     lastId: String,
-    object: OpenRouterOpenAIFileListObject
+    object: OpenRouterOpenAIFileList.Object
   ) {
-    self.shape = shape
+    self._shape = _shape
     self.data = data
     self.firstId = firstId
     self.hasMore = hasMore
@@ -35,11 +35,19 @@ public struct OpenRouterOpenAIFileList: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
-    case shape = "_shape"
+    case _shape
     case data
     case firstId = "first_id"
     case hasMore = "has_more"
     case lastId = "last_id"
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case list = "list"
+  }
+
+  public enum Shape: String, Codable, Hashable, Sendable {
+    case openai = "openai"
   }
 }

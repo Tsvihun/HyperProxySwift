@@ -12,10 +12,10 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsUserInterruptEventParams: Codable, Sendable {
   public var sessionThreadId: String?
-  public var kind: AnthropicBetaManagedAgentsUserInterruptEventParamsKind
+  public var kind: AnthropicBetaManagedAgentsUserInterruptEventParams.Kind
 
   public init(
-    kind: AnthropicBetaManagedAgentsUserInterruptEventParamsKind,
+    kind: AnthropicBetaManagedAgentsUserInterruptEventParams.Kind,
     sessionThreadId: String? = nil
   ) {
     self.sessionThreadId = sessionThreadId
@@ -25,5 +25,11 @@ public struct AnthropicBetaManagedAgentsUserInterruptEventParams: Codable, Senda
   enum CodingKeys: String, CodingKey {
     case sessionThreadId = "session_thread_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case userInterrupt = "user.interrupt"
   }
 }

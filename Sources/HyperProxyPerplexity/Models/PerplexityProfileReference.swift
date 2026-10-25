@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct PerplexityProfileReference: Codable, Sendable {
   public var id: String
-  public var kind: PerplexityProfileReferenceKind
+  public var kind: PerplexityProfileReference.Kind
   public var version: String?
 
   public init(
     id: String,
-    kind: PerplexityProfileReferenceKind,
+    kind: PerplexityProfileReference.Kind,
     version: String? = nil
   ) {
     self.id = id
@@ -29,5 +29,9 @@ public struct PerplexityProfileReference: Codable, Sendable {
     case id
     case kind = "type"
     case version
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case custom = "custom"
   }
 }

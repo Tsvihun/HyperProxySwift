@@ -11,4 +11,4 @@ import Foundation
 import HyperProxyCore
 
 public typealias OpenAIVectorStoreFileAttributes = [String:
-  OpenAIVectorStoreFileAttributesAnyOf1Value]?
+  OpenAIVectorStoreFileAttributesValue]?

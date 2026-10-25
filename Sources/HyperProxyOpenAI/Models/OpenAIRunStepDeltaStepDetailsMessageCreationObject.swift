@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIRunStepDeltaStepDetailsMessageCreationObject: Codable, Sendable {
-  public var messageCreation: OpenAIRunStepDeltaStepDetailsMessageCreationObjectMessageCreation?
-  public var kind: OpenAIRunStepDeltaStepDetailsMessageCreationObjectKind
+  public var messageCreation: OpenAIRunStepDeltaStepDetailsMessageCreationObject.MessageCreation?
+  public var kind: OpenAIRunStepDeltaStepDetailsMessageCreationObject.Kind
 
   public init(
-    kind: OpenAIRunStepDeltaStepDetailsMessageCreationObjectKind,
-    messageCreation: OpenAIRunStepDeltaStepDetailsMessageCreationObjectMessageCreation? = nil
+    kind: OpenAIRunStepDeltaStepDetailsMessageCreationObject.Kind,
+    messageCreation: OpenAIRunStepDeltaStepDetailsMessageCreationObject.MessageCreation? = nil
   ) {
     self.messageCreation = messageCreation
     self.kind = kind
@@ -25,5 +25,25 @@ public struct OpenAIRunStepDeltaStepDetailsMessageCreationObject: Codable, Senda
   enum CodingKeys: String, CodingKey {
     case messageCreation = "message_creation"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case messageCreation = "message_creation"
+  }
+
+  public struct MessageCreation: Codable, Sendable {
+    public var messageId: String?
+
+    public init(
+      messageId: String? = nil
+    ) {
+      self.messageId = messageId
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case messageId = "message_id"
+    }
   }
 }

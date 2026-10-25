@@ -11,16 +11,16 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherImageResponse: Codable, Sendable {
-  public var data: [TogetherImageResponseDataItem]
+  public var data: [TogetherImageResponse.DataElement]
   public var id: String
   public var model: String
-  public var object: TogetherListObject1dee9a01
+  public var object: TogetherListObject
 
   public init(
-    data: [TogetherImageResponseDataItem],
+    data: [TogetherImageResponse.DataElement],
     id: String,
     model: String,
-    object: TogetherListObject1dee9a01 = .list
+    object: TogetherListObject = .list
   ) {
     self.data = data
     self.id = id
@@ -33,5 +33,29 @@ public struct TogetherImageResponse: Codable, Sendable {
     case id
     case model
     case object
+  }
+
+  public enum DataElement: Codable, Sendable {
+    case imageResponseDataB64(TogetherImageResponseDataB64)
+    case imageResponseDataUrl(TogetherImageResponseDataUrl)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(TogetherImageResponseDataB64.self) {
+        self = .imageResponseDataB64(value)
+        return
+      }
+      self = .imageResponseDataUrl(try container.decode(TogetherImageResponseDataUrl.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .imageResponseDataB64(let value):
+        try container.encode(value)
+      case .imageResponseDataUrl(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

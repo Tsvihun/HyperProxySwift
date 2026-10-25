@@ -15,7 +15,7 @@ public struct OpenAIC2PAProvenanceResult: Codable, Sendable {
   public var issuer: String?
   public var model: String?
   public var outcome: OpenAIProvenanceDetectionResultApi
-  public var kind: OpenAIC2PAProvenanceResultKind
+  public var kind: OpenAIC2PAProvenanceResult.Kind
   public var validationState: OpenAIC2PAValidationStateApi
 
   public init(
@@ -23,7 +23,7 @@ public struct OpenAIC2PAProvenanceResult: Codable, Sendable {
     issuer: String?,
     model: String?,
     outcome: OpenAIProvenanceDetectionResultApi,
-    kind: OpenAIC2PAProvenanceResultKind,
+    kind: OpenAIC2PAProvenanceResult.Kind,
     validationState: OpenAIC2PAValidationStateApi
   ) {
     self.generatedAt = generatedAt
@@ -41,5 +41,9 @@ public struct OpenAIC2PAProvenanceResult: Codable, Sendable {
     case outcome
     case kind = "type"
     case validationState = "validation_state"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case c2pa = "c2pa"
   }
 }

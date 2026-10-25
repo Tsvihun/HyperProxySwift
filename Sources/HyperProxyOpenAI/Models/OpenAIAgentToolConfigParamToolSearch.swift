@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIAgentToolConfigParamToolSearch: Codable, Sendable {
-  public var kind: OpenAIAgentToolConfigParamToolSearchKind
+  public var kind: OpenAIAgentToolConfigParamToolSearch.Kind
 
   public init(
-    kind: OpenAIAgentToolConfigParamToolSearchKind
+    kind: OpenAIAgentToolConfigParamToolSearch.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case toolSearch = "tool_search"
   }
 }

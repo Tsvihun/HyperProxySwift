@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct ElevenLabsInlineAudioReference: Codable, Sendable {
   public var contentBase64: String
-  public var mimeType: ElevenLabsInlineAudioReferenceMimeType
+  public var mimeType: ElevenLabsInlineAudioReference.MimeType
   public var kind: ElevenLabsInlineBase64Kind
 
   public init(
     contentBase64: String,
-    mimeType: ElevenLabsInlineAudioReferenceMimeType,
+    mimeType: ElevenLabsInlineAudioReference.MimeType,
     kind: ElevenLabsInlineBase64Kind = .inlineBase64
   ) {
     self.contentBase64 = contentBase64
@@ -29,5 +29,10 @@ public struct ElevenLabsInlineAudioReference: Codable, Sendable {
     case contentBase64 = "content_base64"
     case mimeType = "mime_type"
     case kind = "type"
+  }
+
+  public enum MimeType: String, Codable, Hashable, Sendable {
+    case audioMpeg = "audio/mpeg"
+    case audioWav = "audio/wav"
   }
 }

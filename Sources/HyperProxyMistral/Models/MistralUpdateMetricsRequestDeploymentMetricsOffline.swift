@@ -12,10 +12,10 @@ import HyperProxyCore
 
 public struct MistralUpdateMetricsRequestDeploymentMetricsOffline: Codable, Sendable {
   public var clearMetrics: Bool?
-  public var status: MistralOfflineStatus
+  public var status: MistralUpdateMetricsRequestDeploymentMetricsOffline.Status
 
   public init(
-    status: MistralOfflineStatus = .offline,
+    status: MistralUpdateMetricsRequestDeploymentMetricsOffline.Status = .offline,
     clearMetrics: Bool? = nil
   ) {
     self.clearMetrics = clearMetrics
@@ -25,5 +25,9 @@ public struct MistralUpdateMetricsRequestDeploymentMetricsOffline: Codable, Send
   enum CodingKeys: String, CodingKey {
     case clearMetrics = "clear_metrics"
     case status
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case offline = "offline"
   }
 }

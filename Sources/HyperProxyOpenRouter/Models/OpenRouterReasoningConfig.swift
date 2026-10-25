@@ -10,4 +10,4 @@
 import Foundation
 import HyperProxyCore
 
-public typealias OpenRouterReasoningConfig = OpenRouterReasoningConfigAnyOf1?
+public typealias OpenRouterReasoningConfig = OpenRouterReasoningConfigVariant?

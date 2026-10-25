@@ -17,7 +17,7 @@ public struct AnthropicBetaManagedAgentsUserDefineOutcomeEvent: Codable, Sendabl
   public var outcomeId: String
   public var processedAt: AnthropicBetaTimestamp
   public var rubric: AnthropicBetaManagedAgentsRubric
-  public var kind: AnthropicBetaManagedAgentsUserDefineOutcomeEventKind
+  public var kind: AnthropicBetaManagedAgentsUserDefineOutcomeEvent.Kind
 
   public init(
     description: String,
@@ -26,7 +26,7 @@ public struct AnthropicBetaManagedAgentsUserDefineOutcomeEvent: Codable, Sendabl
     outcomeId: String,
     processedAt: AnthropicBetaTimestamp,
     rubric: AnthropicBetaManagedAgentsRubric,
-    kind: AnthropicBetaManagedAgentsUserDefineOutcomeEventKind
+    kind: AnthropicBetaManagedAgentsUserDefineOutcomeEvent.Kind
   ) {
     self.description = description
     self.id = id
@@ -45,5 +45,11 @@ public struct AnthropicBetaManagedAgentsUserDefineOutcomeEvent: Codable, Sendabl
     case processedAt = "processed_at"
     case rubric
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case userDefineOutcome = "user.define_outcome"
   }
 }

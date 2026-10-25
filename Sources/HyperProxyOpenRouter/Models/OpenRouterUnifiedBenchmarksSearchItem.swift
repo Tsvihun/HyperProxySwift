@@ -13,30 +13,30 @@ import HyperProxyCore
 public struct OpenRouterUnifiedBenchmarksSearchItem: Codable, Sendable {
   public var avgCostPerTask: Double
   public var avgLatencyPerTaskMs: Double
-  public var benchmarkType: OpenRouterUnifiedBenchmarksSearchItemBenchmarkType
+  public var benchmarkType: OpenRouterUnifiedBenchmarksSearchItem.BenchmarkType
   public var displayName: String
   public var lastRunTimestamp: String
   public var modelPermaslug: String
-  public var primaryMetric: OpenRouterUnifiedBenchmarksSearchItemPrimaryMetric
+  public var primaryMetric: OpenRouterUnifiedBenchmarksSearchItem.PrimaryMetric
   public var primaryScore: Double
   public var runConfig: OpenRouterUnifiedBenchmarksSearchRunConfig?
   public var searchEngine: String
-  public var searchSurface: OpenRouterUnifiedBenchmarksSearchItemSearchSurface
-  public var source: OpenRouterUnifiedBenchmarksSearchItemSource
+  public var searchSurface: OpenRouterUnifiedBenchmarksSearchItem.SearchSurface
+  public var source: OpenRouterUnifiedBenchmarksSearchItem.Source
   public var totalTasks: Int
 
   public init(
     avgCostPerTask: Double,
     avgLatencyPerTaskMs: Double,
-    benchmarkType: OpenRouterUnifiedBenchmarksSearchItemBenchmarkType,
+    benchmarkType: OpenRouterUnifiedBenchmarksSearchItem.BenchmarkType,
     displayName: String,
     lastRunTimestamp: String,
     modelPermaslug: String,
-    primaryMetric: OpenRouterUnifiedBenchmarksSearchItemPrimaryMetric,
+    primaryMetric: OpenRouterUnifiedBenchmarksSearchItem.PrimaryMetric,
     primaryScore: Double,
     searchEngine: String,
-    searchSurface: OpenRouterUnifiedBenchmarksSearchItemSearchSurface,
-    source: OpenRouterUnifiedBenchmarksSearchItemSource,
+    searchSurface: OpenRouterUnifiedBenchmarksSearchItem.SearchSurface,
+    source: OpenRouterUnifiedBenchmarksSearchItem.Source,
     totalTasks: Int,
     runConfig: OpenRouterUnifiedBenchmarksSearchRunConfig? = nil
   ) {
@@ -69,5 +69,26 @@ public struct OpenRouterUnifiedBenchmarksSearchItem: Codable, Sendable {
     case searchSurface = "search_surface"
     case source
     case totalTasks = "total_tasks"
+  }
+
+  public enum BenchmarkType: String, Codable, Hashable, Sendable {
+    case searchBrowsecomp = "search_browsecomp"
+    case searchHle = "search_hle"
+    case searchDsqa = "search_dsqa"
+    case searchWidesearch = "search_widesearch"
+  }
+
+  public enum PrimaryMetric: String, Codable, Hashable, Sendable {
+    case accuracy = "accuracy"
+    case f1ByItem = "f1_by_item"
+  }
+
+  public enum SearchSurface: String, Codable, Hashable, Sendable {
+    case serverTool = "server-tool"
+    case plugin = "plugin"
+  }
+
+  public enum Source: String, Codable, Hashable, Sendable {
+    case openrouter = "openrouter"
   }
 }

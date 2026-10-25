@@ -11,15 +11,21 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsToolExecution: Codable, Sendable {
-  public var taskSupport: ElevenLabsToolExecutionTaskSupport?
+  public var taskSupport: ElevenLabsToolExecution.TaskSupport?
 
   public init(
-    taskSupport: ElevenLabsToolExecutionTaskSupport? = nil
+    taskSupport: ElevenLabsToolExecution.TaskSupport? = nil
   ) {
     self.taskSupport = taskSupport
   }
 
   enum CodingKeys: String, CodingKey {
     case taskSupport
+  }
+
+  public enum TaskSupport: String, Codable, Hashable, Sendable {
+    case forbidden = "forbidden"
+    case optionalValue = "optional"
+    case requiredValue = "required"
   }
 }

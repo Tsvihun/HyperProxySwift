@@ -11,15 +11,40 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaResponseContextManagement: Codable, Sendable {
-  public var appliedEdits: [AnthropicBetaResponseContextManagementAppliedEditsItem]
+  public var appliedEdits: [AnthropicBetaResponseContextManagement.AppliedEditsElement]
 
   public init(
-    appliedEdits: [AnthropicBetaResponseContextManagementAppliedEditsItem]
+    appliedEdits: [AnthropicBetaResponseContextManagement.AppliedEditsElement]
   ) {
     self.appliedEdits = appliedEdits
   }
 
   enum CodingKeys: String, CodingKey {
     case appliedEdits = "applied_edits"
+  }
+
+  public enum AppliedEditsElement: Codable, Sendable {
+    case betaResponseClearToolUses20250919Edit(AnthropicBetaResponseClearToolUses20250919Edit)
+    case betaResponseClearThinking20251015Edit(AnthropicBetaResponseClearThinking20251015Edit)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(AnthropicBetaResponseClearToolUses20250919Edit.self) {
+        self = .betaResponseClearToolUses20250919Edit(value)
+        return
+      }
+      self = .betaResponseClearThinking20251015Edit(
+        try container.decode(AnthropicBetaResponseClearThinking20251015Edit.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .betaResponseClearToolUses20250919Edit(let value):
+        try container.encode(value)
+      case .betaResponseClearThinking20251015Edit(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

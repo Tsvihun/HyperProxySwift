@@ -17,7 +17,7 @@ public struct MistralUsersApiAdminAuditLogsGetAuditLogsParameters: Codable, Send
   public var before: String?
   public var eventType: [MistralAuditLogEventType]?
   public var limit: Int?
-  public var sort: MistralUsersApiAdminAuditLogsGetAuditLogsParametersSortAllOf1?
+  public var sort: MistralUsersApiAdminAuditLogsGetAuditLogsParametersSortAuditLogsSorting?
   public var targetType: [MistralTargetType]?
 
   public init(
@@ -27,7 +27,7 @@ public struct MistralUsersApiAdminAuditLogsGetAuditLogsParameters: Codable, Send
     before: String? = nil,
     eventType: [MistralAuditLogEventType]? = nil,
     limit: Int? = nil,
-    sort: MistralUsersApiAdminAuditLogsGetAuditLogsParametersSortAllOf1? = nil,
+    sort: MistralUsersApiAdminAuditLogsGetAuditLogsParametersSortAuditLogsSorting? = nil,
     targetType: [MistralTargetType]? = nil
   ) {
     self.actorType = actorType

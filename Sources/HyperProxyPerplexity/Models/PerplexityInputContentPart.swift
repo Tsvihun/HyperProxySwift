@@ -16,10 +16,10 @@ public struct PerplexityInputContentPart: Codable, Sendable {
   public var filename: String?
   public var imageUrl: String?
   public var text: String?
-  public var kind: PerplexityInputContentPartKind
+  public var kind: PerplexityInputContentPart.Kind
 
   public init(
-    kind: PerplexityInputContentPartKind,
+    kind: PerplexityInputContentPart.Kind,
     fileData: String? = nil,
     fileUrl: String? = nil,
     filename: String? = nil,
@@ -41,5 +41,11 @@ public struct PerplexityInputContentPart: Codable, Sendable {
     case imageUrl = "image_url"
     case text
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case inputText = "input_text"
+    case inputImage = "input_image"
+    case inputFile = "input_file"
   }
 }

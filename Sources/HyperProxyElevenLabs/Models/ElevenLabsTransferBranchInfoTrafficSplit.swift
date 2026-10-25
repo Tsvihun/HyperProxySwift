@@ -12,13 +12,13 @@ import HyperProxyCore
 
 public struct ElevenLabsTransferBranchInfoTrafficSplit: Codable, Sendable {
   public var branchId: String
-  public var branchReason: ElevenLabsTrafficSplitBranchReason
+  public var branchReason: ElevenLabsTransferBranchInfoTrafficSplit.BranchReason
   public var trafficPercentage: Double
 
   public init(
     branchId: String,
     trafficPercentage: Double,
-    branchReason: ElevenLabsTrafficSplitBranchReason = .trafficSplit
+    branchReason: ElevenLabsTransferBranchInfoTrafficSplit.BranchReason = .trafficSplit
   ) {
     self.branchId = branchId
     self.branchReason = branchReason
@@ -29,5 +29,9 @@ public struct ElevenLabsTransferBranchInfoTrafficSplit: Codable, Sendable {
     case branchId = "branch_id"
     case branchReason = "branch_reason"
     case trafficPercentage = "traffic_percentage"
+  }
+
+  public enum BranchReason: String, Codable, Hashable, Sendable {
+    case trafficSplit = "traffic_split"
   }
 }

@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherEvaluationScoreResults: Codable, Sendable {
-  public var aggregatedScores: TogetherEvaluationScoreResultsAggregatedScores?
+  public var aggregatedScores: TogetherEvaluationScoreResults.AggregatedScores?
   public var failedSamples: Double?
   public var generationFailCount: Double?
   public var invalidScoreCount: Double?
@@ -19,7 +19,7 @@ public struct TogetherEvaluationScoreResults: Codable, Sendable {
   public var resultFileId: String?
 
   public init(
-    aggregatedScores: TogetherEvaluationScoreResultsAggregatedScores? = nil,
+    aggregatedScores: TogetherEvaluationScoreResults.AggregatedScores? = nil,
     failedSamples: Double? = nil,
     generationFailCount: Double? = nil,
     invalidScoreCount: Double? = nil,
@@ -41,5 +41,27 @@ public struct TogetherEvaluationScoreResults: Codable, Sendable {
     case invalidScoreCount = "invalid_score_count"
     case judgeFailCount = "judge_fail_count"
     case resultFileId = "result_file_id"
+  }
+
+  public struct AggregatedScores: Codable, Sendable {
+    public var meanScore: Double?
+    public var passPercentage: Double?
+    public var stdScore: Double?
+
+    public init(
+      meanScore: Double? = nil,
+      passPercentage: Double? = nil,
+      stdScore: Double? = nil
+    ) {
+      self.meanScore = meanScore
+      self.passPercentage = passPercentage
+      self.stdScore = stdScore
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case meanScore = "mean_score"
+      case passPercentage = "pass_percentage"
+      case stdScore = "std_score"
+    }
   }
 }

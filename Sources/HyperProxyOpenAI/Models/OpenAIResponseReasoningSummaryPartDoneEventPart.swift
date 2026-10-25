@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIResponseReasoningSummaryPartDoneEventPart: Codable, Sendable {
   public var text: String
-  public var kind: OpenAIResponseReasoningSummaryPartDoneEventPartKind
+  public var kind: OpenAIResponseReasoningSummaryPartDoneEventPart.Kind
 
   public init(
     text: String,
-    kind: OpenAIResponseReasoningSummaryPartDoneEventPartKind
+    kind: OpenAIResponseReasoningSummaryPartDoneEventPart.Kind
   ) {
     self.text = text
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenAIResponseReasoningSummaryPartDoneEventPart: Codable, Sendable
   enum CodingKeys: String, CodingKey {
     case text
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case summaryText = "summary_text"
   }
 }

@@ -14,13 +14,13 @@ public struct TogetherDEEndpointUpdate: Codable, Sendable {
   public var etag: String?
   public var name: String?
   public var trafficSplit: [TogetherDETrafficSplitEntry]?
-  public var visibility: TogetherDEEndpointUpdateVisibility?
+  public var visibility: TogetherDEEndpointUpdate.Visibility?
 
   public init(
     etag: String? = nil,
     name: String? = nil,
     trafficSplit: [TogetherDETrafficSplitEntry]? = nil,
-    visibility: TogetherDEEndpointUpdateVisibility? = nil
+    visibility: TogetherDEEndpointUpdate.Visibility? = nil
   ) {
     self.etag = etag
     self.name = name
@@ -33,5 +33,10 @@ public struct TogetherDEEndpointUpdate: Codable, Sendable {
     case name
     case trafficSplit
     case visibility
+  }
+
+  public enum Visibility: String, Codable, Hashable, Sendable {
+    case visibilityPrivate = "VISIBILITY_PRIVATE"
+    case visibilityInternal = "VISIBILITY_INTERNAL"
   }
 }

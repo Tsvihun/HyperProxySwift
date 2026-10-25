@@ -15,10 +15,10 @@ public struct TogetherEndpointServiceListEndpointEventsParameters: Codable, Send
   public var deploymentIds: [String]?
   public var id: String
   public var limit: Int?
-  public var minLevel: TogetherEndpointServiceListEndpointEventsParametersMinLevel?
+  public var minLevel: TogetherEndpointServiceListEndpointEventsParameters.MinLevel?
   public var projectId: String
   public var since: String?
-  public var sourceKinds: [TogetherEndpointServiceListEndpointEventsParametersSourceKindsItem]?
+  public var sourceKinds: [TogetherEndpointServiceListEndpointEventsParameters.SourceKindsElement]?
   public var subjectId: String?
   public var types: [String]?
   public var until: String?
@@ -29,9 +29,9 @@ public struct TogetherEndpointServiceListEndpointEventsParameters: Codable, Send
     after: String? = nil,
     deploymentIds: [String]? = nil,
     limit: Int? = nil,
-    minLevel: TogetherEndpointServiceListEndpointEventsParametersMinLevel? = nil,
+    minLevel: TogetherEndpointServiceListEndpointEventsParameters.MinLevel? = nil,
     since: String? = nil,
-    sourceKinds: [TogetherEndpointServiceListEndpointEventsParametersSourceKindsItem]? = nil,
+    sourceKinds: [TogetherEndpointServiceListEndpointEventsParameters.SourceKindsElement]? = nil,
     subjectId: String? = nil,
     types: [String]? = nil,
     until: String? = nil
@@ -61,5 +61,21 @@ public struct TogetherEndpointServiceListEndpointEventsParameters: Codable, Send
     case subjectId
     case types
     case until
+  }
+
+  public enum MinLevel: String, Codable, Hashable,
+    Sendable
+  {
+    case levelDebug = "LEVEL_DEBUG"
+    case levelInfo = "LEVEL_INFO"
+    case levelWarn = "LEVEL_WARN"
+    case levelError = "LEVEL_ERROR"
+  }
+
+  public enum SourceKindsElement: String, Codable,
+    Hashable, Sendable
+  {
+    case sourceKindEndpoint = "SOURCE_KIND_ENDPOINT"
+    case sourceKindDeployment = "SOURCE_KIND_DEPLOYMENT"
   }
 }

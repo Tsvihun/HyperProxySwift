@@ -15,12 +15,12 @@ public struct DeepSeekFileList: Codable, Sendable {
   public var firstId: String?
   public var hasMore: Bool
   public var lastId: String?
-  public var object: DeepSeekFileListObject
+  public var object: DeepSeekFileList.Object
 
   public init(
     data: [DeepSeekFileObject],
     hasMore: Bool,
-    object: DeepSeekFileListObject,
+    object: DeepSeekFileList.Object,
     firstId: String? = nil,
     lastId: String? = nil
   ) {
@@ -37,5 +37,9 @@ public struct DeepSeekFileList: Codable, Sendable {
     case hasMore = "has_more"
     case lastId = "last_id"
     case object
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case list = "list"
   }
 }

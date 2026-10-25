@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterCreateScimGroupMappingRequest: Codable, Sendable {
-  public var role: OpenRouterCreateScimGroupMappingRequestRole
+  public var role: OpenRouterCreateScimGroupMappingRequest.Role
   public var scimGroupId: String
   public var workspaceId: String
 
   public init(
-    role: OpenRouterCreateScimGroupMappingRequestRole,
+    role: OpenRouterCreateScimGroupMappingRequest.Role,
     scimGroupId: String,
     workspaceId: String
   ) {
@@ -29,5 +29,10 @@ public struct OpenRouterCreateScimGroupMappingRequest: Codable, Sendable {
     case role
     case scimGroupId = "scim_group_id"
     case workspaceId = "workspace_id"
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case admin = "admin"
+    case member = "member"
   }
 }

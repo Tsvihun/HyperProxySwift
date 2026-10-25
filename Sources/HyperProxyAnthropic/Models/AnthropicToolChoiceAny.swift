@@ -15,7 +15,7 @@ public struct AnthropicToolChoiceAny: Codable, Sendable {
   public var kind: AnthropicAnyModelKind
 
   public init(
-    kind: AnthropicAnyModelKind = .anyModel,
+    kind: AnthropicAnyModelKind = .any,
     disableParallelToolUse: Bool? = nil
   ) {
     self.disableParallelToolUse = disableParallelToolUse

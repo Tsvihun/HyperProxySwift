@@ -20,7 +20,7 @@ public struct ElevenLabsConversationHistoryTranscriptSystemToolResultCommonModel
   public var rawErrorMessage: String?
   public var requestId: String
   public var result:
-    ElevenLabsConversationHistoryTranscriptSystemToolResultCommonModelOutputResultAnyOf1?
+    ElevenLabsConversationHistoryTranscriptSystemToolResultCommonModelOutputResultVariant?
   public var resultValue: String
   public var toolHasBeenCalled: Bool
   public var toolLatencySecs: Double?
@@ -38,7 +38,7 @@ public struct ElevenLabsConversationHistoryTranscriptSystemToolResultCommonModel
     errorType: String? = nil,
     isBlocked: Bool? = nil,
     rawErrorMessage: String? = nil,
-    result: ElevenLabsConversationHistoryTranscriptSystemToolResultCommonModelOutputResultAnyOf1? =
+    result: ElevenLabsConversationHistoryTranscriptSystemToolResultCommonModelOutputResultVariant? =
       nil,
     toolLatencySecs: Double? = nil
   ) {

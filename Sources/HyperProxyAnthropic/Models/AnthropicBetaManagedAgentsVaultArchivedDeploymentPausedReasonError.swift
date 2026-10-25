@@ -12,15 +12,21 @@ import HyperProxyCore
 
 public struct AnthropicBetaManagedAgentsVaultArchivedDeploymentPausedReasonError: Codable, Sendable
 {
-  public var kind: AnthropicBetaManagedAgentsVaultArchivedDeploymentPausedReasonErrorKind
+  public var kind: AnthropicBetaManagedAgentsVaultArchivedDeploymentPausedReasonError.Kind
 
   public init(
-    kind: AnthropicBetaManagedAgentsVaultArchivedDeploymentPausedReasonErrorKind
+    kind: AnthropicBetaManagedAgentsVaultArchivedDeploymentPausedReasonError.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case vaultArchivedError = "vault_archived_error"
   }
 }

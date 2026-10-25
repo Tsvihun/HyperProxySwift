@@ -11,23 +11,31 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterFileDeleted: Codable, Sendable {
-  public var shape: OpenRouterFileDeletedShape
+  public var _shape: OpenRouterFileDeleted.Shape
   public var id: String
-  public var kind: OpenRouterFileDeletedKind
+  public var kind: OpenRouterFileDeleted.Kind
 
   public init(
-    shape: OpenRouterFileDeletedShape,
+    _shape: OpenRouterFileDeleted.Shape,
     id: String,
-    kind: OpenRouterFileDeletedKind
+    kind: OpenRouterFileDeleted.Kind
   ) {
-    self.shape = shape
+    self._shape = _shape
     self.id = id
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
-    case shape = "_shape"
+    case _shape
     case id
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case fileDeleted = "file_deleted"
+  }
+
+  public enum Shape: String, Codable, Hashable, Sendable {
+    case openrouter = "openrouter"
   }
 }

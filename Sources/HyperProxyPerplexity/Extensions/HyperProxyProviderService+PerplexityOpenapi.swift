@@ -158,18 +158,72 @@ extension HyperProxyProviderService where Operation == PerplexityOperation {
     return try await prepared.decoded(PerplexityAsyncApiChatCompletionsResponse.self)
   }
 
-  public func getAsyncChatCompletionResponseAsyncChatCompletionsApiRequestGet(
-    apiRequest: String,
+  public func sonarRetrieveAsync(
+    requestId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
   ) async throws -> PerplexityAsyncApiChatCompletionsResponse {
-    let call = self.call(.getAsyncChatCompletionResponseAsyncChatCompletionsApiRequestGet)
-      .path("api_request", apiRequest)
+    let call = self.call(.sonarRetrieveAsync)
+      .path("request_id", requestId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(PerplexityAsyncApiChatCompletionsResponse.self)
+  }
+
+  public func listBatches(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> PerplexityBatchList {
+    let call = self.call(.listBatches)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(PerplexityBatchList.self)
+  }
+
+  public func createBatch(
+    _ body: PerplexityCreateBatchRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> PerplexityBatch {
+    let call = self.call(.createBatch)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(PerplexityBatch.self)
+  }
+
+  public func getBatch(
+    batchId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> PerplexityBatch {
+    let call = self.call(.getBatch)
+      .path("batch_id", batchId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(PerplexityBatch.self)
+  }
+
+  public func cancelBatch(
+    batchId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> PerplexityBatch {
+    let call = self.call(.cancelBatch)
+      .path("batch_id", batchId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(PerplexityBatch.self)
   }
 
   public func contextualizedEmbeddingsV1ContextualizedembeddingsPost(
@@ -212,6 +266,60 @@ extension HyperProxyProviderService where Operation == PerplexityOperation {
       .timeout(timeout)
     let prepared = try call.json(body)
     return try await prepared.decoded(PerplexityEmbeddingsResponse.self)
+  }
+
+  public func listFiles(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> PerplexityBatchFileList {
+    let call = self.call(.listFiles)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(PerplexityBatchFileList.self)
+  }
+
+  public func getFile(
+    fileId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> PerplexityBatchFile {
+    let call = self.call(.getFile)
+      .path("file_id", fileId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(PerplexityBatchFile.self)
+  }
+
+  public func deleteFile(
+    fileId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> PerplexityBatchFileDeleted {
+    let call = self.call(.deleteFile)
+      .path("file_id", fileId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(PerplexityBatchFileDeleted.self)
+  }
+
+  public func getFileContent(
+    fileId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<Data, Error> {
+    let call = self.call(.getFileContent)
+      .path("file_id", fileId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try call.bytes()
   }
 
   public func modelsList(

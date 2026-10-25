@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsDefaultSharingGroupConfig: Codable, Sendable {
   public var groupId: String
-  public var permissionLevel: ElevenLabsDefaultSharingGroupConfigPermissionLevel
+  public var permissionLevel: ElevenLabsDefaultSharingGroupConfig.PermissionLevel
 
   public init(
     groupId: String,
-    permissionLevel: ElevenLabsDefaultSharingGroupConfigPermissionLevel
+    permissionLevel: ElevenLabsDefaultSharingGroupConfig.PermissionLevel
   ) {
     self.groupId = groupId
     self.permissionLevel = permissionLevel
@@ -25,5 +25,11 @@ public struct ElevenLabsDefaultSharingGroupConfig: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case groupId = "group_id"
     case permissionLevel = "permission_level"
+  }
+
+  public enum PermissionLevel: String, Codable, Hashable, Sendable {
+    case admin = "admin"
+    case editor = "editor"
+    case viewer = "viewer"
   }
 }

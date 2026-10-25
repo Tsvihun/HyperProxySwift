@@ -15,18 +15,18 @@ public struct ElevenLabsEnvironmentVariableResponse: Codable, Sendable {
   public var createdByUserId: String?
   public var id: String
   public var label: String
-  public var kind: ElevenLabsEnvironmentVariableResponseKind
+  public var kind: ElevenLabsEnvironmentVariableResponse.Kind
   public var updatedAtUnixSecs: Int
-  public var values: ElevenLabsEnvironmentVariableResponseValues
+  public var values: ElevenLabsEnvironmentVariableResponse.Values
   public var workspaceId: String
 
   public init(
     createdAtUnixSecs: Int,
     id: String,
     label: String,
-    kind: ElevenLabsEnvironmentVariableResponseKind,
+    kind: ElevenLabsEnvironmentVariableResponse.Kind,
     updatedAtUnixSecs: Int,
-    values: ElevenLabsEnvironmentVariableResponseValues,
+    values: ElevenLabsEnvironmentVariableResponse.Values,
     workspaceId: String,
     createdByUserId: String? = nil
   ) {
@@ -49,5 +49,46 @@ public struct ElevenLabsEnvironmentVariableResponse: Codable, Sendable {
     case updatedAtUnixSecs = "updated_at_unix_secs"
     case values
     case workspaceId = "workspace_id"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case string = "string"
+    case secret = "secret"
+    case authConnection = "auth_connection"
+  }
+
+  public enum Values: Codable, Sendable {
+    case stringDictionary([String: String])
+    case environmentVariableSecretValueDictionary(
+      [String: ElevenLabsEnvironmentVariableSecretValue])
+    case environmentVariableAuthConnectionValueDictionary(
+      [String: ElevenLabsEnvironmentVariableAuthConnectionValue])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode([String: String].self) {
+        self = .stringDictionary(value)
+        return
+      }
+      if let value = try? container.decode([String: ElevenLabsEnvironmentVariableSecretValue].self)
+      {
+        self = .environmentVariableSecretValueDictionary(value)
+        return
+      }
+      self = .environmentVariableAuthConnectionValueDictionary(
+        try container.decode([String: ElevenLabsEnvironmentVariableAuthConnectionValue].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .stringDictionary(let value):
+        try container.encode(value)
+      case .environmentVariableSecretValueDictionary(let value):
+        try container.encode(value)
+      case .environmentVariableAuthConnectionValueDictionary(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

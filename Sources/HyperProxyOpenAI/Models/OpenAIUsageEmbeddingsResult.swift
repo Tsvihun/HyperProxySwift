@@ -15,14 +15,14 @@ public struct OpenAIUsageEmbeddingsResult: Codable, Sendable {
   public var inputTokens: Int
   public var model: String?
   public var numModelRequests: Int
-  public var object: OpenAIUsageEmbeddingsResultObject
+  public var object: OpenAIUsageEmbeddingsResult.Object
   public var projectId: String?
   public var userId: String?
 
   public init(
     inputTokens: Int,
     numModelRequests: Int,
-    object: OpenAIUsageEmbeddingsResultObject,
+    object: OpenAIUsageEmbeddingsResult.Object,
     apiKeyId: String? = nil,
     model: String? = nil,
     projectId: String? = nil,
@@ -45,5 +45,9 @@ public struct OpenAIUsageEmbeddingsResult: Codable, Sendable {
     case object
     case projectId = "project_id"
     case userId = "user_id"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case organizationUsageEmbeddingsResult = "organization.usage.embeddings.result"
   }
 }

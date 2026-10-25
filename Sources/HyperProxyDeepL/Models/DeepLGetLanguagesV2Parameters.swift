@@ -11,15 +11,20 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepLGetLanguagesV2Parameters: Codable, Sendable {
-  public var kind: DeepLGetLanguagesV2ParametersKind?
+  public var kind: DeepLGetLanguagesV2Parameters.Kind?
 
   public init(
-    kind: DeepLGetLanguagesV2ParametersKind? = nil
+    kind: DeepLGetLanguagesV2Parameters.Kind? = nil
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case source = "source"
+    case target = "target"
   }
 }

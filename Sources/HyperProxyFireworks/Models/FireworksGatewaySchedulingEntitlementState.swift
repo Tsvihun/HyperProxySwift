@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public enum FireworksGatewaySchedulingEntitlementState: String, Codable, Hashable, Sendable {
-  case sTATEUNSPECIFIED = "STATE_UNSPECIFIED"
-  case aCTIVE = "ACTIVE"
-  case cANCELLED = "CANCELLED"
+  case stateUnspecified = "STATE_UNSPECIFIED"
+  case active = "ACTIVE"
+  case cancelled = "CANCELLED"
 }

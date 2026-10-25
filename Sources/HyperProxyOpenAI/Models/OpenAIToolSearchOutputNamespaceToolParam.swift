@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct OpenAIToolSearchOutputNamespaceToolParam: Codable, Sendable {
   public var description: String
   public var name: String
-  public var tools: [OpenAIToolSearchOutputNamespaceToolParamToolsItem]
-  public var kind: OpenAIToolSearchOutputNamespaceToolParamKind
+  public var tools: [OpenAIToolSearchOutputNamespaceToolParam.ToolsElement]
+  public var kind: OpenAIToolSearchOutputNamespaceToolParam.Kind
 
   public init(
     description: String,
     name: String,
-    tools: [OpenAIToolSearchOutputNamespaceToolParamToolsItem],
-    kind: OpenAIToolSearchOutputNamespaceToolParamKind
+    tools: [OpenAIToolSearchOutputNamespaceToolParam.ToolsElement],
+    kind: OpenAIToolSearchOutputNamespaceToolParam.Kind
   ) {
     self.description = description
     self.name = name
@@ -33,5 +33,33 @@ public struct OpenAIToolSearchOutputNamespaceToolParam: Codable, Sendable {
     case name
     case tools
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case namespace = "namespace"
+  }
+
+  public enum ToolsElement: Codable, Sendable {
+    case toolSearchOutputFunctionToolParam(OpenAIToolSearchOutputFunctionToolParam)
+    case customToolParam(OpenAICustomToolParam)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenAIToolSearchOutputFunctionToolParam.self) {
+        self = .toolSearchOutputFunctionToolParam(value)
+        return
+      }
+      self = .customToolParam(try container.decode(OpenAICustomToolParam.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .toolSearchOutputFunctionToolParam(let value):
+        try container.encode(value)
+      case .customToolParam(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

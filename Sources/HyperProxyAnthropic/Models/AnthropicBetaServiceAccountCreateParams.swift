@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct AnthropicBetaServiceAccountCreateParams: Codable, Sendable {
   public var description: String?
   public var name: String
-  public var organizationRole: AnthropicBetaServiceAccountCreateParamsOrganizationRole?
+  public var organizationRole: AnthropicBetaServiceAccountCreateParams.OrganizationRole?
 
   public init(
     name: String,
     description: String? = nil,
-    organizationRole: AnthropicBetaServiceAccountCreateParamsOrganizationRole? = nil
+    organizationRole: AnthropicBetaServiceAccountCreateParams.OrganizationRole? = nil
   ) {
     self.description = description
     self.name = name
@@ -29,5 +29,12 @@ public struct AnthropicBetaServiceAccountCreateParams: Codable, Sendable {
     case description
     case name
     case organizationRole = "organization_role"
+  }
+
+  public enum OrganizationRole: String, Codable, Hashable,
+    Sendable
+  {
+    case admin = "admin"
+    case developer = "developer"
   }
 }

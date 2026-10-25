@@ -11,29 +11,29 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsBytedanceSeedance25Request: Codable, Sendable {
-  public var aspectRatio: ElevenLabsBytedanceSeedance25RequestAspectRatio?
+  public var aspectRatio: ElevenLabsBytedanceSeedance25Request.AspectRatio?
   public var audios: [ElevenLabsAudioReference]?
   public var durationSecs: Int?
   public var endFrame: ElevenLabsImageReference?
   public var generateAudio: Bool?
   public var images: [ElevenLabsImageReference]?
-  public var modelId: ElevenLabsBytedanceSeedanceV25ModelId
+  public var modelId: ElevenLabsBytedanceSeedance25Request.ModelId
   public var prompt: String
-  public var resolution: ElevenLabsBytedanceSeedance25RequestResolution?
+  public var resolution: ElevenLabsBytedanceSeedance25Request.Resolution?
   public var startFrame: ElevenLabsImageReference?
   public var videos: [ElevenLabsVideoReference]?
   public var webhook: ElevenLabsWebhookTarget?
 
   public init(
     prompt: String,
-    modelId: ElevenLabsBytedanceSeedanceV25ModelId = .bytedanceSeedanceV25,
-    aspectRatio: ElevenLabsBytedanceSeedance25RequestAspectRatio? = nil,
+    modelId: ElevenLabsBytedanceSeedance25Request.ModelId = .bytedanceSeedanceV2_5,
+    aspectRatio: ElevenLabsBytedanceSeedance25Request.AspectRatio? = nil,
     audios: [ElevenLabsAudioReference]? = nil,
     durationSecs: Int? = nil,
     endFrame: ElevenLabsImageReference? = nil,
     generateAudio: Bool? = nil,
     images: [ElevenLabsImageReference]? = nil,
-    resolution: ElevenLabsBytedanceSeedance25RequestResolution? = nil,
+    resolution: ElevenLabsBytedanceSeedance25Request.Resolution? = nil,
     startFrame: ElevenLabsImageReference? = nil,
     videos: [ElevenLabsVideoReference]? = nil,
     webhook: ElevenLabsWebhookTarget? = nil
@@ -65,5 +65,25 @@ public struct ElevenLabsBytedanceSeedance25Request: Codable, Sendable {
     case startFrame = "start_frame"
     case videos
     case webhook
+  }
+
+  public enum AspectRatio: String, Codable, Hashable, Sendable {
+    case auto = "auto"
+    case ratio21x9 = "21:9"
+    case ratio16x9 = "16:9"
+    case ratio4x3 = "4:3"
+    case ratio1x1 = "1:1"
+    case ratio3x4 = "3:4"
+    case ratio9x16 = "9:16"
+  }
+
+  public enum Resolution: String, Codable, Hashable, Sendable {
+    case value480p = "480p"
+    case value720p = "720p"
+    case value1080p = "1080p"
+  }
+
+  public enum ModelId: String, Codable, Hashable, Sendable {
+    case bytedanceSeedanceV2_5 = "bytedance-seedance-v2.5"
   }
 }

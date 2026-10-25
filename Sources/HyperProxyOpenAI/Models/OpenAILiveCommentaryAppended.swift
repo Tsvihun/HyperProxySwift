@@ -15,13 +15,13 @@ public struct OpenAILiveCommentaryAppended: Codable, Sendable {
   public var endMs: Int
   public var eventId: String
   public var startMs: Int
-  public var kind: OpenAILiveCommentaryAppendedKind
+  public var kind: OpenAILiveCommentaryAppended.Kind
 
   public init(
     endMs: Int,
     eventId: String,
     startMs: Int,
-    kind: OpenAILiveCommentaryAppendedKind,
+    kind: OpenAILiveCommentaryAppended.Kind,
     clientEventId: String? = nil
   ) {
     self.clientEventId = clientEventId
@@ -37,5 +37,9 @@ public struct OpenAILiveCommentaryAppended: Codable, Sendable {
     case eventId = "event_id"
     case startMs = "start_ms"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case sessionCommentaryAppended = "session.commentary.appended"
   }
 }

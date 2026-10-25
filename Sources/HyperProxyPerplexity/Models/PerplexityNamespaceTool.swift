@@ -14,13 +14,13 @@ public struct PerplexityNamespaceTool: Codable, Sendable {
   public var description: String
   public var name: String
   public var tools: [PerplexityNamespaceToolDef]
-  public var kind: PerplexityNamespaceToolKind
+  public var kind: PerplexityNamespaceTool.Kind
 
   public init(
     description: String,
     name: String,
     tools: [PerplexityNamespaceToolDef],
-    kind: PerplexityNamespaceToolKind
+    kind: PerplexityNamespaceTool.Kind
   ) {
     self.description = description
     self.name = name
@@ -33,5 +33,9 @@ public struct PerplexityNamespaceTool: Codable, Sendable {
     case name
     case tools
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case namespace = "namespace"
   }
 }

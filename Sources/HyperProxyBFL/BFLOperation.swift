@@ -58,9 +58,9 @@ public enum BFLOperation: String, HyperProxyCatalogOperation {
   /// `POST v1/flux-2-klein-9b-finetuned`
   case fineTuningFlux2Klein9BGenerate = "fineTuning.flux2Klein9B.generate"
   /// `POST v1/flux-2-klein-9b-kv-bf16-finetuned`
-  case fineTuningFlux2Klein9BKVBF16Generate = "fineTuning.flux2Klein9BKVBF16.generate"
+  case fineTuningFlux2Klein9Bkvbf16Generate = "fineTuning.flux2Klein9BKVBF16.generate"
   /// `POST v1/flux-2-klein-9b-kv-finetuned`
-  case fineTuningFlux2Klein9BKVGenerate = "fineTuning.flux2Klein9BKV.generate"
+  case fineTuningFlux2Klein9BkvGenerate = "fineTuning.flux2Klein9BKV.generate"
   /// `POST v1/flux-2-klein-base-4b-finetuned`
   case fineTuningFlux2KleinBase4BGenerate = "fineTuning.flux2KleinBase4B.generate"
   /// `POST v1/flux-2-klein-base-9b-finetuned`

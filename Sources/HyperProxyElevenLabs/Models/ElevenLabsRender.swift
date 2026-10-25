@@ -14,7 +14,7 @@ public struct ElevenLabsRender: Codable, Sendable {
   public var id: String
   public var language: String?
   public var mediaRef: ElevenLabsDubbingMediaReference?
-  public var status: ElevenLabsRenderStatus
+  public var status: ElevenLabsRender.Status
   public var kind: ElevenLabsRenderType?
   public var version: Int
 
@@ -22,7 +22,7 @@ public struct ElevenLabsRender: Codable, Sendable {
     id: String,
     language: String?,
     mediaRef: ElevenLabsDubbingMediaReference?,
-    status: ElevenLabsRenderStatus,
+    status: ElevenLabsRender.Status,
     kind: ElevenLabsRenderType?,
     version: Int
   ) {
@@ -41,5 +41,11 @@ public struct ElevenLabsRender: Codable, Sendable {
     case status
     case kind = "type"
     case version
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case complete = "complete"
+    case processing = "processing"
+    case failed = "failed"
   }
 }

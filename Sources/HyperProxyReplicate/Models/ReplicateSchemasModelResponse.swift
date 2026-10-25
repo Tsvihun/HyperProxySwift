@@ -23,7 +23,7 @@ public struct ReplicateSchemasModelResponse: Codable, Sendable {
   public var paperUrl: String?
   public var runCount: Int?
   public var url: String?
-  public var visibility: ReplicateSchemasModelResponseVisibility?
+  public var visibility: ReplicateSchemasModelResponse.Visibility?
 
   public init(
     coverImageUrl: String? = nil,
@@ -38,7 +38,7 @@ public struct ReplicateSchemasModelResponse: Codable, Sendable {
     paperUrl: String? = nil,
     runCount: Int? = nil,
     url: String? = nil,
-    visibility: ReplicateSchemasModelResponseVisibility? = nil
+    visibility: ReplicateSchemasModelResponse.Visibility? = nil
   ) {
     self.coverImageUrl = coverImageUrl
     self.defaultExample = defaultExample
@@ -69,5 +69,10 @@ public struct ReplicateSchemasModelResponse: Codable, Sendable {
     case runCount = "run_count"
     case url
     case visibility
+  }
+
+  public enum Visibility: String, Codable, Hashable, Sendable {
+    case publicValue = "public"
+    case privateValue = "private"
   }
 }

@@ -16,7 +16,7 @@ public struct OpenRouterObservabilityClickhouseDestination: Codable, Sendable {
   public var broadcastGenerationCostAllocation: Bool
   public var broadcastGenerationIdentity: Bool
   public var broadcastGenerationRequestContext: Bool
-  public var config: OpenRouterObservabilityClickhouseDestinationConfig
+  public var config: OpenRouterObservabilityClickhouseDestination.Config
   public var createdAt: String
   public var enabled: Bool
   public var filterRules: OpenRouterObservabilityFilterRulesConfig?
@@ -25,7 +25,7 @@ public struct OpenRouterObservabilityClickhouseDestination: Codable, Sendable {
   public var privacyMode: Bool
   public var regions: [OpenRouterObservabilityDataRegion]
   public var samplingRate: Double
-  public var kind: OpenRouterObservabilityClickhouseDestinationKind
+  public var kind: OpenRouterObservabilityClickhouseDestination.Kind
   public var updatedAt: String
   public var workspaceId: String
 
@@ -35,7 +35,7 @@ public struct OpenRouterObservabilityClickhouseDestination: Codable, Sendable {
     broadcastGenerationCostAllocation: Bool,
     broadcastGenerationIdentity: Bool,
     broadcastGenerationRequestContext: Bool,
-    config: OpenRouterObservabilityClickhouseDestinationConfig,
+    config: OpenRouterObservabilityClickhouseDestination.Config,
     createdAt: String,
     enabled: Bool,
     filterRules: OpenRouterObservabilityFilterRulesConfig?,
@@ -44,7 +44,7 @@ public struct OpenRouterObservabilityClickhouseDestination: Codable, Sendable {
     privacyMode: Bool,
     regions: [OpenRouterObservabilityDataRegion],
     samplingRate: Double,
-    kind: OpenRouterObservabilityClickhouseDestinationKind,
+    kind: OpenRouterObservabilityClickhouseDestination.Kind,
     updatedAt: String,
     workspaceId: String
   ) {
@@ -85,5 +85,47 @@ public struct OpenRouterObservabilityClickhouseDestination: Codable, Sendable {
     case kind = "type"
     case updatedAt = "updated_at"
     case workspaceId = "workspace_id"
+  }
+
+  public struct Config: Codable, Sendable {
+    public var database: String
+    public var headers: [String: String]?
+    public var host: String
+    public var password: String
+    public var shouldIncludeCacheWriteTokens: Bool?
+    public var table: String?
+    public var username: String
+
+    public init(
+      database: String,
+      host: String,
+      password: String,
+      username: String,
+      headers: [String: String]? = nil,
+      shouldIncludeCacheWriteTokens: Bool? = nil,
+      table: String? = nil
+    ) {
+      self.database = database
+      self.headers = headers
+      self.host = host
+      self.password = password
+      self.shouldIncludeCacheWriteTokens = shouldIncludeCacheWriteTokens
+      self.table = table
+      self.username = username
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case database
+      case headers
+      case host
+      case password
+      case shouldIncludeCacheWriteTokens
+      case table
+      case username
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case clickhouse = "clickhouse"
   }
 }

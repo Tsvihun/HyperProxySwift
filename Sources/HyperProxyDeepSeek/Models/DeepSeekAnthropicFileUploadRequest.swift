@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct DeepSeekAnthropicFileUploadRequest: Codable, Sendable {
   public var file: String
-  public var purpose: DeepSeekAnthropicFileUploadRequestPurpose
+  public var purpose: DeepSeekAnthropicFileUploadRequest.Purpose
 
   public init(
     file: String,
-    purpose: DeepSeekAnthropicFileUploadRequestPurpose
+    purpose: DeepSeekAnthropicFileUploadRequest.Purpose
   ) {
     self.file = file
     self.purpose = purpose
@@ -25,5 +25,9 @@ public struct DeepSeekAnthropicFileUploadRequest: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case file
     case purpose
+  }
+
+  public enum Purpose: String, Codable, Hashable, Sendable {
+    case userData = "user_data"
   }
 }

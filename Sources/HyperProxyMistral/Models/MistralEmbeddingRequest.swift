@@ -12,14 +12,14 @@ import HyperProxyCore
 
 public struct MistralEmbeddingRequest: Codable, Sendable {
   public var encodingFormat: MistralEncodingFormat?
-  public var input: MistralEmbeddingRequestInput
+  public var input: MistralEmbeddingRequest.Input
   public var metadata: [String: HyperProxyJSONValue]?
   public var model: String
   public var outputDimension: Int?
   public var outputDtype: MistralEmbeddingDtype?
 
   public init(
-    input: MistralEmbeddingRequestInput,
+    input: MistralEmbeddingRequest.Input,
     model: String,
     encodingFormat: MistralEncodingFormat? = nil,
     metadata: [String: HyperProxyJSONValue]? = nil,
@@ -41,5 +41,41 @@ public struct MistralEmbeddingRequest: Codable, Sendable {
     case model
     case outputDimension = "output_dimension"
     case outputDtype = "output_dtype"
+  }
+
+  public enum Input: Codable, Sendable {
+    case string(String)
+    case stringArray([String])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .stringArray(try container.decode([String].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .stringArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension MistralEmbeddingRequest.Input: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension MistralEmbeddingRequest.Input: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: String...) {
+    self = .stringArray(elements)
   }
 }

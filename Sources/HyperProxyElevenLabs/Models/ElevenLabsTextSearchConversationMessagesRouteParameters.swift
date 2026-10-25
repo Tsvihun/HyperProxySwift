@@ -25,7 +25,7 @@ public struct ElevenLabsTextSearchConversationMessagesRouteParameters: Codable, 
   public var dynamicVariableParams: [String]?
   public var evaluationParams: [String]?
   public var excludeStatuses:
-    [ElevenLabsTextSearchConversationMessagesRouteParametersExcludeStatusesAnyOf1Item]?
+    [ElevenLabsTextSearchConversationMessagesRouteParametersExcludeStatusesItem]?
   public var hasFeedbackComment: Bool?
   public var includeInvalidToolCalls: Bool?
   public var mainLanguages: [String]?
@@ -33,7 +33,7 @@ public struct ElevenLabsTextSearchConversationMessagesRouteParameters: Codable, 
   public var ratingMax: Int?
   public var ratingMin: Int?
   public var sortBy: ElevenLabsMessageSearchSortBy?
-  public var summaryMode: ElevenLabsTextSearchConversationMessagesRouteParametersSummaryMode?
+  public var summaryMode: ElevenLabsTextSearchConversationMessagesRouteParameters.SummaryMode?
   public var terminationReasons: [String]?
   public var textOnly: Bool?
   public var textQuery: String
@@ -64,7 +64,7 @@ public struct ElevenLabsTextSearchConversationMessagesRouteParameters: Codable, 
     dynamicVariableParams: [String]? = nil,
     evaluationParams: [String]? = nil,
     excludeStatuses:
-      [ElevenLabsTextSearchConversationMessagesRouteParametersExcludeStatusesAnyOf1Item]? = nil,
+      [ElevenLabsTextSearchConversationMessagesRouteParametersExcludeStatusesItem]? = nil,
     hasFeedbackComment: Bool? = nil,
     includeInvalidToolCalls: Bool? = nil,
     mainLanguages: [String]? = nil,
@@ -72,7 +72,7 @@ public struct ElevenLabsTextSearchConversationMessagesRouteParameters: Codable, 
     ratingMax: Int? = nil,
     ratingMin: Int? = nil,
     sortBy: ElevenLabsMessageSearchSortBy? = nil,
-    summaryMode: ElevenLabsTextSearchConversationMessagesRouteParametersSummaryMode? = nil,
+    summaryMode: ElevenLabsTextSearchConversationMessagesRouteParameters.SummaryMode? = nil,
     terminationReasons: [String]? = nil,
     textOnly: Bool? = nil,
     toolNames: [String]? = nil,
@@ -159,5 +159,12 @@ public struct ElevenLabsTextSearchConversationMessagesRouteParameters: Codable, 
     case visitedAgentBranchIds = "visited_agent_branch_ids"
     case visitedAgentIds = "visited_agent_ids"
     case xiApiKey = "xi-api-key"
+  }
+
+  public enum SummaryMode: String, Codable,
+    Hashable, Sendable
+  {
+    case exclude = "exclude"
+    case include = "include"
   }
 }

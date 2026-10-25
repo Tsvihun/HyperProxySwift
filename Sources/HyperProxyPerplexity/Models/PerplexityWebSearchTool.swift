@@ -15,17 +15,17 @@ public struct PerplexityWebSearchTool: Codable, Sendable {
   public var maxResults: Int?
   public var maxTokens: Int?
   public var maxTokensPerPage: Int?
-  public var searchType: PerplexityWebSearchToolSearchType?
-  public var kind: PerplexityWebSearchToolKind
+  public var searchType: PerplexityWebSearchTool.SearchType?
+  public var kind: PerplexityWebSearchTool.Kind
   public var userLocation: PerplexityToolUserLocation?
 
   public init(
-    kind: PerplexityWebSearchToolKind,
+    kind: PerplexityWebSearchTool.Kind,
     filters: PerplexityWebSearchFilters? = nil,
     maxResults: Int? = nil,
     maxTokens: Int? = nil,
     maxTokensPerPage: Int? = nil,
-    searchType: PerplexityWebSearchToolSearchType? = nil,
+    searchType: PerplexityWebSearchTool.SearchType? = nil,
     userLocation: PerplexityToolUserLocation? = nil
   ) {
     self.filters = filters
@@ -45,5 +45,14 @@ public struct PerplexityWebSearchTool: Codable, Sendable {
     case searchType = "search_type"
     case kind = "type"
     case userLocation = "user_location"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case webSearch = "web_search"
+  }
+
+  public enum SearchType: String, Codable, Hashable, Sendable {
+    case web = "web"
+    case fast = "fast"
   }
 }

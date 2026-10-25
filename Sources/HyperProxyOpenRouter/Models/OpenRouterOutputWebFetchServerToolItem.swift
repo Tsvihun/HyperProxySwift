@@ -17,12 +17,12 @@ public struct OpenRouterOutputWebFetchServerToolItem: Codable, Sendable {
   public var id: String?
   public var status: OpenRouterToolCallStatus
   public var title: String?
-  public var kind: OpenRouterOutputWebFetchServerToolItemKind
+  public var kind: OpenRouterOutputWebFetchServerToolItem.Kind
   public var url: String?
 
   public init(
     status: OpenRouterToolCallStatus,
-    kind: OpenRouterOutputWebFetchServerToolItemKind,
+    kind: OpenRouterOutputWebFetchServerToolItem.Kind,
     content: String? = nil,
     error: String? = nil,
     httpStatus: Int? = nil,
@@ -49,5 +49,9 @@ public struct OpenRouterOutputWebFetchServerToolItem: Codable, Sendable {
     case title
     case kind = "type"
     case url
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case openrouterWebFetch = "openrouter:web_fetch"
   }
 }

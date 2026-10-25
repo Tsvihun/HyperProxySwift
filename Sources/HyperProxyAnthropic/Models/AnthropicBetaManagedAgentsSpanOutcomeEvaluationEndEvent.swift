@@ -18,7 +18,7 @@ public struct AnthropicBetaManagedAgentsSpanOutcomeEvaluationEndEvent: Codable, 
   public var outcomeId: String
   public var processedAt: AnthropicBetaTimestamp
   public var result: String
-  public var kind: AnthropicBetaManagedAgentsSpanOutcomeEvaluationEndEventKind
+  public var kind: AnthropicBetaManagedAgentsSpanOutcomeEvaluationEndEvent.Kind
   public var usage: AnthropicBetaManagedAgentsSpanModelUsage
 
   public init(
@@ -29,7 +29,7 @@ public struct AnthropicBetaManagedAgentsSpanOutcomeEvaluationEndEvent: Codable, 
     outcomeId: String,
     processedAt: AnthropicBetaTimestamp,
     result: String,
-    kind: AnthropicBetaManagedAgentsSpanOutcomeEvaluationEndEventKind,
+    kind: AnthropicBetaManagedAgentsSpanOutcomeEvaluationEndEvent.Kind,
     usage: AnthropicBetaManagedAgentsSpanModelUsage
   ) {
     self.explanation = explanation
@@ -53,5 +53,11 @@ public struct AnthropicBetaManagedAgentsSpanOutcomeEvaluationEndEvent: Codable, 
     case result
     case kind = "type"
     case usage
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case spanOutcomeEvaluationEnd = "span.outcome_evaluation_end"
   }
 }

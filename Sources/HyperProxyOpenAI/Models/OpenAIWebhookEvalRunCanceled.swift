@@ -12,17 +12,17 @@ import HyperProxyCore
 
 public struct OpenAIWebhookEvalRunCanceled: Codable, Sendable {
   public var createdAt: Int
-  public var data: OpenAIWebhookEvalRunCanceledData
+  public var data: OpenAIWebhookEvalRunCanceled.DataValue
   public var id: String
-  public var object: OpenAIWebhookEvalRunCanceledObject?
-  public var kind: OpenAIWebhookEvalRunCanceledKind
+  public var object: OpenAIWebhookEvalRunCanceled.Object?
+  public var kind: OpenAIWebhookEvalRunCanceled.Kind
 
   public init(
     createdAt: Int,
-    data: OpenAIWebhookEvalRunCanceledData,
+    data: OpenAIWebhookEvalRunCanceled.DataValue,
     id: String,
-    kind: OpenAIWebhookEvalRunCanceledKind,
-    object: OpenAIWebhookEvalRunCanceledObject? = nil
+    kind: OpenAIWebhookEvalRunCanceled.Kind,
+    object: OpenAIWebhookEvalRunCanceled.Object? = nil
   ) {
     self.createdAt = createdAt
     self.data = data
@@ -37,5 +37,27 @@ public struct OpenAIWebhookEvalRunCanceled: Codable, Sendable {
     case id
     case object
     case kind = "type"
+  }
+
+  public struct DataValue: Codable, Sendable {
+    public var id: String
+
+    public init(
+      id: String
+    ) {
+      self.id = id
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case id
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case evalRunCanceled = "eval.run.canceled"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case event = "event"
   }
 }

@@ -12,12 +12,12 @@ import HyperProxyCore
 
 public struct ElevenLabsPlayDTMFToolConfig: Codable, Sendable {
   public var suppressTurnAfterDtmf: Bool?
-  public var systemToolType: ElevenLabsPlayKeypadTouchToneSystemToolType?
+  public var systemToolType: ElevenLabsPlayDTMFToolConfig.SystemToolType?
   public var useOutOfBandDtmf: Bool?
 
   public init(
     suppressTurnAfterDtmf: Bool? = nil,
-    systemToolType: ElevenLabsPlayKeypadTouchToneSystemToolType? = nil,
+    systemToolType: ElevenLabsPlayDTMFToolConfig.SystemToolType? = nil,
     useOutOfBandDtmf: Bool? = nil
   ) {
     self.suppressTurnAfterDtmf = suppressTurnAfterDtmf
@@ -29,5 +29,9 @@ public struct ElevenLabsPlayDTMFToolConfig: Codable, Sendable {
     case suppressTurnAfterDtmf = "suppress_turn_after_dtmf"
     case systemToolType = "system_tool_type"
     case useOutOfBandDtmf = "use_out_of_band_dtmf"
+  }
+
+  public enum SystemToolType: String, Codable, Hashable, Sendable {
+    case playKeypadTouchTone = "play_keypad_touch_tone"
   }
 }

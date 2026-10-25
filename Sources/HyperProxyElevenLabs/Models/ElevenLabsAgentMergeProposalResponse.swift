@@ -18,7 +18,7 @@ public struct ElevenLabsAgentMergeProposalResponse: Codable, Sendable {
   public var createdAt: Int
   public var description: String?
   public var id: String
-  public var outcome: ElevenLabsAgentMergeProposalResponseOutcome?
+  public var outcome: ElevenLabsAgentMergeProposalResponse.Outcome?
   public var requestedReviewerUserIds: [String]?
   public var reviews: [ElevenLabsMergeProposalReview]?
   public var sourceBranchId: String
@@ -40,7 +40,7 @@ public struct ElevenLabsAgentMergeProposalResponse: Codable, Sendable {
     authorUserId: String? = nil,
     comments: [ElevenLabsMergeProposalComment]? = nil,
     description: String? = nil,
-    outcome: ElevenLabsAgentMergeProposalResponseOutcome? = nil,
+    outcome: ElevenLabsAgentMergeProposalResponse.Outcome? = nil,
     requestedReviewerUserIds: [String]? = nil,
     reviews: [ElevenLabsMergeProposalReview]? = nil
   ) {
@@ -77,5 +77,36 @@ public struct ElevenLabsAgentMergeProposalResponse: Codable, Sendable {
     case targetBranchId = "target_branch_id"
     case title
     case updatedAt = "updated_at"
+  }
+
+  public enum Outcome: Codable, Sendable {
+    case openOutcome(ElevenLabsOpenOutcome)
+    case mergedOutcome(ElevenLabsMergedOutcome)
+    case closedOutcome(ElevenLabsClosedOutcome)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsOpenOutcome.self) {
+        self = .openOutcome(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsMergedOutcome.self) {
+        self = .mergedOutcome(value)
+        return
+      }
+      self = .closedOutcome(try container.decode(ElevenLabsClosedOutcome.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .openOutcome(let value):
+        try container.encode(value)
+      case .mergedOutcome(let value):
+        try container.encode(value)
+      case .closedOutcome(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

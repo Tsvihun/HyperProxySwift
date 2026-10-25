@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct OpenRouterFilePath: Codable, Sendable {
   public var fileId: String
   public var index: Int
-  public var kind: OpenRouterFilePathKind
+  public var kind: OpenRouterFilePath.Kind
 
   public init(
     fileId: String,
     index: Int,
-    kind: OpenRouterFilePathKind
+    kind: OpenRouterFilePath.Kind
   ) {
     self.fileId = fileId
     self.index = index
@@ -29,5 +29,9 @@ public struct OpenRouterFilePath: Codable, Sendable {
     case fileId = "file_id"
     case index
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case filePath = "file_path"
   }
 }

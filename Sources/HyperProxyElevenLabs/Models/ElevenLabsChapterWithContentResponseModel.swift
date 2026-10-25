@@ -20,7 +20,7 @@ public struct ElevenLabsChapterWithContentResponseModel: Codable, Sendable {
   public var lastConversionDateUnix: Int?
   public var lastConversionError: String?
   public var name: String
-  public var state: ElevenLabsChapterWithContentResponseModelState
+  public var state: ElevenLabsChapterWithContentResponseModel.State
   public var statistics: ElevenLabsChapterStatisticsResponseModel?
   public var voiceIds: [String]?
 
@@ -29,7 +29,7 @@ public struct ElevenLabsChapterWithContentResponseModel: Codable, Sendable {
     chapterId: String,
     content: ElevenLabsChapterContentResponseModel,
     name: String,
-    state: ElevenLabsChapterWithContentResponseModelState,
+    state: ElevenLabsChapterWithContentResponseModel.State,
     conversionProgress: Double? = nil,
     hasVideo: Bool? = nil,
     hasVisualContent: Bool? = nil,
@@ -65,5 +65,10 @@ public struct ElevenLabsChapterWithContentResponseModel: Codable, Sendable {
     case state
     case statistics
     case voiceIds = "voice_ids"
+  }
+
+  public enum State: String, Codable, Hashable, Sendable {
+    case defaultValue = "default"
+    case converting = "converting"
   }
 }

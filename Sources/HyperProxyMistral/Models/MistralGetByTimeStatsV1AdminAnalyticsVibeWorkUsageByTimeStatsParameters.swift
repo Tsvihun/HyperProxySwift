@@ -15,14 +15,14 @@ public struct MistralGetByTimeStatsV1AdminAnalyticsVibeWorkUsageByTimeStatsParam
 {
   public var endTime: Int
   public var granularity:
-    MistralGetByTimeStatsV1AdminAnalyticsVibeWorkUsageByTimeStatsParametersGranularity?
+    MistralGetByTimeStatsV1AdminAnalyticsVibeWorkUsageByTimeStatsParameters.Granularity?
   public var startTime: Int
 
   public init(
     endTime: Int,
     startTime: Int,
     granularity:
-      MistralGetByTimeStatsV1AdminAnalyticsVibeWorkUsageByTimeStatsParametersGranularity? = nil
+      MistralGetByTimeStatsV1AdminAnalyticsVibeWorkUsageByTimeStatsParameters.Granularity? = nil
   ) {
     self.endTime = endTime
     self.granularity = granularity
@@ -33,5 +33,14 @@ public struct MistralGetByTimeStatsV1AdminAnalyticsVibeWorkUsageByTimeStatsParam
     case endTime = "end_time"
     case granularity
     case startTime = "start_time"
+  }
+
+  public enum Granularity:
+    String, Codable, Hashable, Sendable
+  {
+    case hour = "hour"
+    case day = "day"
+    case week = "week"
+    case month = "month"
   }
 }

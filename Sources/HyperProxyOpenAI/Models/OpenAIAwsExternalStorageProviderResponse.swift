@@ -16,7 +16,7 @@ public struct OpenAIAwsExternalStorageProviderResponse: Codable, Sendable {
   public var externalId: String
   public var region: String
   public var roleArn: String
-  public var kind: OpenAIAwsExternalStorageProviderResponseKind
+  public var kind: OpenAIAwsExternalStorageProviderResponse.Kind
 
   public init(
     accountId: String,
@@ -24,7 +24,7 @@ public struct OpenAIAwsExternalStorageProviderResponse: Codable, Sendable {
     externalId: String,
     region: String,
     roleArn: String,
-    kind: OpenAIAwsExternalStorageProviderResponseKind
+    kind: OpenAIAwsExternalStorageProviderResponse.Kind
   ) {
     self.accountId = accountId
     self.bucket = bucket
@@ -41,5 +41,9 @@ public struct OpenAIAwsExternalStorageProviderResponse: Codable, Sendable {
     case region
     case roleArn = "role_arn"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case aws = "aws"
   }
 }

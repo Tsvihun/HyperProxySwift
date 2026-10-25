@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenRouterSpeechInputReferenceImage: Codable, Sendable {
   public var imageUrl: OpenRouterSpeechInputReferenceImageInput
-  public var kind: OpenRouterSpeechInputReferenceImageKind
+  public var kind: OpenRouterSpeechInputReferenceImage.Kind
 
   public init(
     imageUrl: OpenRouterSpeechInputReferenceImageInput,
-    kind: OpenRouterSpeechInputReferenceImageKind
+    kind: OpenRouterSpeechInputReferenceImage.Kind
   ) {
     self.imageUrl = imageUrl
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenRouterSpeechInputReferenceImage: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case imageUrl = "image_url"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case imageUrl = "image_url"
   }
 }

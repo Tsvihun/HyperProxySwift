@@ -12,14 +12,14 @@ import HyperProxyCore
 
 public struct PerplexityWebSearchOptions: Codable, Sendable {
   public var imageResultsEnhancedRelevance: Bool?
-  public var searchContextSize: PerplexityWebSearchOptionsSearchContextSize?
-  public var searchType: PerplexityWebSearchOptionsSearchType?
+  public var searchContextSize: PerplexityWebSearchOptions.SearchContextSize?
+  public var searchType: PerplexityWebSearchOptions.SearchType?
   public var userLocation: PerplexityUserLocation?
 
   public init(
     imageResultsEnhancedRelevance: Bool? = nil,
-    searchContextSize: PerplexityWebSearchOptionsSearchContextSize? = nil,
-    searchType: PerplexityWebSearchOptionsSearchType? = nil,
+    searchContextSize: PerplexityWebSearchOptions.SearchContextSize? = nil,
+    searchType: PerplexityWebSearchOptions.SearchType? = nil,
     userLocation: PerplexityUserLocation? = nil
   ) {
     self.imageResultsEnhancedRelevance = imageResultsEnhancedRelevance
@@ -33,5 +33,17 @@ public struct PerplexityWebSearchOptions: Codable, Sendable {
     case searchContextSize = "search_context_size"
     case searchType = "search_type"
     case userLocation = "user_location"
+  }
+
+  public enum SearchContextSize: String, Codable, Hashable, Sendable {
+    case low = "low"
+    case medium = "medium"
+    case high = "high"
+  }
+
+  public enum SearchType: String, Codable, Hashable, Sendable {
+    case fast = "fast"
+    case pro = "pro"
+    case auto = "auto"
   }
 }

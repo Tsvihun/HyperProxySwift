@@ -15,18 +15,18 @@ public struct OpenAIBetaCustomToolParam: Codable, Sendable {
   public var async: Bool?
   public var deferLoading: Bool?
   public var description: String?
-  public var format: OpenAIBetaCustomToolParamFormat?
+  public var format: OpenAIBetaCustomToolParam.Format?
   public var name: String
-  public var kind: OpenAIBetaCustomToolParamKind
+  public var kind: OpenAIBetaCustomToolParam.Kind
 
   public init(
     name: String,
-    kind: OpenAIBetaCustomToolParamKind,
+    kind: OpenAIBetaCustomToolParam.Kind,
     allowedCallers: [OpenAIBetaCallableToolAllowedCaller]? = nil,
     async: Bool? = nil,
     deferLoading: Bool? = nil,
     description: String? = nil,
-    format: OpenAIBetaCustomToolParamFormat? = nil
+    format: OpenAIBetaCustomToolParam.Format? = nil
   ) {
     self.allowedCallers = allowedCallers
     self.async = async
@@ -45,5 +45,34 @@ public struct OpenAIBetaCustomToolParam: Codable, Sendable {
     case format
     case name
     case kind = "type"
+  }
+
+  public enum Format: Codable, Sendable {
+    case betaCustomTextFormatParam(OpenAIBetaCustomTextFormatParam)
+    case betaCustomGrammarFormatParam(OpenAIBetaCustomGrammarFormatParam)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenAIBetaCustomTextFormatParam.self) {
+        self = .betaCustomTextFormatParam(value)
+        return
+      }
+      self = .betaCustomGrammarFormatParam(
+        try container.decode(OpenAIBetaCustomGrammarFormatParam.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .betaCustomTextFormatParam(let value):
+        try container.encode(value)
+      case .betaCustomGrammarFormatParam(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case custom = "custom"
   }
 }

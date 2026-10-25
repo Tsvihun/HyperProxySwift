@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIOrganizationCertificateActivationResponse: Codable, Sendable {
   public var data: [OpenAIOrganizationCertificate]
-  public var object: OpenAIOrganizationCertificateActivationResponseObject
+  public var object: OpenAIOrganizationCertificateActivationResponse.Object
 
   public init(
     data: [OpenAIOrganizationCertificate],
-    object: OpenAIOrganizationCertificateActivationResponseObject
+    object: OpenAIOrganizationCertificateActivationResponse.Object
   ) {
     self.data = data
     self.object = object
@@ -25,5 +25,11 @@ public struct OpenAIOrganizationCertificateActivationResponse: Codable, Sendable
   enum CodingKeys: String, CodingKey {
     case data
     case object
+  }
+
+  public enum Object: String, Codable, Hashable,
+    Sendable
+  {
+    case organizationCertificateActivation = "organization.certificate.activation"
   }
 }

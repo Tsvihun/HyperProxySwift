@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralMissingEmbeddingResponse: Codable, Sendable {
-  public var kind: MistralMissingEmbeddingKind?
+  public var kind: MistralMissingEmbeddingResponse.Kind?
 
   public init(
-    kind: MistralMissingEmbeddingKind? = nil
+    kind: MistralMissingEmbeddingResponse.Kind? = nil
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case missingEmbedding = "missing_embedding"
   }
 }

@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIBetaImageGenToolCallModerationDetails: Codable, Sendable {
   public var categories: [String]
-  public var moderationStage: OpenAIBetaImageGenToolCallModerationDetailsModerationStage
+  public var moderationStage: OpenAIBetaImageGenToolCallModerationDetails.ModerationStage
 
   public init(
     categories: [String],
-    moderationStage: OpenAIBetaImageGenToolCallModerationDetailsModerationStage
+    moderationStage: OpenAIBetaImageGenToolCallModerationDetails.ModerationStage
   ) {
     self.categories = categories
     self.moderationStage = moderationStage
@@ -25,5 +25,13 @@ public struct OpenAIBetaImageGenToolCallModerationDetails: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case categories
     case moderationStage = "moderation_stage"
+  }
+
+  public enum ModerationStage: String, Codable, Hashable,
+    Sendable
+  {
+    case input = "input"
+    case output = "output"
+    case unknown = "unknown"
   }
 }

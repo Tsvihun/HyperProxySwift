@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIRunStepDetailsToolCallsFileSearchResultObject: Codable, Sendable {
-  public var content: [OpenAIRunStepDetailsToolCallsFileSearchResultObjectContentItem]?
+  public var content: [OpenAIRunStepDetailsToolCallsFileSearchResultObject.ContentElement]?
   public var fileId: String
   public var fileName: String
   public var score: Double
@@ -20,7 +20,7 @@ public struct OpenAIRunStepDetailsToolCallsFileSearchResultObject: Codable, Send
     fileId: String,
     fileName: String,
     score: Double,
-    content: [OpenAIRunStepDetailsToolCallsFileSearchResultObjectContentItem]? = nil
+    content: [OpenAIRunStepDetailsToolCallsFileSearchResultObject.ContentElement]? = nil
   ) {
     self.content = content
     self.fileId = fileId
@@ -33,5 +33,29 @@ public struct OpenAIRunStepDetailsToolCallsFileSearchResultObject: Codable, Send
     case fileId = "file_id"
     case fileName = "file_name"
     case score
+  }
+
+  public struct ContentElement: Codable, Sendable {
+    public var text: String?
+    public var kind: OpenAIRunStepDetailsToolCallsFileSearchResultObject.ContentElement.Kind?
+
+    public init(
+      text: String? = nil,
+      kind: OpenAIRunStepDetailsToolCallsFileSearchResultObject.ContentElement.Kind? = nil
+    ) {
+      self.text = text
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case text
+      case kind = "type"
+    }
+
+    public enum Kind: String, Codable,
+      Hashable, Sendable
+    {
+      case text = "text"
+    }
   }
 }

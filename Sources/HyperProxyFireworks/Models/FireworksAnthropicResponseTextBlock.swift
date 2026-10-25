@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct FireworksAnthropicResponseTextBlock: Codable, Sendable {
-  public var citations: [FireworksAnthropicResponseTextBlockCitationsAnyOf1Item]?
+  public var citations: [FireworksAnthropicResponseTextBlockCitationsItem]?
   public var text: String
   public var kind: FireworksTextKind
 
   public init(
-    citations: [FireworksAnthropicResponseTextBlockCitationsAnyOf1Item]?,
+    citations: [FireworksAnthropicResponseTextBlockCitationsItem]?,
     text: String,
     kind: FireworksTextKind = .text
   ) {

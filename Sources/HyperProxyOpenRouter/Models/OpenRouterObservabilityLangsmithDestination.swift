@@ -16,7 +16,7 @@ public struct OpenRouterObservabilityLangsmithDestination: Codable, Sendable {
   public var broadcastGenerationCostAllocation: Bool
   public var broadcastGenerationIdentity: Bool
   public var broadcastGenerationRequestContext: Bool
-  public var config: OpenRouterObservabilityLangsmithDestinationConfig
+  public var config: OpenRouterObservabilityLangsmithDestination.Config
   public var createdAt: String
   public var enabled: Bool
   public var filterRules: OpenRouterObservabilityFilterRulesConfig?
@@ -25,7 +25,7 @@ public struct OpenRouterObservabilityLangsmithDestination: Codable, Sendable {
   public var privacyMode: Bool
   public var regions: [OpenRouterObservabilityDataRegion]
   public var samplingRate: Double
-  public var kind: OpenRouterObservabilityLangsmithDestinationKind
+  public var kind: OpenRouterObservabilityLangsmithDestination.Kind
   public var updatedAt: String
   public var workspaceId: String
 
@@ -35,7 +35,7 @@ public struct OpenRouterObservabilityLangsmithDestination: Codable, Sendable {
     broadcastGenerationCostAllocation: Bool,
     broadcastGenerationIdentity: Bool,
     broadcastGenerationRequestContext: Bool,
-    config: OpenRouterObservabilityLangsmithDestinationConfig,
+    config: OpenRouterObservabilityLangsmithDestination.Config,
     createdAt: String,
     enabled: Bool,
     filterRules: OpenRouterObservabilityFilterRulesConfig?,
@@ -44,7 +44,7 @@ public struct OpenRouterObservabilityLangsmithDestination: Codable, Sendable {
     privacyMode: Bool,
     regions: [OpenRouterObservabilityDataRegion],
     samplingRate: Double,
-    kind: OpenRouterObservabilityLangsmithDestinationKind,
+    kind: OpenRouterObservabilityLangsmithDestination.Kind,
     updatedAt: String,
     workspaceId: String
   ) {
@@ -85,5 +85,39 @@ public struct OpenRouterObservabilityLangsmithDestination: Codable, Sendable {
     case kind = "type"
     case updatedAt = "updated_at"
     case workspaceId = "workspace_id"
+  }
+
+  public struct Config: Codable, Sendable {
+    public var apiKey: String
+    public var endpoint: String?
+    public var headers: [String: String]?
+    public var project: String?
+    public var workspaceId: String?
+
+    public init(
+      apiKey: String,
+      endpoint: String? = nil,
+      headers: [String: String]? = nil,
+      project: String? = nil,
+      workspaceId: String? = nil
+    ) {
+      self.apiKey = apiKey
+      self.endpoint = endpoint
+      self.headers = headers
+      self.project = project
+      self.workspaceId = workspaceId
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case apiKey
+      case endpoint
+      case headers
+      case project
+      case workspaceId
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case langsmith = "langsmith"
   }
 }

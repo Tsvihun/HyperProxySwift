@@ -14,13 +14,13 @@ public struct TogetherVolumeContent: Codable, Sendable {
   public var files: [TogetherFileInfo]?
   public var origin: TogetherVolumeOrigin?
   public var sourcePrefix: String?
-  public var kind: TogetherVolumeContentKind?
+  public var kind: TogetherVolumeContent.Kind?
 
   public init(
     files: [TogetherFileInfo]? = nil,
     origin: TogetherVolumeOrigin? = nil,
     sourcePrefix: String? = nil,
-    kind: TogetherVolumeContentKind? = nil
+    kind: TogetherVolumeContent.Kind? = nil
   ) {
     self.files = files
     self.origin = origin
@@ -33,5 +33,9 @@ public struct TogetherVolumeContent: Codable, Sendable {
     case origin
     case sourcePrefix = "source_prefix"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case files = "files"
   }
 }

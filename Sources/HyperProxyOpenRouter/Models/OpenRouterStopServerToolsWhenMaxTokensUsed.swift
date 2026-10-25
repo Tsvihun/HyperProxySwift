@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenRouterStopServerToolsWhenMaxTokensUsed: Codable, Sendable {
   public var maxTokens: Int
-  public var kind: OpenRouterStopServerToolsWhenMaxTokensUsedKind
+  public var kind: OpenRouterStopServerToolsWhenMaxTokensUsed.Kind
 
   public init(
     maxTokens: Int,
-    kind: OpenRouterStopServerToolsWhenMaxTokensUsedKind
+    kind: OpenRouterStopServerToolsWhenMaxTokensUsed.Kind
   ) {
     self.maxTokens = maxTokens
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenRouterStopServerToolsWhenMaxTokensUsed: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case maxTokens = "max_tokens"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case maxTokensUsed = "max_tokens_used"
   }
 }

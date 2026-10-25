@@ -14,7 +14,8 @@ public struct ElevenLabsBodyTextToDialogueMultiVoiceStreamingV1TextToDialogueStr
   Sendable
 {
   public var applyTextNormalization:
-    ElevenLabsBodyTextToDialogueMultiVoiceStreamingV1TextToDialogueStreamPostApplyTextNormalization?
+    ElevenLabsBodyTextToDialogueMultiVoiceStreamingV1TextToDialogueStreamPost
+      .ApplyTextNormalization?
   public var audioEffects: ElevenLabsEffectsSpecInput?
   public var futureText: String?
   public var inputs: [ElevenLabsDialogueInput]
@@ -32,7 +33,8 @@ public struct ElevenLabsBodyTextToDialogueMultiVoiceStreamingV1TextToDialogueStr
   public init(
     inputs: [ElevenLabsDialogueInput],
     applyTextNormalization:
-      ElevenLabsBodyTextToDialogueMultiVoiceStreamingV1TextToDialogueStreamPostApplyTextNormalization? =
+      ElevenLabsBodyTextToDialogueMultiVoiceStreamingV1TextToDialogueStreamPost
+      .ApplyTextNormalization? =
       nil,
     audioEffects: ElevenLabsEffectsSpecInput? = nil,
     futureText: String? = nil,
@@ -76,5 +78,14 @@ public struct ElevenLabsBodyTextToDialogueMultiVoiceStreamingV1TextToDialogueStr
     case seed
     case settings
     case usePvcAsIvc = "use_pvc_as_ivc"
+  }
+
+  public enum
+    ApplyTextNormalization:
+      String, Codable, Hashable, Sendable
+  {
+    case auto = "auto"
+    case on = "on"
+    case off = "off"
   }
 }

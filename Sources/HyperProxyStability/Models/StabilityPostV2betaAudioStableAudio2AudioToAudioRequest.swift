@@ -14,8 +14,8 @@ public struct StabilityPostV2betaAudioStableAudio2AudioToAudioRequest: Codable, 
   public var audio: String
   public var cfgScale: Double?
   public var duration: Double?
-  public var model: StabilityPostV2betaAudioStableAudio2AudioToAudioRequestModel?
-  public var outputFormat: StabilityPostV2betaAudioStableAudio2AudioToAudioRequestOutputFormat?
+  public var model: StabilityPostV2betaAudioStableAudio2AudioToAudioRequest.Model?
+  public var outputFormat: StabilityPostV2betaAudioStableAudio2AudioToAudioRequest.OutputFormat?
   public var prompt: String
   public var seed: Double?
   public var steps: Int?
@@ -26,8 +26,8 @@ public struct StabilityPostV2betaAudioStableAudio2AudioToAudioRequest: Codable, 
     prompt: String,
     cfgScale: Double? = nil,
     duration: Double? = nil,
-    model: StabilityPostV2betaAudioStableAudio2AudioToAudioRequestModel? = nil,
-    outputFormat: StabilityPostV2betaAudioStableAudio2AudioToAudioRequestOutputFormat? = nil,
+    model: StabilityPostV2betaAudioStableAudio2AudioToAudioRequest.Model? = nil,
+    outputFormat: StabilityPostV2betaAudioStableAudio2AudioToAudioRequest.OutputFormat? = nil,
     seed: Double? = nil,
     steps: Int? = nil,
     strength: Double? = nil
@@ -53,5 +53,19 @@ public struct StabilityPostV2betaAudioStableAudio2AudioToAudioRequest: Codable, 
     case seed
     case steps
     case strength
+  }
+
+  public enum Model: String, Codable, Hashable,
+    Sendable
+  {
+    case stableAudio2_5 = "stable-audio-2.5"
+    case stableAudio2 = "stable-audio-2"
+  }
+
+  public enum OutputFormat: String, Codable,
+    Hashable, Sendable
+  {
+    case mp3 = "mp3"
+    case wav = "wav"
   }
 }

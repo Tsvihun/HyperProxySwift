@@ -28,7 +28,7 @@ public struct ElevenLabsGetConversationHistoriesRouteParameters: Codable, Sendab
   public var evaluationCriteriaIds: [String]?
   public var evaluationParams: [String]?
   public var excludeStatuses:
-    [ElevenLabsGetConversationHistoriesRouteParametersExcludeStatusesAnyOf1Item]?
+    [ElevenLabsGetConversationHistoriesRouteParametersExcludeStatusesItem]?
   public var guardrailTypes: [ElevenLabsGuardrailType]?
   public var hasFeedbackComment: Bool?
   public var includeInvalidToolCalls: Bool?
@@ -39,7 +39,7 @@ public struct ElevenLabsGetConversationHistoriesRouteParameters: Codable, Sendab
   public var ratingMin: Int?
   public var search: String?
   public var sortDirection: ElevenLabsSortDirection?
-  public var summaryMode: ElevenLabsGetConversationHistoriesRouteParametersSummaryMode?
+  public var summaryMode: ElevenLabsGetConversationHistoriesRouteParameters.SummaryMode?
   public var tagIds: [String]?
   public var terminationReasons: [String]?
   public var textOnly: Bool?
@@ -72,7 +72,7 @@ public struct ElevenLabsGetConversationHistoriesRouteParameters: Codable, Sendab
     dynamicVariableParams: [String]? = nil,
     evaluationCriteriaIds: [String]? = nil,
     evaluationParams: [String]? = nil,
-    excludeStatuses: [ElevenLabsGetConversationHistoriesRouteParametersExcludeStatusesAnyOf1Item]? =
+    excludeStatuses: [ElevenLabsGetConversationHistoriesRouteParametersExcludeStatusesItem]? =
       nil,
     guardrailTypes: [ElevenLabsGuardrailType]? = nil,
     hasFeedbackComment: Bool? = nil,
@@ -84,7 +84,7 @@ public struct ElevenLabsGetConversationHistoriesRouteParameters: Codable, Sendab
     ratingMin: Int? = nil,
     search: String? = nil,
     sortDirection: ElevenLabsSortDirection? = nil,
-    summaryMode: ElevenLabsGetConversationHistoriesRouteParametersSummaryMode? = nil,
+    summaryMode: ElevenLabsGetConversationHistoriesRouteParameters.SummaryMode? = nil,
     tagIds: [String]? = nil,
     terminationReasons: [String]? = nil,
     textOnly: Bool? = nil,
@@ -187,5 +187,12 @@ public struct ElevenLabsGetConversationHistoriesRouteParameters: Codable, Sendab
     case visitedAgentIds = "visited_agent_ids"
     case workflowNodeEnteredId = "workflow_node_entered_id"
     case xiApiKey = "xi-api-key"
+  }
+
+  public enum SummaryMode: String, Codable, Hashable,
+    Sendable
+  {
+    case exclude = "exclude"
+    case include = "include"
   }
 }

@@ -11,15 +11,51 @@ import Foundation
 import HyperProxyCore
 
 public struct TogetherRLOptimStepResult: Codable, Sendable {
-  public var step: TogetherRLOptimStepResultStep
+  public var step: TogetherRLOptimStepResult.Step
 
   public init(
-    step: TogetherRLOptimStepResultStep
+    step: TogetherRLOptimStepResult.Step
   ) {
     self.step = step
   }
 
   enum CodingKeys: String, CodingKey {
     case step
+  }
+
+  public enum Step: Codable, Sendable {
+    case integer(Int)
+    case string(String)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Int.self) {
+        self = .integer(value)
+        return
+      }
+      self = .string(try container.decode(String.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .integer(let value):
+        try container.encode(value)
+      case .string(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension TogetherRLOptimStepResult.Step: ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Int) {
+    self = .integer(value)
+  }
+}
+
+extension TogetherRLOptimStepResult.Step: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
   }
 }

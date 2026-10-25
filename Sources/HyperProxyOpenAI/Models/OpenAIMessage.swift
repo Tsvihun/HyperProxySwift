@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIMessage: Codable, Sendable {
-  public var content: [OpenAIMessageContentItem]
+  public var content: [OpenAIMessage.ContentElement]
   public var id: String
   public var phase: OpenAIMessagePhase2?
   public var role: OpenAIMessageRole
   public var status: OpenAIMessageStatus
-  public var kind: OpenAIMessageKind
+  public var kind: OpenAIMessage.Kind
 
   public init(
-    content: [OpenAIMessageContentItem],
+    content: [OpenAIMessage.ContentElement],
     id: String,
     role: OpenAIMessageRole,
     status: OpenAIMessageStatus,
-    kind: OpenAIMessageKind,
+    kind: OpenAIMessage.Kind,
     phase: OpenAIMessagePhase2? = nil
   ) {
     self.content = content
@@ -41,5 +41,82 @@ public struct OpenAIMessage: Codable, Sendable {
     case role
     case status
     case kind = "type"
+  }
+
+  public enum ContentElement: Codable, Sendable {
+    case inputTextContent(OpenAIInputTextContent)
+    case outputTextContent(OpenAIOutputTextContent)
+    case textContent(OpenAITextContent)
+    case summaryTextContent(OpenAISummaryTextContent)
+    case reasoningTextContent(OpenAIReasoningTextContent)
+    case refusalContent(OpenAIRefusalContent)
+    case inputImageContent(OpenAIInputImageContent)
+    case computerScreenshotContent(OpenAIComputerScreenshotContent)
+    case inputFileContent(OpenAIInputFileContent)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenAIInputTextContent.self) {
+        self = .inputTextContent(value)
+        return
+      }
+      if let value = try? container.decode(OpenAIOutputTextContent.self) {
+        self = .outputTextContent(value)
+        return
+      }
+      if let value = try? container.decode(OpenAITextContent.self) {
+        self = .textContent(value)
+        return
+      }
+      if let value = try? container.decode(OpenAISummaryTextContent.self) {
+        self = .summaryTextContent(value)
+        return
+      }
+      if let value = try? container.decode(OpenAIReasoningTextContent.self) {
+        self = .reasoningTextContent(value)
+        return
+      }
+      if let value = try? container.decode(OpenAIRefusalContent.self) {
+        self = .refusalContent(value)
+        return
+      }
+      if let value = try? container.decode(OpenAIInputImageContent.self) {
+        self = .inputImageContent(value)
+        return
+      }
+      if let value = try? container.decode(OpenAIComputerScreenshotContent.self) {
+        self = .computerScreenshotContent(value)
+        return
+      }
+      self = .inputFileContent(try container.decode(OpenAIInputFileContent.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .inputTextContent(let value):
+        try container.encode(value)
+      case .outputTextContent(let value):
+        try container.encode(value)
+      case .textContent(let value):
+        try container.encode(value)
+      case .summaryTextContent(let value):
+        try container.encode(value)
+      case .reasoningTextContent(let value):
+        try container.encode(value)
+      case .refusalContent(let value):
+        try container.encode(value)
+      case .inputImageContent(let value):
+        try container.encode(value)
+      case .computerScreenshotContent(let value):
+        try container.encode(value)
+      case .inputFileContent(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case message = "message"
   }
 }

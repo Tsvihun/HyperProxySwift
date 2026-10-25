@@ -62,4 +62,22 @@ public struct OpenRouterBaseMessagesResultUsage: Codable, Sendable {
     case serviceTier = "service_tier"
     case speed
   }
+
+  public struct WithIterationsAndSpeed: Codable, Sendable {
+    public var iterations: [OpenRouterAnthropicUsageIteration]?
+    public var speed: OpenRouterAnthropicSpeed?
+
+    public init(
+      iterations: [OpenRouterAnthropicUsageIteration]? = nil,
+      speed: OpenRouterAnthropicSpeed? = nil
+    ) {
+      self.iterations = iterations
+      self.speed = speed
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case iterations
+      case speed
+    }
+  }
 }

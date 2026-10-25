@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct MistralNoneAuthMethod: Codable, Sendable {
   public var headers: [MistralConnectorAuthenticationHeader]?
-  public var methodType: MistralNoneMethodType?
+  public var methodType: MistralNoneAuthMethod.MethodType?
 
   public init(
     headers: [MistralConnectorAuthenticationHeader]? = nil,
-    methodType: MistralNoneMethodType? = nil
+    methodType: MistralNoneAuthMethod.MethodType? = nil
   ) {
     self.headers = headers
     self.methodType = methodType
@@ -25,5 +25,9 @@ public struct MistralNoneAuthMethod: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case headers
     case methodType = "method_type"
+  }
+
+  public enum MethodType: String, Codable, Hashable, Sendable {
+    case none = "none"
   }
 }

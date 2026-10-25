@@ -14,7 +14,7 @@ public struct OpenRouterUpdateBYOKKeyRequest: Codable, Sendable {
   public var allowedApiKeyHashes: [String]?
   public var allowedModels: [String]?
   public var allowedUserIds: [String]?
-  public var declaredRegion: OpenRouterUpdateBYOKKeyRequestDeclaredRegion?
+  public var declaredRegion: OpenRouterUpdateBYOKKeyRequest.DeclaredRegion?
   public var declaredZdr: Bool?
   public var disabled: Bool?
   public var isByokOnly: Bool?
@@ -27,7 +27,7 @@ public struct OpenRouterUpdateBYOKKeyRequest: Codable, Sendable {
     allowedApiKeyHashes: [String]? = nil,
     allowedModels: [String]? = nil,
     allowedUserIds: [String]? = nil,
-    declaredRegion: OpenRouterUpdateBYOKKeyRequestDeclaredRegion? = nil,
+    declaredRegion: OpenRouterUpdateBYOKKeyRequest.DeclaredRegion? = nil,
     declaredZdr: Bool? = nil,
     disabled: Bool? = nil,
     isByokOnly: Bool? = nil,
@@ -61,5 +61,11 @@ public struct OpenRouterUpdateBYOKKeyRequest: Codable, Sendable {
     case isRequired = "is_required"
     case key
     case name
+  }
+
+  public enum DeclaredRegion: String, Codable, Hashable, Sendable {
+    case global = "global"
+    case europe = "europe"
+    case us = "us"
   }
 }

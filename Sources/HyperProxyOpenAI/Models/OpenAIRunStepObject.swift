@@ -18,14 +18,14 @@ public struct OpenAIRunStepObject: Codable, Sendable {
   public var expiredAt: Int?
   public var failedAt: Int?
   public var id: String
-  public var lastError: OpenAIRunStepObjectLastErrorAnyOf1?
+  public var lastError: OpenAIRunStepObjectLastErrorWithCodeAndMessage?
   public var metadata: OpenAIMetadata?
-  public var object: OpenAIRunStepObjectObject
+  public var object: OpenAIRunStepObject.Object
   public var runId: String
-  public var status: OpenAIRunStepObjectStatus
-  public var stepDetails: OpenAIRunStepObjectStepDetails
+  public var status: OpenAIRunStepObject.Status
+  public var stepDetails: OpenAIRunStepObject.StepDetails
   public var threadId: String
-  public var kind: OpenAIRunStepObjectKind
+  public var kind: OpenAIRunStepObject.Kind
   public var usage: OpenAIRunStepCompletionUsage?
 
   public init(
@@ -36,14 +36,14 @@ public struct OpenAIRunStepObject: Codable, Sendable {
     expiredAt: Int?,
     failedAt: Int?,
     id: String,
-    lastError: OpenAIRunStepObjectLastErrorAnyOf1?,
+    lastError: OpenAIRunStepObjectLastErrorWithCodeAndMessage?,
     metadata: OpenAIMetadata?,
-    object: OpenAIRunStepObjectObject,
+    object: OpenAIRunStepObject.Object,
     runId: String,
-    status: OpenAIRunStepObjectStatus,
-    stepDetails: OpenAIRunStepObjectStepDetails,
+    status: OpenAIRunStepObject.Status,
+    stepDetails: OpenAIRunStepObject.StepDetails,
     threadId: String,
-    kind: OpenAIRunStepObjectKind,
+    kind: OpenAIRunStepObject.Kind,
     usage: OpenAIRunStepCompletionUsage?
   ) {
     self.assistantId = assistantId
@@ -81,5 +81,47 @@ public struct OpenAIRunStepObject: Codable, Sendable {
     case threadId = "thread_id"
     case kind = "type"
     case usage
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case messageCreation = "message_creation"
+    case toolCalls = "tool_calls"
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case threadRunStep = "thread.run.step"
+  }
+
+  public enum Status: String, Codable, Hashable, Sendable {
+    case inProgress = "in_progress"
+    case cancelled = "cancelled"
+    case failed = "failed"
+    case completed = "completed"
+    case expired = "expired"
+  }
+
+  public enum StepDetails: Codable, Sendable {
+    case runStepDetailsMessageCreationObject(OpenAIRunStepDetailsMessageCreationObject)
+    case runStepDetailsToolCallsObject(OpenAIRunStepDetailsToolCallsObject)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(OpenAIRunStepDetailsMessageCreationObject.self) {
+        self = .runStepDetailsMessageCreationObject(value)
+        return
+      }
+      self = .runStepDetailsToolCallsObject(
+        try container.decode(OpenAIRunStepDetailsToolCallsObject.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .runStepDetailsMessageCreationObject(let value):
+        try container.encode(value)
+      case .runStepDetailsToolCallsObject(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

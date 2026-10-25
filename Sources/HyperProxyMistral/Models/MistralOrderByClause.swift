@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralOrderByClause: Codable, Sendable {
-  public var direction: MistralOrderByClauseDirection?
+  public var direction: MistralOrderByClause.Direction?
   public var field: String
 
   public init(
     field: String,
-    direction: MistralOrderByClauseDirection? = nil
+    direction: MistralOrderByClause.Direction? = nil
   ) {
     self.direction = direction
     self.field = field
@@ -25,5 +25,10 @@ public struct MistralOrderByClause: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case direction
     case field
+  }
+
+  public enum Direction: String, Codable, Hashable, Sendable {
+    case asc = "asc"
+    case desc = "desc"
   }
 }

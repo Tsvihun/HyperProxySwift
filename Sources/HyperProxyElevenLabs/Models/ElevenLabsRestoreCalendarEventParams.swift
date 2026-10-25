@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsRestoreCalendarEventParams: Codable, Sendable {
-  public var smbToolType: ElevenLabsRestoreCalendarEventSmbToolType?
+  public var smbToolType: ElevenLabsRestoreCalendarEventParams.SmbToolType?
 
   public init(
-    smbToolType: ElevenLabsRestoreCalendarEventSmbToolType? = nil
+    smbToolType: ElevenLabsRestoreCalendarEventParams.SmbToolType? = nil
   ) {
     self.smbToolType = smbToolType
   }
 
   enum CodingKeys: String, CodingKey {
     case smbToolType = "smb_tool_type"
+  }
+
+  public enum SmbToolType: String, Codable, Hashable, Sendable {
+    case restoreCalendarEvent = "restore_calendar_event"
   }
 }

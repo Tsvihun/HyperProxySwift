@@ -24,16 +24,16 @@ public struct ElevenLabsCaptionStyleModel: Codable, Sendable {
   public var maxWordsPerLine: Int?
   public var sectionAnimation: ElevenLabsCaptionStyleSectionAnimationModel?
   public var template: ElevenLabsCaptionStyleTemplateModel?
-  public var textAlign: ElevenLabsCaptionStyleModelTextAlign?
-  public var textBlendMode: ElevenLabsCaptionStyleModelTextBlendMode?
+  public var textAlign: ElevenLabsCaptionStyleModel.TextAlign?
+  public var textBlendMode: ElevenLabsCaptionStyleModel.TextBlendMode?
   public var textColor: String?
   public var textFont: String?
   public var textOutline: ElevenLabsStudioTextStyleOutlineModel?
   public var textScale: Double?
   public var textShadow: ElevenLabsStudioTextStyleShadowModel?
-  public var textStyle: ElevenLabsCaptionStyleModelTextStyle?
-  public var textTransform: ElevenLabsCaptionStyleModelTextTransform?
-  public var textWeight: ElevenLabsCaptionStyleModelTextWeight?
+  public var textStyle: ElevenLabsCaptionStyleModel.TextStyle?
+  public var textTransform: ElevenLabsCaptionStyleModel.TextTransform?
+  public var textWeight: ElevenLabsCaptionStyleModel.TextWeight?
   public var verticalPlacement: ElevenLabsCaptionStyleVerticalPlacementModel?
   public var widthPct: Double?
   public var wordAnimation: ElevenLabsCaptionStyleWordAnimationModel?
@@ -58,16 +58,16 @@ public struct ElevenLabsCaptionStyleModel: Codable, Sendable {
     maxWordsPerLine: Int? = nil,
     sectionAnimation: ElevenLabsCaptionStyleSectionAnimationModel? = nil,
     template: ElevenLabsCaptionStyleTemplateModel? = nil,
-    textAlign: ElevenLabsCaptionStyleModelTextAlign? = nil,
-    textBlendMode: ElevenLabsCaptionStyleModelTextBlendMode? = nil,
+    textAlign: ElevenLabsCaptionStyleModel.TextAlign? = nil,
+    textBlendMode: ElevenLabsCaptionStyleModel.TextBlendMode? = nil,
     textColor: String? = nil,
     textFont: String? = nil,
     textOutline: ElevenLabsStudioTextStyleOutlineModel? = nil,
     textScale: Double? = nil,
     textShadow: ElevenLabsStudioTextStyleShadowModel? = nil,
-    textStyle: ElevenLabsCaptionStyleModelTextStyle? = nil,
-    textTransform: ElevenLabsCaptionStyleModelTextTransform? = nil,
-    textWeight: ElevenLabsCaptionStyleModelTextWeight? = nil,
+    textStyle: ElevenLabsCaptionStyleModel.TextStyle? = nil,
+    textTransform: ElevenLabsCaptionStyleModel.TextTransform? = nil,
+    textWeight: ElevenLabsCaptionStyleModel.TextWeight? = nil,
     verticalPlacement: ElevenLabsCaptionStyleVerticalPlacementModel? = nil,
     widthPct: Double? = nil,
     wordAnimation: ElevenLabsCaptionStyleWordAnimationModel? = nil,
@@ -145,5 +145,33 @@ public struct ElevenLabsCaptionStyleModel: Codable, Sendable {
     case wordHighlightsColor = "word_highlights_color"
     case wordHighlightsEnabled = "word_highlights_enabled"
     case wordHighlightsOpacity = "word_highlights_opacity"
+  }
+
+  public enum TextAlign: String, Codable, Hashable, Sendable {
+    case start = "start"
+    case center = "center"
+    case end = "end"
+  }
+
+  public enum TextBlendMode: String, Codable, Hashable, Sendable {
+    case normal = "normal"
+    case difference = "difference"
+    case multiply = "multiply"
+  }
+
+  public enum TextStyle: String, Codable, Hashable, Sendable {
+    case normal = "normal"
+    case italic = "italic"
+  }
+
+  public enum TextTransform: String, Codable, Hashable, Sendable {
+    case none = "none"
+    case uppercase = "uppercase"
+  }
+
+  public enum TextWeight: String, Codable, Hashable, Sendable {
+    case normal = "normal"
+    case bold = "bold"
+    case value900 = "900"
   }
 }

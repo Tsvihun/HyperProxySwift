@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsPdfExportOptions: Codable, Sendable {
-  public var format: ElevenLabsPdfFormat
+  public var format: ElevenLabsPdfExportOptions.Format
   public var includeSpeakers: Bool?
   public var includeTimestamps: Bool?
   public var maxSegmentChars: Int?
@@ -19,7 +19,7 @@ public struct ElevenLabsPdfExportOptions: Codable, Sendable {
   public var segmentOnSilenceLongerThanS: Double?
 
   public init(
-    format: ElevenLabsPdfFormat = .pdf,
+    format: ElevenLabsPdfExportOptions.Format = .pdf,
     includeSpeakers: Bool? = nil,
     includeTimestamps: Bool? = nil,
     maxSegmentChars: Int? = nil,
@@ -41,5 +41,9 @@ public struct ElevenLabsPdfExportOptions: Codable, Sendable {
     case maxSegmentChars = "max_segment_chars"
     case maxSegmentDurationS = "max_segment_duration_s"
     case segmentOnSilenceLongerThanS = "segment_on_silence_longer_than_s"
+  }
+
+  public enum Format: String, Codable, Hashable, Sendable {
+    case pdf = "pdf"
   }
 }

@@ -14,13 +14,13 @@ public struct FireworksGatewayGetAccountUsageFilterOptionsParameters: Codable, S
   public var accountId: String
   public var endTime: String
   public var startTime: String
-  public var usageType: FireworksGatewayGetAccountUsageFilterOptionsParametersUsageType?
+  public var usageType: FireworksGatewayGetAccountUsageFilterOptionsParameters.UsageType?
 
   public init(
     accountId: String,
     endTime: String,
     startTime: String,
-    usageType: FireworksGatewayGetAccountUsageFilterOptionsParametersUsageType? = nil
+    usageType: FireworksGatewayGetAccountUsageFilterOptionsParameters.UsageType? = nil
   ) {
     self.accountId = accountId
     self.endTime = endTime
@@ -33,5 +33,14 @@ public struct FireworksGatewayGetAccountUsageFilterOptionsParameters: Codable, S
     case endTime
     case startTime
     case usageType
+  }
+
+  public enum UsageType: String, Codable,
+    Hashable, Sendable
+  {
+    case usageTypeUnspecified = "USAGE_TYPE_UNSPECIFIED"
+    case serverless = "SERVERLESS"
+    case dedicatedDeployment = "DEDICATED_DEPLOYMENT"
+    case training = "TRAINING"
   }
 }

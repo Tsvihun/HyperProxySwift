@@ -142,12 +142,12 @@ extension HyperProxyProviderService where Operation == MistralOperation {
     self.call(.agentsApiV1ConversationsList)
   }
   /// `POST v1/conversations`
-  public var agentsApiV1ConversationsStartStream: HyperProxyProviderCall<MistralOperation> {
-    self.call(.agentsApiV1ConversationsStartStream)
-  }
-  /// `POST v1/conversations`
   public var agentsApiV1ConversationsStart: HyperProxyProviderCall<MistralOperation> {
     self.call(.agentsApiV1ConversationsStart)
+  }
+  /// `POST v1/conversations`
+  public var agentsApiV1ConversationsStartStream: HyperProxyProviderCall<MistralOperation> {
+    self.call(.agentsApiV1ConversationsStartStream)
   }
   /// `DELETE v1/conversations/{conversation_id}`
   public var agentsApiV1ConversationsDelete: HyperProxyProviderCall<MistralOperation> {
@@ -158,12 +158,12 @@ extension HyperProxyProviderService where Operation == MistralOperation {
     self.call(.agentsApiV1ConversationsGet)
   }
   /// `POST v1/conversations/{conversation_id}`
-  public var agentsApiV1ConversationsAppendStream: HyperProxyProviderCall<MistralOperation> {
-    self.call(.agentsApiV1ConversationsAppendStream)
-  }
-  /// `POST v1/conversations/{conversation_id}`
   public var agentsApiV1ConversationsAppend: HyperProxyProviderCall<MistralOperation> {
     self.call(.agentsApiV1ConversationsAppend)
+  }
+  /// `POST v1/conversations/{conversation_id}`
+  public var agentsApiV1ConversationsAppendStream: HyperProxyProviderCall<MistralOperation> {
+    self.call(.agentsApiV1ConversationsAppendStream)
   }
   /// `GET v1/conversations/{conversation_id}/history`
   public var agentsApiV1ConversationsHistory: HyperProxyProviderCall<MistralOperation> {
@@ -174,12 +174,12 @@ extension HyperProxyProviderService where Operation == MistralOperation {
     self.call(.agentsApiV1ConversationsMessages)
   }
   /// `POST v1/conversations/{conversation_id}/restart`
-  public var agentsApiV1ConversationsRestartStream: HyperProxyProviderCall<MistralOperation> {
-    self.call(.agentsApiV1ConversationsRestartStream)
-  }
-  /// `POST v1/conversations/{conversation_id}/restart`
   public var agentsApiV1ConversationsRestart: HyperProxyProviderCall<MistralOperation> {
     self.call(.agentsApiV1ConversationsRestart)
+  }
+  /// `POST v1/conversations/{conversation_id}/restart`
+  public var agentsApiV1ConversationsRestartStream: HyperProxyProviderCall<MistralOperation> {
+    self.call(.agentsApiV1ConversationsRestartStream)
   }
   /// `GET v1/libraries`
   public var librariesListV1: HyperProxyProviderCall<MistralOperation> {
@@ -826,6 +826,10 @@ extension HyperProxyProviderService where Operation == MistralOperation {
     self.call(.audioSpeech)
   }
   /// `POST v1/audio/transcriptions`
+  public var audioApiV1TranscriptionsPostStream: HyperProxyProviderCall<MistralOperation> {
+    self.call(.audioApiV1TranscriptionsPostStream)
+  }
+  /// `POST v1/audio/transcriptions`
   public var audioTranscriptions: HyperProxyProviderCall<MistralOperation> {
     self.call(.audioTranscriptions)
   }
@@ -1262,10 +1266,6 @@ extension HyperProxyProviderService where Operation == MistralOperation {
   /// `GET v2/audio/voices`
   public var audioV2VoicesList: HyperProxyProviderCall<MistralOperation> {
     self.call(.audioV2VoicesList)
-  }
-  @available(*, deprecated, renamed: "audioTranscriptions")
-  public var audioApiV1TranscriptionsPost: HyperProxyProviderCall<MistralOperation> {
-    self.call(.audioTranscriptions)
   }
 
   /// Organization-administration operations. Kept out of the

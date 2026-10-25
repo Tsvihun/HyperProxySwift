@@ -12,13 +12,14 @@ import HyperProxyCore
 
 public struct AnthropicBetaServiceAccountWorkspaceMemberDeleteResponse: Codable, Sendable {
   public var serviceAccountId: String
-  public var kind: AnthropicServiceAccountWorkspaceMemberDeletedKind
+  public var kind: AnthropicBetaServiceAccountWorkspaceMemberDeleteResponse.Kind
   public var workspaceId: String
 
   public init(
     serviceAccountId: String,
     workspaceId: String,
-    kind: AnthropicServiceAccountWorkspaceMemberDeletedKind = .serviceAccountWorkspaceMemberDeleted
+    kind: AnthropicBetaServiceAccountWorkspaceMemberDeleteResponse.Kind =
+      .serviceAccountWorkspaceMemberDeleted
   ) {
     self.serviceAccountId = serviceAccountId
     self.kind = kind
@@ -29,5 +30,9 @@ public struct AnthropicBetaServiceAccountWorkspaceMemberDeleteResponse: Codable,
     case serviceAccountId = "service_account_id"
     case kind = "type"
     case workspaceId = "workspace_id"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case serviceAccountWorkspaceMemberDeleted = "service_account_workspace_member_deleted"
   }
 }

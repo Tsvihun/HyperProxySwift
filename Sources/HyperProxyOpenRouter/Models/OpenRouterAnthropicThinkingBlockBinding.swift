@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterAnthropicThinkingBlockBinding: Codable, Sendable {
-  public var mismatchBehavior: OpenRouterAnthropicThinkingBlockBindingMismatchBehavior?
-  public var prefixMismatchBehavior: OpenRouterAnthropicThinkingBlockBindingPrefixMismatchBehavior?
+  public var mismatchBehavior: OpenRouterAnthropicThinkingBlockBinding.MismatchBehavior?
+  public var prefixMismatchBehavior: OpenRouterAnthropicThinkingBlockBinding.PrefixMismatchBehavior?
 
   public init(
-    mismatchBehavior: OpenRouterAnthropicThinkingBlockBindingMismatchBehavior? = nil,
-    prefixMismatchBehavior: OpenRouterAnthropicThinkingBlockBindingPrefixMismatchBehavior? = nil
+    mismatchBehavior: OpenRouterAnthropicThinkingBlockBinding.MismatchBehavior? = nil,
+    prefixMismatchBehavior: OpenRouterAnthropicThinkingBlockBinding.PrefixMismatchBehavior? = nil
   ) {
     self.mismatchBehavior = mismatchBehavior
     self.prefixMismatchBehavior = prefixMismatchBehavior
@@ -25,5 +25,19 @@ public struct OpenRouterAnthropicThinkingBlockBinding: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case mismatchBehavior = "mismatch_behavior"
     case prefixMismatchBehavior = "prefix_mismatch_behavior"
+  }
+
+  public enum MismatchBehavior: String, Codable, Hashable,
+    Sendable
+  {
+    case error = "error"
+    case dropBlock = "drop_block"
+  }
+
+  public enum PrefixMismatchBehavior: String, Codable,
+    Hashable, Sendable
+  {
+    case error = "error"
+    case dropBlock = "drop_block"
   }
 }

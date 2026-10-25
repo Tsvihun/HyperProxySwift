@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIBetaCreateResponseParameters: Codable, Sendable {
-  public var openaiBeta: [OpenAIBetaCreateResponseParametersOpenaiBetaItem]?
+  public var openaiBeta: [OpenAIBetaCreateResponseParameters.OpenaiBetaElement]?
 
   public init(
-    openaiBeta: [OpenAIBetaCreateResponseParametersOpenaiBetaItem]? = nil
+    openaiBeta: [OpenAIBetaCreateResponseParameters.OpenaiBetaElement]? = nil
   ) {
     self.openaiBeta = openaiBeta
   }
 
   enum CodingKeys: String, CodingKey {
     case openaiBeta = "openai-beta"
+  }
+
+  public enum OpenaiBetaElement: String, Codable, Hashable, Sendable {
+    case responsesMultiAgentV1 = "responses_multi_agent=v1"
   }
 }

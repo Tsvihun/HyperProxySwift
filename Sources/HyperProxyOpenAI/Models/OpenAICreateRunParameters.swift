@@ -11,12 +11,12 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAICreateRunParameters: Codable, Sendable {
-  public var include: [OpenAICreateRunParametersIncludeItem]?
+  public var include: [OpenAICreateRunParameters.IncludeElement]?
   public var threadId: String
 
   public init(
     threadId: String,
-    include: [OpenAICreateRunParametersIncludeItem]? = nil
+    include: [OpenAICreateRunParameters.IncludeElement]? = nil
   ) {
     self.include = include
     self.threadId = threadId
@@ -25,5 +25,10 @@ public struct OpenAICreateRunParameters: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case include = "include[]"
     case threadId = "thread_id"
+  }
+
+  public enum IncludeElement: String, Codable, Hashable, Sendable {
+    case stepDetailsToolCallsFileSearchResultsContent =
+      "step_details.tool_calls[*].file_search.results[*].content"
   }
 }

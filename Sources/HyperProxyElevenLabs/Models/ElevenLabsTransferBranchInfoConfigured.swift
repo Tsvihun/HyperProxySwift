@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct ElevenLabsTransferBranchInfoConfigured: Codable, Sendable {
   public var branchId: String
-  public var branchReason: ElevenLabsConfiguredBranchReason
+  public var branchReason: ElevenLabsTransferBranchInfoConfigured.BranchReason
 
   public init(
     branchId: String,
-    branchReason: ElevenLabsConfiguredBranchReason = .configured
+    branchReason: ElevenLabsTransferBranchInfoConfigured.BranchReason = .configured
   ) {
     self.branchId = branchId
     self.branchReason = branchReason
@@ -25,5 +25,9 @@ public struct ElevenLabsTransferBranchInfoConfigured: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case branchId = "branch_id"
     case branchReason = "branch_reason"
+  }
+
+  public enum BranchReason: String, Codable, Hashable, Sendable {
+    case configured = "configured"
   }
 }

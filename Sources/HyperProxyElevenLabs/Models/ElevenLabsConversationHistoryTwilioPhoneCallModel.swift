@@ -18,7 +18,7 @@ public struct ElevenLabsConversationHistoryTwilioPhoneCallModel: Codable, Sendab
   public var externalNumber: String
   public var phoneNumberId: String
   public var streamSid: String
-  public var kind: ElevenLabsTwilioKind
+  public var kind: ElevenLabsConversationHistoryTwilioPhoneCallModel.Kind
 
   public init(
     agentNumber: String,
@@ -27,7 +27,7 @@ public struct ElevenLabsConversationHistoryTwilioPhoneCallModel: Codable, Sendab
     externalNumber: String,
     phoneNumberId: String,
     streamSid: String,
-    kind: ElevenLabsTwilioKind = .twilio,
+    kind: ElevenLabsConversationHistoryTwilioPhoneCallModel.Kind = .twilio,
     callResult: ElevenLabsCallResult? = nil
   ) {
     self.agentNumber = agentNumber
@@ -49,5 +49,9 @@ public struct ElevenLabsConversationHistoryTwilioPhoneCallModel: Codable, Sendab
     case phoneNumberId = "phone_number_id"
     case streamSid = "stream_sid"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case twilio = "twilio"
   }
 }

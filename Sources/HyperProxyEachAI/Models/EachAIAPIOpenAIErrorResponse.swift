@@ -11,15 +11,41 @@ import Foundation
 import HyperProxyCore
 
 public struct EachAIAPIOpenAIErrorResponse: Codable, Sendable {
-  public var error: EachAIAPIOpenAIErrorResponseError?
+  public var error: EachAIAPIOpenAIErrorResponse.ErrorValue?
 
   public init(
-    error: EachAIAPIOpenAIErrorResponseError? = nil
+    error: EachAIAPIOpenAIErrorResponse.ErrorValue? = nil
   ) {
     self.error = error
   }
 
   enum CodingKeys: String, CodingKey {
     case error
+  }
+
+  public struct ErrorValue: Codable, Sendable {
+    public var code: String?
+    public var message: String?
+    public var param: String?
+    public var kind: String?
+
+    public init(
+      code: String? = nil,
+      message: String? = nil,
+      param: String? = nil,
+      kind: String? = nil
+    ) {
+      self.code = code
+      self.message = message
+      self.param = param
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case code
+      case message
+      case param
+      case kind = "type"
+    }
   }
 }

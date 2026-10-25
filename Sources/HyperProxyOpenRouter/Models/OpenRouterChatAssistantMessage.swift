@@ -12,20 +12,20 @@ import HyperProxyCore
 
 public struct OpenRouterChatAssistantMessage: Codable, Sendable {
   public var audio: OpenRouterChatAudioOutput?
-  public var content: OpenRouterChatAssistantMessageContent?
+  public var content: OpenRouterChatAssistantMessage.Content?
   public var images: OpenRouterChatAssistantImages?
   public var model: String?
   public var name: String?
   public var reasoning: String?
   public var reasoningDetails: OpenRouterChatReasoningDetails?
   public var refusal: String?
-  public var role: OpenRouterChatAssistantMessageRole
+  public var role: OpenRouterChatAssistantMessage.Role
   public var toolCalls: [OpenRouterChatToolCall]?
 
   public init(
-    role: OpenRouterChatAssistantMessageRole,
+    role: OpenRouterChatAssistantMessage.Role,
     audio: OpenRouterChatAudioOutput? = nil,
-    content: OpenRouterChatAssistantMessageContent? = nil,
+    content: OpenRouterChatAssistantMessage.Content? = nil,
     images: OpenRouterChatAssistantImages? = nil,
     model: String? = nil,
     name: String? = nil,
@@ -57,5 +57,45 @@ public struct OpenRouterChatAssistantMessage: Codable, Sendable {
     case refusal
     case role
     case toolCalls = "tool_calls"
+  }
+
+  public enum Content: Codable, Sendable {
+    case string(String)
+    case chatContentItemsArray([OpenRouterChatContentItems])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .chatContentItemsArray(try container.decode([OpenRouterChatContentItems].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .chatContentItemsArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case assistant = "assistant"
+  }
+}
+
+extension OpenRouterChatAssistantMessage.Content: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension OpenRouterChatAssistantMessage.Content: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: OpenRouterChatContentItems...) {
+    self = .chatContentItemsArray(elements)
   }
 }

@@ -13,11 +13,11 @@ import HyperProxyCore
 public struct OpenAIEvalStoredCompletionsDataSourceConfig: Codable, Sendable {
   public var metadata: OpenAIMetadata?
   public var schema: [String: HyperProxyJSONValue]
-  public var kind: OpenAIEvalStoredCompletionsDataSourceConfigKind
+  public var kind: OpenAIEvalStoredCompletionsDataSourceConfig.Kind
 
   public init(
     schema: [String: HyperProxyJSONValue],
-    kind: OpenAIEvalStoredCompletionsDataSourceConfigKind,
+    kind: OpenAIEvalStoredCompletionsDataSourceConfig.Kind,
     metadata: OpenAIMetadata? = nil
   ) {
     self.metadata = metadata
@@ -29,5 +29,9 @@ public struct OpenAIEvalStoredCompletionsDataSourceConfig: Codable, Sendable {
     case metadata
     case schema
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case storedCompletions = "stored_completions"
   }
 }

@@ -13,6 +13,6 @@ import HyperProxyCore
 public enum DeepSeekAnthropicToolChoiceType: String, Codable, Hashable, Sendable {
   case none = "none"
   case auto = "auto"
-  case anyModel = "any"
+  case any = "any"
   case tool = "tool"
 }

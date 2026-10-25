@@ -12,19 +12,19 @@ import HyperProxyCore
 
 public struct OpenAIOrganizationProjectCertificate: Codable, Sendable {
   public var active: Bool
-  public var certificateDetails: OpenAIOrganizationProjectCertificateCertificateDetails
+  public var certificateDetails: OpenAIOrganizationProjectCertificate.CertificateDetails
   public var createdAt: Int
   public var id: String
   public var name: String?
-  public var object: OpenAIOrganizationProjectCertificateObject
+  public var object: OpenAIOrganizationProjectCertificate.Object
 
   public init(
     active: Bool,
-    certificateDetails: OpenAIOrganizationProjectCertificateCertificateDetails,
+    certificateDetails: OpenAIOrganizationProjectCertificate.CertificateDetails,
     createdAt: Int,
     id: String,
     name: String?,
-    object: OpenAIOrganizationProjectCertificateObject
+    object: OpenAIOrganizationProjectCertificate.Object
   ) {
     self.active = active
     self.certificateDetails = certificateDetails
@@ -41,5 +41,27 @@ public struct OpenAIOrganizationProjectCertificate: Codable, Sendable {
     case id
     case name
     case object
+  }
+
+  public struct CertificateDetails: Codable, Sendable {
+    public var expiresAt: Int?
+    public var validAt: Int?
+
+    public init(
+      expiresAt: Int? = nil,
+      validAt: Int? = nil
+    ) {
+      self.expiresAt = expiresAt
+      self.validAt = validAt
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case expiresAt = "expires_at"
+      case validAt = "valid_at"
+    }
+  }
+
+  public enum Object: String, Codable, Hashable, Sendable {
+    case organizationProjectCertificate = "organization.project.certificate"
   }
 }

@@ -16,10 +16,10 @@ public struct OpenAISessionEventAgentSessionTurnReasoningSummaryPartDone: Codabl
   public var outputIndex: Int64
   public var part: OpenAISummaryTextResource
   public var sessionId: String
-  public var status: OpenAISessionEventAgentSessionTurnReasoningSummaryPartDoneStatus?
+  public var status: OpenAISessionEventAgentSessionTurnReasoningSummaryPartDone.Status?
   public var summaryIndex: Int64
   public var turnId: String
-  public var kind: OpenAISessionEventAgentSessionTurnReasoningSummaryPartDoneKind
+  public var kind: OpenAISessionEventAgentSessionTurnReasoningSummaryPartDone.Kind
 
   public init(
     eventId: String,
@@ -27,10 +27,10 @@ public struct OpenAISessionEventAgentSessionTurnReasoningSummaryPartDone: Codabl
     outputIndex: Int64,
     part: OpenAISummaryTextResource,
     sessionId: String,
-    status: OpenAISessionEventAgentSessionTurnReasoningSummaryPartDoneStatus?,
+    status: OpenAISessionEventAgentSessionTurnReasoningSummaryPartDone.Status?,
     summaryIndex: Int64,
     turnId: String,
-    kind: OpenAISessionEventAgentSessionTurnReasoningSummaryPartDoneKind
+    kind: OpenAISessionEventAgentSessionTurnReasoningSummaryPartDone.Kind
   ) {
     self.eventId = eventId
     self.itemId = itemId
@@ -53,5 +53,17 @@ public struct OpenAISessionEventAgentSessionTurnReasoningSummaryPartDone: Codabl
     case summaryIndex = "summary_index"
     case turnId = "turn_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case agentSessionTurnReasoningSummaryPartDone = "agent.session.turn.reasoning_summary_part.done"
+  }
+
+  public enum Status: String, Codable,
+    Hashable, Sendable
+  {
+    case incomplete = "incomplete"
   }
 }

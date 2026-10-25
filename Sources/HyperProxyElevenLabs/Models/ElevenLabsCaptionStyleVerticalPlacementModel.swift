@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsCaptionStyleVerticalPlacementModel: Codable, Sendable {
-  public var align: ElevenLabsCaptionStyleVerticalPlacementModelAlign
+  public var align: ElevenLabsCaptionStyleVerticalPlacementModel.Align
   public var translatePct: Double
 
   public init(
-    align: ElevenLabsCaptionStyleVerticalPlacementModelAlign,
+    align: ElevenLabsCaptionStyleVerticalPlacementModel.Align,
     translatePct: Double
   ) {
     self.align = align
@@ -25,5 +25,11 @@ public struct ElevenLabsCaptionStyleVerticalPlacementModel: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case align
     case translatePct = "translate_pct"
+  }
+
+  public enum Align: String, Codable, Hashable, Sendable {
+    case top = "top"
+    case center = "center"
+    case bottom = "bottom"
   }
 }

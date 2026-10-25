@@ -146,7 +146,7 @@ let videoSubmission = try await bfl.submit(
   body: BFLFlux3VideoRequest.textToVideo(
     BFLFlux3VideoT2VInputs(
       prompt: "A slow orbit around a glass sculpture",
-      aspectRatio: .flux3VideoT2VInputsAspectRatioAnyOf1(.value169),
+      aspectRatio: .ratio16x9,
       duration: 8,
       generateAudio: true,
       resolution: .fhd
@@ -161,7 +161,7 @@ the endpoint that matches the base model and precision selected when the finetun
 <!-- docs-check: continues -->
 ```swift
 let loraSubmission = try await bfl.submit(
-  .fineTuningFlux2Klein9BKVGenerate,
+  .fineTuningFlux2Klein9BkvGenerate,
   body: BFLFlux2KleinFinetuneInputs(
     finetuneId: "organization-id/portrait-lora",
     prompt: "A portrait of ohwx in a sunlit studio",

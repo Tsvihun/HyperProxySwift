@@ -11,15 +11,15 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepSeekFileUploadRequest: Codable, Sendable {
-  public var expiresAfterAnchor: DeepSeekFileUploadRequestExpiresAfterAnchor?
+  public var expiresAfterAnchor: DeepSeekFileUploadRequest.ExpiresAfterAnchor?
   public var expiresAfterSeconds: Int?
   public var file: String
-  public var purpose: DeepSeekFileUploadRequestPurpose
+  public var purpose: DeepSeekFileUploadRequest.Purpose
 
   public init(
     file: String,
-    purpose: DeepSeekFileUploadRequestPurpose,
-    expiresAfterAnchor: DeepSeekFileUploadRequestExpiresAfterAnchor? = nil,
+    purpose: DeepSeekFileUploadRequest.Purpose,
+    expiresAfterAnchor: DeepSeekFileUploadRequest.ExpiresAfterAnchor? = nil,
     expiresAfterSeconds: Int? = nil
   ) {
     self.expiresAfterAnchor = expiresAfterAnchor
@@ -33,5 +33,13 @@ public struct DeepSeekFileUploadRequest: Codable, Sendable {
     case expiresAfterSeconds = "expires_after[seconds]"
     case file
     case purpose
+  }
+
+  public enum ExpiresAfterAnchor: String, Codable, Hashable, Sendable {
+    case createdAt = "created_at"
+  }
+
+  public enum Purpose: String, Codable, Hashable, Sendable {
+    case userData = "user_data"
   }
 }

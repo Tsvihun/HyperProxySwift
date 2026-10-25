@@ -11,13 +11,13 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIRunGraderResponse: Codable, Sendable {
-  public var metadata: OpenAIRunGraderResponseMetadata
+  public var metadata: OpenAIRunGraderResponse.Metadata
   public var modelGraderTokenUsagePerModel: [String: HyperProxyJSONValue]
   public var reward: Double
   public var subRewards: [String: HyperProxyJSONValue]
 
   public init(
-    metadata: OpenAIRunGraderResponseMetadata,
+    metadata: OpenAIRunGraderResponse.Metadata,
     modelGraderTokenUsagePerModel: [String: HyperProxyJSONValue],
     reward: Double,
     subRewards: [String: HyperProxyJSONValue]
@@ -33,5 +33,111 @@ public struct OpenAIRunGraderResponse: Codable, Sendable {
     case modelGraderTokenUsagePerModel = "model_grader_token_usage_per_model"
     case reward
     case subRewards = "sub_rewards"
+  }
+
+  public struct Metadata: Codable, Sendable {
+    public var errors: OpenAIRunGraderResponse.Metadata.Errors
+    public var executionTime: Double
+    public var name: String
+    public var sampledModelName: String?
+    public var scores: [String: HyperProxyJSONValue]
+    public var tokenUsage:
+      OpenAIRunGraderResponseMetadataTokenUsageWithCachedTokensAndCompletionTokensAndPromptTokens?
+    public var kind: String
+
+    public init(
+      errors: OpenAIRunGraderResponse.Metadata.Errors,
+      executionTime: Double,
+      name: String,
+      sampledModelName: String?,
+      scores: [String: HyperProxyJSONValue],
+      tokenUsage:
+        OpenAIRunGraderResponseMetadataTokenUsageWithCachedTokensAndCompletionTokensAndPromptTokens?,
+      kind: String
+    ) {
+      self.errors = errors
+      self.executionTime = executionTime
+      self.name = name
+      self.sampledModelName = sampledModelName
+      self.scores = scores
+      self.tokenUsage = tokenUsage
+      self.kind = kind
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case errors
+      case executionTime = "execution_time"
+      case name
+      case sampledModelName = "sampled_model_name"
+      case scores
+      case tokenUsage = "token_usage"
+      case kind = "type"
+    }
+
+    public struct Errors: Codable, Sendable {
+      public var formulaParseError: Bool
+      public var invalidVariableError: Bool
+      public var modelGraderParseError: Bool
+      public var modelGraderRefusalError: Bool
+      public var modelGraderServerError: Bool
+      public var modelGraderServerErrorDetails: String?
+      public var otherError: Bool
+      public var pythonGraderRuntimeError: Bool
+      public var pythonGraderRuntimeErrorDetails: String?
+      public var pythonGraderServerError: Bool
+      public var pythonGraderServerErrorType: String?
+      public var sampleParseError: Bool
+      public var truncatedObservationError: Bool
+      public var unresponsiveRewardError: Bool
+
+      public init(
+        formulaParseError: Bool,
+        invalidVariableError: Bool,
+        modelGraderParseError: Bool,
+        modelGraderRefusalError: Bool,
+        modelGraderServerError: Bool,
+        modelGraderServerErrorDetails: String?,
+        otherError: Bool,
+        pythonGraderRuntimeError: Bool,
+        pythonGraderRuntimeErrorDetails: String?,
+        pythonGraderServerError: Bool,
+        pythonGraderServerErrorType: String?,
+        sampleParseError: Bool,
+        truncatedObservationError: Bool,
+        unresponsiveRewardError: Bool
+      ) {
+        self.formulaParseError = formulaParseError
+        self.invalidVariableError = invalidVariableError
+        self.modelGraderParseError = modelGraderParseError
+        self.modelGraderRefusalError = modelGraderRefusalError
+        self.modelGraderServerError = modelGraderServerError
+        self.modelGraderServerErrorDetails = modelGraderServerErrorDetails
+        self.otherError = otherError
+        self.pythonGraderRuntimeError = pythonGraderRuntimeError
+        self.pythonGraderRuntimeErrorDetails = pythonGraderRuntimeErrorDetails
+        self.pythonGraderServerError = pythonGraderServerError
+        self.pythonGraderServerErrorType = pythonGraderServerErrorType
+        self.sampleParseError = sampleParseError
+        self.truncatedObservationError = truncatedObservationError
+        self.unresponsiveRewardError = unresponsiveRewardError
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case formulaParseError = "formula_parse_error"
+        case invalidVariableError = "invalid_variable_error"
+        case modelGraderParseError = "model_grader_parse_error"
+        case modelGraderRefusalError = "model_grader_refusal_error"
+        case modelGraderServerError = "model_grader_server_error"
+        case modelGraderServerErrorDetails = "model_grader_server_error_details"
+        case otherError = "other_error"
+        case pythonGraderRuntimeError = "python_grader_runtime_error"
+        case pythonGraderRuntimeErrorDetails = "python_grader_runtime_error_details"
+        case pythonGraderServerError = "python_grader_server_error"
+        case pythonGraderServerErrorType = "python_grader_server_error_type"
+        case sampleParseError = "sample_parse_error"
+        case truncatedObservationError = "truncated_observation_error"
+        case unresponsiveRewardError = "unresponsive_reward_error"
+      }
+    }
   }
 }

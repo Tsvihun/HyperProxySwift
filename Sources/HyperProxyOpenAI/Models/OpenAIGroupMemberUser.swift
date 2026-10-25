@@ -16,7 +16,7 @@ public struct OpenAIGroupMemberUser: Codable, Sendable {
   public var isServiceAccount: Bool?
   public var name: String
   public var picture: String?
-  public var userType: OpenAIGroupMemberUserUserType
+  public var userType: OpenAIGroupMemberUser.UserType
 
   public init(
     email: String?,
@@ -24,7 +24,7 @@ public struct OpenAIGroupMemberUser: Codable, Sendable {
     isServiceAccount: Bool?,
     name: String,
     picture: String?,
-    userType: OpenAIGroupMemberUserUserType
+    userType: OpenAIGroupMemberUser.UserType
   ) {
     self.email = email
     self.id = id
@@ -41,5 +41,10 @@ public struct OpenAIGroupMemberUser: Codable, Sendable {
     case name
     case picture
     case userType = "user_type"
+  }
+
+  public enum UserType: String, Codable, Hashable, Sendable {
+    case user = "user"
+    case tenantUser = "tenant_user"
   }
 }

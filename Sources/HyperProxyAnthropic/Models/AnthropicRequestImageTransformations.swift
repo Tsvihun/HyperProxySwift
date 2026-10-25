@@ -11,15 +11,20 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicRequestImageTransformations: Codable, Sendable {
-  public var oversizedImage: AnthropicRequestImageTransformationsOversizedImage?
+  public var oversizedImage: AnthropicRequestImageTransformations.OversizedImage?
 
   public init(
-    oversizedImage: AnthropicRequestImageTransformationsOversizedImage? = nil
+    oversizedImage: AnthropicRequestImageTransformations.OversizedImage? = nil
   ) {
     self.oversizedImage = oversizedImage
   }
 
   enum CodingKeys: String, CodingKey {
     case oversizedImage = "oversized_image"
+  }
+
+  public enum OversizedImage: String, Codable, Hashable, Sendable {
+    case downsize = "downsize"
+    case error = "error"
   }
 }

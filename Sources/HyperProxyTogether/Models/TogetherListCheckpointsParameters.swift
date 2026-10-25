@@ -15,14 +15,14 @@ public struct TogetherListCheckpointsParameters: Codable, Sendable {
   public var baseModel: String?
   public var limit: Int?
   public var sessionId: String?
-  public var kind: TogetherListCheckpointsParametersKind?
+  public var kind: TogetherListCheckpointsParameters.Kind?
 
   public init(
     after: String? = nil,
     baseModel: String? = nil,
     limit: Int? = nil,
     sessionId: String? = nil,
-    kind: TogetherListCheckpointsParametersKind? = nil
+    kind: TogetherListCheckpointsParameters.Kind? = nil
   ) {
     self.after = after
     self.baseModel = baseModel
@@ -37,5 +37,10 @@ public struct TogetherListCheckpointsParameters: Codable, Sendable {
     case limit
     case sessionId = "session_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case checkpointTypeTraining = "CHECKPOINT_TYPE_TRAINING"
+    case checkpointTypeInference = "CHECKPOINT_TYPE_INFERENCE"
   }
 }

@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct FireworksAnthropicGatewayTimeoutError: Codable, Sendable {
   public var message: String
-  public var kind: FireworksTimeoutErrorKind
+  public var kind: FireworksAnthropicGatewayTimeoutError.Kind
 
   public init(
     message: String,
-    kind: FireworksTimeoutErrorKind = .timeoutError
+    kind: FireworksAnthropicGatewayTimeoutError.Kind = .timeoutError
   ) {
     self.message = message
     self.kind = kind
@@ -25,5 +25,9 @@ public struct FireworksAnthropicGatewayTimeoutError: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case message
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case timeoutError = "timeout_error"
   }
 }

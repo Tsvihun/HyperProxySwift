@@ -17,12 +17,12 @@ public struct AnthropicBetaManagedAgentsAgentWithOverridesParams: Codable, Senda
   public var skills: [AnthropicBetaManagedAgentsSkillParams]?
   public var system: String?
   public var tools: [AnthropicBetaManagedAgentsAgentToolParams]?
-  public var kind: AnthropicBetaManagedAgentsAgentWithOverridesParamsKind
+  public var kind: AnthropicBetaManagedAgentsAgentWithOverridesParams.Kind
   public var version: Int?
 
   public init(
     id: String,
-    kind: AnthropicBetaManagedAgentsAgentWithOverridesParamsKind,
+    kind: AnthropicBetaManagedAgentsAgentWithOverridesParams.Kind,
     mcpServers: [AnthropicBetaManagedAgentsMCPServerParams]? = nil,
     model: AnthropicBetaManagedAgentsModelParams? = nil,
     skills: [AnthropicBetaManagedAgentsSkillParams]? = nil,
@@ -49,5 +49,11 @@ public struct AnthropicBetaManagedAgentsAgentWithOverridesParams: Codable, Senda
     case tools
     case kind = "type"
     case version
+  }
+
+  public enum Kind: String, Codable, Hashable,
+    Sendable
+  {
+    case agentWithOverrides = "agent_with_overrides"
   }
 }

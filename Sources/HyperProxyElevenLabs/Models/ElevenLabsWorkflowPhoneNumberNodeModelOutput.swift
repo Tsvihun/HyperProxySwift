@@ -11,23 +11,24 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsWorkflowPhoneNumberNodeModelOutput: Codable, Sendable {
-  public var customSipHeaders: [ElevenLabsWorkflowPhoneNumberNodeModelOutputCustomSipHeadersItem]
+  public var customSipHeaders:
+    [ElevenLabsWorkflowPhoneNumberNodeModelOutput.CustomSipHeadersElement]
   public var edgeOrder: [String]
   public var position: ElevenLabsPositionOutput
-  public var postDialDigits: ElevenLabsWorkflowPhoneNumberNodeModelOutputPostDialDigitsAnyOf1?
+  public var postDialDigits: ElevenLabsWorkflowPhoneNumberNodeModelOutputPostDialDigitsVariant?
   public var sipReferPlayDialtone: Bool
-  public var transferDestination: ElevenLabsWorkflowPhoneNumberNodeModelOutputTransferDestination
+  public var transferDestination: ElevenLabsWorkflowPhoneNumberNodeModelOutput.TransferDestination
   public var transferType: ElevenLabsTransferTypeEnum
   public var kind: ElevenLabsPhoneNumberKind
   public var uui: ElevenLabsUUITransferConfig?
 
   public init(
-    customSipHeaders: [ElevenLabsWorkflowPhoneNumberNodeModelOutputCustomSipHeadersItem],
+    customSipHeaders: [ElevenLabsWorkflowPhoneNumberNodeModelOutput.CustomSipHeadersElement],
     edgeOrder: [String],
     position: ElevenLabsPositionOutput,
-    postDialDigits: ElevenLabsWorkflowPhoneNumberNodeModelOutputPostDialDigitsAnyOf1?,
+    postDialDigits: ElevenLabsWorkflowPhoneNumberNodeModelOutputPostDialDigitsVariant?,
     sipReferPlayDialtone: Bool,
-    transferDestination: ElevenLabsWorkflowPhoneNumberNodeModelOutputTransferDestination,
+    transferDestination: ElevenLabsWorkflowPhoneNumberNodeModelOutput.TransferDestination,
     transferType: ElevenLabsTransferTypeEnum,
     uui: ElevenLabsUUITransferConfig?,
     kind: ElevenLabsPhoneNumberKind = .phoneNumber
@@ -53,5 +54,73 @@ public struct ElevenLabsWorkflowPhoneNumberNodeModelOutput: Codable, Sendable {
     case transferType = "transfer_type"
     case kind = "type"
     case uui
+  }
+
+  public enum CustomSipHeadersElement: Codable, Sendable {
+    case customSipHeader(ElevenLabsCustomSIPHeader)
+    case customSipHeaderWithDynamicVariable(ElevenLabsCustomSIPHeaderWithDynamicVariable)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsCustomSIPHeader.self) {
+        self = .customSipHeader(value)
+        return
+      }
+      self = .customSipHeaderWithDynamicVariable(
+        try container.decode(ElevenLabsCustomSIPHeaderWithDynamicVariable.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .customSipHeader(let value):
+        try container.encode(value)
+      case .customSipHeaderWithDynamicVariable(let value):
+        try container.encode(value)
+      }
+    }
+  }
+
+  public enum TransferDestination: Codable, Sendable {
+    case phoneNumberTransferDestination(ElevenLabsPhoneNumberTransferDestination)
+    case sipUriTransferDestination(ElevenLabsSIPUriTransferDestination)
+    case phoneNumberDynamicVariableTransferDestination(
+      ElevenLabsPhoneNumberDynamicVariableTransferDestination)
+    case sipUriDynamicVariableTransferDestination(
+      ElevenLabsSIPUriDynamicVariableTransferDestination)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(ElevenLabsPhoneNumberTransferDestination.self) {
+        self = .phoneNumberTransferDestination(value)
+        return
+      }
+      if let value = try? container.decode(ElevenLabsSIPUriTransferDestination.self) {
+        self = .sipUriTransferDestination(value)
+        return
+      }
+      if let value = try? container.decode(
+        ElevenLabsPhoneNumberDynamicVariableTransferDestination.self)
+      {
+        self = .phoneNumberDynamicVariableTransferDestination(value)
+        return
+      }
+      self = .sipUriDynamicVariableTransferDestination(
+        try container.decode(ElevenLabsSIPUriDynamicVariableTransferDestination.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .phoneNumberTransferDestination(let value):
+        try container.encode(value)
+      case .sipUriTransferDestination(let value):
+        try container.encode(value)
+      case .phoneNumberDynamicVariableTransferDestination(let value):
+        try container.encode(value)
+      case .sipUriDynamicVariableTransferDestination(let value):
+        try container.encode(value)
+      }
+    }
   }
 }

@@ -17,12 +17,12 @@ public struct OpenRouterPreviewWebSearchServerTool: Codable, Sendable {
   public var maxUses: Int?
   public var mode: OpenRouterWebSearchMode?
   public var searchContextSize: OpenRouterSearchContextSizeEnum?
-  public var kind: OpenRouterPreviewWebSearchServerToolKind
+  public var kind: OpenRouterPreviewWebSearchServerTool.Kind
   public var userLocation: OpenRouterPreviewWebSearchUserLocation?
   public var xSearch: OpenRouterXSearchOptions?
 
   public init(
-    kind: OpenRouterPreviewWebSearchServerToolKind,
+    kind: OpenRouterPreviewWebSearchServerTool.Kind,
     engine: OpenRouterWebSearchEngineEnum? = nil,
     filters: OpenRouterWebSearchDomainFilter? = nil,
     maxResults: Int? = nil,
@@ -53,5 +53,9 @@ public struct OpenRouterPreviewWebSearchServerTool: Codable, Sendable {
     case kind = "type"
     case userLocation = "user_location"
     case xSearch = "x_search"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case webSearchPreview = "web_search_preview"
   }
 }

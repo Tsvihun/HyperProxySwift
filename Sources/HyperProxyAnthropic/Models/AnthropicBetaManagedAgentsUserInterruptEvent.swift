@@ -14,11 +14,11 @@ public struct AnthropicBetaManagedAgentsUserInterruptEvent: Codable, Sendable {
   public var id: String
   public var processedAt: AnthropicBetaTimestamp?
   public var sessionThreadId: String?
-  public var kind: AnthropicBetaManagedAgentsUserInterruptEventKind
+  public var kind: AnthropicBetaManagedAgentsUserInterruptEvent.Kind
 
   public init(
     id: String,
-    kind: AnthropicBetaManagedAgentsUserInterruptEventKind,
+    kind: AnthropicBetaManagedAgentsUserInterruptEvent.Kind,
     processedAt: AnthropicBetaTimestamp? = nil,
     sessionThreadId: String? = nil
   ) {
@@ -33,5 +33,9 @@ public struct AnthropicBetaManagedAgentsUserInterruptEvent: Codable, Sendable {
     case processedAt = "processed_at"
     case sessionThreadId = "session_thread_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case userInterrupt = "user.interrupt"
   }
 }

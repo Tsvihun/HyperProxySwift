@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct OpenAIProgramToolCallCallerParam: Codable, Sendable {
   public var callerId: String
-  public var kind: OpenAIProgramToolCallCallerParamKind
+  public var kind: OpenAIProgramToolCallCallerParam.Kind
 
   public init(
     callerId: String,
-    kind: OpenAIProgramToolCallCallerParamKind
+    kind: OpenAIProgramToolCallCallerParam.Kind
   ) {
     self.callerId = callerId
     self.kind = kind
@@ -25,5 +25,9 @@ public struct OpenAIProgramToolCallCallerParam: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case callerId = "caller_id"
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case program = "program"
   }
 }

@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct FalSearchRequestsParameters: Codable, Sendable {
   public var cursor: String?
   public var endpoint: String?
-  public var endpointId: FalSearchRequestsParametersEndpointId?
+  public var endpointId: FalSearchRequestsParameters.EndpointId?
   public var excludeApiRequests: Bool?
   public var imageUrl: String?
   public var limit: Int?
@@ -25,7 +25,7 @@ public struct FalSearchRequestsParameters: Codable, Sendable {
   public init(
     cursor: String? = nil,
     endpoint: String? = nil,
-    endpointId: FalSearchRequestsParametersEndpointId? = nil,
+    endpointId: FalSearchRequestsParameters.EndpointId? = nil,
     excludeApiRequests: Bool? = nil,
     imageUrl: String? = nil,
     limit: Int? = nil,
@@ -57,5 +57,41 @@ public struct FalSearchRequestsParameters: Codable, Sendable {
     case onlyApiRequests = "only_api_requests"
     case query
     case videoUrl = "video_url"
+  }
+
+  public enum EndpointId: Codable, Sendable {
+    case string(String)
+    case stringArray([String])
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(String.self) {
+        self = .string(value)
+        return
+      }
+      self = .stringArray(try container.decode([String].self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .string(let value):
+        try container.encode(value)
+      case .stringArray(let value):
+        try container.encode(value)
+      }
+    }
+  }
+}
+
+extension FalSearchRequestsParameters.EndpointId: ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+}
+
+extension FalSearchRequestsParameters.EndpointId: ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: String...) {
+    self = .stringArray(elements)
   }
 }

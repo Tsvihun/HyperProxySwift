@@ -38,4 +38,10 @@ public enum OpenAIComputerUseApprovalResponseParamBrowserAuthentication: Codable
       try container.encode(value)
     }
   }
+
+  public enum Kind: String, Codable,
+    Hashable, Sendable
+  {
+    case browserAuthentication = "browser_authentication"
+  }
 }

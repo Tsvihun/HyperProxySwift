@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIResponseFormatText: Codable, Sendable {
-  public var kind: OpenAIResponseFormatTextKind
+  public var kind: OpenAIResponseFormatText.Kind
 
   public init(
-    kind: OpenAIResponseFormatTextKind
+    kind: OpenAIResponseFormatText.Kind
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case text = "text"
   }
 }

@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct ElevenLabsBodyStemSeparationV1MusicStemSeparationPost: Codable, Sendable {
   public var file: String
   public var signWithC2pa: Bool?
-  public var stemVariationId: ElevenLabsBodyStemSeparationV1MusicStemSeparationPostStemVariationId?
+  public var stemVariationId: ElevenLabsBodyStemSeparationV1MusicStemSeparationPost.StemVariationId?
 
   public init(
     file: String,
     signWithC2pa: Bool? = nil,
-    stemVariationId: ElevenLabsBodyStemSeparationV1MusicStemSeparationPostStemVariationId? = nil
+    stemVariationId: ElevenLabsBodyStemSeparationV1MusicStemSeparationPost.StemVariationId? = nil
   ) {
     self.file = file
     self.signWithC2pa = signWithC2pa
@@ -29,5 +29,12 @@ public struct ElevenLabsBodyStemSeparationV1MusicStemSeparationPost: Codable, Se
     case file
     case signWithC2pa = "sign_with_c2pa"
     case stemVariationId = "stem_variation_id"
+  }
+
+  public enum StemVariationId: String, Codable,
+    Hashable, Sendable
+  {
+    case twoStemsV1 = "two_stems_v1"
+    case sixStemsV1 = "six_stems_v1"
   }
 }

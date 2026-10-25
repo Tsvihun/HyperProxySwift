@@ -11,144 +11,144 @@ import Foundation
 import HyperProxyCore
 
 public indirect enum ElevenLabsASTNodeOutput: Codable, Sendable {
-  case aSTStringNodeOutput(ElevenLabsASTStringNodeOutput)
-  case aSTNumberNodeOutput(ElevenLabsASTNumberNodeOutput)
-  case aSTBooleanNodeOutput(ElevenLabsASTBooleanNodeOutput)
-  case aSTNullNodeOutput(ElevenLabsASTNullNodeOutput)
-  case aSTLLMNodeOutput(ElevenLabsASTLLMNodeOutput)
-  case aSTDynamicVariableNodeOutput(ElevenLabsASTDynamicVariableNodeOutput)
-  case aSTOrOperatorNodeOutput(ElevenLabsASTOrOperatorNodeOutput)
-  case aSTAndOperatorNodeOutput(ElevenLabsASTAndOperatorNodeOutput)
-  case aSTEqualsOperatorNodeOutput(ElevenLabsASTEqualsOperatorNodeOutput)
-  case aSTNotEqualsOperatorNodeOutput(ElevenLabsASTNotEqualsOperatorNodeOutput)
-  case aSTGreaterThanOperatorNodeOutput(ElevenLabsASTGreaterThanOperatorNodeOutput)
-  case aSTLessThanOperatorNodeOutput(ElevenLabsASTLessThanOperatorNodeOutput)
-  case aSTGreaterThanOrEqualsOperatorNodeOutput(ElevenLabsASTGreaterThanOrEqualsOperatorNodeOutput)
-  case aSTLessThanOrEqualsOperatorNodeOutput(ElevenLabsASTLessThanOrEqualsOperatorNodeOutput)
-  case aSTAdditionOperatorNodeOutput(ElevenLabsASTAdditionOperatorNodeOutput)
-  case aSTSubtractionOperatorNodeOutput(ElevenLabsASTSubtractionOperatorNodeOutput)
-  case aSTMultiplicationOperatorNodeOutput(ElevenLabsASTMultiplicationOperatorNodeOutput)
-  case aSTDivisionOperatorNodeOutput(ElevenLabsASTDivisionOperatorNodeOutput)
-  case aSTConditionalOperatorNodeOutput(ElevenLabsASTConditionalOperatorNodeOutput)
+  case astStringNodeOutput(ElevenLabsASTStringNodeOutput)
+  case astNumberNodeOutput(ElevenLabsASTNumberNodeOutput)
+  case astBooleanNodeOutput(ElevenLabsASTBooleanNodeOutput)
+  case astNullNodeOutput(ElevenLabsASTNullNodeOutput)
+  case astllmNodeOutput(ElevenLabsASTLLMNodeOutput)
+  case astDynamicVariableNodeOutput(ElevenLabsASTDynamicVariableNodeOutput)
+  case astOrOperatorNodeOutput(ElevenLabsASTOrOperatorNodeOutput)
+  case astAndOperatorNodeOutput(ElevenLabsASTAndOperatorNodeOutput)
+  case astEqualsOperatorNodeOutput(ElevenLabsASTEqualsOperatorNodeOutput)
+  case astNotEqualsOperatorNodeOutput(ElevenLabsASTNotEqualsOperatorNodeOutput)
+  case astGreaterThanOperatorNodeOutput(ElevenLabsASTGreaterThanOperatorNodeOutput)
+  case astLessThanOperatorNodeOutput(ElevenLabsASTLessThanOperatorNodeOutput)
+  case astGreaterThanOrEqualsOperatorNodeOutput(ElevenLabsASTGreaterThanOrEqualsOperatorNodeOutput)
+  case astLessThanOrEqualsOperatorNodeOutput(ElevenLabsASTLessThanOrEqualsOperatorNodeOutput)
+  case astAdditionOperatorNodeOutput(ElevenLabsASTAdditionOperatorNodeOutput)
+  case astSubtractionOperatorNodeOutput(ElevenLabsASTSubtractionOperatorNodeOutput)
+  case astMultiplicationOperatorNodeOutput(ElevenLabsASTMultiplicationOperatorNodeOutput)
+  case astDivisionOperatorNodeOutput(ElevenLabsASTDivisionOperatorNodeOutput)
+  case astConditionalOperatorNodeOutput(ElevenLabsASTConditionalOperatorNodeOutput)
 
   public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
     if let value = try? container.decode(ElevenLabsASTStringNodeOutput.self) {
-      self = .aSTStringNodeOutput(value)
+      self = .astStringNodeOutput(value)
       return
     }
     if let value = try? container.decode(ElevenLabsASTNumberNodeOutput.self) {
-      self = .aSTNumberNodeOutput(value)
+      self = .astNumberNodeOutput(value)
       return
     }
     if let value = try? container.decode(ElevenLabsASTBooleanNodeOutput.self) {
-      self = .aSTBooleanNodeOutput(value)
+      self = .astBooleanNodeOutput(value)
       return
     }
     if let value = try? container.decode(ElevenLabsASTNullNodeOutput.self) {
-      self = .aSTNullNodeOutput(value)
+      self = .astNullNodeOutput(value)
       return
     }
     if let value = try? container.decode(ElevenLabsASTLLMNodeOutput.self) {
-      self = .aSTLLMNodeOutput(value)
+      self = .astllmNodeOutput(value)
       return
     }
     if let value = try? container.decode(ElevenLabsASTDynamicVariableNodeOutput.self) {
-      self = .aSTDynamicVariableNodeOutput(value)
+      self = .astDynamicVariableNodeOutput(value)
       return
     }
     if let value = try? container.decode(ElevenLabsASTOrOperatorNodeOutput.self) {
-      self = .aSTOrOperatorNodeOutput(value)
+      self = .astOrOperatorNodeOutput(value)
       return
     }
     if let value = try? container.decode(ElevenLabsASTAndOperatorNodeOutput.self) {
-      self = .aSTAndOperatorNodeOutput(value)
+      self = .astAndOperatorNodeOutput(value)
       return
     }
     if let value = try? container.decode(ElevenLabsASTEqualsOperatorNodeOutput.self) {
-      self = .aSTEqualsOperatorNodeOutput(value)
+      self = .astEqualsOperatorNodeOutput(value)
       return
     }
     if let value = try? container.decode(ElevenLabsASTNotEqualsOperatorNodeOutput.self) {
-      self = .aSTNotEqualsOperatorNodeOutput(value)
+      self = .astNotEqualsOperatorNodeOutput(value)
       return
     }
     if let value = try? container.decode(ElevenLabsASTGreaterThanOperatorNodeOutput.self) {
-      self = .aSTGreaterThanOperatorNodeOutput(value)
+      self = .astGreaterThanOperatorNodeOutput(value)
       return
     }
     if let value = try? container.decode(ElevenLabsASTLessThanOperatorNodeOutput.self) {
-      self = .aSTLessThanOperatorNodeOutput(value)
+      self = .astLessThanOperatorNodeOutput(value)
       return
     }
     if let value = try? container.decode(ElevenLabsASTGreaterThanOrEqualsOperatorNodeOutput.self) {
-      self = .aSTGreaterThanOrEqualsOperatorNodeOutput(value)
+      self = .astGreaterThanOrEqualsOperatorNodeOutput(value)
       return
     }
     if let value = try? container.decode(ElevenLabsASTLessThanOrEqualsOperatorNodeOutput.self) {
-      self = .aSTLessThanOrEqualsOperatorNodeOutput(value)
+      self = .astLessThanOrEqualsOperatorNodeOutput(value)
       return
     }
     if let value = try? container.decode(ElevenLabsASTAdditionOperatorNodeOutput.self) {
-      self = .aSTAdditionOperatorNodeOutput(value)
+      self = .astAdditionOperatorNodeOutput(value)
       return
     }
     if let value = try? container.decode(ElevenLabsASTSubtractionOperatorNodeOutput.self) {
-      self = .aSTSubtractionOperatorNodeOutput(value)
+      self = .astSubtractionOperatorNodeOutput(value)
       return
     }
     if let value = try? container.decode(ElevenLabsASTMultiplicationOperatorNodeOutput.self) {
-      self = .aSTMultiplicationOperatorNodeOutput(value)
+      self = .astMultiplicationOperatorNodeOutput(value)
       return
     }
     if let value = try? container.decode(ElevenLabsASTDivisionOperatorNodeOutput.self) {
-      self = .aSTDivisionOperatorNodeOutput(value)
+      self = .astDivisionOperatorNodeOutput(value)
       return
     }
-    self = .aSTConditionalOperatorNodeOutput(
+    self = .astConditionalOperatorNodeOutput(
       try container.decode(ElevenLabsASTConditionalOperatorNodeOutput.self))
   }
 
   public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
-    case .aSTStringNodeOutput(let value):
+    case .astStringNodeOutput(let value):
       try container.encode(value)
-    case .aSTNumberNodeOutput(let value):
+    case .astNumberNodeOutput(let value):
       try container.encode(value)
-    case .aSTBooleanNodeOutput(let value):
+    case .astBooleanNodeOutput(let value):
       try container.encode(value)
-    case .aSTNullNodeOutput(let value):
+    case .astNullNodeOutput(let value):
       try container.encode(value)
-    case .aSTLLMNodeOutput(let value):
+    case .astllmNodeOutput(let value):
       try container.encode(value)
-    case .aSTDynamicVariableNodeOutput(let value):
+    case .astDynamicVariableNodeOutput(let value):
       try container.encode(value)
-    case .aSTOrOperatorNodeOutput(let value):
+    case .astOrOperatorNodeOutput(let value):
       try container.encode(value)
-    case .aSTAndOperatorNodeOutput(let value):
+    case .astAndOperatorNodeOutput(let value):
       try container.encode(value)
-    case .aSTEqualsOperatorNodeOutput(let value):
+    case .astEqualsOperatorNodeOutput(let value):
       try container.encode(value)
-    case .aSTNotEqualsOperatorNodeOutput(let value):
+    case .astNotEqualsOperatorNodeOutput(let value):
       try container.encode(value)
-    case .aSTGreaterThanOperatorNodeOutput(let value):
+    case .astGreaterThanOperatorNodeOutput(let value):
       try container.encode(value)
-    case .aSTLessThanOperatorNodeOutput(let value):
+    case .astLessThanOperatorNodeOutput(let value):
       try container.encode(value)
-    case .aSTGreaterThanOrEqualsOperatorNodeOutput(let value):
+    case .astGreaterThanOrEqualsOperatorNodeOutput(let value):
       try container.encode(value)
-    case .aSTLessThanOrEqualsOperatorNodeOutput(let value):
+    case .astLessThanOrEqualsOperatorNodeOutput(let value):
       try container.encode(value)
-    case .aSTAdditionOperatorNodeOutput(let value):
+    case .astAdditionOperatorNodeOutput(let value):
       try container.encode(value)
-    case .aSTSubtractionOperatorNodeOutput(let value):
+    case .astSubtractionOperatorNodeOutput(let value):
       try container.encode(value)
-    case .aSTMultiplicationOperatorNodeOutput(let value):
+    case .astMultiplicationOperatorNodeOutput(let value):
       try container.encode(value)
-    case .aSTDivisionOperatorNodeOutput(let value):
+    case .astDivisionOperatorNodeOutput(let value):
       try container.encode(value)
-    case .aSTConditionalOperatorNodeOutput(let value):
+    case .astConditionalOperatorNodeOutput(let value):
       try container.encode(value)
     }
   }

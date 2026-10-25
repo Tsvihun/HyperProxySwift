@@ -14,19 +14,19 @@ public struct DeepSeekAnthropicMessageResponse: Codable, Sendable {
   public var content: [DeepSeekAnthropicContentBlock]
   public var id: String
   public var model: String
-  public var role: DeepSeekAnthropicMessageResponseRole
+  public var role: DeepSeekAnthropicMessageResponse.Role
   public var stopReason: DeepSeekAnthropicStopReason?
   public var stopSequence: String?
-  public var kind: DeepSeekAnthropicMessageResponseKind
+  public var kind: DeepSeekAnthropicMessageResponse.Kind
   public var usage: DeepSeekAnthropicUsage
 
   public init(
     content: [DeepSeekAnthropicContentBlock],
     id: String,
     model: String,
-    role: DeepSeekAnthropicMessageResponseRole,
+    role: DeepSeekAnthropicMessageResponse.Role,
     stopReason: DeepSeekAnthropicStopReason?,
-    kind: DeepSeekAnthropicMessageResponseKind,
+    kind: DeepSeekAnthropicMessageResponse.Kind,
     usage: DeepSeekAnthropicUsage,
     stopSequence: String? = nil
   ) {
@@ -49,5 +49,13 @@ public struct DeepSeekAnthropicMessageResponse: Codable, Sendable {
     case stopSequence = "stop_sequence"
     case kind = "type"
     case usage
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case message = "message"
+  }
+
+  public enum Role: String, Codable, Hashable, Sendable {
+    case assistant = "assistant"
   }
 }

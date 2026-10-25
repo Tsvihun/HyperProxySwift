@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct EachAIAPIListExecutionsParameters: Codable, Sendable {
-  public var errorClassification: EachAIAPIListExecutionsParametersErrorClassification?
+  public var errorClassification: EachAIAPIListExecutionsParameters.ErrorClassification?
   public var from: String?
   public var limit: Int?
   public var model: String?
@@ -22,7 +22,7 @@ public struct EachAIAPIListExecutionsParameters: Codable, Sendable {
   public var workflowId: String?
 
   public init(
-    errorClassification: EachAIAPIListExecutionsParametersErrorClassification? = nil,
+    errorClassification: EachAIAPIListExecutionsParameters.ErrorClassification? = nil,
     from: String? = nil,
     limit: Int? = nil,
     model: String? = nil,
@@ -53,5 +53,20 @@ public struct EachAIAPIListExecutionsParameters: Codable, Sendable {
     case to
     case workflowExecutionId = "workflow_execution_id"
     case workflowId = "workflow_id"
+  }
+
+  public enum ErrorClassification: String, Codable, Hashable,
+    Sendable
+  {
+    case contentModeration = "content_moderation"
+    case executionTimeout = "execution_timeout"
+    case invalidUserInput = "invalid_user_input"
+    case invalidModelConfig = "invalid_model_config"
+    case providerAuth = "provider_auth"
+    case providerError = "provider_error"
+    case providerRateLimit = "provider_rate_limit"
+    case providerUnavailable = "provider_unavailable"
+    case internalError = "internal_error"
+    case unknown = "unknown"
   }
 }

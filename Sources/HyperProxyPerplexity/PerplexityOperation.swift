@@ -34,11 +34,16 @@ public enum PerplexityOperation: String, HyperProxyCatalogOperation {
     "list.async.chat.completions.async.chat.completions.get"
   /// `POST v1/async/sonar`
   case sonarCreateAsync = "sonar.createAsync"
-  /// `GET v1/async/sonar/{api_request}`
-  case getAsyncChatCompletionResponseAsyncChatCompletionsApiRequestGet =
-    "get.async.chat.completion.response.async.chat.completions.api.request.get"
   /// `GET v1/async/sonar/{request_id}`
   case sonarRetrieveAsync = "sonar.retrieveAsync"
+  /// `GET v1/batches`
+  case listBatches = "listBatches"
+  /// `POST v1/batches`
+  case createBatch = "createBatch"
+  /// `GET v1/batches/{batch_id}`
+  case getBatch = "getBatch"
+  /// `POST v1/batches/{batch_id}/cancel`
+  case cancelBatch = "cancelBatch"
   /// `POST v1/contextualizedembeddings`
   case contextualizedEmbeddingsV1ContextualizedembeddingsPost =
     "contextualized.embeddings.v1.contextualizedembeddings.post"
@@ -46,6 +51,16 @@ public enum PerplexityOperation: String, HyperProxyCatalogOperation {
   case decisionsV1DecisionsPost = "decisions.v1.decisions.post"
   /// `POST v1/embeddings`
   case embeddingsV1EmbeddingsPost = "embeddings.v1.embeddings.post"
+  /// `GET v1/files`
+  case listFiles = "listFiles"
+  /// `POST v1/files`
+  case createFile = "createFile"
+  /// `DELETE v1/files/{file_id}`
+  case deleteFile = "deleteFile"
+  /// `GET v1/files/{file_id}`
+  case getFile = "getFile"
+  /// `GET v1/files/{file_id}/content`
+  case getFileContent = "getFileContent"
   /// `GET v1/models`
   case modelsList = "models.list"
   /// `POST v1/search`

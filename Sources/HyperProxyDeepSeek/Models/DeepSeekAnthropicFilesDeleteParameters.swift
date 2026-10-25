@@ -11,11 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepSeekAnthropicFilesDeleteParameters: Codable, Sendable {
-  public var anthropicBeta: DeepSeekAnthropicFilesDeleteParametersAnthropicBeta
+  public var anthropicBeta: DeepSeekAnthropicFilesDeleteParameters.AnthropicBeta
   public var fileId: String
 
   public init(
-    anthropicBeta: DeepSeekAnthropicFilesDeleteParametersAnthropicBeta,
+    anthropicBeta: DeepSeekAnthropicFilesDeleteParameters.AnthropicBeta,
     fileId: String
   ) {
     self.anthropicBeta = anthropicBeta
@@ -25,5 +25,9 @@ public struct DeepSeekAnthropicFilesDeleteParameters: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case anthropicBeta = "anthropic-beta"
     case fileId = "file_id"
+  }
+
+  public enum AnthropicBeta: String, Codable, Hashable, Sendable {
+    case filesApi2025_04_14 = "files-api-2025-04-14"
   }
 }

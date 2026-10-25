@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralEvaluationBooleanResultSpec: Codable, Sendable {
-  public var kind: MistralBooleanKind?
+  public var kind: MistralEvaluationBooleanResultSpec.Kind?
 
   public init(
-    kind: MistralBooleanKind? = nil
+    kind: MistralEvaluationBooleanResultSpec.Kind? = nil
   ) {
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case kind = "type"
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case boolean = "boolean"
   }
 }

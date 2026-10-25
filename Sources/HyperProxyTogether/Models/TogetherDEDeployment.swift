@@ -34,7 +34,7 @@ public struct TogetherDEDeployment: Codable, Sendable {
   public var speculatorId: String?
   public var speculatorRevisionId: String?
   public var status: TogetherDEDeploymentStatus
-  public var trafficMode: TogetherDEDeploymentTrafficMode
+  public var trafficMode: TogetherDEDeployment.TrafficMode
   public var updatedAt: String
 
   public init(
@@ -52,7 +52,7 @@ public struct TogetherDEDeployment: Codable, Sendable {
     name: String,
     projectId: String,
     status: TogetherDEDeploymentStatus,
-    trafficMode: TogetherDEDeploymentTrafficMode,
+    trafficMode: TogetherDEDeployment.TrafficMode,
     updatedAt: String,
     desiredReplicas: Int? = nil,
     estimatedEffectiveTrafficShare: Double? = nil,
@@ -117,5 +117,10 @@ public struct TogetherDEDeployment: Codable, Sendable {
     case status
     case trafficMode
     case updatedAt
+  }
+
+  public enum TrafficMode: String, Codable, Hashable, Sendable {
+    case trafficModeLive = "TRAFFIC_MODE_LIVE"
+    case trafficModeShadow = "TRAFFIC_MODE_SHADOW"
   }
 }

@@ -15,11 +15,11 @@ public struct FalUploadAssetRequest: Codable, Sendable {
   public var favorite: Bool?
   public var prompt: String?
   public var tagIds: [String]?
-  public var kind: FalUploadAssetRequestKind
+  public var kind: FalUploadAssetRequest.Kind
   public var url: String
 
   public init(
-    kind: FalUploadAssetRequestKind,
+    kind: FalUploadAssetRequest.Kind,
     url: String,
     collectionId: String? = nil,
     favorite: Bool? = nil,
@@ -41,5 +41,12 @@ public struct FalUploadAssetRequest: Codable, Sendable {
     case tagIds = "tag_ids"
     case kind = "type"
     case url
+  }
+
+  public enum Kind: String, Codable, Hashable, Sendable {
+    case image = "image"
+    case video = "video"
+    case audio = "audio"
+    case value3d = "3d"
   }
 }

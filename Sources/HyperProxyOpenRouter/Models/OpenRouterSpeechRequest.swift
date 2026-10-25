@@ -15,8 +15,8 @@ public struct OpenRouterSpeechRequest: Codable, Sendable {
   public var inputReferences: [OpenRouterSpeechInputReference]?
   public var instructions: String?
   public var model: String
-  public var provider: OpenRouterSpeechRequestProvider?
-  public var responseFormat: OpenRouterSpeechRequestResponseFormat?
+  public var provider: OpenRouterSpeechRequest.Provider?
+  public var responseFormat: OpenRouterSpeechRequest.ResponseFormat?
   public var sessionId: String?
   public var speed: Double?
   public var trace: OpenRouterTraceConfig?
@@ -28,8 +28,8 @@ public struct OpenRouterSpeechRequest: Codable, Sendable {
     model: String,
     inputReferences: [OpenRouterSpeechInputReference]? = nil,
     instructions: String? = nil,
-    provider: OpenRouterSpeechRequestProvider? = nil,
-    responseFormat: OpenRouterSpeechRequestResponseFormat? = nil,
+    provider: OpenRouterSpeechRequest.Provider? = nil,
+    responseFormat: OpenRouterSpeechRequest.ResponseFormat? = nil,
     sessionId: String? = nil,
     speed: Double? = nil,
     trace: OpenRouterTraceConfig? = nil,
@@ -61,5 +61,37 @@ public struct OpenRouterSpeechRequest: Codable, Sendable {
     case trace
     case user
     case voice
+  }
+
+  public struct Provider: Codable, Sendable {
+    public var dataCollection: OpenRouterSpeechRequest.Provider.DataCollection?
+    public var options: OpenRouterProviderOptions?
+    public var zdr: Bool?
+
+    public init(
+      dataCollection: OpenRouterSpeechRequest.Provider.DataCollection? = nil,
+      options: OpenRouterProviderOptions? = nil,
+      zdr: Bool? = nil
+    ) {
+      self.dataCollection = dataCollection
+      self.options = options
+      self.zdr = zdr
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case dataCollection = "data_collection"
+      case options
+      case zdr
+    }
+
+    public enum DataCollection: String, Codable, Hashable, Sendable {
+      case deny = "deny"
+      case allow = "allow"
+    }
+  }
+
+  public enum ResponseFormat: String, Codable, Hashable, Sendable {
+    case mp3 = "mp3"
+    case pcm = "pcm"
   }
 }
