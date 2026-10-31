@@ -648,6 +648,11 @@ public enum MistralOperation: String, HyperProxyCatalogOperation {
   case moderationsV1ModerationsPost = "moderations.v1.moderations.post"
   /// `POST v1/ocr`
   case ocrProcess = "ocr.process"
+  /// `POST v1/responses`
+  case createResponseV1ResponsesPost = "create.response.v1.responses.post"
+  /// `POST v1/responses/input_tokens`
+  case countInputTokensV1ResponsesInputTokensPost =
+    "count.input.tokens.v1.responses.input.tokens.post"
   /// `GET v1/workflows`
   case getWorkflowsV1WorkflowsGet = "get.workflows.v1.workflows.get"
   /// `PUT v1/workflows/archive`

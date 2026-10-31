@@ -17,21 +17,13 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
   public var createApiAlphaDecisions: HyperProxyProviderCall<OpenRouterOperation> {
     self.call(.createApiAlphaDecisions)
   }
+  /// `POST api/alpha/extractions`
+  public var createApiAlphaExtractions: HyperProxyProviderCall<OpenRouterOperation> {
+    self.call(.createApiAlphaExtractions)
+  }
   /// `GET api/v1/endpoints/zdr`
   public var listEndpointsZdr: HyperProxyProviderCall<OpenRouterOperation> {
     self.call(.listEndpointsZdr)
-  }
-  /// `GET api/v1/activity`
-  public var activityList: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.activityList)
-  }
-  /// `GET api/v1/analytics/meta`
-  public var getAnalyticsMeta: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.getAnalyticsMeta)
-  }
-  /// `POST api/v1/analytics/query`
-  public var queryAnalytics: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.queryAnalytics)
   }
   /// `POST api/v1/audio/speech`
   public var createAudioSpeech: HyperProxyProviderCall<OpenRouterOperation> {
@@ -69,26 +61,6 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
   public var getBenchmarks: HyperProxyProviderCall<OpenRouterOperation> {
     self.call(.getBenchmarks)
   }
-  /// `GET api/v1/byok`
-  public var listByokKeys: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.listByokKeys)
-  }
-  /// `POST api/v1/byok`
-  public var createByokKey: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.createByokKey)
-  }
-  /// `DELETE api/v1/byok/{id}`
-  public var deleteByokKey: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.deleteByokKey)
-  }
-  /// `GET api/v1/byok/{id}`
-  public var getByokKey: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.getByokKey)
-  }
-  /// `PATCH api/v1/byok/{id}`
-  public var updateByokKey: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.updateByokKey)
-  }
   /// `POST api/v1/chat/completions`
   public var chatCompletionsCreate: HyperProxyProviderCall<OpenRouterOperation> {
     self.call(.chatCompletionsCreate)
@@ -117,10 +89,6 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
   public var promoteContainerFile: HyperProxyProviderCall<OpenRouterOperation> {
     self.call(.promoteContainerFile)
   }
-  /// `GET api/v1/credits`
-  public var creditsRetrieve: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.creditsRetrieve)
-  }
   /// `POST api/v1/credits/coinbase`
   public var createCoinbaseCharge: HyperProxyProviderCall<OpenRouterOperation> {
     self.call(.createCoinbaseCharge)
@@ -144,26 +112,6 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
   /// `GET api/v1/embeddings/models`
   public var listEmbeddingsModels: HyperProxyProviderCall<OpenRouterOperation> {
     self.call(.listEmbeddingsModels)
-  }
-  /// `GET api/v1/external-users`
-  public var listExternalUsers: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.listExternalUsers)
-  }
-  /// `POST api/v1/external-users`
-  public var createExternalUser: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.createExternalUser)
-  }
-  /// `DELETE api/v1/external-users/{user}`
-  public var deleteExternalUser: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.deleteExternalUser)
-  }
-  /// `GET api/v1/external-users/{user}`
-  public var getExternalUser: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.getExternalUser)
-  }
-  /// `PATCH api/v1/external-users/{user}`
-  public var updateExternalUser: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.updateExternalUser)
   }
   /// `GET api/v1/files`
   public var listFiles: HyperProxyProviderCall<OpenRouterOperation> {
@@ -193,62 +141,6 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
   public var listGenerationContent: HyperProxyProviderCall<OpenRouterOperation> {
     self.call(.listGenerationContent)
   }
-  /// `POST api/v1/generation/feedback`
-  public var submitGenerationFeedback: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.submitGenerationFeedback)
-  }
-  /// `GET api/v1/guardrails`
-  public var listGuardrails: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.listGuardrails)
-  }
-  /// `POST api/v1/guardrails`
-  public var createGuardrail: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.createGuardrail)
-  }
-  /// `GET api/v1/guardrails/assignments/keys`
-  public var listKeyAssignments: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.listKeyAssignments)
-  }
-  /// `GET api/v1/guardrails/assignments/members`
-  public var listMemberAssignments: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.listMemberAssignments)
-  }
-  /// `DELETE api/v1/guardrails/{id}`
-  public var deleteGuardrail: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.deleteGuardrail)
-  }
-  /// `GET api/v1/guardrails/{id}`
-  public var getGuardrail: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.getGuardrail)
-  }
-  /// `PATCH api/v1/guardrails/{id}`
-  public var updateGuardrail: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.updateGuardrail)
-  }
-  /// `GET api/v1/guardrails/{id}/assignments/keys`
-  public var listGuardrailKeyAssignments: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.listGuardrailKeyAssignments)
-  }
-  /// `POST api/v1/guardrails/{id}/assignments/keys`
-  public var bulkAssignKeysToGuardrail: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.bulkAssignKeysToGuardrail)
-  }
-  /// `POST api/v1/guardrails/{id}/assignments/keys/remove`
-  public var bulkUnassignKeysFromGuardrail: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.bulkUnassignKeysFromGuardrail)
-  }
-  /// `GET api/v1/guardrails/{id}/assignments/members`
-  public var listGuardrailMemberAssignments: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.listGuardrailMemberAssignments)
-  }
-  /// `POST api/v1/guardrails/{id}/assignments/members`
-  public var bulkAssignMembersToGuardrail: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.bulkAssignMembersToGuardrail)
-  }
-  /// `POST api/v1/guardrails/{id}/assignments/members/remove`
-  public var bulkUnassignMembersFromGuardrail: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.bulkUnassignMembersFromGuardrail)
-  }
   /// `POST api/v1/images`
   public var createImages: HyperProxyProviderCall<OpenRouterOperation> {
     self.call(.createImages)
@@ -264,26 +156,6 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
   /// `GET api/v1/key`
   public var keyRetrieve: HyperProxyProviderCall<OpenRouterOperation> {
     self.call(.keyRetrieve)
-  }
-  /// `GET api/v1/keys`
-  public var list: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.list)
-  }
-  /// `POST api/v1/keys`
-  public var createKeys: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.createKeys)
-  }
-  /// `DELETE api/v1/keys/{hash}`
-  public var deleteKeys: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.deleteKeys)
-  }
-  /// `GET api/v1/keys/{hash}`
-  public var getKey: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.getKey)
-  }
-  /// `PATCH api/v1/keys/{hash}`
-  public var updateKeys: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.updateKeys)
   }
   /// `POST api/v1/messages`
   public var createMessages: HyperProxyProviderCall<OpenRouterOperation> {
@@ -317,26 +189,6 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
   public var createOauthToken: HyperProxyProviderCall<OpenRouterOperation> {
     self.call(.createOauthToken)
   }
-  /// `GET api/v1/observability/destinations`
-  public var listObservabilityDestinations: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.listObservabilityDestinations)
-  }
-  /// `POST api/v1/observability/destinations`
-  public var createObservabilityDestination: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.createObservabilityDestination)
-  }
-  /// `DELETE api/v1/observability/destinations/{id}`
-  public var deleteObservabilityDestination: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.deleteObservabilityDestination)
-  }
-  /// `GET api/v1/observability/destinations/{id}`
-  public var getObservabilityDestination: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.getObservabilityDestination)
-  }
-  /// `PATCH api/v1/observability/destinations/{id}`
-  public var updateObservabilityDestination: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.updateObservabilityDestination)
-  }
   /// `GET api/v1/presets`
   public var listPresets: HyperProxyProviderCall<OpenRouterOperation> {
     self.call(.listPresets)
@@ -365,46 +217,6 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
   public var getPresetVersion: HyperProxyProviderCall<OpenRouterOperation> {
     self.call(.getPresetVersion)
   }
-  /// `GET api/v1/private-endpoints`
-  public var listPrivateEndpoints: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.listPrivateEndpoints)
-  }
-  /// `POST api/v1/private-endpoints`
-  public var createPrivateEndpoint: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.createPrivateEndpoint)
-  }
-  /// `DELETE api/v1/private-endpoints/{id}`
-  public var deletePrivateEndpoint: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.deletePrivateEndpoint)
-  }
-  /// `GET api/v1/private-endpoints/{id}`
-  public var getPrivateEndpoint: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.getPrivateEndpoint)
-  }
-  /// `PATCH api/v1/private-endpoints/{id}`
-  public var updatePrivateEndpoint: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.updatePrivateEndpoint)
-  }
-  /// `POST api/v1/private-endpoints/{id}/activate`
-  public var activatePrivateEndpoint: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.activatePrivateEndpoint)
-  }
-  /// `POST api/v1/private-endpoints/{id}/disable`
-  public var disablePrivateEndpoint: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.disablePrivateEndpoint)
-  }
-  /// `POST api/v1/private-endpoints/{id}/enable`
-  public var enablePrivateEndpoint: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.enablePrivateEndpoint)
-  }
-  /// `PUT api/v1/private-endpoints/{id}/pricing`
-  public var updatePrivateEndpointPricing: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.updatePrivateEndpointPricing)
-  }
-  /// `POST api/v1/private-endpoints/{id}/validate`
-  public var validatePrivateEndpoint: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.validatePrivateEndpoint)
-  }
   /// `GET api/v1/providers`
   public var listProviders: HyperProxyProviderCall<OpenRouterOperation> {
     self.call(.listProviders)
@@ -416,38 +228,6 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
   /// `POST api/v1/responses`
   public var responsesCreate: HyperProxyProviderCall<OpenRouterOperation> {
     self.call(.responsesCreate)
-  }
-  /// `GET api/v1/scim/group-mappings`
-  public var listScimGroupMappings: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.listScimGroupMappings)
-  }
-  /// `POST api/v1/scim/group-mappings`
-  public var createScimGroupMapping: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.createScimGroupMapping)
-  }
-  /// `DELETE api/v1/scim/group-mappings/{id}`
-  public var deleteScimGroupMapping: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.deleteScimGroupMapping)
-  }
-  /// `GET api/v1/scim/group-mappings/{id}`
-  public var getScimGroupMapping: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.getScimGroupMapping)
-  }
-  /// `PATCH api/v1/scim/group-mappings/{id}`
-  public var updateScimGroupMapping: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.updateScimGroupMapping)
-  }
-  /// `GET api/v1/scim/groups`
-  public var listScimGroups: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.listScimGroups)
-  }
-  /// `POST api/v1/scim/sync-jobs`
-  public var createScimSyncJob: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.createScimSyncJob)
-  }
-  /// `GET api/v1/scim/sync-jobs/{id}`
-  public var getScimSyncJob: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.getScimSyncJob)
   }
   /// `POST api/v1/systemone`
   public var createSystemone: HyperProxyProviderCall<OpenRouterOperation> {
@@ -512,54 +292,6 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
   /// `GET api/v1/videos/{jobId}/content`
   public var listVideosContent: HyperProxyProviderCall<OpenRouterOperation> {
     self.call(.listVideosContent)
-  }
-  /// `GET api/v1/workspaces`
-  public var listWorkspaces: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.listWorkspaces)
-  }
-  /// `POST api/v1/workspaces`
-  public var createWorkspace: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.createWorkspace)
-  }
-  /// `DELETE api/v1/workspaces/{id}`
-  public var deleteWorkspace: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.deleteWorkspace)
-  }
-  /// `GET api/v1/workspaces/{id}`
-  public var getWorkspace: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.getWorkspace)
-  }
-  /// `PATCH api/v1/workspaces/{id}`
-  public var updateWorkspace: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.updateWorkspace)
-  }
-  /// `GET api/v1/workspaces/{id}/members`
-  public var listWorkspaceMembers: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.listWorkspaceMembers)
-  }
-  /// `POST api/v1/workspaces/{id}/members/add`
-  public var bulkAddWorkspaceMembers: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.bulkAddWorkspaceMembers)
-  }
-  /// `POST api/v1/workspaces/{id}/members/remove`
-  public var bulkRemoveWorkspaceMembers: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.bulkRemoveWorkspaceMembers)
-  }
-  /// `GET api/v1/workspaces/{workspace_ref}/budgets`
-  public var listWorkspaceBudgets: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.listWorkspaceBudgets)
-  }
-  /// `DELETE api/v1/workspaces/{workspace_ref}/budgets/{interval}`
-  public var deleteWorkspaceBudget: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.deleteWorkspaceBudget)
-  }
-  /// `GET api/v1/workspaces/{workspace_ref}/budgets/{interval}`
-  public var getWorkspaceBudget: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.getWorkspaceBudget)
-  }
-  /// `PUT api/v1/workspaces/{workspace_ref}/budgets/{interval}`
-  public var upsertWorkspaceBudget: HyperProxyProviderCall<OpenRouterOperation> {
-    self.call(.upsertWorkspaceBudget)
   }
 
   /// Organization-administration operations. Kept out of the

@@ -31,5 +31,6 @@ public struct TogetherInstanceTypesResponse: Codable, Sendable {
     case b200Sxm = "B200_SXM"
     case h100SxmInf = "H100_SXM_INF"
     case b300Sxm = "B300_SXM"
+    case gb200Sxm = "GB200_SXM"
   }
 }

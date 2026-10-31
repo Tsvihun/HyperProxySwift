@@ -16,6 +16,7 @@ public struct OpenAICreateAgentSessionParams: Codable, Sendable {
   public var environment: OpenAIEnvironmentParam
   public var input: OpenAICreateSessionInputParam?
   public var metadata: [String: String]?
+  public var review: OpenAISessionReviewParam?
   public var stream: Bool?
   public var vaultIds: [String]?
 
@@ -25,6 +26,7 @@ public struct OpenAICreateAgentSessionParams: Codable, Sendable {
     agentId: String? = nil,
     input: OpenAICreateSessionInputParam? = nil,
     metadata: [String: String]? = nil,
+    review: OpenAISessionReviewParam? = nil,
     stream: Bool? = nil,
     vaultIds: [String]? = nil
   ) {
@@ -33,6 +35,7 @@ public struct OpenAICreateAgentSessionParams: Codable, Sendable {
     self.environment = environment
     self.input = input
     self.metadata = metadata
+    self.review = review
     self.stream = stream
     self.vaultIds = vaultIds
   }
@@ -43,6 +46,7 @@ public struct OpenAICreateAgentSessionParams: Codable, Sendable {
     case environment
     case input
     case metadata
+    case review
     case stream
     case vaultIds = "vault_ids"
   }

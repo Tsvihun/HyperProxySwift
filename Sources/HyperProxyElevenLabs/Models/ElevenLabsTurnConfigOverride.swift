@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsTurnConfigOverride: Codable, Sendable {
+  public var noisyEnvironmentMessage: String?
   public var softTimeoutConfig: ElevenLabsSoftTimeoutConfigOverride?
 
   public init(
+    noisyEnvironmentMessage: String? = nil,
     softTimeoutConfig: ElevenLabsSoftTimeoutConfigOverride? = nil
   ) {
+    self.noisyEnvironmentMessage = noisyEnvironmentMessage
     self.softTimeoutConfig = softTimeoutConfig
   }
 
   enum CodingKeys: String, CodingKey {
+    case noisyEnvironmentMessage = "noisy_environment_message"
     case softTimeoutConfig = "soft_timeout_config"
   }
 }

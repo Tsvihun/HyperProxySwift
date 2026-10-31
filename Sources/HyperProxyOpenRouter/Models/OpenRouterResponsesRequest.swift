@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterResponsesRequest: Codable, Sendable {
+  public var accessPrograms: OpenRouterResponsesRequest.AccessPrograms?
   public var background: Bool?
   public var cacheControl: OpenRouterAnthropicCacheControlDirective?
   public var debug: OpenRouterChatDebugOptions?
@@ -55,6 +56,7 @@ public struct OpenRouterResponsesRequest: Codable, Sendable {
   public var user: String?
 
   public init(
+    accessPrograms: OpenRouterResponsesRequest.AccessPrograms? = nil,
     background: Bool? = nil,
     cacheControl: OpenRouterAnthropicCacheControlDirective? = nil,
     debug: OpenRouterChatDebugOptions? = nil,
@@ -98,6 +100,7 @@ public struct OpenRouterResponsesRequest: Codable, Sendable {
     truncation: OpenRouterOpenAIResponsesTruncation? = nil,
     user: String? = nil
   ) {
+    self.accessPrograms = accessPrograms
     self.background = background
     self.cacheControl = cacheControl
     self.debug = debug
@@ -143,6 +146,7 @@ public struct OpenRouterResponsesRequest: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case accessPrograms = "access_programs"
     case background
     case cacheControl = "cache_control"
     case debug
@@ -185,6 +189,26 @@ public struct OpenRouterResponsesRequest: Codable, Sendable {
     case trace
     case truncation
     case user
+  }
+
+  public struct AccessPrograms: Codable, Sendable {
+    public var cyber: OpenRouterResponsesRequest.AccessPrograms.Cyber?
+
+    public init(
+      cyber: OpenRouterResponsesRequest.AccessPrograms.Cyber? = nil
+    ) {
+      self.cyber = cyber
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case cyber
+    }
+
+    public enum Cyber: String, Codable, Hashable, Sendable {
+      case standard = "standard"
+      case daybreakBlue = "daybreak_blue"
+      case daybreakRed = "daybreak_red"
+    }
   }
 
   public enum PluginsElement: Codable, Sendable {

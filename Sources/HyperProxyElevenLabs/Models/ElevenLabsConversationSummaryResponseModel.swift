@@ -12,6 +12,7 @@ import HyperProxyCore
 
 public struct ElevenLabsConversationSummaryResponseModel: Codable, Sendable {
   public var agentId: String
+  public var agentMessageCount: Int?
   public var agentName: String?
   public var branchId: String?
   public var callDurationSecs: Int
@@ -33,6 +34,7 @@ public struct ElevenLabsConversationSummaryResponseModel: Codable, Sendable {
   public var terminationReason: String?
   public var toolNames: [String]?
   public var transcriptSummary: String?
+  public var userMessageCount: Int?
   public var versionId: String?
 
   public init(
@@ -43,6 +45,7 @@ public struct ElevenLabsConversationSummaryResponseModel: Codable, Sendable {
     messageCount: Int,
     startTimeUnixSecs: Int,
     status: ElevenLabsConversationSummaryResponseModel.Status,
+    agentMessageCount: Int? = nil,
     agentName: String? = nil,
     branchId: String? = nil,
     callSuccessScore: Double? = nil,
@@ -58,9 +61,11 @@ public struct ElevenLabsConversationSummaryResponseModel: Codable, Sendable {
     terminationReason: String? = nil,
     toolNames: [String]? = nil,
     transcriptSummary: String? = nil,
+    userMessageCount: Int? = nil,
     versionId: String? = nil
   ) {
     self.agentId = agentId
+    self.agentMessageCount = agentMessageCount
     self.agentName = agentName
     self.branchId = branchId
     self.callDurationSecs = callDurationSecs
@@ -82,11 +87,13 @@ public struct ElevenLabsConversationSummaryResponseModel: Codable, Sendable {
     self.terminationReason = terminationReason
     self.toolNames = toolNames
     self.transcriptSummary = transcriptSummary
+    self.userMessageCount = userMessageCount
     self.versionId = versionId
   }
 
   enum CodingKeys: String, CodingKey {
     case agentId = "agent_id"
+    case agentMessageCount = "agent_message_count"
     case agentName = "agent_name"
     case branchId = "branch_id"
     case callDurationSecs = "call_duration_secs"
@@ -108,6 +115,7 @@ public struct ElevenLabsConversationSummaryResponseModel: Codable, Sendable {
     case terminationReason = "termination_reason"
     case toolNames = "tool_names"
     case transcriptSummary = "transcript_summary"
+    case userMessageCount = "user_message_count"
     case versionId = "version_id"
   }
 

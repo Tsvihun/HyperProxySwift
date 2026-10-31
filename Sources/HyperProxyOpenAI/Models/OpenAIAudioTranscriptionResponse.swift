@@ -11,17 +11,20 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIAudioTranscriptionResponse: Codable, Sendable {
+  public var keywords: [String]?
   public var language: String?
   public var languages: [String]?
   public var model: OpenAIAudioTranscriptionResponse.Model?
   public var prompt: String?
 
   public init(
+    keywords: [String]? = nil,
     language: String? = nil,
     languages: [String]? = nil,
     model: OpenAIAudioTranscriptionResponse.Model? = nil,
     prompt: String? = nil
   ) {
+    self.keywords = keywords
     self.language = language
     self.languages = languages
     self.model = model
@@ -29,6 +32,7 @@ public struct OpenAIAudioTranscriptionResponse: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case keywords
     case language
     case languages
     case model

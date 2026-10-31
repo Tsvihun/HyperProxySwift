@@ -87,4 +87,28 @@ struct ProviderFreshnessTests {
     #expect(balance.balanceUsd == -0.001)
     #expect(HyperProxyProviders.eachAI.routes.contains { $0.pathTemplate == "v1/billing/balance" })
   }
+
+  @Test("DeepSeek server tools encode without a client schema and keep billable counts distinct")
+  func deepSeekServerTools() throws {
+    let tool = DeepSeekAnthropicTool(name: "web_search", maxUses: 2, kind: .webSearch20260209)
+    let json = try #require(
+      JSONSerialization.jsonObject(with: JSONEncoder().encode(tool)) as? [String: Any])
+    #expect(json["type"] as? String == "web_search_20260209")
+    #expect(json["input_schema"] == nil)
+    let anthropic = try JSONDecoder().decode(
+      DeepSeekAnthropicUsage.self,
+      from: Data(
+        #"{"input_tokens":10,"output_tokens":2,"server_tool_use":{"web_search_requests":3,"tool_search":1}}"#
+          .utf8))
+    #expect(anthropic.serverToolUse?.webSearchRequests == 3)
+    #expect(anthropic.serverToolUse?.toolSearch == 1)
+    let responses = try JSONDecoder().decode(
+      DeepSeekUsage.self,
+      from: Data(
+        #"{"input_tokens":10,"output_tokens":2,"total_tokens":12,"server_tool_use":{"tool_search":1,"tool_fetch":2}}"#
+          .utf8))
+    #expect(responses.serverToolUse?.toolFetch == 2)
+    #expect(DeepSeekToolType.custom.rawValue == "custom")
+    #expect(DeepSeekToolType.webSearch.rawValue == "web_search")
+  }
 }

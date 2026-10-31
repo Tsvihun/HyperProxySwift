@@ -11,7 +11,9 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIAgentResource: Codable, Sendable {
+  public var compaction: OpenAICompactionResource?
   public var createdAt: Int64
+  public var experimental: OpenAIExperimentalConfigResource?
   public var id: String
   public var instructions: String
   public var metadata: [String: String]
@@ -38,9 +40,13 @@ public struct OpenAIAgentResource: Codable, Sendable {
     serviceTier: OpenAIServiceTierResource,
     text: OpenAITextResource,
     tools: [OpenAIPersistedAgentToolResource],
-    updatedAt: Int64
+    updatedAt: Int64,
+    compaction: OpenAICompactionResource? = nil,
+    experimental: OpenAIExperimentalConfigResource? = nil
   ) {
+    self.compaction = compaction
     self.createdAt = createdAt
+    self.experimental = experimental
     self.id = id
     self.instructions = instructions
     self.metadata = metadata
@@ -56,7 +62,9 @@ public struct OpenAIAgentResource: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case compaction
     case createdAt = "created_at"
+    case experimental
     case id
     case instructions
     case metadata

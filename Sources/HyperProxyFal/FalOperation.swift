@@ -173,6 +173,8 @@ public enum FalOperation: String, HyperProxyCatalogOperation {
   case serverlessGetMetrics = "serverlessGetMetrics"
   /// `GET v1/serverless/requests/by-endpoint`
   case serverlessListRequestsByEndpoint = "serverlessListRequestsByEndpoint"
+  /// `POST v1/serverless/runners/{runner_id}/stop`
+  case serverlessStopRunner = "serverlessStopRunner"
   /// `GET v1/serverless/usage`
   case serverlessGetUsage = "serverlessGetUsage"
   /// `GET v1/storage/files/acl`

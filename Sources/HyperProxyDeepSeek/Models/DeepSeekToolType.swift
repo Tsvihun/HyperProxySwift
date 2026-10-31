@@ -12,4 +12,6 @@ import HyperProxyCore
 
 public enum DeepSeekToolType: String, Codable, Hashable, Sendable {
   case function = "function"
+  case custom = "custom"
+  case webSearch = "web_search"
 }

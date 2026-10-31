@@ -309,6 +309,10 @@ extension HyperProxyProviderService where Operation == FalOperation {
   public var serverlessListRequestsByEndpoint: HyperProxyProviderCall<FalOperation> {
     self.call(.serverlessListRequestsByEndpoint)
   }
+  /// `POST v1/serverless/runners/{runner_id}/stop`
+  public var serverlessStopRunner: HyperProxyProviderCall<FalOperation> {
+    self.call(.serverlessStopRunner)
+  }
   /// `GET v1/serverless/usage`
   public var serverlessGetUsage: HyperProxyProviderCall<FalOperation> {
     self.call(.serverlessGetUsage)

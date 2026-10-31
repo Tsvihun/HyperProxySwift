@@ -11,15 +11,29 @@ import Foundation
 import HyperProxyCore
 
 public struct GeminiFunctionResponsePart: Codable, Sendable {
+  public var fileData: GeminiFunctionResponseFileData?
   public var inlineData: GeminiFunctionResponseBlob?
+  public var mediaProcessing: GeminiFunctionResponsePart.MediaProcessing?
 
   public init(
-    inlineData: GeminiFunctionResponseBlob? = nil
+    fileData: GeminiFunctionResponseFileData? = nil,
+    inlineData: GeminiFunctionResponseBlob? = nil,
+    mediaProcessing: GeminiFunctionResponsePart.MediaProcessing? = nil
   ) {
+    self.fileData = fileData
     self.inlineData = inlineData
+    self.mediaProcessing = mediaProcessing
   }
 
   enum CodingKeys: String, CodingKey {
+    case fileData
     case inlineData
+    case mediaProcessing
+  }
+
+  public enum MediaProcessing: String, Codable, Hashable, Sendable {
+    case mediaProcessingUnspecified = "MEDIA_PROCESSING_UNSPECIFIED"
+    case staticValue = "STATIC"
+    case agentic = "AGENTIC"
   }
 }

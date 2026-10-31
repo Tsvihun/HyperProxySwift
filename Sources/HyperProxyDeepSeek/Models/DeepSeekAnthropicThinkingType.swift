@@ -13,4 +13,5 @@ import HyperProxyCore
 public enum DeepSeekAnthropicThinkingType: String, Codable, Hashable, Sendable {
   case enabled = "enabled"
   case disabled = "disabled"
+  case adaptive = "adaptive"
 }

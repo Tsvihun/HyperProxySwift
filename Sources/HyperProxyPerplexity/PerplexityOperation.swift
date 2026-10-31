@@ -15,6 +15,9 @@ public enum PerplexityOperation: String, HyperProxyCatalogOperation {
   public static var providerDefinition: HyperProxyProviderDefinition {
     HyperProxyProviders.perplexity
   }
+  /// `GET v1/admin/audit-events`
+  case listAdminAuditEventsV1AdminAuditEventsGet =
+    "list.admin.audit.events.v1.admin.audit.events.get"
   /// `POST search`
   case searchSearchPost = "search.search.post"
   /// `POST v1/agent`

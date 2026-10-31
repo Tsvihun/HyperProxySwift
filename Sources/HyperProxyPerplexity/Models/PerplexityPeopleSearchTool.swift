@@ -11,15 +11,23 @@ import Foundation
 import HyperProxyCore
 
 public struct PerplexityPeopleSearchTool: Codable, Sendable {
+  public var maxTokens: Int?
+  public var maxTokensPerPage: Int?
   public var kind: PerplexityPeopleSearchTool.Kind
 
   public init(
-    kind: PerplexityPeopleSearchTool.Kind
+    kind: PerplexityPeopleSearchTool.Kind,
+    maxTokens: Int? = nil,
+    maxTokensPerPage: Int? = nil
   ) {
+    self.maxTokens = maxTokens
+    self.maxTokensPerPage = maxTokensPerPage
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
+    case maxTokens = "max_tokens"
+    case maxTokensPerPage = "max_tokens_per_page"
     case kind = "type"
   }
 

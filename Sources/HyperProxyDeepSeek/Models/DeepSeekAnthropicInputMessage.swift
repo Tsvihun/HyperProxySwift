@@ -12,24 +12,45 @@ import HyperProxyCore
 
 public struct DeepSeekAnthropicInputMessage: Codable, Sendable {
   public var content: DeepSeekAnthropicInputMessage.Content
+  public var encryptedContent: String?
+  public var errorCode: String?
+  public var pageAge: String?
   public var role: DeepSeekAnthropicInputRole
+  public var title: String?
+  public var url: String?
 
   public init(
     content: DeepSeekAnthropicInputMessage.Content,
-    role: DeepSeekAnthropicInputRole
+    role: DeepSeekAnthropicInputRole,
+    encryptedContent: String? = nil,
+    errorCode: String? = nil,
+    pageAge: String? = nil,
+    title: String? = nil,
+    url: String? = nil
   ) {
     self.content = content
+    self.encryptedContent = encryptedContent
+    self.errorCode = errorCode
+    self.pageAge = pageAge
     self.role = role
+    self.title = title
+    self.url = url
   }
 
   enum CodingKeys: String, CodingKey {
     case content
+    case encryptedContent = "encrypted_content"
+    case errorCode = "error_code"
+    case pageAge = "page_age"
     case role
+    case title
+    case url
   }
 
   public enum Content: Codable, Sendable {
     case string(String)
     case anthropicContentBlockArray([DeepSeekAnthropicContentBlock])
+    case objectDictionary([String: HyperProxyJSONValue])
 
     public init(from decoder: any Decoder) throws {
       let container = try decoder.singleValueContainer()
@@ -37,7 +58,11 @@ public struct DeepSeekAnthropicInputMessage: Codable, Sendable {
         self = .string(value)
         return
       }
-      self = .anthropicContentBlockArray(try container.decode([DeepSeekAnthropicContentBlock].self))
+      if let value = try? container.decode([DeepSeekAnthropicContentBlock].self) {
+        self = .anthropicContentBlockArray(value)
+        return
+      }
+      self = .objectDictionary(try container.decode([String: HyperProxyJSONValue].self))
     }
 
     public func encode(to encoder: any Encoder) throws {
@@ -47,6 +72,8 @@ public struct DeepSeekAnthropicInputMessage: Codable, Sendable {
         try container.encode(value)
       case .anthropicContentBlockArray(let value):
         try container.encode(value)
+      case .objectDictionary(let value):
+        try container.encode(value)
       }
     }
   }
@@ -55,11 +82,5 @@ public struct DeepSeekAnthropicInputMessage: Codable, Sendable {
 extension DeepSeekAnthropicInputMessage.Content: ExpressibleByStringLiteral {
   public init(stringLiteral value: String) {
     self = .string(value)
-  }
-}
-
-extension DeepSeekAnthropicInputMessage.Content: ExpressibleByArrayLiteral {
-  public init(arrayLiteral elements: DeepSeekAnthropicContentBlock...) {
-    self = .anthropicContentBlockArray(elements)
   }
 }

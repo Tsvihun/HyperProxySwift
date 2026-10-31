@@ -1332,6 +1332,22 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     return try await call.decoded(TogetherRLModelResources.self)
   }
 
+  public func extendModelResourcesExpiry(
+    _ body: TogetherRLExtendModelResourcesExpiryRequest,
+    modelResourcesId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherRLModelResources {
+    let call = self.call(.extendModelResourcesExpiry)
+      .path("model_resources_id", modelResourcesId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(TogetherRLModelResources.self)
+  }
+
   public func stopModelResources(
     modelResourcesId: String,
     query: [URLQueryItem] = [],

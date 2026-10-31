@@ -39,6 +39,7 @@ public struct OpenRouterMessagesToolAdditionBlock: Codable, Sendable {
     case toolReference(OpenRouterMessagesToolAdditionBlock.Tool.ToolReference)
     case mcpToolReference(OpenRouterMessagesToolAdditionBlock.Tool.McpToolReference)
     case mcpToolsetReference(OpenRouterMessagesToolAdditionBlock.Tool.McpToolsetReference)
+    case toolDefinition(OpenRouterMessagesToolAdditionBlock.Tool.ToolDefinition)
 
     public init(from decoder: any Decoder) throws {
       let container = try decoder.singleValueContainer()
@@ -54,8 +55,14 @@ public struct OpenRouterMessagesToolAdditionBlock: Codable, Sendable {
         self = .mcpToolReference(value)
         return
       }
-      self = .mcpToolsetReference(
-        try container.decode(OpenRouterMessagesToolAdditionBlock.Tool.McpToolsetReference.self))
+      if let value = try? container.decode(
+        OpenRouterMessagesToolAdditionBlock.Tool.McpToolsetReference.self)
+      {
+        self = .mcpToolsetReference(value)
+        return
+      }
+      self = .toolDefinition(
+        try container.decode(OpenRouterMessagesToolAdditionBlock.Tool.ToolDefinition.self))
     }
 
     public func encode(to encoder: any Encoder) throws {
@@ -66,6 +73,8 @@ public struct OpenRouterMessagesToolAdditionBlock: Codable, Sendable {
       case .mcpToolReference(let value):
         try container.encode(value)
       case .mcpToolsetReference(let value):
+        try container.encode(value)
+      case .toolDefinition(let value):
         try container.encode(value)
       }
     }
@@ -137,6 +146,28 @@ public struct OpenRouterMessagesToolAdditionBlock: Codable, Sendable {
 
       public enum Kind: String, Codable, Hashable, Sendable {
         case mcpToolsetReference = "mcp_toolset_reference"
+      }
+    }
+
+    public struct ToolDefinition: Codable, Sendable {
+      public var definition: OpenRouterAnthropicToolUnion
+      public var kind: OpenRouterMessagesToolAdditionBlock.Tool.ToolDefinition.Kind
+
+      public init(
+        definition: OpenRouterAnthropicToolUnion,
+        kind: OpenRouterMessagesToolAdditionBlock.Tool.ToolDefinition.Kind
+      ) {
+        self.definition = definition
+        self.kind = kind
+      }
+
+      enum CodingKeys: String, CodingKey {
+        case definition
+        case kind = "type"
+      }
+
+      public enum Kind: String, Codable, Hashable, Sendable {
+        case toolDefinition = "tool_definition"
       }
     }
   }

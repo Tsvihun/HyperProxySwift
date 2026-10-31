@@ -15,6 +15,7 @@ public struct OpenRouterManagedPrivateEndpoint: Codable, Sendable {
   public var declaredRegion: OpenRouterPrivateEndpointDeclaredRegion?
   public var declaredZdr: Bool
   public var id: String
+  public var maxCompletionTokens: Int?
   public var modelName: String
   public var modelPermaslug: String
   public var modelSlug: String
@@ -30,12 +31,14 @@ public struct OpenRouterManagedPrivateEndpoint: Codable, Sendable {
     modelPermaslug: String,
     modelSlug: String,
     providerName: String,
-    status: OpenRouterPrivateEndpointStatus
+    status: OpenRouterPrivateEndpointStatus,
+    maxCompletionTokens: Int? = nil
   ) {
     self.createdAt = createdAt
     self.declaredRegion = declaredRegion
     self.declaredZdr = declaredZdr
     self.id = id
+    self.maxCompletionTokens = maxCompletionTokens
     self.modelName = modelName
     self.modelPermaslug = modelPermaslug
     self.modelSlug = modelSlug
@@ -48,6 +51,7 @@ public struct OpenRouterManagedPrivateEndpoint: Codable, Sendable {
     case declaredRegion = "declared_region"
     case declaredZdr = "declared_zdr"
     case id
+    case maxCompletionTokens = "max_completion_tokens"
     case modelName = "model_name"
     case modelPermaslug = "model_permaslug"
     case modelSlug = "model_slug"
@@ -55,21 +59,25 @@ public struct OpenRouterManagedPrivateEndpoint: Codable, Sendable {
     case status
   }
 
-  public struct WithDeclaredRegionAndDeclaredZdr: Codable, Sendable {
+  public struct WithDeclaredRegionAndDeclaredZdrAndMaxCompletionTokens: Codable, Sendable {
     public var declaredRegion: OpenRouterPrivateEndpointDeclaredRegion?
     public var declaredZdr: Bool
+    public var maxCompletionTokens: Int?
 
     public init(
       declaredRegion: OpenRouterPrivateEndpointDeclaredRegion?,
-      declaredZdr: Bool
+      declaredZdr: Bool,
+      maxCompletionTokens: Int? = nil
     ) {
       self.declaredRegion = declaredRegion
       self.declaredZdr = declaredZdr
+      self.maxCompletionTokens = maxCompletionTokens
     }
 
     enum CodingKeys: String, CodingKey {
       case declaredRegion = "declared_region"
       case declaredZdr = "declared_zdr"
+      case maxCompletionTokens = "max_completion_tokens"
     }
   }
 }

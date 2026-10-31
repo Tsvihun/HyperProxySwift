@@ -15,6 +15,7 @@ public struct OpenAIResponsesClientEventResponseCreate: Codable, Sendable {
   public var background: Bool?
   public var contextManagement: [OpenAIContextManagementParam]?
   public var conversation: OpenAIConversationParam?
+  public var generate: Bool?
   public var include: [OpenAIIncludeEnum]?
   public var input: OpenAIInputParam?
   public var instructions: String?
@@ -52,6 +53,7 @@ public struct OpenAIResponsesClientEventResponseCreate: Codable, Sendable {
     background: Bool? = nil,
     contextManagement: [OpenAIContextManagementParam]? = nil,
     conversation: OpenAIConversationParam? = nil,
+    generate: Bool? = nil,
     include: [OpenAIIncludeEnum]? = nil,
     input: OpenAIInputParam? = nil,
     instructions: String? = nil,
@@ -86,6 +88,7 @@ public struct OpenAIResponsesClientEventResponseCreate: Codable, Sendable {
     self.background = background
     self.contextManagement = contextManagement
     self.conversation = conversation
+    self.generate = generate
     self.include = include
     self.input = input
     self.instructions = instructions
@@ -123,6 +126,7 @@ public struct OpenAIResponsesClientEventResponseCreate: Codable, Sendable {
     case background
     case contextManagement = "context_management"
     case conversation
+    case generate
     case include
     case input
     case instructions
@@ -156,18 +160,22 @@ public struct OpenAIResponsesClientEventResponseCreate: Codable, Sendable {
   }
 
   public struct ResponseCreate: Codable, Sendable {
+    public var generate: Bool?
     public var streamId: String?
     public var kind: OpenAIResponsesClientEventResponseCreateKind
 
     public init(
       kind: OpenAIResponsesClientEventResponseCreateKind,
+      generate: Bool? = nil,
       streamId: String? = nil
     ) {
+      self.generate = generate
       self.streamId = streamId
       self.kind = kind
     }
 
     enum CodingKeys: String, CodingKey {
+      case generate
       case streamId = "stream_id"
       case kind = "type"
     }

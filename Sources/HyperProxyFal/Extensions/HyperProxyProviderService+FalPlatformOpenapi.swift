@@ -872,6 +872,20 @@ extension HyperProxyProviderService where Operation == FalOperation {
     return try await call.decoded(FalServerlessListRequestsByEndpointResponse.self)
   }
 
+  public func serverlessStopRunner(
+    runnerId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> FalServerlessStopRunnerResponse {
+    let call = self.call(.serverlessStopRunner)
+      .path("runner_id", runnerId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(FalServerlessStopRunnerResponse.self)
+  }
+
   public func serverlessGetUsage(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],

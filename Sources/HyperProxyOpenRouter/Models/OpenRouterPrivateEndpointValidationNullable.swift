@@ -12,18 +12,22 @@ import HyperProxyCore
 
 public struct OpenRouterPrivateEndpointValidationNullable: Codable, Sendable {
   public var checks: [OpenRouterPrivateEndpointCheck]
+  public var parameters: [OpenRouterPrivateEndpointParameterCheck]?
   public var passed: Bool
 
   public init(
     checks: [OpenRouterPrivateEndpointCheck],
-    passed: Bool
+    passed: Bool,
+    parameters: [OpenRouterPrivateEndpointParameterCheck]? = nil
   ) {
     self.checks = checks
+    self.parameters = parameters
     self.passed = passed
   }
 
   enum CodingKeys: String, CodingKey {
     case checks
+    case parameters
     case passed
   }
 }

@@ -23,6 +23,9 @@ public struct
   public var dubbingConcurrencyLimit:
     ElevenLabsBodyEditServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysApiKeyIdPatch
       .DubbingConcurrencyLimit?
+  public var expiresAtUnix:
+    ElevenLabsBodyEditServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysApiKeyIdPatch
+      .ExpiresAtUnix?
   public var isEnabled:
     ElevenLabsBodyEditServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysApiKeyIdPatch
       .IsEnabled?
@@ -53,6 +56,10 @@ public struct
       ElevenLabsBodyEditServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysApiKeyIdPatch
       .DubbingConcurrencyLimit? =
       nil,
+    expiresAtUnix:
+      ElevenLabsBodyEditServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysApiKeyIdPatch
+      .ExpiresAtUnix? =
+      nil,
     isEnabled:
       ElevenLabsBodyEditServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysApiKeyIdPatch
       .IsEnabled? =
@@ -78,6 +85,7 @@ public struct
     self.allowedIps = allowedIps
     self.characterLimit = characterLimit
     self.dubbingConcurrencyLimit = dubbingConcurrencyLimit
+    self.expiresAtUnix = expiresAtUnix
     self.isEnabled = isEnabled
     self.musicConcurrencyLimit = musicConcurrencyLimit
     self.name = name
@@ -90,6 +98,7 @@ public struct
     case allowedIps = "allowed_ips"
     case characterLimit = "character_limit"
     case dubbingConcurrencyLimit = "dubbing_concurrency_limit"
+    case expiresAtUnix = "expires_at_unix"
     case isEnabled = "is_enabled"
     case musicConcurrencyLimit = "music_concurrency_limit"
     case name
@@ -234,6 +243,63 @@ public struct
           try container.decode(
             ElevenLabsBodyEditServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysApiKeyIdPatch
               .DubbingConcurrencyLimit.Preset
+              .self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .integer(let value):
+        try container.encode(value)
+      case .preset(
+        let value):
+        try container.encode(value)
+      }
+    }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var clear: Self {
+      .preset(
+        .clear)
+    }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var noUpdate: Self {
+      .preset(
+        .noUpdate)
+    }
+
+    public enum
+      Preset:
+        String, Codable, Hashable, Sendable
+    {
+      case clear = "clear"
+      case noUpdate = "no_update"
+    }
+  }
+
+  public enum
+    ExpiresAtUnix:
+      Codable, Sendable
+  {
+    case integer(Int)
+    case
+      preset(
+        ElevenLabsBodyEditServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysApiKeyIdPatch
+          .ExpiresAtUnix.Preset
+      )
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(Int.self) {
+        self = .integer(value)
+        return
+      }
+      self =
+        .preset(
+          try container.decode(
+            ElevenLabsBodyEditServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysApiKeyIdPatch
+              .ExpiresAtUnix.Preset
               .self))
     }
 
@@ -571,6 +637,16 @@ extension
 extension
   ElevenLabsBodyEditServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysApiKeyIdPatch
   .DubbingConcurrencyLimit:
+    ExpressibleByIntegerLiteral
+{
+  public init(integerLiteral value: Int) {
+    self = .integer(value)
+  }
+}
+
+extension
+  ElevenLabsBodyEditServiceAccountApiKeyV1ServiceAccountsServiceAccountUserIdApiKeysApiKeyIdPatch
+  .ExpiresAtUnix:
     ExpressibleByIntegerLiteral
 {
   public init(integerLiteral value: Int) {

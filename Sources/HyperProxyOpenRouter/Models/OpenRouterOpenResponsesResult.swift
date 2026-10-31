@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterOpenResponsesResult: Codable, Sendable {
+  public var accessPrograms: OpenRouterOpenResponsesResultAccessPrograms?
   public var alignment: OpenRouterAlignment?
   public var background: Bool?
   public var completedAt: Int
@@ -70,6 +71,7 @@ public struct OpenRouterOpenResponsesResult: Codable, Sendable {
     toolChoice: OpenRouterOpenAIResponsesToolChoice,
     tools: [OpenRouterBaseResponsesResultToolsItem],
     topP: Double,
+    accessPrograms: OpenRouterOpenResponsesResultAccessPrograms? = nil,
     alignment: OpenRouterAlignment? = nil,
     background: Bool? = nil,
     errorType: OpenRouterApiErrorType? = nil,
@@ -92,6 +94,7 @@ public struct OpenRouterOpenResponsesResult: Codable, Sendable {
     usage: OpenRouterOpenAIResponsesUsage? = nil,
     user: String? = nil
   ) {
+    self.accessPrograms = accessPrograms
     self.alignment = alignment
     self.background = background
     self.completedAt = completedAt
@@ -134,6 +137,7 @@ public struct OpenRouterOpenResponsesResult: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case accessPrograms = "access_programs"
     case alignment
     case background
     case completedAt = "completed_at"
@@ -175,7 +179,8 @@ public struct OpenRouterOpenResponsesResult: Codable, Sendable {
     case user
   }
 
-  public struct WithAlignmentAndErrorAndErrorType: Codable, Sendable {
+  public struct WithAccessProgramsAndAlignmentAndError: Codable, Sendable {
+    public var accessPrograms: OpenRouterOpenResponsesResultAccessPrograms?
     public var alignment: OpenRouterAlignment?
     public var error: OpenRouterOpenResponsesErrorField?
     public var errorType: OpenRouterApiErrorType?
@@ -187,6 +192,7 @@ public struct OpenRouterOpenResponsesResult: Codable, Sendable {
     public var usage: OpenRouterUsage?
 
     public init(
+      accessPrograms: OpenRouterOpenResponsesResultAccessPrograms? = nil,
       alignment: OpenRouterAlignment? = nil,
       error: OpenRouterOpenResponsesErrorField? = nil,
       errorType: OpenRouterApiErrorType? = nil,
@@ -197,6 +203,7 @@ public struct OpenRouterOpenResponsesResult: Codable, Sendable {
       text: OpenRouterTextExtendedConfig? = nil,
       usage: OpenRouterUsage? = nil
     ) {
+      self.accessPrograms = accessPrograms
       self.alignment = alignment
       self.error = error
       self.errorType = errorType
@@ -209,6 +216,7 @@ public struct OpenRouterOpenResponsesResult: Codable, Sendable {
     }
 
     enum CodingKeys: String, CodingKey {
+      case accessPrograms = "access_programs"
       case alignment
       case error
       case errorType = "error_type"

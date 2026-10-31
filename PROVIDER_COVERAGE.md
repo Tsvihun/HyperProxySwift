@@ -1,7 +1,7 @@
 # Provider coverage contract
 
-This document describes the **0.6.0 candidate snapshot refreshed on 2026-10-25**.
-The published 0.5.0 package retains its 2026-10-03 snapshot; read [the 0.5.0 coverage contract](https://github.com/Tsvihun/HyperProxySwift/blob/0.5.0/PROVIDER_COVERAGE.md).
+This document describes the **development snapshot refreshed on 2026-10-31**.
+The published 0.6.0 package retains its 2026-10-25 snapshot; read [the 0.6.0 coverage contract](https://github.com/Tsvihun/HyperProxySwift/blob/0.6.0/PROVIDER_COVERAGE.md).
 New source snapshots remain subject to the recorded release review before a new package tag is published.
 
 ## The invariant
@@ -62,7 +62,7 @@ checked-in snapshot is built from official OpenAPI, AsyncAPI, and Google Discove
 where providers publish them. Reviewed manual definitions remain only for providers whose public
 documentation does not expose a complete machine-readable schema.
 
-The current snapshot contains 2,487 routes from 56 official specifications, SDK archives or watched
+The current snapshot contains 2,561 routes from 58 official specifications, SDK archives or watched
 documentation sources. The number is evidence for this snapshot, not a permanent completeness
 claim: scheduled CI is the mechanism that detects when providers move it.
 
@@ -86,8 +86,8 @@ generation tooling as part of the public package.
 Typed layers should be generated from official machine-readable schemas when available and
 hand-refined only where Swift ergonomics require it.
 
-The checked-in source artifact contains 21,641 generated provider types with 49,485 named fields and
-2,273 typed operation bindings from official machine-readable or reviewed schemas spanning all 18
+The checked-in source artifact contains 22,322 generated provider types with 51,243 named fields and
+2,345 typed operation bindings from official machine-readable or reviewed schemas spanning all 18
 provider families. DeepSeek's Responses, Chat/FIM, Search/Fetch tools, Models, Balance, and Anthropic-compatible
 surfaces are modeled from reviewed official documentation. Each AI uses both of its official
 OpenAPI documents plus reviewed each::sense and billing schemas, including SSE event fields
@@ -112,7 +112,7 @@ typed.
 
 Some official schemas describe heterogeneous unions or deliberately open objects that Swift
 cannot represent without losing forward compatibility. Those positions use
-`HyperProxyJSONValue`; the generated manifest currently records 599 such fallbacks. This is an
+`HyperProxyJSONValue`; the generated manifest currently records 609 such fallbacks. This is an
 explicit escape hatch, not evidence that every provider field is strongly typed.
 
 Each typed endpoint must expose an escape hatch for:

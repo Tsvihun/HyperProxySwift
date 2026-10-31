@@ -20,6 +20,7 @@ public struct OpenAISessionResource: Codable, Sendable {
   public var metadata: [String: String]
   public var object: OpenAISessionResource.Object
   public var requiredActions: [OpenAISessionRequiredActionResource]
+  public var review: OpenAISessionReviewResource?
   public var status: OpenAISessionStatusResource
   public var usage: OpenAITokenUsageResource?
   public var vaultIds: [String]
@@ -36,7 +37,8 @@ public struct OpenAISessionResource: Codable, Sendable {
     requiredActions: [OpenAISessionRequiredActionResource],
     status: OpenAISessionStatusResource,
     usage: OpenAITokenUsageResource?,
-    vaultIds: [String]
+    vaultIds: [String],
+    review: OpenAISessionReviewResource? = nil
   ) {
     self.agent = agent
     self.createdAt = createdAt
@@ -47,6 +49,7 @@ public struct OpenAISessionResource: Codable, Sendable {
     self.metadata = metadata
     self.object = object
     self.requiredActions = requiredActions
+    self.review = review
     self.status = status
     self.usage = usage
     self.vaultIds = vaultIds
@@ -62,6 +65,7 @@ public struct OpenAISessionResource: Codable, Sendable {
     case metadata
     case object
     case requiredActions = "required_actions"
+    case review
     case status
     case usage
     case vaultIds = "vault_ids"

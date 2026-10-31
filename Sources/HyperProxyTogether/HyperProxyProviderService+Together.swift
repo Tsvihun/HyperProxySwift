@@ -417,6 +417,10 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
   public var getModelResources: HyperProxyProviderCall<TogetherOperation> {
     self.call(.getModelResources)
   }
+  /// `POST v1/rl/model-resources/{model_resources_id}/extend-expiry`
+  public var extendModelResourcesExpiry: HyperProxyProviderCall<TogetherOperation> {
+    self.call(.extendModelResourcesExpiry)
+  }
   /// `POST v1/rl/model-resources/{model_resources_id}/stop`
   public var stopModelResources: HyperProxyProviderCall<TogetherOperation> {
     self.call(.stopModelResources)

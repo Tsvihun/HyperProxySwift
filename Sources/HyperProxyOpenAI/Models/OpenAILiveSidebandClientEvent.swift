@@ -15,6 +15,7 @@ public enum OpenAILiveSidebandClientEvent: Codable, Sendable {
   case liveInputAudioMuteParam(OpenAILiveInputAudioMuteParam)
   case liveInputAudioUnmuteParam(OpenAILiveInputAudioUnmuteParam)
   case liveOutputAudioFixturePlayParam(OpenAILiveOutputAudioFixturePlayParam)
+  case liveTransportDtmfSendParam(OpenAILiveTransportDTMFSendParam)
   case liveInstructionsAppendParam(OpenAILiveInstructionsAppendParam)
   case liveThinkingAppendParam(OpenAILiveThinkingAppendParam)
   case liveCommentaryAppendParam(OpenAILiveCommentaryAppendParam)
@@ -41,6 +42,10 @@ public enum OpenAILiveSidebandClientEvent: Codable, Sendable {
     }
     if let value = try? container.decode(OpenAILiveOutputAudioFixturePlayParam.self) {
       self = .liveOutputAudioFixturePlayParam(value)
+      return
+    }
+    if let value = try? container.decode(OpenAILiveTransportDTMFSendParam.self) {
+      self = .liveTransportDtmfSendParam(value)
       return
     }
     if let value = try? container.decode(OpenAILiveInstructionsAppendParam.self) {
@@ -88,6 +93,8 @@ public enum OpenAILiveSidebandClientEvent: Codable, Sendable {
     case .liveInputAudioUnmuteParam(let value):
       try container.encode(value)
     case .liveOutputAudioFixturePlayParam(let value):
+      try container.encode(value)
+    case .liveTransportDtmfSendParam(let value):
       try container.encode(value)
     case .liveInstructionsAppendParam(let value):
       try container.encode(value)

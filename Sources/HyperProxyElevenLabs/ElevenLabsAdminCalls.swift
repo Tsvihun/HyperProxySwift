@@ -40,6 +40,18 @@ public struct ElevenLabsAdminCalls: Sendable {
   public var disableServiceAccountApiKey: HyperProxyProviderCall<ElevenLabsOperation> {
     self.service.call(.disableServiceAccountApiKey)
   }
+  /// `GET v1/smb/reseller/billing/invoices`
+  public var smbListResellerInvoices: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.service.call(.smbListResellerInvoices)
+  }
+  /// `GET v1/smb/reseller/billing/invoices/{invoice_id}`
+  public var smbGetResellerInvoice: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.service.call(.smbGetResellerInvoice)
+  }
+  /// `GET v1/smb/reseller/billing/upcoming`
+  public var smbListResellerUpcomingPayments: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.service.call(.smbListResellerUpcomingPayments)
+  }
   /// `GET v1/workspace/audit-logs`
   public var getWorkspaceAuditLogs: HyperProxyProviderCall<ElevenLabsOperation> {
     self.service.call(.getWorkspaceAuditLogs)

@@ -11,10 +11,10 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterListEndpointsZdrResponse: Codable, Sendable {
-  public var data: [OpenRouterPublicEndpoint]
+  public var data: [OpenRouterPublicZdrEndpoint]
 
   public init(
-    data: [OpenRouterPublicEndpoint]
+    data: [OpenRouterPublicZdrEndpoint]
   ) {
     self.data = data
   }

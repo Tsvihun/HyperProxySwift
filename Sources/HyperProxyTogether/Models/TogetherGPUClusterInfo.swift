@@ -202,6 +202,7 @@ public struct TogetherGPUClusterInfo: Codable, Sendable {
     case b200Sxm = "B200_SXM"
     case h100SxmInf = "H100_SXM_INF"
     case b300Sxm = "B300_SXM"
+    case gb200Sxm = "GB200_SXM"
   }
 
   public enum Status: String, Codable, Hashable, Sendable {

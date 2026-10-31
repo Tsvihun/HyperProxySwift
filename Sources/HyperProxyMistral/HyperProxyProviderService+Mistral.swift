@@ -983,6 +983,14 @@ extension HyperProxyProviderService where Operation == MistralOperation {
   public var ocrProcess: HyperProxyProviderCall<MistralOperation> {
     self.call(.ocrProcess)
   }
+  /// `POST v1/responses`
+  public var createResponseV1ResponsesPost: HyperProxyProviderCall<MistralOperation> {
+    self.call(.createResponseV1ResponsesPost)
+  }
+  /// `POST v1/responses/input_tokens`
+  public var countInputTokensV1ResponsesInputTokensPost: HyperProxyProviderCall<MistralOperation> {
+    self.call(.countInputTokensV1ResponsesInputTokensPost)
+  }
   /// `GET v1/workflows`
   public var getWorkflowsV1WorkflowsGet: HyperProxyProviderCall<MistralOperation> {
     self.call(.getWorkflowsV1WorkflowsGet)

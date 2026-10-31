@@ -29,7 +29,12 @@ successful baseline took 58 minutes 30 seconds:
   restore the latest compatible entry from its branch or main.
 - SwiftPM tests, Quick Start and Playground tests share one scratch directory
   within their job. Quick Start no longer recompiles its SDK dependencies into a
-  second build directory.
+  second build directory. Before switching root packages,
+  `Scripts/reset_swiftpm_build_plan.py` discards the package-specific debug plan
+  and description, retaining compiled dependencies. Without replanning, SwiftPM
+  can run the previous package's test product and report a successful but
+  unrelated test run. The Playground log must identify
+  `HyperProxyPlaygroundPackageTests.xctest` and its own tests.
 - CI does not emit editor navigation indexes. All test, import, type, warning and
   release checks still execute.
 

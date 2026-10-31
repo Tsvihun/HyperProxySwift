@@ -14,6 +14,7 @@ public struct TogetherRLCreateModelResourcesRequest: Codable, Sendable {
   public var baseModel: String
   public var baseWeightsRef: String?
   public var computeConfig: TogetherRLComputeConfigCreateRequest?
+  public var inactiveTimeout: Int?
   public var loraEnabled: Bool?
   public var optimizerConfig: TogetherRLOptimizerConfig?
 
@@ -21,12 +22,14 @@ public struct TogetherRLCreateModelResourcesRequest: Codable, Sendable {
     baseModel: String,
     baseWeightsRef: String? = nil,
     computeConfig: TogetherRLComputeConfigCreateRequest? = nil,
+    inactiveTimeout: Int? = nil,
     loraEnabled: Bool? = nil,
     optimizerConfig: TogetherRLOptimizerConfig? = nil
   ) {
     self.baseModel = baseModel
     self.baseWeightsRef = baseWeightsRef
     self.computeConfig = computeConfig
+    self.inactiveTimeout = inactiveTimeout
     self.loraEnabled = loraEnabled
     self.optimizerConfig = optimizerConfig
   }
@@ -35,6 +38,7 @@ public struct TogetherRLCreateModelResourcesRequest: Codable, Sendable {
     case baseModel = "base_model"
     case baseWeightsRef = "base_weights_ref"
     case computeConfig = "compute_config"
+    case inactiveTimeout = "inactive_timeout"
     case loraEnabled = "lora_enabled"
     case optimizerConfig = "optimizer_config"
   }

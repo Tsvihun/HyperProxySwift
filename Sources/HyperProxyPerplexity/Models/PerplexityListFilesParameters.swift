@@ -11,25 +11,25 @@ import Foundation
 import HyperProxyCore
 
 public struct PerplexityListFilesParameters: Codable, Sendable {
-  public var after: String?
+  public var afterId: String?
   public var limit: Int?
   public var order: PerplexityListFilesParameters.Order?
   public var purpose: PerplexityListFilesParameters.Purpose?
 
   public init(
-    after: String? = nil,
+    afterId: String? = nil,
     limit: Int? = nil,
     order: PerplexityListFilesParameters.Order? = nil,
     purpose: PerplexityListFilesParameters.Purpose? = nil
   ) {
-    self.after = after
+    self.afterId = afterId
     self.limit = limit
     self.order = order
     self.purpose = purpose
   }
 
   enum CodingKeys: String, CodingKey {
-    case after
+    case afterId = "after_id"
     case limit
     case order
     case purpose

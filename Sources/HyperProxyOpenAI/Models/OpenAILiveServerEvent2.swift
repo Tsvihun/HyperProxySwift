@@ -34,7 +34,7 @@ public enum OpenAILiveServerEvent2: Codable, Sendable {
   case liveErrorEvent(OpenAILiveErrorEvent)
   case liveInfoEvent(OpenAILiveInfoEvent)
   case liveTransportDtmfReceived(OpenAILiveTransportDTMFReceived)
-  case liveTransportDtmfSend(OpenAILiveTransportDTMFSend)
+  case liveTransportDtmfSent(OpenAILiveTransportDTMFSent)
   case liveTransportRinging(OpenAILiveTransportRinging)
   case liveTransportAnswered(OpenAILiveTransportAnswered)
   case liveTransportFailed(OpenAILiveTransportFailed)
@@ -133,8 +133,8 @@ public enum OpenAILiveServerEvent2: Codable, Sendable {
       self = .liveTransportDtmfReceived(value)
       return
     }
-    if let value = try? container.decode(OpenAILiveTransportDTMFSend.self) {
-      self = .liveTransportDtmfSend(value)
+    if let value = try? container.decode(OpenAILiveTransportDTMFSent.self) {
+      self = .liveTransportDtmfSent(value)
       return
     }
     if let value = try? container.decode(OpenAILiveTransportRinging.self) {
@@ -197,7 +197,7 @@ public enum OpenAILiveServerEvent2: Codable, Sendable {
       try container.encode(value)
     case .liveTransportDtmfReceived(let value):
       try container.encode(value)
-    case .liveTransportDtmfSend(let value):
+    case .liveTransportDtmfSent(let value):
       try container.encode(value)
     case .liveTransportRinging(let value):
       try container.encode(value)

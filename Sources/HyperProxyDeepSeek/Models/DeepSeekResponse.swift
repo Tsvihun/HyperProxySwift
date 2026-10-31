@@ -22,7 +22,7 @@ public struct DeepSeekResponse: Codable, Sendable {
   public var previousResponseId: String?
   public var status: DeepSeekResponseStatus
   public var store: Bool?
-  public var usage: DeepSeekUsage
+  public var usage: DeepSeekUsage?
 
   public init(
     createdAt: Int64,
@@ -31,7 +31,7 @@ public struct DeepSeekResponse: Codable, Sendable {
     object: DeepSeekResponseObject,
     output: [DeepSeekOutputItem],
     status: DeepSeekResponseStatus,
-    usage: DeepSeekUsage,
+    usage: DeepSeekUsage?,
     error: DeepSeekResponseError? = nil,
     incompleteDetails: DeepSeekIncompleteDetails? = nil,
     parallelToolCalls: Bool? = nil,

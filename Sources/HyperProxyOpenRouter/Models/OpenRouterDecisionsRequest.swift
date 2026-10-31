@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterDecisionsRequest: Codable, Sendable {
+  public var assets: [String: OpenRouterDecisionsImageAsset]?
   public var model: String
   public var provider: OpenRouterProviderPreferences?
   public var questions: [String: OpenRouterDecisionsRequest.QuestionsValue]
@@ -23,11 +24,13 @@ public struct OpenRouterDecisionsRequest: Codable, Sendable {
     model: String,
     questions: [String: OpenRouterDecisionsRequest.QuestionsValue],
     state: OpenRouterDecisionsRequest.State,
+    assets: [String: OpenRouterDecisionsImageAsset]? = nil,
     provider: OpenRouterProviderPreferences? = nil,
     sessionId: String? = nil,
     trace: OpenRouterTraceConfig? = nil,
     user: String? = nil
   ) {
+    self.assets = assets
     self.model = model
     self.provider = provider
     self.questions = questions
@@ -38,6 +41,7 @@ public struct OpenRouterDecisionsRequest: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case assets
     case model
     case provider
     case questions

@@ -11,19 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct PerplexityListBatchesParameters: Codable, Sendable {
-  public var after: String?
+  public var afterId: String?
   public var limit: Int?
 
   public init(
-    after: String? = nil,
+    afterId: String? = nil,
     limit: Int? = nil
   ) {
-    self.after = after
+    self.afterId = afterId
     self.limit = limit
   }
 
   enum CodingKeys: String, CodingKey {
-    case after
+    case afterId = "after_id"
     case limit
   }
 }

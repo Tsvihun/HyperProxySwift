@@ -22,6 +22,7 @@ public enum ElevenLabsWorkspaceGroupPermission: String, Codable, Hashable, Senda
   case audioNative = "audio_native"
   case conversationalAi = "conversational_ai"
   case conversationalAiRead = "conversational_ai_read"
+  case architect = "architect"
   case voiceIsolator = "voice_isolator"
   case aiSpeechClassifier = "ai_speech_classifier"
   case synthidDetector = "synthid_detector"

@@ -14,4 +14,7 @@ public enum DeepSeekOutputItemType: String, Codable, Hashable, Sendable {
   case message = "message"
   case reasoning = "reasoning"
   case functionCall = "function_call"
+  case customToolCall = "custom_tool_call"
+  case webSearchCall = "web_search_call"
+  case toolSearchCall = "tool_search_call"
 }

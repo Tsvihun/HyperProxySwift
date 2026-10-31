@@ -101,6 +101,7 @@ public struct OpenRouterImageGenerationProviderPreferences: Codable, Sendable {
     case ioNet
     case inferactVLlm
     case inflection
+    case kt
     case liquid
     case makora
     case mara
@@ -125,7 +126,9 @@ public struct OpenRouterImageGenerationProviderPreferences: Codable, Sendable {
     case openInference
     case parasail
     case paretoAlpha
+    case particleAI
     case poolside
+    case primaLabs
     case primeIntellect
     case perceptron
     case perplexity
@@ -276,6 +279,8 @@ public struct OpenRouterImageGenerationProviderPreferences: Codable, Sendable {
         self = .inferactVLlm
       case "Inflection":
         self = .inflection
+      case "KT":
+        self = .kt
       case "Liquid":
         self = .liquid
       case "Makora":
@@ -324,8 +329,12 @@ public struct OpenRouterImageGenerationProviderPreferences: Codable, Sendable {
         self = .parasail
       case "ParetoAlpha":
         self = .paretoAlpha
+      case "Particle AI":
+        self = .particleAI
       case "Poolside":
         self = .poolside
+      case "PrimaLabs":
+        self = .primaLabs
       case "PrimeIntellect":
         self = .primeIntellect
       case "Perceptron":
@@ -515,6 +524,8 @@ public struct OpenRouterImageGenerationProviderPreferences: Codable, Sendable {
         return "Inferact vLLM"
       case .inflection:
         return "Inflection"
+      case .kt:
+        return "KT"
       case .liquid:
         return "Liquid"
       case .makora:
@@ -563,8 +574,12 @@ public struct OpenRouterImageGenerationProviderPreferences: Codable, Sendable {
         return "Parasail"
       case .paretoAlpha:
         return "ParetoAlpha"
+      case .particleAI:
+        return "Particle AI"
       case .poolside:
         return "Poolside"
+      case .primaLabs:
+        return "PrimaLabs"
       case .primeIntellect:
         return "PrimeIntellect"
       case .perceptron:
@@ -711,6 +726,7 @@ public struct OpenRouterImageGenerationProviderPreferences: Codable, Sendable {
     case ioNet
     case inferactVLlm
     case inflection
+    case kt
     case liquid
     case makora
     case mara
@@ -735,7 +751,9 @@ public struct OpenRouterImageGenerationProviderPreferences: Codable, Sendable {
     case openInference
     case parasail
     case paretoAlpha
+    case particleAI
     case poolside
+    case primaLabs
     case primeIntellect
     case perceptron
     case perplexity
@@ -886,6 +904,8 @@ public struct OpenRouterImageGenerationProviderPreferences: Codable, Sendable {
         self = .inferactVLlm
       case "Inflection":
         self = .inflection
+      case "KT":
+        self = .kt
       case "Liquid":
         self = .liquid
       case "Makora":
@@ -934,8 +954,12 @@ public struct OpenRouterImageGenerationProviderPreferences: Codable, Sendable {
         self = .parasail
       case "ParetoAlpha":
         self = .paretoAlpha
+      case "Particle AI":
+        self = .particleAI
       case "Poolside":
         self = .poolside
+      case "PrimaLabs":
+        self = .primaLabs
       case "PrimeIntellect":
         self = .primeIntellect
       case "Perceptron":
@@ -1125,6 +1149,8 @@ public struct OpenRouterImageGenerationProviderPreferences: Codable, Sendable {
         return "Inferact vLLM"
       case .inflection:
         return "Inflection"
+      case .kt:
+        return "KT"
       case .liquid:
         return "Liquid"
       case .makora:
@@ -1173,8 +1199,12 @@ public struct OpenRouterImageGenerationProviderPreferences: Codable, Sendable {
         return "Parasail"
       case .paretoAlpha:
         return "ParetoAlpha"
+      case .particleAI:
+        return "Particle AI"
       case .poolside:
         return "Poolside"
+      case .primaLabs:
+        return "PrimaLabs"
       case .primeIntellect:
         return "PrimeIntellect"
       case .perceptron:
@@ -1321,6 +1351,7 @@ public struct OpenRouterImageGenerationProviderPreferences: Codable, Sendable {
     case ioNet
     case inferactVLlm
     case inflection
+    case kt
     case liquid
     case makora
     case mara
@@ -1345,7 +1376,9 @@ public struct OpenRouterImageGenerationProviderPreferences: Codable, Sendable {
     case openInference
     case parasail
     case paretoAlpha
+    case particleAI
     case poolside
+    case primaLabs
     case primeIntellect
     case perceptron
     case perplexity
@@ -1496,6 +1529,8 @@ public struct OpenRouterImageGenerationProviderPreferences: Codable, Sendable {
         self = .inferactVLlm
       case "Inflection":
         self = .inflection
+      case "KT":
+        self = .kt
       case "Liquid":
         self = .liquid
       case "Makora":
@@ -1544,8 +1579,12 @@ public struct OpenRouterImageGenerationProviderPreferences: Codable, Sendable {
         self = .parasail
       case "ParetoAlpha":
         self = .paretoAlpha
+      case "Particle AI":
+        self = .particleAI
       case "Poolside":
         self = .poolside
+      case "PrimaLabs":
+        self = .primaLabs
       case "PrimeIntellect":
         self = .primeIntellect
       case "Perceptron":
@@ -1735,6 +1774,8 @@ public struct OpenRouterImageGenerationProviderPreferences: Codable, Sendable {
         return "Inferact vLLM"
       case .inflection:
         return "Inflection"
+      case .kt:
+        return "KT"
       case .liquid:
         return "Liquid"
       case .makora:
@@ -1783,8 +1824,12 @@ public struct OpenRouterImageGenerationProviderPreferences: Codable, Sendable {
         return "Parasail"
       case .paretoAlpha:
         return "ParetoAlpha"
+      case .particleAI:
+        return "Particle AI"
       case .poolside:
         return "Poolside"
+      case .primaLabs:
+        return "PrimaLabs"
       case .primeIntellect:
         return "PrimeIntellect"
       case .perceptron:

@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenRouterChatSystemMessage: Codable, Sendable {
-  public var configurationUpdate: OpenRouterChatSystemMessage.ConfigurationUpdate?
+  public var configurationUpdate: OpenRouterConfigurationUpdate?
   public var content: OpenRouterChatSystemMessage.Content
   public var name: String?
   public var role: OpenRouterChatSystemMessage.Role
@@ -19,7 +19,7 @@ public struct OpenRouterChatSystemMessage: Codable, Sendable {
   public init(
     content: OpenRouterChatSystemMessage.Content,
     role: OpenRouterChatSystemMessage.Role,
-    configurationUpdate: OpenRouterChatSystemMessage.ConfigurationUpdate? = nil,
+    configurationUpdate: OpenRouterConfigurationUpdate? = nil,
     name: String? = nil
   ) {
     self.configurationUpdate = configurationUpdate
@@ -33,20 +33,6 @@ public struct OpenRouterChatSystemMessage: Codable, Sendable {
     case content
     case name
     case role
-  }
-
-  public struct ConfigurationUpdate: Codable, Sendable {
-    public var reasoning: OpenRouterConfigurationUpdateReasoning
-
-    public init(
-      reasoning: OpenRouterConfigurationUpdateReasoning
-    ) {
-      self.reasoning = reasoning
-    }
-
-    enum CodingKeys: String, CodingKey {
-      case reasoning
-    }
   }
 
   public enum Content: Codable, Sendable {

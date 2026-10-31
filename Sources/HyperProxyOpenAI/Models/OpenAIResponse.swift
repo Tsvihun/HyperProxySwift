@@ -42,6 +42,7 @@ public struct OpenAIResponse: Codable, Sendable {
   public var temperature: Double?
   public var text: OpenAIResponseTextParam?
   public var toolChoice: OpenAIToolChoiceParam
+  public var toolUsage: OpenAIResponseToolUsage?
   public var tools: OpenAIToolsArray
   public var topLogprobs: Int?
   public var topP: Double?
@@ -83,6 +84,7 @@ public struct OpenAIResponse: Codable, Sendable {
     serviceTier: OpenAIServiceTierResponses? = nil,
     status: OpenAIResponseStatus? = nil,
     text: OpenAIResponseTextParam? = nil,
+    toolUsage: OpenAIResponseToolUsage? = nil,
     topLogprobs: Int? = nil,
     truncation: OpenAIResponseTruncation? = nil,
     usage: OpenAIResponseUsage? = nil,
@@ -119,6 +121,7 @@ public struct OpenAIResponse: Codable, Sendable {
     self.temperature = temperature
     self.text = text
     self.toolChoice = toolChoice
+    self.toolUsage = toolUsage
     self.tools = tools
     self.topLogprobs = topLogprobs
     self.topP = topP
@@ -159,6 +162,7 @@ public struct OpenAIResponse: Codable, Sendable {
     case temperature
     case text
     case toolChoice = "tool_choice"
+    case toolUsage = "tool_usage"
     case tools
     case topLogprobs = "top_logprobs"
     case topP = "top_p"
@@ -187,6 +191,7 @@ public struct OpenAIResponse: Codable, Sendable {
     public var reasoning: OpenAIReasoning?
     public var serviceTier: OpenAIServiceTierResponses?
     public var status: OpenAIResponseStatus?
+    public var toolUsage: OpenAIResponseToolUsage?
     public var truncation: OpenAIResponseTruncation?
     public var usage: OpenAIResponseUsage?
 
@@ -210,6 +215,7 @@ public struct OpenAIResponse: Codable, Sendable {
       reasoning: OpenAIReasoning? = nil,
       serviceTier: OpenAIServiceTierResponses? = nil,
       status: OpenAIResponseStatus? = nil,
+      toolUsage: OpenAIResponseToolUsage? = nil,
       truncation: OpenAIResponseTruncation? = nil,
       usage: OpenAIResponseUsage? = nil
     ) {
@@ -232,6 +238,7 @@ public struct OpenAIResponse: Codable, Sendable {
       self.reasoning = reasoning
       self.serviceTier = serviceTier
       self.status = status
+      self.toolUsage = toolUsage
       self.truncation = truncation
       self.usage = usage
     }
@@ -256,6 +263,7 @@ public struct OpenAIResponse: Codable, Sendable {
       case reasoning
       case serviceTier = "service_tier"
       case status
+      case toolUsage = "tool_usage"
       case truncation
       case usage
     }

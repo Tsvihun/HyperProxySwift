@@ -76,6 +76,32 @@ public struct OpenAIAdminCalls: Sendable {
   public var updateOrganizationDataRetention: HyperProxyProviderCall<OpenAIOperation> {
     self.service.call(.updateOrganizationDataRetention)
   }
+  /// `GET v1/organization/external_keys`
+  public var listtheexternalkeyconfigsregisteredontheuserSorganization:
+    HyperProxyProviderCall<OpenAIOperation>
+  {
+    self.service.call(.listtheexternalkeyconfigsregisteredontheuserSorganization)
+  }
+  /// `POST v1/organization/external_keys`
+  public var addanexternalkeyconfigforanorganization: HyperProxyProviderCall<OpenAIOperation> {
+    self.service.call(.addanexternalkeyconfigforanorganization)
+  }
+  /// `DELETE v1/organization/external_keys/{external_key_id}`
+  public var deleteanexternalkeyconfigfortheuserSorganization:
+    HyperProxyProviderCall<OpenAIOperation>
+  {
+    self.service.call(.deleteanexternalkeyconfigfortheuserSorganization)
+  }
+  /// `GET v1/organization/external_keys/{external_key_id}`
+  public var retrieveanexternalkeyregistration: HyperProxyProviderCall<OpenAIOperation> {
+    self.service.call(.retrieveanexternalkeyregistration)
+  }
+  /// `POST v1/organization/external_keys/{external_key_id}/validate`
+  public var validateanexternalkeyconfigfortheuserSorganization:
+    HyperProxyProviderCall<OpenAIOperation>
+  {
+    self.service.call(.validateanexternalkeyconfigfortheuserSorganization)
+  }
   /// `GET v1/organization/external_storage`
   public var listexternalstorageconfigurations: HyperProxyProviderCall<OpenAIOperation> {
     self.service.call(.listexternalstorageconfigurations)

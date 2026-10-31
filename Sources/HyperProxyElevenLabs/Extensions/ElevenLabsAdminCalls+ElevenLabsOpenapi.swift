@@ -108,6 +108,44 @@ extension ElevenLabsAdminCalls {
     return try await call.decoded(ElevenLabsDisableServiceAccountApiKeyResponse.self)
   }
 
+  public func smbListResellerInvoices(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsResellerInvoicesResponse {
+    let call = self.service.call(.smbListResellerInvoices)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsResellerInvoicesResponse.self)
+  }
+
+  public func smbGetResellerInvoice(
+    invoiceId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsResellerInvoiceDetail {
+    let call = self.service.call(.smbGetResellerInvoice)
+      .path("invoice_id", invoiceId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsResellerInvoiceDetail.self)
+  }
+
+  public func smbListResellerUpcomingPayments(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsResellerUpcomingPaymentsResponse {
+    let call = self.service.call(.smbListResellerUpcomingPayments)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsResellerUpcomingPaymentsResponse.self)
+  }
+
   public func getWorkspaceAuditLogs(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],

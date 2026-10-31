@@ -14,17 +14,20 @@ public struct OpenAIListAgentSessionsParameters: Codable, Sendable {
   public var after: String?
   public var agentId: String?
   public var limit: Int64?
+  public var metadata: [String: String]?
   public var order: OpenAIListOrderParam?
 
   public init(
     after: String? = nil,
     agentId: String? = nil,
     limit: Int64? = nil,
+    metadata: [String: String]? = nil,
     order: OpenAIListOrderParam? = nil
   ) {
     self.after = after
     self.agentId = agentId
     self.limit = limit
+    self.metadata = metadata
     self.order = order
   }
 
@@ -32,6 +35,7 @@ public struct OpenAIListAgentSessionsParameters: Codable, Sendable {
     case after
     case agentId = "agent_id"
     case limit
+    case metadata
     case order
   }
 }

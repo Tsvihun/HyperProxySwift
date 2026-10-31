@@ -14,6 +14,7 @@ public struct OpenAIEditImageBodyJsonParam: Codable, Sendable {
   public var background: OpenAIEditImageBodyJsonParam.Background?
   public var images: [OpenAIImageRefParam]
   public var inputFidelity: OpenAIEditImageBodyJsonParam.InputFidelity?
+  public var markup: OpenAIImageRefParam?
   public var mask: OpenAIImageRefParam?
   public var model: OpenAIEditImageBodyJsonParam.Model?
   public var moderation: OpenAIEditImageBodyJsonParam.Moderation?
@@ -33,6 +34,7 @@ public struct OpenAIEditImageBodyJsonParam: Codable, Sendable {
     prompt: String,
     background: OpenAIEditImageBodyJsonParam.Background? = nil,
     inputFidelity: OpenAIEditImageBodyJsonParam.InputFidelity? = nil,
+    markup: OpenAIImageRefParam? = nil,
     mask: OpenAIImageRefParam? = nil,
     model: OpenAIEditImageBodyJsonParam.Model? = nil,
     moderation: OpenAIEditImageBodyJsonParam.Moderation? = nil,
@@ -49,6 +51,7 @@ public struct OpenAIEditImageBodyJsonParam: Codable, Sendable {
     self.background = background
     self.images = images
     self.inputFidelity = inputFidelity
+    self.markup = markup
     self.mask = mask
     self.model = model
     self.moderation = moderation
@@ -68,6 +71,7 @@ public struct OpenAIEditImageBodyJsonParam: Codable, Sendable {
     case background
     case images
     case inputFidelity = "input_fidelity"
+    case markup
     case mask
     case model
     case moderation

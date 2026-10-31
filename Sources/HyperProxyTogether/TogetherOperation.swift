@@ -220,6 +220,8 @@ public enum TogetherOperation: String, HyperProxyCatalogOperation {
   case estimateModelResourcesCost = "estimateModelResourcesCost"
   /// `GET v1/rl/model-resources/{model_resources_id}`
   case getModelResources = "getModelResources"
+  /// `POST v1/rl/model-resources/{model_resources_id}/extend-expiry`
+  case extendModelResourcesExpiry = "extendModelResourcesExpiry"
   /// `POST v1/rl/model-resources/{model_resources_id}/stop`
   case stopModelResources = "stopModelResources"
   /// `GET v1/rl/supported-models`

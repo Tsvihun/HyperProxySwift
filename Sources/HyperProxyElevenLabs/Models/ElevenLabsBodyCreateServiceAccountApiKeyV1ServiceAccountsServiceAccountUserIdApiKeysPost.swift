@@ -17,6 +17,7 @@ public struct
   public var allowedIps: [String]?
   public var characterLimit: Int?
   public var dubbingConcurrencyLimit: Int?
+  public var expiresAtUnix: Int?
   public var musicConcurrencyLimit: Int?
   public var name: String
   public var permissions:
@@ -33,6 +34,7 @@ public struct
     allowedIps: [String]? = nil,
     characterLimit: Int? = nil,
     dubbingConcurrencyLimit: Int? = nil,
+    expiresAtUnix: Int? = nil,
     musicConcurrencyLimit: Int? = nil,
     thirdPartyDisableAllowed: Bool? = nil,
     ttsConcurrencyLimit: Int? = nil
@@ -40,6 +42,7 @@ public struct
     self.allowedIps = allowedIps
     self.characterLimit = characterLimit
     self.dubbingConcurrencyLimit = dubbingConcurrencyLimit
+    self.expiresAtUnix = expiresAtUnix
     self.musicConcurrencyLimit = musicConcurrencyLimit
     self.name = name
     self.permissions = permissions
@@ -51,6 +54,7 @@ public struct
     case allowedIps = "allowed_ips"
     case characterLimit = "character_limit"
     case dubbingConcurrencyLimit = "dubbing_concurrency_limit"
+    case expiresAtUnix = "expires_at_unix"
     case musicConcurrencyLimit = "music_concurrency_limit"
     case name
     case permissions

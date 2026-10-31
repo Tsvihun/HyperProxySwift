@@ -17,7 +17,9 @@ public struct TogetherRLModelResources: Codable, Sendable {
   public var createdAt: String
   public var createdBy: String
   public var error: TogetherRLModelResourcesError?
+  public var expiresAt: String?
   public var id: String
+  public var inactiveTimeout: Int
   public var loraEnabled: Bool
   public var optimizerConfig: TogetherRLOptimizerConfig
   public var status: TogetherRLModelResourcesStatus
@@ -30,13 +32,15 @@ public struct TogetherRLModelResources: Codable, Sendable {
     createdAt: String,
     createdBy: String,
     id: String,
+    inactiveTimeout: Int,
     loraEnabled: Bool,
     optimizerConfig: TogetherRLOptimizerConfig,
     status: TogetherRLModelResourcesStatus,
     statusDetails: TogetherRLModelResourcesStatusDetails,
     updatedAt: String,
     baseWeightsRef: String? = nil,
-    error: TogetherRLModelResourcesError? = nil
+    error: TogetherRLModelResourcesError? = nil,
+    expiresAt: String? = nil
   ) {
     self.baseModel = baseModel
     self.baseWeightsRef = baseWeightsRef
@@ -44,7 +48,9 @@ public struct TogetherRLModelResources: Codable, Sendable {
     self.createdAt = createdAt
     self.createdBy = createdBy
     self.error = error
+    self.expiresAt = expiresAt
     self.id = id
+    self.inactiveTimeout = inactiveTimeout
     self.loraEnabled = loraEnabled
     self.optimizerConfig = optimizerConfig
     self.status = status
@@ -59,7 +65,9 @@ public struct TogetherRLModelResources: Codable, Sendable {
     case createdAt = "created_at"
     case createdBy = "created_by"
     case error
+    case expiresAt = "expires_at"
     case id
+    case inactiveTimeout = "inactive_timeout"
     case loraEnabled = "lora_enabled"
     case optimizerConfig = "optimizer_config"
     case status

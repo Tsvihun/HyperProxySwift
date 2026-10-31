@@ -42,13 +42,13 @@ public struct OpenAIRealtimeTranslationSessionUpdateRequest: Codable, Sendable {
 
     public struct Input: Codable, Sendable {
       public var noiseReduction:
-        OpenAIRealtimeTranslationSessionUpdateRequestAudioInputNoiseReductionWithValueType?
+        OpenAIRealtimeTranslationSessionUpdateRequestAudioInputNoiseReductionWithStrengthAndValueType?
       public var transcription:
         OpenAIRealtimeTranslationSessionUpdateRequestAudioInputTranscriptionWithModel?
 
       public init(
         noiseReduction:
-          OpenAIRealtimeTranslationSessionUpdateRequestAudioInputNoiseReductionWithValueType? =
+          OpenAIRealtimeTranslationSessionUpdateRequestAudioInputNoiseReductionWithStrengthAndValueType? =
           nil,
         transcription:
           OpenAIRealtimeTranslationSessionUpdateRequestAudioInputTranscriptionWithModel? = nil

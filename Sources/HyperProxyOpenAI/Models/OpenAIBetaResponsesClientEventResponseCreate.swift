@@ -15,6 +15,7 @@ public struct OpenAIBetaResponsesClientEventResponseCreate: Codable, Sendable {
   public var background: Bool?
   public var contextManagement: [OpenAIBetaContextManagementParam]?
   public var conversation: OpenAIBetaConversationParam?
+  public var generate: Bool?
   public var include: [OpenAIBetaIncludeEnum]?
   public var input: OpenAIBetaInputParam?
   public var instructions: String?
@@ -53,6 +54,7 @@ public struct OpenAIBetaResponsesClientEventResponseCreate: Codable, Sendable {
     background: Bool? = nil,
     contextManagement: [OpenAIBetaContextManagementParam]? = nil,
     conversation: OpenAIBetaConversationParam? = nil,
+    generate: Bool? = nil,
     include: [OpenAIBetaIncludeEnum]? = nil,
     input: OpenAIBetaInputParam? = nil,
     instructions: String? = nil,
@@ -88,6 +90,7 @@ public struct OpenAIBetaResponsesClientEventResponseCreate: Codable, Sendable {
     self.background = background
     self.contextManagement = contextManagement
     self.conversation = conversation
+    self.generate = generate
     self.include = include
     self.input = input
     self.instructions = instructions
@@ -126,6 +129,7 @@ public struct OpenAIBetaResponsesClientEventResponseCreate: Codable, Sendable {
     case background
     case contextManagement = "context_management"
     case conversation
+    case generate
     case include
     case input
     case instructions
@@ -160,18 +164,22 @@ public struct OpenAIBetaResponsesClientEventResponseCreate: Codable, Sendable {
   }
 
   public struct ResponseCreate: Codable, Sendable {
+    public var generate: Bool?
     public var streamId: String?
     public var kind: OpenAIBetaResponsesClientEventResponseCreateKind
 
     public init(
       kind: OpenAIBetaResponsesClientEventResponseCreateKind,
+      generate: Bool? = nil,
       streamId: String? = nil
     ) {
+      self.generate = generate
       self.streamId = streamId
       self.kind = kind
     }
 
     enum CodingKeys: String, CodingKey {
+      case generate
       case streamId = "stream_id"
       case kind = "type"
     }

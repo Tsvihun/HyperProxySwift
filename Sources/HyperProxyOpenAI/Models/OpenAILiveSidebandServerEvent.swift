@@ -14,6 +14,8 @@ public enum OpenAILiveSidebandServerEvent: Codable, Sendable {
   case liveTransportRinging(OpenAILiveTransportRinging)
   case liveTransportAnswered(OpenAILiveTransportAnswered)
   case liveTransportFailed(OpenAILiveTransportFailed)
+  case liveTransportDtmfReceived(OpenAILiveTransportDTMFReceived)
+  case liveTransportDtmfSent(OpenAILiveTransportDTMFSent)
   case liveSessionStarted(OpenAILiveSessionStarted)
   case liveSessionUpdated(OpenAILiveSessionUpdated)
   case liveInputAudioMuted(OpenAILiveInputAudioMuted)
@@ -47,6 +49,14 @@ public enum OpenAILiveSidebandServerEvent: Codable, Sendable {
     }
     if let value = try? container.decode(OpenAILiveTransportFailed.self) {
       self = .liveTransportFailed(value)
+      return
+    }
+    if let value = try? container.decode(OpenAILiveTransportDTMFReceived.self) {
+      self = .liveTransportDtmfReceived(value)
+      return
+    }
+    if let value = try? container.decode(OpenAILiveTransportDTMFSent.self) {
+      self = .liveTransportDtmfSent(value)
       return
     }
     if let value = try? container.decode(OpenAILiveSessionStarted.self) {
@@ -136,6 +146,10 @@ public enum OpenAILiveSidebandServerEvent: Codable, Sendable {
     case .liveTransportAnswered(let value):
       try container.encode(value)
     case .liveTransportFailed(let value):
+      try container.encode(value)
+    case .liveTransportDtmfReceived(let value):
+      try container.encode(value)
+    case .liveTransportDtmfSent(let value):
       try container.encode(value)
     case .liveSessionStarted(let value):
       try container.encode(value)

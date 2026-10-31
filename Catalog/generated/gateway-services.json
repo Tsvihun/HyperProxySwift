@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "providerCatalogSHA256": "976e0d6e467f641272da5f46caa265304ac054626a0f1d4450b661cca140bc29",
+  "providerCatalogSHA256": "54387ac6772c47d1ac2c47c382a0b34e196c2d90157c75df6b2f524c3780969e",
   "providers": [
     {
       "id": "openai",
@@ -21,7 +21,7 @@
         "v1/embeddings",
         "v1/moderations"
       ],
-      "routeCount": 367
+      "routeCount": 372
     },
     {
       "id": "anthropic",
@@ -93,7 +93,7 @@
         "v1/embeddings",
         "v1/fim/completions"
       ],
-      "routeCount": 323
+      "routeCount": 325
     },
     {
       "id": "openrouter",
@@ -109,7 +109,7 @@
       "defaultAllowedPaths": [
         "api/v1/"
       ],
-      "routeCount": 140
+      "routeCount": 147
     },
     {
       "id": "perplexity",
@@ -126,7 +126,7 @@
         "chat/completions",
         "v1/agent"
       ],
-      "routeCount": 33
+      "routeCount": 34
     },
     {
       "id": "groq",
@@ -159,7 +159,7 @@
       "defaultAllowedPaths": [
         "v1/"
       ],
-      "routeCount": 198
+      "routeCount": 199
     },
     {
       "id": "fireworks",
@@ -232,7 +232,7 @@
         "workflows/",
         "v1/"
       ],
-      "routeCount": 99
+      "routeCount": 100
     },
     {
       "id": "bfl",
@@ -269,7 +269,7 @@
       "defaultAllowedPaths": [
         "v1/"
       ],
-      "routeCount": 423
+      "routeCount": 480
     },
     {
       "id": "eachai",

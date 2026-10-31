@@ -38,5 +38,6 @@ public struct GeminiToolResponse: Codable, Sendable {
     case urlContext = "URL_CONTEXT"
     case googleMaps = "GOOGLE_MAPS"
     case fileSearch = "FILE_SEARCH"
+    case mediaProcessing = "MEDIA_PROCESSING"
   }
 }

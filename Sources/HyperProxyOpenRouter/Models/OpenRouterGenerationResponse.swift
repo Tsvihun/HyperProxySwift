@@ -217,6 +217,7 @@ public struct OpenRouterGenerationResponse: Codable, Sendable {
       case embeddings = "embeddings"
       case rerank = "rerank"
       case decisions = "decisions"
+      case extractions = "extractions"
       case video = "video"
       case tts = "tts"
       case stt = "stt"

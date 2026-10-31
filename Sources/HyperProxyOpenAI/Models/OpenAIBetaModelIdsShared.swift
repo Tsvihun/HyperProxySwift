@@ -13,6 +13,7 @@ import HyperProxyCore
 public enum OpenAIBetaModelIdsShared: RawRepresentable, Codable, Hashable, Sendable {
   case gpt6Astra
   case gpt6_1Sol
+  case gpt6_1Terra
   case gpt6Sol
   case gpt6Luna
   case gpt5_6Sol
@@ -108,6 +109,8 @@ public enum OpenAIBetaModelIdsShared: RawRepresentable, Codable, Hashable, Senda
       self = .gpt6Astra
     case "gpt-6.1-sol":
       self = .gpt6_1Sol
+    case "gpt-6.1-terra":
+      self = .gpt6_1Terra
     case "gpt-6-sol":
       self = .gpt6Sol
     case "gpt-6-luna":
@@ -293,6 +296,8 @@ public enum OpenAIBetaModelIdsShared: RawRepresentable, Codable, Hashable, Senda
       return "gpt-6-astra"
     case .gpt6_1Sol:
       return "gpt-6.1-sol"
+    case .gpt6_1Terra:
+      return "gpt-6.1-terra"
     case .gpt6Sol:
       return "gpt-6-sol"
     case .gpt6Luna:
@@ -485,6 +490,7 @@ public enum OpenAIBetaModelIdsShared: RawRepresentable, Codable, Hashable, Senda
   public enum Preset: String, Codable, Hashable, Sendable {
     case gpt6Astra = "gpt-6-astra"
     case gpt6_1Sol = "gpt-6.1-sol"
+    case gpt6_1Terra = "gpt-6.1-terra"
     case gpt6Sol = "gpt-6-sol"
     case gpt6Luna = "gpt-6-luna"
     case gpt5_6Sol = "gpt-5.6-sol"

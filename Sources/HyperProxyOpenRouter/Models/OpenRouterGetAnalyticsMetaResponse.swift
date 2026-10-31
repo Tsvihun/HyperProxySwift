@@ -27,13 +27,13 @@ public struct OpenRouterGetAnalyticsMetaResponse: Codable, Sendable {
     public var dimensions: [OpenRouterGetAnalyticsMetaResponse.DataValue.DimensionsElement]
     public var granularities: [OpenRouterGetAnalyticsMetaResponse.DataValue.GranularitiesElement]
     public var metrics: [OpenRouterGetAnalyticsMetaResponse.DataValue.MetricsElement]
-    public var operators: [OpenRouterGetAnalyticsMetaResponse.DataValue.OperatorsElement]
+    public var operators: [OpenRouterOperator]
 
     public init(
       dimensions: [OpenRouterGetAnalyticsMetaResponse.DataValue.DimensionsElement],
       granularities: [OpenRouterGetAnalyticsMetaResponse.DataValue.GranularitiesElement],
       metrics: [OpenRouterGetAnalyticsMetaResponse.DataValue.MetricsElement],
-      operators: [OpenRouterGetAnalyticsMetaResponse.DataValue.OperatorsElement]
+      operators: [OpenRouterOperator]
     ) {
       self.dimensions = dimensions
       self.granularities = granularities
@@ -128,44 +128,6 @@ public struct OpenRouterGetAnalyticsMetaResponse: Codable, Sendable {
         case percent = "percent"
         case latency = "latency"
         case throughput = "throughput"
-      }
-    }
-
-    public struct OperatorsElement: Codable, Sendable {
-      public var name: OpenRouterGetAnalyticsMetaResponse.DataValue.OperatorsElement.Name
-      public var valueType: OpenRouterGetAnalyticsMetaResponse.DataValue.OperatorsElement.ValueType
-
-      public init(
-        name: OpenRouterGetAnalyticsMetaResponse.DataValue.OperatorsElement.Name,
-        valueType: OpenRouterGetAnalyticsMetaResponse.DataValue.OperatorsElement.ValueType
-      ) {
-        self.name = name
-        self.valueType = valueType
-      }
-
-      enum CodingKeys: String, CodingKey {
-        case name
-        case valueType = "value_type"
-      }
-
-      public enum Name: String, Codable, Hashable,
-        Sendable
-      {
-        case eq = "eq"
-        case neq = "neq"
-        case inValue = "in"
-        case notIn = "not_in"
-        case gt = "gt"
-        case gte = "gte"
-        case lt = "lt"
-        case lte = "lte"
-      }
-
-      public enum ValueType: String, Codable, Hashable,
-        Sendable
-      {
-        case scalar = "scalar"
-        case array = "array"
       }
     }
   }

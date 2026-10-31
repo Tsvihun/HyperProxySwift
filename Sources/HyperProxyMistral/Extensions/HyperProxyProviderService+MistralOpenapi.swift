@@ -2405,6 +2405,56 @@ extension HyperProxyProviderService where Operation == MistralOperation {
     return try await prepared.decoded(MistralSearchResponse.self)
   }
 
+  public func createResponseV1ResponsesPost(
+    _ body: MistralCreateResponseRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralCreateResponseResponse {
+    let call = self.call(.createResponseV1ResponsesPost)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    if body.stream == true {
+      throw HyperProxyProviderRouteError.streamingBodyOnJSONCall(
+        operation: "createResponseV1ResponsesPost",
+        streamingVariant: "createResponseV1ResponsesPostStream"
+      )
+    }
+    let prepared = try call.json(body)
+    return try await prepared.decoded(MistralCreateResponseResponse.self)
+  }
+
+  public func createResponseV1ResponsesPostStream(
+    _ body: MistralCreateResponseRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) throws -> AsyncThrowingStream<MistralResponsesStreamFrame, Error> {
+    let call = self.call(.createResponseV1ResponsesPost)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    var streamingBody = body
+    streamingBody.stream = true
+    let prepared = try call.json(streamingBody)
+    return try prepared.events(decoding: MistralResponsesStreamFrame.self)
+  }
+
+  public func countInputTokensV1ResponsesInputTokensPost(
+    _ body: MistralCountResponseInputTokensRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralCountResponseInputTokensResponse {
+    let call = self.call(.countInputTokensV1ResponsesInputTokensPost)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(MistralCountResponseInputTokensResponse.self)
+  }
+
   public func listServiceAccountsV1ServiceAccountsGet(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],

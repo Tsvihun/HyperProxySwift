@@ -33,6 +33,7 @@ public enum ElevenLabsLLM: String, Codable, Hashable, Sendable {
   case gpt6Sol = "gpt-6-sol"
   case gpt6Luna = "gpt-6-luna"
   case gpt6_1Sol = "gpt-6.1-sol"
+  case gpt6_1Terra = "gpt-6.1-terra"
   case gpt5Mini = "gpt-5-mini"
   case gpt5Nano = "gpt-5-nano"
   case gpt3_5Turbo = "gpt-3.5-turbo"

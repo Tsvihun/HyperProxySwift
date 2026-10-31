@@ -13,21 +13,25 @@ import HyperProxyCore
 public struct OpenAIResponseConfigurationUpdateItemParam: Codable, Sendable {
   public var id: String?
   public var reasoning: OpenAIResponseConfigurationUpdateItemParam.Reasoning?
+  public var text: OpenAIResponseConfigurationUpdateItemParam.Text?
   public var kind: OpenAIResponseConfigurationUpdateItemParam.Kind
 
   public init(
     kind: OpenAIResponseConfigurationUpdateItemParam.Kind,
     id: String? = nil,
-    reasoning: OpenAIResponseConfigurationUpdateItemParam.Reasoning? = nil
+    reasoning: OpenAIResponseConfigurationUpdateItemParam.Reasoning? = nil,
+    text: OpenAIResponseConfigurationUpdateItemParam.Text? = nil
   ) {
     self.id = id
     self.reasoning = reasoning
+    self.text = text
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case id
     case reasoning
+    case text
     case kind = "type"
   }
 
@@ -46,6 +50,45 @@ public struct OpenAIResponseConfigurationUpdateItemParam: Codable, Sendable {
 
     enum CodingKeys: String, CodingKey {
       case effort
+    }
+  }
+
+  public struct Text: Codable, Sendable {
+    public var format: OpenAIResponseConfigurationUpdateItemParam.Text.Format
+
+    public init(
+      format: OpenAIResponseConfigurationUpdateItemParam.Text.Format
+    ) {
+      self.format = format
+    }
+
+    enum CodingKeys: String, CodingKey {
+      case format
+    }
+
+    public enum Format: Codable, Sendable {
+      case responseFormatText(OpenAIResponseFormatText)
+      case textResponseFormatJsonSchema(OpenAITextResponseFormatJsonSchema)
+
+      public init(from decoder: any Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if let value = try? container.decode(OpenAIResponseFormatText.self) {
+          self = .responseFormatText(value)
+          return
+        }
+        self = .textResponseFormatJsonSchema(
+          try container.decode(OpenAITextResponseFormatJsonSchema.self))
+      }
+
+      public func encode(to encoder: any Encoder) throws {
+        var container = encoder.singleValueContainer()
+        switch self {
+        case .responseFormatText(let value):
+          try container.encode(value)
+        case .textResponseFormatJsonSchema(let value):
+          try container.encode(value)
+        }
+      }
     }
   }
 }

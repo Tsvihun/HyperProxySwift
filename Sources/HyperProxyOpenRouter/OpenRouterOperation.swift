@@ -15,40 +15,12 @@ public enum OpenRouterOperation: String, HyperProxyCatalogOperation {
   public static var providerDefinition: HyperProxyProviderDefinition {
     HyperProxyProviders.openRouter
   }
-  /// `GET api/v1/organization/members`
-  case listOrganizationMembers = "listOrganizationMembers"
-  /// `GET api/v1/organization/settings`
-  case getOrganizationSettings = "getOrganizationSettings"
-  /// `PATCH api/v1/organization/settings`
-  case updateOrganizationSettings = "updateOrganizationSettings"
-  /// `POST api/alpha/decisions`
-  case createApiAlphaDecisions = "createApiAlphaDecisions"
-  /// `GET api/v1/endpoints/zdr`
-  case listEndpointsZdr = "listEndpointsZdr"
   /// `GET api/v1/activity`
   case activityList = "activity.list"
   /// `GET api/v1/analytics/meta`
   case getAnalyticsMeta = "getAnalyticsMeta"
   /// `POST api/v1/analytics/query`
   case queryAnalytics = "queryAnalytics"
-  /// `POST api/v1/audio/speech`
-  case createAudioSpeech = "createAudioSpeech"
-  /// `POST api/v1/audio/transcriptions`
-  case createAudioTranscriptions = "createAudioTranscriptions"
-  /// `POST api/v1/auth/keys`
-  case exchangeAuthCodeForAPIKey = "exchangeAuthCodeForAPIKey"
-  /// `POST api/v1/auth/keys/code`
-  case createAuthKeysCode = "createAuthKeysCode"
-  /// `GET api/v1/batches`
-  case listBatches = "listBatches"
-  /// `POST api/v1/batches`
-  case createBatches = "createBatches"
-  /// `DELETE api/v1/batches/{id}`
-  case deleteBatch = "deleteBatch"
-  /// `GET api/v1/batches/{id}`
-  case getBatches = "getBatches"
-  /// `GET api/v1/benchmarks`
-  case getBenchmarks = "getBenchmarks"
   /// `GET api/v1/byok`
   case listByokKeys = "listBYOKKeys"
   /// `POST api/v1/byok`
@@ -59,34 +31,8 @@ public enum OpenRouterOperation: String, HyperProxyCatalogOperation {
   case getByokKey = "getBYOKKey"
   /// `PATCH api/v1/byok/{id}`
   case updateByokKey = "updateBYOKKey"
-  /// `POST api/v1/chat/completions`
-  case chatCompletionsCreate = "chatCompletions.create"
-  /// `GET api/v1/classifications/task`
-  case getTaskClassifications = "getTaskClassifications"
-  /// `POST api/v1/completions`
-  case completionsCreate = "completions.create"
-  /// `GET api/v1/containers/{container_id}/files`
-  case listContainerFiles = "listContainerFiles"
-  /// `GET api/v1/containers/{container_id}/files/{file_id}`
-  case getContainerFile = "getContainerFile"
-  /// `GET api/v1/containers/{container_id}/files/{file_id}/content`
-  case downloadContainerFileContent = "downloadContainerFileContent"
-  /// `POST api/v1/containers/{container_id}/files/{file_id}/promote`
-  case promoteContainerFile = "promoteContainerFile"
   /// `GET api/v1/credits`
   case creditsRetrieve = "credits.retrieve"
-  /// `POST api/v1/credits/coinbase`
-  case createCoinbaseCharge = "createCoinbaseCharge"
-  /// `GET api/v1/datasets/app-rankings`
-  case getAppRankings = "getAppRankings"
-  /// `GET api/v1/datasets/rankings-daily`
-  case getRankingsDaily = "getRankingsDaily"
-  /// `GET api/v1/datasets/session-cost`
-  case getSessionCost = "getSessionCost"
-  /// `POST api/v1/embeddings`
-  case embeddingsCreate = "embeddings.create"
-  /// `GET api/v1/embeddings/models`
-  case listEmbeddingsModels = "listEmbeddingsModels"
   /// `GET api/v1/external-users`
   case listExternalUsers = "listExternalUsers"
   /// `POST api/v1/external-users`
@@ -97,20 +43,6 @@ public enum OpenRouterOperation: String, HyperProxyCatalogOperation {
   case getExternalUser = "getExternalUser"
   /// `PATCH api/v1/external-users/{user}`
   case updateExternalUser = "updateExternalUser"
-  /// `GET api/v1/files`
-  case listFiles = "listFiles"
-  /// `POST api/v1/files`
-  case uploadFile = "uploadFile"
-  /// `DELETE api/v1/files/{file_id}`
-  case deleteFile = "deleteFile"
-  /// `GET api/v1/files/{file_id}`
-  case getFileMetadata = "getFileMetadata"
-  /// `GET api/v1/files/{file_id}/content`
-  case downloadFileContent = "downloadFileContent"
-  /// `GET api/v1/generation`
-  case generationRetrieve = "generation.retrieve"
-  /// `GET api/v1/generation/content`
-  case listGenerationContent = "listGenerationContent"
   /// `POST api/v1/generation/feedback`
   case submitGenerationFeedback = "submitGenerationFeedback"
   /// `GET api/v1/guardrails`
@@ -139,14 +71,6 @@ public enum OpenRouterOperation: String, HyperProxyCatalogOperation {
   case bulkAssignMembersToGuardrail = "bulkAssignMembersToGuardrail"
   /// `POST api/v1/guardrails/{id}/assignments/members/remove`
   case bulkUnassignMembersFromGuardrail = "bulkUnassignMembersFromGuardrail"
-  /// `POST api/v1/images`
-  case createImages = "createImages"
-  /// `GET api/v1/images/models`
-  case listImageModels = "listImageModels"
-  /// `GET api/v1/images/models/{author}/{slug}/endpoints`
-  case listImageModelEndpoints = "listImageModelEndpoints"
-  /// `GET api/v1/key`
-  case keyRetrieve = "key.retrieve"
   /// `GET api/v1/keys`
   case list = "list"
   /// `POST api/v1/keys`
@@ -157,22 +81,6 @@ public enum OpenRouterOperation: String, HyperProxyCatalogOperation {
   case getKey = "getKey"
   /// `PATCH api/v1/keys/{hash}`
   case updateKeys = "updateKeys"
-  /// `POST api/v1/messages`
-  case createMessages = "createMessages"
-  /// `GET api/v1/model/{author}/{slug}`
-  case getModel = "getModel"
-  /// `GET api/v1/models`
-  case modelsList = "models.list"
-  /// `GET api/v1/models/count`
-  case listModelsCount = "listModelsCount"
-  /// `GET api/v1/models/user`
-  case listModelsUser = "listModelsUser"
-  /// `GET api/v1/models/{author}/{slug}/endpoints`
-  case modelsEndpoints = "models.endpoints"
-  /// `GET api/v1/oauth/jwks`
-  case listOauthJwks = "listOauthJwks"
-  /// `POST api/v1/oauth/token`
-  case createOauthToken = "createOauthToken"
   /// `GET api/v1/observability/destinations`
   case listObservabilityDestinations = "listObservabilityDestinations"
   /// `POST api/v1/observability/destinations`
@@ -183,20 +91,12 @@ public enum OpenRouterOperation: String, HyperProxyCatalogOperation {
   case getObservabilityDestination = "getObservabilityDestination"
   /// `PATCH api/v1/observability/destinations/{id}`
   case updateObservabilityDestination = "updateObservabilityDestination"
-  /// `GET api/v1/presets`
-  case listPresets = "listPresets"
-  /// `GET api/v1/presets/{slug}`
-  case getPreset = "getPreset"
-  /// `POST api/v1/presets/{slug}/chat/completions`
-  case createPresetsChatCompletions = "createPresetsChatCompletions"
-  /// `POST api/v1/presets/{slug}/messages`
-  case createPresetsMessages = "createPresetsMessages"
-  /// `POST api/v1/presets/{slug}/responses`
-  case createPresetsResponses = "createPresetsResponses"
-  /// `GET api/v1/presets/{slug}/versions`
-  case listPresetVersions = "listPresetVersions"
-  /// `GET api/v1/presets/{slug}/versions/{version}`
-  case getPresetVersion = "getPresetVersion"
+  /// `GET api/v1/organization/members`
+  case listOrganizationMembers = "listOrganizationMembers"
+  /// `GET api/v1/organization/settings`
+  case getOrganizationSettings = "getOrganizationSettings"
+  /// `PATCH api/v1/organization/settings`
+  case updateOrganizationSettings = "updateOrganizationSettings"
   /// `GET api/v1/private-endpoints`
   case listPrivateEndpoints = "listPrivateEndpoints"
   /// `POST api/v1/private-endpoints`
@@ -213,16 +113,22 @@ public enum OpenRouterOperation: String, HyperProxyCatalogOperation {
   case disablePrivateEndpoint = "disablePrivateEndpoint"
   /// `POST api/v1/private-endpoints/{id}/enable`
   case enablePrivateEndpoint = "enablePrivateEndpoint"
+  /// `PUT api/v1/private-endpoints/{id}/parameters`
+  case updatePrivateEndpointParameters = "updatePrivateEndpointParameters"
   /// `PUT api/v1/private-endpoints/{id}/pricing`
   case updatePrivateEndpointPricing = "updatePrivateEndpointPricing"
   /// `POST api/v1/private-endpoints/{id}/validate`
   case validatePrivateEndpoint = "validatePrivateEndpoint"
-  /// `GET api/v1/providers`
-  case listProviders = "listProviders"
-  /// `POST api/v1/rerank`
-  case createRerank = "createRerank"
-  /// `POST api/v1/responses`
-  case responsesCreate = "responses.create"
+  /// `GET api/v1/private-providers`
+  case listPrivateProviders = "listPrivateProviders"
+  /// `POST api/v1/private-providers`
+  case createPrivateProvider = "createPrivateProvider"
+  /// `DELETE api/v1/private-providers/{slug}`
+  case deletePrivateProvider = "deletePrivateProvider"
+  /// `GET api/v1/private-providers/{slug}`
+  case getPrivateProvider = "getPrivateProvider"
+  /// `PATCH api/v1/private-providers/{slug}`
+  case updatePrivateProvider = "updatePrivateProvider"
   /// `GET api/v1/scim/group-mappings`
   case listScimGroupMappings = "listScimGroupMappings"
   /// `POST api/v1/scim/group-mappings`
@@ -239,6 +145,138 @@ public enum OpenRouterOperation: String, HyperProxyCatalogOperation {
   case createScimSyncJob = "createScimSyncJob"
   /// `GET api/v1/scim/sync-jobs/{id}`
   case getScimSyncJob = "getScimSyncJob"
+  /// `GET api/v1/workspaces`
+  case listWorkspaces = "listWorkspaces"
+  /// `POST api/v1/workspaces`
+  case createWorkspace = "createWorkspace"
+  /// `DELETE api/v1/workspaces/{id}`
+  case deleteWorkspace = "deleteWorkspace"
+  /// `GET api/v1/workspaces/{id}`
+  case getWorkspace = "getWorkspace"
+  /// `PATCH api/v1/workspaces/{id}`
+  case updateWorkspace = "updateWorkspace"
+  /// `GET api/v1/workspaces/{id}/members`
+  case listWorkspaceMembers = "listWorkspaceMembers"
+  /// `POST api/v1/workspaces/{id}/members/add`
+  case bulkAddWorkspaceMembers = "bulkAddWorkspaceMembers"
+  /// `POST api/v1/workspaces/{id}/members/remove`
+  case bulkRemoveWorkspaceMembers = "bulkRemoveWorkspaceMembers"
+  /// `GET api/v1/workspaces/{workspace_ref}/budgets`
+  case listWorkspaceBudgets = "listWorkspaceBudgets"
+  /// `DELETE api/v1/workspaces/{workspace_ref}/budgets/{interval}`
+  case deleteWorkspaceBudget = "deleteWorkspaceBudget"
+  /// `GET api/v1/workspaces/{workspace_ref}/budgets/{interval}`
+  case getWorkspaceBudget = "getWorkspaceBudget"
+  /// `PUT api/v1/workspaces/{workspace_ref}/budgets/{interval}`
+  case upsertWorkspaceBudget = "upsertWorkspaceBudget"
+  /// `POST api/alpha/decisions`
+  case createApiAlphaDecisions = "createApiAlphaDecisions"
+  /// `POST api/alpha/extractions`
+  case createApiAlphaExtractions = "createApiAlphaExtractions"
+  /// `GET api/v1/endpoints/zdr`
+  case listEndpointsZdr = "listEndpointsZdr"
+  /// `POST api/v1/audio/speech`
+  case createAudioSpeech = "createAudioSpeech"
+  /// `POST api/v1/audio/transcriptions`
+  case createAudioTranscriptions = "createAudioTranscriptions"
+  /// `POST api/v1/auth/keys`
+  case exchangeAuthCodeForAPIKey = "exchangeAuthCodeForAPIKey"
+  /// `POST api/v1/auth/keys/code`
+  case createAuthKeysCode = "createAuthKeysCode"
+  /// `GET api/v1/batches`
+  case listBatches = "listBatches"
+  /// `POST api/v1/batches`
+  case createBatches = "createBatches"
+  /// `DELETE api/v1/batches/{id}`
+  case deleteBatch = "deleteBatch"
+  /// `GET api/v1/batches/{id}`
+  case getBatches = "getBatches"
+  /// `GET api/v1/benchmarks`
+  case getBenchmarks = "getBenchmarks"
+  /// `POST api/v1/chat/completions`
+  case chatCompletionsCreate = "chatCompletions.create"
+  /// `GET api/v1/classifications/task`
+  case getTaskClassifications = "getTaskClassifications"
+  /// `POST api/v1/completions`
+  case completionsCreate = "completions.create"
+  /// `GET api/v1/containers/{container_id}/files`
+  case listContainerFiles = "listContainerFiles"
+  /// `GET api/v1/containers/{container_id}/files/{file_id}`
+  case getContainerFile = "getContainerFile"
+  /// `GET api/v1/containers/{container_id}/files/{file_id}/content`
+  case downloadContainerFileContent = "downloadContainerFileContent"
+  /// `POST api/v1/containers/{container_id}/files/{file_id}/promote`
+  case promoteContainerFile = "promoteContainerFile"
+  /// `POST api/v1/credits/coinbase`
+  case createCoinbaseCharge = "createCoinbaseCharge"
+  /// `GET api/v1/datasets/app-rankings`
+  case getAppRankings = "getAppRankings"
+  /// `GET api/v1/datasets/rankings-daily`
+  case getRankingsDaily = "getRankingsDaily"
+  /// `GET api/v1/datasets/session-cost`
+  case getSessionCost = "getSessionCost"
+  /// `POST api/v1/embeddings`
+  case embeddingsCreate = "embeddings.create"
+  /// `GET api/v1/embeddings/models`
+  case listEmbeddingsModels = "listEmbeddingsModels"
+  /// `GET api/v1/files`
+  case listFiles = "listFiles"
+  /// `POST api/v1/files`
+  case uploadFile = "uploadFile"
+  /// `DELETE api/v1/files/{file_id}`
+  case deleteFile = "deleteFile"
+  /// `GET api/v1/files/{file_id}`
+  case getFileMetadata = "getFileMetadata"
+  /// `GET api/v1/files/{file_id}/content`
+  case downloadFileContent = "downloadFileContent"
+  /// `GET api/v1/generation`
+  case generationRetrieve = "generation.retrieve"
+  /// `GET api/v1/generation/content`
+  case listGenerationContent = "listGenerationContent"
+  /// `POST api/v1/images`
+  case createImages = "createImages"
+  /// `GET api/v1/images/models`
+  case listImageModels = "listImageModels"
+  /// `GET api/v1/images/models/{author}/{slug}/endpoints`
+  case listImageModelEndpoints = "listImageModelEndpoints"
+  /// `GET api/v1/key`
+  case keyRetrieve = "key.retrieve"
+  /// `POST api/v1/messages`
+  case createMessages = "createMessages"
+  /// `GET api/v1/model/{author}/{slug}`
+  case getModel = "getModel"
+  /// `GET api/v1/models`
+  case modelsList = "models.list"
+  /// `GET api/v1/models/count`
+  case listModelsCount = "listModelsCount"
+  /// `GET api/v1/models/user`
+  case listModelsUser = "listModelsUser"
+  /// `GET api/v1/models/{author}/{slug}/endpoints`
+  case modelsEndpoints = "models.endpoints"
+  /// `GET api/v1/oauth/jwks`
+  case listOauthJwks = "listOauthJwks"
+  /// `POST api/v1/oauth/token`
+  case createOauthToken = "createOauthToken"
+  /// `GET api/v1/presets`
+  case listPresets = "listPresets"
+  /// `GET api/v1/presets/{slug}`
+  case getPreset = "getPreset"
+  /// `POST api/v1/presets/{slug}/chat/completions`
+  case createPresetsChatCompletions = "createPresetsChatCompletions"
+  /// `POST api/v1/presets/{slug}/messages`
+  case createPresetsMessages = "createPresetsMessages"
+  /// `POST api/v1/presets/{slug}/responses`
+  case createPresetsResponses = "createPresetsResponses"
+  /// `GET api/v1/presets/{slug}/versions`
+  case listPresetVersions = "listPresetVersions"
+  /// `GET api/v1/presets/{slug}/versions/{version}`
+  case getPresetVersion = "getPresetVersion"
+  /// `GET api/v1/providers`
+  case listProviders = "listProviders"
+  /// `POST api/v1/rerank`
+  case createRerank = "createRerank"
+  /// `POST api/v1/responses`
+  case responsesCreate = "responses.create"
   /// `POST api/v1/systemone`
   case createSystemone = "createSystemone"
   /// `GET api/v1/tools`
@@ -271,28 +309,4 @@ public enum OpenRouterOperation: String, HyperProxyCatalogOperation {
   case getVideos = "getVideos"
   /// `GET api/v1/videos/{jobId}/content`
   case listVideosContent = "listVideosContent"
-  /// `GET api/v1/workspaces`
-  case listWorkspaces = "listWorkspaces"
-  /// `POST api/v1/workspaces`
-  case createWorkspace = "createWorkspace"
-  /// `DELETE api/v1/workspaces/{id}`
-  case deleteWorkspace = "deleteWorkspace"
-  /// `GET api/v1/workspaces/{id}`
-  case getWorkspace = "getWorkspace"
-  /// `PATCH api/v1/workspaces/{id}`
-  case updateWorkspace = "updateWorkspace"
-  /// `GET api/v1/workspaces/{id}/members`
-  case listWorkspaceMembers = "listWorkspaceMembers"
-  /// `POST api/v1/workspaces/{id}/members/add`
-  case bulkAddWorkspaceMembers = "bulkAddWorkspaceMembers"
-  /// `POST api/v1/workspaces/{id}/members/remove`
-  case bulkRemoveWorkspaceMembers = "bulkRemoveWorkspaceMembers"
-  /// `GET api/v1/workspaces/{workspace_ref}/budgets`
-  case listWorkspaceBudgets = "listWorkspaceBudgets"
-  /// `DELETE api/v1/workspaces/{workspace_ref}/budgets/{interval}`
-  case deleteWorkspaceBudget = "deleteWorkspaceBudget"
-  /// `GET api/v1/workspaces/{workspace_ref}/budgets/{interval}`
-  case getWorkspaceBudget = "getWorkspaceBudget"
-  /// `PUT api/v1/workspaces/{workspace_ref}/budgets/{interval}`
-  case upsertWorkspaceBudget = "upsertWorkspaceBudget"
 }

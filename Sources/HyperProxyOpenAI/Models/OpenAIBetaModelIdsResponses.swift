@@ -41,6 +41,9 @@ public enum OpenAIBetaModelIdsResponses: Codable, Sendable {
   public static var gpt6_1Sol: Self { .betaModelIdsShared(.gpt6_1Sol) }
 
   /// Provider-native value without the schema union wrapper.
+  public static var gpt6_1Terra: Self { .betaModelIdsShared(.gpt6_1Terra) }
+
+  /// Provider-native value without the schema union wrapper.
   public static var gpt6Sol: Self { .betaModelIdsShared(.gpt6Sol) }
 
   /// Provider-native value without the schema union wrapper.

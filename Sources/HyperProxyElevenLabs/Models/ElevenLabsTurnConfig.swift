@@ -16,6 +16,8 @@ public struct ElevenLabsTurnConfig: Codable, Sendable {
   public var interruptionIgnoreTerms: [String]?
   public var mergeWithDefaultIgnoreTerms: Bool?
   public var mode: ElevenLabsTurnMode?
+  public var noisyEnvironmentDetection: Bool?
+  public var noisyEnvironmentMessage: String?
   public var retranscribeOnTurnTimeout: Bool?
   public var silenceEndCallTimeout: Double?
   public var softTimeoutConfig: ElevenLabsSoftTimeoutConfig?
@@ -32,6 +34,8 @@ public struct ElevenLabsTurnConfig: Codable, Sendable {
     interruptionIgnoreTerms: [String]? = nil,
     mergeWithDefaultIgnoreTerms: Bool? = nil,
     mode: ElevenLabsTurnMode? = nil,
+    noisyEnvironmentDetection: Bool? = nil,
+    noisyEnvironmentMessage: String? = nil,
     retranscribeOnTurnTimeout: Bool? = nil,
     silenceEndCallTimeout: Double? = nil,
     softTimeoutConfig: ElevenLabsSoftTimeoutConfig? = nil,
@@ -47,6 +51,8 @@ public struct ElevenLabsTurnConfig: Codable, Sendable {
     self.interruptionIgnoreTerms = interruptionIgnoreTerms
     self.mergeWithDefaultIgnoreTerms = mergeWithDefaultIgnoreTerms
     self.mode = mode
+    self.noisyEnvironmentDetection = noisyEnvironmentDetection
+    self.noisyEnvironmentMessage = noisyEnvironmentMessage
     self.retranscribeOnTurnTimeout = retranscribeOnTurnTimeout
     self.silenceEndCallTimeout = silenceEndCallTimeout
     self.softTimeoutConfig = softTimeoutConfig
@@ -64,6 +70,8 @@ public struct ElevenLabsTurnConfig: Codable, Sendable {
     case interruptionIgnoreTerms = "interruption_ignore_terms"
     case mergeWithDefaultIgnoreTerms = "merge_with_default_ignore_terms"
     case mode
+    case noisyEnvironmentDetection = "noisy_environment_detection"
+    case noisyEnvironmentMessage = "noisy_environment_message"
     case retranscribeOnTurnTimeout = "retranscribe_on_turn_timeout"
     case silenceEndCallTimeout = "silence_end_call_timeout"
     case softTimeoutConfig = "soft_timeout_config"

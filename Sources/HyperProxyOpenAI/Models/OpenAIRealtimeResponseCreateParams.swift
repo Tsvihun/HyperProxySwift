@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct OpenAIRealtimeResponseCreateParams: Codable, Sendable {
   public var audio: OpenAIRealtimeResponseCreateParams.Audio?
   public var conversation: OpenAIRealtimeResponseCreateParams.Conversation?
-  public var input: [OpenAIRealtimeConversationItem]?
+  public var input: [OpenAIRealtimeResponseInputItem]?
   public var instructions: String?
   public var maxOutputTokens: OpenAIRealtimeResponseCreateParams.MaxOutputTokens?
   public var metadata: OpenAIMetadata?
@@ -27,7 +27,7 @@ public struct OpenAIRealtimeResponseCreateParams: Codable, Sendable {
   public init(
     audio: OpenAIRealtimeResponseCreateParams.Audio? = nil,
     conversation: OpenAIRealtimeResponseCreateParams.Conversation? = nil,
-    input: [OpenAIRealtimeConversationItem]? = nil,
+    input: [OpenAIRealtimeResponseInputItem]? = nil,
     instructions: String? = nil,
     maxOutputTokens: OpenAIRealtimeResponseCreateParams.MaxOutputTokens? = nil,
     metadata: OpenAIMetadata? = nil,

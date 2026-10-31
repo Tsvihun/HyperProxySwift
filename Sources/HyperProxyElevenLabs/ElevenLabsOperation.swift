@@ -27,6 +27,12 @@ public enum ElevenLabsOperation: String, HyperProxyCatalogOperation {
   case editServiceAccountApiKey = "edit.service.account.api.key"
   /// `POST v1/service-accounts/{service_account_user_id}/api-keys/{api_key_id}/disable`
   case disableServiceAccountApiKey = "disable.service.account.api.key"
+  /// `GET v1/smb/reseller/billing/invoices`
+  case smbListResellerInvoices = "smb.list.reseller.invoices"
+  /// `GET v1/smb/reseller/billing/invoices/{invoice_id}`
+  case smbGetResellerInvoice = "smb.get.reseller.invoice"
+  /// `GET v1/smb/reseller/billing/upcoming`
+  case smbListResellerUpcomingPayments = "smb.list.reseller.upcoming.payments"
   /// `GET v1/workspace/audit-logs`
   case getWorkspaceAuditLogs = "get.workspace.audit.logs"
   /// `DELETE v1/workspace/invites`
@@ -255,6 +261,8 @@ public enum ElevenLabsOperation: String, HyperProxyCatalogOperation {
   case listEnvironmentVariables = "list.environment.variables"
   /// `POST v1/convai/environment-variables`
   case createEnvironmentVariable = "create.environment.variable"
+  /// `DELETE v1/convai/environment-variables/{env_var_id}`
+  case deleteEnvironmentVariable = "delete.environment.variable"
   /// `GET v1/convai/environment-variables/{env_var_id}`
   case getEnvironmentVariable = "get.environment.variable"
   /// `PATCH v1/convai/environment-variables/{env_var_id}`
@@ -655,6 +663,112 @@ public enum ElevenLabsOperation: String, HyperProxyCatalogOperation {
   case getSimilarLibraryVoices = "get.similar.library.voices"
   /// `POST v1/single-use-token/{token_type}`
   case getSingleUseToken = "get.single.use.token"
+  /// `GET v1/smb/agent-info`
+  case smbGetAgentInfo = "smb.get.agent.info"
+  /// `PUT v1/smb/agent-info`
+  case smbUpdateAgentInfo = "smb.update.agent.info"
+  /// `GET v1/smb/customer-facing-agents`
+  case smbListCustomerFacingAgents = "smb.list.customer.facing.agents"
+  /// `PATCH v1/smb/customer-facing-agents/{agent_id}`
+  case smbUpdateCustomerFacingAgent = "smb.update.customer.facing.agent"
+  /// `POST v1/smb/customer-facing-agents/{agent_id}/activate`
+  case smbActivateCustomerFacingAgent = "smb.activate.customer.facing.agent"
+  /// `GET v1/smb/customer-facing-agents/{agent_id}/procedures`
+  case smbListAgentProcedures = "smb.list.agent.procedures"
+  /// `POST v1/smb/customer-facing-agents/{agent_id}/procedures`
+  case smbAddAgentProcedure = "smb.add.agent.procedure"
+  /// `DELETE v1/smb/customer-facing-agents/{agent_id}/procedures/{procedure_id}`
+  case smbDeleteAgentProcedure = "smb.delete.agent.procedure"
+  /// `PUT v1/smb/customer-facing-agents/{agent_id}/procedures/{procedure_id}`
+  case smbUpdateAgentProcedure = "smb.update.agent.procedure"
+  /// `POST v1/smb/customer-facing-agents/{agent_id}/rules`
+  case smbAddAgentRule = "smb.add.agent.rule"
+  /// `DELETE v1/smb/customer-facing-agents/{agent_id}/rules/{rule_id}`
+  case smbDeleteAgentRule = "smb.delete.agent.rule"
+  /// `PUT v1/smb/customer-facing-agents/{agent_id}/rules/{rule_id}`
+  case smbUpdateAgentRule = "smb.update.agent.rule"
+  /// `POST v1/smb/customer-facing-agents/{agent_id}/transfer-rules`
+  case smbAddTransferRule = "smb.add.transfer.rule"
+  /// `DELETE v1/smb/customer-facing-agents/{agent_id}/transfer-rules/{rule_id}`
+  case smbDeleteTransferRule = "smb.delete.transfer.rule"
+  /// `PUT v1/smb/customer-facing-agents/{agent_id}/transfer-rules/{rule_id}`
+  case smbUpdateTransferRule = "smb.update.transfer.rule"
+  /// `GET v1/smb/holidays`
+  case smbListHolidays = "smb.list.holidays"
+  /// `POST v1/smb/holidays`
+  case smbCreateHoliday = "smb.create.holiday"
+  /// `DELETE v1/smb/holidays/{holiday_id}`
+  case smbDeleteHoliday = "smb.delete.holiday"
+  /// `GET v1/smb/holidays/{holiday_id}`
+  case smbGetHoliday = "smb.get.holiday"
+  /// `PUT v1/smb/holidays/{holiday_id}`
+  case smbUpdateHoliday = "smb.update.holiday"
+  /// `GET v1/smb/knowledge-sources`
+  case smbListKnowledgeSources = "smb.list.knowledge.sources"
+  /// `POST v1/smb/knowledge-sources`
+  case smbUploadKnowledgeSource = "smb.upload.knowledge.source"
+  /// `POST v1/smb/knowledge-sources/urls`
+  case smbAddUrlSource = "smb.add.url.source"
+  /// `DELETE v1/smb/knowledge-sources/{source_id}`
+  case smbDeleteKnowledgeSource = "smb.delete.knowledge.source"
+  /// `GET v1/smb/knowledge-sources/{source_id}`
+  case smbGetKnowledgeSource = "smb.get.knowledge.source"
+  /// `GET v1/smb/locations`
+  case smbListLocations = "smb.list.locations"
+  /// `POST v1/smb/locations`
+  case smbCreateLocation = "smb.create.location"
+  /// `DELETE v1/smb/locations/{location_id}`
+  case smbDeleteLocation = "smb.delete.location"
+  /// `GET v1/smb/locations/{location_id}`
+  case smbGetLocation = "smb.get.location"
+  /// `PUT v1/smb/locations/{location_id}`
+  case smbUpdateLocation = "smb.update.location"
+  /// `GET v1/smb/phone-numbers/assignments`
+  case smbListWorkspacePhoneAssignments = "smb.list.workspace.phone.assignments"
+  /// `POST v1/smb/phone-numbers/assignments`
+  case smbAssignPhoneNumber = "smb.assign.phone.number"
+  /// `DELETE v1/smb/phone-numbers/assignments/{phone_assignment_id}`
+  case smbReleasePhoneAssignment = "smb.release.phone.assignment"
+  /// `PATCH v1/smb/phone-numbers/assignments/{phone_assignment_id}`
+  case smbReassignPhoneToAgent = "smb.reassign.phone.to.agent"
+  /// `GET v1/smb/reseller/tier-ladder`
+  case smbListResellerTierLadder = "smb.list.reseller.tier.ladder"
+  /// `GET v1/smb/reseller/workspaces`
+  case smbListResellerWorkspaces = "smb.list.reseller.workspaces"
+  /// `POST v1/smb/reseller/workspaces`
+  case smbResellerProvisionWorkspace = "smb.reseller.provision.workspace"
+  /// `DELETE v1/smb/reseller/workspaces/{workspace_id}/subscription`
+  case smbUnassignResellerTier = "smb.unassign.reseller.tier"
+  /// `PATCH v1/smb/reseller/workspaces/{workspace_id}/subscription`
+  case smbChangeResellerTier = "smb.change.reseller.tier"
+  /// `POST v1/smb/reseller/workspaces/{workspace_id}/subscription`
+  case smbAssignResellerTier = "smb.assign.reseller.tier"
+  /// `POST v1/smb/reseller/workspaces/{workspace_id}/subscription/cancel-downgrade`
+  case smbCancelResellerPendingDowngrade = "smb.cancel.reseller.pending.downgrade"
+  /// `POST v1/smb/reseller/workspaces/{workspace_id}/subscription/restore`
+  case smbRestoreResellerSubscription = "smb.restore.reseller.subscription"
+  /// `GET v1/smb/services`
+  case smbListServices = "smb.list.services"
+  /// `POST v1/smb/services`
+  case smbCreateService = "smb.create.service"
+  /// `DELETE v1/smb/services/{service_id}`
+  case smbDeleteService = "smb.delete.service"
+  /// `GET v1/smb/services/{service_id}`
+  case smbGetService = "smb.get.service"
+  /// `PUT v1/smb/services/{service_id}`
+  case smbUpdateService = "smb.update.service"
+  /// `POST v1/smb/services/{service_id}/confirm-update`
+  case smbConfirmServiceUpdate = "smb.confirm.service.update"
+  /// `GET v1/smb/staff`
+  case smbListStaff = "smb.list.staff"
+  /// `POST v1/smb/staff`
+  case smbCreateStaffMember = "smb.create.staff.member"
+  /// `DELETE v1/smb/staff/{staff_id}`
+  case smbDeleteStaffMember = "smb.delete.staff.member"
+  /// `GET v1/smb/staff/{staff_id}`
+  case smbGetStaffMember = "smb.get.staff.member"
+  /// `PUT v1/smb/staff/{staff_id}`
+  case smbUpdateStaffMember = "smb.update.staff.member"
   /// `POST v1/sound-generation`
   case soundGenerationCreate = "soundGeneration.create"
   /// `GET v1/speech-engine`

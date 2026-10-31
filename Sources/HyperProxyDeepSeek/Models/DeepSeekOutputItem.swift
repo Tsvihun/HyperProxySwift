@@ -16,6 +16,7 @@ public struct DeepSeekOutputItem: Codable, Sendable {
   public var callId: String?
   public var content: [DeepSeekOutputContentPart]?
   public var id: String?
+  public var input: String?
   public var name: String?
   public var role: DeepSeekOutputRole?
   public var status: DeepSeekOutputItemStatus?
@@ -28,6 +29,7 @@ public struct DeepSeekOutputItem: Codable, Sendable {
     callId: String? = nil,
     content: [DeepSeekOutputContentPart]? = nil,
     id: String? = nil,
+    input: String? = nil,
     name: String? = nil,
     role: DeepSeekOutputRole? = nil,
     status: DeepSeekOutputItemStatus? = nil,
@@ -39,6 +41,7 @@ public struct DeepSeekOutputItem: Codable, Sendable {
     self.callId = callId
     self.content = content
     self.id = id
+    self.input = input
     self.name = name
     self.role = role
     self.status = status
@@ -52,6 +55,7 @@ public struct DeepSeekOutputItem: Codable, Sendable {
     case callId = "call_id"
     case content
     case id
+    case input
     case name
     case role
     case status

@@ -23,6 +23,7 @@ public struct OpenRouterGuardrail: Codable, Sendable {
   public var enableFreeModelPublication: Bool?
   public var enableFreeModelTraining: Bool?
   public var enablePaidModelTraining: Bool?
+  public var enforceFirstPartyHarnessModels: Bool?
   public var enforceZdr: Bool?
   public var enforceZdrAnthropic: Bool?
   public var enforceZdrGoogle: Bool?
@@ -56,6 +57,7 @@ public struct OpenRouterGuardrail: Codable, Sendable {
     enableFreeModelPublication: Bool? = nil,
     enableFreeModelTraining: Bool? = nil,
     enablePaidModelTraining: Bool? = nil,
+    enforceFirstPartyHarnessModels: Bool? = nil,
     enforceZdr: Bool? = nil,
     enforceZdrAnthropic: Bool? = nil,
     enforceZdrGoogle: Bool? = nil,
@@ -80,6 +82,7 @@ public struct OpenRouterGuardrail: Codable, Sendable {
     self.enableFreeModelPublication = enableFreeModelPublication
     self.enableFreeModelTraining = enableFreeModelTraining
     self.enablePaidModelTraining = enablePaidModelTraining
+    self.enforceFirstPartyHarnessModels = enforceFirstPartyHarnessModels
     self.enforceZdr = enforceZdr
     self.enforceZdrAnthropic = enforceZdrAnthropic
     self.enforceZdrGoogle = enforceZdrGoogle
@@ -110,6 +113,7 @@ public struct OpenRouterGuardrail: Codable, Sendable {
     case enableFreeModelPublication = "enable_free_model_publication"
     case enableFreeModelTraining = "enable_free_model_training"
     case enablePaidModelTraining = "enable_paid_model_training"
+    case enforceFirstPartyHarnessModels = "enforce_first_party_harness_models"
     case enforceZdr = "enforce_zdr"
     case enforceZdrAnthropic = "enforce_zdr_anthropic"
     case enforceZdrGoogle = "enforce_zdr_google"

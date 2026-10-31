@@ -61,6 +61,7 @@ public struct ElevenLabsWidgetConfigOutput: Codable, Sendable {
   public var textContents: ElevenLabsWidgetTextContents?
   public var textInputEnabled: Bool?
   public var transcriptEnabled: Bool?
+  public var transcriptSpeechSyncEnabled: Bool?
   public var variant: ElevenLabsEmbedVariant?
 
   public init(
@@ -114,6 +115,7 @@ public struct ElevenLabsWidgetConfigOutput: Codable, Sendable {
     textContents: ElevenLabsWidgetTextContents? = nil,
     textInputEnabled: Bool? = nil,
     transcriptEnabled: Bool? = nil,
+    transcriptSpeechSyncEnabled: Bool? = nil,
     variant: ElevenLabsEmbedVariant? = nil
   ) {
     self.actionText = actionText
@@ -166,6 +168,7 @@ public struct ElevenLabsWidgetConfigOutput: Codable, Sendable {
     self.textContents = textContents
     self.textInputEnabled = textInputEnabled
     self.transcriptEnabled = transcriptEnabled
+    self.transcriptSpeechSyncEnabled = transcriptSpeechSyncEnabled
     self.variant = variant
   }
 
@@ -220,6 +223,7 @@ public struct ElevenLabsWidgetConfigOutput: Codable, Sendable {
     case textContents = "text_contents"
     case textInputEnabled = "text_input_enabled"
     case transcriptEnabled = "transcript_enabled"
+    case transcriptSpeechSyncEnabled = "transcript_speech_sync_enabled"
     case variant
   }
 

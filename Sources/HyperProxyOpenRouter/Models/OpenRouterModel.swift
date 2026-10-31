@@ -19,6 +19,7 @@ public struct OpenRouterModel: Codable, Sendable {
   public var created: Int
   public var defaultParameters: OpenRouterDefaultParameters?
   public var description: String?
+  public var endpoints: [String]
   public var expirationDate: String?
   public var huggingFaceId: String?
   public var id: String
@@ -38,6 +39,7 @@ public struct OpenRouterModel: Codable, Sendable {
     contextLength: Int,
     created: Int,
     defaultParameters: OpenRouterDefaultParameters?,
+    endpoints: [String],
     id: String,
     links: OpenRouterModelLinks,
     name: String,
@@ -62,6 +64,7 @@ public struct OpenRouterModel: Codable, Sendable {
     self.created = created
     self.defaultParameters = defaultParameters
     self.description = description
+    self.endpoints = endpoints
     self.expirationDate = expirationDate
     self.huggingFaceId = huggingFaceId
     self.id = id
@@ -85,6 +88,7 @@ public struct OpenRouterModel: Codable, Sendable {
     case created
     case defaultParameters = "default_parameters"
     case description
+    case endpoints
     case expirationDate = "expiration_date"
     case huggingFaceId = "hugging_face_id"
     case id

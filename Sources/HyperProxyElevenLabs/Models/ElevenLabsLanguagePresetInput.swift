@@ -12,21 +12,25 @@ import HyperProxyCore
 
 public struct ElevenLabsLanguagePresetInput: Codable, Sendable {
   public var firstMessageTranslation: ElevenLabsLanguagePresetTranslation?
+  public var noisyEnvironmentMessageTranslation: ElevenLabsLanguagePresetTranslation?
   public var overrides: ElevenLabsConversationConfigClientOverrideInput
   public var softTimeoutTranslation: ElevenLabsLanguagePresetTranslation?
 
   public init(
     overrides: ElevenLabsConversationConfigClientOverrideInput,
     firstMessageTranslation: ElevenLabsLanguagePresetTranslation? = nil,
+    noisyEnvironmentMessageTranslation: ElevenLabsLanguagePresetTranslation? = nil,
     softTimeoutTranslation: ElevenLabsLanguagePresetTranslation? = nil
   ) {
     self.firstMessageTranslation = firstMessageTranslation
+    self.noisyEnvironmentMessageTranslation = noisyEnvironmentMessageTranslation
     self.overrides = overrides
     self.softTimeoutTranslation = softTimeoutTranslation
   }
 
   enum CodingKeys: String, CodingKey {
     case firstMessageTranslation = "first_message_translation"
+    case noisyEnvironmentMessageTranslation = "noisy_environment_message_translation"
     case overrides
     case softTimeoutTranslation = "soft_timeout_translation"
   }

@@ -214,6 +214,74 @@ extension OpenAIAdminCalls {
     return try await prepared.decoded(OpenAIOrganizationDataRetention.self)
   }
 
+  public func listtheexternalkeyconfigsregisteredontheuserSorganization(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIListExternalKeysResource {
+    let call = self.service.call(.listtheexternalkeyconfigsregisteredontheuserSorganization)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIListExternalKeysResource.self)
+  }
+
+  public func addanexternalkeyconfigforanorganization(
+    _ body: OpenAIV1OrganizationExternalKeysPostRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIExternalKeyResource {
+    let call = self.service.call(.addanexternalkeyconfigforanorganization)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenAIExternalKeyResource.self)
+  }
+
+  public func retrieveanexternalkeyregistration(
+    externalKeyId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIExternalKeyResource {
+    let call = self.service.call(.retrieveanexternalkeyregistration)
+      .path("external_key_id", externalKeyId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIExternalKeyResource.self)
+  }
+
+  public func deleteanexternalkeyconfigfortheuserSorganization(
+    externalKeyId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIExternalKeyResource {
+    let call = self.service.call(.deleteanexternalkeyconfigfortheuserSorganization)
+      .path("external_key_id", externalKeyId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIExternalKeyResource.self)
+  }
+
+  public func validateanexternalkeyconfigfortheuserSorganization(
+    externalKeyId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIValidateExternalKeyResource {
+    let call = self.service.call(.validateanexternalkeyconfigfortheuserSorganization)
+      .path("external_key_id", externalKeyId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIValidateExternalKeyResource.self)
+  }
+
   public func listexternalstorageconfigurations(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],

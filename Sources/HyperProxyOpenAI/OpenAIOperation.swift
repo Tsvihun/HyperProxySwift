@@ -43,6 +43,19 @@ public enum OpenAIOperation: String, HyperProxyCatalogOperation {
   case retrieveOrganizationDataRetention = "retrieve.organization.data.retention"
   /// `POST v1/organization/data_retention`
   case updateOrganizationDataRetention = "update.organization.data.retention"
+  /// `GET v1/organization/external_keys`
+  case listtheexternalkeyconfigsregisteredontheuserSorganization =
+    "Listtheexternalkeyconfigsregisteredontheuser.sorganization"
+  /// `POST v1/organization/external_keys`
+  case addanexternalkeyconfigforanorganization = "Addanexternalkeyconfigforanorganization"
+  /// `DELETE v1/organization/external_keys/{external_key_id}`
+  case deleteanexternalkeyconfigfortheuserSorganization =
+    "Deleteanexternalkeyconfigfortheuser.sorganization"
+  /// `GET v1/organization/external_keys/{external_key_id}`
+  case retrieveanexternalkeyregistration = "Retrieveanexternalkeyregistration"
+  /// `POST v1/organization/external_keys/{external_key_id}/validate`
+  case validateanexternalkeyconfigfortheuserSorganization =
+    "Validateanexternalkeyconfigfortheuser.sorganization"
   /// `GET v1/organization/external_storage`
   case listexternalstorageconfigurations = "Listexternalstorageconfigurations"
   /// `POST v1/organization/external_storage`

@@ -17,6 +17,8 @@ public enum DeepSeekAnthropicContentBlockType: String, Codable, Hashable, Sendab
   case toolResult = "tool_result"
   case serverToolUse = "server_tool_use"
   case webSearchToolResult = "web_search_tool_result"
+  case webSearchResult = "web_search_result"
+  case webSearchToolResultError = "web_search_tool_result_error"
   case image = "image"
   case file = "file"
 }

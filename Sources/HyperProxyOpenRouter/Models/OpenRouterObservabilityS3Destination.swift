@@ -88,48 +88,76 @@ public struct OpenRouterObservabilityS3Destination: Codable, Sendable {
   }
 
   public struct Config: Codable, Sendable {
-    public var accessKeyId: String
+    public var accessKeyId: String?
+    public var authMode: OpenRouterObservabilityS3Destination.Config.AuthMode?
     public var bucketName: String
     public var endpoint: String?
+    public var externalId: String?
     public var headers: [String: String]?
     public var pathTemplate: String?
     public var prefixValue: String?
+    public var provider: OpenRouterObservabilityS3Destination.Config.Provider?
     public var region: String?
-    public var secretAccessKey: String
+    public var roleArn: String?
+    public var secretAccessKey: String?
     public var sessionToken: String?
 
     public init(
-      accessKeyId: String,
       bucketName: String,
-      secretAccessKey: String,
+      accessKeyId: String? = nil,
+      authMode: OpenRouterObservabilityS3Destination.Config.AuthMode? = nil,
       endpoint: String? = nil,
+      externalId: String? = nil,
       headers: [String: String]? = nil,
       pathTemplate: String? = nil,
       prefixValue: String? = nil,
+      provider: OpenRouterObservabilityS3Destination.Config.Provider? = nil,
       region: String? = nil,
+      roleArn: String? = nil,
+      secretAccessKey: String? = nil,
       sessionToken: String? = nil
     ) {
       self.accessKeyId = accessKeyId
+      self.authMode = authMode
       self.bucketName = bucketName
       self.endpoint = endpoint
+      self.externalId = externalId
       self.headers = headers
       self.pathTemplate = pathTemplate
       self.prefixValue = prefixValue
+      self.provider = provider
       self.region = region
+      self.roleArn = roleArn
       self.secretAccessKey = secretAccessKey
       self.sessionToken = sessionToken
     }
 
     enum CodingKeys: String, CodingKey {
       case accessKeyId
+      case authMode
       case bucketName
       case endpoint
+      case externalId
       case headers
       case pathTemplate
       case prefixValue = "prefix"
+      case provider
       case region
+      case roleArn
       case secretAccessKey
       case sessionToken
+    }
+
+    public enum AuthMode: String, Codable, Hashable, Sendable {
+      case accessKeys = "access_keys"
+      case iamRole = "iam_role"
+    }
+
+    public enum Provider: String, Codable, Hashable, Sendable {
+      case aws = "aws"
+      case cloudflareR2 = "cloudflare_r2"
+      case gcs = "gcs"
+      case other = "other"
     }
   }
 

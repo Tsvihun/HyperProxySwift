@@ -12,18 +12,22 @@ import HyperProxyCore
 
 public struct GeminiFunctionResponseBlob: Codable, Sendable {
   public var data: String?
+  public var displayName: String?
   public var mimeType: String?
 
   public init(
     data: String? = nil,
+    displayName: String? = nil,
     mimeType: String? = nil
   ) {
     self.data = data
+    self.displayName = displayName
     self.mimeType = mimeType
   }
 
   enum CodingKeys: String, CodingKey {
     case data
+    case displayName
     case mimeType
   }
 }

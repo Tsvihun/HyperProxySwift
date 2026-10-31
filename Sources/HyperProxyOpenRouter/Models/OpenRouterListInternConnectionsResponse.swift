@@ -12,15 +12,23 @@ import HyperProxyCore
 
 public struct OpenRouterListInternConnectionsResponse: Codable, Sendable {
   public var data: [OpenRouterListInternConnectionsResponse.DataElement]
+  public var routing: OpenRouterVaultRoutingTable?
+  public var routingText: String
 
   public init(
-    data: [OpenRouterListInternConnectionsResponse.DataElement]
+    data: [OpenRouterListInternConnectionsResponse.DataElement],
+    routing: OpenRouterVaultRoutingTable?,
+    routingText: String
   ) {
     self.data = data
+    self.routing = routing
+    self.routingText = routingText
   }
 
   enum CodingKeys: String, CodingKey {
     case data
+    case routing
+    case routingText = "routing_text"
   }
 
   public struct DataElement: Codable, Sendable {

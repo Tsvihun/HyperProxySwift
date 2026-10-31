@@ -15,4 +15,5 @@ public enum OpenRouterWebSearchStatus: String, Codable, Hashable, Sendable {
   case searching = "searching"
   case inProgress = "in_progress"
   case failed = "failed"
+  case incomplete = "incomplete"
 }

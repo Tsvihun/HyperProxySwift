@@ -11,26 +11,32 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepSeekInputItem: Codable, Sendable {
+  public var action: [String: HyperProxyJSONValue]?
   public var arguments: String?
   public var callId: String?
   public var content: DeepSeekInputItem.Content?
+  public var input: String?
   public var name: String?
   public var output: DeepSeekInputItem.Output?
   public var role: DeepSeekInputRole?
   public var kind: DeepSeekInputItemType?
 
   public init(
+    action: [String: HyperProxyJSONValue]? = nil,
     arguments: String? = nil,
     callId: String? = nil,
     content: DeepSeekInputItem.Content? = nil,
+    input: String? = nil,
     name: String? = nil,
     output: DeepSeekInputItem.Output? = nil,
     role: DeepSeekInputRole? = nil,
     kind: DeepSeekInputItemType? = nil
   ) {
+    self.action = action
     self.arguments = arguments
     self.callId = callId
     self.content = content
+    self.input = input
     self.name = name
     self.output = output
     self.role = role
@@ -38,9 +44,11 @@ public struct DeepSeekInputItem: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case action
     case arguments
     case callId = "call_id"
     case content
+    case input
     case name
     case output
     case role

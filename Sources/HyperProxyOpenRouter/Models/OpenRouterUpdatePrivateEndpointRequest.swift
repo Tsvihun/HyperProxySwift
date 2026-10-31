@@ -12,26 +12,38 @@ import HyperProxyCore
 
 public struct OpenRouterUpdatePrivateEndpointRequest: Codable, Sendable {
   public var baseUrl: String?
+  public var declaredParameters: [OpenRouterPrivateEndpointDeclaredParameter]?
   public var declaredRegion: OpenRouterUpdatePrivateEndpointRequest.DeclaredRegion?
   public var declaredZdr: Bool?
-  public var upstreamModelId: String
+  public var pricing: OpenRouterPrivateEndpointPricing?
+  public var settings: OpenRouterUpdatePrivateEndpointSettingsRequest?
+  public var upstreamModelId: String?
 
   public init(
-    upstreamModelId: String,
     baseUrl: String? = nil,
+    declaredParameters: [OpenRouterPrivateEndpointDeclaredParameter]? = nil,
     declaredRegion: OpenRouterUpdatePrivateEndpointRequest.DeclaredRegion? = nil,
-    declaredZdr: Bool? = nil
+    declaredZdr: Bool? = nil,
+    pricing: OpenRouterPrivateEndpointPricing? = nil,
+    settings: OpenRouterUpdatePrivateEndpointSettingsRequest? = nil,
+    upstreamModelId: String? = nil
   ) {
     self.baseUrl = baseUrl
+    self.declaredParameters = declaredParameters
     self.declaredRegion = declaredRegion
     self.declaredZdr = declaredZdr
+    self.pricing = pricing
+    self.settings = settings
     self.upstreamModelId = upstreamModelId
   }
 
   enum CodingKeys: String, CodingKey {
     case baseUrl = "base_url"
+    case declaredParameters = "declared_parameters"
     case declaredRegion = "declared_region"
     case declaredZdr = "declared_zdr"
+    case pricing
+    case settings
     case upstreamModelId = "upstream_model_id"
   }
 

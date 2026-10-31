@@ -15,6 +15,7 @@ public struct DeepSeekAnthropicUsage: Codable, Sendable {
   public var cacheReadInputTokens: Int?
   public var inputTokens: Int
   public var outputTokens: Int
+  public var serverToolUse: DeepSeekAnthropicServerToolUsage?
   public var serviceTier: String?
 
   public init(
@@ -22,12 +23,14 @@ public struct DeepSeekAnthropicUsage: Codable, Sendable {
     outputTokens: Int,
     cacheCreationInputTokens: Int? = nil,
     cacheReadInputTokens: Int? = nil,
+    serverToolUse: DeepSeekAnthropicServerToolUsage? = nil,
     serviceTier: String? = nil
   ) {
     self.cacheCreationInputTokens = cacheCreationInputTokens
     self.cacheReadInputTokens = cacheReadInputTokens
     self.inputTokens = inputTokens
     self.outputTokens = outputTokens
+    self.serverToolUse = serverToolUse
     self.serviceTier = serviceTier
   }
 
@@ -36,6 +39,7 @@ public struct DeepSeekAnthropicUsage: Codable, Sendable {
     case cacheReadInputTokens = "cache_read_input_tokens"
     case inputTokens = "input_tokens"
     case outputTokens = "output_tokens"
+    case serverToolUse = "server_tool_use"
     case serviceTier = "service_tier"
   }
 }

@@ -40,6 +40,7 @@ public enum ElevenLabsPermissionType: String, Codable, Hashable, Sendable {
   case forcedAlignment = "forced_alignment"
   case convaiRead = "convai_read"
   case convaiWrite = "convai_write"
+  case agentsArchitect = "agents_architect"
   case musicGeneration = "music_generation"
   case imageVideoGeneration = "image_video_generation"
   case flows = "flows"

@@ -12,6 +12,7 @@ import HyperProxyCore
 
 public struct ElevenLabsGetConversationResponseModel: Codable, Sendable {
   public var agentId: String
+  public var agentMessageCount: Int?
   public var agentName: String?
   public var analysis: ElevenLabsConversationHistoryAnalysisCommonModel?
   public var branchId: String?
@@ -30,6 +31,7 @@ public struct ElevenLabsGetConversationResponseModel: Codable, Sendable {
   public var tagIds: [String]?
   public var transcript: [ElevenLabsConversationHistoryTranscriptResponseModel]
   public var userId: String?
+  public var userMessageCount: Int?
   public var versionId: String?
   public var visitedAgents: [ElevenLabsVisitedAgentRef]?
 
@@ -43,6 +45,7 @@ public struct ElevenLabsGetConversationResponseModel: Codable, Sendable {
     metadata: ElevenLabsConversationHistoryMetadataCommonModel,
     status: ElevenLabsGetConversationResponseModel.Status,
     transcript: [ElevenLabsConversationHistoryTranscriptResponseModel],
+    agentMessageCount: Int? = nil,
     agentName: String? = nil,
     analysis: ElevenLabsConversationHistoryAnalysisCommonModel? = nil,
     branchId: String? = nil,
@@ -53,10 +56,12 @@ public struct ElevenLabsGetConversationResponseModel: Codable, Sendable {
     otlpTraces: [String: HyperProxyJSONValue]? = nil,
     tagIds: [String]? = nil,
     userId: String? = nil,
+    userMessageCount: Int? = nil,
     versionId: String? = nil,
     visitedAgents: [ElevenLabsVisitedAgentRef]? = nil
   ) {
     self.agentId = agentId
+    self.agentMessageCount = agentMessageCount
     self.agentName = agentName
     self.analysis = analysis
     self.branchId = branchId
@@ -74,12 +79,14 @@ public struct ElevenLabsGetConversationResponseModel: Codable, Sendable {
     self.tagIds = tagIds
     self.transcript = transcript
     self.userId = userId
+    self.userMessageCount = userMessageCount
     self.versionId = versionId
     self.visitedAgents = visitedAgents
   }
 
   enum CodingKeys: String, CodingKey {
     case agentId = "agent_id"
+    case agentMessageCount = "agent_message_count"
     case agentName = "agent_name"
     case analysis
     case branchId = "branch_id"
@@ -97,6 +104,7 @@ public struct ElevenLabsGetConversationResponseModel: Codable, Sendable {
     case tagIds = "tag_ids"
     case transcript
     case userId = "user_id"
+    case userMessageCount = "user_message_count"
     case versionId = "version_id"
     case visitedAgents = "visited_agents"
   }

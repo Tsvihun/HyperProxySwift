@@ -16,6 +16,7 @@ public struct ElevenLabsWorkspaceApiKeyResponseModel: Codable, Sendable {
   public var characterLimit: Int?
   public var createdAtUnix: Int?
   public var disableReason: ElevenLabsLockReason?
+  public var expiresAtUnix: Int?
   public var hashedXiApiKey: String
   public var hint: String
   public var isDisabled: Bool?
@@ -37,6 +38,7 @@ public struct ElevenLabsWorkspaceApiKeyResponseModel: Codable, Sendable {
     characterLimit: Int? = nil,
     createdAtUnix: Int? = nil,
     disableReason: ElevenLabsLockReason? = nil,
+    expiresAtUnix: Int? = nil,
     isDisabled: Bool? = nil,
     permissions: [ElevenLabsPermissionType]? = nil,
     platformLimits: ElevenLabsPlatformLimits? = nil,
@@ -47,6 +49,7 @@ public struct ElevenLabsWorkspaceApiKeyResponseModel: Codable, Sendable {
     self.characterLimit = characterLimit
     self.createdAtUnix = createdAtUnix
     self.disableReason = disableReason
+    self.expiresAtUnix = expiresAtUnix
     self.hashedXiApiKey = hashedXiApiKey
     self.hint = hint
     self.isDisabled = isDisabled
@@ -64,6 +67,7 @@ public struct ElevenLabsWorkspaceApiKeyResponseModel: Codable, Sendable {
     case characterLimit = "character_limit"
     case createdAtUnix = "created_at_unix"
     case disableReason = "disable_reason"
+    case expiresAtUnix = "expires_at_unix"
     case hashedXiApiKey = "hashed_xi_api_key"
     case hint
     case isDisabled = "is_disabled"

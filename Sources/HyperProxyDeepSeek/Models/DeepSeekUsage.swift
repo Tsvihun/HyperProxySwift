@@ -15,6 +15,7 @@ public struct DeepSeekUsage: Codable, Sendable {
   public var inputTokensDetails: DeepSeekInputTokenDetails?
   public var outputTokens: Int
   public var outputTokensDetails: DeepSeekOutputTokenDetails?
+  public var serverToolUse: DeepSeekServerToolUsage?
   public var totalTokens: Int
 
   public init(
@@ -22,12 +23,14 @@ public struct DeepSeekUsage: Codable, Sendable {
     outputTokens: Int,
     totalTokens: Int,
     inputTokensDetails: DeepSeekInputTokenDetails? = nil,
-    outputTokensDetails: DeepSeekOutputTokenDetails? = nil
+    outputTokensDetails: DeepSeekOutputTokenDetails? = nil,
+    serverToolUse: DeepSeekServerToolUsage? = nil
   ) {
     self.inputTokens = inputTokens
     self.inputTokensDetails = inputTokensDetails
     self.outputTokens = outputTokens
     self.outputTokensDetails = outputTokensDetails
+    self.serverToolUse = serverToolUse
     self.totalTokens = totalTokens
   }
 
@@ -36,6 +39,7 @@ public struct DeepSeekUsage: Codable, Sendable {
     case inputTokensDetails = "input_tokens_details"
     case outputTokens = "output_tokens"
     case outputTokensDetails = "output_tokens_details"
+    case serverToolUse = "server_tool_use"
     case totalTokens = "total_tokens"
   }
 }

@@ -118,15 +118,12 @@ struct GeneratedProviderModulesTests {
       appKey: "hp_live_test"
     )
     #expect(service.definition.id == "openrouter")
-    #expect(
-      service.route(.listOrganizationMembers).operation
-        == OpenRouterOperation.listOrganizationMembers.rawValue)
+    #expect(service.route(.activityList).operation == OpenRouterOperation.activityList.rawValue)
     #expect(
       service.createApiAlphaDecisions.operation.rawValue
         == OpenRouterOperation.createApiAlphaDecisions.rawValue)
     #expect(
-      service.admin.listOrganizationMembers.operation.rawValue
-        == OpenRouterOperation.listOrganizationMembers.rawValue)
+      service.admin.activityList.operation.rawValue == OpenRouterOperation.activityList.rawValue)
   }
 
   @Test("Perplexity operations match the catalog")
@@ -140,9 +137,13 @@ struct GeneratedProviderModulesTests {
     )
     #expect(service.definition.id == "perplexity")
     #expect(
-      service.route(.searchSearchPost).operation == PerplexityOperation.searchSearchPost.rawValue)
+      service.route(.listAdminAuditEventsV1AdminAuditEventsGet).operation
+        == PerplexityOperation.listAdminAuditEventsV1AdminAuditEventsGet.rawValue)
     #expect(
       service.searchSearchPost.operation.rawValue == PerplexityOperation.searchSearchPost.rawValue)
+    #expect(
+      service.admin.listAdminAuditEventsV1AdminAuditEventsGet.operation.rawValue
+        == PerplexityOperation.listAdminAuditEventsV1AdminAuditEventsGet.rawValue)
   }
 
   @Test("Groq operations match the catalog")

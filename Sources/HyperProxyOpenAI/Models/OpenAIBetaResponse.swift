@@ -42,6 +42,7 @@ public struct OpenAIBetaResponse: Codable, Sendable {
   public var temperature: Double?
   public var text: OpenAIBetaResponseTextParam?
   public var toolChoice: OpenAIBetaToolChoiceParam
+  public var toolUsage: OpenAIBetaResponseToolUsage?
   public var tools: OpenAIBetaToolsArray
   public var topLogprobs: Int?
   public var topP: Double?
@@ -83,6 +84,7 @@ public struct OpenAIBetaResponse: Codable, Sendable {
     serviceTier: OpenAIBetaServiceTierResponses? = nil,
     status: OpenAIBetaResponseStatus? = nil,
     text: OpenAIBetaResponseTextParam? = nil,
+    toolUsage: OpenAIBetaResponseToolUsage? = nil,
     topLogprobs: Int? = nil,
     truncation: OpenAIBetaResponseTruncation? = nil,
     usage: OpenAIBetaResponseUsage? = nil,
@@ -119,6 +121,7 @@ public struct OpenAIBetaResponse: Codable, Sendable {
     self.temperature = temperature
     self.text = text
     self.toolChoice = toolChoice
+    self.toolUsage = toolUsage
     self.tools = tools
     self.topLogprobs = topLogprobs
     self.topP = topP
@@ -159,6 +162,7 @@ public struct OpenAIBetaResponse: Codable, Sendable {
     case temperature
     case text
     case toolChoice = "tool_choice"
+    case toolUsage = "tool_usage"
     case tools
     case topLogprobs = "top_logprobs"
     case topP = "top_p"
@@ -187,6 +191,7 @@ public struct OpenAIBetaResponse: Codable, Sendable {
     public var reasoning: OpenAIBetaReasoning?
     public var serviceTier: OpenAIBetaServiceTierResponses?
     public var status: OpenAIBetaResponseStatus?
+    public var toolUsage: OpenAIBetaResponseToolUsage?
     public var truncation: OpenAIBetaResponseTruncation?
     public var usage: OpenAIBetaResponseUsage?
 
@@ -210,6 +215,7 @@ public struct OpenAIBetaResponse: Codable, Sendable {
       reasoning: OpenAIBetaReasoning? = nil,
       serviceTier: OpenAIBetaServiceTierResponses? = nil,
       status: OpenAIBetaResponseStatus? = nil,
+      toolUsage: OpenAIBetaResponseToolUsage? = nil,
       truncation: OpenAIBetaResponseTruncation? = nil,
       usage: OpenAIBetaResponseUsage? = nil
     ) {
@@ -232,6 +238,7 @@ public struct OpenAIBetaResponse: Codable, Sendable {
       self.reasoning = reasoning
       self.serviceTier = serviceTier
       self.status = status
+      self.toolUsage = toolUsage
       self.truncation = truncation
       self.usage = usage
     }
@@ -256,6 +263,7 @@ public struct OpenAIBetaResponse: Codable, Sendable {
       case reasoning
       case serviceTier = "service_tier"
       case status
+      case toolUsage = "tool_usage"
       case truncation
       case usage
     }

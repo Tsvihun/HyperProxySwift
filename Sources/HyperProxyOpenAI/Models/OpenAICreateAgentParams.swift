@@ -11,6 +11,8 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAICreateAgentParams: Codable, Sendable {
+  public var compaction: OpenAICompactionParam?
+  public var experimental: OpenAIExperimentalConfigParam?
   public var instructions: String?
   public var metadata: [String: String]?
   public var model: String
@@ -23,6 +25,8 @@ public struct OpenAICreateAgentParams: Codable, Sendable {
 
   public init(
     model: String,
+    compaction: OpenAICompactionParam? = nil,
+    experimental: OpenAIExperimentalConfigParam? = nil,
     instructions: String? = nil,
     metadata: [String: String]? = nil,
     multiAgent: OpenAIMultiAgentConfigCurrentParam? = nil,
@@ -32,6 +36,8 @@ public struct OpenAICreateAgentParams: Codable, Sendable {
     text: OpenAITextParam? = nil,
     tools: [OpenAIPersistedAgentToolConfigParam]? = nil
   ) {
+    self.compaction = compaction
+    self.experimental = experimental
     self.instructions = instructions
     self.metadata = metadata
     self.model = model
@@ -44,6 +50,8 @@ public struct OpenAICreateAgentParams: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case compaction
+    case experimental
     case instructions
     case metadata
     case model

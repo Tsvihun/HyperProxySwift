@@ -14,17 +14,20 @@ public struct TogetherCreateSecretRequest: Codable, Sendable {
   public var description: String?
   public var name: String
   public var projectId: String?
+  public var ttlSeconds: Int?
   public var value: String
 
   public init(
     name: String,
     value: String,
     description: String? = nil,
-    projectId: String? = nil
+    projectId: String? = nil,
+    ttlSeconds: Int? = nil
   ) {
     self.description = description
     self.name = name
     self.projectId = projectId
+    self.ttlSeconds = ttlSeconds
     self.value = value
   }
 
@@ -32,6 +35,7 @@ public struct TogetherCreateSecretRequest: Codable, Sendable {
     case description
     case name
     case projectId = "project_id"
+    case ttlSeconds = "ttl_seconds"
     case value
   }
 }

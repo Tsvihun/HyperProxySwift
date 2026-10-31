@@ -81,6 +81,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
   public var ionstream: [String: HyperProxyJSONValue]?
   public var klusterai: [String: HyperProxyJSONValue]?
   public var krea: [String: HyperProxyJSONValue]?
+  public var kt: [String: HyperProxyJSONValue]?
   public var lambda: [String: HyperProxyJSONValue]?
   public var lepton: [String: HyperProxyJSONValue]?
   public var liquid: [String: HyperProxyJSONValue]?
@@ -112,10 +113,12 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
   public var openai: [String: HyperProxyJSONValue]?
   public var parasail: [String: HyperProxyJSONValue]?
   public var paretoAlpha: [String: HyperProxyJSONValue]?
+  public var particleAi: [String: HyperProxyJSONValue]?
   public var perceptron: [String: HyperProxyJSONValue]?
   public var perplexity: [String: HyperProxyJSONValue]?
   public var phala: [String: HyperProxyJSONValue]?
   public var poolside: [String: HyperProxyJSONValue]?
+  public var primalabs: [String: HyperProxyJSONValue]?
   public var primeintellect: [String: HyperProxyJSONValue]?
   public var quiver: [String: HyperProxyJSONValue]?
   public var recraft: [String: HyperProxyJSONValue]?
@@ -231,6 +234,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     ionstream: [String: HyperProxyJSONValue]? = nil,
     klusterai: [String: HyperProxyJSONValue]? = nil,
     krea: [String: HyperProxyJSONValue]? = nil,
+    kt: [String: HyperProxyJSONValue]? = nil,
     lambda: [String: HyperProxyJSONValue]? = nil,
     lepton: [String: HyperProxyJSONValue]? = nil,
     liquid: [String: HyperProxyJSONValue]? = nil,
@@ -262,10 +266,12 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     openai: [String: HyperProxyJSONValue]? = nil,
     parasail: [String: HyperProxyJSONValue]? = nil,
     paretoAlpha: [String: HyperProxyJSONValue]? = nil,
+    particleAi: [String: HyperProxyJSONValue]? = nil,
     perceptron: [String: HyperProxyJSONValue]? = nil,
     perplexity: [String: HyperProxyJSONValue]? = nil,
     phala: [String: HyperProxyJSONValue]? = nil,
     poolside: [String: HyperProxyJSONValue]? = nil,
+    primalabs: [String: HyperProxyJSONValue]? = nil,
     primeintellect: [String: HyperProxyJSONValue]? = nil,
     quiver: [String: HyperProxyJSONValue]? = nil,
     recraft: [String: HyperProxyJSONValue]? = nil,
@@ -380,6 +386,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     self.ionstream = ionstream
     self.klusterai = klusterai
     self.krea = krea
+    self.kt = kt
     self.lambda = lambda
     self.lepton = lepton
     self.liquid = liquid
@@ -411,10 +418,12 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     self.openai = openai
     self.parasail = parasail
     self.paretoAlpha = paretoAlpha
+    self.particleAi = particleAi
     self.perceptron = perceptron
     self.perplexity = perplexity
     self.phala = phala
     self.poolside = poolside
+    self.primalabs = primalabs
     self.primeintellect = primeintellect
     self.quiver = quiver
     self.recraft = recraft
@@ -531,6 +540,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     case ionstream
     case klusterai
     case krea
+    case kt
     case lambda
     case lepton
     case liquid
@@ -562,10 +572,12 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     case openai
     case parasail
     case paretoAlpha = "pareto-alpha"
+    case particleAi = "particle-ai"
     case perceptron
     case perplexity
     case phala
     case poolside
+    case primalabs
     case primeintellect
     case quiver
     case recraft

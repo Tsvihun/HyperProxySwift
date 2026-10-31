@@ -149,4 +149,11 @@ extension HyperProxyProviderService where Operation == PerplexityOperation {
   public var getComputerUsageAnalyticsV2: HyperProxyProviderCall<PerplexityOperation> {
     self.call(.getComputerUsageAnalyticsV2)
   }
+
+  /// Organization-administration operations. Kept out of the
+  /// main autocomplete surface; the routes still run through the
+  /// same service and transport.
+  public var admin: PerplexityAdminCalls {
+    PerplexityAdminCalls(service: self)
+  }
 }

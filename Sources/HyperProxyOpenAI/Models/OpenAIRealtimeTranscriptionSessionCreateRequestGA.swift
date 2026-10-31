@@ -75,15 +75,19 @@ public struct OpenAIRealtimeTranscriptionSessionCreateRequestGA: Codable, Sendab
       public struct NoiseReduction: Codable,
         Sendable
       {
+        public var strength: Double?
         public var kind: OpenAINoiseReductionType?
 
         public init(
+          strength: Double? = nil,
           kind: OpenAINoiseReductionType? = nil
         ) {
+          self.strength = strength
           self.kind = kind
         }
 
         enum CodingKeys: String, CodingKey {
+          case strength
           case kind = "type"
         }
       }
