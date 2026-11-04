@@ -13,11 +13,14 @@ import HyperProxyCore
 public enum AnthropicErrorType: String, Codable, Hashable, Sendable {
   case invalidRequestError = "invalid_request_error"
   case authenticationError = "authentication_error"
+  case billingError = "billing_error"
   case permissionError = "permission_error"
   case notFoundError = "not_found_error"
   case rateLimitError = "rate_limit_error"
   case timeoutError = "timeout_error"
-  case overloadedError = "overloaded_error"
   case apiError = "api_error"
-  case billingError = "billing_error"
+  case overloadedError = "overloaded_error"
+  case memoryPreconditionFailedError = "memory_precondition_failed_error"
+  case memoryPathConflictError = "memory_path_conflict_error"
+  case conflictError = "conflict_error"
 }

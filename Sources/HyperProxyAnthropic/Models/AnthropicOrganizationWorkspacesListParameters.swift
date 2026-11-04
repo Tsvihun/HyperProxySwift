@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct AnthropicOrganizationWorkspacesListParameters: Codable, Sendable {
   public var afterId: String?
   public var beforeId: String?
+  public var ids: [String]?
   public var includeArchived: Bool?
   public var includeDefault: Bool?
   public var limit: Int?
@@ -20,12 +21,14 @@ public struct AnthropicOrganizationWorkspacesListParameters: Codable, Sendable {
   public init(
     afterId: String? = nil,
     beforeId: String? = nil,
+    ids: [String]? = nil,
     includeArchived: Bool? = nil,
     includeDefault: Bool? = nil,
     limit: Int? = nil
   ) {
     self.afterId = afterId
     self.beforeId = beforeId
+    self.ids = ids
     self.includeArchived = includeArchived
     self.includeDefault = includeDefault
     self.limit = limit
@@ -34,6 +37,7 @@ public struct AnthropicOrganizationWorkspacesListParameters: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case afterId = "after_id"
     case beforeId = "before_id"
+    case ids
     case includeArchived = "include_archived"
     case includeDefault = "include_default"
     case limit

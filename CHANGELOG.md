@@ -2,10 +2,12 @@
 
 ## Unreleased — 2026-11-04
 
-- Refresh provider contracts: 2,523 normalized routes across 18 families, 22,629
+- Refresh provider contracts: 2,523 normalized routes across 18 families, 22,922
   generated types and 2,303 typed helpers. Reconcile Anthropic organization APIs,
   OpenAI workload identities, Mistral context search/voice agents, ElevenLabs
   analysis/conversation groups, Gemini proactivity and DeepL glossary types.
+- Reconcile Anthropic TypeScript 1.5.0 / Python 2.5.0: workspace ID filters,
+  typed error details (including heartbeat lease state) and new conflict values.
 - Support OpenAI `12h` cache retention and typed, optional cache-write lifetime
   details. Preserve legacy responses without the new detail object.
 - Classify plural organization/key management routes as admin. Follow upstream

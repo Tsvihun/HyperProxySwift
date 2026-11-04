@@ -3,10 +3,10 @@
   "sources": {
     "anthropic/official-sdk-openapi": {
       "kind": "pythonSDK",
-      "sourceURL": "https://codeload.github.com/anthropics/anthropic-sdk-python/tar.gz/5752c132041af71055584632caab5ca2325cae5e",
-      "snapshotSha256": "17121b556067cd8242ace7f77013e71d72814deca60bbd7d83ec8549541d7b7c",
+      "sourceURL": "https://codeload.github.com/anthropics/anthropic-sdk-python/tar.gz/dd18a659419fe4d83aa9109bdcdcf9a35d5c8ddb",
+      "snapshotSha256": "b89eb9027dd008b92d9d75b422efc3b0e9f043556a92d34123d13d05eff83623",
       "pointerURL": "https://api.github.com/repos/anthropics/anthropic-sdk-python/commits/main",
-      "pointerSha256": "1e7c5e0a021ca23f783bee0adb29a35b2955a48d6d251bc8d3e90de6a3e89386",
+      "pointerSha256": "df7ff1d689f9c0c91d2e3da3f4a223156390059b0f5a3d7ebeda49b0dc6073d1",
       "rightsStatus": "pending",
       "rightsBasis": "No explicit redistribution grant for the resolved schema has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://github.com/anthropics/anthropic-sdk-typescript",
@@ -44,12 +44,28 @@
           "riskDecision": "Pavel Tsvihun explicitly accepted the remaining source-redistribution risks for the exact 0.6.0 snapshots listed in Compliance/0.6.0-release-review.md on 2026-10-25 and authorized the tag, GitHub Release and all CocoaPods publications. Existing upstream license claims and required notices are unchanged; this acceptance does not establish an additional upstream grant.",
           "acceptedBy": "Pavel Tsvihun (maintainer)",
           "acceptedAt": "2026-10-25"
+        },
+        {
+          "kind": "pythonSDK",
+          "sourceURL": "https://codeload.github.com/anthropics/anthropic-sdk-python/tar.gz/5752c132041af71055584632caab5ca2325cae5e",
+          "snapshotSha256": "17121b556067cd8242ace7f77013e71d72814deca60bbd7d83ec8549541d7b7c",
+          "pointerURL": "https://api.github.com/repos/anthropics/anthropic-sdk-python/commits/main",
+          "pointerSha256": "1e7c5e0a021ca23f783bee0adb29a35b2955a48d6d251bc8d3e90de6a3e89386",
+          "rightsStatus": "pending",
+          "rightsBasis": "No explicit redistribution grant for the resolved schema has been documented; provider permission or counsel review is required.",
+          "rightsEvidenceURL": "https://github.com/anthropics/anthropic-sdk-typescript",
+          "noticeFiles": [],
+          "sdkCommit": "5752c132041af71055584632caab5ca2325cae5e",
+          "baselineSha256": "8a5cbd0e3a1e2db9df7f35d750bdabb3228da9d635c3acb967fc969f5fbb2d17",
+          "snapshotBasis": "Current official Python SDK AST reconciled with the reviewed pre-SDK schema; old source and rights records retained in snapshotHistory.",
+          "companionSDKCommit": "ea8d7de0e47614ae71044fbf7bf12041318ba37e",
+          "companionSDKURL": "https://api.github.com/repos/anthropics/anthropic-sdk-typescript/commits/main"
         }
       ],
-      "sdkCommit": "5752c132041af71055584632caab5ca2325cae5e",
+      "sdkCommit": "dd18a659419fe4d83aa9109bdcdcf9a35d5c8ddb",
       "baselineSha256": "8a5cbd0e3a1e2db9df7f35d750bdabb3228da9d635c3acb967fc969f5fbb2d17",
       "snapshotBasis": "Current official Python SDK AST reconciled with the reviewed pre-SDK schema; old source and rights records retained in snapshotHistory.",
-      "companionSDKCommit": "ea8d7de0e47614ae71044fbf7bf12041318ba37e",
+      "companionSDKCommit": "3cde979dcebea3450c508f7afc71315be09bf99a",
       "companionSDKURL": "https://api.github.com/repos/anthropics/anthropic-sdk-typescript/commits/main"
     },
     "bfl/licenses-openapi": {
@@ -955,7 +971,7 @@
   "modules": [
     {
       "module": "HyperProxyAnthropic",
-      "artifactSha256": "5a3792b9f29a866a48af69f341a0b6a308b2b1c1eb352891c6aee7ea336c2631",
+      "artifactSha256": "9546410fd3b24bfb2daaa941c1f5b46e80c95e5817486d8d313df60a623c6e2e",
       "reviewStatus": "pending",
       "sourceIDs": [
         "anthropic/official-sdk-openapi"
@@ -1016,6 +1032,12 @@
           },
           "reviewedBy": "Pavel Tsvihun (maintainer)",
           "reviewedAt": "2026-10-25"
+        },
+        {
+          "artifactSha256": "5a3792b9f29a866a48af69f341a0b6a308b2b1c1eb352891c6aee7ea336c2631",
+          "reviewStatus": "pending",
+          "artifactReviewedBy": "Codex (generated contract diff, compilation and regression tests)",
+          "artifactReviewedAt": "2026-11-04"
         }
       ]
     },

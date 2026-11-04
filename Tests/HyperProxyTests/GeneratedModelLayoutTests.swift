@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import HyperProxyAnthropic
 import HyperProxyBFL
 import HyperProxyGemini
 import HyperProxyMistral
@@ -17,6 +18,35 @@ import Testing
 
 @Suite("Generated model layout contracts")
 struct GeneratedModelLayoutTests {
+  @Test("Anthropic workspace filters retain their array query wire representation")
+  func workspaceIDFilters() throws {
+    let parameters = AnthropicOrganizationWorkspacesListParameters(ids: ["wrkspc_a", "wrkspc_b"])
+    let encoded = try JSONEncoder().encode(parameters)
+    let value = try #require(JSONSerialization.jsonObject(with: encoded) as? [String: [String]])
+    #expect(value["ids"] == ["wrkspc_a", "wrkspc_b"])
+    let decoded = try JSONDecoder().decode(
+      AnthropicOrganizationWorkspacesListParameters.self, from: encoded)
+    #expect(decoded.ids == parameters.ids)
+  }
+
+  @Test("Anthropic heartbeat error details preserve the current typed lease state")
+  func heartbeatErrorDetails() throws {
+    let data = Data(
+      #"{"error_code":"heartbeat_precondition_failed","current_state":{"state":"active","last_heartbeat":null,"lease_extended":true,"ttl_seconds":30}}"#
+        .utf8)
+    let details = try JSONDecoder().decode(
+      AnthropicBetaHeartbeatPreconditionFailedErrorDetails.self, from: data)
+    #expect(details.errorCode.rawValue == "heartbeat_precondition_failed")
+    #expect(details.currentState.state.rawValue == "active")
+    #expect(details.currentState.leaseExtended)
+    #expect(details.currentState.ttlSeconds == 30)
+    #expect(details.currentState.lastHeartbeat == nil)
+    let decoded = try JSONDecoder().decode(
+      AnthropicBetaHeartbeatPreconditionFailedErrorDetails.self, from: JSONEncoder().encode(details)
+    )
+    #expect(decoded.currentState.ttlSeconds == 30)
+  }
+
   @Test("OpenAI twelve-hour cache retention round-trips its request wire value")
   func twelveHourCacheRetention() throws {
     let request = OpenAIResponsePromptCacheOptionsParam(ttl: .value12h)
