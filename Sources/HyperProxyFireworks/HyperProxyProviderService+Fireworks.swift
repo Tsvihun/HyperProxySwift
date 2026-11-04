@@ -896,22 +896,6 @@ extension HyperProxyProviderService where Operation == FireworksOperation {
   public var gatewayUpdateUser: HyperProxyProviderCall<FireworksOperation> {
     self.call(.gatewayUpdateUser)
   }
-  /// `GET v1/accounts/{account_id}/users/{user_id}/apiKeys`
-  public var gatewayListApiKeys: HyperProxyProviderCall<FireworksOperation> {
-    self.call(.gatewayListApiKeys)
-  }
-  /// `POST v1/accounts/{account_id}/users/{user_id}/apiKeys`
-  public var gatewayCreateApiKey: HyperProxyProviderCall<FireworksOperation> {
-    self.call(.gatewayCreateApiKey)
-  }
-  /// `GET v1/accounts/{account_id}/users/{user_id}/apiKeys/accounts/{account_id}/users/{user_id}`
-  public var gatewayGetApiKey: HyperProxyProviderCall<FireworksOperation> {
-    self.call(.gatewayGetApiKey)
-  }
-  /// `PATCH v1/accounts/{account_id}/users/{user_id}/apiKeys/accounts/{account_id}/users/{user_id}`
-  public var gatewayUpdateApiKey: HyperProxyProviderCall<FireworksOperation> {
-    self.call(.gatewayUpdateApiKey)
-  }
   /// `POST v1/accounts/{account_id}/users/{user_id}/apiKeys:delete`
   public var gatewayDeleteApiKey: HyperProxyProviderCall<FireworksOperation> {
     self.call(.gatewayDeleteApiKey)

@@ -19,6 +19,7 @@ public enum MistralAdminAssignGroupToWorkspaceInRoleNamesItem: String, Codable, 
   case dev = "dev"
   case devContributor = "dev_contributor"
   case mistralCodeUser = "mistral_code_user"
+  case vibeCodeCliUser = "vibe_code_cli_user"
   case cloudUser = "cloud_user"
   case workspaceContributor = "workspace_contributor"
   case workspaceAdmin = "workspace_admin"

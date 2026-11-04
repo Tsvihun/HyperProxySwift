@@ -13,5 +13,4 @@ import HyperProxyCore
 public enum ElevenLabsAudioFormat: String, Codable, Hashable, Sendable {
   case audioPcm = "audio/pcm"
   case audioPcmu = "audio/pcmu"
-  case audioPcma = "audio/pcma"
 }

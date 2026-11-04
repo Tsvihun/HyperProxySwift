@@ -11,7 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaSpendSummary: Codable, Sendable {
-  public var actor: AnthropicBetaOrganizationSpendSummaryActor
+  public var actor: AnthropicBetaActor
   public var amount: String?
   public var currency: String
   public var period: AnthropicBetaSpendLimitPeriod
@@ -21,7 +21,7 @@ public struct AnthropicBetaSpendSummary: Codable, Sendable {
   public var spendLimitId: String
 
   public init(
-    actor: AnthropicBetaOrganizationSpendSummaryActor,
+    actor: AnthropicBetaActor,
     currency: String,
     period: AnthropicBetaSpendLimitPeriod,
     periodToDateSpend: String,

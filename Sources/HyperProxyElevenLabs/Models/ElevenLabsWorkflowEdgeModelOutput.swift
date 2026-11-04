@@ -13,17 +13,20 @@ import HyperProxyCore
 public struct ElevenLabsWorkflowEdgeModelOutput: Codable, Sendable {
   public var backwardCondition: ElevenLabsWorkflowEdgeModelOutputBackwardConditionVariant?
   public var forwardCondition: ElevenLabsWorkflowEdgeModelOutputForwardConditionVariant?
+  public var reroutes: [ElevenLabsPositionOutput]
   public var source: String
   public var target: String
 
   public init(
     backwardCondition: ElevenLabsWorkflowEdgeModelOutputBackwardConditionVariant?,
     forwardCondition: ElevenLabsWorkflowEdgeModelOutputForwardConditionVariant?,
+    reroutes: [ElevenLabsPositionOutput],
     source: String,
     target: String
   ) {
     self.backwardCondition = backwardCondition
     self.forwardCondition = forwardCondition
+    self.reroutes = reroutes
     self.source = source
     self.target = target
   }
@@ -31,6 +34,7 @@ public struct ElevenLabsWorkflowEdgeModelOutput: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case backwardCondition = "backward_condition"
     case forwardCondition = "forward_condition"
+    case reroutes
     case source
     case target
   }

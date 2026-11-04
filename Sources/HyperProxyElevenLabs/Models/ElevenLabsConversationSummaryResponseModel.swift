@@ -21,6 +21,8 @@ public struct ElevenLabsConversationSummaryResponseModel: Codable, Sendable {
   public var callSummaryTitle: String?
   public var conversationId: String
   public var conversationInitiationSource: ElevenLabsConversationInitiationSource?
+  public var cost: Int?
+  public var costFiat: Double?
   public var dataCollectionResults: [String: HyperProxyJSONValue]?
   public var direction: ElevenLabsTelephonyDirection?
   public var evaluationCriteriaResults: [String: ElevenLabsEvaluationCriteriaSummaryResult]?
@@ -51,6 +53,8 @@ public struct ElevenLabsConversationSummaryResponseModel: Codable, Sendable {
     callSuccessScore: Double? = nil,
     callSummaryTitle: String? = nil,
     conversationInitiationSource: ElevenLabsConversationInitiationSource? = nil,
+    cost: Int? = nil,
+    costFiat: Double? = nil,
     dataCollectionResults: [String: HyperProxyJSONValue]? = nil,
     direction: ElevenLabsTelephonyDirection? = nil,
     evaluationCriteriaResults: [String: ElevenLabsEvaluationCriteriaSummaryResult]? = nil,
@@ -74,6 +78,8 @@ public struct ElevenLabsConversationSummaryResponseModel: Codable, Sendable {
     self.callSummaryTitle = callSummaryTitle
     self.conversationId = conversationId
     self.conversationInitiationSource = conversationInitiationSource
+    self.cost = cost
+    self.costFiat = costFiat
     self.dataCollectionResults = dataCollectionResults
     self.direction = direction
     self.evaluationCriteriaResults = evaluationCriteriaResults
@@ -102,6 +108,8 @@ public struct ElevenLabsConversationSummaryResponseModel: Codable, Sendable {
     case callSummaryTitle = "call_summary_title"
     case conversationId = "conversation_id"
     case conversationInitiationSource = "conversation_initiation_source"
+    case cost
+    case costFiat = "cost_fiat"
     case dataCollectionResults = "data_collection_results"
     case direction
     case evaluationCriteriaResults = "evaluation_criteria_results"

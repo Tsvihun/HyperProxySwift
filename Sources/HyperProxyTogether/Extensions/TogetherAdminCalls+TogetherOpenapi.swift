@@ -23,4 +23,32 @@ extension TogetherAdminCalls {
       .timeout(timeout)
     return try await call.decoded(TogetherBillingUsageReport.self)
   }
+
+  public func endpointServiceListOrganizationEndpoints(
+    organizationId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherDEListEndpointsResponse {
+    let call = self.service.call(.endpointServiceListOrganizationEndpoints)
+      .path("organizationId", organizationId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherDEListEndpointsResponse.self)
+  }
+
+  public func volumeServiceListOrganizationModels(
+    organizationId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> TogetherDEListModelsResponse {
+    let call = self.service.call(.volumeServiceListOrganizationModels)
+      .path("organizationId", organizationId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(TogetherDEListModelsResponse.self)
+  }
 }

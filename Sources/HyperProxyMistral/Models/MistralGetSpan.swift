@@ -46,6 +46,7 @@ public struct MistralGetSpan: Codable, Sendable {
   public var responseModel: String
   public var scopeName: String
   public var scopeVersion: String
+  public var serviceAccountId: String?
   public var serviceName: String
   public var spanAttributes: [String: String]
   public var spanId: String
@@ -130,7 +131,8 @@ public struct MistralGetSpan: Codable, Sendable {
     usageOutputTokens: Int,
     userId: String,
     workflowName: String,
-    workspaceId: String
+    workspaceId: String,
+    serviceAccountId: String? = nil
   ) {
     self.agentDescription = agentDescription
     self.agentId = agentId
@@ -167,6 +169,7 @@ public struct MistralGetSpan: Codable, Sendable {
     self.responseModel = responseModel
     self.scopeName = scopeName
     self.scopeVersion = scopeVersion
+    self.serviceAccountId = serviceAccountId
     self.serviceName = serviceName
     self.spanAttributes = spanAttributes
     self.spanId = spanId
@@ -229,6 +232,7 @@ public struct MistralGetSpan: Codable, Sendable {
     case responseModel = "response_model"
     case scopeName = "scope_name"
     case scopeVersion = "scope_version"
+    case serviceAccountId = "service_account_id"
     case serviceName = "service_name"
     case spanAttributes = "span_attributes"
     case spanId = "span_id"

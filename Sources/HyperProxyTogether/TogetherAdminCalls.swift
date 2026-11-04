@@ -20,4 +20,12 @@ public struct TogetherAdminCalls: Sendable {
   public var getBillingUsage: HyperProxyProviderCall<TogetherOperation> {
     self.service.call(.getBillingUsage)
   }
+  /// `GET v2/organizations/{organizationId}/endpoints`
+  public var endpointServiceListOrganizationEndpoints: HyperProxyProviderCall<TogetherOperation> {
+    self.service.call(.endpointServiceListOrganizationEndpoints)
+  }
+  /// `GET v2/organizations/{organizationId}/models`
+  public var volumeServiceListOrganizationModels: HyperProxyProviderCall<TogetherOperation> {
+    self.service.call(.volumeServiceListOrganizationModels)
+  }
 }

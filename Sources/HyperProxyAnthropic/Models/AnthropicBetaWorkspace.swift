@@ -21,6 +21,7 @@ public struct AnthropicBetaWorkspace: Codable, Sendable {
   public var name: String
   public var tags: [String: String]
   public var kind: AnthropicBetaWorkspace.Kind
+  public var userProfileId: String?
 
   public init(
     compartmentId: String,
@@ -32,7 +33,8 @@ public struct AnthropicBetaWorkspace: Codable, Sendable {
     tags: [String: String],
     kind: AnthropicBetaWorkspace.Kind,
     archivedAt: String? = nil,
-    externalKeyId: String? = nil
+    externalKeyId: String? = nil,
+    userProfileId: String? = nil
   ) {
     self.archivedAt = archivedAt
     self.compartmentId = compartmentId
@@ -44,6 +46,7 @@ public struct AnthropicBetaWorkspace: Codable, Sendable {
     self.name = name
     self.tags = tags
     self.kind = kind
+    self.userProfileId = userProfileId
   }
 
   enum CodingKeys: String, CodingKey {
@@ -57,6 +60,7 @@ public struct AnthropicBetaWorkspace: Codable, Sendable {
     case name
     case tags
     case kind = "type"
+    case userProfileId = "user_profile_id"
   }
 
   public enum Kind: String, Codable, Hashable, Sendable {

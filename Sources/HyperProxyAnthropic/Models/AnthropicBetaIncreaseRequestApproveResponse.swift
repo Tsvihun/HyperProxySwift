@@ -11,28 +11,27 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaIncreaseRequestApproveResponse: Codable, Sendable {
-  public var actor: AnthropicBetaOrganizationSpendLimitsIncreaseRequestApproveResponseActor
+  public var actor: AnthropicBetaSpendLimitIncreaseRequestActor
   public var createdAt: String
   public var id: String
   public var period: AnthropicBetaSpendLimitPeriod
   public var resolvedAt: String?
-  public var resolvedBy:
-    AnthropicBetaOrganizationSpendLimitsIncreaseRequestApproveResponseResolvedBy?
-  public var spendLimit: AnthropicBetaSpendLimit
+  public var resolvedBy: AnthropicBetaSpendLimitIncreaseRequestResolvedBy?
+  public var spendLimit: AnthropicBetaSpendLimit?
   public var spendSummary: AnthropicBetaSpendSummary?
   public var status: AnthropicBetaSpendLimitIncreaseRequestStatus
   public var kind: AnthropicBetaIncreaseRequestApproveResponse.Kind
 
   public init(
-    actor: AnthropicBetaOrganizationSpendLimitsIncreaseRequestApproveResponseActor,
+    actor: AnthropicBetaSpendLimitIncreaseRequestActor,
     createdAt: String,
     id: String,
     period: AnthropicBetaSpendLimitPeriod,
-    spendLimit: AnthropicBetaSpendLimit,
     status: AnthropicBetaSpendLimitIncreaseRequestStatus,
     kind: AnthropicBetaIncreaseRequestApproveResponse.Kind,
     resolvedAt: String? = nil,
-    resolvedBy: AnthropicBetaOrganizationSpendLimitsIncreaseRequestApproveResponseResolvedBy? = nil,
+    resolvedBy: AnthropicBetaSpendLimitIncreaseRequestResolvedBy? = nil,
+    spendLimit: AnthropicBetaSpendLimit? = nil,
     spendSummary: AnthropicBetaSpendSummary? = nil
   ) {
     self.actor = actor

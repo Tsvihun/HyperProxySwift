@@ -27,5 +27,27 @@ public struct MistralSpeechV1AudioSpeechPostResponse200Text: Codable, Sendable {
     case event
   }
 
-  public typealias DataValue = HyperProxyJSONValue
+  public enum DataValue: Codable, Sendable {
+    case speechStreamAudioDelta(MistralSpeechStreamAudioDelta)
+    case speechStreamDone(MistralSpeechStreamDone)
+
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      if let value = try? container.decode(MistralSpeechStreamAudioDelta.self) {
+        self = .speechStreamAudioDelta(value)
+        return
+      }
+      self = .speechStreamDone(try container.decode(MistralSpeechStreamDone.self))
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+      var container = encoder.singleValueContainer()
+      switch self {
+      case .speechStreamAudioDelta(let value):
+        try container.encode(value)
+      case .speechStreamDone(let value):
+        try container.encode(value)
+      }
+    }
+  }
 }

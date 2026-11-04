@@ -15,20 +15,17 @@ public struct TogetherAddOnState: Codable, Sendable {
   public var headlamp: TogetherHeadlampState?
   public var ingress: TogetherIngressState?
   public var slurmWeb: TogetherSlurmWebState?
-  public var torchpass: TogetherTorchpassState?
 
   public init(
     dashboard: TogetherDashboardState? = nil,
     headlamp: TogetherHeadlampState? = nil,
     ingress: TogetherIngressState? = nil,
-    slurmWeb: TogetherSlurmWebState? = nil,
-    torchpass: TogetherTorchpassState? = nil
+    slurmWeb: TogetherSlurmWebState? = nil
   ) {
     self.dashboard = dashboard
     self.headlamp = headlamp
     self.ingress = ingress
     self.slurmWeb = slurmWeb
-    self.torchpass = torchpass
   }
 
   enum CodingKeys: String, CodingKey {
@@ -36,6 +33,5 @@ public struct TogetherAddOnState: Codable, Sendable {
     case headlamp
     case ingress
     case slurmWeb = "slurm_web"
-    case torchpass
   }
 }

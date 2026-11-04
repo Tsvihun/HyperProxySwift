@@ -35,6 +35,7 @@ public struct MistralGetTrace: Codable, Sendable {
   public var retrievalCount: Int
   public var rootSpanId: String
   public var rootSpanName: String
+  public var serviceAccountId: String?
   public var serviceName: String
   public var spanCount: Int
   public var startTime: String
@@ -80,7 +81,8 @@ public struct MistralGetTrace: Codable, Sendable {
     traceId: String,
     userId: String,
     workflowName: String,
-    workspaceId: String
+    workspaceId: String,
+    serviceAccountId: String? = nil
   ) {
     self.agentId = agentId
     self.agentName = agentName
@@ -106,6 +108,7 @@ public struct MistralGetTrace: Codable, Sendable {
     self.retrievalCount = retrievalCount
     self.rootSpanId = rootSpanId
     self.rootSpanName = rootSpanName
+    self.serviceAccountId = serviceAccountId
     self.serviceName = serviceName
     self.spanCount = spanCount
     self.startTime = startTime
@@ -143,6 +146,7 @@ public struct MistralGetTrace: Codable, Sendable {
     case retrievalCount = "retrieval_count"
     case rootSpanId = "root_span_id"
     case rootSpanName = "root_span_name"
+    case serviceAccountId = "service_account_id"
     case serviceName = "service_name"
     case spanCount = "span_count"
     case startTime = "start_time"

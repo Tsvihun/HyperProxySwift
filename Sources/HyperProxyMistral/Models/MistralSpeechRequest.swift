@@ -11,6 +11,8 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralSpeechRequest: Codable, Sendable {
+  public var conversationHistory: [MistralSpeechRequestConversationHistoryItem]?
+  public var expressiveness: Double?
   public var input: String
   public var metadata: MistralMetadataDict?
   public var model: String?
@@ -23,6 +25,8 @@ public struct MistralSpeechRequest: Codable, Sendable {
 
   public init(
     input: String,
+    conversationHistory: [MistralSpeechRequestConversationHistoryItem]? = nil,
+    expressiveness: Double? = nil,
     metadata: MistralMetadataDict? = nil,
     model: String? = nil,
     phonemeHints: [String: [MistralIPAPhoneme]]? = nil,
@@ -32,6 +36,8 @@ public struct MistralSpeechRequest: Codable, Sendable {
     stream: Bool? = nil,
     voiceId: String? = nil
   ) {
+    self.conversationHistory = conversationHistory
+    self.expressiveness = expressiveness
     self.input = input
     self.metadata = metadata
     self.model = model
@@ -44,6 +50,8 @@ public struct MistralSpeechRequest: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case conversationHistory = "conversation_history"
+    case expressiveness
     case input
     case metadata
     case model

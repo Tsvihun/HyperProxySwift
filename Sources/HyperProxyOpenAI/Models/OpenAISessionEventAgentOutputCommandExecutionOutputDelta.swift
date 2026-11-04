@@ -14,6 +14,7 @@ public struct OpenAISessionEventAgentOutputCommandExecutionOutputDelta: Codable,
   public var delta: String
   public var eventId: String
   public var itemId: String
+  public var obfuscation: String?
   public var outputIndex: Int64
   public var sessionId: String
   public var turnId: String
@@ -26,11 +27,13 @@ public struct OpenAISessionEventAgentOutputCommandExecutionOutputDelta: Codable,
     outputIndex: Int64,
     sessionId: String,
     turnId: String,
-    kind: OpenAISessionEventAgentOutputCommandExecutionOutputDelta.Kind
+    kind: OpenAISessionEventAgentOutputCommandExecutionOutputDelta.Kind,
+    obfuscation: String? = nil
   ) {
     self.delta = delta
     self.eventId = eventId
     self.itemId = itemId
+    self.obfuscation = obfuscation
     self.outputIndex = outputIndex
     self.sessionId = sessionId
     self.turnId = turnId
@@ -41,6 +44,7 @@ public struct OpenAISessionEventAgentOutputCommandExecutionOutputDelta: Codable,
     case delta
     case eventId = "event_id"
     case itemId = "item_id"
+    case obfuscation
     case outputIndex = "output_index"
     case sessionId = "session_id"
     case turnId = "turn_id"

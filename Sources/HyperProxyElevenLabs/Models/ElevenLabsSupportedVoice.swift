@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsSupportedVoice: Codable, Sendable {
+  public var cloneStrength: Double?
   public var description: String?
   public var label: String
   public var language: String?
@@ -24,6 +25,7 @@ public struct ElevenLabsSupportedVoice: Codable, Sendable {
   public init(
     label: String,
     voiceId: String,
+    cloneStrength: Double? = nil,
     description: String? = nil,
     language: String? = nil,
     modelFamily: ElevenLabsTTSModelFamily? = nil,
@@ -32,6 +34,7 @@ public struct ElevenLabsSupportedVoice: Codable, Sendable {
     speed: Double? = nil,
     stability: Double? = nil
   ) {
+    self.cloneStrength = cloneStrength
     self.description = description
     self.label = label
     self.language = language
@@ -44,6 +47,7 @@ public struct ElevenLabsSupportedVoice: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case cloneStrength = "clone_strength"
     case description
     case label
     case language

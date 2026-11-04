@@ -41,14 +41,14 @@ struct GeneratedProviderModulesTests {
     )
     #expect(service.definition.id == "anthropic")
     #expect(
-      service.route(.betaOrganizationAnalyticsAppsChatProjectsList).operation
-        == AnthropicOperation.betaOrganizationAnalyticsAppsChatProjectsList.rawValue)
+      service.route(.organizationAnalyticsAppsChatProjectsList).operation
+        == AnthropicOperation.organizationAnalyticsAppsChatProjectsList.rawValue)
     #expect(
       service.betaListEnvironments.operation.rawValue
         == AnthropicOperation.betaListEnvironments.rawValue)
     #expect(
-      service.admin.betaOrganizationAnalyticsAppsChatProjectsList.operation.rawValue
-        == AnthropicOperation.betaOrganizationAnalyticsAppsChatProjectsList.rawValue)
+      service.admin.organizationAnalyticsAppsChatProjectsList.operation.rawValue
+        == AnthropicOperation.organizationAnalyticsAppsChatProjectsList.rawValue)
   }
 
   @Test("Google Gemini operations match the catalog")
@@ -270,14 +270,14 @@ struct GeneratedProviderModulesTests {
     )
     #expect(service.definition.id == "elevenlabs")
     #expect(
-      service.route(.createServiceAccount).operation
-        == ElevenLabsOperation.createServiceAccount.rawValue)
+      service.route(.getWorkspaceServiceAccounts).operation
+        == ElevenLabsOperation.getWorkspaceServiceAccounts.rawValue)
     #expect(
       service.rebasePreviewRoute.operation.rawValue
         == ElevenLabsOperation.rebasePreviewRoute.rawValue)
     #expect(
-      service.admin.createServiceAccount.operation.rawValue
-        == ElevenLabsOperation.createServiceAccount.rawValue)
+      service.admin.getWorkspaceServiceAccounts.operation.rawValue
+        == ElevenLabsOperation.getWorkspaceServiceAccounts.rawValue)
   }
 
   @Test("Each AI operations match the catalog")

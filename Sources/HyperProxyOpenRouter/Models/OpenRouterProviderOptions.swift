@@ -20,6 +20,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
   public var amazonBedrockClaudeOnAws: [String: HyperProxyJSONValue]?
   public var amazonNova: [String: HyperProxyJSONValue]?
   public var ambient: [String: HyperProxyJSONValue]?
+  public var antdigital: [String: HyperProxyJSONValue]?
   public var anthropic: [String: HyperProxyJSONValue]?
   public var anthropic2: [String: HyperProxyJSONValue]?
   public var anyscale: [String: HyperProxyJSONValue]?
@@ -111,9 +112,11 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
   public var ollama: [String: HyperProxyJSONValue]?
   public var openInference: [String: HyperProxyJSONValue]?
   public var openai: [String: HyperProxyJSONValue]?
+  public var parallel: [String: HyperProxyJSONValue]?
   public var parasail: [String: HyperProxyJSONValue]?
   public var paretoAlpha: [String: HyperProxyJSONValue]?
   public var particleAi: [String: HyperProxyJSONValue]?
+  public var pearlResearch: [String: HyperProxyJSONValue]?
   public var perceptron: [String: HyperProxyJSONValue]?
   public var perplexity: [String: HyperProxyJSONValue]?
   public var phala: [String: HyperProxyJSONValue]?
@@ -173,6 +176,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     amazonBedrockClaudeOnAws: [String: HyperProxyJSONValue]? = nil,
     amazonNova: [String: HyperProxyJSONValue]? = nil,
     ambient: [String: HyperProxyJSONValue]? = nil,
+    antdigital: [String: HyperProxyJSONValue]? = nil,
     anthropic: [String: HyperProxyJSONValue]? = nil,
     anthropic2: [String: HyperProxyJSONValue]? = nil,
     anyscale: [String: HyperProxyJSONValue]? = nil,
@@ -264,9 +268,11 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     ollama: [String: HyperProxyJSONValue]? = nil,
     openInference: [String: HyperProxyJSONValue]? = nil,
     openai: [String: HyperProxyJSONValue]? = nil,
+    parallel: [String: HyperProxyJSONValue]? = nil,
     parasail: [String: HyperProxyJSONValue]? = nil,
     paretoAlpha: [String: HyperProxyJSONValue]? = nil,
     particleAi: [String: HyperProxyJSONValue]? = nil,
+    pearlResearch: [String: HyperProxyJSONValue]? = nil,
     perceptron: [String: HyperProxyJSONValue]? = nil,
     perplexity: [String: HyperProxyJSONValue]? = nil,
     phala: [String: HyperProxyJSONValue]? = nil,
@@ -325,6 +331,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     self.amazonBedrockClaudeOnAws = amazonBedrockClaudeOnAws
     self.amazonNova = amazonNova
     self.ambient = ambient
+    self.antdigital = antdigital
     self.anthropic = anthropic
     self.anthropic2 = anthropic2
     self.anyscale = anyscale
@@ -416,9 +423,11 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     self.ollama = ollama
     self.openInference = openInference
     self.openai = openai
+    self.parallel = parallel
     self.parasail = parasail
     self.paretoAlpha = paretoAlpha
     self.particleAi = particleAi
+    self.pearlResearch = pearlResearch
     self.perceptron = perceptron
     self.perplexity = perplexity
     self.phala = phala
@@ -479,6 +488,7 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     case amazonBedrockClaudeOnAws = "amazon-bedrock/claude-on-aws"
     case amazonNova = "amazon-nova"
     case ambient
+    case antdigital
     case anthropic
     case anthropic2 = "anthropic/2"
     case anyscale
@@ -570,9 +580,11 @@ public struct OpenRouterProviderOptions: Codable, Sendable {
     case ollama
     case openInference = "open-inference"
     case openai
+    case parallel
     case parasail
     case paretoAlpha = "pareto-alpha"
     case particleAi = "particle-ai"
+    case pearlResearch = "pearl-research"
     case perceptron
     case perplexity
     case phala

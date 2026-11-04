@@ -11,8 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaAnalyticsPluginActivity: Codable, Sendable {
-  public var chatCoworkUnifiedMetrics:
-    AnthropicBetaOrganizationAnalyticsPluginActivityChatCoworkUnifiedMetrics?
+  public var chatCoworkUnifiedMetrics: AnthropicBetaAnalyticsPluginChatCoworkUnifiedMetrics?
   public var claudeCodeMetrics: AnthropicBetaAnalyticsPluginClaudeCodeMetrics
   public var coworkMetrics: AnthropicBetaAnalyticsPluginCoworkMetrics
   public var distinctUserCount: Int
@@ -31,8 +30,7 @@ public struct AnthropicBetaAnalyticsPluginActivity: Codable, Sendable {
     distinctUserCount: Int,
     invocationCount: Int,
     pluginName: String,
-    chatCoworkUnifiedMetrics:
-      AnthropicBetaOrganizationAnalyticsPluginActivityChatCoworkUnifiedMetrics? = nil,
+    chatCoworkUnifiedMetrics: AnthropicBetaAnalyticsPluginChatCoworkUnifiedMetrics? = nil,
     installCount: Int? = nil,
     pluginId: String? = nil,
     product: String? = nil,

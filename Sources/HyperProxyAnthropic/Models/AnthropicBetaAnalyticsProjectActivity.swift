@@ -16,7 +16,6 @@ public struct AnthropicBetaAnalyticsProjectActivity: Codable, Sendable {
   public var distinctConversationCount: Int?
   public var distinctUserCount: Int
   public var messageCount: Int
-  public var product: String?
   public var projectId: String
   public var projectName: String
   public var rbacGroupId: String?
@@ -31,7 +30,6 @@ public struct AnthropicBetaAnalyticsProjectActivity: Codable, Sendable {
     createdAt: String? = nil,
     createdBy: AnthropicBetaAnalyticsUser? = nil,
     distinctConversationCount: Int? = nil,
-    product: String? = nil,
     rbacGroupId: String? = nil,
     rbacGroupName: String? = nil,
     userId: String? = nil
@@ -41,7 +39,6 @@ public struct AnthropicBetaAnalyticsProjectActivity: Codable, Sendable {
     self.distinctConversationCount = distinctConversationCount
     self.distinctUserCount = distinctUserCount
     self.messageCount = messageCount
-    self.product = product
     self.projectId = projectId
     self.projectName = projectName
     self.rbacGroupId = rbacGroupId
@@ -55,7 +52,6 @@ public struct AnthropicBetaAnalyticsProjectActivity: Codable, Sendable {
     case distinctConversationCount = "distinct_conversation_count"
     case distinctUserCount = "distinct_user_count"
     case messageCount = "message_count"
-    case product
     case projectId = "project_id"
     case projectName = "project_name"
     case rbacGroupId = "rbac_group_id"

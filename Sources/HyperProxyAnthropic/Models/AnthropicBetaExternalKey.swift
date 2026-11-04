@@ -19,6 +19,7 @@ public struct AnthropicBetaExternalKey: Codable, Sendable {
   public var providerConfig: AnthropicBetaOrganizationExternalKeyProviderConfig
   public var kind: AnthropicBetaExternalKey.Kind
   public var updatedAt: String
+  public var userProfileId: String?
 
   public init(
     attachment: AnthropicBetaAttachment,
@@ -28,7 +29,8 @@ public struct AnthropicBetaExternalKey: Codable, Sendable {
     providerConfig: AnthropicBetaOrganizationExternalKeyProviderConfig,
     kind: AnthropicBetaExternalKey.Kind,
     updatedAt: String,
-    displayName: String? = nil
+    displayName: String? = nil,
+    userProfileId: String? = nil
   ) {
     self.attachment = attachment
     self.createdAt = createdAt
@@ -38,6 +40,7 @@ public struct AnthropicBetaExternalKey: Codable, Sendable {
     self.providerConfig = providerConfig
     self.kind = kind
     self.updatedAt = updatedAt
+    self.userProfileId = userProfileId
   }
 
   enum CodingKeys: String, CodingKey {
@@ -49,6 +52,7 @@ public struct AnthropicBetaExternalKey: Codable, Sendable {
     case providerConfig = "provider_config"
     case kind = "type"
     case updatedAt = "updated_at"
+    case userProfileId = "user_profile_id"
   }
 
   public enum Kind: String, Codable, Hashable, Sendable {

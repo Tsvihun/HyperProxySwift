@@ -14,13 +14,12 @@ public struct MistralVoiceCreateRequest: Codable, Sendable {
   public var age: Int?
   public var color: String?
   public var description: String?
-  public var gender: String?
+  public var gender: MistralVoiceGender?
   public var languages: [String]?
   public var name: String
   public var retentionNotice: Int?
   public var sampleAudio: String?
   public var sampleFilename: String?
-  public var slug: String?
   public var tags: [String]?
 
   public init(
@@ -28,12 +27,11 @@ public struct MistralVoiceCreateRequest: Codable, Sendable {
     age: Int? = nil,
     color: String? = nil,
     description: String? = nil,
-    gender: String? = nil,
+    gender: MistralVoiceGender? = nil,
     languages: [String]? = nil,
     retentionNotice: Int? = nil,
     sampleAudio: String? = nil,
     sampleFilename: String? = nil,
-    slug: String? = nil,
     tags: [String]? = nil
   ) {
     self.age = age
@@ -45,7 +43,6 @@ public struct MistralVoiceCreateRequest: Codable, Sendable {
     self.retentionNotice = retentionNotice
     self.sampleAudio = sampleAudio
     self.sampleFilename = sampleFilename
-    self.slug = slug
     self.tags = tags
   }
 
@@ -59,7 +56,6 @@ public struct MistralVoiceCreateRequest: Codable, Sendable {
     case retentionNotice = "retention_notice"
     case sampleAudio = "sample_audio"
     case sampleFilename = "sample_filename"
-    case slug
     case tags
   }
 }

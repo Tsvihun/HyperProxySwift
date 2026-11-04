@@ -13,12 +13,12 @@ import HyperProxyCore
 public struct DeepLMultilingualGlossaryEntriesInformation: Codable, Sendable {
   public var entryCount: Int?
   public var sourceLang: DeepLGlossarySourceLanguage?
-  public var targetLang: DeepLGlossaryTargetLanguage?
+  public var targetLang: DeepLMultilingualGlossaryTargetLanguage?
 
   public init(
     entryCount: Int? = nil,
     sourceLang: DeepLGlossarySourceLanguage? = nil,
-    targetLang: DeepLGlossaryTargetLanguage? = nil
+    targetLang: DeepLMultilingualGlossaryTargetLanguage? = nil
   ) {
     self.entryCount = entryCount
     self.sourceLang = sourceLang

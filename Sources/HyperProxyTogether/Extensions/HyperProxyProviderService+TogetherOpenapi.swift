@@ -1758,34 +1758,6 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
     return try await call.decoded(TogetherListVoicesResponse.self)
   }
 
-  public func endpointServiceListOrganizationEndpoints(
-    organizationId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherDEListEndpointsResponse {
-    let call = self.call(.endpointServiceListOrganizationEndpoints)
-      .path("organizationId", organizationId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherDEListEndpointsResponse.self)
-  }
-
-  public func volumeServiceListOrganizationModels(
-    organizationId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> TogetherDEListModelsResponse {
-    let call = self.call(.volumeServiceListOrganizationModels)
-      .path("organizationId", organizationId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(TogetherDEListModelsResponse.self)
-  }
-
   public func configServiceListProjectConfigs(
     projectId: String,
     query: [URLQueryItem] = [],

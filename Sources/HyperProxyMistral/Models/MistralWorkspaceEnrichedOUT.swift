@@ -126,6 +126,11 @@ public struct MistralWorkspaceEnrichedOUT: Codable, Sendable {
     }
 
     /// Provider-native value without the schema union wrapper.
+    public static var value50023ca6_3db1_41bc8c10F0ae6f460fba: Self {
+      .staticWorkspaceRoles(.value50023ca6_3db1_41bc8c10F0ae6f460fba)
+    }
+
+    /// Provider-native value without the schema union wrapper.
     public static var value17aa61c5_1c61_477eA40aE52c8ccd74b9: Self {
       .staticWorkspaceRoles(.value17aa61c5_1c61_477eA40aE52c8ccd74b9)
     }
@@ -245,6 +250,11 @@ public struct MistralWorkspaceEnrichedOUT: Codable, Sendable {
     /// Provider-native value without the schema union wrapper.
     public static var value252a0825_40b9_4b98Be80_7658956f13e9: Self {
       .staticWorkspaceRoles(.value252a0825_40b9_4b98Be80_7658956f13e9)
+    }
+
+    /// Provider-native value without the schema union wrapper.
+    public static var value50023ca6_3db1_41bc8c10F0ae6f460fba: Self {
+      .staticWorkspaceRoles(.value50023ca6_3db1_41bc8c10F0ae6f460fba)
     }
 
     /// Provider-native value without the schema union wrapper.

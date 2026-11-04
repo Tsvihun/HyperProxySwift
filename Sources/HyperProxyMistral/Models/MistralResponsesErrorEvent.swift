@@ -15,12 +15,12 @@ public struct MistralResponsesErrorEvent: Codable, Sendable {
   public var message: String
   public var param: String?
   public var sequenceNumber: Int
-  public var kind: MistralResponsesErrorEvent.Kind
+  public var kind: MistralErrorKind
 
   public init(
     message: String,
     sequenceNumber: Int,
-    kind: MistralResponsesErrorEvent.Kind = .error,
+    kind: MistralErrorKind = .error,
     code: String? = nil,
     param: String? = nil
   ) {
@@ -37,9 +37,5 @@ public struct MistralResponsesErrorEvent: Codable, Sendable {
     case param
     case sequenceNumber = "sequence_number"
     case kind = "type"
-  }
-
-  public enum Kind: String, Codable, Hashable, Sendable {
-    case error = "error"
   }
 }

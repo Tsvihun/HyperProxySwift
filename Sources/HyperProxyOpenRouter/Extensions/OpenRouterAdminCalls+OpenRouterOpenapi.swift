@@ -388,6 +388,18 @@ extension OpenRouterAdminCalls {
     return try await prepared.decoded(OpenRouterBulkUnassignMembersResponse.self)
   }
 
+  public func getCurrentKey(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterGetCurrentKeyResponse {
+    let call = self.service.call(.getCurrentKey)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterGetCurrentKeyResponse.self)
+  }
+
   public func list(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -676,38 +688,6 @@ extension OpenRouterAdminCalls {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(OpenRouterManagedPrivateEndpointResponse.self)
-  }
-
-  public func updatePrivateEndpointParameters(
-    _ body: OpenRouterUpdatePrivateEndpointParametersRequest,
-    id: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> OpenRouterPrivateEndpointResponse {
-    let call = self.service.call(.updatePrivateEndpointParameters)
-      .path("id", id)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(OpenRouterPrivateEndpointResponse.self)
-  }
-
-  public func updatePrivateEndpointPricing(
-    _ body: OpenRouterUpdatePrivateEndpointPricingRequest,
-    id: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> OpenRouterPrivateEndpointResponse {
-    let call = self.service.call(.updatePrivateEndpointPricing)
-      .path("id", id)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(OpenRouterPrivateEndpointResponse.self)
   }
 
   public func validatePrivateEndpoint(

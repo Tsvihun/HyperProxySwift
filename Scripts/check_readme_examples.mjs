@@ -96,8 +96,11 @@ reader = CodeReader(); reader.feed(open(sys.argv[1]).read()); print(json.dumps(r
 
 const bin = spawnSync('swift', ['build', '--show-bin-path'], { cwd: root, encoding: 'utf8' });
 if (bin.status !== 0) throw new Error(bin.stderr || 'Cannot locate Swift build outputs');
-const modules = join(bin.stdout.trim(), 'Modules');
-if (!existsSync(join(modules, 'HyperProxyOpenAI.swiftmodule'))) {
+// SwiftPM's native builder uses Modules/, while the Swift 6.4 Xcode builder
+// places target-qualified .swiftmodule bundles directly beside the products.
+const modules = [join(bin.stdout.trim(), 'Modules'), bin.stdout.trim()]
+  .find(directory => existsSync(join(directory, 'HyperProxyOpenAI.swiftmodule')));
+if (!modules) {
   throw new Error('Build the package first: swift build (or swift test)');
 }
 const result = spawnSync('swiftc', [

@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct OpenRouterPerfLast30mByWorkload: Codable, Sendable {
   public var decisions: OpenRouterDecisions?
   public var embeddings: OpenRouterEmbeddings?
+  public var extractions: OpenRouterExtractions?
   public var imageGeneration: OpenRouterImageGeneration?
   public var rerank: OpenRouterRerank?
   public var stt: OpenRouterSTT?
@@ -24,6 +25,7 @@ public struct OpenRouterPerfLast30mByWorkload: Codable, Sendable {
   public init(
     decisions: OpenRouterDecisions? = nil,
     embeddings: OpenRouterEmbeddings? = nil,
+    extractions: OpenRouterExtractions? = nil,
     imageGeneration: OpenRouterImageGeneration? = nil,
     rerank: OpenRouterRerank? = nil,
     stt: OpenRouterSTT? = nil,
@@ -34,6 +36,7 @@ public struct OpenRouterPerfLast30mByWorkload: Codable, Sendable {
   ) {
     self.decisions = decisions
     self.embeddings = embeddings
+    self.extractions = extractions
     self.imageGeneration = imageGeneration
     self.rerank = rerank
     self.stt = stt
@@ -46,6 +49,7 @@ public struct OpenRouterPerfLast30mByWorkload: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case decisions
     case embeddings
+    case extractions
     case imageGeneration = "image_generation"
     case rerank
     case stt

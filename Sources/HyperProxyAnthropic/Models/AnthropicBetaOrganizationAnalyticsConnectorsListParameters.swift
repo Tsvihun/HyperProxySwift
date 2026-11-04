@@ -14,9 +14,9 @@ public struct AnthropicBetaOrganizationAnalyticsConnectorsListParameters: Codabl
   public var date: AnthropicBetaOrganizationAnalyticsConnectorsListParameters.DateValue?
   public var endingDate: AnthropicBetaOrganizationAnalyticsConnectorsListParameters.EndingDate?
   public var filter: [String]?
-  public var groupBy: [AnthropicBetaOrganizationAnalyticsConnectorsListParametersGroupByItem]?
+  public var groupBy: [AnthropicBetaAnalyticsConnectorGroupBy]?
   public var limit: Int?
-  public var order: AnthropicBetaOrganizationAnalyticsConnectorsListParameters.Order?
+  public var order: AnthropicBetaAnalyticsOrder?
   public var orderBy: String?
   public var page: String?
   public var startingDate: AnthropicBetaOrganizationAnalyticsConnectorsListParameters.StartingDate?
@@ -25,9 +25,9 @@ public struct AnthropicBetaOrganizationAnalyticsConnectorsListParameters: Codabl
     date: AnthropicBetaOrganizationAnalyticsConnectorsListParameters.DateValue? = nil,
     endingDate: AnthropicBetaOrganizationAnalyticsConnectorsListParameters.EndingDate? = nil,
     filter: [String]? = nil,
-    groupBy: [AnthropicBetaOrganizationAnalyticsConnectorsListParametersGroupByItem]? = nil,
+    groupBy: [AnthropicBetaAnalyticsConnectorGroupBy]? = nil,
     limit: Int? = nil,
-    order: AnthropicBetaOrganizationAnalyticsConnectorsListParameters.Order? = nil,
+    order: AnthropicBetaAnalyticsOrder? = nil,
     orderBy: String? = nil,
     page: String? = nil,
     startingDate: AnthropicBetaOrganizationAnalyticsConnectorsListParameters.StartingDate? = nil
@@ -129,13 +129,6 @@ public struct AnthropicBetaOrganizationAnalyticsConnectorsListParameters: Codabl
       }
 
     }
-  }
-
-  public enum Order: String, Codable,
-    Hashable, Sendable
-  {
-    case asc = "asc"
-    case desc = "desc"
   }
 
   public enum StartingDate: Codable,

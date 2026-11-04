@@ -13,13 +13,13 @@ import HyperProxyCore
 public struct MistralToolMessage: Codable, Sendable {
   public var content: MistralToolMessage.Content?
   public var name: String?
-  public var role: MistralToolMessage.Role?
+  public var role: MistralToolRole?
   public var toolCallId: String?
 
   public init(
     content: MistralToolMessage.Content?,
     name: String? = nil,
-    role: MistralToolMessage.Role? = nil,
+    role: MistralToolRole? = nil,
     toolCallId: String? = nil
   ) {
     self.content = content
@@ -57,10 +57,6 @@ public struct MistralToolMessage: Codable, Sendable {
         try container.encode(value)
       }
     }
-  }
-
-  public enum Role: String, Codable, Hashable, Sendable {
-    case tool = "tool"
   }
 }
 

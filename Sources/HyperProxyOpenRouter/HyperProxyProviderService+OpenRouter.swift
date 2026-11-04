@@ -221,6 +221,10 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
   public var listProviders: HyperProxyProviderCall<OpenRouterOperation> {
     self.call(.listProviders)
   }
+  /// `GET api/v1/providers/{provider_slug}/endpoints`
+  public var listProviderEndpoints: HyperProxyProviderCall<OpenRouterOperation> {
+    self.call(.listProviderEndpoints)
+  }
   /// `POST api/v1/rerank`
   public var createRerank: HyperProxyProviderCall<OpenRouterOperation> {
     self.call(.createRerank)

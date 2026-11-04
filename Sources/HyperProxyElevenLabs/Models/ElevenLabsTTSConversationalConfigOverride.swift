@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct ElevenLabsTTSConversationalConfigOverride: Codable, Sendable {
+  public var cloneStrength: Double?
   public var modelId: ElevenLabsTTSConversationalModel?
   public var pronunciationDictionaryLocators:
     [ElevenLabsPydanticPronunciationDictionaryVersionLocator]?
@@ -21,6 +22,7 @@ public struct ElevenLabsTTSConversationalConfigOverride: Codable, Sendable {
   public var voiceId: String?
 
   public init(
+    cloneStrength: Double? = nil,
     modelId: ElevenLabsTTSConversationalModel? = nil,
     pronunciationDictionaryLocators: [ElevenLabsPydanticPronunciationDictionaryVersionLocator]? =
       nil,
@@ -30,6 +32,7 @@ public struct ElevenLabsTTSConversationalConfigOverride: Codable, Sendable {
     supportedVoices: [ElevenLabsSupportedVoice]? = nil,
     voiceId: String? = nil
   ) {
+    self.cloneStrength = cloneStrength
     self.modelId = modelId
     self.pronunciationDictionaryLocators = pronunciationDictionaryLocators
     self.similarityBoost = similarityBoost
@@ -40,6 +43,7 @@ public struct ElevenLabsTTSConversationalConfigOverride: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case cloneStrength = "clone_strength"
     case modelId = "model_id"
     case pronunciationDictionaryLocators = "pronunciation_dictionary_locators"
     case similarityBoost = "similarity_boost"

@@ -12,21 +12,25 @@ import HyperProxyCore
 
 public struct OpenAISessionEventAgentSessionRequiresAction: Codable, Sendable {
   public var eventId: String
+  public var obfuscation: String?
   public var session: OpenAISessionResource
   public var kind: OpenAISessionEventAgentSessionRequiresAction.Kind
 
   public init(
     eventId: String,
     session: OpenAISessionResource,
-    kind: OpenAISessionEventAgentSessionRequiresAction.Kind
+    kind: OpenAISessionEventAgentSessionRequiresAction.Kind,
+    obfuscation: String? = nil
   ) {
     self.eventId = eventId
+    self.obfuscation = obfuscation
     self.session = session
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
     case eventId = "event_id"
+    case obfuscation
     case session
     case kind = "type"
   }

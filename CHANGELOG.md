@@ -1,5 +1,19 @@
 # Changelog
 
+## Unreleased — 2026-11-04
+
+- Refresh provider contracts: 2,523 normalized routes across 18 families, 22,629
+  generated types and 2,303 typed helpers. Reconcile Anthropic organization APIs,
+  OpenAI workload identities, Mistral context search/voice agents, ElevenLabs
+  analysis/conversation groups, Gemini proactivity and DeepL glossary types.
+- Support OpenAI `12h` cache retention and typed, optional cache-write lifetime
+  details. Preserve legacy responses without the new detail object.
+- Classify plural organization/key management routes as admin. Follow upstream
+  removal of SMB and private-endpoint PUT operations and migration of Mistral
+  managed indexes to context search indexes; affected callers need API migration.
+- Support Swift 6.4 formatter configuration and both SwiftPM module layouts in
+  documentation checks. Changed source snapshots retain pending release reviews.
+
 ## 0.6.0 — 2026-10-25
 
 - Reconcile current Anthropic/Groq SDK contracts: add Claude 5.5/5.1 and Qwen 3.8

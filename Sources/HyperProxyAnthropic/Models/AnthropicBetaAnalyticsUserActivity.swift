@@ -11,8 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaAnalyticsUserActivity: Codable, Sendable {
-  public var chatCoworkUnifiedMetrics:
-    AnthropicBetaOrganizationAnalyticsUserActivityChatCoworkUnifiedMetrics?
+  public var chatCoworkUnifiedMetrics: AnthropicBetaAnalyticsChatCoworkUnifiedMetrics?
   public var chatMetrics: AnthropicBetaAnalyticsChatMetrics
   public var claudeCodeMetrics: AnthropicBetaAnalyticsClaudeCodeMetrics
   public var coworkMetrics: AnthropicBetaAnalyticsCoworkMetrics
@@ -34,8 +33,7 @@ public struct AnthropicBetaAnalyticsUserActivity: Codable, Sendable {
     officeMetrics: AnthropicBetaAnalyticsOfficeMetrics,
     scienceMetrics: AnthropicBetaAnalyticsScienceMetrics,
     webSearchCount: Int,
-    chatCoworkUnifiedMetrics:
-      AnthropicBetaOrganizationAnalyticsUserActivityChatCoworkUnifiedMetrics? = nil,
+    chatCoworkUnifiedMetrics: AnthropicBetaAnalyticsChatCoworkUnifiedMetrics? = nil,
     distinctUserCount: Int? = nil,
     lastActivityDate: String? = nil,
     rbacGroupId: String? = nil,

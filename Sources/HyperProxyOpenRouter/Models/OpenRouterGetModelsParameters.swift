@@ -15,6 +15,7 @@ public struct OpenRouterGetModelsParameters: Codable, Sendable {
   public var category: OpenRouterGetModelsParameters.Category?
   public var context: Int?
   public var distillable: OpenRouterGetModelsParameters.Distillable?
+  public var endpoints: String?
   public var inputModalities: String?
   public var limit: Int?
   public var maxAgeDays: Int?
@@ -48,6 +49,7 @@ public struct OpenRouterGetModelsParameters: Codable, Sendable {
     category: OpenRouterGetModelsParameters.Category? = nil,
     context: Int? = nil,
     distillable: OpenRouterGetModelsParameters.Distillable? = nil,
+    endpoints: String? = nil,
     inputModalities: String? = nil,
     limit: Int? = nil,
     maxAgeDays: Int? = nil,
@@ -80,6 +82,7 @@ public struct OpenRouterGetModelsParameters: Codable, Sendable {
     self.category = category
     self.context = context
     self.distillable = distillable
+    self.endpoints = endpoints
     self.inputModalities = inputModalities
     self.limit = limit
     self.maxAgeDays = maxAgeDays
@@ -114,6 +117,7 @@ public struct OpenRouterGetModelsParameters: Codable, Sendable {
     case category
     case context
     case distillable
+    case endpoints
     case inputModalities = "input_modalities"
     case limit
     case maxAgeDays = "max_age_days"

@@ -541,14 +541,6 @@ extension HyperProxyProviderService where Operation == TogetherOperation {
   public var fetchVoices: HyperProxyProviderCall<TogetherOperation> {
     self.call(.fetchVoices)
   }
-  /// `GET v2/organizations/{organizationId}/endpoints`
-  public var endpointServiceListOrganizationEndpoints: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.endpointServiceListOrganizationEndpoints)
-  }
-  /// `GET v2/organizations/{organizationId}/models`
-  public var volumeServiceListOrganizationModels: HyperProxyProviderCall<TogetherOperation> {
-    self.call(.volumeServiceListOrganizationModels)
-  }
   /// `GET v2/projects/{projectId}/configs`
   public var configServiceListProjectConfigs: HyperProxyProviderCall<TogetherOperation> {
     self.call(.configServiceListProjectConfigs)

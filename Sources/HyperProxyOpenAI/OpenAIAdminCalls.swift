@@ -314,6 +314,14 @@ public struct OpenAIAdminCalls: Sendable {
   public var createanApIkeyforaserviceaccount: HyperProxyProviderCall<OpenAIOperation> {
     self.service.call(.createanApIkeyforaserviceaccount)
   }
+  /// `GET v1/organization/projects/{project_id}/service_tier_settings`
+  public var retrieveprojectservicetiersettings: HyperProxyProviderCall<OpenAIOperation> {
+    self.service.call(.retrieveprojectservicetiersettings)
+  }
+  /// `POST v1/organization/projects/{project_id}/service_tier_settings`
+  public var updateprojectservicetiersettings: HyperProxyProviderCall<OpenAIOperation> {
+    self.service.call(.updateprojectservicetiersettings)
+  }
   /// `GET v1/organization/projects/{project_id}/spend_alerts`
   public var listProjectSpendAlerts: HyperProxyProviderCall<OpenAIOperation> {
     self.service.call(.listProjectSpendAlerts)
@@ -493,5 +501,46 @@ public struct OpenAIAdminCalls: Sendable {
   /// `GET v1/organization/users/{user_id}/roles/{role_id}`
   public var retrieveUserRole: HyperProxyProviderCall<OpenAIOperation> {
     self.service.call(.retrieveUserRole)
+  }
+  /// `GET v1/organization/workload_identity_providers`
+  public var listPlatformworkloadidentityproviders: HyperProxyProviderCall<OpenAIOperation> {
+    self.service.call(.listPlatformworkloadidentityproviders)
+  }
+  /// `POST v1/organization/workload_identity_providers`
+  public var createPlatformworkloadidentityprovider: HyperProxyProviderCall<OpenAIOperation> {
+    self.service.call(.createPlatformworkloadidentityprovider)
+  }
+  /// `DELETE v1/organization/workload_identity_providers/{workload_identity_provider_id}`
+  public var deletePlatformworkloadidentityprovider: HyperProxyProviderCall<OpenAIOperation> {
+    self.service.call(.deletePlatformworkloadidentityprovider)
+  }
+  /// `GET v1/organization/workload_identity_providers/{workload_identity_provider_id}`
+  public var retrievePlatformworkloadidentityprovider: HyperProxyProviderCall<OpenAIOperation> {
+    self.service.call(.retrievePlatformworkloadidentityprovider)
+  }
+  /// `POST v1/organization/workload_identity_providers/{workload_identity_provider_id}`
+  public var updatePlatformworkloadidentityprovider: HyperProxyProviderCall<OpenAIOperation> {
+    self.service.call(.updatePlatformworkloadidentityprovider)
+  }
+  /// `GET v1/organization/workload_identity_providers/{workload_identity_provider_id}/federation_rules`
+  public var listPlatformworkloadidentityfederationrules: HyperProxyProviderCall<OpenAIOperation> {
+    self.service.call(.listPlatformworkloadidentityfederationrules)
+  }
+  /// `POST v1/organization/workload_identity_providers/{workload_identity_provider_id}/federation_rules`
+  public var createPlatformworkloadidentityfederationrule: HyperProxyProviderCall<OpenAIOperation> {
+    self.service.call(.createPlatformworkloadidentityfederationrule)
+  }
+  /// `DELETE v1/organization/workload_identity_providers/{workload_identity_provider_id}/federation_rules/{workload_identity_federation_rule_id}`
+  public var deletePlatformworkloadidentityfederationrule: HyperProxyProviderCall<OpenAIOperation> {
+    self.service.call(.deletePlatformworkloadidentityfederationrule)
+  }
+  /// `GET v1/organization/workload_identity_providers/{workload_identity_provider_id}/federation_rules/{workload_identity_federation_rule_id}`
+  public var retrievePlatformworkloadidentityfederationrule: HyperProxyProviderCall<OpenAIOperation>
+  {
+    self.service.call(.retrievePlatformworkloadidentityfederationrule)
+  }
+  /// `POST v1/organization/workload_identity_providers/{workload_identity_provider_id}/federation_rules/{workload_identity_federation_rule_id}`
+  public var updatePlatformworkloadidentityfederationrule: HyperProxyProviderCall<OpenAIOperation> {
+    self.service.call(.updatePlatformworkloadidentityfederationrule)
   }
 }

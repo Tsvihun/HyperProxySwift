@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct OpenAIBetaCompactResource: Codable, Sendable {
   public var createdAt: Int
   public var id: String
+  public var image: OpenAIBetaResolvedImageOptions?
   public var object: OpenAIBetaCompactResource.Object
   public var output: [OpenAIBetaItemField]
   public var usage: OpenAIBetaResponseUsage
@@ -22,10 +23,12 @@ public struct OpenAIBetaCompactResource: Codable, Sendable {
     id: String,
     object: OpenAIBetaCompactResource.Object,
     output: [OpenAIBetaItemField],
-    usage: OpenAIBetaResponseUsage
+    usage: OpenAIBetaResponseUsage,
+    image: OpenAIBetaResolvedImageOptions? = nil
   ) {
     self.createdAt = createdAt
     self.id = id
+    self.image = image
     self.object = object
     self.output = output
     self.usage = usage
@@ -34,6 +37,7 @@ public struct OpenAIBetaCompactResource: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case createdAt = "created_at"
     case id
+    case image
     case object
     case output
     case usage

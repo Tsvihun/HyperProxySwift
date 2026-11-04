@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsTTSConversationalConfigWorkflowOverrideOutput: Codable, Sendable {
   public var agentOutputAudioFormat: ElevenLabsTTSOutputFormat?
   public var audioEffects: ElevenLabsEffectsSpecOutput?
+  public var cloneStrength: Double?
   public var enablePhonemeTags: Bool?
   public var expressiveMode: Bool?
   public var modelId: ElevenLabsTTSConversationalModel?
@@ -30,6 +31,7 @@ public struct ElevenLabsTTSConversationalConfigWorkflowOverrideOutput: Codable, 
   public init(
     agentOutputAudioFormat: ElevenLabsTTSOutputFormat? = nil,
     audioEffects: ElevenLabsEffectsSpecOutput? = nil,
+    cloneStrength: Double? = nil,
     enablePhonemeTags: Bool? = nil,
     expressiveMode: Bool? = nil,
     modelId: ElevenLabsTTSConversationalModel? = nil,
@@ -46,6 +48,7 @@ public struct ElevenLabsTTSConversationalConfigWorkflowOverrideOutput: Codable, 
   ) {
     self.agentOutputAudioFormat = agentOutputAudioFormat
     self.audioEffects = audioEffects
+    self.cloneStrength = cloneStrength
     self.enablePhonemeTags = enablePhonemeTags
     self.expressiveMode = expressiveMode
     self.modelId = modelId
@@ -63,6 +66,7 @@ public struct ElevenLabsTTSConversationalConfigWorkflowOverrideOutput: Codable, 
   enum CodingKeys: String, CodingKey {
     case agentOutputAudioFormat = "agent_output_audio_format"
     case audioEffects = "audio_effects"
+    case cloneStrength = "clone_strength"
     case enablePhonemeTags = "enable_phoneme_tags"
     case expressiveMode = "expressive_mode"
     case modelId = "model_id"

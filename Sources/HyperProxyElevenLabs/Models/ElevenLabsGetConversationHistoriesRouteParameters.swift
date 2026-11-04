@@ -22,8 +22,10 @@ public struct ElevenLabsGetConversationHistoriesRouteParameters: Codable, Sendab
   public var conversationProductType: ElevenLabsConversationProduct?
   public var cursor: String?
   public var customGuardrailNames: [String]?
+  public var dataCollectionFilter: String?
   public var dataCollectionIds: [String]?
   public var dataCollectionParams: [String]?
+  public var dynamicVariableFilter: String?
   public var dynamicVariableParams: [String]?
   public var evaluationCriteriaIds: [String]?
   public var evaluationParams: [String]?
@@ -67,8 +69,10 @@ public struct ElevenLabsGetConversationHistoriesRouteParameters: Codable, Sendab
     conversationProductType: ElevenLabsConversationProduct? = nil,
     cursor: String? = nil,
     customGuardrailNames: [String]? = nil,
+    dataCollectionFilter: String? = nil,
     dataCollectionIds: [String]? = nil,
     dataCollectionParams: [String]? = nil,
+    dynamicVariableFilter: String? = nil,
     dynamicVariableParams: [String]? = nil,
     evaluationCriteriaIds: [String]? = nil,
     evaluationParams: [String]? = nil,
@@ -111,8 +115,10 @@ public struct ElevenLabsGetConversationHistoriesRouteParameters: Codable, Sendab
     self.conversationProductType = conversationProductType
     self.cursor = cursor
     self.customGuardrailNames = customGuardrailNames
+    self.dataCollectionFilter = dataCollectionFilter
     self.dataCollectionIds = dataCollectionIds
     self.dataCollectionParams = dataCollectionParams
+    self.dynamicVariableFilter = dynamicVariableFilter
     self.dynamicVariableParams = dynamicVariableParams
     self.evaluationCriteriaIds = evaluationCriteriaIds
     self.evaluationParams = evaluationParams
@@ -156,8 +162,10 @@ public struct ElevenLabsGetConversationHistoriesRouteParameters: Codable, Sendab
     case conversationProductType = "conversation_product_type"
     case cursor
     case customGuardrailNames = "custom_guardrail_names"
+    case dataCollectionFilter = "data_collection_filter"
     case dataCollectionIds = "data_collection_ids"
     case dataCollectionParams = "data_collection_params"
+    case dynamicVariableFilter = "dynamic_variable_filter"
     case dynamicVariableParams = "dynamic_variable_params"
     case evaluationCriteriaIds = "evaluation_criteria_ids"
     case evaluationParams = "evaluation_params"

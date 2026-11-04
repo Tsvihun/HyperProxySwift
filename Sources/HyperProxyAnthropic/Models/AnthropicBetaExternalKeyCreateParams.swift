@@ -14,21 +14,25 @@ public struct AnthropicBetaExternalKeyCreateParams: Codable, Sendable {
   public var displayName: String?
   public var geo: AnthropicBetaExternalKeyCreateParams.Geo?
   public var providerConfig: AnthropicBetaOrganizationExternalKeyCreateParamsProviderConfig
+  public var userProfileId: String?
 
   public init(
     providerConfig: AnthropicBetaOrganizationExternalKeyCreateParamsProviderConfig,
     displayName: String? = nil,
-    geo: AnthropicBetaExternalKeyCreateParams.Geo? = nil
+    geo: AnthropicBetaExternalKeyCreateParams.Geo? = nil,
+    userProfileId: String? = nil
   ) {
     self.displayName = displayName
     self.geo = geo
     self.providerConfig = providerConfig
+    self.userProfileId = userProfileId
   }
 
   enum CodingKeys: String, CodingKey {
     case displayName = "display_name"
     case geo
     case providerConfig = "provider_config"
+    case userProfileId = "user_profile_id"
   }
 
   public enum Geo: String, Codable, Hashable, Sendable {

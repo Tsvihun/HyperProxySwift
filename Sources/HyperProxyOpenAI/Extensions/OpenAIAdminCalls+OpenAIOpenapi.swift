@@ -1074,6 +1074,36 @@ extension OpenAIAdminCalls {
     return try await prepared.decoded(OpenAIServiceAccountApiKeyBody.self)
   }
 
+  public func retrieveprojectservicetiersettings(
+    projectId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIProjectServiceTierSettingsResource {
+    let call = self.service.call(.retrieveprojectservicetiersettings)
+      .path("project_id", projectId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIProjectServiceTierSettingsResource.self)
+  }
+
+  public func updateprojectservicetiersettings(
+    _ body: OpenAIUpdateProjectServiceTierSettingsBody,
+    projectId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIProjectServiceTierSettingsResource {
+    let call = self.service.call(.updateprojectservicetiersettings)
+      .path("project_id", projectId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenAIProjectServiceTierSettingsResource.self)
+  }
+
   public func listProjectSpendAlerts(
     projectId: String,
     query: [URLQueryItem] = [],
@@ -1704,5 +1734,155 @@ extension OpenAIAdminCalls {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(OpenAIDeletedRoleAssignmentResource.self)
+  }
+
+  public func listPlatformworkloadidentityproviders(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIPlatformProviderListResource {
+    let call = self.service.call(.listPlatformworkloadidentityproviders)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIPlatformProviderListResource.self)
+  }
+
+  public func createPlatformworkloadidentityprovider(
+    _ body: OpenAICreatePlatformWorkloadIdentityProviderBody,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIPlatformProvider {
+    let call = self.service.call(.createPlatformworkloadidentityprovider)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenAIPlatformProvider.self)
+  }
+
+  public func retrievePlatformworkloadidentityprovider(
+    workloadIdentityProviderId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIPlatformProvider {
+    let call = self.service.call(.retrievePlatformworkloadidentityprovider)
+      .path("workload_identity_provider_id", workloadIdentityProviderId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIPlatformProvider.self)
+  }
+
+  public func updatePlatformworkloadidentityprovider(
+    _ body: OpenAIUpdatePlatformWorkloadIdentityProviderBody,
+    workloadIdentityProviderId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIPlatformProvider {
+    let call = self.service.call(.updatePlatformworkloadidentityprovider)
+      .path("workload_identity_provider_id", workloadIdentityProviderId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenAIPlatformProvider.self)
+  }
+
+  public func deletePlatformworkloadidentityprovider(
+    workloadIdentityProviderId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIPlatformProviderDeletedResource {
+    let call = self.service.call(.deletePlatformworkloadidentityprovider)
+      .path("workload_identity_provider_id", workloadIdentityProviderId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIPlatformProviderDeletedResource.self)
+  }
+
+  public func listPlatformworkloadidentityfederationrules(
+    workloadIdentityProviderId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIPlatformFederationRuleListResource {
+    let call = self.service.call(.listPlatformworkloadidentityfederationrules)
+      .path("workload_identity_provider_id", workloadIdentityProviderId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIPlatformFederationRuleListResource.self)
+  }
+
+  public func createPlatformworkloadidentityfederationrule(
+    _ body: OpenAICreatePlatformWorkloadIdentityFederationRuleBody,
+    workloadIdentityProviderId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIPlatformFederationRule {
+    let call = self.service.call(.createPlatformworkloadidentityfederationrule)
+      .path("workload_identity_provider_id", workloadIdentityProviderId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenAIPlatformFederationRule.self)
+  }
+
+  public func retrievePlatformworkloadidentityfederationrule(
+    workloadIdentityProviderId: String,
+    workloadIdentityFederationRuleId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIPlatformFederationRule {
+    let call = self.service.call(.retrievePlatformworkloadidentityfederationrule)
+      .path("workload_identity_provider_id", workloadIdentityProviderId)
+      .path("workload_identity_federation_rule_id", workloadIdentityFederationRuleId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIPlatformFederationRule.self)
+  }
+
+  public func updatePlatformworkloadidentityfederationrule(
+    _ body: OpenAIUpdatePlatformWorkloadIdentityFederationRuleBody,
+    workloadIdentityProviderId: String,
+    workloadIdentityFederationRuleId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIPlatformFederationRule {
+    let call = self.service.call(.updatePlatformworkloadidentityfederationrule)
+      .path("workload_identity_provider_id", workloadIdentityProviderId)
+      .path("workload_identity_federation_rule_id", workloadIdentityFederationRuleId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(OpenAIPlatformFederationRule.self)
+  }
+
+  public func deletePlatformworkloadidentityfederationrule(
+    workloadIdentityProviderId: String,
+    workloadIdentityFederationRuleId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenAIPlatformFederationRuleDeletedResource {
+    let call = self.service.call(.deletePlatformworkloadidentityfederationrule)
+      .path("workload_identity_provider_id", workloadIdentityProviderId)
+      .path("workload_identity_federation_rule_id", workloadIdentityFederationRuleId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenAIPlatformFederationRuleDeletedResource.self)
   }
 }

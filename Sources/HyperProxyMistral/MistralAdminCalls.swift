@@ -235,6 +235,14 @@ public struct MistralAdminCalls: Sendable {
   {
     self.service.call(.usersApiAdminWorkspacesAddOrUpdateUsersWorkspaces)
   }
+  /// `GET v1/billing/budget`
+  public var billingApiPublicGetBudget: HyperProxyProviderCall<MistralOperation> {
+    self.service.call(.billingApiPublicGetBudget)
+  }
+  /// `GET v1/billing/subscription`
+  public var billingApiPublicGetSubscription: HyperProxyProviderCall<MistralOperation> {
+    self.service.call(.billingApiPublicGetSubscription)
+  }
   /// `GET v1/connectors/{connector_id_or_name}/organization/credentials`
   public var connectorListOrganizationCredentialsV1: HyperProxyProviderCall<MistralOperation> {
     self.service.call(.connectorListOrganizationCredentialsV1)
@@ -246,6 +254,10 @@ public struct MistralAdminCalls: Sendable {
   /// `PUT v1/connectors/{connector_id}/organization/share`
   public var connectorShareToOrganizationV1: HyperProxyProviderCall<MistralOperation> {
     self.service.call(.connectorShareToOrganizationV1)
+  }
+  /// `GET v1/service-accounts`
+  public var listServiceAccountsV1ServiceAccountsGet: HyperProxyProviderCall<MistralOperation> {
+    self.service.call(.listServiceAccountsV1ServiceAccountsGet)
   }
   /// `POST v1/service-accounts`
   public var createServiceAccountV1ServiceAccountsPost: HyperProxyProviderCall<MistralOperation> {
@@ -286,5 +298,9 @@ public struct MistralAdminCalls: Sendable {
     HyperProxyProviderCall<MistralOperation>
   {
     self.service.call(.setServiceAccountRolesV1ServiceAccountsServiceAccountIdRolesPut)
+  }
+  /// `GET v1/users/me/organizations`
+  public var usersApiListOrganizations: HyperProxyProviderCall<MistralOperation> {
+    self.service.call(.usersApiListOrganizations)
   }
 }

@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct OpenAISessionEventError: Codable, Sendable {
   public var error: OpenAISessionErrorResource
   public var eventId: String
+  public var obfuscation: String?
   public var sessionId: String
   public var kind: OpenAISessionEventError.Kind
 
@@ -20,10 +21,12 @@ public struct OpenAISessionEventError: Codable, Sendable {
     error: OpenAISessionErrorResource,
     eventId: String,
     sessionId: String,
-    kind: OpenAISessionEventError.Kind
+    kind: OpenAISessionEventError.Kind,
+    obfuscation: String? = nil
   ) {
     self.error = error
     self.eventId = eventId
+    self.obfuscation = obfuscation
     self.sessionId = sessionId
     self.kind = kind
   }
@@ -31,6 +34,7 @@ public struct OpenAISessionEventError: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case error
     case eventId = "event_id"
+    case obfuscation
     case sessionId = "session_id"
     case kind = "type"
   }

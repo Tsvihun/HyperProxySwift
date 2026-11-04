@@ -15,6 +15,7 @@ public struct OpenAICreateResponse: Codable, Sendable {
   public var background: Bool?
   public var contextManagement: [OpenAIContextManagementParam]?
   public var conversation: OpenAIConversationParam?
+  public var image: OpenAIImageOptionsParam?
   public var include: [OpenAIIncludeEnum]?
   public var input: OpenAIInputParam?
   public var instructions: String?
@@ -27,7 +28,7 @@ public struct OpenAICreateResponse: Codable, Sendable {
   public var previousResponseId: String?
   public var prompt: OpenAIPrompt?
   public var promptCacheKey: String?
-  public var promptCacheOptions: OpenAIPromptCacheOptionsParam?
+  public var promptCacheOptions: OpenAIResponsePromptCacheOptionsParam?
   public var promptCacheRetention: OpenAIModelResponsePropertiesPromptCacheRetention?
   public var reasoning: OpenAIReasoning?
   public var safetyIdentifier: String?
@@ -49,6 +50,7 @@ public struct OpenAICreateResponse: Codable, Sendable {
     background: Bool? = nil,
     contextManagement: [OpenAIContextManagementParam]? = nil,
     conversation: OpenAIConversationParam? = nil,
+    image: OpenAIImageOptionsParam? = nil,
     include: [OpenAIIncludeEnum]? = nil,
     input: OpenAIInputParam? = nil,
     instructions: String? = nil,
@@ -61,7 +63,7 @@ public struct OpenAICreateResponse: Codable, Sendable {
     previousResponseId: String? = nil,
     prompt: OpenAIPrompt? = nil,
     promptCacheKey: String? = nil,
-    promptCacheOptions: OpenAIPromptCacheOptionsParam? = nil,
+    promptCacheOptions: OpenAIResponsePromptCacheOptionsParam? = nil,
     promptCacheRetention: OpenAIModelResponsePropertiesPromptCacheRetention? = nil,
     reasoning: OpenAIReasoning? = nil,
     safetyIdentifier: String? = nil,
@@ -82,6 +84,7 @@ public struct OpenAICreateResponse: Codable, Sendable {
     self.background = background
     self.contextManagement = contextManagement
     self.conversation = conversation
+    self.image = image
     self.include = include
     self.input = input
     self.instructions = instructions
@@ -117,6 +120,7 @@ public struct OpenAICreateResponse: Codable, Sendable {
     case background
     case contextManagement = "context_management"
     case conversation
+    case image
     case include
     case input
     case instructions
@@ -151,6 +155,7 @@ public struct OpenAICreateResponse: Codable, Sendable {
     public var accessPrograms: OpenAIAccessProgramsParam?
     public var contextManagement: [OpenAIContextManagementParam]?
     public var conversation: OpenAIConversationParam?
+    public var image: OpenAIImageOptionsParam?
     public var include: [OpenAIIncludeEnum]?
     public var input: OpenAIInputParam?
     public var instructions: String?
@@ -169,6 +174,7 @@ public struct OpenAICreateResponse: Codable, Sendable {
       accessPrograms: OpenAIAccessProgramsParam? = nil,
       contextManagement: [OpenAIContextManagementParam]? = nil,
       conversation: OpenAIConversationParam? = nil,
+      image: OpenAIImageOptionsParam? = nil,
       include: [OpenAIIncludeEnum]? = nil,
       input: OpenAIInputParam? = nil,
       instructions: String? = nil,
@@ -186,6 +192,7 @@ public struct OpenAICreateResponse: Codable, Sendable {
       self.accessPrograms = accessPrograms
       self.contextManagement = contextManagement
       self.conversation = conversation
+      self.image = image
       self.include = include
       self.input = input
       self.instructions = instructions
@@ -205,6 +212,7 @@ public struct OpenAICreateResponse: Codable, Sendable {
       case accessPrograms = "access_programs"
       case contextManagement = "context_management"
       case conversation
+      case image
       case include
       case input
       case instructions

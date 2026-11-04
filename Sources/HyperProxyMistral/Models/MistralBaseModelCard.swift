@@ -12,6 +12,8 @@ import HyperProxyCore
 
 public struct MistralBaseModelCard: Codable, Sendable {
   public var aliases: [String]?
+  public var audioSpeechCapabilities: MistralAudioSpeechCapabilities?
+  public var audioTranscriptionCapabilities: MistralAudioTranscriptionCapabilities?
   public var billingModelName: String?
   public var capabilities: MistralModelCapabilities
   public var created: Int?
@@ -31,6 +33,8 @@ public struct MistralBaseModelCard: Codable, Sendable {
     capabilities: MistralModelCapabilities,
     id: String,
     aliases: [String]? = nil,
+    audioSpeechCapabilities: MistralAudioSpeechCapabilities? = nil,
+    audioTranscriptionCapabilities: MistralAudioTranscriptionCapabilities? = nil,
     billingModelName: String? = nil,
     created: Int? = nil,
     defaultModelTemperature: Double? = nil,
@@ -45,6 +49,8 @@ public struct MistralBaseModelCard: Codable, Sendable {
     kind: MistralBaseModelCard.Kind? = nil
   ) {
     self.aliases = aliases
+    self.audioSpeechCapabilities = audioSpeechCapabilities
+    self.audioTranscriptionCapabilities = audioTranscriptionCapabilities
     self.billingModelName = billingModelName
     self.capabilities = capabilities
     self.created = created
@@ -63,6 +69,8 @@ public struct MistralBaseModelCard: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case aliases
+    case audioSpeechCapabilities = "audio_speech_capabilities"
+    case audioTranscriptionCapabilities = "audio_transcription_capabilities"
     case billingModelName = "billing_model_name"
     case capabilities
     case created

@@ -13,17 +13,17 @@ import HyperProxyCore
 public struct MistralPublicAuthenticationMethod: Codable, Sendable {
   public var globalHeaders: [String: MistralGlobalHeaderValue]?
   public var grantType: MistralOAuth2GrantType?
-  public var hasDefaultCredentials: Bool
+  public var hasDefaultCredentials: Bool?
   public var headers: [MistralConnectorAuthenticationHeader]?
   public var methodType: MistralAuthenticationType
   public var oauth2ServerMetadata: MistralExtendedOAuthServerMetadata?
   public var tokenEndpointAuthMethod: MistralOAuth2TokenEndpointAuthMethod?
 
   public init(
-    hasDefaultCredentials: Bool,
     methodType: MistralAuthenticationType,
     globalHeaders: [String: MistralGlobalHeaderValue]? = nil,
     grantType: MistralOAuth2GrantType? = nil,
+    hasDefaultCredentials: Bool? = nil,
     headers: [MistralConnectorAuthenticationHeader]? = nil,
     oauth2ServerMetadata: MistralExtendedOAuthServerMetadata? = nil,
     tokenEndpointAuthMethod: MistralOAuth2TokenEndpointAuthMethod? = nil

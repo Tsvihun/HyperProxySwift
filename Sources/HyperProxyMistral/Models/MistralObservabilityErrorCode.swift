@@ -60,6 +60,7 @@ public enum MistralObservabilityErrorCode: String, Codable, Hashable, Sendable {
   case evaluationNameAlreadyExists = "EVALUATION_NAME_ALREADY_EXISTS"
   case optimizationNotFound = "OPTIMIZATION_NOT_FOUND"
   case optimizationTrialKeyAlreadyExists = "OPTIMIZATION_TRIAL_KEY_ALREADY_EXISTS"
+  case optimizationTrialObservationAlreadyExists = "OPTIMIZATION_TRIAL_OBSERVATION_ALREADY_EXISTS"
   case tracesFilterQueryParseError = "TRACES_FILTER_QUERY_PARSE_ERROR"
   case traceNotFound = "TRACE_NOT_FOUND"
   case spanNotFound = "SPAN_NOT_FOUND"

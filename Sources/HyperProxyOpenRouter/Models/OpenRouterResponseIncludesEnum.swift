@@ -15,5 +15,6 @@ public enum OpenRouterResponseIncludesEnum: String, Codable, Hashable, Sendable 
   case messageInputImageImageUrl = "message.input_image.image_url"
   case computerCallOutputOutputImageUrl = "computer_call_output.output.image_url"
   case reasoningEncryptedContent = "reasoning.encrypted_content"
+  case outputEncryptedContent = "output.encrypted_content"
   case codeInterpreterCallOutputs = "code_interpreter_call.outputs"
 }

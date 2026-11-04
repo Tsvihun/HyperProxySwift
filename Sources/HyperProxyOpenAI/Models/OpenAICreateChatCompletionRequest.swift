@@ -184,6 +184,7 @@ public struct OpenAICreateChatCompletionRequest: Codable, Sendable {
     public var parallelToolCalls: Bool?
     public var prediction: OpenAIPredictionContent?
     public var presencePenalty: Double?
+    public var promptCacheOptions: OpenAIPromptCacheOptionsParam?
     public var reasoningEffort: OpenAIReasoningEffort?
     public var responseFormat: OpenAICreateChatCompletionRequestResponseFormat?
     public var seed: Int64?
@@ -215,6 +216,7 @@ public struct OpenAICreateChatCompletionRequest: Codable, Sendable {
       parallelToolCalls: Bool? = nil,
       prediction: OpenAIPredictionContent? = nil,
       presencePenalty: Double? = nil,
+      promptCacheOptions: OpenAIPromptCacheOptionsParam? = nil,
       reasoningEffort: OpenAIReasoningEffort? = nil,
       responseFormat: OpenAICreateChatCompletionRequestResponseFormat? = nil,
       seed: Int64? = nil,
@@ -245,6 +247,7 @@ public struct OpenAICreateChatCompletionRequest: Codable, Sendable {
       self.parallelToolCalls = parallelToolCalls
       self.prediction = prediction
       self.presencePenalty = presencePenalty
+      self.promptCacheOptions = promptCacheOptions
       self.reasoningEffort = reasoningEffort
       self.responseFormat = responseFormat
       self.seed = seed
@@ -277,6 +280,7 @@ public struct OpenAICreateChatCompletionRequest: Codable, Sendable {
       case parallelToolCalls = "parallel_tool_calls"
       case prediction
       case presencePenalty = "presence_penalty"
+      case promptCacheOptions = "prompt_cache_options"
       case reasoningEffort = "reasoning_effort"
       case responseFormat = "response_format"
       case seed

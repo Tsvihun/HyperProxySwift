@@ -12,41 +12,40 @@ import HyperProxyCore
 import HyperProxyProviders
 
 extension AnthropicAdminCalls {
-  public func betaOrganizationAnalyticsAppsChatProjectsList(
+  public func organizationAnalyticsAppsChatProjectsList(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> AnthropicBetaOrganizationAnalyticsAppsChatProjectsListResponse {
-    let call = self.service.call(.betaOrganizationAnalyticsAppsChatProjectsList)
+  ) async throws -> AnthropicOrganizationAnalyticsAppsChatProjectsListResponse {
+    let call = self.service.call(.organizationAnalyticsAppsChatProjectsList)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(
-      AnthropicBetaOrganizationAnalyticsAppsChatProjectsListResponse.self)
+    return try await call.decoded(AnthropicOrganizationAnalyticsAppsChatProjectsListResponse.self)
   }
 
-  public func betaOrganizationAnalyticsArtifactsList(
+  public func organizationAnalyticsArtifactsList(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> AnthropicBetaOrganizationAnalyticsArtifactsListResponse {
-    let call = self.service.call(.betaOrganizationAnalyticsArtifactsList)
+  ) async throws -> AnthropicOrganizationAnalyticsArtifactsListResponse {
+    let call = self.service.call(.organizationAnalyticsArtifactsList)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(AnthropicBetaOrganizationAnalyticsArtifactsListResponse.self)
+    return try await call.decoded(AnthropicOrganizationAnalyticsArtifactsListResponse.self)
   }
 
-  public func betaOrganizationAnalyticsConnectorsList(
+  public func organizationAnalyticsConnectorsList(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> AnthropicBetaOrganizationAnalyticsConnectorsListResponse {
-    let call = self.service.call(.betaOrganizationAnalyticsConnectorsList)
+  ) async throws -> AnthropicOrganizationAnalyticsConnectorsListResponse {
+    let call = self.service.call(.organizationAnalyticsConnectorsList)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(AnthropicBetaOrganizationAnalyticsConnectorsListResponse.self)
+    return try await call.decoded(AnthropicOrganizationAnalyticsConnectorsListResponse.self)
   }
 
   public func betaOrganizationAnalyticsCostList(
@@ -73,40 +72,40 @@ extension AnthropicAdminCalls {
     return try await call.decoded(AnthropicBetaOrganizationAnalyticsCostReportListResponse.self)
   }
 
-  public func betaOrganizationAnalyticsPluginsList(
+  public func organizationAnalyticsPluginsList(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> AnthropicBetaOrganizationAnalyticsPluginsListResponse {
-    let call = self.service.call(.betaOrganizationAnalyticsPluginsList)
+  ) async throws -> AnthropicOrganizationAnalyticsPluginsListResponse {
+    let call = self.service.call(.organizationAnalyticsPluginsList)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(AnthropicBetaOrganizationAnalyticsPluginsListResponse.self)
+    return try await call.decoded(AnthropicOrganizationAnalyticsPluginsListResponse.self)
   }
 
-  public func betaOrganizationAnalyticsSkillsList(
+  public func organizationAnalyticsSkillsList(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> AnthropicBetaOrganizationAnalyticsSkillsListResponse {
-    let call = self.service.call(.betaOrganizationAnalyticsSkillsList)
+  ) async throws -> AnthropicOrganizationAnalyticsSkillsListResponse {
+    let call = self.service.call(.organizationAnalyticsSkillsList)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(AnthropicBetaOrganizationAnalyticsSkillsListResponse.self)
+    return try await call.decoded(AnthropicOrganizationAnalyticsSkillsListResponse.self)
   }
 
-  public func betaOrganizationAnalyticsSummariesList(
+  public func organizationAnalyticsSummariesList(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> AnthropicBetaOrganizationAnalyticsSummariesListResponse {
-    let call = self.service.call(.betaOrganizationAnalyticsSummariesList)
+  ) async throws -> AnthropicOrganizationAnalyticsSummariesListResponse {
+    let call = self.service.call(.organizationAnalyticsSummariesList)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(AnthropicBetaOrganizationAnalyticsSummariesListResponse.self)
+    return try await call.decoded(AnthropicOrganizationAnalyticsSummariesListResponse.self)
   }
 
   public func betaOrganizationAnalyticsUsageList(
@@ -158,16 +157,16 @@ extension AnthropicAdminCalls {
       AnthropicBetaOrganizationAnalyticsUserUsageReportListResponse.self)
   }
 
-  public func betaOrganizationAnalyticsUsersList(
+  public func organizationAnalyticsUsersList(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> AnthropicBetaOrganizationAnalyticsUsersListResponse {
-    let call = self.service.call(.betaOrganizationAnalyticsUsersList)
+  ) async throws -> AnthropicOrganizationAnalyticsUsersListResponse {
+    let call = self.service.call(.organizationAnalyticsUsersList)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(AnthropicBetaOrganizationAnalyticsUsersListResponse.self)
+    return try await call.decoded(AnthropicOrganizationAnalyticsUsersListResponse.self)
   }
 
   public func organizationApiKeysList(
@@ -437,6 +436,18 @@ extension AnthropicAdminCalls {
       .timeout(timeout)
     let prepared = try call.json(body)
     return try await prepared.decoded(AnthropicOrganizationComplianceSettings.self)
+  }
+
+  public func betaGetCostReport(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> AnthropicBetaGetCostReportResponse {
+    let call = self.service.call(.betaGetCostReport)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(AnthropicBetaGetCostReportResponse.self)
   }
 
   public func organizationExternalKeysList(
@@ -1008,161 +1019,160 @@ extension AnthropicAdminCalls {
     return try await call.decoded(AnthropicOrganizationRateLimitsListResponse.self)
   }
 
-  public func betaOrganizationRbacGroupsMembersRemove(
+  public func organizationRbacGroupsList(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> AnthropicOrganizationRbacGroupsListResponse {
+    let call = self.service.call(.organizationRbacGroupsList)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(AnthropicOrganizationRbacGroupsListResponse.self)
+  }
+
+  public func organizationRbacGroupsCreate(
+    _ body: AnthropicOrganizationRbacGroupsCreateRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> AnthropicRBACGroup {
+    let call = self.service.call(.organizationRbacGroupsCreate)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(AnthropicRBACGroup.self)
+  }
+
+  public func organizationRbacGroupsRetrieve(
+    rbacGroupId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> AnthropicRBACGroup {
+    let call = self.service.call(.organizationRbacGroupsRetrieve)
+      .path("rbac_group_id", rbacGroupId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(AnthropicRBACGroup.self)
+  }
+
+  public func organizationRbacGroupsUpdate(
+    _ body: AnthropicOrganizationRbacGroupsUpdateRequest,
+    rbacGroupId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> AnthropicRBACGroup {
+    let call = self.service.call(.organizationRbacGroupsUpdate)
+      .path("rbac_group_id", rbacGroupId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(AnthropicRBACGroup.self)
+  }
+
+  public func organizationRbacGroupsDelete(
+    rbacGroupId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> AnthropicDeletedRBACGroup {
+    let call = self.service.call(.organizationRbacGroupsDelete)
+      .path("rbac_group_id", rbacGroupId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(AnthropicDeletedRBACGroup.self)
+  }
+
+  public func organizationRbacGroupsMembersList(
+    rbacGroupId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> AnthropicOrganizationRbacGroupsMembersListResponse {
+    let call = self.service.call(.organizationRbacGroupsMembersList)
+      .path("rbac_group_id", rbacGroupId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(AnthropicOrganizationRbacGroupsMembersListResponse.self)
+  }
+
+  public func organizationRbacGroupsMembersAdd(
+    _ body: AnthropicOrganizationRbacGroupsMembersAddRequest,
+    rbacGroupId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> AnthropicRBACGroupMember {
+    let call = self.service.call(.organizationRbacGroupsMembersAdd)
+      .path("rbac_group_id", rbacGroupId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(AnthropicRBACGroupMember.self)
+  }
+
+  public func organizationRbacGroupsMembersRemove(
     rbacGroupId: String,
     userId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> AnthropicBetaOrganizationRbacGroupsMemberRemoveResponseMemberRemoveResponse {
-    let call = self.service.call(.betaOrganizationRbacGroupsMembersRemove)
+  ) async throws -> AnthropicDeletedRBACGroupMember {
+    let call = self.service.call(.organizationRbacGroupsMembersRemove)
       .path("rbac_group_id", rbacGroupId)
       .path("user_id", userId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(
-      AnthropicBetaOrganizationRbacGroupsMemberRemoveResponseMemberRemoveResponse.self)
+    return try await call.decoded(AnthropicDeletedRBACGroupMember.self)
   }
 
-  public func betaOrganizationRbacGroupsMembersList(
-    rbacGroupId: String,
+  public func organizationRbacRolesList(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> AnthropicBetaOrganizationRbacGroupsMembersListResponse {
-    let call = self.service.call(.betaOrganizationRbacGroupsMembersList)
-      .path("rbac_group_id", rbacGroupId)
+  ) async throws -> AnthropicOrganizationRbacRolesListResponse {
+    let call = self.service.call(.organizationRbacRolesList)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(AnthropicBetaOrganizationRbacGroupsMembersListResponse.self)
+    return try await call.decoded(AnthropicOrganizationRbacRolesListResponse.self)
   }
 
-  public func betaOrganizationRbacGroupsMembersAdd(
-    _ body: AnthropicBetaOrganizationRbacGroupsMembersAddRequest,
-    rbacGroupId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> AnthropicBetaRBACGroupMember {
-    let call = self.service.call(.betaOrganizationRbacGroupsMembersAdd)
-      .path("rbac_group_id", rbacGroupId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(AnthropicBetaRBACGroupMember.self)
-  }
-
-  public func betaOrganizationRbacGroupsRetrieve(
-    rbacGroupId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> AnthropicBetaRBACGroup {
-    let call = self.service.call(.betaOrganizationRbacGroupsRetrieve)
-      .path("rbac_group_id", rbacGroupId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(AnthropicBetaRBACGroup.self)
-  }
-
-  public func betaOrganizationRbacGroupsUpdate(
-    _ body: AnthropicBetaOrganizationRbacGroupsUpdateRequest,
-    rbacGroupId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> AnthropicBetaRBACGroup {
-    let call = self.service.call(.betaOrganizationRbacGroupsUpdate)
-      .path("rbac_group_id", rbacGroupId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(AnthropicBetaRBACGroup.self)
-  }
-
-  public func betaOrganizationRbacGroupsDelete(
-    rbacGroupId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> AnthropicBetaRBACGroupDeleteResponse {
-    let call = self.service.call(.betaOrganizationRbacGroupsDelete)
-      .path("rbac_group_id", rbacGroupId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(AnthropicBetaRBACGroupDeleteResponse.self)
-  }
-
-  public func betaOrganizationRbacGroupsList(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> AnthropicBetaOrganizationRbacGroupsListResponse {
-    let call = self.service.call(.betaOrganizationRbacGroupsList)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(AnthropicBetaOrganizationRbacGroupsListResponse.self)
-  }
-
-  public func betaOrganizationRbacGroupsCreate(
-    _ body: AnthropicBetaOrganizationRbacGroupsCreateRequest,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> AnthropicBetaRBACGroup {
-    let call = self.service.call(.betaOrganizationRbacGroupsCreate)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(AnthropicBetaRBACGroup.self)
-  }
-
-  public func betaOrganizationRbacRolesPermissionsList(
+  public func organizationRbacRolesRetrieve(
     rbacRoleId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> AnthropicBetaOrganizationRbacRolesPermissionsListResponse {
-    let call = self.service.call(.betaOrganizationRbacRolesPermissionsList)
+  ) async throws -> AnthropicRBACRole {
+    let call = self.service.call(.organizationRbacRolesRetrieve)
       .path("rbac_role_id", rbacRoleId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(AnthropicBetaOrganizationRbacRolesPermissionsListResponse.self)
+    return try await call.decoded(AnthropicRBACRole.self)
   }
 
-  public func betaOrganizationRbacRolesRetrieve(
+  public func organizationRbacRolesPermissionsList(
     rbacRoleId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> AnthropicBetaRBACRole {
-    let call = self.service.call(.betaOrganizationRbacRolesRetrieve)
+  ) async throws -> AnthropicOrganizationRbacRolesPermissionsListResponse {
+    let call = self.service.call(.organizationRbacRolesPermissionsList)
       .path("rbac_role_id", rbacRoleId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(AnthropicBetaRBACRole.self)
-  }
-
-  public func betaOrganizationRbacRolesList(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> AnthropicBetaOrganizationRbacRolesListResponse {
-    let call = self.service.call(.betaOrganizationRbacRolesList)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(AnthropicBetaOrganizationRbacRolesListResponse.self)
+    return try await call.decoded(AnthropicOrganizationRbacRolesPermissionsListResponse.self)
   }
 
   public func organizationServiceAccountsList(
@@ -1281,75 +1291,74 @@ extension AnthropicAdminCalls {
     return try await call.decoded(AnthropicOrganizationServiceAccountsWorkspaceRemoveResponse.self)
   }
 
-  public func betaOrganizationSpendLimitsIncreaseRequestsApprove(
-    _ body: AnthropicBetaOrganizationSpendLimitsIncreaseRequestsApproveRequest,
+  public func organizationSpendLimitsIncreaseRequestsList(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> AnthropicOrganizationSpendLimitsIncreaseRequestsListResponse {
+    let call = self.service.call(.organizationSpendLimitsIncreaseRequestsList)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(AnthropicOrganizationSpendLimitsIncreaseRequestsListResponse.self)
+  }
+
+  public func organizationSpendLimitsIncreaseRequestsRetrieve(
     spendLimitIncreaseRequestId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> AnthropicBetaIncreaseRequestApproveResponse {
-    let call = self.service.call(.betaOrganizationSpendLimitsIncreaseRequestsApprove)
+  ) async throws -> AnthropicSpendLimitIncreaseRequest {
+    let call = self.service.call(.organizationSpendLimitsIncreaseRequestsRetrieve)
+      .path("spend_limit_increase_request_id", spendLimitIncreaseRequestId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(AnthropicSpendLimitIncreaseRequest.self)
+  }
+
+  public func organizationSpendLimitsIncreaseRequestsApprove(
+    _ body: AnthropicOrganizationSpendLimitsIncreaseRequestsApproveRequest,
+    spendLimitIncreaseRequestId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> AnthropicIncreaseRequestApproveResponse {
+    let call = self.service.call(.organizationSpendLimitsIncreaseRequestsApprove)
       .path("spend_limit_increase_request_id", spendLimitIncreaseRequestId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     let prepared = try call.json(body)
-    return try await prepared.decoded(AnthropicBetaIncreaseRequestApproveResponse.self)
+    return try await prepared.decoded(AnthropicIncreaseRequestApproveResponse.self)
   }
 
-  public func betaOrganizationSpendLimitsIncreaseRequestsDeny(
-    _ body: AnthropicBetaOrganizationSpendLimitsIncreaseRequestsDenyRequest,
+  public func organizationSpendLimitsIncreaseRequestsDeny(
+    _ body: AnthropicOrganizationSpendLimitsIncreaseRequestsDenyRequest,
     spendLimitIncreaseRequestId: String,
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> AnthropicBetaSpendLimitIncreaseRequest {
-    let call = self.service.call(.betaOrganizationSpendLimitsIncreaseRequestsDeny)
+  ) async throws -> AnthropicSpendLimitIncreaseRequest {
+    let call = self.service.call(.organizationSpendLimitsIncreaseRequestsDeny)
       .path("spend_limit_increase_request_id", spendLimitIncreaseRequestId)
       .query(query)
       .headers(headers)
       .timeout(timeout)
     let prepared = try call.json(body)
-    return try await prepared.decoded(AnthropicBetaSpendLimitIncreaseRequest.self)
+    return try await prepared.decoded(AnthropicSpendLimitIncreaseRequest.self)
   }
 
-  public func betaOrganizationSpendLimitsIncreaseRequestsRetrieve(
-    spendLimitIncreaseRequestId: String,
+  public func organizationSpendLimitsEffectiveList(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> AnthropicBetaSpendLimitIncreaseRequest {
-    let call = self.service.call(.betaOrganizationSpendLimitsIncreaseRequestsRetrieve)
-      .path("spend_limit_increase_request_id", spendLimitIncreaseRequestId)
+  ) async throws -> AnthropicOrganizationSpendLimitsEffectiveListResponse {
+    let call = self.service.call(.organizationSpendLimitsEffectiveList)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(AnthropicBetaSpendLimitIncreaseRequest.self)
-  }
-
-  public func betaOrganizationSpendLimitsIncreaseRequestsList(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> AnthropicBetaOrganizationSpendLimitsIncreaseRequestsListResponse {
-    let call = self.service.call(.betaOrganizationSpendLimitsIncreaseRequestsList)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(
-      AnthropicBetaOrganizationSpendLimitsIncreaseRequestsListResponse.self)
-  }
-
-  public func betaOrganizationSpendLimitsEffectiveList(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> AnthropicBetaOrganizationSpendLimitsEffectiveListResponse {
-    let call = self.service.call(.betaOrganizationSpendLimitsEffectiveList)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(AnthropicBetaOrganizationSpendLimitsEffectiveListResponse.self)
+    return try await call.decoded(AnthropicOrganizationSpendLimitsEffectiveListResponse.self)
   }
 
   public func betaOrganizationSpendLimitsRetrieve(
@@ -1535,6 +1544,162 @@ extension AnthropicAdminCalls {
       .timeout(timeout)
     let prepared = try call.json(body)
     return try await prepared.decoded(AnthropicBetaTelemetryDestination.self)
+  }
+
+  public func betaArchiveOrganizationTunnel(
+    tunnelId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> AnthropicBetaOrganizationTunnel {
+    let call = self.service.call(.betaArchiveOrganizationTunnel)
+      .path("tunnel_id", tunnelId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(AnthropicBetaOrganizationTunnel.self)
+  }
+
+  public func betaArchiveOrganizationTunnelCertificate(
+    tunnelId: String,
+    certificateId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> AnthropicBetaOrganizationTunnelCertificate {
+    let call = self.service.call(.betaArchiveOrganizationTunnelCertificate)
+      .path("tunnel_id", tunnelId)
+      .path("certificate_id", certificateId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(AnthropicBetaOrganizationTunnelCertificate.self)
+  }
+
+  public func betaGetOrganizationTunnelCertificate(
+    tunnelId: String,
+    certificateId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> AnthropicBetaOrganizationTunnelCertificate {
+    let call = self.service.call(.betaGetOrganizationTunnelCertificate)
+      .path("tunnel_id", tunnelId)
+      .path("certificate_id", certificateId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(AnthropicBetaOrganizationTunnelCertificate.self)
+  }
+
+  public func betaListOrganizationTunnelCertificates(
+    tunnelId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> AnthropicBetaTunnelCertificateListResponse {
+    let call = self.service.call(.betaListOrganizationTunnelCertificates)
+      .path("tunnel_id", tunnelId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(AnthropicBetaTunnelCertificateListResponse.self)
+  }
+
+  public func betaCreateOrganizationTunnelCertificate(
+    _ body: AnthropicBetaCreateTunnelCertificateParams,
+    tunnelId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> AnthropicBetaOrganizationTunnelCertificate {
+    let call = self.service.call(.betaCreateOrganizationTunnelCertificate)
+      .path("tunnel_id", tunnelId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(AnthropicBetaOrganizationTunnelCertificate.self)
+  }
+
+  public func betaRevealOrganizationTunnelToken(
+    tunnelId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> AnthropicBetaOrganizationTunnelToken {
+    let call = self.service.call(.betaRevealOrganizationTunnelToken)
+      .path("tunnel_id", tunnelId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(AnthropicBetaOrganizationTunnelToken.self)
+  }
+
+  public func betaRotateOrganizationTunnelToken(
+    _ body: AnthropicBetaRotateOrganizationTunnelTokenRequest,
+    tunnelId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> AnthropicBetaOrganizationTunnelToken {
+    let call = self.service.call(.betaRotateOrganizationTunnelToken)
+      .path("tunnel_id", tunnelId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(AnthropicBetaOrganizationTunnelToken.self)
+  }
+
+  public func betaGetOrganizationTunnel(
+    tunnelId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> AnthropicBetaOrganizationTunnel {
+    let call = self.service.call(.betaGetOrganizationTunnel)
+      .path("tunnel_id", tunnelId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(AnthropicBetaOrganizationTunnel.self)
+  }
+
+  public func betaListOrganizationTunnels(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> AnthropicBetaTunnelListResponse {
+    let call = self.service.call(.betaListOrganizationTunnels)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(AnthropicBetaTunnelListResponse.self)
+  }
+
+  public func betaGetClaudeCodeUsageReport(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> AnthropicBetaGetClaudeCodeUsageReportResponse {
+    let call = self.service.call(.betaGetClaudeCodeUsageReport)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(AnthropicBetaGetClaudeCodeUsageReportResponse.self)
+  }
+
+  public func betaGetMessagesUsageReport(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> AnthropicBetaGetMessagesUsageReportResponse {
+    let call = self.service.call(.betaGetMessagesUsageReport)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(AnthropicBetaGetMessagesUsageReportResponse.self)
   }
 
   public func organizationUsersList(

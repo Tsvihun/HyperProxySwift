@@ -71,6 +71,8 @@ public enum OpenRouterOperation: String, HyperProxyCatalogOperation {
   case bulkAssignMembersToGuardrail = "bulkAssignMembersToGuardrail"
   /// `POST api/v1/guardrails/{id}/assignments/members/remove`
   case bulkUnassignMembersFromGuardrail = "bulkUnassignMembersFromGuardrail"
+  /// `GET api/v1/key`
+  case getCurrentKey = "getCurrentKey"
   /// `GET api/v1/keys`
   case list = "list"
   /// `POST api/v1/keys`
@@ -113,10 +115,6 @@ public enum OpenRouterOperation: String, HyperProxyCatalogOperation {
   case disablePrivateEndpoint = "disablePrivateEndpoint"
   /// `POST api/v1/private-endpoints/{id}/enable`
   case enablePrivateEndpoint = "enablePrivateEndpoint"
-  /// `PUT api/v1/private-endpoints/{id}/parameters`
-  case updatePrivateEndpointParameters = "updatePrivateEndpointParameters"
-  /// `PUT api/v1/private-endpoints/{id}/pricing`
-  case updatePrivateEndpointPricing = "updatePrivateEndpointPricing"
   /// `POST api/v1/private-endpoints/{id}/validate`
   case validatePrivateEndpoint = "validatePrivateEndpoint"
   /// `GET api/v1/private-providers`
@@ -273,6 +271,8 @@ public enum OpenRouterOperation: String, HyperProxyCatalogOperation {
   case getPresetVersion = "getPresetVersion"
   /// `GET api/v1/providers`
   case listProviders = "listProviders"
+  /// `GET api/v1/providers/{provider_slug}/endpoints`
+  case listProviderEndpoints = "listProviderEndpoints"
   /// `POST api/v1/rerank`
   case createRerank = "createRerank"
   /// `POST api/v1/responses`

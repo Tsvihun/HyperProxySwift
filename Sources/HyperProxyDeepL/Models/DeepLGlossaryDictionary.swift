@@ -15,14 +15,14 @@ public struct DeepLGlossaryDictionary: Codable, Sendable {
   public var entriesFormat: DeepLGlossaryEntriesFormat?
   public var entryCount: Int?
   public var sourceLang: DeepLGlossarySourceLanguage?
-  public var targetLang: DeepLGlossaryTargetLanguage?
+  public var targetLang: DeepLMultilingualGlossaryTargetLanguage?
 
   public init(
     entries: String? = nil,
     entriesFormat: DeepLGlossaryEntriesFormat? = nil,
     entryCount: Int? = nil,
     sourceLang: DeepLGlossarySourceLanguage? = nil,
-    targetLang: DeepLGlossaryTargetLanguage? = nil
+    targetLang: DeepLMultilingualGlossaryTargetLanguage? = nil
   ) {
     self.entries = entries
     self.entriesFormat = entriesFormat

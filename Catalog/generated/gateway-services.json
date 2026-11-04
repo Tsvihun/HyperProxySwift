@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "providerCatalogSHA256": "54387ac6772c47d1ac2c47c382a0b34e196c2d90157c75df6b2f524c3780969e",
+  "providerCatalogSHA256": "2584899f82608077899ebb8bb8d42acb1243073d5711db6edbd0409bea6b189c",
   "providers": [
     {
       "id": "openai",
@@ -21,7 +21,7 @@
         "v1/embeddings",
         "v1/moderations"
       ],
-      "routeCount": 372
+      "routeCount": 384
     },
     {
       "id": "anthropic",
@@ -40,7 +40,7 @@
       "defaultAllowedPaths": [
         "v1/messages"
       ],
-      "routeCount": 312
+      "routeCount": 274
     },
     {
       "id": "gemini",
@@ -93,7 +93,7 @@
         "v1/embeddings",
         "v1/fim/completions"
       ],
-      "routeCount": 325
+      "routeCount": 353
     },
     {
       "id": "openrouter",
@@ -269,7 +269,7 @@
       "defaultAllowedPaths": [
         "v1/"
       ],
-      "routeCount": 480
+      "routeCount": 440
     },
     {
       "id": "eachai",

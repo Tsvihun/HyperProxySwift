@@ -325,6 +325,42 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
   public var getAgentWidgetRoute: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.getAgentWidgetRoute)
   }
+  /// `GET v1/convai/analysis-items`
+  public var listAnalysisItemsRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.listAnalysisItemsRoute)
+  }
+  /// `POST v1/convai/analysis-items`
+  public var createAnalysisItemRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.createAnalysisItemRoute)
+  }
+  /// `DELETE v1/convai/analysis-items/{analysis_item_id}`
+  public var deleteAnalysisItemRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.deleteAnalysisItemRoute)
+  }
+  /// `GET v1/convai/analysis-items/{analysis_item_id}`
+  public var getAnalysisItemRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.getAnalysisItemRoute)
+  }
+  /// `PATCH v1/convai/analysis-items/{analysis_item_id}`
+  public var updateAnalysisItemRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.updateAnalysisItemRoute)
+  }
+  /// `PATCH v1/convai/analysis-items/{analysis_item_id}/attachments`
+  public var updateAnalysisItemAttachmentsRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.updateAnalysisItemAttachmentsRoute)
+  }
+  /// `POST v1/convai/analysis-items/{analysis_item_id}/copy`
+  public var copyAnalysisItemRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.copyAnalysisItemRoute)
+  }
+  /// `GET v1/convai/analysis-items/{analysis_item_id}/dependent-agents`
+  public var getAnalysisItemDependentAgentsRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.getAnalysisItemDependentAgentsRoute)
+  }
+  /// `GET v1/convai/analysis-items/{analysis_item_id}/versions`
+  public var listAnalysisItemVersionsRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.listAnalysisItemVersionsRoute)
+  }
   /// `GET v1/convai/analytics/live-count`
   public var getLiveCount: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.getLiveCount)
@@ -684,6 +720,34 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
   /// `POST v1/convai/realtime/client_secrets`
   public var createRealtimeSession: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.createRealtimeSession)
+  }
+  /// `GET v1/convai/realtime/conversation-groups`
+  public var listConversationGroupsRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.listConversationGroupsRoute)
+  }
+  /// `POST v1/convai/realtime/conversation-groups`
+  public var createConversationGroupRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.createConversationGroupRoute)
+  }
+  /// `DELETE v1/convai/realtime/conversation-groups/{conversation_group_id}`
+  public var deleteConversationGroupRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.deleteConversationGroupRoute)
+  }
+  /// `GET v1/convai/realtime/conversation-groups/{conversation_group_id}`
+  public var getConversationGroupRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.getConversationGroupRoute)
+  }
+  /// `PATCH v1/convai/realtime/conversation-groups/{conversation_group_id}`
+  public var updateConversationGroupRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.updateConversationGroupRoute)
+  }
+  /// `DELETE v1/convai/realtime/conversations/{conversation_id}/conversation-group`
+  public var clearConversationGroupRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.clearConversationGroupRoute)
+  }
+  /// `PUT v1/convai/realtime/conversations/{conversation_id}/conversation-group`
+  public var setConversationGroupRoute: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.call(.setConversationGroupRoute)
   }
   /// `GET v1/convai/secrets`
   public var getSecretsRoute: HyperProxyProviderCall<ElevenLabsOperation> {
@@ -1233,10 +1297,6 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
   public var setRules: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.setRules)
   }
-  /// `GET v1/service-accounts`
-  public var getWorkspaceServiceAccounts: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.getWorkspaceServiceAccounts)
-  }
   /// `GET v1/shared-voices`
   public var getLibraryVoices: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.getLibraryVoices)
@@ -1248,218 +1308,6 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
   /// `POST v1/single-use-token/{token_type}`
   public var getSingleUseToken: HyperProxyProviderCall<ElevenLabsOperation> {
     self.call(.getSingleUseToken)
-  }
-  /// `GET v1/smb/agent-info`
-  public var smbGetAgentInfo: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbGetAgentInfo)
-  }
-  /// `PUT v1/smb/agent-info`
-  public var smbUpdateAgentInfo: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbUpdateAgentInfo)
-  }
-  /// `GET v1/smb/customer-facing-agents`
-  public var smbListCustomerFacingAgents: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbListCustomerFacingAgents)
-  }
-  /// `PATCH v1/smb/customer-facing-agents/{agent_id}`
-  public var smbUpdateCustomerFacingAgent: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbUpdateCustomerFacingAgent)
-  }
-  /// `POST v1/smb/customer-facing-agents/{agent_id}/activate`
-  public var smbActivateCustomerFacingAgent: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbActivateCustomerFacingAgent)
-  }
-  /// `GET v1/smb/customer-facing-agents/{agent_id}/procedures`
-  public var smbListAgentProcedures: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbListAgentProcedures)
-  }
-  /// `POST v1/smb/customer-facing-agents/{agent_id}/procedures`
-  public var smbAddAgentProcedure: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbAddAgentProcedure)
-  }
-  /// `DELETE v1/smb/customer-facing-agents/{agent_id}/procedures/{procedure_id}`
-  public var smbDeleteAgentProcedure: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbDeleteAgentProcedure)
-  }
-  /// `PUT v1/smb/customer-facing-agents/{agent_id}/procedures/{procedure_id}`
-  public var smbUpdateAgentProcedure: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbUpdateAgentProcedure)
-  }
-  /// `POST v1/smb/customer-facing-agents/{agent_id}/rules`
-  public var smbAddAgentRule: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbAddAgentRule)
-  }
-  /// `DELETE v1/smb/customer-facing-agents/{agent_id}/rules/{rule_id}`
-  public var smbDeleteAgentRule: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbDeleteAgentRule)
-  }
-  /// `PUT v1/smb/customer-facing-agents/{agent_id}/rules/{rule_id}`
-  public var smbUpdateAgentRule: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbUpdateAgentRule)
-  }
-  /// `POST v1/smb/customer-facing-agents/{agent_id}/transfer-rules`
-  public var smbAddTransferRule: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbAddTransferRule)
-  }
-  /// `DELETE v1/smb/customer-facing-agents/{agent_id}/transfer-rules/{rule_id}`
-  public var smbDeleteTransferRule: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbDeleteTransferRule)
-  }
-  /// `PUT v1/smb/customer-facing-agents/{agent_id}/transfer-rules/{rule_id}`
-  public var smbUpdateTransferRule: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbUpdateTransferRule)
-  }
-  /// `GET v1/smb/holidays`
-  public var smbListHolidays: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbListHolidays)
-  }
-  /// `POST v1/smb/holidays`
-  public var smbCreateHoliday: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbCreateHoliday)
-  }
-  /// `DELETE v1/smb/holidays/{holiday_id}`
-  public var smbDeleteHoliday: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbDeleteHoliday)
-  }
-  /// `GET v1/smb/holidays/{holiday_id}`
-  public var smbGetHoliday: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbGetHoliday)
-  }
-  /// `PUT v1/smb/holidays/{holiday_id}`
-  public var smbUpdateHoliday: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbUpdateHoliday)
-  }
-  /// `GET v1/smb/knowledge-sources`
-  public var smbListKnowledgeSources: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbListKnowledgeSources)
-  }
-  /// `POST v1/smb/knowledge-sources`
-  public var smbUploadKnowledgeSource: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbUploadKnowledgeSource)
-  }
-  /// `POST v1/smb/knowledge-sources/urls`
-  public var smbAddUrlSource: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbAddUrlSource)
-  }
-  /// `DELETE v1/smb/knowledge-sources/{source_id}`
-  public var smbDeleteKnowledgeSource: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbDeleteKnowledgeSource)
-  }
-  /// `GET v1/smb/knowledge-sources/{source_id}`
-  public var smbGetKnowledgeSource: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbGetKnowledgeSource)
-  }
-  /// `GET v1/smb/locations`
-  public var smbListLocations: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbListLocations)
-  }
-  /// `POST v1/smb/locations`
-  public var smbCreateLocation: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbCreateLocation)
-  }
-  /// `DELETE v1/smb/locations/{location_id}`
-  public var smbDeleteLocation: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbDeleteLocation)
-  }
-  /// `GET v1/smb/locations/{location_id}`
-  public var smbGetLocation: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbGetLocation)
-  }
-  /// `PUT v1/smb/locations/{location_id}`
-  public var smbUpdateLocation: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbUpdateLocation)
-  }
-  /// `GET v1/smb/phone-numbers/assignments`
-  public var smbListWorkspacePhoneAssignments: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbListWorkspacePhoneAssignments)
-  }
-  /// `POST v1/smb/phone-numbers/assignments`
-  public var smbAssignPhoneNumber: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbAssignPhoneNumber)
-  }
-  /// `DELETE v1/smb/phone-numbers/assignments/{phone_assignment_id}`
-  public var smbReleasePhoneAssignment: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbReleasePhoneAssignment)
-  }
-  /// `PATCH v1/smb/phone-numbers/assignments/{phone_assignment_id}`
-  public var smbReassignPhoneToAgent: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbReassignPhoneToAgent)
-  }
-  /// `GET v1/smb/reseller/tier-ladder`
-  public var smbListResellerTierLadder: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbListResellerTierLadder)
-  }
-  /// `GET v1/smb/reseller/workspaces`
-  public var smbListResellerWorkspaces: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbListResellerWorkspaces)
-  }
-  /// `POST v1/smb/reseller/workspaces`
-  public var smbResellerProvisionWorkspace: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbResellerProvisionWorkspace)
-  }
-  /// `DELETE v1/smb/reseller/workspaces/{workspace_id}/subscription`
-  public var smbUnassignResellerTier: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbUnassignResellerTier)
-  }
-  /// `PATCH v1/smb/reseller/workspaces/{workspace_id}/subscription`
-  public var smbChangeResellerTier: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbChangeResellerTier)
-  }
-  /// `POST v1/smb/reseller/workspaces/{workspace_id}/subscription`
-  public var smbAssignResellerTier: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbAssignResellerTier)
-  }
-  /// `POST v1/smb/reseller/workspaces/{workspace_id}/subscription/cancel-downgrade`
-  public var smbCancelResellerPendingDowngrade: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbCancelResellerPendingDowngrade)
-  }
-  /// `POST v1/smb/reseller/workspaces/{workspace_id}/subscription/restore`
-  public var smbRestoreResellerSubscription: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbRestoreResellerSubscription)
-  }
-  /// `GET v1/smb/services`
-  public var smbListServices: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbListServices)
-  }
-  /// `POST v1/smb/services`
-  public var smbCreateService: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbCreateService)
-  }
-  /// `DELETE v1/smb/services/{service_id}`
-  public var smbDeleteService: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbDeleteService)
-  }
-  /// `GET v1/smb/services/{service_id}`
-  public var smbGetService: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbGetService)
-  }
-  /// `PUT v1/smb/services/{service_id}`
-  public var smbUpdateService: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbUpdateService)
-  }
-  /// `POST v1/smb/services/{service_id}/confirm-update`
-  public var smbConfirmServiceUpdate: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbConfirmServiceUpdate)
-  }
-  /// `GET v1/smb/staff`
-  public var smbListStaff: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbListStaff)
-  }
-  /// `POST v1/smb/staff`
-  public var smbCreateStaffMember: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbCreateStaffMember)
-  }
-  /// `DELETE v1/smb/staff/{staff_id}`
-  public var smbDeleteStaffMember: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbDeleteStaffMember)
-  }
-  /// `GET v1/smb/staff/{staff_id}`
-  public var smbGetStaffMember: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbGetStaffMember)
-  }
-  /// `PUT v1/smb/staff/{staff_id}`
-  public var smbUpdateStaffMember: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.call(.smbUpdateStaffMember)
   }
   /// `POST v1/sound-generation`
   public var soundGenerationCreate: HyperProxyProviderCall<ElevenLabsOperation> {

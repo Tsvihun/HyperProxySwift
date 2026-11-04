@@ -13,5 +13,4 @@ import HyperProxyCore
 public enum MistralEntityType: String, Codable, Hashable, Sendable {
   case user = "User"
   case workspace = "Workspace"
-  case org = "Org"
 }

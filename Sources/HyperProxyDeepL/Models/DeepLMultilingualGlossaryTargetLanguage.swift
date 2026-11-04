@@ -1,0 +1,58 @@
+//
+//  DeepLMultilingualGlossaryTargetLanguage.swift
+//  HyperProxySwift
+//
+//  Created by HyperProxy on 13.09.2026.
+//  Copyright © 2026 HyperProxy. All rights reserved.
+//
+// Maintainer-generated release artifact. Do not edit by hand.
+
+import Foundation
+import HyperProxyCore
+
+public enum DeepLMultilingualGlossaryTargetLanguage: String, Codable, Hashable, Sendable {
+  case ar = "ar"
+  case bg = "bg"
+  case cs = "cs"
+  case da = "da"
+  case de = "de"
+  case deCh = "de-CH"
+  case deDe = "de-DE"
+  case el = "el"
+  case en = "en"
+  case enGb = "en-GB"
+  case enUs = "en-US"
+  case es = "es"
+  case es419 = "es-419"
+  case esEs = "es-ES"
+  case et = "et"
+  case fi = "fi"
+  case fr = "fr"
+  case frCa = "fr-CA"
+  case frFr = "fr-FR"
+  case he = "he"
+  case hu = "hu"
+  case id = "id"
+  case it = "it"
+  case ja = "ja"
+  case ko = "ko"
+  case lt = "lt"
+  case lv = "lv"
+  case nb = "nb"
+  case nl = "nl"
+  case pl = "pl"
+  case pt = "pt"
+  case ptBr = "pt-BR"
+  case ptPt = "pt-PT"
+  case ro = "ro"
+  case ru = "ru"
+  case sk = "sk"
+  case sl = "sl"
+  case sv = "sv"
+  case tr = "tr"
+  case uk = "uk"
+  case vi = "vi"
+  case zh = "zh"
+  case zhHans = "zh-Hans"
+  case zhHant = "zh-Hant"
+}

@@ -18,6 +18,7 @@ public struct GeminiBidiGenerateContentSetup: Codable, Sendable {
   public var labels: [String: String]?
   public var model: String?
   public var outputAudioTranscription: GeminiAudioTranscriptionConfig?
+  public var proactivity: GeminiProactivityConfig?
   public var realtimeInputConfig: GeminiRealtimeInputConfig?
   public var sessionResumption: GeminiSessionResumptionConfig?
   public var systemInstruction: GeminiContent?
@@ -31,6 +32,7 @@ public struct GeminiBidiGenerateContentSetup: Codable, Sendable {
     labels: [String: String]? = nil,
     model: String? = nil,
     outputAudioTranscription: GeminiAudioTranscriptionConfig? = nil,
+    proactivity: GeminiProactivityConfig? = nil,
     realtimeInputConfig: GeminiRealtimeInputConfig? = nil,
     sessionResumption: GeminiSessionResumptionConfig? = nil,
     systemInstruction: GeminiContent? = nil,
@@ -43,6 +45,7 @@ public struct GeminiBidiGenerateContentSetup: Codable, Sendable {
     self.labels = labels
     self.model = model
     self.outputAudioTranscription = outputAudioTranscription
+    self.proactivity = proactivity
     self.realtimeInputConfig = realtimeInputConfig
     self.sessionResumption = sessionResumption
     self.systemInstruction = systemInstruction
@@ -57,6 +60,7 @@ public struct GeminiBidiGenerateContentSetup: Codable, Sendable {
     case labels
     case model
     case outputAudioTranscription
+    case proactivity
     case realtimeInputConfig
     case sessionResumption
     case systemInstruction

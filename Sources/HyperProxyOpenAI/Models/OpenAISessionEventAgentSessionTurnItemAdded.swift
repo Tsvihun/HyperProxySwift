@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct OpenAISessionEventAgentSessionTurnItemAdded: Codable, Sendable {
   public var eventId: String
   public var item: OpenAISessionTurnItemResource
+  public var obfuscation: String?
   public var outputIndex: Int64
   public var sessionId: String
   public var turnId: String
@@ -24,10 +25,12 @@ public struct OpenAISessionEventAgentSessionTurnItemAdded: Codable, Sendable {
     outputIndex: Int64,
     sessionId: String,
     turnId: String,
-    kind: OpenAISessionEventAgentSessionTurnItemAdded.Kind
+    kind: OpenAISessionEventAgentSessionTurnItemAdded.Kind,
+    obfuscation: String? = nil
   ) {
     self.eventId = eventId
     self.item = item
+    self.obfuscation = obfuscation
     self.outputIndex = outputIndex
     self.sessionId = sessionId
     self.turnId = turnId
@@ -37,6 +40,7 @@ public struct OpenAISessionEventAgentSessionTurnItemAdded: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case eventId = "event_id"
     case item
+    case obfuscation
     case outputIndex = "output_index"
     case sessionId = "session_id"
     case turnId = "turn_id"

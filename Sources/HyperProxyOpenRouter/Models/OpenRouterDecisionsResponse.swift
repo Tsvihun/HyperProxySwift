@@ -80,21 +80,25 @@ public struct OpenRouterDecisionsResponse: Codable, Sendable {
   public struct Usage: Codable, Sendable {
     public var cost: Double?
     public var inputTokens: Int
+    public var inputTokensDetails: OpenRouterDecisionsUsageInputTokensDetails?
     public var outputTokens: Int
 
     public init(
       inputTokens: Int,
       outputTokens: Int,
-      cost: Double? = nil
+      cost: Double? = nil,
+      inputTokensDetails: OpenRouterDecisionsUsageInputTokensDetails? = nil
     ) {
       self.cost = cost
       self.inputTokens = inputTokens
+      self.inputTokensDetails = inputTokensDetails
       self.outputTokens = outputTokens
     }
 
     enum CodingKeys: String, CodingKey {
       case cost
       case inputTokens = "input_tokens"
+      case inputTokensDetails = "input_tokens_details"
       case outputTokens = "output_tokens"
     }
   }

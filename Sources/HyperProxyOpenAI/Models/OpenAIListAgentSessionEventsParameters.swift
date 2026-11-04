@@ -11,15 +11,19 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAIListAgentSessionEventsParameters: Codable, Sendable {
+  public var includeObfuscation: Bool?
   public var sessionId: String
 
   public init(
-    sessionId: String
+    sessionId: String,
+    includeObfuscation: Bool? = nil
   ) {
+    self.includeObfuscation = includeObfuscation
     self.sessionId = sessionId
   }
 
   enum CodingKeys: String, CodingKey {
+    case includeObfuscation = "include_obfuscation"
     case sessionId = "session_id"
   }
 }

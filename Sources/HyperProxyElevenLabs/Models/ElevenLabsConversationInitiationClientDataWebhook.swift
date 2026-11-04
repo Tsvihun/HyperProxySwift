@@ -31,6 +31,7 @@ public struct ElevenLabsConversationInitiationClientDataWebhook: Codable, Sendab
   public enum RequestHeadersValue: Codable, Sendable {
     case string(String)
     case convAISecretLocator(ElevenLabsConvAISecretLocator)
+    case convAIEnvVarLocator(ElevenLabsConvAIEnvVarLocator)
 
     public init(from decoder: any Decoder) throws {
       let container = try decoder.singleValueContainer()
@@ -38,7 +39,11 @@ public struct ElevenLabsConversationInitiationClientDataWebhook: Codable, Sendab
         self = .string(value)
         return
       }
-      self = .convAISecretLocator(try container.decode(ElevenLabsConvAISecretLocator.self))
+      if let value = try? container.decode(ElevenLabsConvAISecretLocator.self) {
+        self = .convAISecretLocator(value)
+        return
+      }
+      self = .convAIEnvVarLocator(try container.decode(ElevenLabsConvAIEnvVarLocator.self))
     }
 
     public func encode(to encoder: any Encoder) throws {
@@ -47,6 +52,8 @@ public struct ElevenLabsConversationInitiationClientDataWebhook: Codable, Sendab
       case .string(let value):
         try container.encode(value)
       case .convAISecretLocator(let value):
+        try container.encode(value)
+      case .convAIEnvVarLocator(let value):
         try container.encode(value)
       }
     }

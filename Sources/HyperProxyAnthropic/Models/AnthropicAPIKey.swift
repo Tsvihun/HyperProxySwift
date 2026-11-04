@@ -18,7 +18,7 @@ public struct AnthropicAPIKey: Codable, Sendable {
   public var name: String
   public var partialKeyHint: String?
   public var principal: AnthropicPrincipal?
-  public var scope: AnthropicScope
+  public var scope: AnthropicOrganizationApiKeyScope
   public var status: AnthropicAPIKey.Status
   public var kind: AnthropicAPIKey.Kind
 
@@ -26,7 +26,7 @@ public struct AnthropicAPIKey: Codable, Sendable {
     createdAt: String,
     id: String,
     name: String,
-    scope: AnthropicScope,
+    scope: AnthropicOrganizationApiKeyScope,
     status: AnthropicAPIKey.Status,
     kind: AnthropicAPIKey.Kind,
     createdBy: AnthropicAPIKeyCreatedBy? = nil,

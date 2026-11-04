@@ -14,13 +14,13 @@ public struct OpenAIResponsePromptCacheOptionsParam: Codable, Sendable {
   public var comparisonResponseId: String?
   public var mode: OpenAIPromptCacheModeEnum?
   public var prewarm: Bool?
-  public var ttl: OpenAIPromptCacheTTLEnum?
+  public var ttl: OpenAIResponsePromptCacheOptionsParam.Ttl?
 
   public init(
     comparisonResponseId: String? = nil,
     mode: OpenAIPromptCacheModeEnum? = nil,
     prewarm: Bool? = nil,
-    ttl: OpenAIPromptCacheTTLEnum? = nil
+    ttl: OpenAIResponsePromptCacheOptionsParam.Ttl? = nil
   ) {
     self.comparisonResponseId = comparisonResponseId
     self.mode = mode
@@ -33,5 +33,10 @@ public struct OpenAIResponsePromptCacheOptionsParam: Codable, Sendable {
     case mode
     case prewarm
     case ttl
+  }
+
+  public enum Ttl: String, Codable, Hashable, Sendable {
+    case value30m = "30m"
+    case value12h = "12h"
   }
 }

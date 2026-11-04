@@ -16,6 +16,10 @@ import Foundation
 public struct ElevenLabsAdminCalls: Sendable {
   let service: ElevenLabsService
 
+  /// `GET v1/service-accounts`
+  public var getWorkspaceServiceAccounts: HyperProxyProviderCall<ElevenLabsOperation> {
+    self.service.call(.getWorkspaceServiceAccounts)
+  }
   /// `POST v1/service-accounts`
   public var createServiceAccount: HyperProxyProviderCall<ElevenLabsOperation> {
     self.service.call(.createServiceAccount)
@@ -39,18 +43,6 @@ public struct ElevenLabsAdminCalls: Sendable {
   /// `POST v1/service-accounts/{service_account_user_id}/api-keys/{api_key_id}/disable`
   public var disableServiceAccountApiKey: HyperProxyProviderCall<ElevenLabsOperation> {
     self.service.call(.disableServiceAccountApiKey)
-  }
-  /// `GET v1/smb/reseller/billing/invoices`
-  public var smbListResellerInvoices: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.service.call(.smbListResellerInvoices)
-  }
-  /// `GET v1/smb/reseller/billing/invoices/{invoice_id}`
-  public var smbGetResellerInvoice: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.service.call(.smbGetResellerInvoice)
-  }
-  /// `GET v1/smb/reseller/billing/upcoming`
-  public var smbListResellerUpcomingPayments: HyperProxyProviderCall<ElevenLabsOperation> {
-    self.service.call(.smbListResellerUpcomingPayments)
   }
   /// `GET v1/workspace/audit-logs`
   public var getWorkspaceAuditLogs: HyperProxyProviderCall<ElevenLabsOperation> {

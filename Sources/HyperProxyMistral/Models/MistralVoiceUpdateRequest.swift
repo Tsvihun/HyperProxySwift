@@ -13,7 +13,7 @@ import HyperProxyCore
 public struct MistralVoiceUpdateRequest: Codable, Sendable {
   public var age: Int?
   public var description: String?
-  public var gender: String?
+  public var gender: MistralVoiceGender?
   public var languages: [String]?
   public var name: String?
   public var retentionNotice: Int?
@@ -22,7 +22,7 @@ public struct MistralVoiceUpdateRequest: Codable, Sendable {
   public init(
     age: Int? = nil,
     description: String? = nil,
-    gender: String? = nil,
+    gender: MistralVoiceGender? = nil,
     languages: [String]? = nil,
     name: String? = nil,
     retentionNotice: Int? = nil,

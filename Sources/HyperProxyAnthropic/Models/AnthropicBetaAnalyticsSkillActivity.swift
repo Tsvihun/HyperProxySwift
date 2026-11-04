@@ -12,8 +12,7 @@ import HyperProxyCore
 
 public struct AnthropicBetaAnalyticsSkillActivity: Codable, Sendable {
   public var attributedListPrice: String?
-  public var chatCoworkUnifiedMetrics:
-    AnthropicBetaOrganizationAnalyticsSkillActivityChatCoworkUnifiedMetrics?
+  public var chatCoworkUnifiedMetrics: AnthropicBetaAnalyticsSkillChatCoworkUnifiedMetrics?
   public var chatMetrics: AnthropicBetaAnalyticsSkillChatMetrics
   public var claudeCodeMetrics: AnthropicBetaAnalyticsSkillClaudeCodeMetrics
   public var coworkMetrics: AnthropicBetaAnalyticsSkillCoworkMetrics
@@ -39,8 +38,7 @@ public struct AnthropicBetaAnalyticsSkillActivity: Codable, Sendable {
     officeMetrics: AnthropicBetaAnalyticsSkillOfficeMetrics,
     skillName: String,
     attributedListPrice: String? = nil,
-    chatCoworkUnifiedMetrics:
-      AnthropicBetaOrganizationAnalyticsSkillActivityChatCoworkUnifiedMetrics? = nil,
+    chatCoworkUnifiedMetrics: AnthropicBetaAnalyticsSkillChatCoworkUnifiedMetrics? = nil,
     currency: String? = nil,
     enableCount: Int? = nil,
     estimatedOverageSpend: String? = nil,

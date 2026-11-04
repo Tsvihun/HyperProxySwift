@@ -382,6 +382,9 @@ public enum OpenAIModelIdsResponses: Codable, Sendable {
   /// Provider-native value without the schema union wrapper.
   public static var gptRosalindResearch: Self { .responsesOnlyModel(.gptRosalindResearch) }
 
+  /// Provider-native value without the schema union wrapper.
+  public static var gpt6Rosalind: Self { .responsesOnlyModel(.gpt6Rosalind) }
+
   public enum ResponsesOnlyModel: String, Codable, Hashable, Sendable {
     case o1Pro = "o1-pro"
     case o1Pro2025_03_19 = "o1-pro-2025-03-19"
@@ -403,5 +406,6 @@ public enum OpenAIModelIdsResponses: Codable, Sendable {
     case gptDaybreakRedLatest = "gpt-daybreak-red-latest"
     case gpt5_6Cyber = "gpt-5.6-cyber"
     case gptRosalindResearch = "gpt-rosalind-research"
+    case gpt6Rosalind = "gpt-6-rosalind"
   }
 }

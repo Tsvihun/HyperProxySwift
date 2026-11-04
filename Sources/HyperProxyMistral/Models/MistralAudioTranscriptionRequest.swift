@@ -18,6 +18,7 @@ public struct MistralAudioTranscriptionRequest: Codable, Sendable {
   public var fileUrl: String?
   public var language: String?
   public var model: String
+  public var speakerReferences: [String: String]?
   public var stream: MistralAudioTranscriptionRequest.Stream?
   public var temperature: Double?
   public var timestampGranularities: [MistralTimestampGranularity]?
@@ -30,6 +31,7 @@ public struct MistralAudioTranscriptionRequest: Codable, Sendable {
     fileId: String? = nil,
     fileUrl: String? = nil,
     language: String? = nil,
+    speakerReferences: [String: String]? = nil,
     stream: MistralAudioTranscriptionRequest.Stream? = nil,
     temperature: Double? = nil,
     timestampGranularities: [MistralTimestampGranularity]? = nil
@@ -41,6 +43,7 @@ public struct MistralAudioTranscriptionRequest: Codable, Sendable {
     self.fileUrl = fileUrl
     self.language = language
     self.model = model
+    self.speakerReferences = speakerReferences
     self.stream = stream
     self.temperature = temperature
     self.timestampGranularities = timestampGranularities
@@ -54,6 +57,7 @@ public struct MistralAudioTranscriptionRequest: Codable, Sendable {
     case fileUrl = "file_url"
     case language
     case model
+    case speakerReferences = "speaker_references"
     case stream
     case temperature
     case timestampGranularities = "timestamp_granularities"

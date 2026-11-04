@@ -16,6 +16,7 @@ public struct OpenAIResponsesClientEventResponseCreate: Codable, Sendable {
   public var contextManagement: [OpenAIContextManagementParam]?
   public var conversation: OpenAIConversationParam?
   public var generate: Bool?
+  public var image: OpenAIImageOptionsParam?
   public var include: [OpenAIIncludeEnum]?
   public var input: OpenAIInputParam?
   public var instructions: String?
@@ -28,7 +29,7 @@ public struct OpenAIResponsesClientEventResponseCreate: Codable, Sendable {
   public var previousResponseId: String?
   public var prompt: OpenAIPrompt?
   public var promptCacheKey: String?
-  public var promptCacheOptions: OpenAIPromptCacheOptionsParam?
+  public var promptCacheOptions: OpenAIResponsePromptCacheOptionsParam?
   public var promptCacheRetention: OpenAIModelResponsePropertiesPromptCacheRetention?
   public var reasoning: OpenAIReasoning?
   public var safetyIdentifier: String?
@@ -54,6 +55,7 @@ public struct OpenAIResponsesClientEventResponseCreate: Codable, Sendable {
     contextManagement: [OpenAIContextManagementParam]? = nil,
     conversation: OpenAIConversationParam? = nil,
     generate: Bool? = nil,
+    image: OpenAIImageOptionsParam? = nil,
     include: [OpenAIIncludeEnum]? = nil,
     input: OpenAIInputParam? = nil,
     instructions: String? = nil,
@@ -66,7 +68,7 @@ public struct OpenAIResponsesClientEventResponseCreate: Codable, Sendable {
     previousResponseId: String? = nil,
     prompt: OpenAIPrompt? = nil,
     promptCacheKey: String? = nil,
-    promptCacheOptions: OpenAIPromptCacheOptionsParam? = nil,
+    promptCacheOptions: OpenAIResponsePromptCacheOptionsParam? = nil,
     promptCacheRetention: OpenAIModelResponsePropertiesPromptCacheRetention? = nil,
     reasoning: OpenAIReasoning? = nil,
     safetyIdentifier: String? = nil,
@@ -89,6 +91,7 @@ public struct OpenAIResponsesClientEventResponseCreate: Codable, Sendable {
     self.contextManagement = contextManagement
     self.conversation = conversation
     self.generate = generate
+    self.image = image
     self.include = include
     self.input = input
     self.instructions = instructions
@@ -127,6 +130,7 @@ public struct OpenAIResponsesClientEventResponseCreate: Codable, Sendable {
     case contextManagement = "context_management"
     case conversation
     case generate
+    case image
     case include
     case input
     case instructions

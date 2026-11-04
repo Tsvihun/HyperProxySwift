@@ -22,6 +22,7 @@ public struct MistralGetLog: Codable, Sendable {
   public var scopeName: String
   public var scopeSchemaUrl: String
   public var scopeVersion: String
+  public var serviceAccountId: String?
   public var serviceName: String
   public var severityNumber: Int
   public var severityText: String
@@ -52,7 +53,8 @@ public struct MistralGetLog: Codable, Sendable {
     traceFlags: Int,
     traceId: String,
     userId: String,
-    workspaceId: String
+    workspaceId: String,
+    serviceAccountId: String? = nil
   ) {
     self.body = body
     self.customerId = customerId
@@ -65,6 +67,7 @@ public struct MistralGetLog: Codable, Sendable {
     self.scopeName = scopeName
     self.scopeSchemaUrl = scopeSchemaUrl
     self.scopeVersion = scopeVersion
+    self.serviceAccountId = serviceAccountId
     self.serviceName = serviceName
     self.severityNumber = severityNumber
     self.severityText = severityText
@@ -88,6 +91,7 @@ public struct MistralGetLog: Codable, Sendable {
     case scopeName = "scope_name"
     case scopeSchemaUrl = "scope_schema_url"
     case scopeVersion = "scope_version"
+    case serviceAccountId = "service_account_id"
     case serviceName = "service_name"
     case severityNumber = "severity_number"
     case severityText = "severity_text"

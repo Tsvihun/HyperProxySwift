@@ -12,11 +12,11 @@ import HyperProxyCore
 
 public struct DeepLGetMultilingualGlossaryEntriesParameters: Codable, Sendable {
   public var sourceLang: DeepLGlossarySourceLanguage
-  public var targetLang: DeepLGlossaryTargetLanguage
+  public var targetLang: DeepLMultilingualGlossaryTargetLanguage
 
   public init(
     sourceLang: DeepLGlossarySourceLanguage,
-    targetLang: DeepLGlossaryTargetLanguage
+    targetLang: DeepLMultilingualGlossaryTargetLanguage
   ) {
     self.sourceLang = sourceLang
     self.targetLang = targetLang

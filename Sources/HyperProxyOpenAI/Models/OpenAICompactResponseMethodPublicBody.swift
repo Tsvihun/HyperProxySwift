@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct OpenAICompactResponseMethodPublicBody: Codable, Sendable {
+  public var image: OpenAIImageOptionsParam?
   public var input: OpenAICompactResponseMethodPublicBodyInputVariant?
   public var instructions: String?
   public var model: OpenAIModelIdsCompaction?
@@ -22,6 +23,7 @@ public struct OpenAICompactResponseMethodPublicBody: Codable, Sendable {
 
   public init(
     model: OpenAIModelIdsCompaction?,
+    image: OpenAIImageOptionsParam? = nil,
     input: OpenAICompactResponseMethodPublicBodyInputVariant? = nil,
     instructions: String? = nil,
     previousResponseId: String? = nil,
@@ -30,6 +32,7 @@ public struct OpenAICompactResponseMethodPublicBody: Codable, Sendable {
     promptCacheRetention: OpenAIPromptCacheRetentionEnum? = nil,
     serviceTier: OpenAIServiceTierEnum? = nil
   ) {
+    self.image = image
     self.input = input
     self.instructions = instructions
     self.model = model
@@ -41,6 +44,7 @@ public struct OpenAICompactResponseMethodPublicBody: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case image
     case input
     case instructions
     case model

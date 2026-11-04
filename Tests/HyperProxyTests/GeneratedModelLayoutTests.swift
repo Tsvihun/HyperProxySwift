@@ -17,6 +17,43 @@ import Testing
 
 @Suite("Generated model layout contracts")
 struct GeneratedModelLayoutTests {
+  @Test("OpenAI twelve-hour cache retention round-trips its request wire value")
+  func twelveHourCacheRetention() throws {
+    let request = OpenAIResponsePromptCacheOptionsParam(ttl: .value12h)
+    let encoded = try JSONEncoder().encode(request)
+    let json = try #require(JSONSerialization.jsonObject(with: encoded) as? [String: String])
+    #expect(json["ttl"] == "12h")
+    let decoded = try JSONDecoder().decode(
+      OpenAIResponsePromptCacheOptionsParam.self, from: encoded)
+    #expect(decoded.ttl == .value12h)
+  }
+
+  @Test("OpenAI usage preserves disjoint cache-write lifetimes and accepts older responses")
+  func cacheWriteLifetimeDetails() throws {
+    let data = Data(
+      #"{"input_tokens":12000,"input_tokens_details":{"cached_tokens":4000,"cache_write_tokens":7000,"cache_write_tokens_details":{"ttl_30m_tokens":3000,"ttl_12h_tokens":4000}},"output_tokens":100,"output_tokens_details":{"reasoning_tokens":0},"total_tokens":12100}"#
+        .utf8)
+    let usage = try JSONDecoder().decode(OpenAIResponseUsage.self, from: data)
+    #expect(usage.inputTokensDetails.cacheWriteTokensDetails?.ttl30mTokens == 3000)
+    #expect(usage.inputTokensDetails.cacheWriteTokensDetails?.ttl12hTokens == 4000)
+    let roundTrip = try JSONDecoder().decode(
+      OpenAIResponseUsage.self, from: JSONEncoder().encode(usage))
+    #expect(roundTrip.inputTokensDetails.cacheWriteTokensDetails?.ttl12hTokens == 4000)
+    let legacy = Data(
+      #"{"input_tokens":12000,"input_tokens_details":{"cached_tokens":4000,"cache_write_tokens":7000},"output_tokens":100,"output_tokens_details":{"reasoning_tokens":0},"total_tokens":12100}"#
+        .utf8)
+    let oldUsage = try JSONDecoder().decode(OpenAIResponseUsage.self, from: legacy)
+    #expect(oldUsage.inputTokensDetails.cacheWriteTokensDetails == nil)
+    #expect(oldUsage.inputTokensDetails.cacheWriteTokens == 7000)
+  }
+
+  @Test("Gemini live setup retains its typed proactivity configuration")
+  func liveProactivity() throws {
+    let data = Data(#"{"proactivity":{"proactiveAudio":true}}"#.utf8)
+    let setup = try JSONDecoder().decode(GeminiBidiGenerateContentSetup.self, from: data)
+    #expect(setup.proactivity?.proactiveAudio == true)
+  }
+
   @Test("Swift enum cases use lower camel case while uppercase provider literals stay unchanged")
   func uppercaseWireValues() throws {
     let filter = TogetherRolloutServiceListRolloutsParameters.Filter.rolloutFilterActive

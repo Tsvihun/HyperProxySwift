@@ -18,6 +18,7 @@ public struct OpenAIBetaResponse: Codable, Sendable {
   public var createdAt: Double
   public var error: OpenAIBetaResponseError?
   public var id: String
+  public var image: OpenAIBetaResolvedImageOptions?
   public var incompleteDetails: OpenAIBetaResponseIncompleteDetailsWithReason?
   public var instructions: OpenAIBetaResponseInstructionsVariant?
   public var maxOutputTokens: Int?
@@ -69,6 +70,7 @@ public struct OpenAIBetaResponse: Codable, Sendable {
     background: Bool? = nil,
     completedAt: Double? = nil,
     conversation: OpenAIBetaResponseConversation? = nil,
+    image: OpenAIBetaResolvedImageOptions? = nil,
     maxOutputTokens: Int? = nil,
     maxToolCalls: Int? = nil,
     moderation: OpenAIBetaModeration? = nil,
@@ -97,6 +99,7 @@ public struct OpenAIBetaResponse: Codable, Sendable {
     self.createdAt = createdAt
     self.error = error
     self.id = id
+    self.image = image
     self.incompleteDetails = incompleteDetails
     self.instructions = instructions
     self.maxOutputTokens = maxOutputTokens
@@ -138,6 +141,7 @@ public struct OpenAIBetaResponse: Codable, Sendable {
     case createdAt = "created_at"
     case error
     case id
+    case image
     case incompleteDetails = "incomplete_details"
     case instructions
     case maxOutputTokens = "max_output_tokens"
@@ -178,6 +182,7 @@ public struct OpenAIBetaResponse: Codable, Sendable {
     public var createdAt: Double
     public var error: OpenAIBetaResponseError?
     public var id: String
+    public var image: OpenAIBetaResolvedImageOptions?
     public var incompleteDetails: OpenAIBetaResponseIncompleteDetailsWithReason?
     public var instructions: OpenAIBetaResponseInstructionsVariant?
     public var maxOutputTokens: Int?
@@ -207,6 +212,7 @@ public struct OpenAIBetaResponse: Codable, Sendable {
       parallelToolCalls: Bool,
       completedAt: Double? = nil,
       conversation: OpenAIBetaResponseConversation? = nil,
+      image: OpenAIBetaResolvedImageOptions? = nil,
       maxOutputTokens: Int? = nil,
       moderation: OpenAIBetaModeration? = nil,
       outputText: String? = nil,
@@ -225,6 +231,7 @@ public struct OpenAIBetaResponse: Codable, Sendable {
       self.createdAt = createdAt
       self.error = error
       self.id = id
+      self.image = image
       self.incompleteDetails = incompleteDetails
       self.instructions = instructions
       self.maxOutputTokens = maxOutputTokens
@@ -250,6 +257,7 @@ public struct OpenAIBetaResponse: Codable, Sendable {
       case createdAt = "created_at"
       case error
       case id
+      case image
       case incompleteDetails = "incomplete_details"
       case instructions
       case maxOutputTokens = "max_output_tokens"

@@ -13,6 +13,7 @@ import HyperProxyCore
 public struct ElevenLabsSpeechEngineResponse: Codable, Sendable {
   public var accessInfo: ElevenLabsResourceAccessInfo?
   public var asr: ElevenLabsASRConversationalConfig
+  public var auth: ElevenLabsSpeechEngineAuthConfig
   public var callLimits: ElevenLabsAgentCallLimits
   public var cascadeTimeoutSeconds: Double
   public var conversation: ElevenLabsConversationConfigOutput
@@ -30,6 +31,7 @@ public struct ElevenLabsSpeechEngineResponse: Codable, Sendable {
 
   public init(
     asr: ElevenLabsASRConversationalConfig,
+    auth: ElevenLabsSpeechEngineAuthConfig,
     callLimits: ElevenLabsAgentCallLimits,
     cascadeTimeoutSeconds: Double,
     conversation: ElevenLabsConversationConfigOutput,
@@ -48,6 +50,7 @@ public struct ElevenLabsSpeechEngineResponse: Codable, Sendable {
   ) {
     self.accessInfo = accessInfo
     self.asr = asr
+    self.auth = auth
     self.callLimits = callLimits
     self.cascadeTimeoutSeconds = cascadeTimeoutSeconds
     self.conversation = conversation
@@ -67,6 +70,7 @@ public struct ElevenLabsSpeechEngineResponse: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case accessInfo = "access_info"
     case asr
+    case auth
     case callLimits = "call_limits"
     case cascadeTimeoutSeconds = "cascade_timeout_seconds"
     case conversation

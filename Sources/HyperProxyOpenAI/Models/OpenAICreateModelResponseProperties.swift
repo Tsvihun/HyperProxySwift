@@ -13,7 +13,6 @@ import HyperProxyCore
 public struct OpenAICreateModelResponseProperties: Codable, Sendable {
   public var metadata: OpenAIMetadata?
   public var promptCacheKey: String?
-  public var promptCacheOptions: OpenAIPromptCacheOptionsParam?
   public var promptCacheRetention: OpenAIModelResponsePropertiesPromptCacheRetention?
   public var safetyIdentifier: String?
   public var temperature: Double?
@@ -24,7 +23,6 @@ public struct OpenAICreateModelResponseProperties: Codable, Sendable {
   public init(
     metadata: OpenAIMetadata? = nil,
     promptCacheKey: String? = nil,
-    promptCacheOptions: OpenAIPromptCacheOptionsParam? = nil,
     promptCacheRetention: OpenAIModelResponsePropertiesPromptCacheRetention? = nil,
     safetyIdentifier: String? = nil,
     temperature: Double? = nil,
@@ -34,7 +32,6 @@ public struct OpenAICreateModelResponseProperties: Codable, Sendable {
   ) {
     self.metadata = metadata
     self.promptCacheKey = promptCacheKey
-    self.promptCacheOptions = promptCacheOptions
     self.promptCacheRetention = promptCacheRetention
     self.safetyIdentifier = safetyIdentifier
     self.temperature = temperature
@@ -46,7 +43,6 @@ public struct OpenAICreateModelResponseProperties: Codable, Sendable {
   enum CodingKeys: String, CodingKey {
     case metadata
     case promptCacheKey = "prompt_cache_key"
-    case promptCacheOptions = "prompt_cache_options"
     case promptCacheRetention = "prompt_cache_retention"
     case safetyIdentifier = "safety_identifier"
     case temperature
@@ -55,20 +51,16 @@ public struct OpenAICreateModelResponseProperties: Codable, Sendable {
     case user
   }
 
-  public struct WithPromptCacheOptionsAndTopLogprobs: Codable, Sendable {
-    public var promptCacheOptions: OpenAIPromptCacheOptionsParam?
+  public struct WithTopLogprobs: Codable, Sendable {
     public var topLogprobs: Int?
 
     public init(
-      promptCacheOptions: OpenAIPromptCacheOptionsParam? = nil,
       topLogprobs: Int? = nil
     ) {
-      self.promptCacheOptions = promptCacheOptions
       self.topLogprobs = topLogprobs
     }
 
     enum CodingKeys: String, CodingKey {
-      case promptCacheOptions = "prompt_cache_options"
       case topLogprobs = "top_logprobs"
     }
   }

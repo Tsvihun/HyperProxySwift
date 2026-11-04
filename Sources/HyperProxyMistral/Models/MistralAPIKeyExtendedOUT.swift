@@ -22,6 +22,8 @@ public struct MistralAPIKeyExtendedOUT: Codable, Sendable {
   public var lastUsed: String?
   public var name: String?
   public var product: MistralAPIKeyProduct?
+  public var serviceAccountId: String?
+  public var userId: String?
   public var workspaceId: String?
   public var workspaceName: String?
 
@@ -38,7 +40,9 @@ public struct MistralAPIKeyExtendedOUT: Codable, Sendable {
     name: String?,
     product: MistralAPIKeyProduct?,
     workspaceId: String?,
-    workspaceName: String?
+    workspaceName: String?,
+    serviceAccountId: String? = nil,
+    userId: String? = nil
   ) {
     self.actions = actions
     self.canDelete = canDelete
@@ -51,6 +55,8 @@ public struct MistralAPIKeyExtendedOUT: Codable, Sendable {
     self.lastUsed = lastUsed
     self.name = name
     self.product = product
+    self.serviceAccountId = serviceAccountId
+    self.userId = userId
     self.workspaceId = workspaceId
     self.workspaceName = workspaceName
   }
@@ -67,6 +73,8 @@ public struct MistralAPIKeyExtendedOUT: Codable, Sendable {
     case lastUsed = "last_used"
     case name
     case product
+    case serviceAccountId = "service_account_id"
+    case userId = "user_id"
     case workspaceId = "workspace_id"
     case workspaceName = "workspace_name"
   }

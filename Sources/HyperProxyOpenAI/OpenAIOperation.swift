@@ -162,6 +162,10 @@ public enum OpenAIOperation: String, HyperProxyCatalogOperation {
   case updateProjectServiceAccount = "update.project.service.account"
   /// `POST v1/organization/projects/{project_id}/service_accounts/{service_account_id}/api_keys`
   case createanApIkeyforaserviceaccount = "CreateanAPIkeyforaserviceaccount"
+  /// `GET v1/organization/projects/{project_id}/service_tier_settings`
+  case retrieveprojectservicetiersettings = "Retrieveprojectservicetiersettings"
+  /// `POST v1/organization/projects/{project_id}/service_tier_settings`
+  case updateprojectservicetiersettings = "Updateprojectservicetiersettings"
   /// `GET v1/organization/projects/{project_id}/spend_alerts`
   case listProjectSpendAlerts = "list.project.spend.alerts"
   /// `POST v1/organization/projects/{project_id}/spend_alerts`
@@ -252,6 +256,27 @@ public enum OpenAIOperation: String, HyperProxyCatalogOperation {
   case unassignUserRole = "unassign.user.role"
   /// `GET v1/organization/users/{user_id}/roles/{role_id}`
   case retrieveUserRole = "retrieve.user.role"
+  /// `GET v1/organization/workload_identity_providers`
+  case listPlatformworkloadidentityproviders = "ListPlatformworkloadidentityproviders"
+  /// `POST v1/organization/workload_identity_providers`
+  case createPlatformworkloadidentityprovider = "CreatePlatformworkloadidentityprovider"
+  /// `DELETE v1/organization/workload_identity_providers/{workload_identity_provider_id}`
+  case deletePlatformworkloadidentityprovider = "DeletePlatformworkloadidentityprovider"
+  /// `GET v1/organization/workload_identity_providers/{workload_identity_provider_id}`
+  case retrievePlatformworkloadidentityprovider = "RetrievePlatformworkloadidentityprovider"
+  /// `POST v1/organization/workload_identity_providers/{workload_identity_provider_id}`
+  case updatePlatformworkloadidentityprovider = "UpdatePlatformworkloadidentityprovider"
+  /// `GET v1/organization/workload_identity_providers/{workload_identity_provider_id}/federation_rules`
+  case listPlatformworkloadidentityfederationrules = "ListPlatformworkloadidentityfederationrules"
+  /// `POST v1/organization/workload_identity_providers/{workload_identity_provider_id}/federation_rules`
+  case createPlatformworkloadidentityfederationrule = "CreatePlatformworkloadidentityfederationrule"
+  /// `DELETE v1/organization/workload_identity_providers/{workload_identity_provider_id}/federation_rules/{workload_identity_federation_rule_id}`
+  case deletePlatformworkloadidentityfederationrule = "DeletePlatformworkloadidentityfederationrule"
+  /// `GET v1/organization/workload_identity_providers/{workload_identity_provider_id}/federation_rules/{workload_identity_federation_rule_id}`
+  case retrievePlatformworkloadidentityfederationrule =
+    "RetrievePlatformworkloadidentityfederationrule"
+  /// `POST v1/organization/workload_identity_providers/{workload_identity_provider_id}/federation_rules/{workload_identity_federation_rule_id}`
+  case updatePlatformworkloadidentityfederationrule = "UpdatePlatformworkloadidentityfederationrule"
   /// `POST v1/fine_tuning/alpha/graders/run`
   case runGrader = "runGrader"
   /// `POST v1/fine_tuning/alpha/graders/validate`

@@ -128,6 +128,10 @@ public struct OpenRouterAdminCalls: Sendable {
   public var bulkUnassignMembersFromGuardrail: HyperProxyProviderCall<OpenRouterOperation> {
     self.service.call(.bulkUnassignMembersFromGuardrail)
   }
+  /// `GET api/v1/key`
+  public var getCurrentKey: HyperProxyProviderCall<OpenRouterOperation> {
+    self.service.call(.getCurrentKey)
+  }
   /// `GET api/v1/keys`
   public var list: HyperProxyProviderCall<OpenRouterOperation> {
     self.service.call(.list)
@@ -211,14 +215,6 @@ public struct OpenRouterAdminCalls: Sendable {
   /// `POST api/v1/private-endpoints/{id}/enable`
   public var enablePrivateEndpoint: HyperProxyProviderCall<OpenRouterOperation> {
     self.service.call(.enablePrivateEndpoint)
-  }
-  /// `PUT api/v1/private-endpoints/{id}/parameters`
-  public var updatePrivateEndpointParameters: HyperProxyProviderCall<OpenRouterOperation> {
-    self.service.call(.updatePrivateEndpointParameters)
-  }
-  /// `PUT api/v1/private-endpoints/{id}/pricing`
-  public var updatePrivateEndpointPricing: HyperProxyProviderCall<OpenRouterOperation> {
-    self.service.call(.updatePrivateEndpointPricing)
   }
   /// `POST api/v1/private-endpoints/{id}/validate`
   public var validatePrivateEndpoint: HyperProxyProviderCall<OpenRouterOperation> {

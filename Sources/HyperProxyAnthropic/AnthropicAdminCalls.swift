@@ -17,18 +17,16 @@ public struct AnthropicAdminCalls: Sendable {
   let service: AnthropicService
 
   /// `GET v1/organizations/analytics/apps/chat/projects`
-  public var betaOrganizationAnalyticsAppsChatProjectsList:
-    HyperProxyProviderCall<AnthropicOperation>
-  {
-    self.service.call(.betaOrganizationAnalyticsAppsChatProjectsList)
+  public var organizationAnalyticsAppsChatProjectsList: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationAnalyticsAppsChatProjectsList)
   }
   /// `GET v1/organizations/analytics/artifacts`
-  public var betaOrganizationAnalyticsArtifactsList: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.betaOrganizationAnalyticsArtifactsList)
+  public var organizationAnalyticsArtifactsList: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationAnalyticsArtifactsList)
   }
   /// `GET v1/organizations/analytics/connectors`
-  public var betaOrganizationAnalyticsConnectorsList: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.betaOrganizationAnalyticsConnectorsList)
+  public var organizationAnalyticsConnectorsList: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationAnalyticsConnectorsList)
   }
   /// `GET v1/organizations/analytics/cost`
   public var betaOrganizationAnalyticsCostList: HyperProxyProviderCall<AnthropicOperation> {
@@ -39,16 +37,16 @@ public struct AnthropicAdminCalls: Sendable {
     self.service.call(.betaOrganizationAnalyticsCostReportList)
   }
   /// `GET v1/organizations/analytics/plugins`
-  public var betaOrganizationAnalyticsPluginsList: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.betaOrganizationAnalyticsPluginsList)
+  public var organizationAnalyticsPluginsList: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationAnalyticsPluginsList)
   }
   /// `GET v1/organizations/analytics/skills`
-  public var betaOrganizationAnalyticsSkillsList: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.betaOrganizationAnalyticsSkillsList)
+  public var organizationAnalyticsSkillsList: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationAnalyticsSkillsList)
   }
   /// `GET v1/organizations/analytics/summaries`
-  public var betaOrganizationAnalyticsSummariesList: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.betaOrganizationAnalyticsSummariesList)
+  public var organizationAnalyticsSummariesList: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationAnalyticsSummariesList)
   }
   /// `GET v1/organizations/analytics/usage`
   public var betaOrganizationAnalyticsUsageList: HyperProxyProviderCall<AnthropicOperation> {
@@ -70,8 +68,12 @@ public struct AnthropicAdminCalls: Sendable {
     self.service.call(.betaOrganizationAnalyticsUserUsageReportList)
   }
   /// `GET v1/organizations/analytics/users`
-  public var betaOrganizationAnalyticsUsersList: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.betaOrganizationAnalyticsUsersList)
+  public var organizationAnalyticsUsersList: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationAnalyticsUsersList)
+  }
+  /// `GET v1/organizations/api_keys`
+  public var organizationApiKeysList: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationApiKeysList)
   }
   /// `GET v1/organizations/api_keys/{api_key_id}`
   public var organizationApiKeysRetrieve: HyperProxyProviderCall<AnthropicOperation> {
@@ -166,6 +168,91 @@ public struct AnthropicAdminCalls: Sendable {
   /// `POST v1/organizations/compliance_settings`
   public var organizationComplianceSettingsUpdate: HyperProxyProviderCall<AnthropicOperation> {
     self.service.call(.organizationComplianceSettingsUpdate)
+  }
+  /// `GET v1/organizations/cost_report`
+  public var betaGetCostReport: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.betaGetCostReport)
+  }
+  /// `GET v1/organizations/external_keys`
+  public var organizationExternalKeysList: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationExternalKeysList)
+  }
+  /// `POST v1/organizations/external_keys`
+  public var organizationExternalKeysCreate: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationExternalKeysCreate)
+  }
+  /// `DELETE v1/organizations/external_keys/{external_key_id}`
+  public var organizationExternalKeysDelete: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationExternalKeysDelete)
+  }
+  /// `GET v1/organizations/external_keys/{external_key_id}`
+  public var organizationExternalKeysRetrieve: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationExternalKeysRetrieve)
+  }
+  /// `POST v1/organizations/external_keys/{external_key_id}`
+  public var organizationExternalKeysUpdate: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationExternalKeysUpdate)
+  }
+  /// `POST v1/organizations/external_keys/{external_key_id}/validate`
+  public var organizationExternalKeysValidate: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationExternalKeysValidate)
+  }
+  /// `GET v1/organizations/federation_issuers`
+  public var organizationFederationIssuersList: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationFederationIssuersList)
+  }
+  /// `POST v1/organizations/federation_issuers`
+  public var organizationFederationIssuersCreate: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationFederationIssuersCreate)
+  }
+  /// `GET v1/organizations/federation_issuers/{federation_issuer_id}`
+  public var organizationFederationIssuersRetrieve: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationFederationIssuersRetrieve)
+  }
+  /// `POST v1/organizations/federation_issuers/{federation_issuer_id}`
+  public var organizationFederationIssuersUpdate: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationFederationIssuersUpdate)
+  }
+  /// `POST v1/organizations/federation_issuers/{federation_issuer_id}/archive`
+  public var organizationFederationIssuersArchive: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationFederationIssuersArchive)
+  }
+  /// `GET v1/organizations/federation_rules`
+  public var organizationFederationRulesList: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationFederationRulesList)
+  }
+  /// `POST v1/organizations/federation_rules`
+  public var organizationFederationRulesCreate: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationFederationRulesCreate)
+  }
+  /// `GET v1/organizations/federation_rules/{federation_rule_id}`
+  public var organizationFederationRulesRetrieve: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationFederationRulesRetrieve)
+  }
+  /// `POST v1/organizations/federation_rules/{federation_rule_id}`
+  public var organizationFederationRulesUpdate: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationFederationRulesUpdate)
+  }
+  /// `POST v1/organizations/federation_rules/{federation_rule_id}/archive`
+  public var organizationFederationRulesArchive: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationFederationRulesArchive)
+  }
+  /// `GET v1/organizations/federation_rules/{federation_rule_id}/workspaces`
+  public var organizationFederationRulesWorkspacesList: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationFederationRulesWorkspacesList)
+  }
+  /// `POST v1/organizations/federation_rules/{federation_rule_id}/workspaces`
+  public var organizationFederationRulesWorkspacesAdd: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationFederationRulesWorkspacesAdd)
+  }
+  /// `DELETE v1/organizations/federation_rules/{federation_rule_id}/workspaces/{workspace_id}`
+  public var organizationFederationRulesWorkspacesRemove: HyperProxyProviderCall<AnthropicOperation>
+  {
+    self.service.call(.organizationFederationRulesWorkspacesRemove)
+  }
+  /// `GET v1/organizations/invites`
+  public var organizationInvitesList: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationInvitesList)
   }
   /// `POST v1/organizations/invites`
   public var organizationInvitesCreate: HyperProxyProviderCall<AnthropicOperation> {
@@ -266,49 +353,57 @@ public struct AnthropicAdminCalls: Sendable {
   public var betaOrganizationPluginsVersionsDownload: HyperProxyProviderCall<AnthropicOperation> {
     self.service.call(.betaOrganizationPluginsVersionsDownload)
   }
+  /// `GET v1/organizations/rate_limits`
+  public var organizationRateLimitsList: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationRateLimitsList)
+  }
   /// `GET v1/organizations/rbac_groups`
-  public var betaOrganizationRbacGroupsList: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.betaOrganizationRbacGroupsList)
+  public var organizationRbacGroupsList: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationRbacGroupsList)
   }
   /// `POST v1/organizations/rbac_groups`
-  public var betaOrganizationRbacGroupsCreate: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.betaOrganizationRbacGroupsCreate)
+  public var organizationRbacGroupsCreate: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationRbacGroupsCreate)
   }
   /// `DELETE v1/organizations/rbac_groups/{rbac_group_id}`
-  public var betaOrganizationRbacGroupsDelete: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.betaOrganizationRbacGroupsDelete)
+  public var organizationRbacGroupsDelete: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationRbacGroupsDelete)
   }
   /// `GET v1/organizations/rbac_groups/{rbac_group_id}`
-  public var betaOrganizationRbacGroupsRetrieve: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.betaOrganizationRbacGroupsRetrieve)
+  public var organizationRbacGroupsRetrieve: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationRbacGroupsRetrieve)
   }
   /// `POST v1/organizations/rbac_groups/{rbac_group_id}`
-  public var betaOrganizationRbacGroupsUpdate: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.betaOrganizationRbacGroupsUpdate)
+  public var organizationRbacGroupsUpdate: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationRbacGroupsUpdate)
   }
   /// `GET v1/organizations/rbac_groups/{rbac_group_id}/members`
-  public var betaOrganizationRbacGroupsMembersList: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.betaOrganizationRbacGroupsMembersList)
+  public var organizationRbacGroupsMembersList: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationRbacGroupsMembersList)
   }
   /// `POST v1/organizations/rbac_groups/{rbac_group_id}/members`
-  public var betaOrganizationRbacGroupsMembersAdd: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.betaOrganizationRbacGroupsMembersAdd)
+  public var organizationRbacGroupsMembersAdd: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationRbacGroupsMembersAdd)
   }
   /// `DELETE v1/organizations/rbac_groups/{rbac_group_id}/members/{user_id}`
-  public var betaOrganizationRbacGroupsMembersRemove: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.betaOrganizationRbacGroupsMembersRemove)
+  public var organizationRbacGroupsMembersRemove: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationRbacGroupsMembersRemove)
   }
   /// `GET v1/organizations/rbac_roles`
-  public var betaOrganizationRbacRolesList: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.betaOrganizationRbacRolesList)
+  public var organizationRbacRolesList: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationRbacRolesList)
   }
   /// `GET v1/organizations/rbac_roles/{rbac_role_id}`
-  public var betaOrganizationRbacRolesRetrieve: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.betaOrganizationRbacRolesRetrieve)
+  public var organizationRbacRolesRetrieve: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationRbacRolesRetrieve)
   }
   /// `GET v1/organizations/rbac_roles/{rbac_role_id}/permissions`
-  public var betaOrganizationRbacRolesPermissionsList: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.betaOrganizationRbacRolesPermissionsList)
+  public var organizationRbacRolesPermissionsList: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationRbacRolesPermissionsList)
+  }
+  /// `GET v1/organizations/service_accounts`
+  public var organizationServiceAccountsList: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationServiceAccountsList)
   }
   /// `POST v1/organizations/service_accounts`
   public var organizationServiceAccountsCreate: HyperProxyProviderCall<AnthropicOperation> {
@@ -340,28 +435,26 @@ public struct AnthropicAdminCalls: Sendable {
     self.service.call(.organizationServiceAccountsWorkspacesRemove)
   }
   /// `GET v1/organizations/spend_limit_increase_requests`
-  public var betaOrganizationSpendLimitsIncreaseRequestsList:
-    HyperProxyProviderCall<AnthropicOperation>
+  public var organizationSpendLimitsIncreaseRequestsList: HyperProxyProviderCall<AnthropicOperation>
   {
-    self.service.call(.betaOrganizationSpendLimitsIncreaseRequestsList)
+    self.service.call(.organizationSpendLimitsIncreaseRequestsList)
   }
   /// `GET v1/organizations/spend_limit_increase_requests/{spend_limit_increase_request_id}`
-  public var betaOrganizationSpendLimitsIncreaseRequestsRetrieve:
+  public var organizationSpendLimitsIncreaseRequestsRetrieve:
     HyperProxyProviderCall<AnthropicOperation>
   {
-    self.service.call(.betaOrganizationSpendLimitsIncreaseRequestsRetrieve)
+    self.service.call(.organizationSpendLimitsIncreaseRequestsRetrieve)
   }
   /// `POST v1/organizations/spend_limit_increase_requests/{spend_limit_increase_request_id}/approve`
-  public var betaOrganizationSpendLimitsIncreaseRequestsApprove:
+  public var organizationSpendLimitsIncreaseRequestsApprove:
     HyperProxyProviderCall<AnthropicOperation>
   {
-    self.service.call(.betaOrganizationSpendLimitsIncreaseRequestsApprove)
+    self.service.call(.organizationSpendLimitsIncreaseRequestsApprove)
   }
   /// `POST v1/organizations/spend_limit_increase_requests/{spend_limit_increase_request_id}/deny`
-  public var betaOrganizationSpendLimitsIncreaseRequestsDeny:
-    HyperProxyProviderCall<AnthropicOperation>
+  public var organizationSpendLimitsIncreaseRequestsDeny: HyperProxyProviderCall<AnthropicOperation>
   {
-    self.service.call(.betaOrganizationSpendLimitsIncreaseRequestsDeny)
+    self.service.call(.organizationSpendLimitsIncreaseRequestsDeny)
   }
   /// `GET v1/organizations/spend_limits`
   public var betaOrganizationSpendLimitsList: HyperProxyProviderCall<AnthropicOperation> {
@@ -372,8 +465,8 @@ public struct AnthropicAdminCalls: Sendable {
     self.service.call(.betaOrganizationSpendLimitsSet)
   }
   /// `GET v1/organizations/spend_limits/effective`
-  public var betaOrganizationSpendLimitsEffectiveList: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.betaOrganizationSpendLimitsEffectiveList)
+  public var organizationSpendLimitsEffectiveList: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationSpendLimitsEffectiveList)
   }
   /// `DELETE v1/organizations/spend_limits/{spend_limit_id}`
   public var betaOrganizationSpendLimitsDelete: HyperProxyProviderCall<AnthropicOperation> {
@@ -430,6 +523,66 @@ public struct AnthropicAdminCalls: Sendable {
   {
     self.service.call(.betaOrganizationTelemetryDestinationsWorkspacesAdd)
   }
+  /// `GET v1/organizations/tunnels`
+  public var betaListOrganizationTunnels: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.betaListOrganizationTunnels)
+  }
+  /// `GET v1/organizations/tunnels/{tunnel_id}`
+  public var betaGetOrganizationTunnel: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.betaGetOrganizationTunnel)
+  }
+  /// `POST v1/organizations/tunnels/{tunnel_id}/archive`
+  public var betaArchiveOrganizationTunnel: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.betaArchiveOrganizationTunnel)
+  }
+  /// `GET v1/organizations/tunnels/{tunnel_id}/certificates`
+  public var betaListOrganizationTunnelCertificates: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.betaListOrganizationTunnelCertificates)
+  }
+  /// `POST v1/organizations/tunnels/{tunnel_id}/certificates`
+  public var betaCreateOrganizationTunnelCertificate: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.betaCreateOrganizationTunnelCertificate)
+  }
+  /// `GET v1/organizations/tunnels/{tunnel_id}/certificates/{certificate_id}`
+  public var betaGetOrganizationTunnelCertificate: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.betaGetOrganizationTunnelCertificate)
+  }
+  /// `POST v1/organizations/tunnels/{tunnel_id}/certificates/{certificate_id}/archive`
+  public var betaArchiveOrganizationTunnelCertificate: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.betaArchiveOrganizationTunnelCertificate)
+  }
+  /// `POST v1/organizations/tunnels/{tunnel_id}/reveal_token`
+  public var betaRevealOrganizationTunnelToken: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.betaRevealOrganizationTunnelToken)
+  }
+  /// `POST v1/organizations/tunnels/{tunnel_id}/rotate_token`
+  public var betaRotateOrganizationTunnelToken: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.betaRotateOrganizationTunnelToken)
+  }
+  /// `GET v1/organizations/usage_report/claude_code`
+  public var betaGetClaudeCodeUsageReport: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.betaGetClaudeCodeUsageReport)
+  }
+  /// `GET v1/organizations/usage_report/messages`
+  public var betaGetMessagesUsageReport: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.betaGetMessagesUsageReport)
+  }
+  /// `GET v1/organizations/users`
+  public var organizationUsersList: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationUsersList)
+  }
+  /// `DELETE v1/organizations/users/{user_id}`
+  public var organizationUsersRemove: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationUsersRemove)
+  }
+  /// `GET v1/organizations/users/{user_id}`
+  public var organizationUsersRetrieve: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationUsersRetrieve)
+  }
+  /// `POST v1/organizations/users/{user_id}`
+  public var organizationUsersUpdate: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationUsersUpdate)
+  }
   /// `GET v1/organizations/webhooks`
   public var betaOrganizationWebhooksList: HyperProxyProviderCall<AnthropicOperation> {
     self.service.call(.betaOrganizationWebhooksList)
@@ -455,143 +608,6 @@ public struct AnthropicAdminCalls: Sendable {
     HyperProxyProviderCall<AnthropicOperation>
   {
     self.service.call(.betaOrganizationWebhooksRegenerateSigningSecret)
-  }
-  /// `POST v1/organizations/workspaces/{workspace_id}/rate_limits/{rate_limit_id}`
-  public var organizationWorkspacesRateLimitsUpdate: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.organizationWorkspacesRateLimitsUpdate)
-  }
-  /// `GET v1/organizations/workspaces/{workspace_id}/service_accounts`
-  public var organizationWorkspacesServiceAccountsList: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.organizationWorkspacesServiceAccountsList)
-  }
-  /// `POST v1/organizations/workspaces/{workspace_id}/service_accounts`
-  public var organizationWorkspacesServiceAccountsAdd: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.organizationWorkspacesServiceAccountsAdd)
-  }
-  /// `DELETE v1/organizations/workspaces/{workspace_id}/service_accounts/{service_account_id}`
-  public var organizationWorkspacesServiceAccountsRemove: HyperProxyProviderCall<AnthropicOperation>
-  {
-    self.service.call(.organizationWorkspacesServiceAccountsRemove)
-  }
-  /// `GET v1/organizations/workspaces/{workspace_id}/service_accounts/{service_account_id}`
-  public var organizationWorkspacesServiceAccountsRetrieve:
-    HyperProxyProviderCall<AnthropicOperation>
-  {
-    self.service.call(.organizationWorkspacesServiceAccountsRetrieve)
-  }
-  /// `POST v1/organizations/workspaces/{workspace_id}/service_accounts/{service_account_id}`
-  public var organizationWorkspacesServiceAccountsUpdate: HyperProxyProviderCall<AnthropicOperation>
-  {
-    self.service.call(.organizationWorkspacesServiceAccountsUpdate)
-  }
-  /// `GET v1/organizations/api_keys`
-  public var organizationApiKeysList: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.organizationApiKeysList)
-  }
-  /// `GET v1/organizations/external_keys`
-  public var organizationExternalKeysList: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.organizationExternalKeysList)
-  }
-  /// `POST v1/organizations/external_keys`
-  public var organizationExternalKeysCreate: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.organizationExternalKeysCreate)
-  }
-  /// `DELETE v1/organizations/external_keys/{external_key_id}`
-  public var organizationExternalKeysDelete: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.organizationExternalKeysDelete)
-  }
-  /// `GET v1/organizations/external_keys/{external_key_id}`
-  public var organizationExternalKeysRetrieve: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.organizationExternalKeysRetrieve)
-  }
-  /// `POST v1/organizations/external_keys/{external_key_id}`
-  public var organizationExternalKeysUpdate: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.organizationExternalKeysUpdate)
-  }
-  /// `POST v1/organizations/external_keys/{external_key_id}/validate`
-  public var organizationExternalKeysValidate: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.organizationExternalKeysValidate)
-  }
-  /// `GET v1/organizations/federation_issuers`
-  public var organizationFederationIssuersList: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.organizationFederationIssuersList)
-  }
-  /// `POST v1/organizations/federation_issuers`
-  public var organizationFederationIssuersCreate: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.organizationFederationIssuersCreate)
-  }
-  /// `GET v1/organizations/federation_issuers/{federation_issuer_id}`
-  public var organizationFederationIssuersRetrieve: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.organizationFederationIssuersRetrieve)
-  }
-  /// `POST v1/organizations/federation_issuers/{federation_issuer_id}`
-  public var organizationFederationIssuersUpdate: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.organizationFederationIssuersUpdate)
-  }
-  /// `POST v1/organizations/federation_issuers/{federation_issuer_id}/archive`
-  public var organizationFederationIssuersArchive: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.organizationFederationIssuersArchive)
-  }
-  /// `GET v1/organizations/federation_rules`
-  public var organizationFederationRulesList: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.organizationFederationRulesList)
-  }
-  /// `POST v1/organizations/federation_rules`
-  public var organizationFederationRulesCreate: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.organizationFederationRulesCreate)
-  }
-  /// `GET v1/organizations/federation_rules/{federation_rule_id}`
-  public var organizationFederationRulesRetrieve: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.organizationFederationRulesRetrieve)
-  }
-  /// `POST v1/organizations/federation_rules/{federation_rule_id}`
-  public var organizationFederationRulesUpdate: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.organizationFederationRulesUpdate)
-  }
-  /// `POST v1/organizations/federation_rules/{federation_rule_id}/archive`
-  public var organizationFederationRulesArchive: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.organizationFederationRulesArchive)
-  }
-  /// `GET v1/organizations/federation_rules/{federation_rule_id}/workspaces`
-  public var organizationFederationRulesWorkspacesList: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.organizationFederationRulesWorkspacesList)
-  }
-  /// `POST v1/organizations/federation_rules/{federation_rule_id}/workspaces`
-  public var organizationFederationRulesWorkspacesAdd: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.organizationFederationRulesWorkspacesAdd)
-  }
-  /// `DELETE v1/organizations/federation_rules/{federation_rule_id}/workspaces/{workspace_id}`
-  public var organizationFederationRulesWorkspacesRemove: HyperProxyProviderCall<AnthropicOperation>
-  {
-    self.service.call(.organizationFederationRulesWorkspacesRemove)
-  }
-  /// `GET v1/organizations/invites`
-  public var organizationInvitesList: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.organizationInvitesList)
-  }
-  /// `GET v1/organizations/rate_limits`
-  public var organizationRateLimitsList: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.organizationRateLimitsList)
-  }
-  /// `GET v1/organizations/service_accounts`
-  public var organizationServiceAccountsList: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.organizationServiceAccountsList)
-  }
-  /// `GET v1/organizations/users`
-  public var organizationUsersList: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.organizationUsersList)
-  }
-  /// `DELETE v1/organizations/users/{user_id}`
-  public var organizationUsersRemove: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.organizationUsersRemove)
-  }
-  /// `GET v1/organizations/users/{user_id}`
-  public var organizationUsersRetrieve: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.organizationUsersRetrieve)
-  }
-  /// `POST v1/organizations/users/{user_id}`
-  public var organizationUsersUpdate: HyperProxyProviderCall<AnthropicOperation> {
-    self.service.call(.organizationUsersUpdate)
   }
   /// `GET v1/organizations/workspaces`
   public var organizationWorkspacesList: HyperProxyProviderCall<AnthropicOperation> {
@@ -636,5 +652,33 @@ public struct AnthropicAdminCalls: Sendable {
   /// `GET v1/organizations/workspaces/{workspace_id}/rate_limits`
   public var organizationWorkspacesRateLimitsList: HyperProxyProviderCall<AnthropicOperation> {
     self.service.call(.organizationWorkspacesRateLimitsList)
+  }
+  /// `POST v1/organizations/workspaces/{workspace_id}/rate_limits/{rate_limit_id}`
+  public var organizationWorkspacesRateLimitsUpdate: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationWorkspacesRateLimitsUpdate)
+  }
+  /// `GET v1/organizations/workspaces/{workspace_id}/service_accounts`
+  public var organizationWorkspacesServiceAccountsList: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationWorkspacesServiceAccountsList)
+  }
+  /// `POST v1/organizations/workspaces/{workspace_id}/service_accounts`
+  public var organizationWorkspacesServiceAccountsAdd: HyperProxyProviderCall<AnthropicOperation> {
+    self.service.call(.organizationWorkspacesServiceAccountsAdd)
+  }
+  /// `DELETE v1/organizations/workspaces/{workspace_id}/service_accounts/{service_account_id}`
+  public var organizationWorkspacesServiceAccountsRemove: HyperProxyProviderCall<AnthropicOperation>
+  {
+    self.service.call(.organizationWorkspacesServiceAccountsRemove)
+  }
+  /// `GET v1/organizations/workspaces/{workspace_id}/service_accounts/{service_account_id}`
+  public var organizationWorkspacesServiceAccountsRetrieve:
+    HyperProxyProviderCall<AnthropicOperation>
+  {
+    self.service.call(.organizationWorkspacesServiceAccountsRetrieve)
+  }
+  /// `POST v1/organizations/workspaces/{workspace_id}/service_accounts/{service_account_id}`
+  public var organizationWorkspacesServiceAccountsUpdate: HyperProxyProviderCall<AnthropicOperation>
+  {
+    self.service.call(.organizationWorkspacesServiceAccountsUpdate)
   }
 }

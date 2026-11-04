@@ -16,19 +16,22 @@ public struct AnthropicOrganizationWorkspacesCreateRequest: Codable, Sendable {
   public var externalKeyId: String?
   public var name: String
   public var tags: [String: String]?
+  public var userProfileId: String?
 
   public init(
     name: String,
     dataResidency: AnthropicDataResidencyCreateConfigParam? = nil,
     displayColor: String? = nil,
     externalKeyId: String? = nil,
-    tags: [String: String]? = nil
+    tags: [String: String]? = nil,
+    userProfileId: String? = nil
   ) {
     self.dataResidency = dataResidency
     self.displayColor = displayColor
     self.externalKeyId = externalKeyId
     self.name = name
     self.tags = tags
+    self.userProfileId = userProfileId
   }
 
   enum CodingKeys: String, CodingKey {
@@ -37,5 +40,6 @@ public struct AnthropicOrganizationWorkspacesCreateRequest: Codable, Sendable {
     case externalKeyId = "external_key_id"
     case name
     case tags
+    case userProfileId = "user_profile_id"
   }
 }

@@ -41,18 +41,22 @@ public struct OpenAIResponseUsage: Codable, Sendable {
 
   public struct InputTokensDetails: Codable, Sendable {
     public var cacheWriteTokens: Int
+    public var cacheWriteTokensDetails: OpenAICacheWriteTokensDetails?
     public var cachedTokens: Int
 
     public init(
       cacheWriteTokens: Int,
-      cachedTokens: Int
+      cachedTokens: Int,
+      cacheWriteTokensDetails: OpenAICacheWriteTokensDetails? = nil
     ) {
       self.cacheWriteTokens = cacheWriteTokens
+      self.cacheWriteTokensDetails = cacheWriteTokensDetails
       self.cachedTokens = cachedTokens
     }
 
     enum CodingKeys: String, CodingKey {
       case cacheWriteTokens = "cache_write_tokens"
+      case cacheWriteTokensDetails = "cache_write_tokens_details"
       case cachedTokens = "cached_tokens"
     }
   }

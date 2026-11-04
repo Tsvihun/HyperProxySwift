@@ -502,18 +502,6 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
     return try await call.decoded(OpenRouterImageModelEndpointsResponse.self)
   }
 
-  public func keyRetrieve(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> OpenRouterGetCurrentKeyResponse {
-    let call = self.call(.keyRetrieve)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(OpenRouterGetCurrentKeyResponse.self)
-  }
-
   public func createMessages(
     _ body: OpenRouterMessagesRequest,
     query: [URLQueryItem] = [],
@@ -744,6 +732,20 @@ extension HyperProxyProviderService where Operation == OpenRouterOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(OpenRouterListProvidersResponse.self)
+  }
+
+  public func listProviderEndpoints(
+    providerSlug: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> OpenRouterProviderEndpointsResponse {
+    let call = self.call(.listProviderEndpoints)
+      .path("provider_slug", providerSlug)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(OpenRouterProviderEndpointsResponse.self)
   }
 
   public func createRerank(

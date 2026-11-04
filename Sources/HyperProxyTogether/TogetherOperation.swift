@@ -17,6 +17,10 @@ public enum TogetherOperation: String, HyperProxyCatalogOperation {
   }
   /// `GET v1/billing/usage`
   case getBillingUsage = "getBillingUsage"
+  /// `GET v2/organizations/{organizationId}/endpoints`
+  case endpointServiceListOrganizationEndpoints = "EndpointService.ListOrganizationEndpoints"
+  /// `GET v2/organizations/{organizationId}/models`
+  case volumeServiceListOrganizationModels = "VolumeService.ListOrganizationModels"
   /// `POST v1/fine-tunes/preview`
   case v1FineTunesPreviewPost = "v1.fine-tunes.preview.post"
   /// `POST v2/projects/{projectId}/endpoints/{endpointId}/rollouts/preview-defaults`
@@ -282,10 +286,6 @@ public enum TogetherOperation: String, HyperProxyCatalogOperation {
   case videosRetrieve = "videos.retrieve"
   /// `GET v1/voices`
   case fetchVoices = "fetchVoices"
-  /// `GET v2/organizations/{organizationId}/endpoints`
-  case endpointServiceListOrganizationEndpoints = "EndpointService.ListOrganizationEndpoints"
-  /// `GET v2/organizations/{organizationId}/models`
-  case volumeServiceListOrganizationModels = "VolumeService.ListOrganizationModels"
   /// `GET v2/projects/{projectId}/configs`
   case configServiceListProjectConfigs = "ConfigService.ListProjectConfigs"
   /// `GET v2/projects/{projectId}/configs/{id}`

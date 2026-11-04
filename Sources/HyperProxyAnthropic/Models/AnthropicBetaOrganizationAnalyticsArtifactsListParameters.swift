@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct AnthropicBetaOrganizationAnalyticsArtifactsListParameters: Codable, Sendable {
   public var date: AnthropicBetaOrganizationAnalyticsArtifactsListParameters.DateValue
   public var filter: [String]?
-  public var groupBy: [AnthropicBetaOrganizationAnalyticsArtifactsListParametersGroupByItem]?
+  public var groupBy: [AnthropicBetaAnalyticsArtifactGroupBy]?
   public var limit: Int?
   public var page: String?
 
   public init(
     date: AnthropicBetaOrganizationAnalyticsArtifactsListParameters.DateValue,
     filter: [String]? = nil,
-    groupBy: [AnthropicBetaOrganizationAnalyticsArtifactsListParametersGroupByItem]? = nil,
+    groupBy: [AnthropicBetaAnalyticsArtifactGroupBy]? = nil,
     limit: Int? = nil,
     page: String? = nil
   ) {

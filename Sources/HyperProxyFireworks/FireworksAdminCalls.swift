@@ -20,4 +20,20 @@ public struct FireworksAdminCalls: Sendable {
   public var gatewayGetBillingSummary: HyperProxyProviderCall<FireworksOperation> {
     self.service.call(.gatewayGetBillingSummary)
   }
+  /// `GET v1/accounts/{account_id}/users/{user_id}/apiKeys`
+  public var gatewayListApiKeys: HyperProxyProviderCall<FireworksOperation> {
+    self.service.call(.gatewayListApiKeys)
+  }
+  /// `POST v1/accounts/{account_id}/users/{user_id}/apiKeys`
+  public var gatewayCreateApiKey: HyperProxyProviderCall<FireworksOperation> {
+    self.service.call(.gatewayCreateApiKey)
+  }
+  /// `GET v1/accounts/{account_id}/users/{user_id}/apiKeys/accounts/{account_id}/users/{user_id}`
+  public var gatewayGetApiKey: HyperProxyProviderCall<FireworksOperation> {
+    self.service.call(.gatewayGetApiKey)
+  }
+  /// `PATCH v1/accounts/{account_id}/users/{user_id}/apiKeys/accounts/{account_id}/users/{user_id}`
+  public var gatewayUpdateApiKey: HyperProxyProviderCall<FireworksOperation> {
+    self.service.call(.gatewayUpdateApiKey)
+  }
 }

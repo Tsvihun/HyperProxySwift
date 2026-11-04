@@ -14,12 +14,14 @@ public struct MistralListDeploymentsV1WorkflowsDeploymentsGetParameters: Codable
   public var activeOnly: Bool?
   public var createdBy: String?
   public var cursor: String?
+  public var dockerfilePath: String?
   public var isHardened: Bool?
   public var limit: Int?
   public var locationTypes: [MistralLocationType]?
   public var order: MistralListDeploymentsV1WorkflowsDeploymentsGetParameters.Order?
   public var orderBy: MistralListDeploymentsV1WorkflowsDeploymentsGetParameters.OrderBy?
   public var owner: String?
+  public var repositoryUrl: String?
   public var search: String?
   public var workflowName: String?
   public var workspaceId: String?
@@ -28,12 +30,14 @@ public struct MistralListDeploymentsV1WorkflowsDeploymentsGetParameters: Codable
     activeOnly: Bool? = nil,
     createdBy: String? = nil,
     cursor: String? = nil,
+    dockerfilePath: String? = nil,
     isHardened: Bool? = nil,
     limit: Int? = nil,
     locationTypes: [MistralLocationType]? = nil,
     order: MistralListDeploymentsV1WorkflowsDeploymentsGetParameters.Order? = nil,
     orderBy: MistralListDeploymentsV1WorkflowsDeploymentsGetParameters.OrderBy? = nil,
     owner: String? = nil,
+    repositoryUrl: String? = nil,
     search: String? = nil,
     workflowName: String? = nil,
     workspaceId: String? = nil
@@ -41,12 +45,14 @@ public struct MistralListDeploymentsV1WorkflowsDeploymentsGetParameters: Codable
     self.activeOnly = activeOnly
     self.createdBy = createdBy
     self.cursor = cursor
+    self.dockerfilePath = dockerfilePath
     self.isHardened = isHardened
     self.limit = limit
     self.locationTypes = locationTypes
     self.order = order
     self.orderBy = orderBy
     self.owner = owner
+    self.repositoryUrl = repositoryUrl
     self.search = search
     self.workflowName = workflowName
     self.workspaceId = workspaceId
@@ -56,12 +62,14 @@ public struct MistralListDeploymentsV1WorkflowsDeploymentsGetParameters: Codable
     case activeOnly = "active_only"
     case createdBy = "created_by"
     case cursor
+    case dockerfilePath = "dockerfile_path"
     case isHardened = "is_hardened"
     case limit
     case locationTypes = "location_types"
     case order
     case orderBy = "order_by"
     case owner
+    case repositoryUrl = "repository_url"
     case search
     case workflowName = "workflow_name"
     case workspaceId = "workspace_id"

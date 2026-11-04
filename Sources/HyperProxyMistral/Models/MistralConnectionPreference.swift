@@ -13,14 +13,14 @@ import HyperProxyCore
 public struct MistralConnectionPreference: Codable, Sendable {
   public var consumerType: MistralConsumerType?
   public var isDefault: Bool?
-  public var name: String
+  public var name: String?
   public var toolConfiguration: MistralToolExecutionConfiguration
 
   public init(
-    name: String,
     toolConfiguration: MistralToolExecutionConfiguration,
     consumerType: MistralConsumerType? = nil,
-    isDefault: Bool? = nil
+    isDefault: Bool? = nil,
+    name: String? = nil
   ) {
     self.consumerType = consumerType
     self.isDefault = isDefault

@@ -11,9 +11,11 @@ import Foundation
 import HyperProxyCore
 
 public struct MistralDeploymentWorkerSpecResponse: Codable, Sendable {
+  public var archiveId: String?
   public var backendSpec: MistralDeploymentWorkerSpecResponse.BackendSpec
   public var commit: MistralGitCommitMetadata?
   public var githubUrl: String
+  public var requestedRoles: [String]?
   public var restartedAt: String?
   public var revision: String?
   public var kind: String?
@@ -21,23 +23,29 @@ public struct MistralDeploymentWorkerSpecResponse: Codable, Sendable {
   public init(
     backendSpec: MistralDeploymentWorkerSpecResponse.BackendSpec,
     githubUrl: String,
+    archiveId: String? = nil,
     commit: MistralGitCommitMetadata? = nil,
+    requestedRoles: [String]? = nil,
     restartedAt: String? = nil,
     revision: String? = nil,
     kind: String? = nil
   ) {
+    self.archiveId = archiveId
     self.backendSpec = backendSpec
     self.commit = commit
     self.githubUrl = githubUrl
+    self.requestedRoles = requestedRoles
     self.restartedAt = restartedAt
     self.revision = revision
     self.kind = kind
   }
 
   enum CodingKeys: String, CodingKey {
+    case archiveId = "archive_id"
     case backendSpec = "backend_spec"
     case commit
     case githubUrl = "github_url"
+    case requestedRoles = "requested_roles"
     case restartedAt = "restarted_at"
     case revision
     case kind = "type"

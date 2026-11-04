@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct DeepLTranslateDocumentRequest: Codable, Sendable {
+  public var customInstructions: String?
   public var enableBetaLanguages: Bool?
   public var enableQualityEvaluation: Bool?
   public var enableWatermark: Bool?
@@ -31,6 +32,7 @@ public struct DeepLTranslateDocumentRequest: Codable, Sendable {
   public init(
     file: String,
     targetLang: String,
+    customInstructions: String? = nil,
     enableBetaLanguages: Bool? = nil,
     enableQualityEvaluation: Bool? = nil,
     enableWatermark: Bool? = nil,
@@ -46,6 +48,7 @@ public struct DeepLTranslateDocumentRequest: Codable, Sendable {
     translationMemoryId: DeepLTranslationMemoryId? = nil,
     translationMemoryThreshold: Int? = nil
   ) {
+    self.customInstructions = customInstructions
     self.enableBetaLanguages = enableBetaLanguages
     self.enableQualityEvaluation = enableQualityEvaluation
     self.enableWatermark = enableWatermark
@@ -65,6 +68,7 @@ public struct DeepLTranslateDocumentRequest: Codable, Sendable {
   }
 
   enum CodingKeys: String, CodingKey {
+    case customInstructions = "custom_instructions"
     case enableBetaLanguages = "enable_beta_languages"
     case enableQualityEvaluation = "enable_quality_evaluation"
     case enableWatermark = "enable_watermark"

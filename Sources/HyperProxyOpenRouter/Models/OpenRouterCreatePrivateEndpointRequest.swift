@@ -16,7 +16,6 @@ public struct OpenRouterCreatePrivateEndpointRequest: Codable, Sendable {
   public var declaredParameters: [OpenRouterPrivateEndpointDeclaredParameter]?
   public var declaredRegion: OpenRouterCreatePrivateEndpointRequest.DeclaredRegion?
   public var declaredZdr: Bool?
-  public var maxCompletionTokens: Int?
   public var modelPermaslug: String
   public var pricing: OpenRouterPrivateEndpointPricing?
   public var providerSlug: String
@@ -32,7 +31,6 @@ public struct OpenRouterCreatePrivateEndpointRequest: Codable, Sendable {
     declaredParameters: [OpenRouterPrivateEndpointDeclaredParameter]? = nil,
     declaredRegion: OpenRouterCreatePrivateEndpointRequest.DeclaredRegion? = nil,
     declaredZdr: Bool? = nil,
-    maxCompletionTokens: Int? = nil,
     pricing: OpenRouterPrivateEndpointPricing? = nil,
     settings: OpenRouterUpdatePrivateEndpointSettingsRequest? = nil
   ) {
@@ -41,7 +39,6 @@ public struct OpenRouterCreatePrivateEndpointRequest: Codable, Sendable {
     self.declaredParameters = declaredParameters
     self.declaredRegion = declaredRegion
     self.declaredZdr = declaredZdr
-    self.maxCompletionTokens = maxCompletionTokens
     self.modelPermaslug = modelPermaslug
     self.pricing = pricing
     self.providerSlug = providerSlug
@@ -55,7 +52,6 @@ public struct OpenRouterCreatePrivateEndpointRequest: Codable, Sendable {
     case declaredParameters = "declared_parameters"
     case declaredRegion = "declared_region"
     case declaredZdr = "declared_zdr"
-    case maxCompletionTokens = "max_completion_tokens"
     case modelPermaslug = "model_permaslug"
     case pricing
     case providerSlug = "provider_slug"

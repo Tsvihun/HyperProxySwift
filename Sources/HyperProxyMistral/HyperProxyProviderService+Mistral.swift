@@ -137,6 +137,90 @@ extension HyperProxyProviderService where Operation == MistralOperation {
   public var connectorDeactivateForConsumerV1: HyperProxyProviderCall<MistralOperation> {
     self.call(.connectorDeactivateForConsumerV1)
   }
+  /// `GET v1/context/search-indexes`
+  public var listIndexesV1ContextSearchIndexesGet: HyperProxyProviderCall<MistralOperation> {
+    self.call(.listIndexesV1ContextSearchIndexesGet)
+  }
+  /// `POST v1/context/search-indexes`
+  public var createIndexV1ContextSearchIndexesPost: HyperProxyProviderCall<MistralOperation> {
+    self.call(.createIndexV1ContextSearchIndexesPost)
+  }
+  /// `DELETE v1/context/search-indexes/{index_name}`
+  public var deleteIndexV1ContextSearchIndexesIndexNameDelete:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(.deleteIndexV1ContextSearchIndexesIndexNameDelete)
+  }
+  /// `GET v1/context/search-indexes/{index_name}`
+  public var getIndexV1ContextSearchIndexesIndexNameGet: HyperProxyProviderCall<MistralOperation> {
+    self.call(.getIndexV1ContextSearchIndexesIndexNameGet)
+  }
+  /// `PUT v1/context/search-indexes/{index_name}`
+  public var updateIndexV1ContextSearchIndexesIndexNamePut: HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(.updateIndexV1ContextSearchIndexesIndexNamePut)
+  }
+  /// `GET v1/context/search-indexes/{index_name}/chunks/{chunk_id}`
+  public var getChunkIndexV1ContextSearchIndexesIndexNameChunksChunkIdGet:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(.getChunkIndexV1ContextSearchIndexesIndexNameChunksChunkIdGet)
+  }
+  /// `DELETE v1/context/search-indexes/{index_name}/documents`
+  public var deleteDocumentsV1ContextSearchIndexesIndexNameDocumentsDelete:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(.deleteDocumentsV1ContextSearchIndexesIndexNameDocumentsDelete)
+  }
+  /// `POST v1/context/search-indexes/{index_name}/documents`
+  public var ingestDocumentsV1ContextSearchIndexesIndexNameDocumentsPost:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(.ingestDocumentsV1ContextSearchIndexesIndexNameDocumentsPost)
+  }
+  /// `POST v1/context/search-indexes/{index_name}/grep`
+  public var grepIndexV1ContextSearchIndexesIndexNameGrepPost:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(.grepIndexV1ContextSearchIndexesIndexNameGrepPost)
+  }
+  /// `POST v1/context/search-indexes/{index_name}/navigate`
+  public var navigateIndexV1ContextSearchIndexesIndexNameNavigatePost:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(.navigateIndexV1ContextSearchIndexesIndexNameNavigatePost)
+  }
+  /// `POST v1/context/search-indexes/{index_name}/read`
+  public var readIndexV1ContextSearchIndexesIndexNameReadPost:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(.readIndexV1ContextSearchIndexesIndexNameReadPost)
+  }
+  /// `POST v1/context/search-indexes/{index_name}/search`
+  public var searchIndexV1ContextSearchIndexesIndexNameSearchPost:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(.searchIndexV1ContextSearchIndexesIndexNameSearchPost)
+  }
+  /// `GET v1/context/search-indexes/{index_name}/summary_field/{language}`
+  public var getManagedIndexSummaryV1ContextSearchIndexesIndexNameSummaryFieldLanguageGet:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(.getManagedIndexSummaryV1ContextSearchIndexesIndexNameSummaryFieldLanguageGet)
+  }
+  /// `POST v1/context/search-indexes/{index_name}/summary_field/{language}`
+  public var generateManagedIndexSummaryPostV1ContextSearchIndexesIndexNameSummaryFieldLanguagePost:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(
+      .generateManagedIndexSummaryPostV1ContextSearchIndexesIndexNameSummaryFieldLanguagePost)
+  }
+  /// `PUT v1/context/search-indexes/{index_name}/summary_field/{language}`
+  public var setManagedIndexSummaryV1ContextSearchIndexesIndexNameSummaryFieldLanguagePut:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(.setManagedIndexSummaryV1ContextSearchIndexesIndexNameSummaryFieldLanguagePut)
+  }
   /// `GET v1/conversations`
   public var agentsApiV1ConversationsList: HyperProxyProviderCall<MistralOperation> {
     self.call(.agentsApiV1ConversationsList)
@@ -522,6 +606,12 @@ extension HyperProxyProviderService where Operation == MistralOperation {
   {
     self.call(.updatePipelineV1ObservabilityPipelinesPipelineIdPut)
   }
+  /// `GET v1/observability/pipelines/{pipeline_id}/results/fields`
+  public var getPipelineResultFieldsV1ObservabilityPipelinesPipelineIdResultsFieldsGet:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(.getPipelineResultFieldsV1ObservabilityPipelinesPipelineIdResultsFieldsGet)
+  }
   /// `GET v1/observability/projects`
   public var getProjectsV1ObservabilityProjectsGet: HyperProxyProviderCall<MistralOperation> {
     self.call(.getProjectsV1ObservabilityProjectsGet)
@@ -664,82 +754,56 @@ extension HyperProxyProviderService where Operation == MistralOperation {
   {
     self.call(.updateRunInfoV1RagIngestionPipelineConfigurationsIdRunInfoPut)
   }
-  /// `GET v1/rag/managed_indexes`
-  public var listIndexesV1RagManagedIndexesGet: HyperProxyProviderCall<MistralOperation> {
-    self.call(.listIndexesV1RagManagedIndexesGet)
+  /// `GET v1/triggers`
+  public var listTriggersV1TriggersGet: HyperProxyProviderCall<MistralOperation> {
+    self.call(.listTriggersV1TriggersGet)
   }
-  /// `POST v1/rag/managed_indexes`
-  public var createIndexV1RagManagedIndexesPost: HyperProxyProviderCall<MistralOperation> {
-    self.call(.createIndexV1RagManagedIndexesPost)
+  /// `POST v1/triggers`
+  public var createTriggerV1TriggersPost: HyperProxyProviderCall<MistralOperation> {
+    self.call(.createTriggerV1TriggersPost)
   }
-  /// `DELETE v1/rag/managed_indexes/{index_name}`
-  public var deleteIndexV1RagManagedIndexesIndexNameDelete: HyperProxyProviderCall<MistralOperation>
+  /// `DELETE v1/triggers/{trigger_id}`
+  public var deleteTriggerV1TriggersTriggerIdDelete: HyperProxyProviderCall<MistralOperation> {
+    self.call(.deleteTriggerV1TriggersTriggerIdDelete)
+  }
+  /// `GET v1/triggers/{trigger_id}`
+  public var getTriggerV1TriggersTriggerIdGet: HyperProxyProviderCall<MistralOperation> {
+    self.call(.getTriggerV1TriggersTriggerIdGet)
+  }
+  /// `GET v1/triggers/{trigger_id}/events`
+  public var listTriggerEventsV1TriggersTriggerIdEventsGet: HyperProxyProviderCall<MistralOperation>
   {
-    self.call(.deleteIndexV1RagManagedIndexesIndexNameDelete)
-  }
-  /// `GET v1/rag/managed_indexes/{index_name}`
-  public var getIndexV1RagManagedIndexesIndexNameGet: HyperProxyProviderCall<MistralOperation> {
-    self.call(.getIndexV1RagManagedIndexesIndexNameGet)
-  }
-  /// `PUT v1/rag/managed_indexes/{index_name}`
-  public var updateIndexV1RagManagedIndexesIndexNamePut: HyperProxyProviderCall<MistralOperation> {
-    self.call(.updateIndexV1RagManagedIndexesIndexNamePut)
-  }
-  /// `GET v1/rag/managed_indexes/{index_name}/chunks/{chunk_id}`
-  public var getChunkIndexV1RagManagedIndexesIndexNameChunksChunkIdGet:
-    HyperProxyProviderCall<MistralOperation>
-  {
-    self.call(.getChunkIndexV1RagManagedIndexesIndexNameChunksChunkIdGet)
-  }
-  /// `DELETE v1/rag/managed_indexes/{index_name}/documents`
-  public var deleteDocumentsV1RagManagedIndexesIndexNameDocumentsDelete:
-    HyperProxyProviderCall<MistralOperation>
-  {
-    self.call(.deleteDocumentsV1RagManagedIndexesIndexNameDocumentsDelete)
-  }
-  /// `POST v1/rag/managed_indexes/{index_name}/documents`
-  public var ingestDocumentsV1RagManagedIndexesIndexNameDocumentsPost:
-    HyperProxyProviderCall<MistralOperation>
-  {
-    self.call(.ingestDocumentsV1RagManagedIndexesIndexNameDocumentsPost)
-  }
-  /// `POST v1/rag/managed_indexes/{index_name}/grep`
-  public var grepIndexV1RagManagedIndexesIndexNameGrepPost: HyperProxyProviderCall<MistralOperation>
-  {
-    self.call(.grepIndexV1RagManagedIndexesIndexNameGrepPost)
-  }
-  /// `POST v1/rag/managed_indexes/{index_name}/navigate`
-  public var navigateIndexV1RagManagedIndexesIndexNameNavigatePost:
-    HyperProxyProviderCall<MistralOperation>
-  {
-    self.call(.navigateIndexV1RagManagedIndexesIndexNameNavigatePost)
-  }
-  /// `POST v1/rag/managed_indexes/{index_name}/read`
-  public var readIndexV1RagManagedIndexesIndexNameReadPost: HyperProxyProviderCall<MistralOperation>
-  {
-    self.call(.readIndexV1RagManagedIndexesIndexNameReadPost)
-  }
-  /// `POST v1/rag/managed_indexes/{index_name}/search`
-  public var searchIndexV1RagManagedIndexesIndexNameSearchPost:
-    HyperProxyProviderCall<MistralOperation>
-  {
-    self.call(.searchIndexV1RagManagedIndexesIndexNameSearchPost)
-  }
-  /// `GET v1/service-accounts`
-  public var listServiceAccountsV1ServiceAccountsGet: HyperProxyProviderCall<MistralOperation> {
-    self.call(.listServiceAccountsV1ServiceAccountsGet)
+    self.call(.listTriggerEventsV1TriggersTriggerIdEventsGet)
   }
   /// `GET v1/users/me`
   public var usersApiGetIdentity: HyperProxyProviderCall<MistralOperation> {
     self.call(.usersApiGetIdentity)
   }
-  /// `GET v1/users/me/organizations`
-  public var usersApiListOrganizations: HyperProxyProviderCall<MistralOperation> {
-    self.call(.usersApiListOrganizations)
-  }
   /// `GET v1/users/me/workspaces`
   public var usersApiListWorkspaces: HyperProxyProviderCall<MistralOperation> {
     self.call(.usersApiListWorkspaces)
+  }
+  /// `GET v1/webhooks`
+  public var listWebhooksV1WebhooksGet: HyperProxyProviderCall<MistralOperation> {
+    self.call(.listWebhooksV1WebhooksGet)
+  }
+  /// `POST v1/webhooks`
+  public var createWebhookV1WebhooksPost: HyperProxyProviderCall<MistralOperation> {
+    self.call(.createWebhookV1WebhooksPost)
+  }
+  /// `DELETE v1/webhooks/{webhook_id}`
+  public var deleteWebhookV1WebhooksWebhookIdDelete: HyperProxyProviderCall<MistralOperation> {
+    self.call(.deleteWebhookV1WebhooksWebhookIdDelete)
+  }
+  /// `GET v1/webhooks/{webhook_id}`
+  public var getWebhookV1WebhooksWebhookIdGet: HyperProxyProviderCall<MistralOperation> {
+    self.call(.getWebhookV1WebhooksWebhookIdGet)
+  }
+  /// `GET v1/webhooks/{webhook_id}/signing-secret`
+  public var getWebhookSigningSecretV1WebhooksWebhookIdSigningSecretGet:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(.getWebhookSigningSecretV1WebhooksWebhookIdSigningSecretGet)
   }
   /// `GET v1/whoami`
   public var usersApiWhoami: HyperProxyProviderCall<MistralOperation> {
@@ -820,6 +884,50 @@ extension HyperProxyProviderService where Operation == MistralOperation {
   /// `POST v1/agents/completions`
   public var agentsCompletionV1AgentsCompletionsPost: HyperProxyProviderCall<MistralOperation> {
     self.call(.agentsCompletionV1AgentsCompletionsPost)
+  }
+  /// `GET v1/audio/agents`
+  public var listAgentsV1AudioAgentsGet: HyperProxyProviderCall<MistralOperation> {
+    self.call(.listAgentsV1AudioAgentsGet)
+  }
+  /// `POST v1/audio/agents`
+  public var createAgentV1AudioAgentsPost: HyperProxyProviderCall<MistralOperation> {
+    self.call(.createAgentV1AudioAgentsPost)
+  }
+  /// `DELETE v1/audio/agents/{agent_id}`
+  public var deleteAgentV1AudioAgentsAgentIdDelete: HyperProxyProviderCall<MistralOperation> {
+    self.call(.deleteAgentV1AudioAgentsAgentIdDelete)
+  }
+  /// `GET v1/audio/agents/{agent_id}`
+  public var getAgentV1AudioAgentsAgentIdGet: HyperProxyProviderCall<MistralOperation> {
+    self.call(.getAgentV1AudioAgentsAgentIdGet)
+  }
+  /// `PUT v1/audio/agents/{agent_id}`
+  public var updateAgentV1AudioAgentsAgentIdPut: HyperProxyProviderCall<MistralOperation> {
+    self.call(.updateAgentV1AudioAgentsAgentIdPut)
+  }
+  /// `GET v1/audio/agents/{agent_id}/sessions`
+  public var listAgentSessionsV1AudioAgentsAgentIdSessionsGet:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(.listAgentSessionsV1AudioAgentsAgentIdSessionsGet)
+  }
+  /// `GET v1/audio/agents/{agent_id}/versions`
+  public var listAgentVersionsV1AudioAgentsAgentIdVersionsGet:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(.listAgentVersionsV1AudioAgentsAgentIdVersionsGet)
+  }
+  /// `POST v1/audio/sessions`
+  public var createSessionV1AudioSessionsPost: HyperProxyProviderCall<MistralOperation> {
+    self.call(.createSessionV1AudioSessionsPost)
+  }
+  /// `DELETE v1/audio/sessions/{session_id}`
+  public var deleteSessionV1AudioSessionsSessionIdDelete: HyperProxyProviderCall<MistralOperation> {
+    self.call(.deleteSessionV1AudioSessionsSessionIdDelete)
+  }
+  /// `GET v1/audio/sessions/{session_id}`
+  public var getSessionV1AudioSessionsSessionIdGet: HyperProxyProviderCall<MistralOperation> {
+    self.call(.getSessionV1AudioSessionsSessionIdGet)
   }
   /// `POST v1/audio/speech`
   public var audioSpeech: HyperProxyProviderCall<MistralOperation> {
@@ -1028,6 +1136,12 @@ extension HyperProxyProviderService where Operation == MistralOperation {
     HyperProxyProviderCall<MistralOperation>
   {
     self.call(.updateDeploymentV1WorkflowsDeploymentsNamePatch)
+  }
+  /// `GET v1/workflows/deployments/{name}/archive`
+  public var getDeploymentArchiveV1WorkflowsDeploymentsNameArchiveGet:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(.getDeploymentArchiveV1WorkflowsDeploymentsNameArchiveGet)
   }
   /// `GET v1/workflows/deployments/{name}/logs`
   public var getDeploymentLogs: HyperProxyProviderCall<MistralOperation> {
@@ -1258,6 +1372,12 @@ extension HyperProxyProviderService where Operation == MistralOperation {
     HyperProxyProviderCall<MistralOperation>
   {
     self.call(.executeWorkflowV1WorkflowsWorkflowIdentifierExecutePost)
+  }
+  /// `POST v1/workflows/{workflow_identifier}/tags`
+  public var addWorkflowTagsV1WorkflowsWorkflowIdentifierTagsPost:
+    HyperProxyProviderCall<MistralOperation>
+  {
+    self.call(.addWorkflowTagsV1WorkflowsWorkflowIdentifierTagsPost)
   }
   /// `PUT v1/workflows/{workflow_identifier}/unarchive`
   public var unarchiveWorkflowV1WorkflowsWorkflowIdentifierUnarchivePut:

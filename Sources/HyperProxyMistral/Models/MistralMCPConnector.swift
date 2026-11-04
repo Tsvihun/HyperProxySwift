@@ -12,13 +12,11 @@ import HyperProxyCore
 
 public struct MistralMCPConnector: Codable, Sendable {
   public var blockedBy: [MistralConsumerType]?
-  public var connectionConfig: MistralPublicConnectionConfig?
   public var connectionCredentials: [MistralAuthenticationConfiguration]?
   public var connectionPreferences: [MistralConnectionPreference]?
   public var createdAt: String
   public var creatorId: String?
   public var description: String
-  public var executionEnv: MistralPublicExecutionEnv?
   public var iconUrl: String?
   public var id: String
   public var isAuthenticated: Bool?
@@ -51,11 +49,9 @@ public struct MistralMCPConnector: Codable, Sendable {
     visibility: MistralResourceVisibility,
     protocolValue: MistralMcpProtocolModel = .mcp,
     blockedBy: [MistralConsumerType]? = nil,
-    connectionConfig: MistralPublicConnectionConfig? = nil,
     connectionCredentials: [MistralAuthenticationConfiguration]? = nil,
     connectionPreferences: [MistralConnectionPreference]? = nil,
     creatorId: String? = nil,
-    executionEnv: MistralPublicExecutionEnv? = nil,
     iconUrl: String? = nil,
     isAuthenticated: Bool? = nil,
     locale: MistralConnectorLocale? = nil,
@@ -69,13 +65,11 @@ public struct MistralMCPConnector: Codable, Sendable {
     tools: [MistralConnectorTool]? = nil
   ) {
     self.blockedBy = blockedBy
-    self.connectionConfig = connectionConfig
     self.connectionCredentials = connectionCredentials
     self.connectionPreferences = connectionPreferences
     self.createdAt = createdAt
     self.creatorId = creatorId
     self.description = description
-    self.executionEnv = executionEnv
     self.iconUrl = iconUrl
     self.id = id
     self.isAuthenticated = isAuthenticated
@@ -99,13 +93,11 @@ public struct MistralMCPConnector: Codable, Sendable {
 
   enum CodingKeys: String, CodingKey {
     case blockedBy = "blocked_by"
-    case connectionConfig = "connection_config"
     case connectionCredentials = "connection_credentials"
     case connectionPreferences = "connection_preferences"
     case createdAt = "created_at"
     case creatorId = "creator_id"
     case description
-    case executionEnv = "execution_env"
     case iconUrl = "icon_url"
     case id
     case isAuthenticated = "is_authenticated"

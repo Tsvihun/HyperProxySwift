@@ -979,6 +979,134 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
     return try await call.decoded(ElevenLabsGetAgentEmbedResponseModel.self)
   }
 
+  public func listAnalysisItemsRoute(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsAnalysisItemsResponseModel {
+    let call = self.call(.listAnalysisItemsRoute)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsAnalysisItemsResponseModel.self)
+  }
+
+  public func createAnalysisItemRoute(
+    _ body: ElevenLabsCreateAnalysisItemRouteRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsAnalysisItemResponseModel {
+    let call = self.call(.createAnalysisItemRoute)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(ElevenLabsAnalysisItemResponseModel.self)
+  }
+
+  public func getAnalysisItemRoute(
+    analysisItemId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsAnalysisItemResponseModel {
+    let call = self.call(.getAnalysisItemRoute)
+      .path("analysis_item_id", analysisItemId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsAnalysisItemResponseModel.self)
+  }
+
+  public func updateAnalysisItemRoute(
+    _ body: ElevenLabsUpdateAnalysisItemRouteRequest,
+    analysisItemId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsAnalysisItemResponseModel {
+    let call = self.call(.updateAnalysisItemRoute)
+      .path("analysis_item_id", analysisItemId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(ElevenLabsAnalysisItemResponseModel.self)
+  }
+
+  public func deleteAnalysisItemRoute(
+    analysisItemId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsDeleteAnalysisItemRouteResponse {
+    let call = self.call(.deleteAnalysisItemRoute)
+      .path("analysis_item_id", analysisItemId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsDeleteAnalysisItemRouteResponse.self)
+  }
+
+  public func updateAnalysisItemAttachmentsRoute(
+    _ body: ElevenLabsUpdateAnalysisItemAttachmentsRequestModel,
+    analysisItemId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsUpdateAnalysisItemAttachmentsResponseModel {
+    let call = self.call(.updateAnalysisItemAttachmentsRoute)
+      .path("analysis_item_id", analysisItemId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(ElevenLabsUpdateAnalysisItemAttachmentsResponseModel.self)
+  }
+
+  public func copyAnalysisItemRoute(
+    analysisItemId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsAnalysisItemResponseModel {
+    let call = self.call(.copyAnalysisItemRoute)
+      .path("analysis_item_id", analysisItemId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsAnalysisItemResponseModel.self)
+  }
+
+  public func getAnalysisItemDependentAgentsRoute(
+    analysisItemId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsGetAnalysisItemDependentAgentsResponseModel {
+    let call = self.call(.getAnalysisItemDependentAgentsRoute)
+      .path("analysis_item_id", analysisItemId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsGetAnalysisItemDependentAgentsResponseModel.self)
+  }
+
+  public func listAnalysisItemVersionsRoute(
+    analysisItemId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsAnalysisItemVersionsResponseModel {
+    let call = self.call(.listAnalysisItemVersionsRoute)
+      .path("analysis_item_id", analysisItemId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsAnalysisItemVersionsResponseModel.self)
+  }
+
   public func getLiveCount(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -2054,6 +2182,106 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
       .timeout(timeout)
     let prepared = try call.json(body)
     return try await prepared.decoded(ElevenLabsClientSecretResponse.self)
+  }
+
+  public func listConversationGroupsRoute(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsRealtimeConversationGroupsResponseModel {
+    let call = self.call(.listConversationGroupsRoute)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsRealtimeConversationGroupsResponseModel.self)
+  }
+
+  public func createConversationGroupRoute(
+    _ body: ElevenLabsCreateRealtimeConversationGroupRequestModel,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsRealtimeConversationGroupResponseModel {
+    let call = self.call(.createConversationGroupRoute)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(ElevenLabsRealtimeConversationGroupResponseModel.self)
+  }
+
+  public func getConversationGroupRoute(
+    conversationGroupId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsRealtimeConversationGroupResponseModel {
+    let call = self.call(.getConversationGroupRoute)
+      .path("conversation_group_id", conversationGroupId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsRealtimeConversationGroupResponseModel.self)
+  }
+
+  public func updateConversationGroupRoute(
+    _ body: ElevenLabsUpdateRealtimeConversationGroupRequestModel,
+    conversationGroupId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsRealtimeConversationGroupResponseModel {
+    let call = self.call(.updateConversationGroupRoute)
+      .path("conversation_group_id", conversationGroupId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(ElevenLabsRealtimeConversationGroupResponseModel.self)
+  }
+
+  public func deleteConversationGroupRoute(
+    conversationGroupId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsDeleteConversationGroupRouteResponse {
+    let call = self.call(.deleteConversationGroupRoute)
+      .path("conversation_group_id", conversationGroupId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsDeleteConversationGroupRouteResponse.self)
+  }
+
+  public func setConversationGroupRoute(
+    _ body: ElevenLabsSetConversationGroupRequestModel,
+    conversationId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsSetConversationGroupRouteResponse {
+    let call = self.call(.setConversationGroupRoute)
+      .path("conversation_id", conversationId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(ElevenLabsSetConversationGroupRouteResponse.self)
+  }
+
+  public func clearConversationGroupRoute(
+    conversationId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> ElevenLabsClearConversationGroupRouteResponse {
+    let call = self.call(.clearConversationGroupRoute)
+      .path("conversation_id", conversationId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(ElevenLabsClearConversationGroupRouteResponse.self)
   }
 
   public func getSecretsRoute(
@@ -3817,18 +4045,6 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
     return try await prepared.decoded(ElevenLabsPronunciationDictionaryRulesResponseModel.self)
   }
 
-  public func getWorkspaceServiceAccounts(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsWorkspaceServiceAccountListResponseModel {
-    let call = self.call(.getWorkspaceServiceAccounts)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(ElevenLabsWorkspaceServiceAccountListResponseModel.self)
-  }
-
   public func getLibraryVoices(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -3853,742 +4069,6 @@ extension HyperProxyProviderService where Operation == ElevenLabsOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(ElevenLabsSingleUseTokenResponseModel.self)
-  }
-
-  public func smbGetAgentInfo(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSMBAgentInfoResponse {
-    let call = self.call(.smbGetAgentInfo)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(ElevenLabsSMBAgentInfoResponse.self)
-  }
-
-  public func smbUpdateAgentInfo(
-    _ body: ElevenLabsBodySmbUpdateAgentInfo,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSMBAgentInfoResponse {
-    let call = self.call(.smbUpdateAgentInfo)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(ElevenLabsSMBAgentInfoResponse.self)
-  }
-
-  public func smbListCustomerFacingAgents(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSmbListCustomerFacingAgentsResponse {
-    let call = self.call(.smbListCustomerFacingAgents)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(ElevenLabsSmbListCustomerFacingAgentsResponse.self)
-  }
-
-  public func smbUpdateCustomerFacingAgent(
-    _ body: ElevenLabsSMBUpdateCustomerFacingAgentRequest,
-    agentId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSMBCustomerFacingAgentResponse {
-    let call = self.call(.smbUpdateCustomerFacingAgent)
-      .path("agent_id", agentId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(ElevenLabsSMBCustomerFacingAgentResponse.self)
-  }
-
-  public func smbActivateCustomerFacingAgent(
-    agentId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSMBCustomerFacingAgentResponse {
-    let call = self.call(.smbActivateCustomerFacingAgent)
-      .path("agent_id", agentId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(ElevenLabsSMBCustomerFacingAgentResponse.self)
-  }
-
-  public func smbListAgentProcedures(
-    agentId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSmbListAgentProceduresResponse {
-    let call = self.call(.smbListAgentProcedures)
-      .path("agent_id", agentId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(ElevenLabsSmbListAgentProceduresResponse.self)
-  }
-
-  public func smbAddAgentProcedure(
-    _ body: ElevenLabsBodySmbAddAgentProcedure,
-    agentId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSMBProcedure {
-    let call = self.call(.smbAddAgentProcedure)
-      .path("agent_id", agentId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(ElevenLabsSMBProcedure.self)
-  }
-
-  public func smbUpdateAgentProcedure(
-    _ body: ElevenLabsBodySmbUpdateAgentProcedure,
-    agentId: String,
-    procedureId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSMBProcedure {
-    let call = self.call(.smbUpdateAgentProcedure)
-      .path("agent_id", agentId)
-      .path("procedure_id", procedureId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(ElevenLabsSMBProcedure.self)
-  }
-
-  public func smbDeleteAgentProcedure(
-    agentId: String,
-    procedureId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSmbDeleteAgentProcedureResponse {
-    let call = self.call(.smbDeleteAgentProcedure)
-      .path("agent_id", agentId)
-      .path("procedure_id", procedureId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(ElevenLabsSmbDeleteAgentProcedureResponse.self)
-  }
-
-  public func smbAddAgentRule(
-    _ body: ElevenLabsBodySmbAddAgentRule,
-    agentId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsAgentRule {
-    let call = self.call(.smbAddAgentRule)
-      .path("agent_id", agentId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(ElevenLabsAgentRule.self)
-  }
-
-  public func smbUpdateAgentRule(
-    _ body: ElevenLabsBodySmbUpdateAgentRule,
-    agentId: String,
-    ruleId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsAgentRule {
-    let call = self.call(.smbUpdateAgentRule)
-      .path("agent_id", agentId)
-      .path("rule_id", ruleId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(ElevenLabsAgentRule.self)
-  }
-
-  public func smbDeleteAgentRule(
-    agentId: String,
-    ruleId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSmbDeleteAgentRuleResponse {
-    let call = self.call(.smbDeleteAgentRule)
-      .path("agent_id", agentId)
-      .path("rule_id", ruleId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(ElevenLabsSmbDeleteAgentRuleResponse.self)
-  }
-
-  public func smbAddTransferRule(
-    _ body: ElevenLabsBodySmbAddTransferRule,
-    agentId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSMBTransferRule {
-    let call = self.call(.smbAddTransferRule)
-      .path("agent_id", agentId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(ElevenLabsSMBTransferRule.self)
-  }
-
-  public func smbUpdateTransferRule(
-    _ body: ElevenLabsBodySmbUpdateTransferRule,
-    agentId: String,
-    ruleId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSMBTransferRule {
-    let call = self.call(.smbUpdateTransferRule)
-      .path("agent_id", agentId)
-      .path("rule_id", ruleId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(ElevenLabsSMBTransferRule.self)
-  }
-
-  public func smbDeleteTransferRule(
-    agentId: String,
-    ruleId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSmbDeleteTransferRuleResponse {
-    let call = self.call(.smbDeleteTransferRule)
-      .path("agent_id", agentId)
-      .path("rule_id", ruleId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(ElevenLabsSmbDeleteTransferRuleResponse.self)
-  }
-
-  public func smbListHolidays(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSmbListHolidaysResponse {
-    let call = self.call(.smbListHolidays)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(ElevenLabsSmbListHolidaysResponse.self)
-  }
-
-  public func smbCreateHoliday(
-    _ body: ElevenLabsBodySmbCreateHoliday,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsHolidayResponseModel {
-    let call = self.call(.smbCreateHoliday)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(ElevenLabsHolidayResponseModel.self)
-  }
-
-  public func smbGetHoliday(
-    holidayId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsHolidayResponseModel {
-    let call = self.call(.smbGetHoliday)
-      .path("holiday_id", holidayId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(ElevenLabsHolidayResponseModel.self)
-  }
-
-  public func smbUpdateHoliday(
-    _ body: ElevenLabsBodySmbUpdateHoliday,
-    holidayId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsHolidayResponseModel {
-    let call = self.call(.smbUpdateHoliday)
-      .path("holiday_id", holidayId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(ElevenLabsHolidayResponseModel.self)
-  }
-
-  public func smbDeleteHoliday(
-    holidayId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSmbDeleteHolidayResponse {
-    let call = self.call(.smbDeleteHoliday)
-      .path("holiday_id", holidayId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(ElevenLabsSmbDeleteHolidayResponse.self)
-  }
-
-  public func smbListKnowledgeSources(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSmbListKnowledgeSourcesResponse {
-    let call = self.call(.smbListKnowledgeSources)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(ElevenLabsSmbListKnowledgeSourcesResponse.self)
-  }
-
-  public func smbAddUrlSource(
-    _ body: ElevenLabsBodySmbAddUrlSource,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSMBKnowledgeSourceDBModel {
-    let call = self.call(.smbAddUrlSource)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(ElevenLabsSMBKnowledgeSourceDBModel.self)
-  }
-
-  public func smbGetKnowledgeSource(
-    sourceId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSMBKnowledgeSourceDBModel {
-    let call = self.call(.smbGetKnowledgeSource)
-      .path("source_id", sourceId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(ElevenLabsSMBKnowledgeSourceDBModel.self)
-  }
-
-  public func smbDeleteKnowledgeSource(
-    sourceId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSmbDeleteKnowledgeSourceResponse {
-    let call = self.call(.smbDeleteKnowledgeSource)
-      .path("source_id", sourceId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(ElevenLabsSmbDeleteKnowledgeSourceResponse.self)
-  }
-
-  public func smbListLocations(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSmbListLocationsResponse {
-    let call = self.call(.smbListLocations)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(ElevenLabsSmbListLocationsResponse.self)
-  }
-
-  public func smbCreateLocation(
-    _ body: ElevenLabsBodySmbCreateLocation,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsLocationResponse {
-    let call = self.call(.smbCreateLocation)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(ElevenLabsLocationResponse.self)
-  }
-
-  public func smbGetLocation(
-    locationId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsLocationResponse {
-    let call = self.call(.smbGetLocation)
-      .path("location_id", locationId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(ElevenLabsLocationResponse.self)
-  }
-
-  public func smbUpdateLocation(
-    _ body: ElevenLabsBodySmbUpdateLocation,
-    locationId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsLocationResponse {
-    let call = self.call(.smbUpdateLocation)
-      .path("location_id", locationId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(ElevenLabsLocationResponse.self)
-  }
-
-  public func smbDeleteLocation(
-    locationId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSmbDeleteLocationResponse {
-    let call = self.call(.smbDeleteLocation)
-      .path("location_id", locationId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(ElevenLabsSmbDeleteLocationResponse.self)
-  }
-
-  public func smbListWorkspacePhoneAssignments(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSmbListWorkspacePhoneAssignmentsResponse {
-    let call = self.call(.smbListWorkspacePhoneAssignments)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(ElevenLabsSmbListWorkspacePhoneAssignmentsResponse.self)
-  }
-
-  public func smbAssignPhoneNumber(
-    _ body: ElevenLabsCreatePhoneAssignmentRequest,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSMBPhoneAssignmentDBModel {
-    let call = self.call(.smbAssignPhoneNumber)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(ElevenLabsSMBPhoneAssignmentDBModel.self)
-  }
-
-  public func smbReassignPhoneToAgent(
-    _ body: ElevenLabsReassignPhoneRequest,
-    phoneAssignmentId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSMBPhoneAssignmentDBModel {
-    let call = self.call(.smbReassignPhoneToAgent)
-      .path("phone_assignment_id", phoneAssignmentId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(ElevenLabsSMBPhoneAssignmentDBModel.self)
-  }
-
-  public func smbListResellerTierLadder(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSmbListResellerTierLadderResponse {
-    let call = self.call(.smbListResellerTierLadder)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(ElevenLabsSmbListResellerTierLadderResponse.self)
-  }
-
-  public func smbListResellerWorkspaces(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsResellerWorkspacesResponse {
-    let call = self.call(.smbListResellerWorkspaces)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(ElevenLabsResellerWorkspacesResponse.self)
-  }
-
-  public func smbResellerProvisionWorkspace(
-    _ body: ElevenLabsProvisionResellerWorkspaceRequest,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsProvisionResellerWorkspaceResponse {
-    let call = self.call(.smbResellerProvisionWorkspace)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(ElevenLabsProvisionResellerWorkspaceResponse.self)
-  }
-
-  public func smbAssignResellerTier(
-    _ body: ElevenLabsAssignResellerTierRequest,
-    workspaceId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSmbAssignResellerTierResponse {
-    let call = self.call(.smbAssignResellerTier)
-      .path("workspace_id", workspaceId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(ElevenLabsSmbAssignResellerTierResponse.self)
-  }
-
-  public func smbChangeResellerTier(
-    _ body: ElevenLabsAssignResellerTierRequest,
-    workspaceId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSmbChangeResellerTierResponse {
-    let call = self.call(.smbChangeResellerTier)
-      .path("workspace_id", workspaceId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(ElevenLabsSmbChangeResellerTierResponse.self)
-  }
-
-  public func smbUnassignResellerTier(
-    workspaceId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSmbUnassignResellerTierResponse {
-    let call = self.call(.smbUnassignResellerTier)
-      .path("workspace_id", workspaceId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(ElevenLabsSmbUnassignResellerTierResponse.self)
-  }
-
-  public func smbCancelResellerPendingDowngrade(
-    workspaceId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSmbCancelResellerPendingDowngradeResponse {
-    let call = self.call(.smbCancelResellerPendingDowngrade)
-      .path("workspace_id", workspaceId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(ElevenLabsSmbCancelResellerPendingDowngradeResponse.self)
-  }
-
-  public func smbRestoreResellerSubscription(
-    workspaceId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSmbRestoreResellerSubscriptionResponse {
-    let call = self.call(.smbRestoreResellerSubscription)
-      .path("workspace_id", workspaceId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(ElevenLabsSmbRestoreResellerSubscriptionResponse.self)
-  }
-
-  public func smbListServices(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSmbListServicesResponse {
-    let call = self.call(.smbListServices)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(ElevenLabsSmbListServicesResponse.self)
-  }
-
-  public func smbCreateService(
-    _ body: ElevenLabsBodySmbCreateService,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSMBServiceDBModel {
-    let call = self.call(.smbCreateService)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(ElevenLabsSMBServiceDBModel.self)
-  }
-
-  public func smbGetService(
-    serviceId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSMBServiceDBModel {
-    let call = self.call(.smbGetService)
-      .path("service_id", serviceId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(ElevenLabsSMBServiceDBModel.self)
-  }
-
-  public func smbUpdateService(
-    _ body: ElevenLabsBodySmbUpdateService,
-    serviceId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsServiceUpdateResponse {
-    let call = self.call(.smbUpdateService)
-      .path("service_id", serviceId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(ElevenLabsServiceUpdateResponse.self)
-  }
-
-  public func smbDeleteService(
-    serviceId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSmbDeleteServiceResponse {
-    let call = self.call(.smbDeleteService)
-      .path("service_id", serviceId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(ElevenLabsSmbDeleteServiceResponse.self)
-  }
-
-  public func smbConfirmServiceUpdate(
-    _ body: ElevenLabsBodySmbConfirmServiceUpdate,
-    serviceId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsServiceUpdateResponse {
-    let call = self.call(.smbConfirmServiceUpdate)
-      .path("service_id", serviceId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(ElevenLabsServiceUpdateResponse.self)
-  }
-
-  public func smbListStaff(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSmbListStaffResponse {
-    let call = self.call(.smbListStaff)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(ElevenLabsSmbListStaffResponse.self)
-  }
-
-  public func smbCreateStaffMember(
-    _ body: ElevenLabsBodySmbCreateStaffMember,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSMBStaffResourceDBModel {
-    let call = self.call(.smbCreateStaffMember)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(ElevenLabsSMBStaffResourceDBModel.self)
-  }
-
-  public func smbGetStaffMember(
-    staffId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSMBStaffResourceDBModel {
-    let call = self.call(.smbGetStaffMember)
-      .path("staff_id", staffId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(ElevenLabsSMBStaffResourceDBModel.self)
-  }
-
-  public func smbUpdateStaffMember(
-    _ body: ElevenLabsBodySmbUpdateStaffMember,
-    staffId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSMBStaffResourceDBModel {
-    let call = self.call(.smbUpdateStaffMember)
-      .path("staff_id", staffId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(ElevenLabsSMBStaffResourceDBModel.self)
-  }
-
-  public func smbDeleteStaffMember(
-    staffId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> ElevenLabsSmbDeleteStaffMemberResponse {
-    let call = self.call(.smbDeleteStaffMember)
-      .path("staff_id", staffId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(ElevenLabsSmbDeleteStaffMemberResponse.self)
   }
 
   public func soundGenerationCreate(

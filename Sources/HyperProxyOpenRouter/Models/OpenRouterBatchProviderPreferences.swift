@@ -36,6 +36,7 @@ public struct OpenRouterBatchProviderPreferences: Codable, Sendable {
     case aionLabs
     case alibaba
     case ambient
+    case antDigital
     case baidu
     case amazonBedrock
     case amazonNova
@@ -108,9 +109,11 @@ public struct OpenRouterBatchProviderPreferences: Codable, Sendable {
     case ollama
     case openAI
     case openInference
+    case parallel
     case parasail
     case paretoAlpha
     case particleAI
+    case pearlResearch
     case poolside
     case primaLabs
     case primeIntellect
@@ -165,6 +168,8 @@ public struct OpenRouterBatchProviderPreferences: Codable, Sendable {
         self = .alibaba
       case "Ambient":
         self = .ambient
+      case "Ant Digital":
+        self = .antDigital
       case "Baidu":
         self = .baidu
       case "Amazon Bedrock":
@@ -309,12 +314,16 @@ public struct OpenRouterBatchProviderPreferences: Codable, Sendable {
         self = .openAI
       case "OpenInference":
         self = .openInference
+      case "Parallel":
+        self = .parallel
       case "Parasail":
         self = .parasail
       case "ParetoAlpha":
         self = .paretoAlpha
       case "Particle AI":
         self = .particleAI
+      case "Pearl Research":
+        self = .pearlResearch
       case "Poolside":
         self = .poolside
       case "PrimaLabs":
@@ -410,6 +419,8 @@ public struct OpenRouterBatchProviderPreferences: Codable, Sendable {
         return "Alibaba"
       case .ambient:
         return "Ambient"
+      case .antDigital:
+        return "Ant Digital"
       case .baidu:
         return "Baidu"
       case .amazonBedrock:
@@ -554,12 +565,16 @@ public struct OpenRouterBatchProviderPreferences: Codable, Sendable {
         return "OpenAI"
       case .openInference:
         return "OpenInference"
+      case .parallel:
+        return "Parallel"
       case .parasail:
         return "Parasail"
       case .paretoAlpha:
         return "ParetoAlpha"
       case .particleAI:
         return "Particle AI"
+      case .pearlResearch:
+        return "Pearl Research"
       case .poolside:
         return "Poolside"
       case .primaLabs:

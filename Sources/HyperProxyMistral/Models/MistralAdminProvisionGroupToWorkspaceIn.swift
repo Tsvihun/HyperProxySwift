@@ -95,6 +95,11 @@ public struct MistralAdminProvisionGroupToWorkspaceIn: Codable, Sendable {
     }
 
     /// Provider-native value without the schema union wrapper.
+    public static var value50023ca6_3db1_41bc8c10F0ae6f460fba: Self {
+      .staticWorkspaceRoles(.value50023ca6_3db1_41bc8c10F0ae6f460fba)
+    }
+
+    /// Provider-native value without the schema union wrapper.
     public static var value17aa61c5_1c61_477eA40aE52c8ccd74b9: Self {
       .staticWorkspaceRoles(.value17aa61c5_1c61_477eA40aE52c8ccd74b9)
     }
@@ -144,6 +149,7 @@ public struct MistralAdminProvisionGroupToWorkspaceIn: Codable, Sendable {
     case dev = "dev"
     case devContributor = "dev_contributor"
     case mistralCodeUser = "mistral_code_user"
+    case vibeCodeCliUser = "vibe_code_cli_user"
     case cloudUser = "cloud_user"
     case mistralCloudAdmin = "mistral_cloud_admin"
     case workspaceContributor = "workspace_contributor"

@@ -21,6 +21,9 @@ public enum AnthropicBetaSessionsManagedAgentsSessionErrorEventError: Codable, S
   case betaManagedAgentsBillingError(AnthropicBetaManagedAgentsBillingError)
   case betaManagedAgentsCredentialHostUnreachableError(
     AnthropicBetaManagedAgentsCredentialHostUnreachableError)
+  case betaManagedAgentsToolUseLimitReachedError(AnthropicBetaManagedAgentsToolUseLimitReachedError)
+  case betaManagedAgentsCompactionLimitReachedError(
+    AnthropicBetaManagedAgentsCompactionLimitReachedError)
   case betaManagedAgentsRepositoryAuthenticationError(
     AnthropicBetaManagedAgentsRepositoryAuthenticationError)
   case betaManagedAgentsRepositoryForbiddenError(AnthropicBetaManagedAgentsRepositoryForbiddenError)
@@ -66,6 +69,15 @@ public enum AnthropicBetaSessionsManagedAgentsSessionErrorEventError: Codable, S
       self = .betaManagedAgentsCredentialHostUnreachableError(value)
       return
     }
+    if let value = try? container.decode(AnthropicBetaManagedAgentsToolUseLimitReachedError.self) {
+      self = .betaManagedAgentsToolUseLimitReachedError(value)
+      return
+    }
+    if let value = try? container.decode(AnthropicBetaManagedAgentsCompactionLimitReachedError.self)
+    {
+      self = .betaManagedAgentsCompactionLimitReachedError(value)
+      return
+    }
     if let value = try? container.decode(
       AnthropicBetaManagedAgentsRepositoryAuthenticationError.self)
     {
@@ -106,6 +118,10 @@ public enum AnthropicBetaSessionsManagedAgentsSessionErrorEventError: Codable, S
     case .betaManagedAgentsBillingError(let value):
       try container.encode(value)
     case .betaManagedAgentsCredentialHostUnreachableError(let value):
+      try container.encode(value)
+    case .betaManagedAgentsToolUseLimitReachedError(let value):
+      try container.encode(value)
+    case .betaManagedAgentsCompactionLimitReachedError(let value):
       try container.encode(value)
     case .betaManagedAgentsRepositoryAuthenticationError(let value):
       try container.encode(value)

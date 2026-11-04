@@ -25,6 +25,8 @@ public enum MistralTargetType: String, Codable, Hashable, Sendable {
   case prompt = "PROMPT"
   case knowledgeBase = "KNOWLEDGE_BASE"
   case customVoice = "CUSTOM_VOICE"
+  case capabilityRegistry = "CAPABILITY_REGISTRY"
+  case capability = "CAPABILITY"
   case dataset = "DATASET"
   case fineTuningJob = "FINE_TUNING_JOB"
   case batchJob = "BATCH_JOB"

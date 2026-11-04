@@ -11,25 +11,25 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaSpendLimitIncreaseRequest: Codable, Sendable {
-  public var actor: AnthropicBetaOrganizationSpendLimitsSpendLimitIncreaseRequestActor
+  public var actor: AnthropicBetaSpendLimitIncreaseRequestActor
   public var createdAt: String
   public var id: String
   public var period: AnthropicBetaSpendLimitPeriod
   public var resolvedAt: String?
-  public var resolvedBy: AnthropicBetaOrganizationSpendLimitsSpendLimitIncreaseRequestResolvedBy?
+  public var resolvedBy: AnthropicBetaSpendLimitIncreaseRequestResolvedBy?
   public var spendSummary: AnthropicBetaSpendSummary?
   public var status: AnthropicBetaSpendLimitIncreaseRequestStatus
   public var kind: AnthropicBetaSpendLimitIncreaseRequest.Kind
 
   public init(
-    actor: AnthropicBetaOrganizationSpendLimitsSpendLimitIncreaseRequestActor,
+    actor: AnthropicBetaSpendLimitIncreaseRequestActor,
     createdAt: String,
     id: String,
     period: AnthropicBetaSpendLimitPeriod,
     status: AnthropicBetaSpendLimitIncreaseRequestStatus,
     kind: AnthropicBetaSpendLimitIncreaseRequest.Kind,
     resolvedAt: String? = nil,
-    resolvedBy: AnthropicBetaOrganizationSpendLimitsSpendLimitIncreaseRequestResolvedBy? = nil,
+    resolvedBy: AnthropicBetaSpendLimitIncreaseRequestResolvedBy? = nil,
     spendSummary: AnthropicBetaSpendSummary? = nil
   ) {
     self.actor = actor

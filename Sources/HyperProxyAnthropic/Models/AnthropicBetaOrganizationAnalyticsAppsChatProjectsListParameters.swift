@@ -15,9 +15,9 @@ public struct AnthropicBetaOrganizationAnalyticsAppsChatProjectsListParameters: 
   public var endingDate:
     AnthropicBetaOrganizationAnalyticsAppsChatProjectsListParameters.EndingDate?
   public var filter: [String]?
-  public var groupBy: [AnthropicBetaOrganizationAnalyticsAppsChatProjectsListParametersGroupByItem]?
+  public var groupBy: [AnthropicBetaAnalyticsProjectGroupBy]?
   public var limit: Int?
-  public var order: AnthropicBetaOrganizationAnalyticsAppsChatProjectsListParameters.Order?
+  public var order: AnthropicBetaAnalyticsOrder?
   public var orderBy: String?
   public var page: String?
   public var startingDate:
@@ -27,10 +27,9 @@ public struct AnthropicBetaOrganizationAnalyticsAppsChatProjectsListParameters: 
     date: AnthropicBetaOrganizationAnalyticsAppsChatProjectsListParameters.DateValue? = nil,
     endingDate: AnthropicBetaOrganizationAnalyticsAppsChatProjectsListParameters.EndingDate? = nil,
     filter: [String]? = nil,
-    groupBy: [AnthropicBetaOrganizationAnalyticsAppsChatProjectsListParametersGroupByItem]? =
-      nil,
+    groupBy: [AnthropicBetaAnalyticsProjectGroupBy]? = nil,
     limit: Int? = nil,
-    order: AnthropicBetaOrganizationAnalyticsAppsChatProjectsListParameters.Order? = nil,
+    order: AnthropicBetaAnalyticsOrder? = nil,
     orderBy: String? = nil,
     page: String? = nil,
     startingDate: AnthropicBetaOrganizationAnalyticsAppsChatProjectsListParameters.StartingDate? =
@@ -137,13 +136,6 @@ public struct AnthropicBetaOrganizationAnalyticsAppsChatProjectsListParameters: 
       }
 
     }
-  }
-
-  public enum Order: String, Codable,
-    Hashable, Sendable
-  {
-    case asc = "asc"
-    case desc = "desc"
   }
 
   public enum StartingDate: Codable,

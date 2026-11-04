@@ -14,8 +14,10 @@ public struct MistralSystemV2: Codable, Sendable {
   public var createdAt: String
   public var deletedAt: String?
   public var id: String
+  public var kind: String?
   public var name: String
   public var params: [String: MistralSystemV2.ParamsValue]
+  public var spec: [String: MistralJsonValue]?
   public var updatedAt: String
 
   public init(
@@ -24,13 +26,17 @@ public struct MistralSystemV2: Codable, Sendable {
     id: String,
     name: String,
     params: [String: MistralSystemV2.ParamsValue],
-    updatedAt: String
+    updatedAt: String,
+    kind: String? = nil,
+    spec: [String: MistralJsonValue]? = nil
   ) {
     self.createdAt = createdAt
     self.deletedAt = deletedAt
     self.id = id
+    self.kind = kind
     self.name = name
     self.params = params
+    self.spec = spec
     self.updatedAt = updatedAt
   }
 
@@ -38,8 +44,10 @@ public struct MistralSystemV2: Codable, Sendable {
     case createdAt = "created_at"
     case deletedAt = "deleted_at"
     case id
+    case kind
     case name
     case params
+    case spec
     case updatedAt = "updated_at"
   }
 

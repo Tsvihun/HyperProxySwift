@@ -20,6 +20,7 @@ public struct MistralGetSpanEvaluation: Codable, Sendable {
   public var responseId: String
   public var scoreLabel: String
   public var scoreValue: Double
+  public var serviceAccountId: String?
   public var spanId: String
   public var timestamp: String
   public var traceId: String
@@ -40,7 +41,8 @@ public struct MistralGetSpanEvaluation: Codable, Sendable {
     timestamp: String,
     traceId: String,
     userId: String,
-    workspaceId: String
+    workspaceId: String,
+    serviceAccountId: String? = nil
   ) {
     self.conversationId = conversationId
     self.customerId = customerId
@@ -51,6 +53,7 @@ public struct MistralGetSpanEvaluation: Codable, Sendable {
     self.responseId = responseId
     self.scoreLabel = scoreLabel
     self.scoreValue = scoreValue
+    self.serviceAccountId = serviceAccountId
     self.spanId = spanId
     self.timestamp = timestamp
     self.traceId = traceId
@@ -68,6 +71,7 @@ public struct MistralGetSpanEvaluation: Codable, Sendable {
     case responseId = "response_id"
     case scoreLabel = "score_label"
     case scoreValue = "score_value"
+    case serviceAccountId = "service_account_id"
     case spanId = "span_id"
     case timestamp
     case traceId = "trace_id"

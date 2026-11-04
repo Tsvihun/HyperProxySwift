@@ -13,13 +13,13 @@ import HyperProxyCore
 public struct AnthropicBetaOrganizationSpendLimitsEffectiveListParameters: Codable, Sendable {
   public var limit: Int?
   public var page: String?
-  public var period: [AnthropicBetaOrganizationSpendLimitsEffectiveListParametersPeriodItem]?
+  public var period: [AnthropicBetaSpendLimitPeriod]?
   public var userIds: [String]?
 
   public init(
     limit: Int? = nil,
     page: String? = nil,
-    period: [AnthropicBetaOrganizationSpendLimitsEffectiveListParametersPeriodItem]? = nil,
+    period: [AnthropicBetaSpendLimitPeriod]? = nil,
     userIds: [String]? = nil
   ) {
     self.limit = limit

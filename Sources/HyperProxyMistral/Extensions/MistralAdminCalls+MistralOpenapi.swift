@@ -540,6 +540,30 @@ extension MistralAdminCalls {
     return try await prepared.decoded(MistralAddOrUpdateUsersToWorkspaceOUT.self)
   }
 
+  public func billingApiPublicGetBudget(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralGetBudgetResponse {
+    let call = self.service.call(.billingApiPublicGetBudget)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralGetBudgetResponse.self)
+  }
+
+  public func billingApiPublicGetSubscription(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralGetSubscriptionResponse {
+    let call = self.service.call(.billingApiPublicGetSubscription)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralGetSubscriptionResponse.self)
+  }
+
   public func connectorListOrganizationCredentialsV1(
     connectorIdOrName: String,
     query: [URLQueryItem] = [],
@@ -580,6 +604,18 @@ extension MistralAdminCalls {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(MistralMessageResponse.self)
+  }
+
+  public func listServiceAccountsV1ServiceAccountsGet(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralListServiceAccountsResponse {
+    let call = self.service.call(.listServiceAccountsV1ServiceAccountsGet)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralListServiceAccountsResponse.self)
   }
 
   public func createServiceAccountV1ServiceAccountsPost(
@@ -668,5 +704,17 @@ extension MistralAdminCalls {
       .timeout(timeout)
     let prepared = try call.json(body)
     return try await prepared.decoded(MistralListServiceAccountRolesResponse.self)
+  }
+
+  public func usersApiListOrganizations(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralListOrganizationsResponse {
+    let call = self.service.call(.usersApiListOrganizations)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralListOrganizationsResponse.self)
   }
 }

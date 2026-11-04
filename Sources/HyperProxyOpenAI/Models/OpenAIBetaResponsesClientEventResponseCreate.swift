@@ -16,6 +16,7 @@ public struct OpenAIBetaResponsesClientEventResponseCreate: Codable, Sendable {
   public var contextManagement: [OpenAIBetaContextManagementParam]?
   public var conversation: OpenAIBetaConversationParam?
   public var generate: Bool?
+  public var image: OpenAIBetaImageOptionsParam?
   public var include: [OpenAIBetaIncludeEnum]?
   public var input: OpenAIBetaInputParam?
   public var instructions: String?
@@ -29,7 +30,7 @@ public struct OpenAIBetaResponsesClientEventResponseCreate: Codable, Sendable {
   public var previousResponseId: String?
   public var prompt: OpenAIBetaPrompt?
   public var promptCacheKey: String?
-  public var promptCacheOptions: OpenAIBetaPromptCacheOptionsParam?
+  public var promptCacheOptions: OpenAIBetaResponsePromptCacheOptionsParam?
   public var promptCacheRetention: OpenAIBetaModelResponsePropertiesPromptCacheRetention?
   public var reasoning: OpenAIBetaReasoning?
   public var safetyIdentifier: String?
@@ -55,6 +56,7 @@ public struct OpenAIBetaResponsesClientEventResponseCreate: Codable, Sendable {
     contextManagement: [OpenAIBetaContextManagementParam]? = nil,
     conversation: OpenAIBetaConversationParam? = nil,
     generate: Bool? = nil,
+    image: OpenAIBetaImageOptionsParam? = nil,
     include: [OpenAIBetaIncludeEnum]? = nil,
     input: OpenAIBetaInputParam? = nil,
     instructions: String? = nil,
@@ -68,7 +70,7 @@ public struct OpenAIBetaResponsesClientEventResponseCreate: Codable, Sendable {
     previousResponseId: String? = nil,
     prompt: OpenAIBetaPrompt? = nil,
     promptCacheKey: String? = nil,
-    promptCacheOptions: OpenAIBetaPromptCacheOptionsParam? = nil,
+    promptCacheOptions: OpenAIBetaResponsePromptCacheOptionsParam? = nil,
     promptCacheRetention: OpenAIBetaModelResponsePropertiesPromptCacheRetention? = nil,
     reasoning: OpenAIBetaReasoning? = nil,
     safetyIdentifier: String? = nil,
@@ -91,6 +93,7 @@ public struct OpenAIBetaResponsesClientEventResponseCreate: Codable, Sendable {
     self.contextManagement = contextManagement
     self.conversation = conversation
     self.generate = generate
+    self.image = image
     self.include = include
     self.input = input
     self.instructions = instructions
@@ -130,6 +133,7 @@ public struct OpenAIBetaResponsesClientEventResponseCreate: Codable, Sendable {
     case contextManagement = "context_management"
     case conversation
     case generate
+    case image
     case include
     case input
     case instructions

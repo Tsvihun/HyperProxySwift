@@ -12,6 +12,7 @@ import HyperProxyCore
 
 public enum OpenAISessionTurnErrorCodeResource: String, Codable, Hashable, Sendable {
   case contextLengthExceeded = "context_length_exceeded"
+  case maxOutputTokens = "max_output_tokens"
   case sessionBudgetExceeded = "session_budget_exceeded"
   case usageLimitExceeded = "usage_limit_exceeded"
   case projectSpendLimitExceeded = "project_spend_limit_exceeded"

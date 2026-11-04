@@ -11,6 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct PerplexityDecisionsRequest: Codable, Sendable {
+  public var mode: PerplexityDecisionsRequest.Mode?
   public var model: String
   public var questions: [String: PerplexityQuestion]
   public var state: PerplexityDecisionsRequest.State
@@ -18,17 +19,24 @@ public struct PerplexityDecisionsRequest: Codable, Sendable {
   public init(
     model: String,
     questions: [String: PerplexityQuestion],
-    state: PerplexityDecisionsRequest.State
+    state: PerplexityDecisionsRequest.State,
+    mode: PerplexityDecisionsRequest.Mode? = nil
   ) {
+    self.mode = mode
     self.model = model
     self.questions = questions
     self.state = state
   }
 
   enum CodingKeys: String, CodingKey {
+    case mode
     case model
     case questions
     case state
+  }
+
+  public enum Mode: String, Codable, Hashable, Sendable {
+    case webGrounding = "web_grounding"
   }
 
   public enum State: Codable, Sendable {

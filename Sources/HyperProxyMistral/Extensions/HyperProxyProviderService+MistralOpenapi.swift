@@ -166,6 +166,118 @@ extension HyperProxyProviderService where Operation == MistralOperation {
     return try await call.decoded(MistralAgent.self)
   }
 
+  public func listAgentsV1AudioAgentsGet(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralAudioAgentListPage {
+    let call = self.call(.listAgentsV1AudioAgentsGet)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralAudioAgentListPage.self)
+  }
+
+  public func createAgentV1AudioAgentsPost(
+    _ body: MistralAudioAgentCreateRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralAudioAgentResponse {
+    let call = self.call(.createAgentV1AudioAgentsPost)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(MistralAudioAgentResponse.self)
+  }
+
+  public func getAgentV1AudioAgentsAgentIdGet(
+    agentId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralAudioAgentResponse {
+    let call = self.call(.getAgentV1AudioAgentsAgentIdGet)
+      .path("agent_id", agentId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralAudioAgentResponse.self)
+  }
+
+  public func updateAgentV1AudioAgentsAgentIdPut(
+    _ body: MistralAudioAgentUpdateRequest,
+    agentId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralAudioAgentResponse {
+    let call = self.call(.updateAgentV1AudioAgentsAgentIdPut)
+      .path("agent_id", agentId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(MistralAudioAgentResponse.self)
+  }
+
+  public func listAgentSessionsV1AudioAgentsAgentIdSessionsGet(
+    agentId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralAudioAgentSessionListPage {
+    let call = self.call(.listAgentSessionsV1AudioAgentsAgentIdSessionsGet)
+      .path("agent_id", agentId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralAudioAgentSessionListPage.self)
+  }
+
+  public func listAgentVersionsV1AudioAgentsAgentIdVersionsGet(
+    agentId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralAudioAgentListPage {
+    let call = self.call(.listAgentVersionsV1AudioAgentsAgentIdVersionsGet)
+      .path("agent_id", agentId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralAudioAgentListPage.self)
+  }
+
+  public func createSessionV1AudioSessionsPost(
+    _ body: MistralAudioSessionCreateRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralAudioSessionCreateResponse {
+    let call = self.call(.createSessionV1AudioSessionsPost)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(MistralAudioSessionCreateResponse.self)
+  }
+
+  public func getSessionV1AudioSessionsSessionIdGet(
+    sessionId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralAudioSessionResponse {
+    let call = self.call(.getSessionV1AudioSessionsSessionIdGet)
+      .path("session_id", sessionId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralAudioSessionResponse.self)
+  }
+
   public func audioSpeech(
     _ body: MistralSpeechRequest,
     query: [URLQueryItem] = [],
@@ -686,6 +798,256 @@ extension HyperProxyProviderService where Operation == MistralOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(MistralMessageResponse.self)
+  }
+
+  public func listIndexesV1ContextSearchIndexesGet(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralListManagedIndexesResponse {
+    let call = self.call(.listIndexesV1ContextSearchIndexesGet)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralListManagedIndexesResponse.self)
+  }
+
+  public func createIndexV1ContextSearchIndexesPost(
+    _ body: MistralCreateManagedIndexRequest,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralManagedIndexResponse {
+    let call = self.call(.createIndexV1ContextSearchIndexesPost)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(MistralManagedIndexResponse.self)
+  }
+
+  public func getIndexV1ContextSearchIndexesIndexNameGet(
+    indexName: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralManagedIndexResponse {
+    let call = self.call(.getIndexV1ContextSearchIndexesIndexNameGet)
+      .path("index_name", indexName)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralManagedIndexResponse.self)
+  }
+
+  public func updateIndexV1ContextSearchIndexesIndexNamePut(
+    _ body: MistralUpdateManagedIndexRequest,
+    indexName: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralManagedIndexResponse {
+    let call = self.call(.updateIndexV1ContextSearchIndexesIndexNamePut)
+      .path("index_name", indexName)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(MistralManagedIndexResponse.self)
+  }
+
+  public func deleteIndexV1ContextSearchIndexesIndexNameDelete(
+    indexName: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralDeleteManagedIndexResponse {
+    let call = self.call(.deleteIndexV1ContextSearchIndexesIndexNameDelete)
+      .path("index_name", indexName)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralDeleteManagedIndexResponse.self)
+  }
+
+  public func getChunkIndexV1ContextSearchIndexesIndexNameChunksChunkIdGet(
+    indexName: String,
+    chunkId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralNavigationResponse {
+    let call = self.call(.getChunkIndexV1ContextSearchIndexesIndexNameChunksChunkIdGet)
+      .path("index_name", indexName)
+      .path("chunk_id", chunkId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralNavigationResponse.self)
+  }
+
+  public func ingestDocumentsV1ContextSearchIndexesIndexNameDocumentsPost(
+    _ body: MistralIngestDocumentsRequest,
+    indexName: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralIngestDocumentsResponse {
+    let call = self.call(.ingestDocumentsV1ContextSearchIndexesIndexNameDocumentsPost)
+      .path("index_name", indexName)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(MistralIngestDocumentsResponse.self)
+  }
+
+  public func deleteDocumentsV1ContextSearchIndexesIndexNameDocumentsDelete(
+    _ body: MistralDeleteDocumentsRequest,
+    indexName: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralDeleteDocumentsResponse {
+    let call = self.call(.deleteDocumentsV1ContextSearchIndexesIndexNameDocumentsDelete)
+      .path("index_name", indexName)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(MistralDeleteDocumentsResponse.self)
+  }
+
+  public func grepIndexV1ContextSearchIndexesIndexNameGrepPost(
+    _ body: MistralGrepRequest,
+    indexName: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralNavigationResponse {
+    let call = self.call(.grepIndexV1ContextSearchIndexesIndexNameGrepPost)
+      .path("index_name", indexName)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(MistralNavigationResponse.self)
+  }
+
+  public func navigateIndexV1ContextSearchIndexesIndexNameNavigatePost(
+    _ body: MistralNavigateRequest,
+    indexName: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralNavigationResponse {
+    let call = self.call(.navigateIndexV1ContextSearchIndexesIndexNameNavigatePost)
+      .path("index_name", indexName)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(MistralNavigationResponse.self)
+  }
+
+  public func readIndexV1ContextSearchIndexesIndexNameReadPost(
+    _ body: MistralReadRequest,
+    indexName: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralNavigationResponse {
+    let call = self.call(.readIndexV1ContextSearchIndexesIndexNameReadPost)
+      .path("index_name", indexName)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(MistralNavigationResponse.self)
+  }
+
+  public func searchIndexV1ContextSearchIndexesIndexNameSearchPost(
+    _ body: MistralSearchRequest,
+    indexName: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralSearchResponse {
+    let call = self.call(.searchIndexV1ContextSearchIndexesIndexNameSearchPost)
+      .path("index_name", indexName)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(MistralSearchResponse.self)
+  }
+
+  public func getManagedIndexSummaryV1ContextSearchIndexesIndexNameSummaryFieldLanguageGet(
+    indexName: String,
+    language: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralGetSummaryResponseSummary {
+    let call = self.call(
+      .getManagedIndexSummaryV1ContextSearchIndexesIndexNameSummaryFieldLanguageGet
+    )
+    .path("index_name", indexName)
+    .path("language", language)
+    .query(query)
+    .headers(headers)
+    .timeout(timeout)
+    return try await call.decoded(MistralGetSummaryResponseSummary.self)
+  }
+
+  public func
+    generateManagedIndexSummaryPostV1ContextSearchIndexesIndexNameSummaryFieldLanguagePost(
+      indexName: String,
+      language: String,
+      query: [URLQueryItem] = [],
+      headers: [String: String] = [:],
+      timeout: TimeInterval? = nil
+    ) throws -> AsyncThrowingStream<
+      MistralGenerateManagedIndexSummaryPostV1ContextSearchIndexesIndexNameSummaryFieldLanguagePostResponse,
+      Error
+    >
+  {
+    let call = self.call(
+      .generateManagedIndexSummaryPostV1ContextSearchIndexesIndexNameSummaryFieldLanguagePost
+    )
+    .path("index_name", indexName)
+    .path("language", language)
+    .query(query)
+    .headers(headers)
+    .timeout(timeout)
+    return try call.jsonLines(
+      decoding:
+        MistralGenerateManagedIndexSummaryPostV1ContextSearchIndexesIndexNameSummaryFieldLanguagePostResponse
+        .self)
+  }
+
+  public func setManagedIndexSummaryV1ContextSearchIndexesIndexNameSummaryFieldLanguagePut(
+    _ body: MistralUpdateSummaryRequestSummary,
+    indexName: String,
+    language: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws
+    -> MistralSetManagedIndexSummaryV1ContextSearchIndexesIndexNameSummaryFieldLanguagePutResponse
+  {
+    let call = self.call(
+      .setManagedIndexSummaryV1ContextSearchIndexesIndexNameSummaryFieldLanguagePut
+    )
+    .path("index_name", indexName)
+    .path("language", language)
+    .query(query)
+    .headers(headers)
+    .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(
+      MistralSetManagedIndexSummaryV1ContextSearchIndexesIndexNameSummaryFieldLanguagePutResponse
+        .self)
   }
 
   public func agentsApiV1ConversationsList(
@@ -1844,6 +2206,20 @@ extension HyperProxyProviderService where Operation == MistralOperation {
     return try await prepared.decoded(MistralPipeline.self)
   }
 
+  public func getPipelineResultFieldsV1ObservabilityPipelinesPipelineIdResultsFieldsGet(
+    pipelineId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralGetPipelineResultFields {
+    let call = self.call(.getPipelineResultFieldsV1ObservabilityPipelinesPipelineIdResultsFieldsGet)
+      .path("pipeline_id", pipelineId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralGetPipelineResultFields.self)
+  }
+
   public func getProjectsV1ObservabilityProjectsGet(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -2223,188 +2599,6 @@ extension HyperProxyProviderService where Operation == MistralOperation {
     return try await prepared.decoded(MistralIngestionPipelineConfiguration.self)
   }
 
-  public func listIndexesV1RagManagedIndexesGet(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> MistralListManagedIndexesResponse {
-    let call = self.call(.listIndexesV1RagManagedIndexesGet)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(MistralListManagedIndexesResponse.self)
-  }
-
-  public func createIndexV1RagManagedIndexesPost(
-    _ body: MistralCreateManagedIndexRequest,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> MistralManagedIndexResponse {
-    let call = self.call(.createIndexV1RagManagedIndexesPost)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(MistralManagedIndexResponse.self)
-  }
-
-  public func getIndexV1RagManagedIndexesIndexNameGet(
-    indexName: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> MistralManagedIndexResponse {
-    let call = self.call(.getIndexV1RagManagedIndexesIndexNameGet)
-      .path("index_name", indexName)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(MistralManagedIndexResponse.self)
-  }
-
-  public func updateIndexV1RagManagedIndexesIndexNamePut(
-    _ body: MistralUpdateManagedIndexRequest,
-    indexName: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> MistralManagedIndexResponse {
-    let call = self.call(.updateIndexV1RagManagedIndexesIndexNamePut)
-      .path("index_name", indexName)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(MistralManagedIndexResponse.self)
-  }
-
-  public func deleteIndexV1RagManagedIndexesIndexNameDelete(
-    indexName: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> MistralDeleteManagedIndexResponse {
-    let call = self.call(.deleteIndexV1RagManagedIndexesIndexNameDelete)
-      .path("index_name", indexName)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(MistralDeleteManagedIndexResponse.self)
-  }
-
-  public func getChunkIndexV1RagManagedIndexesIndexNameChunksChunkIdGet(
-    indexName: String,
-    chunkId: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> MistralNavigationResponse {
-    let call = self.call(.getChunkIndexV1RagManagedIndexesIndexNameChunksChunkIdGet)
-      .path("index_name", indexName)
-      .path("chunk_id", chunkId)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(MistralNavigationResponse.self)
-  }
-
-  public func ingestDocumentsV1RagManagedIndexesIndexNameDocumentsPost(
-    _ body: MistralIngestDocumentsRequest,
-    indexName: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> MistralIngestDocumentsResponse {
-    let call = self.call(.ingestDocumentsV1RagManagedIndexesIndexNameDocumentsPost)
-      .path("index_name", indexName)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(MistralIngestDocumentsResponse.self)
-  }
-
-  public func deleteDocumentsV1RagManagedIndexesIndexNameDocumentsDelete(
-    _ body: MistralDeleteDocumentsRequest,
-    indexName: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> MistralDeleteDocumentsResponse {
-    let call = self.call(.deleteDocumentsV1RagManagedIndexesIndexNameDocumentsDelete)
-      .path("index_name", indexName)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(MistralDeleteDocumentsResponse.self)
-  }
-
-  public func grepIndexV1RagManagedIndexesIndexNameGrepPost(
-    _ body: MistralGrepRequest,
-    indexName: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> MistralNavigationResponse {
-    let call = self.call(.grepIndexV1RagManagedIndexesIndexNameGrepPost)
-      .path("index_name", indexName)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(MistralNavigationResponse.self)
-  }
-
-  public func navigateIndexV1RagManagedIndexesIndexNameNavigatePost(
-    _ body: MistralNavigateRequest,
-    indexName: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> MistralNavigationResponse {
-    let call = self.call(.navigateIndexV1RagManagedIndexesIndexNameNavigatePost)
-      .path("index_name", indexName)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(MistralNavigationResponse.self)
-  }
-
-  public func readIndexV1RagManagedIndexesIndexNameReadPost(
-    _ body: MistralReadRequest,
-    indexName: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> MistralNavigationResponse {
-    let call = self.call(.readIndexV1RagManagedIndexesIndexNameReadPost)
-      .path("index_name", indexName)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(MistralNavigationResponse.self)
-  }
-
-  public func searchIndexV1RagManagedIndexesIndexNameSearchPost(
-    _ body: MistralSearchRequest,
-    indexName: String,
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> MistralSearchResponse {
-    let call = self.call(.searchIndexV1RagManagedIndexesIndexNameSearchPost)
-      .path("index_name", indexName)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    let prepared = try call.json(body)
-    return try await prepared.decoded(MistralSearchResponse.self)
-  }
-
   public func createResponseV1ResponsesPost(
     _ body: MistralCreateResponseRequest,
     query: [URLQueryItem] = [],
@@ -2455,16 +2649,58 @@ extension HyperProxyProviderService where Operation == MistralOperation {
     return try await prepared.decoded(MistralCountResponseInputTokensResponse.self)
   }
 
-  public func listServiceAccountsV1ServiceAccountsGet(
+  public func listTriggersV1TriggersGet(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
     timeout: TimeInterval? = nil
-  ) async throws -> MistralListServiceAccountsResponse {
-    let call = self.call(.listServiceAccountsV1ServiceAccountsGet)
+  ) async throws -> MistralListTriggersV1TriggersGetResponse {
+    let call = self.call(.listTriggersV1TriggersGet)
       .query(query)
       .headers(headers)
       .timeout(timeout)
-    return try await call.decoded(MistralListServiceAccountsResponse.self)
+    return try await call.decoded(MistralListTriggersV1TriggersGetResponse.self)
+  }
+
+  public func createTriggerV1TriggersPost(
+    _ body: MistralCreateTrigger,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralTrigger {
+    let call = self.call(.createTriggerV1TriggersPost)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(MistralTrigger.self)
+  }
+
+  public func getTriggerV1TriggersTriggerIdGet(
+    triggerId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralTrigger {
+    let call = self.call(.getTriggerV1TriggersTriggerIdGet)
+      .path("trigger_id", triggerId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralTrigger.self)
+  }
+
+  public func listTriggerEventsV1TriggersTriggerIdEventsGet(
+    triggerId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralTriggerEventList {
+    let call = self.call(.listTriggerEventsV1TriggersTriggerIdEventsGet)
+      .path("trigger_id", triggerId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralTriggerEventList.self)
   }
 
   public func usersApiGetIdentity(
@@ -2479,18 +2715,6 @@ extension HyperProxyProviderService where Operation == MistralOperation {
     return try await call.decoded(MistralUserIdentity.self)
   }
 
-  public func usersApiListOrganizations(
-    query: [URLQueryItem] = [],
-    headers: [String: String] = [:],
-    timeout: TimeInterval? = nil
-  ) async throws -> MistralListOrganizationsResponse {
-    let call = self.call(.usersApiListOrganizations)
-      .query(query)
-      .headers(headers)
-      .timeout(timeout)
-    return try await call.decoded(MistralListOrganizationsResponse.self)
-  }
-
   public func usersApiListWorkspaces(
     query: [URLQueryItem] = [],
     headers: [String: String] = [:],
@@ -2501,6 +2725,60 @@ extension HyperProxyProviderService where Operation == MistralOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(MistralListWorkspacesResponse.self)
+  }
+
+  public func listWebhooksV1WebhooksGet(
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralListWebhooksV1WebhooksGetResponse {
+    let call = self.call(.listWebhooksV1WebhooksGet)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralListWebhooksV1WebhooksGetResponse.self)
+  }
+
+  public func createWebhookV1WebhooksPost(
+    _ body: MistralCreateWebhook,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralWebhook {
+    let call = self.call(.createWebhookV1WebhooksPost)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    let prepared = try call.json(body)
+    return try await prepared.decoded(MistralWebhook.self)
+  }
+
+  public func getWebhookV1WebhooksWebhookIdGet(
+    webhookId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralWebhook {
+    let call = self.call(.getWebhookV1WebhooksWebhookIdGet)
+      .path("webhook_id", webhookId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralWebhook.self)
+  }
+
+  public func getWebhookSigningSecretV1WebhooksWebhookIdSigningSecretGet(
+    webhookId: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralWebhookSigningSecret {
+    let call = self.call(.getWebhookSigningSecretV1WebhooksWebhookIdSigningSecretGet)
+      .path("webhook_id", webhookId)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralWebhookSigningSecret.self)
   }
 
   public func usersApiWhoami(
@@ -2609,6 +2887,20 @@ extension HyperProxyProviderService where Operation == MistralOperation {
       .headers(headers)
       .timeout(timeout)
     return try await call.decoded(MistralManagedDeploymentResponse.self)
+  }
+
+  public func getDeploymentArchiveV1WorkflowsDeploymentsNameArchiveGet(
+    name: String,
+    query: [URLQueryItem] = [],
+    headers: [String: String] = [:],
+    timeout: TimeInterval? = nil
+  ) async throws -> MistralDeploymentArchiveResponse {
+    let call = self.call(.getDeploymentArchiveV1WorkflowsDeploymentsNameArchiveGet)
+      .path("name", name)
+      .query(query)
+      .headers(headers)
+      .timeout(timeout)
+    return try await call.decoded(MistralDeploymentArchiveResponse.self)
   }
 
   public func getDeploymentLogs(

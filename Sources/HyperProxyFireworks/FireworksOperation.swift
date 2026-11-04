@@ -17,6 +17,14 @@ public enum FireworksOperation: String, HyperProxyCatalogOperation {
   }
   /// `GET v1/accounts/{account_id}/billing/summary`
   case gatewayGetBillingSummary = "Gateway.GetBillingSummary"
+  /// `GET v1/accounts/{account_id}/users/{user_id}/apiKeys`
+  case gatewayListApiKeys = "Gateway.ListApiKeys"
+  /// `POST v1/accounts/{account_id}/users/{user_id}/apiKeys`
+  case gatewayCreateApiKey = "Gateway.CreateApiKey"
+  /// `GET v1/accounts/{account_id}/users/{user_id}/apiKeys/accounts/{account_id}/users/{user_id}`
+  case gatewayGetApiKey = "Gateway.GetApiKey"
+  /// `PATCH v1/accounts/{account_id}/users/{user_id}/apiKeys/accounts/{account_id}/users/{user_id}`
+  case gatewayUpdateApiKey = "Gateway.UpdateApiKey"
   /// `POST v1/accounts/{account_id}/evaluations/{evaluation_id}:preview`
   case gatewayPreviewEvaluation = "Gateway.PreviewEvaluation"
   /// `POST v1/accounts/{account_id}:testeval`
@@ -456,14 +464,6 @@ public enum FireworksOperation: String, HyperProxyCatalogOperation {
   case gatewayGetUser = "Gateway.GetUser"
   /// `PATCH v1/accounts/{account_id}/users/{user_id}`
   case gatewayUpdateUser = "Gateway.UpdateUser"
-  /// `GET v1/accounts/{account_id}/users/{user_id}/apiKeys`
-  case gatewayListApiKeys = "Gateway.ListApiKeys"
-  /// `POST v1/accounts/{account_id}/users/{user_id}/apiKeys`
-  case gatewayCreateApiKey = "Gateway.CreateApiKey"
-  /// `GET v1/accounts/{account_id}/users/{user_id}/apiKeys/accounts/{account_id}/users/{user_id}`
-  case gatewayGetApiKey = "Gateway.GetApiKey"
-  /// `PATCH v1/accounts/{account_id}/users/{user_id}/apiKeys/accounts/{account_id}/users/{user_id}`
-  case gatewayUpdateApiKey = "Gateway.UpdateApiKey"
   /// `POST v1/accounts/{account_id}/users/{user_id}/apiKeys:delete`
   case gatewayDeleteApiKey = "Gateway.DeleteApiKey"
   /// `GET v1/accounts/{account_id}/users/{user_id}/usageLimits`

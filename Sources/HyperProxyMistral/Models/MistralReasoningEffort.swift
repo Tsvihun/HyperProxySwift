@@ -17,4 +17,5 @@ public enum MistralReasoningEffort: String, Codable, Hashable, Sendable {
   case medium = "medium"
   case high = "high"
   case xhigh = "xhigh"
+  case max = "max"
 }

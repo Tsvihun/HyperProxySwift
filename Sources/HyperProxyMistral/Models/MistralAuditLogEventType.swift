@@ -147,6 +147,19 @@ public enum MistralAuditLogEventType: String, Codable, Hashable, Sendable {
   case customVoiceCreate = "custom_voice.create"
   case customVoiceUpdate = "custom_voice.update"
   case customVoiceDelete = "custom_voice.delete"
+  case capabilityRegistryCreate = "capability_registry.create"
+  case capabilityRegistryDefaultWorkspaceAccessEnable =
+    "capability_registry.default_workspace_access.enable"
+  case capabilityRegistryDefaultWorkspaceAccessDisable =
+    "capability_registry.default_workspace_access.disable"
+  case capabilityRegistryWorkspaceAccessEnable = "capability_registry.workspace_access.enable"
+  case capabilityRegistryWorkspaceAccessDisable = "capability_registry.workspace_access.disable"
+  case capabilityRegistryWorkspaceAccessRemove = "capability_registry.workspace_access.remove"
+  case capabilityVersionCreate = "capability.version.create"
+  case capabilityVersionDisable = "capability.version.disable"
+  case capabilityVersionEnable = "capability.version.enable"
+  case capabilityDisable = "capability.disable"
+  case capabilityEnable = "capability.enable"
   case featurePermissionOverrideCreated = "feature_permission.override.created"
   case featurePermissionOverrideDeleted = "feature_permission.override.deleted"
   case resourceShare = "resource.share"
@@ -254,6 +267,8 @@ public enum MistralAuditLogEventType: String, Codable, Hashable, Sendable {
   case workflowExecutionStarted = "workflow.execution.started"
   case workflowExecutionCanceled = "workflow.execution.canceled"
   case workflowExecutionTerminated = "workflow.execution.terminated"
+  case workflowExecutionCompleted = "workflow.execution.completed"
+  case workflowExecutionFailed = "workflow.execution.failed"
   case workflowExecutionSignal = "workflow.execution.signal"
   case workflowExecutionQuery = "workflow.execution.query"
   case workflowExecutionUpdate = "workflow.execution.update"
@@ -270,4 +285,14 @@ public enum MistralAuditLogEventType: String, Codable, Hashable, Sendable {
     "workflow.deployment.authorized_credential.granted"
   case workflowDeploymentAuthorizedCredentialRevoked =
     "workflow.deployment.authorized_credential.revoked"
+  case workflowManagedDeploymentCreated = "workflow.managed_deployment.created"
+  case workflowManagedDeploymentUpdated = "workflow.managed_deployment.updated"
+  case workflowManagedDeploymentStopped = "workflow.managed_deployment.stopped"
+  case workflowManagedDeploymentStarted = "workflow.managed_deployment.started"
+  case workflowManagedDeploymentRestarted = "workflow.managed_deployment.restarted"
+  case workflowManagedDeploymentDeleted = "workflow.managed_deployment.deleted"
+  case workflowManagedDeploymentCredentialProvisioned =
+    "workflow.managed_deployment.credential.provisioned"
+  case workflowManagedDeploymentCredentialRevoked = "workflow.managed_deployment.credential.revoked"
+  case workflowManagedDeploymentStatusChanged = "workflow.managed_deployment.status.changed"
 }

@@ -11,8 +11,7 @@ import Foundation
 import HyperProxyCore
 
 public struct AnthropicBetaAnalyticsConnectorActivity: Codable, Sendable {
-  public var chatCoworkUnifiedMetrics:
-    AnthropicBetaOrganizationAnalyticsConnectorActivityChatCoworkUnifiedMetrics?
+  public var chatCoworkUnifiedMetrics: AnthropicBetaAnalyticsConnectorChatCoworkUnifiedMetrics?
   public var chatMetrics: AnthropicBetaAnalyticsConnectorChatMetrics
   public var claudeCodeMetrics: AnthropicBetaAnalyticsConnectorClaudeCodeMetrics
   public var connectorDisplayName: String?
@@ -37,8 +36,7 @@ public struct AnthropicBetaAnalyticsConnectorActivity: Codable, Sendable {
     coworkMetrics: AnthropicBetaAnalyticsConnectorCoworkMetrics,
     distinctUserCount: Int,
     officeMetrics: AnthropicBetaAnalyticsConnectorOfficeMetrics,
-    chatCoworkUnifiedMetrics:
-      AnthropicBetaOrganizationAnalyticsConnectorActivityChatCoworkUnifiedMetrics? = nil,
+    chatCoworkUnifiedMetrics: AnthropicBetaAnalyticsConnectorChatCoworkUnifiedMetrics? = nil,
     connectorDisplayName: String? = nil,
     individualAuthDistinctUserCount: Int? = nil,
     managedAuthDistinctUserCount: Int? = nil,

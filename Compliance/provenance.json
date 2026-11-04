@@ -3,11 +3,11 @@
   "sources": {
     "anthropic/official-sdk-openapi": {
       "kind": "pythonSDK",
-      "sourceURL": "https://codeload.github.com/anthropics/anthropic-sdk-python/tar.gz/202db72c87d7c6eaa72129c67ce67fd343a3a20c",
-      "snapshotSha256": "4ecdb11c555bf72aba70a86dd4a39adb11c7fc9ca551a6124161f569278dc786",
+      "sourceURL": "https://codeload.github.com/anthropics/anthropic-sdk-python/tar.gz/5752c132041af71055584632caab5ca2325cae5e",
+      "snapshotSha256": "17121b556067cd8242ace7f77013e71d72814deca60bbd7d83ec8549541d7b7c",
       "pointerURL": "https://api.github.com/repos/anthropics/anthropic-sdk-python/commits/main",
-      "pointerSha256": "63545823bcd30fdd714ce5f2fd48fab41bab7f3e86a4c2bacd42e7068efdec95",
-      "rightsStatus": "riskAccepted",
+      "pointerSha256": "1e7c5e0a021ca23f783bee0adb29a35b2955a48d6d251bc8d3e90de6a3e89386",
+      "rightsStatus": "pending",
       "rightsBasis": "No explicit redistribution grant for the resolved schema has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://github.com/anthropics/anthropic-sdk-typescript",
       "noticeFiles": [],
@@ -25,16 +25,32 @@
           "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
           "acceptedBy": "Pavel Tsvihun (maintainer)",
           "acceptedAt": "2026-09-20"
+        },
+        {
+          "kind": "pythonSDK",
+          "sourceURL": "https://codeload.github.com/anthropics/anthropic-sdk-python/tar.gz/202db72c87d7c6eaa72129c67ce67fd343a3a20c",
+          "snapshotSha256": "4ecdb11c555bf72aba70a86dd4a39adb11c7fc9ca551a6124161f569278dc786",
+          "pointerURL": "https://api.github.com/repos/anthropics/anthropic-sdk-python/commits/main",
+          "pointerSha256": "63545823bcd30fdd714ce5f2fd48fab41bab7f3e86a4c2bacd42e7068efdec95",
+          "rightsStatus": "riskAccepted",
+          "rightsBasis": "No explicit redistribution grant for the resolved schema has been documented; provider permission or counsel review is required.",
+          "rightsEvidenceURL": "https://github.com/anthropics/anthropic-sdk-typescript",
+          "noticeFiles": [],
+          "sdkCommit": "202db72c87d7c6eaa72129c67ce67fd343a3a20c",
+          "baselineSha256": "8a5cbd0e3a1e2db9df7f35d750bdabb3228da9d635c3acb967fc969f5fbb2d17",
+          "snapshotBasis": "Current official Python SDK AST reconciled with the reviewed pre-SDK schema; old source and rights records retained in snapshotHistory.",
+          "companionSDKCommit": "cb5fba419808e3844fa6407e59577ab7ba346b79",
+          "companionSDKURL": "https://api.github.com/repos/anthropics/anthropic-sdk-typescript/commits/main",
+          "riskDecision": "Pavel Tsvihun explicitly accepted the remaining source-redistribution risks for the exact 0.6.0 snapshots listed in Compliance/0.6.0-release-review.md on 2026-10-25 and authorized the tag, GitHub Release and all CocoaPods publications. Existing upstream license claims and required notices are unchanged; this acceptance does not establish an additional upstream grant.",
+          "acceptedBy": "Pavel Tsvihun (maintainer)",
+          "acceptedAt": "2026-10-25"
         }
       ],
-      "sdkCommit": "202db72c87d7c6eaa72129c67ce67fd343a3a20c",
+      "sdkCommit": "5752c132041af71055584632caab5ca2325cae5e",
       "baselineSha256": "8a5cbd0e3a1e2db9df7f35d750bdabb3228da9d635c3acb967fc969f5fbb2d17",
       "snapshotBasis": "Current official Python SDK AST reconciled with the reviewed pre-SDK schema; old source and rights records retained in snapshotHistory.",
-      "companionSDKCommit": "cb5fba419808e3844fa6407e59577ab7ba346b79",
-      "companionSDKURL": "https://api.github.com/repos/anthropics/anthropic-sdk-typescript/commits/main",
-      "riskDecision": "Pavel Tsvihun explicitly accepted the remaining source-redistribution risks for the exact 0.6.0 snapshots listed in Compliance/0.6.0-release-review.md on 2026-10-25 and authorized the tag, GitHub Release and all CocoaPods publications. Existing upstream license claims and required notices are unchanged; this acceptance does not establish an additional upstream grant.",
-      "acceptedBy": "Pavel Tsvihun (maintainer)",
-      "acceptedAt": "2026-10-25"
+      "companionSDKCommit": "ea8d7de0e47614ae71044fbf7bf12041318ba37e",
+      "companionSDKURL": "https://api.github.com/repos/anthropics/anthropic-sdk-typescript/commits/main"
     },
     "bfl/licenses-openapi": {
       "kind": "openapi",
@@ -126,7 +142,7 @@
     "deepl/openapi": {
       "kind": "openapi",
       "sourceURL": "https://developers.deepl.com/api-reference/openapi.yaml",
-      "snapshotSha256": "6b8b6c398e3e139c99f0daeb4c2f15e7d15412e6d7a20785476c0d8ff78e0de8",
+      "snapshotSha256": "cf444756f3ec55d8bf95550ea8591422c6e76decce21e7248b302b6b989973fa",
       "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://developers.deepl.com/api-reference/openapi.yaml",
       "noticeFiles": [],
@@ -153,6 +169,25 @@
           "riskDecision": "Pavel Tsvihun explicitly accepted the remaining source-redistribution risks for the exact 0.6.0 snapshots listed in Compliance/0.6.0-release-review.md on 2026-10-25 and authorized the tag, GitHub Release and all CocoaPods publications. Existing upstream license claims and required notices are unchanged; this acceptance does not establish an additional upstream grant.",
           "acceptedBy": "Pavel Tsvihun (maintainer)",
           "acceptedAt": "2026-10-25"
+        },
+        {
+          "kind": "openapi",
+          "sourceURL": "https://developers.deepl.com/api-reference/openapi.yaml",
+          "snapshotSha256": "6b8b6c398e3e139c99f0daeb4c2f15e7d15412e6d7a20785476c0d8ff78e0de8",
+          "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
+          "rightsEvidenceURL": "https://developers.deepl.com/api-reference/openapi.yaml",
+          "noticeFiles": [],
+          "previousReview": {
+            "snapshotSha256": "8b02e6044c2bd7ed90b59dd9ea02439f388d35d857140681cd2678d2ef4c7e26",
+            "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
+            "rightsEvidenceURL": "https://developers.deepl.com/api-reference/openapi.yaml",
+            "noticeFiles": [],
+            "rightsStatus": "riskAccepted",
+            "riskDecision": "Pavel Tsvihun explicitly approved release 0.5.0 on 2026-10-04 after reviewing the pending source provenance and accepting unresolved upstream redistribution evidence. This decision does not claim an upstream license.",
+            "acceptedBy": "Pavel Tsvihun (maintainer)",
+            "acceptedAt": "2026-10-04"
+          },
+          "rightsStatus": "pending"
         }
       ]
     },
@@ -334,7 +369,7 @@
     "elevenlabs/openapi": {
       "kind": "openapi",
       "sourceURL": "https://api.elevenlabs.io/openapi.json",
-      "snapshotSha256": "e73b3c4605313722c8587403e285e3c8bf199567f150e5410bf26bff7760e574",
+      "snapshotSha256": "415f181ea8781fda5106df65c3379a5aa8457e39076673c5ce2cd14544bb40b1",
       "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://api.elevenlabs.io/openapi.json",
       "noticeFiles": [],
@@ -370,6 +405,25 @@
           "riskDecision": "Pavel Tsvihun explicitly accepted the remaining source-redistribution risks for the exact 0.6.0 snapshots listed in Compliance/0.6.0-release-review.md on 2026-10-25 and authorized the tag, GitHub Release and all CocoaPods publications. Existing upstream license claims and required notices are unchanged; this acceptance does not establish an additional upstream grant.",
           "acceptedBy": "Pavel Tsvihun (maintainer)",
           "acceptedAt": "2026-10-25"
+        },
+        {
+          "kind": "openapi",
+          "sourceURL": "https://api.elevenlabs.io/openapi.json",
+          "snapshotSha256": "e73b3c4605313722c8587403e285e3c8bf199567f150e5410bf26bff7760e574",
+          "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
+          "rightsEvidenceURL": "https://api.elevenlabs.io/openapi.json",
+          "noticeFiles": [],
+          "previousReview": {
+            "rightsStatus": "riskAccepted",
+            "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
+            "rightsEvidenceURL": "https://api.elevenlabs.io/openapi.json",
+            "riskDecision": "Pavel Tsvihun explicitly approved release 0.5.0 on 2026-10-04 after reviewing the pending source provenance and accepting unresolved upstream redistribution evidence. This decision does not claim an upstream license.",
+            "acceptedBy": "Pavel Tsvihun (maintainer)",
+            "acceptedAt": "2026-10-04",
+            "snapshotSha256": "dd67fc039c6e3950a2d0e5da46fe452e298adc9d848f049d7e2e7cf2c8835eab",
+            "noticeFiles": []
+          },
+          "rightsStatus": "pending"
         }
       ]
     },
@@ -431,7 +485,7 @@
     "gemini/discovery-v1beta": {
       "kind": "googleDiscovery",
       "sourceURL": "https://generativelanguage.googleapis.com/$discovery/rest?version=v1beta",
-      "snapshotSha256": "846331d09b06438a03e7003de2efde407065ac448d7c40c57d83a52daa74a4e3",
+      "snapshotSha256": "68b7b3102277d1b7d44c6f7d4819460188c579aaf8833e79255edaf6dff8a417",
       "rightsBasis": "No explicit redistribution grant for the Discovery document has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://developers.google.com/terms/api-services-user-data-policy",
       "noticeFiles": [],
@@ -467,6 +521,25 @@
           "riskDecision": "Pavel Tsvihun explicitly accepted the remaining source-redistribution risks for the exact 0.6.0 snapshots listed in Compliance/0.6.0-release-review.md on 2026-10-25 and authorized the tag, GitHub Release and all CocoaPods publications. Existing upstream license claims and required notices are unchanged; this acceptance does not establish an additional upstream grant.",
           "acceptedBy": "Pavel Tsvihun (maintainer)",
           "acceptedAt": "2026-10-25"
+        },
+        {
+          "kind": "googleDiscovery",
+          "sourceURL": "https://generativelanguage.googleapis.com/$discovery/rest?version=v1beta",
+          "snapshotSha256": "846331d09b06438a03e7003de2efde407065ac448d7c40c57d83a52daa74a4e3",
+          "rightsBasis": "No explicit redistribution grant for the Discovery document has been documented; provider permission or counsel review is required.",
+          "rightsEvidenceURL": "https://developers.google.com/terms/api-services-user-data-policy",
+          "noticeFiles": [],
+          "previousReview": {
+            "snapshotSha256": "be0eda10532e9f1c66dc0ce02576173320bc8133ead0bc264565a12cd0c4e224",
+            "rightsBasis": "No explicit redistribution grant for the Discovery document has been documented; provider permission or counsel review is required.",
+            "rightsEvidenceURL": "https://developers.google.com/terms/api-services-user-data-policy",
+            "noticeFiles": [],
+            "rightsStatus": "riskAccepted",
+            "riskDecision": "Pavel Tsvihun explicitly approved release 0.5.0 on 2026-10-04 after reviewing the pending source provenance and accepting unresolved upstream redistribution evidence. This decision does not claim an upstream license.",
+            "acceptedBy": "Pavel Tsvihun (maintainer)",
+            "acceptedAt": "2026-10-04"
+          },
+          "rightsStatus": "pending"
         }
       ]
     },
@@ -508,7 +581,7 @@
     "mistral/openapi": {
       "kind": "openapi",
       "sourceURL": "https://docs.mistral.ai/openapi.yaml",
-      "snapshotSha256": "0184fbcd6b22b5f76eea9bf03b04419bd82c4d8130ef7eb2ccd8cd285e51d7d7",
+      "snapshotSha256": "928d577c5526ff869c06d3ae5c55958ac4a1e0a4626998297a6c26ac88cd70f9",
       "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://docs.mistral.ai/openapi.yaml",
       "noticeFiles": [],
@@ -535,13 +608,32 @@
           "riskDecision": "Pavel Tsvihun explicitly accepted the remaining source-redistribution risks for the exact 0.6.0 snapshots listed in Compliance/0.6.0-release-review.md on 2026-10-25 and authorized the tag, GitHub Release and all CocoaPods publications. Existing upstream license claims and required notices are unchanged; this acceptance does not establish an additional upstream grant.",
           "acceptedBy": "Pavel Tsvihun (maintainer)",
           "acceptedAt": "2026-10-25"
+        },
+        {
+          "kind": "openapi",
+          "sourceURL": "https://docs.mistral.ai/openapi.yaml",
+          "snapshotSha256": "0184fbcd6b22b5f76eea9bf03b04419bd82c4d8130ef7eb2ccd8cd285e51d7d7",
+          "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
+          "rightsEvidenceURL": "https://docs.mistral.ai/openapi.yaml",
+          "noticeFiles": [],
+          "previousReview": {
+            "snapshotSha256": "348479bd1fbc3c88cc6e6970798d138ff412fdb54d66ace98430cae290471237",
+            "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
+            "rightsEvidenceURL": "https://docs.mistral.ai/openapi.yaml",
+            "noticeFiles": [],
+            "rightsStatus": "riskAccepted",
+            "riskDecision": "Pavel Tsvihun explicitly approved release 0.5.0 on 2026-10-04 after reviewing the pending source provenance and accepting unresolved upstream redistribution evidence. This decision does not claim an upstream license.",
+            "acceptedBy": "Pavel Tsvihun (maintainer)",
+            "acceptedAt": "2026-10-04"
+          },
+          "rightsStatus": "pending"
         }
       ]
     },
     "openai/openapi": {
       "kind": "openapi",
       "sourceURL": "https://raw.githubusercontent.com/openai/openai-openapi/master/openapi.yaml",
-      "snapshotSha256": "12de640ff53041098c8c7e421f40c4275759ccecebaf13e0f326c04b4b0e170f",
+      "snapshotSha256": "6ef313610ebc5ba48fcd9f993d044e0c9be38f9ed09705a5f2334a26b12fd97e",
       "rightsBasis": "MIT License; preserve the OpenAI copyright and permission notice.",
       "rightsEvidenceURL": "https://github.com/openai/openai-openapi/blob/main/LICENSE",
       "noticeFiles": [
@@ -584,13 +676,35 @@
           "riskDecision": "Pavel Tsvihun explicitly accepted the remaining source-redistribution risks for the exact 0.6.0 snapshots listed in Compliance/0.6.0-release-review.md on 2026-10-25 and authorized the tag, GitHub Release and all CocoaPods publications. Existing upstream license claims and required notices are unchanged; this acceptance does not establish an additional upstream grant.",
           "acceptedBy": "Pavel Tsvihun (maintainer)",
           "acceptedAt": "2026-10-25"
+        },
+        {
+          "kind": "openapi",
+          "sourceURL": "https://raw.githubusercontent.com/openai/openai-openapi/master/openapi.yaml",
+          "snapshotSha256": "12de640ff53041098c8c7e421f40c4275759ccecebaf13e0f326c04b4b0e170f",
+          "rightsBasis": "MIT License; preserve the OpenAI copyright and permission notice.",
+          "rightsEvidenceURL": "https://github.com/openai/openai-openapi/blob/main/LICENSE",
+          "noticeFiles": [
+            "Compliance/notices/OpenAI-OpenAPI-MIT.txt"
+          ],
+          "previousReview": {
+            "rightsStatus": "approved",
+            "rightsBasis": "MIT License; preserve the OpenAI copyright and permission notice.",
+            "rightsEvidenceURL": "https://github.com/openai/openai-openapi/blob/main/LICENSE",
+            "reviewedBy": "Codex automated license evidence audit",
+            "reviewedAt": "2026-10-04",
+            "snapshotSha256": "a9e5a817c82a5278879b7c39d610cb808df23bcdebd06371b7aecaa0a3b84240",
+            "noticeFiles": [
+              "Compliance/notices/OpenAI-OpenAPI-MIT.txt"
+            ]
+          },
+          "rightsStatus": "pending"
         }
       ]
     },
     "openrouter/openapi": {
       "kind": "openapi",
       "sourceURL": "https://openrouter.ai/docs/openapi/openapi.yaml",
-      "snapshotSha256": "5bc5e9885879764a4eb8351021d5389a7dd827ae4ef2d279b0b47247b5dd08b3",
+      "snapshotSha256": "7a0886d9a1137a27deb7f0d593dcb25688d54013e130382869bb5e90d9833611",
       "rightsBasis": "The schema declares MIT but an authoritative copyright notice for this schema was not captured; provenance review remains required.",
       "rightsEvidenceURL": "https://openrouter.ai/docs/openapi/openapi.yaml",
       "noticeFiles": [],
@@ -626,13 +740,32 @@
           "riskDecision": "Pavel Tsvihun explicitly accepted the remaining source-redistribution risks for the exact 0.6.0 snapshots listed in Compliance/0.6.0-release-review.md on 2026-10-25 and authorized the tag, GitHub Release and all CocoaPods publications. Existing upstream license claims and required notices are unchanged; this acceptance does not establish an additional upstream grant.",
           "acceptedBy": "Pavel Tsvihun (maintainer)",
           "acceptedAt": "2026-10-25"
+        },
+        {
+          "kind": "openapi",
+          "sourceURL": "https://openrouter.ai/docs/openapi/openapi.yaml",
+          "snapshotSha256": "5bc5e9885879764a4eb8351021d5389a7dd827ae4ef2d279b0b47247b5dd08b3",
+          "rightsBasis": "The schema declares MIT but an authoritative copyright notice for this schema was not captured; provenance review remains required.",
+          "rightsEvidenceURL": "https://openrouter.ai/docs/openapi/openapi.yaml",
+          "noticeFiles": [],
+          "previousReview": {
+            "rightsStatus": "riskAccepted",
+            "rightsBasis": "The schema declares MIT but an authoritative copyright notice for this schema was not captured; provenance review remains required.",
+            "rightsEvidenceURL": "https://openrouter.ai/docs/openapi/openapi.yaml",
+            "riskDecision": "Pavel Tsvihun explicitly approved release 0.5.0 on 2026-10-04 after reviewing the pending source provenance and accepting unresolved upstream redistribution evidence. This decision does not claim an upstream license.",
+            "acceptedBy": "Pavel Tsvihun (maintainer)",
+            "acceptedAt": "2026-10-04",
+            "snapshotSha256": "62124c640e813f866111dad50996496338a1a4739ba52696e1cce0a6d12ac2af",
+            "noticeFiles": []
+          },
+          "rightsStatus": "pending"
         }
       ]
     },
     "perplexity/openapi": {
       "kind": "openapi",
       "sourceURL": "https://docs.perplexity.ai/openapi.json",
-      "snapshotSha256": "d694456d70d5c9d975c7c0f17049b0db9d632f7396067ba2e47335394e8775aa",
+      "snapshotSha256": "947e97de443e47a7f8f2f5cde787097f22361d5cc0de7d752d44875cabc91142",
       "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://docs.perplexity.ai/openapi.json",
       "noticeFiles": [],
@@ -668,6 +801,25 @@
           "riskDecision": "Pavel Tsvihun explicitly accepted the remaining source-redistribution risks for the exact 0.6.0 snapshots listed in Compliance/0.6.0-release-review.md on 2026-10-25 and authorized the tag, GitHub Release and all CocoaPods publications. Existing upstream license claims and required notices are unchanged; this acceptance does not establish an additional upstream grant.",
           "acceptedBy": "Pavel Tsvihun (maintainer)",
           "acceptedAt": "2026-10-25"
+        },
+        {
+          "kind": "openapi",
+          "sourceURL": "https://docs.perplexity.ai/openapi.json",
+          "snapshotSha256": "d694456d70d5c9d975c7c0f17049b0db9d632f7396067ba2e47335394e8775aa",
+          "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
+          "rightsEvidenceURL": "https://docs.perplexity.ai/openapi.json",
+          "noticeFiles": [],
+          "previousReview": {
+            "rightsStatus": "riskAccepted",
+            "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
+            "rightsEvidenceURL": "https://docs.perplexity.ai/openapi.json",
+            "riskDecision": "Pavel Tsvihun explicitly approved release 0.5.0 on 2026-10-04 after reviewing the pending source provenance and accepting unresolved upstream redistribution evidence. This decision does not claim an upstream license.",
+            "acceptedBy": "Pavel Tsvihun (maintainer)",
+            "acceptedAt": "2026-10-04",
+            "snapshotSha256": "8c1c50724852fffdc6dc540c37f400bbbaf5f1fda0fca6f400ff869ecffdd42b",
+            "noticeFiles": []
+          },
+          "rightsStatus": "pending"
         }
       ]
     },
@@ -686,8 +838,8 @@
     "stability/openapi-v2beta": {
       "kind": "openapi",
       "sourceURL": "https://api.stability.ai/v2alpha/openapi",
-      "snapshotSha256": "db13dad969ee98dbd7a4cd4a469e3490d9a9c01c73a6efe2a4c845c308f3366b",
-      "rightsStatus": "riskAccepted",
+      "snapshotSha256": "889983ba081fac88ed5134cdcbe5a100bd74285dc6793452e3edf8707c526670",
+      "rightsStatus": "pending",
       "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
       "rightsEvidenceURL": "https://api.stability.ai/v2alpha/openapi",
       "noticeFiles": [],
@@ -701,14 +853,35 @@
         "acceptedBy": "Pavel Tsvihun (maintainer)",
         "acceptedAt": "2026-09-20"
       },
-      "riskDecision": "Pavel Tsvihun explicitly accepted the remaining source-redistribution risks for the exact 0.6.0 snapshots listed in Compliance/0.6.0-release-review.md on 2026-10-25 and authorized the tag, GitHub Release and all CocoaPods publications. Existing upstream license claims and required notices are unchanged; this acceptance does not establish an additional upstream grant.",
-      "acceptedBy": "Pavel Tsvihun (maintainer)",
-      "acceptedAt": "2026-10-25"
+      "snapshotHistory": [
+        {
+          "kind": "openapi",
+          "sourceURL": "https://api.stability.ai/v2alpha/openapi",
+          "snapshotSha256": "db13dad969ee98dbd7a4cd4a469e3490d9a9c01c73a6efe2a4c845c308f3366b",
+          "rightsStatus": "riskAccepted",
+          "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
+          "rightsEvidenceURL": "https://api.stability.ai/v2alpha/openapi",
+          "noticeFiles": [],
+          "previousReview": {
+            "snapshotSha256": "ae367894acced49ed2faf3edc48e15d5bfd2581add0f57ab27fecc52ad19e510",
+            "rightsStatus": "riskAccepted",
+            "rightsBasis": "No explicit redistribution grant has been documented; provider permission or counsel review is required.",
+            "rightsEvidenceURL": "https://api.stability.ai/v2alpha/openapi",
+            "noticeFiles": [],
+            "riskDecision": "Maintainer approved this SDK release after reviewing the recorded provenance and accepting the unresolved upstream redistribution evidence; no upstream license claim is made.",
+            "acceptedBy": "Pavel Tsvihun (maintainer)",
+            "acceptedAt": "2026-09-20"
+          },
+          "riskDecision": "Pavel Tsvihun explicitly accepted the remaining source-redistribution risks for the exact 0.6.0 snapshots listed in Compliance/0.6.0-release-review.md on 2026-10-25 and authorized the tag, GitHub Release and all CocoaPods publications. Existing upstream license claims and required notices are unchanged; this acceptance does not establish an additional upstream grant.",
+          "acceptedBy": "Pavel Tsvihun (maintainer)",
+          "acceptedAt": "2026-10-25"
+        }
+      ]
     },
     "together/openapi": {
       "kind": "openapi",
       "sourceURL": "https://docs.together.ai/openapi.yaml",
-      "snapshotSha256": "1be99a2e3e89dacdb021ad8bc0884ac8e3608f1eb81187ab3cd2244957698804",
+      "snapshotSha256": "5978365ea9fb32d46c29a452553933f957c2106a5ca5fa9229655e603f085050",
       "rightsBasis": "The schema declares MIT, but its referenced license URL returned 404 on 2026-09-19; authoritative license evidence and notice remain required.",
       "rightsEvidenceURL": "https://docs.together.ai/openapi.yaml",
       "noticeFiles": [],
@@ -744,6 +917,25 @@
           "riskDecision": "Pavel Tsvihun explicitly accepted the remaining source-redistribution risks for the exact 0.6.0 snapshots listed in Compliance/0.6.0-release-review.md on 2026-10-25 and authorized the tag, GitHub Release and all CocoaPods publications. Existing upstream license claims and required notices are unchanged; this acceptance does not establish an additional upstream grant.",
           "acceptedBy": "Pavel Tsvihun (maintainer)",
           "acceptedAt": "2026-10-25"
+        },
+        {
+          "kind": "openapi",
+          "sourceURL": "https://docs.together.ai/openapi.yaml",
+          "snapshotSha256": "1be99a2e3e89dacdb021ad8bc0884ac8e3608f1eb81187ab3cd2244957698804",
+          "rightsBasis": "The schema declares MIT, but its referenced license URL returned 404 on 2026-09-19; authoritative license evidence and notice remain required.",
+          "rightsEvidenceURL": "https://docs.together.ai/openapi.yaml",
+          "noticeFiles": [],
+          "previousReview": {
+            "snapshotSha256": "c4dc873e4ff0713ce07be388f6e322949cf3feae519a047c6089e4be4db93ddd",
+            "rightsBasis": "The schema declares MIT, but its referenced license URL returned 404 on 2026-09-19; authoritative license evidence and notice remain required.",
+            "rightsEvidenceURL": "https://docs.together.ai/openapi.yaml",
+            "noticeFiles": [],
+            "rightsStatus": "riskAccepted",
+            "riskDecision": "Pavel Tsvihun explicitly approved release 0.5.0 on 2026-10-04 after reviewing the pending source provenance and accepting unresolved upstream redistribution evidence. This decision does not claim an upstream license.",
+            "acceptedBy": "Pavel Tsvihun (maintainer)",
+            "acceptedAt": "2026-10-04"
+          },
+          "rightsStatus": "pending"
         }
       ]
     },
@@ -763,13 +955,13 @@
   "modules": [
     {
       "module": "HyperProxyAnthropic",
-      "artifactSha256": "ce1ecd3f632520557fa434dda32eea359b5ac8a549b87fe0aa7c88160036747e",
-      "reviewStatus": "approved",
+      "artifactSha256": "5a3792b9f29a866a48af69f341a0b6a308b2b1c1eb352891c6aee7ea336c2631",
+      "reviewStatus": "pending",
       "sourceIDs": [
         "anthropic/official-sdk-openapi"
       ],
-      "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
-      "artifactReviewedAt": "2026-10-25",
+      "artifactReviewedBy": "Codex (generated contract diff, compilation and regression tests)",
+      "artifactReviewedAt": "2026-11-04",
       "previousArtifactReview": {
         "artifactSha256": "270b7c27de25ff6368950dca7befc48cb0d9f0ff4ebf809f124bec9bd1ad8b12",
         "artifactReviewedBy": "Codex (generated Swift API review)",
@@ -807,10 +999,25 @@
             "artifactReviewedBy": "Codex (generated Swift API review)",
             "artifactReviewedAt": "2026-10-03"
           }
+        },
+        {
+          "module": "HyperProxyAnthropic",
+          "artifactSha256": "ce1ecd3f632520557fa434dda32eea359b5ac8a549b87fe0aa7c88160036747e",
+          "reviewStatus": "approved",
+          "sourceIDs": [
+            "anthropic/official-sdk-openapi"
+          ],
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25",
+          "previousArtifactReview": {
+            "artifactSha256": "270b7c27de25ff6368950dca7befc48cb0d9f0ff4ebf809f124bec9bd1ad8b12",
+            "artifactReviewedBy": "Codex (generated Swift API review)",
+            "artifactReviewedAt": "2026-10-03"
+          },
+          "reviewedBy": "Pavel Tsvihun (maintainer)",
+          "reviewedAt": "2026-10-25"
         }
-      ],
-      "reviewedBy": "Pavel Tsvihun (maintainer)",
-      "reviewedAt": "2026-10-25"
+      ]
     },
     {
       "module": "HyperProxyBFL",
@@ -901,7 +1108,7 @@
     },
     {
       "module": "HyperProxyDeepL",
-      "artifactSha256": "8a5a4af0d27ccf6311e603a32b89314c834895a4f5afc5a5633b7e8b7ee32970",
+      "artifactSha256": "e107b7a7ba3413a86b6429f51cd216a2d353e92badad52838d68f06496becc2b",
       "reviewStatus": "pending",
       "sourceIDs": [
         "deepl/openapi",
@@ -918,8 +1125,8 @@
         "reviewedBy": "Pavel Tsvihun (maintainer)",
         "reviewedAt": "2026-10-04"
       },
-      "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
-      "artifactReviewedAt": "2026-10-25",
+      "artifactReviewedBy": "Codex (generated contract diff, compilation and regression tests)",
+      "artifactReviewedAt": "2026-11-04",
       "artifactReviewHistory": [
         {
           "artifactSha256": "83b64f2e92a7c0b27a1dac8e5388a4c225ab2449d8cf14b1952bee66815f939c",
@@ -933,6 +1140,28 @@
         },
         {
           "artifactSha256": "1c835d1ee9699c62d8363add6389707032a48d8e2534ef713c88d4597efad436",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "module": "HyperProxyDeepL",
+          "artifactSha256": "8a5a4af0d27ccf6311e603a32b89314c834895a4f5afc5a5633b7e8b7ee32970",
+          "reviewStatus": "pending",
+          "sourceIDs": [
+            "deepl/openapi",
+            "deepl/voice-asyncapi"
+          ],
+          "previousArtifactReview": {
+            "artifactSha256": "26f3e7591666e15dcc7edd6d2ba787329bb67494de55544ce97570a4caca566f",
+            "reviewStatus": "approved",
+            "reviewedBy": "Pavel Tsvihun (maintainer)",
+            "reviewedAt": "2026-10-25"
+          },
+          "previousReview": {
+            "reviewStatus": "approved",
+            "reviewedBy": "Pavel Tsvihun (maintainer)",
+            "reviewedAt": "2026-10-04"
+          },
           "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
           "artifactReviewedAt": "2026-10-25"
         }
@@ -1053,7 +1282,7 @@
     },
     {
       "module": "HyperProxyElevenLabs",
-      "artifactSha256": "67bada70fa7f88722c8bf86969c1d005598ce0f0b9dfabe2c50b583b01b666a4",
+      "artifactSha256": "76aab09cd4e54de4f8c65d01240d1f392b8ba8f3794b29940d3a50659c4b383d",
       "reviewStatus": "pending",
       "sourceIDs": [
         "elevenlabs/openapi"
@@ -1089,10 +1318,31 @@
           "artifactSha256": "015353e16c75fbd7e35674221042d67d4be3cd4f390642377b656b5dd213e107",
           "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
           "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "module": "HyperProxyElevenLabs",
+          "artifactSha256": "67bada70fa7f88722c8bf86969c1d005598ce0f0b9dfabe2c50b583b01b666a4",
+          "reviewStatus": "pending",
+          "sourceIDs": [
+            "elevenlabs/openapi"
+          ],
+          "previousArtifactReview": {
+            "artifactSha256": "069f33ecf5d73f0e9ce7963ce159469c5835ac233dd74469d759c8a8f2b0ad53",
+            "reviewStatus": "approved",
+            "reviewedBy": "Pavel Tsvihun (maintainer)",
+            "reviewedAt": "2026-10-25"
+          },
+          "previousReview": {
+            "reviewStatus": "approved",
+            "reviewedBy": "Pavel Tsvihun (maintainer)",
+            "reviewedAt": "2026-10-04"
+          },
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
         }
       ],
-      "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
-      "artifactReviewedAt": "2026-10-25"
+      "artifactReviewedBy": "Codex (generated contract diff, compilation and regression tests)",
+      "artifactReviewedAt": "2026-11-04"
     },
     {
       "module": "HyperProxyFal",
@@ -1129,13 +1379,13 @@
     },
     {
       "module": "HyperProxyFireworks",
-      "artifactSha256": "5bad640016a57a74b4a69ab2ce84f7c4fda738634278252b67ee93b77d1a771c",
+      "artifactSha256": "3b890291df8512198bbed534ea7d344518d0908b77d6670aa801cf43cd820c04",
       "reviewStatus": "approved",
       "sourceIDs": [
         "fireworks/merged-openapi"
       ],
-      "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
-      "artifactReviewedAt": "2026-10-25",
+      "artifactReviewedBy": "Codex (generated contract diff, compilation and regression tests)",
+      "artifactReviewedAt": "2026-11-04",
       "previousArtifactReview": {
         "artifactSha256": "541da002b06d09d815e16572bfc287ee3f60d7efb347cb5c393dcd36e8d736aa",
         "artifactReviewedBy": "Codex (generated Swift API review)",
@@ -1161,6 +1411,28 @@
           "artifactSha256": "61b3c73af13aea79ec4e963792ade3f51b07861ee325aede7953619e19f9fec8",
           "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
           "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "module": "HyperProxyFireworks",
+          "artifactSha256": "5bad640016a57a74b4a69ab2ce84f7c4fda738634278252b67ee93b77d1a771c",
+          "reviewStatus": "approved",
+          "sourceIDs": [
+            "fireworks/merged-openapi"
+          ],
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25",
+          "previousArtifactReview": {
+            "artifactSha256": "541da002b06d09d815e16572bfc287ee3f60d7efb347cb5c393dcd36e8d736aa",
+            "artifactReviewedBy": "Codex (generated Swift API review)",
+            "artifactReviewedAt": "2026-10-03"
+          },
+          "previousReview": {
+            "reviewStatus": "approved",
+            "reviewedBy": "Pavel Tsvihun (maintainer)",
+            "reviewedAt": "2026-10-04"
+          },
+          "reviewedBy": "Pavel Tsvihun (maintainer)",
+          "reviewedAt": "2026-10-25"
         }
       ],
       "reviewedBy": "Pavel Tsvihun (maintainer)",
@@ -1168,7 +1440,7 @@
     },
     {
       "module": "HyperProxyGemini",
-      "artifactSha256": "b34b654e1cb2779f13cfada92f5f99e7f95be4ed7826a1b4d48af77644630472",
+      "artifactSha256": "83f75f915c08de825922df73ce452ff8bbe182246b2e5ec7c35655bff476b7c3",
       "reviewStatus": "pending",
       "sourceIDs": [
         "gemini/discovery-v1beta"
@@ -1184,8 +1456,8 @@
         "reviewedBy": "Pavel Tsvihun (maintainer)",
         "reviewedAt": "2026-10-04"
       },
-      "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
-      "artifactReviewedAt": "2026-10-25",
+      "artifactReviewedBy": "Codex (generated contract diff, compilation and regression tests)",
+      "artifactReviewedAt": "2026-11-04",
       "artifactReviewHistory": [
         {
           "artifactSha256": "4c21ca3227e7d424c0b5c222efb0bbe38c23a85cd2306ab152c1544d73d17b24",
@@ -1199,6 +1471,27 @@
         },
         {
           "artifactSha256": "66b841c09e138f9a7a27f9a2fcda6eaee87b690a261425a41b0ab2ef7398bc15",
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "module": "HyperProxyGemini",
+          "artifactSha256": "b34b654e1cb2779f13cfada92f5f99e7f95be4ed7826a1b4d48af77644630472",
+          "reviewStatus": "pending",
+          "sourceIDs": [
+            "gemini/discovery-v1beta"
+          ],
+          "previousArtifactReview": {
+            "artifactSha256": "c5bdf7e81491cb4e0faa66b8b8d271d8da32bdb218806e477c66452095a5efd4",
+            "reviewStatus": "approved",
+            "reviewedBy": "Pavel Tsvihun (maintainer)",
+            "reviewedAt": "2026-10-25"
+          },
+          "previousReview": {
+            "reviewStatus": "approved",
+            "reviewedBy": "Pavel Tsvihun (maintainer)",
+            "reviewedAt": "2026-10-04"
+          },
           "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
           "artifactReviewedAt": "2026-10-25"
         }
@@ -1247,7 +1540,7 @@
     },
     {
       "module": "HyperProxyMistral",
-      "artifactSha256": "bf93d9ee7450f4906331c5a8e4ae606add178567f7b55505a3f78d7ad712f4ec",
+      "artifactSha256": "22c6389439d7e973c2797f6f51d5fdf337876705a20dedb3b73041524dea42b6",
       "reviewStatus": "pending",
       "sourceIDs": [
         "mistral/openapi"
@@ -1263,8 +1556,8 @@
         "reviewedBy": "Pavel Tsvihun (maintainer)",
         "reviewedAt": "2026-10-04"
       },
-      "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
-      "artifactReviewedAt": "2026-10-25",
+      "artifactReviewedBy": "Codex (generated contract diff, compilation and regression tests)",
+      "artifactReviewedAt": "2026-11-04",
       "artifactReviewHistory": [
         {
           "artifactSha256": "44927b0cf6e41884116237df0dff4af4a91ebb2651c2d28745b12200126f8fb3",
@@ -1285,12 +1578,33 @@
           "artifactSha256": "f6ca05a8d1952c5202835c7507d25e313735c497cdbf0fbf338e3039a9afd0d7",
           "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
           "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "module": "HyperProxyMistral",
+          "artifactSha256": "bf93d9ee7450f4906331c5a8e4ae606add178567f7b55505a3f78d7ad712f4ec",
+          "reviewStatus": "pending",
+          "sourceIDs": [
+            "mistral/openapi"
+          ],
+          "previousArtifactReview": {
+            "artifactSha256": "93f702dceba1dfd10cd571091c13b652d8796847bf7612675a7c8a58af083109",
+            "reviewStatus": "approved",
+            "reviewedBy": "Pavel Tsvihun (maintainer)",
+            "reviewedAt": "2026-10-25"
+          },
+          "previousReview": {
+            "reviewStatus": "approved",
+            "reviewedBy": "Pavel Tsvihun (maintainer)",
+            "reviewedAt": "2026-10-04"
+          },
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
         }
       ]
     },
     {
       "module": "HyperProxyOpenAI",
-      "artifactSha256": "707c37b3d1878079a56ff487323001d208a5ad53081a1def0e0c88fa8167fed3",
+      "artifactSha256": "6296b676dccaa0893c1819a9993ca4ba01ee72a485eb4c9f98048115907cfe1a",
       "reviewStatus": "pending",
       "sourceIDs": [
         "openai/openapi"
@@ -1326,14 +1640,35 @@
           "artifactSha256": "a88c4ca05a80d52271605685507fe5cf9f5e69e12085b431199450f50a260c4d",
           "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
           "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "module": "HyperProxyOpenAI",
+          "artifactSha256": "707c37b3d1878079a56ff487323001d208a5ad53081a1def0e0c88fa8167fed3",
+          "reviewStatus": "pending",
+          "sourceIDs": [
+            "openai/openapi"
+          ],
+          "previousArtifactReview": {
+            "artifactSha256": "33fc5dfcda0e8486de51567603532576d790c7efa3bcf1cfdb05492188b4a14e",
+            "reviewStatus": "approved",
+            "reviewedBy": "Pavel Tsvihun (maintainer)",
+            "reviewedAt": "2026-10-25"
+          },
+          "previousReview": {
+            "reviewStatus": "approved",
+            "reviewedBy": "Pavel Tsvihun (maintainer)",
+            "reviewedAt": "2026-10-04"
+          },
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
         }
       ],
-      "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
-      "artifactReviewedAt": "2026-10-25"
+      "artifactReviewedBy": "Codex (generated contract diff, compilation and regression tests)",
+      "artifactReviewedAt": "2026-11-04"
     },
     {
       "module": "HyperProxyOpenRouter",
-      "artifactSha256": "66192cc8bef02561043cfa6d68ca58736d945d845f31d5fac7b692661debd8b5",
+      "artifactSha256": "f84223d5af87c02da20c2df997c6d1fb48327cb08d362a2b2c3c4a9ebcf2fa13",
       "reviewStatus": "pending",
       "sourceIDs": [
         "openrouter/openapi"
@@ -1369,14 +1704,35 @@
           "artifactSha256": "5476cc6574d52a7a8a483ad166b250c191ec1544dabb840fafdcfe6836f7e887",
           "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
           "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "module": "HyperProxyOpenRouter",
+          "artifactSha256": "66192cc8bef02561043cfa6d68ca58736d945d845f31d5fac7b692661debd8b5",
+          "reviewStatus": "pending",
+          "sourceIDs": [
+            "openrouter/openapi"
+          ],
+          "previousArtifactReview": {
+            "artifactSha256": "0085d16a4b6dfd32379960b4c8191a919695fc855c26c3fcf39036eddf24ed9c",
+            "reviewStatus": "approved",
+            "reviewedBy": "Pavel Tsvihun (maintainer)",
+            "reviewedAt": "2026-10-25"
+          },
+          "previousReview": {
+            "reviewStatus": "approved",
+            "reviewedBy": "Pavel Tsvihun (maintainer)",
+            "reviewedAt": "2026-10-04"
+          },
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
         }
       ],
-      "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
-      "artifactReviewedAt": "2026-10-25"
+      "artifactReviewedBy": "Codex (generated contract diff, compilation and regression tests)",
+      "artifactReviewedAt": "2026-11-04"
     },
     {
       "module": "HyperProxyPerplexity",
-      "artifactSha256": "652cd9849b009097ab7e184a39aff8e6b57d4277dd4cdf5fcc25e44cfa9e2a72",
+      "artifactSha256": "e20a1761215e2390cf9548171be5a8781bd9cda46675cffcd878f74a35e02f9a",
       "reviewStatus": "pending",
       "sourceIDs": [
         "perplexity/openapi"
@@ -1412,14 +1768,35 @@
           "artifactSha256": "dfc1a4b8aaf0880663f09371f46f648051d01424c4bd9163d4432b4ba601bd0f",
           "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
           "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "module": "HyperProxyPerplexity",
+          "artifactSha256": "652cd9849b009097ab7e184a39aff8e6b57d4277dd4cdf5fcc25e44cfa9e2a72",
+          "reviewStatus": "pending",
+          "sourceIDs": [
+            "perplexity/openapi"
+          ],
+          "previousArtifactReview": {
+            "artifactSha256": "fc1053d82f589f7023919208c325dc02bc9a40f251ba9ec2997465d61af92564",
+            "reviewStatus": "approved",
+            "reviewedBy": "Pavel Tsvihun (maintainer)",
+            "reviewedAt": "2026-10-25"
+          },
+          "previousReview": {
+            "reviewStatus": "approved",
+            "reviewedBy": "Pavel Tsvihun (maintainer)",
+            "reviewedAt": "2026-10-04"
+          },
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
         }
       ],
-      "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
-      "artifactReviewedAt": "2026-10-25"
+      "artifactReviewedBy": "Codex (generated contract diff, compilation and regression tests)",
+      "artifactReviewedAt": "2026-11-04"
     },
     {
       "module": "HyperProxyProviders",
-      "artifactSha256": "f28bc2e05437664946c84e336f871e6aab89daf2dcf40824e7523d69320efb7e",
+      "artifactSha256": "fecc3c6ed8b05d7fc397597b91806baa00db69f1e885dfb090e9261cf457f1ff",
       "reviewStatus": "pending",
       "sourceIDs": [
         "anthropic/official-sdk-openapi",
@@ -1514,10 +1891,56 @@
           },
           "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
           "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "module": "HyperProxyProviders",
+          "artifactSha256": "f28bc2e05437664946c84e336f871e6aab89daf2dcf40824e7523d69320efb7e",
+          "reviewStatus": "pending",
+          "sourceIDs": [
+            "anthropic/official-sdk-openapi",
+            "bfl/licenses-openapi",
+            "bfl/openapi",
+            "bfl/reviewed-lora-openapi",
+            "brave/reviewed-search-api",
+            "deepl/openapi",
+            "deepl/voice-asyncapi",
+            "deepseek/reviewed-anthropic-openapi",
+            "deepseek/reviewed-core-openapi",
+            "deepseek/reviewed-responses-openapi",
+            "eachai/openapi-api",
+            "eachai/openapi-workflows-host",
+            "eachai/reviewed-billing",
+            "eachai/reviewed-sense",
+            "elevenlabs/openapi",
+            "fal/platform-openapi",
+            "fireworks/merged-openapi",
+            "gemini/discovery-v1beta",
+            "groq/official-sdk-openapi",
+            "mistral/openapi",
+            "openai/openapi",
+            "openrouter/openapi",
+            "perplexity/openapi",
+            "replicate/openapi",
+            "stability/openapi-v2beta",
+            "together/openapi"
+          ],
+          "previousArtifactReview": {
+            "artifactSha256": "1fde2c6bfe7fbfb332c0d5f2916e756f979559c8c705156958801f65e4aecc56",
+            "reviewStatus": "approved",
+            "reviewedBy": "Pavel Tsvihun (maintainer)",
+            "reviewedAt": "2026-10-25"
+          },
+          "previousReview": {
+            "reviewStatus": "approved",
+            "reviewedBy": "Pavel Tsvihun (maintainer)",
+            "reviewedAt": "2026-10-04"
+          },
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
         }
       ],
-      "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
-      "artifactReviewedAt": "2026-10-25"
+      "artifactReviewedBy": "Codex (generated contract diff, compilation and regression tests)",
+      "artifactReviewedAt": "2026-11-04"
     },
     {
       "module": "HyperProxyReplicate",
@@ -1551,7 +1974,7 @@
     {
       "module": "HyperProxyStability",
       "artifactSha256": "191c4f952968f801cbfc4d004f8fda5d366c7dd4e025347f095a7c73d3a77399",
-      "reviewStatus": "approved",
+      "reviewStatus": "pending",
       "sourceIDs": [
         "stability/openapi-v2beta"
       ],
@@ -1573,13 +1996,11 @@
           "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
           "artifactReviewedAt": "2026-10-25"
         }
-      ],
-      "reviewedBy": "Pavel Tsvihun (maintainer)",
-      "reviewedAt": "2026-10-25"
+      ]
     },
     {
       "module": "HyperProxyTogether",
-      "artifactSha256": "d7b8ff0e3e337e111e6f54e982f6907af04afef66972f7be42c79d396ace45f8",
+      "artifactSha256": "63d9b42dfe737db6da6a7a290ca2f8a563a317b3773247fa71effe57d4a2d705",
       "reviewStatus": "pending",
       "sourceIDs": [
         "together/openapi"
@@ -1615,10 +2036,31 @@
           "artifactSha256": "848dbdcc26e999a1715aef280f392ee5fc5f4f5b032e1ee1a2d876016ec34278",
           "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
           "artifactReviewedAt": "2026-10-25"
+        },
+        {
+          "module": "HyperProxyTogether",
+          "artifactSha256": "d7b8ff0e3e337e111e6f54e982f6907af04afef66972f7be42c79d396ace45f8",
+          "reviewStatus": "pending",
+          "sourceIDs": [
+            "together/openapi"
+          ],
+          "previousArtifactReview": {
+            "artifactSha256": "48ff1a2feb7ed86fb111be2a08b7306b349cd8711f62c2127164c4433a5f25e9",
+            "reviewStatus": "approved",
+            "reviewedBy": "Pavel Tsvihun (maintainer)",
+            "reviewedAt": "2026-10-25"
+          },
+          "previousReview": {
+            "reviewStatus": "approved",
+            "reviewedBy": "Pavel Tsvihun (maintainer)",
+            "reviewedAt": "2026-10-04"
+          },
+          "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
+          "artifactReviewedAt": "2026-10-25"
         }
       ],
-      "artifactReviewedBy": "Codex (generated Swift diff, local compilation and contract tests)",
-      "artifactReviewedAt": "2026-10-25"
+      "artifactReviewedBy": "Codex (generated contract diff, compilation and regression tests)",
+      "artifactReviewedAt": "2026-11-04"
     }
   ]
 }

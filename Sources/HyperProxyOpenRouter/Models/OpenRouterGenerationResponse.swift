@@ -222,6 +222,7 @@ public struct OpenRouterGenerationResponse: Codable, Sendable {
       case tts = "tts"
       case stt = "stt"
       case image = "image"
+      case toolsInvoke = "tools_invoke"
     }
 
     public enum DataRegion: String, Codable, Hashable, Sendable {

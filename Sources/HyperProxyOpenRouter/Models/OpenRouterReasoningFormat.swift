@@ -18,6 +18,7 @@ public enum OpenRouterReasoningFormat: String, Codable, Hashable, Sendable {
   case bedrockXaiResponsesV1 = "bedrock-xai-responses-v1"
   case xaiResponsesV1 = "xai-responses-v1"
   case metaResponsesV1 = "meta-responses-v1"
+  case openrouterStealthV1 = "openrouter-stealth-v1"
   case anthropicClaudeV1 = "anthropic-claude-v1"
   case googleGeminiV1 = "google-gemini-v1"
 }

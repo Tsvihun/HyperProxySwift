@@ -13,21 +13,25 @@ import HyperProxyCore
 public struct PerplexityDecisionsResponse: Codable, Sendable {
   public var answers: [String: PerplexityAnswer]
   public var model: String
+  public var searchResults: [PerplexityDecisionSearchResult]?
   public var usage: PerplexityUsage
 
   public init(
     answers: [String: PerplexityAnswer],
     model: String,
-    usage: PerplexityUsage
+    usage: PerplexityUsage,
+    searchResults: [PerplexityDecisionSearchResult]? = nil
   ) {
     self.answers = answers
     self.model = model
+    self.searchResults = searchResults
     self.usage = usage
   }
 
   enum CodingKeys: String, CodingKey {
     case answers
     case model
+    case searchResults = "search_results"
     case usage
   }
 }

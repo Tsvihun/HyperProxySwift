@@ -14,6 +14,7 @@ public struct OpenAISessionEventAgentSessionTurnContentPartAdded: Codable, Senda
   public var contentIndex: Int64
   public var eventId: String
   public var itemId: String
+  public var obfuscation: String?
   public var outputIndex: Int64
   public var part: OpenAIOutputTextResource
   public var sessionId: String
@@ -28,11 +29,13 @@ public struct OpenAISessionEventAgentSessionTurnContentPartAdded: Codable, Senda
     part: OpenAIOutputTextResource,
     sessionId: String,
     turnId: String,
-    kind: OpenAISessionEventAgentSessionTurnContentPartAdded.Kind
+    kind: OpenAISessionEventAgentSessionTurnContentPartAdded.Kind,
+    obfuscation: String? = nil
   ) {
     self.contentIndex = contentIndex
     self.eventId = eventId
     self.itemId = itemId
+    self.obfuscation = obfuscation
     self.outputIndex = outputIndex
     self.part = part
     self.sessionId = sessionId
@@ -44,6 +47,7 @@ public struct OpenAISessionEventAgentSessionTurnContentPartAdded: Codable, Senda
     case contentIndex = "content_index"
     case eventId = "event_id"
     case itemId = "item_id"
+    case obfuscation
     case outputIndex = "output_index"
     case part
     case sessionId = "session_id"

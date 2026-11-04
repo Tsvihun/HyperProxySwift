@@ -14,6 +14,7 @@ public struct OpenAISessionEventAgentSessionTurnReasoningSummaryTextDelta: Codab
   public var delta: String
   public var eventId: String
   public var itemId: String
+  public var obfuscation: String?
   public var outputIndex: Int64
   public var sessionId: String
   public var summaryIndex: Int64
@@ -28,11 +29,13 @@ public struct OpenAISessionEventAgentSessionTurnReasoningSummaryTextDelta: Codab
     sessionId: String,
     summaryIndex: Int64,
     turnId: String,
-    kind: OpenAISessionEventAgentSessionTurnReasoningSummaryTextDelta.Kind
+    kind: OpenAISessionEventAgentSessionTurnReasoningSummaryTextDelta.Kind,
+    obfuscation: String? = nil
   ) {
     self.delta = delta
     self.eventId = eventId
     self.itemId = itemId
+    self.obfuscation = obfuscation
     self.outputIndex = outputIndex
     self.sessionId = sessionId
     self.summaryIndex = summaryIndex
@@ -44,6 +47,7 @@ public struct OpenAISessionEventAgentSessionTurnReasoningSummaryTextDelta: Codab
     case delta
     case eventId = "event_id"
     case itemId = "item_id"
+    case obfuscation
     case outputIndex = "output_index"
     case sessionId = "session_id"
     case summaryIndex = "summary_index"
